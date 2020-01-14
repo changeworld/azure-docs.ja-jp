@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化 | Microsoft Docs
-description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Reliable Collection オブジェクトのシリアル化
+description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化について説明します。既定の方法やカスタムのシリアル化を定義する方法などがあります。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599299"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639549"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -35,7 +24,7 @@ Reliable State Manager には一般的な型のための組み込みのシリア
 
 Reliable State Manager には、次の型用の組み込みのシリアライザーがあります。 
 - Guid
-- bool
+- [bool]
 - byte
 - sbyte
 - byte[]
@@ -44,7 +33,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 - decimal
 - double
 - float
-- int
+- INT
 - uint
 - long
 - ulong
@@ -148,7 +137,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 すべてのバージョンをサポートする一般的な方法は、最初にサイズ情報を追加したら、後はオプションのプロパティ情報のみを追加することです。
 こうすることで、各バージョンで可能な限りの読み取りを実行でき、ストリームの残りの部分を省略できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。

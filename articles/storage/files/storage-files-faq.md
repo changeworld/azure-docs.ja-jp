@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824269"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665373"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -127,20 +127,7 @@ ms.locfileid: "73824269"
 
 * <a id="afs-files-excluded"></a>
   **Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
-    Azure File Sync は既定で、次のファイルを除外します。
-  * desktop.ini
-  * thumbs.db
-  * ehthumbs.db
-  * ~$\*.\*
-  * \*.laccdb
-  * \*.tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    また、既定で、次のフォルダーも除外します。
-
-  * \System Volume Information
-  * \$RECYCLE.BIN
-  * \SyncShareState
+  「[スキップされるファイル](storage-sync-files-planning.md#files-skipped)」を参照してください。
 
 * <a id="afs-os-support"></a>
   **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
@@ -245,14 +232,14 @@ ms.locfileid: "73824269"
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
 
-    いいえ。ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
+    いいえ。 ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
 
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
 
     ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.0 プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 * <a id="backup-share"></a>
 **Azure ファイル共有をバックアップする方法を教えてください。**  
     誤って削除した場合のために、定期的に[共有スナップショット](storage-snapshots-files.md)を使用して保護できます。 AzCopy、RoboCopy、またはマウントされているファイル共有をバックアップできるサードパーティ製のバックアップ ツールを使用することもできます。 Azure Backup では、Azure Files をバックアップできます。 詳細については、[Azure Backup で Azure ファイル共有をバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-files)方法に関するページを参照してください。
@@ -349,7 +336,7 @@ ms.locfileid: "73824269"
 * <a id="lfs-performance-impact"></a>
 **ファイル共有のクォータを拡張すると、ワークロードや Azure File Sync に影響しますか。**
     
-    いいえ。クォータを拡張しても、ワークロードや Azure File Sync には影響しません。
+    いいえ。 クォータを拡張しても、ワークロードや Azure File Sync には影響しません。
 
 * <a id="open-handles-quota"></a>
 **同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**    
@@ -378,13 +365,13 @@ ms.locfileid: "73824269"
 
 * <a id="nested-shares"></a>
 **共有は入れ子にできますか。つまり、共有の下に共有を配置できますか。**  
-    No. ファイル共有はマウント可能な "*仮想ドライバーである*" ため、共有の入れ子はサポートしていません。
+    いいえ。 ファイル共有はマウント可能な "*仮想ドライバーである*" ため、共有の入れ子はサポートしていません。
 
 * <a id="ibm-mq"></a>
 **IBM MQ での Azure Files の使用方法**  
     IBM MQ ユーザーが IBM のサービスで Azure Files を構成する際に役立つドキュメントが IBM から提供されています。 詳細については、「[How to set up IBM MQ Multi instance queue manager with Microsoft Azure Files Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure Files サービスで設定する方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

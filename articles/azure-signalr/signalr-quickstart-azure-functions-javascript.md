@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: fd935ffda7d16988781d5debce9333ccf2adb16f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450257"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用してチャット ルームを作成する
 
@@ -24,11 +24,9 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 [Visual Studio Code](https://code.visualstudio.com/) などのコード エディターがインストールされていることを確認してください。
 
-Azure Functions アプリをローカルで実行するために、[Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) をインストールします。
+Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2 以降) をインストールします。
 
-Azure Functions には、[Node.js](https://nodejs.org/en/download/) バージョン 8 または 10 が必要です。
-
-現在の Azure Functions Core Tools では、拡張機能をインストールするために [.NET Core SDK](https://www.microsoft.com/net/download) をインストールする必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
+このクイックスタートでは [Node.js](https://nodejs.org/en/download/) 10.x を使用していますが、他のバージョンでもおそらく問題ありません。 サポートされる Node.js バージョンの詳細については、[Azure Functions ランタイム バージョンのドキュメント](../azure-functions/functions-versions.md#languages)を参照してください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,13 +61,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
     - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
-1. ターミナルで、*src/chat/javascript* フォルダーにいることを確認します。 Azure Functions Core Tools を使用して、アプリを実行するために必要な拡張機能をインストールします。
-
-    ```bash
-    func extensions install
-    ```
-
-1. 関数アプリを実行します。
+1. ターミナルで、*src/chat/javascript* フォルダーにいることを確認します。 関数アプリを実行します。
 
     ```bash
     func start
@@ -81,7 +73,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
 

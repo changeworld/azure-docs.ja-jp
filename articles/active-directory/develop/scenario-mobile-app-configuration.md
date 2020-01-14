@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423791"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すモバイル アプリ - コード構成
 
@@ -30,7 +30,7 @@ ms.locfileid: "74919955"
 
 モバイル アプリをサポートする Microsoft ライブラリは次のとおりです。
 
-  MSAL ライブラリ | 説明
+  MSAL ライブラリ | [説明]
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | ポータブル アプリケーションを開発するため。 モバイル アプリケーションを構築するために MSAL.NET でサポートされているプラットフォームは、UWP、Xamarin.iOS、Xamarin.Android です。
   ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Objective-C または Swift でネイティブの iOS アプリケーションを開発するため
@@ -77,7 +77,7 @@ if let application = try? MSALPublicClientApplication(configuration: config){ /*
 
 Xamarin または UWP で最も簡単にアプリケーションをインスタンス化する方法は次のとおりです。ここでの `ClientId` は、登録されたアプリの GUID です。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 Android では、対話型認証を行う前に親アクティビティを渡す必要があります。 iOS では、ブローカーを使用する場合に ViewController を渡す必要があります。 UWP の場合と同じように、親ウィンドウを渡すことができます。 これはトークンを取得するときに実行できますが、アプリ作成時のコールバックに UIParent を返すデリゲートを指定することもできます。
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 Android では、[こちら](https://github.com/jamesmontemagno/CurrentActivityPlugin)にある `CurrentActivityPlugin` をお勧めします。  この場合、`PublicClientApplication` ビルダー コードは次のようになります。
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ iOS および macOS 用の MSAL の AAD シナリオでは、ブローカー認�
 
 ブローカーのサポートは `PublicClientApplication` ごとに有効にします。 既定では無効になっています。 `PublicClientApplicationBuilder` によって `PublicClientApplication` を作成する場合は、`WithBroker()` パラメーター (既定では true に設定) を使用する必要があります。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 MSAL.NET がブローカーを呼び出すと、ブローカーは `AppDelegate.OpenUrl` メソッドを通じてアプリケーションにコールバックします。 MSAL はブローカーからの応答を待つため、アプリケーションが協力して MSAL.NET を再度呼び出す必要があります。 これを行うには、`AppDelegate.cs` ファイルを更新して次のメソッドをオーバーライドします。
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -218,17 +218,17 @@ Xamarin.iOS では、通常はオブジェクト ウィンドウを設定する�
 
 **例:**
 
-`App.cs`で、次のように記述します。
-```CSharp
+`App.cs`:
+```csharp
    public static object RootViewController { get; set; }
 ```
-`AppDelegate.cs`で、次のように記述します。
-```CSharp
+`AppDelegate.cs`:
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 AcquireToken の呼び出しで、次のように記述します。
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -355,7 +355,7 @@ Xcode 11 以降でアプリをコンパイルする場合、"msauthv3" スキー
 
 MSAL.NET では、Android 用のブローカーがまだサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [トークンの取得](scenario-mobile-acquire-token.md)

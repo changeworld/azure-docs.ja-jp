@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:.NET 用 Face クライアント ライブラリ | Microsoft Docs
-description: .NET 用 Face クライアント ライブラリを使ってみます。
+title: クイック スタート:.NET 用 Face クライアント ライブラリ
+description: このクイックスタートでは、.NET 用 Face クライアント ライブラリの使用を開始します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448181"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>クイック スタート:.NET 用 Face クライアント ライブラリ
 
@@ -40,7 +40,7 @@ ms.locfileid: "74977864"
 
 ### <a name="create-a-face-azure-resource"></a>Face Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用してローカル マシン上に Face 用のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用してローカル マシン上に Face 用のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -95,7 +95,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 以下のクラスとインターフェイスにより、Face .NET SDK の主要な機能の一部が処理されます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
@@ -291,7 +291,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
@@ -310,7 +310,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_target_persongroup_delete)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、.NET 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
 

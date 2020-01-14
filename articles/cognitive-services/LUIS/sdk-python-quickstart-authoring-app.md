@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Python 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: Python 用の LUIS クライアント ライブラリを使ってみます。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
+description: このクイックスタートでは、Python 用 LUIS クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381496"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>クイック スタート:Python 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 
@@ -192,14 +192,14 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >[ユーザーの意図を特定する LUIS アプリを構築する](luis-quickstart-intents-only.md)

@@ -1,29 +1,28 @@
 ---
-title: Azure Site Recovery で Hyper-V VM のフェールオーバーとフェールバックを設定する
-description: ディザスター リカバリーの最中に Azure Site Recovery サービスを使用して Hyper-V VM を Azure にフェールオーバーおよびフェールバックする方法を説明します。
+title: Azure Site Recovery で Hyper-V VM から Azure へのフェールオーバーを設定する
+description: Azure Site Recovery で Hyper-V VM を Azure にフェールオーバーする方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082649"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498159"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
+# <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure にフェールオーバーする
 
-このチュートリアルでは、Hyper-V VM と Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、[Azure Site Recovery](site-recovery-overview.md) で Hyper-V VM を Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Hyper-V VM のプロパティで Azure の要件に準拠していることを確認する
-> * Azure へのフェールオーバーを実行する
-> * Azure からオンプレミスにフェールバックする
-> * オンプレミス VM のレプリケートを反転して、Azure へのレプリケートを再開する
+> * Hyper-V VM のプロパティで Azure の要件に準拠していることを確認する。
+> * 特定の VM を Azure にフェールオーバーする。
+
 
 このチュートリアルはシリーズで 5 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクが既に完了していることを前提としています。    
 
@@ -32,8 +31,9 @@ ms.locfileid: "74082649"
 3. [Hyper-V VM](tutorial-hyper-v-to-azure.md) または [System Center VMM クラウドで管理される Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) のディザスター リカバリーをセットアップする
 4. [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)
 
-## <a name="prepare-for-failover-and-failback"></a>フェールオーバーとフェールバックを準備する
+さまざまな種類のフェールオーバーの[詳細を参照してください](failover-failback-overview.md#types-of-failover)。 1 つの復旧計画で複数の VM をフェールオーバーする場合は、[この記事](site-recovery-failover.md)を参照してください。
 
+## <a name="prepare-for-failover"></a>フェールオーバーを準備する 
 VM にスナップショットがないことと、フェールバック中にオンプレミスの VM をオフにすることを確認します。 これは、レプリケーション中のデータの整合性を確保するのに役立ちます。 フェールバック中にオンプレミスの VM を有効にしないでください。 
 
 フェールオーバーとフェールバックには 3 つの段階があります。
@@ -56,7 +56,7 @@ VM にスナップショットがないことと、フェールバック中に�
 
 1. **[ディスク]** で、VM のオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 
-## <a name="failover-to-azure"></a>Azure へのフェールオーバー
+## <a name="fail-over-to-azure"></a>Azure にフェールオーバーする
 
 1. **[設定]**  >  **[レプリケートされたアイテム]** で、対象の VM、 **[フェールオーバー]** の順にクリックします。
 2. **[フェールオーバー]** で、 **[最新]** 復旧ポイントを選択します。 
@@ -66,15 +66,18 @@ VM にスナップショットがないことと、フェールバック中に�
 > [!WARNING]
 > **進行中のフェールオーバーを取り消さないでください**: 進行中にキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。
 
-## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Azure VM をオンプレミスにフェールバックし、オンプレミス の VM のレプリケートを反転する
+## <a name="connect-to-failed-over-vm"></a>フェールオーバーされた VM に接続する
 
-フェールバック操作は基本的に Azure からオンプレミス サイトへのフェールオーバーです。レプリケートの反転では、オンプレミス サイトから Azure への VM のレプリケートを再開します。
+1. リモート デスクトップ プロトコル (RDP) と Secure Shell (SSH) を使用して、フェールオーバー後の Azure VM に接続する場合は、[要件が満たされていることを確認](failover-failback-overview.md#connect-to-azure-after-failover)します。
+2. フェールオーバー後は、VM に移動し、それに[接続する](../virtual-machines/windows/connect-logon.md)ことで検証します。
+3. フェールオーバー後に別の復旧ポイントを使用する場合は、 **[復旧ポイントの変更]** を使用します。 次の手順でフェールオーバーをコミットした後、このオプションは使用できなくなります。
+4. 検証後に、 **[コミット]** を選択して、フェールオーバー後の VM の復旧ポイントを最終処理します。
+5. コミット後、他の使用可能なすべての復旧ポイントが削除されます。 この手順でフェールオーバーが完了します。
 
-1. **[設定]**  >  **[レプリケートされたアイテム]** で、[VM] > **[計画されたフェールオーバー]** をクリックします。
-2. **[計画されたフェールオーバーの確認]** で、フェールオーバーの方向 (Azure から) を確認し、ソースとターゲットの場所を選択します。
-3. **[フェールオーバーの前にデータを同期する (差分変更のみを同期する)]** を選択します。 このオプションでは VM をシャットダウンせずに同期するため、VM のダウンタイムが最小限に抑えられます。
-4. フェールオーバーを開始します。 フェールオーバーの進行状況は、 **[ジョブ]** タブで確認できます。
-5. 初回のデータ同期が完了し、Azure VM をシャットダウンする準備ができた時点で、 **[ジョブ]** > 計画されたフェールオーバーのジョブ名 > **[フェールオーバーの完了]** をクリックします。 これにより Azure VM がシャットダウンされ、最新の変更がオンプレミスに転送され、オンプレミスの VM が起動します。
-6. オンプレミスの VM にログオンして、それが期待どおりに使用できることを確認します。
-7. オンプレミスの VM は、この時点では **[コミット保留中]** の状態です。 **[コミット]** をクリックします。 これにより、Azure VM とそのディスクが削除され、オンプレミスの VM でレプリケーションの反転が準備されます。
-オンプレミスの VM の Azure へのレプリケーションを開始するには、 **[レプリケーションの反転]** を有効にします。 これにより、Azure VM をシャットダウンした後に発生した差分変更のレプリケーションが開始されます。  
+>[!TIP]
+> フェールオーバー後に接続の問題が発生した場合は、[トラブルシューティング ガイド](site-recovery-failover-to-azure-troubleshoot.md)に従ってください。
+
+
+## <a name="next-steps"></a>次のステップ
+
+フェールオーバー後に、Azure からオンプレミスにレプリケートされるように Azure VM を再保護します。 次に、VM を再保護してオンプレミス サイトにレプリケートした後、準備が整ったら Azure からフェールバックします。

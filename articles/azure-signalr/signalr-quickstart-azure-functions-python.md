@@ -5,14 +5,14 @@ author: anthonychu
 ms.service: signalr
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392148"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート:Python を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -24,11 +24,9 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 [Visual Studio Code](https://code.visualstudio.com/) などのコード エディターがインストールされていることを確認してください。
 
-Python Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2.7.1505 以降) をインストールします。
+Python Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2.7.1505 以降) をインストールします。
 
-Azure Functions には [Python 3.6](https://www.python.org/downloads/) が必要です。
-
-現在の Azure Functions Core Tools では、拡張機能をインストールするために [.NET Core SDK](https://www.microsoft.com/net/download) をインストールする必要があります。 ただし、Python Azure Functions アプリの構築には、.NET の知識は必要ありません。
+Azure Functions には [Python 3.6 または 3.7](https://www.python.org/downloads/) が必要です。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,19 +52,19 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. コード エディターで、複製したリポジトリの *src/chat/python* フォルダーを開きます。
 
-1. Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
+1. Python 関数をローカルで開発し、テストするには、Python 3.6 または 3.7 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
 
     **Linux または macOS:**
 
     ```bash
-    python3.6 -m venv .venv
+    python3.7 -m venv .venv
     source .venv/bin/activate
     ```
 
     **Windows:**
 
     ```powershell
-    py -3.6 -m venv .venv
+    py -3.7 -m venv .venv
     .venv\scripts\activate
     ```
 
@@ -79,10 +77,10 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
     - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
-1. ターミナルで、*src/chat/python* フォルダーにいることを確認します。 Azure Functions Core Tools を使用して、アプリを実行するために必要な拡張機能をインストールします。
+1. 仮想環境がアクティブになっているターミナルで、*src/chat/python* フォルダーにいることを確認します。 PIP を使用して、必要な Python パッケージをインストールします。
 
     ```bash
-    func extensions install
+    python -m pip install -r requirements.txt
     ```
 
 1. 関数アプリを実行します。
@@ -97,7 +95,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
 

@@ -1,5 +1,5 @@
 ---
-title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する
+title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括インポートおよび更新操作を実行する
 description: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
 author: tknandu
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442189"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -196,6 +196,6 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Nuget パッケージの詳細とリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。

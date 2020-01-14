@@ -2,18 +2,28 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 2fe3104d61b5fe2fbf9624ed2fd4fdb2de5686a2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446288"
 ---
-アプリケーションを認証するためのキーとエンドポイントを取得します。 [Azure portal](../../../cognitive-services-apis-create-account.md) または [Azure CLI](../../../cognitive-services-apis-create-account-cli.md) を使用して、ローカル コンピューター上に Text Analytics のリソースを作成します。 さらに、以下を実行できます。
+Text Analytics API は、次のいずれかの方法で使い始めることができます。
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
-* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
 
-試用版のサブスクリプションまたはリソースからキーとエンドポイントを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。 キー用の `TEXT_ANALYTICS_SUBSCRIPTION_KEY` という名前のものと、エンドポイント用の `TEXT_ANALYTICS_ENDPOINT` という名前のものです。
+* <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="試用版 Text Analytics リソースを作成する" target="_blank">試用版リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * Azure サブスクリプションは不要です。 
+    * 7 日間有効です (無料)。 試用版のキーとエンドポイントは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。 
+    * Text Analytics API を試してみたいものの Azure サブスクリプションをお持ちでない方に最適な方法です。
+    
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成する"  target="_blank">Text Analytics リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードします。
+     
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="複数のサービスのリソースを作成する" target="_blank">マルチサービス リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。  
+    * 複数の Cognitive Services 全体で同じキーとエンドポイントをアプリケーションに使用します。
+    

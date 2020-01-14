@@ -1,20 +1,16 @@
 ---
-title: Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定 | Microsoft Docs
+title: Service Fabric Mesh のための Windows 開発環境をセットアップする
 description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 5ab817c65ab562f37b456cc3589624c1876084f0
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428200"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496363"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 
@@ -35,9 +31,9 @@ Windows 開発コンピューターで Azure Service Fabric Mesh アプリケー
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="visual-studio"></a>Visual Studio
+## <a name="visual-studio"></a>Visual Studio
 
-Service Fabric Mesh アプリケーションをデプロイするには、Visual Studio 2017 以降が必要です。 [バージョン 15.6.0][download-visual-studio] 以上をインストールし、次のワークロードを有効にします。
+Service Fabric Mesh アプリケーションをデプロイするには、Visual Studio 2017 以降が必要です。 [バージョン 15.6.0 以上をインストール][download-visual-studio]し、次のワークロードを有効にします。
 
 * ASP.NET および Web の開発
 * Azure 開発
@@ -77,7 +73,7 @@ Install-WindowsFeature Containers
 Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインストールします。
 
 1. Web Platform Installer を使用して [Service Fabric Mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
-2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools] をインストールします。
+2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools]をインストールします。
 
 ## <a name="build-a-cluster"></a>クラスターの構築
 
@@ -113,7 +109,7 @@ Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインス
 
 これで、Service Fabric Mesh アプリケーションを作成する準備ができました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Service Fabric アプリの作成](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するチュートリアルを参照してください。
 

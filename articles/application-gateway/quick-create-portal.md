@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442335"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
@@ -31,7 +31,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
 2. **[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
 
@@ -66,7 +66,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. **[フロントエンド]** タブで、 **[フロントエンド IP アドレスの種類]** が **[パブリック]** に設定されていることを確認します。 <br>ユース ケースに従って、フロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
    > [!NOTE]
-   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成のみが、この v2 SKU で現在有効になっていません。 パブリックおよびプライベートの両方のフロントエンド IP 構成を使用できます。
+   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成のみ (ILB のみモード) が、この v2 SKU で現在有効になっていません。 パブリックおよびプライベートの両方のフロントエンド IP 構成を使用できます。
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
@@ -136,14 +136,14 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 2. **[コンピューティング]** を選択し、 **[人気順]** の一覧で **[Windows Server 2016 Datacenter]** を選択します。 **[仮想マシンの作成]** ページが表示されます。<br>Application Gateway は、バックエンド プールで使用されているあらゆる種類の仮想マシンにトラフィックをルートできます。 この例では、Windows Server 2016 Datacenter を使用します。
 3. **[基本]** タブで、次の仮想マシンの設定に以下の値を入力します。
 
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **Password**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+    - **パスワード**:管理者パスワードとして「*Azure123456!* 」と入力します 。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
@@ -201,7 +201,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 3. 応答を確認します。 有効な応答によって、アプリケーション ゲートウェイが正常に作成されたことが確認され、それによりバックエンドに正常に接続できます。![アプリケーション ゲートウェイのテスト](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。 
 
@@ -212,7 +212,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する](./tutorial-manage-web-traffic-cli.md)

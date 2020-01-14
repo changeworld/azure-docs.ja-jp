@@ -1,18 +1,20 @@
 ---
-title: Azure Notebooks にサインインする
-description: Azure Notebooks にすばやくサインインし、ユーザー ID を設定します。これにより、保存済みのプロジェクトにアクセスしたり、ノートブックを他のユーザーと共有したりできるようになります。
+title: Azure Notebooks プレビューにサインインする
+description: Azure Notebooks プレビューにすばやくサインインし、ユーザー ID を設定します。これにより、保存済みのプロジェクトにアクセスしたり、ノートブックを他のユーザーと共有したりできるようになります。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 234703da9662380a59c7673ca3b34a1b01b7dbef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277437"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647018"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>クイック スタート:サインインとユーザー ID の設定
+# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューにサインインしてユーザー ID を設定する
 
 サインインしなくても Azure Notebooks を常に表示できますが、ノートブックを実行し、保存されたプロジェクトとノートブックにアクセスし、他のユーザーとノートブックを共有するには、サインインする必要があります。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="sign-in"></a>サインイン
 
@@ -54,7 +56,7 @@ ms.locfileid: "74277437"
 
 ![Azure Notebooks でのサインアウト コマンドの場所](media/accounts/sign-out-command.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クイック スタート:ノートブックを作成して共有する](quickstart-create-share-jupyter-notebook.md)

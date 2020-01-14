@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl replica| Microsoft Docs
-description: Service Fabric CLI sfctl replica のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI- sfctl レプリカ
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 レプリカを管理するためのコマンドの一覧が含まれています。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901050"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646043"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 サービス パーティションに属しているレプリカを管理します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
-|command|説明|
+|command|[説明]|
 | --- | --- |
 | deployed | Service Fabric ノードにデプロイされているレプリカの詳細を取得します。 |
 | deployed-list | Service Fabric ノードにデプロイされているレプリカの一覧を取得します。 |
@@ -44,7 +35,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須] | ノード名。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -53,13 +44,13 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-deployed-list"></a>sfctl replica deployed-list
 Service Fabric ノードにデプロイされているレプリカの一覧を取得します。
@@ -68,7 +59,7 @@ Service Fabric ノードにデプロイされたレプリカに関する情報�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-id [必須] | アプリケーションの ID。 これは通常、"fabric\:" URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric\:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。 |
 | --node-name    [必須] | ノード名。 |
@@ -78,13 +69,13 @@ Service Fabric ノードにデプロイされたレプリカに関する情報�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 Service Fabric ステートフル サービス レプリカまたはステートレス サービス インスタンスの正常性を取得します。
@@ -93,7 +84,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id    [必須] | パーティションの ID。 |
 | --replica-id      [必須] | レプリカの識別子。 |
@@ -102,13 +93,13 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
 Service Fabric パーティションのレプリカに関する情報を取得します。
@@ -117,7 +108,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --replica-id   [必須] | レプリカの識別子。 |
@@ -125,13 +116,13 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list
 Service Fabric サービス パーティションのレプリカに関する情報を取得します。
@@ -140,7 +131,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
@@ -148,13 +139,13 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-remove"></a>sfctl replica remove
 ノード上で実行されているサービス レプリカを削除します。
@@ -163,7 +154,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須] | ノード名。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -173,13 +164,13 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-report-health"></a>sfctl replica report-health
 Service Fabric レプリカの正常性レポートを送信します。
@@ -188,7 +179,7 @@ Service Fabric レプリカの正常性レポートを送信します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --health-property [必須] | 正常性情報のプロパティ。 <br><br> エンティティには、さまざまなプロパティの正常性レポートを含めることができます。 このプロパティは固定値列挙型ではなく文字列で、これにより、レポーターは、レポートをトリガーする状態の条件を柔軟に分類できます。 たとえば、SourceId が "LocalWatchdog" のレポーターは、ノード上で使用可能なディスクの状態を監視できるため、そのノードの "AvailableDisk" プロパティをレポートできます。 同じレポーターは、ノードの接続性を監視できるため、同じノードの "Connectivity" プロパティをレポートできます。 正常性ストアでは、これらのレポートは、指定されたノードの個々の正常性イベントとして扱われます。 このプロパティは SourceId と共に、正常性情報を一意に識別します。 |
 | --health-state    [必須] | 指定可能な値\: "Invalid"、"Ok"、"Warning"、"Error"、"Unknown"。 |
@@ -205,13 +196,13 @@ Service Fabric レプリカの正常性レポートを送信します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-replica-restart"></a>sfctl replica restart
 ノード上で実行されている永続化されたサービスのサービス レプリカを再起動します。
@@ -220,7 +211,7 @@ Service Fabric レプリカの正常性レポートを送信します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須] | ノード名。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -229,15 +220,15 @@ Service Fabric レプリカの正常性レポートを送信します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

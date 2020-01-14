@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815330"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562546"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
@@ -42,15 +42,24 @@ Long Audio API のその他の利点は次のとおりです。
 テキスト ファイルを準備するときは、次のことを確認してください。
 
 * プレーンテキスト (.txt) または SSML テキスト (.txt) のいずれかである
-  * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます - [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください
-  * SSML テキストの場合、SSML の各要素は段落と見なされます。 SSML の要素は、さまざまな段落で区切る必要があります - [SSML テキスト入力の例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください。 言語コードについては、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください
 * [バイト オーダー マーク (BOM) 付きの UTF-8](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) としてエンコードされている
-* 10,000 を超える文字または 50 を超える段落が含まれている
 * 単一のファイルであり、zip ではない
+* プレーンテキストの場合 400 文字以上、または SSML テキストの場合 400 文字以上の[課金対象文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note)を含み、1 万段落未満である
+  * プレーンテキストの場合は、**Enter/Return** を押すことで各段落が区切られます - [プレーンテキストの入力例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)を参照してください
+  * SSML テキストの場合、SSML の各要素は段落と見なされます。 SSML の要素は、異なる段落で区切る必要があります - [SSML テキスト入力の例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)を参照してください
+> [!NOTE]
+> 中国語 (大陸)、中国語 (香港)、中国語 (台湾)、日本語、および韓国語の場合、1 ワードが 2 文字としてカウントされます。 
+
+## <a name="submit-synthesis-requests"></a>合成要求の送信
+
+入力コンテンツを準備した後、[長い形式のオーディオ合成のクイックスタート](https://aka.ms/long-audio-python)に関する記事に従って、要求を送信します。 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 次のような注意すべきいくつかの制限事項があります。 
+* クライアントは、各 Azure サブスクリプション アカウントに対して 1 秒あたり最大 5 個の要求をサーバーに送信できます。 制限を超えると、クライアントはエラー コード 429 (要求が多すぎます) を受け取ります。 1 秒あたりの要求の数を減らしてください
+* サーバーは、各 Azure サブスクリプション アカウントに対して最大 120 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないで待ってください
+* サーバーは、各 Azure サブスクリプション アカウントごとに最大 2 万個の要求を保持します。 制限を超えた場合は、新しい要求を送信する前に、いくつかの要求を削除してください
 
 ## <a name="audio-output-formats"></a>音声出力形式
 
-Long Audio API では、次の音声出力形式がサポートされています。
+柔軟な音声出力形式をサポートしています。 'concatenateResult' パラメーターを設定すると、段落ごとに音声出力を生成したり、複数の音声を 1 つの出力に連結したりすることができます。 Long Audio API では、次の音声出力形式がサポートされています。
 
 > [!NOTE]
 > 既定の音声形式は、riff-16khz-16bit-mono-pcm です。
@@ -66,7 +75,7 @@ Long Audio API では、次の音声出力形式がサポートされていま�
 * audio-24khz-96kbitrate-mono-mp3
 * audio-24khz-160kbitrate-mono-mp3
 
-## <a name="quickstarts"></a>クイック スタート
+## <a name="quickstarts"></a>クイックスタート
 
 Long Audio API を正常に実行できるように作られたクイック スタートがあります。 以下の表は、Long Audio API のクイック スタートを言語別に整理して示したものです。
 

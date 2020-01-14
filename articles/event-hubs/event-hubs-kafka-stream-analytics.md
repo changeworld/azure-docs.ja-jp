@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Stream Analytics を使用して Apache Kafka イベントを処理する - Azure Event Hubs
+title: Azure Event Hubs - Apache Kafka イベントを処理する
 description: チュートリアル:この記事では、Azure Stream Analytics を使用してイベント ハブを介して取り込まれた Kafka イベントを処理する方法について説明します。
 services: event-hubs
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437246"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
@@ -176,7 +176,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
 1. 左側のメニューで **[概要]** を選択します。 
-2. **[開始]** を選択します。 
+2. **[スタート]** を選択します。 
 
     ![[スタート] メニュー](./media/event-hubs-kafka-stream-analytics/start-menu.png)
 1. **[ジョブの開始]** ウィンドウで **[開始]** を選択します。 
@@ -204,7 +204,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
 
 - [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)

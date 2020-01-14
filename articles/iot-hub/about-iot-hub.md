@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950459"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647409"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -111,12 +111,16 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
 
-* [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
+* [Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub のスロットリング](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
 * [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
+
+Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
+
+* [基礎: Azure IoT のテクノロジとソリューション](../iot-fundamentals/iot-services-and-technologies.md)。

@@ -3,14 +3,14 @@ title: 持続エンティティ - Azure Functions
 description: 持続エンティティとはどのようなもので、Azure Functions 用の Durable Functions 拡張機能でどのように使用するかについて説明します。
 author: cgillum
 ms.topic: overview
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433314"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -41,6 +41,7 @@ ms.locfileid: "74232926"
 * ターゲット エンティティの**エンティティ ID**。
 * **操作名**: 実行する操作を指定する文字列です。 たとえば、`Counter` エンティティでは、`add`、`get`、または `reset` 操作をサポートする場合があります。
 * **操作の入力**: 操作のオプションの入力パラメーターです。 たとえば、add 操作では入力として整数値を受け取ることができます。
+* "**スケジュール時刻*": 操作の配信時刻を指定するためのオプション パラメーターです。 たとえば、将来、数日間にわたって操作を実行するよう確実にスケジュールすることができます。
 
 操作では、結果値またはエラー結果 (JavaScript エラーや .NET 例外など) を返すことができます。 この結果またはエラーは、操作を呼び出したオーケストレーションによって確認できます。
 
@@ -165,7 +166,7 @@ module.exports = df.entity(function(context) {
 
 ### <a name="example-client-signals-an-entity"></a>例:クライアントがエンティティにシグナル通知を出す
 
-通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントの出力バインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
+通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -186,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -203,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -214,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -249,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> JavaScript では現在、オーケストレーターからのエンティティのシグナル通知はサポートされていません。 代わりに `callEntity` を使用してください
 
 エンティティを呼び出して応答 (戻り値または例外) を取得できるのは、オーケストレーションだけです。 [クライアント バインド](durable-functions-bindings.md#entity-client)を使用するクライアント関数は、エンティティに対するシグナル通知だけが可能です。
 
@@ -375,7 +376,7 @@ public static async Task<bool> TransferFundsAsync(
 
 ## <a name="comparison-with-virtual-actors"></a>仮想アクターとの比較
 
-持続エンティティの多くの機能は、[アクター モデル](https://en.wikipedia.org/wiki/Actor_model)に基づいています。 アクターについて既によくわかっている場合は、この記事で説明されている多くの概念を理解できます。 持続エンティティは、[Orleans プロジェクト](http://dotnet.github.io/orleans/)によって普及した[仮想アクター](https://research.microsoft.com/projects/orleans/)またはグレインに特に似ています。 例:
+持続エンティティの多くの機能は、[アクター モデル](https://en.wikipedia.org/wiki/Actor_model)に基づいています。 アクターについて既によくわかっている場合は、この記事で説明されている多くの概念を理解できます。 持続エンティティは、[Orleans プロジェクト](http://dotnet.github.io/orleans/)によって普及した[仮想アクター](https://research.microsoft.com/projects/orleans/)またはグレインに特に似ています。 次に例を示します。
 
 * 持続エンティティは、エンティティ ID を使用してアドレス指定可能です。
 * 持続エンティティの操作は、競合状態を避けるため、一度に 1 つずつ順番に実行されます。
@@ -392,7 +393,7 @@ public static async Task<bool> TransferFundsAsync(
 * 持続エンティティは、持続オーケストレーションと組み合わせて使用でき、分散ロック メカニズムがサポートされます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [.NET の持続エンティティに関する開発者ガイドを読む](durable-functions-dotnet-entities.md)

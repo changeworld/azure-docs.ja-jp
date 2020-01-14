@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410449"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
@@ -37,7 +37,7 @@ Azure Databricks は、完全なオープン ソースの Apache Spark クラス
 
 * **Streaming**: 分析アプリケーションおよび対話型アプリケーションのためのリアルタイムのデータ処理と分析です。 HDFS、Flume、Kafka と統合されています。
 
-* **MLib**: 分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Machine Learning ライブラリです。
+* **MLlib**: 分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Machine Learning ライブラリです。
 
 * **GraphX**: 認知分析からデータ探索まで、さまざまなユース ケースを対象とするグラフおよびグラフ計算です。
 
@@ -93,7 +93,7 @@ Azure Databricks は、SQL Data Warehouse、Cosmos DB、Data Lake Store、Blob S
 ## <a name="integration-with-power-bi"></a>Power BI との統合
 Power BI とのリッチな統合により、Azure Databricks は大きな影響を与えるインサイトを迅速かつ簡単に検出して共有することができます。 JDBC/ODBC クラスター エンドポイントを介して Tableau Software などの他の BI ツールを使うこともできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート:Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
 * [Spark クラスターを使用する](/azure/databricks/clusters/index)

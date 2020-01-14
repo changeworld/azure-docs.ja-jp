@@ -1,6 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
-titleSuffix: Azure Cosmos DB
+title: Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリに CRUD 関数を追加する
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 6 です。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,20 +10,20 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441102"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
 
-複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。 このチュートリアルのパート 6 では、[パート 5](tutorial-develop-mongodb-nodejs-part5.md) の内容をベースとして、次のタスクについて取り上げます。
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。 このチュートリアルのパート 6 では、[パート 5](tutorial-develop-mongodb-nodejs-part5.md) の内容をベースとして、次のタスクについて取り上げます。
 
 > [!div class="checklist"]
 > * ヒーロー サービスに Post、Put、Delete の各関数を作成する
-> * アプリの実行
+> * アプリを実行する
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
@@ -85,13 +84,13 @@ ms.locfileid: "54040559"
     });
     ```
 
-5. アプリを実行して正常に動作するかどうかを確かめます。 Visual Studio Code で変更内容をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)) を選択し、**[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ開始アイコン](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)) を選択します。
+5. アプリを実行して正常に動作するかどうかを確かめます。 Visual Studio Code で変更内容をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)) を選択し、 **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ開始アイコン](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)) を選択します。
 
 6. インターネット ブラウザーに戻り、デベロッパー ツールの [Network] タブを開きます。ほとんどのマシンでは、F12 キーを押すと、デベロッパー ツールが表示されます。 [http://localhost:3000](http://localhost:3000) にアクセスして、ネットワーク上で実行される呼び出しを観察します。
 
     ![Chrome の [Network] タブでネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. **[Add New Hero]** ボタンを選択して新しいヒーローを追加します。 ID に「999」を、名前に「Fred」を、台詞に「Hello」と入力して、**[Save]** を選択します。 [Network] タブを見ると、新しいヒーローの POST 要求が送信されたことを確認できます。 
+7. **[Add New Hero]** ボタンを選択して新しいヒーローを追加します。 ID に「999」を、名前に「Fred」を、台詞に「Hello」と入力して、 **[Save]** を選択します。 [Network] タブを見ると、新しいヒーローの POST 要求が送信されたことを確認できます。 
 
     ![Chrome の [Network] タブで Get 関数と Post 関数のネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -172,9 +171,9 @@ ms.locfileid: "54040559"
 
 4. コードを更新したので、Visual Studio Code の **[再起動]** ボタン (![Visual Studio Code の [再起動] ボタン](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)) を選択します。
 
-5. インターネット ブラウザーでページを最新の情報に更新し、**[Add New Hero]** ボタンを選択します。 新しいヒーローを追加します。ID に「9」を、名前に「Starlord」を、台詞に「Hi」を入力してください。 **[Save]** ボタンを選択して新しいヒーローを保存します。
+5. インターネット ブラウザーでページを最新の情報に更新し、 **[Add New Hero]** ボタンを選択します。 新しいヒーローを追加します。ID に「9」を、名前に「Starlord」を、台詞に「Hi」を入力してください。 **[Save]** ボタンを選択して新しいヒーローを保存します。
 
-6. 次に **[Starlord]** ヒーローを選択し、その台詞を "Hi" から "Bye" に変更して、**[Save]** ボタンを選択します。 
+6. 次に **[Starlord]** ヒーローを選択し、その台詞を "Hi" から "Bye" に変更して、 **[Save]** ボタンを選択します。 
 
     [Network] タブで ID を選択すると、ペイロードが表示されます。 ペイロードを見ると、台詞が "Bye" に設定されていることが確認できます。
 
@@ -186,7 +185,7 @@ ms.locfileid: "54040559"
 
     ページを最新の情報に更新すると、ヒーローを取得するのに要した時間が [Network] タブに表示されます。 これらはごく短時間ではありますが、どの国にデータが置かれているかや、ユーザーの近隣エリアで geo レプリケーションを実行できるかどうかによって、大きく変動します。 geo レプリケーションの詳細については、近日中に次のチュートリアルで取り上げる予定です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 本チュートリアルのこのパートでは、次の手順を行いました。
 

@@ -1,5 +1,5 @@
 ---
-title: Internet Explorer および Microsoft Edge での MSAL.js の問題 | Azure
+title: Internet Explorer および Microsoft Edge での問題 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を Internet Explorer および Microsoft Edge ブラウザーで使用するときの既知の問題について説明します。
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424323"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーと MSAL.js に関する既知の問題
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>セキュリティ ゾーンに起因する問題
 IE と Microsoft Edge での認証に関する問題が複数報告されています (*Microsoft Edge ブラウザー バージョン 40.15063.0.0* へのアップデート以来)。 当社はこれらの問題を追跡中で、Microsoft Edge チームに通知済みです。 Microsoft Edge は解決に向けて取り組んでいますが、頻繁に発生する問題と、実行できる可能な回避策について以下に説明します。
@@ -72,5 +72,5 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
 **回避策**としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Internet Explorer での MSAL.js の使用](msal-js-use-ie-browser.md)について詳しく学習します。

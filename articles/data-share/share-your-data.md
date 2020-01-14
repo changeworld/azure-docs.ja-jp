@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438740"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -27,7 +27,7 @@ ms.locfileid: "73499325"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
 
 ### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
@@ -49,11 +49,13 @@ ms.locfileid: "73499325"
 ```                   
 *<share_acc_name>* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
 
-* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン**トグルをクリックします。 
+* [`db_owner` アクセスを保持する Azure SQL Database ユーザー](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)。共有するテーブル/ビューに移動して選択します。 
+
+* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-a-data-share-account"></a>Data Share アカウントを作成する
 
@@ -70,7 +72,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | Name | *datashareacount* | Data Share アカウントの名前を指定します。 |
-    | Subscription | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
+    | サブスクリプション | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
     | Resource group | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | Location | *米国東部 2* | Data Share アカウントのリージョンを選択します。
     | | |
@@ -99,7 +101,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![データセット](./media/datasets.png "データセット")
 
-1. 追加するデータセットの種類を選択します。 
+1. 追加するデータセットの種類を選択します。 Azure SQL Database または Azure SQL Datawarehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
 
     ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 
@@ -125,6 +127,6 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 ご自分の Azure データ共有が作成され、データ共有の受信者が招待を受け取れる状態になりました。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。 

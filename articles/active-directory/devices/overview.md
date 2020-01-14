@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423115"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -58,19 +58,22 @@ Azure AD のデバイスは、Microsoft Intune、System Center Configuration Man
 
 ## <a name="resource-access"></a>リソース アクセス
 
-登録および参加により、ユーザーはクラウド リソースにシームレスにサインオン (SSO) できるようになり、一方で管理者はそれらのリソースに対して条件付きアクセス ポリシーを適用できるようになります。 
+Azure AD へのデバイスの登録および参加により、ユーザーはクラウド リソースにシームレスにサインオン (SSO) できるようになります。 一方、管理者はリソースに対し、アクセス元のデバイスに基づく条件付きアクセス ポリシーを適用できるようになります。 
+
+> [!NOTE]
+> デバイス ベースの条件付きアクセス ポリシーには、Hybrid Azure AD 参加済みデバイスか、準拠している Azure AD 参加済みデバイスまたは Azure AD 登録済みデバイスが必要となります。
 
 Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのデバイスには、組織のオンプレミス リソースとクラウド リソースに SSO できるという利点があります。 詳細については、記事「[Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ](azuread-join-sso.md)」をご覧ください。
 
 ## <a name="device-security"></a>デバイスのセキュリティ
 
 - **Azure AD 登録済みデバイス**では、エンド ユーザーが管理するアカウントが使用されます。このアカウントは、Microsoft アカウントであるか、または次の 1 つ以上の方法で保護される、ローカル管理の別の資格情報です。
-   - パスワード
+   - Password
    - PIN
    - Pattern
    - Windows Hello
 - **Azure AD 参加済みデバイス、またはハイブリッド Azure AD 参加済みデバイス**では、次の 1 つ以上の方法で保護される、Azure AD の組織アカウントが使用されます。
-   - パスワード
+   - Password
    - Windows Hello for Business
 
 ## <a name="provisioning"></a>プロビジョニング
@@ -88,7 +91,7 @@ Azure AD のデバイス ID 管理では、以下が可能です。
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 登録済みデバイス](concept-azure-ad-register.md)について学習する
 - [Azure AD 参加済みデバイス](concept-azure-ad-join.md)について学習する

@@ -8,16 +8,23 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434592"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>クイック スタート:Azure Portal で IoT Hub Device Provisioning Service を設定する
 
-以下の手順では、デバイスのプロビジョニングに使用する Azure クラウド リソースをポータルから設定する方法について説明しています。 この記事では、IoT ハブの作成と新しい IoT Hub Device Provisioning Service の作成、さらにその 2 つのサービスのリンク操作を行うための手順について説明します。 
+IoT Hub Device Provisioning Service を IoT Hub で使用すると、適切な IoT ハブへのゼロタッチでのジャストインタイム プロビジョニングが可能になります。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングすることができます。 Azure IoT Hub Device Provisioning Service は、TPM、対称キー、X.509 証明書の認証を使用した IoT デバイスをサポートします。 詳細については、[IoT Hub Device Provisioning Service の概要](./about-iot-dps.md)に関するページを参照してください。
+
+このクイックスタートでは、Azure portal で IoT Hub Device Provisioning Service を設定する方法について説明します。対象のデバイスは次の手順でプロビジョニングします。
+> [!div class="checklist"]
+> * Azure portal を使用して IoT Hub を作成する
+> * Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
+> * IoT ハブを Device Provisioning Service にリンクする
+
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -27,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service の新しいインスタンスを作成する
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>新しい IoT Hub Device Provisioning Service を作成する
 
 1. もう一度、 **[+ リソースの作成]** ボタンを選択します。
 
@@ -65,16 +72,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. 選択したハブが **[Linked IoT hubs]\(リンクされた IoT ハブ\)** ブレードに表示されます。 表示させるために、 **[最新の情報に更新]** をクリックしなければならない場合があります。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure portal で削除してください。
 
 1. Azure portal の左側のメニューで **[すべてのリソース]** を選択し、Device Provisioning Service を選択します。 デバイスの詳細ペインの上部で、 **[削除]** を選択します。  
 2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、IoT ハブを選択します。 ハブの詳細ペインの上部で、 **[削除]** を選択します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 
 > [!div class="nextstepaction"]
-> [シミュレートされたデバイスを作成するためのクイックスタート](./quick-create-simulated-device.md)
+> [シミュレートされたデバイスを作成するためのクイックスタート](./quick-create-simulated-device-symm-key.md)

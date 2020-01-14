@@ -8,45 +8,47 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181711"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692541"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>イベント プロセッサ ホストのストレージ アカウントの作成
 イベント プロセッサ ホストは、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列して受信を行うインテリジェントなエージェントです。 チェックポイント処理を実行するために、イベント プロセッサ ホストではストレージ アカウントが必要です。 次の例は、ストレージ アカウントを作成する方法とそのアクセス キーを取得する方法を示します。
 
-1. Azure portal で、画面の左上にある **[リソースの作成]** を選択します。
+1. Azure portal メニューから **[リソースの作成]** を選択します。
 
-2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
+    ![[リソースの作成] メニュー項目、Microsoft Azure portal](./media/event-hubs-create-storage/create-resource.png)
+
+2. **[ストレージ]**  >  **[ストレージ アカウント]** を選択します。
    
-    ![ストレージ アカウントを選択する](./media/event-hubs-create-storage/create-storage1.png)
+    ![[ストレージ アカウント] を選択する、Microsoft Azure portal](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. **[ストレージ アカウントの作成]** ページで、次の手順を実行します。 
 
-   1. ストレージ アカウントの名前を入力します。 
-   2. イベント ハブが含まれている Azure サブスクリプションを選択します。
-   3. イベント ハブがあるリソース グループを選択します。
-   4. リソースを作成する場所を選択します。 
-   5. **[確認および作成]** をクリックします。
+   1. **ストレージ アカウント名**を入力します。
+   2. イベント ハブが含まれている Azure **サブスクリプション**を選択します。
+   3. イベント ハブが含まれている**リソース グループ**を選択または作成します。
+   4. リソースを作成する**場所**を選択します。 
+   5. **[Review + create]\(レビュー + 作成\)** を選択します。
    
-      ![ストレージ アカウントの作成 - ページ](./media/event-hubs-create-storage/create-storage2.png)
+        ![[確認と作成]、[ストレージ アカウントの作成]、Microsoft Azure portal](./media/event-hubs-create-storage/review-create.png)
 
 4. **[確認および作成]** ページで値を確認し、 **[作成]** を選択します。 
 
-    ![ストレージ アカウントの設定を確認し、作成する](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. "**デプロイメントが成功しました**" メッセージが表示されたら、ページの上部にある **[リソースに移動]** を選択します。 リソース リストからストレージ アカウントを選択して、ストレージ アカウント ページを起動することもできます。  
+    ![ストレージ アカウントの設定を確認および作成する、Microsoft Azure portal](./media/event-hubs-create-storage/create-storage-account.png)
+5. 通知に "**デプロイメントが成功しました**" というメッセージが表示されたら、 **[リソースに移動]** を選択して [ストレージ アカウント] ページを開きます。 または、 **[デプロイの詳細]** を展開し、リソースの一覧から新しいリソースを選択することもできます。  
 
-    ![デプロイのストレージ アカウントを選択する](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. **[要点]** ウィンドウで **[BLOB]** を選択します。 
+    ![[リソースに移動]、ストレージ アカウントのデプロイ、Microsoft Azure portal](./media/event-hubs-create-storage/go-to-resource.png) 
+6. **[コンテナー]** を選択します。
 
-    ![BLOB サービスを選択する](./media/event-hubs-create-storage/select-blobs-service.png)
-1. 上部にある **[+ コンテナー]** を選択して、コンテナーの**名前**を入力して、 **[OK]** を選択します。 
+    ![BLOB コンテナー サービスを選択する、ストレージ アカウント、Microsoft Azure portal](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. 上部にある **[+ コンテナー]** を選択し、コンテナーの**名前**を入力して **[OK]** を選択します。 
 
-    ![BLOB コンテナーを作成する](./media/event-hubs-create-storage/create-blob-container.png)
-1. 左側のメニューの **[アクセス キー]** を選択して、**key1** の値をコピーします。 
+    ![新しい BLOB コンテナーを作成する、ストレージ アカウント、Microsoft Azure portal](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. **[ストレージ アカウント]** ページ メニューから **[アクセス キー]** を選択し、**key1** の値をコピーします。
 
     次の値をメモ帳などに一時的に保存します。
     - ストレージ アカウントの名前

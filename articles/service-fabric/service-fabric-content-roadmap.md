@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の詳細 | Microsoft Docs
+title: Azure Service Fabric の詳細について説明します。
 description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/08/2017
-ms.author: atsenthi
-ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458151"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -146,7 +135,7 @@ Linux スタンドアロン クラスターはまだサポートされていま�
 
 詳細については、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)に関するページを参照してください。
 
-### <a name="scaling"></a>スケーリング
+### <a name="scaling"></a>Scaling
 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。 Azure 上のクラスターは、[手動で](service-fabric-cluster-scale-up-down.md)または[プログラムで](service-fabric-cluster-programmatic-scaling.md)スケールできます。 スタンドアロン クラスターは[手動で](service-fabric-cluster-windows-server-add-remove-nodes.md)スケールできます。
 
 ### <a name="cluster-upgrades"></a>クラスターのアップグレード
@@ -193,7 +182,7 @@ Service Fabric には、正常性ストアに集計された[正常性レポー�
 
 この 3 つの領域すべてに対応する多数の製品があり、それぞれで異なるテクノロジを自由に選択できます。 詳しくは、「[Azure Service Fabric での監視と診断](service-fabric-diagnostics-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
 * [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
 * [Cloud Services から移行する](service-fabric-cloud-services-migration-differences.md)方法を学びます。

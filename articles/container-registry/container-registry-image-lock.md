@@ -3,12 +3,12 @@ title: イメージのロック
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442230"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -23,7 +23,11 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 
 既定では、Azure Container Registry のタグ付けされたイメージは*変更可能*であるため、適切なアクセス許可で、同じタグのイメージを定期的に更新し、レジストリにプッシュすることができます。 必要に応じて、コンテナー イメージを[削除する](container-registry-delete.md)こともできます。 この動作は、イメージを開発し、レジストリのサイズを維持する必要がある場合に役立ちます。
 
-しかし、コンテナー イメージを運用環境にデプロイするときに、*不変の*コンテナー イメージが必要になる場合があります。 不変のイメージとは、誤って削除や上書きできないものです。 [az acr repository update][az-acr-repository-update] コマンドを使用してリポジトリ属性を設定することで、以下のことが可能になります。
+しかし、コンテナー イメージを運用環境にデプロイするときに、*不変の*コンテナー イメージが必要になる場合があります。 不変のイメージとは、誤って削除や上書きできないものです。
+
+レジストリでのタグ付けとイメージ作成の方法については、「[コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)」を参照してください。
+
+[az acr repository update][az-acr-repository-update] コマンドを使用してリポジトリ属性を設定することで、以下のことが可能になります。
 
 * イメージ バージョン、またはリポジトリ全体をロックする
 
@@ -31,7 +35,7 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 
 * イメージ バージョン、またはリポジトリ全体で読み取り (プル) 操作ができないようにする
 
-例については、次のセクションを参照してください。
+例については、次のセクションを参照してください。 
 
 ## <a name="lock-an-image-or-repository"></a>イメージまたはリポジトリをロックする 
 
@@ -141,7 +145,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、[az acr repository update][az-acr-repository-update] コマンドを使用して、リポジトリ内のイメージ バージョンの削除や更新ができないようにする方法を学習しました。 追加の属性を設定する場合は、[az acr repository update][az-acr-repository-update] コマンドのリファレンスを参照してください。
 

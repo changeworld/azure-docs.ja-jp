@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: fd3d53dce398c445d309a19f1f58a8d298080c45
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ea526648b1b37919eb41953937d3afa72f7f39e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446232"
 ---
 <a name="HOLTop"></a>
 
@@ -21,7 +21,7 @@ ms.locfileid: "73750166"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
-* 最新バージョンの [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="setting-up"></a>設定
 
@@ -31,49 +31,26 @@ ms.locfileid: "73750166"
 
 ### <a name="create-a-new-net-core-application"></a>新しい .NET Core アプリを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`text-analytics quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つの C# ソース ファイル (*program.cs*) を使用する単純な "Hello World" プロジェクトが作成されます。 
+Visual Studio IDE を使用して新しい .NET Core コンソール アプリを作成します。 C# ソース ファイル (*program.cs*) を 1 つ含んだ単純な "Hello World" プロジェクトが作成されます。
 
-```console
-dotnet new console -n text-analytics-quickstart
-```
+**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` を検索します。 それをクリックして **[インストール]** をクリックします。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
-新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
-
-```console
-dotnet build
-```
-
-ビルドの出力に警告やエラーが含まれないようにする必要があります。 
-
-```console
-...
-Build succeeded.
- 0 Warning(s)
- 0 Error(s)
-...
-```
-
-プロジェクト ディレクトリから *program.cs* ファイルを開いて、次の `using` ディレクティブを追加します。
+*program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
 
 [!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
 
-アプリケーションの `Program` クラスに、前に作成した環境変数からのリソースのキーとエンドポイントの変数を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
+アプリケーションの `Program` クラスに、リソースのキーとエンドポイントの変数を作成します。 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-csharp[initial variables](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=vars)]
+```csharp
+private static readonly string key = "<replace-with-your-text-analytics-key-here>";
+private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
+```
 
 アプリケーションの `Main` メソッドを置き換えます。 ここで呼び出されるメソッドは、後で定義します。
 
 [!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
-
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
-
-次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Text Analytics クライアント ライブラリをインストールします。
-
-```console
-dotnet add package Microsoft.Azure.CognitiveServices.Language.TextAnalytics --version 4.0.0
-```
 
 ## <a name="object-model"></a>オブジェクト モデル
 

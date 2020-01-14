@@ -2,24 +2,17 @@
 title: Azure Functions による Azure App Configuration のクイック スタート | Microsoft Docs
 description: Azure Functions で Azure App Configuration を使用する場合のクイック スタートです。
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413760"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Azure Functions アプリを作成する
 
@@ -61,7 +54,7 @@ ms.locfileid: "74187215"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. `IConfiguration` のシングルトン インスタンスを作成するために、`static` プロパティ `Configuration` を追加します。 `AddAzureAppConfiguration()` を呼び出して App Configuration に接続するための `static` コンストラクターを追加します。 これによって、アプリケーションの起動時に一度だけ構成が読み込まれます。 以後、すべての Functions 呼び出しについて、同じ構成インスタンスが使用されます。
+3. `IConfiguration` のシングルトン インスタンスを作成するために、`Configuration` という名前の `static` プロパティを追加します。 `AddAzureAppConfiguration()` を呼び出して App Configuration に接続するための `static` コンストラクターを追加します。 これによって、アプリケーションの起動時に一度だけ構成が読み込まれます。 以後、すべての Functions 呼び出しについて、同じ構成インスタンスが使用されます。
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,17 +87,19 @@ ms.locfileid: "74187215"
 
 1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. 関数をテストするには、F5 キーを押します。 メッセージが表示されたら、Visual Studio からの要求に同意し、**Azure Functions Core (CLI)** ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるように、ファイアウォールの例外を有効にすることが必要になる場合もあります。
+2. F5 キーを押して関数をテストします。 メッセージが表示されたら、Visual Studio からの要求に同意し、**Azure Functions Core (CLI)** ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるように、ファイアウォールの例外を有効にすることが必要になる場合もあります。
 
 3. Azure Functions のランタイムの出力から、関数の URL をコピーします。
 
@@ -114,11 +109,11 @@ ms.locfileid: "74187215"
 
     ![クイック スタート: ローカル環境での関数の起動](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から Azure Functions アプリと共に使用しました。 構成設定を動的に更新するように Azure Functions アプリを構成する方法については、次のチュートリアルに進んでください。
 

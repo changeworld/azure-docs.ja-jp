@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
+title: Azure Cosmos アカウントのフェールオーバー優先度を変更する PowerShell スクリプト
 description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりします
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441503"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights のクイック スタート | Microsoft docs
-description: Application Insights と App Center で監視するモバイル アプリを迅速に設定する手順を説明します
+title: Azure Monitor Application Insights を使用してモバイル アプリを監視する
+description: Azure Monitor Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: fe514e7a05701901759ab5453e1c1d02870da91d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398883"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -68,7 +68,7 @@ Analytics.trackEvent("Video clicked")
 
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
     > [!NOTE]
@@ -76,7 +76,7 @@ Analytics.trackEvent("Video clicked")
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-    | 設定        |  値           | 説明  |
+    | 設定        |  値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
      | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
@@ -151,7 +151,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    * **[Workbooks]** : 視覚化とテキストを共有可能なレポートに結合します。
    * **[コーホート]** : 特定のユーザーまたはイベントのグループに名前を付けて保存し、他の分析ツールから簡単に参照できるようにします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 App Center での Application Insights の使用を続行しない場合は、App Center でエクスポートをオフにして、Application Insights リソースを削除します。 これにより、Application Insights でこのリソースに対する課金が行われなくなります。
 
@@ -165,7 +165,7 @@ Application Insights リソースを削除するには、次の手順に従い�
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックし、Application Insights リソースが作成されたリソース グループを選択します。
 2. 削除する Application Insights リソースを開きます。 リソースの上部のメニューで、 **[削除]** をクリックして確認します。 これにより、Application Insights にエクスポートされたデータのコピーが完全に削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [どのようにお客様がアプリを使用しているかを理解します](../../azure-monitor/app/usage-overview.md)

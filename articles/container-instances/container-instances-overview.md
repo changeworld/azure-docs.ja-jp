@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533541"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552323"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -21,13 +21,19 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 
 コンテナーは、スタートアップにおいて、仮想マシン (VM) よりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
 
-## <a name="public-ip-connectivity-and-dns-name"></a>パブリック IP 接続と DNS 名
+## <a name="container-access"></a>コンテナー アクセス
 
-Azure Container Instances を使用すると、IP アドレスと完全修飾ドメイン名 (FQDN) を使ってコンテナーをインターネットに直接公開できます。 コンテナー インスタンスを作成するとき、カスタム DNS 名ラベルを指定できるので、*customlabel*.*azureregion*.azurecontainer.io でアプリケーションに到達できます。
+Azure Container Instances を使用すると、IP アドレスと完全修飾ドメイン名 (FQDN) を使用してコンテナー グループをインターネットに直接公開できます。 コンテナー インスタンスを作成するとき、カスタム DNS 名ラベルを指定できるので、*customlabel*.*azureregion*.azurecontainer.io でアプリケーションに到達できます。
+
+Azure Container Instances では、アプリケーションの開発とトラブルシューティングを支援するために、対話型シェルを提供することで、実行中のコンテナーでのコマンドの実行もサポートしています。 アクセスは HTTPS 経由で行われ、TLS を使用してクライアント接続がセキュリティで保護されます。
+
+> [!IMPORTANT]
+> 2020 年 1 月 13 日以降、Azure Container Instances では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。
 
 ## <a name="hypervisor-level-security"></a>ハイパーバイザーレベルのセキュリティ
 
 従来、コンテナーは、アプリケーション依存関係の分離とリソース ガバナンスを実現してきましたが、悪意のあるマルチテナント使用に対する十分なセキュリティ強化については考慮されていません。 Azure Container Instances を使用すると、アプリケーションは、VM 内であるかのように、コンテナー内で確実に分離されます。
+
 
 ## <a name="custom-sizes"></a>カスタム サイズ
 
@@ -37,7 +43,7 @@ Azure Container Instances を使用すると、IP アドレスと完全修飾ド
 
 ## <a name="persistent-storage"></a>永続的ストレージ
 
-Azure Container Instances を使用して状態を取得および保持できるように、Microsoft では [Azure Files 共有を直接マウント](container-instances-mounting-azure-files-volume.md)しています。
+Azure Container Instances を使用して状態を取得および保持できるように、Azure Storage によってサポートされる [Azure Files 共有の直接マウント](container-instances-mounting-azure-files-volume.md)が提供されます。
 
 ## <a name="linux-and-windows-containers"></a>Linux コンテナーと Windows コンテナー
 
@@ -67,7 +73,7 @@ Azure Container Instances は、ホスト コンピューター、ローカル �
 > [!IMPORTANT]
 > Azure Container Instances の一部の機能はプレビュー段階にあり、一部の[制限が適用されます](container-instances-vnet.md#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 このような機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 クイックスタート ガイドを使用して、1 つのコマンドでコンテナーを Azure にデプロイしてみてください。
 

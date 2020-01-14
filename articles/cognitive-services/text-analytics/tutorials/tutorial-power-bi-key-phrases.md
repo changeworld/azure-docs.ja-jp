@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 titleSuffix: Azure Cognitive Services
-description: Text Analytics を使用して Power BI に格納されているテキストからキー フレーズを抽出する方法について説明します。
+description: Text Analytics API を使用して Power BI に格納されているテキストからキー フレーズを抽出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378536"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
@@ -287,7 +287,7 @@ in  language
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 <a name="NextSteps"></a>
 
 Text Analytics サービス、Power Query M 式言語、または Power BI の詳細について学習します。

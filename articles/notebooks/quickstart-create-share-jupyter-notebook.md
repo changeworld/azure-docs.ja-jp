@@ -1,18 +1,24 @@
 ---
-title: Azure で Jupyter ノートブックを作成して共有する
-description: Azure Notebooks で Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他と共有します。
+title: Azure Notebooks プレビューで Jupyter ノートブックを作成して共有する
+description: Azure Notebooks プレビューで Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277501"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647086"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>クイック スタート:ノートブックの作成と共有
+# <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします。 (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+このクイックスタートでは、Azure Notebooks で Jupyter ノートブックをすばやく作成、実行した後、そのノートブックを他のユーザーと共有する方法を学習します。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+## <a name="create-a-new-project-and-notebook"></a>新しいプロジェクトとノートブックを作成する
+
+1. [Azure Notebooks サイト (https://notebooks.azure.com)](https://notebooks.azure.com) に移動してサインインします。 (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
@@ -93,7 +99,7 @@ ms.locfileid: "74277501"
 
 ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

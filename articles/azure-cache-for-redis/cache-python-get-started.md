@@ -1,21 +1,21 @@
 ---
-title: クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
+title: クイック スタート:Python アプリを作成する - Azure Cache for Redis
 description: このクイック スタートでは、Azure Cache for Redis を使用する Python アプリを作成する方法を学習します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 11/05/2019
+ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433468"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 
@@ -88,7 +88,7 @@ Python で *PythonApplication1.py* を実行します。 次の例のような�
 
 ![Python スクリプトを実行してキャッシュ アクセスをテストする](./media/cache-python-get-started/cache-python-completed.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで作成した Azure リソース グループとリソースを使い終わった場合は、課金されないようにそれらを削除することができます。
 
@@ -104,7 +104,7 @@ Python で *PythonApplication1.py* を実行します。 次の例のような�
    
    ![Azure Cache for Redis のリソース グループを削除する](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する単純な ASP.NET Web アプリを作成する](./cache-web-app-howto.md)

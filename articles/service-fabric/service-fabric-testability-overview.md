@@ -1,30 +1,21 @@
 ---
-title: Fault Analysis Service の概要 | Microsoft Docs
+title: Fault Analysis Service の概要
 description: この記事では、サービスに対して障害を誘発させてテスト シナリオを実行する Service Fabric の Fault Analysis Service について説明します。
-services: service-fabric
-documentationcenter: .net
 author: anmolah
-manager: chackdan
-editor: vturecek
-ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465570"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Fault Analysis Service の概要
 Fault Analysis Service は、Microsoft Azure Service Fabric で構築されたサービスをテストするために設計されています。 Fault Analysis Service を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
 
-アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 例:
+アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 次に例を示します。
 
 * ノードを再起動して、コンピューターまたは VM がリブートされる状況をシミュレートします。
 * ステートフル サービスのレプリカを移動して、負荷分散、フェールオーバー、またはアプリケーションのアップグレードをシミュレートします。
@@ -96,7 +87,7 @@ Fault Analysis Service 機能は、Microsoft.ServiceFabric NuGet パッケージ
 
 PowerShell を使用するには、Service Fabric SDK をインストールする必要があります。 SDK がインストールされると、ServiceFabric PowerShell モジュールが使用できるように自動的に読み込まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 真のクラウド スケール サービスを作成するには、デプロイの前と後の両方で、サービスが現実世界の障害に耐えることができることを保証することが不可欠です。 サービスが主流の今日の世界において、短期間でコードを刷新し実稼働に移すことはきわめて重要です。 Fault Analysis Service は、まさにそれをサービス開発者が実現するために役立ちます。
 
 組み込みの[テスト シナリオ](service-fabric-testability-scenarios.md)を使用して、アプリケーションとサービスのテストを開始するか、または、Fault Analysis Service から提供される[フォールト アクション](service-fabric-testability-actions.md)を使用して、独自のテスト シナリオを作成します。

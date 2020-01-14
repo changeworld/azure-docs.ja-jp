@@ -1,21 +1,21 @@
 ---
-title: 'クイックスタート: .NET Core アプリで Azure Cache for Redis を使用する方法'
+title: クイック スタート:.NET Core アプリと Azure Cache for Redis を使用する
 description: このクイック スタートでは、.NET Core アプリから Azure Redis Cache にアクセスする方法について説明します
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413051"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート: .NET Core アプリと Azure Cache for Redis を使用する
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート:.NET Core アプリと Azure Cache for Redis を使用する
 
 このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を .NET Core アプリに組み込みます。 具体的には、.NET Core コンソール アプリで [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) クライアントと C# コードを使用します。
 
@@ -285,7 +285,7 @@ dotnet run
 ![完了したコンソール アプリ](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -309,7 +309,7 @@ dotnet run
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、.NET Core アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリと Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
 

@@ -1,25 +1,16 @@
 ---
-title: Service Fabric の Reliable Services プログラミング モデルの概要 | Microsoft Docs
+title: Reliable Service プログラミング モデルの概要
 description: Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。
-services: Service-Fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: vturecek; mani-ramaswamy
-ms.assetid: 0c88a533-73f8-4ae1-a939-67d17456ac06
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 1789c7489e58df09dccfde3e7ab106ef54b5c1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c8e4411c0bec23790b4f4c52fc4a3d1570edc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727014"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614249"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 Azure Service Fabric により、ステートレスおよびステートフルな Reliable Service の作成と管理が簡素化されます。 このトピックの内容は次のとおりです。
@@ -104,7 +95,7 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 * アプリケーションで、複数の状態に関する変更履歴を維持する必要がある。
 * カスタム状態プロバイダーを開発するか、サード パーティが開発したカスタム状態プロバイダーを使用したい。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 * [Reliable Actors プログラミング モデル](service-fabric-reliable-actors-introduction.md)

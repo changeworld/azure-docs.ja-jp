@@ -3,14 +3,14 @@ title: 'Kubernetes 開発空間を作成する: Visual Studio Code と .NET Core
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 634206523972c7bc78ba818688bc342fe66885d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438551"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と .NET Core
 
@@ -175,7 +175,7 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 ### <a name="update-a-code-file"></a>コード ファイルを更新する
 コード ファイルを更新するには、.NET Core アプリを再ビルドし、更新されたアプリケーション バイナリを生成する必要があるため、もう少し作業が必要です。
 
-1. ターミナル ウィンドウで `Ctrl+C` キーを押します (`azds up`を停止します)。
+1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
 1. `Controllers/HomeController.cs` という名前のコード ファイルを開き、About ページに表示されるメッセージ (`ViewData["Message"] = "Your application description page.";`) を編集します。
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。 
@@ -248,7 +248,7 @@ public IActionResult About()
 
 **これで、コードを迅速に反復処理し、Kubernetes で直接デバッグできるようになりました。** 次に、2 つ目のコンテナーを作成して呼び出す方法を説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [マルチサービス開発について学習する](multi-service-netcore.md)

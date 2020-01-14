@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Python 用 Anomaly Detector クライアント ライブラリを使用してデータの異常を検出する
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
+description: このクイックスタートでは、Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448993"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 
@@ -61,7 +61,7 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)オブジェクトです。 クライアントは、2 通りの異常検出方法 ([entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)を使用したデータセット全体での検出と [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)を使用した最新のデータ ポイントでの検出) を提供します。 
+Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)オブジェクトです。 クライアントによる異常検出の方法は 2 とおりあります。[entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)を使用したデータセット全体での検出と [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)を使用した最新のデータ ポイントでの検出) を提供します。 
 
 時系列データは、[Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) オブジェクト内の一連の [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)など) と異常検出のパラメーターが含まれます。 
 
@@ -82,14 +82,14 @@ Azure の場所の変数をエンドポイントに追加し、キーを使用�
 
 [!code-python[Client authentication](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=client)]
 
-## <a name="load-time-series-data-from-a-file"></a>ファイルから時系列データ セットを読み込む
+## <a name="load-time-series-data-from-a-file"></a>ファイルから時系列データを読み込む
 
 このクイックスタートのサンプル データを [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) からダウンロードします。
 1. ブラウザーで、 **[Raw]\(未加工\)** を右クリックします。
 2. **[Save link as]\(名前を付けてリンク先を保存\)** をクリックします。
 3. ファイルを .csv ファイルとしてアプリケーション ディレクトリに保存します。
 
-この時系列データは、.csv ファイル形式として Anomaly Detector API に送信されます。
+この時系列データは、.csv ファイル形式として書式設定され、Anomaly Detector API に送信されます。
 
 Pandas ライブラリの `read_csv()` メソッドを使用してデータ ファイルを読み込み、データ系列を格納するための空のリスト変数を作成します。 ファイルを反復処理して、データを [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) オブジェクトとして追加します。 このオブジェクトには、タイムスタンプと .csv データ ファイルの行の数値が格納されます。 
 

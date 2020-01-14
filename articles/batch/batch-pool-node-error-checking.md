@@ -1,18 +1,18 @@
 ---
 title: プールとノードのエラーのチェック - Azure Batch
-description: エラーを確認してプールとノードを作成するときに回避する方法
+description: この記事では、発生する可能性のあるバックグラウンド操作、およびプールとノードを作成するときにチェックするエラーとそれらを回避する方法について説明します。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449784"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
@@ -140,6 +140,6 @@ Batch が原因を特定できる場合、ノードの[エラー](https://docs.m
 現在、一時ディスク領域がいっぱいになった場合、ノードによるタスクの実行は停止されます。 将来は、[ノード エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)がレポートされるようになります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 包括的なエラー チェック (特に非同期操作に対するエラー チェック) を実装するようにアプリケーションを設定したことを確認します。 これは問題をすばやく検出して診断するために欠かない場合があります。

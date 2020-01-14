@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric ホスティング モデル | Microsoft Docs
+title: Azure Service Fabric ホスティング モデル
 description: デプロイされた Service Fabric サービスのレプリカ (またはインスタンス) と、サービス ホスト プロセスとの関係を説明します。
-services: service-fabric
-documentationcenter: .net
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464580"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -176,10 +169,10 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 前の例を見ると、"MyCodePackageA" に "MyServiceTypeA" と "MyServiceTypeB" の両方が登録されていて、かつ "MyCodePackageB" が存在しなければ、冗長な *CodePackage* は 1 つも実行されていないように見えるかもしれません。 これは正しいことですが、このアプリケーション モデルは専有プロセス ホスティング モデルとは一致しません。 それぞれのレプリカに専用のプロセスを設定することが目的であれば、同じ *CodePackage* から両方の *ServiceTypes* を登録する必要はありません。 代わりに、単に各 *ServiceType* を専用の *ServicePackage* に格納します。
 
-## <a name="next-steps"></a>次の手順
-[アプリケーションをパッケージ化][a4]し、デプロイの準備を行います。
+## <a name="next-steps"></a>次のステップ
+[アプリケーションをパッケージ化][a4]して展開できるようにします。
 
-「[アプリケーションのデプロイと削除][a5]」。 この記事では、PowerShell を使ってアプリケーション インスタンスを管理する方法について説明しています
+[アプリケーションをデプロイおよび削除][a5]します。 この記事では、PowerShell を使ってアプリケーション インスタンスを管理する方法について説明しています
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png

@@ -3,14 +3,14 @@ title: '複数の依存サービスの実行: .NET Core と Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上でマルチサービス .NET Core アプリケーションをデバッグする方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 453cf1fdf2d37817d12ec32f2cba00b3671b1d11
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0bbb1aefe517c45207160b83b89f7207e8909666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438311"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>複数の依存サービスの実行: Azure Dev Spaces での .NET Core と Visual Studio Code
 
@@ -75,7 +75,7 @@ ms.locfileid: "74325677"
 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Dev Spaces でのチーム開発について学ぶ](team-development-netcore.md)

@@ -8,15 +8,15 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 089b37761c11c02e34c35eb378c64862bc4fbc98
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ba5879543d7640993ac834811ec6a82965557755
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432687"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
-Application Insights は [Azure Monitor](../overview.md) の機能であり、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
+Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights のしくみ
 小さなインストルメンテーション パッケージをアプリケーションにインストールし、Application Insights リソースを Microsoft Azure ポータルに設定します。 このインストルメンテーションがアプリを監視し、テレメトリ データを Azure Monitor に送信します (アプリケーションの実行場所は問いません。Azure でホストされている必要はありません)。
@@ -53,7 +53,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 |  |  |
 | --- | --- |
-| [**スマート検出と手動のアラート**](../../azure-monitor/app/proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに対して自動アラートを適応し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../../azure-monitor/app/alerts.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
+| [**スマート検出と手動のアラート**](../../azure-monitor/app/proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに合わせて自動アラートを設定し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../../azure-monitor/app/alerts.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
 | [**アプリケーション マップ**](../../azure-monitor/app/app-map.md)<br/>アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。 |![アプリケーション マップ](./media/app-insights-overview/appmap-tn.png)  |
 | [**プロファイラー**](../../azure-monitor/app/profiler.md)<br/>サンプリングされた要求の実行プロファイルを検査します。 |![プロファイラー](./media/app-insights-overview/profiler.png) |
 | [**利用状況分析**](../../azure-monitor/app/usage-overview.md)<br/>ユーザーのセグメント化とリテンションを分析します。|![リテンション期間ツール](./media/app-insights-overview/retention.png) |
@@ -66,11 +66,11 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 | [**スナップショット デバッガー**](../../azure-monitor/app/snapshot-debugger.md)<br/>ライブの操作からサンプリングされたスナップショットをパラメーター値でデバッグします。|![Visual studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>使用状況のメトリックをその他のビジネス インテリジェンスと統合します。| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>メトリックと生データのクエリを実行するコードを記述します。| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**連続エクスポート**](../../azure-monitor/app/export-telemetry.md)<br/>生データが届いたらすぐにストレージに一括エクスポートします。 |![エクスポート](./media/app-insights-overview/export-tn.png) |
+| [**連続エクスポート**](../../azure-monitor/app/export-telemetry.md)<br/>生データが届いたらすぐにストレージに一括エクスポートします。 |![[エクスポート]](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Application Insights の使用方法
 
-### <a name="monitor"></a>監視
+### <a name="monitor"></a>モニター
 Application Insights を Web アプリにインストールし、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)を設定します。さらに、次のことを行います。
 
 * チーム ルーム用の既定の[アプリケーション ダッシュボード](../../azure-monitor/app/overview-dashboard.md)をチェックし、負荷、応答性のほか、依存関係、ページの読み込み、および AJAX 呼び出しのパフォーマンスを監視します。
@@ -91,7 +91,7 @@ Application Insights を Web アプリにインストールし、[可用性 Web 
 * カスタム テレメトリをコードに書き込みます。
 * テレメトリによる確かな証拠に基づいて次の開発サイクルを決定します。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 Application Insights は、Microsoft Azure でホストされる多数のサービスの 1 つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
 
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
@@ -105,14 +105,14 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [ASP.NET Core アプリケーション](../../azure-monitor/app/asp-net-core.md)
   * [.NET コンソール アプリケーション](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.JS](../../azure-monitor/app/nodejs.md)
+  * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Python (プレビュー)](../../azure-monitor/app/opencensus-python.md)
   * [その他のプラットフォーム](../../azure-monitor/app/platforms.md)
 * ページ ビュー、AJAX、その他のクライアント側テレメトリ用に **[Web ページをインストルメント化](../../azure-monitor/app/javascript.md)** します。
 * Visual Studio App Center と統合することで、 **[モバイル アプリの使用状況を分析](../../azure-monitor/learn/mobile-center-quickstart.md)** します。
 * **[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)** - Microsoft のサーバーから定期的に Web サイトに ping を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 実行時に開始する:
 
 * [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](../../azure-monitor/app/azure-vm-vmss-apps.md)
@@ -124,7 +124,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.JS](../../azure-monitor/app/nodejs.md)
+* [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python (プレビュー)](../../azure-monitor/app/opencensus-python.md)
 
 

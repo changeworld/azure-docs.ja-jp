@@ -6,21 +6,21 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/31/2019
+ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483232"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611919"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 
-Windows データ サイエンス仮想マシンを起動して実行します。
+Windows Server 2019 Data Science Virtual Machine を起動して実行します。
 
 ## <a name="prerequisite"></a>前提条件
 
-Windows データ サイエンス仮想マシンを作成するには、Azure サブスクリプションが必要です。 [Azure を無料で試す](https://azure.com/free)。
+Windows Data Science Virtual Machine を作成するには、Azure サブスクリプションが必要です。 [Azure を無料で試す](https://azure.com/free)。
 Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポートされないので注意してください。
 
 ## <a name="create-your-dsvm"></a>DSVM を作成する
@@ -28,16 +28,11 @@ Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポ�
 DSVM インスタンスを作成するには:
 
 1. [Azure portal](https://portal.azure.com) にアクセスします。まだサインインしていない場合は、Azure アカウントへのサインインを求めるメッセージが表示される可能性があります。
-1. 「データ サイエンス仮想マシン」と入力して仮想マシンの一覧を検索し、[データ サイエンス仮想マシン - Windows Server 2016] を選択します。
-
-    ![Windows VM の一覧](./media/provision-vm/search-windows.png)
+1. 「data science virtual machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Win 2019 (Preview)]\(Data Science Virtual Machine - Win 2019 (プレビュー)\) を選択します。
 
 1. 下部にある **[作成]** ボタンを選択します。
 
-    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
-
 1. [仮想マシンの作成] ブレードにリダイレクトされます。
-   ![Windows 仮想マシンに対応する [基本] タブ](./media/provision-vm/review-create-windows.png)
 
 1. **[基本]** タブに次のように入力します。
       * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
@@ -45,9 +40,9 @@ DSVM インスタンスを作成するには:
       * **[仮想マシン名]** : 仮想マシンの名前を入力します。 これは Azure portal に表示される名前です。
       * **[場所]** :最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータセンターか、物理的に最も近くにあるデータセンターを選びます。 詳細については、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に関する記事を参照してください。
       * **イメージ**:既定値をそのまま使用します。
-      * **[サイズ]** :これには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Windows VM のサイズ](../../virtual-machines/windows/sizes.md)に関する記事を参照してください。
+      * **Size**:これには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Windows VM のサイズ](../../virtual-machines/windows/sizes.md)に関する記事を参照してください。
       * **[ユーザー名]** : 管理者のユーザー名を入力します。 これは、仮想マシンへのログインに使用するユーザー名であり、Azure ユーザー名と同じにする必要はありません。
-      * **Password**:仮想マシンへのログインに使用するパスワードを入力します。    
+      * **パスワード**:仮想マシンへのログインに使用するパスワードを入力します。    
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[レビュー + 作成]**
    * 入力したすべての情報が正しいことを確認します。 
@@ -69,12 +64,10 @@ VM にインストールされて構成されたツールを使い始めるこ�
 <a name="tools"></a>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * **[スタート]** メニューを開いて DSVM 上のツールを調べます。
-* Azure Machine Learning については、「[Azure Machine Learning とは](../service/overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
-* エクスプローラーで C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts に移動し、エンタープライズ規模でのデータ分析をサポートする RevoScaleR ライブラリを R で使用するサンプルを入手します。 
+* Azure Machine Learning については、「[Azure Machine Learning とは](../overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
 * [Data Science Virtual Machine でできる 10 のこと](https://aka.ms/dsvmtenthings)に関する記事を読みます。
-* [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習および Data Analytics については、[Azure AI Gallery](https://gallery.cortanaintelligence.com) をご覧ください。 仮想マシンのデスクトップと **[スタート]** メニューに、このギャラリーへのアイコンも用意されています。
 

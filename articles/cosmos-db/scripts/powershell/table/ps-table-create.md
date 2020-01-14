@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos DB Table API のテーブルを作成する
+title: Azure Cosmos DB Table API でのテーブルを作成する PowerShell スクリプト
 description: Azure Cosmos DB Table API におけるデータベースまたはコンテナーのスループットを、PowerShell スクリプトを使用して更新する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 12a7c9cd6e1a9c1271aa73b9c2b2e1c834c743a7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b99d4ed9043e0411216b953829a40eb2ee71fc30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441300"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルを作成する
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 996db9690d19cc40c3963922d4edb3b59469752b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383001"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Bing Spell Check API とは
 
 Bing Spell Check API を使用すると、コンテキストに応じた文法とスペルのチェックをテキストに対して実行できます。 ほとんどのスペルチェック機能はディクショナリベースのルール セットに依存しますが、Bing のスペルチェック機能は、機械学習と統計的機械翻訳を活用することでコンテキストに応じた正確な修正を実現しています。 
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 
 |  |  |
@@ -39,8 +39,10 @@ Bing Spell Check API は、HTTP 要求を作成して JSON 応答を解析でき
 2. 要求を Bing Web Search API に送信します。
 3. JSON 応答を解析します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まず、Bing Spell Check Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/spell-check/)で、さまざまなテキストをいかにすばやくチェックできるかを見てみましょう。
 
 API を呼び出す準備ができたら、[Cognitive Services API アカウント](../../cognitive-services/cognitive-services-apis-create-account.md)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。
+
+[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)にアクセスして、その他の提供されている API を調べることもできます。

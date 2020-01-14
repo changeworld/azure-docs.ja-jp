@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706122"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561628"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -36,7 +36,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 * [関数チェーン](#chaining)
 * [ファンアウト/ファンイン](#fan-in-out)
 * [非同期 HTTP API シリーズ](#async-http)
-* [監視](#monitoring)
+* [Monitoring](#monitoring)
 * [人による操作](#human)
 * [アグリゲーター (ステートフル エンティティ)](#aggregator)
 
@@ -48,7 +48,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 
 次の例に示すように、Durable Functions を使用して、関数チェーン パターンを簡潔に実装できます。
 
-この例では、`F1`、`F2`、`F3`、および `F4` という値が、関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
+この例では、`F1`、`F2`、`F3`、および `F4` という値が、同じ関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -206,7 +206,7 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 
 詳細については、[HTTP 機能](durable-functions-http-features.md)の記事を参照してください。その記事では、Durable Functions 拡張機能を使用して、非同期の長時間プロセスを HTTP 経由で公開する方法について説明しています。
 
-### <a name="monitoring"></a>パターン #4: 監視
+### <a name="monitoring"></a>パターン #4: モニター
 
 監視パターンは、ワークフロー内の柔軟な繰り返しプロセスを指します。 一例は、特定の条件が満たされるまでポーリングすることです。 通常の[タイマー トリガー](../functions-bindings-timer.md)を使用して、定期的なクリーンアップ ジョブなどの基本的なシナリオに対処できますが、その間隔は静的であり、インスタンスの有効期間の管理は複雑になります。 Durable Functions を使用して、柔軟な繰り返し間隔の作成、タスクの有効期間の管理、単一のオーケストレーションからの複数の監視プロセスの作成を実行できます。
 
@@ -353,7 +353,7 @@ module.exports = df.orchestrator(function*(context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-別の関数から持続的オーケストレーション クライアントを使用してイベントを発生させることもできます。
+同じ関数アプリ内の別の関数から持続的オーケストレーション クライアントを使用してイベントを発生させることもできます。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -530,7 +530,7 @@ Durable Functions と基になるテクノロジの詳細については、次�
 
 Durable Functions は [Azure Functions](../functions-overview.md)の高度な拡張機能であるため、すべてのアプリケーションに適しているわけではありません。 他の Azure オーケストレーション テクノロジとの比較については、「[Azure Functions と Azure Logic Apps の比較](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Durable Functions の関数の種類と機能](durable-functions-types-features-overview.md)

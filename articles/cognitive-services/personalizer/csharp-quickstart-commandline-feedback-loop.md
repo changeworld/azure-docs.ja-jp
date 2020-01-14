@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:.NET 用 Personalizer クライアント ライブラリ | Microsoft Docs
+title: クイック スタート:.NET 用 Personalizer クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: 学習ループを使用した .NET 用 Personalizer クライアント ライブラリの概要について説明します。
+description: このクイックスタートでは、学習ループを使用した .NET 用 Personalizer クライアント ライブラリの概要について説明します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446384"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>クイック スタート:.NET 用 Personalizer クライアント ライブラリ
 
@@ -45,7 +45,7 @@ Personalizer サービスを使用するこの C# クイック スタートで�
 
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-[Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
+[Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -59,7 +59,7 @@ Azure portal では、キーとエンドポイントのどちらの値も **[ク
 
 ## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal で、Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -198,14 +198,14 @@ dotnet run
 
 [このクイックスタートのソース コード](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/csharp/PersonalizerExample/Program.cs)は、Personalizer のサンプル GitHub リポジトリから入手できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >[Personalizer のしくみ](how-personalizer-works.md)
@@ -213,4 +213,3 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 * [Personalizer とは](what-is-personalizer.md)
 * [Personalizer を使用できる状況](where-can-you-use-personalizer.md)
 * [トラブルシューティング](troubleshooting.md)
-

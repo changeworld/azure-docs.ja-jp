@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Python 用 Face クライアント ライブラリ | Microsoft Docs
-description: この記事は、検出、類似検索、識別、検証などを行うために Python 用 Face クライアント ライブラリの使用を開始するのに役立ちます。
+title: クイック スタート:Python 用 Face クライアント ライブラリ
+description: このクイックスタートは、検出、類似検索、識別、検証などを行うために Python 用 Face クライアント ライブラリの使用を開始するのに役立ちます。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e41817e3409f79aab3fbb3d57195b6b7ff13e7af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448208"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -40,10 +40,10 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 
 ### <a name="create-a-face-azure-resource"></a>Face Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用してローカル マシン上に Face 用のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用してローカル マシン上に Face 用のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
-* 自分のリソースを [Azure portal](https://portal.azure.com/) で表示する。
+* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
 
 試用版のサブスクリプションまたはリソースからキーを取得した後、`FACE_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
  
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 以下のクラスとインターフェイスにより、Face Python SDK の主要な機能の一部が処理されます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
@@ -268,7 +268,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
@@ -283,7 +283,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Python 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
 

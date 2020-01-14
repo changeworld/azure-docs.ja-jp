@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service の .NET Core アプリケーションでのチーム開発を行う方法を示します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438174"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces での .NET Core と Visual Studio を使用したチーム開発
 
@@ -92,7 +92,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. **[空間の追加]** ダイアログで、親の空間を **dev** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 Click **OK**.
+6. **[空間の追加]** ダイアログで、親の空間を **dev** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 **[OK]** をクリックします。
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 
@@ -129,7 +129,7 @@ URL に "scott.s." の部分を追加して、 http\://scott.s.dev.webfrontend.1
 最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 
 ### <a name="well-done"></a>お疲れさまでした。
-ファースト ステップ ガイドを修了しました。 以下の方法について学習しました。
+ファースト ステップ ガイドを修了しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。

@@ -2,13 +2,14 @@
 title: Azure 仮想ネットワークへのコンテナー グループのデプロイ
 description: コンテナー グループを新規または既存の Azure 仮想ネットワークにデプロイする方法について説明します。
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442249"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -45,8 +46,8 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 ### <a name="unsupported-networking-scenarios"></a>サポートされていないネットワーク シナリオ 
 
 * **Azure Load Balancer** - ネットワーク接続されたコンテナー グループ内のコンテナー インスタンスの前に Azure Load Balancer を配置することはサポートされていません
-* **仮想ネットワーク ピアリング** - Azure Container Instances に委任されたサブネットを含む仮想ネットワークを別の仮想ネットワークにピアリングすることはできません
-* **ルート テーブル** - Azure Container Instances に委任されたサブネットにユーザー定義のルートを設定することはできません
+* **仮想ネットワーク ピアリング** - ACI VNet がピアリングされているネットワークでパブリック IP 空間を使用している場合、ACI で VNet ピアリングが機能しません。 ピアリングされたネットワークでピアリングを機能させるには、RFC1918 プライベート IP 空間が必要です。 さらに、現在は VNet を他の VNet にのみピアリングできます。
+* **仮想ネットワーク トラフィック ルーティング** - パブリック IP を使用して顧客ルートを設定することはできません。 ACI リソースがデプロイされている委任されたサブネットのプライベート IP 空間内でルートを設定できます。 
 * **ネットワーク セキュリティ グループ** - Azure Container Instances に委任されたサブネットに適用された NSG における送信セキュリティ規則は、現在適用されていません 
 * **パブリック IP または DNS ラベル** - 仮想ネットワークにデプロイされたコンテナー グループでは現在、パブリック IP アドレスまたは完全修飾ドメイン名を使用してコンテナーをインターネットに直接公開することはサポートされていません
 * **内部名前解決** - 内部 Azure DNS を介した仮想ネットワーク内の Azure リソースの名前解決はサポートされていません
@@ -246,7 +247,7 @@ Name              ResourceGroup    Status    Image                              
 appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ### <a name="delete-container-instances"></a>コンテナー インスタンスの削除
 
@@ -285,7 +286,7 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループを Resource Manager テンプレートを使用してデプロイするには、「[Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )」(VNet 内に Azure コンテナー グループを作成する) を参照してください。

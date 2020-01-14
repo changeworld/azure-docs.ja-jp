@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - 最適化に関する推奨事項に従って Azure のコストを削減する | Microsoft Docs
+title: チュートリアル - 推奨事項に従って Azure のコストを削減する
 description: このチュートリアルは、最適化の推奨事項に従って対処すると、Azure のコスト削減に役立ちます。
 services: cost-management
 keywords: ''
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c3fc60ca623649a175fb1078efc6903ebde2811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444583"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
+# <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 
 Azure Cost Management は Azure Advisor と連携して、コストの最適化に関する推奨事項を提供します。 Azure Advisor を使用すると、活動休止状態のリソースや十分に活用されていないリソースを特定することで効率性を最適化し、改善することができます。 このチュートリアルでは、十分に活用されていない Azure リソースを特定し、コストを削減する措置を取る例を段階的に説明します。
 
@@ -31,7 +31,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 ## <a name="prerequisites"></a>前提条件
 さまざまなスコープと Azure アカウントの種類に関する推奨事項があります。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
-- Subscription
+- サブスクリプション
 - Resource group
 
 14 日間以上のアクティビティがあるアクティブな仮想マシンが必要です。
@@ -96,7 +96,7 @@ VM のサイズ変更が正常に完了したら、Azure の通知が表示さ�
 
 ![正常にサイズ変更された仮想マシンの通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

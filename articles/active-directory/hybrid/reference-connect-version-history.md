@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922289"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422357"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -38,9 +38,20 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
 Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
 
+>[!IMPORTANT]
+> 2020 年 11 月 1 日以降、18 か月以上前にリリースされた Azure AD Connect のバージョンが非推奨となる、非推薦プロセスの運用が開始されます。 その時点で、バージョン 1.1.751.0 の Azure AD Connect のすべてのリリース (2018 年 4 月 12 日にリリース) およびそれ以前のバージョンを非推奨にし、このプロセスを開始します。また、新しいバージョンがリリースされるたびに、古いバージョンの Azure AD Connect の非推薦の評価を行います。
+>
+> 最適なサポートエクスペリエンスを得るには、必ず最新バージョンの Azure AD Connect を実行していることを確認します。 
+>
+>非推奨となったバージョンの Azure AD Connect を実行すると、最新のセキュリティ修正、パフォーマンスの向上、トラブルシューティングと診断ツール、およびサービスの機能強化が受けられない可能性があり、またサポートが必要な場合も、組織が必要とするレベルのサービスを受けられない可能性があります。
+>
+>Azure AD Connect for sync を有効にした場合、以前のバージョンのいずれかを実行していると近々非推薦になる旨について警告する正常性通知の受信が自動的に開始されます。
+>
+>Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)を参照してください。
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>リリースの状態
-2019/12/06:ダウンロード向けリリース。 自動アップグレードでは使用できません。
+2019 年 12 月 9 日:ダウンロード向けリリース。 自動アップグレードでは使用できません。
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 - Kerberos ハッシュのパディングが正しく考慮されるように、Azure AD Domain Services のパスワード ハッシュ同期を更新しました。  これにより、AAD から Azure AD Domain Services へのパスワード同期中のパフォーマンスが向上します。
 - 認証エージェントとサービス バスの間の信頼できるセッションのサポートを追加しました。
@@ -54,7 +65,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>リリースの状態
-2019 年 11 月 8 日: ダウンロード対象としてリリース済み。 自動アップグレードでは使用できません。
+11/08/2019:ダウンロード対象としてリリース済み。 自動アップグレードでは使用できません。
 
 >[!IMPORTANT]
 >このリリースの Azure AD Connect では、内部的なスキーマ変更があるため、MSOnline PowerShell を使用して ADFS 信頼関係の構成設定を管理する場合は、MSOnline PowerShell モジュールをバージョン 1.1.183.57 以上に更新する必要があります
@@ -483,7 +494,7 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 *   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
 *   以下の特定のアクセス許可を割り当てます。
 
-種類     | 名前                          | Access               | 適用対象
+種類     | Name                          | アクセス               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | フル コントロール         | このオブジェクト  |
 Allow    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
@@ -1345,5 +1356,5 @@ Active Directory アカウントには、Active Directory からのパスワー�
 
 **Azure AD Sync の最初のリリースです。**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

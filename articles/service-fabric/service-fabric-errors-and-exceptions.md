@@ -1,25 +1,16 @@
 ---
-title: 一般的にスローされる FabricClient 例外 | Microsoft Docs
+title: 一般的にスローされる FabricClient 例外
 description: FabricClient API でアプリケーションやクラスターの管理操作を実行しているときにスローされる可能性のある一般的な例外とエラーについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/20/2018
 ms.author: oanapl
-ms.openlocfilehash: 5bf17f4ced6bb01d8b62b6fa40ed1aeffe6f712f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457921"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API の操作時に発生する一般的な例外とエラー
 Service Fabric のアプリケーションやサービス、クラスターに対する管理タスクは、クラスター アドミニストレーターやアプリケーション管理者が [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API を使って実行できます。 管理タスクの例としては、アプリケーションのデプロイ、アップグレード、削除、クラスターの正常性のチェック、サービスのテストといった作業が挙げられます。 アプリケーション開発者やクラスター アドミニストレーターは、FabricClient API を使用して、Service Fabric クラスターや Service Fabric アプリケーションを管理するためのツールを開発できます。
@@ -36,7 +27,7 @@ FabricClient を使用して実行できる操作の種類は多岐にわたり�
 
 [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) で返される可能性のある一般的な [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) エラーを次に示します。
 
-| Error | 条件 |
+| エラー | 条件 |
 | --- |:--- |
 | CommunicationError |操作の失敗の原因は通信エラーです。操作をやり直してください。 |
 | InvalidCredentialType |資格情報の種類が無効です。 |

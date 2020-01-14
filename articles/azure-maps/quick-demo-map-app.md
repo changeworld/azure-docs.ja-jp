@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408415"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -26,24 +26,38 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
-## <a name="create-an-account-and-get-your-key"></a>アカウントを作成し、キーを取得する
+<a id="createaccount"></a>
 
-1. [Azure portal](https://portal.azure.com) の左上隅にある **[リソースの作成]** を選択します。
-2. **[Marketplace を検索]** ボックスに「**Maps**」と入力します。
-3. **[結果]** から **[Maps]** を選択します。 マップの下に表示される **[作成]** ボタンを選択します。
+## <a name="create-an-account-with-azure-maps"></a>Azure Maps でアカウントを作成する
+
+次の手順で新しい Maps アカウントを作成します。
+
+1. [Azure Portal](https://portal.azure.com) の左上隅にある **[リソースの作成]** をクリックします。
+2. *[Marketplace を検索]* ボックスに「**Maps**」と入力します。
+3. *[結果]* から **[Maps]** を選択します。 マップの下に表示される **[作成]** ボタンをクリックします。
 4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
-   - 新しいアカウントの "**名前**"。
-   - このアカウントで使う "**サブスクリプション**"。
-   - このアカウントの "**リソース グループ**" です。 **[新規作成]** を選んで新しく作成することも、 **[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
-   - 任意の **[価格レベル]** を選択します。
-   - **ライセンス**と**プライバシーに関する声明**を読みます。 チェックボックスをオンにして利用規約に同意します。
-   - 最後に **[作成]** ボタンを選択します。
+    * このアカウントで使う "*サブスクリプション*"。
+    * このアカウントの "*リソース グループ*" の名前。 *[新規作成]* を選んで新しく作成することも、 *[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
+    * 新しいアカウントの "*名前*"。
+    * このアカウントの "*価格レベル*"。
+    * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
+    * **[作成]** ボタンをクリックします。
 
-     ![ポータルで Azure Maps アカウントを作成する](./media/quick-demo-map-app/create-account.png)
+![ポータルでの Azure Maps アカウントの作成](./media/quick-demo-map-app/create-account.png)
 
-5. アカウントが正常に作成されたら、アカウントを開いて、アカウント メニューの [設定] セクションに移動します。 **[認証]** を選択して Azure Maps アカウントのプライマリおよびセカンダリ キーを表示します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
+
+Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。 Azure Maps サービスを呼び出す際は、ご利用のアカウントのプライマリ キーをサブスクリプション キーに使用することをお勧めします。
+
+1. ポータルで、Maps アカウントを開きます。
+2. [設定] セクションで **[認証]** を選択します。
+3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
+
+![ポータルで主キーを取得する](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>アプリケーションのダウンロード
 
@@ -61,14 +75,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![対話型の検索 Web アプリケーション](./media/quick-demo-map-app/interactive-search.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルでは、お使いのアカウントで Azure Maps を使用および構成する方法について詳しく説明します。 チュートリアルに進む場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 進まない場合は、次の手順に従ってリソースをクリーンアップしてください。
 
 1. **AzureMapDemo.html** Web アプリケーションを実行しているブラウザーを閉じます。
 2. Azure portal の左側のメニューから、 **[すべてのリソース]** を選択します。 次に、Azure Maps アカウントを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Maps アカウントを作成し、デモ アプリを作成しました。 Azure Maps の詳細については、以下のチュートリアルを参照してください。
 

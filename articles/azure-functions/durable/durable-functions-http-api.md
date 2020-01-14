@@ -3,14 +3,14 @@ title: Durable Functions の HTTP API - Azure Functions
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0390211e6fc42bd7183a770cac409b880310d317
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5cf357f5f0c1d58c390cf48d636aadf059579396
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410145"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 
@@ -18,7 +18,7 @@ Durable Functions 拡張機能では、[オーケストレーション](durable-
 
 拡張機能によって実装されるすべての HTTP API には、次のパラメーターが必要です。 すべてのパラメーターのデータ型は `string` です。
 
-| パラメーター        | パラメーターのタイプ  | 説明 |
+| パラメーター        | パラメーターの型  | [説明] |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
 | **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
@@ -54,7 +54,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド              | パラメーターのタイプ  | 説明 |
+| フィールド              | パラメーターのタイプ  | [説明] |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | 開始するオーケストレーター関数の名前。 |
 | **`instanceId`**   | URL             | 省略可能なパラメーター。 オーケストレーション インスタンスの ID。 指定しない場合、オーケストレーター関数はランダムなインスタンス ID で開始します。 |
@@ -82,7 +82,7 @@ Content-Length: 83
 
 **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド                       | 説明                          |
+| フィールド                       | [説明]                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |オーケストレーション インスタンスの ID。 |
 | **`statusQueryGetUri`**     |オーケストレーション インスタンスの状態の URL。 |
@@ -144,7 +144,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド                   | パラメーターのタイプ  | 説明 |
+| フィールド                   | パラメーターのタイプ  | [説明] |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | オーケストレーション インスタンスの ID。 |
 | **`showInput`**         | クエリ文字列    | 省略可能なパラメーター。 `false` に設定した場合、関数の入力は応答ペイロードに含まれなくなります。|
@@ -166,7 +166,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド                 | データ型 | 説明 |
+| フィールド                 | データ型 | [説明] |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | string    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | **`input`**           | JSON      | インスタンスを初期化するために使用される JSON データ。 このフィールドは、`showInput` クエリ文字列パラメーターが `false`に設定されている場合は、`null` です。|
@@ -272,7 +272,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド                   | パラメーターのタイプ  | 説明 |
+| フィールド                   | パラメーターのタイプ  | [説明] |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | オーケストレーション インスタンスの ID。 |
 | **`showInput`**         | クエリ文字列    | 省略可能なパラメーター。 `false` に設定した場合、関数の入力は応答ペイロードに含まれなくなります。|
@@ -370,7 +370,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド             | パラメーターのタイプ  | 説明 |
+| フィールド             | パラメーターのタイプ  | [説明] |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 
@@ -383,9 +383,9 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド                  | データ型 | 説明 |
+| フィールド                  | データ型 | [説明] |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | integer   | 削除されたインスタンスの数。 単一インスタンスの場合、この値は常に `1` です。 |
+| **`instancesDeleted`** | 整数 (integer)   | 削除されたインスタンスの数。 単一インスタンスの場合、この値は常に `1` です。 |
 
 応答ペイロードの例を次に示します (読みやすいように書式設定されています)。
 
@@ -427,7 +427,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド                 | パラメーターのタイプ  | 説明 |
+| フィールド                 | パラメーターのタイプ  | [説明] |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | クエリ文字列    | 消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
@@ -445,9 +445,9 @@ DELETE /runtime/webhooks/durabletask/instances
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド                   | データ型 | 説明 |
+| フィールド                   | データ型 | [説明] |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | integer   | 削除されたインスタンスの数。 |
+| **`instancesDeleted`**  | 整数 (integer)   | 削除されたインスタンスの数。 |
 
 応答ペイロードの例を次に示します (読みやすいように書式設定されています)。
 
@@ -483,7 +483,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド             | パラメーターのタイプ  | 説明 |
+| フィールド             | パラメーターのタイプ  | [説明] |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`eventName`**   | URL             | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
@@ -538,7 +538,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド             | パラメーターのタイプ  | 説明 |
+| フィールド             | パラメーターの型  | [説明] |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`reason`**      | クエリ文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
@@ -587,7 +587,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド             | パラメーターのタイプ  | 説明 |
+| フィールド             | パラメーターの型  | [説明] |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`reason`**      | クエリ文字列    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
@@ -620,7 +620,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
 ```http
-POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -629,10 +629,10 @@ POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド             | パラメーターのタイプ  | 説明 |
+| フィールド             | パラメーターのタイプ  | [説明] |
 |-------------------|-----------------|-------------|
-| **`entityType`**  | URL             | エンティティの種類。 |
-| **`entityKey`**   | URL             | エンティティの一意の名前。 |
+| **`entityName`**  | URL             | エンティティの名前 (型)。 |
+| **`entityKey`**   | URL             | エンティティのキー (一意の ID)。 |
 | **`op`**          | クエリ文字列    | 省略可能。 呼び出すユーザー定義操作の名前。 |
 | **`{content}`**   | 要求内容 | JSON 形式のイベント ペイロード。 |
 
@@ -645,17 +645,20 @@ Content-Type: application/json
 5
 ```
 
+> [!NOTE]
+> [.NET のクラスベースのエンティティ](durable-functions-dotnet-entities.md#defining-entity-classes) の既定では、`delete` の `op` 値を指定すると、エンティティの状態が削除されます。 ただし、エンティティで `delete` という名前の操作が定義されている場合、そのユーザー定義の操作が代わりに呼び出されます。
+
 ### <a name="response"></a>Response
 
 この操作には、複数の応答の可能性があります。
 
 * **HTTP 202 (Accepted)** :非同期処理のためにシグナル操作が受理された。
 * **HTTP 400 (Bad request)** :要求内容が `application/json` タイプまたは有効な JSON でなかったか、`entityKey` の値が無効だった。
-* **HTTP 404 (Not Found)** :指定された `entityType` が見つからなかった。
+* **HTTP 404 (Not Found)** :指定された `entityName` が見つからなかった。
 
 成功した HTTP 要求の応答には内容は含まれません。 失敗した HTTP 要求は、応答の内容に JSON 形式のエラー情報が含まれている場合があります。
 
-## <a name="query-entity"></a>エンティティのクエリの実行
+## <a name="get-entity"></a>エンティティの取得
 
 指定されたエンティティの状態を取得します。
 
@@ -664,7 +667,7 @@ Content-Type: application/json
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
 ```http
-GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -694,7 +697,101 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="list-entities"></a>リスト エンティティ
+
+複数のエンティティを照会するには、エンティティ名または最後の操作日を使用します。
+
+### <a name="request"></a>Request
+
+HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &lastOperationTimeFrom={timestamp}
+    &lastOperationTimeTo={timestamp}
+    &fetchState=[true|false]
+    &top={integer}
+```
+
+この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
+
+| フィールド                       | パラメーターのタイプ  | [説明] |
+|-----------------------------|-----------------|-------------|
+| **`entityName`**            | URL             | 省略可能。 指定した場合、返されるエンティティの一覧をエンティティ名でフィルター処理します (大文字と小文字は区別されません)。 |
+| **`fetchState`**            | クエリ文字列    | 省略可能なパラメーター。 `true` に設定すると、エンティティの状態が応答ペイロードに含まれます。 |
+| **`lastOperationTimeFrom`** | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるエンティティの一覧が特定の ISO8601 タイムスタンプの時刻以降に操作を実行したエンティティにフィルター処理されます。 |
+| **`lastOperationTimeTo`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるエンティティの一覧が特定の ISO8601 タイムスタンプの時刻以前に操作を実行したエンティティにフィルター処理されます。 |
+| **`top`**                   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、クエリによって返されるエンティティ数が制限されます。 |
+
+
+### <a name="response"></a>Response
+
+成功した HTTP 200 応答には、JSON でシリアル化されたエンティティの配列と、必要に応じて各エンティティの状態が含まれます。
+
+既定では、操作はクエリ条件に一致する最初の 100 エンティティを返します。 呼び出し元は、`top` のクエリ文字列パラメーター値を指定して、異なる結果の最大数を返すことができます。 返される結果を超える結果が存在する場合、継続トークンも応答ヘッダーに返されます。 ヘッダーの名前は `x-ms-continuation-token` です。
+
+次の要求ヘッダーで継続トークンの値を設定すると、結果の次のページを取得できます。 この要求ヘッダーの名前も `x-ms-continuation-token` です。
+
+### <a name="example---list-all-entities"></a>例 - すべてのエンティティを一覧表示する
+
+次の HTTP 要求の例では、タスク ハブ内のすべてのエンティティが一覧表示されます。
+
+```http
+GET /runtime/webhooks/durabletask/entities
+```
+
+応答 JSON は次のようになります (読みやすいように書式設定されています)。
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z"
+    },
+    {
+        "entityId": { "key": "mice", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:15.4626159Z"
+    },
+    {
+        "entityId": { "key": "radio", "name": "device" },
+        "lastOperationTime": "2019-12-18T21:46:18.2616154Z"
+    },
+]
+```
+
+### <a name="example---filtering-the-list-of-entities"></a>例 - エンティティの一覧のフィルター処理
+
+次の HTTP 要求の例では、`counter` 型の最初の 2 つのエンティティのみを一覧表示し、その状態も取得します。
+
+```http
+GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
+```
+
+応答 JSON は次のようになります (読みやすいように書式設定されています)。
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+        "state": { "value": 9 }
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z",
+        "state": { "value": 10 }
+    }
+]
+```
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Application Insights を使用して Durable Functions を監視する方法を確認する](durable-functions-diagnostics.md)

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: a17ffab72163768a59da182204bb207003f5f774
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: faf65075179b595b1f841bffceab3959b69614a9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389741"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -29,9 +29,13 @@ ms.locfileid: "74223853"
 
 ## <a name="request-to-pay-by-invoice"></a>請求書による支払いを要求する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。 **[ヘルプとサポート]**  >  **[新しいサポート要求]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にアクセスして、サポート リクエストを発行します。 **[ヘルプとサポート]** を検索して選択します。
 
-    ![ヘルプとサポートのリンク](./media/billing-how-to-pay-by-invoice/help-and-support.png)
+    ![Microsoft Azure portal で [ヘルプとサポート] を検索する](./media/billing-how-to-pay-by-invoice/search-for-help-and-support.png)
+
+2. **[新しいサポート リクエスト]** を選択します。
+
+    ![[新しいサポート リクエスト] リンク、[ヘルプとサポート] 画面、Microsoft Azure portal](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
 2. **[問題の種類]** で **[課金]** を選択します。 *[問題の種類]* は、サポート要求のカテゴリです。 請求書で支払うサブスクリプションを選択します。サポート プランを選択し、 **[次へ]** を選択します。
 
@@ -58,7 +62,7 @@ ms.locfileid: "74223853"
          Contact Email:
          Justification on why you prefer Invoice option over credit card:
 
-        For cores increase, provide the following additional information:
+         For cores increase, provide the following additional information:
 
          (Old quota) Existing Cores:
          (New quota) Requested cores:
@@ -67,7 +71,7 @@ ms.locfileid: "74223853"
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](billing-how-to-change-azure-account-profile.md)」を参照してください。
     - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
 
-6. 連絡先情報と優先連絡方法を確認し、 **[作成]** をクリックします。
+6. 連絡先情報と優先連絡方法を確認し、 **[作成]** を選択します。
 
 必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。
 
@@ -79,45 +83,43 @@ Microsoft Online Services Program アカウントの場合は、Azure サブス�
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure サブスクリプションを小切手/電信送金に切り替える
 
-Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 **請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません**。
+Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 *請求書支払い (小切手/電信送金) に切り替えた後にクレジット カードに戻すことはできません*。
 
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
+1. [Azure portal](https://portal.azure.com) にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。
 
-    ![検索を示すスクリーンショット](./media/billing-how-to-pay-by-invoice/search.png)
+    ![Microsoft Azure portal で [コストの管理と請求] を検索する](./media/billing-how-to-pay-by-invoice/search.png)
 
 1. 請求書支払いに切り替えるサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
-1. コマンド バーで、 **[請求書による支払い]** ボタンをクリックします。
+1. コマンド バーで、 **[請求書による支払い]** ボタンを選択します。
 
-    ![[請求書による支払い] ボタンを示したスクリーン ショット](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
+    ![[請求書による支払い] ボタン、[支払い方法]、Microsoft Azure portal](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>課金プロファイルを小切手/電信送金に切り替える
 
 課金プロファイルを小切手/電信送金に切り替えるには、次の手順に従います。 課金プロファイルの既定の支払い方法を変更できるのは、Azure にサインアップしたユーザーのみです。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[コストの管理と請求]** で検索します。
-1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
+1. メニューから **[課金プロファイル]** を選択します。
 
-    ![メニューの課金プロファイルを示すスクリーン ショット](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+    ![[課金プロファイル] メニュー項目、[コストの管理と請求]、Microsoft Azure portal](./media/billing-how-to-pay-by-invoice/billing-profile.png)
 
 1. 課金プロファイルを選択します。
-1. 左側のメニューで **[支払い方法]** を選択します。
+1. **[課金プロファイル]** メニューで **[支払い方法]** を選択します。
 
-   ![メニューの支払い方法を示すスクリーン ショット](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+   ![[支払い方法] メニュー項目、[課金プロファイル]、[コスト管理]、Microsoft Azure portal](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. 小切手/電信送金で支払う資格があることを示す青いバナーをクリックします。
+1. 小切手または電信送金で支払う資格があることを示すバナーを選択します。
 
-    ![小切手/電信に切り替える青いバナーを示すスクリーン ショット](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+    ![小切手または電信送金に切り替えるためのバナー、[支払い方法]、Microsoft Azure portal](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 必要に応じて、[Azure アカウント センター](https://account.azure.com/Profile)で請求先連絡先情報を更新します。

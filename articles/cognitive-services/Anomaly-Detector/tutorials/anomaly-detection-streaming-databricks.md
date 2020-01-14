@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API と Azure Databricks を使用して、データ内の異常を監視します。
+description: Anomaly Detector API と Azure Databricks を使用して、データ内の異常を監視する方法について説明します。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 75c2c8bf8b3baee1f9f89282840622e1e29d2a18
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71837772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448899"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -24,7 +24,7 @@ ms.locfileid: "71837772"
 
 次の図に、アプリケーション フローを示します。
 
-![Event Hubs と Cognitive Services を使用した Azure Databricks](../media/tutorials/databricks-cognitive-services-tutorial.png "Event Hubs と Cognitive Services を使用した Azure Databricks")
+![Azure Databricks と Event Hubs と Cognitive Services の連携](../media/tutorials/databricks-cognitive-services-tutorial.png "Azure Databricks と Event Hubs と Cognitive Services の連携")
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Event Hubs 名前空間にアクセスするための[接続文字列](../../../event-hubs/event-hubs-get-connection-string.md)。 接続文字列は次のような形式になります。
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 
+    [https://login.microsoftonline.com/consumers/](`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`) 
 
 - Event Hubs の共有アクセス ポリシー名とポリシー キー。
 
@@ -65,16 +65,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 3. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
     |**Location**     | **米国東部 2**またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**Pricing Tier**     |  **Standard** と **Premium** のいずれかを選択します。 **[Trial]\(試用版\)** を選択しないでください。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[New Cluster]\(新しいクラスター\)** を選択します。
 
-    ![Azure の Databricks](../media/tutorials/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](../media/tutorials/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New Cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -127,7 +127,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 1. Azure Databricks ワークスペースで **[ワークスペース]** を選択し、 **[共有]** を右クリックします。 コンテキスト メニューで **[作成]**  >  **[ライブラリ]** の順に選択します。
 
-   ![[ライブラリの追加] ダイアログ ボックス](../media/tutorials/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
+   ![ライブラリの追加ダイアログ ボックス](../media/tutorials/databricks-add-library-option.png "ライブラリの追加ダイアログ ボックス")
 
 2. [新しいライブラリ] ページの **[ソース]** で、 **[Maven]** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 
@@ -145,7 +145,7 @@ Twitter アプリケーションについて取得した値を保存します。
 5. ライブラリのページにクラスターがない場合は、 **[クラスター]** を選択し、作成したクラスターを実行します。 状態に [実行中] と表示されるまで待機し、ライブラリのページに戻ります。
 ライブラリのページで、ライブラリを使用するクラスターを選択し、 **[インストール]** を選択します。 ライブラリとクラスターの関連付けに成功したら、状態はすぐに **[インストール済み]** に変わります。
 
-    ![ライブラリをクラスターにインストールする](../media/tutorials/databricks-library-attached.png "ライブラリをクラスターにインストールする")
+    ![クラスターにライブラリをインストールする](../media/tutorials/databricks-library-attached.png "クラスターにライブラリをインストールする")
 
 6. Twitter パッケージ `twitter4j-core:4.0.7` について、これらの手順を繰り返します。
 
@@ -153,20 +153,20 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、[Azure Cognitive Services Anomaly Detector API](../overview.md) を使用して、ツイートのストリームに対して、ほぼリアルタイムで異常検出を実行します。 API を使用する前に、Azure で Anomaly Detector リソースを作成し、Anomaly Detector API を使用してアクセス キーを取得する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. **[+ リソースの作成]** を選択します。
 
 3. Azure Marketplace で、 **[AI + Machine Learning]\(AI + 機械学習\)**  >  **[See all]\(すべて表示\)**  >  **[Cognitive Services - More]\(Cognitive Services - 詳細\)**  >  **[Anomaly Detector]** を選択します。 または、[このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)を使用して、 **[Create]\(作成\)** ダイアログ ボックスに直接アクセスすることもできます。
 
-    ![Anomaly Detector リソースの作成](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomaly Detector リソースの作成")
+    ![Anomaly Detector リソースを作成する](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomaly Detector リソースを作成する")
 
 4. **[作成]** ダイアログ ボックスで、次の値を入力します。
 
-    |値 |説明  |
+    |値 |[説明]  |
     |---------|---------|
     |Name     | Anomaly Detector リソースの名前。        |
-    |Subscription     | リソースが関連付けられる Azure サブスクリプション。        |
+    |サブスクリプション     | リソースが関連付けられる Azure サブスクリプション。        |
     |Location     | Azure の場所。        |
     |Pricing tier     | サービスの価格レベル。 Anomaly Detector の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)を参照してください。        |
     |Resource group     | 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。        |
@@ -176,11 +176,11 @@ Twitter アプリケーションについて取得した値を保存します。
 
 5. リソースを作成した後、スクリーン ショットに示すように、 **[概要]** タブで、 **[エンドポイント]** URL をコピーして保存します。 次に、 **[アクセス キーを表示]** を選択します。
 
-    ![アクセス キーを表示する](../media/tutorials/cognitive-services-get-access-keys.png "アクセス キーを表示する")
+    ![アクセス キーを表示](../media/tutorials/cognitive-services-get-access-keys.png "アクセス キーを表示")
 
 6. **[キー]** で、使用したいキーのコピー アイコンを選択します。 アクセス キーを保存します。
 
-    ![アクセス キーをコピーする](../media/tutorials/cognitive-services-copy-access-keys.png "アクセス キーをコピーする")
+    ![アクセス キーをコピー](../media/tutorials/cognitive-services-copy-access-keys.png "アクセス キーをコピー")
 
 ## <a name="create-notebooks-in-databricks"></a>Databricks でノートブックを作成する
 
@@ -542,7 +542,7 @@ display(msgStream)
 ```
 
 出力結果は、以下のイメージのようになります。 データはリアルタイムであるため、表の日付はこのチュートリアルの日付と異なる場合があることに注意してください。
-![イベント ハブからのデータの読み込み](../media/tutorials/load-data-from-eventhub.png "イベント ハブからのデータの読み込み")
+![イベント ハブからデータを読み込む](../media/tutorials/load-data-from-eventhub.png "イベント ハブからデータを読み込む")
 
 これで、Apache Spark 用の Event Hubs コネクタを使用して、Azure Event Hubs から Azure Databricks にデータをほぼリアルタイムでストリーム配信できました。 Spark 用の Event Hubs コネクタを使用する方法の詳細については、[コネクタに関するドキュメント](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)を参照してください。
 
@@ -676,7 +676,7 @@ adResult.show()
 これで完了です。 Azure Databricks を使用して、正常に Azure Event Hubs にデータをストリーミングし、Event Hubs コネクタを使用してストリーム データを消費し、さらにストリーミング データに対してほぼリアルタイムで異常検出を実行することができました。
 このチュートリアルでは粒度は 1 時間ですが、粒度はニーズに合わせていつでも変更できます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの実行が完了したら、クラスターを終了できます。 それを行うには、Azure Databricks ワークスペースで、左側のウィンドウから **[クラスター]** を選択します。 終了するクラスターで、カーソルを **[アクション]** 列の下の省略記号に移動し、 **[終了]** アイコンを選択してから **[確認]** を選択します。
 
@@ -684,7 +684,7 @@ adResult.show()
 
 クラスターの作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Databricks を使用して、データを Azure Event Hubs にストリーム配信し、Event Hubs からストリーミング データをリアルタイムで読み取る方法について説明しました。 Anomaly Detector API を呼び出し、Power BI Desktop を使用して異常を視覚化する方法について学習するには、次のチュートリアルに進んでください。 
 

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:.NET 用 Computer Vision クライアント ライブラリ | Microsoft Docs
-description: .NET 用 Computer Vision クライアント ライブラリの使用を開始します。
+title: クイック スタート:.NET 用 Computer Vision クライアント ライブラリ
+description: このクイックスタートでは、.NET 用 Computer Vision クライアント ライブラリの使用を開始します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 72c66241965db1264cb508ed1f8f4c76a07883be
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa162fb47eab84ff26af2256f8fe0ba9896b7cf0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974991"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448298"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>クイック スタート:.NET 用 Computer Vision クライアント ライブラリ
 
@@ -36,7 +36,7 @@ ms.locfileid: "74974991"
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -91,7 +91,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 以下のクラスとインターフェイスにより、Computer Vision .NET SDK の主要な機能の一部が処理されます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| このクラスには、**ComputerVisionClient** の追加的なメソッドが含まれています。|
@@ -258,14 +258,14 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >[Computer Vision API リファレンス (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)

@@ -1,5 +1,5 @@
 ---
-title: 従量課金制料金の個別サブスクリプションの Azure 予約の使用状況
+title: 個別サブスクリプションの Azure 予約の使用状況
 description: 使用状況を確認し、従量課金制料金の個別サブスクリプションに Azure の予約がどのように適用されているかを把握する方法について説明します。
 author: bandersmsft
 manager: yashr
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 991afd5a91ef5f5586acd624c03babc38b5c1960
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225786"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449146"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
@@ -55,7 +55,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 
 1. **Additional Info** フィールドの **ReservationId** は、VM に適用されている予約です。
 2. **ConsumptionMeter** は、VM の測定 ID です。
-3. **Meter Sub-category** の **Reservation-Base VM** 行は、Statement セクションの $0 コストを表します。 この VM の実行コストは、予約による前払いが済んでいます。
+3. **Meter Subcategory** の **Reservation-Base VM** 行は、Statement セクションの $0 コストを表します。 この VM の実行コストは、予約による前払いが済んでいます。
 4. **Meter Id** は予約の測定 ID です。 この測定のコストは $0 です。 この測定 ID は、予約割引が適用される VM の場合に表示されます。
 5. Standard_DS1_v2 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、この測定で充当されます。 D シリーズの 1 コア VM に対応する測定の確認方法については、「[Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。 Azure ハイブリッド特典を利用している場合、この追加料金は適用されません。
 
@@ -94,7 +94,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure の予約の詳細については、次の記事を参照してください。
 

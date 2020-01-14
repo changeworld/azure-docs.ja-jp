@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449819"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -94,7 +94,7 @@ Batch アカウントで使うストレージ アカウントは "*専用*" の�
 > 現時点では、[ファイアウォール規則](../storage/common/storage-network-security.md)で構成されている Azure Storage アカウントでアプリケーション パッケージを使用することはできません。
 > 
 
-Batch サービスは、Azure Storage を使ってアプリケーション パッケージをブロック BLOB として格納します。 ブロック BLOB データの[通常料金を課金][storage_pricing]され、各パッケージのサイズは[最大ブロック BLOB サイズ](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)を超えることはできません。 アプリケーション パッケージのサイズと数に気を配り、非推奨のパッケージを定期的に削除して、コストを最小限に抑えてください。
+Batch サービスは、Azure Storage を使ってアプリケーション パッケージをブロック BLOB として格納します。 ブロック BLOB データの[通常料金を課金][storage_pricing]され、各パッケージのサイズは最大ブロック BLOB サイズを超えることはできません。 詳しくは、「[Azure Storage のスケーラビリティおよびストレージ アカウントのパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。 アプリケーション パッケージのサイズと数に気を配り、非推奨のパッケージを定期的に削除して、コストを最小限に抑えてください。
 > 
 > 
 
@@ -150,7 +150,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 * Batch アカウント内で一意にする必要がある。
 * 大文字と小文字が維持され、区別はされない。
 
-**バージョン**
+**Version**
 
 このフィールドでは、アップロードするアプリケーション パッケージのバージョンを指定します。 バージョン文字列は以下の検証ルールに従うようにします。
 
@@ -182,7 +182,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 
 ![Update or delete package in Azure portal][7]
 
-**Update**
+**アップデート**
 
 **[更新]** をクリックすると、 **[パッケージの更新]** ウィンドウが表示されます。 このウィンドウは**新しいアプリケーション パッケージ**のウィンドウと似ていますが、パッケージ選択フィールドのみが有効になっていて、アップロードする新しい ZIP ファイルを指定できます。
 
@@ -260,7 +260,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 また、アプリケーション ID の大文字と小文字は保持されることに注意してください。 例:
+Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 また、アプリケーション ID の大文字と小文字は保持されることに注意してください。 次に例を示します。
 
 ```
 Linux:
@@ -344,7 +344,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>まとめ
 アプリケーション パッケージを使用すると、顧客がジョブ用のアプリケーションを選択するのを支援したり、Batch を有効にしたサービスでジョブを処理する場合の正確なバージョン指定を行ったりすることができます。 さらに、顧客がサービスに自前のアプリケーションをアップロードし、トラッキングするための環境も用意できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、[アカウントへのプールの追加][rest_add_pool]に関する記事の [applicationPackageReferences][rest_add_pool_with_packages] 要素を参照してください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[アプリケーション][rest_applications]」をご覧ください。
 * [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。 [Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションやサービス用のアカウント作成機能と削除機能を有効にできます。
 

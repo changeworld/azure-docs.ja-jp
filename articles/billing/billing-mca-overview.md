@@ -1,5 +1,5 @@
 ---
-title: Microsoft 顧客契約の課金アカウントの概要 - Azure
+title: Microsoft 顧客契約の課金の概要 - Azure
 description: Microsoft 顧客契約の課金アカウントについて理解する
 author: bandersmsft
 manager: amberbhargava
@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: e27d2116cf58c64fca7fb0273c852d6223f00c6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46918810648deb15ce0ae0dd13824702dcfb7073
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389232"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 顧客契約の課金アカウントの概要
 
-Azure を使用するためにサインアップすると、課金アカウントが作成されます。 課金アカウントを使用して、請求書および支払いを管理し、コストを追跡します。 複数の請求先アカウントにアクセスできます。 たとえば、個人的なプロジェクト用に Azure にサインアップしているとします。 組織の Enterprise Agreement または Microsoft 顧客契約経由で Azure にアクセスすることもできます。 これらのシナリオごとに、個別の請求先アカウントが与えられます。
+Azure を使用するためにサインアップすると、課金アカウントが作成されます。 課金アカウントを使用して、請求書および支払いを管理し、コストを追跡します。 複数の請求先アカウントにアクセスできます。 たとえば、個人的なプロジェクトのために Azure にサインアップしたとします。 組織の Enterprise Agreement または Microsoft 顧客契約経由で Azure にアクセスすることもできます。 これらのシナリオごとに、個別の請求先アカウントが提供されます。
 
-この記事では、Microsoft 顧客契約の請求先アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
+この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
 ## <a name="your-billing-account"></a>課金アカウント
 
@@ -85,10 +85,10 @@ Azure プランは Azure サブスクリプションの価格とサービス レ
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 請求先アカウントの詳細については、次の記事を参照してください。
 
 - [Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)
-- [Microsoft 顧客契約の追加 Azure サブスクリプションを作成する](billing-mca-create-subscription.md)
+- [Microsoft 顧客契約用に追加の Azure サブスクリプションを作成する](billing-mca-create-subscription.md)
 - [請求書にセクションを作成してコストを整理する](billing-mca-section-invoice.md)

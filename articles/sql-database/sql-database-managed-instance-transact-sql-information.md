@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707640"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552748"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -53,7 +53,7 @@ Managed Instance には、SQL Server と比べて PaaS の制限と動作の違�
 Managed Instance には自動バックアップがあるので、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。
 
 - Managed Instance では、Azure BLOB ストレージ アカウントにのみインスタンス データベースをバックアップできます。
-  - `BACKUP TO URL` だけがサポートされています。
+  - サポートされるのは `BACKUP TO URL` のみです。
   - `FILE`、`TAPE`、およびバックアップ デバイスはサポートされていません。
 - ほとんどの一般的な `WITH` オプションがサポートされています。
   - `COPY_ONLY` は必須です。
@@ -65,7 +65,7 @@ Managed Instance には自動バックアップがあるので、ユーザーは
 
 - Managed Instance では、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
-- `BACKUP` コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。
+- `BACKUP` コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドでストライプ サイズを増やして、個々のストライプ サイズを減らし、この制限内に収まるようにします。
 
     > [!TIP]
     > 次の操作を実行すると、オンプレミス環境の SQL Server または仮想マシンからデータベースをバックアップするときに、この制限を回避できます。
@@ -78,7 +78,7 @@ Managed Instance には自動バックアップがあるので、ユーザーは
 
 T-SQL を使用したバックアップについては、[BACKUP](/sql/t-sql/statements/backup-transact-sql) に関する記事をご覧ください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="auditing"></a>監査
 
@@ -110,7 +110,7 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 
 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。 
  
-**対処法**: 証明書のバックアップを作成してバックアップを復元するのでなく、[証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
+**回避策**:証明書のバックアップを作成してバックアップを復元するのでなく、[証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
 
 ```sql
 CREATE CERTIFICATE  
@@ -186,12 +186,12 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 
 ## <a name="configuration"></a>構成
 
-### <a name="buffer-pool-extension"></a>バッファー プール拡張機能
+### <a name="buffer-pool-extension"></a>バッファー プール拡張
 
 - [バッファー プール拡張機能](/sql/database-engine/configure-windows/buffer-pool-extension)はサポートされていません。
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` はサポートされていません。 [ALTER SERVER CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql) に関する記事をご覧ください。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>照合順序
 
 既定のインスタンスの照合順序は `SQL_Latin1_General_CP1_CI_AS` であり、作成パラメーターとして指定できます。 「[照合順序](/sql/t-sql/statements/collations)」をご覧ください。
 
@@ -274,9 +274,9 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
 
-- Managed Instance では現在、SQL Server エージェントの有効化/無効化はサポートされていません。 SQL エージェントは常時稼動状態となります。
+- Managed Instance では現在、SQL Server エージェントの有効化/無効化はサポートされていません。 SQL エージェントは常に実行されています。
 - SQL Server エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。 
-- [ジョブ]
+- ジョブ
   - T-SQL ジョブ ステップがサポートされています。
   - 次のレプリケーション ジョブがサポートされています。
     - トランザクション ログ リーダー
@@ -302,7 +302,7 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 - プロキシ
 - アイドル状態の CPU でのジョブのスケジューリング
 - エージェントの有効化または無効化
-- アラート
+- 警告
 
 SQL Server エージェントについては、「[SQL Server エージェント](/sql/ssms/agent/sql-server-agent)」をご覧ください。
 
@@ -331,7 +331,7 @@ Managed Instance はファイル共有や Windows フォルダーにアクセス
 
 Managed Instance　はファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。
 
-- `CREATE ASSEMBLY FROM BINARY` だけがサポートされています。 [CREATE ASSEMBLY FROM BINARY](/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。 
+- サポートされるのは `CREATE ASSEMBLY FROM BINARY` のみです。 [CREATE ASSEMBLY FROM BINARY](/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。 
 - `CREATE ASSEMBLY FROM FILE` はサポートされていません。 [CREATE ASSEMBLY FROM FILE](/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
 
@@ -389,12 +389,12 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 - リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
 - サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイルのインポートの代わりに、`BULK INSERT` または `OPENROWSET` を使用して、Azure Blob Storage からネイティブ CSV インポートを使用してください。
 
-Operations
+操作
 
 - クロス インスタンス書き込みトランザクションはサポートされていません。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 例: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
+- SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
 - リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 Azure Blob Storage から CSV ファイルを読み取る [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用してください。 この要求は、[マネージド インスタンス フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
 
 ### <a name="polybase"></a>PolyBase
@@ -406,41 +406,12 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 - スナップショットおよび双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)はマネージド インスタンスのパブリック プレビューで使用できますが、制約がいくつかあります。
     - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターは両者ともクラウドに配置するか、または両者ともオンプレミスに配置する必要があります。
-    - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 サポートされているバージョンについては、[こちら](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)をご覧ください。
+    - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 詳細については、[サポートされているバージョンのマトリックス](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)に関するページを参照してください。
     - トランザクション レプリケーションには、いくつかの[追加のネットワーク要件](sql-database-managed-instance-transactional-replication.md#requirements)があります。
 
-レプリケーションの構成の詳細については、[レプリケーションに関するチュートリアル](replication-with-sql-database-managed-instance.md)を参照してください。
-
-
-[フェールオーバー グループ](sql-database-auto-failover-group.md)内のデータベースでレプリケーションが有効な場合、マネージド インスタンス管理者は、フェールオーバーが発生した後で、古いプライマリ上のすべてのパブリケーションをクリーンアップしてから、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
-
-1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
-2. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. サブスクライバーからサブスクリプションのメタデータを削除します。 サブスクライバー インスタンス上のサブスクリプション データベースで、次のスクリプトを実行します。
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. パブリッシャーからすべてのレプリケーション オブジェクトを強制的に削除するには、発行されたデータベースで次のスクリプトを実行します。
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. 元のプライマリ インスタンスから以前のディストリビューターを強制的に削除します (ディストリビューターを持つために使用されていた以前のプライマリにフェールバックする場合)。 以前のディストリビューター マネージド インスタンスのマスター データベース上で次のスクリプトを実行します。
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+トランザクション レプリケーションの構成の詳細については、次に関するチュートリアルを参照してください。
+- [MI パブリッシャーとサブスクライバー間のレプリケーション](replication-with-sql-database-managed-instance.md)
+- [MI パブリッシャー、MI ディストリビューター、および SQL Server サブスクライバー間のレプリケーション](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>RESTORE ステートメント 
 
@@ -487,9 +458,9 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 クロス インスタンス Service Broker はサポートされていません。
 
-- `sys.routes`:前提条件として sys.routes からアドレスを選択する必要があります。 アドレスは、各ルートで LOCAL である必要があります。 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql) に関する記事をご覧ください。
-- `CREATE ROUTE`:`LOCAL` 以外の `ADDRESS` で `CREATE ROUTE` を使用することはできません。 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql) に関する記事をご覧ください。
-- `ALTER ROUTE`:`LOCAL` 以外の `ADDRESS` で `ALTER ROUTE` を使用することはできません。 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql) に関する記事をご覧ください。 
+- `sys.routes`:前提条件として sys.routes からアドレスを選択する必要があります。 アドレスは、各ルートで LOCAL である必要があります。 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql) をご覧ください。
+- `CREATE ROUTE`:`LOCAL` 以外の `ADDRESS` で `CREATE ROUTE` を使用することはできません。 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql) をご覧ください。
+- `ALTER ROUTE`:`LOCAL` 以外の `ADDRESS` で `ALTER ROUTE` を使用することはできません。 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql) をご覧ください。 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>ストアド プロシージャ、関数、トリガー
 
@@ -514,7 +485,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 - `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。 
 - `SYS.SERVERS` は、"name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。
 - `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、Managed Instance には該当しないためです。 [@@SERVICENAME](/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。
-- `SUSER_ID` がサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。 
+- `SUSER_ID` はサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。 
 - `SUSER_SID` はサポートされていません。 正しくないデータが返されます。これは既知の一時的な問題です。 [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。 
 
 ## <a name="Environment"></a>環境の制約
@@ -535,11 +506,55 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 `tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
 
+### <a name="msdb"></a>MSDB
+
+マネージド インスタンスの次の MSDB スキーマは、それぞれの定義済みロールによって所有されている必要があります。
+
+- 一般的なロール
+  - TargetServersRole
+- [固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail ロール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [統合サービスのロール](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - msdb
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> 定義済みのロール名、スキーマ名、スキーマ所有者を顧客が変更すると、サービスの通常の動作に影響します。 通常のサービス操作を保証するために、これらに加えられた変更は検出されるとすぐに、または次の最新のサービス更新時に、事前に定義済みの値に戻されます。
+
 ### <a name="error-logs"></a>エラー ログ
 
 マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、Azure Data Studio の[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) または[マネージド インスタンスの拡張機能 (プレビュー)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) に関する記事をご覧ください。
 
 ## <a name="Issues"></a> 既知の問題
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、非 sysadmin ログインに対する明示的な実行権限が必要です
+
+**日付:** 2019 年 12 月
+
+非 sysadmin のログインが [SQL エージェントの固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されている場合、これらのログインが動作するために、明示的な実行権限を master ストアド プロシージャに付与する必要があるという問題があります。 この問題が発生した場合は、次のエラーメッセージ「オブジェクトで実行権限が拒否されました <object_name> (Microsoft SQL Server、エラー:229)」が表示されます。
+
+**回避策**:次の SQL エージェントの固定データベース ロール:SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole のいずれかにログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に実行権限を付与します。
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>エージェント プロセスを再起動すると、SQL エージェント ジョブが中断されることがある
+
+**日付:** 2019 年 12 月
+
+SQL エージェントでは、ジョブが開始されるたびに新しいセッションが作成され、メモリ消費量が徐々に増加します。 内部メモリの制限に達してスケジュールされたジョブの実行がブロックされることのないように、エージェント プロセスのメモリ使用量がしきい値に達すると、エージェント プロセスが再起動されます。 これにより、再起動の時点で実行中のジョブの実行が中断される可能性があります。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>インメモリ OLTP のメモリ制限が適用されない
 
@@ -555,7 +570,7 @@ Business Critical サービス レベルでは、[メモリ最適化オブジェ
 
 SQL Server/Managed Instance では、[ユーザーは空でないファイルを削除できません](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 `ALTER DATABASE REMOVE FILE` ステートメントを使用して空でないデータ ファイルを削除しようとすると、エラー `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` はすぐには返されません。 Managed Instance では引き続きファイルの削除が試行されますが、30 分後に操作が失敗し、`Internal server error` になります。
 
-**対処法**: `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
+**回避策**:`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる
 
@@ -563,7 +578,7 @@ SQL Server/Managed Instance では、[ユーザーは空でないファイルを
 
 進行中の `RESTORE` ステートメント、データ移行サービスの移行プロセス、組み込みのポイントインタイム リストアでは、復元処理が完了するまで、サービス レベルの更新や既存のインスタンスのサイズ変更、新しいインスタンスの作成がブロックされます。 復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルの操作の作成または変更は、失敗したり、タイムアウトしたりすることはありません。復元処理が完了するかキャンセルされるまで処理が続行されます。
 
-**対処法**: サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
+**回避策**:サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
 
@@ -571,7 +586,7 @@ SQL Server/Managed Instance では、[ユーザーは空でないファイルを
 
 ユーザー ワークロードに割り当てられているリソースを制限することを可能にする [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後またはサービス レベルの変更 (たとえば、仮想コアやインスタンスの最大ストレージ サイズを変更します) をユーザーが開始した後、一部のユーザー ワークロードが間違って分類されることがあります。
 
-**対処法**: [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
+**回避策**:[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります。
 
@@ -611,7 +626,7 @@ SQL Server Data Tools では、Azure Active Directory のログインとユー�
 
 データベースがマネージド インスタンス上で復元されるとき、復元サービスではまず、所望の名前で空のデータベースが作成され、インスタンス上でその名前が割り当てられます。 しばらくすると、このデータベースは削除され、実際のデータベースの復元が開始されます。 *復元*状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが完了すると、`RESTORE` ステートメントに指定されている所望の名前に一時的な名前が変更されます。 初期フェーズでは、ユーザーは空のデータベースにアクセスしたり、さらにはテーブルを作成したり、このデータベースにデータを読み込んだりできます。 この一時的なデータベースは、復元サービスで 2 つ目のフェーズが開始されると削除されます。
 
-**対処法**: 復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
+**回避策**:復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
 
@@ -679,7 +694,7 @@ Managed Instance に配置された CLR モジュールと、現在のインス�
 
 **対処法:** 可能であれば、CLR モジュールでコンテキスト接続を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Managed Instance の詳細については、[Managed Instance の概要](sql-database-managed-instance.md)に関するページを参照してください
 - 機能と比較の一覧については、「[Azure SQL Database の機能の比較](sql-database-features.md)」を参照してください。

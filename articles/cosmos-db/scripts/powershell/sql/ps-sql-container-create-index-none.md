@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
+title: Azure Cosmos アカウントにインデックスのないコンテナーを作成する PowerShell スクリプト
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: d216aa7eaa25ee18c7b5e962309e2a08f11df284
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 13bec89b0c6f713a4b8c66f7bab6cda3d6513ef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441365"
 ---
 # <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

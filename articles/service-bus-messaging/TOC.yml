@@ -7,13 +7,13 @@
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Service Bus キュー
       items:
         - name: Service Bus キューを作成する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -43,7 +43,7 @@
       items:
         - name: トピックとサブスクリプションを作成する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
             - name: Azure Resource Manager テンプレート
               href: service-bus-resource-manager-namespace-topic.md
@@ -93,7 +93,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md
@@ -112,7 +112,7 @@
                   href: authenticate-application.md
         - name: 組み込みのセキュリティ制御
           href: service-bus-messaging-security-controls.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 名前空間の作成
       href: service-bus-create-namespace-portal.md
@@ -182,7 +182,7 @@
           href: service-bus-end-to-end-tracing.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
           href: service-bus-manage-with-ps.md
@@ -203,11 +203,11 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: トピック、サブスクリプション、ルールを含んだ名前空間の作成
               href: service-bus-resource-manager-namespace-topic-with-rule.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
-        - name: 保存時の暗号化向けに顧客管理キーを構成する (プレビュー)
+        - name: 保存時の暗号化向けに顧客管理キーを構成する
           href: configure-customer-managed-key.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: トラブルシューティング ガイド
           href: service-bus-messaging-exceptions.md
@@ -247,7 +247,7 @@
       href: service-bus-messaging-sql-rule-action.md
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: service-bus-faq.md
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-service-bus

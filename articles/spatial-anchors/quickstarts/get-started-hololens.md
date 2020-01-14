@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3814a12657b2634ede02eda83c7e7bcdf78cd7e2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277096"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376360"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 
-このクイック スタートでは、[Azure Spatial Anchors](../overview.md) を使用する HoloLens アプリを C++/WinRT と DirectX で作成する方法について説明します。 Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用する複合現実エクスペリエンスを作成できます。 完了すると、空間アンカーを保存して再呼び出しできる HoloLens アプリが作成されます。
+このクイック スタートでは、[Azure Spatial Anchors](../overview.md) を使用する HoloLens アプリを C++/WinRT と DirectX で作成する方法について説明します。 Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、空間アンカーを保存して再呼び出しできる HoloLens アプリが作成されます。
 
 学習内容は次のとおりです。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74277096"
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを実行するには、以下が必要です。
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.18362.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、および **Windows 10 SDK (10.0.18362.0 以降)** コンポーネントがインストールされた Windows マシン。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> もインストールする必要があります。
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
 - [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (別名 RS5) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 - アプリにより、その AppX マニフェストに **spatialPerception** 機能を設定する必要があります。
@@ -66,7 +66,7 @@ HoloLens デバイスの電源をオンにしてサインインし、USB ケー�
 
 **[デバッグ]**  >  **[デバッグの開始]** を選択して、アプリのデプロイとデバッグを開始します。
 
-アプリの指示に従って、アンカーを配置して再呼び出しします。
+アプリの指示に従って、アンカーを配置し、呼び戻します。
 
 Visual Studio で、 **[デバッグの停止]** を選択するか、**Shift + F5** キーを押して、アプリを停止します。
 

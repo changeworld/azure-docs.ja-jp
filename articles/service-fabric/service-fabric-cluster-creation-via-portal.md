@@ -1,25 +1,14 @@
 ---
-title: Azure portal で Service Fabric クラスターを作成する | Microsoft Docs
+title: Azure portal で Service Fabric クラスターを作成する
 description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452279"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -79,7 +68,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric クラスター リソースの検索
 
-[Azure Portal][azure-portal] にサインインします。
+[Azure portal][azure-portal] にサインインする
 **[リソースの作成]** をクリックし、新しいリソース テンプレートを追加します。 **[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
 一覧から **[Service Fabric クラスター]** を選択します。
 
@@ -129,7 +118,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 > サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。 **マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。
 > 
 
-### <a name="3-security"></a>3.セキュリティ
+### <a name="3-security"></a>3.Security
 ![Azure portal のセキュリティ構成のスクリーンショット。][BasicSecurityConfigs]
 
 セキュア テスト クラスターを簡単に設定できるようにするために、 **[Basic]** オプションが用意されています。 既に証明書があり、[キー コンテナー](/azure/key-vault/)にアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、 **[カスタム]** オプションを使用します
@@ -209,7 +198,7 @@ Powershell または CLI を使用してクラスターで管理操作を実行�
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 クラスターで指定する NodeType ごとに、仮想マシン スケール セットがセットアップされます。 <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この時点で、管理の認証に証明書を使用したセキュリティで保護されたクラスターがあります。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。  また、[Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 <!-- Links -->

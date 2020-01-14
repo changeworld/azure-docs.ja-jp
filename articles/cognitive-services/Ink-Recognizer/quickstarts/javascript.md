@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:Ink Recognizer REST API および Node.js を使用したデジタル インクの認識
 titleSuffix: Azure Cognitive Services
-description: Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
+description: このクイックスタートでは、Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 19626bd68ad82108b2ebaa823d196d0f22008e29
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448142"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>クイック スタート:Ink Recognizer REST API および JavaScript を使用したデジタル インクの認識
 
@@ -161,7 +161,7 @@ ms.locfileid: "71996916"
 
 このアプリケーションは Web ブラウザー内で実行できます。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json) でも確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)

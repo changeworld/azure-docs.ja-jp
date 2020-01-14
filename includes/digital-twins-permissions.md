@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 832c0e6080b82f3c38beaf051669fbdacd37081c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74101181"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692536"
 ---
 >[!NOTE]
 >このセクションでは、[Azure AD アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)手順について説明します。
@@ -31,9 +31,9 @@ ms.locfileid: "74101181"
 
     [![登録されたアプリ](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. [アプリが "**パブリック クライアント**" として登録されている](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)ことを確認するには、アプリ登録の **[認証]** ペインを開き、そのペインを下にスクロールします。 **[既定のクライアントの種類]** セクションで、 **[アプリケーションは、パブリック クライアントとして扱います]** に **[はい]** を選択し、 **[保存]** をクリックします。
+1. [アプリが**パブリック クライアント**として登録されている](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)ことを確認するには、アプリ登録のための **[認証]** ウィンドウを開き、そのウィンドウ内を下へスクロールします。 **[既定のクライアントの種類]** セクションで、 **[アプリケーションは、パブリック クライアントとして扱います]** に対して **[はい]** を選択し、 **[保存]** をクリックします。
 
-    **アクセス トークン** を確認して、Manifest.json の **oauth2AllowImplicitFlow** 設定を有効にします。
+    Manifest.json 内の **oauth2AllowImplicitFlow** 設定を有効にするには、 **[アクセス トークン]** をオンにします。
 
     [![パブリック クライアントの構成設定](./media/digital-twins-permissions/aad-public-client.png)](./media/digital-twins-permissions/aad-public-client.png#lightbox)
 
@@ -46,7 +46,7 @@ ms.locfileid: "74101181"
 
 1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[+ アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ペインで、 **[所属する組織で使用している API]** タブを選択し、次のいずれかを選択します。
     
-    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
+    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`) **Azure Digital Twins** API を選択します。
 
         [![API または Azure Digital Twins を検索する](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -59,12 +59,12 @@ ms.locfileid: "74101181"
     > * テスト テナントと顧客アカウントでは、`Azure Digital Twins` を検索する必要があります。
     > * 他の Microsoft アカウントでは、`Azure Smart Spaces Service` を検索する必要があります。
 
-1. 選択されたいずれかの API は、同じ **[API アクセス許可の要求]** ペインに **Azure Digital Twins** と表示されます。 **[Read]\(読み取り\)** ドロップ ダウンを選択し、 **[Read.Write]** チェック ボックスをオンにします。 **[アクセス許可の追加]** ボタンを選択します
+1. 選択すると、いずれかの API が同じ **[API アクセス許可の要求]** ペインに **Azure Digital Twins** として表示されます。 **[Read]\(読み取り\)** ドロップ ダウンを選択し、 **[Read.Write]** チェック ボックスをオンにします。 **[アクセス許可の追加]** ボタンを選択します
 
     [![API のアクセス許可を追加する](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. 組織の設定によっては、この API への管理者アクセスを許可するために追加の手順を実行する必要があります。 詳細については、管理者にお問い合わせください。 管理者アクセスが承認されると、 **[API アクセス許可]** ペインの **[管理者の同意が必要]** 列にアクセス許可が表示されます。 
 
-    [![管理者の同意による承認](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![管理者の同意の承認](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
     **Azure Digital Twins** が表示されていることを確認します。

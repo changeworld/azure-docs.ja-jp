@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/30/2019
+ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533958"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563465"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search のナレッジ ストアを作成する
 
@@ -22,9 +22,9 @@ ms.locfileid: "74533958"
 
 ナレッジ ストアは Azure Cognitive Search の機能の 1 つであり、後続の分析や下流の処理のために認知スキル パイプラインからの出力を保持するものです。 
 
-パイプラインでは、生のコンテンツとして画像と非構造化テキストを受け取り、Cognitive Services (画像や自然言語処理など) を介して AI を適用し、出力としてエンリッチされたコンテンツ (新しい構造と情報) を作成します。 パイプラインによって作成される物理的な成果物の 1 つは[ナレッジ ストア](knowledge-store-concept-intro.md)です。ツールを使用してこれにアクセスし、コンテンツを分析および探索することができます。
+パイプラインでは、生のコンテンツとして非構造化テキストと画像を受け取り、Cognitive Services (OCR、画像分析、自然言語処理など) を介して AI を適用し、情報を抽出して、新しい構造と情報を出力します。 パイプラインによって作成される物理的な成果物の 1 つは[ナレッジ ストア](knowledge-store-concept-intro.md)です。ツールを使用してこれにアクセスし、コンテンツを分析および探索することができます。
 
-このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてナレッジ ストアを作成します。 すべての準備が整ったら、ポータルの**データ インポート** ウィザードを実行して、それらを 1 つにまとめます。 最終的な結果は、元のコンテンツと、ポータル ([Storage Explorer](knowledge-store-view-storage-explorer.md)) で表示できる AI で生成されたコンテンツです。
+このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてナレッジ ストアを作成します。 すべての準備が整ったら、ポータルの**データ インポート** ウィザードを実行して、それらを 1 つにまとめます。 最終的な結果は、元のテキスト コンテンツと、ポータル ([Storage Explorer](knowledge-store-view-storage-explorer.md)) で表示できる AI で生成されたコンテンツです。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -38,13 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
 
-   このアカウントには、次の 2 つの要件があります。
+   **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
-   + リージョンは、Azure Cognitive Search と同じものを選択します。 
-   
-   + [StorageV2 (汎用 v2)] のアカウントの種類を選択します。 
-
-1. Blob service ページを開き、コンテナーを作成します。  
+1. Blob service ページを開き、*hotel-reviews* という名前のコンテナーを作成します。
 
 1. **[アップロード]** をクリックします。
 
@@ -54,9 +50,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Blob コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob コンテナーを作成する")
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
+1. このリソースはほぼ完成ですが、これらのページから離れる前に、左側のナビゲーション ウィンドウのリンクを使用して **[アクセス キー]** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
+1. 引き続きポータルで、Azure Cognitive Search に切り替えます。 [新しいサービスを作成](search-create-service-portal.md)するか、[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。
 
 これでデータ インポート ウィザードに進む準備が整いました。
 
@@ -71,17 +67,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[データへの接続]** で、 **[Azure Blob Storage]** を選択し、作成したアカウントとコンテナーを選択します。 
 1. **[名前]** に「`hotel-reviews-ds`」を入力します。
 1. **[解析モード]** で **[Delimited text]\(区切りテキスト\)** を選択し、 **[最初の行にヘッダーが含まれています]** チェック ボックスをオンにします。 **[区切り記号文字]** がコンマ (,) になっていることを確認します。
-1. 前の手順で保存したストレージ サービスの**接続文字列**を入力します。
-1. **[コンテナー名]** に「`hotel-reviews`」と入力します。
-1. **[次へ: Add AI enrichment (Optional)]\(AI エンリッチメントの追加 (省略可能)\)** をクリックします。
+1. **[接続文字列]** で、Azure Storage の **[アクセス キー]** ページからコピーした接続文字列を貼り付けます。
+1. **[コンテナー]** で、データを保持している BLOB コンテナーの名前を入力します。
 
-      ![データ ソース オブジェクトを作成する](media/knowledge-store-create-portal/hotel-reviews-ds.png "データ ソース オブジェクトを作成する")
+    実際のページは次のスクリーンショットのようになります。
+
+    ![データ ソース オブジェクトを作成する](media/knowledge-store-create-portal/hotel-reviews-ds.png "データ ソース オブジェクトを作成する")
 
 1. 次のページに進みます。
 
 ### <a name="step-2-add-cognitive-skills"></a>手順 2:コグニティブ スキルを追加する
 
-このウィザードの手順では、コグニティブ スキルのエンリッチメントを含んだスキルセットを作成します。 このサンプルで使用するスキルは、キー フレーズを抽出し、言語とセンチメントを検出するものです。 これらのエンリッチメントは、後の手順でナレッジ ストアに Azure テーブルとして "投影" されます。
+このウィザードの手順では、コグニティブ スキルのエンリッチメントを含んだスキルセットを作成します。 ソース データは、複数の言語での顧客レビューで構成されています。 このデータ セットに関連するスキルには、キー フレーズ抽出、センチメント検出、テキスト翻訳などがあります。 これらのエンリッチメントは、後の手順でナレッジ ストアに Azure テーブルとして "投影" されます。
 
 1. **[Cognitive Services をアタッチする]** を展開します。 既定では **[無料 (制限付きのエンリッチメント)]** が選択されます。 この無料リソースで許容されるトランザクションは 1 日あたり最大 20 件です。HotelReviews-Free.csv のレコード数は 19 件なので、このリソースを使用することができます。
 1. **[Add cognitive skills]\(コグニティブ スキルを追加する\)** を展開します。
@@ -90,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[エンリッチメントの粒度レベル]** で **[ページ (5,000 文字チャンク)]** を選択します。
 1. 次のコグニティブ スキルを選択します。
     + **キー フレーズを抽出する**
-    + **言語を検出する**
+    + **テキストを翻訳する**
     + **センチメントを検出する**
 
       ![スキルセットを作成する](media/knowledge-store-create-portal/hotel-reviews-ss.png "スキルセットを作成する")
@@ -104,6 +101,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![ナレッジ ストアを構成する](media/knowledge-store-create-portal/hotel-reviews-ks.png "ナレッジ ストアを構成する")
 
+1. 必要に応じて、Power BI テンプレートをダウンロードします。 ウィザードからテンプレートにアクセスすると、ローカルの .pbit ファイルが、データの形状を反映するように調整されます。
+
 1. 次のページに進みます。
 
 ### <a name="step-3-configure-the-index"></a>手順 3:インデックスの構成
@@ -111,10 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このウィザードの手順では、オプションのフルテキスト検索クエリ用のインデックスを構成します。 フィールドとデータ型を推測するためのデータ ソースが、このウィザードによってサンプリングされます。 必要なのは、目的の動作に対応した属性を選択することだけです。 たとえば **[取得可能]** 属性を選択した場合、検索サービスからフィールド値を取得することができます。これに対し、 **[検索可能]** を選択した場合、そのフィールドに対するフルテキスト検索が可能になります。
 
 1. **[インデックス名]** に「`hotel-reviews-idx`」と入力します。
-1. 属性については、次のように選択します。
-    + すべてのフィールドについて **[取得可能]** を選択します。
-    + 以下のフィールドで、 **[フィルター可能]** と **[ファセット可能]** をオンにします。*Sentiment*、*Language*、*Keyphrases*
-    + *city*、*name*、*reviews_text*、*language*、*Keyphrases* の各フィールドについて、 **[検索可能]** を選択します。
+1. 以下の属性については、既定の設定をそのまま使用します。パイプラインによって作成されている新しいフィールドの **[取得可能]** と **[検索可能]** 。
 
     インデックスは、次の画像のようになります。 一覧が長いため、この画像には一部のフィールドが表示されていません。
 
@@ -136,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure portal の [通知] アクティビティ ログで、クリック可能な **[Azure Cognitive Search notification]\(Azure Cognitive Search による通知\)** 状態リンクを監視することもできます。 実行が完了するまでに数分かかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したら、エンリッチ済みのデータ セットを Storage Explorer または Power BI を使用して探索することができます。
 

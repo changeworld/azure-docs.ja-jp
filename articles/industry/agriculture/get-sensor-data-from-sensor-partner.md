@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435168"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -24,10 +24,10 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 -  Azure Marketplace から FarmBeats をインストールしている。
 -  ファームに設置するセンサーとデバイスを決定している。
--  土壌水分センサーを使用する予定がある場合は、FarmBeats の土壌水分センサー配置マップを使用して、センサーの数とセンサーを配置する必要がある正確な場所に関する推奨事項を取得します。 詳細については、「[マップを生成する](generate-maps.md)」を参照してください。
+-  土壌水分センサーを使用する予定がある場合は、FarmBeats の土壌水分センサー配置マップを使用して、センサーの数とセンサーを配置する必要がある正確な場所に関する推奨事項を取得します。 詳細については、「[マップを生成する](generate-maps-in-azure-farmbeats.md)」を参照してください。
 - デバイス パートナーからデバイスやセンサーを購入し、ファーム内に配置している。 デバイス パートナーのソリューションを介してセンサー データにアクセスできることを確認してください。
 
-## <a name="enable-device-integration-with-farmbeats"></a>FarmBeats とのデバイス統合を有効にする 
+## <a name="enable-device-integration-with-farmbeats"></a>FarmBeats とのデバイス統合を有効にする
 
 センサー データのストリーミングを開始したら、FarmBeats システム内にデータを取得するプロセスを開始できます。 デバイス プロバイダーに次の情報を提供して、FarmBeats との統合を有効にします。
 
@@ -153,6 +153,6 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ![[削除] ボタン](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-これで、Azure FarmBeats インスタンスにセンサー データが流れるようになりました。 次に、ファームの[マップを生成する](generate-maps.md#generate-maps)方法について説明します。
+これで、Azure FarmBeats インスタンスにセンサー データが流れるようになりました。 次に、ファームの[マップを生成する](generate-maps-in-azure-farmbeats.md#generate-maps)方法について説明します。

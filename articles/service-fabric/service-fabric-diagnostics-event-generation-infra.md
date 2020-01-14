@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のプラットフォーム レベルの監視 | Microsoft Docs
+title: Azure Service Fabric のプラットフォーム レベルの監視
 description: Azure Service Fabric クラスターの監視と診断に使用するプラットフォーム レベルのイベントとログについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376938"
 ---
 # <a name="monitoring-the-cluster"></a>クラスターの監視
 
@@ -95,7 +86,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 * **Azure Table Storage に対するパフォーマンス カウンター**  
 パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure Diagnostics の構成を変更し、コンテナーをデプロイする場合は Azure Diagnostics が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照して、クラスター診断を収集し、カスタム クエリとアラートを作成します
 * Service Fabric の組み込みの診断エクスペリエンスについては、[EventStore](service-fabric-diagnostics-eventstore.md) に関するページを参照してください

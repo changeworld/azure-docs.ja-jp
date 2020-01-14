@@ -1,26 +1,17 @@
 ---
-title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする | Microsoft Docs
+title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする
 description: このチュートリアルでは、テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306949"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494943"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -68,7 +59,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -204,7 +195,7 @@ Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) �
 
 このチュートリアルでは、例として To Do List サンプルを使います。  新しいテンプレート ファイルとパラメーター ファイルを作成する代わりに、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをダウンロードします。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、*type*、*defaultValue*、および省略可能な *metadata* セクションと *description* が含まれます。
 
 parameters セクションは、デプロイ テンプレートの先頭の、*resources* セクションの直前で定義します。
@@ -264,7 +255,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -405,7 +396,7 @@ az mesh app show --resource-group myResourceGroup --name todolistapp
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
@@ -417,4 +408,4 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [ローカルで実行している Service Fabric Mesh アプリケーションをスケールする](service-fabric-mesh-tutorial-template-scale-services.md)
+> [Service Fabric Mesh で実行しているアプリケーションをスケーリングする](service-fabric-mesh-tutorial-template-scale-services.md)

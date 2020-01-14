@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1b7d08ba25a02334152e661501acf826d6c9bdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449635"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Azure 無料アカウントでの課金を避ける
 
@@ -41,7 +41,7 @@ Azure 無料アカウントには、月ごとの容量が制限された無料�
 
 無料のサービスおよび数量は、12 か月目の末日に期限切れになります。 無料サービスの有効期限は Azure portal で確認できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. 左側のナビゲーション領域で、 **[すべてのサービス]** を選択します。
 
@@ -58,7 +58,7 @@ Azure 無料アカウントには、月ごとの容量が制限された無料�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure 無料アカウントをアップグレードする](billing-upgrade-azure-subscription.md)

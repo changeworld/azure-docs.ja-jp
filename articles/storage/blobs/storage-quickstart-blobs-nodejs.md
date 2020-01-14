@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0a6d7ce8f1f6b81c3dbae3d41842345be5d2e551
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465119"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -29,7 +29,7 @@ JavaScript 用 Azure Blob Storage クライアント ライブラリ v12 を使�
 * ローカル コンピューターに BLOB をダウンロードする
 * コンテナーを削除する
 
-[API のリファレンスのドキュメント](/javascript/api/@azure/storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[API のリファレンスのドキュメント](/javascript/api/@azure/storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -96,7 +96,7 @@ npm install
 
 1. コード エディターで別の新しいテキスト ファイルを開く
 1. `require` の呼び出しを追加して Azure および Node.js モジュールを読み込む
-1. 非常に基本的な例外処理を含め、プログラムの構造を作成する
+1. 極めて基本的な例外処理を含め、プログラムの構造を作成します
 
     コードは次のとおりです。
 
@@ -114,7 +114,7 @@ npm install
 
 1. *blob-quickstart-v12* ディレクトリに新しいファイルを *blob-quickstart-v12.js* として保存します。
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -154,11 +154,11 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 ```javascript
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable is
-// created after the application is launched in a console or with Visual Studio,
-// the shell or application needs to be closed and reloaded to take the
-// environment variable into account.
-const CONNECT_STR = process.env.CONNECT_STR;
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
+// environment variable is created after the application is launched in a
+// console or with Visual Studio, the shell or application needs to be closed
+// and reloaded to take the environment variable into account.
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
 ### <a name="create-a-container"></a>コンテナーを作成する
@@ -174,7 +174,7 @@ const CONNECT_STR = process.env.CONNECT_STR;
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -265,7 +265,7 @@ async function streamToString(readableStream) {
 
 ### <a name="delete-a-container"></a>コンテナーを削除する
 
-次のコードでは、[delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) メソッドを使用して、コンテナー全体を削除することで、アプリによって作成されたリソースをクリーンアップします。 また、必要に応じてローカル ファイルを削除することもできます。
+次のコードでは、[delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) メソッドを使用して、コンテナー全体を削除することで、アプリによって作成されたリソースをクリーンアップします。 必要に応じてローカル ファイルを削除することもできます。
 
 `main` 関数の末尾に次のコードを追加します。
 
@@ -308,16 +308,16 @@ Deleting container...
 Done
 ```
 
-デバッガーでコードをステップ実行し、プロセス全体について Azure portal 上でチェックします。 コンテナーが作成されていることを確認するために、チェックを行います。 コンテナー内で BLOB を開いて、コンテンツを表示することができます。
+デバッガーでコードをステップ実行し、プロセス全体について [Azure portal](https://portal.azure.com) 上でチェックします。 コンテナーが作成されていることを確認するために、チェックを行います。 コンテナー内で BLOB を開いて、コンテンツを表示することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、JavaScript を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。
 
-BLOB ストレージのサンプル アプリを確認するには、以下に進んでください。
+チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Blob ストレージ SDK v12 の JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+> [Azure for JavaScript のドキュメント](/azure/javascript/)
 
-* 詳細については、[JavaScript 用の Azure SDK](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md) に関するページを参照してください。
-* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Azure SDK for JavaScript のドキュメント](/azure/javascript/)」を参照してください。
+* 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
+* Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。

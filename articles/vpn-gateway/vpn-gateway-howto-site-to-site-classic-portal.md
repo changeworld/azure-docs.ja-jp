@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d45fc180fd2cb70fc9edca3c71b6a21341658f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450765"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -74,9 +74,9 @@ S2S 接続に使用する仮想ネットワークを作成する際には、指�
 3. **[(change to Classic)]\((クラシックに変更)\)** をクリックしてから、 **[作成]** をクリックします。
 4. **[仮想ネットワーク (クラシック) の作成]** ページで、VNet の設定を構成します。 このページでは、最初のアドレス空間と 1 つのサブネット アドレスの範囲を追加します。 VNet の作成が完了したら、戻って、さらにサブネットとアドレス空間を追加できます。
 
-   ![[仮想ネットワークの作成] ページ](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "[仮想ネットワークの作成] ページ")
+   ![[仮想ネットワークの作成]](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "[仮想ネットワークの作成] ページ") ページ
 5. **サブスクリプション** が正しいものであることを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
-6. **[リソース グループ]** をクリックし、既存のリソース グループを選択するか、名前を入力して新しいリソース グループを作成します。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+6. **[リソース グループ]** をクリックし、既存のリソース グループを選択するか、名前を入力して新しいリソース グループを作成します。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。
 7. 次に、VNet の **[場所]** 設定を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
 8. **[作成]** をクリックして、VNet を作成します。
 9. [作成] をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。 タイルは、VNet の作成が進むに従って変化します。
@@ -123,20 +123,20 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 1. **[新しい VPN 接続]** ページで、 **[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。 [ゲートウェイの構成 (オプション)] ページが表示されます。 チェック ボックスをオンにしないと、ゲートウェイ サブネットを構成するページが表示されません。
 
-   ![ゲートウェイの構成の [サブネット、サイズ、ルーティングの種類]](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "ゲートウェイの構成の [サブネット、サイズ、ルーティングの種類]")
+   ![[ゲートウェイの構成] - [サブネット、サイズ、およびルーティングの種類]](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "[ゲートウェイの構成] - [サブネット、サイズ、およびルーティングの種類]")
 2. **[ゲートウェイの構成]** ページを開くには、 **[ゲートウェイの構成 (オプション)] の [サブネット、サイズ、およびルーティングの種類]** をクリックします。
 3. **[ゲートウェイの構成]** ページで、 **[サブネット] の [Configure required settings]\(必要な設定の構成\)** をクリックして、 **[サブネットの追加]** ページを開きます。 これらの設定の構成が完了したら、 **[OK]** をクリックします。
 
-   ![[ゲートウェイの構成] のゲートウェイ サブネット](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "[ゲートウェイの構成] のゲートウェイ サブネット")
+   ![[ゲートウェイの構成] - ゲートウェイ サブネット](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "[ゲートウェイの構成] - ゲートウェイ サブネット")
 4. **[サブネットの追加]** ページで、ゲートウェイ サブネットを追加します。 指定したゲートウェイ サブネットのサイズは、作成する VPN ゲートウェイの構成によって異なります。 /29 のような小さいゲートウェイ サブネットを作成できますが、/27 または /28 を使用することをお勧めします。 これにより、より多くのアドレスを含む大きなサブネットが作成されます。 大規模なゲートウェイ サブネットを使用すると、将来の構成に対応するのに十分な IP アドレスを確保できます。
 
-   ![ゲートウェイ サブネットの追加](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "ゲートウェイ サブネットの追加")
+   ![ゲートウェイ サブネットを追加する](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "ゲートウェイ サブネットを追加する")
 
 ## <a name="sku"></a>6.SKU と VPN の種類の指定
 
 1. ゲートウェイの **[サイズ]** を選択します。 これは、仮想ネットワーク ゲートウェイの作成に使用するゲートウェイ SKU です。 クラシック VPN ゲートウェイでは、古い (レガシ) ゲートウェイ SKU が使用されます。 レガシ ゲートウェイ SKU の詳細については、[仮想ネットワーク ゲートウェイ SKU (古い SKU) の利用](vpn-gateway-about-skus-legacy.md)に関するページを参照してください。
 
-   ![SKU と VPN の種類の選択](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "SKU と VPN の種類の選択")
+   ![SKUL と VPN の種類の選択](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "SKU と VPN の種類の選択")
 2. ゲートウェイの **[ルーティングの種類]** を選択します。 これは VPN の種類とも呼ばれます。 ゲートウェイの種類は切り替えることができないため、適切な種類を選択することが重要です。 VPN デバイスは、選択するルーティングの種類に適合している必要があります。 ルーティングの種類の詳細については、「[VPN の種類](vpn-gateway-about-vpn-gateway-settings.md#vpntype)」を参照してください。 "RouteBased" と "PolicyBased" という VPN の種類の項目がありますが、 "動的" は "RouteBased"、"静的" は "PolicyBased" に対応しています。
 3. **[OK]** をクリックして設定を保存します。
 4. **[新しい VPN 接続]** ページで、ページの下部にある **[OK]** をクリックして、仮想ネットワーク ゲートウェイのデプロイを開始します。 選択した SKU によっては、仮想ネットワーク ゲートウェイを作成するまでに最大で 45 分かかります。
@@ -214,7 +214,7 @@ azure config mode asm
 
 ゲートウェイ SKU を変更する手順については、[ゲートウェイ SKU のサイズ変更](vpn-gateway-about-SKUS-legacy.md#classicresize)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。

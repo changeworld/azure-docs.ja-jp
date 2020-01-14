@@ -10,21 +10,21 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382125"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API コンソールでカスタム用語リストを使用してモデレートする
 
 Azure Content Moderator の既定のグローバルな用語リストは、ほとんどのコンテンツ モデレーションのニーズに十分対応できます。 しかし、組織に固有の用語のスクリーニングが必要になる場合があります。 たとえば、さらに詳しくレビューするために、競合他社名にタグを付けたい場合などです。 
 
-Text Moderation API で使用するカスタム用語リストを作成するには、[List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) を使用します。 **[Text - Screen]\(テキスト - スクリーニング\)** 操作では、不適切な表現がないかテキストをスキャンし、テキストをカスタム ブラックリストと共有ブラックリストに対して比較します。
+Text Moderation API で使用するカスタム用語リストを作成するには、[List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) を使用します。 **[Text - Screen]\(テキスト - スクリーニング\)** 操作では、不適切な表現がないかテキストをスキャンし、テキストをカスタム ブロック リストと共有ブロック リストに対して比較します。
 
 > [!NOTE]
-> **用語リストの数は 5 個まで**、各リスト内の**用語の数は 10,000 個まで**に制限されています。
+> 上限は**用語の一覧が 5 つ**で、各一覧では**用語が 10,000 個を超えてはいけません**。
 >
 
 List Management API を使用して、次のタスクを実行できます。
@@ -48,13 +48,13 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Term Lists - Refresh Search Index]\(用語リスト - 検索インデックスを最新の情報に更新\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Term Lists - Refresh Search Index]\(用語リスト - 検索インデックスを最新の情報に更新\) ページでのリージョンの選択](images/test-drive-region.png)
 
    **[Term Lists - Refresh Search Index]\(用語リスト - 検索インデックスを最新の情報に更新\)** API コンソールが開きます。
 
-3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力し、 **[送信]** を選択します。
+3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
 
    ![[Term Lists API - Refresh Search Index]\(用語リスト - 検索インデックスを最新の情報に更新\) コンソールの [応答のコンテンツ] ボックス](images/try-terms-list-refresh-1.png)
 
@@ -63,7 +63,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Term Lists - Create]\(用語リスト - 作成\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Term Lists - Create]\(用語リスト - 作成\) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -97,13 +97,13 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Term - Add Term]\(用語 - 用語の追加\)** ページが開きます。 
 
-8. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+8. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Term - Add Term]\(用語 - 用語の追加\) ページでのリージョンの選択](images/test-drive-region.png)
 
    **[Term - Add Term]\(用語 - 用語の追加\)** API コンソールが開きます。
  
-9. **[listId]** ボックスに生成されたリスト ID を入力し、 **[言語]** の値を選択します。 サブスクリプション キーを入力し、 **[送信]** を選択します。
+9. **[listId]** ボックスに生成されたリスト ID を入力し、 **[言語]** の値を選択します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
 
    ![[Term - Add Term]\(用語 - 用語の追加\) コンソールのクエリ パラメーター](images/try-terms-list-create-3.png)
  
@@ -133,7 +133,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Term - Delete]\(用語 - 削除\)** が開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Term - Delete]\(用語 - 削除\) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -143,7 +143,7 @@ List Management API を使用して、次のタスクを実行できます。
  
    ![[Term - Delete]\(用語 - 削除\) コンソールのクエリ パラメーター](images/try-terms-list-delete-1.png)
 
-4. サブスクリプション キーを入力し、 **[送信]** を選択します。
+4. サブスクリプション キーを入力して、 **[送信]** を選択します。
 
 5. 用語が削除されたことを確認するには、 **[Term Lists - Get All]\(用語リスト - すべて取得\)** コンソールを使用します。
 
@@ -157,7 +157,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Term Lists - Update Details]\(用語リスト - 詳細の更新\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Term Lists - Update Details]\(用語リスト - 詳細の更新\) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -170,6 +170,6 @@ List Management API を使用して、次のタスクを実行できます。
    ![[Term Lists - Update Details]\(用語リスト - 詳細の更新\) コンソールの [要求本文] の編集](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コード内で REST API を使用するか、[用語リストに関する .NET のクイック スタート](term-lists-quickstart-dotnet.md)から開始して、アプリケーションと統合します。

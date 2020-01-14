@@ -3,15 +3,15 @@ title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Cod
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
+description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8050e7793146456894ce86ab89e1563c6282b8df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438285"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Java を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
@@ -115,7 +115,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を再実行します。 例:
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を再実行します。 次に例を示します。
 
 1. ご利用のアプリケーションがまだ実行されている場合は、 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックしてそれを停止します。
 1. [`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)を以下に更新します。
@@ -143,7 +143,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code でコードを更新する
 
-デバッグ モードでサービスが稼働している間に、`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目を更新します。 例:
+デバッグ モードでサービスが稼働している間に、`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目を更新します。 次に例を示します。
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
@@ -162,7 +162,7 @@ Azure Dev Spaces では、コードが編集されるたびに新しいコンテ
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 

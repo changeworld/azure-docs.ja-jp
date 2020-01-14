@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:リアルタイム イベントのデータの異常を視覚化する - Azure Event Hubs
+title: Azure Event Hubs - リアルタイム イベントでのデータの異常を視覚化する
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437145"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -47,7 +47,7 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 
 以降のセクションでは、これらの必要な手順を実行する方法について説明します。 CLI "*または*" PowerShell の指示に従って、次の手順を実行してください。
 
-1. [リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 
+1. [リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 
 
 2. Event Hubs 名前空間を作成します。 
 
@@ -176,13 +176,13 @@ GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hub
 
 2. ジョブの次の情報を入力します。
 
-   **[ジョブ名]** : 「**contosoEHjob**」を使用します。 このフィールドはジョブの名前で、グローバルに一意でなければなりません。
+   **ジョブ名**:「**contosoEHjob**」を使用します。 このフィールドはジョブの名前で、グローバルに一意でなければなりません。
 
    **サブスクリプション**:サブスクリプションを選択します。
 
-   **[リソース グループ]** : イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
+   **[リソース グループ]** :イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
 
-   **[場所]** : セットアップ スクリプトで使われるのと同じ場所 (**米国西部**) を使用します。
+   **[場所]** :セットアップ スクリプトで使われるのと同じ場所 (**米国西部**) を使用します。
 
    ![新しい Azure Stream Analytics ジョブを作成する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -201,7 +201,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 2. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** をクリックして [Event Hubs] を選択します。 表示される画面で、次のフィールドに入力します。
 
-   **[入力のエイリアス]** : 「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
+   **入力のエイリアス**:「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
 
    **サブスクリプション**:サブスクリプションを選択します。
 
@@ -217,7 +217,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
    ![Stream Analytics ジョブに入力ストリームを追加する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
@@ -225,11 +225,11 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 2. **[出力]** ウィンドウで **[追加]** をクリックし、 **[Power BI]** を選びます。 表示される画面で、次のフィールドに入力します。
 
-   **[出力エイリアス]** : 「**contosooutputs**」を使用します。 このフィールドは、出力の一意のエイリアスです。 
+   **出力のエイリアス**:「**contosooutputs**」を使用します。 このフィールドは、出力の一意のエイリアスです。 
 
-   **[データセット名]** : 「**contosoehdataset**」を使用します。 このフィールドは、Power BI で使用するデータセットの名前です。 
+   **データセット名**:「**contosoehdataset**」を使用します。 このフィールドは、Power BI で使用するデータセットの名前です。 
 
-   **[テーブル名]** : 「**contosoehtable**」を使用します。 このフィールドは、Power BI で使用するテーブルの名前です。 
+   **テーブル名**:「**contosoehtable**」を使用します。 このフィールドは、Power BI で使用するテーブルの名前です。 
 
    その他のフィールドについては、既定値を指定できます。
 
@@ -239,7 +239,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 4. その他のフィールドについては、既定値を指定できます。
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリの構成
 
@@ -268,7 +268,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリのテスト 
 
@@ -347,7 +347,7 @@ Stream Analytics ジョブで、 **[開始]** 、 **[今すぐ]** 、 **[開始]
 
     ![Power BI の結果を示すスクリーンショット](./media/event-hubs-tutorial-visualize-anomalies/power-bi-results.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したすべてのリソースを削除する場合は、Power BI の視覚化データを削除してから、リソース グループを削除します。 リソース グループを削除すると、そのグループに含まれるすべてのリソースが削除されます。 この場合、イベント ハブ、Event Hubs 名前空間、Stream Analytics ジョブ、およびリソース グループ自体が削除されます。 
 
@@ -371,7 +371,7 @@ az group delete --name $resourceGroup
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]

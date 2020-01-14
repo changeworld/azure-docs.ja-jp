@@ -1,6 +1,7 @@
 ---
-title: Azure Storage クライアントのセキュリティで保護された TLS の有効化 | Microsoft Docs
-description: Azure Storage のクライアントで TLS 1.2 を有効にする方法について説明します。
+title: .NET でのセキュリティで保護された TLS を有効にする
+titleSuffix: Azure Storage
+description: Azure Storage 用の .NET クライアント ライブラリを使用して TLS 1.2 を有効にする方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +10,12 @@ ms.date: 06/25/2018
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 218708ffc9a680150d7b6bf559a00ca87054bbe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371804"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage クライアントのセキュリティで保護された TLS の有効化
 
@@ -76,7 +77,7 @@ Fiddler を使用すると、TLS 1.2 が実際に使用されるかどうかを�
 
 ![Fiddler での TLS バージョンの確認のスクリーンショット](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
 * [TLS での PCI 準拠](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)

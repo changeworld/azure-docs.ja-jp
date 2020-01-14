@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos DB の Table API に対するスループットの取得 (RU/秒)
+title: Azure Cosmos DB の Table API に対するスループット (RU/秒) を取得する PowerShell スクリプト
 description: Azure PowerShell スクリプト - Azure Cosmos DB の Table API に対するスループットの取得 (RU/秒)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5d3fa2e2122c006825a8413a2ca2f292bda2de74
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441287"
 ---
 # <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルに対するスループットを取得する (RU/秒)
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

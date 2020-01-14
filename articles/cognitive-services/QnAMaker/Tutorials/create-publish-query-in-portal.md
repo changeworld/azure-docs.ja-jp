@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:QnA Maker での作成、発行、回答
 titleSuffix: Azure Cognitive Services
-description: 公開されている Web ベースの FAQ の質問と回答を使用して、新しいナレッジ ベースを作成します。 ナレッジ ベースを保存、トレーニング、および発行します。 ナレッジ ベースの発行後、cURL コマンドを使用して質問を送信し、回答を受信します。 次に、ボットを作成し、同じ質問でボットをテストします。
+description: このチュートリアルでは、公開されている Web ベースの FAQ の質問と回答を使用して、新しいナレッジ ベースを作成する方法について説明します。 ナレッジ ベースを保存、トレーニング、および発行します。 ナレッジ ベースの発行後、cURL コマンドを使用して質問を送信し、回答を受信します。 次に、ボットを作成し、同じ質問でボットをテストします。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327981"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447395"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>チュートリアル:QnA Maker ポータルでナレッジ ベースを作成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "72327981"
 
 1. 既存の設定を選択します。  
 
-    |Setting|目的|
+    |設定|目的|
     |--|--|
     |Microsoft Azure Directory ID|この ID は、Azure portal と QnA Maker ポータルへのサインインに使用するアカウントに関連付けられています。 |
     |Azure Subscription name (Azure サブスクリプション名)|QnA Maker のリソースを作成した請求先アカウント。|
@@ -207,13 +207,13 @@ QnA Maker が確信を持っていない質問では、既定の回答を受け�
 
 詳細については、[このナレッジ ベースを使用したチャット ボットの作成](create-qna-bot.md)に関するページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ナレッジ ベース ボットの使用を終了したら、リソース グループ `my-tutorial-rg` を削除して、ボット プロセスで作成されたすべての Azure リソースを削除します。
 
 ナレッジ ベースの使用を終了したら、QnA Maker ポータルで **[My knowledge bases]\(マイ ナレッジ ベース\)** を選択します。 次に **My Tutorial kb** というナレッジ ベースを選択し、その行の右端にある削除アイコンを選択します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サポート ファイルの形式の詳細については、[サポートされるデータ ソース](../Concepts/data-sources-supported.md)に関するページを参照してください。 
 

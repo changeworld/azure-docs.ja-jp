@@ -3,15 +3,15 @@ title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Cod
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a9a750e239dd47ce85b6075c65c644258134ba52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438234"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core - Azure Dev Spaces
 
@@ -104,13 +104,13 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 > [!Note]
 > "*コマンド パレット*" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/dotnetcore/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
 
-パブリック URL 開けば、実行中のサービスを確認できます。
+パブリック URL を開くと、実行中のサービスを確認できます。
 
 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[.NET Core Launch (AZDS)]\(.NET Core の起動 (AZDS)\)* を再実行します。 例:
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[.NET Core Launch (AZDS)]\(.NET Core の起動 (AZDS)\)* を再実行します。 次に例を示します。
 
 1. ご利用のアプリケーションがまだ実行されている場合は、 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックしてそれを停止します。
 1. [`Controllers/HomeController.cs` の 22 行目](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22)を以下の内容に更新します。
@@ -139,7 +139,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code でコードを更新する
 
-デバッグ モードでサービスが稼働している間に、`Controllers/HomeController.cs` の 22 行目を更新します。 例:
+デバッグ モードでサービスが稼働している間に、`Controllers/HomeController.cs` の 22 行目を更新します。 次に例を示します。
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
@@ -159,7 +159,7 @@ Azure Dev Spaces では、コードが編集されるたびに新しいコンテ
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。 
 

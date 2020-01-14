@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443595"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM での Windows 再起動ループ
 この記事では、Microsoft Azure の Windows 仮想マシン (VM) で発生する可能性がある再起動ループについて説明します。
@@ -86,7 +86,7 @@ ms.locfileid: "71088469"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. "**BROKENSYSTEM**" キーを選択してから、 **[ファイル]**  >  **[ハイブの読み込み]** をメニューから選択します。
+13. **BROKENSYSTEM** キーを選択してから、 **[ファイル]**  >  **[Hive のアンロード]** をメニューから選択します。
 
 14. トラブルシューティング用 VM と OS ディスクの接続を切断します。
 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric クラスターの構成をアップグレードする | Microsoft Docs
+title: Azure Service Fabric クラスターの構成をアップグレードする
 description: Resource Manager テンプレートを使用して Azure で Service Fabric クラスターを実行する構成をアップグレードする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463291"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure でクラスターの構成をアップグレードする 
 
@@ -60,6 +51,6 @@ Azure Resource Manager を使用して次の方法のいずれかでクラスタ
 - 設定を直接変更するには、Azure PowerShell [Set-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) および [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) コマンドを使います。
 - 設定を直接変更するには、Azure CLI の [az sf cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) コマンドを使います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)について学習します。
 * [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)を行う方法を学習します。

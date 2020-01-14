@@ -5,22 +5,22 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 82738627b84713669cb6ddfc94c22b6f24b49e3a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894529"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530852"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する
-Azure の[リソース ログ](resource-logs-overview.md)からは、Azure リソースの内部操作で頻繁に見られるデータが豊富に提供されます。 この記事では、Log Analytics ワークスペースでリソース ログを収集する方法について説明します。このリソース ログの収集では、Azure Monitor Logs で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure プラットフォーム ログを収集する
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、Log Analytics ワークスペースでリソース ログを収集する方法について説明します。このリソース ログの収集では、Azure Monitor Logs で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>ワークスペースのリソース ログを使用して行えること
-Log Analytics ワークスペースにリソース ログを収集すると、ご利用の Azure リソースすべてのログをまとめて分析できるほか、[Azure Monitor ログ](data-platform-logs.md)で利用できる次のような機能をすべて活用できます。
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>ワークスペースのプラットフォーム ログを使用して行えること
+Log Analytics ワークスペースにプラットフォーム ログを収集すると、ご利用の Azure リソースすべてのログをまとめて分析できるほか、[Azure Monitor ログ](data-platform-logs.md)で利用できる次のような機能をすべて活用できます。
 
 * **ログ クエリ** - 強力なクエリ言語を使用して[ログ クエリ](../log-query/log-query-overview.md)を作成することで、診断データをすばやく分析して分析情報を取得できるほか、Azure Monitor の他のソースから収集したデータと組み合わせて分析することができます。
 * **アラート** - [Azure Monitor のログ アラート](alerts-log.md)を使用して、ご利用のリソース ログで識別された重大な状態およびパターンの事前通知を取得します。
@@ -30,10 +30,14 @@ Log Analytics ワークスペースにリソース ログを収集すると、�
 ワークスペースがまだない場合は、[新しいワークスペースを作成](../learn/quick-create-workspace.md)する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ワークスペースはログを送信するリソースと同じサブスクリプションに属している必要はありません。
 
 ## <a name="create-a-diagnostic-setting"></a>診断設定の作成
-既定では、リソース ログは収集されません。 Azure リソース用の診断設定を作成して、Log Analytics ワークスペースやその他の送信先でそれらを収集します。 詳細については、「[Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)」を参照してください。
+Azure リソース用の診断設定を作成して、Log Analytics ワークスペースやその他の送信先にプラットフォーム ログを送信します。 詳細については、「[Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)」を参照してください。
 
-## <a name="collection-mode"></a>収集モード
-Log Analytics ワークスペースで収集されたデータは、「[Azure Monitor Logs の構造](../log-query/logs-structure.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
+
+## <a name="activity-log-collection"></a>アクティビティ ログの収集
+アクティビティ ログは、任意の 1 つのサブスクリプションから複数の Log Analytics ワークスペースに送信できます。 Log Analytics ワークスペースで収集されたリソース ログ データは、**AzureActivity** テーブルに格納されます。 
+
+## <a name="resource-log-collection-mode"></a>リソース ログ収集モード
+Log Analytics ワークスペースで収集されたリソース ログ データは、「[Azure Monitor Logs の構造](../log-query/logs-structure.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
 
 - Azure 診断 - 書き込まれたすべてのデータが _AzureDiagnostics_ テーブルに含められます。
 - リソース固有 - データは、リソースのカテゴリごとに個別のテーブルに書き込まれます。
@@ -51,7 +55,7 @@ Log Analytics ワークスペースで収集されたデータは、「[Azure Mo
 
 AzureDiagnostics テーブルは次のようになります。  
 
-| ResourceProvider    | カテゴリ     | A  | b  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | カテゴリ     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft.Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
@@ -68,7 +72,7 @@ AzureDiagnostics テーブルは次のようになります。
  
 - テーブル *Service1AuditLogs* は次のようになります。
 
-    | リソース プロバイダー | カテゴリ | A | b | C |
+    | リソース プロバイダー | カテゴリ | A | B | C |
     | -- | -- | -- | -- | -- |
     | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
@@ -118,7 +122,7 @@ Azure Data Factory サービスの場合は、非常に詳細なログセット�
 ソース固有モードを使用するように、ご利用のログをできるだけ早く移行する必要があります。 今すぐ実行できない場合は、暫定措置として Azure Data Factory ログをそれぞれに固有のワークスペースに分離して、これらのログがワークスペースに収集される他のログの種類に影響を与える可能性を最小限に抑えるようにします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Azure リソース ログの詳細については、[Azure リソース ログの概要](resource-logs-overview.md)を記載したページを参照してください。
-* Log Analytics ワークスペースにリソース ログを収集するように診断設定を作成するには、「[Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)」を参照してください。
+* [リソース ログの詳細について読む](resource-logs-overview.md)
+* [Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)。

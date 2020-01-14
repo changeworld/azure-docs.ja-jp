@@ -1,25 +1,14 @@
 ---
-title: PowerShell を使用した Service Fabric アプリのアップグレード | Microsoft Docs
+title: PowerShell を使用した Service Fabric アプリのアップグレード
 description: この記事では、PowerShell による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: db0627c72ea6e7e3b272b818697b8e61b485be78
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b113b5a1042518e3b0d86e53796c5fe49afed418
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426796"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]
@@ -134,7 +123,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 
 練習として、バージョンをバージョン 2 からバージョン 3 にアップグレードするか、バージョン 2 からバージョン 1 に変更してみることができます。 バージョン 2 からバージョン 1 への移行もアップグレードと見なされます。 タイムアウトと正常性ポリシーをいろいろ試して、これらに精通してください。 Azure クラスターにデプロイするときに、パラメーターを適切に設定する必要があります。 タイムアウトは控えめに設定することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。

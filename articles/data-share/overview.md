@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499366"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660802"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 
@@ -35,7 +35,7 @@ Azure Data Share はさまざまな業界で使用できます。 たとえば�
 
 Azure Data Share のもう 1 つのユース ケースは、データ コンソーシアムの確立です。 たとえば、複数の異なる研究機関が、1 つの信頼できる団体とデータを共有できます。 データは、Azure の分析ツールを使って分析または集計された後、関心のあるパーティと共有されます。 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Azure Data Share は、現在、スナップショット ベースの共有とインプレース共有 (制限付きプレビュー) を提供しています。 
 
@@ -47,7 +47,7 @@ Azure Data Share は、現在、スナップショット ベースの共有と�
 
 データ コンシューマーは、データ共有を受け入れると、自分で選択したデータ ストアでデータを受け取ることができます。 たとえば、データ プロバイダーが Azure Blob Storage を使ってデータを共有している場合、データ コンシューマーは Azure Data Lake Store でこのデータを受け取ることができます。 同様に、データ プロバイダーが Azure SQL Data Warehouse からのデータを共有する場合、データ コンシューマーは、データを Azure Data Lake Store、Azure SQL Database、または Azure SQL Data Warehouse に受信するかどうかを選択できます。 SQL ベースのソースから共有する場合、データ コンシューマーは、parquet または csv でデータを受信するかどうかを選択することもできます。 
 
-インプレース共有は現在、Azure Data Explorer 向けの制限付きプレビューの段階です。 データ プロバイダーは、データが置かれている場所でデータを共有でき、シンボリック リンクを介したデータの移動はありません。 Azure Data Explorer 向けのインプレース共有の制限付きプレビューには、[こちら](https://aka.ms/azuredatasharepreviewsignup)からサインアップしてください。 
+インプレース共有は現在、Azure Data Explorer 向けの制限付きプレビューの段階です。 データ プロバイダーは、データが置かれている場所でデータを共有でき、シンボリック リンクを介したデータの移動はありません。 Azure Data Explorer のインプレース共有の制限付きプレビューには、[こちら](https://aka.ms/azuredatasharepreviewsignup)からサインアップしてください。 
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -77,7 +77,7 @@ Azure Data Share は、現在、スナップショット ベースの共有と�
 
 上記のすべての主要機能は、Azure または REST API によってサポートされます。 REST API での Azure Data Share の使用に関して詳しくは、リファレンス ドキュメントをご覧ください。 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Azure Data Share では、保存時と転送中のデータを保護するために Azure によって提供される基盤のセキュリティが利用されます。 データは保存時に暗号化され、基になるデータ ストアでサポートされます。 データは転送中も暗号化されます。 データ共有に関するメタデータも、保存時と転送中に暗号化されます。 
 
@@ -94,6 +94,6 @@ Azure Data Share 自体にはデータは保存されません。 データは�
 
 サービスを利用するために、Azure Data Share サービスが自分のリージョンで使用できる必要はありません。 たとえば、Azure Data Share をまだ利用できないリージョンにある Azure Storage アカウントにデータが格納されている場合でも、サービスを利用してデータを共有できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。

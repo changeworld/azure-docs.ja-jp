@@ -1,5 +1,5 @@
 ---
-title: Azure Storage Explorer を使用して Azure ファイル共有を管理するためのクイック スタート
+title: Azure Storage Explorer を使用した Azure ファイル共有の管理
 description: このクイック スタートを使用して、Azure Storage Explorer を使用して Azure Files を管理する方法を学習します。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431823"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>クイック スタート:Azure Storage Explorer を使用して Azure ファイル共有の作成と管理を行う
 このガイドでは、[Azure Storage Explorer](storage-files-introduction.md) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -80,12 +80,12 @@ Azure ファイル共有を作成したところで、SMB でファイル共有�
 
 ウィンドウの下部にある **[アクティビティ]** ウィンドウに、ダウンロードの進行状況が表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 Storage Explorer を使用してリソースを削除することはできません。 このクイック スタートからクリーンアップするには、[Azure Portal](https://portal.azure.com/) を使用します。 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Files とは何ですか。](storage-files-introduction.md)

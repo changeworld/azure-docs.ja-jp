@@ -1,56 +1,56 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用してモバイル アプリに認証を追加する
-description: ユーザー認証を設定したり、モバイル アプリケーションがソーシャル アカウント、Azure Active Directory、およびカスタム認証を使用して認証を受けられるようにしたりするのに役立つ App Center などのサービスについて説明します。
+description: ユーザー認証を設定したり、モバイル アプリケーションがソーシャル アカウント、Azure Active Directory、およびカスタム認証を使用して認証を受けられるようにしたりするのに役立つ Visual Studio App Center などのサービスについて説明します。
 author: elamalani
 ms.assetid: 34a8a070-2222-4faf-9090-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 8885f6cd91179f4dee6456277d47581f68c21723
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453239"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
 
-ご利用のアプリケーション全体でのユーザーとその行動を把握することにより、開発者はユーザーに合わせたエクスペリエンスを作成してユーザーの関心を高めることができます。 ご自分の組織内のユーザー向けにコラボレーション アプリケーションを構築しているアプリケーション開発者であっても、次のソーシャル ネットワーク プラットフォームを作成している場合であっても、ユーザーを認証し、ユーザー ID を管理する方法が必要になります。 ID 管理サービスを使用することは、モバイル バックエンド サービスの最も重要な機能の 1 つです。
+ご利用のアプリケーション全体でのユーザーとその行動を把握することにより、開発者はユーザーに合わせたエクスペリエンスを作成してユーザーの関心を高めることができます。 ご自分の組織内のユーザー向けにコラボレーション アプリケーションを構築しているアプリケーション開発者であっても、次のソーシャル ネットワーク プラットフォームを作成している場合であっても、ユーザーを認証し、ユーザー ID を管理する方法が必要になります。 ID 管理サービスは、モバイル バックエンド サービスの最も重要な機能の 1 つです。
 
 次のサービスを使用することで、ご利用のモバイル アプリ内でユーザー認証を有効にすることができます。
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Auth](/appcenter/auth/) はクラウドベースの ID 管理サービスです。開発者はこれを使用してユーザーを認証し、ユーザー ID を管理することができます。 また、App Center Auth は App Center のその他の部分とも統合されています。これにより、開発者はユーザー ID を活用して他のサービスで[ユーザー データを表示](/appcenter/data/index)することに加え、[個々のデバイスではなくユーザーにプッシュ通知を送信](/appcenter/push/push-to-user#app-center-auth-set-identity)することができます。 
+[App Center Auth](/appcenter/auth/) はクラウドベースの ID 管理サービスです。開発者はこれを使用してユーザーを認証し、ユーザー ID を管理することができます。 App Center Auth は、Visual Studio App Center のその他の部分とも統合されます。 開発者は、ユーザー ID を使用して、他のサービスの[ユーザー データを表示したり](/appcenter/data/index)、個々のデバイスではなく[ユーザーにプッシュ通知を送信したり](/appcenter/push/push-to-user#app-center-auth-set-identity)することができます。 
 
 **主な機能**
-- **Microsoft Azure Active Directory B2C (Azure AD B2C) を利用** 
-    - エンタープライズ レベル。
+- Azure Active Directory B2C (Azure AD B2C) を利用。 
+    - エンタープライズ グレード。
     - 高可用性。
     - セキュリティで保護されたグローバルサービス。
-- **独自の ID を持ち込み**、Auth0 や Firebase などのその他の一般的な ID およびアクセス管理プロバイダーを使用します。
-- **AAD サポート** 
-    - 既存の AAD テナントを接続します。 
+- 独自の ID を持ち込み、Auth0 や Firebase などのその他の一般的な ID およびアクセス管理プロバイダーを使用するオプション。
+- Azure Active Directory のサポート。
+    - 既存の Azure AD テナントに接続します。 
     - 会社のドメインに対する認証を有効にします。
     - 機密データへのアクセスを管理します。
-- **シンプルなユーザー エクスペリエンス**と MSAL ライブラリを App Center SDK でラップすることによる魔法のような SDK エクスペリエンス。
-- **プラットフォームのサポート** - iOS、Android、Xamarin、React Native。
+- シンプルなユーザー エクスペリエンスと Microsoft 認証ライブラリを Visual Studio App Center SDK. でラップすることによる魔法のような SDK エクスペリエンス。
+- iOS、Android、Xamarin、React Native のプラットフォームのサポート。
 
 **参照**
-- [App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
+- [Visual Studio App Center でのサインアップ](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
 - [App Center Auth を使ってみる](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
-[Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) は企業-消費者間の ID 管理サービスです。開発者はこれを使用して、自分の顧客を認証することができます。 このホワイトラベル サービスを使用することで、開発者はユーザーが自分の Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全にやりとりする方法をカスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 
+[Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) は企業-消費者間 (B2C) の ID 管理サービスです。開発者はこれを使用して、自分の顧客を認証することができます。 このホワイトラベル サービスを使用することで、開発者はユーザーが自分の Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全にやりとりする方法をカスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 
 
 **主な機能**
 - 顧客の好みの ID プロバイダーを使用して顧客を安全に認証します。
-- **顧客の ID とアクセスの管理**。
-- Facebook、GitHub、Google、LinkedIn、Twitter、WeChat、Weibo などのソーシャル ログインがサポートされています。
-- OpenID Connect、SAML などの**業界標準のプロトコル**を使用してユーザー アカウントにアクセスできるため、多様なプラットフォーム上で ID の管理が可能になります。
-- ブランド化された登録とログインのエクスペリエンスを提供します。
+- 顧客の ID とアクセスの管理。
+- Facebook、GitHub、Google、LinkedIn、Twitter、WeChat、Weibo などのソーシャル メディアのサインインがサポートされています。
+- OpenID Connect、SAML などの業界標準のプロトコルを使用してユーザー アカウントにアクセスできるため、多様なプラットフォーム上で ID の管理が可能になります。
+- ブランド化された登録とサインインのエクスペリエンスを提供します。
 - CRM データベース、マーケティング分析ツール、アカウント検証システムと容易に統合することが可能です。
-- 顧客のログイン、ユーザー設定、および変換データをキャプチャします。
+- 顧客のサインイン、ユーザー設定、および変換データをキャプチャします。
 
 **参照**
 - [Azure Portal](https://portal.azure.com/)
@@ -59,15 +59,15 @@ ms.locfileid: "72795167"
 - [サンプル](/azure/active-directory-b2c/code-samples)
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-[Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) は Microsoft が提供するクラウドベースの ID およびアクセス管理サービスであり、従業員によるサインインとアクセスを支援します。
-- Microsoft Office 365、Azure portal、その他何千という SaaS アプリケーションなど、外部リソース。
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) は Microsoft が提供するクラウドベースの ID およびアクセス管理サービスであり、従業員によるサインインとアクセスを支援します。
+- 外部リソース。Microsoft Office 365、Azure portal、その他何千という サービスとしてのソフトウェア (SaaS) アプリケーションなどです。
 - 企業ネットワークとイントラネット上のアプリや、自分の組織で開発したクラウド アプリなどの内部リソース。
 
 **主な機能**
-- ユーザーが必要とするアプリケーションにユーザーを接続することによる**シームレスかつ安全性の高いアクセス**。
-- **包括的な ID 保護**と、ユーザー、位置情報、デバイス、データ、アプリ コンテキストに基づく ID およびアクセスの強化されたセキュリティ。
-- **何千もの事前統合されたアプリ**。Office 365、Salesforce.com、Box など、商用アプリケーションとカスタム アプリケーションの両方があります。
-- **大規模なアクセス管理**。
+- ユーザーが必要とするアプリケーションにユーザーを接続することによるシームレスかつ安全性の高いアクセス。
+- 包括的な ID 保護と、ユーザー、位置情報、デバイス、データ、アプリ コンテキストに基づく ID およびアクセスの強化されたセキュリティ。
+- 何千もの事前統合されたアプリ。Office 365、Salesforce.com、Box など、商用アプリケーションとカスタム アプリケーションの両方があります。
+- 大規模なアクセス管理機能。
 
 **参照**
 - [Azure Portal](https://portal.azure.com/)

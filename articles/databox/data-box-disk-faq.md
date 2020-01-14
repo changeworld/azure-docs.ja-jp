@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438638"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -113,7 +113,7 @@ A. はい。 また、Microsoft では、US Gov リージョンでのみ、自�
 A.  Data Box Disk ソリューションのディスク数は最大 5 台で、使用可能な最大容量は 35 TB です。 ディスク自体は 8 TB (7 TB を使用可能) です。
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>Q. Data Box Disk でサポートされるブロック BLOB とページ BLOB の最大サイズを教えてください。 
-A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/common/storage-scalability-targets.md)」をご覧ください。
+A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>Q. Data Box Disk のデータ転送速度を教えてください。
 A. USB 3.0 で接続したディスクでテストしたところ、ディスクのパフォーマンスは最大 430 MB/s でした。 実際の数値は、使用するファイルのサイズによって異なります。 ファイルのサイズが小さい場合は、パフォーマンスが低下する可能性があります。
@@ -189,7 +189,7 @@ A. はい。 データは Azure にアップロードされましたが、指定
  - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
  - マネージド ディスクは *databoxdisk-invalid-md-* で始まるブロック BLOB コンテナーに移動されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk のシステム要件](data-box-disk-system-requirements.md)を確認する。
 - [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。

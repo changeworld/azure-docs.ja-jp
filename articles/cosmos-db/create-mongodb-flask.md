@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API と Python SDK を使用して Flask Web アプリを構築する
+title: Azure Cosmos DB の MongoDB 用 API を使用して Python Flask Web アプリを作成する
 description: Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができる Python Flask のコード サンプルについて説明します。
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445487"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 
@@ -90,7 +90,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
     todos = db.todo #Select the collection
     ```
 
-* アプリケーションの作成
+* アプリを作成する
 
     ```Python
     app = Flask(__name__)
@@ -118,7 +118,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 動作している Cosmos アカウントに対してコードをテストする場合は、Azure portal に移動してアカウントを作成し、接続文字列の情報を取得します。 これをアプリにコピーします。
 
-1. [Azure portal](https://portal.azure.com/) の Cosmos アカウントで、左側のナビゲーションの **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを使用して、左側のナビゲーションにある **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. ルート ディレクトリ内の **app.py** ファイルを開きます。
 
@@ -157,11 +157,11 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Cosmos アカウントを作成して、Flask アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 

@@ -3,16 +3,16 @@ title: emptyDir ボリュームをコンテナー グループにマウントす
 description: emptyDir ボリュームをマウントし、Azure Container Instances のコンテナー グループに属するコンテナー間でデータを共有する方法について説明します。
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533231"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552459"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances に emptyDir ボリュームをマウントする
 
-*emptyDir* ボリュームをマウントし、Azure Container Instances のコンテナー グループに属するコンテナー間でデータを共有する方法について説明します。
+*emptyDir* ボリュームをマウントし、Azure Container Instances のコンテナー グループに属するコンテナー間でデータを共有する方法について説明します。 コンテナー化されたワークロードのエフェメラル キャッシュとして *emptyDir* ボリュームを使用します。
 
 > [!NOTE]
 > *emptyDir* ボリュームのマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーに取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
@@ -27,7 +27,7 @@ ms.locfileid: "74533231"
 * 長時間実行されるタスクの間のチェックポイント機能
 * サイドカー コンテナーが取得し、アプリケーション コンテナーがサービスを提供するデータの保存
 
-*emptyDir* ボリュームのデータはコンテナーがクラッシュしても存続します。 ただし、再開後のコンテナーが *emptyDir* ボリュームのデータを永続化するかどうかは保証されません。
+*emptyDir* ボリュームのデータはコンテナーがクラッシュしても存続します。 ただし、再開後のコンテナーが *emptyDir* ボリュームのデータを永続化するかどうかは保証されません。 コンテナー グループを停止した場合、*emptyDir* ボリュームは永続化されません。
 
 ## <a name="mount-an-emptydir-volume"></a>emptyDir ボリュームをマウントする
 
@@ -42,7 +42,7 @@ ms.locfileid: "74533231"
 
 Azure Resource Manager テンプレートによるコンテナー インスタンスのデプロイ例を見るには、[Azure Container Instances での複数コンテナーのデプロイ](container-instances-multi-container-group.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Instances にその他の種類のボリュームをマウントする方法について学習してください。
 

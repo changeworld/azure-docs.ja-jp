@@ -1,26 +1,17 @@
 ---
-title: チュートリアル - ローカル開発クラスター内で実行している Azure Service Fabric Mesh Web アプリケーションをデバッグする
+title: ローカルで実行されている Azure Service Fabric Mesh Web アプリをデバッグする
 description: このチュートリアルでは、ローカル クラスター上で実行している Azure Service Fabric Mesh アプリケーションをデバッグします。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805122"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494947"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル:ローカル開発クラスター内で実行されている Service Fabric Mesh アプリケーションをデバッグする
 
@@ -80,11 +71,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 現在、ある問題が原因で、`using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` の呼び出しがサービスへの接続に失敗します。 この問題は、ホストの IP アドレスが変わるたびに発生します。 それを解決するには、次のようにします。
 
-1. ローカル クラスターからアプリを削除します (Visual Studio で **[ビルド]** > **[ソリューションのクリーン]** を選択します)。
-2. Service Fabric ローカル クラスター マネージャーから **[Stop Local CLuster]\(ローカル クラスターの停止\)** を選択し、**[Start Local Cluster]\(ローカル クラスターを起動する\)** を選択します。
+1. ローカル クラスターからアプリを削除します (Visual Studio で **[ビルド]**  >  **[ソリューションのクリーン]** を選択します)。
+2. Service Fabric ローカル クラスター マネージャーから **[Stop Local CLuster]\(ローカル クラスターの停止\)** を選択し、 **[Start Local Cluster]\(ローカル クラスターを起動する\)** を選択します。
 3. アプリを再デプロイします (Visual Studio で **F5** キーを押します)。
 
-"**No Service Fabric local cluster is running**" (Service Fabric のローカル クラスターが実行されていません) というエラーが表示された場合、Service Fabric のローカル クラスター マネージャー (LCM) が実行中になっていることを確認し、タスク バーの LCM アイコンを右クリックして、**[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。 起動したら、Visual Studio に戻り、**F5** キーを押します。
+"**No Service Fabric local cluster is running**" (Service Fabric のローカル クラスターが実行されていません) というエラーが表示された場合、Service Fabric のローカル クラスター マネージャー (LCM) が実行中になっていることを確認し、タスク バーの LCM アイコンを右クリックして、 **[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。 起動したら、Visual Studio に戻り、**F5** キーを押します。
 
 アプリの起動時に **404** エラーが表示された場合には、**service.yaml** 内の環境変数が正しくない可能性があります。 `ApiHostPort` と `ToDoServiceName` が「[環境変数を作成する](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)」の手順に従って正しく設定されていることを確認します。
 
@@ -93,18 +84,18 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
 Visual Studio で Service Fabric Mesh アプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 バックエンド サービスから To Do 項目が取得される方法を表示するには、OnGet() メソッドをデバッグします。
-1. **WebFrontEnd** プロジェクト内で **[Pages]** > **[Index.cshtml]** > **[Index.cshtml.cs]** の順に開き、**OnGet** メソッド (17 行目) 内にブレークポイントを設定します。
+1. **WebFrontEnd** プロジェクト内で **[Pages]**  >  **[Index.cshtml]**  >  **[Index.cshtml.cs]** の順に開き、**OnGet** メソッド (17 行目) 内にブレークポイントを設定します。
 2. **ToDoService** プロジェクト内で **[TodoController.cs]** を開き、**Get** メソッド (15 行目) 内にブレークポイントを設定します。
 3. ブラウザーに戻り、ページを更新します。 Web フロントエンドの `OnGet()` メソッドでブレークポイントに到達します。 `backendUrl` 変数を検査すると、**service.yaml** ファイル内で定義した環境変数が、バックエンド サービスに接続するために使用する URL にどのように組み込まれているかを確認できます。
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` の呼び出しをステップ オーバー (F10) し、コントローラーの `Get()` ブレークポイントに到達します。 このメソッドでは、メモリ内のリストから To Do 項目のリストがどのように取得されているかを確認できます。
 5. 完了したら、Visual Studio で **Shift + F5** キーを押して、プロジェクトのデバッグを停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Service Fabric mesh アプリケーションをビルドする際の動作
+> * Azure Service Fabric Mesh アプリケーションをビルドする際の動作
 > * サービス間の呼び出しを確認するためのブレークポイントを設定する方法
 
 次のチュートリアルに進みます。

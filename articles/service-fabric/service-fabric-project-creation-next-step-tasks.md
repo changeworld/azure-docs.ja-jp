@@ -1,25 +1,14 @@
 ---
-title: Service Fabric プロジェクトの作成の次の手順 | Microsoft Docs
+title: Service Fabric プロジェクトの作成の次の手順
 description: Visual Studio で作成したアプリケーション プロジェクトについて説明します。  チュートリアルを使用してサービスを構築する方法を説明し、Service Fabric のサービスの開発について詳しく説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
-ms.author: atsenthi
-ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349410"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、試してみるべきチュートリアル、プロジェクトの構成、その他の詳細情報、考えられる次のステップについて説明します。
@@ -69,7 +58,7 @@ Service Fabric アプリケーションはさまざまなサービスで構成�
 ## <a name="learn-about-the-application-lifecycle"></a>アプリケーション ライフサイクルについて
 他のプラットフォームと同様に、通常、Service Fabric アプリケーションは、設計、開発、テスト、デプロイ、アップグレード、保守、削除の各フェーズを通過します。 [この記事](service-fabric-application-lifecycle.md)では、API の概要と、Service Fabric アプリケーション ライフサイクルの各フェーズでさまざまなロールが API をどのように使用するかについて説明しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure での Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用したクラスターの視覚化 (デプロイ済みのアプリケーションや物理的なレイアウトなど)
 - [サービスのアップグレードとバージョン管理](service-fabric-application-upgrade-tutorial.md)

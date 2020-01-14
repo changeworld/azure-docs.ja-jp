@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のサービスとの接続と通信 | Microsoft Docs
+title: Azure Service Fabric のサービスとの接続と通信
 description: Service Fabric のサービスに対して解決、接続、通信を行う方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: msfussell
-ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458227"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
@@ -29,7 +20,7 @@ Service Fabric アプリケーションは、通常はさまざまなサービ�
 ## <a name="bring-your-own-protocol"></a>独自のプロトコルを使用する
 Service Fabric は、サービスのライフサイクル管理に役立ちますが、サービスで何を実行するかを決める機能は備えていません。 このことは通信にも当てはまります。 Service Fabric によってサービスが開かれると、サービスの側で、必要なプロトコルまたは通信スタックを使用して、受信要求向けにエンドポイントを設定することができます。 サービスは、URI などのアドレス指定スキームを使用して通常の **IP:ポート** アドレスでリッスンします。 複数のサービス インスタンスまたはレプリカでホスト プロセスを共有できますが、その場合はそれぞれが別のポートを使用するか、Windows での http.sys カーネル ドライバーのようなポート共有メカニズムを使用する必要があります。 いずれの場合も、ホスト プロセス内の各サービス インスタンスまたはレプリカを一意にアドレス指定できることが必要です。
 
-![service endpoints][1]
+![サービス エンドポイント][1]
 
 ## <a name="service-discovery-and-resolution"></a>サービスの検出と解決
 分散システムでは、サービスが時間の経過と共に、あるコンピューターから別のコンピューターに移動することがあります。 移動の理由にはさまざまなものがあり、リソースの分散、アップグレード、フェールオーバー、スケールアウトなどが挙げられます。このため、別の IP アドレスを持つノードにサービスが移動すると、サービス エンドポイントのアドレスが変化することになります。また、サービスで動的に選択されるポートを使用している場合は、別のポートで開かれることがあります。
@@ -38,7 +29,7 @@ Service Fabric は、サービスのライフサイクル管理に役立ちま�
 
 Service Fabric では、ネーム サービスという検出および解決サービスを提供しています。 ネーム サービスでは、名前付きサービス インスタンスを、そのリッスン対象のエンドポイント アドレスにマッピングするテーブルが保持されています。 Service Fabric 内のすべての名前付きサービス インスタンスは、`"fabric:/MyApplication/MyService"` のように、URI として表される一意の名前を持ちます。 サービスの有効期間中にサービスの名前が変わることはありません。サービスの移動時に変化する可能性があるのは、エンドポイント アドレスのみです。 これは、URL は不変でも IP アドレスは変わることがある Web サイトと似ています。 また、Web サイトの URL を IP アドレスに解決する Web 上の DNS に似た機能として、Service Fabric には、サービス名をサービスのエンドポイント アドレスにマッピングするレジストラーがあります。
 
-![service endpoints][2]
+![サービス エンドポイント][2]
 
 サービスの解決とサービスへの接続を行う際は、以下の手順を繰り返し実行する必要があります。
 
@@ -55,14 +46,14 @@ Service Fabric では、ネーム サービスという検出および解決サ�
 
 次の図に示すように、Service Fabric クラスターで実行されている DNS サービスが DNS 名をサービス名にマップすると、Naming Service によって解決されて、接続するエンドポイントのアドレスが返されます。 サービスの DNS 名は、作成時に提供されます。 
 
-![service endpoints][9]
+![サービス エンドポイント][9]
 
 DNS サービスの使用方法の詳細については、「[DNS service in Azure Service Fabric (Azure Service Fabric での DNS サービス)](service-fabric-dnsservice.md)」をご覧ください。
 
 ### <a name="reverse-proxy-service"></a>リバース プロキシ サービス
 リバース プロキシは、HTTPS を含む HTTP エンドポイントを公開するクラスター内のサービスを処理します。 リバース プロキシは、特定の URI 形式を持つことにより、他のサービスとそのメソッドの呼び出しを大幅に簡略化します。Naming Serivce を使用して、1 つのサービスが他のサービスと通信するのに必要となる、解決、接続、再試行の各ステップを処理します。 言い換えると、他のサービスを呼び出すとき、それを 1 つの URL を呼び出すのと同様にシンプルにして、Naming Service が見えないようにしています。
 
-![service endpoints][10]
+![サービス エンドポイント][10]
 
 リバース プロキシ サービスの使用方法の詳細については、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。
 
@@ -178,7 +169,7 @@ Reliable Services フレームワークには、事前に構築されたいく�
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>カスタム プロトコルとその他の通信フレームワークの使用
 サービスでは、通信用の任意のプロトコルまたはフレームワークを使用できるため、TCP ソケットでのカスタム バイナリ プロトコルも、 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) または [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) を介したストリーミング イベントも使用することができます。 Service Fabric では、通信スタックを接続できる通信 API が提供されるだけでなく、検出と接続のためのすべての作業が不要になります。 詳細については、 [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md) に関するこの記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md)の概念と利用できる API の詳細について確認し、[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)の利用をすぐに開始するか、[OWIN 自己ホストによる Web API](service-fabric-reliable-services-communication-webapi.md) を使用して通信リスナーを記述する方法についてさらに深く理解します。
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

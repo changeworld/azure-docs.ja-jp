@@ -1,113 +1,93 @@
 ---
 title: Azure のモノのインターネット (IoT) テクノロジとソリューション
-description: PaaS/SaaS テクノロジと Azure IoT ソリューションを構築するために使用可能なソリューションのコレクションを表示します。
+description: Azure IoT ソリューションの作成に使用できる一連のテクノロジとサービスについて説明します。
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457177"
 ---
-# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>モノのインターネット (IoT) テクノロジとソリューション: PaaS と SaaS
+# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>IoT ソリューションを作成するための Azure のテクノロジとサービス
 
-Microsoft には、デジタル変換の特典へのアクセスを有効にして、すべての顧客のニーズをサポートするポートフォリオが構築されています。 Azure IoT 製品群は、使用可能な PaaS/SaaS テクノロジとソリューションの概要です。 これには、独自のソリューションをビルドするために使用できる 2 つのパスが表示されます:
+Azure IoT のテクノロジとサービスでは、組織のデジタル変革を実現するさまざまな IoT ソリューションを作成する方法を提供しています。 たとえば、次のように操作できます。
 
-- サービスとしてのプラットフォーム (PaaS): 次のいずれかのサービスを使用するアプリケーションをビルドします。
-    - [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/)。これらは、カスタム IoT ソリューションの開発を高速化するための、エンタープライズ レベルのあらかじめ構成されたソリューションのコレクションです。 
-    - [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) サービス。このサービスを使用すると、物理環境をモデル化し、空間インテリジェンス グラフとドメイン固有のオブジェクト モデルを使用して、コンテキスト認識の IoT ソリューションを作成することができます。
+- マネージド IoT アプリケーション プラットフォームである [Azure IoT Central](https://apps.azureiotcentral.com) を使用して、エンタープライズレベルの安全な IoT ソリューションを作成してデプロイする。 IoT Central は、ソリューション開発プロセスを能率化する、業界 (小売、医療など) ごとの一連のアプリケーション テンプレートを備えています。
+- Azure IoT [ソリューション アクセラレータ](https://www.azureiotsolutions.com)用にオープンソース コード ベースを拡張し、リモート監視や予測メンテナンスなどの一般的な IoT シナリオを実装する。
+- [Azure IoT Hub](../iot-hub/about-iot-hub.md) や [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) などの Azure IoT プラットフォーム サービスを使用して、カスタム IoT ソリューションをゼロから作成する。
 
-- サービスとしてのソフトウェア(SaaS): 高速で、開始[Azure IoT Central](https://azure.microsoft.com/services/iot-central/)、新しい SaaS ソリューションは、IoT ソリューションの複雑さにさらされることがなく IoT アプリケーションを開発します。 組織にIoT ソリューションをビルドするリソースが不足している場合、Azure IoT Central は、コード不要で数分以内にデバイス モデル、ダッシュ ボード、およびルールを作成できるIoT ソリューションです。
+![Azure IoT のテクノロジ、サービス、ソリューション](./media/iot-services-and-technologies/iot-technologies-services.png)
 
-![Azure IoT のテクノロジとソリューション](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
+## <a name="azure-iot-central"></a>Azure IoT Central
 
-## <a name="solutions"></a>解決方法
+[IoT Central アプリケーション プラットフォーム](https://apps.azureiotcentral.com)は、エンタープライズレベルの IoT ソリューションの開発、管理、保守に伴う負担とコストを削減します。 IoT Central のカスタマイズ可能な Web UI で、デバイスの状態を監視し、ルールを作成して、ライフ サイクル全体を通して何百万ものデバイスとそのデータを管理することができます。 IoT Central 内の API サーフェスによりプログラムによるアクセスが可能になり、IoT ソリューションを構成したりそれらと連携したりすることができます。
 
-ソリューション アクセラレータと SaaS サービスですばやく作業を開始します。 リモートの監視、予測の保守、および接続されているファクトリを完全にカスタマイズ可能なソリューションを作成するなど、一般的な IoT シナリオを有効にする構成済みのソリューションから選択します。 または、Azure IoT Central では、クラウド ソリューションに関する専門知識を必要としない、強力な IoT シナリオを実現するフル マネージドの、エンド ツー エンド ソリューションを使用します。
+Azure IoT Central は、カスタム IoT ソリューションの作成に使用できるフル マネージドのアプリケーション プラットフォームです。 ソリューションを作成するために、IoT Central では、アプリケーション テンプレートが使用されます。 汎用的なソリューションのためのテンプレートに加え、エネルギー、医療、行政、小売など、業界固有のテンプレートも用意されています。 IoT Central アプリケーション テンプレートを使用すると、IoT Central アプリケーションを数分でデプロイでき、その後、テーマ、ダッシュボード、ビューを使ってそれをカスタマイズすることができます。
 
-### <a name="azure-iot-solution-accelerators-paas"></a>Azure IoT ソリューション アクセラレータ (PaaS)
+[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com)からデバイスを選択すれば、簡単に自分のソリューションに接続することができます。 IoT Central の Web UI を使用してデバイスを監視、管理することで、デバイスとその接続を正常な状態に保つことができます。 IoT Central アプリケーションを別のビジネス アプリケーションと統合するには、コネクタと API を使用します。
 
-Azure IoT ソリューション アクセラレータは、高レベルの IoT ソリューションに制御を提供するカスタマイズ可能な PaaS ソリューションです。 企業が接続された操作のために IoT を実装する場合、または接続済み製品への特定のカスタマイズ要件がある場合は、Azure IoT ソリューション アクセラレータが必要なコントロールを提供します。 
+フル マネージドのアプリケーション プラットフォームとして、IoT Central にはシンプルで予測可能な価格モデルが採用されています。
 
-多数のデバイスまたはデバイス モデルのある組織や、コネクテッド ファクトリ ソリューションを必要としている製造業者は、Azure IoT ソリューション アクセラレータから利点を活用できる会社の例です。 IoT ソリューション アクセラレータは、複雑なニーズに対応する高度なカスタマイズソリューションを作り出すことで、次のものを提供します。 
+## <a name="azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータ
 
-- 事前構築済みのソリューション
-    - リモート監視
-    - コネクテッド ファクトリ
-    - 予測的なメンテナンス
-    - デバイスのシミュレーション
-- 数分でデプロイする性能
-- 価値実現までを短縮した時間
-- 最高のコントロールを提供するソリューション 
- 
-### <a name="azure-iot-central-saas"></a>Azure IoT Central (SaaS)
+[Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com)は、エンタープライズレベルのカスタマイズ可能なソリューションの集まりです。 それらのソリューションをそのままデプロイすることも、オープンソースの Java または .NET ソース コードを使用してカスタム IoT ソリューションを開発することもできます。
 
-Azure IoT Central (SaaS) はフル マネージドの SaaS ソリューションで、最小限の IoT エクスペリエンスで簡単に開始できます。 ビジネスが、カスタマイズの速度を追求している場合、SaaS モデルは IoT 実装のニーズに最適にです。 
+Azure IoT ソリューション アクセラレータは、IoT ソリューションを高度に制御する手段となります。 一般的な IoT シナリオを想定した事前構築済みのソリューションがソリューション アクセラレータには含まれており、ご利用の Azure サブスクリプションにそれらを数分でデプロイすることができます。 このシナリオには以下が含まれます。
 
-より少ないデバイスモデルで、より多くの予期できるシナリオを持ち、限られたIoT/IT 性能を持つ組織は、これからSaaS アプローチを通して IoTの利点を生かすことができます。 以前は接続済み製品を開発するための時間、資金、専門知識を持ち合わせていなかったビジネスは、今、Azure IoT Central で簡単に始めることができます。 Microsoft は、共通するIoT 実行の要件に応えた完成度の高い SaaS ソリューションを提供する先端企業です。 
+  - リモート監視
+  - コネクテッド ファクトリ
+  - 予測的なメンテナンス
+  - デバイスのシミュレーション
 
-- フル マネージドの IoT SaaS
-- クラウドソリューション開発の専門知識を必要としない
-- ニーズに合わせて構成可能
-- 単純なIoT ニーズに最適
+すべてのソリューション アクセラレータのオープンソースのコード ベースは GitHub で入手できます。 コードをダウンロードし、実際の IoT 要件に合わせてソリューション アクセラレータをカスタマイズしてください。
 
-### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Azure IoT ソリューション アクセラレータと Azure IoT Central の比較
+ソリューション アクセラレータには、Azure IoT Hub や Azure Storage などの Azure サービスが使用されており、それらのサービスについてはご自身の Azure サブスクリプションで管理する必要があります。
 
-一般的な [IoT ソリューションアーキテクチャ](/azure/iot-fundamentals/iot-introduction)を実装するため、Azure IoT は、[Azure IoT ソリューション アクセラレータ](/azure/iot-suite)や [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)などの複数のオプションを提供しており、顧客のさまざまな要求のセットのそれぞれに対応しています。
+## <a name="custom-solutions"></a>カスタム ソリューション
 
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、Azure IoT Central と Azure IoT ソリューション アクセラレータの両方によって使用されるコア Azure PaaS です。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
+IoT ソリューションをゼロから作成したり、IoT Central またはソリューション アクセラレータを使用して作成されたソリューションを拡張したりするには、以下に示した Azure IoT のテクノロジとサービスの 1 つ以上を使用します。
+
+### <a name="devices"></a>デバイス
+
+いずれかの [Azure IoT スタート キット](https://catalog.azureiotsolutions.com/kits)を使用して IoT デバイスを開発するか、または使用するデバイスを [Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com)から選択します。 オープンソースの[デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して埋め込みコードを実装します。 デバイス SDK は複数のオペレーティング システム (Linux、Windows など) およびリアルタイム オペレーティング システムをサポートしています。 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など、複数のプログラミング言語用の SDK があります。
+
+[IoT プラグ アンド プレイ プレビュー](../iot-pnp/overview-iot-plug-and-play.md) サービスを使用すれば、デバイス用の埋め込みコードの作成方法をさらに省力化できます。 IoT プラグ アンド プレイを使用することで、ソリューション開発者は埋め込みコードを記述することなく、自分のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 埋め込みデバイス コードを生成したり、クラウドベースのソリューション (IoT Central アプリケーションなど) を構成したりするには、このデバイス機能モデルを使用します。
+
+[Azure IoT Edge](../iot-edge/about-iot-edge.md) では、IoT ワークロードの一部を Azure Cloud Services からデバイスにオフロードすることができます。 IoT Edge では、ソリューションでの待ち時間を短縮したり、デバイスとクラウドとの間でやり取りされるデータの量を削減したり、オフラインのシナリオを実現したりすることができます。 IoT Edge デバイスは、IoT Central やいくつかのソリューション アクセラレータから管理することができます。
+
+[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) とは、インターネットに接続されたデバイスのための通信およびセキュリティ機能が組み込まれている、セキュリティで保護された高水準のアプリケーション プラットフォームです。 セキュリティで保護されたマイクロコントローラー ユニット、カスタムの Linux ベース オペレーティングシステム、継続的で更新可能なセキュリティを提供するクラウドベースのセキュリティ サービスが含まれています。
+
+### <a name="cloud-connectivity"></a>クラウドの接続
+
+[Azure IoT Hub](../iot-hub/about-iot-hub.md) サービスは、何百万台もの IoT デバイスとクラウドベースのソリューションとの間で、セキュリティで保護された信頼性の高い双方向通信を実現します。 [Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md) は、IoT Hub のヘルパー サービスです。 このサービスでは、適切な IoT Hub に対し、デバイスの Just-In-Time プロビジョニングを人間が介入することなくゼロタッチで行えます。 これらの機能を利用すると、安全かつスケーラブルな方法で膨大な数のデバイスをプロビジョニングすることができます。
+
+IoT Hub は、ソリューション アクセラレータの核となるコンポーネントです。これを使用すると、IoT 実装に伴う次のような課題を解決することができます。
 
 * 大量のデバイスの接続と管理。
 * 大量のテレメトリ インジェスト。
 * コマンドとデバイスの制御。
 * デバイスに対するセキュリティの強制。
 
-IoT ソリューションを計画するうえで、Azure IoT 製品の選択は重要です。 IoT Hub は、単独ではエンド ツー エンドの IoT ソリューションを提供することができない単一の Azure サービスです。 IoT Hub は、任意の IoT ソリューションの開始点として使用でき、これを使用するために Azure IoT ソリューション アクセラレータや Azure IoT Central を使用する必要はありません。 Azure IoT ソリューション アクセラレータと Azure IoT Central はどちらも、他の Azure サービスと共に IoT Hub を使用します。 要件に合わせていずれかを適切に選択できるように、Azure IoT ソリューション アクセラレータと Azure IoT Central の主な違いを次の表にまとめます。
+### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>物理世界とデジタル世界との橋渡しをする
 
-|                        | Azure IoT ソリューション アクセラレータ | Azure IoT Central |
-| ---------------------- | --------- | ----------- |
-| 主な用途 | 最大限の柔軟性が求められるカスタム IoT ソリューションの開発を加速します。 | サービスの細かなカスタマイズを必要としないシンプルな IoT ソリューションの市場投入時間を短縮します。 |
-| 基になる PaaS サービスへのアクセス          | 基になる Azure サービスにアクセスして管理します。または、必要に応じてサービスを置き換えます。 | SaaS。 フル マネージドのソリューション。基になるサービスは公開されません。 |
-| 柔軟性            | 高。 マイクロサービスのコードはオープン ソースであるため、必要に応じて、どのようにも変更できます。 また、デプロイ インフラストラクチャをカスタマイズすることもできます。| 中。 組み込みのブラウザー ベースのユーザー エクスペリエンスを使用して、ソリューション モデルやさまざまな UI 要素をカスタマイズできます。 各種コンポーネントが公開されないため、インフラストラクチャをカスタマイズすることはできません。|
-| 難易度                 | 中/高。 ソリューション バックエンドをカスタマイズするには、Java または .NET のスキルが必要です。 視覚化をカスタマイズするには、JavaScript のスキルが必要です。 | 低。 ソリューションをカスタマイズするには、モデリングのスキルが必要です。 コーディングのスキルは必要ありません。 |
-| 開始 | ソリューション アクセラレータによって一般的な IoT シナリオが実装されます。 数分でデプロイできます。 | アプリケーション テンプレートとデバイス テンプレートには、既製のモデルが用意されています。 数分でデプロイできます。 |
-| 価格                | サービスを細かく調整してコストを制御できます。 | シンプルで予測可能な料金体系です。 |
+[Azure Digital Twins](../digital-twins/about-digital-twins.md) は、物理環境をモデル化できるようにする IoT サービスです。 人、空間、デバイスの間の関係をモデル化する空間インテリジェンス グラフが使用されています。 デジタル世界と物理世界をまたいでデータを関連付けることで、コンテキスト認識ソリューションを作成することができます。
 
-最終的には以下を検討して、どの製品を使って IoT ソリューションを構築するかを決定します。
-
-* ビジネス要件
-* 構築するソリューションの種類。
-* ソリューションを構築し、長期にわたって保守管理するための組織のスキル セット
-
-## <a name="technologies-paas"></a>テクノロジ (PaaS)
-
-プラットフォーム サービスの最も包括的な IoT ポートフォリオは、Azure プラットフォームに配置されているサービスとしてのプラットフォーム (PaaS) テクノロジを使用すると、簡単に作成、カスタマイズでき、 IoT ソリューションのすべての側面をコントロールできます。 10億単位の IoT デバイスとの双方向通信を確立して、スケールで IoT デバイスを管理します。 Azure Cosmos DB や Azure Time Series Insights など、他のプラットフォーム サービスと IoT デバイスのデータを統合して、ソリューション全体のインサイトを強化します。 
-
-### <a name="device-support"></a>デバイスのサポート
-
-[Azure IoT スタート キット](https://catalog.azureiotsolutions.com/kits)を活用したり、[デバイス カタログ](https://catalog.azureiotsolutions.com/)に掲載された数百もの Certified for IoT デバイスから選択することで、IoT プロジェクトを自信を持って始めることができます。 すべてのデバイスはどのプラットフォームでも使用可能であり、IoT Hub へシームレスに接続できることをテスト済みです。
-オープン ソース [デバイス SDK](/azure/iot-hub/iot-hub-devguide-sdks) を使用すれば、すべてのデバイスを Azure IoT に接続できます。 SDK は複数のオペレーティング システム (Linux、Windows など)、リアルタイム オペレーティング システム、および複数のプログラミング言語 ([C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など) をサポートしています。
-
-### <a name="iot"></a>IoT 
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、フル マネージドのサービスです。 Azure IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
-
-### <a name="edge"></a>Edge
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) は、IoT サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています "エッジで。" エッジをワークロードの部品を移動することによって、待機時間の削減が発生してオフライン シナリオのオプションができます。
-
-### <a name="spatial-intelligence"></a>空間インテリジェンス
-[Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) は、物理環境のモデルを作成できるようにする IoT サービスです。 人、空間、およびデバイス間の関係をモデル化する空間インテリジェンス グラフを提供します。 デジタル世界と物理世界をまたいでデータを関連付けることで、コンテキスト認識ソリューションを作成することができます。  
+IoT Central はデジタル ツインを使用することで、現実世界のデバイスおよびデータをデジタル モデルと同期させます。そうして接続されたデバイスは、そのデジタル モデルを使用してユーザーが監視、管理することができます。
 
 ### <a name="data-and-analytics"></a>データと分析
-Azure データと お使いのIoT ソリューションの分析 PaaS サービスを活用すれば、クラウドインテリジェンスの始めから、Azure Machine Learning でエッジ、Azure Data Lake でコスト効果のある強力なIoT デバイスデータ、[Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)でIoT デバイスから大量のデータを視覚することまでできます。
 
-### <a name="visualization-and-integration"></a>視覚化と統合
-Microsoft Azure は完全なクラウド ソリューションを提供します。このソリューションは、統合した常に成長しているクラウド サービスのコレクションを、データの保護とプライバシーに関する業界最高水準のコミットメントと組み合わせたものです。 [Microsoft Azure](https://azure.microsoft.com/)の詳細はこちらをご覧ください。
+IoT デバイスは、一般的に、センサーからの温度の測定値など、時系列データを大量に生成します。 [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) は、IoT ハブに接続してデバイスからのテレメトリ ストリームを読み取り、そのデータを保存します。ユーザーは、それを照会して可視化することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-迅速かつ簡単に IoT 機能を試してみるには、[IoT Hub ドキュメントの開始](/azure/iot-hub/iot-hub-get-started)セクションを参照してください。 より詳しい実際の作業については、いずれかの [IoT Edge チュートリアル](/azure/iot-edge/tutorial-simulate-device-windows)をお試しください。
+実際に体験するために、次のいずれかのクイックスタートをお試しください。
+
+- [Azure IoT Central アプリケーションの作成](../iot-central/core/quick-deploy-iot-central.md)
+- [デバイスから IoT ハブへのテレメトリの送信](../iot-hub/quickstart-send-telemetry-cli.md)
+- [クラウドベースのリモート監視ソリューションを試す](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

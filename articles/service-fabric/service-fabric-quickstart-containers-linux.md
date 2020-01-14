@@ -1,26 +1,16 @@
 ---
-title: Azure で Service Fabric 上に Linux コンテナー アプリを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に Linux コンテナー アプリを作成する
 description: このクイック スタートでは、アプリケーションの Docker イメージをビルドし、そのイメージをコンテナー レジストリにプッシュした後、Service Fabric クラスターにコンテナーをデプロイします。
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372688"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -90,7 +80,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location --
 > Web フロントエンド サービスは、ポート 80 で受信トラフィックをリッスンする構成になっています。 クラスターの VM および Azure Load Balancer では、ポート 80 が既定で開放されています。
 >
 
-## <a name="configure-your-environment"></a>環境の構成
+## <a name="configure-your-environment"></a>環境を構成する
 
 Service Fabric には、クラスターとそのアプリケーションを管理するために使用できるツールがいくつか用意されています。
 
@@ -169,7 +159,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 この簡単な管理タスクを通じて、フロントエンド サービスでユーザー負荷を処理するためのリソースが 2 倍になりました。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クラスターからアプリケーション インスタンスを削除し、アプリケーションの種類の登録を解除するには、テンプレートに指定されているアンインストール スクリプト (uninstall.sh) を使用します。 このスクリプトによってインスタンスがクリーンアップされるまで、しばらく時間がかかります。そのため、このスクリプトの直後にインストール スクリプトを実行しないようにしてください。 Service Fabric Explorer を使用して、インスタンスが削除され、アプリケーションの種類が登録解除された時間を確認できます。
 
@@ -188,12 +178,12 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 例:
+クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 次に例を示します。
 - Windows の場合:[証明書 MMC スナップイン](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
 - Mac の場合:キーチェーン アプリを使用します。
 - Ubuntu の場合:証明書の表示に使用される手順に従ってから、証明書を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Linux コンテナー アプリケーションを Azure の Service Fabric クラスターにデプロイし、アプリケーションのフェールオーバーを実行して、クラスター内のアプリケーションをスケーリングしました。 Service Fabric で Linux コンテナーを操作する方法の詳細については、Linux コンテナー アプリのチュートリアルに進んでください。
 

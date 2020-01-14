@@ -1,20 +1,22 @@
 ---
-title: Azure Notebooks を使用して GitHub から Jupyter ノートブックを複製する
+title: Azure Notebooks プレビューを使用して GitHub から Jupyter ノートブックを複製する
 description: 短時間で GitHub リポジトリから Jupyter ノートブックを複製し、ご自分の Azure Notebooks アカウントで実行します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 500bd3f85409bb2f5e7b73be0478694695cc9c00
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277521"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647103"
 ---
-# <a name="quickstart-clone-a-notebook"></a>クイック スタート:ノートブックの複製
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを複製する
 
 多数のデータ サイエンティストと開発者が、さまざまな種類のプロジェクトのためのストレージとバージョン管理を提供する無料サービスである [GitHub リポジトリ](https://github.com)に自分のノートブックを格納しています。 GitHub は、ローカルで実行される Jupyter ノートブックで共同作業を行うための手段としてよく使用されます。 そのような場合は、コラボレーター全員がリポジトリのローカル コピーを保持し、そのコピーからノートブックを実行します。
 
 複製では、GitHub のノートブックのコピーが Azure Notebooks アカウント内に作成されます。 この複製は元のリポジトリから独立しているため、変更は Azure Notebooks アカウントのみに格納され、元のリポジトリには影響しません。 複製はクラウド上に存在するため、他のコラボレータ―とプロジェクトを共有でき、コラボレーターはローカル コピーを作成する必要も、使用するコンピューターに Jupyter をインストールする必要もありません。 さらに、単にご自分のプロジェクトを始めるための出発点にしたり、データ ファイルを取得したりするために、ノートブックを複製する場合もあります。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services ノートブックを複製する
 
@@ -62,9 +64,9 @@ ms.locfileid: "74277521"
 
     ![個々のノートブックへのリンクをコピーするためのコンテキスト メニュー コマンド](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. ノートブック以外のファイルを編集するには、プロジェクト内のファイルを右クリックし、 **[ファイルの編集]** (キーボード ショートカット: i) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
+1. ノートブック以外のファイルを編集するには、プロジェクトのファイルを右クリックして、 **[ファイルの編集]** (キーボード ショートカット: I) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

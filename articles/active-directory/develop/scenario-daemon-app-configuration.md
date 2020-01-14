@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423934"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -31,11 +31,11 @@ Web API を呼び出すデーモン アプリケーションのコードを構�
 
 デーモン アプリをサポートしている Microsoft ライブラリは次のとおりです。
 
-  MSAL ライブラリ | 説明
+  MSAL ライブラリ | [説明]
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | デーモン アプリケーションの構築でサポートされているプラットフォームは、.NET Framework と .NET Core プラットフォームです (UWP、Xamarin.iOS、Xamarin.Android はサポートされていません。これらのプラットフォームはパブリック クライアント アプリケーションをビルドするために使用されるからです)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 進行中の開発 - パブリック プレビュー中
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 進行中の開発 - パブリック プレビュー中
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python でのデーモン アプリケーションのサポート
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java でのデーモン アプリケーションのサポート
 
 ## <a name="configuration-of-the-authority"></a>機関の構成
 
@@ -136,7 +136,7 @@ MSAL アプリケーションをインスタンス化するには、次のこと
 MSAL.NET では、機密クライアント アプリケーションは `IConfidentialClientApplication` インターフェイスによって表されます。
 ソース コードで MSAL.NET 名前空間を使用します。
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -271,7 +271,7 @@ MSAL.NET には、機密クライアント アプリに署名付きアサーシ�
 
 `WithClientAssertion` を使用する場合は、署名付き JWT を提供する必要があります。 この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 `WithClientClaims` を使用する場合は、Azure AD で想定される要求と、送信する追加のクライアント要求を含む署名付きアサーションが MSAL.NET 自体によって計算されます。
 その方法を示すコード スニペットは次のとおりです。
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -319,7 +319,7 @@ MSAL Java はパブリック プレビュー段階にあります。 署名付�
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

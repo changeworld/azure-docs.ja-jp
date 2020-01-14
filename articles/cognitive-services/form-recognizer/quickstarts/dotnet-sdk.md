@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ | Microsoft Docs
-description: .NET 用 Form Recognizer クライアント ライブラリの使用を開始して、構造化されたデータ出力をトレーニング、抽出、分析、取得します。
+title: クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
+description: このクイックスタートでは、.NET 用 Form Recognizer クライアント ライブラリの使用を開始して、構造化されたデータ出力をトレーニング、抽出、分析、取得します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446489"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
 
@@ -28,7 +28,7 @@ ms.locfileid: "74978613"
 * [カスタム モデルのリストを取得する](#get-a-list-of-custom-models)
 * [カスタム モデルを削除する](#delete-a-custom-model)
 
-[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,9 +91,9 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 Form Recognizer SDK の主な機能は、次のクラスによって処理されます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
-|[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|このクラスは、すべての Form Recognizer 機能に必要です。 このクラスは、サブスクリプション情報を使用してインスタンス化します。これを使用して、他のクラスのインスタンスを生成します。|
+|[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|このクラスは、すべての Form Recognizer 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| このクラスは、独自のトレーニング入力データを使用してカスタム Form Recognizer モデルをトレーニングするために使用します。 |
 |[TrainResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainresult?view=azure-dotnet-preview)| このクラスは、モデル ID を含む、カスタム モデルのトレーニング操作の結果を提供します。これを使用してフォームを分析できます。 |
 |[AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview)| このクラスは、カスタム モデルの分析操作の結果を提供します。 これには、**ExtractedPage** インスタンスの一覧が含まれます。 |
@@ -180,7 +180,7 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
@@ -189,7 +189,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 また、アカウントから削除するカスタム モデルをトレーニングした場合は、「[カスタム モデルを削除する](#delete-a-custom-model)」のメソッドを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Form Recognizer .NET クライアント ライブラリを使用してカスタム モデルをトレーニングし、フォームを分析しました。 次に、より適切なトレーニング データ セットを作成し、より正確なモデルを生成するためのヒントについて学習します。
 

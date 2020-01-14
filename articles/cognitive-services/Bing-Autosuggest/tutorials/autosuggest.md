@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448761"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 
@@ -184,7 +184,7 @@ bingAutosuggest 関数は、ユーザーが HTML フォーム フィールドに
 function bingAutosuggest(query, key) {
 ```
 
-Bing Autosuggest API エンドポイントを指定し、エンドポイントに要求を送信するために使用する XMLHttpRequest オブジェクトを宣言します。
+Bing Autosuggest API エンドポイントを指定し、要求を送信するために使用する XMLHttpRequest オブジェクトを宣言します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";
@@ -349,7 +349,7 @@ Bing ロゴを表示します。
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [使用と表示の要件](../UseAndDisplayRequirements.md)

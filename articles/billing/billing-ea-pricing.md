@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b32c1be93e2fb16da9ce9ebb65b664017e70cac6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60e366466e399bbde78b026e0b401cd6bd1edbee
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223938"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644394"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード
 
@@ -50,7 +50,7 @@ MCA を結んでいる場合、価格を表示してダウンロードするた�
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
-1. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
+1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
 1. **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする価格シートに対応する請求書の行を探します。
 1. 行の末尾にある省略記号 (`...`) をクリックします。
@@ -91,19 +91,19 @@ MCA を結んでいる場合、現在の請求期間の価格をダウンロー�
 ## <a name="check-your-billing-account-type"></a>課金アカウントの種類を確認する
 [!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 EA をご使用の場合、次を参照してください。
 
 - [Azure の EA 課金情報へのアクセスの管理](billing-manage-access.md)
 - [Microsoft Azure の請求書の表示とダウンロード](billing-download-azure-invoice.md)
-- [Microsoft Azure の使用量と料金の表示とダウンロード](billing-download-azure-daily-usage.md)
+- [Microsoft Azure の利用状況と料金の表示とダウンロード](billing-download-azure-daily-usage.md)
 - [Enterprise Ageement の顧客の課金内容の確認](billing-understand-your-bill-ea.md)
 
-Microsoft 顧客契約を結んでいる場合は、次のページを参照してください。
+Microsoft 顧客契約を結んでいる場合は、以下を参照してください。
 
 - [Microsoft 顧客契約の価格シートの用語を理解する](billing-mca-understand-pricesheet.md)
 - [Microsoft Azure の請求書の表示とダウンロード](billing-download-azure-invoice.md)
-- [Microsoft Azure の使用量と料金の表示とダウンロード](billing-download-azure-daily-usage.md)
+- [Microsoft Azure の利用状況と料金の表示とダウンロード](billing-download-azure-daily-usage.md)
 - [課金プロファイルの税務書類を表示およびダウンロードする](billing-mca-download-tax-document.md)
 - [課金プロファイルの請求書の料金を理解する](billing-mca-understand-your-bill.md)

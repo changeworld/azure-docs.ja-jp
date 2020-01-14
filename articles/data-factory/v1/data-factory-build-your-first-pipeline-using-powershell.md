@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 0209b004ba54417a26cd41716687d328ec1431cf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438991"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -117,7 +117,7 @@ ms.locfileid: "73682994"
         }
     }
     ```
-    **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-account-manage.md#access-keys)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+    **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 2. Azure PowerShell で ADFGetStarted フォルダーに切り替えます。
 3. **New-AzDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡す必要があります。 または、**Get-AzDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。 **Get-AzDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
 
@@ -158,7 +158,7 @@ ms.locfileid: "73682994"
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    |:--- |:--- |
    | clusterSize |HDInsight クラスターのサイズを指定します。 |
    | timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -212,12 +212,12 @@ ms.locfileid: "73682994"
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    |:--- |:--- |
-   | type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
+   | 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
    | linkedServiceName |前に作成した StorageLinkedService を参照します。 |
    | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-   | type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+   | 型 |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
    | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
    | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
    | external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
@@ -408,12 +408,12 @@ ms.locfileid: "73682994"
 3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、[Azure BLOB から Azure SQL にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-| トピック | 説明 |
+| トピック | [説明] |
 |:--- |:--- |
 | [Data Factory コマンドレット リファレンス](/powershell/module/az.datafactory) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |

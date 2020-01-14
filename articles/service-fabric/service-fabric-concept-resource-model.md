@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric アプリケーション リソース モデル | Microsoft Docs
+title: Azure Service Fabric アプリケーション リソース モデル
 description: この記事では、Azure Resource Manager を使用した Azure Service Fabric アプリケーションの管理の概要を説明します
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.author: atsenthi
-ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b3cf0b8f21565a8d51b16ff6c8b4c52bbfe8edc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464810"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデルとは
 Azure Resource Manager を使用して、Service Fabric クラスターに Service Fabric アプリケーションをデプロイすることをお勧めします。 この方法を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell または Azure CLI を使用してアプリケーションをデプロイおよび管理する場合とは異なり、クラスターの準備が整うまで待つ必要はありません。 アプリケーションの登録、プロビジョニング、デプロイのプロセスを、すべて 1 ステップで実行できます。 これは、クラスターでアプリケーションのライフサイクルを管理するためのベスト プラクティスです。 詳細については、[ベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)に関する項目を参照してください。
@@ -72,7 +68,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 >
 >
 
-| パラメーター              | 説明                                 | 例                                                      | 説明                                                     |
+| パラメーター              | [説明]                                 | 例                                                      | 説明                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | デプロイ先クラスターの名前 | sf-cluster123                                                |                                                              |
 | application            | アプリケーションの名前                 | Voting                                                       |
@@ -109,7 +105,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 }
 ```
 
-### <a name="deploy-the-application"></a>アプリケーションのデプロイ 
+### <a name="deploy-the-application"></a>アプリケーションの配置 
 アプリケーションをデプロイするには、New-AzResourceGroupDeployment を実行して、クラスターを含むリソース グループにデプロイします。
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
@@ -155,13 +151,13 @@ Azure Resource Manager のアプリケーション リソース モデルを使�
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーション リソース モデルに関する情報を入手します。
 
 * [Service Fabric のアプリケーションのモデル化](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
 * [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [ベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 * [アプリケーションとサービスを Azure リソースとして管理する](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 

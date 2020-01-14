@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446653"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Visual Search API とは
 
@@ -30,7 +30,7 @@ Bing Visual Search API は、画像に関する分析情報を返します。 �
 
 Bing Visual Search を使用すると、次の分析情報を検出できます。
 
-| 分析情報                              | 説明 |
+| 分析情報                              | [説明] |
 |--------------------------------------|-------------|
 | 見た目が似ている画像              | 入力画像に視覚的に似ている画像の一覧。 |
 | 見た目が似ている製品            | 画像の製品と視覚的に似ている製品。            |
@@ -38,7 +38,7 @@ Bing Visual Search を使用すると、次の分析情報を検出できます�
 | 関連検索                     | 他のユーザーによって行われた関連検索または画像の内容に基づく関連検索。            |
 | 画像を含む Web ページ     | 入力画像を含む Web ページ。            |
 | レシピ                              | 入力画像に示されている料理を作るためのレシピを含む Web ページ。            |
-| エンティティ                             | 有名な人物、場所、もの |
+| [エンティティ]                             | 有名な人物、場所、もの |
 
 分析情報だけでなく、Bing Visual Search は、入力画像から派生したさまざまな用語 (つまり、タグ) も返します。 これらのタグを使用して、ユーザーは画像で見つかる概念を調べることができます。 たとえば、入力画像が有名なアスリートである場合、そのアスリートの名前や "スポーツ" がタグとして返される可能性があります。 また、入力画像がアップル パイの場合は、"アップル パイ"、"パイ"、"デザート" などのタグが使用されるでしょう。
 
@@ -52,15 +52,17 @@ Bing Visual Search API は RESTfulWeb サービスです。HTTP 要求を作成�
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まず、Bing Visual Search API の[対話型のデモ](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)を試してみてください。
 このデモは、検索クエリをすばやくカスタマイズし、Web で画像を検索する方法を示しています。
 
 実際に要求を送信してみるには、クイック スタートを参照してください:[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * 「[Images - Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」リファレンスには、画像ベースの検索結果を要求するために使用できるエンドポイント、要求ヘッダー、応答、およびクエリ パラメーターに関する定義と情報が含まれています。
 
 * 「[Bing Search API の利用と表示の要件](../bing-web-search/use-display-requirements.md)」では、Bing Search API シリーズを使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

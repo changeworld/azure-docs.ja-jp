@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 514c9655a1d303c444cc8c183ed6b73fd3422cf8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441050"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -39,7 +39,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 拡張機能をインストールしたら、Azure DevOps アカウントにサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
 
-1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]** を選択します
+1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]**
 
    ![新しいビルド パイプラインを作成する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -169,7 +169,7 @@ YAML タスクを使用して CI/CD パイプラインを設定する場合は�
     NODE_TLS_REJECT_UNAUTHORIZED: '0'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エミュレーターを使用して開発とテストをローカルで行う方法の詳細については、「[ローカルの開発とテストでの Azure Cosmos DB Emulator の使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator)」を参照してください。
 

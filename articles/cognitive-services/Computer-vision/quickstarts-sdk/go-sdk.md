@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Go 用 Computer Vision クライアント ライブラリ | Microsoft Docs
+title: クイック スタート:Go 用 Computer Vision クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: Go 用 Computer Vision クライアント ライブラリの使用を開始します。
+description: このクイックスタートでは、Go 用 Computer Vision クライアント ライブラリの使用を開始します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72943095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382311"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>クイック スタート:Go 用 Computer Vision クライアント ライブラリ
 
@@ -37,7 +37,7 @@ Go 用 Computer Vision クライアント ライブラリを使用すると、�
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -99,7 +99,7 @@ touch sample-app.go
 
 以下のクラスとインターフェイスにより、Computer Vision Go SDK の主要な機能の一部が処理されます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | このクラスは、イメージの分析やテキストの読み取りなど、すべての Computer Vision 機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| この型には **Analyze Eimage** 関数呼び出しの結果が含まれます。 カテゴリ固有の各関数には同様の型があります。|
@@ -251,14 +251,14 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Computer Vision API リファレンス (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)

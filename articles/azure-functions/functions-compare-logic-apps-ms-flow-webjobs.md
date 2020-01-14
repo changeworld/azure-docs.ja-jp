@@ -1,19 +1,20 @@
 ---
-title: Microsoft Flow、Logic Apps、Functions、および WebJobs の概要 - Azure
+title: Azure における統合と自動化のプラットフォームの選択
 description: 統合タスクに最適化された Microsoft クラウド サービス (Microsoft Flow、Logic Apps、Functions、および WebJobs) を比較します。
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409833"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
+# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
-この記事では、次の Microsoft クラウドを比較します 
+この記事では、次の Microsoft クラウド サービスを比較します。
+
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -40,7 +41,7 @@ Microsoft Flow を使用すると、オフィスの従業員がだれでも、�
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
 | 管理者エクスペリエンス |Microsoft Flow 環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡: [Microsoft Flow 管理センター](https://admin.flow.microsoft.com) |リソース グループ、接続、アクセス管理、およびログ記録の管理: [Azure Portal](https://portal.azure.com) |
-| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、DLP、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure によるセキュリティ保証:[Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| Security |Office 365 セキュリティ/コンプライアンスの監査ログ、DLP、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure によるセキュリティ保証:[Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps の比較
 
@@ -54,7 +55,7 @@ Azure Functions では、コードを記述したり [Durable Functions 拡張�
 | --- | --- | --- |
 | 開発 | コード第一 (命令型) | デザイナー第一 (宣言型) |
 | 接続 | [ビルトインのバインド (約 10 種類)](functions-triggers-bindings.md#supported-bindings) およびカスタム バインド (コードを記述) | [コネクタの豊富なコレクション](../connectors/apis-list.md)、[Enterprise Integration Pack (B2B のシナリオ向け)](../logic-apps/logic-apps-enterprise-integration-overview.md)、[カスタム コネクタの構築](../logic-apps/custom-connector-overview.md) |
-| Actions | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
+| アクション | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | 監視 | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure Monitor ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | 管理 | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | 実行コンテキスト | [ローカル](functions-runtime-overview.md)またはクラウドで実行できます | クラウドでのみ動作します|
@@ -75,14 +76,14 @@ WebJobs と WebJobs SDK は組み合わせて使ったときに最も効果的�
 
 Azure Functions は、WebJobs SDK の上に構築されているため、同じイベント トリガーや他の Azure サービスとの接続を数多く共有します。 以下に、Azure Functions を使用するか WebJobs と WebJobs SDK を使用するかの選択において考慮すべき事柄をいくつか示します。
 
-|  | Functions | WebJobs と WebJobs SDK |
+|  | 関数 | WebJobs と WebJobs SDK |
 | --- | --- | --- |
 |[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケール](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[ブラウザーでの開発とテスト](functions-create-first-azure-function.md) |✔||
 |[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps との統合](functions-twitter-email.md)|✔||
 | トリガー イベント |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
+| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |パッケージ マネージャー|NPM と NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 これは、包括的な一覧ではありません。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。
@@ -117,7 +118,7 @@ Microsoft Flow、Logic Apps、および Functions の統合は、今後ますま
 * [Logic Apps のライブ Web キャスト](https://aka.ms/logicappslive)
 * [Microsoft Flow のよく寄せられる質問](/power-automate/frequently-asked-questions)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 初めてのフロー、ロジック アプリ、関数アプリを実際に作ってみましょう。 以下のいずれかのリンクを選択してください。
 

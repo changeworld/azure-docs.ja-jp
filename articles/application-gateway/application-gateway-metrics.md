@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309742"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551388"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -22,19 +22,21 @@ Application Gateway からは、ご利用の Application Gateway インスタン
 
 ### <a name="timing-metrics"></a>タイミングのメトリック
 
-要求と応答のタイミングに関連する次のメトリックを利用できます。 これらのメトリックを分析することで、WAN、Application Gateway、Application Gateway とバックエンドの間のネットワーク、アプリケーションのパフォーマンスのいずれが原因でアプリケーションの速度が低下しているかを確認できます。
+要求と応答のタイミングに関連する次のメトリックを利用できます。 特定のリスナーのこれらのメトリックを分析することで、WAN、Application Gateway、Application Gateway とバックエンド アプリケーションの間のネットワーク、あるいはバックエンド アプリケーションのパフォーマンスのいずれが原因でアプリケーションの速度が低下しているかを確認できます。
+
+> [!NOTE]
+>
+> Application Gateway に複数のリスナーがある場合は、意味のある推論を得るために、異なる待機時間メトリックを比較しながら、常に *[リスナー]* ディメンションでフィルター処理します。
 
 - **クライアント RTT**
 
-  クライアントと Application Gateway の間の平均ラウンドトリップ時間。 このメトリックは、接続が確立され、受信確認が返されるまでにかかる時間を示します。
+  クライアントと Application Gateway の間の平均ラウンドトリップ時間。 このメトリックは、接続が確立され、受信確認が返されるまでにかかる時間を示します。 
 
 - **アプリケーション ゲートウェイの合計時間**
 
   要求が処理されその応答が送信されるのにかかった平均時間。 これは、Application Gateway が HTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの平均間隔として計算されます。 これには、通常、Application Gateway の処理時間、要求パケットと応答パケットがネットワーク経由で移動する時間、およびバックエンド サーバーが応答するまでの時間が含まれていることに注意することが重要です。
-
-- **バックエンド接続時間**
-
-  バックエンド サーバーとの接続を確立するために費やされた時間です。 
+  
+*クライアント RTT* が *Application Gateway の合計時間*を大幅に超える場合は、クライアントで監視された待機時間がクライアントと Application Gateway 間のネットワーク接続によるものであることが推測できます。 両方の待機時間が比較できる場合は、次のいずれかが原因で待機時間が長くなる可能性があります。Application Gateway、Application Gateway とバックエンド アプリケーション間のネットワーク、またはバックエンド アプリケーションのパフォーマンス。
 
 - **バックエンド先頭バイト応答時間**
 
@@ -43,6 +45,13 @@ Application Gateway からは、ご利用の Application Gateway インスタン
 - **バックエンド最終バイト応答時間**
 
   バックエンド サーバーへの接続の確立を開始してから応答本文の最後のバイトを受信するまでの時間間隔です。
+  
+*Application Gateway の合計時間*が、特定のリスナーの*バックエンド最終バイト応答時間*よりもはるかに多い場合は、Application Gateway が原因で待機時間が長くなっている可能性があることが推測できます。 一方で、2 つのメトリックが比較可能な場合、この問題は、Application Gateway とバックエンド アプリケーション間のネットワーク、またはバックエンド アプリケーションのパフォーマンスによって発生している可能性があります。
+
+- **バックエンド接続時間**
+
+  バックエンド アプリケーションとの接続を確立するために費やされた時間です。 SSL の場合、これにはハンドシェイクに費やされた時間が含まれます。 このメトリックは接続時間のみを測定し、他の待機時間と直接比較すべきでないため、他の待機時間とは異なります。 ただし、*バックエンド接続時間*のパターンを他の待機時間のパターンと比較することで、Application Gateway とバックエンド アプリケーションの間のネットワークのバリエーションが原因で時間が増加したのかどうかを示すことができます。 
+  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway メトリック
 
@@ -115,6 +124,10 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 Application Gateway に関しては、次のメトリックを利用できます。
 
+- **CPU 使用率**
+
+  Application Gateway に割り当てられた CPU の使用率を表示します。  通常の状況では、CPU 使用率が 90% を超えることは望ましくありません。これは Application Gateway の背後でホストされている Web サイトで待機時間が発生し、クライアント エクスペリエンスを乱す可能性があるためです。 インスタンス数を増やすか、SKU のサイズを大きくするか、またはその両方を行うことによって、Application Gateway の構成を変更し、CPU 使用率を間接的に制御または向上させることができます。
+
 - **現在の接続数**
 
   Application Gateway で確立された現在の接続の数
@@ -157,7 +170,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 次の画像では、最後の 30 分間に表示された 3 つのメトリックの例を確認できます。
 
-[![](media/application-gateway-diagnostics/figure5.png "メトリック ビュー")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
 
@@ -193,7 +206,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)を使用して、カウンターとイベント ログを視覚化します。
 * [Power BI を使用した Azure アクティビティ ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ

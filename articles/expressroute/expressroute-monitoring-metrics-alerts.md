@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436911"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -115,7 +115,7 @@ ExpressRoute Direct ポート ペアのリンクごとに回線プロトコル�
 
 2. **[+ ターゲットの選択]** をクリックし、ExpressRoute ゲートウェイの接続リソースを選択します。
 
-   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![ターゲット (target)]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. アラートの詳細を定義します。
 
    ![アクション グループ](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
@@ -134,7 +134,7 @@ ExpressRoute Direct ポート ペアのリンクごとに回線プロトコル�
 
   ![another](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute 接続を構成します。
   

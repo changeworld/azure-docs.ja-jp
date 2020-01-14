@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos DB の MongoDB API に対するスループットの取得 (RU/秒)
+title: Azure Cosmos DB の MongoDB 用 API に対するスループット (RU/秒) を取得する PowerShell スクリプト
 description: Azure PowerShell スクリプト - Azure Cosmos DB の MongoDB API に対するスループットの取得 (RU/秒)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0df75831bb54ebb9f648a8ca9207c2572fd4d2e9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d7cd068722a1dcc99b909020fa5bae34ae4a4768
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441384"
 ---
 # <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースまたはコレクションに対するスループットを取得する (RU/秒)
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

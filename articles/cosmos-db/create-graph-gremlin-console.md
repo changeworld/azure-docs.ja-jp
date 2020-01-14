@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査'
+title: TinkerPop Gremlin コンソールを使用して Azure Cosmos DB Gremlin API でクエリを実行する:チュートリアル
 description: Azure Cosmos DB Gremlin API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815968"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665171"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
@@ -25,7 +25,7 @@ ms.locfileid: "71815968"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
 このクイックスタートでは、Azure portal を使用して Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) で [Gremlin コンソール](https://tinkerpop.apache.org)を使用して Gremlin API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
 
@@ -39,7 +39,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Gremlin コンソール](https://tinkerpop.apache.org/)もインストールする必要があります。 バージョン 3.2.5 以降を使用してください。 (Windows で Gremlin コンソールを使用する場合は、[Java ランタイム](https://www.oracle.com/technetwork/java/javase/overview/index.html)をインストールする必要があります。)
+[Gremlin コンソール](https://tinkerpop.apache.org/downloads.html)もインストールする必要があります。 **推奨されるバージョンは、v3.4.3** 以前です (Windows で Gremlin コンソールを使用する場合は、[Java ランタイム](https://www.oracle.com/technetwork/java/javase/overview/index.html)をインストールする必要があります)。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -53,12 +53,12 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. 次の表の定義に従って、*host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
-    Setting|推奨値|説明
+    設定|推奨値|[説明]
     ---|---|---
     hosts|[ *<アカウント名>* .**gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません**。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
     port|443|443 に設定します。
     username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
-    password|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
+    パスワード|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
     connectionPool|{enableSsl: true}|SSL 用の接続プールの設定です。
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|この値に設定します。改行 (`\n`) を削除して値を貼り付けてください。
 
@@ -295,7 +295,7 @@ g.V().hasLabel('person').has('firstName', 'Jack').drop()
 
 最後に、すべての頂点と辺のデータベースをクリアしてみましょう。
 
-入力:
+次の内容を入力します。
 
 ```
 g.E().drop()
@@ -308,11 +308,11 @@ g.V().drop()
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントの作成、データ エクスプローラーを使用したグラフの作成、Gremlin コンソールを使用した頂点と辺の作成およびグラフの走査を行う方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure Application Insights で監視する
-description: Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
+title: クイックスタート - Azure Monitor Application Insights を使用して Node.js を監視する
+description: Azure Monitor Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398777"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -31,9 +31,9 @@ Node.js Web アプリケーションがない場合は、[Node.js Web アプリ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
@@ -48,10 +48,10 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
 
-    | 設定        | 値           | 説明  |
+    | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | Node.js アプリケーション | 監視しているアプリの種類 |
+   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
    | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **作成** を選択します。
@@ -126,14 +126,17 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 Node.js の監視に関する詳細については、[App Insights Node.js の追加ドキュメント](../../azure-monitor/app/nodejs.md)を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
+
+> [!NOTE]
+> 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
 1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
 2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

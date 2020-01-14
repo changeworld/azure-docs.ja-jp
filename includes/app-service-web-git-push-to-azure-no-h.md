@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: aa6f18d4f667862687083c5db3679ce9d8e188cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5ba08da5c58ff486bc26f2c771dfef55452629a
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181657"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681045"
 ---
-"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、[Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
+ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 *\<deploymentLocalGitUrl-from-create-step>* を、[Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、デプロイ ユーザーの構成に関するセクションで作成した資格情報を入力してください。
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、「[デプロイ ユーザーを構成する](/azure/app-service/containers/tutorial-python-postgresql-app#configure-a-deployment-user)」で作成した資格情報を入力してください。
 
 ```bash
 git push azure master

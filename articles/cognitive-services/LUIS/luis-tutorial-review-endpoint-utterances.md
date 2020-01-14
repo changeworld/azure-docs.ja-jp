@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:エンドポイントの発話の確認 - LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。
+description: このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447814"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。
@@ -28,8 +28,6 @@ ms.locfileid: "74895669"
 * 定期的にレビューする必要がある。
 
 エンドポイントの発話をレビューすることによって、その発話から予測される意図を確認または修正することになります。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -46,7 +44,7 @@ ms.locfileid: "74895669"
 
 アプリをインポートするには、次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)をダウンロードして保存します。
 
 1. [プレビューの LUIS ポータル](https://preview.luis-ai)で、新しいアプリに .json ファイルをインポートします。
 
@@ -228,11 +226,11 @@ ms.locfileid: "74895669"
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>最上位の意図が発話リストにあるのはなぜでしょうか?
 エンドポイントの発話の中には、レビュー リストの中で高い予測スコアが割り当てられるものがあります。 それらの発話も、レビューして確認する必要があります。 これらがリストに表示されるのは、次に高い意図のスコアが、最上位の意図のスコアと近すぎるためです。 上位の 2 つの意図の間には約 15% の差が必要です。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、エンドポイントで送信された、LUIS にとって不確かな発話が確認されました。 これら発話が検証され、発話の例として正しい意図に移動されると、LUIS の予測精度が向上します。
 

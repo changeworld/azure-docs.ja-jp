@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:Node.js を使用して Text Analytics REST API を呼び出す
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: fe07290eaa68965e2ebe1f9220fc963c915f48f1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: c111937dbbea5e588e82bc9753a71d1d597ca767
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378791"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
@@ -35,27 +35,17 @@ ms.locfileid: "74284955"
 
 言語検出 API では、[言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 1. 新しい `.js` ファイルに以下のコードを追加します。
+1. ご利用のキーとエンドポイントをコードにコピーします。 
 1. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node detect.js`)。
 
 ```javascript
 'use strict';
 
 let https = require ('https');
-
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/languages';
 
@@ -154,9 +144,9 @@ get_language(documents);
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 1. 新しい `.js` ファイルに以下のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node sentiment.js`)。
 
 ```javascript
@@ -164,17 +154,8 @@ Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.d
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/sentiment';
 
@@ -247,9 +228,9 @@ get_sentiments(documents);
 
 Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 キー フレーズ抽出は、ドキュメントまたはテキストの要点をすばやく突き止める目的で使用されます。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 1. 新しい `.js` ファイルに以下のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node key-phrases.js`)。
 
 ```javascript
@@ -257,17 +238,8 @@ Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentra
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/keyPhrases';
 
@@ -316,7 +288,7 @@ get_key_phrases(documents);
 
 **キー フレーズ抽出の応答**
 
-成功した応答は、次の例に示すように、JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -360,9 +332,9 @@ get_key_phrases(documents);
 
 Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 1. 新しい `.js` ファイルに以下のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node entities.js`)。
 
 ```javascript
@@ -370,17 +342,8 @@ Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsof
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/entities';
 
@@ -476,12 +439,12 @@ get_entities(documents);
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

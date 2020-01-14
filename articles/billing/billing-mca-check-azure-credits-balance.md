@@ -11,48 +11,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bbd456f82e333ab8e096e5695a55be43c2084c6d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 48f7e0b3d1289d8e9c620f931f9bc85570b90042
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449508"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
-Microsoft 顧客契約の課金アカウントの Azure クレジット残高は、Azure portal で確認することができます。 
+Microsoft 顧客契約の課金アカウントの Azure クレジット残高は、Azure portal または REST API で確認することができます。
 
-クレジットは、その対象となる料金の支払いにご利用ください。 クレジットの対象ではない製品を使用した場合、または使用量がクレジットの残高を超えた場合は、お客様に対して請求されます。 詳細については、「[Azure クレジットの対象ではない製品](#products-that-arent-covered-by-azure-credits)」を参照してください。
-
-Microsoft 顧客契約の課金アカウントでは、クレジットが課金プロファイルに割り当てられます。 割り当てられるクレジットは、課金プロファイルごとに固有となります。 課金プロファイルの Azure クレジット残高を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、請求書管理者のいずれかのロール、または課金アカウントの所有者、共同作成者、閲覧者のいずれかのロールが必要となります。 ロールの詳細については、「[Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)」を参照してください。
+Microsoft 顧客契約の課金アカウントでは、クレジットが課金プロファイルに割り当てられます。 それぞれの課金プロファイルには、その請求書上の料金に自動的に適用される固有のクレジットが存在します。 課金プロファイルの Azure クレジット残高を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、請求書管理者のいずれかのロール、または課金アカウントの所有者、共同作成者、閲覧者のいずれかのロールが必要となります。 ロールの詳細については、「[Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)」を参照してください。
 
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
-## <a name="check-your-credit-balance-in-the-azure-portal"></a>Azure portal でクレジット残高を確認する
+## <a name="check-your-credit-balance"></a>クレジット残高を確認する
 
-1. [Azure Portal]( https://portal.azure.com) にサインインします。
+### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 
     ![ポータルでのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  左側から **[Azure クレジット]** を選択します。 アクセス方法によっては、課金アカウントまたは請求先プロファイルを選択してから、 **[Azure クレジット]** を選択することが必要な場合があります。
+3. クレジット残高を追跡する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約**である必要があります。
 
-4. [Azure クレジット] ページには次の情報が表示されます。
+    ![ポータルでのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
 
-   ![課金プロファイルのクレジット残高と取引のスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+    > [!NOTE]
+    >
+    > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-access-to-a-microsoft-customer-agreement)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
+
+3. 左側から **[支払い方法]** を選択し、 **[Azure クレジット]** を選択します。
+
+   ![課金プロファイルのクレジット残高のスクリーンショット](./media/billing-mca-check-azure-credits-balance/mca-payment-methods.png)
+
+4. [Azure クレジット] ページには、次のセクションがあります。
+    
+   #### <a name="balance"></a>Balance
+   
+   残高セクションには、Azure クレジット残高の概要が表示されます。
+
+   ![課金プロファイルのクレジット残高のスクリーンショット](./media/billing-mca-check-azure-credits-balance/mca-credit-balance.png)
 
    | 期間               | 定義                           |
    |--------------------|--------------------------------------------------------|
    | 推定残高  | すべての課金トランザクションと保留中トランザクションを考慮した後の、クレジットの推定金額 |
    | 現在の残高    | 前回請求時点でのクレジットの金額。 保留中のトランザクションは含まれません |
-   | トランザクション       | Azure クレジット残高に影響を与えた課金取引 |
 
    推定残高が 0 になると、クレジット対象製品も含めて、すべての使用料がお客様に請求されます。
 
-6. 課金プロファイルのクレジットの一覧を見るには、 **[クレジットの一覧]** を選択します。 クレジットの一覧では次の情報が提供されます。
+   #### <a name="credits-list"></a>クレジットの一覧
+   
+   クレジットの一覧セクションには、Azure クレジットが一覧表示されます。
 
-   ![課金プロファイルのクレジット一覧のスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![課金プロファイルのクレジット一覧のスクリーンショット](./media/billing-mca-check-azure-credits-balance/mca-credits-list.png)
 
    | 期間 | 定義 |
    |---|---|
@@ -63,7 +78,28 @@ Microsoft 顧客契約の課金アカウントでは、クレジットが課金�
    | 元の金額 | クレジットの元の金額 |
    | Status | クレジットの現在の状態。 状態は、アクティブ、使用済み、期限切れ、または期限切れ間近です。 |
 
-## <a name="check-your-credit-balance-programmatically"></a>クレジット残高をプログラムから確認する
+   #### <a name="transactions"></a>トランザクション
+
+   取引セクションには、クレジット残高に関係したすべての取引が表示されます。
+
+   ![課金プロファイルのクレジット取引のスクリーンショット](./media/billing-mca-check-azure-credits-balance/mca-credits-transactions.png)
+    
+   | 期間 | 定義 |
+   |---|---|
+   | トランザクション日時 | 取引が発生した日付 |
+   | [説明] | 取引の説明 |
+   | 金額| トランザクションの金額 |
+   | Balance | 取引後の残高 |
+
+    > [!NOTE]
+    >
+    > 支払い方法のページに Azure クレジットが表示されない場合、クレジットをお持ちでないか、または適切なスコープが選択されていません。 クレジットがある課金アカウントまたはそのいずれかの課金プロファイルを選択してください。 スコープの変更方法については、[Azure portal での課金スコープの切り替え](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)に関するセクションを参照してください。
+
+5. 課金アカウント スコープで Azure クレジットを表示していて、なおかつ課金アカウントに複数の課金プロファイルが存在する場合、Azure クレジット ページには、課金プロファイルごとに Azure クレジットの概要を記載したテーブルが表示されます。 一覧から課金プロファイルを選択し、支払い方法と Azure クレジットを順に選択すると、課金プロファイルの詳細が表示されます。
+
+    ![課金アカウントのクレジット一覧のスクリーンショット](./media/billing-mca-check-azure-credits-balance/mca-account-credit-list.png)
+
+### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
 
 [Azure Billing](https://docs.microsoft.com/rest/api/billing/) API と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用すると、課金アカウントのクレジット残高をプログラムから取得できます。
 
@@ -163,7 +199,7 @@ API 応答では、課金プロファイルの推定残高と現在の残高が�
 }
 ```
 
-| 要素名  | 説明                                                                           |
+| 要素名  | [説明]                                                                           |
 |---------------|---------------------------------------------------------------------------------------|
 | `estimatedBalance` | 請求済みの取引と保留中の取引をすべて考慮した後の、クレジットの推定金額。 |
 | `currentBalance`   | 前回請求時点でのクレジットの金額。 保留中の取引は含まれません。    |
@@ -226,7 +262,7 @@ GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumpti
   ]
 }
 ```
-| 要素名  | 説明                                                                                               |
+| 要素名  | [説明]                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `originalAmount` | クレジットの元の金額。 |
 | `closedBalance`   | 前回の請求時点での残高。    |
@@ -314,7 +350,7 @@ GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumpti
   ]
 }
 ```
-| 要素名  | 説明                                                                                               |
+| 要素名  | [説明]                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `transactionDate` | 取引が発生した日付。 |
 | `description` | 取引の説明。 |
@@ -324,6 +360,8 @@ GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumpti
 | `closedBalance`  | 取引後の残高。   |
 | `eventType`  | トランザクションの種類。   |
 | `invoiceNumber`  | 取引の請求先となる請求書の請求書番号。 保留中の取引では空になります。   |
+
+---
 
 ## <a name="how-credits-are-used"></a>クレジットの使用方法
 
@@ -356,7 +394,7 @@ Microsoft 顧客契約の請求先アカウントでは、請求書および支�
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft 顧客契約の請求先アカウントについて理解する](billing-mca-overview.md)
 - [Microsoft 顧客契約の請求書の用語を理解する](billing-mca-understand-your-invoice.md)

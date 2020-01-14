@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Python 用 Personalizer クライアント ライブラリ | Microsoft Docs
+title: クイック スタート:Python 用 Personalizer クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: 学習ループを使用した Python 用 Personalizer クライアント ライブラリの概要について説明します。
+description: このクイックスタートでは、学習ループを使用した Python 用 Personalizer クライアント ライブラリの概要について説明します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378944"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>クイック スタート:Python 用 Personalizer クライアント ライブラリ
 
@@ -47,7 +47,7 @@ Python 用 Personalizer クライアント ライブラリの概要。 以下の
 
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://portal.azure.com/) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 詳細については、[Azure portal を使用して Cognitive Services リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照してください。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://portal.azure.com/) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 詳細については、[Azure portal を使用して Cognitive Services リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照してください。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -170,14 +170,14 @@ python sample.py
 
 ![クイック スタート プログラムは、フィーチャーと呼ばれるユーザー設定を収集するためにいくつかの質問をしてから、最上位のアクションを提供します。](./media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >[Personalizer のしくみ](how-personalizer-works.md)

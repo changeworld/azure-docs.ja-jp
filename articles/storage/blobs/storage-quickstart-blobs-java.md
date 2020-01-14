@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 477f13f58d9b630519faa79424f22cb1bb34918c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351256"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -48,13 +48,13 @@ Java 用 Azure Blob Storage クライアント ライブラリ v12 を使用す�
 
 *blob-quickstart-v12* という名前の Java アプリケーションを作成します。
 
-1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven コマンドを使用し、*blob-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドをすべて 1 行に入力して、単純な "Hello world!" を作成します。 Java プロジェクト。 ここでは、読みやすくするために、コマンドが複数の行に表示されています。
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven コマンドを使用し、*blob-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して、単純な "Hello world!" を作成します。 Java プロジェクト。
 
    ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart
-                          -DartifactId=blob-quickstart-v12
-                          -DarchetypeArtifactId=maven-archetype-quickstart
-                          -DarchetypeVersion=1.4
+   mvn archetype:generate -DgroupId=com.blobs.quickstart \
+                          -DartifactId=blob-quickstart-v12 \
+                          -DarchetypeArtifactId=maven-archetype-quickstart \
+                          -DarchetypeVersion=1.4 \
                           -DinteractiveMode=false
    ```
 
@@ -148,7 +148,7 @@ public class App
 }
 ```
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -192,11 +192,11 @@ System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable
 // is created after the application is launched in a console or with
 // Visual Studio, the shell or application needs to be closed and reloaded
 // to take the environment variable into account.
-String connectStr = System.getenv("CONNECT_STR");
+String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
 ### <a name="create-a-container"></a>コンテナーを作成する
@@ -208,7 +208,7 @@ String connectStr = System.getenv("CONNECT_STR");
 
 次に、[BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) クラスのインスタンスを作成し、[create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) メソッドを呼び出して、ストレージ アカウントに実際にコンテナーを作成します。
 
-`Main` メソッドの末尾に、次のコードを追加します。
+`Main` メソッドの末尾に次のコードを追加します。
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -270,7 +270,7 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードでは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOAD" というサフィックスを追加します。
 
-`Main` メソッドの末尾に、次のコードを追加します。
+`Main` メソッドの末尾に次のコードを追加します。
 
 ```java
 // Download the blob to a local file
@@ -353,7 +353,7 @@ Done
 
 ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Java を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。
 

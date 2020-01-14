@@ -11,48 +11,62 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 34ffcd63879920c3c744deb4cf0b28684081dc25
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443855"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
 この記事には、[SQL Database マネージド インスタンス](sql-database-managed-instance.md)について特によく寄せられる質問が数多く記載されています。
 
-## <a name="where-can-i-find-a-list-of-features-supported-on-managed-instance"></a>マネージド インスタンスでサポートされている機能の一覧はどこで確認できますか?
+## <a name="supported-features"></a>サポートされている機能
+
+**マネージド インスタンスでサポートされている機能の一覧はどこで確認できますか?**
 
 マネージド インスタンスでサポートされている機能の一覧については、[Azure SQL Database と SQL Server の比較](sql-database-features.md)に関するページを参照してください。
 
 Azure SQL Database マネージド インスタンスとオンプレミス SQL Server の構文および動作の違いについては、[T-SQL と SQL Server の相違点](sql-database-managed-instance-transact-sql-information.md)に関するページを参照してください。
 
 
-## <a name="where-can-i-find-technical-characteristics-and-resource-limits-for-managed-instance"></a>マネージド インスタンスの技術的特性とリソース制限はどこで確認できますか?
+## <a name="tech-spec--resource-limits"></a>技術仕様およびリソースの制限
+ 
+**マネージド インスタンスの技術的特性とリソース制限はどこで確認できますか?**
 
 使用可能なハードウェアの世代の特性については、[ハードウェアの世代間の技術的相違点](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)に関するページを参照してください。
 使用可能なサービス レベルとその特性については、[サービス レベル間の技術的相違点](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)に関するページを参照してください。
 
-## <a name="where-can-i-find-known-issues-and-bugs"></a>既知の問題やバグはどこで確認できますか?
+## <a name="known-issues--bugs"></a>既知の問題 & バグ
+
+**既知の問題やバグはどこで確認できますか?**
 
 バグや既知の問題については、「[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)」をご覧ください。
 
-## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>最新の機能とパブリック プレビュー段階の機能はどこにありますか。
+## <a name="new-features"></a>新機能
+
+**最新の機能とパブリック プレビュー段階の機能はどこにありますか?**
 
 新機能とプレビュー機能については、[リリース ノート](/azure/sql-database/sql-database-release-notes?tabs=managed-instance)を参照してください。
 
-## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか。
+## <a name="deployment-times"></a>デプロイ時間 
+
+**インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか?**
 
 新しいマネージ インスタンスの作成やサービス レベル (仮想コアやストレージ) の変更に予想される時間は、いくつかの要因に左右されます。 [こちら](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)の管理操作をご覧ください。 
 
-## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?
+## <a name="naming-convention"></a>命名規則
+
+**マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?**
 
 マネージド インスタンスには、*database.windows.net* で終わる名前を付ける必要があります。 既定値の代わりに別の DNS ゾーン、たとえば **mi-another-name**.contoso.com などを使用するには、次のようにします。 
 - CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。
 - *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。
 
-## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>データベースをマネージド インスタンスから元の SQL Server や Azure SQL Database に移動するには、どうすればよいですか?
+## <a name="move-db-from-mi"></a>MI から DB を移動する 
+
+**データベースをマネージド インスタンスから元の SQL Server や Azure SQL Database に移動するには、どうすればよいですか?**
 
 [データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート]( sql-database-import.md)できます。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
 
@@ -60,13 +74,17 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 マネージド インスタンスから取得したネイティブの `COPY_ONLY` バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。
 
-## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?
+## <a name="migrate-instance-db"></a>インスタンス DB の移行
+
+**インスタンス データベースを単一の Azure SQL Database に移行するには、どうすればよいですか?**
 
 1 つの方法として、[データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート](sql-database-import.md)します。 
 
 データベースが 100 GB 未満の場合は、これが推奨される方法です。 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
 
-## <a name="how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance"></a>マネージド インスタンス用にハードウェアの世代の Gen 4 と Gen 5 のどちらかを選択するには、どうすればよいですか?
+## <a name="gen-4-vs-gen-5"></a>Gen 4 と Gen 5 
+
+**マネージド インスタンス用にハードウェアの世代の Gen 4 と Gen 5 のどちらかを、どのように選択すればよいですか?**
 
 ハードウェアの世代によっては、他の種類よりも特定の種類のワークロードに適している場合があるので、これはワークロードに応じて決まります。 パフォーマンスは単純に比較するのが難しいテーマですが、ワークロードのパフォーマンスに影響するハードウェアの世代間の違いには以下のようなものがあります。
 - Gen 4 は物理プロセッサをベースにしているので、仮想コア プロセッサ ベースの Gen 5 に比べてコンピューティングのサポートが優れています。 この点は、コンピューティング集中型ワークロードにとって有利な場合があります。
@@ -74,7 +92,9 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 特定のケースでどちらのハードウェアの世代がより適切に機能するのかを見極めるために、運用を目的とした実際のワークロードのパフォーマンス テストを運用開始前に実施することを強くお勧めします。
 
-## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>マネージド インスタンスのハードウェアの世代 Gen 4 と Gen 5 をオンラインで切り替えることはできますか? 
+## <a name="switch-hardware-generation"></a>ハードウェアの世代の切り替え 
+
+**マネージド インスタンスのハードウェア世代の Gen 4 と Gen 5 をオンラインで切り替えることはできますか?**
 
 マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合、ハードウェア世代を切り替える方法が説明してある[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)のブログ記事にあるスクリプトを利用できます。
 
@@ -83,23 +103,39 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 ハードウェアの両方の世代が同じリージョンでサポートされていない場合、ハードウェアの世代を変更することはできますが、手動で行う必要があります。 その場合は、必要なハードウェアの世代が使用可能になっているリージョンに新しいインスタンスをプロビジョニングし、古いインスタンスと新しいインスタンスの間でデータのバックアップと復元を手動で行う必要があります。
 
 
-## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか? 
+## <a name="tune-performance"></a>パフォーマンスの調整
+
+**マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか? **
 
 General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 詳しくは、「[General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」をご覧ください。
 
-IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳しくは、[Gen 4 と Gen 5 のどちらかを選択する方法](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance)に関する説明をご覧ください。
+IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳しくは、[Gen 4 と Gen 5 のどちらかを選択する方法](#gen-4-vs-gen-5)に関する説明をご覧ください。
 
 ワークロードが多数の小さなトランザクションで構成されている場合は、接続の種類をプロキシからリダイレクト モードに切り替えることを検討してください。
 
-## <a name="what-is-the-maximum-storage-size-for-managed-instance"></a>マネージド インスタンスの最大ストレージ サイズは? 
+## <a name="maximum-storage-size"></a>最大ストレージ サイズ
+
+**マネージド インスタンスの最大ストレージ サイズは?**
 
 マネージド インスタンスのストレージ サイズは選択したサービス レベル (General Purpose または Business Critical) によって異なります。 これらのサービス レベルのストレージ制限については、[サービス レベルの特性](sql-database-service-tiers-general-purpose-business-critical.md)に関するページを参照してください。
 
-## <a name="is-the-backup-storage-deducted-from-my-managed-instance-storage"></a>バックアップ ストレージは、マネージド インスタンス ストレージから差し引かれますか? 
+## <a name="back-up-storage-cost"></a>バックアップ ストレージのコスト 
+
+**バックアップ ストレージは、マネージド インスタンス ストレージから差し引かれますか?**
 
 いいえ。バックアップ ストレージがマネージド インスタンス ストレージ領域から差し引かれることはありません。 バックアップ ストレージはインスタンス ストレージ領域から独立しており、サイズは制限されていません。 バックアップ ストレージは、インスタンス データベースのバックアップを保持する期間に制限があり、7 から 35 日の範囲内で構成可能です。 詳細については、「[自動バックアップ](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups)」を参照してください。
+
+## <a name="track-billing"></a>課金の追跡
+
+**マネージド インスタンスの課金コストを追跡する方法はありますか?**
+
+これを行うには、[Azure Cost Management ソリューション](/azure/cost-management/)を使用します。 [Azure portal](https://portal.azure.com) で **[サブスクリプション]** に移動し、 **[コスト分析]** を選択します。 
+
+**[累積コスト]** オプションを使用し、その後 **[リソースの種類]** を `microsoft.sql/managedinstances` としてフィルター処理します。 
   
-## <a name="how-can-i-set-inbound-nsg-rules-on-management-ports"></a>管理ポートでインバウンド NSG 規則を設定するには、どうすればよいですか?
+## <a name="inbound-nsg-rules"></a>インバウンド NSG ルール
+
+**管理ポートでインバウンド NSG 規則を設定するには、どうすればよいですか?**
 
 組み込みファイアウォール機能は、Microsoft の管理またはデプロイ用マシンのみに関連付けられた IP 範囲からのインバウンド接続を許可するよう、クラスター内のすべての仮想マシンで Windows ファイアウォールを構成すると共に、管理ワークステーションを効果的に保護してネットワーク層を介した侵入を防止します。
 
@@ -114,7 +150,9 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 詳細および組み込みファイアウォールの確認方法については、[Azure SQL Database マネージド インスタンスの組み込みファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)に関するページを参照してください。
 
 
-## <a name="how-can-i-mitigate-networking-risks"></a>ネットワークのリスクを軽減するには、どうすればよいですか? 
+## <a name="mitigate-network-risks"></a>ネットワークのリスクを軽減する  
+
+**ネットワークのリスクを軽減するには、どうすればよいですか?**
 
 ネットワークのリスクを軽減するために、以下に示す一連のセキュリティ設定および制御を適用することをお勧めします。
 
@@ -127,7 +165,9 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 - [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) スイートから[脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)を有効にする。
 
 
-## <a name="where-can-i-find-use-cases-and-resulting-cost-savings-with-managed-instance"></a>マネージド インスタンスのユース ケースやコスト削減の成果はどこで確認できますか?
+## <a name="cost-saving-use-cases"></a>コストを節約するユース ケース
+
+**マネージド インスタンスのユース ケースやコスト削減の成果はどこで確認できますか?**
 
 マネージド インスタンスのケース スタディ:
 
@@ -138,7 +178,9 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 Azure SQL Database マネージド インスタンスのデプロイに関連する利点、コスト、リスクについて理解を深めるために、次の Forrester による調査結果もあります: [MI の総合的な経済効果](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 
 
-## <a name="can-i-do-dns-refresh"></a>DNS の更新はできますか? 
+## <a name="dns-refresh"></a>DNS の更新 
+
+**DNS の更新はできますか? **
   
 現在、マネージド インスタンスの DNS サーバー構成を更新する機能は提供されていません。
 
@@ -150,31 +192,41 @@ DNS 構成は、最終的に次の場合に更新されます。
 回避策として、マネージド インスタンスを 4 個の仮想コアにダウングレードしてからアップグレードし直します。 これには、DNS 構成の更新という副作用があります。
 
 
-## <a name="can-a-managed-instance-have-a-static-ip-address"></a>マネージド インスタンスに静的 IP アドレスを付与することはできますか?
+## <a name="static-ip-address"></a>静的 IP アドレス
+
+**マネージド インスタンスに静的 IP アドレスを付与することはできますか?**
 
 まれではあるものの不可欠な状況として、マネージド インスタンスを新しい仮想クラスターにオンラインで移行することが必要になる場合があります。 必要な場合、この移行を行うのは、サービスのセキュリティおよび信頼性の向上を目指してテクノロジ スタックに変更を加えるためです。 新しい仮想クラスターに移行すると、マネージド インスタンスのホスト名にマップされている IP アドレスが変更されます。 マネージド インスタンス サービスは、静的 IP アドレスのサポートを要求することはなく、定期的なメンテナンス サイクルの一環として、そのアドレスを予告なしに変更する権限を有しています。
 
 このような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。
 
-## <a name="can-i-move-a-managed-instance-or-its-vnet-to-another-resource-group"></a>マネージド インスタンスまたはその VNet を別のリソース グループに移動することはできますか?
+## <a name="moving-mi"></a>MI の移動
+
+**マネージド インスタンスまたはその VNet を別のリソース グループに移動することはできますか?**
 
 いいえ、これは現在のプラットフォームの制限事項です。 マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
 
-## <a name="can-i-change-the-time-zone-for-an-existing-managed-instance"></a>既存のマネージド インスタンスのタイム ゾーンは変更できますか?
+## <a name="change-time-zone"></a>タイムゾーンの変更
+
+**既存のマネージド インスタンスのタイム ゾーンを変更できますか?**
 
 タイム ゾーン構成は、マネージド インスタンスの初回プロビジョニング時に設定できます。 既存のマネージド インスタンスのタイム ゾーンの変更はサポートされていません。 詳細については、[タイム ゾーンの制限](sql-database-managed-instance-timezone.md#limitations)に関する記事を参照してください。
 
 対処方法には、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) (推奨) を実行する方法があります。
 
 
-## <a name="how-do-i-resolve-performance-issues-with-my-managed-instance"></a>マネージド インスタンスで、どのようにパフォーマンスの問題を解決できますか?
+## <a name="resolve-performance-issues"></a>パフォーマンスの問題の解決
+
+**マネージド インスタンスのパフォーマンスの問題をどのように解決できますか?**
 
 マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)」の記事をご覧ください。
 
 マネージド インスタンスでのデータ読み込みは、必須の完全復旧モデルと、トランザクション ログの書き込みスループットに対する[制限](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)が原因で、SQL Server よりも遅くなることがよくあります。 これは、一時的なデータをユーザー データベースではなく tempdb に読み込むか、またはクラスター化列ストアやメモリ最適化テーブルを使用することで対処できる場合があります。
 
 
-## <a name="can-i-restore-my-encrypted-database-to-managed-instance"></a>暗号化されたデータベースをマネージド インスタンスに復元できますか?
+## <a name="restore-encrypted-backup"></a>暗号化されたバックアップの復元
+
+**暗号化されたデータベースをマネージド インスタンスに復元できますか?**
 
 はい。データベースを復号化しなくても、マネージド インスタンスに復元できます。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システムで暗号化キーの保護機能として使用される証明書またはキーをマネージド インスタンスに提供する必要があります。 その方法は次の 2 つです。
 
@@ -183,6 +235,8 @@ DNS 構成は、最終的に次の場合に更新されます。
 
 暗号化保護機能をマネージド インスタンスで利用できるようにしたら、標準データベース復元手順を進めることができます。
 
-## <a name="how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-managed-instance"></a>Azure SQL Database の単一またはエラスティック プールからマネージド インスタンスに移行するには、どうすればよいですか? 
+## <a name="migrate-from-single-db"></a>単一の DB からの移行 
+
+**Azure SQL Database の単体またはエラスティック プールからマネージド インスタンスに移行するには、どうすればよいですか?**
 
 マネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。

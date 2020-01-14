@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric で構成ファイルをパラメーター化する | Microsoft Docs
-description: Service Fabric で構成ファイルをパラメーター化する方法を学習します。
-documentationcenter: .net
+title: Azure Service Fabric で構成ファイルをパラメーター化する
+description: 複数の環境を管理する際に役立つ手法である、Service Fabric で構成ファイルをパラメーター化する方法について説明します。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464778"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644632"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -64,5 +57,5 @@ ms.locfileid: "68464778"
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Visual Studio で使用可能なその他のアプリケーション管理機能については、 [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事をご覧ください。

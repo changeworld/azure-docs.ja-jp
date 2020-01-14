@@ -1,5 +1,5 @@
 ---
-title: Python 用の ADAL から MSAL への移行に関するガイド | Azure
+title: Python ADAL から MSAL への移行ガイド | Azure
 description: Azure Active Directory 認証ライブラリ (ADAL) Python アプリを、Python 用の Microsoft 認証ライブラリ (MSAL) に移行する方法について説明します。
 services: active-directory
 titleSuffix: Microsoft identity platform
@@ -15,12 +15,12 @@ ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a4af690a1433f6a185ab17f06748d67927edea
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 110c719eaf68e8be618e5c865f1ac7a2cf917719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424414"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -30,7 +30,7 @@ ms.locfileid: "74917235"
 
 ADAL は、Azure Active Directory (Azure AD) v1.0 エンドポイントで動作します。 Microsoft Authentication Library (MSAL) は、以前は Azure Active Directory v2.0 エンドポイントと呼ばれていた、Microsoft ID プラットフォームと連動します。 Microsoft ID プラットフォームは、以下の点で Azure AD v1.0 とは異なります。
 
-サポート:
+サポートするものは次のとおりです。
   - 職場または学校のアカウント (Azure AD によりプロビジョニングされるアカウント)
   - 個人アカウント (Outlook.com や Hotmail.com など)
   - Azure AD B2C サービスから自分のメールやソーシャル ID (LinkedIn、Facebook、Google など) を持ち込むカスタマー
@@ -99,6 +99,6 @@ for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...)
     # stores it in the token cache.
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関するページを参照してください。

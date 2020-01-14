@@ -3,19 +3,19 @@ title: マネージド コンテナー レジストリ
 description: クラウド ベースの管理されたプライベート Docker レジストリを提供する Azure Container Registry サービスの紹介です。
 author: stevelas
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 12/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445731"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
-Azure Container Registry は、オープンソースの Docker Registry 2.0 が基になっている管理されたプライベートな Docker レジストリ サービスです。 プライベート Docker コンテナー イメージを保存および管理する Azure コンテナー レジストリを作成および管理します。
+Azure Container Registry は、オープンソースの Docker Registry 2.0 が基になっている管理されたプライベートな Docker レジストリ サービスです。 プライベート Docker コンテナー イメージおよび関連する成果物を保存、管理する Azure コンテナー レジストリを作成、管理します。
 
 既存のコンテナーの開発およびデプロイ パイプラインで Azure コンテナー レジストリを使うか、Azure Container Registry タスクを使って Azure にコンテナー イメージをビルドします。 必要に応じてビルドするか､またはソースコードのコミットやベース イメージの更新などのトリガーでビルドを完全に自動化します｡
 
@@ -38,15 +38,22 @@ Azure には、Azure コンテナー レジストリを管理するために、A
 
 * **レジストリ SKU** - Azure サブスクリプションに 1 つ以上のコンテナー レジストリを作成できます。 レジストリには、[Basic、Standard、Premium](container-registry-skus.md) の 3 つの SKU があり、それぞれ Webhook 統合、Azure Active Directory によるレジストリ認証、および削除機能がサポートされます。 デプロイと同じ Azure の場所にレジストリを作成することで、ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用します。 高度なレプリケーションとコンテナー イメージの配布に対応するには、Premium レジストリの [geo レプリケーション](container-registry-geo-replication.md)機能を使用してください。 
 
-  コンテナー レジストリへの[アクセスを制御](container-registry-authentication.md)するには、Azure ID、Azure Active Directory でサポートされている[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)、または提供された管理者アカウントを使用します。 Azure CLI または標準の `docker login` コマンドを使用して、レジストリにログインします。
+* **セキュリティとアクセス** - Azure CLI または標準の `docker login` コマンドを使用して、レジストリにログインします。 Azure Container Registry は、HTTPS でコンテナー イメージを転送し、TLS によるクライアント接続のセキュリティ保護をサポートします。 
+
+  > [!IMPORTANT]
+  > 2020 年 1 月 13 日以降、Azure Container Registry では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。
+
+  コンテナー レジストリへの[アクセスを制御](container-registry-authentication.md)するには、Azure ID、Azure Active Directory でサポートされている[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)、または提供された管理者アカウントを使用します。 ロールベースのアクセス制御 (RBAC) を使用して、レジストリに対するきめ細かなアクセス許可をユーザーまたはシステムに割り当てます。
+
+  Premium SKU のセキュリティ機能には、イメージ タグに署名するための[コンテンツの信頼](container-registry-content-trust.md)や、レジストリへのアクセスを制限する[ファイアウォールと仮想ネットワーク (プレビュー)](container-registry-vnet.md) などがあります。 Azure Container Registry に必要に応じて Azure Security Center を統合すれば、イメージがレジストリにプッシュされるたびに、[イメージがスキャン](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)されます。
 
 * **サポートされるイメージと成果物** - リポジトリにグループ化されます。各イメージは、Docker 互換コンテナーの読み取り専用のスナップショットです。 Azure コンテナー レジストリには、Windows と Linux の両方のイメージを含めることができます。 すべてのコンテナーのデプロイのイメージ名を制御できます。 イメージをリポジトリにプッシュしたり、イメージをリポジトリからプルしたりするには、標準の [Docker コマンド](https://docs.docker.com/engine/reference/commandline/)を使用します。 Azure Container Registry は、Docker コンテナー イメージに加えて、[Helm チャート](container-registry-helm-repos.md)のような[関連コンテンツの形式](container-registry-image-formats.md)および [Open Container Initiative (OCI) のイメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に基づいて構築されたイメージを格納します。
 
-* **Azure Container Registry タスク** - Azure でのイメージのビルド、テスト、プッシュ、デプロイを簡素化するには、[Azure Container Registry タスク](container-registry-tasks-overview.md) (ACR タスク) を使います。 たとえば、ACR タスクを使って､`docker build` 操作を Azure にオフロードすることで、開発の社内ループをクラウドに拡張します。 ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
+* **イメージ ビルドの自動化** - Azure でのイメージのビルド、テスト、プッシュ、デプロイを効率化するには、[Azure Container Registry タスク](container-registry-tasks-overview.md) (ACR タスク) を使います。 たとえば、ACR タスクを使って､`docker build` 操作を Azure にオフロードすることで、開発の社内ループをクラウドに拡張します。 ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
 
   [マルチステップ タスク](container-registry-tasks-overview.md#multi-step-tasks)では、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップベースでタスクの定義と実行を行うことができます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Portal を使用したコンテナー レジストリの作成](container-registry-get-started-portal.md)
 * [Azure CLI を使用したコンテナー レジストリの作成](container-registry-get-started-azure-cli.md)

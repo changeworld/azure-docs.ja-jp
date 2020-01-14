@@ -1,25 +1,15 @@
 ---
-title: Service Fabric クラスターの容量計画 | Microsoft Docs
+title: Service Fabric クラスターの容量計画
 description: Service Fabric クラスターの容量計画に関する考慮事項。 ノード タイプ, 操作, 持続性レベルと信頼性レベル
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463306"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -204,7 +194,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 容量計画が完了し、クラスターをセットアップしたら、以下のドキュメントをお読みください。
 
 * [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)

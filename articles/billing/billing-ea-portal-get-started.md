@@ -4,16 +4,16 @@ description: この記事では、Azure EA のお客様が Azure EA ポータル
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841372"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660666"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA ポータルを使ってみる
 
@@ -48,12 +48,13 @@ Azure EA ポータルの階層は、次のもので構成されます。
 
 ## <a name="enterprise-user-roles"></a>エンタープライズ ユーザー ロール
 
-加入契約の Azure サービスを管理するための、次の 4 つの個別のエンタープライズ管理ユーザー ロールがあります。
+加入契約の Azure サービスを管理するための、次の 5 つの個別のエンタープライズ管理ユーザー ロールがあります。
 
 - エンタープライズ管理者
 - 部門管理者
 - アカウント所有者
 - サービス管理者
+- 通知の連絡先
 
 ロールは、2 つの異なる Microsoft Azure ポータルでタスクを完了するために使用されます。 Azure EA ポータル (https://ea.azure.com) を使用すると、課金とコストを管理するのに役立ちます。 Azure portal (https://portal.azure.com) は、Azure サービスを管理するために使用されます。
 
@@ -101,9 +102,15 @@ Azure EA ポータルの階層は、次のもので構成されます。
 
 サービス管理者には、Azure portal でサービスを管理し、ユーザーを共同管理者ロールに割り当てる権限があります。
 
+### <a name="notification-contact"></a>通知の連絡先
+
+通知の連絡先は、加入契約に関連する使用状況の通知を受け取ります。
+
 ## <a name="activate-your-enrollment"></a>加入契約をアクティブ化する
 
 サービスをアクティブ化するために、最初のエンタープライズ管理者は [https://ea.azure.com](https://ea.azure.com) で Azure EA ポータルを開き、招待メールの電子メール アドレスを使用してサインインします。
+
+EA 管理者として設定されているユーザーは、Azure EA ポータルにサインインするためにアクティブ化メールを受け取る必要はありません。 [https://ea.azure.com](https://ea.azure.com) に進み、自分のメール アドレス (職場、学校、または Live ID) とパスワードを使用してログオンできます。
 
 複数の加入契約がある場合は、アクティブ化するものを選択します。 既定では、アクティブな加入契約のみが表示されます。 加入契約の履歴を表示するには、Azure EA ポータルの右上にある **[アクティブ]** オプションをオフにします。
 
@@ -369,7 +376,7 @@ Azure イン オープン プランのサブスクリプションを EA に関�
 
 ### <a name="download-csv-reports"></a>CSV レポートをダウンロードする
 
-エンタープライズ管理者は [月単位レポートのダウンロード] ページを使用して、複数のレポートを CSV ファイルとしてダウンロードします。 以下が含まれます。
+エンタープライズ管理者は [月単位レポートのダウンロード] ページを使用して、複数のレポートを CSV ファイルとしてダウンロードします。 具体的な内容を次に示します。
 
 - 残高と料金
 - 使用状況の詳細
@@ -402,7 +409,7 @@ Safari で CSV ファイルを Excel にダウンロードするユーザーの�
 1. **[詳細なレポートのダウンロード]** を選択します。
 1. **[Appropriate Date Range]\(適切な日付範囲\)** を選択します。
 1. **[Appropriate Accounts]\(適切なアカウント\)** を選択します。
-1. **Request Usage Data\(使用状況データのリクエスト\)** を選択します。
+1. **[使用状況データのリクエスト]** を選択します。
 1. レポートの状態が **[ダウンロード]** に更新されるまで、 **[最新の情報に更新]** を選択します。
 1. レポートをダウンロードします。
 
@@ -428,7 +435,7 @@ Safari で CSV ファイルを Excel にダウンロードするユーザーの�
 ### <a name="enrollment-statuses"></a>加入契約の状態:
 
 - **Pending**: 加入契約管理者は Azure EA Portal にログインする必要があります。 ログインすると、加入契約がアクティブな状態に切り替わります。
-- **アクティブ**:加入契約はアクティブであり、Azure EA Portal でアカウントとサブスクリプションを作成できます。 加入契約は、Enterprise Agreement の終了日までアクティブな状態が維持されます。
+- **[アクティブ]** : 加入契約はアクティブであり、Azure EA Portal でアカウントとサブスクリプションを作成できます。 加入契約は、Enterprise Agreement の終了日までアクティブな状態が維持されます。
 - **無期限の延長期間**:Enterprise Agreement の終了日に達した後、無期限の延長期間の状態になります。 これにより、拡張期間にオプトインした EA のお客様は、Enterprise Agreement の終了後に、Azure を引き続き無期限に使用できます。 EA 加入契約が Enterprise Agreement の終了日に達する前に、加入契約管理者は、年額コミットメントを追加して加入契約を更新するか、新しい加入契約に転送するか、マイクロソフト オンライン サブスクリプション プログラム (MOSP) に移行するか、または加入契約に関連付けられているすべてのサービスが無効になることを確認するかを決定する必要があります。
 - **期限切れ**:EA のお客様が拡張期間からオプトアウトし、EA 加入契約が Enterprise Agreement の終了日に達しています。加入登録が期限切れになり、関連付けられていたすべてのサービスが無効になります。
 - **転送済み**:関連付けられているすべてのアカウントとサービスが新しい加入契約に転送された加入契約は、転送済みの状態で表示されます。 更新時に新しい加入契約番号が生成された場合、加入契約は自動的には転送されないことに注意してください。 自動的に転送されるようにするには、以前の加入契約番号を、お客様の更新事務処理に含める必要があります。
@@ -445,7 +452,7 @@ Safari で CSV ファイルを Excel にダウンロードするユーザーの�
 
 EA アカウント所有者として認証された後、Visual Studio サブスクリプションの個別の Azure 特典を回復するには、Visual Studio サブスクリプションと同じサインインを EA に使用した後、次のいずれかを行う必要があります。
 1. 所有する Azure サブスクリプションを削除または移動した後、このアカウント所有者を EA Portal から削除し、Visual Studio の個別の Azure 特典に新たにサインアップします。
- または
+ OR
 1. VLSC の管理サイトから Visual Studio サブスクライバーを削除し、サブスクリプションを再割り当てして、今度は別のサインインを使用するようにします。その後、Visual Studio の個別の Azure 特典に新たにサインアップできます。
 
 ### <a name="what-type-of-subscription-should-i-create"></a>どのような種類のサブスクリプションを作成する必要がありますか?
@@ -523,7 +530,7 @@ API を使用して使用状況にアクセスすることもできます。詳�
 **Power BI Web サイト**に移動:
 
  1. 有効な職場または学校アカウントでサインインします。
-    - 職場または学校アカウントは、Azure EA Portal を介して加入契約にアクセスするときに使用したものと同じ場合と、異なる場合があります。
+    - 職場または学校アカウントは、Azure EA Portal を介して加入契約にアクセスするために使用されたのと同じものでも別のものでもかまいません。
  1. サービスのダッシュボードで、次を選択します。
     - Microsoft Azure エンタープライズ タイル。
     - **[接続]** をクリックします。
@@ -538,8 +545,8 @@ API を使用して使用状況にアクセスすることもできます。詳�
 
 Power BI レポートは、課金情報を表示するアクセス権がある、EA ダイレクト、パートナー、およびインダイレクトのお客様にご利用いただけます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure EA Portal の管理者は「[Azure EA Portal の管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
+- Azure EA ポータルの管理者は「[Azure EA ポータルの管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
 - Azure EA Portal の問題のトラブルシューティングに関するヘルプが必要な場合は、「[Troubleshoot Azure EA portal access (Azure EA Portal へのアクセスのトラブルシューティング)](billing-ea-portal-troubleshoot.md)」を参照してください。
 - Azure EA オンボード ガイドについては、[Azure EA オンボード ガイド](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide)を参照してください。

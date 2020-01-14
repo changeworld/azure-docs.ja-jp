@@ -8,22 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: c5a1af0b26f30cac39a76c4480848fbe1d75477b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bd2e12660894f51ae4606ce3b2766f6cff821f41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803113"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447649"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+このクイック スタートで呼び出す QnA Maker API は次のとおりです。
+* [KB の作成](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,9 +47,14 @@ ms.locfileid: "71803113"
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
-上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を `CreateKB` クラスに追加します。 
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を `CreateKB` クラスに追加します。
 
-[QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーとリソース名を取得するために、Azure portal で QnA Maker リソースの **[クイックスタート]** を選択します。 
+[QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーとリソース名を取得するために、Azure portal で QnA Maker リソースの **[クイックスタート]** を選択します。
+
+次の値を設定します。
+
+* `<your-qna-maker-subscription-key>` - この**キー**は 32 文字の文字列で、Azure portal の [クイック スタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
+* `<your-resource-name>` - この**リソース名**を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
 
 クラスを閉じる最後の中かっこを追加する必要はありません。このクイック スタートの終わりにある最終的なコード スニペットに存在します。
 
@@ -135,7 +144,7 @@ main メソッドで KB を作成した後、状態をポーリングします�
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -2,18 +2,18 @@
 title: セキュリティ:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのセキュリティおよび DevOps のベスト プラクティスについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494966"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496400"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -23,7 +23,7 @@ ms.locfileid: "73494966"
 
 Enterprise セキュリティ パッケージ (ESP) は、Active Directory ベースの認証、マルチ ユーザー サポート、およびロールベースのアクセス制御をサポートします。 選択された ESP オプションにより、HDInsight クラスターが Active Directory ドメインに参加し、エンタープライズ管理者は Apache Ranger を使用して Apache Hive セキュリティのためのロールベースのアクセス制御 (RBAC) を構成できます。 管理者はさらに従業員によるデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
 
-ESP は、次のクラスターの種類で使用できます。Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka、および Interactive Query (Hive LLAP)。 
+ESP は、次のクラスターの種類で使用できます。Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka、および Interactive Query (Hive LLAP)。
 
 ドメイン参加済み HDInsight クラスターをデプロイするには、次の手順を使用します。
 
@@ -37,23 +37,23 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 - AAD DS のために LDAPS を有効にします。
 - OU に対して委任された読み取りおよび書き込み管理者アクセス許可を使用して、読み取りおよび書き込みができるように、Azure Active Directory 内にサービス アカウントを作成する。 このサービス アカウントは、コンピューターをドメインに参加させ、OU 内にマシン プリンシパルを配置することができます。 また、クラスターの作成中に指定する OU 内にサービス プリンシパルを作成することもできます。
 
-
     > [!Note]
     > このサービス アカウントが AD ドメイン管理者アカウントである必要はありません。
 
-
 - 次のパラメーターを設定して、HDInsight ESP クラスターを展開する。
-    - **ドメイン名**: Azure AD DS に関連付けられたドメイン名。
-    - **ドメイン ユーザー名**: 前のセクションで作成した Azure AD DS DC マネージド ドメイン内のサービス アカウント (`hdiadmin@contoso.onmicrosoft.com` など)。 このドメイン ユーザーは、この HDInsight クラスターの管理者になります。
-    - **ドメイン パスワード**: サービス アカウントのパスワード。
-    - **組織単位**: HDInsight クラスターで使用する OU の識別名 (`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` など)。 この OU が存在しない場合、HDInsight クラスターは、サービス アカウントが持っている特権を使用して OU を作成しようとします。
-    - **LDAPS の URL**: たとえば `ldaps://contoso.onmicrosoft.com:636` のようになります。
-    - **アクセス ユーザー グループ**: ユーザーをクラスターに同期させるセキュリティ グループ (`HiveUsers` など)。 複数のユーザー グループを指定する場合は、セミコロン (;) で区切ります。 グループは、ESP クラスターを作成する前にディレクトリに存在する必要があります。
+
+    |パラメーター |[説明] |
+    |---|---|
+    |ドメイン名|Azure AD DS に関連付けられたドメイン名。|
+    |ドメイン ユーザー名|前のセクションで作成した Azure AD DS DC マネージド ドメイン内のサービス アカウント (`hdiadmin@contoso.onmicrosoft.com` など)。 このドメイン ユーザーは、この HDInsight クラスターの管理者になります。|
+    |ドメイン パスワード|サービス アカウントのパスワード。|
+    |組織単位|HDInsight クラスターで使用する OU の識別名 (`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` など)。 この OU が存在しない場合、HDInsight クラスターは、サービス アカウントが持っている特権を使用して OU を作成しようとします。|
+    |LDAPS URL|たとえば、「`ldaps://contoso.onmicrosoft.com:636`」のように入力します。|
+    |アクセス ユーザー グループ|ユーザーをクラスターに同期させるセキュリティ グループ (`HiveUsers` など)。 複数のユーザー グループを指定する場合は、セミコロン (;) で区切ります。 グループは、ESP クラスターを作成する前にディレクトリに存在する必要があります。|
 
 詳細については、次の記事を参照してください。
 
 - [ドメイン参加済み HDInsight クラスターでの Apache Hadoop セキュリティの概要](../domain-joined/hdinsight-security-overview.md)
-
 - [HDInsight で Azure のドメイン参加済み Apache Hadoop クラスターを計画する](../domain-joined/apache-domain-joined-architecture.md)
 - [Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 - [Azure Active Directory ユーザーを HDInsight クラスターに同期する](../hdinsight-sync-aad-users-to-cluster.md)
@@ -64,20 +64,20 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 
 エンド ツー エンドのエンタープライズ セキュリティは、次のコントロールを使用して実現できます。
 
-- **private および protected のデータ パイプライン (境界レベルのセキュリティ)**
+**private および protected のデータ パイプライン (境界レベルのセキュリティ)**
     - Azure 仮想ネットワーク、ネットワーク セキュリティ グループ、およびゲートウェイ サービスを使用して境界レベルのセキュリティを実現できます。
 
-- **データ アクセスの認証と承認**
+**データ アクセスの認証と承認**
     - Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを作成します。 (Enterprise セキュリティ パッケージ)。
     - Ambari を使用して、AD ユーザーにクラスター リソースへのロールベースのアクセスを提供します。
     - Apache Ranger を構成して、Hive のアクセス制御ポリシーを表/列/行のレベルで設定できます。
     - クラスターへの SSH アクセスも管理者だけに制限されます。
 
-- **監査**
+**監査**
     - HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。
     - アクセス制御ポリシーへのすべての変更を表示および報告します。
 
-- **暗号化**
+**暗号化**
     - Microsoft が管理するキーまたは顧客管理キーを使用した、透過的なサーバー側の暗号化。
     - クライアント側の暗号化、HTTPS、および TLS を使用した転送中の暗号化。
 
@@ -104,7 +104,7 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 1. 必要に応じて、ジョブ、アプリケーション、またはワークロードを変更します。
 1. クラスター ノードでローカルに格納されている一時的なデータをバックアップします。
 1. 既存のクラスターを削除します。
-1. 同じ既定のデータおよびメタストアを以前のクラスターとして使用して、同じ VNET サブネット内に最新の HDInsight バージョンのクラスターを作成します。
+1. 同じ既定のデータおよびメタストアを以前のクラスターとして使用して、同じ仮想ネットワーク サブネット内に最新の HDInsight バージョンのクラスターを作成します。
 1. バックアップしたすべての一時的なデータをインポートします。
 1. 新しいクラスターを使用して、ジョブを開始または処理を続行します。
 
@@ -122,6 +122,6 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 2. **テストの実行**: 機能とパフォーマンスのテストを繰り返し実行します。
 3. **最適化**: 上記のテスト結果に基づいてパフォーマンスの問題に対処し、再テストを行ってパフォーマンスが改善されたかどうかを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction) の詳細を参照します。
+[HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction) の詳細を参照します。

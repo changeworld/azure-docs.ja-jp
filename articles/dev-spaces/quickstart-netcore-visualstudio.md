@@ -3,17 +3,17 @@ title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio と
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このクイックスタートでは、Azure Dev Spaces と Visual Studio を使用し、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: bfa798027a3905eff29bf1ce11251ce900bd7267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438248"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core - Azure Dev Spaces
 
@@ -55,7 +55,7 @@ Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]
 ## <a name="create-a-new-aspnet-web-app"></a>新しい ASP.NET Web アプリを作成する
 
 1. Visual Studio を開きます。
-1. 新しいプロジェクトを作成する。
+1. 新しいプロジェクトを作成します。
 1. *[ASP.NET Core Web アプリケーション]* を選択し、 *[次へ]* をクリックします。
 1. プロジェクト *webfrontend* に名前を付けて、 *[作成]* をクリックします。
 1. 要求されたら、 *[Web アプリケーション (モデル ビュー コントローラー)]* をテンプレートに選択します。
@@ -68,11 +68,11 @@ Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-[Azure Dev Spaces] ダイアログで、ご自分の "*サブスクリプション*" と "*Azure Kubernetes クラスター*" を選択します。 *[空間]* は *[default]* に設定しておいて、 *[公的にアクセス可能]* チェック ボックスをオンします。 Click *OK*.
+[Azure Dev Spaces] ダイアログで、ご自分の "*サブスクリプション*" と "*Azure Kubernetes クラスター*" を選択します。 *[空間]* は *[default]* に設定しておいて、 *[公的にアクセス可能]* チェック ボックスをオンします。 [*OK*] をクリックします。
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-このプロセスによって、パブリックにアクセスできる URL を備えた *default* 開発空間にお客様のサービスがデプロイされます。 Azure Dev Spaces と共に動作するように構成されていないクラスターを選択すると、クラスターを構成するかどうかをたずねるメッセージが表示されます。 Click *OK*.
+このプロセスによって、パブリックにアクセスできる URL を備えた *default* 開発空間にお客様のサービスがデプロイされます。 Azure Dev Spaces と共に動作するように構成されていないクラスターを選択すると、クラスターを構成するかどうかをたずねるメッセージが表示されます。 [*OK*] をクリックします。
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
@@ -128,7 +128,7 @@ Azure portal でご自分のリソース グループに移動して、 *[リソ
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-netcore-visualstudio.md)

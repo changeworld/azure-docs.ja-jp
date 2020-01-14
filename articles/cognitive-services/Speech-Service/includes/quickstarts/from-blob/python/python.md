@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469624"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "74829073"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [開発環境を設定する](../../../../quickstarts/setup-platform.md)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
 
 ## <a name="download-and-install-the-api-client-library"></a>API クライアント ライブラリをダウンロードしてインストールする
@@ -34,7 +34,7 @@ ms.locfileid: "74829073"
 
 次のインストール手順に従います。
 
-1. https://editor.swagger.io にアクセスします。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://editor.swagger.io ) にアクセスします。
 1. **[ファイル]** 、 **[URL のインポート]** の順にクリックします。
 1. ご利用の Speech サービス サブスクリプションのリージョンを含む Swagger URL (`https://<your-region>.cris.ai/docs/v2.0/swagger`) を入力します。
 1. **[クライアントの生成]** をクリックし、 **[Python]** を選択します。
@@ -64,17 +64,17 @@ pip install requests
 
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
-プロジェクトのスケルトンとして機能するコードを追加してみましょう。
+このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
 (`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
 
 ## <a name="create-and-configure-an-http-client"></a>Http クライアントを作成して構成する
 最初に必要なのは、適切なベース URL と認証セットを含む Http クライアントです。
-このコードを `transcribe` [!code-python に挿入します。[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+このコードを `transcribe` に挿入します[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>文字起こし要求を生成する
-次に、文字起こし要求を生成します。 このコードを `transcribe` に追加します。[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
+次に、文字起こし要求を生成します。 このコードを `transcribe` に追加します[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
 
 ## <a name="send-the-request-and-check-its-status"></a>要求を送信し、その状態を確認する
 ここで、Speech サービスに要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスが要求を受信したかどうかを示すだけに過ぎません。 サービスからは応答ヘッダーで URL が返され、文字起こしの状態はこの URL に格納されます。
@@ -101,6 +101,6 @@ pip install requests
 
 これで、アプリをビルドし、Speech サービスを使用して音声認識をテストする準備ができました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

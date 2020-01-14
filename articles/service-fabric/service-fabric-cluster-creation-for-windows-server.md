@@ -1,25 +1,16 @@
 ---
-title: スタンドアロン Azure Service Fabric クラスターの作成 | Microsoft Docs
+title: スタンドアロン Azure Service Fabric クラスターを作成する
 description: オンプレミスまたはクラウドにある Windows Server が実行されているマシン (物理コンピューターまたは仮想マシン) で、Azure Service Fabric クラスターを作成します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463242"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。 Azure 上の従来の Service Fabric クラスターはマネージド サービスとして使用できるのに対して、スタンドアロンの Service Fabric クラスターはセルフサービスです。
@@ -126,7 +117,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 *.\ClusterConfig.json* と *.\MicrosoftAzureServiceFabric.cab* は、それぞれクラスター構成とランタイムの .cab ファイルのパスです。
 
-### <a name="step-2-connect-to-the-cluster"></a>手順 2:クラスターへの接続
+### <a name="step-2-connect-to-the-cluster"></a>手順 2:クラスターに接続する
 クラスターに接続し、クラスターが実行されており使用可能であることを確認します。 Service Fabric ランタイムをインストールすると、ServiceFabric PowerShell モジュールがインストールされます。  クラスター ノードのいずれか、または Service Fabric ランタイムがインストールされたリモート コンピューターから、クラスターに接続できます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。
 
 セキュリティで保護されていないクラスターに接続するには、次の PowerShell コマンドを実行します。
@@ -135,7 +126,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-例:
+次に例を示します。
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -212,7 +203,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>このパッケージに含まれるプレビュー機能
-なし。
+[なし] :
 
 
 > [!NOTE]
@@ -220,7 +211,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [PowerShell を使用してアプリケーションのデプロイと削除を実行する](service-fabric-deploy-remove-applications.md)
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [スタンドアロン Service Fabric クラスターでノードを追加または削除する](service-fabric-cluster-windows-server-add-remove-nodes.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442992"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -21,7 +21,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 この記事では、API サーバーで許可された IP アドレス範囲を使用して、コントロール プレーンにアクセスできる IP アドレスと CIDR を制限する方法を示します。
 
 > [!IMPORTANT]
-> 新しいクラスターでは、API サーバーで許可された IP アドレス範囲は *Standard* SKU ロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能します。 それらの既存のクラスターもアップグレードでき、引き続き機能します。
+> 新しいクラスターでは、API サーバーで許可された IP アドレス範囲は *Standard* SKU ロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -65,7 +65,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standard SKU ロード バランサーのアウトバウンド IP を指定する
 
-AKS クラスターを作成するときに、クラスターのアウトバウンド IP アドレスまたはプレフィックスを指定すると、それらのアドレスまたはプレフィックスも許可されます。 例:
+AKS クラスターを作成するときに、クラスターのアウトバウンド IP アドレスまたはプレフィックスを指定すると、それらのアドレスまたはプレフィックスも許可されます。 次に例を示します。
 
 ```azurecli-interactive
 az aks create \
@@ -117,7 +117,7 @@ Standard SKU ロード バランサーのパブリック IP のみを許可す�
 
 ## <a name="disable-authorized-ip-ranges"></a>許可された IP 範囲を無効にする
 
-許可された IP 範囲を無効にするには、[az aks update][az-aks-update] を使用し、空の範囲を指定して、API サーバーの許可された IP 範囲を無効にします。 例:
+許可された IP 範囲を無効にするには、[az aks update][az-aks-update] を使用し、空の範囲を指定して、API サーバーの許可された IP 範囲を無効にします。 次に例を示します。
 
 ```azurecli-interactive
 az aks update \
@@ -126,7 +126,7 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、API サーバーの許可された IP 範囲を有効にしました。 このアプローチは、セキュリティで保護された AKS クラスターをどのように実行できるかの一部です。
 

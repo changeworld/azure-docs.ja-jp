@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/26/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4f3a52590a9a0c50bdc87f87792027333fc5269f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382720"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 
@@ -23,7 +23,7 @@ Bing Video Search API を使用すると、サービスやアプリケーショ�
 
 ## <a name="bing-video-search-api-features"></a>Bing Video Search API の機能
 
-| 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
+| 機能                                                                                                                                                                                 | [説明]                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [動画の結果をフィルター処理して制限する](concepts/get-videos.md#filtering-videos)                      | 返される動画を、クエリ パラメーターを編集してフィルター処理します。                                                                                                       |
@@ -40,7 +40,7 @@ Bing Video Search API は RESTful Web サービスです。HTTP 要求を作成�
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Bing Video Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)では、検索クエリをカスタマイズし、Web から動画を検索する方法を紹介しています。
 
@@ -48,8 +48,10 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 
 [クイック スタート](csharp.md)で、初めての API 要求を手軽に体験してみましょう。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Bing Video Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) リファレンス ページには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。
 
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

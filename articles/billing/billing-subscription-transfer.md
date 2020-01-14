@@ -1,5 +1,5 @@
 ---
-title: Azure サブスクリプションの課金所有権を別のアカウントに譲渡する | Microsoft Docs
+title: Azure サブスクリプションの課金所有権を譲渡する
 description: Azure サブスクリプションの課金所有権を別のアカウントに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ) について説明します
 keywords: Azure サブスクリプションを譲渡する, Azure サブスクリプションの譲渡, Azure サブスクリプションを別のアカウントに移動する, Azure サブスクリプション所有者の変更, Azure サブスクリプションを別のアカウントに譲渡する, Azure 課金所有権を譲渡する
 author: bandersmsft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a858ef9918135bfb660c059d80f4c7c49e1e3364
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 721c8a1381ad90a68cfeb628ad00e39aadbb1db7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388943"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -66,7 +66,7 @@ ms.locfileid: "74223565"
 
    ![Second subscription transfer web page](./media/billing-subscription-transfer/billing-accept-ownership-step3.png)
 
-1. 成功です。 サブスクリプションが譲渡されました。
+1. Success! サブスクリプションが譲渡されました。
 
 ## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>サブスクリプションを別の Azure AD テナント内のアカウントに譲渡する
 
@@ -117,7 +117,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-\*[EA ポータル経由](#EA)。
+\* [EA ポータル経由](#EA)。
 
 \*\* Azure Web サイトでサインアップしたときに作成されたアカウントのみでサポート。
 
@@ -184,13 +184,13 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 [ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) の割り当てが譲渡中に削除された場合でも、元の所有者アカウントのユーザーは、次のようないくつかのセキュリティ メカニズムを通じて、引き続きサブスクリプションにアクセスできます。
 
-* サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
+* サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「[Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md)」をご覧ください。
 * Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
 * Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースは、次の手順を使って更新できます。
 
-  1. [Azure Portal](https://portal.azure.com) にサインインします。
+  1. [Azure portal](https://portal.azure.com) にサインインする
   2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
   4. リソースのページで **[設定]** をクリックします。 ここで、既存のシークレットを表示して更新できます。
@@ -224,8 +224,8 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](billing-add-change-azure-subscription-administrator.md)」と「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。

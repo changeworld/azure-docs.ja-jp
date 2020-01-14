@@ -3,15 +3,15 @@ title: Kubernetes 上でアプリケーションを開発する
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Azure Dev Spaces を使用して AKS にマイクロサービスをデプロイする
+description: このクイックスタートでは、Azure Dev Spaces とコマンド ラインを使用し、Azure Kubernetes Service 上でアプリケーションを開発する方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b4902930b04e880bbbdfbe7418d5e0ec86f89470
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438254"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でアプリケーションを開発する - Azure Dev Spaces
 このガイドでは、以下の方法について説明します。
@@ -116,7 +116,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、`azds up` コマンドを再実行します。 例:
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、`azds up` コマンドを再実行します。 次に例を示します。
 
 1. `azds up` がまだ実行されている場合、*Ctrl + C* キーを押します。
 1. [`server.js` の 13 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)を以下に更新します。
@@ -146,7 +146,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 

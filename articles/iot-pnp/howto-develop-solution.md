@@ -3,24 +3,24 @@ title: Azure IoT ソリューションから IoT プラグ アンド プレイ �
 description: ソリューション開発者を対象にして、サービス SDK を使用して IoT プラグ アンド プレイ デバイスとやり取りする方法について説明します。
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977592"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531345"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT プラグ アンド プレイ プレビュー デバイスに接続してやり取りする
 
 この攻略ガイドでは、IoT ソリューションが IoT プラグ アンド プレイ プレビュー デバイスとやり取りする方法を示す Node サービス SDK のサンプルの使用方法について説明します。
 
-[ソリューションへの IoT プラグ アンド プレイ デバイスの接続](quickstart-connect-pnp-device-solution.md)に関するクイックスタートを完​​了していない場合は、ここで完了してください。 このクイックスタートでは、SDK をダウンロードしてインストールし、いくつかのサンプルを実行する方法について説明します。
+[ソリューションへの IoT プラグ アンド プレイ デバイスの接続](quickstart-connect-pnp-device-solution-node.md)に関するクイックスタートを完​​了していない場合は、ここで完了してください。 このクイックスタートでは、SDK をダウンロードしてインストールし、いくつかのサンプルを実行する方法について説明します。
 
 サービス サンプルを実行する前に、新しいターミナルを開き、複製したリポジトリのルート フォルダーに移動します。**digitaltwins/quickstarts/service** フォルダーに移動してから、次のコマンドを実行して依存関係をインストールします。
 
@@ -52,7 +52,7 @@ Node.js Service SDK の機能を調べるには、次のサンプルを使用し
 
 * `AZURE_IOT_MODEL_REPOSITORY_CONNECTION_STRING`
 
-この接続文字列は、[Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)の **[Company repository]\(会社リポジトリ\)** の **[接続文字列]** タブで確認できます。
+この接続文字列は、[Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)の **[Company repository]** \(会社リポジトリ\) の **[Connection strings]** \(接続文字列\) タブで確認できます。
 
 接続文字列は、次の例のようになります。
 
@@ -138,6 +138,6 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、IoT プラグ アンド プレイ デバイスとやり取りするサービス ソリューションについて学習しました。次のステップとして、[モデル検出](concepts-model-discovery.md)について学習することをお勧めします。

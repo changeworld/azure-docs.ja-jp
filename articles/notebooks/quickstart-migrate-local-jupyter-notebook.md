@@ -1,20 +1,22 @@
 ---
-title: ローカルの Jupyter ノートブックを Azure Notebooks に移行する
-description: Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks にすばやく転送した後、共同作業用に共有します。
+title: ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する
+description: Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks プレビューにすばやく転送した後、共同作業用に共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b7d5aab05923fb4356e0d45aaf21a77076a870a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277480"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647052"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>クイック スタート:ローカルの Jupyter ノートブックの移行
+# <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>クイック スタート:ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する
 
 自分のコンピューターでローカルに作成した Jupyter ノートブックには、自分しかアクセスできません。 さまざまな方法を使用してファイルを共有できますが、共有を受けた側はノートブックの自分のローカル コピーを使用するので、他のユーザーが行った変更を組み込むのが困難です。 また、GitHub などの共有オンライン リポジトリにノートブックを保存することもできますが、やはり各コラボレーターは所有者と同じ構成で独自のローカル Jupyter インストールを用意する必要があります。
 
 ローカルまたはリポジトリ ベースのノートブックを Azure Notebooks に移行することで、クラウドに格納されたノートブックをコラボレーターとすぐに共有できます。 これらのコラボレーターに必要なものはノートブックを表示して実行するためのブラウザーだけであり、Azure Notebooks に[サインイン](quickstart-sign-in-azure-notebooks.md)すると変更することもできます。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このクイック スタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL からノートブックを移行するプロセスを実演します。 GitHub リポジトリからノートブックを移行するには、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」をご覧ください。
 
@@ -54,7 +56,7 @@ ms.locfileid: "74277480"
 
 1. ノートブック以外のファイルを編集するには、プロジェクトのファイルを右クリックして、 **[ファイルの編集]** (キーボード ショートカット: I) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

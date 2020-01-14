@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439008"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73683019"
 > この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 > [!WARNING]
-> ADF v1 パイプラインの作成とデプロイのための Azure Portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
+> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "73683019"
 
 データ ファクトリを作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[新規]**  >  **[データ + 分析]**  >  **[データ ファクトリ]** を選択します。
 
@@ -110,7 +110,7 @@ ms.locfileid: "73683019"
 
    ![Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-account-manage.md#access-keys)」のストレージ アクセス キーを表示、コピー、および再生成する方法を参照してください。
+1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
@@ -147,7 +147,7 @@ ms.locfileid: "73683019"
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    |:--- |:--- |
    | clusterSize |HDInsight クラスターのサイズを指定します。 |
    | timeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -208,13 +208,13 @@ ms.locfileid: "73683019"
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 入れ子先 | 説明 |
+   | プロパティ | 入れ子先 | [説明] |
    |:--- |:--- |:--- |
-   | type | properties |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
+   | 型 | properties |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
    | linkedServiceName | format |前に作成した AzureStorageLinkedService を参照します。 |
    | folderPath | typeProperties | BLOB コンテナーと、入力 BLOB を格納するフォルダーを指定します。 | 
    | fileName | typeProperties |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log ファイルのみが処理されます。 |
-   | type | format |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
+   | 型 | format |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
    | columnDelimiter | format |ログ ファイル内の列はコンマ (`,`) で区切られています。 |
    | frequency/interval | availability |frequency を **Month** に設定し、interval を **1** に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
    | external | properties | このパイプラインによって入力データが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルでは、input.log ファイルはこのパイプラインで生成されないため、プロパティを **true** に設定します。 |
@@ -258,7 +258,7 @@ ms.locfileid: "73683019"
 
     ![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 この手順では、HDInsight Hive アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能です。 出力スライスは 1 か月ごとに生成されます。 アクティビティの scheduler プロパティも "1 か月ごと" に設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 次の JSON スニペットで使用されているプロパティについては、このセクションの最後で説明します。
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新しいパイプライン]** を選択します。
@@ -431,11 +431,11 @@ ms.locfileid: "73683019"
 * パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つのデータセットを作成する。
 * HDInsight Hive アクティビティを持つパイプラインを作成する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL データベースにデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+## <a name="see-also"></a>参照
+| トピック | [説明] |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事は、Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法について理解するのに役立ちます。 |
 | [データセット](data-factory-create-datasets.md) |この記事は、Data Factory のデータセットについて理解するのに役立ちます。 |

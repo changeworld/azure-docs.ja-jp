@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と Node.js を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382858"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>クイック スタート:Bing Spell Check REST API と Node.js を使用してスペルをチェックする
 
@@ -30,7 +30,7 @@ ms.locfileid: "74378834"
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、`https` を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。
+1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、`https` を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```javascript
     'use strict';
@@ -97,6 +97,18 @@ req.write ("text=" + text);
 req.end ();
 ```
 
+
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。
+
+コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
+
+```bash
+node <FILE_NAME>.js
+```
+
+
 ## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
@@ -139,7 +151,7 @@ req.end ();
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)

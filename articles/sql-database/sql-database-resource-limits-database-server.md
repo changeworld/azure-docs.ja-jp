@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279304"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638257"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database のリソース制限およびリソース管理
 
@@ -60,7 +60,7 @@ ms.locfileid: "74279304"
 - データベースまたエラスティック プールのコンピューティング サイズを上げて、より多くのコンピューティング リソースをデータベースに提供します。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 使用済みのデータベース容量が最大サイズの上限に達すると、データのサイズが増えるデータベースの挿入および更新は失敗し、クライアントは[エラー メッセージ](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)を受け取ります。 SELECT および DELETE ステートメントは引き続き正常に実行されます。
 
@@ -79,9 +79,9 @@ ms.locfileid: "74279304"
 - データベースまたはエラスティック プールのサービス レベルまたはコンピューティング サイズを高くします。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-## <a name="resource-governance"></a>リソース ガバナンス
+## <a name="resource-governance"></a>リソース管理
 
-Azure SQL Database では、リソース制限を適用するために、SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) に基づいたリソース管理の実装を利用します。Azure 上で SQL Server データベース サービスを実行するために、修正や拡張が行われます。 サービス内の各 SQL Server インスタンス上には、複数の[リソース プール](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)および[ワークロード グループ](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)があり、プール レベルおよびグループ レベル両方でリソース制限が設定され、[均衡の取れた Database-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/) が提供されています。 ユーザー ワークロードと内部ワークロードは、別々のリソース プールとワークロード グループに分類されます。 プライマリ レプリカおよび読み取り可能なセカンダリ レプリカ上のユーザー ワークロードは、`SloSharedPool1` リソース プールおよび `UserPrimaryGroup.DBId[N]` ワークロード グループに分類されます。`N` はデータベース ID 値を意味します。 さらに、さまざまな内部ワークロード用に複数のリソース プールとワークロード グループがあります。
+Azure SQL Database では、リソース制限を適用するために、SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) に基づいたリソース管理の実装を利用します。Azure 上で SQL Server データベース サービスを実行するために、修正や拡張が行われます。 サービス内の各 SQL Server インスタンス上には、複数の[リソース プール](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)および[ワークロード グループ](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)があり、プール レベルおよびグループ レベル両方でリソース制限が設定され、[均衡の取れた Database-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/) が提供されています。 ユーザー ワークロードと内部ワークロードは、別々のリソース プールとワークロード グループに分類されます。 プライマリ レプリカおよび読み取り可能なセカンダリ レプリカ (geo レプリカを含む) のユーザー ワークロードは、`SloSharedPool1` リソース プールと `UserPrimaryGroup.DBId[N]` ワークロード グループに分類されます。`N` はデータベース ID の値を表します。 さらに、さまざまな内部ワークロード用に複数のリソース プールとワークロード グループがあります。
 
 Resource Governor を使用して SQL Server プロセス内でリソースを管理するだけでなく、Azure SQL Database ではプロセス レベルのリソース管理用に Windows [Job Objects](https://docs.microsoft.com/windows/win32/procthread/job-objects)、また、ストレージ クォータ管理用に Windows [ファイル サーバー リソース マネージャー (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) も使用します。
 
@@ -99,7 +99,9 @@ Azure SQL Database のリソース管理は、本質的に階層化されてい�
 
 Azure Storage 内のデータ ファイルを使用する Basic、Standard、General Purpose データベースでは、IOPS のこの数値を累積的に提供できる十分なデータ ファイルがデータベースにない場合、データがファイルにわたって均等に分散されていない場合、または、基本となる BLOB のパフォーマンス レベルによってリソース管理の制限より下に IOPS/スループットが制限されている場合、`primary_group_max_io` 値には到達することはありません。 同様に、頻繁なトランザクション コミットによって生成された小規模なログ IO では、基になる Azure ストレージ BLOB 上の IOPS 制限があるため、ワークロードによって `primary_max_log_rate` 値に到達することはありません。
 
-[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビュー上で報告される `avg_data_io_percent` および `avg_log_write_percent` などのリソース使用率の値は、リソース管理の上限の割合として計算されています。 そのため、リソース管理以外の要素によって IOPS/スループットが制限される場合は、報告されたリソース使用率が 100% を下回ったままであっても、IOPS/スループットがフラット化され、ワークロードの増加に従って待機時間が増大することが確認できます。 データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。
+[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビュー上で報告される `avg_data_io_percent` および `avg_log_write_percent` などのリソース使用率の値は、リソース管理の上限の割合として計算されています。 そのため、リソース管理以外の要素によって IOPS/スループットが制限される場合は、報告されたリソース使用率が 100% を下回ったままであっても、IOPS/スループットがフラット化され、ワークロードの増加に従って待機時間が増大することが確認できます。 
+
+データベース ファイルごとの読み取りおよび書き込みの IOPS、スループット、および待機時間を確認するには、[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 関数を使用します。 この関数では、`avg_data_io_percent` に対しては考慮されないバックグラウンド IO を含む、データベースに対するすべての IO が網羅されますが、基になるストレージの IOPS とスループットが使用され、監視されているストレージの待機時間に影響を及ぼす可能性があります。 また、この関数では、IO リソース管理によって発生する可能性のある読み取りと書き込みの追加の待機時間も、それぞれ `io_stall_queued_read_ms` 列と `io_stall_queued_write_ms` 列に表示されます。
 
 ### <a name="transaction-log-rate-governance"></a>トランザクション ログ速度ガバナンス
 
@@ -130,8 +132,8 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 - ETL プロセスでのステージング データなど、読み込まれるデータが一時的なデータである場合、tempdb に読み込むことができます (ログ記録が最小限に抑えられます)。 
 - 分析シナリオでは、クラスター化列ストアの対象テーブルに読み込みます。 この場合は圧縮されるため、必要なログ速度が小さくなります。 この手法では CPU 使用率が増加し、クラスター化列ストア インデックスからメリットを得られるデータ セットにのみ適用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+- Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 - DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-purchase-models.md#dtu-based-purchasing-model)」をご覧ください。
 - tempdb のサイズ制限については、「[SQL Database の Tempdb データベース](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」をご覧ください。

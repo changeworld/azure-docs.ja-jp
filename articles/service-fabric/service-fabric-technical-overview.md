@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の用語を学習する | Microsoft Docs
+title: Azure Service Fabric の用語を学習する
 description: Service Fabric の用語の概要です。 重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: chackdan;subramar
-ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: cf2cfdad10d93bb4f28345d75a86fdcd94587410
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68811930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465610"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  [Service Fabric クラスターは任意の場所でホスト](service-fabric-deploy-anywhere.md)できます。具体的には、Azure、オンプレミスのデータセンター、任意のクラウド プロバイダー上などです。  Service Fabric は [Azure Service Fabric Mesh](/azure/service-fabric-mesh) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
@@ -168,13 +159,13 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
 次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
 
-| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
 |Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の詳細については、以下の情報を参照してください。
 
 * [Service Fabric の概要](service-fabric-overview.md)

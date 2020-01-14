@@ -4,13 +4,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: a8f5fbaf7dbc566490e30fd99dcb078e671a6056
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3f04c763f807acbf038e2bfa3ccbd3a2a5ef91b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351184"
 ---
 > [!TIP]
-> この記事の内容は、従来の Azure Table Storage を対象としています。 ただし現在は、Table Storage の Premium プランである Azure Cosmos DB Table API が存在しており、スループットが最適化されたテーブル、グローバル配布、自動のセカンダリ インデックスが提供されています。 [Azure Cosmos DB の Table API と Azure Table Storage の間には機能上の違い](../articles/cosmos-db/faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)がいくつかあります。詳細を確認し、Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。 
+> この記事の内容は、従来の Azure Table Storage を対象としています。 ただし現在は、Table Storage の Premium プランである Azure Cosmos DB Table API が存在します。 この API には、スループットが最適化されたテーブル、グローバル分散、自動のセカンダリ インデックスが用意されています。 [Azure Cosmos DB の Table API と Azure Table Storage との間には機能の相違](../articles/cosmos-db/faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)がいくつか存在します。 詳細を確認し、Premium エクスペリエンスを使ってみるには、[Azure Cosmos DB Table API](https://aka.ms/premiumtables) に関するページを参照してください。 
 >

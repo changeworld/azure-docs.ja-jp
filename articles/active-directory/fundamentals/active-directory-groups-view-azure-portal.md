@@ -1,5 +1,5 @@
 ---
-title: グループとメンバーを表示するためのクイック スタート - Azure Active Directory | Microsoft Docs
+title: クイックスタート - グループとメンバーを表示する - Azure AD
 description: 組織のグループとそれらに割り当てられているメンバーを検索して表示する方法に関する手順。
 services: active-directory
 author: msaburnley
@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423009"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で組織のグループとメンバーを表示する
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で組織のグループとメンバーを表示する
 Azure portal を使用して、組織の既存のグループとグループ メンバーを表示できます。 グループは、制限付きの可能性があるアプリおよびサービスに対して全員が同じアクセスとアクセス許可を必要とするユーザー (メンバー) を管理するために使用されます。
 
 このクイック スタートでは、組織の既存のグループすべてを表示し、割り当てられているメンバーを表示します。
@@ -34,7 +34,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 - Azure Active Directory テナントを作成する。 詳細については、[Azure Active Directory ポータルにアクセスし、新しいテナントを作成](active-directory-access-create-new-tenant.md)することに関するページを参照してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインする必要があります。
 
 ## <a name="create-a-new-group"></a>新しいグループを作成する 
@@ -59,7 +59,7 @@ _Alain Charon_ という名前の新しいユーザーを作成します。 ユ�
 
 2. **[ユーザー]** ページの入力を完了します。
 
-    - **名前:** 「_Alain Charon_」と入力します。
+    - **[名前]:** 「_Alain Charon_」と入力します。
 
     - **ユーザー名:** 「*alain\@contoso.com*」と入力します。
 
@@ -109,7 +109,7 @@ Azure portal の **[グループ - すべてのグループ]** ページでは�
 
     ![[MDM policy – West] グループに割り当てられているメンバーの一覧](media/active-directory-groups-view-azure-portal/groups-all-members.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このグループは、このドキュメントの**使用方法のガイド**のセクションで提供されている使用方法のプロセスのいくつかで使用されています。 しかし、このグループを使用しないのであれば、次の手順を使用して、割り当てられているメンバーを削除できます。
 
 1. **[グループ - すべてのグループ]** ページで **[MDM policy - West]** グループを検索します。
@@ -127,7 +127,7 @@ Azure portal の **[グループ - すべてのグループ]** ページでは�
     >[!Important]
     >これにより、ユーザー Alain Charon は削除されず、削除されたグループ内の彼のメンバーシップだけが削除されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 サブスクリプションを Azure AD ディレクトリに関連付ける方法を説明している次の記事に進みます。
 
 > [!div class="nextstepaction"]

@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:Java を使用して Text Analytics REST API を呼び出す
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: f4bae69f1ce65b98a4b83d50e906a1636833a1fd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446322"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Azure Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -37,9 +37,9 @@ ms.locfileid: "74284868"
 
 言語検出 API では、 [言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 `DetectLanguage.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -96,17 +96,8 @@ public class DetectLanguage {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/languages";
@@ -215,9 +206,9 @@ public class DetectLanguage {
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetSentiment.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -275,17 +266,8 @@ public class GetSentiment {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/sentiment";
@@ -370,9 +352,9 @@ public class GetSentiment {
 
 Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetKeyPhrases.java` というクラスを作成します。
 1. そのクラスに次のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -430,17 +412,8 @@ public class GetKeyPhrases {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/keyPhrases";
@@ -544,9 +517,9 @@ public class GetKeyPhrases {
 
 Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetEntities.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -604,17 +577,8 @@ public class GetEntities {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/entities";
@@ -720,12 +684,12 @@ public class GetEntities {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

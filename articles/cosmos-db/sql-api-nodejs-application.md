@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: JavaScript SDK を使用して Node.js Web アプリをビルドして Azure Cosmos DB SQL API データを管理する'
+title: 'チュートリアル: Azure Cosmos DB の JavaScript SDK を使用して Node.js Web アプリを構築し SQL API データを管理する'
 description: この Node.js チュートリアルでは、Microsoft Azure Cosmos DB を使用して、Microsoft Azure App Service の Web Apps 機能にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a67870cc2494321aa739d6f59f18651013b7403b
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441276"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル: JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -102,7 +102,7 @@ ms.locfileid: "74995951"
 ## <a name="_Toc395783180"></a>Node.js アプリケーションを Azure Cosmos DB に接続する
 最初の設定と構成が済んだら、Todo アプリケーションが Azure Cosmos DB と通信を行うために必要なコードを作成します。
 
-### <a name="create-the-model"></a>モデルの作成
+### <a name="create-the-model"></a>モデルを作成する
 1. お客様のプロジェクト ディレクトリのルートに、**models** という名前の新しいディレクトリを作成します。  
 
 2. **models** ディレクトリ内に、**taskDao.js** という名前の新しいファイルを作成します。 このファイルには、データベースとコンテナーの作成に必要なコードを含めます。 また、Azure Cosmos DB 内のタスクの読み取り、更新、作成、および検索を行うメソッドも定義します。 
@@ -474,7 +474,7 @@ ms.locfileid: "74995951"
 
 4. 数秒後に、Web アプリケーションが公開され、ブラウザーで起動されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのためにお客様が使用したリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 

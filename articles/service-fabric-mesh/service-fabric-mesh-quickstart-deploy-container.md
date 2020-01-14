@@ -1,22 +1,18 @@
 ---
-title: クイック スタート - Hello World を Azure Service Fabric Mesh にデプロイする | Microsoft Docs
+title: クイックスタート - Hello World を Azure Service Fabric Mesh にデプロイする
 description: このクイック スタートでは、Service Fabric Mesh アプリケーションを Azure Service Fabric mesh にデプロイする方法について説明します。
-services: service-fabric-mesh
-keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458960"
 ---
-# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Service Fabric Mesh に Hello World をデプロイする
+# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート:Service Fabric Mesh に Hello World をデプロイする
 
 [Service Fabric mesh](service-fabric-mesh-overview.md) では、仮想マシンをプロビジョニングする必要がなくなり、Azure でのマイクロサービス アプリケーションの作成と管理が容易になります。 このクイック スタートでは、Azure で Hello World アプリケーションを作成してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数分でこのビューがブラウザーに表示されます。
 
@@ -44,7 +40,7 @@ az account set --subscription "<subscriptionID>"
 az group create --name myResourceGroup --location eastus 
 ```
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 `az mesh deployment create` コマンドを使用して、リソース グループにアプリケーションを作成します。  次のコマンドレットを実行します。
 
 ```azurecli-interactive
@@ -95,15 +91,15 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 az mesh code-package-log get --resource-group myResourceGroup --application-name helloWorldApp --service-name helloWorldService --replica-name 0 --code-package-name helloWorldCode
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-アプリケーションを削除する準備が整ったら、[az group delete][az-group-delete] コマンドを実行して、リソース グループと、そこに含まれているアプリケーションおよびネットワークを削除します。
+アプリケーションを削除する準備が整ったら、[az group delete][az-group-delete] コマンドを実行して、リソース グループと、そこに含まれているアプリケーションとネットワークのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh アプリケーションの作成とデプロイについてさらに詳しく学習するには、チュートリアルを続けてください。
 > [!div class="nextstepaction"]

@@ -1,22 +1,24 @@
 ---
-title: Azure Notebooks の概要
-description: 無料の Azure Notebooks サービスを使用して、クラウド上で Jupyter Notebook を実行します。セットアップも構成も不要です。
+title: Azure Notebooks プレビューの概要
+description: 無料の Azure Notebooks プレビューサービスを使用して、クラウド上で Jupyter Notebook を実行します。セットアップも構成も不要です。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277676"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646332"
 ---
-# <a name="overview-of-azure-notebooks"></a>Azure Notebooks の概要
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks プレビューの概要
 
 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
 
 [![Jupyter Notebooks の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 コード、グラフィックス、および説明テキストのこの強力な組み合わせにより、Jupyter は、データ サイエンス教育、データのクリーニングと変換、数値シミュレーション、統計モデリング、機械学習モデルの開発などを行う多数のユーザーの間で一般に使用されるようになっています。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>手間のかからないエクスペリエンス
 
@@ -85,7 +87,7 @@ Azure Notebooks はまだプレビュー段階であるため、一時的な障�
 
 Azure Notebooks に関する質疑応答を行うには、[GitHub リポジトリ](https://github.com/Microsoft/AzureNotebooks/issues)に問題を送信してください。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 

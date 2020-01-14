@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12311fa476d069d2c866fac82ed2bac25ce88ef4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441634"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -35,7 +35,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 
 - delete
-- find
+- 検索
 - findAndModify
 - getLastError
 - getMore
@@ -54,7 +54,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - listDatabases
 - listCollections
 - drop
-- create
+- 作成
 - filemd5
 - createIndexes
 - listIndexes
@@ -78,7 +78,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 ### <a name="aggregation-commands"></a>集計コマンド
 
-- aggregate
+- 集計 (aggregate)
 - count
 - distinct
 
@@ -200,7 +200,7 @@ Cosmos DB は、すべての MongoDB v3.6 アキュムレータをサポート�
 - $stdDevPop
 - $stdDevSamp
 
-## <a name="operators"></a>演算子
+## <a name="operators"></a>オペレーター
 
 以下の演算子が、対応するそれらの使用例でサポートされています。 下記のクエリで使用されているこのサンプル ドキュメントを考慮に入れてください。
 
@@ -223,7 +223,7 @@ Cosmos DB は、すべての MongoDB v3.6 アキュムレータをサポート�
 }
 ```
 
-operator | 例 |
+演算子 | 例 |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -283,7 +283,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-operator | 例 | |
+演算子 | 例 | |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
@@ -303,7 +303,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>その他の演算子
 
-operator | 例 | メモ
+演算子 | 例 | メモ
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
@@ -353,10 +353,11 @@ Azure Cosmos DB は、自動のサーバー側シャーディングをサポー�
 
 Azure Cosmos DB では、サーバー側セッション コマンドはまだサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
+- 詳細については、[Mongo 3.6 バージョンの機能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)を参照してください。
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API が使用されている MongoDB の[サンプル](mongodb-samples.md)を調べます。
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学びます。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
 
-<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>
+<sup>注意事項: この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>

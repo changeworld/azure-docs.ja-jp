@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/17/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: ef61139056ad194d89e2a67cb4ac1b1414a3380b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 495d2a8e38b58eb3ef1494e6a3a33ee1dc32d049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828746"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468254"
 ---
-このクイックスタートでは、[バッチ文字起こし REST API](../../../batch-transcription.md) を使用して、[SAS BLOB](https://aka.ms/ignite2019/speech/placeholder) に格納された音声を認識します。 いくつかの前提条件を満たすと、わずかな手順で REST API を使用して音声を認識できます。
-> [!div class="checklist"]
-> * JSON 要求を Speech サービスに送信して、音声の文字起こしを開始する。
-> * 文字起こしの状態を確認する。
-> * 完了したら、文字起こしの結果をダウンロードする。
+このクイックスタートでは、REST API を使用して、バッチ処理でファイルから音声を認識します。 バッチ処理を使用して、ユーザーによる操作なしで音声の文字起こしを実行します。 コンカレンシー、カスタム音声モデル、またはその他の詳細を管理する必要のない、シンプルなプログラミング モデルが提供されます。 高度な制御オプションが提供される一方で、Azure 音声サービス リソースを効率的に使用できます。
+
+この機能の詳しい使用方法は、[バッチ文字起こしの概要](../../../batch-transcription.md)に関するページに説明されています。 詳細な API は、[Swagger のドキュメント](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)の見出し `Custom Speech transcriptins` の下にあります。 
+
+次のクイックスタートでは、使用例について説明します。

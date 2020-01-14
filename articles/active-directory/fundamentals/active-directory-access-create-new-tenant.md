@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: アクセスして新しいテナントを作成する - Azure Active Directory | Microsoft Docs'
+title: クイックスタート - Azure AD にアクセスして新しいテナントを作成する - Azure AD
 description: Azure Active Directory の検索方法と、組織の新しいテナントの作成方法に関する手順。
 services: active-directory
 author: msaburnley
@@ -12,14 +12,14 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423095"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
 
 このクイック スタートでは、Azure portal と Azure Active Directory にアクセスする方法と、組織の基本的なテナントを作成する方法について説明します。
@@ -55,7 +55,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
 新しいテナントは、ドメイン contoso.onmicrosoft.com で作成されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このアプリケーションを引き続き使用しない場合は、次の手順を使用してテナントを削除することができます。
 
 - **[Azure Active Directory]** を選択し、 **[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
@@ -64,7 +64,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
     ![概要ページ。[ディレクトリの削除] ボタンが強調表示されている](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 追加のドメイン名を変更または追加する方法については、[Azure Active Directory にカスタム ドメイン名を追加する方法](add-custom-domain.md)に関するページを参照してください。
 
 - ユーザーの追加については、[新しいユーザーの追加または削除](add-users-azure-active-directory.md)に関するページを参照してください。

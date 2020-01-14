@@ -3,18 +3,18 @@ title: Azure IoT Central とは | Microsoft Docs
 description: Azure IoT Central は、IoT ソリューションの作成を簡素化し、IoT の管理、運用、開発の負担とコストを削減するのに役立つ IoT アプリケーション プラットフォームです。 この記事では、Azure IoT Central の機能について概要を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434847"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (プレビュー機能) とは?
 
@@ -41,15 +41,11 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 > [!Note]
 > これらの既知の問題は、IoT Central プレビューのアプリケーションにのみ該当します。
 
-- ルールではすべてのアクションがサポートされているわけではない (メールのみ)。
-- 複合型の場合: ルール、分析、デバイス グループがサポートされていない。
 - 継続的データ エクスポートで Avro 形式がサポートされていない (互換性がない)。
-- シミュレートされるデバイスでは、すべての複合型がサポートされているわけではない。
 - GeoJSON は現在サポートされていない。
 - マップ タイルは現在サポートされていない。
 - ジョブでは複合型がサポートされていない。
 - 配列スキーマの種類はサポートされていない。
-- アプリケーション テンプレートのエクスポートとアプリケーションのコピーはサポートされていない。
 - C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
 - 米国とヨーロッパの場所でのみ使用可能です。
 - デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
@@ -117,7 +113,7 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 ### <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
 
-[Azure IoT Sdk](https://github.com/Azure/azure-iot-sdks)を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 Azure IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
+[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 Azure IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
 
 - デバイスにワークロードをインストールし、更新する。
 - デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
@@ -145,11 +141,11 @@ IoT Central ソリューションのデバイスは、オペレーターが IoT 
 
 各 Azure サブスクリプションには既定のクォータが設けられており、IoT ソリューションの範囲に影響する可能性があります。 現在、IoT Central では、サブスクリプションでデプロイできるアプリケーションの数が 10 に制限されています。 この制限を引き上げる必要がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで IoT Central の概要を把握できました。推奨される次の手順は以下のとおりです。
 
-- [IoT Central と Azure IoT ソリューション アクセラレータ](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)の違いを理解する。
+- [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
 - [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)について詳細を学習する

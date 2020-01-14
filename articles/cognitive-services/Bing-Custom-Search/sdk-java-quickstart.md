@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Java 用 Bing Custom Search クライアント ライブラリ | Microsoft Docs
-description: Bing Custom Search インスタンスに検索結果を要求することで、Java 用 Bing Custom Search クライアント ライブラリの使用を開始します。
+title: クイック スタート:Java 用 Bing Custom Search クライアント ライブラリ
+description: このクイックスタートでは、Bing Custom Search インスタンスに検索結果を要求することで、Java 用 Bing Custom Search クライアント ライブラリの使用を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384555"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>クイック スタート:Java 用 Bing Custom Search クライアント ライブラリ
 
@@ -37,7 +37,7 @@ Java 用 Bing Custom Search クライアント ライブラリを使用して、
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>Bing Custom Search の Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル コンピューター上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Bing Custom Search 用のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル コンピューター上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Bing Custom Search 用のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -147,14 +147,14 @@ gradle build
 gradle run
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Custom Search Web アプリの作成](./tutorials/custom-search-web-page.md)

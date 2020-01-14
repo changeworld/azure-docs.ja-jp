@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286516"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378766"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -37,9 +37,9 @@ ms.locfileid: "74286516"
 
 言語検出 API では、[言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
+1. Text Analytics API のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトをルート フォルダーから開きます。
 1. ファイルをビルドします (例: `go build detect.go`)。
@@ -60,17 +60,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
-
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     const uriPath = "/text/analytics/v2.1/languages"
 
     var uri = endpoint + uriPath
@@ -178,9 +170,9 @@ func main() {
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトをルート フォルダーから開きます。
 1. ファイルをビルドします (例: `go build sentiment.go`)。
@@ -201,16 +193,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
     const uriPath = "/text/analytics/v2.1/sentiment"
 
@@ -294,9 +278,9 @@ func main() {
 
 Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトを開きます。
 1. ファイルをビルドします (例: `go build key-phrases.go`)。
@@ -317,16 +301,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
@@ -430,7 +406,6 @@ func main() {
 
 Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. リソースの Azure エンドポイントとサブスクリプション キー用の環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` と `TEXT_ANALYTICS_ENDPOINT` を作成します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その環境変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
 1. "go" という拡張子でファイルを保存します。
@@ -453,16 +428,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/entities"
 
@@ -567,12 +535,12 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

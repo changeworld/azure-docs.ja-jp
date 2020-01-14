@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリを使用して時系列データ内の異常を検出する
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
+description: このクイックスタートでは、Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448912"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリ
 
@@ -30,7 +30,7 @@ ms.locfileid: "74483073"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料で作成できます](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
 * Anomaly Detector キーとエンドポイント
 
@@ -84,7 +84,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 
 Anomaly Detector クライアントは、キーが含まれている [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) を使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) オブジェクトです。 クライアントによる異常検出の方法は 2 とおりあります。[EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) を使用したデータセット全体での検出と、[LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) を使用した最新のデータ ポイントでの検出です。 
 
-時系列データは、[Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) オブジェクト内の一連の [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ ([Granularity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) など) と異常検出のためのパラメーターが含まれます。 
+時系列データは、[Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) オブジェクト内の一連の [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)など) と異常検出のパラメーターが含まれます。 
 
 Anomaly Detector の応答は、使用する方法に応じて、[EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) オブジェクトと [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) オブジェクトのいずれかになります。 
 
@@ -132,7 +132,7 @@ Anomaly Detector の応答は、使用する方法に応じて、[EntireDetectRe
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
+自分のアプリケーション ディレクトリで `dotnet run` コマンドを使用してアプリケーションを実行します。
 
 ```dotnetcli
 dotnet run

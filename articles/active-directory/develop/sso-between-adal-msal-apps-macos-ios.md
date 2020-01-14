@@ -1,5 +1,5 @@
 ---
-title: iOS および macOS の ADAL アプリと MSAL アプリ間での SSO - Microsoft ID プラットフォーム | Azure
+title: ADAL アプリと MSAL アプリ間での SSO (iOS/macOS) - Microsoft ID プラットフォーム | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13998982b778181febf99d8366eebd25482bc2bc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 201da533231eea4d597e660931e70e19a497d069
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423422"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法:macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
 
@@ -208,7 +208,7 @@ Returns account for for the given username (received from an account object retu
                               error:(NSError * __autoreleasing *)error;
 ```
 
-例:
+次に例を示します。
 
 Objective-C:
 
@@ -287,6 +287,6 @@ do {
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

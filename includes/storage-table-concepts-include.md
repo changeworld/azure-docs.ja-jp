@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467764"
 ---
 ## <a name="what-is-table-storage"></a>Table Storage とは
 Azure Table Storage は、大量の構造化データを格納します。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 Table Storage の一般的な用途には、次のようなものがあります。
@@ -31,7 +31,7 @@ Table Storage には次の構成要素があります。
   Azure Cosmos DB のテーブル API アカウントでは、以下の形式を使用します。`http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。 詳細については、[OData.org][OData.org] の Web サイトを参照してください。
-* **アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/common/storage-scalability-targets.md) を参照してください。 
+* **アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの種類およびその他のストレージ アカウントの設定について詳しくは、「[ストレージ アカウントの概要][../articles/storage/common/storage-account-overview.md]」をご覧ください。
 
     Azure Cosmos DB へのアクセスはすべて、テーブル API アカウント経由で行います。 テーブル API アカウントの作成の詳細については、[テーブル API アカウントの作成](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)に関するページをご覧ください。
 * **テーブル**:テーブルは、エンティティのコレクションです。 テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。  

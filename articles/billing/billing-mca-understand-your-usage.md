@@ -1,5 +1,5 @@
 ---
-title: Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
+title: Microsoft 顧客契約の Azure の利用状況と料金ファイルに関する用語
 description: 課金プロファイルの Azure の利用状況と料金を含む CSV のセクションを読んで理解する方法について説明します。
 author: bandersmsft
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f619d11c3df29a629b8b4da7b440376d6e9aedbd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388892"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
@@ -35,7 +35,7 @@ EA のお客様であれば、Azure 課金プロファイルの利用状況を�
 | Azure EA の利用状況を含む CSV | Microsoft 顧客契約の Azure の利用状況と料金を含む CSV |
 | --- | --- |
 | Date | date |
-| 月| date |
+| Month| date |
 | 日 | date |
 | 年 | date |
 | Product | product |
@@ -65,7 +65,7 @@ EA のお客様であれば、Azure 課金プロファイルの利用状況を�
 
 Azure の利用状況と料金ファイルには、次の用語が出現します。
 
-期間 | 説明
+期間 | [説明]
 --- | ---
 invoiceld | PDF 請求書に記載されている一意のドキュメント ID
 previousInvoiceId | この明細項目が払い戻しの場合、元の請求書への参照
@@ -89,7 +89,7 @@ meterId | メーターの一意の識別子
 meterName | メーターの名前
 meterCategory | メーターの分類カテゴリの名前。 たとえば、*Cloud services*、*Networking* などです。
 meterSubCategory | メーターのサブ分類カテゴリの名前
-meterRegion | サービスのメーターが使用可能な地域の名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。
+meterRegion | サービスのメーターが使用可能なリージョンの名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。
 offer | 購入したオファーの名前
 productId | 料金が発生する製品の一意の識別子
 product | 料金が発生する製品の名前
@@ -125,7 +125,7 @@ tags | このリソースには、ユーザーが割り当てたタグが含ま�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Azure の請求書の表示とダウンロード](billing-download-azure-invoice.md)
 - [Microsoft Azure の利用状況と料金の表示とダウンロード](billing-download-azure-daily-usage.md)

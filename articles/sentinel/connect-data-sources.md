@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496394"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610609"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -43,7 +43,8 @@ Azure Sentinel をオンボードするには、まずデータ ソースに接�
 
 Azure Sentinel では、次のデータ接続方法がサポートされています。
 
-- **Microsoft のサービス**:<br> Microsoft のサービスは、標準統合用の Azure 基盤を利用して、ネイティブに接続されるので、ほんの数回のクリックで次のソリューションを接続できます。
+- **サービス間の統合**:<br> AWS や Microsoft サービスなどの一部のサービスはネイティブに接続されるので、標準統合用の Azure 基盤を利用して、ほんの数回のクリックで次のソリューションを接続できます。
+    - [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Azure AD 監査ログとサインイン](connect-azure-active-directory.md)
     - [Azure アクティビティ](connect-azure-activity.md)
@@ -81,19 +82,19 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     
 ## エージェントの接続オプション<a name="agent-options"></a>
 
-外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントの展開は、自動または手動で行うことができます。 自動展開は、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
+外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
 
 
 ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
-これ以外の場合は、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントを展開します。
+または、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントをデプロイすることもできます。
 
 ![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 ## <a name="map-data-types-with-azure-sentinel-connection-options"></a>Azure Sentinel 接続オプションを使用してデータ型をマップする
 
 
-| **データの種類** | **接続する方法** | **データ コネクタか?** | **説明** |
+| **データの種類** | **接続する方法** | **データ コネクタか?** | **コメント** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [AWS の接続](connect-aws.md) | V | |
 | AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)| V | |
@@ -127,7 +128,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | Barracuda_CL | [Barracuda の接続](connect-barracuda.md) | V | |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
 - [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を確認します。

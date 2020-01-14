@@ -1,38 +1,71 @@
 ---
 title: Azure での Linux VM の概要
-description: Linux 仮想マシンでの Azure Compute、Storage、Network サービスについて説明します。
+description: Azure における Linux 仮想マシンの概要です。
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: rickstercdn
+author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/29/2017
-ms.author: rclaus
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: dc0145e23b940f6aca9021186254b966592f343d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 11/14/2019
+ms.author: cynthn
+ms.custom: mvc
+ms.openlocfilehash: 46a1198b4052cb8663c60e53e8c2b965f78af948
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035353"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644292"
 ---
-# <a name="azure-and-linux"></a>Azure と Linux
-Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
+# <a name="linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシン
 
-Amazon の AWS のさまざまな機能を使い慣れている場合は、Azure と AWS の [定義マッピング ドキュメント](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)を調べることができます。
+Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](/azure/architecture/guide/technology-choices/compute-decision-tree)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 
-## <a name="regions"></a>リージョン
-Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。 現時点 (2018 年 8 月現在) で、Azure には一般公開されているリージョンが世界各地に 42 個あり、さらに 12 リージョンの追加が発表されています。これは他のクラウド プロバイダーよりも多いグローバル リージョン数です。 既存のリージョンと新しく発表されたリージョンの最新の一覧は次のページで確認できます。
+Azure VM は、VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、VM のメンテナンス、つまり VM 上で動作するソフトウェアの構成、その修正プログラムの適用、インストールは必要です。
 
-* [Azure リージョン](https://azure.microsoft.com/regions/)
+Azure の仮想マシンは、さまざまな方法で利用できます。 いくつかの例を次に示します。
+
+* **開発とテスト** – Azure VM は、アプリケーションのコーディングとテストに必要な特定の構成でコンピューターをすばやく簡単に作成する手段を提供します。
+* **クラウドのアプリケーション** – アプリケーションの需要は変動する可能性があるため、Azure の VM でアプリケーションを実行することは経済的に理に適っています。 VM が必要になったら追加分の料金を支払い、不要になったらシャットダウンすることができます。
+* **データセンターの拡張** – Azure 仮想ネットワーク内の仮想マシンは、組織のネットワークに簡単に接続できます。
+
+アプリケーションで使用する VM の数は、ニーズに応じてスケールアップおよびスケールアウトできます。
+
+## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM の作成前に検討する必要のある事項
+Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
+
+* アプリケーション リソースの名前
+* リソースが格納される場所
+* VM のサイズ
+* 作成できる VM の最大数
+* VM で実行されるオペレーティング システム
+* 開始した後の VM の構成
+* VM で必要な関連リソース
+
+### <a name="locations"></a>場所
+Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
+
+次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
+
+| 方法 | [説明] |
+| --- | --- |
+| Azure portal |VM を作成するときに一覧から場所を選択します。 |
+| Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
+| REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions)操作を使用します。 |
+| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
 
 ## <a name="availability"></a>可用性
 Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
+
+## <a name="vm-size"></a>VM サイズ
+使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
+
+Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
+
+## <a name="vm-limits"></a>VM の制限
+サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、[サポート チケットで引き上げを依頼する](../../azure-supportability/resource-manager-core-quotas-request.md)ことによって引き上げることができます。
 
 ## <a name="managed-disks"></a>Managed Disks
 
@@ -40,34 +73,11 @@ Managed Disks により、Azure Storage アカウントの作成および管理�
 
 また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../linux/managed-disks-overview.md)に関するページをご覧ください。
 
-## <a name="azure-virtual-machines--instances"></a>Azure Virtual Machines とインスタンス
+## <a name="distributions"></a>ディストリビューション 
 Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace には、Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS、FreeBSD などのディストリビューションがあります。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](endorsed-distros.md) リストを拡充しています。
 
 必要な Linux ディストリビューションが現時点でギャラリーに存在しない場合は、[Azure で Linux VHD を作成およびアップロード](create-upload-generic.md)することで、必要とする Linux の VM を導入できます。
 
-Azure Virtual Machines を使用すると、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 事実上、すべてのワークロードをすべての言語でほぼすべてのオペレーティング システム上 (Windows、Linux、または増え続けるパートナー各社でカスタム作成されたもの) にデプロイできます。 たとえ目的に合った仮想マシンが見つからなくても、 ご安心ください。  オンプレミスからカスタム イメージを取り込むことができます。
-
-## <a name="vm-sizes"></a>VM サイズ
-使用する VM の[サイズ](sizes.md)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
-
-Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
-
-## <a name="automation"></a>Automation
-適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます (Phoenix サーバー)。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
-
-* [Azure テンプレート](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
-
-Azure は Linux ディストリビューションの多くで、 [cloud-init](https://cloud-init.io/) のサポートを展開しています。  現在、既定で有効になっている cloud-init で、Canonical の Ubuntu VM がデプロイされています。  RedHat の RHEL、CentOS、Fedora は cloud-init をサポートしますが、現在、RedHat で保持される Azure のイメージに cloud-init はインストールされていません。  RedHat family OS で cloud-init を使用するには、インストールされている cloud-init でカスタム イメージを作成する必要があります。
-
-* [Azure Linux VM 上で cloud-init を使用する](using-cloud-init.md)
-
-## <a name="quotas"></a>Quotas (クォータ)
-Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。  クォータ制限は、制限の引き上げを要求するサポート チケットを申請することで、迅速かつ簡単に引き上げることができます。  クォータ制限の詳細については、次を参照してください。
-
-* [Azure サブスクリプション サービスの制限](../../azure-subscription-service-limits.md)
-
-## <a name="partners"></a>パートナー
 Microsoft はパートナーと連携し、利用可能なイメージが Azure ランタイム用に更新、最適化されたことを確認します。  Azure パートナーの詳細については、次のリンクを参照してください。
 
 * [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)
@@ -83,33 +93,29 @@ Microsoft はパートナーと連携し、利用可能なイメージが Azure 
 * Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="getting-started-with-linux-on-azure"></a>Microsoft Azure における Linux の概要
-Azure の使用を開始するには、Azure アカウント、Azure CLI のインストール、および SSH 公開キーと秘密キーのペアが必要です。
+## <a name="vm-sizes"></a>VM サイズ
+使用する VM の[サイズ](sizes.md)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
 
-### <a name="sign-up-for-an-account"></a>アカウントにサインアップする
-Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
+Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
 
-### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、`azure-cli` をインストールします。  Mac または Linux ワークステーションに [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+## <a name="cloud-init"></a>cloud-init 
 
-### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](mac-create-ssh-keys.md) し、パスワードのないログインとセキュリティの強化を実現します。
+適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
 
-### <a name="create-a-vm-using-the-cli"></a>CLI を使用して VM を作成する
-CLI を使用して Linux VM を作成すると、作業中のターミナルを離れることなく、すばやく VM をデプロイできます。  Web Portal で指定できるものは、コマンド ライン フラグまたはスイッチからも使用できます。  
+* [Azure テンプレート](create-ssh-secured-vm-from-template.md)
+* [Azure VMAccess](using-vmaccess-extension.md)
 
-* [CLI を使用して Linux VM を作成する](quick-create-cli.md)
+Azure は Linux ディストリビューションの多くで、[cloud-init](https://cloud-init.io/) をサポートしています。  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージによって、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。
 
-### <a name="create-a-vm-in-the-portal"></a>ポータルで VM を作成する
-Azure Web ポータルで Linux VM を作成すると、デプロイのためのさまざまなオプションから簡単にポイントおよびクリックすることができます。  コマンド ライン フラグまたはスイッチを使用する代わりに、さまざまなオプションと設定の Web レイアウトを表示できます。  コマンド ライン インターフェイスから使用できるものは、ポータルでも使用可能です。
+* [Azure Linux VM 上で cloud-init を使用する](using-cloud-init.md)
 
-* [ポータルを使用して Linux VM を作成する](quick-create-portal.md)
+## <a name="quotas"></a>Quotas (クォータ)
+Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。  クォータ制限は、制限の引き上げを要求するサポート チケットを申請することで、迅速かつ簡単に引き上げることができます。  クォータ制限の詳細については、次を参照してください。
 
-### <a name="log-in-using-ssh-without-a-password"></a>パスワードを使わずに SSH を使用してログインする
-これで VM が Azure 上で実行され、ログインする準備ができました。  パスワードを使用して SSH からログインする方法は、安全ではなく、時間がかかります。  ログインの手段として最も安全性が高く、かつすばやい方法は、SSH キーを使用することです。  ポータルまたは CLI から Linux VM を作成する場合、認証の選択肢が 2 つあります。  SSH のパスワードを選択した場合、Azure はパスワードによるログインを許可するように VM を構成します。  SSH 公開キーを選択した場合、Azure は SSH キーを使用したログインのみを許可するように VM を構成し、パスワードのログインは無効になります。 SSH キーのログインのみを許可することにより Linux VM をセキュリティで保護するには、Portal または CLI で VM を作成するときに SSH 公開キーのオプションを使用します。
+* [Azure サブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
-## <a name="related-azure-components"></a>関連する Azure のコンポーネント
-## <a name="storage"></a>Storage
+
+## <a name="storage"></a>ストレージ
 * [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
 * [Azure CLI を使用して Linux VM にディスクを追加する](add-disk.md)
 * [Azure Portal で Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md)
@@ -120,12 +126,12 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md)
 * [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md)
 
-## <a name="containers"></a>Containers
-* [Virtual Machines とコンテナーが Azure にもたらすメリット](containers.md)
-* [Azure Container Service の概要](../../container-service/container-service-intro.md)
-* [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
 
-## <a name="next-steps"></a>次の手順
-これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。
+## <a name="next-steps"></a>次のステップ
 
-* [Azure CLI を使用した一般的なタスクの増え続けるサンプル スクリプトの一覧を確認する](cli-samples.md)
+最初の VM を作成する
+
+- [ポータル](quick-create-portal.md)
+- [Azure CLI](quick-create-cli.md)
+- [PowerShell](quick-create-powershell.md)
+

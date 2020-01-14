@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448446"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 
@@ -28,7 +28,7 @@ Bing News Search API で得られるのはニュース検索の結果だけで�
 
 Bing News Search API は主に、関連するニュース記事を検索して返すものですが、同時に、インテリジェントで的を絞ったニュース検索を Web 上で行うための機能をいくつか備えています。
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 |[検索語句の提案と使用](concepts/search-for-news.md#suggest-and-use-search-terms)     | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、検索のエクスペリエンスを向上させます。         |
 |[通常のニュースを取得する](concepts/search-for-news.md#get-general-news)     | Bing News Search API に検索クエリを送信し、関連するニュース記事の一覧を取得することによってニュースを検索します。           |
@@ -46,14 +46,14 @@ Bing News Search API は RESTful Web サービスです。HTTP 要求を作成�
 
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まず、Bing News Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)をお試しください。 このデモには、検索クエリをすばやくカスタマイズして Web 上のニュースを検索する方法が紹介されています。
 
 初めての API 要求を簡単に体験したい場合は、[REST API](quickstart.md) またはいずれかの [SDK](sdk.md) のクイック スタートをお試しください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
-
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

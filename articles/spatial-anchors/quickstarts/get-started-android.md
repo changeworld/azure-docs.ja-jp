@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7c62ded627ab6f6ead5c03ef8cf298b4ee622265
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376462"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -33,8 +33,8 @@ ms.locfileid: "74277112"
 このクイック スタートを実行するには、以下が必要です。
 
 - <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 以降</a>がインストールされている Windows または macOS マシン。
-  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> も必要になります。
-  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
+  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> も必要になります。
+  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
   - NDK サンプルを構築するには、Android Studio の NDK と CMake 3.6 以降の SDK Tools もインストールする必要があります。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
   - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 追加情報と手順については、[こちら](https://developer.android.com/studio/run/device.html)を参照してください。

@@ -1,7 +1,7 @@
 ---
 title: テナント モデルを作成する (プレビュー) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Office 365 データを活用するテナント モデル (Custom Speech with Office 365 data) を自動的に生成し、セキュリティとコンプライアンスの両方が確保された、組織固有の用語に最適な音声認識を提供します。
+description: Office 365 データを使用する、セキュリティとコンプライアンスが確保されたテナント モデル (Custom Speech with Office 365 data) を自動的に生成し、組織固有の用語に最適な音声認識を提供します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,95 +10,101 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446796"
 ---
-# <a name="create-a-tenant-model-preview"></a>テナント モデルを作成する (プレビュー)
+# <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 
-テナント モデル (Custom Speech with Office 365 data) は、組織の Office 365 データからカスタム音声認識モデルを自動的に生成する Office365 企業ユーザー向けのオプトイン サービスです。 作成されるモデルは、専門用語、業界用語、および人名に関して、すべてセキュリティとコンプライアンスに配慮した方法で最適化されています。
+テナント モデル (Custom Speech with Office 365 data) は、組織の Office 365 データからカスタム音声認識モデルを自動的に生成する Office365 企業ユーザー向けのオプトイン サービスです。 このモデルは、専門用語と業界用語、人名に関して、すべてセキュリティとコンプライアンスに配慮した方法で最適化されます。
 
 > [!IMPORTANT]
-> 組織がテナント モデルに登録すると、Speech Service は、組織の言語モデルにアクセスする可能性があります。このモデルは、組織内の全員が見ることのできる Office 365 パブリック グループのメールやドキュメントから生成されます。 組織の Office 365 管理者は、Office 365 管理ポータルを使用して、組織全体の言語モデルの使用をオンにしたりオフにしたりすることができます。
+> テナント モデル サービスを使用して登録した場合、Speech Service は、貴社の言語モデルにアクセスすることができます。 このモデルは、組織内のだれでも見ることができる Office 365 パブリック グループのメールやドキュメントから生成されます。 組織の Office 365 管理者は、Office 365 管理ポータルから組織全体の言語モデルの使用をオンにしたりオフにしたりすることができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Microsoft 365 管理センターでテナント モデルを使用するための登録を行う
+> * Microsoft 365 管理センターを使用してテナント モデルに登録する
 > * 音声のサブスクリプション キーを取得する
 > * テナント モデルを作成する
 > * テナント モデルをデプロイする
 > * Speech SDK でテナント モデルを使用する
 
-## <a name="enroll-using-the-microsoft-365-admin-center"></a>Microsoft 365 管理センターを使用して登録する
+## <a name="enroll-in-the-tenant-model-service"></a>テナント モデル サービスに登録する
 
-テナント モデルをデプロイする前に、まず Microsoft 365 管理センターを使用して登録を行う必要があります。 このタスクを完了できるのは、Microsoft 365 管理者だけです。
+テナント モデルをデプロイする前に、まずテナント モデル サービスに登録する必要があります。 登録作業は Microsoft 365 管理センターで行います。この作業を実行できるのは Microsoft 365 管理者だけです。
 
-1. [Microsoft 365 管理センター](https://admin.microsoft.com )にサインインします。
-2. 左側のパネルから **[設定]** を選択し、次に **[アプリ]** を選択します。
+1. [Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。
 
-   ![テナント モデルの登録](media/tenant-language-model/tenant-language-model-enrollment.png)
+1. 左ペインの **[設定]** を選択し、 **[アプリ]** 、 **[Azure Speech Services]** の順に選択します。
 
-3. **[Azure Speech Services]** を見つけて選択します。
+   ![[サービスとアドイン] ペイン](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-   ![テナント モデルの登録 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+1. **[組織全体での言語モデルを許可する]** チェック ボックスをオンにし、 **[変更の保存]** を選択します。 
 
-4. チェックボックスをクリックし、保存します。
+   ![[Azure Speech Services] ペイン](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-テナント モデルをオフにする必要がある場合は、この画面に戻り、チェックボックスをオフにして、保存します。
+テナント モデル インスタンスをオフにするには、次の手順に従います。
+1. 前出の手順 1. と 2. を繰り返します。
+1. **[組織全体での言語モデルを許可する]** チェック ボックスをオフにし、 **[変更の保存]** を選択します。
 
 ## <a name="get-a-speech-subscription-key"></a>音声のサブスクリプション キーを取得する
 
 Speech SDK でテナント モデルを使用するには、音声リソースとそれに関連付けられたサブスクリプション キーが必要です。
 
-1. [Azure Portal](https://aka.ms/azureportal) にサインインします。
-2. **[リソースの作成]** を選択します。
-3. 検索バーに「**音声**」と入力します。
-4. **[音声]** を選択し、 **[作成]** をクリックします。
-5. 画面の指示に従って、リソースを作成します。 次のことを確認します。
+1. [Azure portal](https://aka.ms/azureportal) にサインインする
+1. **[リソースの作成]** を選択します。
+1. **検索**ボックスに「**Speech**」と入力します。
+1. 結果の一覧で、 **[Speech]** 、 **[作成]** の順に選択します。
+1. 画面の指示に従って、リソースを作成します。 次のことを確認してください。
    * **[場所]** が **[eastus]** または **[westus]** のいずれかに設定されている。
    * **[価格レベル]** が **[S0]** に設定されている。
-6. **Create** をクリックしてください。
-7. 数分後、リソースが作成されます。 サブスクリプション キーは、リソースの **[概要]** セクションにあります。
+1. **作成** を選択します。
 
-## <a name="create-a-model"></a>モデルの作成
+   数分後、リソースが作成されます。 サブスクリプション キーは、リソースの **[概要]** セクションにあります。
+
+## <a name="create-a-language-model"></a>言語モデルを作成する
 
 管理者が組織のテナント モデルを有効にした後は、Office 365 データに基づいて言語モデルを作成できます。
 
 1. [Speech Studio](https://speech.microsoft.com/) にサインインします。
-2. 右上隅にある歯車アイコン (設定) を見つけてクリックし、 **[Tenant Model settings]\(テナント モデルの設定\)** を選択します。
+1. 右上の **[設定]** (歯車アイコン) を選択し、 **[Tenant Model settings]\(テナント モデルの設定\)** を選択します。
 
-   ![設定メニュー](media/tenant-language-model/tenant-language-settings.png)
+   ![[Tenant Model settings]\(テナント モデルの設定\) リンク](media/tenant-language-model/tenant-language-settings.png)
 
-3. この時点で、テナント モデルを作成する資格があるかどうかを知らせるメッセージが表示されます。
+   テナント モデルを作成する資格があるかどうかを伝えるメッセージが Speech Studio に表示されます。
+
    > [!NOTE]
-   > 米国の Office 365 企業ユーザーのお客様は、テナント モデル (英語) を作成することができます。 カスタマー ロックボックス (CLB)、カスタマー キー (CK)、Office 365 Government のお客様は、この機能をご利用いただけません。 お客様がカスタマー ロックボックスまたはカスタマー キーのユーザーかどうかを判断するには、次の手順を実行してください。
+   > 米国の Office 365 企業ユーザーのお客様は、テナント モデル (英語) を作成することができます。 カスタマー ロックボックス、カスタマー キー、Office 365 Government のお客様は、この機能をご利用いただけません。 お客様がカスタマー ロックボックスまたはカスタマー キーのユーザーかどうかを判断するには、次のページを参照してください。
    > * [カスタマー ロックボックス](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [カスタマー キー](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
-4. 次に、 **[オプトイン]** を選択します。 テナント モデルの準備ができると、手順を記載した電子メールを受信します。
+1. **[オプトイン]** を選択します。 
 
-## <a name="deploy-your-model"></a>モデルをデプロイする
+   テナント モデルの準備が完了すると、その後の手順と共に確認のメール メッセージが送信されます。
 
-テナント モデルの準備ができたら、次の手順に従ってモデルをデプロイします。
+## <a name="deploy-your-tenant-model"></a>テナント モデルをデプロイする
 
-1. 受信した確認メールにある **[View model]\(モデルの表示\)** ボタンをクリックするか、[Speech Studio](https://speech.microsoft.com/) にサインインします。
-2. 右上隅にある歯車アイコン (設定) を見つけてクリックし、 **[Tenant Model settings]\(テナント モデルの設定\)** を選択します。
+テナント モデル インスタンスの準備が完了したら、次の手順に従ってデプロイします。
 
-   ![設定メニュー](media/tenant-language-model/tenant-language-settings.png)
+1. 確認のメール メッセージで **[View model]\(モデルの表示\)** ボタンを選択します。 または [Speech Studio](https://speech.microsoft.com/) にサインインします。
+1. 右上の **[設定]** (歯車アイコン) を選択し、 **[Tenant Model settings]\(テナント モデルの設定\)** を選択します。
 
-3. **[デプロイ]** をクリックします。
-4. モデルがデプロイされると、状態は **[Deployed]\(デプロイ済み\)** に変わります。
+   ![[Tenant Model settings]\(テナント モデルの設定\) リンク](media/tenant-language-model/tenant-language-settings.png)
 
-## <a name="use-your-model-with-the-speech-sdk"></a>Speech SDK でモデルを使用する
+1. **[デプロイ]** を選択します。
 
-モデルのデプロイが完了したので、Speech SDK でそれを使用できます。 このセクションでは、用意されているサンプル コードを使い、Azure AD 認証を使用して Speech サービスを呼び出します。
+   モデルがデプロイされると、状態は *[Deployed]\(デプロイ済み\)* に変わります。
 
-C# で Speech SDK を呼び出すために使用するコードを見てみましょう。 この例では、テナント モデルを使用して音声認識を実行します。 このガイドは、プラットフォームが既に設定されていることを前提としています。 設定に関してヘルプが必要な場合は、[C# (.NET Core) での音声認識に関するクイックスタート](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)を参照してください。
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Speech SDK でテナント モデルを使用する
+
+モデルのデプロイが完了したので、Speech SDK でそれを使用できます。 このセクションでは、サンプル コードから Azure Active Directory (Azure AD) 認証を使用して Speech サービスを呼び出します。
+
+C# で Speech SDK を呼び出すために使用するコードを見てみましょう。 この例では、テナント モデルを使用して音声認識を実行します。 このガイドは、プラットフォームが既に設定されていることを前提としています。 セットアップについてご不明な点がある場合は、[C# (.NET Core) での音声認識に関するクイックスタート](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)を参照してください。
 
 このコードをプロジェクトにコピーします。
 
@@ -117,7 +123,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json.Linq;
 
-    // Note: ServiceApplicationId is a fixed value.  No need to change.
+    // ServiceApplicationId is a fixed value. No need to change it.
 
     public class TenantLMSample
     {
@@ -281,20 +287,23 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-次に、コマンド ラインからプロジェクトをリビルドして実行する必要があります。 コマンドを実行する前に、いくつかのパラメーターを更新する必要があります。
+次に、コマンド ラインからプロジェクトをリビルドして実行する必要があります。 コマンドを実行する前に、次の手順に従っていくつかのパラメーターを更新します。
 
 1. `<Username>` と `<Password>` を、有効なテナント ユーザーの値に置き換えます。
-2. `<Subscription-Key>` を音声リソースのサブスクリプション キーに置き換えます。 この値は、[Azure portal](https://aka.ms/azureportal) 内の音声リソースの **[概要]** セクションにあります。
-3. `<Endpoint-Uri>` を以下のエンドポイントに置き換えます。 `{your-region}` は、必ず音声リソースが作成されたリージョンに置き換えてください。 サポートされているリージョンは、`westus`、`westus2`、および `eastus` です。 リージョン情報は、[Azure portal](https://aka.ms/azureportal) 内の音声リソースの **[概要]** セクションで確認できます。
+1. `<Subscription-Key>` を音声リソースのサブスクリプション キーに置き換えます。 この値は、[Azure portal](https://aka.ms/azureportal) 内の音声リソースの **[概要]** セクションにあります。
+1. `<Endpoint-Uri>` を次のエンドポイントに置き換えます。 `{your region}` は、必ず音声リソースが作成されたリージョンに置き換えてください。 サポートされているリージョンは、`westus`、`westus2`、および `eastus` です。 リージョン情報は、[Azure portal](https://aka.ms/azureportal) 内の音声リソースの **[概要]** セクションで確認できます。
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. 次のコマンドを実行します。
+1. 次のコマンドを実行します。
+
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-## <a name="next-steps"></a>次の手順
+このチュートリアルでは、Office 365 データを使用してカスタム音声認識モデルを作成し、それをデプロイして、Speech SDK で使用する方法を説明しました。
+
+## <a name="next-steps"></a>次のステップ
 
 * [Speech Studio](https://speech.microsoft.com/)
 * [Speech SDK](speech-sdk.md)

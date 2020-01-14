@@ -1,29 +1,21 @@
 ---
-title: Windows Server 用の Service Fabric スタンドアロン パッケージ | Microsoft Docs
+title: Windows Server 用の Azure Service Fabric スタンドアロン パッケージ
 description: Windows Server 用の Service Fabric スタンドアロン パッケージの説明と内容。
-services: service-fabric
-documentationcenter: .net
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451845"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
 
-| **ファイル名** | **簡単な説明** |
+| **[ファイル名]** | **簡単な説明** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |ClusterConfig.json ファイル内の設定を使用してクラスターを作成する PowerShell スクリプト。 |
 | RemoveServiceFabricCluster.ps1 |ClusterConfig.json ファイル内の設定を使用してクラスターを削除する PowerShell スクリプト。 |
@@ -41,7 +33,7 @@ ms.locfileid: "60711086"
 
 **テンプレート** 
 
-| **ファイル名** | **簡単な説明** |
+| **[ファイル名]** | **簡単な説明** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティで保護されていない開発クラスターの設定 (クラスター内の各ノードの情報を含む) が含まれています。 |
 | ClusterConfig.Unsecure.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、セキュリティで保護されていないクラスターの設定 (クラスター内の各マシンの情報を含む) が含まれています。 |

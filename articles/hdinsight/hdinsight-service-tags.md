@@ -4,15 +4,15 @@ description: ネットワーク セキュリティ グループに IP アドレ�
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/19/2019
-ms.openlocfilehash: 7e3ce33bdf0773ababe5eb190877a9288c094c5c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.custom: hdinsightactive
+ms.date: 12/05/2019
+ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435405"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight で使用されるネットワーク セキュリティ グループ (NSG) サービス タグ
 
@@ -30,7 +30,17 @@ ms.locfileid: "74186807"
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>単一のグローバル HDInsight サービス タグを使用する
 
-HDInsight クラスターでサービス タグを使い始める最も簡単な方法は、ネットワーク セキュリティ グループの規則にグローバル タグ `HDInsight` を追加することです。 ネットワーク セキュリティ グループにサービス タグを追加する方法については、「セキュリティ グループ」の「[サービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
+HDInsight クラスターでサービス タグを使い始める最も簡単な方法は、ネットワーク セキュリティ グループの規則にグローバル タグ `HDInsight` を追加することです。
+
+1. [[Azure portal]](https://portal.azure.com/) で、使用しているネットワーク セキュリティ グループを選択します。
+
+1. **[設定]** で **[受信セキュリティ規則]** を選択し、 **[+ 追加]** を選択します。
+
+1. **[ソース]** ドロップダウン リストで、 **[サービス タグ]** を選択します。
+
+1. **[発信元サービス タグ]** ドロップダウン リストから、 **[HDInsight]** を選択します。
+
+    ![Azure portal のサービス タグの追加](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
 
 このタグを使うと、HDInsight が使用可能なすべてのリージョンの正常性および管理サービスの IP アドレスが組み込まれ、クラスターが作成された場所に関係なく、必要な正常性および管理サービスと通信できることが保証されます。
 
@@ -51,10 +61,10 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| 米国 | 米国中北部 | HDInsight.NorthCentralUS |
+| United States | 米国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
-| カナダ | カナダ東部 | HDInsight.CanadaEast |
+| Canada | カナダ東部 | HDInsight.CanadaEast |
 | ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
@@ -63,7 +73,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | 日本 | 西日本 | HDInsight.JapanWest |
 | フランス | フランス中部| HDInsight.FranceCentral |
 | 英国 | 英国南部 | HDInsight.UKSouth |
-| Azure Government (Fairfax) | USDoD 中部   | HDInsight.USDoDCentral |
+| Azure Government | USDoD 中部   | HDInsight.USDoDCentral |
 | &nbsp; | 米国政府テキサス | HDInsight.USGovTexas |
 | &nbsp; | USDoD 東部 | HDInsight.USDoDEast |
 
@@ -85,7 +95,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 | Country | リージョン | サービス タグ |
 | ---- | ---- | ---- |
-| 米国 | 米国東部 2 | HDInsight.EastUS2 |
+| United States | 米国東部 2 | HDInsight.EastUS2 |
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
@@ -94,7 +104,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | 日本 | 東日本 | HDInsight.JapanEast |
 | ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
 | &nbsp; | 西ヨーロッパ| HDInsight.WestEurope |
-| アジア | 東アジア | HDInsight.EastAsia |
+| Asia | 東アジア | HDInsight.EastAsia |
 | &nbsp; | 東南アジア | HDInsight.SoutheastAsia |
 | オーストラリア | オーストラリア東部 | HDInsight.AustraliaEast |
 
@@ -110,7 +120,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 **ドイツ中部**および**ドイツ北東部**リージョンのクラスターでは、2 つのサービス タグ `HDInsight.GermanyCentral` と `HDInsight.GermanyNorthEast` を許可する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [ネットワーク セキュリティ グループ - サービス タグ](../virtual-network/security-overview.md#security-rules)
-* [Azure HDInsight クラスターの仮想ネットワークの作成](hdinsight-create-virtual-network.md)
+- [ネットワーク セキュリティ グループ - サービス タグ](../virtual-network/security-overview.md#security-rules)
+- [Azure HDInsight クラスターの仮想ネットワークの作成](hdinsight-create-virtual-network.md)

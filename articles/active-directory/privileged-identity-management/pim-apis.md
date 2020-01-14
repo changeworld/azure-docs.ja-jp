@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aea9fbb14d3892419af104c44c8bfd5528eef421
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021921"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638665"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management 向けの Microsoft Graph API (プレビュー)
 
@@ -29,6 +29,8 @@ Microsoft Graph API の詳細については、[Azure AD Privileged Identity Man
 
 > [!IMPORTANT]
 > Microsoft Graph でベータ版の API はプレビュー段階であり、変更されることがあります。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。
+>
+> Graph API コマンドではすべての PIM 操作がサポートされていますが、アクティブ化要求の承認には別のシステムが使用されます。 承認用の Graph API は現在開発中であり、今後数か月のうちにリリースされる予定です。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -59,6 +61,6 @@ Privileged Identity Management 向けの Microsoft Graph API シリーズを呼�
 
 1. **[アクセス許可の変更]** をクリックして、アクセス許可の変更を適用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

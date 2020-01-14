@@ -4,12 +4,12 @@ description: Azure Functions Core Tools と Azure CLI を使用して、Azure �
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433192"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>クイック スタート:Azure で HTTP によってトリガーされる Python 関数を作成する
 
@@ -144,10 +144,10 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 Azure 上で関数アプリを作成した後、[func azure functionapp publish](functions-run-local.md#project-file-deployment) Core Tools コマンドを使用して、Azure にプロジェクト コードをデプロイできます。 この例では、`<APP_NAME>` をご自身のアプリの名前に置き換えてください。
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-`--build remote` オプションは、デプロイ パッケージ内のファイルから Python プロジェクトを Azure にリモートでビルドします。この方法をお勧めします。 
+Python プロジェクトが、デプロイ パッケージ内のファイルから Azure にリモートでビルドされます。 
 
 次のメッセージとほぼ同じ出力が表示されます。 ここでは、読みやすくするために切り詰められています。
 
@@ -172,7 +172,7 @@ Functions in myfunctionapp:
 > [!NOTE]
 > 公開された Python アプリのほぼリアルタイムのログを表示するには、[Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP でトリガーされる関数で Python 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
 

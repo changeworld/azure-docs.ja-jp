@@ -1,31 +1,23 @@
 ---
-title: Azure Service Fabric の Reliable Services アプリケーション マニフェストの例
+title: Reliable Services アプリ マニフェストの例
 description: Reliable Services Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013222"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609827"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
 ASP.NET Core Web フロント エンドとステートフルなバックエンドを持つ Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Service Fabric .NET クイック スタート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) のマニフェストに基づいています。
 
 次の機能が示されます。
 
-|Manifest|機能|
+|Manifest|[機能]|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [リソース ガバナンス](service-fabric-resource-governance.md)、[ローカル管理者アカウントとしてサービスを実行する](service-fabric-application-runas-security.md)、[すべてのサービス コード パッケージに既定のポリシーを適用する](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[ユーザーとグループのプリンシパルを作成する](service-fabric-application-runas-security.md)、サービス インスタンス間でデータ パッケージを共有する、[サービス エンドポイントをオーバーライドする](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService サービス マニフェスト| [サービスの起動時にスクリプトを実行する](service-fabric-run-script-at-service-startup.md)、[HTTPS エンドポイントを定義する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 

@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447829"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、ある都市から別の都市へ移動する場合の出発地と目的地です。 両方のデータが必要である可能性があり、これらは互いに関連しています。
 
 ロールは、任意の事前構築済みまたはカスタムのエンティティ型で使用でき、発話とパターンの両方の例で使用できます。
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -51,7 +49,11 @@ ms.locfileid: "74894605"
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. [https://preview.luis.ai](https://preview.luis.ai) という URL を使用してプレビュー LUIS ポータルにサインインします。
+
+1. **[新しいアプリの作成]** を選択し、名前に「`HumanResources`」を入力して、既定のカルチャである **[英語]** はそのままにします。 説明は空のままにします。
+
+1. **[完了]** を選択します。
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>従業員を都市間で移動させる意図を作成する
 
@@ -61,7 +63,8 @@ ms.locfileid: "74894605"
 
 1. ポップアップ ダイアログ ボックスに「`MoveEmployeeToCity`」と入力して、 **[完了]** を選択します。
 
-    ![新しい意図の作成ダイアログのスクリーンショット](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![新しい意図の作成ダイアログのスクリーンショット](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. 発話の例を意図に追加します。
 
@@ -77,7 +80,8 @@ ms.locfileid: "74894605"
     |Steve Standish をサンディエゴからベルビューへ転任させる |
     |カンザスシティの Tanner Thompson を昇進させてシカゴへ移す|
 
-    [![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>事前構築済みエンティティ geographyV2 を追加する
 
@@ -87,16 +91,30 @@ ms.locfileid: "74894605"
 
 1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択し、検索バーで `geo` を選択して事前構築済みエンティティをフィルター処理します。
 
-    ![geographyV2 事前構築済みエンティティをアプリに追加する](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![geographyV2 事前構築済みエンティティをアプリに追加する](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. 該当するチェック ボックスをオンにし、 **[完了]** を選択します。
 1. **[エンティティ]** の一覧で、 **[geographyV2]** を選択して新しいエンティティを開きます。
 1. `Origin` と `Destination` の 2 つのロールを追加します。
 
-    ![事前構築済みエンティティにロールを追加する](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は、あらかじめ構築されたエンティティ **geographyV2** のラベルが付いていることに注意してください。
-1. 一覧の最初の発話で、出発地を選択します。 ドロップダウン メニューが表示されます。 一覧の **[geographyV2]** を選択し、メニューに従って **[Origin]\(出発地\)** を選択します。
-1. 前の手順の方法を使用して、すべての発話内の場所のすべてのロールをマークします。
+    > [!div class="mx-imgBorder"]
+    > ![事前構築済みエンティティにロールを追加する](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は、あらかじめ構築されたエンティティ **geographyV2** のラベルが付いていることに注意してください。
+1. コンテキスト ツール バーで、 **[Entity palette]\(エンティティ パレット\)** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![コンテンツ ツール バーからエンティティ パレットを選択する](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. 事前構築済みエンティティ **geographyV2** を選択し、 **[Entity inspector]\(エンティティ インスペクター\)** を選択します。
+1. **[Entity inspector]\(エンティティ インスペクター\)** で、 **[Destination]\(目的地\)** というロールを 1 つ選択します。 これによってマウス カーソルが変化します。 カーソルを使用して、目的地に該当するすべての発話のテキストにラベルを付けます。
+
+    > [!div class="mx-imgBorder"]
+    > ![エンティティ パレットでロールを選択する](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. **エンティティ インスペクター**に戻って、ロールを **[Origin]\(出発地\)** に変更します。 カーソルを使用して、出発地に該当するすべての発話のテキストにラベルを付けます。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する
 
@@ -155,7 +173,7 @@ ms.locfileid: "74894605"
 
     正しい意図が予測され、エンティティ配列の対応する **entities** プロパティには出発地と到着地の両方のロールが含まれています。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
@@ -169,7 +187,7 @@ ms.locfileid: "74894605"
 * [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 * [ロール](luis-concept-roles.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、新しい意図を作成し、出発地と到着地のコンテキストから学習されたデータに関する発話の例を追加しました。 アプリがトレーニングおよび発行されたら、クライアント アプリケーションはその情報を使用して、関連する情報を含む移動チケットを作成できます。
 

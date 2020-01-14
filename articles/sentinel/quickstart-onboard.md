@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426977"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -41,12 +41,14 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
  
 ## Azure Sentinel を有効にする <a name="enable"></a>
 
-1. Azure portal にアクセスします。
-2. Azure Sentinel が作成されたときのサブスクリプションが選択されていることをご確認ください。 
-3. Azure Sentinel を検索します。 
-   ![search](./media/quickstart-onboard/search-product.png)
+1. Azure portal にサインインします。 Azure Sentinel が作成されたときのサブスクリプションが選択されていることをご確認ください。
 
-1. **[+ 追加]** をクリックします。
+1. **Azure Sentinel** を検索して選択します。
+
+   ![検索](./media/quickstart-onboard/search-product.png)
+
+1. **[追加]** を選択します。
+
 1. 使用するワークスペースを選択するか、新しいワークスペースを作成します。 複数のワークスペースで Azure Sentinel を実行できますが、データは 1 つのワークスペースに分離されます。
 
    ![検索](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
    > - Azure Security Center で作成した既定のワークスペースが一覧に表示されない場合、そこに Azure Sentinel をインストールすることはできません。
    > - Azure Sentinel は、中国、ドイツ、および Azure Government の各リージョンを除く、[Log Analytics の一般公開リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Azure Sentinel によって生成されるデータ (これらのワークスペースをソースとする顧客データを含む可能性がある、インシデント、ブックマーク、アラート ルールなど) は、西ヨーロッパ (ヨーロッパにあるワークスペースの場合) または米国東部 (すべての米国ベースのワークスペースおよびヨーロッパを除くその他のリージョンの場合) で保存されます。
 
-6. **[Add Azure Sentinel]** (Azure Sentinel の追加) をクリックします。
+1. **[Add Azure Sentinel]\(Azure Sentinel の追加\)** を選択します。
   
 
 ## <a name="connect-data-sources"></a>データ ソースの接続
@@ -71,8 +73,8 @@ Azure Sentinel の下部には、各コネクタにインストールする必�
 
 
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、データ ソースを Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、データ ソースを Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [一般的なエラー形式のアプライアンス](connect-common-event-format.md)から Azure Sentinel にデータをストリーミングする。

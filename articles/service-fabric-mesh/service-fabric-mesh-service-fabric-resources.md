@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric リソース モデルの概要 | Microsoft Docs
+title: Azure Service Fabric リソース モデルの概要
 description: Service Fabric Mesh アプリケーションの定義を簡易化した方法である Service Fabric リソース モデルについて説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: vturecek
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352453"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric リソース モデルの概要
 
@@ -73,7 +64,7 @@ Mesh アプリケーションが複数のサービスで構成されている場
 
 ## <a name="volumes"></a>ボリューム
 
-多くの場合、コンテナーは一時ディスクを利用可能にしています。 一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクを取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが与えられ、通常のディスク I/O ファイル API を利用してファイルを読み書きできます。 ボリューム リソースは、ディレクトリのマウント方法とそのバッキング ストレージを示す宣言的な方法です (Azure Files Volume または Service Fabric Reliable Volume)。  詳細については、[状態の格納](service-fabric-mesh-storing-state.md#volumes)に関するページを参照してください。
+多くの場合、コンテナーは一時ディスクを利用可能にしています。 ただし、一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクが取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。 ボリューム リソースは、ディレクトリのマウント方法とそのバッキング ストレージを示す宣言的な方法です (Azure Files Volume または Service Fabric Reliable Volume)。  詳細については、[状態の格納](service-fabric-mesh-storing-state.md#volumes)に関するページを参照してください。
 
 ![ボリューム][Image3]
 
@@ -87,7 +78,7 @@ Service Fabric Mesh の外部でもアプリケーション コードは移植�
 リソース モデルに基づく Service Fabric Mesh アプリケーションは Docker コンテナーとしてパッケージ化されています。  Service Fabric Mesh は共有されたマルチテナント環境であり、コンテナーによって高いレベルの分離を実現できます。  これらのアプリケーションは、JSON 形式または YAML 形式 (この場合は JSON に変換されます) を使用して記述されます。 Mesh アプリケーションを Azure Service Fabric Mesh にデプロイすると、アプリケーションの記述に使用された JSON は Azure Resource Manager テンプレートになります。 リソースは Azure リソースにマップされます。  Mesh アプリケーションを Service Fabric クラスター (スタンドアロンまたは Azure ホスト式) にデプロイすると、アプリケーションの記述に使用された JSON は Azure Resource Manager テンプレートと似た形式になります。  デプロイ後は、Mesh アプリケーションを HTTP インターフェイスまたは Azure CLI を介して管理できます。 
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
 - [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)
 

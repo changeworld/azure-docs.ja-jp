@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:REST API と C# を使用して画像の詳細を抽出する - Bing Image Search
 titleSuffix: Azure Cognitive Services
-description: この記事では、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
+description: このチュートリアルでは、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383877"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 
@@ -98,7 +98,7 @@ var searchResult = new SearchResult()
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>要求に画像の分析情報トークンを使用する
 
-`POST` の結果で返された `ImageInsightsToken` を使用するには、`GET` 要求に追加することができます。 例:
+`POST` の結果で返された `ImageInsightsToken` を使用するには、`GET` 要求に追加することができます。 次に例を示します。
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -106,11 +106,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 画像内に識別可能な人物または場所が含まれる場合、この要求はそれらに関する情報を返します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリで画像と検索オプションを表示する](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

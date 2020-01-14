@@ -1,22 +1,24 @@
 ---
-title: カスタム環境で Azure Notebooks プロジェクトを作成する
-description: インストールされているパッケージとスタートアップ スクリプトの特定のセットで構成された新しいプロジェクトを Azure Notebooks で作成します。
+title: カスタム環境で Azure Notebooks プレビュー プロジェクトを作成する
+description: インストールされているパッケージとスタートアップ スクリプトの特定のセットで構成された新しいプロジェクトを Azure Notebooks プレビューで作成します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277496"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647069"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>クイック スタート:カスタム環境でのプロジェクトの作成
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>クイック スタート:カスタム環境で Azure Notebooks プレビューのプロジェクトを作成する
 
 Azure Notebooks のプロジェクトは、ノートブック、データ ファイル、ドキュメント、画像などのファイルのコレクションと、特定のセットアップ コマンドで構成できる環境が合わさったものです。 プロジェクトで環境を定義することにより、自分の Azure Notebooks アカウントにプロジェクトを複製すればだれでも、必要な環境を再作成するためのすべての情報が手に入ります。
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="create-a-project"></a>プロジェクトの作成
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします。 (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
@@ -49,7 +51,7 @@ Azure Notebooks のプロジェクトは、ノートブック、データ ファ
 
 1. **[+ 追加]** コマンドでは、操作とプロジェクト内のファイルから選択されたターゲット ファイルによって定義されるステップが作成されます。 次の操作がサポートされています。
 
-    | Operation | 説明 |
+    | 操作 | [説明] |
     | --- | --- |
     | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、 **[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、 **[Project Settings]\(プロジェクトの設定\)**  >  **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、`pip install -r <file>` が自動的に実行されます |
     | シェル スクリプト | 環境を初期化するために実行するコマンドが含まれる bash シェル スクリプト (通常は、拡張子が *.sh* のファイル) を指定するために使用します。 |
@@ -61,7 +63,7 @@ Azure Notebooks のプロジェクトは、ノートブック、データ ファ
 
 1. 環境をテストするには、新しいノートブックを作成して実行した後、Python の `import` ステートメントの使用など、環境内のパッケージに依存するステートメントを含むコード セルを作成します。 ステートメントが成功した場合、必要なパッケージが環境に正常にインストールされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Notebooks でプロジェクトを管理および構成する](configure-manage-azure-notebooks-projects.md)

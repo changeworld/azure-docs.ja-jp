@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430195"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
-この記事では、[Azure portal](https://portal.azure.com) を使用して、サポートされているアプリケーションの自動ユーザー アカウントのプロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
+この記事では、サポートされているアプリケーションの自動ユーザー アカウントのプロビジョニングとプロビジョニング解除を管理する一般的な手順について説明します。 "*ユーザー アカウントのプロビジョニング*" とは、アプリケーションのローカル ユーザー プロファイル ストアのユーザー アカウント レコードを作成、更新、無効化することです。 ほとんどのクラウドおよび SaaS アプリケーションでは、ユーザー ロールとアクセス許可をユーザー独自のローカル ユーザー プロファイル ストアに格納しています。このようにユーザーのローカル ストアにユーザー レコードを格納することは、シングル サインオンとアクセスの実行のために "*必須*" となっています。 自動ユーザー アカウント プロビジョニングの詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) には、Azure AD による自動プロビジョニングに対応した何千もの事前統合されたアプリケーションを含むギャラリーがあります。 まず、[SaaS アプリと Azure Active Directoryを統合する方法に関するチュートリアルの 一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)で、使用しているアプリケーションに固有のプロビジョニングのセットアップのチュートリアルを見つけてください。 ここでは、アプリと Azure AD の両方を構成してプロビジョニング接続を作成する手順について、順を追って説明します。
 
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
 

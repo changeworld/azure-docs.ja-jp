@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Azure Batch ジョブを実行する - Python API
-description: Batch Python クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
+description: Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。 Batch サービスの主要概念について説明します。
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390233"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート:Python API で最初の Batch ジョブを実行する
 
@@ -59,7 +59,7 @@ Python スクリプト `python_quickstart_client.py` が含まれているディ
 pip install -r requirements.txt
 ```
 
-ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウント用に取得した値で更新します。 例:
+ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウント用に取得した値で更新します。 次に例を示します。
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -69,7 +69,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 Batch ワークフローの動作を確認するには、スクリプトを実行します。
 
@@ -230,13 +230,13 @@ for task in tasks:
     print(file_text)
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリは自動的に、作成された入力用ストレージ コンテナーを削除し、Batch プールとジョブを削除するためのオプションを表示します。 ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールは不要になったら、削除してください。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 
 
 リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch Python API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch Python のチュートリアルに進んでください。
 

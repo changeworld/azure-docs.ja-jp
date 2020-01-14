@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422293"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -22,20 +22,7 @@ Azure Kubernetes Service (AKS) では、そのコンポーネントの多くで�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure CLI バージョン 2.0.76 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
-
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-この機能を使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.21 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+この記事では、Azure CLI バージョン 2.0.77 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS 証明書、証明機関、サービス アカウント
 
@@ -51,7 +38,13 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。
 
 > [!NOTE]
-> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになる証明書があります。
+> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになる証明書があります。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
+> 
+> また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次のコマンドは *myAKSCluster* クラスターの証明書の詳細を表示します。
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
 
@@ -73,7 +66,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > `az aks rotate-certs` が完了するまでに最大で 30 分かかる場合があります。 コマンドが完了する前に失敗した場合は、`az aks show` を使用して、クラスターの状態が *証明書のローテーション中*になっていることを確認します。 クラスターがエラー状態になっている場合は、`az aks rotate-certs` を再実行して、証明書をもう一度ローテーションします。
 
-`kubectl` コマンドを実行して、古い証明書が無効になっていることを確認します。 `kubectl` によって使用される証明書を更新していないため、エラーが表示されます。  例:
+`kubectl` コマンドを実行して、古い証明書が無効になっていることを確認します。 `kubectl` によって使用される証明書を更新していないため、エラーが表示されます。  次に例を示します。
 
 ```console
 $ kubectl get no
@@ -86,13 +79,13 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-`kubectl` コマンドを実行して証明書が更新されていることを確認します。今度は成功します。 例:
+`kubectl` コマンドを実行して証明書が更新されていることを確認します。今度は成功します。 次に例を示します。
 
 ```console
 kubectl get no
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、クラスターの証明書、CA、および SA を自動的にローテーションする方法について説明しました。 AKS のセキュリティのベスト プラクティスについては、「[Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス][aks-best-practices-security-upgrades]」を参照してください。
 

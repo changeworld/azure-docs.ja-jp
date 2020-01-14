@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8c96bea6fc55d45a7e2d790f355f6fe19323029d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 1039b72d5834ff837bcddd34d1d2c518364f96ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447636"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート:Go を使用して QnA Maker のナレッジ ベースを作成する
 
-このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
+このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
-* [KB の作成](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [KB の作成](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [GO サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -31,8 +33,6 @@ ms.locfileid: "71803455"
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーと (リソース名を含む) エンドポイントを取得するには、Azure portal で対象のリソースの **[クイックスタート]** を選択します。
-
-[サンプル コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go)は、Go を使用した QnA Maker の GitHub リポジトリで入手できます。
 
 ## <a name="create-a-knowledge-base-go-file"></a>ナレッジ ベースの Go ファイルを作成する
 
@@ -45,7 +45,12 @@ ms.locfileid: "71803455"
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
-上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。 `subscriptionKey` 変数の値を自分の QnA Maker キーに置き換えます。
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。
+
+次の値を設定します。
+
+* `<your-qna-maker-subscription-key>` - この**キー**は 32 文字の文字列で、Azure portal の [クイック スタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
+* `{your-resource-name}` - この**リソース名**を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
 
@@ -66,17 +71,17 @@ ms.locfileid: "71803455"
 
     [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
 
-3. QnA Maker API への GET を処理する次のメソッドを追加します。 このクイック スタートでは、GET を使用して作成操作の状態を確認します。 
+3. QnA Maker API への GET を処理する次のメソッドを追加します。 このクイック スタートでは、GET を使用して作成操作の状態を確認します。
 
     [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
 
 ## <a name="add-function-to-create-kb"></a>KB を作成するための関数を追加する
 
-次の関数を追加して、ナレッジ ベースを作成するための HTTP POST 要求を作成します。 _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
+次の関数を追加して、ナレッジ ベースを作成するための HTTP POST 要求を作成します。 _create_ という**操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
+この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。
 
 ```JSON
 {
@@ -90,11 +95,11 @@ ms.locfileid: "71803455"
 
 ## <a name="add-function-to-get-status"></a>状態を取得するための関数を追加する
 
-次の関数を追加して、操作の状態をチェックするための HTTP GET 要求を作成します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
+次の関数を追加して、操作の状態をチェックするための HTTP GET 要求を作成します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。
 
 [!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
 
-成功または失敗が返されるまで、この呼び出しを繰り返します。 
+成功または失敗が返されるまで、この呼び出しを繰り返します。
 
 ```JSON
 {
@@ -128,11 +133,11 @@ go build create-new-knowledge-base.go
 go run create-new-knowledge-base
 ```
 
-作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。 
+作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

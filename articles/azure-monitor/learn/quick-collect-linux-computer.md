@@ -3,7 +3,7 @@ title: クイック スタート:Azure Monitor を使用してハイブリッド
 description: このクイックスタートでは、Azure の外部で実行中の Linux コンピューター用に Log Analytics エージェントをデプロイし、Azure Monitor ログを使用してデータを収集できるようにする方法について説明します。
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/22/2019
-ms.author: magoedte
+ms.date: 12/24/2019
+ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f494702166fc3c018aba9b1356a6806384ae4673
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677963"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530019"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
 
@@ -55,7 +55,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 
-Linux 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、エージェント ラッパー スクリプトがエージェントを適切に構成し、そのエージェントを Azure Monitor と正常に通信できるようにするために必要です。
+Linux 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。 この情報は、エージェント ラッパー スクリプトがエージェントを適切に構成し、そのエージェントを Azure Monitor と正常に通信できるようにするために必要です。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -80,7 +80,7 @@ Linux 用 Log Analytics エージェントをインストールする前に、Lo
 
 Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでプロキシの構成を指定できます。  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
 
-次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
+例: `https://user01:password@proxy01.contoso.com:30443`
 
 1. Log Analytics ワークスペースに接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。 次のコマンドは、エージェントをダウンロードし、そのチェックサムを検証してインストールします。 
     
@@ -88,7 +88,7 @@ Linux コンピューターと Log Analytics との通信をプロキシ サー�
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    次のコマンドには、`-p` プロキシ パラメーターとサンプル構文が使用されています。
+    次のコマンドには、`-p` プロキシ パラメーターと、お使いのプロキシ サーバーで認証が必要な場合の構文例が含まれています。
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -100,12 +100,13 @@ Linux コンピューターと Log Analytics との通信をプロキシ サー�
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    次のコマンドには、`-p` プロキシ パラメーターとサンプル構文が使用されています。
+    次のコマンドには、`-p` プロキシ パラメーターと、お使いのプロキシ サーバーで認証が必要な場合の構文例が含まれています。
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. 次のコマンドを実行してエージェントを再起動します。 
+
+3. 次のコマンドを実行してエージェントを再起動します。 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
@@ -149,7 +150,7 @@ Azure Monitor では、Linux Syslog からイベントを収集できるほか�
 
     ![Log Analytics のログ検索の結果](media/quick-collect-linux-computer/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になった場合、Linux コンピューターからエージェントを削除し、Log Analytics ワークスペースを削除できます。  
 
@@ -161,7 +162,7 @@ Azure Monitor では、Linux Syslog からイベントを収集できるほか�
 
 ![Log Analytics リソースを削除する](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでオンプレミスの Linux コンピューターからオペレーション データとパフォーマンス データが収集されているので、収集したデータの調査と分析、およびデータに対するアクションの実行を*無料*で簡単に開始することができます。  
 

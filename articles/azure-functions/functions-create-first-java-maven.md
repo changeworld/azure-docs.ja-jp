@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230739"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562036"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>クイック スタート:Java と Maven を使用して関数を作成し、Azure に発行する
 
@@ -68,7 +68,7 @@ mvn archetype:generate ^
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。 入力を求められたら、次の値を入力します。
 
-| 値 | 説明 |
+| 値 | [説明] |
 | ----- | ----------- |
 | **groupId** | Java の[パッケージ命名規則](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)に従って、すべてのプロジェクトにわたって対象のプロジェクトを一意に識別する値。 このクイックスタートの例では、`com.fabrikam.functions` を使用します。 |
 | **artifactId** | バージョン番号のない、jar の名前である値。 このクイックスタートの例では、`fabrikam-functions` を使用します。 |
@@ -76,13 +76,16 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 | **package** | 生成された関数コードの Java パッケージである値。 既定値を使用します。 このクイックスタートの例では、`com.fabrikam.functions` を使用します。 |
 | **appName** | Azure の新しい関数アプリを識別するグローバルに一意の名前。 既定値の、ランダムな番号が付加された _artifactId_ を使用します。 この値は後で必要になるのでメモしておきます。 |
 | **appRegion** | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 既定では、 `westus`です。 次の [Azure CLI] コマンドを実行して、すべてのリージョンの一覧を取得します:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | その中に関数アプリを作成する新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 このクイックスタートの例で使用されている `myResourceGroup` を使用します。 リソース グループは、対象の Azure サブスクリプションに一意である必要があります。|
+| **resourceGroup** | その中に関数アプリを作成する新しい[リソース グループ](../azure-resource-manager/management/overview.md)の名前。 このクイックスタートの例で使用されている `myResourceGroup` を使用します。 リソース グループは、対象の Azure サブスクリプションに一意である必要があります。|
 
 「`Y`」と入力するか、Enter キーを押して確認します。
 
 Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
 
 テキスト エディターで *src/main/java* パスの新しい Function.java ファイルを開き、生成されたコードを確認します。 このコードは、要求の本文をエコーする、[HTTP によってトリガーされる](functions-bindings-http-webhook.md)関数です。 
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 ローカルで実行する場合、[関数キー](functions-bindings-http-webhook.md#authorization-keys)は必要ありません。 関数のコードを停止するには、ターミナルで `Ctrl+C` を使います。
 
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
 最初に関数アプリをデプロイすると、関数アプリと関連リソースが Azure に作成されます。 デプロイする前に、[az login](/cli/azure/authenticate-azure-cli) Azure CLI コマンドを使用して、対象の Azure サブスクリプションにサインインします。 
@@ -146,6 +152,9 @@ mvn azure-functions:deploy
 また、デプロイにより、プロジェクト ファイルがパッケージ化され、[zip デプロイ](functions-deployment-technologies.md#zip-deploy)を使用して Run-From-Package モードが有効な状態で新しい関数アプリにデプロイされます。
 
 デプロイが完了すると、関数アプリのエンドポイントへのアクセスに使うことができる URL が表示されます。 公開した HTTP トリガーは `authLevel = AuthorizationLevel.FUNCTION` を使用するため、HTTP 経由で関数エンドポイントを呼び出すために関数キーを取得する必要があります。 関数キーを取得する最も簡単な方法は、[Azure portal] を利用することです。
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>HTTP トリガー URL を取得する
 
@@ -177,7 +186,10 @@ curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/
 Hello AzureFunctions!
 ```
 
-## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+
+## <a name="next-steps"></a>次のステップ
 
 HTTP でトリガーされる関数を含む Java 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
 

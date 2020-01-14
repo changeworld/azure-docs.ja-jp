@@ -1,7 +1,7 @@
 ---
 title: 'クイックスタート: アプリの作成 - LUIS'
 titleSuffix: Azure Cognitive Services
-description: 照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
+description: このクイックスタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成する方法について説明します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613673"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448097"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート: 事前構築済みの Home Automation アプリを使用する
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
 このクイック スタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
-
-## <a name="prerequisites"></a>前提条件
-
-この記事には、LUIS ポータル ([https://www.luis.ai](https://www.luis.ai)) で作成された無料の LUIS アカウントが必要です。 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
-アプリケーションは、 **[マイ アプリ]** で作成および管理できます。 
+アプリケーションは、 **[マイ アプリ]** で作成および管理できます。
 
 1. LUIS ポータルの [マイ アプリ] 一覧で、 **[+ Create] (+ 作成)** を選択します。
 
     ![LUIS ポータルの [マイ アプリ] 一覧で、[+ Create] (+ 作成) を選択します。](./media/create-app-in-portal.png)
 
-1. ダイアログ ボックスで、アプリケーションに `Home Automation` という名前を付け、 **[完了]** を選択します。 LUIS によってアプリが作成されます。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。  
+1. ダイアログ ボックスで、アプリケーションに `Home Automation` という名前を付け、 **[完了]** を選択します。 LUIS によってアプリが作成されます。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
 
     ![ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付ける](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >カルチャは、アプリケーションを作成した後に変更できません。 
+    >カルチャは、アプリケーションを作成した後に変更できません。
 
 ## <a name="add-prebuilt-domain"></a>事前構築済みのドメインの追加
 
@@ -61,7 +55,7 @@ HomeAutomation ドメインの意図を確認するには、 **[意図]** を選
 ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
 
 > [!NOTE]
-> **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。 
+> **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。
 
 **[HomeAutomation.TurnOff]** 意図を選択します。 意図には、エンティティでラベル付けされている発話の一覧が含まれていることがわかります。
 
@@ -72,7 +66,7 @@ HomeAutomation ドメインの意図を確認するには、 **[意図]** を選
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>アプリをテストする
-アプリのトレーニング後、そのテストを行うことができます。 **[テスト]** を選択します。 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。 
+アプリのトレーニング後、そのテストを行うことができます。 **[テスト]** を選択します。 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Turn off the lights
 
 ![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
 
-もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。 
+もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Turn off the lights
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API 予測エンドポイントに対してクエリを実行する
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. ブラウザーのアドレス バーで、クエリ文字列について、URL に次の名前と値のバーが含まれていることを確認します。 それらがクエリ文字列に含まれていない場合は、追加してください。
 
@@ -201,13 +195,13 @@ Turn off the lights
     ```
 
     [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
-    
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンドポイントはコードから呼び出すことができます。
 

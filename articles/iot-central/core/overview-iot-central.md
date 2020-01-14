@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434966"
 ---
 <!---
 Purpose of an Overview article: 
@@ -95,11 +95,11 @@ Azure IoT Central ソリューションのデバイスは、オペレーター�
 
 アプリケーションへのアクセスは、管理者が[ユーザー ロールとアクセス許可](howto-administer.md)を使って管理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで Azure IoT Central の概要は終了です。推奨される次の手順は以下のとおりです。
 
-- [Azure IoT Central と Azure IoT ソリューション アクセラレータ](overview-iot-options.md)の違いを理解する。
+- [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
 - 一連のチュートリアルに従って、以下の作業方法を確認する。

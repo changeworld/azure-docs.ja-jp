@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448965"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -25,11 +25,11 @@ Anomaly Detector API では、機械学習を利用することで、時系列�
 
 Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Anomaly Detector を利用すると、時系列データ全体で異常を自動的に検出、あるいは、異常が発生したときにリアルタイムで検出できます。 
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 |リアルタイムで発生した異常を検出します。 | 前に確認されたデータ ポイントを利用し、最新のデータ ポイントが異常であるかどうかを判断することでストリーミング データ内の異常を検出します。 この操作では、送信したデータ ポイントを利用してモデルが生成され、ターゲットのポイントが異常であるかどうかが判断されます。 生成する新しいデータ ポイントで API を呼び出すことで、作成時にデータを監視できます。 |
 |バッチとして設定されたデータ全体で異常を検出します。 | 時系列データを使用し、データ全体に存在する可能性がある異常を検出します。 この操作により、時系列データ全体を使用してモデルが生成されます。各ポイントが同じモデルで分析されます。         |
@@ -53,7 +53,7 @@ Notebook を実行するには、次の手順を完了します。
 1. **[無料のコンピューティングで実行]** をクリックします。
 1. いずれかのノートブックを選択します。
 1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。 
-1. `endpoint` 変数を自分のエンドポイントに変更します。 次に例を示します。`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
 
 ## <a name="workflow"></a>ワークフロー
@@ -72,8 +72,12 @@ Anomaly Detector API は RESTful Web サービスです。HTTP 要求を作成�
 
 ## <a name="algorithms"></a>アルゴリズム
 
-* 内部のアルゴリズムについては、テクニカル ブログ「[Azure Anomaly Detector API の概要](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)」および [Azure Anomaly Detector の SR-CNN アルゴリズムの概要](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)に関するページを参照してください。
-* Microsoft によって開発された最先端の SR-CNN アルゴリズムについては、こちらの論文「[Microsoft での時系列の異常検出サービス](https://arxiv.org/abs/1906.03821)」 (KDD 2019 採択済み) を参照してください。
+* 使用されているアルゴリズムについては、次のテクニカル ブログを参照してください。
+    * [Azure Anomaly Detector API の概要](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Azure Anomaly Detector の SR-CNN アルゴリズムの概要](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+Microsoft によって開発された SR-CNN アルゴリズムの詳細については、論文「[Microsoft での時系列の異常検出サービス](https://arxiv.org/abs/1906.03821)」(KDD 2019 採択済み) を参照してください。
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
@@ -82,7 +86,7 @@ Anomaly Detector API は RESTful Web サービスです。HTTP 要求を作成�
 * [Microsoft Teams 上の Anomaly Detector Advisors グループ](https://aka.ms/AdAdvisorsJoin)に参加する
 * [ユーザーが生成した厳選されたコンテンツ](user-generated-content.md)を見る
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート:Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](quickstarts/detect-data-anomalies-csharp.md)
 * Anomaly Detector API [オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)

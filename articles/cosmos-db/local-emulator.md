@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441678"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -33,8 +33,8 @@ Azure Cosmos Emulator は Windows Docker コンテナー上で実行できます
 
 Azure Cosmos Emulator は、ローカルの開発者ワークステーションに環境をエミュレートして提供するものであるため、このエミュレーターとクラウドにある Azure Cosmos アカウントとの間には機能にいくつかの違いがあります。
 
-* エミュレーターのデータ エクスプローラーでは現在、SQL API 用のクライアントがサポートされています。 MongoDB API、Table API、Graph API、Cassandra API など、Azure Cosmos DB 用の API については、データ エクスプローラーのビューと操作が完全にはサポートされていません。
-* Azure Cosmos Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。 Azure Cosmos Emulator ではキーを登録できませんが、コマンドライン オプションを使って既定のキーを変更することは可能です。
+* エミュレーターのデータ エクスプローラーでは現在、SQL API 用のクライアントがサポートされています。 MongoDB、Table、Graph、Cassandra などの API のような、Azure Cosmos DB 用の API については、データ エクスプローラーのビューと操作が完全にはサポートされていません。
+* Azure Cosmos Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。 Azure Cosmos Emulator ではキーを再生成できませんが、コマンドライン オプションを使って既定のキーを変更することは可能です。
 * Azure Cosmos Emulator はスケーラブルなサービスではなく、大量のコンテナーはサポートされません。
 * Azure Cosmos Emulator では、異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)を利用できません。
 * Azure Cosmos Emulator では、[複数リージョンのレプリケーション](distribute-data-globally.md)を利用できません。
@@ -57,13 +57,13 @@ Azure Cosmos Emulator のハードウェア要件とソフトウェア要件は�
 [Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)から Azure Cosmos Emulator をダウンロードしてインストールできます。または、Docker for Windows でこのエミュレーターを実行できます。 Docker for Windows でエミュレーターを使用する方法については、「[Docker で実行する](#running-on-docker)」を参照してください。
 
 > [!NOTE]
-> Azure Cosmos Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。 エミュレーターでは、サービスを実行するために証明書の作成/追加と、ファイアウォール規則の設定が行われます。このため、エミュレーターがそのような操作を実行できるようになっている必要があります。
+> Azure Cosmos Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。 このエミュレーターでは、サービスを実行するために証明書の作成または追加と、ファイアウォール規則の設定が行われます。このため、エミュレーターがそのような操作を実行できるようになっている必要があります。
 
 ## <a name="running-on-windows"></a>Windows で実行する
 
 Azure Cosmos Emulator を起動するには、[スタート] ボタンをクリックするか、Windows キーを押します。 「**Azure Cosmos Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。
 
-![[スタート] ボタンをクリックするか Windows キーを押して「**Azure Cosmos Emulator**」と入力し、アプリケーションの一覧からエミュレーターを選択する](./media/local-emulator/database-local-emulator-start.png)
+![[スタート] ボタンを選択するか Windows キーを押して「**Azure Cosmos Emulator**」と入力し、アプリケーションの一覧からエミュレーターを選択する](./media/local-emulator/database-local-emulator-start.png)
 
 エミュレーターの実行中は、Windows タスク バーの通知領域にアイコンが表示されます。 ![Azure Cosmos DB ローカル エミュレーターのタスク バーの通知](./media/local-emulator/database-local-emulator-taskbar.png)
 
@@ -86,7 +86,7 @@ Azure Cosmos Emulator が起動すると、ブラウザーで Azure Cosmos デ�
 
 ## <a name="authenticating-requests"></a>要求の認証
 
-クラウドの Azure Cosmos DB と同様に、Azure Cosmos Emulator に対する要求にはいずれも認証が必要です。 Azure Cosmos Emulator では、マスター キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 Azure Cosmos Emulator ではこのアカウントとキーのみ、資格情報として使用できます。 次に例を示します。
+クラウドの Azure Cosmos DB と同様に、Azure Cosmos Emulator に対する要求にはいずれも認証が必要です。 Azure Cosmos Emulator では、マスター キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 Azure Cosmos Emulator ではこのアカウントとキーのみ、資格情報として使用できます。 これらは次のとおりです。
 
 ```bash
 Account name: localhost:<port>
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Azure Cosmos Emulator でサポートされているマスター キーは、エミュレーターで使用することのみを想定したものです。 Azure Cosmos Emulator で運用環境の Azure Cosmos DB アカウントとキーを使用することはできません。
 
 > [!NOTE]
-> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、「[コマンドライン ツールのリファレンス](#command-line)」を参照してください。
+> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、[コマンドライン ツールのリファレンス](#command-line)を参照してください。
 
 Azure Cosmos DB と同様に、Azure Cosmos Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
@@ -232,45 +232,48 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
-オプションの一覧を表示するには、コマンド プロンプトで「 `CosmosDB.Emulator.exe /?` 」と入力します。
+オプションの一覧を表示するには、コマンド プロンプトで「 `Microsoft.Azure.Cosmos.Emulator.exe /?` 」と入力します。
 
 |**オプション** | **説明** | **コマンド**| **引数**|
 |---|---|---|---|
-|[引数なし] | 既定の設定で Azure Cosmos Emulator を起動します。 |CosmosDB.Emulator.exe| |
-|[Help] |サポートされるコマンド ライン引数の一覧を表示します。|CosmosDB.Emulator.exe /? | |
-| GetStatus |Azure Cosmos Emulator の状態を取得します。 この状態は、終了コードで示されます。終了コードは、1 = 開始中、2 = 実行中、3 = 停止済みです。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。 | CosmosDB.Emulator.exe /GetStatus| |
-| Shutdown| Azure Cosmos Emulator をシャットダウンします。| CosmosDB.Emulator.exe /Shutdown | |
-|DataPath | データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:アクセスできるパス |
-|Port | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
-| ComputePort | Compute Interop Gateway サービスに使用するポート番号を指定します。 ゲートウェイの HTTP エンドポイント プローブ ポートのポート番号は、ComputePort に 79 を加えた値として計算されます。 このため、ComputePort と ComputePort に 79 を加えた番号のポートは、開いて利用可能な状態にしておく必要があります。 既定値は 8900 と 8979 です。 | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>:単一のポート番号 |
-| EnableMongoDbEndpoint | MongoDB API を有効にします | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
-| MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>:単一のポート番号|
-| EnableCassandraEndpoint | Cassandra API を有効にします | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
-| CassandraPort | Cassandra エンドポイントで使用するポート番号を指定します。 既定値は 10350 です。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>:単一のポート番号 |
-| EnableGremlinEndpoint | Gremlin API を有効にします | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | Gremlin エンドポイントに使用するポート番号です。 既定値は 8901 です。 | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>:単一のポート番号 |
-|EnableTableEndpoint | Azure Table API を有効にします | CosmosDB.Emulator.exe /EnableTableEndpoint | |
-|TablePort | Azure Table エンドポイントに使用するポート番号です。 既定値は 8902 です。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>:単一のポート番号|
-| KeyFile | 指定されたファイルから承認キーを読み取ります。 キーファイルの生成には、/GenKeyFile オプションを使用します | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:ファイルへのパス |
-| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath=\<path> | \<path\>:ファイル パス  |
-| StartTraces  |  デバッグ トレース ログの収集を開始します。 | CosmosDB.Emulator.exe /StartTraces | |
-| StopTraces     | デバッグ トレース ログの収集を停止します。 | CosmosDB.Emulator.exe /StopTraces  | |
-|FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 SSL 証明書を作成およびインストールする必要があります。 | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | CosmosDB.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
-| DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
-| Key |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
-| EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |CosmosDB.Emulator.exe /EnableRateLimiting | |
-| DisableRateLimiting |要求レート制限の動作の無効化を指定します。 |CosmosDB.Emulator.exe /DisableRateLimiting | |
-| NoUI | エミュレーターのユーザー インターフェイスを表示しません。 | CosmosDB.Emulator.exe /NoUI | |
-| NoExplorer | 起動時にデータ エクスプローラーを表示しません。 |CosmosDB.Emulator.exe /NoExplorer | | 
-| PartitionCount | パーティション分割されたコンテナーの最大数を指定します。 詳細については、「[コンテナーの数を変更する](#set-partitioncount)」を参照してください。 | CosmosDB.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>:許容される単一パーティション コンテナーの最大数です。 既定値は 25 です。 許容される最大値は 250 です。|
-| DefaultPartitionCount| パーティション分割されたコンテナーの既定のパーティション数を指定します。 | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 既定値は 25 です。|
-| AllowNetworkAccess | ネットワーク上でのエミュレーターへのアクセスを有効にします。 /Key=\<key_string\> または /KeyFile=\<file_name\> を渡して、ネットワーク アクセスを有効にする必要があります。 | CosmosDB.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> または CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
-| NoFirewall | /AllowNetworkAccess オプションが使用されているときは、ファイアウォール規則を調整しないでください。 |CosmosDB.Emulator.exe /NoFirewall | |
-| GenKeyFile | 新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。 | CosmosDB.Emulator.exe /GenKeyFile=\<キー ファイルへのパス\> | |
-| 整合性 | アカウントの既定の一貫性レベルを設定します。 | CosmosDB.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。 |
+|[引数なし] | 既定の設定で Azure Cosmos Emulator を起動します。 |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[Help] |サポートされるコマンド ライン引数の一覧を表示します。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
+| GetStatus |Azure Cosmos Emulator の状態を取得します。 この状態は、終了コードで示されます。終了コードは、1 = 開始中、2 = 実行中、3 = 停止済みです。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
+| Shutdown| Azure Cosmos Emulator をシャットダウンします。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
+|DataPath | データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:アクセスできるパス |
+|Port | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
+| ComputePort | Compute Interop Gateway サービスに使用するポート番号を指定します。 ゲートウェイの HTTP エンドポイント プローブ ポートのポート番号は、ComputePort に 79 を加えた値として計算されます。 このため、ComputePort と ComputePort に 79 を加えた番号のポートは、開いて利用可能な状態にしておく必要があります。 既定値は 8900 です。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>:単一のポート番号 |
+| EnableMongoDbEndpoint=3.2 | MongoDB API 3.2 を有効にします | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.2 | |
+| EnableMongoDbEndpoint=3.6 | MongoDB API 3.6 を有効にします | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.6 | |
+| MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |Microsoft.Azure.Cosmos.Emulator.exe /MongoPort=\<mongoport\>|\<mongoport\>:単一のポート番号|
+| EnableCassandraEndpoint | Cassandra API を有効にします | Microsoft.Azure.Cosmos.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | Cassandra エンドポイントで使用するポート番号を指定します。 既定値は 10350 です。 | Microsoft.Azure.Cosmos.Emulator.exe /CassandraPort=\<cassandraport\> | \<cassandraport\>:単一のポート番号 |
+| EnableGremlinEndpoint | Gremlin API を有効にします | Microsoft.Azure.Cosmos.Emulator.exe /EnableGremlinEndpoint | |
+| GremlinPort | Gremlin エンドポイントに使用するポート番号です。 既定値は 8901 です。 | Microsoft.Azure.Cosmos.Emulator.exe /GremlinPort=\<port\> | \<port\>:単一のポート番号 |
+|EnableTableEndpoint | Azure Table API を有効にします | Microsoft.Azure.Cosmos.Emulator.exe /EnableTableEndpoint | |
+|TablePort | Azure Table エンドポイントに使用するポート番号です。 既定値は 8902 です。 | Microsoft.Azure.Cosmos.Emulator.exe /TablePort=\<port\> | \<port\>:単一のポート番号|
+| KeyFile | 指定されたファイルから承認キーを読み取ります。 キーファイルの生成には、/GenKeyFile オプションを使用します | Microsoft.Azure.Cosmos.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:ファイルへのパス |
+| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | Microsoft.Azure.Cosmos.Emulator.exe /ResetDataPath=\<path> | \<path\>:[ファイル パス]  |
+| StartTraces  |  LOGMAN を使用して、デバッグ トレース ログの収集を開始します。 | Microsoft.Azure.Cosmos.Emulator.exe /StartTraces | |
+| StopTraces     | LOGMAN を使用して、デバッグ トレース ログの収集を停止します。 | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
+| StartWprTraces  |  Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を開始します。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
+| StopWprTraces     | Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を停止します。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
+|FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 SSL 証明書を作成およびインストールする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
+| DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
+| Key |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
+| EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |要求レート制限の動作の無効化を指定します。 |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
+| NoUI | エミュレーターのユーザー インターフェイスを表示しません。 | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
+| NoExplorer | 起動時にデータ エクスプローラーを表示しません。 |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
+| PartitionCount | パーティション分割されたコンテナーの最大数を指定します。 詳細については、「[コンテナーの数を変更する](#set-partitioncount)」を参照してください。 | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>:許容される単一パーティション コンテナーの最大数です。 既定値は 25 です。 許容される最大値は 250 です。|
+| DefaultPartitionCount| パーティション分割されたコンテナーの既定のパーティション数を指定します。 | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 既定値は 25 です。|
+| AllowNetworkAccess | ネットワーク上でのエミュレーターへのアクセスを有効にします。 /Key=\<key_string\> または /KeyFile=\<file_name\> を渡して、ネットワーク アクセスを有効にする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> または Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| NoFirewall | /AllowNetworkAccess オプションが使用されているときは、ファイアウォール規則を調整しないでください。 |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
+| GenKeyFile | 新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<キー ファイルへのパス\> | |
+| 一貫性 | アカウントの既定の一貫性レベルを設定します。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。 |
 | ? | ヘルプ メッセージを表示します。| | |
 
 ## <a id="set-partitioncount"></a>コンテナーの数を変更する
@@ -289,7 +292,7 @@ Azure Cosmos Emulator で利用可能なコンテナーの数を変更する手�
 2. フォルダー `%LOCALAPPDATA%\CosmosDBEmulator` にあるエミュレーターのデータをすべて削除します。
 3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、 **[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
-5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`)。
+5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`)。
 
 ## <a name="controlling-the-emulator"></a>エミュレーターの制御
 
@@ -512,11 +515,11 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown` プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
-3. `CosmosDB.Emulator.exe /starttraces`
-4. `CosmosDB.Emulator.exe`
+2. [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.Cosmos.Emulator.exe /shutdown`) プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
+3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
+4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。
-5. `CosmosDB.Emulator.exe /stoptraces`
+5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
 6. `%ProgramFiles%\Azure Cosmos DB Emulator` に移動し、docdbemulator_000001.etl ファイルを見つけます。
 7. デバッグのために、再現手順と共に .etl ファイルを [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に送付します。
 
@@ -527,7 +530,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、 **[アンインストール]** をクリックし、確認して再度、 **[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、`%LOCALAPPDATA%\CosmosDBEmulator` に移動して、フォルダーを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、無料のローカル開発のためにローカル エミュレーターを使用する方法について学習しました。 これで次のチュートリアルに進み、エミュレーター SSL 証明書をエクスポートする方法について学習できます。
 

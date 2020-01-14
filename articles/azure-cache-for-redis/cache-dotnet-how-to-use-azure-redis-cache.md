@@ -1,19 +1,19 @@
 ---
-title: 'クイックスタート: .NET アプリで Azure Cache for Redis を使用する方法'
+title: クイック スタート:.NET アプリで Azure Cache for Redis を使用する
 description: このクイック スタートでは、.NET アプリから Azure Cache for Redis にアクセスする方法について説明します
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2738805043b701d9e116d962f88225a6c6ae3e9b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 05/18/2018
+ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433520"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>クイック スタート:.NET Framework アプリケーションで Azure Cache for Redis を使用する
 
@@ -54,7 +54,7 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 <a name="configure-the-cache-clients"></a>
 
-## <a name="configure-the-cache-client"></a>キャッシュ クライアントの構成
+## <a name="configure-the-cache-client"></a>キャッシュ クライアントを構成する
 
 このセクションでは、.NET に [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) クライアントを使用するようにコンソール アプリを構成します。
 
@@ -230,7 +230,7 @@ using Newtonsoft.Json;
 ![完了したコンソール アプリ](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -254,7 +254,7 @@ using Newtonsoft.Json;
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、.NET アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリと Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
 

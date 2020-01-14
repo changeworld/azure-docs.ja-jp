@@ -1,22 +1,22 @@
 ---
-title: 'チュートリアル: Event Hubs で仮想ネットワークの統合とファイアウォールを有効にする | Microsoft Docs'
+title: Azure Event Hubs - 仮想ネットワークの統合とファイアウォールを有効にする
 description: このチュートリアルでは、Event Hubs と仮想ネットワークおよびファイアウォールを統合して、セキュリティで保護されたアクセスを有効にする方法について説明します。
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437120"
 ---
-# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>チュートリアル: Event Hubs 名前空間で仮想ネットワークの統合とファイアウォールを有効にする
+# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>チュートリアル:Event Hubs 名前空間で仮想ネットワークの統合とファイアウォールを有効にする
 
 [仮想ネットワーク (VNet) サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、直接接続によって、仮想ネットワークのプライベート アドレス空間と VNet の ID が Azure サービスまで拡張されます。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 VNet から Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ここでは既存の Event Hubs 名前空間を使うので、使用可能な Event Hubs 名前空間があることを確認してください。 ない場合は、[こちらのチュートリアル](./event-hubs-create.md)をご覧ください
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 まず [Azure portal][Azure portal] に移動し、ご利用の Azure サブスクリプションを使用してサインインします。
 

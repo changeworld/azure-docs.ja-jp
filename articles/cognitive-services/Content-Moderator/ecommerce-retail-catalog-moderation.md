@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:eコマース製品画像をモデレートする - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: アプリケーションを設定して、指定されたラベルで製品画像を分析および分類します (Azure Computer Vision と Custom Vision を使用)。 さらに確認されるように好ましくない画像にタグを付けます (Azure Content Moderator を使用)。
+description: このチュートリアルでは、Azure Computer Vision と Custom Vision を使用し、指定したラベルで製品画像を分析および分類するようにアプリケーションを設定する方法について説明します。 さらに確認されるように好ましくない画像にタグを付けます (Azure Content Moderator を使用)。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382159"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -117,7 +117,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 上記の手順をすべて完了したら、プログラムによって (関連するタグについて 3 つのサービスすべてに対してクエリが実行され) 各画像が処理され、タグ情報と共に画像が Content Moderator レビュー ツールにアップロードされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、製品画像を分析し、製品の種類別にタグを付け、レビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにするプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
 

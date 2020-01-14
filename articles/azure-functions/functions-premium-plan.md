@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532898"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561956"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
-Azure Functions の Premium プランは、関数アプリのホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
+Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、関数アプリのホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
 
 ## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
@@ -31,7 +31,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 完全な Azure CLI スクリプトの例については、「[Premium プランの関数アプリを作成する](scripts/functions-cli-create-premium-plan.md)」を参照してください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Premium プランにデプロイされた関数アプリでは、次の機能を利用できます。
 
@@ -45,7 +45,7 @@ Azure portal 上で事前ウォーミングされたインスタンスの数を�
 
 ![エラスティック スケールの設定](./media/functions-premium-plan/scale-out.png)
 
-アプリの事前ウォーミングされたインスタンスは、Azure CLI を使用して構成することもできます
+アプリの事前ウォーミングされたインスタンスは、Azure CLI を使用して構成することもできます。
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 プランを作成またはスケーリングするときは、3 つのインスタンス サイズから選択できます。  合計コア数と 1 秒あたりのメモリ消費量に対して課金されます。  アプリは必要に応じて自動的に複数のインスタンスにスケール アウトできます。  
 
-|SKU|コア|メモリ|Storage|
+|SKU|コア|メモリ|ストレージ|
 |--|--|--|--|
 |EP1|1|3.5 GB|250 GB|
 |EP2|2|7 GB|250 GB|
@@ -103,34 +103,35 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |オーストラリア中部| ✔<sup>1</sup> | |
 |オーストラリア中部 2| ✔<sup>1</sup> | |
 |オーストラリア東部| ✔ | |
-|オーストラリア南東部 | ✔ | ✔ |
+|オーストラリア南東部 | ✔ | ✔<sup>1</sup> |
 |ブラジル南部| ✔<sup>2</sup> |  |
 |カナダ中部| ✔ |  |
 |米国中部| ✔ |  |
 |東アジア| ✔ |  |
-|East US | ✔ | ✔ |
+|East US | ✔ | ✔<sup>1</sup> |
 |米国東部 2| ✔ |  |
 |フランス中部| ✔ |  |
-|東日本| ✔ | ✔ |
+|ドイツ中西部| ✔ | |
+|東日本| ✔ | ✔<sup>1</sup> |
 |西日本| ✔ | |
 |韓国中部| ✔ |  |
 |米国中北部| ✔ |  |
-|北ヨーロッパ| ✔ | ✔ |
-|米国中南部| ✔ |  |
+|北ヨーロッパ| ✔ | ✔<sup>1</sup> |
+|米国中南部| ✔ | ✔<sup>1</sup> |
 |インド南部 | ✔ | |
-|東南アジア| ✔ | ✔ |
+|東南アジア| ✔ | ✔<sup>1</sup> |
 |英国南部| ✔ | |
 |英国西部| ✔ |  |
-|西ヨーロッパ| ✔ | ✔ |
+|西ヨーロッパ| ✔ | ✔<sup>1</sup> |
 |インド西部| ✔ |  |
-|米国西部| ✔ | ✔ |
+|米国西部| ✔ | ✔<sup>1</sup> |
 |米国西部 2| ✔ |  |
 
 <sup>1</sup>最大スケールアウトは 20 個のインスタンスに制限されます。  
 <sup>2</sup>最大スケールアウトは 60 個のインスタンスに制限されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のスケールとホスティングのオプションを理解する](functions-scale.md)

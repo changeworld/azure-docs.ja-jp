@@ -1,5 +1,5 @@
 ---
-title: サインインとサインアウトに Azure AD を使用する AngularJS シングルページ アプリを構築する | Microsoft Docs
+title: サインインとサインアウトに Azure AD を使用する AngularJS シングルページ アプリを作成する | Microsoft Docs
 description: サインインとサインアウトに関して Azure AD と連携し、Azure AD で保護されている API を OAuth を使用して呼び出す AngularJS シングルページ アプリを構築する方法について説明します。
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424109"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 
 アプリがユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
 1. 左側のウィンドウで **[すべてのサービス]** をクリックし、 **[Azure Active Directory]** を選択します。
 1. **[アプリの登録]** をクリックし、 **[新規登録]** を選択します。
@@ -142,7 +142,7 @@ adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれ�
 
 上記の手順は、adal.js を使用してシングルページ アプリを構築するのに最低限必要な操作です。 シングルページ アプリには、他にも役立つ機能がいくつかあります。
 
-* サインイン要求とサインアウト要求を明示的に発行するために、adal.js を呼び出すコントローラーで関数を定義できます。 `App/Scripts/homeCtrl.js`で、次のように記述します。
+* サインイン要求とサインアウト要求を明示的に発行するために、adal.js を呼び出すコントローラーで関数を定義できます。 `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -176,7 +176,7 @@ adal.js を使用すると、共通 ID 機能を容易にアプリケーショ�
 
 参考用に、完全なサンプル (環境に応じた構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) で提供されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここからは、さらなるシナリオに進むことができます。
 

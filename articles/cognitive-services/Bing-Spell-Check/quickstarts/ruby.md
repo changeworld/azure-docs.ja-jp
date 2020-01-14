@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と Ruby を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e80a7bd3b56ccfd13a20c11f845d076271448b76
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448432"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>クイック スタート:Bing Spell Check REST API と Ruby を使用してスペルをチェックする
 
@@ -32,13 +32,13 @@ ms.locfileid: "74383836"
 
 1. 普段使用しているエディターまたは IDE で新しい Ruby ファイルを作成し、次の要件を追加します。 
 
-    ```javascript
+    ```ruby
     require 'net/http'
     require 'uri'
     require 'json'
     ```
 
-2. サブスクリプション キー、エンドポイントの URL、パスの変数を作成します。 該当する市場に `mkt=` パラメーターを、`proof` proof モードに `&mode` を追加して要求のパラメーターを作成します。
+2. サブスクリプション キー、エンドポイントの URL、パスの変数を作成します。 該当する市場に `mkt=` パラメーターを、`proof` proof モードに `&mode` を追加して要求のパラメーターを作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -82,6 +82,16 @@ ms.locfileid: "74383836"
     puts result
     ```
 
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。
+
+コマンド ラインを使用している場合は、次のコマンドを使用してアプリケーションを実行します。
+
+```bash
+ruby <FILE_NAME>.rb
+```
+
 ## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
@@ -124,7 +134,7 @@ ms.locfileid: "74383836"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)

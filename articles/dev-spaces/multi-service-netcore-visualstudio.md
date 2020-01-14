@@ -5,14 +5,14 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上でマルチサービス .NET Core アプリケーションをデバッグする方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 9fb6993c913454d67e2118cd3ff5a4b8fea6464b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438398"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>複数の依存サービスの実行: Azure Dev Spaces での .NET Core と Visual Studio
 
@@ -72,12 +72,12 @@ ms.locfileid: "74325703"
 1. ページの上部にある **[About]** リンクをクリックすると、`webfrontend` プロジェクトのブレークポイントがトリガーされます。 
 1. F10 キーを押して続行します。 `mywebapi` プロジェクトのブレークポイントがトリガーされます。
 1. F5 キーを押して続行し、`webfrontend` プロジェクトのコードに戻ります。
-1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの [About] ページに、2 つのサービスによって連結されたメッセージ "Hello from webfrontend and Hello from mywebapi" が表示されます。
+1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの [About]\(詳細情報\) ページに、2 つのサービスによって連結されたメッセージ "Hello from webfrontend and Hello from mywebapi" が表示されます。
 
 ### <a name="well-done"></a>お疲れさまでした。
 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Dev Spaces でのチーム開発について学ぶ](team-development-netcore-visualstudio.md)

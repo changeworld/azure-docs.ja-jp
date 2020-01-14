@@ -1,25 +1,16 @@
 ---
-title: C# で最初の Service Fabric アプリケーションを作成する | Microsoft Docs
+title: C# で最初の Service Fabric アプリケーションを作成する
 description: ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d9b44d75-e905-468e-b867-2190ce97379a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: f3b3d5c3dcea7d190724ae946a27c47b34a26c31
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462820"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -127,7 +118,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 ![Service Fabric アプリケーションにサービスを追加します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-**[.NET Core 2.0]、[ステートフル サービス]** の順に選択し、*HelloWorldStateful* という名前を付けます。 Click **OK**.
+**[.NET Core 2.0]、[ステートフル サービス]** の順に選択し、*HelloWorldStateful* という名前を付けます。 **[OK]** をクリックします。
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric のステートフル サービスを作成する](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -214,7 +205,7 @@ Reliable Collection の操作は *トランザクション*であるため、複
 
 ![Visual Studio で診断イベントを表示する](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
 [はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)

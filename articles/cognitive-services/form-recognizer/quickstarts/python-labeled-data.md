@@ -1,0 +1,563 @@
+---
+title: クイック スタート:REST API と Python によるラベルを使用したトレーニング - Form Recognizer
+titleSuffix: Azure Cognitive Services
+description: REST API と Python で Form Recognizer のラベル付けデータ機能を使用して、カスタム モデルをトレーニングする方法について説明します。
+author: PatrickFarley
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: forms-recognizer
+ms.topic: quickstart
+ms.date: 10/16/2019
+ms.author: pafarley
+ms.openlocfilehash: 9b9600c1ccb9fb9a87d4c98e4e9042ed71029057
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450931"
+---
+# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする
+
+このクイックスタートでは、Form Recognizer REST API と Python を使用して、手動でラベル付けされたデータを使ってカスタム モデルをトレーニングします。 この機能の詳細については、概要に関するページの「[ラベルを使用したトレーニング](../overview.md#train-with-labels)」を参照してください。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="prerequisites"></a>前提条件
+
+このクイック スタートを完了するには、以下が必要です。
+- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
+- インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
+- 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
+
+## <a name="set-up-training-data"></a>トレーニング データを設定する
+
+まず、必要な入力データを設定する必要があります。 ラベル付けデータ機能には、カスタム モデルのトレーニングに必要な入力要件を超える特殊な入力要件があります。 
+
+すべてのトレーニング ドキュメントが同じ形式であることを確認します。 複数の形式のフォームがある場合は、共通する形式に基づいてサブフォルダーに分類します。 トレーニング時には、API に対してサブフォルダーを指定する必要があります。
+
+ラベル付けされたデータを使用してモデルをトレーニングするためには、入力として、サブフォルダーに次のファイルが必要となります。 ここでは、以下のファイルの作成方法について説明しています。
+
+* **ソース フォーム** - データの抽出元となるフォーム。 サポートされる種類は、JPEG、PNG、BMP、PDF、TIFF です。
+* **OCR レイアウト ファイル** - 各ソース フォームに含まれるすべての読み取り可能テキストのサイズと位置を表す JSON ファイル。 このデータは、Form Recognizer Layout API を使用して生成します。 
+* **ラベル ファイル** - ユーザーが手動で入力したデータ ラベルを表す JSON ファイル。
+
+これらのファイルはすべて同じサブフォルダーに、次の形式で格納されている必要があります。
+
+* input_file1.pdf 
+* input_file1.pdf.ocr.json
+* input_file1.pdf.labels.json 
+* input_file2.pdf 
+* input_file2.pdf.ocr.json
+* input_file2.pdf.labels.json
+* ...
+
+> [!TIP]
+> Form Recognizer の[サンプル ラベル付けツール](./label-tool.md)を使用してフォームのラベル付けを実行すると、これらのラベル ファイルや OCR レイアウト ファイルが自動的に作成されます。
+
+### <a name="create-the-ocr-output-files"></a>OCR 出力ファイルを作成する
+
+ラベルによるトレーニング用として入力ファイルがこのサービスによって認識されるためには、対応する OCR 結果ファイルが必要です。 特定のソース フォームの OCR 結果を取得するには、次の手順に従います。
+
+1. 要求本文に入力ファイルを含めて、読み取りのレイアウト コンテナーに対して **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API を呼び出します。 応答の **Operation-Location** ヘッダーにある ID を保存してください。
+1. 前の手順で得た操作 ID を使用して、 **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API を呼び出します。
+1. 応答を取得し、その内容をファイルに書き込みます。 それぞれのソース フォームに対応する OCR ファイルでは、元のファイル名に `.ocr.json` が追加されています。 OCR の JSON は、次の形式で出力されている必要があります。 完全な例については、[サンプル OCR ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)を参照してください。 
+
+    ```json
+    {
+    "status": "succeeded",
+    "createdDateTime": "2019-11-12T21:18:12Z",
+    "lastUpdatedDateTime": "2019-11-12T21:18:17Z",
+    "analyzeResult": {
+        "version": "2.0.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "language": "en",
+                        "boundingBox": [
+                            0.5384,
+                            1.1583,
+                            1.4466,
+                            1.1583,
+                            1.4466,
+                            1.3534,
+                            0.5384,
+                            1.3534
+                        ],
+                        "text": "Contoso",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5384,
+                                    1.1583,
+                                    1.4466,
+                                    1.1583,
+                                    1.4466,
+                                    1.3534,
+                                    0.5384,
+                                    1.3534
+                                ],
+                                "text": "Contoso",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+    ```
+
+### <a name="create-the-label-files"></a>ラベル ファイルを作成する
+
+ラベル ファイルには、ユーザーが手動で入力したキーと値の関連付けが含まれています。 ラベル付けされたデータのトレーニングにはラベル ファイルが必要ですが、すべてのソース ファイルに、対応するラベル ファイルが存在する必要はありません。 ラベルのないソース ファイルは通常のトレーニング ドキュメントとして扱われます。 信頼できるトレーニングには、ラベル付けされたファイルを 5 つ以上お勧めします。
+
+ラベル ファイルを作成するとき、必要に応じて領域 (ドキュメントにおける値の正確な位置) を指定できます。 そうすることで、トレーニングの精度がいっそう向上します。 領域は、左上、右上、右下、左下という 4 つの XY 座標に対応する 8 つの値のセットとして書式設定されます。 座標は、ページのサイズに合わせてスケーリングされた 0 から 1 の範囲の値を取ります。
+
+それぞれのソース フォームに対応するラベル ファイルでは、元のファイル名に `.labels.json` が追加されています。 ラベル ファイルの形式は次のとおりです。 完全な例については、[サンプル ラベル ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json)を参照してください。
+
+```json
+{
+    "document": "Invoice_1.pdf",
+    "labels": [
+        {
+            "label": "Provider",
+            "key": null,
+            "value": [
+                {
+                    "page": 1,
+                    "text": "Contoso",
+                    "boundingBoxes": [
+                        [
+                            0.06334117647058823,
+                            0.1053,
+                            0.17018823529411767,
+                            0.1053,
+                            0.17018823529411767,
+                            0.12303636363636362,
+                            0.06334117647058823,
+                            0.12303636363636362
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "For",
+            "key": null,
+            "value": [
+                {
+                    "page": 1,
+                    "text": "Microsoft",
+                    "boundingBoxes": [
+                        [
+                            0.6122941176470589,
+                            0.1374,
+                            0.6841764705882353,
+                            0.1374,
+                            0.6841764705882353,
+                            0.14682727272727272,
+                            0.6122941176470589,
+                            0.14682727272727272
+                        ]
+                    ]
+                },
+                {
+                    "page": 1,
+                    "text": "1020",
+                    "boundingBoxes": [
+                        [
+                            0.6121882352941176,
+                            0.156,
+                            0.6462941176470588,
+                            0.156,
+                            0.6462941176470588,
+                            0.1653181818181818,
+                            0.6121882352941176,
+                            0.1653181818181818
+                        ]
+                    ]
+                },
+                ...
+```
+
+> [!NOTE]
+> 各テキスト要素には 1 つのラベルのみを適用できます。各ラベルは 1 ページにつき 1 回のみ適用できます。 現在、1 つのラベルを複数のページにわたって適用することはできません。
+
+
+## <a name="train-a-model-using-labeled-data"></a>ラベル付けされたデータを使用してモデルをトレーニングする
+
+ラベル付けされたデータを使用してモデルをトレーニングするには、以下の Python コードを実行して、 **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API を呼び出します。 コードを実行する前に、次の変更を行います。
+
+1. `<Endpoint>` を、Form Recognizer リソースのエンドポイントの URL に置き換えます。
+1. `<SAS URL>` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+1. `<Blob folder name>` を、入力データが置かれている BLOB コンテナー内のフォルダー名に置き換えます。 データがルートにある場合は、これを空のままにし、HTTP 要求の本文から `"prefix"` フィールドを削除してください。
+
+```python
+########### Python Form Recognizer Labeled Async Train #############
+import json
+import time
+from requests import get, post
+
+# Endpoint URL
+endpoint = r"<Endpoint>"
+post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+source = r"<SAS URL>"
+prefix = "<Blob folder name>"
+includeSubFolders = False
+useLabelFile = True
+
+headers = {
+    # Request headers
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '<subsription key>',
+}
+
+body =  {
+    "source": source,
+    "sourceFilter": {
+        "prefix": prefix,
+        "includeSubFolders": includeSubFolders
+    },
+    "useLabelFile": useLabelFile
+}
+
+try:
+    resp = post(url = post_url, json = body, headers = headers)
+    if resp.status_code != 201:
+        print("POST model failed (%s):\n%s" % (resp.status_code, json.dumps(resp.json())))
+        quit()
+    print("POST model succeeded:\n%s" % resp.headers)
+    get_url = resp.headers["location"]
+except Exception as e:
+    print("POST model failed:\n%s" % str(e))
+    quit() 
+```
+
+## <a name="get-training-results"></a>トレーニング結果を取得する
+
+トレーニング操作を開始したら、返された ID を使用して、操作の状態を取得します。 Python スクリプトの末尾に次のコードを追加します。 ここでは、トレーニング呼び出しから得た ID 値を新しい API 呼び出しの中で使用します。 トレーニング操作は非同期なので、このスクリプトでは、トレーニングが完了状態になるまで一定の間隔で API が呼び出されます。 間隔は 1 秒以上あけることをお勧めします。
+
+```python 
+n_tries = 15
+n_try = 0
+wait_sec = 5
+max_wait_sec = 60
+while n_try < n_tries:
+    try:
+        resp = get(url = get_url, headers = headers)
+        resp_json = resp.json()
+        if resp.status_code != 200:
+            print("GET model failed (%s):\n%s" % (resp.status_code, json.dumps(resp_json)))
+            quit()
+        model_status = resp_json["modelInfo"]["status"]
+        if model_status == "ready":
+            print("Training succeeded:\n%s" % json.dumps(resp_json))
+            quit()
+        if model_status == "invalid":
+            print("Training failed. Model is invalid:\n%s" % json.dumps(resp_json))
+            quit()
+        # Training still running. Wait and retry.
+        time.sleep(wait_sec)
+        n_try += 1
+        wait_sec = min(2*wait_sec, max_wait_sec)     
+    except Exception as e:
+        msg = "GET model failed:\n%s" % str(e)
+        print(msg)
+        quit()
+print("Train operation did not complete within the allocated time.")
+```
+
+トレーニング プロセスが完了すると、次のような内容の JSON と共に `201 (Success)` 応答が返されます。 簡潔にするために、応答は一部省略されています。
+
+```json
+{ 
+  "modelInfo":{ 
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{ 
+    "trainingDocuments":[ 
+      { 
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[ 
+
+    ]
+  },
+  "keys":{ 
+    "0":[ 
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
+}
+```
+
+`"modelId"` の値は、次の手順で使用するためにコピーします。
+
+[!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
+
+処理が完了すると、次の形式の JSON データと共に `202 (Success)` 応答が返されます。 簡潔にするために、応答は一部省略されています。 主なキーと値の関係は、`"documentResults"` ノードに存在します。 Layout API の結果 (ドキュメントに含まれるすべてのテキストの内容と位置) は、`"readResults"` ノードに存在します。
+
+```json
+{ 
+    "analyzeResult":{ 
+      "version":"2.0.0",
+      "readResults":[ 
+        { 
+          "page":1,
+          "language":"en",
+          "angle":0,
+          "width":8.5,
+          "height":11,
+          "unit":"inch",
+          "lines":[ 
+            { 
+              "language":"en",
+              "boundingBox":[ 
+                0.5375,
+                1.1349,
+                2.6064,
+                1.1349,
+                2.6064,
+                1.354,
+                0.5375,
+                1.354
+              ],
+              "text":"Contoso Suites",
+              "words":[ 
+                { 
+                  "boundingBox":[ 
+                    0.5375,
+                    1.1402,
+                    1.6595,
+                    1.1402,
+                    1.6595,
+                    1.354,
+                    0.5375,
+                    1.354
+                  ],
+                  "text":"Contoso",
+                  "confidence":1
+                },
+                { 
+                  "boundingBox":[ 
+                    1.758,
+                    1.1349,
+                    2.6064,
+                    1.1349,
+                    2.6064,
+                    1.3534,
+                    1.758,
+                    1.3534
+                  ],
+                  "text":"Suites",
+                  "confidence":1
+                }
+              ]
+            },
+            ...
+          ]
+        }
+      ],
+      "pageResults":[ 
+        { 
+          "page":1,
+          "tables":[ 
+            { 
+              "rows":2,
+              "columns":6,
+              "cells":[ 
+                { 
+                  "rowIndex":0,
+                  "columnIndex":0,
+                  "text":"Invoice Number",
+                  "boundingBox":[ 
+                    0.5075,
+                    2.8088,
+                    1.9061,
+                    2.8088,
+                    1.9061,
+                    3.3219,
+                    0.5075,
+                    3.3219
+                  ],
+                  "elements":[ 
+                    "#/readResults/0/lines/7/words/0",
+                    "#/readResults/0/lines/7/words/1"
+                  ]
+                },
+                { 
+                  "rowIndex":0,
+                  "columnIndex":1,
+                  "text":"Invoice Date",
+                  "boundingBox":[ 
+                    1.9061,
+                    2.8088,
+                    3.3074,
+                    2.8088,
+                    3.3074,
+                    3.3219,
+                    1.9061,
+                    3.3219
+                  ],
+                  "elements":[ 
+                    "#/readResults/0/lines/8/words/0",
+                    "#/readResults/0/lines/8/words/1"
+                  ]
+                },
+                ...     
+              ]
+            }
+          ]
+        }
+      ],
+      "documentResults":[ 
+        { 
+          "docType":"Analyze",
+          "pageRange":[ 
+            1,
+            1
+          ],
+          "fields":{ 
+            "total":{ 
+              "type":"string",
+              "valueString":"$22,123.24",
+              "text":"$22,123.24",
+              "boundingBox":[ 
+                5.29,
+                3.41,
+                5.9750000000000009,
+                3.41,
+                5.9750000000000009,
+                3.54,
+                5.29,
+                3.54
+              ],
+              "page":1,
+              "confidence":1,
+              "elements":[ 
+                { 
+                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
+                }
+              ],
+              "fieldName":"total"
+            },
+            "invoice #":{ 
+              "type":"string",
+              "valueString":"7689302",
+              "text":"7689302",
+              "boundingBox":[ 
+                0.54,
+                3.41,
+                1.065,
+                3.41,
+                1.065,
+                3.515,
+                0.54,
+                3.515
+              ],
+              "page":1,
+              "confidence":1,
+              "elements":[ 
+                { 
+                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
+                }
+              ],
+              "fieldName":"invoice #"
+            },
+            "vat":{ 
+              "type":"string",
+              "valueString":"QR",
+              "text":"QR",
+              "boundingBox":[ 
+                6.2250000000000009,
+                3.41,
+                6.425,
+                3.41,
+                6.425,
+                3.52,
+                6.2250000000000009,
+                3.52
+              ],
+              "page":1,
+              "confidence":0.9839357733726502,
+              "elements":[ 
+                { 
+                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
+                }
+              ],
+              "fieldName":"vat"
+            },
+            ...
+          }
+        }
+      ]
+    },
+    "status":"succeeded",
+    "createdDateTime":"2019-11-12T21:26:19+00:00",
+    "lastUpdatedDateTime":"2019-11-12T21:27:27.0488571+00:00"
+}
+```
+
+## <a name="improve-results"></a>結果を改善する
+
+`"documentResults"` ノードの下で、キーと値形式の結果ごとに `"confidence"` 値を調べます。 また、`"readResults"` ノード内の信頼度スコアにも注目してください。こちらはレイアウト操作に対応しています。 レイアウト結果の信頼度は、キーと値の抽出結果の信頼度には影響しません。したがって両方を確認する必要があります。
+* レイアウト操作の信頼度スコアが低い場合は、入力ドキュメントの品質の改善を試みてください (「[入力の要件](../overview.md#input-requirements)」を参照)。
+* キーと値の抽出操作の信頼度スコアが低い場合は、分析対象となるドキュメントの種類が、トレーニング セットで使用されているドキュメントと同じであることを確認してください。 トレーニング セットに含まれるドキュメントの体裁にばらつきがある場合は、別々のフォルダーに分けて、バリエーションごとに 1 つのモデルをトレーニングすることを検討してください。
+
+### <a name="avoid-cluttered-labels"></a>ラベルが煩雑にならないようにする
+
+同じテキスト行の中で複数の異なるラベルを適用すると、それらのラベルが 1 つのフィールドに結合される場合があります。 たとえば、住所では、市区町村、都道府県、郵便番号をそれぞれ異なるフィールドとしてラベル付けすることが考えられますが、予測時にそれらのフィールドは別々に認識されません。
+
+Microsoft は、お客様にとってこれが不可欠なシナリオであると把握しており、将来の改善に向けて取り組んでいます。 現在、ユーザーの皆様には、散乱した複数のフィールドを 1 つのフィールドとしてラベル付けしておき、抽出結果の後処理で、それぞれの要素に分離することを推奨しています。
+
+## <a name="next-steps"></a>次のステップ
+
+このクイックスタートでは、Form Recognizer REST API と Python を使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 引き続き [API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)を参照して、Form Recognizer API についての理解を深めましょう。

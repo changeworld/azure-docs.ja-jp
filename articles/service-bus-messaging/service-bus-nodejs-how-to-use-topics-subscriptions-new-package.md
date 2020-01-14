@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js で Azure Service Bus のトピックとサブスクリプションを使用する方法
+title: Node.js で azure/service-bus のトピックとサブスクリプションを使用する
 description: クイック スタート:Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 160f9831a23ed16fc33ddbbb9b4e07a5627a3f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462133"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure/service-bus パッケージで使用する方法
 > [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
@@ -33,7 +33,7 @@ ms.locfileid: "73721668"
 - 操作するトピックとサブスクリプションがない場合は、[Azure portal を使用する Service Bus トピックおよびサブスクリプションの作成](service-bus-quickstart-topics-subscriptions-portal.md)に関する記事にある手順に従って、それらを作成します。 Service Bus インスタンスの接続文字列と、作成したトピックおよびサブスクリプションの名前をメモしておいてください。 サンプルでこれらの値を使用します。
 
 > [!NOTE]
-> - このチュートリアルでは、[Nodejs](https://nodejs.org/) を使用して、コピーおよび実行できるサンプルを操作します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ](../app-service/app-service-web-get-started-nodejs.md)に関するページ、または [Windows PowerShell を使用する Node.js クラウド サービス](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)に関するページを参照してください。
+> - このチュートリアルでは、コピーして [Nodejs](https://nodejs.org/) を使用して実行できるサンプルを扱います。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ](../app-service/app-service-web-get-started-nodejs.md)に関するページ、または [Windows PowerShell を使用する Node.js クラウド サービス](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)に関するページを参照してください。
 > - 新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージでは、トピックとサブスクリプションの作成がまだサポートされません。 ブログラムでそれらを作成する場合は、[@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) パッケージを使用してください。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージをインストールする
@@ -46,7 +46,7 @@ npm install @azure/service-bus
 ## <a name="send-messages-to-a-topic"></a>メッセージをトピックに送信する
 Service Bus トピックとのやりとりは、[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) クラスをインスタンス化することから始まります。 トピック クライアントを取得したら、送信側を作成し、その上で [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) または [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) メソッドを使用してメッセージを送信できます。
 
-1. [Visual Studio Code](https://code.visualstudio.com/) など、好みのエディターを開きます
+1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます
 2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、トピックに 10 件のメッセージが送信されます。
 
     ```javascript
@@ -96,7 +96,7 @@ Service Bus トピックでサポートされているメッセージの最大�
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 Service Bus サブスクリプションとのやりとりは、[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) クラスをインスタンス化することから始まります。 サブスクリプション クライアントを取得したら、受信側を作成し、[receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) または [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) メソッドを使用して、メッセージを受信できます。
 
-1. [Visual Studio Code](https://code.visualstudio.com/) など、好みのエディターを開きます
+1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます
 2. `recieve.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、サブスクリプションから 10 件のメッセージを受信してみます。 受信する実際の数は、サブスクリプションのメッセージの数とネットワーク待機時間によって異なります。
 
     ```javascript

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430818"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -54,6 +54,10 @@ CLI をローカルにインストールして使用する場合、この記事�
 * ロード バランサー SKU は、AKS クラスターの作成時にのみ定義できます。 AKS クラスターが作成された後にロード バランサー SKU を変更することはできません。
 * 1 つのクラスターで使用できるロード バランサー SKU (Basic または Standard) の種類は 1 つのみです。
 * *Standard* SKU ロード バランサーでは、*Standard* SKU IP アドレスのみがサポートされています。
+
+## <a name="use-the-standard-sku-load-balancer"></a>*Standard* SKU のロード バランサーを使用する
+
+AKS クラスターを作成すると、既定では、そのクラスターでサービスを実行するときに、*Standard* SKU ロード バランサーが使用されます。 たとえば、[Azure CLI を使用したクイックスタート][aks-quickstart-cli]では、*Standard* SKU ロード バランサーを使用してサンプル アプリケーションをデプロイしています。 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>ロード バランサーを内部として構成する
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 この出力例では、*AllocatedOutboundPorts* は 0 です。 この *AllocatedOutboundPorts* の値は、バックエンド プール サイズに基づいて SNAT ポートの割り当てが自動割り当てに戻ることを意味します。 詳細については、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules]に関するページと「[Azure のアウトバウンド接続][azure-lb-outbound-connections]」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="restrict-access-to-specific-ip-ranges"></a>特定の IP 範囲へのアクセスを制限
+
+既定では、ロード バランサーの仮想ネットワークに関連付けられているネットワーク セキュリティ グループ (NSG) には、すべての受信外部トラフィックを許可する規則があります。 この規則を更新して、受信トラフィックに特定の IP 範囲のみを許可することができます。 次のマニフェストでは *loadBalancerSourceRanges* を使用して、受信外部トラフィックの新しい IP 範囲を指定します。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+上の例では、*MY_EXTERNAL_IP_RANGE* 範囲からの外部トラフィックのみを許可するように規則を更新します。 この方法を使用してロード バランサー サービスへのアクセスを制限する方法の詳細については、[Kubernetes のドキュメント][kubernetes-cloud-provider-firewall]を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 [Kubernetes サービスのドキュメント][kubernetes-services]で Kubernetes サービスについて学習する。
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

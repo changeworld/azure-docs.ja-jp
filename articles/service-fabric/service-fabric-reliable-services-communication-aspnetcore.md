@@ -1,25 +1,16 @@
 ---
-title: ASP.NET Core によるサービス通信 | Microsoft Docs
-description: ステートレス リライアブル サービスおよびステートフル リライアブル サービスで ASP.NET Core を使用する方法について説明します。
-services: service-fabric
-documentationcenter: .net
+title: ASP.NET Core によるサービス通信
+description: ステートレスおよびステートフルな Azure Service Fabric Reliable Services アプリケーションで ASP.NET Core を使用する方法について説明します。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: b2a1b1426af3e72756a7a85a173ef4a2a5671b02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900194"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639634"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -509,7 +500,7 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 | Web サーバー | Kestrel | 内部のステートレス サービスに HTTP.sys を使用することもできますが、サーバーで複数のサービス インスタンスがホストを共有できるようにするには、Kestrel が推奨されます。  |
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |
-| InstanceCount | 任意 | インスタンス数の設定は、サービスの実行に必要な任意の値に設定することができます。 |
+| InstanceCount | any | インスタンス数の設定は、サービスの実行に必要な任意の値に設定することができます。 |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>内部専用のステートフル ASP.NET Core サービス
 クラスター内からのみ呼び出されるステートフル サービスでは、複数のサービス間の協調動作を保証するために、動的に割り当てられたポートを使用する必要があります。 次の構成をお勧めします。
@@ -520,7 +511,7 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Visual Studio による Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
 

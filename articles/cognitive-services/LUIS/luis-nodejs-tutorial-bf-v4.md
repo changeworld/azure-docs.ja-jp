@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Language Understanding ボット Node.js v4
 titleSuffix: Azure Cognitive Services
-description: Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットは、人事アプリを使用して、ボット ソリューションをすばやく実装します。 このボットは、Bot Framework バージョン 4 と Azure Web アプリ ボットで作成します。
+description: このチュートリアルでは、Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットは、人事アプリを使用して、ボット ソリューションをすばやく実装します。 このボットは、Bot Framework バージョン 4 と Azure Web アプリ ボットで作成します。
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448009"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>チュートリアル:Node.js で Language Understanding に対応した Web アプリ ボットを使用する 
 
@@ -46,10 +46,10 @@ Node.js を使用して、Language Understanding (LUIS) と統合されたチャ
 
 1. **[ボット サービス]** で、必要な情報を指定します。
 
-    |Setting|目的|推奨される設定|
+    |設定|目的|推奨される設定|
     |--|--|--|
     |ボット名|リソース名|`luis-nodejs-bot-` + `<your-name>` (例: `luis-nodejs-bot-johnsmith`)|
-    |Subscription|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
+    |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
     |Resource group|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-nodejs-bot-resource-group` という名前を付けます。|
     |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
     |Pricing tier|サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
@@ -62,10 +62,10 @@ Node.js を使用して、Language Understanding (LUIS) と統合されたチャ
 
 1. **[ボット テンプレート]** で、次の項目を選択して、それらの設定の下にある **[選択]** ボタンを選択します。
 
-    |Setting|目的|選択肢番号|
+    |設定|目的|[選択]|
     |--|--|--|
     |SDK バージョン|Bot Framework のバージョン|**SDK v4**|
-    |SDK 言語|ボットのプログラミング言語|**Node.JS**|
+    |SDK 言語|ボットのプログラミング言語|**Node.js**|
     |ボット|ボットの種類|**基本ボット**|
     
 1. **作成** を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-nodejs-bot-XXXX` という LUIS アプリが作成されます。 この名前は、Azure Bot Service のアプリ名に基づきます。
@@ -216,7 +216,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 会話型ボットのある他の[サンプル](https://github.com/microsoft/botframework-solutions)を確認してください。 
 

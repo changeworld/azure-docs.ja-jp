@@ -4,12 +4,12 @@ description: Azure Blockchain Service の概要です
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387379"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -19,7 +19,7 @@ Azure Blockchain Service は完全に管理された台帳サービスであり�
 * 組み込みのコンソーシアム管理
 * 使い慣れた開発ツールによるスマート コントラクトの開発
 
-Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.jpmorgan.com/Quorum) 台帳がサポートされています。
+Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.goquorum.com/) 台帳がサポートされています。
 
 これらの機能は、ほとんど管理を必要とせず、いずれも追加費用なしで利用することができます。 仮想マシンとインフラストラクチャの管理への時間とリソースの割り当てではなく、アプリの開発とビジネス ロジックに集中できます。 さらに、オープンソースのツールとプラットフォームを自由に選んでアプリケーションの開発を続けることができるので、新しいスキルを身に付けなくてもソリューションを提供できます。
 
@@ -67,12 +67,19 @@ Azure Blockchain Service の Blockchain Data Manager は、Azure Blockchain Serv
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 
-ヘルプが必要な場合またはフィードバックがある場合
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
 
-* [Azure Blockchain ブログ](https://azure.microsoft.com/blog/topics/blockchain/)、[Microsoft Tech コミュニティ](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)、および [Azure Blockchain フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)を利用してください。
-* フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service) でエントリを作成します。
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)でアイデアに投票してください。
 
-## <a name="next-steps"></a>次の手順
+### <a name="community-support"></a>コミュニティ サポート
+
+Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
+
+* [Azure Blockchain MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
+
+## <a name="next-steps"></a>次のステップ
 
 まず最初に、クイック スタートを試すか、以下のリソースで詳細を確認してください。
 * [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)または [Azure CLI を使用したブロックチェーン メンバーの作成](create-member-cli.md)に関する記事

@@ -1,7 +1,7 @@
 ---
-title: クイック スタート - Azure Portal で仮想マシン スケール セットを作成する | Microsoft Docs
-description: Azure Portal で仮想マシン スケール セットをすばやく作成する方法を説明します
-services: virtual-machine-scale-sets
+title: クイックスタート - Azure portal で仮想マシン スケール セットを作成する
+description: Azure portal を使用して仮想マシン スケール セットをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351137"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
@@ -38,11 +38,11 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
 1. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果の **[マーケットプレース]** で、 **[ロード バランサー]** を選択します。
 1. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。
 
-    | Setting                 | 値   |
+    | 設定                 | 値   |
     | ---| ---|
-    | Subscription  | サブスクリプションを選択します。    |    
+    | サブスクリプション  | サブスクリプションを選択します。    |    
     | Resource group | **[新規作成]** を選択し、テキスト ボックスに「*myVMSSResourceGroup*」と入力します。|
-    | 名前           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | リージョン         | **[米国東部]** を選択します。       |
     | 種類          | **[パブリック]** を選択します。       |
     | SKU           | **[Standard]** を選択します。       |
@@ -80,11 +80,11 @@ Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu�
 1. 検証に合格したら、 **[作成]** を選択してスケール セットをデプロイします。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 必要がなくなったら、リソース グループ、スケール セット、およびすべての関連リソースを削除します。 それを行うには、スケール セットのリソース グループを選択してから **[削除]** を選択します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Azure Portal で基本的なスケール セットを作成しました。 さらに学習するには、Azure 仮想マシン スケール セットを作成および管理する方法についてのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

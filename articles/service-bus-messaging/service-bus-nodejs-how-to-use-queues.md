@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js で Azure Service Bus キューを使用する
+title: Node.js で azure-sb パッケージを使用して Azure Service Bus キューを使用する
 description: クイック スタート:Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462172"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
 
@@ -191,7 +191,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 キューの詳細については、次のリソースを参照してください。
 
 * [キュー、トピック、サブスクリプション][Queues, topics, and subscriptions]

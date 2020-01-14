@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446812"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
-Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech サービスの各種機能を利用することができます。 現在、これらの SDK は**音声テキスト変換**、**テキスト音声変換**、**音声翻訳**、**意図認識**、および **Bot Framework の Direct Line Speech チャネル**へのアクセスを提供しています。 機能やサポートされているプラットフォームについての概要は、[エントリ ページ](https://aka.ms/csspeech) ドキュメントで確認できます。
+Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech サービスの各種機能を利用することができます。 現在、これらの SDK は**音声テキスト変換**、**テキスト音声変換**、**音声翻訳**、**意図認識**、および **Bot Framework の Direct Line Speech チャネル**へのアクセスを提供しています。
+
+Speech SDK を使用することにより、マイクからの音声のキャプチャや、ストリームからの読み取り、ストレージからの音声ファイルへのアクセスを簡単に行うことができます。 Speech SDK では、音声認識用として、WAV/PCM 16 ビット、16 kHz/8 kHz、単一チャネル オーディオがサポートされています。 [音声変換 REST エンドポイント](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) や [バッチ文字起こしサービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)を使用したオーディオ形式もサポートされています。
+
+機能やサポートされているプラットフォームについての概要は、[エントリ ページ](https://aka.ms/csspeech) ドキュメントで確認できます。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,9 +35,9 @@ Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフ
 
 Windows の場合、次の言語がサポートされています。
 
-* C# (UWP と .NET)、C++: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 パッケージには、32 ビットおよび 64 ビットのクライアント ライブラリとマネージ (.NET) ライブラリが含まれています。 この SDK は NuGet を使用して Visual Studio でインストールできます。 **Microsoft.CognitiveServices.Speech** を検索してください。
+* C# (UWP と .NET)、C++: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 パッケージには、32 ビットおよび 64 ビットのクライアント ライブラリとマネージ (.NET) ライブラリが含まれています。 SDK は、NuGet の [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) を使用して Visual Studio にインストールできます。
 
-* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` を参照します。
+* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` を参照します。
 
 ### <a name="linux"></a>Linux
 
@@ -62,14 +66,14 @@ sudo apt-get install libssl1.0.2 libasound2
 * C#:Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 SDK を参照するには、プロジェクトに次のパッケージ参照を追加します。
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
 * Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` を参照します。
 
 * C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
 
-  |Path|説明|
+  |Path|[説明]|
   |-|-|
   |`license.md`|ライセンス|
   |`ThirdPartyNotices.md`|サード パーティに関する通知|
@@ -101,7 +105,7 @@ Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあり�
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 * [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

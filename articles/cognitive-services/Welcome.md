@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 081951e2e77c7fdd077dc92fe0368423db85f641
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e6f074dd6748f58a86a6ac8166ca0ee858926975
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379795"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -36,10 +36,14 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Services")|音声サービスは、音声対応の機能をアプリケーションに追加します。|
+|[Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech サービス")|Speech サービスは、音声対応の機能をアプリケーションに追加します。|
 |[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (プレビュー)|Speaker Recognition API は、話者識別と検証のアルゴリズムを提供します。|
 |[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (廃止)|Bing Speech API は、アプリケーションに音声対応の機能を作成する簡単な方法を提供します。|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (廃止)|Translator Speech は、機械翻訳サービスです。|
+
+> [!NOTE]
+> [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
+
 
 ## <a name="language-apis"></a>言語 API
 
@@ -49,7 +53,7 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。|
 |[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")|Text Analytics は、未加工のテキストに、センチメント分析、キー フレーズ抽出、および言語検出のための自然言語処理を提供します。|
 |[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator Text は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
-|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。|
+
 
 ## <a name="search-apis"></a>Search API
 
@@ -84,7 +88,7 @@ Microsoft Account にサインインすると、[個人用サブスクリプシ�
 
 ## <a name="upgrade-to-unlock-limits"></a>アップグレードして制限を解除する
 
-すべての API には、使用量とスループットの制限が設けられた無料試用プランが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "oオファリングと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
+すべての API には、使用量とスループットの制限が設けられた無料試用プランが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "プランと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -96,6 +100,10 @@ Cognitive Services の API は、Microsoft マネージド データ センタ�
 
  Cognitive Services では、さまざまなカルチャ言語がサービス レベルでサポートされています。 各 API で利用可能な言語は、[サポート対象の言語一覧](language-support.md)に関するページで検索できます。
 
+## <a name="securing-resources"></a>リソースのセキュリティ
+
+Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-virtual-networks.md)、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](authentication.md)を含む多層型のセキュリティ モデルが採用されています。
+
 ## <a name="container-support"></a>コンテナー サポート
 
  Cognitive Services には、Azure クラウドまたはオンプレミスへのデプロイ用にコンテナーが用意されています。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md)に関するページを参照してください。
@@ -106,13 +114,12 @@ Cognitive Services には、CSA STAR Certification、FedRAMP Moderate、HIPAA BA
 
 自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)できます。
 
-プライバシーやデータ管理は[セキュリティ センター](https://servicetrust.microsoft.com/)で確認できます。
+プライバシーやデータ管理は[セキュリティ センター](https://servicetrust.microsoft.com/)..mdで確認できます。
 
 ## <a name="support"></a>サポート
 
-* サポートおよび技術的な質問については、 [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-cognitive) に投稿してください
-* フィードバックや機能要求については、[UserVoice](https://cognitive.uservoice.com/) をご覧ください
+Cognitive Services には、いくつかの[サポート オプション](cognitive-services-support-options.md)が用意されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Cognitive Services アカウントを作成する](cognitive-services-apis-create-account.md)

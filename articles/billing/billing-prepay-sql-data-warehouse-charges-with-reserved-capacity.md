@@ -1,5 +1,5 @@
 ---
-title: Azure の容量が予約された SQL Data Warehouse 料金のコストを節約する
+title: Azure の容量予約で SQL Data Warehouse 料金を節約する
 description: コスト削減のために容量が予約された SQL Data Warehouse 料金のコストを節約する方法について説明します。
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 75e008a6a19baacec40a809530e3a1f624a33f2b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f6a6b37a8250fd794e7810f7da5a567e14c8bc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388722"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金のコストを節約する
 
@@ -43,13 +43,13 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>SQL Data Warehouse の予約容量を購入する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
    - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
    - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 [スコープ] リストを使用して、サブスクリプション スコープを選択します。
-   - **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
+   - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
    - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
    - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
    - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
@@ -71,7 +71,7 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 予約割引の Azure SQL Data Warehouse への適用方法の詳細については、[Azure SQL Data Warehouse への予約割引の適用方法](billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md)に関する記事を参照してください。
 

@@ -1,21 +1,21 @@
 ---
-title: バッチ検出と Power BI を使用して異常を視覚化する
+title: チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API と Power BI を使用して、時系列データ全体を通しての異常を視覚化します。
+description: Anomaly Detector API と Power BI を使用して、時系列データ全体を通しての異常を視覚化する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448849"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -172,7 +172,7 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 
 ![新しいクイック メジャー画面のイメージ](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >[Azure Databricks を使用した異常検出のストリーム配信](anomaly-detection-streaming-databricks.md)

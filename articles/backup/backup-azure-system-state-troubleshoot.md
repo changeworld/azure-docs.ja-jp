@@ -2,14 +2,14 @@
 title: システム状態のバックアップをトラブルシューティングする
 description: この記事では、オンプレミスの Windows Server のシステム状態のバックアップに関する問題をトラブルシューティングする方法について説明します。
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 116f8f40193ea276c6150452b0aa6f2d2ce5bc6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172623"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665039"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -29,8 +29,8 @@ ms.locfileid: "74172623"
 - [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
 - [サーバーに .Net Framework バージョン 4.5.2 以降がインストールされていることを確認します](https://www.microsoft.com/download/details.aspx?id=30653)<br>
-- コンテナーに**サーバーを再登録**する場合は、次のことを行います。 <br>
-  - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します <br>
+- コンテナーに**サーバーを再登録する**場合は、次のことを行います。 <br>
+  - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。 <br>
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
 - オフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
 - [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://aka.ms/AB-AA4dwtr)
@@ -38,7 +38,7 @@ ms.locfileid: "74172623"
 ### <a name="limitation"></a>制限事項
 
 - Microsoft では、システム状態の回復を使用して別のハードウェアに回復することはお勧めしません。
-- 現在、システム状態のバックアップでは "オンプレミス" の Windows サーバーはサポートされていますが、この機能は Azure VM には使用できません。
+- 現在、システム状態のバックアップでは、"オンプレミス" の Windows サーバーがサポートされています。 この機能は、Azure VM では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -82,7 +82,7 @@ PowerShell を使用して Windows Server バックアップをインストー�
 5. **[確認]** タブで、 **[インストール]** をクリックして、インストール プロセスを開始します。
 6. **[結果]** タブに、Windows Server バックアップ機能が Windows Server に正常にインストールされていることが示されます。
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>システム ボリューム情報のアクセス許可
 
@@ -111,7 +111,7 @@ Windows Server バックアップの状態を検証するには、以下の手�
     > [!WARNING]
     > Get-WBJob:用語 'Get-WBJob' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されません。 名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してください。
 
-    - このエラーで失敗した場合は、手順 1 の前提条件で説明したように、サーバー コンピューター上に Windows Server バックアップ機能を再インストールます。
+    - このエラーで失敗した場合は、前提条件の手順 1 で説明したように、サーバー コンピューター上に Windows Server バックアップ機能を再インストールます。
 
   - 管理者特権でのコマンド プロンプトから次のコマンドを実行して、WSB バックアップが正しく動作していることを確認します。
 
@@ -131,7 +131,7 @@ Windows Server バックアップの状態を検証するには、以下の手�
 
 | 症状 | 原因 | 解決策
 | -- | -- | --
-| - MARS エージェントが次のエラー メッセージで失敗する:"VSS エラーで WSB ジョブが失敗しました。 エラーを解決するには、VSS イベント ログを確認してください"<br/><br/> - VSS アプリケーション イベント ログに次のエラー ログが存在する:"A VSS writer has rejected an event with error 0x800423f2, the writer's timeout expired between the Freeze and Thaw events" (VSS ライターでイベントがエラー 0x800423f2 で拒否されています。ライターのタイムアウトは Freeze イベントと Thaw イベントの間に発生しました)| コンピューターで CPU とメモリ リソースが不足しているため、VSS ライターを時間内に完了できません <br/><br/> 別のバックアップ ソフトウェアが既に VSS ライターを使用しています。その結果、このバックアップに対するスナップショット操作を完了できませんでした | システムの CPU/メモリが解放されるまで待つか、メモリ/CPU の使用量が多すぎるプロセスを中止して操作をやり直します <br/><br/>  進行中のバックアップが完了するまで待つか、コンピューター上で後でバックアップが実行されていないときに操作をやり直します
+| - MARS エージェントが次のエラー メッセージで失敗する:"VSS エラーで WSB ジョブが失敗しました。 エラーを解決するには、VSS イベント ログを確認してください"<br/><br/> - VSS アプリケーション イベント ログに次のエラー ログが存在する:"A VSS writer has rejected an event with error 0x800423f2, the writer's timeout expired between the Freeze and Thaw events" (VSS ライターでイベントがエラー 0x800423f2 で拒否されています。ライターのタイムアウトは Freeze イベントと Thaw イベントの間に発生しました)| コンピューターで CPU とメモリ リソースが不足しているため、VSS ライターを時間内に完了できません <br/><br/> 別のバックアップ ソフトウェアが既に VSS ライターを使用しています。その結果、このバックアップに対するスナップショット操作を完了できませんでした | システムの CPU/メモリが解放されるまで待つか、メモリ/CPU の使用量が多すぎるプロセスを中止して操作をやり直します。 <br/><br/>  進行中のバックアップが完了するまで待つか、コンピューター上で後でバックアップが実行されていないときに操作をやり直します。
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>シャドウ コピーを拡大するためのディスク領域が不足している
 
@@ -145,6 +145,6 @@ Windows Server バックアップの状態を検証するには、以下の手�
 | -- | --
 | MARS エージェントが次のエラー メッセージで失敗する:"System state backup failed as the EFI system partition is locked. This can be due to system partition access by a third-party security or back up software" (EFI システム パーティションがロックされているため、システム状態のバックアップが失敗しました。これは、サードパーティのセキュリティまたはバックアップ ソフトウェアによるシステム パーティションへのアクセスが原因である可能性があります) | - 問題の原因がサードパーティのセキュリティ ソフトウェアの場合は、MARS エージェントを許可できるようにウイルス対策ベンダーに連絡する必要があります <br/><br/> - サードパーティのバックアップ ソフトウェアが実行されている場合は、それが終了するまで待機した後、バックアップを再試行します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Resource Manager デプロイでの Windows システムの状態の詳細については、[Windows Server のシステム状態のバックアップ](backup-azure-system-state.md)に関する記事を参照してください。

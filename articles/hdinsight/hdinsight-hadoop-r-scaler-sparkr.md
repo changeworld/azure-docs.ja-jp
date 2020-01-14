@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077101"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500077"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -21,7 +21,7 @@ ms.locfileid: "71077101"
 
 どちらのパッケージも Apache Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
-この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
+この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop) にあります。
 
 これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する ML Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。
 
@@ -31,7 +31,7 @@ ms.locfileid: "71077101"
 
 フライト データは[米国政府のアーカイブ](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードできます。 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) から、zip ファイルとしても入手可能です。
 
-気象データについては、[米国海洋大気庁のリポジトリ](https://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。 
+気象データについては、[米国海洋大気庁のリポジトリ](https://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。
 
 ## <a name="setting-up-the-spark-environment"></a>Spark 環境のセットアップ
 
@@ -459,7 +459,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>ロジスティック回帰モデルのトレーニングとテスト
 
-以上でモデルを構築する準備が整いました。 気象データが到着時刻の遅延に及ぼす影響を調べるために、ScaleR のロジスティック回帰ルーチンを使います。 発着空港における気象の条件が 15 分を超える到着遅延に関係しているかどうかを、ロジスティック回帰ルーチンによってモデル化します。
+さて、以上でモデルを構築する準備が整いました。 気象データが到着時刻の遅延に及ぼす影響を調べるために、ScaleR のロジスティック回帰ルーチンを使います。 発着空港における気象の条件が 15 分を超える到着遅延に関係しているかどうかを、ロジスティック回帰ルーチンによってモデル化します。
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 

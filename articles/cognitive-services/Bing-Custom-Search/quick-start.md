@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:最初の Bing Custom Search インスタンスの作成 | Microsoft Docs
+title: クイック スタート:最初の Bing Custom Search インスタンスの作成
 titleSuffix: Azure Cognitive Services
-description: この記事では、自分で定義したドメインや Web ページを検索できるカスタム Bing インスタンスを作成します。
+description: このクイックスタートでは、自分で定義したドメインや Web ページを検索できるカスタム Bing インスタンスを作成します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384748"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート:最初の Bing Custom Search インスタンスの作成
 
@@ -49,7 +49,7 @@ Bing Custom Search インスタンスを作成するには:
 6.  **[エンドポイント]** の下の **[実稼働]** タブをクリックし、自分の**カスタム構成 ID** をコピーします。 Custom Search API を呼び出すには、この ID が必要となります。実際の呼び出しの `customconfig=` クエリ パラメーターにこの ID を追加します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クイック スタート:Bing Custom Search エンドポイントを呼び出す](./call-endpoint-csharp.md)

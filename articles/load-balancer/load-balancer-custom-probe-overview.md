@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077074"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690404"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
-Azure Load Balancer で負荷分散規則を使用する場合は、Load Balancer でバックエンド エンドポイントの状態を検出できるように、正常性プローブを指定する必要があります。  正常性プローブの構成とプローブの応答によって、新しいフローを受信するバックエンド プール インスタンスが決まります。 正常性プローブを使用して、バックエンド エンドポイント上のアプリケーションの障害を検出することができます。 さらに、正常性プローブに対するカスタム応答を生成し、フロー制御用の正常性プローブを使用して、負荷または計画的ダウンタイムを管理できます。 正常性プローブが失敗した場合、Load Balancer は、それぞれの異常なインスタンスへの新しいフローの送信を停止します。
+Azure Load Balancer で負荷分散規則を使用する場合は、Load Balancer でバックエンド エンドポイントの状態を検出できるように、正常性プローブを指定する必要があります。  正常性プローブの構成とプローブの応答によって、新しいフローを受信するバックエンド プール インスタンスが決まります。 正常性プローブを使用して、バックエンド エンドポイント上のアプリケーションの障害を検出することができます。 さらに、正常性プローブに対するカスタム応答を生成し、フロー制御用の正常性プローブを使用して、負荷または計画的ダウンタイムを管理できます。 正常性プローブが失敗した場合、Load Balancer は、それぞれの異常なインスタンスへの新しいフローの送信を停止します。 送信接続に影響はなく、受信接続のみが影響を受けます。
 
 正常性プローブでは、複数のプロトコルがサポートされます。 特定の正常性プローブ プロトコルを利用できるどうかは、Load Balancer SKU によって異なります。  さらに、次の表で示すように、サービスの動作も Load Balancer SKU によって異なります。
 
@@ -49,8 +49,8 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 - プローブのポート
 - HTTP(S) プローブの使用時に HTTP GET に対して使用する HTTP パス
 
-> [!NOTE]
-> Azure PowerShell、Azure CLI、テンプレート、または API を使用するとき、プローブ定義は必須ではなく、チェックボックスはオフになります。 プローブ検証テストは、Azure portal を使用するときにのみ行われます。
+>[!NOTE]
+>Azure PowerShell、Azure CLI、テンプレート、または API を使用するとき、プローブ定義は必須ではなく、チェックボックスはオフになります。 プローブ検証テストは、Azure portal を使用するときにのみ行われます。
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>アプリケーションの信号、信号の検出、プラットフォームの対応の概要
 
@@ -120,6 +120,9 @@ TCP プローブは、定義済みのポートに 3 ウェイ オープン TCP �
 HTTP プローブと HTTPS プローブは TCP プローブに基づいており、パスが指定された HTTP GET を発行します。 これら両方のプローブは、HTTP GET に対して相対パスをサポートします。 HTTPS プローブは、トランスポート層セキュリティ (TLS、旧称は SSL) ラッパーがある点を除き、HTTP プローブと同じです。 タイムアウト期間内にインスタンスが HTTP ステータス 200 で応答すると、正常性プローブはアップとしてマークされます。  既定では、構成された正常性プローブ ポートのチェックが、正常性プローブによって 15 秒ごとに試行されます。 最小のプローブ間隔は 5 秒です。 すべての間隔の合計期間が 120 秒を超えることはできません。
 
 プローブ ポートがサービス自体に対するリスナーでもある場合は、HTTP/HTTPS プローブは、ロード バランサーのローテーションからインスタンスを削除するお客様独自のロジックを実装するのにも役立ちます。 たとえば、CPU が 90% を超え、200 以外の HTTP ステータスが返される場合は、そのインスタンスが削除されるようにすることができます。 
+
+> [!NOTE] 
+> HTTPS プローブでは、チェーン全体で SHA256 の最小署名ハッシュを持つ証明書を使用する必要があります。
 
 Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は、Web サイトの自動監視も実現します。 Web サイトのコードで障害が発生すると、200 以外の状態がLoad Balancer プローブに返ります。
 
@@ -251,7 +254,7 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 - HTTPS プローブは、クライアント証明書との相互認証をサポートしていません。
 - TCP タイムスタンプが有効な場合は正常性プローブが失敗すると想定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
 - [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](load-balancer-get-started-internet-arm-ps.md)

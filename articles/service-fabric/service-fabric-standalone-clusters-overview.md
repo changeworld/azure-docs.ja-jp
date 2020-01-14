@@ -1,25 +1,16 @@
 ---
-title: スタンドアロン Service Fabric クラスターの概要 | Microsoft Docs
+title: スタンドアロン Service Fabric クラスターの概要
 description: Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 5997526098980220014d9bb2d47efe6c9aedee3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465641"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要
 
@@ -51,7 +42,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 
 詳細については、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」を参照してください。
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
 アプリケーションの要求は、時間の経過と共に変化します。 増加したアプリケーション ワークロードやネットワーク トラフィックに対処するためにクラスター リソースを増やしたり、需要が低下したときにクラスター リソースを減らしたりする必要が生じる場合があります。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。 クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
@@ -59,18 +50,18 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 
 ## <a name="upgrading"></a>アップグレード中
 
-スタンドアロン クラスターは、ユーザーが完全に所有するリソースです。 基になる OS への修正プログラムの適用とファブリック アップグレードの開始はユーザーの責任です。 Microsoft から新しいバージョンがリリースされたときに自動ランタイム アップグレードを受信するようにクラスターを設定できます。または、目的のサポートされているランタイム バージョンを選択できます。 ファブリックのアップグレードに加え、OS の修正プログラムを適用したり、証明書やアプリケーション ポートなどのクラスター構成を更新したりすることもできます。 
+スタンドアロン クラスターは、ユーザーが完全に所有するリソースです。 基になる OS への修正プログラムの適用とファブリック アップグレードの開始はユーザーの責任です。 クラスターは、新しいバージョンのランタイムが Microsoft からリリースされたときに自動アップグレードを適用するように設定できます。また、目的のサポートされているランタイム バージョンを選択するように設定することもできます。 ファブリックのアップグレードに加え、OS の修正プログラムを適用したり、証明書やアプリケーション ポートなどのクラスター構成を更新したりすることもできます。 
 
 詳細については、[スタンドアロン クラスターのアップグレード](service-fabric-cluster-upgrade-standalone.md)に関するページを参照してください。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます (Linux はまだサポートされていません)。
 
 * Windows Server 2012 R2
 * Windows Server 2016 
 * Windows Server 2019
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スタンドアロン クラスターの[セキュリティ保護](service-fabric-cluster-security.md)、[スケーリング](service-fabric-cluster-scaling-standalone.md)、および[アップグレード](service-fabric-cluster-upgrade-standalone.md)について詳細を確認します。
 
 [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

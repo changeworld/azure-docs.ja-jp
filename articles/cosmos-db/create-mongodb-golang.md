@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
+title: Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用したコンソール アプリ
 description: 記載されている Golang のコード サンプルを使用すると、Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができます。
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755113"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441947"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 
@@ -212,7 +212,7 @@ if err != nil {
 }
 ```
     
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 1. Golang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が、GOPATH ( **[ファイル]** 、 **[設定]** 、 **[Go]** 、 **[GOPATH]** にあります) に含まれていることを確認します。 
 2. ドキュメントを削除する行 (103 から 107 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
@@ -242,11 +242,11 @@ Azure Portal に戻り、データ エクスプローラーでドキュメント
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Cosmos アカウントを作成して、Golang アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 

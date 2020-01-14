@@ -1,5 +1,5 @@
 ---
-title: Red Hat の予約プラン割引と使用状況を理解する - Azure | Microsoft Docs
+title: Red Hat 予約プラン割引 - Azure
 description: Red Hat プランの割引が仮想マシン上の Red Hat ソフトウェアにどのように適用されるかを学習します。
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
-ms.openlocfilehash: 0ac7425ed695d7ceac134e29b20cd12b01545239
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7af9f6ae0c274f38798d96dd9228a68ce709686c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388450"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Red Hat Linux Enterprise ソフトウェアの予約プラン割引が Azure に適用されるしくみについて説明します
 
@@ -154,7 +154,7 @@ Azure portal マーケットプレース名:
 |96 vCPU VM ライセンス|b13895fc-0d06-4de9-b860-627c471cd247|2.166666667||
 |128 vCPU VM ライセンス|6e67ac0b-19d3-4289-96df-05d0093d4b3b|2.166666667| M128ms|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 予約について詳しくは、次の記事を参照してください。
 

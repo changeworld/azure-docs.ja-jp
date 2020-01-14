@@ -3,21 +3,17 @@ title: Azure の使用状況と料金の表示とダウンロード
 description: Azure の毎日の使用量と料金をダウンロードまたは表示する方法について説明します。
 keywords: 使用量の請求, 利用料金, 使用量のダウンロード, 使用量の表示, Azure 請求書, Azure 使用量
 author: bandersmsft
-manager: jureid
+ms.author: banders
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.author: banders
-ms.openlocfilehash: dcf4e3b9d85909c8f1d149c9d1940a6755b431a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/03/2020
+ms.openlocfilehash: dbb7956bf58d6b997f782d8f88e1eeaf19d6ade8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224003"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665098"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -27,7 +23,7 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portal から利用状況をダウンロードする (.csv)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. "*コスト管理 + 請求*" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-download-azure-usage/portal-cm-billing-search.png)
@@ -35,14 +31,14 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
 1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする使用量に対応する請求期間の行を探します。
-1. 右側にあるダウンロード アイコンまたは省略記号 (`...`) をクリックします。
-1. ダウンロード メニューから **[Azure の利用状況と請求金額をダウンロードする]** を選択します。
+1. 右側にある**ダウンロード アイコン**または省略記号 (`...`) を選択します。
+1. 右側に [ダウンロード] ペインが開きます。 **[使用量の詳細]** セクションから **[ダウンロード]** を選択します。
 
 ## <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
 
 EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. "*コスト管理 + 請求*" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-download-azure-usage/portal-cm-billing-search.png)
@@ -54,7 +50,7 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月度累計使用量をダウンロードすることができます。 これらの料金はまだ請求されていません。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. "*コスト管理 + 請求*" を検索します。
 3. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
 4. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。
@@ -69,7 +65,7 @@ Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 請求書および使用状況の詳細については、以下を参照してください。
 
@@ -78,7 +74,7 @@ Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月�
 - [Microsoft Azure の請求書の表示とダウンロード](billing-download-azure-invoice.md)
 - [組織の Azure の価格の表示とダウンロード](billing-ea-pricing.md)
 
-Microsoft 顧客契約を結んでいる場合は、次のページを参照してください。
+Microsoft 顧客契約を結んでいる場合は、以下を参照してください。
 
 - [Microsoft 顧客契約での Azure の詳細な使用状況の用語を理解する](billing-mca-understand-your-usage.md)
 - [Microsoft 顧客契約の請求書での料金を理解する](billing-mca-understand-your-bill.md)

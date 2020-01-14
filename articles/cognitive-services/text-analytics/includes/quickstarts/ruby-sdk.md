@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446293"
 ---
 [リファレンスのドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [パッケージ (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [コード サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ Ruby ファイルに、次のパッケージをインポートします。
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-自分のリソースの Azure エンドポイントおよびキー用の変数を `TEXT_ANALYTICS_ENDPOINT` および `TEXT_ANALYTICS_SUBSCRIPTION_KEY` という名前で作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。 
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>オブジェクト モデル 
 
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-このクラスでは、クライアントを認証するために `initialize` という関数が作成されます。 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` および `TEXT_ANALYTICS_ENDPOINT` 環境変数を使用します。 
+このクラスに、キーとエンドポイントを使用してクライアントを認証する `initialize` という関数を作成します。 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 

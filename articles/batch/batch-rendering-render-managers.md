@@ -1,18 +1,18 @@
 ---
 title: レンダー マネージャーのサポート - Azure Batch
-description: Azure Batch のレンダー マネージャーの統合を使用してレンダリングに Azure を使用する
+description: Azure Batch レンダー マネージャーの統合 一般的なレンダー マネージャーのビルトイン サポートまたはアドオンについて説明します。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449678"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>レンダー ファーム マネージャーで Azure Batch を使用する
 
@@ -46,6 +46,6 @@ Azure の統合を使用する Royal Render のお客様の例については、
 
 Azure Render Hub は、Deadline を含む一般的なレンダー マネージャーをサポートしています。  Render Hub をデプロイして使用する手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて GitHub の該当するプラグインや手順を使用して、お使いのレンダー マネージャーの Azure Batch の統合をお試しください。

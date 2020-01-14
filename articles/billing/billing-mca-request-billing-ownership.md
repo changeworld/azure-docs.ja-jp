@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 2ac2d552aed5b11eaf5a8e4708b2cabc33ba1bb3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d12e3b91dad2b7e7d28c6bd50fd62623e07e580b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449454"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -33,46 +33,71 @@ ms.locfileid: "74223808"
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 左側から **[請求書セクション]** を選択します。 お持ちのアクセスによっては、課金アカウントまたは課金プロファイルを選択する必要があります。 課金アカウントまたは課金プロファイルから、 **[請求書セクション]** を選択します。
+3. サブスクリプション利用の支払いに使用する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約**である必要があります。
+
+    ![ポータルでのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
+
+    > [!NOTE]
+    >
+    > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-for-access)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
+
+4. 左側の **[課金プロファイル]** を選択します。
    
-   ![[請求書セクション] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![課金プロファイルの選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. 一覧から [請求書セクション] を選択します。 サブスクリプションの所有権を引き継ぐと、それらはこの [請求書セクション] に対して課金されます。
+    > [!Note]
+    >
+    > 課金プロファイルが表示されない場合、課金スコープが正しくありません。 Microsoft 顧客契約の課金アカウントを選択してから [課金プロファイル] を選択する必要があります。 スコープの変更方法については、[Azure portal での課金スコープの切り替え](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)に関するセクションを参照してください。
 
-5. 左下から **[Transfer requests]\(譲渡要求\)** を選択し、 **[追加]** を選択します。
+5. 一覧から **[課金プロファイル]** を選択します。 サブスクリプションの所有権を引き継ぐと、その使用料はこの課金プロファイルに対して請求されます。
+
+6. 左側から **[請求書セクション]** を選択します。 
+
+    ![[請求書セクション] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. 一覧から [請求書セクション] を選択します。 サブスクリプションの所有権を引き継ぐと、その使用は、課金プロファイルの請求書のこのセクションに割り当てられます。
+
+8. 左下で **[譲渡要求]** を選択し、 **[新しい要求を追加]** を選択します。
  
-   ![[譲渡要求] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+    ![[譲渡要求] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 ユーザーは、Microsoft オンライン サービス プログラムの課金アカウントのアカウント管理者またはエンタープライズ契約のアカウント所有者である必要があります。 詳細については、[Azure portal での請求先アカウントの表示](billing-view-all-accounts.md)に関するページを参照してください。 **[譲渡要求を送信します]** を選択します。
+9. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 ユーザーは、Microsoft オンライン サービス プログラムの課金アカウントのアカウント管理者またはエンタープライズ契約のアカウント所有者である必要があります。 詳細については、[Azure portal での請求先アカウントの表示](billing-view-all-accounts.md)に関するページを参照してください。 **[譲渡要求を送信します]** を選択します。
 
-   ![譲渡要求の送信を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+    ![譲渡要求の送信を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. ユーザーは、譲渡要求を確認する手順を示す電子メールを受信します。
+10. ユーザーは、譲渡要求を確認する手順を示す電子メールを受信します。
 
-   ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+    ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。
+11. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。
 
     ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>譲渡要求の状態を確認する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
+3. 譲渡要求が送信された課金アカウントを [課金スコープ] ページで選択します。
 
-3. 左側から **[請求書セクション]** を選択します。 お持ちのアクセスによっては、課金アカウントまたは課金プロファイルを選択する必要があります。 課金アカウントまたは課金プロファイルから、 **[請求書セクション]** を選択します。
+4. 左側の **[課金プロファイル]** を選択します。
    
-   ![[請求書セクション] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![課金プロファイルの選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. 一覧から、譲渡要求を送信した [請求書セクション] を選択します。
+5. 譲渡要求が送信された **[課金プロファイル]** を選択します。
 
-5. 左下から **[Transfer requests]** (譲渡要求) を選択します。 譲渡要求ページには、次の情報が表示されます。
+6. 左側から **[請求書セクション]** を選択します。 
+
+    ![[請求書セクション] の選択を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. 譲渡要求が送信された [請求書セクション] を一覧から選択します。
+
+8. 左下から **[Transfer requests]** (譲渡要求) を選択します。 譲渡要求ページには、次の情報が表示されます。
 
     ![譲渡要求の一覧を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
@@ -89,15 +114,15 @@ ms.locfileid: "74223808"
    |---------|---------|
    |進行中|ユーザーは譲渡要求を承諾していません|
    |処理中|ユーザーは譲渡要求を承諾しました。 ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
-   |完了| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
+   |[完了]| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
    |エラーで終了|要求が完了しましたが、ユーザーが選択した一部のサブスクリプションの課金を移せませんでした|
    |有効期限切れ|ユーザーは予定どおりには要求を受諾せず、期限切れになりました|
    |Canceled|譲渡要求へのアクセス権を持つユーザーが要求を取り消しました|
    |拒否|ユーザーは譲渡要求を拒否しました|
 
-7. 譲渡要求を選択して、詳細を表示します。 譲渡詳細ページには、次の情報が表示されます。
+9. 譲渡要求を選択して、詳細を表示します。 譲渡詳細ページには、次の情報が表示されます。
    
-   ![譲渡済みサブスクリプションの一覧を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+    ![譲渡済みサブスクリプションの一覧を示すスクリーンショット](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |列  |定義|
    |---------|---------|
@@ -135,7 +160,7 @@ ms.locfileid: "74223808"
 \*\* Azure Web サイトでサインアップしたときに作成されたアカウントのサブスクリプションに対してのみサポートされます。
 
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 次のセクションでは、譲渡サブスクリプションに関する追加情報が示されます。
 
@@ -186,7 +211,7 @@ SaaS 製品は、サブスクリプションとともには渡されません。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure サブスクリプションの課金所有権は、請求書セクションに譲渡されます。 [Azure portal](https://portal.azure.com) でこれらのサブスクリプションの料金を追跡します。
 - これらのサブスクリプションの料金を表示および管理するためのアクセス許可を他のユーザーに与えます。 詳細については、[請求書セクションのロールとタスク](billing-understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。

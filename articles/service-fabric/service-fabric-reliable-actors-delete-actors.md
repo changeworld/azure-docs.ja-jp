@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターの削除 | Microsoft Docs
-description: Service Fabric Reliable Actors とその状態を手動で削除する方法を説明します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric アクターの削除
+description: Azure Service Fabric アプリケーションで Reliable Actors とその状態を手動で完全に削除する方法について説明します。
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726606"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645618"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors とその状態を削除する
 非アクティブ化されたアクターのガベージ コレクションではアクター オブジェクトのみがクリーンアップされ、アクターの状態マネージャーに格納されているデータは削除されません。 アクターが再アクティブ化されると、そのデータは状態マネージャーを介して再び利用可能になります。 状態マネージャーにデータを格納したアクターが非アクティブ化され、その後も再アクティブ化されなかった場合は、そのデータをクリーンアップする必要がある場合があります。

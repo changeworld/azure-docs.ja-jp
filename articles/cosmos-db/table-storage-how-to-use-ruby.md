@@ -1,5 +1,5 @@
 ---
-title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
+title: Ruby から Azure Cosmos DB Table API および Azure Table Storage を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0a2649db7639338b7b2714181b8caf670306f987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441151"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -47,7 +47,7 @@ require "azure/storage/table"
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
-Azure Storage モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
@@ -166,7 +166,7 @@ azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Ruby デベロッパー センター](https://azure.microsoft.com/develop/ruby/)

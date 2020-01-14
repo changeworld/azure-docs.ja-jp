@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 9c79a6ba1a6b7b5582c6430c6de7a4a309bf4920
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437303"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -112,7 +112,7 @@ Event Grid はお客様のアプリを他のサービスにつなげます。 �
 
 Azure Event Grid では、イベントごとに課金される価格モデルを使用しているため、使用した分だけお支払いいただきます。 毎月の最初の 100,000 操作は無料です。 操作は、イベント イングレス、サブスクリプション配信の試行、管理呼び出し、サブジェクト サフィックスによるフィルター処理と定義されます。 詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/event-grid/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Storage Blob のイベントをルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Event Grid を使用して Storage Blob のイベントに応答します。

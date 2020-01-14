@@ -4,34 +4,36 @@ description: vFXT クラスターとブラウザー ベースの Avere Control P
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416145"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス
 
-設定を変更し、Avere vFXT クラスターを監視するには、Avere Control Panel を使用します。 Avere Control Panel は、クラスターに対するブラウザーベースのグラフィカル インターフェイスです。
+クラスター設定を調整してクラスターを監視するには、Avere Control Panel を使用します。 Avere Control Panel は、クラスターに対するブラウザーベースのグラフィカル インターフェイスです。
 
-vFXT クラスターはプライベート仮想ネットワーク内にあるため、クラスターの管理 IP アドレスに到達するには、SSH トンネルを作成するか、別の方法を使用する必要があります。 基本的な手順は 2 つあります。 
+vFXT クラスターはプライベート仮想ネットワーク内にあるため、クラスターの管理 IP アドレスに到達するには、SSH トンネルを作成するか、別の方法を使用する必要があります。
 
-1. ワークステーションとプライベート vnet 間に接続を作成する 
-1. Web ブラウザーでクラスターのコントロール パネルを読み込む 
+基本的な手順は 2 つあります。
 
-> [!NOTE] 
-> この記事では、クラスター コントローラー、またはクラスターの仮想ネットワーク内にある別の VM にパブリック IP アドレスを設定していることを前提としています。 この記事では、その VM をホストとして使用してクラスターにアクセスする方法について説明します。 vnet アクセスのために VPN または ExpressRoute を使用している場合は、[Avere Control Panel への接続](#connect-to-the-avere-control-panel-in-a-browser)に関するセクションに進んでください。
+1. ワークステーションとプライベート仮想ネットワーク間に接続を作成する
+1. Web ブラウザーでクラスターのコントロール パネルを読み込む
 
-接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 (パブリック キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。) 
+> [!NOTE]
+> この記事では、クラスター コントローラー、またはクラスターの仮想ネットワーク内にある別の VM にパブリック IP アドレスを設定していることを前提としています。 この記事では、その VM をホストとして使用してクラスターにアクセスする方法について説明します。 vnet アクセスのために VPN または仮想ネットワークの ExpressRoute を使用している場合は、[Avere Control Panel への接続](#connect-to-the-avere-control-panel-in-a-browser)に関するセクションに進んでください。
 
-## <a name="create-an-ssh-tunnel"></a>SSH トンネルを作成する 
+接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 パブリック キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。
 
-SSH トンネルは、Linux ベースまたは Windows 10 クライアント システムのコマンド ラインから作成できます。 
+## <a name="create-an-ssh-tunnel"></a>SSH トンネルを作成する
 
-SSH トンネリング コマンドを次の形式で使用します。 
+SSH トンネルは、Linux ベースまたは Windows 10 クライアント システムのコマンド ラインから作成できます。
+
+SSH トンネリング コマンドを次の形式で使用します。
 
 ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
@@ -47,9 +49,9 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>ブラウザーで Avere Control Panel に接続する
 
-この手順では、Web ブラウザーを使用して、vFXT クラスター上で実行されている構成ユーティリティに接続します。
+この手順では、Web ブラウザーを使用して、vFXT クラスターの構成ユーティリティに接続します。
 
-* SSH トンネル接続を行うには、Web ブラウザーを開いて `https://127.0.0.1:8443` に移動します。 
+* SSH トンネル接続を行うには、Web ブラウザーを開いて `https://127.0.0.1:8443` に移動します。
 
   トンネルを作成したときのクラスターの IP アドレスに接続されるため、必要なのはローカル ホストの IP アドレスをブラウザーで使用することだけです。 8443 以外のローカル ポートを使用した場合は、そのポート番号を使用してください。
 
@@ -63,6 +65,6 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 **[Login]\(ログイン\)** をクリックするか、キーボードの Enter キーを押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-これでクラスターにアクセスし、[サポート](avere-vfxt-enable-support.md)を有効にすることができるようになりました。
+クラスターのコントロール パネルにログインしたら、[[サポート]](avere-vfxt-enable-support.md) を有効にします。

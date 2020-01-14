@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB の Cassandra API の概要
-description: Azure Cosmos DB を使用して既存のアプリケーションを "リフトアンドシフト" し、使い慣れた Cassandra ドライバーと CQL および Cassandra API を使用して新しいアプリケーションを構築する方法について説明します。
+description: Azure Cosmos DB を使用して既存のアプリケーションを "リフトアンドシフト" し、Cassandra ドライバーと CQL を使用して新しいアプリケーションを構築する方法について説明します。
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82ca7814f756a12005ee5802c3e8a7fd28f6d398
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442130"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の概要
 
@@ -37,7 +37,7 @@ Cassandra API を使用すると、使い慣れた Cassandra クエリ言語 (CQ
 
 **エンタープライズ グレード**:Azure Cosmos DB は、[コンプライアンス認定](https://www.microsoft.com/trustcenter)を提供して、ユーザーが安全にプラットフォームを使用できることを保証します。 また、Azure Cosmos DB には、保存時および移動時の暗号化、IP ファイアウォール、およびコントロール プレーン アクティビティの監査ログも用意されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Cassandra API データを作成および管理するために、次の言語固有のアプリの構築をすばやく開始できます。
   - [Node.js アプリ](create-cassandra-nodejs.md)

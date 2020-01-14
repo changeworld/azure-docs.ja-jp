@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis とは
-description: Azure Cache for Redis の概要と一般的な使用方法について説明します。
+description: Azure Cache for Redis の概要のほか、キャッシュ アサイド、コンテンツ キャッシング、ユーザー セッション キャッシュ、ジョブおよびメッセージ キュー、分散トランザクションを含む一般的な用途について説明します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/26/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 03/26/2018
+ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433416"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis の説明
 
@@ -26,7 +26,7 @@ Azure Cache for Redis を使用すると、セキュリティ保護された専�
 
 アプリケーションのアーキテクチャをサポートするため、またはアプリケーションのパフォーマンスを向上させるために、Azure Cache for Redis が使用される多数の一般的なパターンがあります。 次に、最も一般的なものをいくつか示します。
 
-| Pattern      | 説明                                        |
+| Pattern      | [説明]                                        |
 | ------------ | -------------------------------------------------- |
 | [キャッシュ アサイド](cache-web-app-cache-aside-leaderboard.md) | データベースが大規模になる場合があるため、データベース全体をキャッシュに読み込む方法は、推奨されません。 [キャッシュ アサイド](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) パターンを使用して、必要な場合にだけデータ項目をキャッシュに読み込むのが一般的です。 システムでバックエンド データへの変更が行われた場合、その時点で、他のクライアントと共に配布されるキャッシュも更新できます。 さらに、システムでは、データ項目の有効期限を設定したり、削除ポリシーを使用してデータを更新し、キャッシュへの再読み込みを行ったりすることが可能です。|
 | [コンテンツ キャッシュ](cache-aspnet-output-cache-provider.md) | ほとんどの Web ページは、ヘッダー、フッター、ツールバー、メニューなどを含むテンプレートから生成されます。テンプレートは、実際には頻繁に変更されることはなく、動的に生成されるものではありません。 Azure Cache for Redis などのメモリ内キャッシュを使用すると、バックエンド データストアと比較して、Web サーバーからこの種類の静的コンテンツに迅速にアクセスできます。 このパターンでは、コンテンツを動的に生成するために必要な処理時間とサーバー負荷を軽減します。 これにより、Web サーバーの応答性が高まり、負荷に対処するために必要なサーバー数を減らすことができます。 Azure Cache for Redis は、このパターンをサポートするために役立つ Redis 出力キャッシュ プロバイダーを ASP.NET に提供します。|
@@ -38,7 +38,7 @@ Azure Cache for Redis を使用すると、セキュリティ保護された専�
 
 Azure Cache for Redis は以下のレベルでご利用いただけます。
 
-| レベル | 説明 |
+| レベル | [説明] |
 |---|---|
 Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB ～ 53 GB) をサポートします。 これは、開発/テスト、およびクリティカルではない負荷に最適なレベルです。 Basic レベルには、サービス レベル アグリーメント (SLA) はありません。 |
 | Standard | Microsoft が管理しているプライマリとセカンダリの 2 つのノード構成にレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%)。 |
@@ -67,7 +67,7 @@ Basic | 単一ノード キャッシュ。 このレベルでは、複数のメ�
 | [geo レプリケーション](cache-how-to-geo-replication.md) |✔|-|-|
 | [Reboot](cache-administration.md#reboot) |✔|✔|✔|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ASP.NET Web アプリ クイック スタート](cache-web-app-howto.md): Azure Cache for Redis を使用する単純な ASP.NET Web アプリを作成します。
 * [.NET クイック スタート](cache-dotnet-how-to-use-azure-redis-cache.md): Azure Cache for Redis を使用する .NET Web アプリを作成します。

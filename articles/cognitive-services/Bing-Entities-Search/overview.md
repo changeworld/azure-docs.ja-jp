@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
-ms.date: 02/01/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8f43401296a154ee40e7c214ad63da878129244a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 2f374e29f4dc5406956cd56d1bb0bd1466e65773
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384521"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Entity Search API とは
 
 Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 クエリで地元企業の名前を指定、またはビジネスの種類 (近くのレストランなど) を要求すると、Bing は場所を返します。 クエリで有名な人や場所 (観光名所、州、国/地域など)、またはものを指定すると、Bing はエンティティを返します。
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 |[リアルタイムの検索候補](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
 | [エンティティのあいまいさ排除](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | 可能性のある複数の意味を使用し、クエリに対して複数のエンティティを取得します。 |
@@ -35,9 +35,10 @@ Bing Entity Search API は RESTful Web サービスです。HTTP 要求を作成
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Bing Entity Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/)を試してください。 
 * 実際に要求を送信してみるには、[クイック スタート](quickstarts/csharp.md)を試してください。
 * [Bing Entity Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) リファレンス セクション。
 * [Bing の利用と表示の要件](./use-display-requirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

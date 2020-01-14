@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 06/27/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448739"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 
 Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 Bing で検索するドメインと Web ページを指定できるほか、特定のコンテンツをピン留め、ブースト、またはレベル下げすることもできます。そのようにして Web の表示をカスタムすれば、適合度の高い検索結果をユーザーがすばやく見つけることができるようになります。 
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 |[カスタム リアルタイム検索候補](define-custom-suggestions.md)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
 |[カスタム画像検索エクスペリエンス](get-images-from-instance.md)     | カスタム検索インスタンスで指定されたドメインや Web サイトから画像を検索する機能を実現できます。        |        
@@ -36,16 +36,18 @@ Bing Custom Search API を使用すると、関心のあるトピックに合わ
 
 作成した検索インスタンス (と必要に応じてユーザー インターフェイス) は、Bing Custom Search API を呼び出すことで、既存の Web サイトやアプリケーションに統合することができます。
 
-![API で Bing Custom Search に接続できることを示す画像](media/BCS-Overview.png "Bing Custom Search のしくみ")
+![API で Bing Custom Search に接続できることを示す画像](media/BCS-Overview.png "Bing Custom Search の動作方法")
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 すぐに使い始める方法は、「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 
 検索インスタンスのカスタマイズについて詳しくは、[カスタム検索インスタンスの定義](define-your-custom-view.md)に関するページをご覧ください。
 
 既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページを必ずお読みください。
+
+その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
 
 各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
 

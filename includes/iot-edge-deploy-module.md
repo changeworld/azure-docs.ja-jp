@@ -5,55 +5,58 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 01/04/2019
+ms.date: 12/31/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 12661c77c6a950b482187b09e4465c964e6d6652
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abbde0cb8137650faad563248c8fafe7dc0f469a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494050"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564776"
 ---
-Azure IoT Edge の主要な機能の 1 つは、クラウドからお客様の IoT Edge デバイスにコードをデプロイできることです。 **IoT Edge モジュール**は、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、[Azure Marketplace の IoT Edge モジュールのセクション](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)から事前に構成したモジュールをデプロイします。 
+Azure IoT Edge の主要な機能の 1 つは、クラウドからお客様の IoT Edge デバイスにコードをデプロイできることです。 **IoT Edge モジュール**は、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、[Azure Marketplace の IoT Edge モジュールのセクション](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)で事前に構築したモジュールを、Azure IoT ハブから直接デプロイします。
 
-このセクションでデプロイするモジュールはセンサーをシミュレートし、生成されたデータを送信します。 シミュレートされたデータを開発とテストに使用できるため、このモジュールは IoT Edge の使用を開始する際にコードの一部として役に立ちます。 このモジュールで行われる内容を正確に確認したい場合は、[シミュレートされた温度センサーのソース コード](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)をご覧いただけます。 
+このセクションでデプロイするモジュールはセンサーをシミュレートし、生成されたデータを送信します。 シミュレートされたデータを開発とテストに使用できるため、このモジュールは IoT Edge の使用を開始する際にコードの一部として役に立ちます。 このモジュールで行われる内容を正確に確認したい場合は、[シミュレートされた温度センサーのソース コード](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)をご覧いただけます。
 
 Azure Marketplace からお客様の最初のモジュールをデプロイするには、次の手順を使用します。
 
-1. [Azure portal](https://portal.azure.com) で、「**Simulated Temperature Sensor**」と検索に入力し、Marketplace の結果を開きます。
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。
+
+1. 左側のペインのメニューで、 **[デバイスの自動管理]** の下にある **[IoT Edge]** を選択します。
+
+1. デバイスの一覧でターゲット デバイスのデバイス ID をクリックします。
+
+1. 上部のバーで **[モジュールの設定]** を選択します。
+
+1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** をクリックします。
+
+1. ドロップダウン メニューから **[Marketplace モジュール]** を選択します。
 
    ![Azure portal で検索したシミュレートされた温度センサー](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-2. モジュールを受け取る IoT Edge デバイスを選択します。 **[IoT Edge モジュールのターゲット デバイス]** ページで、次の情報を入力します。
+1. **[IoT Edge モジュールの Marketplace]** で、"シミュレートされた温度センサー" を検索し、そのモジュールを選択します。
 
-   1. **サブスクリプション**: 使用している IoT ハブを含むサブスクリプションを選択します。
+1. SimulatedTemperatureSensor モジュールが自動的に設定されることに注目してください。 チュートリアルでは、このページを使用して他のモジュールをお客様のデプロイに追加します。 このクイック スタートでは、この 1 つのモジュールのみをデプロイします。 これは公開されているため、資格情報は必要ありません。
 
-   2. **IoT Hub**: 使用している IoT ハブ の名前を選択します。
+   ![デバイスにモジュールを設定する](./media/iot-edge-deploy-module/set-modules-on-device.png)
 
-   3. **IoT Edge デバイス名**: このクイック スタートで提案されているデバイス名を使用した場合は、「**myEdgeDevice**」と入力します。 または、 **[デバイスの検索]** を選択して、お客様の IoT ハブにある IoT Edge デバイスの一覧から選択します。 
-   
-   4. **作成** を選択します。
+   **[次へ:ルート]** を選択し、ウィザードの次の手順に進みます。
 
-3. Azure Marketplace から IoT Edge モジュールを選択し、モジュールを受け取る IoT Edge デバイスを選択したところで、モジュールのデプロイ方法を正確に定義するために役立つ 3 つの手順のウィザードに進みます。 ウィザードの **[モジュールの追加]** 手順で、**SimulatedTemperatureSensor** モジュールが自動的に設定されていることに注目してください。 チュートリアルでは、このページを使用して他のモジュールをお客様のデプロイに追加します。 このクイック スタートでは、この 1 つのモジュールのみをデプロイします。 **[次へ]** を選択して、ウィザードの次の手順に進みます。
+1. ウィザードの **[ルート]** タブで、モジュールと IoT ハブの間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 このクイック スタートでは、すべてのモジュールのすべてのメッセージを IoT Hub (`$upstream`) に送信します。 自動的に設定されない場合は、**名前**の**値** `upstream` を指定するために次のコードを追加します。
 
-4. ウィザードの **[ルートの指定]** 手順で、モジュール間と IoT Hub に対してメッセージが渡される方法を定義します。 このクイック スタートでは、すべてのモジュールのすべてのメッセージを IoT Hub (`$upstream`) に送信します。 自動的に設定されていない場合は、次のコードを追加します。
-
-   ```json
-    {
-    "routes": {
-        "route": "FROM /messages/* INTO $upstream"
-        }
-    }
+   ```sql
+    FROM /messages/* INTO $upstream
    ```
-   次に、 **[次へ]** を選択します。
 
-5. ウィザードの **[デプロイの確認]** 手順では、IoT Edge デバイスにデプロイされているすべてのモジュールを定義する JSON ファイルをプレビューできます。 **SimulatedTemperatureSensor** モジュールに加え、**edgeAgent** と **edgeHub** という 2 つの追加システム モジュールが含まれていることに注目してください。 確認が完了したら、 **[送信]** を選択します。
+   **[次へ:確認と作成]** を選択し、ウィザードの次の手順に進みます。
 
-   IoT Edge デバイスに新しいデプロイを送信しても、デバイスには何もプッシュされません。 代わりに、デバイスから IoT Hub に対して、新しい指示のクエリが定期的に実行されます。 更新されたデプロイ マニフェストがデバイスによって検出されると、新しいデプロイに関する情報が使用されてクラウドからモジュール イメージがプルされ、ローカルでのモジュールの実行が開始されます。 このプロセスは数分かかることがあります。 
+1. ウィザードの **[確認と作成]** タブでは、IoT Edge デバイスにデプロイされているすべてのモジュールを定義する JSON ファイルをプレビューできます。 **SimulatedTemperatureSensor** モジュールに加え、**edgeAgent** と **edgeHub** という 2 つの追加システム モジュールが含まれていることに注目してください。 確認が完了したら **[作成]** を選択します。
 
-6. モジュールのデプロイの詳細を送信すると、ウィザードは IoT ハブの **[IoT Edge]** ページに戻ります。 IoT Edge デバイスの一覧からデバイスを選択すると、その詳細が表示されます。 
+   IoT Edge デバイスに新しいデプロイを送信しても、デバイスには何もプッシュされません。 代わりに、デバイスから IoT Hub に対して、新しい指示のクエリが定期的に実行されます。 更新されたデプロイ マニフェストがデバイスによって検出されると、新しいデプロイに関する情報が使用されてクラウドからモジュール イメージがプルされ、ローカルでのモジュールの実行が開始されます。 このプロセスは数分かかることがあります。
 
-7. デバイスの詳細ページで、 **[モジュール]** セクションまで下にスクロールします。 $edgeAgent、$edgeHub、SimulatedTemperatureSensor という 3 つのモジュールが表示されているはずです。 デプロイで指定されたとおりに表示されているのにデバイスによってレポートされていないモジュールが 1 つ以上ある場合、それらはまだお客様の IoT Edge デバイスによって起動中です。 少し待ってから、ページの上部にある **[更新]** をクリックします。 
+1. モジュールのデプロイの詳細が作成されると、ウィザードは IoT ハブの **[IoT Edge]** ページに戻ります。 IoT Edge デバイスの一覧からデバイスを選択すると、その詳細が表示されます。
+
+1. デバイスの詳細ページで、 **[モジュール]** タブまで下にスクロールします。$edgeAgent、$edgeHub、SimulatedTemperatureSensor という 3 つのモジュールが表示されているはずです。 デプロイで指定されたとおりに表示されているのにデバイスによってレポートされていないモジュールが 1 つ以上ある場合、それらはまだお客様の IoT Edge デバイスによって起動中です。 少し待ってから、ページの上部にある **[更新]** をクリックします。
 
    ![デプロイ済みのモジュールの一覧に SimulatedTemperatureSensor を表示する](./media/iot-edge-deploy-module/deployed-modules-marketplace.png)

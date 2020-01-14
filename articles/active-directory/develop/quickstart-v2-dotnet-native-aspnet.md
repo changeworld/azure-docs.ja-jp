@@ -1,6 +1,6 @@
 ---
-title: Azure AD によって保護された ASP.NET Web API を呼び出す - Microsoft ID プラットフォーム
-description: このクイックスタートでは、Azure Active Directory によって保護された ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。 WPF クライアントは、ユーザーを認証し、アクセ ストークンを要求して、Web API を呼び出します。
+title: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
+description: このクイックスタートでは、Microsoft ID プラットフォームによって保護された ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。 WPF クライアントは、ユーザーを認証し、アクセ ストークンを要求して、Web API を呼び出します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424036"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>クイック スタート:Azure AD で保護されている ASP.NET Web API を呼び出す
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
-このクイックスタートでは、認証されたユーザーのみがアクセスできるように Web API を公開し、保護します。 このサンプルでは、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure Active Directory と統合されたすべての会社や組織の職場/学校アカウントによって発行されたトークンを受け入れることができるように ASP.NET Web API を公開する方法について説明します。
+このクイックスタートでは、認証されたユーザーのみがアクセスできるように Web API を公開し、保護します。 このサンプルでは、個人アカウント (outlook.com、live.com などを含む) だけでなく、Microsoft ID プラットフォームと統合されたすべての会社や組織の職場または学校アカウントによって発行されたトークンを受け入れることができるように ASP.NET Web API を公開する方法について説明します。
 
 このサンプルには、Web API にアクセスするためのアクセス トークンを要求する方法を示す Windows デスクトップ アプリケーション (WPF) クライアントも含まれています。
 
@@ -76,7 +76,7 @@ ms.locfileid: "74963309"
      - **[状態]** を **[有効化]** のままにします。
      - **[スコープの追加]** を選択します
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>登録されている Web API に一致するようにサービスとクライアント プロジェクトを構成する 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>登録されている Web API に一致するようにサービス プロジェクトを構成する 
 
 1. Visual Studio でソリューションを開き、**TodoListService** プロジェクトのルートの下にある **Web.config** ファイルを開きます。
 1. `ida:ClientId` パラメーターの値を、アプリケーション登録ポータルで登録したアプリケーションの**クライアント ID (アプリケーション ID)** に置き換えます。
@@ -104,7 +104,7 @@ ms.locfileid: "74963309"
    - **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウント]** に変更します。
    - **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの [概要] ページで、 **[認証]** セクションを選択します。
-   - **[リダイレクト URL]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URL]** セクションで、 **[urn:ietf:wg:oauth:2.0:oob]** をオンにします。
+   - **[リダイレクト URI]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
    - **[保存]** を選択します。
 1. **[API のアクセス許可]** セクションを選択します
    - **[アクセス許可の追加]** をクリックします。さらに、
@@ -146,7 +146,7 @@ ms.locfileid: "74963309"
 
 アプリケーションにサインインできるユーザーを制限するには、次のいずれかのオプションを使用します。
 
-### <a name="option-1-restrict-access-to-a-single-organization-single-tenant"></a>オプション 1:単一の組織へのアクセスを制限する (シングルテナント)
+### <a name="option-1-restrict-access-to-a-single-organization-single-tenant"></a>オプション 1: 単一の組織へのアクセスを制限する (シングルテナント)
 
 単一の Azure AD テナントに属するユーザー アカウント (そのテナントの*ゲスト アカウント*を含む) のみに対して、アプリケーションへのサインイン アクセスを制限できます。 このシナリオは、*基幹業務アプリケーション*に共通です。
 
@@ -159,7 +159,7 @@ ms.locfileid: "74963309"
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft ID プラットフォームでサポートされている保護された Web API のシナリオの詳細については、次を参照してください。
 > [!div class="nextstepaction"]
 > [保護された Web API のシナリオ](scenario-protected-web-api-overview.md)

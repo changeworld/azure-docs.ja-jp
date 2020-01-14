@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604784"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659782"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -25,7 +25,6 @@ ms.locfileid: "73604784"
 ## <a name="prerequisites"></a>前提条件
 
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
-* 同じサブネット内に複数の AKS クラスターを作成しないでください。
 * AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
 * AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -93,7 +92,7 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 AKS クラスターを作成するときに、Azure CNI ネットワーク用に以下のパラメーターを構成できます。
 
-**仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、 *[新規作成]* を選択し、 *[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
+**仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、 *[新規作成]* を選択し、 *[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
 
 **サブネット**:クラスターをデプロイする仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、 *[新規作成]* を選択し、 *[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
 
@@ -151,7 +150,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 * *クラスター サブネットに VM を展開できますか。*
 
-  No. Kubernetes クラスターで使用されているサブネットに VM を展開することはできません。 VM を同じ仮想ネットワークにデプロイできますが、異なるサブネットにデプロイする必要があります。
+  いいえ。 Kubernetes クラスターで使用されているサブネットに VM を展開することはできません。 VM を同じ仮想ネットワークにデプロイできますが、異なるサブネットにデプロイする必要があります。
 
 * *ポッドごとのネットワーク ポリシーを構成できますか。*
 
@@ -171,7 +170,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
   お勧めはしませんが、この構成は可能です。 サービスのアドレス範囲は、Kubernetes によってクラスターの内部サービスに割り当てられる仮想 IP (VIP) のセットです。 Azure のネットワークには、Kubernetes クラスターのサービスの IP 範囲の可視性がありません。 クラスターのサービス アドレス範囲には可視性がないため、後でクラスターの仮想ネットワークにサービスのアドレス範囲と重複する新しいサブネットが作成される可能性があります。 このような重複が発生した場合、Kubernetes は、サブネット内の他のリソースによって既に使用されている IP をサービスに割り当てる可能性があり、予期しない動作やエラーの原因となります。 クラスターの仮想ネットワークの外部のアドレス範囲を使用することで、この重複のリスクを回避できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS のネットワークの詳細については、次の記事を参照してください。
 

@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Bing Spell Check API を使用してスペル チェックの結果を取得する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、ユーザーが Bing Spell Check API にクエリを実行して結果を表示できる Web ページを作成します。
+description: Bing Spell Check API にクエリを送信して結果を表示する Web ページを作成するには、このチュートリアルを使用します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382798"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル:Web ページのスペル チェック クライアントを構築する
 
@@ -29,7 +29,7 @@ ms.locfileid: "74111456"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 お持ちでない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)してください。
+このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 ない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)にサインアップしてください。
 
 ## <a name="create-a-new-web-page"></a>新しい Web ページを作成する
 
@@ -66,7 +66,7 @@ HTML ヘッダー情報を追加し、スクリプトのセクションを次の
 
 ## <a name="getsubscriptionkey-function"></a>getSubscriptionKey 関数
 
-GetSubscriptionKey 関数は、Bing Spell Check API キーを返します。 ローカル ストレージ (つまり cookie) から取得するか、必要な場合はユーザーに入力を求めます。
+GetSubscriptionKey 関数は、Bing Spell Check API キーを返します。 ローカル ストレージ (つまり Cookie) から取得するか、必要な場合はユーザーに入力を求めます。
 
 GetSubscriptionKey 関数を開始し、Cookie 名を次のように宣言します。
 
@@ -76,7 +76,7 @@ getSubscriptionKey = function() {
     var COOKIE = "bing-spell-check-api-key";   // name used to store API key in key/value storage
 ```
 
-findCookie ヘルパー関数は、指定された cookie の値を返します。cookie が見つからない場合は、空の文字列を返します。
+findCookie ヘルパー関数は、指定された Cookie の値を返します。Cookie が見つからない場合は、空の文字列を返します。
 
 ```html
     function findCookie(name) {
@@ -106,7 +106,7 @@ GetSubscriptionKeyCookie ヘルパー関数は、Bing Spell Check API キーの�
     }
 ```
 
-GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie を参照することによって、Bing Spell Check API キーの取得を試みます。 cookie が見つからない場合は、ユーザーにキーの値を要求します。 その後、そのキーの値を返します。
+GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie を参照することによって、Bing Spell Check API キーの取得を試みます。 Cookie が見つからない場合は、ユーザーにキーの値を要求します。 その後、そのキーの値を返します。
 
 ```html
     function getSubscriptionKeyLocalStorage() {
@@ -118,7 +118,7 @@ GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie �
     }
 ```
 
-getSubscriptionKey ヘルパー関数は、**invalidate**という 1 つのパラメーターを使用します。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
+getSubscriptionKey ヘルパー関数は、**invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -319,7 +319,7 @@ Bing ロゴを表示します。
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [使用と表示の要件](../UseAndDisplayRequirements.md)

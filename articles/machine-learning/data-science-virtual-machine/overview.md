@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802191"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611970"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
 Data Science Virtual Machine (DSVM) とは、データ サイエンス専用に構築された Azure クラウド プラットフォーム上のカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 
 
 DSVM を利用できる OS:
++ **Windows Server 2019 (プレビュー)**
++ **Ubuntu 18.04 LTS (プレビュー)**
 + Windows Server 2016
 + Ubuntu 16.04 LTS、CentOS 7.4
+
 
 > [!NOTE]
 > ディープ ラーニング用のすべての VM ツールは、Data Science Virtual Machine に組み込まれています。 
@@ -63,7 +66,7 @@ Windows Server 2016 エディションの DSVM には、GPU ドライバー、�
 
 Ubuntu、CentOS、または Windows 2016 エディションの DSVM を、GPU ベースでない Azure 仮想マシンにデプロイすることもできます。 この場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックはします。
  
-[使用可能なディープ ラーニングと AI のフレームワークの詳細について学習](dsvm-deep-learning-ai-frameworks.md)してください。
+[使用可能なディープ ラーニングと AI のフレームワークの詳細について学習](dsvm-tools-deep-learning-frameworks.md)してください。
 
 <a name="included"></a>
 
@@ -71,7 +74,7 @@ Ubuntu、CentOS、または Windows 2016 エディションの DSVM を、GPU �
 
 Windows と Linux の両方の DSVM 上で使用できるツールの完全な一覧については、[こちら](tools-included.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。
 

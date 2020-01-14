@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 7644bac01784ea795f24b967223b0eb37354ca87
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438962"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル:Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-account-manage.md#access-keys)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 >
 >
 
@@ -120,7 +120,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | clusterSize |HDInsight クラスターのサイズ。 |
 | timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -166,12 +166,12 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
+| 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
 | linkedServiceName |前に作成した StorageLinkedService を参照します。 |
 | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-| type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+| 型 |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
 | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
 | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
 | external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
@@ -315,7 +315,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 以下の点に注意してください。
 
 * Azure Data Factory の名前はグローバルに一意にする必要があります。 results に"**データ ファクトリ名 "FirstDataFactoryREST" は使用できません**" というエラーが表示される場合は、次の手順に従います。
-  1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
+  1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
   3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
@@ -483,11 +483,11 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、[Azure BLOB から Azure SQL にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+## <a name="see-also"></a>参照
+| トピック | [説明] |
 |:--- |:--- |
 | [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |

@@ -1,26 +1,16 @@
 ---
-title: Azure で Service Fabric 上に Windows コンテナー アプリを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に Windows コンテナー アプリを作成する
 description: このチュートリアルでは、Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466269"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
 
@@ -51,7 +41,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 Service Fabric SDK およびツールには、コンテナーを Service Fabric クラスターにデプロイするときに役立つサービスのテンプレートが用意されています。
 
-"管理者" として Visual Studio を起動します。  **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
+"管理者" として Visual Studio を起動します。  **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 
 **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[作成]** をクリックします。
 
@@ -106,7 +96,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 変数に実際の値を指定したら、**F5** キーを押してスクリプトを実行します。
 
-スクリプトを実行してクラスターが作成されたら、出力で `ClusterEndpoint` を検索します。 例:
+スクリプトを実行してクラスターが作成されたら、出力で `ClusterEndpoint` を検索します。 次に例を示します。
 
 ```powershell
 ...
@@ -160,7 +150,7 @@ Thumbprint                                Subject
 
 クラスターの実行中は、料金が継続的に発生します。 [クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

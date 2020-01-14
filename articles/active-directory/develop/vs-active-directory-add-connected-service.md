@@ -1,5 +1,5 @@
 ---
-title: 接続済みサービスを使用して Azure AD を追加する
+title: Active Directory 接続済みサービスの使用 (Visual Studio)
 description: Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423179"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
 Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD 認証を利用する利点には、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることが含まれます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
 
@@ -67,12 +67,12 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 ## <a name="how-your-project-is-modified"></a>プロジェクトを変更する方法
 
-ウィザードで接続済みサービスを追加すると、Visual Studio でプロジェクトに Azure Active Directory と関連する参照が追加されます。 プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。 Visual Studio による特定の変更はプロジェクトの種類によって異なります。 詳細については、次の記事を参照してください。
+ウィザードで接続済みサービスを追加すると、Visual Studio でプロジェクトに Azure Active Directory と関連する参照が追加されます。 プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。 Visual Studio による特定の変更はプロジェクトの種類によって異なります。 詳しくは、以下の記事を参照してください。
 
 - [.NET MVC プロジェクトの変更点](vs-active-directory-dotnet-what-happened.md)
 - [Web API プロジェクトの変更点](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD の認証シナリオ](authentication-scenarios.md)
 - [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

@@ -4,12 +4,12 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391300"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -52,7 +52,7 @@ ms.locfileid: "74806373"
 
 ## <a name="cost-impact"></a>コストの影響
 
-増分スナップショットは VM のストレージ アカウントに格納され、インスタント回復に使用されます。 増分スナップショットは、スナップショットによって占有される領域が、スナップショットの作成後に記述されるページによって占有される領域と等しいことを意味します。 課金は、スナップショットによって占有される GB あたりの使用済み領域に対して引き続き行われ、GB あたりの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/managed-disks/)に示されているものと同じになります。
+増分スナップショットは VM のストレージ アカウントに格納され、インスタント回復に使用されます。 増分スナップショットは、スナップショットによって占有される領域が、スナップショットの作成後に記述されるページによって占有される領域と等しいことを意味します。 課金は、スナップショットによって占有される GB あたりの使用済み領域に対して引き続き行われ、GB あたりの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/managed-disks/)に示されているものと同じになります。 アンマネージド ディスクを使用する VM の場合、各ディスクの VHD ファイルのメニューにスナップショットが表示されます。 マネージド ディスクの場合、スナップショットは指定したリソース グループの復元ポイント コレクション リソースに格納され、スナップショット自体は直接表示されません。
 
 >[!NOTE]
 > スナップショットのリテンション期間は、週間ポリシーでは 5 日間に固定されています。

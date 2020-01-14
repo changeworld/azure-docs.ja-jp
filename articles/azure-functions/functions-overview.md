@@ -6,19 +6,19 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 28a2732965ee0a19f69dcd0fc2cd7705cb5f94a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7208825581a0bf16f6ee3a3947387b01abfd16d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230432"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433068"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
 Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、Java、JavaScript、PowerShell、Python などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを作成できます。
 
 このトピックでは、Azure Functions の概要について説明します。 Functions の利用をすぐに開始する場合は、「 [初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。 Azure Functions の詳細な技術情報をお探しの場合は、 [開発者向けリファレンス](functions-reference.md)を参照してください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 Functions の主要な機能を次に示します。
 
 * **言語の選択** - C#、Java、Javascript、Python などから選んだ言語を使用して関数を記述できます。 完全な一覧が必要な場合、[サポートされている言語](supported-languages.md)に関するページを参照してください。
@@ -61,7 +61,8 @@ Azure Functions は、さまざまな Azure サービスや サード パーテ�
 ## <a name="pricing"></a>Azure Functions の価格
 Azure Functions には、2 種類の価格プランがあります。 ニーズに最適なものを以下から選択します。 
 
-* **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。 
+* **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。
+* **Premium プラン** -  常にオンライン状態で即時に応答する準備が整った、事前ウォーミングされたインスタンスをいくつか自分で指定します。 関数が実行されると、追加で必要となるコンピューティング リソースが Azure から提供されます。 常時実行される事前ウォーミングされたインスタンスに加え、Azure によってアプリがスケールインまたはスケールアウトされたときに追加で使用されるインスタンスが支払いの対象となります。
 * **App Service プラン** - 関数を Web アプリと同様に実行できます。 既に App Service を他のアプリケーションに使用している場合、追加コストなしで、同じプランで関数を実行できます。 
 
 ホスティング プランの詳細については、[Azure Functions のホスティング プランの比較](functions-scale.md)に関するページをご覧ください。 価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。

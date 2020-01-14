@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と Python を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 9a75148ab1ca1dae0acb5af8128fe1220fbbe8b3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448469"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>クイック スタート:Bing Spell Check REST API と Python を使用してスペルをチェックする
 
@@ -36,7 +36,7 @@ ms.locfileid: "74378815"
    import json
    ```
 
-2. スペル チェックの対象となるテキスト、サブスクリプション キー、Bing Spell Check エンドポイントに使用する変数を作成します。
+2. スペル チェックの対象となるテキスト、サブスクリプション キー、Bing Spell Check エンドポイントに使用する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -85,6 +85,15 @@ ms.locfileid: "74378815"
     print(json.dumps(json_response, indent=4))
     ```
 
+
+## <a name="run-the-application"></a>アプリケーションの実行
+
+コマンド ラインを使用している場合は、次のコマンドを使用してアプリケーションを実行します。
+
+```bash
+python <FILE_NAME>.py
+```
+
 ## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
@@ -127,7 +136,7 @@ ms.locfileid: "74378815"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)

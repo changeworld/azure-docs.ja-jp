@@ -1,5 +1,5 @@
 ---
-title: Azure クイック スタート - Windows VM 上に Azure Files 共有を作成して使用する | Microsoft Docs
+title: Windows VM で Azure Files 共有を作成して使用する
 description: このクイック スタートでは、Azure portal で Files 共有をセットアップし、それを Windows 仮想マシンに接続します。 Files 共有に接続し、そのファイル共有にファイルをアップロードします。 その後、Files 共有のスナップショットを取得し、Files 共有内のファイルを変更し、Files 共有の前のスナップショットを復元します。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463901"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>クイック スタート:Windows Virtual Machines で Azure Files 共有を作成して管理する
 
@@ -22,7 +22,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -175,11 +175,11 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 
    ![警告メッセージ内の [復元] ボタン](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) メモ: ファイルが変更されていない場合、そのファイルはスナップショットと同じバージョンであるため、そのファイルの以前のバージョンは表示されません。 これは、Windows ファイル サーバーでの動作と一致しています。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Windows で Azure ファイル共有を使用する](storage-how-to-use-files-windows.md)

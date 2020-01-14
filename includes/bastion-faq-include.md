@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469650"
 ---
 ### <a name="regions"></a>利用可能なリージョン
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875526"
 ### <a name="publicip"></a>自分の仮想マシンにはパブリック IP が必要ですか?
 
 Azure Bastion サービスを使用して接続する Azure 仮想マシンにはパブリック IP は必要ありません。 Bastion サービスは、ご使用の仮想ネットワーク内で、お客様の仮想マシンのプライベート IP 経由でお客様の仮想マシンへの RDP または SSH セッションや接続を開きます。
+
+### <a name="is-ipv6-supported"></a>IPv6 はサポートされていますか?
+
+現時点では、IPv6 はサポートされていません。 Azure Bastion は、IPv4 のみをサポートしています。
 
 ### <a name="rdpssh"></a>RDP または SSH クライアントは必要ですか?
 
@@ -57,7 +61,7 @@ Azure Bastion は現在、VM 内で en-us-qwerty のキーボード レイアウ
 
 ### <a name="udr"></a>Azure Bastion サブネットでユーザー定義ルーティング (UDR) はサポートされますか?
 
-No. Azure Bastion サブネットで UDR はサポートされません。
+いいえ。 Azure Bastion サブネットで UDR はサポートされません。
 Azure Bastion と Azure Firewall/ネットワーク仮想アプライアンス (NVA) の両方が同じ仮想ネットワークに存在するシナリオでは、Azure Bastion と VM との間の通信はプライベートであるため、Azure Bastion サブネットから Azure Firewall にトラフィックを強制する必要がありません。 詳細については、[Azure Firewall と Bastion の内側の VM にアクセスする方法](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)に関するページを参照してください。
 
 ### <a name="filetransfer"></a>Azure Bastion RDP セッションでファイル転送はサポートされますか?

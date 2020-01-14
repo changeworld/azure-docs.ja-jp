@@ -2,19 +2,15 @@
 title: Azure Automation Runbook をトリガーするアラートを使用する
 description: Azure のアラートが発生したときに Runbook の実行をトリガーする方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366702"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -33,7 +29,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 アラートが Runbook を呼び出すとき、実際の呼び出しは webhook に対する HTTP POST 要求です。 POST 要求の本文には、アラートに関する有用なプロパティを格納する JSON 形式のオブジェクトが含まれています。 次の表は、各アラートの種類のペイロード スキーマへのリンクを示しています。
 
-|アラート:  |説明|ペイロード スキーマ  |
+|アラート:  |[説明]|ペイロード スキーマ  |
 |---------|---------|---------|
 |[共通アラート](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|今日の Azure でのアラート通知の使用エクスペリエンスを標準化する共通アラート スキーマ。|共通アラートのペイロード スキーマ|
 |[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 処理が **myProductionResourceGroup** で発生した場合、または状態が **[アクティブ]** な新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -49,7 +45,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに Runbook がトリガーされます。 アラートには複数の状態があり、最も一般的な 2 つの状態が `Activated` と `Resolved` です。 Runbook が複数回実行されないように、Runbook ロジックでこの状態を確認します。 この記事の例では、`Activated` アラートのみを検索する方法を示しています。
 
-Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection** [実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
+Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection**[実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
 
 この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
@@ -193,7 +189,7 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 
 1. **[アラートの詳細]** で、アラート ルールの名前と説明を追加し、 **[アラート ルールの作成]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * webhook を使用して Automation Runbook を開始する方法の詳細については、[webhook を使用した Runbook の開始](automation-webhooks.md)に関する記事をご覧ください。
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。

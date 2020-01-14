@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric Mesh で実行されているアプリを自動スケーリングする | Microsoft Docs
+title: Azure Service Fabric Mesh で実行されているアプリを自動スケーリングする
 description: Service Fabric Mesh アプリケーションのサービスに対して自動スケーリング ポリシーを構成する方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461977"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションに対する自動スケーリング ポリシーを作成する
 Service Fabric Mesh にアプリケーションをデプロイすることの主な利点の 1 つは、サービスを簡単にスケールイン/スケールアウトできることです。これはサービスに対する負荷量の変化に対処するためや可用性を上げるために使用します。 手動でサービスをスケールインまたはスケールアウトしたり、自動スケーリング ポリシーを設定したりできます。
@@ -123,5 +114,5 @@ application:
           ...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [サービスを手動でスケーリングする](service-fabric-mesh-tutorial-template-scale-services.md)方法を学習する

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 97f10058038e3bf4fbcca2cf86d074869ffefed4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72284658"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610694"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barracuda アプライアンスの接続 
 
@@ -46,8 +46,10 @@ Barracuda Web アプリケーション ファイアウォールでは、Log Anal
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Barracuda アプライアンスを Azure Sentinel に接続する方法について学びました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+
 

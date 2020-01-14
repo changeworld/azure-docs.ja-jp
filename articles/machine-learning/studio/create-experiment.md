@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427716"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>クイック スタート:Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "73839940"
 ## <a name="get-the-data"></a>データを取得する
 
 機械学習の実行にはまずデータが必要です。
-使用できるいくつかのサンプル データセットが、従来のバージョンの Studio に含まれています。また、多数のソースからデータをインポートできます。 この例では、ワークスペースに含まれているサンプル データセットである**Automobile price data (Raw)** を使用します。
+使用できるサンプル データセットがいくつか Studio (クラシック) に含まれています。また、多数のソースからデータをインポートできます。 この例では、ワークスペースに含まれているサンプル データセットである**Automobile price data (Raw)** を使用します。
 このデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。
 
 > [!TIP]
@@ -111,7 +111,7 @@ ms.locfileid: "73839940"
 
      ![モジュールをダブルクリックしてコメントを追加](./media/create-experiment/add-comment.png)
 
-1. [Clean Missing Data (不足データのクリーンアップ)][clean-missing-data] モジュールを実験キャンバスにドラッグして、[Select Columns in Dataset (データセットの列を選択する)][select-columns] モジュールに接続します。 **[Properties]\(プロパティ\)** ウィンドウで、 **[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、[Clean Missing Data][clean-missing-data] (見つからないデータのクリーンアップ) では値が不足している行が削除され、データがクリーンアップされます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
+1. [Clean Missing Data (不足データのクリーンアップ)][clean-missing-data] モジュールを実験キャンバスにドラッグして、[Select Columns in Dataset (データセットの列を選択する)][select-columns] モジュールに接続します。 **[Properties]\(プロパティ\)** ウィンドウで、 **[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、[Clean Missing Data (不足データのクリーンアップ)][clean-missing-data] では値が不足している行が削除され、データが整理されます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
 
     !["Clean Missing Data" モジュールの [Cleaning Mode]\(整理モード\) を [Remove entire row]\(行全体を削除\) に設定](./media/create-experiment/set-remove-entire-row.png)
 
@@ -231,11 +231,11 @@ ms.locfileid: "73839940"
 
 この誤差の統計情報は、それぞれ小さいほど良いとされます。 値が小さいほど、予測が実際の値により近いことを示します。 **Coefficient of Determination**では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、サンプル データセットを使用して、簡単な実験を作成しました。 モデルを作成してデプロイするプロセスをさらに詳しく調べるには、予測ソリューションのチュートリアルに進んでください。
 

@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 08/13/2018
+ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012983"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442883"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -79,7 +79,7 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 
 1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
     * **計算 (CRP) クォータが不足**している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
-    * 高度なネットワーク リソースと**不十分なサブネット (ネットワーク) リソース**を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/resource-manager-quota-errors.md#solution)に従ってリソース クォータの引き上げを依頼します。
+    * 高度なネットワーク リソースと**不十分なサブネット (ネットワーク) リソース**を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
 2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>クラスターをアップグレードまたはスケーリングしようとしたときに、クラスターが現在アップグレード中であるか、アップグレードに失敗したというエラーが表示されます。
@@ -173,14 +173,14 @@ AKS クラスターからのエグレス トラフィックを制限するとき
 
 Kubernetes バージョン1.10 では、Azure Disk の再マウントによって MountVolume が失敗する場合があります。
 
-Linux では、正しくない DevicePath フォーマット エラーが表示されることがあります。 例:
+Linux では、正しくない DevicePath フォーマット エラーが表示されることがあります。 次に例を示します。
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows では、間違った DevicePath (LUN) 番号のエラーが表示されることがあります。 例:
+Windows では、間違った DevicePath (LUN) 番号のエラーが表示されることがあります。 次に例を示します。
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -226,7 +226,7 @@ spec:
   >[!NOTE]
   > 既定では、GID と UID は root または 0 としてマウントされるためです。 GID または UID が非 root (1000 など) として設定されている場合、Kubernetes は `chown` を使用して、そのディスクにあるすべてのディレクトリとファイルを変更します。 この操作には時間がかかることがあり、ディスクのマウントが非常に遅くなる可能性があります。
 
-* initContainers で `chown` を使用して、GID と UID を設定します。 例:
+* initContainers で `chown` を使用して、GID と UID を設定します。 次に例を示します。
 
 ```yaml
 initContainers:
@@ -240,7 +240,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>ポッドによって使用されている Azure Disk PersistentVolumeClaim の削除により発生したエラー
 
-ポッドによって使用されている Azure Disk PersistentVolumeClaim を削除しようとすると、エラーが表示される場合があります。 例:
+ポッドによって使用されている Azure Disk PersistentVolumeClaim を削除しようとすると、エラーが表示される場合があります。 次に例を示します。
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -296,7 +296,7 @@ Kubernetes バージョン 1.9.2 以降では、複数のアタッチ/デタッ�
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>デタッチを無期限で待機している Azure Disk
 
-一部のケースでは、Azure Disk のデタッチ操作が最初の試行で失敗した場合、デタッチ操作は再試行されず、元のノード VM にアタッチされたままになります。 このエラーは、ディスクを 1 つのノードから別のノードに移動するときに発生する可能性があります。 例:
+一部のケースでは、Azure Disk のデタッチ操作が最初の試行で失敗した場合、デタッチ操作は再試行されず、元のノード VM にアタッチされたままになります。 このエラーは、ディスクを 1 つのノードから別のノードに移動するときに発生する可能性があります。 次に例を示します。
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -469,16 +469,30 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 この問題は、base64 でエンコードされたストレージ アカウント キーを使用して Azure シークレット ファイルの *azurestorageaccountkey* フィールドを手動で更新することで軽減できます。
 
-Base64 でストレージ アカウント キーをエンコードするには、`base64` を使用します。 例:
+Base64 でストレージ アカウント キーをエンコードするには、`base64` を使用します。 次に例を示します。
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure シークレット ファイルを更新するには、`kubectl edit secret` を使用します。 例:
+Azure シークレット ファイルを更新するには、`kubectl edit secret` を使用します。 次に例を示します。
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
 ```
 
 数分後、エージェント ノードは更新されたストレージ キーを使用して Azure File のマウントを再試行します。
+
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>ノード グループ サイズの修正に失敗したため、クラスター オートスケーラーのスケールに失敗しました
+
+クラスター オートスケーラーがスケールアップまたはスケールダウンされない場合、次のようなエラーが[クラスター オートスケーラー ログ][view-master-logs]に表示されます。
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+このエラーは、上流クラスターのオートスケーラー競合状態が原因で発生します。この場合、クラスター オートスケーラーは、クラスター内に実際にある値とは異なる値で終了しています。 この状態を修正するには、単純に[クラスター オートスケーラー][cluster-autoscaler]を無効にしてから再度有効にします。
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

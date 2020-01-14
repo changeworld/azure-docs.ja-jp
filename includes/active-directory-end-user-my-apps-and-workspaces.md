@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468015"
 ---
 | |
 |--|
-|画面に表示されている内容と、この記事で扱っている内容が一致しない場合は、管理者が新しい**マイ アプリ** (プレビュー) エクスペリエンスを有効にしていないことを意味します。 以前のエクスペリエンスを使用するには、「[マイ アプリ ポータルとは](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview)」の指示と情報に従う必要があります。|
-| |
+|管理者によって組織の新しい **[マイ アプリ]** プレビュー エクスペリエンスが有効にされている場合、 **[マイ アプリ]** ページの上部に "**An updated My Applications experience is available (更新されたマイ アプリケーション エクスペリエンスが利用可能です)** " というバナーが表示されます。 **[Try It]\(試してみる\)** を選択すると、すぐに新しい URL (myapplications.microsoft.com) と更新されたエクスペリエンスに移動します。 その後、 **[マイ アプリ]** ページに戻るたびに、自動的に新しいエクスペリエンスに移動します。<br><br>新しいエクスペリエンスの使用をやめるには、新しい **[マイ アプリ]** ページの上部にある **[Leave new experience]\(新しいエクスペリエンスを使用しない\)** バナーの **[はい]** を選択します。 すると、すぐに以前の URL (myapps.microsoft.com) とエクスペリエンスに戻ります。 その後、 **[マイ アプリ]** ページに戻るたびに、自動的に以前のエクスペリエンスに移動します。|
+|

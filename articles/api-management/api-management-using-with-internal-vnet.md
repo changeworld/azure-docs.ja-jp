@@ -1,5 +1,6 @@
 ---
-title: 内部仮想ネットワークで Azure API Management を使用する方法 | Microsoft Docs
+title: 内部仮想ネットワークで Azure API Management を使用する
+titleSuffix: Azure API Management
 description: 内部仮想ネットワークで Azure API Management をセットアップして構成する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430593"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -121,7 +122,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 
 2. その後、DNS サーバーでレコードを作成して、仮想ネットワーク内からのみアクセスできるこれらのエンドポイントにアクセスできます。
 
-## <a name="routing"> </a> ルーティング
+## <a name="routing"> </a>ルーティング
 
 * サブネット範囲から負荷分散された*プライベート*仮想 IP アドレスは予約され、仮想ネットワークから API Management サービス エンドポイントにアクセスするために使用されます。 この*プライベート* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 このアドレスを、仮想ネットワークによって使用される DNS サーバーに登録する必要があります。
 * 負荷分散された*パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この*パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 "*パブリック*" IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
@@ -130,7 +131,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 * サービスが仮想ネットワークから削除された後、再び追加された場合、パブリックとプライベートに対して割り当てられる IP アドレスが変更される可能性があります。 これが発生した場合は、仮想ネットワーク内の DNS 登録、ルーティング規則、および IP 制限リストの更新が必要な場合があります。
 
 ## <a name="related-content"> </a>関連コンテンツ
-詳細については、次の記事を参照してください。
+詳細については、以下の記事をお読みください。
 * [仮想ネットワーク内での Azure API Management の設定時に発生するネットワーク構成に関する一般的な問題][Common network configuration problems]
 * [Virtual Network に関する FAQ](../virtual-network/virtual-networks-faq.md)
 * [DNS でのレコードの作成](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))

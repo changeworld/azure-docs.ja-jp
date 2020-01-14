@@ -1,5 +1,5 @@
 ---
-title: Microsoft 顧客契約の請求書の料金を理解する - Azure
+title: Microsoft 顧客契約の請求書の料金 - Azure
 description: 請求書の料金を読み取り、理解する方法について説明します。
 author: jureid
 manager: jureid
@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e9c74fd18bf80dfb8fa406912795fb53e655bd88
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b5dfffecbd2908e987b76f29b14937f0e50ce64f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388994"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の料金を理解する
 
 個々のトランザクションを分析することで、請求書の料金を理解できます。 Microsoft 顧客契約の請求先アカウントでは、課金プロファイルごとに毎月請求書が生成されます。 請求書には、前月からのすべての料金が含まれます。 Azure portal で請求書を表示できます。 詳細については、[Microsoft 顧客契約の請求書のダウンロード](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement)に関するページを参照してください。
 
-この記事では、Microsoft 顧客契約の請求先アカウントについて説明します。 [Microsoft の顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
+この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
 ## <a name="view-transactions-for-an-invoice-in-the-azure-portal"></a>Azure portal で請求書のトランザクションを表示する
 
-1. [Azure Portal](https://www.azure.com) にサインインします。
+1. [Azure portal](https://www.azure.com) にサインインする
 
 2. "**コストの管理と請求**" を検索します。
 
@@ -71,7 +71,7 @@ Microsoft 顧客契約の請求先アカウントでは、請求が行われる�
 
 ### <a name="view-summary-of-pending-charges"></a>保留中の料金の概要を表示する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コストの管理と請求**" を検索します。
 
@@ -91,7 +91,7 @@ Microsoft 顧客契約の請求先アカウントでは、請求が行われる�
 
 保留中の料金を確認するときに、その料金を発生させた個々のトランザクションを分析することで、料金のことを理解できます。 この時点では、[すべてのトランザクション] ページに保留中の利用料金は表示されません。 [Azure サブスクリプション] ページで、保留中の利用料金を確認できます。 詳細については、「[保留中の利用料金を表示する](#view-pending-usage-charges)」を参照してください
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コストの管理と請求**" を検索します。
 
@@ -107,7 +107,7 @@ Microsoft 顧客契約の請求先アカウントでは、請求が行われる�
 
 ### <a name="view-pending-usage-charges"></a>保留中の利用料金を表示する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "*コストの管理と請求*" を検索します。
 
@@ -171,9 +171,9 @@ Azure の使用状況および料金の CSV ファイル内の **subscriptionNam
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 請求書および詳細な使用状況の詳細については、以下を参照してください。
 

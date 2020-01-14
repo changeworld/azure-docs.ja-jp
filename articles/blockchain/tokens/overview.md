@@ -4,12 +4,12 @@ description: Azure Blockchain Tokens は、トークンの発行と管理を行�
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387175"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Azure Blockchain Tokens とは何ですか?
 
@@ -41,6 +41,14 @@ Azure Blockchain Tokens のアカウント管理の詳細については、「[A
 
 Azure Blockchain Tokens は、Token Taxonomy Framework (TTF) という標準ベースの基盤に基づいて構築されています。 TTF は、[Token Taxonomy Initiative](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) トークンの作業グループから作成された成果物のセットです。 TTI 作業グループは、トークンとその動作のビジネス分類を定義します。これは、Ethereum、Quorum、Corda、Hyperledger Fabric を含むすべての主要な台帳にわたって適用できます。 作業グループの目標は、ビジネスの観点からトークンの使用を標準化するフレームワークを作成し、簡素化を推進して、トークン ベースの開発をだれもが行えるようにすることです。 業界でこれらのトークンとその動作をビジネス レベルで定義できるようにすることにより、トークンの詳細な実装は、トークンを操作するビジネス ロジックから抽象化されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="support-and-feedback"></a>サポートとフィードバック
+
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
+
+Azure Blockchain Tokens のプレビューにアクセスするには、[Azure Blockchain Tokens チームにお問い合わせください](https://aka.ms/PreviewForm)。
+
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)でアイデアに投票してください。
+
+## <a name="next-steps"></a>次のステップ
 
 利用できる [Azure Blockchain Tokens テンプレート](templates.md)について詳しく確認します。

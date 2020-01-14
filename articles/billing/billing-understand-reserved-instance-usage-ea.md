@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 06/30/2019
 ms.author: banders
-ms.openlocfilehash: 07f8d897d55868923ecca03797cf18a5346d667c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 20eacdb1ab8f7ebdf118646cd548d7b60b2d2ebc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225789"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644347"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -46,7 +46,7 @@ Enterprise Agreement のお客様は、Azure portal と REST API で予約のコ
 | 予約購入 | このビューで使用できます。<br><br>  このデータを取得するには、ChargeType = &quot;Purchase&quot; でフィルター処理します。 <br><br> 料金がどの予約に対するものかを把握するには、ReservationID または ReservationName を参照します。  | このビューには適用されません。 <br><br> 購入コストが償却データでは提供されません。 |
 | EffectivePrice | 値は、予約割引を受ける使用状況に対してはゼロです。 | 値は、予約割引がある使用状況に対する予約の 1 時間あたりの比例配分コストです。 |
 | 未使用の予約 (1 日の使用されなかった予約の時間数と、無駄になった金額を提供します) | このビューには適用されません。 | このビューで使用できます。<br><br> このデータを取得するには、ChargeType = &quot;UnusedReservation&quot; でフィルター処理します。<br><br>  使用率が低かった予約を把握するには、ReservationID または ReservationName を参照します。 これがその日の無駄になった予約の量です。  |
-| UnitPrice (価格シートのリソースの価格) | 使用可能 | 使用可能 |
+| UnitPrice (価格シートのリソースの価格) | 利用可能 | 利用可能 |
 
 Azure の使用状況データで使用できるその他の情報が変更されました。
 
@@ -65,9 +65,9 @@ Azure の使用状況データで使用できるその他の情報が変更さ�
 
 新しいデータを取得するには、[使用状況の詳細 API](/rest/api/consumption/usagedetails/list) を呼び出します。 用語に関する詳細については、[利用料金の用語](billing-understand-your-usage.md)のページを参照してください。 呼び出し元は、[EA ポータル](https://ea.azure.com)を使用するエンタープライズ契約のエンタープライズ管理者である必要があります。 読み取り専用のエンタープライズ管理者は、データを取得もできます。
 
-データは[企業ユーザー向けの Reporting API - 使用状況の詳細](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)では使用できません。
+このデータは[企業ユーザー向けの Reporting API シリーズの Usage Details API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) では利用できないことにご注意ください。
 
-API への呼び出しの例を次に示します。
+Usage Details API への呼び出しの例を次に示します。
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>新しいデータを含む使用状況の CSV ファイルをダウンロードする
 
-EA 管理者の場合、Azure portal から新しい使用状況データを含む CSV ファイルをダウンロードできます。 このデータは [EA ポータル](https://ea.azure.com)からは入手できません。
+EA 管理者の場合、Azure portal から新しい使用状況データを含む CSV ファイルをダウンロードできます。 このデータは、EA ポータル (ea.azure.com) では確認できません。新しいデータを確認するには、Azure portal (portal.azure.com) から使用状況ファイルをダウンロードする必要があります。
 
 Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) に移動します。
 
@@ -124,7 +124,7 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 - リソース (VM など)
 - Resource group
 - Tags
-- Subscription
+- サブスクリプション
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>チャージバックのブレンド価格を取得する
 
@@ -154,7 +154,7 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure の予約の詳細については、次の記事を参照してください。
 

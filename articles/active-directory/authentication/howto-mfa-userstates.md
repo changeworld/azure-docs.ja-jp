@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c39546d47e9916dbc138a4660d73b79e54ebbe3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425242"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -29,9 +29,9 @@ ms.locfileid: "74964057"
 
 **ユーザーの状態を変更することで有効にする** - 2 段階認証を要求するための従来の方法であり、この記事の中で説明します。 これは、Azure MFA Server とクラウド内の Azure MFA の両方で機能します。 この方法を使用すると、ユーザーはサインインする**たびに** 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
 
-条件付きアクセス ポリシーで有効にする - これは、ユーザーに対して 2 段階認証を有効にするための最も柔軟な手段です。 条件付きアクセス ポリシーを使用して有効にする方法は、クラウド内の Azure MFA に対してのみ機能し、Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](howto-mfa-getstarted.md)」を参照してください。
+**条件付きアクセス ポリシーで有効にする** - これは、ユーザーに対して 2 段階認証を有効にするための最も柔軟な手段です。 条件付きアクセス ポリシーを使用して有効にする方法は、クラウド内の Azure MFA に対してのみ機能し、Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](howto-mfa-getstarted.md)」を参照してください。
 
-Azure AD Identity Protection で有効にする - この方法では、Azure AD Identity Protection のリスク ポリシーを使用して、すべてのクラウド アプリケーションのサインイン リスクのみに基づいた 2 段階認証を要求します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)」を参照してください。
+**Azure AD Identity Protection で有効にする** - この方法では、Azure AD Identity Protection のリスク ポリシーを使用して、すべてのクラウド アプリケーションのサインイン リスクのみに基づいた 2 段階認証を要求します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)」を参照してください。
 
 > [!Note]
 > ライセンスと価格の詳細については、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
@@ -44,10 +44,10 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 > [!IMPORTANT]
 > 条件付きアクセス ポリシーを使用して Azure MFA を有効にしても、ユーザーの状態は変更されません。 ユーザーが無効に見えても問題ありません。 条件付きアクセスでは、状態は変更されません。 **組織は、条件付きアクセス ポリシーを使用しているユーザーを有効にしたり、強制したりしないでください。**
 
-| Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
+| Status | [説明] | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:| --- |:---:|:--:|:--:|
 | 無効 | 新しいユーザーの既定の状態は、Azure MFA に登録されていません。 | いいえ | いいえ | いいえ |
-| 有効 | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | No.  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
+| 有効 | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
 | 強制 | ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
@@ -190,7 +190,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 >
 > 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。
 * 信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートに関する追加の設定を構成する方法については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。

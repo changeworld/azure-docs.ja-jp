@@ -1,26 +1,30 @@
 ---
 title: マネージド インスタンス データベースでレプリケーションを構成する
-description: Azure SQL Database マネージド インスタンス データベースにトランザクション レプリケーションを構成する方法を説明します
+description: Azure SQL Database マネージド インスタンス パブリッシャー/ディストリビューターとマネージド インスタンス サブスクライバーの間のトランザクション レプリケーションを構成する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372476"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
 トランザクション レプリケーションを使用すると、SQL Server データベースや別のインスタンス データベースから、Azure SQL Database マネージド インスタンス データベースにデータをレプリケートできます。 
+
+この記事では、マネージド インスタンス パブリッシャー/ディストリビューターとマネージド インスタンス サブスクライバーの間のレプリケーションを構成する方法について説明します。 
+
+![2 つのマネージド インスタンス間でのレプリケート](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 トランザクション レプリケーションを使用して、Azure SQL Database マネージド インスタンスのインスタンス データベースで行われた変更を以下にプッシュすることもできます。
 
@@ -31,7 +35,8 @@ ms.locfileid: "73822593"
 トランザクション レプリケーションは、[Azure SQL Database マネージド インスタンス](sql-database-managed-instance.md)でのパブリック プレビュー段階にあります。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 使用可能な構成については、[トランザクション レプリケーションの構成](sql-database-managed-instance-transactional-replication.md#common-configurations)に関する記事をご覧ください。
 
   > [!NOTE]
-  > この記事の目的は、リソース グループの作成を始め、Azure Database マネージド インスタンスを使用したレプリケーションの構成の始めから終わりまでユーザーにガイドすることです。 マネージド インスタンスが既にデプロイされている場合は、「[手順 4](#4---create-a-publisher-database)」に進んでパブリッシャー データベースを作成します。また、既にパブリッシャーとサブスクライバー データベースがあり、レプリケーションの構成を開始する準備ができている場合は「[手順 6](#6---configure-distribution)」に進みます。  
+  > - この記事の目的は、リソース グループの作成を始め、Azure Database マネージド インスタンスを使用したレプリケーションの構成の始めから終わりまでユーザーにガイドすることです。 マネージド インスタンスが既にデプロイされている場合は、「[手順 4](#4---create-a-publisher-database)」に進んでパブリッシャー データベースを作成します。また、既にパブリッシャーとサブスクライバー データベースがあり、レプリケーションの構成を開始する準備ができている場合は「[手順 6](#6---configure-distribution)」に進みます。  
+  > - この記事では、パブリッシャーとディストリビューターを同じマネージド インスタンスに構成します。 別のマネージド インスタンスにディストリビューターを配置する方法については、「[MI パブリッシャーと MI ディストリビューターの間のレプリケーションの構成](sql-database-managed-instance-configure-replication-tutorial.md)」に関するチュートリアルを参照してください。 
 
 ## <a name="requirements"></a>必要条件
 
@@ -48,9 +53,9 @@ ms.locfileid: "73822593"
  > Azure SQL Database 内の単一データベースとプールされたデータベースは、サブスクライバーとしてのみ使用できます。 
 
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
-サポート:
+サポートするものは次のとおりです。
 
 - Azure SQL Database 内にある SQL Server のオンプレミスおよびマネージド インスタンスの、トランザクション レプリケーションとスナップショット レプリケーションの組み合わせ。
 - サブスクライバーには、オンプレミス SQL Server データベース、Azure SQL Database 内の単一データベース/マネージド インスタンス、または Azure SQL Database エラスティック プール内のプールされたデータベースを使用できます。
@@ -67,10 +72,10 @@ ms.locfileid: "73822593"
 
 ## <a name="2---create-managed-instances"></a>2 - マネージド インスタンスを作成する
 
-[Azure portal](https://portal.azure.com) を使用して、同じ仮想ネットワークおよびサブネット上に 2 つの[マネージド インスタンス](sql-database-managed-instance-create-tutorial-portal.md)を作成します。 2 つのマネージド インスタンスには、次のように名前を付けます。
+[Azure portal](https://portal.azure.com) を使用して、同じ仮想ネットワークおよびサブネット上に 2 つの[マネージド インスタンス](sql-database-managed-instance-create-tutorial-portal.md)を作成します。 たとえば、2 つのマネージド インスタンスに次の名前を指定します。
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (ランダム化のためのいくつかの文字を付加する)
+- `sql-mi-sub` (ランダム化のためのいくつかの文字を付加する)
 
 また、Azure SQL Database マネージド インスタンスに[接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)必要もあります。 
 
@@ -80,9 +85,13 @@ ms.locfileid: "73822593"
 
 `\\storage-account-name.file.core.windows.net\file-share-name` の形式のファイル共有パスをコピーします。
 
+例: `\\replstorage.file.core.windows.net\replshare`
+
 `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net` の形式のストレージ アクセス キーをコピーします。
 
- 詳細については、「 [ストレージ アクセス キーの表示とコピー](../storage/common/storage-account-manage.md#access-keys)」を参照してください。 
+例: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+詳細については、「[ストレージ アカウントのアクセス キーの管理](../storage/common/storage-account-keys-manage.md)」を参照してください。 
 
 ## <a name="4---create-a-publisher-database"></a>4 - パブリッシャー データベースを作成する
 
@@ -160,8 +169,9 @@ GO
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > file_storage パラメーターには、円記号 (`\`) のみを使用してください。 スラッシュ (`/`) を使用すると、ファイル共有への接続時にエラーが発生する可能性があります。 
 
 このスクリプトで、マネージド インスタンス上にローカル パブリッシャーを構成し、リンク サーバーを追加し、SQL Server エージェント用の一連のジョブを作成します。 
 
@@ -293,7 +306,7 @@ select * from dbo.ReplTest
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 パブリケーションをドロップするには、次の T-SQL コマンドを実行します。
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-[リソース グループからマネージド インスタンス リソースを削除](../azure-resource-manager/manage-resources-portal.md#delete-resources)してからリソース グループ `SQLMI-Repl` を削除することで、Azure リソースをクリーンアップできます。 
+[リソース グループからマネージド インスタンス リソースを削除](../azure-resource-manager/management/manage-resources-portal.md#delete-resources)してからリソース グループ `SQLMI-Repl` を削除することで、Azure リソースをクリーンアップできます。 
 
    
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)
-- [マネージド インスタンスとは](sql-database-managed-instance.md)
+- [チュートリアル:MI パブリッシャーと SQL Server サブスクライバーの間のトランザクション レプリケーションを構成する](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Managed Instance とは](sql-database-managed-instance.md)

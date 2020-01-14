@@ -1,16 +1,16 @@
 ---
 title: カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 services: azure-dev-spaces
-ms.date: 08/13/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 8ddaa7b3e982cb85428a7faef20b59525a175778
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438483"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -22,7 +22,7 @@ ms.locfileid: "74482539"
 * [Azure CLI がインストールされていること][az-cli]。
 * [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター][qs-cli]。
 * [kubectl][kubectl] がインストールされていること。
-* [Helm 2.13 から 2.16 がインストールされていること][helm-installed]。
+* [Helm 3 がインストールされていること][helm-installed]。
 * [カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあること。
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>カスタム traefik イングレス コントローラーの構成
@@ -33,7 +33,7 @@ Kubernetes のコマンドライン クライアントである [kubectl][kubect
 az aks get-credentials --resource-group myResourceGroup --name myAKS
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```console
 $ kubectl get nodes
@@ -41,12 +41,17 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
+traefik イングレス コントローラーの Helm チャートを含む[公式の安定版 Helm リポジトリ][helm-stable-repo]を追加します。
+
+```console
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
 traefik イングレス コントローラー用に Kubernetes 名前空間を作成し、それを `helm` を使用してインストールします。
 
 ```console
 kubectl create ns traefik
-helm init --wait
-helm install stable/traefik --name traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 [kubectl get][kubectl-get] を使用して、traefik イングレス コントローラー サービスの IP アドレスを取得します。
@@ -106,18 +111,23 @@ gateway:
 
 変更を保存し、ファイルを閉じます。
 
+`azds space select` を使用して、サンプル アプリケーションで *dev* 空間を作成します。
+
+```console
+azds space select -n dev -y
+```
+
 `helm install` を使用してサンプル アプリケーションをデプロイします。
 
 ```console
-helm install -n bikesharing . --dep-up --namespace dev --atomic
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
 サンプル アプリケーションは、上記の例では、*dev* 名前空間にデプロイされます。
 
-ご自分のサンプル アプリケーションの *dev* 空間を `azds space select` を使用して選択し、`azds list-uris` を使用してそのサンプル アプリケーションにアクセスする URL を表示します。
+`azds list-uris` を使用してサンプル アプリケーションにアクセスするための URL を表示します。
 
 ```console
-azds space select -n dev
 azds list-uris
 ```
 
@@ -152,70 +162,94 @@ http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>HTTPS を使用する traefik イングレス コントローラーの構成
 
-以下の例のような `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` ファイルを作成します。 *email* 値を自分自身のメールで更新します。これは、Let's Encrypt で証明書を生成するために使用されます。
-
-```yaml
-fullnameOverride: traefik
-replicas: 1
-cpuLimit: 400m
-memoryRequest: 200Mi
-memoryLimit: 500Mi
-externalTrafficPolicy: Local
-kubernetes:
-  ingressClass: traefik
-  ingressEndpoint:
-    useDefaultPublishedService: true
-dashboard:
-  enabled: false
-debug:
-  enabled: false
-accessLogs:
-  enabled: true
-  fields:
-    defaultMode: keep
-    headers:
-      defaultMode: keep
-      names:
-        Authorization: redact
-acme:
-  enabled: true
-  email: "someone@example.com"
-  staging: false
-  challengeType: tls-alpn-01
-ssl:
-  enabled: true
-  enforced: true
-  permanentRedirect: true
-  tlsMinVersion: VersionTLS12
-  cipherSuites:
-    - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-```
-
-お使いの *traefik* サービスを、`helm repo update` を使用し、作成した *traefik-values.yaml* ファイルを含めて更新します。
+[cert-manager][cert-manager] を使用して、HTTPS を使用するように traefik イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、*certmanager* チャートをインストールします。
 
 ```console
-cd ..
-helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.yaml
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
+kubectl label namespace traefik certmanager.k8s.io/disable-validation=true
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-上記のコマンドは、*traefik-values.yaml* の値を使用して traefik サービスの新しいバージョンを実行し、前のサービスを削除します。 traefik サービスによって、Let's Encrypt を使用して TLS 証明書も作成され、HTTPS が使用されるように Web トラフィックのリダイレクトが開始されます。
+`letsencrypt-clusterissuer.yaml` ファイルを作成し、自分のメール アドレスでメール フィールドを更新します。
+
+```yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: MY_EMAIL_ADDRESS
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+```
 
 > [!NOTE]
-> traefik サービスの新しいバージョンの開始には数分かかる場合があります。 進行状況は、`kubectl get pods --namespace traefik --watch` を使用して確認できます。
+> テストの場合、*ClusterIssuer* に使用できる[ステージング サーバー][letsencrypt-staging-issuer]もあります。
 
-*dev/azureuser1* 子空間のサンプル アプリケーションに移動し、HTTPS を使用するようにリダイレクトされていることを確認します。 ページが読み込まれ、ブラウザーにいくつかエラーが表示されていることも確認します。 ブラウザー コンソールを開くと、HTTP リソースを読み込もうとしている HTTPS ページにエラーが関連していることが表示されます。 例:
+`kubectl` を使用して `letsencrypt-clusterissuer.yaml` を適用します。
+
+```console
+kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
+```
+
+`helm` を使用して、HTTPS を使用するように traefik をアップグレードします。
+
+```console
+helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
+```
+
+*cert-manager* および HTTPS を使用するための詳細を含むように [values.yaml][values-yaml] を更新します。 更新された `values.yaml` ファイルの例を次に示します。
+
+```yaml
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+bikesharingweb:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-bikesharingweb-secret
+
+gateway:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-gateway-secret
+```
+
+`helm` を使用してサンプル アプリケーションをアップグレードします。
+
+```console
+helm upgrade bikesharing . --namespace dev --atomic
+```
+
+*dev/azureuser1* 子空間のサンプル アプリケーションに移動し、HTTPS を使用するようにリダイレクトされていることを確認します。 ページが読み込まれ、ブラウザーにいくつかエラーが表示されていることも確認します。 ブラウザー コンソールを開くと、HTTP リソースを読み込もうとしている HTTPS ページにエラーが関連していることが表示されます。 次に例を示します。
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-このエラーを修正するには、[BikeSharingWeb/azds.yaml][azds-yaml] で *kubernetes.io/ingress.class* に *traefik* が使用され、 *$(hostSuffix)* にお使いのカスタム ドメインが使用されるように更新します。 例:
+このエラーを修正するには、[BikeSharingWeb/azds.yaml][azds-yaml] で *kubernetes.io/ingress.class* に *traefik* が使用され、 *$(hostSuffix)* にお使いのカスタム ドメインが使用されるように更新します。 次に例を示します。
 
 ```yaml
 ...
@@ -260,13 +294,13 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 `BikeSharingWeb` ディレクトリに移動し、`azds up` を使用し、更新されたお使いの BikeSharingWeb サービスを実行します。
 
 ```console
-cd BikeSharingWeb/
+cd ../BikeSharingWeb/
 azds up
 ```
 
 *dev/azureuser1* 子空間のサンプル アプリケーションに移動し、HTTPS を使用するようにリダイレクトされ、エラーがないことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 
@@ -284,9 +318,12 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[cert-manager]: https://cert-manager.io/
+[helm-installed]: https://helm.sh/docs/intro/install/
+[helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer
 [package-json]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/package.json
 [values-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml

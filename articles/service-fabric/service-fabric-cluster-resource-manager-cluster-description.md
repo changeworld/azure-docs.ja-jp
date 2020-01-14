@@ -1,25 +1,16 @@
 ---
-title: クラスター リソース マネージャーを使用してクラスターを記述する | Microsoft Docs
+title: Cluster Resource Manager を使用してクラスターを記述する
 description: 障害ドメイン、アップグレード ドメイン、ノードのプロパティ、ノード容量をクラスター リソース マネージャーに対して指定することで、Service Fabric クラスターを記述します。
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22ccb21a208bbe8e825bff9f7602bfca05990816
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452122"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>クラスター リソース マネージャーを使用して Service Fabric クラスターを記述する
 Azure Service Fabric のクラスター リソース マネージャー機能には、クラスターを記述するためのメカニズムが複数用意されています。
@@ -356,7 +347,7 @@ Azure でホストされる Service Fabric のデプロイでは、障害ドメ�
 
 特定のワークロードをターゲットにするハードウェアの好例は、ほぼすべての n 層アーキテクチャです。 一部のコンピューターは、アプリケーションのフロント エンドまたは API 提供側として機能し、クライアントまたはインターネットに公開されます。 (多くの場合異なるハードウェア リソースを備えた) 複数のコンピューターが、コンピューティングまたはストレージ レイヤーの作業を処理します。 通常、これらはクライアントまたはインターネットに直接 _公開されません_。 
 
-Service Fabric では、特定のワークロードを特定のハードウェア構成で実行する必要が生じる状況があることが想定されます。 例:
+Service Fabric では、特定のワークロードを特定のハードウェア構成で実行する必要が生じる状況があることが想定されます。 次に例を示します。
 
 * 既存の n 層アプリケーションが Service Fabric 環境に "リフト アンド シフト (移行)" された。
 * パフォーマンス、スケール、またはセキュリティの分離の理由により、ワークロードを特定のハードウェアで実行する必要がある。
@@ -624,7 +615,7 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラスター リソース マネージャー内のアーキテクチャと情報フローについては、「[クラスター リソース マネージャーのアーキテクチャの概要](service-fabric-cluster-resource-manager-architecture.md)」をご覧ください。
 * 最適化メトリックの定義は、負荷を分散するのではなく、ノードで統合する方法の 1 つです。最適化を構成する方法については、「[Service Fabric のメトリックと負荷の最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)」をご覧ください。
 * 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。

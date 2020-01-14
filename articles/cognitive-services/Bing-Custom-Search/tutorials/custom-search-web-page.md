@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:カスタム検索 Web ページを作成する - Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: カスタム Bing Search インスタンスを構成して、Web ページに統合する方法について学習します。
+description: このチュートリアルでは、カスタム Bing Search インスタンスを構成して、Web ページに統合する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448784"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
@@ -127,7 +127,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ホステッド UI は、2 つの方法で使用することができます。  
 
-- オプション 1:提供される JavaScript スニペットをアプリケーションに統合する。
+- オプション 1: 提供される JavaScript スニペットをアプリケーションに統合する。
 - オプション 2:提供される HTML エンドポイントを使用する。
 
 このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット**について説明します。  
@@ -209,7 +209,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ![カスタム検索結果のスクリーンショット](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search エンドポイントを呼び出す (C#)](../call-endpoint-csharp.md)

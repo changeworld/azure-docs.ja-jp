@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 76521464127780d266ba58eab7306b8fe2930c2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422224"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872742"
 
 > [!NOTE]
 >
-> IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)で類似するドキュメントを確認してください。
+> IntelliJ、Eclipse、VS Code のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイックスタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)、[Azure Toolkit for Eclipse のクイックスタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)、または [VS Code のクイックスタート](https://code.visualstudio.com/docs/java/java-webapp)で類似するドキュメントを確認してください。
 >
 ![Azure App Service で実行されているサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -91,7 +91,7 @@ Confirm (Y/N)? : Y
 
 もう一度 `pom.xml` に移動してプラグイン構成が更新されていることを確認します。必要に応じて、pom ファイルで App Service の他の構成を直接変更できます。その一般的なものを次に示します。
 
- プロパティ | 必須 | 説明 | Version
+ プロパティ | 必須 | [説明] | Version
 ---|---|---|---
 `<schemaVersion>` | false | 構成スキーマのバージョンを指定します。 サポートされる値は `v1`、`v2` です。 | 1.5.2
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
@@ -121,7 +121,7 @@ mvn package azure-webapp:deploy
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、リソース グループ内に Azure リソースを作成しました。 今後これらのリソースが必要になることが予想されない場合は、ポータルからリソース グループを削除するか、Cloud Shell で次のコマンドを実行します。
 
@@ -131,7 +131,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 このコマンドの実行には、少し時間がかかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Java Enterprise アプリと PostgreSQL](tutorial-java-enterprise-postgresql-app.md)

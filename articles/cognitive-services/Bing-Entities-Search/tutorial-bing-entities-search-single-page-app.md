@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Bing Entity Search シングルページ Web アプリ
 titleSuffix: Azure Cognitive Services
-description: 単一ページの Web アプリで Bing Entity Search API を使用する方法を説明します。
+description: このチュートリアルでは、単一ページの Web アプリケーションで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423974"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448603"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
@@ -23,7 +23,7 @@ Bing Entity Search API を使用すると、Web で*エンティティ*と*場�
 
 |||
 |-|-|
-|エンティティ|名前で検索する有名な人物、場所、もの|
+|[エンティティ]|名前で検索する有名な人物、場所、もの|
 |場所|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
 
 このチュートリアルでは、Bing Entity Search API を使用する単一ページの Web アプリケーションをビルドして、検索結果をページ内に表示できるようにします。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
@@ -39,7 +39,7 @@ API を使用すると、場所によって結果を優先順位付けするこ�
 > [!NOTE]
 > ページの下部にある JSON と HTTP のヘッダーをクリックすると、JSON 応答と HTTP 要求の情報が表示されます。 これらの詳細情報は、サービスの詳細を調べるのに役立ちます。
 
-このチュートリアルのアプリは、次の方法を示しています。
+このチュートリアル アプリは、次の方法を示しています。
 
 > [!div class="checklist"]
 > * Bing Entity Search API 呼び出しを JavaScript で実行する
@@ -51,7 +51,7 @@ API を使用すると、場所によって結果を優先順位付けするこ�
 
 このチュートリアルのページでは、すべてが自己完結しています。外部のフレームワーク、スタイル シートはもちろん、画像ファイルすら使用することはありません。 広くサポートされている JavaScript 言語機能のみを使用し、現在のバージョンの主要な Web ブラウザーすべてで動作します。
 
-このチュートリアルでは、ソース コードの一部についてのみ説明します。 完全なソース コードは[別のページ](tutorial-bing-entities-search-single-page-app-source.md)から入手できます。 このコードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存します。
+このチュートリアルでは、ソース コードの一部についてのみ説明します。 完全なソース コードは[別のページ](tutorial-bing-entities-search-single-page-app-source.md)から入手できます。 このコードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存してください。
 
 > [!NOTE]
 > このチュートリアルは、[単一ページの Bing Web Search アプリのチュートリアル](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)と実質的に同じものですが、エンティティの検索結果についてのみ説明しています。
@@ -73,7 +73,7 @@ HTML には検索フォームが含まれ、ユーザーはこれにクエリを
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
 ```
 
-`onsubmit` ハンドラーは `false` を返すことで、フォームがサーバーに送信されないようにします。 JavaScript コードは、フォームから重要な情報を実際に収集し、検索を実行します。
+`onsubmit` ハンドラーは `false` を返すことで、フォームがサーバーに送信されないようにします。 実際には JavaScript コードがフォームから必要な情報を収集し、検索を実行する処理を行います。
 
 検索は、2 つのフェーズで行われます。 最初に、ユーザーが場所の制限を入力すると、それを座標に変換するために Bing Maps クエリが実行されます。 その後、このクエリのコールバックにより Bing Entity Search クエリが開始されます。
 
@@ -86,7 +86,7 @@ HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含�
 
 コードに Bing Search と Bing Maps API のサブスクリプション キーを含めずに済むように、ブラウザーの永続的ストレージを使用してキーを格納します。 いずれのキーも保存されていない場合は、保存するように促し、後で使用するために保存します。 後でキーが API によって拒否された場合、格納されたキーは無効になり、ユーザーは次回の検索時にキーを求められます。
 
-`localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
+`localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```javascript
 // cookie names for data we store
@@ -130,7 +130,7 @@ HTML `<body>` タグには、ページの読み込みが完了したときに `g
 
 ![[Bing Entity Search フォーム]](media/entity-search-spa-form.png)
 
-HTML のフォームには、次のコントロールが含まれます。
+この HTML のフォームには、次のコントロールが含まれます。
 
 | | |
 |-|-|
@@ -157,13 +157,13 @@ function bingSearchOptions(form) {
 }
 ```
 
-たとえば、`moderate` が既定になっていると、セーフサーチ機能は、`strict`、`moderate`、`off` のいずれかにできます。 ただし、このフォームでは、2 つの状態しかないチェック ボックスを使用します。 JavaScript コードにより、この設定が `strict` または `off` のいずれかに変換されます (`moderate` は使用しません)。
+たとえば、セーフサーチ機能は、`strict`、`moderate`、`off` のいずれかにできます。既定値は `moderate` です。 ただし、このフォームでは、2 つの状態しかないチェック ボックスを使用します。 JavaScript コードにより、この設定を `strict` または `off` のいずれかに変換します (`moderate` は使用しません)。
 
 `mapquery` フィールドは、Bing Entity Search ではなく、Bing Maps の位置クエリで使用されるため、`bingSearchOptions()` では処理されません。
 
 ## <a name="obtaining-a-location"></a>場所の取得
 
-Bing Maps API では、[ `locationQuery`メソッド](//msdn.microsoft.com/library/ff701711.aspx)を提供しています。これを使用して、ユーザーが入力した位置の緯度と経度を検索します。 これらの座標は、ユーザーの要求と共に Bing Entity Search API に渡されます。 検索結果では、指定した位置情報に近い順にエンティティと場所が優先度付けされます。
+Bing Maps API では、[`locationQuery`メソッド](//msdn.microsoft.com/library/ff701711.aspx)を提供しています。これを使用して、ユーザーが入力した位置の緯度と経度を検索します。 これらの座標は、ユーザーの要求と共に Bing Entity Search API に渡されます。 検索結果では、指定した位置情報に近い順にエンティティと場所が優先度付けされます。
 
 Web アプリでは、通常の `XMLHttpRequest` クエリを使用して Bing Maps API にアクセスできません。これはサービスでクロス オリジン クエリをサポートしていないからです。 ただし、JSONP ("P" は "padded" (埋め込み)) はサポートされています。 JSONP 応答は、関数呼び出しでラップされる通常の JSON 応答です。 要求は `<script>` タグを使用してドキュメントに挿入することで作成されます (スクリプトの読み込みは、ブラウザーのセキュリティ ポリシーの対象外です)。
 
@@ -376,11 +376,11 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 要求が成功しても、必ずしも検索が成功したとは*限りません*。 検索操作でエラーが発生した場合、Bing Entity Search API は 200 以外の HTTP 状態コードを返し、JSON 応答内にエラー情報を含めます。 また、要求のレートが制限されている場合は、API は空の応答を返します。
+> HTTP 要求が成功しても、必ずしも検索自体が成功したとは "*限りません*"。 検索操作でエラーが発生した場合、Bing Entity Search API は 200 以外の HTTP 状態コードを返し、JSON 応答内にエラー情報を含めます。 また、要求のレートが制限されている場合、API は空の応答を返します。
 
 先ほどの両方の関数内にあるコードの多くは、エラー処理専用のものです。 エラーは次の段階で発生する場合があります。
 
-|段階|起こり得るエラー|処理元|
+|段階|起こり得るエラー|処理される場所|
 |-|-|-|
 |JavaScript 要求オブジェクトのビルド|無効な URL|`try`/`catch` ブロック|
 |要求の実行|ネットワーク エラー、接続の中止|`error` および `abort` イベント ハンドラー|
@@ -449,9 +449,9 @@ searchItemRenderers = {
 |`index`|コレクション内の結果項目のインデックス。|
 |`count`|検索結果項目のコレクション内の項目の数。|
 
-`index` パラメーターと `count` パラメーターは、結果のカウント、コレクションの先頭または末尾の特別な HTML の生成、特定の数の項目の後への改行の挿入などに使用できます。 レンダラーにこの機能が必要がない場合は、これら 2 つのパラメーターを受け入れる必要はありません。 実際、このチュートリアル アプリのレンダラーには、これらは使用しません。
+`index` パラメーターと `count` パラメーターは、結果のカウント、コレクションの先頭または末尾の特別な HTML の生成、特定の数の項目の後への改行の挿入などに使用できます。 レンダラーにこの機能が必要ない場合は、これら 2 つのパラメーターを受け取る必要はありません。 実際、このチュートリアル アプリのレンダラーには、これらは使用しません。
 
-`entities` レンダラーについて詳しく見ていきます。
+`entities` レンダラーについて詳しく見ていきましょう。
 
 ```javascript
     entities: function(item) {
@@ -507,7 +507,7 @@ searchItemRenderers = {
 > [!div class="checklist"]
 > * HTML `<img>` タグをビルドして画像のサムネイルを表示する (ある場合)。 
 > * イメージを含むページにリンクする HTML `<a>` タグをビルドする。
-> * イメージとそれが存在するサイトに関する情報を表示する説明をビルドする。
+> * 画像およびその画像が存在するサイトに関する情報を示す説明をビルドします。
 > * 表示ヒント (ある場合) を使用して、エンティティの分類を組み込む。
 > * エンティティに関する追加情報を取得するため、Bing 検索へのリンクを含める。
 > * データ ソースに必要なライセンスまたは属性の情報を表示する。
@@ -518,9 +518,9 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 
 `X-MSEdge-ClientID` ヘッダーを提供すると、Bing API がユーザーのすべての検索を関連付けられるようになります。これには、2 つの重要な利点があります。
 
-1 つ目は、Bing 検索エンジンが、検索時に過去のコンテキストを適用できるようになることです。これにより、ユーザーがより満足できる結果を見つけることができます。 たとえば、ユーザーが航海に関連する用語を検索したことがあると、その後の "ドック" という検索では、ヨットをドッキングする場所に関する情報が優先的に返される可能性があります。
+1 つ目は、Bing 検索エンジンが、検索に過去のコンテキストを適用できるようになることです。これにより、ユーザーがより満足できる結果を見つけることができます。 たとえば、ユーザーが航海に関連する用語を検索したことがあると、その後の "ドック" という検索では、ヨットをドッキングする場所に関する情報が優先的に返される可能性があります。
 
-2 つ目は、まだ広く利用されていない新機能を Bing でランダムに選択し、体験用としてユーザーに提供できるようになります。 各要求で同じクライアント ID を提供することで、機能の表示対象として選択されているユーザーには、常にそれが表示されるようになります。 クライアント ID を提供しないと、ユーザーには、検索結果内で機能が見かけ上ランダムに表示されたり消えたりする可能性があります。
+2 つ目は、Bing でユーザーをランダムに選択し、まだ広く利用されていない新機能を体験してもらえるようになることです。 各要求で同じクライアント ID を提供することで、機能の表示対象として選択されているユーザーには、常にそれが表示されるようになります。 クライアント ID を提供しないと、ユーザーには、検索結果内で機能が見かけ上ランダムに表示されたり消えたりする可能性があります。
 
 ブラウザーのセキュリティ ポリシー (CORS) により、`X-MSEdge-ClientID` ヘッダーを JavaScript で使用できない場合もあります。 この制限は、検索応答のオリジンとその要求元のページとが異なる場合に生じます。 運用環境では、API 呼び出しを実行するサーバー側スクリプトを Web ページと同じドメインに ホストして、このポリシーに対応する必要があります。 スクリプトのオリジンが Web ページと同じになるので、`X-MSEdge-ClientID` ヘッダーを JavaScript で利用できます。
 
@@ -543,7 +543,7 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

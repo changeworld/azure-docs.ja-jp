@@ -1,6 +1,7 @@
 ---
-title: クイック スタート:Azure portal を使用して Azure Database Migration Service のハイブリッド モード インスタンスを作成する | Microsoft Docs
-description: Azure portal を使用して、ハイブリッド モードで Azure Database Migration Service のインスタンスを作成します
+title: クイック スタート:Azure portal を使用してハイブリッド モード インスタンスを作成する
+titleSuffix: Azure Database Migration Service
+description: Azure portal を使用して、ハイブリッド モードで Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,32 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/06/2019
-ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/17/2019
+ms.openlocfilehash: c93ff5d97826ee618716cc15361a439a5429d696
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437753"
 ---
-# <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>クイック スタート:Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成する (プレビュー)
+# <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>クイック スタート:Azure portal と Azure Database Migration Service を使用してハイブリッド モード インスタンスを作成する
 
 Azure Database Migration Service のハイブリッド モードを使うと、オンプレミスでホストされている移行 worker と、クラウドで実行されている Azure Database Migration Service のインスタンスを併用して、データベースの以降を管理できます。 ハイブリッド モードは、オンプレミス ネットワークと Azure の間にサイト間接続がないシナリオで、またはサイト間接続の帯域幅が限られている場合に、特に便利です。
 
+>[!NOTE]
+>現在、ハイブリッド モードで動作する Azure Database Migration Service は、次のデータベースへの SQL Server 移行をサポートします。
+>
+>- Azure SQL Database Managed Instance。ダウンタイムはほぼゼロです (オンライン)。
+>- Azure SQL Database 単一データベース。多少のダウンタイムを伴います (オフライン)。
+>- MongoDb から Azure CosmosDB。ダウンタイムはほぼゼロです (オンライン)。
+>- MongoDb から Azure CosmosDB。多少のダウンタイムを伴います (オフライン)。
+
 このクイックスタートでは、Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成します。 その後、オンプレミス ネットワークにハイブリッド worker をダウンロードしてインストールし、設定します。 プレビューの間は、Azure Database Migration Service のハイブリッド モードを使用して、SQL Server のオンプレミスのインスタンスから Azure SQL Database に、データを移行できます。
+
+> [!NOTE]
+> Azure Database Migration Service ハイブリッド インストーラーは、Microsoft Windows Server 2012 R2、Window Server 2016、Windows Server 2019、Windows 10 で動作します。
 
 > [!IMPORTANT]
 > Azure Database Migration Service ハイブリッド インストーラーには .NET 4.7.2 以降が必要です。 最新バージョンの .NET については、「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」ページで確認してください。
@@ -51,7 +63,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 
 1. **[+ リソースの作成]** を選択して、Azure Database Migration Service のインスタンスを作成します。
 
-2. マーケットプレースで "migration" を検索し、 **[Azure Database Migration Service]** を選択します。 **[Azure Database Migration Service]** 画面で **[作成]** を選択します。
+2. Marketplace で "migration" を検索し、 **[Azure Database Migration Service]** を選択します。 **[Azure Database Migration Service]** 画面で **[作成]** を選択します。
 
 3. **[移行サービスの作成]** 画面で:
 
@@ -59,13 +71,9 @@ Azure Database Migration Service の最初のインスタンスを作成する�
     - インスタンスを作成する Azure **サブスクリプション**を選択します。
     - 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
     - ソースまたはターゲット サーバーに最も近い **[場所]** を選択します。
-
-    > [!IMPORTANT]
-    > プレビュー期間中、ハイブリッド モードは米国東部リージョンでのみサポートされます。 ハイブリッド worker はオンプレミス ネットワークにインストールされるため、別のリージョンのターゲットに移行する場合でも、パフォーマンスへの影響はほとんど、またはまったくありません。
-
     - **[サービス モード]** では、 **[ハイブリッド (プレビュー)]** を選択します。
 
-      ![移行サービスの作成 - 基本](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. **[Review + create]\(レビュー + 作成\)** を選択します。
 
@@ -120,7 +128,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 4. インストール フォルダーで **dmsSettings.json** ファイルを見つけて開き、**ApplicationId** と **resourceId** を指定して、ファイルを保存します。
 
     ![Azure Database Migration Service ハイブリッド worker の設定](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
- 
+
 5. 次のコマンドを使用して、ハイブリッド worker からの通信の認証を行うために Azure Database Migration Service で使用できる証明書を生成します。
 
     ```
@@ -141,6 +149,12 @@ Azure Database Migration Service の最初のインスタンスを作成する�
     <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
     ```
 
+    > [!NOTE]
+    > インストール コマンドを実行するときに、次のパラメーターを使用することもできます。
+    >
+    > - **-TelemetryOptOut** - worker からのテレメトリの送信を停止します。ただし、最小限のログは引き続きローカルで記録されます。  インストーラーからも引き続きテレメトリが送信されます。
+    > - **-p {InstallLocation}** - インストール パスを変更できます (既定では "C:\Program Files\DatabaseMigrationServiceHybrid")。
+
 8. インストーラーがエラーなしで実行されると、Azure Database Migration Service でサービスがオンライン状態として表示され、データベースを移行できる状態になります。
 
     ![オンライン状態の Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode-online.png)
@@ -153,7 +167,28 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> アンインストール コマンドを実行するときに、"-ReuseCert" パラメーターを使用することもできます。このパラメーターを使用すると、generateCert ワークフローによって生成された AdApp 証明書が維持されます。  過去に生成してアップロードした証明書をそのまま使用することができます。
+
+## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>PowerShell を使用して Azure Database Migration Service ハイブリッド worker を設定する
+
+Azure Database Migration Service のハイブリッド worker のインストール手段は Azure portal だけではありません。PowerShell スクリプトも用意されています。ハイブリッド モードで Azure Database Migration Service の新しいインスタンスを作成した後、そのスクリプトを使用して worker のインストール手順を自動化することができます。 スクリプト:
+
+1. 新しい AdApp を作成します。
+2. インストーラーをダウンロードします。
+3. generateCert ワークフローを実行します。
+4. 証明書をアップロードします。
+5. AdApp を共同作成者として Azure Database Migration Service インスタンスに追加します。
+6. インストール ワークフローを実行します。
+
+このスクリプトは、必要なすべてのアクセス許可がユーザーの環境に既に存在する状況での、簡単なプロトタイプ作成を意図したものです。 実際の運用環境では、AdApp と Cert とで要件が異なる場合があるため、スクリプトの実行に失敗することがあります。
+
+> [!IMPORTANT]
+> このスクリプトは、Azure Database Migration Service のハイブリッド モードのインスタンスが既に存在すること、また、AdApps をテナントに作成したり、サブスクリプションの RBAC に変更を加えたりするためのアクセス許可が、ご利用の Azure アカウントにあることを前提としています。
+
+スクリプトの先頭にパラメーターを入力し、管理者権限の PowerShell インスタンスからスクリプトを実行してください。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する](tutorial-sql-server-managed-instance-online.md)

@@ -1,33 +1,35 @@
 ---
 title: Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 titleSuffix: Azure Storage
-description: Azure CLI を使用して、Azure Active Directory 資格情報によってユーザー委任 SAS (プレビュー) を作成する方法について学習します。
+description: Azure CLI を使用して、Azure Active Directory 資格情報によってユーザー委任 SAS を作成する方法について学習します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371991"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、Azure Active Directory (Azure AD) 資格情報を使用して、Azure CLI でコンテナーまたは BLOB のユーザー委任 SAS を作成する方法について示します (プレビュー)。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して、Azure CLI でコンテナーまたは BLOB のユーザー委任 SAS を作成する方法について示します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>最新バージョンの Azure CLI をインストールする
 
 Azure CLI を使用して Azure AD の資格情報で SAS をセキュリティで保護するには、まず最新バージョンの Azure CLI がインストールされていることを確認します。 Azure CLI のインストールの詳細については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+
+Azure CLI を使用してユーザー委任 SAS を作成するために、バージョン 2.0.78 以降がインストールされていることを確認します。 インストールされているバージョンを確認するには、`az --version` コマンドを使用します。
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Azure AD の資格情報でサインインする
 
@@ -129,7 +131,7 @@ az storage account revoke-delegation-keys \
 > [!IMPORTANT]
 > ユーザーの委任キーと RBAC ロールの割り当てはいずれも Azure Storage によってキャッシュされるため、失効プロセスの開始と、既存のユーザーの委任 SAS の無効化の間に、遅延が発生する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Get User Delegation Key 操作](/rest/api/storageservices/get-user-delegation-key)

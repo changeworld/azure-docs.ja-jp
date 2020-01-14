@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465184"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
 
@@ -34,10 +34,12 @@ ms.locfileid: "74277021"
 - Windows または macOS のコンピューター。
   - Windows を使っている場合:
     - 最新バージョンの <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 16.2 以上</a>。
-    - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>
+    - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
+    - <a href="https://git-lfs.github.com/">Git LFS</a>。
   - macOS を使っている場合:
     - 最新バージョンの <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
-    - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>
+    - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>。
+    - <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 適切なプラットフォームに最新バージョンの Xamarin.Android がインストールされ、実行されていること。 Xamarin.Android のインストールガイドについては、[Xamarin.Android のインストール](https://docs.microsoft.com/xamarin/android/get-started/installation/index)に関するガイドを参照してください。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
   - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 詳細については、[このページ](https://developer.android.com/studio/run/device.html)を参照してください。

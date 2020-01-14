@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091936"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498055"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
@@ -81,11 +81,11 @@ VM の移動には、次の手順が伴います。
 
      ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/single-zone.png)
 
-* **各階層の VM を可用性セットにデプロイ**: Azure Site Recovery を使用して VM のレプリケーションを有効にすると、可用性セット内の VM を個別の Availability Zones に構成できます。 移動操作の完了後、可用性の SLA は 99.9% になります。
+* **各階層の VM を可用性セットにデプロイ**: Azure Site Recovery を使用して VM のレプリケーションを有効にすると、可用性セット内の VM を個別の Availability Zones に構成できます。 移動操作の完了後、可用性の SLA は 99.99% になります。
 
      ![可用性セットと Availability Zones への VM のデプロイ](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > 

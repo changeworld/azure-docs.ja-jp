@@ -8,35 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448083"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
 
-発話例内のエンティティにラベルを付けることで、エンティティがどのようなもので、発話内のどこに出現できるかが例として LUIS に示されます。 
+発話例内のエンティティにラベルを付けることで、エンティティがどのようなもので、発話内のどこに出現できるかが例として LUIS に示されます。
 
 ## <a name="labeling-machine-learned-entity"></a>機械学習エンティティにラベルを付ける
 
-「`hi, please I want a cheese pizza in 20 minutes`」というフレーズについて考えます。 
+「`hi, please I want a cheese pizza in 20 minutes`」というフレーズについて考えます。
 
-
-1. エンティティの左端のテキストを選択し、次に右端のテキストを選択して、ラベルを付けるエンティティ（この例では、Complete Order）を選択します。次の画像では、*Complete Order* にラベルが付けられています。
-
+1. エンティティの左端のテキストを選択し、次に右端のテキストを選択して、ラベルを付けるエンティティ (この例では、完全な注文) を選択します。 次の画像では、_Complete Order_ にラベルが付けられています。
 
     > [!div class="mx-imgBorder"]
     > ![完全な機械学習エンティティにラベルを付ける](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. ポップアップ ウィンドウからエンティティを選択します。 ラベル付けされた完全なピザ注文エンティティには、ラベルが付いたすべての単語が (英語では左から右へ) 含まれています。 
+1. ポップアップ ウィンドウからエンティティを選択します。 ラベル付けされた完全なピザ注文エンティティには、ラベルが付いたすべての単語が (英語では左から右へ) 含まれています。
 
 ## <a name="review-labeled-text"></a>ラベルが付けられたテキストをレビューする
 
-ラベル付けした後、発話例を確認し、選択したテキスト範囲に、選択したエンティティと下線が付加されていることを確認します。 実線は、そのテキストにラベルが付けられたことを示しています。 
+ラベル付けした後、発話例を確認し、選択したテキスト範囲に、選択したエンティティと下線が付加されていることを確認します。 実線は、そのテキストにラベルが付けられたことを示しています。
 
 > [!div class="mx-imgBorder"]
 > ![ラベルが付けられた完全な機械学習エンティティ](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -57,12 +55,12 @@ ms.locfileid: "74383704"
 
 エンティティ パレットは、以前のラベル付けエクスペリエンスの代わりとして機能します。 これにより、テキストにブラシを適用することで、そのテキストにエンティティのラベルを瞬時に付けることができます。
 
-1. 発話テーブルの右上にある蛍光ペン アイコンを選択して、エンティティ パレットを開きます。 
+1. 発話テーブルの右上にある蛍光ペン アイコンを選択して、エンティティ パレットを開きます。
 
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. エンティティ コンポーネントを選択します。 この操作は、新しいカーソルによって視覚的に示されます。 このカーソルは、ポータル内でマウスの動きに従います。 
+2. エンティティ コンポーネントを選択します。 この操作は、新しいカーソルによって視覚的に示されます。 このカーソルは、ポータル内でマウスの動きに従います。
 
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -79,17 +77,26 @@ ms.locfileid: "74383704"
 > [!div class="mx-imgBorder"]
 > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-親にもラベルが付けられている場合にのみ、サブコンポーネントにラベルを付けることができます。 
+親にもラベルが付けられている場合にのみ、サブコンポーネントにラベルを付けることができます。
+
+## <a name="labeling-entity-roles"></a>エンティティのロールをラベル付けする
+
+エンティティのロールのラベル付けは、エンティティ パレットを使用して行います。
+
+1. [Intent detail]\(意図の詳細\) ページのコンテキスト ツール バーから **[Entity palette]\(エンティティ パレット\)** を選択します。
+1. エンティティ パレットが開いたら、エンティティの一覧からエンティティを選択します。
+1. **エンティティ インスペクター**に移動し、既存のロールを選択するか、または新しくロールを作成します。
+1. 発話の例のテキストに、エンティティのロールをラベル付けします。 
 
 ## <a name="unlabel-entities"></a>エンティティのラベルの解除
 
-エンティティのラベルを解除するには、テキストの下にあるエンティティ名を選択し、 **[Unlabel]\(ラベル解除\)** を選択します。 ラベルを解除するエンティティに、ラベル付きのサブコンポーネントがある場合、最初にサブコンポーネントのラベルを解除する必要があります。 
+エンティティのラベルを解除するには、テキストの下にあるエンティティ名を選択し、 **[Unlabel]\(ラベル解除\)** を選択します。 ラベルを解除するエンティティに、ラベル付きのサブコンポーネントがある場合、最初にサブコンポーネントのラベルを解除する必要があります。
 
 ## <a name="editing-labels-using-the-entity-palette"></a>エンティティ パレットを使用してラベルを編集する
 
 ラベル付け中に間違えた場合、エンティティ パレットは、即時に編集できる使いやすいツールです。 たとえば、誤って余分な単語にエンティティ ラベルを適用し、そこにラベル付きのサブコンポーネントが既にある場合、エンティティ パレットを使用して、必要な短い範囲の単語にブラシを適用できます。
 
-例:
+次に例を示します。
 
 1. Pizza Type サブコンポーネントが "cheese pizza with" に適用されています。これには、余分で不適切な単語 "with" が含まれています。
 
@@ -100,7 +107,6 @@ ms.locfileid: "74383704"
 
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>照合テキスト エンティティのラベル
 
@@ -113,6 +119,6 @@ ms.locfileid: "74383704"
 > [!div class="mx-imgBorder"]
 > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ダッシュボード](luis-how-to-use-dashboard.md)を使用し、[エンドポイントの発話をレビュー](luis-how-to-review-endpoint-utterances.md)して、アプリの予測品質を向上させます。

@@ -4,14 +4,14 @@ ms.author: baanders
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: e6ca830a7224326c17003924b76192b95ba6bcb2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d88d166e001e71cabdabc3a3d344adc4da19aa8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453690"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きその他の IoT プラグ アンド プレイの記事に進む場合は、このクイックスタートで使用したリソースを保持し、再使用できます。 それ以外の場合、追加料金が発生するのを防ぐために、このクイックスタートで作成したリソースは削除できます。
 
@@ -32,4 +32,4 @@ IoT ハブに登録したデバイス ID のみを削除するには、Azure CLI
 az iot hub device-identity delete --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-また、クローンした SDK ファイルを開発用コンピューターから削除することもできます。
+また、クローンしたサンプル ファイルをお使いの開発用マシンから削除することもできます。

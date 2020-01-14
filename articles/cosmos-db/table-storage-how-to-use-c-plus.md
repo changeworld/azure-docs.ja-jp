@@ -1,5 +1,5 @@
 ---
-title: C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
+title: C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b8fa0a3cebd87f4da1a47c605ba21b0cb10a2517
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5df344b3f9f3d2fc2ff6fa65667039c545b70841
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441185"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 
@@ -49,7 +49,7 @@ ms.locfileid: "74220048"
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用します。
 
-* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README にある「Linux での基本手順」](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に記載の手順に従います。
+* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README:Linux での開始](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に関するページで示されている手順のようにします。
 * **Windows:** Windows では、依存関係マネージャーとして [vcpkg](https://github.com/microsoft/vcpkg) を使用します。 [クイックスタート](https://github.com/microsoft/vcpkg#quick-start)に従って vcpkg を初期化してください。 そのうえで、次のコマンドを使用してライブラリをインストールします。
 
 ```powershell
@@ -505,7 +505,7 @@ Visual Studio Community エディションの場合、インクルード ファ�
 1. **[プロパティ ページ]** ダイアログ ボックスで、 **[構成プロパティ]** を展開し、 **[C/C++]** を展開し、 **[言語]** を選択します。
 1. **[準拠モード]** を **[いいえ]** に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 

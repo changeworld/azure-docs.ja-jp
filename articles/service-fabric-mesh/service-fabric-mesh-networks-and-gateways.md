@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric のネットワークの概要 | Microsoft Docs
+title: Azure Service Fabric のネットワークの概要
 description: Service Fabric Mesh でのネットワーク、ゲートウェイ、およびインテリジェントなトラフィック ルーティングについて説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459138"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションでのネットワークの概要
 この記事では、さまざまな種類のロード バランサー、お使いのアプリケーションのネットワークがゲートウェイによって他のネットワークに接続される方法、およびお使いのアプリケーション内のサービス間でトラフィックがルーティングされる方法について説明します。
@@ -43,7 +34,7 @@ ms.locfileid: "60811046"
 
 Mesh アプリケーションを作成するときは、既存のネットワーク リソースを参照する必要があります。 新しいパブリック ポートを追加したり、既存のポートをイングレスの構成から削除したりできます。 アプリケーションのリソースで参照されているネットワーク リソースの削除は失敗します。 アプリケーションを削除すると、ネットワーク リソースが削除されます。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
 - [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)
 

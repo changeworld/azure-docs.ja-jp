@@ -1,25 +1,18 @@
 ---
-title: クイック スタート - Azure NetApp Files を設定し、NFS ボリュームを作成する | Microsoft Docs
+title: クイック スタート:Azure NetApp Files と NFS ボリュームを設定する
 description: クイック スタート - 簡単に Azure NetApp Files を設定し、ボリュームを作成する方法について説明します。
-services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/01/2019
-ms.author: b-juche
-ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769848"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551643"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -90,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. [新しい NetApp アカウント] ウィンドウで、次の情報を指定します。 
    1. アカウント名に「**myaccount1**」と入力します。 
    2. サブスクリプションを選択します。
-   3. **[新規作成]** を選択し、新しいリソース グループを作成します。 リソース グループ名に「**myRG1**」と入力します。 Click **OK**. 
+   3. **[新規作成]** を選択し、新しいリソース グループを作成します。 リソース グループ名に「**myRG1**」と入力します。 **[OK]** をクリックします。 
    4. アカウントの場所を選択します。  
 
       ![[新しい NetApp アカウント] ウィンドウ](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
@@ -180,7 +173,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. サービス レベルに **[Premium]** を選択します。 
     3. プール サイズとして **4 (TiB)** を選択します。 
 
-5. Click **OK**.
+5. **[OK]** をクリックします。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -361,7 +354,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ---
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
@@ -415,7 +408,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 ---
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
 > [Azure NetApp Files を使用してボリュームを管理する](azure-netapp-files-manage-volumes.md)  

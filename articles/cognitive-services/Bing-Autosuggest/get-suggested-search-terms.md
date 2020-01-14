@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448831"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 
@@ -23,7 +23,7 @@ ms.locfileid: "74072873"
 
 ## <a name="bing-autosuggest-api-features"></a>Bing Autosuggest API の機能
 
-| 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
+| 機能                                                                                                                                                                                 | [説明]                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](concepts/get-suggestions.md) | Autosuggest API を使用して、入力時に検索語句の候補を表示することで、アプリのエクスペリエンスを向上させます。 |
 
@@ -43,12 +43,15 @@ Bing Autosuggest API からの検索語の候補を含んだドロップダウ�
 
 ユーザーがドロップダウン リストから候補を選択したら、Bing Search API のいずれかでその候補を使用して検索を開始するか、Bing の検索結果ページに直接移動することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 実際に要求を送信してみるには、[最初のクエリを実行する](quickstarts/csharp.md)に関するページを参照してください。
 
 [Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
 
-[Bing Web Search API](../bing-web-search/search-the-web.md) を使用して Web を検索する方法について説明します。
+その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
+
+
+[Bing Web Search API](../bing-web-search/search-the-web.md) を使用して Web を検索し、他の [Bing Search API](../bing-web-search/index.yml) を探す方法について説明します。
 
 検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./useanddisplayrequirements.md)に関するページを必ず読んでください。

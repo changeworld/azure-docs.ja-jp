@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric Mesh アプリケーションの監視と診断 | Microsoft Docs
+title: Azure Service Fabric Mesh アプリでの監視と診断
 description: Azure 上の Service Fabric Mesh にあるアプリケーションの監視および診断について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: srrengar
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 36c9a5d75c4a72365638619ab85d451df647feb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939823"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498150"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric Mesh の監視と診断は、主に次の 3 種類の診断データに分類されます。
@@ -52,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Mesh 環境は、コンテナーのパフォーマンスを示す、いくつかのメトリックを公開します。 Azure portal および Azure Monitor の CLI を介して、次のメトリックを使用できます。
 
-| メトリック | 説明 | Units|
+| メトリック | [説明] | Units|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu (パーセンテージ) | % |
 | MemoryUtilization | ActualMem/AllocatedMem (パーセンテージ) | % |
@@ -125,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
 * Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)をご確認ください。

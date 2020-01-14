@@ -1,6 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
-titleSuffix: Azure Cosmos DB
+title: Azure Cosmos DB の MongoDB 用 API を使用して Node.js Express アプリを作成する (パート 2)
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 2 です。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435271"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441141"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
 
-複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
 このチュートリアルのパート 2 では、[イントロダクション](tutorial-develop-mongodb-nodejs.md)の内容をベースとして、次のタスクについて取り上げます。
 
@@ -82,9 +81,9 @@ ms.locfileid: "57435271"
 
 ## <a name="build-the-app-using-the-express-framework"></a>Express フレームワークを使ってアプリを作成する
 
-1. Visual Studio Code の **[エクスプローラー]** ウィンドウで **src** フォルダーを右クリックし、**[新しいフォルダー]** をクリックして、新しいフォルダーに *server* という名前を付けます。
+1. Visual Studio Code の **[エクスプローラー]** ウィンドウで **src** フォルダーを右クリックし、 **[新しいフォルダー]** をクリックして、新しいフォルダーに *server* という名前を付けます。
 
-2. **[エクスプローラー]** ウィンドウで **server** フォルダーを右クリックし、**[新しいファイル]** をクリックして、新しいファイルに *index.js* という名前を付けます。
+2. **[エクスプローラー]** ウィンドウで **server** フォルダーを右クリックし、 **[新しいファイル]** をクリックして、新しいファイルに *index.js* という名前を付けます。
 
 3. コマンド プロンプトに戻り、次のコマンドを使って body-parser をインストールします。 アプリはこれを使って、API 経由で渡された JSON データを解析することができます。
 
@@ -126,7 +125,7 @@ ms.locfileid: "57435271"
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Visual Studio Code の **[エクスプローラー]** ウィンドウで **server** フォルダーを右クリックし、**[新しいファイル]** をクリックします。 新しいファイルに *routes.js* という名前を付けます。 
+5. Visual Studio Code の **[エクスプローラー]** ウィンドウで **server** フォルダーを右クリックし、 **[新しいファイル]** をクリックします。 新しいファイルに *routes.js* という名前を付けます。 
 
 6. 次のコードを **routes.js** にコピーします。 このコードによって以下が行われます。
    * Express ルーターを参照する
@@ -167,7 +166,7 @@ ms.locfileid: "57435271"
     ![要求と応答を示す Postman の画面](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 本チュートリアルのこのパートでは、次の手順を行いました。
 

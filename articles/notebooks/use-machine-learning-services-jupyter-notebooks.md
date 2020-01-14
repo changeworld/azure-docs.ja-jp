@@ -1,18 +1,20 @@
 ---
-title: Azure Notebooks 内で Azure Machine Learning を使用する
-description: Azure Notebooks で使用できる Azure Machine Learning 用のサンプル ノートブックの概要。
-ms.topic: article
+title: Azure Notebooks プレビューで Azure Machine Learning を使用する
+description: Azure Notebooks プレビューで使用できる Azure Machine Learning 用のサンプル ノートブックの概要。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e3c4fbdf35bf7ea1f4dddbceb9d7235c67ed13a4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277457"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646954"
 ---
-# <a name="use-azure-machine-learning-in-a-notebook"></a>ノートブック内で Azure Machine Learning を使用する
+# <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Azure Notebooks プレビューで Azure Machine Learning を使用する
 
 Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="clone-the-sample-into-your-account"></a>サンプルを自分のアカウントに複製する
 
@@ -33,7 +35,7 @@ Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/service/)
 
 1. 構成の完了後、 **[01.getting-started]** を選択し、13 個の異なるサンプル ノートブックが含まれるフォルダーを開きます。このサンプル ノートブックはいずれも、見れば内容がわかるようになっています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning ドキュメントにはその他の各種リソースが含まれています。このリソースによって、ノートブック内で Machine Learning を段階的に進めることができます。
 

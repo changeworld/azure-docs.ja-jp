@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:複合エンティティのチュートリアル - LUIS
 titleSuffix: Azure Cognitive Services
-description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
+description: このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447943"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
@@ -28,8 +28,6 @@ ms.locfileid: "74893189"
 * 相互に関連している。
 * さまざまなエンティティ型を使用する。
 * クライアント アプリによって情報の単位としてグループ化され、処理される必要がある。
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -46,9 +44,10 @@ ms.locfileid: "74893189"
 
 ## <a name="import-example-app"></a>サンプル アプリをインポートする
 
-1.  リスト エンティティのチュートリアルから[アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json)をダウンロードして保存します。
+1.  リスト エンティティのチュートリアルから[アプリの JSON ファイル](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true)をダウンロードして保存します。
 
-2. JSON を新しいアプリにインポートします。
+2. [LUIS ポータル](https://www.luis.ai)を使用して、その JSON を新しいアプリにインポートします。
 
 3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `composite` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
@@ -187,7 +186,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
    この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
@@ -200,7 +199,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 * [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、既存のエンティティをカプセル化するための複合エンティティを作成しました。 これによりクライアント アプリケーションは、会話を続けるために、さまざまなデータ型の関連データのグループを見つけることができます。 この Human Resources アプリのクライアント アプリケーションは、移動が開始および終了する必要がある日時を問い合わせることができました。 電話機などのその他の物品の移動について問い合わせることもできました。
 

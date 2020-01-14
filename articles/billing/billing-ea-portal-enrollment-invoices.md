@@ -4,16 +4,16 @@ description: この記事では、Azure Enterprise の請求書を管理およ�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849889"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644564"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ登録の請求書
 
@@ -22,8 +22,6 @@ ms.locfileid: "74849889"
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>超過分の請求書の PO 番号を変更する
 
 Azure EA Portal では、EA 管理者が請求書作成日より前に番号を設定しない限り、自動的に既定の注文書 (PO) 番号が生成されます。 EA 管理者は、自動請求書通知メールを受け取ってから 7 日以内に PO 番号を更新することができます。
-
-特定のアカウントまたはサブスクリプションに対して、発注番号を入力することもできます。 レポートは既定で、階層内に設定されている最下位レベルの発注番号になります。つまり、サブスクリプションの発注番号が入力されていない場合は、アカウントの発注番号が使用され、アカウントの発注書が入力されていない場合は、部門の発注書が使用されます。
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Azure サービスの発注番号を更新するには、次のようにします。
 
@@ -300,7 +298,7 @@ MPSA の加入契約では Azure Marketplace を利用できません。
     - DA ビューの請求額
     - AO ビューの請求額
  1. **[Enabled]** を選択します。
- 1. **[Save]** をクリックします。
+ 1. **[保存]** をクリックします。
 
 ### <a name="to-view-reports"></a>レポートを表示するには、次のようにします。
 
@@ -372,7 +370,7 @@ Enterprise Portal 内で行われる丸めでは、IEEE 標準の銀行家の丸
 | 価格の丸め (小数点以下 2 桁) | =MROUND({_ソース_}, 0.02) |
 | 価格の丸め (小数点以下 0 桁) | =MROUND({_ソース_}, 2) |
 
-**表**  **2**  **– クラウド サービスと仮想マシンの時間の変換**
+**表**  **2**  **- クラウド サービスと仮想マシンの時間の変換**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>利用状況ファイルのダウンロードと使用状況の概要ポータル ビューの間の変換
 
@@ -419,7 +417,7 @@ Enterprise Portal 内で行われる丸めでは、IEEE 標準の銀行家の丸
 | ゾーン 2 | 東アジア太平洋 <br> 東南アジア太平洋 <br> 東日本 <br> 西日本 <br> オーストラリア東部 <br> オーストラリア南東部 | アジア太平洋 <br> 日本 <br> ラテン アメリカ <br> 中東/アフリカ <br> オーストラリア東部 <br> オーストラリア南東部 |
 | ゾーン 3 | ブラジル南部 |   |
 
-**表**  **4**  **– データ転送リージョン**
+**表**  **4**  **- データ転送リージョン**
 
 同じデータ センター内に格納されているサービス (O365 や Azure など) 間のデータ エグレスに対する料金は発生しません。
 
@@ -489,7 +487,7 @@ LSP は、Azure EA Portal の価格シートに移動し、右上隅にある **
 1. _[管理]_ に移動します。
 1. _[加入契約の詳細]_ で、 _[Azure Marketplace]_ 行項目の横にある鉛筆アイコンをクリックします。
 1. _有効/無効_、または必要に応じて、無料の _BYOL SKU のみ\*_ に切り替えます。
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="marketplace-charges-in-azure-ea-portal-reports"></a>Azure EA Portal レポートの Marketplace 料金
 
@@ -550,16 +548,16 @@ Azure Marketplace での購入エクスペリエンス中は、年額コミッ�
 
 特定の Azure Marketplace オファーでは、年額コミットメント資金を利用できます。 このプログラムに参加している製品の完全な一覧については、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 詳細については、これらの追加情報ソースを参照してください。 これらのファイルは月に 2 回、毎月 6 日と 20 日に更新されます。 各ファイルの詳細は次のとおりです。
 
-| 付録のタイトル | 説明 | URL の名前付け規則 |
+| 付録のタイトル | [説明] | URL の名前付け規則 |
 | --- | --- | --- |
 | [**フレンドリ サービス名**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | すべてのアクティブなサービスのリストで、サービス カテゴリ、フレンドリ サービス名、コミットメント名と部品番号、消費名と部品番号、測定単位、および報告された使用量と表示された Enterprise Portal の使用量の間の変換係数が提供されます。 | Friendly\_Service\_Names.xlsx |
 | [**サービス ダウンロード フィールド**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | このスプレッドシートでは、利用状況のダウンロード レポート内のサービス関連フィールドのすべての可能な組み合わせのリストが提供されます。 | Service\_Download\_Fields.xlsx |
 
-**表**  **5**  **– 追加情報ソース**
+**表**  **5**  **- 追加情報ソース**
 
 ## <a name="power-bi-reporting"></a>Power BI レポート
 
@@ -669,6 +667,6 @@ Power BI の問題については、[https://support.powerbi.com](https://suppor
 
 超過料金の計算では、生リソースの使用率データは、利用状況データのダウンロード レポートに示されているように、最大小数点以下 6 桁まで報告されます。 しかし、Azure EA Portal では、使用量をコミットメント単位では小数点以下 4 桁に丸め、超過分単位では小数点以下 0 桁に切り捨てます。 つまり、Azure EA Portal では、超過分として課金されるすべての使用量については、全単位に対してのみ課金されます。 単価、および超過分として、または混合月に課金される使用量のリソースの比率の間には大きな違いが見られます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 請求書と料金の詳細については、「[Azure Enterprise Agreement 請求書を理解する](billing-understand-your-bill-ea.md)」を参照してください。
 - Azure EA Portal の使用を開始するには、「[Get started with the Azure EA portal (Azure EA Portal の概要)](billing-ea-portal-get-started.md)」を参照してください。

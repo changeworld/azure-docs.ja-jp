@@ -1,7 +1,7 @@
 ---
 title: クイック スタート - Python で API にクエリを送信する - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: この記事を使用して、Python で Bing Local Business Search API の使用を開始します。
+description: このクイックスタートを使用して、Python で Bing Local Business Search API の使用を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379745"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
 
@@ -67,7 +67,7 @@ print (json.dumps(json.loads(result), indent=4))
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)
 - [Local Business Search (C#) のクイック スタート](local-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)

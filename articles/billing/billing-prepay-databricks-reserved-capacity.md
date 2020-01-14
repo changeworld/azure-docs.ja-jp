@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449325"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 
@@ -27,7 +27,7 @@ Azure Databricks の使用状況はすべて、事前購入済み DBU から自�
 
 Databricks の事前購入は、すべての Databricks ワークロードおよびレベルに適用されます。 事前購入は、前払いの Databricks コミット ユニットのプールと考えることができます。 ワークロードまたはレベルには関係なく、使用状況がプールから差し引かれます。 使用状況は、次の比率で差し引かれます。
 
-| **ワークロード** | **DBU の適用率 - Standard レベル** | **DBU の適用率 - Premium レベル** |
+| **[ワークロード]** | **DBU の適用率 - Standard レベル** | **DBU の適用率 - Premium レベル** |
 | --- | --- | --- |
 | データ分析 | 0.4 | 0.55 |
 | Data Engineering | 0.15 | 0.30 |
@@ -41,8 +41,8 @@ Databricks の事前購入は、すべての Databricks ワークロードおよ
 
 Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) 内で購入できます。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションに対して所有者ロールを所持している必要があります。
 
-- 現時点では、事前購入はマイクロソフト エンタープライズ契約のお客様のみご利用いただけます。
-- 少なくとも 1 つのエンタープライズ サブスクリプションに対する所有者ロールに属している必要があります。
+- 次に対する所有者ロールに属している必要があります: 少なくとも 1 つの Enterprise Agreement (プラン番号: MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
+- EA サブスクリプションの場合、EA ポータルで [予約インスタンスを追加します] を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 
 **購入方法:**
@@ -50,7 +50,7 @@ Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft
 1. [Azure ポータル](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)にアクセスします。
 1. サブスクリプションを選択します。 **[サブスクリプション]** リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
 1. スコープを選択します。 **[スコープ]** リストを使用して、サブスクリプション スコープを選択します。
-    - **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
+    - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
     - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
     - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。
 1. 購入する Azure Databricks コミット ユニット数を選択し、購入を完了します。
@@ -75,7 +75,7 @@ Databricks の事前購入プランでは、キャンセルと交換はサポー
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure の予約の詳細については、次の記事を参照してください。
   - [Azure の予約とは](billing-save-compute-costs-reservations.md)

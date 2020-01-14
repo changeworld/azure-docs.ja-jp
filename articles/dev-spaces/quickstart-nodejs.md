@@ -3,15 +3,15 @@ title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Cod
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Azure でコンテナー、マイクロサービス、Node.js を使用した迅速な Kubernetes 開発
+description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8f3ffb6a539937b6d4a03b8fdc808c033c371697
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1b2101c5e7a59105b2c1da876e9a66294ce3a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438201"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Node.js を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
@@ -110,7 +110,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Server]\(サーバーの起動\)* を再実行します。 例:
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Server]\(サーバーの起動\)* を再実行します。 次に例を示します。
 
 1. ご利用のアプリケーションがまだ実行されている場合は、 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックしてそれを停止します。
 1. [`server.js` の 13 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)を以下に更新します。
@@ -148,7 +148,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 サービスの開始後、ブラウザーを使用してそこに移動し、それを操作します。
 
-サービスが稼働している間に、VS Code に戻って `server.js` の 13 行目を更新します。 例:
+サービスが稼働している間に、VS Code に戻って `server.js` の 13 行目を更新します。 次に例を示します。
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
@@ -163,7 +163,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 

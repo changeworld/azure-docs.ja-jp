@@ -1,5 +1,5 @@
 ---
-title: 予約容量を含む Azure App Service Isolated 印紙税のコストの節約
+title: 予約容量を利用して Azure App Service のコストを節約する
 description: 予約容量を含む Azure App Service Isolated 印紙税のコストを節約する方法について説明します。
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5e2ae705b271f55f8c8888f464c9e73863002c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389130"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated 印紙税のコストの節約
 
@@ -72,7 +72,7 @@ Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/
 
 マイクロソフト エンタープライズ契約 (EA) のお客様の場合、使用状況データに予約割引を表示する方法の詳細については、「[Enterprise Agreement の予約のコストと使用状況を取得する](billing-understand-reserved-instance-usage-ea.md)」を参照してください。 それ以外の場合は、「[従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について](billing-understand-reserved-instance-usage.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure の予約の詳細については、次の記事を参照してください。
   - [Azure の予約とは](billing-save-compute-costs-reservations.md)

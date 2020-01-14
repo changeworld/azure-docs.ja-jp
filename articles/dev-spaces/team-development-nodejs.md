@@ -3,14 +3,14 @@ title: Node.js と Visual Studio Code を使用したチーム開発
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service の Node.js アプリケーションでのチーム開発を行う方法を示します。
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 374a6f0944c7d2fe8d97ea2fa4610ba63598ee2e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e2124d6c3f903f6a9faa6c41a2015b7198faf42d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438132"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces での Node.js と Visual Studio Code を使用したチーム開発
 
@@ -53,7 +53,7 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 
 1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
-1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、 _\<なし\>_ を選択します。
+1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、" _\<なし\>_ " を選択します。
 1. _mywebapi_ ディレクトリに移動し、`azds up -d` を実行します。
 1. _webfrontend_ ディレクトリに移動し、`azds up -d` を実行します。
 1. `azds list-uris` を実行して _webfrontend_ のパブリック エンドポイントを確認します
@@ -145,7 +145,7 @@ Azure Dev Spaces のこの組み込み機能を使用すれば、共有空間内
 最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 
 ### <a name="well-done"></a>お疲れさまでした。
-ファースト ステップ ガイドを修了しました。 以下の方法について学習しました。
+ファースト ステップ ガイドを修了しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。

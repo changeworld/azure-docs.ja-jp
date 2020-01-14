@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Isolated スタンプに予約割引を適用する方法
+title: Azure App Service の予約割引
 description: Azure App Service Isolated スタンプに予約割引を適用する方法について説明します。
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 2e9f2fd4541621e98bc1d46f23559993eeabe311
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e31c7b0932684b75b9934dbb4a2bcbc56370d98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388569"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Azure App Service Isolated スタンプに予約割引を適用する方法
 
@@ -44,7 +44,7 @@ Linux 予約を購入する必要があるのは、スタンプに Linux worker 
 - **例 3**:App Service Isolated スタンプが既にデプロイされているリージョンで、Isolated 予約スタンプ容量の 1 インスタンスを購入します。 デプロイしたスタンプの予約料金の受け取りを開始します。 後でスタンプを削除し、新しいスタンプをデプロイします。 新しいスタンプの予約料金を受け取ります。 スタンプがデプロイされていない期間の割引は繰り越されません。
 - **例 4**:あるリージョンで Isolated Linux 予約スタンプ容量の 1 インスタンスを購入してから、そのリージョンに新しいスタンプをデプロイします。 スタンプが最初にワーカーなしでデプロイされると、Windows スタンプの測定が生成されます。 割引は適用されません。 最初の Linux worker がスタンプをデプロイされると、Linux スタンプの測定が生成され、予約割引が適用されます。 Windows worker が後でスタンプにデプロイされると、スタンプの測定は Windows に戻ります。 Isolated Linux 予約スタンプの予約に対する割引は適用されなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 予約を管理する方法については、「[Azure の予約の管理](billing-manage-reserved-vm-instance.md)」をご覧ください。
 - App Service Isolated スタンプの予約容量を事前に購入してコストを削減する方法の詳細については、「[Prepay for Azure App Service Isolated Stamp Fee with reserved capacity (予約容量を含む Azure App Service Isolated スタンプ料金の前払い)](billing-prepay-app-service-isolated-stamp.md)」を参照してください。

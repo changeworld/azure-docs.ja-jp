@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448069"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 LUIS アプリがクライアント アプリケーション (チャット ボットなど) に発話予測を返す準備ができたら、アプリを予測エンドポイントにデプロイする必要があります。
 
@@ -39,10 +37,10 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 1. 次の設定を使用して、サブスクリプションを構成します。
 
-   |Setting|値|目的|
+   |設定|値|目的|
    |--|--|--|
    |Name|`my-luis-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
-   |Subscription|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
+   |サブスクリプション|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
    |Resource group|`my-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
    |オーサリングの場所|**[米国西部]**|作成の対象となる Azure リージョン。|
    |オーサリングの価格レベル|**F0**|作成の既定の価格レベル。|
@@ -61,7 +59,7 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 LUIS 向けの新しいリソースを作成するたびに、LUIS アプリにそのリソースを割り当てる必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
 
-1. [LUIS ポータル](https://preview.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
+1. [プレビュー LUIS ポータル](https://preview.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 
 1. 右上のメニューの **[管理]** を選択し、 **[Azure リソース]** を選択します。
 
@@ -139,11 +137,11 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 [![アプリの現在編集中のバージョンと公開済みのバージョンを比較する](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートが完了したら、上部のナビゲーション メニューから **[マイ アプリ]** を選択します。 一覧からアプリのチェック ボックスをオンにし、一覧の上にあるコンテキスト ツール バーから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [一般的な意図とエンティティを識別する](luis-tutorial-prebuilt-intents-entities.md)

@@ -1,25 +1,16 @@
 ---
-title: Visual Studio Code で Java Azure Service Fabric アプリケーションを開発する | Microsoft Docs
+title: Visual Studio Code を使用して Java アプリケーションを開発する
 description: この記事では、Visual Studio Code を使用して Java Service Fabric アプリケーションをビルド、デプロイ、およびデバッグする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393952"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610048"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して Java Service Fabric アプリケーションを開発する
 
@@ -129,6 +120,6 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
        
 5. デバッグが完了したら、 **[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから Voting アプリケーションを削除できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VS Code を使用して C# Service Fabric アプリケーションを開発し、デバッグする](./service-fabric-develop-csharp-applications-with-vs-code.md)方法について学びます。

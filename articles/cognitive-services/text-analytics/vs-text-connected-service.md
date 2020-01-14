@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 titleSuffix: Azure Cognitive Services
-description: この記事と関連記事では、Text Analytics Service に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。
+description: Visual Studio の接続済みサービス機能を使用して Text Analytics Service を利用する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446156"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 
@@ -257,7 +257,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
  
 1. 例をビルドしてローカルで実行します。 いくつかテキストを入力して、Text Analytics がどの言語を検出するか確認します。
    
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、リソース グループを削除します。 これにより、Cognitive Service と関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
@@ -265,6 +265,6 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
 2. **[リソース グループの削除]** を選択します。
 3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Text Analytics Service のドキュメント](index.yml)を読み、Text Analytics Service について理解を深めます。

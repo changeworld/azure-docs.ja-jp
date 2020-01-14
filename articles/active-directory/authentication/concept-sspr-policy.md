@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425321"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -54,7 +54,7 @@ ms.locfileid: "74848546"
   * 特権認証管理者
 
 * 試用版サブスクリプションで 30 日が経過している、または
-* バニティ ドメインが存在する (contoso.com など)、または
+* Azure AD テナント用に、*contoso.com* のようなカスタム ドメインが構成されている、または
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
 
 ### <a name="exceptions"></a>例外
@@ -62,7 +62,7 @@ ms.locfileid: "74848546"
 1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレス*または*電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
 
 * 試用版サブスクリプションの最初の 30 日以内である、または
-* バニティ ドメインが存在しない (*.onmicrosoft.com)、および
+* Azure AD テナント用にカスタム ドメインが構成されていないため、既定の * *.onmicrosoft.com* を使用している。 既定の * *.onmicrosoft.com* ドメインは、実稼働環境での使用は推奨されないことに注意してください。および
 * Azure AD Connect が ID と同期していない
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
@@ -158,7 +158,7 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
    > [!WARNING]
    > `-PasswordPolicies DisablePasswordExpiration` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 ユーザーのパスワードを無期限に設定し、90 日以上たつと、パスワードは期限切れになります。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordPolicies None` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
@@ -166,9 +166,9 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
 * [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
-* [ユーザーが使用できる認証方法。](concept-sspr-howitworks.md#authentication-methods)
-* [パスワード ライトバックと、それが必要な理由。](howto-sspr-writeback.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
+* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)

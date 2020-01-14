@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664065"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367894"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -31,15 +31,15 @@ ms.locfileid: "74664065"
 
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 
-1. [Azure ポータル](https://portal.azure.com)
-1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. [概要] ページで、 **[ポリシー]** ウィンドウから **[Identity Experience Framework]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[ポリシー]** を選択してから **[Identity Experience Framework]** を選択します。
 
 ### <a name="create-the-signing-key"></a>署名キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Generate`を選択してください。
+1. **オプション**については、`Generate`を選択します。
 1. **名前**に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
 1. **キー タイプ**については、**RSA** を選択します。
 1. **[キー使用法]** には **[署名]** を選択します。
@@ -48,7 +48,7 @@ ms.locfileid: "74664065"
 ### <a name="create-the-encryption-key"></a>暗号化キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Generate`を選択してください。
+1. **オプション**については、`Generate`を選択します。
 1. **名前**に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
 1. **キー タイプ**については、**RSA** を選択します。
 1. **[キー使用法]** には **[暗号化]** を選択します。
@@ -77,10 +77,9 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
-1. Azure portal の左上隅の **[すべてのサービス]** を選択します。
-1. 検索ボックスに「 `Azure Active Directory`」と入力します。
-1. 検索結果で **[Azure Active Directory]** を選択します。
-1. 左側のメニューで **[管理]** の下の **[アプリの登録 (レガシー)]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
+1. **[Azure Active Directory]** の概要メニューで、 **[管理]** から **[App registrations (Legacy)]\(アプリの登録 (レガシ)\)** を選択します。
 1. **[新しいアプリケーションの登録]** を選択します。
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
@@ -136,19 +135,19 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
-1. **[管理]** で **[認証]** を選択します。
-1. **[新しいエクスペリエンスを試す]** を選択します (表示されている場合)。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[新しいエクスペリエンスを試す]** (表示されている場合) を選択します。
 1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。
 1. **[保存]** を選択します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
 
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
-1. **[構成されたアクセス許可]** で **[アクセス許可の追加]** を選択します。
+1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
 1. **[自分の API]** タブ、**IdentityExperienceFramework** アプリケーションの順に選択します。
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
-1. **[(ご自身のテナント名) に管理者の同意を与えます]** を選択します。
+1. **[<テナント名> に管理者の同意を与えます]** を選択します。
 1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
@@ -168,7 +167,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 - **ベース ファイル** - ベースにはいくつかの変更が必要です。 例:*TrustFrameworkBase.xml*
 - **拡張ファイル** - このファイルは、構成変更の大半が実行される場所です。 例:*TrustFrameworkExtensions.xml*
-- **証明書利用者ファイル** - アプリケーションによって呼び出される、タスク固有のファイルです。 次に例を示します。*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml*
+- **証明書利用者ファイル** - アプリケーションによって呼び出される、タスク固有のファイルです。 例 :*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml*
 
 この記事では、**SocialAndLocalAccounts** スターター パック内の XML カスタム ポリシー ファイルを編集します。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
 
@@ -236,7 +235,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
 1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。
 
