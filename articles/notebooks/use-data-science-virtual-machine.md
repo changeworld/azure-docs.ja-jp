@@ -1,17 +1,17 @@
 ---
 title: Azure Data Science Virtual Machine を使用する
-description: Azure Notebooks で使用できるコンピューティング能力を拡張するために Azure Data Science Virtual Machine (DSVM) に接続します。
+description: Azure Data Science Virtual Machine (DSVM) に接続して、Azure Notebooks プレビューで使用できるコンピューティング能力を拡張する方法について説明します。
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277400"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646996"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
 
@@ -19,6 +19,8 @@ ms.locfileid: "74277400"
 
 > [!Note]
 > Azure Notebooks は、Linux Ubuntu イメージを使用して作成された DSVM でのみサポートされています。 Azure Notebooks は、Windows 2012、Windows 2016、Linux CentOS イメージではサポートされていません。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>DSVM インスタンスを作成する
 
@@ -56,11 +58,11 @@ VM でプロジェクトが実行されると、ファイルは Jupyter サー�
 
 複数のユーザーで DSVM を共有する場合は、ノートブック ユーザーごとに DSVM ユーザーを作成して使用することで、相互のブロックを回避できます。
 
-1. [Azure portal](https://portal.azure.com) でお使いの仮想マシンに移動します。
+1. [Azure portal](https://portal.azure.com) で仮想マシンに移動します。
 1. 左側の余白の **[サポート + トラブルシューティング]** で、 **[パスワードのリセット]** を選択します。
 1. 新しいユーザー名とパスワードを入力し、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
 1. 他のユーザーに対し、前の手順を繰り返します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 DSVM の詳細については、[Azure Data Science Virtual Machines の概要](/azure/machine-learning/data-science-virtual-machine/overview)に関するページをご覧ください。

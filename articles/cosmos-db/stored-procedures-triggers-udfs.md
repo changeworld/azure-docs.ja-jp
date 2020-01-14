@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する
+title: Azure Cosmos DB でストアドプロシージャ、トリガー、UDF を操作する
 description: この記事では、Azure Cosmos DB のストアド プロシージャ、トリガー、ユーザー定義関数などの概念について説明します。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441237"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -96,7 +96,7 @@ Azure Cosmos DB には、Azure Cosmos 項目に対して操作を実行するこ
 
 SQL API クエリ構文でクエリを発行するほか、[サーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server) では、SQL の知識がなくても、JavaScript インターフェイスを使用してクエリを実行できます。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラミングできます。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB 内で効率的に実行されます。 JavaScript クエリ API サポートの詳細については、[JavaScript 言語統合クエリ API の操作](javascript-query-api.md)に関する記事を参照してください。 たとえば、[Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法](how-to-write-javascript-query-api.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB のストアド プロシージャ、トリガー、およびユーザー定義関数の記述方法および使用方法については、以下の記事を参照してください。
 

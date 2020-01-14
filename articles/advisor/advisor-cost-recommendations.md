@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor を使用してサービスのコストを削減する | Microsoft Docs
+title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: sagupt
-ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443126"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -21,7 +16,7 @@ Advisor は、アイドル状態にあるリソースや活用されていない
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する 
 
-特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor の高度な評価モデルでは、CPU 使用率の最大値の P95th が 3% 未満で、ネットワーク使用率が 7 日間で 2% 未満のとき、仮想マシンのシャットダウンが検討されます。 ユーザーに接するワークロードで現在の負荷が 80% の使用率を超えず、ユーザーに接しないワークロードで 40% を超えないよう、(同じ SKU ファミリ内の) より小さな SKU で現在の負荷に合うように仮想マシンの適切なサイズが検討されます。 ここで、ワークロードの種類は、ワークロードの CPU 使用率の特性を分析することによって決定されます。
+特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor の高度な評価モデルでは、CPU 使用率の最大値の P95 が3％未満で、ネットワーク使用率が 7 日間で 2 ％未満の場合、仮想マシンのシャットダウンが考慮されます。 ユーザーに接するワークロードで現在の負荷が 80% の使用率を超えず、ユーザーに接しないワークロードで 40% を超えないよう、(同じ SKU ファミリ内の) より小さな SKU で現在の負荷に合うように仮想マシンの適切なサイズが検討されます。 ここで、ワークロードの種類は、ワークロードの CPU 使用率の特性を分析することによって決定されます。
 
 推奨されるアクションは、推奨対象のリソースに基づき、シャットダウンかサイズ変更になります。 Advisor からは、いずれかの推奨アクション (シャットダウンまたはサイズ変更) の見積もりコスト削減額が提示されます。 また、サイズ変更の推奨アクションについては、Advisor から現在のターゲット SKU 情報が提示されます。 
 
@@ -50,20 +45,22 @@ Advisor は、ロード バランサーまたは仮想マシンなどの Azure �
 Azure Advisor は、繰り返し障害が発生している Azure Data Factory パイプラインを検出し、その問題を解決するか、または障害が発生しているパイプラインを必要なくなっている場合は削除することを推奨します。 障害発生中にサービスが提供されていない場合でも、これらのパイプラインに対して課金されます。 
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>マネージド ディスクに Standard スナップショットを使用する
-コストの 60% を節約するために、親ディスクのストレージの種類には関係なく、スナップショットを Standard Storage に格納することをお勧めします。 これは、マネージド ディスクのスナップショットの既定オプションです。 Azure Advisor は、Premium Storage に格納されているスナップショットを識別し、スナップショットを Premium Storage から Standard Storage に移行することを推奨します。 [マネージド ディスクの価格](https://aka.ms/aa_manageddisksnapshot_learnmore)の詳細を確認してください。
+コストの 60% を節約するために、親ディスクのストレージの種類には関係なく、スナップショットを Standard Storage に格納することをお勧めします。 このオプションは、マネージド ディスクのスナップショットの既定オプションです。 Azure Advisor は、Premium Storage に格納されているスナップショットを識別し、スナップショットを Premium Storage から Standard Storage に移行することを推奨します。 [マネージド ディスクの価格](https://aka.ms/aa_manageddisksnapshot_learnmore)の詳細を確認してください。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-2.  Advisor ダッシュボードで、 **[コスト]** タブをクリックします。
+1. 任意のページから [ **[Advisor]** ](https://aka.ms/azureadvisordashboard) を検索して選択します。
 
-## <a name="next-steps"></a>次の手順
+1. **[Advisor]** ダッシュボードで、 **[コスト]** タブをクリックします。
+
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
-* [作業の開始](advisor-get-started.md)
+* [開始するには](advisor-get-started.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

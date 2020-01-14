@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425383"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
@@ -31,7 +31,7 @@ Azure AD DS セキュリティ監査は、従来の AD DS ドメイン コント
 
 次の監査イベントのカテゴリを利用できます。
 
-| 監査のカテゴリ名 | 説明 |
+| 監査のカテゴリ名 | [説明] |
 |:---|:---|
 | アカウント ログオン|ドメイン コントローラーまたはローカルのセキュリティ アカウント マネージャー (SAM) アカウントのデータの認証に対する試行を監査します。</p>ログオンとログオフ ポリシーの設定、およびイベントは、特定のコンピューターへのアクセスの試行を追跡します。 このカテゴリの設定とイベントは、使用されるアカウントのデータベースに注目します。 このカテゴリには、次のサブカテゴリが含まれます。<ul><li>[資格情報の検証の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos 認証サービスの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Kerberos サービス チケット操作の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[その他のログオン/ログオフ イベントの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | アカウント管理|ユーザーおよびコンピューター アカウントとグループの変更を監査します。 このカテゴリには、次のサブカテゴリが含まれます。<ul><li>[アプリケーション グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[コンピューター アカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[配布グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[その他のアカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[セキュリティ グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[ユーザー アカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -70,7 +70,7 @@ Azure AD DS セキュリティ監査のターゲット リソースには、Azur
 
 | ターゲット リソース | シナリオ |
 |:---|:---|
-|Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure ストレージ アカウントを作成してください](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1)。|
+|Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 Azure AD DS セキュリティ監査イベントを有効にする前に、まず [Azure Storage アカウント](../storage/common/storage-account-create.md) を作成します。|
 |Azure Event Hubs| 主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal を使用してイベント ハブを作成してください](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。|
 
@@ -243,7 +243,7 @@ AADDomainServicesAccountLogon
 | summarize count()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kusto の具体的な情報については、次の記事を参照してください。
 

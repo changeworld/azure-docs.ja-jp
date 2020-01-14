@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407684"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -69,15 +69,15 @@ ms.locfileid: "73887766"
 
 ![[end-to-end transaction details] (エンドツーエンドのトランザクションの詳細) のスクリーンショット](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Analytics での表示
+### <a name="view-logs-analytics"></a>ログの表示 (Analytics)
 
-さらにアプリケーション データのクエリと調査を行うには、**Analytics で表示** をクリックします。
+さらにアプリケーション データのクエリと調査を行うには、**Analytics で表示 (Analytics)** をクリックします。
 
-![[view in analytics] (Analytics で表示) ボタンのスクリーンショット](media/app-map/view-in-analytics.png)
+![[view in analytics] (Analytics で表示) ボタンのスクリーンショット](media/app-map/view-logs.png)
 
-![Analytics エクスペリエンスのスクリーンショット](media/app-map/analytics.png)
+![Analytics エクスペリエンスのスクリーンショット。 過去12時間の要求の平均応答時間を要約した折れ線グラフ。](media/app-map/log-analytics.png)
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 アクティブなアラートと、アラートがトリガーされる原因になっている元のルールを表示するには、**アラート** を選択します。
 
@@ -274,7 +274,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 image](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Application Insights での関連付けのしくみの詳細については、[テレメトリの関連付けの記事](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)を参照してください。
 * [エンドツーエンドのトランザクション診断エクスペリエンス](transaction-diagnostics.md)は、Application Insights に監視されるすべてのコンポーネントからのサーバー側テレメトリを単一ビューに関連付けます。

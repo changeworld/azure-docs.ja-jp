@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396519"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -40,7 +40,7 @@ ms.locfileid: "74951141"
 
 **シグナル**: ターゲット リソースによって出力されます。 シグナルにすることができるのは、メトリック、アクティビティ ログ、Application Insights、およびログです。
 
-**条件**: ターゲット リソースに適用されるシグナルとロジックの組み合わせ。 次に例を示します。 
+**条件**: ターゲット リソースに適用されるシグナルとロジックの組み合わせ。 例 : 
    - CPU 使用率 > 70%
    - サーバー応答時間 > 4 ミリ秒 
    - ログ クエリの結果数 > 100
@@ -79,7 +79,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 次のアラートの状態がサポートされています。
 
-| State | 説明 |
+| State | [説明] |
 |:---|:---|
 | 新規 | 問題が検出されたばかりであり、まだレビューされていません。 |
 | [Acknowledged] (確認済み) | 管理者がアラートをレビューし、それに対する作業を開始しました。 |
@@ -106,15 +106,15 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 ページの上部にあるドロップダウン メニューで値を選択することによって、このビューをフィルター処理できます。
 
-| 列 | 説明 |
+| 列 | [説明] |
 |:---|:---|
 | サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | Resource group | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
-| 時間範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
+| 時間の範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
 
 [アラート] ページの上部にある次の値を選択すると、別のページが開きます。
 
-| 値 | 説明 |
+| 値 | [説明] |
 |:---|:---|
 | アラート合計数 | 選択された条件に一致するアラートの総数。 この値を選択すると、フィルター処理されていない [すべてのアラート] ビューが開きます。 |
 | スマート グループ | 選択された条件に一致する、アラートから作成されたスマート グループの総数。 この値を選択すると、[すべてのアラート] ビューにスマート グループの一覧が開きます。
@@ -149,7 +149,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 ページの上部にあるドロップダウン メニュー内の次の値を選択することによって、ビューをフィルター処理できます。
 
-| 列 | 説明 |
+| 列 | [説明] |
 |:---|:---|
 | サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | Resource group | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
@@ -159,7 +159,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 | 監視条件 | 監視条件を選択するか、 **[すべて]** を選択してすべての条件のアラートを含めます。 |
 | アラートの状態 | アラートの状態を選択するか、 **[すべて]** を選択してすべての状態のアラートを含めます。 |
 | サービスの監視 | サービスを選択するか、または **[すべて]** を選択してすべてのサービスを含めます。 そのサービスをターゲットとして使用してルールによって作成されたアラートのみが含まれます。 |
-| 時間範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
+| 時間の範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
 
 表示する列を選択するには、ページの上部にある **[列]** を選択します。 
 
@@ -170,7 +170,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 [アラートの詳細] ページには、以下のセクションが含まれています。
 
-| Section | 説明 |
+| Section | [説明] |
 |:---|:---|
 | まとめ | アラートに関するプロパティやその他の重大な情報を表示します。 |
 | 履歴 | アラートによって実行された各アクションと、アラートに加えられたすべての変更を一覧表示します。 現在は、状態の変更に制限されています。 |
@@ -184,28 +184,28 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 サブスクリプションに対して生成されたアラートをプログラムで照会したい場合があります。 たとえば、Azure portal の外部でカスタム ビューを作成したり、アラートを分析してパターンと傾向を特定したりする場合です。
 
-サブスクリプションに対して生成されたアラートを照会するには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) を使用します。
+サブスクリプションに対して生成されたアラートをクエリするには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[Azure Resource Graph](../../governance/resource-graph/overview.md) と [REST API for Resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)を使用します。
 
-[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) を使用すると、大規模なアラート インスタンスを照会できます。 これは、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
+リソース用の Resource Graph REST API を使用すると、大規模な警告インスタンスをクエリできます。 これは、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
 
-次の API へのサンプル要求は、1 つのサブスクリプション内のアラートの数を返します。
+次の Resource Graph REST API の要求例では、1つのサブスクリプション内のアラートの数を返します:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Azure Resource Graph Explorer を使用して、ポータルでこの Resource Graph クエリの結果を確認することもできます: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 照会は、アラートの[必須](alerts-common-schema-definitions.md#essentials)フィールドに対して行うことができます。
 
 [Alert Management REST API](https://aka.ms/alert-management-api) を使用すると、[アラート コンテキスト](alerts-common-schema-definitions.md#alert-context) フィールドなど、特定のアラートに関する詳細情報を取得できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [スマート グループの詳細](https://aka.ms/smart-groups)
 - [アクション グループの詳細](../../azure-monitor/platform/action-groups.md)

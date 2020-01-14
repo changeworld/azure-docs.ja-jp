@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
+title: Azure Cosmos DB の MongoDB 用 API での移行後の最適化手順
 description: このドキュメントでは、MongoDB から Azure Cosmos DB の MongoDB 用 API に移行した後の最適化手法について説明します。
 author: roaror
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: roaror
-ms.openlocfilehash: c0c761fef481a1fdaa027f1329e9a4e72d62985a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c521546bedf1ebfd42bce4c50aa79b199553fd5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441561"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順 
 
@@ -58,7 +58,7 @@ Azure Cosmos DB では、5 つの[整合性レベル](consistency-levels.md)が�
 
 ほとんどのユーザーは、整合性レベルを既定のセッション整合性設定のままにします。 しかしながら、[さまざまな整合性レベルでの可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)
 * [Studio 3T を使用して Azure Cosmos DB アカウントに接続する](mongodb-mongochef.md)

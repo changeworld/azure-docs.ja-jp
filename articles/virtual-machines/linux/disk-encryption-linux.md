@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ff4ccb4409bd9a41f390668cb94ef91b1b565421
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750044"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358814"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 詳しくは、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)に関する記事をご覧ください。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az モジュール](/powershell/azure/new-azureps-module-az)には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) モデルを使う一連のコマンドレットが用意されています。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」の手順に従ってご使用のローカル マシンにインストールすることもできます。 
+[Azure PowerShell az モジュール](/powershell/azure/new-azureps-module-az)には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/management/overview.md) モデルを使う一連のコマンドレットが用意されています。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」の手順に従ってご使用のローカル マシンにインストールすることもできます。 
 
 既にローカルにインストールされている場合、Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードします。
 
@@ -193,7 +193,7 @@ Azure 内にある既存または実行中の Linux VM でのディスク暗号�
 
 次の表は、既存または実行中の VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
 | KeyVaultName | 暗号化キーのアップロード先となるキー コンテナーの名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または次の Azure CLI コマンド `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` を使用して取得できます。|
@@ -399,8 +399,9 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 動的ボリューム。
 - エフェメラル OS ディスク。
 - 次のもの (ただし、限定されない) の共有/分散ファイル システムの暗号化:DFS、GFS、DRDB、CephFS。
+- カーネル クラッシュ ダンプ (kdump)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)
 - [Azure Disk Encryption のサンプル スクリプト](disk-encryption-sample-scripts.md)

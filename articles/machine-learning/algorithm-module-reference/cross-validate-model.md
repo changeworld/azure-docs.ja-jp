@@ -1,7 +1,7 @@
 ---
 title: モデルのクロス検証:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でモデルのクロス検証モジュールを使用して、データをパーティション分割することにより、分類モデルまたは回帰モデルのパラメーターの推定値をクロス検証する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のクロス検証モジュールを使用して、データをパーティション分割することにより、分類モデルまたは回帰モデルのパラメーター推定値を相互検証する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428556"
 ---
 # <a name="cross-validate-model"></a>モデルのクロス検証
 
@@ -78,7 +78,7 @@ ms.locfileid: "73717237"
 
     後で再利用するためにモデルのコピーを取得するには、アルゴリズム (たとえば、**2 クラス ベイズ ポイント マシン**) が含まれるモジュールの出力を右クリックします。 次に、 **[Save as Trained Model]\(トレーニング済みのモデルとして保存する\)** をクリックします。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 すべての反復が完了すると、モデルのクロス検証によってデータセット全体のスコアが作成されます。 また、モデルの品質評価に使用できるパフォーマンス メトリックも作成されます。
 
@@ -88,7 +88,7 @@ ms.locfileid: "73717237"
 
 これらの結果を表示するには、パイプラインで、モデルのクロス検証モジュールを右クリックします。 **[Scored results]\(スコア付け結果\)** を選択し、 **[Visualize]\(視覚化\)** を選択します。
 
-| 新しい列名      | 説明                              |
+| 新しい列名      | [説明]                              |
 | -------------------- | ---------------------------------------- |
 | スコア付けラベル        | この列は、データセットの末尾に追加されます。 ここには、各行の予測値が含まれます。 |
 | スコア付け確率 | この列は、データセットの末尾に追加されます。 **[スコア付けラベル]** の値の推定確率を示します。 |
@@ -103,7 +103,7 @@ ms.locfileid: "73717237"
 これらの結果を表示するには、パイプラインで、モデルのクロス検証モジュールを右クリックします。 **[Evaluation results by fold]\(フォールドごとの評価結果\)** を選択して、 **[Visualize]\(視覚化\)** を選択します。
 
 
-|列名| 説明|
+|列名| [説明]|
 |----|----|
 |フォールド番号| 各フォールドの識別子。 5 つのフォールドを作成した場合、データのサブセットが 5 つあり、0 から 4 の番号が付けられています。
 |フォールドの例の数|各フォールドに割り当てられた行の数。 これらはほぼ同じになるはずです。 |
@@ -125,7 +125,7 @@ ms.locfileid: "73717237"
 + クロス検証を使用してモデルの正確性を測定する場合、データセットをトレーニング セットとテスト セットに分割する必要はありません。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 

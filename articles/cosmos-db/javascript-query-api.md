@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の JavaScript 言語統合クエリ API の操作
+title: Azure Cosmos DB で JavaScript 統合クエリ API を操作する
 description: この記事では、Azure Cosmos DB でストアド プロシージャとトリガーを作成するための JavaScript 言語統合クエリ API の概念について説明します。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445324"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API
 
@@ -33,7 +33,7 @@ Azure Cosmos DB の SQL API を使用してクエリを発行することに加�
 
 述語またはセレクター関数の中に含まれるとき、次の JavaScript コンストラクトは自動的に最適化され、Azure Cosmos DB インデックスで直接実行されます。
 
-- 単純演算子: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
+- 単純演算子： `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
 - オブジェクト リテラルを含むリテラル: {}
 - var、return
 
@@ -60,7 +60,7 @@ Azure Cosmos DB の SQL API を使用してクエリを発行することに加�
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id、<br>&nbsp;&nbsp;&nbsp;docs.message AS msg<br>FROM docs<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|述語に id = "X998_Y998" を指定してドキュメントに対してクエリし、ID とメッセージ (エイリアスは msg) を射影します。|
 |SELECT VALUE tag<br>FROM docs<br>JOIN tag IN docs.Tags<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.Tags && Array.isArray(doc.Tags);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|配列プロパティ Tags のあるドキュメントをフィルター処理し、生成されたドキュメントを _ts タイムスタンプ システム プロパティで並べ替え、射影して Tags 配列を一次元配列にします。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述および使用する方法および概念について学習します。
 

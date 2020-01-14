@@ -12,12 +12,12 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466991"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432176"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio Web (クラシック) サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 
@@ -45,7 +45,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 ## <a name="example"></a>例
 たとえば、Azure BLOB ストレージに情報を送信する[データのエクスポート][writer] モジュールの実験があるとします。 Web サービスのユーザーがサービスにアクセスしたときに BLOB ストレージへのパスを変更できるようにする "Blob path" という名前の Web サービスのパラメーターを定義しましょう。
 
-1. Machine Learning Studio のクラシック バージョンで[データのエクスポート][writer] モジュールをクリックして選択します。 実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
+1. Machine Learning Studio (クラシック) で、[エクスポート データ][writer] モジュールをクリックして選択します。 実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
 2. ストレージの種類を指定します。
    
    * **[Please specify data destination]** で [Azure Blob Storage] を選択します。

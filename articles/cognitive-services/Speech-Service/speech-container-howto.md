@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "74815365"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
@@ -26,7 +26,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 > [!IMPORTANT]
 > 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
 
-| Function | 機能 | 最新 |
+| Function | [機能] | 最新 |
 |--|--|--|
 | 音声テキスト変換 | 連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.0.0 |
 | カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.0.0 |
@@ -61,7 +61,7 @@ Speech コンテナーを使用する前の前提条件は次のとおりです�
 
 ### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension のサポート
 
-**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 ホストは、[Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を*サポートしている必要があります*。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
+**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 ホストは、[高度なベクター拡張機能](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を *サポートしている必要があります*。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -273,7 +273,7 @@ ApiKey={API_KEY}
 
 次の表は、さまざまな `docker run` パラメーターとその説明をまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |---------|---------|
 | `{VOLUME_MOUNT}` | ホスト コンピューターの[ボリューム マウント](https://docs.docker.com/storage/volumes/)。docker では、これを利用し、カスタム モデルを保持します。 たとえば、*C:\CustomSpeech* では、*C ドライブ*がホスト マシンに置かれます。 |
 | `{MODEL_ID}` | Custom Speech ポータルの **[トレーニング]** ページの Custom Speech **モデル ID**。 |
@@ -335,7 +335,7 @@ docker run コマンドの `ModelId` パラメーターの引数として使用�
 
 次の表は、さまざまな `docker run` パラメーターとその説明をまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |---------|---------|
 | `{VOLUME_MOUNT}` | ホスト コンピューターの[ボリューム マウント](https://docs.docker.com/storage/volumes/)。docker では、これを利用し、カスタム モデルを保持します。 たとえば、*C:\CustomSpeech* では、*C ドライブ*がホスト マシンに置かれます。 |
 | `{MODEL_ID}` | カスタム音声ポータルの **[トレーニング]** ページの Custom Speech **モデル ID**。 |
@@ -431,7 +431,7 @@ Speech コンテナーは、Azure アカウントの *Speech* リソースを使
 > [!IMPORTANT]
 >  Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](speech-container-configuration.md)を確認します。
 * [Kubernetes と Helm と共に Speech サービス コンテナーを使用する](speech-container-howto-on-premises.md)方法を学習します。

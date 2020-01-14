@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/10/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460801"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -48,7 +48,10 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 
 ## <a name="configuring-analyzers"></a>アナライザーの構成
 
-言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。 または、**analyzer** ではなく **indexAnalyzer** と **searchAnalyzer** を使用して、インデックスの作成時とクエリの実行時で異なる分析規則を設定することができます。 
+言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。
+
+> [!NOTE]
+> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API はエラー応答を返します。 代わりに、**アナライザー** プロパティを使用する必要があります。
 
 **searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)」で確認できます。 
 
@@ -65,62 +68,62 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 |アルメニア語||hy.lucene|  
 |ベンガル語|bn.microsoft||  
 |バスク語||eu.lucene|  
-|ブルガリア語|bg.microsoft|bg.lucene|  
-|カタルニア語|ca.microsoft|ca.lucene|  
-|中国語 (簡体字)|zh-Hans.microsoft|zh-Hans.lucene|  
+|Bulgarian|bg.microsoft|bg.lucene|  
+|カタロニア語|ca.microsoft|ca.lucene|  
+|簡体中国語|zh-Hans.microsoft|zh-Hans.lucene|  
 |中国語 (繁体字)|zh-Hant.microsoft|zh-Hant.lucene|  
-|クロアチア語|hr.microsoft||  
-|チェコ語|cs.microsoft|cs.lucene|  
-|デンマーク語|da.microsoft|da.lucene|  
-|オランダ語|nl.microsoft|nl.lucene|  
-|英語|en.microsoft|en.lucene|  
-|エストニア語|et.microsoft||  
-|フィンランド語|fi.microsoft|fi.lucene|  
-|フランス語|fr.microsoft|fr.lucene|  
+|Croatian|hr.microsoft||  
+|Czech|cs.microsoft|cs.lucene|  
+|Danish|da.microsoft|da.lucene|  
+|Dutch|nl.microsoft|nl.lucene|  
+|English|en.microsoft|en.lucene|  
+|Estonian|et.microsoft||  
+|Finnish|fi.microsoft|fi.lucene|  
+|French|fr.microsoft|fr.lucene|  
 |ガリシア語||gl.lucene|  
-|ドイツ語|de.microsoft|de.lucene|  
-|ギリシャ語|el.microsoft|el.lucene|  
+|German|de.microsoft|de.lucene|  
+|Greek|el.microsoft|el.lucene|  
 |グジャラート語|gu.microsoft||  
 |ヘブライ語|he.microsoft||  
 |ヒンディー語|hi.microsoft|hi.lucene|  
-|ハンガリー語|hu.microsoft|hu.lucene|  
+|Hungarian|hu.microsoft|hu.lucene|  
 |アイスランド語|is.microsoft||  
 |インドネシア語|id.microsoft|id.lucene|  
 |アイルランド語||ga.lucene|  
-|イタリア語|it.microsoft|it.lucene|  
-|日本語|ja.microsoft|ja.lucene|  
+|Italian|it.microsoft|it.lucene|  
+|Japanese|ja.microsoft|ja.lucene|  
 |カンナダ語|kn.microsoft||  
-|韓国語|ko.microsoft|ko.lucene|  
-|ラトビア語|lv.microsoft|lv.lucene|  
-|リトアニア語|lt.microsoft||  
+|Korean|ko.microsoft|ko.lucene|  
+|Latvian|lv.microsoft|lv.lucene|  
+|Lithuanian|lt.microsoft||  
 |マラヤーラム語|ml.microsoft||  
 |マレー語 (ラテン)|ms.microsoft||  
 |マラーティー語|mr.microsoft||  
 |ノルウェー語|nb.microsoft|no.lucene|  
 |ペルシャ語||fa.lucene|  
-|ポーランド語|pl.microsoft|pl.lucene|  
+|Polish|pl.microsoft|pl.lucene|  
 |ポルトガル語 (ブラジル)|pt-Br.microsoft|pt-Br.lucene|  
 |ポルトガル語 (ポルトガル)|pt-Pt.microsoft|pt-Pt.lucene|  
 |パンジャーブ語|pa.microsoft||  
-|ルーマニア語|ro.microsoft|ro.lucene|  
-|ロシア語|ru.microsoft|ru.lucene|  
-|セルビア語 (キリル文字)|sr-cyrillic.microsoft||  
+|Romanian|ro.microsoft|ro.lucene|  
+|Russian|ru.microsoft|ru.lucene|  
+|セルビア語 (キリル)|sr-cyrillic.microsoft||  
 |セルビア語 (ラテン)|sr-latin.microsoft||  
-|スロバキア語|sk.microsoft||  
-|スロベニア語|sl.microsoft||  
-|スペイン語|es.microsoft|es.lucene|  
-|スウェーデン語|sv.microsoft|sv.lucene|  
+|Slovak|sk.microsoft||  
+|Slovenian|sl.microsoft||  
+|Spanish|es.microsoft|es.lucene|  
+|Swedish|sv.microsoft|sv.lucene|  
 |タミル語|ta.microsoft||  
 |テルグ語|te.microsoft||  
-|タイ語|th.microsoft|th.lucene|  
-|トルコ語|tr.microsoft|tr.lucene|  
+|Thai|th.microsoft|th.lucene|  
+|Turkish|tr.microsoft|tr.lucene|  
 |ウクライナ語|uk.microsoft||  
-|ウルドゥー語|ur.microsoft||  
+|ウルドゥ語|ur.microsoft||  
 |ベトナム語|vi.microsoft||  
 
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 + [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 
