@@ -103,6 +103,8 @@
       items:
         - name: アプリケーションのデプロイ
           items:
+            - name: パッケージから実行
+              href: ../deploy-run-package.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: FTP 経由でのデプロイ
               href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: クラウドの同期を使用したデプロイ

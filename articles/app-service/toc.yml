@@ -117,6 +117,8 @@
       items:
         - name: アプリケーションのデプロイ
           items:
+            - name: パッケージから実行
+              href: deploy-run-package.md
             - name: ZIP または WAR のデプロイ
               href: deploy-zip.md
             - name: FTP 経由でのデプロイ
