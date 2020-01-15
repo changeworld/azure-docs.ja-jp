@@ -630,8 +630,6 @@
           href: sql-database-advisor-portal.md
         - name: アラートを作成する
           href: sql-database-insights-alerts-portal.md
-        - name: 接続のトラブルシューティング
-          href: sql-database-troubleshoot-common-connection-issues.md
         - name: ファイル空き領域の管理
           href: sql-database-file-space-management.md
         - name: 接続の問題に対する Resource Health の使用
