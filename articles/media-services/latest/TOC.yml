@@ -77,7 +77,7 @@
         - name: Autogen アダプティブ ビットレート ラダー
           href: autogen-bitrate-ladder.md
         - name: コンテンツに対応したエンコード
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: コンテンツの分析 (Video Indexer)
       items:
         - name: 概要
@@ -106,7 +106,7 @@
           href: streaming-policy-concept.md
         - name: ストリーミング エンドポイントのエラー コード
           href: streaming-endpoint-error-codes.md
-    - name: コンテンツ保護
+    - name: コンテンツの保護
       items:
         - name: 動的暗号化とキー配信
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
@@ -178,9 +178,9 @@
     - name: v2 から v3 への移行ガイダンス
       href: migrate-from-v2-to-v3.md
       displayName: naming
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: 作業開始
+    - name: はじめに
       items:
         - name: アカウントの作成 - CLI
           href: create-account-cli-how-to.md
@@ -356,7 +356,7 @@
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: クォータと制限
       href: limits-quotas-constraints.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: frequently-asked-questions.md
     - name: Azure のクラウドとリージョン
       href: azure-clouds-regions.md

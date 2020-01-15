@@ -11,12 +11,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/11/2019
-  ms.openlocfilehash: 3d82583617ac5ee2efc7f19bd937a01d557eb5ba
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 94fa7495feff5199c3b64903ad94feceb20d55bc
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73606055"
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75971407"
 landingContent:
 - title: Azure Databricks について
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
     links:
     - text: Azure Databricks の概要
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-databricks
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -48,7 +48,7 @@ landingContent:
     links:
     - text: Apache Spark クラスターの作成
       url: /azure/databricks/clusters/create
-    - text: データ ソースへの接続
+    - text: データ ソースに接続する
       url: databricks-connect-to-data-sources.md
     - text: Azure Cloud Shell からの Databricks CLI の使用
       url: databricks-cli-from-azure-cloud-shell.md
@@ -83,7 +83,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 仮想ネットワーク内に Azure Databricks をデプロイする
-      url: vnet-injection.md
+      url: https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
   - linkListType: tutorial
     links:
     - text: Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する

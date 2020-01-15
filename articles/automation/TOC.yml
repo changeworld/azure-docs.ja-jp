@@ -244,7 +244,7 @@
     - name: 概念
       items:
         - name: PowerShell DSC
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: クイックスタート
       items:
         - name: 作業の開始
@@ -315,7 +315,7 @@
     - name: PowerShell モジュール
       items:
         - name: モジュール
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: Azure Automation での Az モジュールの使用
           href: az-modules.md
         - name: Azure PowerShell モジュールの更新

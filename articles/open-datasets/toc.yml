@@ -12,10 +12,10 @@
       href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: 画像分類モデルをエンリッチする
       href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure Machine Learning のデータセット
-      href: ../machine-learning/service/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: サンプル
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
