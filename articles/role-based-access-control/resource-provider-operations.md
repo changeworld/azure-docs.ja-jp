@@ -3906,8 +3906,8 @@ ms.locfileid: "74895559"
 > | Action | Microsoft.Network/bastionHosts/createbsl/action | 要塞内の VM の共有可能な URL を作成し、URL を返します |
 > | Action | Microsoft.Network/bastionHosts/delete | 踏み台ホストを削除します |
 > | Action | Microsoft.Network/bastionHosts/deletebsl/action | 要塞内の指定された VM の共有可能な URL を削除します |
-> | Action | Microsoft.Network/bastionHosts/disconnectactivesessions/action | 要塞ホストで特定のアクティブなセッションを切断します |
-> | Action | Microsoft.Network/bastionHosts/getactivesessions/action | 要塞ホストでアクティブなセッションを取得します |
+> | Action | Microsoft.Network/bastionHosts/disconnectactivesessions/action | 踏み台ホストで特定のアクティブなセッションを切断します |
+> | Action | Microsoft.Network/bastionHosts/getactivesessions/action | 踏み台ホストでアクティブなセッションを取得します |
 > | Action | Microsoft.Network/bastionHosts/getbsl/action | URL が作成された場合に、要塞サブネット内の指定された VM の共有可能な URL を返します |
 > | Action | Microsoft.Network/bastionHosts/read | 踏み台ホストを取得します |
 > | Action | Microsoft.Network/bastionHosts/write | 踏み台ホストを作成または更新します |
