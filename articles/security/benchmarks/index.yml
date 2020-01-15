@@ -12,18 +12,18 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c4209c1f8f7d82e1d78eb84c9ab92bc061ffa47b
-  ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+  ms.openlocfilehash: 114811ded778b2f444c94908d62209947adef735
+  ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/10/2020
-  ms.locfileid: "75835048"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75934778"
 landingContent:
 - title: Azure セキュリティ ベンチマークについて
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure セキュリティ ベンチマークの紹介
+    - text: Azure セキュリティ ベンチマークの概要
       url: introduction.md
     - text: Azure セキュリティ制御の概要
       url: overview.md

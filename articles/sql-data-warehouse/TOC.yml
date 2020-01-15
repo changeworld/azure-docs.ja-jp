@@ -14,7 +14,7 @@
       href: sql-data-warehouse-best-practices.md
     - name: 容量制限
       href: sql-data-warehouse-service-capacity-limits.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: sql-data-warehouse-overview-faq.md
 - name: リリース ノート
   items:
@@ -22,7 +22,7 @@
       href: release-notes-10-0-10106-0.md
     - name: Gen2 のリージョンのアップグレード スケジュール
       href: gen2-migration-schedule.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 作成と接続
@@ -45,7 +45,7 @@
           href: quickstart-scale-compute-powershell.md
         - name: T-SQL
           href: quickstart-scale-compute-tsql.md
-    - name: ワークロード管理
+    - name: ワークロードの管理
       items:
         - name: ワークロード分類子の作成
           items:
@@ -57,7 +57,7 @@
               href: quickstart-configure-workload-isolation-tsql.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
@@ -173,7 +173,7 @@
               href: sql-data-warehouse-tables-overview.md
             - name: CTAS
               href: sql-data-warehouse-develop-ctas.md
-            - name: データの種類
+            - name: データ型
               href: sql-data-warehouse-tables-data-types.md
             - name: 分散テーブル
               href: sql-data-warehouse-tables-distribute.md
@@ -183,7 +183,7 @@
               href: sql-data-warehouse-tables-index.md
             - name: ID
               href: sql-data-warehouse-tables-identity.md
-            - name: パーティション
+            - name: '[メジャー グループ]'
               href: sql-data-warehouse-tables-partition.md
             - name: レプリケート テーブル
               href: design-guidance-for-replicated-tables.md
@@ -215,7 +215,7 @@
           href: sql-data-warehouse-develop-group-by-options.md
         - name: ラベル
           href: sql-data-warehouse-develop-label.md
-    - name: ワークロード管理
+    - name: ワークロードの管理
       items:
         - name: 概要
           href: sql-data-warehouse-workload-management.md
@@ -225,6 +225,8 @@
           href: sql-data-warehouse-workload-importance.md
         - name: ワークロードの分離
           href: sql-data-warehouse-workload-isolation.md
+        - name: ワークロード管理の監視
+          href: sql-data-warehouse-workload-management-portal-monitor.md
         - name: メモリとコンカレンシーの制限
           href: memory-concurrency-limits.md
         - name: リソース クラス
@@ -241,7 +243,7 @@
           href: backup-and-restore.md
         - name: Recommendations
           href: sql-data-warehouse-concept-recommendations.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           href: sql-data-warehouse-troubleshoot.md
     - name: メンテナンス スケジュール
       href: maintenance-scheduling.md
@@ -249,9 +251,9 @@
       items:
         - name: 概要
           href: sql-data-warehouse-overview-integrate.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: Azure AD 認証の構成
           href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
@@ -263,7 +265,7 @@
           href: sql-data-warehouse-encryption-tde.md
         - name: 暗号化の有効化 - T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: データを読み込む
+    - name: データの読み込み
       items:
         - name: Azure Data Lake Storage (ADLS) から
           href: sql-data-warehouse-load-from-azure-data-lake-store.md
@@ -303,7 +305,7 @@
               href: sql-data-warehouse-query-ssms.md
             - name: sqlcmd
               href: sql-data-warehouse-get-started-connect-sqlcmd.md
-    - name: ワークロード管理
+    - name: ワークロードの管理
       items:
         - name: ワークロードの分析
           href: analyze-your-workload.md
@@ -351,7 +353,7 @@
           items:
             - name: Power BI による視覚化
               href: sql-data-warehouse-get-started-visualize-with-power-bi.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 接続
           href: sql-data-warehouse-troubleshoot-connectivity.md

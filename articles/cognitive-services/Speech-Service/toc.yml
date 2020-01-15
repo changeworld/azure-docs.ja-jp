@@ -7,7 +7,7 @@
       href: overview.md
     - name: 言語とリージョンのサポート
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: 音声テキスト変換
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: 音声認識のソース言語を変更する
           href: how-to-specify-source-language.md
+        - name: 音声認識モードを選択する
+          href: how-to-choose-recognition-mode.md
         - name: Custom Speech を使用して精度を向上させる
           href: how-to-custom-speech.md
         - name: フレーズ リストを使用して精度を向上させる
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: カスタム音声を使用して出力を改善する
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Long Audio API を使用して音声を合成する
           href: long-audio-api.md
         - name: Docker コンテナーで音声合成を使用する
@@ -363,6 +366,7 @@
           items:
             - name: Custom Voice の概要
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: データを準備する
               href: how-to-custom-voice-prepare-data.md
             - name: カスタム音声モデルを作成して使用する

@@ -869,6 +869,9 @@
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Azure Functions タイマーを使用してスケーリングする
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: コンテナーと項目を操作する
       items:
         - name: Cosmos DB のデータを操作する

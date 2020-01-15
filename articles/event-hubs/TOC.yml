@@ -31,9 +31,9 @@
         - name: Java
           href: event-hubs-java-get-started-send.md
         - name: Python
-          href: event-hubs-python-get-started-send.md
+          href: get-started-python-send-v2.md
         - name: Node.js
-          href: event-hubs-node-get-started-send.md
+          href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C (送信のみ)
@@ -49,7 +49,7 @@
         - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
         - name: Python を使用して Event Hubs データをキャプチャする
-          href: event-hubs-capture-python.md
+          href: get-started-capture-python-v2.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: 専用クラスターを作成する
@@ -114,10 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: さまざまなプロトコルを使用してアプリケーション間でイベントを交換する
           href: event-hubs-exchange-events-different-protocols.md
-        - name: .NET プログラミング ガイド
-          href: event-hubs-programming-guide.md
-        - name: Python を使用したイベントの送信、受信、およびキャプチャ
-          href: event-hubs-python.md
+        - name: プログラミング ガイド
+          items:
+            - name: Python
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: JavaScript
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: .NET プログラミング ガイド
+              href: event-hubs-programming-guide.md
+        - name: Python を使用したキャプチャ データの読み取り (レガシ)
+          href: event-hubs-capture-python.md
+        - name: イベントの送受信 (レガシ)
+          items:
+            - name: Python (レガシ)
+              href: event-hubs-python-get-started-send.md
+            - name: Node.js (レガシ)
+              href: event-hubs-node-get-started-send.md
     - name: データを処理する
       items:
         - name: Azure Stream Analytics を使用したデータの処理
@@ -193,7 +205,15 @@
         - name: Microsoft.Azure.Management.EventHub
           href: /dotnet/api/microsoft.azure.management.eventhub
     - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+      items:
+        - name: バージョン 2 からバージョン 5 への移行
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: API リファレンス
+          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Python
+      items:
+        - name: バージョン 1 からバージョン 5 への移行
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager テンプレート
