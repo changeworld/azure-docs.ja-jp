@@ -64,11 +64,11 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 3. **[開く]** を選択して、ファイルを開きます。
 4. テンプレートによって定義されたリソースは、5 つあります。
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Storage/storageAccounts`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/publicIPAddresses`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/virtualNetworks`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/networkInterfaces`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Compute/virtualMachines`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * `Microsoft.Storage/storageAccounts`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+   * `Microsoft.Network/publicIPAddresses`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+   * `Microsoft.Network/virtualNetworks`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+   * `Microsoft.Network/networkInterfaces`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+   * `Microsoft.Compute/virtualMachines`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 5. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。

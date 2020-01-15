@@ -85,7 +85,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 詳細については、[ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) に関するページを参照してください。
 
 ### <a name="bandwidth-options"></a>帯域幅のオプション
-さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅は接続パートナーに必ず確認してください。
+さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅については接続プロバイダーに必ず確認してください。
 
 * 50 Mbps
 * 100 Mbps
@@ -107,7 +107,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 * **ExpressRoute Premium アドオン**。 ExpressRoute Premiumは ExpressRoute 回線のアドオンです。 ExpressRoute Premium アドオンには次の機能があります。 
   * Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
   * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線に与えられる世界中の他のリージョンにあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
-  * ExpressRoute ごとの VNet リンクの増加 (回線の帯域幅にもよりますが、10 からそれ以上に)。
+  * ExpressRoute ごとの VNet リンクの上限数が 10 からより大きな数に増加 (回線の帯域幅によって異なる)。
 
 ## <a name="faq"></a>FAQ
 ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。

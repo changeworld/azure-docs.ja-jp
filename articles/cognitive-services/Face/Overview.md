@@ -27,7 +27,7 @@ Face API にはいくつかの異なる機能があります。 それぞれの�
 Face API では、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出ではオプションとして、顔関連の属性を抽出できます。 たとえば、頭部姿勢、性別、年齢、感情、顔ひげ、眼鏡です。
 
 > [!NOTE]
-> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) でも利用できます。 顔のデータを使ってさらに操作を行いたい場合は、Face API (この記事で説明するサービス) を使用してください。
+> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) でも利用できます。 顔のデータを使ってさらに操作を行いたい場合は、この記事で取り上げる Face API というサービスを使用してください。
 
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
@@ -57,7 +57,7 @@ Group API では、未知の顔の集合が、類似性に基づいて複数の�
 
 ## <a name="person-identification"></a>人物の特定
 
-Identify API を使用して、人のデータベースと照らして、検出された顔を識別します。 この機能は、写真管理ソフトウェアにおける画像の自動タグ付けに役立つ可能性があります。 データベースは事前に作成しておき、後で編集できます。
+Identify API を使用して、人のデータベースと照らして、検出された顔を識別します。 この機能は、写真管理ソフトウェアにおける画像の自動タグ付けに役立つ可能性があります。 データベースは事前に作成しますが、その後に適宜編集できます。
 
 次の画像は、`"myfriends"` という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
 
@@ -73,7 +73,7 @@ Identify API を使用して、人のデータベースと照らして、検出�
 
 ## <a name="sample-apps"></a>サンプル アプリ
 
-以下のサンプル アプリケーションは、Face API のいくつかの使用方法を示しています。
+以下のサンプル アプリケーションは、Face API の使用方法をいくつか示しています。
 
 - [Microsoft Face API: Windows クライアント ライブラリとサンプル](https://github.com/Microsoft/Cognitive-Face-Windows) は、顔の検出、分析、識別についていくつかのシナリオを実証する WPF アプリです。
 - [FamilyNotes UWP アプリ](https://github.com/Microsoft/Windows-appsample-familynotes)は、家族でノートを共有するシナリオにおいて、音声、Cortana、インク、カメラと共に顔の識別が使用されるユニバーサル Windows プラットフォーム (UWP) アプリです。

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b85c68b19a44021710dbc9143e255600b43b2cba
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670881"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666144"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service アプリを構成する
 
@@ -29,9 +29,9 @@ ms.locfileid: "74670881"
 
 ## <a name="express"> </a>簡単設定を構成する
 
-1. [Azure portal] で App Service アプリに移動します。
-1. 左側のウィンドウで **[設定]**  > 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
-1. **[Azure Active Directory]** を選択し、 **[管理モード]** の **[簡易]** を選択します。
+1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
+1. 左ペインの **[設定]** で、 **[認証/承認]** を選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
+1. **[Azure Active Directory]** を選択し、 **[管理モード]** で **[簡易]** を選択します。
 1. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 新しいアプリ登録が作成されます。
 
    代わりに既存のアプリ登録を選択する場合は、次のようにします。
@@ -65,7 +65,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
 次の手順に従います。
 
-1. [Azure portal] にサインインし、お使いの App Service アプリに移動します。 アプリの **URL** をメモしておきます。 Azure Active Directory アプリの登録を構成するときにそれを使用します。
+1. [Azure portal] にサインインし、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの **URL** をメモしておきます。 Azure Active Directory アプリの登録を構成するときにそれを使用します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、App Service アプリの URL を入力し、パス `/.auth/login/aad/callback` を追加します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 
@@ -86,13 +86,13 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
 ### <a name="secrets"> </a>Azure Active Directory の情報を App Service アプリに追加する
 
-1. [Azure portal] で App Service アプリに移動します。 
-1. 左側のウィンドウで **[設定]、[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
+1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 
+1. 左ペインの **[設定]** で、 **[認証/承認]** を選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
 1. (省略可能) 既定では、App Service 認証によってアプリへの認証されていないアクセスが許可されます。 ユーザー認証を強制するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。
 1. [認証プロバイダー] で **[Azure Active Directory]** を選択します。
 1. **[管理モード]** で **[Advanced]\(詳細\)** を選択し、次の表に従って App Service 認証を構成します。
 
-    |フィールド|説明|
+    |フィールド|[説明]|
     |-|-|
     |クライアント ID| アプリの登録の**アプリケーション (クライアント) ID** を使用します。 |
     |Issuer ID (発行者 ID)| `https://login.microsoftonline.com/<tenant-id>` を使用し、 *\<tenant-id>* をアプリの登録の**ディレクトリ (テナント) ID** に置き換えます。 |
