@@ -1,5 +1,5 @@
 ---
-title: ポータルを使用して Azure AD アプリとサービス プリンシパルを作成する
+title: ポータルで Azure AD アプリとサービス プリンシパルを作成する
 titleSuffix: Microsoft identity platform
 description: Azure Resource Manager でロールベースのアクセス制御を使用してリソースへのアクセスを管理するために、新しい Azure Active Directory アプリとサービス プリンシパルを作成します。
 services: active-directory
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0261c060358b9f0f42624008341f80245ff57aca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967118"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424527"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -159,7 +159,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![この例では、ユーザーが所有者ロールに割り当てられています](./media/howto-create-service-principal-portal/view-user-role.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)」を参照してください。  
 * ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。

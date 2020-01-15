@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438445"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -93,7 +93,7 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 1. まだリリース定義を含まないまったく新しい DevOps プロジェクトに取り組んでいる場合は、先へ進む前に、まず空のリリース定義を作成する必要があります。 既存のリリース定義ができるまで、[インポート] オプションは UI に表示されません。
 1. 左側にある **[+ 新規]** ボタンをクリックして、 **[パイプラインのインポート]** をクリックします。
 1. **[参照]** をクリックし、プロジェクトから `samples/release.json` を選択します。
-1. Click **OK**. [パイプライン] ウィンドウがリリース定義の編集ページと共に読み込まれたことが確認できます。 また、引き続き構成する必要があるクラスター固有の詳細を示した赤い警告アイコンがいくつかあることが確認できます。
+1. **[OK]** をクリックします。 [パイプライン] ウィンドウがリリース定義の編集ページと共に読み込まれたことが確認できます。 また、引き続き構成する必要があるクラスター固有の詳細を示した赤い警告アイコンがいくつかあることが確認できます。
 1. [パイプライン] ウィンドウの左側で、 **[成果物の追加]** バブルをクリックします。
 1. **[ソース]** ドロップダウンで、前に作成したビルド パイプラインを選択します。
 1. **[既定のバージョン]** では、 **[ビルド パイプライン既定のブランチ (タグ付き) からの最新バージョン]** を選択します。
@@ -183,7 +183,7 @@ Dev Spaces のインストルメンテーションは、アプリケーション
 >
 > これを実行した後に `prod` 名前空間にあるすべてのポッドの削除が必要になる場合があります。そのため、Dev Spaces インストルメンテーションなしでの再作成が可能になっています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces を使用したチーム開発について学ぶ](../team-development-netcore.md)

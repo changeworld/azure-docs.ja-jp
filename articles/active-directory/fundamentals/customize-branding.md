@@ -1,5 +1,5 @@
 ---
-title: 組織のサインイン ページにブランドを追加する - Azure Active Directory | Microsoft Docs
+title: 組織のサインイン ページにブランドを追加する - Azure AD
 description: Azure Active Directory のサインイン ページに組織のブランドを追加する方法に関する説明。
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422834"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。

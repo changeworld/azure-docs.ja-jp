@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 340a1927f62d6a398994b457e351ad41d5e76d19
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850144"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659765"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -27,7 +27,7 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
    - **構文エラー**
    - **論理エラー**
 
-2. Runbook の[エラー ストリーム](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)に特定のメッセージがないか**を調査**し、それらを以下のエラーと比較します。
+2. Runbook の[エラー ストリーム](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)に特定のメッセージがないか**調査**し、それらを以下のエラーと比較します
 
 3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 [Azure Automation の Azure モジュールを更新する方法](..//automation-update-azure-modules.md)に関するページの手順に従ってモジュールを最新バージョンに更新してください。 トラブルシューティングの詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
@@ -98,7 +98,7 @@ Run Login-AzureRMAccount to login.
 The subscription named <subscription name> cannot be found.
 ```
 
-### <a name="error"></a>Error
+### <a name="error"></a>エラー
 
 このエラーは、次の場合に発生する可能性があります。
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 このエラーは、次のいずれかの問題のために発生します。
 
-* メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
+* メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
 
-* ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
+* ネットワーク ソケット。 「[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
 
 * モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
 
@@ -610,7 +610,7 @@ Az モジュールと AzureRM モジュールを同じ Automation アカウン�
 * [Azure Automation での Runbook の開始](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Azure Automation での Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

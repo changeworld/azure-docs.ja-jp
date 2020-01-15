@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights にユーザー コンテキスト ID を送信して使用状況を把握できるようにする | Microsoft Docs
+title: アクティビティを追跡するためのユーザー コンテキスト ID - Azure Application Insights
 description: Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てて、サービスにおけるユーザーの行動を追跡します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ee26aeff87f56ec09bced6029154c5152f26750d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432296"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
@@ -128,7 +128,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。

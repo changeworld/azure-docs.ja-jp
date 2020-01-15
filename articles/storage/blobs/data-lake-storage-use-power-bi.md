@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354830"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -27,6 +27,7 @@ ms.locfileid: "70984953"
 > * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 > * 階層型名前空間があるストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
 > この記事では、`myadlsg2` という名前のアカウントが作成されていることを前提としています。
+> * ストレージ アカウントに関する次のいずれかのロールが付与されている。**BLOB データ閲覧者**、**BLOB データ共同作成者**、または **BLOB データ所有者**。
 > * お使いのストレージ アカウントに配置されている `Drivers.txt` という名前のサンプル データ ファイル。
 > このサンプルを [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)からダウンロードした後、お使いのストレージ アカウントにそのファイルをアップロードできます。
 > * **Power BI Desktop**。 これは [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からダウンロードできます。 

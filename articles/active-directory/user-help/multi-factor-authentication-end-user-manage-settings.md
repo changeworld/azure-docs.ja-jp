@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231925"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681329"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 
@@ -32,16 +32,16 @@ ms.locfileid: "74231925"
 
 ## <a name="using-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページを使用する
 
-2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](https://aka.ms/mfasetup) ページからセキュリティ検証方法の設定にアクセスできます。
+2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページからセキュリティ検証方法の設定にアクセスできます。
 
 >[!Note]
 >画面に表示される内容と、この記事の内容が一致しない場合は、管理者によってセキュリティ情報 (プレビュー) エクスペリエンスが有効にされているか、または組織に独自のカスタム ポータルがあることを意味します。 セキュリティ情報エクスペリエンスについて詳しくは、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」をご覧ください。 組織のカスタム ポータルについて詳しくは、ヘルプ デスクにお問い合わせください。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページに移動するには
 
-- [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://aka.ms/mfasetup ) にアクセスします。
+- [[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページに移動します。
 
-    ![[追加のセキュリティ確認] 画面と、利用可能なセキュリティ検証方法の詳細](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![[追加のセキュリティ確認] ページと、利用可能なセキュリティ検証方法の詳細](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     このリンクをクリックしても機能しない場合は、以下の手順に従って **[追加のセキュリティ確認]** ページにアクセスすることもできます。
 
@@ -133,7 +133,7 @@ Microsoft Authenticator アプリからアカウントを削除することが�
 
     任意のデバイスで次回サインインするときに、2 要素認証を実行するよう求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 2 要素認証を追加または更新したら、アプリ パスワードを管理したり、サインインしたり、2 要素認証関連の一般的な問題でサポートを受けたりできます。
 

@@ -1,5 +1,5 @@
 ---
-title: Android Microsoft Authentication Library 構成ファイル | Azure
+title: Android MSAL 構成ファイル | Azure
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory でのアプリケーションの構成を表す Android Microsoft Authentication Library (MSAL) 構成ファイルの概要。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424384"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -33,8 +33,8 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 | プロパティ | データ型 | 必須 | メモ |
 |-----------|------------|-------------|-------|
-| `client_id` | string | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
-| `redirect_uri`   | string | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
+| `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
+| `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
 | `authorities` | List\<機関> | いいえ | アプリに必要な機関の一覧 |
 | `authorization_user_agent` | AuthorizationAgent (列挙型) | いいえ | 指定できる値: `DEFAULT`、`BROWSER`、`WEBVIEW` |
 | `http` | HttpConfiguration | いいえ | `HttpUrlConnection` `connect_timeout` と `read_timeout` を構成します |
@@ -104,17 +104,17 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 | プロパティ | データ型  | 必須 | メモ |
 |-----------|-------------|-----------|--------|
-| `type` | string | はい | ご利用のアプリがターゲットとする対象ユーザーまたはアカウントの種類をミラー化します。 指定できる値: `AAD`、`B2C` |
+| `type` | String | はい | ご利用のアプリがターゲットとする対象ユーザーまたはアカウントの種類をミラー化します。 指定できる値: `AAD`、`B2C` |
 | `audience` | Object | いいえ | Type=`AAD` の場合にのみ適用されます。 ご利用のアプリがターゲットとする ID を指定します。 ご利用のアプリの登録からの値を使用します |
-| `authority_url` | string | はい | Type=`B2C` の場合にのみ必要です。 ご利用のアプリで使用する必要がある機関の URL またはポリシーを指定します  |
-| `default` | ブール値 | はい | 1 つまたは複数の機関が指定されている場合は、1 つの `"default":true` が必要です。 |
+| `authority_url` | String | はい | Type=`B2C` の場合にのみ必要です。 ご利用のアプリで使用する必要がある機関の URL またはポリシーを指定します  |
+| `default` | boolean | はい | 1 つまたは複数の機関が指定されている場合は、1 つの `"default":true` が必要です。 |
 
 #### <a name="audience-properties"></a>対象ユーザーのプロパティ
 
 | プロパティ | データ型  | 必須 | メモ |
 |-----------|-------------|------------|-------|
-| `type` | string | はい | ご利用のアプリでターゲットとする対象ユーザーを指定します。 指定できる値: `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
-| `tenant_id` | string | はい | `"type":"AzureADMyOrg"` の場合にのみ必要です。 他の `type` 値の場合は省略可能です。 これには、`contoso.com` などのテナント ドメインや、`72f988bf-86f1-41af-91ab-2d7cd011db46` などのテナント ID にすることができます |
+| `type` | String | はい | ご利用のアプリでターゲットとする対象ユーザーを指定します。 指定できる値: `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
+| `tenant_id` | String | はい | `"type":"AzureADMyOrg"` の場合にのみ必要です。 他の `type` 値の場合は省略可能です。 これには、`contoso.com` などのテナント ドメインや、`72f988bf-86f1-41af-91ab-2d7cd011db46` などのテナント ID にすることができます |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -141,8 +141,8 @@ HTTP タイムアウトのグローバル設定を構成します。次に例を
 
 | プロパティ | データ型 | 必須 | メモ |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | いいえ | ミリ秒単位 |
-| `read_timeout` | int | いいえ | ミリ秒単位 |
+| `connect_timeout` | INT | いいえ | ミリ秒単位 |
+| `read_timeout` | INT | いいえ | ミリ秒単位 |
 
 ### <a name="logging"></a>logging
 
@@ -150,9 +150,9 @@ HTTP タイムアウトのグローバル設定を構成します。次に例を
 
 | プロパティ | データ型  | 必須 | メモ |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | ブール値 | いいえ | 個人データを出力するかどうか |
-| `log_level`   | ブール値 | いいえ | どのログ メッセージを出力するか |
-| `logcat_enabled` | ブール値 | いいえ | ログ記録のインターフェイスに加えて、ログ cat にも出力するかどうか |
+| `pii_enabled`  | boolean | いいえ | 個人データを出力するかどうか |
+| `log_level`   | boolean | いいえ | どのログ メッセージを出力するか |
+| `logcat_enabled` | boolean | いいえ | ログ記録のインターフェイスに加えて、ログ cat にも出力するかどうか |
 
 ### <a name="account_mode"></a>account_mode
 
@@ -342,7 +342,7 @@ MSAL に付属する既定の MSAL 構成を次に示します。 [GitHub](https
 ## <a name="how-to-use-a-configuration-file"></a>構成ファイルを使用する方法
 
 1. 構成ファイルを作成します。 `res/raw/auth_config.json` でご自分のカスタム構成ファイルを作成することをお勧めします。 ただし、それは希望する場所に配置することができます。
-2. `PublicClientApplication` を構築するときに、ご利用の構成を探す場所を MSAL に指示します。 例:
+2. `PublicClientApplication` を構築するときに、ご利用の構成を探す場所を MSAL に指示します。 次に例を示します。
 
    ```java
    //On Worker Thread

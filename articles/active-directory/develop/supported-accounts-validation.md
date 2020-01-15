@@ -1,5 +1,5 @@
 ---
-title: アカウントの種類別の検証の相違点 - Microsoft ID プラットフォーム | Azure
+title: サポートされるアカウントの種類別の検証の相違点 - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームにアプリを登録する際にサポートされる、アカウントの種類のさまざまなプロパティの検証の違いについて説明します。
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2d15c22e2495432926285dbdbd55a4a6f3b0aa35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423449"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>サポートされているアカウントの種類別の検証の相違点 (signInAudience)
 
@@ -48,7 +48,7 @@ ms.locfileid: "74919360"
 
 \* アプリ オブジェクトのすべてのコレクション プロパティで共通のグローバル制限は、約 1,000 項目です
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーションの登録](app-objects-and-service-principals.md)について学習します。
 - [アプリケーション マニフェスト](reference-app-manifest.md)について学習する

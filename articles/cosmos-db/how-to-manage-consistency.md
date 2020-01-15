@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB で一貫性を管理する方法について
+title: Azure Cosmos DB で一貫性を管理する
 description: Azure portal、.Net SDK、Java SDK など各種の SDK を使用して、Azure Cosmos DB に一貫性レベルを構成、管理する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872079"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445360"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -19,7 +19,7 @@ ms.locfileid: "74872079"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-the-default-consistency-level"></a>既定の一貫性レベルを構成する
+## <a name="configure-the-default-consistency-level"></a>既定の整合性レベルを構成する
 
 [既定の整合性レベル](consistency-levels.md)は、クライアントによって既定で使用される整合性レベルです。 クライアントはいつでもこれをオーバーライドできます。
 
@@ -59,7 +59,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Azure Cosmos アカウントを見つけて、 **[既定の整合性]** ウィンドウを開きます。 目的の一貫性レベルを新しい既定として選択し、 **[保存]** を選択します。 Azure portal では、音符によるさまざまな一貫性レベルの視覚化も提供しています。 
 
@@ -236,9 +236,9 @@ item = client.ReadItem(doc_link, options)
 ![Azure portal の PBS グラフ](./media/how-to-manage-consistency/pbs-metric.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事を参照してください。
+データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事をご覧ください。
 
 * [Azure Cosmos DB の整合性レベル](consistency-levels.md)
 * [リージョン間の競合の管理](how-to-manage-conflicts.md)

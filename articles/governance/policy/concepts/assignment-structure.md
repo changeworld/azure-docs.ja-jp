@@ -3,16 +3,16 @@ title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5f6b097b82d31926b7b5d3099d1f3f23669e78c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436375"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
-ポリシーの割り当ては、リソースに割り当てられるポリシーまたはイニシアティブを定義するために、Azure Policy によって使用されます。 ポリシーの割り当てでは、割り当て時にそのリソース グループのパラメーターの値を決定でき、ポリシー定義を再利用して、同じリソースのプロパティのコンプライアンス ニーズが異なる場合に対応できます。
+ポリシーの割り当ては、どのポリシーまたはイニシアティブにどのリソースを割り当てるか定義するために Azure Policy によって使用されます。 ポリシーの割り当てでは、割り当て時にそのリソース グループのパラメーターの値を決定でき、ポリシー定義を再利用して、同じリソースのプロパティのコンプライアンス ニーズが異なる場合に対応できます。
 
 ポリシーの割り当てを作成するには、JSON を使用します。 ポリシーの割り当てには、次に対する要素が含まれています。
 
@@ -59,7 +59,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 このプロパティの値は次のとおりです。
 
-|Mode |JSON 値 |種類 |手動で修復 |アクティビティ ログ エントリ |説明 |
+|モード |JSON 値 |種類 |手動で修復 |アクティビティ ログ エントリ |[説明] |
 |-|-|-|-|-|-|
 |有効 |Default |string |はい |はい |ポリシーの効果は、リソースの作成時または更新時に適用されます。 |
 |無効 |DoNotEnforce |string |はい |いいえ | ポリシーの効果は、リソースの作成時または更新時に適用されません。 |
@@ -71,7 +71,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 このフィールドでは、ポリシー定義またはイニシアティブ定義の完全なパス名を指定する必要があります。
 `policyDefinitionId` は文字列であり、配列ではありません。 複数のポリシーを一緒に割り当てることが多い場合は、代わりに[イニシアティブ](./definition-structure.md#initiatives)を使用することをお勧めします。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ポリシー割り当てのこのセグメントでは、[ポリシー定義またはイニシアティブ定義](./definition-structure.md#parameters)で定義されているパラメーターに対する値を指定します。
 この設計により、異なるリソースでポリシーまたはイニシアティブの定義を再利用しながら、異なるビジネス値や結果を確認することができます。
@@ -89,7 +89,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 この例では、ポリシー定義で以前に定義されているパラメーターは、`prefix` および `suffix` です。 この特定のポリシー割り当てでは、`prefix` を **DeptA** に、`suffix` を **-LC** に設定します。 同じポリシー定義を異なる部門の異なるパラメーター セットで再利用できるため、柔軟性を提供しながら、ポリシー定義の重複と複雑さを軽減できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。

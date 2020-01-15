@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598217"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647290"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -40,7 +40,7 @@ Network Watcher には、3 つの主要な機能セットがあります。
   * [接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal)では、VM と他のネットワーク リソースとの間で、1 回限りの接続と待機時間のチェックが有効になります。
   * [パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)を使用すると、仮想ネットワーク内の VM でのすべてのトラフィックをキャプチャできます。
   * [VPN のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview)では、VPN ゲートウェイと接続に対して複数の診断チェックを実行し、問題のデバッグに役立てることができます。
-* ログの記録
+* ログ記録
   * [NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)では、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) のすべてのトラフィックをログに記録できます。
   * [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) では、NSG フロー ログのデータを処理して、ネットワーク トラフィックの視覚化、クエリ、分析、解釈を行うことができます。
 
@@ -51,14 +51,20 @@ Network Watcher には、3 つの主要な機能セットがあります。
 ### <a name="how-does-network-watcher-pricing-work"></a>Network Watcher の価格のしくみ
 Network Watcher のコンポーネントと各コンポーネントの価格については、[価格のページ](https://azure.microsoft.com/pricing/details/network-watcher/)を参照してください。
 
-### <a name="which-regions-is-network-watcher-available-in"></a>Network Watcher を利用できるリージョン
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Network Watcher がサポートされている/利用できるリージョンはどれですか?
 [Azure サービスの利用可能性のページ](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)で、最新のリージョン別の利用可能性を確認できます。
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Network Watcher でのリソース制限とは何ですか?
-すべての制限については、[サービス制限の](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits)に関するページを参照してください。  
+すべての制限については、[サービス制限の](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)に関するページを参照してください。  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>リージョンごとに Network Watcher の 1 つのインスタンスしか許可されないのはなぜですか?
 機能が動作するためには、Network Watcher は 1 つのサブスクリプションに対して一度だけ有効にされる必要があります。これはサービスの上限ではありません。
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Network Watcher 拡張機能をインストールする必要があるのはなぜですか? 
+Network Watcher 拡張機能は、VM からトラフィックを生成またはインターセプトする必要があるすべての機能に必要です。 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>Network Watcher 拡張機能が必要なのはどの機能ですか?
+パケット キャプチャ、接続のトラブルシューティング、および接続モニターのみ Network Watcher 拡張機能が必要です。
 
 ## <a name="nsg-flow-logs"></a>NSG フロー ログ
 
@@ -75,7 +81,7 @@ NSG フロー ログを使用するための前提条件はありません。 �
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>サービス エンドポイントによって NSG フローログを使用する方法
 
-*オプション 1:VNET エンドポイントを使用せずに Azure ストレージ アカウントに出力するように NSG フロー ログを再構成する*
+*オプション 1: VNET エンドポイントを使用せずに Azure ストレージ アカウントに出力するように NSG フロー ログを再構成する*
 
 * 次のエンドポイントがあるサブネットを見つけます。
 
@@ -94,7 +100,7 @@ NSG フロー ログを使用するための前提条件はありません。 �
 
 数分後にストレージ ログを確認できます。TimeStamp が更新されていることや新しい JSON ファイルが作成されていることがわかります。
 
-*オプション 2:NSG フロー ログを無効にする*
+*オプション 2: NSG フロー ログを無効にする*
 
 Microsoft.Storage サービス エンドポイントが必要な場合は、NSG フロー ログを無効にする必要があります。
 

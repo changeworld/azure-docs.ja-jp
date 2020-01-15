@@ -1,5 +1,5 @@
 ---
-title: Xamarin でのブローカー認証、iOS および Android | Azure
+title: Xamarin、iOS、および Android でブローカーを使用する | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用の Azure AD Authentication ライブラリ (ADAL.NET) から .NET 用 Microsoft 認証ライブラリ (MSAL.NET) に Microsoft Authenticator を使用することができる Xamarin iOS アプリケーションの移行の方法について説明します
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 49198909da103debd77fcf0d630e0fa16c1e4448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424221"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
 
@@ -37,7 +37,7 @@ Android および iOS では、Microsoft Authenticator または Microsoft Intun
 ### <a name="step-1-enable-broker-support"></a>手順 1:ブローカーのサポートを有効にする
 ブローカーのサポートは、PublicClientApplication ベースごとに有効になります。 既定では無効になっています。 PublicClientApplicationBuilder を使用して PublicClientApplication を作成する場合は、`WithBroker()` パラメーターを使用します (既定では true に設定されています)。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -45,10 +45,24 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>手順 2:コールバックを処理するように AppDelegate を更新する
+### <a name="step-2-enable-keychain-access"></a>手順 2:キーチェーン アクセスの有効化
+
+キーチェーン アクセスを有効にするには、アプリケーションにキーチェーン アクセス グループが必要です。 アプリケーションを作成するときに、`WithIosKeychainSecurityGroup()` API を使用してキーチェーン アクセス グループを設定できます。
+
+```csharp
+var builder = PublicClientApplicationBuilder
+     .Create(ClientId)
+      
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
+     .Build();
+```
+
+詳しくは、「[キーチェーン アクセスの有効化](msal-net-xamarin-ios-considerations.md#enable-keychain-access)」を参照してください。
+
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>手順 3:コールバックを処理するように AppDelegate を更新する
 Microsoft Authentication Library for .NET (MSAL.NET) がブローカーを呼び出すと、ブローカーでは `AppDelegate` クラスの `OpenUrl` メソッドを使用してアプリケーションにコールバックされます。 MSAL はブローカーからの応答を待つため、アプリケーションが協力して MSAL.NET を再度呼び出す必要があります。 この連携を可能にするには、`AppDelegate.cs` ファイルを更新して次のメソッドをオーバーライドします。
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
                              string sourceApplication,
                              NSObject annotation)
@@ -70,7 +84,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 このメソッドは、アプリケーションが起動されるたびに呼び出されます。 これは、ブローカーからの応答を処理し、MSAL.NET によって開始される認証プロセスを完了する機会として使用されます。
 
-### <a name="step-3-set-a-uiviewcontroller"></a>手順 3:UIViewController() を設定する
+### <a name="step-4-set-a-uiviewcontroller"></a>手順 4:UIViewController() を設定する
 まだ `AppDelegate.cs` にいる場合は、オブジェクト ウィンドウを設定する必要があります。 通常、Xamarin iOS では、オブジェクト ウィンドウを設定する必要はありません。 ブローカーから応答を送受信するには、オブジェクト ウィンドウが必要です。 
 
 これを行うには、次の 2 つの操作を行います。 
@@ -79,23 +93,23 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 **例:**
 
-`App.cs`で、次のように記述します。
-```CSharp
+`App.cs`:
+```csharp
    public static object RootViewController { get; set; }
 ```
-`AppDelegate.cs`で、次のように記述します。
-```CSharp
+`AppDelegate.cs`:
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 トークンの取得の呼び出しで、次のように記述します。
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
 ```
 
-### <a name="step-4-register-a-url-scheme"></a>手順 4:URL スキームを登録する
+### <a name="step-5-register-a-url-scheme"></a>手順 5:URL スキームを登録する
 MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカーの応答をアプリに返します。 ラウンド トリップを終了するには、`Info.plist` ファイルにアプリの URL スキームを登録します。
 
 `CFBundleURLSchemes` 名には `msauth.` がプレフィックスとして、お使いの `CFBundleURLName` の前に含まれている必要があります。
@@ -125,7 +139,7 @@ MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカ�
     </array>
 ```
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>手順 5:LSApplicationQueriesSchemes セクションにブローカー識別子を追加する
+### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>手順 6:LSApplicationQueriesSchemes セクションにブローカー識別子を追加する
 MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにインストールされているかどうかを確認します。 iOS 9 では、アプリケーションがクエリを実行できるスキームが Apple によってロックダウンされました。 
 
 `Info.plist` ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
@@ -134,21 +148,22 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
+      <string>msauthv3</string>
     </array>
 ```
 
-### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>手順 6:アプリケーション ポータルでリダイレクト URI を登録する
+### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>手順 7:アプリケーション ポータルでリダイレクト URI を登録する
 ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする _必要_ があります。
-```CSharp
+```csharp
 $"msauth.{BundleId}://auth"
 ```
 **例:**
-```CSharp
+```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 リダイレクト URI が `Info.plist` ファイルに含まれている `CFBundleURLSchemes` の名前と一致することに注意してください。
 
-### <a name="step-7-make-sure-the-redirect-uri-is-registered-with-your-app"></a>手順 7:リダイレクト URI がアプリに登録されていることを確認する
+### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>手順 8:リダイレクト URI がアプリに登録されていることを確認する
 
 このリダイレクト URI は、アプリ登録ポータル (https://portal.azure.com) でアプリケーションの有効なリダイレクト URI として登録されている必要があります。 
 
@@ -180,6 +195,6 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 MSAL Android ネイティブ ライブラリでは既にサポートされています。 詳細については「[Android での仲介型認証](brokered-auth.md)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項](msal-net-uwp-considerations.md)の詳細を確認します。

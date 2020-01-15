@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439689"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -38,10 +38,13 @@ ms.locfileid: "74928209"
 - **Copy** が、変更箇所のみをソース データベースからコピー先ストアにコピーします。 ソース データベースの変更箇所を識別するクエリは、SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > “last high-watermark” and TIMESTAMP_Column <= “current high-watermark” のようになります。
 - **SqlServerStoredProcedure** が、次回の差分コピーのために現在の高基準値を外部制御テーブルに書き込みます。
 
-このテンプレートには、5 つのパラメーターが定義されています。
+このテンプレートでは、次のパラメーターを定義します。
 - *Data_Source_Table_Name* は、データの読み込み元になるソース データベース内のテーブルです。
 - *Data_Source_WaterMarkColumn* は、新規行や更新行を識別するために使用されるソース テーブル内の列の名前です。 通常、この列の型は *datetime* や *INT* などです。
-- *Data_Destination_Folder_Path* や *Data_Destination_Table_Name* は、コピー先ストア内でコピーされるデータの場所です。
+- *Data_Destination_Container* は、コピー先ストア内でデータがコピーされる場所のルート パスです。
+- *Data_Destination_Directory* は、コピー先ストア内でデータがコピーされる場所のルートの下のディレクトリ パスです。
+- *Data_Destination_Table_Name* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "Azure Synapse Analytics (旧称 SQL DW)" が選択されている場合に適用されます)。
+- *Data_Destination_Folder_Path* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "ファイル システム" または "Azure Data Lake Storage Gen1" が選択されている場合に適用されます)。
 - *Control_Table_Table_Name* は、高基準値を格納する外部制御テーブルです。
 - *Control_Table_Column_Name* は、高基準値を格納する外部制御テーブル内の列です。
 
@@ -100,22 +103,20 @@ ms.locfileid: "74928209"
     ![制御テーブル データ ストアへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. **[このテンプレートを使用]** を選択します。
-
-     ![このテンプレートを使用](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. 次の例に示すように、使用可能なパイプラインが表示されます。
+  
+    ![パイプラインのレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![パイプラインのレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[dbo].[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、 **[動的なコンテンツの追加]** を選択します。  
 
-9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、 **[動的なコンテンツの追加]** を選択します。  
-
-     ![ストアド プロシージャ アクティビティの設定](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![ストアド プロシージャ アクティビティの設定](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで、 **[完了]** を選択します。  
 
-     ![ストアド プロシージャのパラメーターの内容を書き込む](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![ストアド プロシージャのパラメーターの内容を書き込む](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。
+11. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
     ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
@@ -132,17 +133,16 @@ ms.locfileid: "74928209"
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-14. パイプラインをもう一度実行するには、 **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。
 
-    ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+14. パイプラインをもう一度実行するには、 **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。
 
     宛先に新規行のみがコピーされたことがわかります。
 
-15. (省略可能:)データの宛先として SQL Data Warehouse を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは SQL Data Warehouse の Polybase に必要です。 コンテナーが BLOB ストレージに既に作成されていることを確認してください。
+15. (省略可能:)データの宛先として Azure Synapse Analytics (旧称 SQL DW) を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは SQL Data Warehouse の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
     
     ![PolyBase の構成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う](solution-template-bulk-copy-with-control-table.md)
 - [Azure Data Factory を使用して複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)

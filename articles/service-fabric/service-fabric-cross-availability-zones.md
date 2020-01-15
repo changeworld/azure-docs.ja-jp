@@ -1,25 +1,16 @@
 ---
-title: Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ | Microsoft Docs
+title: Availability Zones をまたがるクラスターのデプロイ
 description: Availability Zones をまたがる Azure Service Fabric クラスターを作成する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080443"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609980"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。

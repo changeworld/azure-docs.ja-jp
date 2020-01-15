@@ -1,6 +1,6 @@
 ---
-title: Azure Maps に浮き出し多角形レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK に浮き出し多角形レイヤーを追加する方法。
+title: Azure Maps に多角形浮き出しレイヤーを追加する | Microsoft Docs
+description: Azure Maps Web SDK に多角形浮き出しレイヤーを追加する方法。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484338"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432835"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>浮き出し多角形レイヤーをマップに追加する
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>マップに多角形浮き出しレイヤーを追加する
 
 この記事では、多角形浮き出しレイヤーを使用し、フィーチャー ジオメトリ `Polygon` および `MultiPolygon` の領域がマップ上で浮き出るようにレンダリングする方法を紹介します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスでラップされている場合は、すべてのフィーチャー ジオメトリも簡単に更新することができます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74484338"
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `Circle` の `subType` プロパティと、**メートル**で半径を表わす数値付き `Radius` プロパティでフィーチャー `point` を作成することで、浮き出した円をマップ上でレンダリングできます。 例:
+Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `Circle` の `subType` プロパティと、**メートル**で半径を表わす数値付き `Radius` プロパティでフィーチャー `point` を作成することで、浮き出した円をマップ上でレンダリングできます。 次に例を示します。
 
 ```Javascript
 {
@@ -79,7 +79,7 @@ Azure Maps Web SDK では、このようなフィーチャー `Point` が内部�
 <iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

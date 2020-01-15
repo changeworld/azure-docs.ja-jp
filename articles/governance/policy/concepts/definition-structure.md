@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436407"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -19,7 +19,7 @@ ms.locfileid: "74894303"
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
-- モード
+- mode
 - parameters
 - 表示名
 - description
@@ -63,7 +63,7 @@ ms.locfileid: "74894303"
 
 Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../samples/index.md)」にあります。
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>モード
 
 **Mode** は、ポリシーが Azure Resource Manager のプロパティまたはリソース プロバイダーのプロパティのどちらをターゲットにしているかに応じて構成されます。
 
@@ -90,7 +90,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 > [!NOTE]
 > プレビュー期間中のリソース プロバイダー モードでは、組み込みポリシー定義のみがサポートされ、イニシアティブはサポートされません。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
@@ -374,9 +374,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-上述のポリシー規則の例では、[substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) を使用して **name** の最初の 3 文字を **abc** と比較しています。 **name** が 3 文字よりも短い場合、`substring()` 関数はエラーとなります。 このエラーにより、ポリシーは **deny** となります。
+上述のポリシー規則の例では、[substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) を使用して **name** の最初の 3 文字を **abc** と比較しています。 **name** が 3 文字よりも短い場合、`substring()` 関数はエラーとなります。 このエラーにより、ポリシーは **deny** となります。
 
-3 文字よりも短い **name** をエラーにせず、**name** の最初の 3 文字が **abc** と等しいかどうかを確認するには、代わりに [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) 関数を使用します。
+3 文字よりも短い **name** をエラーにせず、**name** の最初の 3 文字が **abc** と等しいかどうかを確認するには、代わりに [if()](../../../azure-resource-manager/templates/template-functions-logical.md#if) 関数を使用します。
 
 ```json
 {
@@ -447,7 +447,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-例 3:少なくとも 1 つの配列メンバーが条件式を満たすかどうかをチェックします
+例 3: 少なくとも 1 つの配列メンバーが条件式を満たすかどうかをチェックします
 
 ```json
 {
@@ -462,7 +462,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-例 4:すべてのオブジェクト配列メンバーが条件式を満たすかどうかをチェックします
+例 4: すべてのオブジェクト配列メンバーが条件式を満たすかどうかをチェックします
 
 ```json
 {
@@ -534,7 +534,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-### <a name="effect"></a>効果
+### <a name="effect"></a>結果
 
 Azure Policy では、次の種類の効果をサポートしています。
 
@@ -655,7 +655,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 ### <a name="understanding-the--alias"></a>[*] エイリアスについて
 
-利用できるいくつかのエイリアスには、通常の名前で表示されるバージョンと、それに **\[\*\]** が添付された別のバージョンがあります。 例:
+利用できるいくつかのエイリアスには、通常の名前で表示されるバージョンと、それに **\[\*\]** が添付された別のバージョンがあります。 次に例を示します。
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -767,7 +767,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Policy の効果について](effects.md)」を確認します。

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928764"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646899"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 
@@ -70,7 +70,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 構成ウィンドウに次の Azure Repos コード リポジトリの設定が表示されます。
 
-| Setting | 説明 | 値 |
+| 設定 | [説明] | 値 |
 |:--- |:--- |:--- |
 | **リポジトリの種類** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
 | **Azure Active Directory** | Azure AD テナントの名前。 | `<your tenant name>` |
@@ -137,7 +137,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 [構成] ウィンドウには、次の GitHub リポジトリの設定が表示されます。
 
-| **設定** | **説明**  | **値**  |
+| **設定** | **説明**  | **Value**  |
 |:--- |:--- |:--- |
 | **リポジトリの種類** | Azure Repos コード リポジトリの種類。 | GitHub |
 | **GitHub Enterprise の使用** | GitHub Enterprise を選択するチェックボックス | オフ (既定値) |
@@ -156,6 +156,8 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 - GitHub Enterprise 2.14.0 より前のバージョンは Microsoft Edge ブラウザーで動作しません。
 
 - Data Factory ビジュアル作成ツールと GitHub の統合は、一般的に利用できるバージョンの Data Factory でのみ機能します。
+
+- 1 つの GitHub ブランチからは、リソースの種類ごとに最大 1,000 のエンティティ (パイプライン、データセットなど) をフェッチできます。 この制限に達した場合は、リソースを個別のファクトリに分割することをお勧めします。
 
 ## <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
 
@@ -185,7 +187,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 ### <a name="configure-publishing-settings"></a>発行の設定を構成する
 
-発行ブランチを構成するには､すなわち､Resource Manager テンプレートが保存されているブランチを構成するには､コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します｡ Data Factory は、このファイルを読み取り、フィールド `publishBranch` を探して､新しいブランチが存在していない場合は､指定されている値を使ってブランチを作成します。 以降､Resource Manager のテンプレートはすべて､その指定した場所に保存されます｡ 例:
+発行ブランチを構成するには､すなわち､Resource Manager テンプレートが保存されているブランチを構成するには､コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します｡ Data Factory は、このファイルを読み取り、フィールド `publishBranch` を探して､新しいブランチが存在していない場合は､指定されている値を使ってブランチを作成します。 以降､Resource Manager のテンプレートはすべて､その指定した場所に保存されます｡ 次に例を示します。
 
 ```json
 {
@@ -255,7 +257,7 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 ![フィードバック](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * パイプラインの監視と管理について詳しくは、[プログラムでのパイプラインの監視と管理](monitor-programmatically.md)に関する記事をご覧ください。
 * 継続的インテグレーションとデプロイを実装するには、「[Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)](continuous-integration-deployment.md)」を参照してください。

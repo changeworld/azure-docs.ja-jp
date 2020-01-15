@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0250780c85041c07fabf7d5ed268d1f3cdb63e18
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 111bc7cd0439eee2026a6a980e9e126b63ac58c6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240647"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610490"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDx アプライアンスを接続する 
 
@@ -42,7 +42,7 @@ Symantec ICDx では、ログを統合し、Azure Sentinel に直接エクスポ
 4. **[フォワーダー]** の下で、Microsoft Azure Sentinel (Log Analytics) の隣にある **[追加]** をクリックします。 
 4. **[Microsoft Azure Sentinel (Log Analytics)]** ウィンドウで、 **[詳細設定の表示]** をクリックします。 
 5. [Microsoft Azure Sentinel (Log Analytics)] ウィンドウを拡張したら、さらに次を行います。
-    -   **Name**:フォワーダーに 30 文字以下の名前を入力します。 一意でわかりやすい名前を選択してください。 この名前は、 **[構成]** 画面のフォワーダーの一覧と **[ダッシュボード]** 画面のダッシュボードに表示されます。 例: Microsoft Azure Log Analytics East。 このフィールドは必須です。
+    -   **Name**:フォワーダーに 30 文字以下の名前を入力します。 一意でわかりやすい名前を選択してください。 この名前は、 **[構成]** 画面のフォワーダーの一覧と **[ダッシュボード]** 画面のダッシュボードに表示されます。 次に例を示します。Microsoft Azure Log Analytics East。 このフィールドは必須です。
     -   **説明**:フォワーダーの説明を入力します。 この説明も、 **[構成]** 画面のフォワーダーの一覧に表示されます。 転送されるイベントの種類やデータを検査する必要があるグループなどの詳細を含めます。
     -   **スタートアップの種類**:フォワーダー構成のスタートアップ方法を選択します。 オプションは手動と自動です。<br>既定値は自動です。 
 6. **[イベント]** の下で次を行います。 
@@ -50,14 +50,14 @@ Symantec ICDx では、ログを統合し、Azure Sentinel に直接エクスポ
       > [!NOTE]
       > ICDx レシーバー アーカイブは名前別に一覧表示されます。 
  
-    - **フィルター**:転送するイベントのサブセットを指定するフィルターを追加します。 次のいずれかを実行します。
+    - **フィルター**:転送するイベントのサブセットを指定するフィルターを追加します。 次のいずれかの操作を行います。
         - フィルター条件を選択するには、型、属性、演算子、値をクリックします。 
         - [フィルター] フィールドで、フィルター条件を確認します。 条件はフィールドで直接編集するか、必要に応じて削除できます。
         - フィルター条件を追加するには、[AND] または [OR] をクリックします。
         - [保存済みのクエリ] をクリックし、保存済みのクエリを適用することもできます。
     - **含まれる属性**:転送されるデータに含める属性のコンマ区切りリストを入力します。 含まれる属性は、除外される属性によりも優先されます。
     - **除外される属性**:転送されるデータから除外される属性のコンマ区切りリストを入力します。
-    - **バッチ サイズ**:バッチごとに送信するイベントの数を選択します。 10、50、100、500、1000 から選択できます。<br>既定値は 100 です。 
+    - **バッチ サイズ**:バッチごとに送信するイベントの数を選択します。 10、50、100、500、1000 から選択できます。<br>既定値は、100 です。 
     - **レート制限**:イベントが転送されるレートを選択します。これは秒あたりのイベント数で表されます。 無制限、500、1000、5000、10000 から選択できます。 <br> 既定値は 5000 です。 
 7. **[Azure 宛先]** の下で次を行います。 
     - **ワークスペース ID**:下からワークスペース ID を貼り付けます。 このフィールドは必須です。
@@ -74,8 +74,10 @@ Symantec ICDx では、ログを統合し、Azure Sentinel に直接エクスポ
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Symantec ICDx を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+
 

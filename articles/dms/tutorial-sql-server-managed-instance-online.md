@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して、Azure SQL Database マネージド インスタンスへの SQL Server のオンライン移行を実行する | Microsoft Docs
+title: チュートリアル:SQL Server を SQL マネージド インスタンスにオンラインで移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、SQL Server のオンプレミスから Azure SQL Database マネージド インスタンスへのオンライン移行を実行する方法について説明します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/27/2019
+ms.openlocfilehash: 05cf7f1c69c6118d39efb72185443e1fad072209
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975025"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531464"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して、SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する
 
@@ -41,6 +42,9 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
+
+> [!IMPORTANT]
+> インスタンスの再構成や計画メンテナンスによる中断のリスクを最小限に抑えるために、オンライン移行プロセスの期間をできるだけ短くすることが重要です。 このようなイベントが発生した場合、移行プロセスは最初から開始されます。 計画メンテナンスの場合、移行プロセスが再開されるまでに 36 時間の猶予期間があります。
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -259,7 +263,7 @@ SQL Database マネージド インスタンスのターゲット インスタ�
 
     ![カットオーバー完了](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * T-SQL RESTORE コマンドを使用してマネージド インスタンスにデータベースを移行する方法を示したチュートリアルについては、[復元コマンドを使用したマネージド インスタンスへのバックアップの復元](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)に関するページを参照してください。
 * マネージド インスタンスについては、[マネージド インスタンスの概要](../sql-database/sql-database-managed-instance.md)に関するページを参照してください。

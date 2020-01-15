@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172122"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659255"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -16,15 +16,34 @@ ms.locfileid: "74172122"
 
 バックアップ プロセスと制限事項の詳細については、「[Azure VM での SQL Server Backup について](backup-azure-sql-database.md#feature-consideration-and-limitations)」を参照してください。
 
-## <a name="sql-server-permissions"></a>SQL Server のアクセス許可
+## <a name="sql-server-permissions"></a>SQL Server 権限
 
 仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL Server インスタンスにないことを意味します。 このエラーを解決するには、「[VM のアクセス許可を設定する](backup-azure-sql-database.md#set-vm-permissions)」の手順に従います。
+
+## <a name="troubleshoot-discover-and-configure-issues"></a>検出と構成の問題のトラブルシューティング
+Recovery Services コンテナーを作成して構成した後、データベースの検出とバックアップの構成は 2 段階のプロセスで行います。<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+バックアップの構成中に、SQL VM とそのインスタンスが **[Discovery DBs in VMs]\(VM 内のデータベースの検出\)** および **[バックアップの構成]** (上の図を参照) に表示されない場合は、次のことを確認します。
+
+### <a name="step-1-discovery-dbs-in-vms"></a>手順 1:VM 内のデータベースの検出
+
+- VM が、検出された VM の一覧に表示されず、別のコンテナーの SQL バックアップにも登録されていない場合は、「[SQL Server バックアップの検出](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases)」の手順に従います。
+
+### <a name="step-2-configure-backup"></a>手順 2:バックアップの構成
+
+- SQL VM が登録されているコンテナーが、データベースの保護に使用されるコンテナーと同じである場合、「[バックアップの構成](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)」の手順に従います。
+
+SQL VM を新しいコンテナーに登録する必要がある場合は、古いコンテナーから登録解除する必要があります。  コンテナーから SQL VM を登録解除するには、保護されているすべてのデータ ソースの保護を停止する必要があります。その後、バックアップされているデータを削除できます。 バックアップされているデータの削除は破壊的な操作です。  SQL VM を登録解除するためのすべての注意事項を確認し、実行してから、この同じ VM を新しいコンテナーに登録し、バックアップ操作を再試行してください。
+
+
 
 ## <a name="error-messages"></a>エラー メッセージ
 
 ### <a name="backup-type-unsupported"></a>バックアップの種類がサポートされていません
 
-| 重大度 | 説明 | 考えられる原因 | 推奨される操作 |
+| 重大度 | [説明] | 考えられる原因 | 推奨される操作 |
 |---|---|---|---|
 | 警告 | このデータベースの現在の設定は、関連するポリシーに存在する特定のバックアップ タイプをサポートしていません。 | <li>マスター データベースに対して実行できるのは、データベース完全バックアップ操作だけです。 差分バックアップやトランザクション ログ バックアップは実行できません。 </li> <li>単純復旧モデルのデータベースでは、トランザクション ログのバックアップはできません。</li> | ポリシー内のバックアップ タイプがすべてサポートされるようにデータベースの設定を変更してください。 または、現在のポリシーを変更して、サポート対象のバックアップ タイプだけを含めてください。 それ以外の場合、スケジュールされたバックアップ中、サポート対象外のバックアップ タイプはスキップされるか、オンデマンド バックアップのバックアップ ジョブでエラーが発生します。
 
@@ -87,7 +106,7 @@ ms.locfileid: "74172122"
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細情報](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))。
+| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -117,26 +136,35 @@ ms.locfileid: "74172122"
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-24 時間に許容されている操作数の上限に達したため、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 <br> 例: 1 日にトリガーできるバックアップ ジョブの構成数の上限に達した場合、新しい項目に対してバックアップを構成しようとすると、このエラーが表示されます。 | 通常、24 時間経過してから操作を再試行すると、この問題は解決します。 ただし、問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+24 時間に許容されている操作数の上限に達したため、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 <br> 次に例を示します。1 日にトリガーできるバックアップ ジョブの構成数の上限に達した場合、新しい項目に対してバックアップを構成しようとすると、このエラーが表示されます。 | 通常、24 時間経過してから操作を再試行すると、この問題は解決します。 ただし、問題が解決しない場合は、Microsoft サポートにお問い合わせください。
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 例: ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
+コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 次に例を示します。ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
+
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの発信アクセスを許可する必要があります。 アクセス権を付与するには、次の[手順](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール/ウイルス対策/プロキシが存在しないことを確認します。
+
 
 ## <a name="re-registration-failures"></a>再登録エラー
 
 再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
 
 * VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
-* バックアップ項目の **[バックアップの状態]** 領域に **[到達できません]** と表示されている。 同じ状態になる可能性があるその他のすべての原因を除外してください。
+* バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
 
-  * VM でバックアップ関連の操作を実行する権限がない  
-  * VM のシャット ダウン。そのため、バックアップが実行できない
-  * ネットワークの問題  
+  * VM でバックアップ関連の操作を実行する権限がない。
+  * VM のシャット ダウン。そのため、バックアップが実行できない。
+  * ネットワークの問題。
 
-  ![VM の再登録での [到達できません] 状態](./media/backup-azure-sql-database/re-register-vm.png)
+   ![VM の再登録](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * Always On 可用性グループの場合、バックアップ設定を変更した後、またはフェールオーバーの後、バックアップが失敗するようになった。
 
@@ -223,6 +251,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 このファイルは、復元操作をトリガーする前に配置する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SQL Server VM の Azure Backup (パブリック プレビュー) の詳細については、「[SQL VM の Azure Backup](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)」を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics のネットワーク パフォーマンス モニター ソリューション | Microsoft Docs
+title: Network Performance Monitor ソリューションのサービス接続 - Azure Log Analytics
 description: Network Performance Monitor のサービス接続モニター機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視します。
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd02dad6d0f5b42181ad0bb27201384a6336ed6e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 11975a86b5d9135b42dd51bdd787c2f76cabe259
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898816"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551507"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -58,7 +58,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、 **[Web]** を選びます。<br>
     * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、 **[ネットワーク]** を選びます。 
-    * 例: BLOB ストレージ アカウントに対する Web テストを作成するには、 **[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
+    * 次に例を示します。BLOB ストレージ アカウントに対する Web テストを作成するには、 **[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
 4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、 **[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
 5. **[ターゲット]** に、ネットワーク接続を監視する URL/FQDN/IP アドレスを入力します。
 6. **[ポート番号]** に、ターゲット サービスのポート番号を入力します。 
@@ -133,5 +133,5 @@ Network Performance Monitor のダッシュボード ビューに移動します
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
 | MS Teams | gov.teams.microsoft.us | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../../azure-monitor/log-query/log-query-overview.md)します。

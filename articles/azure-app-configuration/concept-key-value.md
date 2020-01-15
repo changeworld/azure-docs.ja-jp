@@ -1,29 +1,23 @@
 ---
-title: Azure App Configuration のキー/値ストア | Microsoft Docs
-description: Azure App Configuration に構成データが格納されるしくみの概要
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure App Configuration のキー/値ストア
+description: Azure App Configuration に構成データが格納されるしくみの概要。
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 11e019e276944e0c3f50d604420046979b5f3fbb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185233"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495268"
 ---
 # <a name="keys-and-values"></a>キーと値
 
 Azure App Configuration では、構成データがキーと値のペアとして格納されます。 キーと値のペアは、さまざまな種類のアプリケーション設定を表現する手段として、シンプルでありながら柔軟性が高く、開発者にも馴染みのある方法です。
 
-## <a name="keys"></a>構成する
+## <a name="keys"></a>[キー]
 
 キーは、キーと値のペアの名前としての役割を果たし、対応する値を格納したり取得したりする際に使用されます。 区切り記号 (`/` や `:` など) を使用して、階層型名前空間にキーを整理するのが一般的です。 実際のアプリケーションに最も適した規則を使用してください。 App Configuration は、キーを 1 つのまとまりとして扱います。 キーを解析してその名前がどのような構造になっているのかを推測したり、名前に対して規則を適用したりすることはありません。
 
@@ -102,7 +96,7 @@ App Configuration のキー値には、必要に応じてラベル属性を割�
 
 App Configuration ストアに格納される構成データ (すべてのキーと値を含む) は、保存時であれ転送中であれ暗号化されます。 App Configuration は、Azure Key Vault に取って代わるソリューションではありません。 アプリケーション シークレットを格納することは避けてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ポイントインタイム スナップショット](./concept-point-time-snapshot.md)  
 * [機能の管理](./concept-feature-management.md)  

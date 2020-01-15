@@ -1,20 +1,16 @@
 ---
 title: Azure Service Fabric のリリース
-description: Service Fabric の最新の機能および強化に関するリリース ノートです。
-author: athinanthny
-manager: gamonroy
-ms.author: atsenthi
+description: Azure Service Fabric のリリース ノート。 Service Fabric の最新の機能および強化に関する情報が含まれます。
 ms.date: 06/10/2019
 ms.topic: conceptual
-ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 496a5babe58be4354ffb10a331d35abc8a51b04d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 36586f93425c6583dd3be497da9f7a018ebd4c9d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186517"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526738"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 

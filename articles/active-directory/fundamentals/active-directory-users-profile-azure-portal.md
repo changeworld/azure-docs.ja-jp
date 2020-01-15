@@ -1,5 +1,5 @@
 ---
-title: ユーザーのプロファイル情報を追加または更新する - Azure Active Directory | Microsoft Docs
+title: ユーザー プロファイル情報を追加または更新する - Azure AD
 description: Azure Active Directory でのユーザーのプロファイルに画像やジョブの詳細などの情報を追加する手順。
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034893"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422876"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
 1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
-2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ にします。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
 
     **[Alain Charon - Profile]** \(Alain Charon - プロファイル\) ページが表示されます。
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
     >[!Note]
     >権限ソースが Windows Server Active Directory であるユーザーの ID、連絡先情報、仕事情報を更新するには、Windows Server Active Directory を使用する必要があります。 次の同期のサイクルの完了を待機すると、更新の完了による変更が反映されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ユーザーのプロファイルを更新したら、次の基本手順を実行できます。
 
 - [ユーザーを追加または削除する](add-users-azure-active-directory.md)
@@ -66,4 +66,4 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションについては、[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)に関するページを参照してください。
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。

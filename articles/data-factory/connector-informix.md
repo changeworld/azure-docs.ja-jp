@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 5edda76503ab1632c5f48728a3d403555452c711
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 36788f513a44f910e1d8b3f04be654996f23216a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444275"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix データ ストアをコピー元またはコピー先としてデータをコピーする
 
@@ -38,7 +38,7 @@ Informix ソースから、サポートされている任意のシンク デー�
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 - データ ストア用の Informix ODBC ドライバーを Integration Runtime マシンにインストールする。 たとえば、ドライバー "IBM INFORMIX Informix DRIVER (64 ビット)" を使用できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,14 +48,14 @@ Informix ソースから、サポートされている任意のシンク デー�
 
 Informix のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Informix** | はい |
-| connectionString | 資格情報部分を除外した ODBC 接続文字列。 接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。| はい |
+| 型 | type プロパティは、次のように設定する必要があります:**Informix** | はい |
+| connectionString | 資格情報部分を除外した ODBC 接続文字列。 接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 <br> パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。| はい |
 | authenticationType | Informix データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
-| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
-| credential | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 このフィールドを SecureString とマークします。 | いいえ |
+| パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| 資格情報 (credential) | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 このフィールドを SecureString とマークします。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
@@ -66,10 +66,7 @@ Informix のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Informix",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
+            "connectionString": "<Informix connection string or DSN>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -91,9 +88,9 @@ Informix のリンクされたサービスでは、次のプロパティがサ�
 
 Informix からデータをコピーするために、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**InformixTable** | はい |
+| 型 | データセットの type プロパティは、次のように設定する必要があります:**InformixTable** | はい |
 | tableName | Informix のテーブル名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -122,9 +119,9 @@ Informix からデータをコピーするために、次のプロパティが�
 
 Informix からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**InformixSource** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**InformixSource** | はい |
 | query | カスタム クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -159,10 +156,10 @@ Informix からデータをコピーするために、コピー アクティビ�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

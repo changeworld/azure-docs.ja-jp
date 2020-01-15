@@ -1,20 +1,18 @@
 ---
-title: Durable Functions のディザスター リカバリーと地理的分散 - Azure
+title: Azure Durable Functions のディザスター リカバリーと地理的分散
 description: Durable Functions のディザスター リカバリーと地理的分散について説明します。
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433330"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>ディザスター リカバリーと地理的分散
-
-## <a name="overview"></a>概要
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions のディザスター リカバリーと地理的分散
 
 Durable Functions では、すべての状態は Azure Storage に保持されます。 [タスク ハブ](durable-functions-task-hubs.md)は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
 説明されているシナリオでは、ディザスター リカバリー中の可用性を向上し、ダウンタイムを最小限に抑える展開オプションが提案されています。
@@ -83,6 +81,6 @@ Durable Functions の運用を続けるため、このシナリオでは、関�
 
 ![図は、シナリオ 3 を示します。](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[RA-GRS を使用した高可用性アプリケーションの設計](../../storage/common/storage-designing-ha-apps-with-ragrs.md)」を参照してください。

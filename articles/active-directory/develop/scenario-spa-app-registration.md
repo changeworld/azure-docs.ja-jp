@@ -1,5 +1,5 @@
 ---
-title: シングル ページ アプリケーションを登録する - Microsoft ID プラットフォーム | Azure
+title: シングル ページ アプリを登録する - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーションを構築する方法 (アプリの登録) について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03115db0ad286c7a5c24590906d8e3715e43bac7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f964d4b4c7032599cf8f74b285f819581fae907b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962442"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423669"
 ---
-# <a name="single-page-application-app-registration"></a>シングルページ アプリケーション:アプリの登録
+# <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
 このページでは、シングルページ アプリケーション (SPA) におけるアプリの登録の特性について説明します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74962442"
 
 シングルページ アプリケーションでは、サインインしたユーザーの代わりに API を呼び出すことができます。 委任されたアクセス許可を要求する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリのコード構成](scenario-spa-app-configuration.md)

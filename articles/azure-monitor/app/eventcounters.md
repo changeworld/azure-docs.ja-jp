@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406919"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
@@ -55,7 +55,7 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Microsoft.AspNetCore.Hosting カテゴリのカウンターは、Asp.Net Core アプリケーションにのみ追加されます。
+> Microsoft.AspNetCore.Hosting カテゴリのカウンターは、ASP.NET Core アプリケーションにのみ追加されます。
 
 ## <a name="customizing-counters-to-be-collected"></a>収集されるカウンターのカスタマイズ
 
@@ -95,19 +95,19 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 
 ## <a name="event-counters-in-metric-explorer"></a>メトリック エクスプローラーのイベント カウンター
 
-[メトリック エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 すると、EventCounter メトリックが PerformanceCounter カテゴリの下に表示されます。
+[メトリック エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 これにより、EventCounter メトリックがカスタム カテゴリの下に表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights で報告されるイベント カウンター](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics のイベント カウンター
 
-また、[Analytics](../../azure-monitor/app/analytics.md) 内で **performanceCounters** テーブルのイベント カウンター レポートを検索して表示することもできます。
+また、[Analytics](../../azure-monitor/app/analytics.md) 内で **customMetrics** テーブルのイベント カウンター レポートを検索して表示することもできます。
 
 たとえば、次のクエリを実行して、どのカウンターが収集され、クエリに使用できるかを確認します。
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 最近の期間おける特定のカウンター (例: `ThreadPool Completed Work Item Count`) のグラフを取得するには、次のクエリを実行します。
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,9 +125,9 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > ![Application Insights 内の 1 つのカウンターのグラフ](./media/event-counters/analytics-completeditems-counters.png)
 
-他のテレメトリと同様に、**performanceCounters** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 上記のクエリは、インスタンスごとのカウンター値を示しており、さまざまなサーバー インスタンスのパフォーマンスを比較するために使用できます。
+他のテレメトリと同様に、**customMetrics** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 上記のクエリは、インスタンスごとのカウンター値を示しており、さまざまなサーバー インスタンスのパフォーマンスを比較するために使用できます。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 他のメトリックと同様に、指定した制限をイベント カウンターが超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

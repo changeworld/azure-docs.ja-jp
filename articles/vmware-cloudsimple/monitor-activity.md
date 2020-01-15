@@ -1,5 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - プライベート クラウドのアクティビティを監視する
+title: プライベート クラウド アクティビティを監視する
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Azure VMware Solution by CloudSimple 環境で利用できる、アラート、イベント、タスク、監査などのアクティビティに関する情報について説明します。
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459206"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware Solution by CloudSimple のアクティビティを監視する
 
@@ -37,7 +38,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 表示を並べ替えるには、列見出しをクリックします。  特定の値の列をフィルター処理して表示できます。  **[CSV としてダウンロード]** アイコンをクリックして、アクティビティ レポートをダウンロードします。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 アラートは、CloudSimple 環境での重要なアクティビティの通知です。  アラートには、課金またはユーザー アクセスに影響するイベントが含まれています。
 
@@ -45,15 +46,15 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 ------------ | ------------- |
 | アラートの種類 | アラートのカテゴリ。|
 | Time | アラートが発生した時刻。 |
-| Severity | アラートの重要度。|
+| 重大度 | アラートの重要度。|
 | リソース名 | リソースに割り当てられた名前 (プライベート クラウド名など)。 |
 | リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
-| 説明 | アラートがトリガーされた原因の説明。 |
+| [説明] | アラートがトリガーされた原因の説明。 |
 | [Acknowledged] (確認済み) | アラートが確認されているかどうかの指示。 |
 
 ## <a name="events"></a>events
@@ -62,34 +63,34 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 ------------ | ------------- |
 | Time | イベントが発生した日時。 |
 | イベントの種類 | イベントを識別する数値コード。 |
-| Severity | イベントの重大度。|
+| 重大度 | イベントの重大度。|
 | リソース名 | リソースに割り当てられた名前 (プライベート クラウド名など)。 |
 | リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
-| 説明 | アラートがトリガーされた原因の説明。 |
+| [説明] | アラートがトリガーされた原因の説明。 |
 
-## <a name="tasks"></a>タスク
+## <a name="tasks"></a>処理手順
 
 タスクは、完了までに 30 秒以上かかることが予想されるプライベート クラウドのアクティビティです (30 秒未満で完了することが予想されるアクティビティは、イベントとしてのみ報告されます)。プライベート クラウドのタスクの進行状況を追跡するには、[タスク] ページを開きます。
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 ------------ | ------------- |
-| タスク ID | タスクの一意の識別子。 |
-| Operation | タスクによって実行されるアクション。 |
+| [タスク ID] | タスクの一意の識別子。 |
+| 操作 | タスクによって実行されるアクション。 |
 | User | タスクを完了するために割り当てられたユーザー。 |
 | リソース名 | リソースに割り当てられた名前。 |
 | リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
-| start | タスクの開始時間。 |
+| [開始] | タスクの開始時間。 |
 | End | タスクの終了時間。 |
 | Status | 現在のタスクの状況。 |
 | 経過時間 | タスクが完了するまでにかかった時間 (完了した場合)、または現時点までの時間 (進行中の場合)。 |
-| 説明 | タスクの説明。 |
+| [説明] | タスクの説明。 |
 
 ## <a name="audit"></a>Audit
 
@@ -97,19 +98,19 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 ------------ | ------------- |
 | Time | 監査エントリの時刻。 |
-| Operation | タスクによって実行されるアクション。 |
+| 操作 | タスクによって実行されるアクション。 |
 | User | タスクに割り当てられたユーザー。 |
 | リソース名 | リソースに割り当てられた名前。 |
 | リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
 | 結果 | アクティビティの結果 ( **[成功]** など)。 |
 | 所要時間 | タスクの完了までにかかった時間。 |
-| 説明 | アクションの説明。 |
+| [説明] | アクションの説明。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure での VMware VM の使用](quickstart-create-vmware-virtual-machine.md)
 * [プライベート クラウド](cloudsimple-private-cloud.md)の詳細を確認する

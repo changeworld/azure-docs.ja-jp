@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: d5c647bac2bc6abc85a74531e052f0f3a54b2047
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451263"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
 ## <a name="system-request-sysrq"></a>システム要求 (SysRq)
 SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答していない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
 
-SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の "[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)" を参照してください。  
+SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の「[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)」を参照してください。
 
 Azure Serial Console は、以下に示すコマンド バーのキーボード アイコンを使用して、SysRq を Azure 仮想マシンに送信するために使用できます。
 
@@ -37,7 +37,7 @@ Azure Serial Console は、以下に示すコマンド バーのキーボード 
 
 SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態 (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
-### <a name="enable-sysrq"></a>SysRq の有効化 
+### <a name="enable-sysrq"></a>SysRq の有効化
 前記の「*SysRq Admin Guide*」(SysRq 管理ガイド) の説明にあるように、すべてのコマンドまたは一部の特定のコマンドが利用可能か、またはどのコマンドも利用不可能になるように SysRq を構成できます。 以下の手順を使用してすべての SysRq コマンドを有効にできますが、再起動すると、この構成は失われます。
 ```
 echo "1" >/proc/sys/kernel/sysrq
@@ -48,7 +48,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 1. 次のコマンドを実行して、sysctl を再起動または更新します。 <br>
     `sysctl -p`
 
-### <a name="command-keys"></a>コマンド キー 
+### <a name="command-keys"></a>コマンド キー
 前記の「SysRq Admin Guide」(SysRq 管理ガイド) に示されたコマンド キーは次のとおりです。
 
 |command| Function
@@ -97,7 +97,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 #### <a name="coreos"></a>CoreOS ####
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>マスク不可能割り込み (NMI) 
+## <a name="non-maskable-interrupt-nmi"></a>マスク不可能割り込み (NMI)
 マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  現在、プログラマーやシステム管理者は、応答していないシステムのデバッグやトラブルシューティングのためのメカニズムとして、NMI をよく使用しています。
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
@@ -112,23 +112,23 @@ SysRq に関するディストリビューション固有のドキュメント�
     `sysctl -p`
 
 `unknown_nmi_panic`、`panic_on_io_nmi`、および `panic_on_unrecovered_nmi` を含む Linux カーネル構成の詳細については、以下をご覧ください:[/proc/sys/kernel/* のドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 NMI のディストリビューション固有のドキュメントと、Linux を構成して NMI を受信した場合にクラッシュ ダンプを作成する手順については、以下のリンクを参照してください。
- 
-### <a name="ubuntu"></a>Ubuntu 
+
+### <a name="ubuntu"></a>Ubuntu
  - [カーネル クラッシュ ダンプ](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
-### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat
  - [NMI の概要とその用途](https://access.redhat.com/solutions/4127)
  - [NMI スイッチが押されるとシステムがクラッシュするように構成する方法](https://access.redhat.com/solutions/125103)
  - [クラッシュ ダンプ管理ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
-### <a name="suse"></a>SUSE 
+### <a name="suse"></a>SUSE
 - [カーネル コア ダンプのキャプチャを構成する](https://www.suse.com/support/kb/doc/?id=3374462)
 
-### <a name="coreos"></a>CoreOS 
+### <a name="coreos"></a>CoreOS
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console-linux.md)を参照してください。
 * シリアル コンソールを使用して、[GRUB を起動し、シングル ユーザー モードに入る](serial-console-grub-single-user-mode.md)
-* シリアル コンソールは、[Windows](serial-console-windows.md) VM でも使用できます。
+* シリアル コンソールは、[Windows](serial-console-windows.md) VM でも使用可能
 * [ブート診断](boot-diagnostics.md)の詳細を表示する

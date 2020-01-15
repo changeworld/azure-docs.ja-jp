@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する | Microsoft Docs
+title: チュートリアル:MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスの MongoDB から Azure Cosmos DB の MongoDB 用 API にオフラインで移行する方法について学習します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 96540a8ea40efcc3a2d115980999c8d470b85180
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c4c34a3706e576f97c6822ffe9f8c8a30500095c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437627"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 
@@ -223,6 +224,6 @@ MongoDB データベースに格納されているデータを Azure Cosmos DB �
 
 * [Cosmos DB サービスの情報](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Microsoft の「[Database Migration Guide](https://datamigration.microsoft.com/)」(データベース移行ガイド) で、他のシナリオの移行ガイダンスを確認する。

@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 05/22/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3b5b67dbf1fad5c74570c4bf70401df1a5ed943f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436552"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -64,9 +64,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 管理グループの下に子管理グループやサブスクリプションがないこと。
 
-   - サブスクリプションを管理グループ外に移動する場合は、[別の管理グループへのサブスクリプションの移動](#move-subscriptions-in-the-hierarchy)に関する記事を参照してください。
-
-   - 管理グループを別の管理グループに移動するには、[階層内での管理グループの移動](#move-management-groups-in-the-hierarchy)に関する記事をご覧ください。
+   - サブスクリプションまたは管理グループを別の管理グループに移動するには、[階層内での管理グループおよびサブスクリプションの移動](#moving-management-groups-and-subscriptions)に関する記事をご覧ください。
 
 1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。  
 
@@ -194,25 +192,31 @@ az account management-group show --name 'Contoso'
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>階層内でのサブスクリプションの移動
+## <a name="moving-management-groups-and-subscriptions"></a>管理グループとサブスクリプションの移動   
 
 管理グループを作成する理由の 1 つは、サブスクリプションをバンドルするためです。 管理グループとサブスクリプションのみが別の管理グループの子になることができます。 管理グループに移動するサブスクリプションは、親管理グループからすべてのユーザー アクセスとポリシーを継承します。
 
-サブスクリプションを移動するには、次のすべての RBAC アクセス許可に該当する必要があります。
+管理グループまたはサブスクリプションを移動して別の管理グループの子にする場合、3 つのルールが true として評価されなければなりません。
 
-- 子サブスクリプションに対する "所有者" ロール。
-- ターゲット親管理グループに対する "所有者"、"共同作成者"、または "管理グループ共同作成者" ロール。
-- 既存の親管理グループに対する "所有者"、"共同作成者"、または "管理グループ共同作成者" ロール。
+移動操作を行う際は、次のことが必要です。 
 
-ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
+-  子のサブスクリプションまたは管理グループに対する、管理グループの書き込みアクセス許可とロールの割り当ての書き込みアクセス許可。
+    - 組み込みロールの例: **所有者**
+- 移動先の親管理グループに対する、管理グループの書き込みアクセス権限。
+    - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
+- 既存の親管理グループに対する、管理グループの書き込みアクセス権限。
+    - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
 
-サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループには移動できません。 サブスクリプションの所有者ロールに (管理グループから継承しているのではなく) 直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。
+**例外**: ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
+
+サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループには移動できません。 サブスクリプションの所有者ロールに (管理グループから継承しているのではなく) 直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。 
 
 現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。
 
-### <a name="move-subscriptions-in-the-portal"></a>ポータルでのサブスクリプションの移動
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>既存のサブスクリプションを管理グループに追加する
+## <a name="move-subscriptions"></a>サブスクリプションの移動 
+
+#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>ポータルで既存のサブスクリプションを管理グループに追加する
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
@@ -228,7 +232,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. [保存] を選択します。
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>管理グループからサブスクリプションを削除する
+#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>ポータルで管理グループからサブスクリプションを削除する
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
@@ -276,9 +280,7 @@ az account management-group subscription add --name 'Contoso' --subscription '12
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>階層内での管理グループの移動  
-
-親管理グループを移動すると、そのグループの下の階層も一緒に移動します。 管理グループを移動するために必要なアクセスについては、「[管理グループ アクセス](overview.md#management-group-access)」を参照してください。
+## <a name="move-management-groups"></a>管理グループの移動 
 
 ### <a name="move-management-groups-in-the-portal"></a>ポータルでの管理グループの移動
 
@@ -342,7 +344,7 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 管理グループについて詳しくは、以下をご覧ください。
 

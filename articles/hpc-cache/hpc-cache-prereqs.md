@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166470"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645771"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -80,13 +80,13 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 
 お使いのキャッシュで Azure Blob Storage の使用を希望する場合、互換性のあるストレージ アカウントに加え、空の BLOB コンテナーか、Azure HPC Cache フォーマットのデータが事前設定されたコンテナーが必要です ([Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)方法を参照)。
 
-ストレージ ターゲットとして追加するアカウントとコンテナーは、事前に作成しておいてください。
+ストレージ ターゲットを追加する前にアカウントを作成してください。 ターゲットを追加するときに、新しいコンテナーを作成できます。
 
 互換性のあるストレージ アカウントを作成するには、次の設定を使用します。
 
 * パフォーマンス: **Standard**
 * アカウントの種類: **StorageV2 (汎用 v2)**
-* レプリケーション: **ローカル冗長ストレージ (LRS)**
+* レプリケーション:**ローカル冗長ストレージ (LRS)**
 * アクセス層 (既定): **ホット**
 
 キャッシュと同じ場所にあるストレージ アカウントの使用をお勧めします。
@@ -94,6 +94,6 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 
 また、「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure portal から [Azure HPC Cache インスタンスを作成](hpc-cache-create.md)する

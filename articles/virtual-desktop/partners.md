@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451361"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -38,7 +38,6 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 - [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -81,6 +80,16 @@ deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop �
 この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。 
 
 - [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
+
+## <a name="hp"></a>HP
+
+![HP のロゴ](./media/partners/hp.png)
+
+HP Thin Client は、Microsoft の Azure および Windows Virtual Desktop サービスの承認および検証済みパートナーです。 Windows 10 IoT Enterprise を使用する HP Thin Client では、Azure ベースのワークロードと Windows Virtual Desktop でホストされるデスクトップが既定でサポートされます。 ハードウェアと OS は、OS のフットプリント、ハードウェア、およびメンテナンスのコストを削減する一方で、リモート ワークロードを効果的に提供する、クラス最高のエクスペリエンスを提供できるように最適化されています。
+
+HP は、業界の動向、お客様の課題、および開発プロセス中に提供されるソリューションの仮想化について検討し、設計、管理性、セキュリティ、および多用性という 4 つの柱からなる価値の提案を使用して、理想的なクラウド エンドポイントの考案に至りました。 すべての HP Thin Client は、IT の意思決定者を念頭に置いて構築されています。 HP Thin Client は、耐久性、安全性、デプロイと管理の容易性に優れ、強力であるため、VDI やクラウド コンピューティングに容易に移行できます。 HP のさまざまな用途に適したポートフォリオにより、最適かつ最新のエンドポイント ソリューションを自由に選択できます。
+
+- [パートナーの Web サイトにアクセスする。](https://hp.com/go/thin)
 
 ## <a name="igel"></a>IGEL
 
@@ -226,7 +235,7 @@ Workspot により、クラウド デスクトップ インフラストラクチ
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
 - [パートナーの Web サイトにアクセスする。](https://www.workspot.com/wvd)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Windows Virtual Desktop について詳細を確認する。](overview.md)
 - [Windows Virtual Desktop でテナントを作成する。](tenant-setup-azure-active-directory.md)

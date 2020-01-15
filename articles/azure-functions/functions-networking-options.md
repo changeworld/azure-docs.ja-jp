@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226794"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561934"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -32,8 +32,8 @@ ms.locfileid: "74226794"
 |----------------|-----------|----------------|---------|-----------------------|  
 |[受信 IP の制限とプライベート サイトへのアクセス](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
 |[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|✅はい (リージョン)|✅はい (リージョンとゲートウェイ)|✅はい|
-|[仮想ネットワーク トリガー (非 HTTP)](#virtual-network-triggers-non-http)|❌いいえ| ❌いいえ|✅はい|✅はい|
-|[ハイブリッド接続](#hybrid-connections)|❌いいえ|✅はい|✅はい|✅はい|
+|[仮想ネットワーク トリガー (非 HTTP)](#virtual-network-triggers-non-http)|❌いいえ| ✅はい |✅はい|✅はい|
+|[ハイブリッド接続](#hybrid-connections) (Windows のみ)|❌いいえ|✅はい|✅はい|✅はい|
 |[送信 IP の制限](#outbound-ip-restrictions)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 
 ## <a name="inbound-ip-restrictions"></a>受信 IP の制限
@@ -68,7 +68,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 
 アプリでは、一度に 1 種類の仮想ネットワーク統合機能しか使用できません。 どちらも多くのシナリオで役に立ちますが、次の表にそれぞれを使用すべき場合を示します。
 
-| 問題点  | 解決策 |
+| 問題  | 解決策 |
 |----------|----------|
 | 同じリージョン内の RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) に到達する必要がある | リージョンでの仮想ネットワーク統合 |
 | クラシック仮想ネットワーク内、または別のリージョンの仮想ネットワーク内のリソースに到達する必要がある | ゲートウェイが必要な仮想ネットワーク統合 |
@@ -123,19 +123,51 @@ Key Vault 参照を使用すると、コードを変更せず、Azure Functions 
 
 ## <a name="virtual-network-triggers-non-http"></a>仮想ネットワーク トリガー (非 HTTP)
 
-現時点では、仮想ネットワーク内から HTTP 以外の関数トリガーを使用するには、関数アプリを App Service プランまたは App Service Environment で実行する必要があります。
+現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。 
++ Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
++ App Service プランまたは App Service 環境で関数アプリを実行する。
 
-たとえば、仮想ネットワークからのみトラフィックを受け入れるように Azure Cosmos DB を構成するとします。 そのリソースから Azure Cosmos DB トリガーを構成するには、その仮想ネットワークとの仮想ネットワーク統合を提供する App Service プランに関数アプリをデプロイする必要があります。 プレビュー期間中は、仮想ネットワーク統合を構成しても、Premium プランでその Azure Cosmos DB リソースをトリガーすることは許可されません。
+### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
-[こちらに示す HTTP 以外のすべてのトリガーの一覧](./functions-triggers-bindings.md#supported-bindings)を参照して、サポートされているものを再度確認してください。
+Premium プランで実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **仮想ネットワーク トリガーのサポート**の設定は、[Azure portal](https://portal.azure.com) の **[関数アプリの設定]** にあります。
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+次の Azure CLI コマンドを使用して、仮想ネットワーク トリガーを有効にすることもできます。
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+仮想ネットワーク トリガーは、バージョン 2.x 以降の Functions ランタイムでサポートされています。 次の非 HTTP トリガーの種類がサポートされています。
+
+| 拡張機能 | 最小バージョン |
+|-----------|---------| 
+|[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 以降 |
+|[Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 以降|
+|[Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 以降|
+|[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 以降|
+|[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 以降|
+
+> [!IMPORTANT]
+> 仮想ネットワーク トリガーのサポートを有効にすると、上記の種類のトリガーのみがアプリケーションで動的にスケーリングされます。 上記以外のトリガーも使用できますが、事前ウォーミングされたインスタンス数を超えてスケーリングされることはありません。 トリガーの全一覧については、「[トリガーとバインド](./functions-triggers-bindings.md#supported-bindings)」を参照してください。
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service 環境
+
+関数アプリを App Service プランまたは App Service 環境のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
+
+たとえば、仮想ネットワークからのみトラフィックを受け入れるように Azure Cosmos DB を構成するとします。 この場合、その仮想ネットワークとの仮想ネットワーク統合を提供する App Service プランで関数アプリをデプロイする必要があります。 これにより、その Azure Cosmos DB リソースによって関数がトリガーされるようになります。 
 
 ## <a name="hybrid-connections"></a>ハイブリッド接続
 
-[ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、従量課金プラン以外で実行されている関数にも使用できます。
+[ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、Windows で実行されている、従量課金プラン以外の関数に使用できます。
 
 Azure Functions で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 つまり、TCP リッスン ポートにアクセスしている限り、任意のオペレーティング システムの任意のアプリケーションがハイブリッド接続のエンドポイントになることができます。 ハイブリッド接続機能では、アプリケーション プロトコルやアクセス先は認識されません。 ネットワーク アクセスを提供するだけです。
 
 詳細については、[ハイブリッド接続に関する App Service ドキュメント](../app-service/app-service-hybrid-connections.md)を参照してください。 これらの同じ構成手順を Azure Functions に使用できます。
+
+>[!IMPORTANT]
+> ハイブリッド接続は、Windows プランでのみサポートされています。 Linux はサポートされていません。
 
 ## <a name="outbound-ip-restrictions"></a>送信 IP の制限
 
@@ -143,7 +175,7 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 
 Premium プランまたは App Service プランの関数アプリを仮想ネットワークと統合した場合でも、アプリはインターネットへの送信呼び出しを行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ネットワークと Azure Functions の詳細については、以下を参照してください。
 

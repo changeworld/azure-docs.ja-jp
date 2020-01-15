@@ -1,5 +1,5 @@
 ---
-title: アプリを MSAL に移行する (iOS および macOS) | Azure
+title: ADAL から MSAL への移行に関するガイド (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: iOS および macOS 用の MSAL と Azure AD Authentication Library for ObjectiveC (ADAL.ObjC) の違いと、iOS および macOS 用の MSAL に移行する方法について学習します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f35243e29755c42dbe8e3a696f2718ee3d10178c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424429"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 
@@ -66,7 +66,7 @@ MSAL では、単一のリソース識別子ではなく、アプリにより要
 
 MSAL でスコープを提供するには、次の 2 つの方法があります。
 
-* アプリに必要なすべてのアクセス許可の一覧を提供する。 例: 
+* アプリに必要なすべてのアクセス許可の一覧を提供する。 次に例を示します。 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -147,7 +147,7 @@ MSAL (バージョン v0.3.0 以降) では、Microsoft Authenticator アプリ�
 
 1. アプリケーションにブローカーと互換性のあるリダイレクト URI 形式を登録します。 ブローカーと互換性のあるリダイレクト URI 形式は `msauth.<app.bundle.id>://auth` です。 `<app.bundle.id>` をご使用のアプリケーションのバンドル ID に置き換えます。 ADAL から移行していて、アプリケーションが既にブローカーに対応している場合は、追加の作業は必要ありません。 前のリダイレクト URI は MSAL と完全に互換性があるため、ステップ 3 に進むことができます。
 
-2. アプリケーションのリダイレクト URI スキームをご自分の info.plist ファイルに追加します。 既定の MSAL リダイレクト URI の場合、形式は `msauth.<app.bundle.id>` です。 例:
+2. アプリケーションのリダイレクト URI スキームをご自分の info.plist ファイルに追加します。 既定の MSAL リダイレクト URI の場合、形式は `msauth.<app.bundle.id>` です。 次に例を示します。
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -282,7 +282,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 ```
 
 **Xcode 11 を使用している場合は**、代わりに MSAL コールバックを `SceneDelegate` ファイルに配置する必要があります。
-以前の iOS との互換性のために、UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方のファイルに配置する必要があります。
+以前の iOS との互換性を保持するために UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方のファイルに配置する必要があります。
 
 Objective-C:
 
@@ -323,7 +323,7 @@ MSAL では、既定でアプリのトークンが iOS または macOS のキー
 トークンのキャッシュを有効化するには:
 1. アプリケーションが正しく署名されていることを確認します。
 2. Xcode プロジェクトの設定 > **[機能] タブ** >  **[Enable Keychain Sharing]\(キーチェーン共有を有効にする\)** に移動します。
-3. [ **+** ] をクリックし、次の **[キーチェーン グループ]** エントリを入力します。3.a iOS の場合は `com.microsoft.adalcache` を入力し、3.b macOS の場合は `com.microsoft.identity.universalstorage` を入力します。
+3. [ **+** ] をクリックし、次の **[キーチェーン グループ]** エントリを入力します。3.a iOS の場合は `com.microsoft.adalcache` を入力します。3.b macOS の場合は `com.microsoft.identity.universalstorage` を入力します。
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>MSALPublicClientApplication を作成し、その acquireToken と acquireTokeSilent の呼び出しに切り替える
 
@@ -464,6 +464,6 @@ application.acquireTokenSilent(with: silentParameters) {
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

@@ -1,5 +1,6 @@
 ---
-title: Advanced Threat Protection for Azure Storage
+title: Advanced Threat Protection の構成
+titleSuffix: Azure Storage
 description: アカウント アクティビティの異常を検出するように、ご利用のアカウントへの害を及ぼす可能性のあるアクセス試行が通知されるように、Advanced Threat Protection for Azure Storage を構成します。
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457416"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage を構成する
 
 Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 この保護レイヤーにより、セキュリティの専門家でなくても、セキュリティ監視システムを管理しなくても、脅威に対処することができます。
 
@@ -48,13 +49,13 @@ Azure Security Center で Standard レベルにサブスクライブすると、
 1. メイン メニューで、 **[Pricing & settings]\(価格と設定\)** をクリックします。
 1. ストレージ アカウントの脅威の防止を有効または無効にするサブスクリプションをクリックします。
 
-    ![サブスクリプションを選択します。](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
+    ![サブスクリプションの選択](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
 1. **[価格レベル]** をクリックします。
 1. **[リソースの種類ごとに価格レベルを選択]** セクションの **[ストレージアカウント]** 行で、 **[有効]** または **[無効]** をクリックします。
 
     ![Security Center で ATP を有効にする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
@@ -119,7 +120,7 @@ Azure Security Center の [[セキュリティ アラート]](../../security-cen
 
 アラートは、ストレージ アカウントへの通常とは異なる、害を及ぼす可能性のあるアクセス試行やストレージ アカウントの悪用が発生すると、生成されます。 Azure Storage のアラートの一覧については、「[Azure Security Center でのデータ サービスの脅威検出](../../security-center/security-center-alerts-data-services.md#azure-storage)」の「**ストレージ**」セクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Storage アカウントのログ](/rest/api/storageservices/About-Storage-Analytics-Logging)に関する詳細を確認する
 * [Azure Security Center](../../security-center/security-center-intro.md) の詳細について参照してください

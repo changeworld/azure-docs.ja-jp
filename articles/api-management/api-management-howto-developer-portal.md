@@ -1,5 +1,6 @@
 ---
-title: Azure API Management 開発者ポータルの概要 - Azure API Management | Microsoft Docs
+title: Azure API Management 開発者ポータルの概要
+titleSuffix: Azure API Management
 description: API Management の開発者ポータルについて説明します。
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b69fdd7abefca360433fc9fb090569cba23febe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442603"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -109,7 +110,7 @@ API については、[GitHub リポジトリの wiki セクション][2]に記�
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>ポータルは、Azure Resource Manager テンプレートをサポートしていますか。また、API Management DevOps リソース キットと互換性がありますか。
 
-No.
+いいえ。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>新しいマネージド ポータルの依存関係に対して追加の VNet 接続を有効にする必要がありますか。
 
@@ -135,7 +136,7 @@ API Management サービスが内部の VNet にある場合、開発者ポー�
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>対話型コンソールを使用すると、CORS エラーが発生します
 
-対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 例:
+対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 次に例を示します。
 
 ```XML
 <cors>
@@ -209,7 +210,7 @@ API Management サービスが VNet 内にある場合は、VNet 接続に関す
 
 カスタム ドメインに割り当てられているがブラウザーで信頼されていない SSL 証明書が原因で呼び出しが失敗する場合もあります。 軽減策として、管理エンドポイントのカスタム ドメインを削除することができます。API Management は、信頼できる証明書を使用して既定のエンドポイントにフォールバックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しい開発者ポータルの詳細を確認します:
 

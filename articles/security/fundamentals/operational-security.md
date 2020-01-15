@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 69b25f22d448436db5e906a3b56b5e50ec412b40
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a4a4393a25bfa49a8074793b572111f69dcc17c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459648"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -37,7 +37,7 @@ IT 資産を構築し、パブリック クラウド サービス プロバイ�
 
 Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ要件を満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションと制御機能が用意されており、組織によるデプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。 このドキュメントでは、Azure のセキュリティ機能を使用して、これらの要件をどのように満たすことができるかをわかりやすく説明します。
 
-### <a name="abstract"></a>要約
+### <a name="abstract"></a>概要
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
@@ -56,7 +56,7 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 
 ## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor ログ
 
-Microsoft Azure Monitor ログは、ハイブリッド クラウド向けの IT 管理ソリューションです。 Azure Monitor ログは単独で使用されるか、System Center の既存のデプロイを拡張するために使用され、お客様のインフラストラクチャをクラウドベースで管理するための柔軟性と制御を最大限に実現します。
+Microsoft Azure Monitor ログは、ハイブリッド クラウド向けの IT 管理ソリューションです。 Azure Monitor ログは単独で使用されるか、System Center の既存のデプロイを拡張するために使用され、ご自分のインフラストラクチャをクラウドベースで管理するための柔軟性と制御を最大限に実現します。
 
 ![Azure Monitor ログ](./media/operational-security/azure-operational-security-fig1.png)
 
@@ -66,7 +66,7 @@ Azure Monitor ログを使用すれば、オンプレミス型、Azure、AWS、W
 
 Azure Monitor ログのコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
-| Service  | 説明|
+| サービス  | [説明]|
 | :------------- | :-------------|
 | Azure Monitor ログ | 物理マシンや仮想マシンなど、さまざまなリソースの可用性とパフォーマンスを監視、分析します。 |
 |Automation | 手動プロセスを自動化し、物理マシンと仮想マシンの構成を適用します。 |
@@ -114,7 +114,7 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](../../azure-resource-manager/resource-group-overview.md#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
+Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 
 ### <a name="security-policies-and-recommendations"></a>セキュリティ ポリシーと推奨事項
 
@@ -128,7 +128,7 @@ Security Center では、セキュリティに関する会社の要件、アプ�
 右側の図に示すように、サブスクリプション レベルで有効になっているポリシーは、サブスクリプション内のすべてのリソース グループに自動的に反映されます。
 
 
-### <a name="data-collection"></a>データ収集
+### <a name="data-collection"></a>データ コレクション
 
 Security Center では、仮想マシン (VM) のセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての VM に対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます。
 
@@ -167,7 +167,7 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 
 [Azure Monitor ログのセキュリティ](../../security-center/security-center-monitoring.md)と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 Azure Monitor ログ Security and Audit には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
 
--   マルウェアの評価
+-   [Malware Assessment] (マルウェアの評価)
 -   [Update Assessment] \(更新の評価)
 -   ID とアクセス
 
@@ -260,12 +260,12 @@ Storage Analytics によって実行される次の操作には料金が発生�
 > パフォーマンスを最適化するには、仮想マシンに接続する使用率が高いディスク数を制限して、スロットルを回避するようにします。 すべてのディスクの使用率が同時に高くならなければ、ストレージ アカウントは多数のディスクをサポートできます。
 
 > [!Note]
-> ストレージ アカウントの制限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)」を参照してください。
+> ストレージ アカウントの制限について詳しくは、「[Standard Storage アカウントのスケーラビリティ ターゲット](../../storage/common/scalability-targets-standard-account.md)」をご覧ください。
 
 
 次のタイプの認証済み要求と匿名要求が記録されます。
 
-| 認証済み  | 匿名|
+| 認証済み  | Anonymous|
 | :------------- | :-------------|
 | 成功した要求 | 成功した要求 |
 |失敗した要求 (タイムアウト、スロットル、ネットワーク、承認などに関する各種エラー) | Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む) |

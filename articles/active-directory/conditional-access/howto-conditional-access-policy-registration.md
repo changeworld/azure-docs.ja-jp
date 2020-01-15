@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 866b682c9e1ebcb1b3458d26c638237905d06b05
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424846"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件付きアクセス:信頼できる場所を MFA 登録で必須にする
 
@@ -45,10 +45,12 @@ Azure Multi-Factor Authentication とパスワード リセットのセルフサ
    1. **[アクセスのブロック]** をクリックします。
    1. **[選択]** をクリックします。
 1. **[ポリシーを有効にする]** を **[オン]** に設定します。
-1. その後、 **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
+
+[条件付きアクセスのレポート専用モードを使用した影響の判断](howto-conditional-access-report-only.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

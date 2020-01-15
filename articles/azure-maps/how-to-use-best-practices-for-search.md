@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408711"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure Maps Search Service を使用するためのベスト プラクティス
 
@@ -27,7 +27,7 @@ Azure Maps の [Search Service](https://docs.microsoft.com/rest/api/maps/search)
 
 ## <a name="prerequisites"></a>前提条件
 
-Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 アカウント作成の詳細については、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページにある手順に従ってください。また、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従い、アカウントのプライマリ サブスクリプション キーを取得します。
+Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 アカウント作成の詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページにある手順に従ってください。また、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従い、アカウントの主キー (サブスクリプション) を取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 > [!Tip]
 > Search Service のクエリを実行するには、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを作成するか、または好みの API 開発環境を使用することができます。
@@ -243,7 +243,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 交差点の住所を検索するには (つまり、"1st Avenue & Union Street, Seattle")、要求を送信する前に特殊文字 "&" をエンコードする必要があります。 URI で文字データをエンコードすることをお勧めします。その場合、すべての文字を、"%" 文字と、UTF-8 文字に対応する 2 文字の 16 進値を使用してエンコードします。
 
-**使用例**:
+**使用例** :
 
 Get Search Address:
 
@@ -700,7 +700,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 } 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Maps Search Service の要求を作成する方法](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)を学習する。
 * Azure Maps [Search Service API のドキュメント](https://docs.microsoft.com/rest/api/maps/search)を確認する。 

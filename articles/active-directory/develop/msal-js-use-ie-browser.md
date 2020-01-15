@@ -1,5 +1,5 @@
 ---
-title: Internet Explorer と MSAL.js を使用する | Azure
+title: Internet Explorer (MSAL.js) の問題 | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を Internet Explorer ブラウザーで使用します。
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e92a10ca0b4cbe38119931bc66d36c3b9259a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4de918d87abca521f3b573f831f8bfd6a7e17728
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424286"
 ---
-# <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーと MSAL.js を使用する
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザー (MSAL.js) に関する既知の問題
 
 JavaScript 用 Microsoft Authentication Library (MSAL.js) は、Internet Explorer ブラウザーで実行できるように、[JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 向けに生成されています。 ただし、いくつかの点について知っておく必要があります。
 
@@ -48,11 +48,11 @@ Internet Explorer で動作するアプリケーションをローカルで実�
 
     1. Internet Explorer の **[ツール]** (歯車アイコン) をクリックします。
     1. **[インターネット オプション]** を選択し、次に **[セキュリティ]** タブを選択します。
-    1. **[インターネット]** ゾーンをクリックし、 **[保護モードを有効にする (Internet Explorer の再起動が必要)]** をオフにします。 Internet Explorer に、コンピューターが保護されていないことを示す警告が表示されます。 Click **OK**.
+    1. **[インターネット]** ゾーンをクリックし、 **[保護モードを有効にする (Internet Explorer の再起動が必要)]** をオフにします。 Internet Explorer に、コンピューターが保護されていないことを示す警告が表示されます。 **[OK]** をクリックします。
     1. Internet Explorer を再起動します。
     1. アプリケーションを実行してデバッグします。
 
 完了したら、Internet Explorer のセキュリティ設定を元に戻します。  **[設定]**  ->  **[インターネット オプション]**  ->  **[セキュリティ]**  ->  **[すべてのゾーンを既定のレベルにリセットする]** の順に選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Internet explorer で MSAL.js を使用する場合の既知の問題](msal-js-use-ie-browser.md)を確認します。

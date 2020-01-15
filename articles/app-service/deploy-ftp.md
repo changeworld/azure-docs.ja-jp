@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671719"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680924"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -21,15 +21,21 @@ ms.locfileid: "74671719"
 
 ## <a name="open-ftp-dashboard"></a>FTP ダッシュボードを開く
 
-[Azure Portal](https://portal.azure.com) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。
 
-FTP ダッシュボードを開くには、 **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** の順にクリックします。
+    ![App Services を検索します。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
+2. デプロイする Web アプリを選択します。
+
+    ![アプリを選択します。](media/app-service-continuous-deployment/select-your-app.png)
+
+3. **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
+
+    ![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>FTP の接続情報を取得する
 
-FTP ダッシュボードで、 **[コピー]** をクリックして、FTPS エンドポイントとアプリの資格情報をコピーします。
+FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンドポイントとアプリの資格情報をコピーします。
 
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
@@ -102,7 +108,7 @@ FTP デプロイのトラブルシューティングを行うための最初の�
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。
 Azure App Service では、アクティブ モードとパッシブ モードの両方を使用した接続がサポートされます。 お使いのデプロイ マシンは、通常、(オペレーティング システム内の、またはホーム ネットワークまたはビジネス ネットワークの一部として) ファイアウォールの内側にあるため、パッシブ モードをお勧めします。 [WinSCP ドキュメントに記載された使用例](https://winscp.net/docs/ui_login_connection)をご覧ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 高度なデプロイ シナリオの詳細については、[Git を使用した Azure へのデプロイ](deploy-local-git.md)に関するページをご覧ください。 Azure への Git ベース デプロイでは、バージョン管理、パッケージの復元、MSBuild などが可能です。
 

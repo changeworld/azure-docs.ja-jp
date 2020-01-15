@@ -3,16 +3,16 @@ title: 推奨セキュリティ プラクティス
 description: Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456885"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
-Azure の委任されたリソース管理を使用する場合は、セキュリティとアクセスの制御を考慮することが大切です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
+Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。 テナント内のユーザーは、顧客のサブスクリプションとリソース グループに直接アクセスできるようになるため、テナントのセキュリティを確保するための手順を実行する必要があります。 また許可の対象も、顧客のリソースを効果的に管理するうえで必要なアクセス権に限定することが必要です。 このトピックでは、そのために役立つ推奨事項を紹介しています。
 
 ## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
 
@@ -40,7 +40,7 @@ Azure の委任されたリソース管理を使用する場合は、セキュ�
 [パブリック マネージド サービス オファーを通じて顧客をオンボード](../how-to/publish-managed-services-offers.md)すると、追加したすべてのグループ (またはユーザーあるいはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意してください。 顧客ごとに異なる担当グループを割り当てるには、各顧客に限定された個別のプライベート プランを公開するか、または Azure Resource Manager テンプレートを使用して顧客を個別にオンボードする必要があります。 たとえば、アクセスがごく限られたパブリック プランを公開しておき、追加のアクセス権については、顧客と直接連携しながら、カスタマイズされた Azure リソーステンプレートを使用して、そのリソースをオンボードし、必要に応じて別途アクセス権を付与していくことが考えられます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Multi-Factor Authentication をデプロイ](../../active-directory/authentication/howto-mfa-getstarted.md)します。
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。

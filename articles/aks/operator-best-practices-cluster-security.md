@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442915"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -27,6 +27,8 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 > * ノードを最新の状態に保ち、セキュリティ パッチを自動的に適用する
 
 また、[コンテナー イメージの管理][best-practices-container-image-management]と[ポッドのセキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
+
+また、[Azure Kubernetes Services と Security Center の統合][security-center-aks]を使用して、脅威を検出したり、AKS クラスターをセキュリティで保護するための推奨事項を確認したりすることもできます。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API サーバーとクラスター ノードへのアクセスをセキュリティで保護する
 
@@ -207,7 +209,7 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 
 ノードの再起動を処理する方法については、[AKS のノードにセキュリティとカーネルの更新プログラムを適用する方法][aks-kured]に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS クラスターをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
@@ -235,3 +237,4 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration

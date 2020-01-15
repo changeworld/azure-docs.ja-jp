@@ -1,22 +1,24 @@
 ---
 title: Azure アクティビティ ログのイベント スキーマ
 description: Azure アクティビティ ログ内の各カテゴリのイベント スキーマについて説明します。
-author: johnkemnetz
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 12/04/2019
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: df2594165909c55de2de562c9717299d189a20d3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893605"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531022"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](activity-log-export.md)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure ログ スキーマ](diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
+[Azure アクティビティ ログ](activity-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
+
+次の例は、ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合のスキーマを示しています。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](resource-logs-stream-event-hubs.md)場合、スキーマは異なります。 [リソース ログ スキーマ](diagnostic-logs-schema.md)へのプロパティのマッピングについては、この記事の最後で紹介します。
 
 ## <a name="administrative"></a>管理
 このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
@@ -110,11 +112,11 @@ ms.locfileid: "74893605"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
-| channels |次のいずれかの値です。"Admin"、"Operation" |
+| channels |次のいずれかの値:"Admin"、"Operation" |
 | claims |Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
 | description |イベントを説明する静的テキスト。 |
@@ -122,7 +124,7 @@ ms.locfileid: "74893605"
 | eventName | 管理イベントのフレンドリ名。 |
 | category | 常に "Administrative" |
 | httpRequest |Http 要求を記述する BLOB。 通常、"clientRequestId"、"clientIpAddress"、"method" (HTTP メソッド、 たとえば PUT) が含まれます。 |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、および "Informational" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、および "Informational" |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
 | resourceType | 管理イベントによって影響を受けたリソースの種類。 |
@@ -131,7 +133,7 @@ ms.locfileid: "74893605"
 | operationName |操作の名前。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | status |操作の状態を説明する文字列。 いくつかの一般的な値は次のとおりです: Started、In Progress、Succeeded、Failed、Active、Resolved。 |
-| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列 (次のような一般的な値) が含まれる場合もあります。OK (HTTP 状態コード: 200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504)。 |
+| subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列 (次のような一般的な値) が含まれる場合もあります。OK (HTTP 状態コード: 200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、Gateway Timeout (HTTP 状態コード: 504)。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
@@ -257,7 +259,7 @@ ms.locfileid: "74893605"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | channels | 常に "Admin, Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -265,7 +267,7 @@ ms.locfileid: "74893605"
 | eventDataId |アラート イベントの一意識別子。 |
 | category | 常に "ResourceHealth"。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、"Informational"、および "Verbose" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、"Informational"、および "Verbose" |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | resourceGroupName |リソースが含まれているリソース グループの名前。 |
@@ -279,8 +281,8 @@ ms.locfileid: "74893605"
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。|
 | properties.title | リソースの正常性状態を説明するユーザー フレンドリな文字列。 |
 | properties.details | イベントの詳細を説明するユーザー フレンドリな文字列。 |
-| properties.currentHealthStatus | リソースの現在の正常性状態。 次のいずれかの値です。"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
-| properties.previousHealthStatus | リソースの前回の正常性状態。 次のいずれかの値です。"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
+| properties.currentHealthStatus | リソースの現在の正常性状態。 次のいずれかの値:"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
+| properties.previousHealthStatus | リソースの前回の正常性状態。 次のいずれかの値:"Available"、"Unavailable"、"Degraded"、および "Unknown"。 |
 | properties.type | リソース正常性イベントの種類の説明。 |
 | properties.cause | リソース正常性イベントの原因の説明。 "UserInitiated" または "PlatformInitiated" のいずれか。 |
 
@@ -350,7 +352,7 @@ ms.locfileid: "74893605"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | caller | 常に Microsoft.Insights/alertRules |
 | channels | 常に "Admin, Operation" |
@@ -359,7 +361,7 @@ ms.locfileid: "74893605"
 | description |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
 | category | 常に "Alert" |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、および "Informational" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、および "Informational" |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 他の種類のアラートの場合は、アラート自体を含むリソース グループの名前です。 |
 | resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 他の種類のアラートの場合は、アラート自体のリソース プロバイダーの名前です。 |
 | resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 他の種類のアラートの場合は、アラート リソース自体のリソース ID です。 |
@@ -376,7 +378,7 @@ ms.locfileid: "74893605"
 アラート イベントのソースに応じて、プロパティ フィールドには異なる値が格納されます。 アラート イベントの一般的なプロバイダーは、アクティビティ ログ アラートとメトリック アラートの 2 つです。
 
 #### <a name="properties-for-activity-log-alerts"></a>アクティビティ ログ アラートのプロパティ
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | properties.subscriptionId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのサブスクリプション ID。 |
 | properties.eventDataId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのイベント データ ID。 |
@@ -387,7 +389,7 @@ ms.locfileid: "74893605"
 | properties.status | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントの状態。|
 
 #### <a name="properties-for-metric-alerts"></a>メトリック アラートのプロパティ
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | properties.RuleUri | メトリック アラート ルール自体のリソース ID。 |
 | properties.RuleName | メトリック アラート ルールの名前。 |
@@ -460,7 +462,7 @@ ms.locfileid: "74893605"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | caller | 常に Microsoft.Insights/autoscaleSettings |
 | channels | 常に "Admin, Operation" |
@@ -468,7 +470,7 @@ ms.locfileid: "74893605"
 | correlationId | 文字列形式の GUID。 |
 | description |自動スケール イベントを説明する静的テキスト。 |
 | eventDataId |自動スケール イベントの一意識別子。 |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、および "Informational" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、および "Informational" |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
 | resourceProviderName |自動スケール設定のリソース プロバイダーの名前。 |
 | resourceId |自動スケール設定のリソース ID。 |
@@ -486,7 +488,7 @@ ms.locfileid: "74893605"
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -550,7 +552,7 @@ ms.locfileid: "74893605"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -559,7 +561,7 @@ ms.locfileid: "74893605"
 | eventName |セキュリティ イベントのフレンドリ名。 |
 | category | 常に "Security" |
 | id |セキュリティ イベントの一意リソース識別子。 |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、または "Informational" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、または "Informational" |
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
 | resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
@@ -631,7 +633,7 @@ ms.locfileid: "74893605"
 
 ```
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -639,7 +641,7 @@ ms.locfileid: "74893605"
 | eventDataId | 推奨イベントの一意の識別子。 |
 | category | 常に "Recommendation" |
 | id |推奨イベントの一意のリソース ID。 |
-| level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、または "Informational" |
+| level |イベントのレベル。 次のいずれかの値:"Critical"、"Error"、"Warning"、または "Informational" |
 | operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |この推奨が適用されるリソースのリソース プロバイダーの名前 ("MICROSOFT.COMPUTE" など) |
@@ -741,7 +743,7 @@ ms.locfileid: "74893605"
 
 ### <a name="policy-event-property-descriptions"></a>Policy イベントのプロパティの説明
 
-| 要素名 | 説明 |
+| 要素名 | [説明] |
 | --- | --- |
 | authorization | イベントの RBAC プロパティの配列。 新しいリソースの場合、これは、評価をトリガーした要求のアクションとスコープです。 既存のリソースの場合、アクションは "Microsoft.Resources/checkPolicyCompliance/read" です。 |
 | caller | 新しいリソースの場合は、デプロイを開始した ID。 既存のリソースの場合は、Microsoft Azure Policy Insights RP の GUID。 |
@@ -771,9 +773,13 @@ ms.locfileid: "74893605"
 | properties.policies | この Policy の評価が結果となるポリシー定義、割り当て、効果、およびパラメーターに関する詳細が含まれます。 |
 | relatedEvents | このフィールドは、Policy イベントの場合は空白です。 |
 
-## <a name="mapping-to-resource-logs-schema"></a>リソース ログ スキーマにマッピングする
 
-Azure アクティビティ ログをストレージ アカウントまたは Event Hubs 名前空間にストリーミングする場合、データは [Azure リソース ログ スキーマ](./diagnostic-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次に示します。
+## <a name="schema-from-storage-account-and-event-hubs"></a>ストレージ アカウントとイベント ハブからのスキーマ
+Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](diagnostic-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
+
+> [!IMPORTANT]
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
+
 
 | リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | メモ |
 | --- | --- | --- |
@@ -790,14 +796,75 @@ Azure アクティビティ ログをストレージ アカウントまたは Ev
 | identity | 要求と承認プロパティ |  |
 | Level | Level |  |
 | location | 該当なし | イベントが処理される場所。 *これは、リソースの場所ではなく、イベントが処理される場所です。このプロパティは、今後の更新で削除されます。* |
-| properties | properties.eventProperties |  |
+| Properties | properties.eventProperties |  |
 | properties.eventCategory | category | properties.eventCategory が存在しない場合、カテゴリは "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
 | properties.eventProperties | properties |  |
 
+次に、このスキーマを使用したイベントの例を示します。
 
-## <a name="next-steps"></a>次の手順
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
+
+## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログについて詳しく学習します](activity-logs-overview.md)
-* [アクティビティ ログを Azure Storage または Event Hubs にエクスポートする](activity-log-export.md)
+* [アクティビティ ログを Log Analytics ワークスペース、Azure Storage、またはイベントハブに送信するための診断設定を作成する](diagnostic-settings.md)
 

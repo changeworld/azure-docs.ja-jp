@@ -4,15 +4,15 @@ description: Active Directory 正常性チェック ソリューションを使�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406133"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -36,7 +36,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Active Directory 正常性チェック ソリューションを使用するには、各コンピューターに (Microsoft Monitoring Agent (MMA) とも呼ばれる) Windows 用の Log Analytics エージェントがインストールされ、4.5.2 以降のサポートされているバージョンの .NET Framework がインストールされている必要があります。  このエージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
+* Active Directory 正常性チェック ソリューションを使用するには、各コンピューターに (Microsoft Monitoring Agent (MMA) とも呼ばれる) Windows 用の Log Analytics エージェントがインストールされ、4.6.2 以降のサポートされているバージョンの .NET Framework がインストールされている必要があります。  このエージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
 * このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
 * Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 追加の構成は必要ありません。
 
@@ -203,6 +203,6 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な AD の正常性チェック データと推奨事項を分析する方法を学びます。

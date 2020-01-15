@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442896"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -25,6 +25,8 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 > * 基本イメージが更新されたら、コンテナー イメージを自動的にトリガーおよび再デプロイする
 
 [クラスター セキュリティ][best-practices-cluster-security]および[ポッド セキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
+
+また、コンテナーをスキャンして脆弱性を検出するのを支援するために、[Security Center のコンテナーのセキュリティ][security-center-containers]も使用できます。  また、イメージおよびレジストリを脆弱性から保護できるようにするために、Security Center と [Azure Container Registry の統合][security-center-acr]もあります。
 
 ## <a name="secure-the-images-and-run-time"></a>イメージおよびランタイムをセキュリティで保護する
 
@@ -46,7 +48,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 基本イメージの更新の詳細については、「[Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]」 (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、コンテナーをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
@@ -61,3 +63,5 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

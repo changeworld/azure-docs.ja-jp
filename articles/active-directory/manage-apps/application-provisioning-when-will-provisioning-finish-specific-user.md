@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900404"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681380"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -35,7 +35,7 @@ Azure AD プロビジョニング サービスは、ソース システムとタ
 - 現在実行されているプロビジョニング サイクルまたは最後に完了したプロビジョニング サイクルの種類 (初回または増分)。
 - 完了したプロビジョニング サイクルのパーセンテージを示す**進行状況バー**。 このパーセンテージは、プロビジョニングされたページの数を表します。 各ページには複数のユーザーまたはグループが含まれている可能性もあるため、プロビジョニングされたユーザー、グループ、ロールの数とこのパーセンテージとの間に、直接的な相関関係はないことに注意してください。
 - **[最新の情報に更新]** ボタン。このボタンを使用して、常に最新の情報を表示することができます。
-- プロビジョニングされた**ユーザー**と**グループ**の数、および作成されたロールの数。 初回サイクル中、ユーザー作成されたり更新されたりしたときに**ユーザー**数が 1 ずつ増やされ、ユーザーが削除されたときに 1 ずつ減らされます。 増分サイクル中は、ユーザーの更新が**ユーザー**数に影響することはありません。ユーザー数が変化するのは、ユーザーが作成されるか削除されたときだけです。
+- コネクタ データ ストア内の**ユーザー**と**グループ**の数。 この数は、オブジェクトがプロビジョニングのスコープに追加されるたびに増加します。 ユーザーが論理的に削除されたり、物理的に削除されたりしても、コネクタ データ ストアからオブジェクトが削除されないため、数は減りません。 CDS が[リセット](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)された後、最初の同期で数が再計算されます。 
 - **[監査ログの表示]** リンク。Azure AD のプロビジョニング ログが開いて、個々のユーザーのプロビジョニング状態を含め、ユーザー プロビジョニング サービスによって実行された全操作についての詳細が表示されます (以下の[プロビジョニング ログの使用](#use-provisioning-logs-to-check-a-users-provisioning-status)に関するセクションを参照)。
 
 プロビジョニング サイクルの完了後、現在までにプロビジョニングされた累積のユーザー数とグループ数が、完了日と最後のサイクルの期間と共に **[現在までの統計情報]** セクションに表示されます。 直近のプロビジョニング サイクルは、 **[アクティビティ ID]** によって一意に識別されます。 **[ジョブ ID]** は、プロビジョニング ジョブの一意識別子であり、テナント内のアプリに固有です。
@@ -104,5 +104,5 @@ Azure portal でプロビジョニング ログを確認する方法の詳細に
 
 - パフォーマンスが問題になり、テナント内のユーザーとグループのほとんどをプロビジョニングしようとしている場合は、スコープ フィルターを使用します。 スコープ フィルターによって、ユーザーが特定の属性値に基づいてフィルター処理され、プロビジョニング サービスが Azure AD から抽出するデータを細かく調整できるようになります。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理での一般的なシナリオ - Azure Active Directory
+title: エンタイトルメント管理での一般的なシナリオ - Azure AD
 description: Azure Active Directory エンタイトルメント管理での一般的なシナリオの場合に従う必要がある、大まかな手順について説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422500"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 
@@ -151,7 +151,7 @@ ms.locfileid: "73173488"
 1. [ユーザーのアクセス パッケージを表示する](entitlement-management-reports.md#view-access-packages-for-a-user)
 1. [ユーザーのリソースの割り当てを表示する](entitlement-management-reports.md#view-resource-assignments-for-a-user)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [委任とロール](entitlement-management-delegate.md)
 - [要求プロセスとメール通知](entitlement-management-process.md)

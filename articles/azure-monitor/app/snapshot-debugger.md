@@ -1,5 +1,5 @@
 ---
-title: .NET アプリ向け Azure Application Insights スナップショット デバッガー | Microsoft Docs
+title: .NET アプリ向け Azure Application Insights スナップショット デバッガー
 description: 例外が運用 .NET アプリでスローされるときにデバッグ スナップショットが自動的に収集される
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: brahmnes
-ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 681190a23fd09402ae96c328b7d98044baf3444e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406388"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のスナップショット デバッガー (プレビュー) により、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](../../azure-monitor/app/asp-net-exceptions.md)に表示されます。
@@ -40,7 +40,7 @@ ms.locfileid: "72899792"
 
 スナップショット デバッガーを有効にしたのにスナップショットが表示されない場合は、「[トラブルシューティング ガイド](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)」を参照してください。
 
-## <a name="grant-permissions"></a>アクセス許可を付与する
+## <a name="grant-permissions"></a>[アクセス許可の付与]
 
 スナップショットへのアクセスは、ロールベースのアクセス制御 (RBAC) によって保護されます。 スナップショットを検査するユーザーは、最初にサブスクリプション所有者によって必要なロールに追加される必要があります。
 
@@ -131,7 +131,7 @@ Azure Compute や他の種類の場合、シンボル ファイルがメイン �
 > [!TIP]
 > Application Insights サイト拡張機能を App Service にインストールして、非最適化のサポートを得ます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のアプリケーションに対して Application Insights スナップショット デバッガーを有効にします。
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)

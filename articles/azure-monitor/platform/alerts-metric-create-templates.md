@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397342"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure Monitor に[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
 
 > [!IMPORTANT]
 > リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
@@ -3553,6 +3553,11 @@ az group deployment create \
 
 パラメーターの値は､コマンドラインまたはパラメーター ファイルのどちらからでも設定できます｡ 以下は､パラメーター ファイルの 1 例です｡
 
+
+> [!NOTE]
+>
+> `&amp`; は、& の HTML エンティティ参照です。 URL パラメーターは、1 つの & で分離されていますが、HTML で URL を記述した場合は、エンコードする必要があります。 そのため、pingURL パラメーターの値に "&" が含まれている場合は、"`&amp`;" を使用してエスケープする必要があります。
+
 以下の JSON を availabilityalert.parameters.json として保存し､必要に応じて変更します。
 
 ```json
@@ -3601,7 +3606,7 @@ az group deployment create \
     --parameters @availabilityalert.parameters.json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure でのアラートの](alerts-overview.md)詳細を確認
 - [Resource Manager テンプレートを使用したアクション グループの作成](action-groups-create-resource-manager-template.md)

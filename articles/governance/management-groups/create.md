@@ -1,22 +1,24 @@
 ---
 title: 管理グループを作成してリソースを整理する - Azure のガバナンス
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
-ms.date: 04/05/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 335dd8f7f3a9ec20c2b7740e4ec97454489027f6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436528"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを作成して、[Azure Policy](../policy/overview.md) と [Azure ロール ベースのアクセス制御](../../role-based-access-control/overview.md)で使用できる効果的で効率的な階層を構築します。 管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](overview.md)」をご覧ください。
 
-ディレクトリに作成される最初の管理グループは、完了までに最大 15 分かかる場合があります。 Azure 内でディレクトリの管理グループ サービスを初めて設定する際に実行するプロセスがあります。 プロセスが完了すると、通知を受け取ります。
+ディレクトリに作成される最初の管理グループは、完了までに最大 15 分かかる場合があります。 Azure 内でディレクトリの管理グループ サービスを初めて設定する際に実行するプロセスがあります。 プロセスが完了すると、通知を受け取ります。 詳細については、「[管理グループの初期セットアップ](./overview.md#initial-setup-of-management-groups)」を参照してください。 
 
 ## <a name="create-a-management-group"></a>管理グループの作成
+
+テナント内のすべての Azure AD ユーザーは、そのユーザーに割り当てられた管理グループの書き込みアクセス許可なしで管理グループを作成できます。  この新しい管理グループは、ルート管理グループの子になり、作成者には "所有者" ロールの割り当てが付与されます。 管理グループ サービスでは、この機能が許可されるため、ルート レベルでのロールの割り当ては必要ありません。 ルート管理グループには、その作成時に、どのユーザーもアクセスできません。  管理グループの使用を開始する場合に Azure AD の全体管理者を見つけるという困難を回避するために、ルート レベルで最初の管理グループを作成できるようになっています。      
 
 管理グループを作成するには、ポータル、PowerShell、または Azure CLI を使用します。 現時点では、Resource Manager テンプレートを使用して管理グループを作成することはできません。
 
@@ -88,7 +90,7 @@ az account management-group create --name Contoso --display-name 'Contoso Group'
 az account management-group create --name ContosoSubGroup --parent Contoso
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 管理グループについて詳しくは、以下をご覧ください。
 

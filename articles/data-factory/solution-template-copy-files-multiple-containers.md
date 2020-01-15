@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439841"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory を使用して複数のコンテナーからファイルをコピーする
 
@@ -34,9 +34,11 @@ ms.locfileid: "74927698"
 - **ForEach** は、**GetMetadata** アクティビティからコンテナーの一覧を取得し、その一覧を反復処理して、各コンテナーを Copy アクティビティに渡します。
 - **Copy** は、各コンテナーをソース ストレージ ストアからコピー先ストアにコピーします。
 
-このテンプレートには、次の 2 つのパラメーターが定義されています。
-- *SourceFilePath* は、コンテナーの一覧を取得できるデータ ソース ストアのパスです。 ほとんどの場合、このパスは複数のコンテナー フォルダーを含んだルート ディレクトリです。 このパラメーターの既定値は `/` です。
-- *DestinationFilePath* は、コピー先ストア内でファイルがコピーされる場所のパスです。 このパラメーターの既定値は `/` です。
+このテンプレートでは、次のパラメーターを定義します。
+- *SourceFileFolder* は、コンテナーの一覧を取得できるデータ ソース ストアのフォルダー パスです。 このパスは複数のコンテナー フォルダーを格納するルート ディレクトリです。 このパラメーターの既定値は `sourcefolder` です。
+- *SourceFileDirectory* は、データ ソース ストアのルート ディレクトリの下にあるサブフォルダーのパスです。 このパラメーターの既定値は `subfolder` です。
+- *DestinationFileFolder* は、コピー先ストア内でファイルがコピーされる場所のフォルダー パスです。 このパラメーターの既定値は `destinationfolder` です。
+- *DestinationFileDirectory* は、コピー先ストア内でファイルがコピーされる場所のサブフォルダー パスです。 このパラメーターの既定値は `subfolder` です。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -64,7 +66,7 @@ ms.locfileid: "74927698"
 
     ![結果を確認する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う](solution-template-bulk-copy-with-control-table.md)
 

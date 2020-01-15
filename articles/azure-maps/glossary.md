@@ -1,6 +1,6 @@
 ---
 title: Azure Maps の用語集 | Microsoft Docs
-description: Azure Maps、Location Based Services、GIS に関連して一般的に使用される用語とその説明。
+description: Azure Maps、Location Based Services、GIS に関連して一般的に使用される用語の用語集。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408866"
 ---
 # <a name="glossary"></a>用語集
 
@@ -29,23 +29,23 @@ ms.locfileid: "64575341"
 
 <a name="along-a-route-search"></a> **ルートに沿った検索**:指定された迂回時間内またはルート パスからの距離範囲内でデータを探す空間クエリ。
 
-<a name="altitude"></a> **高度**:ある地点の基準面からの高さ (垂直距離)。 高度の測定値は、特定の測量基準点 (平均海水面など) に基づきます。 「標高」も参照してください。
+<a name="altitude"></a> **高度**:ある地点の基準面からの高さ (垂直高度)。 高度の測定値は、特定の測量基準点 (平均海水面など) に基づきます。 「標高」も参照してください。
 
 <a name="ambiguous"></a> **あいまい**:データの分類に不確実さがある状態。オブジェクトの特定の属性に対し、複数の値を適切に割り当てることができる場合に存在します。 たとえば、"CA" をジオコーディングすると、"Canada" と "California" という、2 つのあいまいな結果が返されます。国コードとしての "CA" と州コードとしての "CA" があるためです。 
 
 <a name="annotation"></a> **注釈**:ユーザーに情報を提供する目的で地図上に表示されるテキストまたはグラフィックス。 注釈では特定の地図要素を識別したり説明したりできるほか、地図上のエリアに関する一般情報や、地図そのものの情報を提供することもできます。
 
-<a name="antimeridian"></a> **逆子午線**:経度の -180 度と 180 度が出会う地点。180<sup> </sup>度経線とも呼ばれます。 地球のグリニッジ子午線の正反対に位置します。
+<a name="antimeridian"></a> **逆子午線**:経度の -180 度と 180 度が出会う地点。180<sup></sup>度経線とも呼ばれます。 地球のグリニッジ子午線の正反対に位置します。
 
 <a name="application-programming-interface-api"></a> **アプリケーション プログラミング インターフェイス (API)** :開発者によるアプリケーション作成を可能にする仕様。
 
-<a name="api-key"></a> **API キー**:「Azure Maps キー」を参照してください。
+<a name="api-key"></a> **API キー**:「[共有キー認証](#shared-key-authentication)」を参照してください。
 
 <a name="area-of-interest-aoi"></a> **関心領域 (AOI: Area of Interest)** :マップまたはデータベースの作成の重点領域を定義する目的で使用される範囲。
 
 <a name="asset-tracking"></a> **資産追跡**:資産 (人や車両、各種対象物など) の位置を追跡するプロセス。
 
-<a name="asynchronous-request"></a> **非同期要求**:接続を開き、サーバーに要求を送信して非同期要求の識別子を取得した後、接続を閉じる HTTP 要求。 サーバーは要求の処理を続行し、ユーザーは識別子を使用して状態をチェックすることができます。 要求の処理が完了した後、ユーザーは応答をダウンロードすることができます。 一般に、このタイプの要求は、長時間実行されるプロセスに使用されます。
+<a name="asynchronous-request"></a> **非同期要求**:接続を開き、サーバーに要求を送信して非同期要求の識別子を取得した後、接続を閉じる HTTP 要求。 サーバーは要求の処理を続行し、ユーザーは識別子を使用して状態をチェックすることができます。 要求の処理が完了した後、ユーザーは応答をダウンロードすることができます。 このタイプの要求は、長時間実行されるプロセスに使用されます。
 
 <a name="autocomplete"></a> **オートコンプリート**:ユーザーが入力している単語の残りを予測するアプリケーション機能。 
 
@@ -53,9 +53,11 @@ ms.locfileid: "64575341"
 
 <a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** :プレビュー段階の Azure Maps の旧称。
 
-<a name="azure-maps-key"></a> **Azure Maps キー**:Azure Maps キーは、ユーザーの Azure Maps アプリケーションまたはサービス要求を認証する目的で使用される一意の文字列です。 
+<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** :Azure AD は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 現在、すべての Azure Maps API のプレビューで Azure Maps Azure AD 統合を利用できます。 Azure AD は、ロールベースのアクセス制御 (RBAC) をサポートしており、Azure Maps リソースへのきめ細かなアクセスを可能にします。 Azure Maps Azure AD 統合の詳細については、「[Azure Maps と Azure AD](azure-maps-authentication.md)」および「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
-## <a name="b"></a>b
+<a name="azure-maps-key"></a> **Azure Maps キー**:「[共有キー認証](#shared-key-authentication)」を参照してください。
+
+## <a name="b"></a>B
 
 <a name="base-map"></a> **基本マップ**:マップ アプリケーションの中で、道路、ランドマーク、政治的境界といった背景のリファレンス情報を表示する部分。
 
@@ -163,7 +165,7 @@ ms.locfileid: "64575341"
 
 <a name="geofence"></a> **ジオフェンス**:デバイスが領域内に入ったとき (または存在するとき) のイベントをトリガーする目的で使用できる定義済みの地理的地域。
 
-<a name="geojson"></a> **GeoJSON**:地勢のベクター データ (点、線、多角形など) を格納する目的で使用される一般的な JSON ベースのファイル形式。 **メモ**:Azure Maps では、[こちらに記載](extend-geojson.md)されている GeoJSON の拡張バージョンが使用されています。
+<a name="geojson"></a> **GeoJSON**:地勢のベクター データ (点、線、多角形など) を格納する目的で使用される一般的な JSON ベースのファイル形式。 **注**:Azure Maps では、[こちらに記載](extend-geojson.md)されている GeoJSON の拡張バージョンが使用されています。
 
 <a name="geometry"></a> **ジオメトリ**:空間オブジェクト (点、線、多角形など) を表します。
 
@@ -285,6 +287,8 @@ ms.locfileid: "64575341"
 
 <a name="postal-code"></a> **郵便番号**:特定の形式を持った一連の文字または数値あるいはその組み合わせ。国や地域の郵便サービスが郵便物の配達を省力化するために、地域を区分けする目的で使用します。
 
+<a name="primary-key"></a> **主キー**:Azure Maps 共有キー認証用に提供されている 2 つのサブスクリプション キーのうち、最初のキー。 「[共有キー認証](#shared-key-authentication)」を参照してください。
+
 <a name="prime-meridian"></a> **グリニッジ子午線**:経度 0 度を表す経度線。 一般に、西方へ移動するときは 180 度になるまで経度値が減少し、東方へ移動するときは、-180 度になるまで経度値が増加します。 
 
 <a name="prj"></a> **PRJ**:多くの場合シェープファイルに付属するテキスト ファイル。データ セットの投影座標系についての情報が格納されています。
@@ -329,9 +333,13 @@ ms.locfileid: "64575341"
 
 <a name="satellite-imagery"></a> **衛星映像**:真下を撮影する航空機や衛星によってキャプチャされた映像。
 
-<a name="software-development-kit-sdk"></a> **ソフトウェア開発キット (SDK: Software Development Kit)** :API を使用してアプリを作成する開発者を支援するために、ドキュメント、サンプル コード、サンプル アプリをまとめたもの。
+<a name="secondary-key"></a> **セカンダリ キー**:Azure Maps 共有キー認証用に提供されている 2 つのサブスクリプション キーのうち、2 番目のキー。 「[共有キー認証](#shared-key-authentication)」を参照してください。
 
 <a name="shapefile-shp"></a> **シェープファイル (SHP)** :地物の位置情報、図形、属性を格納するためのベクター データ ストレージ形式。ESRI シェープファイルとも呼ばれます。 シェープファイルは、関連するファイル一式で保存されます。
+
+<a name="shared-key-authentication"></a> **共有キー認証**:共有キー認証は、Azure Maps への要求ごとに Azure Maps アカウントの生成キーを渡す処理に依存しています。 これらのキーは、多くの場合、サブスクリプション キーと呼ばれます。 セキュリティのためにキーを定期的に再生成することをお勧めします。 キーは 2 つ提供されるため、1 つのキーを使用して接続を保ったままもう 1 つのキーを再生成できます。 キーを再生成したら、新しいキーを使用するように、このアカウントにアクセスするすべてのアプリケーションを更新する必要があります。 Azure Maps 認証の詳細については、「[Azure Maps と Azure AD](azure-maps-authentication.md)」および「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+
+<a name="software-development-kit-sdk"></a> **ソフトウェア開発キット (SDK: Software Development Kit)** :API を使用してアプリを作成する開発者を支援するために、ドキュメント、サンプル コード、サンプル アプリをまとめたもの。
 
 <a name="spherical-mercator-projection"></a> **球面メルカトル図法**:「[Web メルカトル図法](#web-mercator)」を参照してください。 
 
@@ -340,6 +348,8 @@ ms.locfileid: "64575341"
 <a name="spatial-reference"></a> **空間参照**:地域から地球規模まで対応する座標ベースのシステム。地物の位置を正確に特定するために使用されます。 地図座標を実世界の位置情報に関連付けるための座標系を定義します。 空間参照があることで、異なるレイヤーや異なるソースの空間データを確実に統合し、正確な表示または分析が可能となります。 Azure Maps では、入力ジオメトリ データに、[EPSG:3857](https://epsg.io/3857) 座標参照系と WGS 84 が使用されます。 
 
 <a name="sql-spatial"></a> **SQL 空間**:SQL Azure と SQL Server 2008 以降に組み込まれた空間機能を指す用語。 この空間機能は、SQL Server から切り離して使用できる .NET ライブラリとしても提供されています。 詳細については、「[空間データ (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)」を参照してください。
+
+<a name="subscription-key"></a> **サブスクリプション キー**:「[共有キー認証](#shared-key-authentication)」を参照してください。
 
 <a name="synchronous-request"></a> **同期要求**:HTTP 要求を実行すると、接続が開かれ応答が待機されます。 ブラウザーには、1 つのページから同時に実行できる HTTP 要求数に制限があります。 長時間実行される同期要求が同時に複数実行された場合、この制限に到達することがあります。その場合、要求は他のいずれかの要求が完了するまで延期されます。
 

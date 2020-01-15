@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454680"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを管理する
 
@@ -50,6 +50,17 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
 アカウントの調整が必要な場合には、アカウント構成に関するエラーや警告が **[設定]** ページに表示されます。 メッセージには、Azure Portal 内で変更を行う必要がある正確な箇所を示すリンクが含まれています。 詳しくは、後の「[エラーと警告](#errors-and-warnings)」セクションをご覧ください。
 
+## <a name="repair-the-connection-to-azure"></a>Azure への接続を修復する
+
+[Video Indexer](https://www.videoindexer.ai/) ページの **[Update connection to Azure Media Services]\(Azure Media Services への接続の更新\)** ダイアログで、次の設定の値を指定するように求められます。 
+
+|設定|[説明]|
+|---|---|
+|Azure サブスクリプション ID|サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** をクリックし、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
+|Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
+|アプリケーション ID|この Video Indexer アカウントに対して作成した (指定された Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。 <br/><br/>アプリ ID を取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、 **[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[Azure AD アプリ]** をクリックします。 関連するパラメーターをコピーします。|
+|アプリケーション キー|上で指定した Media Services アカウントに関連付けられている Azure AD アプリケーション キー。 <br/><br/>アプリ キーを取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、 **[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[アプリケーションの管理]**  ->  **[証明書とシークレット]** をクリックします。 関連するパラメーターをコピーします。|
+
 ## <a name="auto-scale-reserved-units"></a>占有ユニットの自動スケール
 
 **[設定]** ページでは、メディア占有ユニット (RU) の自動スケールを設定できます。 オプションが **[オン]** の場合は、最大数の RU を割り当ててることができ、Video Indexer が確実に RU の停止と開始を自動で行うことができます。 このオプションでは、アイドル時間に余分な費用はかかりませんが、インデックス作成の負荷が高いときは、インデックス作成ジョブが完了するまで長時間待機しません。
@@ -74,7 +85,7 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
     ビデオにインデックスを付けるには、Media Service リソースにメディア占有ユニットを割り当てる必要があります。 インデックス作成のパフォーマンスを最適にするには、少なくとも 10 以上の S3 占有ユニットを割り当てることをお勧めします。 料金について詳しくは、[Media Services の価格詳細](https://azure.microsoft.com/pricing/details/media-services/)ページの FAQ のセクションをご覧ください。   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 試用アカウント、Azure に接続されている Video Indexer アカウント、またその両方とプログラムでやり取りするには、[API の使用](video-indexer-use-apis.md)に関するページの手順を参照してください。
 

@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454632"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 
-**Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどのディメンションが含まれます。ディメンションには、各ディメンションがいつビデオに表示されたかを示す時間の範囲のインスタンスが含まれます。  
+**Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
 
 1. JSON ファイルを取得するには、[Get Video Index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します
 1. 特定の成果物にも興味がある場合は、[Get Video Artifact Download URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) を呼び出します
@@ -38,16 +38,16 @@ ms.locfileid: "74978306"
 
 ## <a name="root-elements"></a>ルート要素
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |accountId|プレイリストの VI アカウント ID|
 |id|プレイリストの ID|
-|名前|プレイリストの名前|
+|name|プレイリストの名前|
 |description|プレイリストの説明|
 |userName|プレイリストを作成したユーザーの名前|
 |created|プレイリストの作成時刻|
 |privacyMode|プレイリストのプライバシー モード (秘密/公開)|
-|state|プレイリストの状態 (アップロード完了、処理中、失敗、検疫済み)|
+|状態|プレイリストの状態 (アップロード完了、処理中、失敗、検疫済み)|
 |isOwned|プレイリストが現在のユーザーによって作成されたかどうかを示します。|
 |isEditable|現在のユーザーにプレイリストを編集する権限があるかどうかを示します。|
 |isBase|プレイリストがベースのプレイリスト (ビデオ) か、他のビデオによって構成されたプレイリスト (派生) かどうかを示します。|
@@ -78,9 +78,9 @@ ms.locfileid: "74978306"
 
 このセクションには、分析情報の概要が表示されます。
 
-|Attribute | 説明|
+|Attribute | [説明]|
 |---|---|
-|名前|ビデオの名前 Azure Monitor など|
+|name|ビデオの名前 Azure Monitor など|
 |id|ビデオの ID 63c6d532ff など|
 |privacyMode|内訳に含めることができるモードは、**秘密**、**公開**のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
@@ -92,18 +92,18 @@ ms.locfileid: "74978306"
 |audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioEffects)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
-|statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
+|統計 | 詳しくは、「[統計](#statistics)」をご覧ください。|
 |emotions| 0 個以上の emotions が含まれている場合があります。 詳しくは、「[emotions](#emotions)」をご覧ください。|
-|topics|0 個以上の topics が含まれている場合があります。 [topics](#topics) ディメンション。|
+|topics|0 個以上の topics が含まれている場合があります。 [topics](#topics) 分析情報。|
 
 ## <a name="videos"></a>videos
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |accountId|ビデオの VI アカウント ID|
 |id|ビデオの ID|
-|名前|ビデオの名前
-|state|ビデオの状態 (アップロード完了、処理中、処理済み、失敗、検疫済み)|
+|name|ビデオの名前
+|状態|ビデオの状態 (アップロード完了、処理中、処理済み、失敗、検疫済み)|
 |processingProgress|処理中の進行状況 (20% など)|
 |failureCode|処理に失敗した場合の失敗コード ('UnsupportedFileType' など)|
 |failureMessage|処理に失敗した場合のエラー メッセージ|
@@ -121,7 +121,7 @@ ms.locfileid: "74978306"
 |indexingPreset|ビデオのインデックス付けに使用するプリセット|
 |streamingPreset|ビデオの発行に使用するプリセット|
 |linguisticModelId|ビデオの書き起こしに使用する CRIS モデル|
-|statistics | 詳細については、「[統計](#statistics)」を参照してください。|
+|統計 | 詳細については、「[統計](#statistics)」を参照してください。|
 
 ```json
 {
@@ -150,7 +150,7 @@ ms.locfileid: "74978306"
 ```
 ### <a name="insights"></a>insights
 
-分析情報は一連のディメンションです (トラン スクリプト行、顔、ブランドなど)。ここでは、各ディメンションは一意の要素 (face1、face2、face3 など) の一覧で、各要素は独自のメタデータと、そのインスタンスの一覧を持ちます (追加のオプションのメタデータを持つ時間範囲)。
+各分析情報 (たとえば、トランスクリプト行、顔、ブランドなど) には、一意の要素 (たとえば、face1、face2、face3 など) の一覧が含まれ、各要素には、独自のメタデータと、そのインスタンス (追加のオプション メタデータがある時間範囲) の一覧が含まれます。
 
 顔は ID、名前、サムネイル、その他のメタデータ、およびそのテンポラル インスタンスの一覧を持ちます (例:00:00:05 - 00:00:10、00:01:00 - 00:02:30、00:41:21 - 00:41:49)。各テンポラル インスタンスは、追加のメタデータを持つことができます。 顔の四角形の座標などです (20,230,60,60)。
 
@@ -158,20 +158,20 @@ ms.locfileid: "74978306"
 |---|---|
 |sourceLanguage|ビデオのソース言語 (マスター言語は 1 つと仮定)。 [BCP 47](https://tools.ietf.org/html/bcp47) 文字列の形式です。|
 |language|(ソース言語から翻訳された) 分析情報言語です。 [BCP 47](https://tools.ietf.org/html/bcp47) 文字列の形式です。|
-|transcript|[トランスクリプト](#transcript) ディメンション|
-|ocr|[OCR](#ocr) ディメンション。|
-|keywords|[キーワード](#keywords) ディメンション|
+|transcript|[transcript](#transcript) 分析情報。|
+|ocr|[OCR](#ocr) 分析情報。|
+|keywords|[keywords](#keywords) 分析情報。|
 |blocks|1 つ以上の[ブロック](#blocks)を含めることができます。|
-|faces|[顔](#faces)ディメンション|
-|labels|[ラベル](#labels) ディメンション|
-|shots|[ショット](#shots) ディメンション|
-|brands|[ブランド](#brands) ディメンション|
-|audioEffects|[audioEffects](#audioEffects) ディメンション|
-|sentiments|[センチメント](#sentiments) ディメンション|
-|visualContentModeration|[visualContentModeration](#visualcontentmoderation) ディメンション|
-|textualContentModeration|[textualContentModeration](#textualcontentmoderation) ディメンション。|
-|emotions| [emotions](#emotions) ディメンション。|
-|topics|[topics](#topics) ディメンション。|
+|faces|[faces](#faces) 分析情報。|
+|labels|[labels](#labels) 分析情報。|
+|shots|[shots](#shots) 分析情報。|
+|brands|[brands](#brands) 分析情報。|
+|audioEffects|[audioEffects](#audioEffects) 分析情報。|
+|sentiments|[sentiments](#sentiments) 分析情報。|
+|visualContentModeration|[visualContentModeration](#visualcontentmoderation) 分析情報。|
+|textualContentModeration|[textualContentModeration](#textualcontentmoderation) 分析情報。|
+|emotions| [emotions](#emotions) 分析情報。|
+|topics|[topics](#topics) 分析情報。|
 
 例:
 
@@ -196,14 +196,14 @@ ms.locfileid: "74978306"
 
 #### <a name="blocks"></a>blocks
 
-Attribute | 説明
+Attribute | [説明]
 ---|---
 id|ブロックの ID|
 instances|このブロックの時間範囲の一覧|
 
 #### <a name="transcript"></a>transcript
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
@@ -241,7 +241,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="ocr"></a>ocr
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -276,7 +276,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="keywords"></a>keywords
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|キーワード ID。|
 |text|キーワードのテキスト。|
@@ -307,10 +307,10 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="faces"></a>faces
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|顔 ID。|
-|名前|顔の名前。 「Unknown #0」、識別された著名人、または顧客のトレーニング担当者になることができます。|
+|name|顔の名前。 「Unknown #0」、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
 |thumbnailId|その顔のサムネイルの ID|
@@ -352,10 +352,10 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="labels"></a>labels
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|ラベル ID。|
-|名前|ラベル名 (例: "Computer"、"TV")。|
+|name|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
@@ -411,7 +411,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="scenes"></a>scenes
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|シーン ID。|
 |instances|このシーンの時間範囲の一覧 (1 つのシーンに 1 つだけのインスタンスがあります)。|
@@ -444,7 +444,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="shots"></a>shots
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内の keyFrame の一覧 (それぞれに ID とインスタンスの時間範囲の一覧があります)。 各 keyFrame インスタンスには、keyFrame のサムネイル ID を保持する thumbnailId フィールドがあります。|
@@ -494,10 +494,10 @@ instances|このブロックの時間範囲の一覧|
 
 音声からテキスト トランスクリプトまたはビデオ OCR への変換で検出されたビジネスおよび製品ブランド名 これには、ブランドまたはロゴ検出の画像認識は含まれません。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|ブランド ID|
-|名前|ブランド名|
+|name|ブランド名|
 |referenceId | ブランド Wikipedia の URL のサフィックス たとえば、"Target_Corporation" は [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) のサフィックスです。
 |referenceUrl | ブランドの Wikipedia の URL (ある場合) たとえば、[https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) です。
 |description|ブランドの説明|
@@ -551,9 +551,9 @@ instances|このブロックの時間範囲の一覧|
 ]
 ```
 
-#### <a name="statistics"></a>statistics
+#### <a name="statistics"></a>統計
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |CorrespondenceCount|ビデオ内の通知の数|
 |SpeakerWordCount|話者あたり単語の数|
@@ -563,10 +563,10 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|オーディオ エフェクト ID。|
-|type|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
+|型|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
 |instances|このオーディオ エフェクトが出現する時間範囲の一覧。|
 
 ```json
@@ -592,7 +592,7 @@ instances|このブロックの時間範囲の一覧|
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
@@ -631,7 +631,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、IsAdult 属性に、人間によるレビューの結果が含まれます。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|ビジュアル コンテンツ モデレーションの ID|
 |adultScore|(コンテンツ モデレーターからの) 成人スコア|
@@ -667,7 +667,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|テキスト コンテンツ モデレーションの ID|
 |bannedWordsCount |禁止された単語の数|
@@ -677,10 +677,10 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 Video Indexer では、音声とオーディオの手掛かりに基づいて感情を識別します。識別される感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|感情の ID。|
-|type|音声とオーディオの手掛かりに基づいて識別された感情の瞬間。この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。|
+|型|音声とオーディオの手掛かりに基づいて識別された感情の瞬間。この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。|
 |instances|この感情が出現した時間範囲の一覧。|
 
 ```json
@@ -767,11 +767,11 @@ Video Indexer では、音声とオーディオの手掛かりに基づいて感
 
 Video Indexer では、トランスクリプトから主なトピックを推論します。 可能な場合は、第 2 レベルの [IPTC](https://iptc.org/standards/media-topics/) 分類が含まれています。 
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |id|トピックの ID。|
-|名前|トピック名 (例:"Pharmaceuticals")。|
-|referenceId|トピックの階層を反映している階層リンク。 例: "健康と福祉/医療と健康管理/医薬品"。|
+|name|トピック名 (例:"Pharmaceuticals")。|
+|referenceId|トピックの階層を反映している階層リンク。 次に例を示します。"健康と福祉/医療と健康管理/医薬品"。|
 |confidence|範囲が [0,1] の信頼度スコア。 高いほど信頼度が高くなります。|
 |language|トピックで使用されている言語。|
 |iptcName|IPTC メディア コード名 (検出された場合)。|
@@ -808,7 +808,7 @@ Video Indexer では、トランスクリプトから主なトピックを推論
 . . .
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai)
 

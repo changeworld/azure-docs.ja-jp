@@ -4,15 +4,15 @@ description: System Center Operations Manager Health Check ソリューション
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402863"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -34,7 +34,7 @@ System Center Operations Manager Health Check ソリューションを使用す�
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 
-このソリューションは、Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager、および Microsoft System Center Operations Manager 1807 で動作します。
+このソリューションは、Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager、および Microsoft System Center Operations Manager 1807 で動作します。 サポートされているバージョンの .NET Framework 4.6.2 を各管理サーバーにインストールする必要があります。
 
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
@@ -154,7 +154,7 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 1. Operations Manager Operations コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、*Microsoft System Center Operations Manager Run Health Check Rule* を検索します。
 2. 検索結果で、"*タイプ:管理サーバー*" というテキストが含まれているルールを選択します。
-3. ルールを右クリックし、 **[オーバーライド]**  >  **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
+3. ルールを右クリックし、 **[オーバーライド]**  >  **[クラス "管理サーバー" の特定のManagement Server]\(クラス "管理サーバー" のすべてのオブジェクト\)** の順にクリックします。
 4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。  前述の手順で実行アカウントを関連付けるために構成したものと同じ管理サーバーを選択する必要があります。
 5.  **[Enabled (有効)]** パラメーター値の [オーバーライド値] を **[True]** に変更します。<br><br> ![パラメーターのオーバーライド](./media/scom-assessment/rule.png)
 
@@ -294,6 +294,6 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 *推奨事項を無視する方法はありますか?* はい。「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログの検索](../../azure-monitor/log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。

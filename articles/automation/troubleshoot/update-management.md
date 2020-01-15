@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f5346f2f11df2282a1cd2592db930f7ff829a2d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416774"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -253,9 +253,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
+```error
+Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
+```
+
 ### <a name="cause"></a>原因
 
-プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。
+プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。 
 
 ### <a name="resolution"></a>解決策
 
@@ -325,16 +329,17 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値で正しい WSUS サーバーが指定されていることを確認します。        |
 |`0x80072EE2`|ネットワーク接続の問題、または構成された WSUS サーバーとの通信に問題があります。 WSUS 設定を確認し、サービスがクライアントからアクセス可能であることを確認します。|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
+|`0x80070005`| アクセス拒否エラーは、次に示すいずれかの原因により発生する可能性があります。<br> 感染したコンピューター<br> Windows Update の設定が正しく構成されていない<br> %WinDir%\SoftwareDistribution フォルダーのファイル アクセス許可エラー<br> システム ドライブ (C:) のディスク領域不足
 |その他の一般的な例外     | 可能な解決策についてインターネットで検索を行い、最寄りの IT サポートと連携します。         |
 
-また、Windowsupdate.log ファイルを確認すると、考えられる原因の特定に役立ちます。 ログの読み取り方法の詳細については、「[Windowsupdate.log ファイルの解釈](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)」を参照してください。
+また、%Windir%\Windowsupdate.log ファイルを確認すると、考えられる原因の特定に役立ちます。 ログの読み取り方法の詳細については、「[Windowsupdate.log ファイルの解釈](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)」を参照してください。
 
 [Windows Update トラブルシューティング ツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)をダウンロードして実行し、マシン上の Windows Update に問題がないか確認することもできます。
 
 > [!NOTE]
 > [Windows Update トラブルシューティングツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)のドキュメントに、Windows クライアントでの使用向けであると記載されていますが、Windows Server でも動作します。
 
-## <a name="scenario-update-run-returns-failed-status-linux"></a>シナリオ: 更新プログラムの実行で "失敗" 状態が返される (Linux)
+## <a name="scenario-update-run-returns-failed-status-linux"></a>シナリオ:更新プログラムの実行で "失敗" 状態が返される (Linux)
 
 ### <a name="issue"></a>問題
 
@@ -391,7 +396,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 
 * KB2267602 は [Windows Defender の定義更新](https://www.microsoft.com/wdsi/definitions)です。 これは毎日更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルで追加のサポートを受けてください。
 

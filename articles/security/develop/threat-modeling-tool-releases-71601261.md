@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool のリリース - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool のリリース 1/29/2019 - Azure
 description: Threat Modeling Tool のリリース ノートです
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928099"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548785"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
 
@@ -45,7 +37,7 @@ ms.locfileid: "68928099"
 
 ## <a name="system-requirements"></a>システム要件
 
-- サポートされているオペレーティング システム
+- サポートされるオペレーティング システム
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 以降
 - 必要な .NET のバージョン
   - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 以降
@@ -60,7 +52,7 @@ ms.locfileid: "68928099"
 
 Windows 10 Enterprise LTSB (バージョン 1507) など、.NET 4.7.1 以降をインストールできない Windows 10 システムのユーザーは、アップグレード後にツールを開くことができません。 これらの古いバージョンの Windows は、Threat Modeling Tool のサポート対象プラットフォームではなくなりました。最新の更新プログラムをインストールしないでください。
 
-#### <a name="workaround"></a>対処法
+#### <a name="workaround"></a>回避策
 
 最新の更新プログラムをインストールした Windows 10 Enterprise LTSB (バージョン 1507) のユーザーは、[アプリと機能] のアンインストール ダイアログを使用して、Threat Modeling Tool を以前のバージョンに戻すことができます。
 
@@ -68,6 +60,6 @@ Windows 10 Enterprise LTSB (バージョン 1507) など、.NET 4.7.1 以降を�
 
 - Threat Modeling Tool のドキュメントは [docs.microsoft.com](threat-modeling-tool.md) にあり、[ツールの使用について](threat-modeling-tool-getting-started.md)の情報が含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最新バージョンの [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool) をダウンロードしてください。

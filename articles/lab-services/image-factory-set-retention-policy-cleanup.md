@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5c407edfedd6eb1156a0fec5719cc9435858bd4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456933"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs でのアイテム保持ポリシーの設定
 この記事では、保持ポリシーの設定、ファクトリのクリーンアップ、および組織内の他のすべての DevTest Labs からの古いイメージの回収を取り上げます。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -72,7 +72,7 @@ ms.locfileid: "74560169"
 ファクトリへの新しいイメージの追加も簡単です。 ファクトリに新しいイメージを含めるときに、[Azure portal](https://portal.azure.com) を開き、ファクトリ DevTest Labs に移動し、VM を追加するボタンを選択し、必要なマーケットプレースのイメージおよびアーティファクトを選択します。 **[作成]** ボタンを選択して新しい VM を作成する代わりに、 **[Azure Resource Manager テンプレートの表示]** を選択し、リポジトリの **GoldenImages** フォルダー内の任意の場所に .json ファイルとしてテンプレートを保存します。 次回、イメージ ファクトリを実行するときに、カスタム イメージが作成されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 1. イメージ ファクトリを定期的に実行するように[ビルド/リリースのスケジュール](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)を設定します。 ファクトリによって生成されたイメージを定期的に更新します。
 2. ファクトリのより多くのゴールデン イメージを作成します。 追加の VM 設定タスクのスクリプトを作成し、ファクトリ イメージにアーティファクトを含めるように、[アーティファクトを作成](devtest-lab-artifact-author.md)することも検討できます。
 4. [別々のビルド/リリース](/azure/devops/pipelines/overview?view=azure-devops-2019)を作成して、**DistributeImages** スクリプトを別々に実行します。 Labs.json に変更を加え、ターゲット ラボにイメージをコピーするときに、このスクリプトを実行でき、すべてのイメージを再作成する必要はありません。

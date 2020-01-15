@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f6a7f3e4e1470bc3788ceae68f035f68f05ae449
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423548"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ - アプリのトークンの取得
 
@@ -33,7 +33,7 @@ ms.locfileid: "74919465"
 
 コントローラー メソッドは、ユーザーが Web アプリを使用するために認証されるようにする `[Authorize]` 属性によって保護されます。 以下に、Microsoft Graph を呼び出すコードを示します。
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
@@ -54,7 +54,7 @@ public class HomeController : Controller
 
 以下に、Microsoft Graph を呼び出すトークンを取得する、HomeController のアクションの簡略化されたコードを示します。
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token
@@ -153,7 +153,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 Python のサンプルでは、Microsoft Graph を呼び出すコードは [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62) にあります。
 
-トークン キャッシュからのトークンの取得が試みられた後、承認ヘッダーを設定した後で eb API が呼び出されます。 できない場合は、ユーザーを再度サインインさせます。
+トークン キャッシュからのトークンの取得が試みられた後、承認ヘッダーを設定した後で Web API が呼び出されます。 できない場合は、ユーザーを再度サインインさせます。
 
 ```python
 @app.route("/graphcall")
@@ -168,7 +168,7 @@ def graphcall():
     return render_template('display.html', result=graph_data)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出す](scenario-web-app-call-api-call-api.md)

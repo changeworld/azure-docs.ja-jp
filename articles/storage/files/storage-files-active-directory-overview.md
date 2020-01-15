@@ -1,17 +1,17 @@
 ---
-title: SMB を使用した Azure Files の Azure Active Directory 認証の概要 - Azure Storage
+title: 概要 - Azure AD Domain Services 承認 - Azure Files
 description: Azure Files は、Azure Active Directory (Azure AD) Domain Services を使用した、SMB (Server Message Block) 上の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460291"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Azure Files での SMB アクセスに対する Azure Active Directory Domain Services (Azure AD DS) 認証の概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -49,7 +49,7 @@ Azure Files に対する Azure AD Domain Services 認証には、共有キー認
 -   **データだけでなく、ACL のバックアップも可能**  
     Azure Files では、既存のオンプレミスのファイル共有をバックアップすることができます。 Azure Files では、SMB 経由で Azure Files に共有ファイルをバックアップすると、データと共に ACL も保持されます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 Azure Files は、ドメインに参加している VM から得た Azure AD の資格情報で Kerberos 認証をすることをサポートするために、Azure AD Domain Services を使用しています。 Azure Files で Azure AD を使用するには、まず Azure Active Directory Domain Services を有効にして、ファイル データにアクセスしようとする元の VM からドメインに参加する必要があります。 ドメインに参加している VM は、Azure AD Domain Services と同じ仮想ネットワーク (VNET) 内に存在する必要があります。 
 
 VM 上で実行されているアプリケーションに関連付けられている ID が Azure Files のデータにアクセスしようとした場合、その要求は Azure AD Domain Services に送信され、ID が認証されます。 認証が成功した場合、Azure AD Domain Services は Kerberos トークンを返します。 アプリケーションは Kerberos トークンが含まれる要求を送信し、Azure Files はそのトークンを使用して要求を承認します。 Azure Files はトークンのみを受け取ります。Azure AD の資格情報は保持しません。
@@ -83,7 +83,7 @@ Azure Files では、Azure ファイル共有にデータをコピーすると�
 ## <a name="pricing"></a>価格
 お使いのストレージアカウントで SMB 経由の Azure AD 認証を有効にする場合、追加のサービス料金は発生しません。 価格の詳細については、「[Azure Files の価格](https://azure.microsoft.com/pricing/details/storage/files/)」と「[Azure AD Domain Services の価格](https://azure.microsoft.com/pricing/details/active-directory-ds/)」のページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Files や、SMB 経由の Azure AD 認証の詳細については、これらのリソースを参照してください。
 
 - [Azure Files の概要](storage-files-introduction.md)

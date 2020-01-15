@@ -4,15 +4,15 @@ description: パフォーマンスは、Windows および Linux システム上�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399292"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー)
 
@@ -38,7 +38,7 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 * 使用可能なメモリ - 使用可能なメモリ量の平均が最も低い上位 5 つのマシンが示されます。 
 * Logical Disk Space Used % (使用済み論理ディスク領域 %) - すべてのディスク ボリュームにわたって平均使用済みディスク領域 % が最も高い上位 5 つのマシンが示されます。 
 * 送信バイト数の比率 - 送信バイト数の平均が最も高い上位 5 つのマシンが示されます。 
-* 受信バイト数の比率 - 送信バイト数の平均が最も高い上位 5 つのマシンが示されます。 
+* 受信バイト数の比率 - 受信バイト数の平均が最も高い上位 5 つのマシンが示されます。 
 
 5 つのいずれかのグラフの右上隅にあるピン アイコンをクリックすると、最後に表示した Azure ダッシュ ボードに選択したグラフがピン留めされます。  ダッシュ ボードで、グラフのサイズおよび位置を変更できます。 ダッシュ ボードからグラフを選択すると、Azure Monitor for VMs にリダイレクトされ、適切なスコープおよびビューが読み込まれます。  
 
@@ -119,7 +119,7 @@ Azure 仮想マシン スケール セットから直接アクセスするには
 >[!NOTE]
 >お使いのスケール セット用のインスタンス ビューから、特定のインスタンスの詳細なパフォーマンス ビューにアクセスすることもできます。 **[設定]** セクション下の **[インスタンス]** に移動して、 **[インサイト (プレビュー)]** を選択します。
 
-## <a name="alerts"></a>アラート  
+## <a name="alerts"></a>警告  
 
 Azure Monitor for VMs の構成要素として有効にされたパフォーマンス メトリックには、事前構成済みのアラート ルールが含まれていません。 Azure VM 上で検出されたパフォーマンスの問題 (高い CPU 使用率、使用可能なメモリ不足、ディスク領域不足など) に対応する[正常性アラート](vminsights-health.md#alerts) があります。ただし、これらの正常性アラートは、Azure Monitor for VMs に対して有効になっている VM にのみ適用されます。 
 
@@ -127,7 +127,7 @@ Azure Monitor for VMs の構成要素として有効にされたパフォーマ�
 
 こうした追加メトリックの収集やアラート ルールを構成する作業に入る前に、[Azure Monitor を使用したメトリックとログの収集](../platform/data-platform.md)について概説したページを参照して、基本的な相違とその他の考慮事項について理解を深めましょう。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Monitor for VMs に含まれている [Workbooks ](vminsights-workbooks.md) を使用して、パフォーマンスとネットワークのメトリックをさらに分析する方法について説明します。  
 

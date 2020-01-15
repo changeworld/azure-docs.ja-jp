@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424803"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -235,6 +235,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
 - **[承認されたクライアント アプリが必要です]** 要件:
    - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
+- 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
 
 ## <a name="app-protection-policy-requirement"></a>アプリ保護ポリシーの要件 
 
@@ -255,7 +256,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - **アプリの保護ポリシーが必要**の要件:
     - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 条件付きアクセスの概要については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)」をご覧ください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、[Azure Active Directory の条件付きアクセスの推奨プラクティス](best-practices.md)に関するページをご覧ください。

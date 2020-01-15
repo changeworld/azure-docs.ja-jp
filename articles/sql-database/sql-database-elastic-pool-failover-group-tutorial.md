@@ -11,16 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: e2ae9afaf7c1dcc1794b90d4851fdd60298b5ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823886"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552561"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 
-Azure SQL Database エラスティック プールのフェールオーバー グループを構成し、Azure portal を使用してフェールオーバーをテストします。  このチュートリアルで学習する内容は次のとおりです。
+Azure SQL Database エラスティック プールのフェールオーバー グループを構成し、Azure portal を使用してフェールオーバーをテストします。  このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
 > - Azure SQL Database の単一データベースを作成する。
@@ -58,7 +58,7 @@ Azure portal を使用してエラスティック プールを作成します。
    - **Name**:エラスティック プールに一意の名前を指定します (例: `myElasticPool`)。 
    - **サブスクリプション**:ドロップダウン リストからサブスクリプションを選択します。
    - **ResourceGroup**:セクション 1 で作成したリソース グループである `myResourceGroup` をドロップダウン リストから選択します。 
-   - **サーバー**: セクション 1 で作成したサーバーをドロップダウン リストから選択します。  
+   - **[サーバー]** :セクション 1 で作成したサーバーをドロップダウン リストから選択します。  
 
        ![エラスティック プール用の新しいサーバーを作成する](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
@@ -146,9 +146,9 @@ Azure portal を使用して、フェールオーバー グループを作成し
 1. **[フェールオーバー グループ]** ページで、次の値を入力するか選択してから、 **[作成]** を選択します。
     - **フェールオーバー グループ名**:一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。 
     - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 新しいセカンダリ サーバーに対して次の値を入力した後、 **[選択]** を選択します。 
-        - **サーバー名**: セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。 
+        - **[サーバー名]** : セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。 
         - **サーバー管理者ログイン**:「`azureuser`」と入力します
-        - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
+        - **パスワード**:パスワードの要件を満たす複雑なパスワードを入力します。
         - **[場所]** :ドロップダウンから場所 (`East US` など) を選択します。 この場所をプライマリ サーバーと同じ場所にすることはできません。
 
        > [!NOTE]
@@ -268,7 +268,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 
 1. 作業ウィンドウで **[フェールオーバー]** を選択し、エラスティック プールを含むフェールオーバー グループをフェールオーバーします。 
-1. TDS セッションが切断されることを通知する警告で **[はい]** を選択します。 
+1. TDS セッションが切断されることが通知される警告で **[はい]** を選択します。 
 
    ![SQL データベースを含むフェールオーバー グループをフェールオーバーする](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
@@ -352,7 +352,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 ---
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 
 リソース グループを削除して、リソースをクリーンアップします。 
 
@@ -378,7 +378,6 @@ PowerShell を使用してリソースをクリーンアップします。
    Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
    Write-host "Resource group removed =" $resourceGroupName
    ```
----
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
@@ -386,7 +385,10 @@ PowerShell を使用してリソースをクリーンアップします。
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します | 
 
-このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+---
+
+> [!IMPORTANT]
+> リソース グループを保持し、セカンダリ データベースを削除する場合は、削除する前にそれをフェールオーバー グループから削除します。 セカンダリ データベースをフェールオーバー グループから削除する前に削除すると、予期しない動作が発生する可能性があります。 
 
 ## <a name="full-script"></a>完全なスクリプト
 
@@ -417,9 +419,9 @@ Azure portal に使用できるスクリプトはありません。
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、フェールオーバー グループに Azure SQL Database エラスティック プールを追加し、フェールオーバーをテストしました。 以下の方法について学習しました。
+このチュートリアルでは、フェールオーバー グループに Azure SQL Database エラスティック プールを追加し、フェールオーバーをテストしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > - Azure SQL Database の単一データベースを作成する。

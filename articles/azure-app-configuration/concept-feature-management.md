@@ -1,23 +1,17 @@
 ---
-title: Azure App Configuration 機能の管理 |Microsoft Docs
+title: Azure App Configuration 機能の管理
 description: Azure App Configuration を使用して、必要に応じてアプリケーションの機能を有効/無効にする方法の概要。
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 46f39e87e4e4cf115cbc1fceeabf0dab38fade28
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 48aebfe1ba6af348e98e5600075f3a9e9dce1a8e
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393359"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495764"
 ---
 # <a name="feature-management-overview"></a>機能管理の概要
 
@@ -80,7 +74,7 @@ if (featureFlag) {
 }
 ```
 
-ただし、この動作は、基本的なパターンで書き換えることができます。 [ASP.NET Core アプリ内での機能フラグの使用](./use-feature-flags-dotnet-core.md)に関するページでは、単純なコード パターンで標準化する利点を示しています。 例:
+ただし、この動作は、基本的なパターンで書き換えることができます。 [ASP.NET Core アプリ内での機能フラグの使用](./use-feature-flags-dotnet-core.md)に関するページでは、単純なコード パターンで標準化する利点を示しています。 次に例を示します。
 
 ```csharp
 if (featureFlag) {
@@ -100,7 +94,7 @@ Azure App Configuration は、機能フラグ用の集中リポジトリとし�
 
 [ASP.NET Core アプリ内での機能フラグの使用](./use-feature-flags-dotnet-core.md)に関するページでは、お使いの ASP.NET Web アプリケーションの機能フラグを実装するために .NET Core App Configuration プロバイダーと機能管理ライブラリを一緒に使用する方法について説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリに機能フラグを追加する](./quickstart-feature-flag-aspnet-core.md)  

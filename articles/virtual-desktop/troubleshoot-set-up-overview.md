@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 11/09/2019
+ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 7f80fb07bbed3bdb478bce557241a92cd571cc83
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904896"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459579"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
 
@@ -29,7 +29,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 >[!NOTE]
 > 弊社の Tech Community フォーラムにアクセスすると、製品チームやアクティブなコミュニティ メンバーと問題について話し合うことができます。 [Windows Virtual Desktop の Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスしてください 
 
-| **問題**                                                            | **推奨されている解決方法**  |
+| **問題点**                                                            | **推奨されている解決方法**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | テナントの作成                                                    | Azure が停止した場合は、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせいただくか、**Windows Virtual Desktop (Compute)** のサポート リクエストを開きます。|
 | Azure portal で Marketplace テンプレートにアクセスする       | Azure が停止した場合、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 <br> <br> Azure Marketplace Windows Virtual Desktop テンプレートを無料で入手できます。|
@@ -38,21 +38,22 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 | Windows Virtual Desktop で提供される Azure Resource Manager テンプレートが使用されないときのセッション ホスト プール仮想マシン (VM) 作成 | **Azure サポート (コンピューティング)** にお問い合わせください。 <br> <br> Windows Virtual Desktop で提供される Azure Resource Manager テンプレートの問題については、「[テナントとホスト プールの作成](troubleshoot-set-up-issues.md)」の「Windows Virtual Desktop テナントの作成」セクションを参照してください。 |
 | Azure portal から Windows Virtual Desktop セッション ホスト環境を管理する    | **Azure サポート**にお問い合わせください。 <br> <br> リモート デスクトップ サービス/Windows Virtual Desktop PowerShell 使用時の管理問題については、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照するか、**Windows Virtual Desktop (Compute) のサポート リクエストを開きます**。 |
 | ホスト プールとアプリケーション グループ (アプリ グループ) に関連付けられている Windows Virtual Desktop 構成を管理する      | 「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照するか、**Windows Virtual Desktop (Compute) のサポート リクエストを開きます**。 <br> <br> 問題がサンプルの GUI (グラフィカル ユーザー インターフェイス) に関連する場合、Yammer コミュニティにアクセスしてください。|
-| 起動時のリモート デスクトップ クライアントの誤作動                                                 | 「[Remote Desktop client connections](troubleshoot-client-connection.md)」 (リモート デスクトップ クライアントの接続) を参照してください。それでも問題が解決されない場合は、**Windows Virtual Desktop (Compute) のサポート リクエストを開きます**。  <br> <br> ネットワーク問題の場合、ユーザーはネットワーク管理者に問い合わせる必要があります。 |
-| 接続されたがフィードがない                                                                 | 「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」の "User connects but nothing is displayed (no feed)" (ユーザーが接続したが何も表示されない (フィードがない)) を参照して問題を解決してください。 <br> <br> ユーザーがアプリ グループに割り当てられている場合は、**Windows Virtual Desktop (Compute) のサポート リクエストを開きます**。 |
+| 起動時のリモート デスクトップ クライアントの誤作動                                                 | [リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md)に関するページを参照してください。それでも問題が解決されない場合は、**Windows Virtual Desktop (Compute) のサポート リクエストを開いてください**。  <br> <br> ネットワーク問題の場合、ユーザーはネットワーク管理者に問い合わせる必要があります。 |
+| 接続されたがフィードがない                                                                 | [リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md)に関するページの「ユーザーが接続しても何も表示されない (フィードなし)」セクションを使用してトラブルシューティングしてください。 <br> <br> ユーザーがアプリ グループに割り当てられている場合は、**Windows Virtual Desktop (Compute) のサポート リクエストを開きます**。 |
 | ネットワークに起因するフィード検出問題                                            | ユーザーはネットワーク管理者に問い合わせる必要があります。 |
-| クライアントの接続                                                                    | 「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」を参照してください。それでも問題が解決されない場合、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。 |
+| クライアントの接続                                                                    | [Windows Virtual Desktop サービス接続](troubleshoot-service-connection.md)に関するページを参照してください。それでも問題が解決されない場合は、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。 |
 | リモート アプリケーションまたはデスクトップの応答性                                      | 問題が特定のアプリケーションまたは製品に関連する場合、その製品の担当チームにお問い合わせください。 |
 | ライセンスに関するメッセージまたはエラー                                                          | 問題が特定のアプリケーションまたは製品に関連する場合、その製品の担当チームにお問い合わせください。 |
-| GitHub で Windows Virtual Desktop ツール (Azure Resource Manager テンプレート、診断ツール、管理ツール) を使用するときに発生する問題 | 問題の報告方法については、[リモート デスクトップ サービス向け ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)に関するページを参照してください。 |
+| GitHub で Windows Virtual Desktop ツール (Azure Resource Manager テンプレート、診断ツール、管理ツール) を使用するときに発生する問題 | 問題の報告方法については、[リモート デスクトップ サービス向け Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)に関するページを参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[テナントとホスト プールの作成](troubleshoot-set-up-issues.md)」を参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。
-- Windows Virtual Desktop クライアント接続の問題を解決するには、「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」を参照してください。
+- Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues.md)」 (テナントとホスト プールの作成) を参照してください。
+- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービス接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md)に関するページを参照してください。
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)に関するページを参照してください。
-- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」をご覧ください。
-- デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)に関するページを参照してください。
+- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
+- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)」を参照してください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」をご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](../azure-resource-manager/resource-manager-deployment-operations.md)に関するページを参照してください。

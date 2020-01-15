@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367418"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -29,10 +29,10 @@ ms.locfileid: "68596307"
 
 このガイドでは、以下の方法について説明します。 
 > [!div class="checklist"]
-> * Install
+> * インストール
 > * デプロイの確認
 > * エージェントのアンインストール
-> * トラブルシューティング 
+> * [トラブルシューティング] 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,7 @@ ms.locfileid: "68596307"
 
 1. `chmod +x InstallSecurityAgent.sh` を実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。 
 
-1. 次に、以下を実行します。 
+1. 次に、**ルート特権**を使用して次のコマンドを実行します。 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -120,10 +120,10 @@ ms.locfileid: "68596307"
 
        ファイルの場所のパスは、手順 2. で **logFilePath** に対して選択した名前に応じて変わります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
-- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細について学習します
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
 - [FAQ](resources-frequently-asked-questions.md) を読みます
 - [アラート](concept-security-alerts.md)について理解します

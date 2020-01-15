@@ -9,20 +9,20 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 59afdb0e273511f3d8255a9c859b86f93e0b7269
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462413"
 ---
-# <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus - ファイアウォール ルールを使用する
 
 Azure Service Bus が特定の既知のサイトからのみアクセスできるシナリオでは、ファイアウォール ルールにより、特定の IPv4 アドレスからのトラフィックの受け入れのルールを構成することができます。 たとえば、これらのアドレスは、企業の NAT ゲートウェイのアドレスである可能性があります。
 
-## <a name="when-to-use"></a>いつ使用するか
+## <a name="when-to-use"></a>使用する場合
 
 指定した IP アドレス範囲からのトラフィックのみを受信し、それ以外のすべてを拒否するように、Service Bus を設定する必要がある場合は、"*ファイアウォール*" を利用して Service Bus エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、Service Bus を [Azure Express Route][express-route] と共に使用して、オンプレミス インフラストラクチャへのプライベート接続を作成する場合が該当します。 
 
@@ -74,7 +74,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> から
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -143,7 +143,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 テンプレートをデプロイするには、[Azure Resource Manager][lnk-deploy] の手順に従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus へのアクセスを Azure 仮想ネットワークに 制約するには、次のリンクをご覧ください。
 

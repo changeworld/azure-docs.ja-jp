@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 69086ee8d8d64ada7379bdb6af24c8d604e00aed
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379612"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665109"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -75,7 +75,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 Windows 10 1809 以降、ユーザーは、[Windows 10 への Web サインイン](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)によって SAML ベースの ID プロバイダーを使用して Azure AD 参加済みデバイスにサインインできます。 現時点では Web サインインはプレビュー機能であり、運用環境デプロイには推奨されません。
+ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 Windows 10 1809 以降、ユーザーは、[Windows 10 への Web サインイン](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)によって SAML ベースの ID プロバイダーを使用して Azure AD 参加済みデバイスにサインインできます。 現時点では Web サインインはプレビュー機能であり、運用環境デプロイを目的としたものではありません。
 
 >[!NOTE]
 > 現時点で、Azure AD 参加は[プライマリ認証方法として外部認証プロバイダーで構成されている AD FS 2019](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) では機能しません。 Azure AD 参加ではプライマリ メソッドの既定値として、パスワード認証が設定されます。これにより、このシナリオで認証エラーが発生します
@@ -198,7 +198,7 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
 |   | セルフサービス セットアップ | Windows Autopilot | 一括登録 |
 | --- | --- | --- | --- |
 | セットアップにユーザーの操作が必要 | はい | はい | いいえ |
-| IT 部門の作業が必要 | いいえ | 可能 | はい |
+| IT 部門の作業が必要 | いいえ | はい | はい |
 | 適用可能なフロー | OOBE と設定 | OOBE のみ | OOBE のみ |
 | プライマリ ユーザーに対するローカル管理者権限 | 既定では、はい | 構成可能 | いいえ |
 | デバイス OEM のサポートが必要 | いいえ | はい | いいえ |
@@ -292,7 +292,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 この実装を使用して、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する](../conditional-access/require-managed-devices.md)ことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)

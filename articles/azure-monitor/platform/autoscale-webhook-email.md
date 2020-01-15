@@ -1,27 +1,23 @@
 ---
 title: 自動スケールを使用して電子メールと webhook アラート通知を送信する
-description: 'Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。 '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364205"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
 
-## <a name="webhooks"></a>webhooks
+## <a name="webhooks"></a>Webhooks
 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。 たとえば、受信 Web 要求を処理して SMS を送信する、バグをログに記録する、チャットやメッセージング サービスを使用してチームに通知するなどのサービスにアラートをルーティングすることができます。Webhook URI は有効な HTTP または HTTPS エンドポイントである必要があります。
 
-## <a name="email"></a>電子メール
+## <a name="email"></a>Email
 電子メールは、任意の有効な電子メール アドレスに送信できます。 このルールが実行されているサブスクリプションの管理者と共同管理者にも通知されます。
 
 ## <a name="cloud-services-and-web-apps"></a>Cloud Services と Web Apps
@@ -33,7 +29,7 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 
 ## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 Resource Manager で作成された比較的新しい仮想マシン (仮想マシン スケール セット) の場合、REST API、Resource Manager テンプレート、PowerShell、CLI を使用してこれを構成できます。 ポータルのインターフェイスはまだ使用できません。
-REST API または Resource Manager テンプレートを使用している場合は、次のオプションを使って通知要素を追加してください。
+REST API または Resource Manager テンプレートを使用する場合は、次のオプションを使用して [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) に通知要素を追加してください。
 
 ```
 "notifications": [
@@ -60,7 +56,7 @@ REST API または Resource Manager テンプレートを使用している場�
     ]
 ```
 
-| フィールド | 必須 | 説明 |
+| フィールド | 必須 | [説明] |
 | --- | --- | --- |
 | operation |はい |値は "Scale" にする必要があります。 |
 | sendToSubscriptionAdministrator |はい |値は "true" または "false" にする必要があります。 |
@@ -103,7 +99,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 ```
 
 
-| フィールド | 必須 | 説明 |
+| フィールド | 必須 | [説明] |
 | --- | --- | --- |
 | status |はい |自動スケール操作が生成されたことを示す状態。 |
 | operation |はい |インスタンスの増加の場合は "Scale Out"、インスタンスの減少の場合は "Scale In" になります。 |
@@ -111,7 +107,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
 | id |はい |自動スケール設定の Resource Manager ID |
 | name |はい |自動スケール設定の名前。 |
-| details |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
 | subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
 | resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
 | resourceName |はい |スケールされるターゲット リソースの名前。 |

@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 57d30803f20d17ee31c3d42d9a26e04c1b0832b6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460589"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>PowerShell を使用して、BLOB およびキュー データへのアクセスのための RBAC ロールを割り当てる
 
@@ -57,7 +57,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-security-principal"></a>セキュリティ プリンシパルへの RBAC ロールの割り当て
 
-RBAC ロールをセキュリティ プリンシパルに割り当てるには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使用します。 コマンドの形式は、割り当てのスコープによって異なります。 次の例は、さまざまなスコープでユーザーにロールを割り当てる方法を示していますが、同じコマンドを使用して、任意のセキュリティ プリンシパルにロールを割り当てることができます。
+RBAC ロールをセキュリティ プリンシパルに割り当てるには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使用します。 コマンドの形式は、割り当てのスコープによって異なります。 コマンドを実行するには、対応するスコープで所有者または共同作成者のロールが割り当てられている必要があります。 次の例は、さまざまなスコープでユーザーにロールを割り当てる方法を示していますが、同じコマンドを使用して、任意のセキュリティ プリンシパルにロールを割り当てることができます。
 
 ### <a name="container-scope"></a>コンテナー スコープ
 
@@ -133,7 +133,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](../../role-based-access-control/role-assignments-powershell.md)
 - [RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-cli.md)

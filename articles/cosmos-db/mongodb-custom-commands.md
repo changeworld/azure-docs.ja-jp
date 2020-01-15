@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するための MongoDB 拡張コマンド
+title: Azure Cosmos DB の MongoDB 用 API のデータを管理するための MongoDB 拡張コマンド
 description: この記事では、MongoDB 拡張コマンドを使用して、Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445223"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
 
@@ -46,11 +46,11 @@ Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリ
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
 | customAction   |  string  |   カスタム コマンドの名前。"CreateDatabase" にする必要があります。      |
-| offerThroughput | int  | データベースに設定したプロビジョニング済みスループット。 このパラメーターは省略可能です。 |
+| offerThroughput | INT  | データベースに設定したプロビジョニング済みスループット。 このパラメーターは省略可能です。 |
 
 ### <a name="output"></a>Output
 
-既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
+既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -88,11 +88,11 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
 | customAction    |    string     |   カスタム コマンドの名前。 "UpdateDatabase" にする必要があります。      |
-|  offerThroughput   |  int       |     データベースに設定する新しいプロビジョニング済みスループット。    |
+|  offerThroughput   |  INT       |     データベースに設定する新しいプロビジョニング済みスループット。    |
 
 ### <a name="output"></a>Output
 
-既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
+既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -129,7 +129,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   応答の状態。 1 == 成功。 0 == 失敗。      |
-| `database`    |    `string`        |   データベースの名前。      |
+| `database`    |    `string`        |   データベースの名前です。      |
 |   `provisionedThroughput`  |    `int`      |    データベースに設定されているプロビジョニング済みスループット。 これは省略可能な応答パラメーターです。     |
 
 コマンドが失敗すると、既定のカスタム コマンド応答が返されます。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
@@ -164,12 +164,12 @@ db.runCommand({customAction: "GetDatabase"});
 |---------|---------|---------|
 | customAction    | string | カスタム コマンドの名前。 必ず "CreateCollection" にします     |
 | collection      | string | コレクションの名前                                   |
-| offerThroughput | int    | データベースに設定するプロビジョニング済みスループット。 これは、省略可能なパラメーターです |
+| offerThroughput | INT    | データベースに設定するプロビジョニング済みスループット。 これは、省略可能なパラメーターです |
 | shardKey        | string | シャード コレクションを作成するシャード キー パス。 これは、省略可能なパラメーターです |
 
 ### <a name="output"></a>Output
 
-既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
+既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -209,11 +209,11 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 |---------|---------|---------|
 |  customAction   |   string      |   カスタム コマンドの名前。 "UpdateCollection" にする必要があります。      |
 |  collection   |   string      |   コレクションの名前。       |
-| offerThroughput   |int|   コレクションに設定するプロビジョニング済みスループット。|
+| offerThroughput   |INT|   コレクションに設定するプロビジョニング済みスループット。|
 
 ## <a name="output"></a>Output
 
-既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
+既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -253,7 +253,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   応答の状態。 1 == 成功。 0 == 失敗。      |
-| `database`    |    `string`     |   データベースの名前。      |
+| `database`    |    `string`     |   データベースの名前です。      |
 | `collection`    |    `string`     |    コレクションの名前。     |
 |  `shardKeyDefinition`   |   `document`      |  シャード キーとして使用されるインデックス仕様ドキュメント。 これは省略可能な応答パラメーターです。       |
 |  `provisionedThroughput`   |   `int`      |    コレクションに設定するプロビジョニング済みスループット。 これは省略可能な応答パラメーターです。     |
@@ -281,7 +281,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 | `code`    |   `int`      |   コマンドが失敗した場合 (ok == 0) のみ返されます。 MongoDB のエラー コードが含まれます。 これは省略可能な応答パラメーターです。      |
 |  `errMsg`   |  `string`      |    コマンドが失敗した場合 (ok == 0) のみ返されます。 わかりやすいエラー メッセージが含まれます。 これは省略可能な応答パラメーターです。      |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、以下の Azure Cosmos DB の概念について学習することができます。 
 

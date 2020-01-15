@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424814"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -91,9 +91,10 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 - 従業員が情報にアクセスして共有する方法の統制を補助することによって、会社の情報が保護されている
 - デバイスとそのアプリが会社のセキュリティ要件に準拠している
 
-> [!NOTE]
-> 準拠デバイスを要求するようにポリシーを構成すると、Mac、iOS、Android でユーザーは、ポリシーの評価中、デバイス証明書を選択するように求められることがあります。 これは既知の動作です。
+### <a name="known-behavior"></a>既知の動作
 
-## <a name="next-steps"></a>次の手順
+Windows 7、iOS、Android、macOS、および一部のサードパーティ製 Web ブラウザーでは、Azure AD によって、デバイスが Azure AD に登録されるときにプロビジョニングされたクライアント証明書を使用してデバイスが識別されます。 ユーザーは、ブラウザーで最初にサインインするときに、証明書の選択を求められます。 エンド ユーザーは、ブラウザーを引き続き使用する前に、この証明書を選択する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 環境内でデバイスベースの条件付きアクセス ポリシーを構成する前に、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

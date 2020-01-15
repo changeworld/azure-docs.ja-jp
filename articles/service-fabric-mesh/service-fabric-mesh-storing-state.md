@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric Mesh の状態ストレージ オプション | Microsoft Docs
+title: Azure Service Fabric Mesh の状態ストレージ オプション
 description: Azure Service Fabric Mesh 上で実行されている Service Fabric Mesh アプリケーションに状態を確実に格納する方法について説明します。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352347"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric を使用した状態の管理
 
@@ -24,7 +20,7 @@ Service Fabric Mesh を使用することにより、新しいアプリケーシ
 
 ## <a name="volumes"></a>ボリューム
 
-多くの場合、コンテナーでは一時ディスクが利用されます。 ただし、一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクが取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが与えられ、通常のディスク I/O ファイル API を利用してファイルを読み書きできます。 ボリューム リソースには、ディレクトリをマウントする方法と、使用するバッキング ストレージについて説明されています。 データを保存するには、Azure File Storage または Service Fabric ボリューム ディスクを選択できます。
+多くの場合、コンテナーでは一時ディスクが利用されます。 ただし、一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクが取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。 ボリューム リソースには、ディレクトリをマウントする方法と、使用するバッキング ストレージについて説明されています。 データを保存するには、Azure File Storage または Service Fabric ボリューム ディスクを選択できます。
 
 ![ボリューム][image3]
 
@@ -36,7 +32,7 @@ Service Fabric Reliable Volume は、コンテナーにローカル ボリュー
 
 Azure Files Volume は、コンテナーに Azure Files 共有をマウントするために使用される Docker ボリューム ドライバーです。 Azure File Storage にはネットワーク ストレージが使用されるため、読み取りと書き込みはネットワーク経由で行われます。 Service Fabric Reliable Volume と比較すると、Azure Files Storage はパフォーマンスが劣りますが、より安価で完全に信頼できるデータ オプションが用意されています。 例については、[Azure Files Volume を使用してアプリをデプロイする方法](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション モデルについては、[Service Fabric のリソース](service-fabric-mesh-service-fabric-resources.md)に関する記事を参照してください。
 

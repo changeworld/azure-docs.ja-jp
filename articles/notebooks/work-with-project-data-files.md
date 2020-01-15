@@ -1,18 +1,20 @@
 ---
-title: プロジェクトと Azure Notebooks を使用したデータのインポートとエクスポート
-description: Azure Notebooks プロジェクトに外部ソースからデータを取り込む方法と、プロジェクトからデータをエクスポートする方法。
-ms.topic: article
+title: プロジェクトと Azure Notebooks プレビューを使用したデータのインポートとエクスポート
+description: Azure Notebooks プレビュー プロジェクトに外部ソースからデータを取り込む方法と、プロジェクトからデータをエクスポートする方法について説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: bd7ba27859e9d05c0d57c2f78b6449c2bc48ca33
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277384"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646978"
 ---
-# <a name="work-with-data-files-in-azure-notebook-projects"></a>Azure Notebook プロジェクトでデータ ファイルを操作する
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Azure Notebooks プレビュー プロジェクトでデータ ファイルを操作する
 
 データは、多くの Jupyter ノートブック、特にデータ サイエンスのために使用されるノートブックには必要不可欠なものです。 Azure Notebooks では、さまざまなソースからプロジェクトに簡単にインポートし、ノートブックからそのデータを使用することができます。 ノートブックで、プロジェクトに保存されるデータを生成することもできます。ユーザーはそのデータを他の場所で使用するためにダウンロードできます。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 実行中のノートブック内の **[データ]** メニューにも **[アップロード]** と **[ダウンロード]** コマンドが用意されています。これらのコマンドでは、プロジェクト内のファイルだけでなく、現在のノートブック セッション用の一時ファイルも処理できます。
 
@@ -34,7 +36,7 @@ ms.locfileid: "74277384"
 
    - **[From URL]\(URL から\)** : **[ファイル URL]** フィールドに送信元アドレスを入力し、 **[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 次に、 **[+ ファイルの追加]** を選択してアップロード リストに URL を追加します。 その他にも URL があればこのプロセスを繰り返し、 **[完了]** を選択します。
 
-     ![[URL] ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
+     ![URL ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
 
    - **[From computer]\(コンピューターから\)** :ポップアップにファイルをドラッグ アンド ドロップするか、 **[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 ファイルのオープンやそのデータの解析はノートブックのコードで行うため、任意の数、種類、形式のファイルを削除したり、選択したりできます。
 
@@ -110,6 +112,6 @@ pandas `write_csv` 関数などのファイルを作成するコードを使用�
 
 1. ノートブックは、選択したファイルを格納する 1 つの *.zip* ファイルを準備します。通常、ブラウザーで保存するように、それらのファイルを保存します。 1 つのファイルをダウンロードする場合も、ノートブックは *.zip* ファイルを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ノートブックでクラウド データにアクセスする](access-data-resources-jupyter-notebooks.md)

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のネットワークに関するベスト プラクティス | Microsoft Docs
-description: Service Fabric ネットワークを管理するためのベスト プラクティス。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric のネットワークに関するベスト プラクティス
+description: Azure Service Fabric を使用してネットワーク接続を管理するためのベスト プラクティスと設計上の考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262243"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551796"
 ---
 # <a name="networking"></a>ネットワーク
 
@@ -60,7 +51,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 
 * Service Fabric クラスターは、「[Service Fabric のネットワーク パターン](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)」で概要が説明されている手順に従って、既存の仮想ネットワークにデプロイできます。
 
-* クラスターへの受信および送信トラフィックを制限するノードの種類の場合は、ネットワーク セキュリティ グループ (NSG) の使用が推奨されます。 NSG で、必要なポートが開かれていることを確認します。 例: ![Service Fabric の NSG ルール][NSGSetup]
+* クラスターへの受信および送信トラフィックを制限するノードの種類の場合は、ネットワーク セキュリティ グループ (NSG) の使用が推奨されます。 NSG で、必要なポートが開かれていることを確認します。 次に例を示します。![Service Fabric の NSG ルール][NSGSetup]
 
 * Service Fabric システム サービスを含むプライマリのノードの種類は、外部ロード バランサーを介して公開する必要はなく、[内部ロード バランサー](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)によって公開できます
 
@@ -74,7 +65,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 
 * Azure クラウド ストレージからベース レイヤーをプルできない、インターネットから物理的に隔離されたエアギャップ マシン上でホストされている Windows コンテナーでは、Docker デーモンの [--allow-nondistributable-artifacts](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) フラグを使用して、外部レイヤーの動作を上書きします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)

@@ -4,15 +4,15 @@ description: Azure Monitor Log Analytics サービスについてよく寄せら
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77159e0fa73a1f56688c867c55ae46f28016992c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394783"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 
@@ -52,7 +52,7 @@ A:左ウィンドウで [フィルター] をクリックすると、新しい�
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Q. エラーが発生する理由:VM からドリルインした後、ログに "このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
 
-A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
+A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Q. VM ページからログにアクセスするときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 
@@ -78,11 +78,6 @@ A. できます。Azure でのログのページと、高度な分析ポータ�
 
 A:Azure portal には、ビューとインストールされているソリューションのリストが表示されます。 **[すべてのサービス]** をクリックします。 リソースのリストで、 **[監視]** を選択してから **[...詳細]** をクリックします。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 
 
-### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>Q. 米国中西部リージョンでワークスペースを作成できないのはなぜですか? 
-
-A:このリージョンは一時的な容量の上限に達しています。 この制限は、2019 年 9 月末までに対処される予定です。
-
-
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics で使用されるエージェントは Azure Security Center のエージェントと同じですか?
 
 A:2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、[Azure Security Center のプラットフォームの移行についての FAQ](../../security-center/security-center-enable-data-collection.md) に関するページを参照してください。
@@ -105,7 +100,7 @@ A:使用している Operations Manager の更新プログラム ロールアッ
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Q:オンプレミス バージョンの Log Analytics はありますか?
 
-A:No. Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
+A:いいえ。 Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. データ収集が停止したときに通知を受けるにはどうすればよいですか?
 
@@ -218,6 +213,6 @@ WireData エージェントを実行できるコンピューターの場合、�
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Monitor の概要](../../azure-monitor/overview.md)」で Log Analytics の詳細を確認し、すぐに起動して実行してみることができます。

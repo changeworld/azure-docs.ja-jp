@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425342"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -47,7 +47,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 統合された登録は、次の認証方法とアクションをサポートしています。
 
-|   | Register | Change | 削除 |
+|   | [登録] | Change | 削除 |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |
@@ -95,7 +95,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 登録が適用されると、ユーザーには、Multi-Factor Authentication と SSPR の両方のポリシーに準拠するために必要な最小数の方法が安全性の高い順に表示されます。
 
-例:
+次に例を示します。
 
 - ユーザーが SSPR に対して有効になっています。 SSPR ポリシーはリセットするための 2 つの方法を必要とし、モバイル アプリ コード、電子メール、および電話を有効にしています。
    - このユーザーは 2 つの方法を登録する必要があります。
@@ -108,7 +108,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 Multi-Factor Authentication と SSPR の両方が有効になっている場合は、Multi-Factor Authentication の登録を適用することをお勧めします。
 
-SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報を確認する必要がある場合、ユーザーはサインイン中に中断され、自分が登録したすべての方法が表示されます。 ユーザーは、現在の情報が最新かどうかを確認することも、必要な場合は変更することもできます。
+SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報を確認する必要がある場合、ユーザーはサインイン中に中断され、自分が登録したすべての方法が表示されます。 ユーザーは、現在の情報が最新かどうかを確認することも、必要な場合は変更することもできます。 ユーザーは、このページにアクセスするときに多要素認証を実行する必要があります。
 
 ### <a name="manage-mode"></a>管理モード
 
@@ -136,7 +136,7 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 
 Multi-Factor Authentication に使用できる少なくとも 1 つの方法を以前に設定しているユーザーが [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動します。 ユーザーは、現在の既定の方法を別の既定の方法に変更します。 完了すると、新しい既定の方法が [セキュリティ情報] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ユーザーに認証方法の再登録を強制する](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 176f0f197db3393c4ef8c37d05234fce41a494e1
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406566"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563209"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
 
@@ -24,7 +24,7 @@ ms.locfileid: "74406566"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページか、「[REST を使用して Azure Cognitive Search のナレッジ ストアを作成する](knowledge-store-create-rest.md)」の手順に従って、このチュートリアルで使用するサンプル ナレッジ ストアを作成します。
++ 「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。
 
 + ナレッジ ストアの作成に使用した Azure Storage アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74406566"
 
 1. **[テーブル]** リストを展開し、ホテル レビュー サンプル データに対して**データ インポート** ウィザードを実行するときに作成した Azure テーブル プロジェクションを一覧表示します。
 
-いずれかのテーブルを選択すると、エンリッチされたデータ (キー フレーズのセンチメント スコア、緯度と経度の位置データなど) が表示されます。
+いずれかのテーブルを選択すると、エンリッチされたデータ (キー フレーズ、センチメント スコアなど) が表示されます。
 
    ![Storage Explorer でテーブルを表示する](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Storage Explorer でテーブルを表示する")
 
@@ -56,7 +56,7 @@ ms.locfileid: "74406566"
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このナレッジ ストアを Power BI に接続して詳細な分析を行うか、または REST API と Postman を使用してコーディングを進め、別のナレッジストアを作成します。
 

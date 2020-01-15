@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights での開発、テスト、およびリリースのテレメトリの分離| Microsoft Docs
+title: Azure Application Insights でのテレメトリの分離
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c58a54dd4916b5687d46cbf4b816bd656113f9ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406408"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -151,7 +151,7 @@ iKey は、アプリの Web ページや、[クイックスタート ブレー�
 Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 このマーカーは、次の図のように表示されます。
 
 ![グラフのリリース注釈の例のスクリーンショット](media/separate-resources/release-annotation.png)
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [複数のロール用の共有リソース](../../azure-monitor/app/app-map.md)
 * [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

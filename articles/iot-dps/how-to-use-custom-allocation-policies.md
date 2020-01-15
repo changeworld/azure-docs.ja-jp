@@ -7,12 +7,12 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453933"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -41,7 +41,10 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
+Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
+
+* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -96,7 +99,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 このセクションでは、カスタム割り当てポリシーを実装する Azure 関数を作成します。 この関数により、デバイスの登録 ID に文字列 **-contoso-tstrsd-007** または **-contoso-hpsd-088** が含まれているかどうかに基づいて、デバイスをどちら部門の IoT ハブに登録すべきかが決定されます。 また、デバイスがトースターであるかヒート ポンプであるかに基づいて、デバイス ツインの初期状態が設定されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ご自分のホーム ページから **[+ リソースの作成]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする ご自分のホーム ページから **[+ リソースの作成]** を選択します。
 
 2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 
@@ -408,23 +411,26 @@ Windows ベースのワークステーションを使用している場合は、
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
-2. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、Azure IoT C SDK の GitHub リポジトリを複製します。
+2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
+
+3. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、最新リリースの [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub リポジトリを複製します。 `-b` パラメーターの値として、前の手順で見つけたタグを使用します。
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     この操作は、完了するまでに数分かかります。
 
-3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
+4. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 `azure-iot-sdk-c` ディレクトリから次のコマンドを実行します。
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
+5. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -555,13 +561,13 @@ Windows ベースのワークステーションを使用している場合は、
 | シナリオ | プロビジョニング サービスでの登録結果 | プロビジョニング SDK の結果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook から "200 OK" が返され、"iotHubHostName" が有効な IoT ハブ ホスト名に設定されている | 結果の状態: 割り当て済み  | SDK からハブの情報と共に PROV_DEVICE_RESULT_OK が返される |
-| Webhook から "200 OK" が返され、応答に "iotHubHostName" が存在するが、空の文字列または null が設定されている | 結果の状態: 失敗<br><br> エラー コード: CustomAllocationIotHubNotSpecified (400208) | SDK から PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED が返される |
-| Webhook から "401 権限がありません" が返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationUnauthorizedAccess (400209) | SDK から PROV_DEVICE_RESULT_UNAUTHORIZED が返される |
+| Webhook から "200 OK" が返され、応答に "iotHubHostName" が存在するが、空の文字列または null が設定されている | 結果の状態: 失敗<br><br> エラー コード:CustomAllocationIotHubNotSpecified (400208) | SDK から PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED が返される |
+| Webhook から "401 権限がありません" が返される | 結果の状態: 失敗<br><br>エラー コード:CustomAllocationUnauthorizedAccess (400209) | SDK から PROV_DEVICE_RESULT_UNAUTHORIZED が返される |
 | デバイスを無効にする個々の登録が作成された | 結果の状態: 無効 | SDK から PROV_DEVICE_RESULT_DISABLED が返される |
 | Webhook からエラー コード 429 以上が返される | DPS のオーケストレーションが何回も再試行される。 再試行ポリシーは現在以下の通り。<br><br>&nbsp;&nbsp;- 再試行回数: 10<br>&nbsp;&nbsp;- 初期間隔: 1 秒<br>&nbsp;&nbsp;- 増分: 9 秒 | SDK では、エラーが無視され、特定の期間内に別の状態の取得メッセージが送信される |
-| Webhook からその他の状態コードが返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationFailed (400207) | SDK から PROV_DEVICE_RESULT_DEV_AUTH_ERROR が返される |
+| Webhook からその他の状態コードが返される | 結果の状態: 失敗<br><br>エラー コード:CustomAllocationFailed (400207) | SDK から PROV_DEVICE_RESULT_DEV_AUTH_ERROR が返される |
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 これ以上リソースを使用しない場合は、不要な課金を避けるために、次の手順に従って、この記事で作成したすべてのリソースを削除してください。
 
@@ -581,7 +587,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにもう一度リソース グループの名前を入力し、 **[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
 * プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 

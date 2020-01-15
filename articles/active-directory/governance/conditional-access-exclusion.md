@@ -1,5 +1,5 @@
 ---
-title: アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する - Azure Active Directory | Microsoft Docs
+title: 条件付きアクセス ポリシーから除外されたユーザーの管理 - Azure AD
 description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する方法を説明します
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422705"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
@@ -56,7 +56,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
 ### <a name="create-an-exclusion-group"></a>除外グループの作成
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 1. 左側のナビゲーションで、 **[Azure Active Directory]** をクリックして、 **[グループ]** をクリックします。
 
@@ -156,7 +156,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
 IT 管理者は、ポリシーに照らした除外グループの管理が、時には不可避であることがわかっています。 ただし、これらのグループの維持、ビジネス オーナーやユーザー自身による定期的なレビュー、これらの変更の監査は、Azure AD アクセス レビューを使えば簡単に行えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
