@@ -1,25 +1,14 @@
 ---
-title: 既存のアプリを Azure Service Fabric クラスターに迅速にデプロイする
+title: 既存のアプリをクラスターに迅速にデプロイする
 description: Visual Studio を使用して、Azure Service Fabric クラスターで既存の Node.js アプリケーションをホストします。
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592454"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614844"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -37,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Visual Studio を**管理者**として起動します。
 
-`CTRL` + `SHIFT` + `N` キーを押して、プロジェクトを作成します。
+`CTRL`+`SHIFT`+`N` キーを押して、プロジェクトを作成します。
 
 **[新しいプロジェクト]** ダイアログで、 **[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
 
@@ -52,7 +41,7 @@ Visual Studio を**管理者**として起動します。
 
 サービスに **MyGuestService** という名前を付けて、右側のオプションを次の値に設定します。
 
-| Setting                   | 値 |
+| 設定                   | 値 |
 | ------------------------- | ------ |
 | コード パッケージ フォルダー       | _&lt;Node.js アプリが含まれているフォルダー&gt;_ |
 | コード パッケージの動作     | フォルダーの内容をプロジェクトにコピーする |
@@ -136,7 +125,7 @@ Service Fabric クラスターを作成する際に、必ず **[カスタム エ
 
 このクイック スタートで作成したリソースには課金されるため、それらのリソースをすべて忘れずに削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)の詳細を確認します。
 
 <!-- Image References -->
