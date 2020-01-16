@@ -3,13 +3,13 @@ title: チュートリアル - Ansible を使用して Azure の仮想マシン 
 description: Ansible を使用して Azure 仮想マシン スケール セットを構成し、そのスケール セットにアプリケーションをデプロイする方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
 ms.topic: tutorial
-ms.date: 04/30/2019
-ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 01/13/2020
+ms.openlocfilehash: d638ae3f0c33734b42ef5456772fcd2bc62e35a4
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156396"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940854"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットにアプリをデプロイする
 
@@ -56,13 +56,13 @@ ms.locfileid: "74156396"
   - name: Add all hosts
     add_host:
       groups: scalesethosts
-      hostname: "{{ output_ip_address.ansible_facts.azure_publicipaddresses[0].properties.ipAddress }}_{{ item.properties.frontendPort }}"
-      ansible_host: "{{ output_ip_address.ansible_facts.azure_publicipaddresses[0].properties.ipAddress }}"
+      hostname: "{{ output_ip_address.publicipaddresses[0].ip_address }}_{{ item.properties.frontendPort }}"
+      ansible_host: "{{ output_ip_address.publicipaddresses[0].ip_address }}"
       ansible_port: "{{ item.properties.frontendPort }}"
       ansible_ssh_user: "{{ admin_username }}"
       ansible_ssh_pass: "{{ admin_password }}"
     with_items:
-      - "{{ output.ansible_facts.azure_loadbalancers[0].properties.inboundNatRules }}"
+      - "{{ output.ansible_info.azure_loadbalancers[0].properties.inboundNatRules }}"
   ```
 
 ## <a name="prepare-an-application-for-deployment"></a>デプロイするアプリケーションを準備する
@@ -119,9 +119,9 @@ ms.locfileid: "74156396"
 * `saclesethosts` という名前のホスト グループに JRE をインストールする
 * `saclesethosts` という名前のホスト グループに Java アプリケーションをデプロイする
 
-サンプルのプレイブックを取得するには、次の 2 つの方法があります。
+サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml)して `vmss-setup-deploy.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml)して、`vmss-setup-deploy.yml` に保存する。
 * `vmss-setup-deploy.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -234,7 +234,7 @@ ansible-playbook コマンドを実行して出力された内容を見ると、
 
 ![Azure 内のスケール セットで実行中の Java アプリ。](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする](./ansible-auto-scale-vmss.md)

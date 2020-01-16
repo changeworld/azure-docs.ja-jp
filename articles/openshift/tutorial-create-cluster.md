@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378247"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771344"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -125,7 +125,7 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 最初に、**既存の**ログ分析ワークスペースの識別子を取得します。 この識別子は次の形式になります。
 
-[https://login.microsoftonline.com/consumers/](`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`)
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
 
 ログ分析ワークスペースの名前、または既存のログ分析ワークスペースが属しているリソース グループがわからない場合は、[ログ分析ワークスペース](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)にアクセスし、お使いのログ分析ワークスペースをクリックします。 ログ分析ワークスペース ページが表示され、ワークスペースの名前と所属しているリソース グループが表示されます。
 
@@ -159,7 +159,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 クラスターで Azure Monitoring を使用**する**場合は、次のコマンドを使用して `--workspace-id` フラグを追加します。
 
 ```bash
-az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
 ```
 
 > [!NOTE]
