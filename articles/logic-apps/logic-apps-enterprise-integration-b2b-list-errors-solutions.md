@@ -1,6 +1,6 @@
 ---
-title: B2B シナリオのエラーと解決策
-description: Azure Logic Apps における B2B シナリオのエラーと解決策を特定する
+title: B2B シナリオでの一般的なエラーや問題の解決策
+description: Azure Logic Apps で B2B シナリオをトラブルシューティングする場合の一般的なエラーや問題の解決策について説明します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790704"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666688"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps における B2B のエラーと解決策
 
@@ -63,7 +63,7 @@ ms.locfileid: "74790704"
 | ユーザー アクション | @base64ToBinary を AS2Message に追加してからパートナーに送信します。 |
 |||
 
-例:
+次に例を示します。
 
 ```json
 "HTTP": {
@@ -83,7 +83,7 @@ ms.locfileid: "74790704"
 | ユーザー アクション | @base64ToBinary を MDN に追加してからパートナーに送信します。 | 
 |||
 
-例:
+次に例を示します。
 
 ```json
 "Response": {

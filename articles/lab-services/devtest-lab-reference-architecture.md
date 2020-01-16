@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647902"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982113"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。
@@ -56,7 +56,7 @@ DevTest Labs には、組み込みのクォータや制限はありませんが�
 - **リソースの種類ごとのリソース グループあたりのリソース数**:[リソースの種類ごとの、リソース グループあたりのリソース数の既定の制限は 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) です。  使用する*すべての VM を同じリソース グループ構成に入れる*場合、ユーザーがこのサブスクリプション制限に達するのがはるかに早くなります。VM に多くの追加ディスクがある場合には特に早くなります。
 - **[ストレージ アカウント]** :DevTest Labs の 1 つのラボには 1 つのストレージ アカウントが付属しています。 [サブスクリプションあたり/リージョンあたりのストレージ アカウント数の Azure のクォータは 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) です。 同じリージョン内の DevTest Labs の最大数も 250 です。
 - **ロールの割り当て**:ロールの割り当ては、ユーザーまたはプリンシパルにリソースへのアクセス権を付与する方法です (所有者、リソース、アクセス許可レベル)。 Azure には、[サブスクリプションあたり 2,000 のロールの割り当て制限](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits)があります。 既定で DevTest Labs サービスでは VM ごとに 1 つのリソース グループが作成されます。 所有者には、DevTest Labs VM に対する "*所有者*" アクセス許可と、リソース グループに対する "*閲覧者*" アクセス許可が付与されます。 このようにして、ユーザーにラボへのアクセス許可を付与するときに使用される割り当てに加え、作成する新しい VM ごとに 2 つのロールの割り当てが使用されます。
-- **API 読み取り/書き込み**:REST API、PowerShell、Azure CLI、Azure SDK など、Azure と DevTest Labs を自動化するさまざまな方法があります。 自動化によって、API 要求に別の制限が課される可能性があります。各サブスクリプションでは、[1 時間あたり最大 12,000 の読み取り要求と 1,200 の書き込み要求](../azure-resource-manager/resource-manager-request-limits.md)が可能です。 DevTest Labs を自動化するときは、この制限に注意してください。
+- **API 読み取り/書き込み**:REST API、PowerShell、Azure CLI、Azure SDK など、Azure と DevTest Labs を自動化するさまざまな方法があります。 自動化によって、API 要求に別の制限が課される可能性があります。各サブスクリプションでは、[1 時間あたり最大 12,000 の読み取り要求と 1,200 の書き込み要求](../azure-resource-manager/management/request-limits-and-throttling.md)が可能です。 DevTest Labs を自動化するときは、この制限に注意してください。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 DevTest Labs には、単一のラボ内で使用する場合に優れた管理ユーザー インターフェイスがあります。 ただし、企業には、複数の Azure サブスクリプションと多くのラボがある可能性があります。 すべてのラボに一貫して変更を加えるにはスクリプト/自動化が必要です。 DevTest Labs のデプロイに関するいくつかの例と最適な管理方法を次に示します。

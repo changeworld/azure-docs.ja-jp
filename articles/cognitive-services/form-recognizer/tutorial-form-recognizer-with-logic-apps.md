@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446470"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981260"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>チュートリアル:Azure Logic Apps で Form Recognizer を使用して請求書を分析する
 
@@ -52,7 +52,7 @@ Form Recognizer は、アクセスが制限されたプレビューで利用可�
 
 このコンテナーを使用して、モデルのトレーニングに必要なサンプル データをアップロードします。
 
-1. [Azure Storage アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するページの手順に従って、ストレージ アカウントを作成します。 ストレージ アカウント名として **formrecostorage** を使用します。
+1. [Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)に関するページの手順に従って、ストレージ アカウントを作成します。 ストレージ アカウント名として **formrecostorage** を使用します。
 1. [Azure Blob コンテナーの作成](../../storage/blobs/storage-quickstart-blobs-portal.md)に関するページの手順に従って、Azure Storage アカウント内にコンテナーを作成します。 コンテナー名として **formrecocontainer** を使用します。 パブリック アクセス レベルを必ず **[コンテナー (コンテナーと BLOB の匿名読み取りアクセス)]** に設定します。
 
     > [!div class="mx-imgBorder"]

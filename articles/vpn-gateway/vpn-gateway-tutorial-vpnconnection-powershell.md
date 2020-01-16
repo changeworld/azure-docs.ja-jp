@@ -1,19 +1,19 @@
 ---
-title: 'Azure VPN Gateway: S2S VPN 接続を作成して管理する:チュートリアル'
+title: Azure VPN Gateway:S2S VPN 接続を作成して管理する:チュートリアル
 description: チュートリアル - Azure PowerShell モジュールを使用して S2S VPN 接続を作成および管理する
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 64da55c3dba4b617458b68a8b54a509bab4264d2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1f4687a6af9cae7172a70527f336b98c75d0e9cd
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152148"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903386"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>チュートリアル:PowerShell を使用して S2S VPN 接続を作成および管理する
 
@@ -224,7 +224,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $
 Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この構成がプロトタイプ、テスト、または概念実証のデプロイの一部である場合は、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VPN ゲートウェイ、およびすべての関連リソースを削除できます。
 
@@ -232,7 +232,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のような S2S VPN 接続の作成と管理について説明しました。
 
@@ -242,7 +242,7 @@ Remove-AzResourceGroup -Name $RG1
 > * VPN 接続をさらに追加する
 > * VPN 接続を削除する
 
-S2S 接続、VNet 間接続、および P2S 接続については、次のチュートリアルに進んでください。
+S2S 接続、VNet 間接続、P2S 接続については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > * [VNet 間接続の作成](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

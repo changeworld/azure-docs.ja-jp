@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644616"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973026"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -69,7 +69,7 @@ Azure では、Azure のさまざまな機能を有効にした場合に限り�
 * **VirtualNetworkServiceEndpoint**:サービスのサービス エンドポイントを有効にすると、Azure によって特定のサービスのパブリック IP アドレスがルート テーブルに追加されます。 サービス エンドポイントは、仮想ネットワークの個々のサブネットで有効になるので、サービス エンドポイントが有効になっているサブネットのルート テーブルにのみルートが追加されます。 Azure サービスのパブリック IP アドレスは定期的に変更されます。 アドレスが変更されると、Azure によってルート テーブルのアドレスが自動的に管理されます。 仮想ネットワーク サービス エンドポイントと、サービス エンドポイントを作成できるサービスの詳細については、[こちら](virtual-network-service-endpoints-overview.md)をご覧ください。<br>
 
     > [!NOTE]
-    > **VNet ピアリング** と **VirtualNetworkServiceEndpoint** の各ネクストホップの種類は、Azure Resource Manager デプロイ モデルを使用して作成された仮想ネットワークのサブネットのルート テーブルにのみ追加されます。 これらのネクストホップの種類は、クラシック デプロイ モデルを使用して作成された仮想ネットワークのサブネットに関連付けられているルート テーブルには追加されません。 Azure のデプロイメント モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) をご覧ください。
+    > **VNet ピアリング** と **VirtualNetworkServiceEndpoint** の各ネクストホップの種類は、Azure Resource Manager デプロイ モデルを使用して作成された仮想ネットワークのサブネットのルート テーブルにのみ追加されます。 これらのネクストホップの種類は、クラシック デプロイ モデルを使用して作成された仮想ネットワークのサブネットに関連付けられているルート テーブルには追加されません。 Azure のデプロイメント モデルの詳細については、[こちら](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) をご覧ください。
 
 ## <a name="custom-routes"></a>カスタム ルート
 
@@ -101,7 +101,7 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 ## <a name="next-hop-types-across-azure-tools"></a>Azure ツールにおけるネクストホップの種類
 
-ネクストホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) で各ネクストホップの種類を指す際に使用される名前を次の表に示します。
+ネクストホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) で各ネクストホップの種類を指す際に使用される名前を次の表に示します。
 
 |ネクストホップの種類                   |Azure CLI と PowerShell (Resource Manager) |Azure クラシック CLI と PowerShell (クラシック)|
 |-------------                   |---------                                       |-----|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084694"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638631"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -62,7 +62,7 @@ ms.locfileid: "74084694"
 
      - **[サブネットのアドレス範囲]** : この範囲は、仮想ネットワーク用に入力したアドレス空間内にある必要があります。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のサブネット アドレス範囲が設定された仮想ネットワークで使用できる IP アドレスは 3 つのみです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。
      - **サブスクリプション**:[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 1 つの仮想ネットワークが複数の Azure サブスクリプションにまたがることはできません。 ただし、1 つのサブスクリプションの仮想ネットワークを、[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)を使用して、他のサブスクリプションの仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じサブスクリプションに存在する必要があります。
-     - **[リソース グループ]** :既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)を選択するか、新しいものを作成します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じリソース グループに存在していても別のリソース グループに存在していてもかまいません。
+     - **[リソース グループ]** :既存の[リソース グループ](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)を選択するか、新しいものを作成します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じリソース グループに存在していても別のリソース グループに存在していてもかまいません。
      - **[場所]** :Azure の[場所](https://azure.microsoft.com/regions/)を選択します。この場所はリージョンとも呼ばれます。 1 つの仮想ネットワークは、Azure の 1 つの場所にのみ存在できます。 ただし、VPN ゲートウェイを使用して、1 つの場所にある仮想ネットワークを別の場所の仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じ場所に存在する必要があります。
 
 **コマンド**
@@ -91,8 +91,8 @@ ms.locfileid: "74084694"
      - [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
      - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
      - [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Automation スクリプト](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Automation スクリプト](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **コマンド**
 
@@ -103,9 +103,9 @@ ms.locfileid: "74084694"
 
 仮想ネットワークのアドレス範囲を追加および削除することができます。 アドレス範囲は CIDR 表記で指定する必要があり、同じ仮想ネットワーク内で他のアドレス範囲と重複することはできません。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 
 
-サブネットが関連付けられていない場合、仮想ネットワークのアドレス範囲を縮小できます。 関連付けられている場合、/16 を /8 に変更するなど、アドレス範囲の拡張のみが可能になります。 小規模のアドレス範囲から始め、後で拡大したり、追加したりすることができます。
+仮想ネットワークのアドレス範囲は、関連付けられているサブネットの範囲がまだ含まれている範囲にまでは縮小できます。 さらに、/16 を /8 に変更するなど、アドレス範囲を拡張することができます。 
 
-<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the above statement has been edited to reflect the most recent comments on the reopened issue: https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 次のアドレス範囲は追加できません。
 
@@ -137,9 +137,9 @@ ms.locfileid: "74084694"
 1. ポータルの上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
 2. 仮想ネットワークの一覧から、DNS サーバーを変更する仮想ネットワークを選択します。
 3. **[設定]** で、 **[DNS サーバー]** を選択します。
-4. 次のいずれかのオプションを選択します。
+4. 以下のオプションの 1 つを選択します。
    - **既定 (Azure 提供)** :すべてのリソースの名前とプライベート IP アドレスが Azure DNS サーバーに自動的に登録されます。 同じ仮想ネットワークに接続されているリソース間で名前を解決することができます。 このオプションでは、仮想ネットワーク間で名前を解決することはできません。 仮想ネットワーク間で名前を解決するには、カスタムの DNS サーバーを使用する必要があります。
-   - **カスタム**:1 つ以上のサーバーを追加できます。ただし、追加できる数は Azure で仮想ネットワークに設定されている上限までです。 DNS サーバー数の上限の詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)に関する記事を参照してください。 次のオプションがあります。
+   - **Custom**:1 つ以上のサーバーを追加できます。ただし、追加できる数は Azure で仮想ネットワークに設定されている上限までです。 DNS サーバー数の上限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)に関する記事を参照してください。 次のオプションがあります。
    - **アドレスの追加**:サーバーを仮想ネットワークの DNS サーバー一覧に追加します。 また、その DNS サーバーを Azure に登録します。 既に DNS サーバーが Azure に登録されている場合は、その DNS サーバーを一覧で選択できます。
    - **アドレスの削除**:削除するサーバーの横にある **[...]** 、 **[削除]** の順に選択します。 サーバーを削除しても、この仮想ネットワークの一覧からサーバーが削除されるだけです。 DNS サーバーは、他の仮想ネットワークで使用するために Azure に登録されたままになります。
    - **DNS サーバーのアドレスの並べ替え**:環境に適した順序で DNS サーバーが一覧表示されていることを確認することが重要です。 DNS サーバーの一覧は指定された順序で使用されます。 ラウンド ロビン設定のようには機能しません。 一覧の先頭にある DNS サーバーに到達できる場合、クライアントはその DNS サーバーが正しく動作しているかどうかに関係なく、その DNS サーバーを使用します。 一覧表示されたすべての DNS サーバーを削除してから、希望する順序で再度追加します。
@@ -171,13 +171,13 @@ ms.locfileid: "74084694"
 
 仮想ネットワークに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| Action                                  |   名前                                |
+| アクション                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   仮想ネットワークの読み取り              |
 |Microsoft.Network/virtualNetworks/write  |   仮想ネットワークの作成または更新  |
 |Microsoft.Network/virtualNetworks/delete |   仮想ネットワークの削除            |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、仮想ネットワークを作成します
 - [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

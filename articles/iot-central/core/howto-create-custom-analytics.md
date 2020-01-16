@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435029"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 
@@ -37,17 +37,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | 支払プラン | 従量課金制 |
-| アプリケーション テンプレート | サンプル Contoso |
+| アプリケーション テンプレート | レガシ アプリケーション |
 | アプリケーション名 | 既定値を受け入れるか、独自の名前を選択します |
 | URL | 既定値を受け入れるか、独自の一意の URL プレフィックスを選択します |
-| Directory | Azure Active Directory テナント |
+| ディレクトリ | Azure Active Directory テナント |
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
-| リージョン | East US |
+| リージョン | United States |
 
-この記事の例とスクリーンショットでは、**米国東部**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
+この記事の例とスクリーンショットでは、**米国**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
 ### <a name="resource-group"></a>Resource group
 
@@ -57,23 +57,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
-| 名前    | 名前空間名を選択します |
+| Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | IoTCentralAnalysis |
 | Location | East US |
-| スループット ユニット | 1 |
+| スループット単位 | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks ワークスペース
 
 以下の設定を使用して、[Azure portal で Azure Databricks サービスを作成](https://portal.azure.com/#create/Microsoft.Databricks)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | ワークスペース名    | ワークスペース名を選択します |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | IoTCentralAnalysis |
 | Location | East US |
 | 価格レベル | Standard |
@@ -104,15 +104,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[継続的データ エクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
     | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |
-    | デバイス | オフ |
-    | デバイス テンプレート | オフ |
+    | デバイス | Off |
+    | デバイス テンプレート | Off |
 
 ![継続的データ エクスポート構成](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -128,7 +128,7 @@ Azure portal で、Azure Databricks サービスに移動し、 **[ワークス�
 
 次の表の情報を使用して、クラスターを作成します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | クラスター名 | centralanalysis |
 | クラスター モード | Standard |
@@ -222,7 +222,7 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 
 アプリケーション内の **[管理]** ページから IoT Central アプリケーションを削除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この攻略ガイドで学習した内容は次のとおりです。
 

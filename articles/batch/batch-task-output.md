@@ -2,7 +2,7 @@
 title: 完了したジョブやタスクから結果やログをデータ ストアに保持する - Azure Batch | Microsoft Docs
 description: Batch タスクやジョブから出力データを保持するさまざまなオプションについて説明します。 データは、Azure Storage、または別のデータ ストアに保持することができます。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81f89d5e4c3fb797cfc935764bb80853660ee2c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c5063955fc6e04c9cfec2407f8b1cc91c5b24d10
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026258"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -84,7 +84,7 @@ Batch ソリューションを設計する際は、ジョブとタスクの出�
 
 - **出力の表示**:Azure portal で Batch のタスクに移動し、 **[ノード上のファイル]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。 繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。 Azure Storage に保持したタスク出力を表示するには、Azure portal を使用するか、[Azure Storage Explorer][storage_explorer] などの Azure Storage クライアント アプリケーションを使用することができます。 Azure Storage 内の出力データを Portal または別のツールで表示するには、ファイルの場所を知っていて、その場所に直接移動できる必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Batch サービス API の新機能を使用してタスクのデータを保持する方法について、「[Batch サービス API を使用してタスクのデータを Azure Storage に保持する](batch-task-output-files.md)」を読む。
 - .NET 用の Batch ファイル規則ライブラリを使用してタスク出力を保持することについて、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を読む。

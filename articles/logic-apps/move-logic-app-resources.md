@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456541"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965888"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75456541"
 
 ## <a name="move-resources-between-subscriptions"></a>サブスクリプション間でリソースを移動する
 
-ロジック アプリや統合アカウントなどのリソースを別の Azure サブスクリプションに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+ロジック アプリや統合アカウントなどのリソースを別の Azure サブスクリプションに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com)で、移動するロジック アプリのリソースを探して選択します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "75456541"
 
 ## <a name="move-resources-between-resource-groups"></a>リソース グループ間でリソースを移動する
 
-ロジック アプリや統合アカウントなどのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+ロジック アプリや統合アカウントなどのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)」を参照してください。
 
@@ -106,4 +106,4 @@ Visual Studio から取得するテンプレートには、ロジック アプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/resource-group-move-resources.md)
+[Azure リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)

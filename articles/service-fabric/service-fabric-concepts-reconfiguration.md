@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の再構成 | Microsoft Docs
-description: Service Fabric のパーティションの再構成について説明します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric の再構成
+description: ステートフル サービス レプリカの構成、および Service Fabric が変更中に一貫性と可用性を維持するために使用する再構成のプロセスについて説明します。
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882199"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609997"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Azure Service Fabric の再構成
 "*構成*" は、ステートフル サービスのパーティションのレプリカとそれらのロールと定義されます。
@@ -57,7 +48,7 @@ Failover Manager は、システムのさまざまなイベントに応答して
 
 System.FM、System.RA、System.RAP などのシステム コンポーネントからの正常性レポートを使用して、どこで再構成が停止しているかを診断できます。 これらの正常性レポートについては、[システム正常性レポート](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 - [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)

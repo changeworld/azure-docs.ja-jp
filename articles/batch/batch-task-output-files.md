@@ -2,7 +2,7 @@
 title: Batch サービス API を使用してジョブやタスクの出力を Azure Storage に保持する - Azure Batch | Microsoft Docs
 description: Batch サービス API を使用して Batch タスクおよびジョブの出力を Azure Storage に保持する方法について説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.service: batch
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094453"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029639"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -175,7 +175,7 @@ string containerName = job.OutputStorageContainerName();
 
 C# 以外の言語で開発している場合は、自分でファイル規則の標準を実装する必要があります。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 [PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
@@ -187,7 +187,7 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 6. サンプルの実行に使用する保持テクノロジを選択するように求められたら、「**2**」と入力して、タスク出力の保持に Batch サービス API を使用してサンプルを実行します。
 7. 必要であれば、サンプルをもう一度実行し、「**3**」と入力して、Batch サービス API を使用して出力を保持するとともに、ファイル規則の標準に準拠して保存先のコンテナーと BLOB のパスに名前を付けます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - .NET 用のファイル規則ライブラリを使用してタスク出力を保持することの詳細については、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を参照してください。
 - Azure Batch で出力データを保持するためのその他の方法については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。

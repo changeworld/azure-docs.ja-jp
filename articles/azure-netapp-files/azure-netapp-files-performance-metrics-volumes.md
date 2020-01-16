@@ -1,25 +1,18 @@
 ---
-title: Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション | Microsoft Docs
-description: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テストに関する推奨事項を示します。
-services: azure-netapp-files
-documentationcenter: ''
+title: 推奨されるパフォーマンス ベンチマーク テスト - Azure NetApp Files
+description: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テストに関する推奨事項について詳しく説明します。
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881729"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551524"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
 
@@ -128,7 +121,7 @@ REST API 呼び出しを使用して Azure NetApp Files カウンターにアク
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 - [Azure NetApp Files のパフォーマンス ベンチマーク](azure-netapp-files-performance-benchmarks.md)

@@ -3,20 +3,20 @@ title: Azure Dev Spaces と共に kubectl を使用する方法
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: Azure Dev Spaces が有効になっている Azure Kubernetes Service クラスター上の開発スペース内で kubectl コマンドを使用する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: fea14668c35eddcd01417b417e2239788eddd6d1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7530cde68b2ce8d06fb7b16a9a147f0f0bc8645c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438363"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Azure Dev Space で kubectl を使用する
 
 Azure Dev Space の内部で Kubernetes クラスターにアクセスし、`kubectl` などの既存の Kubernetes ツールを使用することができます。
 
-`az aks use-dev-spaces` コマンドを実行すると、`kubectl` 構成コンテキストが自動的に追加されるので、kubectl は Azure Dev Spaces の Kubernetes クラスターに既に接続されています。 次に例を示します。
+`az aks use-dev-spaces` コマンドを実行すると、`kubectl` 構成コンテキストが自動的に追加されるので、kubectl は Azure Dev Spaces の Kubernetes クラスターに既に接続されています。 例 :
 - 現在のコンテキストを確認します: `kubectl config current-context`
 - すべての使用可能なコンテキストを一覧表示します: `kubectl config get-contexts`。 
 - コンテキストを変更します: `kubectl config use-context <context-name>`

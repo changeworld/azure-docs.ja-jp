@@ -1,29 +1,22 @@
 ---
-title: Azure Service Fabric の環境変数 | Microsoft Docs
-description: Service Fabric の環境変数に関するリファレンス ドキュメントです
-documentationcenter: .net
+title: Azure Service Fabric の環境変数
+description: Azure Service Fabric の環境変数について説明します。 変数とその使用法の完全な一覧のリファレンスが含まれています。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946724"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645686"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric の環境変数
 
 Service Fabric には、サービス インスタンスごとに設定される組み込み環境変数があります。 以下ではすべての環境変数を示します。
 
-| 環境変数                         | 説明                                                            | 例                                                              |
+| 環境変数                         | [説明]                                                            | 例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | アプリケーションのファブリック URI 名です                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | プロセスが属しているコード パッケージの名前です              | コード                                                                 |

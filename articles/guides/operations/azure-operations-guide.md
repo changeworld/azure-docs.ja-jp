@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693447"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970861"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -50,7 +50,7 @@ Azure リージョンに関する詳細については、「[Azure リージョ�
 Azure では、顧客に提供されるサービスのカテゴリに基づいたクラウド コンピューティング モデルを使用します。 サービス の 3 つのカテゴリとして、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのプラットフォーム (PaaS)、およびサービスとしてのソフトウェア (SaaS) があります。 ベンダーは、これらの各カテゴリのコンピューティング スタック内にあるコンポーネントに対して、一部またはすべての責任を共有します。 クラウド コンピューティングの各カテゴリを確認しましょう。
 ![クラウド コンピューティング スタックの比較](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: サービスとしてのインフラストラクチャ
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS:サービスとしてのインフラストラクチャ
 
 IaaS クラウド ベンダーがあらゆる物理的コンピューティング リソースとコンピューターの仮想化に必要なソフトウェアを実行し、管理します。 このサービスの利用者は、ホステッド データセンターに仮想マシンをデプロイします。 仮想マシンは離れた場所のデータセンターに置かれますが、IaaS コンシューマーは、基になるインフラストラクチャをクラウド ベンダーに配置したままのオペレーティング システムを自由に構成し、管理できます。
 
@@ -58,13 +58,13 @@ Azure に含まれる IaaS ソリューションには、仮想マシン、仮�
 
 仮想マシン スケール セットは Azure Virtual Machines 上に構築されます。同一の VM のクラスターを簡単にデプロイできます。 仮想マシン スケール セットは自動拡張にも対応しています。必要になったとき、新しい VM を自動的にデプロイできます。 Azure Service Fabric や Azure Container Service など、高いレベルのマイクロサービス コンピューティング クラスターをホストするプラットフォームとして仮想マシン スケール セットは理想的です。
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: サービスとしてのプラットフォーム
+#### <a name="paas-platform-as-a-service"></a>PaaS:サービスとしてのプラットフォーム
 
 PaaS を利用する場合、クラウド サービス ベンダーが提供する環境にアプリケーションをデプロイします。 ベンダーがインフラストラクチャ管理のすべてを行うので、利用者はアプリケーション開発とデータ管理に集中できます。
 
 Azure で提供される PaaS コンピューティング サービスには、Azure App Service と Azure Cloud Services の Web Apps 機能があります (web ロールと worker ロール)。 いずれの場合も、開発者はサポート技術の基礎について何も知らなくても自分のアプリケーションを複数の方法でデプロイできます。 開発者は仮想マシン (VM) を作成したり、リモート デスクトップ プロトコル (RDP) を利用したりしなくてもいずれにもサインインできるし、アプリケーションをインストールできます。 ボタンを押すだけで (あるいは、同様な簡単な操作で)、Microsoft 提供のツールが VM をプロビジョニングし、それにアプリケーションをデプロイし、インストールします。
 
-#### <a name="saas-software-as-a-service"></a>SaaS: サービスとしてのソフトウェア
+#### <a name="saas-software-as-a-service"></a>SaaS:サービスとしてのソフトウェア
 
 SaaS は、1 か所でまとめてホストし、管理するソフトウェアです。 通常、マルチテナント アーキテクチャを基盤とします。すべての顧客に対して 1 つのバージョンのアプリケーションが利用されます。 複数のインスタンスに拡張することで、すべての場所で最良のパフォーマンスが得られます。 SaaS ソフトウェアは通常、月間または年間サブスクリプションでライセンス供与されます。 SaaS ソフトウェア ベンダーは、ソフトウェア スタックのすべてのコンポーネントに対して責任を担うため、利用者が管理するのは提供されているサービスだけです。
 
@@ -94,7 +94,7 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 - Azure Storage (Azure BLOB、Queue、Table、File サービスから構成)
 
-- Azure SQL Database
+- Azure SQL データベース
 
 - Azure Cosmos DB
 
@@ -140,7 +140,7 @@ Azure は、世界中のさまざまな地域で一般的に利用できるグ�
 
 Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国/地域でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure ポータルは、[portal.azure.com](https://portal.azure.com) にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
 
@@ -178,7 +178,7 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 
 ## <a name="azure-subscriptions"></a>Azure サブスクリプション
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が与えられ、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。 管理者に加え、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が与えられ、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../cost-management-billing/manage/add-change-subscription-administrator.md)」を参照してください。 管理者に加え、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Azure サブスクリプションを選択し、有効にする
 
@@ -206,7 +206,7 @@ RBAC にはいくつかの組み込みロールがあり、それらを使用し
 
 Azure の使用で重要になることの 1 つが請求情報を表示する機能です。 Azure Portal では、Azure の課金情報の詳細を確認できます。
 
-詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../../billing/billing-download-azure-invoice-daily-usage-date.md)」を参照してください。
+詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。
 
 ### <a name="get-billing-information-from-billing-apis"></a>課金 API から課金情報を取得する
 
@@ -216,7 +216,7 @@ Azure の使用で重要になることの 1 つが請求情報を表示する�
 
 - Azure Rate Card API を利用すれば、利用可能なすべてのリソース、各リソースに関するメタデータ情報と価格情報を一覧表示できます。
 
-詳細については、「[Microsoft Azure リソースの消費を把握する](../../billing/billing-usage-rate-card-overview.md)」をご覧ください。
+詳細については、「[Microsoft Azure リソースの消費を把握する](../../cost-management-billing/manage/usage-rate-card-overview.md)」をご覧ください。
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>料金計算ツールでコストを予測する
 
@@ -294,9 +294,9 @@ Resource Manager テンプレートはあらゆるテキスト エディター�
 
 [Azure に組み込まれているロール](../../role-based-access-control/built-in-roles.md)の例:
 
-- **所有者**: このロールが与えられたユーザーは、アクセス権を含め、すべてを管理できます。
+- **所有者**:このロールが与えられたユーザーは、アクセス権を含め、すべてを管理できます。
 
-- **閲覧者**: このロールが与えられたユーザーは (シークレット以外の) あらゆる種類のリソースを閲覧できますが、変更はできません。
+- **閲覧者**:このロールが与えられたユーザーは (シークレット以外の) あらゆる種類のリソースを閲覧できますが、変更はできません。
 
 - **仮想マシンの共同作業者**: このロールが与えられたユーザーは仮想マシンを管理できますが、仮想マシンが接続されている仮想ネットワークや VHD ファイルが置かれているストレージ アカウントを管理することはできません。
 
@@ -328,19 +328,19 @@ Azure Virtual Machines のデプロイには、Azure Portal、Azure PowerShell �
 
 Azure Portal で仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 構成が異なる、さまざまなオペレーティング システム イメージを選択できます。 ストレージ要件とネットワーク要件はすべて、デプロイ中に構成されます。 詳細については、「Create a virtual machine in the Azure portal」 (Azure Portal で仮想マシンを作成する) の [Windows](../../virtual-machines/windows/quick-create-portal.md) と [Linux](../../virtual-machines/linux/quick-create-portal.md) の項目をご覧ください。
 
-Azure Portal から仮想マシンをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
+Azure Portal から仮想マシンをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/templates/deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
 
 #### <a name="powershell"></a>PowerShell
 
 PowerShell を利用した Azure 仮想マシンのデプロイでは、ストレージやネットワークなど、関連するあらゆる仮想マシン リソースのデプロイを完全に自動化できます。 詳細については、「[Resource Manager と PowerShell を使用して Windows VM を作成する](../../virtual-machines/windows/quick-create-powershell.md)」を参照してください。
 
-Azure のコンピューティング リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
+Azure のコンピューティング リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 #### <a name="command-line-interface-cli"></a>コマンド ライン インターフェイス (CLI)
 
 PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **vm quick-create** コマンドを使用すると、関連するすべての仮想マシン リソース (ストレージとネットワークを含む) と仮想マシン自体がデプロイされます。 詳細については、「[CLI を使用した Azure での Linux VM の作成](../../virtual-machines/linux/quick-create-cli.md)」をご覧ください。
 
-同様に、Azure CLI を利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
+同様に、Azure CLI を利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
 
 ### <a name="access-and-security-for-virtual-machines"></a>仮想マシンのアクセスとセキュリティ
 
@@ -408,15 +408,15 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 #### <a name="portal"></a>ポータル
 
-Azure Portal でストレージ アカウントをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しいストレージ アカウントを新しいリソース グループや既存のリソース グループにデプロイできます。 ストレージ アカウントを作成したら、ポータルを利用し、BLOB コンテナーまたはファイル共有を作成できます。 Table Storage エンティティや Queue Storage エンティティをプログラミングで作成できます。 詳しくは、「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)」をご覧ください。
+Azure Portal でストレージ アカウントをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しいストレージ アカウントを新しいリソース グループや既存のリソース グループにデプロイできます。 ストレージ アカウントを作成したら、ポータルを利用し、BLOB コンテナーまたはファイル共有を作成できます。 Table Storage エンティティや Queue Storage エンティティをプログラミングで作成できます。 詳しくは、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」をご覧ください。
 
-Azure Portal からストレージ アカウントをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 ストレージ アカウントを含め、テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
+Azure Portal からストレージ アカウントをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 ストレージ アカウントを含め、テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/templates/deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
 
 #### <a name="powershell"></a>PowerShell
 
 PowerShell を利用し、Azure ストレージ アカウントをデプロイする方法では、ストレージ アカウントのデプロイを完全に自動化できます。 詳細については、「[Azure Storage で Azure PowerShell を使用する](../../storage/common/storage-powershell-guide-full.md)」を参照してください。
 
-Azure リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
+Azure リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 #### <a name="command-line-interface-cli"></a>コマンド ライン インターフェイス (CLI)
 
@@ -474,14 +474,14 @@ Azure 仮想ネットワークはオンプレミス ネットワークに接続�
 - Azure Resource Manager のテンプレート
 
 > **いつ使用するか**: Azure で VM を使用するときはいつでも、仮想ネットワークを使用します。 これにより、オンプレミスのデータ センターのように公開されるサブネットとプライベート サブネットに VM をセグメント化できます。
-> 
+>
 > **作業開始**: Azure 仮想ネットワークで仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しい仮想ネットワークを新しいリソース グループや既存のリソース グループにデプロイできます。 ポータルから新しい仮想マシンを作成するとき、既存の仮想ネットワークを選択するか、新しい仮想ネットワークを作成できます。 概要および「[Azure portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md)」。
 
 ### <a name="access-and-security-for-virtual-networks"></a>仮想ネットワークのアクセスとセキュリティ
 
 ネットワーク セキュリティ グループを利用し、Azure 仮想ネットワークを保護できます。 NSG には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../../virtual-network/security-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Windows VM の作成](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux VM の作成](../../virtual-machines/linux/quick-create-portal.md)

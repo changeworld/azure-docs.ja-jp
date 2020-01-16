@@ -1,6 +1,6 @@
 ---
-title: 概要 - Azure サーバーレス
-description: インフラストラクチャについて悩まずに、クラウド内の強力なソリューションを作成する
+title: 概要 - クラウド ベースのアプリおよびソリューションのための Azure サーバーレス
+description: Azure Logic Apps と Azure Functions を使用して、インフラストラクチャを気にすることなくクラウド ベースのアプリおよびソリューションを作成する方法について説明します。
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -8,14 +8,14 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: d658efd278425358a2a931fe976827c3bae4247d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792831"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666552"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概要:Azure Logic Apps および Azure Functions を備えた Azure サーバーレス
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure サーバーレス: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要
 
 [サーバーレス](https://azure.microsoft.com/solutions/serverless/) アプリには、開発速度の向上、コードの削減、簡単さ、スケーリングなどの利点があります。 この記事では、サーバーレス ソリューションのさまざまな属性と Azure サーバーレスのオファリングについて説明します。
 
@@ -41,7 +41,7 @@ Azure Functions の使用を開始するには、最初に「[Azure Portal で�
 
 Azure には、サーバーレス アプリの開発、デプロイ、管理を行うための豊富なツールが用意されています。 [Visual Studio のツール](logic-apps-serverless-get-started-vs.md)、または [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) を使用して、Azure portal でアプリを直接ビルドすることができます。 アプリをビルドしたら、[Azure Resource Manager テンプレートを使用してそのアプリをすばやくデプロイ](logic-apps-deploy-azure-resource-manager-templates.md)できます。 Azure では、Azure portal からのアクセス、API または SDK 経由のアクセス、または Azure Monitor ログおよび Application Insights に対する統合ツールでのアクセスが可能な監視が提供されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio でサーバーレス アプリをビルドする](logic-apps-serverless-get-started-vs.md)
 * [サーバーレスを使用して Customer Insights ダッシュボードを作成する](logic-apps-scenario-social-serverless.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931388"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930726"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -58,7 +58,7 @@ Azure AD B2C リソースへの管理アクセス権を持つ Azure サブスク
 
 MAU ベースの測定は、サブスクリプション/リソース所有者が変更を確定するとすぐに有効になります。 毎月の請求書には、変更まで課金された認証の単位と、変更以降の新しい MAU の単位が反映されます。
 
-移行月にユーザーが二重にカウントされることはありません。 変更前に認証した一意のアクティブ ユーザーには、1 か月間の認証ごとのレートが課金されます。 これらの同じユーザーは、サブスクリプションの残りの請求サイクルの MAU 計算には含まれません。 例:
+移行月にユーザーが二重にカウントされることはありません。 変更前に認証した一意のアクティブ ユーザーには、1 か月間の認証ごとのレートが課金されます。 これらの同じユーザーは、サブスクリプションの残りの請求サイクルの MAU 計算には含まれません。 次に例を示します。
 
 * Contoso B2C テナントには 1,000 人のユーザーがいます。 毎月 250 人のユーザーがアクティブです。 サブスクリプション管理者は、月の 10 日に認証ごとから月間アクティブ ユーザー (MAU) に変更します。
 * 1 日から 10 日の課金には、認証ごとのモデルを使用して課金されます。
@@ -91,7 +91,7 @@ Azure AD B2C テナントにリンクされているサブスクリプション�
 
 ### <a name="create-the-link"></a>リンクを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C テナントを含むディレクトリ "*ではなく*") 使用する Azure サブスクリプションを含むディレクトリを選択します。
 1. **[リソースの作成]** を選択し、 **[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力し、 **[Azure Active Directory B2C]** を選択します。
 1. **[作成]**
@@ -134,10 +134,10 @@ Azure AD B2C では Azure クラウド ソリューション プロバイダー 
 
 Azure AD B2C テナントは、ソースと宛先のサブスクリプションが同じ Azure Active Directory テナント内に存在する場合、別のサブスクリプションに移動できます。
 
-Azure AD B2C テナントなどの Azure リソースを別のサブスクリプションに移動する方法については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+Azure AD B2C テナントなどの Azure リソースを別のサブスクリプションに移動する方法については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 移動を開始する前に、必ず記事全体に目を通して、このような移動についての制限事項および要件を十分に理解してください。 リソースを移動する手順だけでなく、移動前のチェックリストや移動操作の検証方法などの重要な情報が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 選択した Azure サブスクリプション内の使用状況と課金の詳細を確認するだけでなく、[使用状況レポート API](active-directory-b2c-reference-usage-reporting-api.md) を使用して詳細な毎日の使用状況レポートを確認することもできます。

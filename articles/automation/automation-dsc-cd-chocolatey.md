@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366432"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966740"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 
@@ -40,7 +40,7 @@ Azure Automation State Configuration はこのオートメーション機能を�
 DSC リソースは、ネットワーク、Active Directory、または SQL Server の管理などの特定の機能を備えたコードのモジュールです。 Chocolatey DSC リソースは、(特に) NuGet サーバーへのアクセス、パッケージのダウンロード、パッケージのインストールなどの方法を認識しています。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)には、その他の多くの DSC リソースがあります。
 これらのモジュールは、(ユーザーによって) Azure Automation State Configuration プル サーバーにインストールされるため、ユーザーの構成で使用できます。
 
-Resource Manager テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。 この[記事](../azure-resource-manager/resource-manager-deployment-model.md)では、Resource Manager デプロイ モデル (宣言型) と Azure Service Management (ASM、つまりクラシック) デプロイ モデル (命令型) が比較されており、また、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
+Resource Manager テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。 この[記事](../azure-resource-manager/management/deployment-models.md)では、Resource Manager デプロイ モデル (宣言型) と Azure Service Management (ASM、つまりクラシック) デプロイ モデル (命令型) が比較されており、また、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
 
 Resource Manager テンプレートの 1 つの主要機能は、プロビジョニングされている VM に VM 拡張機能をインストールする機能です。 VM 拡張機能には、カスタム スクリプトの実行、ウイルス対策ソフトウェアのインストール、DSC 構成スクリプトの実行などの特定の機能があります。 VM 拡張機能には他にも多くの種類があります。
 

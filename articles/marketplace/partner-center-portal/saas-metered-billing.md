@@ -1,19 +1,19 @@
 ---
 title: マーケットプレース測定サービスを使用した従量制課金 | Azure Marketplace
 description: このドキュメントは、柔軟な課金モデルを使用して SaaS オファーを公開する ISV 向けのガイドです。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827924"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934182"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>マーケットプレース測定サービスを使用した従量制課金
 
@@ -73,7 +73,7 @@ CNS サービスをサブスクライブする Azure のお客様は、選択し
 
 ディメンション自体を定義する属性は、オファーのすべてのプランで共有されます。  オファーを公開する前に、あらゆるプランのコンテキストからこれらの属性に加えられた変更は、すべてのプランのディメンション定義に影響を与えます。  プランを公開すると、これらの属性は編集できなくなります。  これらの属性には、以下のようなものがあります。
 
-* ID
+* [Identifier]
 * Name
 * Unit of measure
 
@@ -103,7 +103,7 @@ CNS サービスをサブスクライブする Azure のお客様は、選択し
   
 オファーがディメンションと共に公開されると、そのディメンションについての以下のようなオファーレベルの詳細は変更できなくなります。
 
-* ID
+* [Identifier]
 * Name
 * Unit of measure
 
@@ -136,6 +136,6 @@ CNS サービスをサブスクライブする Azure のお客様は、選択し
 
 公開元サポート オプションについては、「[パートナー センターでの商業マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、「[Marketplace の測定サービス API](./marketplace-metering-service-apis.md)」をご覧ください。

@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402042"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969694"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402042"
 
 ## <a name="what-is-a-management-solution"></a>管理ソリューションとは
 
-管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
+管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
 
 管理ソリューションの構築は、基本的には、Azure 環境内で個々のコンポーネントを作成することから開始します。  正常に機能したら、それらのコンポーネントを[管理ソリューション ファイル]( solutions-solution-file.md)にパッケージ化できます。 
 
@@ -64,7 +64,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 ## <a name="test-your-solution"></a>ソリューションのテスト
-ソリューションを開発している場合は、ワークスペースにインストールしてテストする必要があります。  これには、[Resource Manager テンプレートをテストおよびインストール](../../azure-resource-manager/resource-group-template-deploy.md)できる方法であればどれでも使用できます。
+ソリューションを開発している場合は、ワークスペースにインストールしてテストする必要があります。  これには、[Resource Manager テンプレートをテストおよびインストール](../../azure-resource-manager/templates/deploy-powershell.md)できる方法であればどれでも使用できます。
 
 ## <a name="publish-your-solution"></a>ソリューションを発行する
 ソリューションが完成してテストしたら、次のソースを使用して、顧客がソリューションを利用できるようにします。

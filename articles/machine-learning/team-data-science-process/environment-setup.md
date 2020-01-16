@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63a77a4f715402951ba8af70755196d52e3b742d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e52f88136517339139bebd17dea929ac02201e3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492389"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982022"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Team Data Science Process で使用するためのデータ サイエンス環境の設定
 Team Data Science Process は、データの格納、処理、および分析のために、さまざまなデータ サイエンス環境を使用します。 たとえば、Azure Blob Storage、いくつかの種類の Azure 仮想マシン、HDInsight (Hadoop) クラスター、Azure Machine Learning ワークスペースなどです。 使用する環境を決定する方法は、モデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。 
@@ -26,7 +26,7 @@ Team Data Science Process は、データの格納、処理、および分析の
 
 以下の記事では、Team Data Science Process によって使用されるさまざまなデータ サイエンス環境の設定方法が説明されています。
 
-* [Azure のストレージ アカウント](../../storage/common/storage-quickstart-create-account.md)
+* [Azure のストレージ アカウント](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop) クラスター](customize-hadoop-cluster.md)
 * [Azure Machine Learning Studio (クラシック) ワークスペース](../studio/create-workspace.md)
 

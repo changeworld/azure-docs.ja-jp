@@ -1,17 +1,17 @@
 ---
 title: アプリを最新のスキーマに移行する
-description: ロジック アプリを最新のスキーマ バージョンに移行する方法
+description: ロジック アプリ ワークフローの JSON 定義を最新のワークフロー定義言語スキーマ バージョンに移行する方法
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: dc967c90f28b29a63a1f26d0aae86b6d769c1ccf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786930"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666790"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する
 
@@ -38,6 +38,6 @@ ms.locfileid: "74786930"
 
 * 移行が完了したら、できるだけ [マネージド API](../connectors/apis-list.md) を使用するようにロジック アプリを更新します。 たとえば、DropBox v1 が使われている箇所はすべて Dropbox v2 を使用するように変更します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリを手動で移行する方法について](../logic-apps/logic-apps-schema-2015-08-01.md)

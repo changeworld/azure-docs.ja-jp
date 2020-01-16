@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930489"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969220"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -29,7 +29,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 - Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
 - PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での**共同作成者**ロールで十分です。
 
-ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
 ## <a name="set-up-permissions"></a>アクセス許可の設定
 
@@ -56,7 +56,7 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
 
 ### <a name="custom-scenarios-and-custom-roles"></a>カスタム シナリオとカスタム ロール
 
-場合によっては、データ ファクトリ ユーザーごとに異なるアクセス レベルを付与しなければならない場合があります。 例:
+場合によっては、データ ファクトリ ユーザーごとに異なるアクセス レベルを付与しなければならない場合があります。 次に例を示します。
 - ユーザーが特定のデータ ファクトリに対するアクセス許可のみを持つグループが必要な場合があります。
 - ユーザーはデータ ファクトリの監視しかできず、変更はできないグループが必要な場合もあります。
 
@@ -87,7 +87,7 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
 
   ユーザーのためにデータ ファクトリ リソースの**共同作成者**組み込みロールを割り当てます。 このロールを持つユーザーは、Azure portal でリソースを閲覧することはできますが、 **[公開]** ボタンと **[すべてを公開]** ボタンにアクセスすることはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure でのロールの詳細 - [ロール定義について](../role-based-access-control/role-definitions.md)
 

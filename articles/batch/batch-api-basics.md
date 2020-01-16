@@ -3,7 +3,7 @@ title: 開発者のための概要 - Azure Batch | Microsoft Docs
 description: 開発の観点から、Batch サービスとその API の機能について説明します。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350187"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029766"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -383,7 +383,7 @@ Batch サービスは、ノード上のファイル システムの一部を " *
 
     各タスク ディレクトリ内に、Batch サービスによって作業ディレクトリ (`wd`) が作成されます。その一意のパスは、`AZ_BATCH_TASK_WORKING_DIR` 環境変数によって指定されます。 このディレクトリは、タスクに読み取り/書き込みアクセスを提供します。 タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、および削除できます。 このディレクトリは、タスクに対して指定された *RetentionTime* 制約に基づいて保持されます。
 
-    `stdout.txt` と `stderr.txt`: これらのファイルは、タスクの実行中にタスク フォルダーに書き込まれます。
+    `stdout.txt` および `stderr.txt`:これらのファイルは、タスクの実行中にタスク フォルダーに書き込まれます。
 
 > [!IMPORTANT]
 > ノードをプールから削除すると、ノードに格納されている " *すべて* " のファイルが削除されます。
@@ -490,7 +490,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 ### <a name="debugging-application-failures"></a>アプリケーション エラーのデバッグ
 
-* `stderr` と `stdout`
+* `stderr` および `stdout`
 
     アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
 
@@ -537,7 +537,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。

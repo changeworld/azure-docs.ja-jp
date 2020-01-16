@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671964"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666187"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -21,7 +21,11 @@ ms.locfileid: "74671964"
 
 App Service では、アプリ設定は、環境変数としてアプリケーション コードに渡される変数です。 Linux アプリとカスタム コンテナーの場合、App Service では、コンテナー内に環境変数を設定するためのアプリ設定が `--env` フラグを使用してコンテナーに渡されます。
 
-[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** をクリックします。
+[Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 
+
+![App Services を探す](./media/configure-common/search-for-app-services.png)
+
+アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** を選択します。
 
 ![アプリケーションの設定](./media/configure-common/open-ui.png)
 
@@ -30,7 +34,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 同様に、他の言語スタックも実行時に環境変数としてアプリ設定を取得します。 言語スタック固有の手順については、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.JS](containers/configure-language-nodejs.md#access-environment-variables)
+- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
@@ -82,7 +86,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 
 ## <a name="configure-connection-strings"></a>接続文字列の構成
 
-[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** をクリックします。
+[Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** を選択します。
 
 ![アプリケーションの設定](./media/configure-common/open-ui.png)
 
@@ -100,7 +104,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 たとえば、*connectionstring1* という名前の MySql 接続文字列には環境変数 `MYSQLCONNSTR_connectionString1` としてアクセスできます。 言語スタック固有の手順については、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.JS](containers/configure-language-nodejs.md#access-environment-variables)
+- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
@@ -153,7 +157,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 ## <a name="configure-general-settings"></a>全般設定を構成する
 
-[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** をクリックします。
+[Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの左側のメニューで、 **[構成]**  >  **[全般設定]** を選択します。
 
 ![全般設定](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 この設定は、Windows アプリでのみ使用されます。
 
-[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[既定のドキュメント]** をクリックします。
+[Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの左側のメニューで、 **[構成]**  >  **[既定のドキュメント]** を選択します。
 
-![全般設定](./media/configure-common/open-documents.png)
+![既定のドキュメント](./media/configure-common/open-documents.png)
 
 既定のドキュメントは、Web サイトのルート URL に表示される Web ページです。 一覧で最初に一致するファイルが使用されます。 新しい既定のドキュメントを追加するには、 **[New document] (新しいドキュメント)** をクリックします。 忘れずに **[保存]** をクリックください。
 
@@ -186,9 +190,9 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 ## <a name="configure-path-mappings"></a>パス マッピングを構成する
 
-[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[Path mappings] (パス マッピング)** をクリックします。
+[Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの左側のメニューで、 **[構成]**  >  **[Path mappings]\(パスのマッピング\)** を選択します。
 
-![全般設定](./media/configure-common/open-path.png)
+![パスのマッピング](./media/configure-common/open-path.png)
 
 **[Path mappings] (パス マッピング)** ページには、OS の種類に基づいてさまざまな内容が表示されます。
 
@@ -210,7 +214,7 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 
 [コンテナー化されたアプリのカスタム ストレージを追加](containers/how-to-serve-content-from-azure-storage.md)できます。 コンテナー化されたアプリには、すべての Linux アプリのほか、App Service 上で実行されている Windows および Linux カスタム コンテナーも含まれます。 **[New Azure Storage Mount] (新しい Azure Storage のマウント)** をクリックし、次のようにカスタム ストレージを構成します。
 
-- **Name**:表示名。
+- **Name**:表示名です。
 - **[構成オプション]** : **[基本]** または **[詳細]** 。
 - **[ストレージ アカウント]** :必要なコンテナーを含むストレージ アカウント。
 - **[Storage type]\(ストレージの種類\)** : **[Azure BLOB]** または **[Azure Files]** 。
@@ -228,7 +232,7 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 Linux アプリについては、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.JS](containers/configure-language-nodejs.md)
+- [Node.js](containers/configure-language-nodejs.md)
 - [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
 - [Java](containers/configure-language-java.md)
@@ -238,11 +242,11 @@ Linux アプリについては、次を参照してください。
 
 「[Azure App Service のカスタム Linux コンテナーを構成する](containers/configure-custom-container.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service のカスタム ドメイン名の構成]
 - [Azure App Service でステージング環境を設定する]
-- [Azure App Service で SSL バインディングを使用してカスタム DNS 名のセキュリティを確保する](configure-ssl-bindings.md)
+- [Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 - [診断ログを有効にする](troubleshoot-diagnostic-logs.md)
 - [Azure App Service でのアプリのスケーリング]
 - [Azure App Service での監視の基本]

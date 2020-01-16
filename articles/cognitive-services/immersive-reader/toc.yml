@@ -4,31 +4,37 @@
   items:
     - name: Immersive Reader とは
       href: Overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 'C# の使用'
       href: Quickstart.md
+    - name: Node.js の使用
+      href: quickstart-nodejs.md
     - name: Swift の使用 (iOS)
       href: ios-quickstart.md
 - name: チュートリアル
   items:
-    - name: Immersive Reader の起動 (Node.js)
-      href: tutorial-nodejs.md
     - name: イマーシブ リーダーの起動 (Python)
       href: tutorial-python.md
-    - name: Immersive Reader への画像 (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: 操作方法
   items:
-    - name: Azure Active Directory 認証
-      href: azure-active-directory-authentication.md
+    - name: イマーシブ リーダーのリソースを作成する
+      href: how-to-create-immersive-reader.md
+    - name: Cookie のポリシーを設定する
+      href: how-to/set-cookie-policy.md
+    - name: 数式を表示する
+      href: how-to/display-math.md
+    - name: イマーシブ リーダーを起動して HTML コンテンツを表示する
+      href: how-to-launch-with-html.md
+    - name: イマーシブ リーダーのボタンをカスタマイズする
+      href: how-to-customize-launch-button.md
+    - name: 認証トークンをキャッシュする
+      href: how-to-cache-token.md
 - name: リファレンス
   items:
     - name: SDK リファレンス
       href: reference.md
-    - name: iOS SDK のリファレンス
-      href: ios-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

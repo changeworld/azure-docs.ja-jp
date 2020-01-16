@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティ保護する
+title: 仮想ネットワーク サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティ保護する
 description: このドキュメントでは、Azure Cosmos アカウントの仮想ネットワークとサブネット アクセス制御について説明します。
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444614"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) から Azure Cosmos DB にアクセスする
 
@@ -65,7 +65,7 @@ NSG 規則は、仮想ネットワークを使用したサブネットとの接�
 これは、Azure Data Factory、Azure Cognitive Search、または特定の Azure リージョンにデプロイされるサービスのような他の Azure ファースト パーティ サービスによって Azure Cosmos DB アカウントがアクセスされる場合にのみ必要です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [仮想ネットワーク内のサブネットへの Azure Cosmos アカウントのアクセスを制限する方法](how-to-configure-vnet-service-endpoint.md)
 * [Azure Cosmos アカウントに IP ファイアウォールを構成する方法](how-to-configure-firewall.md)

@@ -1,53 +1,47 @@
 ---
 title: クラスター作成時の Apache Hive ライブラリ - Azure HDInsight
-description: クラスターの作成時に Apache Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。
+description: クラスターの作成中に Apache Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 51a93aaec4abdb2dd9d8fad042c079a48d4ea7a3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494832"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552272"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
 
-HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前に読み込む方法を説明します。 このドキュメントには、クラスターの作成時にスクリプト操作を使ってライブラリを事前に読み込む方法についての情報が含まれます。 このドキュメントの手順を使用して追加されたライブラリは Hive でグローバルに使用できます ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
+HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前に読み込む方法を説明します。 このドキュメントには、クラスターの作成時にスクリプト操作を使ってライブラリを事前に読み込む方法についての情報が含まれます。 このドキュメントの手順を使用して追加されたライブラリは、Hive でグローバルに使用できます。[ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要はありません。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
-クラスターを作成するときに、スクリプト操作を使って、作成されるクラスター ノードを変更できます。 このドキュメントのスクリプトは、唯一のパラメーターでライブラリの場所を受け取ります。 この場所は Azure Storage アカウントである必要があり、ライブラリは jar ファイルとして格納されている必要があります。
+クラスターを作成するときは、スクリプト アクションを使用して、作成されたクラスター ノードを変更できます。 このドキュメントのスクリプトは、唯一のパラメーターでライブラリの場所を受け取ります。 この場所は Azure Storage アカウントである必要があり、ライブラリは jar ファイルとして格納されている必要があります。
 
 クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`core-site.xml` ファイルの `hive.aux.jars.path` プロパティに追加されます。 Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
 
-> [!NOTE]  
-> この記事のスクリプト アクションを使用すると、次のシナリオでライブラリを使用できます。
->
-> * **Linux ベースの HDInsight** - Hive クライアント、**WebHCat**、および **HiveServer2** を使用する場合。
-> * **Windows ベースの HDInsight** - Hive クライアントおよび **WebHCat** を使用する場合。
+この記事のスクリプト アクションを使用すると、**WebHCat** および **HiveServer2** 用に Hive クライアントを使用するときにライブラリが使用可能になります。
 
-## <a name="the-script"></a>スクリプト
+## <a name="the-script"></a>スクリプトは、以下のことを行います
 
 **スクリプトの場所**
 
-**Linux ベースのクラスター**の場合: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+[https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**Windows ベースのクラスター**の場合: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
-
-**要件**
+**必要条件**
 
 * このスクリプトは、**ヘッド ノード**と**ワーカー ノード**の両方に適用する必要があります。
 
 * インストールする jar は、Azure Blob Storage の **単一のコンテナー**に格納する必要があります。
 
-* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 既定のストレージ アカウントまたは __オプションの構成__ を通じて追加されたアカウントである必要があります。
+* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 これは既定のストレージ アカウントか、または__ストレージ アカウントの設定__によって追加されたアカウントのどちらかである必要があります。
 
-* コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウントの **libs** というコンテナーに格納されている場合、パラメーターは **wasb://libs\@mystorage.blob.core.windows.net/** となります。
+* コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウント上の **libs** という名前のコンテナーに格納されている場合、パラメーターは `wasbs://libs@mystorage.blob.core.windows.net/` になります。
 
   > [!NOTE]  
   > このドキュメントでは、既にストレージ アカウントと BLOB コンテナーを作成し、そこにファイルをアップロードしていることを前提としています。
@@ -56,37 +50,24 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 ## <a name="create-a-cluster-using-the-script"></a>スクリプトを使用してクラスターを作成する
 
-> [!NOTE]  
-> 次の手順では、Linux ベースの HDInsight クラスターを作成します。 Windows ベースのクラスターを作成するには、クラスターの作成時にクラスターの OS として **Windows** を選択し、Bash スクリプトの代わりに Windows (PowerShell) スクリプトを使用します。
->
-> Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。 これらの方法の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+1. [Linux での HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページの手順を使用してクラスターのプロビジョニングを開始しますが、プロビジョニングを完了しないでください。 Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。 これらの方法の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。 Azure portal の場合は、 **[従来の作成エクスペリエンスに移動]** オプションを選択してから、 **[Custom(size, settings, apps)] (カスタム (サイズ、設定、アプリ))** を選択する必要があります。
 
-1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+1. **[ストレージ]** で、jar ファイルのライブラリが含まれているストレージ アカウントがクラスターに使用されるアカウントと異なる場合は、 **[Additional storage accounts] (追加のストレージ アカウント)** に入力します。
 
-2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
+1. **[スクリプト アクション]** では、次の情報を指定します。
 
-   * **[名前]** : スクリプト アクションのフレンドリ名を入力します。
+    |プロパティ |値 |
+    |---|---|
+    |スクリプトの種類|- Custom|
+    |Name|ライブラリ |
+    |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
+    |ノードの種類|ヘッド、ワーカー|
+    |パラメーター|jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、「 `wasbs://libs@mystorage.blob.core.windows.net/` 」のように入力します。|
 
-   * **[スクリプト URI]** : https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh 。
+1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
-   * **[ヘッド]** : このオプションをオンにします。
+クラスターの作成が完了したら、`ADD JAR` ステートメントを使用しなくても、このスクリプトによって追加された jar を Hive から使用できます。
 
-   * **[ワーカー]** :このオプションをオンにします。
-
-   * **[ZooKeeper]** : 空白のままにします。
-
-   * **[パラメーター]** : jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、**wasb://libs\@mystorage.blob.core.windows.net/** です。
-
-3. **[スクリプト アクション]** の下部で、 **[選択]** を使用して構成を保存します。
-
-4. **[オプションの構成]** セクションで、 **[リンクされたストレージ アカウント]** を選択し、 **[ストレージ キーの追加]** リンクをクリックします。 jar が格納されているストレージ アカウントを選択します。 **選択** ボタンを使って設定を保存し、**オプションの構成**を戻します。
-
-5. オプションの構成を保存するには、 **[オプションの構成]** セクションの下部にある **[選択]** ボタンを使います。
-
-6. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
-
-クラスターの作成が完了したら、このスクリプトで追加した jar を、`ADD JAR` ステートメントを使用することなく、Hive から使用できます。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Hive の操作の詳細については、[HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)に関するページを参照してください

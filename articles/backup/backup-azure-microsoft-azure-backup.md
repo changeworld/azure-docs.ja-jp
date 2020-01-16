@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172987"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979885"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -19,7 +19,7 @@ ms.locfileid: "74172987"
 >
 >
 
-> 適用対象:MABS v3 (MABS v2 は現在サポートされていません。 MABS v3 より前のバージョンを使用している場合、最新版にアップグレードしてください)
+> 適用先:MABS v3 (MABS v2 は現在サポートされていません。 MABS v3 より前のバージョンを使用している場合、最新版にアップグレードしてください)
 
 この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードをバックアップする環境の準備方法について説明します。 Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74172987"
 Azure VM にデプロイされた MABS では、Azure で VM をバックアップできますが、バックアップ操作を有効にするには、それらが同じドメイン内にある必要があります。 Azure VM をバックアップするプロセスは、オンプレミスで VM をバックアップするプロセスと変わりませんが、Azure で MABS をデプロイするには、いくつかの制限があります。 制限の詳細については、「[Azure の仮想マシンとしての DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)」を参照してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 >
 >
 
@@ -90,7 +90,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ### <a name="downloading-the-software-package"></a>ソフトウェア パッケージのダウンロード
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 既に Recovery Services コンテナーが開かれている場合は、手順 3. に進みます。 Recovery Services コンテナーが開かれていないが、Azure Portal 内にいる場合は、メイン メニューの **[参照]** をクリックします。
 
    * リソース ボックスに「 **Recovery Services**」と入力します。
@@ -339,14 +339,14 @@ MABS をアップグレードするには、次の手順を使用します。
 
 3. 保護サーバー上の保護エージェントを更新します。
 4. バックアップを続行します。実稼働サーバーを再起動する必要はありません。
-5. これで、データの保護を開始できます。 保護しながら、Modern Backup Storage にアップグレードする場合は、バックアップを格納するボリュームを選択して、プロビジョニングされた領域の下をチェックすることもできます。 [詳細情報](backup-mabs-add-storage.md)。
+5. これで、データの保護を開始できます。 保護しながら、Modern Backup Storage にアップグレードする場合は、バックアップを格納するボリュームを選択して、プロビジョニングされた領域の下をチェックすることもできます。 [詳細については、こちらを参照してください](backup-mabs-add-storage.md)。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーのため失敗した場合、詳細については、この[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
 [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。
 

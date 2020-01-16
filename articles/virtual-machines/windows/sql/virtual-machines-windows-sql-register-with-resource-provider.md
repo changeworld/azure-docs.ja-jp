@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2430b5135a5d3f7ad1f9ef0bd17d9149bf48ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793458"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690794"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -62,7 +62,7 @@ SQL VM リソース プロバイダーを使用する利点の詳細について
 SQL Server VM をリソース プロバイダーに登録するには、次のものが必要になります。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- パブリック クラウドにデプロイされた Azure Resource Model の [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md)。 
+- パブリック クラウドまたは Azure Government クラウドにデプロイされた Azure Resource Model の [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md)。 
 - [Azure CLI](/cli/azure/install-azure-cli) または [PowerShell](/powershell/azure/new-azureps-module-az) の最新バージョン。 
 
 ## <a name="management-modes"></a>管理モード
@@ -91,7 +91,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
 
 お使いの SQL Server VM を SQL VM リソースプロバイダーに登録するには、まずそのリソースプロバイダーに自分のサブスクリプションを登録する必要があります。 これにより、SQL VM リソース プロバイダーは、サブスクリプション内にリソースを作成できるようになります。  これは Azure portal、Azure CLI、または PowerShell を使用して実行できます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. Azure portal を開き、 **[すべてのサービス]** に移動します。 
 1. **[サブスクリプション]** に移動し、目的のサブスクリプションを選択します。  
@@ -221,9 +221,9 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
 エージェントのモードを "フル" にアップグレードするには: 
 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. [SQL 仮想マシン](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) リソースに移動します。 
 1. 対象の SQL Server 仮想マシンを選択し、 **[概要]** を選択します。 
 1. IaaS モードが NoAgent または軽量である SQL Server VM では、**SQL IaaS 拡張機能で利用できるのはライセンスの種類とエディションの更新のみ**という内容のメッセージを選択します。
@@ -263,9 +263,9 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
 ## <a name="verify-registration-status"></a>登録状態を確認する
 お使いの SQL Server VM が既に SQL VM リソースプロバイダーに登録されているかどうかは、Azure portal、Azure CLI、または PowerShell を使用して確認できます。 
 
-### <a name="azure-portal"></a>Azure ポータル 
+### <a name="azure-portal"></a>Azure portal 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 1. お使いの [SQL Server 仮想マシン](virtual-machines-windows-sql-manage-portal.md)に移動します。
 1. 一覧から SQL Server VM を選択します。 お使いの SQL Server VM がここに表示されていない場合は、SQL VM リソースプロバイダーに登録されていない可能性があります。 
 1. **[状態]** の値を確認します。 **[状態]** が **[成功]** の場合は、その SQL Server VM が正常に SQL VM リソースプロバイダーに登録されています。 
@@ -286,8 +286,7 @@ Az CLI または PowerShell を使用して現在の SQL Server VM の登録状�
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
-  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
   ```
 
 ---
@@ -301,7 +300,7 @@ SQL VM リソースプロバイダーから SQL Server VM の登録を解除す�
 
 SQL VM リソース プロバイダーから SQL VM の登録を解除するには、管理モードを完全からダウングレードする必要があります。 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、次の手順に従います。
 
@@ -349,14 +348,14 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 SQL VM リソース プロバイダーでは次のものだけがサポートされます。
 - Azure Resource Manager を介してデプロイされた SQL Server VM。 クラシック モデルを介してデプロイされた SQL Server VM はサポートされません。 
-- パブリック クラウドにデプロイされた SQL Server VM。 プライベート クラウドや政府機関向けクラウドにデプロイされている場合はサポートされません。 
+- パブリック クラウドまたは Azure Government クラウドにデプロイされた SQL Server VM。 その他のプライベート クラウドや政府機関向けクラウドにデプロイされている場合はサポートされません。 
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 
 
 **Azure Marketplace の SQL Server イメージからプロビジョニングされた SQL Server VM を登録する必要はありますか?**
 
-No. Azure Marketplace の SQL Server イメージからプロビジョニングされた VM は自動的に登録されます。 SQL VM リソースプロバイダーへの登録が必要になるのは、VM が Azure Marketplace の SQL Server イメージからプロビジョニングされて "*おらず*"、SQL Server を自分でインストールした場合のみです。
+いいえ。 Azure Marketplace の SQL Server イメージからプロビジョニングされた VM は自動的に登録されます。 SQL VM リソースプロバイダーへの登録が必要になるのは、VM が Azure Marketplace の SQL Server イメージからプロビジョニングされて "*おらず*"、SQL Server を自分でインストールした場合のみです。
 
 **SQL VM リソース プロバイダーは、すべての顧客が使用できますか。** 
 
@@ -382,7 +381,7 @@ SQL VM リソースプロバイダーへの登録時の既定の SQL 管理モ�
 
 **SQL VM リソースプロバイダーに登録すると、VM にエージェントがインストールされますか?**
 
-No. SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM にエージェントがインストールされることはありません。
+いいえ。 SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM にエージェントがインストールされることはありません。
 
 SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必要です。 管理モードを軽量から完全にアップグレードすると、SQL Server IaaS 拡張機能がインストールされ、SQL Server が再起動されます。
 
@@ -398,11 +397,11 @@ SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必�
 
 **SQL Server のライセンスの種類を指定せずに SQL VM リソースプロバイダーに登録できますか?**
 
-No. SQL VM リソースプロバイダーに登録している場合、SQL Server のライセンスの種類は省略可能なプロパティではありません。 すべての管理モード (エージェントなし、軽量、フル) で SQL VM リソース プロバイダーに登録する際、SQL Server のライセンスの種類を従量課金制または Azure ハイブリッド特典として設定する必要があります。
+いいえ。 SQL VM リソースプロバイダーに登録している場合、SQL Server のライセンスの種類は省略可能なプロパティではありません。 すべての管理モード (エージェントなし、軽量、フル) で SQL VM リソース プロバイダーに登録する際、SQL Server のライセンスの種類を従量課金制または Azure ハイブリッド特典として設定する必要があります。
 
 **SQL Server IaaS 拡張機能をエージェントなしモードから完全モードにアップグレードできますか?**
 
-No. エージェントなしモードでは、管理モードを完全または軽量にアップグレードすることはできません。 これは Windows Server 2008 の技術的な制限です。 最初に OS を Windows Server 2008 R2 以上にアップグレードする必要があります。その後、フル管理モードにアップグレードできます。 
+いいえ。 エージェントなしモードでは、管理モードを完全または軽量にアップグレードすることはできません。 これは Windows Server 2008 の技術的な制限です。 最初に OS を Windows Server 2008 R2 以上にアップグレードする必要があります。その後、フル管理モードにアップグレードできます。 
 
 **SQL Server IaaS 拡張機能を軽量モードから完全モードにアップグレードできますか?**
 
@@ -410,17 +409,17 @@ No. エージェントなしモードでは、管理モードを完全または�
 
 **SQL Server IaaS 拡張機能を完全モードからエージェントなしまたは軽量管理モードにダウングレードすることはできますか?**
 
-No. SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
+いいえ。 SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
 
 管理モードを完全管理から変更するには、SQL Server "*リソース*" を削除することで SQL Server リソース プロバイダーから SQL Server 仮想マシンの[登録を解除](#unregister-vm-from-rp)し、別の管理モードでその SQL Server VM を SQL VM リソース プロバイダーに再登録します。
 
 **Azure portal から SQL VM リソースプロバイダーに登録できますか?**
 
-No. Azure portal では SQL VM リソースプロバイダーへの登録を利用できません。 SQL VM リソース プロバイダーへの登録は、Azure CLI または PowerShell でのみサポートされます。 
+いいえ。 Azure portal では SQL VM リソースプロバイダーへの登録を利用できません。 SQL VM リソース プロバイダーへの登録は、Azure CLI または PowerShell でのみサポートされます。 
 
 **SQL Server をインストールする前に、VM を SQL VM リソースプロバイダーに登録できますか?**
 
-No. SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
+いいえ。 SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
 
 **複数の SQL Server インスタンスがある場合、VM を SQL VM リソースプロバイダーに登録できますか?**
 
@@ -435,7 +434,7 @@ No. SQL VM リソースプロバイダーへの登録を成功させるには、
 はい。 Always On 可用性グループ構成に参加している場合、Azure VM 上の SQL Server インスタンスを SQL VM リソースプロバイダーに登録することに制限はありません。
 
 **SQL VM リソース プロバイダーに登録する場合、または完全管理モードにアップグレードする場合、どのようなコストがかかりますか?**
-なし。 SQL VM リソース プロバイダーへの登録に関連する料金も、3 種類のいずれの管理モードの使用に関連する料金もかかりません。 ご利用の SQL Server VM をリソース プロバイダーを使用して管理する場合は、完全に無料です。 
+[なし] : SQL VM リソース プロバイダーへの登録に関連する料金も、3 種類のいずれの管理モードの使用に関連する料金もかかりません。 ご利用の SQL Server VM をリソース プロバイダーを使用して管理する場合は、完全に無料です。 
 
 **さまざまな管理モードを使用すると、パフォーマンスにどのような影響がありますか?**
 *NoAgent* および*軽量*管理性モードを使用する場合、影響はありません。 OS にインストールされている 2 つのサービスから、*完全*管理モードを使用する場合の影響は最小限に抑えられます。 これらは、タスク マネージャーを使用して監視し、組み込みの Windows サービス コンソールに表示することができます。 
@@ -445,7 +444,7 @@ No. SQL VM リソースプロバイダーへの登録を成功させるには、
 - `SQLIaaSExtension` (表示名 - `Microsoft SQL Server IaaS Agent`)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

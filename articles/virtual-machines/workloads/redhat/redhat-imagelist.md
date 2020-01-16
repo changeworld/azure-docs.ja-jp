@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 61991e271a68c9160a34d0de99fe4c9259ca41cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32df17ffed400af80eadadbdeaafbaa1e3e1dbce
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476941"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941699"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ
 Azure では、さまざまなユース ケースに対応する多様な RHEL イメージを提供しています。
@@ -66,5 +66,5 @@ rhel-byos     |rhel-lvm74| LVM    | Linux エージェント | RHEL 7.4 BYOS イ
 ## <a name="next-steps"></a>次のステップ
 * [Azure の Red Hat イメージ](./redhat-images.md)の詳細を確認します。
 * [Red Hat Update Infrastructure](./redhat-rhui.md) の詳細を確認します。
-* [RHEL BYOS プラン](./redhat-byos.md)の詳細を確認します。
+* [RHEL BYOS プラン](./byos.md)の詳細を確認します。
 * すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979511"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 
@@ -56,8 +56,8 @@ Resource Manager 環境では次のルールが適用されます。
 ディレクトリの不一致エラーの解決には、次の 2 つのオプションがあります。
 
 * 既存の Azure AD ディレクトリから [Azure AD DS マネージド ドメインを削除](delete-aadds.md)します。 使用する仮想ネットワークと同じ Azure AD ディレクトリに、[代替 Azure AD DS マネージド ドメインを作成](tutorial-create-instance.md)します。 準備ができたら、削除したドメインに以前参加していたマシンすべてを、再作成したマネージド ドメインに参加させます。
-* Azure AD DS マネージド ドメインと同じ Azure AD ディレクトリに、仮想ネットワークが含まれる [Azure サブスクリプションを移動](../billing/billing-subscription-transfer.md)します。
+* Azure AD DS マネージド ドメインと同じ Azure AD ディレクトリに、仮想ネットワークが含まれる [Azure サブスクリプションを移動](../cost-management-billing/manage/billing-subscription-transfer.md)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS に関する問題のトラブルシューティングの詳細については、[トラブルシューティング ガイド](troubleshoot.md)に関するページを参照してください。

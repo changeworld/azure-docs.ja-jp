@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421854"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979469"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -41,7 +41,7 @@ Azure Portal で**仮想マシン**に移動します。
 
 ### <a name="resource-group-limit"></a> オンボードの制限事項
 
-オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムの展開と混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。 この制限は、Automation ソリューションによって管理できるリソース グループの数ではなく、同時オンボードのみに適用されます。
+オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/templates/cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムの展開と混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。 この制限は、Automation ソリューションによって管理できるリソース グループの数ではなく、同時オンボードのみに適用されます。
 
 また、Runbook をオンボードに使用することもできます。 詳細については、「[Update と Change Tracking ソリューションの Azure Automation への配布準備をする](automation-onboard-solutions.md)」を参照してください。
 

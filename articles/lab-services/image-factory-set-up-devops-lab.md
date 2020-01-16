@@ -44,7 +44,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 代わりに使用する既存の DevOps アカウントまたはプロジェクトがある場合、この手順をスキップします。
 
-開始するには、Azure DevOps で無料アカウントを作成します。 https://www.visualstudio.com/ にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します: `https://<accountname>.visualstudio.com/MyFirstProject`。
+開始するには、Azure DevOps で無料アカウントを作成します。 [https://www.visualstudio.com/](https://www.visualstudio.com/ ) にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します: `https://<accountname>.visualstudio.com/MyFirstProject`。
 
 ## <a name="check-in-the-image-factory-to-git"></a>イメージ ファクトリの Git へのチェックイン
 イメージ ファクトリのすべての PowerShell、テンプレート、構成は、[パブリックの DevTest Labs GitHub レポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)内にあります。 新しいチーム プロジェクトにコードを取り込む最も速い方法は、リポジトリをインポートすることです。 これにより、DevTest Labs リポジトリ全体をプルします (こうして追加のドキュメントやサンプルを取得できます)。

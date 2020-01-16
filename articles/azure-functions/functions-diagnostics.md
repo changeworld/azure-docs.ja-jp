@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227023"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562053"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診断の概要
 
@@ -44,13 +44,13 @@ Azure Functions 診断にアクセスするには:
 
 ## <a name="find-the-problem-code"></a>問題のあるコードを見つける 
 
-スクリプトベースの関数では、 **[Function Execution] (関数の実行)** や **[Function App がダウンしているか、エラーが報告される] のエラー**を使用して、例外やエラーを引き起こしているコード行を絞り込むことができます。 この機能は、根本原因を特定し、特定のコード行の問題を修正するための便利なツールです。 このオプションは、プリコンパイル済み C# 関数と Java 関数では使用できません。
+スクリプトベースの関数では、 **[Function Execution] (関数の実行)** や **[Function App がダウンしているか、エラーが報告される]** の **[エラー]** を使用して、例外やエラーを引き起こしているコード行を絞り込むことができます。 この機能は、根本原因を特定し、特定のコード行の問題を修正するための便利なツールです。 このオプションは、プリコンパイル済み C# 関数と Java 関数では使用できません。
 
 ![関数の実行エラーに関する診断レポート](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 
 ![関数の例外](./media/functions-diagnostics/function-exception.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [UserVoice](https://feedback.azure.com/forums/355860-azure-functions) で、Azure Functions 診断に関する質問をしたり、フィードバックを提供したりすることができます。 フィードバックのタイトルに `[Diag]` を含めてください。
 

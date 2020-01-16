@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644598"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830379"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -84,23 +84,9 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 - 作成時または作成後のスクリプト。 スクリプトは、[スクリプト操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)を使用して呼び出されます。これは Azure portal、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 この構成オプションは、Azure portal、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK から使用できます。
 
-- クラスターをプロビジョニングした後の `sudo` または他のメソッド。
-  
 - エコシステム アプリケーションをインストールする [HDInsight アプリケーション プラットフォーム](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)。
 
-ただし、Microsoft サポート チームは、次の状況に対してのみサポートを提供できます。
-
-- スクリプトの読み込み中に発生した問題またはエラー。 カスタム スクリプトの実行中に発生したエラーは、サポート チケットの範囲外です。
-
-- クラスターの作成プロセスに含まれる追加のアプリケーション。 
-
 サポートされるコンポーネントの一覧については、「[HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)」を参照してください。
-
-個々のコンポーネントのサポートについても、クラスターの種類ごとに異なる場合があります。 たとえば、Spark は Kafka クラスターではサポートされません。また、その逆も同様です。
-
-クラスター作成プロセス以外のアプリケーションとサービスについては、ベンダーまたはサービス プロバイダーにサポートを依頼してください。 多くのコミュニティ サポート サイトを使用することもできます。 たとえば、[HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や、[Stack Overflow](https://stackoverflow.com/) などです。 Apache プロジェクトにも、[Apache の Web サイト](https://apache.org/)にプロジェクトのサイトがあります。 たとえば、[Hadoop](https://hadoop.apache.org/) などです。 
-
-Azure サポートの詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>クラスターにプレインストールされている個々のコンポーネントをアップグレードできますか。
 

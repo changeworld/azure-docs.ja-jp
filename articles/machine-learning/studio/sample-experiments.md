@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 6b9f9e3cfc198610cf1f5f76b267ea52c551716a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427501"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio (クラシック) の実験を作成する
 
@@ -49,14 +49,14 @@ ms.locfileid: "73838639"
     ![実験例](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>サンプルをテンプレートとして使用して新しい実験を作成する
-ギャラリーのサンプルをテンプレートとして使用して、Machine Learning Studio のクラシック バージョンで新しい実験を作成することもできます。
+ギャラリーの例をテンプレートとして使用して、Machine Learning Studio (クラシック) で新しい実験を作成することもできます。
 
 1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net)にサインインし、 **[新規]** をクリックして実験を作成します。
 2. サンプルのコンテンツを参照し、いずれかをクリックします。
 
 サンプル実験をテンプレートとして使用して、Machine Learning Studio (クラシック) ワークスペースに新しい実験が作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [さまざまなソースからデータをインポートする](import-data.md)
 * [Machine Learning 向け R 言語のクイックスタート チュートリアル](r-quickstart.md)
 * [Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519854"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530937"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問
 
@@ -38,7 +38,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Apache Kafka API は HDInsight と連携しますか?
 
-はい。HDInsight ではネイティブ Kafka API を使用します。 クライアント アプリケーションのコードを変更する必要はありません。 手順については、「[チュートリアル: Apache Kafka Producer および Consumer API の使用](./apache-kafka-producer-consumer-api.md)」を参照して、クラスターで Java ベースの Producer API と Consumer API を使用する方法を確認します。
+はい。HDInsight ではネイティブ Kafka API を使用します。 クライアント アプリケーションのコードを変更する必要はありません。 「[チュートリアル:Apache Kafka Producer および Consumer API の使用](./apache-kafka-producer-consumer-api.md)」を参照して、クラスターで Java ベースの Producer API と Consumer API を使用する方法を確認します。
 
 ## <a name="can-i-change-cluster-configurations"></a>クラスター構成を変更できますか?
 
@@ -46,7 +46,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>HDInsight で Apache Kafka に対してサポートされる認証の種類はどれですか?
 
-[Enterprise セキュリティ パッケージ (ESP)](../domain-joined/apache-domain-joined-architecture.md) を使用すると、Kafka クラスター用のトピックレベルのセキュリティを取得できます。 手順については、「[チュートリアル: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)](../domain-joined/apache-domain-joined-run-kafka.md)」を参照してください。
+[Enterprise セキュリティ パッケージ (ESP)](../domain-joined/apache-domain-joined-architecture.md) を使用すると、Kafka クラスター用のトピックレベルのセキュリティを取得できます。 「[チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)](../domain-joined/apache-domain-joined-run-kafka.md)」を参照してください。
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>データは暗号化されますか? 独自のキーを使用できますか?
 
@@ -65,6 +65,10 @@ Kafka クライアントで Kafka ブローカーと通信するには、ネッ�
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>既存のクラスターに対してディスク領域をさらに追加することはできますか?
 
 Kafka メッセージで使用できる領域を増やすには、ノードの数を増やすことができます。 現在、既存のクラスターに対してディスクをさらに追加することは、サポートされていません。
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka クラスターを Databricks で動作させることはできますか? 
+
+はい。 Kafka クラスターは、同じ VNet 内にある限り、Databricks で動作できます。 Databricks で Kafka クラスターを使用するには、HDInsight Kafka クラスターが含まれる VNet を作成し、Databricks ワークスペースを作成して VNet インジェクションを使用するときにその VNet を指定します。 詳細については、「[Azure Virtual Network に Azure Databricks をデプロイする (VNet インジェクション)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。 Databricks ワークスペースの作成時に、Kafka クラスターのブートストラップ ブローカー名を指定する必要があります。 Kafka ブローカー名の取得方法の詳細については、「[Apache Zookeeper およびブローカーのホスト情報を取得する](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)」を参照してください。
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>最大限のデータの持続性を達成するにはどうすればよいですか?
 
@@ -90,7 +94,7 @@ Kafka メッセージで使用できる領域を増やすには、ノードの�
 
 Azure Monitor を使用して [Kafka ログ](./apache-kafka-log-analytics-operations-management.md)を分析します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する](./apache-kafka-ssl-encryption-authentication.md)
 * [MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする](./apache-kafka-mirroring.md)

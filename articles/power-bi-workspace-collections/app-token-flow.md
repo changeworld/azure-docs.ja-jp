@@ -1,5 +1,5 @@
 ---
-title: Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs
+title: 認証と承認 - Power BI ワークスペース コレクション
 description: Power BI ワークスペース コレクションでの認証と承認について説明します。
 services: power-bi-workspace-collections
 author: rkarlin
@@ -8,12 +8,12 @@ ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fcd7caffb041c57090d7256361421cb49a9a5fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427110"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -36,7 +36,7 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 
 アプリケーション トークンには、次の要求を含めることができます。
 
-| 要求 | 説明 |    
+| 要求 | [説明] |    
 | --- | --- |
 | **ver** |アプリケーション トークンのバージョン。 0.2.0 が現行バージョンです。 |
 | **aud** |トークンの対象となる受信者。 Power BI ワークスペース コレクションの場合は *https:\//analysis.windows.net/powerbi/api* を使用します。 |
@@ -92,7 +92,7 @@ SDK には、アプリケーション トークンの作成を容易にするメ
 
 Power BI ワークスペース コレクションで使用可能なスコープを次に示します。
 
-|Scope (スコープ)|説明|
+|スコープ|[説明]|
 |---|---|
 |Dataset.Read|指定されたデータセットに対する読み取りアクセス許可を提供します。|
 |Dataset.Write|指定したデータセットに対する書き込みアクセス許可を提供します。|
@@ -140,10 +140,10 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作とスコープ
 
-|Operation|ターゲット リソース|トークン アクセス許可|
+|操作|ターゲット リソース|トークン アクセス許可|
 |---|---|---|
-|データセットに基づいて新しいレポートを (メモリ内で) 作成する。|Dataset|Dataset.Read|
-|データセットに基づいて新しいレポートを (メモリ内で) 作成し、レポートを保存する。|Dataset|* Dataset.Read<br>* Workspace.Report.Create|
+|データセットに基づいて新しいレポートを (メモリ内で) 作成する。|データセット|Dataset.Read|
+|データセットに基づいて新しいレポートを (メモリ内で) 作成し、レポートを保存する。|データセット|* Dataset.Read<br>* Workspace.Report.Create|
 |既存のレポートを表示し、閲覧または (メモリ内で) 編集する。 Report.Read は Dataset.Read を暗黙的に示します。 Report.Read は編集の保存を許可しません。|レポート|Report.Read|
 |既存のレポートを編集および保存する。|レポート|Report.ReadWrite|
 |レポートのコピーを保存する (名前を付けて保存)。|レポート|* Report.Read<br>* Workspace.Report.Copy|
@@ -172,7 +172,7 @@ Body
 
 ![アプリケーションに埋め込まれたレポートのサンプル](media/get-started-sample/sample-web-app.png)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Microsoft Power BI ワークスペース コレクションのサンプルの使用](get-started-sample.md)  
@@ -180,4 +180,4 @@ Body
 [Microsoft Power BI ワークスペース コレクションの概要](get-started.md)  
 [PowerBI-CSharp Git リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
 
-ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。
+その他の質問 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893704"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887634"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight を使用して YARN で Spark から Azure Cosmos DB Cassandra API にアクセスする
 
@@ -29,7 +29,7 @@ ms.locfileid: "60893704"
 
 * [Cassandra API の使用におけるコード サンプルを確認する](cassandra-spark-generic.md#next-steps)
 
-* [必要な場合は検証のために cqlsh を使用する](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [必要な場合は検証のために cqlsh を使用する](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
 * **Spark2 の Cassandra API 構成** - Cassandra 用の Spark コネクタでは、Spark コンテキストの一部として、Cassandra への接続の詳細を初期化する必要があります。 Jupyter ノートブックを起動すると、Spark セッションとコンテキストは既に初期化されています。Spark コンテキストが、HDInsight の既定の Jupyter ノートブックのスタートアップの一部としてすべての構成セットを備えていない限り、このコンテキストを停止して再初期化することはお勧めしません。 回避策の 1 つは、Ambari、Spark2 サービス構成に Cassandra インスタンスの詳細を直接追加することです。 これはクラスターあたり 1 回限りのアクティビティで、Spark2 サービスの再起動が必要です。
  
@@ -130,7 +130,7 @@ Jupyter を起動するときに、Scala に移動します。 まずディレ�
 
 運用環境での自動化されたプロセスでは、Spark プログラムが [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html) を使用してクラスターに送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [IDE で Spark Scala プログラムを構築し、Livy を使用して HDInsight Spark クラスターに送信して実行する方法](../hdinsight/spark/apache-spark-create-standalone-application.md)
 

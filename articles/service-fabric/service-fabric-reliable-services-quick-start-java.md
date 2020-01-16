@@ -1,27 +1,18 @@
 ---
-title: Java で信頼性の高い最初の Azure Service Fabric サービスを作成する | Microsoft Docs
+title: Java で最初の信頼性の高いサービスを作成する
 description: ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130128"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614215"
 ---
-# <a name="get-started-with-reliable-services"></a>Reliable Services 使用
+# <a name="get-started-with-reliable-services-in-java"></a>Java で Reliable Services の使用を開始する
 > [!div class="op_single_selector"]
 > * [Windows での C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
@@ -244,7 +235,7 @@ $ gradle
 
 これにより、Service Fabric CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 
 ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
@@ -270,6 +261,6 @@ $ gradle
 > アプリケーションを Azure 内のセキュアな Linux クラスターにデプロイするには、Service Fabric ランタイムを使用してアプリケーションを検証するように証明書を構成する必要があります。 これにより、Reliable Services サービスが基盤の Service Fabric ランタイム API と通信できるようになります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。  
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI の概要](service-fabric-cli.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671775"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680955"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -97,7 +97,9 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 Azure Pipelines (プレビュー) を使用してアプリのローカル Git デプロイを有効にするには:
 
-1. Azure portal でご利用の [Azure App Service](https://portal.azure.com) アプリのページに移動し、左側のメニューで **[デプロイ センター]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。 
+
+1. ご利用の Azure App Service アプリを選択し、左側のメニューで **[デプロイ センター]** を選択します。
    
 1. **[デプロイ センター]** ページで、 **[ローカル Git]** を選択して、 **[続行]** を選択します。 
    
@@ -153,5 +155,5 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 
 - [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
 - [Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)
-- [サンプル: Web アプリを作成してローカル Git リポジトリからコードをデプロイする (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
-- [サンプル: Web アプリを作成してローカル Git リポジトリからコードをデプロイする (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [サンプル:Web アプリを作成してローカル Git リポジトリからコードをデプロイする (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+- [サンプル:Web アプリを作成してローカル Git リポジトリからコードをデプロイする (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

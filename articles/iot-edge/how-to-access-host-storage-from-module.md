@@ -4,16 +4,16 @@ description: 環境変数と作成オプションを使用して、モジュー�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434521"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>モジュールにデバイスのローカル ストレージへのアクセスを許可する
 
@@ -23,14 +23,14 @@ Azure Storage サービスを使用して、またはデバイスのコンテナ
 
 モジュール ストレージからホスト システム上のストレージへのリンクを有効にするには、コンテナー内のストレージ フォルダーを指す、モジュール用の環境変数を作成します。 その後、作成オプションを使用して、ホスト コンピューター上のフォルダーにそのストレージ フォルダーをバインドします。
 
-たとえば、IoT Edge ハブがデバイスのローカル ストレージにメッセージを格納し、後で取得できるようにする場合は、Azure portal の **[Edge ランタイムの詳細設定を構成する]** セクションで環境変数と作成オプションを構成できます。
+たとえば、IoT Edge ハブがデバイスのローカル ストレージにメッセージを格納し、後で取得できるようにする場合は、Azure portal の **[ランタイムの設定]** セクションで環境変数と作成オプションを構成できます。
 
 1. IoT Edge ハブと IoT Edge エージェントの両方について、モジュール内のディレクトリを指す **storageFolder** という名前の環境変数を追加します。
-1. IoT Edge ハブと IoT Edge エージェントの両方について、ホスト コンピューター上のローカル ディレクトリをモジュール内のディレクトリに接続するバインドを追加します。 例:
+1. IoT Edge ハブと IoT Edge エージェントの両方について、ホスト コンピューター上のローカル ディレクトリをモジュール内のディレクトリに接続するバインドを追加します。 次に例を示します。
 
    ![ローカル ストレージの作成オプションと環境変数を追加する](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-または、配置マニフェストでローカル ストレージを直接構成することもできます。 例:
+または、配置マニフェストでローカル ストレージを直接構成することもできます。 次に例を示します。
 
 ```json
 "systemModules": {
@@ -83,6 +83,6 @@ sudo chmod 700 <HostStoragePath>
 
 作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 モジュールからホスト ストレージにアクセスするその他の例については、「[IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する](how-to-store-data-blob.md)」を参照してください。

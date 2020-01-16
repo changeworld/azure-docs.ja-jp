@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851385"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979321"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -34,9 +34,9 @@ ms.locfileid: "74851385"
 
 
 > [!div class="mx-tableFixed"]
-> | 組み込みのロール | 説明 | Id |
+> | 組み込みのロール | [説明] | Id |
 > | --- | --- | --- |
-> | [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [[所有者]](#owner) | リソースへのアクセスを含め、すべてを管理できます。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Contributor](#contributor) | リソースへのアクセス権の付与以外のすべてを管理できます。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [Reader](#reader) | すべてを表示できますが、変更することはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [AcrDelete](#acrdelete) | acr の削除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
@@ -165,7 +165,7 @@ ms.locfileid: "74851385"
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 
 
-## <a name="owner"></a>Owner
+## <a name="owner"></a>所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -531,8 +531,8 @@ ms.locfileid: "74851385"
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
@@ -558,8 +558,8 @@ ms.locfileid: "74851385"
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
@@ -1572,7 +1572,7 @@ ms.locfileid: "74851385"
 > | Microsoft.DevTestLab/*/read | ラボのプロパティの読み取り |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | ラボ内のランダムに要求可能な仮想マシンを要求します。 |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | ラボで仮想マシンを作成します。 |
-> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 現在のユーザーがラボで有効なプロファイルを持っていることを確認します。 |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 現在のユーザーがラボで有効なプロファイルを保有していることを確認します。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 数式を削除します。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 数式を読み取ります。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 数式を追加または変更します。 |
@@ -1862,7 +1862,7 @@ ms.locfileid: "74851385"
 > | Microsoft.Web/customApis/* | カスタム API を作成および管理します。 |
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
-> | Microsoft.Web/sites/functions/listSecrets/action | 機能のシークレットを一覧表示します。 |
+> | Microsoft.Web/sites/functions/listSecrets/action | 関数のシークレットを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2413,7 +2413,7 @@ ms.locfileid: "74851385"
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | 保護コンテナーを切り替えます。 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | テスト フェールオーバー |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | テスト フェールオーバーのクリーンアップ。 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | フェールオーバー |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | [フェールオーバー] |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | モビリティ サービスを更新します。 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 保護コンテナー マッピングを読み取ります |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Recovery Services プロバイダーを読み取ります |
@@ -3151,8 +3151,8 @@ ms.locfileid: "74851385"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [リソース プロバイダーとサービスの対応](../azure-resource-manager/azure-services-resource-providers.md)
+- [リソース プロバイダーとサービスの対応](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)
 - [Azure Security Center におけるアクセス許可](../security-center/security-center-permissions.md)

@@ -2,18 +2,18 @@
 title: Azure Marketplace で既存の VM オファーを更新する
 description: Azure Marketplace で既存の VM プランを更新する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823984"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934244"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketplace で既存の VM プランを更新する
 
@@ -43,7 +43,7 @@ VM プランまたは SKU の一部の属性は、Azure Marketplace にプラン
 -  発行された SKU の料金の引き上げ
 
 
-## <a name="common-update-operations"></a>一般的な更新動作
+## <a name="common-update-operations"></a>共通の更新操作
 
 VM プランには変更可能なさまざまな特性がありますが、次の操作が一般的なものです。
 
@@ -129,7 +129,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 
 4.  1 x 1 の GUI で価格を設定した場合、UI で直接価格を変更することができます。 スプレッドシートのインポート/エクスポートで価格を設定した場合、インポート/エクスポート機能でしか価格を下げることはできません。
 
-3.  **[Save]** をクリックします。
+3.  **[保存]** をクリックします。
 
 4.  **[発行]** をクリックし、変更を発行するワークフローを開始します。
 

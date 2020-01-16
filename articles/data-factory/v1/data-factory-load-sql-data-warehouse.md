@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980917"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -40,12 +40,12 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 > [!NOTE]
 >  Azure SQL Data Warehouse との間のデータ移動に関する Data Factory の機能の一般的な情報については、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](data-factory-azure-sql-data-warehouse-connector.md)」を参照してください。
 >
-> Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。手順については、「[チュートリアル: Azure Data Factory でコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、Azure BLOB から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを参照してください。  
+> Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。「[チュートリアル:Azure Data Factory でコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、Azure BLOB から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを参照してください。  
 >
 >
 
 ## <a name="prerequisites"></a>前提条件
-* Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)」を参照してください。
+* Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
 * [TPC-H](http://www.tpc.org/tpch/) データ: テスト データセットとして TPC-H を使用します。  これを行うには、TPC-H ツールキットの `dbgen` を使用する必要があります。これにより、データセットを簡単に生成できます。  `dbgen` のソース コードを [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) からダウンロードして自分でコンパイルするか、コンパイル済みのバイナリを [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools) からダウンロードします。  次のコマンドで dbgen.exe を実行して、10 個のファイルに分散される `lineitem` テーブルの 1 TB のフラット ファイルを生成します。
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -116,7 +116,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラー、**データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
    2. Azure **サブスクリプション**を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。
       1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
@@ -212,6 +212,6 @@ Azure SQL Data Warehouse データベースを実行するためのいくつか�
 
 詳細については、「[Azure SQL Data Warehouse のベスト プラクティス](../../sql-data-warehouse/sql-data-warehouse-best-practices.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。
 * [コピー アクティビティのパフォーマンスとチューニング ガイド](data-factory-copy-activity-performance.md) - この記事には、参考となるパフォーマンスの測定とチューニングのガイドが含まれています。

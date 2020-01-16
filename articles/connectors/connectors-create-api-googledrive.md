@@ -1,20 +1,20 @@
 ---
 title: Google Drive への接続
-description: Google Drive REST API と Azure Logic Apps を使用して、ファイルを作成および管理します
+description: Azure Logic Apps を使用して Google ドライブ用のファイルを作成および管理するワークフローを自動化する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789698"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666841"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Google Drive コネクタの使用
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Google ドライブ用のファイルを作成および管理する
 
 Google Drive に接続して、ファイルの作成、行の取得などを行います。 Google Drive では、次の操作を実行できます。 
 
@@ -33,8 +33,8 @@ Google Drive に接続して、ファイルの作成、行の取得などを行�
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[コネクタの詳細](/connectors/googledrive/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+コネクタの Swagger の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/googledrive/)を確認してください。
 
-## <a name="more-connectors"></a>その他のコネクタ
+## <a name="next-steps"></a>次のステップ
 
-[API リスト](apis-list.md)に戻ります。
+* 他の[Logic Apps コネクタ](apis-list.md)を確認します。

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372212"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET を使用して Azure Storage 内でコンテナーを作成または削除する
 
@@ -126,7 +126,7 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 **Delete** および **DeleteAsync** メソッドは、コンテナーが存在しない場合に例外をスローします。
 
-**DeleteIfNotExists** および **DeleteIfNotExistsAsync** メソッドは、コンテナーが作成されたかどうかを示すブール値を返します。 指定されたコンテナーが存在しない場合、これらのメソッドは、コンテナーが削除されなかったことを示す **False** を返します。
+**DeleteIfExists** および **DeleteIfExistsAsync** メソッドは、コンテナーが削除されたかどうかを示すブール値を返します。 指定されたコンテナーが存在しない場合、これらのメソッドは、コンテナーが削除されなかったことを示す **False** を返します。
 
 コンテナーを削除した後、少なくとも 30 秒間は同じ名前のコンテナーを作成することはできません。 コンテナーの削除中に同じ名前のコンテナーを作成しようとすると、HTTP エラー コード 409 (Conflict) が返されて処理が失敗します。 コンテナーの削除中に、コンテナーまたはそれに含まれる BLOB に対して他の操作を実行しようとすると、HTTP エラー コード 404 (Not Found) が返されて処理が失敗します。
 
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [コンテナーの作成操作](/rest/api/storageservices/create-container)
 - [コンテナーの削除操作](/rest/api/storageservices/delete-container)

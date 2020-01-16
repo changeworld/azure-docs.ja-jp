@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379155"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689115"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -92,7 +92,7 @@ WamDefaultAuthority: organizations
 
 以下のフィールドを確認し、必要な値が設定されていることを確認します。
 
-#### <a name="domainjoined--yes"></a>DomainJoined :はい  
+#### <a name="domainjoined--yes"></a>DomainJoined :YES  
 
 このフィールドは、デバイスがオンプレミス Active Directory に参加しているかどうかを示します。 この値が **NO** である場合、デバイスはハイブリッド Azure AD 参加を実行できません。  
 
@@ -100,9 +100,10 @@ WamDefaultAuthority: organizations
 
 このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 このケースで Anniversary Update バージョンの Windows 10 (1607) を使用すると、そのアカウントは無視されます。
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined :はい  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined :YES  
 
-このフィールドは、デバイスが Azure AD に参加しているかどうかを示します。 この値が **NO** である場合、Azure AD への参加は済んでいません。 
+このフィールドは、デバイスが参加しているかどうかを示します。 デバイスが Azure AD 参加済みデバイスであるか、ハイブリッド Azure AD 参加済みデバイスである場合、この値は **YES** になります。
+この値が **NO** である場合、Azure AD への参加は済んでいません。 
 
 詳細なトラブルシューティングを行うには、次の手順に進みます。
 
@@ -396,7 +397,7 @@ WamDefaultAuthority: organizations
 
 ### <a name="retrieve-the-join-status"></a>参加状態を取得する 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet:YES および AzureADPrt:はい
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet:YES および AzureADPrt:YES
   
 これらのフィールドは、ユーザーがデバイスへのサインイン時に Azure AD に対して正常に認証されたことを示します。 これらの値が **NO** である場合、次のことが原因として考えられます。
 
@@ -407,7 +408,7 @@ WamDefaultAuthority: organizations
 ## <a name="known-issues"></a>既知の問題
 - [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428783"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969118"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -52,7 +52,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 受信したメールと添付ファイルは、[Azure Storage コンテナー](../storage/common/storage-introduction.md)に BLOB として保存することができます。
 
-1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-quickstart-create-account.md)します。
+1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
    | 設定 | 値 | [説明] |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![作成された関数アプリ](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   関数アプリは、[Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を使用して作成することもできます。
+   関数アプリは、[Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して作成することもできます。
 
 1. **[関数アプリ]** の一覧で、関数アプリをまだ展開していない場合は展開します。 該当する関数アプリの下の **[関数]** を選択します。 関数ツール バーの **[新しい関数]** を選択します。
 
@@ -282,7 +282,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
       | **間隔** | 1 | チェックの間隔 (単位数) |
       | **頻度** | 分 | チェックの間隔に使う時間の単位 |
       ||||
-  
+
    1. **[新しいパラメーターの追加]** 一覧で **[件名フィルター]** を選択します。
 
    1. このアクションで **[件名フィルター]** ボックスが表示されたら、次に示す件名を指定します。
@@ -377,7 +377,8 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 次に、 **[true の場合]** 分岐で実行するアクションを定義します。 添付ファイルと一緒にメールを保存するために、メール本文から HTML をすべて削除したうえで、メールと添付ファイル用の BLOB をストレージ コンテナーに作成します。
 
 > [!NOTE]
-> メールにファイルが 1 つも添付されていなかったときの **[false の場合]** の分岐処理は、このロジック アプリには必要ありません。 **[false の場合]** の分岐には、このチュートリアルの後、補足的な演習として適宜アクションを追加してみてください。
+> メールにファイルが 1 つも添付されていなかったときの **[false の場合]** の分岐処理は、このロジック アプリには必要ありません。
+> **[false の場合]** の分岐には、このチュートリアルの後、補足的な演習として適宜アクションを追加してみてください。
 
 ## <a name="call-removehtmlfunction"></a>RemoveHTMLFunction を呼び出す
 
@@ -605,7 +606,9 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    ||||
 
    > [!NOTE]
-   > **[Content]** フィールド (添付ファイルを保持する配列) など、配列が格納されているフィールドを選択すると、そのフィールドを参照するアクションに "For each" ループが自動的に追加されます。 こうすることで、ロジック アプリは、そのアクションを各配列項目に対して実行できます。 ループを削除するには、配列のフィールドを削除し、その参照アクションをループの外に移動して、ループのタイトル バーにある省略記号 ( **...** ) を選択し、 **[削除]** を選択します。
+   > **[Content]** フィールド (添付ファイルを保持する配列) など、配列が格納されているフィールドを選択すると、そのフィールドを参照するアクションに "For each" ループが自動的に追加されます。
+   > こうすることで、ロジック アプリは、そのアクションを各配列項目に対して実行できます。
+   > ループを削除するには、配列のフィールドを削除し、その参照アクションをループの外に移動して、ループのタイトル バーにある省略記号 ( **...** ) を選択し、 **[削除]** を選択します。
 
 1. ロジック アプリを保存します。
 

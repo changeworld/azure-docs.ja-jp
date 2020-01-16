@@ -1,0 +1,237 @@
+---
+title: Azure 上の Oracle データベース用リファレンス アーキテクチャ | Microsoft Docs
+description: Oracle Database Enterprise Edition データベースを Microsoft Azure Virtual Machines 上で実行するためのリファレンス アーキテクチャ。
+services: virtual-machines-linux
+author: romitgirdhar
+manager: gwallace
+tags: ''
+ms.service: virtual-machines
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 12/13/2019
+ms.author: rogirdh
+ms.custom: ''
+ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560336"
+---
+# <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
+
+このガイドでは、可用性の高い Oracle データベースを Azure にデプロイする方法について詳しく説明します。 また、ディザスター リカバリーの考慮事項についても説明します。 これらのアーキテクチャは、お客様のデプロイに基づいて作成されたものです。 このガイドは Oracle Database Enterprise Edition にのみ適用されます。
+
+Oracle データベースのパフォーマンスを最大限に引き出す方法に関心がある方は、[Oracle DB の設計](oracle-design.md)に関するページを参照してください。
+
+## <a name="assumptions"></a>前提条件
+
+- [可用性ゾーン](../../../availability-zones/az-overview.md)などの Azure のさまざまな概念を理解している
+- Oracle Database Enterprise Edition 12c 以降を実行している
+- この記事のソリューションを使用する際のライセンスに関連する事項を理解し同意している
+
+## <a name="high-availability-for-oracle-databases"></a>Oracle データベースの高可用性
+
+クラウドで高可用性を実現することは、どの組織の計画と設計においても重要な要素です。 Microsoft Azure は、[可用性ゾーン](../../../availability-zones/az-overview.md)と可用性セット (可用性ゾーンが使用できないリージョンで使用される) を提供します。 詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページでクラウドの設計についてご確認ください。
+
+Oracle は、クラウドネイティブのツールとオファリングに加えて、Azure 上に設定できる、[Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)、[Data Guard with FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、[GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) などの高可用性のためのソリューションを提供しています。 このガイドでは、これらの各ソリューションのリファレンス アーキテクチャについて説明します。
+
+最後に、クラウド用のアプリケーションを移行または作成する場合、[再試行パターン](https://docs.microsoft.com/azure/architecture/patterns/retry)や[サーキット ブレーカー パターン](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)などのクラウドネイティブ パターンを追加するため、アプリケーション コードを微調整することが重要です。 [クラウド設計パターン ガイド](https://docs.microsoft.com/azure/architecture/patterns/)で定義されている追加パターンを使用すると、アプリケーションの回復性が向上します。
+
+### <a name="oracle-rac-in-the-cloud"></a>クラウド内の Oracle RAC
+
+Oracle Real Application Cluster (RAC) は、多くのインスタンスが 1 つのデータベース ストレージにアクセスするようにすることにより高スループットの実現を支援する (全共有型アーキテクチャ パターン)、Oracle が提供するソリューションです。 Oracle RAC は、オンプレミスの高可用性にも使用できますが、Oracle RAC のみを使用してクラウドの高可用性を実現することはできません。これは、Oracle RAC がインスタンス レベルの障害に対してのみ保護を提供し、ラック レベルやデータセンター レベルの障害には保護を提供しないためです。 このため、Oracle では、高可用性を実現するため、データベース (単一インスタンスであれ RAC であれ) と Oracle Data Guard を併用することを推奨しています。 一般に、ミッション クリティカルなアプリケーションを実行する目的で高い SLA が必要とされます。 Oracle RAC は、現時点では、Oracle on Azure の認定やサポートの対象になっていません。 ただし、Azure では、インスタンスレベルの障害に対する保護に役立つ、Availability Zones や計画メンテナンス ウィンドウなどの機能を提供しています。 また、Oracle Data Guard、Oracle GoldenGate、Oracle Sharding などのテクノロジを使用して、ラックレベルやデータセンターレベルの障害、および地政学的な障害からデータベースを保護することにより、ハイ パフォーマンスと回復性を実現できます。
+
+複数の[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
+
+>注:Microsoft が提供するアップタイム SLA より大幅に高いアップタイム目標を設定できます。
+
+## <a name="disaster-recovery-for-oracle-databases"></a>Oracle データベースのディザスター リカバリー
+
+ミッション クリティカルなアプリケーションをクラウドでホストする場合、高可用性とディザスター リカバリーを念頭に設計することが重要です。
+
+Oracle Database Enterprise Edition の場合、Oracle Data Guard で、ディザスター リカバリーに役立つ機能が提供されています。 [ペアになっている Azure リージョン](/azure/best-practices-availability-paired-regions)にスタンバイ データベース インスタンスを設定し、ディザスター リカバリー用の Data Guard フェールオーバーを設定することができます。 データ損失ゼロを実現するため、Active Data Guard に加えて、Oracle Data Guard 遠隔同期インスタンスもデプロイすることをお勧めします。 
+
+アプリケーションで待機時間が許容される場合は、ご使用の Oracle プライマリ データベースとは異なる可用性ゾーンに Data Guard 遠隔同期インスタンスを設定することをご検討ください (十分なテストが必要です)。 **[Maximum Availability]\(最大限の可用性\)** モードを使用して、再実行ファイルの同期トランスポートを遠隔同期インスタンスに設定します。 これらのファイルは、スタンバイ データベースに非同期に転送されます。 
+
+**[Maximum Availability]\(最大限の可用性\)** モード (同期) で別の可用性ゾーンに遠隔同期インスタンスを設定する際のパフォーマンス低下がアプリケーションで許容できない場合は、プライマリ データベースと同じ可用性ゾーンに遠隔同期インスタンスを設定できます。 可用性をさらに高めるために、プライマリ データベースの近くに複数の遠隔同期インスタンスを設定し、スタンバイ データベースに少なくとも 1 つのインスタンスを設定することをご検討ください (ロールが遷移する場合)。 Oracle Data Guard 遠隔同期の詳細については、こちらの[Oracle Active Data Guard 遠隔同期のホワイトペーパー](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)を参照してください。
+
+Oracle Standard Edition データベースを使用する場合は、高可用性とディザスター リカバリーを設定するのに使用できる DBVisit Standby などの ISV ソリューションが用意されています。
+
+## <a name="reference-architectures"></a>参照用アーキテクチャ
+
+### <a name="oracle-data-guard"></a>Oracle データの保護
+
+Oracle Data Guard は、エンタープライズ データの高可用性、データ保護、ディザスター リカバリーを保証します。 Data Guard では、スタンバイ データベースは、プライマリ データベースとトランザクション上一貫性のあるコピーとして保持されます。 プライマリ データベースとセカンダリ データベースとの間の距離、および待機時間に関するアプリケーションの許容範囲に応じて、同期または非同期のレプリケーションを設定できます。 このようにすると、計画的停止や計画外の停止が原因でプライマリ データベースが使用できなくなった場合、Data Guard はスタンバイ データベースをプライマリ ロールに切り替え、ダウンタイムを最小限に抑えます。 
+
+Oracle Data Guard を使用している場合は、セカンダリ データベースを読み取り専用で開くこともできます。 このような構成は、Active Data Guard と呼ばれます。 Oracle Database 12c では、Data Guard 遠隔同期インスタンスと呼ばれる機能が導入されました。 このインスタンスを使用すると、パフォーマンスに悪影響を与えずに、Oracle データベースのデータ損失ゼロの構成を設定できます。
+
+> [!NOTE]
+> Active Data Guard には追加のライセンスが必要です。 このライセンスは、遠隔同期機能を使用する場合にも必要になります。 ライセンス関連の事項については、Oracle の担当者にお問い合わせください。
+
+#### <a name="oracle-data-guard-with-fsfo"></a>Oracle Data Guard with FSFO
+Oracle Data Guard with Fast-Start Failover (FSFO) は、個々のマシンにブローカーを設定することにより、さらに高い回復性を実現します。 Data Guard ブローカーとセカンダリ データベースは、どちらもオブザーバーを実行して、プライマリ データベースのダウンタイムを監視します。 これにより、Data Guard オブザーバーのセットアップでも冗長性を確保できます。 
+
+Oracle Database バージョン 12.2 以降では、単一の Oracle Data Guard ブローカー構成で複数のオブザーバーを構成することもできます。 このセットアップで、一方のオブザーバーとセカンダリ データベースでダウンタイムが発生した場合の可用性が向上します。 Data Guard Broker は軽量で、比較的小規模な仮想マシンでホストできます。 Data Guard Broker とその利点の詳細については、このトピックに関する [Oracle のドキュメント](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)をご覧ください。
+
+次の図に、可用性ゾーンを使用して Azure で Oracle Data Guard を使用する場合の推奨アーキテクチャを示します。 このアーキテクチャで、99.99% の VM アップタイム SLA を実現できます。
+
+![Data Guard Broker と可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+
+上の図では、クライアント システムは、Web 経由で Oracle バックエンドを使用してカスタム アプリケーションにアクセスします。 Web フロントエンドは、ロード バランサーで構成されます。 Web フロント エンドは、適切なアプリケーション サーバーへの呼び出しを行い、作業を処理します。 アプリケーション サーバーは、プライマリ Oracle データベースにクエリを実行します。 この Oracle データベースは、ライセンス コストを節約してパフォーマンスを最大化するため、[制約付きコア vCPU](../../../virtual-machines/windows/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../../virtual-machines/windows/sizes-memory.md)を使用して構成されています。 複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) が、パフォーマンスと高可用性のために使用されています。
+
+Oracle データベースは、高可用性を実現するために複数の可用性ゾーンに配置されます。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータ センターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に設定されています。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもデータは保護されます。 さらに、2 つの可用性ゾーンにまたがる形で 2 つの FSFO オブザーバーが設定されており、障害が発生した場合は、データベースを起動してセカンダリにフェールオーバーします。 
+
+追加のオブザーバーやスタンバイ データベースを、上のアーキテクチャで示したゾーンとは異なる可用性ゾーン (この例では AZ 1) に設定することもできます。 最後に、Oracle データベースは、Oracle Enterprise Manager (OEM) によってアップタイムとパフォーマンスが監視されます。 OEM では、パフォーマンスおよび使用状況の各種レポートを生成することもできます。
+
+可用性ゾーンがサポートされていないリージョンでは、可用性セットを使用して、可用性が高い方法で Oracle Database をデプロイできます。 可用性セットを使用すると、99.95% の VM アップタイムを実現できます。 次の図に、この場合のリファレンス アーキテクチャを示します。
+
+![Data Guard Broker と可用性セットを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_as.png)
+
+> [!NOTE]
+> * Oracle Enterprise Manager VM は、デプロイされている OEM のインスタンスが 1 つだけなので、可用性セット内に配置する必要はありません。
+> * 可用性セット構成では、Ultra ディスクは現在サポートされていません。
+
+#### <a name="oracle-data-guard-far-sync"></a>Oracle Data Guard 遠隔同期
+
+Oracle Data Guard 遠隔同期は、Oracle Database に対してデータ損失ゼロの保護機能を提供します。 この機能を使用すると、データベース マシンで障害が発生した際のデータ消失を防ぐことができます。 Oracle Data Guard 遠隔同期は、別の VM にインストールする必要があります。 遠隔同期は、コントロール ファイル、パスワード ファイル、spfile、スタンバイ ログのみを持つ軽量な Oracle インスタンスです。 データ ファイルや rego ログ ファイルはありません。 
+
+データ損失ゼロの保護を実現するには、プライマリ データベースと遠隔同期インスタンスとの間の同期通信が必要になります。 遠隔同期インスタンスは、プライマリから同期的に redo を受け取り、これをすべてのスタンバイ データベースに非同期的に直ちに転送します。 この設定により、プライマリ データベースのオーバーヘッドも軽減されます。これは、スタンバイ データベースすべてではなく、redo を遠隔同期インスタンスに送信するだけで済むからです。 遠隔同期インスタンスで障害が発生すると、Data Guard はプライマリ データベースからセカンダリ データベースへの非同期トランスポートを自動的に使用して、データ損失がほぼゼロの保護を維持します。 回復性を高めるため、各データベース インスタンス (プライマリおよびセカンダリ) に対して複数の遠隔同期インスタンスをデプロイすることもできます。
+
+次の図に、Oracle Data Guard 遠隔同期を使用した高可用性アーキテクチャを示します。
+
+![Data Guard 遠隔同期および Broker と可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_dg_fs_az.png)
+
+上記のアーキテクチャでは、遠隔同期インスタンスがデータベース インスタンスと同一の可用性ゾーンにデプロイされることにより、両者の間の待機時間を短縮しています。 アプリケーションが待機時間の影響を受けやすい場合は、データベースと遠隔同期インスタンスを[近接通信配置グループ](../../../virtual-machines/linux/proximity-placement-groups.md)にデプロイすることをご検討ください。
+
+次の図に、高可用性とディザスター リカバリーを実現する目的で Oracle Data Guard FSFO と遠隔同期を利用したアーキテクチャを示します。
+
+![Data Guard 遠隔同期および Broker とディザスター リカバリー用の可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_dg_fs_az_dr.png)
+
+### <a name="oracle-goldengate"></a>Oracle GoldenGate
+
+GoldenGate を使用すると、企業全体の複数の異種プラットフォーム間で、トランザクション レベルでのデータ交換やデータ操作を実行できます。 これは、トランザクションの整合性を維持しつつ、既存のインフラストラクチャに対するオーバーヘッドを最小限に抑えて、コミットされたトランザクションを移動します。 このモジュール式アーキテクチャは、さまざまなトポロジで、選択したデータ レコード、トランザクションの変更、DDL (データ定義言語) への変更を抽出およびレプリケートする柔軟性を提供します。
+
+Oracle GoldenGate を使用すれば、双方向のレプリケーションを提供して、データベースを高可用性用に構成できます。 これを使って、**マルチマスター構成**や**アクティブ/アクティブ構成**を設定できます。 次の図に、Azure での Oracle GoldenGate アクティブ/アクティブ設定の推奨アーキテクチャを示します。 次のアーキテクチャでは、Oracle データベースは、ライセンス コストを節約してパフォーマンスを最大化するため、[制約付きコア vCPU](../../../virtual-machines/windows/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../../virtual-machines/windows/sizes-memory.md)を使用して構成されています。 複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) が、パフォーマンスと可用性のために使用されています。
+
+![Data Guard Broker と可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
+
+> [!NOTE]
+> 同様のアーキテクチャは、可用性ゾーンが現在使用できないリージョンでも、可用性セットを使用して設定できます。
+
+Oracle GoldenGate には、データを 1 つの Oracle データベース サーバーから別の Oracle データベース サーバーに非同期的にレプリケートするのに役立つ Extract、ポンプ、Replicat などのプロセスが用意されています。 これらのプロセスを使用することにより、双方向レプリケーションを設定して、可用性ゾーン レベルのダウンタイムが発生した場合でもデータベースの高可用性を確保できます。 上の図では、Extract プロセスは Oracle データベースと同じサーバー上で実行されているのに対して、データ ポンプと Replicat のプロセスは同じ可用性ゾーン内の別個のサーバーで実行されています。 Replicat プロセスは、別の可用性ゾーン内のデータベースからデータを受信し、その可用性ゾーン内の Oracle データベースにデータをコミットするために使用されます。 同様に、データ ポンプ プロセスは、Extract プロセスによって抽出されたデータを、別の可用性ゾーンの Replicat プロセスに送信します。 
+
+上のアーキテクチャ図では、データ ポンプ プロセスと Replicat プロセスが別のサーバー上に構成されていますが、サーバーの容量や使用量によっては、すべての Oracle GoldenGate プロセスを同じサーバー上に設定することもできます。 サーバーの使用パターンを把握するため、AWR レポートと Azure の各種メトリックを常にご確認ください。
+
+Oracle GoldenGate の双方向レプリケーションを異なる可用性ゾーンまたは異なるリージョンに設定する場合、異なるコンポーネント間の待機時間がアプリケーションで許容されることを確認することが重要です。 可用性ゾーンやリージョン間の待機時間はさまざまで、複数の要因によって異なります。 異なる可用性ゾーンやリージョンのアプリケーション層とデータベース層の間でパフォーマンス テストを設定し、アプリケーションのパフォーマンス要件を満たしているか確認することをお勧めします。
+
+アプリケーション層は独自のサブネット内に設定でき、データベース層は独自のサブネットに分けることができます。 可能であれば、[Azure Application Gateway](../../../application-gateway/overview.md) を使用してアプリケーション サーバー間のトラフィックを負荷分散することをご検討ください。 Azure Application Gateway は、堅牢な Web トラフィック ロード バランサーです。 これは、同じサーバー上にユーザー セッションを維持する Cookie ベースのセッション アフィニティを提供することにより、データベース上の競合を最小限に抑えます。 Application Gateway の代替手段としては、[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) と [Azure Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) があります。
+
+### <a name="oracle-sharding"></a>Oracle Sharding
+
+シャーディングは、Oracle 12.2 で導入されたデータ層パターンです。 これを使用すると、独立した複数のデータベースのデータを水平にパーティショニングし、スケーリングできます。 これは、各データベースが専用の仮想マシン上でホストされるシェアード ナッシング アーキテクチャであり、これにより、回復性と可用性が向上するだけでなく、読み取りと書き込みのスループットも向上します。 このパターンにより、単一障害点が排除され、障害の分離やダウンタイムのないローリング アップグレードを実現できます。 1 つのシャードまたは 1 つのデータ センター レベルの障害のダウンタイムは、他のデータ センターの他のシャードのパフォーマンスや可用性には影響しません。 
+
+シャーディングは、ダウンタイムを許容できない高スループット OLTP アプリケーションに適しています。 同じシャーディング キーを持つすべての行は、常に同じシャード上にあることが保証されるため、パフォーマンスが向上し、高い整合性を実現できます。 シャーディングを使用するアプリケーションには、シャーディング キー (*customerId* や *accountNum* など) を使用して最初にデータにアクセスする、明確に定義されたデータ モデルとデータ分散戦略 (コンシステント ハッシュ、範囲、リスト、または複合) が必要です。 さらに、シャーディングを使用すると特定のデータ セットをエンド カスタマーの近くに保存できるので、パフォーマンスとコンプライアンスの要件を満たしやすくなります。
+
+高可用性とディザスター リカバリーのためにシャードをレプリケートすることをお勧めします。 この設定は、Oracle Data Guard や Oracle GoldenGate などの Oracle テクノロジを使用して実行できます。 レプリケーションのユニットには、シャード、シャードの一部、シャードのグループを指定できます。 シャード化されたデータベースの可用性は、1 つ以上のシャードの停止や速度低下の影響を受けません。 高可用性が目的の場合、スタンバイ シャードはプライマリ シャードが配置されているのと同じ可用性ゾーンに配置できます。 ディザスター リカバリーが目的の場合、スタンバイ シャードは別のリージョンに配置できます。 シャードを複数のリージョンにデプロイして、それらのリージョンでトラフィックを処理することもできます。 シャード化されたデータベースの高可用性とレプリケーションの構成の詳細については、[Oracle Sharding のドキュメント](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-high-availability.html)を参照してください。
+
+Oracle Sharding は、主に次のコンポーネントで構成されています。 これらのコンポーネントの詳細については、[Oracle Sharding のドキュメント](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)でご確認いただけます。
+
+- **シャード カタログ** - すべてのシャード データベース構成データの永続的なストアとなる特別な用途の Oracle データベース。 シャード データベースでのシャードの追加や削除、データのマッピング、DDL などのすべての構成変更は、このシャード カタログ上で開始されます。 また、シャード カタログには、SDB 内のすべての重複表のマスター コピーも格納されます。 
+
+  シャード カタログは、具体化されたビューを使用して、すべてのシャード内の重複表に変更を自動的にレプリケートします。 シャード カタログ データベースは、マルチシャード クエリや、シャーディング キーを指定しないクエリの処理に使用されるクエリ コーディネーターとしても機能します。 
+  
+  シャード カタログの高可用性を実現するために Oracle Data Guard を可用性ゾーンや可用性セットと組み合わせて使用することは、推奨されているベスト プラクティスです。 シャード カタログの可用性は、シャード化されたデータベースの可用性には影響しません。 シャード カタログのダウンタイムは、Data Guard フェールオーバーが完了する短い期間のメンテナンス操作とマルチシャード クエリにのみ影響します。 オンライン トランザクションは、引き続き SDB によってルーティングおよび実行されるので、カタログの停止による影響を受けません。
+
+- **シャード ディレクター** - シャードが存在するリージョンや可用性ゾーンごとにデプロイする必要がある軽量なサービスです。 シャード ディレクターは、Oracle Sharding のコンテキストでデプロイされるグローバル サービス マネージャーです。 高可用性を実現するには、シャードが存在する各可用性ゾーンに少なくとも 1 つのシャード ディレクターをデプロイすることをお勧めします。 
+
+  最初にデータベースに接続する際に、ルーティング情報がシャード ディレクターによって設定され、後続の要求のためにキャッシュされ、シャード ディレクターをバイパスします。 シャードとのセッションが確立されると、すべての SQL クエリと DML がその特定のシャードのスコープ内でサポートされ、実行されます。 このルーティングは高速で、シャード内トランザクションを実行するすべての OLTP ワークロードに使用されます。 最高のパフォーマンスと可用性を必要とするすべての OLTP ワークロードに、直接ルーティングを使用することをお勧めします。 ルーティング キャッシュは、シャードが使用できなくなったとき、またはシャーディング トポロジに変更が発生したときに自動的に更新されます。 
+  
+  高パフォーマンスのデータ依存ルーティングの場合、Oracle では、シャード データベース内のデータにアクセスする際に接続プールを使用することを推奨しています。 Oracle 接続プール、言語固有ライブラリ、およびドライバーは、Oracle Sharding をサポートしています。 詳細については、[Oracle Sharding のドキュメント](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html#GUID-3D41F762-BE04-486D-8018-C7A210D809F9)を参照してください。
+
+- **グローバル サービス** - グローバル サービスは通常のデータベース サービスに似ています。 グローバル サービスには、データベース サービスのすべてのプロパティに加えて、クライアントとシャードの間のリージョン アフィニティ、レプリケーション ラグの許容範囲など、シャード データベース用のプロパティがあります。 シャード データベースとの間でデータの読み取り/書き込みを行うには、1 つのグローバル サービスのみを作成する必要があります。 Active Data Guard を使用してシャードの読み取り専用レプリカを設定する場合、読み取り専用ワークロード用に別のグローバル サービスを作成できます。 クライアントは、これらのグローバル サービスを使用してデータベースに接続できます。
+
+- **シャード データベース** - シャード データベースとは、お使いの Oracle データベースのことです。 各データベースは、ファスト スタート フェールオーバー (FSFO) が有効になっているブローカー構成で Oracle Data Guard を使用してレプリケートされます。 ユーザーが各シャードで Data Guard のフェールオーバーやレプリケーションを設定する必要はありません。 これは、共有データベースが作成される時に自動的に構成およびデプロイされます。 特定のシャードが失敗すると、Oracle Sharding はデータベース接続をプライマリからスタンバイに自動的にフェールオーバーします。
+
+Oracle シャード データベースをデプロイおよび管理するには、Oracle Enterprise Manager Cloud Control GUI と `GDSCTL` コマンドライン ユーティリティの 2 つのインターフェイスを使用できます。 Cloud Control を使用すると、さまざまなシャードの可用性とパフォーマンスを監視することもできます。 `GDSCTL DEPLOY` コマンドを実行すると、シャードとそれぞれのリスナーが自動的に作成されます。 また、このコマンドは、管理者によって指定されたシャードレベルの高可用性に使用されるレプリケーション構成を自動的にデプロイします。
+
+データベースをシャード化するには、以下のさまざまな方法があります。
+
+* システム管理のシャーディング - パーティション分割を使用して自動的にシャード間に分散されます。
+* ユーザー定義のシャーディング - シャードへのデータのマッピングをユーザーが指定できます。これは、規制やデータのローカライズ要件が存在する場合に適しています。
+* コンポジット シャーディング - 異なる_シャード領域_のためにシステム管理のシャーディングとユーザー定義のシャーディングを組み合わせたものです。
+* テーブルのサブパーティション - 通常のパーティション テーブルに似ています。
+
+さまざまな[シャーディング方法](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-methods.html)の詳細については、Oracle のドキュメントを参照してください。
+
+シャード データベースは、アプリケーションや開発者には単一データベースのように見える場合がありますが、シャード化されていないデータベースからシャード データベースに移行する場合は、複製するテーブルとシャード化するテーブルを決定するために慎重に計画する必要があります。 
+
+重複表はすべてのシャードに格納されるのに対し、シャード化されたテーブルは異なるシャード間に分散されます。 小さいテーブルやディメンション テーブルは複製し、ファクト テーブルは分散/シャード化することをお勧めします。 データは、シャード カタログをセントラル コーディネーターとして使用するか、各シャードでデータ ポンプを実行することにより、シャード データベースに読み込むことができます。 [シャード データベースへのデータ移行](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-loading-data.html)の詳細については、Oracle のドキュメントを参照してください。
+
+#### <a name="oracle-sharding-with-data-guard"></a>Data Guard での Oracle Sharding
+
+Oracle Data Guard は、システム管理、ユーザー定義、コンポジットのシャーディング方法で使用できます。
+
+次の図に、各シャードの高可用性を実現するために Oracle Data Guard で Oracle Sharding を使用する場合のリファレンス アーキテクチャを示します。 このアーキテクチャ図は、_コンポジット シャーディング方法_を示しています。 アーキテクチャ図は、データの局所性、負荷分散、高可用性、ディザスター リカバリーなどの要件が異なるアプリケーションでは異なる可能性があり、異なるシャーディング方法を使用する場合もあります。 Oracle Sharding では、これらのオプションを提供することにより、このような要件を満たし、水平的かつ効率的にスケーリングを行えるようにしています。 同様のアーキテクチャは、Oracle GoldenGate を使用してデプロイすることもできます。
+
+![Data Guard Broker と可用性ゾーンを使用した Oracle Database Sharding - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
+
+システム管理のシャーディングは構成と管理が最も容易ですが、ユーザー定義のシャーディングやコンポジット シャーディングは、データやアプリケーションが地理的に分散しているシナリオや、各シャードのレプリケーションを制御する必要があるシナリオに適しています。 
+
+上記のアーキテクチャでは、データを地理的に分散し、アプリケーション層を水平にスケールアウトする目的でコンポジット シャーディングを使用しています。 コンポジット シャーディングは、システム管理のシャーディングとユーザー定義のシャーディングを組み合わせたもので、両方の方法の利点を活用できます。 上のシナリオでは、リージョンによって区切られた複数のシャード領域にデータがまずシャード化されます。 次に、コンシステント ハッシュにより、そのデータがそのシャード領域の複数のシャード間にさらにパーティション化されます。 各シャード領域には複数のシャードグループが含まれています。 各シャードグループは複数のシャードを格納しており、この例ではレプリケーションの "ユニット" になっています。 各シャードグループには、そのシャード領域のすべてのデータが格納されています。 シャードグループ A1 と B1 はプライマリ シャードグループで、シャードグループ A2 と B2 はスタンバイです。 シャードグループではなく、個々のシャードをレプリケーションのユニットに指定することもできます。
+
+上記のアーキテクチャでは、高可用性を実現するために、各可用性ゾーンに GSM/シャード ディレクターがデプロイされています。 データ センターやリージョンごとに、少なくとも 1 つの GSM/シャード ディレクターをデプロイすることをお勧めします。 さらに、アプリケーション サーバーのインスタンスは、シャードグループを含むすべての可用性ゾーンにデプロイされます。 この設定により、アプリケーションは、アプリケーション サーバーとデータベース/シャードグループの間の待機時間を短く維持できます。 データベースに障害が発生した場合、スタンバイ データベースと同じゾーンにあるアプリケーション サーバーは、データベース ロールの遷移が発生すると、要求を処理できます。 Azure Application Gateway とシャード ディレクターは、要求と応答の待機時間を追跡し、それに応じて要求をルーティングします。
+
+アプリケーションの観点から見ると、クライアント システムは Azure Application Gateway (または Azure の他の負荷分散テクノロジ) に対して要求を行い、Azure Application Gateway がクライアントに最も近いリージョンに要求をリダイレクトします。 Azure Application Gateway は固定セッションもサポートしているため、同じクライアントからの要求はすべて同じアプリケーション サーバーにルーティングされます。 アプリケーション サーバーは、データ アクセス ドライバーで接続プールを使用します。 この機能は、JDBC、ODP.NET、OCI などのドライバーで使用できます。これらのドライバーは、要求の一部として指定されたシャーディング キーを認識できます。 JDBC クライアントの [Oracle Universal Connection Pool (UCP)](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/jjucp/ucp-database-sharding-overview.html) を使用すると、非 Oracle アプリケーション クライアント (Apache Tomcat や IIS など) は、Oracle Sharding と連携できます。 
+
+最初の要求の間、アプリケーション サーバーはそのリージョンのシャード ディレクターに接続して、その要求のルーティング先となるシャードのルーティング情報を取得します。 渡されたシャーディング キーに基づいて、ディレクターはアプリケーション サーバーをそれぞれのシャードにルーティングします。 アプリケーション サーバーは、マップを構築することによってこの情報をキャッシュし、後続の要求ではシャード ディレクターをバイパスして、要求を直接シャードにルーティングします。
+
+#### <a name="oracle-sharding-with-goldengate"></a>GoldenGate での Oracle Sharding
+
+次の図に、各シャードのリージョン内の高可用性を実現するために Oracle GoldenGate で Oracle Sharding を使用する場合のリファレンス アーキテクチャを示します。 前述のアーキテクチャとは異なり、このアーキテクチャでは、1 つの Azure リージョン (可用性ゾーンは複数) 内での高可用性のみが図示されています。 Oracle GoldenGate を使用して、複数リージョンの高可用性シャード データベース (前述の例と同様のもの) をデプロイすることも可能です。
+
+![GoldenGate で可用性ゾーンを使用した Oracle Database Sharding](./media/oracle-reference-architecture/oracledb_gg_sh_az.png)
+
+上記のリファレンス アーキテクチャでは、_システム管理_のシャーディング方法を使用してデータをシャード化しています。 Oracle GoldenGate のレプリケーションはチャンク レベルで実行されるため、1 つのシャードにレプリケートされたデータの半分を別のシャードにレプリケートできます。 残りの半分は異なるシャードにレプリケートできます。 
+
+データがレプリケートされる方法は、レプリケーション係数によって異なります。 レプリケーション係数が 2 の場合、シャードグループ内の 3 つのシャードにまたがって、データの各チャンクのコピーが 2 つ作成されます。 同様に、レプリケーション係数が 3 で、シャードグループ内に 3 つのシャードが存在する場合、各シャード内のすべてのデータがそのシャードグループ内の他のすべてのシャードにレプリケートされます。 シャードグループ内の各シャードには、異なるレプリケーション係数を指定できます。 この設定は、1 つのシャードグループ内および複数のシャードグループにまたがる高可用性とディザスター リカバリーの設計を効率的に定義するのに役立ちます。
+
+上記のアーキテクチャでは、シャードグループ A とシャードグループ B はどちらも同じデータを格納していますが、異なる可用性ゾーンに存在しています。 シャードグループ A とシャードグループ B の両方に同じレプリケーション係数 3 が指定されている場合、シャード テーブルの各行またはチャンクは、2 つのシャードグループ全体で 6 回レプリケートされます。 シャードグループ A のレプリケーション係数が 3 で、シャードグループ B のレプリケーション係数が 2 に指定されている場合は、各行またはチャンクは、2 つのシャードグループ全体で 5 回レプリケートされます。
+
+この設定により、インスタンスレベルや可用性ゾーンレベルの障害が発生した場合でも、データの損失を防ぐことができます。 アプリケーション レイヤーは、各シャードに対して読み取りと書き込みを実行できます。 競合を最小限に抑えるため、Oracle Sharding はハッシュ値の範囲ごとに "マスター チャンク" を指定します。 この機能により、特定のチャンクに対する書き込み要求が、対応するチャンクに確実に転送されます。 さらに、Oracle GoldenGate には、発生する可能性のある競合を処理する自動競合検出と解決機能が用意されています。 Oracle Sharding を使用した GoldenGate の実装に関する詳細と制限事項については、[シャード データベースでの Oracle GoldenGate](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-high-availability.html#GUID-4FC0AC46-0B8B-4670-BBE4-052228492C72) の使用に関する Oracle のドキュメントを参照してください。
+
+上記のアーキテクチャでは、高可用性を実現するために、各可用性ゾーンに GSM/シャード ディレクターがデプロイされています。 データ センターやリージョンごとに、少なくとも 1 つの GSM/シャード ディレクターをデプロイすることをお勧めします。 さらに、アプリケーション サーバーのインスタンスは、シャードグループを含むすべての可用性ゾーンにデプロイされます。 この設定により、アプリケーションは、アプリケーション サーバーとデータベース/シャードグループの間の待機時間を短く維持できます。 データベースに障害が発生した場合、スタンバイ データベースと同じゾーンにあるアプリケーション サーバーは、データベース ロールが遷移すると、要求を処理できます。 Azure Application Gateway とシャード ディレクターは、要求と応答の待機時間を追跡し、それに応じて要求をルーティングします。
+
+アプリケーションの観点から見ると、クライアント システムは Azure Application Gateway (または Azure の他の負荷分散テクノロジ) に対して要求を行い、Azure Application Gateway がクライアントに最も近いリージョンに要求をリダイレクトします。 Azure Application Gateway は固定セッションもサポートしているため、同じクライアントからの要求はすべて同じアプリケーション サーバーにルーティングされます。 アプリケーション サーバーは、データ アクセス ドライバーで接続プールを使用します。 この機能は、JDBC、ODP.NET、OCI などのドライバーで使用できます。これらのドライバーは、要求の一部として指定されたシャーディング キーを認識できます。 JDBC クライアントの [Oracle Universal Connection Pool (UCP)](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/jjucp/ucp-database-sharding-overview.html) を使用すると、非 Oracle アプリケーション クライアント (Apache Tomcat や IIS など) は、Oracle Sharding と連携できます。 
+
+最初の要求の間、アプリケーション サーバーはそのリージョンのシャード ディレクターに接続して、その要求のルーティング先となるシャードのルーティング情報を取得します。 渡されたシャーディング キーに基づいて、ディレクターはアプリケーション サーバーをそれぞれのシャードにルーティングします。 アプリケーション サーバーは、マップを構築することによってこの情報をキャッシュし、後続の要求ではシャード ディレクターをバイパスして、要求を直接シャードにルーティングします。
+
+## <a name="patching-and-maintenance"></a>修正プログラムの適用とメンテナンス
+
+Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページをご覧ください。 
+
+仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation](../../../automation/automation-tutorial-update-management.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) か [Azure Automation](../../../automation/automation-tutorial-update-management.md) を使用して自動化およびスケジュールすることができ、これによりダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
+
+## <a name="architecture-and-design-considerations"></a>アーキテクチャと設計に関する考慮事項
+
+- ライセンス コストを節約してパフォーマンスを最大化するには、Oracle Database VM に[制約付きコア vCPU](../../../virtual-machines/windows/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../../virtual-machines/windows/sizes-memory.md)を使用することをご検討ください。 パフォーマンスと可用性を向上させるには、複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) を使用します。
+- マネージド ディスクを使用する場合、再起動時にディスク/デバイス名が変更される可能性があります。 再起動後もマウントが確実に持続するようにするため、名前ではなく、デバイス UUID を使用することをお勧めします。 詳細については、 [こちら](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)で確認できます。
+- リージョン内で高可用性を実現するには、可用性ゾーンを使用します。
+- Oracle データベースには、Ultra ディスク (使用可能な場合) か Premium ディスクの使用をご検討ください。
+- スタンバイ Oracle データベースは、Oracle Data Guard を使用して別の Azure リージョンに設定することをご検討ください。
+- アプリケーションとデータベース層の間の待機時間を短縮するには、[近接通信配置グループ](../../../virtual-machines/linux/co-location.md#proximity-placement-groups)の使用をご検討ください。
+- 管理、監視、ログのため、[Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) を設定します。
+- データベースのストレージ管理を合理化するには、Oracle Automatic Storage Management (ASM) の使用をご検討ください。
+- データベースへの修正プログラムと更新プログラムの適用を管理してダウンタイムが発生しないようにするには、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) を使用します。
+- アプリケーション コードを微調整して、[再試行パターン](/azure/architecture/patterns/retry)、[サーキット ブレーカー パターン](/azure/architecture/patterns/circuit-breaker)、および「[クラウド設計パターン](/azure/architecture/patterns/)」ガイドで定義されている他のパターンなど、アプリケーションの回復性を向上するのに役立つクラウドネイティブ パターンを追加します。
+
+## <a name="next-steps"></a>次のステップ
+
+次の Oracle リファレンス記事の中から、お客様のシナリオに当てはまるものをご確認ください。
+
+- [Oracle Data Guard の概要](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
+- [Oracle Data Guard Broker の概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
+- [アクティブ/アクティブ型高可用性のための Oracle GoldenGate の構成](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Oracle Sharding の概要](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
+- [Oracle Active Data Guard 遠隔同期: いかなる距離でもデータ損失ゼロ](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

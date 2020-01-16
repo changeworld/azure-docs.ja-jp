@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447983"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982144"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -41,7 +41,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * SQL API を使用し、かつ[強力な一貫性](../cosmos-db/manage-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
-* [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
+* [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-account-create.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 
 ## <a name="prepare-your-development-environment"></a>開発環境を準備する
 
@@ -174,7 +174,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 1. [Protobuf コンパイラを GitHub からダウンロードします](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. ソース ディレクトリ、ターゲット ディレクトリ、および **proto** ファイルの名前を指定して、コンパイラを実行します。 例:
+1. ソース ディレクトリ、ターゲット ディレクトリ、および **proto** ファイルの名前を指定して、コンパイラを実行します。 次に例を示します。
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 既定では、新しいデバイス モデルの JSON ファイルと JS ファイルは、ビルドしたソリューションにコピーされません。 明示的に含める必要があります。
 
-含めるファイルごとに、**services\services.csproj** ファイルにエントリを追加します。 例:
+含めるファイルごとに、**services\services.csproj** ファイルにエントリを追加します。 次に例を示します。
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -265,7 +265,7 @@ Postman を設定するには:
 
 シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、 **[Send]\(送信\)** をクリックします。
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます ( **[デバッグ] \> [デバッグの停止]** )。
 
@@ -275,6 +275,6 @@ IoT Hub および Cosmos DB のインスタンスが必要でなくなった場�
 
 多くの IoT Hub 機能では、Protobuf やその他のバイナリ形式がネイティブにサポートされません。 たとえば、IoT Hub ではメッセージ ペイロードを処理することができないため、メッセージ ペイロードに基づいてルーティングを行うことはできません。 ただし、メッセージ ヘッダーに基づいてルーティングすることは可能です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法がわかったら、次は、[カスタム イメージをクラウドにデプロイする](iot-accelerators-device-simulation-deploy-image.md)方法について学習しましょう。

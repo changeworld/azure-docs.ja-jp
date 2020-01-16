@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707779"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980988"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -41,13 +41,13 @@ ms.locfileid: "74707779"
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
 
-- サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
+- サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
 - 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
 - Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
 
-- サービス管理者または共同管理者に問題が発生した場合は、「[Add or change Azure subscription administrators](../billing/billing-add-change-azure-subscription-administrator.md)」(Azure サブスクリプション管理者を追加または変更する) および「[Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md)」(クラシック サブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール) を参照してください。
+- サービス管理者または共同管理者に問題が発生した場合は、「[Add or change Azure subscription administrators](../cost-management-billing/manage/add-change-subscription-administrator.md)」(Azure サブスクリプション管理者を追加または変更する) および「[Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md)」(クラシック サブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール) を参照してください。
 
 ## <a name="access-denied-or-permission-errors"></a>アクセス拒否またはアクセス許可エラー
 
@@ -165,7 +165,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 * エンドポイント  
 * IP アドレス  
 * ディスク  
-* Extensions  
+* 拡張機能  
 
 以下には、**仮想マシン**と、その仮想マシンが含まれる**リソース グループ** (とドメイン名) の両方に対する**書き込み**アクセス権が必要です。  
 
@@ -183,7 +183,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 閲覧者は、 **[プラットフォーム機能]** タブをクリックし、 **[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。 これらの機能にアクセスするには、[共同作成者](built-in-roles.md#contributor)ロールが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ゲスト ユーザーのトラブルシューティング](role-assignments-external-users.md#troubleshoot)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)

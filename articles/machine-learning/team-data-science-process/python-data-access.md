@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427384"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -66,7 +66,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
-![セキュリティ][security]
+![Security][security]
 
 役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
@@ -96,7 +96,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
     ![ノートブックにコードを貼り付ける][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
-Machine Learning Studio のクラシック バージョンで実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
+Machine Learning Studio (クラシック) で実験が実行されると、モジュールの出力ノードから中間データセットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
 
@@ -172,7 +172,7 @@ Machine Learning Studio のクラシック バージョンで実験が実行さ�
     ds = ws.datasets[0]
 
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>メタデータ
 データセットには、コンテンツに加え、メタデータがあります (中間データセットはこのルールの例外であり、メタデータはありません)。
 
 作成時にユーザーが割り当てるメタデータの値の一部には次のものがあります。

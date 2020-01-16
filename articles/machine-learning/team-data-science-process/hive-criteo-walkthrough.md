@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eca19b3774ad285cb143ffc2b6c53360bec85fa4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492361"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968727"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -60,7 +60,7 @@ Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (�
 
 HDInsight クラスターを使用して予測分析ソリューションを構築するために、3 つの手順で Azure のデータ サイエンス環境をセット アップします。
 
-1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
+1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
 2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](customize-hadoop-cluster.md):この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
 
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
@@ -424,7 +424,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 これで、Azure Machine Learning Studio でモデルを構築する準備ができました。 ダウンサンプリングされたデータは、クラスター内に Hive テーブルとして保存されます。 このデータを読み取るには、Azure Machine Learning の**データのインポート** モジュールを使用します。 このクラスターのストレージ アカウントにアクセスするための資格情報は、以下のとおりです。
 
-### <a name="step1"></a> 手順 1:データのインポート モジュールを使用して、Azure Machine Learning に Hive テーブルからデータを取得し、機械学習の実験用に選ぶ
+### <a name="step1"></a> ステップ 1:データのインポート モジュールを使用して、Azure Machine Learning に Hive テーブルからデータを取得し、機械学習の実験用に選ぶ
 まず **[+新規]**  ->  **[実験]**  ->  **[空の実験]** を選択します。 次に、左上の **[検索]** ボックスで "データのインポート" を検索します。 **データのインポート** モジュールを実験キャンバス (画面の中央) にドラッグ アンド ドロップして、データ アクセスにモジュールを使用します。
 
 **データのインポート** は、Hive テーブルからデータを取得中に次のように表示されます。
@@ -458,7 +458,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 >
 >
 
-### <a name="step2"></a> 手順 2:Azure Machine Learning Studio で簡単な実験を作成して、クリックする/クリックしないを予測します
+### <a name="step2"></a> ステップ 2:Azure Machine Learning Studio で簡単な実験を作成して、クリックする/クリックしないを予測します
 Azure Machine Learning Studio (クラシック) の実験は、次のようになります。
 
 ![Machine Learning の実験](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -535,7 +535,7 @@ Azure Machine Learning Studio (クラシック) の実験は、次のように�
 
 この変換後のデータセットを使用して、Azure Machine Learning モデルを構築する準備ができました。 次のセクションでは、その方法を説明します。
 
-### <a name="step3"></a> 手順 3:モデルを構築し、トレーニングしてスコアを付ける
+### <a name="step3"></a> ステップ 3:モデルを構築し、トレーニングしてスコアを付ける
 
 #### <a name="choice-of-learner"></a>学習者の選択
 まず、学習者を選択する必要があります。 2 つのクラスのブースト デシジョン ツリーを学習者として使用します。 この学習者の既定のオプションを次に示します。

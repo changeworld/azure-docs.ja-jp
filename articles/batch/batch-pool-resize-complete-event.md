@@ -1,6 +1,6 @@
 ---
-title: Azure Batch プールのサイズ変更の完了イベント | Microsoft Docs
-description: Batch プールのサイズ変更完了イベントのリファレンスです。
+title: Azure Batch プールのサイズ変更の完了イベント
+description: Batch プールのサイズ変更完了イベントのリファレンスです。 サイズが増加し、正常に完了したプールの例を参照してください。
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 8c0843db216ff99aabfda9074ee751597b43a2a2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 44d7aaa60ee89a1ec6b0b98c38b83038fc4e70d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449764"
 ---
 # <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント
 
@@ -41,10 +41,10 @@ ms.locfileid: "70258404"
 }
 ```
 
-|要素|型|メモ|
+|要素|種類|メモ|
 |-------------|----------|-----------|
-|`id`|string|プールの ID。|
-|`nodeDeallocationOption`|string|プールからノードが削除されるとき、プールのサイズが減少するかを指定します。<br /><br /> 次のいずれかの値になります。<br /><br /> **requeue** – 実行中のタスクを終了して、再度キューに入れます。 このタスクは、ジョブが有効になると再び実行されます。 タスクが終了するとすぐにノードを削除します。<br /><br /> **terminate** – 実行中のタスクを終了します。 タスクは再び実行されることがありません。 タスクが終了するとすぐにノードを削除します。<br /><br /> **taskcompletion** – 現在実行中のタスクが完了することを許可します。 待機中に新しいタスクをスケジュールしません。 すべてのタスクが完了したときにノードを削除します。<br /><br /> **Retaineddata** - 現在実行中のタスクが完了することを許可し、すべてのタスク データ保有期間が終了するまで待機します。 待機中に新しいタスクをスケジュールしません。 すべてのタスク保有期間が終了したとき、ノードを削除します。<br /><br /> 既定値は requeue です。<br /><br /> プールのサイズが増加している場合、値は**無効**に設定されます。|
+|`id`|String|プールの ID。|
+|`nodeDeallocationOption`|String|プールからノードが削除されるとき、プールのサイズが減少するかを指定します。<br /><br /> 次のいずれかの値になります。<br /><br /> **requeue** – 実行中のタスクを終了して、再度キューに入れます。 このタスクは、ジョブが有効になると再び実行されます。 タスクが終了するとすぐにノードを削除します。<br /><br /> **terminate** – 実行中のタスクを終了します。 タスクは再び実行されることがありません。 タスクが終了するとすぐにノードを削除します。<br /><br /> **taskcompletion** – 現在実行中のタスクが完了することを許可します。 待機中に新しいタスクをスケジュールしません。 すべてのタスクが完了するとノードを削除します。<br /><br /> **Retaineddata** - 現在実行中のタスクが完了することを許可し、すべてのタスク データ保有期間が終了するまで待機します。 待機中に新しいタスクをスケジュールしません。 すべてのタスク保有期間が終了したとき、ノードを削除します。<br /><br /> 既定値は requeue です。<br /><br /> プールのサイズが増加している場合、値は**無効**に設定されます。|
 |`currentDedicatedNodes`|Int32|プールに現在割り当てられている専用のコンピューティング ノードの数。|
 |`targetDedicatedNodes`|Int32|プールのために要求されている専用のコンピューティング ノードの数。|
 |`currentLowPriorityNodes`|Int32|プールに現在割り当てられている優先順位の低いコンピューティング ノードの数。|
@@ -53,5 +53,5 @@ ms.locfileid: "70258404"
 |`isAutoPool`|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
 |`startTime`|DateTime|プールのサイズ変更が開始された時間。|
 |`endTime`|DateTime|プールのサイズ変更が完了した時間。|
-|`resultCode`|string|サイズ変更の結果。|
-|`resultMessage`|string| 結果に関する詳細メッセージ。<br /><br /> サイズ変更が正常に完了した場合、操作が成功したことが示されています。|
+|`resultCode`|String|サイズ変更の結果。|
+|`resultMessage`|String| 結果に関する詳細メッセージ。<br /><br /> サイズ変更が正常に完了した場合、操作が成功したことが示されています。|

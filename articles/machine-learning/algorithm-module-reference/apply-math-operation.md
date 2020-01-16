@@ -1,7 +1,7 @@
 ---
 title: 算術演算の適用
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Apply Math Operation (算術演算の適用) モジュールを使用して、パイプラインの列値に算術演算を適用する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Apply Math Operation (算術演算の適用) モジュールを使用して、パイプラインの列値に算術演算を適用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428603"
 ---
 # <a name="apply-math-operation"></a>算術演算の適用
 
@@ -88,7 +88,7 @@ Apply Math Operation を使用して、入力データセットの数値列に�
   
 1.  パイプラインを実行します。  
   
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 **Append** または **ResultOnly** のオプションを使用して結果を生成する場合、返されるデータセットの列見出しには、演算と、使用された列が示されます。 たとえば、**Equals** 演算子を使用して 2 つの列を比較した場合、結果は次のようになります。  
   
@@ -251,7 +251,7 @@ y = x * 2<sup>t</sup> の値を求め、2 を底とする引数の指数を返�
 
 除算と減算に使用する列の選択順序は、直感に反しているように思えるかもしれませんが、結果をわかりやすくするために、列見出しには、演算名と、列が使用された順序が示されます。
 
-Operation|Num1|Num2|結果列|結果の値|
+操作|Num1|Num2|結果列|結果の値|
 ----|----|----|----|----
 |加算|1|5|Add(Num2_Num1)| 4|
 |乗算|1|5|Multiple(Num2_Num1)|5|
@@ -260,13 +260,13 @@ Operation|Num1|Num2|結果列|結果の値|
 |除算|1|5|Divide(Num2_Num1)|5|
 |除算|0|1|Divide(Num2_Num1)|Infinity|
 
-### <a name="add"></a>Add
+### <a name="add"></a>追加
 
 **[Column set]\(列セット\)** を使用してソース列を指定し、 **[Second argument]\(2 番目の引数\)** に指定されている数値をそれらの値に加算します。  
 
 2 つの列の値を加算するには、 **[Column set]\(列セット\)** を使用して 1 つ以上の列を選択してから、 **[Second argument]\(2 番目の引数\)** を使用して 2 番目の列を選択します。  
 
-### <a name="divide"></a>/ (除算)
+### <a name="divide"></a>Divide
 
 **[Column set]\(列セット\)** の値を定数、または **[Second argument]\(2 番目の引数\)** に定義された列値で除算します。  言い換えると、最初に除数を選択し、次に被除数を選択します。 出力値は商です。
 
@@ -338,7 +338,7 @@ Azure Machine Learning デザイナーでは、さまざまな丸めの演算が
 
 このカテゴリには、データ サイエンスでよく使用される特殊な数学関数が含まれます。 特に明記されていない限り、関数は単項で、選択された 1 つ以上の列の各値に対して指定された計算を返します。  
 
-### <a name="beta"></a>Beta
+### <a name="beta"></a>ベータ
 
 オイラーのベータ関数の値を返します。  
 
@@ -588,6 +588,6 @@ Erfc は 1 - erf(x) と定義されます。
 + [Python スクリプトの実行](execute-python-script.md)
 + [SQL 変換の適用](apply-sql-transformation.md)   
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

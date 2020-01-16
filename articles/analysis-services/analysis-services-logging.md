@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 05ba1d97d4eba92f492289375f85425f8920510b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572786"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749754"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/resource-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
 ![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -26,7 +26,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 **[エンジン]** 、 **[サービス]** 、および **[メトリック]** のカテゴリを選択できます。
 
-### <a name="engine"></a>Engine
+### <a name="engine"></a>エンジン
 
 **[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
 
@@ -40,20 +40,20 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |進行状況レポート     |   Progress Report Current      |
 |クエリ     |  Query Begin       |
 |クエリ     |   Query End      |
-|command     |  Command Begin       |
-|command     |  Command End       |
-|エラーと警告     |   Error      |
+|コマンド     |  Command Begin       |
+|コマンド     |  Command End       |
+|エラーと警告     |   エラー      |
 |発見     |   Discover End      |
-|通知     |    通知     |
+|Notification     |    Notification     |
 |Session     |  Session Initialize       |
-|ロック    |  Deadlock       |
-|クエリの処理     |   VertiPaq SE Query Begin      |
-|クエリの処理     |   VertiPaq SE Query End      |
-|クエリの処理     |   VertiPaq SE Query Cache Match      |
-|クエリの処理     |   Direct Query Begin      |
-|クエリの処理     |  Direct Query End       |
+|Locks    |  Deadlock       |
+|クエリ処理     |   VertiPaq SE Query Begin      |
+|クエリ処理     |   VertiPaq SE Query End      |
+|クエリ処理     |   VertiPaq SE Query Cache Match      |
+|クエリ処理     |   Direct Query Begin      |
+|クエリ処理     |  Direct Query End       |
 
-### <a name="service"></a>Service
+### <a name="service"></a>サービス
 
 |操作の名前  |発生するタイミング  |
 |---------|---------|
@@ -70,7 +70,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ## <a name="setup-diagnostics-logging"></a>診断ログのセットアップ
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com) > サーバーで、左のナビゲーションから、 **[診断ログ]** をクリックし、 **[診断をオンにする]** をクリックします。
 
@@ -88,7 +88,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
     * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
     * **メトリック**。 [メトリック](analysis-services-monitor.md#server-metrics)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
-3. **[Save]** をクリックします。
+3. **[保存]** をクリックします。
 
     "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
@@ -324,8 +324,8 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
   -RetentionEnabled $true -RetentionInDays 90
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure リソースの診断ログ](../azure-monitor/platform/resource-logs-overview.md)についてさらに詳しく学習します。
+[Azure リソースの診断ログ](../azure-monitor/platform/platform-logs-overview.md)についてさらに詳しく学習します。
 
 PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

@@ -6,16 +6,22 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954450"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495380"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
 この記事では、Azure へのオンプレミス VMware VM のレプリケーションを有効にする方法について説明します。
+
+## <a name="resolve-common-issues"></a>一般的な問題を解決
+
+* 各ディスクは 4 TB より小さくなければなりません。
+* OS ディスクは、ダイナミック ディスクではなく、ベーシック ディスクである必要があります。
+* 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB より小さくなければなりません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,6 +29,11 @@ ms.locfileid: "73954450"
 
 - [オンプレミスのソース環境の設定](vmware-azure-set-up-source.md)。
 - [Azure でのターゲット環境の設定](vmware-azure-set-up-target.md)。
+- 開始する前に、[要件と前提条件を確認](vmware-physical-azure-support-matrix.md)してください。 重要な注意事項には、次のものがあります。
+    - レプリケートするマシンの[サポート対象のオペレーティング システム](vmware-physical-azure-support-matrix.md#replicated-machines)。
+    - [ストレージ/ディスク](vmware-physical-azure-support-matrix.md#storage)のサポート。
+    - オンプレミスのマシンが準拠する必要がある [Azure の要件](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
+
 
 ## <a name="before-you-start"></a>開始する前に
 VMware 仮想マシンをレプリケートする場合、次の点に注意してください。
@@ -123,13 +134,9 @@ Microsoft Software Assurance のお客様は、Azure ハイブリッド特典を
 
 Azure ハイブリッド特典の詳細については[こちら](https://aka.ms/azure-hybrid-benefit-pricing)をご覧ください。
 
-## <a name="resolve-common-issues"></a>一般的な問題を解決
 
-* 各ディスクは 4 TB より小さくなければなりません。
-* OS ディスクは、ダイナミック ディスクではなく、ベーシック ディスクである必要があります。
-* 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB より小さくなければなりません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想マシンが保護された状態になったら、[フェールオーバー](site-recovery-failover.md)を試して、アプリケーションが Azure に表示されるかどうかを確認してください。
 

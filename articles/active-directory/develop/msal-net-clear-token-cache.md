@@ -1,5 +1,5 @@
 ---
-title: MSAL.NET を使用してトークン キャッシュをクリアする | Azure
+title: トークン キャッシュをクリアする (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for .NET (MSAL.NET) を使用してトークン キャッシュをクリアする方法を説明します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f203bc057482466f6bddc7523c0ec7a7e9404ccc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 11ff07e551002b8a0242afe51f3868a2f4a0ee85
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424262"
 ---
 # <a name="clear-the-token-cache-using-msalnet"></a>MSAL.NET を使用してトークン キャッシュをクリアする
 

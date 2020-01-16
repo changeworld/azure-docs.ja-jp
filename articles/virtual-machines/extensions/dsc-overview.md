@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176651"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497280"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -49,7 +49,7 @@ VM 内でローカルに使用する場合を除き、継続的なレポート�
 - **ノード**:DSC 構成のターゲット。 このドキュメントでは、*ノード* は常に Azure VM を指します。
 - **構成データ**:構成に関する環境データが格納されている .psd1 ファイル。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能は、構成ドキュメントと一連のパラメーターを受け取ります。 ファイルが指定されていない場合、[既定の構成スクリプト](#default-configuration-script)が拡張機能に埋め込まれています。 既定の構成スクリプトは、[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaConfig)にメタデータを設定するためにのみ使用されます。
 
@@ -115,7 +115,7 @@ Resource Manager DSC 拡張機能コマンドレットに関する重要な情�
 
 Azure DSC 拡張機能は DSC 構成ドキュメントを使用して、デプロイ時に Azure VM を直接構成することができます。 この手順ではノードが Automation に登録されません。 ノードは一元管理*されません*。
 
-単純な構成の例を次に示します。 構成を IisInstall.ps1 としてローカルに保存します。
+単純な構成の例を次に示します。 構成を iisInstall.ps1 としてローカルに保存します。
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-次のコマンドは、指定した VM に IisInstall.ps1 スクリプトを配置します。 さらにコマンドは構成を実行し、状態を報告します。
+次のコマンドは、指定した VM に iisInstall.ps1 スクリプトを配置します。 さらにコマンドは構成を実行し、状態を報告します。
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -202,9 +202,9 @@ az vm extension set \
 
 拡張機能のログは、次の場所に格納されます。`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
-- [DSC 拡張機能用の Resource Manager テンプレート](dsc-template.md)をご覧ください。
-- PowerShell DSC を使用して管理できるその他の機能や、その他の DSC リソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)をご覧ください。
-- 機微なパラメーターを構成に渡す方法について詳しくは、[資格情報を Azure DSC 拡張機能ハンドラーに渡す方法](dsc-credentials.md)をご覧ください。
+- [DSC 拡張機能用の Resource Manager テンプレート](dsc-template.md)を確認します。
+- PowerShell DSC を使用して管理できる機能とその他の DSC のリソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)を参照してください。
+- 機密パラメーターを構成に渡す方法の詳細については、[DSC 拡張機能ハンドラーで資格情報を安全に管理する方法](dsc-credentials.md)に関するページを参照してください。

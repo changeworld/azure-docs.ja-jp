@@ -1,17 +1,14 @@
 ---
 title: Hyper-V 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534503"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029090"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
@@ -70,9 +67,9 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     ![VHD をデプロイする](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. 仮想マシンのインポート ウィザードの **[開始する前に]** で、 **[次へ]** をクリックします。
-3. **[フォルダーの検索]** で、抽出された VHD が含まれているフォルダーを指定します。 その後、 **[次へ]** をクリックします。
+3. **[フォルダーの検索]** で、抽出された VHD が含まれているフォルダーを指定します。 続けて、 **[次へ]** をクリックします。
 1. **[仮想マシンを選択します]** で、 **[次へ]** をクリックします。
-2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 その後、 **[次へ]** をクリックします。
+2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 続けて、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 4. **[保存フォルダー]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。
@@ -82,7 +79,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) に接続できることを確認します。
+アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
 
 ## <a name="configure-the-appliance"></a>アプライアンスを構成する
 
@@ -136,7 +133,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 
 1. **[ユーザー名]** と **[パスワード]** に、VM を検出するためにアプライアンスによって使用されるアカウント資格情報を指定します。 資格情報のフレンドリ名を指定し、 **[詳細の保存]** をクリックします。
 2. **[ホストの追加]** をクリックし、Hyper-V のホスト/クラスターの詳細を指定します。
-3. **[Validate (検証)]** をクリックします。 検証後、各ホスト/クラスター上で検出できる VM の数が表示されます。
+3. **[検証]** をクリックします。 検証後、各ホスト/クラスター上で検出できる VM の数が表示されます。
     - ホストで検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。
     - ホストまたはクラスターを削除するには、 **[削除]** を選択します。
     - クラスターから特定のホストを削除することはできません。 削除できるのは、クラスター全体のみです。
@@ -153,6 +150,6 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Migrate Server Assessment による [Hyper-V 評価](tutorial-assess-hyper-v.md)を試します。

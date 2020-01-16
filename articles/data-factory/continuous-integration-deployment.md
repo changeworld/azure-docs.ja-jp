@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440539"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
@@ -56,11 +56,11 @@ Azure Repos Git で構成された Azure Data Factory での継続的インテ�
 
 テストおよび運用データ ファクトリで、 **[Import ARM template]\(ARM テンプレートのインポート\)** を選択します。 このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートを作成する\)** を選択して、Resource Manager テンプレート エディターを開きます。
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![カスタム デプロイ: 独自のテンプレートの作成](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 **[ファイルの読み込み]** をクリックし、生成された Resource Manager テンプレートを選択します。
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![カスタム デプロイ: テンプレートの編集](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 設定ウィンドウで、リンクされたサービスの資格情報などの構成値を入力します。 完了したら、 **[購入]** をクリックして Resource Manager テンプレートをデプロイします。
 

@@ -3,12 +3,12 @@ title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: fa4e01def8db4e5fef32b644d198bad1e9beab27
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: fd4319feaec1134fe0cf073fa2db2d36a7f40c4e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996172"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680496"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -24,7 +24,7 @@ ms.locfileid: "74996172"
 
 Azure Backup サービスを使用して Azure VM をどのようにバックアップおよび復元できるかを次に示します。
 
-**シナリオ** | **Backup** | **エージェント** |**Restore**
+**シナリオ** | **Backup** | **エージェント** |**復元**
 --- | --- | --- | ---
 Azure VM の直接バックアップ  | VM 全体をバックアップします。  | Azure VM では、エージェントは必要ありません。 Azure Backup によって、VM で実行されている [Azure VM エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)に対して拡張機能がインストールされ、使用されます。 | 次のように復元します。<br/><br/> - **基本的な VM を作成する**。 これは、VM に複数の IP アドレスなどの特別な構成がない場合に便利です。<br/><br/> - **VM ディスクを復元する**。 ディスクを復元します。 次にそれを既存の VM にアタッチするか、PowerShell を使用してディスクから新しい VM を作成します。<br/><br/> - **VM ディスクを交換する**。 VM が存在し、マネージド ディスク (未暗号化) を使用している場合、ディスクを復元し、それを使用して VM 上の既存のディスクを交換することができます。<br/><br/> - **特定のファイル/フォルダーを復元する**。 VM 全体ではなく、VM のファイルやフォルダーを復元できます。
 Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル、フォルダー、ボリュームをバックアップします。 | [Azure Recovery Services エージェント](backup-azure-file-folder-backup-faq.md)をインストールします。<br/><br/> Azure VM エージェントのバックアップ拡張機能と共に MARS エージェントを実行して、ファイル/フォルダー レベルで VM をバックアップできます。 | 特定のフォルダー/ファイルを復元します。
@@ -34,12 +34,12 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 
 ## <a name="supported-backup-actions"></a>サポートされているバックアップ アクション
 
-**アクション** | **サポート**
+**操作** | **サポート**
 --- | ---
 Windows Azure VM の作成時にバックアップを有効にする | サポート対象: <br/><br/> - Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)
 Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 18.04、17.10、17.04、16.04 (LTS)、14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
 シャットダウン状態/オフライン状態の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
-マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 操作は必要ありません。
+マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 必要な操作はありません。
 リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古い復元ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
 バックアップ ジョブを取り消す| スナップショットの処理中にサポートされます。<br/><br/> スナップショットがコンテナーに転送されているときはサポートされません。
@@ -68,7 +68,7 @@ Azure Backup は 32 ビットのオペレーティング システムをサポ�
 
 Linux マシンをバックアップをしたい場合に何がサポートされるかを以下に示します。
 
-**アクション** | **サポート**
+**操作** | **サポート**
 --- | ---
 Linux Azure VM エージェントを使用した Linux Azure VM のバックアップ | ファイル整合性バックアップ。<br/><br/> [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> 復元する際に、新しい VM を作成したり、ディスクを復元し、それを使用して VM を作成したり、ディスクを復元し、それを使用して既存の VM 上のディスクを交換したりすることができます。 個々のファイルとフォルダーも復元できます。
 MARS エージェントを使用した Linux Azure VM のバックアップ | サポートされていません。<br/><br/> MARS エージェントをインストールできるのは Windows マシンだけです。
@@ -76,7 +76,7 @@ DPM/MABS を使用した Linux Azure VM のバックアップ | サポートさ�
 
 ## <a name="operating-system-support-linux"></a>オペレーティング システムのサポート (Linux)
 
-Azure VM Linux のバックアップでは、Azure Backup は、[Azure で承認されている一連の Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)をサポートしています。 以下の点に注意してください。
+Azure VM Linux のバックアップでは、Azure Backup は、[Azure で承認されている一連の Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)をサポートしています。 次のことを考慮してください。
 
 - Azure Backup は Core OS Linux をサポートしていません。
 - Azure Backup は 32 ビットのオペレーティング システムをサポートしていません。
@@ -107,7 +107,7 @@ DPM または MABS ディスクの復旧ポイント数 | ファイル サーバ
 
 ## <a name="support-for-file-level-restore"></a>ファイル レベルの復元のサポート
 
-**Restore** | **サポートされています**
+**復元** | **サポートされています**
 --- | ---
 オペレーティング システム間でファイルを復元する | バックアップ VM と同じ (または互換性のある) OS を使用する任意のマシンでファイルを復元できます。 [互換性のある OS の表](backup-azure-restore-files-from-vm.md#system-requirements)を参照してください。
 クラシック VM でファイルを復元する | サポートされていません。
@@ -121,7 +121,7 @@ LVM/RAID アレイを使用して Linux VM でファイルを復元する | 同�
 
 VM ディスクの追加や交換など、VM 管理タスク中のバックアップのサポートについて次の表にまとめます。
 
-**Restore** | **サポートされています**
+**復元** | **サポートされています**
 --- | ---
 サブスクリプション/リージョン/ゾーン間で復元する | サポートされていません。
 既存の VM に復元する | ディスクの交換オプションを使用します。
@@ -154,13 +154,13 @@ Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](ht
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。
+Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。<BR> 16 台以上のディスク (最大 32 ディスク) を搭載した VM のプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com に記載されている連絡先にご連絡ください
 データ ディスク サイズ | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
-暗号化されたディスク | サポートされています (最大 4 TB)。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
+暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
 書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータが有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。
-重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳細については、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support)を参照してください <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません
+重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳細については、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support)を参照してください <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません。 ただし、完全な VM 復元を正常に実行できるようになります。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用して VM をバックアップすることはお勧めできません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
@@ -212,7 +212,7 @@ Azure VM | ![はい][green] | ![はい][green]
 
 ## <a name="vm-compression-support"></a>VM の圧縮のサポート
 
-Backup では、次の表にまとめられているように、バックアップ トラフィックの圧縮をサポートしています。 以下の点に注意してください。
+Backup では、次の表にまとめられているように、バックアップ トラフィックの圧縮をサポートしています。 次のことを考慮してください。
 
 - Azure VM では、ストレージ ネットワーク経由で Azure ストレージ アカウントから直接データが VM 拡張機能によって読み取られます。 このトラフィックを圧縮する必要はありません。
 - DPM や MABS を使用する場合は、DPM や MABS にデータをバックアップする前に圧縮することにより、帯域幅を節約できます。
@@ -224,7 +224,7 @@ Azure VM | NA | NA
 オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
 オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure VM をバックアップする](backup-azure-arm-vms-prepare.md)。
 - バックアップ サーバーなしで、[Windows マシンを直接バックアップ](tutorial-backup-windows-server-to-azure.md)します。

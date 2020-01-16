@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 465d44ea823c99afbb4f25541d64770c114ba7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350597"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 
@@ -30,19 +30,15 @@ ms.locfileid: "64730497"
 
 VM に接続しようとしましたが、接続に失敗します。 VM に接続できない理由を特定するために、Azure [portal](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell)、または [Azure CLI](#diagnose-using-azure-cli) を使用して、ネットワーク インターフェイスの有効なルートを表示できます。
 
-以下の手順では、有効なルートの表示対象となる既存の VM があると仮定します。 既存の VM がない場合は、最初に [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM をデプロイして、この記事のタスクを実行します。 この記事の例は、*myVMVMNic* というネットワーク インターフェイスを持つ *myVM* という VM に関するものです。 VM およびネットワーク インターフェイスは、*myResourceGroup* というリソース グループおよび "*米国東部*" リージョンにあります。 問題を診断する VM については、手順の値を適宜変更します。
+以下の手順では、有効なルートの表示対象となる既存の VM があると仮定します。 既存の VM がない場合は、最初に [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM を展開して、この記事のタスクを実行します。 この記事の例は、*myVMNic1* というネットワーク インターフェイスを持つ *myVM* という VM に関するものです。 VM およびネットワーク インターフェイスは、*myResourceGroup* というリソース グループおよび "*米国東部*" リージョンにあります。 問題を診断する VM については、手順の値を適宜変更します。
 
 ## <a name="diagnose-using-azure-portal"></a>Azure portal を使用して診断する
 
 1. [必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の上部の検索ボックスに、実行中状態になっている VM の名前を入力します。 検索結果に VM の名前が表示されたら、それを選択します。
-3. 次の図に示すように、 **[問題の診断と解決]** を選択し、 **[推奨される手順]** で項目 7 の **[有効なルート]** を選択します。
-
-    ![有効なルートの表示](./media/diagnose-network-routing-problem/view-effective-routes.png)
-
-4. 次の図に示すように、**myVMVMNic** という名前のネットワーク インターフェイスに対して有効なルートが表示されます。
-
-     ![有効なルートの表示](./media/diagnose-network-routing-problem/effective-routes.png)
+3. 左側の **[設定]** で、 **[Networking]\(ネットワーク\)** を選択し、ネットワーク インターフェイス リソースの名前を選択してそのリソースに移動します。
+     ![ネットワーク インターフェイスを表示する](./media/diagnose-network-routing-problem/view-nics.png)
+4. 左側で、 **[Effective routes]\(有効なルート\)** を選択します。 次の図に示すように、**myVMNic1** という名前のネットワーク インターフェイスに対して有効なルートが表示されます。![有効なルートを表示する](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     複数のネットワーク インターフェイスが VM に接続されている場合は、任意のネットワーク インターフェイスに対して有効なルートを選択して表示できます。 各ネットワーク インターフェイスは異なるサブネットに存在できるので、ネットワーク インターフェイスはそれぞれ異なる有効なルートを持つことができます。
 
@@ -58,11 +54,11 @@ VM に接続しようとしましたが、接続に失敗します。 VM に接�
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Connect-AzAccount` を実行して Azure にログインする必要もあります。
 
-[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* というネットワーク インターフェイスの有効なルートを取得します。
+[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMNic1* というネットワーク インターフェイスの有効なルートを取得します。
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
-  -NetworkInterfaceName myVMVMNic `
+  -NetworkInterfaceName myVMNic1 `
   -ResourceGroupName myResourceGroup `
   | Format-Table
 ```
@@ -82,20 +78,20 @@ $VM.NetworkProfile
 ```powershell
 NetworkInterfaces
 -----------------
-{/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
+{/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMNic1
 ```
 
-前の出力では、ネットワーク インターフェイスの名前は *myVMVMNic* です。
+前の出力では、ネットワーク インターフェイスの名前は *myVMNic1* です。
 
-## <a name="diagnose-using-azure-cli"></a>Azure CLI を使用した診断
+## <a name="diagnose-using-azure-cli"></a>Azure CLI を使用して診断する
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから CLI を実行することで実行できます。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
 
-[az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) を使用して、ネットワーク インターフェイスに対して有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なルートを取得します。
+[az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) を使用して、ネットワーク インターフェイスに対して有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMNic1* というネットワーク インターフェイスの有効なルートを取得します。
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
-  --name myVMVMNic \
+  --name myVMNic1 \
   --resource-group myResourceGroup
 ```
 
@@ -109,7 +105,7 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-## <a name="resolve-a-problem"></a>問題の解決
+## <a name="resolve-a-problem"></a>問題を解決する
 
 通常、ルーティングの問題の解決は以下から構成されます。
 
@@ -141,7 +137,7 @@ az vm show \
 * VPN ゲートウェイまたは NVA を介してオンプレミスのデバイスへのトラフィックの[強制トンネリング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を行っている場合、デバイスのルーティングの構成方法によってはインターネットから VM に接続できない場合があります。 デバイス用に構成したルーティングが VM のパブリックまたはプライベート IP アドレスにトラフィックをルーティングすることを確認してください。
 * Network Watcher の[接続のトラブルシューティング](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)機能を使用して、送信方向の通信に関する問題のルーティング、フィルタリング、および OS 内の原因を特定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - タスク、プロパティ、および[ルート テーブルとルート](manage-route-table.md)の設定について理解を深める。
 - [次ホップの種類、システム ルート、および Azure でのルートの選択方法](virtual-networks-udr-overview.md)について理解を深める。

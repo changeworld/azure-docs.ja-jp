@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300530"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867430"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -40,7 +40,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 * 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
     必要なポートは次のとおりです。 
 
-    |     Service           |     Port     |     Protocol     |
+    |     サービス           |     Port     |     Protocol     |
     |-----------------------|--------------|------------------|
     |    AD Web サービス    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
@@ -56,8 +56,6 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     |    NetBIOS 名       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    セキュリティで保護された LDAP        |    636       |    TCP           |
-    |    セキュリティで保護された LDAP        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
 
 * ターゲットの Active Directory Domain Services のサイト トポロジについて、特に Azure NetApp Files がデプロイされる Azure VNet ではベスト プラクティスに従う必要があります。  
@@ -88,7 +86,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
         これは、Active Directory ドメイン参加と SMB 認証操作に必要な DNS です。 
     * **セカンダリ DNS**   
         これは、冗長ネーム サービスを確保するためのセカンダリ DNS サーバーです。 
-    * **ドメイン**  
+    * **[ドメイン]**  
         これは、参加させる Active Directory Domain Services のドメイン名です。
     * **SMB サーバー (コンピューター アカウント) プレフィックス**  
         これは、Azure NetApp Files で新しいアカウントの作成に使用される Active Directory のコンピューター アカウントの命名規則プレフィックスです。
@@ -168,7 +166,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
  
     ボリュームは、その容量プールから、サブスクリプション、リソース グループ、場所の各属性を継承します。 ボリュームのデプロイ状態を監視するには、[通知] タブを使用してください。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)

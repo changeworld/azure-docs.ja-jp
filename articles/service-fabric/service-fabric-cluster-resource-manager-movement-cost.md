@@ -1,28 +1,19 @@
 ---
-title: 'Service Fabric クラスター Resource Manager: 移動コスト | Microsoft Docs'
-description: Service Fabric サービスの移動コストの概要
-services: service-fabric
-documentationcenter: .net
+title: 'Service Fabric クラスター Resource Manager: 移動コスト'
+description: Service Fabric サービスの移動コストと、それをアーキテクチャのニーズ (動的構成を含む) に適合するように指定する方法について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243012"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563345"
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
-クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 
+クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。
 
 サービスの移動には、最低でも CPU 時間とネットワーク帯域幅のコストがかかります。 ステートフル サービスでは、サービスの状態をコピーする必要があり、メモリとディスクがさらに消費されます。 Azure Service Fabric Cluster Resource Manager が見つけ出すソリューションのコストを最小限に抑えることによって、クラスターのリソースが不必要に費やされることがないことを保証できます。 一方でクラスター内のリソースの割り当てを大幅に改善するソリューションを無視することは避けたいものです。
 
@@ -127,7 +118,7 @@ ClusterManifest.xml:
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。 メトリックの詳細とその構成方法については、「 [Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「 [Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 

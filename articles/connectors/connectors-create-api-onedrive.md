@@ -1,22 +1,22 @@
 ---
-title: OneDrive に接続する
-description: OneDrive REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
+title: Microsoft OneDrive 内のファイルにアクセスして管理する
+description: Azure Logic Apps で自動化されたワークフローを作成することによって OneDrive 内のファイルをアップロードおよび管理する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378434"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>OneDrive コネクタの使用
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して OneDrive コネクタ内のファイルにアクセスして管理する
 
-OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。 OneDrive を使用して、次のタスクを実行できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [OneDrive コネクタ](/connectors/onedriveconnector/)を使用すると、ファイルのアップロード、取得、削除など、ファイルを管理するための自動化されたタスクとワークフローを作成できます。 OneDrive を使用して、次のタスクを実行できます。
 
 * OneDrive にファイルを保存してワークフローを構築するか、OneDrive 内の既存ファイルを更新できます。 
 * OneDrive 内でファイルが作成または更新されたときに、トリガーを使用してワークフローを開始できます。
@@ -38,7 +38,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。 トリガーの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
 
-1. ロジック アプリで「onedrive」と入力して、トリガーの一覧を取得します。  
+1. ロジック アプリ デザイナーで、「`onedrive`」と入力して、トリガーの一覧を取得します。  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 
 2. **[アクションの追加]** を選択します。
 
-3. テキスト ボックスに「onedrive」と入力して、使用可能なすべてのアクションの一覧を取得します。
+3. 検索ボックスに「`onedrive`」と入力して、使用可能なすべてのアクションの一覧を取得します。
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
@@ -86,6 +86,6 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 
 [コネクタの詳細](/connectors/onedriveconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps のコネクタ](apis-list.md)

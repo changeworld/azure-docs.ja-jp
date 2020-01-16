@@ -7,19 +7,19 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465119"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970264"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v12
 
 JavaScript 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
 > [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: JavaScript 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-nodejs-v10.md)」を参照してください。
+> 以前の SDK バージョンを使ってみるには、「[クイックスタート: JavaScript 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-nodejs-legacy.md)」を参照してください。
 
 JavaScript 用 Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 

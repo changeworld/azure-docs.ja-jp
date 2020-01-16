@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する - Azure Active Directory
+title: アクセス要求を承認または拒否する - Azure AD エンタイトルメント管理
 description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理でアクセス パッケージへの要求を承認または拒否する方法を学習します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422516"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
@@ -31,7 +31,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 アクセス要求を承認または拒否する最初の手順は、承認待ちのアクセス要求を見つけて開くことです。 アクセス要求を開く方法は 2 つあります。
 
-**前提となるロール:** 承認者
+**事前に必要なロール:** 承認者
 
 1. 要求を承認または拒否するよう求める、Microsoft Azure からのメールを検索します。 メールの例を以下に示します。
 
@@ -53,7 +53,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 承認待ちのアクセス要求を開いた後、承認または拒否の決定に役立つ詳細を確認することができます。
 
-**前提となるロール:** 承認者
+**事前に必要なロール:** 承認者
 
 1. **[表示]** リンクをクリックして、[アクセス要求] ウィンドウを開きます。
 
@@ -73,7 +73,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
     アクセス要求を承認または拒否できる構成された承認者がいない場合、要求は構成された要求期間後に期限切れとなります。 ユーザーには、アクセス要求の有効期限が切れたことと、アクセス要求を再送信する必要があることが通知されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス パッケージへのアクセスを要求する](entitlement-management-request-access.md)
 - [要求プロセスとメール通知](entitlement-management-process.md)

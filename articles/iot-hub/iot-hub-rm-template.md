@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457041"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (.NET)
 
@@ -30,8 +30,8 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 このチュートリアルを完了するには、以下が必要です。
 
 * 見ることができます。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* Azure Resource Manager テンプレート ファイルを保存できる [Azure Storage アカウント][lnk-storage-account]。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、 [無料アカウント][lnk-free-trial] を数分で作成することができます。
+* Azure Resource Manager テンプレート ファイルを格納できる [Azure Storage アカウント][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 以降。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
@@ -76,7 +76,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 
 1. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、 **[追加]** 、 **[新しい項目]** の順にクリックします。 **template.json** という JSON ファイルをプロジェクトに追加します。
 
-2. 標準 IoT Hub を**米国東部**リージョンに追加するには、**template.json** の内容を次のリソース定義に置き換えます。 IoT Hub をサポートするリージョンの最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
+2. 標準 IoT Hub を**米国東部**リージョンに追加するには、**template.json** の内容を次のリソース定義に置き換えます。 IoT Hub をサポートするリージョンの最新の一覧については、「[Azure の状態][lnk-status]」を参照してください。
 
     ```json
     {
@@ -195,12 +195,12 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 
 3. **[デバッグ]** 、 **[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
 
-4. アプリケーションが新しい IoT Hub を追加したことを確認するには、[Azure Portal][lnk-azure-portal] にアクセスしてリソースの一覧を表示します。 または、**Get-AzResource** PowerShell コマンドレットを使用します。
+4. アプリケーションが新しい IoT ハブを追加したことを確認するには、[Azure portal][lnk-azure-portal] にアクセスしてリソースの一覧を表示します。 または、**Get-AzResource** PowerShell コマンドレットを使用します。
 
 > [!NOTE]
-> このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 IoT ハブを削除するには、[Azure portal][lnk-azure-portal] を使うか、終了時に **Remove-AzResource** PowerShell コマンドレットを使用します。
+> このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 完了したら、[Azure portal][lnk-azure-portal] または **Remove-AzResource** PowerShell コマンドレットを使用してその IoT ハブを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここでは、C# プログラムと Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
@@ -222,7 +222,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

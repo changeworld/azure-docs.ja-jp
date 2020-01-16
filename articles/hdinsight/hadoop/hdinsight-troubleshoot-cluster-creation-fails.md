@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810679"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980497"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング
 
@@ -51,7 +51,7 @@ HDInsight の管理 IP アドレスとの通信が、仮想ネットワークま
 
 次の表の IP アドレスを送信元とするトラフィックを許可してください。
 
-| 送信元 IP アドレス | Destination | Direction |
+| 送信元 IP アドレス | 宛先 | Direction |
 |---|---|---|
 | 168.61.49.99 | *:443 | 受信 |
 | 23.99.5.239 | *:443 | 受信 |
@@ -64,7 +64,7 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 
 ## <a name="resources-locks"></a>リソース ロック  
 
-[ご利用の仮想ネットワークとリソース グループがロック](../../azure-resource-manager/resource-group-lock-resources.md)されていないことを確認します。  
+[ご利用の仮想ネットワークとリソース グループがロック](../../azure-resource-manager/management/lock-resources.md)されていないことを確認します。  
 
 ## <a name="unsupported-component-versions"></a>コンポーネントのバージョンがサポート対象外
 
@@ -80,7 +80,7 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 
 [Azure の状態](https://status.azure.com/status)をチェックし、潜在的な障害またはサービスの問題がないか調べてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-plan-virtual-network-deployment.md)
 * [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  

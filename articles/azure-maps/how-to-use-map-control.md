@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432912"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -36,7 +36,7 @@ ms.locfileid: "74480531"
 
     b. または、[azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。
 
-    > npm install azure-maps-control
+    > **npm install azure-maps-control**
 
     次に、Azure Maps のスタイル シートとスクリプト ソースの参照を、ファイルの `<head>` 要素に追加します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "74480531"
     </body>
     ```
 
-5. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 `Map` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `id` または `HTMLElement` (`document.getElementById('myMap')` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **language** オプションには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 サブスクリプション キーを使用して認証する場合は、次のようになります。
+5. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 `Map` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `id` または `HTMLElement` (`document.getElementById('myMap')` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 アカウントを作成する、またはお使いのキーを見つける必要がある場合、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントのプライマリ キーを取得します。 **language** オプションには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 サブスクリプション キーを使用して認証する場合は、次のようになります。
 
     ```HTML
     <script type="text/javascript">
@@ -211,7 +211,27 @@ map = new atlas.Map('myMap', {
 
 サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="azure-government-cloud-support"></a>Azure Government クラウドのサポート
+
+Azure Maps Web SDK は、Azure Government クラウドをサポートしています。 Azure Maps Web SDK へのアクセスに使用される JavaScript および CSS の URL はすべて同じですが、Azure Maps プラットフォームの Azure Government クラウド バージョンに接続するには、次のタスクを実行する必要があります。
+
+対話型マップ コントロールを使用する場合は、`Map` クラスのインスタンスを作成する前に、次のコード行を追加します。 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+マップとサービスを認証するときは、Azure Government クラウド プラットフォームからの Azure Maps 認証の詳細を使用してください。
+
+サービス モジュールを使用する場合は、API URL エンドポイントのインスタンスを作成するときに、サービスのドメインを設定する必要があります。 たとえば、次のコードは `SearchURL` クラスのインスタンスを作成し、ドメインが Azure Government クラウドを指すようにします。
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Azure Maps REST サービスに直接アクセスする場合は、URL ドメインを `atlas.azure.us` に変更します。 たとえば、検索 API サービスを使用する場合は、URL ドメインを `https://atlas.microsoft.com/search/` から `https://atlas.azure.us/search/` に変更します。
+
+## <a name="next-steps"></a>次のステップ
 
 マップを作成して操作する方法について説明します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c1ca3ac55c1c995ac858e758d6930b49c5ea1c
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: abee04afca45a2d6f558858b4490c8be1f37a2f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451281"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -29,7 +29,7 @@ Azure portal のシリアル コンソールでは、Linux 仮想マシン (VM) 
 Windows 用シリアル コンソールのドキュメントについては、[Windows 用シリアル コンソール](../windows/serial-console.md)に関する記事を参照してください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されています。 Azure Government や Azure China Cloud では利用できません。
+> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -59,7 +59,7 @@ Windows 用シリアル コンソールのドキュメントについては、[W
 > [!NOTE]
 > シリアル コンソールに何も表示されない場合、VM でそのブート診断が有効になっていることを確認してください。 多くの場合、**Enter** キーを押すと、シリアル コンソールに何も表示されない問題が解決します。
 
-ディストリビューション      | シリアル コンソール アクセス
+Distribution      | シリアル コンソール アクセス
 :-----------|:---------------------
 Red Hat Enterprise Linux    | シリアル コンソール アクセスが既定で有効になっています。
 CentOS      | シリアル コンソール アクセスが既定で有効になっています。
@@ -101,7 +101,7 @@ SSH 構成の問題 | シリアル コンソールにアクセスし、設定を
 現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
 
 > [!CAUTION]
-> コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
+> コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 機密情報や個人を特定できる情報を含むデータまたはコマンドを入力する場合は、シリアル コンソールがどうしても必要でない限り、SSH を使用することをお勧めします。
 
 ### <a name="concurrent-usage"></a>同時使用
 ユーザーがシリアル コンソールに接続しているときに、別のユーザーがその同じ仮想マシンへのアクセスを要求し、その要求が成功した場合、最初のユーザーが切断され、2 番目のユーザーが同じセッションに接続されます。
@@ -166,10 +166,10 @@ A. はい。 「[仮想マシン スケール セット用のシリアル コン
 
 A. はい。 シリアル コンソールは SSH キーを必要としないので、必要な操作はユーザー名とパスワードの組み合わせを設定することのみです。 Azure portal で **[パスワードのリセット]** を選択し、これらの資格情報を使用してシリアル コンソールにサインインしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * シリアル コンソール を使用して [GRUB とシングル ユーザー モードにアクセス](serial-console-grub-single-user-mode.md)します。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)にシリアル コンソールを使用します。
-* シリアル コンソールを使用して、[さまざまなディストリビューションで GRUB を有効にする](serial-console-grub-proactive-configuration.md)方法について学習します。 
+* シリアル コンソールを使用して、[さまざまなディストリビューションで GRUB を有効にする](serial-console-grub-proactive-configuration.md)方法について学習します。
 * シリアル コンソールは、[Windows VM](../windows/serial-console.md) でも使用可能です。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。
 

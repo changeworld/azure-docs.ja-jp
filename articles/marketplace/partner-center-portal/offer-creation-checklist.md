@@ -1,19 +1,19 @@
 ---
 title: SaaS オファー作成のチェックリスト - Azure 向けの Commercial Marketplace
 description: SaaS オファー作成プロセスで指定できる詳細。 - Azure 向けの Commercial Marketplace
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824621"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930301"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
 
@@ -69,7 +69,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | :---------------- | :-----------|  
 | [カテゴリとサブカテゴリ] | 1 個は必須。最大 3 個。 既定値は選択されていません。 |
 | [Industries and subindustries]\(業界とサブ業界\) | 省略可能。 最大 2 個の L1 業界と、各 L1 業界に属する最大 2 個のサブ業界。既定値: 選択されていません |
-| アプリのバージョン  | 省略可能。 既定値はなし。 |
+| アプリのバージョン  | 省略可能。 既定値は[なし] : |
 | [Use Standard Contract]/(標準契約を使用する/)  | 省略可能。 既定値: 選択されていません。  | |
 | 使用条件  | 標準契約が選択されていない場合は必須。  |
 
@@ -79,9 +79,9 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 
 | **フィールド名**    | **メモ**   |
 | :---------------- | :-----------| 
-| 名前  | 必須。最大 50 文字。 |
+| Name  | 必須。最大 50 文字。 |
 | まとめ  | 必須。最大 100 文字。 | 
-| 説明  | 必須。最大 3,000 文字。 |
+| [説明]  | 必須。最大 3,000 文字。 |
 | Getting Started Instructions (使用開始時の説明)  | 必須。最大 3,000 文字。 |
 | Getting Started Instructions (使用開始時の説明)  | 必須。最大 3,000 文字。 |
 | キーワード検索  | 省略可能。指定を推奨。最大 3 個のキーワード。 |
@@ -141,7 +141,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | 価格モデル  | 必須。 既定値は定額。 オプション:定額、ユーザーごと。 |
 | [Minimum and maximum seats]\(最小シートと最大シート\)  | 省略可能。シートベースの価格モデルが選択されている場合にのみ使用可能。 |
 | [請求期間]  | 必須。 既定値は月単位。 オプション:月単位、年単位。 |
-| 料金  | 必須。月単位の請求期間が選択されている場合は、米国ドル/月。年単位の請求期間が選択されている場合は、米国ドル/年。 |
+| Price  | 必須。月単位の請求期間が選択されている場合は、米国ドル/月。年単位の請求期間が選択されている場合は、米国ドル/年。 |
 | [Plan Audience]\(プランの対象ユーザー\)  | 省略可能。 既定値はパブリック プラン。 オプション:パブリック、プライベート (テナント ID ごと) |
 | [Restricted Plan Audience (tenant ID + description)]\(制限されたプランの対象ユーザー (テナント ID と説明)\)  | プライベート プランが選択されている場合は必須。 テナント ID は最小 1 個、最大 10 個 (手動入力の場合)。 CSV ファイルをインポートする場合は最大 20,000 個。 |
 
@@ -151,7 +151,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 
 | **フィールド名**    | **メモ**   | 
 | :---------------- | :-----------| 
-| 説明  | 必須。 |
+| [説明]  | 必須。 |
 | [User Manual name + file]\(ユーザー マニュアル名とファイル\)  | 必須。最大 1 個のドキュメント。PDF 形式にする必要があります。 |
 | [Video name, URL + thumbnail]\(ビデオ名、URL + サムネイル\)  | 省略可能。指定を推奨。 サムネイルは 533 x 324 の JPGP または PNG 形式にする必要があります。 ビデオは YouTube または Vimeo にホストする必要があります。 |
 
@@ -161,6 +161,6 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | :---------------- | :-----------| 
 | [認定の注意書き]  | 省略可能。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [新しい SaaS オファーを作成する](./create-new-saas-offer.md)

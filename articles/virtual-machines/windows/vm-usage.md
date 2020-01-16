@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353716"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982269"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
-Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../billing/billing-understand-your-bill.md)に関するページをご覧ください。
+Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
 
 ## <a name="download-your-usage-details"></a>使用量の詳細のダウンロード
-最初に、[使用量の詳細をダウンロード](../../billing/billing-download-azure-invoice-daily-usage-date.md)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
+最初に、[使用量の詳細をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
 
 
 | フィールド             | 意味                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | サンプル値                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR は、基になるインフラストラクチャ コストの使用状
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Premium ソフトウェアに料金が発生してるかどうかを確認するには、どうすればよいですか。
 ニーズに最適な VM イメージを確認するときは、必ず [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute) をよく調べてください。 イメージには、ソフトウェア プラン料金があります。 "Free" と表示されている場合、ソフトウェアに対して追加コストは発生しません。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>使用サービスにおける Microsoft.ClassicCompute と Microsoft.Compute の違いは何ですか。
-Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイしたクラシック リソースを表します。 Resource Manager でデプロイする場合、使用サービスには Microsoft.Compute が設定されます。 詳細については、[Azure のデプロイメント モデル](../../azure-resource-manager/resource-manager-deployment-model.md)に関するページをご覧ください。
+Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイしたクラシック リソースを表します。 Resource Manager でデプロイする場合、使用サービスには Microsoft.Compute が設定されます。 詳細については、[Azure のデプロイメント モデル](../../azure-resource-manager/management/deployment-models.md)に関するページをご覧ください。
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>仮想マシンの使用量に対して、[InstanceID] フィールドが空白になるのはなぜですか。
 クラシック デプロイ モデルでデプロイする場合、InstanceID 文字列は使用できません。
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>VM のタグが使用量の詳細に表示されないのはなぜですか。
@@ -143,5 +143,5 @@ Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイし
 Premium Storage 対応の VM の料金は、Premium Storage 非対応の VM と同じです。 異なるのはストレージ コストのみです。 詳細については、[ストレージの価格ページ](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](../../billing/billing-understand-your-bill.md)」を参照してください。
+使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。
 

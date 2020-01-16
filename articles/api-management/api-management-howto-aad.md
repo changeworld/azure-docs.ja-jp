@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs
+title: Azure Active Directory を使用して開発者アカウントを承認する
+titleSuffix: Azure API Management
 description: API Management で Azure Active Directory を使用してユーザーを承認する方法について説明します。
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442793"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -32,7 +33,7 @@ ms.locfileid: "74454457"
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 2. 選択 ![矢印](./media/api-management-howto-aad/arrow.png)。
 3. 検索ボックスに、「**api**」と入力します。
 4. **[API Management サービス]** を選択します。

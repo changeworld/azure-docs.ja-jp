@@ -2,18 +2,18 @@
 title: HDInsight 上で Curl を使用して Apache Hadoop Hive を使用する - Azure
 description: Curl を使用して Apache Pig ジョブを Azure HDInsight にリモートで送信する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 01/06/2020
+ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736085"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690490"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
@@ -27,7 +27,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
 * REST クライアント。 このドキュメントでは、Windows PowerShell の [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) と [Bash](https://docs.microsoft.com/windows/wsl/install-win10) の [Curl](https://curl.haxx.se/) を使用します。
 
-* Bash を使用する場合、コマンド ライン JSON プロセッサの jq も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。
+* Bash を使用する場合は、コマンド ライン JSON プロセッサである jq も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
 ## <a name="base-uri-for-rest-api"></a>Rest API のベース URI
 
@@ -38,6 +38,7 @@ HDInsight の REST API のベース URI (Uniform Resource Identifier) は、`htt
 cURL、または WebHCat を用いたその他 REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 ### <a name="setup-preserve-credentials"></a>セットアップ (資格情報の保存)
+
 各例で再入力しなくて済むように、資格情報を保存します。  クラスター名は別の手順で保存します。
 
 **A.Bash**  
@@ -54,9 +55,10 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>大文字と小文字が正しく区別されたクラスター名を確認する
-クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここでの手順では、実際の大文字小文字の区別を示し、以降のすべての例で使用できるように、それを変数に格納します。
 
-次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名では、大文字と小文字は区別されません)。
+クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここの手順では、実際の大文字小文字の区別を示し、後のすべての例のために、それを変数に格納します。
+
+次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名は大文字と小文字が区別されません。)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -73,7 +75,7 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>Hive クエリを実行する
+## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
 1. HDInsight クラスターに接続できることを確認するには、次のいずれかのコマンドを使用します。
 
@@ -144,7 +146,7 @@ $clusterName
 
    これらのステートメントは次のアクションを実行します。
 
-   * `DROP TABLE` - テーブルが既に存在する場合は削除されます。
+   * `DROP TABLE` - テーブルが既に存在する場合、そのテーブルは削除されます。
    * `CREATE EXTERNAL TABLE` - 新しい "外部" テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
      > [!NOTE]  
@@ -153,7 +155,7 @@ $clusterName
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
    * `ROW FORMAT` - データがどのように書式設定されるか。 各ログのフィールドは、スペースで区切られています。
-   * `STORED AS TEXTFILE LOCATION` - データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
+   * `STORED AS TEXTFILE LOCATION` - データが格納されている場所 (example/data ディレクトリ) と、それがテキストとして格納されていること。
    * `SELECT` - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
      > [!NOTE]  
@@ -185,15 +187,11 @@ $clusterName
 
     これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)に関するページを参照してください。
 
-## <a id="nextsteps"></a>次のステップ
-
-HDInsight での Hive に関する全般的な情報
-
-* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+## <a name="next-steps"></a>次のステップ
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 このドキュメントで使用されている REST API の詳細については、「[WebHCat リファレンス](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)」に関するドキュメントをご覧ください。

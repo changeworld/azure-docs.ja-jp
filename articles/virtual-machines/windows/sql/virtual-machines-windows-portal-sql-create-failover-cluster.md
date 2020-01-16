@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792185"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965431"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -65,7 +65,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-作業を開始する前に、いくつかのことを把握および準備しておく必要があります。
+作業を開始する前に、いくつかのことを把握し、準備しておく必要があります。
 
 ### <a name="what-to-know"></a>必要な知識
 次のテクノロジについて、運用上の理解が必要です。
@@ -78,7 +78,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
 - [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure リソース グループ](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)の[軽量](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)管理モードでのみサポートされています。 完全拡張機能モードから軽量に変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードの SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、**正しい仮想マシンの横のチェックボックスをオフにします**。 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL VM で動作しなくなります。
@@ -290,7 +290,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. フェールオーバー クラスターのクォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する方法](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
+1. フェールオーバー クラスターのクォーラム監視を構成します。 「[ユーザー インターフェイスでクォーラム監視を構成する方法](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)」に関するページを参照してください。
 
 ### <a name="add-storage"></a>ストレージを追加する
 
@@ -375,7 +375,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[リソース グループ]** :仮想マシンが含まれているリソース グループ。
    - **Name**:ロード バランサーを識別する名前。
    - **[リージョン]** :仮想マシンが含まれている Azure の場所。
-   - **[タイプ]** :パブリックまたはプライベート。 プライベート ロード バランサーには、同じ仮想ネットワーク内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
+   - **[種類]** :パブリックまたはプライベート。 プライベート ロード バランサーには、同じ仮想ネットワーク内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
    - **SKU**:Standard。
    - **仮想ネットワーク**:仮想マシンと同じネットワーク。
    - **[IP アドレスの割り当て]** :静的。 
@@ -427,7 +427,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[バックエンド ポート]** : **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポートを使用します。
    - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
    - **[正常性プローブ]** : 先ほど構成した正常性プローブ。
-   - **[セッション永続化]** : なし。
+   - **[セッション永続化]** : [なし] :
    - **[アイドル タイムアウト (分)]** : 4.
    - **[フローティング IP]\(ダイレクト サーバー リターン\)** : 有効。
 
@@ -499,7 +499,7 @@ Azure Virtual Machines では、次の理由から、MSDTC は Windows Server 20
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [リモート デスクトップ (Azure) を使用して記憶域スペース ダイレクトを設定する](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

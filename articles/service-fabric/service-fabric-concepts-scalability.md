@@ -1,25 +1,16 @@
 ---
-title: Service Fabric サービスの拡張性 | Microsoft Docs
-description: Service Fabric サービスの拡張方法を説明する
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric サービスのスケーラビリティ
+description: Azure Service Fabric のスケールイン、およびアプリケーションをスケーリングするために使用されるさまざまな手法について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035917"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610014"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小
 Azure Service Fabric では、クラスター内のノードでサービス、パーティション、およびレプリカを管理することにより、スケーラブルなアプリケーションを簡単に構築できます。 同じハードウェアで多くのワークロードを実行することで、リソースを最大限に活用すると同時に、ワークロードを拡大縮小する方法も柔軟に選択できます。 この Channel 9 ビデオでは、スケーラブルなマイクロサービス アプリケーションを構築する方法について説明します。
@@ -149,7 +140,7 @@ Service Fabric には、クラスターのサイズを変更して拡大縮小�
   - 顧客がサインアップする前に、多数のサービス インスタンスやレプリカを実行する必要がありません
   - 顧客がサービスの利用をやめる際は、作成したサービスまたはアプリケーションをマネージャーで削除するだけなので、サービスの情報削除も簡単です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

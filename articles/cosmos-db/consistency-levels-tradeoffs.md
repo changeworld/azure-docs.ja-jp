@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ
+title: Azure Cosmos DB の整合性、可用性、パフォーマンスのトレードオフ
 description: Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ。
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445563"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ 
 
@@ -23,7 +23,7 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 - *厳密*
 - *有界整合性制約*
 - *セッション*
-- *一貫性のあるプレフィックス*
+- *整合性のあるプレフィックス*
 - *最終的*
 
 いずれのモデルでも、可用性とパフォーマンスのトレードオフが提供され、包括的な SLA によって裏付けられています。
@@ -67,9 +67,9 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 分散システムでゼロの RPO とゼロの RTO を実現することはできないため、マルチマスター用に構成された Cosmos アカウントには厳密な整合性を構成できません。 さらに、すべての領域へのすべての書き込みは、アカウント内のすべての構成済みリージョンにレプリケートおよびコミットされる必要があるため、厳密な整合性とマルチマスターを併用しても書き込み待機時間の恩恵は受けられません。 この結果、1 つのマスター アカウントと同じ書き込み待機時間が発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-分散システムでのグローバル分散および一般的な整合性のトレードオフについて学習します。 次の記事を参照してください。
+分散システムでのグローバル分散および一般的な整合性のトレードオフについて学習します。 次の記事をご覧ください。
 
 - [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service の使用に関連した一般的な問題やエラーの既知のトラブルシューティングに関する記事 | Microsoft Docs
+title: 一般的な問題 - Azure Database Migration Service
 description: Azure Database Migration Service の使用に関連した一般的な既知の問題やエラーのトラブルシューティング方法について説明します。
 services: database-migration
 author: HJToland3
@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5bed7935f673ef824037cb5641ac8e8577fee550
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437785"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -34,7 +34,7 @@ Azure Database Migration Service プロジェクトに新しいアクティビ�
 
 Azure SQL Database または Azure SQL Database マネージド インスタンスに移動するためのデータベース移行プロジェクトのアクティビティを作成すると、次のエラーが発生します。
 
-* **エラー**: 移行の設定の検証エラー、"errorDetail": "'Databases' のオブジェクトの最大数 '4' を超えるオブジェクトが移行用に選択されています。"
+* **Error**: 移行の設定の検証エラー、"errorDetail": "'Databases' のオブジェクトの最大数 '4' を超えるオブジェクトが移行用に選択されています。"
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
@@ -44,7 +44,7 @@ Azure SQL Database または Azure SQL Database マネージド インスタン�
 
 Azure Database Migration Service を使用して MySQL から Azure Database for MySQL に移行すると、移行アクティビティが次のエラーで失敗します。
 
-* **エラー**: Database migration error - Task 'TaskID' was suspended due to [n] successive recovery failures. (データベースの移行エラー - タスク 'TaskID' は、[n] 回連続で回復に失敗したため中断されました。)
+* **Error**: Database migration error - Task 'TaskID' was suspended due to [n] successive recovery failures. (データベースの移行エラー - タスク 'TaskID' は、[n] 回連続で回復に失敗したため中断されました。)
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
@@ -54,7 +54,7 @@ Azure Database Migration Service を使用して MySQL から Azure Database for
 
 Azure Database Migration Service インスタンスを停止すると、次のエラーが表示されます。
 
-* **エラー**: サービスを停止できませんでした。 エラー: {'error':{'code':'InvalidRequest','message':'1 つ以上のアクティビティが現在実行中です。 サービスを停止するには、アクティビティが完了するまで待つか、それらのアクティビティを手動で停止して、もう一度お試しください。'}}
+* **Error**: サービスを停止できませんでした。 エラー: {'error':{'code':'InvalidRequest','message':'1 つ以上のアクティビティが現在実行中です。 サービスを停止するには、アクティビティが完了するまで待つか、それらのアクティビティを手動で停止して、もう一度お試しください。'}}
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
@@ -64,7 +64,7 @@ Azure Database Migration Service インスタンスを停止すると、次の�
 
 Azure Database Migration Service インスタンスを開始すると、次のエラーが表示されます。
 
-* **エラー**: Service fails to Start. Error: {'errorDetail':'The service failed to start, please contact Microsoft support'} (サービスを開始できません。エラー: {'errorDetail':'サービスを開始できませんでした。Microsoft サポートにお問い合わせください'})
+* **Error**: Service fails to Start. Error: {'errorDetail':'The service failed to start, please contact Microsoft support'} (サービスを開始できません。エラー: {'errorDetail':'サービスを開始できませんでした。Microsoft サポートにお問い合わせください'})
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
@@ -74,7 +74,7 @@ Azure Database Migration Service インスタンスを開始すると、次の�
 
 SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行を実行すると、一括移行に失敗し、次のエラーが表示されます。
 
-* **エラー**: 操作 ID 'operationId' の復元操作に失敗しました。 コード 'AuthorizationFailed'、メッセージ 'オブジェクト ID 'objectId' のクライアント 'clientId' は、スコープ '/subscriptions/subscriptionId' に対するアクション 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' の実行を承認されていません。'。
+* **Error**: 操作 ID 'operationId' の復元操作に失敗しました。 コード 'AuthorizationFailed'、メッセージ 'オブジェクト ID 'objectId' のクライアント 'clientId' は、スコープ '/subscriptions/subscriptionId' に対するアクション 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' の実行を承認されていません。'。
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ SQL Server から Azure SQL Database マネージド インスタンスへのオ
 
 Azure Database Migration Service に関連付けられたネットワーク インターフェイス カードを削除しようとすると、削除の試行が失敗し、次のエラーが表示されます。
 
-* **エラー**: Cannot delete the NIC associated to Azure Database Migration Service due to the DMS service utilizing the NIC (DMS サービスで NIC が使用されているため、Azure Database Migration Service に関連付けられた NIC を削除できません)
+* **Error**: Cannot delete the NIC associated to Azure Database Migration Service due to the DMS service utilizing the NIC (DMS サービスで NIC が使用されているため、Azure Database Migration Service に関連付けられた NIC を削除できません)
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
@@ -102,7 +102,7 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 
 Azure Database Migration Service を介して MySQL データベースを Azure Database for MySQL インスタンスに移行すると、次のロック待機タイムアウト エラーが発生して、移行が失敗します。
 
-* **エラー**: Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
+* **Error**: Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
@@ -112,7 +112,7 @@ Azure Database Migration Service を介して MySQL データベースを Azure 
 
 Azure Database Migration Service を、名前付きインスタンスまたは動的ポートで実行される SQL Server ソースに接続しようとすると、次のエラーで接続が失敗します。
 
-* **エラー**: -1 - SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいこと、および SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL ネットワーク インターフェイス。エラー: 26 - 指定されたサーバーまたはインスタンスの位置を特定しているときにエラーが発生しました)
+* **エラー**: -1 - SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいこと、および SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL Network Interfaces、エラー:26 - 指定されたサーバーまたはインスタンスの位置を特定しているときにエラーが発生しました)
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
@@ -124,7 +124,7 @@ Azure Database Migration Service を、名前付きインスタンスまたは�
 * [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
 * [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
 * 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](https://docs.microsoft.com/azure/mysql/howto-server-parameters)」を確認する。

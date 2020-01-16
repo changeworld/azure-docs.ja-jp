@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979373"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
 
@@ -31,7 +31,7 @@ ms.locfileid: "74792411"
   そのスキーマを統合アカウントに追加するには、統合アカウントからストレージ アカウントにリンクする方法があります。 
   このタスクを実行するには、以下が必要です。 
 
-  * スキーマ用の BLOB コンテナーを作成する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 [ストレージ アカウントの作成方法についてはこちら](../storage/common/storage-quickstart-create-account.md)を参照してください。 
+  * スキーマ用の BLOB コンテナーを作成する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 [ストレージ アカウントの作成方法についてはこちら](../storage/common/storage-account-create.md)を参照してください。 
 
   * スキーマを格納する BLOB コンテナー。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 
   後で統合アカウントにスキーマを追加するときに、コンテナーのコンテンツ URI が必要です。
@@ -142,7 +142,7 @@ ms.locfileid: "74792411"
 
    **[スキーマ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
-1. **[コンテンツ URI]** ボックスに、前に生成した SAS を貼り付けます。 スキーマの追加を完了します。
+1. **[コンテンツ URI]** ボックスに、前に生成した SAS URI を貼り付けます。 スキーマの追加を完了します。
 
 スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
 
@@ -184,7 +184,7 @@ ms.locfileid: "74792411"
 
 1. スキーマの削除を確定するには、 **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
 * [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md)

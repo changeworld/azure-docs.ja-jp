@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353317"
 ---
-# <a name="supported-platforms"></a>サポートされるプラットフォーム 
+# <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
 ## 仮想マシン/サーバー <a name="vm-server"></a>
 
@@ -56,7 +56,7 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 
 * CentOS 6 および 7
 * Amazon Linux 2017.09
-* Oracle Linux 6 および 7
+* Oracle Linux 6 および Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 および 7
 * Debian GNU/Linux 8 および 9
 * Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
@@ -102,7 +102,7 @@ Azure Security Center では、次の Azure PaaS リソースがサポートさ�
 * Service Fabric アカウント
 * Automation アカウント
 * Load Balancer
-* Search
+* 検索
 * Service Bus 名前空間
 * Stream Analytics
 * イベント ハブの名前空間
@@ -116,7 +116,7 @@ Azure Security Center では、次の Azure PaaS リソースがサポートさ�
 
 Azure Stack に存在する Virtual Machines の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。

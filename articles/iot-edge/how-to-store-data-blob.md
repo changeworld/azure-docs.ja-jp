@@ -2,23 +2,23 @@
 title: デバイスでのブロック blob の格納 -Azure IoT Edge | Microsoft Docs
 description: 階層化機能と Time-To-Live 機能を理解してから、サポートされている Blob Storage の操作を確認し、その後、ご自身の Blob Storage アカウントに接続します。
 author: arduppal
-manager: mchad
+manager: brymat
 ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 08/07/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0dd999d7c7e42f4b881465c8473e0069952561ba
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: bfd47848bc07915b0d7be3620d950c11c0e4b6e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457312"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
-IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
+IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) および[追加 BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure の BLOB サービスのように動作しますが、その BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れている BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
 このモジュールは、次のシナリオで役立ちます。
 * データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のある場合。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
@@ -38,13 +38,13 @@ IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https:/
 - データのアップロード先の Azure Storage アカウントを選択する。
 - Azure にアップロードするコンテナーを指定する。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。
 - クラウド ストレージへのアップロードが完了した後ですぐに BLOB を削除する機能を選択する
-- 完全な BLOB アップロード (`Put Blob` 操作を使用) とブロック レベルのアップロード (`Put Block` および `Put Block List` 操作を使用) を行う。
+- 完全な BLOB アップロード (`Put Blob` 操作を使用) とブロック レベルのアップロード (`Put Block`、`Put Block List`、および `Append Block` 操作を使用) を行う。
 
 このモジュールは、BLOB がブロックで構成されている場合、ブロック レベルのアップロードを使用します。 一般的なシナリオのいくつかを次に示します。
 
-- アプリケーションが以前にアップロードした BLOB のいくつかのブロックを更新すると、このモジュールでは、BLOB 全体ではなく更新されたブロックのみがアップロードされます。
+- アプリケーションにより、以前にアップロードしたブロック BLOB のいくつかのブロックが更新されるか、追加 BLOB に新しいブロックが追加されると、このモジュールでは、BLOB 全体ではなく更新されたブロックのみがアップロードされます。
 - BLOB のアップロード中にインターネット接続がなくなると、接続が戻ったときに、BLOB 全体ではなく残りのブロックのみアップロードされます。
-
+ 
 BLOB のアップロード中に予期しないプロセスの終了 (電源障害など) が発生すると、モジュールがオンラインに戻ったときに、アップロード予定だったすべてのブロックが再度アップロードされます。
 
 **deviceAutoDelete** は構成可能な機能です。 この機能では、指定した期限 (分単位) が過ぎると、モジュールによって BLOB がローカル ストレージから自動的に削除されます。 これにより次の操作を行うことができます。
@@ -84,7 +84,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 | uploadOrder | NewestFirst、OldestFirst | データを Azure にコピーする順序を選択できます。 既定では `OldestFirst` に設定されています。 順序は BLOB の最終更新時刻によって決定されます。 <br><br> 環境変数: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先のストレージ アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 <br><br> ここで Azure Storage SAS 接続文字列を指定できます。 ただし、有効期限が切れた場合は、このプロパティを更新する必要があります。 <br><br> 環境変数: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure にアップロードするコンテナーの名前を指定できます。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。 ターゲット コンテナー名を指定しない場合、コンテナー名は自動的に `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` として割り当てられます。 ターゲット コンテナー名のテンプレート文字列を作成して、使用可能な値の列をチェックアウトできます。 <br>* %h -> IoT Hub 名 (3 ～ 50 文字)。 <br>* %d -> IoT Edge デバイス ID (1 ～ 129 文字)。 <br>* %m -> モジュール名 (1 ～ 64 文字)。 <br>* %c -> ソース コンテナー名 (3 ～ 63 文字)。 <br><br>コンテナー名の最大サイズは 63 文字です。ターゲット コンテナー名を自動的に割り当てる場合は、コンテナーのサイズが 63 文字を超えると、各セクション (IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName) が 15 文字まで削除されます。 <br><br> 環境変数: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true、false | 既定では `false` に設定されています。 `true` に設定すると、クラウド ストレージへのアップロードが完了したときにデータが自動的に削除されます。 <br><br> 環境変数: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| deleteAfterUpload | true、false | 既定では `false` に設定されています。 `true` に設定すると、クラウド ストレージへのアップロードが完了したときにデータが自動的に削除されます。 <br><br> **注意**:追加 BLOB を使用している場合、この設定は、アップロードの成功後にローカル ストレージから追加 BLOB を削除し、それ以降、それらの BLOB へのブロック追加操作はすべて失敗します。 この設定は注意して使用してください。アプリケーションで追加操作がまれにしか行われない、または連続追加操作がサポートされていない場合は、これを有効にしないでください<br><br> 環境変数: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
@@ -95,7 +95,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 | ----- | ----- | ---- |
 | deleteOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 <br><br> 環境変数: `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 時間を分単位で指定します。 この値が期限切れになると、モジュールが自動的にローカル ストレージから BLOB を削除します。 <br><br> 環境変数: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true、false | 既定では `true` に設定されていて、deleteAfterMinutes が期限切れになった場合に、クラウド ストレージへのアップロード中は BLOB が保持されます。 `false` に設定することができ、その場合は deleteAfterMinutes が期限切れになるとすぐにデータが削除されます。 注:このプロパティを機能させるには、UploadOn が true に設定されている必要があります。 <br><br> 環境変数: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | true、false | 既定では `true` に設定されていて、deleteAfterMinutes が期限切れになった場合に、クラウド ストレージへのアップロード中は BLOB が保持されます。 `false` に設定することができ、その場合は deleteAfterMinutes が期限切れになるとすぐにデータが削除されます。 注:このプロパティを機能させるには、UploadOn が true に設定されている必要があります。  <br><br> **注意**:追加 BLOB を使用している場合、この設定は、値の有効期限が切れるとローカル ストレージから追加 BLOB を削除し、それ以降、それらの BLOB へのブロック追加操作はすべて失敗します。 アプリケーションによって実行される追加操作の予想される頻度に対して、有効期限の値が十分に大きいことを確認してください。<br><br> 環境変数: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>ローカル ストレージとして SMB 共有を使用する
 Windows ホストにこのモジュールの Windows コンテナーをデプロイするときに、ローカル ストレージ パスとして SMB 共有を指定できます。
@@ -111,7 +111,7 @@ New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath
 ```
 例: <br>
 `$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
+`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
 このコマンドは、資格情報を使用してリモート SMB サーバーで認証を行います。 次に、リモート共有パスを G: ドライブ文字にマップします (他の使用可能なドライブ文字を指定できます)。 これで、IoT デバイスのデータ ボリュームが G: ドライブのパスにマップされました。 
 
@@ -133,7 +133,7 @@ sudo chmod -R 700 <blob-dir>
 
 例:<br>
 `sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata `
+`sudo chmod -R 700 /srv/containerdata`
 
 
 **absie** 以外のユーザーとしてサービスを実行する必要がある場合は、配置マニフェストの createOptions の "User" プロパティでカスタム ユーザー ID を指定できます。 このような場合は、既定値またはルート グループ ID `0` を使用する必要があります。
@@ -174,7 +174,8 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
     - このバージョンのモジュールは BLOB の作成時刻を返さないため、この SDK の使用中に既知の問題が発生します。 そのため、BLOB の一覧表示などのいくつかの方法は機能しません。 回避策として、BLOB クライアントで API バージョンを明示的に "2017-04-17" に設定します。 <br>例: `block_blob_service._X_MS_VERSION = '2017-04-17'`
-- [Node.JS](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
+    - [追加 BLOB のサンプル](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 - [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
 - [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 - [Go](../storage/blobs/storage-quickstart-blobs-go.md)
@@ -194,7 +195,7 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 
 1. ご自分のローカル ストレージ アカウント内にコンテナーを作成します
 
-1. ファイルをブロック BLOB としてアップロードを開始します。
+1. ブロック BLOB または追加 BLOB としてファイルのアップロードを開始します。
    > [!NOTE]
    > このモジュールでは、ページ BLOB はサポートされていません。
 
@@ -260,6 +261,16 @@ IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が
 
 - URL からブロックの配置
 
+### <a name="append-blobs"></a>追加 BLOB
+
+サポート対象:
+
+- ブロックの追加
+
+サポート外:
+
+- URL からブロックの追加
+
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid on IoT Edge の統合
 > [!CAUTION]
 > Event Grid on IoT Edge との統合はプレビュー段階です。
@@ -276,7 +287,7 @@ IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が
 
 absiotfeedback@microsoft.com までお寄せください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Blob Storage を IoT Edge にデプロイする](how-to-deploy-blob.md)方法を学習する
 

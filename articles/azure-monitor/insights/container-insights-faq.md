@@ -1,26 +1,63 @@
 ---
 title: コンテナーの Azure Monitor についてよく寄せられる質問 | Microsoft Docs
 description: コンテナーの Azure Monitor は、Azure 内の AKS クラスターおよび Container Instances の正常性を監視するソリューションです。 この記事ではよくある質問の回答を示します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405083"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 
 この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>ContainerLog テーブルのクエリを実行したとき、Image プロパティと Name プロパティの値が出力されません。
+
+エージェント バージョン ciprod12042019 以降では、ログ データの収集にかかるコストを最小限に抑えるため、既定では、これら 2 つのプロパティはすべてのログ行に出力されません。 これらのプロパティとその値を含めるようにテーブルをクエリする 2 つの方法があります。
+
+### <a name="option-1"></a>方法 1 
+
+他のテーブルを結合して、これらのプロパティ値を結果に含めます。
+
+ContainerID プロパティに結合することによって ```ContainerInventory``` テーブルの Image プロパティと ImageTag プロパティを含めるようにクエリを変更します。 ContainerID プロパティに結合することによって、KubepodInventory テーブルの ContaineName フィールドから (以前に ```ContainerLog``` テーブルにあったときのように) Name プロパティを含めることができます。こちらの方法をお勧めします。
+
+次の例は、結合を使用してこれらのフィールド値を取得する方法を説明するサンプルの詳細なクエリです。
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>方法 2
+
+すべてのコンテナー ログ行について、これらのプロパティの収集を再び有効にします。
+
+クエリの変更を伴うため最初の方法が難しい場合、[データ収集の構成設定](./container-insights-agent-config.md)に関するページの説明に従い、エージェント構成マップで設定 ```log_collection_settings.enrich_container_logs``` を有効にすることによって、これらのフィールドの収集を再び有効にすることができます。
+
+> [!NOTE]
+> 2 番目の方法は、50 を超えるノードを持つ大規模なクラスターでは推奨されません。このエンリッチメントを実行するために、クラスター内のすべてのノードから API サーバー呼び出しが生成されるからです。 この方法を使用すると、収集されるすべてのログ行のデータ サイズも増加します。
+
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana で収集されたメトリックを表示できますか?
 
-Azure Monitor for Containers では、Grafana ダッシュボードの Log Analytics ワークスペースに格納されているメトリックの表示をサポートしています。 Grafana の[ダッシュボード リポジトリ](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)からダウンロードできるテンプレートが用意されています。作業を開始し、参照して、監視対象クラスターから追加データをクエリし、カスタム Grafana ダッシュボードで視覚化する方法を知るために役立ちます。 
+Azure Monitor for Containers では、Grafana ダッシュボードの Log Analytics ワークスペースに格納されているメトリックの表示をサポートしています。 Grafana の[ダッシュボード リポジトリ](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)からダウンロードできるテンプレートが用意されています。これを使って作業を開始し、監視対象クラスターから追加データのクエリを実行して、カスタム Grafana ダッシュボードで視覚化する方法を学習できます。 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Azure Monitor for containers で AKS エンジンのクラスターを監視できますか?
 
@@ -86,6 +123,6 @@ AKS クラスターに対して Azure Monitor for containers を有効にした�
 
 Azure、Azure US Government、および Azure China クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[Network firewall requirements](container-insights-onboard.md#network-firewall-requirements)」(ネットワーク ファイアウォールの要件) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS クラスターの監視を開始するには、「[How to onboard the Azure Monitor for containers](container-insights-onboard.md)」(コンテナーに対する Azure Monitor をオンボードする方法) を参照し、監視を有効にするための要件と使用できる方法を理解してください。 

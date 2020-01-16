@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418050"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028267"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -20,19 +20,19 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 実行アカウントには、次の 2 種類があります。
 
-* **Azure 実行アカウント** - このアカウントは、[Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)のリソースを管理するために使用されます。
+* **Azure 実行アカウント** - このアカウントは、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)のリソースを管理するために使用されます。
   * 自己署名証明書を含む Azure AD アプリケーションを作成し、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションにおける、このアカウントの共同作成者ロールが割り当てられます。 この設定は所有者ロールや他の任意のロールに変更できます。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
   * 指定された Automation アカウントに *AzureRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、Azure AD アプリケーションによって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
-* **Azure クラシック実行アカウント** - このアカウントは、[クラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)のリソースを管理するために使用されます。
+* **Azure クラシック実行アカウント** - このアカウントは、[クラシック デプロイ モデル](../azure-resource-manager/management/deployment-models.md)のリソースを管理するために使用されます。
   * サブスクリプションで管理証明書を作成します
   * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
   * 作成または更新するには、サブスクリプションの共同管理者である必要があります
 
   > [!NOTE]
-  > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されません。 Azure 実行アカウントは引き続き作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページを参照してください。
+  > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されません。 Azure 実行アカウントは引き続き作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
 
   > [!NOTE]
   > 実行アカウントのサービス プリンシパルには、既定で、Azure Active Directory を読み取るためのアクセス許可はありません。 Azure Active Directory の読み取りまたは管理を行うためのアクセス許可を追加する場合は、 **[API のアクセス許可]** の下でサービス プリンシパルにそのアクセス許可を付与する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077085"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045431"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>REST API を使用して基本の Azure Load Balancer を作成する
 
-Azure Load Balancer は、ロード バランサ―のフロントエンドに到着した新しい受信フローを、ルールと正常性プローブに従って、バックエンド プールのインスタンスに分配します。 Load Balancer で使用できる SKU は 2 種類です。Basic と Standard です。 2 つの SKU バージョンの違いを理解するために、[Load Balancer のSKU を比較](load-balancer-overview.md#skus)します。
+Azure Load Balancer は、ロード バランサ―のフロントエンドに到着した新しい受信フローを、ルールと正常性プローブに従って、バックエンド プールのインスタンスに分配します。 Load Balancer で使用できる SKU は 2 種類です。Basic と Standard です。 2 つの SKU バージョンの違いを理解するために、[Load Balancer のSKU を比較](concepts-limitations.md#skus)します。
  
 この手引きでは、複数の VM 間での受信要求の負荷分散に役立てるための[Azure REST API](/rest/api/azure/)を使用したAzure Basic Load Balancer の作成方法を示しています。 完全なリファレンス ドキュメントと追加サンプルは[Azure Load Balancer REST reference](/rest/api/load-balancer/)で確認できます。
  
@@ -33,7 +33,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
   ```
 ### <a name="uri-parameters"></a>URI パラメーター
 
-|名前  |場所  |必須 |種類 |説明 |
+|Name  |場所  |必須 |種類 |[説明] |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Microsoft Azure サブスクリプションを一意に識別するサブスクリプションの資格情報。 サブスクリプション ID は、全ての修理依頼についてURI の一部を生じさせます。      |
 |resourceGroupName     |     path    | True        |  string       |   リソース グループの名前。     |
@@ -46,7 +46,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
 
 要求される唯一のパラメーターは`location`です。 *SKU*のバージョンを定義しなければ、Basic Load Balancer が規定で作成されます。  [省略可能なパラメーター](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)を使用してロード バランサ―をカスタマイズします。
 
-| 名前 | Type | 説明 |
+| Name | 種類 | [説明] |
 | :--- | :--- | :---------- |
 | location | string | リソースの場所。 [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作を使用して、最新の場所一覧を取得します。 |
 

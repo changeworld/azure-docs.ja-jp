@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452422"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -256,3 +256,8 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 - [User Input Delay per Session(\*)\\Max Input Delay](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - しきい値: 2000 ミリ秒を超えると、異常とマークされます。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Log Analytics での診断の使用](diagnostics-log-analytics.md)に関する記事で、アクティビティ ログの監視方法について学習します。
+- 「[問題の特定と診断](diagnostics-role-service.md)」で、一般的なエラー シナリオとその解決方法について確認します。

@@ -1,14 +1,14 @@
 ---
 title: 顧客と委任されたリソースを表示し、管理する
 description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456822"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
@@ -16,7 +16,9 @@ ms.locfileid: "74463827"
 
 Azure portal の **[マイ カスタマー]** ページにアクセスするには、 **[すべてのサービス]** を選択し、 **[マイ カスタマー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「マイ カスタマー」と入力して見つけることもできます。
 
-**[マイ カスタマー]** ページの先頭のセクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](https://docs.microsoft.com/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、リソース管理の委任を目的として、そのリソースをオンボードしない限り、ここに表示されません。 また、ページの下部にある **[Cloud Solution Provider (Preview)]\(クラウド ソリューション プロバイダー (プレビュー)\)** セクションには、Azure の委任されたリソース管理にオンボードされているかどうかにかかわらず、[Microsoft 顧客契約 (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) に署名し、Azure プランに含まれている CSP のお客様の、課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](https://docs.microsoft.com/azure/billing/mpa-overview)」をご覧ください。
+**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](https://docs.microsoft.com/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、そのリソースを Azure の委任されたリソース管理用にオンボードしていない限り、 **[顧客]** セクションに表示されません。
+
+ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](https://docs.microsoft.com/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](https://docs.microsoft.com/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。 そのような CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 > [!NOTE]
 > 顧客は、Azure portal の **[サービス プロバイダー]** に移動して、サービス プロバイダーの情報を表示できます。 詳細については、「[サービス プロバイダーを表示し、管理する](view-manage-service-providers.md)」を参照してください。
@@ -28,7 +30,7 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 顧客ごとに、その名前と ID (テナント ID)、契約に関連付けられているオファーが表示されます。 **[委任]** 列には、委任されたサブスクリプションの数または委任されたリソース グループの数が表示されます。
 
 > [!IMPORTANT]
-> 委任を表示するには、オンボード プロセスでユーザーに[閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)ロール (または閲覧者アクセス権が含まれる別の組み込みロール) が許可されている必要があります。
+> 委任を表示するには、オンボード プロセスでユーザーに[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または閲覧者アクセス権が含まれる別の組み込みロール) が許可されている必要があります。
 
 このページの上部にある各フィルターで顧客情報を並べ替えたりグループ化したりできるほか、特定の顧客やオファー、キーワードで顧客情報をフィルター処理することができます。
 
@@ -48,7 +50,7 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>委任されたサブスクリプションのコンテキストで作業する
 
-Azure portal 内で、作業中のディレクトリを切り替えることなく、委任されたサブスクリプションのコンテキストで直接作業を行うことができます。 そのためには、次の手順を実行します。
+Azure portal 内で、作業中のディレクトリを切り替えることなく、委任されたサブスクリプションのコンテキストで直接作業を行うことができます。 そのためには次を行います。
 
 1. Azure portal の上部付近にある **[ディレクトリ + サブスクリプション]** アイコンを選択します。
 2. **[グローバル サブスクリプション]** フィルターで、委任されたサブスクリプションのボックスだけを選択状態にします。 **[現在のディレクトリ + 委任されたディレクトリ]** ドロップダウン ボックスを使用して、特定のディレクトリ内のサブスクリプションだけを表示できます。 ( **[ディレクトリの切り替え]** オプションは、サインインしているディレクトリが切り替わってしまうため、使用しないでください。)
@@ -60,7 +62,7 @@ Azure portal 内で、作業中のディレクトリを切り替えることな�
 
 テナント間の管理エクスペリエンスをサポートするサービス内から、委任されたサブスクリプションまたはリソース グループに関連した機能にアクセスすることもできます。その場合は、そのサービス内からサブスクリプションまたはリソース グループを選択してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
 - 顧客が Azure portal の **[サービス プロバイダー]** に移動することによって、[サービス プロバイダーを表示し、管理](view-manage-service-providers.md)する方法を学習します。

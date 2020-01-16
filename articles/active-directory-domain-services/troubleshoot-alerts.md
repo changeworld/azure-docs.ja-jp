@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703956"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979902"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
 
@@ -69,7 +69,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 > [!NOTE]
 > 仮想ネットワークに構成されているインターネットの IP アドレス範囲を保有している場合は、このアラートを無視できます。 ただし、予期しないエラーが発生する可能性があるため、Azure AD Domain Services は、この構成で [SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/) にコミットすることはできません。
 
-このアラートを解決するには、既存の Azure AD DS マネージド ドメインを削除し、プライベート IP アドレス範囲を持つ仮想ネットワーク内に再作成します。 このプロセスは、Azure AD DS マネージド ドメインが使用できず、OU やサービス アカウントのような、作成したカスタム リソースが失われるため、破壊的です。
+このアラートを解決するには、既存の Azure AD DS マネージド ドメインを削除し、プライベート IP アドレス範囲を持つ仮想ネットワーク内に再作成します。 このプロセスは、Azure AD DS マネージド ドメインが使用できず、OU やサービス アカウントのような作成したカスタム リソースが失われるため、破壊的です。
 
 1. ディレクトリから[ Azure AD DS マネージド ドメインを削除](delete-aadds.md)します。
 1. 仮想ネットワークの IP アドレス範囲を更新するには、Azure portal で*仮想ネットワーク*を検索して選択します。 誤ってパブリック IP アドレス範囲が設定されている Azure AD DS の仮想ネットワークを選択します。
@@ -92,7 +92,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 Azure AD DS にはアクティブなサブスクリプションが必要です。別のサブスクリプションに移動することはできません。 Azure AD DS マネージド ドメインが関連付けられていた Azure サブスクリプションが削除されている場合は、Azure サブスクリプションと Azure AD DS マネージド ドメインを再作成する必要があります。
 
-1. [Azure サブスクリプションを作成します](../billing/billing-create-subscription.md)。
+1. [Azure サブスクリプションを作成します](../cost-management-billing/manage/create-subscription.md)。
 1. 既存の Azure AD ディレクトリから [Azure AD DS マネージド ドメインを削除](delete-aadds.md)します。
 1. [代替の Azure AD DS マネージド ドメインを作成します](tutorial-create-instance.md)。
 
@@ -216,7 +216,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 ### <a name="resolution"></a>解決策
 
-変更や削除を防ぐために、Azure リソースとリソース グループにリソース ロックを適用できます。 Azure AD DS はマネージド サービスであるため、Azure プラットフォームには構成を変更する機能が必要です。 リソース ロックが一部の Azure AD DS コンポーネントに適用されている場合、Azure プラットフォームはその管理タスクを実行できません。
+変更や削除を防ぐために、Azure リソースとリソース グループにリソース ロックを適用できます。 Azure AD DS はマネージド サービスであるため、Azure プラットフォームは構成を変更する機能を必要とします。 リソース ロックが一部の Azure AD DS コンポーネントに適用されている場合、Azure プラットフォームはその管理タスクを実行できません。
 
 Azure AD DS コンポーネントのリソース ロックを確認して削除するには、次の手順を実行します。
 
@@ -294,7 +294,7 @@ Azure AD DS には、アクティブなサブスクリプションが必要で�
 
 [Azure AD DS の正常性をチェック](check-health.md)して、マネージド ドメインの構成の問題を示しているアラートがないか確認します。 構成の問題を示しているアラートを解決できる場合は、2 時間待機してから、同期が完了したかどうかを再度確認してください。 準備ができたら、Azure AD DS マネージド ドメインを再度有効にするために、[Azure サポート リクエストを開きます][azure-support]。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

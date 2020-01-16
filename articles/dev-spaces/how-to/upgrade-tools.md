@@ -3,14 +3,14 @@ title: Azure Dev Spaces ツールのアップグレード方法
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: Azure Dev Spaces コマンド ライン ツール、Visual Studio Code 拡張機能、および Visual Studio 拡張機能をアップグレードする方法について説明します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 6ad28a5da05cf77cfaa834ed9752daefeb5f4fdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 07d55689ac94a865527f4b595765d67b28ddb97a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438413"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure Dev Spaces ツールのアップグレード方法
 
@@ -41,6 +41,6 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 Visual Studio のツールを更新するには、 **[Tools] (ツール) > [Extensions and Updates] (拡張機能と更新プログラム)** メニュー項目を選択し、左側の **[Updates] (更新プログラム)** を選択します。 **[Visual Studio Tools for Kubernetes]** を探し、 **[Update] (更新)** ボタンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しいクラスターを作成して、新しいツールをテストします。 [Azure Dev Spaces](/azure/dev-spaces) でクイック スタートおよびチュートリアルをお試しください。

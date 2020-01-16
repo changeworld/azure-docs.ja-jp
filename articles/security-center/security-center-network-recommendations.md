@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997141"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552918"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-この記事では、Azure Security Center のリソース セキュリティ セクションの**ネットワーク**に関するページと、そこに記載されているいくつかの推奨事項について説明します。
+この記事では、Security Center のリソース セキュリティ セクションの **[ネットワーク]** ページについて説明します。
 
-ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-network.md)のページを参照してください。
+ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-network)のページを参照してください。
 
 この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス、過度に許容されるインバウンド トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 
@@ -40,7 +40,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 - ネットワーク セキュリティに関する推奨事項。
 - レガシ **[ネットワーク]** ブレード (以前のネットワーク ブレード) 
  
-![[ネットワーク] ウィンドウ](./media/security-center-network-recommendations/networking-pane.png)
+[![[ネットワーク] ウィンドウ](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>ネットワーク マップ
 対話型のネットワーク マップには、ネットワーク リソースを堅牢化するための推奨事項と分析情報を提供するセキュリティ オーバーレイを含むグラフィカル ビューが表示されます。 マップを使用して、Azure ワークロードのネットワーク トポロジ、仮想マシンとサブネット間の接続、およびマップから特定のリソースとそれらのリソースの推奨事項にドリル ダウンする機能を表示できます。
@@ -59,11 +59,11 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 - インターネットに接続するリソース
 - マップは、Azure 内で選択したサブスクリプションに対して最適化されます。 選択内容を変更した場合、マップが再計算され、新しい設定に基づいてもう一度最適化されます。  
 
-![ネットワーク トポロジ マップ](./media/security-center-network-recommendations/network-map-info.png)
+[![ネットワーク トポロジ マップ](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>ネットワーク マップについて
 
-ネットワーク マップでは、Azure リソースを **[トポロジ]** ビューと **[トラフィック]** ビューに表示できます。
+ネットワーク マップでは、Azure リソースを **[トポロジ]** ビューと **[トラフィック]** ビューに表示できます。 
 
 ### <a name="the-topology-view"></a>[トポロジ] ビュー
 
@@ -111,7 +111,8 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 **このデータは、ネットワーク セキュリティ グループの分析と、交差と相互作用を把握するために複数のルールを分析する高度な機械学習アルゴリズムに基づいています。** 
 
-![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)
+[![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+
 
 ## レガシ ネットワーク <a name ="legacy-networking"></a>
 
@@ -119,7 +120,7 @@ Security Center Standard レベルがない場合、このセクションでは�
 
 この情報にアクセスするには、[ネットワーク] ブレードで、 **[レガシ ネットワークの表示]** をクリックします。 
 
-![レガシ ネットワーク](./media/security-center-network-recommendations/legacy-networking.png)
+[![レガシ ネットワーク](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>[Internet facing endpoints (インターネット接続エンドポイント)] セクション
 **[インターネットに接続するエンドポイント]** セクションでは、インターネット接続エンドポイントで現在構成されている仮想マシンとその状態を確認できます。
@@ -135,7 +136,8 @@ Security Center Standard レベルがない場合、このセクションでは�
 
 3 番目のレベルには、前述したような仮想マシンが表示されます。 リソースをクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
+
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
 * [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)

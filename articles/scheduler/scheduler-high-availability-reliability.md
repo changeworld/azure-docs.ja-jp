@@ -9,19 +9,19 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300929"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979281"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure Scheduler の高可用性と信頼性
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
 
-Azure Scheduler では、[高可用性](https://docs.microsoft.com/azure/architecture/guide/pillars#availability)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
+Azure Scheduler では、[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -41,7 +41,7 @@ Azure Scheduler 内の自分のジョブは、Azure リージョン間でレプ�
 
 さらに、Azure Scheduler により、Azure 内で障害が発生した場合に備えて、データは同じリージョン内のさらに広い地理的リージョンに確実に留められます。 そのため、高可用性のためだけにジョブを複製する必要はありません。 Azure Scheduler では、ジョブの高可用性は自動的に提供されます。
 
-## <a name="reliability"></a>信頼性
+## <a name="reliability"></a>[信頼性]
 
 Azure Scheduler では、独自の高可用性を保証し、ユーザーが作成したジョブに対して別のアプローチを採用しています。 たとえば、使用できない HTTP エンドポイントをジョブが呼び出したとします。 Azure Scheduler はそれでも、障害に対処するための代わりの手段を提供することにより、ジョブが正常に実行されるようにします。 
 
@@ -70,7 +70,7 @@ Azure Scheduler ジョブにより到達不可能なエンドポイントが呼�
 
 代替エンドポイントを設定する方法については、「[errorAction](scheduler-concepts-terms.md#error-action)」をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Scheduler とは](scheduler-intro.md)
 * [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)

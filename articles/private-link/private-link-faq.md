@@ -2,17 +2,17 @@
 title: Azure Private Link のよく寄せられる質問 (FAQ)
 description: Azure Private Link について学習します。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349934"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -28,6 +28,7 @@ ms.locfileid: "74229334"
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>サービス エンドポイントとプライベート エンドポイントの違いは何ですか。
 - プライベート エンドポイントを使用すると、特定のサービスの背後にある特定のリソースへのネットワーク アクセスが許可され、きめ細かなセグメント化が可能になります。また、トラフィックは、パブリック エンドポイントを使用せずにオンプレミスからサービスのリソースに到達できるようになります。
+- サービス エンドポイントは、公的にルーティング可能な IP アドレスのままです。  プライベート エンドポイントは、プライベート エンドポイントが構成されている仮想ネットワークのアドレス空間にあるプライベート IP です。
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Private Link サービスとプライベート エンドポイントの関係はどのようなものですか。
 プライベート エンドポイントは、Azure PaaS サービスや独自の Private Link サービスなど、各種プライベート リンク リソースへのアクセスを提供します。 これは一対多の関係です。 1 つの Private Link サービスで複数のプライベート エンドポイントから接続を受信できます。 一方、1 つのプライベート エンドポイントで接続できるのは 1 つの Private Link サービスのみです。    
@@ -38,7 +39,7 @@ ms.locfileid: "74229334"
 はい。 同じ VNet またはサブネット内に複数のプライベート エンドポイントを作成できます。 それらは異なるサービスに接続できます。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>プライベート エンドポイント専用のサブネットが必要ですか。 
-No. プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
+いいえ。 プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
  
 ### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>プライベート エンドポイントは、Azure Active Directory テナントをまたいで Private Link サービスに接続できますか。 
 はい。 プライベート エンドポイントは、AD テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。  
@@ -68,14 +69,14 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 - **[すべて]** - すべてのユーザーがサービスを見つけることができます。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Basic Load Balancer で Private Link サービスを作成することはできますか。 
-No. Basic Load Balancer では Private Link サービスはサポートされていません。
+いいえ。 Basic Load Balancer では Private Link サービスはサポートされていません。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Private Link サービスには専用サブネットが必要ですか。 
-No. Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   
+いいえ。 Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   
 
 ### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>当社は Azure Private Link を使用しているサービス プロバイダーです。 当社のすべての顧客が一意の IP 空間を持ち、当社の IP 空間と重複しないようにする必要がありますか。 
-No. その機能は Azure Private Link によって提供されます。 したがって、顧客のアドレス空間と重複しないアドレス空間を持つ必要はありません。 
+いいえ。 その機能は Azure Private Link によって提供されます。 したがって、顧客のアドレス空間と重複しないアドレス空間を持つ必要はありません。 
 
-##  <a name="next-steps"></a>次の手順
+##  <a name="next-steps"></a>次のステップ
 
 - [Azure Private Link](private-link-overview.md) について学習します

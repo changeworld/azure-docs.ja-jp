@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707825"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981047"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC と REST API を使用してロールの割り当てを追加または削除する
 
@@ -57,10 +57,10 @@ RBAC でアクセス権を付与するには、ロールの割り当てを追加
 
 1. URI の *{scope}* をロールの割り当てのスコープに変更します。
 
-    | Scope (スコープ) | 種類 |
+    | スコープ | 種類 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | Subscription |
+    | `subscriptions/{subscriptionId1}` | サブスクリプション |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
 
@@ -68,10 +68,10 @@ RBAC でアクセス権を付与するには、ロールの割り当てを追加
 
 1. 要求本文内で、 *{scope}* をロールの割り当てのスコープに変更します。
 
-    | Scope (スコープ) | 種類 |
+    | スコープ | 種類 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | Subscription |
+    | `subscriptions/{subscriptionId1}` | サブスクリプション |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
 
@@ -93,18 +93,18 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
 
-    | Scope (スコープ) | 種類 |
+    | スコープ | 種類 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | Subscription |
+    | `subscriptions/{subscriptionId1}` | サブスクリプション |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
 
 1. *{roleAssignmentName}* を、ロールの割り当ての GUID 識別子に置き換えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure RBAC と REST API を使用してロールの割り当てを一覧表示する](role-assignments-list-rest.md)
-- [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)
 - [REST API を使用して Azure リソースのカスタム ロールを作成する](custom-roles-rest.md)

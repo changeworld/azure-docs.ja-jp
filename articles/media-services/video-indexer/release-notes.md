@@ -10,16 +10,18 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 12/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a8f4174fca1a8703bb112c19e785d4d9686a82f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453300"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
+
+>URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -28,6 +30,17 @@ ms.locfileid: "72968727"
 * バグの修正
 * 非推奨の機能
 
+## <a name="november-2019"></a>2019 年 11 月
+ 
+* 韓国語のカスタム言語モデルのサポート
+
+    Video Indexer では、API とポータルの両方で韓国語 (`ko-KR`) のカスタム言語モデルがサポートされるようになりました。 
+* 音声テキスト変換 (STT) でサポートされる新しい言語
+
+    Video Indexer API では、アラビア語 (レバント) (ar-SY)、英語 (英国) 言語 (en-GB)、および英語 (オーストラリア) 言語 (en-AU) の STT がサポートされるようになりました。
+    
+    動画のアップロードでは、zh-HANS が zh-CN に置き換えられています。どちらもサポートされていますが、zh-CN の方がより正確であるため、推奨されています。
+    
 ## <a name="october-2019"></a>2019 年 10 月
  
 * ギャラリーでアニメーション化された文字を検索する
@@ -135,6 +148,6 @@ Video Indexer 有料アカウントを東日本リージョンで作成できる
 
 Video Indexer は、既にサポートされているクローズド キャプション形式 (SRT、VTT、TTML) に加えて、TXT および CSV 形式でのトランスクリプトのダウンロードをサポートするようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [概要](video-indexer-overview.md)

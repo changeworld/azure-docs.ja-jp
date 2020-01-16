@@ -1,18 +1,18 @@
 ---
 title: Facebook に接続する
-description: Facebook REST API と Azure Logic Apps を使用して、タイムラインとページを管理します
+description: Azure Logic Apps を使用して Facebook のタイムラインとページを管理するタスクとワークフローを自動化する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 1aa936f902dc17c9a401959c19824f6c581547b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789857"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665804"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Facebook のタイムラインとページを管理する
 
@@ -39,6 +39,6 @@ Facebook に接続し、タイムラインへの投稿、ページ フィード�
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/facebook/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

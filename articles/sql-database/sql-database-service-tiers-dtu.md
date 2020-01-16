@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539308"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562121"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
@@ -31,7 +31,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
 
-||Basic|標準|Premium|
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
 |対象のワークロード|開発、運用|開発、運用|開発、運用|
 |アップタイム SLA|99.99%|99.99%|99.99%|
@@ -54,9 +54,9 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
-コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-purchase-models.md#dtu-based-purchasing-model)に関するページを参照してください。
+コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、「[DTU ベースの購入モデル](sql-database-purchase-models.md#dtu-based-purchasing-model)」を参照してください。
 
-||Basic|標準|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
@@ -109,7 +109,7 @@ DTU の各測定に関連付けられている物理的な特性 (CPU、メモ�
 
 ワークロードは、次の表で示すように、9 種類のトランザクションで構成されます。 各トランザクションは、データベース エンジンおよびシステム ハードウェアの特定のシステム特性セットが強調され、他のトランザクションとの違いがはっきりわかるように設計されています。 この方法では、異なるコンポーネントのパフォーマンス全体に対する影響を簡単に評価できます。 たとえば、トランザクション "読み取り (高負荷)" では、ディスクからの読み取り操作が大量に生成されます。
 
-| トランザクションの種類 | 説明 |
+| トランザクションの種類 | [説明] |
 | --- | --- |
 | 読み取り (低負荷) |SELECT、メモリ内、読み取りのみ |
 | 読み取り (中負荷) |SELECT、ほぼメモリ内、読み取りのみ |
@@ -172,9 +172,9 @@ DTU の各測定に関連付けられている物理的な特性 (CPU、メモ�
 | --- | --- | --- |
 | Premium |1 秒あたりのトランザクション数 |0\.5 秒で第 95 百分位数 |
 | Standard |1 分あたりのトランザクション数 |1\.0 秒で第 90 百分位数 |
-| 基本 |1 時間あたりのトランザクション数 |2\.0 秒で第 80 百分位数 |
+| Basic |1 時間あたりのトランザクション数 |2\.0 秒で第 80 百分位数 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)に関するページをご覧ください。
 - エラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)に関するページをご覧ください。

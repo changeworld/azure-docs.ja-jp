@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168952"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981787"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
 この記事では、Azure 仮想マシン (VM) への接続時にリモート デスクトップ サービス (TermService) が起動しないか起動に失敗する場合の問題のトラブルシューティングを行う方法について説明します。
 
 > [!NOTE]  
-> Azure には、リソースの作成と操作を行うデプロイメント モデルが 2 種類あります。[Azure Resource Manager とクラシックです](../../azure-resource-manager/resource-manager-deployment-model.md)。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作を行うデプロイメント モデルが 2 種類あります。[Azure Resource Manager とクラシックです](../../azure-resource-manager/management/deployment-models.md)。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -41,9 +41,9 @@ VM に接続しようとすると、次のシナリオが発生します。
     **日付**:        12/16/2017 11:19:36 AM</br>
     **イベント ID**:    7022</br>
     **タスク カテゴリ**:なし</br>
-    **レベル**:       Error</br>
+    **レベル**:       エラー</br>
     **キーワード**:    クラシック</br>
-    **ユーザー**:        該当なし</br>
+    **[ユーザー]** :        該当なし</br>
     **コンピューター**:      vm.contoso.com</br>
     **説明**:Remote Desktop Services サービスは起動時に停止しました。 
 
@@ -96,7 +96,7 @@ VM に接続しようとすると、次のシナリオが発生します。
    ```
 8. サービスを開始できない場合、表示されたエラーに応じて解決策を実行します。
 
-    |  Error |  推奨事項 |
+    |  エラー |  推奨事項 |
     |---|---|
     |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |  

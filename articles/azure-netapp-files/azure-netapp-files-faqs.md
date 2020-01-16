@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546949"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658289"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -29,7 +29,7 @@ ms.locfileid: "74546949"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS データ パスはインターネットを経由しますか?  
 
-No. NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
+いいえ。 NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
 
 詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。  
 
@@ -116,7 +116,7 @@ DF で報告されるボリューム サイズは、Azure NetApp Files ボリュ
 Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされています。 いずれかの NFS バージョンを使用してボリュームを作成できます。 
 
 > [!IMPORTANT] 
-> NFSv 4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
+> NFSv4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>ルート スカッシュを有効にするにはどうすればよいですか?
@@ -131,7 +131,7 @@ Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされてい�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
-Azure NetApp Files では、現在、サブスクリプションごとに 1 つの Active Directory 接続がサポートされています。 また、Active Directory 接続は 1 つの NetApp アカウントに固有であり、アカウント間で共有されません。 
+Azure NetApp Files は現在、NetApp アカウントごとに、サブスクリプションごとに、および各リージョンで 1 つの Active Directory 接続のみをサポートしています。接続は NetApp アカウント間で共有されません。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files で Azure Active Directory はサポートされていますか? 
 
@@ -155,7 +155,7 @@ Azure NetApp Files には、容量プールとボリュームの使用状況の�
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Azure NetApp Files は Azure Storage Explorer を使用して管理できますか?
 
-No. Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
+いいえ。 Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
 
 ## <a name="data-migration-and-protection-faqs"></a>データの移行と保護に関する FAQ
 
@@ -189,13 +189,13 @@ Azure NetApp Files ボリュームを別の Azure リージョンにレプリケ
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box を使用した移行はサポートされていますか?
 
-No. Azure Data Box では、現在のところ Azure NetApp Files はサポートされていません。 
+いいえ。 Azure Data Box では、現在のところ Azure NetApp Files はサポートされていません。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Azure Import/Export サービスを使用した移行はサポートされていますか?
 
-No. Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
+いいえ。 Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Microsoft Azure ExpressRoute に関する FAQ](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network に関する FAQ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

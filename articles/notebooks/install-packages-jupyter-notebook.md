@@ -1,20 +1,22 @@
 ---
-title: Azure の Jupyter ノートブックでパッケージをインストールする
-description: Azure で実行している Jupyter ノートブック内から Python、R、F# パッケージをインストールする方法。
-ms.topic: article
+title: Jupyter ノートブックでパッケージをインストールする - Azure Notebooks プレビュー
+description: Azure で実行している Jupyter ノートブック内から Python、R、F# パッケージをインストールする方法について説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277548"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646230"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>ノートブック内からパッケージをインストールする
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Azure Notebooks プレビュー内からパッケージをインストールする
 
 [プロジェクト レベルでノートブックの環境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)を構成できますが、個々のノートブック内から直接、パッケージをインストールすると便利な場合があります。
 
 ノートブックからインストールされたパッケージは、現在のサーバー セッションにのみ適用されます。 サーバーをシャットダウンすると、パッケージのインストールは保存されません。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -71,7 +73,7 @@ Paket.Package
 open MathNet.Numerics
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: スライド ショーの表示](present-jupyter-notebooks-slideshow.md)

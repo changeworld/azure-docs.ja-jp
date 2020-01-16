@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381dfb4fca7476d5805bff92d58ecbbf49679346
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354885"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979963"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -79,7 +79,7 @@ Azure portal を使用して Transparent Data Encryption を構成するには�
 
 Transparent Data Encryption のオン/オフはデータベース レベルで切り替えます。 データベースで Transparent Data Encryption を有効にするには、[Azure portal](https://portal.azure.com) に移動し、Azure 管理者または共同作成者アカウントでサインインします。 ユーザー データベースの Transparent Data Encryption 設定を見つけます。 既定では、サービスによって管理された Transparent Data Encryption が使用されます。 Transparent Data Encryption 証明書は、データベースを含むサーバーに対して自動的に生成されます。 Azure SQL Managed Instance の場合、T-SQL を使用し、データベースで Transparent Data Encryption のオン/オフを切り替えます。
 
-![サービスによって管理された Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
+![サービスによって管理された Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)
 
 Transparent Data Encryption マスター キー (Transparent Data Encryption 保護機能とも呼ばれます) は、サーバー レベルで設定します。 Bring Your Own Key をサポートする Transparent Data Encryption を使用し、Key Vault のキーでデータベースを保護するには、サーバーの Transparent Data Encryption 設定を開きます。
 

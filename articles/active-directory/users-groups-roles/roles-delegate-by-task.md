@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024666"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639923"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -53,11 +53,11 @@ ID プロバイダーの作成、読み取り、更新、削除を実行する |
 サインアップ ユーザー フローの作成、読み取り、更新、削除を実行する |グローバル管理者 | 
 ユーザー属性の作成、読み取り、更新、削除を実行する | グローバル管理者 | 
 ユーザーの作成、読み取り、更新、削除を実行する | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
-すべての構成を読み取る | グローバル管理者 | 
-B2C 監査ログを読み取る | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+すべての構成を読み取る | グローバル閲覧者 | 
+B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
 > [!NOTE]
-> Azure AD B2C のグローバル管理者には、Azure AD のグローバル管理者と同じアクセス許可はありません。 Azure AD B2C のグローバル管理者権限がある場合は、Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。
+> Azure AD B2C のグローバル閲覧者には、Azure AD のグローバル管理者と同じアクセス許可はありません。 Azure AD B2C のグローバル管理者権限がある場合は、Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。
 
 ## <a name="company-branding"></a>会社のブランド
 
@@ -72,12 +72,12 @@ B2C 監査ログを読み取る | グローバル管理者 ([ドキュメント�
 ---- | --------------------- | ----------------
 会社のプロパティを構成する | グローバル管理者 | 
 
-## <a name="connect"></a>接続
+## <a name="connect"></a>接続する
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 パススルー認証 | グローバル管理者 | 
-すべての構成を読み取る | グローバル管理者 | 
+すべての構成を読み取る | グローバル閲覧者 | 
 シームレス シングル サインオン | グローバル管理者 | 
 
 ## <a name="connect-health"></a>Connect Health
@@ -85,10 +85,10 @@ B2C 監査ログを読み取る | グローバル管理者 ([ドキュメント�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 サービスを追加または削除する | 所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner
-通知の構成 | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner
-設定を構成する | 所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-同期の通知を構成する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner
+同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
+通知の構成 | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
+設定の構成 | 所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
+同期の通知を構成する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
 ADFS セキュリティ レポートを読み取る | セキュリティ閲覧者 | 共同作成者、所有者
 すべての構成を読み取る | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
 同期エラーを読み取る | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
@@ -96,7 +96,6 @@ ADFS セキュリティ レポートを読み取る | セキュリティ閲覧�
 メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
 メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
 同期サービスのメトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-
 
 ## <a name="custom-domain-names"></a>カスタム ドメイン名
 
@@ -227,9 +226,9 @@ MFA サービスの設定を管理する | グローバル管理者 |
 電話の設定を構成する | グローバル管理者 | 
 プロバイダーを構成する | グローバル管理者 | 
 サーバー設定の構成 | グローバル管理者 | 
-アクティビティ レポートを読み取る | グローバル管理者 | 
-すべての構成を読み取る | グローバル管理者 | 
-サーバーの状態を読み取る | グローバル管理者 |  
+アクティビティ レポートを読み取る | グローバル閲覧者 | 
+すべての構成を読み取る | グローバル閲覧者 | 
+サーバーの状態を読み取る | グローバル閲覧者 |  
 
 ## <a name="organizational-relationships"></a>組織の関係
 
@@ -238,9 +237,9 @@ MFA サービスの設定を管理する | グローバル管理者 |
 ID プロバイダーを管理する | グローバル管理者 | 
 設定の管理 | グローバル管理者 | 
 利用規約を管理する | グローバル管理者 | 
-すべての構成を読み取る | グローバル管理者 | 
+すべての構成を読み取る | グローバル閲覧者 | 
 
-## <a name="password-reset"></a>パスワード リセット
+## <a name="password-reset"></a>パスワードのリセット
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
@@ -274,7 +273,7 @@ Azure AD ロールのアクセス レビューを読み取る  | セキュリテ
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 認証方法を構成する | グローバル管理者 | 
-すべての構成を読み取る | グローバル管理者 | 
+すべての構成を読み取る | グローバル閲覧者 | 
 
 ## <a name="security---conditional-access"></a>セキュリティ - 条件付きアクセス
 
@@ -349,7 +348,7 @@ VPN 接続の証明書を削除する | 条件付きアクセス管理者 | セ�
 ---- | --------------------- | ----------------
 サポート チケットを送信する | サービス管理者 | アプリケーション管理者、Azure Information Protection 管理者、課金管理者、クラウド アプリケーション管理者、コンプライアンス管理者、Dynamics 365 管理者、Desktop Analytics 管理者、Exchange 管理者、パスワード管理者、Intune 管理者、Skype for Business 管理者、Power BI 管理者、特権認証管理者、SharePoint 管理者、Teams 通信管理者、Teams 管理者、ユーザー管理者、Workplace Analytics 管理者
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD 管理者ロールの割り当てと削除の方法](directory-manage-roles-portal.md)
 * [Azure AD 管理者ロールのリファレンス](directory-assign-admin-roles.md)

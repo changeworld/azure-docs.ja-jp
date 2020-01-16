@@ -1,18 +1,18 @@
 ---
 title: Dropbox に接続する
-description: Dropbox REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
+description: Azure Logic Apps を使用して Dropbox 内のファイルをアップロードおよび管理するタスクとワークフローを自動化する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789815"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665753"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Dropbox 内のファイルをアップロードおよび管理する
 
@@ -24,7 +24,7 @@ Dropbox コネクタと Azure Logic Apps を使用すると、Dropbox アカウ�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* 無料でサインアップできる [Dropbox アカウント](https://www.dropbox.com/)。 ロジック アプリと Drobox アカウント間の接続を作成するには、アカウントの資格情報が必要です。
+* 無料でサインアップできる [Dropbox アカウント](https://www.dropbox.com/)。 ご自分のロジック アプリと Drobox アカウント間の接続を作成するには、アカウントの資格情報が必要です。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 この例では、空のロジック アプリが必要となります。
 
@@ -64,8 +64,8 @@ Dropbox コネクタと Azure Logic Apps を使用すると、Dropbox アカウ�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/dropbox/)を参照してください。
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/dropbox/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

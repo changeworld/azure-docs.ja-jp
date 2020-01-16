@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646746"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980100"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -34,7 +34,7 @@ Azure では、次の種類のピアリングがサポートされています�
 * ある仮想ネットワーク内のリソースは別の仮想ネットワーク内のリソースとの通信できる。
 * Azure サブスクリプション、Azure Active Directory テナント、デプロイ モデル、Azure リージョン間で仮想ネットワーク間でデータを転送する機能。
 * Azure Resource Manager によって作成された仮想ネットワークをピアリングする機能。
-* Resource Manager を使用して作成された仮想ネットワークを、クラシック デプロイ モデルで作成されたものにピアリングする機能。 Azure のデプロイメント モデルについて詳しくは、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+* Resource Manager を使用して作成された仮想ネットワークを、クラシック デプロイ モデルで作成されたものにピアリングする機能。 Azure のデプロイメント モデルについて詳しくは、[Azure のデプロイメント モデルの概要](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 * ピアリングの作成時またはピアリングの作成後に、いずれの仮想ネットワークのリソースにもダウンタイムは発生しない。
 
 ピアリングされた仮想ネットワーク間のネットワーク トラフィックはプライベートである。 仮想ネットワーク間のトラフィックは、Microsoft のバックボーン ネットワーク上で保持されます。 仮想ネットワーク間の通信では、パブリック インターネット、ゲートウェイ、暗号化が必要ありません。

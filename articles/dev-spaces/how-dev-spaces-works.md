@@ -5,12 +5,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280148"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771140"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -415,14 +415,14 @@ Visual Studio Code または Visual Studio を使用してデバッグ用にア�
 
 また、派生の開発スペースでは、その独自のアプリケーションと親から共有されるアプリケーションの間で要求がインテリジェントにルーティングされます。 ルーティングの際は、派生の開発スペースでアプリケーションに対する要求のルーティングが試行され、親開発スペースから共有アプリケーションにフォールバックされます。 アプリケーションが親スペースにない場合は、親の親であるスペース内の共有アプリケーションにルーティングがフォールバックします。
 
-例:
+次に例を示します。
 * 開発スペース *default* にアプリケーション *serviceA* および *serviceB* があります。
 * 開発スペース *azureuser* は *default* から派生したものです。
 * *serviceA* の更新バージョンは *azureuser* にデプロイされます。
 
 *azureuser* の使用時には、*serviceA* に対するすべての要求が *azureuser* 内の更新バージョンにルーティングされます。 *serviceB* に対する要求は、最初に *azureuser* バージョンの *serviceB* へのルーティングが試行されます。 これが存在しないため、*default* バージョンの *serviceB* にルーティングされます。 *azureuser* バージョンの *serviceA* が削除されると、*serviceA* に対するすべての要求は *default* バージョンの *serviceA* を使用するようにフォールバックされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces の使用を開始するには、以下のクイック スタートを参照してください。
 
@@ -440,4 +440,4 @@ Azure Dev Spaces の使用を開始するには、以下のクイック スタ�
 
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

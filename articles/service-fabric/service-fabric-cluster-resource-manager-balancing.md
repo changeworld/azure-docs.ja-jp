@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric クラスターの均衡をとる | Microsoft Docs
+title: Azure Service Fabric クラスターの均衡をとる
 description: Service Fabric クラスター リソース マネージャーを使用してクラスターの均衡をとる方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446744"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452102"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
 
-クラスター リソース マネージャーが実行する作業には、3 つのカテゴリがあります。 次に例を示します。
+クラスター リソース マネージャーが実行する作業には、3 つのカテゴリがあります。 これらは次のとおりです。
 
 1. 配置: この段階では、不足している任意のステートフル レプリカまたはステートレスなインスタンスの配置が処理されます。 配置には、新しいサービスと、失敗したステートフルなレプリカやステートレスなインスタンスの処理の両方が含まれます。 レプリカまたはインスタンスの削除はここで処理されます。
 2. 制約チェック: この段階では、システム内のさまざまな配置の制約 (ルール) 違反の確認および修正が行われます。 ルールとは、たとえば、ノードに過剰な負荷がかかっていないこと、およびサービスを配置する上での制約が満たされていることを確認することです。
@@ -88,7 +79,7 @@ ClusterManifest.xml:
 また、クラスターが不均衡であるかどうかを Cluster Resource Manager が判定するには、追加の情報が必要です。 そのために、他に 2 つの構成があります (*BalancingThresholds* と *ActivityThresholds*)。
 
 ## <a name="balancing-thresholds"></a>分散しきい値
-分散しきい値は、再調整をトリガーする主要コントロールです。 メトリックの分散しきい値は_割合_で規定されます。 最も負荷がかかっているノードのメトリックの負荷を、最も負荷がかかっていないノードの負荷量で割ったものが、そのメトリックの*分散しきい値*を超える場合、クラスターは不均衡であると見なされます。 結果として、次回 Cluster Resource Manager のチェックが行われるときに分散処理がトリガーされます。 *MinLoadBalancingInterval* タイマーは、再調整が必要かどうかをクラスター リソース マネージャーでチェックする頻度を定義します。 チェックは、何かがおこる処理ではありません。 
+分散しきい値は、再調整をトリガーする主要コントロールです。 メトリックの分散しきい値は _割合_ で規定されます。 最も負荷がかかっているノードのメトリックの負荷を、最も負荷がかかっていないノードの負荷量で割ったものが、そのメトリックの*分散しきい値*を超える場合、クラスターは不均衡であると見なされます。 結果として、次回 Cluster Resource Manager のチェックが行われるときに分散処理がトリガーされます。 *MinLoadBalancingInterval* タイマーは、再調整が必要かどうかをクラスター リソース マネージャーでチェックする頻度を定義します。 チェックは、何かがおこる処理ではありません。 
 
 分散しきい値は、クラスター定義の一部としてメトリックごとに定義されます。 メトリックについて詳しくは、[この記事](service-fabric-cluster-resource-manager-metrics.md)をご覧ください。
 
@@ -210,7 +201,7 @@ ClusterManifest.xml
 ![同時にサービスの均衡を取る][Image5]
 </center>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 * 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。 移動コストについて詳しくは、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)をご覧ください。
 * クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。 通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。

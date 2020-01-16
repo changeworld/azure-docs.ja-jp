@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842409"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561152"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -36,6 +36,9 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
    - 多要素認証
    - サインイン リスク チェック
 - VDI のデプロイの一部である Azure Windows VM の Azure AD 参加の自動化とスケーリングを行います。
+
+> [!NOTE]
+> この機能を有効にすると、Azure の Windows VM が Azure AD に参加することになります。 オンプレミス AD や Azure AD DS などの他のドメインに参加させることはできません。 この操作が必要な場合は、拡張機能をアンインストールして、Azure AD テナントから VM を切断する必要があります。
 
 ## <a name="requirements"></a>必要条件
 
@@ -200,7 +203,7 @@ Azure AD サインインで有効になる Azure 上の Windows VM へのアク�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD 資格情報を使用して Windows VM にログインする
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 参加済みまたはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの RBAC ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 参加済みまたはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの RBAC ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。 ダイレクト RDP のみがサポートされています。
 
 Azure AD を使用して Windows Server 2019 仮想マシンにログインするには、次の操作を行います。 
 
@@ -216,7 +219,7 @@ Azure AD を使用して Windows Server 2019 仮想マシンにログインす�
 > [!NOTE]
 > .RDP ファイルを自分のコンピューターにローカルで保存できます。これにより、後でリモート デスクトップ接続を起動する際に、Azure portal で仮想マシンの [概要] ページに移動して、接続オプションを使用する必要がなくなります。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 ### <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 
@@ -358,5 +361,5 @@ Windows Hello for Business のデプロイがなく、それが当面は選択�
 
 [Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、プレビュー機能の使用に関する問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Active Directory の詳細については、「[Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください

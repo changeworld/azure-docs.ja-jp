@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027721"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースを使用する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "73811217"
 - [自動チューニングの電子メール通知を有効](sql-database-automatic-tuning-email-notifications.md)にして、チューニング推奨事項に関する情報を取得する。
 - [パフォーマンスに関する推奨事項を適用](sql-database-advisor-portal.md)してお客様のデータベースを最適化する。
 - Azure SQL Database から通知を受け取るために[アラートを作成](sql-database-insights-alerts-portal.md)する。
-- アプリケーションとデータベースの間で接続に関する問題が発生したことに気付いた場合に、[接続のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)を行う。 また、[接続の問題には Resource Health](sql-database-resource-health.md) を使用することもできます。
+- アプリケーションとデータベースの間で接続に関する問題が発生したことに気付いた場合に、[接続のトラブルシューティング](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)を行う。 また、[接続の問題には Resource Health](sql-database-resource-health.md) を使用することもできます。
 - [ファイル領域を管理](sql-database-file-space-management.md)して、お客様のデータベースのストレージ使用量を監視する。
 
 ## <a name="query-distributed-data"></a>分散データにクエリを実行する
@@ -72,5 +72,5 @@ ms.locfileid: "73811217"
 - [Entity Framework を使用](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)して、シャード化されたデータにクエリを実行する。
 - [Dapper Framework を使用](sql-database-elastic-scale-working-with-dapper.md)して、シャード化されたデータにクエリを実行する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [マネージド インスタンスの攻略ガイド](sql-database-howto-managed-instance.md)の詳細を確認する

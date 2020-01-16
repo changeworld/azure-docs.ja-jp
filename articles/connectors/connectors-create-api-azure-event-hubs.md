@@ -1,18 +1,18 @@
 ---
 title: Azure Event Hubs に接続する
-description: Azure Event Hubs および Azure Logic Apps でイベントを管理および監視します
+description: Azure Event Hubs と Azure Logic Apps を使用してイベントを監視および管理する自動化されたタスクとワークフローを作成する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446165"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 
@@ -33,7 +33,7 @@ ms.locfileid: "74789941"
 
 ロジック アプリでイベント ハブにアクセスできるようにするには、アクセス許可を確認し、Event Hubs 名前空間の接続文字列を取得します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 特定のイベント ハブではなく、Event Hubs "*名前空間*" に移動します。 
 
@@ -74,7 +74,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    ![トリガーのプロパティ](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | [説明] |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | 監視するイベント ハブの名前 |
    | **コンテンツの種類** | いいえ | イベントのコンテンツの種類 既定では、 `application/octet-stream`です。 |
@@ -86,13 +86,13 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    **追加のプロパティ**
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | [説明] |
    |----------|----------|-------------|
    | **コンテンツ スキーマ** | いいえ | イベント ハブから読み取るイベントの JSON コンテンツ スキーマ たとえば、コンテンツのスキーマを指定する場合は、スキーマと一致するイベントのみのロジック アプリをトリガーできます。 |
    | **最小パーティション キー** | いいえ | 読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
    | **最大パーティション キー** | いいえ | 読み取る最大の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
    | **タイム ゾーン** | いいえ | 開始時刻を指定したときに限り適用されます。このトリガーに UTC オフセットを指定することはできないためです。 適用するタイム ゾーンを選択してください。 <p>詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。 |
-   | **開始時刻** | いいえ | 開始時刻を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合)<p>または<p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合)<p>詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。 |
+   | **[開始時刻]** | いいえ | 開始時刻を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合)<p>または<p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合)<p>詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。 |
    ||||
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
@@ -130,11 +130,11 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![イベント ハブ名を選択し、イベントの内容を入力する](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | [説明] |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | イベントの送信先となるイベント ハブを選択します |
    | **コンテンツ** | いいえ | 送信するイベントのコンテンツ |
-   | **プロパティ** | いいえ | 送信するアプリのプロパティと値 |
+   | **Properties** | いいえ | 送信するアプリのプロパティと値 |
    | **パーティション キー** | いいえ | イベントを送信する[パーティション](../event-hubs/event-hubs-features.md#partitions) ID |
    ||||
 
@@ -152,13 +152,13 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続情報の入力を求められたら、次の詳細を入力します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
    | **イベント ハブの名前空間** | はい | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 |
    |||||  
 
-   例:
+   次に例を示します。
 
    ![イベント ハブ接続を作成する](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
@@ -175,6 +175,6 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/eventhubs/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

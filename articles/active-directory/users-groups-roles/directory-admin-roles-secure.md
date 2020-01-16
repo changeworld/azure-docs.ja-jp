@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900796"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967705"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -74,7 +74,7 @@ does the article really start here?-->
 
 このロードマップ フレームワークは、既にデプロイしている Microsoft テクノロジの使用を最大化するように設計されています。 現在および今後の主要なセキュリティ テクノロジを活用したり、既に展開しているか、展開を検討している他のベンダーのセキュリティ ツールを統合したりすることもできます。 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>ステージ 1: すぐに実施することをお勧めする重要な項目
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>ステージ 1:すぐに実施することをお勧めする重要な項目
 
 ![ステージ 1 すぐに実施する重要な項目](./media/directory-admin-roles-secure/stage-one.png)
 
@@ -125,7 +125,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 1 つまたは複数の Azure AD 管理者ロール (グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者) に永続的に割り当てられているすべての個々のユーザーのサインイン時に Azure Multi-factor Authentication (MFA) が必要です。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>ステージ 2: 最もよく使用される攻撃手法の緩和
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>ステージ 2:最もよく使用される攻撃手法の緩和
 
 ![ステージ 2 よく使用される攻撃の緩和](./media/directory-admin-roles-secure/stage-two.png)
 
@@ -230,7 +230,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 クラウド サービス経由で特権アクセス権を得る企業ユーザーの増加は、管理されないプラットフォームの増加につながります。 Office 365 のグローバル管理者になるユーザー、Azure サブスクリプション管理者、VM や SaaS アプリの管理者アクセス権を持つユーザーなどがこれにあたります。 代わりに、組織のすべての従業員、特に管理者は、日常的なビジネス トランザクションを特権のないユーザーとして処理し、必要な場合にのみ管理者権限で実行する必要があります。 初期導入後に管理者ロールに属するユーザー数が拡大する可能性があるため、アクセス レビューを実行し、管理者特権をアクティブにする資格を持つすべてのユーザーを確認してください。 
 
-以下の手順を実行します。
+次の操作を行います。
 
 * Azure AD 管理者であるユーザーを確認し、オンデマンドの Just-In-Time 管理者アクセス権とロール ベースのセキュリティ制御を有効にします。
 * 管理特権でアクセスする明確な正当性を持たないユーザーを別のロールに変換します (資格のあるロールがない場合は、ユーザーを削除します)。
@@ -362,7 +362,7 @@ Office 365 を使用している場合。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure へのアクセスを管理する組織における追加の手順 
 
-[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)必要があるかどうかを判断します。
+[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../cost-management-billing/manage/billing-subscription-transfer.md)必要があるかどうかを判断します。
 ‎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"非常時": 緊急時の対処方法
@@ -375,7 +375,7 @@ Office 365 を使用している場合。
 
 3. "非常時" アカウントのユーザー名/パスワードの組み合わせにアクセスして Azure AD にサインインします。 
 
-4. [Azure サポート要求をオープン](../../azure-supportability/how-to-create-azure-support-request.md)して、Microsoft の支援を受けます。
+4. [Azure サポート要求をオープン](../../azure-portal/supportability/how-to-create-azure-support-request.md)して、Microsoft の支援を受けます。
 
 5. [Azure AD サインイン レポート](../reports-monitoring/overview-reports.md)を参照します。 イベントの発生からそのイベントがレポートに含まれるまでの時間差がある可能性があります。
 
@@ -425,7 +425,7 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 **回答:** すべてのユーザーとほとんどの管理者には特権のないアカウントを使用します。 まず、組織のフットプリントを作成して、どの少数の管理者に特権を与えるかを決定します。 そして、新しく作成した管理ユーザーを監視します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
 

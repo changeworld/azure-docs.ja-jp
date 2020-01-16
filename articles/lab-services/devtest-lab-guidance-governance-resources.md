@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981506"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 
@@ -36,7 +36,7 @@ Azure サブスクリプション内に DevTest Labs リソースをどのよう
 - 開発環境と運用環境を分離するためにセグメント化が必要ですか? 
 - 長期的な管理、安定性、成長を容易にするためにどのような制御が導入されますか?
 
-**最初の推奨される方法**は、運用サブスクリプションと開発サブスクリプションの間の境界が線引きされている組織の Azure 分類を確認することです。 次の図では、提案される分類は開発/テスト環境と運用環境の論理的な分離に対応しています。 この方法では、組織は環境ごとに個別に関連するコストを追跡するための部門コードを導入できます。 詳細については、「[Prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold)」(サブスクリプションの規範的なガバナンス) をご覧ください。 さらに、[Azure タグ](../azure-resource-manager/resource-group-using-tags.md)を使用して、追跡用と課金用のリソースを整理できます。
+**最初の推奨される方法**は、運用サブスクリプションと開発サブスクリプションの間の境界が線引きされている組織の Azure 分類を確認することです。 次の図では、提案される分類は開発/テスト環境と運用環境の論理的な分離に対応しています。 この方法では、組織は環境ごとに個別に関連するコストを追跡するための部門コードを導入できます。 詳細については、「[Prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold)」(サブスクリプションの規範的なガバナンス) をご覧ください。 さらに、[Azure タグ](../azure-resource-manager/management/tag-resources.md)を使用して、追跡用と課金用のリソースを整理できます。
 
 **2 番目の推奨される方法**は、Azure Enterprise Portal 内で DevTest サブスクリプションを有効にすることです。 これにより、組織は Azure エンタープライズ サブスクリプションでは通常使用できないクライアント オペレーティング システムを実行できます。 そして、計算に対してのみ支払い、ライセンスの心配はしなくてもよい、エンタープライズ ソフトウェアを使います。 Microsoft SQL Server などの IaaS 内のギャラリー イメージを含む指定されたサービスの課金が消費量のみに基づくことが保証されます。 Azure DevTest サブスクリプションの詳細については、Enterprise Agreement (EA) のお客様の場合は[こちら](https://azure.microsoft.com/offers/ms-azr-0148p/)を、従量課金制のお客様の場合は[こちら](https://azure.microsoft.com/offers/ms-azr-0023p/)をご覧ください。
 

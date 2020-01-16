@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6e44ea1b219e60f547806afb7ce04277d27f7408
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445770"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -185,6 +185,9 @@ az acr login -n MyRegistry
 
 はい。 最新の docker クライアント (バージョン 18.03.0 以上) を使用して TLS を有効にします。 
 
+> [!IMPORTANT]
+> 2020 年 1 月 13 日以降、Azure Container Registry では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。
+
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry はコンテンツの信頼をサポートしていますか?
 
 はい。[Docker Notary](https://docs.docker.com/notary/getting_started/) が統合されており、これを有効にできるため、Azure Container Registry で信頼済みのイメージを使用できます。 詳細については、「[Azure Container Registry におけるコンテンツの信頼](container-registry-content-trust.md)」を参照してください。
@@ -305,7 +308,7 @@ unauthorized: authentication required
 ```
 
 このエラーを解決するには:
-1. Docker デーモンの構成ファイル `/etc/sysconfig/docker` にオプション `--signature-verification=false` を追加します。 例:
+1. Docker デーモンの構成ファイル `/etc/sysconfig/docker` にオプション `--signature-verification=false` を追加します。 次に例を示します。
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -454,7 +457,7 @@ Docker VM 仮想スイッチの IP を見つけます。
 
 Docker プロキシを前のコマンドの出力とポート 8888 に構成します (たとえば、10.0.75.1:8888)。
 
-## <a name="tasks"></a>タスク
+## <a name="tasks"></a>処理手順
 
 - [実行を一括で取り消すにはどうすればよいですか?](#how-do-i-batch-cancel-runs)
 - [az acr build コマンドに .git フォルダーを含めるにはどうすればよいですか?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
@@ -504,6 +507,6 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub のアクション](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Registry の[詳細を学習](container-registry-intro.md)します。

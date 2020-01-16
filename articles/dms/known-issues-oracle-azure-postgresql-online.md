@@ -1,6 +1,7 @@
 ---
-title: Oracle から Azure Database for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
-description: Oracle から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
+title: 既知の問題:Oracle から Azure Database for PostgreSQL への移行
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service を使用した Oracle から Azure Database for PostgreSQL 単一サーバーへのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0a1f46698ddb966c315d08a794dd710a74295f97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437813"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -61,7 +62,7 @@ Azure Database Migration Service では、Azure Database for PostgreSQL-Single S
 - Oracle 12 のみで、LOB 列に対する変更はサポート (移行) されません。
 - XMLTYPE 列および LOB 列に対する UPDATE はサポート (移行) されません。
 
-## <a name="known-issues-and-limitations"></a>既知の問題と制限
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
 - お客様が Oracle に接続するには SYSDBA を使用する必要があります。
 - パーティション/サブパーティションに対する操作 (ADD、DROP、EXCHANGE、および TRUNCATE) の結果のデータ変更は移行されず、次のエラーが発生する可能性があります。

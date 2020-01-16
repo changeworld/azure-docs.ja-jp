@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454714"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 
 
 
-クラシック バージョンの Azure Machine Learning Studio には、主に次の 4 種類の機械学習モデルがあります。
+Azure Machine Learning Studio (クラシック) には、機械学習モデルの主な種類として次の 4 つがあります。
 
 * 分類
 * クラスタリング
@@ -39,7 +39,7 @@ ms.locfileid: "73839842"
 
 このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、[Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)に関するページを参照してください。
 
-クラシック バージョンの Azure Machine Learning Studio が初めてであり、最初に単純な実験を作成するための支援が必要な場合は、[Azure Machine Learning Studio (クラシック) で単純な実験を作成する方法](create-experiment.md)に関するページを参照してください。
+Azure Machine Learning Studio (クラシック) が初めてであり、最初に単純な実験を作成するための支援が必要な場合は、[Azure Machine Learning Studio (クラシック) で単純な実験を作成する方法](create-experiment.md)に関するページを参照してください。
 
 ## <a name="classification"></a>分類
 分類問題には 2 つのサブ カテゴリがあります。
@@ -52,7 +52,7 @@ Azure Machine Learning Studio (クラシック) には、これらの各種類�
 ### <a name="two-class-classification"></a>2 クラス分類
 **実験例**
 
-2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 クラシック バージョンの Azure Machine Learning Studio で提供されるあやめのデータ セットは、2 つの花の種 (クラス 0 と 1) のみのインスタンスが含まれた一般的な[あやめのデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
+2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio (クラシック) で提供されるあやめのデータ セットは、2 つの花の種 (クラス 0 と 1) のみのインスタンスが含まれた一般的な[あやめのデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
 
 ![あやめの実験のスクリーンショット](./media/interpret-model-results/1.png)
 
@@ -97,7 +97,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 ### <a name="multi-class-classification"></a>多クラス分類
 **実験例**
 
-この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類器は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
+この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類子は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
 
 ![文字の認識の例](./media/interpret-model-results/5_1.png)
 
@@ -226,7 +226,7 @@ Web サービスを実行して返された結果は、図 19 のようになり
 * 顧客の特徴データ
 * レストラン特徴データ
 
-クラシック バージョンの Azure Machine Learning Studio の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用すると、次のいくつかのことを実行できます。
+Azure Machine Learning Studio (クラシック) の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用すると、次のいくつかのことを実行できます。
 
 * 特定のユーザーと項目の評価を予測する
 * 特定のユーザーに項目を推奨する

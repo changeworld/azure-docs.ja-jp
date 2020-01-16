@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric と VS Code の概要 | Microsoft Docs
+title: Azure Service Fabric と VS Code の概要
 description: この記事では、Visual Studio Code を使用して Service Fabric アプリケーションを作成する方法の概要について説明します。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457865"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -34,7 +26,7 @@ ms.locfileid: "70102959"
 すべての環境に以下の前提条件をインストールする必要があります。
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Node.JS](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
 * [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
 * Yeoman Generators -- アプリケーションに適したジェネレーターをインストールしてください
@@ -63,7 +55,7 @@ Java 開発の場合は、以下の前提条件をインストールする必要
 1. VS Code を開きます。
 2. VS Code の左側にある**アクティビティ バー**で [デバッグ] アイコンをクリックします。 「Service Fabric」を探します。 Service Fabric Reliable Services 拡張機能の **[インストール]** をクリックします。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 VS Code の Service Fabric Reliable Services 拡張機能には、開発者が Service Fabric プロジェクトを作成してデプロイするために役立つコマンドが多数用意されています。 **コマンド パレット**からコマンドを呼び出すには、`(Ctrl + Shift + p)` を押し、入力バーにコマンド名を入力し、プロンプト リストから目的のコマンドを選択します。 
 
 * Service Fabric:Create Application (Service Fabric: アプリケーションの作成) 
@@ -132,7 +124,7 @@ VS Code の Service Fabric Reliable Services 拡張機能には、開発者が S
 2.  **[Service Fabric:Clean Application]\(アプリケーションの消去\)** コマンドを選択します。
 3.  消去プロセスの出力は統合ターミナルに書き込まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VS Code を使用して C# Service Fabric アプリケーションを開発し、デバッグする](./service-fabric-develop-csharp-applications-with-vs-code.md)方法について学びます。
 * [VS Code を使用して Java Service Fabric アプリケーションを開発し、デバッグする](./service-fabric-develop-java-applications-with-vs-code.md)方法について学びます。

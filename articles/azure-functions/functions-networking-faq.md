@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409525"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -51,9 +51,7 @@ App Service Environment の使用の詳細については、まず「[App Servic
 
 [サービス エンドポイント](./functions-networking-options.md#private-site-access)を使用して、仮想ネットワークから HTTP トリガを呼び出せるようにできます。 
 
-仮想ネットワーク内のリソースから関数をトリガーするには、関数アプリを App Service Environment に展開することもできます。 App Service Environment の使用の詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
-
-Premium と App Service プランは仮想ネットワークからの HTTP トリガーをサポートしますが、仮想ネットワークを通じてその他のすべての関数トリガ タイプをサポートできるのは App Service 環境のみです。
+Premium プラン、App Service プラン、または App Service Environment に関数アプリをデプロイすることによって、仮想ネットワーク内の他のすべてのリソースから関数をトリガーすることもできます。 詳細については、「[仮想ネットワーク トリガー (非 HTTP)](./functions-networking-options.md#virtual-network-triggers-non-http)」を参照してください。
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>仮想ネットワークで関数アプリをデプロイするにはどうすればよいですか?
 
@@ -61,7 +59,7 @@ Premium と App Service プランは仮想ネットワークからの HTTP ト�
 
 仮想ネットワークのリソースへの一方向のアクセスのみが必要なシナリオ、または緩くネットワークを分離する必要があるシナリオについては、[Functions のネットワークの概要](functions-networking-options.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ネットワークと関数の詳細については、以下を参照してください。 
 

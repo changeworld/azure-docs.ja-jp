@@ -1,17 +1,17 @@
 ---
-title: Azure 関数を追加して Azure Logic Apps から呼び出す
-description: Azure 関数を追加して Azure ロジック アプリから呼び出します
+title: Azure Functions を追加して Azure Logic Apps から呼び出す
+description: Azure Logic Apps の自動化されたタスクとワークフローから Azure Functions のカスタム コードを呼び出して実行する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453464"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 
@@ -125,7 +125,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    1. **[コード]** ボックスで、自分のコードを関数テンプレートに追加します。関数の実行が終了した後でロジック アプリに返される応答とペイロードも含めます。 完了したら **[作成]** を選択します。
 
-   例:
+   次に例を示します。
 
    ![関数を定義する](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
@@ -217,7 +217,7 @@ Azure 関数の内部からロジック アプリをトリガーする場合、�
 
 Azure 関数でロジック アプリのシステム割り当て ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
 
-1. [Azure portal](https://portal.azure.com) で、自分の関数アプリを探して選択します。 以下の手順ではサンプル関数アプリとして "FabrikamFunctionApp" が使用されます。
+1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。 以下の手順ではサンプル関数アプリとして "FabrikamFunctionApp" が使用されます。
 
 1. 関数アプリ ウィンドウで **[プラットフォーム機能]** を選択します。 **[開発ツール]** で **[高度なツール (Kudu)]** を選択します。
 
@@ -310,6 +310,6 @@ Azure 関数でロジック アプリのシステム割り当て ID を使用す
 
 1. ロジック アプリ デザイナーに戻り、[こちら](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)の手順に従って、管理対象 ID でアクセスを認証します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps のコネクタ](../connectors/apis-list.md)について確認します。

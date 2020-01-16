@@ -1,26 +1,20 @@
 ---
-title: Azure Sentinel に Azure AD Identity Protection データを接続する | Microsoft Docs
+title: Azure Sentinel に Azure AD Identity Protection データを接続する方法
 description: Azure Sentinel に Azure AD Identity Protection データを接続する方法について説明します。
-services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d73ce12d509b2ccc534e19a27124980f3b60044
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 8d916606913b19a9eb15cb280defbeb0440565e4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158887"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563719"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 
@@ -32,7 +26,7 @@ ms.locfileid: "74158887"
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure Active Directory Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)の所有
-- グローバル理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
 
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Azure AD Identity Protection に接続する
@@ -48,7 +42,7 @@ Azure AD Identity Protection がデプロイされ、データを取得してい
 
 6. Azure AD Identity Protection のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure AD Identity Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Azure AD Identity Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

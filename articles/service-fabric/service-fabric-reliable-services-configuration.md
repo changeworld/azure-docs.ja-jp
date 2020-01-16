@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Reliable Services を構成する | Microsoft Docs
-description: Azure Service Fabric のステートフル Reliable Services を構成する方法について説明します。
-services: Service-Fabric
-documentationcenter: .net
+title: Azure Service Fabric Reliable Services を構成する
+description: Azure Service Fabric アプリケーションでグローバルに、および 1 つのサービスに対してステートフル Reliable Services を構成する方法について説明します。
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242891"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645516"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -28,7 +19,7 @@ Reliable Services の構成設定には 2 つのセットがあります。 1 �
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -109,7 +100,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、 [サービス マニフェストのリソース](service-fabric-service-manifest-resources.md) に関する記事を参照してください。 |
@@ -118,8 +109,8 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |その後で状態がチェックポイントされるログ ファイル領域の量。 |
 | MaxRecordSizeInKB |KB |1024 |レプリケーターがログに書き込むことができるレコードの最大サイズです。 この値は 4 の倍数で 16 より大きい必要があります。 |
 | MinLogSizeInMB |MB |0 (システムによって決定) |トランザクション ログの最小サイズ。 この設定を下回るサイズまでログを切り捨てることはできません。 0 は、レプリケーターによって最少ログ サイズが決定されることを示します。 この値を大きくすると、関連するログ レコードが切り捨てられる可能性が低くなるため、部分的なコピーと増分バックアップが実行される可能性が高くなります。 |
-| TruncationThresholdFactor |係数 |2 |ログがどのサイズになった時点で切り捨てがトリガーされるかを指定します。 切り捨てのしきい値は、MinLogSizeInMB に TruncationThresholdFactor を乗算して決定されます。 TruncationThresholdFactor は 1 より大きくする必要があります。 MinLogSizeInMB * TruncationThresholdFactor は MaxStreamSizeInMB より小さくする必要があります。 |
-| ThrottlingThresholdFactor |係数 |4 |ログがどのサイズになった時点でレプリカのスロットルが開始されるかを指定します。 スロットルのしきい値 (MB) は、Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) によって決定されます。 スロットルのしきい値 (MB) は、切り捨てのしきい値 (MB) より大きくする必要があります。 切り捨てのしきい値 (MB) は MaxStreamSizeInMB より小さくする必要があります。 |
+| TruncationThresholdFactor |要素 |2 |ログがどのサイズになった時点で切り捨てがトリガーされるかを指定します。 切り捨てのしきい値は、MinLogSizeInMB に TruncationThresholdFactor を乗算して決定されます。 TruncationThresholdFactor は 1 より大きくする必要があります。 MinLogSizeInMB * TruncationThresholdFactor は MaxStreamSizeInMB より小さくする必要があります。 |
+| ThrottlingThresholdFactor |要素 |4 |ログがどのサイズになった時点でレプリカのスロットルが開始されるかを指定します。 スロットルのしきい値 (MB) は、Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) によって決定されます。 スロットルのしきい値 (MB) は、切り捨てのしきい値 (MB) より大きくする必要があります。 切り捨てのしきい値 (MB) は MaxStreamSizeInMB より小さくする必要があります。 |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |1 つのバックアップ ログ チェーンに含まれるバックアップ ログの最大累積サイズ (MB)。 増分バックアップを実行してバックアップ ログが生成されると関連する完全バックアップ以降の累積バックアップ ログがこのサイズを超える場合は、増分バックアップ要求が失敗します。 そのような場合には、ユーザーは完全バックアップを取得する必要があります。 |
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
@@ -191,7 +182,7 @@ MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書�
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。 最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。 共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。 これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 * [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

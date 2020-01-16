@@ -7,14 +7,14 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792981"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771565"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラーのログ記録
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ:ロジック アプリの例外処理とエラーのログ記録
 
 このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 次の質問に答える現実のユース ケースが使用されています。"Azure Logic Apps では例外とエラーの処理がサポートされていますか?"
 
@@ -25,7 +25,7 @@ ms.locfileid: "74792981"
 
 このシナリオで使用したユース ケースの背景情報を次に示します。 
 
-以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
+以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
 
 このプロジェクトには、主に 2 つの要件がありました。  
 
@@ -118,7 +118,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 > [!NOTE]
 > 次の例は、あくまでサンプルです。 このチュートリアルは、現在運用段階の実装がベースになっているため、 **Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。 
 
-### <a name="logging"></a>ログの記録
+### <a name="logging"></a>ログ記録
 
 以下に示したのは、ログ処理の方法を示すロジック アプリのコード サンプルです。
 
@@ -478,7 +478,7 @@ Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てら
 
 Logic Apps 例外管理 API アプリケーションのソース コードは、この [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")で入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)

@@ -10,23 +10,23 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e742f18e86c22b2d798eec5f6b715dfb298670a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231701"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028285"
 ---
 # <a name="configuration-data-at-scale"></a>スケーリング対応の構成データ
 
-> 適用対象:Windows PowerShell 5.1
+> 適用先:Windows PowerShell 5.1
 
 数百台、数千台のサーバーを管理することは困難な場合があります。
 最も困難な点は[構成データ](/powershell/scripting/dsc/configurations/configdata)を実際に管理することであるというフィードバックをお客様からいただいています。
 場所、種類、環境などの論理構造間で情報を整理します。
 
 > [!NOTE]
-> この記事では、オープン ソース コミュニティによって管理されるソリューションについて説明します。
+> この記事では、オープン ソース コミュニティによって管理されているソリューションについて説明します。
 > サポートは、Microsoft からではなく、GitHub コラボレーションの形式でのみ利用できます。
 
 ## <a name="community-project-datum"></a>コミュニティ プロジェクト:Datum
@@ -45,11 +45,11 @@ Datum は、他の構成管理プラットフォームからの優れたアイ�
 その後、サーバーまたはサーバー ロールの 1 つのビューに各ファイルの[情報を統合する](https://github.com/gaelcolas/Datum#datum-tree)ことによって構成データ ファイルを生成するためのコマンドレットが提供されます。
 
 データ ファイルが生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)と共に使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
-次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) でサーバーを登録して、構成をプルします。
+次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) のいずれかからサーバーを登録して、構成をプルします。
 
 Datum を試すには、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/datum/)にアクセスし、ソリューションをダウンロードするか、[Project Site] をクリックして[ドキュメント](https://github.com/gaelcolas/Datum#2-getting-started--concepts)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
 - [DSC リソース](/powershell/scripting/dsc/resources/resources)

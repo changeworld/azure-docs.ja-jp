@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429380"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 
@@ -60,21 +60,21 @@ END_NAMESPACE(WeatherStation);
 > 
 > 
 
-## <a name="supported-data-types"></a>サポートされているデータ型
+## <a name="supported-data-types"></a>サポートされるデータ型
 
 次のデータの型は、 **シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| Type | 説明 |
+| 種類 | [説明] |
 | --- | --- |
 | double |倍精度浮動小数点数 |
-| int |32 ビット整数 |
+| INT |32-bit integer |
 | float |単精度浮動小数点数 |
 | long |長整数 |
 | int8\_t |8 ビット整数 |
-| int16\_t |16 ビット整数型 |
-| int32\_t |32 ビット整数 |
-| int64\_t |64 ビット整数 |
-| bool |ブール値 |
+| int16\_t |16 ビット整数 |
+| int32\_t |32-bit integer |
+| int64\_t |64-bit integer |
+| [bool] |boolean |
 | ascii\_char\_ptr |ASCII 文字列 |
 | EDM\_DATE\_TIME\_OFFSET |日時オフセット |
 | EDM\_GUID |GUID |
@@ -278,7 +278,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-送信するのは **TemperatureEvent** 型の温度で、この構造体には、**Temperature** メンバーと **Time** メンバーが含まれています。 これは、シリアル化されたデータに直接反映されます。
+送信されるのは型 **TemperatureEvent** の温度であり、その構造体には **Temperature** および **Time** メンバーが含まれています。 これは、シリアル化されたデータに直接反映されます。
 
 同様に、次のコードで湿度のイベントを送信できます。
 
@@ -315,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-このモデルでは、**DECLARE\_STRUCT** マクロを削除したうえで、モデリング言語の単純型を使用して、このシナリオのデータ項目の定義だけを行います。
+この場合は、**DECLARE\_STRUCT** マクロを削除しており、単にモデリング言語の単純型を使用してこのシナリオのデータ項目を定義しています。
 
 しばらくの間は、**Time** イベントを無視します。 それを無視した場合、 **Temperature**を受信するコードは次のとおりです。
 
@@ -408,7 +408,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-モデルをオブジェクト指向の用語を使って考えてみます。 ここで、物理デバイス (サーモスタット) をモデル化し、そのデバイスには、**Temperature** と **Humidity** のような属性があるとします。
+モデルをオブジェクト指向の用語を使って考えてみます。 この場合は、物理デバイス (サーモスタット) をモデル化しており、そのデバイスには **Temperature** や **Humidity** などの属性が含まれています。
 
 次のようなコードを使用して、モデル全体の状態を送信できます。
 
@@ -431,11 +431,11 @@ Temperature、Humidity、Time の値が設定されていると仮定すると�
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-これにより、モデル 1 のように **Temperature** メンバーと **Time** メンバーを含む **TemperatureEvent** を定義した場合とまったく同じシリアル化されたイベントが生成されます。 この場合は、異なるモデル (モデル 2) を使用して、まったく同じシリアル化されたイベントを生成できました。これは、**SERIALIZE** を別の方法で呼び出したためです。
+これにより、モデル 1 のように **Temperature** メンバーと **Time** メンバーを含む **TemperatureEvent** を定義した場合とまったく同じシリアル化されたイベントが生成されます。 この場合は、**SERIALIZE** を別の方法で呼び出したため、別のモデル (モデル 2) を使用して、まったく同じシリアル化されたイベントを生成することができました。
 
 重要な点は、複数のデータ イベントを **SERIALIZE** に渡す場合、各イベントは、1 つの JSON オブジェクトのプロパティと見なされるということです。
 
-最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、 **SERIALIZER**に 1 つのデータ イベントだけを渡します。
+最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、**SERIALIZER** に 1 つのデータ イベントだけを渡します。
 
 オブジェクト指向でモデルを考える場合は、2 番目のアプローチが適切である可能性があります。 この場合、**WITH\_DATA** を使用して定義した要素は、オブジェクトの "プロパティ" です。 クラウドに送信する "オブジェクトの" 状態の量に応じて、希望するイベントのサブセットはすべて **SERIALIZE** に渡すことができます。
 
@@ -537,7 +537,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 **シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は azure-c-shared-utility ライブラリで参照できます。
 
-再帰オプションを使用して GitHub から Azure-iot-sdk-c リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
+GitHub から Azure-iot-sdk-c リポジトリを複製し、`git submodule update --init` コマンドを発行している場合、この共有ユーティリティ ライブラリは次の場所に見つかります。
 
 ```C
 .\\c-utility
@@ -557,7 +557,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 このソリューションのプログラムは、**macro\_utils.h** ファイルを生成します。 SDK には、既定の macro\_utils.h ファイルが含まれています。 このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
 
-考慮が必要な 2 つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の 2 行で定義されています。
+注意すべき 2 つの重要なパラメーターは **nArithmetic** と **nMacroParameters** であり、これらは macro\_utils.tt にある次の 2 行で定義されています。
 
 ```C
 <#int nArithmetic=1024;#>
@@ -661,7 +661,7 @@ serializer_deinit();
 
 それ以外の場合、上に示したその他の機能はすべて、**シリアライザー** ライブラリの場合でも **IoTHubClient** ライブラリの場合と同じように動作します。 これらのいずれかのトピックの詳細については、このシリーズの [前回の記事](iot-hub-device-sdk-c-iothubclient.md) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 

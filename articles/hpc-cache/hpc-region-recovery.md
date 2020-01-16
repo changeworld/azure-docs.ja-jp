@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582077"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982157"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>リージョン内フェールオーバーの回復に複数のキャッシュを使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "73582077"
    1. キャッシュ クライアントが使用するマウント コマンド
 
    > [!NOTE]
-   > Azure HPC Cache は、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)を使用するか、その API に直接アクセスすることによって、プログラムで作成することができます。 詳細については、Azure HPC Cache チームにお問い合わせください。
+   > Azure HPC Cache は、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用するか、その API に直接アクセスすることによって、プログラムで作成することができます。 詳細については、Azure HPC Cache チームにお問い合わせください。
 
 ## <a name="failover-example"></a>フェールオーバーの例
 

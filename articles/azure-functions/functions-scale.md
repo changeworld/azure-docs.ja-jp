@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929726"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409100"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -126,7 +126,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
 
-関数アプリで使用されるものと同じストレージ アカウントを、アプリケーション データを格納するためのトリガーとバインドで使用することもできます。 ただし、ストレージを集中的に使用する操作の場合は、別のストレージ アカウントを使用する必要があります。   
+関数アプリで使用されるものと同じストレージ アカウントを、アプリケーション データを格納するためのトリガーとバインドで使用することもできます。 ただし、ストレージを集中的に使用する操作の場合は、別のストレージ アカウントを使用する必要があります。  
+
+複数の関数アプリが間違いなく、何の問題もなく同じストレージ アカウントを共有できます。 (これの良い例は、1 つのストレージ アカウントのように動作する Azure ストレージ エミュレーターを使用してローカル環境で複数のアプリを開発する場合です。) 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -161,6 +163,8 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 
 関数アプリには、スケールに影響を及ぼすさまざまな側面 (ホスト構成、ランタイム フットプリント、リソースの効率など) があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](functions-best-practices.md#scalability-best-practices)をご覧ください。 関数アプリがスケールするにつれて、接続がどのように変化するかを認識する必要もあります。 詳細については、「[How to manage connections in Azure Functions](manage-connections.md)」(Azure Functions で接続を管理する方法) を参照してください。
+
+Python と Node.js のスケールインの詳細については、[Azure Functions Python 開発者ガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-concurrency)に関するページおよび [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
 
 ### <a name="billing-model"></a>課金モデル
 

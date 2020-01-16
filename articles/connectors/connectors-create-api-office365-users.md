@@ -1,20 +1,21 @@
 ---
 title: Office 365 ユーザーへの接続
-description: Office 365 Users REST API と Azure Logic Apps を使用して、ユーザー プロファイルを管理します
+description: Azure Logic Apps を使用して Office 365 ユーザー プロファイル内のプロファイルを取得および管理するタスクとワークフローを自動化する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789523"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666858"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Office 365 Users コネクタの使用
+# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Office 365 ユーザー内のプロファイルを取得および管理する
+
 Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。 Office 365 ユーザーは、次のことを行えます。
 
 * Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。 
@@ -23,7 +24,8 @@ Office 365 ユーザーに接続して、プロファイルの取得、ユーザ
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-office-365-users"></a>Office 365 Users への接続を作成します
-このコネクタをロジック アプリに追加する場合は、Office 365 ユーザー アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
+
+このコネクタをロジック アプリに追加する場合は、Office 365 ユーザー アカウントにサインインして、Azure Logic Apps がそのアカウントに接続できるようにする必要があります。
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
@@ -33,7 +35,8 @@ Office 365 ユーザーに接続して、プロファイルの取得、ユーザ
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[コネクタの詳細](/connectors/officeusers/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+コネクタの Swagger の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/officeusers/)を確認してください。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+## <a name="next-steps"></a>次のステップ
+
+* 他の[Logic Apps コネクタ](apis-list.md)を確認します。

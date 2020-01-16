@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager について | Microsoft Docs
 description: StorSimple Snapshot Manager の概要、アーキテクチャ、および機能について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
-ms.author: v-sharos
+ms.author: twooley
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f7436bb63f52c9c2b697c8e7031922ce89d786b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789616"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933628"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager の概要
 
@@ -137,7 +137,7 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 バックアップ ジョブの監視については、「 [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
-* [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)の詳細を確認する。
+## <a name="next-steps"></a>次のステップ
+* [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 * [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)をダウンロードする。
 

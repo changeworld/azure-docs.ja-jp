@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429118"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
@@ -60,7 +60,7 @@ ms.locfileid: "74144865"
 
 エンリッチメントは、次のメソッドを使用して構成できます。
 
-| **メソッド** | **コマンド** |
+| **方法** | **コマンド** |
 | ----- | -----| 
 | ポータル | [Azure Portal](https://portal.azure.com) | [メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)をご覧ください | 
 | Azure CLI   | [az iot hub message-enrichment](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
@@ -92,7 +92,7 @@ ms.locfileid: "74144865"
 
 メッセージ エンリッチメントは、追加料金なしで利用できます。 現在は、IoT ハブにメッセージを送信したときに料金が発生します。 メッセージが複数のエンドポイントに向かう場合でも、そのメッセージに関して料金が課されるのは 1 回だけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub へのメッセージのルーティングの詳細については、次の記事を参照してください。
 

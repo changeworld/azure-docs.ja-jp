@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric でのリバース プロキシの設定 | Microsoft Docs
-description: Service Fabric のリバース プロキシを設定して構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Azure Service Fabric でのリバース プロキシの設定
+description: Azure Service Fabric アプリケーションのリバース プロキシ サービスを設定して構成する方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933895"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645448"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -50,7 +41,7 @@ Azure クラスター用のセキュリティ保護されたリバース プロ�
 
 Resource Manager テンプレートを用意した後、次の手順でリバース プロキシを有効にできます。
 
-1. テンプレートの [Parameters セクション](../azure-resource-manager/resource-group-authoring-templates.md) で、リバース プロキシのポートを定義します。
+1. テンプレートの [Parameters セクション](../azure-resource-manager/templates/template-syntax.md) で、リバース プロキシのポートを定義します。
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         }
     },
     ```
-2. [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/resource-group-authoring-templates.md)で、nodeType オブジェクトごとにポートを指定します。
+2. [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で、nodeType オブジェクトごとにポートを指定します。
 
     ポートは、reverseProxyEndpointPort というパラメーター名で識別されます。
 
@@ -335,6 +326,6 @@ Azure クラスターのファブリックの設定の更新について詳し�
 
 リバース プロキシとサービスの間にセキュリティ保護された通信を確立するには、いくつかのファブリック設定を使います。 これらの設定について詳しくは、「[リバース プロキシを使用したセキュリティで保護されたサービスへの接続](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
 * リバース プロキシの構成オプションについては、Service Fabric クラスターの設定のカスタマイズに関するページの「[ApplicationGateway/Http](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)」セクションをご覧ください。

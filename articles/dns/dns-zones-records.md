@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210995"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980528"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -115,11 +115,11 @@ DNS レコード内の複数の文字列と TXT レコード セット内の複�
 
 ### <a name="tags"></a>Tags
 
-タグは名前と値のペアのリストで、Azure Resource Manager でリソースのラベル付けに使用されます。  Azure Resource Manager ではこのタグを使用して、Azure の課金内容に関するフィルター ビューを表示したり、必須タグに関するポリシーを設定したりします。 タグの詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)を参照してください。
+タグは名前と値のペアのリストで、Azure Resource Manager でリソースのラベル付けに使用されます。  Azure Resource Manager ではこのタグを使用して、Azure の課金内容に関するフィルター ビューを表示したり、必須タグに関するポリシーを設定したりします。 タグの詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)を参照してください。
 
 Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。  DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、この後説明する 'メタデータ' がサポートされます。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>メタデータ
 
 レコード セットのタグの代わりに、Azure DNS では "メタデータ" を使用してレコード セットに注釈を付けることができます。  メタデータを使用すると、タグと同じように、各レコード セットに名前と値のペアを関連付けることができます。  これは、各レコード セットの用途を記録しておきたい場合などに便利です。  タグと異なる点として、メタデータは、Azure の課金内容に関するフィルター ビューを提供するためには使用できず、Azure Resource Manager のポリシーで指定することもできません。
 
@@ -147,7 +147,7 @@ Azure DNS を使用する際は、次の制限が既定で適用されます。
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。
 * 既存の DNS ゾーンを移行する場合は、[DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)の実行方法を確認してください。

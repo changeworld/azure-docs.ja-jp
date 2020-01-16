@@ -1,19 +1,19 @@
 ---
 title: 商業マーケットプレースで新しい Azure アプリ オファーを作成する
 description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しい Azure アプリ オファーを作成する方法。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281045"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046049"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -48,7 +48,7 @@ Azure アプリケーション プランには、マネージド アプリケー
 
 * [createUiDefinition.json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。  ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
-すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](??) が含まれている必要があります。
+すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) が含まれている必要があります。
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -94,7 +94,7 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 開発環境には次にツールを加えることを推奨します｡
 
-* [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
     * 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -148,11 +148,11 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 次のセクションに進む前に、必ず**保存**してください。
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Properties
 
 **[プロパティ]** ページでは、マーケットプレース上でのオファーのグループ分けに使用するカテゴリと業界、アプリのバージョン、オファーがサポートされる法的契約を定義できます。 このフィールドに入力した後、 **[保存]** を選択します。
 
-### <a name="category"></a>Category
+### <a name="category"></a>カテゴリ
 
 オファーを適切なマーケットプレース検索区分にグループ分けするために使用されるカテゴリを、最小で 1 つ、最大で 3 つ選択します。 これらのカテゴリにオファーがどのように対応しているかを、オファーの説明に含めるようにします。 
 
@@ -179,7 +179,7 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 > [!NOTE]
 > オファー登録情報のコンテンツ (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が「このアプリケーションは、[英語以外の言語] でのみ利用可能です。」という文言で始まっていれば英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
 
-### <a name="name"></a>名前
+### <a name="name"></a>Name
 
 ここで入力する名前は、オファー登録情報のタイトルとして顧客に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力したテキストが事前に設定されていますが、この値は変更できます。 この名前は商標の場合もあります (商標または著作権マークを含めることもできます)。 名前は 50 文字以下にする必要があります。絵文字を含めることはできません。
 
@@ -191,7 +191,7 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 オファーの詳しい説明 (最大 256 文字) を入力します。 説明は、マーケットプレースの検索結果で使用される場合があります。
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 
 オファーの詳しい説明 (最大 3,000 文字) を入力します。 この説明は、マーケットプレースの登録情報の概要で顧客に表示されます。 オファーの価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示を含めます。 
 
@@ -319,7 +319,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 **[プランのリスト]** タブには、プラン固有の一覧情報が表示されます。この情報は、同じオファーの異なるプラン間で異なる可能性があります。
 
-### <a name="name"></a>名前
+### <a name="name"></a>Name
 
 作成時にプランに割り当てた名前に基づいて事前設定されます。  この名前は、マーケットプレースに表示されるこの "ソフトウェア プラン" のタイトルとして表示されます。  最大で 100 文字まで使用できます。
 
@@ -327,7 +327,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 ソフトウェア プランの簡単な概要を設定します。  最大で 100 文字まで使用できます。
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 
 この説明では、このソフトウェア プランに固有な点や、オファー内の他のソフトウェア プランとの違いを説明できます。 最大で 2,000 文字まで使用できます。
 
@@ -376,7 +376,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 >[!Note]
 >プランの市場の価格は、公開されると後で変更することができません。
 
-### <a name="plan-audience"></a>プランの対象ユーザー
+### <a name="plan-audience"></a>[Plan Audience]\(プランの対象ユーザー\)
 
 各プランがすべてのユーザーに表示されるようにするのか、それとも自分が選択した特定の対象ユーザーだけに表示されるようにするのかを構成できます。 Azure サブスクリプション ID を使用して、この限定対象ユーザーにメンバーシップを割り当てることができます。
 
@@ -529,6 +529,6 @@ Azure アプリケーションでは、本質的に Azure Resource Manager の�
 
 発行手順のどこかでエラーが発生した場合は、それらを修正し、オファーを再発行する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [商業マーケットプレースで既存のオファーを更新する](./update-existing-offer.md)

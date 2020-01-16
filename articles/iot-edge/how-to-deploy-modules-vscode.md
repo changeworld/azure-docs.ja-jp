@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code からモジュールをデプロイする - Azure IoT Edge | Microsoft Docs
-description: Visual Studio Code を使用して IoT Edge デバイスにモジュールをデプロイする
+title: Visual Studio Code からモジュールをデプロイする - Azure IoT Edge
+description: Visual Studio Code を Azure IoT Tools と共に使用して、デプロイ マニフェストによる構成のとおりに、IoT Edge モジュールを IoT Hub から IoT Edge デバイスにプッシュします。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 415494fed0870a855a20314816bcebbe22680a98
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434285"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "74457419"
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
 * IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-with-visual-studio-code)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
-* Visual Studio Code 用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)。
+* Visual Studio Code 用の [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
@@ -130,7 +130,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 1. デプロイ マニフェストで構成する IoT Edge デバイスを右クリックします。
 
     > [!TIP]
-    > 選択したデバイスが IoT Edge デバイスであることを確認するには、モジュールの一覧を展開して **$edgeHub** と **$edgeAgent** が存在していることを確認します。 すべての IoT Edge デバイスには、これら 2 つのモジュールが含まれています。
+    > 選択したデバイスが IoT Edge デバイスであることを確認するには、そのデバイスを選択してモジュールの一覧を展開し、 **[$edgeHub]** と **[$edgeAgent]** が存在することを確認します。 すべての IoT Edge デバイスには、これらの 2 つのモジュールが含まれています。
 
 1. **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
@@ -148,6 +148,6 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 モジュールの名前を右クリックして、モジュール ツインを表示および編集します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)の方法を学習します

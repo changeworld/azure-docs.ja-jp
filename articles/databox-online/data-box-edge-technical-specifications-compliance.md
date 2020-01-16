@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326894"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863599"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge の技術仕様
 
@@ -35,7 +35,7 @@ Machine Learning (ML) のシナリオが可能なすべての Data Box Edge デ�
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。| 
+| FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。| 
 
 
 ## <a name="power-supply-unit-specifications"></a>電源装置の仕様
@@ -76,17 +76,17 @@ Data Box Edge デバイスは 2.5 インチ NVMe SSD を 9 個備えており、
 
 |     エンクロージャ     |     mm     |     インチ     |
 |-------------------|---------------------|----------------|
-|    高さ         |    44.45            |    1.75"          |
+|    [高さ]         |    44.45            |    1.75"          |
 |    幅          |    434.1           |    17.09"          |
-|    Length          |    740.4           |    29.15"          |
+|    長さ          |    740.4           |    29.15"          |
 
 次の表に、発送パッケージの寸法を示します (mm およびインチ単位)。
 
 |     Package     |     mm     |     インチ     |
 |-------------------|---------------------|----------------|
-|    高さ         |    311.2            |    12.25"          |
+|    [高さ]         |    311.2            |    12.25"          |
 |    幅          |    642.8          |    25.31"          |
-|    Length          |   1,051.1          |    41.38"          |
+|    長さ          |   1,051.1          |    41.38"          |
 
 ### <a name="enclosure-weight"></a>エンクロージャの重量
 
@@ -135,6 +135,6 @@ Data Box Edge デバイスは 2.5 インチ NVMe SSD を 9 個備えており、
 |    40°C - 45°C (104°F - 113°F)           |    最大温度は、950 m (3,117 ft) より高いところでは、1°C/125 m (1°F/228 ft) の割合で下がります。    |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box Edge をデプロイする](data-box-edge-deploy-prep.md)

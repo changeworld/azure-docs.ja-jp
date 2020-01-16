@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ
+title: Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ (プライベート プレビュー)
 description: Azure Cosmos コンテナー用のトランザクション ストレージと分析ストレージの概要と、その構成オプションについて説明します。
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445400"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ
 
-Azure Cosmos コンテナーは、2 つのストレージ エンジン (トランザクション ストレージ エンジンと更新可能な分析ストレージ エンジン) によって内部的にサポートされます。 どちらのストレージ エンジンも、迅速な更新のためにログ構造化および書き込み最適化がなされています。 ただし、それぞれのエンコード方法は異なります。
+Azure Cosmos コンテナーは、トランザクション ストレージ エンジンと更新可能な分析ストレージ エンジン (プライベート プレビュー) の 2 つのストレージ エンジンによって内部的にサポートされます。 どちらのストレージ エンジンも、迅速な更新のためにログ構造化および書き込み最適化がなされています。 ただし、それぞれのエンコード方法は異なります。
 
 * **トランザクション ストレージ エンジン** – トランザクションの読み取りとクエリの高速化のために行指向形式でエンコードされています。
 
@@ -33,7 +33,7 @@ Azure Cosmos コンテナーは、2 つのストレージ エンジン (トラ�
 |論理パーティション キーあたりの最大ストレージ容量   |   10 GB      |   無制限      |
 |ストレージのエンコード  |   行指向 (内部形式を使用)。   |   列指向 (Apache Parquet 形式を使用)。 |
 |ストレージの場所 |   ローカル/クラスター内 SSD によってサポートされるレプリケートされたストレージ。 |  低コストのリモート/クラスター外 SSD によってサポートされるレプリケートされたストレージ。       |
-|持続性  |    99.99999 (7 から 9 秒)     |  99.99999 (7 から 9 秒)       |
+|Durability  |    99.99999 (7 から 9 秒)     |  99.99999 (7 から 9 秒)       |
 |データにアクセスする API  |   SQL、MongoDB、Cassandra、Gremlin、Tables、etcd。       | Apache Spark         |
 |リテンション期間 (有効期限 (TTL))   |  ポリシーに基づき、`DefaultTimeToLive` プロパティを使用して Azure Cosmos コンテナー上に構成されます。       |   ポリシーに基づき、`ColumnStoreTimeToLive` プロパティを使用して Azure Cosmos コンテナー上に構成されます。      |
 |GB あたりの料金    |   [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
@@ -67,6 +67,6 @@ Azure Cosmos アカウントが単一のリージョンにスコープ指定さ�
 
 トランザクション ワークロードでは、プロビジョニングされたスループット (RU) が消費されます。 トランザクション ワークロードとは異なり、分析ワークロードのスループットは実際の消費量に基づきます。 分析ワークロードでは、オンデマンドでリソースが消費されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の Time to Live](time-to-live.md)

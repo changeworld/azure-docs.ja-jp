@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0d48f3eacad86dac520d837b80605a75cce8cfd5
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451252"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -29,7 +29,7 @@ Azure portal のシリアル コンソールでは、Windows 仮想マシン (VM
 Linux のシリアル コンソールのドキュメントについては、「[Linux 用 Azure シリアル コンソール](serial-console-linux.md)」をご覧ください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されています。 Azure Government や Azure China Cloud では利用できません。
+> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -217,7 +217,7 @@ A. シリアル コンソールのアクセスに関して、おそらく、イ�
 
 A. はい。 「[仮想マシン スケール セット用のシリアル コンソール](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Windows SAC で使用できる CMD および PowerShell コマンドの詳細なガイドについては、「[Windows コマンド -CMD と PowerShell](serial-console-cmd-ps-commands.md)」を参照してください。
 * シリアル コンソールは、[Linux](serial-console-linux.md) VM でも使用できます。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。

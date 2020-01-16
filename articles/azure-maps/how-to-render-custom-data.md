@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559989"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408896"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -22,12 +22,14 @@ ms.locfileid: "74559989"
 
 カスタムのプッシュピン、ラベル、ジオメトリをレンダリングするには、Postman アプリケーションを使用できます。 オーバーレイの格納とレンダリングには、Azure Maps [Data Service API](https://docs.microsoft.com/rest/api/maps/data) を使用できます。
 
+> [!Tip]
+> 多くの場合、静的イメージ サービスを使用するよりも、Azure Maps Web SDK を使用して Web ページ上に単純なマップを表示した方が、ずっとコスト効率に優れています。 Web SDK では、マップタイルを使用します。ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあることに注意してください。 さらに、Azure Maps Web SDK には、静的なマップの Web サービスよりも豊富なデータ視覚化オプションが用意されています。  
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って Azure Maps アカウントを作成し、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従ってアカウントのプライマリ サブスクリプション キーを取得する必要があります。
+この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>ラベルとカスタム画像を使ってプッシュピンをレンダリングする
@@ -205,7 +207,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
     ![カスタム プッシュピンが付いた円をレンダリングする](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 * [Azure Maps Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) のドキュメントを確認します。

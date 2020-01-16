@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422853"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
 
@@ -73,11 +73,14 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 テナントでセキュリティ デフォルトが有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 Exchange ActiveSync は、セキュリティ既定値ではブロックされません。
 
+> [!WARNING]
+> セキュリティ既定値を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
+
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
 組織では、Azure Resource Manager API によって管理される、次のような各種の Azure サービスを使用します。
 
-- Azure ポータル 
+- Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
@@ -89,22 +92,30 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 ユーザーが Multi-Factor Authentication に登録していない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。 Multi-Factor Authentication に登録するための 14 日の期間は提供されません。
 
+> [!NOTE]
+> Azure AD Connect の同期アカウントはセキュリティ既定値から除外されるため、Multi-Factor Authentication の登録または実行を求められることはありません。 組織は、このアカウントを他の目的で使用しないでください。
+
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
 テナントに対するセキュリティ既定値のデプロイに関連したその他の考慮事項を次に示します。
 
-### <a name="older-protocols"></a>古いプロトコル
+### <a name="authentication-methods"></a>認証方法
 
-メール クライアントでは、認証要求に際して古い認証プロトコル (IMAP、SMTP、POP3 など) が使用されます。 これらのプロトコルでは、Multi-Factor Authentication がサポートされていません。 Microsoft が認識しているアカウント侵害のほとんどは、Multi-Factor Authentication をバイパスしようとする、古いプロトコルに対する攻撃によるものです。 
+セキュリティ既定値を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
 
-管理者アカウントへのサインインで確実に Multi-Factor Authentication を要求し、攻撃者がこれをバイパスできないようにするために、セキュリティ既定値では、古いプロトコルから管理者アカウントに対して行われる認証要求がすべてブロックされます。
+|   | セキュリティの既定値 | 条件付きアクセス |
+| --- | --- | --- |
+| モバイル アプリでの通知 | X | X |
+| モバイル アプリからの確認コードまたはハードウェア トークン |   | X |
+| 電話へのテキスト メッセージ |   | X |
+| 電話の呼び出し |   | X |
+| アプリ パスワード |   | X** |
 
-> [!WARNING]
-> この設定を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
+** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
-条件付きアクセスを使用してポリシーを構成し、セキュリティ既定値を使った動作と同じ動作を実現することもできます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティ既定値は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティ既定値を使用できます。
+条件付きアクセスを使用して、セキュリティ既定値に似たポリシーを構成できますが、厳密にはセキュリティ既定値では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティ既定値は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティ既定値を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ![セキュリティ既定値と条件付きアクセスは併用不可であるという警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
@@ -140,6 +151,6 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 1. **[セキュリティの既定値の有効化]** トグルを **[いいえ]** に設定します。
 1. **[保存]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)

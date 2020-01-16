@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB データを検索する
 titleSuffix: Azure Cognitive Search
-description: Azure Cosmos DB のデータ ソースをクロールし、Azure Cognitive Search のフルテキスト検索可能なインデックスにデータを取り込みます。 インデクサーにより、選択したデータ ソース (Azure Cosmos DB など) のデータ インジェストが自動化されます。
+description: Azure Cosmos DB から Azure Cognitive Search での検索可能なインデックスにデータをインポートします。 インデクサーにより、選択したデータ ソース (Azure Cosmos DB など) のデータ インジェストが自動化されます。
 author: mgottein
 manager: nitinme
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 616e5dc5ac6416d2efe1d9338b99c2b400fe572a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/02/2020
+ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977116"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642167"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -173,7 +173,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 
 要求の本文には、次のフィールドを含むデータ ソースの定義が含まれている必要があります。
 
-| フィールド   | 説明 |
+| フィールド   | [説明] |
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `cosmosdb`である必要があります。 |
@@ -257,7 +257,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 | Bool |Edm.Boolean、Edm.String |
 | 整数などの数値 |Edm.Int32、Edm.Int64、Edm.String |
 | 浮動小数点などの数値 |Edm.Double、Edm.String |
-| string |Edm.String |
+| String |Edm.String |
 | プリミティブ型の配列。例: ["a"、"b"、"c"] |Collection(Edm.String) |
 | 日付などの文字列 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |

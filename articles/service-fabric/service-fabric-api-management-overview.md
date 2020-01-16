@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric と API Management の概要 | Microsoft Docs
+title: Azure Service Fabric と API Management の概要
 description: この記事では、Azure API Management を Service Fabric アプリケーションへのゲートウェイとして使用する方法の概要を示します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378112"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
@@ -32,7 +23,7 @@ ms.locfileid: "69900533"
 > [!IMPORTANT]
 > この機能は、必要な仮想ネットワーク サポートのために API Management の **Premium** および **Developer** レベルで使用できます。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 一般的な Service Fabric アーキテクチャでは、HTTP API を公開するバックエンド サービスへの HTTP 呼び出しを行う、単一 ページの Web アプリケーションを使用します。 [Service Fabric getting-started サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)に、このアーキテクチャの例が示されています。
 
@@ -85,7 +76,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
  
 - `fabric:/app/users/<username>`
 
-  各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 例:
+  各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 次に例を示します。
 
   - `/api/users/foo` への要求はサービス インスタンス `fabric:/app/users/foo` にルーティングされる
   - `/api/users/bar` への要求はサービス インスタンス `fabric:/app/users/bar` にルーティングされる
@@ -104,7 +95,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
  
 - `fabric:/app/users/<username>`
 
-  各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 例:
+  各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 次に例を示します。
 
   - `/api/users/foo` への要求はサービス インスタンス `fabric:/app/users/foo` にルーティングされる
   - `/api/users/bar` への要求はサービス インスタンス `fabric:/app/users/bar` にルーティングされる
@@ -113,7 +104,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 ![Service Fabric と Azure API Management のトポロジの概要][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [チュートリアル](service-fabric-tutorial-deploy-api-management.md)に従って最初の Service Fabric クラスターと API Management を設定し、要求が API Management を通じてサービスに流れるようにします。
 

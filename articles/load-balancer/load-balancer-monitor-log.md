@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428846"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965917"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
 
 Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 ログは、イベント ハブまたは Log Analytics ワークスペースにストリーム配信できます。 どのログも Azure Blob Storage から抽出し、Excel や Power BI などのさまざまなツールで表示できます。  各種ログの詳細については、以下の一覧を参照してください。
@@ -32,7 +32,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
 > [!IMPORTANT]
-> Azure Monitor ログは、現在、パブリック Basic ロード バランサーに対してのみ機能します。 ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
+> Azure Monitor ログは、現在、パブリック Basic ロード バランサーに対してのみ機能します。 ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 ## <a name="enable-logging"></a>ログの有効化
 
@@ -57,7 +57,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
     1. **[ストレージ アカウントへのアーカイブ]** の横のチェックボックスをオンにします。
     2. **[構成]** を選択して、 **[ストレージ アカウントの選択]** ウィンドウを開きます。
     3. プルダウン ボックスで、ストレージ アカウントが作成された**サブスクリプション**を選択します。
-    4. プルダウン ボックスの **[ストレージ アカウント]** で、ストレージ アカウントの名前を選択します。 
+    4. プルダウン ボックスの **[ストレージ アカウント]** で、ストレージ アカウントの名前を選択します。
     5. [OK] を選択します。
 
     ### <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
@@ -160,7 +160,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 
 次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
 
-* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md) 」を参照してください。
+* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md) 」を参照してください。
 * **Power BI:** [Power BI](https:// .microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析

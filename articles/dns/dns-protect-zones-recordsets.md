@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211442"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969019"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211442"
 
 DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンはもちろんのこと、DNS レコードが 1 つ削除されただけで、サービス全体が停止する可能性があります。  そのため、DNS ゾーンと DNS レコードは、承認されていない変更や意図しない変更が加えられないように保護する必要があります。
 
-この記事では、Azure DNS でこのような変更から DNS ゾーンおよび DNS レコードを保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能、[ロールベースのアクセス制御](../role-based-access-control/overview.md)と[リソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用します。
+この記事では、Azure DNS でこのような変更から DNS ゾーンおよび DNS レコードを保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能、[ロールベースのアクセス制御](../role-based-access-control/overview.md)と[リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用します。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -158,7 +158,7 @@ azure role create -inputfile <file path>
 
 ## <a name="resource-locks"></a>リソース ロック
 
-Azure Resource Manager は、RBAC に加えて、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 RBAC ルールでは特定のユーザーやグループが行う操作を制御できますが、リソース ロックはリソースに適用され、すべてのユーザーとロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/resource-group-lock-resources.md)を参照してください。
+Azure Resource Manager は、RBAC に加えて、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 RBAC ルールでは特定のユーザーやグループが行う操作を制御できますが、リソース ロックはリソースに適用され、すべてのユーザーとロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
 
 リソースのロックは 2 種類あります｡**CanNotDelete** と **ReadOnly** です。 これらは、DNS ゾーンと個別のレコード セットのいずれかに適用できます。  以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
 
@@ -195,7 +195,7 @@ New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName
 
 ### <a name="protecting-against-zone-deletion"></a>ゾーンの削除に対する保護
 
-Azure DNS ゾーンを削除すると、ゾーン内のレコード セットもすべて削除されます。  削除操作は元に戻すことができません。  誤って重要なゾーンを削除すると、ビジネスに多大な影響を与えるおそれがあります。  そのため、意図せずゾーンが削除されるのを防ぐことが重要です。
+Azure DNS ゾーンを削除すると、ゾーン内のレコード セットもすべて削除されます。  この操作を元に戻すことはできません。  誤って重要なゾーンを削除すると、ビジネスに多大な影響を与えるおそれがあります。  そのため、意図せずゾーンが削除されるのを防ぐことが重要です。
 
 ゾーンに CanNotDelete ロックを適用することで、ゾーンが削除されるのを防止できます。  ただし、ロックは子リソースに継承されるため、ゾーン内のすべてのレコード セットが削除できないようになりますが、この措置が適切でない場合もあります。  また、上記の注で説明したとおり、既存のレコード セットからレコードを削除できるため、効果的な制御方法とは言えません。
 
@@ -214,7 +214,7 @@ New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName
 
 DNS ゾーン保護のための多層防御手法としては、リソースのロックとカスタム ロールという 2 つの方法を同時に使用することも可能です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * RBAC の操作の詳細については、「[Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)」を参照してください。
-* リソース ロックの操作の詳細については、「[Azure Resource Manager によるリソースのロック](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
+* リソース ロックの操作の詳細については、「[Azure Resource Manager によるリソースのロック](../azure-resource-manager/management/lock-resources.md)」を参照してください。

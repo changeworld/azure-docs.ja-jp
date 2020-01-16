@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Docs
 description: StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715291"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931480"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager での MMC メニュー操作の使用
 
@@ -30,7 +30,7 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 * ここから新しいウィンドウ 
 * 更新 
 * リストのエクスポート 
-* [Help] 
+* ヘルプ 
 
 これらの操作は Microsoft 管理コンソール (MMC) の機能であり、StorSimple Snapshot Manager に固有のものではありません。 このチュートリアルでは、これらの操作について説明し、StorSimple Snapshot Manager での各操作の使用方法を示します。
 
@@ -87,7 +87,7 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
    1. **[ファイル名]** ボックスで、CSV ファイルの名前を入力するか、矢印をクリックしてドロップダウン リストから選択します。
    2. **[保存の種類]** ボックスで、矢印をクリックし、ドロップダウン リストからファイルの種類を選択します。
    3. 選択した項目だけを保存するには、行を選択し、 **[選択した行のみ保存]** チェック ボックスをオンにします。 エクスポートされたすべてのリストを保存するには、 **[選択した行のみ保存]** チェック ボックスをオフにします。
-   4. **[Save]** をクリックします。
+   4. **[保存]** をクリックします。
       
       ![リストをコンマ区切り値ファイルとしてエクスポート](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
@@ -98,7 +98,7 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **スコープ** ウィンドウで任意のノードを右クリックするか、またはノードを展開して**結果**ウィンドウの項目を右クリックし、 **[ヘルプ]** をクリックします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 

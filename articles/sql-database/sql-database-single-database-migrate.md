@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820975"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980766"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
@@ -56,7 +56,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 - 転送のパフォーマンスを最大限に高めるために、予算が許す限り最も高いサービス レベルとコンピューティング サイズを選択する。 移行の完了後にスケールダウンすることでコストを削減できます。
 - BACPAC ファイルと移行先のデータ センターの間の距離を最短にする。
 - 移行中の自動統計を無効にする。
-- テーブルとインデックスをパーティション分割する。
+- パーティション テーブルとパーティション インデックス
 - インデックス付きビューを削除し、完了したら作成し直す。
 - ほとんど照会されない履歴データを別のデータベースに移動し、この履歴データを別の Azure SQL データベースに移行する。 その後、この履歴データは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して照会できます。
 
@@ -84,14 +84,14 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
 1. ディストリビューションの設定
    - [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
-   - [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+   - [Transact-SQL の使用](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
 
 2. パブリケーションの作成
    - [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
-   - [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+   - [Transact-SQL の使用](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
 3. サブスクリプションの作成
    - [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
-   - [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+   - [Transact-SQL の使用](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
 SQL Database への移行に関するヒントと相違点
 
@@ -107,9 +107,9 @@ SQL Database への移行に関するヒントと相違点
 ソース データベースの SQL Server のバージョンと移行するデータベースの複雑さに応じて、さまざまな互換性の問題が発生する可能性があります。 SQL Server のバージョンが古いほど、互換性の問題が多く発生します。 任意の検索エンジンを使用する対象のインターネット検索に加え、以下のリソースを使用します。
 
 - [SQL Server database features not supported in Azure SQL Database (Azure SQL Database でサポートされない SQL Server データベースの機能)](sql-database-transact-sql-information.md)
-- [Discontinued Database Engine Functionality in SQL Server 2016 (SQL Server 2016 で廃止されたデータベース エンジンの機能)](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [Discontinued Database Engine Functionality in SQL Server 2014 (SQL Server 2014 で廃止されたデータベース エンジンの機能)](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [Discontinued Database Engine Functionality in SQL Server 2012 (SQL Server 2012 で廃止されたデータベース エンジンの機能)](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
+- [SQL Server 2016 で廃止されたデータベース エンジンの機能](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
+- [SQL Server 2014 で廃止されたデータベース エンジンの機能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
+- [SQL Server 2012 で廃止されたデータベース エンジンの機能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
 - [Discontinued Database Engine Functionality in SQL Server 2008 R2 (SQL Server 2008 R2 で廃止されたデータベース エンジンの機能)](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 で廃止されたデータベース エンジンの機能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
@@ -118,10 +118,10 @@ SQL Database への移行に関するヒントと相違点
 > [!IMPORTANT]
 > SQL Database Managed Instance を使用すると、互換性の問題をゼロまたは最小限に抑えながら、既存の SQL Server インスタンスとそのデータベースを移行できます。 「[What is an Managed Instance](sql-database-managed-instance.md)」(マネージド インスタンスとは) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure SQL EMEA Engineers のブログにあるスクリプトを使用して、[移行中の tempdb の使用状況を監視](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/)します。
-- Azure SQL EMEA Engineers のブログにあるスクリプトを使用して、[移行中にデータベースのトランザクション ログ領域を監視](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0)します。
+- Azure SQL EMEA Engineers のブログにあるスクリプトを使用して、[移行中にデータベースのトランザクション ログ領域を監視](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database)します。
 - BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。
 - 移行後に UTC 時間で作業する方法については、[ローカル タイム ゾーンの既定のタイム ゾーンの変更](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/)に関する記事を参照してください。
 - 移行後にデータベースの既定の言語を変更する方法については、[Azure SQL Database の既定の言語を変更する方法](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/)に関する記事を参照してください。

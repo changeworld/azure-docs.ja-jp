@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e379e67fb733c968a755afd245d079239f559c89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677895"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751409"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
 
@@ -29,16 +29,16 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
 メトリックとは、ポータルでパフォーマンス カウンターを表示できるようにする特定の Azure リソース用の機能です。 利用可能な Front Door メトリックは次のとおりです。
 
-| メトリック | メトリックの表示名 | 単位 | Dimensions | 説明 |
+| メトリック | メトリックの表示名 | ユニット | Dimensions | [説明] |
 | --- | --- | --- | --- | --- |
 | RequestCount | 要求数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door によって処理されるクライアント要求の数。  |
-| RequestSize | 要求サイズ | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door にクライアントからの要求として送信されたバイト数。 |
-| ResponseSize | 応答サイズ | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | クライアントに Front Door からの応答として送信されたバイト数。 |
+| RequestSize | 要求サイズ | バイト | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door にクライアントからの要求として送信されたバイト数。 |
+| ResponseSize | 応答サイズ | バイト | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | クライアントに Front Door からの応答として送信されたバイト数。 |
 | TotalLatency | 合計待機時間 | ミリ秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door によってクライアント要求が受信されてから、Front Door からの最後の応答バイトがクライアントで確認されるまでの算出時間。 |
 | BackendRequestCount | バックエンド要求数 | Count | HttpStatus</br>HttpStatusGroup</br>バックエンド | バックエンドに Front Door から送信された要求の数。 |
 | BackendRequestLatency | バックエンド要求の待機時間 | ミリ秒 | バックエンド | Front Door によってバックエンドに要求が送信されてから、Front Door でバックエンドから最後の応答バイトが受信されるまでの算出時間。 |
 | BackendHealthPercentage | バックエンドの正常性の割合 | Percent | バックエンド</br>BackendPool | Front Door からバックエンドへの成功した正常性プローブの割合。 |
-| WebApplicationFirewallRequestCount | Web アプリケーション ファイアウォール要求の数 | Count | PolicyName</br>RuleName</br>Action | Front Door のアプリケーション レイヤー セキュリティによって処理されたクライアント要求の数。 |
+| WebApplicationFirewallRequestCount | Web アプリケーション ファイアウォール要求の数 | Count | PolicyName</br>RuleName</br>アクション | Front Door のアプリケーション レイヤー セキュリティによって処理されたクライアント要求の数。 |
 
 ## <a name="activity-log"></a>アクティビティ ログ
 
@@ -59,7 +59,7 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 ## <a name="diagnostic-logging"></a>診断ログ
 診断ログは、監査やトラブルシューティングにとって重要な操作とエラーに関する豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。
 
-アクティビティ ログは、Azure リソースに対して行われた操作に関する分析情報を提供します。 診断ログは、自分のリソースが実行した操作に関する分析情報を提供します。 詳細については、[Azure Monitor の診断ログ](../azure-monitor/platform/resource-logs-overview.md)に関するドキュメントを参照してください。
+アクティビティ ログは、Azure リソースに対して行われた操作に関する分析情報を提供します。 診断ログは、自分のリソースが実行した操作に関する分析情報を提供します。 詳細については、[Azure Monitor の診断ログ](../azure-monitor/platform/platform-logs-overview.md)に関するドキュメントを参照してください。
 
 ![診断ログ](./media/front-door-diagnostics/diagnostic-log.png)
 
@@ -73,7 +73,7 @@ Front Door Service の診断ログを構成するには:
 
 現在、Front Door Service は診断ログ (1 時間ごとにバッチ処理) を提供しています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
 
-| プロパティ  | 説明 |
+| プロパティ  | [説明] |
 | ------------- | ------------- |
 | ClientIp | 要求を行ったクライアントの IP アドレス。 |
 | ClientPort | 要求を行ったクライアントの IP アドレス。 |
@@ -90,7 +90,7 @@ Front Door Service の診断ログを構成するには:
 | UserAgent | クライアントで使用されたブラウザーの種類 |
 | TrackingReference | Front Door によって提供された要求を識別する一意の参照文字列。X-Azure-Ref ヘッダーとしてクライアントにも送信されます。 アクセス ログで特定の要求の詳細を検索するために必要です。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Front Door プロファイルの作成](quickstart-create-front-door.md)
 - [Front Door のしくみ](front-door-routing-architecture.md)

@@ -3,8 +3,8 @@ title: SendGrid 電子メール サービスの使用方法 (.NET) | Microsoft D
 description: Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは C# で記述され、.NET API を使用しています。
 services: ''
 documentationcenter: .net
-author: thinkingserious
-manager: erikre
+author: georgewallace
+ms.author: erikre
 editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: erikre
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: c3211ba9f8a8b16ad4372c82d8e50c46f3ad6897
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: be1644fe6b6a44edf7fad5cbbd8e3b8971ad02e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463572"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
@@ -101,7 +100,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
 
 電子メールを送信するには、SendGrid API キーを指定する必要があります。 API キーを構成する方法の詳細については、SendGrid の API キーの[ドキュメント][documentation]を参照してください。
 
-これらの資格情報は、Azure Portal で [アプリケーションの設定] をクリックし、アプリケーションの設定にキーと値のペアを追加することによって保存できます。
+これらの資格情報は、アプリ設定で [アプリケーションの設定] をクリックし、キーと値のペアを追加することによって Azure portal 経由で格納できます。
 
  ![Azure app settings][azure_app_settings]
 
@@ -251,7 +250,7 @@ SendGrid では、電子メール設定と追跡設定を使用することで�
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
 SendGrid のいくつかの API と webhook を使用して、Azure アプリケーション内でその他の機能を利用することができます。 詳細については、[SendGrid API のリファレンス][SendGrid API documentation]を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * SendGrid C\# ライブラリ レポート: [sendgrid-csharp][sendgrid-csharp]

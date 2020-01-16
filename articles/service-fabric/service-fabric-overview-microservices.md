@@ -1,25 +1,14 @@
 ---
-title: Azure でのマイクロサービスの概要 | Microsoft Docs
+title: Azure でのマイクロサービスの概要
 description: マイクロサービスでクラウド アプリケーションを構築することが現代のアプリケーション開発にとって重要である理由と Azure Service Fabric がそれを達成するためのプラットフォームを提供するしくみの概要
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5bcb52165c7cae18b807eff03c80b51eae8e2717
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466325"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法を使用してアプリケーションを構築する理由は何ですか。
 
@@ -198,7 +187,7 @@ Service Fabric では、既存のコードを再利用し、新しいマイク�
 Service Fabric の目的は、マイクロサービス アプリケーションの構築の複雑性を減らすことです。複雑性が減れば、多くのコストがかかる再設計を繰り返す必要がなくなります。 そのため、小規模なものから始めて、必要に応じて拡張し、サービスを廃止したり、新しいサービスを追加したりしながら、お客様の利用状況に合わせて進化する手法がとられています。 大部分の開発者にマイクロサービスをよりわかりやすくするために解決する必要がある問題がまだ多く残っていることもわかっています。 その方向に向かう小さなステップとして、コンテナーとアクター プログラミング モデルの例があります。 さらに多くのイノベーションが登場し、マイクロサービスのアプローチが簡単になることを確信しています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [マイクロサービス:クラウドによって実現されるアプリケーションの革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure アーキテクチャ センター: Azure でのマイクロサービスの構築](https://docs.microsoft.com/azure/architecture/microservices/)

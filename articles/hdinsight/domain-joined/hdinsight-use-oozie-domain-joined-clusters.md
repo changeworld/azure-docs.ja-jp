@@ -1,23 +1,24 @@
 ---
 title: Apache Oozie ワークフローとエンタープライズ セキュリティ - Azure HDInsight
 description: Azure HDInsight Enterprise セキュリティ パッケージを使用して Apache Oozie ワークフローをセキュリティで保護します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,seodec18
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.openlocfilehash: 03826d1005253c408374ea4c78266eef97aab2aa
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/09/2019
+ms.openlocfilehash: ce51923dbc6f909adad1df5a8c0bcd0723371970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435830"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
 Apache Oozie は Apache Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
+
 - Apache MapReduce
 - Apache Pig
 - Apache Hive
@@ -27,33 +28,37 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 ## <a name="prerequisite"></a>前提条件
 
-- Enterprise セキュリティ パッケージ (ESP) を使用する Azure HDInsight Hadoop クラスター。 [ESP を使用した HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
+Enterprise セキュリティ パッケージ (ESP) を使用する Azure HDInsight Hadoop クラスター。 [ESP を使用した HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 
-    > [!NOTE]  
-    > ESP を使用していないクラスター上で Oozie を使用するための手順について詳しくは、[Linux ベースの Azure HDInsight での Apache Oozie ワークフローの使用](../hdinsight-use-oozie-linux-mac.md)に関するページをご覧ください。
+> [!NOTE]  
+> ESP を使用していないクラスター上で Oozie を使用する方法の手順について詳しくは、[Linux ベースの Azure HDInsight での Apache Oozie ワークフローの使用](../hdinsight-use-oozie-linux-mac.md)に関するページをご覧ください。
 
 ## <a name="connect-to-an-esp-cluster"></a>ESP クラスターに接続する
 
 Secure Shell (SSH) の詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-1. SSH を使って HDInsight クラスターに接続します。  
-   ```bash
-   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
-   ```
+1. SSH を使って HDInsight クラスターに接続します。
 
-2. Kerberos 認証が成功したかどうかを確認するには、`klist` コマンドを使用します。 そうでない場合は、`kinit` を使用して Kerberos 認証を開始します。
+    ```bash
+    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+    ```
 
-3. Azure Data Lake Storage にアクセスするために必要な OAuth トークンを登録するには、HDInsight ゲートウェイにサインインします。   
-     ```bash
-     curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
-     ```
+1. Kerberos 認証が成功したかどうかを確認するには、`klist` コマンドを使用します。 そうでない場合は、`kinit` を使用して Kerberos 認証を開始します。
+
+1. Azure Data Lake Storage にアクセスするために必要な OAuth トークンを登録するには、HDInsight ゲートウェイにサインインします。
+
+    ```bash
+    curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
+    ```
 
     **200 OK** の状態応答コードは、登録の成功を示します。 承認されていない応答 (401 など) が受信された場合は、ユーザー名とパスワードを確認します。
 
 ## <a name="define-the-workflow"></a>ワークフローの定義
+
 Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (hPDL) を使って記述します。 hPDL は XML プロセス定義言語です。 次の手順に従ってワークフローを定義します。
 
 1. ドメイン ユーザーのワークスペースを設定します。
+
    ```bash
    hdfs dfs -mkdir /user/<DomainUser>
    cd /home/<DomainUserPath>
@@ -61,17 +66,20 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
+
    `DomainUser` をドメイン ユーザー名に置き換えます。
    `DomainUserPath` をドメイン ユーザーのホーム ディレクトリのパスに置き換えます。
    `ClusterVersion` を実際のクラスター データ プラットフォームのバージョンに置き換えます。
 
 2. 次のステートメントを使用して、新しいファイルを作成し、編集します。
+
    ```bash
    nano workflow.xml
    ```
 
 3. nano エディターが開いたら、ファイルの内容として次の XML を入力します。
-   ```xml
+
+    ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -166,19 +174,21 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
        </kill>
        <end name="end" />
     </workflow-app>
-   ```
-4. `clustername` をクラスターの名前に置き換えます。 
+    ```
 
-5. ファイルを保存するには、Ctrl + X キーを押します。 「 `Y` 」を入力します。 次に、**Enter** キーを押します。
+4. `clustername` をクラスターの名前に置き換えます。
+
+5. ファイルを保存するには、**Ctrl + X** キーを押します。 「**Y**」と入力します。次に、**Enter** キーを押します。
 
     このワークフローは、次の 2 つの部分に分かれています。
-   * **資格情報セクション:** このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
+
+   - **資格情報。** このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
 
      この例では、Hive アクション用の認証を使用します。 詳細については、[アクションの認証](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)に関するページを参照してください。
 
      資格情報サービスでは、Oozie アクションが、Hadoop サービスにアクセスするためのユーザーを偽装することが許可されます。
 
-   * **アクション セクション:** このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
+   - **アクション。** このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
 
      - map-reduce アクションは、集計された単語数を出力する、map-reduce 用の Oozie パッケージにある例を実行します。
 
@@ -187,9 +197,10 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
      Hive アクションは、アクション要素内のキーワード `cred` を使用して、認証用の資格情報セクションで定義されている資格情報を使用します。
 
 6. 次のコマンドを使用して、`workflow.xml` ファイルを `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` にコピーします。
-     ```bash
+
+    ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
-     ```
+    ```
 
 7. `domainuser` をドメインのユーザー名に置き換えます。
 
@@ -197,33 +208,33 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
 
 1. 次のステートメントを使用して、ジョブ プロパティのための新しいファイルを作成および編集します。
 
-   ```bash
-   nano job.properties
-   ```
+    ```bash
+    nano job.properties
+    ```
 
 2. nano エディターが開いたら、ファイルの内容として次の XML を使います。
 
-   ```bash
-       nameNode=adl://home
-       jobTracker=headnodehost:8050
-       queueName=default
-       examplesRoot=examples
-       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-       oozie.use.system.libpath=true
-       user.name=[domainuser]
-       jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-       jdbcURL=[jdbcurlvalue]
-       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-   ```
+    ```bash
+    nameNode=adl://home
+    jobTracker=headnodehost:8050
+    queueName=default
+    examplesRoot=examples
+    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+    oozie.use.system.libpath=true
+    user.name=[domainuser]
+    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
+    jdbcURL=[jdbcurlvalue]
+    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+    ```
 
-   * プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
-   * `domainuser` をドメインのユーザー名に置き換えます。  
-   * `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
-   * `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。      
-   * ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+   - プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
+   - `domainuser` をドメインのユーザー名に置き換えます。  
+   - `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
+   - `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。
+   - ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
 
    このプロパティ ファイルは、Oozie ジョブの実行時にローカルに存在する必要があります。
 
@@ -233,38 +244,44 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
 
 ### <a name="hive-server-1-file"></a>Hive server 1 のファイル
 
-1.  Hive server 1 アクション用のファイルを作成して編集します。
+1. Hive server 1 アクション用のファイルを作成して編集します。
+
     ```bash
     nano countrowshive1.hql
     ```
 
-2.  スクリプトを作成します。
+2. スクリプトを作成します。
+
     ```sql
-    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  ファイルを Apache Hadoop 分散ファイル システム (HDFS) に保存します。
+3. ファイルを Apache Hadoop 分散ファイル システム (HDFS) に保存します。
+
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
 ### <a name="hive-server-2-file"></a>Hive server 2 のファイル
 
-1.  Hive server 2 アクション用のファイルを作成して編集します。
+1. Hive server 2 アクション用のファイルを作成して編集します。
+
     ```bash
     nano countrowshive2.hql
     ```
 
-2.  スクリプトを作成します。
+2. スクリプトを作成します。
+
     ```sql
     INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     select devicemodel from hivesampletable limit 2;
     ```
 
-3.  ファイルを HDFS に保存します。
+3. ファイルを HDFS に保存します。
+
     ```bash
     hdfs dfs -put countrowshive2.hql countrowshive2.hql
     ```
@@ -276,39 +293,38 @@ ESP クラスターの Oozie ジョブの送信は、非 ESP クラスター内�
 詳細については、「[Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)」を参照してください。
 
 ## <a name="results-from-an-oozie-job-submission"></a>Oozie ジョブの送信の結果
+
 Oozie ジョブはユーザーの代わりに実行されます。 そのため、Apache Hadoop YARN と Apache Ranger の両方の監査ログには、これらのジョブが偽装されたユーザーとして実行されたことが示されています。 Oozie ジョブのコマンド ライン インターフェイス出力は次のコードのようになります。
 
+```output
+Job ID : 0000015-180626011240801-oozie-oozi-W
+------------------------------------------------------------------------------------------------
+Workflow Name : map-reduce-wf
+App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
+Status        : SUCCEEDED
+Run           : 0
+User          : alicetest
+Group         : -
+Created       : 2018-06-26 19:25 GMT
+Started       : 2018-06-26 19:25 GMT
+Last Modified : 2018-06-26 19:30 GMT
+Ended         : 2018-06-26 19:30 GMT
+CoordAction ID: -
 
-
-```bash
-    Job ID : 0000015-180626011240801-oozie-oozi-W
-    ------------------------------------------------------------------------------------------------
-    Workflow Name : map-reduce-wf
-    App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
-    Status        : SUCCEEDED
-    Run           : 0
-    User          : alicetest
-    Group         : -
-    Created       : 2018-06-26 19:25 GMT
-    Started       : 2018-06-26 19:25 GMT
-    Last Modified : 2018-06-26 19:30 GMT
-    Ended         : 2018-06-26 19:30 GMT
-    CoordAction ID: -
-    
-    Actions
-    ------------------------------------------------------------------------------------------------
-    ID                      Status  Ext ID          ExtStatus   ErrCode
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
-    -----------------------------------------------------------------------------------------------
+Actions
+------------------------------------------------------------------------------------------------
+ID                      Status  Ext ID          ExtStatus   ErrCode
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+-----------------------------------------------------------------------------------------------
 ```
 
 Hive server 2 アクションの Ranger 監査ログには、Oozie がユーザーに代わってアクションを実行したことが示されています。 Ranger や YARN のビューは、クラスター管理者にのみ表示されます。
@@ -329,6 +345,7 @@ Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する
 
 2. [Oozie Web UI](../hdinsight-use-oozie-linux-mac.md) の手順に従ってエッジ ノードへの SSH トンネリングを有効にし、Web UI にアクセスします。
 
-## <a name="next-steps"></a>次の手順
-* [Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)。
-* [SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+## <a name="next-steps"></a>次のステップ
+
+- [Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)。
+- [SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

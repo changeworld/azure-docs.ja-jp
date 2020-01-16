@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: af181291ca9dd748b587266c97f32fa3fb64242e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838597"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894643"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "73838597"
 
 次のサポート ソースを確認します。
 
-+ **Azure ユーザー向けテクニカル サポート**:Azure portal による[サポート要求の作成と管理](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
++ **Azure ユーザー向けテクニカル サポート**:Azure portal による[サポート要求の作成と管理](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 + **ユーザー フォーラム**:[MSDN の Azure Machine Learning Studio (クラシック) サポート フォーラム](https://aka.ms/aml-forum-studio)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 05dea50daabb37fbaa38c29e9267e7ff06e27a2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827208"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980957"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure で運用可能なセキュリティのチェックリスト
 Azure でのアプリケーションのデプロイは、すばやく簡単に、高いコスト効率で行うことができます。 運用環境にクラウド アプリケーションをデプロイする前に、検討する必須および推奨の運用上のセキュリティ アクションの一覧に照らしてアプリケーションを評価する際に役立つチェックリストがあると便利です。
@@ -37,10 +37,10 @@ Azure では、アプリケーションのデプロイに使用できるイン�
 
 このチェックリストは、Azure に高度なエンタープライズ アプリケーションをデプロイするときにさまざまな運用上のセキュリティについて検討する企業を支援するためのものです。 組織がセキュリティで保護されたクラウド移行と運用の戦略を構築する際にも使用できます。
 
-|チェックリストのカテゴリ| 説明|
+|チェックリストのカテゴリ| [説明]|
 | ------------ | -------- |
 | [<br>セキュリティ ロールとアクセス制御](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てるために使用するユーザーの仕様を提供します。</li></ul> |
-| [<br>データの収集と保存](../../storage/common/storage-security-guide.md)|<ul><li>管理プレーンのセキュリティを使用して、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) でストレージ アカウントを保護します。</li><li>データ プレーンのセキュリティを使用して、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) と Stored Access Policy でデータへのアクセスを保護します。</li><li>転送レベルの暗号化の使用 - HTTPS と、[Azure ファイル共有](../../storage/files/storage-dotnet-how-to-use-files.md)用の [SMB (サーバー メッセージ ブロック プロトコル) 3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) で使用される暗号化を使用します。</li><li>[クライアント側の暗号化](../../storage/common/storage-client-side-encryption.md)を使用して、暗号化キーを単独で制御する必要がある場合にストレージ アカウントに送信するデータを保護します。 </li><li>[Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して Azure Storage 内のデータを自動的に暗号化し、[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用してOS とデータ ディスクの仮想マシン ディスク ファイルを暗号化します。</li><li>Azure [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) を使用して承認の種類を監視します。Blob Storage の場合と同様に、ユーザーが Shared Access Signature またはストレージ アカウント キーを使用していたかどうかを確認できます。</li><li>[クロス オリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) を使用して、別のドメインからストレージ リソースにアクセスします。</li></ul> |
+| [<br>データの収集と保存](../../storage/blobs/security-recommendations.md)|<ul><li>管理プレーンのセキュリティを使用して、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) でストレージ アカウントを保護します。</li><li>データ プレーンのセキュリティを使用して、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) と Stored Access Policy でデータへのアクセスを保護します。</li><li>転送レベルの暗号化の使用 - HTTPS と、[Azure ファイル共有](../../storage/files/storage-dotnet-how-to-use-files.md)用の [SMB (サーバー メッセージ ブロック プロトコル) 3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) で使用される暗号化を使用します。</li><li>[クライアント側の暗号化](../../storage/common/storage-client-side-encryption.md)を使用して、暗号化キーを単独で制御する必要がある場合にストレージ アカウントに送信するデータを保護します。 </li><li>[Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して Azure Storage 内のデータを自動的に暗号化し、[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用してOS とデータ ディスクの仮想マシン ディスク ファイルを暗号化します。</li><li>Azure [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) を使用して承認の種類を監視します。Blob Storage の場合と同様に、ユーザーが Shared Access Signature またはストレージ アカウント キーを使用していたかどうかを確認できます。</li><li>[クロス オリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) を使用して、別のドメインからストレージ リソースにアクセスします。</li></ul> |
 |[<br>セキュリティ ポリシーと推奨事項](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>[Azure Security Center](../../security-center/security-center-install-endpoint-protection.md) を使用して、エンドポイント ソリューションをデプロイします。</li><li>[Web アプリケーション ファイアウォール (WAF)](../../application-gateway/waf-overview.md) を追加して Web アプリケーションを保護します。</li><li>   Microsoft パートナーの[ファイアウォール](../../sentinel/connect-data-sources.md)を使用し、セキュリティ保護を強化します。 </li><li>Azure サブスクリプションのセキュリティ連絡先の詳細を適用します。[Microsoft Security Response Center (MSRC)](https://technet.microsoft.com/security/dn528958.aspx) は、顧客データが違法または承認されていないパーティによってアクセスされたことを検出すると、ユーザーに連絡します。</li></ul> |
 | [<br>ID およびアクセス管理](identity-management-best-practices.md)|<ul><li>[Azure AD を使用して、オンプレミスのディレクトリとクラウドのディレクトリを同期します](../../active-directory/hybrid/whatis-hybrid-identity.md)。</li><li>[シングル サインオン](https://azure.microsoft.com/resources/videos/overview-of-single-sign-on/)を使用して、ユーザーは、Azure AD 内の組織アカウントに基づいて SaaS アプリケーションにアクセスできます。</li><li>[パスワード リセット登録アクティビティ](../../active-directory/active-directory-passwords-reporting.md) レポートを使用して、登録しているユーザーを監視します。</li><li>ユーザーの[多要素認証 (MFA)](../../active-directory/authentication/multi-factor-authentication.md) を有効にします。</li><li>開発者は、[Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/download/details.aspx?id=12379) などのセキュリティで保護された ID 機能をアプリに使用します。</li><li>Azure AD Premium の異常レポートと [Azure AD Identity Protection 機能](../../active-directory/identity-protection/overview.md)を使用して、不審なアクティビティを能動的に監視します。</li></ul> |
 |[<br>継続的なセキュリティの監視](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Malware Assessment ソリューションである [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md)を使用して、お使いのインフラストラクチャ内のマルウェア対策保護の状態についてレポートします。</li><li>[更新プログラムのアセスメント](../../automation/automation-update-management.md)を使用して、潜在的なセキュリティの問題に全体でどの程度さらされているか、これらの更新プログラムが環境にとって重要かどうか、その重要度はどの程度かを判断します。</li><li>[ID とアクセス](../../security-center/security-center-monitoring.md)はユーザーの概要を提供します。 </li><ul><li>ユーザー ID の状態、</li><li>サインイン試行に失敗した回数、</li><li> これらの試行中に使用されたユーザーのアカウント、ロックアウトされたアカウント</li> <li>パスワードが変更またはリセットされたアカウント </li><li>現在ログインしているアカウントの数。</li></ul></ul> |
@@ -51,7 +51,7 @@ Azure では、アプリケーションのデプロイに使用できるイン�
 ## <a name="conclusion"></a>まとめ
 多くの組織は、Azure にクラウド アプリケーションをうまくデプロイし、運用してきました。 提供しているチェックリストでは、デプロイの成功とストレスのない運用の可能性を高めるのに役立ついくつかの基本的なチェックリストを強調しています。 Azure での既存および新規のアプリケーション デプロイでは、これらの運用と戦略を検討することを強くお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 セキュリティの詳細については、次の記事を参照してください。
 
 - [設計および運用面のセキュリティ](https://www.microsoft.com/trustcenter/security/designopsecurity)。

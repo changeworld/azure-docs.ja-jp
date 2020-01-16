@@ -2,18 +2,18 @@
 title: Shared Image Gallery を使用してカスタム プールを作成する - Azure Batch | Microsoft Docs
 description: Shared Image Gallery を使用して Batch プールを作成し、アプリケーションに必要なソフトウェアとデータを含むカスタム イメージをコンピューティング ノードにプロビジョニングします。 カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: lahugh
-ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827915"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029652"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Shared Image Gallery を使用してカスタム プールを作成する
 
@@ -150,6 +150,6 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 * **サイズ変更のタイムアウト。** プールに含まれるノード数が固定の場合 (自動スケーリングしない場合) は、プールのサイズに応じてプールの `resizeTimeout` プロパティの値を大きくしてください。 サイズ変更のタイムアウトの推奨値は、VM 1000 個ごとに最短で 15 分です。 たとえば、2000 個の VM があるプールの場合、サイズ変更のタイムアウトの推奨値は最短で 30 分です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。

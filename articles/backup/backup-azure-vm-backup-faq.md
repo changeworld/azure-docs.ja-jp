@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172557"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680530"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -23,7 +23,7 @@ VM を作成するとき、[サポートされているオペレーティング 
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。
 
-No. バックアップのコストは VM のコストとは別です。 [Azure Backup の価格については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
+いいえ。 バックアップのコストは VM のコストとは別です。 [Azure Backup の価格については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>VM のバックアップを有効にするにはどのアクセス許可が必要ですか。
 
@@ -43,7 +43,7 @@ Recovery Services コンテナーと VM が異なるリソース グループに
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>オンデマンド バックアップ ジョブのリテンション期間のスケジュールは、スケジュールされたバックアップと同じですか。
 
-No. オンデマンド バックアップ ジョブのリテンション期間を指定してください。 ポータルからトリガーした場合、既定では 30 日間保存されます。
+いいえ。 オンデマンド バックアップ ジョブのリテンション期間を指定してください。 ポータルからトリガーした場合、既定では 30 日間保存されます。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>最近いくつかの VM で Azure Disk Encryption を有効にしました。 既存のバックアップは今後も正常に機能しますか。
 
@@ -93,7 +93,7 @@ RPO が 15 分の SAP HANA バックアップに対するプライベート プ�
 
 Azure Virtual Machine のバックアップ ポリシーでは、最小リテンション期間の範囲として 7 日から 9999 日までがサポートされています。 7 日間未満に設定された既存の VM バックアップ ポリシーを変更するには、7 日間という最小リテンション期間の範囲を満たすように更新する必要があります。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>ディスクのみを復元するか、VM 全体を復元するかは、どのように判断すればよいでしょうか。
 
@@ -111,16 +111,9 @@ VM の復元は、Azure VM 用の簡易的な作成オプションと考えて�
 
 はい。ディスクをアンマネージドからマネージドに移行する前に作成したバックアップを使用できます。
 
-- 既定では、VM 復元ジョブによって、アンマネージド VM が作成されます。
-- ただし、ディスクを復元して、それをマネージド VM の作成に使用することもできます。
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>VM がマネージド ディスクに移行されたときよりも前の復元ポイントにその VM を復元するには、どうすればよいですか。
 
-既定では、VM の復元ジョブでは、アンマネージド ディスクで VM が作成されます。 マネージド ディスクで VM を作成するには、次の手順に従います。
-
-1. [アンマネージド ディスクに復元します](tutorial-restore-disk.md#restore-a-vm-disk)。
-2. [復元したディスクをマネージド ディスクに変換します](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)。
-3. [マネージド ディスクで VM を作成します](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
+復元プロセスは同じままです。 復旧ポイントが VM にアンマネージド ディスクが存在していた時点のものである場合は、[ディスクをアンマネージドとして復元](tutorial-restore-disk.md#unmanaged-disks-restore)できます。 その時点で VM にマネージド ディスクが存在していた場合は、[ディスクをマネージド ディスクとして復元](tutorial-restore-disk.md#managed-disk-restore)できます。 その後、[これらのディスクから VM を作成](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)できます。
 
 PowerShell でこれを行う方法の詳細については、[こちら](backup-azure-vms-automation.md#restore-an-azure-vm)をご覧ください。
 
@@ -138,7 +131,7 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>暗号化された VM のキー コンテナーの設定を変更するとどうなりますか。
 
-暗号化された VM の KeyVault の設定を変更した後、バックアップは引き続き、新しい一連の詳細設定で動作します。 ただし、その変更の前の復旧ポイントからの復元の後、それから VM を作成するには、その前に KeyVault 内のシークレットを復元する必要があります。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください
+暗号化された VM の KeyVault の設定を変更した後、バックアップは引き続き、新しい一連の詳細設定で動作します。 ただし、その変更の前の復旧ポイントからの復元の後、それから VM を作成するには、その前に KeyVault 内のシークレットを復元する必要があります。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください。
 
 シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じ KeyVault を使用できます。
 

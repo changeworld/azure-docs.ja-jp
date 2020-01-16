@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443443"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>マイ アプリ (プレビュー) ポータルでワークスペースを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "73199828"
    ![ユーザー プレビュー機能](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> ユーザーがマイ アプリ ポータルを開くには、リンク `https://myapps.microsoft.com` または組織用にカスタマイズされたリンク (`https://myapps.microsoft.com/contoso.com` など) を使用できます。 マイ アプリ プレビュー バージョンにリダイレクトされない場合、ユーザーは `https://myapplications.microsoft.com` または `https://myapplications.microsoft.com/contoso.com` を試す必要があります。
+> ユーザーがマイ アプリ ポータルを開くには、リンク `https://myapps.microsoft.com` または組織用にカスタマイズされたリンク (`https://myapps.microsoft.com/contoso.com` など) を使用できます。 新しいマイ アプリ エクスペリエンスを有効にすると、[マイ アプリ] ページの上部に **[An updated My Applications experience is available]\(更新されたマイ アプリケーション エクスペリエンスが利用可能\)** バナーが表示され、ユーザーは **[Try it]\(試す\)** を選択して新しいエクスペリエンスを表示できます。 新しいエクスペリエンスの使用をやめるには、そのページの上部にある **[Leave new experience]\(新しいエクスペリエンスを使用しない\)** バナーの **[はい]** を選択します。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -98,6 +98,15 @@ ms.locfileid: "73199828"
 
    ![ユーザーとグループにロールを割り当てる](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>マイ アカウント ページのサポートを受ける
 
-## <a name="next-steps"></a>次の手順
+[マイアプリ] ページで、ユーザーは **[マイ アカウント]**  >  **[マイ アカウントの表示]** を選択して自分のアカウントの設定を開くことができ ます。 Azure AD の **[マイ アカウント]** ページで、ユーザーは自分のセキュリティ情報、デバイス、パスワードなどを管理できます。 また、Office アカウントの設定にアクセスすることもできます。
+
+Azure AD アカウントのページや Office アカウントのページの問題についてサポート リクエストを送信する必要がある場合は、次の手順に従ってリクエストが適切にルーティングされるようにしてください。 
+
+* Azure AD の **[マイ アカウント]** ページの問題については、Azure portal 内からサポート リクエストを開いてください。 **[Azure portal]**  >  **[Azure Active Directory]**  >  **[新しいサポート リクエスト]** に移動します。
+
+* Office の **[マイ アカウント]** ページの問題については、Microsoft 365 管理センター内からサポート リクエストを開いてください。 **[Microsoft 365 管理センター]**  >  **[サポート]** に移動します。 
+
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションのエンドユーザー エクスペリエンス](end-user-experiences.md)

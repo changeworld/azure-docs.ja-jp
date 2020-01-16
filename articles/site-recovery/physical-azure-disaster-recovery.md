@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936179"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980308"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
-[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミス マシンと Azure Virtual Machines (VM) のレプリケーション、フェールオーバー、フェールバックを管理し、調整することでディザスター リカバリー戦略に貢献します。
+[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
 このチュートリアルでは、Azure にオンプレミス物理 Windows/Linux サーバーのディザスター リカバリーを設定する方法を紹介します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -73,7 +73,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントの設定
 
-[Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)を設定します。
+[Azure ストレージ アカウント](../storage/common/storage-account-create.md)を設定します。
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
 - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
@@ -98,7 +98,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 レプリケート対象とレプリケート場所を選択します。
 
 1. **[Recovery Services コンテナー]** > [コンテナー] の順にクリックします。
-2. リソース メニューで、 **[Site Recovery]**  >  **[インフラストラクチャを準備する]**  >  **[保護の目標]** をクリックします。
+2. リソース メニューで、 **[Site Recovery]**  >  **[インフラストラクチャの準備]**  >  **[保護の目標]** の順にクリックします。
 3. **[保護の目標]** で、 **[To Azure]\(Azure へ\)**  >  **[非仮想化/その他]** を選択します。
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
@@ -146,7 +146,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 2. ターゲットのデプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-   ![ターゲット](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![移行先](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
@@ -178,13 +178,13 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 7. フェールオーバー後に作成された Azure VM が接続する Azure ネットワークとサブネットを選択します。
 8. 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、 **[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。 
 9. **[物理マシン]** で **[+物理マシン]** をクリックします。 名前と IP アドレスを指定します。 レプリケートするマシンのオペレーティング システムを選択します。 サーバーを検出し、一覧表示するのに数分かかります。 
-10. **[プロパティ]**  >  の **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。
-11. **[レプリケーションの設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
+10. **[プロパティ]**  >  **[プロパティの構成]** で、プロセス サーバーがモビリティ サービスのマシンへの自動インストールで使用するアカウントを選択します。
+11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
 12. **[レプリケーションを有効にする]** をクリックします。 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 
 追加したサーバーを監視する目的で、サーバーの最終検出時刻を **[構成サーバー]** の  >  **[前回のアクセス]** で確認できます。 定期検出を待たずにマシンを追加するには、構成サーバーを強調表示し (クリックしないでください)、 **[更新]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)。

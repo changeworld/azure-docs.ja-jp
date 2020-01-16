@@ -3,16 +3,16 @@ Description: 価格の選択、支払いの内訳、納税責任に関連した�
 title: 税の詳細 | Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 7a358e2c284fa42bb09e8d4f93909e1310712967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979980"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933566"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 
@@ -70,7 +70,7 @@ ms.locfileid: "74979980"
 | カーボベルデ                       | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | カンボジア                         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | カメルーン                         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
-| カナダ                           | 税金は選択される価格に追加されます。                                                                                                      | 価格から Microsoft Store の手数料を差し引いた金額                 | Microsoft          |
+| Canada                           | 税金は選択される価格に追加されます。                                                                                                      | 価格から Microsoft Store の手数料を差し引いた金額                 | Microsoft          |
 | ケイマン諸島                   | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | 中央アフリカ共和国         | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | チャド                             | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |

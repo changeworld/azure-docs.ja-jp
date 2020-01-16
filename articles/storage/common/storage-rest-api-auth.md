@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895176"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965715"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>共有キーによる承認を使用して REST API 操作を呼び出す
 
@@ -23,13 +23,13 @@ ms.locfileid: "74895176"
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプル アプリケーションは、ストレージ アカウントの BLOB コンテナーを一覧表示します。 この記事のコードを試すには、次のものが必要です。 
+このサンプル アプリケーションは、ストレージ アカウントの BLOB コンテナーを一覧表示します。 この記事のコードを試すには、次のものが必要です。
 
 - **Azure 開発**ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- 汎用ストレージ アカウント。 ストレージ アカウントがまだない場合は、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
+- 汎用ストレージ アカウント。 ストレージ アカウントがまだない場合は、[ストレージ アカウントの作成](storage-account-create.md)に関するページを参照してください。
 
 - この記事の例では、ストレージ アカウント内のコンテナーの一覧を表示する方法を示します。 出力を表示するには、始める前に、ストレージ アカウントの BLOB ストレージにコンテナーをいくつか追加してください。
 
@@ -43,7 +43,7 @@ ms.locfileid: "74895176"
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、storage-dotnet-rest-api-with-auth フォルダーを探して開き、StorageRestApiAuth.sln をダブルクリックします。 
+このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、storage-dotnet-rest-api-with-auth フォルダーを探して開き、StorageRestApiAuth.sln をダブルクリックします。
 
 ## <a name="about-rest"></a>REST について
 
@@ -93,16 +93,16 @@ REST API への呼び出しは、クライアントが作成する要求およ�
 
 サンプル プロジェクトでは、Authorization ヘッダーを作成するコードは、別のクラスにあります。 これは、クラス全体を自分のソリューションに追加して "そのまま" 使用するためです。 Authorization ヘッダーのコードは、Azure Storage に対するほとんどの REST API 呼び出しで機能します。
 
-HttpRequestMessage オブジェクトである要求を作成するには、Program.cs の ListContainersAsyncREST を使います。 要求を作成する手順は次のとおりです。 
+HttpRequestMessage オブジェクトである要求を作成するには、Program.cs の ListContainersAsyncREST を使います。 要求を作成する手順は次のとおりです。
 
-- サービスの呼び出しに使われる URI を作成します。 
+- サービスの呼び出しに使われる URI を作成します。
 - HttpRequestMessage オブジェクトを作成して、ペイロードを設定します。 この例では何も渡さないので、ListContainersAsyncREST のペイロードは null です。
 - 要求ヘッダー x-ms-date と x-ms-version を追加します。
 - Authorization ヘッダーを取得して追加します。
 
-次のような基本情報が必要です。 
+次のような基本情報が必要です。
 
-- ListContainers の場合、**メソッド**は `GET` です。 この値は、要求をインスタンス化するときに設定されます。 
+- ListContainers の場合、**メソッド**は `GET` です。 この値は、要求をインスタンス化するときに設定されます。
 - **リソース**は呼び出されている API を示す URI のクエリ部分であり、値は `/?comp=list` です。 前述のように、リソースは、[ListContainers API](/rest/api/storageservices/List-Containers2) に関する情報を示す参照ドキュメントのページにあります。
 - URI は、そのストレージ アカウントの Blob サービス エンドポイントを作成してリソースを連結することにより、作成されます。 **要求の URI** の最終的な値は、`http://contosorest.blob.core.windows.net/?comp=list` です。
 - ListContainers の場合、**要求本文**は null であり、余分な**ヘッダー**はありません。
@@ -160,7 +160,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -262,7 +262,7 @@ Content-Length: 1511
 </EnumerationResults>
 ```
 
-要求を作成し、サービスを呼び出して、結果を解析する方法がわかったので、次に Authorization ヘッダーを作成する方法を見てみましょう。 Authorization ヘッダーの作成は複雑ですが、いったん動作するようになったコードは、すべてのストレージ サービス REST API で使うことができます。
+要求を作成し、サービスを呼び出して、結果を解析する方法がわかったので、次に Authorization ヘッダーを作成する方法を見てみましょう。 Authorization ヘッダーの作成は複雑ですが、いったん動作するようになったコードは、すべてのストレージ サービスREST API で使うことができます。
 
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
@@ -308,7 +308,7 @@ CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。
 
 ### <a name="canonicalized-headers"></a>正規化されたヘッダー
 
-この値を作成するには、"x-ms-" で始まるヘッダーを取得して並べ替えてから、`[key:value\n]` インスタンスの文字列に書式設定して、1 つの文字列に連結します。 この例では、正規化されたヘッダーは次のようになります。 
+この値を作成するには、"x-ms-" で始まるヘッダーを取得して並べ替えてから、`[key:value\n]` インスタンスの文字列に書式設定して、1 つの文字列に連結します。 この例では、正規化されたヘッダーは次のようになります。
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 この出力を作成するために使われるコードを次に示します。
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 ListContainersAsyncREST で、ListBlobs の API に URI を設定するコードを変更します。 コンテナーの名前は **container-1** です。
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**応答本文 (XML):** この XML 応答では、BLOB の一覧とそのプロパティが示されています。 
+**応答本文 (XML):** この XML 応答では、BLOB の一覧とそのプロパティが示されています。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -567,7 +567,7 @@ Content-Length: 1135
 
 この記事では、Blob storage の REST API に要求を行う方法について説明しました。 この要求を使用すると、コンテナーの一覧またはコンテナー内の BLOB の一覧を取得できます。 REST API 呼び出しの承認シグネチャを作成する方法、およびそれを REST 要求で使う方法について学習しました。 最後に、その応答を調べる方法を学習しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
 - [ファイル サービスの REST API](/rest/api/storageservices/file-service-rest-api)

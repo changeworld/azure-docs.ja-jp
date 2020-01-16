@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660598"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980625"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題:よく寄せられる質問 (FAQ)
 
@@ -56,7 +56,7 @@ ms.locfileid: "75660598"
 
 ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal > [サブスクリプション] > \<該当するサブスクリプション> > [使用量 + クォータ]。
 
-リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Resource Usage API (プレビュー)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview)」を参照してください。
+リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Resource Usage API (プレビュー)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)」を参照してください。
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>デプロイしたクラウド サービス VM のサイズを、再デプロイせずに変更するにはどうしたらよいですか。
 デプロイしたクラウド サービスの VM サイズを、再デプロイせずに変更することはできません。 VM サイズは CSDEF に組み込まれており、これを更新するには再デプロイが必要です。
@@ -66,17 +66,17 @@ ms.locfileid: "75660598"
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Service Management API または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか。 
 
 Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
- 
+
 - REST API を使用してデプロイする。
 
     Service Management REST API を使用してデプロイすれば、クラシックと Azure Resource Manager の両方のストレージ アカウントに対応した Blob Storage への SAS URL を指定することでこの制限を回避できます。 "PackageUrl" プロパティの詳細については、[こちら](/previous-versions/azure/reference/ee460813(v=azure.100))を参照してください。
-  
+
 - [Azure Portal](https://portal.azure.com) を使用してデプロイする。
 
     [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。 
 
-クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイ モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。
 
-コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。 
+クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイ モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。
+
+コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459169"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979270"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。
@@ -190,7 +190,7 @@ Microsoft Azure では、基本設計において VM ベースのコンピュー
 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 ### <a name="ip-level-storage-isolation"></a>IP レベルでの記憶域の分離
-ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが [Azure Storage](../../storage/common/storage-security-guide.md) に接続できます。
+ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが [Azure Storage](../../storage/blobs/security-recommendations.md) に接続できます。
 
 IP 記憶域データは、トラフィックの専用トンネルを IP 記憶域に割り当てるネットワーキング メカニズムによって未許可のユーザーから保護することができます。
 
@@ -203,18 +203,18 @@ Azure では、データを保護するために次の種類の暗号化が提�
 #### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
 
--   [トランスポートレベルの暗号化](../../storage/common/storage-security-guide.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
+-   [トランスポートレベルの暗号化](../../storage/blobs/security-recommendations.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--   [ワイヤ暗号化](../../storage/common/storage-security-guide.md) (Azure ファイル共有の SMB 3.0 暗号化など)。
+-   [ワイヤ暗号化](../../storage/blobs/security-recommendations.md) (Azure ファイル共有の SMB 3.0 暗号化など)。
 
--   [クライアント側の暗号化](../../storage/common/storage-security-guide.md)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
+-   [クライアント側の暗号化](../../storage/blobs/security-recommendations.md)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](isolation-choices.md) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
--   [Storage Service Encryption](../../storage/common/storage-security-guide.md) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+-   [Storage Service Encryption](../../storage/blobs/security-recommendations.md) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 
--   [クライアント側の暗号化](../../storage/common/storage-security-guide.md) には、保存時の暗号化機能もあります。
+-   [クライアント側の暗号化](../../storage/blobs/security-recommendations.md) には、保存時の暗号化機能もあります。
 
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 

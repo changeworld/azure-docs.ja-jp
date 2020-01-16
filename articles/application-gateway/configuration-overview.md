@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996646"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658340"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -46,9 +46,9 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネット上のネットワーク セキュリティ グループ
 
-ネットワーク セキュリティ グループ (NSG) は、Application Gateway でサポートされています。 ただし、いくつか制限事項があります。
+ネットワーク セキュリティ グループ (NSG) は、Application Gateway でサポートされています。 ただし、いくつかの制限が適用されます。
 
-- Application Gateway V1 SKU では、TCP ポート 65503-65534 での着信インターネット トラフィックと、宛先サブネットが *[すべて]* に設定されている V2 SKU の TCP ポート 65200-65535 を許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティ (そのようなゲートウェイの顧客を含む) は、そのようなエンドポイントに対する変更を開始できません。
+- Application Gateway v1 SKU の TCP ポート 65503 ～ 65534 と、v2 SKU の TCP ポート 65200 ～ 65535 で、宛先サブネットが **[すべて]** 、ソースが **GatewayManager** サービス タグである着信インターネット トラフィックを許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 それらのゲートウェイの顧客を含む外部エンティティは、これらのエンドポイントで通信できません。
 
 - 送信インターネット接続はブロックできません。 NSG の既定のアウトバウンド規則ではインターネット接続が許可されています。 推奨事項は次のとおりです。
 
@@ -57,12 +57,12 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 - **AzureLoadBalancer** タグからのトラフィックを許可する必要があります。
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway アクセスを少数のソース IP に限定する
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway アクセスを少数のソース IP に限定する
 
 このシナリオでは、Application Gateway サブネット上の NSG を使用します。 次の制約は、この優先順位でサブネットに適用します。
 
-1. ソース IP または IP 範囲を設定し、宛先を Application Gateway サブネット全体、または構成された特定のプライベート フロントエンド IP への着信トラフィックを許可します。 NSG はパブリック IP では機能しません。
-2. [バックエンドの正常性通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、Application Gateway v1 SKU の場合はポート 65503 から 65534 への、 v2 SKU の場合はポート 65200 から 65535 への、すべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
+1. ソース IP または IP 範囲からの着信トラフィックで、宛先が Application Gateway のサブネット アドレス範囲全体であり、宛先ポートがご使用の着信アクセス ポート (たとえば、HTTP アクセス用のポート 80) であるものを許可します。
+2. [バックエンド正常性状態通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
 3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
 4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
 5. インターネットのすべての宛先への送信トラフィックを許可します。
@@ -74,10 +74,10 @@ v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エ�
 v2 SKU の場合、Application Gateway サブネット上の UDR はサポートされません。 詳細については、[Azure Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku) をご覧ください。
 
 > [!NOTE]
-> UDR は v2 SKU ではサポートされていません。  UDR が必要な場合、続行して v1 SKU をデプロイしてください。
+> 現時点では、UDR は v2 SKU ではサポートされていません。
 
 > [!NOTE]
-> Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が "不明" と表示されます。 また、Application Gateway ログとメトリックの生成が失敗します。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
+> Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が "不明" と表示される場合があります。 また、Application Gateway ログとメトリックの生成が失敗する場合があります。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
 
 ## <a name="front-end-ip"></a>フロントエンド IP
 
@@ -256,7 +256,7 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 
 ### <a name="connection-draining"></a>接続のドレイン
 
-接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、規則の作成中にバックエンド プールのすべてのメンバーに適用することができます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが既存の接続を維持して、構成可能なタイムアウトに対して進行中の要求を処理し、新しい要求や接続を受信しないことが保証されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス宛ての要求です。これらは、登録を解除するインスタンスによって引き続きプロキシ処理されます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
+接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、規則の作成中にバックエンド プールのすべてのメンバーに適用することができます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが既存の接続を維持して、構成可能なタイムアウトに対して進行中の要求を処理し、新しい要求や接続を受信しないことが保証されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス宛ての要求です。これらは、登録を解除するインスタンスによって引き続き転送されます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
 
 ### <a name="protocol"></a>Protocol
 
@@ -340,7 +340,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 > [!NOTE]
 > カスタムの正常性プローブを作成したら、バックエンド HTTP 設定に関連付ける必要があります。 対応する HTTP 設定が、規則を使用してリスナーに明示的に関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway コンポーネントについて学習したので、次は以下を行うことができます。
 

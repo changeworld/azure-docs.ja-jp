@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465095"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -161,7 +161,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
 いずれかのキーを再生成してもう一度取得し、新しい値を確認します。
 
 > [!NOTE]
-> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳細については、「[Access keys](storage-account-manage.md#access-keys)」(アクセス キー) に関するページを参照してください。
+> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳細については、[ストレージ アカウントのアクセス キーの管理](storage-account-keys-manage.md)に関するページを参照してください。
 
 
 ### <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
@@ -178,7 +178,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 ### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>VNet とファイアウォールを使用したストレージ アカウントの保護
 
-既定では、インターネットにアクセス可能なネットワークからすべてのストレージ アカウントにアクセスできます。 ただし、ストレージ アカウントへのアクセスを特定の仮想ネットワークのアプリケーションにのみ許可するようにネットワーク ルールを構成できます。 詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)](storage-network-security.md)」を参照してください。
+既定では、インターネットにアクセス可能なネットワークからすべてのストレージ アカウントにアクセスできます。 ただし、ストレージ アカウントへのアクセスを特定の仮想ネットワークのアプリケーションにのみ許可するようにネットワーク ルールを構成できます。 詳細については、[Azure Storage ファイアウォールおよび Virtual Networks の構成](storage-network-security.md)に関する記事を参照してください。
 
 この記事では、次の PowerShell コマンドレットを使用してこれらの設定を管理する方法を示しています。
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
@@ -228,16 +228,16 @@ Azure Cosmos DB Table API は、ターンキー グローバル配布、低待�
 
 PowerShell でこれらのクラウドとそのストレージにアクセスする方法については、「[Managing Storage in the Azure independent clouds using PowerShell](storage-powershell-independent-clouds.md) (PowerShell を使用して Azure の独立したクラウドのストレージを管理する)」をご覧ください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この演習用に新しいリソース グループとストレージ アカウントを作成した場合は、リソース グループを削除すると作成されたアセットをすべて削除できます。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、管理プレーンのコマンドレットを使用してストレージ アカウントを管理する際の一般的な操作について説明します。 以下の方法について学習しました。
+このハウツー記事では、管理プレーンのコマンドレットを使用してストレージ アカウントを管理する際の一般的な操作について説明します。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * ストレージ アカウントの列挙

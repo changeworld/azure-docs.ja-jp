@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924884"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894210"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -38,7 +38,7 @@ ms.locfileid: "74924884"
 * データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
 * Azure データ ストアにデータを移動する場合は、[Microsoft Azure データセンターで使用されるコンピューティング IP アドレスと SQL 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールと API を使用して、Amazon Redshift ソースからデータを移動するコピー アクティビティが含まれたパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
@@ -51,7 +51,7 @@ ms.locfileid: "74924884"
 2. コピー操作用の入力データと出力データを表すデータセットを作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。
 
-コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の使用例:「Amazon Redshift から Azure Blob Storage へのデータのコピー」のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の例の「Amazon Redshift から Azure Blob Storage へのデータのコピー」のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次のセクションでは、Amazon Redshift 用の Data Factory エンティティの定義に使用される JSON プロパティについて説明します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "74924884"
 
 次の表は、Amazon Redshift のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |はい |
 | **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
@@ -74,7 +74,7 @@ ms.locfileid: "74924884"
 
 **typeProperties** セクションはデータセット型ごとに異なり、ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Amazon Redshift データセットを含む) の **typeProperties** セクションには、次のプロパティがあります。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する Amazon Redshift データベースのテーブルの名前です。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -84,7 +84,7 @@ ms.locfileid: "74924884"
 
 コピー アクティビティのソースの種類が **AmazonRedshiftSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **query** | カスタム クエリを使用してデータを読み取ります。 |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 | **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ |
@@ -93,7 +93,7 @@ ms.locfileid: "74924884"
 
 また、(Amazon Redshift を含む) **RelationalSource** 型を **typeProperties** セクションの以下のプロパティで使用することもできます。 このソースの型では Redshift の **UNLOAD** コマンドがサポートされないことに注意してください。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 | いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
@@ -146,7 +146,7 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
 * [RelationalTable](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)
-* [RelationalSource](#copy-activity-properties) プロパティと [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) プロパティを使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
+* [RelationalSource](#copy-activity-properties) プロパティと [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) プロパティを使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
 
 このサンプルでは、Amazon Redshift のクエリ結果から Azure BLOB にデータを 1 時間ごとにコピーします。 サンプルに使用されている JSON プロパティについては、エンティティの定義に続くセクションで説明しています。
 
@@ -327,20 +327,20 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 
 コピー アクティビティでデータを Amazon Redshift 型から .NET 型に変換するときに、次のマッピングが使用されます。
 
-| Amazon Redshift 型 | .NET 型 |
+| Amazon Redshift 型 | .NET の種類 |
 | --- | --- |
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | DECIMAL |Decimal |
-| REAL |Single |
+| real |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |string |
-| CHAR |string |
-| VARCHAR |string |
+| BOOLEAN |String |
+| CHAR |String |
+| VARCHAR |String |
 | DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |string |
+| timestamp |DateTime |
+| [TEXT] |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
@@ -351,5 +351,5 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティを使用したパイプライン作成の詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。

@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426987"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Azure Cognitive Search で検索トラフィックの分析を実装する
 
@@ -56,7 +56,7 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 
 この手順では、前の手順で作成した Application Insights リソースを使用して、独自の検索アプリケーションをインストルメント化します。 このプロセスには、次の 4 つの手順があります。
 
-**手順 1:テレメトリ クライアントを作成する**
+**ステップ 1:テレメトリ クライアントを作成する**
 
 これは、Application Insights リソースにイベントを送信するオブジェクトです。
 
@@ -99,7 +99,7 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**手順 3:検索イベントをログに記録する**:
+**ステップ 3:検索イベントをログに記録する**:
 
 ユーザーによって検索要求が発行されるたびに、Application Insights のカスタム イベントで次のスキーマを使用して、検索要求を検索イベントとしてログに記録します。
 
@@ -167,9 +167,7 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 
 ## <a name="3---analyze-in-power-bi"></a>3 - Power BI で分析する
 
-アプリケーションをインストルメント化し、アプリケーションが Application Insights に正しく接続されていることを確認したら、Azure Cognitive Search で作成された定義済みのテンプレートを Power BI Desktop に使用できます。 
-
-ログ データを分析できるように、Azure Cognitive Search には監視用 [Power BI コンテンツ パック](https://app.powerbi.com/getdata/services/azure-search)が用意されています。 コンテンツ パックでは、検索トラフィックの分析用にキャプチャされた追加データの分析に役立つ定義済みのグラフとテーブルが追加されます。 詳しくは、[コンテンツ パックのヘルプ ページ](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)をご覧ください。 
+アプリをインストルメント化し、アプリケーションが Application Insights に正しく接続されていることを確認したら、Power BI Desktop でデータを分析するための定義済みのレポート テンプレートをダウンロードします。 このレポートには、検索トラフィックの分析のためにキャプチャされた追加データの分析に役立つ定義済みのグラフとテーブルが含まれています。 
 
 1. Azure Cognitive Search ダッシュボードの左側のナビゲーション ウィンドウで、 **[設定]** 下の **[検索トラフィックの分析]** をクリックします。
 
@@ -179,7 +177,7 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 
 2. 同じページで、 **[Power BI レポートのダウンロード]** をクリックします。
 
-3. Power BI Desktop でレポートが開かれ、Application Insights に接続するよう求められます。 この情報は、Azure portal の Application Insights リソースに関するページで見つかります。
+3. このレポートが Power BI Desktop で開かれ、Application Insights に接続して資格情報を指定するよう求められます。 接続情報は、Application Insights リソースの Azure portal ページで見つけることができます。 資格情報には、ポータルのサインインに使用するのと同じユーザー名とパスワードを指定します。
 
    ![Application Insights に接続する](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights に接続する")
 
@@ -189,17 +187,14 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 
 メトリックには、次のものが含まれています。
 
-* クリック率 (CTR): 検索総数に対する特定のドキュメントをクリックしたユーザー数の割合。
+* 検索ボリュームおよび最も一般的な語句とドキュメントのペア: クリック数で並べ替えられた、結果的に同じドキュメントがクリックされた語句。
 * クリックされていない検索語句: クリックが登録されていない上位クエリの語句
-* 最もクリックされたドキュメント: 過去 24 時間、7 日間、30 日間の ID 別の最もクリックされたドキュメント
-* 語句とドキュメントの一般的な組み合わせ: クリック数で並べ替えられた、結果的に同じドキュメントがクリックされた語句
-* クリック時間: 検索クエリ後の経過時間でバケット化されたクリック
 
 次のスクリーンショットでは、検索トラフィックを分析するための組み込みのレポートとグラフを示します。
 
 ![Azure Cognitive Search の Power BI ダッシュボード](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Azure Cognitive Search の Power BI ダッシュボード")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 検索アプリケーションをインストルメント化して、検索サービスに関する有益で洞察に富んだデータを取得します。
 
 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) では詳しい情報が見つかります。また、さまざまなサービス レベルについて詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。

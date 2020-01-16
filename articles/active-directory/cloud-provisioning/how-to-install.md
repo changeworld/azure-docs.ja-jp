@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect クラウド プロビジョニング エージェントのインストール
-description: このトピックでは、プロビジョニング エージェントをインストールする手順について説明します。
+description: この記事では、Azure AD Connect クラウド プロビジョニング エージェントのインストール方法について説明します。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,15 +11,15 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846234"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549504"
 ---
-# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
-このドキュメントでは、Azure AD Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
+# <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
+このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
 
 >[!IMPORTANT]
 >次のインストール手順は、[前提条件](how-to-prerequisites.md)がすべて満たされていることを前提としています。
@@ -31,66 +31,76 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
 
 
 ## <a name="install-the-agent"></a>エージェントをインストールする
+エージェントをインストールするには、次の手順に従います。
 
 1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。
-2. Azure portal に移動し、[Azure Active Directory] を選択します。
-3. **[プロビジョニングの管理 (プレビュー)]** をクリックし、 **[すべてのエージェントの確認]** を選択します。
-3. Azure portal から Azure AD Connect プロビジョニング エージェントをダウンロードします。
-![[ようこそ] 画面](media/how-to-install/install9.png)</br>
-3. Azure AD Connect のプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
-3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install1.png)</br>
+1. Azure Portal にアクセスします。 左側の **[Azure Active Directory]** を選択します。
+1. **[プロビジョニングの管理 (プレビュー)]**  >  **[すべてのエージェントの確認]** を選択します。
+1. Azure portal から Azure AD Connect プロビジョニング エージェントをダウンロードします。
 
-4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
-5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install3.png)</br>
+   ![オンプレミスのエージェントをダウンロードします](media/how-to-install/install9.png)</br>
+1. Azure AD Connect プロビジョニングのインストーラ (AADConnectProvisioningAgent.Installer) を実行します。
+1. **[Microsoft Azure AD Connect プロビジョニング エージェント パッケージ]** 画面で、ライセンス条項に同意し、 **[インストール]** を選択します。
 
-6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
-![[ようこそ] 画面](media/how-to-install/install4.png)</br>
+   ![[Microsoft Azure AD Connect プロビジョニング エージェント パッケージ] 画面](media/how-to-install/install1.png)</br>
 
-7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install5.png)</br>
-8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
+1. この操作が完了すると、構成ウィザードが起動します。 Azure AD 全体管理者アカウントでサインインします。
+1. **[Active Directory の接続]** 画面で、 **[ディレクトリの追加]** を選択します。 次に、Active Directory 管理者アカウントでサインインします。 この操作によってオンプレミス ディレクトリが追加されます。 **[次へ]** を選択します。
 
+   ![[Active Directory の接続] 画面](media/how-to-install/install3.png)</br>
+
+1. **[構成の完了]** 画面で、 **[確認]** を選択します。 この操作によって、エージェントが登録されて再起動されます。
+
+   ![[構成の完了] 画面](media/how-to-install/install4.png)</br>
+
+1. この操作が終了すると、「**エージェントの構成が正常に検証されました。** 」という通知が表示されます。 **[終了]** を選択します。
+
+   ![[終了] ボタン](media/how-to-install/install5.png)</br>
+1. まだ最初の **[Microsoft Azure AD Connect プロビジョニング エージェント パッケージ]** 画面が表示されている場合は、 **[閉じる]** を選択します。
 
 ## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
 エージェントの確認は、Azure portal のほか、エージェントが実行されているローカル サーバーで行います。
 
 ### <a name="azure-portal-agent-verification"></a>Azure portal でのエージェントの確認
-エージェントが Azure で表示されていることを確認するには、次の手順を実行します。
+エージェントが Azure で表示されていることを確認するには、次の手順に従います。
 
-1. Azure ポータルにサインインします。
-2. 左側の **[Azure Active Directory]** を選択して **[Azure AD Connect]** をクリックし、中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+1. Azure portal にサインインします。
+1. 左側の **[Azure Active Directory]**  >  **[Azure AD Connect]** を選択します。 中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。
 
-3.  **[Azure AD のプロビジョニング (プレビュー)]** 画面で **[すべてのエージェントの確認]** をクリックします。
-![Azure AD のプロビジョニング](media/how-to-install/install7.png)</br>
+   ![Azure portal](media/how-to-install/install6.png)</br>
+
+1.  **[Azure AD のプロビジョニング (プレビュー)]** 画面で **[すべてのエージェントの確認]** を選択します。
+
+    ![[すべてのエージェントの確認] オプション](media/how-to-install/install7.png)</br>
  
-4. **[On-premises provisioning agents]\(オンプレミス プロビジョニング エージェント\)** 画面に、インストールしたエージェントが表示されます。  該当するエージェントが存在し、 **[アクティブ]** としてマークされていることを確認します。
-![プロビジョニング エージェント](media/how-to-install/verify1.png)</br>
+1. **[オンプレミスのプロビジョニング エージェント]** 画面に、インストールしたエージェントが表示されます。 該当するエージェントが存在し、 *[アクティブ]* としてマークされていることを確認します。
+
+   ![[オンプレミスのプロビジョニング エージェント] 画面](media/how-to-install/verify1.png)</br>
 
 ### <a name="verify-the-port"></a>ポートを確認する
-Azure がポート 443 でリッスンしていて、エージェントがそれと通信できることを確認するには、次のようにします。
+Azure がポート 443 でリッスンしていて、エージェントがそれと通信できることを確認するには、次の手順に従います。
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。  ブラウザーを開き、エージェントがインストールされているサーバーから上記の URL に移動します。
-![サービス](media/how-to-install/verify2.png)
+このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
 
-### <a name="on-the-local-server"></a>ローカル サーバー上
+![ポートの到達可能性の確認](media/how-to-install/verify2.png)
+
+### <a name="on-the-local-server"></a>ローカル サーバーの場合
 エージェントが実行されていることを確認するには、次の手順に従います。
 
-1.  管理者アカウントでサーバーにログオンします。
-2.  **[サービス]** を開きます。これには、[サービス] に直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力してください。
-3.  **[サービス]** に **[Microsoft Azure AD Connect Agent Updater]** と **[Microsoft Azure AD Connect Provisioning Agent]** が存在することと、その状態が **[実行中]** になっていることを確認します。
-![サービス](media/how-to-troubleshoot/troubleshoot1.png)
+1.  管理者アカウントでサーバーにサインインします。
+1.  **[サービス]** を開きます。これには、そこに直接移動するか、**スタート** >  **[ファイル名を指定して実行]**  > 「**Services.msc**」に移動します。
+1.  **[サービス]** に **[Microsoft Azure AD Connect エージェント アップデーター]** と **[Microsoft Azure AD Connect プロビジョニング エージェント]** が存在することと、その状態が *[実行中]* になっていることを確認します。
+
+    ![[サービス] 画面](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->エージェントはインストールされていますが、それはユーザーの同期を開始する前に構成され、有効になっている必要があります。  新しいエージェントを構成するには、「[Azure AD Connect プロビジョニングの新しいエージェントの構成](how-to-configure.md)」を参照してください。
+>エージェントはインストールされていますが、それはユーザーの同期を開始する前に構成され、有効になっている必要があります。 新しいエージェントを構成するには、「[Azure AD Connect クラウド プロビジョニングの新しいエージェント構成](how-to-configure.md)」を参照してください。
 
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 66e7c2160317d71ced7517e1ec19014c1475c915
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 082fede57814fa7649309b672c2eea0d0f14b3f6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764101"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965864"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB VNet のサービス エンドポイントと VNet ルールを作成および管理する
 
@@ -24,7 +24,7 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 1. MariaDB サーバー ページの [設定] で、 **[接続のセキュリティ]** をクリックして Azure Database for MariaDB の [接続のセキュリティ] ページを開きます。
 
-2. [Azure サービスへのアクセスを許可] の制御が **[オフ]** に設定されていることを確認します。
+2. [Azure サービスへのアクセスを許可] が **[オフ]** に設定されていることを確認します。
 
 > [!Important]
 > 制御を [オン] に設定すると、Azure MariaDB サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure Virtual Network サービス エンドポイント機能は、Azure Database for MariaDB の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
@@ -55,9 +55,9 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
    ![VNet サービス エンドポイントが有効で、VNet ルールが作成されている](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for MariaDB に SSL を構成](howto-configure-ssl.md)する方法の詳細
 - 同様に、[Azure CLI を使用して、VNet サービス エンドポイントを有効にし、Azure Database for MariaDB の VNET ルールを作成](howto-manage-vnet-cli.md)するスクリプトを作成できます。
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: cfcf63274fc4bd77e7cb8fd792ed7d2782b36003
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1217028dc6c206633f13fe44951732809cd72d22
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535543"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762797"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
@@ -110,14 +110,14 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事では、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
+次の記事では、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
 
-- [TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+- [TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
-- [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+- [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
 
 また、[機械学習アルゴリズムのクイック ガイド](algorithm-cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。

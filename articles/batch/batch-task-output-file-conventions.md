@@ -3,7 +3,7 @@ title: .NET 用のファイル規則ライブラリを使用した Azure Storage
 description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal で永続化された出力を表示する方法を説明します。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302676"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026225"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
@@ -34,15 +34,15 @@ ms.locfileid: "72302676"
 
 ## <a name="when-do-i-use-the-file-conventions-library-to-persist-task-output"></a>どのような場合にファイル規則ライブラリをタスク出力に保持するか
 
-Azure Batch にはタスク出力を保持する方法が複数用意されています。 ファイル規則は以下のような場合に最適です。
+Azure Batch は、タスクの出力を保持するために複数の方法を提供しています。 ファイル規則は以下のような場合に最適です。
 
 - タスクを実行中のアプリケーションのコードを簡単に変更し、ファイル規則ライブラリを使用してファイルを保持したい場合。
 - タスクの実行中に Azure Storage にデータをストリーミングしたい場合。
 - クラウド サービス構成または仮想マシン構成のどちらで作成されたプールからもデータを保持する必要がある。
-- クライアント アプリケーションまたはジョブ内のその他のタスクを ID または目的で探し、タスク出力ファイルをダウンロードする必要がある場合。
+- クライアント アプリケーションや、ジョブ内の他のタスクで、ID または目的によってタスク出力ファイルを特定してダウンロードする必要がある。
 - Azure ポータルでタスク出力を表示したい場合。
 
-上記以外の場合には、別のアプローチを検討する必要があります。 タスク出力を保持するその他の方法の詳細については、「[Azure Storage への完了したジョブおよびタスクの結果の保持](batch-task-output.md)」を参照してください。
+検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 タスクの出力を保持するために利用できるその他のオプションの詳細については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準
 
@@ -203,7 +203,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 
 ![Task outputs blade in the Azure portal][2]
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 [PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
@@ -214,7 +214,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 5. **PersistOutputs** プロジェクトを**開始** (実行) します。
 6. サンプルの実行に使用する保持テクノロジを選択するよう求められた場合は、「**1**」を入力し、ファイル規則ライブラリをタスク出力の保持に使用してサンプルを実行します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET 用 Batch ファイル規則ライブラリの入手
 

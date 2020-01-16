@@ -1,20 +1,14 @@
 ---
-title: Azure Service Fabric Mesh のサンプル | Microsoft Docs
+title: Azure Service Fabric Mesh のサンプルを探す
 description: 次に示すのは、利用可能な Service Fabric Mesh のサンプル アプリケーションの目録です。 これらのサンプルのソース コードには、Service Fabric リソース モデルを使用して特定のシナリオを実現する方法が示されています。
-services: service-fabric-mesh
-keywords: ''
-author: athinanthny
-ms.author: atsenthi
 ms.date: 12/03/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: a300c06a6a18bf2e986b3736b78957daf3d7efd6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c944ddc26f2e2d099cf9552acb8287c363d0c768
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718814"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461909"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric Mesh のサンプル
 

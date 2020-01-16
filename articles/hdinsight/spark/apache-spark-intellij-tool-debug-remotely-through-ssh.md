@@ -1,81 +1,75 @@
 ---
 title: Azure Toolkit for IntelliJ:SSH を使用して Spark アプリをデバッグする - HDInsight
 description: Azure Toolkit for IntelliJ のHDInsight ツールを使用し、HDInsight クラスターで SSH によりアプリケーションをリモート デバッグする方法の手順を示すガイダンス
-keywords: デバッグ、intellij のリモート デバッグ、ssh、intellij、hdinsight、intellij のデバッグ、デバッグ
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/25/2017
-ms.openlocfilehash: 82aaead87fad0ed9fc7b715baf3dc5ebbd4941be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/23/2019
+ms.openlocfilehash: 36e665f889ece48661a859e1a9a44f23aec08c37
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494618"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548881"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをデバッグする
 
 この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) の HDInsight Tools を使用して HDInsight クラスターでアプリケーションをリモートでデバッグする方法に関する詳細な手順について説明します。 プロジェクトをデバッグするために、「[Debug HDInsight Spark applications with Azure Toolkit for IntelliJ (Azure Toolkit for IntelliJ を使用して HDInsight Spark アプリケーションをデバッグする)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)」ビデオを参照することもできます。
 
-**前提条件**
-* **Azure Toolkit for IntelliJ のHDInsight ツール**。 このツールは Azure Toolkit for IntelliJ に付属しています。 詳細については、「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)」を参照してください。 **Azure Toolkit for IntelliJ**。 このツールキットは、HDInsight クラスター向けの Apache Spark アプリケーションを作成するために使用します。 詳細については、「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)」の手順に従ってください。
+## <a name="prerequisites"></a>前提条件
 
-* **ユーザー名とパスワードを使って管理された HDInsight SSH サービス**。 詳細については、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)」および「[SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の Web UI にアクセスする](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)」を参照してください。 
- 
-## <a name="learn-how-to-perform-local-run-and-debugging"></a>ローカルで実行してデバッグする方法
-### <a name="scenario-1-create-a-spark-scala-application"></a>シナリオ 1:Spark Scala アプリケーションを作成する 
+* HDInsight での Apache Spark クラスター。 [Apache Spark クラスターの作成](../spark/apache-spark-jupyter-spark-sql-use-portal.md)に関するページを参照してください。
 
-1. IntelliJ IDEA を起動し、プロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
+* Windows ユーザーの場合:Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に WinUtils.exe がないことが原因で発生します。
 
-   a. **[Azure Spark/HDInsight]** を選択します。 
+    このエラーを回避するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
-   b. 設定に基づいて Java または Scala テンプレートを選択します。 以下のオプションから選択してください。
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (Community エディションは無料です。)
 
-   - **Spark プロジェクト (Java)**
+* [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-installation)。
 
-   - **Spark プロジェクト (Scala)**
+* [IntelliJ 用の Scala プラグイン](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)。
 
-   - **サンプルありの Spark プロジェクト (Scala)**
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-   - **エラー タスク デバッグ サンプルありの Spark プロジェクト (プレビュー) (Scala)**
+## <a name="create-a-spark-scala-application"></a>Spark Scala アプリケーションを作成する
 
-     この例では、**サンプルありの Spark プロジェクト (Scala)** テンプレートを使用します。
+1. IntelliJ IDEA を起動し、 **[Create New Project]\(新しいプロジェクトの作成\)** を選択して、 **[New Project]\(新しいプロジェクト\)** ウィンドウを開きます。
 
-   c. **[Build tool]\(ビルド ツール\)** ボックスの一覧で、ニーズに応じて次のいずれかを選択します。
+1. 左側のウィンドウから **[Apache Spark/HDInsight]** を選択します。
 
-   - Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
+1. メイン ウィンドウから **[サンプルありの Spark プロジェクト (Scala)]** を選択します。
 
-   - 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
+1. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次のいずれかを選択します。
+
+    * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
+    * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
      ![Intellij の新規プロジェクト作成 (Spark)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-   d. **[次へ]** を選択します。
+1. **[次へ]** を選択します。
 
-1. 次の **[新しいプロジェクト]** ウィンドウで、以下の手順を実行します。
+1. 次の **[新しいプロジェクト]** ウィンドウで、次の情報を指定します。
 
-   ![Intellij の新規プロジェクト、Spark バージョンの選択](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
+    |プロパティ |[説明] |
+    |---|---|
+    |プロジェクト名|名前を入力します。 このチュートリアルは `myApp` を使用します。|
+    |プロジェクトの場所|プロジェクトを保存する任意の場所を入力します。|
+    |Project SDK (プロジェクト SDK)|空白の場合は、 **[新規作成]** を選択し、JDK に移動します。|
+    |Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark 2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
-   a. プロジェクト名とプロジェクトの場所を入力します。
+   ![Intellij の新しいプロジェクト、Spark バージョンの選択](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-   b. **[Project SDK]\(プロジェクトのSDK\)** ボックスの一覧で、**Spark 2.x** クラスターの場合は **Java 1.8** を選択し、**Spark 1.x** クラスターの場合は **Java 1.7** を選択します。
+1. **[完了]** を選択します。 プロジェクトが使用可能になるまで数分かかる場合があります。 右下隅の進行状況を監視します。
 
-   c. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Spark SDK と Scala SDK の適切なバージョンが組み合わされて表示されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、**Spark 2.0.2 (Scala 2.11.8)** を使用します。
+1. プロジェクトを展開し、**src** > **main** > **scala** > **sample** に移動します。 **[SparkCore_WasbIOTest]** をダブルクリックします。
 
-   d. **[完了]** を選択します。
+## <a name="perform-local-run"></a>ローカルで実行する
 
-1. **[src]**  >  **[main]**  >  **[scala]** を選択してプロジェクトのコードを開きます。 この例では **SparkCore_wasbloTest** スクリプトを使用します。
-
-### <a name="prerequisite-for-windows"></a>Windows の前提条件
-Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に WinUtils.exe がないことが原因で発生します。
-
-このエラーを回避するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
-
-### <a name="scenario-2-perform-local-run"></a>シナリオ 2:ローカルで実行する
-
-1. **SparkCore_wasbloTest** スクリプトを開き、スクリプト エディターを右クリックし、 **[Run '[Spark Job]XXX']\('[Spark Job]XXX' の実行\)** オプションを選択してローカルで実行します。
+1. **SparkCore_WasbIOTest** スクリプトから、スクリプト エディターを右クリックし、 **[Run 'SparkCore_WasbIOTest'] ('SparkCore_WasbIOTest' の実行)** オプションを選択してローカルで実行します。
 
 1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  **__[default]__** に出力ファイルが保存されていることを確認できます。
 
@@ -85,22 +79,21 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
     ![Intellij の実行/デバッグ構成 (ローカル実行)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
-    - [環境変数](#prerequisite-for-windows):システム環境変数 **HADOOP_HOME** を **C:\WinUtils** に設定した場合は、自動的に検出されます。手動で追加する必要はありません。
-    - [[WinUtils.exe Location]\(WinUtils.exe の場所\)](#prerequisite-for-windows):システム環境変数が未設定である場合、対応するボタンをクリックして場所を探すことができます。
+    - [環境変数](#prerequisites):システム環境変数 **HADOOP_HOME** を **C:\WinUtils** に設定した場合は、自動的に検出されます。手動で追加する必要はありません。
+    - [[WinUtils.exe Location]\(WinUtils.exe の場所\)](#prerequisites):システム環境変数が未設定である場合、対応するボタンをクリックして場所を探すことができます。
     - 2 つのオプションのどちらかを選択するだけです。これらは MacOS と Linux では必要ありません。
 
 1. ローカル実行とローカル デバッグの前に構成を手動で設定することもできます。 先ほどのスクリーンショットの正符号 ( **+** ) を選択します。 次に **[HDInsight での Apache Spark]** オプションを選択します。 **[Name]\(名前\)** と **[Main class name]\(メイン クラス名\)** の情報を入力して保存し、ローカル実行ボタンをクリックします。
 
-### <a name="scenario-3-perform-local-debugging"></a>シナリオ 3:ローカル デバッグを実行する
+## <a name="perform-local-debugging"></a>ローカル デバッグを実行する
+
 1. **SparkCore_wasbloTest** スクリプトを開いてブレークポイントを設定します。
+
 1. スクリプト エディターを右クリックし、 **[Debug '[Spark on HDInsight]XXX']\('[Spark on HDInsight]XXX' のデバッグ\)** オプションを選択してローカル デバッグを実行します。
 
-## <a name="learn-how-to-perform-remote-run-and-debugging"></a>リモートで実行してデバッグする方法
-### <a name="scenario-1-perform-remote-run"></a>シナリオ 1:リモートで実行する
+## <a name="perform-remote-run"></a>リモートで実行する
 
-1. **[構成の編集]** メニューにアクセスするには、右上のアイコンを選択します。 このメニューでは、リモート デバッグの構成を作成または編集できます。
-
-   ![HDI Intellij の構成の編集](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png)
+1. **[実行]**  >  **[Edit Configurations...] (構成の編集...)** の順に移動します。このメニューでは、リモート デバッグの構成を作成または編集できます。
 
 1. **[実行/デバッグ構成]** ダイアログ ボックスで、プラス記号 ( **+** ) を選択します。 次に **[HDInsight での Apache Spark]** オプションを選択します。
 
@@ -124,7 +117,8 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
    ![Intellij のリモート Spark ジョブのデバッグ (リモート実行結果)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
-### <a name="scenario-2-perform-remote-debugging"></a>シナリオ 2:リモート デバッグを実行する
+## <a name="perform-remote-debugging"></a>リモート デバッグを実行する
+
 1. ブレークポイントを設定し、 **[Remote debug]\(リモート デバッグ\)** アイコンをクリックします。 リモート送信との違いは、SSH ユーザー名/パスワードの構成が必要である点です。
 
    ![Intellij のリモート Spark ジョブのデバッグ (デバッグ アイコン)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
@@ -133,7 +127,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
    ![Intellij のリモート Spark ジョブのデバッグ (デバッグ タグ)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
-### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>シナリオ 3:リモート デバッグを実行し、バグを修正するには
+### <a name="perform-remote-debugging-and-bug-fixing"></a>リモート デバッグを実行し、バグを修正するには
 
 1. 2 つのブレークポイントを設定し、 **[デバッグ]** アイコンを選択して、リモート デバッグ プロセスを開始します。
 
@@ -157,33 +151,38 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
    ![Intellij のリモート Spark ジョブのデバッグ (例外なし)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
 
-## <a name="seealso"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="demo"></a>デモ
+
 * Scala プロジェクトを作成する (ビデオ):[Apache Spark Scala アプリケーションを作成する](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
 * リモート デバッグ (ビデオ):[Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で Apache Spark アプリケーションをリモートでデバッグする](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>シナリオ
+
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
+
 * [Scala を使用してスタンドアロン アプリケーションを作成する](../hdinsight-apache-spark-create-standalone-application.md)
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
+
 * [Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for Eclipse の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>リソースの管理
+
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

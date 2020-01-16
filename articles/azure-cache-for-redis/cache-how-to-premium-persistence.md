@@ -1,22 +1,22 @@
 ---
-title: Premium Azure Cache for Redis のデータ永続化の構成方法
+title: データ永続化を構成する - Premium Azure Cache for Redis
 description: Premium レベルの Azure Cache for Redis インスタンス用にデータの永続化を構成して管理する方法について説明します
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: yegu
-ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122744"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412825"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
 
-Premium キャッシュのその他の機能については、「[Introduction to the Azure Cache for Redis Premium tier (Azure Cache for Redis Premium レベルの概要)](cache-premium-tier-intro.md)」を参照してください。
+Premium キャッシュのその他の機能については、「[Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## <a name="what-is-data-persistence"></a>データの永続化とは
 [Redis 永続化](https://redis.io/topics/persistence)を使用すると、Redis に格納されたデータを保持できます。 また、スナップショットを取得したりデータをバックアップしたりして、ハードウェア障害のときに読み込むことができます。 これは、Basic レベルや Standard レベルにはない大きな利点です。Basic/Standard レベルでは、すべてのデータはメモリに格納され、Cache ノードがダウンするような障害時にはデータが失われる可能性があります。 
@@ -172,7 +172,7 @@ AOF ファイルに格納されたデータは、ストレージへのデータ�
 再書き込み後、ストレージ内には 2 セットの AOF ファイルが存在します。 再書き込みはバックグラウンドで発生して最初のファイル セットに追加され、一方で再書き込み中にキャッシュに送信されるセット操作は 2 つ目のファイル セットに追加されます。 バックアップはエラーが発生した場合に備えて再書き込み中に一時的に保存されますが、再書き込みの完了後すぐに削除されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
 * [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)

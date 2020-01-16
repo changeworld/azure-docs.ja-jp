@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460678"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -26,9 +26,10 @@ ms.locfileid: "74483947"
 
 3. これは、Azure AD での他の高度なセキュリティやユーザー エクスペリエンス機能すべての基盤となります。
 
-4. 認証方法を実装した後に変更するのは困難です。
+ID は IT セキュリティの新しいコントロール プレーンであるため、認証は新しいクラウド環境への組織のアクセス ガードです。 組織には、セキュリティを強化し、クラウド アプリを侵入者から保護する ID コントロール プレーンが必要です。
 
-ID は IT セキュリティの新しいコントロール プレーンです。 したがって、認証は、新しいクラウド環境に対する組織のアクセスの保護です。 組織には、セキュリティを強化し、クラウド アプリを侵入者から保護する ID コントロール プレーンが必要です。
+> [!NOTE]
+> 認証方法を変更するには、計画、テスト、予測されるダウンタイムが必要です。 [段階的なロールアウト](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)は、テストを行って、フェデレーション認証からクラウド認証に段階的に移行するための優れた方法です。
 
 ### <a name="out-of-scope"></a>対象範囲外
 オンプレミスに既存のディレクトリ フットプリントを持たない組織は、この記事の対象範囲外です。 通常、このような組織は企業はクラウド内にのみ ID を作成し、ハイブリッド ID ソリューションを必要としません。 クラウド専用の ID はクラウドにのみ存在し、対応するオンプレミスの ID とは関連付けられません。
@@ -112,7 +113,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パススルー認証と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン後に不要なプロンプトが表示されないようになります。
 
-* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が、無効、ロックアウト、[パスワード期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)、またはユーザーに許可されているサインイン時間の超過の場合、アクセスは拒否されます。
+* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が無効、ロックアウト、[パスワードが期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)であるか、ログオンの試行時にユーザーに許可されているサインイン時間が超過した場合、アクセスは拒否されます。
 
     パススルー認証を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
 
@@ -152,7 +153,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 > [!NOTE]
 > Azure AD ハイブリッド ID ソリューションを展開するときは、Azure AD Connect のサポートされているトポロジの 1 つを実装する必要があります。 サポートされている構成とサポートされていない構成について詳しくは、「[Azure AD Connect のトポロジ](../../active-directory/hybrid/plan-connect-topologies.md)」をご覧ください。
 
-## <a name="architecture-diagrams"></a>アーキテクチャの図
+## <a name="architecture-diagrams"></a>アーキテクチャ図
 
 以下の図では、Azure AD ハイブリッド ID ソリューションで使用できる各認証方法に必要な、アーキテクチャ コンポーネントの概要を示します。 これにより、ソリューション間の相違点を比較することができます。
 
@@ -213,7 +214,7 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 各認証方法を検討してください。 ソリューションを展開するための作業量や、サインイン プロセスでのユーザーのエクスペリエンスは、ビジネス要件に合っているでしょうか。 各認証方法において、組織が高度なシナリオとビジネス継続性機能を必要とするかどうかを評価してください。 最後に、各認証方法の考慮事項を評価してください。 選択した方法を実装する妨げになる項目はありませんか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 今日の脅威は、常に、あらゆる場所に存在します。 適切な認証方法を実装することで、セキュリティ リスクが軽減され、ID が保護されます。
 

@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric コンテナー アプリケーションを作成する | Microsoft Docs
+title: Azure Service Fabric コンテナー アプリケーションを作成する
 description: Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。 Python アプリケーションで Docker イメージを作成して、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458016"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -200,7 +189,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>コンテナー化されたサービスを Visual Studio で作成する
 Service Fabric SDK およびツールには、コンテナー化されたアプリケーションを作成するときに役立つサービスのテンプレートが用意されています。
 
-1. Visual Studio を起動します。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
+1. Visual Studio を起動します。 **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 2. **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[OK]** をクリックします。
 3. **[サービス テンプレート]** の一覧から **[コンテナー]** を選択します。
 4. **[Image Name]\(イメージ名\)** に、コンテナー リポジトリにプッシュされたイメージである "myregistry.azurecr.io/samples/helloworldapp" を入力します。
@@ -354,7 +343,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server コンテナーの OS とホスト OS の互換性
 
-Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 例:
+Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 次に例を示します。
  
 - Windows Server バージョン 1709 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 2016 を実行しているホスト上では機能しません。 
 - Windows Server 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で Hyper-V 分離モードでのみ機能します。 
@@ -362,7 +351,7 @@ Windows Server コンテナーは、ホスト OS のすべてのバージョン�
  
 詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
 
-コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 例:
+コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 次に例を示します。
 
 - クラスター ノード上の OS と互換性のある OS のコンテナーを確実にデプロイする。
 - コンテナー アプリに指定された分離モードが、デプロイ先のノードのコンテナーの OS のサポートと一致していることを確認する。
@@ -606,7 +595,7 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

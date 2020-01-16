@@ -3,14 +3,14 @@ title: トラブルシューティング
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438104"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -52,13 +52,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>コントローラー名の文字数が原因でコントローラーの作成に失敗する
 
-Azure Dev Spaces コントローラー名の文字数は 31 文字までです。 AKS クラスターの Dev Spaces を有効にするとき、またはコントローラーを作成するときに、コントローラー名が 31 文字を超えているとエラーが発生します。 例:
+Azure Dev Spaces コントローラー名の文字数は 31 文字までです。 AKS クラスターの Dev Spaces を有効にするとき、またはコントローラーを作成するときに、コントローラー名が 31 文字を超えているとエラーが発生します。 次に例を示します。
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-この問題を解決するには、別の名前でコントローラーを作成します。 例:
+この問題を解決するには、別の名前でコントローラーを作成します。 次に例を示します。
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -159,7 +159,7 @@ Helm コマンドと Dev Spaces コマンドは両方とも同じ AKS クラス�
 
 プロジェクト内の特定の _Dockerfile_ を指示するように Azure Dev Spaces を構成できます。 Azure Dev Spaces で、コンテナーをビルドするために想定した _Dockerfile_ が使用されていないと思われる場合は、どの Dockerfile ファイルを使用するかを Azure Dev Spaces に明示的に通知する必要があります。 
 
-この問題を解決するには、Azure Dev Spaces によってプロジェクト内に生成された _azds.yaml_ ファイルを開きます。 *configurations: develop: build: dockerfile* を更新して、使用する Dockerfile を指示します。 例:
+この問題を解決するには、Azure Dev Spaces によってプロジェクト内に生成された _azds.yaml_ ファイルを開きます。 *configurations: develop: build: dockerfile* を更新して、使用する Dockerfile を指示します。 次に例を示します。
 
 ```yaml
 ...
@@ -206,7 +206,7 @@ install:
 
 サービス コードを起動できない場合、このエラーが表示されることがあります。 通常、原因はユーザー コードです。 より詳しい診断情報を入手するには、サービスを開始するときに、詳細なログを有効にします。
 
-詳細なログを有効にするには、コマンド ラインから `--verbose` を使用します。 `--output` を使用して出力形式を指定することもできます。 例:
+詳細なログを有効にするには、コマンド ラインから `--verbose` を使用します。 `--output` を使用して出力形式を指定することもできます。 次に例を示します。
 
 ```cmd
 azds up --verbose --output json
@@ -267,7 +267,7 @@ Service cannot be started.
 * *[BranchCache]* を右クリックし、 *[プロパティ]* を選択します。
 * *[停止]* をクリックします。
 * 必要に応じて、 *[スタートアップの種類]* を *[無効]* に設定して無効にすることができます。
-* Click *OK*.
+* [*OK*] をクリックします。
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio と Visual Studio Code を Azure Dev Spaces で使用するときに発生する一般的な問題
 
@@ -335,7 +335,7 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>承認エラー "Microsoft.DevSpaces/register/action"
 
-Azure Dev Spaces を管理するには、お使いの Azure サブスクリプション内に "*所有者*" または "*共同作成者*" アクセス権が必要です。 Dev Spaces を管理しようとしたが、関連付けられている Azure サブスクリプションに "*所有者*" アクセス権も "*共同作成者*" アクセス権もない場合、承認エラーが表示されることがあります。 例:
+Azure Dev Spaces を管理するには、お使いの Azure サブスクリプション内に "*所有者*" または "*共同作成者*" アクセス権が必要です。 Dev Spaces を管理しようとしたが、関連付けられている Azure サブスクリプションに "*所有者*" アクセス権も "*共同作成者*" アクセス権もない場合、承認エラーが表示されることがあります。 次に例を示します。
 
 ```console
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -391,7 +391,7 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
     * *[ロール]* で、 *[共同作成者]* または *[所有者]* を選択します。
     * *[アクセスの割り当て先]* で *[Azure AD のユーザー、グループ、サービス プリンシパル]* を選択します。
     * *[選択]* で、権限を付与するユーザーを検索します。
-1. [ *Save*] をクリックします。
+1. [*保存*] をクリックします。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
 

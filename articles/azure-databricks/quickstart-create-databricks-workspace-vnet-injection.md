@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893437"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889010"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>クイック スタート:自分の仮想ネットワークに Azure Databricks ワークスペースを作成する
 
@@ -25,11 +25,11 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -39,14 +39,14 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 2. **[仮想ネットワークの作成]** で、次の設定を適用します。 
 
-    |Setting|推奨値|説明|
+    |設定|推奨値|[説明]|
     |-------|---------------|-----------|
     |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
     |アドレス空間|10.1.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。 CIDR の範囲は /16 から /24 の間である必要があります|
     |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|**[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。|
     |Location|\<ユーザーに最も近いリージョンを選択\>|お客様の仮想ネットワークをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。|
-    |サブネット名|default|仮想ネットワークの既定のサブネットの名前を選択します。|
+    |サブネット名|既定値 (default)|仮想ネットワークの既定のサブネットの名前を選択します。|
     |サブネットのアドレス範囲|10.1.0.0/24|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります。 使用中のサブネットのアドレス範囲を編集することはできません。|
 
     ![Azure portal で仮想ネットワークを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 2. **[Azure Databricks サービス]** で、次の設定を適用します。
 
-    |Setting|推奨値|説明|
+    |設定|推奨値|[説明]|
     |-------|---------------|-----------|
     |ワークスペース名|databricks-quickstart|Azure Databricks ワークスペースの名前を選択します。|
     |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
@@ -106,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     ![Azure Databricks の Spark UI エグゼキュータ](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-sparkui-executors.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 記事を完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、 **[クラスター]** を選択します。 終了するクラスターで、 **[アクション]** 列の下にある省略記号をポイントし、 **[終了]** アイコンを選択します。 これによりクラスターが停止します。
 
@@ -114,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 クラスターを再利用しない場合は、Azure portal で作成したリソース グループを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワークにデプロイした Azure Databricks に Spark クラスターを作成しました。 次の記事に進み、Azure Databricks ノートブックから JDBC を使用して仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する方法を学習してください。  
 

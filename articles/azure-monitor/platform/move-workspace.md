@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278806"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980080"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
-この記事では、Log Analytics ワークスペースを同じリージョン内の別のリソース グループまたはサブスクリプションに移動する手順について説明します。 Azure portal、PowerShell、Azure CLI、または REST API を使用して Azure リソースを移動する方法について詳しくは、 「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/resource-group-move-resources.md)」をご覧ください。 
+この記事では、Log Analytics ワークスペースを同じリージョン内の別のリソース グループまたはサブスクリプションに移動する手順について説明します。 Azure portal、PowerShell、Azure CLI、または REST API を使用して Azure リソースを移動する方法について詳しくは、 「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」をご覧ください。 
 
 > [!IMPORTANT]
 > ワークスペースを別のリージョンに移動することはできません。
@@ -82,7 +82,7 @@ Azure portal を使用してワークスペースから Automation アカウン�
 
 ## <a name="move-your-workspace"></a>ワークスペースを移動する
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 Azure portal を使用してワークスペースを移動するには、次の手順を実行してください。
 
 1. **[Log Analytics ワークスペース]** メニューを開き、ワークスペースを選択します。
@@ -106,5 +106,5 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 > 移動操作後、削除されたソリューションと Automation アカウントのリンクを再構成して、ワークスペースを前の状態に戻す必要があります。
 
 
-## <a name="next-steps"></a>次の手順
-- 移動をサポートしているリソースのリストは、「[Move operation support for resources](../../azure-resource-manager/move-support-resources.md)」(リソースの移動操作のサポート) を参照してください。
+## <a name="next-steps"></a>次のステップ
+- 移動をサポートしているリソースのリストは、「[Move operation support for resources](../../azure-resource-manager/management/move-support-resources.md)」(リソースの移動操作のサポート) を参照してください。

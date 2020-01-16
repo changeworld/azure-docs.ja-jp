@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799042"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980546"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル:接続されたデバイスを一括管理する
 
@@ -29,7 +29,7 @@ Contoso のオペレーターは、新しいバージョンのファームウェ
 > * Azure portal でデバイス構成を作成する
 > * リモート監視ソリューションにデバイス構成をインポートする
 > * デバイス グループのデバイスに構成をデプロイする
-> * デプロイの監視
+> * 展開を監視する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -45,7 +45,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
 
-ファームウェアのファイルをホストするには、Azure ストレージ アカウントが必要です。 既存のストレージ アカウントを使うのでも、お使いのサブスクリプションに[新しいストレージ アカウントを作成する](../storage/common/storage-quickstart-create-account.md)のでもかまいません。
+ファームウェアのファイルをホストするには、Azure ストレージ アカウントが必要です。 既存のストレージ アカウントを使うのでも、お使いのサブスクリプションに[新しいストレージ アカウントを作成する](../storage/common/storage-account-create.md)のでもかまいません。
 
 チュートリアルでは、サンプル デバイスとして [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) デバイスを使用します。
 
@@ -71,11 +71,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 デバイスのグループでファームウェアを自動的に更新するには、デバイスがリモート監視ソリューションのデバイス グループのメンバーになっている必要があります。
 
-1. **[デバイス]** ページで、ソリューション アクセラレータに接続したすべての **IoT DevKit** デバイスを選択します。 次に、**[ジョブ]** をクリックします。
+1. **[デバイス]** ページで、ソリューション アクセラレータに接続したすべての **IoT DevKit** デバイスを選択します。 次に、 **[ジョブ]** をクリックします。
 
-1. **[ジョブ]** パネルで **[タグ]** を選択し、ジョブ名を **AddDevKitTag** に設定します。**IsDevKitDevice** という名前のテキスト タグを追加し、値を **Y** に設定します。次に、**[適用]** をクリックします。
+1. **[ジョブ]** パネルで **[タグ]** を選択し、ジョブ名を **AddDevKitTag** に設定します。**IsDevKitDevice** という名前のテキスト タグを追加し、値を **Y** に設定します。次に、 **[適用]** をクリックします。
 
-1. タグ値を使用してデバイス グループを作成できるようになります。 **[デバイス]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
+1. タグ値を使用してデバイス グループを作成できるようになります。 **[デバイス]** ページで、 **[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 1. 条件にタグ名 **IsDevKitDevice** と値 **Y** を使用するテキスト フィルターを作成します。 デバイス グループを **IoT DevKit デバイス**として保存します。
 
@@ -91,7 +91,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. **F1** キーを押してコマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Examples**。 次に、ボードとして **IoT DevKit** を選択します。
 
-1. **Firmware OTA** を探し、**[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開き、**firmware_ota** プロジェクト フォルダーが表示されます。
+1. **Firmware OTA** を探し、 **[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開き、**firmware_ota** プロジェクト フォルダーが表示されます。
 
     ![IoT Workbench、Firmware OTA サンプルの選択](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-firmware-example.png)
 
@@ -103,7 +103,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![ファームウェアのバージョンを変更する](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、**[Device Compile]\(デバイスのコンパイル\)** を選択してコードをコンパイルします。
+1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、 **[Device Compile]\(デバイスのコンパイル\)** を選択してコードをコンパイルします。
 
     ![デバイスのコンパイル](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>CRC 値を生成し、ファームウェアのファイル サイズを計算する
 
-1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、**[Generate CRC]\(CRC の生成\)** を選択します。
+1. コマンド パレットを開き、次のように入力して選択します: **IoT Workbench: Device**。 次に、 **[Generate CRC]\(CRC の生成\)** を選択します。
 
     ![CRC を生成する](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -123,11 +123,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 お使いの Azure ストレージ アカウントを使用して、クラウドで新しいファームウェア ファイルをホストします。
 
-1. Azure Portal のストレージ アカウントに移動します。 [サービス] セクションで、**[BLOB]** を選択します。 ファームウェア ファイルを保存するために、**firmware** という名前のパブリック コンテナーを作成します。
+1. Azure Portal のストレージ アカウントに移動します。 [サービス] セクションで、 **[BLOB]** を選択します。 ファームウェア ファイルを保存するために、**firmware** という名前のパブリック コンテナーを作成します。
 
     ![フォルダーを作成する](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
 
-1. ファームウェア ファイルをコンテナーにアップロードするには、**firmware** コンテナーを選択して、**[Upload]\(アップロード\)** をクリックします。
+1. ファームウェア ファイルをコンテナーにアップロードするには、**firmware** コンテナーを選択して、 **[Upload]\(アップロード\)** をクリックします。
 
 1. **FirmwareOTA.ino.bin** を選択します。 このファイルの完全なパスは、前のセクションで書き留めたものです。
 
@@ -206,11 +206,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 このセクションでは、リモート監視ソリューション アクセラレータにパッケージとしてデバイス構成をインポートします。 通常は、オペレーターがこのタスクを行います。
 
-1. リモート監視の Web UI で **[パッケージ]** ページに移動し、**[+ 新しいパッケージ]** をクリックします。
+1. リモート監視の Web UI で **[パッケージ]** ページに移動し、 **[+ 新しいパッケージ]** をクリックします。
 
     ![新しいパッケージ](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. **[New Package]\(新しいパッケージ\)** パネルで、パッケージの種類として **[Device configuration]\(デバイス構成\)** を選択し、構成の種類として **[Firmware]\(ファームウェア\)** を選択します。 **[Browse]\(参照\)** をクリックし、ローカル コンピューター上で **firmware-update.json** ファイルを探して、**[Upload]\(アップロード\)** をクリックします。
+1. **[New Package]\(新しいパッケージ\)** パネルで、パッケージの種類として **[Device configuration]\(デバイス構成\)** を選択し、構成の種類として **[Firmware]\(ファームウェア\)** を選択します。 **[Browse]\(参照\)** をクリックし、ローカル コンピューター上で **firmware-update.json** ファイルを探して、 **[Upload]\(アップロード\)** をクリックします。
 
     ![パッケージのアップロード](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -220,7 +220,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 このセクションでは、デバイス構成を IoT DevKit デバイスに適用するデプロイを作成して実行します。
 
-1. リモート監視の Web UI で **[デプロイ]** ページに移動し、**[+ 新しいデプロイ]** をクリックします。
+1. リモート監視の Web UI で **[デプロイ]** ページに移動し、 **[+ 新しいデプロイ]** をクリックします。
 
     ![新しいデプロイ](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentpage.png)
 
@@ -233,7 +233,7 @@ If this is going to be a tutorial - we need to split this include into two so th
     |Configuration type (構成の種類)|Firmware|
     |Package|firmware-update.json|
     |デバイス グループ|IoT DevKit デバイス|
-    |優先順位|10|
+    |Priority|10|
 
     ![Create deployment](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
@@ -244,7 +244,7 @@ If this is going to be a tutorial - we need to split this include into two so th
     * **[Succeeded]\(成功\)** には、成功を報告しているデプロイ内のデバイスの数が表示されます。
     * **[Failed]\(失敗\)** には、失敗を報告しているデプロイ内のデバイスの数が表示されます。
 
-## <a name="monitor-the-deployment"></a>デプロイの監視
+## <a name="monitor-the-deployment"></a>展開を監視する
 
 数分経つと、IoT DevKit で新しいファームウェア情報が取得されて、デバイスへのダウンロードが開始されます。
 
@@ -272,6 +272,6 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ソリューションに接続されているデバイスのグループのファームウェアを更新する方法を示しました。 デバイスを更新するため、ソリューションではデバイスの自動管理が使用されます。 ソリューションの基になっている IoT ハブでの自動デバイス管理機能について詳しくは、「[Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)」をご覧ください。

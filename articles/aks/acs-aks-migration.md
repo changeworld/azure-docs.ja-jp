@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658544"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889518"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -87,9 +87,9 @@ az aks create \
 
 ## <a name="ensure-valid-quotas"></a>有効なクォータを確保する
 
-移行中に追加の仮想マシンがサブスクリプションに展開されるため、クォータと制限がこれらのリソースに十分であることを確認する必要があります。 [vCPU クォータ](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)の増量を要求することが必要になる場合があります。
+移行中に追加の仮想マシンがサブスクリプションに展開されるため、クォータと制限がこれらのリソースに十分であることを確認する必要があります。 [vCPU クォータ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)の増量を要求することが必要になる場合があります。
 
-IP を使い切らないようにするには、[ネットワーク クォータ](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests)の増量を要求することが必要になる場合があります。 詳細については、[AKS のネットワークと IP 範囲](https://docs.microsoft.com/azure/aks/configure-kubenet)に関するページを参照してください。
+IP を使い切らないようにするには、[ネットワーク クォータ](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)の増量を要求することが必要になる場合があります。 詳細については、[AKS のネットワークと IP 範囲](https://docs.microsoft.com/azure/aks/configure-kubenet)に関するページを参照してください。
 
 詳細については、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) に関する記事を参照してください。 現在のクォータを確認するには、Azure portal で[サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して **[使用量 + クォータ]** を選択します。
 

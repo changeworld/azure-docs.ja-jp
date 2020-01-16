@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451312"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
-Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Windows Virtual Desktop FSLogix プロファイル コンテナー ユーザー プロファイルのために Azure Storage で用意されているストレージ ソリューションを比較します。
+Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Windows Virtual Desktop FSLogix ユーザー プロファイル コンテナーのために Azure で用意されているストレージ ソリューションを比較します。
 
 Windows Virtual Desktop では、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
 
@@ -24,7 +24,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-platform-details"></a>Azure プラットフォームの詳細
 
-|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
 |リージョン別の提供状況|すべてのリージョン|[リージョンの選択](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|すべてのリージョン|
@@ -36,16 +36,16 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 
-|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
-|Access|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
+|アクセス|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
 |バックアップ|Azure Backup スナップショット統合|Azure NetApp Files スナップショット|Azure Backup スナップショット統合|
 |セキュリティとコンプライアンス|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 完了|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory の統合|Azure Active Directory と Azure Active Directory Domain Services|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
 
 ストレージ方法を選択したら、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」で Microsoft の価格設定に関する情報をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 FSLogix プロファイル コンテナー、ユーザー プロファイルディスク、その他のユーザー プロファイル テクノロジの詳細については、「[FSLogix プロファイル コンテナーと Azure のファイル](fslogix-containers-azure-files.md)」の表を参照してください。
 

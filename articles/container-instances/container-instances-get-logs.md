@@ -1,25 +1,25 @@
 ---
 title: コンテナー インスタンスのログとイベントの取得
-description: Azure Container Instances でコンテナーのログとイベントを使用してデバッグを行う方法を学習する
+description: コンテナーの問題のトラブルシューティングに役立つように、Azure Container Instances でコンテナーのログとイベントを取得する方法について説明します
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481743"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664735"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances でコンテナーのログとイベントを取得する
 
-コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認し、[az container attach][az-container-attach] でその標準出力と標準エラーをストリーム配信することから始めます。
+Azure Container Instances でコンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認し、[az container attach][az-container-attach] でその標準出力と標準エラーをストリーム配信することから始めます。 Azure portal でコンテナー インスタンスのログとイベントを表示したり、コンテナー グループのログとイベント データを [Azure Monitor ログ](container-instances-log-analytics.md)に送信したりすることもできます。
 
 ## <a name="view-logs"></a>ログを表示する。
 
 アプリケーション コードからコンテナー内のログを表示するには、[az container logs][az-container-logs] コマンドを使用できます。
 
-「[Azure Container Instances でコンテナー化タスクを実行する](container-instances-restart-policy.md)」で説明されるタスク ベースのコンテナーの例に、処理する無効な URL を指定した後の、コンテナーからのログ出力を次に示します。
+次に示すのは、[コンテナー インスタンスでのコマンド ラインの設定](container-instances-start-command.md#azure-cli-example)に関する記事のタスク ベースのコンテナーの例に、コマンド ラインのオーバーライドを使用して無効な URL を指定した後のログ出力です。
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -47,7 +47,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 [az container attach][az-container-attach] コマンドによって、コンテナーの起動中の診断情報が提供されます。 コンテナーが起動すると、ローカルのコンソールにコンテナーの STDOUT と STDERR がストリーミングされます。
 
-例として、「[Azure Container Instances でコンテナー化タスクを実行する](container-instances-restart-policy.md)」のタスク ベースのコンテナーに、処理する大きなテキスト ファイルの有効な URL を指定した後の、コンテナーからの出力を次に示します。
+例として、[コンテナー インスタンスでのコマンド ラインの設定](container-instances-start-command.md#azure-cli-example)に関する記事のタスク ベースのコンテナーに、処理する大きなテキスト ファイルの有効な URL を指定した後の、コンテナーからの出力を次に示します。
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -76,7 +76,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>診断イベントの取得
 
-コンテナーが正常にデプロイされない場合は、Azure Container Instances のリソース プロバイダーによって提供される診断情報を見直す必要があります。 コンテナーのイベントを表示するには、[az container show][az-container-show] コマンドを実行します。
+コンテナーが正常にデプロイされない場合は、Azure Container Instances のリソース プロバイダーによって提供される診断情報を確認してください。 コンテナーのイベントを表示するには、[az container show][az-container-show] コマンドを実行します。
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -142,9 +142,12 @@ az container show --resource-group myResourceGroup --name mycontainer
   ...
 }
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Container Instances の[コンテナーとデプロイに関する一般的な問題をトラブルシューティングする](container-instances-troubleshooting.md)方法を学習します。
+
+コンテナー グループのログおよびイベント データを [Azure Monitor ログ](container-instances-log-analytics.md)に送信する方法を学習します。
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach
 [az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529985"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969655"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 
 > [!WARNING]
-> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-subscription.md)」を参照してください。
+> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-legacy.md)」を参照してください。
 
-[Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
+[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
 
 ## <a name="archive-activity-log"></a>アクティビティ ログをアーカイブする
 ストレージ アカウントへのアクティビティ ログのアーカイブは、監査、静的分析、またはバックアップのために (保持ポリシーを完全に制御して) 90 日よりも長くログ データを保持する場合に便利です。 90 日以内でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アクティビティ ログのイベントは Azure プラットフォームに 90 日間保持されるためです。
@@ -28,12 +28,12 @@ ms.locfileid: "75529985"
 ## <a name="stream-activity-log-to-event-hub"></a>アクティビティ ログをイベント ハブにストリーミングする
 [Azure Event Hubs](/azure/event-hubs/) はデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 アクティビティ ログのストリーミング機能は、次の 2 つの方法で使用できます。
 * **サード パーティのログおよびテレメトリ システムにストリーミングする**:将来的に、Azure Event Hubs のストリーミングは、アクティビティ ログをサード パーティの SIEM やログ分析ソリューションにパイプ処理するためのメカニズムになります。
-* **カスタムのテレメトリおよびログ プラットフォームを構築する**:カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。 
+* **カスタムのテレメトリおよびログ プラットフォームを構築する**:カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="storage-account"></a>ストレージ アカウント
-アクティビティ ログをアーカイブしていて、まだストレージ アカウントを持っていない場合は、[作成する](../../storage/common/storage-quickstart-create-account.md)必要があります。 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 ただし、ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
+アクティビティ ログをアーカイブしていて、まだストレージ アカウントを持っていない場合は、[作成する](../../storage/common/storage-account-create.md)必要があります。 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 ただし、ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
 
 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 > [!NOTE]
@@ -65,7 +65,7 @@ ms.locfileid: "75529985"
 
 
 > [!IMPORTANT]
-> Microsoft.Insights リソースプロバイダーが登録されていない場合、ログ プロファイルを作成するときにエラーが発生することがあります。 このプロバイダーの登録については、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+> Microsoft.Insights リソースプロバイダーが登録されていない場合、ログ プロファイルを作成するときにエラーが発生することがあります。 このプロバイダーの登録については、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Azure portal を使用してログ プロファイルを作成する
@@ -77,7 +77,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     ![ポータルの [エクスポート] ボタン](media/activity-log-export/portal-export.png)
 
 3. ブレードが表示されたら、次のように指定します。
-   * エクスポートするイベントが含まれるリージョン。 アクティビティ ログはグローバルな (リージョン別ではない) ログであり、ほとんどのイベントがリージョンと関連付けられていないため、すべてのリージョンを選択して重要なイベントを確実に見逃さないようにする必要があります。 
+   * エクスポートするイベントが含まれるリージョン。 アクティビティ ログはグローバルな (リージョン別ではない) ログであり、ほとんどのイベントがリージョンと関連付けられていないため、すべてのリージョンを選択して重要なイベントを確実に見逃さないようにする必要があります。
    * ストレージ アカウントに書き込む場合:
        * イベントの保存先となるストレージ アカウント。
        * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
@@ -167,5 +167,5 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アクティビティ ログについて詳しく学習します](../../azure-resource-manager/resource-group-audit.md)
+* [アクティビティ ログについて詳しく学習します](../../azure-resource-manager/management/view-activity-logs.md)
 * [Azure Monitor ログにアクティビティ ログを収集する](activity-log-collect.md)

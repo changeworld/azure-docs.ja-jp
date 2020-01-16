@@ -2,18 +2,18 @@
 title: リソースファイルの作成と使用 - Azure Batch
 description: さまざまな入力ソースから Batch リソースファイルを作成する方法について説明します。 この記事では、VM 上に作成して配置する方法について、いくつかの一般的な方法について説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: lahugh
-ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: 61d4baffe65da52f8ca926bc911b26e3f1c9a79a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390047"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029350"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する
 

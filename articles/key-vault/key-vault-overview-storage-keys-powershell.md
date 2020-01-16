@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980861"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -54,7 +54,7 @@ Key Vault は、すべての Azure AD テナントに事前登録されている
 
 - [Azure PowerShell モジュールをインストールします](/powershell/azure/install-az-ps?view=azps-2.6.0)。
 - [Key Vault を作成します](quick-create-powershell.md)
-- [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)を作成します。 ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。
+- [Azure Storage アカウント](../storage/common/storage-account-create.md?tabs=azure-powershell)を作成します。 ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。
       
 
 ## <a name="manage-storage-account-keys"></a>ストレージ アカウント キーを管理する
@@ -262,7 +262,7 @@ Write-Host $secret.SecretValueText
 このコマンドの出力で SAS 定義文字列が表示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マネージド ストレージ アカウント キーのサンプル](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)

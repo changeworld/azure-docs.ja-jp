@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect クラウド プロビジョニングの新しいエージェント構成
-description: このトピックでは、クラウド プロビジョニングのインストール方法について説明します。
+description: この記事では、クラウド プロビジョニングのインストール方法について説明します。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,77 +11,86 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997124"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549433"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect クラウド プロビジョニングの新しい構成
+# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect クラウド プロビジョニングの新しいエージェント構成
 
-エージェントをインストールしたら、Azure Portal にサインインしてプロビジョニングを構成する必要があります。  エージェントを有効にするには、次の手順に従います。
+エージェントをインストールしたら、Azure portal にサインインして Azure Active Directory (Azure AD) Connect クラウド プロビジョニングを構成する必要があります。 エージェントを有効にするには、次の手順に従います。
 
 ## <a name="configure-provisioning"></a>プロビジョニングの構成
-プロビジョニングを構成するには次の手順に従います。
+プロビジョニングを構成するのには、次の手順に従います。
 
-1.  Azure AD ポータルで **[Azure Active Directory]** をクリックします。
-2.  **[Azure AD Connect]** をクリックします。
-3.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
-![](media/how-to-configure/manage1.png)
+1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
+1.  **[Azure AD Connect]** を選びます。
+1.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
 
-4.  **[新しい構成]** をクリックします。
-5.  構成画面では、オンプレミス ドメインが事前に設定されています。
-6. **[通知用メール]** に入力します。 このメールは、プロビジョニングが正常でない場合に通知されます。  
-8. セレクターを **[有効]** に移動し、 **[保存]** をクリックします。
-![](media/tutorial-single-forest/configure2.png)
+    ![プロビジョニングの管理 (プレビュー)](media/how-to-configure/manage1.png)
 
-## <a name="scoping-provisioning-to-specific-users-and-groups"></a>特定のユーザーとグループに対するプロビジョニングのスコープ設定
-特定のユーザーとグループだけを同期するようにエージェントをスコープ設定したい場合は、それを行うことができます。 オンプレミスの AD グループまたは組織単位を使用して、スコープを設定できます。 1 つの構成内でグループと組織単位を構成することはできません。 
+1.  **[新しい構成]** を選択します。
+1.  構成画面では、オンプレミス ドメインが事前に設定されています。
+1.  **[通知用メール]** に入力します。 このメールは、プロビジョニングが正常でない場合に通知されます。
+1.  セレクターを **[有効]** に移動し、 **[保存]** を選択します。
 
-1.  Azure AD ポータルで **[Azure Active Directory]** をクリックします。
-2.  **[Azure AD Connect]** をクリックします。
-3.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
-4.  **[構成]** の下で、自分の構成をクリックします。  
-![](media/how-to-configure/scope1.png)
+    ![Azure AD のプロビジョニング (プレビュー)](media/tutorial-single-forest/configure2.png)
 
-5.  **[構成]** で **[すべてのユーザー]** を選択して、構成規則のスコープを変更します。
-![](media/how-to-configure/scope2.png)
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>特定のユーザーとグループに対するプロビジョニングのスコープ設定
+オンプレミスの Active Directory グループまたは組織単位を使用して、特定のユーザーとグループを同期するようにエージェントをスコープ設定できます。 1 つの構成内でグループと組織単位を構成することはできません。 
 
-6. 右側で、グループの識別名を入力して **[追加]** をクリックし、セキュリティ グループだけを含むようにスコープを変更できます。
-![](media/how-to-configure/scope3.png)
+1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
+1.  **[Azure AD Connect]** を選びます。
+1.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
+1.  **[構成]** の下で、自分の構成を選択します。
 
-7. または、特定の OU だけを含むように変更します。 **[完了]** 、 **[保存]** の順にクリックします。
-![](media/how-to-configure/scope4.png)
+    ![構成セクション](media/how-to-configure/scope1.png)
+
+1.  **[構成]** で **[すべてのユーザー]** を選択して、構成規則のスコープを変更します。
+
+    ![[すべてのユーザー] オプション](media/how-to-configure/scope2.png)
+
+1. 右側で、セキュリティ グループのみを含めるようにスコープを変更できます。 グループの識別名を入力し、 **[追加]** を選択します。
+
+    ![[選択したセキュリティ グループ] オプション](media/how-to-configure/scope3.png)
+
+1.  または、特定の組織単位のみを含めるようにスコープを変更することもできます。 **[完了]** 、 **[保存]** の順に選択します。
+
+    ![[選択した組織単位] オプション](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>プロビジョニングを再開する 
-スケジュールされた次回の実行を待ちたくない場合は、[プロビジョニングを再開する] ボタンを使用してプロビジョニングの実行をトリガーできます。 
-1.  Azure AD ポータルで **[Azure Active Directory]** をクリックします。
-2.  **[Azure AD Connect]** をクリックします。
-3.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
-4.  **[構成]** の下で、自分の構成をクリックします。  
-![](media/how-to-configure/scope1.png)
+スケジュールされた次回の実行を待ちたくない場合は、 **[プロビジョニングを再開する]** ボタンを使用してプロビジョニングの実行をトリガーします。 
+1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
+1.  **[Azure AD Connect]** を選びます。
+1.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
+1.  **[構成]** の下で、自分の構成を選択します。
 
-5.  上部にある **[プロビジョニングを再開する]** をクリックします。
+    ![プロビジョニングを再開するための構成の選択](media/how-to-configure/scope1.png)
 
-## <a name="removing-a-configuration"></a>構成の削除
-構成を削除する場合は、次の手順に従って行うことができます。
+1.  上部にある **[プロビジョニングを再開する]** を選択します。
 
-1.  Azure AD ポータルで **[Azure Active Directory]** をクリックします。
-2.  **[Azure AD Connect]** をクリックします。
-3.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
-4.  **[構成]** の下で、自分の構成をクリックします。  
-![](media/how-to-configure/scope1.png)
+## <a name="remove-a-configuration"></a>構成の削除
+構成を削除するには、次の手順に従います。
 
-5.  上部にある **[削除]** をクリックします。
-![](media/how-to-configure/remove1.png)
+1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
+1.  **[Azure AD Connect]** を選びます。
+1.  **[プロビジョニングの管理 (プレビュー)]** を選択します。
+1.  **[構成]** の下で、自分の構成を選択します。
+
+    ![構成を削除するための構成の選択](media/how-to-configure/scope1.png)
+
+1.  構成画面の上部にある **[削除]** を選択します。
+
+    ![[削除] ボタン](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->構成を削除する前に確認が行われないため、 **[削除]** をクリックする前に、これが行いたいアクションであることを必ず確認してください。
+>構成を削除する前に確認は行われません。 **[削除]** を選択する前に、これが実行するアクションであることを確認してください。
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

@@ -2,19 +2,19 @@
 title: Blob Storage モジュールのイベントに対応する - Azure Event Grid IoT Edge | Microsoft Docs
 description: Blob Storage モジュールのイベントに対応する
 author: arduppal
-manager: mchad
+manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 10/02/2019
+ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437281"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
 この記事では、Azure BLOB ストレージを IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
@@ -34,7 +34,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 モジュールを IoT Edge デバイスにデプロイするにはいくつかの方法があり、そのうちどれでも Azure Event Grid on IoT Edge で使用できます。 この記事では、Azure portal で Event Grid on IoT Edge をデプロイする手順について説明します。
 
 >[!NOTE]
-> このチュートリアルでは、Event Grid モジュールを永続化せずにデプロイします。 つまり、このチュートリアルで作成するすべてのトピックとサブスクリプションは、モジュールを再デプロイすると削除されます。 永続化を設定する方法の詳細については、次の記事を参照してください (「[Linux で状態を永続化する](persist-state-linux.md)」または「[Windows で状態を永続化する](persist-state-windows.md)」)。 運用環境のワークロードの場合は、永続化を使用して Event Grid モジュールをインストールすることをお勧めします。
+> このチュートリアルでは、Event Grid モジュールを永続化せずにデプロイします。 つまり、このチュートリアルで作成するすべてのトピックとサブスクリプションは、モジュールを再デプロイすると削除されます。 永続化を設定する方法の詳細については、次の記事を参照してください。「[Linux で状態を永続化する](persist-state-linux.md)」または「[Windows で状態を永続化する](persist-state-windows.md)」。 運用環境のワークロードの場合は、永続化を使用して Event Grid モジュールをインストールすることをお勧めします。
 
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge デバイスを選択する
@@ -55,16 +55,16 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 1. モジュールの種類のドロップダウン リストから、 **[IoT Edge モジュール]** を選択します
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
-   * **名前**: eventgridmodule
-   * **イメージの URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **[名前]** : eventgridmodule
+   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **[コンテナーの作成オプション]** :
 
     ```json
         {
           "Env": [
            "inbound:serverAuth:tlsPolicy=enabled",
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+           "inbound:clientAuth:clientCert:enabled=false",
+           "outbound:webhook:httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -77,11 +77,12 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
           }
         }
     ```    
+
  1. **[保存]**
  1. 次のセクションに進み、Azure Functions モジュールを追加します
 
     >[!IMPORTANT]
-    > このチュートリアルでデプロイする Event Grid モジュールでは、HTTP 要求と HTTPS 要求の両方を許可し、クライアント認証を無効にして、HTTP サブスクライバーを許可します。 運用環境のワークロードについては、HTTPS 要求のみを許可し、サブスクライバーではクライアント認証を有効にすることをお勧めします。 Event Grid モジュールを安全に構成する方法の詳細については、「[セキュリティと認証](security-authentication.md)」を参照してください。
+    > このチュートリアルでは、Event Grid モジュールをデプロイして、HTTP 要求と HTTPS 要求の両方を許可し、クライアント認証を無効にして、HTTP サブスクライバーを許可する方法を学習します。 運用環境のワークロードについては、HTTPS 要求のみを許可し、サブスクライバーではクライアント認証を有効にすることをお勧めします。 Event Grid モジュールを安全に構成する方法の詳細については、「[セキュリティと認証](security-authentication.md)」を参照してください。
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Azure Functions IoT Edge モジュールをデプロイする
@@ -98,7 +99,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
    * **名前**: subscriber
-   * **イメージの URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
+   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
    * **[コンテナーの作成オプション]** :
 
        ```json
@@ -118,9 +119,6 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 1. **[保存]**
 1. 次のセクションに進み、Azure Blob Storage モジュールを追加します
 
-> [!NOTE]
-> Blob Storage モジュールでは、HTTP を使用してイベントを発行します。 Event Grid モジュールでは、`inbound:serverAuth:tlsPolicy=enabled` の構成を使用して HTTP および HTTPS 要求の両方が許可されていることを確認します。
-
 ## <a name="deploy-azure-blob-storage-module"></a>Azure Blob Storage モジュールをデプロイする
 
 このセクションでは、Azure Blob Storage モジュールをデプロイする方法について説明します。これは、BLOB の作成および削除イベントを発行する Event Grid パブリッシャーとして機能します。
@@ -132,7 +130,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 3. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
    * **名前**: azureblobstorageoniotedge
-   * **イメージの URI**: mcr.microsoft.com/azure-blob-storage:1.2.2-preview
+   * **イメージの URI**: mcr.microsoft.com/azure-blob-storage:latest
    * **[コンテナーの作成オプション]** :
 
 ```json
@@ -152,6 +150,12 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
          }
        }
 ```
+> [!IMPORTANT]
+> - Blob Storage モジュールでは、HTTPS と HTTP の両方を使用してイベントを発行できます。 
+> - EventGrid 用のクライアント ベースの認証を有効にしている場合は、必ず https を許可するように EVENTGRID_ENDPOINT の値を更新します (例: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`)。 
+> - さらに、上記の JSON にもう 1 つの環境変数 `AllowUnknownCertificateAuthority=true` を追加します。 HTTPS 経由で EventGrid を使用する場合、**AllowUnknownCertificateAuthority** によって、ストレージ モジュールで自己署名済みの EventGrid サーバー証明書を信頼することができます。
+
+
 
 4. コピーした JSON を次の情報で更新します。
 
@@ -182,7 +186,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 ## <a name="verify-your-deployment"></a>デプロイを確認する
 
 1. デプロイを送信すると、自分の IoT ハブの IoT Edge ページに戻ります。
-2. デプロイで対象にした **IoT Edge** デバイスを選択して、その詳細を開きます。
+2. デプロイで対象にした **IoT Edge デバイス**を選択して、その詳細を開きます。
 3. デバイスの詳細で、eventgridmodule、subscriber、azureblobstorageoniotedge の各モジュールが、 **[デプロイで指定]** と **[デバイス別に報告]** の両方に表示されていることを確認します。
 
    モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。
@@ -210,7 +214,11 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
         ]
     ```
 
-2. サブスクライバーは、トピックに発行されたイベントに登録できます。 イベントを受信するには、**MicrosoftStorage** トピックの Event Grid サブスクリプションを作成する必要があります。
+    > [!IMPORTANT]
+    > - HTTPS のフローでは、SAS キーによってクライアント認証が有効になっている場合、前に指定した SAS キーをヘッダーとして追加する必要があります。 そのため、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - HTTPS のフローでは、証明書によってクライアント認証が有効になっている場合、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+
+2. サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、**MicrosoftStorage** トピックの Event Grid サブスクリプションを作成する必要があります。
     1. 次の内容を含む blobsubscription.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください
 
     ```json
@@ -235,7 +243,12 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
     curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
     ```
 
-    3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返されます。
+    > [!IMPORTANT]
+    > - HTTPS のフローでは、SAS キーによってクライアント認証が有効になっている場合、前に指定した SAS キーをヘッダーとして追加する必要があります。 そのため、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+    > - HTTPS のフローでは、証明書によってクライアント認証が有効になっている場合、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+
+
+    3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -259,6 +272,10 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
           }
         }
     ```
+
+    > [!IMPORTANT]
+    > - HTTPS のフローでは、SAS キーによってクライアント認証が有効になっている場合、前に指定した SAS キーをヘッダーとして追加する必要があります。 そのため、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+    > - HTTPS のフローでは、証明書によってクライアント認証が有効になっている場合、curl 要求は次のようになります: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
 2. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) をダウンロードし、[お使いのローカル ストレージにそれを接続します](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
@@ -332,7 +349,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 サポートされているイベント プロパティと、その種類および説明の一覧を次に示します。 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -345,19 +362,19 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 次のいずれかの値を指定できます。 <ul><li>BlobCreated: 使用できる値は、`PutBlob` と `PutBlockList` です</li><li>BlobDeleted: 使用できる値は、`DeleteBlob`、`DeleteAfterUpload`、および `AutoDelete` です。 <p>DeleteAfterUpload の必要なプロパティが true に設定されているために BLOB が自動的に削除されると、`DeleteAfterUpload` イベントが生成されます。 </p><p>deleteAfterMinutes の必要なプロパティ値の期限が過ぎたために BLOB が自動的に削除されると、`AutoDelete` イベントが生成されます。</p></li></ul>|
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 詳細については、[ログの形式](/rest/api/storageservices/storage-analytics-log-format)に関するページを参照してください。 |
 | requestId | string | ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
 | eTag | string | この値を使用することで、条件に応じて操作を実行することができます。 |
 | contentType | string | BLOB に関して指定されたコンテンツの種類。 |
-| contentLength | integer | BLOB のサイズ (単位: バイト)。 |
+| contentLength | 整数 (integer) | BLOB のサイズ (単位: バイト)。 |
 | blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
 | url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* という構造になります。 <br>クライアントが Data Lake Storage REST API を使用する場合、url は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* という構造になります。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Blob Storage のドキュメントのうち、次の記事をご覧ください。
 

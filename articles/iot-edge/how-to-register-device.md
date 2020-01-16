@@ -4,17 +4,17 @@ description: Azure CLI の IoT 拡張機能を使用して新しい IoT Edge デ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 793ddcb9f218248c396e10f23201dfe905545ceb
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5ab9c778adef29a8e531158e062e9d35d4e80ae4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434125"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge デバイスを登録する
 
@@ -55,7 +55,7 @@ IoT ハブに接続するすべてのエッジ対応デバイスが、**IoT Edge
 デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。
 
 1. ポータルの **IoT Edge** ページで、IoT Edge デバイスの一覧からデバイス ID をクリックします。
-2. **[接続文字列 (主キー)]** または **[接続文字列 (セカンダリ キー)]** の値をコピーします。
+2. **[プライマリ接続文字列]** または **[セカンダリ接続文字列]** のどちらかの値をコピーします。
 
 ## <a name="register-with-visual-studio-code"></a>Visual Studio Code を使用した登録
 
@@ -122,7 +122,7 @@ IoT ハブに接続するすべてのデバイスは、Visual Studio Code エク
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLI を使用して IoT Edge デバイスを作成する
 
-[az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) コマンドを使用して、IoT ハブに新しいデバイス ID を作成します。 例:
+[az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) コマンドを使用して、IoT ハブに新しいデバイス ID を作成します。 次に例を示します。
 
    ```cli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -138,7 +138,7 @@ IoT ハブに接続するすべてのデバイスは、Visual Studio Code エク
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLI を使用して IoT Edge デバイスを表示する
 
-IoT ハブのすべてのデバイスを表示するには、[az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) コマンドを使用します。 例:
+IoT ハブのすべてのデバイスを表示するには、[az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) コマンドを使用します。 次に例を示します。
 
    ```cli
    az iot hub device-identity list --hub-name [hub name]
@@ -156,7 +156,7 @@ IoT Edge デバイスとして登録されたすべてのデバイスのプロ�
 
 `device-id` パラメーターの値は、大文字と小文字が区別されます。 接続文字列を囲む引用符はコピーしないでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで IoT ハブにデバイス ID が登録されたので、デバイスに IoT Edge ランタイムをインストールする準備ができました。 デバイスのオペレーティング システムに応じて、ランタイムをインストールします。
 

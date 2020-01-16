@@ -2,13 +2,13 @@
 title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409082"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -220,9 +220,9 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
-Azure Functions ランタイム ロガーへのアクセスは、ご利用の関数アプリ内のルート [ `logging`](https://docs.python.org/3/library/logging.html#module-logging) ハンドラーを介して利用できます。 このロガーは Application Insights に関連付けられているため、関数の実行中に検出される警告とエラーにフラグを設定することができます。
+Azure Functions ランタイム ロガーへのアクセスは、ご利用の関数アプリ内のルート [`logging`](https://docs.python.org/3/library/logging.html#module-logging) ハンドラーを介して利用できます。 このロガーは Application Insights に関連付けられているため、関数の実行中に検出される警告とエラーにフラグを設定することができます。
 
 次の例では、HTTP トリガーを介して関数が呼び出されるときに、情報メッセージが記録されます。
 
@@ -236,7 +236,7 @@ def main(req):
 
 他にもログ記録メソッドが用意されています。これにより、さまざまなトレース レベルでコンソールへの書き込みが可能になります。
 
-| 方法                 | 説明                                |
+| 方法                 | [説明]                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
 | **`error(_message_)`**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |
@@ -280,28 +280,30 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
 
-## <a name="concurrency"></a>コンカレンシー
+## <a name="scaling-and-concurrency"></a>スケーリングとコンカレンシー
 
-既定では、Functions Python ランタイムで一度に処理できる関数の呼び出しは 1 つだけです。 このコンカレンシー レベルは、次の条件の 1 つ以上に当てはまる場合、十分ではない場合があります。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 Functions では、インスタンスを追加するタイミングを決定するために、メッセージの経過時間や QueueTrigger のキュー サイズなど、トリガーの種類に応じた組み込みの (ユーザーが構成できない) しきい値を使用します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
 
-+ 多数の呼び出しを同時に処理しようとしている。
-+ 大量の I/O イベントを処理している。
-+ アプリケーションが I/O バインドされている。
+多くのアプリケーションでは、このスケーリング動作で十分です。 ただし、次のいずれかの特性を持つアプリケーションは、効果的にスケーリングできない場合があります。
 
-このような状況では、複数の言語ワーカー プロセスを使用して非同期的に実行することにより、パフォーマンスを向上させることができます。  
+- アプリケーションで多くの同時呼び出しを処理する必要がある。
+- アプリケーションが大量の I/O イベントを処理する。
+- アプリケーションが I/O バインドされている。
+
+そのような場合、非同期パターンを採用し、複数の言語ワーカー プロセスを使用することで、パフォーマンスをさらに向上させることができます。
 
 ### <a name="async"></a>非同期
 
-`async def` ステートメントを使用して、関数を非同期のコルーチンとして実行することをお勧めします。
+Python はシングルスレッド ランタイムであるため、Python のホスト インスタンスは一度に 1 つの関数呼び出ししか処理できません。 大量の I/O イベントを処理するアプリケーションや、I/O バインドされているアプリケーションでは、関数を非同期に実行することによってパフォーマンスを向上させることができます。
+
+関数を非同期に実行するには、`async def` ステートメントを使用します。これにより、[asyncio](https://docs.python.org/3/library/asyncio.html) を使用して関数が直接実行されます。
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-`main()` 関数が同期 (`async` 修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
+`async` キーワードを持たない関数は、自動的に asyncio スレッド プールで実行されます。
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,13 +314,15 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
 
-既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 ただし、ホスト インスタンスあたり複数の言語ワーカー プロセスを作成することはサポートされています。 関数呼び出しは、これらの言語ワーカー プロセス間で均等に分散させることができます。 この値を変更するには、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用します。 
+既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカー プロセスの数を増やすことができます (最大 10)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT は、需要に応じてアプリケーションをスケールアウトするときに Functions が作成する各ホストに適用されます。 
 
 ## <a name="context"></a>Context
 
 実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 引数を含めます。 
 
-例:
+次に例を示します。
 
 ```python
 import azure.functions
@@ -639,7 +643,7 @@ OPTIONS HTTP メソッドをサポートするように、function.json も更�
 
 このメソッドは、許可配信元一覧をネゴシエートするために Chrome ブラウザーによって使用されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

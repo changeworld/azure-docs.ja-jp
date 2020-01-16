@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931903"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982192"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -29,15 +29,15 @@ ms.locfileid: "74931903"
 オンプレミス データ ストアとの間でデータを移動できるようにするには、オンプレミス コンピューターに Data Management Gateway をインストールする必要があります。 ゲートウェイはデータ ストアと同じコンピューターにインストールできるほか、ゲートウェイがデータ ストアに接続できれば別のコンピューターにインストールしてもかまいません。
 
 > [!IMPORTANT]
-> Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。 
+> Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
 
 以下のチュートリアルでは、オンプレミスの **SQL Server** データベースから Azure BLOB ストレージにデータを移動するパイプラインを備えたデータ ファクトリを作成する方法を説明します。 チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>チュートリアル: オンプレミスのデータをクラウドにコピーする
-このチュートリアルでは、次の手順を実行します。 
+このチュートリアルでは、次の手順を実行します。
 
 1. データ ファクトリを作成します。
-2. データ管理ゲートウェイを作成します。 
+2. データ管理ゲートウェイを作成します。
 3. ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。
 4. 入力データと出力データを表すデータセットを作成します。
 5. コピー アクティビティでデータを移動するパイプラインを作成します。
@@ -46,8 +46,8 @@ ms.locfileid: "74931903"
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」をご覧ください。
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。 
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
+* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
 この手順では、Azure Portal を使用して **ADFTutorialOnPremDF**という名前の Azure Data Factory インスタンスを作成します。
@@ -90,7 +90,7 @@ ms.locfileid: "74931903"
     ![[ゲートウェイの作成] ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > このチュートリアルでは、ノードが 1 つだけある論理ゲートウェイを作成します (ノードはオンプレミスの Windows マシン です)。 データ管理ゲートウェイは、複数のオンプレミス マシンをゲートウェイに関連付けることによって、スケールアウトできます。 1 つのノードで同時に実行できるデータ移動ジョブ数を増やすことで、スケールアップできます。 この機能は、単一のノードを持つ論理ゲートウェイでも使用できます。 詳細については、[Azure Data Factory でのデータ管理ゲートウェイのスケーリング](data-factory-data-management-gateway-high-availability-scalability.md)に関する記事をご覧ください。  
+    > このチュートリアルでは、ノードが 1 つだけある論理ゲートウェイを作成します (ノードはオンプレミスの Windows マシン です)。 データ管理ゲートウェイは、複数のオンプレミス コンピューターをゲートウェイに関連付けることによって、スケールアウトできます。 1 つのノードで同時に実行できるデータ移動ジョブ数を増やすことで、スケールアップできます。 この機能は、単一のノードを持つ論理ゲートウェイでも使用できます。 詳細については、[Azure Data Factory でのデータ管理ゲートウェイのスケーリング](data-factory-data-management-gateway-high-availability-scalability.md)に関する記事をご覧ください。  
 4. **[構成]** ページで、 **[このコンピューターに直接インストール]** をクリックします。 この操作により、ゲートウェイのインストール パッケージのダウンロードと、コンピューターへのインストール、構成、および登録が行われます。  
 
    > [!NOTE]
@@ -361,9 +361,9 @@ ms.locfileid: "74931903"
    * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
-   start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+   start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 
-   **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 無期限でパイプラインを実行するには、**end** プロパティの値として **9/9/9999** を指定します。
+   **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 
    Azure Data Factory データセットごとに定義された **Availability** プロパティに基づいてデータ スライスが処理される期間を定義します。
 
@@ -410,6 +410,6 @@ ms.locfileid: "74931903"
 
    ![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
 * コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する方法については、 [Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事をご覧ください。

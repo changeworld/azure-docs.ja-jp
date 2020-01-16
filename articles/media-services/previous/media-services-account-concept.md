@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b4c19b1f502d079d7dfcc1edef4674d21f78ac3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67622074"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981939"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services v2 アカウントの管理
 
@@ -24,7 +24,7 @@ Azure でメディア コンテンツの管理、暗号化、エンコード、�
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動 
 
-Media Services アカウントを新しいサブスクリプションに移動する必要がある場合は、まず、Media Services アカウントを含むリソース グループ全体を新しいサブスクリプションに移動する必要があります。 接続されている次のすべてのリソースを移動する必要があります。Azure Storage アカウント、Azure CDN プロファイルなど。詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 Azure の他のリソースの場合と同様に、リソース グループの移動にはその完了まで時間がかかることがあります。
+Media Services アカウントを新しいサブスクリプションに移動する必要がある場合は、まず、Media Services アカウントを含むリソース グループ全体を新しいサブスクリプションに移動する必要があります。 接続されている次のすべてのリソースを移動する必要があります。Azure Storage アカウント、Azure CDN プロファイルなど。詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。 Azure の他のリソースの場合と同様に、リソース グループの移動にはその完了まで時間がかかることがあります。
 
 Media Services v2 では、マルチ テナント モデルはサポートされていません。 新しいテナント内のサブスクリプションに Media Services アカウントを移動する必要がある場合は、その新しいテナント内に新しい Azure Active Directory (Azure AD) アプリケーションを作成します。 次にご自分のアカウントを新しいテナント内のサブスクリプションに移動します。 テナント移動が完了したら、v2 API を使用して Media Services アカウントにアクセスするために、新しいテナントから Azure AD アプリケーションの使用を開始することができます。 
 
@@ -36,12 +36,12 @@ Media Services v2 では、マルチ テナント モデルはサポートされ
 * ストリーミング エンドポイントとライブ ストリーミング リソースをすべて停止する必要があります。 リソース グループの移動中、ユーザーはコンテンツにアクセスできません。 
 
 > [!IMPORTANT]
-> 移動が正常に完了するまでストリーミング エンドポイントを開始しないでください。
+> 移動が正常に完了するまで、ストリーミング エンドポイントを開始しないでください。
 
-### <a name="troubleshoot"></a>トラブルシューティング 
+### <a name="troubleshoot"></a>[トラブルシューティング] 
 
 リソース グループの移動後に、Media Services アカウントまたは関連付けられた Azure Storage アカウントが "切断" される場合、ストレージ アカウント キーの交換を試してください。 ストレージ アカウント キーの交換で Media Services アカウントの "切断" 状態が解決されない場合は、Media Services アカウントの [サポート + トラブルシューティング] メニューから新しいサポート リクエストを提出してください。  
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アカウントの作成](media-services-portal-create-account.md)

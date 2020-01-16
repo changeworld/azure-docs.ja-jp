@@ -3,12 +3,12 @@ title: イメージのロック
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972927"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -17,7 +17,7 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 この記事では、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 > [!IMPORTANT]
-> この記事は、Azure portal の **[設定] > [ロック]** 、または Azure CLI で `az lock` コマンドを使用するレジストリ全体のロックには適用されません。 レジストリ リソースをロックしても、レポジトリ内のデータの作成、更新、または削除は実行できます。 レジストリのロックは、レプリケーションの追加や削除、あるいはレジストリ自体の削除などの管理操作にのみ影響します。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
+> この記事は、Azure portal の **[設定] > [ロック]** 、または Azure CLI で `az lock` コマンドを使用するレジストリ全体のロックには適用されません。 レジストリ リソースをロックしても、レポジトリ内のデータの作成、更新、または削除は実行できます。 レジストリのロックは、レプリケーションの追加や削除、あるいはレジストリ自体の削除などの管理操作にのみ影響します。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
 ## <a name="scenarios"></a>シナリオ
 

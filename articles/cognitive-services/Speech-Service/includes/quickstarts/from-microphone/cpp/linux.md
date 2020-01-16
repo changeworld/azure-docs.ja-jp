@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:マイクから音声を認識する、C++ (Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Linux で C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 42f4b093ddec763bddb651e2ff24d51b613d5009
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b2b59eb4c81f28a0bb74aca11d925405256c16a5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818752"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928084"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +62,7 @@ ms.locfileid: "74818752"
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 1. Speech SDK ライブラリを指すようにローダーのライブラリ パスを構成します。
 
@@ -98,6 +97,6 @@ ms.locfileid: "74818752"
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

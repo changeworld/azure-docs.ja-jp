@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129281"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981461"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -135,7 +135,7 @@ Azure でホストされる DSC リソースを作成して管理し、クラウ
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションと[リソース グループ](../../azure-resource-manager/manage-resources-portal.md)の両方に対してポリシーを定義することで、より詳細な定義が可能になります。
+Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションと[リソース グループ](../../azure-resource-manager/management/manage-resources-portal.md)の両方に対してポリシーを定義することで、より詳細な定義が可能になります。
 
 ![Azure Security Center の図](./media/threat-detection/azure-threat-detection-fig8.png)
 
@@ -382,7 +382,7 @@ Web アプリケーション ファイアウォールには、次のような利
 
 Azure Marketplace で使用可能な Web アプリケーション ファイアウォールの例については、[Barracuda WAF、Brocade 仮想 Web アプリケーション ファイアウォール (vWAF)、Imperva SecureSphere、ThreatSTOP IP ファイアウォール](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [今日の脅威への対応](../../security-center/security-center-alerts-overview.md#respond-threats):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric でのメトリックの最適化 | Microsoft Docs
-description: Service Fabric でのメトリック向け戦略としての最適化またはパッキングの使用の概要
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric でのメトリックの最適化
+description: Service Fabric でのメトリック用の戦略としての最適化またはパッキングの使用について説明します。 この手法は、非常に大きなサービスに役立ちます。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844415"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563362"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric のメトリックと負荷の最適化
 Service Fabric クラスター リソース マネージャーで、クラスターの負荷メトリックを管理する既定の戦略は、負荷を分散することです。 ノードが均等に利用されるようにすることで、リソースの競合や無駄につながるホット スポットとコールド スポットを回避します。 また、クラスター内のワークロードの分散化も、障害対応の観点から見て最も安全です。障害が発生しても、ワークロードの大部分が消費される事態を回避できるからです。 
@@ -97,8 +88,8 @@ ClusterManifest.xml:
 ```
 
 
-## <a name="next-steps"></a>次の手順
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションについて詳しくは、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事をご覧ください
+## <a name="next-steps"></a>次のステップ
+- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

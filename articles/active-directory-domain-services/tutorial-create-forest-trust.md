@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: f861303b7f3bc8d37caf6da0eaf2f4cef4b36ee5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425428"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -43,6 +43,9 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * リソース フォレストを使用して作成され、ご利用の Azure AD テナント内で構成された Azure Active Directory Domain Services マネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance-advanced]してください。
+    
+    > [!IMPORTANT]
+    > 必ず*リソース* フォレストを使用して Azure AD DS マネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -82,6 +85,10 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. **[スタート] | [管理ツール] | [Active Directory Active Directory ドメインと信頼関係]** の順に選択します。
 1. *onprem.contoso.com* などのドメインを右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
+
+   > [!NOTE]
+   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、Azure AD DS マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
+
 1. Azure AD DS ドメイン名に対して名前 (*aadds.contoso.com* など) を入力してから、 **[次へ]** を選択します。
 1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal で Azure AD DS マネージド ドメインに対する信頼を作成します。
@@ -195,7 +202,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 1. 変更アクセス許可を検証するには、ファイルにテキストを追加し、 **[メモ帳]** を閉じます。 変更を保存するように促すメッセージが表示されたら、 **[保存]** を選択します。
 1. 削除アクセス許可を検証するには、 **[新しいテキスト ドキュメント]** を右クリックし、 **[削除]** を選択します。 ファイルの削除を確定するには **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

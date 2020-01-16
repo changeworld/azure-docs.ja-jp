@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric クラスター設定の変更 | Microsoft Docs
+title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/30/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: aab59af7031d8b2d8aa52e9ba13b73a204f19acc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615553"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458344"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -101,7 +90,7 @@ ms.locfileid: "73615553"
 |UpgradeHealthCheckInterval |秒単位。既定値は 60 |動的|監視対象アプリケーションをアップグレードしているときに、正常性状態をチェックする頻度 |
 |UpgradeStatusPollInterval |秒単位。既定値は 60 |動的|アプリケーションのアップグレード状態をポーリングする頻度。 この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります |
 
-## <a name="common"></a>一般
+## <a name="common"></a>共通
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
@@ -132,8 +121,8 @@ ms.locfileid: "73615553"
 |ApplicationLogsFormatVersion |int、既定値は 0 | 動的 |アプリケーション ログの形式のバージョン。 サポートされる値は 0 と 1 です。 バージョン 1 には、バージョン 0 よりも多くの ETW イベント レコードのフィールドが含まれます。 |
 |AuditHttpRequests |ブール値、既定値は false | 動的 | HTTP 監査をオンまたはオフにします。 監査の目的は、要求を開始したユーザーを含め、クラスターに対して実行されたアクティビティを確認することです。 これはログ記録の最適な試行であり、トレースの損失が発生する可能性があることに注意してください。 "ユーザー" 認証を使用した HTTP 要求は記録されません。 |
 |CaptureHttpTelemetry|ブール値、既定値は true | 動的 | HTTP テレメトリをオンまたはオフにします。 テレメトリの目的は、Service Fabric でテレメトリ データをキャプチャして将来の作業を計画し、問題のある領域を特定できるようにすることです。 テレメトリには、個人データや要求の本文は記録されません。 特に構成されていない限り、テレメトリにはすべての HTTP 要求がキャプチャされます。 |
-|ClusterId |string | 動的 |クラスターの一意の ID。 これはクラスターの作成時に生成されます。 |
-|ConsumerInstances |string | 動的 |DCA コンシューマー インスタンスのリスト。 |
+|ClusterId |String | 動的 |クラスターの一意の ID。 これはクラスターの作成時に生成されます。 |
+|ConsumerInstances |String | 動的 |DCA コンシューマー インスタンスのリスト。 |
 |DiskFullSafetySpaceInMB |int、既定値は 1024 | 動的 |DCA によって使用されないようにする残りのディスク領域 (MB)。 |
 |EnableCircularTraceSession |ブール値、既定値は false | 静的 |循環トレース セッションを使用する必要があるかどうかを示すフラグ。 |
 |EnablePlatformEventsFileSink |ブール値、既定値は false | 静的 |ディスクに書き込まれるプラットフォーム イベントを有効または無効にします |
@@ -141,7 +130,7 @@ ms.locfileid: "73615553"
 |FailuresOnlyHttpTelemetry | ブール値、既定値は false | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows Fabric のログ ファイルのディスク クォータ (MB)。 |
-|ProducerInstances |string | 動的 |DCA プロデューサー インスタンスのリスト。 |
+|ProducerInstances |String | 動的 |DCA プロデューサー インスタンスのリスト。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
@@ -515,7 +504,7 @@ ms.locfileid: "73615553"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|Counters |string | 動的 |収集するパフォーマンス カウンターのコンマ区切りリスト。 |
+|Counters |String | 動的 |収集するパフォーマンス カウンターのコンマ区切りリスト。 |
 |IsEnabled |ブール値、既定値は true | 動的 |ローカル ノードでのパフォーマンス カウンターの収集が有効になっているかどうかを示すフラグ。 |
 |MaxCounterBinaryFileSizeInMB |int、既定値は 1 | 動的 |各パフォーマンス カウンター バイナリ ファイルの最大サイズ (MB)。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |int、既定値は 10 | 動的 |新しいパフォーマンス カウンター バイナリ ファイルを作成するまでの最大間隔 (秒単位)。 |
@@ -648,7 +637,7 @@ ms.locfileid: "73615553"
 |RunAsAccountType|string、既定値は "" |動的|RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
 |RunAsPassword|string、既定値は "" |動的|RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AADCertEndpointFormat|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" のような既定以外の環境用に指定される AAD 証明書エンドポイントの形式。既定値は Azure Commercial。 |
@@ -840,10 +829,10 @@ ms.locfileid: "73615553"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string、既定値は ""| 静的 |コンテナー ネットワークを設定するときに使用するネットワーク名。|
 |ContainerNetworkSetup|ブール値、既定値は FALSE| 静的 |コンテナー ネットワークを設定するかどうか。|
-|FabricDataRoot |string | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
-|FabricLogRoot |string | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
+|FabricDataRoot |String | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
+|FabricLogRoot |String | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
 |NodesToBeRemoved|string、既定値は ""| 動的 |構成のアップグレードの一環として削除する必要があるノード (スタンドアロンのデプロイのみ)。|
-|ServiceRunAsAccountName |string | 禁止 |Fabric ホスト サービスを実行するアカウント名。 |
+|ServiceRunAsAccountName |String | 禁止 |Fabric ホスト サービスを実行するアカウント名。 |
 |SkipContainerNetworkResetOnReboot|ブール値、既定値は FALSE|禁止|再起動時のコンテナー ネットワークのリセットをスキップするかどうか。|
 |SkipFirewallConfiguration |ブール値、既定値は false | 禁止 |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |
 
@@ -920,5 +909,5 @@ ms.locfileid: "73615553"
 | --- | --- | --- | --- |
 |PropertyGroup| UserServiceMetricCapacitiesMap、既定値は None | 静的 | ユーザー サービスのリソース ガバナンスに関する制限のコレクション。AutoDetection ロジックに影響するので静的である必要があります |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)および[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。

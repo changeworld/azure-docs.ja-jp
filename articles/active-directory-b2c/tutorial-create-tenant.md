@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: de29929c8fda476fe276f91d4a68ce4d632503fd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425586"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -27,7 +27,7 @@ ms.locfileid: "71345215"
 > * Azure AD B2C テナントを作成する
 > * サブスクリプションへのテナントのリンク
 > * Azure AD B2C テナントが含まれているディレクトリに切り替える
-> * Azure portal で Azure AD B2C リソースを "*お気に入り*" として追加する
+> * Azure portal で Azure AD B2C リソースを "**お気に入り**" として追加する
 
 次のチュートリアルでは、アプリケーションを登録する方法を学習します。
 
@@ -35,15 +35,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-1. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。
+1. [Azure portal](https://portal.azure.com/) にサインインする サブスクリプション内、またはサブスクリプション内のリソース グループ内で[共同作成者](../role-based-access-control/built-in-roles.md)以上のロールが割り当てられている Azure アカウントでサインインします。
 
-    上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
+1. ご利用のサブスクリプションが含まれているディレクトリを選択します。
 
-    ![サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-select-directory.png)
+    Azure portal のツール バーで、 **[Directory + Subscription]\(ディレクトリ + サブスクリプション\)** アイコンを選択し、ご利用のサブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
 
-1. Azure portal の左上隅にある **[Create a resource]\(リソースの作成\)** を選択します。
-1. **Active Directory B2C** を検索して選択し、 **[作成]** を選択します。
+    ![サブスクリプション テナント、サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-pick-directory.png)
+
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
+1. **[Azure Active Directory B2C]** を検索して、 **[作成]** を選択します。
 1. **[Create a new Azure AD B2C Tenant]\(新しい Azure AD B2C テナントの作成\)** を選択します。
 
     ![Azure portal で選択された新しい Azure AD B2C テナントを作成する](media/tutorial-create-tenant/portal-02-create-tenant.png)
@@ -82,18 +83,18 @@ Azure portal の上部のメニューにある **[ディレクトリ + サブス
 
 この省略可能な手順を実行すると、次のチュートリアルおよび以降のすべてのチュートリアルでの Azure AD B2C テナントの選択が容易になります。
 
-テナントの操作が必要になるたびに **[All services]\(すべてのサービス\)** で「Azure AD B2C」を検索するのではなく、そのリソースをお気に入りとして設定することができます。 これにより、左側の **[Favorites]\(お気に入り\)** メニューから選択することで、Azure AD B2C テナントを素早く参照することができます。
+テナントの操作が必要になるたびに **[すべてのサービス]** から「*Azure AD B2C*」を検索する代わりに、そのリソースをお気に入りとして設定することができます。 これにより、ポータル メニューの **[お気に入り]** セクションから選択することで、Azure AD B2C テナントを素早く参照することができます。
 
 この操作は 1 回だけ実行する必要があります。 これらの手順を実行する前に、前の「[B2C テナントのディレクトリを選択する](#select-your-b2c-tenant-directory)」セクションの説明に従って Azure AD B2C テナントを含むディレクトリに切り替えていることを確認してください。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[All Services]\(すべてのサービス\)** を選択します
-1. 検索テキスト ボックスに「*Azure AD B2C*」と入力します
-1. **星印**を選択して、Azure AD B2C をお気に入りに追加します
-1. *Azure AD B2C* が、左側の **[お気に入り]** メニューに表示されるようになりました。 次の図に示すように、必要に応じてそれを選択し、一覧内で上の方にドラッグすることができます。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. Azure portal のメニューで、 **[すべてのサービス]** を選択します。
+1. **[すべてのサービス]** 検索ボックスで、「**Azure AD B2C**」を検索し、検索結果の上にマウス ポインターを移動して、ヒント内の星のアイコンを選択します。 **Azure AD B2C** が Azure portal の **[お気に入り]** に表示されるようになりました。
+1. 新しいお気に入りの位置を変更する場合は、Azure portal のメニューに移動し、 **[Azure AD B2C]** を選択して、目的の位置まで上下にドラッグします。
 
-![Azure portal で Azure AD B2C をお気に入りとして追加する手順](media/tutorial-create-tenant/portal-08-favorite-b2c.png)
+    ![Azure AD B2C、[お気に入り] メニュー、Microsoft Azure portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 
@@ -101,7 +102,7 @@ Azure portal の上部のメニューにある **[ディレクトリ + サブス
 > * Azure AD B2C テナントを作成する
 > * サブスクリプションへのテナントのリンク
 > * Azure AD B2C テナントが含まれているディレクトリに切り替える
-> * Azure portal で Azure AD B2C リソースを "*お気に入り*" として追加する
+> * Azure portal で Azure AD B2C リソースを "**お気に入り**" として追加する
 
 次に、新しいテナントに Web アプリケーションを登録する方法を学びます。
 

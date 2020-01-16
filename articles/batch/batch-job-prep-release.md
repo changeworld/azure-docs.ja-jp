@@ -3,7 +3,7 @@ title: コンピューティング ノードでジョブを準備しジョブを
 description: Azure Batch コンピューティング ノード間のデータ転送を最小にするにはジョブ レベルの準備タスクを使用し、ジョブの完了時にノードをクリーンアップするには解放タスクを使用します。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095133"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027125"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -185,7 +185,7 @@ Sample complete, hit ENTER to exit...
 
 ![Job preparation properties in Azure portal][1]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ### <a name="application-packages"></a>アプリケーション パッケージ
 タスクの実行に使用するコンピューティング ノードは、ジョブの準備タスクのほか、Batch の [アプリケーション パッケージ](batch-application-packages.md) 機能を使用して準備することもできます。 この機能は特に、インストーラーの実行を必要としないアプリケーションや、多数 (100 個超) のファイルを含んだアプリケーション、厳密なバージョン管理が要求されるアプリケーションをデプロイする場合に利便性を発揮します。
 

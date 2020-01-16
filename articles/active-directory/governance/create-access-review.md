@@ -1,5 +1,5 @@
 ---
-title: グループまたはアプリケーションのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+title: グループとアプリケーションのアクセス レビューを作成する - Azure AD
 description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューで作成する方法について説明します。
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422667"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
 従業員およびゲストに対するグループやアプリケーションへのアクセスは、時間の経過と共に変化します。 アクセスの割り当てが古いことで生じるリスクを軽減するために、管理者は、グループ メンバーまたはアプリケーションのアクセスに対するアクセス レビューを Azure Active Directory (Azure AD) を使用して作成することができます。 定期的にアクセスをレビューする必要がある場合は、繰り返すアクセス レビューを作成することもできます。 これらのシナリオについて詳しくは、[ユーザー アクセスの管理](manage-user-access-with-access-reviews.md)と[ゲスト アクセスの管理](manage-guest-access-with-access-reviews.md)に関するページをご覧ください。
 
@@ -132,7 +132,7 @@ ms.locfileid: "68499720"
 
 API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 詳しくは、[Azure AD アクセス レビュー API リファレンス](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)のページをご覧ください。 コード サンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph (Microsoft Graph を使用して Azure AD アクセス レビューを取得する例)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループまたはアプリケーションへのアクセスのレビュー](perform-access-review.md)
 - [グループまたはアプリケーションへの自分のアクセス権のレビュー](review-your-access.md)
