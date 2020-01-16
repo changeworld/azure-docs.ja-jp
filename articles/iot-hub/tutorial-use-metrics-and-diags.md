@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429098"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746202"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>チュートリアル:メトリックと診断ログを設定して IoT ハブと連携させる
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>診断ログを有効にする 
 
-新しい IoT ハブを作成すると、既定では[診断ログ](../azure-monitor/platform/resource-logs-overview.md)が無効になっています。 このセクションでは、ご自分のハブの診断ログを有効にします。
+新しい IoT ハブを作成すると、既定では[診断ログ](../azure-monitor/platform/platform-logs-overview.md)が無効になっています。 このセクションでは、ご自分のハブの診断ログを有効にします。
 
 1. まず、ご自分のハブがポータルに表示されていない場合は、 **[リソース グループ]** をクリックし、Contoso-Resources というリソース グループをクリックしてください。 表示されたリソースの一覧からハブを選択します。 
 

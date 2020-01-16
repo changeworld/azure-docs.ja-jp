@@ -3,16 +3,16 @@ title: チュートリアル:タグ ガバナンスを管理する
 description: このチュートリアルでは、新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するために、Azure Policy の Modify 効果を使用します。
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482265"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965995"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 
-[タグ](../../../azure-resource-manager/resource-group-using-tags.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources)したりするための基礎にすることができます。
+[タグ](../../../azure-resource-manager/management/tag-resources.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)したりするための基礎にすることができます。
 タグを使用する方法や理由にかかわらず、Azure リソースのタグをすばやく追加、変更、および削除できることが重要です。
 
 Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在のリソース ガバナンスの段階に関係なく、タグのガバナンスを支援するように設計されています。 **Modify** は、次の場合に役立ちます。
@@ -194,7 +194,7 @@ Azure 環境内に存在する環境ごとに、[Modify](../concepts/effects.md#
 
 [deployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシーと同様に、**Modify** ポリシーでは修復タスクを使用して、既存の準拠していないリソースを変更します。 [リソースを修復する方法](../how-to/remediate-resources.md)の手順に従って、準拠していない **Modify** リソースを識別し、定義した分類に対するタグを修正します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルのリソースに対する作業が完了した場合は、次の手順を使用して、ここで作成した割り当てまたは定義をすべて削除してください。
 
@@ -204,7 +204,7 @@ Azure 環境内に存在する環境ごとに、[Modify](../concepts/effects.md#
 
 1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
 
-## <a name="review"></a>レビュー
+## <a name="review"></a>確認
 
 このチュートリアルでは、以下のタスクについて学習しました。
 
@@ -213,7 +213,7 @@ Azure 環境内に存在する環境ごとに、[Modify](../concepts/effects.md#
 > - 各要件をポリシー定義にマップする
 > - タグ ポリシーをイニシアチブにグループ化する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポリシー定義の構造の詳細については、次の記事を参照してください。
 

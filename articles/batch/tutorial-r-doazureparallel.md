@@ -2,21 +2,21 @@
 title: Azure Batch での並列 R シミュレーション
 description: チュートリアル - doAzureParallel R パッケージを使用して、Azure Batch で金融のモンテ カルロ シミュレーションを実行する詳しい手順
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321898"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029214"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
 
@@ -110,7 +110,7 @@ generateClusterConfig("cluster.json")
 * `maxTasksPerNode` を *2* に増やし、各ノード上で両方のコアを活用できるようにします。
 * `dedicatedNodes` を *0* に設定し、Batch で使用できる低優先度 VM を試すことができるようにします。 `lowPriorityNodes` の `min` を *5* に設定します。 `max` を *10* に設定するか、必要に応じてより小さい数を選択します。 
 
-残りの設定は既定値のままにして、ファイルを保存します。 次のようになります。
+残りの設定は既定値のままにして、ファイルを保存します。 これは次のようになります。
 
 ```json
 {
@@ -248,7 +248,7 @@ difftime(end_p, start_p, unit = "min")
 
 Batch プールでシミュレーションを実行することで、ローカルでシミュレーションを実行する場合の予測時間よりもパフォーマンスが著しく向上することがわかります。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 完了後、ジョブは自動的に削除されます。 もうクラスターが必要ない場合、doAzureParallel パッケージの `stopCluster` 関数を呼び出して削除します。
 
@@ -256,7 +256,7 @@ Batch プールでシミュレーションを実行することで、ローカ�
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

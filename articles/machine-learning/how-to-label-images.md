@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7ff3651d082f1649326e1b41b13fa177069c40d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532345"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772450"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける
 
-プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
+プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法
@@ -114,5 +114,5 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure で画像分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)方法を確認します
+* [Azure で画像分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)方法を確認します
 * [Azure と "Faster R-CNN" 手法を使用したオブジェクト検出](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)について確認します

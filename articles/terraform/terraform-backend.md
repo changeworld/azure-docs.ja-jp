@@ -3,12 +3,12 @@ title: チュートリアル - Terraform 状態を Azure Storage に格納する
 description: Terraform 状態を Azure Storage に格納する方法の紹介。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: d1b622a372be48bf044b512f3c964a5720fc3c5b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159341"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708426"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>チュートリアル:Terraform 状態を Azure Storage に格納する
 
@@ -84,6 +84,7 @@ Terraform でバックエンドを使用するように構成するには、次�
 ```hcl
 terraform {
   backend "azurerm" {
+    resource_group_name   = "tstate"
     storage_account_name  = "tstate09762"
     container_name        = "tstate"
     key                   = "terraform.tfstate"
@@ -119,7 +120,7 @@ Azure BLOB の格納データは、永続化される前に暗号化されます
 
 Azure Storage 暗号化の詳細については、[保存データに対する Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)

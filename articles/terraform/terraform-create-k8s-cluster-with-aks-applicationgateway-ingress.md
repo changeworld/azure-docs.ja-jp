@@ -3,12 +3,12 @@ title: チュートリアル - Azure Kubernetes Service で Application Gateway 
 description: Azure Kubernetes Service を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159095"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867396"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service で Application Gateway イングレス コントローラーを作成する
 
@@ -261,7 +261,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -759,7 +759,7 @@ App Gateway、AKS、AGIC をインストールしたら、[Azure Cloud Shell](ht
     kubectl apply -f aspnetapp.yaml
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。  
 
@@ -769,7 +769,7 @@ App Gateway、AKS、AGIC をインストールしたら、[Azure Cloud Shell](ht
 az group delete -n <resource-group>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Application Gateway イングレス コントローラー](https://azure.github.io/application-gateway-kubernetes-ingress/)

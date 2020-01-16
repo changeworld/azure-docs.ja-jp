@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214813"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732326"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -52,11 +52,11 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[ロード バランサー]** の順にクリックします。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
-    | Subscription               | サブスクリプションを選択します。    |    
+    | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLBAZ*」と入力します。|
-    | 名前                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
     | 種類          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
@@ -106,7 +106,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *100* - **優先度**
     - *myHTTPRule* - ロード バランサー規則の名前。
     - *HTTP を許可する* - ロード バランサー規則の説明。
-4. Click **OK**.
+4. **[OK]** をクリックします。
  
    ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
@@ -127,7 +127,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myVM1* - 仮想マシンの名前です。        
     - *azureuser* - 管理者のユーザー名です。    
     - *myResourceGroupLBAZ* - **リソース グループ**。 **[既存のものを使用]** を選択し、 *[myResourceGroupLBAZ]* を選択します。
-2. Click **OK**.
+2. **[OK]** をクリックします。
 3. 仮想マシンのサイズとして **[DS1_V2]** を選択し、 **[選択]** をクリックします。
 4. VM の設定に以下の値を入力します。
     - *ゾーン 1* - VM を配置するゾーン。
@@ -197,7 +197,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *80* - ポート番号。
     - *15* - プローブの試行の**間隔**を示す秒数。
     - *2* - **異常しきい値**またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
    ![プローブの追加](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -214,7 +214,8 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *80* - バックエンド ポート。
     - *myBackendPool* - バックエンド プールの名前。
     - *myHealthProbe* - 正常性プローブの名前。
-4. Click **OK**.
+4. **[OK]** をクリックします。
+    
     
     ![負荷分散規則の追加](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
@@ -227,10 +228,10 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ロード バランサーがゾーン全体に分散されている VM 間でトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、 **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。

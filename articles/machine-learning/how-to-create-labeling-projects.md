@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 019c75e67534198494d7591602bd5f9023704a1d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533105"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765071"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -49,7 +49,7 @@ Machine Learning では、プロジェクトの開始と停止、メンバーや
 
 ラベル付けプロジェクトは、Azure Machine Learning から管理します。 **[Labeling projects]\(ラベル付けプロジェクト\)** ページを使用して、プロジェクトとメンバーを管理します。 プロジェクトには 1 つまたは複数のチームが割り当てられ、チームには 1 人以上のユーザーが割り当てられます。
 
-データが既に Azure Blob Storage 内にある場合は、ラベル付けプロジェクトを作成する前に、それをデータストアとして使用できるようにする必要があります。 詳細については、「[データストアの作成と登録](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)」を参照してください。
+データが既に Azure Blob Storage 内にある場合は、ラベル付けプロジェクトを作成する前に、それをデータストアとして使用できるようにする必要があります。 詳細については、「[データストアの作成と登録](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)」を参照してください。
 
 プロジェクトを作成するには、 **[プロジェクトの追加]** を選択します。 プロジェクトに適切な名前を付け、 **[ラベル付けタスクの種類]** を選択します。
 

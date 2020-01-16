@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dc987fa1a3476b81b198726350d56333b53c795f
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034384"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780302"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -47,7 +47,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
 
-アプリケーションのインストールとデータの格納を行うために、データ ディスクを追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。 各 VM vCPU に、4 つのデータ ディスクを接続できます。
+アプリケーションのインストールとデータの格納を行うために、データ ディスクを追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
 
@@ -78,7 +78,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="attach-disk-at-vm-creation"></a>VM の作成時にディスクを接続する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
@@ -256,7 +256,7 @@ az vm disk attach \
    --name $datadisk
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 

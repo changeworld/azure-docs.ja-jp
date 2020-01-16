@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687407"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720193"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -98,7 +98,7 @@ rake db:migrate
 rails server
 ```
 
-ブラウザーで `http://localhost:3000` にアクセスします。 ページにいくつかのタスクを追加します。
+ブラウザーで `http://localhost:3000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
 ![Postgres に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
@@ -110,7 +110,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 
 この手順では、Postgres データベースを [Azure Database for PostgreSQL](/azure/postgresql/) に作成します。 後で、このデータベースに接続するように Ruby on Rails アプリケーションを構成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -151,7 +151,7 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
 Cloud Shell で [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) コマンドを使用して、Postgres サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 *\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -258,7 +258,7 @@ rails server -e production
 
 `http://localhost:3000` に移動します。 エラーなしでページが読み込まれれば、Ruby on Rails アプリケーションは Azure の Postgres データベースに接続しています。
 
-ページにいくつかのタスクを追加します。
+ページで、いくつかのタスクを追加します。
 
 ![Azure Database for PostgreSQL に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
 
@@ -350,7 +350,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -491,7 +491,7 @@ git push azure master
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
