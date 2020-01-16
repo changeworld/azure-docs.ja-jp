@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961409"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970496"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -65,7 +65,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 ### <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントの設定
 
-[Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)を設定します。
+[Azure ストレージ アカウント](../storage/common/storage-account-create.md)を設定します。
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
 - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
@@ -110,7 +110,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>任意のリージョン (ソース リージョンを除く) にコンテナーを作成します。
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]**  >  **[管理ツール]**  >  **[Backup and Site Recovery]** の順にクリックします。
+2. **[リソースの作成]**  >  **[管理ツール]**  >  **[バックアップおよびサイトの回復]** の順にクリックします。
 3. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、 適切なサブスクリプションを 1 つ選択してください。
 4. リソース グループ **ContosoRG** を作成します。
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
@@ -163,7 +163,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 2. ターゲットのデプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-   ![ターゲット](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![移行先](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
@@ -197,8 +197,8 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
    > [!WARNING]
    > 移動する Azure VM の IP アドレスを入力する必要があります。
 
-10. **[プロパティ]**  >  の **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。
-11. **[レプリケーションの設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
+10. **[プロパティ]**  >  **[プロパティの構成]** で、プロセス サーバーがモビリティ サービスのマシンへの自動インストールで使用するアカウントを選択します。
+11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
 12. **[レプリケーションを有効にする]** をクリックします。 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 
@@ -212,7 +212,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 
    - **最後に処理があった時点**:Site Recovery サービスによって処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、低い RTO (Recovery Time Objective: 回復時刻の目標) を提示します。
    - **最新のアプリ整合性**:このオプションでは、すべての VM が最新のアプリ整合性の復旧ポイントにフェールオーバーされます。 タイム スタンプが表示されます。
-   - **カスタム**:任意の復旧ポイントを選択します。
+   - **Custom**:任意の復旧ポイントを選択します。
 
 3. Azure VM の移動先となるターゲット Azure 仮想ネットワークを選択し、構成をテストします。 
 
@@ -245,7 +245,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure VM を別の Azure リージョンに移動しました。 次には、移動した VM のディザスター リカバリーを構成できます。
 

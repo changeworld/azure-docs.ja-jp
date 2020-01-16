@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 999b932cc12b945c3bf6bb0a4b56c3da19bb3ca6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470887"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980673"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -155,7 +155,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > **newOrExisting** が **new** のときに、指定したストレージ アカウント名のストレージ アカウントが既に存在している場合、デプロイは失敗します。
 
-**newOrExisting** を "existing" に設定した別のデプロイを作成して、既存のストレージ アカウントを指定します。 事前にストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)」を参照してください。
+**newOrExisting** を "existing" に設定した別のデプロイを作成して、既存のストレージ アカウントを指定します。 事前にストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
