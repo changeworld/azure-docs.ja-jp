@@ -1,18 +1,18 @@
 ---
 title: 商用マーケットプレースの支払いの概要 | Azure Marketplace
 description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払い額を確認することもできます。'
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427140"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979695"
 ---
 # <a name="payout-reporting"></a>支払いレポート
 
@@ -52,7 +52,7 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 | 支払いの準備ができていない取引 | 進行中の課金 | 次の見積支払: 支払いの状態は未処理の状態です。  |
 | 支払いの状態 |  | 未処理: <br> 収益は支払いの対象となります。 インセンティブ プログラムのプログラム ガイドで定義されているように、冷却期間中はこの状態のままになります。 <br> <br> 近日中: <br> 支払いの前に、支払指図によって生成された保留中の内部レビューが処理されます。 <br> <br> 送信済み: <br> 支払いが銀行に送信されました。 |
 
-## <a name="customer-types"></a>顧客の種類 
+## <a name="customer-types"></a>顧客の種類
 
 ### <a name="enterprise-agreement"></a>エンタープライズ契約
 
@@ -66,7 +66,7 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 たとえば、顧客がクレジット カードを使用して購入した場合です。
 
-## <a name="corelation-between-payout-and-usage"></a>支払いと使用の相関関係 
+## <a name="corelation-between-payout-and-usage"></a>支払いと使用の相関関係
 
 |[説明]    |    Date  | 注文/使用量  | 支払い |
 |----------|----------|-----------|-------------|
@@ -97,33 +97,33 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 ## <a name="transaction-history-download-export"></a>取引履歴のダウンロード エクスポート
 
-このオプションでは、[取引履歴] ページに表示される各収益品目、収益の種類、日付、関連付けられた取引金額、顧客、製品、およびインセンティブ プログラムに適用されるその他の取引詳細のダウンロードが提供されます。 
+このオプションでは、[取引履歴] ページに表示される各収益品目、収益の種類、日付、関連付けられた取引金額、顧客、製品、およびインセンティブ プログラムに適用されるその他の取引詳細のダウンロードが提供されます。
 
-| 列名     | [説明]    | 
+| 列名     | [説明]    |
 |-------------|-------------------------------|
 | earningId                      | 各収益の一意識別子                                                                                                       |
-| participantId                  | プログラムによるパートナー収益のプライマリ ID                                                                            | 
-| participantIdType              | 主に、インセンティブ プログラムのプログラム ID と、ストア プログラムおよび Azure Marketplace の販売者 IF                                          | 
-| participantName                | 収益パートナーの名前                                                                                                              | 
+| participantId                  | プログラムによるパートナー収益のプライマリ ID                                                                            |
+| participantIdType              | 主に、インセンティブ プログラムのプログラム ID と、ストア プログラムおよび Azure Marketplace の販売者 IF                                          |
+| participantName                | 収益パートナーの名前                                                                                                              |
 | partnerCountryCode             | 収益パートナーの場所/国                                                                                                  |
-| programName                    | インセンティブ/ストア プログラム名                                                                                                             | 
-| transactionId                  | 取引の一意識別子                                                                                                    | 
-| transactionCurrency            | 元の顧客取引が発生した通貨 (パートナーの場所の通貨ではありません)                                     | 
-| transactionDate                | 取引の日付。 多数の取引が 1 つの収益に寄与するプログラムに便利です                                           | 
-| transactionExchangeRate        | 対応する取引の米国ドル金額を示すために使用される為替レート                                                                 | 
-| transactionAmount              | 生成された収益に基づく元の取引通貨の取引金額                                              | 
-| transactionAmountUSD           | 米国ドルでの取引金額                                                                                                                | 
-| lever                          | 収益のビジネス ルールを示します                                                                                                  | 
-| earningRate                    | 収益を生成するために取引金額に適用されたインセンティブ率                                                                      | 
-| 数量                       | プログラムによって異なります。 取引プログラムの課金数量を示します                                                            | 
+| programName                    | インセンティブ/ストア プログラム名                                                                                                             |
+| transactionId                  | 取引の一意識別子                                                                                                    |
+| transactionCurrency            | 元の顧客取引が発生した通貨 (パートナーの場所の通貨ではありません)                                     |
+| transactionDate                | 取引の日付。 多数の取引が 1 つの収益に寄与するプログラムに便利です                                           |
+| transactionExchangeRate        | 対応する取引の米国ドル金額を示すために使用される為替レート                                                                 |
+| transactionAmount              | 生成された収益に基づく元の取引通貨の取引金額                                              |
+| transactionAmountUSD           | 米国ドルでの取引金額                                                                                                                |
+| lever                          | 収益のビジネス ルールを示します                                                                                                  |
+| earningRate                    | 収益を生成するために取引金額に適用されたインセンティブ率                                                                      |
+| 数量                       | プログラムによって異なります。 取引プログラムの課金数量を示します                                                            |
 | quantityType                   | 数量の種類を示します。例: 課金数量、MAU                                                                                     |
-| earningType                    | 料金、リベート、協同組合、販売などであるかどうかを示します。                                                                                          | 
+| earningType                    | 料金、リベート、協同組合、販売などであるかどうかを示します。                                                                                          |
 | earningAmount                  | 元の取引通貨での収益金額                                                                                      |
 | earningAmountUSD               | 米国ドルでの収益金額                                                                                                                    |
 | earningDate                    | 収益の日付                                                                                                                      |
 | calculationDate                | 収益がシステムで計算された日付                                                                                            |
 | earningExchangeRate            | 対応する米国ドル金額を示すために使用される為替レート                                                                                  |
-| exchangeRateDate               | earningAmountUSD の計算に使用される為替レートの日付                                                                                   | 
+| exchangeRateDate               | earningAmountUSD の計算に使用される為替レートの日付                                                                                   |
 | paymentAmountWOTax             | "送信済み" の支払いのみを対象とする支払先通貨での収益金額 (税別)                                                                 |
 | paymentCurrency                | 支払いプロファイルでパートナーによって選択された支払先通貨。 送信済みの支払いにのみ表示されます                                                   |
 | paymentExchangeRate            | ExchangeRateDate を使用して支払通貨での paymentAmountWOTax を計算するために使用される為替レート                                            |

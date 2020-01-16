@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614538"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980199"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Resource Manager を使用してクラスターを作成するには、診断構
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
+または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関する記事を参照してください。
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>既存のクラスターに診断拡張機能を追加する
 まだ診断がデプロイされていない既存のクラスターがある場合は、クラスター テンプレートを使用して追加または更新を実行できます。 既存クラスターの作成に使用された Resource Manager テンプレートを変更するか、前の説明に基づき、ポータルからテンプレートをダウンロードします。 次のタスクを実行して、template.json ファイルを変更します。

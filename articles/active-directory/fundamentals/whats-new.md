@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d55cb4667c846b179caef6c2819a08f4e9fe2ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e48787162bccbf45e420f2deb002879c72fa09
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422735"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978880"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -768,7 +768,7 @@ AzureAD モジュールと AzureAD Preview PowerShell モジュールの新し�
 
 Azure portal で利用できる動的グループ ルール ビルダーの UI をいくつか機能強化し、新しいルールの設定や既存のルールの変更が簡単になりました。 設計のこの機能強化により、1 つだけではなく、最大 5 つの式を使用してルールを作成できます。 また、デバイス プロパティ リストを更新し、非推奨のデバイス プロパティを削除しました。
 
-詳細については、[動的メンバーシップ ルールの管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-update-rule)に関する記事を参照してください。
+詳細については、[動的メンバーシップ ルールの管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)に関する記事を参照してください。
 
 ---
 

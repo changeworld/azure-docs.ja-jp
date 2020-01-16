@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 2e62708c98ac86354777cf1bdd93a3deff943b98
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665340"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747377"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
@@ -89,8 +89,13 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
 7. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されます。
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    
+8. 機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ネイティブの Azure 証明機関を使用してポイント対サイト VPN ゲートウェイを作成および構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。 
 
-8. 次のコマンドを実行して、VPN ゲートウェイでの Azure AD 認証を有効にします。コマンドは実際の環境に合わせて変更してください。
+    > [!IMPORTANT]
+    > Basic SKU は OpenVPN ではサポートされていません。
+
+9. 次のコマンドを実行して、VPN ゲートウェイでの Azure AD 認証を有効にします。コマンドは実際の環境に合わせて変更してください。
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
@@ -98,22 +103,22 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. 次のコマンドを実行してプロファイルを作成し、ダウンロードします。 -ResourceGroupName と -Name の値は実際の値に一致するように変更してください。
+10. 次のコマンドを実行してプロファイルを作成し、ダウンロードします。 -ResourceGroupName と -Name の値は実際の値に一致するように変更してください。
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-10. コマンドを実行すると、次のような結果が表示されます。 結果の URL をブラウザーにコピーして、プロファイルの ZIP ファイルをダウンロードします。
+11. コマンドを実行すると、次のような結果が表示されます。 結果の URL をブラウザーにコピーして、プロファイルの ZIP ファイルをダウンロードします。
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
 
-11. ダウンロードした zip ファイルを解凍します。
+12. ダウンロードした zip ファイルを解凍します。
 
-12. 解凍された "AzureVPN" フォルダーを参照します。
+13. 解凍された "AzureVPN" フォルダーを参照します。
 
-13. "azurevpnconfig.xml" ファイルの場所をメモしておきます。 azurevpnconfig.xml には VPN 接続の設定が含まれています。このファイルは Azure VPN クライアント アプリケーションに直接インポートできます。 このファイルは、接続する必要があるすべてのユーザーに、電子メールやその他の方法で配布することもできます。 ユーザーが正常に接続するには、有効な Azure AD 資格情報が必要になります。
+14. "azurevpnconfig.xml" ファイルの場所をメモしておきます。 azurevpnconfig.xml には VPN 接続の設定が含まれています。このファイルは Azure VPN クライアント アプリケーションに直接インポートできます。 このファイルは、接続する必要があるすべてのユーザーに、電子メールやその他の方法で配布することもできます。 ユーザーが正常に接続するには、有効な Azure AD 資格情報が必要になります。
 
 ## <a name="next-steps"></a>次のステップ
 

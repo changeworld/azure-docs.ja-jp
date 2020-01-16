@@ -3,21 +3,24 @@ title: Azure とスタンドアロン Service Fabric クラスターの概要
 description: Windows Server または Linux を実行する任意の VM またはコンピューター上に Service Fabric クラスターを作成できます。 つまり、オンプレミスか、Microsoft Azure か、クラウド プロバイダーかに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 author: dkkapur
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 01/07/2020
 ms.author: dekapur
-ms.openlocfilehash: 71f3858fed43465f646ccbe1e78ccac9cba237f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458194"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751150"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server と Linux での Azure とスタンドアロン Service Fabric クラスターの比較
+
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
 
 Service Fabric を使用すると、Windows Server または Linux を実行するすべての VM またはコンピューター上に Service Fabric クラスターを作成できます。 つまり、オンプレミスか、Microsoft Azure か、クラウド プロバイダーかに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 
 ## <a name="benefits-of-clusters-on-azure"></a>Azure 上のクラスターの利点
+
 Azure では、他の Azure の機能やサービスとの統合が提供されているため、クラスターの操作と管理が容易で信頼性が高くなります。
 
 * **Azure portal:** Azure portal を使用すると、クラスターの作成と管理が容易になります。
@@ -28,6 +31,7 @@ Azure では、他の Azure の機能やサービスとの統合が提供され�
 * **自動スケール**:Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
 ## <a name="benefits-of-standalone-clusters"></a>スタンドアロン クラスターの利点
+
 * クラスターをホストするクラウド プロバイダーを自由に選択できます。
 * Service Fabric アプリケーションは、一度記述すると、複数のホスティング環境で最小限の変更で実行できます。
 * Service Fabric アプリケーションの構築に関する知識は、ホスティング環境が変わっても適用できます。

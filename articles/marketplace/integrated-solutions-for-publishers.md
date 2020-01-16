@@ -2,18 +2,18 @@
 title: 統合ソリューション - Azure Marketplace
 description: Azure Marketplace と Microsoft AppSource の統合ソリューション
 services: Azure, Marketplace, Compute, Storage, Networking
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/16/2019
-ms.author: v-qiwe
-ms.openlocfilehash: b00cc2917ac15797ed98af9793533d9bc12eeaaf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: evansma
+ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427200"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978639"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -28,13 +28,13 @@ ms.locfileid: "75427200"
 * お客様は、エンドツーエンドのビジネスの課題を解決するパッケージ ソリューションをマーケットプレースを通じて見つけることができます。 テクノロジが事前に統合されているため、価値実現までの時間が短縮されます。 お客様は、断片的にデプロイされた複数のアプリを個別に取り扱わなければならない状態を回避できます。
 * IP は、テクノロジの価値を高める他のソリューションやサービスと共にパッケージ化され、エキスパートのサービス パートナーによりデリバリーされます。
 * サービス パートナーは、より多くの顧客アカウントでのスケーリング、ランディング、展開を実現するための最善のテクノロジを使用した、事前に定義および統合されたソリューションを作成します。
-* Microsoft では、これらの事前に統合された、業界に合わせたソリューションを使用して、より簡単にお客様への共同販売を行うことができます。 価格と使用条件は事前に分類されています。 
+* Microsoft では、これらの事前に統合された、業界に合わせたソリューションを使用して、より簡単にお客様への共同販売を行うことができます。 価格と使用条件は事前に分類されています。
 
 ## <a name="eligibility-criteria"></a>対象となる条件
 
 * 参加するパートナーには MPN ID が必要です。
 * 参加するサービス プロバイダーは、共同販売の準備ができている必要があります。
-* 参加するソフトウェア ベンダーは、IP 共同販売の準備ができている必要があります。 
+* 参加するソフトウェア ベンダーは、IP 共同販売の準備ができている必要があります。
 * 少なくとも 1 社の参加パートナーが、次のいずれかの分野で Gold コンピテンシーを取得している必要があります。
 
     * アプリケーション開発
@@ -53,13 +53,13 @@ ms.locfileid: "75427200"
 
 ## <a name="submit-a-nomination"></a>申請を提出する
 
-このプログラムへの参加を希望するパートナーは、連携したい他のパートナーを特定する必要があります。 [統合ソリューションの申請フォーム](https://aka.ms/AA5qicu)に記入する必要があります。 統合ソリューション プログラムのチームが申請を審査し、10 営業日以内にフォローアップします。 チームは、承認と次のステップを提供します。 
+このプログラムへの参加を希望するパートナーは、連携したい他のパートナーを特定する必要があります。 [統合ソリューションの申請フォーム](https://aka.ms/AA5qicu)に記入する必要があります。 統合ソリューション プログラムのチームが申請を審査し、10 営業日以内にフォローアップします。 チームは、承認と次のステップを提供します。
 
-## <a name="develop-an-integrated-solution"></a>統合ソリューションを開発する 
+## <a name="develop-an-integrated-solution"></a>統合ソリューションを開発する
 
-申請が承認されたら、リンク先のプログラム リソースを使用して統合ソリューションを開発します。 次の手順に従います。 
+申請が承認されたら、リンク先のプログラム リソースを使用して統合ソリューションを開発します。 次の手順に従います。
 
-1. 主要なビジネスおよび技術に関するディスカッションをワークショップ形式で実施し、ソリューションと統合へのアプローチを定義します。 
+1. 主要なビジネスおよび技術に関するディスカッションをワークショップ形式で実施し、ソリューションと統合へのアプローチを定義します。
 
     ソリューションについてのディスカッションでは、次の点を検討する必要があります。
     * スコープ
@@ -73,7 +73,7 @@ ms.locfileid: "75427200"
     * 販売プロセス
     * Activities
 
-    統合方法についてのディスカッションでは、次の点を検討する必要があります。 
+    統合方法についてのディスカッションでは、次の点を検討する必要があります。
     * 統合ポイント
     * ソリューションのアーキテクチャ
     * 認証
@@ -101,15 +101,15 @@ ms.locfileid: "75427200"
     * 統合ソリューションの一覧の説明。 [オファーの掲載のベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)に従います。
     * 顧客向けの 1 ページの紹介資料。 [1 ページャー テンプレート](https://aka.ms/AA5s08a)を使用します。
     * 顧客向けプレゼンテーション。 [プレゼンテーション テンプレート](https://aka.ms/AA5s7ql)を使用します。
-    * 統合ソリューションのロゴ。 
+    * 統合ソリューションのロゴ。
 
-## <a name="publish-your-integrated-solution"></a>統合ソリューションを公開する 
+## <a name="publish-your-integrated-solution"></a>統合ソリューションを公開する
 
 技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
 
 コンサルティング サービス オファーには 5 種類のサービスが用意されていますが、統合ソリューションは概念実証または完全な実装のいずれかである必要があります。
 
-## <a name="go-to-market-with-your-integrated-solution"></a>統合ソリューションで市場に参入する 
+## <a name="go-to-market-with-your-integrated-solution"></a>統合ソリューションで市場に参入する
 
 ソリューションが Microsoft AppSource または Azure Marketplace に表示されるようになったら、マーケティング活動を通じて認知度と需要を促進することができます。 [プロジェクト計画とタイムライン](https://aka.ms/AA5qiuc)に記載されているアクティビティを確認してください。 このリソースには、パートナーが各自のチーム内およびパートナー同士で推進できるアクティビティが含まれています。 次に、マーケットプレースでの公開を行ったパートナーに対する[市場投入のベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)にアクセスします。 すべての統合ソリューション オファーは、試用版レベルのベネフィットの対象となります。
 

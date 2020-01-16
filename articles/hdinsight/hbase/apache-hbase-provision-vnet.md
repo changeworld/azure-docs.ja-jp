@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552306"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972790"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>仮想ネットワークに Apache HBase クラスターを作成する
 
-このセクションでは、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure 仮想ネットワーク内の依存する Azure ストレージ アカウントで Linux ベースの Apache HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Apache Hadoop クラスターを作成する方法の詳細については、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
+このセクションでは、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-powershell.md)を使用して Azure 仮想ネットワーク内の依存する Azure ストレージ アカウントで Linux ベースの Apache HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Apache Hadoop クラスターを作成する方法の詳細については、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
 > [!NOTE]  
 > 一部のプロパティは、テンプレートにハードコーディングされています。 次に例を示します。
@@ -92,11 +92,11 @@ Java アプリケーションを使用して HBase にリモートで接続す�
 
 * Web ブラウザーを使用した [Apache Ambari](https://ambari.apache.org/) の呼び出し:
 
-    [https://www.microsoft.com](`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`) を参照します。 DNS サフィックスが付いた JSON ファイルが返されます。
+    [https://www.microsoft.com]\(`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`) を参照します。 DNS サフィックスが付いた JSON ファイルが返されます。
 
 * Ambari Web サイトの使用
 
-    1. [https://www.microsoft.com](`https://CLUSTERNAME.azurehdinsight.net`) を参照します。
+    1. [https://www.microsoft.com]\(`https://CLUSTERNAME.azurehdinsight.net`) を参照します。
     2. 上部のメニューで **[ホスト]** を選択します。
 
 * Curl を使用した REST の呼び出し:

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410042"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922350"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -27,9 +27,6 @@ SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](
 ## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub リポジトリにあります。
-
-> [!NOTE]
-> バージョン 2.x 以降では、`ServiceBusTrigger` インスタンスで構成されるトピックまたはサブスクリプションは作成されません。 これらのバージョンは [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) に基づいており、キューの管理を処理しません。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,9 +348,9 @@ public static void Run(
 
 | *function.json* のプロパティ | 属性/注釈のプロパティ | [説明] | 省略可能 |
 |--------------------------|-------------------------------|-------------|----------|
-| 型 || `sendGrid` に設定する必要があります。| いいえ |
-| direction || `out` に設定する必要があります。| いいえ |
-| name || 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は `$return` です。 | いいえ |
+| 型 |該当なし| `sendGrid` に設定する必要があります。| いいえ |
+| direction |該当なし| `out` に設定する必要があります。| いいえ |
+| name |該当なし| 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は `$return` です。 | いいえ |
 | apiKey | ApiKey | API キーを含むアプリ設定の名前。 設定されていない場合、既定のアプリの設定名は *AzureWebJobsSendGridApiKey* です。| いいえ |
 | から| ターゲット | 受信者の電子メール アドレス。 | はい |
 | from| ソース | 送信者の電子メール アドレス。 |  はい |

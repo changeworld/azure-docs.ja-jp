@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 5669b606d7dc06483641c2bdd6ef27c82e75bf4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431873"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972714"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -289,7 +289,7 @@ Azure SQL Database の仮想ネットワーク規則機能は、2017 年 9 月�
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md

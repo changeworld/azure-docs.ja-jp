@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: abee04afca45a2d6f558858b4490c8be1f37a2f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451281"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772518"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -63,6 +63,7 @@ Distribution      | シリアル コンソール アクセス
 :-----------|:---------------------
 Red Hat Enterprise Linux    | シリアル コンソール アクセスが既定で有効になっています。
 CentOS      | シリアル コンソール アクセスが既定で有効になっています。
+Debian      | シリアル コンソール アクセスが既定で有効になっています。
 Ubuntu      | シリアル コンソール アクセスが既定で有効になっています。
 CoreOS      | シリアル コンソール アクセスが既定で有効になっています。
 SUSE        | Azure で利用できる新しい SLES イメージは、シリアル コンソール アクセスが既定で有効になっています。 前のバージョン (10 以前) の SLES を Azure で使っている場合は、[サポート技術情報の記事](https://www.novell.com/support/kb/doc.php?id=3456486)を参照してシリアル コンソールを有効にします。

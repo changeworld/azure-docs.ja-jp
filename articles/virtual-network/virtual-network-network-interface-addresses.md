@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647256"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975323"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -146,7 +146,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 4. 仮想マシンを開始します。
 5. オペレーティング システム内のセカンダリ IP アドレス (および Windows 内のプライマリ IP アドレス) を、Azure での設定と一致するように、[手動で構成](virtual-network-multiple-ip-addresses-portal.md#os-config)します。
 
-この手順に従うと、Azure 内と、仮想マシンのオペレーティング システム内で、ネットワーク インターフェイスに割り当てられるプライベート IP アドレスは同じままです。 サブスクリプションのどの仮想マシンに、オペレーティング システム内で IP アドレスを手動設定したかを追跡するには、Azure の[タグ](../azure-resource-manager/resource-group-using-tags.md)を仮想マシンに追加することを検討します。 たとえば、"IP address assignment: Static" のようなタグを使います。 このようにすると、オペレーティング システムで IP アドレスを手動設定した仮想マシンを、サブスクリプション内で簡単に見つけることができます。
+この手順に従うと、Azure 内と、仮想マシンのオペレーティング システム内で、ネットワーク インターフェイスに割り当てられるプライベート IP アドレスは同じままです。 サブスクリプションのどの仮想マシンに、オペレーティング システム内で IP アドレスを手動設定したかを追跡するには、Azure の[タグ](../azure-resource-manager/management/tag-resources.md)を仮想マシンに追加することを検討します。 たとえば、"IP address assignment: Static" のようなタグを使います。 このようにすると、オペレーティング システムで IP アドレスを手動設定した仮想マシンを、サブスクリプション内で簡単に見つけることができます。
 
 仮想マシンが同じ仮想ネットワーク内または接続された仮想ネットワーク内の他のリソースと通信できるようになるだけでなく、プライベート IP アドレスを使うと、仮想マシンはインターネットに通信を送信することもできます。 送信接続は、Azure によって予測できないパブリック IP アドレスに変換されたソース ネットワーク アドレスです。 Azure からインターネットへの送信接続の詳細については、[Azure からインターネットへの送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 インターネットから仮想マシンのプライベート IP アドレスへの受信通信はできません。 予測可能なパブリック IP アドレスが送信接続に必要な場合は、ネットワーク インターフェイスへのパブリック IP アドレス リソースを関連付けます。
 

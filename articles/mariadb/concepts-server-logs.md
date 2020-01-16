@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 20e521c36db0ab98e4b11d948516ccd04b5f5fdd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432020"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746659"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -46,7 +46,7 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 低速クエリ ログのパラメーターの完全な説明については、MariaDB の[低速クエリ ログのドキュメント](https://mariadb.com/kb/en/library/slow-query-log-overview/)を参照してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
-Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます。 MariaDB サーバーで低速クエリ ログを有効にした場合、それらが Azure Monitor のログ、イベント ハブ、または Azure Storage に出力されるようにすることもできます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/resource-logs-overview.md)の操作方法のセクションを参照してください。
+Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます。 MariaDB サーバーで低速クエリ ログを有効にした場合、それらが Azure Monitor のログ、イベント ハブ、または Azure Storage に出力されるようにすることもできます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)の操作方法のセクションを参照してください。
 
 > [!IMPORTANT]
 > サーバー ログに対するこの診断機能は、General Purpose 価格レベルとメモリ最適化[価格レベル](concepts-pricing-tiers.md)でのみ使用できます。

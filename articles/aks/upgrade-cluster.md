@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 7113fd7f17fd7695e25489931d7a6cbf35e334ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442819"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889396"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -25,7 +25,7 @@ AKS クラスターのライフサイクルの一環として、最新の Kubern
 この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 > [!WARNING]
-> AKS クラスターのアップグレードで、ノードの切断とドレインがトリガーされます。 使用可能なコンピューティング クォータが少ない場合は、アップグレードが失敗する可能性があります。  詳しくは、「[クォータの増加](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)」をご覧ください。
+> AKS クラスターのアップグレードで、ノードの切断とドレインがトリガーされます。 使用可能なコンピューティング クォータが少ない場合は、アップグレードが失敗する可能性があります。  詳しくは、「[クォータの増加](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)」をご覧ください。
 > 独自のクラスター オートスケーラー デプロイを実行している場合は、アップグレード プロセスを妨げる可能性があるため、アップグレード中はこれを無効にしてください (ゼロ レプリカにスケーリングできます)。 マネージド オートスケーラーは、これを自動的に処理します。 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>利用できる AKS クラスターのアップグレードを確認する

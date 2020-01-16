@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7cb3b4d6b490d09d14046465e0fc58526be5b045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433839"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894818"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -66,7 +66,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ![仮想クラスターの接続アーキテクチャ](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、マネージド インスタンスに接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目のマネージド インスタンスがホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)」を参照してください。
+クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、マネージド インスタンスに接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目のマネージド インスタンスがホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)」を参照してください。
 
 このプライベート IP アドレスは、マネージド インスタンスの内部ロード バランサーに属しています。 ロード バランサーは、マネージド インスタンスのゲートウェイにトラフィックを送信します。 同じクラスター内で複数のマネージド インスタンスを実行できるため、ゲートウェイでは、マネージド インスタンスのホスト名を使用して、トラフィックを適切な SQL Engine サービスにリダイレクトします。
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a2e328c5cf65aa700676a8f6af78cc342f2f51a
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 03ea130011b23704731d68e5685e4ea0938e19b5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681448"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771804"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ ms.locfileid: "75681448"
 
 **start_logging** では、ノートブックなどのシナリオで使用するための対話型の実行が作成されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。
 
-次の例では、ローカルの Jupyter Notebook でローカルに単純な sklearn Ridge モデルをトレーニングします。 さまざまな環境に実験を送信する方法の詳細については、[Azure Machine Learning でモデル トレーニング用のコンピューティング先を設定する](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)方法に関するページをご覧ください。
+次の例では、ローカルの Jupyter Notebook でローカルに単純な sklearn Ridge モデルをトレーニングします。 さまざまな環境に実験を送信する方法の詳細については、[Azure Machine Learning でモデル トレーニング用のコンピューティング先を設定する](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets)方法に関するページをご覧ください。
 
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 
 

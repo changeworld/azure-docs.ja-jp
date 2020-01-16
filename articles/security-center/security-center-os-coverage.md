@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353317"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894620"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -48,7 +48,7 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
 
-上記の Windows オペレーティング システムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md##vm-server-features)」をご覧ください。
+上記の Windows オペレーティング システムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
 
 ### Linux オペレーティング システム <a name="os-linux"></a>
 
@@ -72,7 +72,7 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 > [!NOTE]
 > サポートされている Linux オペレーティング システムの一覧は常に変更されているため、このトピックが最後に公開されてから変更があった場合は、サポートされているバージョンの最新の一覧を表示するために、[ここ](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)をクリックしてください。
 
-上記の Linux オペレーティングシステムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md##vm-server-features)」をご覧ください。
+上記の Linux オペレーティングシステムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
 
 ### マネージド仮想マシン サービス <a name="virtual-machine"></a>
 

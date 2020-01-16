@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f84eba6b23278391afd2de11d9072c9a378db05
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5b2fa550029c35ca989d6746254298cf1e92992d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646593"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75764577"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * すべてのパイプライン リソースを保持するための [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
 
-* [開発環境を構成](service/how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス (プレビュー)](concept-compute-instance.md) を使用します。
+* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス (プレビュー)](concept-compute-instance.md) を使用します。
 
 > [!NOTE]
 > コンピューティング インスタンスは、**米国中北部**または**英国南部**のリージョンのワークスペースにのみ使用できます。
@@ -132,7 +132,7 @@ iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 't
 
  `FileDataset` は、[from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) を使用して作成します。
 
- データセットの使用について詳しくは、[データセットの追加と登録](service/how-to-create-register-datasets.md)に関するページまたは[このサンプル ノートブック](https://aka.ms/train-datasets)をご覧ください。
+ データセットの使用について詳しくは、[データセットの追加と登録](how-to-create-register-datasets.md)に関するページまたは[このサンプル ノートブック](https://aka.ms/train-datasets)をご覧ください。
 
 ## <a name="set-up-compute-target"></a>コンピューティング ターゲットを設定する
 

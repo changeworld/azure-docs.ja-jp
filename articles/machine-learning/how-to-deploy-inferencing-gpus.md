@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 4edf17026384ad8a6bfe4ecea847f4a91076634f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646576"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763591"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "75646576"
 > この記事のコード スニペットでは TensorFlow モデルが使用されていますが、ここに記載されている情報は GPU をサポートする任意の機械学習フレームワークに適用できます。
 
 > [!NOTE]
-> この記事の情報は、[Azure Kubernetes Service にデプロイする方法](service/how-to-deploy-azure-kubernetes-service.md)に関する記事の情報に基づいています。 これは、AKS へのデプロイの概要を説明したものですが、本記事では、GPU 固有のデプロイについて説明します。
+> この記事の情報は、[Azure Kubernetes Service にデプロイする方法](how-to-deploy-azure-kubernetes-service.md)に関する記事の情報に基づいています。 これは、AKS へのデプロイの概要を説明したものですが、本記事では、GPU 固有のデプロイについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "75646576"
 
     * このドキュメントの作成に使用された TensorFlow モデルを作成して登録するには、[TensorFlow モデルのトレーニング方法](how-to-train-tensorflow.md)に関するページをご覧ください。
 
-* [モデルをデプロイする方法と場所](service/how-to-deploy-and-where.md)についての一般的な理解。
+* [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についての一般的な理解。
 
 ## <a name="connect-to-your-workspace"></a>ワークスペースに接続する
 
@@ -94,7 +94,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure では、AKS クラスターが存在する限り、課金が行われます。 使い終わったら、必ず自分の AKS クラスターを削除してください。
 
-AKS と Azure Machine Learning の使用の詳細については、[Azure Kubernetes Service にデプロイする方法](service/how-to-deploy-azure-kubernetes-service.md)に関するページを参照してください。
+AKS と Azure Machine Learning の使用の詳細については、[Azure Kubernetes Service にデプロイする方法](how-to-deploy-azure-kubernetes-service.md)に関するページを参照してください。
 
 ## <a name="write-the-entry-script"></a>エントリ スクリプトを記述する
 
@@ -135,7 +135,7 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、[デプロイする方法と場所](service/how-to-deploy-and-where.md)に関するページをご覧ください。
+このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関するページをご覧ください。
 
 ## <a name="define-the-conda-environment"></a>Conda 環境を定義する
 
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>次のステップ
 
-* [FPGA でモデルをデプロイする](service/how-to-deploy-fpga-web-service.md)
+* [FPGA でモデルをデプロイする](how-to-deploy-fpga-web-service.md)
 * [ONNX を使用してモデルをデプロイする](concept-onnx.md#deploy-onnx-models-in-azure)
 * [TensorFlow DNN モデルをトレーニングする](how-to-train-tensorflow.md)

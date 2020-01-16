@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460054"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980886"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -130,8 +130,8 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ルート テーブル
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
-    
-     
+
+
 
     **コンピューティング** *(コア、可用性セット)*
 
@@ -203,9 +203,9 @@ Azure Resource Manager には多くの優れた機能が用意されています
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
 - [ロールベースのアクセス制御](../../role-based-access-control/overview.md)。
-- [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/template-deployment-overview.md)。
-- [タグ](../../azure-resource-manager/resource-group-using-tags.md)。
-- [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)
+- [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)。
+- [タグ](../../azure-resource-manager/management/tag-resources.md)。
+- [アクティビティ コントロール](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure のポリシー](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83baf84e303e326f46f5b4295b5cd1ca79172736
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8b78c04d6e0ba2f87a5ff99098f689949cf7aa5e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535563"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771957"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -46,7 +46,7 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 +  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します。
-+ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) を使用して、機械学習アクティビティを自動化します。
++ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) を使用して、機械学習アクティビティを自動化します。
 + [Azure Machine Learning VS Code 拡張機能](how-to-vscode-tools.md)を使用して、Visual Studio Code でコードを書き込みます
 + [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) を使用して、コードを記述せずにワークフローの手順を行います。
 

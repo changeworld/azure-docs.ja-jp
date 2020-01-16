@@ -3,12 +3,12 @@ title: コンテナーの Azure Monitor についてよく寄せられる質問 
 description: コンテナーの Azure Monitor は、Azure 内の AKS クラスターおよび Container Instances の正常性を監視するソリューションです。 この記事ではよくある質問の回答を示します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0d2be8b573dbbf047f4a27ae9ac9f611b76dc51
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405083"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977760"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 
@@ -73,7 +73,7 @@ ContainerInventory テーブルには、停止中と実行中両方のコンテ�
  
 ## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>"*サブスクリプション登録がない*" エラーを解決するにはどうすればよいですか
 
-"**Microsoft.OperationsManagement へのサブスクリプション登録がない**" というエラーが表示される場合は、ワークスペースが定義されているサブスクリプションでリソース プロバイダー **Microsoft.OperationsManagement** を登録することで解決できます。 これを行う方法に関するドキュメントは、[こちら](../../azure-resource-manager/resource-manager-register-provider-errors.md)にあります。
+"**Microsoft.OperationsManagement へのサブスクリプション登録がない**" というエラーが表示される場合は、ワークスペースが定義されているサブスクリプションでリソース プロバイダー **Microsoft.OperationsManagement** を登録することで解決できます。 これを行う方法に関するドキュメントは、[こちら](../../azure-resource-manager/templates/error-register-resource-provider.md)にあります。
 
 ## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC 対応の AKS クラスターはサポートされていますか
 

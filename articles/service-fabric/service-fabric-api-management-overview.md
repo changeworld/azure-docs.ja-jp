@@ -5,18 +5,18 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378112"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028550"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、[IoT Hub](https://docs.microsoft.com/azure/iot-hub/)、[Azure API Management](https://docs.microsoft.com/azure/api-management/) など、トラフィック受信用に設計された別のサービスを使用することもできます。
 
-この記事では、Azure API Management を Service Fabric アプリケーションへのゲートウェイとして使用する方法の概要を示します。 API Management は Service Fabric と直接統合されるので、バックエンドの Service Fabric サービスへのルーティング規則を豊富に備えた API を公開することができます。 
+この記事では、Azure API Management を Service Fabric アプリケーションへのゲートウェイとして使用する方法の概要を示します。 API Management は Service Fabric と直接統合されるので、バックエンドの Service Fabric サービスへのルーティング規則を豊富に備えた API を公開することができます。
 
 ## <a name="availability"></a>可用性
 
@@ -47,7 +47,8 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 最も簡単なケースでは、トラフィックはステートレス サービスのインスタンスに転送されます。 そのため API Management 操作には、Service Fabric バックエンドの特定のステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 このサービスに送信された要求は、サービスのランダムなインスタンスに送信されます。
 
-#### <a name="example"></a>例
+**例**
+
 次のシナリオでは、Service Fabric アプリケーションに `fabric:/app/fooservice` という名前のステートレス サービスがあり、そこで内部 HTTP API を公開しています。 サービス インスタンスの名前は既にわかっているので、API Management の受信処理ポリシーに直接ハードコードすることができます。 
 
 ![Service Fabric と Azure API Management のトポロジの概要][sf-apim-static-stateless]
@@ -56,7 +57,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 ステートレス サービスのシナリオと同様に、トラフィックはステートフル サービスのインスタンスに転送されます。 この場合、API Management 操作には、特定の*ステートフル* サービス インスタンスの特定のパーティションに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれます。 各要求がマップされるパーティションは、受信 HTTP 要求からの入力 (URL パス内の値など) を使用して、ラムダ メソッドで計算されます。 このポリシーは、プライマリ レプリカだけに要求を送信するよう構成することも、読み取り操作のためにランダムなレプリカに要求を送信するよう構成することもできます。
 
-#### <a name="example"></a>例
+**例**
 
 次のシナリオでは、Service Fabric アプリケーションに `fabric:/app/userservice` という名前のパーティション分割されたステートフル サービスがあり、そこで内部 HTTP API を公開しています。 サービス インスタンスの名前は既にわかっているので、API Management の受信処理ポリシーに直接ハードコードすることができます。  
 
@@ -66,14 +67,14 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 ## <a name="send-traffic-to-multiple-stateless-services"></a>複数のステートレス サービスにトラフィックを送信する
 
-より高度なシナリオでは、複数のサービス インスタンスに要求をマップする API Management 操作を定義できます。 この場合、各操作には、受信 HTTP 要求からの値 (URL パスやクエリ文字列など) に基づいて特定のサービス インスタンスに要求をマップし、ステートフル サービスの場合はサービス インスタンス内のパーティションに要求をマップするポリシーが含まれています。 
+より高度なシナリオでは、複数のサービス インスタンスに要求をマップする API Management 操作を定義できます。 この場合、各操作には、受信 HTTP 要求からの値 (URL パスやクエリ文字列など) に基づいて特定のサービス インスタンスに要求をマップし、ステートフル サービスの場合はサービス インスタンス内のパーティションに要求をマップするポリシーが含まれています。
 
 そのため API Management 操作には、受信 HTTP 要求から取得した値に基づいて Service Fabric バックエンドのステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 サービスへの要求は、サービスのランダムなインスタンスに送信されます。
 
-#### <a name="example"></a>例
+**例**
 
 この例では、アプリケーションのユーザーごとに新しいステートレス サービス インスタンスが作成され、次の式を使用して動的に生成された名前が付けられます。
- 
+
 - `fabric:/app/users/<username>`
 
   各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 次に例を示します。
@@ -89,10 +90,10 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 そのため API Management 操作には、受信 HTTP 要求から取得した値に基づいて Service Fabric バックエンドのステートフル サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 要求は特定のサービス インスタンスのほか、そのサービス インスタンス内の特定のパーティションにもマップすることができます。さらに、任意でそのパーティション内のプライマリ レプリカかランダム セカンダリ レプリカのいずれにマップすることも可能です。
 
-#### <a name="example"></a>例
+**例**
 
 この例では、アプリケーションのユーザーごとに新しいステートフル サービス インスタンスが作成され、次の式を使用して動的に生成された名前が付けられます。
- 
+
 - `fabric:/app/users/<username>`
 
   各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 次に例を示します。

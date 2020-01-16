@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fe15b09e32fee538958626d1f2dd7dac8fe9e51
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534895"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771787"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras 分類モデルをトレーニングして登録する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>ファイル データセットの作成
 
-`FileDataset` オブジェクトでは、ご利用のワークスペース データストアまたはパブリック URL 内の 1 つまたは複数のファイルが参照されます。 ファイルは任意の形式にすることができ、クラスには、ファイルのダウンロードまたはご利用のコンピューティングへのファイルのマウントを行うための機能が用意されています。 `FileDataset` を作成することにより、データソースの場所への参照を作成します。 データセットに変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 詳細については、`Dataset` パッケージの[攻略](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)ガイドを参照してください。
+`FileDataset` オブジェクトでは、ご利用のワークスペース データストアまたはパブリック URL 内の 1 つまたは複数のファイルが参照されます。 ファイルは任意の形式にすることができ、クラスには、ファイルのダウンロードまたはご利用のコンピューティングへのファイルのマウントを行うための機能が用意されています。 `FileDataset` を作成することにより、データソースの場所への参照を作成します。 データセットに変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 詳細については、`Dataset` パッケージの[攻略](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)ガイドを参照してください。
 
 ```python
 from azureml.core.dataset import Dataset

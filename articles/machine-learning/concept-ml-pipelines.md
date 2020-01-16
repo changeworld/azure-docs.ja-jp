@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 2b0343527aa97abfd1b239b4588806e79e0b820d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644326"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772603"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -59,9 +59,9 @@ Azure Machine Learning パイプラインは、独立して実行できる完全
 
 パイプラインが設計された後には、多くの場合、パイプラインのトレーニング ループを中心にさらに多くの微調整が行われます。 パイプラインを再実行すると、更新されたトレーニング スクリプトなど、再実行する必要があるステップにジャンプして実行されます。 再実行する必要がないステップはスキップされます。 ステップの遂行に使用される変更されていないスクリプトにも同じ分析が適用されます。 この再利用機能により、基のデータが変更されていない場合に、データ インジェストや変換など、コストや時間のかかる処理を回避できます。
 
-Azure Machine Learning では、パイプライン内の各ステップに対して、PyTorch や TensorFlow などの各種のツールキットとフレームワークを使用できます。 Azure により、使用するさまざまな[コンピューティング ターゲット](service/concept-azure-machine-learning-architecture.md)の調整が行われるため、中間データをダウンストリームのコンピューティング ターゲットと共有できます。
+Azure Machine Learning では、パイプライン内の各ステップに対して、PyTorch や TensorFlow などの各種のツールキットとフレームワークを使用できます。 Azure により、使用するさまざまな[コンピューティング ターゲット](concept-azure-machine-learning-architecture.md)の調整が行われるため、中間データをダウンストリームのコンピューティング ターゲットと共有できます。
 
-Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
+Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
 
 つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure パイプライン テクノロジには、データを操作するための [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)や、継続的な統合とデプロイのための [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) などの独自の強味があります。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
 
@@ -109,7 +109,7 @@ ML プロジェクトの初期段階では、Azure ワークスペースとリ�
 
 [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトには、1 つ以上の [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)、[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) などのサブクラスになります。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
 
-Azure ML パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング ターゲットに関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)」または「[Azure Machine Learning でのコンピューティング先とは](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)」を参照してください。
+Azure ML パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング ターゲットに関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)」または「[Azure Machine Learning でのコンピューティング先とは](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)」を参照してください。
 
 Azure Machine Learning では、コンピューティング ターゲットは ML フェーズが発生する環境です。 ソフトウェア環境には、リモート VM、Azure Machine Learning コンピューティング、Azure Databricks、Azure Batch などがあります。 また、ハードウェア環境は、GPU のサポート、メモリ、ストレージなどによって大きく異なる場合があります。 ステップごとにコンピューティング ターゲットを指定することができます。これにより、コストをきめ細かく制御できます。 プロジェクトの特定のアクション、データ ボリューム、パフォーマンスのニーズに応じて、より強力な (またはそれほど強力ではない) リソースを使用できます。 
 

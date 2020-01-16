@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638631"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982245"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -79,7 +79,7 @@ ms.locfileid: "75638631"
 
      ![ネットワーク インターフェイスの概要](./media/manage-virtual-network/vnet-overview.png)
 
-     仮想ネットワークを別のサブスクリプションまたはリソース グループに移動するには、 **[リソース グループ]** または **[サブスクリプション名]** の横にある **[変更]** を選択します。 仮想ネットワーク を移動する方法については、[別のリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 この記事には、Azure Portal、PowerShell、および Azure CLI を使用してリソースを移動するための前提条件と、移動の方法が記載されています。 仮想ネットワークに接続されているリソースもすべて、仮想ネットワークと共に移動する必要があります。
+     仮想ネットワークを別のサブスクリプションまたはリソース グループに移動するには、 **[リソース グループ]** または **[サブスクリプション名]** の横にある **[変更]** を選択します。 仮想ネットワーク を移動する方法については、[別のリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 この記事には、Azure Portal、PowerShell、および Azure CLI を使用してリソースを移動するための前提条件と、移動の方法が記載されています。 仮想ネットワークに接続されているリソースもすべて、仮想ネットワークと共に移動する必要があります。
    - **[アドレス空間]** : 仮想ネットワークに割り当てられているアドレス空間が一覧表示されます。 アドレス空間へのアドレス範囲の追加と削除の方法については、「[アドレス範囲の追加または削除](#add-or-remove-an-address-range)」の手順を参照してください。
    - **接続されているデバイス**:仮想ネットワークに接続されているすべてのリソースが一覧表示されます。 前のスクリーンショットでは、3 つのネットワーク インターフェイスと 1 つのロード バランサーが仮想ネットワークに接続されています。 新しく作成して仮想ネットワークに接続したリソースはすべて一覧表示されます。 仮想ネットワークに接続されていたリソースを削除すると、一覧に表示されなくなります。
    - **サブネット**:仮想ネットワーク内に存在するサブネットの一覧が表示されます。 サブネットを追加または削除する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。
@@ -88,10 +88,10 @@ ms.locfileid: "75638631"
    - **[プロパティ]** :仮想ネットワークのリソース ID や、仮想ネットワークが存在する Azure サブスクリプションなど、仮想ネットワークに関する設定が表示されます。
    - **ダイアグラム**:このダイアグラムには、仮想ネットワークに接続されているすべてのデバイスを視覚的に表現したものが表示されます。 ダイアグラムには、デバイスに関する重要な情報が含まれます。 このビューでダイアグラム内のデバイスを管理するには、デバイスを選択します。
    - **Azure の一般的な設定**:Azure の一般的な設定の詳細については、次の情報を参照してください。
-     - [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
+     - [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
      - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
-     - [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automation スクリプト](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **コマンド**

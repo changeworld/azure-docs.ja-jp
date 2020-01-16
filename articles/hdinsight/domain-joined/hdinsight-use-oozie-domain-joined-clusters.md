@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ce51923dbc6f909adad1df5a8c0bcd0723371970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435830"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920730"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
@@ -86,7 +86,7 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
           <credential name="metastore_token" type="hcat">
              <property>
                 <name>hcat.metastore.uri</name>
-                <value>thrift://hn0-<clustername>.<Domain>.com:9083</value>
+                <value>thrift://<active-headnode-name>-<clustername>.<Domain>.com:9083</value>
              </property>
              <property>
                 <name>hcat.metastore.principal</name>
@@ -214,21 +214,21 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
 
 2. nano エディターが開いたら、ファイルの内容として次の XML を使います。
 
-    ```bash
-    nameNode=adl://home
-    jobTracker=headnodehost:8050
-    queueName=default
-    examplesRoot=examples
-    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-    oozie.use.system.libpath=true
-    user.name=[domainuser]
-    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-    jdbcURL=[jdbcurlvalue]
-    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-    ```
+   ```bash
+   nameNode=adl://home
+   jobTracker=headnodehost:8050
+   queueName=default
+   examplesRoot=examples
+   oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+   hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+   hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+   oozie.use.system.libpath=true
+   user.name=[domainuser]
+   jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
+   jdbcURL=[jdbcurlvalue]
+   hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+   hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+   ```
 
    - プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
    - `domainuser` をドメインのユーザー名に置き換えます。  
