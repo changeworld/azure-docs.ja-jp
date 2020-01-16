@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401763"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977717"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401763"
 > [!NOTE]
 > 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
 
-通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。 この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
+通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。 この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
 
 > [!NOTE]
 > この記事のサンプルでは、「[Azure での管理ソリューションの設計とビルド](solutions-creating.md)」で説明されている、管理ソリューションにとって必須または一般的なパラメーターと変数を使用します。

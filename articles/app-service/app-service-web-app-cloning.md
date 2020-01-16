@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671426"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967221"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -23,7 +23,7 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 アプリの複製は、Standard、Premium、Premium V2、および Isolated の各 App Service プランでサポートされています。 この新機能には App Service バックアップ機能と同じ制限が適用されます。[Azure App Service でのアプリのバックアップ](manage-backup.md)に関するページを参照してください。
 
 ## <a name="cloning-an-existing-app"></a>既存のアプリの複製
-シナリオ: ユーザーは、米国中南部リージョンに既存のアプリを持っており、そのコンテンツを米国中北部の新しいアプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使って新しいアプリを作成します (`-SourceWebApp` オプションを指定)。
+シナリオ:ユーザーは、米国中南部リージョンに既存のアプリを持っており、そのコンテンツを米国中北部の新しいアプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使って新しいアプリを作成します (`-SourceWebApp` オプションを指定)。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -56,7 +56,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service 環境への既存のアプリの複製
-シナリオ: 米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
+シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -73,7 +73,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 `Location` パラメーターは従来の理由により必要ですが、ASE にアプリを作成するときは無視されます。 
 
 ## <a name="cloning-an-existing-app-slot"></a>既存のアプリ スロットの複製
-シナリオ: アプリの既存のデプロイ スロットを新しいアプリまたは新しいスロットに複製したいと考えています。 新しいアプリは、元のアプリ スロットと同じリージョン内にあるものでも、別のリージョンにあるものでもかまいません。
+シナリオ:アプリの既存のデプロイ スロットを新しいアプリまたは新しいスロットに複製したいと考えています。 新しいアプリは、元のアプリ スロットと同じリージョン内にあるものでも、別のリージョンにあるものでもかまいません。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使って、`source-app` に関連付けられたソース アプリ スロット (この場合の名前は `source-appslot`) の情報を取得できます。
 
@@ -91,14 +91,14 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 複数リージョンのアプリを作成し、これらのアプリすべてにトラフィックをルーティングするように Azure Traffic Manager を構成することは、アプリの高可用性を確保するための重要なシナリオです。 既存のアプリを複製するときは、両方のアプリを新しい Traffic Manager プロファイルまたは既存の Traffic Manager プロファイルのどちらに接続するかを選ぶことができます。 Azure Resource Manager バージョンの Traffic Manager のみがサポートされています。
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>アプリの複製時における新しい Traffic Manager プロファイルの作成
-シナリオ: ユーザーは、アプリを別のリージョンに複製しつつ、両方のアプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。 新しい Traffic Manager プロファイルを構成しつつ、ソース アプリの複製を新しいアプリに作成するコマンドを次に示します。
+シナリオ:ユーザーは、アプリを別のリージョンに複製しつつ、両方のアプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。 新しい Traffic Manager プロファイルを構成しつつ、ソース アプリの複製を新しいアプリに作成するコマンドを次に示します。
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-app-to-an-existing-traffic-manager-profile"></a>既存の Traffic Manager プロファイルへの新しい複製アプリの追加
-シナリオ: ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方のアプリをエンドポイントとして追加したいと考えています。 そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。 サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要です。
+シナリオ:ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方のアプリをエンドポイントとして追加したいと考えています。 そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。 サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要です。
 
 ```powershell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
@@ -124,10 +124,10 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更される
 * Linux アプリでは利用できない
 
-### <a name="references"></a>参照
+### <a name="references"></a>References
 * [App Service の複製](app-service-web-app-cloning.md)
 * [Azure App Service でアプリをバックアップする](manage-backup.md)
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
 * [App Service 環境の概要](environment/intro.md)
-* [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/manage-resources-powershell.md)
+* [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 

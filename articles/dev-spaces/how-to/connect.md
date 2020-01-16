@@ -5,12 +5,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を使用して AKS クラスターに開発用コンピューターを接続する方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482240"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770681"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>開発用マシンを AKS クラスターに接続する (プレビュー)
 
@@ -48,7 +48,7 @@ Visual Studio Code で *dev-spaces/samples/BikeSharingApp/Bikes* を開き、Azu
 
 Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマンド パレット]* の順にクリックし、Visual Studio Code でコマンド パレットを開きます。 「`Azure Dev Spaces: Redirect`」の入力を開始して、`Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`、`Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`、`Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]` をクリックします。
 
-![command](../media/how-to-connect/connect-commands.png)
+![コマンド](../media/how-to-connect/connect-commands.png)
 
 ### <a name="select-a-redirection-option"></a>リダイレクト オプションを選択する
 
@@ -169,13 +169,13 @@ Connected to MongoDB
 Listening on port 3000
 ```
 
-Azure Dev Spaces ステータス バーをクリックし、アプリケーションのパブリック URL を選択することで *bikesharingweb* サービスに移動します。 パブリック URL は、先に実行した `azds list-uris` コマンドから見つけることもできます。 クラスターで Azure Dev Spaces を使用していない場合、使用している名前空間の IP または URL をアプリケーションに使用します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.fedcab0987.eus.azds.io/` です。 ユーザーとして *Aurelia Briggs (顧客)* を選択し、借りる自転車を選択します。
+Azure Dev Spaces ステータス バーをクリックし、アプリケーションのパブリック URL を選択することで *bikesharingweb* サービスに移動します。 パブリック URL は、先に実行した `azds list-uris` コマンドから見つけることもできます。 クラスターで Azure Dev Spaces を使用していない場合、使用している名前空間の IP または URL をアプリケーションに使用します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.fedcab0987.eus.azds.io/` です。 ユーザーとして *Aurelia Briggs (顧客)* を選択してから、借りる自転車を選択します。
 
 ### <a name="set-a-break-point"></a>ブレーク ポイントを設定する
 
 [server.js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) を開き、233 行目のどこかをクリックして、カーソルをそこに置きます。 *F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックし、ブレークポイントを設定します。
 
-パブリック URL を開いて、*bikesharingweb* サービスに移動します。 ユーザーとして *Aurelia Briggs (顧客)* を選択し、借りる自転車を選択します。 自転車の画像が読み込まれないことにご注意ください。 Visual Studio Code に戻って、233 行目が強調表示されていることを確認します。 設定したブレークポイントによって、233 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻り、自転車のプレースホルダー画像が表示されていることを確認します。
+パブリック URL を開いて、*bikesharingweb* サービスに移動します。 ユーザーとして *Aurelia Briggs (顧客)* を選択してから、借りる自転車を選択します。 自転車の画像が読み込まれないことにご注意ください。 Visual Studio Code に戻って、233 行目が強調表示されていることを確認します。 設定したブレークポイントによって、233 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻り、自転車のプレースホルダー画像が表示されていることを確認します。
 
 `server.js` の 233 行目にカーソルを置いて *F9* キーを押すことで、ブレークポイントを削除します。
 
@@ -188,7 +188,7 @@ Azure Dev Spaces ステータス バーをクリックし、アプリケーシ�
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-セクションは次のようになります。
+これでセクションは、次のようになります。
 
 ```javascript
     var theBike = result;
@@ -242,7 +242,7 @@ Azure Dev Spaces のステータス バーをクリックし、 *[診断情報�
 
 また、この診断ログは、ご利用の[開発マシンの *TEMP* ディレクトリ][azds-tmp-dir]にある `Azure Dev Spaces` ディレクトリで見つけることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces と GitHub Actions を使用し、プル要求をリポジトリのメイン ブランチに結合する前に、AKS で直接、プル要求から変更をテストする方法を学習します。
 
@@ -254,6 +254,6 @@ Azure Dev Spaces と GitHub Actions を使用し、プル要求をリポジト�
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [gh-actions]: github-actions.md
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-quickstart]: ../quickstart-team-development.md
 [vs-code]: https://code.visualstudio.com/download

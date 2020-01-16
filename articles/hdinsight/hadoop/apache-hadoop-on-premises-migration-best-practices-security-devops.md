@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496400"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974404"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -86,7 +86,7 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 - [Azure Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
 - [Azure ネットワーク セキュリティ グループの概要](../../virtual-network/security-overview.md)
 - [Azure Virtual Network ピアリング](../../virtual-network/virtual-network-peering-overview.md)
-- [Azure Storage セキュリティ ガイド](../../storage/common/storage-security-guide.md)
+- [Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)
 - [保存時の Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>監視とアラートを使用する

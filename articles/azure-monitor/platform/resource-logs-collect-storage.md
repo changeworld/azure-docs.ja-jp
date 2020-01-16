@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8cb328c36a1120e5a30732c36e53d9669fc6a67c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530869"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980072"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure リソース ログをストレージ アカウントにアーカイブする
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのプラットフォーム ログの収集について説明します。
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのプラットフォーム ログの収集について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-[Azure ストレージ アカウント](../../storage/common/storage-quickstart-create-account.md)をまだお持ちでない場合は、作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
+[Azure ストレージ アカウント](../../storage/common/storage-account-create.md)をまだお持ちでない場合は、作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
 
 
 > [!IMPORTANT]
@@ -63,7 +63,7 @@ PT1H.json ファイル内では、各イベントは、次の形式で保存さ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [リソース ログの詳細について読む](resource-logs-overview.md)
+* [リソース ログの詳細について読む](platform-logs-overview.md)
 * [Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)
 * [分析のための BLOB のダウンロード](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Azure Monitor による Azure Active Directory ログのアーカイブ](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)

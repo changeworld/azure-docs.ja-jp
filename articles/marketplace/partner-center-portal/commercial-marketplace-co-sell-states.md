@@ -1,19 +1,19 @@
 ---
 title: 共同販売の州コード | Azure Marketplace
 description: オファーの [共同販売] ページに連絡先情報を指定するときに、これらの州/都道府県コードを使用します。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812854"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934358"
 ---
 # <a name="co-sell-state-codes"></a>共同販売の州コード
 
@@ -81,6 +81,6 @@ ms.locfileid: "73812854"
 | 合衆国領有小離島 | US-UM    |
 |アメリカ領ヴァージン諸島                 | US-VI     |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パートナー センターの共同販売オプション](./commercial-marketplace-co-sell.md)を確認します。

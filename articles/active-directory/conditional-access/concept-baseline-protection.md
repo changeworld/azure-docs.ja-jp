@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425011"
 ---
 # <a name="what-are-baseline-policies"></a>ベースライン ポリシーとは?
 
-ベースライン ポリシーは、多くの一般的な攻撃から組織を保護するために役立つ一連の定義済みのポリシーです。 これらの一般的な攻撃としては、パスワード スプレー、リプレイ、およびフィッシングなどが考えられます。 ベースライン ポリシーは、Azure AD のすべてのエディションで使用できます。 この数年間で ID ベースの攻撃が増えているため、Microsoft はこれらのベースライン保護ポリシーをすべてのユーザーが利用できるようにしています。 これらの 4 つのポリシーの目標は、すべての組織が追加の費用なしでベースライン レベルのセキュリティを確実に有効にできるようにすることです。  
+ベースライン ポリシーは、多くの一般的な攻撃から組織を保護するために役立つ一連の定義済みのポリシーです。 これらの一般的な攻撃としては、パスワード スプレー、リプレイ、およびフィッシングなどが考えられます。 ベースライン ポリシーは、Azure AD のすべてのエディションで使用できます。 この数年間で ID ベースの攻撃が増えているため、Microsoft はこれらのベースライン保護ポリシーをすべてのユーザーが利用できるようにしています。 これらの 4 つのポリシーの目標は、すべての組織が追加の費用なしでベースライン レベルのセキュリティを確実に有効にできるようにすることです。
 
 カスタマイズされた条件付きアクセス ポリシーを管理するには、Azure AD Premium ライセンスが必要です。
 
+> [!IMPORTANT]
+> ベースライン ポリシーは非推奨になっています。 詳細については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)」を参照してください。
+
 ## <a name="baseline-policies"></a>ベースライン ポリシー
 
-![Azure portal での条件付きアクセス ベースライン ポリシー](./media/concept-baseline-protection/conditional-access-policies.png)
+![Azure portal での条件付きアクセス ベースライン ポリシー](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 ベースライン ポリシーには、次の 4 つがあります。
 
@@ -36,6 +39,10 @@ ms.locfileid: "74420560"
 * Require MFA for Service Management (プレビュー)
 
 この 4 つのポリシーはすべて、POP、IMAP、より以前の Office デスクトップ クライアントなどのレガシ認証フローに影響を与えます。
+
+### <a name="exclusions"></a>除外
+
+ベースライン ポリシーが最初のパブリック プレビューになった時点では、ユーザーをポリシーから除外するオプションが存在していました。 この機能はプレビューを通じて進化し、2019 年 7 月に削除されました。 既に除外を作成していた組織は除外を保持し続けることができましたが、新しいユーザーは除外をポリシーに追加できませんでした。
 
 ### <a name="require-mfa-for-admins-preview"></a>Require MFA for admins (プレビュー)
 
@@ -60,8 +67,8 @@ ms.locfileid: "74420560"
 
 **End user protection (プレビュー)** は、ディレクトリ内のすべてのユーザーを保護するベースライン ポリシーです。 このポリシーを有効にすると、すべてのユーザーが 14 日以内に Azure Multi-Factor Authentication に登録することを求められます。 登録されると、ユーザーはリスクの高いサインインの試行中にのみ、MFA を求められます。 侵害されたユーザー アカウントは、パスワードがリセットされてリスクがなくなるまでブロックされます。 
 
-[!NOTE]
-ポリシーをアクティブ化すると、以前にリスクのフラグが付けられたユーザーは、パスワードがリセットされてリスクがなくなるまでブロックされます。
+> [!NOTE]
+> ポリシーをアクティブ化すると、以前にリスクのフラグが付けられたユーザーは、パスワードがリセットされてリスクがなくなるまでブロックされます。
 
 ### <a name="block-legacy-authentication-preview"></a>Block legacy authentication (プレビュー)
 
@@ -75,7 +82,7 @@ ms.locfileid: "74420560"
 
 組織はさまざまな Azure サービスを使用すると共に、それらを Azure Resource Manager ベースの次のようなツールで管理します。
 
-* Azure ポータル
+* Azure portal
 * Azure PowerShell
 * Azure CLI
 
@@ -83,10 +90,10 @@ ms.locfileid: "74420560"
 
 特権を必要とするアクションを保護するために、この **Require MFA for Service Management (プレビュー)** ポリシーでは、Azure portal、Azure PowerShell、または Azure CLI にアクセスするどのユーザーに対しても多要素認証を要求します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 
+* [セキュリティ既定値の有効化](../fundamentals/concept-fundamentals-security-defaults.md)
 * [一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)
 * [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)
-* [Azure Active Directory の条件付きアクセスとは](overview.md)

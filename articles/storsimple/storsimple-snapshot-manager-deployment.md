@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のデプロイ | Microsoft Docs
 description: StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61077749"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933378"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC スナップインのデプロイ
 
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 2. **[スコープ]** ウィンドウで **[デバイス]** ノードを右クリックし、 **[デバイスの構成]** をクリックします。 **[デバイスの構成]** ダイアログ ボックスが表示されます。
    
     ![[デバイスの構成]](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。 **[パスワード]** テキスト ボックスに、Azure ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 Click **OK**.
+3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。 **[パスワード]** テキスト ボックスに、Azure ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 **[OK]** をクリックします。
 4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。 デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。 [デバイスへの接続を検証](#to-verify-the-connection) して、接続が正常に追加されたことを確認できます。
    
     何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。 **[OK]** をクリックしてエラー メッセージを閉じ、 **[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
@@ -211,7 +211,7 @@ StorSimple Snapshot Manager を再インストールするには、「 [StorSimp
    2. **[サービス]** ページで、 **[Microsoft StorSimple Management Service]** を選択します。
    3. 右側のウィンドウで、 **[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * StorSimple Snapshot Manager の詳細については、「 [StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
 * StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「 [StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」を参照してください。
 * StorSimple Snapshot Manager の使用方法については、「 [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。

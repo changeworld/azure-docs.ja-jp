@@ -1,7 +1,7 @@
 ---
 title: SQL 変換の適用
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Apply SQL Transformation (SQL 変換の適用) モジュールを使用して入力データセットに対して SQLite クエリを実行し、データを変換する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Apply SQL Transformation (SQL 変換の適用) モジュールを使用して入力データセットに対して SQLite クエリを実行し、データを変換する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456519"
 ---
 # <a name="apply-sql-transformation"></a>SQL 変換の適用
 
@@ -62,6 +62,6 @@ SQLite では ANSI SQL 標準の多くがサポートされていますが、商
 
 SQLite の公式サイトで提供されているサポートされていない関数の一覧に加え、次の Wiki では、サポートされていないその他の機能の一覧が提供されています。[SQLite - サポートされていない SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

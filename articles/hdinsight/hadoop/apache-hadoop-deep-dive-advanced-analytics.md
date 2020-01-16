@@ -2,18 +2,18 @@
 title: 詳細情報 - 高度な分析 - Azure HDInsight
 description: 高度な分析において、Azure HDInsight でどのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241657"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646525"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -39,9 +39,8 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 
 * 教師あり - 結果を得られるようになるには、ラベル付けされたデータのセットでアルゴリズムをトレーニングする必要があります
 * 半教師あり - トレーニングの初期段階では使用できなかったトレーナーによるインタラクティブ クエリを使用して、別のターゲットによってアルゴリズムを強化できます
-* 教師なし - アルゴリズムはトレーニング データを必要としません 
+* 教師なし - アルゴリズムはトレーニング データを必要としません
 * 強化 - アルゴリズムはソフトウェア エージェントを使用して、特定のコンテキスト内での (ロボット工学でよく使用される) 理想的な動作を決定します
-
 
 | アルゴリズムのカテゴリ| 用途 | 学習タイプ | アルゴリズム |
 | --- | --- | --- | -- |
@@ -62,15 +61,13 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning と Apache Spark
 
-
-[HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](https://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 
-
+[HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](https://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。
 
 分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリが 3 つあります。
 
-* [**MLlib** ](https://spark.apache.org/docs/latest/ml-guide.html) - MLlib には Spark RDD 上に構築されたオリジナルの API が含まれています。
-* [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML は、ML パイプラインを構築するために Spark DataFrame 上に構築された高度な API を提供する、比較的新しいパッケージです。
-* [**MMLSpark** ](https://github.com/Azure/mmlspark) - Microsoft Machine Learning library for Apache Spark (MMLSpark) は、データ サイエンティストの Spark 上での生産性を高めること、実験速度を向上させること、およびディープ ラーニングなどの非常に大規模なデータセットに対して、機械学習の最先端の手法を利用できることを目標に設計されています。 MMLSpark ライブラリは、PySpark でモデルを構築するための一般的なモデリング タスクを簡略化します。 
+* [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) - MLlib には Spark RDD 上に構築されたオリジナルの API が含まれています。
+* [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML は、ML パイプラインを構築するために Spark DataFrame 上に構築された高度な API を提供する、比較的新しいパッケージです。
+* [**MMLSpark**](https://github.com/Azure/mmlspark) - Microsoft Machine Learning library for Apache Spark (MMLSpark) は、データ サイエンティストの Spark 上での生産性を高めること、実験速度を向上させること、およびディープ ラーニングなどの非常に大規模なデータセットに対して、機械学習の最先端の手法を利用できることを目標に設計されています。 MMLSpark ライブラリは、PySpark でモデルを構築するための一般的なモデリング タスクを簡略化します。
 
 ### <a name="r-and-ml-services"></a>R および ML Services
 
@@ -78,11 +75,11 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning と Apache Hive
 
-[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使える Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
+[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、予測分析をモデル化するためのツールと、すぐに使える Web サービスとして予測モデルをデプロイするためのフル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark とディープ ラーニング
 
-[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
+[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>シナリオ - 画像をスコア付けして都市開発におけるパターンを特定する
 
@@ -92,15 +89,15 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 この高度な分析のシナリオでは、次の 3 つの主要なタスクがあります。
 
-1. Apache Spark 2.1.0 ディストリビューションを使用して、Azure HDInsight Hadoop クラスターを作成する。 
-2. Microsoft Cognitive Toolkit を Azure HDInsight Spark クラスターのすべてのノードにインストールするカスタム スクリプトを実行する。 
-3. 事前構築済みの Jupyter Notebook を、ご利用の HDInsight Spark クラスターにアップロードし、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルを Spark Python API (PySpark) を使用して Azure Blob Storage アカウント内のファイルに適用する。 
+1. Apache Spark 2.1.0 ディストリビューションを使用して、Azure HDInsight Hadoop クラスターを作成する。
+2. Microsoft Cognitive Toolkit を Azure HDInsight Spark クラスターのすべてのノードにインストールするカスタム スクリプトを実行する。
+3. 事前構築済みの Jupyter Notebook を、ご利用の HDInsight Spark クラスターにアップロードし、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルを Spark Python API (PySpark) を使用して Azure Blob Storage アカウント内のファイルに適用する。
 
 この例では、Alex Krizhevsky、Vinod Nair、Geoffrey Hinton らによって編集と配布が行なわれている CIFAR-10 の画像セットを使用します。 CIFAR-10 のデータセットには、相互排他的な 10 個のクラスに属している 32×32 のカラー画像が 60,000 枚含まれています。
 
 ![機械学習の画像の例](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-このデータセットの詳細については、Alex Krizhevsky の『[Learning Multiple Layers of Features from Tiny Images (小さな画像から特徴を学習するマルチ レイヤー)](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)』をご覧ください。
+このデータセットの詳細については、Alex Krizhevsky の「[小さな画像から特徴を学習するマルチ レイヤー](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)」をご覧ください。
 
 このデータセットは、50,000 枚の画像のトレーニング セットと 10,000 枚の画像のテスト セットに分割されています。 最初のセットは、Cognitive Toolkit の GitHub リポジトリにある[こちらのチュートリアル](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet)に従い、Microsoft Cognitive Toolkit を使用して 20 層の畳み込み Deep Residual Network (ResNet) モデルをトレーニングするために使用されています。 残りの 10,000 枚の画像は、モデルの精度をテストするために使用されています。 ここで分散コンピューティングが関与します。画像の前処理とスコア付けのタスクは、高度に並列化することが可能です。 使用可能な保存されたトレーニング済みモデルとともに、次のものを使用します。
 
@@ -117,12 +114,12 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 [こちらのチュートリアル](../spark/apache-spark-microsoft-cognitive-toolkit.md)に従って、このソリューションを最初から最後まで (HDInsight Spark クラスターのセットアップ、Cognitive Toolkit のインストール、10,000 枚の CIFAR 画像をスコア付けする Jupyter Notebook の実行まで) 実装してみてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Apache Hive と Azure Machine Learning
 
 * [Apache Hive と Azure Machine Learning の詳細](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [1-TB データセットでの Azure HDInsight Hadoop クラスターの使用](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
 Apache Spark と MLLib
 

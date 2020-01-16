@@ -1,25 +1,16 @@
 ---
-title: EventFlow を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+title: EventFlow を使用した Azure Service Fabric のイベントの集計
 description: Azure Service Fabric クラスターの監視と診断に EventFlow を使用したイベントの集計と収集について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: bdc6c9476529b986f425d56544fd4b1afd8a864e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463081"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
@@ -150,11 +141,11 @@ servicefabric:/<section-name>/<setting-name>
 
 `<section-name>` は、Service Fabric の構成セクションの名前を示し、`<setting-name>` は、EventFlow の設定の構成に使用する値を提供する構成設定です。 その設定方法についての詳細は、「[Support for Service Fabric settings and application parameters (Service Fabric の設定とアプリケーション パラメーターのサポート)](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters)」をご覧ください。
 
-## <a name="verification"></a>確認
+## <a name="verification"></a>検証
 
 サービスを開始し、Visual Studio の [デバッグ] 出力ウィンドウを観察します。 サービスを開始すると、構成した出力に対して、サービスがレコードを送信している証拠が表示され始めるはずです。 イベント分析と視覚化プラットフォームに移動し、ログ表示が開始したことを確認します (数分かかる場合があります)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)

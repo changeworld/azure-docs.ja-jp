@@ -2,19 +2,19 @@
 title: Azure クイック スタート - Batch ジョブの実行 - ポータル
 description: Azure Portal で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094119"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029417"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート:Azure portal で最初の Batch ジョブを実行する
 
@@ -56,7 +56,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 3. **[オペレーティング システム]** で、次の設定を選択します (他のオプションを見つけることができます)。
   
-   |Setting  |値  |
+   |設定  |値  |
    |---------|---------|
    |**イメージの種類**|Marketplace (Linux/Windows)|
    |**発行元**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 4. 下にスクロールして、 **[ノード サイズ]** と **[スケール]** の設定を入力します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
   
-   |Setting  |値  |
+   |設定  |値  |
    |---------|---------|
    |**ノード価格レベル**     |Standard_A1|
    |**ターゲットの専用ノード数**     |2|
@@ -82,7 +82,7 @@ Batch によってすぐにプールが作成されますが、コンピュー�
 
 数分後、プールの状態は **[安定]** になり、ノードが開始されます。 **[ノード]** を選択して、ノードの状態を確認します。 ノードの状態が **[アイドル]** の場合は、タスクを実行する準備が整っています。 
 
-## <a name="create-a-job"></a>ジョブを作成する
+## <a name="create-a-job"></a>ジョブの作成
 
 プールを作成できたら、そこで実行するジョブを作成します。 Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 最初、ジョブにはタスクがありません。 
 
@@ -90,7 +90,7 @@ Batch によってすぐにプールが作成されますが、コンピュー�
 
 2. *myjob* という**ジョブ ID** を入力します。 **[プール]** で *mypool* を選択します。 残りの設定は既定値のままにして、 **[OK]** を選択します。
 
-   ![ジョブを作成する][job_create]
+   ![ジョブの作成][job_create]
 
 ジョブが作成されると、 **[タスク]** ページが開きます。
 
@@ -122,7 +122,7 @@ Batch を使用する場合、コマンド ラインは、アプリまたはス�
 
 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブとタスクを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Batch のチュートリアルとサンプルを続行する場合は、このクイック スタートで作成した Batch アカウントとリンクされているストレージ アカウントを使用します。 Batch アカウント自体の料金は発生しません。
 
@@ -130,7 +130,7 @@ Batch のチュートリアルとサンプルを続行する場合は、この�
 
 リソース グループ、Batch アカウント、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** を選択してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch アカウント、Batch プール、Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行されたため、いずれかのノード上に作成された出力が表示されました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細については、Azure Batch のチュートリアルを続行してください。 
 

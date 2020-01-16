@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のボリューム グループ | Microsoft D
 description: StorSimple Snapshot Manager MMC スナップインを使用して、ボリューム グループを作成および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699709"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931488"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
 ## <a name="overview"></a>概要
@@ -48,11 +48,11 @@ ms.locfileid: "64699709"
 ## <a name="view-volume-groups"></a>ボリューム グループの表示
 **[ボリューム グループ]** ノードをクリックすると、列の選択内容に従って、 **[結果]** ウィンドウに各ボリューム グループに関する次の情報が表示されます ( **[結果]** ウィンドウ内の列は構成可能です。 **[ボリューム]** ノードを右クリックして **[表示]** を選択し、 **[列の追加と削除]** を選択します)。
 
-| 結果の列 | 説明 |
+| 結果の列 | [説明] |
 |:--- |:--- |
 | Name |**[名前]** 列には、ボリューム グループの名前が含まれます。 |
 | Application |**[アプリケーション]** 列は、Windows ホスト上で現在インストールされ、実行されている VSS ライターの数を示します。 |
-| オン |**[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。 ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。 |
+| Selected |**[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。 ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。 |
 | インポート済み |**[インポート済み]** 列には、インポートされたボリュームの数が表示されます。 **True** に設定されている場合、この列はボリューム グループが Azure Portal からインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。 |
 
 > [!NOTE]
@@ -125,7 +125,7 @@ ms.locfileid: "64699709"
    
     削除されたボリューム グループは **[結果]** ウィンドウのリストから消去され、そのボリューム グループに関連付けられているすべてのバックアップはバックアップ カタログから削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
 * [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)方法を確認する。
 

@@ -3,12 +3,12 @@ title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132847"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980899"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 
@@ -24,11 +24,11 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 次のセクションでは、各種の管理領域について簡単に説明して、それらへの対応を目的とした主な Azure サービスに関する詳細なコンテンツへのリンクを紹介します。
 
-## <a name="monitor"></a>監視
+## <a name="monitor"></a>モニター
 
 監視とは、リソースのパフォーマンス、正常性、および可用性を監査するために、データを収集して分析することです。 効果的な監視戦略によって、コンポーネントの運用を理解すると共に、通知を利用して稼働時間を向上させることができます。 [Azure アプリケーションとリソースの監視](../monitoring/monitoring-overview.md)に使用されるさまざまなサービスを紹介した監視の概要を確認してください。
 
-## <a name="configure"></a>構成
+## <a name="configure"></a>[構成]
 
 構成とは、リソースの初期デプロイと構成、および継続的な保守のことです。
 これらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。 [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。 Runbook はプロセスの自動化を処理しますが、構成を管理する際には、構成および更新の管理が役立ちます。
@@ -36,9 +36,9 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 ## <a name="govern"></a>ガバナンス
 
 ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。 これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。
-Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。 この機能によって、リソースを継続的に企業の標準に準拠させることができます。 [Azure Cost Management](../cost-management/overview-cost-mgt.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
+Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。 この機能によって、リソースを継続的に企業の標準に準拠させることができます。 [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
 
-## <a name="secure"></a>セキュリティ保護
+## <a name="secure"></a>セキュリティで保護
 
 リソースおよびデータのセキュリティを管理する セキュリティ プログラムには、脅威の評価、データの収集と分析、およびアプリケーションとリソースの準拠が必要になります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 Azure リソースのセキュリティ保護に関する包括的な情報とガイダンスについては、「[Azure Security の概要](../security/fundamentals/overview.md)」を参照してください。
 

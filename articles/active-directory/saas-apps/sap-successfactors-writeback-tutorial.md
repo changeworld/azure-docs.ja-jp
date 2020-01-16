@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932132"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530036"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成 する (プレビュー)
 このチュートリアルの目的は Azure Active Directory から SuccessFactors Employee Central に属性を書き戻すために必要な手順を説明することです。 書き戻しに対して、現在、サポートされている唯一の属性は email 属性です。 
@@ -34,61 +34,61 @@ ms.locfileid: "74932132"
 
 * IT が管理する信頼できる属性（メールアドレスなど）を SuccessFactors に書き戻す必用のある、 Office 365 を使用している組織
 
-## <a name="configuring-successfactors-for-the-integration"></a>統合 SuccessFactors の構成
+## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 
 すべての SuccessFactors プロビジョニング コネクタの一般的な要件は、SuccessFactors OData API を呼び出すための適切なアクセス許可を持つ SuccessFactors アカウントの資格情報が必要なことです。 このセクションでは、SuccessFactors でサービス アカウントを作成し、適切なアクセス許可を付与する手順を説明します。 
 
-* [SuccessFactors の API ユーザー アカウントの作成/識別](#createidentify-api-user-account-in-successfactors)
+* [SuccessFactors で API ユーザー アカウントを作成または識別する](#createidentify-api-user-account-in-successfactors)
 * [API アクセス許可ロールを作成する](#create-an-api-permissions-role)
 * [API ユーザーのアクセス許可グループを作成する](#create-a-permission-group-for-the-api-user)
 * [アクセス許可グループへのアクセス許可ロールの付与をする](#grant-permission-role-to-the-permission-group)
 
-### <a name="createidentify-api-user-account-in-successfactors"></a>SuccessFactors の API ユーザー アカウントの作成/識別
+### <a name="createidentify-api-user-account-in-successfactors"></a>SuccessFactors で API ユーザー アカウントを作成または識別する
 SuccessFactors 管理チームまたは実装パートナーと協力して、OData API の呼び出しに使用される SuccessFactors のユーザー アカウントを作成または識別します。 Azure AD でプロビジョニング アプリを構成する場合、このアカウントのユーザー名とパスワードの資格情報が必要になります。 
 
 ### <a name="create-an-api-permissions-role"></a>API アクセス許可ロールを作成する
 
 * Admin Center にアクセスできるユーザーアカウントで SAP SuccessFactors にログインします。
-* 「*アクセス許可ロール*」を検索し、検索結果から **[アクセス許可ロールの管理]** を選択します。
+* "*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
   ![アクセス許可ロールを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* [アクセス許可 ] 一覧で、 **[新規作成]** をクリックします。
+* [Permission Role List]\(アクセス許可ロール一覧\) で、 **[Create New]\(新規作成\)** をクリックします。
   > [!div class="mx-imgBorder"]
   > ![アクセス許可ロールを新規作成する](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* 新しいアクセス許可ロールの**ロール名**および**説明**を追加します。 名前と説明では、このロールが API 使用アクセス許可されていることを示す必要があります。
+* 新しいアクセス許可ロールの **[Role Name]\(ロール名\)** と **[Description]\(説明\)** を追加します。 名前と説明では、このロールが API 使用アクセス許可されていることを示す必要があります。
   > [!div class="mx-imgBorder"]
   > ![アクセス許可のロールの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* [アクセス許可の設定] で、 **[アクセス許可]** をクリックし、アクセス許可の一覧を下にスクロールして **[統合ツールの管理]** をクリックします。 **[管理者が Websites Basic 認証を介して OData API にアクセスできるようにする]** チェックボックスを有効にします。
+* [Permission settings]\(アクセス許可の設定\) で、 **[Permission]\(アクセス許可\)** をクリックし、アクセス許可一覧を下にスクロールして **[Manage Integration Tools]\(統合ツールの管理\)** をクリックします。 **[Allow Admin to Access to OData API through Basic Authentication]\(管理者が Websites Basic 認証を介して OData API にアクセスできるようにする\)** チェックボックスを有効にします。
   > [!div class="mx-imgBorder"]
   > ![統合ツールを管理する](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* 同じボックス内を下方向にスクロールし、 **[Employee Central API]** を選択します。 次に示すように、ODATA API を使用して読み取り、ODATA API を使用して編集するためのアクセス許可を追加します。 SuccessFactors への書き戻しシナリオに同じアカウントを使用する場合は、編集オプションを選択してください。 
+* 同じボックス内を下にスクロールし、 **[Employee Central API]** を選択します。 次に示すように、ODATA API を使用して読み取り、ODATA API を使用して編集するためのアクセス許可を追加します。 SuccessFactors への書き戻しシナリオに同じアカウントを使用する場合は、編集オプションを選択してください。 
   > [!div class="mx-imgBorder"]
-  > ![アクセス許可を読み取り/書き込みする](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+  > ![読み取りと書き込みのアクセス許可](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 * **[Done]\(終了)** をクリックします。 **[変更を保存]** をクリックします。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API ユーザーのアクセス許可グループを作成する
 
-* SuccessFactors 管理センターで、「*アクセス許可グループの管理*」を検索し、検索結果から **[アクセス許可グループ]** を選択します。
+* SuccessFactors Admin Center で、"*Manage Permission Groups*" を検索し、検索結果から **[Manage Permission Groups]\(アクセス許可グループの管理\)** を選択します。
   > [!div class="mx-imgBorder"]
   > ![アクセス許可グループを管理する](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* [アクセス許可グループの管理] ウィンドウで、 **[新規作成]** をクリックします。
+* [Manage Permission Groups]\(アクセス許可グループの管理\) ウィンドウで、 **[Create New]\(新規作成\)** をクリックします。
   > [!div class="mx-imgBorder"]
   > ![新しいグループを追加する](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * 新しいグループのグループ名を追加します。 グループ名は、グループが API ユーザー用であることを示す必要があります。
   > [!div class="mx-imgBorder"]
   > ![アクセス許可グループ名](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* グループにメンバーを追加します。 たとえば、[People Pool] ドロップダウン メニューから **[Username]** を選択し、統合に使用する API アカウントのユーザー名を入力します。 
+* グループにメンバーを追加します。 たとえば、[People Pool]\(ユーザー プール\) ドロップダウン メニューから **[Username]\(ユーザー名\)** を選択し、統合に使用する API アカウントのユーザー名を入力します。 
   > [!div class="mx-imgBorder"]
   > ![Add group members](./media/sap-successfactors-inbound-provisioning/add-group-members.png)\(グループ メンバーの追加\)
-* **[Done]** をクリックして、アクセス許可グループの作成を完了します。
+* **[Done]\(完了\)** をクリックして、アクセス許可グループの作成を完了します。
 
-### <a name="grant-permission-role-to-the-permission-group"></a>アクセス許可グループへのアクセス許可ロールの付与をする
+### <a name="grant-permission-role-to-the-permission-group"></a>許可グループに許可ロールを付与する
 
-* SuccessFactors 管理センターで、「*アクセス許可ロールの管理*」を検索し、検索結果から **[アクセス許可ロールの管理]** を選択します。
-* **[アクセス許可ロール]** の一覧で、API 使用アクセス許可用に作成したロールを選択します。
-* **[Grant this role to]** で、 **[追加]** ボタンをクリックします。
-* ドロップダウン メニューから **[アクセス許可グループ...]** を選択し、 **[選択]** をクリックして [グループ] ウィンドウを開き、上記で作成したグループを検索して選択します。 
+* SuccessFactors Admin Center で、"*Manage Permission Roles*" を検索し、検索結果から **[Manage Permission Roles]\(アクセス許可ロールの管理\)** を選択します。
+* **[Permission Role List]\(アクセス許可ロール一覧\)** から、API 使用アクセス許可用に作成したロールを選択します。
+* **[Grant this role to]\(このロールに付与するアクセス許可\)** で、 **[Add]\(追加\)** ボタンをクリックします。
+* ドロップダウン メニューから **[Permission Group]\(アクセス許可グループ\)** を選択し、 **[Select]\(選択\)** をクリックして [Groups]\(グループ\) ウィンドウを開き、先ほど作成したグループを検索して選択します。 
   > [!div class="mx-imgBorder"]
-  > ![アクセス許可グループの追加](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+  > ![アクセス許可グループを追加する](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
 * アクセス許可グループに対するアクセス許可ロールの付与を確認します。 
   > [!div class="mx-imgBorder"]
   > ![アクセス許可ロールおよびグループの詳細](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
@@ -102,7 +102,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 * [属性マッピングの構成](#part-2-configure-attribute-mappings)
 * [ユーザー プロビジョニングの有効化と起動](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>パート 1:プロビジョニング コネクタ アプリを追加して、SuccessFactors への接続の構成をする
+### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>パート 1: プロビジョニング コネクタ アプリを追加して、SuccessFactors への接続の構成をする
 
 **SAP SuccessFactors 書き戻し：**
 
@@ -118,19 +118,19 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
 
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に変更します
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理ユーザー名** – SuccessFactors API ユーザー アカウントのユーザー名に、会社 ID を追加して入力します。 次の形式で指定します： **username\@companyID**
+   * **管理ユーザー名** - SuccessFactors API ユーザー アカウントのユーザー名に、会社 ID を追加して入力します。 形式は **username\@companyID** です
 
-   * **管理パスワード –** SuccessFactors API ユーザー アカウントのパスワードを入力します。 
+   * **管理パスワード** - SuccessFactors API ユーザー アカウントのパスワードを入力します。 
 
-   * **テナント URL –** SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は次のようになります: **api-server-name.successfactors.com**。
+   * **テナント URL** - SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は次のようになります: **api-server-name.successfactors.com**。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、SuccessFactors 資格情報および URL が有効か再度確認します。
     >[!div class="mx-imgBorder"]
@@ -138,7 +138,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
    * 資格情報が正常に保存されると、**マッピング** セクションにはデフォルトのマッピングが次の表示をする： **Azure Active Directory Domain Services ユーザーを SuccessFactors に同期する**
 
-### <a name="part-2-configure-attribute-mappings"></a>パート 2:属性マッピングの構成
+### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成
 
 このセクションでは、ユーザーデータが SuccessFactors から Active Directory Domain Services に流れる方法を構成します。
 
@@ -170,7 +170,7 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. **[Save]** をクリックします。
+2. **[保存]** をクリックします。
 
 3. この操作により初期同期が開始されます。所要時間は SuccessFactors テナントのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
 
@@ -181,7 +181,7 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
    > [!div class="mx-imgBorder"]
    > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 * [SuccessFactors と Azure Active Directory Domain Services の間でシングル サインオンを構成する方法を学習する](successfactors-tutorial.md)

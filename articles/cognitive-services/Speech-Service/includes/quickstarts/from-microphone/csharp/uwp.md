@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:マイクから音声を認識する、C# (UWP) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e6934e908111773cef3f7ddcfc2a971d8e1706bf
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818669"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928036"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,15 +26,15 @@ ms.locfileid: "74818669"
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=uwp)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
-既にこれを行っている場合は、これで完了です。 続けましょう。
+既にこれを行っている場合は、これで完了です。 このまま続けましょう。
 
 ## <a name="open-your-project-in-visual-studio"></a>Visual Studio でプロジェクトを開きます。
 
 最初の手順として、ご利用のプロジェクトを Visual Studio で開いていることを確認します。
 
-## <a name="start-with-some-boilerplate-code"></a>スケルトン コードを使用して開始する
+## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
-このプロジェクトのスケルトンとして機能するコードを追加してみましょう。
+このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 1. **ソリューション エクスプローラー**で、`MainPage.xaml` を開きます。
 
@@ -54,22 +53,22 @@ ms.locfileid: "74818669"
 `SpeechRecognizer` オブジェクトを初期化するには、サブスクリプション キーとサブスクリプション リージョンを使用する構成を作成する必要があります。 このコードを `RecognizeSpeechAsync()` メソッドに挿入します。
 
 > [!NOTE]
-> このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、「[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/)」を参照してください [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/)に関する記事を参照してください[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer を初期化する
 
-次に、`SpeechRecognizer` を作成してみましょう。 アンマネージド リソースが適切に解放されるよう、このオブジェクトは using ステートメント内で作成します。 このコードを `RecognizeSpeechAsync()` メソッドの Speech 構成のすぐ下に挿入してください。
+次に、`SpeechRecognizer` を作成してみましょう。 アンマネージド リソースが確実に正しく解放されるように、このオブジェクトは using ステートメント内に作成されます。 このコードを Speech 構成のすぐ下にある `RecognizeSpeechAsync()` メソッドに挿入します。
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>語句を認識する
 
-`SpeechRecognizer` オブジェクトから、`RecognizeOnceAsync()` メソッドの呼び出しを行います。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。
+`SpeechRecognizer` オブジェクトから、`RecognizeOnceAsync()` メソッドを呼び出します。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。
 
 using ステートメント内に、このコードを追加します。[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>認識結果 (またはエラー) を表示する
 
-Speech サービスによって認識結果が返されたら、それを使用して何らかの操作を行います。 シンプルに保ち、結果を状態パネルに出力します。
+音声サービスによって認識結果が返されたら、それを使用して何らかの操作を行います。 シンプルに保ち、結果を状態パネルに出力します。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=68-93)]
 
@@ -91,6 +90,6 @@ Speech サービスによって認識結果が返されたら、それを使用�
 
    ![音声認識ユーザー インターフェイス](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

@@ -3,7 +3,7 @@ title: Azure Batch プールの Azure ファイル共有 | Microsoft Docs
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: ''
-ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d84fdd4635a7a9227e29fe3cd8c43a1fc4cbeb5b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093964"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029450"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -50,8 +50,8 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
-* **[ユーザー名]** : AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
-* **Password**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **ユーザー名**:AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
+* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
 
@@ -128,7 +128,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 次に、以下の資格情報を指定して、`mount` コマンドを実行してファイル共有をマウントします。
 
 * **ユーザー名**: \<storageaccountname\> (たとえば、*mystorageaccountname*)
-* **Password**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を */mnt/MyAzureFileShare* でマウントします。 
 
@@ -181,7 +181,7 @@ batch_service_client.task.add(job_id, task)
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch でデータの読み取りと書き込みを行うためのその他のオプションについては、[Batch 機能の概要](batch-api-basics.md) に関するページと「[ジョブとタスク出力を保持する](batch-task-output.md)」を参照してください。
 

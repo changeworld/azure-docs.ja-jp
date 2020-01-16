@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595387"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045872"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ### <a name="features-to-secure-the-azure-platform"></a>Azure プラットフォームをセキュリティで保護するための機能
 次の機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性という 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます。
 
-| [安全なプラットフォーム](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [安全なプラットフォーム](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透過性](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [セキュリティ開発サイクル](https://www.microsoft.com/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
@@ -60,7 +60,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 ビルトイン機能は、次の 6 つの機能区分に分類されます。操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード
@@ -69,7 +69,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 さらに、セキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+[Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
 
@@ -81,7 +81,7 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合は、サービスからメールが届きます。 Application Insights は、機密性、整合性、および可用性というセキュリティの 3 本柱の中の可用性に役立つ、貴重なセキュリティ ツールとなります。
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)) と個々の Azure リソース ([診断ログ](../../azure-monitor/platform/resource-logs-overview.md)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)) と個々の Azure リソース ([診断ログ](../../azure-monitor/platform/platform-logs-overview.md)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 [Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Azure Monitor ログには Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
@@ -138,20 +138,20 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   アプリケーション エラー (例外イベントを表示)
 -   パフォーマンス (パフォーマンス イベントを表示)
 
-## <a name="storage"></a>Storage
-このセクションでは、Azure ストレージのセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
+## <a name="storage"></a>ストレージ
+このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
-ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](../../role-based-access-control/built-in-roles.md)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/common/storage-security-guide.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
+ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](../../role-based-access-control/built-in-roles.md)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 [shared access signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
--   [トランスポートレベルの暗号化](../../storage/common/storage-security-guide.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
+-   [トランスポートレベルの暗号化](../../storage/blobs/security-recommendations.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--   [ワイヤ暗号化](../../storage/common/storage-security-guide.md) ([Azure ファイル共有](../../storage/files/storage-dotnet-how-to-use-files.md)の [SMB 3.0 暗号化](../../storage/common/storage-security-guide.md)など)。
+-   [ワイヤ暗号化](../../storage/blobs/security-recommendations.md) ([Azure ファイル共有](../../storage/files/storage-dotnet-how-to-use-files.md)の [SMB 3.0 暗号化](../../storage/blobs/security-recommendations.md)など)。
 
 -   クライアント側の暗号化 (ストレージにデータを転送する前にデータを暗号化し、ストレージからデータを転送した後にデータを復号化します)。
 
@@ -266,9 +266,9 @@ Traffic Manager には、さまざまなアプリケーション ニーズ、エ
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) は、高可用性と優れたネットワーク パフォーマンスをアプリケーションに提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。 Azure Load Balancer は次のように構成できます。
 
--   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](../../load-balancer/load-balancer-overview.md#publicloadbalancer)と呼ばれます。
+-   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](../../load-balancer/concepts-limitations.md#publicloadbalancer)と呼ばれます。
 
--   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](../../load-balancer/load-balancer-overview.md#internalloadbalancer)と呼ばれます。
+-   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](../../load-balancer/concepts-limitations.md#internalloadbalancer)と呼ばれます。
 
 - 外部トラフィックを特定の仮想マシンに転送します。
 

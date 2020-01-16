@@ -7,15 +7,15 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: 4c910fd72805ce8cb1e7baa6b4252d6b2192fe36
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535627"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977567"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>従来の設定を使用して Azure アクティビティ ログを収集する
-[Azure アクティビティ ログ](activity-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 最近まで、アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)に送信するためのログ プロファイルを作成し、コネクタを使用してこれらを [Log Analytics ワークスペース](activity-log-collect.md)に収集していました。 この記事では、これらの方法の相違点、既存の従来の設定の使用方法、診断設定の準備で従来の設定をクリアする方法について説明します。
+[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 最近まで、アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)に送信するためのログ プロファイルを作成し、コネクタを使用してこれらを [Log Analytics ワークスペース](activity-log-collect.md)に収集していました。 この記事では、これらの方法の相違点、既存の従来の設定の使用方法、診断設定の準備で従来の設定をクリアする方法について説明します。
 
 
 ## <a name="differences-between-methods"></a>方法の相違点
@@ -28,7 +28,7 @@ ms.locfileid: "75535627"
 - コレクションをフィルター処理して特定のカテゴリのログのみを収集する。
 - すべてのアクティビティ ログ カテゴリを収集する。 一部のカテゴリは、従来の方法を使用して収集されません。
 - ログ インジェストの待機時間が短縮される。 前の方法では約 15 分の待機時間がありましたが、診断設定では約 1 分しか追加されません。
-  
+
 ### <a name="considerations"></a>考慮事項
 診断設定を使用したアクティビティ ログの収集について、この機能を有効にする前に次の詳細を考慮してください。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75535627"
 - ActivityStatus
 - ActivitySubstatus
 - OperationName
-- ResourceProvider 
+- ResourceProvider
 
 次のプロパティが追加されています。
 
@@ -57,10 +57,10 @@ ms.locfileid: "75535627"
 
 1. Azure portal の **[Azure Monitor]** メニューで、 **[アクティビティ ログ]** を選択します。
 3. **[診断設定]** をクリックします。
-   
+
    ![診断設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. 従来のエクスペリエンスについては、紫色のバナーをクリックします。 
+
+4. 従来のエクスペリエンスについては、紫色のバナーをクリックします。
 
     ![従来のエクスペリエンス](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "75535627"
 ### <a name="disable-log-profile"></a>ログ プロファイルを無効にする
 
 1. 「[従来の設定を使用する](#work-with-legacy-settings)」で説明されている手順に従って、従来の設定を開きます。
-2. ストレージまたはイベント ハブへの現在の収集を無効にします。 
+2. ストレージまたはイベント ハブへの現在の収集を無効にします。
 
 
 
@@ -93,5 +93,5 @@ Azure Log Analytics 監視ソリューションには、Log Analytics ワーク�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アクティビティ ログについて詳しく学習します](../../azure-resource-manager/resource-group-audit.md)
+* [アクティビティ ログについて詳しく学習します](../../azure-resource-manager/management/view-activity-logs.md)
 * [診断設定について詳しく学習します](diagnostic-settings.md)

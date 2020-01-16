@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f76054c7c78c55a9754975267ee4fa3caab968a3
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390623"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -32,7 +32,7 @@ Azure Backup では、手動でトリガーされたすべてのジョブが Azu
 
 アラートは、SAP HANA データベースのバックアップを監視するための簡単な手段です。 アラートは、バックアップによって生成される多数のイベントに惑わされることなく、最も関心があるイベントに焦点を絞るために役立ちます。 Azure Backup ではアラートを設定することができ、それを次のように監視できます。
 
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインする
 * コンテナー ダッシュボードで、 **[バックアップ アラート]** を選択します。
 
   ![コンテナー ダッシュボードの [バックアップ アラート]](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -75,25 +75,38 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
 3. これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
 4. **[enable_auto_log_backup]** を **[No]** に設定します。
 5. **[log_backup_using_backint]** を **[False]** に設定します。
-6. データベースのアドホック完全バックアップを作成します。
+6. データベースのオンデマンド完全バックアップを作成します。
 7. 完全バックアップとカタログ バックアップが完了するまで待ちます。
 8. 前の設定を Azure のものに戻します。
    * **[enable_auto_log_backup]** を **[Yes]** に設定します。
    * **[log_backup_using_backint]** を **[True]** に設定します。
 
-### <a name="edit-underlying-policy"></a>基になるポリシーを編集する
+### <a name="change-policy"></a>ポリシーを変更する
 
-バックアップ頻度や保有期間の範囲を変更するにはポリシーを変更します。
+SAP HANA バックアップ項目のための、基になるポリシーを変更できます。
 
-* コンテナー ダッシュボードで、 **[管理]**  >  **[バックアップ ポリシー]** の順に移動します。
+* コンテナー ダッシュボードで、 **[バックアップ項目]** に移動します。
 
-  ![コンテナー ダッシュボードの [バックアップ ポリシー]](./media/sap-hana-db-manage/backup-policies-dashboard.png)
+  ![バックアップ項目を選択します](./media/sap-hana-db-manage/backup-items.png)
 
-* 編集するポリシーを選択します。
+* **[Azure VM の SAP HANA]** を選択します
 
-  ![バックアップ ポリシーの一覧](./media/sap-hana-db-manage/backup-policies-list.png)
+  ![[Azure VM の SAP HANA] を選択する](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
-  ![バックアップ ポリシーの詳細](./media/sap-hana-db-manage/backup-policy-details.png)
+* 変更対象の、基になるポリシーを含むバックアップ項目を選択します
+* 既存のバックアップ ポリシーをクリックします
+
+  ![既存のバックアップ ポリシーを選択します](./media/sap-hana-db-manage/existing-backup-policy.png)
+
+* リストから選択して、ポリシーを変更します。 必要に応じて、[新しいバックアップ ポリシーを作成](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy)します。
+
+  ![ドロップダウン リストからポリシーを選択します](./media/sap-hana-db-manage/choose-backup-policy.png)
+
+* 変更を保存します
+
+  ![変更を保存します](./media/sap-hana-db-manage/save-changes.png)
+
+* ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
 
 >[!NOTE]
 > 保持期間の変更は、新しい復旧ポイントだけでなく古い復旧ポイントすべてにもさかのぼって適用されます。
@@ -172,7 +185,6 @@ SAP HANA インスタンスの登録解除は、保護を無効にした後、�
 
    ![[登録解除] を選択する](./media/sap-hana-db-manage/unregister.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP HANA データベースをバックアップする場合の一般的な問題をトラブルシューティングする](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)方法について学習します。
-

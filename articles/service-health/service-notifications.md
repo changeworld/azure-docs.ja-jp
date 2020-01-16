@@ -3,16 +3,16 @@ title: Azure Portal を使用したサービス正常性通知の表示
 description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: c8017d23e0f7e3ab7bf48c9d7ba6b930fa80d0da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451415"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748654"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
-サービス正常性通知は、Azure インフラストラクチャから [Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に発行されます。  通知には、お客様のサブスクリプションに属するリソースに関する情報が含まれています。 アクティビティ ログに大量の情報が格納されている可能性を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。 
+サービス正常性通知は、Azure インフラストラクチャから [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に発行されます。  通知には、お客様のサブスクリプションに属するリソースに関する情報が含まれています。 アクティビティ ログに大量の情報が格納されている可能性を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。 
 
 サービス正常性通知には、クラスに応じて、情報のみの通知とアクションが必要になる通知があります。
 

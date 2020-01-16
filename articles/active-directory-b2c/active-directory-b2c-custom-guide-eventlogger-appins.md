@@ -1,7 +1,7 @@
 ---
 title: Application Insights でのユーザー動作の追跡
 titleSuffix: Azure AD B2C
-description: カスタム ポリシーを使用して、Azure AD B2C ユーザー体験から Application Insights のイベント ログを有効にする方法について説明します (プレビュー)。
+description: カスタム ポリシーを使用して、Azure AD B2C ユーザー体験から Application Insights のイベント ログを有効にする方法について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948948"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367962"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
@@ -29,11 +29,11 @@ Azure Active Directory B2C (Azure AD B2C) を Azure Application Insights と連�
 * パフォーマンスを測定する。
 * Application Insights の通知を作成する。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Azure AD B2C の Identity Experience Framework には、プロバイダー `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0` が含まれています。 このプロバイダーは、Azure AD B2C に提供されているインストルメンテーション キーを使用して、イベント データを Application Insights に直接送信します。
 
-技術プロファイルは、このプロバイダーを使用して Azure AD B2C のイベントを定義します。 このプロファイルには、イベントの名前、記録される要求、およびインストルメンテーション キーを指定します。 イベントを投稿するために、カスタムのユーザー体験には技術プロファイルが `orchestration step` または `validation technical profile` として追加されます。
+技術プロファイルは、このプロバイダーを使用して Azure AD B2C のイベントを定義します。 このプロファイルには、イベントの名前、記録される要求、およびインストルメンテーション キーを指定します。 イベントを投稿するために、カスタムのユーザー体験には技術プロファイルが `orchestration step` として追加されます。
 
 Application Insight は、相関 ID を使用してこのイベントを統合し、ユーザー セッションを記録することができます。 Application Insights では、数秒でイベントとセッションを使用できるようになります。また、多くの視覚化、エクスポート、および分析のツールが用意されています。
 
@@ -45,7 +45,7 @@ Application Insight は、相関 ID を使用してこのイベントを統合�
 
 Application Insights と Azure AD B2C を併用している場合、唯一の要件はリソースを作成してインストルメンテーション キーを取得することです。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. お使いのサブスクリプションを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、お使いのサブスクリプションを含むディレクトリを選択します。 このテナントは自社の Azure AD B2C テナントではありません。
 3. Azure portal の左上隅にある **[リソースの作成]** を選択し、 **[Application Insights]** を検索して選択します。
 4. **Create** をクリックしてください。
@@ -229,7 +229,7 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 
 ![Application Insights USAGE-Events Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ニーズに合わせて、要求の種類とイベントをユーザー体験に追加します。 [要求リゾルバー](claim-resolver-overview.md)や任意の種類の文字列要求を使用し、Application Insights イベントや AzureInsights-Common 技術プロファイルに **Input Claim** 要素を追加して、要求を追加できます。
 

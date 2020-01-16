@@ -1,23 +1,20 @@
 ---
 title: Azure Migrate Server Migration を使用した VMware 移行オプションを選択する | Microsoft Docs
 description: Azure Migrate Server Migration を使用して VMware VM を Azure に移行するためのオプションの概要について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028716"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
 Azure Migrate Server Migration ツールを使用して VMware VM を Azure に移行できます。 このツールには、VMware VM の移行のためのいくつかのオプションが用意されています。
 
-- エージェントレス レプリケーションを使用した移行。 VM 上に何もインストールすることなく、その VM を移行します。
+- エージェントレス レプリケーションを使用した移行。 VM に何もインストールする必要なく VM を移行します。
 - レプリケーション用のエージェントを使用した移行。 レプリケーションのために VM 上にエージェントをインストールします。
 
 
@@ -25,7 +22,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 ## <a name="compare-migration-methods"></a>移行方法を比較する
 
-これらの一部の比較を使用して、使用する方法を決定します。 [エージェントレス](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements)および[エージェント ベース](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)の移行についての完全なサポート要件を確認することもできます。
+これらの一部の比較を使用して、使用する方法を決定します。 [エージェントレス](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)および[エージェント ベース](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers)の移行についての完全なサポート要件を確認することもできます。
 
 **設定** | **エージェントレス** | **エージェント ベース**
 --- | --- | ---
@@ -58,7 +55,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エージェントレス移行で [VMware VM を移行する](tutorial-migrate-vmware.md)。
 

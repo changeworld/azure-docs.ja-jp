@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de02e94014fa2a28e364c4f85bcb31a1a4827b8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495062"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981130"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
@@ -29,7 +29,7 @@ ms.locfileid: "73495062"
 > **次のすべてのシナリオについて、次を実行する必要があります。**
 > <br/>
 > 
-> * [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
+> * [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)
 >   <br/>
 > * [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
 > 
@@ -186,9 +186,9 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
 1. ソースの場所にあるデータベースをデタッチします。 詳細については、「[データベースのデタッチ](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)」をご覧ください。
 1. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-1. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。 詳細については、「[データベースのアタッチ](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)」をご覧ください。
+1. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。 詳細については、「 [Attach a Database](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)」を参照してください。
 
-[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[デタッチとアタッチを使用してデータベースを移動する方法 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
 ## <a name="largedbtohive"></a>シナリオ \#7:ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 ![ローカル ターゲット Hive のビッグ データ][9]

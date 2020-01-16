@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 66c100ecd40e9f0899f7686397339ab849315c3e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843256"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020869"
 ---
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
 
@@ -27,7 +27,7 @@ Visual Studio Code を使用すると、関数プロジェクトを Azure に直
 > [!IMPORTANT]
 > 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
 
-1. Visual Studio Code で F1 を押して、コマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Deploy to function app...` を検索して選択します。
+1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Deploy to function app...` を検索して選択します。
 
 1. サインインしていない場合、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーから正常にサインインしたら、Visual Studio Code に戻ります。 
 
@@ -37,8 +37,8 @@ Visual Studio Code を使用すると、関数プロジェクトを Azure に直
 
     Enter キーを押すと、次の Azure リソースがサブスクリプションに作成されます。
 
-    * **[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)** :作成された Azure リソースがすべて含まれます。 名前は関数アプリの名前に基づきます。
-    * **[ストレージ アカウント](../articles/storage/common/storage-quickstart-create-account.md)** :関数アプリの名前に基づいた一意の名前で、Standard Storage アカウントが作成されます。
+    * **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** :作成された Azure リソースがすべて含まれます。 名前は関数アプリの名前に基づきます。
+    * **[ストレージ アカウント](../articles/storage/common/storage-account-create.md)** :関数アプリの名前に基づいた一意の名前で、Standard Storage アカウントが作成されます。
     * **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** :サーバーレス関数アプリをホストするために、従量課金プランが米国西部リージョンに作成されます。
     * **関数アプリ**:プロジェクトはこの新しい関数アプリにデプロイされ、そこで実行されます。
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: db1c6e8e4f1e98db08d5f7ff0ef218fa42d25860
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103297"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045364"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 
 
@@ -26,13 +26,13 @@ Azure コンピューティング要求は、サービスの全体的なパフ�
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager による調整とリソース プロバイダーによる調整  
 
-Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits)を参照してください。
+Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)を参照してください。
  
 Azure API クライアントで調整エラーが取得された場合、HTTP ステータスは "429 要求が多すぎます" になります。 要求の調整が Azure Resource Manager に行われているか CRP などの基になるリソース プロバイダーによって行われているかを判断するには、GET 要求の `x-ms-ratelimit-remaining-subscription-reads` と GET 以外の要求の `x-ms-ratelimit-remaining-subscription-writes` 応答ヘッダーを調べます。 残りの呼び出し回数が 0 に近づいていれば、Azure Resource Manager によって定義されているサブスクリプションの一般的な呼び出し制限に達しています。 すべてのサブスクリプション クライアントによるアクティビティがまとめてカウントされます。 それ以外の場合、調整はターゲット リソース プロバイダー (要求 URL の `/providers/<RP>` セグメントによってアドレス指定されているもの) によって行なわれています。 
 
 ## <a name="call-rate-informational-response-headers"></a>呼び出しレートの情報提供応答ヘッダー 
 
-| ヘッダー                            | 値の書式                           | 例                               | 説明                                                                                                                                                                                               |
+| ヘッダー                            | 値の書式                           | 例                               | [説明]                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | この要求のターゲットを含むリソース バケットまたは操作グループを対象とする調整ポリシーの残りの API 呼び出し数                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 適用可能なポリシーの制限でのこの HTTP 要求に対して "課金" される呼び出しカウントの数。 これは、ほとんどの場合 1 になります。 バッチ要求 (仮想マシン スケール セットのスケーリングなど) では、複数のカウントが課金される可能性があります。 |
@@ -98,6 +98,6 @@ API 呼び出しの統計情報は、サブスクリプションのクライア�
 - クライアント コードで Azure の特定の場所にある VM、ディスク、およびスナップショットが必要な場合は、サブスクリプションのすべての VM をクエリした後でクライアント側で場所によってフィルター処理する代わりに、場所ベースの形式のクエリを使用します。`GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` は、コンピューティング リソース プロバイダーに対して、リージョン エンドポイントのクエリを実行します。 
 -   特定の VM または仮想マシン スケール セットで API リソースの作成または更新を実行する場合は、(`provisioningState` に基づく) リソース URL そのものをポーリングするよりも、返された非同期操作の完了を追跡するほうがはるかに効率が良くなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure での他のサービスの再試行に関するガイダンスの詳細については、「[特定のサービスの再試行ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)」を参照してください。

@@ -1,25 +1,14 @@
 ---
-title: Service Fabric のアプリケーション ライフサイクル | Microsoft Docs
+title: Service Fabric のアプリケーション ライフサイクル
 description: Service Fabric アプリケーションの開発、デプロイ、テスト、アップグレード、保守、および削除について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378006"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric アプリケーションのライフサイクル
 通常は、その他のプラットフォームと同様に、Azure Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを通過します。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 この記事では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズでさまざまなロールがその API をどのように使用するかを示します。
@@ -42,7 +31,7 @@ ms.locfileid: "60621491"
 
 例については、[「Reliable Actors の使用」](service-fabric-reliable-actors-get-started.md)と[「Reliable Services の使用」](service-fabric-reliable-services-quick-start.md)を参照してください。
 
-## <a name="deploy"></a>デプロイ
+## <a name="deploy"></a>配置
 1. *アプリケーション管理者* は、アプリケーション マニフェストで **ApplicationType** 要素を指定して、Service Fabric クラスターにデプロイされるように、特定のアプリケーションに合わせてアプリケーションの種類を調整します。
 2. "*オペレーター*" は、[**CopyApplicationPackage** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)または [**Copy-ServiceFabricApplicationPackage** コマンドレット](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)を使用して、クラスター イメージ ストアにアプリケーション パッケージをアップロードします。 アプリケーション パッケージには、アプリケーション マニフェストとサービス パッケージのコレクションが含まれています。 Service Fabric は、Azure Blob ストアまたは Service Fabric のシステム サービスが対象となる、イメージ ストアに格納されているアプリケーション パッケージからアプリケーションをデプロイします。
 3. "*オペレーター*" は、[**ProvisionApplicationAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[**Register-ServiceFabricApplicationType** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype)、[**Provision an Application** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application)を使用して、アップロードされたアプリケーション パッケージから対象のクラスターでアプリケーションの種類をプロビジョニングします。
@@ -55,7 +44,7 @@ ms.locfileid: "60621491"
 ## <a name="test"></a>テスト
 1. ローカル開発クラスターまたはテスト クラスターにデプロイした後、"*サービス開発者*" は [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters)、[**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) クラス、[**Invoke-ServiceFabricFailoverTestScenario** コマンドレット](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps)を使用して、組み込みのフェールオーバー テスト シナリオを実行します。 フェールオーバー テスト シナリオで、重要な切り替えとフェールオーバーを通して指定したサービスを実行して、引き続き利用可能で動作していることを確認します。
 2. 次に、"*サービス開発者*" は、[**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) と [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) クラスまたは [**Invoke-ServiceFabricChaosTestScenario** コマンドレット](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)を使用して、組み込みの chaos テスト シナリオを実行します。 chaos テスト シナリオは、複数のノード、コード パッケージ、レプリカのエラーをクラスターにランダムに誘導します。
-3. *service developer* [サービス対サービスの通信をテスト](service-fabric-testability-scenarios-service-communication.md) します。
+3. *サービス開発者*は、クラスタでプライマリ レプリカを移動するテスト シナリオを作成して、[サービス対サービスの通信をテスト](service-fabric-testability-scenarios-service-communication.md)します。
 
 詳細については、「 [Introduction to the Fault Analysis Service (Fault Analysis サービスの概要)](service-fabric-testability-overview.md) 」を参照してください。
 
@@ -80,7 +69,7 @@ ms.locfileid: "60621491"
 4. "*オペレーター*" は、"*アプリケーション管理者*" が指定したノードを追加、削除します。
 5. 新しいノードをクラスターに追加する、または既存のノードをクラスターから削除するとき、Service Fabric は最適なパフォーマンスを実現するために、クラスター内のすべてのノード間でアプリケーションを実行している負荷を自動的に分散します。
 
-## <a name="remove"></a>Remove
+## <a name="remove"></a>[削除]
 1. "*オペレーター*" は、[**DeleteServiceAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)、[**Remove-ServiceFabricService** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice)、[**Delete Service** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/delete-a-service)を使用して、アプリケーション全体を削除することなく、クラスター内の実行中のサービスの特定のインスタンスを削除できます。  
 2. "*オペレーター*" は、[**DeleteApplicationAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[**Remove-ServiceFabricApplication** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication)、[**Delete Application** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/delete-an-application)を使用して、アプリケーションのインスタンスとそのすべてのサービスも削除できます。
 3. アプリケーションとサービスが停止されると、"*オペレーター*" は [**UnprovisionApplicationAsync** メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[**Unregister-ServiceFabricApplicationType** コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype)、[**Unprovision an Application** REST 操作](https://docs.microsoft.com/rest/api/servicefabric/unprovision-an-application)を使用して、アプリケーションの種類のプロビジョニングを解除できます。 プロビジョニングを解除されたアプリケーションの種類の場合、ImageStore からアプリケーション パッケージが削除されません。 アプリケーション パッケージを手動で削除する必要があります。
@@ -88,7 +77,7 @@ ms.locfileid: "60621491"
 
 例については、「 [Deploy an application (アプリケーションをデプロイする)](service-fabric-deploy-remove-applications.md) 」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric アプリケーションとサービスの開発、テスト、管理に関する詳細については、以下を参照してください。
 
 * [Reliable Actor](service-fabric-reliable-actors-introduction.md)

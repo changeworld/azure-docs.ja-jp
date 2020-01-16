@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530784"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771514"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート
 
@@ -60,6 +60,6 @@ Azure Machine Learning のアルゴリズムの詳細については、[アル�
 
 * [アルゴリズムとモジュールのリファレンス](algorithm-module-reference/module-reference.md)でアルゴリズムとモジュールの一覧を見る。
 
-* [チュートリアル:Azure Machine Learning デザイナーで予測モデルを構築する](service/ui-tutorial-automobile-price-train-score.md)。
+* [チュートリアル:Azure Machine Learning デザイナーで予測モデルを構築する](tutorial-designer-automobile-price-train-score.md)。
 
 * [ディープ ラーニングと機械学習の比較について確認する](concept-deep-learning-vs-machine-learning.md)。

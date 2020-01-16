@@ -3,16 +3,16 @@ Description: コマーシャル マーケットプレースでオファーの販
 title: 受取りアカウントと税フォームを設定する | Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 73ee800a837e7cd201025c93c7e88ad46f7fe256
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6ef9711d6047a75ca5058f12e95d72a79628e30
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979972"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934151"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>支払いアカウントと税フォームを設定する
 
@@ -140,8 +140,8 @@ ms.locfileid: "74979972"
 
 - **支払いを受けるには、どのような PayPal 設定が必要ですか?** PayPal アカウントで eCheck の支払いがブロックされていないことを確認してください。 この設定は、PayPal の [Payment Receiving Preferences]\(支払い受取り設定\) ページで管理されます。 詳細については、[PayPal のアカウント設定ページ](https://go.microsoft.com/fwlink/p/?linkid=513139)を参照してください。
 - **私の国/地域はサポートされていますか?** PayPal がサポートされている支払い方法である国および地域については、「[支払いのしきい値、方法、および期間](payment-thresholds-methods-timeframes.md)」を参照してください。
-- **PayPal アカウントは、パートナー センターのアカウントと同じ国または地域に登録する必要がありますか?** No. PayPal アカウントを設定する際、既定の構成をそのまま使用できます。 一部の通貨による支払いをブロックしていない限り、他の国または地域および通貨でも、問題はありません。 この設定は、PayPal の [Payment Receiving Preferences]\(支払い受取り設定\) ページで管理されます。
-- **PayPal で支払いを受け取る場合、手動で受け取る必要がありますか?** No. 既定では、PayPal アカウントは支払いを手動で受け取るようユーザーに要求する設定になっています。この場合は、支払いを 30 日以内に受け取らないと、支払いが返されることになります。 この設定を変更するには、PayPal の [More Settings]\(その他の設定\) ページで [Ask Me]\(手動\) をオフにします。
+- **PayPal アカウントは、パートナー センターのアカウントと同じ国または地域に登録する必要がありますか?** いいえ。 PayPal アカウントを設定する際、既定の構成をそのまま使用できます。 一部の通貨による支払いをブロックしていない限り、他の国または地域および通貨でも、問題はありません。 この設定は、PayPal の [Payment Receiving Preferences]\(支払い受取り設定\) ページで管理されます。
+- **PayPal で支払いを受け取る場合、手動で受け取る必要がありますか?** いいえ。 既定では、PayPal アカウントは支払いを手動で受け取るようユーザーに要求する設定になっています。この場合は、支払いを 30 日以内に受け取らないと、支払いが返されることになります。 この設定を変更するには、PayPal の [More Settings]\(その他の設定\) ページで [Ask Me]\(手動\) をオフにします。
 - **PayPal はどのような通貨をサポートしていますか?** 現在の一覧については、[PayPal のサポート ページ](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal)を参照してください。
 
 ### <a name="specific-requirements-for-certain-countriesregions"></a>特定の国または地域に固有の要件

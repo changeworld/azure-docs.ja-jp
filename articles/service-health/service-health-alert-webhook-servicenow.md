@@ -1,17 +1,14 @@
 ---
-title: ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
+title: ServiceNow で Azure サービス正常性アラートを送信する
 description: ServiceNow インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: stephbaron
-ms.author: stbaron
 ms.topic: article
-ms.service: service-health
 ms.date: 06/10/2019
-ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067120"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551609"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -155,7 +152,7 @@ ms.locfileid: "67067120"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **詳細:** 先ほど保存した ServiceNow の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した ServiceNow の**統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -172,7 +169,7 @@ ms.locfileid: "67067120"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **詳細:** 先ほど保存した ServiceNow の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した ServiceNow の**統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -194,7 +191,7 @@ ms.locfileid: "67067120"
 
 1. [ServiceNow](https://www.servicenow.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69086ee8d8d64ada7379bdb6af24c8d604e00aed
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665109"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746051"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -75,7 +75,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 Windows 10 1809 以降、ユーザーは、[Windows 10 への Web サインイン](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)によって SAML ベースの ID プロバイダーを使用して Azure AD 参加済みデバイスにサインインできます。 現時点では Web サインインはプレビュー機能であり、運用環境デプロイを目的としたものではありません。
+ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 
 
 >[!NOTE]
 > 現時点で、Azure AD 参加は[プライマリ認証方法として外部認証プロバイダーで構成されている AD FS 2019](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) では機能しません。 Azure AD 参加ではプライマリ メソッドの既定値として、パスワード認証が設定されます。これにより、このシナリオで認証エラーが発生します

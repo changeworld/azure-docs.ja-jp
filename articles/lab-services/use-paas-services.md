@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621381"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976243"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用
 PaaS は、環境機能を使用して DevTest Labs でサポートされます。 DevTest Labs 内の環境は、Git リポジトリ内の事前構成済みの Azure Resource Manager テンプレートでサポートされます。 環境には、PaaS と IaaS の両方のリソースを含めることができます。 これらを使用すると、仮想マシン、データベース、仮想ネットワーク、Web アプリなど、連携するようにカスタマイズされている Azure リソースを含めることができる複雑なシステムを作成できます。 これらのテンプレートでは、ソース コード管理を使用して、環境の一貫したデプロイと管理の向上を実現できます。 
@@ -53,11 +53,11 @@ DevTest Labs リソース プロバイダーがラボ ユーザーに代わっ�
 [ラボの仮想ネットワークへの環境の接続](connect-environment-lab-virtual-network.md)に関する記事では、`$(LabSubnetId)` トークンを使用するよう Resource Manager テンプレートを変更する方法が説明されています。 環境の作成時、`$(LabSubnetId)` トークンは、 **[仮想マシンの作成時に使用]** オプションが **true** に設定されている最初のサブネット マークに置き換えられます。 これにより、以前に作成されたネットワークを環境で使用できるようになります。 ステージングや運用と同じ Resource Manager テンプレートをテストの環境で使用する場合は、Resource Manager テンプレート パラメーターの既定の値として `$(LabSubnetId)` を使用します。 
 
 #### <a name="environment-storage-account"></a>環境のストレージ アカウント
-DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/resource-group-linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、[Azure Resource Manager のベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)の**デプロイの成果物**に関するセクションを参照してください。
+DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/templates/linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、[Azure Resource Manager のベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)の**デプロイの成果物**に関するセクションを参照してください。
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
 
-## <a name="developer"></a>開発者
+## <a name="developer"></a>Developer
 開発者は、VM の作成に同じワークフローを使用して、特定の環境を作成します。 彼らは、環境とマシン イメージを選択し、テンプレートに必要な情報を入力します。 環境を所有している各開発者は、変更のデプロイと改良された内部ループ デバッグを行うことができます。 その環境は、最新のテンプレートを使用していつでも作成できます。  この機能は、環境を破棄して作成し直すことを可能にし、手動でシステムを作成したり障害テストから復旧したりすることによるダウンタイムを減らすのに役立ちます。  
 
 ### <a name="testing"></a>テスト
@@ -68,7 +68,7 @@ DevTest Labs 環境では、特定のコードと構成を非同期的に独立�
 ### <a name="cost-tracking"></a>コスト管理
 コスト追跡機能には、全体的なコスト傾向の一部として、さまざまな環境内の Azure リソースが含まれます。 リソース別のコストでは、環境内の各種リソースが示されるのではなく、その環境が 1 つのコストとして表示されます。
 
-### <a name="security"></a>セキュリティ
+### <a name="security"></a>Security
 DevTest Labs を使用して適切に構成された Azure サブスクリプションでは、[ラボを介した Azure リソースへのアクセスのみを制限](devtest-lab-add-devtest-user.md)できます。 環境を使用した場合、ラボ所有者は、他の Azure リソースへのアクセスを許可しなくても、承認された構成の PaaS リソースへのアクセスをユーザーに許可できます。 ラボ ユーザーが環境をカスタマイズするシナリオでは、ラボ所有者が共同作成者アクセスを許可できます。 共同作成者アクセスにより、ラボ ユーザーは、マネージド リソース グループ内でのみ Azure リソースを追加または削除できます。 サブスクリプションへの共同作成者アクセスをユーザーに許可するよりも、追跡や管理が簡単になります。
 
 ### <a name="automation"></a>Automation
@@ -77,7 +77,7 @@ DevTest Labs を使用して適切に構成された Azure サブスクリプシ
 ### <a name="cicd-pipeline"></a>CI/CD パイプライン
 DevTest Labs の PaaS サービスは、ラボによってアクセスが制御されるデプロイに重点を置いたことで、CI/CD パイプラインの向上に役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 環境の詳細については、次の記事を参照してください。 
 
 - 

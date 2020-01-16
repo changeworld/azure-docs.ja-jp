@@ -1,5 +1,5 @@
 ---
-title: .NET での Azure Relay ハイブリッド接続 HTTP 要求の概要 | Microsoft Docs
+title: Azure Relay ハイブリッド接続 - .NET での HTTP 要求
 description: .NET での Azure Relay ハイブリッド接続 HTTP 要求用 C# コンソール アプリケーションを作成します。
 services: service-bus-relay
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 7c984876c4338b4f6802ba55752c8f612c390e94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355163"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>.NET での Relay ハイブリッド接続 HTTP 要求の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -69,7 +69,7 @@ Visual Studio で C# コンソール アプリケーションを作成して、R
 
 これで、完全なハイブリッド接続のアプリケーションが作成されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、HTTP を使用してメッセージを送受信する .NET のクライアント アプリケーションとサーバー アプリケーションを作成しました。 Azure Relay のハイブリッド接続機能は、WebSocket を使用したメッセージの送受信もサポートしています。 Azure Relay のハイブリッド接続で WebSocket を使用する方法については、[WebSocket のクイック スタート](relay-hybrid-connections-dotnet-get-started.md)を参照してください。
 

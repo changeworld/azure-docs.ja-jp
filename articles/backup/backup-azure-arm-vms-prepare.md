@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450144"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -42,7 +42,7 @@ ms.locfileid: "74173341"
 
  コンテナーには、経時的に作成されたバックアップと復旧ポイントと、バックアップしたマシンに関連付けられたバックアップ ポリシーが格納されます。 次の手順に従ってコンテナーを作成します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 検索で、「**Recovery Services**」と入力します。 **[サービス]** の **[Recovery Services コンテナー]** をクリックします。
 
      ![Recovery Services コンテナーの検索](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -63,9 +63,8 @@ ms.locfileid: "74173341"
 
 ![バックアップ コンテナーの一覧](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Azure Backup サービスでは、スナップショットを格納するために別のリソース グループ (VM のリソース グループ以外) が作成されます。名前の形式は **AzureBackupRG_geography_number** です (例:AzureBackupRG_northeurope_1)。 このリソース グループ内のデータは、Azure Virtual Machine Backup ポリシーの *[Retain instant recovery snapshot]\(インスタント リカバリ スナップショットの保存\)* セクションに指定されている日数の期間保持されます。  このリソース グループにロックを適用すると、バックアップが失敗する可能性があります。<br>
-制限ポリシーによってリソース ポイント コレクションの作成がブロックされ、この場合もバックアップが失敗するため、このリソース グループも名前/タグの制限から除外する必要があります。
+>[!NOTE]
+> Azure Backup では、Azure Backup サービスによって作成されたリソース グループ名のカスタマイズが可能になりました。 詳細については、[仮想マシンのための Azure Backup リソース グループ](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)に関するページを参照してください。
 
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
@@ -169,10 +168,10 @@ ms.locfileid: "74173341"
 
 **スナップショット** | **コンテナーへのデータ転送** | **ジョブの状態**
 --- | --- | ---
-完了 | 進行中 | 進行中
-完了 | Skipped | 完了
-完了 | 完了 | 完了
-完了 | 失敗 | 警告で完了
+[完了] | 進行中 | 進行中
+[完了] | スキップ | [完了]
+[完了] | [完了] | [完了]
+[完了] | 失敗 | 警告で完了
 失敗 | 失敗 | 失敗
 
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。
@@ -196,7 +195,7 @@ VM で実行されているバックアップ拡張機能には、Azure パブ�
 * 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。
 * VM の接続で問題が発生した場合、または接続しようとするとエラー **ExtensionSnapshotFailedNoNetwork** が表示された場合は、バックアップ拡張機能がバックアップ トラフィック用の Azure パブリック IP アドレスに通信できるように、明示的にアクセスを許可する必要があります。 アクセス方法を次の表にまとめて示します。
 
-**オプション** | **アクション** | **詳細**
+**オプション** | **操作** | **詳細**
 --- | --- | ---
 **NSG ルールを設定する** | [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。<br/><br/> すべてのアドレス範囲を許可して管理するのではなく、[サービス タグ](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)を使用して Azure Backup サービスへのアクセスを許可するルールを追加することができます。 | サービス タグについての[詳細](../virtual-network/security-overview.md#service-tags)を参照してください。<br/><br/> サービス タグを使用すれば、アクセス管理を簡略化できます。追加のコストはかかりません。
 **プロキシをデプロイする** | トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。 | Storage だけでなく、Azure 全体へのアクセスを提供することになる。<br/><br/> ストレージ URL に対する詳細な制御が可能。<br/><br/> VM に対するインターネット アクセスを単一の場所で実現。<br/><br/> プロキシの追加のコスト。
@@ -297,7 +296,7 @@ Azure Backup へのネットワーク トラフィックの送信アクセスを
 * Azure Firewall のデプロイに関する[詳細情報を参照してください](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。
 * FQDN タグについて[お読みください](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure VM エージェント](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)または [Azure VM バックアップ](backup-azure-vms-troubleshoot.md)で発生する問題のトラブルシューティング。
 * Azure VM の[復元](backup-azure-arm-restore-vms.md)。

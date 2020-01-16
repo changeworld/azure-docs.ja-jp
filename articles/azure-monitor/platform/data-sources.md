@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 73aa4a8a5dad0e2839c6a643f2ab58494d55458a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f17a3ffbbee2bc702be1c2c690a1d6c85d792cb
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450647"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751042"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -67,7 +67,7 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 ![Azure サブスクリプション](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure アクティビティ ログ 
-[Azure アクティビティ ログ](activity-logs-overview.md)には、サービスの正常性レコードのほか、ご自分の Azure サブスクリプションのリソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの _外部_  ビューを表します。
+[Azure アクティビティ ログ](platform-logs-overview.md)には、サービスの正常性レコードのほか、ご自分の Azure サブスクリプションのリソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの _外部_  ビューを表します。
 
 | 宛先 | [説明] | リファレンス |
 |:---|:---|
@@ -100,7 +100,7 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 | Event Hubs | Event Hubs を使用してメトリックを他の場所にストリーム配信します。 |[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>リソース ログ
-[リソース ログ](resource-logs-overview.md)からは、Azure リソースの "_内部_" 操作に関する分析情報が得られます。  リソース ログは自動的に作成されますが、診断設定を作成して、各リソースのログの収集先を指定する必要があります。
+[リソース ログ](platform-logs-overview.md)からは、Azure リソースの "_内部_" 操作に関する分析情報が得られます。  リソース ログは自動的に作成されますが、診断設定を作成して、各リソースのログの収集先を指定する必要があります。
 
 リソース ログの構成要件と内容はリソースの種類によって異なり、まだリソース ログの作成に対応していないサービスもあります。 それぞれのサービスについての詳細と詳しい構成手順へのリンクについては、[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](diagnostic-logs-schema.md)に関する記事を参照してください。 この記事に掲載されていないサービスは現在、リソース ログの作成に対応していません。
 

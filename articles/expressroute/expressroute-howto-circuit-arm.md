@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3ce1096129d7fb45901d80b0173035dcca47c3ee
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080374"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770970"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -282,7 +282,7 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 次のコマンドを実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
 ```azurepowershell-interactive
-get-help get-azurededicatedcircuit -detailed
+get-help Get-AzExpressRouteCircuit -detailed
 ```
 
 ## <a name="modify"></a>ExpressRoute 回線の変更
@@ -384,7 +384,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 回線を作成したら、次の手順を必ず実行します。
 

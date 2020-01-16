@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977694"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750874"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
 
-[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Media Services の診断ログを監視し、収集されたメトリックおよびログに対してアラートと通知を作成できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
+[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
 
-詳細については、 [Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)に関する記事をご覧ください。
+詳細については、 [Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)に関する記事をご覧ください。
 
 この記事では、Media Services の診断ログのスキーマについて説明します。
 
@@ -34,16 +34,16 @@ ms.locfileid: "74977694"
 
 ## <a name="key-delivery-log-schema"></a>キー配信ログのスキーマ
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |keyId|要求されたキーの ID。|
 |keyType|次のいずれかの値を指定できます:"Clear" (暗号化なし)、"FairPlay"、"PlayReady"、または"Widevine"。|
 |policyName|ポリシーの Azure Resource Manager の名前。|
-|tokenType|トークンのタイプ。|
+|tokenType|トークンの型。|
 |statusMessage|状態メッセージ。|
 
 ### <a name="examples"></a>例
@@ -112,6 +112,6 @@ ms.locfileid: "74977694"
 
 * Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)

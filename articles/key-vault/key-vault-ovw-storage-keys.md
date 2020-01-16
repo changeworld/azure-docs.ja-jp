@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176745"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980454"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 
@@ -53,7 +53,7 @@ Key Vault は、すべての Azure AD テナントに事前登録されている
 
 - [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。
 - [Key Vault を作成します](quick-create-cli.md)
-- [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli)を作成します。 ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。
+- [Azure Storage アカウント](../storage/common/storage-account-create.md?tabs=azure-cli)を作成します。 ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。
       
 ## <a name="manage-storage-account-keys"></a>ストレージ アカウント キーを管理する
 
@@ -150,7 +150,7 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 このコマンドの出力では、SAS 定義文字列が `value` として表示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [キー、シークレット、証明書](https://docs.microsoft.com/rest/api/keyvault/)について学習します。
 - [Azure Key Vault チームのブログ](https://blogs.technet.microsoft.com/kv/)の記事を確認します。

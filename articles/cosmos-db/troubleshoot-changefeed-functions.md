@@ -1,5 +1,5 @@
 ---
-title: Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
+title: Cosmos DB 用 Azure Functions トリガーを使用するときの問題のトラブルシューティングを行う
 description: Cosmos DB 用 Azure Functions トリガーを使用するときの一般的な問題、回避策、診断手順です
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441119"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -108,7 +108,7 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 前の「[変更の受信に時間がかかりすぎる](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)」で説明したように、Azure 関数は、(高い RU 消費を避けるため) 新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になります。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Functions の監視を有効にする](../azure-functions/functions-monitoring.md)
 * [Azure Cosmos DB .NET SDK のトラブルシューティング](./troubleshoot-dot-net-sdk.md)

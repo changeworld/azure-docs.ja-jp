@@ -3,16 +3,16 @@ title: Azure Notebooks プレビューで Azure Machine Learning を使用する
 description: Azure Notebooks プレビューで使用できる Azure Machine Learning 用のサンプル ノートブックの概要。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 435abca83255221d438d530b63c237c08bb0b672
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646954"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860573"
 ---
 # <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Azure Notebooks プレビューで Azure Machine Learning を使用する
 
-Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
+Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -39,9 +39,9 @@ Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/service/)
 
 Azure Machine Learning ドキュメントにはその他の各種リソースが含まれています。このリソースによって、ノートブック内で Machine Learning を段階的に進めることができます。
 
-- [クイック スタート:Python を使用して Azure Machine Learning の利用を開始する](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [チュートリアル 1: Azure Machine Learning でイメージ分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)」を参照してください
-- [チュートリアル #2: Azure Container Instances (ACI) に画像分類モデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [チュートリアル:Azure Machine Learning において、自動機械学習で分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [クイック スタート:Python を使用して Azure Machine Learning の利用を開始する](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#local)
+- [チュートリアル 1: Azure Machine Learning でイメージ分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)」を参照してください
+- [チュートリアル #2: Azure Container Instances (ACI) に画像分類モデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/tutorial-deploy-models-with-aml)
+- [チュートリアル:Azure Machine Learning において、自動機械学習で分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/tutorial-auto-train-models)
 
 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 用のドキュメントも参照してください。

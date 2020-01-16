@@ -1,5 +1,5 @@
 ---
-title: Application Insights Profiler に関する問題のトラブルシューティング | Microsoft Docs
+title: Azure Application Insights Profiler に関する問題のトラブルシューティング
 description: この記事では、Application Insights Profiler の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432382"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -163,6 +163,11 @@ Azure Diagnostics の構成に使用された設定を確認するには:
     アプリケーションが要求を受信している間に Profiler が実行された場合は、次のようなメッセージが表示されます。*Activity detected from iKey* (iKey からアクティビティが検出されました)。 
 
     トレースがアップロードされているときは、次のメッセージが表示されます。*Start to upload trace* (トレースのアップロードを開始します)。 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>ネットワーク プロキシまたはファイアウォール規則を編集する
+
+アプリケーションがプロキシまたはファイアウォールを介してインターネットに接続する場合は、アプリケーションが Application Insights Profiler サービスと通信できるように規則を編集する必要があります。 Application Insights Profiler によって使用される IP は、Azure Monitor サービス タグに含まれています。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ace94bdeccf3063f6a3b72ea208f437a14332694
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438507"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771123"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -181,7 +181,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
 [helm-installed]: https://helm.sh/docs/intro/install/
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
 [team-quickstart]: ../quickstart-team-development.md

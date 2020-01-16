@@ -2,19 +2,19 @@
 title: API と開発者向けツール - Azure Batch | Microsoft Docs
 description: Azure Batch サービスを使用したソリューションの開発に利用できる API とツールについて説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 3eeb955d312e21f96f4b1029548c5e84b5e586ec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a353651fa045b146b257432c812c73bec9485566
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323774"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027362"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API とツールの概要
 
@@ -77,7 +77,7 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 - Batch アプリケーションからのイベントのログ記録について詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」を参照してください。 Batch サービスで発生するイベントのリファレンスについては、「[一括分析](batch-analytics.md)」を参照してください。
 - 計算ノードの環境変数については、「[Azure Batch コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 * [.NET 向け Azure Batch ライブラリの概要](tutorial-parallel-dotnet.md) 」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。 [Python バージョン](tutorial-parallel-python.md)と [Node.js のチュートリアル](batch-nodejs-get-started.md)も用意されています。

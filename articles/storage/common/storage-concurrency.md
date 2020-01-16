@@ -1,24 +1,25 @@
 ---
-title: Microsoft Azure Storage でのコンカレンシー制御の管理
-description: BLOB、キュー、テーブル、およびファイル サービスのコンカレンシー制御を管理する方法
+title: コンカレンシーを管理する
+titleSuffix: Azure Storage
+description: BLOB、キュー、テーブル、およびファイル サービスのコンカレンシーを管理する方法について説明します。
 services: storage
-author: jasontang501
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460473"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage でのコンカレンシー制御の管理
-## <a name="overview"></a>概要
-最新のインターネットを基盤とするアプリケーションでは、複数のユーザーが同時にデータを表示し、更新することが一般的です。 このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。 開発者が通常検討するデータのコンカレンシー制御戦略には、主に次の 3 つがあります。  
+
+最新のインターネットを基盤とするアプリケーションでは、通常、複数のユーザーが同時にデータを表示し、更新します。 このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。 開発者が通常検討するデータのコンカレンシー制御戦略には、主に次の 3 つがあります。  
 
 1. オプティミスティック コンカレンシー – アプリケーションがデータを更新する場合、更新処理の一部として、データがそのアプリケーションに最後に読み込まれた後に更新されていないか確認します。 たとえば、wiki のページを表示している 2 人のユーザーが同じページを更新しようとしている場合、wiki のプラットフォームは、2 番目の更新が最初の更新を上書きせず、両方のユーザーが自身の更新の成否を把握できるようにする必要があります。 この戦略は、Web アプリケーションで最も広く使用されています。
 2. ペシミスティック コンカレンシー制御 - 更新を実行しようとするアプリケーションがオブジェクトをロックし、ロックが解除されるまで他のユーザーがデータを更新できないようにします。 たとえば、マスターと下位の間でデータを複製する場合、マスターのみが更新を実行するため、通常は、データを一定期間、排他的にロックして、該当するデータを他から更新できないようにします。
@@ -26,15 +27,18 @@ ms.locfileid: "67870828"
 
 この記事では、Azure Storage プラットフォームで上記 3 つのコンカレンシー制御すべてについて最高品質のサポートが提供されていることで、開発がいかに簡素化されるかについて概要を説明します。  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage – クラウド開発を簡素化
+## <a name="azure-storage-simplifies-cloud-development"></a>Azure Storage によるクラウド開発の簡素化
+
 Azure ストレージ サービスでは、上記 3 つの戦略をすべてサポートしていますが、特に特徴的なのは、オプティミスティック コンカレンシーとペシミスティックコンカレンシー制御のフル サポートを提供していることです。強力な整合性モデルを備えているため、Storage サービスでデータの挿入や更新の処理がコミットされた後にサービスがそのデータにアクセスした場合でも、確実に最新のデータが提供されます。 最終的な整合性モデルを使用するストレージ プラットフォームでは、あるユーザーが書き込んだ後に他のユーザーがそのデータを表示できるようになるまでにはタイム ラグが発生します。このため、エンド ユーザーがこの不整合の影響を受けないようにするために、クライアント アプリケーションの開発は複雑になります。  
 
 また、開発者は、適切なコンカレンシー制御の戦略を選択する以外にも、特に複数のトランザクションで同一のオブジェクトを変更する場合に、ストレージ プラットフォームで変更がどのように分離されるかについて把握しておく必要があります。 Azure Storage サービスではスナップショット分離の手法を使用して、同一パーティション内での読み取り処理と書き込み処理が同時に発生できるようにしています。 他の分離レベルとは異なり、スナップショット分離では、更新の処理中でもすべての読み込み処理に対してデータのスナップショットを提供することにより整合性を確保します。これは基本的に、更新トランザクションの処理中に最後にコミットされた値を返すことで実現しています。  
 
 ## <a name="managing-concurrency-in-blob-storage"></a>BLOB ストレージ内でのコンカレンシーの管理
-BLOB サービスでの BLOB およびコンテナーへのアクセスを管理する場合、オプティミスティック コンカレンシーとペシミスティック コンカレンシー制御のいずれかのモデルを使用できます。 明示的に戦略を指定しない場合は、最終書き込み者優先が既定となります。  
+
+BLOB サービスでの BLOB およびコンテナーへのアクセスを管理する場合、オプティミスティック コンカレンシーとペシミスティック コンカレンシーのいずれかのモデルを使用できます。 明示的に戦略を指定しない場合は、最終書き込み者優先が既定となります。  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>BLOB およびコンテナーでのオプティミスティック コンカレンシー
+
 Storage サービスでは、格納されているすべてのオブジェクトに識別子が割り当てられます。 オブジェクトで更新処理が実行されるたびに、この識別子が更新されます。 この識別子は、HTTP プロトコルで定義されている ETag (エントリ タグ) ヘッダーを使用して、HTTP GET 応答の一部としてクライアントに返されます。 該当するオブジェクトをユーザーが更新しようとすると、条件ヘッダーが付属している元の ETag が送信され、特定の条件を満たしているときにのみ更新が行われます。この条件には、"If-Match" ヘッダーが使用されます。これによって、更新要求で指定された ETag の値が Storage サービスに格納されている値と同一であることが、Storage サービスによって確認されます。  
 
 このプロセスの概要は次のとおりです。  
@@ -50,7 +54,7 @@ Storage サービスでは、格納されているすべてのオブジェクト
 ```csharp
 // Retrieve the ETag from the newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the ETag in response.
+// to storage Blob service which returns the ETag in response.
 string originalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
@@ -80,16 +84,16 @@ catch (StorageException ex)
 }  
 ```
 
-Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダーとその組み合わせもサポートしています。 詳細については、MSDN の「[BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
+Azure Storage では、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダーとその組み合わせもサポートしています。 詳細については、「[BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。  
 
-| Operation | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
+| 操作 | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
 | コンテナーの作成 |はい |いいえ |
 | コンテナーのプロパティの取得 |はい |いいえ |
 | Get Container Metadata |はい |いいえ |
-| コンテナーのメタデータの設定 |はい |はい |
+| Set Container Metadata |はい |はい |
 | コンテナー ACL の取得 |はい |いいえ |
 | Set Container ACL |はい |あり (*) |
 | Delete Container |いいえ |はい |
@@ -100,7 +104,7 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返す BLOB 操作をまとめたものです。
 
-| Operation | ETag 値を返す | 条件ヘッダーを受け取る |
+| 操作 | ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
 | Put Blob |はい |はい |
 | Get Blob |はい |はい |
@@ -117,11 +121,12 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 | Put Block List |はい |はい |
 | Get Block List |はい |いいえ |
 | Put Page |はい |はい |
-| Get Page Ranges |はい |はい |
+| ページ範囲の取得 |はい |はい |
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>BLOB でのペシミスティック コンカレンシー制御
+
 BLOB をロックして排他的に使用する場合は、[リース](https://msdn.microsoft.com/library/azure/ee691972.aspx)を取得します。 リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。 リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。 期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。 リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
@@ -163,7 +168,7 @@ catch (StorageException ex)
 * Get Blob
 * BLOB のプロパティの取得
 * Set Blob Properties
-* Get Blob Metadata
+* BLOB のメタデータの取得
 * Set Blob Metadata
 * Delete Blob
 * Put Block
@@ -177,6 +182,7 @@ catch (StorageException ex)
 * Lease Blob  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>コンテナーでのペシミスティック コンカレンシー制御
+
 コンテナーのリースでは、BLOB でサポートされるものと同じ同期戦略 (排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取り) がサポートされます。ただし、BLOB とは異なり、Storage サービスで排他的に実行できるのは削除操作のみです。 アクティブなリースを使用してコンテナーを削除するには、クライアントが削除要求に有効なリース ID を含める必要があります。 それ以外のコンテナー操作は、リース ID を含めなくてもリースされたコンテナーに対して正常に実行されます。この場合、各操作は共有操作になります。 更新操作 (put または set) または読み込み操作を排他的に行う必要がある場合、開発者はすべてのクライアントがリース ID を使用し、有効なリース ID を持つクライアントが一度に 1 つのみになるようにする必要があります。  
 
 次のコンテナー操作では、ペシミスティック コンカレンシー制御の管理にリースを使用できます。  
@@ -195,7 +201,8 @@ catch (StorageException ex)
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
 * [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Table サービスでのコンカレンシー制御の管理
+## <a name="managing-concurrency-in-table-storage"></a>テーブル ストレージ内でのコンカレンシーの管理
+
 エンティティを扱っている場合、Table サービスではオプティミスティック コンカレンシーの確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック コンカレンシーの確認を実行するように明示的に選択する必要があります。 これ以外の相違点としては、Table サービスではエンティティのコンカレンシー制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方のコンカレンシー制御を管理できる点があります。  
 
 オプティミスティック コンカレンシーを使用して、Table ストレージ サービスからエンティティを取得した後に他のプロセスがそれを更新していないか確認するには、Table サービスがエンティティを返す時に受け取った ETag の値を使用できます。 このプロセスの概要は次のとおりです。  
@@ -235,7 +242,7 @@ customer.ETag = "*";
 
 次の表は、Table エンティティで ETag の値がどのように使用されるかをまとめたものです。
 
-| Operation | ETag 値を返す | If-Match 要求ヘッダーが必須 |
+| 操作 | ETag 値を返す | If-Match 要求ヘッダーが必須 |
 |:--- |:--- |:--- |
 | エンティティのクエリ |はい |いいえ |
 | エンティティの挿入 |はい |いいえ |
@@ -254,6 +261,7 @@ customer.ETag = "*";
 * [エンティティに対する操作](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>キュー サービスでのコンカレンシー制御の管理
+
 キュー サービスでのコンカレンシー制御について注意が必要なケースとして、複数のクライアントが 1 つのキューからメッセージを取得する場合があります。 キューからメッセージを取得するときの応答には、メッセージと、メッセージを削除するときに必要な pop receipt 値が含まれます。 メッセージはキューから自動的に削除されることはありませんが、取得された後、visibilitytimeout パラメーターで指定された期間は他のクライアントに表示されなくなります。 メッセージを取得するクライアントは、メッセージの処理後、応答の TimeNextVisible 要素で指定された時刻までにメッセージを削除します。この時刻は visibilitytimeout パラメーターの値に基づいて算出されます。 visibilitytimeout の値をメッセージの取得時刻に加算することで、TimeNextVisible の値が決定されます。  
 
 キュー サービスでは、オプティミスティックおよびペシミスティックのいずれのコンカレンシー制御もサポートしていません。このため、キューからメッセージを取得して処理するクライアントは、元の値が変わらないようにメッセージを処理する必要があります。 SetQueueServiceProperties、SetQueueMetaData、SetQueueACL、UpdateMessage などの更新操作では、最終書き込み者優先戦略が適用されます。  
@@ -263,7 +271,8 @@ customer.ETag = "*";
 * [キュー サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-the-file-service"></a>ファイル サービスでのコンカレンシー制御の管理
+## <a name="managing-concurrency-in-azure-files"></a>Azure Files 内でのコンカレンシーの管理
+
 ファイル サービスでは、SMB と REST の 2 種類のプロトコルを使用してエンドポイントにアクセスできます。 REST サービスではオプティミスティック同時実行制御とペシミスティック同時実行制御のいずれもサポートされておらず、すべての更新操作は最終書き込み者優先戦略に従います。 ファイル共有をマウントする SMB クライアントではファイル システムのロック機構を使用して、共有ファイルへのアクセスを管理できます。ペシミスティック同時実行制御も実行できます。 SMB クライアントがファイルを開くときに、ファイルのアクセス権と共有モードの両方が指定されます。 ファイルのアクセス権のオプションが "Write" または "Read/Write" に設定され、同時にファイル共有モードが "None" に設定された場合、そのファイルは閉じられるまで SMB クライアントによってロックします。 SMB クライアントがロックしているファイルに REST 操作を実行しようとすると、REST サービスはステータス コード 409 (Conflict) およびエラー コード SharingViolation を返します。  
 
 SMB クライアントがファイルを開いて削除する場合、そのファイルで開かれているハンドルが他のすべての SMB クライアントで閉じられるまで、ファイルは保留中の削除とマークされます。 保留中の削除であるとマークされたファイルで REST 操作を実行しようとすると、ステータス コード 409 (Conflict) とエラー コード SMBDeletePending が返されます。 SMB クライアントはファイルを閉じる前に保留中の削除を示すフラグを削除できるため、ステータス コード 404 (Not Found) は返されません。 つまり、ステータス コード 404 (Not Found) は、ファイルが削除済みである場合のみ返されることが想定されます。 ファイルが SMB 削除保留状態の間は、ファイル一覧の結果に含まれないことに注意してください。 また、REST ファイル削除および REST ディレクトリ削除操作は自動的コミットされ、削除保留中の状態が発生しないことに注意してください。  
@@ -272,8 +281,7 @@ SMB クライアントがファイルを開いて削除する場合、そのフ�
 
 * [ファイルのロックの管理](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="summary-and-next-steps"></a>概要と次のステップ
-Microsoft Azure Storage サービスは、非常に複雑なオンライン アプリケーションのニーズに対応するように設計されていますが、開発者は、コンカレンシー制御やデータの整合性など、当然のように想定されるようになった主要設計項目を再検討したり、妥協したりする必要がありません。  
+## <a name="next-steps"></a>次のステップ
 
 このブログで参照したサンプル アプリケーションの完全版は、次のページからダウンロードできます。  
 

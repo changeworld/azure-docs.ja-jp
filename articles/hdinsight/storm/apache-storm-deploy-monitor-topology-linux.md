@@ -1,21 +1,21 @@
 ---
 title: Azure HDInsight での Apache Storm トポロジのデプロイと管理
 description: Linux ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、および管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228895"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494977"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理
 
 このドキュメントでは、HDInsight クラスターの Storm 上で実行されている [Apache Storm](https://storm.apache.org/) トポロジの管理および監視の基本について説明します。
 
@@ -34,49 +34,47 @@ Data Lake Tools for Visual Studio を使用すると、C# またはハイブリ�
 1. 最新バージョンの Data Lake Tools for Visual Studio をまだインストールしていない場合は、[Data Lake Tools for Visual Studio の使用](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
     > [!NOTE]  
-    > Data Lake Tools for Visual Studio は、以前は HDInsight Tools for Visual Studio と呼ばれていました。
+    > Azure Data Lake および Stream Analytics ツールは、以前は HDInsight Tools for Visual Studio と呼ばれていました。
     >
-    > Data Lake Tools for Visual Studio は、Visual Studio 2019 用の **Azure ワークロード**に含まれています。
+    > Azure Data Lake および Visual Studio 用 Stream Analytics ツールは、Visual Studio 2019 用の **Azure 開発**ワークロードに含まれています。
 
-2. Visual Studio を開きます。
+1. Visual Studio を起動します。
 
-3. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
+1. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
 
-4. **[新しいプロジェクトの作成]** ウィンドウで、検索ボックスを選択し、「*Storm*」と入力します。 次に、結果の一覧から **[Storm サンプル]** を選択し、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** ウィンドウで、検索ボックスを選択し、「`Storm`」と入力します。 次に、結果の一覧から **[Storm サンプル]** を選択し、 **[次へ]** を選択します。
 
-5. **[新しいプロジェクトを構成する]** ウィンドウで、 **[プロジェクト名]** を入力し、新しいプロジェクトを保存する **[場所]** に移動するか、またはそれを作成します。 **[作成]** を選択します。
+1. **[新しいプロジェクトを構成する]** ウィンドウで、 **[プロジェクト名]** を入力し、新しいプロジェクトを保存する **[場所]** に移動するか、またはそれを作成します。 **[作成]** を選択します。
 
     ![[新しいプロジェクトを構成する] ウィンドウ、Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
+1. **[サーバー エクスプローラー]** で、 **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
+
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
     > [!NOTE]  
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。 2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにサインインします。
 
-7. **[トポロジの送信]** ダイアログボックスの **[Storm クラスター]** ドロップダウン リストで、お使いの Storm on HDInsight クラスターを選択し、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ウィンドウを表示することによって監視できます。
+1. **[トポロジの送信]** ダイアログボックスの **[Storm クラスター]** ドロップダウン リストで、お使いの Storm on HDInsight クラスターを選択し、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ウィンドウを表示することによって監視できます。
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>SSH と Storm コマンドを使用してトポロジを送信する
 
-SSH を使用してトポロジを Storm に送信するには:
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-1. SSH を使用して、HDInsight クラスターに接続します。 `USERNAME` を SSH ユーザー名の名前 (*sshuser* など) に置き換えます。 `CLUSTERNAME` には、HDInsight クラスター名を指定します。
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    SSH を使用して HDInsight クラスターに接続する方法の詳細については、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+1. SSH セッションから、次のコマンドを使用して **WordCount** のトポロジの例を開始します。
 
-2. 次のコマンドを使用して *WordCount* のトポロジの例を開始します。
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
     このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムに文を生成し、文中の各単語の出現回数をカウントします。
 
     > [!NOTE]  
-    > トポロジをクラスターに送信する場合は、`storm` コマンドを使用する前に、まずそのクラスターを含む .jar ファイルをコピーする必要があります。 ファイルをクラスターにコピーするには、`scp` コマンドを使用できます。 たとえば、「 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`」のように入力します。
+    > トポロジをクラスターに送信する場合は、`storm` コマンドを使用する前に、まずそのクラスターを含む .jar ファイルをコピーする必要があります。 ファイルをクラスターにコピーするには、`scp` コマンドを使用できます。 たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` と入力します。
     >
     > *WordCount* の例やその他の Storm スターターの例は、`/usr/hdp/current/storm-client/contrib/storm-starter/` のクラスターに既に含まれています。
 
@@ -174,67 +172,67 @@ Storm UI は、実行中のトポロジを操作するための Web インター
 
 Storm UI のメイン ページには、次の情報が表示されます。
 
-| Section | 説明 |
+| Section | [説明] |
 | --- | --- |
-| **[クラスターの概要]** | Storm クラスターの基本情報。 |
-| **[Nimbus summary] (Nimbus の概要)** | 基本的な Nimbus 情報の一覧。 |
-| **[トポロジの概要]** | 実行中のトポロジの一覧。 特定のトポロジに関するより詳細な情報を表示するには、 **[名前]** 列にあるそのリンクを選択します。 |
-| **[Supervisor summary]\(スーパーバイザーの概要)** | Storm のスーパーバイザーに関する情報。 特定のスーパーバイザーに関連付けられている worker リソースを表示するには、 **[ホスト]** または **[ID]** 列にあるそのリンクを選択します。 |
-| **[Nimbus configuration] (Nimbus 構成)** | クラスターの Nimbus 構成。 |
+| クラスターの概要| Storm クラスターの基本情報。 |
+| [Nimbus summary]\(Nimbus の概要\) | 基本的な Nimbus 情報の一覧。 |
+| トポロジの概要 | 実行中のトポロジの一覧。 特定のトポロジに関するより詳細な情報を表示するには、 **[名前]** 列にあるそのリンクを選択します。 |
+| [Supervisor summary]\(スーパーバイザーの概要\) | Storm のスーパーバイザーに関する情報。 特定のスーパーバイザーに関連付けられている worker リソースを表示するには、 **[ホスト]** または **[ID]** 列にあるそのリンクを選択します。 |
+| [Nimbus configuration]\(Nimbus 構成\) | クラスターの Nimbus 構成。 |
 
 Storm UI のメイン ページは、次の Web ページのようになります。
 
-![メイン ページ、Storm UI、Apache Storm トポロジ、Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![メイン ページ、Storm UI、Apache Storm トポロジ、Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>トポロジの概要
 
 **[トポロジの概要]** セクションのリンクを選択すると、トポロジに関する次の情報が表示されます。
 
-| Section | 説明 |
+| Section | [説明] |
 | --- | --- |
-| **[トポロジの概要]** | トポロジの基本情報。 |
-| **[トポロジのアクション]** | トポロジに対して実行できる管理アクション。 使用可能なアクションは、このセクションの後の方で説明します。 |
-| **[トポロジの統計]** | トポロジに関する統計。 このセクション内のエントリの期間を設定するには、 **[ウィンドウ]** 列にあるそのリンクを選択します。 |
-| **[スパウト]** *(期間)* | トポロジで使用するスパウト。 特定のスパウトに関するより詳細な情報を表示するには、 **[ID]** 列にあるそのリンクを選択します。 |
-| **[ボルト]** *(期間)* | トポロジで使用するボルト。 特定のボルトに関するより詳細な情報を表示するには、 **[ID]** 列にあるそのリンクを選択します。 |
-| **[Worker resources] (worker リソース)** | worker リソースの一覧。 特定の worker リソースに関するより詳細な情報を表示するには、 **[ホスト]** 列にあるそのリンクを選択します。 |
-| **[Topology visualization] (トポロジの視覚化)** | トポロジの視覚化を表示する **[Show Visualization] (視覚化の表示)** ボタン。 |
-| **[トポロジの構成]** | 選択したトポロジの構成。 |
+| トポロジの概要 | トポロジの基本情報。 |
+| [トポロジのアクション]| トポロジに対して実行できる管理アクション。 使用可能なアクションは、このセクションの後の方で説明します。 |
+| トポロジの統計 | トポロジに関する統計。 このセクション内のエントリの期間を設定するには、 **[ウィンドウ]** 列にあるそのリンクを選択します。 |
+| [Spout] *(期間)* | トポロジで使用するスパウト。 特定のスパウトに関するより詳細な情報を表示するには、 **[ID]** 列にあるそのリンクを選択します。 |
+| [ボルト] *(期間)* | トポロジで使用するボルト。 特定のボルトに関するより詳細な情報を表示するには、 **[ID]** 列にあるそのリンクを選択します。 |
+| [Worker resources]\(worker リソース\) | worker リソースの一覧。 特定の worker リソースに関するより詳細な情報を表示するには、 **[ホスト]** 列にあるそのリンクを選択します。 |
+| [Topology visualization]\(トポロジの視覚化\) | トポロジの視覚化を表示する **[Show Visualization] (視覚化の表示)** ボタン。 |
+| トポロジの構成 | 選択したトポロジの構成。 |
 
 Storm のトポロジの概要ページは、次の Web ページのようになります。
 
-![[トポロジの概要] ページ、Storm UI、Apache Storm、Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![[トポロジの概要] ページ、Storm UI、Apache Storm、Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 **[トポロジのアクション]** セクションでは、次のボタンを選択してアクションを実行できます。
 
-| ボタン | 説明 |
+| ボタン | [説明] |
 | --- | --- |
-| **アクティブ化** | アクティブ化が解除されたトポロジの処理を再開します。 |
-| **[非アクティブ化]** | 実行中のトポロジを一時停止します。 |
-| **[再調整]** | トポロジの並列処理を調整します。 クラスター内のノードの数を変更したら、実行中のトポロジを再調整する必要があります。 この操作により、クラスター内のノード数の増減を埋め合わせるようにトポロジで並列処理を調整できるようになります。<br/><br/>詳細については、<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm トポロジの並列処理の理解</a>に関するページを参照してください。
-| **[強制終了]** | 指定したタイムアウト後に Storm トポロジを停止します。 |
-| **デバッグ** | 実行中のトポロジに対するデバッグ セッションを開始します。 |
-| **[Stop Debug] (デバッグの停止)** | 実行中のトポロジに対するデバッグ セッションを終了します。 |
-| **[Change Log Level] (ログ レベルの変更)** | デバッグのログ レベルを変更します。 |
+| アクティブ化 | アクティブ化が解除されたトポロジの処理を再開します。 |
+| 非アクティブ化 | 実行中のトポロジを一時停止します。 |
+| 再調整 | トポロジの並列処理を調整します。 クラスター内のノードの数を変更したら、実行中のトポロジを再調整する必要があります。 この操作により、クラスター内のノード数の増減を埋め合わせるようにトポロジで並列処理を調整できるようになります。<br/><br/>詳細については、<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm トポロジの並列処理の理解</a>に関するページを参照してください。
+| 強制終了 | 指定したタイムアウト後に Storm トポロジを停止します。 |
+| デバッグ | 実行中のトポロジに対するデバッグ セッションを開始します。 |
+| [Stop Debug]\(デバッグの停止\) | 実行中のトポロジに対するデバッグ セッションを終了します。 |
+| [Change Log Level]\(ログ レベルの変更\) | デバッグのログ レベルを変更します。 |
 
 ##### <a name="spout-and-bolt-summary"></a>スパウトとボルトの概要
 
 **[スパウト]** または **[ボルト]** セクションでアイテムを選択すると、そのアイテムに関する次の情報が表示されます。
 
-| Section | 説明 |
+| Section | [説明] |
 | --- | --- |
-| **[コンポーネントの概要]** | スパウトやボルトの基本情報。 |
-| **[Component actions] (コンポーネントのアクション)** | **[デバッグ]** および **[Stop Debug] (デバッグの停止)** ボタン。 |
-| **[Spout stats] (スパウトの統計)** または **[Bolt stats] (ボルトの統計)** | スパウトやボルトの統計。 このセクション内のエントリの期間を設定するには、 **[ウィンドウ]** 列にあるそのリンクを選択します。 |
-| (ボルトのみ)<br/>**[Input stats] (入力の統計)** *(期間)* | ボルトが消費する入力ストリームに関する情報。 |
-| **[出力の統計]** *(期間)* | このスパウトやボルトから出力されるストリームに関する情報。 |
-| **[Profiling and debugging] (プロファイリングとデバッグ)** | このページでのコンポーネントのプロファイリングとデバッグのためのコントロール。 **[Status / Timeout (Minutes)] (状態/タイムアウト (分))** 値を設定したり、 **[JStack]** 、 **[Restart Worker] (ワーカーの再起動)** 、 **[ヒープ]** の各ボタンを選択したりできます。 |
-| **[エグゼキュータ]** *(期間)* | スパウトやボルトのインスタンスに関する情報。 このインスタンスに対して生成された診断情報のログを表示するには、特定のエグゼキュータの **[ポート]** エントリを選択します。 また、 **[ホスト]** 列にあるそのリンクを選択することによって、特定のエグゼキュータに関連付けられている worker リソースを表示することもできます。 |
-| **エラー** | スパウトやボルトのエラー情報。 |
+| コンポーネントの概要 | スパウトやボルトの基本情報。 |
+| [コンポーネントのアクション] | **[デバッグ]** および **[Stop Debug] (デバッグの停止)** ボタン。 |
+| [スパウトの統計] または [ボルトの統計] | スパウトやボルトの統計。 このセクション内のエントリの期間を設定するには、 **[ウィンドウ]** 列にあるそのリンクを選択します。 |
+| (ボルトのみ)<br/>[入力の統計] *(期間)* | ボルトが消費する入力ストリームに関する情報。 |
+| [出力の統計] *(期間)* | このスパウトやボルトから出力されるストリームに関する情報。 |
+| [Profiling and debugging]\(プロファイリングとデバッグ\) | このページでのコンポーネントのプロファイリングとデバッグのためのコントロール。 **[Status / Timeout (Minutes)] (状態/タイムアウト (分))** 値を設定したり、 **[JStack]** 、 **[Restart Worker] (ワーカーの再起動)** 、 **[ヒープ]** の各ボタンを選択したりできます。 |
+| [Executor] *(期間)* | スパウトやボルトのインスタンスに関する情報。 このインスタンスに対して生成された診断情報のログを表示するには、特定のエグゼキュータの **[ポート]** エントリを選択します。 また、 **[ホスト]** 列にあるそのリンクを選択することによって、特定のエグゼキュータに関連付けられている worker リソースを表示することもできます。 |
+| エラー | スパウトやボルトのエラー情報。 |
 
 Storm のボルトの概要ページは、次の Web ページのようになります。
 
-![ボルトの概要ページ、Storm UI、Apache Storm、Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![ボルトの概要ページ、Storm UI、Apache Storm、Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>REST API を使用してトポロジを監視および管理する
 
@@ -251,7 +249,7 @@ Linux ベースの HDInsight クラスターでの REST API のベース URI は
 
 クラスター ヘッド ノードの完全修飾ドメイン名 (FQDN) は、次のいくつかの方法で見つけることができます。
 
-| FQDN の検出方法 | 説明 |
+| FQDN の検出方法 | [説明] |
 | --- | --- |
 | SSH セッション | SSH セッションからクラスターに `headnode -f` コマンドを使用します。 |
 | Ambari Web | Ambari クラスターの Web ページ (`https://CLUSTERNAME.azurehdinsight.net`) で、ページの一番上から **[サービス]** を選択し、 **[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。 |
@@ -268,7 +266,7 @@ REST API への要求では*基本認証*を使用する必要があるため、
 
 REST API から返される情報は、クラスター内からのみ利用可能です。 たとえば、[Apache ZooKeeper](https://zookeeper.apache.org/) サーバーに対して返された完全修飾ドメイン名 (FQDN) はインターネットからアクセスできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Apache Maven を使用して Java ベースのトポロジを開発する](apache-storm-develop-java-topology.md)方法を学習します。
 

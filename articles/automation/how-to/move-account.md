@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969840"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation アカウントを別のサブスクリプションに移動する
 
-Azure では、新しいリソース グループまたはサブスクリプションに一部のリソースを移動する機能を提供しています。 Azure portal、PowerShell、Azure CLI、または REST API を使用して、リソースを移動できます。 方法の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+Azure では、新しいリソース グループまたはサブスクリプションに一部のリソースを移動する機能を提供しています。 Azure portal、PowerShell、Azure CLI、または REST API を使用して、リソースを移動できます。 方法の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 Azure の Automation アカウントは、移動できるリソースの 1 つです。 この記事では、Automation アカウントを別のリソースまたはサブスクリプションに移動する手順について説明します。
 
@@ -145,6 +145,6 @@ Azure portal で、 **[Automation アカウント]**  >  **[関連リソース]*
 |更新管理|マシンを表示し、正常な状態であることを確認する。</br>テスト ソフトウェア更新プログラムのデプロイを実行する。|[Update Management の問題をトラブルシューティングする](../troubleshoot/update-management.md)|
 |共有リソース|[資格情報](../shared-resources/credentials.md)や[変数](../shared-resources/variables.md)などのすべての共有リソースが表示されていることを確認します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure でのリソースの移動の詳細については、[Azure でのリソースの移動](../../azure-resource-manager/move-support-resources.md)に関するページを参照してください。
+Azure でのリソースの移動の詳細については、[Azure でのリソースの移動](../../azure-resource-manager/management/move-support-resources.md)に関するページを参照してください。

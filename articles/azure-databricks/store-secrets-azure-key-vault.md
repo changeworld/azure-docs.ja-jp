@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849277"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889068"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用して Azure Databricks から Azure Blob Storage にアクセスする
 
@@ -32,11 +32,11 @@ ms.locfileid: "74849277"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="create-a-storage-account-and-blob-container"></a>ストレージ アカウントと BLOB コンテナーを作成する
 
@@ -74,7 +74,7 @@ ms.locfileid: "74849277"
 
 3. **[Create key vault]\(キー コンテナーの作成\)** ページで、次の情報を入力し、残りのフィールドには既定値をそのまま使用します。
 
-   |プロパティ|Description|
+   |プロパティ|[説明]|
    |--------|-----------|
    |Name|自分のキー コンテナーの一意の名前。|
    |サブスクリプション|サブスクリプションを選択します。|
@@ -91,11 +91,11 @@ ms.locfileid: "74849277"
 
 5. **[シークレットの作成]** ページで、次の情報を指定し、残りのフィールドには既定値をそのまま使用します。
 
-   |プロパティ|Value|
+   |プロパティ|値|
    |--------|-----------|
    |Upload options|マニュアル|
    |Name|自分のストレージ アカウント キーのフレンドリ名。|
-   |Value|自分のストレージ アカウントからのキー 1。|
+   |値|自分のストレージ アカウントからのキー 1。|
 
    ![新しいキー コンテナー シークレットのプロパティ](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "74849277"
 
 2. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
-   |プロパティ  |説明  |
+   |プロパティ  |[説明]  |
    |---------|---------|
    |ワークスペース名     | Databricks ワークスペースの名前を指定します        |
    |サブスクリプション     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -200,7 +200,7 @@ ms.locfileid: "74849277"
 
    ![ストレージ アカウントのマウント解除エラー](./media/store-secrets-azure-key-vault/command5.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順でリソース グループ全体を削除します。
 
@@ -208,7 +208,7 @@ ms.locfileid: "74849277"
 
 2. **[リソース グループの削除]** を選択し、自分のリソース グループ名を入力します。 次に、 **[削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事に進み、Cosmos DB に対して有効なサービス エンドポイントを使用して、VNet に導入された Databricks 環境を構築する方法について説明します。
 > [!div class="nextstepaction"]

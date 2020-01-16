@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159723"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763081"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -28,7 +28,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -275,17 +275,18 @@ OS のサポート: Linux
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"
          }],
 ```
 
-OS のサポート:  Windows
+OS のサポート: Windows
  
 カスタマイズのプロパティ:
-- **[タイプ]** :WindowsRestart
+- **[種類]** :WindowsRestart
 - **restartCommand** - 再起動を実行するコマンド (省略可能)。 既定では、 `'shutdown /r /f /t 0 /c \"packer restart\"'`です。
 - **restartCheckCommand** - 再起動が成功したかどうかを確認するコマンド (省略可能)。 
 - **restartTimeout** - 大きさと単位の文字列として指定された再起動のタイムアウト。 たとえば、`5m` (5 分) や `2h` (2 時間) などです。 既定値は "5m" です
@@ -310,7 +311,7 @@ OS のサポート:  Windows
     ], 
 ```
 
-OS のサポート: Windows および Linux
+OS のサポート: Windows と Linux
 
 カスタマイズのプロパティ:
 
@@ -499,7 +500,7 @@ az resource show \
 > [!NOTE]
 > VHD が作成されたら、できるだけ早く別の場所にそれをコピーします。 VHD は、イメージ テンプレートが Azure Image Builder サービスに送信されるときに作成される一時的なリソース グループのストレージ アカウントに格納されます。 イメージ テンプレートを削除すると、VHD が失われます。 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder) にあります。
  

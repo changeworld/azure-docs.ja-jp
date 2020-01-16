@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364800"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969533"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -197,7 +197,7 @@ Azure Resource Manager テンプレートを使用してアクティビティ �
   ]
 }
 ```
-前述のサンプル JSON は、このチュートリアルの目的で、たとえば sampleActivityLogAlert.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md) を使用してデプロイできます。
+前述のサンプル JSON は、このチュートリアルの目的で、たとえば sampleActivityLogAlert.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md) を使用してデプロイできます。
 
 > [!NOTE]
 > 新しいアクティビティ ログ アラート ルールがアクティブになるまで最大 5 分かかる場合があります。

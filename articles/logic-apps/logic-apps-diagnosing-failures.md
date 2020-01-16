@@ -1,17 +1,17 @@
 ---
-title: 障害のトラブルシューティングと診断
-description: Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
+title: ワークフローの問題のトラブルシューティングと診断
+description: Azure Logic Apps でのワークフローの問題、エラー、および障害のトラブルシューティングと診断を行う方法について説明します
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790762"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666807"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
@@ -34,11 +34,11 @@ ms.locfileid: "74790762"
 
    トリガー試行には次のような状態があります。
 
-   | Status | 説明 | 
+   | Status | [説明] | 
    | ------ | ----------- | 
    | **Succeeded** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
-   | **スキップ済み** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
-   | **失敗** | エラーが発生しました。 失敗したトリガーに対して生成されたエラー メッセージを確認するには、そのトリガー試行を選択し、 **[出力]** を選択します。 たとえば、無効な入力が見つかる場合があります。 | 
+   | **Skipped** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
+   | **Failed** | エラーが発生しました。 失敗したトリガーに対して生成されたエラー メッセージを確認するには、そのトリガー試行を選択し、 **[出力]** を選択します。 たとえば、無効な入力が見つかる場合があります。 | 
    ||| 
 
    同じ日時のトリガー エントリが複数ある場合があります。これは、ロジック アプリによって複数の項目が検出された場合に発生します。 
@@ -75,7 +75,7 @@ ms.locfileid: "74790762"
 
    実行には次のような状態があります。
 
-   | Status | 説明 | 
+   | Status | [説明] | 
    | ------ | ----------- | 
    | **Succeeded** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
    | **Failed** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 
@@ -91,7 +91,7 @@ ms.locfileid: "74790762"
 
    ![ロジック アプリの実行の詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 例:
+3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 次に例を示します。
 
    ![ステップの詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
@@ -107,6 +107,6 @@ ms.locfileid: "74790762"
 
 4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリを実行し、詳細を Webhook Tester で確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)

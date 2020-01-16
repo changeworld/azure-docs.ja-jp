@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed35abd5b9bfb8b9a74d598f1fa93d8f1a985bfb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425291"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
 Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、個人や組織が使用できるいくつかのレポートを提供します。 次の表は使用できるレポートの一覧です。
 
-| レポート | Location | 説明 |
+| レポート | Location | [説明] |
 |:--- |:--- |:--- |
 | ユーザーのブロックの履歴 | [Azure AD] > [セキュリティ] > [MFA] > [ユーザーのブロック/ブロック解除] | ユーザーのブロックまたはブロック解除の要求履歴を表示します。 |
 | 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
@@ -32,7 +32,7 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 ## <a name="view-mfa-reports"></a>MFA レポートを表示する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側で **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]** の順に選択します。
 3. 表示するレポートを選択します。
 
@@ -134,11 +134,21 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 ```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
+登録されているユーザーと出力方法を識別します。 
+
+```PowerShell
+Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
+
+@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},
+
+@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
+```
+
 ## <a name="possible-results-in-activity-reports"></a>アクティビティ レポートで考えられる結果
 
 次の表を利用すると、ダウンロードしたバージョンの多要素認証アクティビティ レポートを使用して多要素認証のトラブルシューティングを行うことができます。 これらは Azure portal には直接表示されません。
 
-| 呼び出しの結果 | 説明 | 概略的な説明 |
+| 呼び出しの結果 | [説明] | 概略的な説明 |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN Entered (PIN を入力しました) | ユーザーが PIN を入力しました。  認証に成功した場合は、正しい PIN が入力されたためです。  認証が拒否された場合は、間違った PIN が入力されたか、そのユーザーが標準モードに設定されています。 |
 | SUCCESS_NO_PIN | Only # Entered (# のみを入力しました) | ユーザーが PIN モードに設定され、認証が拒否された場合、これはユーザーが自分の PIN を入力せずに # のみを入力したことを意味します。  ユーザーが標準モードに設定されていて認証が成功した場合、これはユーザーが # のみを入力したことを意味します。これは標準モードでは正しい操作です。 |
@@ -186,7 +196,7 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 | FAILED_AUTH_RESULT_TIMEOUT | Auth Result Timeout (認証結果のタイムアウト) | ユーザーは、Multi-Factor Authentication の試行に時間がかかりすぎて完了できませんでした。 |
 | FAILED_AUTHENTICATION_THROTTLED | Authentication Throttled (認証が調整されています) | 多要素認証の試行がサービスによって調整されました。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 * [ユーザー向け](../user-help/multi-factor-authentication-end-user.md)

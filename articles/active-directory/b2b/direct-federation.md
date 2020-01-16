@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272753"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888885"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -83,7 +83,7 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 Azure AD B2B は、以下に示す特定の要件に従って、SAML プロトコルを使用する ID プロバイダーと連携するように構成できます。 ご利用の SAML ID プロバイダーと Azure AD の間に信頼を設定する方法の詳細については、「[シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)」を参照してください。  
 
 > [!NOTE]
-> 注 直接フェデレーションのターゲット ドメインを Azure AD 上で DNS によって検証することはできない点に注意してください。 認証 URL のドメインは、ターゲット ドメインに一致する必要があります。または、許可されている ID プロバイダーのドメインである必要があります。 詳細については、「[制限事項](#limitations)」のセクションを参照してください。 
+> 直接フェデレーションのターゲット ドメインを Azure AD 上で DNS によって検証することはできません。 認証 URL のドメインは、ターゲット ドメインに一致する必要があります。または、許可されている ID プロバイダーのドメインである必要があります。 詳細については、「[制限事項](#limitations)」のセクションを参照してください。 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>必須の SAML 2.0 属性および要求
 次の表では、サード パーティの ID プロバイダーに構成する必要がある、特定の属性と要求の要件を示します。 直接フェデレーションを設定するには、ID プロバイダーからの SAML 2.0 応答において以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。
@@ -133,7 +133,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 次に、手順 1 で構成した ID プロバイダーとのフェデレーションを Azure AD 上で構成します。 Azure AD ポータルまたは PowerShell のいずれかを使用できます。 直接フェデレーション ポリシーが有効になるまで 5 分から 10 分かかる場合があります。 この間、直接フェデレーション ドメインの招待を利用することを試みないでください。 次の属性は必須です。
 - パートナー IdP の発行者 URI
 - パートナー IdP のパッシブ認証エンドポイント (サポートされているのは https のみ)
-- 証明書
+- Certificate
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD ポータルで直接フェデレーションを構成するには
 
@@ -152,7 +152,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
    - パートナー IdP のドメイン名
    - パートナー IdP のエンティティ ID
    - パートナー IdP のパッシブな要求元エンドポイント
-   - 証明書
+   - Certificate
    > [!NOTE]
    > メタデータ URL は省略可能ですが、強くお勧めします。 メタデータ URL を指定すると、署名証明書が有効期限切れになったときに、Azure AD によって自動的に更新することができます。 証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
 

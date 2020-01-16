@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895113"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978389"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
 
@@ -35,7 +35,7 @@ Azure Storage データ移動ライブラリは、BLOB およびファイルを�
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure ストレージ アカウント](storage-quickstart-create-account.md)
+- [Azure ストレージ アカウント](storage-account-create.md)
 
 ## <a name="setup"></a>セットアップ
 
@@ -564,7 +564,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 
 これでデータ移動アプリケーションが完成しました。 [完全なコード サンプルは GitHub で入手できます](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Storage データ移動ライブラリのリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)。
 

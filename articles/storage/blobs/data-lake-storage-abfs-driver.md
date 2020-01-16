@@ -8,16 +8,16 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933151"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970272"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 
-Azure Data Lake Storage Gen2 内のデータの主要なアクセス方法の 1 つは、[Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) です。 Data Lake Storage Gen2 により、Azure Blob Storage のユーザーは、新しいドライバーである Azure BLOB ファイル システム ドライバー (`ABFS`) にアクセスできます。 ABFS は、Apache Hadoop の一部であり、Hadoop の商用ディストリビューションの多くに含まれています。 このドライバーを使用すると、多くのアプリケーションとフレームワークは、Data Lake Storage Gen2 を明示的に参照するコードがなくても Azure Blob Storage 内のデータにアクセスできます。 
+Azure Data Lake Storage Gen2 内のデータの主要なアクセス方法の 1 つは、[Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) です。 Data Lake Storage Gen2 により、Azure Blob Storage のユーザーは、新しいドライバーである Azure BLOB ファイル システム ドライバー (`ABFS`) にアクセスできます。 ABFS は、Apache Hadoop の一部であり、Hadoop の商用ディストリビューションの多くに含まれています。 このドライバーを使用すると、多くのアプリケーションとフレームワークは、Data Lake Storage Gen2 を明示的に参照するコードがなくても Azure Blob Storage 内のデータにアクセスできます。
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能:Windows Azure Storage Blob ドライバー
 
@@ -36,21 +36,21 @@ Hadoop 内の他のファイルシステムの実装と一貫性のある ABFS �
 上記の URI 形式を使用して、標準の Hadoop ツールとフレームワークを使用してこれらのリソースを参照できます。
 
 ```bash
-hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
-hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
+hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data
+hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
 内部的には、ABFS ドライバーは、URI で指定されたリソースをファイルとディレクトリに変換し、これらの参照で Azure Data Lake Storage REST API を呼び出します。
 
 ### <a name="authentication"></a>認証
 
-Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウントに含まれるリソースに安全にアクセスできるように、ABFS ドライバーは 2 つの認証形式をサポートしています。 使用できる認証方式の詳細については、「[Azure Storage セキュリティ ガイド](../common/storage-security-guide.md)」を参照してください。 次に例を示します。
+Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウントに含まれるリソースに安全にアクセスできるように、ABFS ドライバーは 2 つの認証形式をサポートしています。 使用できる認証方式の詳細については、「[Azure Storage セキュリティ ガイド](security-recommendations.md)」を参照してください。 これらは次のとおりです。
 
 - **共有キー:** このキーを使用すると、ユーザーはアカウント内のすべてのリソースにアクセスできます。 キーが暗号化され、Hadoop 構成に格納されます。
 
 - **Azure Active Directory OAuth ベアラー トークン:** Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
 
-   > [!NOTE] 
+   > [!NOTE]
    > Azure Data Lake Storage Gen2 は、Azure AD v1.0 エンドポイントのみをサポートします。
 
 ### <a name="configuration"></a>構成
@@ -63,7 +63,7 @@ ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成�
 
 ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)に完全に記載されています
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Databricks クラスターの作成](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Azure Data Lake Storage Gen2 URI の使用](./data-lake-storage-introduction-abfs-uri.md)

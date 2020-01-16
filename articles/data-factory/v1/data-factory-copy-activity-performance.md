@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438918"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -205,7 +205,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 ### <a name="configuration"></a>構成
 コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Blob Storage にステージングするかどうかを指定します。 **enableStaging** を TRUE に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 ステージング用に Azure Storage または Storage Shared Access Signature のリンクされたサービスがない場合は、作成する必要もあります。
 
-| プロパティ | 説明 | 既定値 | 必須 |
+| プロパティ | [説明] | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
@@ -332,7 +332,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 * **Table Storage**の場合:
   * **パーティション**: インターリーブされたパーティションにデータを書き込むと、パフォーマンスが大幅に低下します。 データが複数のパーティションに順次効率よく挿入されるように、パーティション キーでソース データを並べ替えるか、データが 1 つのパーティションに書き込まれるようにロジックを調整します。
 * **Azure Cosmos DB** の場合:
-  * **バッチ サイズ**: **writeBatchSize** プロパティは、ドキュメントを作成する Azure Cosmos DB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。Azure Cosmos DB に送信される並列要求の数が増えるためです。 ただし、Azure Cosmos DB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
+  * **Batch size**: **writeBatchSize** プロパティは、ドキュメントを作成する Azure Cosmos DB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。Azure Cosmos DB に送信される並列要求の数が増えるためです。 ただし、Azure Cosmos DB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>シリアル化と逆シリアル化に関する考慮事項
 入力データ セットまたは出力データ セットがファイルであると、シリアル化および逆シリアル化が実行されることがあります。 コピー アクティビティでサポートされているファイル形式について詳しくは、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」をご覧ください。
@@ -352,7 +352,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 **コーデック**: コピー アクティビティでは、圧縮の種類として gzip、bzip2、および Deflate がサポートされています。 Azure HDInsight では、3 種類すべてを処理に利用できます。 各圧縮コーデックには、長所があります。 たとえば、bzip2 はコピーのスループットが最も低いのですが、分割して処理できるため、最高の Hive クエリ パフォーマンスを発揮します。 Gzip は最もバランスの取れたオプションであり、最も頻繁に使用されます。 エンド ツー エンドのシナリオに最適なコーデックを選択してください。
 
-**レベル**: 各圧縮コーデックに対して、最速圧縮と最適圧縮という 2 つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
+**レベル**:各圧縮コーデックに対して、最速圧縮と最適圧縮という 2 つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
 
 **考慮事項**: オンプレミス ストアとクラウド間で大量のデータをコピーする場合は、中間 Blob Storage と圧縮の使用を検討してください。 企業ネットワークと Azure サービスの帯域幅が制限要因となっていて、入力データ セットと出力データ セットの両方を圧縮されない形式にしたい場合は、中間ストレージを使用すると便利です。 具体的には、1 つのコピー アクティビティを 2 つのコピー アクティビティに分割できます。 最初のコピー アクティビティは、圧縮形式で、ソースから中間またはステージング BLOB へのコピーを行います。 2 番目のコピー アクティビティは、ステージングから圧縮されたデータをコピーし、シンクへの書き込み中に圧縮を解除します。
 
@@ -367,7 +367,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 Data Factory が同じデータ ストアに同時に接続することを必要とするデータ セットの数とコピー アクティビティの数に注意してください。 同時コピー ジョブの数が多いと、データ ストアのスロットルが発生し、パフォーマンスの低下、コピー ジョブの内部的な再試行、場合によっては実行の失敗につながるおそれがあります。
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>サンプル シナリオ: オンプレミス SQL Server から Blob Storage へのコピー
-**シナリオ**: オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
+**シナリオ**:オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
 
 **テストと分析**: コピー アクティビティのスループットは 2 MBps 未満で、パフォーマンスのベンチマークをかなり下回っています。
 
@@ -383,7 +383,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 次に示す要因の 1 つ以上がパフォーマンスのボトルネックの原因である可能性があります。
 
-* **ソース**: 負荷が大きいため、SQL Server 自体のスループットが低くなっています。
+* **ソース**:負荷が大きいため、SQL Server 自体のスループットが低くなっています。
 * **Data Management Gateway**:
   * **LAN**: ゲートウェイは SQL Server マシンから離れた場所にあり、低帯域幅で接続されています。
   * **ゲートウェイ**: ゲートウェイは、以下の操作を実行して、負荷の上限に達しています。
@@ -416,7 +416,8 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 ## <a name="reference"></a>リファレンス
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../../storage/common/storage-performance-checklist.md)に関する記事
+* Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/blobs/storage-performance-checklist.md)。
+* Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)

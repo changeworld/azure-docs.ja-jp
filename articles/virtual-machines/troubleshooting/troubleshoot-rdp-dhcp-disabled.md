@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058018"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749893"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない
 
 この記事では、Azure Windows 仮想マシン (VM) に DHCP クライアント サービスを構成した後でその VM にリモート デスクトップ接続できない問題について説明します。
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>現象
 Azure 内の VM で DHCP クライアント サービスが無効になっているために、その VM に対して RDP 接続を行うことができません。 Azure portal で[ブート診断](../troubleshooting/boot-diagnostics.md)のスクリーンショットを確認すると、VM は正常に起動し、ログイン画面で資格情報を待っていることがわかります。 イベント ビューアーを使用して、VM でイベント ログをリモートで表示します。 DHCP クライアント サービスが開始していないか、または開始に失敗していることがわかります。 ログのサンプルを次に示します。
@@ -33,9 +32,9 @@ Azure 内の VM で DHCP クライアント サービスが無効になってい
 **日付**:12/16/2015 11:19:36 AM </br>
 **イベント ID**:7022 </br>
 **タスク カテゴリ**:なし </br>
-**レベル**:Error </br>
+**レベル**:エラー </br>
 **キーワード**:クラシック</br>
-**ユーザー**:該当なし </br>
+**[ユーザー]** :該当なし </br>
 **コンピューター**: myvm.cosotos.com</br>
 **説明**:DHCP クライアント サービスが開始時にハングしました。</br>
 
@@ -61,7 +60,7 @@ DHCP クライアント サービスが VM で実行されていません。
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
 1. [シリアル コンソールに接続し、CMD インスタンスを開きます](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。
-バージョンを参照)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
+)。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
 2. ネットワーク インターフェイスで DHCP が無効になっているかどうかを確認します。
 
         sc query DHCP
@@ -76,7 +75,7 @@ DHCP クライアント サービスが VM で実行されていません。
     VM への接続を試みて、問題が解決されるかどうかを確認します。
 5. サービスが開始しない場合は、受け取ったエラー メッセージに基づいて、以下の適切な解決策を使用します。
 
-    | Error  |  解決策 |
+    | エラー  |  解決策 |
     |---|---|
     | 5 - ACCESS DENIED  | 「[アクセス拒否エラーのために DHCP クライアント サービスが停止される](#dhcp-client-service-is-stopped-because-of-an-access-denied-error)」をご覧ください。  |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT   | 「[DHCP クライアント サービスがクラッシュまたはハングする](#dhcp-client-service-crashes-or-hangs)」をご覧ください。  |
@@ -201,6 +200,6 @@ DHCP クライアント サービスが VM で実行されていません。
 
 4. [OS ディスクを切断して、VM を再作成します](../windows/troubleshoot-recovery-disks-portal.md)。 その後、問題が解決されているかどうかを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ支援が必要な場合は、問題を解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

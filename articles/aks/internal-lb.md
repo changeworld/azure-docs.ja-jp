@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 5842003d43d4268d0f663e8a57e40562a480e252
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6b4bbac5d8555a705b2311abcea8396c1151da90
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430766"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
 Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを制限するために、内部ロード バランサーを作成して使用できます。 内部ロード バランサーは、Kubernetes サービスを Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションからのみアクセス可能にします。 この記事では、Azure Kubernetes Service (AKS) を使用して内部ロード バランサーを使用する方法を示します。
 
 > [!NOTE]
-> Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 サービス マニフェストを使用して AKS でロード バランサーを作成する場合、既定では *Basic* SKU が使用されます。 詳細については、[Azure ロード バランサー SKU の比較][azure-lb-comparison]に関するページを参照してください。
+> Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 AKS クラスターを作成する場合、既定では Standard SKU が使用されます。  タイプを LoadBalancer としてサービスを作成すると、クラスターをプロビジョニングするときと同じ LB タイプが得られます。 詳細については、[Azure ロード バランサー SKU の比較][azure-lb-comparison]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -136,7 +136,7 @@ spec:
 
 また、すべての Kubernetes リソース (`kubectl delete service internal-app` など) と同様に、サービスを直接削除することもできます。それにより、基礎となる Azure ロード バランサーも削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Kubernetes サービスのドキュメント][kubernetes-services]で Kubernetes サービスについて学習する。
 

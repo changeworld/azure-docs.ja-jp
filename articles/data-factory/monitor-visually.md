@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278366"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690924"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
@@ -30,14 +30,14 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | **列名** | **説明** |
 | --- | --- |
 | Pipeline Name (パイプライン名) | パイプラインの名前 |
-| Actions | アクティビティの詳細の表示、キャンセル、またはパイプラインの再実行を可能にするアイコン |
+| アクション | アクティビティの詳細の表示、キャンセル、またはパイプラインの再実行を可能にするアイコン |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | パイプラインを開始したトリガーの名前 |
 | Status | **失敗**、**成功**、**進行中**、**キャンセル済**、または **キューに登録済み** |
 | 注釈 | パイプラインに関連付けられたフィルター可能なタグ  |
-| parameters | パイプラインの実行のパラメーター (名前/値のペア) |
-| Error | パイプラインが失敗した場合の実行エラー |
+| パラメーター | パイプラインの実行のパラメーター (名前/値のペア) |
+| エラー | パイプラインが失敗した場合の実行エラー |
 | Run ID (実行 ID) | パイプライン実行の ID。 |
 
 ![パイプラインの実行を監視するためのリスト ビュー](media/monitor-visually/pipeline-runs.png)
@@ -54,13 +54,13 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | --- | --- |
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前 |
 | Activity Type (アクティビティの種類) | アクティビティの種類 (**Copy**、**ExecuteDataFlow**、**AzureMLExecutePipeline**  など) |
-| Actions | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
+| アクション | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
 | Status | **失敗**、**成功**、**進行中**、または**キャンセル済** |
 | 統合ランタイム | アクティビティが実行された統合ランタイム |
 | ユーザー プロパティ | アクティビティのユーザー定義プロパティ |
-| Error | アクティビティが失敗した場合の実行エラー |
+| エラー | アクティビティが失敗した場合の実行エラー |
 | Run ID (実行 ID) | アクティビティ実行の ID。 |
 
 ![アクティビティの実行を監視するためのリスト ビュー](media/monitor-visually/activity-runs.png)
@@ -114,6 +114,12 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 ![アクティビティの実行の選択](media/monitor-visually/rerun-activities-image2.png)
 
+### <a name="rerun-from-failed-activity"></a>失敗したアクティビティから再実行する
+
+アクティビティが失敗した場合、タイムアウトした場合、または取り消された場合、 **[Rerun from failed activity]\(失敗したアクティビティから再実行する\)** を選択して、失敗したアクティビティからパイプラインを再実行できます。
+
+![失敗したアクティビティを再実行する](media/monitor-visually/rerun-failed-activity.png)
+
 ### <a name="view-rerun-history"></a>再実行履歴を表示する
 
 パイプラインの全実行の再実行履歴は、リスト ビューで確認することができます。
@@ -143,7 +149,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 ![ガイド ツアー](media/monitor-visually/guided-tours.png)
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の監視ページで **[監視]**  >  **[Alerts & Metrics]\(アラートとメトリック\)** の順に選択して開始します。
 
@@ -183,6 +189,6 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
     ![アラート ルールの作成のオプション](media/monitor-visually/alerts09.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パイプラインの監視と管理の詳細については、[プログラムでのパイプラインの監視と管理](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)に関する記事をご覧ください。

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: spelluru
-ms.openlocfilehash: eec0cde4a36449f85998bfb04d16f1d52c68bb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835253"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976548"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>テスト環境向けに入れ子になったAzure Resource Manager テンプレートをデプロイする
-入れ子になったデプロイを使用すると、メインの Azure Resource Manager テンプレート内から別の Resource Manager テンプレートを実行できます。 これを使用することにより、デプロイを、目的別に的を絞った一連のテンプレートに分解できます。 これには、テスト、再利用、読みやすさの点でメリットがあります。 [Azure リソースのデプロイ時のリンクされたテンプレートの使用](../azure-resource-manager/resource-group-linked-templates.md)に関する記事では、このソリューションの概要とコード サンプルが紹介されています。 この記事では、Azure DevTest Labs に固有の例を示します。 
+入れ子になったデプロイを使用すると、メインの Azure Resource Manager テンプレート内から別の Resource Manager テンプレートを実行できます。 これを使用することにより、デプロイを、目的別に的を絞った一連のテンプレートに分解できます。 これには、テスト、再利用、読みやすさの点でメリットがあります。 [Azure リソースのデプロイ時のリンクされたテンプレートの使用](../azure-resource-manager/templates/linked-templates.md)に関する記事では、このソリューションの概要とコード サンプルが紹介されています。 この記事では、Azure DevTest Labs に固有の例を示します。 
 
 ## <a name="key-parameters"></a>キー パラメーター
-ゼロから独自の Resource Manager テンプレートを作成することもできますが、Visual Studio で [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を使用することをお勧めします。このプロジェクトを使用すると、簡単にテンプレートを開発してデバッグできます。 azuredeploy.json に入れ子になったデプロイ リソースを追加すると、Visual Studio によって、テンプレートをより柔軟にするいくつかの項目が追加されます。 これらの項目には、セカンダリ テンプレートとパラメーター ファイルを含むサブフォルダー、メイン テンプレート ファイル内の変数名、および新しいファイルの保存場所を表す 2 つのパラメーターが含まれます。 **_artifactsLocation** と **_artifactsLocationSasToken** は DevTest Labs によって使用されるキー パラメーターです。 
+ゼロから独自の Resource Manager テンプレートを作成することもできますが、Visual Studio で [Azure リソース グループ プロジェクト](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用することをお勧めします。このプロジェクトを使用すると、簡単にテンプレートを開発してデバッグできます。 azuredeploy.json に入れ子になったデプロイ リソースを追加すると、Visual Studio によって、テンプレートをより柔軟にするいくつかの項目が追加されます。 これらの項目には、セカンダリ テンプレートとパラメーター ファイルを含むサブフォルダー、メイン テンプレート ファイル内の変数名、および新しいファイルの保存場所を表す 2 つのパラメーターが含まれます。 **_artifactsLocation** と **_artifactsLocationSasToken** は DevTest Labs によって使用されるキー パラメーターです。 
 
 DevTest Labs が環境を使用するしくみになじみがない場合は、「[Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)」を参照してください。 テンプレートは、DevTest Labs のラボにリンクされているリポジトリに格納されます。 これらのテンプレートを使用して新しい環境を作成すると、ファイルがラボの Azure Storage コンテナーに移動されます。 入れ子になったファイルを識別してコピーできるようにするために、DevTest Labs は _artifactsLocation と _artifactsLocationSasToken パラメーターを識別し、サブフォルダーをストレージ コンテナーまでコピーします。 次に、その場所と Shared Access Signature (SaS) トークンを自動的にパラメーターに挿入します。 
 
@@ -74,7 +74,7 @@ Visual Studio での同じプロジェクト構造の画像を次に示します
 
 プライマリ フォルダーには他のフォルダーを追加できますが、これより深いレベルには追加できません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 環境の詳細については、次の記事を参照してください。 
 
 - [Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)

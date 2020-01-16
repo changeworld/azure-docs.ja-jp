@@ -3,12 +3,12 @@ title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449906"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -48,8 +48,22 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
       ![既定のバックアップ ポリシー](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Azure Backup サービスでは、スナップショットを格納するために別のリソース グループ (VM のリソース グループ以外) が作成されます。名前の形式は **AzureBackupRG_geography_number** です (例: AzureBackupRG_northeurope_1)。 このリソース グループ内のデータは、Azure Virtual Machine Backup ポリシーの *[Retain instant recovery snapshot]\(インスタント リカバリ スナップショットの保存\)* セクションに指定されている日数の期間保持されます。  このリソース グループにロックを適用すると、バックアップが失敗する可能性があります。 <br> 制限ポリシーによってリソース ポイント コレクションの作成がブロックされ、この場合もバックアップが失敗するため、このリソース グループも名前/タグの制限から除外する必要があります。
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines の Azure Backup リソース グループ
+
+Backup サービスでは、復元ポイント コレクション (RPC) を格納する VM のリソース グループとは異なる、別のリソース グループ (RG) が作成されます。 RPC には、マネージド VM のインスタント復旧ポイントが格納されます。 Backup サービスによって作成されるリソース グループの既定の名前付け形式は `AzureBackupRG_<Geo>_<number>` です。 次に例を示します。*AzureBackupRG_northeurope_1*。 Azure Backup によって作成されたリソース グループ名はカスタマイズできるようになりました。
+
+注意する点:
+
+1. RG の既定の名前を使用することも、会社の要件に従って編集することもできます。
+2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合のスケールアウトに使用されます。 現在、1 つの RG に最大 600 の RPC を含めることができます。
+              ![ポリシー作成時の名前の選択](./media/backup-during-vm-creation/create-policy.png)
+3. このパターンは、以下の RG の名前付け規則に従っている必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
+    1. リソース グループ名に使用できるのは、英数字、ピリオド、アンダースコア、ハイフン、かっこのみです。 末尾をピリオドにすることはできません。
+    2. リソース グループ名には、RG の名前とサフィックスを含めて、最大 74 文字を使用できます。
+4. 最初の `<alpha-numeric-string>` は必須ですが、'n' の後の 2 番目のものは省略可能です。 これが適用されるのは、カスタマイズした名前を指定する場合だけです。 どちらのテキストボックスにも入力しないと、既定の名前が使用されます。
+5. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、古い RP は引き続き古い RG に残り、移動されません。RP コレクションではリソースの移動がサポートされていないためです。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
+![ポリシー変更時の名前の変更](./media/backup-during-vm-creation/modify-policy.png)
+6. Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>VM の作成後にバックアップを開始する
 
@@ -66,7 +80,7 @@ VM が作成されたら、次の操作を行います。
 
 前の手順では、Azure portal を使用して仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 VM をすばやくデプロイし、Recovery Services コンテナーでそれを保護するには、[Windows VM をデプロイしてバックアップを有効にする](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM が保護されたので、その VM を管理および復元する方法を学習してください。
 

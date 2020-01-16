@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894081"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750944"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ
 
 > [!NOTE]
 > リソース ログは、以前は診断ログと呼ばれていました。
 
-[Azure Monitor リソース ログ](../../azure-monitor/platform/resource-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
+[Azure Monitor リソース ログ](../../azure-monitor/platform/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、リソース ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
 
 ## <a name="top-level-resource-logs-schema"></a>リソース ログの上位スキーマ
 
-| 名前 | 必須/省略可能 | 説明 |
+| Name | 必須/省略可能 | [説明] |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
@@ -47,7 +47,7 @@ ms.locfileid: "74894081"
 ## <a name="service-specific-schemas-for-resource-logs"></a>サービス固有のリソース ログのスキーマ
 リソース診断ログのスキーマは、リソースとログ カテゴリによって異なります。 リソース ログを使用できるようにするすべてのサービスと、そのサービスおよびカテゴリ固有のスキーマへのリンク (使用可能な場合) を、次の一覧に示します。
 
-| Service | スキーマとドキュメント |
+| サービス | スキーマとドキュメント |
 | --- | --- |
 | Azure Active Directory | [概要](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
@@ -77,7 +77,7 @@ ms.locfileid: "74894081"
 | DDOS Protection | [Azure DDoS Protection Standard を管理する](../../virtual-network/manage-ddos-protection.md) |
 | Power BI 専用 | [Azure の Power BI Embedded のログ記録](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|
-| Search |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
+| 検索 |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus のログ](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database のログ記録](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[ジョブのログ](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
@@ -97,9 +97,9 @@ ms.locfileid: "74894081"
 |Microsoft.AAD/domainServices|DetailTracking|DetailTracking|
 |Microsoft.AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
 |Microsoft.AAD/domainServices|AccountLogon|AccountLogon|
-|microsoft.aadiam/tenants|Signin|サインイン|
-|Microsoft.AnalysisServices/servers|Engine|Engine|
-|Microsoft.AnalysisServices/servers|Service|Service|
+|microsoft.aadiam/tenants|サインイン|サインイン|
+|Microsoft.AnalysisServices/servers|エンジン|エンジン|
+|Microsoft.AnalysisServices/servers|サービス|サービス|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
 |Microsoft.AppPlatform/Spring|ApplicationConsole|アプリケーション コンソール|
 |Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
@@ -126,7 +126,7 @@ ms.locfileid: "74894081"
 |Microsoft.Databricks/workspaces|clusters|Databricks クラスター|
 |Microsoft.Databricks/workspaces|accounts|Databricks アカウント|
 |Microsoft.Databricks/workspaces|jobs|Databricks ジョブ|
-|Microsoft.Databricks/workspaces|notebook|Databricks Notebook|
+|Microsoft.Databricks/workspaces|ノートブック|Databricks Notebook|
 |Microsoft.Databricks/workspaces|ssh|Databricks SSH|
 |Microsoft.Databricks/workspaces|ワークスペース|Databricks ワークスペース|
 |Microsoft.Databricks/workspaces|secrets|Databricks シークレット|
@@ -137,7 +137,7 @@ ms.locfileid: "74894081"
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
 |Microsoft.DataFactory/factories|TriggerRuns|トリガー実行ログ|
 |Microsoft.DataLakeAnalytics/accounts|Audit|[監査ログ]|
-|Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
+|Microsoft.DataLakeAnalytics/accounts|Requests|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|[監査ログ]|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DataShare/accounts|共有|共有|
@@ -152,24 +152,24 @@ ms.locfileid: "74894081"
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL クエリ ストアのランタイム統計|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL クエリ ストアの待機統計|
-|Microsoft.DesktopVirtualization/workspaces|チェックポイント|チェックポイント|
-|Microsoft.DesktopVirtualization/workspaces|Error|Error|
+|Microsoft.DesktopVirtualization/workspaces|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/workspaces|エラー|エラー|
 |Microsoft.DesktopVirtualization/workspaces|管理|管理|
 |Microsoft.DesktopVirtualization/workspaces|フィード|フィード|
-|Microsoft.DesktopVirtualization/applicationGroups|チェックポイント|チェックポイント|
-|Microsoft.DesktopVirtualization/applicationGroups|Error|Error|
+|Microsoft.DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/applicationGroups|エラー|エラー|
 |Microsoft.DesktopVirtualization/applicationGroups|管理|管理|
-|Microsoft.DesktopVirtualization/hostPools|チェックポイント|チェックポイント|
-|Microsoft.DesktopVirtualization/hostPools|Error|Error|
+|Microsoft.DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
+|Microsoft.DesktopVirtualization/hostPools|エラー|エラー|
 |Microsoft.DesktopVirtualization/hostPools|管理|管理|
-|Microsoft.DesktopVirtualization/hostPools|接続|接続|
+|Microsoft.DesktopVirtualization/hostPools|Connection|Connection|
 |Microsoft.DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
-|Microsoft.Devices/IotHubs|Connections|Connections|
+|Microsoft.Devices/IotHubs|接続|接続|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
 |Microsoft.Devices/IotHubs|DeviceIdentityOperations|デバイス ID の操作|
 |Microsoft.Devices/IotHubs|FileUploadOperations|ファイルのアップロード操作|
-|Microsoft.Devices/IotHubs|Routes|Routes|
+|Microsoft.Devices/IotHubs|ルート|ルート|
 |Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
 |Microsoft.Devices/IotHubs|C2DTwinOperations|C2D ツイン操作|
 |Microsoft.Devices/IotHubs|TwinQueries|ツイン クエリ|
@@ -244,7 +244,7 @@ ms.locfileid: "74894081"
 |Microsoft.Network/bastionHosts|BastionAuditLogs|Bastion 監査ログ|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
-|Microsoft.PowerBIDedicated/capacities|Engine|Engine|
+|Microsoft.PowerBIDedicated/capacities|エンジン|エンジン|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|CoreAzureBackup|コア Azure Backup データ|
 |Microsoft.RecoveryServices/Vaults|AddonAzureBackupJobs|アドオン Azure Backup ジョブ データ|
@@ -265,7 +265,7 @@ ms.locfileid: "74894081"
 |Microsoft.Sql/servers/databases|AutomaticTuning|自動チューニング|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
-|Microsoft.Sql/servers/databases|Errors|Errors|
+|Microsoft.Sql/servers/databases|エラー|エラー|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
 |Microsoft.Sql/servers/databases|Timeouts|Timeouts|
 |Microsoft.Sql/servers/databases|Blocks|Blocks|
@@ -276,13 +276,13 @@ ms.locfileid: "74894081"
 |Microsoft.Sql/servers/databases|ExecRequests|実行要求|
 |Microsoft.Sql/servers/databases|RequestSteps|要求ステップ|
 |Microsoft.Sql/servers/databases|SqlRequests|SQL 要求|
-|Microsoft.Sql/servers/databases|Waits|待機|
+|Microsoft.Sql/servers/databases|待機|待機|
 |Microsoft.Sql/managedInstances|ResourceUsageStats|リソース使用統計|
 |Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
-|Microsoft.Sql/managedInstances/databases|Errors|Errors|
+|Microsoft.Sql/managedInstances/databases|エラー|エラー|
 |Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
@@ -295,8 +295,8 @@ ms.locfileid: "74894081"
 |Microsoft.Storage/storageAccounts/queueServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/queueServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/queueServices|StorageDelete|StorageDelete|
-|Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
-|Microsoft.StreamAnalytics/streamingjobs|作成|Authoring|
+|Microsoft.StreamAnalytics/streamingjobs|実行|実行|
+|Microsoft.StreamAnalytics/streamingjobs|Authoring|Authoring|
 |microsoft.web/hostingenvironments|AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|
 |microsoft.web/sites|FunctionAppLogs|関数アプリケーション ログ|
 |microsoft.web/sites|AppServiceHTTPLogs|HTTP ログ|
@@ -313,7 +313,7 @@ ms.locfileid: "74894081"
 
 ## <a name="next-steps"></a>次の手順
 
-* [リソース ログの詳細を確認する](../../azure-monitor/platform/resource-logs-overview.md)
+* [リソース ログの詳細を確認する](../../azure-monitor/platform/platform-logs-overview.md)
 * [リソースのリソース ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)

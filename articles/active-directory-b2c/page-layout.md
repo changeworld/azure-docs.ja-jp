@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425652"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ レイアウトを選択する | Microsoft Docs
 
@@ -48,7 +48,7 @@ ms.locfileid: "72389682"
 
 ページ レイアウトを選択するには、ポリシーで [ContentDefinitions](contentdefinitions.md) 内の **DataUri** 値を変更します。 古い **DataUri** 値から新しい値に切り替えると、不変パッケージを選択することになります。 このパッケージを使用するメリットは、それが変更されたり、ページ上で予期しない動作が生じたりすることがないとわかっている点です。
 
-ページ レイアウトを設定するには、次の表を使用して **DataUri** 値を見つけます。
+古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、`elements` とページ タイプ (`selfasserted` など) の間に `contract` を挿入して、バージョン番号を指定します。 次に例を示します。
 
 | 古い DataUri 値 | 新しい DataUri 値 |
 | ----------------- | ----------------- |
@@ -68,17 +68,23 @@ ms.locfileid: "72389682"
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
 
-### <a name="120"></a>1.2.0 
+### <a name="200"></a>2.0.0
+
+- セルフアサート ページ (`selfasserted`)
+  - カスタム ポリシーでの[表示コントロール](display-controls.md)のサポートが追加されました。
+
+### <a name="120"></a>1.2.0
+
 - すべてのページ
   - アクセシビリティの修正
   - HTML タグに `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できるようになりました。 シナリオには以下が含まれます。
-      - これを CSS リンクで使用して、HTML と同時に CSS を読み込みます。これにより、それらのファイルの読み込みと読み込みの間に起こる "ちらつき" がなくなります
-      - この属性を使用すると、ページの読み込みの前に、スクリプト タグをフェッチして実行する順序を制御できます
+    - これを CSS リンクで使用して、HTML と同時に CSS を読み込みます。これにより、それらのファイルの読み込みと読み込みの間に起こる "ちらつき" がなくなります
+    - この属性を使用すると、ページの読み込みの前に、スクリプト タグをフェッチして実行する順序を制御できます
   - メール フィールドは `type=email` になり、モバイル キーボードで正しい候補が提供されるようになりました
   - Chrome 翻訳のサポート
 - 統合されたセルフアサート ページ
   - [ユーザー名]、[電子メール]、および [パスワード] の各フィールドで、HTML の form 要素が使用されるようになりました。  これにより、Edge と IE でこの情報を適切に保存できるようになりました
-  
+
 ### <a name="110"></a>1.1.0
 
 - 例外ページ (globalexception)
@@ -105,6 +111,6 @@ ms.locfileid: "72389682"
 
 - 最初のリリース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。

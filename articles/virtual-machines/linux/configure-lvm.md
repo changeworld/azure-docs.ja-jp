@@ -3,7 +3,7 @@ title: Linux を実行する仮想マシンで LVM を構成する
 description: Azure で Linux の LVM を構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: na
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: szark
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036678"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045342"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する
 このドキュメントでは、Azure 仮想マシンに論理ボリューム マネージャー (LVM) を構成する方法を説明します。 LVM は Azure VM の OS ディスクまたはデータ ディスクで使用できますが、既定では、ほとんどのクラウド イメージの OS ディスクには LVM は構成されません。 以下の手順では、データ ディスクへの LVM の構成に焦点を当てます。
@@ -172,7 +172,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     # sudo fstrim /datadrive
     ```
 
-    **RHEL/CentOS**
+    **RHEL、CentOS、および Oracle Linux**
 
     ```bash 
     # sudo yum install util-linux

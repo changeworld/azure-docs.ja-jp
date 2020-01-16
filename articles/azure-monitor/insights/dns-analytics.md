@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 6500020d9d1c7c735206efe8ebb08fd908eee10d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bca77db3452aecb31852c4c50e7754c7777fc458
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403244"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971255"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -100,7 +100,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 ![[DNS セキュリティ] ブレード](./media/dns-analytics/dns-security-blade.png)
 
-一覧のクライアント IP をクリックすると、ログ検索が開き、それぞれのクエリのルックアップの詳細が表示されます。 次の例では、[IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot) との通信が行われたことが DNS 分析によって検出されています。
+一覧のクライアント IP をクリックすると、ログ検索が開き、それぞれのクエリのルックアップの詳細が表示されます。 次の例では、[IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621) との通信が行われたことが DNS 分析によって検出されています。
 
 ![IRCbot を示すログ検索結果](./media/dns-analytics/ircbot.png)
 

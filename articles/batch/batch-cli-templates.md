@@ -2,21 +2,21 @@
 title: テンプレートを使用してジョブをエンドツーエンドで実行する - Azure Batch | Microsoft Docs
 description: テンプレート ファイルと Azure CLI を使用して、Batch のプール、ジョブ、タスクを作成します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095311"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029739"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
@@ -143,7 +143,7 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
 az batch pool create --template pool-ffmpeg.json
 ```
 
-CLI は、`poolId` パラメーターと `nodeCount` パラメーターの値を指定することを要求します。 JSON ファイル内にこれらのパラメーターを指定することもできます。 例:
+CLI は、`poolId` パラメーターと `nodeCount` パラメーターの値を指定することを要求します。 JSON ファイル内にこれらのパラメーターを指定することもできます。 次に例を示します。
 
 ```json
 {
@@ -290,7 +290,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 Azure CLI の Batch 拡張機能を試し、フィードバックまたは提案をお寄せください。その際には、この記事に対するコメントまたは [Batch コミュニティ リポジトリ](https://github.com/Azure/Batch)をご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - インストールと使用方法に関する詳細なドキュメント、サンプル、ソース コードは、[Azure GitHub リポジトリ](https://github.com/Azure/azure-batch-cli-extensions)で入手できます。
 

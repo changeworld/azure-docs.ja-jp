@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425999"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 
@@ -137,7 +137,7 @@ NFS 共有は、SAP HANA サーバーと同様に高速なストライプ セッ
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Azure ファイルへの SAP HANA バックアップ ファイルのコピー
 
-Azure Linux VM 内の Azure ファイル共有をマウントすることができます。 これを実行する方法の詳細については、記事「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」を参照してください。 現在、Azure ファイル共有あたり 5 TB のクォータ制限があり、ファイルあたり 1 TB のサイズ制限があることに注意してください。 ストレージの制限については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../../storage/common/storage-scalability-targets.md)」を参照してください。
+Azure Linux VM 内の Azure ファイル共有をマウントすることができます。 これを実行する方法の詳細については、記事「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」を参照してください。 現在、Azure ファイル共有あたり 5 TB のクォータ制限があり、ファイルあたり 1 TB のサイズ制限があることに注意してください。 詳細については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../../storage/files/storage-files-scale-targets.md)」を参照してください。
 
 しかしテストの結果によると、現時点では CIFS マウントを使用した場合、SAP HANA バックアップを直接実行することができません。 [SAP ノート 1820529](https://launchpad.support.sap.com/#/notes/1820529) でも、CIFS は非推奨であると述べられています。
 
@@ -155,7 +155,7 @@ Azure Linux VM 内の Azure ファイル共有をマウントすることがで�
 
 Azure ファイルへの SAP HANA バックアップ ファイルの格納は、今後興味深いオプションになる可能性があります。それは、SAP HANA ファイル バックアップを直接格納できるようになった場合か、 NFS 経由の Azure ファイルのマウントが可能になり、クォータの上限が 5 TB から大幅に増加した場合です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」には、概要と基本的な情報が記載されています。
 * 「[ストレージ スナップショットに基づいた SAP HANA のバックアップ](sap-hana-backup-storage-snapshots.md)」では、ストレージ スナップショットベースのバックアップ方法について説明されています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。

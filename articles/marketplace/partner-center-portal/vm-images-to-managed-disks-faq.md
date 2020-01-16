@@ -1,19 +1,19 @@
 ---
 title: 仮想マシン (VM) イメージを Azure Marketplace のマネージド ディスク ストレージに移行予定
 description: より高速で信頼性の高いストレージと、マーケットプレースの新しいフィーチャーと機能のサポートを提供するために、マーケットプレースの VM イメージをマネージド ディスク ストレージに移行します。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 81503b08c5c45a671ac7996905f0772dccaf2f5a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456684"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933531"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketplace 上の仮想マシン (VM) イメージをマネージド ディスク ストレージに移行します
 
@@ -39,11 +39,11 @@ VM イメージのユーザーへのサービスは停止しません。
 
 ### <a name="do-i-need-to-take-any-action"></a>何らかのアクションをとる必要はありますか?
 
-No. 発行元またはコンシューマーは何も行う必要はありません。
+いいえ。 発行元またはコンシューマーは何も行う必要はありません。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>マネージド ディスク ストレージへの移行後、別の方法でクラウド ポータル API を呼び出すようにシステムを更新する必要がありますか?
 
-No. 既存の API 呼び出しは引き続き機能します。
+いいえ。 既存の API 呼び出しは引き続き機能します。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>すべての VM イメージが同時にマネージド ディスクに移行されますか?
 
@@ -57,6 +57,6 @@ No. 既存の API 呼び出しは引き続き機能します。
 
 移行中に VM イメージを更新することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[仮想マシンのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)」のページを参照してください。

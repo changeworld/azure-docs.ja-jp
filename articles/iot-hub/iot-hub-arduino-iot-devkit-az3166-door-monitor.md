@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954750"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977295"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>ドア モニター -- Azure Functions と SendGrid を使用して、ドアが開いたときに電子メールを送信する           
 
@@ -65,11 +65,11 @@ SendGrid のサインアップ フォームが表示されます。
 
 サインアップ フォームに入力します。
 
-   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
    * **Name**:SendGrid サービスの名前。 他のサービスとは異なる一意の名前を選択します。
 
-   * **Password**:このサービスにはパスワードが必要です。このプロジェクト内で他に使用されることはありません。
+   * **パスワード**:このサービスにはパスワードが必要です。このプロジェクト内で他に使用されることはありません。
 
    * **電子メール**: SendGrid サービスは、この電子メール アドレスに確認を送信します。
 
@@ -105,7 +105,7 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 サインアップ フォームの各フィールドに情報を入力します。
 
-   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
    * **Iot Hub 名**:IoT Hub の名前。 他のサービスとは異なる一意の名前を選択します。
 
@@ -195,7 +195,7 @@ DevKit が再起動され、コードの実行が開始されます。
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続し、SendGrid サービスを使用して電子メールを送信する方法について学習しました。 推奨される次の手順は以下のとおりです。
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: d52b2485436f0a9075dcc3f505806e46094340a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381700"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979764"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
 
@@ -445,7 +445,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 新しいテンプレート発話は次のようになります。
 
-[https://login.microsoftonline.com/consumers/](`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`)
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 ここでは、必須の動詞の時制を囲む**グループ**と、**or** パイプでつなげた省略可能な `in` および `on` を使用しています。
 
@@ -578,4 +578,4 @@ Pattern.any が含まれているパターンでエンティティが正しく�
 
 
 > [!div class="nextstepaction"]
-> [パターンと共にロールを使用する方法について](luis-tutorial-pattern-roles.md)
+> [パターンと共にロールを使用する方法について](luis-tutorial-pattern.md)

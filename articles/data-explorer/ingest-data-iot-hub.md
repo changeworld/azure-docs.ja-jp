@@ -1,18 +1,18 @@
 ---
 title: IoT Hub から Azure Data Explorer にデータを取り込む
 description: この記事では、IoT Hub から Azure Data Explorer にデータを取り込む (読み込む) 方法を学習します。
-author: oflipman
-ms.author: oflipman
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667423"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780285"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub から Azure Data Explorer にデータを取り込む (プレビュー)
 
@@ -104,6 +104,8 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     > * 動的ルーティングを使用するには、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** を選択します。この場合、[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)のコメントに示されているように、データに必要なルーティング情報が含まれています。 静的プロパティと動的プロパティの両方が設定されている場合、静的プロパティは動的プロパティによってオーバーライドされます。 
     > * データ接続の作成後にエンキューされたイベントのみが取り込まれたます。
 
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+
 ## <a name="generate-sample-data-for-testing"></a>テスト用のサンプル データを生成する
 
 シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度のテレメトリを送信します。
@@ -161,7 +163,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     > * Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 既定では、このポリシーは 5 分または 500 MB のデータに構成されているため、待ち時間が生じることがあります。 集計オプションについては、[バッチ処理のポリシー](/azure/kusto/concepts/batchingpolicy)に関するページを参照してください。 
     > * ストリーミングをサポートし、応答時間でのラグを削除するようにテーブルを構成します。 [ストリーミング ポリシー](/azure/kusto/concepts/streamingingestionpolicy)に関するページを参照してください。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 お使いの IoT Hub を今後再利用する予定がない場合は、コストが発生しないように **test-hub-rg** をクリーンアップします。
 
@@ -175,6 +177,6 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427438"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <td>
 米国運輸省の TranStats データ コレクションから取得した旅客機の定時運航データ (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">定時</a>)。
 <p></p>
-データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio のクラシック バージョンにアップロードする前に、データセットは次のように処理されています。
+データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>米国本土の混雑度が上位 70 位までの空港を含めるように、データセットをフィルター処理します。</li>
   <li>キャンセルされたフライトは 15 分超の遅延として分類します。</li>
@@ -329,7 +329,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
   <td>
 NOAA の 1 時間ごとの陸上の気象観測 (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。
 <p></p>
-気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio のクラシック バージョンにアップロードする前に、データセットは次のように処理されています。
+気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>気象観測所 ID を対応する空港 ID にマッピングします。</li>
   <li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li>
@@ -344,7 +344,7 @@ NOAA の 1 時間ごとの陸上の気象観測 (<a href="https://az754797.vo.ms
   <td>
 データは、S&P 500 企業それぞれの記事に基づいて Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) から取得され、XML データとして格納されています。
 <p></p>
-Azure Machine Learning Studio のクラシック バージョンにアップロードする前に、データセットは次のように処理されています。
+Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>特定の企業のテキスト コンテンツを抽出します。</li>
   <li>Wiki の書式設定を削除します。</li>
@@ -405,7 +405,7 @@ RCV1-V2 Reuters ニュース データセット内のニュース記事のトピ
 
 </table>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [例を使用して実験を開始する](sample-experiments.md)

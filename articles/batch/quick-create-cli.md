@@ -2,20 +2,20 @@
 title: Azure クイック スタート - Batch ジョブの実行 - CLI
 description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322508"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029484"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
@@ -27,9 +27,9 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.20 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
 
@@ -95,7 +95,7 @@ az batch pool show --pool-id mypool \
 
 プールの状態が変化している間にジョブとタスクを作成するには、次の手順を続行します。 割り当ての状態が `steady` となり、すべてのノードが実行されていると、プールはタスクを実行できるようになります。 
 
-## <a name="create-a-job"></a>ジョブを作成する
+## <a name="create-a-job"></a>ジョブの作成
 
 プールを作成できたら、そこで実行するジョブを作成します。  Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 [az batch job create](/cli/azure/batch/job#az-batch-job-create) コマンドを使用して、Batch ジョブを作成します。 次の例では、プール *mypool* 上にジョブ *myjob* を作成します。 最初、ジョブにはタスクがありません。
 
@@ -170,7 +170,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-`stdout.txt` の内容は、テキスト エディターで表示できます。 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。 例:
+`stdout.txt` の内容は、テキスト エディターで表示できます。 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。 次に例を示します。
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1
@@ -189,7 +189,7 @@ AZ_BATCH_TASK_ID=mytask1
 AZ_BATCH_ACCOUNT_NAME=mybatchaccount
 AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ```
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 Batch のチュートリアルとサンプルを続行する場合は、このクイック スタートで作成した Batch アカウントとリンクされているストレージ アカウントを使用します。 Batch アカウント自体の料金は発生しません。
 
 ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールが不要になったら、[az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) コマンドを使用して削除します。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 
@@ -204,7 +204,7 @@ az batch pool delete --pool-id mypool
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch アカウント、Batch プール、Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行されたため、いずれかのノード上に作成された出力が表示されました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細については、Azure Batch のチュートリアルを続行してください。 
 

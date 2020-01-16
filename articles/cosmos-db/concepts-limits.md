@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951821"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887616"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -23,8 +23,8 @@ ms.locfileid: "74951821"
 
 | リソース | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
-| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
+| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
+| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
 | (論理) パーティション キーあたりの最大 RU | 10,000 |
 | (論理) パーティション キーあたりのすべての項目にまたがる最大ストレージ| 10 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
@@ -64,8 +64,8 @@ Azure portal、Azure PowerShell、Azure CLI、および Azure Resource Manager �
 
 | リソース | 既定の制限 |
 | --- | --- |
-| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
-| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
 
 > [!NOTE]
 > リージョン内フェールオーバーは、単一リージョン書き込みのアカウントにのみ適用されます。 複数リージョン書き込みのアカウントには、書き込みリージョンの変更に関する制限は必要ないか、または存在しません。
@@ -97,7 +97,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 ## <a name="per-item-limits"></a>項目あたりの制限
 
-どの API を使用するかに応じて、Azure Cosmos 項目は、コレクション内のドキュメント、テーブル内の行、グラフ内のノードまたはエッジのいずれかを表すことができます。 次の表は、Cosmos DB での項目あたりの制限を示しています。 
+使用する API に応じて、Azure Cosmos 項目では、コレクション内のドキュメント、テーブル内の行、グラフ内のノードまたはエッジのいずれかを表すことができます。 次の表は、Cosmos DB での項目あたりの制限を示しています。 
 
 | リソース | 既定の制限 |
 | --- | --- |
@@ -132,7 +132,7 @@ Cosmos DB は HMAC を承認のために使用します。 コンテナー、パ
 | --- | --- |
 | マスター トークンの最大有効期限 | 15 分  |
 | リソース トークンの最小有効期限 | 10 分  |
-| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます|
 | トークン承認の最大クロック スキュー| 15 分 |
 
 Cosmos DB は、書き込み中のトリガーの実行をサポートしています。 このサービスでは、書き込み操作あたり最大 1 つのプリトリガーと 1 つのポストトリガーがサポートされます。 
@@ -183,7 +183,7 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 
 Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南アジア リージョンでのみグローバル分散をサポートしています。 Azure Cosmos DB 試用版アカウントに対して Azure サポート チケットを作成することはできません。 ただし、既存のサポート プランを所有するサブスクライバーにはサポートが提供されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cosmos DB の中心概念である[グローバル分散](distribute-data-globally.md)、[パーティション分割](partitioning-overview.md)、および[プロビジョニング スループット](request-units.md)に関する記事を参照してください。
 

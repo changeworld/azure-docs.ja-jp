@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces でコンテナーとマイクロサービスを使用した Kubernetes チーム開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 396358be63f93fde2ba5ec5f00545708dbfa19d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438206"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770834"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でのチーム開発 - Azure Dev Spaces
 
@@ -236,4 +236,4 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 > [複数のコンテナーの操作とチーム開発](multi-service-nodejs.md)
 
 [helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

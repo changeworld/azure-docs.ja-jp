@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810366"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744706"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -327,8 +327,8 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 
 Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得。
 - [Intelligent Insights Azure SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用。
 - [Azure SQL Analytics を使用した Azure SQL Database](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) の監視。
-- [Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)の習得。
+- [Azure リソースからのログ データの収集と使用](../azure-monitor/platform/platform-logs-overview.md)の習得。

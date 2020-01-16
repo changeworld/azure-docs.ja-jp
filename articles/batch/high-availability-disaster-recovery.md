@@ -3,7 +3,7 @@ title: 高可用性とディザスター リカバリー - Azure Batch | Microso
 description: リージョン障害に対処できるように Batch アプリケーションを設計する方法を学習する
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: lahugh
-ms.openlocfilehash: 11446f5f23d470234b5dba641dc16e0bf71d9b72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094042"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029559"
 ---
 # <a name="design-your-application-for-high-availability"></a>高可用性を実現するようにアプリケーションを設計する
 
@@ -47,7 +47,7 @@ Batch を使用するアプリケーションまたはソリューションが�
 - Batch、ストレージ、またはその他のサービスを呼び出しているアプリケーションで、クライアントまたは負荷を別のリージョンに簡単に切り替えます。
 - フェールオーバーを確実に成功させるためのベスト プラクティスとして、通常の操作の一部として頻繁に代替リージョンに切り替えます。 たとえば、個別のリージョンに 2 つのデプロイがある場合は、毎月代替リージョンに切り替えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Portal](batch-account-create-portal.md)、[Azure CLI](cli-samples.md)、[Powershell](batch-powershell-cmdlets-get-started.md)、または [Batch Management API](batch-management-dotnet.md) を使用して Batch アカウントを作成する方法の詳細を学習します。
 - 既定のクォータは Batch アカウントに関連付けられていまます。[この記事](batch-quota-limit.md)では、既定のクォータ値の詳細と、クォータを増やす方法について説明しています。

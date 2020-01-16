@@ -1,18 +1,18 @@
 ---
 title: コマーシャル マーケットプレース内の支払いを受ける | Azure Marketplace
 description: コマーシャル マーケットプレースにおける収益の支払いを受ける方法について説明します。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: a87c74c2c344670d2d305e472245c56946d658ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980012"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933596"
 ---
 # <a name="getting-paid"></a>支払いを受ける
 ここでは、オファー、アドオン、広告の収益の支払いの受け取りに関する重要な情報を示します。

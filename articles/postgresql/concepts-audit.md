@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764561"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747343"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -21,7 +21,7 @@ Azure Database for PostgreSQL - Single Server でのデータベース アクテ
 > pgAudit は Azure Database for PostgreSQL ではプレビュー段階にあります。
 > この拡張機能は、汎用サーバーとメモリ最適化サーバー上でのみ有効にすることができます。
 
-コンピューティングやストレージのスケーリングなどの操作に Azure リソースレベルのログが必要な場合は、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に関する記事を参照してください。
+コンピューティングやストレージのスケーリングなどの操作に Azure リソースレベルのログが必要な場合は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に関する記事を参照してください。
 
 ## <a name="usage-considerations"></a>使用に関する考慮事項
 既定では、pgAudit ログ ステートメントは、Postgres の標準ログ記録機能を使用して、通常のログ ステートメントと共に出力されます。 Azure Database for PostgreSQL では、これらの .log ファイルを Azure portal または CLI を介してダウンロードできます。 ファイルのコレクション用の最大ストレージ容量は 1 GB で、各ファイルは最大 7 日間 (既定では 3 日間) 使用できます。 このサービスは、短期的なストレージ オプションです。
@@ -84,10 +84,10 @@ t=%m u=%u db=%d pid=[%p]:
 
 `log_line_prefix` の詳細を確認するには、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)にアクセスしてください。
 
-### <a name="getting-started"></a>使用の開始
+### <a name="getting-started"></a>作業の開始
 すぐに作業を開始するには、`pgaudit.log` を `WRITE` に設定し、ログを開いて出力を確認します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL でのログ記録について学習する](concepts-server-logs.md)
 - [Azure portal](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [REST API](/rest/api/postgresql/configurations/createorupdate) を使用してパラメーターを設定する方法を学習する

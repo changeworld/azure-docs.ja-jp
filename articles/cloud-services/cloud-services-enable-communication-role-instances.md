@@ -3,18 +3,18 @@ title: Cloud Services でのロールの通信 | Microsoft Docs
 description: Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386342"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
 クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
@@ -215,7 +215,7 @@ namespace WorkerRole1
 ## <a name="network-traffic-rules-to-control-role-communication"></a>ロール通信を制御するためのネットワーク トラフィック規則
 内部エンドポイントを定義した後、作成したエンドポイントに基づいてネットワーク トラフィック規則を追加して、ロール インスタンス間の通信方法を制御できます。 次の図は、ロール通信を制御するためのいくつかの一般的なシナリオを示しています。
 
-![ネットワーク トラフィック ルールのシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック ルールのシナリオ")
+![ネットワーク トラフィック規則のシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック規則のシナリオ")
 
 次のコード例は、前の図で示されたロールのロール定義を示しています。 各ロール定義では、少なくとも 1 つの内部エンドポイントが定義されています。
 
@@ -365,6 +365,9 @@ namespace WorkerRole1
 
 上記で使用される要素の XML スキーマ参照は [こちら](/previous-versions/azure/reference/gg557551(v=azure.100))でご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
+
+
+
 

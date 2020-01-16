@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: 5fc338e83c172e26d621ef89dcfb047d01d510fa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091683"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887327"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で `hbase hbck` コマンドから不一致が返される
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>問題: リージョンが `hbase:meta` に存在しない
+## <a name="issue-region-is-not-in-hbasemeta"></a>問題点:リージョンが `hbase:meta` に存在しない
 
 リージョン xxx は HDFS 上にありますが、`hbase:meta` に登録されておらず、どのリージョン サーバーにもデプロイされていません。
 
@@ -41,7 +41,7 @@ ms.locfileid: "71091683"
     ```
 ---
 
-## <a name="issue-region-is-offline"></a>問題: リージョンがオフライン
+## <a name="issue-region-is-offline"></a>問題点:リージョンがオフライン
 
 リージョン xxx は、どの RegionServer にもデプロイされていません。 これは、リージョンは `hbase:meta` 内にありますがオフラインであることを意味します。
 
@@ -59,7 +59,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 ---
 
-## <a name="issue-regions-have-the-same-startend-keys"></a>問題: リージョンの開始/終了キーが同じである
+## <a name="issue-regions-have-the-same-startend-keys"></a>問題点:リージョンの開始/終了キーが同じである
 
 ### <a name="cause"></a>原因
 
@@ -67,7 +67,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 ### <a name="resolution"></a>解決策
 
-これらの重複するリージョンを手動でマージします。 HBase HMaster Web UI テーブル セクションに移動し、問題が発生しているテーブル リンクを選択します。 このテーブルに属している各リージョンの開始キー/終了キーが表示されます。 次に、これらの重複するリージョンをマージします。 HBase シェルで`merge_region 'xxxxxxxx','yyyyyyy', true` を実行します。 例:
+これらの重複するリージョンを手動でマージします。 HBase HMaster Web UI テーブル セクションに移動し、問題が発生しているテーブル リンクを選択します。 このテーブルに属している各リージョンの開始キー/終了キーが表示されます。 次に、これらの重複するリージョンをマージします。 HBase シェルで`merge_region 'xxxxxxxx','yyyyyyy', true` を実行します。 次に例を示します。
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -81,7 +81,7 @@ RegionC, startkey:010, endkey:080.
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>問題: `.regioninfo` を読み込めない
+## <a name="issue-cant-load-regioninfo"></a>問題点:`.regioninfo` を読み込めない
 
 リージョン `/hbase/data/default/tablex/regiony` の `.regioninfo` を読み込めません。
 
@@ -101,7 +101,7 @@ RegionC, startkey:010, endkey:080.
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
@@ -109,4 +109,4 @@ RegionC, startkey:010, endkey:080.
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

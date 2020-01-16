@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396491"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -154,7 +154,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 - Application Insights のログ アラートが正しいアラート名でリソース グループとアラート プロパティと共に表示されます
 - [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して作成されている場合、Log Analytics のログ アラートは、正しいアラート名でリソース グループとアラート プロパティと共に表示されます
 
-[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) には、Log Analytics の保存した検索条件の一部としてアラート アクションとスケジュールがあり、適切な [Azure リソース](../../azure-resource-manager/resource-group-overview.md)ではありません。 そのため、[新しい API への切り替え](../../azure-monitor/platform/alerts-log-api-switch.md)を**行わないで** Azure portal を使用して、または[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) を使用して、Log Analytics に対して作成されたこのような従来のログ アラートに対する課金を有効にするため、非表示の擬似アラート ルールが Azure での課金用に `microsoft.insights/scheduledqueryrules` に作成されます。 課金用に `microsoft.insights/scheduledqueryrules` に作成された非表示の擬似アラート ルールは、リソース グループおよびアラートのプロパティと共に `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` と表示されます。
+[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) には、Log Analytics の保存した検索条件の一部としてアラート アクションとスケジュールがあり、適切な [Azure リソース](../../azure-resource-manager/management/overview.md)ではありません。 そのため、[新しい API への切り替え](../../azure-monitor/platform/alerts-log-api-switch.md)を**行わないで** Azure portal を使用して、または[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) を使用して、Log Analytics に対して作成されたこのような従来のログ アラートに対する課金を有効にするため、非表示の擬似アラート ルールが Azure での課金用に `microsoft.insights/scheduledqueryrules` に作成されます。 課金用に `microsoft.insights/scheduledqueryrules` に作成された非表示の擬似アラート ルールは、リソース グループおよびアラートのプロパティと共に `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` と表示されます。
 
 > [!NOTE]
 > `<, >, %, &, \, ?, /` のような無効な文字が存在する場合、非表示の擬似アラート ルールの名前および Azure の課金では `_` に置き換えられます。
@@ -166,7 +166,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 さらに、[従来の Log Analytics API](api-alerts.md) を使用してアラート ルールの課金用に作成された非表示の scheduleQueryRules リソースについては、PUTのような変更操作はすべて失敗します。 `microsoft.insights/scheduledqueryrules` タイプの疑似ルールは、[従来の Log Analytics API](api-alerts.md) を使用して作成されたアラート ルールに課金するためのものだからです。 アラート ルールのあらゆる変更は、[従来の Log Analytics API](api-alerts.md) を使用して行う必要があります。または、[scheduleQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を代わりに使用するように、ユーザーが[アラート ルールの API 基本設定を切り替える](../../azure-monitor/platform/alerts-log-api-switch.md)ことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)について学習します。
 * [Azure のログ アラートの Webhook](alerts-log-webhook.md) について理解する。

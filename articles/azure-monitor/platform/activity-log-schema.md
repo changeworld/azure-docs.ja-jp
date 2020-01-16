@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: df2594165909c55de2de562c9717299d189a20d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531022"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749469"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-[Azure アクティビティ ログ](activity-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
+[Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
 
 次の例は、ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合のスキーマを示しています。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](resource-logs-stream-event-hubs.md)場合、スキーマは異なります。 [リソース ログ スキーマ](diagnostic-logs-schema.md)へのプロパティのマッピングについては、この記事の最後で紹介します。
 
@@ -865,6 +865,6 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アクティビティ ログについて詳しく学習します](activity-logs-overview.md)
+* [アクティビティ ログについて詳しく学習します](platform-logs-overview.md)
 * [アクティビティ ログを Log Analytics ワークスペース、Azure Storage、またはイベントハブに送信するための診断設定を作成する](diagnostic-settings.md)
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: c357e460e49ffee669f3978be7678353acfcd249
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459428"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980229"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -209,11 +209,11 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 1. リモート デスクトップ プロトコル (RDP) を使用し、ローカル管理者としてセッション ホスト VM に直接入ります。
 2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
-    
+
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
-    
+
 3. 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してサイドバイサイド スタックをインストールします。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Windows Virtual Desktop サイドバイサイド スタックの修正方法
@@ -322,7 +322,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 2. [スタート] メニューの横にある検索バーに「About」と入力します。
 3. **[PC 情報]** を選択します。
 4. "バージョン" の横の数字を確認します。 次の図に示すように、この数字は "1809" または "1903" のいずれかになります。
-   
+
     ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](media/windows-specifications.png)
 
 バージョン番号がわかったら、該当するセクションに進んでください。
@@ -344,6 +344,6 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
-- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」をご覧ください。
-- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/resource-manager-deployment-operations.md)に関するページを参照してください。
+- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

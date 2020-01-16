@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708137"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980298"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -132,7 +132,7 @@ IaaS ファイル サーバー仮想マシンにアクセスするオンプレ�
 2. オンプレミスの Active Directory を拡張します。
 3. Azure 仮想ネットワークで[ファイル サーバー VM を作成してプロビジョニング](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)します。
 オンプレミス環境とクロス接続された同じ Azure 仮想ネットワークに仮想マシンが追加されていることを確認します。 
-4. Windows Server に DFSR をインストールして[構成](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx)します。
+4. Windows Server に DFSR をインストールして[構成](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877)します。
 5. [DFS 名前空間を実装](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces)します。
 6. DFS 名前空間を実装すると、DFS 名前空間のフォルダー ターゲットを更新することで、運用サイトからディザスター リカバリー サイトへの共有フォルダーのフェールオーバーを実行できます。 Active Directory を使用して DFS 名前空間の変更がレプリケートされると、ユーザーは適切なフォルダー ターゲットに透過的に接続されます。
 

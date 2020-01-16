@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 3116b88cd50fa9f348b418cfc90fe21986944b74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771429"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して、会社のカテゴリを予測する分類器を作成する
 
@@ -110,9 +110,9 @@ N-gram は、テキストの特定のシーケンスからの n 個の用語の�
 ## <a name="next-steps"></a>次のステップ
 
 デザイナーで利用できる他のサンプルを確認します。
-- [サンプル 1 - 回帰: 自動車の価格を予測する](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](service/how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [サンプル 3 -特徴選択による分類:収入予測](service/how-to-designer-sample-classification-predict-income.md)
-- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [サンプル 5 - 分類:顧客離れを予測する](service/how-to-designer-sample-classification-churn.md)
-- [サンプル 6 - 分類:フライトの遅延を予測する](service/how-to-designer-sample-classification-flight-delay.md)
+- [サンプル 1 - 回帰: 自動車の価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
+- [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [サンプル 3 -特徴選択による分類:収入予測](how-to-designer-sample-classification-predict-income.md)
+- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [サンプル 5 - 分類:顧客離れを予測する](how-to-designer-sample-classification-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)

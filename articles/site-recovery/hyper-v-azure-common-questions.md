@@ -1,18 +1,14 @@
 ---
 title: Azure Site Recovery を使用した Hyper-V のディザスター リカバリーについて一般的な質問
 description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954060"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498194"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -64,7 +60,7 @@ Azure サブスクリプション、Recovery Services コンテナー、スト�
 LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 Premium Storage はサポートされています。
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Azure アカウントには VM を作成するアクセス許可が必要ですか?
-サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
+サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細については、こちらを参照してください](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>レプリケーション データは Site Recovery に送信されますか?
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、VM での実行内容に関するどのような情報を持つこともありません。 レプリケーション データは、Hyper-V ホストと Azure Storage の間で交換されます。 Site Recovery には、これらのデータをインターセプトする能力はありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
@@ -78,11 +74,11 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 はい、転送中の暗号化と [Azure での暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされています。
 
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Hyper-V から Azure へのレプリケーションによって何ができますか?
 
-- **ディザスター リカバリー** : 完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。
+- **ディザスター リカバリー** :完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。
     - VM を Azure にレプリケートできます。 オンプレミスのインフラストラクチャが使用できなくなった場合は、Azure にフェールオーバーします。
     - フェールオーバーの際は、レプリケートされたデータを使って Azure VM が作成されます。 Azure VM 上のアプリやワークロードにアクセスできます。
     - オンプレミスのデータセンターが再び使用可能になったら、Azure からオンプレミスのサイトにフェールバックできます。
@@ -179,7 +175,7 @@ Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ご�
 
 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="what-access-does-site-recovery-need-to-hyper-v-hosts"></a>Site Recovery では、Hyper-V ホストに対してどのようなアクセスが必要ですか?
 
@@ -202,14 +198,17 @@ Site Recovery は、レプリケーションが有効になっている Hyper-V 
 ### <a name="how-do-i-fail-over-to-azure"></a>Azure へのフェールオーバーはどのように行いますか?
 
 計画または計画外フェールオーバーをオンプレミスの Hyper-V VM から Azure に実行できます。
-    - 予定されたフェールオーバーを実行する場合、データが決して失われないように、ソース側の VM はシャット ダウンされます。
-    - プライマリ サイトにアクセスできない場合は、計画外フェールオーバーを実行できます。
-    - 単一のマシンをフェールオーバーするか、複数のマシンのフェールオーバーを調整するための復旧計画を作成することができます。
-    - フェールオーバーを実行します。 フェールオーバーの第 1 段階が完了すると、Azure に作成されたレプリカ VM が表示されるようになります。 必要に応じて、VM にパブリック IP アドレスを割り当てることができます。 その後、フェールオーバーをコミットして、レプリカの Azure VM からワークロードへのアクセスを開始します。
+
+- 予定されたフェールオーバーを実行する場合、データが決して失われないように、ソース側の VM はシャット ダウンされます。
+- プライマリ サイトにアクセスできない場合は、計画外フェールオーバーを実行できます。
+- 単一のマシンをフェールオーバーするか、複数のマシンのフェールオーバーを調整するための復旧計画を作成することができます。
+- フェールオーバーには 2 つの部分があります。
+    - フェールオーバーの第 1 段階が完了すると、Azure に作成されたレプリカ VM が表示されるようになります。 必要に応じて、VM にパブリック IP アドレスを割り当てることができます。
+    - その後、フェールオーバーをコミットして、レプリカの Azure VM からワークロードへのアクセスを開始します。
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>フェールオーバー後にはどのようにして Azure VM にアクセスできますか?
-フェールオーバー後、Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するにはさまざまこと準備する必要があります。 [詳細情報](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+フェールオーバー後、Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するにはさまざまこと準備する必要があります。 [詳細については、こちらを参照してください](failover-failback-overview.md#connect-to-azure-after-failover)。
 
 ### <a name="is-failed-over-data-resilient"></a>フェールオーバーされたデータに回復力はありますか?
 Azure は復元するように設計されています。 Site Recovery は、Azure SLA に従ってセカンダリ Azure データセンターにフェールオーバーする機能を備えています。 フェールオーバーが発生した場合、お客様のメタデータとコンテナーは、お客様が選択したコンテナーと同じリージョン内に保持されます。
@@ -223,7 +222,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 1. いくつかの異なるオプションを使用して、Azure からオンプレミス サイトへの計画的フェールオーバーを開始します。
 
-    - ダウンタイムを最小化: このオプションを使用すると、フェールオーバーの前に Site Recovery によってデータが同期化されます。 変更されたデータ ブロックをチェックし、オンプレミス サイトにそれらのデータ ブロックをダウンロードします。また、Azure VM は稼働し続け、ダウンタイムを最小限に抑えます。 フェールオーバーが完了しなければならないことを手動で指定した場合は、Azure VM がシャット ダウンされ、最後の差分変更がすべてコピーされ、フェールオーバーが開始されます。
+    - ダウンタイムを最小化: このオプションを使用すると、Site Recovery ではフェールオーバーする前にデータが同期されます。 変更されたデータ ブロックをチェックし、オンプレミス サイトにそれらのデータ ブロックをダウンロードします。また、Azure VM は稼働し続け、ダウンタイムを最小限に抑えます。 フェールオーバーが完了しなければならないことを手動で指定した場合は、Azure VM がシャット ダウンされ、最後の差分変更がすべてコピーされ、フェールオーバーが開始されます。
     - 完全ダウンロード: このオプションを使用すると、フェールオーバー中にデータが同期されます。 このオプションは、ディスク全体をダウンロードします。 チェックサムは計算されないため高速ですが、ダウンタイムが長くなります。 レプリカ Azure VM をしばらくの間稼働させていた場合や、オンプレミス VM が削除された場合は、このオプションを使用します。
 
 2. 同じ VM または別の VM にフェールバックすることを選択できます。 VM が存在しない場合は Site Recovery が VM を作成するように指定できます。
@@ -232,4 +231,4 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 5. ワークロードがフェールバックされると、オンプレミス VM が再び Azure にレプリケートするように、レプリケーションの反転を有効にします。
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>異なる場所にフェールバックすることはできますか?
-はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)。
+はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細については、こちらを参照してください](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)。

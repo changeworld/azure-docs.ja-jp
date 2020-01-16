@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453406"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979429"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -77,7 +77,7 @@ ms.locfileid: "75453406"
 
 ## <a name="link-to-logic-app"></a>ロジック アプリにリンクする
 
-ロジック アプリに B2B 成果物が含まれている統合アカウントへのアクセスを付与するには、最初に統合アカウントとロジック アプリをリンクさせる必要があります。 ロジック アプリと統合アカウントはどちらも、同じリージョンに存在している必要があります。 このタスクを完了するには、Azure portal を使用します。 Visual Studio を使用していて、お使いのロジック アプリが [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)に含まれている場合は、[Visual Studio を使用してロジック アプリを統合アカウントにリンクさせる](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account)ことができます。
+ロジック アプリに B2B 成果物が含まれている統合アカウントへのアクセスを付与するには、最初に統合アカウントとロジック アプリをリンクさせる必要があります。 ロジック アプリと統合アカウントはどちらも、同じリージョンに存在している必要があります。 このタスクを完了するには、Azure portal を使用します。 Visual Studio を使用していて、お使いのロジック アプリが [Azure リソース グループ プロジェクト](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)に含まれている場合は、[Visual Studio を使用してロジック アプリを統合アカウントにリンクさせる](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account)ことができます。
 
 1. Azure Portal で、ご利用のロジック アプリを探して選択します。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027371"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834181"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -81,7 +81,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ドメイン名の所有権を確認するときは、Azure AD では、管理されていないテナントからドメイン名を削除し、既存のテナントに移動します。 非管理対象ディレクトリの外部管理者の引き継ぎには、内部管理者の引き継ぎと同じ DNS TXT の確認プロセスを行う必要があります。 相違点は、ドメイン名と共に次の内容も移行されることです。
 
 - ユーザー
-- Subscriptions
+- サブスクリプション
 - ライセンスの割り当て
 
 ### <a name="support-for-external-admin-takeover"></a>外部管理者の引き継ぎのサポート
@@ -130,45 +130,45 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 1. セルフ サービス プランに対応するために使用された資格情報を使用して Azure AD に接続します。
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. ドメイン一覧を、次のコマンドレットで取得します。
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. 次のように Get-MsolDomainVerificationDns コマンドレットを実行してチャレンジを作成します。
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    次に例を示します。
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. このコマンドから返される値 (チャレンジ) をコピーします。 例:
+4. このコマンドから返される値 (チャレンジ) をコピーします。 次に例を示します。
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. パブリック DNS 名前空間で、前の手順でコピーした値を含む DNS txt レコードを作成します。 このレコードの名前は親ドメインの名前です。このリソース レコードを Windows Server の DNS ロールを使用して作成する場合は、[レコード名] を空のままにして、テキスト ボックスに値を貼り付けます。
 6. 次のように Confirm-MsolDomain コマンドレットを実行してチャレンジを確認します。
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   例:
+   次に例を示します。
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 チャレンジがクリアされると、エラーなしでプロンプトに戻ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)

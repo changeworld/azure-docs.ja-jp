@@ -4,12 +4,12 @@ description: Azure Migrate サービスについて説明します。
 ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 983ba420067bf2e4b6416287d8898943142c90c0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563566"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772195"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -39,7 +39,7 @@ Azure Migrate ハブには、以下のツールが用意されています。
 **Database Migration Service (DMS)** | SQL、Azure SQL DB、および Azure SQL Managed Instance を実行している Azure VM にオンプレミスのデータベースを移行します。 | DMS の[詳細を参照](https://docs.microsoft.com/azure/dms/dms-overview)してください。
 **Movere** | サーバーの評価 | Movere の[詳細を参照](#movere)してください。
 **Web App Migration Assistant** | オンプレミスの Web アプリを評価し、Azure に移行します。 |  Azure App Service に移行するためにオンプレミスの Web サイトを評価するには、Azure App Service Migration Assistant を使用します。<br/><br/> Azure App Service Migration Assistant を使用して、.NET および PHP Web アプリを Azure に移行します。 Assistant について[詳しくは、こちらをご覧ください](https://appmigration.microsoft.com/)。
-**Azure Data Box** | オフライン データの移行。 | Azure Data Box 製品を使用して、大量のデータを Azure にオフラインで移動します。 [詳細については、こちらを参照してください](https:/docs.microsoft.com/azure/databox/)。
+**Azure Data Box** | オフライン データの移行。 | Azure Data Box 製品を使用して、大量のデータを Azure にオフラインで移動します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/databox/)。
 
 ## <a name="isv-integration"></a>ISV 統合
 

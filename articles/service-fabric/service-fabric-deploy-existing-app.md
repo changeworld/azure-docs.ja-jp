@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric への既存の実行可能ファイルのデプロイ | Microsoft Docs
+title: 既存の実行可能ファイルを Azure Service Fabric にデプロイする
 description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 07/02/2017
-ms.author: atsenthi
-ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377108"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
@@ -251,7 +240,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 
 ログ ファイルは、サービスの作業ディレクトリのいずれかに保存されます。 ファイルの場所を特定するには、Service Fabric Explorer を使用して、サービスが実行されているノードと使用されている作業ディレクトリを確認します。 この方法については、この記事の後半で説明します。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 最後のステップは、[アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)です。 次の PowerShell スクリプトは、ローカル デプロイ用クラスターにアプリケーションをデプロイし、新しい Service Fabric サービスを開始する方法を示しています。
 
 ```powershell
@@ -278,8 +267,8 @@ Service Fabric サービスは、さまざまな "構成" にデプロイでき�
 
 `New-ServiceFabricService` コマンドレットの `InstanceCount` パラメーターは、Service Fabric クラスターで開始するサービス インスタンスの数を指定するために使用します。 `InstanceCount` 値は、デプロイするアプリケーションの種類に応じて設定できます。 よく使用されるシナリオは 2 つあります。
 
-* `InstanceCount = "1"` 1 つのサービス インスタンスのみがクラスターにデプロイされます。 サービスがデプロイされるノードは、Service Fabric スケジューラによって決まります。
-* `InstanceCount ="-1"` 1 つのサービス インスタンスが、Service Fabric クラスターのすべてのノードにデプロイされます。 結果として、1 つ (のみ) のサービス インスタンスがクラスターの各ノードに存在することになります。
+* [https://login.microsoftonline.com/consumers/](`InstanceCount = "1"`) 1 つのサービス インスタンスのみがクラスターにデプロイされます。 サービスがデプロイされるノードは、Service Fabric スケジューラによって決まります。
+* [https://login.microsoftonline.com/consumers/](`InstanceCount ="-1"`) 1 つのサービス インスタンスが、Service Fabric クラスターのすべてのノードにデプロイされます。 結果として、1 つ (のみ) のサービス インスタンスがクラスターの各ノードに存在することになります。
 
 クライアント アプリケーションはクラスター内のいずれかのノードに "接続" するだけでエンドポイントを使用できるため、フロントエンド アプリケーション (REST エンドポイントなど) には便利な構成です。 この構成は、Service Fabric クラスターのすべてのノードがロード バランサーに接続されている場合などにも使用できます。 クライアントのトラフィックは、クラスター内のすべてのノードで実行されているサービス間で配布できます。
 
@@ -296,7 +285,7 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 ![ログの場所](./media/service-fabric-deploy-existing-app/loglocation.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
 
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。

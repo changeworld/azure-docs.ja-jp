@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8aaf5f5fbcabf3476284f0d5e9f4f50ef3e92bd6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895406"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891637"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -27,7 +27,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 > * アプリケーションのパブリック エンドポイントを割り当てる
 
 >[!Note]
-> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを確認するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
+> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを参照するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
 
 
 >[!TIP]
@@ -57,6 +57,9 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
 サービスのデプロイには約 5 分かかります。 サービスがデプロイされると、サービス インスタンスの **[リソースに移動]** および **[概要]** ページが表示されます。
 
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>構成サーバーを設定する
 
 1. サービスの **[概要]** ページで、 **[Config Server]\(構成サーバー\)** を選択します。
@@ -64,6 +67,9 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
     > [!div class="mx-imgBorder"]
     > ![構成設定を定義して適用する](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>サンプル アプリケーション リポジトリを複製してビルドする
 
@@ -106,7 +112,10 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
 1. デプロイが完了したら、前のコマンドからの出力内で提供された URL を使用して、PiggyMetrics にアクセスできます。
 
-## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
+
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Maven リポジトリから Spring Cloud アプリケーションをデプロイしました。 Azure Spring Cloud の詳細を学習するには、デプロイ用のアプリの準備に関するチュートリアルに進みます。
 

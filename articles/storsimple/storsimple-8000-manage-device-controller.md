@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505965"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894839"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 
@@ -47,7 +47,7 @@ ms.locfileid: "60505965"
 
 > [!IMPORTANT]
 > * **実行中のコントローラーを物理的に取り外すことは絶対に避けてください。冗長性が失われ、ダウンタイムのリスクが増大します。**
-> * 以下の手順は、StorSimple の物理デバイスにのみ当てはまります。 StorSimple Cloud Appliance の起動、停止、および再起動については、[クラウド アプライアンスの操作](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance)に関するページをご覧ください。
+> * 以下の手順は、StorSimple の物理デバイスにのみ当てはまります。 StorSimple Cloud Appliance の起動、停止、および再起動については、[クラウド アプライアンスの操作](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)に関するページをご覧ください。
 
 StorSimple デバイス マネージャー サービスの Azure ポータルまたは StorSimple 用 Windows PowerShell を使用して、1 つのデバイス コントローラーを再起動またはシャットダウンできます。
 
@@ -158,7 +158,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **A.** コントローラーを運用状態に戻すには、「 [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-8000-controller-replacement.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、 [Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md)ください。
 * StorSimple デバイス マネージャー サービスの使用の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。
 

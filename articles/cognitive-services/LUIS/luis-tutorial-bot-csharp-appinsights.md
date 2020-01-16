@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 036ecbbbd2ea562f3e809691a1b3af62578893f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9c47685253e2a70c7b5e947debaac6f5f3264b2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498969"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888296"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>チュートリアル:C# でボットから Application Insights に LUIS の結果を追加する
 
@@ -162,7 +162,7 @@ Application Insights にデータを追加するには、インストルメン�
 1. Visual Studio でボットをビルドし、実行します。 
 1. ボット エミュレーターを起動し、ボットを開きます。 この[手順](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
 
-1. ボットに質問します。 この[手順](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
+1. ボットに質問します。 この[手順](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
 
 ## <a name="view-luis-entries-in-application-insights"></a>Application Insights の LUIS エントリの表示
 
@@ -195,7 +195,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
 
 [Bot Framework](https://dev.botframework.com/) の詳細を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Insights データに追加する必要があるその他の情報としては、アプリ ID、バージョン ID、モデルの最終変更日、前回のトレーニング日、最後の発行日などがあります。 これらの値は、エンドポイントの URL (アプリ ID とバージョン ID) またはオーサリング API 呼び出しから取得し、Web アプリ ボットの設定で指定して、そこからプルすることができます。  
 

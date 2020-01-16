@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530920"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978843"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75530920"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-クラシック デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
+クラシック デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/management/deployment-models.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell をインストール済みである場合、Azure PowerShell Version 1.0.0 以降であることが必要です。 インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
@@ -776,7 +776,7 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 
 * [MSDN 上の Azure Cache for Redis コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager コマンドレット](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明しています。
-* [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure portal 上でリソース グループを作成および管理する方法について説明しています。
+* [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/templates/deploy-portal.md): Azure portal 上でリソース グループを作成および管理する方法について説明しています。
 * [Azure のブログ](https://azure.microsoft.com/blog/): Azure の新機能について説明しています。
 * [Windows PowerShell のブログ](https://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明しています。
 * ["Hey, Scripting Guy!"ブログ](https://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。

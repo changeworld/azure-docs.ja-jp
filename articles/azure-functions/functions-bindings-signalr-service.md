@@ -5,14 +5,14 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925636"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769491"
 ---
-# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR Service のバインド
+# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
 この記事では、Azure Functions で SignalR Service のバインドを使用して、[Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) に接続されたクライアントに対して認証を行い、リアルタイム メッセージを送信する方法を説明します。 Azure Functions は、SignalR Service の入力および出力バインドをサポートしています。
 
@@ -1009,7 +1009,7 @@ public SignalRGroupAction removeFromGroup(
 
 次の表は、*function.json* ファイルと `SignalRConnectionInfo` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**|| `signalRConnectionInfo` に設定する必要があります。|
 |**direction**|| `in` に設定する必要があります。|
@@ -1022,7 +1022,7 @@ public SignalRGroupAction removeFromGroup(
 
 次の表は、*function.json* ファイルと `SignalR` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**|| `signalR` に設定する必要があります。|
 |**direction**|| `out` に設定する必要があります。|
@@ -1032,7 +1032,7 @@ public SignalRGroupAction removeFromGroup(
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

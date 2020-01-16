@@ -4,12 +4,12 @@ description: Azure Blockchain Service のデータ アクセスとセキュリ�
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455716"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982222"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -23,7 +23,7 @@ Azure Blockchain Service のリソースは、プライベート仮想ネット�
 
 ## <a name="encryption"></a>暗号化
 
-ユーザー データは Azure Storage に格納されます。 ユーザー データは、セキュリティと機密保持のため、移動時および保存時に暗号化されます。 詳細については、次を参照してください。[Azure Storage のセキュリティ ガイド](../../storage/common/storage-security-guide.md)。
+ユーザー データは Azure Storage に格納されます。 ユーザー データは、セキュリティと機密保持のため、移動時および保存時に暗号化されます。 詳細については、次を参照してください。[Azure Storage のセキュリティ ガイド](../../storage/blobs/security-recommendations.md)。
 
 ## <a name="authentication"></a>認証
 
@@ -33,11 +33,11 @@ Azure Blockchain Service のリソースは、プライベート仮想ネット�
 
 RPC アクセスの認証には 3 つのモードがあります。
 
-### <a name="basic-authentication"></a>基本認証
+### <a name="basic-authentication"></a>[基本認証]
 
 基本認証では、ユーザー名とパスワードが含まれる HTTP 認証ヘッダーが使われます。 ユーザー名は、ブロックチェーン ノードの名前です。 パスワードは、メンバーまたはノードのプロビジョニング中に設定されます。 パスワードは、Azure portal または CLI を使用して変更できます。
 
-### <a name="access-keys"></a>[アクセス キー]
+### <a name="access-keys"></a>アクセス キー
 
 アクセス キーでは、エンドポイントの URL に含まれる、ランダムに生成された文字列が使用されます。 2 つのアクセス キーにより、キーをローテーションできます。 Azure portal および CLI で、キーを再生成できます。
 
@@ -57,6 +57,6 @@ Azure Blockchain Service のメンバーをプロビジョニングするとき�
 
 Quorum ノードを一意に識別するには、Constellation キーが使用されます。 Constellation キーは、ノードのプロビジョニング時に生成され、Quorum のプライベート トランザクションの privateFor パラメーターで指定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Blockchain Service 用に Azure Active Directory アクセスを構成する方法](configure-aad.md)に関するページを参照してください。

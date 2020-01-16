@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172413"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744806"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure リソースに対する RBAC の変更のアクティビティ ログを表示する
 
-監査やトラブルシューティングなどの目的で、Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
+監査やトラブルシューティングなどの目的で、Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
 
 ## <a name="operations-that-are-logged"></a>ログに記録される操作
 
@@ -35,7 +35,7 @@ ms.locfileid: "70172413"
 - カスタムのロール定義の作成または更新
 - カスタムのロール定義の削除
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 作業を開始する最も簡単な方法は、Azure Portal でアクティビティ ログを表示することです。 次のスクリーンショットでは、ロール割り当て操作とロール定義操作だけを表示するようにフィルター処理されたアクティビティ ログの例を示します。 また、ログを CSV ファイルとしてダウンロードするためのリンクも含まれています。
 
@@ -43,10 +43,10 @@ ms.locfileid: "70172413"
 
 ポータルのアクティビティ ログには複数のフィルターがあります。 RBAC 関連のフィルターを次に示します。
 
-|filter  |値  |
+|Assert  |値  |
 |---------|---------|
 |イベント カテゴリ     | <ul><li>管理</li></ul>         |
-|Operation     | <ul><li>ロール割り当ての作成</li> <li>ロール割り当ての削除</li> <li>カスタムのロール定義の作成または更新</li> <li>カスタムのロール定義の削除</li></ul>      |
+|操作     | <ul><li>ロール割り当ての作成</li> <li>ロール割り当ての削除</li> <li>カスタムのロール定義の作成または更新</li> <li>カスタムのロール定義の削除</li></ul>      |
 
 
 アクティビティ ログについて詳しくは、「[アクティビティ ログでのイベントの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」をご覧ください。
@@ -149,6 +149,6 @@ AzureActivity
 
 ![高度な分析ポータルを使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/azure-log-analytics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログでのイベントの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Azure アクティビティ ログでサブスクリプション アクティビティを監視する](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

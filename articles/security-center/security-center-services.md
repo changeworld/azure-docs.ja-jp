@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 6325af9f577fbee1ab1621acbf10497fab2b78df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689157"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754230"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
@@ -40,7 +40,7 @@ ms.locfileid: "75689157"
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|Standard|
 |[仮想マシン動作分析の脅威検出アラート](security-center-alerts-iaas.md)|✔|✔|✔|推奨事項 (無料) 脅威の検出 (Standard)|
-|[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-filelessattackdetect)|✔|✔|✔|Standard|
+|[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[ネットワーク経由の脅威検出アラート](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
 |[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
 |[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
@@ -66,7 +66,7 @@ ms.locfileid: "75689157"
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|Standard|
 |[仮想マシン動作分析の脅威検出アラート](security-center-alerts-iaas.md)|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
-|[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-filelessattackdetect)|-|-|-|Standard|
+|[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[ネットワーク経由の脅威検出アラート](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
 |[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
 |[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|

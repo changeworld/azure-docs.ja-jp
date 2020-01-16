@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769100"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969277"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Azure Data Explorer 予約容量を使用して Azure Data Explorer 割増ユニットを前払いする
 
@@ -27,8 +27,8 @@ Azure Data Explorer の予約容量は [Azure portal](https://portal.azure.com) 
 * クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Data Explorer の予約容量を購入できます。
 
 企業のお客様と従量課金制のお客様が予約を購入した場合の課金方法については、以下を参照してください。
-* [エンタープライズ加入契約に適用される Azure の予約の使用状況について](../billing/billing-understand-reserved-instance-usage-ea.md) 
-* [従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../billing/billing-understand-reserved-instance-usage.md)
+* [エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* [従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="determine-the-right-markup-usage-before-purchase"></a>購入前に適切に割増の使用量を判断する
 
@@ -36,7 +36,7 @@ Azure Data Explorer の予約容量は [Azure portal](https://portal.azure.com) 
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Azure Data Explorer の予約容量を購入する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[すべてのサービス]**  >  **[予約]**  >  **[今すぐ購入]** を選択します。 **[追加]** を選択します。
 1. **[製品の種類を選択してください]** ウィンドウで **[Azure Data Explorer]** を選択し、Azure Data Explorer 割増ユニットの新しい予約を購入します。 
 1. **[購入]** を選択します
@@ -54,7 +54,7 @@ Azure Data Explorer の予約容量の予約を取り消す必要がある場合
 
 Azure Data Explorer の予約容量の予約を別の期間に変更する必要がある場合は、値が等しいかそれ以上の別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換を要求するには、Azure portal で予約に移動し、 **[交換]** を選択して、サポート要求を作成します。
 
-予約を交換または返金する方法の詳細については、[予約の交換と返金](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)に関するページを参照してください。
+予約を交換または返金する方法の詳細については、[予約の交換と返金](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)に関するページを参照してください。
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>予約容量の予約を管理する
 
@@ -63,17 +63,17 @@ Azure Data Explorer 割増ユニットの予約割引は、Azure Data Explorer �
 
 > [!NOTE]
 > * [Azure portal](https://portal.azure.com)、PowerShell、CLI、または API を使用して、Azure Data Explorer の予約容量の予約の範囲を更新できます。
-> * Azure Data Explorer の予約容量の予約を管理する方法については、[Azure Data Explorer の予約容量の管理](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md)に関する記事を参照してください。
+> * Azure Data Explorer の予約容量の予約を管理する方法については、[Azure Data Explorer の予約容量の管理](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-* [Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)
-* [Azure の予約の管理](../billing/billing-manage-reserved-vm-instance.md)
-* [Azure の予約割引を理解する](../billing/billing-understand-reservation-charges.md)
-* [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
-* [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Azure の予約割引を理解する](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [従量課金制サブスクリプションの予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+* [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ

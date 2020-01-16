@@ -4,12 +4,12 @@ description: Service Fabric、Virtual Machines、Web Apps、クラウド サー�
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364443"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751337"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング
  
@@ -97,7 +97,7 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
 
 ## <a name="autoscale-resource-logs"></a>自動スケーリングのリソース ログ
 
-他の Azure リソースと同じように、自動スケーリング サービスは[リソース ログ](resource-logs-overview.md)を提供します。 イベント ログには、次の 2 つがあります。
+他の Azure リソースと同じように、自動スケーリング サービスは[リソース ログ](platform-logs-overview.md)を提供します。 イベント ログには、次の 2 つがあります。
 
 - **自動スケーリング評価** - 自動スケーリング エンジンでは、チェックを行うたびに、単一の条件評価ごとにログ エントリが記録されます。  エントリには、メトリックの実際の値、評価されたルール、評価の結果がスケール アクションであったかどうかに関する詳細が含まれます。
 

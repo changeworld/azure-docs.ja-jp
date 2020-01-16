@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: af0c5a42b71829bbfd51d77c047af45c1df6fd4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363644"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75750394"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -2324,4 +2324,4 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor のメトリックを確認します](data-platform.md)
 * [メトリックでアラートを作成します](alerts-overview.md)
-* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](resource-logs-overview.md)
+* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](platform-logs-overview.md)

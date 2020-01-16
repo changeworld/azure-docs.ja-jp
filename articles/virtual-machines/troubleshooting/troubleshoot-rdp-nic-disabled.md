@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 3849106fbc488f456a4d267d0ccef76647c1939f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057916"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981310"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>ネットワーク インターフェイスが無効になっているために VM にリモート デスクトップ接続できない
 
 この記事では、ネットワーク インターフェイスが無効になっている場合に、Azure Windows 仮想マシン (VM) にリモート デスクトップ接続できない問題を解決する方法を説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルが用意されています。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/management/deployment-models.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -34,7 +34,7 @@ VM でネットワーク インターフェイスが無効になっているた�
 
 これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-VM のインターフェイスを有効にするには、VM に対してシリアル コントロールを使用するか、[ネットワーク インターフェイスをリセット](##reset-network-interface)します。
+VM のインターフェイスを有効にするには、VM に対してシリアル コントロールを使用するか、[ネットワーク インターフェイスをリセット](#reset-network-interface)します。
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 

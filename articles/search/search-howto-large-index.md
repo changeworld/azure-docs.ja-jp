@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460728"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "72793758"
 
 以下のセクションでは、大量のデータのインデックスを作成する 3 つの方法について説明します。
 
-## <a name="option-1-pass-multiple-documents"></a>オプション 1:複数のドキュメントを渡す
+## <a name="option-1-pass-multiple-documents"></a>オプション 1: 複数のドキュメントを渡す
 
 大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 .NET SDK で [Add Documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) と [Index メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)のどちらを使用しているかによって、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "72793758"
 
 レプリカとパーティションを増やすことは、コストを増大させる課金対象のイベントです。しかし、最大の負荷で継続的にインデックスを作成をする場合以外は、インデックス作成プロセスの期間中にスケールを追加し、インデックス作成が終了した後でリソース レベルを下方に調整することができます。
 
-## <a name="option-3-use-indexers"></a>オプション 3: インデクサーを使用する
+## <a name="option-3-use-indexers"></a>オプション 3:インデクサーを使用する
 
 [インデクサー](search-indexer-overview.md)は、検索可能なコンテンツに対してサポートされている Azure データ ソースをクロールするために使用されます。 大規模なインデックス作成を特に目的としていなくても、いくつかのインデクサー機能は、より大きな容量のデータ セットに対応する上で特に便利です。
 
@@ -74,7 +74,7 @@ ms.locfileid: "72793758"
 + すべてのインデクサーが同時に実行されるよう、スケジュールを設定します。
 
 > [!NOTE]
-> Azure Cognitive Search では、特定のワークロードに専用のレプリカまたはパーティションは割り当てられません。 高負荷の並列インデックスを作成すると、システムが過負荷状態になり、クエリのパフォーマンスに悪影響を及ぼす危険性があります。 テスト環境がある場合は、並列インデックス作成をまずテスト環境で実装してトレードオフを把握してください。
+> Azure Cognitive Search では、個々のレプリカやパーティションをインデックス作成やクエリ処理に割り当てることはできません。 システムがリソースの使用方法を決定します。 クエリのパフォーマンスへの影響を把握するには、実稼働環境に展開する前に、テスト環境で並列インデックス作成を試してください。  
 
 ### <a name="how-to-configure-parallel-indexing"></a>並列インデックス作成の構成方法
 
@@ -99,7 +99,7 @@ ms.locfileid: "72793758"
 > [!Note]
 > レプリカを増やす際、インデックスのサイズが大幅に増加することが予想される場合は、パーティション数を増やすことを検討してください。 パーティションにはインデックスのコンテンツのスライスが格納され、パーティション数が多いほど、各パーティションに格納されるスライスも小さくなります。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [インデクサーの概要](search-indexer-overview.md)
 + [ポータル内でのインデックス作成](search-import-data-portal.md)

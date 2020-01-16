@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Explorer を使用したクラスターの視覚化 | Microsoft Docs
+title: Azure Service Fabric Explorer を使用したクラスターの視覚化
 description: Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するためのアプリケーションです。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464102"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -89,7 +80,7 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 ### <a name="view-the-clusters-nodes"></a>クラスターのノードを表示する
 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、 正確に言うと、そこで現在実行されているレプリカを調べることができます。
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
 
 たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、 **[アクション]**  >  **[アプリケーションの削除]** の順に選択します。
@@ -142,7 +133,7 @@ Service Fabric Explorer には、[バックアップと復元](./service-fabric-
 * パーティションの復元をトリガーして追跡します。
 
 バックアップと復元サービスの詳細については、[REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)に関するページを参照してください。
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
 

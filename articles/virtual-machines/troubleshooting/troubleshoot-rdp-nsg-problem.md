@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162589"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981802"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG で RDP ポートが有効ではないために VM にリモート接続できない
 
@@ -25,7 +25,7 @@ ms.locfileid: "71162589"
 
 
 > [!NOTE] 
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 新しいデプロイでは、クラシック デプロイ モデルではなく、Resource Manager デプロイ モデルを使用することをお勧めします。 
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/management/deployment-models.md)です。 新しいデプロイでは、クラシック デプロイ モデルではなく、Resource Manager デプロイ モデルを使用することをお勧めします。 
 
 ## <a name="symptom"></a>症状
 
@@ -41,7 +41,7 @@ NSG で RDP ポートを有効にするには、次の手順のようにしま�
 3. **[設定]** の **[ネットワーク]** を選択します。 
 4. **[受信ポートの規則]** で、RDP のポートが正しく設定されていることを確認します。 構成の例を次に示します。 
 
-    **優先度**:300 </br>
+    **[優先度]** :300 </br>
     **Name**:Port_3389 </br>
     **ポート (宛先)** :3389 </br>
     **プロトコル**:TCP </br>
@@ -56,7 +56,7 @@ NSG の詳細については、[ネットワーク セキュリティ グルー�
 > [!NOTE]
 > RDP ポート 3389 がインターネットに公開されます。 そのため、このポートはテストのみに使用することをお勧めします。 運用環境では、VPN またはプライベート接続を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 RDP ポートが NSG で既に有効になっている場合は、「[Azure VM での RDP 一般エラーのトラブルシューティング](./troubleshoot-rdp-general-error.md)」をご覧ください。
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 01/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914067"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768684"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -60,7 +60,7 @@ Azure AD インテリジェンスを使うと、最近使用されたかどう�
 
 Azure AD で Office 365 グループの有効期限を構成および使用できるロールを次に示します。
 
-役割 | アクセス許可
+Role | アクセス許可
 -------- | --------
 グローバル管理者、グループ管理者、またはユーザー管理者 | Office 365 グループの有効期限ポリシー設定の作成、読み取り、更新、または削除が可能です<br>任意の Office 365 グループを更新できます
 User | 所有する Office 365 グループを更新できます<br>所有する Office 365 グループを復元できます<br>有効期限ポリシーの設定を読み取ることができます
@@ -86,13 +86,11 @@ User | 所有する Office 365 グループを更新できます<br>所有する
     - **[保存]** を選択して完了し、設定を保存する。
 
 > [!NOTE]
-> 有効期限を初めて設定すると、有効期限の間隔よりも古いグループは、グループが自動的に更新されるか所有者が更新しない限り、有効期限まで 35 日間に設定されます。
->
-> 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
->
-> Teams で使用されるグループの有効期限の通知は、Teams の所有者フィードに表示されます。
+> - 有効期限を初めて設定すると、有効期限の間隔よりも古いグループは、グループが自動的に更新されるか所有者が更新しない限り、有効期限まで 35 日間に設定されます。
+> - 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
+> - Teams で使用されるグループの有効期限の通知は、Teams の所有者フィードに表示されます。
 
-## <a name="email-notifications"></a>電子メール通知
+## <a name="email-notifications"></a>メール通知
 
 グループが自動的に更新されない場合、このようなメール通知は、グループの有効期限の 30 日前、15 日前、および 1 日前に Office 365 グループ所有者に送信されます。 メールの言語は、グループ所有者の優先言語または Azure AD の言語設定によって決まります。 グループの所有者が優先言語を定義している場合、または複数の所有者が同じ優先言語を持っている場合は、その言語が使用されます。 それ以外のすべての場合は、Azure AD の言語設定が使用されます。
 
@@ -184,7 +182,7 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Office 365 
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、Azure AD グループに関する追加情報が提供されています。
 

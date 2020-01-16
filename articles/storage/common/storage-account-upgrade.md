@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457422"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975821"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -167,4 +167,4 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ストレージ アカウントの作成](storage-quickstart-create-account.md)
+* [ストレージ アカウントの作成](storage-account-create.md)

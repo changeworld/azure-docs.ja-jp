@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の DNS サービス | Microsoft Docs
+title: Azure Service Fabric の DNS サービス
 description: Service Fabric の DNS サービスを使用して、クラスター内からマイクロサービスを検出します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 7/20/2018
-ms.author: atsenthi
-ms.openlocfilehash: 707fc9f073e37d60c6c6fca8e9a8392b2550da9f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458034"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -28,7 +17,7 @@ ms.locfileid: "74229306"
 
 DNS サービスによって DNS 名はサービス名にマップされ、ネーム サービスによって解決され、サービス エンドポイントに返されます。 サービスの DNS 名は、作成時に提供されます。 次の図は、ステートレス サービスでの DNS サービスの動作を示しています。
 
-![service endpoints](./media/service-fabric-dnsservice/stateless-dns.png)
+![サービス エンドポイント](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロトコルが拡張され、パーティション分割型ステートフル サービスをアドレス指定するためのスキームが追加されています。 これらの拡張機能では、ステートフル サービスの DNS 名とパーティション名とを組み合わせて、特定のパーティションの IP アドレスを解決することができます。 次の 3 つのパーティション分割構成がすべてサポートされています。
 
@@ -138,7 +127,7 @@ Visual Studio またはお好みのエディターでプロジェクトを開い
 ```
 アプリケーションをデプロイすると、Service Fabric Explorer のサービス インスタンスに、このインスタンスの DNS 名が次の図のように表示されます。 
 
-![service endpoints](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![サービス エンドポイント](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
 次の例では、ステートフル サービスの DNS 名を `statefulsvc.app` に設定しています。 このサービスは、名前付きパーティション構成を使用しています。 パーティション名が小文字になっていることに注目してください。 これは、DNS クエリで対象となるパーティションの要件です。詳細については、「[Making DNS queries on a stateful service partition (ステートフル サービス パーティションに対する DNS クエリの実行)](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)」を参照してください。
 
@@ -262,6 +251,6 @@ public class ValuesController : Controller
 
 * Service Fabric サービス用の DNS サービスは UNIX ではまだサポートされていません。 DNS サービスは Linux 上のコンテナーに対してサポートされています。 Fabric クライアント/ServicePartitionResolver を使用した手動による解決方法を代わりに使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [サービスとの接続と通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照して、クラスター内でのサービスの通信の詳細を確認する
 

@@ -1,5 +1,5 @@
 ---
-title: クラシックから Azure Resource Manager への IaaS リソースの移行計画
+title: クラシックから Azure Resource Manager への移行の計画
 description: クラシックから Azure Resource Manager への IaaS リソースの移行計画
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460054"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -190,7 +190,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術的な考慮事項とトレードオフ
 
-これで、Azure Resource Manager への移行が完了し、プラットフォームを最大限に活用できます。  その他のメリットについては、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+これで、Azure Resource Manager への移行が完了し、プラットフォームを最大限に活用できます。  その他のメリットについては、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
 また、以下の点を考慮してください。
 
@@ -213,7 +213,7 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 このクラシックから Azure Resource Manager への移行を開始した理由を思い出してください。  そもそものビジネス上の理由は何でしたか。 また、ビジネス上の目的を達成しましたか。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

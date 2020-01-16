@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 80812d1989e528a5a0f2333e92a068093d7b6b90
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914775"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528217"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニング (プレビュー) を構成する
 このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 この統合は、パブリック プレビュー中であり、SuccessFactors Employee Central から [70 を超えるユーザー属性](../manage-apps/sap-successfactors-attribute-reference.md)を取得することをサポートしています。
@@ -158,7 +158,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 * [属性マッピングの構成](#part-4-configure-attribute-mappings)
 * [ユーザー プロビジョニングの有効化と起動](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>パート 1:プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>パート 1: プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする
 
 **SuccessFactors から Active Directory へのプロビジョニングを構成するには:**
 
@@ -174,14 +174,14 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
 
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に変更します
 
 8. 表示された情報バナーをクリックして、プロビジョニング エージェントをダウンロードします。 
    > [!div class="mx-imgBorder"]
    > ![エージェントのダウンロード](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "[エージェントのダウンロード] 画面")
 
 
-### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>パート 2:オンプレミス プロビジョニング エージェントのインストールと構成
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>パート 2: オンプレミス プロビジョニング エージェントのインストールと構成
 
 オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7.1 以降の Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、プロビジョニング エージェントがインストールされている必要があります。
 
@@ -240,7 +240,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
   
    ![サービス](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>パート 3:プロビジョニング アプリで、SuccessFactors と Active Directory の接続を構成します。
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>パート 3: プロビジョニング アプリで、SuccessFactors と Active Directory の接続を構成します。
 この手順では、Azure portal で SuccessFactors と Active Directory の接続を確立します。 
 
 1. Azure portal で、[パート 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) で作成した SuccessFactors から Active Directory へのユーザー プロビジョニング アプリに戻ります。
@@ -261,8 +261,8 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
         > この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗する場合は、エージェントのセットアップで構成された SuccessFactors 資格情報と AD 資格情報が有効であることを再確認します。
     >[!div class="mx-imgBorder"]
@@ -346,7 +346,7 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. **[Save]** をクリックします。
+2. **[保存]** をクリックします。
 
 3. この操作により初期同期が開始されます。所要時間は SuccessFactors テナントのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
 
@@ -357,7 +357,7 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
    > [!div class="mx-imgBorder"]
    > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [受信プロビジョニングのサポートされている SuccessFactors 属性に関する詳細情報](../manage-apps/sap-successfactors-attribute-reference.md)
 * [SuccessFactors へのメール書き戻しを構成する方法](sap-successfactors-writeback-tutorial.md)

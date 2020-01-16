@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428816"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972697"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
 ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
 
-たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
+たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
 
 この概要では、ロジック アプリのワークフロー定義を含む Resource Manager テンプレートの属性について説明します。 テンプレートとワークフロー定義には、どちらも JSON 構文を使用しますが、ワークフロー定義は[ワークフロー定義言語スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)にも従っているため、いくつか相違点があります。 たとえば、テンプレートの式とワークフロー定義の式では、[パラメーターを参照する](#parameter-references)方法および使用できる値に違いがあります。
 
@@ -31,8 +31,8 @@ ms.locfileid: "75428816"
 Resource Manager テンプレートの詳細については、次のトピックをご覧ください。
 
 * [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/template-best-practices.md)
-* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
+* [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md)
+* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 サンプルのロジック アプリ テンプレートについては、次の例をご覧ください。
 
@@ -149,7 +149,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
 その他のテンプレート オブジェクトは、多くの場合、テンプレート パラメーターを参照することで、テンプレート パラメーターを通じて渡される値を使用できるようになります。次に例を示します。
 
@@ -173,7 +173,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
   * [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * テンプレート パラメーター名をワークフロー定義パラメーター名と区別するために、テンプレート パラメーターには `TemplateFabrikamPassword` のようなわかりやすい名を使用できます。
 
@@ -188,7 +188,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 * ロジック アプリ テンプレート ファイルの名前: **<*logic-app-name*>.json**
 * パラメーター ファイルの名前: **<*logic-app-name*>.parameters.json**
 
-パラメーター ファイル内の構造は次のとおりです。これには、[Azure Key Vault を使用してセキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)ためのキー コンテナー参照が含まれています。
+パラメーター ファイル内の構造は次のとおりです。これには、[Azure Key Vault を使用してセキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)ためのキー コンテナー参照が含まれています。
 
 ```json
 {
@@ -409,7 +409,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 実行時に機密情報、パスワード、アクセス キー、またはシークレットを扱うワークフロー定義パラメーターについては、`securestring` または `secureobject` のパラメーター型を使用するようにパラメーターを宣言または編集します。 このパラメーターは、ワークフロー定義の全体および内部で参照できます。 テンプレートの最上位レベルで、デプロイ時にこの情報を処理する同じ型を持つパラメーターを宣言します。
 
-ワークフロー定義のパラメーターの値を設定するには、ワークフロー定義の "*外側*"、かつロジック アプリのリソース定義の "*内側*" にある `parameters` オブジェクトを使用して、テンプレート パラメーターを参照します。 最後に、デプロイ時にテンプレート パラメーターに値を渡すには、その値を [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納し、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。
+ワークフロー定義のパラメーターの値を設定するには、ワークフロー定義の "*外側*"、かつロジック アプリのリソース定義の "*内側*" にある `parameters` オブジェクトを使用して、テンプレート パラメーターを参照します。 最後に、デプロイ時にテンプレート パラメーターに値を渡すには、その値を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納し、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。
 
 このサンプル テンプレートでは、必要に応じてセキュリティで保護されたパラメーターを定義し、それらの値を Azure Key Vault に格納できるようにすることで、これらのタスクを完了する方法を示しています。
 
@@ -558,7 +558,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
   * [ワークフロー定義のパラメーターのセキュリティに関する推奨事項](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
 ワークフロー定義のパラメーターの詳細については、[ワークフロー定義言語のパラメーター](../logic-apps/logic-apps-workflow-definition-language.md#parameters)に関する記事をご覧ください。
 
@@ -652,7 +652,7 @@ Office 365 Outlook 接続のリソース定義と、対応するテンプレー�
 
 * ワークフロー定義の "*外側*"、かつロジック アプリのリソース定義の "*内側*" では、別の `parameters` オブジェクトで対応するテンプレート パラメーターを参照し、実行時に使用される `$connections` パラメーターの値を設定します。 これらの値はテンプレート式を使用して、ロジック アプリ内に接続のメタデータを安全に格納するリソースを参照します。
 
-  たとえば、メタデータに接続文字列とアクセス トークンを含めて、それを [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納することができます。 これらの値をテンプレート パラメーターに渡すには、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。 パラメーターの参照の違いについて詳しくは、このトピックで後述する「[パラメーターの参照](#parameter-references)」をご覧ください。
+  たとえば、メタデータに接続文字列とアクセス トークンを含めて、それを [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納することができます。 これらの値をテンプレート パラメーターに渡すには、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。 パラメーターの参照の違いについて詳しくは、このトピックで後述する「[パラメーターの参照](#parameter-references)」をご覧ください。
 
   Azure portal または Visual Studio のコード ビューでロジック アプリのワークフロー定義を開くと、ワークフロー定義の外側、かつ同じレベルに `$connections` オブジェクトが表示されます。 コード ビューでのこの順序付けによって、ワークフロー定義を手動で更新するときに、これらのパラメーターを参照しやすくなります。
 
@@ -744,7 +744,7 @@ Azure で作成する各接続には、一意の名前が付けられます。 �
 
 ### <a name="secure-connection-parameters"></a>接続パラメーターをセキュリティで保護する
 
-機密情報、パスワード、アクセスキー、またはシークレットを扱う接続パラメーターの場合、接続のリソース定義には、名前と値のペアの形式でこれらの値を指定する `parameterValues` オブジェクトが含まれます。 この情報を非表示にするには、`securestring` または `secureobject` のパラメーター型を使ってこれらの値のテンプレート パラメーターを宣言または編集します。 その後、その情報を [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納することができます。 これらの値をテンプレート パラメーターに渡すには、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。
+機密情報、パスワード、アクセスキー、またはシークレットを扱う接続パラメーターの場合、接続のリソース定義には、名前と値のペアの形式でこれらの値を指定する `parameterValues` オブジェクトが含まれます。 この情報を非表示にするには、`securestring` または `secureobject` のパラメーター型を使ってこれらの値のテンプレート パラメーターを宣言または編集します。 その後、その情報を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納することができます。 これらの値をテンプレート パラメーターに渡すには、デプロイ時にテンプレートによって使用される[パラメーター ファイル](#template-parameter-files)でそのキー コンテナーを参照します。
 
 Azure Blob Storage 接続のアカウント名とアクセス キーを指定する例を次に示します。
 
@@ -1011,7 +1011,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 
 ## <a name="references-to-parameters"></a>パラメーターの参照
 
-テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)を使用できます。 テンプレート式では、角かっこ ( **[]** ) を使用します。
+テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用できます。 テンプレート式では、角かっこ ( **[]** ) を使用します。
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

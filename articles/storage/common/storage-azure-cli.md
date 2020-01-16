@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460455"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978522"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "75460455"
 
 このガイドでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱ういくつかのタスクを実行する方法を紹介します。 このガイドを使用する前に、最新バージョンの CLI をダウンロードしてインストールするか、最新バージョンの CLI にアップグレードすることをお勧めします。
 
-ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。 
+ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "75460455"
 
 ### <a name="accounts"></a>アカウント
 * **Azure アカウント**: Azure サブスクリプションをまだお持ちでない場合は、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)できます。
-* **ストレージ アカウント**: [Azure ストレージ アカウントについて](storage-create-storage-account.md)は、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+* **ストレージ アカウント**: [Azure ストレージ アカウントについて](storage-account-overview.md)は、「[ストレージ アカウントの作成](storage-account-create.md)」を参照してください。
 
 ### <a name="install-the-azure-cli"></a>Azure CLI のインストール
 
@@ -335,7 +335,7 @@ BLOB 内のデータの形式は、コンテンツの種類 (MIME の種類) に
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>ファイルのコピー      
 ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 たとえば、別の共有にあるディレクトリにファイルをコピーします。        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 共有スナップショットのタイムスタンプを `--snapshot` パラメーターに指定した `az storage share delete` コマンドを使用して、共有スナップショットを削除することができます。
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 サンプル出力
@@ -535,7 +535,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 ```
 
 ## <a name="next-steps"></a>次のステップ
-下記の資料で、Azure CLI の使用に関する詳細をさらにご覧いただけます。 
+下記の資料で、Azure CLI の使用に関する詳細をさらにご覧いただけます。
 
 * [Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI コマンド リファレンス](/cli/azure)

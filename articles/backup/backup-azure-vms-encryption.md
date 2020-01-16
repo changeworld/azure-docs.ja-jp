@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449982"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -125,7 +125,7 @@ Azure VM では、キーとシークレット、および関連付けられた V
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. Click **OK**. **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
+7. **[OK]** をクリックします。 **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
 
     ![アクセス ポリシー](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -136,12 +136,12 @@ Azure VM では、キーとシークレット、および関連付けられた V
 次のように暗号化された VM を復元します。
 
 1. [VM ディスクを復元します](backup-azure-arm-restore-vms.md#restore-disks)。
-2. 次のいずれかの手順を行います。
-    - 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細情報](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
-    - PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細情報](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
-    - Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能をリセットします。
+2. 以下のいずれかを行って、仮想マシン インスタンスを再作成します。
+    1. 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
+    2. PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細については、こちらを参照してください](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+3. Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能を再インストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題が発生した場合は、以下の記事を確認します。
 

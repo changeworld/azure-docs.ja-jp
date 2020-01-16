@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 362662cb6ac9b0535a0e762e5c484b31dcc009a6
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/10/2020
+ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796108"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867257"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>クイック スタート:Azure Cosmos DB SQL API アカウント リソースを管理するための .Net V4 SDK を使用したコンソール アプリを構築する。
 
@@ -31,7 +31,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 * Azure Cosmos データベースとコンテナーを作成する
 * コンテナーにサンプル データを追加する
-* データを照会する 
+* データにクエリを実行する 
 * データベースを削除する
 
 [ライブラリのソース コード](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
@@ -115,14 +115,14 @@ Time Elapsed 00:00:34.17
 アプリケーション ディレクトリ内で、dotnet add package コマンドを使用して .NET Core 用の Azure Cosmos DB クライアント ライブラリをインストールします。
 
    ```bash
-   dotnet add package Azure.Cosmos --version 4.0.0-preview
+   dotnet add package Azure.Cosmos --version 4.0.0-preview3
    ```
 
 ### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Azure portal から Azure Cosmos アカウントの資格情報をコピーする
 
 サンプル アプリケーションは、Azure Cosmos アカウントに対する認証を行う必要があります。 認証するには、Azure Cosmos アカウントの資格情報をアプリケーションに渡す必要があります。 次の手順に従って、Azure Cosmos アカウントの資格情報を取得します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. Azure Cosmos アカウントに移動します。
 
@@ -245,7 +245,7 @@ Time Elapsed 00:00:34.17
 
 データが作成されたことを確認するには、Azure portal にサインインし、Azure Cosmos アカウントで必要な項目を確認します。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、Azure CLI または Azure PowerShell を使用して、Azure Cosmos アカウントとそれに対応するリソース グループを削除できます。 次のコマンドは、Azure CLI を使用してリソース グループを削除する方法を示しています。
 
@@ -253,7 +253,7 @@ Time Elapsed 00:00:34.17
 az group delete -g "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Cosmos アカウントを作成し、.NET Core アプリを使用してデータベースとコンテナーを作成する方法を説明しました。 これで、次の記事の指示に従って Azure Cosmos アカウントに追加のデータをインポートできるようになりました。 
 

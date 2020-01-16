@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684193"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640842"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -320,13 +320,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[接続文字列]** ボックスで、次のエントリを追加します。
 
-   |名前  |接続文字列  |データベースの種類|
+   |Name  |接続文字列  |データベースの種類|
    |---------|---------|------|
-   |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|カスタム|
+   |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|Custom|
 
 1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
-   |名前  |値  |
+   |Name  |値  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -399,7 +399,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ここでは、もう一度ローカル環境で実行して、ログ データが Application Insights とコンソールに記録されることを確認します。
 
-1. 「*Hello App Insights!* 」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function-in-azure)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
+1. 「*Hello App Insights!* 」をメッセージ テキストとして入力すること以外は[前](#test-locally)に行ったときと同様に、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
 
 1. プロジェクトを実行します。
 
@@ -407,7 +407,9 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. コンソール ウィンドウを閉じます。
 
-1. [Azure Portal](https://portal.azure.com/) を開き、Application Insights リソースに移動します。
+1. [Azure Portal](https://portal.azure.com/) に移動し、Application Insights リソースを表示します。 **Application Insights** を探して選択します。
+
+1. Application Insights インスタンスを選択します。
 
 1. **[検索]** を選択します。
 
@@ -536,7 +538,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
  
 1. ファイルを再び BLOB コンテナーにアップロードし、アップロードしたファイルの名前になっているキューにメッセージを追加することで Azure で関数を検証します。 キューからメッセージが削除されたことと、BLOB コンテナーにファイルのコピーが作成されたことを確認できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、WebJobs SDK 3.x プロジェクトを作成、実行、デプロイする方法について説明しました。
 

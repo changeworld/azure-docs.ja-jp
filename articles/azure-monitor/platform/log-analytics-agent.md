@@ -4,15 +4,15 @@ description: このトピックは、Azure、オンプレミス、または他�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
-ms.date: 11/21/2019
-ms.openlocfilehash: 33ba07ac8d89546856666cc7ab94fae650020001
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+author: bwren
+ms.author: bwren
+ms.date: 12/24/2019
+ms.openlocfilehash: 58d6c8d18e03ab248cfbebcf910ae13c5fee439e
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306531"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530971"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -85,7 +85,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 次の表には、エージェントがインストールされるサポートされている Linux ディストリビューションに必要なパッケージが明記されています。
 
-|必須パッケージ |説明 |最小バージョン |
+|必須パッケージ |[説明] |最小バージョン |
 |-----------------|------------|----------------|
 |Glibc |    GNU C ライブラリ | 2.5-12 
 |Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
@@ -98,7 +98,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 
-Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 
@@ -123,15 +123,15 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 > [!NOTE]
 > プロキシ サーバーで認証が不要な場合でも、Linux エージェントは擬似ユーザー/パスワードの指定を必要とします。 これは、どのようなユーザー名とパスワードでもかまいません。
 
-|プロパティ| 説明 |
+|プロパティ| [説明] |
 |--------|-------------|
 |Protocol | https |
 |user | プロキシ認証のオプションのユーザー名 |
-|password | プロキシ認証のオプションのパスワード |
+|パスワード | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |
 |port | プロキシ サーバー/Log Analytics ゲートウェイのオプションのポート番号 |
 
-次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
+例: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > パスワードに "\@" などの特殊文字を使用した場合、値が正しく解析されないためにプロキシ接続エラーが発生します。  この問題を回避するには、[URLDecode](https://www.urldecoder.org/) などのツールを使用して、URL 内にパスワードをエンコードします。  
@@ -140,17 +140,17 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 Azure Monitor ログを直接、Azure サブスクリプションまたはハイブリッド環境内のマシンに接続することは、要件に応じてさまざまな方法を使用して実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|source | 方法 | 説明|
+|source | 方法 | [説明]|
 |-------|-------------|-------------|
-|Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)| - この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。<br>- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。|
+|Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md)<br>- [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)| - この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。<br>- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。|
 | ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 
-| ハイブリッド Linux コンピューター| [手動インストール](../../azure-monitor/learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
-| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](../../azure-monitor/platform/om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
+| ハイブリッド Linux コンピューター| [手動インストール](agent-linux.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールするか、手動でエージェントをダウンロードしてインストールします。 | 
+| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [データ ソース](../../azure-monitor/platform/agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
+* [データ ソース](agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
 
-* [ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
-* Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../../azure-monitor/insights/solutions.md)について学習します。
+* Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。

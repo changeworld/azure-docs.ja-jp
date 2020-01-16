@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384196"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749934"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -325,7 +325,7 @@ Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる
 * **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。 レイヤー 3 からレイヤー 7 までの保護:Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
 * **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
 * **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
-* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor のログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
+* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor ログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
 * **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
 * **DDoS への迅速な対応:** DDoS Protection Standard のお客様は、アクティブな攻撃中に Rapid Response チームを利用できるようになりました。 DRR では、攻撃の調査、攻撃中の独自の軽減策、攻撃後の分析に関して支援できます。
 
@@ -391,11 +391,11 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 * [仮想ネットワーク TAP](../../virtual-network/virtual-network-tap-overview.md)
 
-### <a name="logging"></a>ログの記録
+### <a name="logging"></a>ログ記録
 
 ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、NSG に関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
 
-* [アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
+* [アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
 * イベント ログ。 これらのログは、適用された NSG ルールについての情報を提供します。
 * カウンター ログ。 このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
 

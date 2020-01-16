@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.openlocfilehash: efa19cdd1dd0827fd0e88f533b94f69bd7b99ca9
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 01/15/2020
+ms.openlocfilehash: feda4b3a7f21b581fb4f08aec013f87c0fabb7e5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307252"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044947"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure Digital Twins でのロール ベースのアクセス制御
 
@@ -21,7 +21,7 @@ Azure Digital Twins では、空間グラフ内の特定のデータ、リソー
 
 RBAC を使用し、次にアクセス許可を付与できます。
 
-- ユーザー。
+- ユーザーです。
 - デバイス。
 - サービス プリンシパル。
 - ユーザー定義関数。
@@ -81,7 +81,7 @@ Azure Digital Twins のロールの割り当てでは、ユーザー、Azure AD 
 >[!IMPORTANT]
 > ロールの割り当ての詳細については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins ロールの割り当ての作成と管理の詳細については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md)に関するページを参照してください。
 

@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:マイクから音声を認識する、C++ (macOS) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: macOS で C++ と macOS を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 885e853528eb0b20079e6a7739450687ed001b8e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 08459238173b379280cb513ccb3242e4f15ef0bc
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818625"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928097"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +50,7 @@ ms.locfileid: "74818625"
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
   ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 1. Speech SDK ライブラリを指すようにローダーのライブラリ パスを構成します。
 
@@ -72,6 +71,6 @@ ms.locfileid: "74818625"
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

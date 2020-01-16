@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.openlocfilehash: 68d0ef14a7b5967d6a4535da85d32128c3a12a19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477061"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975782"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -56,4 +56,4 @@ Microsoft では、ストレージアカウントのセキュリティを確保�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure ストレージ アカウントの概要](storage-account-overview.md)
-- [ストレージ アカウントの作成](storage-quickstart-create-account.md)
+- [ストレージ アカウントの作成](storage-account-create.md)

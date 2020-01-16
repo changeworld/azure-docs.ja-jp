@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977534"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル 
 
@@ -34,7 +34,7 @@ Azure Cosmos DB の価格モデルは、すべての API について同じで�
 
 |**エンティティ**  | **最小スループットとコスト** |**スケール増分とコスト** |**プロビジョニングの予約範囲** |
 |---------|---------|---------|-------|
-|Database    | 400 RU/秒 (24 ドル/月)    | 100 RU/秒 (6 ドル/月)   |スループットはデータベースに対して予約されており、データベース内のコンテナーによって共有されます。 |
+|データベース    | 400 RU/秒 (24 ドル/月)    | 100 RU/秒 (6 ドル/月)   |スループットはデータベースに対して予約されており、データベース内のコンテナーによって共有されます。 |
 |コンテナー     | 400 RU/秒 (24 ドル/月)    | 100 RU/秒 (6 ドル/月)  |スループットは特定のコンテナーに対して予約されます |
 
 前の表で示したように、Azure Cosmos DB での最小スループットの価格は、24 ドル/月から始まります。 最小のスループットから開始し、運用ワークロードをサポートするために時間と共にスケールアップする場合、コストは 6 ドル/月単位で滑らかに上昇します。 Azure Cosmos DB の価格モデルは弾力的であり、スケールアップまたはスケールダウンに合わせて価格は滑らかに増減します。
@@ -43,7 +43,7 @@ Azure Cosmos DB の価格モデルは、すべての API について同じで�
 
 Azure Cosmos DB では、開発者向けに無料のオプションがいくつか提供されています。 設定できるオプションは次のとおりです。
 
-* **Azure 無料アカウント**:Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../billing/billing-avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 
+* **Azure 無料アカウント**:Azure の [Free レベル](https://azure.microsoft.com/free/)では、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](../cost-management-billing/manage/avoid-charges-free-account.md)に関するページをご覧ください。 Azure Cosmos DB は Azure 無料アカウントの一部です。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 
 
 * **Azure Cosmos DB を無料で試す**:Azure Cosmos DB では、Azure Cosmos DB を無料で試すアカウントを使用することで、時間制限をのあるエクスペリエンスが提供されます。 Azure Cosmos DB アカウントを作成して、データベースとコレクションを作成し、クイック スタートとチュートリアルを使用してサンプル アプリケーションを実行できます。 Azure アカウントをサブスクライブしたり、クレジット カードを使用したりせずに、サンプル アプリケーションを実行できます。 「[Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」では、Azure Cosmos DB が 1 か月間提供され、何回でもアカウントを更新できます。
 
@@ -55,7 +55,7 @@ Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、リソー
 
 予約容量では、割引が適用されても、Azure Cosmos DB リソースのランタイム状態は維持されます。 予約容量は、すべての API (MongoDB、Cassandra、SQL、Gremlin、Azure Tables を含む) および世界中のすべてのリージョンで、同じように利用できます。 予約容量について詳しくは、[予約容量での Azure Cosmos DB リソースの前払い](cosmos-db-reserved-capacity.md)に関する記事をご覧ください。また、予約容量は [Azure portal](https://portal.azure.com/) で購入できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB リソースのコストの最適化について詳しくは、以下の記事をご覧ください。
 

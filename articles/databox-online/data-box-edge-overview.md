@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585360"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863633"
 ---
 # <a name="what-is-azure-stack-edge"></a>Azure Stack Edge とは 
 
@@ -27,7 +27,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 ここでは、Azure Stack Edge を使用してエッジで高速な機械学習 (ML) 推論を実行し、データを Azure に送信する前に前処理するさまざまなシナリオを示します。
 
-- **Inference Azure Machine Learning** - Azure Stack Edge により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関するページを参照してください。
+- **Inference Azure Machine Learning** - Azure Stack Edge により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関するページを参照してください。
 
 - **データの前処理** - データを Azure に送信する前に変換して、より実用的なデータセットを作成します。 前処理は以下の目的で使用できます。 
 
@@ -43,11 +43,11 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 Azure Stack Edge には、次の機能があります。
 
-|機能 |説明  |
+|機能 |[説明]  |
 |---------|---------|
 |高速 AI 推論| 組み込みの FPGA によって有効にされます。|
 |コンピューティング       |データの分析、処理、フィルター処理が可能です。|
-|高性能 | ハイ パフォーマンス コンピューティングおよびデータ転送。|
+|高パフォーマンス | ハイ パフォーマンス コンピューティングおよびデータ転送。|
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。 デバイス上のローカル キャッシュは、最近使用されたファイルの高速アクセスに使用されます。|
 |クラウドでの管理     |デバイスとサービスは Azure portal を介して管理されます。  |
 |オフライン アップロード     | 切断モードでは、オフライン アップロードのシナリオに対応します。|
@@ -57,7 +57,7 @@ Azure Stack Edge には、次の機能があります。
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
 
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 Azure Stack Edge ソリューションは、Azure Stack Edge リソース、Azure Stack Edge 物理デバイス、およびローカル Web UI で構成されています。
 
@@ -85,7 +85,7 @@ Azure Stack Edge 物理デバイス、Azure リソース、データ転送先の
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack Edge のシステム要件](data-box-edge-system-requirements.md)を確認します。
 - [Azure Stack Edge の制限](data-box-edge-limits.md)を理解します。

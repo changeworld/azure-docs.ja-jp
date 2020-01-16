@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8c8d33a2cd9a25942e1df7eacc7a676debf29ec1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dc627fc4bb7be449547a07cc34eb2cb3694964e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445432"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -176,7 +176,7 @@ SQL API アカウントでサポートされる SQL クエリ言語は、SQL Ser
 
 SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計関数を使用した、あらゆるスケールでの低待機時間の集計をサポートしています。 詳細については、「[集計関数](sql-query-aggregates.md)」をご覧ください。
 
-### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにして同時実行を提供しますか?
+### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにしてコンカレンシーを提供しますか?
 
 SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック コンカレンシー (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
 
@@ -228,7 +228,7 @@ Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用さ�
 
 Azure Cosmos DB の MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、次のような独自のエラー コードがあります。
 
-| Error               | コード  | 説明  | 解決策  |
+| エラー               | コード  | [説明]  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コンテナーのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
 | ExceededMemoryLimit | 16501 | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: <em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
@@ -315,7 +315,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>既存の Azure Table Storage SDK を使っている顧客に関する変更はありますか?
 
-なし。 既存の Azure Table Storage SDK を使用する既存または新規のお客様を対象とする変更はありません。
+[なし] : 既存の Azure Table Storage SDK を使用する既存または新規のお客様を対象とする変更はありません。
 
 ### <a name="how-do-i-view-table-data-thats-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Table API で使うために、Azure Cosmos DB に格納されているテーブル データを表示するにはどうすればよいですか?
 
@@ -327,7 +327,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 
 以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API に対応できます。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。
 
-### <a name="is-the-concurrency-on-operations-controlled"></a>操作の同時実行は制御されますか?
+### <a name="is-the-concurrency-on-operations-controlled"></a>操作のコンカレンシーは制御されますか?
 
 はい。オプティミスティック コンカレンシーは、ETag メカニズムを使用して提供されます。
 
@@ -476,7 +476,7 @@ Table API は Azure Table Storage と同じクエリ機能を提供します。 
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Azure Table Storage サービスの既存の顧客を対象とする価格の変更はありますか?
 
-なし。 Azure Table Storage の既存のお客様を対象とする価格の変更はありません。
+[なし] : Azure Table Storage の既存のお客様を対象とする価格の変更はありません。
 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Table API の料金はどのように計算されますか?
 
@@ -524,7 +524,7 @@ Azure Cosmos DB Gremlin API では、サービスのメイン コネクタとし
 
 グラフのオブジェクト、頂点、端はすべて、バックエンドで JSON ドキュメントとして表示されます。 1 つの Gremlin クエリで 1 つまたは複数のグラフ オブジェクトを一度に変更できるため、それに関連付けられるコストは、クエリで処理されるオブジェクトや端に直接関連します。 このプロセスは、その他すべての API に対して Azure Cosmos DB で使用されるプロセスと同じです。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」をご覧ください。
 
-RU 課金は、結果セットではなく、トラバーサルの作業データ セットに基づきます。 たとえば、結果として頂点を 1 つ得ることがクエリの目的であるが、その過程で他の複数のオブジェクトを走査する必要がある場合、結果として頂点を 1 つ計算するために必要なすべてのグラフ オブジェクトに基づいてコストが算出されます。
+RU 課金は、結果セットではなく、走査の作業データ セットに基づきます。 たとえば、結果として頂点を 1 つ得ることがクエリの目的であるが、その過程で他の複数のオブジェクトを走査する必要がある場合、結果として頂点を 1 つ計算するために必要なすべてのグラフ オブジェクトに基づいてコストが算出されます。
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。
 

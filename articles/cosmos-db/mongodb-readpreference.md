@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する
+title: Azure Cosmos DB の MongoDB 用 API を使用して読み取り設定を使用する
 description: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する方法について説明します
 author: sivethe
 ms.author: sivethe
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445160"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
 
@@ -161,14 +161,14 @@ MongoDB プロトコルでは、読み取り設定モードの他に、タグを
 
 この記事では、Azure Cosmos DB の MongoDB 用 API で読み取り設定を使用して、読み取り操作をグローバルに配布する方法について説明しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリの使用を続けない場合は、以下の手順に従い、この記事で作成したすべてのリソースを Azure Portal で削除してください。
 
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
 * [Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する](tutorial-global-distribution-mongodb.md)

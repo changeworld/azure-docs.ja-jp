@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407581"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -138,12 +138,12 @@ var tileY = Math.floor(pixelY / tileSize);
 
 ## <a name="quadkey-indices"></a>quadkey インデックス
 
-一部のマッピング プラットフォームでは、quadkey インデックスの名前付け規則が使用されます。これは、タイルの ZY 座標を quadtree key または省略して "quadkey" と呼ばれる 1 次元の文字列に結合したものです。 各 quadkey では、特定の詳細レベルの 1 つのタイルが一意に識別され、共通データベースの B ツリー インデックスのキーとして使用できます。 Azure Maps SDK では、[タイル レイヤーの追加](map-add-tile-layer.md)に関するドキュメントに記載されているように、他の命名規則に加えて、quadkey 名前付け規則を使用するタイル レイヤーのオーバーレイがサポートされています。
+一部のマッピング プラットフォームでは、`quadkey` インデックスの名前付け規則が使用されます。これは、タイルの ZY 座標を `quadtree` key または省略して `quadkeys` と呼ばれる 1 次元の文字列に結合したものです。 各 `quadkey` では、特定の詳細レベルの 1 つのタイルが一意に識別され、共通データベースの B ツリー インデックスのキーとして使用できます。 Azure Maps SDK では、[タイル レイヤーの追加](map-add-tile-layer.md)に関するドキュメントに記載されているように、他の命名規則に加えて、`quadkey` 名前付け規則を使用するタイル レイヤーのオーバーレイがサポートされています。
 
 > [!NOTE]
-> quadkey 名前付け規則は、1 以上のズーム レベルに対してのみ機能します。 Azure Maps SDK のサポート ズーム レベル 0 は、世界全体が 1 つのマップ タイルになります。 
+> `quadkeys` 名前付け規則は、1 以上のズーム レベルに対してのみ機能します。 Azure Maps SDK のサポート ズーム レベル 0 は、世界全体が 1 つのマップ タイルになります。 
 
-タイル座標を quadkey に変換するには、Y 座標と X 座標のビット数を交互に配置し、結果を底が 4 の数値として解釈して (先頭のゼロを維持)、文字列に変換します。 たとえば、レベル 3 のタイルの XY 座標が (3, 5) であるとすると、quadkey は次のように決定されます。
+タイル座標を `quadkey` に変換するには、Y 座標と X 座標のビット数を交互に配置し、結果を底が 4 の数値として解釈して (先頭のゼロを維持)、文字列に変換します。 たとえば、レベル 3 のタイルの XY 座標が (3, 5) であるとすると、`quadkey` は次のように決定されます。
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-quadkey には、興味深い特徴がいくつかあります。 1 つ目として、quadkey の長さ (桁数) は、対応するタイルのズーム レベルと同じになります。 2 つ目として、任意のタイルの quadkey は、その親タイルの quadkey (前のレベルで、それを含むタイル) で開始されます。 次の例で示すように、タイル 2 はタイル 20 から 23 の親です。
+`Qquadkeys` には、興味深い特徴がいくつかあります。 1 つ目として、`quadkey` の長さ (桁数) は、対応するタイルのズーム レベルと同じになります。 2 つ目として、任意のタイルの `quadkey` は、その親タイルの `quadkey` (前のレベルで、それを含むタイル) で開始されます。 次の例で示すように、タイル 2 はタイル 20 から 23 の親です。
 
 <center>
 
 ![quadkey タイルのピラミッド](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-最後に、quadkey では、通常は XY 空間内のタイルの近接性が保持される 1 次元のインデックス キーが提供されます。 言い換えると、XY 座標が近い 2 つのタイルは、通常、quadkey も比較的近くなります。 これは、隣接するタイルがグループで要求されることが多く、ディスクの読み取り回数を最小限に抑えるには、これらのタイルを同じディスク ブロックに保持することが望ましいため、データベースのパフォーマンスを最適化するために重要なことです。
+最後に、`quadkeys` では、通常は XY 空間内のタイルの近接性が保持される 1 次元のインデックス キーが提供されます。 言い換えると、XY 座標が近い 2 つのタイルは、通常、`quadkeys` も比較的近くなります。 これは、隣接するタイルがグループで要求されることが多く、ディスクの読み取り回数を最小限に抑えるには、これらのタイルを同じディスク ブロックに保持することが望ましいため、データベースのパフォーマンスを最適化するために重要なことです。
 
 ## <a name="tile-math-source-code"></a>タイル演算のソース コード
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -947,7 +949,7 @@ module AzureMaps {
 > Azure Maps SDK の対話型マップ コントロールには、地理空間位置とビューポートのピクセルの間で変換を行うためのヘルパー関数が用意されています。 
 > - [Web SDK: 地図のピクセルと位置の計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps REST サービスから地図のタイルに直接アクセスします。
 

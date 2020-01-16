@@ -1,5 +1,5 @@
 ---
-title: グループを使用したアプリとリソース アクセスの管理 - Azure Active Directory | Microsoft Docs
+title: グループを使用してアプリとリソースのアクセスを管理する - Azure AD
 description: Azure Active Directory グループを使用して、組織のクラウドベースのアプリ、オンプレミスのアプリ、およびリソースに対するアクセスを管理する方法について説明します。
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8a90d54932561ed564a23d4d2785170aa85b5c9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422969"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
 Azure Active Directory (Azure AD) は、組織のグループを使用した、クラウド ベースのアプリ、オンプレミスのアプリ、およびリソースの管理に役立ちます。 リソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のように、ディレクトリの一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、ディレクトリの外部リソースである場合があります。
@@ -53,7 +53,7 @@ Azure AD では、1 人のユーザーまたは Azure AD のグループ全体�
 
 ユーザーがグループへの参加を要求した後、要求はグループ所有者に転送されます。 それが必須の場合、所有者は要求を承認することができ、そのユーザーにグループ メンバーシップが通知されます。 ただし、複数の所有者がいて、いずれかが承認しない場合、ユーザーへの通知は行われますが、グループへのユーザーの追加は行われません。 ユーザーにグループへの参加を要求させる方法の詳細と手順については、[ユーザーがグループへの参加を要求できるような Azure AD の設定](../users-groups-roles/groups-self-service-management.md)に関するページを参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 グループを使用したアクセス管理の概要について少し学習したので、リソースとアプリの管理を開始します。
 
 - [Azure Active Directory を使用して新しいグループを作成する](active-directory-groups-create-azure-portal.md)または [PowerShell コマンドレットを使用して新しいグループを作成して管理する](../users-groups-roles/groups-settings-v2-cmdlets.md)

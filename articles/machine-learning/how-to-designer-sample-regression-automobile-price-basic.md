@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 758852c64ae906119ba315787a759eb5d988be6b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 156b963fc1644d1f863d8ddd1d86c15b311e18a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659936"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763387"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで回帰を使用して自動車の価格を予測する
 
@@ -88,8 +88,8 @@ ms.locfileid: "75659936"
 デザイナーで利用できる他のサンプルを確認します。
 
 - [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [サンプル 3 -特徴選択による分類:収入予測](service/how-to-designer-sample-classification-predict-income.md)
-- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [サンプル 5 - 分類:顧客離れを予測する](service/how-to-designer-sample-classification-churn.md)
-- [サンプル 6 - 分類:フライトの遅延を予測する](service/how-to-designer-sample-classification-flight-delay.md)
+- [サンプル 3 -特徴選択による分類:収入予測](how-to-designer-sample-classification-predict-income.md)
+- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [サンプル 5 - 分類:顧客離れを予測する](how-to-designer-sample-classification-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
 - [サンプル 7 - テキスト分類:Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)

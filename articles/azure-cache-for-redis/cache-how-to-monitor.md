@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9e829c7d3756599cc80f35187bd743ce798cecda
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122757"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750064"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
 Azure Cache for Redis は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するための複数のオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。
@@ -62,7 +62,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 3. **[ストレージ アカウントへのアーカイブ]** をオンにします。
 4. キャッシュ メトリックを格納するストレージ アカウントを選択します。
 5. **[1 分]** チェック ボックスをオンにして **[リテンション期間 (日数)]** ポリシーを指定します。 リテンション期間ポリシーを適用せず、データを永続的に保持する場合は、 **[リテンション期間 (日数)]** を **0** に設定します。
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 ![Redis 診断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
@@ -88,7 +88,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 > 
 > 
 
-| メトリック | 説明 |
+| メトリック | [説明] |
 | --- | --- |
 | キャッシュ ヒット数 |指定したレポート期間中に、成功したキー検索の数。 これは Redis [INFO](https://redis.io/commands/info) コマンドの `keyspace_hits` にマッピングされます。 |
 | キャッシュの待機時間 (プレビュー) | キャッシュのノード間待機時間に基づいて計算されるキャッシュの待機時間。 このメトリックはマイクロ秒単位で測定され、"Avg"、"Min"、"Max" という 3 つのディメンションがあります。これらは、指定されたレポート間隔のキャッシュの平均、最短、および最長の待ち時間をそれぞれ表します。 |
@@ -97,13 +97,13 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 | キャッシュの書き込み |指定したレポート期間中にキャッシュに書き込まれた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。 この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 この値は、クライアントからキャッシュに送信されるデータのネットワーク帯域幅に対応しています。 |
 | 接続されているクライアント数 |指定したレポート期間中に、キャッシュに接続されるクライアントの数。 これは Redis INFO コマンドの `connected_clients` にマッピングされます。 [接続の上限](cache-configure.md#default-redis-server-configuration) に達すると、それ以降のキャッシュへの接続の試行は失敗します。 アクティブなクライアント アプリケーションがない場合でも、内部処理や接続によって接続されたクライアントのインスタンスが少数見つかることがあります。 |
 | CPU |指定したレポート期間中の Azure Cache for Redis サーバーの CPU 使用率 (パーセント)。 この値は、オペレーティング システム `\Processor(_Total)\% Processor Time` パフォーマンス カウンターにマッピングされます。 |
-| Errors | 指定されたレポート間隔中にキャッシュで発生する可能性がある特定のエラーおよびパフォーマンスの問題。 このメトリックには、さまざまなエラーの種類を表す 8 つのディメンションがありますが、今後追加される可能性があります。 現在表されているエラーの種類は次のとおりです。 <br/><ul><li>**Failover**: キャッシュがフェールオーバーした場合 (下位からマスターへの昇格)</li><li>**Dataloss**: キャッシュにデータ損失がある場合</li><li>**UnresponsiveClients**: 十分な速さでクライアントがサーバーからデータを読み取っていない場合</li><li>**AOF**: AOF 永続化に関連する問題がある場合</li><li>**RDB**: RDB 永続化に関連する問題がある場合</li><li>**Import**: RDB のインポートに関連する問題がある場合</li><li>**Export**: RDB のエクスポートに関連する問題がある場合</li></ul> |
+| エラー | 指定されたレポート間隔中にキャッシュで発生する可能性がある特定のエラーおよびパフォーマンスの問題。 このメトリックには、さまざまなエラーの種類を表す 8 つのディメンションがありますが、今後追加される可能性があります。 現在表されているエラーの種類は次のとおりです。 <br/><ul><li>**Failover**: キャッシュがフェールオーバーした場合 (下位からマスターへの昇格)</li><li>**Dataloss**: キャッシュにデータ損失がある場合</li><li>**UnresponsiveClients**: 十分な速さでクライアントがサーバーからデータを読み取っていない場合</li><li>**AOF**: AOF 永続化に関連する問題がある場合</li><li>**RDB**: RDB 永続化に関連する問題がある場合</li><li>**Import**: RDB のインポートに関連する問題がある場合</li><li>**Export**: RDB のエクスポートに関連する問題がある場合</li></ul> |
 | 削除されたキー数 |指定したレポート期間中に、 `maxmemory` の制限によってキャッシュから削除された項目の数。 これは Redis INFO コマンドの `evicted_keys` にマッピングされます。 |
 | 期限切れキー数 |指定したレポート期間中に、期限が切れたキャッシュの項目の数。 この値は Redis INFO コマンドの `expired_keys` にマッピングされます。|
 | 取得数 |指定したレポート期間中に、キャッシュから実行された取得操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit`、および `cmdstat_getrange`) からの値の合計で、レポート期間中のキャッシュ ヒット数とキャッシュ ミス数の合計と同じです。 |
 | 1 秒あたりの操作回数 | 指定したレポート期間中に、キャッシュ サーバーによって処理されたコマンドの合計数/秒。  この値は Redis INFO コマンドから "instantaneous_ops_per_sec" にマップされます。 |
 | Redis サーバーの負荷 |Redis サーバーの処理がビジーで、アイドル状態でメッセージを待機していないサイクルの割合。 このカウンタが 100 に達すると、Redis サーバーのパフォーマンスが上限に達したことを意味し、これ以上 CPU を高速で処理できないことを表します。 Redis サーバーの負荷が高い場合は、クライアントでタイムアウトの例外が表示されます。 この場合は、スケールアップまたはデータを複数のキャッシュにパーティション分割することを検討してください。 |
-| 設定数 |指定したレポート期間中に、キャッシュから実行された設定操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange`、および `cmdstat_setnx`) からの値の合計です。 |
+| セット |指定したレポート期間中に、キャッシュから実行された設定操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange`、および `cmdstat_setnx`) からの値の合計です。 |
 | 合計キー数  | 過去のレポート期間におけるキャッシュ内のキーの最大数。 これは Redis INFO コマンドの `keyspace` にマッピングされます。 基礎となるメトリック システムの制限により、クラスタリングが有効になっているキャッシュでキー合計が返すキーの最大数は、レポート期間中にキーの数が最大のシャードのキーの最大数になります。  |
 | 合計処理数 |指定したレポート期間中に、キャッシュ サーバーによって処理されたコマンドの合計数。 この値は Redis INFO コマンドの `total_commands_processed` にマッピングされます。 Azure Cache for Redis をパブリッシュ/サブスクライブにのみ使用する場合、`Cache Hits`、`Cache Misses`、`Gets`、または `Sets` のメトリックは存在しませんが、パブリッシュ/サブスクライブ処理のキャッシュの使用状況を反映する `Total Operations` メトリックが用意されていることに注意してください。 |
 | メモリ使用量 |指定したレポート期間中にキャッシュ内のキー/値のペアで使用されるキャッシュ メモリの量 (MB)。 この値は Redis INFO コマンドの `used_memory` にマッピングされます。 これには、メタデータや断片化は含まれません。 |
@@ -111,7 +111,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 | RSS メモリ使用量 |指定したレポート期間中に使用されるキャッシュ メモリの量 (MB)。これには断片化とメタデータが含まれます。 この値は Redis INFO コマンドの `used_memory_rss` にマッピングされます。 |
 
 <a name="operations-and-alerts"></a>
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 メトリックとアクティビティ ログに基づいてアラートを受け取るように設定できます。 Azure Monitor では、アラートがトリガーされたときに次の処理を実行するように構成することができます。
 
 * 電子メール通知を送信する
@@ -134,7 +134,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 
 対象のキャッシュのアクティビティ ログを表示するには、 **[リソース] メニュー**で **[アクティビティ ログ]** をクリックします。
 
-アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)」をご覧ください。
+アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)」をご覧ください。
 
 
 

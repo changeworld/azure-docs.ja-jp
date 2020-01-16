@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5f006832fd1f1386adaf89b0045272a70db2df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9854027bbdfaf22c650ae9e2e0aa1eec457f89dd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429951"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977942"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure リソースのマネージド ID は、Azure Active Directory で自動的に管理される ID を Azure サービスに提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
+Azure リソースのマネージド ID は、Azure Active Directory で自動的に管理される ID を Azure サービスに提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 この記事では、Azure Resource Manager デプロイ テンプレートを使用して、Azure 仮想マシン スケール セットで Azure リソースのマネージド ID の次の操作を実行する方法を説明します。
 - Azure 仮想マシン スケール セットでシステム割り当てマネージド ID を有効および無効にする
@@ -54,7 +54,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/resource-manager-create-first-template.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
    - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用して、テンプレートを作成およびデプロイします。  
 
-選択するオプションにかかわらず、初めてのデプロイ時も再デプロイ時もテンプレートの構文は同じです。 新規または既存の VM での、Azure リソースのマネージド ID の有効化も同様に行われます。 また、既定で Azure Resource Manager はデプロイに対して[増分更新](../../azure-resource-manager/deployment-modes.md)を行います。
+選択するオプションにかかわらず、初めてのデプロイ時も再デプロイ時もテンプレートの構文は同じです。 新規または既存の VM での、Azure リソースのマネージド ID の有効化も同様に行われます。 また、既定で Azure Resource Manager はデプロイに対して[増分更新](../../azure-resource-manager/templates/deployment-modes.md)を行います。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
@@ -66,7 +66,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、resources セクション内で対象の `Microsoft.Compute/virtualMachinesScaleSets` リソースを探し、`"type": "Microsoft.Compute/virtualMachinesScaleSets"` プロパティと同じレベルに `identity` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
-   "identity": { 
+   "identity": {
        "type": "SystemAssigned"
    }
    ```
@@ -106,14 +106,14 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
             }
         }
     ]
-   ``` 
+   ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットでシステム割り当てマネージド ID を無効にする
 
@@ -129,12 +129,12 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
-   お使いの apiVersion が `2017-12-01` であり、仮想マシン スケール セットにシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。 
-   
-    
+   お使いの apiVersion が `2017-12-01` であり、仮想マシン スケール セットにシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。
+
+
 
    次の例は、ユーザー割り当てマネージド ID が割り当てられていない仮想マシン スケール セットからシステム割り当てマネージド ID を削除する方法を示しています。
-   
+
    ```json
    {
        "name": "[variables('vmssName')]",
@@ -157,7 +157,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 ### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>仮想マシン スケール セットにユーザー割り当て マネージド ID を割り当てる
 
 1. ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てるには、`resources` 要素に次のエントリを追加します。  `<USERASSIGNEDIDENTITY>` は、作成したユーザー割り当てマネージド ID の名前に置き換えてください。
-   
+
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
    お使いの apiVersion が `2018-06-01` の場合、ユーザー割り当てマネージド ID は `userAssignedIdentities` ディクショナリ形式で格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
@@ -173,12 +173,12 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
            }
        }
-    
+
    }
    ```   
 
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2017-12-01**
-    
+
    お使いの `apiVersion` が `2017-12-01` 以前の場合、ユーザー割り当てマネージド ID は `identityIds` 配列に格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの variables セクションに定義された変数に格納する必要があります。
 
    ```json
@@ -194,12 +194,12 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
        }
 
    }
-   ``` 
+   ```
 > [!NOTE]
 > オプションで、Azure リソース仮想マシン スケール セット拡張機能のマネージド ID をプロビジョニングできます。そのためには、これをテンプレートの `extensionProfile` 要素内に指定します。 Azure Instance Metadata Service (IMDS) の ID エンドポイントを使ってトークンを取得することもできるため、このステップは省略可能です。  詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
 3. 完了すると、テンプレートは以下の例のようになります。
-   
+
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**   
 
    ```json
@@ -234,7 +234,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -277,7 +277,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -305,9 +305,9 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
         }
    }
    ```
-   
+
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
-    
+
    仮想マシン スケール セットから 1 つのユーザー割り当てマネージド ID を削除するには、`userAssignedIdentities` ディクショナリからそれを削除します。
 
    システム割り当て ID がある場合は、`identity` 値の `type` 値でそれを保持します。
@@ -317,8 +317,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    仮想マシン スケール セットから 1 つのユーザー割り当てマネージド ID を削除するには、`identityIds` 配列からそれを削除します。
 
    システム割り当てマネージド ID がある場合は、`identity` 値の `type` 値でそれを保持します。
-   
+
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
-

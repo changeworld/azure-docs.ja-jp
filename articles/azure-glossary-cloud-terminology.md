@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659561"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978757"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -31,7 +31,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 
 ## <a name="account"></a>account
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
-「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](cost-management-billing/manage/office-365-account-for-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="api-app"></a>API アプリ
 [App Service アプリ](#app-service-app)の別名。
@@ -96,11 +96,11 @@ Azure サービスのデプロイと管理に使用される、セキュリテ�
 
 ## <a name="resource"></a>resource
 Azure ソリューションの一部であるアイテム。 各 Azure サービスを通じて、データベースや仮想マシンなど、さまざまなリソースをデプロイできます。   
-「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
+「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="resource-group"></a>resource group
 1 つのアプリケーションの関連リソースが保持される Resource Manager 内のコンテナーです。 リソース グループには、アプリケーションのすべてのリソースか、論理的にグループ化されたリソースのみを含めることができます。 組織のニーズに合わせてリソースをリソース グループに割り当てる方法を指定できます。  
-「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
+「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="arm-template"></a>Resource Manager テンプレート
 1 つ以上の Azure リソースを宣言により定義すると共に、デプロイされるリソース間の依存関係を定義する JSON ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。  
@@ -108,7 +108,7 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
-「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
+「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="role"></a>ロール (role)
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  

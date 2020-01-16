@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100352"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978157"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "70100352"
 開始する前に、Azure Resource Manager モデルでこのタスクを完了できるかを検討してください。 新たにデプロイする場合、Azure Resource Manager モデルを使用することをお勧めします。 [Azure Virtual Machines での SQL Server AlwaysOn 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムに要するコストを下げることができます。 このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用して、可用性グループを実装する方法について説明します。 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -377,7 +377,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
     これで SQL Server VM がプロビジョニングされ、実行されている状態になりましたが、これらは SQL Server と共に既定のオプションでインストールされています。
 
 ## <a name="initialize-the-failover-cluster-vms"></a>フェールオーバー クラスター VM の初期化
-このセクションでは、フェールオーバー クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的には次の処理が行われます。
+このセクションでは、フェールオーバー クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的な内容は次のとおりです。
 
 * すべてのサーバー:**フェールオーバー クラスタリング** 機能をインストールする必要があります。
 * すべてのサーバー:コンピューターの **管理者** として **CORP\Install** を追加する必要があります。
@@ -564,7 +564,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
              -Path "SQLSERVER:\SQL\$server2\Default\AvailabilityGroups\$ag" `
              -Database $db
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」を参照してください。
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。

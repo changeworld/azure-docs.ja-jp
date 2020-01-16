@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088797"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966040"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Azure Data Lake Storage Gen1 用 Python SDK を使用して、Data Lake Storage 
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure リソース グループ**。 手順については、[Azure リソース グループの作成](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
+* **Azure リソース グループ**。 手順については、[Azure リソース グループの作成](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
 
 ## <a name="install-the-modules"></a>モジュールをインストールする
 
@@ -130,10 +130,10 @@ pip install azure-datalake-store
     adlsAcctClient.account.delete(adlsAccountName)
     
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Python を使用した Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-python.md)。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [azure-datalake-store Python (ファイルシステム) リファレンス](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)

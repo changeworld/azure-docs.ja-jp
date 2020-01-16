@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bbdc17766e6df15fe0f1f6b4107f6f910fdcceaf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929757"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974704"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>PowerShell を使用して、オンプレミスから Azure にデータをコピーするための Data Factory パイプラインを作成する
 
@@ -28,11 +28,11 @@ ms.locfileid: "74929757"
 ## <a name="prerequisites"></a>前提条件
 
 - **SQL Server**。 このサンプルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。
-- **Azure Storage アカウント**。 このサンプルでは、Azure Blob Storage を**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」をご覧ください。
+- **Azure Storage アカウント**。 このサンプルでは、Azure Blob Storage を**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
 - **セルフホステッド統合ランタイム**。 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI ファイルをダウンロードして実行し、セルフホステッド統合ランタイムをマシンにインストールします。  
 
 ### <a name="create-sample-database-in-sql-server"></a>SQL Server にサンプル データベースを作成する
-1. オンプレミスの SQL Server データベースで、次の SQL スクリプトを使用して **emp** という名前のテーブルを作成します。 
+1. オンプレミスの SQL Server データベースで、次の SQL スクリプトを使用して **emp** という名前のテーブルを作成します。
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -67,7 +67,7 @@ ms.locfileid: "74929757"
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-リソース グループからデータ ファクトリを削除するには、次のコマンドを実行します。 
+リソース グループからデータ ファクトリを削除するには、次のコマンドを実行します。
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -75,22 +75,22 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは以下のコマンドを使用します。 
+このスクリプトでは以下のコマンドを使用します。
 
 | command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |
-| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | リンクされたサービスの資格情報を暗号化し、暗号化された資格情報で新しいリンクされたサービスの定義を生成します。 
+| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | リンクされたサービスの資格情報を暗号化し、暗号化された資格情報で新しいリンクされたサービスの定義を生成します。
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | データ ファクトリ内にリンクされたサービスを作成します。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | データ ファクトリ内にデータセットを作成します。 データセットは、パイプライン内のアクティビティの入出力を表します。 | 
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | データ ファクトリ内にデータセットを作成します。 データセットは、パイプライン内のアクティビティの入出力を表します。 |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | データ ファクトリ内にパイプラインを作成します。 パイプラインには、特定の操作を実行する 1 つ以上のアクティビティが含まれています。 このパイプラインでは、コピー アクティビティが Azure Blob Storage 内のある場所から別の場所にデータをコピーします。 |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | パイプラインの実行を作成します。 つまり、パイプラインを実行します。 |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | パイプライン内のアクティビティの実行 (アクティビティ実行) に関する詳細情報を取得します。 
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | パイプライン内のアクティビティの実行 (アクティビティ実行) に関する詳細情報を取得します。
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

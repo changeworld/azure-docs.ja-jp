@@ -2,18 +2,18 @@
 title: マネージド イメージからカスタム プールをプロビジョニングする - Azure Batch | Microsoft Docs
 description: マネージド イメージ リソースから Batch プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: lahugh
-ms.openlocfilehash: 82a5f79ca7b7a16cd8f7294ebd1f70816b40ad82
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: 3c7aafb5cfdd2e0127aa9969b904976cb93db614
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "73519244"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029750"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>マネージド イメージを使用して仮想マシンのプールを作成する
 
@@ -116,6 +116,6 @@ Azure では、次のものからマネージド イメージを準備できま�
 
 Packer を使用して VM を作成する詳細については、「[Build a Linux image with Packer](../virtual-machines/linux/build-image-with-packer.md)」 (Packer で Linux イメージを作成) または「[Build a Windows image with Packer](../virtual-machines/windows/build-image-with-packer.md)」 (Packer で Windows イメージを作成) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。

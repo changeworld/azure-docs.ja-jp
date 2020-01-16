@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448040"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティの[ロール](luis-concept-roles.md)、およびオプションのテキストの場所を示します。
@@ -24,9 +24,29 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 > [!CAUTION]
-> パターンに含まれるのは、サブコンポーネントではなく、機械学習されたエンティティの親のみです。
+> パターンに含まれるのは、サブコンポーネントではなく、機械学習エンティティの親のみです。
 
-## <a name="add-template-utterance-to-create-pattern"></a>パターンを作成するためのテンプレート発話の追加
+## <a name="adding-example-utterances-as-pattern"></a>発話の例をパターンとして追加する
+
+エンティティのパターンを追加する場合、[Intent details] (意図の詳細) ページからパターンを作成するのが_最も簡単な_方法です。 これにより、構文が発話の例と一致することが保証されます。
+
+1. [プレビュー LUIS ポータル](https://preview.luis.ai)で、 **[マイ アプリ]** ページからアプリを選択します。
+1. **[Intents]\(意図\)** 一覧ページで、テンプレート発話の作成元となる発話の例の意図名を選択します。
+1. [Intent details] (意図の詳細) ページで、テンプレート発話として使用する発話の例の行を選択し、コンテキスト ツール バーから **[+ Add as pattern]\(+ パターンとして追加\)** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![意図の詳細ページで発話の例をテンプレート パターンとして選択するスクリーンショット。](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. ポップアップ ボックスで、 **[Confirm patterns]\(パターンの確認\)** ページの **[完了]** を選択します。 エンティティのサブコンポーネント、制約、または記述子を定義する必要はありません。 機械学習エンティティのみを一覧にする必要があります。
+
+    > [!div class="mx-imgBorder"]
+    > ![意図の詳細ページで発話の例をテンプレート パターンとして確認するスクリーンショット。](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. テキストを省略可能として選択するなど、`[]` (角かっこ) を使用してテンプレートを編集する必要がある場合、この編集は **[パターン]** ページから行う必要があります。
+
+1. ナビゲーション バーで **[トレーニング]** を選択して、新しいパターンを使用してアプリをトレーニングします。
+
+## <a name="add-template-utterance-using-correct-syntax"></a>正しい構文を使用してテンプレート発話を追加する
 
 1. **[マイ アプリ]** ページでアプリの名前を選択してアプリを開き、左側のパネルの **[アプリのパフォーマンス向上]** の下で **[パターン]** を選択します。
 
@@ -79,7 +99,7 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
 * エンティティまたは意図フィルターの削除
 * 意図またはエンティティ ページでの既存の発話からのパターンの追加
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * チュートリアルに従って、pattern.any とロールを使用する[パターンをビルド](luis-tutorial-pattern.md)する方法を確認します。
 * お使いのアプリを[トレーニング](luis-how-to-train.md)する方法を確認します。

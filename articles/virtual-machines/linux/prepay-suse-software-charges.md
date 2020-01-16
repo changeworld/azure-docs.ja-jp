@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e4cab8963e3083d265d0254c81b78fbabb84a269
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091537"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973132"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
 
@@ -47,7 +47,7 @@ SUSE および RedHat のソフトウェア プランは、Azure portal で購�
 
 ## <a name="discount-applies-to-different-suse-vm-sizes"></a>異なる SUSE VM サイズに対する割引の適用
 
-予約 VM インスタンスと同様に、SUSE Linux プランは、インスタンス サイズの柔軟性を提供します。 購入した SUSE プランとは異なるサイズの VM をデプロイする場合でも、割引が適用されます。 詳細については、[ソフトウェア プランの割引が適用されるしくみ](../../billing/billing-understand-suse-reservation-charges.md)に関するページを参照してください。
+予約 VM インスタンスと同様に、SUSE Linux プランは、インスタンス サイズの柔軟性を提供します。 購入した SUSE プランとは異なるサイズの VM をデプロイする場合でも、割引が適用されます。 詳細については、[ソフトウェア プランの割引が適用されるしくみ](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)に関するページを参照してください。
 
 ## <a name="redhat-plan-discount"></a>RedHat プランの割引
 
@@ -58,20 +58,20 @@ RedHat プランの割引は、購入時に選択した VM サイズにのみ適
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>キャンセルと交換はできません
 
-購入した SUSE または RedHat プランを、キャンセルまたは交換することはできません。 適切なプランを購入するためには、使用状況を確認してください。 購入するものを決めるときに役立つ情報については、[ソフトウェア プランの割引が適用されるしくみ](../../billing/billing-understand-suse-reservation-charges.md)に関するページを参照してください。
+購入した SUSE または RedHat プランを、キャンセルまたは交換することはできません。 適切なプランを購入するためには、使用状況を確認してください。 購入するものを決めるときに役立つ情報については、[ソフトウェア プランの割引が適用されるしくみ](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)に関するページを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-予約を管理する方法については、「[Azure の予約の管理](../../billing/billing-manage-reserved-vm-instance.md)」をご覧ください。
+予約を管理する方法については、「[Azure の予約の管理](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)」をご覧ください。
 
-詳細については、次の記事を参照してください。
+詳細については、以下の記事をお読みください。
 
-- [Azure の予約とは](../../billing/billing-save-compute-costs-reservations.md)
-- [Azure での予約の管理](../../billing/billing-manage-reserved-vm-instance.md)
-- [SUSE の予約割引の適用方法について](../../billing/billing-understand-suse-reservation-charges.md)
-- [従量課金制サブスクリプションの予約使用量について](../../billing/billing-understand-reserved-instance-usage.md)
-- [エンタープライズ加入契約の予約使用量について](../../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Azure の予約とは](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Azure での予約の管理](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [SUSE の予約割引の適用方法について](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
+- [従量課金制サブスクリプションの予約使用量について](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [エンタープライズ加入契約の予約使用量について](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

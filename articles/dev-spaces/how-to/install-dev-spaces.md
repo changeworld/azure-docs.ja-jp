@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を AKS クラスターにインストールし、クライアント側ツールをインストールする方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325781"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770630"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure Dev Spaces を AKS にインストールし、クライアント側ツールをインストールする
 
@@ -58,7 +58,7 @@ Azure portal を使用して Dev Spaces をインストールする前に、以�
 * [サポートされているリージョン][supported-regions]の [AKS クラスター][create-aks-portal]。
 
 Azure portal を使用して Azure Dev Spaces をインストールするには:
-1. [Azure Portal][az-portal] にサインインします。
+1. [Azure portal][az-portal] にサインインする
 1. AKS クラスターに移動します。
 1. *[Dev Spaces]* をクリックします。
 1. *[Dev Spaces を有効にする]* を *[はい]* に変更して *[保存]* をクリックします。
@@ -76,7 +76,7 @@ Azure Dev Spaces クライアント側ツールを使用すると、ローカル
 * Visual Studio 2017 で、Web 開発ワークロードと [Visual Studio Tools for Kubernetes][visual-studio-k8s-tools] をインストールします。
 * [Windows][cli-win]、[Mac][cli-mac]、または [Linux][cli-linux] CLI をダウンロードしてインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 
@@ -86,7 +86,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md
 
 [az-portal]: https://portal.azure.com

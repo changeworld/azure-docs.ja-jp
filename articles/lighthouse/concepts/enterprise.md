@@ -3,12 +3,12 @@ title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae10ef2a18ace13d7b86347674c04f972e1ab8d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456904"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749213"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "75456904"
 
 Azure Lighthouse と Azure の委任されたリソース管理では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。  管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
 
-内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)を使用して透過性の要件を満たすことができます。 企業のテナントが管理側テナントと管理対象テナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、他のテナントのユーザーが実行したアクションを監視し、把握することができます。
+内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)を使用して透過性の要件を満たすことができます。 企業のテナントが管理側テナントと管理対象テナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、他のテナントのユーザーが実行したアクションを監視し、把握することができます。
 
 ## <a name="onboarding-process-considerations"></a>オンボード プロセスに関する考慮事項
 

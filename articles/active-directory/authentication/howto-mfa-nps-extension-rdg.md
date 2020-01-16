@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425442"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -120,11 +120,11 @@ NPS 拡張機能をインストールするには、Azure AD の GUID が必要�
 NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの Azure AD ID を入力する必要があります。 次の手順は、テナント ID を取得する方法を示しています。
 
 1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
-1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+1. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
 1. **[プロパティ]** を選択します。
 1. [プロパティ] ブレードで、次のように [ディレクトリ ID] の横の **[コピー]** アイコンをクリックして、ID をクリップボードにコピーします。
 
-   ![Azure portal からのディレクトリ ID の取得](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Azure portal からのディレクトリ ID の取得](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
@@ -301,7 +301,7 @@ Azure MFA 拡張機能がインストールされている NPS サーバーは�
 
    ![必要に応じて接続条件を指定する](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. Click **OK**. 対応するヘルプ トピックの表示を促すメッセージが表示されたら、 **[いいえ]** をクリックします。
+1. **[OK]** をクリックします。 対応するヘルプ トピックの表示を促すメッセージが表示されたら、 **[いいえ]** をクリックします。
 1. 新しいポリシーが一覧の一番上に表示されていること、ポリシーが有効になっていること、ポリシーがアクセスを許可していることを確認します。
 
    ![ポリシーを一覧の先頭に移動する](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -385,7 +385,7 @@ Azure MFA ログの関連イベントを次に示します。
 
 ![フィルター処理されたトラフィックを示す Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)
 

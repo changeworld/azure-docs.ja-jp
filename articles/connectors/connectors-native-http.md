@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787184"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888143"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントに発信呼び出しを送信する
 
@@ -40,7 +40,7 @@ ms.locfileid: "74787184"
 
 この組み込みトリガーは、エンドポイントに指定された URL に対して HTTP 呼び出しを実行し、応答を返します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
 1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「http」と入力します。 **[トリガー]** の一覧から、 **[HTTP]** トリガーを選択します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "74787184"
 
    この例では、トリガー名を "HTTP trigger" に変更して、このステップにわかりやすい名前を付けています。 また、この例では後で HTTP アクションを追加します。どちらの名前も一意である必要があります。
 
-1. ターゲット エンドポイントへの呼び出しに含める [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)の値を指定します。 トリガーでターゲット エンドポイントを確認する頻度を設定します。
+1. ターゲット エンドポイントへの呼び出しに含める [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)の値を指定します。 トリガーでターゲット エンドポイントを確認する頻度を設定します。
 
    **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
 
@@ -64,7 +64,7 @@ ms.locfileid: "74787184"
 
 この組み込みアクションは、エンドポイントに指定された URL に対して HTTP 呼び出しを実行し、応答を返します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーでロジック アプリを開きます。
 
    この例では、最初のステップとして HTTP トリガーを使用します。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74787184"
 
    この例では、アクション名を "HTTP action" に変更して、このステップにわかりやすい名前を付けています。
 
-1. ターゲット エンドポイントへの呼び出しに含める [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)の値を指定します。
+1. ターゲット エンドポイントへの呼び出しに含める [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)の値を指定します。
 
    **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
 
@@ -138,23 +138,23 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 
 トリガーとアクションのパラメーターの詳細については、以下のセクションを参照してください。
 
-* [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>出力の詳細
 
 ここでは、以下の情報を返す HTTP トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | 種類 | [説明] |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
-| status code | int | 要求の状態コード |
+| status code | INT | 要求の状態コード |
 |||
 
-| status code | 説明 |
+| status code | [説明] |
 |-------------|-------------|
-| 200 | OK |
+| 200 | [OK] |
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
@@ -163,6 +163,6 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

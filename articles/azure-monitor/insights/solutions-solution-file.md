@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401596"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977692"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
 > 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
-Azure での管理ソリューションは、[Resource Manager テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../../azure-resource-manager/templates/template-syntax.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
+Azure での管理ソリューションは、[Resource Manager テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../../azure-resource-manager/templates/template-syntax.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
 
 
 ## <a name="tools"></a>ツール
 
 ソリューション ファイルの操作には任意のテキスト エディターを使用できますが、次の記事で説明するように Visual Studio や Visual Studio Code で提供される機能を活用することをお勧めします。
 
-- [Visual Studio での Azure リソース グループの作成とデプロイ](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Visual Studio Code で Azure Resource Manager テンプレートを操作する](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Visual Studio での Azure リソース グループの作成とデプロイ](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Visual Studio Code で Azure Resource Manager テンプレートを操作する](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 
 ### <a name="dependencies"></a>依存関係
-**dependsOn** 要素は、他のリソースの[依存関係](../../azure-resource-manager/resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
+**dependsOn** 要素は、他のリソースの[依存関係](../../azure-resource-manager/templates/define-resource-dependency.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
 管理ソリューションでは、ビューを格納するために [Log Analytics ワークスペース](../../azure-monitor/platform/manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](solutions.md#log-analytics-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
@@ -200,7 +200,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 
 ### <a name="dependencies"></a>依存関係
-ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
+ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../../azure-resource-manager/templates/define-resource-dependency.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
 ### <a name="properties"></a>Properties
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 82738627b84713669cb6ddfc94c22b6f24b49e3a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530852"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750373"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure プラットフォーム ログを収集する
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、Log Analytics ワークスペースでリソース ログを収集する方法について説明します。このリソース ログの収集では、Azure Monitor Logs で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、Log Analytics ワークスペースでリソース ログを収集する方法について説明します。このリソース ログの収集では、Azure Monitor Logs で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 
 
 
 ## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>ワークスペースのプラットフォーム ログを使用して行えること
@@ -124,5 +124,5 @@ Azure Data Factory サービスの場合は、非常に詳細なログセット�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [リソース ログの詳細について読む](resource-logs-overview.md)
+* [リソース ログの詳細について読む](platform-logs-overview.md)
 * [Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)。

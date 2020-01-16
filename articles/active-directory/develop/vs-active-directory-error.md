@@ -1,5 +1,5 @@
 ---
-title: Azure AD の接続済みサービスでエラーを診断する
+title: Azure AD の接続済みサービスでエラーを診断する (Visual Studio)
 description: Active Directory の接続済みサービスで、サポートされていない認証の種類が検出された
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a7528bafd9183ae917370a6de35d1d94c3783e5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 379acbe8493f57fca97497b1b1483036ace905b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423165"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
@@ -50,7 +50,7 @@ MVC プロジェクトの場合、接続済みサービスは、以前にサー�
 
 最後に、接続済みサービスは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 接続済みサービスは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-* Windows 認証
+* [Windows 認証]
 * 個々のユーザー アカウント
 * 組織アカウント
 

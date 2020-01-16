@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231510"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769705"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74231510"
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
-Azure Functions テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
+Azure Functions テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 1. Visual Studio で、 **[ファイル]** メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
@@ -48,9 +48,9 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     ![Visual Studio の [新しい Azure Functions アプリケーションの作成] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | Setting      | 推奨値  | 説明                      |
+    | 設定      | 推奨値  | [説明]                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **バージョン** | Azure Functions 2.0 <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.0 ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.0 では、.NET Framework がサポートされています。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
+    | **Version** | Azure Functions 2.0 <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.0 ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.0 では、.NET Framework がサポートされています。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
     | **テンプレート** | Empty | 空の関数アプリを作成します。 |
     | **ストレージ アカウント**  | ストレージ エミュレーター | Durable Functions の状態管理にはストレージ アカウントが必要です。 |
 
@@ -75,7 +75,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
 新しい永続関数がアプリに追加されます。  新しい .cs ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
-| 方法 | FunctionName | 説明 |
+| 方法 | FunctionName | [説明] |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | 持続的オーケストレーションを管理します。 このケースでは、オーケストレーションが起動し、一覧が作成され、3 つの関数呼び出しの結果が一覧に追加されます。  3 つの関数呼び出しが完了すると、一覧が返されます。 |
 | **`SayHello`** | `<file-name>_Hello` | 関数から hello が返されます。 これが、オーケストレーションされるビジネス ロジックを含む関数です。 |
@@ -139,7 +139,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Visual Studio を使用して、C# の Durable Functions アプリを作成して発行しました。
 

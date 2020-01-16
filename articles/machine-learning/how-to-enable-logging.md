@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 36959804a0dff0c332c0e1511044769898f6f68d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534355"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893994"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,22 +83,6 @@ compute_target = ComputeTarget.attach(
 compute.wait_for_completion(show_output=True)
 ```
 
-## <a name="logging-during-image-creation"></a>イメージ作成時のログ記録
-
-イメージの作成時のログ記録を有効にすると、ビルド プロセス中のエラーを確認できます。 `wait_for_deployment()` 関数で `show_output` パラメーターを設定します。
-
-```python
-from azureml.core.webservice import Webservice
-
-service = Webservice.deploy_from_image(deployment_config=your_config,
-                                       image=image,
-                                       name="example-image",
-                                       workspace=ws
-                                       )
-
-service.wait_for_deployment(show_output=True)
-```
-
 ## <a name="logging-for-deployed-models"></a>デプロイ済みモデルのログ記録
 
 以前にデプロイした Web サービスからログを取得するには、サービスを読み込んで、`get_logs()` 関数を使用します。 ログには、デプロイ中に発生したエラーに関する詳細情報が含まれている場合があります。
@@ -117,7 +101,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-Azure Machine Learning Studio で Application Insights を使用する方法の詳細については、[ハウツー ガイド](service/how-to-enable-app-insights.md)を参照してください。
+Azure Machine Learning Studio で Application Insights を使用する方法の詳細については、[ハウツー ガイド](how-to-enable-app-insights.md)を参照してください。
 
 ## <a name="python-native-logging-settings"></a>Python のネイティブ ログ記録の設定
 

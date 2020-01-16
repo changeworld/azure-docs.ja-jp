@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449798"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982709"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -192,7 +192,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 最後に、オーケストレーターのように機能するテンプレートがあります。 このテンプレートには、機能テンプレートをデプロイする役割があります。
 
-[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)については別の記事でも詳しく説明しています。
+[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md)については別の記事でも詳しく説明しています。
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>アプリケーションと基になるインフラストラクチャのデプロイ
 
-インフラストラクチャのデプロイには多くの手順が関係します。 [リンクされたテンプレート](../azure-resource-manager/resource-group-linked-templates.md)を使用しているため、それらのテンプレートにパブリック エンドポイント (HTTP または HTTPS) からアクセスできる必要があります。 このためには、GitHub 上のリポジトリ、Azure Blob Storage アカウント、または別の保存場所を使用できます。 アップロードされたテンプレート成果物は、プライベート モードで保持されるが、なんらかの形式の Shared Access Signature (SAS) トークンを使用してアクセスできるため、安全性が保たれます。 次の例では、Azure Storage BLOB のテンプレートを含むインフラストラクチャをデプロイする方法を説明します。
+インフラストラクチャのデプロイには多くの手順が関係します。 [リンクされたテンプレート](../azure-resource-manager/templates/linked-templates.md)を使用しているため、それらのテンプレートにパブリック エンドポイント (HTTP または HTTPS) からアクセスできる必要があります。 このためには、GitHub 上のリポジトリ、Azure Blob Storage アカウント、または別の保存場所を使用できます。 アップロードされたテンプレート成果物は、プライベート モードで保持されるが、なんらかの形式の Shared Access Signature (SAS) トークンを使用してアクセスできるため、安全性が保たれます。 次の例では、Azure Storage BLOB のテンプレートを含むインフラストラクチャをデプロイする方法を説明します。
 
 1. **新しいリリース定義**を作成し、空の定義を選択します。 次に、新しく作成された環境の名前を、パイプラインに関連するものに変更する必要があります。
 

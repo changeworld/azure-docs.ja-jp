@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 01/14/2020
+ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903306"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045136"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -111,8 +111,8 @@ Node.js 用 Azure IoT Hub サービス SDK:
 
 Python 用 Azure IoT Hub サービス SDK: 
 
-* [pip](https://pypi.python.org/pypi/azure-iothub-service-client/) からダウンロードする
-* [ソース コード](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
+* [pip](https://pypi.python.org/pypi/azure-iot-hub/) からダウンロードする
+* [ソース コード](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 C 用 Azure IoT Hub サービス SDK: 
 
@@ -160,7 +160,7 @@ Python 用の Azure Provisioning Device SDK および Azure Provisioning Service
 * [ソース コード](https://github.com/Azure/azure-iot-device)
 * pip から [Device SDK](https://pypi.org/project/azure-iot-device/) および [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) をダウンロードします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT SDK では、開発に役立つ一連のツールも提供しています。
 * [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics): IoT Hub との接続に関連する問題の診断に役立つ、クロスプラットフォーム コマンド ライン ツール。

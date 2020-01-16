@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367112"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -78,7 +78,7 @@ ms.locfileid: "71064124"
 
 4. どちらの計算でも true が返されない場合、計算結果として **Adult** が返されます。
 
-アプリケーションが他の方法で確実に DOB または国/地域のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 例:
+アプリケーションが他の方法で確実に DOB または国/地域のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 次に例を示します。
 
 - ユーザーが成人であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Adult** の値で更新します。
 - ユーザーが未成年者であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Minor** の値で更新し、必要に応じて **consentProvidedForMinor** を設定します。
@@ -173,6 +173,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 </ClaimsTransformations>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ユーザー データを削除およびエクスポートする方法については、[ユーザー データの管理](manage-user-data.md)に関するページを参照してください。
+- 利用規約のプロンプトを実装するカスタム ポリシーの例については、「[A B2C IEF Custom Policy - Sign Up and Sign In with 'Terms of Use' prompt (B2C IEF カスタム ポリシー - '利用規約' プロンプトを使ったサインアップおよびサインイン)](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou)」を参照してください。

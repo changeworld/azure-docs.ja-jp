@@ -3,7 +3,7 @@ title: Azure 仮想マシンでの Visual Studio の使用
 description: Azure 仮想マシンでの Visual Studio の使用。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
-ms.author: phillee
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851402"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895943"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
@@ -111,7 +111,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](/azure/devtest-lab/devtest-lab-developer-lab)」が最適な資料です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。
 
 * [Azure Portal を使用した VM の作成](quick-create-portal.md)

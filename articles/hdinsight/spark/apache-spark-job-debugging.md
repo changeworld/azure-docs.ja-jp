@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775335"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932130"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      * Scala バージョン
      * クラスターに関連付けられているイベント ログ ディレクトリ
      * アプリケーションの Executor のコア数
-     * その他
+     * など
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>完了したジョブに関する情報を Spark History Server で探す
 
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Spark History Server の完了済みアプリケーション](./media/apache-spark-job-debugging/view-completed-applications.png "Spark History Server2 を起動する")
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [拡張された Spark History Server を使用して Apache Spark ジョブをデバッグする](apache-azure-spark-history-server.md)
@@ -116,7 +116,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
-* [分散型深層学習用に Azure HDInsight Spark で Caffe を使用する](apache-spark-deep-learning-caffe.md)
+
 
 ### <a name="for-spark-developers"></a>Spark 開発者向け
 

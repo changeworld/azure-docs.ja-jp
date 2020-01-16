@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: a808387c891b4078092c5cac1bf95df8472ff0f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529553"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974133"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning と Machine Learning Studio (クラシック) の違い
 
@@ -29,7 +29,7 @@ ms.locfileid: "75529553"
 Azure Machine Learning デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用されています。また、スケーラブルで、Azure Machine Learning に完全に統合されています。  
 
 > [!TIP]
-> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/service/ui-concept-visual-interface) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに__加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
+> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに__加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比較:Azure Machine Learning と Machine Learning Studio (クラシック)
 

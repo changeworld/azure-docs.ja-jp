@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610609"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976102"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -97,7 +97,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | **データの種類** | **接続する方法** | **データ コネクタか?** | **コメント** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [AWS の接続](connect-aws.md) | V | |
-| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)| V | |
+| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)| V | |
 | AuditLogs | [Azure AD の接続](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [Azure AD の接続](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
@@ -105,7 +105,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | AzureNetworkAnalytics_CL  | [トラフィック分析スキーマ](../network-watcher/traffic-analytics.md) [トラフィック分析](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [CEF の接続](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Office 365 の接続](connect-office-365.md) | V | |
-| SecurityEvents | [Windows セキュリティ イベントの接続](connect-windows-security-events.md)  | V | セキュリティで保護されていないプロトコル ブックについては、[セキュリティで保護されていないプロトコル ブックの設定](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)に関する記事を参照してください。  |
+| SecurityEvents | [Windows セキュリティ イベントの接続](connect-windows-security-events.md)  | V | セキュリティで保護されていないプロトコル ブックについては、[セキュリティで保護されていないプロトコル ブックの設定](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)に関する記事を参照してください。  |
 | syslog | [Syslog の接続](connect-syslog.md) | V | |
 | Microsoft Web アプリケーション ファイアウォール (WAF) - (AzureDiagnostics) |[Microsoft Web アプリケーション ファイアウォールの接続](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Symantec の接続](connect-symantec.md) | V | |

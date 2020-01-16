@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226535"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977613"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -357,7 +357,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
 }
 ```
 
-上記のパラメーター ファイルが metricfromLogsAlertStatic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md)を使用してログのメトリック アラートを作成できます。
+上記のパラメーター ファイルが metricfromLogsAlertStatic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/templates/deploy-portal.md)を使用してログのメトリック アラートを作成できます。
 
 次の Azure PowerShell コマンドを使用することもできます。
 
@@ -673,7 +673,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 }
 ```
 
-上記のパラメーター ファイルが metricfromLogsAlertDynamic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md)を使用してログのメトリック アラートを作成できます。
+上記のパラメーター ファイルが metricfromLogsAlertDynamic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/templates/deploy-portal.md)を使用してログのメトリック アラートを作成できます。
 
 次の Azure PowerShell コマンドを使用することもできます。
 
@@ -687,7 +687,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [メトリック アラート](alerts-metric.md)の詳細を確認します。
 - [Azure でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。

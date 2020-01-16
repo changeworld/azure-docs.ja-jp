@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374000"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -40,7 +40,7 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 
 次のセクションでは、新しい SQL Server 仮想マシンのストレージを構成する方法について説明します。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 SQL Server のギャラリー イメージを使用して Azure VM をプロビジョニングするときは、 **[SQL Server の設定]** タブの **[構成の変更]** を選択して、パフォーマンス最適化ストレージの構成ページを開きます。 既定値のままにすることも、ワークロードに基づいてご自分のニーズに最適なディスク構成の種類に変更することもできます。 
 
@@ -96,10 +96,10 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
 
-* SQL データ
+* SQL data
 * SQL ログ
 * その他 (非 SQL ストレージ)
-* 使用可能
+* 利用可能
 
 ストレージ設定を変更するには、 **[設定]** の下で **[構成]** を選択します。 
 
@@ -108,7 +108,6 @@ Azure によるストレージ設定の構成方法の詳細については、�
 SQL Server VM の作成プロセス中に構成されたドライブのディスク設定を変更できます。 **[ドライブの拡張]** を選択するとドライブ変更ページが開き、ディスクの種類を変更したり、ディスクを追加したりすることができます。 
 
 ![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
-
 
 
 ## <a name="storage-configuration"></a>ストレージの構成
@@ -124,14 +123,14 @@ SQL Server VM の作成プロセス中に構成されたドライブのディス
 
 Azure では、次の設定を使用して、SQL Server VM で記憶域プールを作成します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | --- | --- |
 | ストライプ サイズ |256 KB (データ ウェアハウス)、64 KB (トランザクション) |
 | ディスク サイズ |各 1 TB |
-| キャッシュ |読み取り |
+| キャッシュ |Read |
 | アロケーション サイズ |64 KB NTFS アロケーション ユニット サイズ |
-| 復旧 | シンプルな復元 (回復性なし) |
-| 列数の合計 |データ ディスクの数 (最大 8)<sup>1</sup> |
+| Recovery | シンプルな復元 (回復性なし) |
+| 列の数 |データ ディスクの数 (最大 8)<sup>1</sup> |
 
 
 <sup>1</sup> 記憶域プールの作成後、その記憶域プールの列数を変更することはできません。
@@ -141,7 +140,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 
 次の表では、使用可能な 3 つのワークロードの種類のオプションと、対応する最適化について説明します。
 
-| ワークロードの種類 | 説明 | 最適化 |
+| ワークロードの種類 | [説明] | 最適化 |
 | --- | --- | --- |
 | **全般** |ほとんどのワークロードをサポートする既定の設定 |なし |
 | **トランザクション処理** |従来のデータベース OLTP ワークロード用にストレージを最適化します |トレース フラグ 1117<br/>トレース フラグ 1118 |
@@ -150,6 +149,6 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 > [!NOTE]
 > ワークロードの種類を指定するには、SQL 仮想マシンをプロビジョニングしているときに、ストレージの構成手順でそのワークロードの種類を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。

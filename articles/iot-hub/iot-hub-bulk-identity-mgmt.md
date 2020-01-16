@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429253"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
@@ -91,7 +91,7 @@ while(true)
 
 ## <a name="export-devices"></a>デバイスのエクスポート
 
-**ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/common/storage-security-guide.md#authorization) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.yml) BLOB コンテナーにエクスポートすることができます。
+**ExportDevicesAsync** メソッドでは、Shared Access Signature (SAS) を使用して IoT ハブの ID レジストリ全体を Azure Storage BLOB コンテナーにエクスポートすることができます。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。
 
 このメソッドでは、制御対象の BLOB コンテナーにデバイス情報のバックアップを確実に作成することができます。
 
@@ -257,7 +257,7 @@ JobProperties importJob =
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。 **importMode** プロパティには、次のオプションが用意されています。
 
-| importMode | 説明 |
+| importMode | [説明] |
 | --- | --- |
 | **createOrUpdate** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **create** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
@@ -419,7 +419,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 ハブ間でデバイスを移動する方法など、こうした操作の多くは、[IoT Hub を複製する方法に関するページの「IoT Hub に登録されているデバイスを管理する」セクション](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)で使用されています。 
 

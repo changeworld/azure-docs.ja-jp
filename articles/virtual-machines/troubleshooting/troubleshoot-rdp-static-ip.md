@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: d1cb34f1666db0e213a41fa8d2e684ba148b7e61
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7756d4c808e104b0de14e1cea4af5e843cff755c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088457"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981779"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>静的 IP のために Azure Virtual Machines にリモート デスクトップ接続できない
 
 この記事では、Azure Windows Virtual Machines (VM) に静的 IP を構成した後で VM にリモート デスクトップ接続できない問題について説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/management/deployment-models.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -71,6 +71,6 @@ VM には、Windows 内のネットワーク インターフェイスで定義�
 
         netsh interface ip show config
 
-    この時点で、VM を再起動する必要はありません。 VM は到達可能に戻ります。
+    この時点で VM を再起動する必要はありません。 VM は到達可能に戻ります。
 
 その後、VM に静的 IP を構成したい場合は、[VM への静的 IP アドレスの構成](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)に関するページをご覧ください。

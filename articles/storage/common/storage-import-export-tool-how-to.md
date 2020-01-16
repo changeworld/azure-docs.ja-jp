@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977320"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978456"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Azure Import/Export ツールの使用 
+# <a name="using-the-azure-importexport-tool"></a>Azure Import/Export ツールの使用
 
 Azure Import/Export ツール (WAImportExport.exe) は、Azure Import/Export サービスのジョブを作成、管理するために使用されます。これによりお客様は、Azure Blob Storage との間で大量のデータを転送できるようになります。
 
@@ -25,11 +25,11 @@ Azure Import/Export ツール (WAImportExport.exe) は、Azure Import/Export サ
 
 - Azure Import/Export ツールをインストールし設定する。
 - お客様のドライブから Azure Blob Storage にデータをインポートするジョブのために、ハード ドライブを準備する。
-- コピー ログ ファイルを使用して、ジョブの状態を確認する。 
-- インポート ジョブを修復する。 
-- エクスポート ジョブを修復する。 
-- Azure Import/Export ツールのトラブルシューティングを行う。 
+- コピー ログ ファイルを使用して、ジョブの状態を確認する。
+- インポート ジョブを修復する。
+- エクスポート ジョブを修復する。
+- Azure Import/Export ツールのトラブルシューティングを行う。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Setting up the WAImportExport tool](storage-import-export-tool-setup.md) (WAImportExport ツールの設定)

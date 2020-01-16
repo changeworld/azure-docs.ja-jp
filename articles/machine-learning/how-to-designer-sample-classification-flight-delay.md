@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: a8564ae8c3d7499dd3d194ec61a9b24b1d0d2393
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 02831555222597eacf9cf055f03fc65e1f599514
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660182"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763547"
 ---
 # <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、R を使用して、フライトの遅延を予測する
 
@@ -123,6 +123,6 @@ Select Columns モジュールを利用することで、年度、月、時間�
 - [サンプル 1 - 回帰: 自動車の価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
 - [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [サンプル 3 -特徴選択による分類:収入予測](how-to-designer-sample-classification-predict-income.md)
-- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [サンプル 5 - 分類:顧客離れを予測する](service/how-to-designer-sample-classification-churn.md)
+- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [サンプル 5 - 分類:顧客離れを予測する](how-to-designer-sample-classification-churn.md)
 - [サンプル 7 - テキスト分類:Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)

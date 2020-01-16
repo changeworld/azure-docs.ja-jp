@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386070"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972942"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
@@ -52,7 +52,7 @@ ms.locfileid: "75386070"
 
 ## <a name="setup-diagnostics-extension"></a>診断拡張機能の設定
 
-まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-quickstart-create-account.md)。 ストレージ アカウントが**クラシック デプロイ モデル**を指定して作成されたことを確認します。
+まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-account-create.md)。 ストレージ アカウントが**クラシック デプロイ モデル**を指定して作成されたことを確認します。
 
 次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]**  >  **[アクセス キー]** を選択し、 **[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
 

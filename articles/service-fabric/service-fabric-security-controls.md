@@ -1,20 +1,16 @@
 ---
 title: Azure Service Fabric のセキュリティ コントロール
-description: Azure Service Fabric を評価するためのセキュリティ コントロールのチェックリスト
-services: service-fabric
-documentationcenter: ''
+description: Azure Service Fabric のセキュリティ コントロールについて説明します。 組み込みのセキュリティ コントロールのチェックリストが含まれています。
 author: msmbaldwin
-manager: rkarlin
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886225"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645431"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric のセキュリティ コントロール
 
@@ -31,7 +27,7 @@ ms.locfileid: "70886225"
 | ネットワークの分離とファイアウォールのサポート| はい | ネットワーク セキュリティ グループ (NSG) の使用。 |
 | 強制トンネリングのサポート| はい | Azure ネットワークでは、強制トンネリングを提供します。 |
 
-## <a name="monitoring--logging"></a>監視とログ記録
+## <a name="monitoring--logging"></a>監視およびログ記録
 
 | セキュリティ コントロール | はい/いいえ | メモ|
 |---|---|--|
@@ -44,7 +40,7 @@ ms.locfileid: "70886225"
 | セキュリティ コントロール | はい/いいえ | メモ|
 |---|---|--|
 | 認証| はい | 認証は Azure Active Directory を介して行われます。 |
-| Authorization| はい | SFRP 経由の呼び出しのための ID およびアクセス管理 (IAM)。 クラスター エンド ポイントは、ユーザーと管理者という 2 つのロールで直接呼び出すことができます。ユーザーは API をいずれかのロールにマッピングできます。 |
+| 承認| はい | SFRP 経由の呼び出しのための ID およびアクセス管理 (IAM)。 クラスター エンド ポイントは、ユーザーと管理者という 2 つのロールで直接呼び出すことができます。ユーザーは API をいずれかのロールにマッピングできます。 |
 
 ## <a name="data-protection"></a>データ保護
 
@@ -62,6 +58,6 @@ ms.locfileid: "70886225"
 |---|---|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

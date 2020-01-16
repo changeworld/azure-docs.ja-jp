@@ -1,19 +1,16 @@
 ---
 title: Azure Site Recovery で追加した Azure VM ディスクのレプリケーションを有効にする
 description: この記事では、Azure Site Recovery のディザスター リカバリーで可能な、Azure VM に追加されたディスクのレプリケーションを有効にする方法を説明します。
-services: site-recovery
-author: asgang
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
-ms.author: asgang
-ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084982"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973792"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM に追加されたディスクのレプリケーションを有効にする
 
@@ -26,7 +23,7 @@ VM に追加したディスクのレプリケーションの有効化は、マ�
 
 -   VM のレプリケーション正常性では警告が表示され、ポータルのメモでは、1 つまたは複数のディスクが保護に使用できることが通知されます。
 -   追加したディスクの保護を有効にした場合、ディスクの初期レプリケーション後に警告は表示されなくなります。
--   ディスクのレプリケーションを有効にしないことを選択した場合、この警告は無視できます。
+-   ディスクのレプリケートを有効にしないことを選択した場合は、この警告の無視を選択できます。
 
 ![新しいディスクの追加](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
@@ -34,22 +31,22 @@ VM に追加したディスクのレプリケーションの有効化は、マ�
 
 ## <a name="before-you-start"></a>開始する前に
 
-この記事では、ディスクを追加する VM にディザスター リカバリーが既にセットアップ済みであることが前提となっています。 まだである場合は、「[Azure VM のディザスター リカバリーを設定する](azure-to-azure-tutorial-enable-replication.md)」チュートリアルを参照してください。 
+この記事では、ディスクを追加する VM にディザスター リカバリーが既にセットアップ済みであることが前提となっています。 まだである場合は、「[Azure VM のディザスター リカバリーを設定する](azure-to-azure-tutorial-enable-replication.md)」チュートリアルを参照してください。
 
-## <a name="enable-replication-for-an-added-disk"></a>追加したディスクのレプリケーションを有効にする 
+## <a name="enable-replication-for-an-added-disk"></a>追加したディスクのレプリケーションを有効にする
 
-追加したディスクのレプリケーションを有効にするには、次の操作を行います。
+追加されたディスクのレプリケーションを有効にするには、次の手順を実行します。
 
 1. コンテナーの **[レプリケートされたアイテム]** で、ディスクを追加した VM をクリックします。
 2. **[ディスク]** をクリックし、レプリケーションを有効にするデータ ディスクを選択します (これらのディスクの状態は**未保護**です。)。
 3.  **[ディスクの詳細]** で、 **[レプリケーションを有効にする]** をクリックします。
 
-    ![追加したディスクのレプリケーションを有効にする](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
+    ![追加されたディスクのレプリケーションを有効にする](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
 レプリケーションの有効化ジョブを実行して初期レプリケーションが完了すると、ディスク問題のレプリケーション正常性についての警告は削除されます。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト フェールオーバーの実行に関する[詳細を確認](site-recovery-test-failover-to-azure.md)する。

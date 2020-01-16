@@ -12,20 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 12/17/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378264"
 ---
 # <a name="registration-management"></a>登録管理
-
-## <a name="overview"></a>概要
 
 ここでは、プッシュ通知を受信するために通知ハブにデバイスを登録する方法について説明します。 また、登録の概要、デバイスを登録するための 2 つの主要パターン (デバイスから通知ハブに直接登録する方法と、アプリケーション バックエンド経由で登録する方法) についても説明します。
 
@@ -42,7 +40,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 ### <a name="installations"></a>インストール
 
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 
@@ -50,7 +48,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 - このインストール モデルは、特定のデバイスに通知を直接送信できるようになる特殊なタグ形式 (`$InstallationId:{INSTALLATION_ID}`) をサポートしています。 たとえば、アプリのコードがこの特定のデバイスのインストール ID `joe93developer` を設定している場合、開発者は `$InstallationId:{joe93developer}` タグに通知を送信するときにこのデバイスを対象にすることができます。 こうすることで、コードを追加することなく、特定のデバイスを対象にすることができます。
 - また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは、登録時にタグを更新する場合に役立ちます。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)に関するページ、または[インストール プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation)に関するページを参照してください。
+インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](/rest/api/notificationhubs/create-overwrite-installation)に関するページ、または[インストール プロパティ](/dotnet/api/microsoft.azure.notificationhubs.installation)に関するページを参照してください。
 
 ```json
 // Example installation format to show some supported properties
@@ -100,7 +98,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)を使用する場合、デバイスのインストールでは、そのデバイスに関連付けられたすべてのテンプレートも JSON 形式で保持されます (上のサンプルを参照)。 テンプレート名は、1 つのデバイスに複数のテンプレートを対象にすることができます。
 
-各テンプレート名が、テンプレートの本文とオプションの一連のタグにマップされます。 さらに、各プラットフォームには、テンプレート プロパティが他にもある場合があります。 (WNS を使用する) Windows ストアと (MPNS を使用する) Windows Phone 8 の場合、その他のヘッダー セットをテンプレートに含めることができます。 APNs の場合、expiry プロパティを定数またはテンプレート式に設定することができます。 インストール プロパティの一覧については、インストール プロパティの一覧については、 [REST でインストールを作成または上書きする方法](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) に関するトピックを参照してください。
+各テンプレート名が、テンプレートの本文とオプションの一連のタグにマップされます。 さらに、各プラットフォームには、テンプレート プロパティが他にもある場合があります。 (WNS を使用する) Windows ストアと (MPNS を使用する) Windows Phone 8 の場合、その他のヘッダー セットをテンプレートに含めることができます。 APNs の場合、expiry プロパティを定数またはテンプレート式に設定することができます。 インストール プロパティの一覧については、インストール プロパティの一覧については、 [REST でインストールを作成または上書きする方法](/rest/api/notificationhubs/create-overwrite-installation) に関するトピックを参照してください。
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Windows ストア アプリのセカンダリ タイル
 
@@ -112,7 +110,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 クライアント アプリからデバイス登録を管理する場合、バックエンドは通知の送信のみを担当します。 クライアント アプリは PNS ハンドルを最新の状態に維持し、タグを登録します。 このパターンについて次の図で説明します。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![デバイスから登録する](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 デバイスは、まず PNS から PNS ハンドルを取得してから、通知ハブに直接登録します。 登録に成功すると、アプリ バックエンドからその登録に対して通知を送信できるようになります。 通知の送信方法の詳細については、 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)に関するページを参照してください。
 
@@ -125,11 +123,11 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>インストールを使用してデバイスから通知ハブに登録するコード例
 
-現時点では、 [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)を使用する必要があります。
+現時点では、 [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation)を使用する必要があります。
 
 また、インストールを更新する場合は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) の PATCH メソッドを使用することもできます。
 
-```
+```csharp
 class DeviceInstallation
 {
     public string installationId { get; set; }
@@ -210,7 +208,7 @@ else
 
 これらのメソッドで、呼び出すデバイスの登録を作成または更新します。 つまり、ハンドルまたはタグを更新するには、登録全体を上書きする必要があります。 登録は一時的なものなので、そのデバイスに必要な最新のタグを保存できる信頼性の高いストアを常に用意する必要があります。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -265,7 +263,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 バックエンドから登録を管理するには、追加のコードを作成する必要があります。 デバイスのアプリは、アプリが起動するたびに、最新の PNS ハンドル (タグとテンプレートも) をバックエンドに提供する必要があります。また、バックエンドは、通知ハブでそのハンドルを更新する必要があります。 この設計について次の図で説明します。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![登録管理](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 バックエンドから登録を管理する利点として、デバイスの対応するアプリがアクティブではない場合でも、登録に対してタグを変更できることと、タグを登録に追加する前にクライアント アプリを認証できることがあります。
 
@@ -275,7 +273,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 また、インストールを更新する場合は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) の PATCH メソッドを使用することもできます。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -319,9 +317,9 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>登録 ID を使用してデバイスから通知ハブに登録するコード例
 
-アプリ バックエンドから、登録に対して基本の CRUDS 操作を実行できます。 例:
+アプリ バックエンドから、登録に対して基本の CRUDS 操作を実行できます。 次に例を示します。
 
-```
+```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
 // create a registration description object of the correct type, e.g.

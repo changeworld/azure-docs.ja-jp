@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706053"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744776"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -29,7 +29,7 @@ HDInsight では、クラスター内のワーカー ノードの数をスケー
 
 Microsoft では、クラスターをスケーリングするための次のユーティリティを提供しています。
 
-|ユーティリティ | 説明|
+|ユーティリティ | [説明]|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
@@ -107,7 +107,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
 保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN **Resource Manager UI** を使用できます。
 
-1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ページで開きます。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ページで開かれます。
 2. メイン ビューから、 **[クラスター ダッシュボード]**  >  **[Ambari ホーム]** に移動します。 クラスターの資格情報を入力します。
 3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
 4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
@@ -126,7 +126,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 yarn application -kill <application_id>
 ```
 
-例:
+次に例を示します。
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -147,10 +147,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-`/var/log/hadoop/hdfs/` フォルダーから、クラスターがスケーリングされた時刻付近の名前ノード ログを確認すると、セーフ モードに入った時刻がわかります。 ログ ファイルの名前は `Hadoop-hdfs-namenode-hn0-clustername.*` です。
+`/var/log/hadoop/hdfs/` フォルダーから、クラスターがスケーリングされた時刻付近の名前ノード ログを確認すると、セーフ モードに入った時刻がわかります。 ログ ファイルの名前は `Hadoop-hdfs-namenode-<active-headnode-name>.*` です。
 
 上記のエラーの根本原因は、Hive がクエリの実行中に HDFS 内の一時ファイルを利用することです。 HDFS がセーフ モードになると、Hive は HDFS に書き込めなくなるため、クエリを実行できません。 HDFS 内の一時ファイルは、各ワーカー ノード VM にマウントされたローカル ドライブにあり、最低 3 つのレプリカにあるその他のワーカー ノード間でレプリケートされます。
 
@@ -194,7 +194,7 @@ Hive で一時ファイルが残っている場合は、これらのファイル
     ファイルが存在する場合の出力例は次のとおりです。
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info
@@ -243,7 +243,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
     balancer
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight クラスターを自動的にスケーリングする](hdinsight-autoscale-clusters.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460364"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -23,7 +23,7 @@ ms.locfileid: "72038187"
 
 * ファイルの内容を取得する
 * ファイル共有の最大サイズ (*クォータ*) を設定する
-* 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
+* 共有で定義されている保存されたアクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 * ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 * ファイルを、同じストレージ アカウント内の BLOB にコピーする
 * トラブルシューティングに Azure Storage メトリックを使用する
@@ -36,7 +36,7 @@ Azure Files の詳細については、「[Azure Files とは](storage-files-int
 
 Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` および `WindowsAzure.Storage` API によって抽象化されています。
 
-API | いつ使用するか | メモ
+API | 使用する場合 | メモ
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
 [Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Microsoft.Azure.Storage.File` を使用する方法について説明します。
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>ファイルまたはファイル共有の Shared Access Signature の生成
 
-Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。 また、ファイル共有に共有アクセス ポリシーを作成して、Shared Access Signature を管理することもできます。 共有アクセス ポリシーを使用すると、SAS が危害を受けた場合に SAS を失効させることができるため、共有アクセス ポリシーを作成することをお勧めします。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。 また、保存されているアクセス ポリシーをファイル共有に作成して、Shared Access Signature を管理することもできます。 保存されているアクセス ポリシーを使用すると、SAS が危害を受けた場合に SAS を失効させることができるため、保存されているアクセス ポリシーを作成することをお勧めします。
 
-次の例では、共有に対して共有アクセス ポリシーを作成します。 この例では、そのポリシーを使用して、共有内のファイルの SAS に制約を指定しています。
+次の例では、共有に対して保存されているアクセス ポリシーを作成します。 この例では、そのポリシーを使用して、共有内のファイルの SAS に制約を指定しています。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
@@ -480,7 +480,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Files の詳細については、次のリソースを参照してください。
 

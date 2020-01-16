@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438835"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969244"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -36,23 +36,23 @@ ms.locfileid: "75438835"
 > この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Apache Spark アクティビティを使用したデータ変換](../transform-data-using-spark.md)に関するページをご覧ください。
 
 ## <a name="introduction"></a>はじめに
-Spark アクティビティは、Data Factory でサポートされる[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 1 つです。 このアクティビティでは、指定された Spark プログラムが Azure HDInsight の Spark クラスターで実行されます。 
+Spark アクティビティは、Data Factory でサポートされる[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 1 つです。 このアクティビティでは、指定された Spark プログラムが Azure HDInsight の Spark クラスターで実行されます。
 
 > [!IMPORTANT]
 > - Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
 > - Spark アクティビティは、既存の (自分の) HDInsight Spark クラスターのみをサポートします。 オンデマンド HDInsight のリンクされたサービスはサポートされません。
 
 ## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>チュートリアル:Spark アクティビティを含むパイプラインを作成する
-Spark アクティビティで Data Factory パイプラインを作成する一般的な手順を次に示します。 
+Spark アクティビティで Data Factory パイプラインを作成する一般的な手順を次に示します。
 
 * データ ファクトリを作成します。
 * HDInsight Spark クラスターに関連付けられているストレージをデータ ファクトリにリンクする、Azure Storage のリンクされたサービスを作成します。
 * HDInsight の Spark クラスターをデータ ファクトリにリンクする、HDInsight のリンクされたサービスを作成します。
-* Storage のリンクされたサービスを参照するデータセットを作成します。 現時点では、出力が生成されていなくても、アクティビティに対する出力データセットを指定する必要があります。 
+* Storage のリンクされたサービスを参照するデータセットを作成します。 現時点では、出力が生成されていなくても、アクティビティに対する出力データセットを指定する必要があります。
 * 作成した HDInsight のリンクされたサービスを参照する、Spark アクティビティを使用したパイプラインを作成します。 アクティビティは、前の手順で出力データセットとして作成したデータセットで構成されます。 出力データセットは、スケジュール (1 時間に 1 回、毎日) を開始します。 このため、この出力データセットは、アクティビティによって出力が実際に生成されなくても、指定する必要があります。
 
 ### <a name="prerequisites"></a>前提条件
-1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するトピックの手順に従って、汎用ストレージ アカウントを作成します。
+1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)に関するトピックの手順に従って、汎用ストレージ アカウントを作成します。
 
 1. [HDInsight での Spark クラスターの作成](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)のチュートリアルの説明に従って、HDInsight で Spark クラスターを作成します。 手順 1. で作成したストレージ アカウントをこのクラスターに関連付けます。
 
@@ -90,10 +90,10 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     ![[Data Factory] ブレード](./media/data-factory-spark/data-factory-blade.png)
 
 ### <a name="create-linked-services"></a>リンクされたサービスを作成します
-この手順では、リンクされたサービスを 2 つ作成します。 1 つは Spark クラスターをデータ ファクトリにリンクするサービスで、もう 1 つはストレージをデータ ファクトリにリンクするサービスです。 
+この手順では、リンクされたサービスを 2 つ作成します。 1 つは Spark クラスターをデータ ファクトリにリンクするサービスで、もう 1 つはストレージをデータ ファクトリにリンクするサービスです。
 
 #### <a name="create-a-storage-linked-service"></a>ストレージのリンクされたサービスを作成するには
-この手順では、ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルの後半の手順で作成するデータセットは、このリンクされたサービスを参照します。 次の手順で定義する HDInsight のリンクされたサービスは、このリンクされたサービスも参照します。 
+この手順では、ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルの後半の手順で作成するデータセットは、このリンクされたサービスを参照します。 次の手順で定義する HDInsight のリンクされたサービスは、このリンクされたサービスも参照します。
 
 1. **[データ ファクトリ]** ブレードで **[作成およびデプロイ]** を選択します。 Data Factory エディターが表示されます。
 
@@ -110,7 +110,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 1. リンクされたサービスをデプロイするには、コマンド バーの **[デプロイ]** を選択します。 リンクされたサービスが正常にデプロイされると、[Draft-1] ウィンドウが消えます。 **AzureStorageLinkedService** が左側のツリー ビューに表示されます。
 
 #### <a name="create-an-hdinsight-linked-service"></a>HDInsight のリンクされたサービスを作成する
-この手順では、HDInsight Spark クラスターをデータ ファクトリにリンクする、HDInsight のリンクされたサービスを作成します。 HDInsight のクラスターは、このサンプルのパイプラインの Spark アクティビティに指定された Spark プログラムを実行するために使用されます。 
+この手順では、HDInsight Spark クラスターをデータ ファクトリにリンクする、HDInsight のリンクされたサービスを作成します。 HDInsight のクラスターは、このサンプルのパイプラインの Spark アクティビティに指定された Spark プログラムを実行するために使用されます。
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新規計算]**  >  **[HDInsight クラスター]** を選択します。
 
@@ -147,14 +147,14 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     HDInsight のリンクされたサービスの詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するページを参照してください。
 
-1. リンクされたサービスをデプロイするには、コマンド バーの **[デプロイ]** を選択します。 
+1. リンクされたサービスをデプロイするには、コマンド バーの **[デプロイ]** を選択します。
 
 ### <a name="create-the-output-dataset"></a>出力データセットを作成する
 出力データセットは、スケジュール (1 時間に 1 回、毎日) を開始します。 このため、Spark アクティビティによって出力が生成されなくても、パイプラインでアクティビティの出力データセットを指定する必要があります。 アクティビティの入力データセットの指定は省略可能です。
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新しいデータセット]**  >  **[Azure Blob Storage]** を選択します。
 
-1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON スニペットで、**OutputDataset** という名前のデータセットを定義します。 さらに、**adfspark** という BLOB コンテナーと **pyFiles/output** というフォルダーに結果が保存されるように指定します。 前述のように、このデータセットはダミー データセットです。 この例の Spark プログラムでは出力は生成されません。 **availability** セクションでは、出力データセットが毎日生成されることを指定します。 
+1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON スニペットで、**OutputDataset** という名前のデータセットを定義します。 さらに、**adfspark** という BLOB コンテナーと **pyFiles/output** というフォルダーに結果が保存されるように指定します。 前述のように、このデータセットはダミー データセットです。 この例の Spark プログラムでは出力は生成されません。 **availability** セクションでは、出力データセットが毎日生成されることを指定します。
 
     ```json
     {
@@ -226,7 +226,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     > [!IMPORTANT]
     > 問題のトラブルシューティングを行う場合を除き、運用環境ではこのプロパティを `Always` に設定しないことをお勧めします。
 
-    e. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。 
+    e. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。
 
     Spark アクティビティでサポートされているプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
@@ -260,12 +260,12 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
     ```
-1. hvac テーブルのデータが表示されることを確認します。 
+1. hvac テーブルのデータが表示されることを確認します。
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-詳細な手順については、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。 
+詳細な手順については、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 getDebugInfo を **Always** に設定しているため、BLOB コンテナー内の pyFiles フォルダーに log サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加情報を確認できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してください。
@@ -288,7 +288,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 次のセクションでは、データ ファクトリで Spark クラスターと Spark アクティビティを使用するための、データ ファクトリ エンティティに関する情報を提供します。
 
 ## <a name="spark-activity-properties"></a>Spark アクティビティのプロパティ
-Spark アクティビティを使用するパイプラインのサンプル JSON 定義を次に示します。 
+Spark アクティビティを使用するパイプラインのサンプル JSON 定義を次に示します。
 
 ```json
 {
@@ -342,7 +342,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 ## <a name="folder-structure"></a>フォルダー構造
 Spark アクティビティでは、Pig および Hive アクティビティが実行するインライン スクリプトがサポートされません。 また、Spark ジョブは、Pig/Hive ジョブよりも拡張できます。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、Python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
 
-HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。 
+HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。
 
 | Path | [説明] | 必須 | 種類 |
 | ---- | ----------- | -------- | ---- |

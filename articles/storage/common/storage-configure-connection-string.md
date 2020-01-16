@@ -1,20 +1,21 @@
 ---
-title: Azure Storage の接続文字列を構成する
+title: 接続文字列を構成する
+titleSuffix: Azure Storage
 description: Azure Storage アカウントの接続文字列を構成します。 接続文字列には、実行時にアプリケーションから共有キーによる承認を使用してストレージ アカウントへのアクセスを承認するために必要な情報が格納されます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460552"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -23,8 +24,6 @@ ms.locfileid: "69640506"
 * Azure ストレージ エミュレーターに接続する。
 * Azure のストレージ アカウントにアクセスする。
 * Shared Access Signature (SAS) を介して Azure の特定のリソースにアクセスする。
-
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -141,7 +140,7 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 * [Azure ストレージ エクスプローラー](storage-explorers.md)

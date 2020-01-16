@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430215"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>管理者の同意ワークフローの構成 (プレビュー)
 
@@ -95,7 +95,7 @@ ms.locfileid: "74786437"
    * **要求の拒否**。 要求を拒否する場合には、理由を入力する必要があります。入力した理由は、すべての要求元に提供されます。 要求が拒否されたら、すべての要求元に対し、アプリケーションへのアクセスが拒否されたことを知らせる通知が送信されます。 要求を拒否しても、ユーザーがその後同じアプリについて管理者の同意を要求できなくなるわけではありません。  
    * **要求のブロック**。 要求をブロックする場合には、理由を入力する必要があります。入力した理由は、すべての要求元に提供されます。 要求がブロックされたら、すべての要求元に対し、アプリケーションへのアクセスが拒否されたことを知らせる通知が送信されます。 要求をブロックすると、テナント内でそのアプリケーションのサービス プリンシパル オブジェクトが、無効の状態で作成されます。 以降は、ユーザーがそのアプリケーションに関する管理者の同意を要求することができなくなります。
  
-## <a name="email-notifications"></a>電子メール通知
+## <a name="email-notifications"></a>メール通知
  
 構成した場合、すべてのレビュー担当者は次の場合にメール通知を受信します。
 
@@ -127,7 +127,7 @@ ms.locfileid: "74786437"
 |レビュー担当者が管理者の同意要求の承認をする       |アクセス レビュー           |UserManagement           |ビジネス フロー内のすべての要求を承認する          |アプリのコンテキスト            |現時点では、管理者の同意が付与されたユーザーコンテキストまたはアプリIDが見つかりません。           |
 |レビュー担当者が管理者の同意要求拒否をする       |アクセス レビュー           |UserManagement           |ビジネス フロー内のすべての要求を承認する          |アプリのコンテキスト            | 現時点では、管理者の同意要求を拒否したアクターのユーザーコンテキストが見つかりません          |
 
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>よく寄せられる質問 
 
 **このワークフローをオンにしましたが、機能のテスト時に、アクセスの要求に必要な [承認が必要です] という新しいメッセージが表示されないのはなぜですか。**
 
@@ -149,12 +149,14 @@ ms.locfileid: "74786437"
  
 管理者の同意を付与してテナント内のすべてのユーザーにアプリケーションの使用を許可することに懸念がある場合は、要求を拒否することをお勧めします。 そのうえで、管理者の同意を手動で付与します。これを行うには、ユーザー割り当てを要求することでアプリケーションへのアクセスを制限し、次にアプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションに同意する行為の詳細については、「[Azure Active Directory 同意フレームワーク](../develop/consent-framework.md)」を参照してください。
 
-[同意と Azure AD へのアプリの統合](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
 
-[Azure AD v2.0 集中型アプリの同意とアクセス許可](../develop/active-directory-v2-scopes.md)
+[アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+
+[StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

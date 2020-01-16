@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2b4893ab804d7e3394320284399626437e5e78dc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639480"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645126"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -42,6 +42,7 @@ ms.locfileid: "69639480"
     ![Azure Key Vault を作成する](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. 自分とチーム メンバーに Key Vault へのアクセス権を付与します。 チームが大規模な場合は、[Azure Active Directory グループ](../active-directory/active-directory-groups-create-azure-portal.md)を作成し、そのセキュリティ グループに Key Vault へのアクセス権を追加します。 *[シークレットのアクセス許可]* ボックスで、 *[シークレットの管理操作]* の下の *[取得]* と *[リスト]* を選択します。
+Web アプリが既に作成されている場合は、その Web アプリに Key Vault へのアクセスを許可して、アプリの設定やファイルにシークレットの構成を保存せずに Key Vault にアクセスできるようにします。 Web アプリを名前で検索し、ユーザーにアクセス権を付与する場合と同じ方法でそれを追加します。
 
     ![Key Vault アクセス ポリシーを追加する](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,10 +50,10 @@ ms.locfileid: "69639480"
 
     ![Key Vault シークレットを追加する](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Visual Studio 2017 V15.6 より前は、Visual Studio 用の Azure Services Authentication 拡張機能をインストールすることをお勧めしていました。 しかし、現在では Visual Studio 内に機能が統合されているため、非推奨になりました。 そのため、古いバージョンの Visual Studio 2017 を使用している場合は、VS 2017 15.6 以降に更新することをお勧めします。これにより、この機能をネイティブに使用し、Visual Studio サインイン ID 自体を使用して Key Vault にアクセスできるようになります。
     >
- 
+
 4. 次の Nuget パッケージをプロジェクトに追加します。
 
     ```

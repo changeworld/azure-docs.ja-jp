@@ -3,7 +3,7 @@ title: タスクの依存関係を使って、他のタスクの完了に基づ�
 description: MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの完了に依存するタスクを作成します。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a1378a5c00acbbce5e7ec73a75902ec55140575
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094617"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026236"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
 
@@ -77,7 +77,7 @@ Azure Batch で利用できる基本的なタスクの依存関係には、一�
 | シナリオ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 例 |  |
 |:---:| --- | --- |
 |  [一対一](#one-to-one) |*taskB* は *taskA* に依存 <p/> *taskB* は、*taskA* が正常に完了するまで実行されないようにスケジューリングされる |![Diagram: one-to-one task dependency][1] |
-|  [一対多](#one-to-many) |*taskC* は *taskA* と *taskB* の両方に依存 <p/> *taskC* は、*taskA* と *taskB* の両方が正常に完了するまで実行されないようにスケジューリングされる |![Diagram: one-to-many task dependency][2] |
+|  [[一対多]](#one-to-many) |*taskC* は *taskA* と *taskB* の両方に依存 <p/> *taskC* は、*taskA* と *taskB* の両方が正常に完了するまで実行されないようにスケジューリングされる |![Diagram: one-to-many task dependency][2] |
 |  [タスク ID の範囲](#task-id-range) |*taskD* は、一連のタスク範囲に依存 <p/> *taskD* は、ID *1* ～ *10* のタスクが正常に完了するまで実行されないようにスケジューリングされる |![図:タスク ID 範囲の依存関係][3] |
 
 > [!TIP]
@@ -202,15 +202,15 @@ new CloudTask("B", "cmd.exe /c echo B")
 },
 ```
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 [TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションでは以下を示しています。
 
 - ジョブでタスクの依存関係を有効にする方法
 - 他のタスクに依存するタスクを作成する方法
 - コンピューティング ノードのプールでそれらのタスクを実行する方法
 
-## <a name="next-steps"></a>次の手順
-### <a name="application-deployment"></a>アプリケーションのデプロイ
+## <a name="next-steps"></a>次のステップ
+### <a name="application-deployment"></a>アプリケーションの展開
 コンピューティング ノード上でタスクを通じて実行するアプリケーションのデプロイとバージョン管理は、どちらも Batch の [アプリケーション パッケージ](batch-application-packages.md) 機能を使って簡単に実現できます。
 
 ### <a name="installing-applications-and-staging-data"></a>アプリケーションとステージング データのインストール

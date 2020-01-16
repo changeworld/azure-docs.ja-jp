@@ -262,7 +262,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 次の一覧では、ライフサイクル イベントのスキーマについて説明します。
 
 * **`id`** :イベント グリッド イベントの一意識別子。
-* **`subject`** :イベントの件名へのパス。 [https://login.microsoftonline.com/consumers/](`durable/orchestrator/{orchestrationRuntimeStatus}`) `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
+* **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
   * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。
   * **`functionName`** :オーケストレーター関数の名前。

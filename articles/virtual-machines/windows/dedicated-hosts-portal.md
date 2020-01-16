@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/26/2019
 ms.author: cynthn
-ms.openlocfilehash: 7abfa00b01f2e5e32b2486d69f36ac62f844c5ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033833"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833948"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>プレビュー:ポータルを使用して専用ホストに VM をデプロイする
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>ポータルを使用して専用ホストに VM をデプロイする
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "74033833"
 1. 検証が成功したことを示すメッセージが表示されたら、 **[作成]** を選択します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、[専用ホスト](dedicated-hosts.md)の概要に関するページを参照してください。 
 

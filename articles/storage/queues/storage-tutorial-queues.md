@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721138"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968194"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作
 
@@ -24,7 +24,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 > [!div class="checklist"]
 >
 > - Azure のストレージ アカウントの作成
-> - アプリケーションの作成
+> - アプリを作成する
 > - 非同期コードのサポートを追加する
 > - キューを作成する
 > - キューにメッセージを挿入する
@@ -41,9 +41,9 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。
+まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。
 
-## <a name="create-the-app"></a>アプリケーションの作成
+## <a name="create-the-app"></a>アプリを作成する
 
 **QueueApp** という名前の .NET Core アプリケーションを作成します。 わかりやすくするために、このアプリではメッセージの送受信ともキューを介して行います。
 
@@ -503,7 +503,7 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

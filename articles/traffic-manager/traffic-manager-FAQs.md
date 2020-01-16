@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784827"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045309"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -29,7 +29,7 @@ ms.locfileid: "72784827"
 そのため、Traffic Manager では、クライアントが接続するエンドポイントまたは IP アドレスが提供されません。 サービスに静的 IP アドレスが必要な場合は、Traffic Manager ではなくサービス側で構成する必要があります。
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をこのトラフックのルーティングに使用することはできません。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をこのトラフックのルーティングに使用することはできません。
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager では "スティッキー" セッションはサポートされていますか。
 
@@ -487,7 +487,7 @@ Traffic Manager の課金には、エンドポイントの正常性チェック�
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。
 
-No. 入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
+いいえ。 入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
 
 Traffic Manager のネーム サーバーは、各 DNS クエリを処理するときにプロファイル階層の内部をスキャンします。 親プロファイルに対する DNS クエリは、子プロファイルのエンドポイントを含む DNS 応答を受信できます。 使用するのが単一のプロファイルか入れ子になったプロファイルかに関係なく、単一の CNAME レコードが使用されます。 階層内のプロファイルごとに CNAME レコードを作成する必要はありません。
 

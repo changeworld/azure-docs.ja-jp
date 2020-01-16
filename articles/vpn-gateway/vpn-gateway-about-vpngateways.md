@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1a5859517d2f858086c9034c8ee190e99bce5cd5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972400"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -43,7 +43,7 @@ Azure Portal などの構成ツールをどれか 1 つ使用して、リソー�
 
 ### <a name="models"></a>デプロイメント モデル
 
-現在、Azure には 2 つのデプロイ モデルがあります。 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。 たとえば、クラシック デプロイ モデルを使用して VNet を作成した場合は、クラシック デプロイ モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。 デプロイ モデルの詳細については、[Resource Manager デプロイ モデルとクラシック デプロイ モデルについて](../azure-resource-manager/resource-manager-deployment-model.md)のページを参照してください。
+現在、Azure には 2 つのデプロイ モデルがあります。 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。 たとえば、クラシック デプロイ モデルを使用して VNet を作成した場合は、クラシック デプロイ モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。 デプロイ モデルの詳細については、[Resource Manager デプロイ モデルとクラシック デプロイ モデルについて](../azure-resource-manager/management/deployment-models.md)のページを参照してください。
 
 ### <a name="planningtable"></a>計画表
 

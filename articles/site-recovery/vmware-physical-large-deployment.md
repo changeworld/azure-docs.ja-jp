@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082218"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895790"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -83,9 +83,9 @@ Deployment Planner は、VMware のオンプレミス環境に関する情報を
 
 ターゲット サブスクリプションで使用可能なクォータが、フェールオーバーを処理するのに十分であることを確認する必要があります。
 
-**タスク** | **詳細** | **アクション**
+**タスク** | **詳細** | **操作**
 --- | --- | ---
-**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)をご覧ください。
+**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)をご覧ください。
 **フェールオーバーの上限を確認する** | フェールオーバーの数は、Site Recovery のフェールオーバーの上限を超えてはいけません。 |  フェールオーバーが上限を超える場合、サブスクリプションを追加して複数のサブスクリプションにフェールオーバーするか、サブスクリプションのクォータを増やすことができます。 
 
 
@@ -95,7 +95,7 @@ Deployment Planner は、VMware のオンプレミス環境に関する情報を
 
 準拠が意味すること Azure VM を起動するには、Azure で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。
 - 準拠するマシンには、あらかじめこれらの設定が適切に組み込まれます。
-- Windows を実行しているマシンでは、事前にコンプライアンスを確認し、必要に応じて準拠させることができます。 [詳細情報](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
+- Windows を実行しているマシンでは、事前にコンプライアンスを確認し、必要に応じて準拠させることができます。 [詳細については、こちらを参照してください](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)。
 - Linux マシンは、フェールオーバーの時点でのみ準拠の状態になります。
 
 **マシンが Azure に準拠しているかどうか** | **Azure VM の上限 (マネージド ディスクのフェールオーバー)**
@@ -127,7 +127,7 @@ Azure へのフェールオーバー後は、オンプレミスと同様に動�
  
 構成サーバーの容量は、データのチャーン レートではなく、レプリケートするマシンの数の影響を受けます。 追加の構成サーバーが必要かどうかを確認するには、以下の定義済みの VM の制限を利用してください。
 
-**CPU** | **メモリ** | **キャッシュ ディスク** | **レプリケーション対象のマシンの制限**
+**CPU** | **[メモリ]** | **キャッシュ ディスク** | **レプリケーション対象のマシンの制限**
  --- | --- | --- | ---
 8 vCPU<br> 2 ソケット * 4 コア @ 2.5 GHz | 16 GB | 600 GB | 最大 550 台のマシン<br> 各ソース マシンは、それぞれ 100 GB のディスクを 3 個備えていることを前提としています。
 
@@ -153,7 +153,7 @@ Azure へのフェールオーバー後は、オンプレミスと同様に動�
 - 最高性能のサーバーを追加することをお勧めします。 
 
 
-**CPU** | **メモリ** | **キャッシュ ディスク** | **チャーン レート**
+**CPU** | **[メモリ]** | **キャッシュ ディスク** | **チャーン レート**
  --- | --- | --- | --- 
 12 vCPU<br> 2 ソケット * 6 コア @ 2.5 GHz | 24 GB | 1 GB | 最大 2 TB/日
 
@@ -218,7 +218,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Site Recovery の監視](site-recovery-monitor-and-troubleshoot.md)

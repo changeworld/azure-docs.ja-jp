@@ -4,15 +4,15 @@ description: Azure Monitor の Windows 用 Log Analytics エージェントに�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: d31351a6ab679fdc3ff3f9af9644b1761716c64b
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397456"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -62,7 +62,7 @@ Azure Government に必要なファイアウォールの情報については、
 
 - **イベント ソース** - *Health Service Modules*、*HealthService*、*Service Connector* で *Operations Manager* イベント ログを絞り込み、**イベント レベル**の*警告*と*エラー*で絞り込んで、次の表のイベントが書き込まれたかどうかを確認します。 その場合は、発生する可能性がある各イベントについて記載されている解決手順を確認します。
 
-    |イベント ID |source |説明 |解決策 |
+    |イベント ID |source |[説明] |解決策 |
     |---------|-------|------------|-----------|
     |2133 と 2129 |Health Service |エージェントからサービスへの接続に失敗しました |このエラーは、エージェントが Azure Monitor サービスと直接またはファイアウォール/プロキシ サーバーを介して通信できない場合に発生する可能性があります。 エージェントのプロキシ設定、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていることを確認します。|
     |2138 |Health Service Modules |プロキシに認証が必要です |エージェント プロキシ設定を構成し、プロキシ サーバーとの認証に必要なユーザー名/パスワードを指定します。 |
@@ -94,13 +94,13 @@ Heartbeat
 クエリから結果が返される場合は、特定のデータ型の収集とサービスへの転送が行われていないかどうかを判断する必要があります。 この原因は、更新された構成をエージェントがサービスから受信していないこと、またはエージェントの正常な動作を妨げる他の何らかの症状の可能性があります。 さらにトラブルシューティングを行うには、次の手順を実行します。
 
 1. コンピューターで管理者特権のコマンド プロンプトを開き、`net stop healthservice && net start healthservice` を入力してエージェント サービスを再起動します。
-2. *Operations Manager* イベント ログを開き、**イベント ソース** *HealthService* から **イベント ID** *7023、7024、7025、7028*、および *1210* を検索します。  これらのイベントは、エージェントが Azure Monitor から構成を正常に受信しており、コンピューターをアクティブに監視していることを示します。 イベント ID 1210 のイベントの説明では、最後の行に、エージェントの監視範囲に含まれるすべての解決策と分析情報も指定されます。  
+2. *Operations Manager* イベント ログを開き、**イベント ソース**の *HealthService* から **イベント ID** の *7023、7024、7025、7028*、および *1210* を検索します。  これらのイベントは、エージェントが Azure Monitor から構成を正常に受信しており、コンピューターをアクティブに監視していることを示します。 イベント ID 1210 のイベントの説明では、最後の行に、エージェントの監視範囲に含まれるすべての解決策と分析情報も指定されます。  
 
     ![イベント ID 1210 の説明](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソース** *HealthService*  と *Health Service Modules* を検索します。また、**イベント レベル** *警告*と*エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
+3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソース**の *HealthService* と *Health Service Modules* を検索します。また、**イベント レベル**の*警告*と*エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
 
-    |イベント ID |source |説明 |解決策 |
+    |イベント ID |source |[説明] |解決策 |
     |---------|-------|------------|
     |8000 |HealthService |このイベントは、パフォーマンス、イベント、または収集されたその他のデータ型に関連するワークフローを、ワークスペースへの取り込みのためにサービスに転送できないかどうかを示します。 | ソース HealthService からのイベント ID 2136 がこのイベントと共に書き込まれます。また、プロキシと認証設定の不適切な構成、ネットワークの停止、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていないことが原因で、エージェントがサービスと通信できないことを示します。| 
     |10102 と 10103 |Health Service Modules |ワークフローでデータ ソースを解決できませんでした。 |これは、指定されたパフォーマンス カウンターまたはインスタンスがコンピューター上に存在しないか、ワークスペース データ設定で誤って定義されている場合に発生する可能性があります。 これがユーザー指定の[パフォーマンス カウンター](data-sources-performance-counters.md#configuring-performance-counters)である場合は、指定されている情報が正しい形式であり、ターゲット コンピューター上に存在することを確認します。 |

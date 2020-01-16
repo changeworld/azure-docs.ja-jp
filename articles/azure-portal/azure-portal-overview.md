@@ -1,20 +1,20 @@
 ---
 title: Azure Portal の概要 | Microsoft Docs
-description: Azure portal を操作してサービスを管理する方法について説明します
+description: Azure portal は、Azure サービスの管理に使用できるグラフィカル ユーザー インターフェイスです。 Azure portal でリソース間を移動およびリソースを検索する手順について説明します。
 services: azure-portal
 keywords: ポータル
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579425"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637611"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
@@ -64,7 +64,7 @@ Azure portal のメニューとページ ヘッダーは、常に存在するグ
 
 ![展開されたポータル メニューを示すスクリーンショット](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Key|説明
+|Key|[説明]
 |:---:|---|
 |1|ページ ヘッダー。 グローバル要素が含まれ、すべてのポータル ページの上部に表示されます。|
 |2| グローバル検索。 この検索バーを使用して、指定したリソース、サービス、またはドキュメントをすばやく検索します。|
@@ -94,7 +94,7 @@ Azure portal でグローバル検索を使用する方法のデモについて�
 
 [Azure portal でグローバル検索を使用する方法](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サポートされているブラウザーとデバイス](../azure-portal/azure-portal-supported-browsers-devices.md)で、Azure portal を実行できる場所について学習します
 * [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) で移動中も接続を維持します

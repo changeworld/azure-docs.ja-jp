@@ -2,7 +2,7 @@
 title: Azure Batch プール削除完了イベント | Microsoft Docs
 description: Batch のプール削除完了イベントのリファレンスです。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 9bf50bd19ca3f4316c4c2ddbcdd3333745ebefd7
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: bcbfe009e2880c0155a067305cc28317678cbfa6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258558"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026698"
 ---
 # <a name="pool-delete-complete-event"></a>プール削除の完了イベント
 
@@ -32,9 +32,9 @@ ms.locfileid: "70258558"
 }
 ```
 
-|要素|型|メモ|
+|要素|種類|メモ|
 |-------------|----------|-----------|
-|`id`|string|プールの ID。|
+|`id`|String|プールの ID。|
 |`startTime`|DateTime|プールの削除が開始された時刻。|
 |`endTime`|DateTime|プールの削除が完了した時刻。|
 

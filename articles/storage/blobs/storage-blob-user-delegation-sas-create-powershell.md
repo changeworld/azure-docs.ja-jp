@@ -1,23 +1,23 @@
 ---
 title: PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 titleSuffix: Azure Storage
-description: PowerShell を使用して、Azure Active Directory 資格情報によってユーザー委任 SAS (プレビュー) を作成する方法について学習します。
+description: PowerShell を使用して、Azure Active Directory 資格情報によってユーザー委任 SAS を作成する方法について学習します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371779"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
@@ -25,9 +25,9 @@ ms.locfileid: "74892517"
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>プレビュー モジュールをインストールする
+## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
-PowerShell を使用してユーザー委任 SAS を作成するには、最初に Az.Storage 1.3.1-preview モジュールをインストールする必要があります。 次の手順のようにしてモジュールをインストールします。
+PowerShell を使用してユーザー委任 SAS を作成するには、バージョン 1.10.0 以降の Az. Storage モジュールをインストールします。 次の手順のようにしてモジュールの最新バージョンをインストールします。
 
 1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
 
@@ -48,23 +48,18 @@ PowerShell を使用してユーザー委任 SAS を作成するには、最初�
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. ユーザー委任 SAS をサポートする Azure Storage プレビュー モジュールをインストールします。
+1. Azure PowerShell バージョン 3.2.0 以降がインストールされていることを確認します。 次のコマンドを実行して、最新バージョンの Azure Storage PowerShell モジュールをインストールします。
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. PowerShell ウィンドウを閉じて再び開きます。
 
-PowerShell によって、既定で最新の Az.Storage モジュールが読み込まれるため、コンソールを起動するときに、1.3.1-preview モジュールを明示的に読み込む必要がある場合があります。 プレビュー モジュールを明示的に読み込むには、[Import-Module](/powershell/module/microsoft.powershell.core/import-module) コマンドを実行します。
+インストールされている Az.Storage モジュールのバージョンを確認するには、次のコマンドを実行します。
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Azure PowerShell のインストールの詳細については、[PowerShellGet を使用した Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
@@ -97,7 +92,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD 資格情報を使用して SAS をセキュリティ保護する
+## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD の資格情報を使用して SAS をセキュリティ保護する
 
 Azure PowerShell を使用してユーザー委任 SAS を作成すると、SAS への署名に使用されるユーザー委任キーが暗黙的に作成されます。 SAS に指定した開始時刻と有効期限は、ユーザー委任キーの開始時刻と有効期限としても使用されます。 
 
@@ -111,11 +106,11 @@ Azure PowerShell を使用してコンテナーまたは BLOB のユーザー委
 $ctx = New-AzStorageContext -StorageAccountName <storage-account> -UseConnectedAccount
 ```
 
-### <a name="create-a-user-delegation-sas-for-a-container"></a>コンテナーのユーザー委任 SAS を作成する
+### <a name="create-a-user-delegation-sas-for-a-container"></a>コンテナー用にユーザー委任 SAS を作成する
 
 コンテナーのユーザー委任 SAS トークンを返すには、[New-AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken) コマンドを呼び出し、前に作成した Azure Storage コンテキスト オブジェクトを渡します。
 
-次の例では、コンテナーのユーザー委任 SAS トークンを返します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、コンテナー用のユーザー委任 SAS トークンが返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 New-AzStorageContainerSASToken -Context $ctx `
@@ -131,11 +126,11 @@ New-AzStorageContainerSASToken -Context $ctx `
 00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=rwdl
 ```
 
-### <a name="create-a-user-delegation-sas-for-a-blob"></a>BLOB のユーザー委任 SAS を作成する
+### <a name="create-a-user-delegation-sas-for-a-blob"></a>BLOB 用のユーザー委任 SAS を作成する
 
 BLOB のユーザー委任 SAS トークンを返すには、[New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) コマンドを呼び出し、前に作成した Azure Storage コンテキスト オブジェクトを渡します。
 
-次の構文では、BLOB のユーザー委任 SAS を返します。 この例では、`-FullUri` パラメーターを指定しており、これにより SAS トークンを追加した BLOB URI が返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の構文では、BLOB 用のユーザー委任 SAS が返されます。 この例では、`-FullUri` パラメーターを指定しており、これにより SAS トークンを追加した BLOB URI が返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `
@@ -169,7 +164,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 > [!IMPORTANT]
 > ユーザーの委任キーと RBAC ロールの割り当てはいずれも Azure Storage によってキャッシュされるため、失効プロセスの開始と、既存のユーザーの委任 SAS の無効化の間に、遅延が発生する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Get User Delegation Key 操作](/rest/api/storageservices/get-user-delegation-key)

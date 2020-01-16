@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889915"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754358"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
@@ -65,12 +65,6 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 他のインデックス定義と同様に、ポータル、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)、または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) を使用して、複合型を含むスキーマを作成できます。 
 
 次の例は、単純フィールド、コレクション、および複合型を含む JSON インデックス スキーマを示しています。 最上位レベルのフィールドと同様に、複合型内の各サブフィールドには型があり、場合によっては属性がある点に注意してください。 スキーマは、上記のデータ例に対応しています。 `Address` はコレクションではない複合フィールドです (1 つのホテルには 1 つの住所があります)。 `Rooms` は複合コレクション フィールドです (1 つのホテルには多くの部屋があります)。
-
-<!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
-
-Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
--->
 
 ```json
 {
@@ -157,7 +151,7 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 最上位レベルの単純フィールドと同様に、複合フィールド内の単純サブフィールドは、インデックス定義で **filterable** 属性が `true` に設定されている場合にのみ、フィルターに含めることができます。 詳しくは、[Create Index API リファレンス](https://docs.microsoft.com/rest/api/searchservice/create-index#request) に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **データのインポート** ウィザードで [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)を試してください。 データにアクセスするには、readme に記載されている Cosmos DB 接続情報が必要です。
 

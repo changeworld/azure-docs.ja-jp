@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535263"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968541"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Azure App Service によって提供される機能の詳細については、[A
     > * `model` - デプロイされる登録済みのモデル。
     > * `inference_config` - モデルの推論構成。
     >
-    > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+    > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prepare-for-deployment"></a>展開を準備する
 
@@ -67,7 +67,7 @@ Azure App Service によって提供される機能の詳細については、[A
     >
     > シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスすることができます。
 
-    エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+    エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
@@ -93,7 +93,7 @@ Azure App Service によって提供される機能の詳細については、[A
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
-推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
 > Azure App Service にデプロイするときに__デプロイ構成__を作成する必要はありません。
@@ -103,7 +103,7 @@ Azure App Service によって提供される機能の詳細については、[A
 Azure App Service にデプロイされる Docker イメージを作成するには、[Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) を使用します。 次のコード スニペットで、モデルと推論構成から新しいイメージを作成する方法を示します。
 
 > [!NOTE]
-> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ print(package.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>イメージを Web アプリとしてデプロイする
 
-1. 次のコマンドを使用して、イメージを含む Azure Container Registry のログイン資格情報を取得します。 `<acrinstance>` を、以前 `package.location` から返された値に置き換えます。 
+1. 次のコマンドを使用して、イメージを含む Azure Container Registry のログイン資格情報を取得します。 `<acrinstance>` を、以前 `package.location` から返された値に置き換えます。
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ print(package.location)
     このコマンドでは、次の JSON ドキュメントのような情報が返されます。
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

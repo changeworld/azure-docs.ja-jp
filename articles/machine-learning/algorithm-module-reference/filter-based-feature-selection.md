@@ -1,7 +1,7 @@
 ---
 title: 'フィルターに基づく特徴選択: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service のフィルターに基づく特徴選択モジュールを使用して、データセット内で予測能力が最も高い特徴を特定する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のフィルターに基づく特徴選択モジュールを使用して、最も予測能力の高いデータセットの機能を特定する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428525"
 ---
 # <a name="filter-based-feature-selection"></a>フィルターに基づく特徴選択
 
@@ -93,7 +93,7 @@ ms.locfileid: "73717209"
 7.  パイプラインを実行するか、フィルターに基づく特徴選択モジュールを選択してから **[選択対象を実行]** を選択します。
 
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 処理の完了後は、次の操作を実行します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "73717209"
 -   特徴列として指定された列にすべての欠損値が含まれている場合は、モジュールによってゼロのスコアが割り当てられます。   
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 

@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 01/09/2020
+ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892653"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864412"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Python)
 
@@ -28,10 +28,6 @@ IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバ�
 * シミュレートされたデバイス アプリケーションは、バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答します。 ダイレクト メソッドの呼び出しを受け取るため、このアプリケーションは IoT ハブ上のデバイス固有のエンドポイントに接続します。
 
 * バックエンド アプリケーションは、シミュレートされたデバイスでダイレクト メソッドを呼び出します。 デバイスでダイレクト メソッドを呼び出すため、このアプリケーションは IoT ハブ上のサービス側エンドポイントに接続します。
-
-> [!IMPORTANT]
-> この記事では、バックエンド アプリケーションで Python V1 サービス クライアントを、デバイス アプリケーションで Python V2 デバイス クライアントを使用します。 V1 サービス クライアントは Azure IoT Python SDK GitHub リポジトリの [v1-deprecated branch](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated) にあります。 V1 サービス クライアントの pip パッケージ (*azure-iothub-service-client*) には、開発マシンにインストールされている Python のバージョンなど、プラットフォームごとの厳密な要件があります。 それらの要件は、「**前提条件**」セクションに記載されています。
->
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,13 +43,7 @@ az extension add --name azure-cli-iot-ext
 
 まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
-**Windows の場合**: V1 IoT Hub サービス クライアントの pip パッケージをインストールするには、次の前提条件を満たす必要があります。
-
-* [Python バージョン **3.6.x**](https://www.python.org/downloads/) がインストールされていることを確認します。
-
-* [Microsoft Visual Studio の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)がインストールされていることを確認します。
-
-**Windows 以外のプラットフォームの場合**: V1 SDK ドキュメントの「[Python pip パッケージ ディストリビューション表](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table)」を参照してください。 ご利用のプラットフォーム向けに指定された Python 3.x バージョンおよび関連する要件が開発マシンにインストールされていることを確認してください。 Python 2.7 ではなく Python 3.x をインストールすることにより、このクイックスタートでも使用されている V2 デバイス クライアントでの非同期操作が可能となります。
+[Python バージョン 3.7 以降](https://www.python.org/downloads/)を開発用マシンにインストールします。 サポートされる他のバージョンの Python については、SDK ドキュメントの「[Azure IoT デバイスの機能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)」を参照してください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -132,7 +122,7 @@ az extension add --name azure-cli-iot-ext
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
-    ![シミュレートされたデバイスを実行する](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![シミュレートされたデバイスを実行する](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
@@ -147,7 +137,7 @@ az extension add --name azure-cli-iot-ext
 1. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なライブラリをインストールします。
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
@@ -158,25 +148,21 @@ az extension add --name azure-cli-iot-ext
 
     次のスクリーンショットは、アプリケーションによりデバイスに対してダイレクト メソッド呼び出しが行われ、受信確認が受診されたときの出力を示します。
 
-    ![バックエンド アプリケーションを実行する](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![バックエンド アプリケーションを実行する](./media/quickstart-control-device-python/backend-application.png)
 
     バックエンド アプリケーションを実行した後、シミュレートされたデバイスを実行しているコンソール ウィンドウにメッセージが表示され、メッセージの送信速度が変わります。
 
-    ![シミュレートされたクライアントでの変更](./media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![シミュレートされたクライアントでの変更](./media/quickstart-control-device-python/simulated-device-2.png)
 
-    > [!NOTE]
-    > *iothub_service_client* のインポートでエラーが発生した場合は、ご利用のプラットフォームに関して「[前提条件](#prerequisites)」で指定された正しいバージョンの Python と、その他関連する成果物がすべてインストールされていることを確認してください。 前提条件を確認したにもかかわらずエラーが発生する場合は、おそらくご利用のプラットフォーム用にサービス クライアントをビルドする必要があります。 ご利用のプラットフォーム用に SDK をビルドする方法については、V1 SDK ドキュメントで [devbox のセットアップ手順](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)を参照してください。
-    >
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、バックエンド アプリケーションからデバイス上のダイレクト メソッドを呼び出し、シミュレートされたデバイス アプリケーションでダイレクト メソッド呼び出しに応答しました。
 
 デバイスからクラウドへのメッセージをクラウド内の異なる宛先にルーティングする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)
+> [チュートリアル:処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)

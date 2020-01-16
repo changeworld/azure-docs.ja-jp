@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554236"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979333"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
-ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
+ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 この記事では、共同管理者ロールとサービス管理者ロールを追加または変更する方法、およびアカウント管理者を表示する方法について説明します。
 
@@ -62,7 +62,7 @@ ms.locfileid: "74554236"
 
 ### <a name="differences-for-guest-users"></a>ゲスト ユーザーの違い
 
-共同管理者ロールが割り当てられたゲスト ユーザーは、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なります。 次のシナリオで考えてみましょう。
+共同管理者ロールが割り当てられたゲスト ユーザーは、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なります。 以下のシナリオについて考えてみます。
 
 - Azure AD アカウント (職場または学校アカウント) を持つユーザー A は、Azure サブスクリプションのサービス管理者です。
 - ユーザー B は Microsoft アカウントを持っています。
@@ -101,7 +101,7 @@ ms.locfileid: "74554236"
 
 サービス管理者を変更するには 2 つの方法があります。 **Azure portal** または**アカウント センター**で変更することができます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. サービス管理者を変更するための制限事項を確認して、使用するシナリオがサポートされていることを確認してください。
 
@@ -152,11 +152,11 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 ## <a name="view-the-account-administrator"></a>アカウント管理者を表示する
 
-アカウント管理者とは、Azure サブスクリプションに最初にサインアップしたユーザーで、サブスクリプションの請求先の所有者としての責任を負います。 サブスクリプションのアカウント管理者を変更する方法の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
+アカウント管理者とは、Azure サブスクリプションに最初にサインアップしたユーザーで、サブスクリプションの請求先の所有者としての責任を負います。 サブスクリプションのアカウント管理者を変更する方法の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
 
 アカウント管理者を表示するには、以下の手順のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 
@@ -166,8 +166,8 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
     ![アカウント管理者を示すスクリーンショット](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-portal.md)
-* [Azure サブスクリプション管理者を追加または変更する](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)

@@ -1,25 +1,24 @@
 ---
-title: Azure Stream Analytics ジョブ用の .NET 逆シリアライザーを使用する
+title: Azure Stream Analytics で .NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 description: この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対するカスタム .NET 逆シリアライザーが定義されているインターフェイスについて説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024934"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553020"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブ用の .NET 逆シリアライザーを使用する
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
-カスタム .NET 逆シリアライザーを使用すると、Azure Stream Analytics ジョブで、3 つの[組み込みデータ形式](stream-analytics-parsing-json.md)に含まれない形式からデータを読み取ることができます。 この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対するカスタム .NET 逆シリアライザーが定義されているインターフェイスについて説明します。 また、プロトコル バッファーと CSV 形式に対する逆シリアライザーの例もあります。
+.NET のカスタム逆シリアライザーを使用すると、Azure Stream Analytics ジョブで、3 つの[組み込みデータ形式](stream-analytics-parsing-json.md)に含まれない形式からデータを読み取ることができます。 この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対する .NET カスタム逆シリアライザーが定義されているインターフェイスについて説明します。 また、プロトコル バッファーと CSV 形式に対する逆シリアライザーの例もあります。
 
-## <a name="custom-net-deserializer"></a>カスタム .NET 逆シリアライザー
+## <a name="net-custom-deserializer"></a>.NET カスタム逆シリアライザー
 
 以下のコード サンプルのインターフェイスでは、カスタム逆シリアライザーが定義され、`StreamDeserializer<T>` が実装されています。
 
@@ -226,12 +225,12 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 
 この機能は、次のリージョンで使用できます。
 
-* 米国中西部 (使用可能)
-* 北ヨーロッパ (使用可能)
-* 米国東部 (使用可能)
-* 米国西部 (まもなくロールアウト)
-* 米国東部 2 (まもなくロールアウト)
-* 西ヨーロッパ (まもなくロールアウト)
+* 米国中西部
+* 北ヨーロッパ
+* East US
+* 米国西部
+* 米国東部 2
+* 西ヨーロッパ
 
 追加リージョンの[サポートを要求する](https://aka.ms/ccodereqregion)ことができます。
 
@@ -239,7 +238,7 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>この機能がすべての Azure リージョンで使用できるようになるのはいつですか?
 
-この機能は 6 つのリージョンで利用できます (「リージョンのサポート」)。 別のリージョンでこの機能を使用することに関心がある場合は、[要求を提出する](https://aka.ms/ccodereqregion)ことができます。 すべての Azure リージョンでのサポートは、ロードマップ上にあります。
+この機能は、[6 つのリージョン](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)で使用できます。 別のリージョンでこの機能を使用することに関心がある場合は、[要求を提出する](https://aka.ms/ccodereqregion)ことができます。 すべての Azure リージョンでのサポートは、ロードマップ上にあります。
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue 関数と同様の入力から MetadataPropertyValue にアクセスすることはできますか?
 
@@ -251,4 +250,4 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザー](custom-deserializer.md)
+* [Azure Stream Analytics クラウド ジョブ用の .NET カスタム逆シリアライザー](custom-deserializer.md)

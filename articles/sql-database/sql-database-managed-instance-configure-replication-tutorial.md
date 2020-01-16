@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: f61c99db3f2c2569705e3a2df4b7134fdd29065a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614918"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045653"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>チュートリアル:2 つのマネージド インスタンスと SQL Server の間にトランザクション レプリケーションを構成する
 
@@ -199,7 +199,7 @@ USE [master]
 GO
 
 -- Drop database if it exists
-IF EXISTS (SELECT *FROM sys.sysdatabases WHERE name = 'ReplTutorial')
+IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
     DROP DATABASE ReplTutorial
 END

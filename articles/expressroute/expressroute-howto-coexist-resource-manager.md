@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a1dc089e1b64ed8d71db4c09405c8cc9a07d8bea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436973"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -41,6 +41,7 @@ ms.locfileid: "74423576"
 * **サポートされているのはルート ベースの VPN ゲートウェイのみです。** ルート ベースの [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 「[複数のポリシーベース VPN デバイスへの接続](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)」で説明されているように、"ポリシーベース トラフィック セレクタ" に VPN 接続が設定されているルートベースの VPN ゲートウェイを使用することもできます。
 * **VPN ゲートウェイのために静的ルートを構成する必要があります。** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、サイト間 VPN 接続をパブリック インターネットへルーティングする必要があります。
 * **指定されていない場合、VPN Gateway の既定値は ASN 65515 です。** Azure VPN Gateway は、BGP ルーティング プロトコルをサポートします。 -Asn スイッチを追加することによって、仮想ネットワークの ASN (AS 番号) を指定できます。 このパラメーターを指定しない場合、既定の AS 番号は 65515 です。 構成には任意の ASN を使用できますが、65515 以外を選択した場合は、その設定を有効にするためにゲートウェイをリセットする必要があります。
+* **ゲートウェイ サブネットは /27 またはそれより短いプレフィックス** (/26、/25 など) でなければなりません。そうでないと、ExpressRoute 仮想ネットワーク ゲートウェイを追加するときに、エラー メッセージが表示されます。
 
 ## <a name="configuration-designs"></a>構成の設計
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
@@ -262,5 +263,5 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ポイント対サイト VPN の詳細については、 [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

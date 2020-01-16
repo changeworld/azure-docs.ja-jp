@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 90ee036275e13b209d9f6c37aba6d16ed564cf5d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427395"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスのログ記録を有効にする
 このドキュメントでは、Machine Learning Studio (クラシック) Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning Studio (クラシック) API の呼び出しのトラブルシューティングを実行するときに役立ちます。  
@@ -25,7 +25,7 @@ ms.locfileid: "73466946"
 
 ログ機能は [Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net) ポータルから有効にします。 
 
-1. Azure Machine Learning Studio (クラシック) Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、クラシック バージョンの Machine Learning Studio の [Machine Learning Studio (クラシック) Web サービス] ページで **[新しい Web サービス エクスペリエンス]** をクリックすることで、ポータルにアクセスすることもできます。
+1. Azure Machine Learning Studio (クラシック) Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、Studio (クラシック) の [Machine Learning Studio (クラシック) Web サービス] ページで **[New Web Services Experience]\(新しい Web サービス エクスペリエンス\)** をクリックすることで、ポータルにアクセスすることもできます。
 
    ![[New Web Services Experience] \(新しい Web サービス エクスペリエンス\) リンク](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "73466946"
 
    ![ログ記録レベルの選択](./media/web-services-logging/enable-logging.png)
 
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 7. クラシック Web サービスの場合は、**ml-diagnostics** コンテナーを作成します。
 
@@ -51,13 +51,13 @@ ms.locfileid: "73466946"
 
    2. **[Blob service]** の **[コンテナー]** をクリックします。
 
-   3. コンテナー **ml-diagnostics** が存在しない場合は、 **[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、 **[アクセスの種類]** を "BLOB" に設定します。 Click **OK**.
+   3. コンテナー **ml-diagnostics** が存在しない場合は、 **[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、 **[アクセスの種類]** を "BLOB" に設定します。 **[OK]** をクリックします。
 
       ![自分の診断ログを格納する新しいコンテナーを作成する](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> クラシック Web サービスの場合、クラシック バージョンの Machine Learning Studio の Web サービスのダッシュボードにも、ログ機能を有効にするスイッチがあります。 ただし、ログ機能は Web サービス ポータルで管理されるようになったため、この記事で説明しているように、ポータルでログ機能を有効にする必要があります。 Studio (クラシック) で既にログ記録を有効にしている場合は、Web サービス ポータルでログ記録を無効にしてから、再び有効にします。
+> クラシック Web サービスの場合、Machine Learning Studio (クラシック) の Web サービスのダッシュボードにも、ログ機能を有効にするスイッチがあります。 ただし、ログ機能は Web サービス ポータルで管理されるようになったため、この記事で説明しているように、ポータルでログ機能を有効にする必要があります。 Studio (クラシック) で既にログ記録を有効にしている場合は、Web サービス ポータルでログ記録を無効にしてから、再び有効にします。
 
 
 ## <a name="the-effects-of-enabling-logging"></a>ログ記録の有効化による効果

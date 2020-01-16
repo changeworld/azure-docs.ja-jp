@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196730"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751183"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 
@@ -29,13 +29,13 @@ ms.locfileid: "74196730"
 
 診断ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG については診断ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
-診断ログは、診断データを収集する "*個々の*" NSG に対して個別に有効にします。 操作ログまたはアクティビティ ログに関心がある場合は、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+診断ログは、診断データを収集する "*個々の*" NSG に対して個別に有効にします。 操作ログまたはアクティビティ ログに関心がある場合は、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 ## <a name="enable-logging"></a>ログの有効化
 
 [Azure portal](#azure-portal)、[PowerShell](#powershell)、または [Azure CLI](#azure-cli) を使って、診断ログを有効にすることができます。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portal
 
 1. [ポータル](https://portal.azure.com)にサインインします。
 2. **[すべてのサービス]** を選び、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選びます。
@@ -46,11 +46,11 @@ ms.locfileid: "74196730"
 
 5. **[診断設定]** で、次の情報を入力するか選んだ後、 **[保存]** を選びます。
 
-    | Setting                                                                                     | 値                                                          |
+    | 設定                                                                                     | 値                                                          |
     | ---------                                                                                   |---------                                                       |
-    | 名前                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
+    | Name                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
     | **ストレージ アカウントへのアーカイブ**、**イベント ハブへのストリーム**、**Log Analytics への送信** | 必要なだけいくつでも保存先を選択できます。 それぞれについて詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。                                                                                                                                           |
-    | ログ                                                                                         | いずれか一方または両方のログ カテゴリを選びます。 各カテゴリでログに記録されるデータについて詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。                                                                                                                                             |
+    | LOG                                                                                         | いずれか一方または両方のログ カテゴリを選びます。 各カテゴリでログに記録されるデータについて詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。                                                                                                                                             |
 6. ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
@@ -198,16 +198,16 @@ az monitor diagnostic-settings create \
 
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
-診断ログ データの表示方法については、「[Azure 診断ログの概要](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 診断データの送信先に応じて、次のようになります。
+診断ログ データの表示方法については、「[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 診断データの送信先に応じて、次のようになります。
 - **Azure Monitor ログ**: [ネットワーク セキュリティ グループ分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 )ソリューションを使って、詳細な分析情報を取得できます。 このソリューションは、仮想マシン内のネットワーク インターフェイスのトラフィックを MAC アドレスに従って許可または拒否する NSG ルールの視覚化を提供します。
 - **Microsoft Azure Storage アカウント**:データは PT1H.json ファイルに書き込まれます。 各ログは次のパスで見つかります。
   - イベント ログ: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - ルール カウンター ログ: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- 以前は監査ログまたは操作ログと呼ばれていた[アクティビティ ログ](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について詳しく学習します。 どちらの Azure デプロイ モデルで作成された NSG に対しても、アクティビティ ログが既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。
+- 以前は監査ログまたは操作ログと呼ばれていた[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について詳しく学習します。 どちらの Azure デプロイ モデルで作成された NSG に対しても、アクティビティ ログが既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

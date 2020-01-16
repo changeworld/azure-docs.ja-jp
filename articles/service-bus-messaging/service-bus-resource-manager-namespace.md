@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 4162775153a48dc8ea28e06f7c99f9927b9c602a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8280bb057edea5697b8fa3248ddf755376f62c49
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444766"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978247"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 
@@ -82,11 +82,11 @@ Write-Host "Press [ENTER] to continue ..."
 
 このチュートリアルでは、テンプレートをデプロイするために Azure PowerShell を使用します。 テンプレートのその他のデプロイ方法については、以下をご覧ください。
 
-* [Azure portal を使用する方法](../azure-resource-manager/resource-group-template-deploy-portal.md)。
-* [Azure CLI を使用する方法](../azure-resource-manager/resource-group-template-deploy-cli.md)。
-* [REST API を使用する方法](../azure-resource-manager/resource-group-template-deploy-rest.md)。
+* [Azure portal を使用する方法](../azure-resource-manager/templates/deploy-portal.md)。
+* [Azure CLI を使用する方法](../azure-resource-manager/templates/deploy-cli.md)。
+* [REST API を使用する方法](../azure-resource-manager/templates/deploy-rest.md)。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 Cloud Shell がまだ開いている場合は、次のスクリプトの 1 番目と 2 番目の行をコピー/実行する必要はありません。
 
@@ -99,7 +99,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Service Bus 名前空間を作成しました。 キュー、トピック/サブスクリプションを作成して使用する方法については、他のクイック スタートを参照してください。
 

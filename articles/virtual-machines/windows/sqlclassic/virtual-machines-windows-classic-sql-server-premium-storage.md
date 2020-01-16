@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162530"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965667"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162530"
 [Azure Premium SSD](../disks-types.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
@@ -293,7 +293,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 このシナリオでは、既存のカスタマイズされたイメージが Standard Storage アカウントに存在する場合を示します。 前述のように、OS VHD を Premium Storage に配置する場合は、Standard Storage アカウントに存在するイメージをコピーし、使用する前に Premium Storage に転送する必要があります。 オンプレミスにイメージがある場合は、この方法を使用してそれを Premium Storage アカウントに直接コピーすることもできます。
 
-#### <a name="step-1-create-storage-account"></a>手順 1:[ストレージ アカウントを作成]
+#### <a name="step-1-create-storage-account"></a>手順 1:ストレージ アカウントの作成
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -403,7 +403,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 > [!NOTE]
 > 既存のデプロイの場合、最初にこの記事の「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
 
-Always On 可用性グループを使用しない SQL Server のデプロイと使用するデプロイでは考慮事項が異なります。 Always On を使用せず、既存のスタンドアロン SQL Server がある場合、新しいクラウド サービスとストレージ アカウントを使用して Premium Storage にアップグレードできます。 以下のオプションを検討します。
+Always On 可用性グループを使用しない SQL Server のデプロイと使用するデプロイでは考慮事項が異なります。 Always On を使用せず、既存のスタンドアロン SQL Server がある場合、新しいクラウド サービスとストレージ アカウントを使用して Premium Storage にアップグレードできます。 次のオプションを検討してください。
 
 * **新しい SQL Server VM を作成します**。 新しいデプロイに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。 その後、SQL Server の構成とユーザー データベースをバックアップして復元します。 新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。 サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての ‘out of db’ オブジェクトをコピーする必要があります。 これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
 * **既存の SQL Server VM を移行します**。 SQL Server VM をオフラインにしてから、新しいクラウド サービスに転送する必要があります。これには、アタッチされているすべての VHD の Premium Storage アカウントへのコピーが含まれます。 VM がオンラインになると、アプリケーションは前と同じサーバー ホスト名を参照します。 既存のディスクのサイズがパフォーマンス特性に影響することに注意してください。 たとえば、400 GB のディスクは P20 に切り上げられます。 そのディスク パフォーマンスが必要ないことがわかっている場合は、VM を DS シリーズ VM として再作成し、必要なサイズ/パフォーマンス仕様の Premium Storage VHD をアタッチできます。 その後、SQL DB ファイルをデタッチして再アタッチすることができます。
@@ -617,7 +617,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * フェールオーバーをテストします。
 * AFP を SQL1 および SQL2 に切り替えて戻します。
 
-## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>付録:マルチサイト Always On クラスターの Premium Storage への移行
+## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>付録: マルチサイト Always On クラスターの Premium Storage への移行
 
 以降では、マルチサイト Always On クラスターを Premium Storage に変換する例について詳細に説明します。 また、リスナーも、外部ロード バランサー (ELB) ではなく内部ロード バランサー (ILB) を使用するように変換します。
 
@@ -780,7 +780,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConf
 
 ![Appendix6][16]
 
-#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>ステップ 8:クラウド サービスからセカンダリ VM を削除する
+#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>手順 8:クラウド サービスからセカンダリ VM を削除する
 
 クラウドのセカンダリ ノードを最初に移行するように計画してください。 このノードが現在プライマリの場合は、手動フェールオーバーを開始する必要があります。
 

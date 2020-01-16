@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - JWT クレームに基づいてアクセスを承認する | Microsoft Docs
+title: API Management ポリシーのサンプル - JWT クレームに基づいてアクセスを承認する
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - API の特定の HTTP メソッドに対して、JWT クレームに基づいてアクセスを承認する方法を示します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: dd99d9ed3eebe6ada60511b3f16c53b0d57a65d6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422180"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>JWT クレームに基づいてアクセスを承認する
 
@@ -29,7 +30,7 @@ ms.locfileid: "70067807"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 677e38f69729bba8caf1ec3f88b2e0a1a4f8c7e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073663"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967453"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -83,7 +83,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
 次の手順に従って、ユーザーを Administrators グループに追加できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 
@@ -119,7 +119,7 @@ API Management では、複数の地理的な場所へのデプロイで[パフ�
 はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。
 
 #### <a name="powershell-method"></a>Powershell を使用する場合 ####
-[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (新しいバック エンド) または[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。 
+[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (新しいバック エンド) または[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
@@ -139,13 +139,13 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。
 API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイ モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
-クラシック モデルと Resource Manager モデルの違いの詳細については、[デプロイメント モデル間の差異](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。
+クラシック モデルと Resource Manager モデルの違いの詳細については、[デプロイメント モデル間の差異](../azure-resource-manager/management/deployment-models.md)に関するページを参照してください。
 
 ### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>API Management を VNET にデプロイする場合に必要な最小サブネット サイズはどれくらいですか。
 API Management のデプロイに必要な最小サブネット サイズは、Azure でサポートされている最小サブネット サイズである [/29](../virtual-network/virtual-networks-faq.md#configuration) です。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。
-はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>API のインポートには制限事項や既知の問題はありますか。
 Open API (Swagger)、WSDL、WADL の形式についての[既知の問題と制限事項](api-management-api-import-restrictions.md)をご覧ください。

@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483966"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666637"
 ---
 # <a name="using-custom-security-policies-preview"></a>カスタム セキュリティ ポリシーの使用 (プレビュー)
 
 システムと環境のセキュリティ保護を支援するために、Azure Security Center ではセキュリティに関する推奨事項が生成されます。 これらの推奨事項は業界のベスト プラクティスに基づいており、すべてのお客様に提供される既定の汎用セキュリティ ポリシーに組み込まれています。 また、業界標準と規制基準に関する Security Center のナレッジから提供される場合もあります。
 
-このプレビュー機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。
+このプレビュー機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明している規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
 [この](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) Azure Policy のドキュメントで説明しているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
 
@@ -52,23 +52,29 @@ ms.locfileid: "74483966"
     1. 定義の場所と名前を入力します。
     1. 含めるポリシーを選択し、 **[追加]** をクリックします。
     1. 必要なパラメーターを入力します。
-    1. **[Save]** をクリックします。
+    1. **[保存]** をクリックします。
     1. [カスタム イニシアティブの追加] ページで、[最新の情報に更新] をクリックすると、新しいイニシアティブが表示され、使用できるようになります。
     1. **[追加]** をクリックして、サブスクリプションに割り当てます。
 
     > [!NOTE]
     > 新しいイニシアティブを作成するには、サブスクリプション所有者の資格情報が必要です。 Azure ロールの詳細については、「[Azure Security Center におけるアクセス許可](security-center-permissions.md)」をご覧ください。
 
+    新しいイニシアチブが有効になり、次の 2 つの方法で影響を確認できます。
+
+    * Security Center のサイドバーの [ポリシーとコンプライアンス] で、 **[規制コンプライアンス]** を選択します。 コンプライアンス ダッシュボードが開き、組み込みイニシアチブと一緒に新しいカスタム イニシアチブが表示されます。
+    
+    * 定義したポリシーに環境が従っていない場合は、推奨事項を受け取り始めます。
+
 1. ポリシーの生成された推奨事項を表示するには、サイドバーの **[推奨事項]** をクリックして推奨事項ページを開きます。 推奨事項は [カスタム] ラベル付きで表示され、約 1 時間以内に提供されます。
 
     [![カスタム推奨事項](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、カスタム セキュリティ ポリシーの作成方法について説明しました。 
 
-その他の関連資料については、次の記事をご覧ください。 
+その他の関連資料については、次の記事を参照してください。 
 
 - [セキュリティ ポリシーの概要](tutorial-security-policy.md)
 - [組み込みのセキュリティ ポリシーの一覧](security-center-policy-definitions.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bec68cbb88a9acacbc1a9a081ce3d8612b709d18
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446366"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860233"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Personalizer クライアント ライブラリ
 
@@ -26,7 +26,7 @@ Node.js 用 Personalizer クライアント ライブラリの概要 以下の�
  * パーソナル化のアクション一覧をランク付けする。
  * 上位にランクされたアクションの成功を示す報酬スコアをレポートする。
 
-[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ Node.js 用 Personalizer クライアント ライブラリの概要 以下の�
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 次のこともできます。
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
+* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
 
 試用版のサブスクリプションまたはリソースからキーを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。
@@ -62,13 +62,13 @@ Azure portal では、キーとエンドポイントのどちらの値も **[ク
 
 ## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-`npm init -y` コマンドを実行して、`package.json` ファイルを作成します。 
+`npm init -y` コマンドを実行して、`package.json` ファイルを作成します。
 
 ```console
 npm init -y
@@ -100,11 +100,11 @@ Personalizer ループを初めてインスタンス化したときには、ト�
 
 Personalizer クライアントは、自分のキーが含まれている Microsoft.Rest.ServiceClientCredentials を使用して Azure に対する認証を行う PersonalizerClient オブジェクトです。
 
-コンテンツのランクを要求するには、RankRequest を作成し、それを client.Rank メソッドに渡します。 Rank メソッドから返される RankResponse に、ランク付けされたコンテンツが含まれています。 
+コンテンツのランクを要求するには、RankRequest を作成し、それを client.Rank メソッドに渡します。 Rank メソッドから返される RankResponse に、ランク付けされたコンテンツが含まれています。
 
-Personalizer に報酬を送信するには、RewardRequest を作成し、それを client.Reward メソッドに渡します。 
+Personalizer に報酬を送信するには、RewardRequest を作成し、それを client.Reward メソッドに渡します。
 
-このクイックスタートでは、報酬を決定するにあたって大きな問題はありません。 実稼働システムでは、何がどの程度まで[報酬スコア](concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、その点を設計上の主要な意思決定に含めるようにしてください。 
+このクイックスタートでは、報酬を決定するにあたって大きな問題はありません。 実稼働システムでは、何がどの程度まで[報酬スコア](concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、その点を設計上の主要な意思決定に含めるようにしてください。
 
 ## <a name="code-examples"></a>コード例
 
@@ -116,7 +116,7 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 
 ## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-お気に入りのエディターまたは IDE で、`sample.js` という名前の新しい Node.js アプリケーションを作成します。 
+お気に入りのエディターまたは IDE で、`sample.js` という名前の新しい Node.js アプリケーションを作成します。
 
 ## <a name="add-the-dependencies"></a>依存関係を追加する
 
@@ -146,7 +146,7 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 
 ## <a name="create-the-learning-loop"></a>学習ループを作成する
 
-Personalizer の学習ループとは、[rank](#request-a-rank) 呼び出しと [reward](#send-a-reward) 呼び出しのサイクルです。 このクイックスタートでは、コンテンツをパーソナライズするための各ランク呼び出しの後に、そのコンテンツへのランク付けにサービスがどの程度寄与したかを Personalizer に伝える報酬呼び出しを行います。 
+Personalizer の学習ループとは、[rank](#request-a-rank) 呼び出しと [reward](#send-a-reward) 呼び出しのサイクルです。 このクイックスタートでは、コンテンツをパーソナライズするための各ランク呼び出しの後に、そのコンテンツへのランク付けにサービスがどの程度寄与したかを Personalizer に伝える報酬呼び出しを行います。
 
 次のループ コードは、コマンド ラインでユーザーに好みをたずね、その情報を Personalizer に送信してランク付けし、そのランク付けされた選択肢をリストから選択できるようユーザーに提示した後、選択のランク付けにサービスがどの程度寄与したかを報酬の形で Personalizer に伝達するサイクルをループで処理しています。
 
@@ -161,9 +161,9 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 ## <a name="request-a-rank"></a>ランクを要求する
 
-ランク要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 このプロセスで、ランクから除外するコンテンツ (`excludeActions`) を作成することもできます。 ランク付けされた応答を取得するためには、ランク要求に [actions](concepts-features.md#actions-represent-a-list-of-options)、currentContext、excludeActions、ランクの一意の eventId (GUID) が必要です。 
+ランク要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 このプロセスで、ランクから除外するコンテンツ (`excludeActions`) を作成することもできます。 ランク付けされた応答を取得するためには、ランク要求に [actions](concepts-features.md#actions-represent-a-list-of-options)、currentContext、excludeActions、ランクの一意の eventId (GUID) が必要です。
 
-このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](concepts-features.md)を決定し、[評価](concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。  
+このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](concepts-features.md)を決定し、[評価](concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 
@@ -171,7 +171,7 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 報酬要求を完了するために、このプログラムは、ユーザーの選択をコマンド ラインから取得し、各選択に数値を割り当てた後、一意のランク イベント ID と数値を報酬メソッドに送信します。
 
-このクイックスタートでは、0 または 1 という単純な数値を報酬として割り当てます。 実際のニーズにもよりますが、実稼働システムでは、いつ何を [Reward](concept-rewards.md) 呼び出しに送信するかが決して簡単な決定事項ではない場合もあります。 
+このクイックスタートでは、0 または 1 という単純な数値を報酬として割り当てます。 実際のニーズにもよりますが、実稼働システムでは、いつ何を [Reward](concept-rewards.md) 呼び出しに送信するかが決して簡単な決定事項ではない場合もあります。
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

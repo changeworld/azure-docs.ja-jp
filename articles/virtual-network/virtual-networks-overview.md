@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638274"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894605"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -79,7 +79,7 @@ Azure では、既定で、サブネット、接続されている仮想ネッ�
 
 ## <a name="azure-vnet-limits"></a>Azure VNet の制限
 
-デプロイできる Azure リソースの数について特定の制限があります。 Azure のネットワークの制限のほとんどは、最大値です。 ただし、[VNet の制限に関するページ](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に記載されているように、[特定のネットワークの上限を引き上げる](../azure-supportability/networking-quota-requests.md)ことができます。 
+デプロイできる Azure リソースの数について特定の制限があります。 Azure のネットワークの制限のほとんどは、最大値です。 ただし、[VNet の制限に関するページ](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に記載されているように、[特定のネットワークの上限を引き上げる](../azure-portal/supportability/networking-quota-requests.md)ことができます。 
 
 ## <a name="pricing"></a>価格
 

@@ -1,18 +1,18 @@
 ---
 title: Python を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: Python を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します。
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5a3a7d79e43a4e0b4a160837be4d7f3cc33f4a91
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996233"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911951"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -134,7 +134,7 @@ pip install azure-mgmt-kusto
 
 クラスターとデータベースが作成されました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 * 他の記事に進む場合は、作成したリソースをそのままにします。
 * リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
@@ -143,6 +143,6 @@ pip install azure-mgmt-kusto
     cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

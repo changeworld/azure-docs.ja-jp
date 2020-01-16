@@ -1,19 +1,19 @@
 ---
 title: Marketplace の測定サービス API - FAQ | Azure Marketplace
 description: Azure Marketplace での SaaS オファーの使用状況を生成します。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825496"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931214"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Marketplace の測定サービス API - FAQ
 
@@ -50,6 +50,6 @@ SaaS サブスクリプションが削除された後で Marketplace プラッ�
 
 はい。`GET /saas/subscriptions` API を呼び出すと、すべての SaaS サブスクリプションの一覧が含まれます。 各 SaaS サブスクリプションに対する応答の状態フィールドで、サブスクリプションがアクティブであるか、または登録解除されているかが、示されています。 サブスクリプションの一覧表示を呼び出すと、最大 100 個のサブスクリプションが返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、「[Marketplace の測定サービス API](./marketplace-metering-service-apis.md)」をご覧ください。

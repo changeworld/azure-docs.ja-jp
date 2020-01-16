@@ -1,18 +1,15 @@
 ---
-title: Webhook を使用して既存の問題管理システム用に Azure Service Health 通知を構成する
+title: Webhook を使用して Azure Service Health の通知を送信する
 description: サービス正常性イベントについて個人用に設定された通知を、既存の問題管理システムに送信します。
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
-ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 95926185057d9fc1177b974fe76b2da18ebfc124
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854382"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551677"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Webhook を使用して問題管理システム用に正常性通知を構成する
 
@@ -34,7 +31,7 @@ Azure サービス インシデントの影響を受けた場合にテキスト 
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Service Health の Webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム Webhook 統合を設定するには、Service Health の通知を介して送信される JSON ペイロードを解析する必要があります。
 
-Webhook ペイロードの[例](../azure-monitor/platform/activity-log-alerts-webhook.md)`ServiceHealth`を参照してください。
+Webhook ペイロードの[例](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` を参照してください。
 
 それがサービス正常性アラートであることを確認するには、`context.eventSource == "ServiceHealth"` を探します。 以下のプロパティが最も関連性があります。
 - **data.context.activityLog.status**
@@ -61,7 +58,7 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>影響を受けるサービスを解析してインシデントの範囲を特定する
 Service Health アラートによって通知される内容は、複数のリージョンおよびサービスにまたがる問題である場合もあります。 完全な詳細情報を取得するには、`impactedServices` の値を解析する必要があります。
 
-その内部にあるコンテンツは、エスケープされた [JSON](https://json.org/) 文字列です。エスケープされていない場合は、規則的に解析することができる別の JSON オブジェクトが含まれます。 例:
+その内部にあるコンテンツは、エスケープされた [JSON](https://json.org/) 文字列です。エスケープされていない場合は、規則的に解析することができる別の JSON オブジェクトが含まれます。 次に例を示します。
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
@@ -116,7 +113,7 @@ Service Health アラートによって通知される内容は、複数のリ�
 
 1. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

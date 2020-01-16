@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212028"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974542"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -68,25 +68,25 @@ Azure DNS では、静的な DNS ドメインのみサポートされます。�
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS ではドメイン名の登録がサポートされますか。
 
-No. 現在、Azure DNS では、ドメイン名を購入するというオプションはサポートされていません。 ドメインを購入するには、サード パーティのドメイン名レジストラーを使用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストして DNS レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+いいえ。 現在、Azure DNS では、ドメイン名を購入するというオプションはサポートされていません。 ドメインを購入するには、サード パーティのドメイン名レジストラーを使用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストして DNS レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 ドメインの購入は Azure バックログで追跡される機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)してください。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS では DNSSEC はサポートされますか。
 
-No. 現在、Azure DNS では、ドメイン ネーム システム セキュリティ拡張機能 (DNSSEC) はサポートされていません。
+いいえ。 現在、Azure DNS では、ドメイン ネーム システム セキュリティ拡張機能 (DNSSEC) はサポートされていません。
 
 DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)してください。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS ではゾーン転送 (IXFR AXFR/) はサポートされますか。
 
-No. 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
+いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
 
 ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)してください。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS では URL リダイレクトはサポートされますか。
 
-No. URL リダイレクト サービスは DNS サービスではありません。 それらは、DNS レベルではなく、HTTP レベルで機能します。 DNS プロバイダーによっては、総合的なオファーの一部として、URL リダイレクト サービスをバンドルしています。 現在、このサービスは、Azure DNS ではサポートされていません。
+いいえ。 URL リダイレクト サービスは DNS サービスではありません。 それらは、DNS レベルではなく、HTTP レベルで機能します。 DNS プロバイダーによっては、総合的なオファーの一部として、URL リダイレクト サービスをバンドルしています。 現在、このサービスは、Azure DNS ではサポートされていません。
 
 URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)してください。
 
@@ -167,7 +167,7 @@ Azure DNS を使用する際は、次の制限が既定で適用されます。
 
 DNS ゾーンを移動しても、DNS クエリへの影響はありません。 ゾーンに割り当てられたネーム サーバーは変わりません。 DNS クエリは、全体が通常どおりに処理されます。
 
-DNS ゾーンの移動に関する詳細と手順については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+DNS ゾーンの移動に関する詳細と手順については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>DNS の変更が有効になるまでどれくらいかかりますか。
 
@@ -187,7 +187,7 @@ Azure DNS の管理は、Azure Resource Manager を使用して行われます�
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS ネーム サーバーは IPv6 で解決しますか。 
 
-はい。 Azure DNS ネーム サーバーは、デュアル スタックです。 デュアル スタックとは、IPv4 アドレスと IPv6 アドレスがあることを意味します。 DNS ゾーンに割り当てられている Azure DNS ネーム サーバーの IPv6 アドレスを調べるには、nslookup などのツールを使用します。 例: `nslookup -q=aaaa <Azure DNS Nameserver>`。
+はい。 Azure DNS ネーム サーバーは、デュアル スタックです。 デュアル スタックとは、IPv4 アドレスと IPv6 アドレスがあることを意味します。 DNS ゾーンに割り当てられている Azure DNS ネーム サーバーの IPv6 アドレスを調べるには、nslookup などのツールを使用します。 たとえば `nslookup -q=aaaa <Azure DNS Nameserver>` です。
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Azure DNS に IDN を設定するにはどうすればよいですか。
 
@@ -195,7 +195,7 @@ Azure DNS の管理は、Azure Resource Manager を使用して行われます�
 
 Azure DNS に IDN を構成するには、ゾーン名またはレコード セット名を punycode に変換します。 現在、Azure DNS では punycode に対する組み込みの変換機能はサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure DNS の詳細を確認する](dns-overview.md)
 

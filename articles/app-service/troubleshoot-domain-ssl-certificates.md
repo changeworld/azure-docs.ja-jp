@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688344"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966972"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -88,7 +88,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
     **解決策**:証明書が不正であるとマークされて 24 時間以内に解決されない場合は、以下の手順に従ってください。
 
-    1. [Azure Portal](https://portal.azure.com) にサインインします。
+    1. [Azure portal](https://portal.azure.com) にサインインする
     2. **[App Service 証明書]** に移動して、証明書を選択します。
     3. **[証明書の構成]**  >  **[手順 2: 確認]**  >  **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
 
@@ -190,7 +190,7 @@ App Service 証明書が更新されましたが、その App Service 証明書�
 
 証明書の同期を強制することができます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
 2. **[キー更新と同期]** を選択してから、 **[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
 3. 同期が完了すると、次の通知が表示されます。"最新の証明書ですべてのリソースが正常に更新されました。"
 
@@ -266,7 +266,7 @@ Microsoft Azure portal 内の App Service からドメインを購入できま�
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **カスタム ドメインを購入した後、それを Web サイト用に構成する必要がありますか**
 
@@ -318,6 +318,6 @@ App Service Web Apps がない場合でも、ドメインを管理できます�
 
 **カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
-はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
+はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 
 Web アプリを移動した後、カスタム ドメイン設定内のドメインのホスト名バインディングは同じままになります。 ホスト名バインディングを構成するための追加の手順は必要ありません。

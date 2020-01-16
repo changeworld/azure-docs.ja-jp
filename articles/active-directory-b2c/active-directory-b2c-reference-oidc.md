@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367622"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829563"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -24,7 +24,7 @@ OpenID Connect は、ユーザーを Web アプリケーションに安全にサ
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 この認証プロトコルでは、シングル サインオンを実行できます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにする "*ID トークン*" の概念が導入されています。
 
-これは OAuth 2.0 の拡張であるため、アプリケーションが*アクセス トークン*を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](active-directory-b2c-reference-protocols.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](active-directory-b2c-reference-tokens.md)」を参照してください。
+これは OAuth 2.0 の拡張であるため、アプリケーションが*アクセス トークン*を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](active-directory-b2c-reference-protocols.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](active-directory-b2c-reference-tokens.md)」を参照してください。
 
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。
 

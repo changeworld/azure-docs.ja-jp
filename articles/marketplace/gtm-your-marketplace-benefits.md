@@ -2,18 +2,18 @@
 title: Go-To-Market Services - 商用マーケットプレースのベネフィット | Azure
 description: Go-To-Market Services - このセクションでは、公開元が使用できる Microsoft リソースについて説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: v-qiwe
-ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818640"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933917"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -105,7 +105,7 @@ Microsoft は、次のような発行元に対する Marketplace 報酬ベネフ
 
 不正であることが証明されたトランザクションは、発行元の[請求売上プログラム レベル](https://aka.ms/marketplacepublisherrewards)にカウントされません。[リスト、試用版、コンサルティング](#list-trial-and-consulting-benefits)に関するセクション、[トランザクション パートナーの報酬](#marketplace-rewards-for-transact-partners)に関するセクション、[詳細なプログラム デッキ](https://aka.ms/marketplacepublisherrewards)に説明されています。 Microsoft は、不正行為が除去された後、実際に請求された売上に基づいてパートナーを適格レベルに割り当てます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Cloud パートナー ポータル](https://cloudpartner.azure.com)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
 

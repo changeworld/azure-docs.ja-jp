@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929672"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892934"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをコピーする
 
@@ -30,7 +30,7 @@ ms.locfileid: "74929672"
 
 サポートされているソース データ ストアから検索インデックスにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -40,11 +40,11 @@ ms.locfileid: "74929672"
 
 Azure Cognitive Search のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
 | url | 検索サービスの URL。 | はい |
-| key | Search サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| key | 検索サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 > [!IMPORTANT]
@@ -78,9 +78,9 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 
 データを Azure Cognitive Search にコピーするために、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | はい |
+| 型 | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | はい |
 | indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 **例:**
@@ -110,11 +110,11 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 
 Azure Cognitive Search にデータをコピーするには、コピー アクティビティのソースの種類を **AzureSearchIndexSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureSearchIndexSink** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureSearchIndexSink** | はい |
 | writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用できる値は、以下のとおりです。**マージ** (既定) および**アップロード**。 | いいえ |
-| writeBatchSize | バッファー サイズが writeBatchSize に達したときに、検索インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ |
+| writeBatchSize | バッファー サイズが writeBatchSize に達すると、検索インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ |
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ
 
@@ -169,7 +169,7 @@ Azure Cognitive Search サービスは、バッチとしてのドキュメント
 
 | Azure Cognitive Search のデータ型 | Azure Cognitive Search のシンクでのサポート |
 | ---------------------- | ------------------------------ |
-| string | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
@@ -180,5 +180,5 @@ Azure Cognitive Search サービスは、バッチとしてのドキュメント
 
 現在、ComplexType などの他のデータ型はサポートされていません。 Azure Cognitive Search でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+## <a name="next-steps"></a>次のステップ
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

@@ -2,18 +2,18 @@
 title: Apache Hive を使用した Twitter データの分析 - Azure HDInsight
 description: Apache Hive と Apache Hadoop を HDInsight で使用して、生の Twitter データを検索可能な Hive テーブルに変換する方法を学びます。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 8c7f6695880cfdb0a350edc37d61e771d03b92df
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 12/16/2019
+ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435613"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
@@ -28,27 +28,27 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
-1. Web ブラウザーで、[https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクをクリックします。
+1. Web ブラウザーで、[https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクを選択します。
 
-2. **[Create New App]** をクリックします。
+2. **[Create New App]** を選択します。
 
 3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
-   |:--- |:--- |
+   |--- |--- |
    | Name |MyHDInsightApp |
-   | 説明 |MyHDInsightApp |
-   | Web サイト |https:\//www.myhdinsightapp.com |
+   | [説明] |MyHDInsightApp |
+   | Web サイト |`https://www.myhdinsightapp.com` |
 
-4. **[Yes, I agree]** をオンにして、 **[Create your Twitter application]** をクリックします。
+4. **[Yes, I agree]** を選択して、 **[Create your Twitter application]** を選択します。
 
-5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。
+5. **[Permissions]** タブを選択します。既定のアクセス許可は **読み取り専用**です。
 
 6. **[Keys and Access Tokens]** タブをクリックします。
 
-7. **[Create my access token]** をクリックします。
+7. **[Create my access token]** を選択します。
 
-8. ページの右上隅にある **[Test OAuth]** をクリックします。
+8. ページの右上隅にある **[Test OAuth]** を選択します。
 
 9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。
 
@@ -59,20 +59,18 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 > [!NOTE]  
 > Python が既にインストールされているので、次の手順は HDInsight クラスターで実行します。
 
-1. SSH を使用して HDInsight クラスターに接続します。
+1. [ssh コマンド](./hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-3. 次のコマンドを使用して、[Tweepy](https://www.tweepy.org/)、[Progressbar](https://pypi.python.org/pypi/progressbar/2.2)、およびその他の必要なパッケージをインストールします。
+1. 次のコマンドを使用して、[Tweepy](https://www.tweepy.org/)、[Progressbar](https://pypi.python.org/pypi/progressbar/2.2)、およびその他の必要なパッケージをインストールします。
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
    sudo apt remove python-openssl
-   pip install virtualenv
+   python -m pip install virtualenv
    mkdir gettweets
    cd gettweets
    virtualenv gettweets
@@ -80,13 +78,13 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-4. 次のコマンドを使用して、**gettweets.py** という名前のファイルを作成します。
+1. 次のコマンドを使用して、**gettweets.py** という名前のファイルを作成します。
 
    ```bash
    nano gettweets.py
    ```
 
-5. **gettweets.py** ファイルの内容として、次のテキストを使用します。
+1. 次のコードを編集して、`Your consumer secret`、`Your consumer key`、`Your access token`、および `Your access token secret` を、twitter アプリケーションの関連する情報に置き換えます。 次に、編集したコードを **gettweets.py** ファイルの内容として貼り付けます。
 
    ```python
    #!/usr/bin/python
@@ -104,7 +102,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    access_token_secret='Your access token secret'
 
    #The number of tweets we want to get
-   max_tweets=10000
+   max_tweets=100
 
    #Create the listener class that receives and saves tweets
    class listener(StreamListener):
@@ -142,20 +140,12 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]  
-    > 次の項目のプレースホルダー テキストを、twitter アプリケーションからの情報に置き換えます。
-    >
-    > * `consumer_secret`
-    > * `consumer_key`
-    > * `access_token`
-    > * `access_token_secret`
-
     > [!TIP]  
     > よく使われているキーワードを追跡するには、最後の行のトピック フィルターを調整してください。 スクリプトの実行時によく使用されているキーワードを使用すると、高速にデータをキャプチャできます。
 
-6. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
+1. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
 
-7. 次のコマンドを使用してファイルを実行し、ツイートをダウンロードします。
+1. 次のコマンドを使用してファイルを実行し、ツイートをダウンロードします。
 
     ```bash
     python gettweets.py
@@ -164,7 +154,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
     進行状況のインジケーターが表示されます。 このインジケーターは、ツイートのダウンロードの進行状況を 100% になるまでカウントします。
 
    > [!NOTE]  
-   > 進行が遅い場合は、フィルターを変更してトレンド トピックを追跡することをお勧めします。 フィルターしたトピックに関するツイートが多いほど、必要な 10000 ツイートをすばやく取得できます。
+   > 進行が遅い場合は、フィルターを変更してトレンド トピックを追跡することをお勧めします。 フィルターしたトピックに関するツイートが多いほど、必要な 100 ツイートをすばやく取得できます。
 
 ### <a name="upload-the-data"></a>データのアップロード
 
@@ -293,8 +283,9 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
    WHERE (length(json_response) > 500);
    ```
 
-2. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
-3. 次のコマンドを使用して、ファイルに含まれている HiveQL を実行します。
+1. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
+
+1. 次のコマンドを使用して、ファイルに含まれている HiveQL を実行します。
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
@@ -302,7 +293,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
     このコマンドは、**twitter.hql** ファイルを実行します。 クエリが完了すると、`jdbc:hive2//localhost:10001/>` プロンプトが表示されます。
 
-4. Beeline プロンプトで次のクエリを使用して、データがインポートされたことを確認します。
+1. Beeline プロンプトで次のクエリを使用して、データがインポートされたことを確認します。
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -317,16 +308,9 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
     > [!NOTE]  
     > `gettweets.py` スクリプトのフィルターを変更した場合は、**Azure** を、使用したフィルターのいずれかで置き換えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、構造化されていない JSON データ セットを構造化された [Apache Hive](https://hive.apache.org/) テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight を使用したフライト遅延データの分析](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
-
-[curl]: https://curl.haxx.se
-[curl-download]: https://curl.haxx.se/download.html
-
-[apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
-
-[twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter

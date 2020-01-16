@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 36a0c36de7b3f6c6aa4932770e6264bc14c2790f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511900"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610626"
 ---
 # <a name="connect-citrix-analytics-security"></a>Citrix Analytics (セキュリティ) の接続 
 
@@ -42,8 +42,10 @@ Citrix Analytics (セキュリティ) と Azure Sentinel の統合により、�
 
 3. **Citrix Analytics (セキュリティ)** ページの指示に従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Citrix Analytics (セキュリティ) を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視します。
+
 

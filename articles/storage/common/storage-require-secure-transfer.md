@@ -1,35 +1,38 @@
 ---
-title: Azure Storage で安全な転送が必要 | Microsoft Docs
-description: Azure Storage の "安全な転送が必須" 機能、およびこの機能を有効にする方法について説明します。
+title: セキュリティで保護された接続を確保するために安全な転送を要求する
+titleSuffix: Azure Storage
+description: Azure Storage への要求に対して安全な転送を求める方法について説明します。 ストレージ アカウント用に安全な転送を要求すると、セキュリティで保護されていない接続から送信される要求はすべて拒否されます。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 06/20/2017
+ms.topic: how-to
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 7239e7fbe1221acc3c302260045d6fc510db2cbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457445"
 ---
-# <a name="require-secure-transfer-in-azure-storage"></a>Azure Storage で安全な転送が必要
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
-[安全な転送が必須] オプションは、セキュリティで保護された接続からアカウントへの要求を許可するだけで、ストレージ アカウントのセキュリティを強化することができます。 たとえば、ストレージ アカウントにアクセスするために REST API を呼び出している場合、HTTPS を使用して接続する必要があります。 [安全な転送が必須] では、HTTP を使用する要求は拒否されます。
+ストレージ アカウントに **[安全な転送が必須]** プロパティを設定すると、セキュリティで保護された接続からの要求のみを受け入れるようにストレージ アカウントを構成できます。 安全な転送を要求すると、セキュリティで保護されていない接続から送信される要求はすべて拒否されます。 Microsoft では、すべてのストレージ アカウントに対して常に、セキュリティで保護された転送を要求することをお勧めしています。
 
-Azure Files サービスを使用する場合、[安全な転送が必須] を有効にすると、暗号化をしない接続は失敗します。 これには、暗号化なしの SMB 2.1、SMB 3.0、および Linux SMB クライアントの一部のバージョンを使用するシナリオが含まれます。 
+安全な転送が必要な場合、Azure Storage REST API 操作の呼び出しは HTTPS を介して行う必要があります。 HTTP を介して行われた要求はすべて拒否されます。
 
-SDK を使用してストレージ アカウントを作成した場合、既定で [安全な転送が必須] オプションは無効です。 また、Azure portal でストレージ アカウントを作成した場合は、既定で有効です。
+ストレージ アカウントに対して安全な転送が求められている場合、暗号化なしの SMB 経由で Azure ファイル共有に接続しても失敗します。 セキュリティで保護されていない接続の例としては、SMB 2.1、SMB 3.0 (暗号化なし)、または一部のバージョンの Linux SMB クライアントがあります。
+
+Azure portal でストレージ アカウントを作成すると、既定では **[安全な転送が必須]** プロパティが有効になります。 ただし、SDK を使用してストレージ アカウントを作成した場合は無効になります。
 
 > [!NOTE]
 > Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Azure Portal で [安全な転送が必須] を有効にする
+## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portal で安全な転送を要求する
 
-[Azure Portal](https://portal.azure.com) でストレージ アカウントを作成する場合は、[安全な転送が必須] 設定を有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
+[Azure portal](https://portal.azure.com) でストレージ アカウントを作成するときに、 **[安全な転送が必須]** プロパティを有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新しいストレージ アカウントの安全な転送が必須
 
@@ -46,19 +49,19 @@ SDK を使用してストレージ アカウントを作成した場合、既定
 
    ![ストレージ アカウント メニュー ウィンドウ](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="enable-secure-transfer-required-programmatically"></a>プログラムを使用して [安全な転送が必須] を有効にする
+## <a name="require-secure-transfer-from-code"></a>コードから安全な転送を要求する
 
-プログラムで安全な転送を必須にするには、以下の REST API、ツール、またはライブラリを利用して、ストレージ アカウント プロパティの _supportsHttpsTrafficOnly_ 設定を使用します。
+安全な転送をプログラムで要求するには、ストレージ アカウントに _supportsHttpsTrafficOnly_ プロパティを設定します。 このプロパティを設定するには、ストレージ リソース プロバイダーの REST API、クライアント ライブラリ、またはツールを使用します。
 
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (バージョン:2016-12-01)
-* [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (バージョン:0.7)
-* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (バージョン:2.0.11)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (バージョン:1.1.0)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (バージョン:6.3.0)
-* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (バージョン:1.1.0)
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (バージョン:0.11.0)
+* [REST API](/rest/api/storagerp/storageaccounts)
+* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+* [CLI](/cli/azure/storage/account)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-### <a name="enable-secure-transfer-required-setting-with-powershell"></a>PowerShell で [安全な転送が必須] の設定を有効にする
+## <a name="require-secure-transfer-with-powershell"></a>PowerShell を使用して安全な転送を要求する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -69,7 +72,7 @@ SDK を使用してストレージ アカウントを作成した場合、既定
  以下のコマンド ラインを使って、設定を確認します。
 
 ```powershell
-> Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : False
@@ -80,7 +83,7 @@ EnableHttpsTrafficOnly : False
 以下のコマンド ラインを使って、設定を有効にします。
 
 ```powershell
-> Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : True
@@ -88,16 +91,16 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-### <a name="enable-secure-transfer-required-setting-with-cli"></a>CLI で [安全な転送が必須] の設定を有効にする
+## <a name="require-secure-transfer-with-azure-cli"></a>Azure CLI を使用して安全な転送を要求する
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- 以下のコマンド ラインを使って、設定を確認します。
+ 次のコマンドを使用して設定を確認します。
 
 ```azurecli-interactive
-> az storage account show -g {ResourceGroupName} -n {StorageAccountName}
+az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": false,
@@ -107,10 +110,10 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-以下のコマンド ラインを使って、設定を有効にします。
+次のコマンドを使用して設定を有効にします。
 
 ```azurecli-interactive
-> az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": true,
@@ -120,5 +123,6 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-## <a name="next-steps"></a>次の手順
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、「[Azure Storage セキュリティ ガイド](storage-security-guide.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+
+[BLOB ストレージのセキュリティに関する推奨事項](../blobs/security-recommendations.md)

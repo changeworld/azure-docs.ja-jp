@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 369199c70d560fc0a8be6d4f0e0595207b486bbb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3d8a1b965724c0fcb9f07b382ed446d41fe23dac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535667"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772569"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -52,7 +52,7 @@ ms.locfileid: "75535667"
     + [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) - [Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ使用できます。
 + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用したすべての Python 環境で。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
-+ コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)を使用
++ コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)を使用
 
 ## <a name="machine-learning-with-a-workspace"></a>ワークスペースを使用した機械学習
 

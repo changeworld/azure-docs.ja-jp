@@ -1,6 +1,6 @@
 ---
 title: Windows Java アプリを構成する
-description: Azure App Service の Windows VM インスタンスで Java アプリが実行されるように構成する方法について説明します。 この記事では、最も一般的な構成タスクについて説明します。
+description: Azure App Service の Windows VM インスタンスで Java アプリが実行されるように構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 keywords: azure app service, web アプリ, windows, oss, java
 author: jasonfreeberg
 ms.devlang: java
@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671902"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889347"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -209,7 +209,7 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 
 これらの説明は、すべてのデータベース接続に適用されます。 プレースホルダーを、選択したデータベースのドライバーのクラス名と JAR ファイルに置き換える必要があります。 一般的なデータベースのクラス名とドライバーのダウンロードを含む表を次に示します。
 
-| Database   | ドライバーのクラス名                             | JDBC ドライバー                                                                      |
+| データベース   | ドライバーのクラス名                             | JDBC ドライバー                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
@@ -315,9 +315,9 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 
 ### <a name="runtime-support"></a>ランタイム サポート
 
-[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して Azul Zulu JDK に関する[問題を投稿](/azure/azure-supportability/how-to-create-azure-support-request)できます。
+[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して Azul Zulu JDK に関する[問題を投稿](/azure/azure-portal/supportability/how-to-create-azure-support-request)できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このトピックでは、Azure App Service for Windows の Java ランタイムのサポート ステートメントを提供します。
 

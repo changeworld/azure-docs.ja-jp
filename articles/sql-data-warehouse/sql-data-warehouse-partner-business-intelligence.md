@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685615"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772212"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートする公式のビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## <a name="our-business-intelligence-partners"></a>ビジネス インテリジェンス パートナー
-| パートナー | 説明 | Web サイト/製品リンク |
+| Partner | [説明] | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
 | ![Birst][1] |**Birst**<br>Birst は、共有の一般的な分析ファブリック上に織り込まれた仮想化 BI インスタンスのネットワークを介して、組織全体を接続します|[製品ページ][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory Data][2] |**ClearStory Data (継続的なビジネス インサイト)**<br>ClearStory Data は、SQL Data Warehouse に格納されている各種データ全体にわたる高速サイクル分析を実現します。 ClearStory の Spark ベース プラットフォームと分析アプリケーションにより、多種多様なデータ セットへのアクセスと協調が高速化されます。 また、高速で調和的な探索が実現されるため、ビジネス ユーザーは他のユーザーに頼らずに知見を得ることができます。 |[製品ページ][clearstory_website]<br> |
@@ -87,7 +87,7 @@ ms.locfileid: "73685615"
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

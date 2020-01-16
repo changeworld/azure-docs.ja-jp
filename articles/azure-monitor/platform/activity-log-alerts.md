@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: 42a8b53f8d1fee2d657ccaa2d57e72b3edfdd4f3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531056"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747526"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート 
 
 ## <a name="overview"></a>概要
-アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](activity-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
+アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
 > アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは**できません**。

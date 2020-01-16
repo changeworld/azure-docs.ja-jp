@@ -2,18 +2,18 @@
 title: Azure HDInsight における Phoenix のパフォーマンス
 description: Azure HDInsight クラスターの Apache Phoenix のパフォーマンスを最適化するためのベスト プラクティス
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810426"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552646"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 
@@ -52,13 +52,13 @@ Phoenix のテーブルで定義された主キーによって、基になる HB
 
 上記の最初の行では、rowkey のデータは次のように表されます。
 
-|rowkey|       key|   value| 
+|rowkey|       key|   value|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  
 |  Dole-John-111|firstName |John|  
 |  Dole-John-111|lastName |Dole|  
-|  Dole-John-111|socialSecurityNum |111| 
+|  Dole-John-111|socialSecurityNum |111|
 
 これで、この rowkey に、データの重複コピーが格納されるようになります。 この値は、基になる HBase テーブルのすべてのセルに含まれるので、主キーに含める列のサイズと数はよく検討してください。
 
@@ -226,7 +226,7 @@ explain で表示されるプランの結果の項目に関する詳細な一覧
 
 これらのオプションの詳細については、[Apache Phoenix の文法](https://phoenix.apache.org/language/index.html#options)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Phoenix のチューニング ガイド](https://phoenix.apache.org/tuning_guide.html)
 * [セカンダリ インデックス](https://phoenix.apache.org/secondary_indexing.html)

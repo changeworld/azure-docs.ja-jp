@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 14c4ddd5d95abb223fb30e2ce07496e7f2773257
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 29aab4437b7d77b9a00b5745d68dcb5c44a4efe6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434219"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -51,13 +51,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
             "settings": {
               "minDockerVersion": "v1.25",
               "loggingOptions": "",
-              "registryCredentials": {
-                "registryName": {
-                  "username": "",
-                  "password": "",
-                  "address": ""
-                }
-              }
+              "registryCredentials": {}
             }
           },
           "systemModules": {
@@ -74,7 +68,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                "createOptions": "{}"
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
           },
@@ -96,7 +90,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
         "properties.desired": {
           "schemaVersion": "1.0",
           "routes": {
-            "route": "FROM /* INTO $upstream"
+            "upstream": "FROM /messages/* INTO $upstream"
           },
           "storeAndForwardConfiguration": {
             "timeToLiveSecs": 7200
@@ -104,12 +98,68 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
         }
       },
       "SimulatedTemperatureSensor": {
-        "properties.desired": {}
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
       }
     }
   }
 }
 ```
+
+## <a name="layered-deployment"></a>多層デプロイ
+
+多層デプロイは、互いの上に積み重ねることができる自動デプロイの一種です。 多層デプロイの詳細については、「[1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動展開について](module-deployment-monitoring.md)」を参照してください。 
+
+多層デプロイは、自動デプロイのように Azure CLI を使用して作成および管理できますが、いくつかの違いがあります。 多層デプロイが作成されたら、他のデプロイと同じように、同じ Azure CLI を使用して多層デプロイを操作できます。 多層デプロイを作成するには、create コマンドに `--layered` フラグを追加します。 
+
+2 番目の違いは、デプロイ マニフェストの構築です。 標準の自動デプロイには、ユーザー モジュールに加えてシステム ランタイム モジュールを含める必要がありますが、多層デプロイにはユーザー モジュールしか含めることができません。 その代わりに多層デプロイには、システム ランタイム モジュールなど、すべての IoT Edge デバイスに必要なコンポーネントを提供するために、標準の自動デプロイもデバイス上に必要です。 
+
+例として、1 つのモジュールでの基本的な多層デプロイ マニフェストを次に示します。 
+
+```json
+{
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired.modules.SimulatedTemperatureSensor": {
+          "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": ""
+          },
+          "type": "docker",
+          "status": "running",
+          "restartPolicy": "always",
+          "version": "1.0"
+        }
+      },
+      "$edgeHub": {
+        "properties.desired.routes.upstream": "FROM /messages/* INTO $upstream"
+      },
+      "SimulatedTemperatureSensor": {
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
+      }
+    }
+  }
+}
+```
+
+前の例では、モジュールの `properties.desired` を設定する多層デプロイを示しました。 この多層デプロイは、同じモジュールが既に適用されているデバイスをターゲットにしていた場合、既存の適切なプロパティをすべて上書きしていました。 適切なプロパティを上書きするのではなく更新するために、新しいサブセクションを定義できます。 次に例を示します。 
+
+```json
+"SimulatedTEmperatureSensor": {
+  "properties.desired.layeredProperties": {
+    "SendData": true,
+    "SendInterval": 5
+  }
+}
+```
+
+多層デプロイでのモジュール ツインの構成の詳細については、[多層デプロイ](module-deployment-monitoring.md#layered-deployment)に関するページを参照してください。
 
 ## <a name="identify-devices-using-tags"></a>タグを使用したデバイスの識別
 
@@ -138,14 +188,18 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
+同じコマンドと `--layered` フラグを使用して、多層デプロイを作成します。
+
 deployment create コマンドは、次のパラメーターを受け取ります。 
 
-* **--deployment-id** - IoT ハブに作成されるデプロイの名前です。 デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
+* **--layered** - デプロイを多層デプロイとして識別する省略可能なフラグ。
+* **--deployment-id** - IoT ハブに作成されるデプロイの名前です。 デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /` 必須のパラメーター。 
+* **--content** - デプロイ マニフェスト JSON へのファイルパスです。 必須のパラメーター。 
 * **--hub-name** - デプロイが作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 `az account set -s [subscription name]` コマンドを使用して、現在のサブスクリプションを変更します。
-* **--content** - デプロイ マニフェスト JSON へのファイルパスです。 
 * **--labels** - デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 ラベルの名前と値には、JSON 形式を使用します。 たとえば、`{"HostPlatform":"Linux", "Version:"3.0.1"}` のように指定します。
 * **--target-condition** - どのデバイスがこのデプロイの対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、「 `tags.environment='test' and properties.reported.devicemodel='4000x'` 」のように入力します。 
 * **--priority** - 正の整数にする必要があります。 同じデバイスで複数のデプロイがターゲットとなっている場合は、優先度の数値が最も大きいデプロイが適用されます。
+* **--metrics** - edgeHub に報告されたプロパティに対してクエリを実行し、デプロイのステータスを追跡するメトリックを作成します。 メトリックは JSON 入力またはファイル パスを取ります。 たとえば、「 `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 」のように入力します。 
 
 ## <a name="monitor-a-deployment"></a>デプロイの監視
 
@@ -156,7 +210,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 ```
 
 deployment show コマンドは、次のパラメーターを受け取ります。
-* **--deployment-id** - IoT ハブに存在するデプロイの名前です。
+* **--deployment-id** - IoT ハブに存在するデプロイの名前です。 必須のパラメーター。 
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 コマンド ウィンドウで、デプロイを検査します。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
@@ -187,6 +241,8 @@ deployment show-metric コマンドは、次のパラメーターを受け取り
 * このデプロイを現在実行しているデバイスが対象条件を満たさなくなった場合、このデプロイはアンインストールされ、次に優先度の高いデプロイが適用されます。 
 * このデプロイを現在実行しているデバイスが対象条件を満たさなくなり、他のデプロイの対象条件を満たさない場合は、デバイスではなにも変更されません。 デバイスは現在の状態で現在のモジュールを実行し続けますが、このデプロイの一部としては管理されなくなります。 デバイスが他のデプロイの対象の条件を満たすと、このデプロイはアンインストールされ、新しいデプロイが適用されます。 
 
+デプロイ マニフェストで定義されたモジュールとルートを含むデプロイの内容は更新できません。 デプロイの内容を更新する場合は、同じデバイスをターゲットにした、より優先順位が高い新しいデプロイを作成することによって更新します。 ターゲット条件、ラベル、メトリック、優先順位など、既存のモジュールの特定のプロパティを変更できます。 
+
 デプロイを更新するには、[az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) コマンドを使用します。
 
 ```cli
@@ -200,6 +256,8 @@ deployment update コマンドは、次のパラメーターを受け取りま�
   * targetCondition - `targetCondition=tags.location.state='Oregon'` など
   * labels 
   * priority
+* **--add** - ターゲット条件やラベルなど、新しいプロパティをデプロイに追加します。 
+* **--remove** - ターゲット条件やラベルなど、既存のプロパティを削除します。 
 
 
 ## <a name="delete-a-deployment"></a>デプロイの削除
@@ -216,6 +274,6 @@ deployment delete コマンドは、次のパラメーターを受け取りま�
 * **--deployment-id** - IoT ハブに存在するデプロイの名前です。
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IoT Edge デバイスへのモジュールのデプロイ](module-deployment-monitoring.md)の詳細について学習します。

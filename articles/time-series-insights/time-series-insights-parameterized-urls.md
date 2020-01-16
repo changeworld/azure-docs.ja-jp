@@ -1,6 +1,6 @@
 ---
 title: パラメーター化 URL を使用してカスタム ビューを共有する - Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights でパラメーター化 URL を開発して、カスタマイズしたビューを簡単に共有できるようにする方法について説明します。
+description: パラメーター化 URL を作成して、カスタマイズしたエクスプローラー ビューを Azure Time Series Insights で簡単に共有できるようにする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/18/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fd6de7dfe9509e7f99adeed0e5de3e157335e6bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452801"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -44,11 +44,12 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 * `from=<integer>` には、検索範囲の開始時刻を JavaScript のミリ秒表現で指定します。
 * `to=<integer>` には、検索範囲の終了時刻を JavaScript のミリ秒表現で指定します。
 
-JavaScript における日付のミリ秒表現については、「[Epoch & Unix Timestamp Converter (Epoch & Unix タイムスタンプ コンバーター)](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)」を参照してください。
+> [!TIP]
+> 日付を JavaScript のミリ秒に簡単に変換するには、[Epoch & Unix Timestamp Converter](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html) を試してください。
 
 ### <a name="relative-time-values"></a>相対時刻値
 
-相対時刻値には、`relativeMillis=<value>` を使用します。*value* は、終了時刻の直近データを基準とする時間を JavaScript のミリ秒表現で指定します。
+相対時刻値には、`relativeMillis=<value>` を使用します。*value* は、API から受け取った直近のタイムスタンプを基準とする JavaScript のミリ秒表現で指定します。
 
 たとえば「`&relativeMillis=3600000`」を指定した場合、直近 60 分のデータが表示されます。
 
@@ -65,33 +66,41 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
 
 ### <a name="optional-parameters"></a>省略可能なパラメーター
 
-`timeSeriesDefinitions=<collection of term objects>` パラメーターは、Time Series Insights ビューの期間を指定します。
+`timeSeriesDefinitions=<collection of term objects>` パラメーターは、Time Series Insights ビューに表示される述語項を指定します。
 
-| パラメーター | URL 項目 | 説明 |
+| パラメーター | URL 項目 | [説明] |
 | --- | --- | --- |
 | **name** | `\<string>` | "*期間*" の名前。 |
 | **splitBy** | `\<string>` | "*分割基準*" となる列名。 |
 | **measureName** | `\<string>` | "*メジャー*" の列名。 |
 | **predicate** | `\<string>` | サーバー側フィルター処理の *where* 句。 |
-| **useSum** | `true` | メジャーの合計を使用することを指定する省略可能なパラメーター。 </br>  選択されたメジャーが `Events` の場合、既定で count が選択されることに注意してください。  </br>  `Events` が選択されていない場合、既定で average が選択されます。 |
+| **useSum** | `true` | メジャーの合計を使用することを指定する省略可能なパラメーター。 |
+
+> [!NOTE]
+> 選択された **useSum** メジャーが `Events` である場合、既定で count が選択されます。  
+> `Events` が選択されていない場合、既定で average が選択されます。 |
 
 * `multiChartStack=<true/false>` キー/値ペアでは、グラフの積み重ねが有効になります。
 * `multiChartSameScale=<true/false>` キー/値ペアでは、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。  
 * `timeBucketUnit=<Unit>&timeBucketSize=<integer>` を使用すると、間隔スライダーを調整して、グラフの集計表示を細かく、または滑らかにできます。  
 * `timezoneOffset=<integer>` パラメーターを使用すると、UTC のオフセットとして表示されるグラフのタイムゾーンを設定できます。
 
-| ペア | 説明 |
+| ペア | [説明] |
 | --- | --- |
 | `multiChartStack=false` | `true` は既定で有効なので、積み重ねるには `false` を渡します。 |
-| `multiChartStack=false&multiChartSameScale=true` | 期間全体で同じ Y 軸のスケールを使用するには、積み重ねを有効にする必要があります。  既定では `false` なので、"true" を渡してこの機能を有効にします。 |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 単位 = 日、時間、分、秒、ミリ秒。  単位は常に大文字にします。 </br> timeBucketSize に目的の整数を渡して、単位数を定義します。  最大 7 日間まで滑らかにすることができます。  |
-| `timezoneOffset=-<integer>` | この整数は常にミリ秒単位です。 </br> この機能は、ローカル時刻 (ブラウザーの時刻) または UTC を選択できる Time Series Insights エクスプローラーで有効にする機能とは少し異なります。 |
+| `multiChartStack=false&multiChartSameScale=true` | 期間全体で同じ Y 軸のスケールを使用するには、積み重ねを有効にする必要があります。  既定では `false` なので、`true` を渡してこの機能を有効にします。 |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 単位は `days`、`hours`、`minutes`、`seconds`、`milliseconds` です。  単位は常に大文字にします。 </br> **timeBucketSize** に目的の整数を渡して、単位数を定義します。  |
+| `timezoneOffset=-<integer>` | この整数は常にミリ秒単位です。 |
+
+> [!NOTE]
+> **timeBucketUnit** 値は、最大 7 日に平滑化できます。
+> **timezoneOffset** 値は UTC でも現地時刻でもありません。
 
 ### <a name="examples"></a>例
 
 URL パラメーターとして Time Series Insights 環境に時系列定義を追加するには、以下を追加します。
 
-```plaintext
+```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
@@ -100,26 +109,30 @@ URL パラメーターとして Time Series Insights 環境に時系列定義を
 
 * 環境 ID
 * 直近 60 分のデータ
-* オプション パラメーターを構成する期間 (F1PressureID、F2TempStation、F3VibrationPL)
+* オプション パラメーターを構成する用語 (**F1PressureID**、**F2TempStation**、**F3VibrationPL**)
 
 この場合、ビューのパラメーター化 URL は、次のように構築することができます。
 
-```plaintext
+```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
+[![Time Series Insights エクスプローラーのパラメーター化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+
 > [!TIP]
-> Explorer ライブで [URL の使用](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])についてご覧ください。
+> Explorer ライブで上記の [URL の使用](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])例についてご覧ください。
 
-上の URL は、Time Series Insights Explorer ビューを記述し、構築しています。
+上の URL は、パラメーター化された Time Series Insights エクスプローラー ビューを記述し、表示しています。 
 
-[![Time Series Insights Explorer の期間](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+* パラメーター化された述語です。
 
-完全なビュー (グラフを含む) は次のようになります。
+  [![Time Series Insights エクスプローラーのパラメーター化された述語。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-[![グラフ ビュー](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+* 共有された完全なグラフ ビュー。
 
-## <a name="next-steps"></a>次の手順
+  [![共有された完全なグラフ ビュー。](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
+
+## <a name="next-steps"></a>次のステップ
 
 * [C# を使用してデータのクエリを行う](time-series-insights-query-data-csharp.md)方法を学習します。
 

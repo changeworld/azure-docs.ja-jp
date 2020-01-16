@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672499"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967132"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -23,7 +23,7 @@ ms.locfileid: "74672499"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>App Service のリソースを移動する場合の注意すべき制限はありますか?
 
-App Service のリソースを新しいリソース グループまたはサブスクリプションに移動する場合は、注意すべきいくつかの制限があります。 詳細については、「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」を参照してください。
+App Service のリソースを新しいリソース グループまたはサブスクリプションに移動する場合は、注意すべきいくつかの制限があります。 詳細については、「[App Service の制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)」を参照してください。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Web アプリのカスタム ドメイン名はどのように使用しますか?
 
@@ -49,11 +49,11 @@ App Service Web アプリの SSL 証明書を購入して設定する方法に�
 
 現時点では、Azure Application Insights は移動操作をサポートしていません。 元のリソース グループに Application Insights のリソースが含まれている場合は、そのリソースを移動することはできません。 App Service アプリを移動しようとする際に Application Insights のリソースも含めると、移動操作全体が失敗します。 ただし、アプリが正常に動作するために、Application Insights と App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
 
-詳細については、「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」を参照してください。
+詳細については、「[App Service の制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)」を参照してください。
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>ガイダンス チェックリストおよびリソースの移動操作の詳細はどこにありますか?
 
-「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」では、リソースを新しいサブスクリプションまたは同じサブスクリプション内の新しいリソース グループに移動する方法について説明します。 リソースの移動チェックリストに関する情報を入手し、移動操作をサポートしているサービスおよびApp Service の制限事項とその他のトピックの詳細について学習できます。
+「[App Service の制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)」では、リソースを新しいサブスクリプションまたは同じサブスクリプション内の新しいリソース グループに移動する方法について説明します。 リソースの移動チェックリストに関する情報を入手し、移動操作をサポートしているサービスおよびApp Service の制限事項とその他のトピックの詳細について学習できます。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Web アプリのサーバーのタイム ゾーンはどのように設定しますか?
 

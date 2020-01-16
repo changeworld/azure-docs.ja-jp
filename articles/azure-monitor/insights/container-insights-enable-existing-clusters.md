@@ -3,12 +3,12 @@ title: デプロイされている Azure Kubernetes Service (AKS) クラスタ�
 description: Azure Monitor for containers を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 57d492778828254da7a6899641ab9dbd19a40154
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405487"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977787"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -18,12 +18,12 @@ ms.locfileid: "75405487"
 
 * Azure CLI
 * Terraform
-* Azure Portal で [Azure Monitor から](#enable-from-azure-monitor-in-the-portal)、または [AKS クラスターから直接](#enable-directly-from-aks-cluster-in-the-portal) 
-* Azure PowerShell コマンドレット `New-AzResourceGroupDeployment` または Azure CLI を使用して、[提供されている Azure Resource Manager テンプレート](#enable-using-an-azure-resource-manager-template)で。 
+* Azure Portal で [Azure Monitor から](#enable-from-azure-monitor-in-the-portal)、または [AKS クラスターから直接](#enable-directly-from-aks-cluster-in-the-portal)
+* Azure PowerShell コマンドレット `New-AzResourceGroupDeployment` または Azure CLI を使用して、[提供されている Azure Resource Manager テンプレート](#enable-using-an-azure-resource-manager-template)で。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com) にサインインする 
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI を使用して有効にする
 
@@ -65,14 +65,14 @@ provisioningState       : Succeeded
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。 
+3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
     出力で、ワークスペース名を見つけて、フィールド **id** の下にあるその Log Analytics ワークスペースの完全なリソース ID をコピーします。
- 
+
 4. 次のコマンドを実行して、監視アドオンを有効にし、`--workspace-resource-id` パラメーターの値を置き換えます。 文字列値は二重引用符で囲む必要があります。
 
     ```azurecli
@@ -100,11 +100,11 @@ provisioningState       : Succeeded
 
 2. [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) を、Terraform のドキュメントに記載されている手順に従って追加します。
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>ポータルで Azure Monitor から有効にする 
+## <a name="enable-from-azure-monitor-in-the-portal"></a>ポータルで Azure Monitor から有効にする
 
 Azure portal で Azure Monitor からの AKS クラスターの監視を有効にするには、次のようにします。
 
-1. Azure portal で、 **[モニター]** を選択します。 
+1. Azure portal で、 **[モニター]** を選択します。
 
 2. 一覧から **[コンテナー]** を選択します。
 
@@ -113,22 +113,22 @@ Azure portal で Azure Monitor からの AKS クラスターの監視を有効�
 4. 監視対象外のクラスターの一覧でコンテナーを検索し、 **[有効にする]** をクリックします。   
 
 5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  
-    このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。 
+    このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![AKS コンテナーの分析情報の監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。 
- 
-監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
+    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。
+
+監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
 ## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>ポータルで AKS クラスターから直接有効にする
 
 Azure Portal でいずれかの AKS クラスターから直接監視を有効にするには、次の操作を行います。
 
-1. Azure Portal で **[すべてのサービス]** を選択します。 
+1. Azure Portal で **[すべてのサービス]** を選択します。
 
-2. リソースの一覧で、「**Containers**」と入力を開始します。  入力内容に基づいて、一覧がフィルター処理されます。 
+2. リソースの一覧で、「**Containers**」と入力を開始します。  入力内容に基づいて、一覧がフィルター処理されます。
 
 3. **[Kubernetes サービス]** を選択します。  
 
@@ -139,20 +139,20 @@ Azure Portal でいずれかの AKS クラスターから直接監視を有効�
 5. コンテナーの概要ページで、 **[コンテナーの監視]** を選択します。  
 
 6. そのクラスターと同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、 **[コンテナーの Azure Monitor へのオンボード]** ページのドロップダウン リストでそれを選択します。  
-    このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。 
+    このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![AKS コンテナーの正常性の監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。 
- 
-監視を有効にした後、クラスターのオペレーショナル データが表示されるまで、約 15 分かかる場合があります。 
+    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。
+
+監視を有効にした後、クラスターのオペレーショナル データが表示されるまで、約 15 分かかる場合があります。
 
 ## <a name="enable-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して有効にする
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視を有効にする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
-* AKS コンテナー リソース ID。 
+* AKS コンテナー リソース ID。
 * クラスターがデプロイされるリソース グループ。
 
 >[!NOTE]
@@ -163,11 +163,11 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="create-and-execute-a-template"></a>テンプレートを作成して実行する
 
@@ -256,20 +256,20 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-4. AKS クラスターの **[AKS Overview]\(AKS の概要\)** ページの値を使用して、**aksResourceId** と **aksResourceLocation** の値を編集します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。 
+4. AKS クラスターの **[AKS Overview]\(AKS の概要\)** ページの値を使用して、**aksResourceId** と **aksResourceLocation** の値を編集します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
 
     AKS クラスターに指定されている既存のタグ値に一致するように、**aksResourceTagValues** の値を編集します。
 
 5. このファイルを **existingClusterParam.json** としてローカル フォルダーに保存します。
 
-6. これでこのテンプレートをデプロイする準備が整いました。 
+6. これでこのテンプレートをデプロイする準備が整いました。
 
    * Azure PowerShell を使用してデプロイするには、そのテンプレートを含むフォルダーで次のコマンドを使用します。
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
-       
+
        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
        ```powershell
@@ -277,7 +277,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        ```
 
    * Azure CLI を使用してデプロイするには、次のコマンドを実行します。
-    
+
        ```azurecli
        az login
        az account set --subscription "Subscription Name"
@@ -289,8 +289,8 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        ```azurecli
        provisioningState       : Succeeded
        ```
-     
-       監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
+
+       監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
 ## <a name="verify-agent-and-solution-deployment"></a>エージェントとソリューションのデプロイを確認する
 
@@ -298,7 +298,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 ### <a name="agent-version-06072018-or-later"></a>エージェント バージョン 06072018 以降
 
-エージェントが正常にデプロイされていることを確認するには、次のコマンドを実行します。 
+エージェントが正常にデプロイされていることを確認するには、次のコマンドを実行します。
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -307,7 +307,7 @@ kubectl get ds omsagent --namespace=kube-system
 出力は次のようになり、適切にデプロイされたことが示されます。
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -321,7 +321,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 出力は次のようになり、適切にデプロイされたことが示されます。
 
 ```
-User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
@@ -337,7 +337,7 @@ kubectl get ds omsagent --namespace=kube-system
 出力は次のようになり、適切にデプロイされたことが示されます。  
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -368,5 +368,3 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 * ソリューションのオンボードを試みた際に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を確認してください。
 
 * AKS クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
-
-

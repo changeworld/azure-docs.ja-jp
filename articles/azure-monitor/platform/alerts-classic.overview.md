@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893588"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747025"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -85,7 +85,7 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 - Azure Logic App
 - サードパーティのサービス
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アラート ルールとその構成方法については、以下をご覧ください。
 
 * [メトリック](data-platform.md)の詳細
@@ -93,7 +93,7 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 * [従来のメトリック アラートの PowerShell](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
-* [アクティビティ ログ](activity-logs-overview.md) の詳細
+* [アクティビティ ログ](platform-logs-overview.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](alerts-activity-log.md)の構成
 * [アクティビティ ログ アラート webhook スキーマ](activity-log-alerts-webhook.md) の確認

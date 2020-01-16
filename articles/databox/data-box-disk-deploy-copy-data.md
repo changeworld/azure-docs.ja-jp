@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231384"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895963"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ ms.locfileid: "70231384"
 開始する前に次の点を確認します。
 - [チュートリアル:Azure Data Box Disk のインストールと構成](data-box-disk-deploy-set-up.md)を完了していること。
 - ディスクは、ロックが解除されてクライアント コンピューターに接続されます。
-- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)が実行されている必要があります。
+- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されている必要があります。
 - データのための目的のストレージの種類が、[サポートされるストレージの種類](data-box-disk-system-requirements.md#supported-storage-types-for-upload)と一致することを確認します。
 - [Azure オブジェクトのサイズ制限におけるマネージド ディスク制限](data-box-disk-limits.md#azure-object-size-limits)を確認します。
 
@@ -101,10 +101,10 @@ ms.locfileid: "70231384"
     
     次の表は、コマンドのパラメーターとオプションを一覧にしたものです。
     
-    |パラメーター/オプション  |説明 |
+    |パラメーター/オプション  |[説明] |
     |--------------------|------------|
     |source            | コピー元ディレクトリのパスを指定します。        |
-    |Destination       | コピー先ディレクトリのパスを指定します。        |
+    |宛先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
     |/R: \<N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |
@@ -188,7 +188,7 @@ ms.locfileid: "70231384"
     |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
     |    Data Box Disk        |    4 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |
     
-    * *各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。* "
+    **各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。* "
     
     >[!NOTE]
     > 上記で推奨されているパラメーターは、社内テストで使用された環境に基づいています。
@@ -232,13 +232,13 @@ ms.locfileid: "70231384"
 
      ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. ファイル形式を検証するには、`JSONlint` に移動します。 ファイルを `ConfigFile.json`という名前で保存します。 
+6. ファイル形式を検証するには、`JSONlint` に移動します。 このファイルを `ConfigFile.json` として保存します。 
 
      ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
-8. `DataBoxDiskSplitCopy.exe` を実行します。 Type
+8. `DataBoxDiskSplitCopy.exe` を実行します。 種類
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -290,7 +290,7 @@ ms.locfileid: "70231384"
 
 検証中にエラーが発生した場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Disk に関する次のようなトピックについて説明しました。
 

@@ -1,7 +1,7 @@
 ---
 title: データの集計
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Summarize Data (データの要約) モジュールを使用して、データセット内の列に関する基本的な記述統計レポートを生成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Summarize Data (データの要約) モジュールを使用して、データセット内の列に関する基本的な記述統計レポートを生成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428454"
 ---
 # <a name="summarize-data"></a>データの集計
 
@@ -42,11 +42,11 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 
 1. パイプラインを実行するか、モジュールを右クリックして、 **[Run selected]\(選択対象を実行\)** を選択します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 モジュールからのレポートには、次の統計情報を含めることができます。 
 
-|列名|説明|
+|列名|[説明]|
 |------|------|  
 |**機能**|列の名前|
 |**Count**|すべての行の数|
@@ -71,6 +71,6 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 |**P95**|95% パーセンタイル|
 |**P99.5**|99.5% パーセンタイル |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。  
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。  

@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531039"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977653"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 
 > [!WARNING]
-> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-subscription.md)」を参照してください。
+> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-legacy.md)」を参照してください。
 
-[Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 
+[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 
 
 アクティビティ ログを Log Analytics ワークスペースに接続すると、次のような利点があります。
 
@@ -32,7 +32,7 @@ ms.locfileid: "75531039"
 1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
 
 > [!IMPORTANT]
-> Microsoft.OperationalInsights と Microsoft.OperationsManagement リソース プロバイダーがサブスクリプションに登録されていない場合、次の手順でエラーが発生することがあります。 これらのプロバイダーの登録については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+> Microsoft.OperationalInsights と Microsoft.OperationsManagement リソース プロバイダーがサブスクリプションに登録されていない場合、次の手順でエラーが発生することがあります。 これらのプロバイダーの登録については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 アクティビティ ログを Log Analytics ワークスペースに接続するには、次の手順を使用します。
 
@@ -74,6 +74,6 @@ Azure Log Analytics 監視ソリューションには、Log Analytics ワーク�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アクティビティ ログ](activity-logs-overview.md)の詳細を確認します。
+- [アクティビティ ログ](platform-logs-overview.md)の詳細を確認します。
 - [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。
 - [ログ クエリ](../log-query/log-query-overview.md)を使用して、アクティビティ ログの詳細情報を表示します。

@@ -1,18 +1,14 @@
 ---
-title: Service Fabric マネージド ID の概要 | Microsoft Docs
-description: この記事では、マネージド ID の概要について説明します。
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: Service Fabric のマネージド ID の概要
+description: この記事では、マネージド ID の概要および Azure Service Fabric への適用方法について説明します。
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 12/09/2019
+ms.openlocfilehash: dc7dafa59596537456accde66e878c06f9e5ca23
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243032"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528149"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric アプリケーションのマネージド ID (プレビュー)
 
@@ -23,7 +19,7 @@ Azure リソースのマネージド ID 機能は、Azure サブスクリプシ�
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージド サービス ID (MSI) の新しい名前です。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 Azure リソースのマネージド ID のドキュメント セット全体で、次の用語が使用されます。
 
@@ -71,11 +67,11 @@ Service Fabric のマネージド ID は、Azure にデプロイされた Servic
 >
 > この機能はプレビューの段階です。そのため、頻繁に変更される可能性があり、運用環境へのデプロイには適していない可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [マネージド ID サポートを使用して新しい Azure Service Fabric クラスターをデプロイする](./configure-new-azure-service-fabric-enable-managed-identity.md) 
 * [既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* [システム割り当ての ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ方法](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [サービス コードから Service Fabric アプリケーションのマネージド ID を活用する](./how-to-managed-identity-service-fabric-app-code.md)
 * [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
 * [アプリケーション シークレットを KeyVaultReferences として宣言して使用する](./service-fabric-keyvault-references.md) 

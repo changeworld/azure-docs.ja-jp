@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460618"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975703"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
 Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 ストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 Azure ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
 
-Azure ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+Azure ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](storage-account-create.md)」を参照してください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
@@ -72,7 +72,7 @@ BlockBlobStorage アカウントは、現在、ホット、クール、または
 
 ### <a name="filestorage-accounts"></a>FileStorage アカウント
 
-FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 この種類のストレージ アカウントでは、ファイルはサポートされますが、ブロック BLOB、追加 BLOB、ページ BLOB、テーブル、およびキューはサポートされません。 
+FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 この種類のストレージ アカウントでは、ファイルはサポートされますが、ブロック BLOB、追加 BLOB、ページ BLOB、テーブル、およびキューはサポートされません。
 
 FileStorage ストレージ アカウントでは、IOPS バーストなど、固有のパフォーマンスに特化した特性が提供されています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
 
@@ -150,15 +150,15 @@ BLOB 用のカスタム ドメインを使用するようにストレージ ア�
 - **共有アクセス署名:** Azure AD 承認を使用していない場合は、共有アクセス署名を使用して、ストレージ アカウント内のリソースへのアクセス権を委任します。 共有アクセス署名は、URL 上の Azure Storage への要求を承認するために必要なすべての情報をカプセル化するトークンです。 ストレージ リソース、与えられるアクセス許可、そのアクセス許可が共有アクセス署名の一部として有効である期間を指定できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 > [!NOTE]
-> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 
+> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。
 >
 > Azure Storage の BLOB アプリケーションとキュー アプリケーションでは、できる限り Azure AD 承認を使用することをお勧めします。
 
 ## <a name="copying-data-into-a-storage-account"></a>ストレージ アカウントへのデータのコピー
 
-Microsoft では、オンプレミス ストレージ デバイスまたはサード パーティのクラウド ストレージ プロバイダーからデータをインポートするためのユーティリティとライブラリを提供しています。 どのソリューションを使用するかは、転送するデータ量によって決まります。 
+Microsoft では、オンプレミス ストレージ デバイスまたはサード パーティのクラウド ストレージ プロバイダーからデータをインポートするためのユーティリティとライブラリを提供しています。 どのソリューションを使用するかは、転送するデータ量によって決まります。
 
-汎用 v1 アカウントまたは BLOB ストレージ アカウントから汎用 v2 アカウントにアップグレードした場合、データは自動的に移行されます。 アカウントをアップグレードする際は、この経路を使用することをお勧めします。 しかし、汎用 v1 アカウントから Blob ストレージアカウントにデータを移動する場合は、以下で説明するツールとライブラリを使用して、データを手動で移行します。 
+汎用 v1 アカウントまたは BLOB ストレージ アカウントから汎用 v2 アカウントにアップグレードした場合、データは自動的に移行されます。 アカウントをアップグレードする際は、この経路を使用することをお勧めします。 しかし、汎用 v1 アカウントから Blob ストレージアカウントにデータを移動する場合は、以下で説明するツールとライブラリを使用して、データを手動で移行します。
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Azure Storage REST API の詳細については、「[Azure Storage Services RES
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ストレージ アカウントの作成](storage-quickstart-create-account.md)
+- [ストレージ アカウントの作成](storage-account-create.md)
 - [ブロック BLOB ストレージ アカウントの作成](../blobs/storage-blob-create-account-block-blob.md)

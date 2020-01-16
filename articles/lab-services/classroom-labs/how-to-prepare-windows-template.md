@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: e8c0e67567bd5ddbfdd45762edd52112c1fd4c70
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428944"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services での Windows テンプレート マシンの設定に関するガイド
 
@@ -142,7 +142,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Microsoft Office 365 の更新プログラム チャネルを変更する
 
-Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。  ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。  更新プログラム チャネルの URL アドレスは、「[Configuration Manager から更新プログラムを適用できるように Office 365 クライアントを設定した後で更新チャネルを変更する](https://docs.microsoft.com/sccm/sum/deploy-use/manage-office-365-proplus-updates#change-the-update-channel-after-you-enable-office-365-clients-to-receive-updates-from-configuration-manager)」で確認できます。 以下の例は、月次更新チャネルを使用するように Office 365 を設定する方法を示しています。
+Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。  ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。  更新プログラム チャネルの URL アドレスは、「Configuration Manager から更新プログラムを適用できるように Office 365 クライアントを有効化した後で更新チャネルを変更する」(https://docs.microsoft.com/ja-jp/configmgr/sum/deploy-use/manage-office-365-proplus-updates#bkmk_channel) で確認できます。 以下の例は、月次更新チャネルを使用するように Office 365 を設定する方法を示しています。
 
 ```powershell
 # Update to the Office 365 Monthly Channel

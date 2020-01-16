@@ -15,12 +15,12 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996432"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981012"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
@@ -48,7 +48,7 @@ AssignableScopes []
 
 操作文字列の `{action}` 部分には、リソースの種類に対して実行できる操作の種類を指定します。 たとえば、`{action}` には次の部分文字列が表示されます。
 
-| アクションの部分文字列    | 説明         |
+| アクションの部分文字列    | [説明]         |
 | ------------------- | ------------------- |
 | `*` | ワイルドカード文字は、文字列と一致するすべての操作に対するアクセスを許可します。 |
 | `read` | 読み取り操作 (GET) を有効にします。 |
@@ -132,7 +132,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 Alice の[所有者](built-in-roles.md#owner)ロールおよび Bob の[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールは次のアクションを実行できます。
 
-Owner
+所有者
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
@@ -152,7 +152,7 @@ Alice にはサブスクリプション スコープにワイルドカード (`*
 
 Bob のアクセス許可は[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールで指定された `Actions` および `DataActions` のみに制限されます。 Bob はロールに基づいて、管理操作とデータ操作の両方を実行できます。 たとえば、Bob は指定されたストレージ アカウントのコンテナーを読み取り、書き込み、および削除でき、また BLOB も読み取り、書き込み、および削除できます。
 
-ストレージの管理とデータ プレーンのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。
+ストレージの管理とデータ プレーンのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/blobs/security-recommendations.md)」を参照してください。
 
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>RBAC を使用してデータ操作をサポートするツール
 
@@ -172,11 +172,11 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 - 2018-07-01
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 
 `Actions` アクセス許可では、ロールで実行できる管理操作を指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 `Actions` で使用できる管理操作の例をいくつか示します。
 
-| 操作文字列    | 説明         |
+| 操作文字列    | [説明]         |
 | ------------------- | ------------------- |
 | `*/read` | すべての Azure リソース プロバイダーの全リソースの種類を対象に読み取り操作のアクセス権を付与します。|
 | `Microsoft.Compute/*` | Microsoft.Compute リソース プロバイダーのすべてのリソースの種類を対象にすべての操作のアクセス権を付与します。|
@@ -196,7 +196,7 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 `DataActions` アクセス許可では、対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定します。 たとえば、ユーザーがあるストレージ アカウントへの BLOB データの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB を読み取ることができます。 次に `DataActions` で使用できるデータ操作の例を示します。
 
-| 操作文字列    | 説明         |
+| 操作文字列    | [説明]         |
 | ------------------- | ------------------- |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | BLOB または BLOB の一覧を返します。 |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | BLOB の書き込みの結果を返します。 |
@@ -228,7 +228,7 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 カスタム ロールの `AssignableScopes` の詳細については、[Azure リソースのカスタム ロール](custom-roles.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure リソースの組み込みロール](built-in-roles.md)
 * [Azure リソースのカスタム ロール](custom-roles.md)

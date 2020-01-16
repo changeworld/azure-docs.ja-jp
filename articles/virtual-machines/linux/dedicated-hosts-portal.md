@@ -3,23 +3,20 @@ title: Azure portal を使用して Azure 専用ホストにデプロイする
 description: Azure portal を使用して専用ホストに VM をデプロイします。
 services: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 296c43c7c1345c67cc5b83749272e56c122ee535
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c8e2ac929b3285b0ba122928485b423e34dc8f4f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036420"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835131"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>プレビュー:ポータルを使用して専用ホストに VM をデプロイする
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>ポータルを使用して専用ホストに VM をデプロイする
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 
@@ -45,7 +42,7 @@ ms.locfileid: "74036420"
 
 VM がデプロイされるまでに数分かかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、[専用ホスト](dedicated-hosts.md)の概要に関するページを参照してください。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: 97737feca466a6b373a60f01624a038512203bfd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645924"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978931"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -67,10 +67,10 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
 2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](diagnose-network-traffic-filter-problem.md)に関する記事を参照してください。
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
-    *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
+    *   [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
     *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
-    *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation スクリプト](../azure-resource-manager/templates/export-template-portal.md)
 
 **コマンド**

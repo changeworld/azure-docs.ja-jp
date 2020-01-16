@@ -3,12 +3,12 @@ title: ハイブリッド Kubernetes クラスターに Azure Monitor for contai
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: c791477aeb27609cccda11b901eccaa2805be581
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404819"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977737"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -37,21 +37,21 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と Azure で�
     |*.ods.opinsights.azure.com |ポート 443 |  
     |*.oms.opinsights.azure.com |ポート 443 |  
     |*.blob.core.windows.net |ポート 443 |  
-    |*.dc.services.visualstudio.com |ポート 443 | 
+    |*.dc.services.visualstudio.com |ポート 443 |
 
 * コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで `cAdvisor port: 10255` を開いておく必要があります。
 
-* コンテナー化されたエージェントがクラスター内の Kubernetes API サービスとやり取りしてインベントリ データを収集するために、コンテナーに `KUBERNETES_SERVICE_HOST` と `KUBERNETES_PORT_443_TCP_PORT` の 2 つの環境変数を指定する必要があります。 
+* コンテナー化されたエージェントがクラスター内の Kubernetes API サービスとやり取りしてインベントリ データを収集するために、コンテナーに `KUBERNETES_SERVICE_HOST` と `KUBERNETES_PORT_443_TCP_PORT` の 2 つの環境変数を指定する必要があります。
 
 >[!IMPORTANT]
->ハイブリッド Kubernetes クラスターの監視は、ciprod10182019 以降のバージョンのエージェントに限りサポートされます。 
+>ハイブリッド Kubernetes クラスターの監視は、ciprod10182019 以降のバージョンのエージェントに限りサポートされます。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
 Azure Monitor for containers では、以下が公式にサポートされています。
 
 - 環境:オンプレミスの Kubernetes、Azure 上の AKS エンジン、Azure Stack。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
-- Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。 
+- Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
 - コンテナー ランタイム:Docker と Moby
 - マスター ノードとワーカー ノード用の Linux OS のリリース:Ubuntu (18.04 LTS と 16.04 LTS)
 - サポートされているアクセス制御:Kubernetes の RBAC と非 RBAC
@@ -70,11 +70,11 @@ Hybrid Kubernetes クラスターに対して Azure Monitor for containers を�
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視を有効にする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
@@ -105,7 +105,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。 
+3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
@@ -195,7 +195,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 8. このファイルを containerSolutionParams.json という名前でローカル フォルダーに保存します。
 
-9. これでこのテンプレートをデプロイする準備が整いました。 
+9. これでこのテンプレートをデプロイする準備が整いました。
 
    * Azure PowerShell を使用してデプロイするには、そのテンプレートを含むフォルダーで次のコマンドを使用します。
 
@@ -208,12 +208,12 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        # set the context of the subscription of Log Analytics workspace
        Set-AzureRmContext -SubscriptionId <subscription Id of log analytics workspace>
        ```
-       
+
        ```powershell
        # execute deployment command to add container insights solution to the specified Log Analytics workspace
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
-       
+
        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
        ```powershell
@@ -221,7 +221,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        ```
 
    * Azure CLI を使用してデプロイするには、次のコマンドを実行します。
-    
+
        ```azurecli
        az login
        az account set --name <AzureCloud | AzureChinaCloud | AzureUSGovernment>
@@ -236,8 +236,8 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        ```azurecli
        provisioningState       : Succeeded
        ```
-     
-       監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
+
+       監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
 ## <a name="install-the-chart"></a>チャートをインストールする
 
@@ -260,7 +260,7 @@ HELM チャートを有効にする手順は次のとおりです。
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers 
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Log Analytics ワークスペースが Azure US Government にある場合には、次のコマンドを実行します。
@@ -272,22 +272,22 @@ HELM チャートを有効にする手順は次のとおりです。
 
 ## <a name="configure-agent-data-collection"></a>データ収集を構成する
 
-バージョン 1.0.0 以降のチャートでは、エージェントによるデータ収集の設定を ConfigMap からコントロールします。 エージェントによるデータ収集の設定に関する詳細については、[こちら](container-insights-agent-config.md)のドキュメントを参照してください。 
+バージョン 1.0.0 以降のチャートでは、エージェントによるデータ収集の設定を ConfigMap からコントロールします。 エージェントによるデータ収集の設定に関する詳細については、[こちら](container-insights-agent-config.md)のドキュメントを参照してください。
 
 チャートを正常にデプロイした後は、Azure Monitor for containers 内のハイブリッド Kubernetes クラスターに関するデータを Azure portal から確認できるようになります。  
 
 >[!NOTE]
->インジェストの待ち時間 (Azure Log Analytics ワークスペースでエージェントがコミットを完了するまで) は、5 から 10 分程度です。 必要な監視データのすべてが Azure Monitor で利用できるようになるまでの間は、クラスターの状態として **[データなし]** と **[不明]** のいずれかの値が表示されます。 
+>インジェストの待ち時間 (Azure Log Analytics ワークスペースでエージェントがコミットを完了するまで) は、5 から 10 分程度です。 必要な監視データのすべてが Azure Monitor で利用できるようになるまでの間は、クラスターの状態として **[データなし]** と **[不明]** のいずれかの値が表示されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ハイブリッド Kubernetes クラスターの監視を有効にしようとしているときにエラーが発生した場合は、PowerShell スクリプト [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) をコピーしてコンピューターのフォルダーに保存します。 このスクリプトは、発生した問題を検出して修正するために提供されています。 次の問題を修正を検出して修正を試みるように設計されています：
 
-* 指定された Azure Monitor Log Analytics ワークスペースが有効 
+* 指定された Azure Monitor Log Analytics ワークスペースが有効
 * Log Analytics ワークスペースが Azure Monitor for Containers ソリューションで構成されています。 そうでなければ、ワークスペースを構成します。
 * OmsAgent replicaset ポッドを実行中
 * OmsAgent daemonset ポッドを実行中
-* OmsAgent ヘルス サービスを実行中 
+* OmsAgent ヘルス サービスを実行中
 * Log Analytics ワークスペース ID とコンテナー化されたエージェントで構成されたキーは、Insight が構成されているワークスペースと一致します。
 * すべての Linux ワーカー ノードに `kubernetes.io/role=agent` のラベルがあることを確認して、rs ポッドをスケジュールします。 存在しなければ、追加してください。
 * クラスター内のすべてのノードで `cAdvisor port: 10255` が開かれていることを検証します。

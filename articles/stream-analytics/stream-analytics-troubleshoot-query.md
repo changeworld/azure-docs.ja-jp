@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354276"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980272"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
 この記事では、Stream Analytics のクエリの開発に関する一般的な問題と、そのトラブルシューティングの方法について説明します。
 
-## <a name="query-is-not-producing-expected-output"></a>クエリが予想される出力を生成しない 
+## <a name="query-is-not-producing-expected-output"></a>クエリが予想される出力を生成しない
 1.  ローカルでテストしてエラーを調査します。
     - **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
     - また、Visual Studio 用の Stream Analytics ツールを使用して、[ライブ入力でクエリを直接テスト](stream-analytics-live-data-local-testing.md)することもできます。
@@ -32,10 +32,10 @@ ms.locfileid: "75354276"
     - ウィンドウ関数を使用している場合に、ウィンドウ時間が終わっていない。ウィンドウ時間が完了し、クエリの出力が表示されるのを待つ必要があります。
     - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。この状態だと、イベントがドロップされてしまいます。
 
-4.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
+4.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。
 
 5. 監査ログと診断ログを使用してデバッグする。
-    - [監査ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
+    - [監査ログ](../azure-resource-manager/management/view-activity-logs.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
     - [ジョブの診断ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>ジョブで消費されるストリーミング ユニットが多すぎる
@@ -52,7 +52,7 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 ジョブが実行中なのに出力でイベントが生成されていないことに注意してください。 次に示す **[監視]** タイルでは、入力からデータが生成中であることがわかります。しかし、**JOIN** のどのステップが原因ですべてのイベントが欠落したのかはわかりません。
 
 ![Stream Analytics の [監視] タイル](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 この状況では、いくつかの SELECT INTO ステートメントを追加して、JOIN の中間結果と入力から読み取られたデータの "ログを記録" することができます。
 
 この例では、2 つの "一時的な出力" を新しく追加しました。 これらの出力には任意のシンクを使用してかまいません。 ここでは例として Azure Storage を使用します。

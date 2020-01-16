@@ -1,5 +1,6 @@
 ---
-title: Azure API Management インスタンスのカスタム ドメイン名を構成する | Microsoft Docs
+title: Azure API Management インスタンスのカスタム ドメイン名を構成する
+titleSuffix: Azure API Management
 description: このトピックでは、Azure API Management インスタンスのカスタム ドメイン名を構成する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442538"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -90,6 +91,6 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 > [!NOTE]
 > API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、[API Management の FAQ](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サービスのアップグレードとスケーリングを行う](upgrade-and-scale.md)

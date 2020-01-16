@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26c79db956b2703bf037fc6f7790d4ee13874410
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668675"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834242"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>クイック スタート:サーバー向け Azure Arc を使用してマシンを Azure に接続する - ポータル
 
@@ -56,11 +56,11 @@ Azure 以外のサーバーでは、次のことを管理する必要があり�
 
 各ノードにログインし、ポータルから生成したスクリプトを実行します。 スクリプトが正常に完了したら、Azure portal に移動して、サーバーが正常に接続されていることを確認してください。
 
-![オンボード成功](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
+![オンボードの成功](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
 
 ## <a name="clean-up"></a>クリーンアップ
 
-サーバー向け Azure Arc からマシンを切断するには、次の 2 つの手順を実行する必要があります。
+サーバー向け Azure Arc からマシンを切断するには、次の 2 つの手順を行う必要があります。
 
 1. [ポータル](https://aka.ms/hybridmachineportal)でマシンを選択し、省略記号 (`...`) をクリックして、 **[削除]** を選択します。
 1. マシンからエージェントをアンインストールします。
@@ -88,7 +88,7 @@ Azure 以外のサーバーでは、次のことを管理する必要があり�
    sudo apt purge hybridagent
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [接続されているマシンにポリシーを割り当てる](../../governance/policy/assign-policy-portal.md)

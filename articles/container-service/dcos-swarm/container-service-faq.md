@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286464"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887922"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問
 
@@ -64,7 +64,7 @@ Azure Active Directory サービス プリンシパルの ID とパスワード�
 1、3、または 5 個のマスター ノードを含むクラスターを作成できます。 エージェント ノードは、最大 100 個選択できます。
 
 > [!IMPORTANT]
-> クラスターが大きい場合やノードに選択した VM サイズに応じて、サブスクリプションのコア クォータを増やすことが必要になる可能性があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
+> クラスターが大きい場合やノードに選択した VM サイズに応じて、サブスクリプションのコア クォータを増やすことが必要になる可能性があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../../azure-portal/supportability/how-to-create-azure-support-request.md) (無料) してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>クラスターの作成後にマスターの数を増やすにはどうすればよいですか。 
@@ -104,7 +104,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の 1 つ目のマスターに対する SSH 接続文字列です。 
 
-前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 例:
+前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 次に例を示します。
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -116,13 +116,13 @@ ssh userName@masterFQDN –A –p 22 
 
 Windows には、DNS に関して、修正プログラムが今も積極的にフェーズ アウトされているいくつかの問題が確認されています。ご使用の ACS エンジンと Windows バージョンが最新であること ([KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) と [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) がインストールされていること) を確認し、その改善策がお使いの環境で適用されるようにしてください。 その他の軽減策 (手順) については、以下の表を参照してください。
 
-| DNS の症状 | 対処法  |
+| DNS の症状 | 回避策  |
 |-------------|-------------|
 |ワークロード コンテナーが不安定でクラッシュすると、ネットワーク名前空間がクリーンアップされる | 該当するサービスを再デプロイします。 |
 | サービスの VIP アクセスが切断される | 通常の (非特権) ポッドが常に 1 つ実行状態となるように [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) を構成してください。 |
 |コンテナーを実行しているノードが利用不可状態になると、DNS クエリが失敗して "negative cache entry" が発生することがある | 該当するコンテナー内で次のコマンドを実行してください。 <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> それでも問題が解決されない場合は、DNS キャッシュを完全に無効にしてみてください。 <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Service の[概要を確認する](../../container-service/kubernetes/container-service-intro-kubernetes.md)。
 * [ポータル](../../container-service/dcos-swarm/container-service-deployment.md)または [Azure CLI](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。

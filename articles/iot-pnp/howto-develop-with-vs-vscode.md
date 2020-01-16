@@ -3,23 +3,23 @@ title: Visual Studio と Visual Studio Code を使用して IoT プラグ アン
 description: Visual Studio と Visual Studio Code を使用して、IoT プラグ アンド プレイ デバイス モデルの作成とデバイス コードの実装を迅速にします。
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748040"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531328"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio と Visual Studio Code を使用して IoT プラグ アンド プレイ デバイスを構築する
 
 Visual Studio Code 用 Azure IoT Tools は、デバイス機能モデル (DCM) とインターフェイスを作成し、モデル リポジトリに発行し、デバイス アプリケーションを実装するスケルトン C コードを生成するための統合環境を提供します。
 
-この記事では、その方法について説明します。
+この記事で取り上げるテクニック:
 
 - デバイス コードとアプリケーション プロジェクトを生成する。
 - 生成されたコードをデバイス プロジェクトで使用する。
@@ -150,13 +150,13 @@ Ubuntu や Debian などの Linux 環境で CMake を使用して、デバイス
 
 ### <a name="windows"></a>Windows
 
-コマンド ラインで CMake と Visual Studio C/C++ コンパイラを使用して、Windows 上のデバイス C SDK と共にデバイス コードをビルドする方法については、[IoT プラグ アンド プレイに関するクイックスタート](./quickstart-create-pnp-device.md)を参照してください。 次の手順では、Visual Studio で CMake プロジェクトとして、device C SDK の Vcpkg と共にデバイス コードをビルドする方法を示します。
+コマンド ラインで CMake と Visual Studio C/C++ コンパイラを使用して、Windows 上のデバイス C SDK と共にデバイス コードをビルドする方法については、[IoT プラグ アンド プレイに関するクイックスタート](./quickstart-create-pnp-device-windows.md)を参照してください。 次の手順では、Visual Studio で CMake プロジェクトとして、device C SDK の Vcpkg と共にデバイス コードをビルドする方法を示します。
 
-1. [クイックスタート](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment)の手順に従い、Vcpkg によって C 用の Azure IoT device SDK をインストールします。
+1. [クイックスタート](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment)の手順に従い、Vcpkg によって C 用の Azure IoT device SDK をインストールします。
 
 1. [Visual Studio 2019 (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)　のインストール: **NuGet パッケージ マネージャー** コンポーネントと **C++ によるデスクトップ開発**ワークロードを必ず含めるようにしてください。
 
-1. Visual Studio を開き、 **[ファイル] > [開く] > [CMake..]** と選択して、 生成されたコードが含まれる、フォルダー内の `CMakeLists.txt` を開きます。
+1. Visual Studio を開き、 **[ファイル] > [開く] > [CMake...]** を選択して、生成されたコードが含まれているフォルダー内の `CMakeLists.txt` を開きます。
 
 1. **[General]\(全般\)** ツールバーで、 **[Configurations]\(構成\)** ドロップダウンを見つけます。 **[Manage Configuration]\(構成の管理\)** を選択して、プロジェクトの CMake 設定を追加します。
 
@@ -256,6 +256,6 @@ DCM ファイルまたはインターフェイス ファイルを更新すると
 
 Azure IoT Tools は、GitHub 上のオープンソース プロジェクトです。 問題や機能に関する要望については、[GitHub で問題を作成](https://github.com/microsoft/vscode-azure-iot-tools/issues/new)できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、Visual Studio と Visual Studio Code を使用して、デバイス アプリケーションを実装するスケルトン C コードを生成する方法について学習しました。 次は、[Azure IoT エクスプローラー ツールをインストールして使用する](./howto-install-iot-explorer.md)方法について学習することをお勧めします。

@@ -1,17 +1,17 @@
 ---
-title: ワークフロー定義言語のスキーマ
-description: Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス
+title: ワークフロー定義言語スキーマのリファレンス
+description: Azure Logic Apps のワークフローを記述するワークフロー定義言語の JSON スキーマと構文のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428659"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス ガイド
 
@@ -35,14 +35,14 @@ ms.locfileid: "74790797"
 }
 ```
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 |-----------|----------|-------------|
 | `definition` | はい | ワークフロー定義の開始要素 |
 | `$schema` | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | `actions` | いいえ | ワークフローの実行時に実行される 1 つまたは複数のアクションの定義。 詳細については、「[トリガーとアクション](#triggers-actions)」を参照してください。 <p><p>アクションの最大個数:250 |
 | `contentVersion` | いいえ | ワークフロー定義のバージョン番号。既定値は "1.0.0.0" です。 ワークフローを展開するときに正しい定義であることを識別して確認できるように、使用する値を指定します。 |
 | `outputs` | いいえ | ワークフローの実行から返される出力の定義。 詳細については、「[出力](#outputs)」を参照してください。 <p><p>出力の最大個数:10 |
-| `parameters` | いいえ | ロジック アプリの実行時に使用する値を渡す 1 つ以上のパラメーターの定義。 詳細については、「[パラメーター](#parameters)」を参照してください。 <p><p>パラメーターの最大個数:50 |
+| `parameters` | いいえ | ロジック アプリの実行時に使用する値を渡す 1 つ以上のパラメーターの定義。 詳しくは、「[パラメーター](#parameters)」をご覧ください。 <p><p>パラメーターの最大個数:50 |
 | `staticResults` | いいえ | 静的な結果がこれらのアクションで有効になっている場合に、アクションによってモック出力として返される 1 つまたは複数の静的な結果の定義。 各アクションの定義で、`runtimeConfiguration.staticResult.name` 属性は `staticResults` 内部の対応する定義を参照します。 詳細については、「[静的な結果](#static-results)」を参照してください。 |
 | `triggers` | いいえ | ワークフローをインスタンス化する 1 つまたは複数のトリガーの定義。 複数のトリガーを定義できます。ワークフロー定義言語しか利用できず、Logic Apps デザイナーを使って視覚的に作成することはできません。 詳細については、「[トリガーとアクション](#triggers-actions)」を参照してください。 <p><p>トリガーの最大個数:10 |
 ||||
@@ -55,7 +55,7 @@ ms.locfileid: "74790797"
 
 <a name="parameters"></a>
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 通常、デプロイのライフサイクルには、開発、テスト、ステージング、運用の異なる環境があります。 異なる環境にロジック アプリをデプロイする場合、デプロイのニーズに基づいて、接続文字列などの異なる値を使用することがあります。 また、値をハードコーディングせずにロジック アプリ全体で再利用する場合や、値を頻繁に変更する場合もあります。 ワークフロー定義の `parameters` セクションでは、ロジック アプリが実行時に使用する値のパラメーターを定義または編集できます。 これらのパラメーターをワークフロー定義の別の場所で参照するには、事前に定義しておく必要があります。
 
@@ -74,16 +74,16 @@ ms.locfileid: "74790797"
 },
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| Attribute | 必須 | 種類 | [説明] |
 |-----------|----------|------|-------------|
-| <*parameter-name*> | はい | string | 定義するパラメーターの名前 |
-| <*parameter-type*> | はい | int、float、string、bool、array、object、securestring、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型または `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)」を参照してください。 | パラメーターの型 |
+| <*parameter-name*> | はい | String | 定義するパラメーターの名前 |
+| <*parameter-type*> | はい | int、float、string、bool、array、object、securestring、secureobject <p><p>**注**:すべてのパスワード、キー、およびシークレットで、`securestring` 型または `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)」を参照してください。 | パラメーターの型 |
 | <*default-parameter-value*> | はい | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合に使用する、既定のパラメーター値。 `defaultValue` 属性は、ロジック アプリ デザイナーがパラメーターを正しく表示できるようにする場合は必須ですが、空の値を指定することもできます。 |
 | <*array-with-permitted-parameter-values*> | いいえ | Array | パラメーターが受け取ることのできる値の配列 |
 | <*parameter-description*> | いいえ | JSON オブジェクト | パラメーターの説明など、その他のパラメーターの詳細 |
 ||||
 
-次に、ワークフロー定義に [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成し、デプロイ時に必要な値を受け入れるテンプレート パラメーターを定義し、必要に応じてテンプレートまたはワークフロー定義のパラメーターを参照してハードコーディングされた値を置き換え、デプロイ時に使用する値を別の[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)に格納します。 そうすることで、ロジック アプリを更新して再デプロイしなくても、パラメーター ファイルを使用してこれらの値をより簡単に変更できます。 ユーザー名、パスワード、シークレットなどの、機密情報やセキュリティ保護が必要な情報の場合、Azure Key Vault に値を格納し、パラメーター ファイルでキー コンテナーから値を取得することができます。 テンプレートおよびワークフロー定義レベルでのパラメーターの定義の詳細と例については、「[Overview:Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
+次に、ワークフロー定義に [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を作成し、デプロイ時に必要な値を受け入れるテンプレート パラメーターを定義し、必要に応じてテンプレートまたはワークフロー定義のパラメーターを参照してハードコーディングされた値を置き換え、デプロイ時に使用する値を別の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納します。 そうすることで、ロジック アプリを更新して再デプロイしなくても、パラメーター ファイルを使用してこれらの値をより簡単に変更できます。 ユーザー名、パスワード、シークレットなどの、機密情報やセキュリティ保護が必要な情報の場合、Azure Key Vault に値を格納し、パラメーター ファイルでキー コンテナーから値を取得することができます。 テンプレートおよびワークフロー定義レベルでのパラメーターの定義の詳細と例については、「[Overview:Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
 <a name="static-results"></a>
 
@@ -112,13 +112,13 @@ ms.locfileid: "74790797"
 }
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| Attribute | 必須 | 種類 | [説明] |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | はい | string | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
-| <*output-attributes-and-values-returned*> | はい | 多様 | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
+| <*static-result-definition-name*> | はい | String | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
+| <*output-attributes-and-values-returned*> | はい | 場合により異なる | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
 | <*header-values*> | いいえ | JSON | アクションによって返されるヘッダー値 |
-| <*status-code-returned*> | はい | string | アクションによって返される状態コード |
-| <*action-status*> | はい | string | アクションの状態 (例: `Succeeded` または `Failed`) |
+| <*status-code-returned*> | はい | String | アクションによって返される状態コード |
+| <*action-status*> | はい | String | アクションの状態 (例: `Succeeded` または `Failed`) |
 |||||
 
 たとえば、この HTTP アクション定義では、`runtimeConfiguration.staticResult.name` 属性は、アクションのモック出力が定義されている `staticResults` 属性内部の `HTTP0` を参照します。 `runtimeConfiguration.staticResult.staticResultOptions` 属性は、静的な結果の設定が HTTP アクションで `Enabled` であることを指定します。
@@ -275,9 +275,9 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 }
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| Attribute | 必須 | 種類 | [説明] |
 |-----------|----------|------|-------------|
-| <*key-name*> | はい | string | 出力戻り値のキーの名前 |
+| <*key-name*> | はい | String | 出力戻り値のキーの名前 |
 | <*key-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |
 | <*key-value*> | はい | <*key-type*> と同じ | 出力の戻り値 |
 |||||
@@ -286,13 +286,13 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 <a name="operators"></a>
 
-## <a name="operators"></a>演算子
+## <a name="operators"></a>オペレーター
 
 [式](#expressions)と[関数](#functions)では、演算子はプロパティや配列内の値の参照などの特定のタスクを実行します。
 
-| Operator | タスク |
+| 演算子 | タスク |
 |----------|------|
-| ' | 入力として、または式や関数の中で文字列リテラルを使うには、単一引用符で文字列のみをラップします (例: `'<myString>'`)。 二重引用符を ("") を使用しないでください。式全体を囲む JSON の書式設定と競合します。 例: <p>**正しい**: length('Hello') </br>**正しくない**: length("Hello") <p>配列または数値を渡すとき、句読点をラップする必要はありません。 例: <p>**正しい**: length([1, 2, 3]) </br>**正しくない**: length("[1, 2, 3]") |
+| ' | 入力として、または式や関数の中で文字列リテラルを使うには、単一引用符で文字列のみをラップします (例: `'<myString>'`)。 二重引用符を ("") を使用しないでください。式全体を囲む JSON の書式設定と競合します。 次に例を示します。 <p>**正しい**: length('Hello') </br>**正しくない**: length("Hello") <p>配列または数値を渡すとき、句読点をラップする必要はありません。 次に例を示します。 <p>**正しい**: length([1, 2, 3]) </br>**正しくない**: length("[1, 2, 3]") |
 | [] | 配列内の特定の位置 (インデックス) にある値を参照するには、角かっこを使います。 たとえば、配列内の 2 番目の項目を取得するには次のようにします。 <p>`myArray[1]` |
 | 。 | オブジェクト内のプロパティを参照するには、ドット演算子を使用します。 たとえば、`customer` JSON オブジェクトの `name` プロパティを取得するには、次のようにします。 <p>`"@parameters('customer').name"` |
 | ? | 実行時エラーを発生させずにオブジェクト内の null プロパティを参照するには、疑問符演算子を使います。 たとえば、次の式を使うと、トリガーからの null 出力を処理できます。 <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -300,11 +300,11 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 一部の式では、ワークフロー定義の実行開始時にはまだ存在していない可能性のある値が、実行時のアクションから取得されます。 このような値を式で参照または使用するには、ワークフロー定義言語が提供する "[*関数*](../logic-apps/workflow-definition-language-functions-reference.md)" を使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ワークフロー定義言語のアクションとトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md)について学習する
 * [ワークフローの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使用してプログラムによってロジック アプリを作成および管理する方法を学習する

@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric - Service Fabric アプリケーションの KeyVault 参を使用する |Microsoft Docs
+title: Azure Service Fabric - Service Fabric アプリケーションの KeyVault 参照を使用する
 description: この記事では、アプリケーション シークレットでの Service Fabric KeyVaultReference サポートの使用方法について説明します。
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463041"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric アプリケーションでの KeyVaultReference サポート (プレビュー)
 
@@ -36,8 +31,8 @@ ms.locfileid: "74307330"
     [
         ...
     {
-        "parameters":  [
-            "name":  "CentralSecretService",
+                "name":  "CentralSecretService",
+                "parameters":  [
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -50,7 +45,7 @@ ms.locfileid: "74307330"
                     "name":  "TargetReplicaSetSize",
                     "value":  "3"
                 }
-                ],
+                ]
             },
             {
                 "name":  "ManagedIdentityTokenService",
@@ -142,13 +137,13 @@ KeyVaultReference は、コンテナー RepositoryCredentials でサポートさ
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 - KeyVaultReference サポートに対して、マネージド ID が有効になっている必要があります。マネージド ID を有効にせずに KeyVaultReference を使用すると、アプリケーションのアクティブ化に失敗します。
 
 - システム割り当て ID を使用している場合は、アプリケーションがデプロイされた後にのみ作成され、これによって循環依存関係が生成されます。 アプリケーションがデプロイされたら、システム割り当て ID に keyvault へのアクセス許可を付与できます。 名前 {cluster}/{application name}/{servicename} によって、システム割り当て ID を検索できます
 
 - keyvault はご自身の Service Fabric クラスターと同じサブスクリプション内に置かれている必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure KeyVault ドキュメント](https://docs.microsoft.com/azure/key-vault/)

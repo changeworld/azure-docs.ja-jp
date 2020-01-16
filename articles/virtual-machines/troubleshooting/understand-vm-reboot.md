@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384226"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749869"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -41,7 +41,7 @@ Azure Resource Health は個々の Azure リソースの正常性を明らかに
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>VM の再起動の原因となる可能性がある操作とイベント
 
-### <a name="planned-maintenance"></a>計画済みのメンテナンス
+### <a name="planned-maintenance"></a>Azure の計画メンテナンス
 
 Microsoft Azure は、世界各地で定期的に更新を行い、VM の基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 これらの更新の多くは、VM やクラウド サービスに影響を及ぼさずに実行されます (メモリ保護更新など)。
 
@@ -67,7 +67,7 @@ Microsoft Azure のこのクラスの更新では、実行中の VM に関して
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>ユーザーが開始した再起動/シャットダウン操作
 
-再起動を Azure portal、Azure PowerShell、コマンド ライン インターフェイス、または REST API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)でそのイベントを見つけることができます。
+再起動を Azure portal、Azure PowerShell、コマンド ライン インターフェイス、または REST API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)でそのイベントを見つけることができます。
 
 VM のオペレーティング システムから操作を実行した場合は、システム ログでそのイベントを見つけることができます。
 

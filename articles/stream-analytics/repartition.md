@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935060"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732384"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>パーティション再分割を使用して Azure Stream Analytics での処理を最適化する
 
@@ -21,11 +21,11 @@ ms.locfileid: "72935060"
 次の場合は[並列処理](stream-analytics-parallelization.md)を使用できない可能性があります。
 
 * 入力ストリームのパーティション キーを制御できない。
-* ソースが入力を複数のパーティションに分散させ、それらを後でマージする必要がある。 
-
-## <a name="how-to-repartition"></a>パーティションを再分割する方法
+* ソースが入力を複数のパーティションに分散させ、それらを後でマージする必要がある。
 
 Event Hubs の **PartitionId** など、自然な入力スキームに従ってシャード化されていないストリームのデータを処理する場合は、パーティション再分割または再シャッフルが必要です。 パーティションを再分割すると、各シャードを個別に処理できるため、ストリーミング パイプラインを直線的にスケールアウトできます。
+
+## <a name="how-to-repartition"></a>パーティションを再分割する方法
 
 パーティションを再分割するには、クエリの **PARTITION BY** ステートメントの後にキーワード **INTO** を使用します。 次の例では、**DeviceID** によってデータをパーティション数 10 に分割します。 **DeviceID** のハッシュを使用して、どのパーティションがどのサブストリームを受け入れるかを決定します。 出力がパーティション分割された書き込みをサポートし、10 個のパーティションがあると仮定して、データはパーティション分割されたストリームごとに個別にフラッシュされます。
 
@@ -67,7 +67,7 @@ SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
 詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の使用](stream-analytics-introduction.md)
 * [Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 26793c91c85ba4cc33a07358ab8ff318becb325f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490680"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020995"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 - Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
 - PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での**共同作成者**ロールで十分です。
 
-ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../articles/billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
 詳細については、次の記事を参照してください。
 
@@ -36,7 +36,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 - [Azure Data Factory のロールとアクセス許可](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このクイックスタートでは、"*ソース*" データ ストアと "*コピー先*" データ ストアの両方に汎用の Azure ストレージ アカウント (具体的には BLOB ストレージ) を使用します。 汎用の Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../articles/storage/common/storage-quickstart-create-account.md)」を参照してください。 
+このクイックスタートでは、"*ソース*" データ ストアと "*コピー先*" データ ストアの両方に汎用の Azure ストレージ アカウント (具体的には BLOB ストレージ) を使用します。 汎用の Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../articles/storage/common/storage-account-create.md)」を参照してください。 
 
 #### <a name="get-the-storage-account-name"></a>ストレージ アカウント名を取得する
 このクイックスタートには、Azure ストレージ アカウントの名前が必要です。 以下の手順に従って、ご利用のストレージ アカウントの名前を取得してください。 

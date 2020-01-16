@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793422"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896381"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -29,7 +29,7 @@ ms.locfileid: "74793422"
 
 * トリガー。これは特別なアクションです。 すべてのロジック アプリには、最初のステップとしてトリガーが必要です。
 * HTTP などの ["組み込み" (ネイティブ) アクション](../connectors/apis-list.md#built-in)や、Azure Functions と API Management の呼び出しなど。
-* Outlook 365 や Dropbox などの[マネージド コネクタ](../connectors/apis-list.md##managed-connectors)の呼び出し。
+* Outlook 365 や Dropbox などの[マネージド コネクタ](../connectors/apis-list.md#managed-connectors)の呼び出し。
 * ループや条件付きステートメントなどの制御フローのステップ。
 
 [標準コネクタ](../connectors/apis-list.md#managed-connectors)は、[標準コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金されます。 一般公開されている[エンタープライズ コネクタ](../connectors/apis-list.md#managed-connectors)は[エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金され、パブリック プレビュー エンタープライズ コネクタは[標準コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金されます。
@@ -67,7 +67,7 @@ Premium ISE SKU では、基本単位の容量は固定されているため、�
 > [!NOTE]
 > ISE 内で、組み込みのトリガーとアクションは **Core** というラベルを表示し、ロジック アプリと同じ ISE で実行されます。 **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、グローバルな Logic Apps サービスで実行されます。
 
-価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 <a name="connectors"></a>
 
@@ -91,7 +91,7 @@ Azure Logic Apps のコネクタを使用すると、ご自身のロジック �
 
 <a name="actions"></a>
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 
 Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](https://docs.microsoft.com/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
 
@@ -112,9 +112,9 @@ Azure Logic Apps では、すべての成功したアクションと失敗した
 
 Azure Logic Apps の [B2B および EDI 機能](logic-apps-enterprise-integration-b2b.md)と [XML 処理機能](logic-apps-enterprise-integration-xml.md)を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)には、[固定価格モデル](https://azure.microsoft.com/pricing/details/logic-apps)が適用されます。 各 Azure サブスクリプションでは、[特定の統合アカウントの制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)まで、統合アカウントを持つことができます。 各統合アカウントでは、特定の[成果物の制限](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)まで、成果物 (取引先、契約、マップ、スキーマ、アセンブリ、証明書、バッチ構成など) を格納できます。
 
-Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、スループットと使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。
+Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、スループットと使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
-[Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの ["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+[Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの ["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 Free、Basic、または Standard の統合アカウントから選択するには、次のユース ケースの説明を確認してください。
 
@@ -128,7 +128,7 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 
 ## <a name="data-retention"></a>データの保持
 
-統合サービス環境 (ISE) で実行されるロジック アプリを除き、ロジック アプリの[実行保有期間](logic-apps-limits-and-config.md#run-duration-retention-limits)に基づいて、ご利用のロジック アプリの実行履歴に格納されるすべての入力と出力に課金されます。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+統合サービス環境 (ISE) で実行されるロジック アプリを除き、ロジック アプリの[実行保有期間](logic-apps-limits-and-config.md#run-duration-retention-limits)に基づいて、ご利用のロジック アプリの実行履歴に格納されるすべての入力と出力に課金されます。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 ご自身のロジック アプリのストレージ消費量を監視するために、以下を実行できます。
 
@@ -163,7 +163,7 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 
 1. **[ロジック アプリのアクション]** ウィンドウで、それぞれ**入力リンク**と**出力リンク**の下に表示されるアクションの入力と出力のサイズを探します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps の詳細を確認する](logic-apps-overview.md)
 * [初めてのロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)

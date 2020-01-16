@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: d694a7030f96ef8e652d76cfb6036674aaa71249
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660217"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752311"
 ---
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
 | バックエンド プールのサイズ | 最大 1,000 インスタンスをサポート。 | 最大 100 インスタンスをサポート。 |
-| バックエンド プールのエンドポイント | 仮想マシン、可用性セット、仮想マシン スケール セットの組み合わせを含む、単一の仮想ネットワーク内の任意の仮想マシン。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |
+| バックエンド プール エンドポイント | 仮想マシン、可用性セット、仮想マシン スケール セットの組み合わせを含む、単一の仮想ネットワーク内の任意の仮想マシン。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |
 | [正常性プローブ](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP、HTTP、HTTPS | TCP、HTTP |
 | [正常性プローブ ダウン動作](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | インスタンス プローブがダウンし、__かつ__ すべてのプローブがダウンしても TCP 接続は存続。 | インスタンス プローブがダウンしても TCP 接続は存続。 すべてのプローブがダウンした場合、すべての TCP 接続は終了。 |
 | 可用性ゾーン | 受信トラフィックと送信トラフィック用のゾーン冗長およびゾーン フロントエンド。 送信フローのマッピングは、ゾーンの障害が発生しても保持されます。 クロスゾーン負荷分散 | 使用不可 |

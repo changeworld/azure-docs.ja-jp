@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498384"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750793"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure セキュリティのログと監査
 
@@ -38,9 +38,9 @@ Azure にはさまざまな構成可能なセキュリティ監査およびロ�
 - 手動操作を必要とするアクションの自動化
 
 Azure のログは、次の種類に分類されます。
-* **コントロール/管理ログ**: Azure Resource Manager の CREATE、UPDATE、DELETE 操作に関する情報を提供します。 詳細については、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に関するページを参照してください。
+* **コントロール/管理ログ**: Azure Resource Manager の CREATE、UPDATE、DELETE 操作に関する情報を提供します。 詳細については、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
 
-* **データ プレーン ログ**は、Azure のリソース使用の一環として発生したイベントに関する情報を提供します。 この種類のログの例として、仮想マシンの Windows イベント システム ログ、セキュリティ ログ、アプリケーション ログや、Azure Monitor で構成される[診断ログ](../../azure-monitor/platform/resource-logs-overview.md)があります。
+* **データ プレーン ログ**は、Azure のリソース使用の一環として発生したイベントに関する情報を提供します。 この種類のログの例として、仮想マシンの Windows イベント システム ログ、セキュリティ ログ、アプリケーション ログや、Azure Monitor で構成される[診断ログ](../../azure-monitor/platform/platform-logs-overview.md)があります。
 
 * **処理済みイベント**: ユーザーに代わって処理された分析済みのイベント/アラートに関する情報を提供します。 この種類の例として、[Azure Security Center](../../security-center/security-center-intro.md) がサブスクリプションを処理して分析し、簡潔なセキュリティ アラートを提供する [Azure Security Center のアラート](../../security-center/security-center-managing-and-responding-alerts.md)があります。
 
@@ -48,8 +48,8 @@ Azure のログは、次の種類に分類されます。
 
 | ログのカテゴリ | ログのタイプ | 使用法 | 統合 |
 | ------------ | -------- | ------ | ----------- |
-|[アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)|Azure Resource Manager リソースのコントロールプレーン イベント|  サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。|    Rest API、[Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure リソース ログ](../../azure-monitor/platform/resource-logs-overview.md)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|   リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor|
+|[アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)|Azure Resource Manager リソースのコントロールプレーン イベント|  サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。|    Rest API、[Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Azure リソース ログ](../../azure-monitor/platform/platform-logs-overview.md)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|   リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor|
 |[Azure Active Directory レポート](../../active-directory/reports-monitoring/overview-reports.md)|ログとレポート | ユーザーのサインイン アクティビティと、ユーザーおよびグループの管理に関するシステム アクティビティの情報を報告します。|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[仮想マシンとクラウド サービス](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows イベント ログ サービスと Linux Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure Diagnostics ([WAD](../../monitoring-and-diagnostics/azure-diagnostics.md)) ストレージを使用) と Linux|
 |[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログ (ストレージ アカウントのメトリック データの提供)|トレース要求に関する分析情報を提供し、使用傾向を分析して、ストレージ アカウントの問題を診断します。|   REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -60,7 +60,7 @@ Azure のログは、次の種類に分類されます。
 ## <a name="log-integration-with-on-premises-siem-systems"></a>オンプレミスの SIEM システムとのログ統合
 [Security Center アラートの統合](../../security-center/security-center-export-data-to-siem.md)では、Security Center アラート、Azure Diagnostics ログで収集された仮想マシンのセキュリティ イベント、Azure 監査ログを Azure Monitor ログまたは SIEM ソリューションと同期させる方法について説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [監査とログ記録](management-monitoring-overview.md):可視性の維持と、タイムリーなセキュリティ アラートへの迅速な対応により、データを保護します。
 

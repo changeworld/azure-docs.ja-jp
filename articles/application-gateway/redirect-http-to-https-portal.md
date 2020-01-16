@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012880"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613331"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
@@ -118,15 +118,15 @@ Export-PfxCertificate `
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>リダイレクト構成と共にルーティング規則を追加する
 
-1. **[myAppGateway]** で、 **[規則]** 、 **[+Basic]\(+基本\)** の順に選択します。
-2. **[名前]** には、「*Rule2*」と入力します。
+1. **[myAppGateway]** で、 **[規則]** 、 **[+Request routing rule]\(+基本ルーティング規則\)** の順に選択します。
+2. **[規則名]** には、「*Rule2*」と入力します。
 3. リスナーに対して **[MyListener]** が確実に選択されているようにします。
-4. **[リダイレクトの構成]** チェック ボックスをオンにします。
+4. **[Backend targets]\(バックエンド ターゲット\)** タブをクリックし、 **[ターゲットの種類]** は *[リダイレクト]* を選択します。
 5. **[リダイレクトの種類]** では、 **[永続]** を選択します。
 6. **[リダイレクト ターゲット]** では、 **[リスナー]** を選択します。
 7. **[対象リスナー]** が **[appGatewayHttpListener]** に確実に設定されているようにします。
-8. **[クエリ文字列を含める]** と **[パスを含める]** のチェック ボックスをオンにします。
-9. **[OK]** を選択します。
+8. **[クエリ文字列を含める]** と **[パスを含める]** は *[はい]* を選択します。
+9. **[追加]** を選択します。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
@@ -223,6 +223,6 @@ IIS でインスタンスを変更した後、この変更でスケール セッ
 
    ![アプリケーション ゲートウェイでのベース URL のテスト](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [内部リダイレクトを行うアプリケーション ゲートウェイを作成する](redirect-internal-site-powershell.md)方法を学習します。

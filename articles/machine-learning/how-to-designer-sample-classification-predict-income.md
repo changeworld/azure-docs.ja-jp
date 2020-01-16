@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f65c93ac06da6512255a3380d5484c6285798098
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659989"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763554"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、特徴選択を使用して、収入を予測する
 
@@ -79,7 +79,7 @@ ms.locfileid: "75659989"
 
 - [サンプル 1 - 回帰: 自動車の価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
 - [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [サンプル 5 - 分類:顧客離れを予測する](service/how-to-designer-sample-classification-churn.md)
-- [サンプル 6 - 分類:フライトの遅延を予測する](service/how-to-designer-sample-classification-flight-delay.md)
+- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [サンプル 5 - 分類:顧客離れを予測する](how-to-designer-sample-classification-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
 - [サンプル 7 - テキスト分類:Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)

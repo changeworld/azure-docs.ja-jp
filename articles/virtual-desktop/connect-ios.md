@@ -5,31 +5,24 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460224"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS クライアントに接続する
 
-> 適用対象: iOS 8.0 以降。 iPhone、iPad、iPod touch と互換性があります。
-
->[!NOTE]
-> iOS クライアントは現在まだプレビュー段階です。
+> 適用対象: iOS 13.0 以降。 iPhone、iPad、iPod touch と互換性があります。
 
 ダウンロード可能なクライアントを使用して、ご使用の iOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、iOS クライアントを設定する方法について説明します。
 
-## <a name="install-the-ios-beta-client"></a>iOS Beta クライアントをインストールする
-iOS Beta クライアントをインストールするには:
+## <a name="install-the-ios-client"></a>iOS クライアントをインストールする
 
-1. ご使用の iOS デバイスに [Apple TestFlight](https://apps.apple.com/us/app/testflight/id899247664) アプリをインストールします。
-2. iOS デバイスでブラウザーを開き、[aka.ms/rdiosbeta](https://aka.ms/rdiosbeta) に移動します。
-3. ラベル **[Step 2:Join the Beta]** \(手順 2: ベータ版に参加\) の下で、 **[テストを開始]** を選択します。
-4. TestFlight アプリにリダイレクトされたら、 **[同意する]** を選択してから **[インストール]** を選択します。
+開始するには、クライアントを[ダウンロード](https://aka.ms/rdios)して、ご利用の iOS デバイスにインストールします。
 
 ## <a name="subscribe-to-a-feed"></a>フィードのサブスクライブ
 
@@ -52,6 +45,6 @@ iOS Beta クライアントをインストールするには:
 
 フィードをサブスクライブすると、フィードのコンテンツが自動で定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 iOS Beta クライアントの使用方法の詳細については、「[iOS クライアントの概要](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios)」のドキュメントで確認してください。

@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:マイクから音声を認識する、C# (Unity) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818877"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928085"
 ---
 > [!NOTE]
 > Unity 用 Speech SDK では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています
@@ -133,6 +132,6 @@ Unity エディターに戻り、ゲーム オブジェクトの 1 つにコン�
 このアプリケーションは、Android アプリ、Windows スタンドアロン アプリ、または UWP アプリケーションとしてデプロイすることもできます。
 詳細については、Microsoft の[サンプル リポジトリ](https://aka.ms/csspeech/samples)を参照してください。 `quickstart/csharp-unity` フォルダーには、これらの追加のターゲットの構成が記述されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

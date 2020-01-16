@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494508"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772314"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -93,6 +93,6 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 
 ## <a name="next-steps"></a>次のステップ
 - [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)
-- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)、よく寄せられる質問を確認します。
+- [依存関係の可視化の詳細については](common-questions-discovery-assessment.md#what-is-dependency-visualization)、よく寄せられる質問を確認します。
 
 

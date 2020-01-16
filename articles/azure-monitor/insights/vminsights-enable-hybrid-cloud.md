@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400702"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969684"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、お使いのデータセンターまたは他のクラウド環境でホストされている仮想マシンまたは物理コンピューターに対して、Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスの最後に、ご利用の環境にある仮想マシンの監視が正常に開始され、何らかのパフォーマンスや可用性の問題が発生しているかどうかを確認できるようになります。 
+この記事では、お使いのデータセンターまたは他のクラウド環境でホストされている仮想マシンまたは物理コンピューターに対して、Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスの最後に、ご利用の環境にある仮想マシンの監視が正常に開始され、何らかのパフォーマンスや可用性の問題が発生しているかどうかを確認できるようになります。
 
 開始する前に、必ず[前提条件](vminsights-enable-overview.md)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。 [Log Analytics Linux および Windows エージェント](../../log-analytics/log-analytics-agent-overview.md)の要件とデプロイ方法を確認します。
 
@@ -121,7 +121,7 @@ configuration ServiceMap {
     Node localhost
     {
         # Download and install the Dependency agent
-        xRemoteFile DAPackage 
+        xRemoteFile DAPackage
         {
             Uri = "https://aka.ms/dependencyagentwindows"
             DestinationPath = $DAPackageLocalPath
@@ -154,8 +154,8 @@ configuration ServiceMap {
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
 テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
 Azure CLI を使用するには、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
@@ -232,13 +232,13 @@ Dependency Agent のインストールに成功しても、マップにご利用
 
 1. Dependency Agent は正しくインストールされているのでしょうか? これについては、サービスがインストールされているか、実行中かを確認することで検証できます。
 
-    **Windows**:"Microsoft Dependency Agent" というサービスを探します。 
+    **Windows**:"Microsoft Dependency Agent" というサービスを探します。
 
     **Linux**:"microsoft-dependency-agent" という実行中のプロセスを探します。
 
 2. 現在、利用されているのは[無料の価格レベルの Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) ですか? 無料プランでは、一意のコンピューターを最大 5 台まで使用できます。 前の 5 台からデータが送信されなくなった場合でも、以降のコンピューターはマップに表示されません。
 
-3. コンピューターからログとパフォーマンス データが Azure Monitor ログに送信されていますか? コンピューターに対して次のクエリを実行します。 
+3. コンピューターからログとパフォーマンス データが Azure Monitor ログに送信されていますか? コンピューターに対して次のクエリを実行します。
 
     ```Kusto
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
@@ -248,7 +248,7 @@ Dependency Agent のインストールに成功しても、マップにご利用
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>マップにコンピューターは表示されるがプロセスが表示されない
 
-マップにサーバーは表示されるがプロセスや接続データが表示されない場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったことを意味しています。 
+マップにサーバーは表示されるがプロセスや接続データが表示されない場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったことを意味しています。
 
 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windows) または /var/opt/microsoft/dependency-agent/log/service.log ファイル (Linux) を確認します。 ファイルの最後の行に、カーネルがロードされなかった原因が示されています。 たとえば、カーネルを更新した場合にそのカーネルが Linux でサポートされないことがあります。
 
@@ -256,7 +256,7 @@ C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windo
 ## <a name="next-steps"></a>次のステップ
 
 これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
- 
+
 - 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
 
 - VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。

@@ -1,19 +1,19 @@
 ---
 title: Cloud パートナー ポータルからパートナー センターへのアカウントの移行 - Azure 用商業マーケットプレース
-description: アカウントを CPP からパートナー センターに移行する方法。 - Azure 用 Commercial Marketplace
-author: ChJenk
+description: アカウントを CPP からパートナー センターに移行する方法。 - Azure 向けの Commercial Marketplace
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: f8644a2aa989b7013cbbd64e8a8194bc08f40251
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 076250444989d4edb3ec86039ab25887ff1e206b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813102"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931312"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへのアカウントの移行
 
@@ -78,6 +78,6 @@ Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオフ
 
 マーケットプレースのオファーの公開、認定、または管理に関するサポートが必要な場合は、[サポート チケットを提出](https://aka.ms/MarketplacePublisherSupport)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md)

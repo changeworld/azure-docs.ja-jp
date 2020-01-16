@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385558"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
 
 > [!NOTE]
 > Bash と PowerShell は、同じファイル共有を共有します。 Cloud Shell で自動マウントと関連付けることができるのは、1 つのファイル共有のみです。
+
+> [!NOTE]
+> Cloud Shell ストレージ アカウントでは Azure Storage ファイアウォールはサポートされません。
 
 ## <a name="create-new-storage"></a>新しいストレージの作成
 
@@ -153,7 +156,7 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 
 注:ファイル内に関数を定義して、PowerShell コマンドレットから呼び出す必要がある場合は、ドット演算子が含まれていることが要件になります。 例: . .\MyFunctions.ps1
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell のクイック スタート](quickstart.md) <br>
 [Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

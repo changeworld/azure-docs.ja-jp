@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のバックアップ ポリシー | Microsof
 description: StorSimple Snapshot Manager MMC スナップインを使用して、スケジュールされたバックアップを管理するバックアップ ポリシーを作成し、管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687277"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933356"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理
 ## <a name="overview"></a>概要
@@ -58,7 +58,7 @@ ms.locfileid: "64687277"
    2. **[設定]** で、 **[1 回限り]** 、 **[毎日]** 、 **[毎週]** 、または **[毎月]** を選択します。
    3. **[開始]** ボックスで、カレンダー アイコンをクリックし、開始日を選択します。
    4. **[詳細設定]** では、必要に応じて、繰り返しスケジュールと終了日を設定できます。
-   5. Click **OK**.
+   5. **[OK]** をクリックします。
 
 バックアップ ポリシーを作成すると、 **結果** ウィンドウに次の情報が表示されます。
 
@@ -91,6 +91,6 @@ ms.locfileid: "64687277"
 
     ![バックアップ ポリシーの削除の確認](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-## <a name="next-steps"></a>次の手順
-* [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+## <a name="next-steps"></a>次のステップ
+* [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
 * [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理方法](storsimple-snapshot-manager-manage-backup-jobs.md)

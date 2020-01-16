@@ -2,19 +2,19 @@
 title: Azure アプリケーションのマネージド アプリケーション オファーの発行ガイド
 description: この記事では、Marketplace でマネージド アプリケーションを発行するための要件を説明します
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: v-qiwe
-ms.openlocfilehash: bdb2a54748c734d7b44dfa0b1f106d37e817f80e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 764212ac148b336b07d29c29a72314c5d889d47c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822930"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934649"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure アプリケーション:マネージド アプリケーション オファーの発行ガイド
 
@@ -43,7 +43,7 @@ ms.locfileid: "73822930"
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 まだ行っていない場合は、 
 
 - マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。

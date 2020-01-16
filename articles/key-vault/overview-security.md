@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884790"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981566"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
@@ -87,12 +87,12 @@ Key Vault のログによって、コンテナーに対して実行されたア�
     - 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
 - 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
 
-ログ情報にアクセスできるのは Key Vault の操作を行ってから 10 分以内です。 ストレージ アカウントでのログの管理はお客様に委ねられます。 
+ログ情報にアクセスできるのは Key Vault の操作を行ってから 10 分以内です。 ストレージ アカウントでのログの管理はお客様に委ねられます。
 
 - ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
 - ストレージ アカウントに保持する必要がなくなったログは削除します。
 
-ストレージ アカウントを完全に管理するための推奨事項については、「[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。
+ストレージ アカウントを完全に管理するための推奨事項については、「[Azure Storage セキュリティ ガイド](../storage/blobs/security-recommendations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

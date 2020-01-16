@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878292"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966065"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 によって、ローカル冗長ストレージ (L
 ## <a name="disaster-recovery-guidance"></a>ディザスター リカバリーの ガイダンス
 すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成するには、この記事の情報をお読みください。 独自の計画を作成する際に役立つリソースがあります。
 
-* [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>ベスト プラクティス
@@ -37,11 +37,11 @@ Azure Data Lake Storage Gen1 によって、ローカル冗長ストレージ (L
 Data Lake Storage Gen1 は自動レプリカによるデータの回復性を備えていますが、アプリケーション (または開発者やユーザー) によるデータの破損や誤った削除を防ぐことはできません。
 
 ### <a name="best-practices"></a>ベスト プラクティス
-誤削除を防ぐために、まず、Data Lake Storage Gen1 アカウントの適切なアクセス ポリシーを設定することをお勧めします。  これには、重要なリソースをロックダウンするための [Azure リソースのロック](../azure-resource-manager/resource-group-lock-resources.md)の適用と、利用可能な [Data Lake Storage Gen1 セキュリティ機能](data-lake-store-security-overview.md)を使用したアカウントおよびファイル レベルのアクセス制御の適用が含まれます。 また、別の Data Lake Storage Gen1 アカウント、フォルダー、または Azure サブスクリプションで、[ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、または [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) を使用して、重要なデータのコピーを定期的に作成することもお勧めします。  これを使用して、データの破損や削除から復旧できます。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
+誤削除を防ぐために、まず、Data Lake Storage Gen1 アカウントの適切なアクセス ポリシーを設定することをお勧めします。  これには、重要なリソースをロックダウンするための [Azure リソースのロック](../azure-resource-manager/management/lock-resources.md)の適用と、利用可能な [Data Lake Storage Gen1 セキュリティ機能](data-lake-store-security-overview.md)を使用したアカウントおよびファイル レベルのアクセス制御の適用が含まれます。 また、別の Data Lake Storage Gen1 アカウント、フォルダー、または Azure サブスクリプションで、[ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、または [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) を使用して、重要なデータのコピーを定期的に作成することもお勧めします。  これを使用して、データの破損や削除から復旧できます。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
 
 また、組織で Data Lake Storage Gen1 アカウントの[診断ログ](data-lake-store-diagnostic-logs.md)を有効にすることもできます。これにより、ファイルを削除または更新した可能性のあるユーザーに関する情報を提供する、データ アクセスの監査証跡を収集できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 

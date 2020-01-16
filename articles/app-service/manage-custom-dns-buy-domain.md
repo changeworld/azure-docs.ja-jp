@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672375"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967295"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -23,7 +23,7 @@ Azure VM または Azure Storage については、「[Assign App Service domain
 このチュートリアルを完了するには、以下が必要です。
 
 * [App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
-* [サブスクリプションで使用制限を削除](../billing/billing-spending-limit.md#remove)します。 無料のサブスクリプション クレジットで App Service ドメインを購入することはできません。
+* [サブスクリプションで使用制限を削除](../cost-management-billing/manage/spending-limit.md#remove)します。 無料のサブスクリプション クレジットで App Service ドメインを購入することはできません。
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
@@ -106,9 +106,9 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 次に、ドメインに必要なオプションを選びます。 次の表の説明をご覧ください。
 
-| Setting | 推奨値 | 説明 |
+| 設定 | 推奨値 | [説明] |
 |-|-|-|
-|プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、 **[プライバシー保護]** ページに表示されます。 |
+|プライバシー保護 | [有効化] | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、 **[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **\@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名でアプリにアクセスできるようになります。 アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
 
 ### <a name="accept-terms-and-purchase"></a>ライセンス条項に同意して購入する
@@ -168,7 +168,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 **[ホスト名の追加]** を選択します。
 
 ### <a name="configure-hostname"></a>ホスト名を構成する
-**[ホスト名の追加]** ダイアログ ボックスで、App Service ドメインまたは任意のサブドメインの完全修飾ドメイン名を入力します。 例:
+**[ホスト名の追加]** ダイアログ ボックスで、App Service ドメインまたは任意のサブドメインの完全修飾ドメイン名を入力します。 次に例を示します。
 
 - kontoso.net
 - www\.kontoso.net

@@ -3,12 +3,12 @@ title: YAML リファレンス - ACR タスク
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445689"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945738"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -79,7 +79,7 @@ az configure --defaults acr=myregistry
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ | なし |
 | `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
-| `workingDirectory` | string | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | `$HOME` |
+| `workingDirectory` | string | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | `/workspace` |
 | `env` | [string, string, ...] | はい |  タスクの環境変数を定義する `key=value` 形式での文字列の配列。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `env` プロパティが設定されます。 ステップに指定した場合は、タスクから継承されたすべての環境変数がオーバーライドされます。 | なし |
 | `secrets` | [secret, secret, ...] | はい | [secret](#secret) オブジェクトの配列。 | なし |
 | `networks` | [network, network, ...] | はい | [network](#network) オブジェクトの配列。 | なし |
@@ -379,7 +379,7 @@ steps:
 | `timeout` | int (秒) | はい | ステップが終了されるまでに実行できる最大秒数。 | 600 |
 | [`when`](#example-when) | [string, string, ...] | はい | タスク内で 1 つ以上のその他のステップに対するステップの依存関係を構成します。 | なし |
 | `user` | string | はい | ユーザー名またはコンテナーの UID | なし |
-| `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `$HOME` |
+| `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>例 :タスク ステップ プロパティ
 

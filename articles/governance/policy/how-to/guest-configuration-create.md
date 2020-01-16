@@ -1,14 +1,14 @@
 ---
 title: ゲスト構成ポリシーを作成する方法
 description: zure PowerShell を使用して Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873082"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608526"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
@@ -24,6 +24,9 @@ Azure マシンの状態を検証するための独自の構成を作成する�
 ## <a name="add-the-guestconfiguration-resource-module"></a>GuestConfiguration リソース モジュールを追加する
 
 ゲスト構成ポリシーを作成するには、リソース モジュールを追加する必要があります。 このリソース モジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)で使用できます。
+
+> [!NOTE]
+> **GuestConfiguration** モジュールは上記の環境で動作するものの、DSC 構成をコンパイルするステップは Windows PowerShell 5.1 で実行する必要があります。
 
 ### <a name="base-requirements"></a>基本要件
 
@@ -59,6 +62,12 @@ Azure マシンの状態を検証するための独自の構成を作成する�
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>ゲスト構成のカスタム リソースの要件
 
 ゲスト構成でマシンを監査する場合は、最初に `Test-TargetResource` を実行して、正しい状態であるかどうかを確認します。 関数によって返されるブール値は、ゲスト割り当ての Azure Resource Manager ステータスが準拠しているべきか否かを決定します。 構成内のいずれかのリソースに対してブール値が `$false` の場合、プロバイダーは `Get-TargetResource` を実行します。 ブール値が `$true` の場合、`Get-TargetResource` は呼び出されません。
+
+#### <a name="configuration-requirements"></a>構成要件
+
+ゲスト構成でカスタム構成を使用するための唯一の要件は、構成の名前を、それが使用されるすべての箇所で一貫したものにすることです。  これには、コンテンツ パッケージの .zip ファイルの名前、コンテンツ パッケージ内に保存される mof ファイル内の構成名、ゲスト割り当て名として ARM 内で使用される構成名が含まれます。
+
+#### <a name="get-targetresource-requirements"></a>Get-TargetResource の要件
 
 関数 `Get-TargetResource` には、Windows Desired State Configuration では不要なゲスト構成の特殊な要件があります。
 
@@ -96,7 +105,7 @@ Linux でのゲスト構成の DSC 構成では、`ChefInSpecResource` リソー
 
 次の例では、**baseline** という名前の構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`ChefInSpecResource` リソースを使って InSpec 定義の名前を **linux-patch-baseline** に設定しています。
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ Azure Policy ゲスト構成用の DSC 構成はゲスト構成エージェン�
 
 次の例では、**AuditBitLocker** という名前の構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`Service` リソースを使って実行中のサービスを監査しています。
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 Linux ポリシーの場合は、構成に **AttributesYmlContent** プロパティを含め、それに従って値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる YaML ファイルが自動的に作成されます。 次の例を見てください。
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,13 +412,13 @@ Linux マシンで使用する GPG キーの作成については、GitHub の[�
 
 コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 このタグは、Azure Policy を使って大規模に配信できます。 「[サンプル - タグとその既定値の適用](../samples/apply-tag-default-value.md)」をご覧ください。 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[プレビュー] ゲスト構成ポリシー割り当てのトラブルシューティング
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>ゲスト構成ポリシー割り当てのトラブルシューティング (プレビュー)
 
 Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。 このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
 
 このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。 ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
 - [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。

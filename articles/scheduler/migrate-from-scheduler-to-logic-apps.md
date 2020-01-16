@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890176"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911991"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
@@ -106,9 +106,9 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
 たとえば、Postman アプリを使用して、このサンプルと同じような設定で POST 要求を作成し、 **[送信]** を選択して要求を行うことができます。
 
-| 要求メソッド | URL | Body | headers |
+| 要求メソッド | URL | Body | ヘッダー |
 |----------------|-----|------|---------|
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**メモ**:この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値**: application/json |
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**注**:この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値**: application/json |
 |||||
 
 ![ロジック アプリを手動でトリガーする要求を送信する](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -191,9 +191,9 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 
 1. 完了したら、 **[完了]** をクリックします。
 
-例外処理の詳細については、[エラーと例外処理 - RunAfter プロパティ](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property)に関するセクションを参照してください。
+例外処理の詳細については、[エラーと例外処理 - RunAfter プロパティ](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior)に関するセクションを参照してください。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 <a name="retire-date"></a>
 
@@ -234,7 +234,7 @@ Azure サブスクリプションに有料サポート プランがある場合�
 * [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [定期的に実行されるタスクとワークフローを Azure Logic Apps で作成する](../connectors/connectors-native-recurrence.md)
 * [チュートリアル:スケジュールに基づいたロジック アプリでトラフィックをチェックする](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

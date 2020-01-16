@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522958"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980048"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -85,7 +85,7 @@ Azure DevTest Labs によって、Azure portal を使用することにより、
 
 ```
 
-ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](../azure-resource-manager/resource-group-define-dependencies.md)に関するページを参照してください。
+ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](../azure-resource-manager/templates/define-resource-dependency.md)に関するページを参照してください。
 
 ### <a name="role-assignment-resource-information"></a>ロールの割り当てリソースに関する情報
 ロールの割り当てリソースでは、種類と名前を指定する必要があります。
@@ -132,7 +132,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)、[Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0) を含む、Azure Active Directory PowerShell コマンドレットを使用することもできます。
 
-### <a name="scope"></a>Scope (スコープ)
+### <a name="scope"></a>スコープ
 スコープでは、ロールの割り当てを適用する必要があるリソースまたはリソース グループを指定します。 リソースには、スコープは次のフォームに含まれます: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 テンプレートでは、`subscription-id` パーツに入力するための `subscription().subscriptionId` 関数および `resource-group-name` パーツに入力するための `resourceGroup().name` テンプレート関数を使用します。 これらの関数を使用することは、ロールを割り当てるラボが、現在のサブスクリプション、およびテンプレートのデプロイが行われる同じリソース グループに存在する必要があるということを意味します。 最後のパーツ `resource-name` は、ラボの名前です。 この値は、この例ではテンプレート パラメーターによって受け取ります。 
 
 テンプレートのロール スコープ 
@@ -198,8 +198,8 @@ Azure CLI で、`az role assignment create` コマンドを使用して、ラボ
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する](devtest-lab-vmcli.md)
 - [Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する](devtest-lab-vm-powershell.md)

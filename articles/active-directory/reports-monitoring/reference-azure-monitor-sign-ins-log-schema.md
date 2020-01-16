@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014314"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748672"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -143,13 +143,13 @@ ms.locfileid: "74014314"
 
 ## <a name="field-descriptions"></a>フィールドの説明
 
-| フィールド名 | 説明 |
+| フィールド名 | [説明] |
 |------------|-------------|
 | Time | 日付と時刻 (UTC)。 |
 | ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
 | OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
 | OperationVersion | クライアントによって要求された REST API のバージョン。 |
-| Category | サインインの場合、この値は常に *SignIn* です。 | 
+| カテゴリ | サインインの場合、この値は常に *SignIn* です。 | 
 | TenantId | ログに関連付けられたテナント GUID。 |
 | ResultType | サインイン操作の結果は、*Success* または *Failure* です。 | 
 | ResultSignature | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
@@ -165,9 +165,9 @@ ms.locfileid: "74014314"
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
 | Location | サインイン アクティビティの場所を指定します。 |
-| properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
+| Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
-* [Azure 診断ログの詳細を確認する](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure 診断ログの詳細を確認する](../../azure-monitor/platform/platform-logs-overview.md)

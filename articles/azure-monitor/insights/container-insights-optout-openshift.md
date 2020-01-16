@@ -3,12 +3,12 @@ title: お使いの Azure Red Hat OpenShift クラスターの監視を停止す
 description: この記事では、コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: e726d2d8254598869f1c6305421c674c870e3d31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97ca333f724dc4914dabda2912c4512a40520253
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404287"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977783"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法
 
@@ -16,13 +16,13 @@ ms.locfileid: "75404287"
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-リソース グループ内のソリューション リソースの一貫した反復的な削除をサポートするため、2 つの Azure Resource Manager テンプレートが提供されています。 1 つは監視を停止する構成を指定する JSON テンプレートで、もう 1 つは、クラスターがデプロイされている OpenShift クラスターのリソース ID と Azure リージョンを指定するために構成するパラメーター値が含まれるものです。 
+リソース グループ内のソリューション リソースの一貫した反復的な削除をサポートするため、2 つの Azure Resource Manager テンプレートが提供されています。 1 つは監視を停止する構成を指定する JSON テンプレートで、もう 1 つは、クラスターがデプロイされている OpenShift クラスターのリソース ID と Azure リージョンを指定するために構成するパラメーター値が含まれるものです。
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="create-template"></a>テンプレートの作成
 
@@ -90,7 +90,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 5. このファイルを **OptOutParam.json** という名前でローカル フォルダーに保存します。
 
-6. これでこのテンプレートをデプロイする準備が整いました。 
+6. これでこのテンプレートをデプロイする準備が整いました。
 
 ### <a name="remove-the-solution-using-azure-cli"></a>Azure CLI を使用してソリューションを削除する
 
@@ -98,7 +98,7 @@ Linux 上で Azure CLI を使用して次のコマンドを実行してソリュ
 
 ```azurecli
 az login   
-az account set --subscription "Subscription Name" 
+az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../../log-analytics/log-analytics-manage-del-workspace.md)に関するページを参照してください。 
+クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../../log-analytics/log-analytics-manage-del-workspace.md)に関するページを参照してください。

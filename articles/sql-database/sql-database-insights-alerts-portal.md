@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810379"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745940"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
@@ -76,47 +76,47 @@ ms.locfileid: "73810379"
 
 | リソースの種類 | メトリックの名前 | フレンドリ名 | 集計の種類 | 最短アラート時間ウィンドウ|
 | --- | --- | --- | --- | --- |
-| SQL データベース | cpu_percent | CPU の割合 | 平均 | 5 分 |
-| SQL データベース | physical_data_read_percent | データ IO の割合 | 平均 | 5 分 |
-| SQL データベース | log_write_percent | ログ IO の割合 | 平均 | 5 分 |
-| SQL データベース | dtu_consumption_percent | DTU の割合 | 平均 | 5 分 |
+| SQL データベース | cpu_percent | CPU の割合 | Average | 5 分 |
+| SQL データベース | physical_data_read_percent | データ IO の割合 | Average | 5 分 |
+| SQL データベース | log_write_percent | ログ IO の割合 | Average | 5 分 |
+| SQL データベース | dtu_consumption_percent | DTU の割合 | Average | 5 分 |
 | SQL データベース | storage | 合計データベース サイズ | 最大値 | 30 分 |
 | SQL データベース | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL データベース | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL データベース | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |
 | SQL データベース | deadlock | デッドロック | 合計 | 10 分 |
 | SQL データベース | storage_percent | データベース サイズの割合 | 最大値 | 30 分 |
-| SQL データベース | xtp_storage_percent | インメモリ OLTP ストレージの割合 (プレビュー) | 平均 | 5 分 |
-| SQL データベース | workers_percent | ワーカーの割合 | 平均 | 5 分 |
-| SQL データベース | sessions_percent | セッションの割合 | 平均 | 5 分 |
-| SQL データベース | dtu_limit | DTU の上限 | 平均 | 5 分 |
-| SQL データベース | dtu_used | 使用された DTU | 平均 | 5 分 |
+| SQL データベース | xtp_storage_percent | インメモリ OLTP ストレージの割合 (プレビュー) | Average | 5 分 |
+| SQL データベース | workers_percent | ワーカーの割合 | Average | 5 分 |
+| SQL データベース | sessions_percent | セッションの割合 | Average | 5 分 |
+| SQL データベース | dtu_limit | DTU の上限 | Average | 5 分 |
+| SQL データベース | dtu_used | 使用された DTU | Average | 5 分 |
 ||||||
-| エラスティック プール | cpu_percent | CPU の割合 | 平均 | 10 分 |
-| エラスティック プール | physical_data_read_percent | データ IO の割合 | 平均 | 10 分 |
-| エラスティック プール | log_write_percent | ログ IO の割合 | 平均 | 10 分 |
-| エラスティック プール | dtu_consumption_percent | DTU の割合 | 平均 | 10 分 |
-| エラスティック プール | storage_percent | ストレージの割合 | 平均 | 10 分 |
-| エラスティック プール | workers_percent | ワーカーの割合 | 平均 | 10 分 |
-| エラスティック プール | eDTU_limit | eDTU 制限 | 平均 | 10 分 |
-| エラスティック プール | storage_limit | ストレージの制限 | 平均 | 10 分 |
-| エラスティック プール | eDTU_used | 使用済み eDTU | 平均 | 10 分 |
-| エラスティック プール | storage_used | 使用済みストレージ | 平均 | 10 分 |
+| エラスティック プール | cpu_percent | CPU の割合 | Average | 10 分 |
+| エラスティック プール | physical_data_read_percent | データ IO の割合 | Average | 10 分 |
+| エラスティック プール | log_write_percent | ログ IO の割合 | Average | 10 分 |
+| エラスティック プール | dtu_consumption_percent | DTU の割合 | Average | 10 分 |
+| エラスティック プール | storage_percent | ストレージの割合 | Average | 10 分 |
+| エラスティック プール | workers_percent | ワーカーの割合 | Average | 10 分 |
+| エラスティック プール | eDTU_limit | eDTU 制限 | Average | 10 分 |
+| エラスティック プール | storage_limit | ストレージの制限 | Average | 10 分 |
+| エラスティック プール | eDTU_used | 使用済み eDTU | Average | 10 分 |
+| エラスティック プール | storage_used | 使用済みストレージ | Average | 10 分 |
 ||||||               
-| SQL Data Warehouse | cpu_percent | CPU の割合 | 平均 | 10 分 |
-| SQL Data Warehouse | physical_data_read_percent | データ IO の割合 | 平均 | 10 分 |
+| SQL Data Warehouse | cpu_percent | CPU の割合 | Average | 10 分 |
+| SQL Data Warehouse | physical_data_read_percent | データ IO の割合 | Average | 10 分 |
 | SQL Data Warehouse | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |
 | SQL Data Warehouse | service_level_objective | データベースのサービス レベル | 合計 | 10 分 |
 | SQL Data Warehouse | dwu_limit | DWU 上限 | 最大値 | 10 分 |
-| SQL Data Warehouse | dwu_consumption_percent | DWU の割合 | 平均 | 10 分 |
-| SQL Data Warehouse | dwu_used | 使用済み DWU | 平均 | 10 分 |
+| SQL Data Warehouse | dwu_consumption_percent | DWU の割合 | Average | 10 分 |
+| SQL Data Warehouse | dwu_used | 使用済み DWU | Average | 10 分 |
 ||||||
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [診断ログの概要](../azure-monitor/platform/resource-logs-overview.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
+* [診断ログの概要](../azure-monitor/platform/platform-logs-overview.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

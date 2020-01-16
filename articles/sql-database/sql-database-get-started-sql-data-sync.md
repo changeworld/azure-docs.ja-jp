@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461558"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>チュートリアル:Azure SQL Database とオンプレミスの SQL Server 間の SQL データ同期を設定する
 
@@ -33,14 +33,20 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 ## <a name="create-sync-group"></a>同期グループを作成する
 
-1. ブラウザーで Azure portal に移動します。 ダッシュボードからお使いの SQL データベースを探します。または、ツールバーの **[SQL データベース]** アイコンを選択し、 **[SQL データベース]** ページで、データ同期のハブ データベースとして使用するデータベースを選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、SQL データベースを見つけます。 **SQL データベース**を検索して選択します。
+
+    ![SQL データベースの検索, Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. データ同期のハブ データベースとして使用するデータベースを選択します。
+
+    ![SQL データベースの一覧からの選択, Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
     > ハブ データベースは同期トポロジの中心になるエンドポイントであり、1 つの同期グループには複数のデータベース エンドポイントが含まれます。 同期グループ内にエンドポイントがある他のすべてのメンバー データベースが、ハブ データベースと同期します。
 
-1. 選択したデータベースの **[SQL データベース]** ページで、 **[別のデータベースに同期]** を選択します。
+1. 選択したデータベースの **[SQL データベース]** メニューで、 **[別のデータベースに同期]** を選択します。
 
-    ![[別のデータベースに同期] オプション](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![他のデータベースへの同期, SQL データベース, Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. **[別のデータベースに同期]** ページで、 **[新しい同期グループ]** を選択します。 **[新しい同期グループ]** ページが開きます ( **[同期グループの作成] (手順 1)** が強調表示されています)。
 
@@ -48,7 +54,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
    **[データ同期グループの作成]** ページで、次の設定を変更します。
 
-   | Setting                        | 説明 |
+   | 設定                        | [説明] |
    | ------------------------------ | ------------------------------------------------- |
    | **同期グループ名** | 新しい同期グループの名前を入力します。 この名前は、データベース自体の名前とは異なります。 |
    | **同期メタデータ データベース** | データベースを作成する (推奨) か、既存のデータベースを使用するかを選択します。<br/><br/>**[新しいデータベース]** を選択した場合は、 **[新しいデータベースの作成]** を選択します。 次に、 **[SQL データベース]** ページで、新しいデータベースの名前を指定して構成し、 **[OK]** を選択します。<br/><br/>**[既存のデータベースを使用する]** を選択した場合は、一覧からデータベースを選択します。 |
@@ -76,7 +82,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
   **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ページで、次の設定を変更します。
 
-  | Setting                       | 説明 |
+  | 設定                       | [説明] |
   | ----------------------------- | ------------------------------------------------- |
   | **同期メンバー名** | 新しい同期メンバーの名前を指定します。 この名前は、データベース自体の名前とは異なります。 |
   | **サブスクリプション** | 課金のために関連付ける Azure サブスクリプションを選択します。 |
@@ -163,7 +169,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
     ![手動同期](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **データ同期では、どのくらいの頻度でデータを同期できますか?**
 
@@ -223,7 +229,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
 クライアント エージェントについてよく寄せられる質問については、[エージェントに関する FAQ](sql-database-data-sync-agent.md#agent-faq) のセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 おめでとうございます。 SQL データベース インスタンスと SQL Server データベースの両方を含む同期グループを作成しました。
 

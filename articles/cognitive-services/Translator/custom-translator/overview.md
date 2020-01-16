@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975807"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982683"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
@@ -24,13 +24,13 @@ ms.locfileid: "74975807"
 
 Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)に関するページを参照してください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Custom Translator は、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
-|[ニューラル機械翻訳テクノロジを活用](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Custom Translator によって提供されるニューラル機械翻訳 (NMT) を活用して翻訳を改善します。       |
+|[ニューラル機械翻訳テクノロジを活用](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Custom Translator によって提供されるニューラル機械翻訳 (NMT) を活用して翻訳を改善します。       |
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |
 |[辞書を使用してモデルを構築](what-is-dictionary.md)     |   トレーニング データ セットがない場合は、辞書データのみを使用してモデルをトレーニングすることができます。       |
 |[他の人と共同作業を行う](how-to-manage-settings.md#share-your-workspace)     |   他の人と作業を共有して、チームと共同作業を行います。     |
@@ -38,7 +38,7 @@ Custom Translator は、カスタム翻訳システムを構築し、その後�
 
 ## <a name="get-better-translations"></a>より良い翻訳を得る
 
-Microsoft Translator では、2016 年に[ニューラル機械翻訳 (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) がリリースされました。 NMT は、業界標準の[統計的機械翻訳 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) テクノロジに比べて、翻訳品質の大幅な進歩をもたらしました。 NMT では、翻訳する前に文章全体のコンテキストをより適切に捉えることができるため、人間にとって違和感が少なく、より高品質で流暢な翻訳が提供されます。 [Custom Translator](https://portal.customtranslator.azure.ai) は、ユーザーのカスタム モデルに NMT を提供して、より高い翻訳品質を実現します。
+Microsoft Translator では、2016 年に[ニューラル機械翻訳 (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) がリリースされました。 NMT は、業界標準の[統計的機械翻訳 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) テクノロジに比べて、翻訳品質の大幅な進歩をもたらしました。 NMT では、翻訳する前に文章全体のコンテキストをより適切に捉えることができるため、人間にとって違和感が少なく、より高品質で流暢な翻訳が提供されます。 [Custom Translator](https://portal.customtranslator.azure.ai) は、ユーザーのカスタム モデルに NMT を提供して、より高い翻訳品質を実現します。
 
 過去に翻訳されたドキュメントを使用して、翻訳システムを構築することができます。 これらのドキュメントには分野に固有の用語とスタイルが含まれているため、標準的な翻訳システムよりも優れたものとなります。 ユーザーは、ALIGN、PDF、LCL、HTML、HTM、XLF、TMX、XLIFF、TXT、DOCX、および XLSX ドキュメントをアップロードできます。
 
@@ -60,7 +60,7 @@ Custom Translator では、データの収集と準備をより効果的に行�
 
 標準の REST テクノロジを使用して、Microsoft Translator Text API を経由すれば、カスタム システムにシームレスにアクセスできるほか、それをあらゆるデバイス上のすべての製品またはビジネス ワークフローに統合できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)を確認します。
 

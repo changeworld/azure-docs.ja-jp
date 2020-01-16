@@ -1,19 +1,19 @@
 ---
 title: 共同販売国と地域コード | Azure Marketplace
 description: オファーの共同販売ページに連絡先情報を提供するときに、これら 2 文字の国/地域コードを使用してください。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812920"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934351"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同販売国とリージョン コード
 
@@ -68,7 +68,7 @@ ms.locfileid: "73812920"
 | カーボベルデ                          | CV        |
 | カンボジア                            | KH        |
 | カメルーン                            | CM        |
-| カナダ                              | CA        |
+| Canada                              | CA        |
 | ケイマン諸島                      | KY        |
 | 中央アフリカ共和国            | CF        |
 | チャド                                | TD        |
@@ -261,7 +261,7 @@ ms.locfileid: "73812920"
 | ウクライナ                             | UA        |
 | アラブ首長国連邦                | AE        |
 | イギリス                      | GB        |
-| 米国                       | US        |
+| United States                       | US        |
 | ウルグアイ                             | UY        |
 | 米国領有小離島               | UM        |
 | 米国バージン諸島                 | VI        |
@@ -276,6 +276,6 @@ ms.locfileid: "73812920"
 | ジンバブエ                            | ZW        |
 |   |   |   |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パートナー センターの共同販売オプション](./commercial-marketplace-co-sell.md)を確認します。

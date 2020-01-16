@@ -3,16 +3,18 @@ title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445799"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
 以下のベスト プラクティスに従うことにより、Azure のプライベート Docker レジストリのパフォーマンスを最大限に引き出し、運用のコスト効率を高めることができます。
+
+レジストリでのタグ付けとイメージ作成の方法については、「[コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)」も参照してください。 
 
 ## <a name="network-close-deployment"></a>ネットワーク的に近接する場所へのデプロイ
 
@@ -31,7 +33,7 @@ Geo レプリケーションの使用方法については、[Azure Container Re
 
 リポジトリの名前空間を有効活用することで、1 つのレジストリを組織内の複数のグループで共有することができます。 デプロイやチームの境界を越えてレジストリを共有することができます。 Azure Container Registry では、名前空間を入れ子にしてグループ分けすることができます。
 
-たとえば、以下のようなコンテナー イメージ タグを考えてみましょう。 ルート名前空間には全社的に使用されるイメージ (`aspnetcore` など) を置き、Production グループと Marketing グループが所有するコンテナー イメージには、それぞれ固有の名前空間を使用します。
+たとえば、以下のようなコンテナー イメージ タグを考えてみましょう。 ルート名前空間には全社的に使用されるイメージ (`aspnetcore` など) を置き、Products グループと Marketing グループが所有するコンテナー イメージには、それぞれ固有の名前空間を使用します。
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -81,7 +83,7 @@ Azure Container Registry は、コンテナー レジストリからイメージ
 
 タグなし ("未解決" や "孤立" とも呼ばれる) イメージを含むイメージ データのレジストリからの削除の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Registry には、いくつかのレベル (SKU) があり、その機能はレベルごとに異なります。 SKU のバリエーションについて詳しくは、「[Azure Container Registry SKU](container-registry-skus.md)」をご覧ください。
 

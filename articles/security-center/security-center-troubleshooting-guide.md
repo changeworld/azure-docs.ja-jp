@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c72357b0e60f36082a468063ecf2bca329cd70be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355300"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749661"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
@@ -44,7 +44,7 @@ Security Center では、データの収集と格納に Microsoft Monitoring Age
 
 ## <a name="audit-log"></a>監査ログ
 
-Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの [監査ログ](../azure-monitor/platform/activity-logs-overview.md) レコードを確認することから始まります。 監査ログを使用すると、次の内容を判断することができます。
+Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの [監査ログ](../azure-monitor/platform/platform-logs-overview.md) レコードを確認することから始まります。 監査ログを使用すると、次の内容を判断することができます。
 
 * 実行された操作
 * 操作を開始したユーザー

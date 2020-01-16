@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155464"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965624"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure での既存の Windows VM の再起動またはサイズ変更に関するデプロイメントの問題のトラブルシューティング
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。 このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
@@ -28,11 +28,11 @@ ms.locfileid: "71155464"
 ## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
 トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
-[デプロイ操作の表示](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[デプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)
 
 [アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
 
-## <a name="issue-error-when-starting-a-stopped-vm"></a>問題: 停止している VM の起動時のエラー
+## <a name="issue-error-when-starting-a-stopped-vm"></a>問題点:停止している VM の起動時のエラー
 停止している VM を起動しようとしたときに、割り当てエラーが発生します。
 
 ### <a name="cause"></a>原因
@@ -45,7 +45,7 @@ ms.locfileid: "71155464"
   2. すべての VM が停止したら、停止している各 VM を選択し、[起動] をクリックします。
 * 後で再起動要求を再試行します。
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>問題: 既存の VM のサイズ変更時のエラー
+## <a name="issue-error-when-resizing-an-existing-vm"></a>問題点:既存の VM のサイズ変更時のエラー
 既存の VM のサイズを変更しようとしたときに割り当てエラーが発生します。
 
 ### <a name="cause"></a>原因
@@ -61,6 +61,6 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../windows/troubleshoot-deployment-new-vm.md)に関する記事を参照してください。
 

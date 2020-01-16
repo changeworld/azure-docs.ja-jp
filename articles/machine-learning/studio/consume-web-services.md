@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 1a567e8f910ccf539038a19eef0319f21833f336
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a53128605e1f124cbd26fb679e799822b8abad29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454809"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスを使用する方法
 
@@ -32,7 +32,7 @@ Machine Learning Studio (クラシック) を使用して Machine Learning Web �
 ## <a name="overview"></a>概要
 Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
 
-クラシック バージョンの Azure Machine Learning Studio には、次の 2 種類のサービスがあります。
+Azure Machine Learning Studio (クラシック) には、2 種類のサービスがあります。
 
 * 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、Machine Learning Studio (クラシック) から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
 * バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。

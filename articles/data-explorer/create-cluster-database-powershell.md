@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978334"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -52,9 +52,9 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 1. ローカルまたは Azure Cloud Shell で Azure CLI を実行している場合、ご利用のドライブに Az.Kusto モジュールをインストールする必要があります。
-    
+
     ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto  
+     Install-Module -Name Az.Kusto
     ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターを作成する
@@ -67,7 +67,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | 名前 | *mykustocluster* | クラスターの任意の名前。|
+   | Name | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -92,7 +92,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
-   | 名前 | *mykustodatabase* | データベースの名前。|
+   | Name | *mykustodatabase* | データベースの名前。|
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | SoftDeletePeriod | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | HotCachePeriod | *3650:00:00:00* | データをキャッシュに保持する時間。 |
@@ -105,7 +105,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 クラスターとデータベースが作成されました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 * 他の記事に進む場合は、作成したリソースをそのままにします。
 * リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
@@ -114,7 +114,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [その他の Az.Kusto コマンド](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
 * [Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)

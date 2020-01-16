@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 2abbf06fee8189bc6ca678e546c8e88504409a51
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660394"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770290"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -33,9 +33,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 サンプル ラベル付けツールを実行するには、Docker エンジンを使用します。 次の手順に従って、Docker コンテナーを設定します。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
 1. まず、ホスト コンピューターに Docker をインストールします。 ホスト コンピューターには、ローカル コンピューター ([Windows](https://docs.docker.com/docker-for-windows/)、[MacOS](https://docs.docker.com/docker-for-mac/)、または [Linux](https://docs.docker.com/install/)) を使用できます。 あるいは、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)、または [Azure Stack にデプロイされている](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes クラスターなど、Azure 内の Docker ホスティング サービスを使用することもできます。 ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
+
     | コンテナー | 最小値 | 推奨|
     |:--|:--|:--|
-    |サンプル ラベル付けツール|2 コア、4 GB メモリ|4 コア、8 GB メモリ
+    |サンプル ラベル付けツール|2 コア、4 GB メモリ|4 コア、8 GB メモリ|
+    
 1. 次に、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。 まだインストールしていない場合は、お使いのマシンにインストールします。
 1. 次に、コマンド プロンプトで下のコマンドを入力します。 `<username>` と `<password>` の値は、"Form Recognizer へようこそ" メールに記載されています。
     ```
@@ -49,7 +51,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
     docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
     ```
-    このコマンドを実行すると、Web ブラウザーからサンプル ラベル付けツールを使用できるようになります。 [http://localhost:3000](http://localhost:3000) に移動します。
+
+   このコマンドを実行すると、Web ブラウザーからサンプル ラベル付けツールを使用できるようになります。 [http://localhost:3000](http://localhost:3000) に移動します。
 
 > [!NOTE]
 > Form Recognizer REST API を使用して、ドキュメントにラベルを付けたり、モデルをトレーニングしたりすることもできます。 REST API を使用してトレーニングおよび分析を行うには、[REST API と Python によるラベルを使用したトレーニング](./python-labeled-data.md)に関するページを参照してください。

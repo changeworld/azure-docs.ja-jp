@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f9d7fa5df1f7568aa357abf8b5864344d768cf75
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895455"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891764"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
 
@@ -31,7 +31,7 @@ Azure Spring Cloud を使用すると、Java ソース コードから、また�
 ## <a name="prerequisites"></a>前提条件
 
 >[!Note]
-> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを参照するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
+> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを参照するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
 
 開始する前に、ご利用の Azure サブスクリプションで、以下の必要な依存関係があることを確認します。
 
@@ -44,7 +44,7 @@ Azure Spring Cloud を使用すると、Java ソース コードから、また�
 > [!TIP]
 > Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにログインしている場合は、shell.azure.com から [Azure Cloud Shell](https://shell.azure.com) を起動します。  Azure Cloud Shell の詳細については、[ドキュメントを参照](../cloud-shell/overview.md)してください
 
-## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能のインストール
+## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
 
@@ -76,6 +76,9 @@ Azure CLI ウィンドウを開き、次のコマンドを実行して、Azure S
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>Spring Cloud アプリケーションを作成する
 
@@ -137,6 +140,9 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > kpack ログには、そのデプロイが kpack を使用してソースからビルドされた場合にのみ、最新のデプロイが表示されます。
 
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>ゲートウェイにパブリック エンドポイントを割り当てる
 
 1. **[アプリケーション ダッシュボード]** ページを開きます。
@@ -144,7 +150,10 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 3. **[Assign Domain]\(ドメインの割り当て\)** を選択して、ゲートウェイにパブリック エンドポイントを割り当てます。 これには数分かかることがあります。 
 4. 実行中のアプリケーションを表示するには、割り当てられたパブリック IP をブラウザーに入力します。
 
-## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
+
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

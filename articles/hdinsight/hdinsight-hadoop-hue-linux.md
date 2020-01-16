@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: ef5bbc00ae0d3c7751bdcd4808c5368b0f5e1523
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688240"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934573"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -45,9 +45,9 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 |プロパティ |値 |
 |---|---|
 |スクリプトの種類:|- Custom|
-|名前|Hue のインストール|
+|Name|Hue のインストール|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
-|ノードの種類:|ヘッド|
+|ノードの種類:|Head|
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight クラスターで Hue を使用する
 
@@ -72,7 +72,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
     次のような名前が返されます。
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     これは、Hue の Web サイトが配置されているプライマリ ヘッドノードのホスト名です。
 
@@ -125,8 +125,6 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 1. HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [HDInsight クラスターに Apache Giraph をインストールする](hdinsight-hadoop-giraph-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
-
-* [HDInsight クラスターに R をインストールする](hdinsight-hadoop-r-scripts-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに R をインストールします。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
+[HDInsight クラスターに R をインストールする](hdinsight-hadoop-r-scripts-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに R をインストールします。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。

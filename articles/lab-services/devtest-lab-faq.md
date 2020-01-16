@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644921"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981476"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -46,13 +46,13 @@ Twitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
-- この FAQ の末尾で質問を投稿してください。 
+- この FAQ の末尾で質問を投稿してください。
 - さらに多くの人々と交流するには、[Azure DevTest Labs MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)に質問を投稿してください。 Azure DevTest Labs チームや他のコミュニティ メンバーと情報交換できます。
 - 機能を要求する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信してください。
 
 ### <a name="what-is-a-microsoft-account"></a>Microsoft アカウントとは何ですか。
 Microsoft アカウントは、Microsoft のデバイスとサービスで実行するほぼすべての操作に使用するアカウントです。 Skype、Outlook.com、OneDrive、Windows Phone、Azure、Xbox Live へのサインインに使用する電子メール アドレスとパスワードです。 1 つのアカウントで、どのデバイスからでもファイル、写真、連絡先、設定を利用できます。
- 
+
 > [!NOTE]
 > Microsoft アカウントは、以前は Windows Live ID と呼ばれていました。
 
@@ -145,18 +145,18 @@ DevTest Labs を使用してリモートで共同作業する外部のコンサ�
 ## <a name="lab-configuration"></a>ラボの構成
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Resource Manager テンプレートからラボを作成するにはどうすればよいですか。
-Microsoft では、そのままデプロイしたり、変更してラボ用のカスタム テンプレートを作成したりできる、[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)を提供しています。 各テンプレートには、ご自分の Azure サブスクリプションにラボをそのままデプロイできるリンクが含まれています。 また、テンプレートをカスタマイズし、[PowerShell または Azure CLI を使用してデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することもできます。
+Microsoft では、そのままデプロイしたり、変更してラボ用のカスタム テンプレートを作成したりできる、[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)を提供しています。 各テンプレートには、ご自分の Azure サブスクリプションにラボをそのままデプロイできるリンクが含まれています。 また、テンプレートをカスタマイズし、[PowerShell または Azure CLI を使用してデプロイ](../azure-resource-manager/templates/deploy-powershell.md)することもできます。
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>仮想マシンをその仮想マシン独自のリソース グループにそれぞれ入れるのではなく、すべての仮想マシンを共有のリソース グループに入れて作成することはできますか。 
-はい。ラボの所有者であるあなたは、リソース グループの割り当てをあなたの代わりにラボに処理させることも、あなたが指定した共通のリソース グループにすべての仮想マシンを入れて作成することも可能です。 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>仮想マシンをその仮想マシン独自のリソース グループにそれぞれ入れるのではなく、すべての仮想マシンを共有のリソース グループに入れて作成することはできますか。
+はい。ラボの所有者であるあなたは、リソース グループの割り当てをあなたの代わりにラボに処理させることも、あなたが指定した共通のリソース グループにすべての仮想マシンを入れて作成することも可能です。
 
 別のリソース グループのシナリオ:
 -   DevTest Labs が、あなたが作成したすべてのパブリックおよびプライベート IP の仮想マシンに対し、新しいリソース グループを作成します。
 -   DevTest Labs は、同じサイズの、IP を共有するマシンに対し、リソース グループを作成します。
 
 共有のリソース グループのシナリオ:
--   すべての仮想マシンは、指定した共通のリソース グループに作成されます。 詳細については、[ラボでのリソース グループの割り当て](https://aka.ms/RGControl)に関するページを参照してください。 
+-   すべての仮想マシンは、指定した共通のリソース グループに作成されます。 詳細については、[ラボでのリソース グループの割り当て](https://aka.ms/RGControl)に関するページを参照してください。
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>DevTest Labs 環境全体で名前付け規則を維持するにはどうすればよいですか?
 現在の社内の名前付け規則を Azure の運用環境にまで拡張し、DevTest Labs 環境全体で一貫性を持たせたいことがあります。 DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」をご覧ください。
@@ -196,7 +196,7 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 同じテンプレートから複数の VM を一度に作成する場合、次の 2 つのオプションがあります。
 
 - [Azure DevOps Tasks の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)を使用することができます。
-- VM の作成中に [Resource Manager テンプレートを生成](devtest-lab-add-vm.md#save-azure-resource-manager-template)し、[Windows PowerShell から Resource Manager テンプレートをデプロイ](../azure-resource-manager/resource-group-template-deploy.md)できます。
+- VM の作成中に [Resource Manager テンプレートを生成](devtest-lab-add-vm.md#save-azure-resource-manager-template)し、[Windows PowerShell から Resource Manager テンプレートをデプロイ](../azure-resource-manager/templates/deploy-powershell.md)できます。
 - また、仮想マシンの作成時にマシンのインスタンスが 1 つ以上作成されるように指定することもできます。 仮想マシンのインスタンスを複数作成する方法の詳細については、[ラボの仮想マシンの作成](devtest-lab-add-vm.md)に関するドキュメントをご覧ください。
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>既存の Azure VM を DevTest Labs ラボに移動するにはどうすればよいですか。
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>環境 
+## <a name="environments"></a>環境
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>DevTest Labs 環境で Resource Manager テンプレートを使用するにはどうすればよいですか。
 [DevTest Labs での環境機能](devtest-lab-test-env.md)に関する記事で説明されている手順を使用して、DevTest Labs 環境にご自分の Resource Manager テンプレートをデプロイします。 基本的には、Resource Manager テンプレートを Git リポジトリ (Azure Repos または GitHub) にチェックインし、[テンプレート用のプライベート リポジトリ](devtest-lab-test-env.md)をラボに追加します。 このシナリオは、開発マシンのホストに DevTest Labs を使用している場合には役立たないことがありますが、運用環境の典型であるステージング環境を構築している場合には役立つことがあります。
@@ -264,7 +264,7 @@ foreach($labVM in $labVMs)
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 次の[イメージ ファクトリ パターンに関するビデオ](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
 
-イメージ ファクトリの作成の詳細については、「[Azure DevTest Labs でカスタム イメージ ファクトリを作成する](image-factory-create.md)」を参照してください。 
+イメージ ファクトリの作成の詳細については、「[Azure DevTest Labs でカスタム イメージ ファクトリを作成する](image-factory-create.md)」を参照してください。
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>カスタム イメージと数式の違いは何ですか。
 カスタム イメージは、マネージド イメージです。 数式は、追加設定で構成し、保存して再現できるイメージです。 同じ基本的な不変イメージを使用して複数の環境をすばやく作成する場合は、カスタム イメージをお勧めします。 数式は、最新のビットで、仮想ネットワークまたはサブネットの一部として、または特定のサイズの VM として、VM の構成を再現する場合に適しています。 詳細については、「[DevTest ラボのカスタム イメージと数式の比較](devtest-lab-comparing-vm-base-image-types.md)」をご覧ください。
@@ -343,19 +343,19 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 - [Azure DevOps Services から既存の DevTest Labs ラボに新しい VM をデプロイする](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Azure DevOps Services のリリース管理を使用した DevTest Labs への継続的なデプロイ](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](https://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。
+他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/templates/deploy-powershell.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](https://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。
 
 ## <a name="networking"></a>ネットワーク
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
-お使いの VM が既存のインフラストラクチャと通信する必要がある場合は、お使いの DevTest Labs 環境内の既存の仮想ネットワークを使用することを検討してください。 ExpressRoute を使用している場合は、サブスクリプションで使用が割り当てられているお使いの IP アドレス空間がフラグメント化されないように、VNet およびサブネットの量を最小限に抑えることが必要な場合があります。 
+お使いの VM が既存のインフラストラクチャと通信する必要がある場合は、お使いの DevTest Labs 環境内の既存の仮想ネットワークを使用することを検討してください。 ExpressRoute を使用している場合は、サブスクリプションで使用が割り当てられているお使いの IP アドレス空間がフラグメント化されないように、VNet およびサブネットの量を最小限に抑えることが必要な場合があります。
 
-また、ここでは ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 
+また、ここでは ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。
 
 サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
- 
+
 サイト間 VPN または ExpressRoute を使用する場合は、マシンが内部ネットワーク経由ではアクセスできてもパブリック インターネット経由ではアクセスできないように、プライベート IP アドレスの使用を検討します。
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングしたときに、"親リソースが見つからない" ことを示すエラーが発生するのはなぜですか。
 リソースが別のリソースの親である場合、子リソースを作成するには、親リソースが存在している必要があります。 親リソースが存在しない場合、**ParentResourceNotFound** メッセージが表示されます。 親リソースに依存関係を指定していない場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)に関する記事をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)に関する記事をご覧ください。
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
 VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ページにあるリソース メニューの **[監査ログ]** または **[仮想マシンの診断]** で確認できます (VM ページは、[自分の仮想マシン] の一覧から VM を選択すると表示されます)。
 
-VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>ラボを作成しようとすると、"location is not available for resource type" (リソースの種類に使用できる場所がありません) というエラーが表示されるのはなぜですか。
-ラボを作成しようとすると、次のようなエラー メッセージが表示される場合があります。 
+ラボを作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 このエラーを解決するには、次のいずれかの手順を実行します。
 
 #### <a name="option-1"></a>方法 1
-「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで、Azure リージョンでのリソースの種類の可用性を確認します。 リソースの種類が特定のリージョンで使用不可の場合、DevTest Labs では、そのリージョンでのラボの作成をサポートしていません。 ラボを作成するときに別のリージョンを選択してください。 
+「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで、Azure リージョンでのリソースの種類の可用性を確認します。 リソースの種類が特定のリージョンで使用不可の場合、DevTest Labs では、そのリージョンでのラボの作成をサポートしていません。 ラボを作成するときに別のリージョンを選択してください。
 
 #### <a name="option-2"></a>方法 2
-リソースの種類がご利用のリージョンで使用可能な場合は、お使いのサブスクリプションに登録されているかどうかを確認します。 [この記事](../azure-resource-manager/resource-manager-supported-services.md)で説明されているように、これはサブスクリプション所有者のレベルで実行できます。 
-
-
+リソースの種類がご利用のリージョンで使用可能な場合は、お使いのサブスクリプションに登録されているかどうかを確認します。 [この記事](../azure-resource-manager/management/resource-providers-and-types.md)で説明されているように、これはサブスクリプション所有者のレベルで実行できます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084640"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970207"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -21,7 +21,7 @@ Azure Storage は、最新のデータ ストレージ シナリオ用の Micros
 
 - **持続性と高可用性。** 冗長性により、一時的なハードウェア障害が発生した場合でも、データが安全に保たれます。 地域的な災害または自然災害から保護するために、データセンターまたは地理的リージョンにまたがってデータをレプリケートすることもできます。 この方法でレプリケートされたデータは、予期しない停止が発生した場合でも高可用性を維持します。
 - **セキュリティ保護。** Azure Storage に書き込まれたすべてのデータは、サービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
-- **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。 
+- **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。
 - **マネージド。** Microsoft Azure では、ユーザーに代わって、ハードウェアのメンテナンス、更新、および重大な問題が処理されます。
 - **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用のクライアント ライブラリと、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。  
 
@@ -31,14 +31,14 @@ Azure Storage には、次のデータ サービスが含まれます。
 
 - [Azure BLOB](../blobs/storage-blobs-introduction.md):テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
 - [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
-- [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
+- [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。
 - [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
 
-それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-account-create.md)」を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
-Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
+Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
 BLOB ストレージは、次の目的に最適です。
 
@@ -108,7 +108,7 @@ Azure Storage に対するすべての要求が承認される必要がありま
 
 ## <a name="encryption"></a>暗号化
 
-Storage サービスには、2 種類の基本的な暗号化を使用できます。 セキュリティと暗号化の詳細については、「[Azure Storage セキュリティ ガイド](storage-security-guide.md)」を参照してください。
+Storage サービスには、2 種類の基本的な暗号化を使用できます。 セキュリティと暗号化の詳細については、「[Azure Storage セキュリティ ガイド](../blobs/security-recommendations.md)」を参照してください。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
@@ -169,6 +169,6 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 - [Azure Storage クライアント ツール](../storage-explorers.md)
 - [Azure 開発者ツール](https://azure.microsoft.com/tools/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
+Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-account-create.md)に関するページを参照してください。

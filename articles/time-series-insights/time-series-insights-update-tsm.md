@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374731"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
 
@@ -24,12 +24,13 @@ ms.locfileid: "74112298"
 > [!TIP]
 >  * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
 > * タイム シリーズ モデル UI の操作方法については、[Azure Time Series Insights プレビュー エクスプローラー](time-series-insights-update-explorer.md)に関するページを参照してください。
+> * Time Series Insights Web エクスプローラーを使用して[タイム シリーズ モデルを操作する方法](time-series-insights-update-how-to-tsm.md)について説明します。
 
 ## <a name="summary"></a>まとめ
 
 これまで、IoT デバイスから収集されたデータにはコンテキスト情報が不足していたため、センサーをすばやく検索して分析することが困難でした。 タイム シリーズ モデルの主な目的は、IoT データまたはタイム シリーズ データの検索と分析を簡素化することです。 この目的は、時系列データのキュレーション、メンテナンス、エンリッチメントを可能にし、分析用のコンシューマー対応データセットを簡単に準備できるようにすることで達成されます。
 
-## <a name="scenario-contosos-new-smart-oven"></a>シナリオ: Contoso の新しいスマート オーブン
+## <a name="scenario-contosos-new-smart-oven"></a>シナリオ:Contoso の新しいスマート オーブン
 
 **Contoso のスマート オーブンについての架空のシナリオを考えてみましょう。** このシナリオでは、各 Contoso スマート オーブンには 5 つの温度センサーがあり、4 つのトップ バーナーのそれぞれに 1 つずつと、オーブン自体に 1 つあると仮定します。 最近までは、各 Contoso の温度センサーは、データを個別に送信、格納、視覚化していました。 キッチンのアプライアンス監視では、Contoso は個々のセンサーごとに 1 つの基本的なグラフを使用していました。
 
@@ -48,11 +49,11 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 この架空の例で発生する多くのシナリオに対して、**タイム シリーズ モデルは便利なソリューションを提供します**。
 
-[![タイム シリーズ モデルのグラフ作成](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[![タイム シリーズ モデルのスマート オーブン グラフの例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* タイム シリーズ モデルは、クエリとナビゲーションで重要な役割を果たします。これは、時間の範囲やセンサーとデバイスの種類の間で比較を描画できるようにすることで、データをコンテキスト化するためです。
-* タイム シリーズ モデルで保持されるデータは、タイム シリーズ クエリの計算を変数として保持し、クエリ時にそれらを使用するため、データはさらにコンテキスト化します。
-* タイム シリーズ モデルは、視覚化と管理能力を向上させるためにデータを整理して集計します。
+* タイム シリーズ モデルは、クエリとナビゲーションで重要な役割を果たします。これは、時間の範囲やセンサーとデバイスの種類の間で比較を描画できるようにすることで、データをコンテキスト化するためです。 (**A**) 
+* タイム シリーズ モデルで保持されるデータは、タイム シリーズ クエリの計算を変数として保持し、クエリ時にそれらを再利用するため、データはさらにコンテキスト化します。
+* タイム シリーズ モデルは、視覚化と管理能力を向上させるためにデータを整理して集計します。 (**B**) 
 
 ### <a name="key-capabilities"></a>主な機能
 
@@ -62,7 +63,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 * 親子関係を定義して、ナビゲーション、検索、および参照を有効にする。
 * *インスタンス フィールド*として定義されたインスタンスに関連付けられたプロパティを定義し、それらを使用して階層を作成する。
 
-### <a name="components"></a>コンポーネント
+### <a name="components"></a>Components
 
 タイム シリーズ モデルには、次の 3 つの主要なコンポーネントがあります。
 
@@ -72,7 +73,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 これらのコンポーネントは、時系列モデルを指定し、Azure Time Series Insights データを整理するために組み合わされています。
 
-[![タイム シリーズ モデルの概要](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 時系列モデルは、[Time Series Insights プレビュー](time-series-insights-update-how-to-tsm.md)インターフェイスを使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
 
@@ -90,17 +91,17 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)には、いくつかのライブ インスタンスの例が用意されています。
 
-[![タイム シリーズ モデルのインスタンス](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[![タイム シリーズ モデルのインスタンスの例](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>インスタンスのプロパティ
 
 インスタンスは、**timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds**、および **instanceFields** によって定義されます。 各インスタンスは、1 つのみの*型*、および 1 つ以上の*階層*にマップされます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | ---|
 | timeSeriesId | インスタンスが関連付けられている時系列の UUID。 |
 | typeId | インスタンスが関連付けられているタイム シリーズ モデルの型の UUID。 既定では、検出されたすべての新しいインスタンスは既定の型に関連付けられます。
-| 名前 | **name** プロパティは、オプションであり、大文字小文字が区別されます。 **name** が使用できない場合は、既定では **timeSeriesId** になります。 名前が指定されている場合は、**timeSeriesId** は [ウェル](time-series-insights-update-explorer.md#4-time-series-well)でも使用できます。 |
+| name | **name** プロパティは、オプションであり、大文字小文字が区別されます。 **name** が使用できない場合は、既定では **timeSeriesId** になります。 名前が指定されている場合は、**timeSeriesId** は [ウェル](time-series-insights-update-explorer.md#4-time-series-well)でも使用できます。 |
 | description | インスタンスの説明テキスト。 |
 | hierarchyIds | インスタンスが属する階層を定義します。 |
 | instanceFields | インスタンスのプロパティ、およびインスタンスを定義する任意の静的データ。 これらによって、階層プロパティや非階層プロパティの値が定義されます。また、検索操作を実行するためのインデックスを作成することもできます。 |
@@ -112,18 +113,18 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,16 +139,16 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples) クライアント インターフェイスには、標準のインスタンスと型の階層が表示されます。
 
-[![タイム シリーズ モデルの階層](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[![タイム シリーズ モデルの階層の例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>階層の定義
 
 階層は、階層の **id**、**名前**、および **source** によって定義されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | ---| ---|
 | id | 階層の一意識別子。たとえば、インスタンスを定義するときに使用されます。 |
-| 名前 | 階層の名前を指定するために使用される文字列。 |
+| name | 階層の名前を指定するために使用される文字列。 |
 | source | 組織階層またはパスを指定します。これは、ユーザーが作成する階層の上から下までの親子の順序です。 親子関係のプロパティは、インスタンス フィールドにマップします。 |
 
 階層は、JSON で次のように表されます。
@@ -227,7 +228,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)は、それぞれのインスタンスに関連付けられている複数のタイム シリーズ モデルの型を視覚化します。
 
-[![タイム シリーズ モデルの型](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[![タイム シリーズ モデルの種類の例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Time Series Insights インスタンス API と CRUD のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)を参照してください。
@@ -236,10 +237,10 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 タイム シリーズ モデルの型は、**id**、**名前**、**description**、および **variables** によって定義されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | ---| ---|
 | id | 型の UUID。 |
-| 名前 | 型の名前を指定するために使用される文字列。 |
+| name | 型の名前を指定するために使用される文字列。 |
 | description | 型の文字列の説明。 |
 | variables | 型に関連付けられている変数を指定します。 |
 
@@ -283,7 +284,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 }
 ```
 
-### <a name="variables"></a>変数
+### <a name="variables"></a>変数:
 
 Time Series Insights 型には、イベントに対する式および計算ルールを指定する多数の変数が含まれている場合があります。
 
@@ -295,11 +296,11 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 次の表に、各変数の種類に関連するプロパティを示します。
 
-[![タイム シリーズ モデルの型](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[![タイム シリーズ モデルの変数テーブル](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>数値変数
 
-| 変数のプロパティ | 説明 |
+| 変数のプロパティ | [説明] |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、*Double* 型である必要があります。|
@@ -329,7 +330,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 #### <a name="categorical-variables"></a>カテゴリ別変数
 
-| 変数のプロパティ | 説明 |
+| 変数のプロパティ | [説明] |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、*Long* または *String* である必要があります。 |
@@ -342,7 +343,9 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -367,7 +370,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 #### <a name="aggregate-variables"></a>集計変数
 
-| 変数のプロパティ | 説明 |
+| 変数のプロパティ | [説明] |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の集計 | *Avg*、*Min*、*Max*、*Sum*、*Count*、*First*、*Last*を使用した計算をサポートします。 |
@@ -386,8 +389,10 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 変数は、タイムシリーズモデルの型定義に格納され、[クエリ API](time-series-insights-update-tsq.md) を使用してインラインで指定し、格納されている定義をオーバーライドできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)」をご覧ください。
+
 - [Azure Time Series Insights プレビューでのデータ モデリング](./time-series-insights-update-how-to-tsm.md)における一般的なタイム シリーズ モデル操作について学習します
+
 - 新しい[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) 参照ドキュメントをご覧ください。

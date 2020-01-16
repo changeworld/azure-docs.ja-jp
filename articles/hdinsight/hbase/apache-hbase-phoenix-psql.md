@@ -2,18 +2,18 @@
 title: psql を使用した Apache Phoenix への一括読み込み - Azure HDInsight
 description: psql ツールを使用して Azure HDInsight の Apache Phoenix テーブルに一括読み込みデータを読み込みます。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/10/2017
-ms.author: ashishth
-ms.openlocfilehash: f00f6bcf07cbdc5aeaeb04aeccf7e88cf4822dbf
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311712"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552612"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
@@ -33,7 +33,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 ### <a name="use-psql-to-bulk-load-tables"></a>`psql` を使用してテーブルの一括読み込みを行う
 
-1. 新しいテーブルを作成し、クエリをファイル名 `createCustomersTable.sql` で保存します。
+1. `createCustomersTable.sql` というファイルを作成し、そのファイルに次のコードをコピーします。 ファイルを保存して閉じます。
 
     ```sql
     CREATE TABLE Customers (
@@ -44,77 +44,118 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
         Country varchar);
     ```
 
-2. CSV ファイル (例示した内容) を `customers.csv` として `/tmp/` ディレクトリにコピーし、新しく作成したテーブルへの読み込みに備えます。  `hdfs` コマンドを使用して、目的のソースの場所に CSV ファイルをコピーします。
+1. `listCustomers.sql` というファイルを作成し、そのファイルに次のコードをコピーします。 ファイルを保存して閉じます。
 
+    ```sql
+    SELECT * from Customers;
     ```
+
+1. `customers.csv` というファイルを作成し、そのファイルに次のコードをコピーします。 ファイルを保存して閉じます。
+
+    ```txt
     1,Samantha,260000.0,18,US
     2,Sam,10000.5,56,US
-    3,Anton,550150.0,Norway
-    ... 4997 more rows 
+    3,Anton,550150.0,42,Norway
     ```
 
-    ```bash
-    hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
+1. `customers2.csv` というファイルを作成し、そのファイルに次のコードをコピーします。 ファイルを保存して閉じます。
+
+    ```txt
+    4,Nicolle,180000.0,22,US
+    5,Kate,210000.5,24,Canada
+    6,Ben,45000.0,32,Poland
     ```
 
-3. 適切に読み込まれた入力データを確認する SQL SELECT クエリを作成し、そのクエリをファイル名 `listCustomers.sql` で保存します。 任意の SQL クエリを使用することができます。
-     ```sql
-    SELECT Name, Income from Customers group by Country;
+1. コマンド プロンプトを開き、新しく作成したファイルの場所にディレクトリを変更します。 以下の CLUSTERNAME は HBase クラスターの実際の名前に置き換えます。 次に、コードを実行してファイルをクラスターのヘッドノードにアップロードします。
+
+    ```cmd
+    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-4. "*新しい*" Hadoop コマンド ウィンドウを開いて、データの一括読み込みを行います。 まず、`cd` コマンドを使用して実行ディレクトリの場所に変更し、次に `psql` ツール (Python `psql.py` コマンド) を使用します。 
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    次の例では、前述の手順 2 で行ったように `hdfs` を使用してストレージ アカウントからローカルの temp ディレクトリに `customers.csv` ファイルがコピーされていることを前提とします。
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. SSH セッションから、**psql** ツールの場所にディレクトリを変更します。 以下のコマンドを実行します。
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
-
-    python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE]   
-    > `ZookeeperQuorum` 名を特定するには、プロパティ名 `hbase.zookeeper.quorum` が含まれているファイル `/etc/hbase/conf/hbase-site.xml` 内で文字列 [Apache ZooKeeper](https://zookeeper.apache.org/) quorum を検索します。
+1. データを一括読み込みします。 以下のコードでは、**Customers** テーブルの作成と、その後のデータのアップロードの両方が行われます。
 
-5. `psql` 操作が完了したら、コマンド ウィンドウにメッセージが表示されるはずです。
-
+    ```bash
+    python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
-    CSV Upsert complete. 5000 rows upserted
-    Time: 4.548 sec(s)
+
+    `psql` 操作が完了すると、次のようなメッセージが表示されます。
+
+    ```output
+    csv columns from database.
+    CSV Upsert complete. 3 rows upserted
+    Time: 0.081 sec(s)
+    ```
+
+1. 引き続き `psql` を使用して、Customers テーブルの内容を表示できます。 以下のコードを実行します。
+
+    ```bash
+    python psql.py /tmp/listCustomers.sql
+    ```
+
+    または、[HBase シェル](./query-hbase-with-hbase-shell.md)か [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md) を使用してデータのクエリを実行することもできます。
+
+1. 追加のデータをアップロードします。 テーブルはすでに存在しているので、コマンドでテーブルを指定します。 以下のコマンドを実行します。
+
+    ```bash
+    python psql.py -t CUSTOMERS /tmp/customers2.csv
     ```
 
 ## <a name="use-mapreduce-to-bulk-load-tables"></a>MapReduce を使用してテーブルの一括読み込みを行う
 
 クラスター上で分散される高スループットの読み込みを実現するには、MapReduce 読み込みツールを使用します。 このローダーは、すべてのデータを HFiles に変換してから、作成した HFiles を HBase に提供します。
 
+1. このセクションでは、引き続き SSH セッションと前に作成したオブジェクトを使用します。 必要に応じて、上記の手順に従って **Customers** テーブルと **customers.csv** ファイルを作成します。 必要な場合は、SSH 接続を再確立します。
+
+1. **Customers** テーブルの内容を切り詰めます。 開いている SSH セッションから以下のコマンドを実行します。
+
+    ```bash
+    hbase shell
+    truncate 'CUSTOMERS'
+    exit
+    ```
+
+1. `customers.csv` ファイルをヘッドノードから Azure Storage にコピーします。
+
+    ```bash
+    hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
+    ```
+
+1. MapReduce 一括読み込みコマンド用の実行ディレクトリに変更します。
+
+    ```bash
+    cd /usr/hdp/current/phoenix-client
+    ```
+
 1. Phoenix クライアント jar を指定した `hadoop` コマンドを使用して、CSV MapReduce ローダーを起動します。
 
     ```bash
-    hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
+    HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
     ```
 
-2. 前述の手順 1 で `CreateCustomersTable.sql` を使用したように、SQL ステートメントで新しいテーブルを作成します。
+    アップロードが完了すると、次のようなメッセージが表示されます。
 
-3. テーブルのスキーマを確認するには、`!describe inputTable` を実行します。
-
-4. 例示した `customers.csv` ファイルなど、入力データへの場所のパスを特定します。 入力ファイルは、WASB/ADLS ストレージ アカウントにある場合があります。 このシナリオ例では、入力ファイルは `<storage account parent>/inputFolderBulkLoad` ディレクトリにあります。
-
-5. MapReduce 一括読み込みコマンド用の実行ディレクトリに変更します。
-
-    ```bash
-    cd /usr/hdp/current/phoenix-client/bin
+    ```output
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing master protocol: MasterService
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing zookeeper sessionid=0x26f15dcceff02c3
+    19/12/18 18:30:57 INFO zookeeper.ZooKeeper: Session: 0x26f15dcceff02c3 closed
+    19/12/18 18:30:57 INFO zookeeper.ClientCnxn: EventThread shut down
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Incremental load complete for table=CUSTOMERS
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
     ```
 
-6. プロパティ名 `hbase.zookeeper.quorum` を使用して、`/etc/hbase/conf/hbase-site.xml` 内の `ZookeeperQuorum` 値を検索します。
-
-7. classpath を設定し、`CsvBulkLoadTool` ツール コマンドを実行します。
-
-    ```bash
-    /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
-
-    org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
-    ```
-
-8. Azure Data Lake Storage で MapReduce を使用するには、Data Lake Storage のルート ディレクトリ (`hbase-site.xml` の `hbase.rootdir` 値) を確認します。 次のコマンドでは、Data Lake Storage のルート ディレクトリは `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` です。 このコマンドで、Data Lake Storage の入力フォルダーと出力フォルダーをパラメーターとして指定します。
+1. Azure Data Lake Storage で MapReduce を使用するには、Data Lake Storage のルート ディレクトリ (`hbase-site.xml` の `hbase.rootdir` 値) を確認します。 次のコマンドでは、Data Lake Storage のルート ディレクトリは `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` です。 このコマンドで、Data Lake Storage の入力フォルダーと出力フォルダーをパラメーターとして指定します。
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -123,6 +164,8 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
+
+1. データのクエリを実行して表示する場合は、前に説明したように **psql** を使用できます。 [HBase シェル](./query-hbase-with-hbase-shell.md)または [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md) を使用することもできます。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -138,7 +181,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 * リージョン サーバーのホットスポットを回避します。 行キーが単調に増加している場合、HBase の順次書き込みによってリージョン サーバーのホットスポッティングが減少する場合があります。 行キーを "*ソルティング*" すると、順次書き込みが少なくなります。 Phoenix では、特定のテーブルについてソルティング バイトを使用して行キーを透過的にソルティングする方法を提供します。以下を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Phoenix を使用した一括データの読み込み](https://phoenix.apache.org/bulk_dataload.html)
 * [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](../hbase/apache-hbase-query-with-phoenix.md)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: 2a22039b3499f1ba0f2d7acb2e86a1991d35a380
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202124"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665770"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -55,12 +55,12 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
 
 * [サービス層のアラート](security-center-alerts-service-layer.md)
-* [Azure のセキュリティ製品との統合](security-center-alerts-integration.md)
+* [Azure WAF と Azure DDoS Protection の脅威検出](security-center-alerts-integration.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 このドキュメントでは、Security Center でのセキュリティ インシデント機能の使用方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)
+* [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)。
 * [セキュリティ アラートの管理](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。

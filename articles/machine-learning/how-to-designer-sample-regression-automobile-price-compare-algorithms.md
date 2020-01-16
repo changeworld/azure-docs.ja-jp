@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: a4148389992bc100be66175a75b32d61acaf2f46
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659877"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771446"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して自動車価格を予測するために、複数の回帰モデルをトレーニングおよび比較する
 
@@ -25,7 +25,7 @@ ms.locfileid: "75659877"
 
 コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習のパイプラインを構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこのパイプラインで行われた選択の理論的な根拠を提示します。
 
-機械学習を始めたばかりの場合は、このパイプラインの[基本的なバージョン](service/how-to-designer-sample-regression-automobile-price-basic.md)を参照してください。
+機械学習を始めたばかりの場合は、このパイプラインの[基本的なバージョン](how-to-designer-sample-regression-automobile-price-basic.md)を参照してください。
 
 このパイプラインの完成したグラフを次に示します。
 
@@ -92,9 +92,9 @@ ms.locfileid: "75659877"
 
 デザイナーで利用できる他のサンプルを確認します。
 
-- [サンプル 1 - 回帰: 自動車の価格を予測する](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [サンプル 3 -特徴選択による分類:収入予測](service/how-to-designer-sample-classification-predict-income.md)
-- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [サンプル 5 - 分類:顧客離れを予測する](service/how-to-designer-sample-classification-churn.md)
-- [サンプル 6 - 分類:フライトの遅延を予測する](service/how-to-designer-sample-classification-flight-delay.md)
+- [サンプル 1 - 回帰: 自動車の価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
+- [サンプル 3 -特徴選択による分類:収入予測](how-to-designer-sample-classification-predict-income.md)
+- [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [サンプル 5 - 分類:顧客離れを予測する](how-to-designer-sample-classification-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
 - [サンプル 7 - テキスト分類:Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)

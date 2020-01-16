@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の監視と診断の概要 | Microsoft Docs
+title: Azure Service Fabric の監視と診断の概要
 description: Azure Service Fabric のクラスター、アプリケーション、およびサービスの監視と診断について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: a6c32058c68adbfd11a4cede6332b42076bea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349697"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -92,7 +83,7 @@ Service Fabric では、Reliable Services および Reliable Actors の各プロ
 
 プラットフォーム選択の重要なポイントは、ユーザー インターフェイスの使いやすさ、クエリの機能、使用できるカスタム視覚化とダッシュボード、監視エクスペリエンスを強化するために提供される追加ツールなどです。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アプリケーションのインストルメント化の開始については、[アプリケーション レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-app.md)に関するページを参照してください。
 * アプリケーションの Application Insights を設定する手順をについては、「[Service Fabric での ASP.NET Core アプリケーションの監視と診断](service-fabric-tutorial-monitoring-aspnet.md)」をご覧ください。

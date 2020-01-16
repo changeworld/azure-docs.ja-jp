@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 20d269c1614c82c8783d0e65149961c118c16a95
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559225"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978617"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、ツール内の顧客データにアクセスできます。 アカウント管理者ロールの詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照して閲覧者、所有者、共同作成者ロールを参照してください。 「[Azure サブスクリプション管理者](../billing/billing-add-change-azure-subscription-administrator.md)」に関する記事を参照してください。
+閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、ツール内の顧客データにアクセスできます。 アカウント管理者ロールの詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照して閲覧者、所有者、共同作成者ロールを参照してください。 「[Azure サブスクリプション管理者](../cost-management-billing/manage/add-change-subscription-administrator.md)」に関する記事を参照してください。
 
 ## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索と識別
 Security Center のユーザーは、Azure portal から自分の個人データを表示できます。 Security Center では、メール アドレスや電話番号などのセキュリティ連絡先の詳細情報のみを保存します。 詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
@@ -97,7 +97,7 @@ Security Center のユーザーは、自分の[セキュリティ連絡先デー
 [アラート データ](security-center-managing-and-responding-alerts.md)は、セキュリティ データと見なされ、2 年間保持されます。
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/platform/activity-logs-overview.md)で管理されます。
+セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/platform/platform-logs-overview.md)で管理されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ユーザー データの管理の詳細については、「[Manage user data found in an Azure Security Center investigation (Azure Security Center 調査で検出されたユーザー データの管理)](security-center-investigation-user-data.md)」を参照してください。

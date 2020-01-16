@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のステートフル サービスの単体テスト | Microsoft Docs
+title: Azure Service Fabric のステートフル サービスの単体テスト
 description: Service Fabric のステートフル サービスの単体テストの概念と実践について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433909"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric のステートフル サービスの単体テスト
 
@@ -122,5 +111,5 @@ RunAsync に与えられたキャンセル トークンのキャンセル処理�
 #### <a name="verify-which-replicas-should-serve-requests"></a>どのレプリカが要求を処理すべきかを確認する
 テストでは、プライマリ以外のレプリカに要求がルーティングされた場合に必要な動作をアサートする必要があります。 Service Fabric には、セカンダリ レプリカに要求を処理させる機能があります。 しかしリライアブル コレクションへの書き込みは、プライマリ レプリカからしか実行できません。 実際のアプリケーションの意図として、プライマリ レプリカだけが要求を処理する場合、またはセカンダリで処理できるのが要求の一部だけである場合には、肯定的なケースと否定的なケースの両方について、期待される動作をテストでアサートする必要があります。 ここでいう否定的なケースとは、要求を処理すべきではないレプリカに要求がルーティングされることを指し、肯定的なケースは、その逆を指します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ステートフル サービスの単体テスト](service-fabric-how-to-unit-test-stateful-services.md)の方法を確認します。

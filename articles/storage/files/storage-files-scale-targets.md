@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 060b4a8992ab1c48cceb9506b4f556d9098b9be0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452949"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749493"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -115,4 +115,3 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 - [Azure Files のデプロイの計画](storage-files-planning.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)

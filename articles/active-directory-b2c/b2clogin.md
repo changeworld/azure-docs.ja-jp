@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949985"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75367656"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -58,7 +58,7 @@ b2clogin.com リダイレクト URL には、2 つの形式を使用できます
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-2 つ目のオプションでは、テナント ドメイン名を `your-tenant-name.onmicrosoft.com` の形式で使用します。 例:
+2 つ目のオプションでは、テナント ドメイン名を `your-tenant-name.onmicrosoft.com` の形式で使用します。 次に例を示します。
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -93,7 +93,7 @@ Azure AD B2C によって保護されている Azure API Management API を移�
 
 [MSAL.NET][msal-dotnet] v2 以前を使用している場合、*b2clogin.com* へのリダイレクトを可能にするには、クライアント インスタンス化の **ValidateAuthority** プロパティを `false` に設定します。 この設定は、MSAL.NET v3 以降では必要ありません。
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```
@@ -111,7 +111,7 @@ this.clientApplication = new UserAgentApplication(
 );
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 OWIN ベースの Web アプリケーションを b2clogin.com に移行する方法の詳細については、「[OWIN ベースの Web API を b2clogin.com に移行する](multiple-token-endpoints.md)」を参照してください。
 

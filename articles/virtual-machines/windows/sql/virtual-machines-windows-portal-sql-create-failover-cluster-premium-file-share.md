@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464996"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965339"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -42,7 +42,7 @@ Premium ファイル共有は、SSD によってバックアップされる、�
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
 - [Azure Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)
-- [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure リソース グループ](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)の[軽量](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)管理モードでのみサポートされています。 完全拡張機能モードから軽量に変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードの SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、**正しい仮想マシンの横のチェックボックスをオフにします**。 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL VM で動作しなくなります。

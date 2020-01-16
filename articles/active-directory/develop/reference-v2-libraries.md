@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424000"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888937"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ
 
@@ -108,7 +108,7 @@ Web アプリケーションと Web API を保護するには、ミドルウェ�
 * ライブラリ コードの問題と新機能に関する要望については、ライブラリ所有者にお問い合わせください。
 * サービス側のプロトコルの実装の問題と新機能に関する要望については、Microsoft にお問い合わせください。
 * プロトコルに追加機能を求める場合、[機能要求を提出](https://feedback.azure.com/forums/169401-azure-active-directory)してください。
-* Microsoft ID プラットフォーム エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)してください。
+* Microsoft ID プラットフォーム エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 

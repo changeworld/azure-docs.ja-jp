@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186115"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750810"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor 経由で Media Services のメトリックと診断ログを監視する
 
 [Azure Monitor](../../azure-monitor/overview.md) を使用すると、アプリの実行状況を理解するために役立つメトリックと診断ログを監視できます。 Azure Monitor によって収集されたすべてのデータは、2 つの基本的な種類であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミングしたり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートしたり、サードパーティのサービスを使用したりできます。
 
-詳細については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)に関する記事をご覧ください。
+詳細については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)に関する記事をご覧ください。
 
 このトピックでは、サポートされている [Media Services のメトリック](#media-services-metrics)と [Media Services の診断ログ](#media-services-diagnostic-logs)について説明します。
 
@@ -42,7 +42,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 次のアカウント メトリックを監視できます。
 
-|メトリックの名前|Display name|説明|
+|メトリックの名前|Display name|[説明]|
 |---|---|---|
 |AssetCount|アセット数|アカウント内のアセットです。|
 |AssetQuota|アセットのクォータ|アカウント内のアセットのクォータです。|
@@ -60,7 +60,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 次の Media Services [ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックがサポートされています。
 
-|メトリックの名前|Display name|説明|
+|メトリックの名前|Display name|[説明]|
 |---|---|---|
 |Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
 |エグレス|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
@@ -84,7 +84,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services の診断ログ
 
-診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../azure-monitor/platform/resource-logs-overview.md)に関するページをご覧ください。
+診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)に関するページをご覧ください。
 
 Media Services では、次の診断ログがサポートされています。
 
@@ -92,7 +92,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ### <a name="key-delivery"></a>キー配信
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 
@@ -109,9 +109,9 @@ Media Services では、次の診断ログがサポートされています。
 
 [Media Services の診断ログを監視する方法](media-services-diagnostic-logs-howto.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)
 * [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)
 * [Media Services のメトリックを監視する方法](media-services-metrics-howto.md)
 * [Media Services の診断ログを監視する方法](media-services-diagnostic-logs-howto.md)

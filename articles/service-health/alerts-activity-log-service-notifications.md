@@ -3,19 +3,19 @@ title: Azure サービスの通知でアクティビティ ログ アラート�
 description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464025"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749308"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
 
 この記事では、Azure Portal を使用してサービスの正常性通知を行うアクティビティ ログ アラートを設定する方法について説明します。  
 
-サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、サービス正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。 
+サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、サービス正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。 
 
 Azure でサービス正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。
 

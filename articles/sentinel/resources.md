@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762719"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771293"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -32,7 +32,7 @@ Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に保持されます。
+Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保持されます。
 
 次のサポートされている操作を監査できます。
 
@@ -44,8 +44,6 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 |ワークフローの削除    |Microsoft.Logic/workflows|
 |保存した検索条件を作成する    |Microsoft.OperationalInsights/workspaces/savedSearches|
 |保存した検索条件の削除    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|ダッシュボードの設定  |Microsoft.Portal/dashboards|
-|ダッシュボードの削除   |Microsoft.Portal/dashboards|
 |警告ルールの更新 |Microsoft.SecurityInsights/alertRules|
 |警告ルールの削除 |Microsoft.SecurityInsights/alertRules|
 |警告ルールの応答アクションの更新 |Microsoft.SecurityInsights/alertRules|
@@ -83,5 +81,5 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) と [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/) から Azure Sentinel のブログ投稿を表示します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](https://blogs.msdn.com/b/azuresecurity/)を参照してください。

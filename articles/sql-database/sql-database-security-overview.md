@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997328"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978570"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -65,7 +65,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 > [!IMPORTANT]
 > Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関する次の記事をご覧ください。
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>承認
 
 承認は、Azure SQL Database 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可を制御するには、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加してデータベース レベルのアクセス許可をこれらのロールに割り当てるか、特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)をユーザーに付与することができます。 詳細については、[ログインとユーザー](sql-database-manage-logins.md)に関するページを参照してください
 
@@ -73,7 +73,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 ### <a name="row-level-security"></a>行レベルのセキュリティ
 
-行レベルのセキュリティを使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 また、行レベル セキュリティを使用して、ラベルに基づくカスタム セキュリティ概念を実装することもできます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
+行レベル セキュリティにより、顧客はクエリを実行するユーザーの特性に基づき、データベース テーブルの行へのアクセスを制御できます (たとえば、グループのメンバーシップや実行コンテキストなど)。 また、行レベル セキュリティを使用して、ラベルに基づくカスタム セキュリティ概念を実装することもできます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -104,7 +104,7 @@ SQL Server では、すべての接続に対して常に暗号化 (SSL/TLS) が�
 たとえば、ADO.NET ドライバーを使用している場合、これは、**Encrypt=True** と **TrustServerCertificate=False** によって達成されます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
 
 > [!IMPORTANT]
-> Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (1.2 未満) に依存している場合があります。 この場合も、SQL Server は引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合には、そのようなドライバーとアプリケーションによる SQL Database への接続許可について、セキュリティ上のリスクを評価することをお勧めします。 
+> Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (1.2 未満) に依存している場合があります。 この場合も、SQL Server は引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合には、そのようなドライバーとアプリケーションによる SQL Database への接続許可について、セキュリティ上のリスクを評価することをお勧めします。
 >
 > TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください
 
@@ -138,7 +138,7 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ### <a name="data-discovery--classification"></a>データの検出と分類
 
-データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付け、および保護を行うための、Azure SQL Database に組み込まれた高度な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付け、および保護を行うための、Azure SQL Database に組み込まれた高度な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 次のような場合にインフラストラクチャとして使用できます。
 
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
@@ -148,9 +148,9 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ### <a name="compliance"></a>コンプライアンス
 
-アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database でのアクセス制御機能の使用については、[アクセス制御](sql-database-control-access.md)に関するページを参照してください。
 - データベース監査については、[SQL Database の監査に関する記事](sql-database-auditing.md)をご覧ください。

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611818"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763931"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning の外部でトレーニングされた機械学習モデ
 >
 > ここで使用されている概念と用語の詳細については、[機械学習モデルの管理、デプロイ、および監視](concept-model-management-and-deployment.md)に関するページを参照してください。
 >
-> デプロイ プロセスの一般的な情報については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+> デプロイ プロセスの一般的な情報については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="entry-script"></a>エントリ スクリプト。
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="define-deployment"></a>デプロイを定義する
 
@@ -250,7 +250,7 @@ deployment_config = LocalWebservice.deploy_configuration()
 }
 ```
 
-Azure クラウドの Azure Kubernetes Service など、別のコンピューティング先へのデプロイは、デプロイ構成の変更と同じくらい簡単です。 詳細については、「[モデルをデプロイする方法と場所](service/how-to-deploy-and-where.md)」を参照してください。
+Azure クラウドの Azure Kubernetes Service など、別のコンピューティング先へのデプロイは、デプロイ構成の変更と同じくらい簡単です。 詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
 
-デプロイの詳細については、「[モデルをデプロイする方法と場所](service/how-to-deploy-and-where.md)」を参照してください。
+デプロイの詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="request-response-consumption"></a>要求 - 応答の使用量
 
@@ -304,5 +304,5 @@ print(response.json())
 
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
-* [モデルをデプロイする方法と場所](service/how-to-deploy-and-where.md)
+* [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
 * [デプロイ済みモデルのクライアントを作成する方法](how-to-consume-web-service.md)
