@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438805"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972859"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "75438805"
 また、企業が、異なる環境間でこれらの 10 のデータ ファクトリを複数回デプロイする必要がある場合、テンプレートでは、この**再利用性**を使用して、開発、テスト、および運用環境に個別のパラメーター ファイルを利用できます。
 
 ## <a name="templating-with-azure-resource-manager"></a>Azure Resource Manager でのテンプレート
-[Azure Resource Manager テンプレート](../../azure-resource-manager/template-deployment-overview.md)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 
 ## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978119"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972721"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 
@@ -57,7 +57,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。 **Snapshot Blob** が呼び出されると、B0 はスナップショットになり、B1 はアクティブな状態の BLOB です。B0 スナップショットが削除されると、論理的に削除済みとしてマークされます。* "
+"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。**Snapshot Blob** が呼び出されると、B0 はスナップショットになり、B1 はアクティブな状態の BLOB です。B0 スナップショットが削除されると、論理的に削除済みとしてマークされます。* "
 
 ベース BLOB (それ自体がスナップショットではないすべての BLOB) で **Delete Blob** を呼び出すと、その BLOB は論理的に削除済みとしてマークされます。 以前の動作との整合性のため、アクティブなスナップショットがある BLOB で **Delete Blob** を呼び出すと、エラーが返されます。 論理的に削除されたスナップショットのある BLOB で **Delete Blob** を呼び出すと、エラーは返されません。 論理的な削除が有効になっているときでも、BLOB とそのすべてのスナップショットを 1 回の操作で削除することができます。 これを行うと、ベース BLOB とスナップショットが論理的に削除済みとしてマークされます。
 
@@ -68,13 +68,13 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 > [!NOTE]  
 > 論理的に削除された BLOB が上書きされると、書き込み操作前の BLOB の状態の論理的に削除されたスナップショットが、自動的に生成されます。 新しい BLOB は、上書きされた BLOB の階層を継承します。
 
-コンテナーまたはアカウントによる削除の場合、または BLOB メタデータおよび BLOB プロパティの上書きの場合は、論理的な削除はデータを保存しません。 誤った削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/resource-group-lock-resources.md)」をご覧ください。
+コンテナーまたはアカウントによる削除の場合、または BLOB メタデータおよび BLOB プロパティの上書きの場合は、論理的な削除はデータを保存しません。 誤った削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。
 
 次の表では、論理的な削除を有効にしたときに想定される動作の詳細を示します。
 
-| REST API の操作 | リソースの種類 | 説明 | 動作の変更点 |
+| REST API の操作 | リソースの種類 | [説明] | 動作の変更点 |
 |--------------------|---------------|-------------|--------------------|
-| [削除](/rest/api/storagerp/StorageAccounts/Delete) | アカウント | ストレージ アカウントおよびそれに含まれるすべてのコンテナーと BLOB を削除します。                           | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 |
+| [削除](/rest/api/storagerp/StorageAccounts/Delete) | Account | ストレージ アカウントおよびそれに含まれるすべてのコンテナーと BLOB を削除します。                           | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 |
 | [Delete Container](/rest/api/storageservices/delete-container) | コンテナー | コンテナーおよびそれに含まれるすべての BLOB を削除します。 | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 |
 | [Put Blob](/rest/api/storageservices/put-blob) | ブロック BLOB、追加 BLOB、ページ BLOB | コンテナー内で新しい BLOB を作成するか、既存の BLOB を置き換えます | 既存の BLOB の置き換えに使った場合、呼び出し前の BLOB の状態のスナップショットが自動的に生成されます。 これは、以前に論理的に削除された BLOB が同じ種類 (ブロック、追加、ページ) の BLOB によって置き換えられる場合にのみ、以前に論理的に削除された BLOB にも適用されます。 異なる種類の BLOB で置き換えられる場合は、既存の論理的に削除されたすべてのデータが完全に期限切れになります。 |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | ブロック BLOB、追加 BLOB、ページ BLOB | BLOB または BLOB のスナップショットを削除としてマークします。 BLOB またはスナップショットは、後でガベージ コレクションの間に削除されます。 | BLOB のスナップショットの削除に使った場合、そのスナップショットは論理的に削除済みとしてマークされます。 BLOB の削除に使った場合、その BLOB は論理的に削除済みとしてマークされます。 |
@@ -88,7 +88,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 "Put Page" を呼び出してページ BLOB の範囲を上書きまたはクリアしても、スナップショットは自動的に生成されないということに、注意することが重要です。 仮想マシンのディスクは、ページ BLOB を利用しており、**Put Page** を使ってデータを書き込みます。
 
-### <a name="recovery"></a>復旧
+### <a name="recovery"></a>Recovery
 
 論理的に削除されたベース BLOB に対して [Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すと、それとそれに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブなベース BLOB に対して `Undelete Blob` 操作を呼び出すと、それに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブとして復元されるスナップショットは、ユーザー生成のスナップショットと同じように処理されます。ベース BLOB を上書きすることはありません。
 
@@ -146,7 +146,7 @@ Copy a snapshot over the base blob:
 
 論理的な削除を初めて有効にするときは、リテンション期間を短くして、この機能が請求に及ぼす影響をよく理解することをお勧めします。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 次の手順では、論理的な削除の基本的な使用方法について説明します。
 
@@ -156,13 +156,13 @@ Azure portal を使用して、ストレージアカウントの BLOB の論理�
 
 1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
 
-2. **Blob Service**の下にある **[データ保護]** オプションに移動します。
+2. **[Blob service]** の下の **[データ保護]** オプションに移動します。
 
 3. **[Blob の論理的な削除] の下にある **[有効]** をクリックする**
 
 4. *[保持期間]* ( **[保持ポリシー]** の下にある) に日数を入力する
 
-5. **[保存]** ボタンを選択して、データ保護設定を確認する
+5. **[保存]** ボタンを選択して [データ保護] 設定を確認します。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
@@ -307,7 +307,7 @@ blockBlob.StartCopy(copySource);
 
 アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 論理的な削除が無効な別のストレージ アカウントに頻繁に上書きされるデータを格納することで、この追加のコストと待機時間を軽減できます。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="for-which-storage-services-can-i-use-soft-delete"></a>論理的な削除を使用できるのはどのストレージ サービスですか?
 
@@ -335,7 +335,7 @@ blockBlob.StartCopy(copySource);
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>論理的な削除を有効にしてある状態で、アカウント全体またはコンテナー全体を削除した場合、関連付けられているすべての BLOB が保存されますか?
 
-いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 誤って削除されないようにストレージ アカウントを保護する方法の詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
+いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 誤って削除されないようにストレージ アカウントを保護する方法の詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>削除されたデータの容量メトリックを見ることはできますか?
 
@@ -363,7 +363,7 @@ Azure 仮想マシンからアンマネージド ディスクへの書き込み�
 
 論理的な削除は、お使いの API のバージョンに関係なく利用できます。 ただし、論理的に削除された BLOB および BLOB のスナップショットを一覧表示および復旧するには、[ストレージ サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) の 2017-07-29 以降のバージョンを使う必要があります。 Microsoft では、常に最新バージョンの Azure Storage API を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [.NET サンプル コード](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)

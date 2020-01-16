@@ -1,18 +1,18 @@
 ---
-title: スマート検出 - Azure Application Insights におけるトレースの重大度の比率の低下 | Microsoft Docs
-description: トレースのテレメトリで異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
+title: トレースの重大度の比率の低下 - Azure Application Insights
+description: スマート検出を使用してトレースのテレメトリから異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432413"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "72820532"
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
-1. **トリアージ**: 通知では影響を受ける操作の数が示されます。 この情報を基に、問題に優先順位を割り当てることができます。
+1. **トリアージ**。 通知では影響を受ける操作の数が示されます。 この情報を基に、問題に優先順位を割り当てることができます。
 2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
 3. **診断**。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることができます。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400748"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977669"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400748"
 
 この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスを完了すると、すべての仮想マシンの監視を正常に開始し、パフォーマンスや可用性の問題が発生していないかどうかを確認できるようになります。
 
-## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics ワークスペースを設定する 
+## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics ワークスペースを設定する
 
 Log Analytics ワークスペースがない場合は、作成する必要があります。 構成する手順を続行する前に、「[前提条件](vminsights-enable-overview.md#log-analytics)」のセクションで提案されている方法を確認してください。 次に、Azure Resource Manager テンプレート メソッドを使用して、Azure Monitor for VMs のデプロイを完了できます。
 
@@ -35,8 +35,8 @@ Log Analytics ワークスペースがない場合は、作成する必要があ
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
 テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
 Azure CLI を使用するには、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
@@ -91,7 +91,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
 1. *WorkspaceName*、*ResourceGroupName*、および *WorkspaceLocation* の値を取り込みます。 *WorkspaceName* の値は Log Analytics ワークスペースの名前です。 *WorkspaceLocation* の値は、ワークスペースが定義されているリージョンです。
 
 1. これでこのテンプレートをデプロイする準備が整いました。
- 
+
     * テンプレートが含まれているフォルダーで、次の PowerShell コマンドを使用します。
 
         ```powershell
@@ -105,7 +105,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
         ```
 
     * Azure CLI を使用して次のコマンドを実行するには、次の手順を実行します。
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
 >テンプレートは、オンボードするリソースと同じリソース グループ内にデプロイする必要があります。
 
 テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
 Azure CLI を使用するには、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ### <a name="download-templates"></a>テンプレートをダウンロードする
 
-Azure Resource Manager テンプレートはアーカイブ ファイル (.zip) として提供さ、GitHub リポジトリから[ダウンロード](https://aka.ms/VmInsightsARMTemplates)できます。 このファイルには各デプロイ シナリオを表すフォルダーが含まれ、各フォルダーにはテンプレートとパラメーター ファイルが格納されています。 実行前に、パラメーター ファイルを変更し、必須の値を指定します。 特定の要件をサポートするためにテンプレート ファイルをカスタマイズする必要がない場合は、変更しないでください。 パラメーター ファイルを変更したら、この記事で後の方で説明されている方法を使用してデプロイできます。 
+Azure Resource Manager テンプレートはアーカイブ ファイル (.zip) として提供さ、GitHub リポジトリから[ダウンロード](https://aka.ms/VmInsightsARMTemplates)できます。 このファイルには各デプロイ シナリオを表すフォルダーが含まれ、各フォルダーにはテンプレートとパラメーター ファイルが格納されています。 実行前に、パラメーター ファイルを変更し、必須の値を指定します。 特定の要件をサポートするためにテンプレート ファイルをカスタマイズする必要がない場合は、変更しないでください。 パラメーター ファイルを変更したら、この記事で後の方で説明されている方法を使用してデプロイできます。
 
 ダウンロード ファイルには、さまざまなシナリオに対応した、以下のテンプレートが含まれています。
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、PowerShell スクリプト [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用します。 これは Azure PowerShell ギャラリーから入手できます。 このスクリプトでは以下について反復処理が実行されます。
 
 - サブスクリプションに設定されているすべての仮想マシンと仮想マシン スケール セット。
-- *ResourceGroup* で指定されたスコープ付きリソース グループ。 
+- *ResourceGroup* で指定されたスコープ付きリソース グループ。
 - *Name* で指定された 1 つの VM または仮想マシン スケール セット。
 
 このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうかが確認されます。 VM 拡張機能がインストールされている場合、スクリプトで再インストールが試みられます。 VM 拡張機能がインストールされていない場合、スクリプトでは Log Analytics と Dependency Agent の VM 拡張機能がインストールされます。
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>次のステップ
 
 これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
- 
-- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
 
-- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事を参照してください。 
+- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
+
+- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事を参照してください。

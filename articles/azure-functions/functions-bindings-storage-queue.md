@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3e72bd366cdbba1d73bc05f98d3848e2d4f0ca6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5164e47c9c93653bfcd01093c01142b69c0bd57f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433245"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -291,13 +291,13 @@ def main(msg: func.QueueMessage):
 
 次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし| `queueTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction**| 該当なし | *function.json* ファイルの場合のみ。 `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし |関数コードでキュー項目ペイロードを含む変数の名前。  |
 |**queueName** | **QueueName**| ポーリングするキューの名前。 |
-|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+|**connection** | **[接続]** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -318,7 +318,7 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) クラスのプロパティです。
 
-|プロパティ|種類|説明|
+|プロパティ|種類|[説明]|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
 |`DequeueCount`|`int`|このメッセージがデキューされた回数。|
@@ -336,7 +336,18 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 ## <a name="trigger---polling-algorithm"></a>トリガー - ポーリング アルゴリズム
 
-キュー トリガーは、アイドル状態のキューのポーリングがストレージ トランザクション コストに与える影響を軽減するために、ランダムな指数バックオフ アルゴリズムを実装します。  メッセージが見つかったら、このランタイムは 2 秒間待ってから別のメッセージを確認します。メッセージが見つからない場合は、約 4 秒間待ってから再試行します。 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
+キュー トリガーは、アイドル状態のキューのポーリングがストレージ トランザクション コストに与える影響を軽減するために、ランダムな指数バックオフ アルゴリズムを実装します。
+
+アルゴリズムでは次のロジックが使用されます。
+
+- メッセージが見つかると、ランタイムは 2 秒間待機してから、別のメッセージを確認します
+- メッセージが見つからない場合は、約 4 秒間待機してから再試行します。
+- 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。
+- 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
+
+ローカル開発の場合、最大ポーリング間隔は既定で 2 秒に設定されます。
+
+課金に関しては、ランタイムによるポーリングに費やされた時間は "無料" であり、お使いのアカウントに対してカウントされません。
 
 ## <a name="trigger---concurrency"></a>トリガー - コンカレンシー
 
@@ -608,13 +619,13 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 次の表は、*function.json* ファイルと `Queue` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | `queue` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のキューを表す変数の名前。 `$return` に設定して、関数の戻り値を参照します。|
 |**queueName** |**QueueName** | キューの名前。 |
-|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+|**connection** | **[接続]** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -649,7 +660,7 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x 以降でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
@@ -670,7 +681,7 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 ```
 
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|キューのポーリングの最大間隔。 最小は 00:00:00.100 (100 ミリ秒) であり、最大 00:01:00 (1 分) まで増分されます。  データ型は 1.x ではミリ秒であり、2.x 以降では TimeSpan です。|
 |visibilityTimeout|00:00:00|メッセージの処理が失敗したときの再試行間隔。 |
@@ -678,7 +689,7 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 |maxDequeueCount|5|有害キューに移動する前に、メッセージの処理を試行する回数。|
 |newBatchThreshold|batchSize/2|同時に処理されているメッセージの数がこの数まで減少すると、ランタイムは別のバッチを取得します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 

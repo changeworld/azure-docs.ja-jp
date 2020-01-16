@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462617"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 
@@ -67,7 +67,7 @@ Azure SQL Database の 3 種類すべてに、データベースを動的にス�
 - [読み取りスケールアウト](sql-database-read-scale-out.md)は、データの 1 つの読み取り専用レプリカを取得している場合に利用できる機能であり、レポートなどの負荷が高い読み取り専用クエリを実行できます。 読み取り専用レプリカは、プライマリ データベースのリソース使用量に影響を与えずに、読み取り専用ワークロードを処理します。
 - [データベース シャーディング](sql-database-elastic-scale-introduction.md)は、データを複数のデータベースに分割してそれらを個別にスケーリングできる一連のテクニックです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - データベース コードの変更によってデータベースのパフォーマンスを向上させる方法の詳細については、「[パフォーマンスに関する推奨事項の検索と適用](sql-database-advisor-portal.md)」をご覧ください。
 - 組み込みのデータベース インテリジェンスを使ってデータベースを最適化する方法については、「[自動チューニング](sql-database-automatic-tuning.md)」をご覧ください。

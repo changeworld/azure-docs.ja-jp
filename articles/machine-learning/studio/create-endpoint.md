@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454751"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>デプロイされた Azure Machine Learning Studio (クラシック) Web サービス用のエンドポイントを作成する
 
@@ -34,12 +34,12 @@ Azure Machine Learning Web サービス ポータルを使用して、Web サー
 
 1. Machine Learning Studio (クラシック) の左側のナビゲーション列で [Web サービス] をクリックします。
 2. Web サービス ダッシュボードの下部で、 **[Manage endpoints]\(エンドポイントの管理\)** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
-3. **[新規]** をクリックします。
+3. **[新規作成]** をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
 ## <a id="scaling"></a> 新しいエンドポイントを追加して Web サービスをスケーリングする
 
-既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 クラシック バージョンの Azure Machine Learning Studio を使用すると、Web サービスで最大限のパフォーマンスを実現するように設定が自動的に最適化され、ポータルの値は無視されます。
+既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 Azure Machine Learning Studio (クラシック) では、Web サービスで最大限のパフォーマンスを実現するために、設定が自動的に最適化され、ポータルの値は無視されます。
 
 同時呼び出しの最大数 200 件でサポートされる内容を上回る負荷の API を呼び出す場合は、同じ Web サービスに複数のエンドポイントを作成する必要があります。 その後、それら全体に負荷を無作為に分配できます。
 
@@ -49,6 +49,6 @@ Web サービスのスケーリングは一般的なタスクです。 スケー
 
 同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50 ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)

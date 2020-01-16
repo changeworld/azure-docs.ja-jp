@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark)
+title: Azure Cosmos DB と Apache Spark でのラムダ アーキテクチャ
 description: この記事では、Azure Cosmos DB、HDInsight、Spark を使ってラムダ アーキテクチャを実装する方法について説明します
 ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d16a9b07ffb77145a6903bfb0de387c2b94c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441770"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB:Azure プラットフォームでラムダ アーキテクチャを実装する 
 
@@ -267,7 +267,7 @@ var streamingQuery = streamingQueryWriter.start()
   * [Streaming Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (Cosmos DB 変更フィードからのストリーミング クエリ) Scala スクリプトは、Azure Cosmos DB 変更フィードからストリーミング クエリを実行し、spark-shell から間隔カウントを計算します。
   * [Streaming Tags Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) (Cosmos DB 変更フィードからのストリーミング タグ クエリ) Scala スクリプトは、Azure Cosmos DB 変更フィードからストリーミング クエリを実行し、spark-shell からのタグの間隔カウントを計算します。
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Spark-Azure Cosmos DB コネクタをまだダウンロードしていない場合は、そのコネクタを [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub リポジトリからダウンロードし、リポジトリでその他のリソースを調べる。
 * [ラムダ アーキテクチャ](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)
 * [分散集計の例](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)

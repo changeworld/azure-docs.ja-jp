@@ -1,5 +1,5 @@
 ---
-title: Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える | Microsoft Docs
+title: レポートの表示モードと編集モードを切り替える
 description: Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える方法について説明します。
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
@@ -8,12 +8,12 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b2696560b5d5013fe337b51ec61cbfac9e512610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357666"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える
 
@@ -111,7 +111,7 @@ report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](get-started-sample.md)  
 [レポートの埋め込み](embed-report.md)  
@@ -121,4 +121,4 @@ report.switchMode("edit");
 [PowerBI-CSharp Git リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git リポジトリ](https://github.com/Microsoft/PowerBI-Node)  
 
-ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。
+その他の質問 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

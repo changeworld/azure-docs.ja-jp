@@ -10,18 +10,18 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 0d8418d846d26d4104718df6d0fc66d264ef4a54
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440092"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
 リンクされたサービスをパラメーター化し、実行時に動的な値を渡せるようになりました。 たとえば、同じ Azure SQL Database サーバー上の異なるデータベースに接続する場合に、リンクされたサービスの定義内でデータベース名をパラメーター化することができます。 これにより、Azure SQL データベースサーバー上のデータベースごとに、リンクされたサービスを作成する必要がなくなります。 リンクされたサービスの定義内で、他のプロパティをパラメーター化することもできます (たとえば、*ユーザー名*など)。
 
-リンクされたサービスをパラメーター化するには、Azure Portal の Data Factory UI か、プログラミング インターフェイスを使用できます。
+リンクされたサービスをパラメーター化するには、Azure portal の Data Factory UI か、プログラミング インターフェイスを使用できます。
 
 > [!TIP]
 > パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 接続文字列はすべて Azure Key Vault 内に格納し、*シークレット名*をパラメーター化するようにしてください。
@@ -33,7 +33,7 @@ ms.locfileid: "74918833"
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
 現在のところ、リンクされたサービスのパラメーター化は、次のデータ ストアを対象に、Azure portal の Data Factory UI でサポートされています。 その他のすべてのデータ ストアについては、 **[接続]** タブで **[コード]** アイコンを選択し、JSON エディターを使用することで、リンクされたサービスをパラメーター化できます。
-- Azure SQL Database
+- Azure SQL データベース
 - Azure SQL Data Warehouse
 - SQL Server
 - Oracle
@@ -56,10 +56,7 @@ ms.locfileid: "74918833"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": null,
         "parameters": {

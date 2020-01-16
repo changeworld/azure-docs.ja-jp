@@ -1,17 +1,17 @@
 ---
-title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB
+title: Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444871"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -142,7 +142,7 @@ Azure Functions の利点:
 
 Flow、Logic Apps、Azure Functions、または WebJobs が実装に適しているかどうかがわからない場合は、「[Flow、Logic Apps、Functions、WebJobs の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 それでは実際に Azure Cosmos DB と Azure Functions を接続してみましょう。 
 

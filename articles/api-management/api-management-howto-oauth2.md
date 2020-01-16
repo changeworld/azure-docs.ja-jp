@@ -1,5 +1,6 @@
 ---
-title: Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する | Microsoft Docs
+title: API Management の OAuth 2.0 を使用して開発者アカウントを承認する
+titleSuffix: Azure API Management
 description: API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430691"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
@@ -35,7 +36,7 @@ ms.locfileid: "73176615"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
+## <a name="step1"> </a>API Management で OAuth 2.0 承認サーバーを構成する
 
 > [!NOTE]
 > API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページを参照してください。
@@ -81,7 +82,7 @@ ms.locfileid: "73176615"
 
     フォームを完了したら、 **[作成]** をクリックして API Management OAuth 2.0 認証サーバーの構成を保存します。 サーバーの構成が保存された後、次のセクションで説明されているように、この構成を使用するように API を構成できます。
 
-## <a name="step2"> </a>OAuth 2.0 ユーザー認証を使用するように API を構成する
+## <a name="step2"> </a>OAuth 2.0 ユーザー承認を使用するように API を構成する
 
 1. 左側の **[API Management]** メニューの **[API]** をクリックします。
 
@@ -95,7 +96,7 @@ ms.locfileid: "73176615"
 
     ![OAuth 2.0 の設定](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー認証をテストする
+## <a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー承認をテストする
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -125,7 +126,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 これで、残りのパラメーター用に必要な値を構成して、要求を送信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 OAuth 2.0 と API Management の詳細については、次のビデオとこの [記事](api-management-howto-protect-backend-with-aad.md)をご覧ください。
 

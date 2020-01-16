@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182708"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638682"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -58,10 +58,17 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 1. **通知** タブまたはページの下部にある **Next:Activation\(次へ: アクティブ化** ボタンから、このロールの通知設定タブを表示します。 これらの設定は、このロールに関連するすべてのメール通知を制御します。
 
-    > [!NOTE]
-    > この通知 UI は、現在 Azure のリージョンとサブスクリプションにわたってロールアウトされています。 これらの詳細な通知を構成できない場合は、1 日または 2 日後にもう一度ご確認ください。
-
     ![[ロールの設定] ページの [ロールの通知] タブ](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    [ロールの設定] ページの **[通知]** タブで、Privileged Identity Management によって、通知を受信するユーザーとユーザーが受信する通知をきめ細かく制御できます。
+
+    - **メールをオフにする**<br>特定のメールをオフにするには、既定の受信者のチェック ボックスをオフにし、追加の受信者をすべて削除します。  
+
+    - **指定したメール アドレスへのメールを制限する**<br>既定の受信者に送信されるメールをオフにするには、既定の受信者のチェック ボックスをオフにします。 その後に、追加の受信者として追加のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
+
+    - **既定の受信者と追加の受信者の両方にメールを送信する**<br>既定の受信者と追加の受信者の両方にメールを送信するには、既定の受信者のチェック ボックスをオンにし、追加の受信者のメール アドレスを追加します。
+
+    - **重要なメールのみ**<br>メールの種類ごとに、重要なメールのみを受信するためのチェック ボックスをオンにすることができます。 つまり、Privileged Identity Management では、メールに即時の操作が必要な場合にのみ、構成された受信者に引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
 
 1. いつでも **[更新]** ボタンを選択して、ロールの設定を更新します。
 
@@ -128,7 +135,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 1. すべてのロール設定を指定したら、 **[更新]** を選択して変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
 - [Privileged Identity Management で Azure リソース ロールに対するセキュリティ アラートを構成する](pim-resource-roles-configure-alerts.md)

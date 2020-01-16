@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517099"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973485"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -37,7 +37,7 @@ ms.locfileid: "68517099"
 
 この記事に記載されている情報は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 デプロイのワークフローは、ポータルの準備、仮想化環境内への仮想アレイのプロビジョニング、セットアップ ウィザードの完了という構成になっています。 ファイル サーバーまたは iSCSI サーバーとして StorSimple Virtual Array をデプロイする作業を開始するには、次の表のリソースを参照してください。
 
 #### <a name="deployment-articles"></a>デプロイに関する記事
@@ -134,7 +134,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 #### <a name="to-get-the-virtual-array-image"></a>仮想アレイのイメージを取得するには
 
-1. [Azure Portal](https://portal.azure.com/)にサインインします。 
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 
 2. Azure Portal で、 **[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
 3. 既存の StorSimple デバイス マネージャー サービスを選択します。 **[StorSimple デバイス マネージャー]** ブレードで **[クイック スタート]** をクリックします。 
 4. Microsoft ダウンロード センターからダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
@@ -148,7 +148,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 この手順は省略可能で、サービスでストレージ アカウントの自動作成を有効にしていない場合にのみ実行する必要があります。
 
-別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。
+別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)に関するセクションをご覧ください。
 
 既存の Microsoft Azure ストレージ アカウントを追加するには、[Azure Portal](https://ms.portal.azure.com/) の [StorSimple Device Manager service (StorSimple デバイス マネージャー サービス)] ページで、次の手順を実行します。
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3fc8d8d1f8c214c3bebe7af2cf670732b20529d3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872980"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690042"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -28,13 +24,14 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 
 - Windows ノードとコンテナーではメモリ RSS メトリックを使用できません。
 - Windows ノードではディスク ストレージ容量の情報を使用できません。
+- コンテナー ログは、Windows ノードで実行されているコンテナーでは使用できません。
 - ライブ ログのサポートは Windows コンテナーのログを除き使用可能です。
 - ポッド環境のみが監視され、Docker 環境は対象外です。
 - プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com) にサインインします。 
+[Azure portal](https://portal.azure.com) にサインインする 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー
 
@@ -68,7 +65,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 * **不明**:サービスがノードまたはポッドに接続できなかった場合、状態は不明に変わります。
 * **見つかりませんでした**:ワークスペース、リソース グループ、またはこのソリューションのワークスペースを含むサブスクリプションのいずれかが削除されています。
 * **権限がありません**:ユーザーはワークスペース内のデータを読み取るために必要なアクセス許可を持っていません。
-* **エラー**: ワークスペースからデータを読み取るときにエラーが発生しました。
+* **Error**: ワークスペースからデータを読み取るときにエラーが発生しました。
 * **間違った構成**:Azure Monitor for containers が、指定されたワークスペースで正しく構成されていませんでした。
 * **データがありません**:過去 30 分間にデータがワークスペースにレポートされていません。
 
@@ -81,17 +78,17 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 |**ユーザー ポッド**| | |  
 | |Healthy |100% |  
 | |警告 |90 ～ 99% |  
-| |重大 |< 90% |  
+| |Critical |< 90% |  
 | |Unknown |過去 30 分以内に報告していない場合 |  
 |**システム ポッド**| | |  
 | |Healthy |100% |
 | |警告 |該当なし |
-| |重大 |< 100% |
+| |Critical |< 100% |
 | |Unknown |過去 30 分以内に報告していない場合 |
-|**Node** | | |
+|**[Node]** | | |
 | |Healthy |> 85% |
-| |警告 |60 ～ 84% |
-| |重大 |< 60% |
+| |警告 |60 - 84% |
+| |Critical |< 60% |
 | |Unknown |過去 30 分以内に報告していない場合 |
 
 クラスターの一覧からクラスターの名前を選択して、 **[クラスター]** ページにドリルダウンできます。 その後、その特定のクラスターの **[ノード]** 列でノードのロールアップを選択すると、 **[ノード]** パフォーマンス ページに移動します。 また、 **[ユーザー ポッド]** または **[システム ポッド]** 列のロールアップを選択して、 **[コントローラー]** パフォーマンス ページにドリルダウンすることもできます。
@@ -127,7 +124,7 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 メトリックス エクスプローラーでは、Azure Monitor for containers からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
 
-|名前空間 | メトリック | 説明 | 
+|名前空間 | メトリック | [説明] | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | クラスター全体で集計された CPU 使用率の測定値。 これは、CPU コアを 1,000 ユニット (ミリ = 1,000) に分割したものです。 多くのアプリケーションによって 1 つのコアが使用されている可能性があるコンテナーで、コアの使用状況を特定するために使用されます。| 
@@ -144,7 +141,7 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 * コントローラー
 * Kubernetes 名前空間
-* ノード
+* Node
 * 段階
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>ノード、コントローラー、コンテナーの正常性を分析する
@@ -199,7 +196,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 次の表では、 **[ノード]** タブを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 列 | [説明] | 
 |--------|-------------|
 | Name | ホストの名前。 |
 | Status | ノードの状態の Kubernetes ビュー。 |
@@ -228,7 +225,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 次の表では、コントローラーを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 列 | [説明] | 
 |--------|-------------|
 | Name | コントローラーの名前。|
 | Status | *[OK]* 、 *[終了]* 、 *[失敗]* 、 *[停止]* 、 *[一時停止]* など、実行完了後のコンテナーのロールアップ状態。 コンテナーが実行されているのに状態が正しく表示されない、またはエージェントによって状態が認識されず、30 分を超えても応答しない場合は、 *[不明]* 状態になります。 状態アイコンのその他の詳細については、次の表を参照してください。|
@@ -237,7 +234,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 | Containers | コントローラーまたはポッドのコンテナーの合計数。 |
 | Restarts | コンテナーの再起動数のロールアップ。 |
 | Uptime | コンテナーが起動されてからの経過時間を表します。 |
-| ノード | コンテナーとポッド限定。 どのコントローラーに存在しているかが示されます。 | 
+| Node | コンテナーとポッド限定。 どのコントローラーに存在しているかが示されます。 | 
 | Trend Min&nbsp;% (傾向 (%) 最小)、Avg&nbsp;% (傾向 (%) 平均)、50th&nbsp;% (傾向 (%) 50)、90th&nbsp;% (傾向 (%) 90)、95th&nbsp;% (傾向 (%) 95)、Max&nbsp;% (傾向 (%) 最大) | 棒グラフの傾向は、コントローラーの平均パーセンタイル メトリックを表しています。 |
 
 状態フィールドのアイコンは、コンテナーのオンライン状態を示します。
@@ -265,14 +262,14 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 次の表では、コンテナーを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 列 | [説明] | 
 |--------|-------------|
 | Name | コントローラーの名前。|
 | Status | 存在する場合、コンテナーの状態です。 状態アイコンのその他の詳細については、次の表を参照してください。|
 | Min&nbsp;% ((%) 最小)、Avg&nbsp;% ((%) 平均)、(%)&nbsp;50、(%)&nbsp;90、(%)&nbsp;95、Max&nbsp;% ((%) 最大) | 各エンティティの選択されたメトリックとパーセンタイルの平均率のロールアップ。 |
 | 最小、平均、50、90、95、最大 | 選択されたパーセンタイルのコンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。 平均値は、ポッドに設定されている CPU/メモリ制限から測定されます。 |
 | Pod | ポッドが存在するコンテナーです。| 
-| ノード |  コンテナーが存在するノードです。 | 
+| Node |  コンテナーが存在するノードです。 | 
 | Restarts | コンテナーが起動されてからの経過時間を表します。 |
 | Uptime | コンテナーが起動または再起動されてからの経過時間を表します。 |
 | Trend Min&nbsp;% (傾向 (%) 最小)、Avg&nbsp;% (傾向 (%) 平均)、50th&nbsp;% (傾向 (%) 50)、90th&nbsp;% (傾向 (%) 90)、95th&nbsp;% (傾向 (%) 95)、Max&nbsp;% (傾向 (%) 最大) | 棒グラフの傾向は、コンテナーの平均パーセンタイル メトリック率を表しています。 |
@@ -315,7 +312,7 @@ Azure Monitor for containers には、開始するための次の 4 つのブッ
 
 ![[ブックの表示] ドロップダウン リスト](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
 

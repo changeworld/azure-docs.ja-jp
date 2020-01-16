@@ -14,16 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368931"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 
 Terraform を利用すれば、Azure で完全なインフラストラクチャ デプロイを定義し、作成できます。 整合性があり、再現可能な方法で Azure リソースを作成し、構成する Terraform テンプレートを人間が読める形式でビルドします。 この記事では、Terraform を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Terraform をインストールし、構成する](terraform-install-configure.md)方法についても説明します。
+
+> [!NOTE]
+> Terraform 固有のサポートについては、そのコミュニティ チャネルのいずれかを使用して Terraform に直接問い合わせてください。
+>
+>   • コミュニティ ポータルの [Terraform セクション](https://discuss.hashicorp.com/c/terraform-core)には、質問、ユース ケース、および役立つパターンが含まれています。
+>
+>   • プロバイダー関連の質問については、コミュニティ ポータルの [Terraform プロバイダー](https://discuss.hashicorp.com/c/terraform-providers)のセクションにアクセスしてください。
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Azure 接続とリソース グループを作成する
@@ -466,5 +473,5 @@ VM に SSH 接続できます。
 ssh azureuser@<publicIps>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Terraform を使用して、Azure に基本的なインフラストラクチャを作成しました。 さらに複雑なシナリオ (ロード バランサーや仮想マシン スケール セットを使用する例など) については、[Azure を対象とした Terraform の例](https://github.com/hashicorp/terraform/tree/master/examples)を参照してください。 サポートされている Azure プロバイダーの最新の一覧については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)を参照してください。

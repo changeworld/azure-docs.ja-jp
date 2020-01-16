@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435497"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、HBase に対して SQL のようなクエリを使うことができます。 Phoenix は基盤の JDBC ドライバーを使って、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更でき、行を個別または一括でアップサートできるようします。 Phoenix は、MapReduce ではなく noSQL ネイティブ コンパイルを使ってクエリをコンパイルして、HBase に基づく待機時間の短いアプリケーションを作成できるようにします。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 このアプローチにより、クライアント/サーバーのデータ転送が最小限に抑えられます。
 
 Apache Phoenix を使うと、開発者でなくても、プログラミングではなく SQL に似た構文を使って、ビッグ データのクエリを実行できます。 Phoenix は、[Apache Hive](hadoop/hdinsight-use-hive.md) や Apache Spark SQL などの他のツールとは異なり、HBase 向けに高度に最適化されています。 開発者にとってのメリットは、高いパフォーマンスのクエリを、はるかに少ないコードで作成できることです。
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 SQL クエリを送信すると、Phoenix は HBase ネイティブの呼び出しにクエリをコンパイルし、最適化のためにスキャン (またはプラン) を並列で実行します。 この抽象化レイヤーにより、開発者は MapReduce ジョブを作成しなくて済み、Phoenix のビッグ データ ストレージに関するアプリケーションのビジネス ロジックとワークフローに集中できます。
 
@@ -51,8 +50,8 @@ Phoenix ビューの作成は、SQL の標準的なビュー構文の使用と�
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -135,6 +134,8 @@ HDInsight HBase クラスターには、構成の変更を行うための [Ambar
 
     ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hbase/apache-hbase-query-with-phoenix.md)
+
+* [Apache Zeppelin を使用して Azure HDInsight で Apache HBase に対して Apache Phoenix クエリを実行する](./hbase/apache-hbase-phoenix-zeppelin.md)

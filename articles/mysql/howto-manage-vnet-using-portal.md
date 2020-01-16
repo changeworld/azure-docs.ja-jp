@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 7479b16f2e1f14d8ebe611bf3121005af342ccb9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ee1951de850e402721e0abb3e08a55b73f3eedfa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764935"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979352"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Database for MySQL VNet のサービス エンドポイントと VNet ルールを作成および管理する
 Virtual Network (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for MySQL サーバーに拡張します。 制限事項も含め、Azure Database for MySQL VNet サービス エンドポイントの概要については、[Azure Database for MySQL サーバー VNet サービス エンドポイント ](concepts-data-access-and-security-vnet.md) に関する記事を参照してください。 VNet サービス エンドポイントは、Azure Database for MySQL でサポートされるすべてのリージョンで利用できます。
@@ -25,7 +25,7 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 1. MySQL サーバー ページの [設定] で、 **[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ページを開きます。 
 
-2. [Azure サービスへのアクセスを許可] の制御が **[オフ]** に設定されていることを確認します。
+2. [Azure サービスへのアクセスを許可] が **[オフ]** に設定されていることを確認します。
 
 > [!Important]
 > 制御を [オン] に設定したままにすると、Azure MySQL Database サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure Virtual Network サービス エンドポイント機能は、Azure Database for MySQL の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
@@ -56,9 +56,9 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
    ![VNet サービス エンドポイントが有効で、VNet ルールが作成されている](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 同様に、スクリプトを作成して、[Azure CLI を使用して、VNet サービス エンドポイントを有効にし、Azure Database for MySQL の VNET ルールを作成](howto-manage-vnet-using-cli.md)できます。
 - Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
