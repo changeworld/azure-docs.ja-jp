@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133340"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981609"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid でキー コンテナー通知を受信して応答する (プレビュー)
 
@@ -184,9 +184,9 @@ Event Grid サブスクリプションが適切に構成されていることを
 
 ### <a name="you-cant-create-an-event-subscription"></a>イベント サブスクリプションを作成できない
 
-お使いの Azure サブスクリプションのリソース プロバイダーで、Event Grid およびキー コンテナー プロバイダーを再登録します。 「[Azure リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+お使いの Azure サブスクリプションのリソース プロバイダーで、Event Grid およびキー コンテナー プロバイダーを再登録します。 「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 お疲れさまでした。 これらのすべての手順を正しく実行したら、お使いのキー コンテナーに格納されているシークレットの状態変更にプログラムで応答する準備ができています。
 

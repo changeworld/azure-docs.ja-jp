@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893350"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979811"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Storage を使用して Azure のメトリック データとログ データをアーカイブする
 
-Azure 環境内の複数のレイヤーで生成されるログ データとメトリック データを、Azure Storage アカウントにアーカイブすることができます。 このようにすると、これらのデータのリテンション期間が過ぎた後も、低コストで検索対象外のストアに過去の監視データの履歴を保持できます。 
+Azure 環境内の複数のレイヤーで生成されるログ データとメトリック データを、Azure Storage アカウントにアーカイブすることができます。 このようにすると、これらのデータのリテンション期間が過ぎた後も、低コストで検索対象外のストアに過去の監視データの履歴を保持できます。
 
-- Azure Monitor プラットフォームのメトリックは 93 日間保持されます。 
-- リソース診断ログは、Log Analytics にルーティングされる場合にのみ表示されます。Log Analytics では、構成できるリテンション期間は最小で 30 日間です。 
+- Azure Monitor プラットフォームのメトリックは 93 日間保持されます。
+- リソース診断ログは、Log Analytics にルーティングされる場合にのみ表示されます。Log Analytics では、構成できるリテンション期間は最小で 30 日間です。
 - アクティビティ ログのエントリは 90 日間保持されます。  
 
 このチュートリアルでは、データをストレージ アカウントにアーカイブするように Azure 環境を構成する手順について説明します。
@@ -36,17 +36,17 @@ Azure 環境内の複数のレイヤーで生成されるログ データとメ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-最初に、監視データをアーカイブするストレージ アカウントを設定する必要があります。 それには、[こちらの手順に従います](../../storage/common/storage-quickstart-create-account.md)。
+最初に、監視データをアーカイブするストレージ アカウントを設定する必要があります。 それには、[こちらの手順に従います](../../storage/common/storage-account-create.md)。
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>サブスクリプション ログをストレージ アカウントにルーティングする
 
-監視データをストレージ アカウントにルーティングするように Azure 環境を設定する作業を始める準備が整いました。 最初に、ストレージ アカウントにルーティングする (Azure アクティビティ ログに含まれる) サブスクリプション レベルのデータを構成します。 [**Azure アクティビティ ログ**](../../azure-monitor/platform/activity-logs-overview.md)は、Azure でのサブスクリプション レベルのイベントの履歴を提供します。 Azure Portal でこのログを参照し、"*誰*" が、"*いつ*"、"*どのような*" リソースを作成、更新、削除したかを確認できます。
+監視データをストレージ アカウントにルーティングするように Azure 環境を設定する作業を始める準備が整いました。 最初に、ストレージ アカウントにルーティングする (Azure アクティビティ ログに含まれる) サブスクリプション レベルのデータを構成します。 [**Azure アクティビティ ログ**](../../azure-monitor/platform/platform-logs-overview.md)は、Azure でのサブスクリプション レベルのイベントの履歴を提供します。 Azure Portal でこのログを参照し、"*誰*" が、"*いつ*"、"*どのような*" リソースを作成、更新、削除したかを確認できます。
 
 1. 左側のナビゲーション一覧の **[モニター]** ボタンをクリックし、 **[アクティビティ ログ]** をクリックします。
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[診断設定] セクション](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. **[ストレージ アカウントへのアーカイブ]** の下にある **[構成]** ボタンをクリックし、前のセクションで作成したストレージ アカウントを選びます。 Click **OK**.
+4. **[ストレージ アカウントへのアーカイブ]** の下にある **[構成]** ボタンをクリックし、前のセクションで作成したストレージ アカウントを選びます。 **[OK]** をクリックします。
 
    ![診断設定のストレージ アカウント](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. **[リテンション期間 (日数)]** スライダーを 30 に設定します。 このスライダーは、監視データをストレージ アカウントに保持する日数を設定します。 Azure Monitor は、指定した日数より古いデータを自動的に削除します。 リテンション期間を 0 にすると、データは無期限に保存されます。
 
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 リソースからの監視データが、ストレージ アカウントに送られるようになります。
 
@@ -137,16 +137,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 9. 表示されるセクションで、前の「**ストレージ アカウントの作成**」ステップで作成したストレージ アカウントを選びます。
 
-10. **[Save]** をクリックします。
+10. **[保存]** をクリックします。
 
 仮想マシンからの監視データが、ストレージ アカウントに送られるようになります。
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>ストレージ アカウントの監視データを表示する
 
 > [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 上記の手順に従って構成した場合、データがストレージ アカウントに送られるようになっています。
 
@@ -170,7 +170,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これで、ストレージ アカウントへの監視データのアーカイブを正常に設定できました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 1. 前の「**サブスクリプション ログをストレージ アカウントにルーティングする**」ステップから **[アクティビティ ログのエクスポート]** セクションに戻り、 **[リセット]** をクリックします。
 
@@ -182,7 +182,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. 前の手順で仮想マシンまたはロジック アプリを作成した場合は、それらも削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure 環境 (サブスクリプション、リソース、ゲスト OS) の監視データがストレージ アカウントにアーカイブされるように設定する方法を説明しました。
 
@@ -199,4 +199,3 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [Log Analytics の起動と開始](../../azure-monitor/log-query/log-query-overview.md)
-

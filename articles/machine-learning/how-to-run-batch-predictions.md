@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 47fa0d97f21c5e3734cb1104c7d0ab72c14d9679
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ee594bf4e17a06c8333f0836a17e75cc99a2dde3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532275"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771855"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ def_data_store = ws.get_default_datastore()
 
 カスタム推論スクリプトで、他のデータセットを参照することもできます。 たとえば、これを使って、イメージにラベルを付けるためにスクリプトでラベルにアクセスするには、`Dataset.register` と `Dataset.get_by_name`を使用します。
 
-Azure Machine Learning データセットの詳細については、[データセットの作成とアクセス (プレビュー)](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) に関するページをご覧ください。
+Azure Machine Learning データセットの詳細については、[データセットの作成とアクセス (プレビュー)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) に関するページをご覧ください。
 
 パイプラインのステップ間での中間データの転送には、`PipelineData` オブジェクトが使用されます。 この例では、これを推論の出力に使用します。
 

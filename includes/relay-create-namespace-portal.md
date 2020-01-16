@@ -4,18 +4,18 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e3617f68d58e51f24affaae7d69812195b72fd0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210270"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021293"
 ---
-1. [Azure Portal][Azure portal] にサインインします。
+1. [Azure portal][Azure portal] にサインインする
 1. **[リソースの作成]** を選択します。 次に、 **[統合]**  > 、 **[リレー]** の順に選択します。 一覧に **[リレー]** がない場合、右上隅にある **[すべて表示]** を選択してください。
 1. **[作成]** を選択し、 **[名前]** フィールドに名前空間の名前を入力します。 その名前が使用できるかどうかが Azure portal で確認されます。
 1. 名前空間を作成する Azure サブスクリプションを選択します。
-1. [[リソース グループ]](../articles/azure-resource-manager/manage-resource-groups-portal.md) で、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。  
+1. [[リソース グループ]](../articles/azure-resource-manager/management/manage-resource-groups-portal.md) で、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。  
 1. 名前空間をホストする国またはリージョンを選択します。
 
     ![[名前空間の作成]][create-namespace]

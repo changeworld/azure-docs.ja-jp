@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439437"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977309"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* *Azure Storage アカウント*。 BLOB ストレージを*ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。
+* *Azure Storage アカウント*。 BLOB ストレージを*ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
 * *Azure SQL データベース*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-single-database-get-started.md)に関するページを参照してください。
 * *Visual Studio*. この記事のチュートリアルでは、Visual Studio 2019 を使用します。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* .
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. [Azure portal](https://portal.azure.com) に移動して、SQL サーバーを管理します。 **[SQL サーバー]** を探して選択します。
 
     2. ご自身のサーバーを選択します。
-    
+
     3. SQL サーバー メニューの **[セキュリティ]** の見出しの下にある **[ファイアウォールと仮想ネットワーク]** を選択します。
 
     4. **[ファイアウォールと仮想ネットワーク]** ページの **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下で、 **[ON]** を選択します。
@@ -154,7 +154,7 @@ Visual Studio を使用して、C# .NET コンソール アプリケーション
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>データセットを作成する
 
-このセクションでは、2 つのデータセットを作成します。1 つはソース用、もう 1 つはシンク用です。 
+このセクションでは、2 つのデータセットを作成します。1 つはソース用、もう 1 つはシンク用です。
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>ソース Azure BLOB のためのデータセットを作成する
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 "*Azure SQL Database データセット*" を作成する次のコードを、`Main` メソッドに追加します。 サポートされているプロパティと詳細については、[Azure SQL Database データセットのプロパティ](connector-azure-sql-database.md#dataset-properties)に関するセクションを参照してください。
 
-Azure SQL Database 内のシンク データを表すデータセットを定義します。 このデータセットは、前の手順で作成した Azure SQL Database のリンクされたサービスを参照します。 また、コピーされたデータを保持する SQL テーブルも指定します。 
+Azure SQL Database 内のシンク データを表すデータセットを定義します。 このデータセットは、前の手順で作成した Azure SQL Database のリンクされたサービスを参照します。 また、コピーされたデータを保持する SQL テーブルも指定します。
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>次のステップ
 
-このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。 
+このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
@@ -574,7 +574,7 @@ Press any key to exit...
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
 
-次のチュートリアルに進んで、オンプレミスからクラウドにデータをコピーする方法について学習しましょう。 
+次のチュートリアルに進んで、オンプレミスからクラウドにデータをコピーする方法について学習しましょう。
 
 > [!div class="nextstepaction"]
 >[オンプレミスからクラウドにデータをコピーする](tutorial-hybrid-copy-powershell.md)
