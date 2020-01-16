@@ -1,18 +1,15 @@
 ---
 title: Azure Migrate Server Migration を使用して VMware VM のエージェントレス移行を実行する
 description: Azure Migrate を使用して VMware VM のエージェントレス移行を実行する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196412"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028703"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -27,17 +24,17 @@ ms.locfileid: "74196412"
 > * Azure Migrate Server Migration ツールを追加します。
 > * 移行したい VM を検出します。
 > * VM のレプリケートを開始します。
-> * テスト移行を実行して、すべてが想定どおりに動作していることを確認します。
+> * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
 > * 完全な VM 移行を実行します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 ## <a name="migration-methods"></a>移行の方法
 
-Azure Migrate Server Migration ツールを使用して、VMware VM を Azure に移行できます。 このツールには、VMware VM の移行のためのいくつかのオプションが用意されています。
+Azure Migrate Server Migration ツールを使用して VMware VM を Azure に移行できます。 このツールには、VMware VM の移行のためのいくつかのオプションが用意されています。
 
-- エージェントレス レプリケーションを使用した移行。 VM 上に何もインストールすることなく、その VM を移行します。
-- レプリケーション用のエージェントを使用した移行。 レプリケーションのためにエージェントを VM にインストールします。
+- エージェントレス レプリケーションを使用した移行。 VM に何もインストールする必要なく VM を移行します。
+- レプリケーション用のエージェントを使用した移行。 レプリケーションのために VM 上にエージェントをインストールします。
 
 エージェントレスとエージェントベース、いずれの移行を使用するかを決定するには、これらの記事を確認してください。
 
@@ -92,7 +89,7 @@ Azure Migrate Server Migration では、軽量の VMware VM アプライアン�
 
 VM を Azure に確実に移行できるよう、Azure Migrate では VM にいくつかの変更を行う必要があります。
 
-- 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。 [詳細情報](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
+- 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。 [詳細情報](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
 - これらのいずれのオペレーティング システムも備えていない VM を移行する場合は、手順に従って VM を準備してください。
 - 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
 - オンプレミスの VM に対して行う構成変更は、VM のレプリケーションが有効になった後に、Azure にレプリケートされます。 変更が確実にレプリケートされるよう、移行先の復旧ポイントは、オンプレミスで行われた構成変更の時点よりも後にしてください。
@@ -100,16 +97,16 @@ VM を Azure に確実に移行できるよう、Azure Migrate では VM にい�
 
 ### <a name="prepare-windows-server-vms"></a>Windows Server VM の準備
 
-**アクション** | **詳細** | **手順**
+**操作** | **詳細** | **手順**
 --- | --- | ---
 Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されるようにする。 | SAN ポリシーを Online All に構成します。 | 1.管理者アカウントで VM にサインインし、コマンド ウィンドウを開きます。<br/> 2.「**diskpart**」と入力して、Diskpart ユーティリティを実行します。<br/> 3.「**SAN POLICY=OnlineAll**」と入力します<br/> 4.「Exit」と入力して Diskpart を終了し、コマンド プロンプトを閉じます。
 Azure VM で Azure シリアル アクセス コンソールを有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。 | [これらの手順](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)に従って、有効化してください。
-Hyper-V ゲスト統合をインストールする | Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 | [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
-リモート デスクトップ | VM でリモート デスクトップを有効にして、どのネットワーク プロファイルでも Windows ファイアウォールがリモート デスクトップ アクセスをブロックしていないことを確認します。 | [詳細情報](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
+Hyper-V ゲスト統合をインストールする | Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 | [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
+リモート デスクトップ | VM でリモート デスクトップを有効にして、どのネットワーク プロファイルでも Windows ファイアウォールがリモート デスクトップ アクセスをブロックしていないことを確認します。 | [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
 
 ### <a name="prepare-linux-vms"></a>Linux VM の準備
 
-**アクション** | **詳細** 
+**操作** | **詳細** 
 --- | --- | ---
 Hyper-V Linux 統合サービスをインストールする | Linux ディストリビューションの新しいバージョンには、ほとんどの場合、既定でこれが含まれています。
 必要な Hyper-V ドライバーが含まれるように Linux の init イメージをリビルドする | これにより、Azure で確実に VM が起動します。これが必要なのは一部のディストリビューションだけです。
@@ -156,12 +153,12 @@ Azure での Linux VM の実行については、それらの手順について�
 6. **[ターゲット設定]** で、サブスクリプションと、移行先となるターゲット リージョンを選択し、移行後に Azure VM が配置されるリソース グループを指定します。 **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。
 7. **[Azure ハイブリッド特典]** で、
 
-    - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 その後、 **[次へ]** をクリックします。
-    - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 その後、 **[次へ]** をクリックします。
+    - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
+    - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
     ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、可用性セットを確認します。 VM は [Azure の要件](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)に準拠している必要があります。
+8. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、可用性セットを確認します。 VM は [Azure の要件](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。 
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。 
@@ -169,7 +166,7 @@ Azure での Linux VM の実行については、それらの手順について�
 
     ![VM コンピューティングの設定](./media/tutorial-migrate-vmware/compute-settings.png)
 
-9. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 その後、 **[次へ]** をクリックします。
+9. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
@@ -263,8 +260,8 @@ Azure での Linux VM の実行については、それらの手順について�
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
 
 - 復元性の向上:
-    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細情報](../backup/quick-backup-vm-portal.md)。
-    - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細情報](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
+    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
+    - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
     - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
@@ -274,6 +271,6 @@ Azure での Linux VM の実行については、それらの手順について�
 -  [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure クラウド導入フレームワークでの[クラウド移行の工程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。

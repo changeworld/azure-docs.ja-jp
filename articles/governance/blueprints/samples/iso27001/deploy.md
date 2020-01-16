@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含むスタンドアロンの ISO 27001 ブループリント サンプルのデプロイ手順です。
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 9ea579537ff98d662066ecb8900a62f080b88d3d
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546650"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922500"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルをデプロイする
 
@@ -97,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の表は、ブループリント アーティファクトのパラメーターの一覧を示しています。
 
-|アーティファクト名|アーティファクトの種類|パラメーター名|説明|
+|アーティファクト名|アーティファクトの種類|パラメーター名|[説明]|
 |-|-|-|-|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
@@ -111,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可される仮想マシンの SKU|ポリシー割り当て|許可される仮想マシン SKU の一覧|仮想マシンに指定できる SKU の一覧。|
 |ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ISO 27001 ブループリント サンプルをデプロイする手順を確認したので、以下の記事に進み、アーキテクチャおよびコントロールのマッピングの詳細を確認します。
 

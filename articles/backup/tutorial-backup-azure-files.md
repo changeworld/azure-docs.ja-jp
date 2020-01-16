@@ -3,12 +3,12 @@ title: チュートリアル - Azure Files のファイル共有のバックア�
 description: このチュートリアルでは、Azure portal を使用して、Recovery Services コンテナーを構成し、Azure ファイル共有をバックアップする方法について説明します。
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171867"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921640"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal 内での Azure ファイル共有のバックアップ
 
@@ -28,7 +28,6 @@ Azure ファイル共有をバックアップする前に、[サポートされ�
 
 Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
 
-* 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 * Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
 * スケジュール バックアップの数は、1 日につき 1 個が上限となります。
 * オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
@@ -92,7 +91,7 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
    ![復旧ポイントの保持期間を選択する](./media/backup-file-shares/backup-now-menu.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure portal を使用して以下を行いました。
 

@@ -730,6 +730,9 @@
                 - name: Hyperopt と HorovodRunner
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
                   maintainContext: true
+                - name: Hyperopt のベスト プラクティス
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
+                  maintainContext: true
                 - name: 分散 Hyperopt を使用したモデル検索
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
@@ -993,6 +996,12 @@
             - name: シークレット ワークフローの例
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: クラスター ワーカー ノード間のトラフィックを暗号化する
+          href: /azure/databricks/security/encrypt-otw
+        - name: ノートブック用に顧客が管理するキーを有効にする
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: DBFS 用に顧客が管理するキーを有効にする
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: 管理
       items:
         - name: 管理の概要

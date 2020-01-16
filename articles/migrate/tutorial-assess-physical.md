@@ -1,18 +1,14 @@
 ---
 title: Azure に移行するために Azure Migrate Server Assessment を使用して物理サーバーを評価する
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280548"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028992"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure Migrate を使用した物理サーバーの評価: Server Assessment
 
@@ -53,19 +49,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![サーバーの検出と評価](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. **[作業の開始]** で、 **[ツールの追加]** をクリックします。
-5. **[移行プロジェクト]** で、Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
+5. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
 6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 アジア、ヨーロッパ、英国、および米国がサポートされています。
 
     - プロジェクトの地理的な場所は、オンプレミスのサーバーから収集されたメタデータを格納するためにのみ使用されます。
     - 移行を実行するときは、任意のターゲット リージョンを選択できます。
 
-    ![Azure Migrate プロジェクトを作成する](./media/tutorial-assess-physical/migrate-project.png)
+    ![Azure Migrate プロジェクトの作成](./media/tutorial-assess-physical/migrate-project.png)
 
 
 7. **[次へ]** をクリックします。
 8. **[評価ツールの選択]** で、次を選択します: **[Azure Migrate: Server Assessment]**  >  **[次へ]** 。
 
-    ![Azure Migrate プロジェクトを作成する](./media/tutorial-assess-physical/assessment-tool.png)
+    ![Azure Migrate プロジェクトの作成](./media/tutorial-assess-physical/assessment-tool.png)
 
 9. **[移行ツールの選択]** で、 **[今は移行ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
 10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします。
@@ -104,7 +100,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
 
-3.  最新のアプライアンス バージョンの場合は、生成されたハッシュがこれらの設定と一致する必要があります。
+3.  アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
@@ -117,7 +113,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 
 - エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
 - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細情報](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
 - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
 - パスに次のファイルを作成する。
     - **構成ファイル**: %ProgramData%\Microsoft Azure\Config
@@ -141,7 +137,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンスが [Azure URL](migrate-support-matrix-physical.md#assessment-appliance-url-access) に接続できることを確認します。
+アプライアンスが [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
 
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
@@ -180,7 +176,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 2. **オペレーティング システム**、資格情報のフレンドリ名、**ユーザー名**、**パスワード**を指定し、 **[追加]** をクリックします。
 Windows および Linux サーバーごとに 1 セットの資格情報を追加できます。
 4. **[サーバーの追加]** をクリックし、サーバーの詳細 (FQDN/IP アドレスと資格情報のフレンドリ名 (行ごとに 1 つのエントリ)) を指定してサーバーに接続します。
-3. **[Validate (検証)]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。
+3. **[検証]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。
     - サーバーの検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。
     - サーバーを削除するには、 **[削除]** を選択します。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
@@ -196,7 +192,7 @@ Windows および Linux サーバーごとに 1 セットの資格情報を追�
 
 ## <a name="set-up-an-assessment"></a>評価を設定する
 
-Azure Migrate: Server Assessment を使用して作成できる評価には、次の2種類があります。
+Azure Migrate:Server Assessment を使用して作成する方法について説明します。
 
 **評価** | **詳細** | **データ**
 --- | --- | ---
@@ -209,9 +205,9 @@ Azure Migrate: Server Assessment を使用して作成できる評価には、�
 評価を実行するには次のようにします。
 
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
-2. **[サーバー]** タブの **[Azure Migrate: Server Assessment]** タイルで、 **[評価]** をクリックします。
+2. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[評価]** をクリックします。
 
-    ![評価](./media/tutorial-assess-physical/assess.png)
+    ![アクセス](./media/tutorial-assess-physical/assess.png)
 
 2. **[サーバーの評価]** で、評価の名前を指定します。
 3. **[すべて表示]** をクリックして、評価のプロパティを確認します。
@@ -294,7 +290,7 @@ Azure Migrate: Server Assessment を使用して作成できる評価には、�
 評価レーティングのベスト プラクティスについて、[さらに学習](best-practices-assessment.md#best-practices-for-confidence-ratings)してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 

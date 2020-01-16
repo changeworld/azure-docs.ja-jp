@@ -2,19 +2,19 @@
 title: クラウドでのシーンのレンダリング - Azure Batch
 description: チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272332"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029195"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -23,7 +23,7 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 > [!div class="checklist"]
 > * Azure Storage にシーンをアップロードする
 > * レンダリング用の Batch プールを作成する
-> * 単一フレーム シーンをレンダリングする
+> * 単一フレーム シーンのレンダリング
 > * プールをスケーリングしてマルチフレーム シーンをレンダリングする
 > * レンダリングされる出力をダウンロードする
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 サブスクリプションにリソース グループ、Batch アカウント、リンクされているストレージ アカウントをまだ作成してない場合は作成します。 
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
 
 ```azurecli-interactive 
 az group create \
@@ -96,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-シーン `MotionBlur-Dragon-Flying.max` を [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) からローカルの作業ディレクトリにダウンロードします。 例:
+シーン `MotionBlur-Dragon-Flying.max` を [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) からローカルの作業ディレクトリにダウンロードします。 次に例を示します。
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -186,7 +186,7 @@ se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## <a name="render-a-single-frame-scene"></a>単一フレーム シーンのレンダリング
 
-### <a name="create-a-job"></a>ジョブを作成する
+### <a name="create-a-job"></a>ジョブの作成
 
 [az batch job create](/cli/azure/batch/job#az-batch-job-create) コマンドを使用して、プールで実行するレンダリング ジョブを作成します。 最初、ジョブにはタスクがありません。
 
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>タスク出力の表示
 
-タスクの実行には数分かかります。 [az batch task list](/cli/azure/batch/task#az-batch-task-list) コマンドを使用して、タスクの状態を表示します。 例:
+タスクの実行には数分かかります。 [az batch task list](/cli/azure/batch/task#az-batch-task-list) コマンドを使用して、タスクの状態を表示します。 次に例を示します。
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +309,7 @@ az batch task list \
     --output table
 ```
 
-[az batch task show](/cli/azure/batch/task#az-batch-task-show) コマンドを使用して、個々のタスクの詳細を表示します。 例:
+[az batch task show](/cli/azure/batch/task#az-batch-task-show) コマンドを使用して、個々のタスクの詳細を表示します。 次に例を示します。
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-このタスクにより、*dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 例:
+このタスクにより、*dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 次に例を示します。
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -330,7 +330,7 @@ az storage blob download-batch \
 ![レンダリングされたドラゴンのフレーム 6](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、Batch アカウント、プール、およびすべての関連リソースを削除できます。 次のように、リソースを削除します。
 
@@ -338,7 +338,7 @@ az storage blob download-batch \
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

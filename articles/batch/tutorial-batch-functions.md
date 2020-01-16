@@ -2,7 +2,7 @@
 title: Azure Functions を使用して Batch ジョブをトリガーする
 description: チュートリアル - Storage Blob に追加されたときに、スキャン済みのドキュメントに OCR を適用する
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: d5a5197227ff62ca0c610e2c4e269480690d3faf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6e3cdb6c7e2774eeb29df6986088f822cbb894cf
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343093"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029228"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>チュートリアル:Azure Functions を使用して Batch ジョブをトリガーする
 
@@ -27,11 +27,11 @@ ms.locfileid: "67343093"
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 アカウントを作成およびリンクする方法の詳細については、「[Batch アカウントを作成する](quick-create-portal.md#create-a-batch-account)」を参照してください。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+* [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Batch Explorer を使用して Batch プールと Batch ジョブを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "67343093"
     1. 仮想マシンのサイズとして [`Standard_f2s_v2`] を選択します。
     1. 開始タスクを有効にし、コマンド `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` を追加します。 必ずユーザー ID を **[Task default user (Admin)]\(タスクの既定のユーザー (管理者)\)** として設定します。これにより、開始タスクに `sudo` を使用したコマンドを含めることができます。
     1. **[OK]** を選択します。
-### <a name="create-a-job"></a>ジョブを作成する
+### <a name="create-a-job"></a>ジョブの作成
 
 1. 左側のバーにある **[Jobs]\(ジョブ\)** 、検索フォームの上にある **[Add]\(追加\)** ボタンの順に選択して、プール上にジョブを作成します。 
     1. ID と表示名を選択します。 この例では、`ocr-job` を使用します。
@@ -92,8 +92,8 @@ Storage Explorer 内で、ご自分の出力コンテナーの Shared Access Sig
 2019-05-29T19:45:25.846 [Information] Creating job...
 2019-05-29T19:45:25.847 [Information] Accessing input container <inputContainer>...
 2019-05-29T19:45:25.847 [Information] Adding <fileName> as a resource file...
-2019-06-21T20:02:35.129 [Information] Name of output text file: <outputTxtFile>
-2019-06-21T20:02:35.130 [Information] Name of output PDF file: <outputPdfFile>
+2019-05-29T19:45:25.848 [Information] Name of output text file: <outputTxtFile>
+2019-05-29T19:45:25.848 [Information] Name of output PDF file: <outputPdfFile>
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 
@@ -102,7 +102,7 @@ Storage Explorer からご使用のローカル マシンに出力ファイル�
 > [!TIP]
 > ダウンロードしたファイルは、PDF リーダーで開くと、検索できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。 
 

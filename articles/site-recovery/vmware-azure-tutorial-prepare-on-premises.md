@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953741"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893632"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -31,7 +31,7 @@ ms.locfileid: "73953741"
 > * フェールオーバー後に Azure VM に接続するための準備をする。
 
 > [!NOTE]
-> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次の操作方法のセクションにある記事を参照してください。
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次のハウツー セクションにある記事を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -94,9 +94,9 @@ VMware サーバーと VM が要件に準拠していることを確認します
 - **サイト間 VPN アクセス**:
     - フェールオーバーの前に、オンプレミスのマシンで RDP を有効にします。
     - RDP は、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** から、**ドメインとプライベート** ネットワークでの使用を許可する必要があります。
-    - オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。
+    - オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/kb/3031135)。
 - フェールオーバーをトリガーするときに、VM に保留中の Windows 更新プログラムがないようにします。 ある場合は、更新が完了するまで、仮想マシンにサインインすることはできません。
-- フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM を実行していることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)をレビューしてください。
+- フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 
 フェールオーバー後に SSH を使用して Linux VM に接続するには、次の操作を行います。
 
@@ -108,11 +108,11 @@ VMware サーバーと VM が要件に準拠していることを確認します
 
 
 ## <a name="failback-requirements"></a>フェールバックの要件
-オンプレミス サイトへのフェールバックを計画している場合は、[フェールバックのための前提条件](vmware-azure-reprotect.md##before-you-begin)がいくつかあります。 これらは今すぐ準備できますが、そうする必要はありません。 Azure にフェールオーバーした後に準備できます。
+オンプレミス サイトへのフェールバックを計画している場合は、[フェールバックのための前提条件](vmware-azure-reprotect.md#before-you-begin)がいくつかあります。 これらは今すぐ準備できますが、そうする必要はありません。 Azure にフェールオーバーした後に準備できます。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ディザスター リカバリーを設定します。 複数の VM をレプリケートする場合は、容量を計画します。
 > [!div class="nextstepaction"]

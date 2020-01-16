@@ -7,30 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014111"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895431"
 ---
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. ホームのサイドバーを選択してから、 **[+ リソースの作成]** を選択します。 
 
-   [![ホームのサイドバーを展開し、[+ リソースの作成] を選択する](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![ホームのサイドバーを展開し、[+ リソースの作成] を選択する](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. **Digital Twins** を検索し、 **[Digital Twins]** を選択します。 
 
-   [![新しい Digital Twins インスタンスを作成するための選択](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [![新しい Digital Twins インスタンスを作成するための選択](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    あるいは、 **[モノのインターネット]** を選択してから、 **[Digital Twins (プレビュー)]** を選択します。
 
 1. **[作成]** を選択してデプロイ プロセスを開始します。
 
-   [![リソースのデプロイを作成して確認する](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![リソースのデプロイを作成して確認する](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. **[Digital Twins]** ウィンドウで、次の情報を入力します。
    * **[リソース名]** :Digital Twins インスタンスの一意の名前を作成します。
