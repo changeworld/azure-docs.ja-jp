@@ -11,15 +11,8 @@
       displayName: 'release notes, service updates, videos'
 - name: クイックスタート
   items:
-    - name: 'C# の使用'
-      href: csharp-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, c#'
-    - name: Node.js の使用
-      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
-      displayName: 'code, sample, quickstart, node, npm, sdk'
-    - name: Python の使用
-      href: python-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, python'
+    - name: SDK の使用
+      href: sdk-learning-loop.md
 - name: チュートリアル
   items:
     - name: Azure Notebook の使用

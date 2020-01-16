@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: fe38e74d30f7eb4f0c025f14268f7d6ac7b7d88a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428670"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979066"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -62,13 +62,13 @@ ms.locfileid: "75428670"
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 ポータルの検索ボックスで、 **[ロジック アプリ]** を見つけて選択します。
 
-1. ロジック アプリ デザイナーでロジック アプリを選択して開きます。 
+1. ロジック アプリ デザイナーでロジック アプリを選択して開きます。
 
 1. ロジック アプリのメニューで、 **[ワークフロー設定]** を選択します。
 
 1. **[ランタイム オプション]** で、 **[実行履歴の保持期間 (日数)]** リストから **[カスタム]** を選択します。
 
-1. 目的の日数を入力するか、スライダーをドラッグします。 
+1. 目的の日数を入力するか、スライダーをドラッグします。
 
    > [!NOTE]
    > マルチテナント Azure のロジック アプリの場合、90 日間の既定制限は最大制限と同じです。 この値は減らすことしかできません。
@@ -84,7 +84,7 @@ ms.locfileid: "75428670"
 | ---- | ----- | ----- |
 | トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>**注**:コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
-| Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](../connectors/connectors-native-query.md)を使用できます。 |
+| Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](logic-apps-perform-data-operations.md#filter-array-action)を使用できます。 |
 | Foreach のコンカレンシー | コンカレンシー制御がオフの場合、20 が既定値の制限となります。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できる "for each" ループ イテレーションの最大数です。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" のコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)に関するページまたは「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 |
 | SplitOn 項目数 | * トリガーのコンカレンシーが無効な場合は 100,000 <p><p>* トリガーのコンカレンシーが有効な場合は 100 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注**:コンカレンシーが有効になっていると、SplitOn 上限が 100 項目に下がります。 |
 | Until 反復数 | 5,000 | |
@@ -122,7 +122,8 @@ Premium SKU のスループットの上限は次のとおりです。
 通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
 
 > [!NOTE]
-> [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には、スケールアップのためのサービス レベル アグリーメント (SLA) や機能がないため、公開されている制限がありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
+> [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には、スケールアップのためのサービス レベル アグリーメント (SLA) や機能がないため、公開されている制限がありません。
+> この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
 
 <a name="gateway-limits"></a>
 
@@ -142,7 +143,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 | Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
-| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
+| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
 | 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
 |||||
 
@@ -209,7 +210,8 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 
 ### <a name="artifact-limits-per-integration-account"></a>統合アカウントごとのアーティファクトの制限
 
-次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
+次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。
+価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
 
 > [!NOTE]
 > Free レベルは、調査シナリオでのみ使用し、運用シナリオでは使用しないでください。 このレベルでは、スループットと使用率が制限され、サービス レベル アグリーメント (SLA) はありません。
@@ -261,9 +263,12 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 ## <a name="disabling-or-deleting-logic-apps"></a>ロジック アプリを無効化または削除する
 
-ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
+ロジック アプリを無効にすると、新しい実行は開始されなくなります。
+進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
 
-ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
+ロジック アプリを削除にすると、新しい実行は開始されなくなります。
+すべての進行中および保留中の実行は取り消されます。
+何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
 
 <a name="configuration"></a>
 
@@ -276,7 +281,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 * ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound)*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
 
-* [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
+* [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
 
 * 統合サービス環境 (ISE) 内で実行されるロジック アプリの通信を有効にするため、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)ことを確認してください。
 

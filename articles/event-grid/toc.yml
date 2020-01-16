@@ -8,7 +8,7 @@
       href: overview.md
     - name: メッセージング サービスの比較
       href: compare-messaging-services.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ストレージ イベント
@@ -19,6 +19,9 @@
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: ポータル
           href: blob-event-quickstart-portal.md
+        - name: Template
+          displayName: 'arm, resource manager template'
+          href: blob-event-quickstart-template.md
     - name: カスタム イベント
       items:
         - name: Azure CLI
@@ -107,7 +110,7 @@
       href: event-handlers.md
     - name: geo ディザスター リカバリー
       href: geo-disaster-recovery.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
