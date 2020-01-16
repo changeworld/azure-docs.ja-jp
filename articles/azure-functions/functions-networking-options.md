@@ -152,7 +152,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.f
 > [!IMPORTANT]
 > 仮想ネットワーク トリガーのサポートを有効にすると、上記の種類のトリガーのみがアプリケーションで動的にスケーリングされます。 上記以外のトリガーも使用できますが、事前ウォーミングされたインスタンス数を超えてスケーリングされることはありません。 トリガーの全一覧については、「[トリガーとバインド](./functions-triggers-bindings.md#supported-bindings)」を参照してください。
 
-### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service 環境
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service Environment
 
 関数アプリを App Service プランまたは App Service 環境のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
 
