@@ -15,7 +15,7 @@ ms.locfileid: "74671602"
 
 [Azure App Service](overview.md) は、[App Service Environment](environment/intro.md) 以外はマルチテナント サービスです。 App Service Environment ([分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) に含まれていないアプリは、他のアプリとネットワーク インフラストラクチャを共有します。 その結果、アプリの受信 IP アドレスと送信 IP アドレスが異なる可能性があり、特定の状況では変更される可能性もあります。 
 
-[App Service Environment](environment/intro.md) は専用のネットワーク インフラストラクチャを使用するため、App Service 環境で実行されるアプリは、受信接続と送信接続の両方で、静的な専用 IP アドレスを取得します。
+[App Service Environment](environment/intro.md) は専用のネットワーク インフラストラクチャを使用するため、App Service Environment で実行されるアプリは、受信接続と送信接続の両方で、静的な専用 IP アドレスを取得します。
 
 ## <a name="when-inbound-ip-changes"></a>受信 IP はいつ変更されるか
 
