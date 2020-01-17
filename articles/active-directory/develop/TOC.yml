@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows デスクトップ .NET
               href: tutorial-v2-windows-desktop.md
+            - name: Android アプリでの共有デバイス モードの使用
+              href: tutorial-v2-shared-device-mode.md
         - name: デーモン アプリ
           items:
             - name: ASP.NET デーモン Web アプリ
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: モバイル プラットフォーム固有の構成
                   items:
+                    - name: Android デバイスの共有デバイス モード
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Android のシステム ブラウザー

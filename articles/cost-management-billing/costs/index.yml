@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure のコストと使用状況の管理
+summary: Azure Cost Management とは、Azure の支出を監視および管理してリソース使用量を最適化するのに役立つコスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、コストを分析し、予算を作成および管理し、推奨事項を確認して対処する方法について説明します。
+metadata:
+  title: Azure Cost Management および Billing
+  description: Azure Cost Management とは、Azure の支出を監視および管理してリソース使用量を最適化するのに役立つコスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、コストを分析し、予算を作成および管理し、推奨事項を確認して対処する方法について説明します。
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983224"
+landingContent:
+- title: Cost Management について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cost Management と Billing の概要
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Cost Management のベスト プラクティス
+      url: cost-mgt-best-practices.md
+    - text: Cost Management のデータを理解する
+      url: understand-cost-mgt-data.md
+    - text: スコープを理解して使用する
+      url: understand-work-scopes.md
+- title: Azure のコストの分析と管理
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: コストの分析を開始する
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: 予算を作成して管理する
+      url: tutorial-acm-create-budgets.md
+    - text: コストと使用状況データをエクスポートする
+      url: tutorial-export-acm-data.md
+    - text: レコメンデーションに基づいて対応する
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: データへのアクセスの割り当て
+      url: assign-access-acm-data.md
+    - text: 一般的なタスクにコスト分析を使用する
+      url: cost-analysis-common-uses.md
+    - text: コストのアラートの使用
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: パートナー向け Cost Management
+      url: get-started-partners.md
+    - text: Power BI Desktop を使用して接続する
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: AWS のコストの分析と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS 統合の設定と構成
+      url: aws-integration-set-up-configure.md
+    - text: AWS のコストと使用量の管理
+      url: aws-integration-manage.md
+- title: Cost Management API
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: EA から MCA API に移行する
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Azure Cost Management REST API
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Azure Consumption REST API
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: Resource Manager テンプレート
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: Cost Management REST API のサンプル
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

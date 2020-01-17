@@ -1,0 +1,76 @@
+- name: Azure の予約に関するドキュメント
+  href: index.yml
+  items:
+    - name: 概要
+      expanded: true
+      items:
+        - name: Azure の予約とは
+          href: save-compute-costs-reservations.md
+    - name: 操作方法ガイド
+      items:
+        - name: SQL Data Warehouse の予約を購入する
+          href: prepay-sql-data-warehouse-charges.md
+        - name: 仮想マシンの予約を購入する
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure Storage の予約を購入する
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Cosmos DB の予約を購入する
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: SQL Database の予約を購入する
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Azure Data Explorer の予約を購入する
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Azure Databricks の予約を購入する
+          href: prepay-databricks-reserved-capacity.md
+        - name: App Service の予約を購入する
+          href: prepay-app-service-isolated-stamp.md
+        - name: Azure ソフトウェア プランの予約を購入する
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: 月額払いで予約を購入する
+          href: monthly-payments-reservations.md
+        - name: 予約の更新
+          href: reservation-renew.md
+        - name: 予約の交換と返金
+          href: exchange-and-refund-azure-reservations.md
+        - name: 予約の管理
+          href: manage-reserved-vm-instance.md
+        - name: 予約の確認
+          href: view-reservations.md
+    - name: 概念
+      items:
+        - name: 予約 VM インスタンスの割引
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Azure Storage の予約容量の割引
+          href: understand-storage-charges.md
+        - name: Cosmos DB の予約容量の割引
+          href: understand-cosmosdb-reservation-charges.md
+        - name: SQL Database の予約容量の割引
+          href: understand-reservation-charges.md
+        - name: SQL Data Warehouse の割引
+          href: reservation-discount-azure-sql-dw.md
+        - name: Azure Data Explorer の割引
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Azure Databricks の割引
+          href: reservation-discount-databricks.md
+        - name: Azure Database for MySQL の割引
+          href: understand-reservation-charges-mysql.md
+        - name: Azure Database for PostgreSQL の割引
+          href: understand-reservation-charges-postgresql.md
+        - name: Red Hat Linux Enterprise の割引
+          href: understand-rhel-reservation-charges.md
+        - name: Azure Database for MariaDB の割引
+          href: understand-reservation-charges-mariadb.md
+        - name: App Service の割引
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Azure ソフトウェア プランの割引
+          href: understand-suse-reservation-charges.md
+        - name: 含まれない Windows と SQL のコスト
+          href: reserved-instance-windows-software-costs.md
+        - name: 個々のサブスクリプションの利用状況データ
+          href: understand-reserved-instance-usage.md
+        - name: 企業顧客の利用状況データ
+          href: understand-reserved-instance-usage-ea.md
+    - name: リファレンス
+      items:
+        - name: Azure Reservation API
+          href: reservation-apis.md

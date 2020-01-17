@@ -85,6 +85,8 @@
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
+    - name: インデクサー
+      href: search-indexer-overview.md
     - name: AI エンリッチメント
       href: cognitive-search-concept-intro.md
     - name: スキルセット
@@ -147,7 +149,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: '[インデックスを作成する]'
+    - name: インデックスの作成
       items:
         - name: 基本インデックスの作成
           href: search-what-is-an-index.md
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
           href: index-sql-relational-data.md
-    - name: データのインデックス作成
+    - name: インポート (インデックス作成)
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: Search エクスプローラーを使用する (ポータル)
           href: search-explorer.md
-        - name: 単純なクエリ構文
-          href: query-simple-syntax.md
-        - name: Full Lucene クエリ構文
-          href: query-lucene-syntax.md
-        - name: moreLikeThis クエリ パラメーター
-          href: search-more-like-this.md
+        - name: 特殊文字と部分的な語句
+          href: search-query-partial-matching.md
+        - name: 構文リファレンス
+          items:
+            - name: 単純なクエリ構文
+              href: query-simple-syntax.md
+            - name: Full Lucene クエリ構文
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (プレビュー)
+              href: search-more-like-this.md
     - name: フィルターを適用する
       items:
         - name: フィルターの概要

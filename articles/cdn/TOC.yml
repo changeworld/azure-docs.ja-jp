@@ -6,7 +6,7 @@
       href: cdn-overview.md
     - name: 製品の特徴の比較
       href: cdn-features.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: プロファイルとエンドポイントの作成
       href: cdn-create-new-endpoint.md
@@ -40,13 +40,13 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 のサポート
       href: cdn-http2.md
-    - name: Verizon POP リストの取得
+    - name: POP IP の取得
       href: cdn-pop-list-api.md
     - name: Standard Verizon から Premium Verizon への移行
       href: cdn-migrate.md
     - name: DDoS 保護
       href: cdn-ddos.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: コンテンツの最適化
       href: cdn-optimization-overview.md
@@ -57,7 +57,7 @@
           href: cdn-media-streaming-optimization.md
         - name: 動的サイト アクセラレーション
           href: cdn-dynamic-site-acceleration.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: エンドポイントの作成
           href: cdn-create-endpoint-how-to.md
@@ -126,7 +126,7 @@
           href: cdn-app-dev-net.md
         - name: Node.js
           href: cdn-app-dev-node.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 404 状態
           href: cdn-troubleshoot-endpoint.md

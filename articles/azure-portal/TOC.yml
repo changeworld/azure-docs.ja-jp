@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: ネットワークの上限を引き上げる
               href: supportability/networking-quota-requests.md
+    - name: Azure portal に関する問題のトラブルシューティング
+      items:
         - name: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
           href: supportability/sku-series-unavailable.md
+        - name: トラブルシューティングを目的としたブラウザー トレースのキャプチャ
+          href: capture-browser-trace.md
 - name: リファレンス
   items:
     - name: キーボード ショートカット

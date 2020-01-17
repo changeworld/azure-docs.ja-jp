@@ -54,22 +54,28 @@
   items:
     - name: サポート マトリックス
       items:
-        - name: Azure Migrate のサポート マトリックス
+        - name: 一般的なサポート
           href: migrate-support-matrix.md
-        - name: VMware の評価と移行のサポート マトリックス
+        - name: VMware の評価のサポート
           href: migrate-support-matrix-vmware.md
-        - name: Hyper-V の評価と移行のサポート マトリックス
+        - name: VMware の移行のサポート
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V の評価のサポート
           href: migrate-support-matrix-hyper-v.md
-        - name: 物理サーバーの評価と移行のサポート マトリックス
+        - name: Hyper-V の移行のサポート
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: 物理サーバーの評価のサポート
           href: migrate-support-matrix-physical.md
-        - name: Azure Migrate アプライアンスのサポート マトリックス
+        - name: 物理サーバーの移行のサポート
+          href: migrate-support-matrix-physical-migration.md
+        - name: Azure Migrate アプライアンスの要件
           href: migrate-appliance.md
+        - name: レプリケーション アプライアンスの要件
+          href: migrate-replication-appliance.md
     - name: Hyper-V 移行アーキテクチャ
       href: hyper-v-migration-architecture.md
     - name: エージェントベースの移行アーキテクチャ
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate レプリケーション アプライアンス
-      href: migrate-replication-appliance.md
     - name: 評価のベスト プラクティス
       href: best-practices-assessment.md
     - name: 評価の概要
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: Azure Migrate プロジェクトの削除
       href: how-to-delete-project.md
-- name: 評価の移行のスケール
-  items:
-    - name: 大量の VMware VM を評価する
-      href: scale-vmware-assessment.md
-    - name: 大量の Hyper-V VM を評価する
-      href: scale-hyper-v-assessment.md
-    - name: 多数の VM の移行の自動化
-      href: how-to-migrate-at-scale.md
-    - name: 移行の例 (Contoso シリーズ)
-      href: contoso-migration-overview.md
+    - name: 評価の移行のスケール
+      items:
+        - name: 大量の VMware VM を評価する
+          href: scale-vmware-assessment.md
+        - name: 大量の Hyper-V VM を評価する
+          href: scale-hyper-v-assessment.md
+        - name: 多数の VM の移行の自動化
+          href: how-to-migrate-at-scale.md
+        - name: 移行の例 (Contoso シリーズ)
+          href: contoso-migration-overview.md
 - name: '[トラブルシューティング]'
   items:
     - name: Azure Migrate のトラブルシューティング

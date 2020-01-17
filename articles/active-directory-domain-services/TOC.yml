@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell を使用したマネージド ドメインの作成
       href: powershell-create-instance.md
+    - name: テンプレートを使用したマネージド ドメインの作成
+      href: template-create-instance.md
 - name: 概念
   items:
     - name: 管理の基本
