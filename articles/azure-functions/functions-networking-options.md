@@ -125,7 +125,7 @@ Key Vault 参照を使用すると、コードを変更せず、Azure Functions 
 
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service 環境で関数アプリを実行する。
++ App Service プランまたは App Service Environment で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
@@ -154,7 +154,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.f
 
 ### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service Environment
 
-関数アプリを App Service プランまたは App Service 環境のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
+関数アプリを App Service プランまたは App Service Environment のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
 
 たとえば、仮想ネットワークからのみトラフィックを受け入れるように Azure Cosmos DB を構成するとします。 この場合、その仮想ネットワークとの仮想ネットワーク統合を提供する App Service プランで関数アプリをデプロイする必要があります。 これにより、その Azure Cosmos DB リソースによって関数がトリガーされるようになります。 
 
