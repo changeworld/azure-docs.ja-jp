@@ -452,7 +452,9 @@
           href: how-to-use-logging.md
         - name: メモリ使用量を追跡する方法
           href: how-to-track-speech-sdk-memory-usage.md
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
+        - name: Linux の OpenSSL を構成する方法
+          href: how-to-configure-openssl-linux.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
     - name: サンプル
       items:
         - name: Speech SDK のサンプル (GitHub)

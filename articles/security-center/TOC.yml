@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
+    - name: Security Center のセキュア スコア
+      href: security-center-secure-score.md
+    - name: 高度なセキュア スコア
+      href: secure-score-security-controls.md
     - name: アクセス許可
       href: security-center-permissions.md
     - name: データのセキュリティ
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: 操作方法ガイド
   items:
-    - name: セキュリティ スコアを向上させる
-      href: security-center-secure-score.md
     - name: 高度なセキュリティへのアップグレード
       href: security-center-onboarding.md
     - name: VM の脆弱性をスキャンする

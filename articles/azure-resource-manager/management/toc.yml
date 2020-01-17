@@ -8,6 +8,8 @@
   items:
     - name: サブスクリプションとサービスの制限
       href: azure-subscription-service-limits.md
+    - name: リソース名の規則
+      href: resource-name-rules.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: deployment-models.md
     - name: Azure の一般的なセキュリティ属性

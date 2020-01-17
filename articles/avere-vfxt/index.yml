@@ -8,7 +8,7 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/09/2019
+  ms.date: 12/19/2019
   ms.author: rohogue
 abstract:
   description: 'Avere vFXT for Azure では、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けのクラウドベースのキャッシュ レイヤーを提供します。 コンピューティング ノードの近くにファイルをキャッシュすることによって、Avere vFXT では読み取り時間が短縮されるため、負荷のピーク時でも作業をよりスムーズに行うことができます。 Avere vFXT は、搭載するクライアント コアが 1,000 から 40,000 までのシステムで最適に動作します。 <p>Avere vFXT は、既存のデータ ストレージと連携して Azure ベースのコンピューティング リソースの近くにファイルを配置します。 アクティブなファイルは、データ センターに長期間保存されます。'

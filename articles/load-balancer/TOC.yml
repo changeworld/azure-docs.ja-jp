@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: コンポーネントと制限事項
+      href: concepts-limitations.md
     - name: 正常性の監視
       items:
         - name: 正常性プローブ

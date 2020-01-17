@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: サービス タグ
       href: service-tags.md
+    - name: コンプライアンス認定
+      href: compliance-certifications.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ

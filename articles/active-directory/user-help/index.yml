@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 461cebd5a7bbb5a3483c2b08670317a31b71484a
+  ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73574208"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76156269"
 landingContent:
 - title: Microsoft Authenticator アプリの設定と使用
   linkLists:
@@ -35,44 +35,6 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: アプリを使用したサインイン
       url: user-help-auth-app-sign-in.md
-- title: 2 段階認証方法の選択
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 2 要素認証とは
-      url: user-help-two-step-verification-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: 認証方法の設定
-      url: multi-factor-authentication-end-user-first-time.md
-    - text: 設定の管理
-      url: multi-factor-authentication-end-user-manage-settings.md
-    - text: 問い合わせ
-      url: multi-factor-authentication-end-user-troubleshoot.md
-- title: マイ アプリ ポータル内の情報の更新
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: マイ アプリ ポータルとは
-      url: my-apps-portal-end-user-access.md
-  - linkListType: how-to-guide
-    links:
-    - text: 情報の更新
-      url: my-apps-portal-end-user-update-profile.md
-    - text: 問い合わせ
-      url: my-apps-portal-end-user-troubleshoot.md
-- title: セキュリティ情報 (プレビュー) の設定と管理
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: セキュリティ情報 (プレビュー) とは
-      url: user-help-security-info-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: セキュリティ情報の方法の設定
-      url: security-info-add-update-methods-overview.md
-    - text: サインイン プロンプトでの情報の追加
-      url: security-info-setup-signin.md
 - title: マイ アカウント ポータルでの自分の情報の管理
   linkLists:
   - linkListType: overview
@@ -87,12 +49,44 @@ landingContent:
       url: my-account-portal-organizations-page.md
     - text: 最近のサインイン アクティビティを表示する
       url: my-account-portal-sign-ins-page.md
-- title: 自分のパスワードのリセット
+- title: セキュリティ情報 (プレビュー) の設定と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: セキュリティ検証のために認証アプリを設定する
+      url: security-info-setup-auth-app.md
+    - text: セキュリティ検証のためにテキスト メッセージングを設定する
+      url: security-info-setup-text-msg.md
+    - text: セキュリティ検証のために電話呼び出しを設定する
+      url: security-info-setup-phone-number.md
+    - text: サインイン プロンプトでの情報の追加
+      url: security-info-setup-signin.md
+- title: マイ アプリ (プレビュー) ポータルからアプリにアクセスして開始する
   linkLists:
   - linkListType: overview
     links:
-    - text: パスワードのリセットとは
-      url: user-help-password-reset-overview.md
+    - text: マイ アプリ ポータルにアクセスする
+      url: my-applications-portal-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: ワークスペースにアクセスして使用する
+      url: my-applications-portal-workspaces.md
+- title: 2 段階認証方法の選択
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 追加認証ページとは
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 認証方法の設定
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: 設定の管理
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: ヘルプの参照
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: 自分のパスワードのリセット
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: パスワードをリセットするためのサインアップ
