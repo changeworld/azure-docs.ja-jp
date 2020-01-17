@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
-  ms.openlocfilehash: 43f40e042fdbecbfc571fb719a0a42ded6c70909
-  ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+  ms.openlocfilehash: f45461b49b51d6d25464ffa7d2084b1bbb1f9e0e
+  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74706687"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76169657"
 landingContent:
 - title: Language Understanding (LUIS) について
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
     links:
     - text: 意図
       url: luis-concept-intent.md
-    - text: エンティティ
+    - text: '[エンティティ]'
       url: luis-concept-entity-types.md
     - text: 発話
       url: luis-concept-utterance.md
@@ -58,9 +58,9 @@ landingContent:
     - text: 'ポータル: 新しい LUIS アプリを作成する'
       url: get-started-portal-build-app.md
     - text: C# SDK の使用
-      url: sdk-csharp-quickstart-authoring-app.md
+      url: sdk-authoring.md?pivots=programming-language-csharp
     - text: Python SDK の使用
-      url: sdk-python-quickstart-authoring-app.md
+      url: sdk-authoring.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: 新しい LUIS アプリを作成する
@@ -85,10 +85,8 @@ landingContent:
     links:
     - text: 'ポータル: 予測エンドポイントにアプリをデプロイする'
       url: get-started-portal-deploy-app.md
-    - text: C# SDK の使用
-      url: sdk-csharp-quickstart-authoring-app.md#train-the-app
-    - text: Python SDK の使用
-      url: sdk-python-quickstart-authoring-app.md#train-the-app
+    - text: SDK の使用
+      url: sdk-authoring.md
   - linkListType: how-to-guide
     links:
     - text: アプリをバージョン管理する
@@ -105,8 +103,8 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: C# .NET SDK を使用
-      url: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - text: SDK の使用
+      url: sdk-query-prediction-endpoint.md
   - linkListType: quickstart
     links:
     - text: REST とともに C# を使用
@@ -123,7 +121,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 開発者リソース
+    - text: 開発者向けリソース
       url: developer-reference-resource.md
     - text: アプリの制限事項
       url: luis-boundaries.md

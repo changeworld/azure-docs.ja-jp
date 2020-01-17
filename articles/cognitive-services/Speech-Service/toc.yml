@@ -525,6 +525,9 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: リージョン
       href: regions.md
+    - name: ソブリン クラウド
+      href: sovereign-clouds.md
+      displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: コンプライアンス
