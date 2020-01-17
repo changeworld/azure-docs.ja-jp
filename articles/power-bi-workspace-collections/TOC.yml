@@ -1,43 +1,10 @@
 - name: 概要
-  items:
-    - name: Power BI ワークスペース コレクションとは
-      href: what-are-power-bi-workspace-collections.md
-    - name: Power BI ワークスペース コレクションの新機能
-      href: whats-new.md
-- name: 作業開始
-  items:
-    - name: Power BI ワークスペース コレクションの概要
-      href: get-started.md
-    - name: サンプルの使用
-      href: get-started-sample.md
-    - name: FAQ
-      href: faq.md
+- name: はじめに
 - name: 方法
   items:
     - name: 計画と設計
-      items:
-        - name: 一般的なシナリオ
-          href: scenarios.md
-    - name: 管理
-      items:
-        - name: データ ソースへの接続
-          href: connect-datasource.md
-        - name: Power BI レポートの埋め込み
-          href: embed-report.md
-        - name: レポートの操作
-          href: interact-with-reports.md
-        - name: データセットからの新しいレポートの作成
-          href: create-report-from-dataset.md
-        - name: レポートの保存
-          href: save-reports.md
-        - name: 表示と編集の切り替え
-          href: toggle-mode.md
-    - name: セキュリティ保護
-      items:
-        - name: 認証と承認
-          href: app-token-flow.md
-        - name: Power BI ワークスペース コレクションでの行レベルのセキュリティ
-          href: row-level-security.md
+    - name: 管理する
+    - name: セキュリティで保護
 - name: リファレンス
   items:
     - name: コード サンプル
