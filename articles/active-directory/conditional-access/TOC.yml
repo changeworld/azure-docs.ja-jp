@@ -4,7 +4,7 @@
   items:
     - name: 条件付きアクセスとは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: 特定のアプリで MFA を必須にする
       href: app-based-mfa.md
@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
+    - name: クラウド アプリとアクション
+      href: concept-conditional-access-cloud-apps.md
     - name: 条件
       href: conditions.md
     - name: 場所の条件
@@ -35,7 +37,7 @@
       href: policy-migration.md
     - name: ベースライン保護ポリシー
       href: concept-baseline-protection.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: 条件付きアクセスのデプロイを計画する

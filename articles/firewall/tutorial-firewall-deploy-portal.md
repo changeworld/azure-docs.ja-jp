@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このリソース グループには、このチュートリアルのすべてのリソースが含まれます。
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure portal メニューで **[リソース グループ]** を選択するか、または任意のページから *[リソース グループ]* を検索して選択します。 その後、 **[追加]** を選択します。
 3. **[リソース グループ名]** として「*Test-FW-RG*」と入力します。
 4. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
@@ -236,12 +236,12 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、サインインします。 そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
-3. Internet Explorer を開き、 [https://www.google.com]\(https://www.google.com ) を参照します。
+3. Internet Explorer を開き、 https://www.google.com を参照します。
 4. Internet Explorer のセキュリティ アラートで、 **[OK]**  >  **[閉じる]** の順に選択します。
 
    Google のホーム ページが表示されます。
 
-5. [https://www.microsoft.com]\(https://www.microsoft.com ) を参照します。
+5. https://www.microsoft.com ) を参照します。
 
    ファイアウォールによってブロックされます。
 
