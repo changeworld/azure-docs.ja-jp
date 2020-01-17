@@ -29,7 +29,7 @@ ms.locfileid: "75641368"
 
 ## <a name="change-general-portal-settings"></a>ポータルの全般設定を変更する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. グローバル ページ ヘッダーから **[設定]** を選択します。
 
     ![設定が強調表示されたグローバル ページ ヘッダー アイコンを示すスクリーンショット](./media/set-preferences/header-settings.png)
