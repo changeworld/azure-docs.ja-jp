@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795597"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021178"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -21,16 +21,16 @@ ms.locfileid: "74795597"
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Azure Spot VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2 や F など) ごとの VM のコア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
-| サブスクリプションあたりの[共同管理者](../articles/billing-add-change-azure-subscription-administrator.md)数 |無制限。 |無制限。 |
-| サブスクリプションあたりのリージョンごとの[ストレージ アカウント数](../articles/storage/common/storage-quickstart-create-account.md) |250 |250 |
-| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
+| サブスクリプションあたりの[共同管理者](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)数 |無制限。 |無制限。 |
+| サブスクリプションあたりのリージョンごとの[ストレージ アカウント数](../articles/storage/common/storage-account-create.md) |250 |250 |
+| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/management/overview.md) |980 |980 |
 | サブスクリプションあたりの[可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)数 |リージョンあたり 2,000。 |リージョンあたり 2,000。 |
 | Azure Resource Manager API 要求サイズ |4,194,304 バイト。 |4,194,304 バイト。 |
 | サブスクリプションあたりのタグ数<sup>2</sup> |無制限。 |無制限。 |
 | サブスクリプションあたりの一意のタグの計算<sup>2</sup> | 10,000 | 10,000 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |該当なし<sup>3</sup> |該当なし<sup>3</sup> |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |該当なし<sup>3</sup> |該当なし<sup>3</sup> |
-| 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/deploy-to-subscription.md)数 | 800<sup>4</sup> | 800 |
+| 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/templates/deploy-to-subscription.md)数 | 800<sup>4</sup> | 800 |
 
 <sup>1</sup>既定の制限は、オファー カテゴリの種類 (無料試用版や従量課金制など) とシリーズ (Dv2、F、G など) によって異なります。たとえば、Enterprise Agreement サブスクリプションの既定値は 350 です。
 

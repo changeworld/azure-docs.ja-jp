@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: 809c0501c95b07f7c39a0885ea30c83507b90d53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646967"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979612"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -64,10 +64,10 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 1. 詳細を表示するルート テーブルを一覧から選択します。 **[設定]** では、ルート テーブル内の**ルート**と、ルート テーブルが関連付けられている**サブネット**を確認できます。
 1. Azure の一般的な設定の詳細については、次の情報を参照してください。
 
-    * [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)<br>
+    * [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)<br>
     * [アクセス制御 (IAM)](../role-based-access-control/overview.md)<br>
-    * [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
+    * [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
+    * [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
     * [Automation スクリプト](../azure-resource-manager/templates/export-template-portal.md)
 
 ### <a name="view-details-of-route-table---commands"></a>ルート テーブルの詳細の表示 - コマンド

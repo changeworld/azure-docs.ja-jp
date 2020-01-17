@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 895a7a41c6ba8695e35d74760628c3cbaa34d3ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511436"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980964"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの診断ログ
 
@@ -24,17 +24,17 @@ ms.locfileid: "73511436"
 
 Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ**:[Azure アクティビティ ログ](../../azure-resource-manager/resource-group-audit.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
+* **アクティビティ ログ**:[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
 * **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
 * **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](../../application-gateway/application-gateway-metrics.md)を使用します。
 * **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!NOTE]
-> ログは、Azure Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
+> ログは、Azure Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/management/deployment-models.md)」を参照してください。
 
 ログを保存するための 3 つのオプションがあります。
 
-* **ストレージ アカウント**:ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
+* **ストレージ アカウント**: ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
 * **イベント ハブ**:イベント ハブは、他のセキュリティ情報/イベント管理 (SIEM) ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです。
 * **Azure Monitor ログ**: Azure Monitor ログは、アプリケーションをリアルタイムに監視したり、傾向を見たりする一般的な用途に最適です。
 
@@ -55,8 +55,8 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
     ```powershell
     Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
-    
-> [!TIP] 
+
+> [!TIP]
 >アクティビティ ログでは別のストレージ アカウントは必要ありません。 アクセス ログとパフォーマンス ログにストレージを使用すると、サービス料金が発生します。
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Azure Portal を使用したログの有効化
@@ -81,13 +81,13 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../../azure-resource-manager/resource-group-audit.md)」を参照してください。
+アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 ### <a name="access-log"></a>アクセス ログ
 
 アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の v1 の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
 
-|値  |説明  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     | 要求を処理した Application Gateway のインスタンス。        |
 |clientIP     | 要求の送信元 IP。        |
@@ -131,7 +131,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 ```
 Application Gateway と WAF v2 の場合、ログにはさらにいくつかの情報が表示されます。
 
-|値  |説明  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     | 要求を処理した Application Gateway のインスタンス。        |
 |clientIP     | 要求の送信元 IP。        |
@@ -185,7 +185,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 パフォーマンス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 パフォーマンス ログ データは、1 分間隔で生成されます。 これは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](../../application-gateway/application-gateway-metrics.md)を使用します。 次のデータがログに記録されます。
 
 
-|値  |説明  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     |  パフォーマンス データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。        |
 |healthyHostCount     | バックエンド プール内の正常なホストの数。        |
@@ -222,7 +222,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 ファイアウォール ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 このログを使用するには、Application Gateway で Web アプリケーション ファイアウォールを構成する必要もあります。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次のデータがログに記録されます。
 
 
-|値  |説明  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     | ファイアウォール データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。         |
 |clientIp     |   要求の送信元 IP。      |
@@ -234,7 +234,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
 |action     |  要求に対して実行されるアクション。 使用できる値は Blocked と Allowed です。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
-|details     | トリガーするイベントの詳細。        |
+|詳細     | トリガーするイベントの詳細。        |
 |details.message     | ルールの説明。        |
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |
@@ -276,7 +276,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
       "policyScopeName": "httpListener1"
     }
   }
-} 
+}
 
 ```
 
@@ -284,8 +284,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../../azure-resource-manager/resource-group-audit.md)」を参照してください。
-* **Power BI**:[Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)を使用して、データを分析できます。
+* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)を使用して、データを分析できます。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>アクセス ログ、パフォーマンス ログ、ファイアウォール ログの表示と分析
 
@@ -295,14 +295,14 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 
 > [!TIP]
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
-> 
-> 
+>
+>
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess を介してアクセス ログを分析する
 
 Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)を使用して、カウンターとイベント ログを視覚化します。
 * [Power BI を使用した Azure アクティビティ ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ

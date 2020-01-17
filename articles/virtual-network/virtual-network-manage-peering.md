@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: c77608aa7a4d1410277dfbe259fb1f55ea8324ae
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449390"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978355"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -68,7 +68,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 異なるサブスクリプションおよびデプロイ モデルの仮想ネットワーク間にピアリングを実装する手順については、[次の手順](#next-steps)をご覧ください。
 
-### <a name="commands"></a>command
+### <a name="commands"></a>コマンド
 
 - **Azure CLI**: [az network vnet peering create](/cli/azure/network/vnet/peering)
 - **PowerShell**:[Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
@@ -117,7 +117,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 - 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)できます。 ポータルでは、異なる Azure Active Directory テナントに関連付けられているサブスクリプションからの仮想ネットワーク間のピアリングはサポートされていません。 CLI、PowerShell、またはテンプレートを使用できます。
 - ピアリングする仮想ネットワークの IP アドレス空間が重複していてはいけません。
 - 仮想ネットワークを別の仮想ネットワークとピアリングした後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 アドレス範囲を追加または削除するには、ピアリングを削除し、アドレス範囲を追加または削除してからピアリングを再作成します。 仮想ネットワークに対してアドレス範囲を追加または削除するには、[仮想ネットワークの管理](manage-virtual-network.md)に関するページを参照してください。
-- Resource Manager を使用してデプロイされた 2 つの仮想ネットワーク、または Resource Manager を使用してデプロイされた仮想ネットワークとクラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをピアリングできます。 クラシック デプロイ モデルを使用して作成された 2 つの仮想ネットワークをピアリングすることはできません。 Azure デプロイ モデルの知識がない場合は、[Azure デプロイ モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 クラシック デプロイ モデルを使って作成された 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。
+- Resource Manager を使用してデプロイされた 2 つの仮想ネットワーク、または Resource Manager を使用してデプロイされた仮想ネットワークとクラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをピアリングできます。 クラシック デプロイ モデルを使用して作成された 2 つの仮想ネットワークをピアリングすることはできません。 Azure デプロイ モデルの知識がない場合は、[Azure デプロイ モデルの概要](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 クラシック デプロイ モデルを使って作成された 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。
 - Resource Manager を使用して作成された 2 つの仮想ネットワークをピアリングするときは、ピアリングする仮想ネットワークごとにピアリングを構成する必要があります。 ピアリングの状態の種類として次のいずれかが表示されます。 
   - *開始済み:* 1 つ目の仮想ネットワークから 2 つ目の仮想ネットワークへのピアリングを作成すると、ピアリングの状態が "*開始済み*" になります。 
   - *接続済み:* 2 つ目の仮想ネットワークから 1 つ目の仮想ネットワークへのピアリングを作成すると、ピアリングの状態が "*接続済み*" になります。 1 つ目の仮想ネットワークのピアリングの状態を確認すると、状態が "*開始済み*" から "*接続済み*" に変わっていることがわかります。 両方の仮想ネットワーク ピアリングの状態が "*接続済み*" になるまで、ピアリングは正常に確立されません。
@@ -142,7 +142,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 上記のどのロールにもアカウントが割り当てられていない場合、次の表から必要なアクションが割り当てられる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる必要があります。
 
-| Action                                                          | Name |
+| アクション                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | 仮想ネットワーク A から仮想ネットワーク B へのピアリングを作成するために必要です。仮想ネットワーク A は仮想ネットワーク (Resource Manager) である必要があります          |
 | Microsoft.Network/virtualNetworks/peer/action                   | 仮想ネットワーク B (Resource Manager) から仮想ネットワーク A へのピアリングを作成するために必要です                                                       |
@@ -150,7 +150,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | 仮想ネットワーク ピアリングの読み取り   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | 仮想ネットワーク ピアリングの削除 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 仮想ネットワーク ピアリングは、同じまたは異なるサブスクリプションに存在する同じまたは異なるデプロイメント モデルを使って作成された仮想ネットワーク間に作成されます。 次のいずれかのシナリオのチュートリアルを完了します。
 

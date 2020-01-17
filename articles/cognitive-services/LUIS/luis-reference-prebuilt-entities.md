@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a5fcccc18a453101bd1166f2c85b0c3cdc747c3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 254fec23ef34b936405439e0334e24e594a24dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464954"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890228"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS モデルにおけるカルチャごとのエンティティ
 
@@ -25,16 +25,16 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |カルチャ|サブカルチャ|メモ|
 |--|--|--|
 |中国語|[zh-CN](#chinese-entity-support)||
-|オランダ語|[nl-NL](#dutch-entity-support)||
-|英語|[en-US (米国)](#english-american-entity-support)||
-|フランス語|[fr-CA (カナダ)](#french-canadian-entity-support)、[fr-FR (フランス)](#french-france-entity-support), ||
-|ドイツ語|[de-DE](#german-entity-support)||
-|イタリア語|[it-IT](#italian-entity-support)||
-|日本語|[ja-JP](#japanese-entity-support)||
-|韓国語|[ko-KR](#korean-entity-support)||
-|ポルトガル語|[pt-BR (ブラジル)](#portuguese-brazil-entity-support)||
-|スペイン語|[es-ES (スペイン)](#spanish-spain-entity-support)、[es-MX (メキシコ)](#spanish-mexico-entity-support)||
-|トルコ語|[turkish](#turkish-entity-support)|トルコ語では、あらかじめ構築されたエンティティはサポートされていません|
+|Dutch|[nl-NL](#dutch-entity-support)||
+|English|[en-US (米国)](#english-american-entity-support)||
+|French|[fr-CA (カナダ)](#french-canadian-entity-support)、[fr-FR (フランス)](#french-france-entity-support), ||
+|German|[de-DE](#german-entity-support)||
+|Italian|[it-IT](#italian-entity-support)||
+|Japanese|[ja-JP](#japanese-entity-support)||
+|Korean|[ko-KR](#korean-entity-support)||
+|Portuguese|[pt-BR (ブラジル)](#portuguese-brazil-entity-support)||
+|Spanish|[es-ES (スペイン)](#spanish-spain-entity-support)、[es-MX (メキシコ)](#spanish-mexico-entity-support)||
+|Turkish|[turkish](#turkish-entity-support)|トルコ語では、あらかじめ構築されたエンティティはサポートされていません|
 
 ## <a name="prediction-endpoint-runtime"></a>予測エンドポイントのランタイム
 
@@ -60,7 +60,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="dutch-entity-support"></a>オランダ語のエンティティのサポート
 
@@ -82,7 +82,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="english-american-entity-support"></a>英語 (米国) のエンティティのサポート
 
@@ -104,7 +104,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="french-france-entity-support"></a>フランス語 (フランス) のエンティティのサポート
 
@@ -126,7 +126,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |   -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="french-canadian-entity-support"></a>フランス語 (カナダ) のエンティティのサポート
 
@@ -148,7 +148,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="german-entity-support"></a>ドイツ語のエンティティのサポート
 
@@ -170,7 +170,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="italian-entity-support"></a>イタリア語のエンティティのサポート
 
@@ -194,7 +194,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="japanese-entity-support"></a>日本語のエンティティのサポート
 
@@ -216,7 +216,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、-   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="korean-entity-support"></a>韓国語のエンティティのサポート
 
@@ -238,7 +238,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="portuguese-brazil-entity-support"></a>ポルトガル語 (ブラジル) のエンティティのサポート
 
@@ -260,7 +260,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="spanish-spain-entity-support"></a>スペイン語 (スペイン) のエンティティのサポート
 
@@ -282,7 +282,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="spanish-mexico-entity-support"></a>スペイン語 (メキシコ) のエンティティのサポート
 
@@ -304,7 +304,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   | 
 [Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   | 
-[URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
+[[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 「[非推奨のエンティティ](luis-reference-prebuilt-deprecated.md)」の注をご覧ください
 
@@ -342,8 +342,8 @@ KeyPhrase is not available.
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>作成済みエンティティ カルチャへの寄与
 作成済みエンティティは、Recognizers-Text オープンソース プロジェクトで開発されています。 プロジェクトに[寄与](https://github.com/Microsoft/Recognizers-Text)してください。 このプロジェクトには、カルチャごとの通貨の例が含まれています。 
 
-GeographyV2 と PersonName は Recognizers-Text プロジェクトに含まれていません。 これらの事前構築済みエンティティの問題については、[サポート リクエスト](../../azure-supportability/how-to-create-azure-support-request.md)を開いてください。 
+GeographyV2 と PersonName は Recognizers-Text プロジェクトに含まれていません。 これらの事前構築済みエンティティの問題については、[サポート リクエスト](../../azure-portal/supportability/how-to-create-azure-support-request.md)を開いてください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [number](luis-reference-prebuilt-number.md)、[datetimeV2](luis-reference-prebuilt-datetimev2.md)、[currency](luis-reference-prebuilt-currency.md) エンティティについて学習します。 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: d17ccc67f8254f05461012a9ae443d96ffd58fa5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 687ae8fb30f7e81f0e35e4d4d9281b9500fd4923
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446924"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770742"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>方法:Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)
 
@@ -60,6 +60,7 @@ ms.locfileid: "75446924"
 
    ```json
    {
+     "type": "event",
      "name": "UpdateDeviceState",
      "state": "{OnOff}",
      "device": "{SubjectDevice}"
@@ -104,12 +105,11 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
     dynamic activity = JsonConvert.DeserializeObject(activityReceivedEventArgs.Activity);
-    var payload = activity?.Value;
 
-    if(payload?.name == "SetDeviceState")
+    if(activity?.name == "SetDeviceState")
     {
-        var state = payload?.state;
-        var device = payload?.device;
+        var state = activity?.state;
+        var device = activity?.device;
         switch(device)
         {
             case "tv":

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0190b94cc6195163de4d428c2cae0de3620bdb01
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422705"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945312"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -41,7 +41,7 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する 
+## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する
 
 ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
@@ -59,15 +59,15 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 要求の構成
 
-HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)を参照してください。 
+HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)を参照してください。
 
 POST 要求では以下を使用します。
 
 * 必須の [URI パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * セキュリティを確保するために必須の[ヘッダー プロパティ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer) (`Authorization`)
-* 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto) 
+* 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)
 
-GenerateAnswer の URL は次の形式になります。 
+GenerateAnswer の URL は次の形式になります。
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
@@ -95,7 +95,7 @@ JSON 本文の例は、次のようになります。
 
 [rankerType](../concepts/best-practices.md#choosing-ranker-type) の詳細について確認してください。
 
-以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
 
 <a name="generateanswer-response"></a>
 
@@ -125,7 +125,7 @@ JSON 本文の例は、次のようになります。
 }
 ```
 
-以前の JSON では、スコアが 38.5% の回答で応答しました。 
+以前の JSON では、スコアが 38.5% の回答で応答しました。
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
@@ -144,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
 
 サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)があります。
 
@@ -164,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
 
 サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)があります。
 
@@ -200,7 +200,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>質問と回答の結果を使用して会話のコンテキストを維持する
 
-GenerateAnswer への応答には、一致した質問と回答のセットの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。 
+GenerateAnswer への応答には、一致した質問と回答のセットの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。
 
 ```json
 {
@@ -255,7 +255,7 @@ GenerateAnswer への応答には、一致した質問と回答のセットの�
 |404|KB が存在しません|
 |410|この API は非推奨であり、現在は利用できません|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **[発行]** ページでは、Postman または cURL を使用して[回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
 

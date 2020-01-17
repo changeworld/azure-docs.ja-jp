@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695087"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979174"
 ---
-# <a name="patternany-entity"></a>Pattern.any エンティティ 
+# <a name="patternany-entity"></a>Pattern.any エンティティ
 
 Pattern.any は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。  
 
@@ -25,13 +25,13 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 **エンティティは、次のような場合に最適です。**
 
-* エンティティの末尾を発話の残りのテキストと混同する可能性がある。 
+* エンティティの末尾を発話の残りのテキストと混同する可能性がある。
 
 ## <a name="usage"></a>使用法
 
-タイトルに基づいて書籍を検索するクライアント アプリケーションでは、pattern.any によって完全なタイトルが抽出されます。 この書籍検索に対して pattern.any を使用するテンプレート発話は `Was {BookTitle} written by an American this year[?]` です。 
+タイトルに基づいて書籍を検索するクライアント アプリケーションでは、pattern.any によって完全なタイトルが抽出されます。 この書籍検索に対して pattern.any を使用するテンプレート発話は `Was {BookTitle} written by an American this year[?]` です。
 
-次の表では、各行に 2 つのバージョンの発話があります。 一番上の発話は、LUIS が最初に発話を認識する方法です。 書籍タイトルの開始位置と終了位置が明確ではありません。 一番下の発話は、Pattern.any エンティティを使用してエンティティの開始と終了をマークします。 
+次の表では、各行に 2 つのバージョンの発話があります。 一番上の発話は、LUIS が最初に発話を認識する方法です。 書籍タイトルの開始位置と終了位置が明確ではありません。 一番下の発話は、Pattern.any エンティティを使用してエンティティの開始と終了をマークします。
 
 |太字はエンティティを含む発話|
 |--|
@@ -45,7 +45,7 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="example-json"></a>JSON の例
 
-次のクエリについて考えてみましょう。
+次のクエリを考えてみます。
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -104,8 +104,8 @@ Pattern.any として抽出する埋め込みフォーム名を使用します�
 }
 ```
 
-* * * 
+* * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この[チュートリアル](luis-tutorial-pattern-any.md)では、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、**Pattern.any** エンティティを使用して発話からデータを抽出します。
+この[チュートリアル](luis-tutorial-pattern.md)では、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、**Pattern.any** エンティティを使用して発話からデータを抽出します。

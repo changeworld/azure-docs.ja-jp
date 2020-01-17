@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 28d3d83acad5e609947b029bc8e585193834e346
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f0a707f65ecf17887b4e5d12e3487ba3359a68ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446520"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888313"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 
@@ -40,7 +40,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
 |Azure CLI| [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をホストにインストールします。|
-|Computer Vision API リソース| スキャンしたドキュメントおよび画像を処理するには、Computer Vision リソースが必要です。 Azure リソース (REST API または SDK) または *cognitive-services-recognize-text* [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)のいずれかとして、テキスト認識機能にアクセスできます。 通常の課金の料金が適用されます。 <br><br>Computer Vision リソース (Azure クラウドまたは Cognitive Services コンテナー) の API キーとエンドポイントの両方を渡します。 この API キーとエンドポイントを **{COMPUTER_VISION_API_KEY}** と **{COMPUTER_VISION_ENDPOINT_URI}** として使用します。<br><br> *cognitive-services-recognize-text* コンテナーを使用する場合は、以下のことを確認します。<br><br>Form Recognizer コンテナーの Computer Vision キーは、*cognitive-services-recognize-text* コンテナーの Computer Vision `docker run` コマンドで指定されたキーです。<br>課金エンドポイントは、コンテナーのエンドポイントです (`http://localhost:5000` など)。 同じホスト上で Computer Vision コンテナーと Form Recognizer コンテナーの両方を一緒に使用する場合、既定のポート *5000* を使用してその両方を起動することはできません。 |
+|Computer Vision API リソース| スキャンしたドキュメントおよび画像を処理するには、Computer Vision リソースが必要です。 Azure リソース (REST API または SDK) または *cognitive-services-recognize-text* [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)のいずれかとして、テキスト認識機能にアクセスできます。 通常の課金の料金が適用されます。 <br><br>Computer Vision リソース (Azure クラウドまたは Cognitive Services コンテナー) の API キーとエンドポイントの両方を渡します。 この API キーとエンドポイントを **{COMPUTER_VISION_API_KEY}** と **{COMPUTER_VISION_ENDPOINT_URI}** として使用します。<br><br> *cognitive-services-recognize-text* コンテナーを使用する場合は、以下のことを確認します。<br><br>Form Recognizer コンテナーの Computer Vision キーは、*cognitive-services-recognize-text* コンテナーの Computer Vision `docker run` コマンドで指定されたキーです。<br>課金エンドポイントは、コンテナーのエンドポイントです (`http://localhost:5000` など)。 同じホスト上で Computer Vision コンテナーと Form Recognizer コンテナーの両方を一緒に使用する場合、既定のポート *5000* を使用してその両方を起動することはできません。 |
 |Form Recognizer リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure **Form Recognizer** リソース。 どちらの値も、Azure portal の **Form Recognizer** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するには両方の値が必要です。<br><br>**{FORM_RECOGNIZER_API_KEY}** :[キー] ページにある 2 つのリソース キーのうちのどちらか<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** :[概要] ページで提供されるエンドポイント|
 
 ## <a name="gathering-required-parameters"></a>必須パラメーターの収集
@@ -98,7 +98,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
 | テキスト認識 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-両方のコンテナーが必要です。**テキスト認識**コンテナーの詳細については、[この記事以外で説明しています。](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
+両方のコンテナーが必要です。**テキスト認識**コンテナーの詳細については、[この記事以外で説明しています。](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

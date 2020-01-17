@@ -1,19 +1,18 @@
 ---
-title: 'Azure VPN Gateway: オンプレミスのポリシー ベースの複数の VPN デバイスにゲートウェイを接続する'
+title: Azure VPN Gateway:オンプレミスのポリシー ベースの複数の VPN デバイスにゲートウェイを接続する
 description: Azure Resource Manager と PowerShell を使用して、複数のポリシー ベース VPN デバイスに Azure ルート ベース VPN ゲートウェイを構成します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 97db6af7233a8cc0e1feac75734225815282131a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146704"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896166"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
@@ -214,7 +213,7 @@ $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -Resou
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
 
 カスタムの IPsec/IKE ポリシーの詳細については、[S2S VPN または VNet 対 VNet 接続用のIPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページも参照してください。

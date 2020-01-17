@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ffeb8e1347d75af2be59763faf0b512c0b329221
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186348"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975344"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>PowerShell を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "74186348"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure には現在、2 種類のデプロイ モデルがあることを理解しておくことが重要です。Azure Resource Manager とクラシックです。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-resource-manager/resource-manager-deployment-model.md) について知識をつけておいてください。 この記事の上部にあるオプションを選択すると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイ モデルについて説明します。
+> Azure リソースを使用する前に、Azure には現在、2 種類のデプロイ モデルがあることを理解しておくことが重要です。Azure Resource Manager とクラシックです。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-resource-manager/management/deployment-models.md) について知識をつけておいてください。 この記事の上部にあるオプションを選択すると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイ モデルについて説明します。
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

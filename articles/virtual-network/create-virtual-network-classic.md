@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50054379a3032a368a10932e15396373a3817cff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059008"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978908"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[2 種類のデプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)があります。Resource Manager とクラシックです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新規仮想ネットワークは、[Resource Manager](quick-create-portal.md) デプロイメント モデルを使用して作成することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[2 種類のデプロイ モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)があります。Resource Manager とクラシックです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新規仮想ネットワークは、[Resource Manager](quick-create-portal.md) デプロイメント モデルを使用して作成することをお勧めします。
 
 このチュートリアルでは、パブリック用とプライベート用に別個のサブネットを含んだ基本的な Azure 仮想ネットワーク (クラシック) の作成方法について説明します。 サブネット内の仮想マシンやクラウド サービスなどの Azure リソースを作成することができます。 仮想ネットワーク (クラシック) に作成されるリソースは、相互に通信することも、仮想ネットワークに接続されている他のネットワーク内のリソースと通信することもできます。
 
 すべての[仮想ネットワーク](manage-virtual-network.md)と[サブネット](virtual-network-manage-subnet.md)の設定について説明します。
 
 > [!WARNING]
-> 仮想ネットワーク (クラシック) は、[サブスクリプションが無効になる](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)とすぐに Azure によって削除されます。 仮想ネットワーク (クラシック) は、リソースが仮想ネットワーク上に存在するかどうかに関係なく削除されます。 後でもう一度サブスクリプションを有効にした場合は、仮想ネットワークに存在していたリソースを再作成する必要があります。
+> 仮想ネットワーク (クラシック) は、[サブスクリプションが無効になる](../cost-management-billing/manage/subscription-disabled.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)とすぐに Azure によって削除されます。 仮想ネットワーク (クラシック) は、リソースが仮想ネットワーク上に存在するかどうかに関係なく削除されます。 後でもう一度サブスクリプションを有効にした場合は、仮想ネットワークに存在していたリソースを再作成する必要があります。
 
 仮想ネットワーク (クラシック) は、[Azure Portal](#portal)、[Azure コマンド ライン インターフェイス (CLI) 1.0](#azure-cli)、[PowerShell](#powershell) のいずれかを使って作成できます。
 
@@ -45,9 +45,9 @@ ms.locfileid: "71059008"
 4. 表示された **[仮想ネットワーク]** ウィンドウの **[デプロイ モデルの選択]** ボックスで **[クラシック]** を選択し、 **[作成]** をクリックします。 
 5. **[仮想ネットワーク (クラシック) の作成]** ウィンドウで次の値を入力し、 **[作成]** をクリックします。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
-    |名前|myVnet|
+    |Name|myVnet|
     |アドレス空間|10.0.0.0/16|
     |サブネット名|パブリック|
     |サブネットのアドレス範囲|10.0.0.0/24|
@@ -58,9 +58,9 @@ ms.locfileid: "71059008"
 4. ポータルでは、仮想ネットワークを作成するときに、サブネットを 1 つだけ作成できます。 このチュートリアルでは、仮想ネットワークを作成した後に、2 つ目のサブネットを作成します。 インターネットにアクセス可能なリソースを、後で**パブリック** サブネットで作成できます。 また、インターネットからアクセスできないリソースは、**プライベート** サブネットで作成できます。 2 つ目のサブネットを作成するために、ページ上部にある **[リソースの検索]** ボックスに「**myVnet**」と入力します。 検索結果に **[myVnet]** が表示されたら、それをクリックします。
 5. 表示された **[仮想ネットワーク (クラシック) の作成]** ウィンドウで ( **[設定]** セクションの) **[サブネット]** をクリックします。
 6. 表示された **[myVnet - サブネット]** ウィンドウで **[+追加]** をクリックします。
-7. **[サブネットの追加]** ウィンドウで、 **[名前]** に「**プライベート**」と入力します。 **[アドレス範囲]** に「**10.0.1.0/24**」と入力します。  Click **OK**.
+7. **[サブネットの追加]** ウィンドウで、 **[名前]** に「**プライベート**」と入力します。 **[アドレス範囲]** に「**10.0.1.0/24**」と入力します。  **[OK]** をクリックします。
 8. **[myVnet - サブネット]** ウィンドウに、作成した**パブリック** サブネットと**プライベート** サブネットが表示されます。
-9. **省略可能**: このチュートリアルが完了したら、使用料がかからないように、作成したリソースを削除することをお勧めします。
+9. **省略可能**:このチュートリアルが完了したら、使用料がかからないように、作成したリソースを削除することをお勧めします。
     - **[myVnet]** ウィンドウで **[概要]** をクリックします。
     - **[myVnet]** ウィンドウで **[削除]** アイコンをクリックします。
     - 削除を確定するには、 **[仮想ネットワークの削除]** ボックスで **[はい]** をクリックします。
@@ -98,7 +98,7 @@ ms.locfileid: "71059008"
     azure network vnet show --vnet myVnet
     ```
 
-7. **省略可能**: 使用料がかからないように、このチュートリアルの完了時に、作成したリソースを削除することをお勧めします。
+7. **省略可能**:使用料がかからないように、このチュートリアルの完了時に、作成したリソースを削除することをお勧めします。
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,14 +153,14 @@ ms.locfileid: "71059008"
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **省略可能**: 使用料がかからないように、このチュートリアルの完了時に、作成したリソースを削除することをお勧めします。 仮想ネットワークを削除するには、手順 4. から 6. をもう一度実行します。ここでは、手順 5. で追加した **VirtualNetworkSite** 要素を削除します。
+8. **省略可能**:使用料がかからないように、このチュートリアルの完了時に、作成したリソースを削除することをお勧めします。 仮想ネットワークを削除するには、手順 4. から 6. をもう一度実行します。ここでは、手順 5. で追加した **VirtualNetworkSite** 要素を削除します。
  
 > [!NOTE]
 > PowerShell を使用して仮想ネットワーク (クラシック) を作成するためにリソース グループを指定することはできませんが、"*既定-ネットワーク*" という名前のリソース グループに仮想ネットワークが作成されます。
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
 - [Windows 仮想マシン](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。

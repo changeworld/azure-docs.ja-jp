@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6505b12b35ee436930ba6571c27db30c12030041
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6a90b23c10e08e8b14a18f9619cff5aaeb003cab
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181009"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045681"
 ---
 ### <a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続していない場合)
 

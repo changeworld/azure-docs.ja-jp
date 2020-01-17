@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816497"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833986"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 
@@ -37,10 +37,10 @@ ms.locfileid: "74816497"
 
 詳しくは、[Speech サービスのコンテナー ホスト コンピューター][speech-container-host-computer]に関する記事をご覧ください。 この "*Helm チャート*" では、ユーザーが指定しているデコードの数 (同時要求数) に基づいて、CPU とメモリの要件が自動的に計算されます。 さらに、オーディオ/テキスト入力の最適化が `enabled` として構成されているかどうかに基づいて調整されます。 Helm チャートの既定値では、同時要求の数は 2、最適化は無効です。
 
-| Service | CPU/コンテナー | メモリ/コンテナー |
+| サービス | CPU/コンテナー | メモリ/コンテナー |
 |--|--|--|
 | **音声テキスト変換** | 1 つのデコーダーで、1,150 ミリコア以上が必要です。 `optimizedForAudioFile` が有効になっている場合は、1,950 ミリコアが必要です。 (既定値: 2 つのデコーダー) | 必須: 2 GB<br>上限: 4 GB |
-| **Text-to-Speech** | 1 つの同時要求で、500 ミリコア以上が必要です。 `optimizeForTurboMode` が有効になっている場合は、1,000 ミリコアが必要です。 (既定値: 2 つの同時要求) | 必須: 1 GB<br> 上限: 2 GB |
+| **音声合成** | 1 つの同時要求で、500 ミリコア以上が必要です。 `optimizeForTurboMode` が有効になっている場合は、1,000 ミリコアが必要です。 (既定値: 2 つの同時要求) | 必須: 1 GB<br> 上限: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes クラスターに接続する
 
@@ -48,20 +48,20 @@ ms.locfileid: "74816497"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Kubernetes クラスターと Docker の資格情報を共有する
 
-Kubernetes クラスターで `mcr.microsoft.com` コンテナー レジストリの構成済みイメージに対して `docker pull` を実行できるようにするには、Docker の資格情報をクラスターに転送する必要があります。 下の [`kubectl create`][kubectl-create] コマンドを実行し、コンテナー レジストリのアクセスの前提条件から提供された資格情報に基づいて、"*docker-registry シークレット*" を作成します。
+Kubernetes クラスターで `containerpreview.azurecr.io` コンテナー レジストリの構成済みイメージに対して `docker pull` を実行できるようにするには、Docker の資格情報をクラスターに転送する必要があります。 下の [`kubectl create`][kubectl-create] コマンドを実行し、コンテナー レジストリのアクセスの前提条件から提供された資格情報に基づいて、"*docker-registry シークレット*" を作成します。
 
 適切なコマンド ライン インターフェイスから、次のコマンドを実行します。 `<username>`、`<password>`、`<email-address>` は、コンテナー レジストリの資格情報に置き換えてください。
 
 ```console
 kubectl create secret docker-registry mcr \
-    --docker-server=mcr.microsoft.com \
+    --docker-server=containerpreview.azurecr.io \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> `mcr.microsoft.com` コンテナー レジストリへのアクセス権が既にある場合は、代わりに汎用フラグを使って Kubernetes シークレットを作成できます。 Docker 構成 JSON に対して実行する次のコマンドを検討してください。
+> `containerpreview.azurecr.io` コンテナー レジストリへのアクセス権が既にある場合は、代わりに汎用フラグを使って Kubernetes シークレットを作成できます。 Docker 構成 JSON に対して実行する次のコマンドを検討してください。
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -106,8 +106,8 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/speech-to-text
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -122,8 +122,8 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/text-to-speech
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-text-to-speech
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -138,21 +138,20 @@ textToSpeech:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes パッケージ (Helm チャート)
 
-"*Helm チャート*" には、`mcr.microsoft.com` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
+"*Helm チャート*" には、`containerpreview.azurecr.io` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
 
 > [Helm チャート][helm-charts] は、関連する Kubernetes リソースのセットが記述されているファイルのコレクションです。 1 つのチャートを使って、memcached ポッドのような単純なものや、HTTP サーバー、データベース、キャッシュなどを含む完全な Web アプリ スタックのような複雑なものを、展開できます。
 
-提供されている 「*Helm チャート*」では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech サービスの Docker イメージが、`mcr.microsoft.com` コンテナー レジストリからプルされます。
+提供されている 「*Helm チャート*」では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech サービスの Docker イメージが、`containerpreview.azurecr.io` コンテナー レジストリからプルされます。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes クラスターに Helm チャートをインストールする
 
 "*Helm チャート*" をインストールするには、[`helm install`][helm-install-cmd] コマンドを実行する必要があります。`<config-values.yaml>` は、適切なパスとファイル名の引数に置き換えます。 以下で参照されている `microsoft/cognitive-services-speech-onpremise` Helm チャートは、[こちらの Microsoft Helm Hub][ms-helm-hub-speech-chart] で入手できます。
 
 ```console
-helm install microsoft/cognitive-services-speech-onpremise \
+helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
     --version 0.1.1 \
-    --values <config-values.yaml> \
-    --name onprem-speech
+    --values <config-values.yaml> 
 ```
 
 インストールが正常に実行されると表示される出力の例を次に示します。
@@ -262,7 +261,7 @@ Helm チャートは階層的です。 階層的であるためチャートを�
 
 [!INCLUDE [Text-to-Speech Helm Chart Config](includes/text-to-speech-chart-config.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストールについて詳しくは、[こちらをご覧ください][installing-helm-apps-in-aks]。
 

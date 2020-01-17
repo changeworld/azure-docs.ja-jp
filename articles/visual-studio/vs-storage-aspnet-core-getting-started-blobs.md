@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300083"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980726"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 
@@ -28,7 +28,7 @@ ms.locfileid: "72300083"
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Azure Blob Storage は、非構造化データをクラウド内にオブジェクトまたは BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。 Blob Storage の詳細については、「[Azure Blob Storage の概要](../storage/blobs/storage-blobs-introduction.md)」を参照してください。
+Azure Blob Storage は、非構造化データをクラウド内にオブジェクトまたは BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。 Blob Storage の詳細については、「[Azure Blob Storage の概要](../storage/blobs/storage-blobs-introduction.md)」をご覧ください。
 
 このチュートリアルでは、Blob Storage を使用するいくつかの一般的なシナリオに対する ASP.NET Core コードの記述方法について説明します。 シナリオには、BLOB コンテナーの作成や、BLOB のアップロード、一覧表示、ダウンロード、および削除が含まれます。
 
@@ -69,7 +69,7 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、 **[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、 **[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **appsettings.json** へのストレージ接続文字列がインストールされます。
 
 > [!TIP]
-> [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
+> [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 >
 > [Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md)、または [Azure Cloud Shell](../cloud-shell/overview.md) を使用してストレージ アカウントを作成することもできます。
 
@@ -512,7 +512,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. アプリケーションを実行し、 **[BLOB の削除]** を選択して、`CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB を削除します。 *success!* というテキストが ブラウザーに表示されます。 ブラウザーの **[戻る]** ボタンを選択し、 **[BLOB の一覧表示]** を選択して、BLOB がコンテナーに存在しないことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ASP.NET Core を使用することで、Azure Storage に対して BLOB を格納、一覧表示、取得する方法について学習しました。 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 

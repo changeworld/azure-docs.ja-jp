@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 01/10/2020
 ms.author: dapine
-ms.openlocfilehash: a35ceed4cefa47b903ceec915388b4831cd9e69b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173777"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866943"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
@@ -49,7 +49,7 @@ Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com
 
 Azure Cognitive Services のコンテナーでは次の Docker コンテナー セットが提供され、各コンテナーには Azure Cognitive Services のサービスの機能のサブセットが含まれます。
 
-| Service | サポートされている価格レベル | コンテナー | 説明 |
+| サービス | サポートされている価格レベル | コンテナー | [説明] |
 |---------|----------|----------|-------------|
 |[Anomaly Detector][ad-containers] |F0、S0|**Anomaly-Detector** |Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求](https://aka.ms/adcontainer)|
 |[Computer Vision][cv-containers] |F0、S1|**読み取り** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。 "読み取り" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。<br/><br/>**重要:** 読み取りコンテナーは現在のところ、英語でのみ機能します。|
@@ -57,7 +57,7 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 |[Form recognizer][fr-containers] |F0、S0|**Form Recognizer** |Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。<br>[アクセスの要求](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0、S0|**LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。|
 |[Speech Service API][sp-containers-stt] |F0、S0|**音声テキスト変換** |連続するリアルタイムの音声をテキストに書き起こします。|
-|[Speech Service API][sp-containers-cstt] |F0、S0|**カスタム音声テキスト変換** |カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。|
+|[Speech Service API][sp-containers-cstt] |F0、S0|**カスタム音声変換** |カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。|
 |[Speech Service API][sp-containers-tts] |F0、S0|**テキスト読み上げ** |テキストを自然な音声に変換します。|
 |[Speech Service API][sp-containers-ctts] |F0、S0|**カスタム テキスト読み上げ** |カスタム モデルを使用してテキストを自然な音声に変換します。|
 |[Text Analytics][ta-containers-keyphrase] |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
@@ -107,7 +107,7 @@ Docker やコンテナーの基礎に関する入門情報については、「[
 
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cognitive Services で使用できる[コンテナー レシピ](containers/container-reuse-recipe.md)について学習します。
 

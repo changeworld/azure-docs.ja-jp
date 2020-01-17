@@ -1,18 +1,19 @@
 ---
-title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell | Microsoft Docs'
+title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell'
 description: VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します。
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2263996b84b17f7de9826c07eb28e4b7668cd915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095594"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833954"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -40,7 +41,7 @@ ms.locfileid: "62095594"
 
 ### <a name="exampleref"></a>設定例
 
-この値を使って、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
+この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
 **クラシック VNet の設定**
 
@@ -265,7 +266,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ## <a name="connect"></a>セクション 4 - ゲートウェイ間の接続を作成する
 ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 それには、**Add-azureaccount** を使用します。
 
-1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、 **-VNetName** はクラシック VNet の名前で、 **-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
+1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、 **-VNetName** はクラシック VNet の名前で、 **-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成および指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
 
    ```azurepowershell
    Set-AzureVNetGatewayKey -VNetName ClassicVNet `
@@ -297,7 +298,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -308,7 +309,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

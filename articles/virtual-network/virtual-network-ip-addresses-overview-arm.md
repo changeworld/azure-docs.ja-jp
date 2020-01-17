@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: c522e88b5c7a759f72704e44e041c01d8541cc7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 23db74b1cd157141454692805f9ec306ef89710a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646814"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975182"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -30,7 +30,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 パブリック IP プレフィックスから静的パブリック IP アドレスの連続する範囲を作成することもできます。 [パブリック IP プレフィックスについて確認してください。](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)です。  この記事では、Resource Manager デプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイ モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)です。  この記事では、Resource Manager デプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイ モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
 > 
 
 クラシック デプロイ モデルの知識がある場合は、[クラシックと Resource Manager での IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。

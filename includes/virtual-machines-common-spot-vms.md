@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663128"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902048"
 ---
 スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
@@ -83,7 +83,7 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 
 **質問:** スポットに追加のクォータを要求することはできますか。
 
-**A:** はい。[標準のクォータ要求プロセス](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)を通じて、スポット VM のクォータを増やす要求を送信することができます。
+**A:** はい。[標準のクォータ要求プロセス](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)を通じて、スポット VM のクォータを増やす要求を送信することができます。
 
 
 **質問:** どのチャネルがスポット VM をサポートしますか。

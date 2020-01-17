@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298878"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979621"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -32,7 +32,7 @@ Azure Table Storage を使用すると、大量の構造化データを格納で
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage アカウント](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -708,7 +708,7 @@ Azure Table Storage を使用すると、大量の構造化データを格納で
   
     ![単一エンティティの取得](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

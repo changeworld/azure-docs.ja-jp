@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: c15602163ee1916047b9cb35a516a049f951b302
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195945"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888568"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -55,7 +55,7 @@ LUIS コンテナーを実行するには、次の前提条件を確認してく
 
 このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
 
-|コンテナー| 最小値 | 推奨 | TPS<br>(最大、最小)|
+|コンテナー| 最小値 | 推奨 | TPS<br>(最小、最大)|
 |-----------|---------|-------------|--|
 |LUIS|1 コア、2 GB メモリ|1 コア、4 GB メモリ|20、40|
 
@@ -84,7 +84,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 
 1. LUIS ポータルまたは LUIS API からコンテナーの[パッケージをエクスポート](#export-packaged-app-from-luis)します。
 1. [ホスト コンピューター](#the-host-computer)上の必要な **input** ディレクトリにパッケージ ファイルを移動します。 LUIS パッケージ ファイルの名前変更、改変、上書き、または展開は行わないでください。
-1. 必要な "_入力マウント_" と課金設定で[コンテナーを実行](##run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](luis-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
+1. 必要な "_入力マウント_" と課金設定で[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](luis-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
 1. [コンテナーの予測エンドポイントに対してクエリを実行します](#query-the-containers-prediction-endpoint)。 
 1. コンテナーの操作が完了したら、LUIS ポータルで出力マウントから[エンドポイント ログをインポート](#import-the-endpoint-logs-for-active-learning)し、コンテナーを[停止](#stop-the-container)します。
 1. LUIS ポータルの **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)を使用して、アプリを強化します。
@@ -247,7 +247,7 @@ ApiKey={API_KEY}
 
 |パッケージの種類|HTTP 動詞|ルート|クエリ パラメーター|
 |--|--|--|--|
-|公開先|GET、POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|公開済み|GET、POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |バージョン付き|GET、POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
@@ -255,15 +255,15 @@ ApiKey={API_KEY}
 |Query parameter (クエリ パラメーター)|種類|目的|
 |--|--|--|
 |`query`|string|ユーザーの発話。|
-|`verbose`|ブール値|予測されるモデルのすべてのメタデータを返すかどうかを示すブール値。 既定値は false です。|
-|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は false です。|
-|`show-all-intents`|ブール値|すべての意図を返すか、上位のスコアリングの意図のみを返すかを示すブール値。 既定値は false です。|
+|`verbose`|boolean|予測されるモデルのすべてのメタデータを返すかどうかを示すブール値。 既定値は false です。|
+|`log`|boolean|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は false です。|
+|`show-all-intents`|boolean|すべての意図を返すか、上位のスコアリングの意図のみを返すかを示すブール値。 既定値は false です。|
 
 # <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/v2)
 
 |パッケージの種類|HTTP 動詞|ルート|クエリ パラメーター|
 |--|--|--|--|
-|公開先|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
+|公開済み|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |バージョン付き|GET、POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
@@ -272,9 +272,9 @@ ApiKey={API_KEY}
 |--|--|--|
 |`q`|string|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
-|`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
-|`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
-|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
+|`verbose`|boolean|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
+|`staging`|boolean|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
+|`log`|boolean|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
 
 ***
 
@@ -385,7 +385,7 @@ LUIS コンテナーでは、お客様の Azure アカウントの _Cognitive Se
 > [!IMPORTANT]
 > Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](luis-container-configuration.md)を確認します。
 * 既知の機能の制限については、[LUIS コンテナーの制限](luis-container-limitations.md)に関するページを参照してください。

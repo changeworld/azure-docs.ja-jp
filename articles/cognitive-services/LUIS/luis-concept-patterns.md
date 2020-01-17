@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280854"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890283"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
@@ -26,7 +26,7 @@ ms.locfileid: "74280854"
 
 ![組織図のイメージ](./media/luis-concept-patterns/org-chart.png)
 
-|発話|予測される意図|意図のスコア|
+|発話|予測される意図|意図スコア|
 |--|--|--|
 |Who is Tom's subordinate? (Tom の部下は誰。)|GetOrgChart|.30|
 |Who is the subordinate of Tom? (Tom の部下は誰ですか。)|GetOrgChart|.30|
@@ -68,12 +68,12 @@ ms.locfileid: "74280854"
 
 パターンの構文については、[パターン構文のリファレンス](reference-pattern-syntax.md)を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-パターンの詳細については、次を参照してください。
+パターンについて学習する:
 
 * [パターンの追加方法](luis-how-to-model-intent-pattern.md)
-* [pattern.any エンティティの追加方法](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [pattern.any エンティティの追加方法](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [パターンの構文](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]

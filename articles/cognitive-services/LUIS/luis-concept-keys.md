@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901696"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969335"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 
@@ -95,10 +95,10 @@ LUIS ランタイム エンドポイントには、2 つのクエリ スタイ�
 LUIS アプリを移行できます。 Azure portal または Azure CLI では、次のドキュメント リソースを使用します。
 
 * [LUIS のオーサリング リソース間でアプリを移行する](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-* [新しいリソース グループまたはサブスクリプションにリソースを移行する](../../azure-resource-manager/resource-group-move-resources.md)
-* [同じサブスクリプション内またはサブスクリプション間でリソースを移行する](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
+* [新しいリソース グループまたはサブスクリプションにリソースを移行する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [同じサブスクリプション内またはサブスクリプション間でリソースを移行する](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-サブスクリプションの[所有権](../../billing/billing-subscription-transfer.md)を移転するには 
+サブスクリプションの[所有権](../../cost-management-billing/manage/billing-subscription-transfer.md)を移転するには 
 
 **移行したユーザーの場合 - [移行されたオーサリング リソース](luis-migration-authoring.md) アプリ**: リソースの所有者として、`contributor` を追加できます。
 
@@ -165,7 +165,7 @@ LUIS には、リソースの所有権を移転するという概念はありま
 
 LUIS 予測ランタイム エンドポイント キーを表示できるユーザーを制御するには、サーバー間環境でキーを呼び出します。 ボットから LUIS を使用している場合、このボットと LUIS の間の接続は既にセキュリティで保護されています。 LUIS エンドポイントを直接呼び出している場合は、アクセスが制御された ([AAD](https://azure.microsoft.com/services/active-directory/) など) サーバー側 API (Azure [関数](https://azure.microsoft.com/services/functions/)など) を作成する必要があります。 サーバー側 API が呼び出され、認証と承認が確認されると、LUIS への呼び出しが渡されます。 この戦略では man-in-the-middle (中間者) 攻撃を防ぐことはできませんが、ユーザーからエンドポイントを難読化し、アクセスの追跡を可能にして、エンドポイントの応答のログ ([Application Insights](https://azure.microsoft.com/services/application-insights/) など) を追加できます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [バージョン管理](luis-concept-version.md)の概念を理解します。 
 * [キーの作成方法](luis-how-to-azure-subscription.md)を確認します。

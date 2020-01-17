@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005755"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901730"
 ---
 この記事では、Azure クラシック デプロイ モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
 
@@ -19,9 +19,9 @@ ms.locfileid: "74005755"
 
 | エラー文字列 | 対応策 |
 | --- | --- |
-| 内部サーバー エラー |場合によっては、これは再試行によって解消される一時的なエラーです。 エラーが解消されない場合は、プラットフォームのログを調べる必要があるため、[Azure サポートにご連絡](../articles/azure-supportability/how-to-create-azure-support-request.md)ください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
+| 内部サーバー エラー |場合によっては、これは再試行によって解消される一時的なエラーです。 エラーが解消されない場合は、プラットフォームのログを調べる必要があるため、[Azure サポートにご連絡](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)ください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
 | HostedService {hosted-service-name} 内の配置 {deployment-name} は PaaS 配置 (Web/Worker) であるため、移行がサポートされません。 |これは、デプロイに Web/worker ロールが含まれている場合に発生します。 仮想マシンの移行のみがサポートされているため、デプロイから Web/ワーカー ロールを削除し、移行をやり直してください。 |
-| テンプレート {template-name} をデプロイできませんでした。 関連付け ID = {guid} |移行サービスのバックエンドでは、Azure Resource Manager テンプレートを使用して Azure Resource Manager スタック内にリソースを作成します。 テンプレートはべき等であるため、通常は移行操作を繰り返すことでこのエラーを解決しても問題はありません。 エラーが解消されない場合は、[Azure サポートに連絡](../articles/azure-supportability/how-to-create-azure-support-request.md)して関連付け ID をお知らせください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
+| テンプレート {template-name} をデプロイできませんでした。 関連付け ID = {guid} |移行サービスのバックエンドでは、Azure Resource Manager テンプレートを使用して Azure Resource Manager スタック内にリソースを作成します。 テンプレートはべき等であるため、通常は移行操作を繰り返すことでこのエラーを解決しても問題はありません。 エラーが解消されない場合は、[Azure サポートに連絡](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)して関連付け ID をお知らせください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
 | 仮想ネットワーク {virtual-network-name} は存在していません。 |これは、新しい Azure Portal で Virtual Network を作成した場合に発生する可能性があります。 実際の仮想ネットワーク名は、"グループ * \<VNET name>" のパターンに従います。 |
 | HostedService {hosted-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない拡張機能 {extension-name} が含まれています。 移行を続行する前に、この拡張機能を VM からアンインストールすることをお勧めします。 |Azure Resource Manager では、BGInfo 1.\* などの XML 拡張機能はサポートされていません。 そのため、これらの拡張機能を移行することはできません。 これらの拡張機能が仮想マシンにインストールされている場合は、移行を完了する前に自動的にアンインストールされます。 |
 | HostedService {hosted-service-name} 内の VM {vm-name} に、移行用に現在サポートされていない拡張機能 VMSnapshot/VMSnapshotLinux が含まれています。 この機能を一度 VM からアンインストールし、移行が完了したら Azure Resource Manager を使って再インストールしてください。 |これは、仮想マシンが Azure Backup 用に構成されるシナリオです。 これは、現時点ではサポートされていないシナリオであるため、 https://aka.ms/vmbackupmigration の回避策に従ってください。 |

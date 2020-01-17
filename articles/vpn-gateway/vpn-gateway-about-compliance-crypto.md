@@ -1,18 +1,18 @@
 ---
-title: 'Azure VPN Gateway: 暗号化要件'
+title: Azure VPN Gateway:暗号化要件
 description: この記事では、暗号化要件と Azure VPN ゲートウェイについて説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666496"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902821"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて
 
@@ -51,13 +51,13 @@ IPsec/IKE ポリシーを作成し、新規または既存の接続に適用す�
 1. ほかのハウツー ドキュメントの説明に従って、接続トポロジーに適した仮想ネットワーク、VPN ゲートウェイ、またはローカル ネットワーク ゲートウェイを作成します。
 2. IPsec/IKE ポリシーの作成
 3. S2S または VNet 間接続を作成するときに、ポリシーを適用することができます。
-4. 接続が既に作成されている場合、既存の接続に対してポリシーを適用したり更新したりできます。
+4. 接続が既に作成されている場合、ポリシーを既存の接続に適用するか、更新する
 
 ## <a name="ipsecike-policy-faq"></a>IPsec/IKE ポリシーに関する FAQ
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 接続にカスタム IPsec/IKE ポリシーを構成する手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページをご覧ください。
 

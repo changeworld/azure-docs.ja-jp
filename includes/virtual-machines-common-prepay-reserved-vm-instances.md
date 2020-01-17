@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: f583796fc353852ef3898e28fa96524e08cfb4ad
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414517"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020904"
 ---
-Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)」を参照してください。
+Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)」を参照してください。
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>購入する前に適切な VM サイズを決定する
 
@@ -72,13 +72,13 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 - **クラウド**: ドイツまたは中国の各リージョンでは、予約購入を利用できません。
 
-- **クォータの不足**: 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに利用できる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series に対して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11 個分の予約を購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、サブスクリプションに D-Series に対する 10 vCPU のクォータがあり、2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約を購入することができます。 [クォータを増やす要求を作成](../articles/azure-supportability/resource-manager-core-quotas-request.md)して、この問題を解決できます。
+- **クォータの不足**: 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに利用できる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series に対して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11 個分の予約を購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、サブスクリプションに D-Series に対する 10 vCPU のクォータがあり、2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約を購入することができます。 [クォータを増やす要求を作成](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)して、この問題を解決できます。
 
 - **容量制限**: まれなケースですが、VM サイズのサブセットに関して、リージョンのキャパシティが低下しているために、新しい予約を購入できないよう Azure によって制限されます。
 
 ## <a name="buy-a-reserved-vm-instance"></a>予約 VM インスタンスの購入
 
-予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) から購入できます。 予約の支払いは、[前払いまたは月払い](../articles/billing/billing-monthly-payments-reservations.md)で行います。
+予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) から購入できます。 予約の支払いは、[前払いまたは月払い](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)で行います。
 予約 VM インスタンスの購入には、次の要件が適用されます。
 
 - 少なくとも 1 つの EA サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
@@ -87,7 +87,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 インスタンスを購入する場合、次のことが必要です。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[すべてのサービス]**  >  **[予約]** を選択します。
 1. **[追加]** を選択して新しい予約を購入してから、 **[仮想マシン]** をクリックします。
 1. 必須フィールドに入力します。 選択した属性と一致する VM インスタンスを実行することで、予約割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
@@ -95,12 +95,12 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 EA 契約を結んでいる場合、 **[Add more option]\(さらにオプションを追加\)** を使用してインスタンスをすばやく追加することができます。 このオプションは、他のサブスクリプションの種類では使用できません。
 
 
-| フィールド      | 説明|
+| フィールド      | [説明]|
 |------------|--------------|
-|Subscription|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
-|Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>**単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。</li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li></ul>|
+|サブスクリプション|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
+|スコープ       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>**単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。</li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li></ul>|
 |リージョン    |予約の対象となる Azure リージョン。|    
-|VM サイズ     |VM インスタンスのサイズ|
+|[VM サイズ]     |VM インスタンスのサイズ|
 |最適化の対象     |VM インスタンス サイズの柔軟性は既定で選択されています。 インスタンス サイズの柔軟性の値を変更して、同じ [VM サイズグループ](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)の他の VM に予約割引を適用するには、 **[詳細設定]** をクリックします。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 それにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
 |期間        |1 年間または 3 年間。|
 |Quantity    |予約内で購入しているインスタンス数。 数量は、課金の割引を受けられる実行中の VM インスタンス数です。 たとえば、米国東部で Standard_D2 VM を 10 個実行している場合、実行中のすべての VM のメリットを最大限に利用するには、数量を 10 と指定します。 |
@@ -111,7 +111,7 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 
 使用状況データには、予約割引が適用される使用量に対する 0 の実効価格があります。 予約ごとに、予約割引を受けた VM インスタンスを確認できます。
 
-使用状況データに予約割引を表示する方法の詳細については、EA を使用している場合は、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)」を参照してください。 個別サブスクリプションを使用している場合は、「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../articles/billing/billing-understand-reserved-instance-usage.md)」を参照してください。
+使用状況データに予約割引を表示する方法の詳細については、EA を使用している場合は、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」を参照してください。 個別サブスクリプションを使用している場合は、「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)」を参照してください。
 
 ## <a name="change-a-reservation-after-purchase"></a>購入後に予約を変更する
 
@@ -134,20 +134,20 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- 予約を管理する方法については、「[Azure の予約の管理](../articles/billing/billing-manage-reserved-vm-instance.md)」をご覧ください。
+- 予約を管理する方法については、「[Azure の予約の管理](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)」をご覧ください。
 - Azure の予約の詳細については、次の記事を参照してください。
-    - [Azure の予約とは](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Azure での予約の管理](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [予約割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [従量課金制料金のサブスクリプションの予約の使用状況について](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [エンタープライズ加入契約の予約使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [予約に含まれない Windows ソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Azure の予約とは](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Azure での予約の管理](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [予約割引の適用方法について](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [従量課金制料金のサブスクリプションの予約の使用状況について](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [エンタープライズ加入契約の予約使用量について](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [予約に含まれない Windows ソフトウェアのコスト](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)

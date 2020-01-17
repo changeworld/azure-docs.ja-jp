@@ -1,6 +1,7 @@
 ---
-title: 'S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする: Azure Resource Manager | Microsoft Docs'
+title: S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 description: この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bce6a05938af9b8726b1b52ccb65d22d7492cfe
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157646"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778449"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 
@@ -97,6 +98,6 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 構成スクリプトをダウンロードして検証した後は、お使いの VPN デバイスにスクリプトを適用します。 実際の手順は、お使いの VPN デバイスの製造元とモデルによって異なります。 お使いの VPN デバイスの操作マニュアルまたは説明ページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 引き続き[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を構成してください。

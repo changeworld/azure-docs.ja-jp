@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: 40da2016026c8a7e02d1b243a783d01559e8c197
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c550174bff0529e0fc619f1de79c41ab7cf62a36
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005526"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021216"
 ---
-この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/resource-group-overview.md)の詳細を参照してください。 
+この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。
@@ -75,7 +75,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 > Resource Manager デプロイ モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。
 
 次のスクリーンショットは、Azure portal を使用してクラシック ストレージ アカウントを Azure Resource Manager ストレージ アカウントにアップグレードする方法を示しています。
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ストレージ アカウントに移動します。
 3. **[設定]** セクションで、 **[ARM への移行]** をクリックします。
 4. **[検証]** をクリックして、移行が可能かどうかを確かめます。
@@ -112,7 +112,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 ### <a name="unsupported-configurations"></a>サポートされていない構成
 次の構成は現在サポートされていません。
 
-| Service | 構成 | 推奨 |
+| サービス | 構成 | 推奨 |
 | --- | --- | --- |
 | リソース マネージャー |クラシック リソースのロールベースのアクセス制御 (RBAC) |リソースの URI は移行後に変更されるため、移行後に必要になる RBAC ポリシーの更新を計画しておくことをお勧めします。 |
 | Compute |VM に関連付けられている複数のサブネット |1 つのサブネットのみを参照するようにサブネット構成を更新します。 この操作には、セカンダリ NIC (別のサブネットを参照している) を VM から削除し、移行の完了後に再接続することが必要な場合があります。 |

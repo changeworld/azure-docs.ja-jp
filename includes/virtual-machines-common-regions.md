@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564724"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020829"
 ---
 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
 
@@ -51,7 +51,7 @@ Azure には、コンプライアンスまたは法的な目的に合致した�
 リージョンのペアの完全な一覧は [こちら](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)で確認できます。
 
 ## <a name="feature-availability"></a>使用可能な機能
-特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 [各リージョンでサポートされている VM のサイズと制限をプログラムでクエリする](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)こともできます。
+特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 [各リージョンでサポートされている VM のサイズと制限をプログラムでクエリする](../articles/azure-resource-manager/templates/error-sku-not-available.md)こともできます。
 
 ## <a name="storage-availability"></a>ストレージの可用性
 Azure のリージョンと Geo を理解することは、使用可能なストレージのレプリケーション オプションを検討する際に重要になります。 ストレージのタイプに応じて、さまざまなレプリケーションのオプションがあります。

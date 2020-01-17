@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300114"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980751"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 
@@ -33,7 +33,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage アカウント](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -575,7 +575,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
   
     ![キューの削除](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

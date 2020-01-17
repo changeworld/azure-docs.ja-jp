@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279209"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751496"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -44,6 +44,15 @@ Premium Storage キャッシュ:サポートされています
 
 <sup>1</sup> Fsv2 シリーズの VM は、Intel® ハイパースレッディング テクノロジを備えています。
 
-<sup>2</sup> 64 個を超える vCPU を使用するには、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 を含む Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3。
+<sup>2</sup> 64 個を超える vCPU を使用するには、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。
+- Windows Server 2016 以降
+- Azure 用にチューニングされたカーネル (4.15 カーネル以降) を含む Ubuntu 16.04 LTS 以降
+- SLES 12 SP2 以降
+- Microsoft が提供する LIS パッケージ 4.3.1 (以降) がインストールされた RHEL または CentOS バージョン 6.7 ～ 6.10
+- Microsoft が提供する LIS パッケージ 4.2.1 (以降) がインストールされた RHEL または CentOS バージョン 7.3
+- RHEL または CentOS バージョン 7.6 以降
+- UEK4 以降を含む Oracle Linux
+- バックポート カーネルを含む Debian 9、Debian 10 以降
+- 4\.14 カーネル以降を含む CoreOS
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。

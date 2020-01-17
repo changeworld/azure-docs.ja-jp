@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206499"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045735"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple プライベート クラウドの負荷分散ソリューションを選択する
 
@@ -37,7 +37,7 @@ vCenter インターフェイスを使用して、仮想ロード バランサ�
 
 Web フロントエンド層が Azure サブスクリプションの Azure vNet 内で実行され、アプリケーションの DB 層が CloudSimple プライベート クラウドの VMware VM で実行されているハイブリッド デプロイでアプリケーションを実行することを選択する場合は、トラフィックの管理のために、DB 層 VM の前で Azure 内部ロード バランサー (L4 ロード バランサー) を使用できます。
 
-詳細については、Azure の[内部ロード バランサー](../load-balancer/load-balancer-overview.md#internalloadbalancer)に関するドキュメントを参照してください。
+詳細については、Azure の[内部ロード バランサー](../load-balancer/concepts-limitations.md#internalloadbalancer)に関するドキュメントを参照してください。
 
 ## <a name="global-server-load-balancer"></a>グローバル サーバーのロード バランサー
 

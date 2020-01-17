@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4927a26b78c8f68f1752abc76c30f143a361a912
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611119"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732639"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -31,7 +31,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>感情分析、キー フレーズ抽出、および名前付きエンティティ認識
 
-感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。 名前付きエンティティの認識 v2 では、[エンティティ型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2)の完全なセットのサポートは、現在のところ次の言語に限定されています。 
+感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。 名前付きエンティティの認識 v2 では、[エンティティ型](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)の完全なセットのサポートは、現在のところ次の言語に限定されています。 
 * English
 * 簡体中国語
 * French
@@ -75,7 +75,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 
 \* 言語サポートはプレビュー段階です
 
-\** [感情分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) および[名前付きエンティティの認識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) パブリック プレビューでも使用できます。
+\** [感情分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) および[名前付きエンティティの認識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) パブリック プレビューでも使用できます。
 
 ## <a name="see-also"></a>参照
 

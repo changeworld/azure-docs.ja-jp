@@ -4,14 +4,14 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: c41beda6c9d6bb4b63a45944126421dd22799904
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181200"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980168"
 ---
-上記のテンプレートは、[Azure Resource Manager のドキュメント](../articles/azure-resource-manager/resource-group-template-deploy.md)に従ってデプロイできます。
+上記のテンプレートは、[Azure Resource Manager のドキュメント](../articles/azure-resource-manager/templates/deploy-powershell.md)に従ってデプロイできます。
 
 このチュートリアル シリーズは、[基本スケール セット テンプレートの記事](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)から開始できます。
 

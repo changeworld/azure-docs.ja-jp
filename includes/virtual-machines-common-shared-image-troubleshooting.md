@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: cc35133df073eea056586dede62c451713e98c10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663146"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773029"
 ---
 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では **-debug** スイッチ、PowerShell では **-Debug** スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
@@ -96,7 +96,7 @@ VM または仮想マシン スケール セットの作成を試行している
 
 ## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
 
-[Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
+[Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
 
 
 

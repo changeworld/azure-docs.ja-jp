@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005408"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020956"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 
-No. VM (クラシック) は、一般公開で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。
+いいえ。 VM (クラシック) は、一般公開で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>近日中に移行する予定がない場合、VM はどうなりますか? 
 
-既存のクラシック API やリソース モデルが廃止されることはありません。 Resource Manager デプロイ モデルで使用できる高度な機能により、移行が簡単になります。 Resource Manager の IaaS に含まれる [機能強化をいくつか](../articles/azure-resource-manager/resource-manager-deployment-model.md) 確認することを強くお勧めします。
+既存のクラシック API やリソース モデルが廃止されることはありません。 Resource Manager デプロイ モデルで使用できる高度な機能により、移行が簡単になります。 Resource Manager の IaaS に含まれる [機能強化をいくつか](../articles/azure-resource-manager/management/deployment-models.md) 確認することを強くお勧めします。
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>既存のツールにとって、この移行計画はどのような意味がありますか? 
 
@@ -41,7 +41,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Resource Manager で IaaS を使用する必要がある場合、別の Express Route 回線を購入する必要はありますか? 
 
-No. 最近、 [クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../articles/expressroute/expressroute-move.md)が可能になりました。 ExpressRoute 回線が既にある場合は、新しいものを購入する必要はありません。
+いいえ。 最近、 [クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../articles/expressroute/expressroute-move.md)が可能になりました。 ExpressRoute 回線が既にある場合は、新しいものを購入する必要はありません。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>クラシック IaaS リソース用にロールベースの Access Control ポリシーを構成した場合はどうすればよいですか? 
 

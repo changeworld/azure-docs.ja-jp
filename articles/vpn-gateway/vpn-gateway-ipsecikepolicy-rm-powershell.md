@@ -3,25 +3,17 @@ title: S2S VPN および VNet-to-VNet 接続用の IPsec/IKE ポリシー
 titleSuffix: Azure VPN Gateway
 description: Azure Resource Manager と PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151786"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864062"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
@@ -64,7 +56,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。
 
-| **IPsec/IKEv2**  | **オプション**    |
+| **IPsec/IKEv2**  | **[オプション]**    |
 | ---  | --- 
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5  |
@@ -408,7 +400,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 同じスクリプトを使用して、接続からポリシーが削除されたかどうかを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポリシー ベースのトラフィック セレクターの詳細については、[複数のオンプレミスのポリシー ベースの VPN デバイスへの接続](vpn-gateway-connect-multiple-policybased-rm-ps.md)に関する記事を参照してください。
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 58278e241df3d9242c1cb3ad5d6e931c9c4ca701
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150921"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894690"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 

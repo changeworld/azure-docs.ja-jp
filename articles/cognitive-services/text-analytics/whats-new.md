@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: f489c3f11800d3125c393188496ead3682b18e04
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378417"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732622"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -35,7 +35,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 エンティティのリンクでは、英語とスペイン語がサポートされています。 NER の言語サポートは、エンティティ型によって異なります。 
 
 > [!div class="nextstepaction"]
-> [名前付きエンティティの認識 v3 に関する詳細](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
+> [名前付きエンティティの認識 v3 に関する詳細](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>感情分析 v3 のパブリック プレビュー - 2019 年 10 月
 
@@ -49,7 +49,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 > [!div class="nextstepaction"]
 > [感情分析 v3 の詳細情報](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Text Analytics API とは](overview.md)  
 * [ユーザー シナリオの例](text-analytics-user-scenarios.md)
