@@ -851,8 +851,6 @@
         - name: 整合性レベルを管理する
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: カスタム同期を実装する
-          href: how-to-custom-synchronization.md
         - name: 競合解決ポリシーを構成する
           href: how-to-manage-conflicts.md
     - name: プロビジョニング スループット

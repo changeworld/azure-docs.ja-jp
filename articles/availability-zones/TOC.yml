@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Load Balancer とは
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer Standard と Availability Zones
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: ゾーン冗長パブリック Standard Load Balancer を作成する
@@ -61,7 +61,7 @@
           items:
             - name: SQL Database での可用性ゾーン
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Storage
+        - name: ストレージ
           items:
             - name: ゾーン冗長ストレージ
               href: ../storage/common/storage-redundancy-zrs.md

@@ -4,8 +4,6 @@
   items:
     - name: Load Balancer とは
       href: load-balancer-overview.md
-    - name: Standard Load Balancer とは
-      href: load-balancer-standard-overview.md
 - name: クイック スタート
   items:
     - name: Standard Load Balancer を作成する
