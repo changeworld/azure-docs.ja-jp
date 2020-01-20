@@ -17,7 +17,7 @@ ms.locfileid: "75367095"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="create-alert"></a>アラートを作成する
 

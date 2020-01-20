@@ -6,18 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 95e9f7211c8cd6cb4edd59d099ae9c189bae3780
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666926"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979389"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps でロジック アプリ ワークフロー定義の JSON を作成、編集、拡張する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。 ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に [Azure リソース](../azure-resource-manager/management/overview.md)としてロジック アプリ定義を含めることができます。 ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。
+ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に [Azure リソース](../azure-resource-manager/management/overview.md)としてロジック アプリ定義を含めることができます。
+ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
 
-JSON でロジック アプリ定義を操作するには、Azure Portal または Visual Studio で作業するときにコード ビュー エディターを開くか、任意のエディターに定義をコピーします。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
+JSON でロジック アプリ定義を操作するには、Azure Portal または Visual Studio で作業するときにコード ビュー エディターを開くか、任意のエディターに定義をコピーします。
+ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 > [!NOTE]
 > ロジック アプリ定義のパラメーターや複数のトリガーの定義など、Azure Logic Apps の一部の機能は JSON でのみ使用でき、Logic Apps デザイナーでは使用できません。
@@ -25,9 +28,10 @@ JSON でロジック アプリ定義を操作するには、Azure Portal また�
 
 ## <a name="edit-json---azure-portal"></a>JSON を編集する - Azure Portal
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> にサインインする
+1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> にサインインします。
 
-2. 左側のメニューの **[すべてのサービス]** を選択します。 検索ボックスで "logic apps" を検索し、検索結果からロジック アプリを選択します。
+2. 左側のメニューの **[すべてのサービス]** を選択します。
+検索ボックスで "logic apps" を検索し、検索結果からロジック アプリを選択します。
 
 3. ロジック アプリのメニューで、 **[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
 
@@ -35,22 +39,25 @@ JSON でロジック アプリ定義を操作するには、Azure Portal また�
 
 ## <a name="edit-json---visual-studio"></a>JSON を編集する - Visual Studio
 
-Visual Studio でロジック アプリ定義を操作する前に、[必要なツールがインストール](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)されていることを確認します。 Visual Studio でロジック アプリを作成するときは、「[クイック スタート:Azure Logic Apps を使用してタスクとプロセスを自動化する - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)」をご覧ください。
+Visual Studio でロジック アプリ定義を操作する前に、[必要なツールがインストール](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)されていることを確認します。
+Visual Studio でロジック アプリを作成するときは、「[クイック スタート:Azure Logic Apps を使用してタスクとプロセスを自動化する - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)」をご覧ください。
 
 Visual Studio では、Azure Portal から直接デプロイされているか、Visual Studio から Azure Resource Manager プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
 
 1. ロジック アプリを含む、Visual Studio ソリューションまたは [Azureリソース グループ](../azure-resource-manager/management/overview.md) プロジェクトを開きます。
 
-2. ロジック アプリの定義を見つけて開きます。既定では、**LogicApp.json** という名前の [Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に表示されます。 このテンプレートを使用し、さまざまな環境へのデプロイ用にカスタマイズできます。
+2. ロジック アプリの定義を見つけて開きます。既定では、**LogicApp.json** という名前の [Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に表示されます。
+このテンプレートを使用し、さまざまな環境へのデプロイ用にカスタマイズできます。
 
-3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します
+3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。
+**[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します
 
    ![Visual Studio ソリューションのロジック アプリを開く](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
    > [!TIP]
    > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
-4. デザイナーの下部で **[コード ビュー]** を選択します。 
+4. デザイナーの下部で **[コード ビュー]** を選択します。
 
    コード ビュー エディターが開き、JSON 形式でロジック アプリ定義が表示されます。
 
@@ -58,7 +65,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 ## <a name="parameters"></a>パラメーター
 
-通常、デプロイのライフサイクルには、開発、テスト、ステージング、運用の異なる環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。 
+通常、デプロイのライフサイクルには、開発、テスト、ステージング、運用の異なる環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。
 
 これらの値を*パラメーター化する*次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
@@ -76,7 +83,10 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 ## <a name="process-strings-with-functions"></a>関数を使用して文字列を処理する
 
-Logic Apps には、文字列を操作するためのさまざまな関数があります。 たとえば、注文の会社名を別のシステムに渡すとします。 しかし、文字エンコードの適切な処理がわかりません。 この場合、この文字列の Base64 エンコードを実行できますが、URL のエスケープを回避するために、いくつかの文字を置き換えることができます。 また、最初の 5 文字は使用されないため、会社名の部分文字列のみが必要です。
+Logic Apps には、文字列を操作するためのさまざまな関数があります。
+たとえば、注文の会社名を別のシステムに渡すとします。
+しかし、文字エンコードの適切な処理がわかりません。
+この場合、この文字列の Base64 エンコードを実行できますが、URL のエスケープを回避するために、いくつかの文字を置き換えることができます。 また、最初の 5 文字は使用されないため、会社名の部分文字列のみが必要です。
 
 ``` json
 {
@@ -121,7 +131,8 @@ Logic Apps には、文字列を操作するためのさまざまな関数があ
 
 2. 取得する文字列を短くするために、`5` を減算します。
 
-3. [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) を取得します。 インデックス `5` から開始し、文字列の残りの部分に移動します。
+3. [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) を取得します。
+インデックス `5` から開始し、文字列の残りの部分に移動します。
 
 4. この部分文字列を [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) 文字列に変換します。
 
@@ -133,7 +144,8 @@ Logic Apps には、文字列を操作するためのさまざまな関数があ
 
 プロパティの値に基づいて異なる結果を取得するには、各プロパティ値を結果に対応付けるマップを作成し、そのマップをパラメーターとして使用します。
 
-たとえば、このワークフローでは、いくつかのカテゴリをパラメーターとして定義し、それらのカテゴリを特定の URL に対応付けるマップを定義します。 ワークフローでは、まず、記事のリストを取得します。 次に、マップを使用して、各記事のカテゴリに一致する URL を検索します。
+たとえば、このワークフローでは、いくつかのカテゴリをパラメーターとして定義し、それらのカテゴリを特定の URL に対応付けるマップを定義します。
+ワークフローでは、まず、記事のリストを取得します。 次に、マップを使用して、各記事のカテゴリに一致する URL を検索します。
 
 *   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) 関数は、そのカテゴリが定義済みの既知のカテゴリと一致するかどうかを確認します。
 
@@ -209,7 +221,8 @@ Logic Apps には、文字列を操作するためのさまざまな関数があ
 
 ## <a name="get-data-with-date-functions"></a>日付関数を使用してデータを取得する
 
-"*トリガー*" をネイティブにサポートしていないデータ ソースからデータを取得するには、代わりに日付関数を使用して日付と時刻を処理します。 たとえば、次の式では、このワークフローのステップの所要時間を確認します。内側から外側に向かって処理が行われます。
+"*トリガー*" をネイティブにサポートしていないデータ ソースからデータを取得するには、代わりに日付関数を使用して日付と時刻を処理します。
+たとえば、次の式では、このワークフローのステップの所要時間を確認します。内側から外側に向かって処理が行われます。
 
 ``` json
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
@@ -219,15 +232,16 @@ Logic Apps には、文字列を操作するためのさまざまな関数があ
 2. `utcNow()` を使用して現在の時刻を取得します。
 3. 1 秒減算します。
 
-   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
+   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md)
 
    このとき、`minutes` や `hours` のような他の時間単位も使用できます。
 
-3. これで、この 2 つの値を比較できます。 
+3. これで、この 2 つの値を比較できます。
 
    最初の値が 2 番目の値より小さい場合、最初に注文が実行されてから 2 秒以上経過しています。
 
-日付を書式設定するには、文字列フォーマッタを使用します。 たとえば、RFC1123 を取得するには、[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) を使用します。 日付の書式設定の詳細については、[こちら](../logic-apps/logic-apps-workflow-definition-language.md)をご覧ください。
+日付を書式設定するには、文字列フォーマッタを使用します。 たとえば、RFC1123 を取得するには、[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) を使用します。
+日付の書式設定の詳細については、[こちら](../logic-apps/logic-apps-workflow-definition-language.md)をご覧ください。
 
 ``` json
 {

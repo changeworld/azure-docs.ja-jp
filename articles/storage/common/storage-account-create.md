@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0d12f50b059bf74cc1bbc55913d4ce49b77f81fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477057"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975928"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
@@ -67,7 +67,7 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -260,7 +260,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-また、リソース グループを削除して、ストレージ アカウントとそのリソース グループ内の他のリソースを削除することもできます。 リソース グループの削除の詳細については、[リソース グループの削除](../../azure-resource-manager/resource-group-delete.md)に関するページを参照してください。
+また、リソース グループを削除して、ストレージ アカウントとそのリソース グループ内の他のリソースを削除することもできます。 リソース グループの削除の詳細については、[リソース グループの削除](../../azure-resource-manager/management/delete-resource-group.md)に関するページを参照してください。
 
 > [!WARNING]
 > 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。 アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 これはアカウントのどのリソースにも当てはまります。BLOB、テーブル、キュー、またはファイルを削除すると、完全に削除されます。

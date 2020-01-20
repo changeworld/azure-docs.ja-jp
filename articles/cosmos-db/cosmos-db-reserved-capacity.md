@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969351"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -20,9 +20,9 @@ Azure Cosmos DB の予約容量を利用すると、Azure Cosmos DB リソース
 
 Azure Cosmos DB 予約容量では、Cosmos DB にかかる費用を大幅に削減できます。1 年分または 3 年分の前払いにより、最大で 65 % の割引が可能になります。 予約容量では、割引が適用されても、Azure Cosmos DB リソースのランタイム状態は維持されます。
 
-Azure Cosmos DB の予約容量では、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。 予約を購入するとすぐに、予約の属性に一致するスループット料金は従量課金制で課金されなくなります。 予約について詳しくは、「[Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)」をご覧ください。
+Azure Cosmos DB の予約容量では、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。 予約を購入するとすぐに、予約の属性に一致するスループット料金は従量課金制で課金されなくなります。 予約について詳しくは、「[Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)」をご覧ください。
 
-Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) から購入できます。 予約の支払いは、[前払いまたは月払い](../billing/billing-monthly-payments-reservations.md)で行います。 予約容量を購入するには:
+Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) から購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/monthly-payments-reservations.md)で行います。 予約容量を購入するには:
 
 * 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。  
 * Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
@@ -40,7 +40,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB の予約容量を購入する
 
-1. [Azure portal](https://portal.azure.com) にサインインする  
+1. [Azure portal](https://portal.azure.com) にサインインします。  
 
 2. **[すべてのサービス]**  >  **[予約]**  >  **[追加]** を選択します。  
 
@@ -74,22 +74,22 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-適正な予約容量を明らかにするには、「[Azure Cosmos DB に予約割引が適用されるしくみについて](../billing/billing-understand-cosmosdb-reservation-charges.md)」を参照してください。
+適正な予約容量を明らかにするには、「[Azure Cosmos DB に予約割引が適用されるしくみについて](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)」を参照してください。
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 予約割引は、予約スコープと属性に一致する Azure Cosmos DB リソースに対して自動的に適用されます。 予約のスコープは、Azure portal、PowerShell、Azure CLI、または API で更新できます。
 
-*  Azure Cosmos DB に予約容量割引が適用される方法については、「[Azure の予約割引の概要](../billing/billing-understand-cosmosdb-reservation-charges.md)」をご覧ください。
+*  Azure Cosmos DB に予約容量割引が適用される方法については、「[Azure の予約割引の概要](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)」をご覧ください。
 
 * Azure の予約の詳細については、次の記事を参照してください。
 
-   * [Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)  
-   * [Azure の予約の管理](../billing/billing-manage-reserved-vm-instance.md)  
-   * [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)  
-   * [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
+   * [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
+   * [従量課金制サブスクリプションの予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Azure reservations in the Partner Center CSP program](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459374"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980186"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
@@ -75,7 +75,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ```
 
 ## <a name="specify-location"></a>場所を指定する
-仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
+仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
 
 ```json
        "location": "[resourceGroup().location]",

@@ -86,4 +86,4 @@ Cognitive Services リソース全般に言えることですが、Face サー�
 
 クイック スタートに従って、顔検出のシナリオをコードで実装します。
 
-- [クイック スタート:.NET SDK と C# を使用して画像内の顔を検出する](quickstarts/csharp.md)。 その他の言語が使用可能です。
+- [クイック スタート: .NET SDK と C# を使用して画像内の顔を検出する](quickstarts/csharp.md)。 その他の言語が使用可能です。

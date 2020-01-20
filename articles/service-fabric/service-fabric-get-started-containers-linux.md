@@ -249,7 +249,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-[https://github.com/Azure-Samples/service-fabric-containers/](https://github.com/Azure-Samples/service-fabric-containers/ ) にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+https://github.com/Azure-Samples/service-fabric-containers/ にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
 
 ```bash

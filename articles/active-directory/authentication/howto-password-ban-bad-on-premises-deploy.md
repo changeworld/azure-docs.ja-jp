@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560258"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888954"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -34,7 +34,7 @@ ms.locfileid: "75560258"
 
 より強力なパスワード検証が、既存の Active Directory ドメイン コントローラーの展開の自動化に影響を与える可能性もあります。 このような問題を事前に発見できるように、監査期間の評価中に、少なくとも 1 つの DC 昇格と 1 つの DC 降格が行われるようにすることをお勧めします。  詳細については、次を参照してください。
 
-* [Ntdsutil.exe で、ディレクトリ サービスの修復モードの弱いパスワードを設定できない](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Ntdsutil.exe で、ディレクトリ サービスの修復モードの弱いパスワードを設定できない](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [ディレクトリ サービスの修復モードの弱いパスワードが原因でドメイン コントローラー レプリカの昇格が失敗する](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [弱いローカル管理者パスワードのためにドメイン コントローラーの降格が失敗する](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
@@ -124,7 +124,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    * 次の PowerShell コマンドを使用して、サービスが実行されていることを確認します。
 
-      [https://login.microsoftonline.com/consumers/](`Get-Service AzureADPasswordProtectionProxy | fl`)
+      `Get-Service AzureADPasswordProtectionProxy | fl`
 
      結果の **Status** が "Running" と表示される必要があります。
 

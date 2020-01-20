@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9b106ea43e6a11d616ed2212636975bbbbf65631
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353556"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751801"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -35,12 +35,6 @@ ms.locfileid: "75353556"
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
-
-### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>接続時、証明書が一致しないと表示された場合、どうすればよいでしょうか。
-
-手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** のチェックを外すか、**証明書と共にサーバーの FQDN を追加**します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
-
-![ポイント対サイト](./media/vpn-gateway-faq-p2s-all-include/servercert.png "サーバー証明書")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456350"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978655"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス
 
@@ -50,4 +50,4 @@ ms.locfileid: "75456350"
 
 ## <a name="error-messages"></a>エラー メッセージ
 
-Azure Machine Learning デザイナーでモジュールを使用しているときに発生する可能性のある[エラー メッセージと例外コード](machine-learning-module-error-codes.md)について説明します。
+Azure Machine Learning デザイナーでモジュールを使用しているときに発生する可能性のある[エラー メッセージと例外コード](designer-error-codes.md)について説明します。

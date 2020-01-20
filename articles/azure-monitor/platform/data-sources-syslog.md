@@ -4,15 +4,15 @@ description: Syslog は、Linux に共通のイベント ログ プロトコル�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 5daa9e99ccf71da680dad00b06c4e53f6c8b4e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450626"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -48,7 +48,7 @@ Linux 用 Log Analytics エージェントは、構成で指定されている�
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
 [[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)で Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
-新しいファシリティを追加するには、その名前を入力して、 **+** で Syslog を構成します。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
+新しい機能を追加するには、まず **[下の構成をコンピューターに適用する]** オプションを選択し、その名前を入力して、 **[+]** をクリックします。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
 
 ![Configure Syslog](media/data-sources-syslog/configure.png)
 
@@ -195,7 +195,7 @@ Log Analytics エージェントは、ポート 25224 でローカル クライ�
 ## <a name="syslog-record-properties"></a>Syslog レコードのプロパティ
 Syslog レコードの型は **Syslog** になり、次の表に示すプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Computer |イベントが収集されたコンピューター。 |
 | Facility |メッセージを生成したシステムの部分を定義します。 |
@@ -209,14 +209,14 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 ## <a name="log-queries-with-syslog-records"></a>Syslog レコードのログ クエリ
 次の表は、Syslog レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 |:--- |:--- |
 | syslog |すべての Syslog です。 |
 | Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
 | Syslog &#124; summarize AggregatedValue = count() by Computer |コンピューターごとの Syslog レコードの数です。 |
 | Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * [カスタム フィールド](../../azure-monitor/platform/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 * [Linux エージェントを構成](../../azure-monitor/learn/quick-collect-linux-computer.md) して、他の種類のデータを収集します。

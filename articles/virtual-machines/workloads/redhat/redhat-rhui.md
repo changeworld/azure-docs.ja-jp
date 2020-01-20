@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 40b9bc0fb63e99d9cfb0b5447b5e4300af421aed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a63b388725823695c41339ae173c8d8e34839ef
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474817"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941409"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -30,7 +30,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
 
 * Azure RHUI は、Azure で作成されるすべての RHEL PAYG VM をサポートする更新インフラストラクチャです。 これは、お使いの PAYG RHEL VM を Subscription Manager や Satellite、またはその他の更新ソースに登録することを妨げるものではありませんが、PAYG VM でそれを行うと、間接的に二重請求が発生します。 詳しくは、以下の点を参照してください。
-* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_ 料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、[RHEL BYOS イメージ](https://aka.ms/rhel-byos)を使用するための登録を検討してください。
+* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_ 料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、[RHEL BYOS イメージ](./byos.md)を使用するための登録を検討してください。
 
 * Azure での RHEL SAP PAYG イメージ (RHEL for SAP、RHEL for SAP HANA、および RHEL for SAP Business Applications) は、SAP 認定に必要な特定の RHEL マイナー バージョンのままになっている専用の RHUI チャネルに接続されます。
 

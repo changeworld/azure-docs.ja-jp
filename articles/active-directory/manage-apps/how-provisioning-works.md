@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0078e2ed277eef07968660ddc30e3860d9077777
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476041"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719972"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -62,6 +62,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 これらのマッピングでは、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。 詳細については、[属性マッピングの式の書き方](functions-for-customizing-application-data.md)に関するページを参照してください。
 
+## <a name="scoping"></a>Scoping 
 ### <a name="assignment-based-scoping"></a>割り当てベースのスコープ
 
 Azure AD から SaaS アプリケーションへの送信プロビジョニングでは、[ユーザーまたはグループの割り当て](assign-user-or-group-access-portal.md)に依存することが、プロビジョニングの対象となるユーザーを特定する最も一般的な方法です。 ユーザー割り当てはシングル サインオンの有効化にも使用されるため、アクセスとプロビジョニングの両方を管理するのに同じ方法を使用できます。 割り当てベースのスコープは、Workday や Successfactors などの受信プロビジョニング シナリオには適用されません。

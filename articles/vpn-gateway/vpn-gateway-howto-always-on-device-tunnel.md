@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbfc5328dfb4f374ea90c8e6352877d4179f031b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425663"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921179"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN デバイス トンネルの構成
 
@@ -102,9 +102,9 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
    ```
 1. 次のテキストをコピーし、***VPNProfile.xml*** として **devicecert.ps1** と同じフォルダーに保存します。 お使いの環境に合わせて次のテキストを編集します。
 
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address> <= IP of resource in the vnet or the vnet address space`
 
    ```
    <VPNProfile>  

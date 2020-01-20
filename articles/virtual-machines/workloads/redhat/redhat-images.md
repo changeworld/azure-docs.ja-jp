@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476937"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941460"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -154,5 +154,5 @@ Microsoft および Red Hat では、新しいマイナー バージョンのリ
 ## <a name="next-steps"></a>次のステップ
 * [Azure の RHEL イメージ](./redhat-imagelist.md)の完全な一覧をご覧ください。
 * Azure Red Hat Update Infrastructure の詳細については、[こちら](https://aka.ms/rhui-update)を参照してください。
-* [RHEL BYOS プラン](./redhat-byos.md)の詳細を参照してください。
+* [RHEL BYOS プラン](./byos.md)の詳細を参照してください。
 * すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。

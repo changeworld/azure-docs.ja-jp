@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435789"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -51,11 +51,11 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 ## <a name="ingest-file-storage-and-result-storage"></a>ファイル ストレージと結果ストレージの取り込み
 
-ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Storage 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。 
+ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Storage 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) には、[固有のスケーラビリティ ターゲット](../../storage/common/storage-scalability-targets.md)があります。  大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。  Azure Storage は、ファイルの数やサイズが制限内である限り、数やサイズに関係なく、同等のパフォーマンスを保証します。  つまり、テラバイトのデータを格納し、そのデータのサブセットを使用する場合でもすべてを使用する場合でも、一貫性のあるパフォーマンスを得ることができます。
+[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) には、固有のスケーラビリティ ターゲットがあります。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)」を参照してください。 大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。  Azure Storage は、ファイルの数やサイズが制限内である限り、数やサイズに関係なく、同等のパフォーマンスを保証します。  つまり、テラバイトのデータを格納し、そのデータのサブセットを使用する場合でもすべてを使用する場合でも、一貫性のあるパフォーマンスを得ることができます。
 
 Azure Storage には、さまざまな種類の BLOB があります。  "*追加 BLOB*" は、Web ログやセンサー データを格納するための優れたオプションです。  
 
@@ -77,7 +77,7 @@ ADLS は、Azure Event Hub または Apache Storm を使用したイベントの
 
 テラ バイトの範囲のデータセットのアップロードでは、ネットワークの待機時間が大きな問題になる可能性があります。これはデータがオンプレミスの場所から送信される場合に特に当てはまります。  このような場合は、次のオプションを使用できます。
 
-* Azure ExpressRoute:Azure ExpressRoute を使用すると、Azure データセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 これらの接続により、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
+* Azure ExpressRoute: Azure ExpressRoute を使用すると、Azure データセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 これらの接続により、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
 
 * データの "オフライン" アップロード。 [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) または [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) ツールを使用して、Azure Storage BLOB から Data Lake Storage にデータをコピーできます。
 
@@ -133,7 +133,7 @@ Apache Flume は、Azure HDInsight では使用できません。  オンプレ�
 
 選択した場所にデータが存在すれば、データのクリーニング、結合、または特定の使用パターンに合わせた準備を行う必要があります。  Hive、Pig、および Spark SQL は、すべてがその種の作業を行うための適切な選択肢です。  それらは、すべて HDInsight でサポートされています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [ETL ツールとして Apache Hive を使用する](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

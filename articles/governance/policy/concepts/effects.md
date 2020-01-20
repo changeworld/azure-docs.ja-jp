@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436362"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972810"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -367,7 +367,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
 - **DeploymentScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
-  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
+  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
   - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
   - 既定値は _ResourceGroup_ です。
 - **Deployment** [必須]

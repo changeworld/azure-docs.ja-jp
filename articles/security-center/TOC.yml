@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: 調査で得られたユーザー データの管理
           href: security-center-investigation-user-data.md
-        - name: Logic Apps のプレイブック
-          href: security-center-playbooks.md
         - name: 計画と運用
           href: security-center-planning-and-operations-guide.md
 - name: リファレンス

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 034ad7a074f60f1e2e9a0e6190f405972250c95d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529916"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751073"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、プラットフォーム ログをさまざまな宛先に送信するための診断設定を作成して構成する方法について詳しく説明します。
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、プラットフォーム ログをさまざまな宛先に送信するための診断設定を作成して構成する方法について詳しく説明します。
 
 > [!IMPORTANT]
 > アクティビティ ログを収集する診断設定を作成する前に、まずレガシ構成を無効にする必要があります。 詳細については、「[従来の設定を使用して Azure アクティビティ ログを収集する](diagnostic-settings-legacy.md)」を参照してください。
@@ -136,4 +136,4 @@ Resource Manager テンプレートを使用して診断設定を作成または
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure でのプラットフォーム ログの詳細について読む](resource-logs-overview.md)
+* [Azure でのプラットフォーム ログの詳細について読む](platform-logs-overview.md)

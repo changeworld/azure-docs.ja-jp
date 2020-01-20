@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645193"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979149"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリのアラート送信および監視を行う
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
-* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
+* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
 * `Content-Type` ヘッダーを `application/json` に設定します。
 * Azure Active Directory (Azure AD) から取得した Authorization ヘッダーを JSON Web トークンに設定します。 詳細については、[要求の認証](../active-directory/develop/authentication-scenarios.md)に関するページを参照してください。
 
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
-* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
+* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
 * `Content-Type` ヘッダーを `application/json` に設定します。
 * Azure AD から取得した Authorization ヘッダーを JSON Web トークンに設定します。 詳細については、[要求の認証](../active-directory/develop/authentication-scenarios.md)に関するページを参照してください。
 
@@ -342,9 +342,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**resourceId**| String | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**category**| String | 診断ログのカテゴリ。 プロパティ値は `PipelineRuns` に設定してください。 | `PipelineRuns` |
 |**level**| String | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
-|**operationName**| String | パイプラインの名前とその状態。 パイプラインの実行が完了すると、プロパティ値は `Pipeline - Succeeded` になります。 | [https://login.microsoftonline.com/consumers/](`MyPipeline - Succeeded`) |
+|**operationName**| String | パイプラインの名前とその状態。 パイプラインの実行が完了すると、プロパティ値は `Pipeline - Succeeded` になります。 | `MyPipeline - Succeeded` |
 |**pipelineName**| String | パイプラインの名前。 | `MyPipeline` |
-|**start**| String | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | [https://login.microsoftonline.com/consumers/](`2017-06-26T20:55:29.5007959Z`) |
+|**start**| String | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z` |
 |**end**| String | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。  | `2017-06-26T20:55:29.5007959Z` |
 |**status**| String | パイプライン実行の最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420801"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030162"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -33,7 +33,7 @@ Start/Stop VMs during off-hours ソリューションは、ユーザー定義の
 > [!NOTE]
 > クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 仮想マシンは、異なる複数のクラウド サービスでまだ並列に処理されています。 クラウド サービスあたりの VM 数が 20 を超える場合は、親 Runbook の **ScheduledStartStop_Parent** で複数のスケジュールを作成し、スケジュールあたり 20 個の VM を指定することをお勧めします。 スケジュールのプロパティで、**VMList** パラメーター内の VM 名をコンマ区切りリストとして指定します。 そうしないと、このソリューションの Automation ジョブが 3 時間を超えて実行された場合、そのジョブは[フェア シェア](automation-runbook-execution.md#fair-share)制限に従って一時的にアンロードまたは停止されます。
 >
-> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [**External_EnableClassicVMs**](#variables) 変数を **False** に変更する必要があります。
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [**External_EnableClassicVMs**](#variables) 変数を **False** に変更する必要があります。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

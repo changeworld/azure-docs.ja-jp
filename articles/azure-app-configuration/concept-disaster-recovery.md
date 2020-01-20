@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: f2f914ec993670b8ba7a596f873234afd9ffc8e8
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: cd706e42eff19ebacf92b77d2438af80dc16a5fb
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665055"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028243"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -29,6 +29,8 @@ ms.locfileid: "75665055"
 
 技術的には、ご利用のアプリケーションでフェールオーバーは実行されていません。 2 つの App Configuration ストアから、同じ構成データのセットを同時に取得することが試みられています。 最初にセカンダリ ストアから、次にプライマリ ストアから読み込みを行うようにご自分のコードを調整します。 このアプローチにより、プライマリ ストア内の構成データが使用可能なときは常にそちらが確実に優先されます。 次のコード スニペットは、.NET Core CLI でのこの配置の実装方法を示しています。
 
+#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
@@ -39,8 +41,24 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
                   .AddAzureAppConfiguration(settings["ConnectionString_PrimaryStore"], optional: true);
         })
         .UseStartup<Startup>();
-    }
+    
 ```
+
+#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+                config.AddAzureAppConfiguration(settings["ConnectionString_SecondaryStore"], optional: true)
+                    .AddAzureAppConfiguration(settings["ConnectionString_PrimaryStore"], optional: true);
+            })
+            .UseStartup<Startup>());
+```
+---
 
 `optional` パラメーターが `AddAzureAppConfiguration` 関数に渡されていることに注目してください。 このパラメーターを `true` に設定すると、関数が構成データを読み込めなかった場合にアプリケーションが続行できなくなるのを防げます。
 

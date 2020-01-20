@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972345"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする
 
@@ -72,7 +72,7 @@ Azure Storage 管理ライブラリから管理操作を承認し、呼び出す
 
 Resource Manager デプロイ モデルとクラシック デプロイ モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 新しいストレージ アカウントを作成するときは、Azure Resource Manager デプロイ モデルを使用することをお勧めします。 可能であれば、Resource Manager モデルを使用して既存のクラシック ストレージ アカウントを再作成することもお勧めします。 クラシック デプロイ モデルを使用してストレージ アカウントを作成することはできますが、クラシック モデルは柔軟性が低く、最終的に非推奨になる予定です。
 
-Azure デプロイ モデルの詳細については、「[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
+Azure デプロイ モデルの詳細については、「[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/management/deployment-models.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

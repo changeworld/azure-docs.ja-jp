@@ -3,12 +3,12 @@ title: Power BI レポートを構成
 description: Recovery Services コンテナーを使用して Azure Backup の Power BI レポートを構成します。
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450103"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978365"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "75450103"
 
 ## <a name="prerequisites"></a>前提条件
 
-- レポート用に構成する [Azure ストレージ アカウントを作成](../storage/common/storage-quickstart-create-account.md)します。 このストレージ アカウントは、レポート関連のデータを格納するために使用されます。
+- レポート用に構成する [Azure ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。 このストレージ アカウントは、レポート関連のデータを格納するために使用されます。
 - Power BI ポータルを使用して独自のレポートを表示、カスタマイズ、および作成するための [Power BI アカウントを作成します](https://powerbi.microsoft.com/landing/signin/)。
 - まだ登録されていない場合は、リソース プロバイダー **Microsoft.insights** を登録します。 レポート データがストレージ アカウントに流入できるように、ストレージ アカウントと Recovery Services コンテナー用のサブスクリプションを使用します。 この手順を実行するには、Azure Portal に移動して **[サブスクリプション]**  >  **[リソース プロバイダー]** を選択し、このプロバイダーを確認して登録します。
 

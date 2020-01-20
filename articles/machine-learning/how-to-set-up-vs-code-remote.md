@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: a91035773d4427f0f3c07097eb3e02fc08c5f375
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528761"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771821"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code Remote を使用して Azure Machine Learning コンピューティング インスタンス上で対話形式でデバッグする
 
@@ -23,7 +23,7 @@ ms.locfileid: "75528761"
 > [!NOTE]
 > コンピューティング インスタンスは、**米国中北部**または**英国南部**のリージョンのワークスペースにのみ使用できます。
 
-+ [Azure Machine Learning コンピューティング インスタンス](/azure/machine-learning/service/concept-compute-instance)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。 
++ [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。 
 
 
 + [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Development を使用すると、コンテナー、リモート コンピューター、または Linux 用 Windows サブシステム (WSL) を完全な機能を備えた開発環境として使用できるようになります。 
@@ -117,4 +117,4 @@ Host azmlci1
 
 Visual Studio Code Remote の設定が完了したので、Visual Studio Code からコンピューティング インスタンスをリモート コンピューティングとして使用して、自分のコードを対話形式でデバッグすることができます。 
 
-[チュートリアル:最初の ML モデルをトレーニングする)](/azure/machine-learning/service/tutorial-1st-experiment-sdk-train)」では、統合ノートブックでコンピューティング インスタンスを使用する方法を示しています。
+[チュートリアル:最初の ML モデルをトレーニングする)](tutorial-1st-experiment-sdk-train.md)」では、統合ノートブックでコンピューティング インスタンスを使用する方法を示しています。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640943"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887242"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -96,7 +96,7 @@ Azure Storage Gen1 には[容量制限](../azure-resource-manager/management/azu
 
 使用可能なコアを確認するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. HDInsight クラスターの **[概要]** ページに移動します。 
 3. 左側のメニューで、 **[クォータ制限]** をクリックします。
 
@@ -104,7 +104,7 @@ Azure Storage Gen1 には[容量制限](../azure-resource-manager/management/azu
 
 クォータの増加を要求する必要がある場合は、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. ページの左下にある **[ヘルプとサポート]** を選択します。
 1. **[新しいサポート リクエスト]** を選択します。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
@@ -115,15 +115,15 @@ Azure Storage Gen1 には[容量制限](../azure-resource-manager/management/azu
 
      ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. **[次へ:ソリューション >>]** を選択します。
+1. **ソリューション >>** を選択します。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度、希望する連絡方法、およびその他の必須フィールドを選択します。
-1. **[次へ:確認と作成 >>]** を選択します。
+1. **確認と作成 >>** を選択します。
 1. **[確認および作成]** タブで、 **[作成]** を選択します。
 
 > [!NOTE]  
 > プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[ホワイト リストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
 
-[サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
+[サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
 
 ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
 

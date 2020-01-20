@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838077"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644904"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -56,7 +56,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 体験版は完全自動モードでデプロイを実行するので、体験版テンプレートには以下で説明するいくつかの制限があります。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 ほとんどのテンプレートにはパラメーターのセットがあります。 パラメーターでは、リソース名、リソースのサイズ (たとえば、ストレージ アカウントの種類や仮想マシンのサイズ)、ユーザー名とパスワード、DNS 名などを定義します。 Azure portal を使用してソリューションをデプロイするときは、手動でこれらすべてのパラメーターを設定し、使用可能な DNS 名やストレージ アカウント名などを選択できます。
 
@@ -83,7 +83,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ### <a name="accepted-parameter-metadata-types"></a>使用できるパラメーター メタデータの種類
 
-| メタデータの種類   | パラメーターのタイプ  | 説明     | 値の例    |
+| メタデータの種類   | パラメーターの型  | [説明]     | 値の例    |
 |---|---|---|---|
 | **baseuri**     | string          | デプロイ パッケージのベース URI| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
@@ -141,7 +141,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ソリューションではランダムなユーザー名または固定のユーザー名を使用できます。
 
-#### <a name="password"></a>password
+#### <a name="password"></a>パスワード
 
 体験版では、このパラメーターは新しいランダムなパスワードで初期化されます。
 
@@ -289,7 +289,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 考慮する必要があるもう 1 つの点は、サブスクリプションとサービスの制限です。 たとえば、最大 10 個の 4 コア仮想マシンをデプロイする場合、ラボに使用するサブスクリプションで 40 コアの使用が許可されていることを確認する必要があります。
 
-Azure サブスクリプションとサービスの制限について詳しくは、[こちらの記事](https://docs.microsoft.com/azure/azure-subscription-service-limits)をご覧ください。 複数の体験版が同時に使用される可能性があるので、コアの数に同時実行できる体験版の合計数を掛けた値を、サブスクリプションが処理できることを確認します。
+Azure サブスクリプションとサービスの制限について詳しくは、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)をご覧ください。 複数の体験版が同時に使用される可能性があるので、コアの数に同時実行できる体験版の合計数を掛けた値を、サブスクリプションが処理できることを確認します。
 
 ### <a name="what-to-upload"></a>アップロードするもの
 
@@ -410,17 +410,17 @@ Azure サブスクリプションとサービスの制限について詳しく�
 1. **共同作成者**としてロールを設定します。
 1. Azure AD アプリケーションの名前を入力し、ロールを割り当てるアプリケーションを選択します。
     ![アクセス許可を追加する](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 **[Azure AD App Key]\(Azure AD アプリ キー\) -** "*必須*" 最後のフィールドでは、認証キーを生成します。 キーの下で、キーの説明を追加し、期間を無期限に設定して、[保存] を選択します。 キーの有効期限が切れないようにすることが**重要**です。切れると、運用環境の体験版が中断されます。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
 
 ![Azure AD アプリケーションのキーを表示する](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 体験版のすべてのフィールドを設定したので、オファーを**再発行**します。 体験版が認定に合格したら、オファーの**プレビュー**で顧客エクスペリエンスを広範にテストする必要があります。 UI で体験版を開始し、Azure portal 内で Azure サブスクリプションを開いて、体験版が完全に正しくデプロイされていることを確認します。
 
-![Azure ポータル](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Azure portal](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 重要なこととして、体験版は顧客用にプロビジョニングされており、顧客がその使用を終了すると体験版サービスによってリソース グループが自動的にクリーンアップされるので、体験版のインスタンスを削除しないでください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663062"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020939"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -65,7 +65,7 @@ ms.locfileid: "75663062"
 * Eula - イメージ定義に固有のエンド ユーザー ライセンス契約を示すために使うことができます。
 * プライバシーに関する声明およびリリース ノート - リリース ノートとプライバシーに関する声明を Azure Storage に格納し、イメージ定義の一部としてそれらにアクセスするための URI を提供します。
 * 終了日 - オートメーションを使って古いイメージ定義を削除できるように、終了日をイメージ定義にアタッチします。
-* タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/resource-group-using-tags.md)に関する記事をご覧ください
+* タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関する記事をご覧ください
 * vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
 * 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
 

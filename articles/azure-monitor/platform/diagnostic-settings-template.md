@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531005"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977552"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Azure で Resource Manager テンプレートを使用して診断設定を作成する
-Azure Monitor の[診断設定](diagnostic-settings.md)では、Azure リソースとそれらが依存している Azure プラットフォームによって収集される[プラットフォーム ログ](platform-logs-overview.md)の送信先が指定されます。 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、プラットフォーム ログを収集してさまざまな宛先に送信するための診断設定を作成し構成する方法について詳しく説明します。 
+Azure Monitor の[診断設定](diagnostic-settings.md)では、Azure リソースとそれらが依存している Azure プラットフォームによって収集される[プラットフォーム ログ](platform-logs-overview.md)の送信先が指定されます。 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、プラットフォーム ログを収集してさまざまな宛先に送信するための診断設定を作成し構成する方法について詳しく説明します。
 
 > [!NOTE]
 > 他の Azure リソース用の診断設定とは違い、Azure アクティビティ ログ用の[診断設定を PowerShell または CLI を使用して作成](diagnostic-settings.md)することはできないため、この記事の情報を使用してアクティビティ ログ用の Resource Manager テンプレートを作成し、そのテンプレートを PowerShell または CLI を使用してデプロイします。
 
 ## <a name="deployment-methods"></a>デプロイ方法
-Resource Manager テンプレートをデプロイするには、PowerShell や CLI などの任意の有効な方法を使用します。 アクティビティ ログ用の診断設定は、CLI の場合は `az deployment create` を使用し、PowerShell の場合は `New-AzDeployment` を使用してサブスクリプションにデプロイする必要があります。 リソース ログ用の診断設定は、CLI の場合は `az group deployment create` を使用し、PowerShell の場合は `New-AzResourceGroupDeployment` を使用してリソース グループにデプロイする必要があります。 
+Resource Manager テンプレートをデプロイするには、PowerShell や CLI などの任意の有効な方法を使用します。 アクティビティ ログ用の診断設定は、CLI の場合は `az deployment create` を使用し、PowerShell の場合は `New-AzDeployment` を使用してサブスクリプションにデプロイする必要があります。 リソース ログ用の診断設定は、CLI の場合は `az group deployment create` を使用し、PowerShell の場合は `New-AzResourceGroupDeployment` を使用してリソース グループにデプロイする必要があります。
 
-詳細については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)」と「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)」を参照してください。 
+詳細については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)」と「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください。 
 
 
 
@@ -33,7 +33,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
 ## <a name="resource-logs"></a>リソース ログ
 リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `logs` セクションに `category` を指定します。 [リソースでメトリックがサポートされている](metrics-supported.md)場合は、`metrics` プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
 
-次に示すのは、特定のリソースのリソース ログ カテゴリを、Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。 
+次に示すのは、特定のリソースのリソース ログ カテゴリを、Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

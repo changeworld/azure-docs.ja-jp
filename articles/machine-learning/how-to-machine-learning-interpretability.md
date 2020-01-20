@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 35623be4f0e4495388dc58b1e4d4f6c4663a93fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534319"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968497"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ SDK のクラスとメソッドを使用して、次のことを得ることが�
 * **Mimic Explainer**: Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、ブラック ボックス モデルの予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。
 
 
-* **Permutation Feature Importance Explainer**:Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。
+* **Permutation Feature Importance Explainer**:Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。
 
 * **LIME Explainer** (`contrib`):[LIME](https://github.com/marcotcr/lime) に基づく LIME Explainer は、最新の LIME (Local interpretable model-agnostic explanations) アルゴリズムを使用して、ローカル サロゲート モデルを作成します。 グローバル サロゲート モデルとは異なり、LIME はローカル サロゲート モデルをトレーニングして個別の予測を説明することに着目します。
 * **HAN Text Explainer** (`contrib`):HAN Text Explainer は、特定のブラック ボックス テキスト モデルに対するテキスト データからモデルの説明を取得するために Hierarchical Attention Network を使用します。 特定のブラック ボックス モデルの予測された出力で HAN サロゲート モデルをトレーニングします。 テキスト コーパス全体でグローバルにトレーニングした後、説明の正確性を向上させるため、特定のドキュメントに対する微調整ステップを追加します。 HAN は、文と単語のアテンションに対する 2 つのアテンション レイヤーで双方向 RNN を使用します。 DNN がブラック ボックス モデルでトレーニングされて、特定のドキュメントで微調整された後、ユーザーはアテンション レイヤーから単語の重要性を抽出できます。 テキスト データについては HAN は LIME や SHAP より正確であることが分かっていますが、トレーニング時間に関してはいっそうコストがかかります。 トレーニング時間を短縮するため、ユーザーは GloVe 単語埋め込みを使用してネットワークを初期化するオプションを使用できるようになりました。 HAN をリモート Azure GPU VM で実行することで、トレーニング時間を大幅に改善できます。 HAN の実装については、「[Hierarchical Attention Networks for Document Classification (ドキュメントの分類に対する階層型アテンション ネットワーク)」 (Yang 他、2016)](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification) で説明されています。
@@ -114,4 +114,4 @@ Python の `numpy.array`、`pandas.DataFrame`、`iml.datatypes.DenseData`、ま�
 
 ## <a name="next-steps"></a>次のステップ
 
-ローカルと Azure Machine Learning リモート コンピューティング リソースの両方で解釈可能性を有効にし、モデルのトレーニングを行う[方法](service/how-to-machine-learning-interpretability-aml.md)を参照してください。 その他のシナリオについては、[ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を参照してください。
+ローカルと Azure Machine Learning リモート コンピューティング リソースの両方で解釈可能性を有効にし、モデルのトレーニングを行う[方法](how-to-machine-learning-interpretability-aml.md)を参照してください。 その他のシナリオについては、[ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を参照してください。

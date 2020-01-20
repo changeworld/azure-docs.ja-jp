@@ -1,28 +1,28 @@
 ---
 title: コマーシャル マーケットプレースの課金 | Azure Marketplace
 description: この記事では、コマーシャル マーケットプレースでの商取引に関連したトピックについて説明します。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 3f610dbc2c5cf052729857c09de1d437e52ac20a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475169"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976071"
 ---
-# <a name="commercial-marketplace-billing"></a>コマーシャル マーケットプレースの課金 
+# <a name="commercial-marketplace-billing"></a>コマーシャル マーケットプレースの課金
 
 この記事では、コマーシャル マーケットプレースでの商取引に関連したトピックについて説明します。
 
-- [Marketplace 公開オプション](#marketplace-publishing-options) 
+- [Marketplace 公開オプション](#marketplace-publishing-options)
 - [販売の概要](#transact-general-overview)
 - [販売の課金モデル](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Marketplace 公開オプション 
+## <a name="marketplace-publishing-options"></a>Marketplace 公開オプション
 
 コマーシャル マーケットプレースでは、公開元に対して複数の公開オプションが用意されています。
 
@@ -36,9 +36,9 @@ ms.locfileid: "75475169"
 
 ## <a name="transact-general-overview"></a>販売の概要
 
-取引の公開オプションを使用する場合、Microsoft は、顧客の Azure サブスクリプションに対して、サード パーティ製ソフトウェアの販売と、特定の種類のオファーのデプロイを有効にします。 公開元は、課金モデルとオファーの種類を選択するときに、インフラストラクチャ料金の課金と、公開元自身のソフトウェア ライセンス料金を考慮する必要があります。 
+取引の公開オプションを使用する場合、Microsoft は、顧客の Azure サブスクリプションに対して、サード パーティ製ソフトウェアの販売と、特定の種類のオファーのデプロイを有効にします。 公開元は、課金モデルとオファーの種類を選択するときに、インフラストラクチャ料金の課金と、公開元自身のソフトウェア ライセンス料金を考慮する必要があります。
 
-取引の公開オプションは、次のオファーの種類に対して現在サポートされています: 仮想マシン、Azure アプリケーション、SaaS アプリ。 
+取引の公開オプションは、次のオファーの種類に対して現在サポートされています: 仮想マシン、Azure アプリケーション、SaaS アプリ。
 
 ![Azure Marketplace での取引](./media/transact-amp.png)
 

@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高度なシナリオ 
 
-そのスキーマを使用して AME 用に独自のエンコード プリセットを作成済みの場合は、[Media Encoder Standard 用の同等のスキーマ](media-services-mes-schema.md)があります。 古い設定を新しいエンコーダーにマップする方法についてご質問がある場合は、[mailto:amshelp@microsoft.com](mailto:amshelp@microsoft.com) にお問い合わせください。  
+そのスキーマを使用して AME 用に独自のエンコード プリセットを作成済みの場合は、[Media Encoder Standard 用の同等のスキーマ](media-services-mes-schema.md)があります。 古い設定を新しいエンコーダーにマップする方法についてご質問がある場合は、 mailto:amshelp@microsoft.com にお問い合わせください。  
 ## <a name="known-differences"></a>既知の相違点 
 
 Media Encoder Standard は、従来の AME エンコーダーよりも堅牢であり、信頼性が高く、パフォーマンスが向上し、高品質の出力を生成します。 さらに: 

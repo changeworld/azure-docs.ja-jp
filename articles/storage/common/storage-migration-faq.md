@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0fa4c7fa42cbc0eceb9efd2f364a0fbcab1698e1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351281"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975689"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
-この記事では、Azure Storage の移行についてよくある質問の回答を示します。 
+この記事では、Azure Storage の移行についてよくある質問の回答を示します。
 
 ## <a name="faq"></a>よく寄せられる質問
 
@@ -31,10 +31,10 @@ ms.locfileid: "75351281"
     /S
 
 AzCopy では、[Copy Blob API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) を使用してコンテナー内の各ファイルをコピーします。  
-  
+
 インターネットにアクセスできる仮想マシンまたはローカル コンピューターを使用して、AzCopy を実行できます。 Azure Batch スケジュールを使用して、これを自動的に実行することもできますが、複雑になります。  
-  
-Automation スクリプトは、ストレージ コンテンツの操作ではなく、Azure Resource Manager のデプロイを目的としています。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
+
+Automation スクリプトは、ストレージ コンテンツの操作ではなく、Azure Resource Manager のデプロイを目的としています。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 **同じリージョン内の同じストレージ アカウントの 2 つのファイル共有間でデータをコピーする場合、料金は発生しますか?**
 
@@ -43,14 +43,14 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
 **ストレージ アカウント全体を他のストレージ アカウントにバックアップするにはどうすればよいですか?**
 
 ストレージ アカウント全体を直接バックアップするオプションはありません。 ただし、AzCopy または Storage Explorer を使用して、そのストレージ アカウント内のコンテナーを別のアカウントに手動で移動することは可能です。 次の手順は、AzCopy を使用してコンテナーを移動する方法を示しています。  
- 
+
 
 1.  [AzCopy](storage-use-azcopy.md) コマンドライン ツールをインストールします。 このツールを使用して、ストレージ アカウント間で VHD ファイルを移動できます。
 
 2.  インストーラーを使用して AzCopy を Windows にインストールしたら、コマンド プロンプト ウィンドウを開き、コンピューター上の AzCopy インストール フォルダーに移動します。 既定では、AzCopy は **%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy** または **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy** にインストールされています。
 
 3.  次のコマンドを実行して、コンテナーを移動します。 テキストを実際の値に置き換える必要があります。   
-     
+
             AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
@@ -157,7 +157,7 @@ Azure ファイル共有を使用します。
     $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
-    ``` 
+    ```
 
 マネージド ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
 
@@ -170,10 +170,10 @@ Azure ファイル共有を使用します。
 ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy.md)」をご覧ください。
 
 **Azure Storage Service Encryption (SSE) の詳細はどこで入手できますか?**  
-  
+
 次の記事をご覧ください。
 
--  [Azure Storage セキュリティ ガイド](storage-security-guide.md)
+-  [Azure Storage セキュリティ ガイド](../blobs/security-recommendations.md)
 
 -  [Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)
 
@@ -194,11 +194,11 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
 
 **ストレージ アカウントのレプリケーションを GRS アカウントから LRS に変更する場合、前提条件はありますか?**
 
-いいえ。 
+いいえ。
 
 **Azure Files の冗長ストレージにアクセスするにはどうすればよいですか?**
 
-冗長ストレージにアクセスするには、geo 冗長ストレージの読み取りアクセス権が必要です。 ただし、Azure Files では LRS のみがサポートされており、標準の geo 冗長ストレージでは読み取り専用アクセスは許可されていません。 
+冗長ストレージにアクセスするには、geo 冗長ストレージの読み取りアクセス権が必要です。 ただし、Azure Files では LRS のみがサポートされており、標準の geo 冗長ストレージでは読み取り専用アクセスは許可されていません。
 
 **Premium Storage アカウントから Standard Storage アカウントに移行するにはどうすればよいですか?**
 
@@ -207,12 +207,12 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
 1.  Standard Storage アカウントを作成します。 (またはサブスクリプションに既存の Standard Storage アカウントを使用します。)
 
 2.  AzCopy をダウンロードします。 次のいずれかの AzCopy コマンドを実行します。
-      
+
     ストレージ アカウント内のディスク全体をコピーするには、次のコマンドを実行します。
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S 
+        /SourceKey:key1 /DestKey:key2 /S
 
     ディスクを 1 つだけコピーするには、**Pattern** にディスクの名前を指定します。
 
@@ -220,11 +220,11 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
 
-   
+
 この操作は、完了するまで数時間かかる場合があります。
 
 転送が正常に完了したことを確認するには、Azure ポータルでコピー先のストレージ アカウントのコンテナーを調べます。 ディスクが Standard Storage アカウントにコピーされたら、既存のディスクとして仮想マシンに接続できます。 詳細については、「[Azure Portal で Windows VM にマネージド データ ディスクを接続する方法](../../virtual-machines/windows/attach-managed-disk-portal.md)」をご覧ください。  
-  
+
 **Azure Premium Storage をファイル共有に変換するにはどうすればよいですか?**
 
 Premium Storage は、Azure ファイル共有では使用できません。
@@ -249,7 +249,7 @@ Azure CLI をご利用いただけます。
 
       azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
 
-- 1 つの BLOB をアップロードする 
+- 1 つの BLOB をアップロードする
 
       azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
@@ -257,7 +257,7 @@ Azure CLI をご利用いただけます。
 
 ストレージ リソースに他のユーザーがアクセスできるようにする方法は次のとおりです。
 
--   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。 
+-   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。
 
 -   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
 
@@ -276,9 +276,9 @@ Azure CLI をご利用いただけます。
 -   ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
 -   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 以下のいずれかの方法を使用します。  
-      
+
     - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 次に例を示します。  
-     
+
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
     - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。

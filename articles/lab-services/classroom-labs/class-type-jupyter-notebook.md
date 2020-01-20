@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 01/08/2020
 ms.locfileid: "75530682"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する

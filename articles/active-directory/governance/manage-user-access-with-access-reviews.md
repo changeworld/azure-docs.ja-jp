@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57956573dfe913828fb20db08397fac52528403d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c307b349144974a4d38f937feeebb98f369d047
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422432"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932415"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 - Azure AD Premium P2
 
-詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。
+詳細については、「[License requirements ライセンスの要件](access-reviews-overview.md#license-requirements)」を参照してください。
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
 

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 12522de6bec4698f8a5b7a931bbc382f65a74265
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 19b7fbe5541bda5e6e2c265681e292f452cd57c0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534315"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044272"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>ローカルおよびリモート実行のモデルの解釈可能性
 
@@ -333,10 +333,10 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     jupyter labextension install microsoft-mli-widget
     ```
 
-視覚化のダッシュボードを読み込むには、次のコードを使用します。
+視覚化ダッシュボードを読み込むには、次のコードを使用します。
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
+from interpret_community.widget import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
 ```
@@ -362,7 +362,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
    [![視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **[モデル]** ウィンドウ
-  1. 「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
+  1. 「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
   1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性
@@ -427,7 +427,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 1. 次の手順に従って、コンピューティング先にイメージをデプロイします。
 
-   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)」の手順に従って元の予測モデルを登録します。
+   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元の予測モデルを登録します。
 
    1. スコアリング ファイルを作成します。
 

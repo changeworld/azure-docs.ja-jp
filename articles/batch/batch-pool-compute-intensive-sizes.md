@@ -2,7 +2,7 @@
 title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: lahugh
-ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390506"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026797"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
