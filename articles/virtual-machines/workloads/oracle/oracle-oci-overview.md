@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459303"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション (プレビュー)
 
@@ -50,7 +50,7 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* プレビューでのクロスクラウド接続は、Azure 米国東部 (eastus) および英国南部 (uksouth) リージョンと OCI Ashburn (米国東部) およびロンドン (英国南部) リージョンに限定されています。 英国南部については、待機時間が短くなるように相互接続をデプロイするときに、OCI の可用性ドメイン 1 (AD 1) を使用してください。
+* プレビューでのクロスクラウド接続は、Azure 米国東部 (eastus)、英国南部 (uksouth)、およびカナダ中部 (canadacentral) リージョンと OCI Ashburn (米国東部)、ロンドン (英国南部)、およびトロント (カナダ南東部) リージョンに限定されています。 英国南部については、待機時間が短くなるように相互接続をデプロイするときに、OCI の可用性ドメイン 1 (AD 1) を使用してください。
 
 ## <a name="networking"></a>ネットワーク
 
@@ -72,7 +72,7 @@ ID は、Microsoft と Oracle 間のパートナーシップの中心的な柱�
 
 現在は、この統合により、Azure Active Directory という 1 つの場所で集中管理できます。 Azure AD によってディレクトリ内のすべての変更が対応する Oracle ディレクトリと同期されます。また、Azure AD はクロスクラウド Oracle ソリューションへのシングル サインオンに使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure と OCI 間の[クロスクラウド ネットワーク](configure-azure-oci-networking.md)を使ってみます。 
 

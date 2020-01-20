@@ -1,5 +1,5 @@
 ---
-title: シングルページ アプリのサインイン - Microsoft ID プラットフォーム | Azure
+title: シングルページ アプリのサインインとサインアウト - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (サインイン) を構築する方法を学習する
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423641"
 ---
-# <a name="single-page-application-sign-in"></a>シングルページ アプリケーション：サインイン
+# <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
 ご利用のシングルページ アプリケーションのコードにサインインを追加する方法について学びます。
 
@@ -156,7 +156,7 @@ userAgentApplication.logout();
 this.authService.logout();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリのトークンの取得](scenario-spa-acquire-token.md)

@@ -1,5 +1,5 @@
 ---
-title: MSAL for Python でのカスタム トークン キャッシュのシリアル化 | Azure
+title: カスタム トークン キャッシュのシリアル化 (MSAL for Python) | Azure
 titleSuffix: Microsoft identity platform
 description: MSAL for Python 用のトークン キャッシュをシリアル化する方法について説明します
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb77d05070543e35ac0addae933c5ca864e68dbc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0b5dc00f1aeb6b4fba987295ff5fc7dfd389b790
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424079"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>MSAL for Python でのカスタム トークン キャッシュのシリアル化
 
@@ -37,6 +37,6 @@ MSAL Python では、アプリ セッションの期間だけ保持されるメ�
 
 Web アプリまたは Web API の場合は、セッション、Redis Cache、またはデータベースを使用して、トークン キャッシュを格納することができます。 アカウントごとにトークン キャッシュがシリアル化されるように、ユーザーごと (アカウントごと) に 1 つのトークン キャッシュが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Windows または Linux の Web アプリまたは Web API に対してトークン キャッシュを使用する方法の例については、[ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) を参照してください。 この例は、Microsoft Graph API を呼び出す Web アプリに関するものです。

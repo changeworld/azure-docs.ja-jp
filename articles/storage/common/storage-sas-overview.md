@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371821"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -25,7 +25,7 @@ Shared Access Signature (SAS) により、データのセキュリティを損�
 
 Azure Storage では、次の 3 種類の Shared Access Signature がサポートされています。
 
-- **ユーザー委任 SAS (プレビュー)。** ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、BLOB ストレージにのみ適用されます。
+- **ユーザー委任 SAS。** ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、BLOB ストレージにのみ適用されます。
 
     ユーザー委任 SAS の詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
 
@@ -122,9 +122,9 @@ Shared Access Signature の使用を開始するには、SAS の各種類に関�
 
 ### <a name="user-delegation-sas"></a>ユーザー委任 SAS
 
-- [PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [.NET を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>サービス SAS
 
@@ -134,7 +134,7 @@ Shared Access Signature の使用を開始するには、SAS の各種類に関�
 
 - [.NET を使用してアカウント SAS を作成する](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [共有アクセス署名を使用してアクセスを委任する (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)

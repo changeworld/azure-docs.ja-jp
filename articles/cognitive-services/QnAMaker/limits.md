@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 12/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4effd14029eaaee1e1c22cdb814096820e19e089
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381122"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -30,9 +30,19 @@ ms.locfileid: "73794028"
 |---|---|---|---|---|---|----|
 |許可される発行済みナレッジ ベースの最大数|2|14|49|199|199|2,999|
 
- たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。 
+ たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。
 
 ## <a name="extraction-limits"></a>抽出の制限
+
+### <a name="maximum-file-size"></a>ファイルの最大サイズ
+
+|Format|最大ファイル サイズ (MB)|
+|--|--|
+|`.docx`|10|
+|`.pdf`|25|
+|`.tsv`|10|
+|`.txt`|10|
+|`.xlsx`|3|
 
 ### <a name="maximum-number-of-files"></a>ファイルの最大数
 
@@ -56,9 +66,9 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 次の表に、メタデータの名前および値に使用できる文字と長さを示します。
 
-|Item|使用できる文字|正規表現パターン マッチ|最大文字数|
+|アイテム|使用できる文字|正規表現パターン マッチ|最大文字数|
 |--|--|--|--|
-|名前|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
+|Name|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
 |値|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
 |||||
 
@@ -67,12 +77,12 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 回答のテキストの長さ: 25,000
 * 質問のテキストの長さ: 1,000
 * メタデータのキー/値のテキストの長さ: 100
-* メタデータ名でサポートされる文字: アルファベット、数字、`_`  
-* メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字 
+* メタデータ名でサポートされる文字: アルファベット、数字、`_`
+* メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 300
-* 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。 
+* 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。
 * URL/HTML ページ: 100 万文字
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
@@ -88,6 +98,6 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サービス価格レベル](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)を変更するタイミングと方法について学びます。

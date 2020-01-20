@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432932"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -24,7 +24,9 @@ Azure Maps Android SDK は、Android 用のベクター マップ ライブラ�
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成する](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)必要があります。
+この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-account-with-azure-maps)し、アカウントの[主キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 ### <a name="download-android-studio"></a>Android Studio をダウンロードする
 
@@ -80,11 +82,9 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
-
-    > [!Note]
-    > Azure Maps Android SDK は定期的にアップグレードされ、強化されています。 最新の Azure Maps 実装のバージョン番号は、[Android マップ コントロールの概要](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)ドキュメントで確認できます。 また、バージョン番号を「0.2」から「0+」に設定して、常に最新バージョンをポイントするようにできます。
-
-3. **res** > **layout** > **activity_main.xml** を編集して、次のコードに置き換えます。
+    
+    4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
+3. メイン アクティビティにマップ フラグメントを追加します (res \> layout \> activity\_main.xml)。
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -201,7 +201,6 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
 ## <a name="import-classes"></a>クラスをインポートする
@@ -269,7 +268,7 @@ mapControl.onReady(map -> {
 
 サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マップにオーバーレイ データを追加する方法を確認します。
 

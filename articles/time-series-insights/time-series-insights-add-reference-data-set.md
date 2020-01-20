@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460311"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74807262"
 
 ## <a name="add-a-reference-data-set"></a>参照データ セットを追加する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
@@ -68,9 +68,9 @@ ms.locfileid: "74807262"
 
    データ値の解析中にエラーが発生した場合は、ページの下部に赤色でエラーが表示されます (たとえば、`CSV parsing error, no rows extracted`)。
 
-1. データが正常に解析されると、データ グリッドが表示され、データを表す行と列が表示されます。  データ グリッドをレビューし、内容が正しいこと確認してください。
+1. データが正常に解析されると、データ グリッドが表示され、データを表す行と列が表示されます。 データ グリッドをレビューし、内容が正しいこと確認してください。
 
-   [![参照データの追加](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
+   [![参照データをレビューする](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. 各列をレビューして、仮定されたデータ型を確認し、必要であればデータ型を変更します。  列見出しにあるデータ型のシンボルを選択します。 **#** はdouble (数値データ)、**T|F** はブール型、**Abc** は文字列を表します。
 
@@ -112,7 +112,7 @@ ms.locfileid: "74807262"
    > [!NOTE]
    > 追加された行は、*長方形*である**必要**はありません - 参照データセット内の他のエントリの列の数が少なくなったり、大きくたり、変化したりする可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 

@@ -1,7 +1,7 @@
 ---
-title: ブラウザーなしでユーザーをサインインさせる | Azure
+title: OAuth 2.0 デバイス コード フロー | Azure
 titleSuffix: Microsoft identity platform
-description: デバイス許可付与を使用して、埋め込み型およびブラウザーレスの認証フローを構築します。
+description: ブラウザーなしでユーザーをサインインさせます。 デバイス許可付与を使用して、埋め込み型およびブラウザーレスの認証フローを構築します。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1035d5cd7c992bea74180b482bb8e3c2c9e0f461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423249"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 
@@ -61,7 +61,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
 | `tenant` | 必須 | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -71,14 +71,14 @@ scope=user.read%20openid%20profile
 
 正常な応答は、ユーザーがサインインするために必要な情報が含まれている JSON オブジェクトです。  
 
-| パラメーター | 形式 | 説明 |
+| パラメーター | Format | [説明] |
 | ---              | --- | --- |
-|`device_code`     | string | クライアントと承認サーバー間のセッションを検証するために使用される長い文字列。 クライアントはこのパラメーターを使用して、承認サーバーにアクセス トークンを要求します。 |
-|`user_code`       | string | ユーザーに表示される短い文字列。セカンダリ デバイス上のセッションを識別するために使用されます。|
+|`device_code`     | String | クライアントと承認サーバー間のセッションを検証するために使用される長い文字列。 クライアントはこのパラメーターを使用して、承認サーバーにアクセス トークンを要求します。 |
+|`user_code`       | String | ユーザーに表示される短い文字列。セカンダリ デバイス上のセッションを識別するために使用されます。|
 |`verification_uri`| URI | ユーザーがサインインするために `user_code` を使用してアクセスする必要がある URI。 |
-|`expires_in`      | int | `device_code` と `user_code` の有効期限か切れるまでの秒数。 |
-|`interval`        | int | ポーリング要求の間にクライアントが待機する秒数。 |
-| `message`        | string | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で**クエリ パラメーター**を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
+|`expires_in`      | INT | `device_code` と `user_code` の有効期限か切れるまでの秒数。 |
+|`interval`        | INT | ポーリング要求の間にクライアントが待機する秒数。 |
+| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で**クエリ パラメーター**を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
 
 > [!NOTE]
 > `verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  このことに触れる理由は、[標準](https://tools.ietf.org/html/rfc8628)を読むと、デバイス コード フロー標準のオプションの部分として `verification_uri_complete` が示されているためです。
@@ -100,7 +100,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| パラメーター | 必須 | 説明|
+| パラメーター | 必須 | [説明]|
 | -------- | -------- | ---------- |
 | `tenant`  | 必須 | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
 | `grant_type` | 必須 | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
@@ -111,7 +111,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 デバイス コード フローはポーリング プロトコルなので、クライアントでは、ユーザーが認証を完了する前にエラーが発生することを想定しておく必要があります。  
 
-| Error | 説明 | クライアント側の処理 |
+| エラー | [説明] | クライアント側の処理 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | ユーザーはまだ認証を完了していませんが、フローを取り消していません。 | 少なくとも `interval` 秒後に要求を繰り返します。 |
 | `authorization_declined` | エンド ユーザーが承認要求を拒否しました。| ポーリングを停止し、未認証の状態に戻します。  |
@@ -133,11 +133,11 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| パラメーター | 形式 | 説明 |
+| パラメーター | Format | [説明] |
 | --------- | ------ | ----------- |
-| `token_type` | string| 常に "Bearer" です。 |
+| `token_type` | String| 常に "Bearer" です。 |
 | `scope` | スペース区切りの文字列 | アクセス トークンが返された場合、アクセス トークンが有効なスコープがリストされます。 |
-| `expires_in`| int | 含まれているアクセス トークンが有効になるまでの秒数。 |
+| `expires_in`| INT | 含まれているアクセス トークンが有効になるまでの秒数。 |
 | `access_token`| 不透明な文字列 | 要求された[スコープ](v2-permissions-and-consent.md)に対して発行されます。  |
 | `id_token`   | JWT | 元の `scope` パラメーターに `openid` スコープが含まれている場合に発行されます。  |
 | `refresh_token` | 不透明な文字列 | 元の `scope` パラメーターに `offline_access` が含まれている場合に発行されます。  |

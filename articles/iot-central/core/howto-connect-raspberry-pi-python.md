@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 258410bcd4f916ac381188bb38d90a3b89c87c89
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3daa567a916bd0abeb407028c7d06bd1f2bd464b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454114"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -27,15 +27,15 @@ ms.locfileid: "72942732"
 
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+* **レガシ アプリケーション** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 Raspberry Pi からインターネットに接続できる必要があります。 詳細については、[Raspberry Pi の設定](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)に関するページを参照してください。
 
 > [!TIP]
 > Raspberry Pi デバイスのセットアップと接続の詳細については、[Raspberry Pi の概要](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)に関するページを参照してください。
 
-## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
+## <a name="add-a-device-template"></a>デバイス テンプレートの追加
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
+ご利用の Azure IoT Central アプリケーションで、次の特性を備えた新しい **Raspberry Pi** デバイス テンプレートを追加します。
 
 - デバイスが収集する次の測定値を含むテレメトリ:
   - 湿度
@@ -49,15 +49,20 @@ ms.locfileid: "72942732"
   - Current
   - ファン速度
   - IR 切り替え。
-- properties
+- Properties
   - Die number デバイス プロパティ
   - Location クラウド プロパティ
+
+1. デバイス テンプレートから **[+ 新規]** を選択します。![デバイス テンプレート](media/howto-connect-raspberry-pi-python/adddevicetemplate.png)
+   
+
+2. **[Raspberry Pi]** を選択して、Raspberry Pi デバイス テンプレートを作成します。![デバイス テンプレートの追加](media/howto-connect-raspberry-pi-python/newdevicetemplate.png)
 
 デバイス テンプレートの構成の詳細については、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)」を参照してください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実際のデバイスを追加します。 デバイス接続の詳細 (**スコープ ID**、**デバイス ID**、および**主キー**) をメモします。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実際のデバイスを追加します。 デバイス接続の詳細 ( **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** ) をメモします。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
 ### <a name="configure-the-raspberry-pi"></a>Raspberry Pi を構成する
 
@@ -134,15 +139,15 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 | Display name | フィールド名 | オンテキスト | オフテキスト | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | OFF      | オフ     |
+| IR           | activateIR | ON      | OFF      | Off     |
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 | 種類            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

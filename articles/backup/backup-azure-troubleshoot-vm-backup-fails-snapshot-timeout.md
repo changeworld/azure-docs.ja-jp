@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391842"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -28,6 +28,7 @@ Azure VM エージェントが停止しているか、古くなっているか�
 - **[Azure Portal] > [VM] > [設定] > [プロパティブレード]** を開いて、 **[VM の状態]** が **実行中** であることを確認し、**エージェントの状態** が **[準備完了]** になっていることを確認します。 VM エージェントが停止しているか、不整合な状態になっている場合は、エージェントを再起動する<br>
   - Windows VM の場合は、次の [手順](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) を実行して、ゲストエージェントを再起動します。<br>
   - Linux VM の場合は、次の [手順](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) を実行して、ゲストエージェントを再起動します。
+- **Azure Portal を開いて [VM] > [設定] > [拡張機能]** を選択し、すべての拡張機能が **[プロビジョニング成功]** 状態になっていることを確認します。 そうでない場合は、こちらの[手順](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)に従って問題を解決してください。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
 
@@ -53,8 +54,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**[Azure Portal] > [VM] > [設定] > [拡張機能] > [拡張機能の状態]** を開き、すべての拡張機能の状態が **[プロビジョニング成功]** の状態になっていることを確認します。
 
-- VMSnapshot 拡張機能が失敗の状態の場合は、失敗した拡張機能を右クリックして削除します。 アドホック バックアップをトリガーします。これにより、拡張機能が再インストールされ、バックアップジョブが実行されます。  <br>
-- 他の拡張機能が失敗状態にあると、バックアップに干渉する可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。  
+- VMSnapshot 拡張機能が失敗の状態になっている場合は、失敗した拡張機能を右クリックして削除します。 オンデマンド バックアップをトリガーします。これにより、拡張機能が再インストールされ、バックアップ ジョブが実行されます。  <br>
+- 他の拡張機能が失敗状態にあると、バックアップが干渉される可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
 
@@ -69,7 +70,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 > [!NOTE]
 > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>` 例:AzureBackupRG_northeurope_1
 
-**手順 1:[復元ポイントのリソース グループのロックを解除する](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**ステップ 1:[復元ポイントのリソース グループのロックを解除する](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **手順 2:[復元ポイント コレクションをクリーンアップする](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするには十分ではありません
@@ -229,7 +230,7 @@ VMSnapshot 拡張機能に再読み込みを強制する 拡張機能をアン�
 1. [Azure Portal](https://portal.azure.com/) で、バックアップ エラーが発生している VM に移動します。
 2. **[設定]** を選択します。
 3. **[拡張機能]** を選択します。
-4. **[Vmsnapshot 拡張機能]** を選択します。
+4. **[スナップショット拡張機能]** を選択します。
 5. **[アンインストール]** を選択します。
 
 Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してから、バックアップを実行してください。
@@ -238,7 +239,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
 4. ロックを解除するには、省略記号を選択し、 **[削除]** をクリックします。
@@ -267,7 +268,7 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 
 リソース グループのロックのために消去されない復元ポイント コレクションを手動で消去するには、次の手順を試行してください。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[ハブ]** メニューの **[すべてのリソース]** をクリックし、VM が配置されている、AzureBackupRG_`<Geo>`_`<number>` という形式のリソース グループを選択します。
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/resource-group.png)

@@ -1,31 +1,33 @@
 ---
-title: 統合ソリューション | Azure
+title: 統合ソリューション - Azure Marketplace
 description: Azure Marketplace と AppSource の統合ソリューション
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427172"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の統合ソリューション
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の統合ソリューション
 
-統合ソリューションによって、Microsoft パートナーが提供する最善のテクノロジーと、エキスパートであるシステム インテグレーター (SI) が提供するコンサルテーション、デプロイ、およびサポートがひとつにまとまります。
+統合ソリューションによって、Microsoft パートナーが提供する最善のテクノロジーと、エキスパートであるサービス プロバイダーによって提供されるコンサルテーション、デプロイ、およびサポートがひとつにまとまります。
 
-これらのソリューションは、お客様の特定のニーズまたはシナリオに対応するために構築され、その構築は、業界の課題や問題点を理解することから始まります。 2 つ以上の最善の組み合わせのテクノロジが SI によって統合され、迅速な立ち上げと稼働に役立つ、お客様のための統合された反復可能なデプロイ エクスペリエンスが作成されます。 システム インテグレーターはまた、お客様のための単一の窓口としても機能し、ソリューションに関連するカスタマイズ、コンサルティング、およびサポートを提供します。  その成果が、テクノロジとサービスを含む統合ソリューションです。
+お客様のシステムを短時間で稼働させるために、2 社以上の Microsoft パートナーの各自のテクノロジとサービスが統合され、統一されたシームレスで反復可能なデプロイ エクスペリエンスが創出されます。  ソリューションのリード パートナー (通常はサービス パートナー) がお客様の単一の窓口として機能し、ソリューションに関連するカスタマイズ、コンサルティング、およびサポートを提供します。
+
+その他のシナリオでは、パートナーは、ソリューションの販売とマーケティングを共同で実施します。一方、統合ソリューションでは、パートナーのテクノロジとサービスが統合された新しいソリューションが共同で構築されます。
 
 ## <a name="advantages"></a>長所
 
 統合アプローチの長所は次のとおりです。
 
-* *業界の専門知識*: 業界に特化したソリューションと知識を備えたシステム インテグレーター
+* *業界の専門知識*: 業界に特化したソリューションと知識を備えたサービス パートナー
 * *短時間で価値を実現*: 直接的な利益を実現する統合されたデプロイ方法
 * *最善の組み合わせのソリューション*:購入と実装の統合されたエクスペリエンスの容易な発見
 
@@ -35,7 +37,7 @@ ms.locfileid: "74023594"
 
 このプログラムへの参加を希望するパートナーは、連携したい他のパートナーを特定する必要があります。 [統合ソリューションの申請フォーム](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)に記入する必要があります。 統合ソリューション プログラムのチームが申請を審査し、10 営業日以内にフォローアップします。 チームは、承認と次のステップを提供します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に示す一覧にアクセスすることにより、統合ソリューションを見つけ、これらの高く評価されているパートナーに問い合わせることができます。
 

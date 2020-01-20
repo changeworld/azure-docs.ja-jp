@@ -1,20 +1,15 @@
 ---
-title: Azure Service Fabric Mesh に関してよく寄せられる質問 | Microsoft Docs
+title: Azure Service Fabric Mesh に関する一般的な質問
 description: Azure Service Fabric Mesh に関してよく寄せられる質問と答えについて説明します。
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461999"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 
@@ -49,7 +44,7 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 そのようになった場合は、Azure CLI で `az mesh app show` コマンドを実行することで、システムがシャットダウンしたことを確認できます。 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` が返されるかどうかをチェックします 
 
-例: 
+次に例を示します。 
 
 ```cli
 ~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -86,7 +81,6 @@ Windows Fall Creators Update (バージョン 1709) のコンピューターで�
 Windows 10 April 2018 Update (バージョン 1803) のコンピューターで開発を行っている場合は、Windows バージョン 1709 または Windows バージョン 1803 の Docker イメージを使用できます。
 
 サービスをデプロイするために、次のコンテナー OS イメージを使用できます:
-
 - Windows - windowsservercore と nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -110,7 +104,7 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 
 - Windows Fall Creators Update (バージョン 1709) 以降をベース コンテナー イメージとして使用します。
 - サービス名だけでは機能しない場合は、完全修飾名を試してください:ServiceName.ApplicationName。
-- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 例:
+- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 次に例を示します。
 
 ```Dockerfile
 EXPOSE 80
@@ -170,6 +164,6 @@ IP アドレスがすぐに利用可能にならない既知の問題があり�
 
 これはバグであり、修正プログラムが実装されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh の詳細については、[概要](service-fabric-mesh-overview.md)ページをお読みください。

@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407242"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -77,9 +77,9 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2
+次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0
 
-.NET Core の完全なフレームワーク、自己完結型のデプロイ、および ASP.NET Core 3.0 をターゲットにすることは、現在、エージェント/拡張機能ベースの監視では**サポートされていません** (コードによる[手動インストルメンテーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)は、上記のすべてのシナリオで機能します)。
+現時点では、.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では**サポートされていません**。 (コードによる[手動インストルメンテーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)は、上記のすべてのシナリオで機能します)。
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 
@@ -92,11 +92,11 @@ Azure App Services がホストするアプリケーションについてアプ�
 
      ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource-01.png)
 
-2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 .NET Core では、.NET Core 2.0、2.1、2.2 の場合、**推奨収集**か**無効**が提供されます。
+2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 .NET Core では、.NET Core 2.0、2.1、2.2、および 3.0 の場合、 **[推奨収集]** または **[無効]** が提供されます。
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 **[Settings]\(設定\)**  >  **[select Application Insights]\(Application Insights の選択\)**  >  **[Enable]\(有効化\)** の App Service の Web アプリで選択します。 Node.js エージェント ベースの監視は、現在プレビューの段階です。
 
@@ -119,7 +119,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 * **[設定]** 、** **[アプリケーション設定]** ** の順に選択します
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
-     [Name] \(名前): `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `true`
 
@@ -146,7 +146,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 ![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Node.js アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
 
@@ -377,7 +377,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 以下の表は、これらの値の意味、その根本的な原因、推奨される修正について詳細に説明したものです。
 
-|問題の値|説明|解決策
+|問題の値|説明|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | この値は、SDK の一部の側面が既にアプリケーションに存在することが拡張機能で検出され、拡張機能が停止されることを示します。 これは、`System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`、または `Microsoft.ApplicationInsights` への参照が原因である可能性があります  | これらの参照を削除します。 これらの参照の一部は、特定の Visual Studio テンプレートによって既定で追加されており、以前のバージョンの Visual Studio で `Microsoft.ApplicationInsights` への参照が追加されている可能性があります。
 |`AppAlreadyInstrumented:true` | アプリケーションが .NET Core 2.1 または 2.2 をターゲットにしており、[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) メタパッケージを参照している場合は、Application Insights に取り込まれ、拡張機能は停止されます。 | .NET Core 2.1、2.2 をご利用のお客様は、代わりに Microsoft.AspNetCore.App メタパッケージを使用することを[お勧めします](https://github.com/aspnet/Announcements/issues/287)。|
@@ -397,7 +397,7 @@ APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コン
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](../app/profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
 * [Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。

@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理での要求プロセスと電子メールの通知 - Azure Active Directory
+title: 処理と通知を要求する - Azure AD エンタイトルメント管理
 description: Azure Active Directory エンタイトルメント管理におけるアクセス パッケージの要求プロセスと電子メール通知が送信されるタイミングについて説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422601"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理における要求プロセスと電子メール通知
 
@@ -33,7 +33,7 @@ ms.locfileid: "74206918"
 
 ![承認プロセスの図](./media/entitlement-management-process/request-process.png)
 
-| State | 説明 |
+| State | [説明] |
 | --- | --- |
 | 送信 | ユーザーが要求を送信します。 |
 | 承認保留中 | アクセス パッケージのポリシーが承認を必要とする場合、要求は承認保留中に移動します。 |
@@ -45,7 +45,7 @@ ms.locfileid: "74206918"
 | 拡張アクセス | ポリシーで拡張が許可されている場合、ユーザーは割り当てを拡張しています。 |
 | アクセス有効期限切れ | ユーザーのアクセス パッケージへのアクセスの有効期限が切れています。 アクセスを取得するには、ユーザーはもう一度要求を送信する必要があります。 |
 
-## <a name="email-notifications"></a>電子メール通知
+## <a name="email-notifications"></a>メール通知
 
 承認者の場合は、アクセス要求を承認する必要があるときにメール通知が送られてきます。 また、アクセス要求が完了したときにも通知を受け取ります。 要求者の場合も、要求の状態を示すメール通知が送られてきます。
 
@@ -152,7 +152,7 @@ ms.locfileid: "74206918"
 
 ![アクセス要求が期限切れとなった場合の要求元への電子メール](./media/entitlement-management-process/requestor-email-request-expired.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [アクセス パッケージへのアクセスの要求](entitlement-management-request-access.md)
-- [アクセス要求の承認または拒否](entitlement-management-request-approve.md)
+- [アクセス パッケージへのアクセスを要求する](entitlement-management-request-access.md)
+- [アクセス要求を承認または拒否する](entitlement-management-request-approve.md)

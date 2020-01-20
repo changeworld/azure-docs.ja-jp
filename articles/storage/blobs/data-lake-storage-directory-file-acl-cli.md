@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462590"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 でファイルと ACL に Azure CLI を使用する (プレビュー)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
 
 この記事では、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
@@ -98,7 +98,7 @@ az storage blob directory create -c my-file-system -d my-directory --account-nam
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>ディレクトリを名前変更または移動する
+## <a name="rename-or-move-a-directory"></a>ディレクトリの名前変更または移動
 
 `az storage blob directory move` コマンドを使用して、ディレクトリの名前変更または移動を行います。
 
@@ -220,7 +220,7 @@ az storage blob directory access show -d my-directory -c my-file-system --accoun
 az storage blob access show -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-次のイメージは、ディレクトリの ACL を取得した後の出力を示しています。
+次の画像は、ディレクトリの ACL を取得した後の出力を示しています。
 
 ![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
 
@@ -243,7 +243,7 @@ az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-
 ```azurecli
 az storage blob access set -a "user::rw-,group::rw-,other::-wx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-次のイメージは、ファイルの ACL を設定した後の出力を示しています。
+次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
 ![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
@@ -296,7 +296,7 @@ az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c 
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [サンプル](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

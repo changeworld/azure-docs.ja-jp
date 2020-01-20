@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463938"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -47,7 +47,7 @@ Azure Files には 2 つの便利なデータ アクセス方法が組み込ま�
 
 次の表では、ユーザーおよびアプリケーションが Azure ファイル共有にアクセスできる方法を示します。
 
-| | クラウドへの直接アクセス | Azure ファイル同期 |
+| | クラウドへの直接アクセス | Azure File Sync |
 |------------------------|------------|-----------------|
 | 使う必要があるプロトコル | Azure Files は、SMB 2.1、SMB 3.0、ファイル REST API をサポートします。 | Windows Server でサポートされているプロトコル (SMB、NFS、FTPS など) を使って、Azure ファイル共有にアクセスします。 |  
 | ワークロードを実行する場所 | **Azure 内**:Azure Files によりデータへの直接アクセスが提供されます。 | **低速ネットワークのオンプレミス**:Windows、Linux、macOS のクライアントは、ローカルなオンプレミスの Windows ファイル共有を、Azure ファイル共有の高速キャッシュとしてマウントすることができます。 |
@@ -212,14 +212,19 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |インド中部  |LRS     |
 |米国中部*   |LRS     |
 |東アジア      |LRS     |
-|米国東部*        |LRS     |
+|米国東部*        |LRS、ZRS|
 |米国東部 2*      |LRS     |
 |フランス中部 |LRS、ZRS|
 |フランス南部   |LRS     |
-|米国中北部 |LRS     |
+|東日本     |LRS     |
+|米国中北部 |LRS   |
 |北ヨーロッパ   |LRS     |
 |インド南部    |LRS     |
+|米国中南部 |LRS     |
 |東南アジア |LRS、ZRS|
+|アラブ首長国連邦中部    |LRS     |
+|英国南部   |LRS     |
+|英国西部    |LRS     |
 |米国中西部|LRS     |
 |西ヨーロッパ*    |LRS、ZRS|
 |米国西部*        |LRS     |
@@ -248,7 +253,7 @@ Azure ファイル同期を使って複数の Azure ファイル共有を 1 つ�
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** :Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)

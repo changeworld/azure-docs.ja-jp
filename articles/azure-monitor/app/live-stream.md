@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406744"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -33,9 +33,9 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、Java、および Node.js アプリでサポートされています。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
-1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.md)していない場合は、今すぐインストールしてください。
+1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.yml)していない場合は、今すぐインストールしてください。
 2. Live Metrics ストリームを有効にするには、標準の Application Insights パッケージに加え、[Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) が必要です。
 3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
@@ -53,7 +53,7 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 | |Live Stream | メトリックス エクスプローラーと Analytics |
 |---|---|---|
-|待機時間|1 秒以内に表示されるデータ|数分間で集計|
+|Latency|1 秒以内に表示されるデータ|数分間で集計|
 |リテンション期間なし|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |オン デマンド|Live Metrics を開いている間、データはストリーミングされます|SDK がインストールされて有効になるたびに、データが送信されます|
 |無料|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
@@ -157,7 +157,7 @@ Azure Function App (v2) の場合、API キーを使用してチャネルをセ�
 
 Application Insights リソース内から API キーを作成し、Function App の **[アプリケーションの設定]** に移動します。 **[新しい文字列の追加]** を選択し、`APPINSIGHTS_QUICKPULSEAUTHAPIKEY` の名前と、API キーに対応する値を入力します。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-beta 以降が必要)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 以降が必要)
 
 startup.cs ファイルを次のように変更します。
 
@@ -206,8 +206,8 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では、他の Application Insights テレメトリとは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)
 * [診断検索の使用](../../azure-monitor/app/diagnostic-search.md)
-* [プロファイラー](../../azure-monitor/app/profiler.md)
+* [Profiler](../../azure-monitor/app/profiler.md)
 * [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)

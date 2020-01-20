@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975093"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896096"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -51,11 +51,11 @@ Azure AD 認証では、ユーザーは Azure Active Directory 資格情報を�
 
 大まかに言えば、Azure AD 認証を構成するには、次の手順を実行する必要があります。
 
-[1.Azure AD テナントを構成する](openvpn-azure-ad-tenant.md)
+1. [Azure AD テナントを構成する](openvpn-azure-ad-tenant.md)
 
-[2.ゲートウェイでの Azure AD 認証を有効にする](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [ゲートウェイでの Azure AD 認証を有効にする](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3.Azure VPN クライアントをダウンロードして構成する (プレビュー)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN クライアント (プレビュー) をダウンロードして構成する](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) ドメイン サーバーを使用した認証
@@ -67,10 +67,6 @@ RADIUS サーバーは、オンプレミスまたは Azure VNET にデプロイ�
 また、RADIUS サーバーは、AD 証明書サービスとも統合できます。 これにより、Azure 証明書認証の代替手段として、P2S 証明書認証に RADIUS サーバーとエンタープライズ証明書デプロイを使用できます。 この利点は、ルート証明書と失効した証明書を Azure にアップロードする必要がないことです。
 
 RADIUS サーバーは、他の外部 ID システムと統合することもできます。 これにより、多要素認証のオプションなど、P2S VPN 向けの多数の認証オプションを利用できるようになります。
-
->[!NOTE]
->RADIUS 認証では、**OpenVPN® プロトコル**はサポートされていません。
->
 
 ![ポイント対サイト](./media/point-to-site-about/p2s.png "ポイント対サイト")
 

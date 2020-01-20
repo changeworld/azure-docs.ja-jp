@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428385"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -31,7 +31,7 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
-* スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細情報](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細情報](https://support.mozilla.org/questions/981140)。
+* スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 * **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://azure.microsoft.com/free/services/machine-learning//)で新しいアカウントにサインアップしてください。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
@@ -174,17 +174,17 @@ R を使用して、データを確認し、基本的な機械学習を実行し
 
 ## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) にモデルをデプロイする
 
-[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio のクラシック バージョンの便利な機能に、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
+[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio (クラシック) の便利な機能に、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio (クラシック) の R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
 
 前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio (クラシック) にサインインします。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらで Azure Machine Learning の変数を初期化するには、次の手順を実行します。
 
 1. 左側のメニューで **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。
 
-   ![Azure Machine Learning Studio のワークスペース ID](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![Azure Machine Learning Studio (クラシック) ワークスペース ID](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 1. **[Authorization Tokens]\(認証トークン\)** タブを選択します。 **[Primary Authorization Token]\(プライマリ認証トークン\)** の値をメモします。
 
-   ![Azure Machine Learning Studio のプライマリ認証トークン](./media/linux-dsvm-walkthrough/workspace-token.png)
+   ![Azure Machine Learning Studio (クラシック) のプライマリ認証トークン](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. **AzureML** パッケージを読み込み、DSVM 上の R セッションで、 使用するトークンとワークスペース ID を用いて変数の値を設定します。
 
         if(!require("AzureML")) install.packages("AzureML")
@@ -546,7 +546,7 @@ bcp を使用してデータをコピーします。
 
 SQuirreL SQL を使用してクエリを実行することもできます。 SQL Server JDBC ドライバーを使用して PostgreSQL の場合と同様の手順を実行します。 JDBC ドライバーは /usr/share/java/jdbcdrivers/sqljdbc42.jar フォルダーにあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure でのデータ サイエンス プロセスを構成するタスクについて説明した記事の概要については、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) に関するページをご覧ください。
 

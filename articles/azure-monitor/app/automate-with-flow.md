@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407541"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
@@ -28,7 +28,7 @@ ms.locfileid: "72678317"
 
 このチュートリアルでは、Analytics 自動クラスター アルゴリズムを使うフローを作成して、Web アプリケーションのデータの属性をグループ化する方法を説明します。 このフローは結果を自動的にメールで送信しますが、これは、Microsoft Flow と Application Insights Analytics を共に利用する方法の一例にすぎません。
 
-### <a name="step-1-create-a-flow"></a>手順 1: フローを作成する
+### <a name="step-1-create-a-flow"></a>手順 1:フローを作成する
 
 1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、 **[マイ フロー]** を選択します。
 2. **[新規]** 、 **[Scheduled—from blank]\(スケジュール - 一から作成\)** の順にクリックします。
@@ -88,7 +88,7 @@ ms.locfileid: "72678317"
     
     ![Analytics クエリの設定ウィンドウ](./media/automate-with-flow/5-query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>手順 6: 電子メールを送信するフローを設定する
+### <a name="step-6-configure-the-flow-to-send-email"></a>手順 6:電子メールを送信するフローを設定する
 
 1. **Office 365 Outlook** を検索します。
 2. **[Office 365 Outlook - 電子メールの送信]** をクリックします。
@@ -117,9 +117,9 @@ ms.locfileid: "72678317"
 
 ### <a name="step-7-save-and-test-your-flow"></a>手順 7:フローを保存してテストする
 
-**[Save]** をクリックします。
+**[保存]** をクリックします。
 
-トリガーによってこのアクションが実行されるまで待つか、上部にある![ビーカー テスト アイコン](./media/automate-with-flow/testicon.png)**テスト**をクリックできます。
+トリガーによってこのアクションが実行されるまで待つか、上部にある![ビーカー テスト アイコン](./media/automate-with-flow/testicon.png) **[テスト]** をクリックできます。
 
 **テスト**の選択後、以下の操作を行います。
 
@@ -130,7 +130,7 @@ ms.locfileid: "72678317"
 
 ![電子メールのサンプル](./media/automate-with-flow/flow9.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Analytics クエリ](../../azure-monitor/log-query/get-started-queries.md)の作成についての詳細を見る
 - [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る

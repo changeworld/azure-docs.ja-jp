@@ -1,5 +1,5 @@
 ---
-title: Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する - Azure Active Directory
+title: アクセス パッケージを要求する - Azure AD エンタイトルメント管理
 description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する方法を学習します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422537"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -33,7 +33,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 最初の手順は、アクセス パッケージへのアクセスを要求できる、マイ アクセス ポータルにサインインすることです。
 
-**前提となるロール:** 要求元
+**事前に必要なロール:** 要求元
 
 1. 操作する、プロジェクトまたはビジネス マネージャーからのメールまたはメッセージを見つけます。 メールには、アクセスする必要があるアクセス パッケージへのリンクが含まれているはずです。 リンクは `myaccess` で始まり、ディレクトリ ヒントを含み、アクセス パッケージ ID で終了します。
  
@@ -49,7 +49,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 マイ アクセス ポータルでアクセス パッケージが見つかったら、要求を送信できます。
 
-**前提となるロール:** 要求元
+**事前に必要なロール:** 要求元
 
 1. リストでアクセス パッケージを見つけます。  必要に応じて、検索文字列を入力して、 **[名前]** 、 **[カタログ]** 、または **[リソース]** フィルターを選択すると検索できます。
 
@@ -67,7 +67,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 必要に応じて、開始日と終了日を指定します。
 
-    ![マイ アクセス ポータル - [アクセス権の要求]](./media/entitlement-management-shared/my-access-request-access.png)
+    ![マイ アクセス ポータル - [アクセスの要求]](./media/entitlement-management-shared/my-access-request-access.png)
 
 1. 完了したら、 **[送信]** をクリックして要求を送信します。
 
@@ -109,7 +109,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 アクセス要求を送信し、要求がまだ**承認待ち**状態の場合、要求を取り消すことができます。
 
-**前提となるロール:** 要求元
+**事前に必要なロール:** 要求元
 
 1. マイ アクセス ポータルの左側にある **[要求の履歴]** をクリックして、要求と状態のリストを表示します。
 
@@ -121,7 +121,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. **[要求の履歴]** をクリックして、要求が取り消されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス要求を承認または拒否する](entitlement-management-request-approve.md)
 - [要求プロセスとメール通知](entitlement-management-process.md)

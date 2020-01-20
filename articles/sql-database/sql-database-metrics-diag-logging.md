@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/15/2019
-ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 11/16/2019
+ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539183"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750776"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -28,12 +28,12 @@ ms.locfileid: "74539183"
 - **Azure Event Hubs**: SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
 - **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
 
-    ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
+    ![Architecture](./media/sql-database-metrics-diag-logging/architecture.png)
 
 各種の Azure サービスでサポートされているメトリックとログ カテゴリの詳細については、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure Diagnostics の概要](../azure-monitor/platform/resource-logs-overview.md)
+- [Azure Diagnostics の概要](../azure-monitor/platform/platform-logs-overview.md)
 
 この記事では、Azure SQL データベース、エラスティック プール、およびマネージド インスタンスの診断テレメトリを有効にするためのガイダンスを提供します。 また、データベース診断テレメトリを表示するための監視ツールとして Azure SQL Analytics を構成する方法の理解にも役立ちます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "74539183"
 
 次のいずれかの方法を使用してメトリックと診断テレメトリのロギングを有効にして管理できます。
 
-- Azure ポータル
+- Azure portal
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API
@@ -79,9 +79,10 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 > エラスティック プールとマネージド インスタンスには、それらに含まれるデータベースとは別の、独自の診断テレメトリがあります。 つまり、以下に示すように、診断テレメトリはそのリソースごとに個別に構成されているということに注意する必要があります。
 
 > [!NOTE]
-> 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
+> - 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
+> - master、msdb、model、resource、および tempdb データベースなどの **システム データベース**に対して診断設定を構成することはできません。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 Azure portal で単一データベース、プールされたデータベース、またはインスタンス データベースのそれぞれに対して **[診断設定]** メニューを使用して、診断テレメトリのストリーミングを構成できます。 さらに、診断テレメトリは、エラスティック プールとマネージ インスタンスという各データベース コンテナー用に個別に構成することもできます。 診断テレメトリのストリーム先に次の宛先を設定できます。Azure Storage、Azure Event Hubs、Azure Monitor ログです。
 
@@ -458,16 +459,16 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>マネージド インスタンスのリソース使用状況の統計
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure|
+|SourceSystem|常時: Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にResourceUsageStats |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: ResourceUsageStats |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にMANAGEDINSTANCES |
+|ResourceType|リソースの種類の名前。 常時: MANAGEDINSTANCES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|マネージド インスタンスの名前 |
@@ -483,17 +484,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にQueryStoreRuntimeStatistics |
-|OperationName|操作の名前。 常にQueryStoreRuntimeStatisticsEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: QueryStoreRuntimeStatistics |
+|OperationName|操作の名前。 常時: QueryStoreRuntimeStatisticsEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -534,17 +535,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にQueryStoreWaitStatistics |
-|OperationName|操作の名前。 常にQueryStoreWaitStatisticsEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: QueryStoreWaitStatistics |
+|OperationName|操作の名前。 常時: QueryStoreWaitStatisticsEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -572,17 +573,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="errors-dataset"></a>エラー データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にErrors |
-|OperationName|操作の名前。 常にErrorEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: エラー |
+|OperationName|操作の名前。 常時: ErrorEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -601,17 +602,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にDatabaseWaitStatistics |
-|OperationName|操作の名前。 常にDatabaseWaitStatisticsEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: DatabaseWaitStatistics |
+|OperationName|操作の名前。 常時: DatabaseWaitStatisticsEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -630,17 +631,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にTimeouts |
-|OperationName|操作の名前。 常にTimeoutEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: Timeouts |
+|OperationName|操作の名前。 常時: TimeoutEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -653,17 +654,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="blockings-dataset"></a>ブロックしているデータセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にBlocks |
-|OperationName|操作の名前。 常にBlockEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: Blocks |
+|OperationName|操作の名前。 常時: BlockEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -677,17 +678,17 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="deadlocks-dataset"></a>デッドロック データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC] |ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にデッドロック |
-|OperationName|操作の名前。 常にDeadlockEvent |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: デッドロック |
+|OperationName|操作の名前。 常時: DeadlockEvent |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -698,16 +699,16 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="automatic-tuning-dataset"></a>自動チューニング データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID |
-|SourceSystem|常にAzure |
+|SourceSystem|常時: Azure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|種類|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
-|Category|カテゴリの名前。 常にAutomaticTuning |
+|種類|常時: AzureDiagnostics |
+|ResourceProvider|リソース プロバイダーの名前。 常時: MICROSOFT.SQL |
+|カテゴリ|カテゴリの名前。 常時: AutomaticTuning |
 |リソース|リソースの名前 |
-|ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
+|ResourceType|リソースの種類の名前。 常時: SERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
@@ -730,12 +731,12 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 [Intelligent Insights ログ形式](sql-database-intelligent-insights-use-diagnostics-log.md)の詳細。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure Diagnostics の概要](../azure-monitor/platform/resource-logs-overview.md)
+- [Azure Diagnostics の概要](../azure-monitor/platform/platform-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 

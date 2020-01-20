@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric でアクター ベースのサービスを作成する | Microsoft Docs
+title: Azure Service Fabric でアクターベースのサービスを作成する
 description: C# で Service Fabric Reliable Actors を使用して、最初のアクタベースのサービスを作成、デバッグ、およびデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466257"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -116,7 +107,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet パッケージとそのすべての依存関係が、ActorClient プロジェクトにインストールされます。
 
-5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  Click **OK**.
+5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
     
     ![[参照の追加] ダイアログ][7]
 
@@ -157,7 +148,7 @@ internal class HelloWorld : Actor, IHelloWorld
 > [!TIP]
 > Service Fabric Actors ランタイムは、 [アクター メソッドに関連する一部のイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)を出力します。 これらは、診断やパフォーマンスの監視に役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)」で詳細を参照してください。
 
 

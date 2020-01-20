@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: blevens
-ms.openlocfilehash: bb6abc616be98f85228c4f84f37b26110b48c2ed
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ad4841d805b604d0f44a9e0dc08eed15aa9c1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431991"
 ---
 # <a name="add-bank-and-tax-information"></a>銀行口座および税の情報を追加する  
 
@@ -22,10 +22,10 @@ ms.locfileid: "73824015"
 
 ## <a name="partner-center"></a>パートナー センター
 
-銀行口座および税の情報は、パートナー センター内で管理されるようになりました。 これらの設定を構成する手順については、[パートナー センター アカウントの管理](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)に関する記事の "財務の詳細" セクションを参照してください。
+銀行口座および税の情報は、パートナー センター内で管理されるようになりました。 これらの設定を構成する手順については、[パートナー センター アカウントの管理](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)に関する記事の "商業マーケットプレースの概要" に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
  
 ---

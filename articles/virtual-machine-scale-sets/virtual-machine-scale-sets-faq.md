@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machine Scale Sets の FAQ | Microsoft Docs
-description: 仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
+title: Azure Virtual Machine Scale Sets の FAQ
+description: Azure における仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356216"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -229,11 +229,11 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 }
 ```
 
-linuxConfiguration の要素名 | 必須 | Type | 説明
+linuxConfiguration の要素名 | 必須 | 種類 | [説明]
 --- | --- | --- | ---
 ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
-path | はい | string | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | はい | string | Base64 でエンコードされた SSH 公開キーを指定します。
+path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 
@@ -343,8 +343,15 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) および [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。
 
+## <a name="deleting"></a>削除中 
 
-## <a name="extensions"></a>Extensions
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>インスタンスを削除するときに、仮想マシン スケール セットのインスタンスに対して設定されたロックは維持されますか?
+
+Azure Portal では、個々のインスタンスを削除するか、複数のインスタンスを選択して一括で削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。 ただし、複数のインスタンスを一括選択したときに、いずれかのインスタンスにロックが設定されている場合は、ロックは維持されず、選択されたすべてのインスタンスが削除されます。 
+ 
+Azure CLI では、個々のインスタンスのみを削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。 
+
+## <a name="extensions"></a>拡張機能
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>仮想マシン スケール セットの拡張機能を削除する方法を教えてください。
 
@@ -513,7 +520,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 IP アドレスは指定したサブネットから選択されます。
 
-仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスは変わることがあります。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。
+仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスが変わるというわけではありません。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。
 
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>既存の Azure 仮想ネットワークに仮想マシン スケール セットをデプロイするにはどうすればよいですか。
 
@@ -521,7 +528,7 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
-はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 たとえば、次のように入力します。
+はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 次に例を示します。
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -686,7 +693,7 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 
 いいえ。仮想マシン スケール セットの VM にそれぞれ異なる拡張機能の引数を渡すことはできません。 ただし、拡張機能は、それが実行される VM の一意のプロパティ (マシン名など) に基づいて動作することができます。 また、拡張機能から http://169.254.169.254 でインスタンスのメタデータを照会して、VM についての詳細情報を取得することもできます。
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 例: 0、1、3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 次に例を示します。0、1、3...
 
 仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
 

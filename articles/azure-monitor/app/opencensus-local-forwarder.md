@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus 分散トレース ローカル フォワーダー (プレビュー) | Microsoft Docs
+title: Azure Application Insights OpenCensus ローカル フォワーダー (プレビュー)
 description: OpenCensus の分散トレースと範囲を Python や Go などの言語から Azure Application Insights に転送します
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406604"
 ---
 # <a name="local-forwarder-preview"></a>ローカル フォワーダー (プレビュー)
 
@@ -177,6 +177,6 @@ host.Stop();
 
 構成ファイルが指定されていない場合 (既定)、ローカル フォワーダーでは既定の構成が使用されます。既定の構成については、[こちら](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Open Census](https://opencensus.io/)

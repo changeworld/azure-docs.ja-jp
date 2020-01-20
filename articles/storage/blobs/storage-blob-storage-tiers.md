@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a7f9969c7c9a341b48581536dd856b25b50bf96f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371957"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -138,11 +138,13 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの既定のアクセス層を変更する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-1. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
+1. Azure portal で、 **[すべてのリソース]** を探して選択します。
 
-1. [設定] で **[構成]** をクリックし、アカウント構成を表示および変更します。
+1. 使うストレージ アカウントを選びます。
+
+1. **[設定]** で **[構成]** を選択し、アカウント構成を表示および変更します。
 
 1. ニーズに応じた適切なアクセス層を選択します。 **[アクセス層]** を **[クール]** と **[ホット]** のいずれかに設定します。
 
@@ -150,9 +152,11 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-1. ストレージ アカウントの BLOB に移動するには、[すべてのリソース]、ストレージ アカウント、コンテナー、BLOB を順に選択します。
+1. Azure portal で、 **[すべてのリソース]** を探して選択します。
+
+1. コンテナーを選択し、お使いの BLOB を選択します。
 
 1. **[BLOB のプロパティ]** で、 **[層の変更]** を選択します。
 
@@ -174,7 +178,7 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 > [!NOTE]
 > ブロック BLOB の価格の詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **データを階層制御する場合、BLOB ストレージまたは GPv2 アカウントを使う必要があるのでしょうか。**
 
@@ -192,7 +196,7 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 **既定のアカウント アクセス層をアーカイブに設定することはできますか。**
 
-No. 既定のアカウント アクセス層として設定できるのは、ホット アクセス層とクール アクセス層だけです。 アーカイブは、オブジェクト レベルでのみ設定することができます。 BLOB のアップロードでは、既定のアカウント層に関係なく、選択するアクセス層をホット、クール、アーカイブのいずれにするかを指定します。 この機能により、データを直接アーカイブ層に書き込み、BLOB ストレージでデータを作成した瞬間からコストを削減することができます。
+いいえ。 既定のアカウント アクセス層として設定できるのは、ホット アクセス層とクール アクセス層だけです。 アーカイブは、オブジェクト レベルでのみ設定することができます。 BLOB のアップロードでは、既定のアカウント層に関係なく、選択するアクセス層をホット、クール、アーカイブのいずれにするかを指定します。 この機能により、データを直接アーカイブ層に書き込み、BLOB ストレージでデータを作成した瞬間からコストを削減することができます。
 
 **ホット、クール、アーカイブのアクセス層は、どのリージョンで利用できるのですか。**
 
@@ -228,7 +232,7 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 
 データ ストレージの上限は、アクセス層ごとに設定されるのではなく、その他の制限と共にアカウント レベルで設定されます。 すべての制限を 1 つの層で使用するか、3 つすべての層で使用するかは、ユーザーが選択できます。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 GPv2 および BLOB ストレージ アカウントにおけるホット、クール、アーカイブの評価
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454027"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -25,19 +25,24 @@ ms.locfileid: "73930200"
 
 この記事の手順を完了するには、次のものが必要です。
 
-- **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+- **レガシ アプリケーション** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 
 - Windows 10 IoT Core オペレーティング システムを実行しているデバイス。 詳細については、[Windows 10 IoT Core デバイスの設定](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)に関するページを参照してください。
 
 - [Node.js](https://nodejs.org/) バージョン 8.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
-## <a name="the-sample-devkits-application"></a>サンプル Devkit アプリケーション
+## <a name="add-a-device-template"></a>デバイス テンプレートの追加
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Windows IoT Core** デバイス テンプレートが含まれています。
+ご利用の Azure IoT Central アプリケーションで、次の特性を備えた新しい **Windows IoT Core** デバイス テンプレートを追加します。
 
 - デバイスのテレメトリ測定:**湿度**、**温度**、**圧力**。
 - **ファン速度**を制御するための設定。
 - デバイス プロパティ **Die number** とクラウド プロパティ **Location**。
+
+1. デバイス テンプレートから **[+ 新規]** を選択します。![デバイス テンプレート](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. **[Windows IoT Core]** を選択して、Windows IoT Core デバイス テンプレートを作成します。![デバイス テンプレートの追加](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 デバイス テンプレートの構成について詳しくは、「[Windows IoT Core デバイス テンプレートの詳細](#device-template-details)」をご覧ください。
 
@@ -90,7 +95,7 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) には、デバイスのトラブルシューティングに使用できるツールが含まれています。
 
 - **[Apps Manager]** ページを使用して、デバイスで実行されているアプリを制御できます。
-- デバイスに接続されているモニターがない場合、 **[デバイスの設定]** ページを使用して、デバイスからスクリーン ショットをキャプチャできます。 例:
+- デバイスに接続されているモニターがない場合、 **[デバイスの設定]** ページを使用して、デバイスからスクリーン ショットをキャプチャできます。 次に例を示します。
 
     ![アプリのスクリーンショット](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -118,13 +123,13 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 | 種類            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Windows IoT Core デバイスをご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

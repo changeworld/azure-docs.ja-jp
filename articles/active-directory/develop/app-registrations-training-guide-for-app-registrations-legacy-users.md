@@ -1,6 +1,6 @@
 ---
-title: アプリの登録 (レガシ) から Azure portal の新しいアプリの登録エクスペリエンスへの移行に関するトレーニング ガイド
-description: Azure portal の新しいアプリの登録エクスペリエンスの概要
+title: 新しい Azure portal アプリの登録トレーニング ガイド
+description: Azure portal の新しいアプリ登録エクスペリエンスを紹介します
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424659"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>アプリの登録 (レガシ) から Azure portal の新しいアプリの登録エクスペリエンスへの移行
+# <a name="new-azure-portal-app-registration-training-guide"></a>新しい Azure portal アプリの登録トレーニング ガイド
 
 Azure portal の新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスには、多くの機能強化があります。 Azure portal のアプリの登録 (レガシ) エクスペリエンスに慣れている場合は、このトレーニング ガイドを使用して、新しいエクスペリエンスを使い始めることができます。
 
@@ -121,7 +121,7 @@ Azure Active Directory では、ここで説明する新しいアプリケーシ
 
 - **[認証]** ページには **[暗黙的な許可フロー]** (`oauth2AllowImplicitFlow`) があります。 レガシ エクスペリエンスとは異なり、 **[アクセス トークン]** または **[ID トークン]** のいずれか、あるいはその両方を有効にすることができます。
 - **[API の公開]** ページには、 **[この API で定義されるスコープ]** (`oauth2Permissions`) と **[承認済みのクライアント アプリケーション]** (`preAuthorizedApplications`) が含まれています。 アプリを Web API として構成し、アクセス許可/スコープを公開する方法の詳細については、「[クイックスタート:Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)」を参照してください。
-- **[ブランド]** ページには、 **[パブリッシャー ドメイン]** が含まれています。 パブリッシャー ドメインは、[アプリケーションの [同意プロンプト]](application-consent-experience.md) 上でユーザーに対して表示されます。 詳細については、[方法:アプリケーションのパブリッシャー ドメインを構成する](howto-configure-publisher-domain.md)を参照してください。
+- **[ブランド]** ページには、 **[パブリッシャー ドメイン]** が含まれています。 パブリッシャー ドメインは、[アプリケーションの [同意プロンプト]](application-consent-experience.md) 上でユーザーに対して表示されます。 詳細については、「[アプリケーションのパブリッシャー ドメインを構成する](howto-configure-publisher-domain.md)を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

@@ -2,13 +2,11 @@
 documentType: LandingData
 title: Azure Red Hat OpenShift サービス
 metadata:
-  title: Azure Red Hat OpenShift サービスのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure Red Hat OpenShift サービスのドキュメント - チュートリアル、API リファレンス
   meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
   services: container-service
   author: tylermsft
-  manager: jeconnoc
   ms.service: container-service
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 05-06-2019
   ms.author: twhitney

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454655"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>エージェントレスの依存関係の視覚化を評価用に設定する
 
@@ -19,7 +19,7 @@ ms.locfileid: "74158441"
 
 > [!IMPORTANT]
 > Azure Migrate アプライアンスを使用して検出された Azure VMware VM のエージェントレスの依存関係の視覚化は現在プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 特定の機能はサポート対象ではなく、機能が制限されることがあります。 このプレビューはカスタマー サポートの対象であり、運用ワークロードで使用できます。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="about-dependency-mapping"></a>依存関係マッピングの概要
@@ -39,9 +39,9 @@ ms.locfileid: "74158441"
     - TCP 接続
     - アクティブな接続を含むプロセスの名前
     - 上記のプロセスを実行するインストール済みのアプリケーションの名前
-    - No. ポーリング間隔ごとに検出される接続の数
+    - いいえ。 ポーリング間隔ごとに検出される接続の数
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 
 - 現在、エージェントレスの依存関係の視覚化は、VMware VM でのみ使用できます。
 - 現在、依存関係の分析ビューでは、グループに対してサーバーを追加または削除することができません。
@@ -53,11 +53,11 @@ ms.locfileid: "74158441"
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
 - 現在、エージェントレスの依存関係の分析は、VMware マシンでのみ使用できます。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
-- VMWare マシンが Azure Migrate で検出されていることを確認します。これを実行するには、[VMware](how-to-set-up-appliance-vmware.md) 用に Azure Migrate アプライアンスを設定します。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
+- VMWare マシンが Azure Migrate で検出されていることを確認します。これを実行するには、[VMware](how-to-set-up-appliance-vmware.md) 用に Azure Migrate アプライアンスを設定します。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 - 次の表に示すように、エージェントレスの依存関係の視覚化について VMware VM がサポートされていることを確認します。
 
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 エージェントレスの依存関係の視覚化でサポートされるオペレーティング システムは次のとおりです。
 
@@ -85,7 +85,7 @@ ms.locfileid: "74158441"
 3. **[オペレーティング システム]** を選択します。
 4. アカウントのフレンドリ名を指定します。
 5. **[ユーザー名]** と **[パスワード]** を指定します
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 7. **[保存して検出を開始]** をクリックします。
 
     ![VM ユーザー アカウントを追加する](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -138,6 +138,6 @@ ms.locfileid: "74158441"
 5. **[Stop dependency discovery]\(依存関係の検出を停止する\)** をクリックします
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [マシンをグループ化する](how-to-create-a-group.md)

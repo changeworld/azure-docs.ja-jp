@@ -1,25 +1,14 @@
 ---
-title: Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する | Microsoft Docs
+title: Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する
 description: Java Service Fabric Reliable Actors アプリケーションを 5 分で作成してデプロイする方法について説明します。
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458167"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -196,7 +185,7 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
   gradle
   ```
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
 1. ローカルの Service Fabric クラスターに接続します (クラスターが[セットアップ済みで稼働中](service-fabric-get-started-linux.md#set-up-a-local-cluster)であることが必要)。
@@ -346,7 +335,7 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
   }
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Linux で初めての Service Fabric Java アプリケーションを作成する](service-fabric-get-started-eclipse.md)
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)

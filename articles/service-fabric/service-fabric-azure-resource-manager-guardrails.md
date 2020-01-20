@@ -1,25 +1,18 @@
 ---
-title: Service Fabric Azure Resource Manager デプロイのガードレール |Microsoft Docs
+title: Service Fabric Azure Resource Manager デプロイのガードレール
 description: この記事では、Azure Resource Manager を使用して Service Fabric クラスターをデプロイするときの一般的な間違いの概要と、それらを回避する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426733"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric のガードレール 
 Service Fabric クラスターをデプロイするとき、ガードレールが設定されています。これにより、無効なクラスター構成の場合、Azure Resource Manager のデプロイは失敗します。 以下のセクションでは、クラスター構成に関する一般的な問題の概要と、これらの問題を軽減するために必要な手順について説明します。 
@@ -73,7 +66,7 @@ Service Fabric ノード タイプの持続性の値は、Azure Resource Manager
 1. Azure Resource Manager テンプレートの仮想マシン スケール セット拡張機能または Service Fabric ノード タイプのセクションで、値が一致するように持続性レベルを更新します。
 2. 更新された値を使用して Azure Resource Manager テンプレートを再デプロイします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)
 * Service Fabric のトラブルシューティング:[トラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

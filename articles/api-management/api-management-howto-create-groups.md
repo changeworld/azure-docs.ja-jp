@@ -1,5 +1,6 @@
 ---
-title: Azure API Management でグループを使用して開発者アカウントを管理する | Microsoft Docs
+title: Azure API Management でグループを使用して開発者アカウントを管理する
+titleSuffix: Azure API Management
 description: Azure API Management でグループを使用して開発者アカウントを管理する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430722"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 
@@ -43,7 +44,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-group"> </a>グループの作成
+## <a name="create-group"> </a>グループを作成する
 
 このセクションでは、API Management アカウントに新しいグループを追加する方法を示します。
 
@@ -58,7 +59,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
 
-## <a name="associate-group-product"> </a>グループと成果物の関連付け
+## <a name="associate-group-product"> </a>グループと成果物を関連付ける
 
 1. 左にある **[成果物]** タブを選択します。
 2. 目的の成果物の名前をクリックします。
@@ -79,7 +80,7 @@ API Management には、次に示すシステム グループが用意されて�
 > [!NOTE]
 > Azure Active Directory グループを追加するには、「 [Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
 
-## <a name="associate-group-developer"> </a>グループと開発者の関連付け
+## <a name="associate-group-developer"> </a>グループと開発者を関連付ける
 
 このセクションでは、グループをメンバーに関連付ける方法を示します。
 
@@ -94,7 +95,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 開発者とグループの間に関連付けを追加すると、 **[ユーザー]** タブにその関連付けが表示されるようになります。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"> </a>次の手順
 
 * 開発者をグループに関連付けると、開発者は、グループに関連付けられた成果物を表示してサブスクライブすることができます。 詳細については、「 [Azure API Management で成果物を作成して発行する方法][How create and publish a product in Azure API Management]」をご覧ください。
 * 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。

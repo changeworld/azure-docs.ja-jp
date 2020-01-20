@@ -1,7 +1,7 @@
 ---
 title: データセットへの変換:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service のデータセットへの変換モジュールを使用して、データ入力を Microsoft Azure Machine Learning で使用される内部データセット形式に変換する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のデータセットへの変換モジュールを使用して、データ入力を Microsoft Azure Machine Learning で使用される内部データセット形式に変換する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428573"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
@@ -46,14 +46,14 @@ ms.locfileid: "73717259"
     - **ReplaceValues**:このオプションを使用して、その他の正確な値に置き換えられる単一の正確な値を指定します。 欠損値とカスタム値のどちらを置換するかに応じて、 **[置換]** の方法を次のように設定します。
 
       - **[Missing]\(欠損\)** :入力データセット内の欠損値を置き換える場合にこのオプションを選択します。 **[新しい値]** には、欠損値を置き換える値を入力します。
-      - **カスタム**:入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
+      - **Custom**:入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
   
     **ReplaceValues** 操作は、完全一致にのみ適用されることに注意してください。 たとえば、`obs.` や `obsolete` といった文字列は影響を受けません。  
  
   
 5.  パイプラインを実行するか、データセットへの変換モジュールを右クリックして、 **[選択項目の実行]** を選択します。  
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 +  結果のデータセットを新しい名前で保存するには、データセットへの変換の出力を右クリックし、 **[データセットとして保存]** を選択します。  
   
@@ -68,6 +68,6 @@ ms.locfileid: "73717259"
 -   カスタム置換操作では、列の現在のデータ型に準拠していない文字を置換として使用すると、置換は自動的に失敗します。  
 
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

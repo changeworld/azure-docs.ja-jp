@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 8fd88c3bfad962f264efa030d0a3aea44e95dc8c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839761"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427683"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio を使用して顧客離れを分析する (クラシック)
 ## <a name="overview"></a>概要
@@ -71,7 +71,7 @@ ms.locfileid: "73839761"
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でのモデリング アーキタイプの実装
-説明した問題を踏まえると、モデリングとスコア付けの統合アプローチを実装する最適な方法は何でしょうか。 このセクションでは、クラシック バージョンの Azure Machine Learning Studio を使用してこれを実現する方法を紹介します。  
+説明した問題を踏まえると、モデリングとスコア付けの統合アプローチを実装する最適な方法は何でしょうか。 このセクションでは、Azure Machine Learning Studio (クラシック) を使用してこれを実現する方法を紹介します。  
 
 マルチモデルのアプローチは、離反のグローバル アーキタイプを設計するうえで欠かすことができないものです。 このアプローチのスコア付け (予測) の部分さえもマルチモデルである必要があります。  
 
@@ -131,11 +131,11 @@ ms.locfileid: "73839761"
 
 SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと 4 つのすべての Machine Learning Studio (クラシック) モデルの精度を測定しました。  
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 このセクションでは、スコア付けデータセットに基づいて、モデルの正確度に関してわかったことを紹介します。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>スコア付けの正確度と精度
-一般に、クラシック バージョンの Azure Machine Learning Studio での実装は、正確度の点で SAS よりも約 10 から 15% 劣っていました (AUC)。  
+一般に、Azure Machine Learning Studio (クラシック) での実装は、正確度の点で SAS よりも約 10-15% 劣っていました (AUC)。  
 
 ただし、離反で最も重要なメトリックは、誤分類率です。つまり、分類子によって予測された上位の離反者のうち、実際には**離反しておらず**、特別な扱いを受けている人々です。 次の図では、すべてのモデルでこの誤分類を比較しています。  
 
@@ -146,7 +146,7 @@ SAS Enterprise Miner 12 のデスクトップのエディションを使用し�
 ### <a name="using-auc-to-compare-results"></a>AUC を使用した結果の比較
 曲線下面積 (AUC) は、正と負の母集団のスコア分布の *可分性* の大域尺度を表すメトリックです。 従来の Receiver Operator Characteristic (ROC) グラフと似ているものの、AUC メトリックではしきい値を選択する必要がないという重要な違いがあります。 AUC では、可能性のある **すべての** 選択肢を対象にした結果がまとめられます。 それとは対照的に、従来の ROC グラフでは縦軸に陽性率、横軸に偽陽性率が示され、分類のしきい値は変動します。   
 
-AUC は、異なるアルゴリズム (または異なるシステム) の価値の尺度として使用されます。AUC 値を使ってモデルを比較できるためです。 これは、気象学や生物科学、その他多数の産業でよく使われる手法です。 このため、AUC は分類器のパフォーマンスを評価するための一般的なツールとなっています。  
+AUC は、異なるアルゴリズム (または異なるシステム) の価値の尺度として使用されます。AUC 値を使ってモデルを比較できるためです。 これは、気象学や生物科学、その他多数の産業でよく使われる手法です。 このため、AUC は分類子のパフォーマンスを評価するための一般的なツールとなっています。  
 
 ### <a name="comparing-misclassification-rates"></a>誤分類率の比較
 およそ 8,000 件のサブスクリプションが含まれる CRM データを使用して、問題のデータセットの誤分類率を比較しました。  
@@ -200,17 +200,17 @@ Machine Learning Studio (クラシック) でホストされたモデルは、�
 
 しかしながら、Machine Learning Studio (クラシック) を使用したセルフサービス分析なら、部門または部署別に分けられた情報の 4 つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。  
 
-クラシック バージョンの Azure Machine Learning Studio にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。 この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。 これは、市場でクラシック バージョンの Azure Machine Learning Studio を差別化している重要な機能です。  
+Azure Machine Learning Studio (クラシック) にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。 この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。 これは、市場で Azure Machine Learning Studio (クラシック) を差別化している重要な機能です。  
 
 このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
   
 
 ## <a name="conclusion"></a>まとめ
-このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。 スコア付けモデルのプロトタイプについて検討し、それをクラシック バージョンの Azure Machine Learning Studio を使って実装しました。 最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。  
+このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。 スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning Studio (クラシック) を使って実装しました。 最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。  
 
  
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 [1] 予測分析: 予想を超える、W. McKnight、Information Management、2011 年 7 月/8 月、p18 から 20。  
 
 [2] Wikipedia の記事: [正確性と精度](https://en.wikipedia.org/wiki/Accuracy_and_precision)

@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427544"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
-次の 3 つの Powershell モジュールを使用して Studio リソースのクラシック バージョンとやり取りすることができます。
+次の 3 つの Powershell モジュールを使用して Studio (クラシック) のリソースとやり取りすることができます。
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
 * 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます
@@ -63,7 +63,7 @@ PowerShell クラシックを Az または AzureRM と共にインストール�
 | カスタム モジュールを管理する | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらの PowerShell モジュールの完全なドキュメントを参照してください。
 * [PowerShell クラシック](https://aka.ms/amlps)
 * [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

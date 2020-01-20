@@ -1,7 +1,7 @@
 ---
 title: Select Columns Transform (列変換の選択):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Select Columns Transform (列変換の選択) モジュールを使用して、指定されたデータセットと同じ列のサブセットを選択する変換を作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Select Columns Transform (列変換の選択) モジュールを使用して、指定されたデータセットと同じ列のサブセットを選択する変換を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428468"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform (列変換の選択)
 
@@ -53,6 +53,6 @@ Select Columns Transform (列変換の選択) を使用して、一連の列を�
 列選択を保存してから適用するこのプロセスにより、同じデータ スキーマをトレーニングとスコアリングに使用することができます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

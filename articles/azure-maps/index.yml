@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Maps のドキュメント
-summary: Microsoft Azure Maps は、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するために使用できる最新のマッピング データが搭載された強力な地理空間機能を、あらゆる業界の開発者に提供します。 Azure Maps は、Azure One API に準拠した一連の REST API であり、マップ、検索、経路指定、交通状況、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算に対応しています。Web SDK と Android SDK の両方が用意されており、開発を簡単かつ柔軟に行えるうえ、複数のプラットフォームの垣根を越えて移植が可能です。
+summary: Microsoft Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 これらの地理空間機能は、最新マッピング データと共に提供されます。 Azure Maps は、Web とモバイル アプリケーションの両方で使用できます。 Azure Maps は、Azure One API に準拠した REST API のセットです。 次に示すのは、Azure Maps で提供されるサービス (マップ、検索、ルート指定、トラフィック、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算) の概要です。 Web と Android の SDK を使用すると、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 metadata:
   title: Azure Maps のドキュメント | Microsoft Docs
   description: Azure Maps と、それを使用して地理空間サービスを Web またはモバイル アプリケーションに提供する方法について説明します。
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 1/15/2020
+  ms.openlocfilehash: f4ae414179f77413e5d5daa4fda635e0bf24c2aa
+  ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75408649"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76264103"
 landingContent:
 - title: Azure Maps について
   linkLists:

@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369067"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure リソースを作成するために Terraform をインストールして構成する
  
 Terraform は、[シンプルなテンプレート言語](https://www.terraform.io/docs/configuration/syntax.html)を使ってクラウド インフラストラクチャを簡単に定義、プレビュー、およびデプロイできるツールです。 この記事では、Terraform を使用して Azure にリソースをプロビジョニングするために必要な手順について説明します。
 
 Azure で Terraform を使用する方法の詳細については、[Terraform ハブ](/azure/terraform)に関する記事を参照してください。
+> [!NOTE]
+> Terraform 固有のサポートについては、コミュニティ チャネルのいずれかを使用して Terraform に直接問い合わせてください。
+>
+>   • コミュニティ ポータルの [Terraform セクション](https://discuss.hashicorp.com/c/terraform-core)には、質問、ユース ケース、および役立つパターンが含まれています。
+>
+>   • プロバイダー関連の質問については、コミュニティ ポータルの [Terraform プロバイダー](https://discuss.hashicorp.com/c/terraform-providers) セクションにアクセスしてください。
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -145,7 +153,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Terraform をインストールするか、Cloud Shell を使用して Azure の資格情報を構成し、Azure サブスクリプションでのリソースの作成を開始しました。 Azure でより完全な Terraform デプロイを作成するには、次の記事を参照してください。
 

@@ -2,19 +2,15 @@
 title: Azure の Update Management ソリューション
 description: この記事では、Azure Update Management ソリューションを使用して Windows および Linux コンピューターの更新プログラムを管理する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/03/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420350"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -152,13 +148,13 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 > [!NOTE]
 > Operations Manager エージェントを使用しているシステムの場合:エージェントが Update Management によって完全に管理されるようにするには、エージェントを MMA に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。 Operations Manager を使用する環境では、System Center Operations Manager 2012 R2 UR 14 以降を実行している必要があります。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 
 ### <a name="supported-agents"></a>サポートされているエージェント
 
 次の表では、このソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
 | Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
@@ -217,7 +213,7 @@ Automation アカウントで **[Update Management]** をクリックすると�
 
 ### <a name="windows"></a>Windows
 
-|分類  |説明  |
+|分類  |[説明]  |
 |---------|---------|
 |緊急更新プログラム     | セキュリティに関連しない重大なバグを修正する、特定の問題に対する更新プログラムです。        |
 |セキュリティ更新プログラム     | 製品固有のセキュリティに関連する問題に対する更新プログラムです。        |
@@ -230,7 +226,7 @@ Automation アカウントで **[Update Management]** をクリックすると�
 
 ### <a name="linux-2"></a>Linux
 
-|分類  |説明  |
+|分類  |[説明]  |
 |---------|---------|
 |緊急更新プログラムとセキュリティ更新プログラム     | 特定の問題または製品固有のセキュリティに関連する問題に対する更新プログラムです。         |
 |他の更新プログラム     | 本質的に重要ではない、またはセキュリティ更新プログラムではない、他のすべての更新プログラムです。        |
@@ -273,7 +269,7 @@ Red Hat Enterprise Linux で、除外するパッケージ名は redhat-release-
 
 Update Management は更新プログラムの強化をクラウドで実行するため、Update Management では、一部の更新プログラムに、セキュリティへの影響ありとしてフラグが設定されることがありますが、ローカル マシンにはその情報がありません。 このため、重大な更新プログラムを Linux マシンに適用する場合、そのマシンにセキュリティへの影響ありとマークされていない更新プログラムが存在する可能性があり、その結果、これらの更新プログラムは適用されません。 ただし、Update Management には関連更新プログラムに関する追加情報があるため、そのマシンは引き続き、非対応として報告されることがあります。
 
-更新プログラムの分類ごとの更新プログラムのデプロイは、RTM バージョンの CentOS では動作しません。 CentOS に更新プログラムを正しくデプロイするには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE で **[他の更新プログラム]** "*のみ*" を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムまたはその依存関係がまず必要になる場合は、いくつかのセキュリティ更新プログラムもインストールされることがあります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
+更新プログラムの分類ごとの更新プログラムのデプロイは、RTM バージョンの CentOS では動作しません。 CentOS に更新プログラムを正しくデプロイするには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE では、分類として **[他の更新プログラム]** "*のみ*" を選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムまたはその依存関係がまず必要になる場合は、いくつかのセキュリティ更新プログラムもインストールされることがあります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
 
 ### <a name="multi-tenant"></a>テナント間の更新プログラムのデプロイ
 
@@ -299,7 +295,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 * [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
 * [Azure Automation Runbook によって](automation-onboard-solutions.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルを使用して、Windows VM の更新プログラムの管理方法を学習します。
 

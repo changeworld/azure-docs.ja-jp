@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425188"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
 
@@ -39,10 +39,10 @@ ms.locfileid: "74847356"
 統合された登録を有効にするには、次の手順に従います。
 
 1. Azure portal にユーザー管理者または全体管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
-3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます – 更新]** で、 **[選択済み]** のユーザーのグループまたは **[すべて]** のユーザーのうちのどちらを有効にするかを選択します。
+2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[ユーザー機能プレビュー設定の管理]** に移動します。
+3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます]** で、有効にする範囲 (**選択済み** のユーザーのグループまたは **すべて** のユーザー) を選択します。
 
-   ![すべてのユーザーに対して統合されたセキュリティ情報のプレビュー エクスペリエンスを有効にする](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![すべてのユーザーに対して統合されたセキュリティ情報のプレビュー エクスペリエンスを有効にする](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > 2019 年 3 月以降、無料/試用版の Azure AD テナントの Multi-Factor Authentication および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話オプションを利用できます。
@@ -64,9 +64,9 @@ Azure Multi-Factor Authentication とパスワード リセットのセルフサ
 
 次のポリシーは、統合された登録エクスペリエンスを使用して登録を試みるすべての選択ユーザーに適用され、信頼されたネットワークとマークされている場所から接続している場合を除き、アクセスをブロックします。
 
-![セキュリティ情報の登録を制御する CA ポリシーを作成する](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![セキュリティ情報の登録を制御する CA ポリシーを作成する](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. **Azure portal** で、 **[Azure Active Directory]**  >  **[条件付きアクセス]** に移動します
+1. **Azure portal** で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** に移動します。
 1. **[新しいポリシー]** を選択します
 1. [名前] に、このポリシーの名前を入力します。 たとえば、「**信頼されたネットワーク上の統合されたセキュリティ情報の登録**」など
 1. **[割り当て]** から **[ユーザーとグループ]** をクリックし、このポリシーを適用するユーザーとグループを選択します
@@ -87,7 +87,7 @@ Azure Multi-Factor Authentication とパスワード リセットのセルフサ
 1. **[ポリシーを有効にする]** を **[オン]** に設定します
 1. 次に、 **[作成]** をクリックします
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ユーザーに認証方法の再登録を強制する](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 

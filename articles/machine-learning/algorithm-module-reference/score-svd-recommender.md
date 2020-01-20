@@ -1,7 +1,7 @@
 ---
 title: Score SVD Recommender:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で SVD レコメンダーのスコアリング モジュールを使用して、データセットに対するレコメンデーション予測をスコア付けする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Score SVD Recommender モジュールを使用して、データセットに対するレコメンデーション予測をスコア付けする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456335"
 ---
 # <a name="score-svd-recommender"></a>Score SVD Recommender
 
@@ -121,6 +121,6 @@ SVD レコメンダーのスコアリングによって返されたスコア付�
 モデルを運用化する場合には、最適な予測結果を得るために、予測モードを変更し、考えられるすべての項目に基づいてレコメンデーションを実行するのが通常の流れです。 これらの予測の多くについては、対応するグラウンド トゥルースがありません。 そのため、レコメンデーションの精度をパイプライン操作中と同じ方法で検証することはできません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460720"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure コグニティブ検索でのテキスト処理のためのアナライザー
 
@@ -39,9 +39,9 @@ Azure コグニティブ検索では、["Unicode テキストのセグメント�
 
 次の一覧では、Azure コグニティブ検索で使用可能なアナライザーについて説明しています。
 
-| Category | 説明 |
+| カテゴリ | [説明] |
 |----------|-------------|
-| [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
+| [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 既定値。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
 | 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure コグニティブ検索は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
 |[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成のことです。|
 
@@ -54,6 +54,9 @@ Azure コグニティブ検索では、["Unicode テキストのセグメント�
 2. インデックスの[フィールド定義](https://docs.microsoft.com/rest/api/searchservice/create-index)で、フィールドの **analyzer** プロパティをターゲット アナライザーの名前に設定します (たとえば、`"analyzer" = "keyword"`)。 有効な値には、定義済みアナライザー名、言語アナライザーまたは、これもインデックス スキーマで定義されるカスタム アナライザーが含まれます。 サービスでインデックスが作成される前に、インデックス定義フェーズでアナライザーの割り当てを計画します。
 
 3. また、1 つの **analyzer** プロパティの代わりに、**indexAnalyzer** および **searchAnalyzer** フィールド パラメーターを使用して、インデックスとクエリに異なるアナライザーを設定することができます。 データの取得と準備のどちらかで、もう一方の処理には必要のない特定の変換が必要な場合、別々のアナライザーをこれらの処理に使用します。
+
+> [!NOTE]
+> インデックス作成時とフィールドのクエリ時とで異なる[言語アナライザー](index-add-language-analyzers.md)を使用することはできません。 この機能は、[カスタム アナライザー](index-add-custom-analyzers.md)用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、**analyzer** プロパティを使用する必要があります。
 
 既に物理的に作成されているフィールドに **analyzer** または **indexAnalyzer** を割り当てることは許可されていません。 この情報が明確でない場合は、再構築が必要なアクションとその理由について、次の表の説明を参照してください。
  
@@ -334,7 +337,7 @@ Azure コグニティブ検索でサポートされているテキスト アナ�
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 + [Azure コグニティブ検索のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページの包括的な説明を確認します。 この記事では、例を使って、表面上は直感的ではないと思われるような動作について説明しています。
 
@@ -344,7 +347,7 @@ Azure コグニティブ検索でサポートされているテキスト アナ�
 
 + 個々のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](index-add-custom-analyzers.md)します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
  [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374306"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -57,7 +57,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 ### <a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
 
-| Version | オペレーティング システム | エディション |
+| Version | オペレーティング システム | Edition |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise)、[Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard)、[Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web)、[Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
@@ -76,7 +76,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 
 ライセンス持ち込みには、既存の従量課金制の SQL VM を変換する方法と、 **{BYOL}** というプレフィックスでイメージをデプロイする方法とがあります。 従量制課金と BYOL との間でライセンス モデルを切り替える方法の詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
 
-| Version | オペレーティング システム | エディション |
+| Version | オペレーティング システム | Edition |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise)、[Standard BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
@@ -103,20 +103,22 @@ PowerShell を使用して SQL Server VM をデプロイする方法の詳細に
 
 Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソース](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)を管理できる単一ページが用意されています。
 
-**[Azure SQL resources]\(Azure SQL リソース\)** ページにアクセスするには、Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。
+**[Azure SQL リソース]** ページにアクセスするには、Azure portal のメニューの **[Azure SQL]** を選択するか、任意のページで **[Azure SQL]** を検索して選択します。
+
+![Azure SQL を検索する](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **Azure SQL** には、すべての SQL データベース、エラスティック プール、データベース サーバー、SQL マネージド インスタンス、および SQL 仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
 
 既存のリソースを管理するには、一覧から目的の項目を選択します。 新しい Azure SQL リソースを作成するには、 **[+ 追加]** を選択します。 
 
-![ポータルの Azure SQL のページ](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Azure SQL リソースを作成する](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 **[+ 追加]** を選択した後、任意のタイルで **[詳細の表示]** を選択して、さまざまなオプションに関する追加情報を表示します。
 
 ![データベース タイルの詳細](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
 
-詳細については、次のリンクを参照してください。
+詳細については、次の情報を参照してください。
 
 - [単一データベースを作成する](../../../sql-database/sql-database-single-database-get-started.md)
 - [エラスティック プールの作成](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
@@ -133,7 +135,7 @@ Azure に保持される仮想マシン イメージは、サポートされる�
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Virtual Machines の概要](../overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 * [Microsoft Azure Storage の概要](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>ネットワーク
@@ -142,10 +144,10 @@ Azure に保持される仮想マシン イメージは、サポートされる�
 * [Azure Portal での完全修飾ドメイン名の作成](../portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server ドキュメント](https://docs.microsoft.com/sql/index)
+* [SQL Server のドキュメント](https://docs.microsoft.com/sql/index)
 * [Azure SQL Database の比較](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Virtual Machines における SQL Server の概要
 

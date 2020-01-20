@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a2c2e05b11c538918ad63559267b5377ce9faa7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412167"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
 業界全体で、トランスポート層セキュリティ (TLS) バージョン 1.2 以降の排他的使用が推進されています。 TLS バージョン 1.0 と 1.1 は、BEAST や POODLE などの攻撃を受けやすく、またその他の共通脆弱性識別子 (CVE) の弱点を持つことが知られています。 また、ペイメント カード業界 (PCI) コンプライアンスの標準で推奨されている最新の暗号化方式と暗号スイートもサポートしていません。 こちらの [TLS セキュリティ ブログ](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/)では、これらの脆弱性の一部について詳しく説明しています。
 
-これらの考慮事項のいずれもすぐに問題を引き起こすわけではありませんが、Microsoft では TLS 1.0 と 1.1 の使用をただちに停止することをお勧めしています。 Azure Cache for Redis では、2020 年 3 月 31 日にこれらの TLS のバージョンのサポートが停止されます。 その日以降、お使いのアプリケーションでは TLS 1.2 以降を使用してキャッシュと通信する必要があります。
+この作業の一環として、Azure Cache for Redis に対して次の変更が行われます。
+
+* 2020 年 1 月 13 日以降、新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。  この時点で既定のキャッシュ インスタンスが更新されることはありません。  必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。  この変更は、Azure portal またはその他の管理 API を使用して実行できます。
+* 2020 年 3 月 31 日以降、TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
+
+さらに、この変更の一環として、セキュリティで保護されていない古い暗号スイートのサポートが廃止されます。  キャッシュが最小 TLS バージョンである 1.2 に構成されている場合、サポートされる暗号スイートは以下に制限されます。
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 この記事では、これらの以前の TLS バージョンへの依存関係を検出してアプリケーションから削除する方法に関する一般的なガイダンスを提供します。
 
@@ -92,6 +100,6 @@ Redis-py は、既定で TLS 1.2 を使用します。
 
 Redigo は、既定で TLS 1.2 を使用します。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis の構成方法](cache-configure.md)

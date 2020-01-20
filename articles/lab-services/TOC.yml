@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: コスト管理の構成
           href: devtest-lab-configure-cost-management.md
-        - name: 自動シャットダウン通知の送信
-          href: devtest-lab-auto-shutdown.md
         - name: ラボ仮想マシンの自動スタートアップの設定
           href: devtest-lab-auto-startup-vm.md
         - name: ラボのスケーリング
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: VM を再デプロイする
           href: devtest-lab-redeploy-vm.md
-        - name: VM の自動シャットダウンの構成
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: コンピューティングとラボ VM の自動シャットダウンを構成する
+          href: devtest-lab-auto-shutdown.md
         - name: クレーム可能 VM の作成と管理
           href: devtest-lab-add-claimable-vm.md
         - name: シークレットの構成

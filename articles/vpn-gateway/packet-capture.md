@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353516"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 
@@ -26,9 +26,11 @@ VPN ゲートウェイ パケット キャプチャは、お客様のニーズ�
 
 5 タプルのフィルター (ソース サブネット、宛先サブネット、発信元ポート、接続先ポート、プロトコル) と TCP フラグ (SYN、ACK、FIN、URG、PSH、RST) を使用することで、大量のトラフィックを対象に、問題を効果的に特定することができます。
 
+パケット キャプチャの実行中は、プロパティごとに 1 つのオプションのみを使用できます。
+
 ## <a name="setup-packet-capture-using-powershell"></a>PowerShell を使用してパケッ トキャプチャを設定する
 
-パケット キャプチャを開始および停止する PowerShell コマンドについては、次の例を参照してください。 パラメーター オプション (フィルターの作成方法など) の詳細については、こちらの PowerShell [ドキュメント](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)を参照してください。
+パケット キャプチャを開始および停止する PowerShell コマンドについては、次の例を参照してください。 パラメーター オプション (フィルターの作成方法など) の詳細については、こちらの PowerShell の[ドキュメント](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)を参照してください。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ゲートウェイのパケット キャプチャを開始する
 
@@ -62,8 +64,8 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - パケット キャプチャの実行は、パフォーマンスに影響を与える可能性があります。 不要な場合は、パケット キャプチャを停止してください。
 - 推奨される最小パケット キャプチャ期間は 600 秒です。 パケット キャプチャ期間を短くすると、パス上の複数のコンポーネント間で同期の問題が発生し、完全なデータを取得できない場合があります。
-- パケット キャプチャ データ ファイルは、PCAP または ETL 形式で生成されます。 データの内容を理解するには、Netmon パーサーが必要になることがあります。
+- パケット キャプチャ データ ファイルは PCAP 形式で生成されます。 PCAP ファイルを開くには、Wireshark または他の一般に利用できるアプリケーションを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください

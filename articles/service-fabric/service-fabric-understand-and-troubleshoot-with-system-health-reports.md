@@ -1,25 +1,16 @@
 ---
-title: システム正常性レポートを使用してトラブルシューティングを行う |Microsoft Docs
+title: システム正常性レポートを使用したトラブルシューティング
 description: Azure Service Fabric のコンポーネントによって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: b190db401b8ae31582ea31cf59d30f20baccf8c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370377"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -36,7 +27,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 > 
 > 
 
-システム コンポーネント レポートはソース別に識別され、"**System.** " プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
+システム コンポーネント レポートはソース別に識別され、"**System.** " プレフィックスで プレフィックスは含まれません。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
 
 いくつかのシステム レポートを確認して、何がレポートのトリガーになっているかを理解し、レポートに表示された問題を修正する方法を学習しましょう。
 
@@ -57,7 +48,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **プロパティ**: **Neighborhood** で始まり、ノードの情報が含まれます。
 * **次のステップ**: ネットワーク コンピューターが消失した原因を調査します。 たとえば、クラスター ノード間の通信をチェックします。
 
-### <a name="rebuild"></a>再構築
+### <a name="rebuild"></a>[再構築]
 
 クラスター ノードに関する情報は、Failover Manager (FM) サービスによって管理されます。 FM がそのデータを失う (データの損失状態になる) と、クラスター ノードに関する情報が最新であることを FM は保証できなくなります。 その場合、システムが再構築処理へと移行し、System.FM は、その状態を再構築するために、クラスター内のすべてのノードからデータを収集します。 再構築処理は、ネットワークの問題やノードの問題によって途中で停止してしまうこともあります。 同じことは、Failover Manager Master (FMM) サービスでも起こる可能性があります。 FMM は、クラスターに含まれるすべての FM の所在を追跡するステートレスなシステム サービスです。 FMM のプライマリは常に、ID が最も 0 に近いノードです。 このノードがドロップした場合に再構築がトリガーされます。
 前述したいずれかの症状が起こると、**System.FM** または **System.FMM** から、エラー レポートを通じてその旨が警告されます。 再構築が停止するタイミングとしては、次の 2 つのフェーズが考えられます。
@@ -148,7 +139,7 @@ Service Fabric Load Balancer は、ノード容量違反を検出すると警告
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
 System.CM は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.CM は、アプリケーションが作成または更新されたときに OK を報告します。 アプリケーションが削除されると、ストアからアプリケーションを削除できるように、正常性ストアに通知します。
 
 * **SourceId**: System.CM
@@ -181,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>サービス システム正常性レポート
 System.FM は Failover Manager サービスを表し、サービスに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、サービスが作成されると OK を報告します。 サービスが削除されたら、正常性ストアからエンティティを削除します。
 
 * **SourceId**: System.FM
@@ -223,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>パーティション システム正常性レポート
 System.FM は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、パーティションが作成されており、正常な場合に、OK を報告します。 パーティションが削除されると、正常性ストアからエンティティを削除します。
 
 パーティションが最小レプリカ数を下回ると、エラーを報告します。 パーティションが最小レプリカ数を下回っていなくても、ターゲット レプリカ数を下回る場合は、警告を報告します。 パーティションがクォーラム損失の状態にあるとき、System.FM はエラーを報告します。
@@ -400,7 +391,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>レプリカ システム正常性レポート
 **System.RA**は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.RA は、レプリカが作成されていると OK を報告します。
 
 * **SourceId**: System.RA
@@ -656,7 +647,7 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.ChangeRole(P)** : 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
 
-**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例:
+**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 次に例を示します。
 
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。 これに該当するかを確認するには、パーティションのレプリカのレプリカ状態を調べるか、スタック再構成の System.FM 正常性レポートを調べます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 問題があるレプリカの `LastAppliedReplicationSequenceNumber` 値は、プライマリの `CommittedSequenceNumber` 値の後ろにあります。
 
@@ -881,7 +872,7 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **プロパティ**: **ResourceGovernance**。
 * **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
 * [サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

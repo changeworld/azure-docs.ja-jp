@@ -1,25 +1,14 @@
 ---
-title: Service Fabric アプリのアップグレード チュートリアル | Microsoft Docs
+title: Service Fabric アプリのアップグレード チュートリアル
 description: この記事では、Visual Studio による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464827"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのアップグレード チュートリアル
 > [!div class="op_single_selector"]
@@ -73,7 +62,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 
 練習のために、バージョンをバージョン 2.0.0 からバージョン 3.0.0 へ、または、バージョン 2.0.0 からバージョン 1.0.0 に変更および移行してみることもできます。 タイムアウトと正常性ポリシーをいろいろ試して、これらに精通してください。 ローカル クラスターではなく Azure クラスターにデプロイする場合、使用するパラメーターは異なる場合があります。 タイムアウトは控えめに設定することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
 
 [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。

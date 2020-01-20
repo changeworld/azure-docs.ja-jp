@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のリバース プロキシ | Microsoft Docs
+title: Azure Service Fabric のリバース プロキシ
 description: Service Fabric のリバース プロキシを使用して、クラスターの内外からマイクロサービスとの通信を行います。
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464298"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -158,7 +149,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 Docker Compose コンテナー内で実行される Service Fabric サービスには、特別な docker-compose.yml の*ポート セクション* http: または https: 構成が必要です。 詳細については、[Azure Service Fabric での Docker Compose デプロイのサポート](service-fabric-docker-compose.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
 * [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
 * [リバース プロキシ イベントの診断](service-fabric-reverse-proxy-diagnostics.md)

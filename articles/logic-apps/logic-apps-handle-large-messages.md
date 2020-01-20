@@ -1,18 +1,18 @@
 ---
-title: 大きいメッセージを処理する
-description: Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する方法について説明します
+title: チャンクを使用して大きいサイズのメッセージを処理する
+description: Azure Logic Apps で作成する自動化されたタスクとワークフローで、チャンクを使用して大きいサイズのメッセージを処理する方法について説明します
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456556"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
 
@@ -113,18 +113,18 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
 1. ロジック アプリは、最初の HTTP POST または PUT 要求をメッセージ本文を空にして送信します。 要求ヘッダーには、ロジック アプリがチャンクでアップロードするコンテンツに関する情報が含まれます。
 
-   | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | 説明 |
+   | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | [説明] |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | chunked | string | コンテンツがチャンクでアップロードされることを示します |
+   | **x-ms-transfer-mode** | chunked | String | コンテンツがチャンクでアップロードされることを示します |
    | **x-ms-content-length** | <*content-length*> | 整数 | チャンクする前のコンテンツ全体のサイズ (バイト単位) |
    ||||
 
 2. エンドポイントは、成功を示す状態コード "200" と次の省略可能な情報を返します。
 
-   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | 説明 |
+   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | [説明] |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |
-   | **Location** | string | はい | HTTP PATCH メッセージを送信する URL の場所 |
+   | **Location** | String | はい | HTTP PATCH メッセージを送信する URL の場所 |
    ||||
 
 3. ロジック アプリは、それぞれが次の情報を含む フォローアップ HTTP PATCH メッセージを作成して送信します。
@@ -133,18 +133,18 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
    * これらのヘッダーには、それぞれの PATCH メッセージで送信されるコンテンツのチャンクの詳細が記述されます。
 
-     | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | 説明 |
+     | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | [説明] |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*range*> | string | 現在のコンテンツのチャンクのバイト範囲。開始値、終了値、および合計コンテンツ サイズ合計が含まれます。例: "bytes=0-1023/10100" |
-     | **Content-Type** | <*content-type*> | string | チャンクされたコンテンツの種類 |
-     | **Content-Length** | <*content-length*> | string | 現在のチャンクのサイズ (バイト単位) |
+     | **Content-Range** | <*range*> | String | 現在のコンテンツのチャンクのバイト範囲。開始値、終了値、および合計コンテンツ サイズ合計が含まれます。例: "bytes=0-1023/10100" |
+     | **Content-Type** | <*content-type*> | String | チャンクされたコンテンツの種類 |
+     | **Content-Length** | <*content-length*> | String | 現在のチャンクのサイズ (バイト単位) |
      |||||
 
 4. 各 PATCH 要求の後、エンドポイントでは、"200" 状態コードと次の応答ヘッダーで応答することによって、各チャンクの受信を確認します。
 
-   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | 説明 |
+   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | [説明] |
    |--------------------------------|------|----------|-------------|
-   | **Range** | string | はい | エンドポイントで受信されたコンテンツのバイト範囲。例: "bytes=0-1023" |   
+   | **Range** | String | はい | エンドポイントで受信されたコンテンツのバイト範囲。例: "bytes=0-1023" |   
    | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |
    ||||
 

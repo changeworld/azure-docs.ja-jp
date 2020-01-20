@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998733"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966659"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure のディザスター リカバリーに関するガイダンス
 
@@ -60,7 +60,7 @@ Avere vFXT for Azure では、Azure BLOB コア ファイラーにローカル�
 Azure Blob Storage 内のデータを保護するためのベスト プラクティスを次に示します。
 
 * 重要なデータを別のリージョンにある別のストレージ アカウントに頻繁に (ディザスター リカバリー プランで決定された頻度で) コピーします。
-* 偶発的な削除または破損を防ぐために、すべてのターゲット システム上のデータへのアクセスを制御します。 データ ストレージでの[リソース ロック](../azure-resource-manager/resource-group-lock-resources.md)の使用を検討してください。
+* 偶発的な削除または破損を防ぐために、すべてのターゲット システム上のデータへのアクセスを制御します。 データ ストレージでの[リソース ロック](../azure-resource-manager/management/lock-resources.md)の使用を検討してください。
 * BLOB コア ファイラーに対して Avere vFXT for Azure の[クラウド スナップショット](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>)機能を有効にします。
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere vFXT コア ファイラーのデータをバックアップ アカウントにコピーする
@@ -73,7 +73,7 @@ Azure Blob Storage 内のデータを保護するためのベスト プラクテ
 
    このキーは、コンテナーをクラスターに追加するときに (元のクラスターに再追加する場合でも) 指定する必要があります。
 
-   詳細については、「[クラウドの暗号化の設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)」を参照してください。<!-- link to legacy doc site --> for detailed information.
+   [クラウドの暗号化の設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)に関する記事で<!-- link to legacy doc site --> 詳細を確認してください。
 
    お使いのコンテナーで Azure の組み込みの暗号化のみを使用している場合は、この手順をスキップできます。
 
@@ -104,7 +104,7 @@ Avere vFXT for Azure クラスターからバックアップ コンテナーに�
 1. 必要に応じて、影響を受けていないリージョンに新しい Avere vFXT for Azure クラスターを作成します。
 
    > [!TIP]
-   > Avere vFXT for Azure クラスターを作成するとき、その作成テンプレートとパラメーターのコピーを保存できます。 プライマリ クラスターの作成時にこの情報を保存すると、これを使用して、同じプロパティを持つ代替クラスターを作成できます。 [確認と概要](avere-vfxt-deploy.md#validation-and-purchase)のページで、 **[テンプレートとパラメーターのダウンロード]** リンクをクリックします。 **[OK]** をクリックしてクラスターを作成する前に、情報をファイルに保存してください。
+   > Avere vFXT for Azure クラスターを作成するとき、その作成テンプレートとパラメーターのコピーを保存できます。 プライマリ クラスターの作成時にこの情報を保存すると、これを使用して、同じプロパティを持つ代替クラスターを作成できます。 [[概要]](avere-vfxt-deploy.md#validation-and-purchase) ページで、 **[テンプレートとパラメーターのダウンロード]** リンクをクリックします。 クラスターを作成する前に、情報をファイルに保存します。
 
 1. 複製の BLOB コンテナーを指す新しいクラウド コア ファイラーを追加します。
 
@@ -112,7 +112,7 @@ Avere vFXT for Azure クラスターからバックアップ コンテナーに�
 
 1. 必要に応じて、元のものではなく新しいクラスターまたは新しいコア ファイラーをマウントするようにクライアントを更新します (元のコンテナーと同じ名前とジャンクション パスを使用した代替コア ファイラーを追加した場合、新しいクラスターを新しい IP アドレスでマウントする必要がない限り、クライアント プロセスの更新は不要です)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Avere vFXT for Azure の設定のカスタマイズの詳細については、「[クラスター チューニング](avere-vfxt-tuning.md)」を参照してください。
 * Azure でのディザスター リカバリーと回復性があるアプリケーションの構築の詳細を参照してください。

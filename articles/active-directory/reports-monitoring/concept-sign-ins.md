@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429805"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -57,9 +57,15 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
-[Azure portal](https://portal.azure.com) から開始します。 サインイン レポートにアクセスするには **[サインイン]** を選択し、 **[監視]** に進みます。 一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
+[[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
 
-![サインイン アクティビティ](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "サインイン アクティビティ")
+![[Azure Active Directory] を選択する](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+**[監視]** で **[サインイン]** を選択して、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
+
+![サインイン アクティビティ](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
+
+一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
 
 > [!IMPORTANT]
 > サインイン レポートには、**対話型**のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
@@ -79,7 +85,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ![サインイン アクティビティ](./media/concept-sign-ins/19.png "サインイン アクティビティ")
 
-**[列]** ダイアログでは、選択可能な属性にアクセスできます。 サインイン レポートでは、列として他の属性に対する一対多リレーションシップを持たない属性のみを使用できます。
+**[列]** ダイアログでは、選択可能な属性にアクセスできます。 サインイン レポートでは、特定のサインイン要求に対して複数の値を持つフィールドを列として使用することはできません。 これは、認証の詳細、条件付きアクセス データ、ネットワークの場所などが該当します。   
 
 ![サインイン アクティビティ](./media/concept-sign-ins/columns.png "サインイン アクティビティ")
 
@@ -107,14 +113,14 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - All
 - Success
-- 失敗
+- 障害
 
 **条件付きアクセス** フィルターでは、次に示すサインインの CA ポリシーの状態を選択できます。
 
 - All
 - 未適用
 - Success
-- 失敗
+- 障害
 
 **[日付]** フィルターでは、返されるデータの期間を定義できます。  
 次のいずれかの値になります。
@@ -185,7 +191,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 項目をクリックすると、サインイン操作の詳細が表示されます。
 
-- ユーザー ID
+- User ID
 - User
 - ユーザー名
 - アプリケーション ID
@@ -222,7 +228,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 必要に応じて、特定のアプリケーションにフォーカスを設定できます。
 
-![レポート](./media/concept-sign-ins/single-app-usage-graph.png "レポート")
+![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "レポーティング")
 
 アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
@@ -234,7 +240,7 @@ Office 365 のアクティビティ ログは、[Microsoft 365 管理センタ�
 
 [Office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サインイン アクティビティ レポートのエラー コード](reference-sign-ins-error-codes.md)
 * [Azure AD のデータ保有ポリシー](reference-reports-data-retention.md)

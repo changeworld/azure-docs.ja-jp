@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の別のグループからグループを追加または削除する | Microsoft Docs
+title: 別のグループに対してメンバーの追加または削除を行う - Azure AD
 description: Azure Active Directory を使用して別のグループからグループを追加または削除する方法について説明します。
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896a8b2c96dc10afbc3f179aed5a8497a8948ca9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423031"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
@@ -30,7 +30,7 @@ ms.locfileid: "68561936"
 既存のセキュリティ グループを別の既存のセキュリティ グループに追加して (入れ子になったグループとも呼ばれます)、メンバー グループ (サブグループ) と親グループを作成します。 メンバー グループには親グループの属性とプロパティが継承され、構成時間を節約できます。
 
 >[!Important]
->以下は現在サポートされていません。<ul><li>オンプレミスの Active Directory と同期されたグループへのグループの追加。</li><li>Office 365 グループへのセキュリティ グループの追加。</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加。</li><li>入れ子になったグループへのアプリの割り当て。</li><li>入れ子になったグループへのライセンスの適用。</li></ul>
+>以下は現在サポートされていません。<ul><li>オンプレミスの Active Directory と同期されたグループへのグループの追加。</li><li>Office 365 グループへのセキュリティ グループの追加。</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加。</li><li>入れ子になったグループへのアプリの割り当て。</li><li>入れ子になったグループへのライセンスの適用。</li><li>入れ子のシナリオでの配布グループの追加。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>別のグループのメンバーとしてグループを追加するには
 
@@ -49,15 +49,11 @@ ms.locfileid: "68561936"
 
     現在、 **[MDM policy - West]\(MDM ポリシー - 西部\)** グループは、[MDM policy - All org]\(MDM ポリシー - すべての組織\) グループのプロパティと構成をすべて継承して、 **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループのメンバーになっています。
 
-    ![グループを別のグループに追加してグループ メンバーシップを作成する](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+    ![グループを別のグループに追加してグループ メンバーシップを作成する](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
 5. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページを表示して、グループとメンバー リレーションを確認します。
 
-    ![親グループを表示している [MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\) ページ](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-
 6. グループとメンバー リレーションシップのより詳細な表示については、グループ名 ( **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** ) を選択して、 **[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細を確認します。
-
-    ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
 ## <a name="remove-a-group-from-another-group"></a>別のグループからグループを削除する
 別のセキュリティ グループから既存のセキュリティ グループを削除できます。 しかし、グループを削除すると、メンバーに継承されていた属性とプロパティもすべて削除されます。
@@ -67,14 +63,11 @@ ms.locfileid: "68561936"
 
 2. **[MDM policy - West]\(MDM ポリシー - 西部\)** 概要ページで、 **[グループ メンバーシップ]** を選択します。
 
-    ![[MDM policy - West]\(MDM ポリシー - 西部\) 概要ページ](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
-
 3. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページから **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを選択して、 **[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細から **[削除]** を選択します。
 
     ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 
-
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 - [グループとメンバーを表示する](active-directory-groups-view-azure-portal.md)

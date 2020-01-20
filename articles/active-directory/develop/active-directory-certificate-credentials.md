@@ -1,7 +1,7 @@
 ---
-title: Azure AD 証明書資格情報
+title: Microsoft ID プラットフォームの証明書資格情報
 titleSuffix: Microsoft identity platform
-description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します
+description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424715"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD アプリケーションを認証する証明書資格情報
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
-Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情報の付与フロー ([v1.0](v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) や On-Behalf-Of フロー ([v1.0](v1-oauth2-on-behalf-of-flow.md)、[v2.0](v2-oauth2-on-behalf-of-flow.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
+Microsoft ID プラットフォームでは、[OAuth 2.0 クライアント資格情報付与フロー v2.0](v2-oauth2-client-creds-grant-flow.md)や [On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)などで、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
 アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
-
-アサーションを計算するために、多数の [JSON Web トークン](https://jwt.ms/) ライブラリの中から好きな言語を選択して使用できます。 トークンによって伝達される情報は次のとおりです。
+Microsoft ID プラットフォームでは、アサーションを計算するために、多数の [JSON Web トークン](https://jwt.ms/) ライブラリの中から好きな言語を選択して使用できます。 トークンによって伝達される情報は次のとおりです。
 
 ### <a name="header"></a>ヘッダー
 
@@ -89,9 +88,9 @@ Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Azure AD に証明書を登録する
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Microsoft ID プラットフォームに証明書を登録する
 
-次のいずれかの方法を使用して、Azure Portal から証明書資格情報を Azure AD 内のクライアント アプリケーションに関連付けることができます。
+次のいずれかの方法を使用して、Azure Portal 経由で Microsoft ID プラットフォームのクライアント アプリケーションに証明書資格情報を関連付けることができます。
 
 ### <a name="uploading-the-certificate-file"></a>証明書ファイルのアップロード
 
@@ -125,13 +124,13 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
        }
    ]
    ```
-3. 編集内容をアプリケーション マニフェストに保存した後、そのマニフェストを Azure AD にアップロードします。 
+3. 編集内容をアプリケーション マニフェストに保存した後、そのマニフェストを Microsoft ID プラットフォームにアップロードします。 
 
    `keyCredentials` プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
    
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 > [!NOTE]
 > 証明書のハッシュを使用し、それを Base64 文字列に変換することによって、X5T ヘッダーを計算する必要があります。 C# では、次のようになります。`System.Convert.ToBase64String(cert.GetCertHash());`
 
-[証明書を使用したデーモン アプリでの Azure AD の認証](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)に関する記事のコード サンプルは、アプリケーションが独自の資格情報を認証でどのように使用するかを示しています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。
+[証明書を使用したデーモン アプリでの Microsoft ID プラットフォームの認証](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)に関する記事のコード サンプルに、アプリケーションが独自の資格情報を認証でどのように使用するかが示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。

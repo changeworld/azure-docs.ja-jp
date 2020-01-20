@@ -9,18 +9,21 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: a0b0d0d95e1ffd50faba19f1665ea5dae737b124
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379625"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 
 Azure Form Recognizer コンテナーを使用することで、堅牢なクラウド機能とエッジのローカル性という両方のメリットを活用できるように最適化されたアプリケーション アーキテクチャを構築できます。
 
 Form Recognizer コンテナーのランタイム環境は、`docker run` コマンドの引数を使用することによって構成します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかの例については、「[docker run コマンドの例](#example-docker-run-commands)」セクションを参照してください。 このコンテナーに固有の設定は、課金設定です。
+
+> [!IMPORTANT]
+> Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 代わりにマネージド サービスを使用することで、この API の最新バージョンにアクセスできます。
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -45,9 +48,9 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 
 この設定は、Azure portal で、**Form Recognizer の [概要]** の **[エンドポイント]** で確認できます。
 
-|必須| 名前 | データ型 | 説明 |
+|必須| Name | データ型 | [説明] |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
+|はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -74,10 +77,10 @@ Form Recognizer コンテナーには、入力マウントと出力マウント�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントのアクセス許可とホストのマウント場所のアクセス許可が競合するために、[ホスト コンピューター](form-recognizer-container-howto.md#the-host-computer)のマウント場所にアクセスできない場合があります。
 
-|省略可能| 名前 | データ型 | 説明 |
+|省略可能| Name | データ型 | [説明] |
 |-------|------|-----------|-------------|
-|必須| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。    <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
-|必須| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。  <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|必須| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。    <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
+|必須| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。  <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -135,6 +138,6 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストールと実行](form-recognizer-container-howto.md)について確認します。

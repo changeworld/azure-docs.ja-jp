@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus の Premium および Standard メッセージング価格レベルの概要 | Microsoft Docs
+title: Azure Service Bus の Premium レベルと Standard レベル | Microsoft Docs
 description: Service Bus の Premium および Standard メッセージング レベル
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 7565ce24199dd8f86f756f01f66aa79e764a1a12
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: cc783dc4b2bf49724f4a2c7ab9cd9904ded2c703
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352857"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -103,7 +103,7 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 [Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)を作成することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のリンクをご覧ください。
 

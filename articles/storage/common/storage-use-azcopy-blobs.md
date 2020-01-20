@@ -8,18 +8,18 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f5aafbb22ecbff416d90aa5b98eb027c33872b35
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 19b5635d8444c28e66bcf4c6d34f602c9914e7e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371532"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
 AzCopy は、ストレージ アカウント間のデータ コピーに利用できるコマンドライン ユーティリティです。 この記事には、Blob Storage で使用するサンプル コマンドが含まれています。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
@@ -100,7 +100,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>` |
+| **構文** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **例** (階層型名前空間) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
@@ -139,7 +139,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
-## <a name="download-files"></a>ファイルをダウンロードする
+## <a name="download-files"></a>ファイルのダウンロード
 
 [azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、BLOB、ディレクトリ、コンテナーをローカル コンピューターにダウンロードできます。
 
@@ -173,7 +173,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 |--------|-----------|
 | **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory 'C:\myDirectory'  --recursive` |
+| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 この例を実行すると、ダウンロードしたファイルがすべて含まれる `C:\myDirectory\myBlobDirectory` という名前のディレクトリが生成されます。
 
@@ -222,7 +222,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
-`--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキス トファイルを取得します。
+`--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
 ## <a name="copy-blobs-between-storage-accounts"></a>ストレージ アカウント間で BLOB をコピーする
 
@@ -233,7 +233,6 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > [!NOTE]
 > 現在のリリースでは、このシナリオに以下の制限があります。
 >
-> - 階層型名前空間がないアカウントのみがサポートされます。
 > - 各ソース URL の末尾に SAS トークンを追加する必要があります。 Azure Active Directory (AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。
 >-  Premium ブロック BLOB ストレージ アカウントでは、アクセス層はサポートされません。 `s2s-preserve-access-tier` を `false` に設定することで (例: `--s2s-preserve-access-tier=false`)、コピー操作から BLOB のアクセス層を除外します。
 
@@ -244,6 +243,8 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > * 別のストレージ アカウントにディレクトリをコピーする
 > * 別のストレージ アカウントにコンテナーをコピーする
 > * すべてのコンテナー、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
+
+これらの例は、階層型名前空間があるアカウントでも機能します。
 
 詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
 
@@ -280,10 +281,10 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 ## <a name="synchronize-files"></a>ファイルを同期する
 
-ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 また、コンテナーと仮想ディレクトリを相互に同期することもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。
+ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 また、コンテナーと仮想ディレクトリを相互に同期することもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。 このセクションに示されている例は、階層型名前空間があるアカウントでも機能します。 
 
 > [!NOTE]
-> 現在のところ、このシナリオは、階層型名前空間のないアカウントでのみサポートされています。 現行版の AzCopy では、他のコピー元とコピー先の間では同期されません (例:ファイル ストレージまたはアマゾン ウェブ サービス (AWS) S3 バケット)。
+> 現行版の AzCopy では、他のコピー元とコピー先の間では同期されません (例:ファイル ストレージまたはアマゾン ウェブ サービス (AWS) S3 バケット)。
 
 [sync](storage-ref-azcopy-sync.md) コマンドでは、ファイル名と最後に変更されたタイムスタンプが比較されます。 省略可能な `--delete-destination` フラグの値を `true` または `prompt` に設定すると、コピー元のディレクトリにファイルがもう存在しなくなると、コピー先のディレクトリからそれらのファイルが削除されます。
 
@@ -299,7 +300,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してコンテナーを更新する
 
-この場合、コンテナーが宛先であり、ローカル ファイル システムがソースです。
+この場合、コンテナーが宛先であり、ローカル ファイル システムがソースです。 
 
 |    |     |
 |--------|-----------|
@@ -314,7 +315,6 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 |--------|-----------|
 | **構文** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **例** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
-|
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>別のコンテナーへの変更を使用してコンテナーを更新する
 
@@ -334,7 +334,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 | **構文** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
 | **例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事にサンプルがあります。
 

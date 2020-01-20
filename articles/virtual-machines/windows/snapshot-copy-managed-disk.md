@@ -1,5 +1,5 @@
 ---
-title: Azure で VHD のスナップショットを作成する
+title: 仮想ハード ドライブのスナップショットを Azure 上に作成する
 description: バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370903"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -29,11 +29,12 @@ ms.locfileid: "74075337"
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左のメニューから、 **[リソースの作成]** を選択し、**スナップショット**を探して選択します。
+スナップショットを作成するには、次の手順を完了します。 
+1.  [Azure portal](https://portal.azure.com) で、 **[リソースの作成]** を選択します。
+2. **[スナップショット]** を探して選択します。
 3. **スナップショット** ウィンドウで、 **[作成]** を選択します。 **[スナップショットの作成]** ウィンドウが表示されます。
 4. スナップショットの **[名前]** を入力します。
-5. 既存の[リソース グループ](../../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 
+5. 既存の[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 
 6. Azure データセンターの**場所**を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 スナップショットを高パフォーマンスのディスクに保存する必要がある場合を除き、 **[Standard_HDD]** を選択します。
@@ -41,7 +42,7 @@ ms.locfileid: "74075337"
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
+次の手順は、VHD ディスクをコピーし、スナップショット構成を作成する方法を示しています。 その後、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用して、ディスクのスナップショットを取得できます。 
 
  
 
@@ -84,6 +85,6 @@ ms.locfileid: "74075337"
    ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)」のサンプルを参照してください。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457055"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -88,22 +88,23 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="clone-the-source-code-and-initialize"></a>ソース コードを複製し、初期化する
 
-1. Visual Studio 2015 または 2017 用の ["C++ によるデスクトップ開発" ワークロード](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017)をインストールします。
+1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
 
 1. [CMake](https://cmake.org/) をインストールします。 コマンド プロンプトから `cmake -version` と入力して、これが `PATH` に含まれていることを確認してください。
 
-1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、最新リリースの [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub リポジトリを複製します。
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     この操作は、完了するまでに数分かかります。
 
-1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。
+1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 `azure-iot-sdk-c` ディレクトリから次のコマンドを実行します。
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -197,7 +198,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 1. 0% と 100% の間で **[サンプリング レート]** を選択します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. しばらく待ってから、 **[更新]** をクリックします。デバイスによって正常に認識されると、チェックマークの付いた同期アイコンが表示されます。
 
@@ -240,7 +241,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 }
 ```
 
-| 要素名 | 必須 | 種類 | 説明 |
+| 要素名 | 必須 | 種類 | [説明] |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
 | `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
@@ -263,11 +264,11 @@ AzureDiagnostics
 
 Log Analytics で表示されるログの例
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | properties |
+| TimeGenerated | OperationName | カテゴリ | Level | CorrelationId | DurationMs | Properties |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 各種ログの詳細については、[Azure IoT Hub の診断ログ](iot-hub-monitor-resource-health.md#distributed-tracing-preview)に関するページを参照してください。
 
@@ -316,7 +317,7 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 - cloud-to-device のツイン機能は、[IoT Hub の基本層](iot-hub-scaling.md#basic-and-standard-tiers)では使用できません。 ただし、IoT Hub は、適切に構成されたトレース コンテキスト ヘッダーを認識した場合には、Azure Monitor にログを記録します。
 - 効率的な操作を確実にするために、IoT Hub は、分散トレースの一部として発生する可能性のあるログ記録のレートにスロットルを適用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マイクロサービスの一般的な分散トレース パターンについて詳しくは、[マイクロサービス アーキテクチャ パターン: 分散トレース](https://microservices.io/patterns/observability/distributed-tracing.html)に関するページを参照してください。
 - 分散トレース設定を多数のデバイスに適用するための構成を設定するには、「[多数の IoT デバイスの構成と監視](iot-hub-auto-device-config.md)」を参照してください。

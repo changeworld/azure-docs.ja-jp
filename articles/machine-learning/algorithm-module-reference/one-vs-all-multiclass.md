@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の One-vs-All Multiclass モジュールを使用して、二項分類モデルのアンサンブルから多クラス分類モデルを作成する方法を説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の One-vs-All Multiclass モジュールを使用して、二項分類モデルのアンサンブルから多クラス分類モデルを作成する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428514"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -52,13 +52,13 @@ ms.locfileid: "73717181"
 
 5. パイプラインを実行します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 トレーニングが完了したら、モデルを使用して多クラス予測を行うことができます。
 
 または、トレーニングされていない分類子を [Cross-Validate Model (モデルのクロス検証)](cross-validate-model.md) に渡して、ラベル付き検証データセットに対するクロス検証を行うこともできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
