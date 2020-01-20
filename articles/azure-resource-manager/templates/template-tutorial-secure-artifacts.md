@@ -128,10 +128,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     テンプレート内に定義されているリソースは 4 つあります。
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Sql/servers`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/servers/firewallRules`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/servers/databases`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/server/databases/extensions`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
+   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)をご覧ください。
+   * `Microsoft.SQL/servers/firewallRules` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
+   * `Microsoft.SQL/servers/databases` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.SQL/server/databases/extensions` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
 
         カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。

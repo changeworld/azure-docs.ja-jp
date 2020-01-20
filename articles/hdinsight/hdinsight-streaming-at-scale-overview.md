@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435391"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 
@@ -37,7 +37,7 @@ Apache Storm は、Hadoop を使用して、リアルタイムでデータのス
 
 ## <a name="spark-streaming"></a>Spark Streaming
 
-Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する同じコードを再利用できます。 同じアプリケーションで、バッチと対話型の両方のクエリを組み合わせることができます。 Storm と異なり、Spark Streaming はステートフルな exactly-once 処理セマンティクスを提供します。 [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html) と組み合わせて使用すると、すべての Kafka データが Spark Streaming によって正確に 1 回受信され、エンド ツー エンドの exactly-once 保証を実現できます。 Spark Streaming の長所の 1 つは、クラスター内で複数のノードが使用されている場合に、障害のあるノードを迅速に復旧するフォールト トレランス機能です。
+Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する同じコードを再利用できます。 同じアプリケーションで、バッチと対話型の両方のクエリを組み合わせることができます。 Storm と異なり、Spark Streaming はステートフルな exactly-once (厳密に 1 回だけ) の処理セマンティクスを提供します。 [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html) と組み合わせて使用すると、すべての Kafka データが Spark Streaming によって厳密に 1 回受信され、エンド ツー エンドの exactly-once 保証を実現できます。 Spark Streaming の長所の 1 つは、クラスター内で複数のノードが使用されている場合に、障害のあるノードを迅速に復旧するフォールト トレランス機能です。
 
 詳細については、「[What is Apache Spark Streaming?](hdinsight-spark-streaming-overview.md)」(Apache Spark ストリーミングの概要) を参照してください。
 
@@ -45,11 +45,11 @@ Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する�
 
 作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターで、[クラスター内のノード数を変更](hdinsight-administer-use-portal-linux.md#scale-clusters)できます。 すべてのデータが Azure Storage または Data Lake Storage に格納されるため、Spark クラスターはデータの損失なく削除できます。
 
-分離テクノロジには利点があります。 たとえば、Kafka はイベント バッファリング テクノロジであるため、IO 集中型であり、大量の処理能力を必要としません。 比較すると、Spark Streaming などのストリーム プロセッサはコンピューティング集中型であり、より強力な VM を必要とします。 これらのテクノロジを異なるクラスターに分離することによって、VM を最適に利用しながら、それらを独立してスケーリングできます。
+分離テクノロジには利点があります。 たとえば、Kafka はイベント バッファリング テクノロジであるため、極めて IO 集中型であり、大量の処理能力を必要としません。 比較すると、Spark Streaming などのストリーム プロセッサはコンピューティング集中型であり、より強力な VM を必要とします。 これらのテクノロジを異なるクラスターに分離することによって、VM を最適に利用しながら、それらを独立してスケーリングできます。
 
 ### <a name="scale-the-stream-buffering-layer"></a>ストリーム バッファリング レイヤーのスケーリング
 
-ストリーム バッファリング テクノロジの Event Hubs や Kafka は共にパーティションを使用し、コンシューマーがそれらのパーティションから読み取ります。 入力スループットのスケーリングには、パーティションの数をスケール アップする必要があり、パーティションの追加によって、並列処理の増加を実現します。 Event Hubs では、デプロイ後にパーティション数を変更できないため、ターゲット スケールを考慮して開始することが重要です。 Kafka では、Kafka がデータを処理中であっても、[パーティションを追加](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)できます。 Kafka は、パーティションを再割り当てするためのツール `kafka-reassign-partitions.sh` を提供しています。 HDInsight は、[パーティション レプリカ再調整ツール](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py` を提供しています。 この再調整ツールは、各レプリカが個別の障害ドメインと更新ドメインに置かれるように、`kafka-reassign-partitions.sh` ツールを呼び出し、Kafka ラックを認識させ、フォールト トレランスを強化します。
+ストリーム バッファリング テクノロジの Event Hubs や Kafka は共にパーティションを使用し、コンシューマーがそれらのパーティションから読み取ります。 入力スループットのスケーリングには、パーティションの数をスケール アップする必要があり、パーティションの追加によって、並列処理の増加を実現します。 Event Hubs では、デプロイ後にパーティション数を変更できないため、ターゲット スケールを考慮して開始することが重要です。 Kafka では、Kafka がデータを処理中であっても、[パーティションを追加](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)できます。 Kafka は、パーティションを再割り当てするためのツール `kafka-reassign-partitions.sh` を提供しています。 HDInsight は、[パーティション レプリカ再調整ツール](https://github.com/hdinsight/hdinsight-kafka-tools)`rebalance_rackaware.py` を提供しています。 この再調整ツールは、各レプリカが個別の障害ドメインと更新ドメインに置かれるように、`kafka-reassign-partitions.sh` ツールを呼び出し、Kafka ラックを認識させ、フォールト トレランスを強化します。
 
 ### <a name="scale-the-stream-processing-layer"></a>ストリーム処理レイヤーのスケーリング
 
@@ -61,7 +61,7 @@ Apache Spark は、アプリケーションの要件に応じて、その環境�
 
 これらの 3 つのパラメーターは、クラスター レベルで (クラスター上で実行されるすべてのアプリケーションに対して) 構成でき、個々のアプリケーションに対して指定することもできます。 詳細については、[Apache Spark クラスターのリソースの管理](spark/apache-spark-resource-manager.md)に関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight で Apache Storm トポロジを作成、監視する](storm/apache-storm-quickstart.md)
 * [HDInsight での Apache Storm のトポロジ例](storm/apache-storm-example-topology.md)

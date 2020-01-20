@@ -111,8 +111,8 @@ BACPAC ファイルは、Resource Manager テンプレートを使用してイ�
 
     テンプレートで定義されている 2 つのリソースがあります。
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Sql/servers`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL.servers/databases`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
+   * `Microsoft.SQL.servers/databases` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
 
         カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。

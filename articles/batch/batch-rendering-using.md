@@ -1,25 +1,25 @@
 ---
-title: レンダリング機能 - Azure Batch
-description: Azure Batch レンダリングの機能を使用する方法
+title: レンダリング機能の使用 - Azure Batch
+description: Azure Batch レンダリングの機能を使用する方法。 直接またはクライアント アプリケーション プラグインから呼び出して、Batch Explorer アプリケーションの使用を試みます。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449660"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
 Azure Batch のレンダリングを使用する方法はいくつかあります。
 
 * API:
-  * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドまたはオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch の機能を統合できます。
+  * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。
 * コマンド ライン ツール:
   * [Azure コマンド ライン](https://docs.microsoft.com/cli/azure/)または [PowerShell](https://docs.microsoft.com/powershell/azure/overview) を使用すると、Batch の使用のスクリプトを作成できます。
   * 特に、[Batch CLI テンプレートのサポート](https://docs.microsoft.com/azure/batch/batch-cli-templates)により、プールの作成とジョブの送信がかなり容易になっています。
@@ -62,7 +62,7 @@ Batch Explorer の [データ] セクションでは、ローカル ファイル
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

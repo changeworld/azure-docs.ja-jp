@@ -1,20 +1,19 @@
 ---
 title: ODBC ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
-keywords: hadoop excel,hive excel,hive odbc
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/11/2019
+ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435812"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -49,19 +48,19 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
 
 1. 次の値を入力または選択します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
-   |  ホスト |「 `HDInsightClusterName.azurehdinsight.net` 」を入力します。 たとえば、`myHDICluster.azurehdinsight.net` のように指定します。 |
+   |  ホスト |「`HDInsightClusterName.azurehdinsight.net`」と入力します。 たとえば、「 `myHDICluster.azurehdinsight.net` 」のように入力します。 注: クライアント VM が同じ仮想ネットワークにピアリングされている限り、`HDInsightClusterName-int.azurehdinsight.net` がサポートされます。 |
    |  Port |**443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
-   |  Database |**既定値**を使用します。 |
+   |  データベース |**既定値**を使用します。 |
    |  メカニズム |**[Microsoft Azure HDInsight Service]** を選択します |
-   |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
-   |  パスワード |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
+   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
+   |  Password |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
 
 1. 省略可能: **[詳細オプション]** を選択します。  
 
-   | パラメーター | 説明 |
+   | パラメーター | [説明] |
    | --- | --- |
    |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることが 100% 確実な場合にのみ、使用する必要があります。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
@@ -95,7 +94,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
 
     ![HDInsight Excel Hive ODBC ナビゲーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC ナビゲーター")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。 同様に、SQL Database に HDInsight サービスからデータを取得することもできます。 また、HDInsight サービスにデータをアップロードすることもできます。 詳細については、次を参照してください。
 

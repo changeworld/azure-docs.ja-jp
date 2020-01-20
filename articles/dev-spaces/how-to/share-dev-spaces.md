@@ -3,14 +3,14 @@ title: Azure Dev Spaces を共有する方法
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: Azure Dev Spaces を使用して、チームの他のユーザーと Azure Kubernetes Service 内の開発スペースを共有する方法について説明します。
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 2c85625a4f61b701bc1e8b0a4a06f71dc0989ce0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e3a18ea205eda5617eab094046ec6536e82d113
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438429"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces を共有する
 
@@ -26,6 +26,6 @@ Azure Dev Spaces を使用すると、チームの他のメンバーと開発ス
 
      ![Visual Studio の起動設定ドロップダウン](../media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[チーム開発について学ぶ](../team-development-nodejs.md)」を参照してください。

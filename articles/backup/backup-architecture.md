@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450190"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -44,8 +44,8 @@ Recovery Services コンテナーには、次の機能があります。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
 - Azure の[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
-  - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
   - 既定では、Recovery Services コンテナーでは GRS が使用されます。
 
 ## <a name="backup-agents"></a>Backup のエージェント
@@ -174,7 +174,7 @@ VM 用のディスク ストレージと使用可能なディスクの種類に�
 Azure Backup で Premium Storage を使用して、Azure VM をバックアップすることができます。
 
 - Premium Storage での VM のバックアップの処理中、Backup サービスによって、ストレージ アカウントに *AzureBackup-* という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。
-- Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 [詳細情報](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits)。 ステージングの場所は変更しないでください。
+- Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../storage/blobs/scalability-targets-premium-page-blobs.md)」を参照してください。 ステージングの場所は変更しないでください。
 - バックアップ ジョブが完了した後、ステージングの場所は削除されます。
 - ステージングの場所に使用されるストレージの価格は、[Premium Storage の価格](../virtual-machines/windows/disks-types.md#billing)に準じます。
 
@@ -193,11 +193,11 @@ Premium Storage を使用して Azure VM を復元する場合、Premium また�
 - 復元プロセス中に、Azure によってマネージド ディスクが処理されます。 ユーザーがストレージ アカウント オプションを使用している場合は、復元プロセス中に作成されたストレージ アカウントを管理します。
 - 暗号化されたマネージド VM を復元する場合、復元プロセスを開始する前に、VM のキーとシークレットがキー コンテナーに存在することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サポート マトリックスを確認し、[バックアップ シナリオでサポートされる機能と制限事項について学習します](backup-support-matrix.md)。
 - 以下のシナリオのいずれかのバックアップを設定します。
-  - [Azure VM をバックアップします](backup-azure-arm-vms-prepare.md)。
+  - [Azure VM をバックアップする](backup-azure-arm-vms-prepare.md)。
   - バックアップ サーバーなしで、[Windows マシンを直接バックアップ](tutorial-backup-windows-server-to-azure.md)します。
   - Azure へのバックアップのために [MABS を設定](backup-azure-microsoft-azure-backup.md)してから、MABS にワークロードをバックアップします。
   - Azure へのバックアップのために [DPM を設定](backup-azure-dpm-introduction.md)してから、DPM にワークロードをバックアップします。

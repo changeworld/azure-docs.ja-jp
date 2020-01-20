@@ -8,26 +8,26 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452504"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>プレビュー環境の診断とトラブルシューティング
 
 この記事では、Azure Time Series Insights プレビュー環境を使用しているときに発生する可能性があるいくつかの一般的な問題をまとめます。 また、各問題の考えられる原因と解決策についても説明します。
 
-## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>問題:プレビュー エクスプローラーで自分の環境が見つからない
+## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>問題: プレビュー エクスプローラーで自分の環境が見つからない
 
 この問題は、Time Series Insights 環境にアクセスするための権限がない場合に発生する可能性があります。 Time Series Insights 環境を表示するには、ユーザーに閲覧者レベルのアクセス ロールが必要です。 現在のアクセス レベルを確認し、追加のアクセス権を付与するには、[Azure portal](https://portal.azure.com/) で Time Series Insights リソースの **[データ アクセス ポリシー]** セクションを使用します。
 
-  [![環境](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![データ アクセス ポリシーを確認します。](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
-## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>問題:プレビュー エクスプローラーにデータが表示されない
+## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>問題: プレビュー エクスプローラーにデータが表示されない
 
 [Azure Time Series Insights プレビュー エクスプローラー](https://insights.timeseries.azure.com/preview)でデータが表示されない場合、一般的な理由がいくつかあります。
 
@@ -35,7 +35,7 @@ ms.locfileid: "74014776"
 
     イベント ハブまたは IoT ハブであるイベント ソースで、タグまたはインスタンスからのデータが受信されていることを確認します。 確認するには、Azure portal でリソースの概要ページに移動します。
 
-    [![ダッシュボード - 分析情報](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![ダッシュボードのメトリックの概要を確認します。](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - イベント ソースのデータが JSON 形式ではありません。
 
@@ -45,14 +45,15 @@ ms.locfileid: "74014776"
 
   * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
 
-    [![構成](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![IoT Hub のアクセス許可を検証します。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * 上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+    * ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+
   * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
   
-    [![アクセス許可](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![イベント ハブのアクセス許可を確認します。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * 上の図に示すように、**read** ポリシーと **manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
+    * **Read** ポリシーと **Manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
 
 - お使いのコンシューマー グループが Time Series Insights 専用ではありません。
 
@@ -62,7 +63,7 @@ ms.locfileid: "74014776"
 
     この問題は、環境のプロビジョニング時に、タイム シリーズ ID プロパティを誤って構成した場合に発生する可能性があります。 詳しくは、「[Best practices for choosing a Time Series ID](./time-series-insights-update-how-to-id.md)」(タイム シリーズ ID の選択のベスト プラクティス) をご覧ください。 現時点では、別のタイム シリーズ ID を使うように既存の Time Series Insights 環境を更新することはできません。
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>問題:表示されるデータと表示されないデータがある
+## <a name="problem-some-data-shows-but-some-is-missing"></a>問題: 表示されるデータと表示されないデータがある
 
 タイム シリーズ ID を持たないデータを送信している場合があります。
 
@@ -72,7 +73,7 @@ ms.locfileid: "74014776"
     > [!NOTE]
     > 現時点では、Time Series Insights でサポートされる最大インジェスト速度は 6 Mbps です。
 
-## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>問題:イベント ソースのタイムスタンプ プロパティ名が機能しない
+## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>問題: イベント ソースのタイムスタンプ プロパティ名が機能しない
 
 名前と値が次の規則に準拠していることを確認してください。
 
@@ -87,31 +88,33 @@ ms.locfileid: "74014776"
 
 タイムスタンプ プロパティが明示的に指定されていない場合は、イベントが IoT ハブまたはイベント ハブにエンキューされた時刻が、既定のタイムスタンプとして使用されます。
 
-## <a name="problem-i-cant-view-data-from-my-warm-store-in-the-explorer"></a>問題:エクスプローラーでウォーム ストアのデータを表示できない
+## <a name="problem-i-cant-view-data-from-my-warm-store-in-the-explorer"></a>問題: エクスプローラーでウォーム ストアのデータを表示できない
 
 - ウォーム ストアを最近プロビジョニングした可能性があり、データは現在も流れています。
 - ウォームストアを削除した可能性があり、この場合は、データが失われた可能性があります。
 
-## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>問題:自分のタイム シリーズ モデルを表示または編集できない
+## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>問題: 自分のタイム シリーズ モデルを表示または編集できない
 
 - Time Series Insights S1 または S2 環境にアクセスしている可能性があります。
 
    タイム シリーズ モデルは、従量課金制環境でのみサポートされます。 Time Series Insights プレビュー エクスプローラーから S1 または S2 環境にアクセスする方法について詳しくは、「[Visualize data in the explorer](./time-series-insights-update-explorer.md)」(エクスプローラーでデータを視覚化する) をご覧ください。
 
-   [![アクセス](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![環境内にイベントがない。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - モデルを表示および編集するためのアクセス許可がない可能性があります。
 
    タイム シリーズ モデルを編集および表示するには、ユーザーに共同作成者レベルのアクセス権が必要です。 現在のアクセス レベルを確認し、追加のアクセス権を付与するには、Azure portal で Time Series Insights リソースの **[データ アクセス ポリシー]** セクションを使用します。
 
-## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>問題:プレビュー エクスプローラーですべての自分のインスタンスに親がない
+## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>問題: プレビュー エクスプローラーですべての自分のインスタンスに親がない
 
 この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳しくは、「[Work with Time Series Models](./time-series-insights-update-how-to-tsm.md)」(タイム シリーズ モデルを使用する) をご覧ください。
 
-  [![タイム シリーズ モデル](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [![親のないインスタンスによって、警告が表示されます。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Work with Time Series Models](./time-series-insights-update-how-to-tsm.md)」(タイム シリーズ モデルを使用する) を読む。
+
 - [サポートされている JSON シェイプ](./how-to-shape-query-json.md)について学習する。
+
 - Azure Time Series Insights プレビューの[計画と制限](./time-series-insights-update-plan.md)をご確認ください。

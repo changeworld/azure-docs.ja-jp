@@ -4,15 +4,15 @@ description: Azure Virtual Machines、Service Fabric、または Cloud Services 
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450553"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -55,7 +55,7 @@ Azure Diagnostics には、Azure ポータルに表示できるメトリック �
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**診断構成** **、**  > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**診断** **構成** > **メトリック** > **ResourceId** をチェックして、リソース ID が正しく設定されているかどうかを確認します。
 
 特定のメトリックのデータがない場合は、 **[診断構成]**  > 、 **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
@@ -213,7 +213,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 | provider="prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
 | provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>診断拡張機能の構成を確認する方法
 拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](https://resources.azure.com) に移動し、Azure Diagnostics 拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
@@ -229,9 +229,9 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics プラグインの終了コード
 プラグインにより、次の終了コードが返されます。
 
-| 終了コード | 説明 |
+| 終了コード | [説明] |
 | --- | --- |
-| 0 |成功。 |
+| 0 |正常終了しました。 |
 | -1 |一般的なエラー。 |
 | -2 |rcf ファイルを読み込めませんでした。<p>この内部エラーは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生します。 |
 | -3 |診断構成ファイルを読み込めませんでした。<p><p>解決方法:構成ファイルがスキーマ検証を渡さないことが原因です。 スキーマに準拠する構成ファイルを使用してください。 |

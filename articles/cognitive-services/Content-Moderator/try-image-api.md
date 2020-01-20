@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: ce8ea76cfc1f3f30418b66cd21de43d244da6764
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448257"
 ---
 # <a name="moderate-images-from-the-api-console"></a>API コンソールで画像をモデレートする
 
-Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) を使用して、画像コンテンツのスキャンとレビューのモデレーション ワークフローを開始します。 モデレーション ジョブは、不適切な表現がないかコンテンツをスキャンし、コンテンツをカスタム ブラックリストと共有ブラックリストに対して比較します。
+Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) を使用して、画像コンテンツのスキャンとレビューのモデレーション ワークフローを開始します。 モデレーション ジョブは、不適切な表現がないかコンテンツをスキャンし、コンテンツをカスタムおよび共有のブロックリストに対して比較します。
 
 ## <a name="use-the-api-console"></a>API コンソールを使用する
 オンライン コンソールで API を試すには、サブスクリプション キーが必要です。 これは、 **[設定]** タブの **[Ocp-Apim-Subscription-Key]** ボックス内にあります。 詳細については、[概要](overview.md)に関するページを参照してください。
@@ -28,7 +28,7 @@ Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.
 
    画像モデレーションの **[Image - Evaluate]\(Image - Evaluate\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![試用版: [Image - Evaluate]\(Image - Evaluate\) ページのリージョン選択肢](images/test-drive-region.png)
   
@@ -62,7 +62,7 @@ Image Moderation API を使用して、画像で顔を検索します。 この�
 
    **[Image - Find Faces]\(Image - Find Faces\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![試用版: [Image - Find Faces]\(Image - Find Faces\) ページのリージョン選択肢](images/test-drive-region.png)
 
@@ -86,7 +86,7 @@ Content Moderator OCR 機能を使用して、画像内のテキストを検出�
 
    **[Image - OCR]\(Image - OCR\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Image - OCR]\(Image - OCR\) ページのリージョン選択肢](images/test-drive-region.png)
 
@@ -100,6 +100,6 @@ Content Moderator OCR 機能を使用して、画像内のテキストを検出�
 
    ![[Image - OCR]\(Image - OCR\) のサンプル [応答のコンテンツ] ボックス](images/try-image-api-ocr.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションに画像モデレーションを追加します。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443566"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -42,6 +42,14 @@ Identity Protection で**ユーザーのリスクを無視する**と、Identity
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
+### <a name="why-is-a-user-is-at-risk"></a>ユーザーがリスクにさらされるのはなぜですか?
+
+Azure AD Identity Protection のお客様であれば、[危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューにアクセスして、危険度の高いユーザーをクリックしてください。 下部のドロワーの [リスクの履歴] タブに、ユーザー リスクが変化する原因となったすべてのイベントが表示されます。 そのユーザーの危険なサインインをすべて表示するには、[ユーザーの危険なサインイン] をクリックします。 このユーザーの危険の検出をすべて表示するには、[ユーザーのリスクの検出] をクリックします。
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>特定の種類の検出のレポートを取得する方法はありますか?
+
+リスク検出のビューにアクセスして、[検出の種類] でフィルター処理します。 その後、上部の **[ダウンロード]** ボタンを使用して、.CSV または JSON 形式でこのレポートをダウンロードできます。 詳細については、記事「[方法: リスクを調査する方法](howto-identity-protection-investigate-risk.md#risk-detections)。
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>リスク検出ごとに独自のリスク レベルを設定できないのはなぜですか?
 
 Identity Protection のリスク レベルは、検出の精度に基づいており、Microsoft の教師あり機械学習によって強化されています。 管理者は、ユーザー エクスペリエンスをカスタマイズするために、ユーザー リスク ポリシーとサインイン リスク ポリシーに対して特定のユーザーまたはグループを含めたり除外したりすることができます。
@@ -49,6 +57,20 @@ Identity Protection のリスク レベルは、検出の精度に基づいて�
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>サインインの場所が、ユーザーが実際にサインインした場所と一致しないのはなぜですか?
 
 IP の地理的位置情報のマッピングについては、業界全体の課題となっています。 サインイン レポートに記載されている場所が実際の場所と一致しないと思われる場合は、Microsoft サポートにご連絡ください。 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>以前の UI で行っていたように、特定のリスクの検出を終了する方法はありますか?
+
+リンクされたサインインが侵害されているか、または安全であると確認することで、リスク検出に関するフィードバックを提供できます。 サインインに関するフィードバックは、そのサインインに対して行われたすべての検出に関連しています。 サインインにリンクされていない検出を終了する場合は、ユーザー レベルでそのフィードバックを提供することができます。 詳細については、[方法: Azure AD Identity Protection でリスクに関するフィードバックを提供する](howto-identity-protection-risk-feedback.md)」を参照してください。
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>ユーザーに何が起きているかを把握するために、どのくらいまで時間を遡ることができますか?
+
+- [危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューには、すべての過去のサインインに基づくユーザーのリスク期間が表示されます。 
+- [危険なサインイン](howto-identity-protection-investigate-risk.md#risky-sign-ins)のビューには、過去 30 日間のリスクの高いサインインが表示されます。 
+- [リスク検出](howto-identity-protection-investigate-risk.md#risk-detections)のビューには、過去 90 日間に見つかったリスクの検出が表示されます。
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>特定の検出に関する詳細を確認するには、どうすればよいですか?
+
+「[リスクとは](concept-identity-protection-risks.md#risk-types-and-detection)」の記事に、すべてのリスクの検出について説明されています。 Azure portal 上の検出の横にある (i) 記号にマウスを合わせると、検出の詳細を確認できます。
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Identity Protection のフィードバック メカニズムはどのように機能しますか?
 

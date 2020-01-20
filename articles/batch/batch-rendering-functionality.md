@@ -1,18 +1,18 @@
 ---
 title: レンダリング機能 - Azure Batch
-description: Azure Batch 固有のレンダリング機能
+description: Azure Batch の標準の機能は、レンダリングのワークロードとアプリの実行に使用されます。 Batch には、レンダリングのワークロードをサポートする特定の機能が含まれています。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449717"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -30,7 +30,7 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
-| Publisher | プラン | SKU | Version |
+| Publisher | プラン | Sku | Version |
 |---------|---------|---------|--------|
 | batch (バッチ) | rendering-centos73 | rendering | latest |
 | batch (バッチ) | rendering-windows2016 | rendering | latest |
@@ -90,7 +90,7 @@ Arnold などの一部のレンダリング アプリケーションは CPU ベ�
 ジョブやタスクでレンダリング固有のサポートは不要です。  主な構成項目はタスク コマンドラインであり、必要なアプリケーションを参照する必要があります。
 Azure Marketplace の VM イメージが使用されている場合は、ベスト プラクティスとして、環境変数を使用してパスとアプリケーション実行可能ファイルを指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

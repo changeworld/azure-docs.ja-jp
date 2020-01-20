@@ -1,20 +1,19 @@
 ---
 title: HDInsight 上で Apache Hadoop の MapReduce サンプルを実行する - Azure
 description: HDInsight に含まれる jar ファイルの MapReduce のサンプルを使用します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。
-keywords: hadoop サンプル jar、hadoop サンプル jar、hadoop mapreduce サンプル、mapreduce サンプル
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/12/2019
+ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435746"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
@@ -30,34 +29,34 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
 ## <a name="the-mapreduce-examples"></a>MapReduce サンプル
 
-**場所**:サンプルは次の HDInsight クラスターに置かれています。`/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`
+サンプルは次の HDInsight クラスターに置かれています。`/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
 
-**内容**:次のサンプルがこのアーカイブに含まれています。
+次のサンプルがこのアーカイブに含まれています。
 
-* `aggregatewordcount`:入力ファイル内の単語をカウントする集計ベースの mapreduce プログラム。
-* `aggregatewordhist`:入力ファイル内の単語のヒストグラムを計算する集計ベースの mapreduce プログラム。
-* `bbp`:Bailey-Borwein-Plouffe を使用して Pi の正確な数値を計算する mapreduce プログラム。
-* `dbcount`:データベースに保存されているページビューのログをカウントするサンプル ジョブ。
-* `distbbp`:BBP 公式を使用して Pi の正確なビットを計算する mapreduce プログラム。
-* `grep`:入力内の正規表現の一致項目をカウントする mapreduce プログラム。
-* `join`:並べ替えられ、均等に分割されたデータセット上の結合を実行するジョブ。
-* `multifilewc`:複数のファイルの単語をカウントするジョブ。
-* `pentomino`:pentomino 問題のソリューションを見つける、タイル並べの mapreduce プログラム。
-* `pi`:準モンテカルロ法を使用して Pi を推定する mapreduce プログラム。
-* `randomtextwriter`:ノードあたり 10 GB のランダムなテキスト データを書き込む mapreduce プログラム。
-* `randomwriter`:ノードあたり 10 GB のランダムなデータを書き込む mapreduce プログラム。
-* `secondarysort`:Reduce フェーズに対する 2 番目の並べ替えを定義する例。
-* `sort`:ランダム ライターによって書き込まれたデータを並べ替える mapreduce プログラム。
-* `sudoku`:数独問題を解くプログラム。
-* `teragen`:terasort のデータを生成します。
-* `terasort`:terasort を実行します。
-* `teravalidate`:terasort の結果をチェックします。
-* `wordcount`:入力ファイル内の単語をカウントする mapreduce プログラム。
-* `wordmean`:入力ファイル内の単語の長さの平均をカウントする mapreduce プログラム。
-* `wordmedian`:入力ファイル内の単語の長さの中央値をカウントする mapreduce プログラム。
-* `wordstandarddeviation`:入力ファイル内の単語の長さの偏差値をカウントする mapreduce プログラム。
-
-**ソース コード**:これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
+|サンプル |[説明] |
+|---|---|
+|aggregatewordcount|入力ファイル内の単語をカウントします。|
+|aggregatewordhist|入力ファイル内の単語のヒストグラムを計算します。|
+|bbp|Bailey-Borwein-Plouffe を使用して Pi の正確な数値を計算します。|
+|dbcount|データベースに保存されているページビューのログをカウントします。|
+|distbbp|BBP 公式を使用して Pi の正確なビットを計算します。|
+|grep|入力内の正規表現の一致をカウントします。|
+|join|並べ替えられ、均等に分割されたデータセットの結合を実行します。|
+|multifilewc|複数のファイルからの単語をカウントします。|
+|pentomino|pentomino 問題のソリューションを見つける、タイル並べのプログラム。|
+|pi|準モンテカルロ法を使用して Pi を推定します。|
+|randomtextwriter|ノードあたり 10 GB のランダムなテキスト データを書き込みます。|
+|randomwriter|ノードあたり 10 GB のランダムなデータを書き込みます。|
+|secondarysort|Reduce フェーズに対する 2 番目の並べ替えを定義します。|
+|sort|ランダム ライターによって書き込まれたデータを並べ替えます。|
+|sudoku|数独問題を解くプログラム。|
+|teragen|terasort のデータを生成します。|
+|terasort|terasort を実行します。|
+|teravalidate|terasort の結果をチェックします。|
+|wordcount|入力ファイル内の単語をカウントします。|
+|wordmean|入力ファイル内の単語の長さの平均をカウントします。|
+|wordmedian|入力ファイル内の単語の長さの中央値をカウントします。|
+|wordstandarddeviation|入力ファイル内の単語の長さの標準偏差をカウントします。|
 
 ## <a name="run-the-wordcount-example"></a>Wordcount 例の実行
 
@@ -67,7 +66,7 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. `username@#######:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
+2. SSH セッションから、次のコマンドを使用してサンプルを一覧表示します。
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -83,7 +82,9 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
     次のメッセージが表示されます。
 
-        Usage: wordcount <in> [<in>...] <out>
+    ```output
+    Usage: wordcount <in> [<in>...] <out>
+    ```
 
     このメッセージは、ソース ドキュメントの複数の入力パスを指定できることを示しています。 最後のパスは、出力 (ソース ドキュメント内の単語の数) の保存場所です。
 
@@ -205,10 +206,9 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Linux ベースの HDInsight クラスターに付属するサンプルを実行する方法を説明しました。 HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
 
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
-description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して、視覚化する方法について説明します。
+description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して視覚化する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442065"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -392,7 +392,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 このラボの間に作成したリソースを削除するには、[Azure portal](https://portal.azure.com/) のリソース グループに移動し、ページ上部のメニューで **[リソース グループの削除]** を選択して、表示される手順に従います。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
   
 * 変更フィードについて詳しくは、「[Azure Cosmos DB での変更フィード サポートの使用](change-feed.md)」をご覧ください。 
 * Azure Cosmos DB を使用した医療組織用の[変更フィード通知ソリューション](change-feed-hl7-fhir-logic-apps.md)。

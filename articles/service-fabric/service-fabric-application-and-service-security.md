@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のアプリケーション セキュリティについて | Microsoft Docs
+title: Azure Service Fabric のアプリケーション セキュリティについて
 description: Service Fabric でマイクロサービス アプリケーションを安全に実行する方法の概要。 別のセキュリティ アカウントでサービスとスタートアップ スクリプトを実行する方法、ユーザーを認証および承認する方法、アプリケーション シークレットを管理する方法、サービス通信を保護する方法、API ゲートウェイを使用する方法、アプリケーション データを安全に保護する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452254"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -31,14 +20,14 @@ ms.locfileid: "68600078"
 ## <a name="authentication-and-authorization"></a>認証と権限承認
 多くの場合、サービスによって公開されるリソースや API は、特定の信頼できるユーザーやクライアントだけに制限する必要があります。 認証は、ユーザーの ID を確実に確認するためのプロセスです。  承認は、API またはサービスを一部の承認されたユーザーは利用できるようにし、他のユーザーは利用できないようにするプロセスです。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 API レベルの信頼性を判断するために、最初に行う手順は認証です。 認証は、ユーザーの ID を確実に確認するためのプロセスです。  マイクロサービスのシナリオでは、通常、認証は一元的に処理されます。 API ゲートウェイを使用している場合は、ゲートウェイに[認証をオフロード](/azure/architecture/patterns/gateway-offloading)することができます。 このアプローチを使用する場合は、メッセージがゲートウェイから送られて来たのかどうかを認証する追加のセキュリティが設定されていない限り、個々のサービスに直接 (API Gateway なしで) アクセスできないようにしてください。
 
 サービスに直接アクセスできる場合は、ユーザーを認証するために、Azure Active Directory のような認証サービスか、セキュリティ トークン サービス (STS) として機能する専用認証マイクロサービスを使用することができます。 信頼性の判断は、セキュリティ トークンまたは cookie を使用して、サービス間で共有されます。 
 
 ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)ための主なしくみは、ASP.NET Core Identity メンバーシップ システムです。 ASP.NET Core Identity では、開発者によって構成されたデータ ストアにユーザー情報 (サインイン情報、ロール、要求など) が格納されます。 ASP.NET Core Identity は、2 要素認証をサポートしています。  外部認証プロバイダーもサポートされているため、ユーザーは、Microsoft、Google、Facebook、Twitter などのプロバイダーによる既存の認証プロセスを使用してサインインすることができます。
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>承認
 認証後、サービスはユーザー アクセスを承認するか、ユーザーの実行できる操作を判断する必要があります。 このプロセスにより、サービスはすべてのユーザーではなく一部の認証されたユーザーだけに API の使用を許可することができます。 承認は、ユーザーがだれであるかを確認するプロセスである認証とは独立して直交しています。 承認では、現在のユーザーのために 1 つ以上の ID を作成する場合があります。
 
 [ASP.NET Core の承認](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)は、ユーザーのロールに基づいて、またはカスタム ポリシーに基づいて行うことができます。カスタム ポリシーには、要求やその他のヒューリスティックの調査を含めることができます。
@@ -103,7 +92,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [サービスのスタートアップ時にセットアップ スクリプトを実行する](service-fabric-run-script-at-service-startup.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)

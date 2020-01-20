@@ -1,30 +1,19 @@
 ---
-title: Service Fabric サービスのパーティション分割 | Microsoft Docs
+title: Service Fabric サービスのパーティション分割
 description: Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
-ms.author: atsenthi
-ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434059"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
 
-## <a name="partitioning"></a>パーティション分割
+## <a name="partitioning"></a>[パーティション分割]
 パーティション分割は Service Fabric に固有のものではありません。 それは、スケーラブルなサービスの構築の中心的なパターンです。 パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。 よく知られているパーティション分割の形式として、シャーディングとも呼ばれる[データのパーティション分割][wikipartition]があります。
 
 ### <a name="partition-service-fabric-stateless-services"></a>Service Fabric ステートレス サービスのパーティション分割
@@ -165,7 +154,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
    
     セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。 この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。 ここでは、レプリカがすべての使用可能なホスト (IP、FQDN、localhost など) でリッスンするように、 '+' がアドレスとして使用されていますコード例を次に示します。
    
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -193,7 +182,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     リッスンする URL は HttpListener に渡されます。 公開される URL は、Service Fabric Naming Service に公開される URL です。サービスの検出に使用されます。 クライアントは検出サービスを介してこのアドレスを要求します。 接続するには、クライアントが取得するアドレスにノードの実際の IP または FQDN が含まれる必要があります。 そのため、上のように '+' をノードの IP または FQDN に置き換える必要があります。
 9. 最後の手順は、次のように処理ロジックをサービスに追加する処理です。
    
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -241,7 +230,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
 11. 次のように、 **[Create a Service]** (サービスの作成) ダイアログ ボックスで **[ステートレス サービス]** を選択し、"Alphabet.Web" と名前を付けます。
     
-    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)にも掲載されています。
+    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
     
     ```xml
@@ -249,7 +238,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```
 13. クラス Web で ServiceInstanceListeners のコレクションを返す必要があります。 ここでも、単純な HttpCommunicationListener を実装することができます。
     
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -265,7 +254,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```
 14. 次に、処理ロジックを実装する必要があります。 HttpCommunicationListener は要求を受信すると `ProcessInputRequest` を呼び出します。 次のコードを追加してみましょう。
     
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -311,7 +300,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     
     このコードを詳しく見ていきましょう。 このコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。 その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
     
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
@@ -320,19 +309,19 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     この例では、1 パーティションに 1 つのパーティション キーがある 26 個のパーティションを使用しています。
     次に、`servicePartitionResolver` オブジェクトに対して `ResolveAsync` メソッドを使用して、このキーのサービス パーティション `partition` を取得します。 `servicePartitionResolver` は次のように定義されます。
     
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
     `ResolveAsync` メソッドには、サービス URI、パーティション キー、キャンセル トークンのパラメーターがあります。 処理サービスのサービス URI は `fabric:/AlphabetPartitions/Processing`です。 次に、パーティションのエンドポイントを取得します。
     
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
     最後に、エンドポイントの URL とクエリ文字列を構築し、処理サービスを呼び出します。
     
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
     
@@ -363,7 +352,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念についての詳細は、次を参照してください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

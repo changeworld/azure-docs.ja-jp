@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432992"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -21,11 +21,11 @@ Azure Maps アカウントを作成した後、Azure Active Directory (Azure AD)
 
 ## <a name="view-authentication-details"></a>認証の詳細を表示する
 
+Azure Maps アカウントの作成後、プライマリ キーおよびセカンダリ キーが生成されます。 [共有キー認証](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)を使用して Azure Maps を呼び出す場合は、プライマリ キーをサブスクリプション キーとして使用することをお勧めします。 セカンダリ キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」を参照してください。
+
 認証の詳細は、Azure portal で確認できます。 自分のアカウントにアクセスして、 **[設定]** メニューで **[認証]** を選択します。
 
 ![認証の詳細](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- 詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」を参照してください。
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Azure AD アプリの登録を設定する
@@ -101,7 +101,7 @@ Azure Maps の RBAC が付与されているユーザーまたはアプリを表
 Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD の認証と Azure Maps Web SDK の詳細については、[Azure AD と Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) に関するページをご覧ください。
 
@@ -112,4 +112,4 @@ Azure Maps アカウントにおける API 使用状況のメトリックを表�
 Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure AD 認証サンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

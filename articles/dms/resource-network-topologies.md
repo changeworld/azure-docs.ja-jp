@@ -1,6 +1,7 @@
 ---
-title: Azure Database Migration Service を使用して Azure SQL Database Managed Instance を移行するためのネットワーク トポロジ | Microsoft Docs
-description: Azure Database Migration Service のソースとターゲットの構成について説明します。
+title: SQL マネージド インスタンスの移行のためのネットワーク トポロジ
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service を使用した Azure SQL Database マネージド インスタンスの移行のための、ソースおよびターゲット構成について学習します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/07/2019
-ms.openlocfilehash: 74613599903f7cde606295a1e2d9eaaa0924cf50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db875ea099b0093bf1d43bd64b1ae4c07db05b45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437715"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ
 
@@ -28,7 +29,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 ![ハイブリッド ワークロード用のネットワーク トポロジ](media/resource-network-topologies/hybrid-workloads.png)
 
-**要件**
+**必要条件**
 
 - このシナリオでは、Azure SQL Database マネージド インスタンスと Azure Database Migration Service インスタンスが同じ Azure VNet 内に作成されますが、サブネットはそれぞれ別のものが使用されます。  
 - このシナリオで使用される VNet は、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークに接続されます。
@@ -43,7 +44,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 ![オンプレミス ネットワークから分離されたマネージド インスタンス用のネットワーク トポロジ](media/resource-network-topologies/mi-isolated-workload.png)
 
-**要件**
+**必要条件**
 
 - このシナリオで Azure Database Migration Service に使用される VNet は、 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークにも接続される必要があります。
 - Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
@@ -54,7 +55,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 ![共有 VNet があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud.png)
 
-**要件**
+**必要条件**
 
 - その他の要件はありません。
 
@@ -68,7 +69,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 ![分離 VNet があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
-**要件**
+**必要条件**
 
 - Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
 
@@ -76,26 +77,26 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 | **名前**   | **ポート** | **プロトコル** | **ソース** | **送信先** | **アクション** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | 任意      | 任意          | DMS サブネット | 任意             | ALLOW      |
+| DMS_subnet | Any      | Any          | DMS サブネット | Any             | Allow      |
 
 ## <a name="outbound-security-rules"></a>送信セキュリティ規則
 
 | **名前**                  | **ポート**                                              | **プロトコル** | **ソース** | **送信先**           | **アクション** | **ルールの理由**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| management                | 443,9354                                              | TCP          | 任意        | 任意                       | ALLOW      | Service Bus と Azure Blob Storage を経由する管理プレーン通信。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
-| 診断               | 12000                                                 | TCP          | 任意        | 任意                       | ALLOW      | DMS はこの規則を使用して、トラブルシューティングのために診断情報を収集します。                                                                                                                      |
-| SQL ソース サーバー         | 1433 (または、SQL Server がリッスンしている TCP IP ポート) | TCP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | DMS からの SQL Server ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                                       |
-| SQL Server 名前付きインスタンス | 1434                                                  | UDP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | DMS からの SQL Server 名前付きインスタンス ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                        |
-| SMB 共有                 | 445                                                   | TCP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | Azure VM 上の Azure SQL Database MI と SQL Server への移行用にデータベース バックアップ ファイルを格納するための DMS に対する SMB ネットワーク共有 <br/>(サイト間接続がある場合、この規則は必要ないことがあります)。 |
-| DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | ALLOW      |                                                                                                                                                                                                  |
+| management                | 443,9354                                              | TCP          | Any        | Any                       | Allow      | Service Bus と Azure Blob Storage を経由する管理プレーン通信。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
+| 診断               | 12000                                                 | TCP          | Any        | Any                       | Allow      | DMS はこの規則を使用して、トラブルシューティングのために診断情報を収集します。                                                                                                                      |
+| SQL ソース サーバー         | 1433 (または、SQL Server がリッスンしている TCP IP ポート) | TCP          | Any        | オンプレミスのアドレス空間 | Allow      | DMS からの SQL Server ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                                       |
+| SQL Server 名前付きインスタンス | 1434                                                  | UDP          | Any        | オンプレミスのアドレス空間 | Allow      | DMS からの SQL Server 名前付きインスタンス ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                        |
+| SMB 共有                 | 445                                                   | TCP          | Any        | オンプレミスのアドレス空間 | Allow      | Azure VM 上の Azure SQL Database MI と SQL Server への移行用にデータベース バックアップ ファイルを格納するための DMS に対する SMB ネットワーク共有 <br/>(サイト間接続がある場合、この規則は必要ないことがあります)。 |
+| DMS_subnet                | Any                                                   | Any          | Any        | DMS_Subnet                | Allow      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [SQL Server を Azure SQL Database Managed Instance に移行する](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [Azure Database Migration Service を使用するための前提条件の概要](https://docs.microsoft.com/azure/dms/pre-reqs)
 - [Azure Portal を使用した仮想ネットワークの作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Database Migration Service の概要については、「[Azure Database Migration Service とは](dms-overview.md)」の記事を参照してください。
 - Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)」のページを参照してください。

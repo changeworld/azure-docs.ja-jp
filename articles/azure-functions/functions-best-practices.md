@@ -3,14 +3,14 @@ title: Azure Functions のベスト プラクティス
 description: Azure Functions のベスト プラクティスとパターンについて説明します。
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433307"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -70,7 +70,11 @@ Azure Functions プラットフォームで使用するコンポーネントに�
 
 ### <a name="share-and-manage-connections"></a>接続の共有と管理
 
-可能であれば、外部リソースへの接続を再利用します。  「[Azure Functions で接続を管理する方法](./manage-connections.md)」をご覧ください。
+可能であれば、外部リソースへの接続を再利用します。 「[Azure Functions で接続を管理する方法](./manage-connections.md)」をご覧ください。
+
+### <a name="avoid-sharing-storage-accounts"></a>ストレージ アカウントの共有を回避する
+
+関数アプリを作成する場合は、ストレージ アカウントに関連付ける必要があります。 ストレージ アカウント接続は、[AzureWebJobsStorage アプリケーション設定](./functions-app-settings.md#azurewebjobsstorage)の中で管理されます。 パフォーマンスを最大化するには、関数アプリごとに個別のストレージ アカウントを使用します。 Durable Functions または Event Hub によってトリガーされる関数がある場合には、これは特に重要です。どちらも、大量のストレージ トランザクションを生成します。 アプリケーション ロジックが (Storage SDK を使用して) 直接、あるいは、ストレージ バインドの 1 つを経由して Azure Storage と対話する場合、専用のストレージ アカウントを使用する必要があります。 たとえば、Event Hub によってトリガーされ BLOB ストレージにデータを書き込む関数がある場合、2 つのストレージ アカウントを使用します&mdash;1 つは関数アプリ用、もう 1 つは関数によって格納されている BLOB 用になります。
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ関数アプリにテスト コードと運用環境のコードを混在させない
 
@@ -84,9 +88,17 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>非同期コードを使用し、呼び出しのブロックは避ける
 
-非同期プログラミングは、推奨されるベスト プラクティスです。 ただし、`Task` インスタンスの `Result` プロパティを参照したり `Wait` メソッドを呼び出したりすることは、常に避けるようにします。 この手法により、スレッドが枯渇する可能性があります。
+非同期プログラミングは、特に I/O 操作のブロックが関連している場合に、推奨されるベスト プラクティスです。
+
+C# では、`Task` インスタンス上の `Result` プロパティを参照したり `Wait` メソッドを呼び出したりすることは、常に避けるようにします。 この手法により、スレッドが枯渇する可能性があります。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>複数のワーカー プロセスを使用する
+
+既定では、Functions のどのホスト インスタンスでも、単一のワーカー プロセスが使用されます。 特に Python などのシングルスレッド ランタイムによってパフォーマンスを向上させるには、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) を使用して、ホストあたりのワーカープロセス数を増やします (最大 10 まで)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT は、需要に合わせてアプリケーションをスケールアウトするときに Functions によって作成される各ホストに適用されます。 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>可能な限りメッセージをバッチで受信する
 
@@ -102,7 +114,7 @@ host.json ファイルの設定は、アプリ内のすべての関数 (関数�
 
 他のホスト構成オプションについては、[host.json 構成に関する記事](functions-host-json.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

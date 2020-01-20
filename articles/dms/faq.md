@@ -1,6 +1,6 @@
 ---
-title: Azure Database Migration Service の使用に関する FAQ | Microsoft Docs
-description: データベース移行を実行するための Azure Database Migration Service の使用に関するよく寄せられる質問に答えます。
+title: よくあるご質問 - Azure Database Migration Service
+description: データベース移行を実行するための Azure Database Migration Service の使用に関するよく寄せられる質問。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 07/10/2019
-ms.openlocfilehash: 5077539f6f80784f865bd4c1b52e3b4c147107ed
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438014"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -117,6 +117,6 @@ Azure VNET のセットアップ手順を説明する複数の Microsoft チュ�
 * サービス インスタンスを作成するときにマルチ CPU の汎用価格レベルを使用して、サービスが並列化とデータ転送の高速化のために複数の vCPU を活用できるようにします。
 * データ移行操作中に一時的に Azure SQL Database のターゲット インスタンスを Premium レベル SKU にスケールアップし、より低いレベルの SKU を使用した場合にデータ転送アクティビティに影響する Azure SQL Database の調整を最小限に抑えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事をご覧ください。

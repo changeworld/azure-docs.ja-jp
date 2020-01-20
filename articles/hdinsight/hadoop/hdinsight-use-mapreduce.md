@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: c4f975b56d3658731b6dc165e01b54ac09f3b89c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435718"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
 HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。
 
-## <a id="data"></a>サンプル データ
+## <a name="example-data"></a>サンプル データ
 
 HDInsight にはさまざまなサンプル データ セットが用意されていて、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内にあります。 このドキュメントでは、`/example/data/gutenberg/davinci.txt` ファイルを使用します。 このファイルには、レオナルド ダ ヴィンチの手記が含まれています。
 
-## <a id="job"></a>MapReduce の例
+## <a name="example-mapreduce"></a>MapReduce の例
 
 サンプルの MapReduce ワード カウント アプリケーションは、HDInsight クラスターに付属しています。 このサンプルは、クラスターの既定のストレージの `/example/jars/hadoop-mapreduce-examples.jar` にあります。
 
@@ -101,35 +101,22 @@ public class WordCount {
 }
 ```
 
-独自の MapReduce アプリケーションを記述する手順については、次のドキュメントを参照してください。
+独自の MapReduce アプリケーションの作成手順については、[HDInsight 用の Java MapReduce アプリケーションの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)に関する記事を参照してください。
 
-* [HDInsight 用 Java MapReduce アプリケーションの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-## <a id="run"></a>MapReduce の実行
+## <a name="run-the-mapreduce"></a>MapReduce の実行
 
 HDInsight では、さまざまな方法を使用して HiveQL ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
 
-| **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
+| **使用する方法** | **目的** |  使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux、Unix、Mac OS X、または Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell**  |Windows |
 
-## <a id="nextsteps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 HDInsight でのデータ操作の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight 用 Java MapReduce プログラムの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
-
-* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
-
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
-[hdinsight-use-hive]:../hdinsight-use-hive.md
-[hdinsight-use-pig]:hdinsight-use-pig.md
-
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+* [HDInsight での Apache Hive の使用](./hdinsight-use-hive.md)

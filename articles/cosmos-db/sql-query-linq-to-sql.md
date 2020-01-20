@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441249"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換
 
@@ -23,7 +23,7 @@ Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB
 
 - 定数値。クエリ評価時のプリミティブ データ型の定数値を含みます。
   
-- プロパティ/配列インデックス式。オブジェクトまたは配列要素のプロパティを参照します。 例:
+- プロパティ/配列インデックス式。オブジェクトまたは配列要素のプロパティを参照します。 次に例を示します。
   
   ```
     family.Id;
@@ -64,7 +64,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
 - **OrderBy** と **OrderByDescending**:ASC または DESC で ORDER BY に変換します。
 - 集計のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
 - **CompareTo**:範囲比較に変換します。 .NET では文字列を比較できないので、一般的に文字列に使用されます。
-- **Take**:クエリからの結果を制限するために SQL TOP に変換します。
+- **Skip** と **Take**:クエリからの結果を制限して改ページ位置の自動修正を実行するために、SQL OFFSET および LIMIT に変換されます。
 - **数学関数**:.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の SQL 組み込み関数への変換をサポートします。
 - **文字列関数**:.NET `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`、および `TrimStart` から同等の SQL 組み込み関数への変換をサポートします。
 - **配列関数**:.NET `Concat`、`Contains`、および `Count` から同等の SQL 組み込み関数への変換をサポートします。
@@ -322,7 +322,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
   ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [モデル ドキュメント データ](modeling-data.md)

@@ -1,5 +1,6 @@
 ---
-title: 複数の Azure リージョンへの Azure API Management サービスのデプロイ | Microsoft Docs
+title: 複数の Azure リージョンへの Azure API Management サービスのデプロイ
+titleSuffix: Azure API Management
 description: 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 7cd0533dcbc9b367fa9a1e138b1aa1257989a3d7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442665"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
@@ -30,7 +31,7 @@ Azure API Management では複数リージョンのデプロイがサポート�
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
+## <a name="add-region">新しいリージョンに API Management サービス インスタンスをデプロイする</a>
 
 > [!NOTE]
 > API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][create an api management service instance]に関するページを参照してください。

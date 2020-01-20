@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445262"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する
 
@@ -118,7 +118,15 @@ V2.x.x や V1.x.x などの古いバージョンの Azure Cosmos DB SDK では�
 
 移行されたコンテナーが最新/V3 バージョンの SDK によって使用され、ユーザーが新しいドキュメント内のシステム定義パーティション キーの設定を開始すると、古い SDK からそのようなドキュメントにアクセスする (読み取り、更新、削除、クエリ) ことはできなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="known-issues"></a>既知の問題
+
+**V3 SDK を使用してパーティション キーなしで挿入された項目の数を照会すると、より高いスループット消費が発生する可能性がある**
+
+V2 SDK を使用して挿入された項目、または `PartitionKey.None` パラメーターによって V3 SDK を使用して挿入された項目に対して、V3 SDK からクエリを実行した場合に、FeedOptions 内で `PartitionKey.None` パラメーターが指定されていると、カウント クエリではより高い RU/秒が消費される可能性があります。 パーティション キーを使用して他の項目が挿入されていない場合は、`PartitionKey.None` パラメーターを指定しないことをお勧めします。
+
+パーティション キーの値が異なる新しい項目が挿入された場合、`FeedOptions` に適切なキーを渡すことによって、このような項目のカウント クエリを実行しても、問題はありません。 パーティション キーを使用して新しいドキュメントを挿入した後に、パーティション キー値を指定せずにドキュメント数だけを照会する必要がある場合は、通常のパーティション分割コレクションと同様に、そのクエリによって高い RU/秒が再発生する可能性があります。
+
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)
