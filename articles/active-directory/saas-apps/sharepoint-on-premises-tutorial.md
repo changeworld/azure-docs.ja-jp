@@ -271,7 +271,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 10. オンプレミスの SharePoint ファームまたは代わりのカスタム クレーム プロバイダー ソリューションで、AzureCP を構成します。  この例では、AzureCP を使用しています。
 
     > [!NOTE]
-    > AzureCP は Microsoft 製品ではないか、または Microsoft のテクニカル サポートでサポートされていないことに注意してください。 [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/ ) に従って、AzureCP をダウンロードし、オンプレミスの SharePoint ファームにインストールして構成します 
+    > AzureCP は Microsoft 製品ではないか、または Microsoft のテクニカル サポートでサポートされていないことに注意してください。 https://yvand.github.io/AzureCP/ に従って、AzureCP をダウンロードし、オンプレミスの SharePoint ファームにインストールして構成します 
 
 11. **オンプレミス SharePoint で Azure Active Directory セキュリティ グループにアクセス許可を付与する**: グループは、オンプレミスの SharePoint 内のアプリケーションへのアクセス許可を付与される必要があります。  次の手順を使用して、Web アプリケーションにアクセスするためのアクセス許可を設定します。
 

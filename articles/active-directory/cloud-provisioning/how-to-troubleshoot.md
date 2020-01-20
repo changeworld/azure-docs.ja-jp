@@ -80,7 +80,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 次の内容のエラー メッセージが表示されることがあります。
 
-**Service 'Microsoft Azure AD Connect Provisioning Agent' failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) を開始できませんでした。システムを起動するために十分な特権を持っていることを確認してください。)** 
+**Service 'Microsoft Azure AD Connect Provisioning Agent' failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' を開始できませんでした。システム サービスを起動するために十分な特権を持っていることを確認してください。)** 
 
 この問題は、通常、インストーラー (NT SERVICE\AADConnectProvisioningAgent) によって作成されたローカル NT サービスのログオン アカウントにアクセス許可が適用されないようにするグループ ポリシーが原因で発生します。 サービスを開始するには、これらのアクセス許可が必要です。
 

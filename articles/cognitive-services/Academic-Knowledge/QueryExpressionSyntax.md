@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448946"
 ---
 # <a name="query-expression-syntax"></a>クエリ式の構文
 
@@ -28,6 +28,7 @@ ms.locfileid: "68704924"
 
 エンティティ データの一部は、属性名のドット '.' で示される複合属性として格納されます。 たとえば、著者/所属情報は、複合属性として表されます。 これには 4 つのコンポーネントが含まれます。AuN、AuId、AfN、AfId です。 これらのコンポーネントは、単一のエンティティ属性値を形成するデータの個別の部分です。
 
+注:すべてのクエリ式は、小文字でなくてはなりません。また、特殊文字を使用しないでください。
 
 **文字列属性:単一値** (シノニムとの一致を含む)  
 Ti='indexing by latent semantic analysis'  

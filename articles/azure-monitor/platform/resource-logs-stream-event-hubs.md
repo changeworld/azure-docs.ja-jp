@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b8e244dc00b4ed61a802f5c9f39149a7c020768a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530835"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750342"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure プラットフォーム ログを Azure Event Hubs にストリーミングする
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、プラットフォーム ログをストリーミングする方法について説明します。
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、プラットフォーム ログをストリーミングする方法について説明します。
 
 
 ## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>イベント ハブに送信されたプラットフォーム ログを使用して何ができますか
@@ -135,7 +135,7 @@ Azure リソース用の診断設定を作成して、イベント ハブやそ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [リソース ログの詳細について読む](resource-logs-overview.md)
+* [リソース ログの詳細について読む](platform-logs-overview.md)
 * [Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)。
 * [Azure Monitor による Azure Active Directory ログのストリーム](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 * [Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。

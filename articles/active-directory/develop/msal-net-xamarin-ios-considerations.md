@@ -21,8 +21,8 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/25/2019
 ms.locfileid: "75424128"
 ---
-# <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET を使用する Xamarin iOS に固有の考慮事項
-Xamarin iOS には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
+# <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET を使用する Xamarin.iOS に固有の考慮事項
+Xamarin.iOS には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
 
 - [iOS 12 と認証に関する既知の問題](#known-issues-with-ios-12-and-authentication)
 - [`AppDelegate` での `OpenUrl` 関数のオーバーライドと実装](#implement-openurl)
@@ -113,6 +113,6 @@ MSAL 2.x から、複数のアプリケーション間でトークン キャッ�
 ## <a name="known-issues-with-ios-12-and-authentication"></a>iOS 12 と認証に関する既知の問題
 Microsoft では、iOS12 と一部の種類の認証との間の非互換性について情報を提供する[セキュリティ アドバイザリ](https://github.com/aspnet/AspNetCore/issues/4647)をリリースしました。 その非互換性により、ソーシャル、WSFed、OIDC のログインが中断されます。 このアドバイザリでは、iOS12 と互換性を持たせる目的で ASP.NET によってアプリケーションに追加された現在のセキュリティ制限を取り除くために、開発者ができることについてのガイダンスも提供しています。  
 
-Xamarin iOS 上での MSAL.NET アプリケーション開発時、iOS 12 から Web サイトにサインインしようとすると無限ループが発生することがあります (この [ADAL の問題](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)に似ています)。 
+Xamarin.iOS 上での MSAL.NET アプリケーション開発時、iOS 12 から Web サイトにサインインしようとすると無限ループが発生することがあります (この [ADAL の問題](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)に似ています)。 
 
 この [WebKit の問題](https://bugs.webkit.org/show_bug.cgi?id=188165)で説明されているように、iOS 12 Safari を使用した ASP.NET Core OIDC 認証でも中断が発生することがあります。
