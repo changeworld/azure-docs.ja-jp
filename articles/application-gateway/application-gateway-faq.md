@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996665"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658306"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -104,7 +104,7 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Application Gateway で Exchange Server をバックエンドとして使用することはできますか?
 
-No. Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。 
+いいえ。 Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。 
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -124,7 +124,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手動でのスケールアップまたはスケールダウンによってダウンタイムが発生することはありますか?
 
-No. インスタンスはアップグレード ドメインと障害ドメインに分散されます。
+いいえ。 インスタンスはアップグレード ドメインと障害ドメインに分散されます。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Application Gateway は接続のドレインに対応していますか?
 
@@ -146,7 +146,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネット内に何か他にデプロイできるものはありますか?
 
-No. もっとも、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
+いいえ。 もっとも、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでネットワーク セキュリティ グループはサポートされていますか?
 
@@ -158,7 +158,7 @@ No. もっとも、サブネット内に他のアプリケーション ゲート
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway にはどのような制限がありますか? これらの制限値を引き上げることはできますか?
 
-「[Application Gateway の制限](../azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。
+「[Application Gateway の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Application Gateway を外部と内部の両方のトラフィックに同時に使用することはできますか?
 
@@ -178,7 +178,7 @@ No. もっとも、サブネット内に他のアプリケーション ゲート
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>カスタム プローブは応答データ上のワイルドカードや正規表現をサポートしていますか?
 
-No. 
+いいえ。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Application Gateway ではルーティング規則がどのように処理されるのでしょうか?
 
@@ -194,12 +194,15 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 
-No.
+いいえ。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
 
 はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
 
+### <a name="does-application-gateway-support-ipv6"></a>Application Gateway は IPv6 をサポートしていますか?
+
+現在、Application Gateway v2 は IPv6 をサポートしていません。 IPv4 のみを使用してデュアル スタック VNet で動作できますが、ゲートウェイ サブネットは IPv4 のみである必要があります。 Application Gateway v1 は、デュアル スタック VNet をサポートしていません。 
 
 ## <a name="configuration---ssl"></a>構成 - SSL
 
@@ -295,7 +298,7 @@ WAF の監視には、診断ログを使用します。 詳細については、
 
 ### <a name="does-detection-mode-block-traffic"></a>検出モードではトラフィックがブロックされますか?
 
-No. 検出モードでは、WAF 規則をトリガーするトラフィックをログに記録するにとどまります。
+いいえ。 検出モードでは、WAF 規則をトリガーするトラフィックをログに記録するにとどまります。
 
 ### <a name="can-i-customize-waf-rules"></a>WAF ルールはカスタマイズできますか?
 
@@ -381,6 +384,30 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 - アプリケーション ゲートウェイ サブネットに NSG がある
 - その NSG 上で NSG フロー ログを有効にした
 
-## <a name="next-steps"></a>次の手順
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>プライベート フロントエンド IP アドレスのみで Application Gateway V2 を使用するにはどうすればよいですか?
+
+現在、Application Gateway V2 はプライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
+* プライベート IP とパブリック IP
+* パブリック IP のみ
+
+ただし、プライベート IP のみで Application Gateway V2 を使用する場合は、次の手順に従うことができます。
+1. パブリックとプライベートの両方のフロントエンド IP アドレスを使用して Application Gateway を作成する
+2. パブリック フロントエンド IP アドレスのリスナーは作成しないでください。 リスナーが作成されていない場合、Application Gateway ではパブリック IP アドレスのトラフィックがリッスンされません。
+3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を作成し、次の構成を使用して優先度順にアタッチします。
+    
+    a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
+    
+    b. [ソース] には **AzureLoadBalancer** サービスタグ、[宛先] と [宛先のポート] には **[すべて]** を指定してトラフィックを許可します。
+    
+    c. [ソース] には **Internet** サービス タグ、[宛先] と [宛先のポート] には **[すべて]** を指定して受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
+    
+    d. プライベート IP アドレスへのアクセスがブロックされないように、VirtualNetwork の受信を許可するなどの既定の規則をそのまま使用します。
+    
+    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどの問題が発生します。
+
+プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
+
+
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway の詳細については、「[Azure Application Gateway とは](overview.md)」を参照してください。

@@ -11,17 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2019
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663889"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552867"
 ---
-# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
-このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
+# <a name="protect-azure-data-and-storage-services"></a>Azure のデータ サービスとストレージ サービスを保護する
+Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
+
+この記事では、Security Center のリソース セキュリティ セクションの **[データのセキュリティ]** ページについて説明します。
+
+このページに表示される可能性のある推奨事項の完全な一覧については、「[データとストレージに関する推奨事項](recommendations-reference.md#recs-datastorage)」を参照してください。
+
 
 ## <a name="view-your-data-security-information"></a>データのセキュリティ情報を表示する
 
@@ -31,7 +36,7 @@ ms.locfileid: "73663889"
 
     **[Data security] (データ セキュリティ)** ページとデータ リソースの推奨事項が開きます。
 
-    ![データ リソース](./media/security-center-monitoring/sql-overview.png)
+    [![データ リソース](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
     このページからは、次のことを行うことができます。
 
@@ -58,29 +63,11 @@ ms.locfileid: "73663889"
 
 4. **[修復手順]** に従い、 **[保存]** をクリックします。
 
-## <a name="data-and-storage-recommendations"></a>データとストレージの推奨事項
 
-|リソースの種類|セキュリティ スコア|推奨|説明|
-|----|----|----|----|
-|ストレージ アカウント|20|ストレージ アカウントへの安全な転送を有効にする必要がある|安全な転送は、ストレージ アカウントに、セキュリティで保護された接続 (HTTPS) からの要求のみを受け入れるように強制するオプションです。 HTTPS によりサーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
-|Redis|20|Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある|Azure Cache for Redis に対して SSL 経由の接続のみを有効にします。 セキュリティで保護された接続を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
-|SQL|15|SQL データベースで Transparent Data Encryption を有効にする必要がある|Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします。|
-|SQL|15|SQL サーバー監査を有効にする必要がある|Azure SQL サーバーの監査を有効にします。 (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。|
-|Data Lake Analytics|5|Data Lake Analytics で診断ログを有効にする必要がある|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
-|Data Lake Store|5|Azure Data Lake Store で診断ログを有効にする必要がある|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
-|SQL|30|SQL データベースの脆弱性を修復する必要がある|SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の間違い、過剰なアクセス許可、機密性の高いデータの未保護など、ベスト プラクティスからのすべての逸脱を明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ水準が大幅に向上する可能性があります。|
-|SQL|20|SQL Server に Azure AD 管理者をプロビジョニングする|SQL Server に Azure AD 管理者をプロビジョニングして、Azure AD 認証を有効にします。 Azure AD 認証を使用して、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。|
-|ストレージ アカウント|15|ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある|ストレージ アカウントのファイアウォール設定で無制限のネットワーク アクセスを監査します。 代わりに、許可されているネットワークからのアプリケーションのみがストレージ アカウントにアクセスできるように、ネットワーク ルールを構成します。 インターネットまたはオンプレミスの特定のクライアントからの接続を許可するには、特定の Azure 仮想ネットワークからのトラフィックまたはパブリック インターネット IP アドレス範囲に、アクセス権を付与できます。|
-|ストレージ アカウント|1|ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある|新しい Azure Resource Manager V2 をストレージ アカウントに使用して、セキュリティの拡張機能を提供します。たとえば、アクセス制御の強化 (RBAC)、監査の改善、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのためのキー コンテナーへのアクセス、Azure AD に基づく認証、セキュリティ管理を容易にするタグとリソース グループのサポートがあります。|
+## <a name="next-steps"></a>次のステップ
 
-## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次のトピックをご覧ください。
 
+* [Azure Security Center のセキュリティに関する詳細な参照リスト](recommendations-reference.md)
 * [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
-
-Security Center の詳細については、次のトピックを参照してください。
-
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。

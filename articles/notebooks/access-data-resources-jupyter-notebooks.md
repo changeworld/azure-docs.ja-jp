@@ -1,14 +1,14 @@
 ---
-title: Azure 上の Jupyter Notebook からデータ リソースにアクセスする
-description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法です。
-ms.topic: article
+title: Jupyter ノートブックでデータにアクセスする - Azure Notebooks プレビュー
+description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法について説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277693"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646349"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -17,6 +17,8 @@ Jupyter Notebook で面白い仕事を行うには、データが必要です。
 もちろん、[データ ファイルをプロジェクトにインポートする](work-with-project-data-files.md)こともできます。`curl` などのコマンドを使用してノートブック内から直接ファイルをダウンロードすることさえできます。 ただし、REST API、リレーショナル データベース、クラウド ストレージ (Azure テーブルなど) といったファイル以外のソースから利用可能なさらに広範なデータを使用することが必要になる可能性があります。
 
 この記事では、これらのさまざまなオプションについて簡単に説明します。 データ アクセスは動いているところを見るのが最もよくわかるので、「[Azure Notebooks Samples - Access your data](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)」(Azure Notebooks サンプル - データにアクセスする) の実行可能なコードをご覧ください。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API
 
@@ -76,6 +78,6 @@ Azure で使用できるデータベースが他にもいくつか提供され�
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory のコピー ウィザード](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [方法:プロジェクト データ ファイルを操作する](work-with-project-data-files.md)
+- [方法: プロジェクト データ ファイルを操作する](work-with-project-data-files.md)

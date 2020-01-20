@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928373"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613093"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -166,7 +166,9 @@ public void keepAlive(
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)を使用します。
 
-属性のコンストラクターは、CRON 式または `TimeSpan` を受け取ります。 `TimeSpan` は、関数アプリが App Service プランで実行している場合にのみ使うことができます。 次の例では CRON 式を示します。
+属性のコンストラクターは、CRON 式または `TimeSpan` を受け取ります。 `TimeSpan` は、関数アプリが App Service プランで実行している場合にのみ使うことができます。 `TimeSpan` は、従量課金プランまたはエラスティック Premium 関数ではサポートされていません。
+
+次の例では CRON 式を示します。
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -213,7 +215,7 @@ public void keepAlive(
 
 次の表は、*function.json* ファイルと `TimerTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -325,7 +327,7 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 
 App Service にデプロイされていない関数アプリの間でストレージ アカウントを共有している場合は、ホスト ID を各アプリに明示的に割り当てることが必要な場合があります。
 
-| Functions バージョン | Setting                                              |
+| Functions バージョン | 設定                                              |
 | ----------------- | ---------------------------------------------------- |
 | 2.x (以上)  | `AzureFunctionsWebHost__hostid` 環境変数 |
 | 1.x               | *host.json* での `id`                                  |
@@ -342,7 +344,7 @@ App Service にデプロイされていない関数アプリの間でストレ�
 
 タイマー トリガーが期待どおりに機能しない場合の対処方法については、[タイマー トリガーが設定された関数が発生しない問題の調査と報告](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [タイマー トリガーを使用するクイックスタートに進む](functions-create-scheduled-function.md)

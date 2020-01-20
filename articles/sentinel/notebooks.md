@@ -1,27 +1,21 @@
 ---
-title: Azure Sentinel のノートブックを使用したハンティング機能 | Microsoft Docs
+title: Azure Sentinel でセキュリティ ハンティングにノートブックを使用する
 description: この記事では、Azure Sentinel 検出機能でノートブックを使用する方法について説明します。
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/25/2019
-ms.author: rkarlin
-ms.openlocfilehash: 1b78f6f0773e114a4dda536213e2684d8fbd706d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483254"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563702"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
 
@@ -68,7 +62,7 @@ Azure Sentinel から直接ノートブックを実行することも、すべ�
  
 1. Azure portal から **[Azure Sentinel]**  >  **[Threat management]\(脅威の管理\)**  >  **[Notebooks]\(ノートブック\)** に移動します。ここで、Azure Sentinel によって提供されるノートブックを確認できます。 
 
-2. 個々のノートブックを選択し、それらの説明、必要なデータの種類、データ ソースを確認します。 例:
+2. 個々のノートブックを選択し、それらの説明、必要なデータの種類、データ ソースを確認します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![ノートブックの起動](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -92,7 +86,7 @@ Azure Sentinel から直接ノートブックを実行することも、すべ�
 
    ![ノートブックをインポートする](./media/notebooks/sentinel-create-project.png)
 
-4. 先ほど作成したプロジェクトを開き、**Notebooks** フォルダーを開いてノートブックを表示します。 例:
+4. 先ほど作成したプロジェクトを開き、**Notebooks** フォルダーを開いてノートブックを表示します。 次に例を示します。
 
    ![リポジトリをインポートする](./media/notebooks/sentinel-open-notebook1.png)
 
@@ -141,7 +135,7 @@ Azure Sentinel から直接ノートブックを実行することも、すべ�
 
 ご提案、機能の要求、投稿されたノートブック、バグ レポート、既存のノートブックへの改善や追加など、フィードバックがございましたら、ぜひお寄せください。 問題またはフォークを作成して、投稿をアップロードするには、[Azure Sentinel コミュニティの GitHub](https://github.com/Azure/Azure-Sentinel) にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel 内で Jupyter ノートブックを使い始める方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 

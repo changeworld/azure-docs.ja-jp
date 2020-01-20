@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric - Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する| Microsoft Docs
+title: アプリケーションに他の Azure リソースへのアクセス権を付与する
 description: この記事では、マネージド ID が有効になった Service Fabric アプリケーションに、Azure Active Directory ベースの認証をサポートする他の Azure リソースへのアクセス権を付与する方法について説明します。
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091194"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614795"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する (プレビュー)
 
@@ -109,6 +104,6 @@ Service Fabric のシステム割り当てのマネージド ID のサポート�
 
 詳細については、「[コンテナー - アクセス ポリシーの更新](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

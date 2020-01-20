@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh | Microsoft Docs
-description: Azure Service Fabric CLI- sfctl mesh のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI - sfctl mesh
+description: Azure Service Fabric のコマンド ライン インターフェイス、sfctl について説明します。 Service Fabric Mesh のアプリケーションを管理するためのコマンドの一覧が含まれます。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a97cf0a9dd9eccea2db60d73308338350102cb8c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 608efba614f17932b3bfb7852c16ffbeaca02457
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901117"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646077"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Azure Service Fabric Mesh アプリケーションを削除および管理します。
 
 ## <a name="subgroups"></a>サブグループ
-|サブグループ|説明|
+|サブグループ|[説明]|
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | アプリケーション リソースを取得および削除します。 |
 | [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | 特定のサービス レプリカの指定されたコード パッケージのコンテナーのログを取得します。 |
@@ -39,6 +30,6 @@ Azure Service Fabric Mesh アプリケーションを削除および管理しま
 | [volume](service-fabric-sfctl-mesh-volume.md) | ボリューム リソースを取得および削除します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

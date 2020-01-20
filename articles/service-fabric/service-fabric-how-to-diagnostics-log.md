@@ -1,25 +1,16 @@
 ---
-title: Azure またはスタンドアロン クラスターで .NET Service Fabric アプリからのログ イベントを生成する
+title: .NET アプリからのログ イベントを生成する
 description: Azure クラスターまたはスタンドアロン クラスターでホストされているご自身の .NET Service Fabric アプリケーションにログ記録を追加する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482609"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614368"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 
@@ -172,7 +163,7 @@ ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケー�
    >[!NOTE]
    >前の例では、静的 `Log.Logger` を使用 "*しない*" ことをお勧めします。 Service Fabric は、1 つのプロセス内で同じサービスの種類の複数のインスタンスをホストできます。 静的 `Log.Logger` を使用すると、プロパティ エンリッチャーの最後のライターが、実行されているすべてのインスタンスの値を示すことになります。 これが、_logger 変数がサービス クラスのプライベート メンバー変数である理由の 1 つです。 また、サービス間で使用できる共通コードで `_logger` を使用できるようにする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Service Fabric での監視アプリケーション](service-fabric-diagnostics-event-generation-app.md)の詳細を確認する。
 - [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) および [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) でのログ記録について確認する。

@@ -1,20 +1,20 @@
 ---
 title: Bing Search に接続する
-description: Bing Search REST API と Azure Logic Apps を使用してニュースを検索します
+description: Azure Logic Apps を使用して Bing Search の結果を検索するタスクとワークフローを自動化する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789956"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665889"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Search と Azure Logic Apps を使用してニュースを検索する
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Bing Search の結果を検索する
 
 この記事では、Bing Search コネクタを使用してロジック アプリの中から Bing Search によってニュース、ビデオ、その他の項目を検索する方法を示します。 このようにして、検索結果を処理するためのタスクとワークフローを自動化するロジック アプリを作成して、他のアクションがその項目を利用できるように設定できます。 
 
@@ -50,7 +50,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    この例では、Bing Search から一致するニュース記事を返すための条件を指定します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | Search Query | はい | <*search-words*> | 使用する検索キーワードを入力します。 |
    | Market | はい | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 |
@@ -59,7 +59,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
    | Offset | いいえ | <*skip-value*> | 結果が返される前にスキップする結果の数 |
    |||||
 
-   例:
+   次に例を示します。
 
    ![トリガーの設定](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -101,7 +101,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    この例では、トリガーの結果のサブセットを返すための条件を指定します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | Search Query | はい | <*search-expression*> | トリガー結果にクエリを実行する式を入力します。 動的コンテンツ リストのフィールドから選択することも、式ビルダーを使用して式を作成することもできます。 |
    | Market | はい | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 |
@@ -148,14 +148,14 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続情報の入力を求められたら、次の詳細を入力します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | 接続名 | はい | <*connection-name*> | 作成する接続の名前 |
    | API Version | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
    | API キー | はい | <*API-key*> | 前に取得した Bing Search API キー。 キーがない場合は、ご自身の [API キーを今すぐ](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)取得します。 |  
    |||||  
 
-   例:
+   次に例を示します。
 
    ![接続を作成する](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
@@ -163,8 +163,8 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/bingsearch/)を参照してください。
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/bingsearch/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

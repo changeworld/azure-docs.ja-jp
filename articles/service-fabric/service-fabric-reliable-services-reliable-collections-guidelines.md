@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の Reliable Collections のガイドラインと推奨事項 | Microsoft Docs
-description: Service Fabric Reliable Collections を使用するためのガイドラインと推奨事項
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Reliable Collection のガイドライン
+description: Azure Service Fabric アプリケーションで Service Fabric Reliable Collection を使用するためのガイドラインと推奨事項。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 12/10/2017
-ms.author: atsenthi
-ms.openlocfilehash: dc7d60cb846aa16f2facd41f5b6b7ce52bcc8f41
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599342"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645482"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -52,12 +41,12 @@ ms.locfileid: "68599342"
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
 * アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。  
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 * [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * データの管理
   * [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [通知](service-fabric-reliable-services-notifications.md)
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他

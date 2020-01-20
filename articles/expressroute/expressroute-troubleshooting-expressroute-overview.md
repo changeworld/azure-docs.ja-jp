@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033786"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551983"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 この記事は、ExpressRoute 接続の検証とトラブルシューティングに役立ちます。 ExpressRoute は、接続プロバイダーが一般的に提供するプライベート接続を介して、オンプレミス ネットワークを Microsoft クラウドへと拡張します。 ExpressRoute 接続には従来、次の 3 つの異なるネットワーク ゾーンが含まれます。

@@ -2,18 +2,18 @@
 title: Azure CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: クロス プラットフォーム Azure CLI を使用して Azure HDInsight クラスターを作成する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: hrasheed
-ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494796"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495123"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -27,13 +27,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI。 Azure CLI をインストールしていない場合、手順については [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関する記事をご覧ください。
+Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
-1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択するだけです。 それ以外の場合は、下のコマンドを入力します。
+1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login
@@ -44,7 +44,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
 
 2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) を参照してください。
 
-    |パラメーター | 説明 |
+    |パラメーター | [説明] |
     |---|---|
     |`--size`| クラスター内のワーカー ノードの数。 この記事では、`--size` に渡される値として変数 `clusterSizeInNodes` を使用します。 |
     |`--version`| HDInsight クラスターのバージョン。 この記事では、`--version` に渡される値として変数 `clusterVersion` を使用します。 関連項目:[サポートされる HDInsight のバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
@@ -60,7 +60,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
     export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
     export httpCredential='PASSWORD'
     export sshCredentials='PASSWORD'
-    
+
     export AZURE_STORAGE_CONTAINER=$clusterName
     export clusterSizeInNodes=1
     export clusterVersion=3.6
@@ -134,7 +134,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
 
     クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
@@ -161,11 +161,11 @@ az group delete \
     --name $resourceGroupName
 ```
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](./hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 

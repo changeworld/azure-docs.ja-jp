@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064179"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659527"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
@@ -28,7 +28,11 @@ ms.locfileid: "71064179"
 
 ## <a name="prerequisites"></a>前提条件
 
-アプリケーションのユーザー インターフェイスの要素にページ レイアウトを選択します。 JavaScript を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ レイアウト バージョンを定義する必要があります。
+### <a name="select-a-page-layout"></a>ページ レイアウトを選択する
+
+* アプリケーションのユーザー インターフェイスの要素に[ページ レイアウトを選択します](page-layout.md)。
+
+    JavaScript を使用する場合は、カスタム ポリシー内の*すべて*のコンテンツ定義に対して[ページ レイアウト バージョンを定義する](page-layout.md#replace-datauri-values)必要があります。
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution 要素を追加する
 
@@ -145,6 +149,6 @@ function addTermsOfUseLink() {
 
 コードでは、`termsOfUseUrl` を利用規約の同意のリンクで置き換えます。 ディレクトリでは、**termsOfUse** と呼ばれる新しいユーザー属性を作成し、**termsOfUse** をユーザー属性として組み込みます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。

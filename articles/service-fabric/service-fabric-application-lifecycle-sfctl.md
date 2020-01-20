@@ -1,19 +1,16 @@
 ---
-title: Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
+title: sfctl を使用して Azure Service Fabric アプリケーションを管理する
 description: Azure Service Fabric CLI を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。
-services: service-fabric
 author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621379"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610235"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
 
@@ -165,7 +162,7 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 
 また、進行中のアップグレードをキャンセルする必要がある場合は、`sfctl application upgrade-rollback` を使用してアップグレードをロールバックできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI の基本](service-fabric-cli.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)

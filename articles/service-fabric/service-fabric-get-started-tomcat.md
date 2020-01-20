@@ -1,24 +1,15 @@
 ---
-title: Linux 上で Apache Tomcat サーバー用の Azure Service Fabric コンテナーを作成する | Microsoft Docs
+title: Linux 上で Apache Tomcat のコンテナーを作成する
 description: Linux コンテナーを作成して、Azure Service Fabric で Apache Tomcat サーバー上で実行しているアプリケーションを公開します。 ご利用のアプリケーションと Apache Tomcat サーバーを使用して Docker イメージを構築し、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170598"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614419"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 上で Apache Tomcat を実行して Service Fabric コンテナーを作成する
 Apache Tomcat は、Java サーブレットと Java サーバー テクノロジの一般的なオープンソースの実装です。 この記事では、Apache Tomcat とシンプルな Web アプリケーションでコンテナーをビルドし、Linux を実行している Service Fabric クラスターにコンテナーをデプロイして、Web アプリケーションに接続する方法を示します。  
@@ -238,7 +229,7 @@ docker rmi tomcattest
 docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Linux コンテナーの追加機能の簡単な手順については、「[Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)」を参照してください。
 * Linux コンテナーの詳細な手順については、[Linux コンテナー アプリの作成に関するチュートリアル](service-fabric-tutorial-create-container-images.md)をご覧ください。
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。

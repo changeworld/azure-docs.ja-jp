@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool 機能の概要 - Azure
 description: Threat Modeling Tool で使用できるすべての機能について説明します
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728542"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552119"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
@@ -49,19 +41,19 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 | Label                               | 詳細      |
 | --------------------------------------- | ------------ |
-| **ファイル** | <ul><li>ファイルを開く、保存する、閉じる</li><li>OneDrive アカウントのサインイン/サインアウトを行う。</li><li>リンクを共有する (表示と編集)。</li><li>ファイル情報を表示する。</li><li>新しいテンプレートを既存のモデルに適用する。</li></ul> |
-| **Edit (編集)** | 操作の取り消しとやり直し、コピー、貼り付け、削除を行う。 |
-| **View (表示)** | <ul><li>**分析**ビューと**デザイン** ビューを切り替える。</li><li>閉じているウィンドウ (ステンシル、要素プロパティ、メッセージなど) を開く。</li><li>レイアウトを既定の設定にリセットする。</li></ul> |
+| **[最近使ったファイル]** | <ul><li>ファイルを開く、保存する、閉じる</li><li>OneDrive アカウントのサインイン/サインアウトを行う。</li><li>リンクを共有する (表示と編集)。</li><li>ファイル情報を表示する。</li><li>新しいテンプレートを既存のモデルに適用する。</li></ul> |
+| **[編集]** | 操作の取り消しとやり直し、コピー、貼り付け、削除を行う。 |
+| **表示** | <ul><li>**分析**ビューと**デザイン** ビューを切り替える。</li><li>閉じているウィンドウ (ステンシル、要素プロパティ、メッセージなど) を開く。</li><li>レイアウトを既定の設定にリセットする。</li></ul> |
 | **Diagram (ダイアグラム)** | ダイアグラムの追加と削除、ダイアグラムのタブ間の移動を行う。 |
 | **レポート** | 他のユーザーと共有できる HTML レポートを作成する。 |
 | **Help (ヘルプ)** | ツールの使い方を説明したガイドを参照する。 |
 
 シンボルは、上部のメニューのショートカットです。
 
-| シンボル                               | 詳細      |
+| Symbol                               | 詳細      |
 | --------------------------------------- | ------------ |
-| **Open (開く)** | 新しいファイルを開く。 |
-| **[[Save]]** | 現在のファイルを保存する。 |
+| **[ファイル]** | 新しいファイルを開く。 |
+| **および** | 現在のファイルを保存する。 |
 | **Design (デザイン)** | モデルを作成できる**デザイン** ビューを開く。 |
 | **分析** | 生成された脅威とそのプロパティを表示する。 |
 | **ダイアグラムの追加** | 新しいダイアグラムを追加する (Excel の新しいタブと似ています)。 |
@@ -89,7 +81,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 | ステンシル名                               | 詳細      |
 | --------------------------------------- | ------------ |
-| **プロセス** | アプリケーション、ブラウザー プラグイン、スレッド、仮想マシン |
+| **[処理]** | アプリケーション、ブラウザー プラグイン、スレッド、仮想マシン |
 | **外部入力/終端** | 認証プロバイダー、ブラウザー、ユーザー、Web アプリケーション |
 | **データ ストア** | キャッシュ、ストレージ、構成ファイル、データベース、レジストリ |
 | **データ フロー** | バイナリ、ALPC、HTTP、HTTPS/TLS/SSL、IOCTL、IPSec、名前付きパイプ、RPC/DCOM、SMB、UDP |
@@ -150,17 +142,17 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 - **ドラッグ アンド ドロップ**: 目的のデータ フローをグリッドにドラッグし、両端を適切な要素に接続します。
 - **Shift キーを押しながらクリック**: 1 つ目の要素 (データの送信) をクリックし、Shift キーを押しながら 2 つ目の要素 (データの受信) をクリックします。 右クリックし、 **[接続]** を選択します。 双方向データ フローを使用している場合、順番は重要ではありません。
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
  ステンシル上で変更できるプロパティを表示するには、ステンシルを選択します。それに応じて情報が設定されます。 以下の例は、 **[データベース]** ステンシルをダイアグラムにドラッグする前後を示しています。
 
-#### <a name="before"></a>実装する前
+#### <a name="before"></a>[指定日付より前]
 
-![実装する前](./media/threat-modeling-tool-feature-overview/properties1.png)
+![[指定日付より前]](./media/threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>実装した後
+#### <a name="after"></a>After
 
-![実装した後](./media/threat-modeling-tool-feature-overview/properties2.png)
+![After](./media/threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>メッセージ
 
@@ -206,7 +198,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ![レポート](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ご質問、ご意見、懸念事項は tmtextsupport@microsoft.com に送信してください。 **[Threat Modeling Tool をダウンロード](https://aka.ms/threatmodelingtool)** すると、すぐに使い始めることができます。
 - コミュニティにテンプレートを投稿するには、[GitHub](https://github.com/Microsoft/threat-modeling-templates) ページにアクセスしてください。

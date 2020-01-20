@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics CI/CD npm パッケージを使用する
 description: この記事では、Azure Stream Analytics CI/CD npm パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: df9afaaeeb7e41c111fe6bd053047095a9cb9349
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ed1f6ebda81a7f036b5e09d15ef4a27323aa9b0d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173342"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660870"
 ---
 # <a name="use-the-stream-analytics-cicd-npm-package"></a>Stream Analytics CI/CD npm パッケージを使用する
 この記事では、Azure Stream Analytics CI/CD npm パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
@@ -22,7 +21,9 @@ ms.locfileid: "70173342"
 
 **asa-streamanalytics-cicd** npm パッケージを使用して、Azure Stream Analytics ジョブのための継続的インテグレーションと継続的なデプロイを有効にすることができます。 npm パッケージは、[Stream Analytics の Visual Studio Code プロジェクト](quick-create-vs-code.md)の Azure Resource Manager テンプレートを生成するためのツールを提供します。 Visual Studio Code をインストールしなくても、Windows、macOS、Linux で使用できます。
 
-[パッケージをダウンロード](https://www.npmjs.com/package/azure-streamanalytics-cicd)したら、次のコマンドを使用して Azure Resource Manager のテンプレートを出力します。 **ScriptPath** 引数は、プロジェクト内の **asaql** ファイルへの絶対パスです。 asaproj.json ファイルと JobConfig.json ファイルがスクリプト ファイルと同じフォルダー内にあることを確認します。 **outputPath** が指定されていない場合、テンプレートは、プロジェクトの **bin** フォルダーの下の **Deploy** フォルダーに配置されます。
+[パッケージを直接ダウンロードする](https://www.npmjs.com/package/azure-streamanalytics-cicd)ことや、[ コマンドを使用して](https://docs.npmjs.com/downloading-and-installing-packages-globally)グローバルに`npm install -g azure-streamanalytics-cicd`インストールすることができます。 これは推奨される方法です。**Azure DevOps Pipelines** でビルド パイプラインの PowerShell または Azure CLI スクリプト タスクにも使用できます。
+
+パッケージをインストールしたら、次のコマンドを使用して Azure Resource Manager のテンプレートを出力します。 **ScriptPath** 引数は、プロジェクト内の **asaql** ファイルへの絶対パスです。 asaproj.json ファイルと JobConfig.json ファイルがスクリプト ファイルと同じフォルダー内にあることを確認します。 **outputPath** が指定されていない場合、テンプレートは、プロジェクトの **bin** フォルダーの下の **Deploy** フォルダーに配置されます。
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -55,8 +56,8 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio Co
 [Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
 
 出力シンクとしての Azure Data Lake Store Gen1 にマネージド ID を使用するには、Azure にデプロイする前に、PowerShell を使用してサービス プリンシパルへのアクセス許可を提供する必要があります。 詳細については、[Resource Manager テンプレートによってマネージド ID を使用した ADLS Gen1 のデプロイを行う](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)方法を確認してください。
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート:Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)](quick-create-vs-code.md)
-* [Test Stream Analytics queries locally with Visual Studio Code (Preview)](vscode-local-run.md) (Visual Studio Code で Stream Analytics クエリをローカルでテストする (プレビュー))
-* [Explore Azure Stream Analytics with Visual Studio Code (Preview)](vscode-explore-jobs.md) (Visual Studio Code で Azure Stream Analytics の詳細を確認する (プレビュー))
+* [Test Stream Analytics queries locally with Visual Studio Code (Preview)](visual-studio-code-local-run.md) (Visual Studio Code で Stream Analytics クエリをローカルでテストする (プレビュー))
+* [Explore Azure Stream Analytics with Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md) (Visual Studio Code で Azure Stream Analytics の詳細を確認する (プレビュー))

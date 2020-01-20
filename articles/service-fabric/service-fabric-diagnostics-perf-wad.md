@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric - Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視 | Microsoft Docs
+title: Windows Azure Diagnostics を使用したパフォーマンスの監視
 description: Windows Azure Diagnostics を使用して、Azure Service Fabric クラスターのパフォーマンス カウンターを収集します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155158"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609912"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視
 
@@ -200,7 +191,7 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 
 1. アップグレードのロールアウトが完了したら (初めてのデプロイかどうか、およびリソース グループのサイズに応じて、15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。
 * [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/windows/extensions-diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。
 * [WadCfg ビルダー](https://azure.github.io/azure-diagnostics-tools/config-builder/)にアクセスして最初からテンプレートを構築し、構文が正しいことを確認します (https://azure.github.io/azure-diagnostics-tools/config-builder/) で最初からテンプレートを構築し、構文が正しいことを確認します)。

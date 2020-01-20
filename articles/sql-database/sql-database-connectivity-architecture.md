@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707981"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647681"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -45,7 +45,7 @@ Azure SQL Database は、SQL Database サーバーの接続ポリシー設定に
 
 - **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシ化されるため、待機時間が長くなり、スループットが低下します。 接続でこのモードを使用するには、クライアントのポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのインバウンドおよびアウトバウンド通信を許可する必要があります。
 
-- **既定:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 Azure の内部からの (たとえば、Azure 仮想マシンからの) すべてのクライアント接続の既定のポリシーは `Redirect` であり、外部からのすべてのクライアント接続 (たとえば、ローカル ワークステーションからの接続) の既定のポリシーは `Proxy` です。
+- **既定値:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 Azure の内部からの (たとえば、Azure 仮想マシンからの) すべてのクライアント接続の既定のポリシーは `Redirect` であり、外部からのすべてのクライアント接続 (たとえば、ローカル ワークステーションからの接続) の既定のポリシーは `Proxy` です。
 
  待機時間を最小化してスループットを最大化するために、`Proxy` 接続ポリシーよりも `Redirect` 接続ポリシーを強くお勧めします。ただし、前述のように、ネットワーク トラフィックを許可するための追加要件を満たす必要があります。 クライアントが Azure 仮想マシンの場合は、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用してこれを実現できます。 クライアントがオンプレミスのワークステーションから接続している場合は、ネットワーク管理者と協力して、企業のファイアウォールを通過するネットワーク トラフィックを許可することが必要になる必要があります。
 
@@ -188,7 +188,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database サーバーの Azure SQL Database 接続ポリシーの変更方法については、「[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)」を参照してください。
 - ADO.NET 4.5 以降のバージョンを使用するクライアントの Azure SQL Database 接続動作については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。

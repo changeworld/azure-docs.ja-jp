@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Cloud Services の構成と管理の問題についてよくあるご質問 | Microsoft Docs
+title: 構成と管理に関する問題についてよくあるご質問
+titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161758"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660615"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -230,7 +231,7 @@ Microsoft では、所有者、またはその指名を受けた担当者から�
 1. ダウンロードした RDP ファイルを右クリックして、 **[編集]** を選びます。
 2. ユーザー名の前にプレフィックスとして "&#92;" を追加します。 たとえば、**username** の代わりに **.\username** を使います。
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>X 個のインスタンスを超えて拡張できない
 Azure サブスクリプションには、使用できるコアの数に制限があります。 使用可能なすべてのコアを既に使用している場合、スケーリングは機能しません。 たとえば、コア数が 100 に制限されている場合、これは、クラウド サービスでは A1 サイズの仮想マシン インスタンスを 100 個、または A2 サイズの仮想マシン インスタンスを 50 個使用できることを意味します。
@@ -276,7 +277,7 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 [一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)に関する記事にある IIS スタートアップ スクリプトを使用します。
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>クラウド サービスのクォータ制限とは何ですか。
-[サービス固有の制限](../azure-subscription-service-limits.md#subscription-limits)のページをご覧ください。
+[サービス固有の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)のページをご覧ください。
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。
 これは想定される動作であり、アプリケーションに問題が発生することはないはずです。 Azure PaaS VM の %approot% ドライブでジャーナルがオンになっているため、実質的に、ファイルが通常占有する領域の 2 倍の容量が消費されます。 ただし、この件で問題が起きないようにするには、いくつかの事柄に注意する必要があります。

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878962"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638937"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 には、POSIX アクセス制御と Azure Active D
 
 Data Lake Storage Gen1 でビッグデータを取り扱うときは、ほとんどの場合、サービス プリンシパルを使用して、Azure HDInsight などのサービスによるデータの操作を許可します。 ただし、個々のユーザーがデータにアクセスする必要がある場合もあります。 このようなケースでは、個々のユーザーをフォルダーやファイルに割り当てる代わりに、Azure Active Directory の[セキュリティ グループ](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)を使用する必要があります。
 
-一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-subscription-service-limits.md#data-lake-store-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
+一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
 
 ### <a name="security-for-groups"></a>グループのセキュリティ
 
@@ -88,7 +88,7 @@ Hadoop から Data Lake Storage Gen1 に書き込むときのパフォーマン�
 
 Data Lake Storage Gen1 などのクラウド サービスでシステムを構築するときは、可用性の要件と、サービスで中断が発生したときの対応について考慮する必要があります。 ある問題は特定のインスタンスに限定またはリージョン全域にわたる可能性があるため、両方について計画しておくことが重要です。 ワークロードの**目標復旧時間**と**目標復旧ポイント**の SLA によっては、高可用性とディザスター リカバリーのために多少は積極的な戦略を選択することをおすすめします。
 
-### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
+### <a name="high-availability-and-disaster-recovery"></a>高可用性とディザスター リカバリー
 
 高可用性 (HA) とディザスター リカバリー (DR) は結合して取り扱うこともありますが、それぞれの戦略は特にデータに関してはわずかに異なります。 Data Lake Storage Gen1 は局所的なハードウェア障害に備えて、既に内部的に 3 倍のレプリケーションを処理しています。 ただし、複数のリージョンにわたるレプリケーションは組み込まれていないため、自身で管理する必要があります。 HA の計画をビルドするとき、サービスの中断が発生した場合に備えて、ワークロードはローカルまたは新しいリージョンに別途レプリケートしたインスタンスに切り替えることで、できるだけ早く最新のデータにアクセスする必要があります。
 
@@ -179,7 +179,7 @@ IoT のワークロードでは、データ ストアにランディングでき
 
 Hive や従来の SQL データベースなどのデータベースで直接処理される一般的なバッチ データの場合、出力は既に Hive テーブルまたは外部データベースの別のフォルダーに入るように設定されているため、 **/in** フォルダーや **/out** フォルダーは不要です。 たとえば、お客様からの毎日の抽出データはそれぞれのフォルダーにランディングし、Azure Data Factory、Apache Oozie、Apache Airflow などによるオーケストレーションは Hive や Spark の毎日のジョブをトリガーし、データを処理して Hive のテーブルに書き込みます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Azure Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)

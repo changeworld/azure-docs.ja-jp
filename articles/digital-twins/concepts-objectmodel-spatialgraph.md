@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010086"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562597"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -78,7 +78,7 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 名前 | 置換後の文字列 |
+| Name | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | お客様の Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |
@@ -97,7 +97,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - デバイスの接続と、Digital Twins にテレメトリ メッセージを送信する方法については、[Azure Digital Twins のデバイスの接続性とテレメトリの受信](concepts-device-ingress.md)に関するページを参照してください。
 

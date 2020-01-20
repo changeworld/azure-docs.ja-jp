@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682250"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640943"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -47,7 +47,7 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 HDInsight クラスターのデプロイ後に、追加の Azure ストレージ アカウントを接続したり、他の Data Lake Storage にアクセスしたりできます。 すべてのストレージ アカウントがクラスターと同じ場所に存在する必要があります。 Data Lake Storage は別の場所にあっても構いませんが、その場合、データの読み取り/書き込みの待機時間が発生する可能性があります。
 
-Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Storage には実質的に制限はありません。
+Azure Storage Gen1 には[容量制限](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Storage には実質的に制限はありません。
 
 クラスターは、さまざまなストレージ アカウントの組み合わせにアクセスできます。 一般的な例を次に示します。
 
@@ -92,9 +92,19 @@ Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
-ターゲット クラスターの VM サイズ、スケール、種類を決定したら、サブスクリプションの現在のクォータの容量制限を確認します。 クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりといったことができなくなる可能性があります。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいてコア数が 30 に制限されます。 クォータの増加を要求する必要がある場合は、次の手順を行います。
+ターゲット クラスターの VM サイズ、スケール、種類を決定したら、サブスクリプションの現在のクォータの容量制限を確認します。 クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりといったことができなくなる可能性があります。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいてコア数が 30 に制限されます。 
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+使用可能なコアを確認するには、次の手順を実行します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインする
+2. HDInsight クラスターの **[概要]** ページに移動します。 
+3. 左側のメニューで、 **[クォータ制限]** をクリックします。
+
+   このページには、使用中のコア数、使用可能なコア数、およびコアの合計が表示されます。
+
+クォータの増加を要求する必要がある場合は、次の手順を行います。
+
+1. [Azure portal](https://portal.azure.com/) にサインインする
 1. ページの左下にある **[ヘルプとサポート]** を選択します。
 1. **[新しいサポート リクエスト]** を選択します。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
@@ -115,9 +125,9 @@ Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#
 
 [サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
 
-ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
+ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Hadoop、Spark、Kafka などを使用して HDInsight でクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Apache Hadoop、Spark、Kafka、Interactive Hive、HBase、ML Services、または Storm を使用して HDInsight でクラスターをセットアップして構成する方法について説明します。
 * [クラスター パフォーマンスを監視する](hdinsight-key-scenarios-to-monitor.md): クラスターの容量に影響を及ぼす可能性のある HDInsight クラスターを監視するための主なシナリオについて説明します。

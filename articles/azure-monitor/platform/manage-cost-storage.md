@@ -3,7 +3,7 @@ title: Azure Monitor ログの使用量とコストを管理する | Microsoft D
 description: Azure Monitor で Log Analytics ワークスペースの料金プランを変更し、データ ボリュームとアイテム保持ポリシーを管理する方法について説明します。
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: magoedte
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f60b0b9294fa3f11889613a7d63f21e87fbea201
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894115"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658021"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
@@ -90,7 +90,7 @@ Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azur
 
 2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これらのデータ保持は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 
 
-価格レベルの制限の詳細は、[ここ](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)で利用できます。
+価格レベルの制限の詳細は、[ここ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)で利用できます。
 
 > [!NOTE]
 > OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の*ノード単位*の価格レベルを選択します。
@@ -487,10 +487,10 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 ## <a name="limits-summary"></a>制限の概要
 
-追加の Log Analytics の制限がいくつかあり、その一部は Log Analytics 価格レベルに依存します。 [ここ](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)に記載されています。
+追加の Log Analytics の制限がいくつかあり、その一部は Log Analytics 価格レベルに依存します。 [ここ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)に記載されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 検索言語の使用方法については、[Azure Monitor ログでのログ検索](../log-query/log-query-overview.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。
 - [新しいログ アラートの作成](alerts-metric.md)に関するページで説明されている手順を使用して、検索条件が満たされた場合に通知されるようにします。

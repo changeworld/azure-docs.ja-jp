@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool のリリース - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool のリリース 2018 年 9 月 12 日 - Azure
 description: Threat Modeling Tool のリリース ノートです
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928107"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548804"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA リリース 7.1.50911.2 - 9/12/2018
 
-Microsoft Threat Modeling Tool がサポートされる一般公開 (GA) リリースとしてダウンロードできるようになったことをお知らせします。 このリリースには、プライバシーとセキュリティに関する重要な更新だけでなく、バグの修正、機能の更新、および安定性の向上が含まれています。 2017 プレビュー バージョンの既存のユーザーに対しては、クライアントを開くときに、ClickOnce テクノロジを使用して最新リリースに更新することを求めるメッセージが表示されます。 ツールの新しいユーザーの場合は、[こちらをクリックしてクライアントをダウンロードする](https://aka.ms/threatmodelingtool)ことができます。
+Microsoft Threat Modeling Tool がサポートされる一般公開 (GA) リリースとしてダウンロードできるようになったことをお知らせします。 このリリースには、プライバシーとセキュリティに関する重要な更新だけでなく、バグの修正、機能の更新、および安定性の向上が含まれています。 2017 プレビュー バージョンの既存のユーザーに対しては、クライアントを開くときに、ClickOnce テクノロジを使用して最新リリースに更新することを求めるメッセージが表示されます。 ツールの新しいユーザーの場合、[クライアントをダウンロード](https://aka.ms/threatmodelingtool)することができます。
 
 このリリースをもって、2017 プレビューのサポートは終了するので、プレビューのすべてのユーザーに GA リリースに更新することをお勧めします。 2018 年 10 月 15 日以降、Threat Modeling Tool に対しては必要最低限の ClickOnce バージョンが設定され、すべてのプレビュー クライアントでアップグレードが必要になります。
 
@@ -62,7 +54,7 @@ Windows が読みやすいように既定で拡大するよう設定されてい
 
 ![高解像度画面に関する既知の問題](./media/threat-modeling-tool-releases-71509112/tmt_screen_resolution-300x153.png)
 
-#### <a name="workaround"></a>対処法
+#### <a name="workaround"></a>回避策
 
 ユーザーは、軽減策のテキストをクリックし、Windows の標準ズーム コントロール (Crtl キーを押しながらマウス ホイールを前方に回す) を使用して、そのセクションの表示倍率を上げることができます。
 
@@ -74,7 +66,7 @@ Windows が読みやすいように既定で拡大するよう設定されてい
 
 ![削除された OneDrive の機能](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
-#### <a name="workaround"></a>対処法
+#### <a name="workaround"></a>回避策
 
 OneDrive のユーザーには、Microsoft の [OneDrive for Windows](https://onedrive.live.com/about/en-us/download/) クライアントを使用し、標準の [Open a model]\(モデルを開く\) ダイアログで OneDrive に格納されているファイルにアクセスすることをお勧めします。
 
@@ -88,7 +80,7 @@ OneDrive のユーザーには、Microsoft の [OneDrive for Windows](https://on
 
 ## <a name="system-requirements"></a>システム要件
 
-- サポートされているオペレーティング システム
+- サポートされるオペレーティング システム
   - Microsoft Windows 10
 - 必要な .NET のバージョン
   - .NET 3.5.2
@@ -99,6 +91,6 @@ OneDrive のユーザーには、Microsoft の [OneDrive for Windows](https://on
 
 - Threat Modeling Tool のドキュメントは [docs.microsoft.com](threat-modeling-tool.md) にあり、[ツールの使用について](threat-modeling-tool-getting-started.md)の情報が含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最新バージョンの [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool) をダウンロードしてください。

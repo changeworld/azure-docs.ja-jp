@@ -1,25 +1,18 @@
 ---
-title: Windows Server および Linux での Azure Service Fabric クラスターの作成 | Microsoft Docs
+title: Windows Server および Linux 上でクラスターを作成する
 description: Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390373"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614674"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -68,19 +61,19 @@ Azure Service Fabric クラスターは、ユーザーが所有するリソー�
 ### <a name="node-to-node-security"></a>ノード間のセキュリティ
 ノード間のセキュリティにより、クラスター内の VM やコンピューター間の通信が保護されます。 このセキュリティ シナリオでは、クラスターへの参加が許可されているコンピューターのみが、クラスター内でホストされているアプリケーションとサービスに参加できます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。  クラスター証明書は、クラスター トラフィックをセキュリティで保護するため、およびクラスターとサーバーの認証を提供するために必要です。  テスト クラスターでは自己署名証明書を使用できますが、運用環境クラスターをセキュリティで保護するには、信頼された証明機関からの証明書を使用する必要があります。
 
-詳細については、[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)に関するページを参照してください。
+詳細については、「[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)」を参照してください。
 
 ### <a name="client-to-node-security"></a>クライアントとノードの間のセキュリティ
 クライアントとノードの間のセキュリティでは、クライアントの認証を行い、クラスター内のクライアントと個々のノードの間の通信をセキュリティで保護できます。 この種類のセキュリティでは、権限のあるユーザーのみが、クラスターと、クラスターにデプロイされたアプリケーションにアクセスできます。 クライアントは、X.509 証明書のセキュリティ資格情報を通じて一意に識別されます。 クラスターで管理クライアントまたはユーザー クライアントを認証するために、必要に応じて任意の数のクライアント証明書を使用できます。
 
 クラスターでクライアントを認証するために、クライアント証明書に加えて、Azure Active Directory も構成できます。
 
-詳細については、[クライアントとノード間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)に関するページを参照してください。
+詳細については、「[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)」を参照してください。
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 ロールベースのアクセス制御 (RBAC) により、Azure リソースに対してきめ細かいアクセス制御を割り当てることができます。  別のアクセス規則を、サブスクリプション、リソース グループ、およびリソースに割り当てることができます。  RBAC 規則は、下位のレベルでオーバーライドされない限り、リソースの階層に沿って継承されます。  指定のユーザーとグループがクラスターを変更できるようにするために、RBAC 規則を使用して AAD にユーザーやユーザー グループを割り当てることができます。  詳細については、[Azure RBAC の概要](/azure/role-based-access-control/overview)に関するページを参照してください。
 
-Service Fabric は、ユーザーの各グループに対して特定のクラスター操作へのアクセスを制限するアクセス制御もサポートしています。 その結果、クラスターのセキュリティが強化されます。 クラスターに接続するクライアント用に、2 種類のアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。  
+Service Fabric では、ユーザーの各グループに対して特定のクラスター操作へのアクセスを制限するアクセス制御もサポートしています。 その結果、クラスターのセキュリティが強化されます。 クラスターに接続するクライアント用に、2 種類のアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。  
 
 詳細については、[Service Fabric のロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) に関するページを参照してください。
 
@@ -89,7 +82,7 @@ Service Fabric は、ユーザーの各グループに対して特定のクラ�
 
 詳細については、「[セキュリティ グループ](/azure/virtual-network/security-overview)」を参照してください。
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
 アプリケーションの要求は、時間の経過と共に変化します。 増加したアプリケーション ワークロードやネットワーク トラフィックに対処するためにクラスター リソースを増やしたり、需要が低下したときにクラスター リソースを減らしたりする必要が生じる場合があります。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。 クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
@@ -100,7 +93,7 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 
 詳細については、[クラスターのアップグレード](service-fabric-cluster-upgrade.md)に関するページを参照してください。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 クラスターは、次のオペレーティング システムが実行されている仮想マシン上に作成できます。
 
 | オペレーティング システム | サポートされる最も古い Service Fabric のバージョン |
@@ -108,7 +101,7 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 | Windows Server 2012 R2 | すべてのバージョン |
 | Windows Server 2016 | すべてのバージョン |
 | Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4. |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
@@ -120,7 +113,7 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 >
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure クラスターの[セキュリティ保護](service-fabric-cluster-security.md)、[スケーリング](service-fabric-cluster-scaling.md)、および[アップグレード](service-fabric-cluster-upgrade.md)について詳細を確認します。
 
 [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

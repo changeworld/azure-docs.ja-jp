@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターで ReliableDictionaryActorStateProvider の設定を変更する | Microsoft Docs
+title: ReliableDictionaryActorStateProvider の設定を変更する
 description: Azure Service Fabric の ReliableDictionaryActorStateProvider という型のステートフル アクターの構成について説明します。
-services: Service-Fabric
-documentationcenter: .net
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727133"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609742"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
@@ -39,7 +30,7 @@ ReliableDictionaryActorStateProvider の構成に影響を与えるグローバ�
 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | Default value | 解説 |
+| Name | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -66,7 +57,7 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用されて、ク�
 SharedLogSizeInMB では、すべてのノードで既定の共有ログに前もって割り当てるディスク領域の量を指定します。  SharedLogSizeInMB を指定するために SharedLogId と SharedLogPath を指定する必要はありません。
 
 ## <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
-レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。
+レプリケーション時に使用される通信チャネルをセキュリティで保護するには、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 
 > [!IMPORTANT]
@@ -84,17 +75,17 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | Default value | 解説 |
+| Name | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、「 [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md) 」を参照してください。 |
-| MaxReplicationMessageSize |Bytes |50 MB |1 つのメッセージで送信できるレプリケーション データの最大サイズです。 |
+| MaxReplicationMessageSize |バイト |50 MB |1 つのメッセージで送信できるレプリケーション データの最大サイズです。 |
 | MaxPrimaryReplicationQueueSize |操作数 |8192 |プライマリ キューの操作の最大数です。 操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 | MaxSecondaryReplicationQueueSize |操作数 |16384 |セカンダリ キューの操作の最大数です。 操作は、永続性によってその状態の高可用性が実現されてから解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 | CheckpointThresholdInMB |MB |200 |その後で状態がチェックポイントされるログ ファイル領域の量。 |
 | MaxRecordSizeInKB |KB |1024 |レプリケーターがログに書き込むことができるレコードの最大サイズです。 この値は 4 の倍数で 16 より大きい必要があります。 |
 | OptimizeLogForLowerDiskUsage |Boolean |true |true の場合、NTFS スパース ファイルを使用してレプリカの専用ログ ファイルが作成されるように、ログが構成されます。 これにより、ファイルで使用される実際のディスク領域が削減されます。 false の場合、最適な書き込みパフォーマンスを提供する固定の割り当てがファイルに作成されます。 |
-| SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の guid を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
+| SharedLogId |guid |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の guid を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 
 ## <a name="sample-configuration-file"></a>サンプル構成ファイル

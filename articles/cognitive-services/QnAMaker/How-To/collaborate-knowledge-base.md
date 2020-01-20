@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/03/2020
 ms.author: diberry
-ms.openlocfilehash: d9c91d54fb357807682cd57f46b04454e4e2cfec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876662"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660751"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用
 
-QnA Maker では、複数のユーザーがサポート技術情報を共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)で提供されています。 
+QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)で提供されています。
 
 次の手順を実行して、QnA Maker のサービスを他者と共有します。
 
@@ -47,7 +47,7 @@ QnA Maker サービスを共有する相手が [QnA Maker ポータル](https://
 
 1 つの QnA Maker サービスにある特定のナレッジ ベースの共有はできないことを忘れないでください。 より詳細なアクセス制御が必要な場合は、さまざまな QnA Maker サービスにわたってナレッジ ベースを配布することを検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースのテスト](./test-knowledge-base.md)

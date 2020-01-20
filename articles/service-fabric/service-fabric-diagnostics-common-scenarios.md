@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric で一般的なシナリオを診断する | Microsoft Docs
-description: Azure Service Fabric で一般的なシナリオのトラブルシューティングを行う方法について説明します
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 診断の一般的なシナリオ
+description: Azure Service Fabric アプリケーション内の一般的な監視と診断のシナリオのトラブルシューティングについて説明します。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394207"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645788"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -56,7 +47,7 @@ ms.locfileid: "60394207"
 1. 同じ Application Insights リソースで、例外ではなく "要求" でフィルターを行って、実行されたすべての要求を表示できます。
 2. Service Fabric Application Insights SDK を使用している場合、互いに接続されたサービスの視覚表現と、成功/失敗した要求の数を確認できます。 左側の [アプリケーション マップ] をクリックします。
 
-    ![AI のアプリ マップ ブレード](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI のアプリ マップ](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI の [アプリケーション マップ] ブレード](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI の [アプリケーション マップ]](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     アプリケーション マップの詳細については、[アプリケーション マップのドキュメント](../azure-monitor/app/app-map.md)をご覧ください。
 
@@ -141,7 +132,7 @@ ms.locfileid: "60394207"
 
 [Reliable Services](service-fabric-reliable-serviceremoting-diagnostics.md) と [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) に関するパフォーマンス カウンターの完全な一覧を確認するには、それぞれのリンクをご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

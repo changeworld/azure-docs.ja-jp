@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793119"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666739"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "74793119"
 
 これらのアクションは、配列内のデータを操作するのに役立ちます。
 
-| Action | 説明 |
+| アクション | [説明] |
 |--------|-------------|
 | [**CSV テーブルの作成**](#create-csv-table-action) | 配列からコンマ区切り値 (CSV) テーブルを作成します。 |
 | [**HTML テーブルの作成**](#create-html-table-action) | 配列から HTML テーブルを作成します。 |
@@ -42,10 +42,10 @@ ms.locfileid: "74793119"
 
 これらのアクションは、JavaScript Object Notation (JSON) 形式のデータを操作するのに役立ちます。
 
-| Action | 説明 |
+| アクション | [説明] |
 |--------|-------------|
 | [**作成**](#compose-action) | さまざまなデータ型を含むことができる複数の入力からメッセージまたは文字列を作成します。 その後は、同じ入力を繰り返し入力するのではなく、この文字列を 1 つの入力として使用できます。 たとえば、さまざまな入力から 1 つの JSON メッセージを作成できます。 |
-| [**JSON の解析**](#parse-json-action) | ロジック アプリでプロパティを簡単に使用できるように、JSON コンテンツのプロパティに対するわかりやすいデータ トークンを作成します。 |
+| [**Parse JSON**](#parse-json-action) | ロジック アプリでプロパティを簡単に使用できるように、JSON コンテンツのプロパティに対するわかりやすいデータ トークンを作成します。 |
 |||
 
 さらに複雑な JSON 変換を作成する場合は、「[Liquid テンプレートを使用して高度な JSON 変換を実行する](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)」をご覧ください。
@@ -200,7 +200,7 @@ Oranges,2
 
    `item()?['<array-property-name>']`
 
-   例:
+   次に例を示します。
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ Oranges,2
    }
    ```
 
-   例:
+   次に例を示します。
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ Oranges,2
 
    `item()?['<array-property-name>']`
 
-   例:
+   次に例を示します。
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ Oranges,2
    }
    ```
 
-   例:
+   次に例を示します。
 
    ```json
    "Create_HTML_table": {
@@ -443,6 +443,9 @@ Oranges,2
 > 条件で使用するフィルター テキストでは、大文字と小文字が区別されます。 また、このアクションでは、配列内の項目の形式またはコンポーネントを変更することはできません。 
 > 
 > **配列のフィルター処理**アクションからの配列出力をアクションで使用する場合、入力として配列を受け入れるアクションを使用するか、または出力配列を別の互換性のある形式に変換する必要があります。
+> 
+> HTTP エンドポイントを呼び出し、JSON 応答を受け取る場合は、 **[JSON の解析]** アクションを使用して JSON 応答を処理します。 
+> そうしない場合、 **[配列のフィルター処理]** アクションを使うと、JSON ペイロードの構造ではなく、応答本文のみを読み取ることができます。
 
 コード ビュー エディターを使用する場合は、この記事の例の**配列のフィルター処理**と**変数を初期化する**のアクション定義を、独自のロジック アプリの基になる次のワークフロー定義にコピーします。[データ操作コードの例 - 配列のフィルター処理](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
@@ -704,6 +707,6 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    !["選択" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/select-email-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps のコネクタ](../connectors/apis-list.md)について確認します。

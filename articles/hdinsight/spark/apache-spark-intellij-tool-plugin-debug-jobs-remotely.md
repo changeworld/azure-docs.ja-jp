@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: b2764e54d0938cbbdc00b19cf3ea1139d3d29828
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435268"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749768"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -75,12 +75,12 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     ```
     # For headnode0
-    192.xxx.xx.xx hn0-nitinp
-    192.xxx.xx.xx hn0-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
+    192.xxx.xx.xx nitinp
+    192.xxx.xx.xx nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
     
     # For headnode1
-    192.xxx.xx.xx hn1-nitinp
-    192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
+    192.xxx.xx.xx nitinp
+    192.xxx.xx.xx nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
     ```
 
 1. HDInsight クラスターで使用されている Azure 仮想ネットワークに接続したコンピューターから、ヘッド ノードに対して IP アドレスとホスト名を使用して ping を実行できることを確認します。
@@ -141,8 +141,8 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
     クラスター ヘッド ノードの IP アドレスとホスト名をデスクトップ上の hosts ファイルに追加済みであるため、以下のように `scp` コマンドを使用できます。
 
     ```bash
-    scp sshuser@hn0-nitinp:/etc/hadoop/conf/core-site.xml .
-    scp sshuser@hn0-nitinp:/etc/hadoop/conf/yarn-site.xml .
+    scp sshuser@nitinp:/etc/hadoop/conf/core-site.xml .
+    scp sshuser@nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
     これらのファイルをプロジェクトに追加するには、プロジェクト ツリー内の **/src** フォルダー (例: `<your project directory>\src`) の下にこれらのファイルをコピーします。
