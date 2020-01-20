@@ -57,7 +57,7 @@ IoT Edge には、シナリオをカスタマイズするために使用でき�
 
 1. デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
 1. デプロイの追跡に役立つよう、キーと値のペアとしてラベルを追加できます。 たとえば、**HostPlatform** と **Linux**、**Version** と **3.0.1** などです。
-1. **次へ:Next: Modules (次へ: モジュール)** を選択して手順 2 に移動します。
+1. **[Next: Modules] (次へ: モジュール)** を選択して手順 2 に移動します。
 
 ### <a name="step-2-modules"></a>手順 2:モジュール
 
@@ -129,7 +129,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 [ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、 **[次へ]** を選択して確認のセクションに進みます。
 
-**次へ:Next: Metrics (次へ: メトリック)** を選択します。
+**[Next: Metrics] (次へ: メトリック)** を選択します。
 
 ### <a name="step-4-metrics"></a>手順 4:メトリック
 
@@ -146,7 +146,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
-**次へ:Next: Target Devices (次へ: ターゲット デバイス)** を選択します。
+**[Next: Target Devices] (次へ: ターゲット デバイス)** を選択します。
 
 ### <a name="step-5-target-devices"></a>手順 5:ターゲット デバイス
 
@@ -161,7 +161,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 1. デプロイの **[優先度]** を正の整数で入力します。
 1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)** を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。
 
-**次へ:次へ: レビューと作成** を選択して最後の手順に移動します。
+**[次へ: レビューと作成]** を選択して最後の手順に移動します。
 
 ### <a name="step-6-review-and-create"></a>手順 6:[Review and create] (確認および作成)
 
