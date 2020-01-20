@@ -4,10 +4,10 @@
   items:
     - name: Video Indexer とは
       href: video-indexer-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: 作業開始
+    - name: はじめに
       href: video-indexer-get-started.md
     - name: ユーザーの招待
       href: invite-users.md
@@ -41,11 +41,11 @@
           href: customize-person-model-overview.md
 - name: ハウツー ガイド
   items:
-    - name: Azure への接続
+    - name: Azure に接続する
       href: connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
       href: manage-account-connected-to-azure.md
-    - name: API を使用したビデオのアップロードとインデックス作成
+    - name: ビデオのアップロードとインデックス作成
       href: upload-index-videos.md
     - name: Video Indexer の出力の確認
       href: video-indexer-output-json-v2.md

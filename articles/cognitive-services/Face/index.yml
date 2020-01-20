@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Face のドキュメント
-summary: クラウドベースの Face API を使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
+summary: クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
 metadata:
-  title: Face API のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: クラウドベースの Face API を使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
+  title: Face のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: face-api
@@ -11,18 +11,18 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 438fe3ff0e48eba21acea596f8cbed4498aaca18
-  ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+  ms.openlocfilehash: 6a078d8504ea988d44ff5d4bce190c72da28452f
+  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/16/2019
-  ms.locfileid: "74132712"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76166393"
 landingContent:
-- title: Face API について
+- title: Face サービスについて
   linkLists:
   - linkListType: overview
     links:
-    - text: Face API とは
+    - text: Face サービスとは
       url: Overview.md
 - title: 顔を検出する
   linkLists:

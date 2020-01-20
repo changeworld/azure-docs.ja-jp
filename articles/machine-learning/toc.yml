@@ -56,6 +56,12 @@
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
       href: tutorial-train-deploy-model-cli.md
+    - name: Visual Studio Code
+      items:
+        - name: Azure Machine Learning 拡張機能の設定
+          href: tutorial-setup-vscode-extension.md
+        - name: TensorFlow 画像分類モデルのトレーニングとデプロイ
+          href: tutorial-train-deploy-image-classification-model-vscode.md
 - name: サンプル
   items:
     - name: Jupyter Notebooks
@@ -151,9 +157,6 @@
         - name: 入力および出力ディレクトリを設定する
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: VS Code 拡張機能を使用する
-          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
-          href: how-to-vscode-tools.md
         - name: 対話型デバッグ
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
@@ -171,6 +174,9 @@
         - name: データセットを使用したトレーニング
           displayName: 'data, dataset, mount'
           href: how-to-train-with-datasets.md
+        - name: デザイナーでデータをインポートする
+          displayName: 'designer, data, import, dataset, datastore'
+          href: how-to-designer-import-data.md
         - name: データセットのドリフトを検出する
           displayName: 'data, dataset'
           href: how-to-monitor-datasets.md
@@ -397,3 +403,6 @@
     - name: Workbench の変更点
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md
+    - name: デザイナーのユーザー補助機能
+      displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
+      href: designer-accessibility.md

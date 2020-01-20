@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: 専用ホストへのデプロイ
           href: container-instances-dedicated-hosts.md
+        - name: Logic Apps コネクタの使用
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: コンテナーのシナリオ
       items:
         - name: 一度だけ実行されるタスクの再起動ポリシーの設定

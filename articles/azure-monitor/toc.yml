@@ -6,6 +6,8 @@
       href: overview.md
     - name: 用語の変更
       href: terminology.md
+    - name: よく寄せられる質問
+      href: faq.md
 - name: クイックスタート
   items:
     - name: Azure リソースの監視
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: パートナー統合
       href: platform/partners.md
-    - name: よく寄せられる質問
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: 操作方法ガイド
   items:
     - name: Azure Monitor の管理
@@ -162,6 +156,8 @@
       items:
         - name: Application Insights の概要
           href: app/app-insights-overview.md
+        - name: よく寄せられる質問
+          href: app/troubleshoot-faq.md
         - name: コードベースの監視
           items:
             - name: ASP.NET Core
@@ -535,6 +531,8 @@
           items:
             - name: エージェントの概要
               href: platform/agents-overview.md
+            - name: よく寄せられる質問
+              href: 'faq.md#agents'
             - name: Azure Diagnostics 拡張機能
               items:
                 - name: 概要
@@ -633,7 +631,7 @@
             - name: 一般提供の FAQ
               href: insights/vminsights-ga-release-faq.md
             - name: よく寄せられる質問
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
@@ -679,7 +677,7 @@
             - name: 概要
               href: insights/container-insights-overview.md
             - name: よく寄せられる質問
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要

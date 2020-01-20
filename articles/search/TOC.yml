@@ -249,6 +249,8 @@
           items:
             - name: カスタム スキルを統合する
               href: cognitive-search-custom-skill-interface.md
+            - name: 例 - Azure Functions (Python)
+              href: cognitive-search-custom-skill-python.md
             - name: 例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
             - name: 例 - コンテナー
