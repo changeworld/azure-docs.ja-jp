@@ -1,25 +1,16 @@
 ---
-title: リソース マネージャー アーキテクチャ | Microsoft Docs
-description: Service Fabric クラスター リソース マネージャーのアーキテクチャの概要。
-services: service-fabric
-documentationcenter: .net
+title: リソース マネージャーのアーキテクチャ
+description: Azure Service Fabric クラスター リソース マネージャー サービスの概要とアーキテクチャ情報。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113973"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551694"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>クラスター リソース マネージャーのアーキテクチャの概要
 Service Fabric クラスター リソース マネージャーは、クラスターで実行されている中央のサービスです。 これにより、特にリソースの消費量と任意の配置ルールについて、クラスターにおけるサービスの望まれる状態が管理されます。 
@@ -64,8 +55,8 @@ Service Fabric クラスター リソース マネージャーには、クラス
 ![リソース バランサーのアーキテクチャ][Image2]
 </center>
 
-## <a name="next-steps"></a>次の手順
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](./service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+- Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](./service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
 - クラスター リソース マネージャーの主な仕事はクラスターを再調整して、配置ルールを適用することです。 こうした動作の構成の詳細については、「[Service Fabric クラスターの均衡をとる](./service-fabric-cluster-resource-manager-balancing.md)」を参照してください
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric サービスの開始時にスクリプトを実行する | Microsoft Docs
+title: Azure Service Fabric サービスの開始時にスクリプトを実行する
 description: Service Fabric サービス セットアップ エントリ ポイントのポリシーを構成し、サービスの開始時にスクリプトを実行する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
-ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464276"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
 Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要はありません。
@@ -238,7 +229,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アプリケーションとサービスのセキュリティについて確認する](service-fabric-application-and-service-security.md)
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)

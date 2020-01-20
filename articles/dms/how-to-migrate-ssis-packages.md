@@ -1,6 +1,7 @@
 ---
-title: SQL Server Integration Services パッケージを Azure SQL Database に再デプロイする | Microsoft Docs
-description: SQL Server Integration Services パッケージを Azure SQL Database に移行する方法について説明します。
+title: SSIS パッケージを SQL 単一データベースに再配置する
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service と Data Migration Assistant を使用して、SQL Server Integration Services パッケージとプロジェクトを Azure SQL Database 単一データベースに移行または再配置する方法について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,17 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/08/2019
-ms.openlocfilehash: 603a9df8e3f499c832bbfdcbef966de86003d6b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437969"
 ---
-# <a name="redeploy-sql-server-integration-services-packages-to-azure-sql-database"></a>SQL Server Integration Services パッケージを Azure SQL Database に再デプロイする
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Azure Database Migration Service を使用して SSIS パッケージを Azure SQL Database に再配置する
 
 SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Database によってホストされている配置先の SSISDB に移行したい場合は、Integration Services 展開ウィザードを使用して、それらを再デプロイできます。 そのウィザードは、SQL Server Management Studio (SSMS) 内から起動することができます。
 
@@ -112,6 +113,6 @@ Azure SQL Database サーバーに SSIS プロジェクト/パッケージを移
 
 プロジェクトのデプロイが問題なく成功した場合は、それに含まれる任意のパッケージを選択して、ご利用の Azure-SSIS IR 上で実行することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451238"
 ---
 # <a name="azure-serial-console"></a>Azure シリアル コンソール
 
@@ -28,7 +28,7 @@ Azure portal のシリアル コンソールでは、Linux または Windows を
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されています。 Azure Government や Azure China Cloud では利用できません。
+> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Azure シリアル コンソールにアクセスするための前提条件
 VM または仮想マシン スケール セット インスタンスのシリアル コンソールにアクセスするには、次のものが必要です。
@@ -74,7 +74,7 @@ VM へのコンソール アクセス以外に、Azure シリアル コンソー
 * [VM の正常な再起動または強制的な電源切り替え](./serial-console-power-options.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 シリアル コンソールの追加ドキュメントはサイドバーから入手できます。
 - [Linux VM 用シリアル コンソール](./serial-console-linux.md)についての詳細情報を入手できます。
 - [Windows VM 用シリアル コンソール](./serial-console-windows.md)についての詳細情報を入手できます。

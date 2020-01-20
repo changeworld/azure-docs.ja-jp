@@ -1,7 +1,7 @@
 ---
 title: モデルのハイパーパラメーターの調整
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の "モデルのハイパーパラメーターの調整" モジュールを使用して、モデルでパラメーター スイープを実行し、最適なパラメーター設定を特定する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でモデルのハイパーパラメーターの調整モジュールを使用して、モデルでパラメーター スイープを実行し、最適なパラメーター設定を決定する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428406"
 ---
 # <a name="tune-model-hyperparameters"></a>モデルのハイパーパラメーターの調整
 
@@ -153,7 +153,7 @@ ms.locfileid: "74131231"
 Azure Machine Learning のほとんどすべての学習器は、統合されたパラメーター スイープを使用したクロス検証をサポートしています。これにより、ユーザーはパイプライン処理するパラメーターを選択できます。 学習器が値の範囲の設定をサポートしていない場合でも、それをクロス検証で使用できます。 この場合、スイープに対して使用できる値の範囲が選択されます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor - Azure Application Insights による既定の SDK エンドポイントのオーバーライド | Microsoft Docs
-description: Azure Government などのリージョンの既定の Azure Application Insights SDK エンドポイントを変更します。
+title: Azure Application Insights による既定の SDK エンドポイントのオーバーライド
+description: Azure Government などのリージョンの既定の Azure Monitor Application Insights SDK エンドポイントを変更します。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432585"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
@@ -197,9 +197,9 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 |リージョン |  エンドポイント名 | 値 |
 |-----------------|:------------|:-------------|
-| Azure China | テレメトリ チャネル | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure China | Profile Query |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure 中国 | テレメトリ チャネル | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure 中国 | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure 中国 | Profile Query |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
 | Azure Government | テレメトリ チャネル |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse (Live Metrics) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Profile Query |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
@@ -209,13 +209,13 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 |リージョン |  エンドポイント名 | 値 |
 |-----------------|:------------|:-------------|
-| Azure China | REST API | `api.applicationinsights.azure.cn` |
+| Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Azure App Services のコードレス エージェント/拡張機能ベースの監視は、これらのリージョンでは**現在サポートされていません**。 この機能を利用できるようになり次第、この記事は更新される予定です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Government のカスタム変更の詳細については、[Azure の監視と管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)の詳細なガイダンスを参照してください。
 - Azure China の詳細については、[Azure China プレイブック](https://docs.microsoft.com/azure/china/)のページを参照してください。

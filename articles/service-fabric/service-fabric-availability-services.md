@@ -1,25 +1,16 @@
 ---
-title: Service Fabric サービスの可用性 | Microsoft Docs
-description: 障害の検出、フェールオーバー、サービスの回復について説明します
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric サービスの可用性
+description: Azure Service Fabric アプリケーションでのサービスのフォールト検出、フェールオーバー、および復旧について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: dd10af0d3c8a57168a27a039286ea0ec4c1dad02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310946"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551864"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric サービスの可用性
 この記事では、Azure Service Fabric がサービスの可用性を維持する方法の概要を示します。
@@ -40,7 +31,7 @@ Service Fabric サービスには、ステートレスなものとステート�
 
 レプリカがプライマリであったりアクティブ セカンダリであったりするこの概念は、*レプリカ ロール*と呼ばれます。 レプリカの詳細については、「[レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)」をご覧ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 - [Service Fabric サービスのスケーリング](service-fabric-concepts-scalability.md)

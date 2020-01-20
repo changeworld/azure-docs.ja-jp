@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453056"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをスケーリングする
 
-Azure Database for PostgreSQL - Hyperscale (Citus) では、増加した負荷に対処するためにセルフサービス スケーリングを行うことができます。 Azure portal を使用すると、新しいワーカー ノードの追加や、既存ノードの容量増加を簡単に実行できます。
+Azure Database for PostgreSQL - Hyperscale (Citus) では、増加した負荷に対処するためにセルフサービス スケーリングを行うことができます。 Azure portal を使用すると、簡単に新しいワーカー ノードを追加したり既存ノードの仮想コアを増やしたりできます。
 
 ## <a name="add-worker-nodes"></a>ワーカー ノードの追加
 
@@ -38,10 +38,10 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 `rebalance_table_shards` 関数により、引数に指定したテーブルの[コロケーション](concepts-hyperscale-colocation.md) グループ内にあるすべてのテーブルが再調整されます。 したがって、すべての分散テーブルに対してその関数を呼び出す必要はありません。各コロケーション グループの代表的なテーブルに対して呼び出すだけです。
 
-## <a name="increase-vcores-or-storage-space"></a>仮想コアまたはストレージ容量を増やす
+## <a name="increase-vcores"></a>仮想コアを増やす
 
-新しいノードを追加するだけでなく、既存のノードの能力を増強することもできます。 Hyperscale (Citus) サーバー グループの **[構成]** タブに移動し、 **[vCores]\(仮想コア\)** および **[ストレージ]** のスライダーをドラッグして、すべてのワーカー ノードに対してこれらの値を変更します。 必ず **[保存]** をクリックして変更を適用してください。
+新しいノードを追加するだけでなく、既存のノードの能力を増強することもできます。 この機能は現在プレビュー段階です。サーバー グループ内のノードに対して仮想コアを増やすには、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サーバー グループの[パフォーマンス オプション](concepts-hyperscale-configuration-options.md)の詳細を確認します。

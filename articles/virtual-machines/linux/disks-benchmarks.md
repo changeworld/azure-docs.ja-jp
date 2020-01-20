@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Storage 上のアプリケーションのベンチマーク - マネージド ディスク
+title: Azure Disk Storage 上のアプリケーションのベンチマーク
 description: Azure 上でアプリケーションのベンチマークを実行するプロセスについて説明します。
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 454ed6123d65d49947d90075c2fa68e11c6e36ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462565"
 ---
 # <a name="benchmarking-a-disk"></a>ディスクのベンチマーク
 
@@ -24,7 +24,7 @@ ms.locfileid: "68695857"
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 高パフォーマンス用の設計に関する記事に進んでください。 この記事では、プロトタイプについて、既存のアプリケーションと同様のチェックリストを作成します。 ベンチマーク ツールを使用して、ワークロードをシミュレートし、プロトタイプ アプリケーションでパフォーマンスを測定します。 こうすることで、どのディスク オファリングがアプリケーションのパフォーマンス要件に合っているか、上回っているかを判断できます。 その後、実稼働アプリケーションにも同じガイドラインを実装できます。
 

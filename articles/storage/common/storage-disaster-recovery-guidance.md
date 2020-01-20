@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895349"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526364"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>災害復旧とアカウントのフェールオーバー (プレビュー)
 
@@ -146,11 +146,11 @@ Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderName
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-### <a name="additional-considerations"></a>追加の考慮事項 
+### <a name="additional-considerations"></a>その他の注意点 
 
 このセクションで説明されている追加の考慮事項を確認し、プレビュー期間中にフェールオーバーを強制した場合にアプリケーションとサービスが受ける可能性がある影響について理解してください。
 
-#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+#### <a name="azure-virtual-machines"></a>Azure の仮想マシン
 
 Azure 仮想マシン (VM) は、アカウントのフェールオーバーの一部としてフェイルオーバーされません。 プライマリ リージョンが使用不能になり、セカンダリ リージョンにフェールオーバーする場合は、フェールオーバー後に VM を再作成する必要があります。 
 
@@ -177,7 +177,8 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 - Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。  
 - アーカイブ済みの BLOB 含むストレージ アカウントは、フェールオーバーできません。 アーカイブ済み BLOB は、フェールオーバーする計画がない別のストレージ アカウントで保持してください。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
-- フェールオーバーの完了後、フェールオーバー元で有効になっている場合は、[イベント サブスクリプション](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[ライフサイクル ポリシー](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)、[Storage Analytics Logging](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging) の動作が停止します。
+- 任意の [WORM 不変ポリシー](../blobs/storage-blob-immutable-storage.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
+- フェールオーバーが完了した後、次の機能は、元々有効にされていても、機能しなくなることがあります: [イベント サブスクリプション](../blobs/storage-blob-event-overview.md)、[変更フィード](../blobs/storage-blob-change-feed.md)、[ライフサイクル ポリシー](../blobs/storage-lifecycle-management-concepts.md)、および [Storage Analytics のログ記録](storage-analytics-logging.md)。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>フェールオーバーの代わりとしてのデータのコピー
 
@@ -187,7 +188,7 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 
 大きな災害のためにリージョンが失われるような極端な状況では、Microsoft がリージョン間のフェールオーバーを開始できます。 この場合、ユーザーによる操作は必要ありません。 Microsoft 管理のフェールオーバーが完了するまで、ストレージ アカウントに書き込みアクセスを行うことはできません。 ストレージ アカウントが RA-GRS 対応に構成されている場合は、アプリケーションはセカンダリ リージョンから読み取ることができます。 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [アカウントのフェールオーバー (プレビュー) を開始する](storage-initiate-account-failover.md)
 * [RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)

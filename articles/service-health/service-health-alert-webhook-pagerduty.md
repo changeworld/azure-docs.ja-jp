@@ -1,17 +1,14 @@
 ---
-title: PagerDuty で webhook を使用して Azure サービス正常性アラートを構成する
+title: PagerDuty で Azure サービス正常性アラートを送信する
 description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: stephbaron
-ms.author: stbaron
 ms.topic: article
-ms.service: service-health
 ms.date: 06/10/2019
-ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 746113622b746949a0fae3fd0d7f1f9c7d170707
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067150"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551654"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>PagerDuty で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -87,7 +84,7 @@ ms.locfileid: "67067150"
 
 1. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。

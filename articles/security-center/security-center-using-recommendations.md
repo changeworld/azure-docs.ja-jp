@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355281"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
@@ -63,7 +63,7 @@ Jeff は、毎日の監視アクティビティの一環として、Azure にサ
 
 5. Jeff が **[計算とアプリ]** をクリックすると、推奨事項の一覧が表示されます。セキュリティ スコアへの影響に照らしてそれらを処理します。
 
-6. Jeff にはインターネットに接続された VM がたくさんあり、それらのポートが公開されているため、攻撃者によってサーバーが制御されてしまうのではないかと心配しています。 それで、[security-center-just-in-time.md] (**Just-In-Time VM アクセス**) を使用することを選びます。
+6. Jeff にはインターネットに接続された VM がたくさんあり、それらのポートが公開されているため、攻撃者によってサーバーが制御されてしまうのではないかと心配しています。 そこで Jeff は [**Just-In-Time VM アクセス**](security-center-just-in-time.md)の使用を選択します。
 
 Jeff は、高優先度と中優先度の推奨事項を確認し、実装について判断します。 各推奨事項について、どのリソースが影響を受けるか、セキュリティ スコアの影響はどれほどか、各推奨事項が何を意味するか、そして各問題を軽減するための修復手順について理解するため、Security Center によって提供される詳細情報に注目します。
 
@@ -71,7 +71,7 @@ Jeff は、高優先度と中優先度の推奨事項を確認し、実装につ
 Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 推奨事項を修復すると、セキュリティ スコアとワークロードのセキュリティ体制が向上します。 Security Center は自動的に、デプロイした新しいリソースを検出し、それらをセキュリティ ポリシーに照らし合わせて評価し、それらを保護するための新しい推奨事項を提供します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 時間が経ってもリソースを保護し続けられるように、Security Center の推奨事項を定期的にチェックできる、適切な監視プロセスが備わっていることを確かめます。
 
 このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。

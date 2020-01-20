@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443377"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>マルチテナント アプリケーションに適切なフェデレーション プロトコルを選択する
 
@@ -44,7 +44,7 @@ Azure Active Directory との SSO 統合で使用できるプロトコルの完�
 
 ## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 と Open ID Connect
 
-OAuth 2.0 は、認可用の[業界標準](https://oauth.net/2/)プロトコルです。 OIDC (OpenID Connect) は、Oath 2.0 プロトコルを基盤に構築された、[業界標準](https://openid.net/connect/)の ID 認証レイヤーです。
+OAuth 2.0 は、認可用の[業界標準](https://oauth.net/2/)プロトコルです。 OIDC (OpenID Connect) は、OAuth 2.0 プロトコルを基盤に構築された、[業界標準](https://openid.net/connect/)の ID 認証レイヤーです。
 
 ### <a name="benefits"></a>メリット
 

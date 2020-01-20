@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73591012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468295"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -25,7 +25,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
   仮想マシンでも、データセンター全体やリージョン全体に影響する停電や災害といった予期しない事象によってダウンタイムが発生することがあります。 こうしたシナリオにおいて、Azure は[可用性ゾーン](../articles/availability-zones/az-overview.md)や[リージョン ペア](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)といった保護オプションを提供します。
 
-* **計画メンテナンス イベント**は、仮想マシンを実行しているプラットフォーム インフラストラクチャの全体的な信頼性、パフォーマンス、セキュリティを向上させるために、基盤となる Azure プラットフォームに対して Microsoft が実行する定期的な更新です。 これらの更新のほとんどは、仮想マシンやクラウド サービスに影響を及ぼすことなく実行されます ([VM 保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/preserving-maintenance)に関する記事を参照してください)。 Azure プラットフォームでは、可能な限り VM 保持メンテナンスを使用しようとしますが、基盤となるインフラストラクチャに必要な更新を適用するために、仮想マシンの再起動が必要になる場合もまれにあります。 この場合、適切な時間帯に VM のメンテナンスを開始することで、メンテナンスによる再デプロイ操作を伴う Azure の計画メンテナンスを実行できます。 詳細については、[仮想マシンの計画メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/planned-maintenance/)に関する記事を参照してください。
+* **計画メンテナンス イベント**は、仮想マシンを実行しているプラットフォーム インフラストラクチャの全体的な信頼性、パフォーマンス、セキュリティを向上させるために、基盤となる Azure プラットフォームに対して Microsoft が実行する定期的な更新です。 これらの更新のほとんどは、仮想マシンや Cloud Services に影響を及ぼすことなく実行されます ([VM 保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/preserving-maintenance)に関する記事を参照してください)。 Azure プラットフォームでは、可能な限り VM 保持メンテナンスを使用しようとしますが、基盤となるインフラストラクチャに必要な更新を適用するために、仮想マシンの再起動が必要になる場合もまれにあります。 この場合、適切な時間帯に VM のメンテナンスを開始することで、メンテナンスによる再デプロイ操作を伴う Azure の計画メンテナンスを実行できます。 詳細については、[仮想マシンの計画メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/planned-maintenance/)に関する記事を参照してください。
 
 
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
@@ -83,7 +83,7 @@ Availability Zones では、Azure によって業界最高の 99.99% VM アッ�
 アンマネージド ディスクを持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
 
 1. **VM に関連付けられているすべてのディスク (OS とデータ) を同じストレージ アカウント内に保持する。**
-2. ストレージ アカウントにさらに VHD を追加する前に、**ストレージ アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/common/storage-scalability-targets.md)を確認する。**
+2. ストレージ アカウントにさらに VHD を追加する前に、**Azure Storage アカウント内の管理されていないディスクの数に関する[制限](../articles/storage/blobs/scalability-targets-premium-page-blobs.md)を確認する。**
 3. **可用性セット内の VM ごとに個別のストレージ アカウントを使用する。** 同じ可用性セット内の複数の VM でストレージ アカウントを共有しないでください。 上のベスト プラクティスに従っていれば、異なる可用性セットの VM でストレージ アカウントを共有してもかまいません![非管理対象ディスク FD](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する

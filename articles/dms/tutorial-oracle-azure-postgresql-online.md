@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して Oracle の Azure Database for PostgreSQL へのオンライン移行を実行する | Microsoft Docs
+title: チュートリアル:オンラインで Oracle を Azure Database for PostgreSQL に移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスまたは仮想マシンの Oracle から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ed95d95db3849026763e4537a832c9feda98aa40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437599"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -51,7 +52,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 * ora2pg をダウンロードして [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) または [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) のいずれかにインストールします。
 * [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * この[ドキュメント](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)の指示に従ってインスタンスに接続しデータベースを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
   > [!NOTE]
   > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
@@ -184,7 +185,7 @@ ora2pg を実行して、.sql ファイル内の各データベース オブジ�
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-例:
+次に例を示します。
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -237,7 +238,7 @@ Azure Database Migration Service でスキーマを自動的に作成するに�
 
     Oracle ソースのスキーマ名が Azure Database for PostgreSQL のものと一致する場合、Azure Database Migration Service では、"*大文字と小文字の区別をターゲット側に合わせてテーブル スキーマを作成*" します。
 
-    例:
+    次に例を示します。
 
     | ソース Oracle スキーマ | ターゲット PostgreSQL Database.Schema | DMS によって作成される schema.table.column |
     | ------------- | ------------- | ------------- |
@@ -381,7 +382,7 @@ Azure Database Migration Service でスキーマを自動的に作成するに�
  > [!NOTE]
  > 既定では PostgreSQL では schema.table.column が小文字で保持されるため、この記事の前出の「**Azure Database for PostgreSQL でのスキーマの設定**」セクションにあるスクリプトを使用して大文字を小文字に戻すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Database for PostgreSQL へのオンライン移行の実行時の既知の問題と制限事項については、[Azure Database for PostgreSQL のオンライン移行に伴う既知の問題と回避策](known-issues-azure-postgresql-online.md)に関する記事を参照してください。
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。

@@ -1,22 +1,22 @@
 ---
-title: Visual Studio を使用してロジック アプリを管理する
-description: Visual Studio と Cloud Explorer を使用してロジック アプリとその他の Azure 資産を管理する
+title: Visual Studio と Cloud Explorer を使用してロジック アプリを編集および管理する
+description: Visual Studio と Cloud Explorer を使用して、ロジック アプリの編集、更新、管理、ソース管理への追加、デプロイを行います
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 29b1235ee319567e103267b9054b8c6b244e1ca7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456592"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
-ロジック アプリは [Azure Portal](https://portal.azure.com) で作成、編集、管理、およびデプロイできますが、ロジック アプリをソース管理に追加したり、各種のバージョンを発行したり、さまざまなデプロイメント環境用の [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートを作成したりする場合は Visual Studio も使用できます。 Visual Studio Cloud Explorer では、他の Azure リソースと共にロジック アプリを検索して管理できます。 たとえば、Azure Portal に既に展開されているロジック アプリのオープン、ダウンロード、編集、実行、実行履歴の表示、無効化、有効化を行うことができます。 初めて Visual Studio で Azure Logic Apps を使う場合は、[Visual Studio でロジック アプリを作成する方法](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)を学習してください。
+ロジック アプリは [Azure Portal](https://portal.azure.com) で作成、編集、管理、およびデプロイできますが、ロジック アプリをソース管理に追加したり、各種のバージョンを発行したり、さまざまなデプロイメント環境用の [Azure Resource Manager](../azure-resource-manager/management/overview.md) テンプレートを作成したりする場合は Visual Studio も使用できます。 Visual Studio Cloud Explorer では、他の Azure リソースと共にロジック アプリを検索して管理できます。 たとえば、Azure Portal に既に展開されているロジック アプリのオープン、ダウンロード、編集、実行、実行履歴の表示、無効化、有効化を行うことができます。 初めて Visual Studio で Azure Logic Apps を使う場合は、[Visual Studio でロジック アプリを作成する方法](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)を学習してください。
 
 > [!IMPORTANT]
 > Visual Studio からロジック アプリを展開または発行すると、Azure Portal にあるそのアプリのバージョンが上書きされます。 したがって、Azure Portal で行った変更を残しておきたい場合は、次に Visual Studio から展開または発行する前に、Azure Portal から [Visual Studio のロジック アプリを更新する](#refresh)必要があります。
@@ -63,7 +63,7 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 1. Visual Studio を開きます。 **[表示]** メニューで **[Cloud Explorer]** を選びます。
 
-1. Cloud Explorer で **[アカウント管理]** を選びます。 ロジック アプリに関連付けられている Azure サブスクリプションを選び、 **[適用]** を選びます。 例:
+1. Cloud Explorer で **[アカウント管理]** を選びます。 ロジック アプリに関連付けられている Azure サブスクリプションを選び、 **[適用]** を選びます。 次に例を示します。
 
    ![[アカウント管理] を選ぶ](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -96,7 +96,7 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
 ## <a name="download-from-azure"></a>Azure からのダウンロード
 
-[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。  ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
+[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/management/overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。  ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
 
 1. Visual Studio で Cloud Explorer を開きます。 Azure からダウンロードするロジック アプリを検索して選びます。
 
@@ -226,7 +226,7 @@ Azure に展開されているロジック アプリを、Visual Studio から�
 
    ![ロジック アプリの実行履歴を開く](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. 特定の実行の詳細を表示するには、実行をダブルクリックします。 例:
+1. 特定の実行の詳細を表示するには、実行をダブルクリックします。 次に例を示します。
 
    ![特定の実行に関する情報を表示する](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
@@ -267,7 +267,7 @@ Logic Apps デザイナーでロジック アプリ プロジェクトを開い�
 
 * ソリューション内の*すべての*ロジック アプリの以前に選択されたサブスクリプションを削除するには、ソリューションのディレクトリにある非表示の Visual Studio 設定フォルダー (.vs) を削除します。 この場所には、サブスクリプションの情報が格納されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Visual Studio で展開済みのロジック アプリを管理する方法について学習しました。 次に、展開に合わせてロジック アプリの定義をカスタマイズする方法を学習してください。
 

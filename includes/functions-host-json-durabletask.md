@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 614d93a16b9149a217b5ff1004031e0a2d7337ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410204"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
 
@@ -52,14 +52,15 @@ ms.locfileid: "73615052"
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -82,17 +83,19 @@ ms.locfileid: "73615052"
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
 
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)に関するページをご覧ください。
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
+|controlQueueBufferThreshold|256|一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
 |partitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
 |controlQueueVisibilityTimeout |5 分|デキューされたコントロール キュー メッセージの表示タイムアウト。|
 |workItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|
@@ -109,5 +112,6 @@ ms.locfileid: "73615052"
 |eventGridPublishRetryCount|0|Event Grid トピックへの発行が失敗した場合に再試行する回数。|
 |eventGridPublishRetryInterval|5 分|Event Grid の発行を再試行する間隔 (*hh:mm:ss* 形式)。|
 |eventGridPublishEventTypes||Event Grid に発行するイベントの種類の一覧。 指定されていない場合は、すべてのイベントの種類が発行されます。 指定できる値は、`Started`、`Completed`、`Failed`、`Terminated` です。|
+|useGracefulShutdown|false|(プレビュー) 正常なシャットダウンを有効にして、ホストのシャットダウンでインプロセス関数の実行が失敗する可能性を減らします。|
 
 これらの設定の多くはパフォーマンスの最適化を目的としています。 詳細については、[パフォーマンスとスケール](../articles/azure-functions/durable-functions-perf-and-scale.md)に関するページをご覧ください。

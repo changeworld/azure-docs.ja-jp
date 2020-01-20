@@ -1,17 +1,17 @@
 ---
-title: Premium Azure Cache for Redis の仮想ネットワークの構成
+title: 仮想ネットワークの構成 - Premium Azure Cache for Redis
 description: Premium レベル Azure Cache for Redis インスタンスの Virtual Network のサポートを作成および管理する方法
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: yegu
-ms.openlocfilehash: 03cc5bd4e6e7198a6a3a916226c72e9b0f9ff1b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433487"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -21,7 +21,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 > 
 > 
 
-Premium キャッシュのその他の機能については、「[Introduction to the Azure Cache for Redis Premium tier](cache-premium-tier-intro.md)」(Azure Cache for Redis Premium レベルの概要) を参照してください。
+Premium キャッシュのその他の機能については、「[Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## <a name="why-vnet"></a>VNet を選ぶ理由
 [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
@@ -157,7 +157,7 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 
 - すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 必要なすべてのキャッシュ依存関係 ([「受信ポートの要件」](cache-how-to-premium-vnet.md#inbound-port-requirements)と[「送信ポートの要件」](cache-how-to-premium-vnet.md#outbound-port-requirements)で説明) に到達できない場合、キャッシュは正常に再起動できません。
 - キャッシュ ノードが再起動したら (Azure Portal のキャッシュの状態で報告されます)、次のテストを実行できます。
-  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ VNET 内にあるコンピューターからキャッシュ エンドポイントを ping します (ポート 6380 を使用)。 例:
+  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ VNET 内にあるコンピューターからキャッシュ エンドポイントを ping します (ポート 6380 を使用)。 次に例を示します。
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +180,7 @@ IP アドレスでホストに接続していることが原因になってい�
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS 名を解決できない場合、StackExchange.Redis クライアントによって指定される `sslHost` のような構成オプションが、クライアント ライブラリに含まれている場合があります。 このオプションによって、証明書の検証に使用されるホスト名をオーバーライドできます。 例:
+DNS 名を解決できない場合、StackExchange.Redis クライアントによって指定される `sslHost` のような構成オプションが、クライアント ライブラリに含まれている場合があります。 このオプションによって、証明書の検証に使用されるホスト名をオーバーライドできます。 次に例を示します。
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -233,7 +233,7 @@ ExpressRoute を使用したオンプレミス アプリケーションから Az
 
 ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
 * [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)

@@ -6,28 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806917"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638886"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
 Azure Machine Learning では、機械学習モデルの構築、トレーニング、およびデプロイを簡略化して迅速化します。 Automated Machine Learning (AutoML) では、規定目標機能があるトレーニング データで開始し、アルゴリズムと機能選択の組み合わせを反復して、トレーニング スコアに基づきデータの最適なモデルを自動的に選択します。 HDInsight を使用することにより、お客様は多数のノードでクラスターをプロビジョニングできます。 HDInsight クラスターの Spark で実行されている AutoML では、ユーザーはこれらのノード間でコンピューティング能力を使用して、スケールアウト形式でトレーニング ジョブを実行したり、複数のトレーニング ジョブを並列で実行したりできます。 これによりユーザーは、他のビッグ データ ワークロードとコンピューティングを共有しながら AutoML 実験を実行できます。
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>HDInsight クラスターに Azure Machine Learning をインストールする
 
-Automated Machine Learning の一般的なチュートリアルについては、「[チュートリアル: 自動化された機械学習を使用して回帰モデルを構築する](../../machine-learning/service/tutorial-auto-train-models.md)」を参照してください。
-すべての新しい HDInsight Spark クラスターには、AzureML AutoML SDK がプレインストールされています。 AutoML は、HDInsight 上で、この[サンプル Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)を使用して開始することができます。 この Jupyter ノートブックでは、単純な分類問題に対して自動化された機械学習の分類器を使用する方法が示されます。
+Automated Machine Learning の一般的なチュートリアルについては、「[チュートリアル: 自動化された機械学習を使用して回帰モデルを構築する](../../machine-learning/tutorial-auto-train-models.md)」を参照してください。
+すべての新しい HDInsight Spark クラスターには、AzureML AutoML SDK がプレインストールされています。
 
 > [!Note]
 > Azure Machine Learning パッケージは、Python3 conda 環境にインストールされます。 インストールされた Jupyter ノートブックは PySpark3 カーネルを使用して実行する必要があります。
 
-Zeppelin ノートブックを使用して AutoML を使用することもできます。
+Zeppelin ノートブックを使用して、AutoML を使用することもできます。
 
 > [!Note]
 > Zeppelin には、PySpark3 が Python の適切なバージョンを選択しないという[既知の問題](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html)があります。 文書化された解決策を使用してください。
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 次のコード スニペットでは、**Azure AD ユーザー**を使用して、認証トークンが作成されます。
 
 ```python
@@ -73,8 +73,8 @@ dataflow_with_token = dprep.read_csv(
 
 [Automated Machine Learning 構成](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)では、プロパティ `spark_context` は分散モードで実行するパッケージに対して設定する必要があります。 `concurrent_iterations` プロパティは並列で実行されるイテレーションの最大数であり、Spark アプリ用の Executor のコアよりも少ない数値を設定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Automated Machine Learning を導入する理由の詳細については、「[Release models at pace using Microsoft’s automated machine learning! (Microsoft の 自動 Machine Learning を使用してモデルを効率的にリリースする)](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)」を参照してください。
-* Azure ML Automated ML の機能の使用に関する詳細については、[Azure Machine Learning の新しい自動機械学習機能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)に関するページを参照してください。
+* Azure ML Automated ML 機能の使用に関する詳細については、[Azure Machine Learning サービスの新しい Automated Machine Learning 機能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)に関する記事を参照してください。
 * [Microsoft Research の AutoML プロジェクト](https://www.microsoft.com/research/project/automl/)

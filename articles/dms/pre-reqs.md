@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service を使用するための前提条件の概要 | Microsoft Docs
+title: Azure Database Migration Service の前提条件
 description: データベースの移行に Azure Database Migration Service を使用するための前提条件の概要について説明します。
 services: database-migration
 author: HJToland3
@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/29/2019
-ms.openlocfilehash: 4e21014f7b4ed86846a100ed9a2b1cd4b0400974
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a262b75e4ab0f178e5d4bea34f5046f2292ab40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437758"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用するための前提条件の概要
 
@@ -133,6 +133,6 @@ Azure Database Migration Service を使用して SQL Server から Azure SQL Dat
    > [!NOTE]
    > Azure Database Migration Service を使用して SQL Server から Azure SQL Database Managed Instance への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database Managed Instance に移行する](https://aka.ms/migratetomiusingdms)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事をご覧ください。

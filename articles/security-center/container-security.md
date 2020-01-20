@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868492"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552663"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -32,9 +32,9 @@ Azure Security Center は、コンテナー セキュリティ用の Azure ネ�
 [![Azure Security Center のコンテナーのセキュリティ タブ](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>脆弱性管理 - コンテナー イメージのスキャン (プレビュー)
-Azure Container Registry を監視するには、Security Center の Standard レベルになっていることを確実にしてください ([価格](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
+Azure Container Registry を監視するには、Security Center の Standard レベルになっていることを確実にしてください ([価格](/azure/security-center/security-center-pricing)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
 
-Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[こちら](recommendations-compute-and-apps.md)で推奨事項の一覧を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md)を参照してください。
 
 ## <a name="environment-hardening"></a>環境のセキュリティ強化
 
@@ -65,7 +65,7 @@ Security Center は、コンテナー化された環境に対するリアルタ�
 1.  Security Center の **[計算とアプリ]** ページを開きます。
 2.  **[コンテナー]** タブをクリックします。AKS クラスター、ACR レジストリ、および Docker を実行している VM の体制が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Security Center のコンテナーのセキュリティの詳細については、以下を参照してください。
 * [Azure Kubernetes Service との統合](azure-kubernetes-service-integration.md)の詳細

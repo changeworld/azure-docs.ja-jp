@@ -1,17 +1,17 @@
 ---
-title: カスタム API への認証の追加
-description: Azure Logic Apps からカスタム API を呼び出すための認証を設定します
+title: カスタム API の呼び出しをセキュリティで保護するために認証を追加する
+description: Azure Logic Apps からのカスタム API に呼び出しをセキュリティで保護するための認証を設定する方法
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793147"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666892"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
@@ -40,7 +40,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 3. アプリケーション ID をロジック アプリ定義に追加します。
 
-#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>パート 1:ロジック アプリの Azure AD アプリケーション ID を作成する
+#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>パート 1: ロジック アプリの Azure AD アプリケーション ID を作成する
 
 ロジック アプリはこのアプリケーション ID を利用し、Azure AD に対して認証します。 この ID は、ディレクトリに対して一度だけ設定します。 たとえば、ロジック アプリごとに一意の ID を作成できますが、すべてのロジック アプリに同じ ID を使用することを選択できます。 これらの ID は Azure ポータルまたは [PowerShell](#powershell) を使用して設定できます。
 
@@ -107,7 +107,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)」を参照してください。
 
-#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>パート 2:Web アプリまたは API アプリの Azure AD アプリケーション ID を作成する
+#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>パート 2: Web アプリまたは API アプリの Azure AD アプリケーション ID を作成する
 
 Web アプリまたは API アプリが既にデプロイされている場合、Azure ポータルで認証をオンにし、アプリケーション ID を作成できます。 デプロイされていない場合、[Resource Manager テンプレートでデプロイするときに認証をオンにできます](#authen-deploy)。 
 
@@ -181,7 +181,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 [![Azure へのデプロイ](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>パート 3:ロジック アプリの承認セクションを入力する
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>パート 3: ロジック アプリの承認セクションを入力する
 
 先ほどのテンプレートではこの承認セクションが既に設定されていますが、ロジック アプリを直接作成する場合、承認セクション全体を追加する必要があります。
 
@@ -197,16 +197,16 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | 必須 | 説明 | 
+| プロパティ | 必須 | [説明] | 
 | -------- | -------- | ----------- | 
 | tenant | はい | Azure AD テナントの GUID | 
 | audience | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
 | clientId | はい | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
 | secret | はい | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
-| type | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| 型 | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
 |||| 
 
-例:
+次に例を示します。
 
 ``` json
 {
@@ -234,7 +234,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 <a name="certificate"></a>
 
-#### <a name="certificate-authentication"></a>証明書認証
+#### <a name="certificate-authentication"></a>証明書の認証
 
 ロジック アプリから Web アプリまたは API アプリに入ってくる要求を検証するために、クライアント証明書を利用できます。 コードの設定方法については、「[Web アプリの TLS 相互認証を構成する方法](../app-service/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
@@ -248,7 +248,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 } 
 ```
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | 必須 | [説明] |
 | -------- | -------- | ----------- |
 | `type` | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 |
 | `password` | いいえ | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード |
@@ -257,7 +257,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 <a name="basic"></a>
 
-#### <a name="basic-authentication"></a>基本認証
+#### <a name="basic-authentication"></a>[基本認証]
 
 ロジック アプリから Web アプリまたは API アプリに入ってくる要求を検証するために、ユーザー名やパスワードなど、基本認証を利用できます。 基本認証は一般的なパターンなので、この認証は Web アプリまたは API アプリの作成にどの言語が使われていても使用できます。
 
@@ -271,11 +271,11 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | 必須 | description | 
+| プロパティ | 必須 | [説明] | 
 | -------- | -------- | ----------- | 
-| type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| 型 | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
 | username | はい | 認証に使用するユーザー名 | 
-| password | はい | 認証に使用するパスワード | 
+| パスワード | はい | 認証に使用するパスワード | 
 |||| 
 
 <a name="azure-ad-code"></a>
@@ -293,6 +293,6 @@ and not use the Azure portal, learn how to
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリ ワークフローからカスタム API をデプロイして呼び出す](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

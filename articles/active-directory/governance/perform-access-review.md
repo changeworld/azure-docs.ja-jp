@@ -1,5 +1,5 @@
 ---
-title: アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする - Azure Active Directory | Microsoft Docs
+title: アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする - Azure AD
 description: Azure Active Directory アクセス レビューで、グループ メンバーのアクセスまたはアプリケーション アクセスをレビューする方法について説明します。
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 8393a1e4719137aa09233d0a87dabdf81d8ccb59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422454"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする
+# <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする
 
 Azure Active Directory (Azure AD) には、Azure AD をはじめとする Microsoft オンライン サービス内のグループやアプリケーションへのアクセス管理を省力化する Azure AD アクセス レビューという機能が備わっています。
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
-メールが届いていない場合は、次の手順で保留中のアクセス レビューを見つけることができます。
+メールが届いていない場合は、次の手順に従って、保留中のアクセス レビューを見つけることができます。
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、MyApps ポータルにサインインします。
 
@@ -104,6 +104,6 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. **[OK]** をクリックして、推奨事項を承認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを完了する](complete-access-review.md)

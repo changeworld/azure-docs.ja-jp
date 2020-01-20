@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847868"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560258"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -124,16 +124,18 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    * 次の PowerShell コマンドを使用して、サービスが実行されていることを確認します。
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`
+      [https://login.microsoftonline.com/consumers/](`Get-Service AzureADPasswordProtectionProxy | fl`)
 
      結果の **Status** が "Running" と表示される必要があります。
 
 1. プロキシを登録します。
-   * 手順 3 が完了すると、プロキシ サービスはマシンで実行しています。 ただし、サービスには Azure AD との通信に必要な資格情報がまだありません。 Azure AD への登録が必要です。
+   * 手順 3 が完了すると、プロキシ サービスがコンピューター上で実行されますが、Azure AD と通信するために必要な資格情報はまだありません。 Azure AD への登録が必要です。
 
      `Register-AzureADPasswordProtectionProxy`
 
-     このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、フォレスト ルート ドメイン内のオンプレミス Active Directory ドメイン管理者特権も必要です。 このコマンドが 1 つのプロキシ サービスで 1 回成功すると、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
+     このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、フォレスト ルート ドメイン内のオンプレミス Active Directory ドメイン管理者特権も必要です。 ローカル管理者特権を持つアカウントを使って、このコマンドレットを実行する必要があります。
+
+     このコマンドが 1 つのプロキシ サービスで 1 回成功すると、次回以降の呼び出しも成功しますが、これ以上の呼び出しは必要ありません。
 
       `Register-AzureADPasswordProtectionProxy` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。 詳細については、以下のコメントを参照してください。
 
@@ -177,7 +179,9 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
    > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
 
 1. フォレストを登録します。
-   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
+   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。
+
+      このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。  ローカル管理者特権を持つアカウントを使って、このコマンドレットを実行する必要があります。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
 
       `Register-AzureADPasswordProtectionForest` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。 詳細については、以下のコメントを参照してください。
 
@@ -302,7 +306,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    DC エージェント サービスは、ドメイン コントローラーになっていないコンピューターにインストールできます。 この場合、サービスは開始して実行されますが、コンピューターがドメイン コントローラーにレベル上げされるまで、サービスはアクティブになりません。
 
-   ソフトウェアのインストールは、標準 MSI プロシージャを使用して自動化できます。 例:
+   ソフトウェアのインストールは、標準 MSI プロシージャを使用して自動化できます。 次に例を示します。
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
@@ -346,7 +350,7 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
 
 高可用性に関連する一般的な問題は、DC エージェント ソフトウェアの設計によって軽減されています。 DC エージェントは、ごく最近ダウンロードされたパスワード ポリシーのローカル キャッシュを保持します。 登録されているすべてのプロキシ サーバーが使用できなくなった場合でも、DC エージェントは、キャッシュされたパスワード ポリシーを引き続き適用します。 大規模なデプロイでのパスワード ポリシーの妥当な更新頻度は、通常は日単位であり、時間単位やそれ以下の単位ではありません。 そのため、プロキシ サーバーが短時間停止しても、Azure AD パスワード保護に大きな影響はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD パスワード保護に必要なサービスがオンプレミス サーバーにインストールされたので、[インストール後の構成を行い、レポート情報を収集](howto-password-ban-bad-on-premises-operations.md)して、デプロイを完了します。
 

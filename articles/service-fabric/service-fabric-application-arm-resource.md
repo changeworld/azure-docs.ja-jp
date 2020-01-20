@@ -1,25 +1,14 @@
 ---
-title: Azure Resource Manager を使用したアプリケーションとサービスのデプロイとアップグレード | Microsoft Docs
+title: Azure Resource Manager を使用したデプロイとアップグレード
 description: Azure Resource Manager テンプレートを使用して Service Fabric クラスターにアプリケーションとサービスをデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153587"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610252"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -277,7 +266,7 @@ Microsoft.ServiceFabric/clusters/application を ARM テンプレートから削
 > [!NOTE]
 > クラスターのアップグレードで異常なアプリを無視できるようにするには、"upgradeDescription/healthPolicy" セクションで "maxPercentUnhealthyApplications: 100" を指定します。すべての設定について詳しくは、[Service Fabrics REST API クラスター アップグレード ポリシーのドキュメント](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI](service-fabric-cli.md) または [PowerShell](service-fabric-deploy-remove-applications.md) を使用して、他のアプリケーションをクラスターにデプロイします。 
 * [Service Fabric クラスターをアップグレードします](service-fabric-cluster-upgrade.md)。

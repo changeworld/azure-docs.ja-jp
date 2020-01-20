@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582600"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666280"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
@@ -105,7 +105,7 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
 
 * [サービス層のアラート](security-center-alerts-service-layer.md)
-* [Azure のセキュリティ製品との統合](security-center-alerts-integration.md)
+* [Azure WAF と Azure DDoS Protection の脅威検出](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>セキュリティ インシデントとは
 
@@ -113,7 +113,11 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 Security Center はインシデントを使用して、攻撃活動とすべての関連するアラートを単一のビューに表示します。 このビューにより、攻撃者がどのようなアクションを実行し、どのリソースが影響を受けたかを迅速に把握できます。 詳細については、[クラウドのスマート アラートの関連付け](security-center-alerts-cloud-smart.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="security-alerts-in-azure-activity-log"></a>Azure アクティビティ ログでのセキュリティ アラート
+
+Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Security Center で利用できるさまざまな種類のアラートについて説明しました。 詳細については、次を参照してください。
 

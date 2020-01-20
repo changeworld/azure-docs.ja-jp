@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494642"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494991"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する
 
@@ -22,7 +22,7 @@ IO キャッシュは、Apache Spark のジョブのパフォーマンスを改�
 
 > [!Note]  
 > 現在、IO キャッシュは RubiX をキャッシュ コンポーネントとして使用しますが、将来のバージョンのサービスでは変わる可能性があります。 IO キャッシュのインターフェイスを使用し、RubiX の実装に直接依存することはしないでください。
->現時点では、IO キャッシュは Azure Blob Storage でのみサポートされています。 
+>現時点では、IO キャッシュは Azure Blob Storage でのみサポートされています。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュの利点
 
@@ -30,23 +30,21 @@ IO キャッシュを使用すると、Azure Blob Storage からデータを読�
 
 IO キャッシュを使用すると、Spark のジョブに変更を加えなくてもパフォーマンスの改善が見られます。 IO キャッシュを無効にすると、Spark コード `spark.read.load('wasbs:///myfolder/data.parquet').count()` は Azure Blob Storage からデータをリモートで読み取ります。 IO キャッシュをアクティブにすると、IO キャッシュによってそのコードの同じ行で キャッシュされた読み取りが行われます。 続く読み取りでは、データが SSD からローカルで読み取られます。 HDInsight クラスター上のワーカー ノードにはローカルで接続された専用の SSD ドライブが備わっています。 HDInsight IO キャッシュはこれらのローカル SSD を使用してキャッシュを行います。これにより、最小レベルの待ち時間を実現し、帯域幅を最大化します。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
-Azure HDInsight IO キャッシュはプレビューでは既定で非アクティブ化されます。 IO キャッシュは Azure HDInsight 3.6 以上の Spark クラスターで利用可能で、Apache Spark 2.3 を実行します。  IO キャッシュをアクティブにするには、次の操作を実行します。
+Azure HDInsight IO キャッシュはプレビューでは既定で非アクティブ化されます。 IO キャッシュは Azure HDInsight 3.6 以上の Spark クラスターで利用可能で、Apache Spark 2.3 を実行します。  HDInsight 4.0 上で IO キャッシュをアクティブ化するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) で HDInsight クラスターを選択します。
-
-1. **[概要]** ページ (クラスターを選択すると既定で開かれるページ) の **[クラスター ダッシュボード]** で **[Ambari ホーム]** を選択します。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
 1. 左側の **[IO キャッシュ]** を選択します。
 
-1. **[アクション]** を選択して **[アクティブ化]** を選択します。
+1. **[アクション]** (HDI 3.6 では **[Service Actions]\(サービス アクション\)** )、 **[有効にする]** の順に選択します。
 
     ![Ambari での IO キャッシュ サービスの有効化](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambari での IO キャッシュ サービスの有効化")
 
 1. 影響を受けるクラスター上のすべてのサービスの再起動を確認します。
 
->[!NOTE]  
+> [!NOTE]  
 > 進行状況バーにアクティブ化と表示されていても、IO キャッシュは実際には 影響を受ける他のサービスを再起動するまで有効になりません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -71,12 +69,12 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 1. **[Restart]\(再起動\)**  >  **[Restart All Affected]\(影響を受けるすべてを再起動\)** を選択します。
 
-    ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるものをすべて再起動する")
+    ![Apache Ambari の [Restart All Affected]\(影響を受けるすべてを再起動\)](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるものをすべて再起動する")
 
 1. **[Confirm Restart All]\(すべて再起動\)** を選択します。
 
-機能しない場合は、IO キャッシュを無効にします。
+それでもうまくいかない場合は、IO キャッシュを無効にしてください。
 
 ## <a name="next-steps"></a>次の手順
 
-- このブログ投稿のパフォーマンス ベンチマークなど、IO キャッシュに関する詳細をお読みください。[Apache Spark ジョブが HDInsight IO キャッシュで最大 9 倍のスピードアップ](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+このブログ投稿のパフォーマンス ベンチマークなど、IO キャッシュに関する詳細をお読みください。[Apache Spark ジョブが HDInsight IO キャッシュで最大 9 倍のスピードアップ](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

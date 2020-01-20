@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights を利用して Web アプリの障害と例外を診断する | Microsoft Docs
+title: Azure Application Insights を利用して障害と例外を診断する
 description: 要求テレメトリと共に ASP.NET アプリから例外を取り込みます。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432650"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -201,7 +201,7 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、MVC 5+ コントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
 
-例外フィルターが処理できないケースがあります。 例:
+例外フィルターが処理できないケースがあります。 次に例を示します。
 
 * コントローラー コンストラクターからスローされる例外。
 * メッセージ ハンドラーからスローされる例外。
@@ -293,7 +293,7 @@ FilterConfig.cs で AiHandleErrorAttribute をグローバル フィルターと
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、WebAPI 2+ についてコントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
 
-例外フィルターが処理できないケースがあります。 例:
+例外フィルターが処理できないケースがあります。 次に例を示します。
 
 * コントローラー コンストラクターからスローされる例外。
 * メッセージ ハンドラーからスローされる例外。
@@ -492,7 +492,7 @@ Add the attribute to the service implementations:
 
 この値は、TrackException レポートをカウントする Application Insights ポータルで算出される "例外" 数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [REST、SQL、および依存関係へのその他の呼び出しを監視する](../../azure-monitor/app/asp-net-dependencies.md)
 * [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](../../azure-monitor/app/javascript.md)
 * [パフォーマンス カウンターを監視する](../../azure-monitor/app/performance-counters.md)

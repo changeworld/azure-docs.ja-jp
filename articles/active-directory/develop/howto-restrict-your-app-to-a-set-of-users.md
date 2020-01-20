@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory に登録されたアプリ ユーザーを制限する | Azure
+title: Azure AD アプリを一連のユーザーに制限する | Azure
 titleSuffix: Microsoft identity platform
 description: Azure AD に登録されたアプリへのアクセスを選択したユーザーのセットに制限する方法について説明します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424456"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>方法:Azure AD アプリを一連のユーザーに制限する
 
@@ -46,7 +46,7 @@ Azure AD により、テナントの管理者と開発者が、テナントの�
 
 ユーザーの割り当てが有効なアプリケーションを作成するには、2 つの方法があります。 1 つ目には**グローバル管理者**ロールが必要ですが、2 つ目には必要ありません。
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>エンタープライズ アプリケーション (グローバル管理者ロールが必要)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>エンタープライズ アプリケーション (グローバル管理者ロールが必要)
 
 1. [**Azure portal**](https://portal.azure.com/) に移動し、**グローバル管理者**としてサインインします。
 1. 上部のバーで、サインインしているアカウントを選択します。 

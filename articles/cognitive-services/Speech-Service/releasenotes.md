@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380356"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -24,26 +24,26 @@ ms.locfileid: "74816605"
 
 **新機能**
 
-- オンプレミス コンテナーとソブリン クラウドでの使用を容易にするために FromHost() API を追加しました。
+- オンプレミス コンテナーとソブリン クラウドでの使用を容易にするために `FromHost()` API を追加しました。
 - 音声認識の自動ソース言語検出機能を追加しました (Java および C++)。
-- 音声認識でしかるべきソース言語を指定するための SourceLanguageConfig オブジェクトを追加しました (Java および C++)。
-- NuGet パッケージと Unity パッケージを通じて、Windows (UWP)、Android、iOS で新たに KeywordRecognizer を使用できるようになりました。
+- 音声認識でしかるべきソース言語を指定するための `SourceLanguageConfig` オブジェクトを追加しました (Java および C++)
+- NuGet パッケージと Unity パッケージを通じて、Windows (UWP)、Android、iOS で新たに `KeywordRecognizer` を使用できるようになりました
 - 非同期バッチで会話の文字起こしを行うための Remote Conversation Java API を追加しました。
 
 **重大な変更**
 
-- 会話の文字起こし機能は、Microsoft.CognitiveServices.Speech.Transcription 名前空間に移されました。
-- 会話の文字起こし機能の一部のメソッドが、新しい Conversation クラスに移されました。
+- 会話の文字起こし機能が名前空間 `Microsoft.CognitiveServices.Speech.Transcription` の下に移動されました。
+- 会話の文字起こし機能の一部のメソッドが、新しい `Conversation` クラスに移されました。
 - 32 ビット (ARMv7 および x86) iOS のサポートが終了しました。
 
 **バグの修正**
 
-- 有効な音声サービスのサブスクリプション キーなしでローカル KeywordRecognizer を使用した場合に発生するクラッシュを修正しました。
+- 有効な音声サービスのサブスクリプション キーなしでローカル `KeywordRecognizer` を使用した場合に発生するクラッシュを修正しました。
 
 **サンプル**
 
-- KeywordRecognizer の Xamarin サンプル
-- KeywordRecognizer の Unity サンプル
+- `KeywordRecognizer` の Xamarin サンプル
+- `KeywordRecognizer` の Unity サンプル
 - 自動ソース言語検出の C++ および Java サンプル
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: 2019-September リリース
@@ -52,9 +52,9 @@ ms.locfileid: "74816605"
 
 - ユニバーサル Windows プラットフォーム (UWP)、Android、iOS での Xamarin のベータ サポートが追加されました
 - Unity の iOS サポートが追加されました
-- Android、iOS、Linux での ALaw、Mulaw、FLAC に対する圧縮された入力のサポートが追加されました
-- メッセージをサービスに送信するために Connection クラスの SendMessageAsync が追加されました
-- メッセージのプロパティを設定するために Connection クラスの SetMessageProperty が追加されました
+- Android、iOS、Linux での ALaw、Mulaw、FLAC に対する `Compressed` 入力のサポートが追加されました
+- メッセージをサービスに送信するための `SendMessageAsync` が `Connection` クラスに追加されました
+- メッセージのプロパティを設定するための `SetMessageProperty` が `Connection` クラスに追加されました
 - TTS で Java (Jre と Android)、Python、Swift、Objective-C に対するバインドが追加されました
 - TTS で macOS、iOS、Android に対する再生のサポートが追加されました。
 - TTS に対する "ワード境界" の情報が追加されました。
@@ -66,10 +66,10 @@ ms.locfileid: "74816605"
 - 一部の接続プロパティで UUID が一意ではない問題が修正されました
 - Swift バインドでの NULL 値許容指定子に関するいくつかの警告が修正されました (小さなコード変更が必要な場合があります)
 - ネットワークに負荷がかかると WebSocket 接続が異常終了する原因となっていたバグが修正されました
-- DialogServiceConnector によって使用される印象 ID が重複することがある原因であった Android の問題が修正されました
-- 複数ターン相互作用を通した接続の安定性と、DialogServiceConnector でエラーが発生したときの (Canceled イベント経による) エラーの報告が向上しました
-- アクティブな StartKeywordRecognitionAsync() の間に ListenOnceAsync() を呼び出すときなど、DialogServiceConnector セッションの開始時にイベントが適切に提供されるようになりました
-- DialogServiceConnector アクティビティの受信に関連するクラッシュが対処されました
+- `DialogServiceConnector` によって使用される印象 ID が重複することがある原因であった Android の問題が修正されました
+- 複数ターン相互作用を通した接続の安定性と、`DialogServiceConnector` でエラーが発生したときの (`Canceled` イベント経由による) エラーの報告が向上しました
+- `DialogServiceConnector` セッションの開始により、アクティブな `StartKeywordRecognitionAsync()` の間に `ListenOnceAsync()` を呼び出すなど、イベントが正しく提供されるようになりました
+- `DialogServiceConnector` アクティビティの受信に関連するクラッシュが対処されました
 
 **サンプル**
 
@@ -84,14 +84,14 @@ ms.locfileid: "74816605"
 - UWP および Unity 上の Text to Speech 用のクイックスタート サンプル
 - iOS 上の Swift 用のクイックスタート サンプル
 - 音声および意図の認識と翻訳用の Unity サンプル
-- DialogServiceConnector 用のクイックスタート サンプルを更新
+- `DialogServiceConnector` のクイック スタート サンプルが更新されました
 
 **機能強化/変更**
 
 - Dialog 名前空間:
-  - SpeechBotConnector は DialogServiceConnector に名前が変更されました
-  - BotConfig は DialogServiceConfig に名前が変更されました
-  - BotConfig::FromChannelSecret() が DialogServiceConfig::FromBotSecret() に再マップされました
+  - `SpeechBotConnector` の名前が `DialogServiceConnector` に変更されました
+  - `BotConfig` の名前が `DialogServiceConfig` に変更されました
+  - `BotConfig::FromChannelSecret()` は `DialogServiceConfig::FromBotSecret()` に再マッピングされました
   - 既存のすべての Direct Line Speech クライアントは、名前の変更後も引き続きサポートされます
 - TTS REST アダプターが更新され、プロキシ、固定接続がサポートされるようになりました
 - 無効なリージョンが渡されたときのエラー メッセージを改善しました
@@ -101,7 +101,7 @@ ms.locfileid: "74816605"
 
 **バグの修正**
 
-- オーディオがレンダリングを完了するまで待たずに、SpeakTextAsync が制御を戻していた TTS の問題を修正しました
+- オーディオがレンダリングを完了するまで待たずに、`SpeakTextAsync` が制御を戻していた TTS の問題を修正しました
 - 言語の完全サポートを可能にするために、C# での文字列のマーシャリングを修正しました
 - サンプルで net461 ターゲット フレームワークを使用してコア ライブラリを読み込むときの .NET Core アプリの問題を修正しました
 - サンプルでネイティブ ライブラリを出力フォルダーに展開するときに発生する場合がある問題を修正しました
@@ -119,7 +119,7 @@ ms.locfileid: "74816605"
 - 会話の文字起こしで使用する FromSubscription を修正しました。
 - 音声アシスタントのキーワード スポッティング機能のバグを修正しました。
 
-## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019 年 5 月リリース
+## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019-May リリース
 
 **新機能**
 
@@ -136,7 +136,7 @@ ms.locfileid: "74816605"
 
 - サービスの動作やサービスの結果を調整するさまざまなレコグナイザー プロパティを追加しました (冒涜的な表現やその他のマスクなど)。
 - レコグナイザー `FromEndpoint` を作成した場合でも、標準の構成プロパティを使用してレコグナイザーを構成できるようになりました。
-- Objective-C: `OutputFormat` プロパティが SPXSpeechConfiguration に追加されました。
+- Objective-C: `OutputFormat` プロパティが `SPXSpeechConfiguration` に追加されました。
 - SDK は、Linux ディストリビューションとして Debian 9 をサポートするようになりました。
 
 **バグの修正**
@@ -157,7 +157,7 @@ ms.locfileid: "74816605"
 
 **新機能**
 
-- SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳細については、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事を参照してください。
+- SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳細については、[テキスト読み上げの概要](text-to-speech.md#get-started)に関する記事を参照してください。
 - SDK は、ストリーム入力ファイルとして MP3 および Opus/OGG オーディオ ファイルをサポートするようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-codec-compressed-audio-input-streams.md))。
 - Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
 - iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
@@ -193,7 +193,7 @@ ms.locfileid: "74816605"
 
 **新機能**
 
-- Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから、Speech サービスに、音声 データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
+- Speech SDK では、`AudioConfig` クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから、Speech サービスに、音声 データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
 - Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)に関する記事をご覧ください。
 - (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 
@@ -201,17 +201,17 @@ ms.locfileid: "74816605"
 
 [サンプル リポジトリ](https://aka.ms/csspeech/samples)で次の新しいコンテンツを利用できます。
 
-- AudioConfig.FromMicrophoneInput の追加サンプル。
+- `AudioConfig.FromMicrophoneInput` のその他のサンプル
 - 意図認識と翻訳に関する追加の Python サンプル。
-- iOS での Connection オブジェクトの使用に関する追加サンプル。
+- iOS での `Connection` オブジェクトの使用に関する追加サンプル。
 - オーディオ出力での翻訳に関する追加の Java サンプル。
 - [Batch Transcription REST API](batch-transcription.md) の使用に関する新しいサンプル。
 
 **機能強化/変更**
 
 - Python
-  - SpeechConfig でのパラメーター検証とエラー メッセージが強化されました。
-  - Connection オブジェクトのサポートが追加されました。
+  - `SpeechConfig` でのパラメーター検証とエラー メッセージが強化されました。
+  - `Connection` オブジェクトのサポートを追加します。
   - Windows での 32 ビット Python (x86) のサポート。
   - Python 用 Speech SDK がベータ版ではなくなりました。
 - iOS
@@ -219,7 +219,7 @@ ms.locfileid: "74816605"
   - SDK が、iOS バージョン 9.2 以降をサポートするようになりました。
   - リファレンス ドキュメントが改善され、いくつかのプロパティ名が修正されました。
 - JavaScript
-  - Connection オブジェクトのサポートが追加されました。
+  - `Connection` オブジェクトのサポートを追加します。
   - バンドルされている JavaScript の型定義ファイルが追加されました
   - 語句ヒントの最初のサポートと実装。
   - 認識に対するサービス JSON でプロパティのコレクションが返されます
@@ -230,8 +230,8 @@ ms.locfileid: "74816605"
 
 - 空のプロキシ ユーザー名とプロキシ パスワードが、正しく処理されませんでした。 このリリースでは、プロキシ ユーザー名とプロキシ パスワードを空の文字列に設定した場合は、プロキシに接続したときに送信されません。
 - SDK によって作成された SessionId が、一部の言語&nbsp;/環境で本当にランダムではないことがありました。 乱数ジェネレーターの初期化を追加してこの問題を解決しました。
-- 認可トークンの処理が向上します。 認可トークンを使用する場合、SpeechConfig で指定し、サブスクリプション キーを空のままにします。 その後、通常どおり認識エンジンを作成します。
-- 場合によっては、Connection オブジェクトが正しく解放されませんでした。 この問題は修正されています。
+- 認可トークンの処理が向上します。 認可トークンを使用する場合、`SpeechConfig` で指定し、サブスクリプション キーを空のままにします。 その後、通常どおり認識エンジンを作成します。
+- 場合によっては、`Connection` オブジェクトが正しく解放されませんでした。 この問題は修正されています。
 - 翻訳合成も Safari 上にある場合にオーディオ出力をサポートするよう、JavaScript のサンプルが修正されました。
 
 ## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
@@ -254,8 +254,8 @@ ms.locfileid: "74816605"
   - Speech SDK for JavaScript はオープンソースで提供されています。 ソース コードは [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)から入手できます。
   - Node.js のサポートを開始しました。詳細については、[こちら](quickstart-js-node.md)を参照してください。
   - 音声セッションの長さの制限がなくなり、再接続は背後で自動的に実行されるようになります。
-- Connection オブジェクト
-  - 認識機能から、Connection オブジェクトにアクセスできます。 このオブジェクトを使用すると、サービスの接続を明示的に開始し、接続イベントと切断イベントをサブスクライブすることができます
+- `Connection` オブジェクト
+  - `Recognizer` から、`Connection` オブジェクトにアクセスできます。 このオブジェクトを使用すると、サービスの接続を明示的に開始し、接続イベントと切断イベントをサブスクライブすることができます
     (この機能は、JavaScript と Python からはまだ使用できません)。
 - Ubuntu 18.04 のサポート。
 - Android
@@ -269,15 +269,15 @@ ms.locfileid: "74816605"
 
 **バグの修正**
 
-- RecognizeAsync の型の不一致によるメモリ リークを修正しました。
+- `RecognizeAsync` の型の不一致によるメモリ リークを修正しました。
 - 場合によっては、例外がリークしていました。
 - 翻訳イベント引数のメモリ リークを修正しました。
 - 長時間実行中のセッションでの再接続に関するロックの問題を修正しました。
 - 翻訳が失敗した場合に最終的な結果が失われる可能性がある問題を修正しました。
-- C#:メイン スレッドで非同期操作が待機されていない場合、非同期タスクが完了する前に認識機能が破棄される可能性がありました。
+- C#:メイン スレッドで `async` 操作が待機されていない場合、非同期タスクが完了する前に認識機能が破棄される可能性がありました。
 - Java:Java VM がクラッシュする原因となる問題を修正しました。
-- Objective-C: RecognizingIntent ではなく RecognizedIntent が返されるという列挙型のマッピングを修正しました。
-- JavaScript:SpeechConfig で既定の出力形式を 'simple' に設定します。
+- Objective-C: `RecognizingIntent` ではなく RecognizedIntent が返されるという列挙型のマッピングを修正しました。
+- JavaScript:`SpeechConfig` で既定の出力形式を 'simple' に設定します。
 - JavaScript:JavaScript と他の言語の config オブジェクトのプロパティ間にある不整合を解消しました。
 
 **サンプル**
@@ -290,7 +290,7 @@ ms.locfileid: "74816605"
 **新機能**
 
 - Android x86 または x64 のサポート。
-- プロキシのサポート: SpeechConfig オブジェクトで、プロキシ情報 (ホスト名、ポート、ユーザー名、およびパスワード) を設定する関数を呼び出せるようになりました。 この機能は iOS ではまだ利用できません。
+- プロキシのサポート: `SpeechConfig` オブジェクトで、プロキシ情報 (ホスト名、ポート、ユーザー名、パスワード) を設定する関数を呼び出せるようになりました。 この機能は iOS ではまだ利用できません。
 - 強化されたエラー コードとメッセージ。 認識でエラーが返された場合、これは既に `Reason` (取り消されたイベントの場合) または`CancellationDetails` (認識結果) を `Error` に設定します。 取り消されたイベントに、2 つのメンバー `ErrorCode` と `ErrorDetails` が含まれるようになりました。 サーバーによって、報告されたエラーと一緒に追加のエラー情報が返された場合、これを新しいメンバーで使用できるようになります。
 
 **機能強化**
@@ -301,7 +301,7 @@ ms.locfileid: "74816605"
 
 **バグの修正**
 
-- 認識エンジンで見つかったいくつかの例外を修正しました。 さらに例外がキャッチされ、キャンセル済みイベントに変換されます。
+- 認識エンジンで見つかったいくつかの例外を修正しました。 さらに例外がキャッチされ、`Canceled` イベントに変換されます。
 - プロパティ管理のメモリ リークを修正しました。
 - オーディオ入力ファイルが認識エンジンをクラッシュする可能性があるバグを修正しました。
 - セッションがイベントを停止した後でイベントが受信されることがあるバグを修正しました。
@@ -309,8 +309,8 @@ ms.locfileid: "74816605"
 - クラッシュの原因となる iOS の互換性の問題を修正しました。
 - Android のマイクのサポートのための安定性の向上。
 - JavaScript の認識エンジンが認識言語を無視するバグを修正しました。
-- JavaScript で (場合によっては) EndpointId の設定を妨げるバグを修正しました。
-- JavaScript の AddIntent のパラメーターの順序を変更し、不足している AddIntent JavaScript 署名を追加します。
+- JavaScript で (場合によっては) `EndpointId` の設定を妨げるバグを修正しました。
+- JavaScript の AddIntent のパラメーターの順序を変更し、不足している `AddIntent` JavaScript 署名を追加します。
 
 **サンプル**
 
@@ -325,7 +325,7 @@ ms.locfileid: "74816605"
 - 新しいエラーとパラメーターのチェックを追加しました。
 - Objective-C: NSString での名前のオーバーライドによって致命的なエラーが発生する可能性を修正しました。
 - Objective-C: API の可視性を調整しました
-- JavaScript: イベントとそのペイロードに関して修正しました。
+- JavaScript:イベントとそのペイロードに関して修正しました。
 - ドキュメントの改善。
 
 [サンプル リポジトリ](https://aka.ms/csspeech/samples)に、JavaScript の新しいサンプルを追加しました。
@@ -387,8 +387,8 @@ ms.locfileid: "74816605"
 
 **重大な変更**
 
-- 認識イベント: NoMatch のイベントの種類は、エラー イベントにマージされました。
-- C# での SpeechOutputFormat は、C++ との整合性を維持するために OutputFormat に名前が変更されました。
+- 認識イベント: `NoMatch` のイベントの種類は、`Error` イベントにマージされました。
+- C# での SpeechOutputFormat は、C++ との整合性を維持するために `OutputFormat` に名前が変更されました。
 - `AudioInputStream` インターフェイスのいくつかのメソッドの戻り値の型が若干変更されました。
   - Java では、`read` メソッドが `int` の代わりに `long` を返すようになりました。
   - C# では、`Read` メソッドが `int` の代わりに `uint` を返すようになりました。
@@ -424,19 +424,12 @@ ms.locfileid: "74816605"
 **バグの修正**
 
 - シャットダウン中に USP レイヤーで発生する可能性のあるコールバックの問題を修正しました。
-
 - 認識エンジンでオーディオ入力ファイルが使用されると、必要以上に長くファイル ハンドルが保持されていました。
-
 - メッセージ ポンプと認識エンジンの間の複数のデッドロックが削除されました。
-
 - サービスからの応答がタイムアウトすると、結果は `NoMatch` になります。
-
 - Windows のメディア ファンデーション ライブラリは、遅延読み込みされます。 このライブラリは、マイク入力の場合のみ必要です。
-
 - オーディオ データのアップロードの速度が、元の音声速度の約 2 倍に制限されます。
-
 - Windows では、C# .NET アセンブリには厳密な名前が指定されるようになりました。
-
 - ドキュメントの修正: `Region` は、認識エンジンを作成するための必須情報です。
 
 他のサンプルも追加されており、常に更新されます。 最新のサンプル セットについては、[Speech SDK のサンプルの GitHub リポジトリ](https://aka.ms/csspeech/samples)を参照してください。

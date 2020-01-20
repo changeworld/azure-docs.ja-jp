@@ -1,6 +1,6 @@
 ---
 title: B2B の AS2 メッセージを送受信する
-description: Azure Logic Apps を使用して B2B エンタープライズ統合シナリオ用の AS2 メッセージを交換する
+description: Azure Logic Apps と Enterprise Integration Pack を使用して B2B エンタープライズ統合シナリオ用の AS2 メッセージを交換します
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790720"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666705"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
@@ -81,14 +81,14 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 1. ここで、以下のプロパティに関する情報を提供します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    |----------|-------------|
    | **エンコードするメッセージ** | メッセージ ペイロード |
    | **AS2 の送信元** | AS2 契約で指定されているメッセージ送信者の識別子 |
    | **AS2 の宛先** | AS2 契約で指定されているメッセージ受信者の識別子 |
    |||
 
-   例:
+   次に例を示します。
 
    ![メッセージのエンコード プロパティ](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -118,6 +118,6 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) について詳細を確認する

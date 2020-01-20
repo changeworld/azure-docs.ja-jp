@@ -1,32 +1,23 @@
 ---
-title: ローカル Azure Service Fabric クラスター セットアップのトラブルシューティング | Microsoft Docs
+title: ローカル Azure Service Fabric クラスター セットアップのトラブルシューティング
 description: この記事には、ローカル開発クラスターのトラブルシューティングに関する推奨事項が記載されています。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465507"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>ローカル開発クラスターのセットアップをトラブルシューティングする
 Azure Service Fabric のローカル開発クラスターとの対話中に問題が発生した場合は、次の推奨事項を確認して解決の参考にしてください。
 
 ## <a name="cluster-setup-failures"></a>クラスターのセットアップに関するエラー
 ### <a name="cannot-clean-up-service-fabric-logs"></a>Service Fabric のログをクリーンアップできない
-#### <a name="problem"></a>問題点
+#### <a name="problem"></a>問題
 DevClusterSetup スクリプトの実行中に、次のエラーが表示されます。
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
@@ -42,14 +33,14 @@ DevClusterSetup スクリプトの実行中に、次のエラーが表示され�
 ## <a name="cluster-connection-failures"></a>クラスターの接続に関するエラー
 
 ### <a name="type-initialization-exception"></a>型の初期化で例外が発生する
-#### <a name="problem"></a>問題点
+#### <a name="problem"></a>問題
 PowerShell でクラスターに接続する際に、System.Fabric.Common.AppTrace で TypeInitializationException エラーが発生します。
 
 #### <a name="solution"></a>解決策
 インストール時に Path 変数が正しく設定されませんでした。 Windows からサインアウトし、再度サインインします。 これでパスが更新されます。
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>"object is closed" のエラーが発生してクラスターの接続が失敗する
-#### <a name="problem"></a>問題点
+#### <a name="problem"></a>問題
 次のようなエラーが発生して、Connect-ServiceFabricCluster の呼び出しが失敗します。
 
     Connect-ServiceFabricCluster : The object is closed.
@@ -63,7 +54,7 @@ PowerShell でクラスターに接続する際に、System.Fabric.Common.AppTra
 現在開いている PowerShell ウィンドウを閉じ、新しい PowerShell ウィンドウを管理者として開きます。
 
 ### <a name="fabric-connection-denied-exception"></a>FabricConnectionDeniedException が発生する
-#### <a name="problem"></a>問題点
+#### <a name="problem"></a>問題
 Visual Studio を使用してデバッグしている際に、FabricConnectionDeniedException エラーが発生します。
 
 #### <a name="solution"></a>解決策
@@ -76,7 +67,7 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 

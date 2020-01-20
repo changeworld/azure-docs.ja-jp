@@ -1,25 +1,20 @@
 ---
-title: 汎用化したオンプレミスの VHD から管理対象の Azure VM を作成する
+title: アップロードした汎用化 VHD から VM を作成する
 description: 汎用化した VHD を Azure にアップロードし、それを使用して Resource Manager デプロイ モデルで新しい VM を作成します。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464935"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -33,11 +28,9 @@ ms.locfileid: "74067428"
 - [Managed Disks](managed-disks-overview.md) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)」をご確認ください。
 
  
-
-
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Sysprep を使用してソース VM を一般化する
 
-特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、[Sysprep の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関するページを参照してください。
+まだ実行していない場合、VHD を Azure にアップロードする前に VM を Sysprep で一般化する必要があります。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、[Sysprep の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関するページを参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
@@ -56,40 +49,49 @@ ms.locfileid: "74067428"
 6. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
+## <a name="upload-the-vhd"></a>VHD をアップロードする 
 
 VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure PowerShell を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>アップロードした VHD から管理イメージを作成する 
 
-一般化済みの OS マネージド ディスクから管理イメージを作成します。 次の値は実際の値に変更してください。
+VHD がマネージド ディスクにアップロードされたら、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) を使用し、マネージド ディスクを取得する必要があります。
 
-
-まずいくつかのパラメーターを設定します。
-
-```powershell
-$location = "East US" 
-$imageName = "myImage"
+```azurepowershell-interactive
+$disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-一般化した OS VHD を使ってイメージを作成します。
+## <a name="create-the-image"></a>イメージの作成
+一般化済みの OS マネージド ディスクから管理イメージを作成します。 次の値は実際の値に変更してください。
+
+まず、変数をいくつか設定します。
 
 ```powershell
+$location = 'East US'
+$imageName = 'myImage'
+$rgName = 'myResourceGroup'
+```
+
+マネージド ディスクを使用してイメージを作成します。
+
+```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `
    -Location $location
 $imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
-   -OsType Windows `
    -OsState Generalized `
-   -BlobUri $urlOfUploadedImageVhd `
-   -DiskSizeGB 20
-New-AzImage `
+   -OsType Windows `
+   -ManagedDiskId $disk.Id
+```
+
+イメージを作成します。
+
+```azurepowershell-interactive
+$image = New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
 ```
-
 
 ## <a name="create-the-vm"></a>VM の作成
 
@@ -100,7 +102,7 @@ New-AzImage `
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
-    -ImageName $imageName `
+    -Image $image.Id `
     -Location $location `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `
@@ -110,7 +112,7 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
 

@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436362"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -95,7 +95,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-## <a name="modify"></a>[変更]
+## <a name="modify"></a>変更
 
 Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 ターゲット リソースがリソース グループでない限り、変更ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
 
@@ -158,11 +158,11 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|Operation |説明 |
+|操作 |[説明] |
 |-|-|
 |addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
 |追加 |定義済みのタグと値をリソースに追加します。 |
-|Remove |定義済みのタグをリソースから削除します。 |
+|[削除] |定義済みのタグをリソースから削除します。 |
 
 ### <a name="modify-examples"></a>Modify の例
 
@@ -327,7 +327,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が満たされたときにテンプレートのデプロイを実行します。
 
 > [!NOTE]
-> **deployIfNotExists** で [入れ子になったテンプレート](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template)がサポートされていますが、[リンク済みテンプレート](../../../azure-resource-manager/resource-group-linked-templates.md)は現在サポートされていません。
+> **deployIfNotExists** で [入れ子になったテンプレート](../../../azure-resource-manager/templates/linked-templates.md#nested-template)がサポートされていますが、[リンク済みテンプレート](../../../azure-resource-manager/templates/linked-templates.md#linked-template)は現在サポートされていません。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 
@@ -539,7 +539,7 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 
 ## <a name="layering-policies"></a>階層化ポリシー
 
-リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 例:
+リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 次に例を示します。
 
 - ポリシー 1
   - リソースの場所を 'westus' に制限する
@@ -566,7 +566,7 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 
 各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシーの階層化またはポリシーの重複による最終的な結果は、**累積的に最も制限が厳しい**と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシーと競合するポリシーによって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシーが適切なスコープに影響を与えていることを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Azure Policy の定義の構造](definition-structure.md)」を確認します。

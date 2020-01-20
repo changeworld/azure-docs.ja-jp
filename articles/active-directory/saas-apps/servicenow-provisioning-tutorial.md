@@ -13,100 +13,141 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 12/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443231"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
-このチュートリアルでは、Azure AD から ServiceNow にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで ServiceNow と Azure AD で実行する必要がある手順について説明します。
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために ServiceNow と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [ServiceNow](https://www.servicenow.com/) へのプロビジョニングおよびプロビジョニング解除が Azure AD プロビジョニング サービスを使って自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
 
-> [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * ServiceNow でユーザーを作成する
+> * アクセスが不要になった場合に ServiceNow のユーザーを削除する
+> * Azure AD と ServiceNow の間でユーザー属性の同期を維持する
+> * ServiceNow でグループとグループ メンバーシップをプロビジョニングする
+> * ServiceNow への[シングル サインオン](servicenow-tutorial.md) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
-ServiceNow と Azure AD の統合を構成するには、次のものが必要です。
+このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-- Azure AD サブスクリプション
-- ServiceNow の場合は、Calgary バージョン以降の ServiceNow のインスタンスまたはテナント
-- ServiceNow Express の場合は、Helsinki バージョン以降の ServiceNow Express のインスタンス
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* Calgary 以降の [ServiceNow インスタンス](https://www.servicenow.com/)
+* Helsinki 以降の [ServiceNow Express インスタンス](https://www.servicenow.com/)
+* 管理者ロールを持つ ServiceNow のユーザー アカウント
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と ServiceNow の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように ServiceNow を構成する
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+1. ServiceNow インスタンス名を指定します。 インスタンス名は、ServiceNow にアクセスするために使用する URL で確認できます。 次の例では、インスタンス名は dev35214 です。
 
-## <a name="assigning-users-to-servicenow"></a>ServiceNow へのユーザーの割り当て
+![ServiceNow インスタンス](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+    
+2. ServiceNow で管理者の資格情報を取得します。 ServiceNow のユーザー プロファイルに移動し、ユーザーが管理者ロールを持っていることを確認します。 
 
-プロビジョニング サービスを構成して有効にする前に、ServiceNow アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを ServiceNow アプリに割り当てることができます。[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+![ServiceNow 管理者ロール](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから ServiceNow を追加する
+
+Azure AD アプリケーション ギャラリーから ServiceNow を追加して、ServiceNow へのプロビジョニングの管理を開始します。 SSO のために ServiceNow を以前に設定した場合は、その同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
+
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
+
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
+
+* ServiceNow にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
+
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
 
 
-> [!IMPORTANT]
->*   単一の Azure AD ユーザーを ServiceNow に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
->*   ServiceNow にユーザーを割り当てるときに、有効なユーザー ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
->*   Azure AD でロールを作成して構成する方法の詳細については、こちらの[リンク](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
+## <a name="step-5-configure-automatic-user-provisioning-to-servicenow"></a>手順 5. ServiceNow への自動ユーザー プロビジョニングを構成する 
 
-## <a name="enable-automated-user-provisioning"></a>自動化されたユーザー プロビジョニングを有効にする
+このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
-このセクションでは、Azure AD を ServiceNow のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを ServiceNow で作成、更新、無効化する手順を説明します。
+### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD で ServiceNow の自動ユーザー プロビジョニングを構成するには:
 
-> [!TIP]
->ServiceNow では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
-### <a name="configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成する
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+2. アプリケーションの一覧で **[ServiceNow]** を選択します。
 
-1. シングル サインオンのために ServiceNow を既に構成している場合は、検索フィールドで ServiceNow のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **ServiceNow** を検索します。 検索結果から ServiceNow を選択してアプリケーションの一覧に追加します。
+    ![アプリケーションの一覧の ServiceNow リンク](common/all-applications.png)
 
-1. ServiceNow のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
+3. **[プロビジョニング]** タブを選択します。
 
-1. **[プロビジョニング モード]** を **[自動]** に設定します。 
+    ![[プロビジョニング] タブ](common/provisioning.png)
+
+4. **[プロビジョニング モード]** を **[自動]** に設定します。
+
+    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+
+5. **[管理者資格情報]** セクションで、ServiceNow 管理者の資格情報とユーザー名を入力します。 **[接続テスト]** をクリックして、Azure AD から ServiceNow に確実に接続できるようにします。 接続できない場合は、使用中の ServiceNow アカウントで管理者アクセス許可を確保してから、もう一度試します。
 
     ![プロビジョニング](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-1. [管理者資格情報] セクションで、次の手順を実行します。
-   
-    a. **[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
+6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    b. **[ServiceNow 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
+    ![通知用メール](common/provisioning-notification-email.png)
 
-    c. **[ServiceNow 管理パスワード]** ボックスに、管理者のパスワードを入力します。
+7. **[保存]** を選択します。
 
-1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が ServiceNow アプリに接続できることを確認します。 接続が失敗した場合、使用中の ServiceNow アカウントに Team Admin アクセス許可があることを確認して、 **"管理者資格情報"** の手順をもう一度試してください。
+8. **[マッピング]** セクションの **[Azure Active Directory ユーザーを ServiceNow に同期する]** を選択します。
 
-1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+9. **[属性マッピング]** セクションで、Azure AD から ServiceNow に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で ServiceNow のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に ServiceNow API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-1. **[保存]** をクリックします。
+10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to ServiceNow]\(Azure Active Directory グループを ServiceNow に同期する\)** を選択します。
 
-1. [マッピング] セクションの **[Azure Active Directory ユーザーを ServiceNow に同期する]** を選びます。
+11. **[属性マッピング]** セクションで、Azure AD から ServiceNow に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で ServiceNow のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-1. **[属性マッピング]** セクションで、Azure AD から ServiceNow に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で ServiceNow のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-1. ServiceNow に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+13. ServiceNow に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-1. **[保存]** をクリックします。
+    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-[ユーザーとグループ] セクションで ServiceNow に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって ServiceNow アプリに対して実行されたすべてのアクションが記載されています。
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、ServiceNow にプロビジョニングするユーザーやグループを定義します。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+    ![プロビジョニングのスコープ](common/provisioning-scope.png)
+
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+
+    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
+
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+* **InvalidLookupReference:** ServiceNow の Department や Location などの特定の属性をプロビジョニングする場合、値は ServiceNow の参照テーブルに既に存在している必要があります。 たとえば、ServiceNow の**テーブル名の挿入**テーブルに 2 つの場所 (シアトル、ロサンゼルス) と 3 つの部門 (営業、財務、マーケティング) があるとします。 部門が "営業" で場所が "シアトル" のユーザーをプロビジョニングしようとすると、ユーザーは正常にプロビジョニングされます。 部門 "営業" と場所 "LA" のユーザーをプロビジョニングしようとすると、ユーザーはプロビジョニングされません。 LA という場所を ServiceNow の参照テーブルに追加するか、ServiceNow の形式に合わせて Azure AD のユーザー属性を更新する必要があります。 
+* **EntryJoiningPropertyValueIsMissing:** [属性マッピング](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を確認して、一致する属性を特定します。 この値は、プロビジョニング対象のユーザーまたはグループに存在する必要があります。 
+* [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認して、要件や制限事項 (たとえば、ユーザーの国番号を指定するための形式) を理解してください。
+* ServiceNow のデプロイによっては、Azure AD プロビジョニング サービスの IP 範囲を許可する必要があります。 Azure AD プロビジョニング サービスに予約されている IP 範囲については、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)の「AzureActiveDirectoryDomainServices」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](servicenow-tutorial.md)
 
+## <a name="next-steps"></a>次のステップ
 
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

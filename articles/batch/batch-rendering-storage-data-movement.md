@@ -1,18 +1,18 @@
 ---
 title: レンダリング用のストレージとデータ移動 - Azure Batch
-description: ワークロードをレンダリングするためのストレージとデータ移動のオプション
+description: アセット ファイルと出力ファイルのワークロードをレンダリングするためのさまざまなストレージとデータ移動のオプションについて説明します。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1076fc152ddf2c3a2d4f2346262ca90215d68ddf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390380"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション
 
@@ -128,10 +128,10 @@ Azure Files は、azcopy、Azure CLI、Storage Explorer、Azure PowerShell、Bat
 
 [Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) は、オンプレミスのファイル システムと Azure ファイル共有間でファイルを自動的に同期できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージのオプションについて詳しくは、次のドキュメントで掘り下げています。
 
-* [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+* [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
 * [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
 * [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)

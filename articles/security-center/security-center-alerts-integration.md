@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center との Azure セキュリティ製品の統合
-description: このトピックでは、Azure Security Center と統合されている Azure セキュリティ製品について説明します。
+title: Azure Security Center での Azure セキュリティ製品に対する脅威検出
+description: このトピックでは、Azure Security Center で脅威の検出を提供できる Azure セキュリティ製品について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278345"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665712"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Azure Security Center における Azure セキュリティ製品の統合
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Azure WAF と Azure DDoS Protection の脅威検出
 
-Azure Security Center では、次のセキュリティ製品を使用するための追加の Microsoft ライセンスが提供されています。
+Azure Security Center では、次の Azure セキュリティ製品に対して脅威検出機能を提供できます (製品ごとに個別のライセンスが必要です)。
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
@@ -30,7 +30,7 @@ Azure Application Gateway は、一般的な脆弱性やその悪用から Web �
 
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 Application Gateway の WAF は、Open Web Application Security Project のコア ルール セット 3.0 または 2.2.9 に基づいています。 新たな脆弱性から保護するために、WAF は自動的に更新されます。このとき、追加の構成は不要です。 WAF アラートは、Security Center にストリーミングされます。 WAF によって生成されるアラートの詳細については、[Web アプリケーション ファイアウォールの CRS 規則グループと規則](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)に関する記事をご覧ください。
 
-## Azure DDoS Protection<a name="azure-ddos"></a>
+## Azure DDoS Protection <a name="azure-ddos"></a>
 
 分散型サービス拒否 (DDoS) 攻撃は、簡単に実行できることが分かっています。 セキュリティの大きな不安材料になっており、アプリケーションをクラウドに移行する場合は特にそうです。 
 
@@ -38,12 +38,4 @@ DDoS 攻撃は、アプリケーションのリソースを使い果たして、
 
 Azure DDoS Protection を、アプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃を防御できます。 DDoS Protection では、各種のサービス レベルが提供されます。 詳細については、[Azure DDoS Protection の概要](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)に関する記事を参照してください。
 
-DDoS Protection Standard は、次の種類の攻撃を軽減できます。
-
-> [!div class="mx-tableFixed"]
-
-|アラート:|説明|
-|---|---|
-|**[Volumetric attack detected]\(帯域幅消費型攻撃が検出されました\)**|この攻撃の目標は、膨大な量の一見正当なトラフィックでネットワーク層をあふれさせることです。 これには、UDP フラッド、増幅フラッド、およびその他の偽装されたパケットのフラッドが含まれます。 DDoS Protection Standard では、この潜在的に数ギガバイトに及ぶ攻撃が自動的にグローバル ネットワーク スケールで吸収、除去され、攻撃が緩和されます。|
-|**[Protocol attack detected]\(プロトコル攻撃が検出されました\)**|これらの攻撃では、レイヤー 3 とレイヤー 4 のプロトコル スタック内の弱点が悪用されて、ターゲットがアクセス不可になります。 これには、SYN フラッド攻撃、リフレクション攻撃、およびその他のプロトコル攻撃が含まれます。 DDoS Protection Standard は、クライアント側と対話して悪意のあるトラフィックと正当なトラフィックを区別し、悪意のあるトラフィックをブロックしてこれらの攻撃を軽減します。|
-|**[Resource (application) layer attack detected]\(リソース (アプリケーション) レイヤー攻撃が検出されました\)**|これらの攻撃は、ホスト間のデータ転送を妨害するために Web アプリケーション パケットをターゲットにします。 これらの攻撃には、HTTP プロトコル違反、SQL インジェクション、クロスサイト スクリプティング、およびその他のレイヤー 7 攻撃が含まれます。 Azure Application Gateway WAF を DDoS Protection Standard と共に使用して、これらの攻撃を防御できます。 Azure Marketplace でサードパーティ製の WAF オファリングを入手することもできます。|
+Azure DDoS Protection アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azureddos)に関するページを参照してください。

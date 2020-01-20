@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466699"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
 **Azure Storage のリンクされたサービス**を利用すると、**アカウント キー**を使用して Azure ストレージ アカウントを Azure データ ファクトリにリンクすることができます。これにより、データ ファクトリは Azure Storage にグローバルにアクセスすることができます。 次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
+| 型 |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
-Azure Storage のアカウント キーを表示またはコピーする手順については、次のセクションを参照してください。[アクセス キー](../articles/storage/common/storage-account-manage.md#access-keys)。
+ストレージアカウントのアクセスキーを取得する方法については、「[ストレージアカウントのアクセスキーを管理する](../articles/storage/common/storage-account-keys-manage.md)」を参照してください。
 
 **例:**  
 
@@ -47,9 +47,9 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 
 Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。 
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
+| 型 |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。  |はい |
 
 **例:**

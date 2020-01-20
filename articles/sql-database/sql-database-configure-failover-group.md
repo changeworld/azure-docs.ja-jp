@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827151"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553071"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 
@@ -35,6 +35,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 フェールオーバー グループを作成し、Azure portal を使用して単一データベースを追加します。
+
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
 1. フェールオーバー グループに追加する単一データベースを選択します。 
@@ -183,6 +184,9 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 ---
 
+> [!IMPORTANT]
+> セカンダリ データベースを削除する必要がある場合は、削除する前にそれをフェールオーバー グループから削除します。 セカンダリ データベースをフェールオーバー グループから削除する前に削除すると、予期しない動作が発生する可能性があります。 
+
 ## <a name="elastic-pool"></a>エラスティック プール
 Azure portal または PowerShell を使用して、フェールオーバー グループを作成し、そのグループにエラスティック プールを追加します。  
 
@@ -282,7 +286,7 @@ Azure portal または PowerShell を使用して、エラスティック プー
 
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 
 1. 作業ウィンドウで **[フェールオーバー]** を選択し、エラスティック プールを含むフェールオーバー グループをフェールオーバーします。 
-1. TDS セッションが切断されることを通知する警告で **[はい]** を選択します。 
+1. TDS セッションが切断されることが通知される警告で **[はい]** を選択します。 
 
    ![SQL データベースを含むフェールオーバー グループをフェールオーバーする](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
@@ -328,11 +332,14 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 ---
 
+> [!IMPORTANT]
+> セカンダリ データベースを削除する必要がある場合は、削除する前にそれをフェールオーバー グループから削除します。 セカンダリ データベースをフェールオーバー グループから削除する前に削除すると、予期しない動作が発生する可能性があります。 
+
 ## <a name="managed-instance"></a>マネージド インスタンス
 
 Azure portal または PowerShell を使用して、2 つのマネージド インスタンス間にフェールオーバー グループを作成します。 
 
-各マネージド インスタンスの仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。
+[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成するか、あるいは、各マネージド インスタンスの仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。 
 
 ### <a name="prerequisites"></a>前提条件
 次の前提条件を考慮してください。
@@ -344,7 +351,7 @@ Azure portal または PowerShell を使用して、2 つのマネージド イ�
 
 ### <a name="create-primary-virtual-network-gateway"></a>プライマリ仮想ネットワーク ゲートウェイを作成する 
 
-Azure portal または PowerShell を使用して、プライマリ仮想ネットワーク ゲートウェイを作成します。 
+[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成していない場合は、Azure portal または PowerShell を使用して、プライマリ仮想ネットワーク ゲートウェイを作成できます。 
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
@@ -650,7 +657,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 - 単一データベースまたはプールされたデータベースのフェールオーバー グループを削除しても、レプリケーションは停止されず、レプリケートされたデータベースは削除されません。 単一データベースまたはプールされたデータベースを削除した後にフェールオーバー グループに追加する場合は、geo レプリケーションを手動で停止し、セカンダリ サーバーからデータベースを削除する必要があります。 いずれかの操作を行わないと、データベースをフェールオーバー グループに追加しようとしたときに `The operation cannot be performed due to multiple errors` のようなエラーが発生する可能性があります。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 フェールオーバー グループの構成手順の詳細については、次のチュートリアルを参照してください。
 - [フェールオーバー グループに単一データベースを追加する](sql-database-single-database-failover-group-tutorial.md)

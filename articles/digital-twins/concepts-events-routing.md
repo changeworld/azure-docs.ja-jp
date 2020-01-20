@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 01/03/2020
+ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889705"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660326"
 ---
-# <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
+# <a name="routing-iot-events-and-messages"></a>IoT イベントとメッセージのルーティング
 
-IoT ソリューションでは、多くの場合、ストレージ、分析、その他の複数の強力なサービスが結合されます。 この記事では、Azure Digital Twins アプリを Azure 分析、AI、およびストレージ サービスに接続して、より深い分析情報と機能を提供する方法について説明します。
+モノのインターネット ソリューションでは、多くの場合、ストレージ、分析、その他の複数の強力なサービスが結合されます。 この記事では、Azure Digital Twins アプリを Azure 分析、AI、およびストレージ サービスに接続して、より深い分析情報と機能を提供する方法について説明します。
 
 ## <a name="route-types"></a>ルートの種類  
 
@@ -64,7 +64,7 @@ Azure Digital Twins サービスでは、現在、以下の **EndpointTypes** �
 >[!NOTE]  
 >エンドポイントの作成方法と、イベントのスキーマの例については、[エグレスとエンドポイント](how-to-egress-endpoints.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のプレビューの制限については、「[パブリック プレビューのサービスの制限](concepts-service-limits.md)」をご覧ください。
 

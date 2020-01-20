@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372332"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 
@@ -157,15 +157,15 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
    |サービス目標名|サービス階層|ハードウェアの世代|最大仮想コア数|
    |---|---|---|---|
-   |GP_S_Gen5_1|汎用|第 5 世代|1|
-   |GP_S_Gen5_2|汎用|第 5 世代|2|
-   |GP_S_Gen5_4|汎用|第 5 世代|4|
-   |GP_S_Gen5_6|汎用|第 5 世代|6|
-   |GP_S_Gen5_8|汎用|第 5 世代|8|
-   |GP_S_Gen5_10|汎用|第 5 世代|10|
-   |GP_S_Gen5_12|汎用|第 5 世代|12|
-   |GP_S_Gen5_14|汎用|第 5 世代|14|
-   |GP_S_Gen5_16|汎用|第 5 世代|16|
+   |GP_S_Gen5_1|General Purpose|第 5 世代|1|
+   |GP_S_Gen5_2|General Purpose|第 5 世代|2|
+   |GP_S_Gen5_4|General Purpose|第 5 世代|4|
+   |GP_S_Gen5_6|General Purpose|第 5 世代|6|
+   |GP_S_Gen5_8|General Purpose|第 5 世代|8|
+   |GP_S_Gen5_10|General Purpose|第 5 世代|10|
+   |GP_S_Gen5_12|General Purpose|第 5 世代|12|
+   |GP_S_Gen5_14|General Purpose|第 5 世代|14|
+   |GP_S_Gen5_16|General Purpose|第 5 世代|16|
 
 2. 必要に応じて、最小仮想コア数と自動一時停止遅延を指定して、既定値を変更します。 これらのパラメーターに対して使用可能な値を次の表に示します。
 
@@ -177,30 +177,27 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>サーバーレス コンピューティング レベルで新しいデータベースを作成する 
 
+次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。 例では、最小仮想コア数、最大仮想コア数、自動一時停止遅延を明示的に指定します。
+
 #### <a name="use-azure-portal"></a>Azure Portal の使用
 
 「[クイック スタート:Azure portal を使用して Azure SQL Database で単一データベースを作成する](sql-database-single-database-get-started.md)」をご覧ください。
 
+
 #### <a name="use-powershell"></a>PowerShell の使用
-
-次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。  この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
@@ -215,11 +212,10 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動する
 
+次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 例では、最小仮想コア数、最大仮想コア数、自動一時停止遅延を明示的に指定します。
+
 #### <a name="use-powershell"></a>PowerShell の使用
 
-次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
@@ -253,15 +248,14 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ## <a name="modifying-serverless-configuration"></a>サーバーレス構成の変更
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>PowerShell の使用
 
 最大または最小の仮想コア、および自動一時停止遅延の変更は、PowerShell の [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドと、 `MaxVcore`、`MinVcore`、および `AutoPauseDelayInMinutes` の引数を使用して実行されます。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="use-azure-cli"></a>Azure CLI の使用
 
 最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az-sql-db-update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
 
-* * *
 
 ## <a name="monitoring"></a>監視
 
@@ -281,37 +275,36 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 サーバーレス データベースのアプリ パッケージとユーザー プールのリソース使用量を監視するためのメトリックは、次の表のとおりです。
 
-|エンティティ|メトリック|説明|Units|
+|Entity|メトリック|[説明]|Units|
 |---|---|---|---|
-|アプリ パッケージ|app_cpu_percent|アプリに許可されている最大仮想コア数に対する、アプリによって使用された仮想コア数の割合。|割合|
+|アプリ パッケージ|app_cpu_percent|アプリに許可されている最大仮想コア数に対する、アプリによって使用された仮想コア数の割合。|[パーセント]|
 |アプリ パッケージ|app_cpu_billed|レポート期間中にアプリに対して請求されるコンピューティングの量。 この期間中に支払われる金額は、このメトリックと仮想コアの単位価格の積です。 <br><br>このメトリックの値は、1 秒ごとに使用された CPU とメモリの最大値を時間で集計することによって決定されます。 使用された金額が、最小仮想コア数と最小メモリによって設定されるプロビジョニング済みの最低額より少ない場合、プロビジョニング済みの最低額が請求されます。 請求のために CPU とメモリを比較するため、メモリは GB 単位のメモリ量を仮想コアあたり 3 GB で再スケーリングすることによって、仮想コアの単位に正規化されます。|仮想コア秒数|
-|アプリ パッケージ|app_memory_percent|アプリに許可されている最大メモリに対する、アプリによって使用されたメモリの割合。|割合|
-|ユーザー プール|cpu_percent|ユーザー ワークロードに許可されている最大仮想コア数に対する、ユーザー ワークロードによって使用された仮想コア数の割合。|割合|
-|ユーザー プール|data_IO_percent|ユーザー ワークロードに許可されている最大データ IOPS に対する、ユーザー ワークロードによって使用されたデータ IOPS の割合。|割合|
-|ユーザー プール|log_IO_percent|ユーザー ワークロードに許可されている最大ログ MB/秒に対する、ユーザー ワークロードによって使用されたログ MB/秒の割合。|割合|
-|ユーザー プール|workers_percent|ユーザー ワークロードに許可されている最大ワーカー数に対する、ユーザー ワークロードによって使用されたワーカー数の割合。|割合|
-|ユーザー プール|sessions_percent|ユーザー ワークロードに許可されている最大セッション数に対する、ユーザー ワークロードによって使用されたセッション数の割合。|割合|
+|アプリ パッケージ|app_memory_percent|アプリに許可されている最大メモリに対する、アプリによって使用されたメモリの割合。|[パーセント]|
+|ユーザー プール|cpu_percent|ユーザー ワークロードに許可されている最大仮想コア数に対する、ユーザー ワークロードによって使用された仮想コア数の割合。|[パーセント]|
+|ユーザー プール|data_IO_percent|ユーザー ワークロードに許可されている最大データ IOPS に対する、ユーザー ワークロードによって使用されたデータ IOPS の割合。|[パーセント]|
+|ユーザー プール|log_IO_percent|ユーザー ワークロードに許可されている最大ログ MB/秒に対する、ユーザー ワークロードによって使用されたログ MB/秒の割合。|[パーセント]|
+|ユーザー プール|workers_percent|ユーザー ワークロードに許可されている最大ワーカー数に対する、ユーザー ワークロードによって使用されたワーカー数の割合。|[パーセント]|
+|ユーザー プール|sessions_percent|ユーザー ワークロードに許可されている最大セッション数に対する、ユーザー ワークロードによって使用されたセッション数の割合。|[パーセント]|
 
 ### <a name="pause-and-resume-status"></a>一時停止と再開の状態
 
 Azure portal では、データベースの状態は、サーバーに含まれるデータベースの一覧が表示される概要ウィンドウで示されます。 データベースの状態は、データベースの概要ウィンドウにも表示されます。
 
-データベースの一時停止と再開の状態を照会するには、次の PowerShell コマンドを使用します。
+データベースの一時停止と再開の状態を照会するには、次のコマンドを使用します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>PowerShell の使用
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI の使用
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>リソース制限
 
@@ -359,7 +352,7 @@ Azure ハイブリッド特典 (AHB) と予約容量の割引は、サーバー�
 
 サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、米国政府中部 (アイオワ) を除くすべてのリージョンで利用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用を開始するには、「[クイック スタート: Azure portal を使用して Azure SQL Database で単一データベースを作成する](sql-database-single-database-get-started.md)」をご覧ください。
 - リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)に関する記事をご覧ください。

@@ -1,5 +1,6 @@
 ---
-title: Azure API Management での通知と電子メール テンプレートの構成 | Microsoft Docs
+title: 通知と電子メール テンプレートの構成
+titleSuffix: Azure API Management
 description: Azure API Management で通知と電子メール テンプレートを構成する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442676"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management で通知と電子メール テンプレートを構成する方法
 API Management には、特定のイベントの通知を構成する機能と、API Management インスタンスの管理者および開発者との通信に使用される電子メール テンプレートを構成する機能があります。 この記事では、使用可能なイベントの通知を構成する方法について説明し、これらのイベントに使用できる電子メール テンプレートを構成する方法の概要を示します。

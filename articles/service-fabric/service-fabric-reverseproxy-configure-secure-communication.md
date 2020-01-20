@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric のリバース プロキシによる安全な通信 | Microsoft Docs
-description: リバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric のリバース プロキシによる安全な通信
+description: Azure Service Fabric アプリケーションにリバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: e915e689f09ba7f5c92958ebf8531aa67eef4493
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933949"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639396"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
@@ -30,7 +22,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>リバース プロキシとサービス間の安全な通信の確立 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>リバース プロキシによるサービスの認証:
-リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [リソースの種類セクション](../azure-resource-manager/resource-group-authoring-templates.md)にある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
+リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合は、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の「[リソースの種類](../azure-resource-manager/templates/template-syntax.md)」セクションにある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
 
 サービスにロジックを実装して、リバース プロキシによって提示される証明書を検証できます。 サービスでは、構成パッケージの構成設定として、許容されるクライアント証明書の詳細事項を指定できます。 これは実行時に読み込まれ、リバース プロキシによって提示される証明書の検証に使用されます。 構成設定を追加するには、[アプリケーション パラメーターの管理](service-fabric-manage-multiple-environment-app-configuration.md)に関する記事を参照してください。 
 
@@ -194,7 +186,7 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 > リバース プロキシは単なるフォワーダーに過ぎず、 クライアント証明書の検証は実行しません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
 * 「[セキュリティで保護されたサービスに接続するためのリバース プロキシの構成](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)」を参照します。
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。

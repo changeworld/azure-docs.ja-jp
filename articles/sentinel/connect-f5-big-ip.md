@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: ff5a8f940348c36ca2a19fb31a173b2dfc4f4d6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 273bea7fa8629dd907c228416d06dac087b0ec85
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510684"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610592"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP アプライアンスを接続する 
 
@@ -51,8 +51,10 @@ F5 BIG-IP では、ログを統合して、Azure Sentinel に直接エクスポ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、F5 BIG IP を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+
 

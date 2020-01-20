@@ -9,17 +9,19 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 01/09/2019
-ms.openlocfilehash: 734a9de3eaa44a149c10d1a268d09024f3ef279d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/19/2019
+ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440932"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。
+
+現時点では、Azure Data Factory UX は Microsoft Edge と Google Chrome でのみサポートされています。
 
 ## <a name="authoring-canvas"></a>作成キャンバス
 
@@ -51,6 +53,6 @@ Azure Data Factory ユーザー インターフェイス エクスペリエン�
 
 ![フィードバック](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パイプラインの監視と管理について詳しくは、[プログラムでのパイプラインの監視と管理](monitor-programmatically.md)に関する記事をご覧ください。

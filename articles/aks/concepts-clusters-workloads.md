@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442970"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -152,7 +152,7 @@ spec:
 
 Kubernetes は*ポッド*を使用して、お使いのアプリケーションのインスタンスを実行します。 ポッドは、アプリケーションの単一のインスタンスを表します。 ポッドは通常、コンテナーと 1 対 1 のマッピングを保持していますが、ポッドに複数のコンテナーを含むことができる高度なシナリオもあります。 これらのマルチコンテナー ポッドは、同じノード上にまとめてスケジュールされ、コンテナーが関連するリソースを共有できるようにします。
 
-ポッドを作成する場合、*リソースの上限*を定義して、一定量の CPU やメモリ リソースを要求できます。 Kubernetes スケジューラは、要件を満たす利用可能なリソースを備えたノード上で実行されるように、ポッドのスケジュール設定を試みます。 また、指定されたポッドでの基本ノードからのコンピューティング リソースの消費量が過大にならないように、リソースの上限を指定することも可能です。 ベスト プラクティスは、必要かつ許可されているリソースがどれかを Kubernetes スケジューラが認識できるように、すべてのポッドにリソース制限を組み入れることです。
+ポッドを作成する場合、"*リソース要求*" を定義して、一定量の CPU やメモリ リソースを要求できます。 Kubernetes スケジューラは、要件を満たす利用可能なリソースを備えたノード上で実行されるように、ポッドのスケジュール設定を試みます。 また、指定されたポッドでの基本ノードからのコンピューティング リソースの消費量が過大にならないように、リソースの上限を指定することも可能です。 ベスト プラクティスは、必要かつ許可されているリソースがどれかを Kubernetes スケジューラが認識できるように、すべてのポッドにリソース制限を組み入れることです。
 
 詳細については、[Kubernetes ポッド][kubernetes-pods]と [Kubernetes ポッドのライフサイクル][kubernetes-pod-lifecycle]に関するページをご覧ください。
 
@@ -259,7 +259,7 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 
 詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Kubernetes の主要なコンポーネントの一部と、それらのコンポーネントを AKS クラスターに適用する方法について説明しました。 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 

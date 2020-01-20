@@ -180,7 +180,7 @@ ms.locfileid: "75476829"
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel サーバー: 接続の拒否 
 
-**ジョブ エラー メッセージ**:"Server refused connection at: http://172.30.175.69:8983/solr/dhus. (サーバーが次の場所で接続を拒否しました: http://172.30.175.69:8983/solr/dhus。)" 
+**ジョブ エラー メッセージ**:"Server refused connection at: http://172.30.175.69:8983/solr/dhus". ("サーバーが次の場所で接続を拒否しました: http://172.30.175.69:8983/solr/dhus"。) 
 
 **是正措置**:この問題は、Sentinel サーバーでメンテナンス作業が行われている場合に発生する可能性があります。 
 1. メンテナンスが実施されていることが原因でジョブまたはパイプラインが失敗した場合は、しばらくしてからジョブを再送信してください。 

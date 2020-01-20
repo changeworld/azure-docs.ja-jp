@@ -1,23 +1,17 @@
 ---
-title: Azure App Configuration の回復性とディザスター リカバリー | Microsoft Docs
-description: Azure App Configuration を使用して回復性とディザスター リカバリーを実装する方法の概要。
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure App Configuration の回復性とディザスター リカバリー
+description: Azure App Configuration を使用して回復性とディザスター リカバリーを実装する方法を説明します。
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 05/29/2019
+ms.openlocfilehash: f2f914ec993670b8ba7a596f873234afd9ffc8e8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185273"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665055"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -68,7 +62,7 @@ Azure portal からは、次の手順に従って、別の構成ストアに変�
 
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、アプリケーションを拡張して App Configuration の実行時に地理的な回復性を実現する方法について説明しました。 ビルド時またはデプロイ時に、App Configuration から構成データを埋め込むこともできます。 詳細については、[「CI/CD パイプラインとの統合」](./integrate-ci-cd-pipeline.md)を参照してください。
 

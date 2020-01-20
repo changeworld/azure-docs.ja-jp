@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4d44598bd1352ac6d4d98ae73838fbfc9e2485e7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427714"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためのパラメーターを選択する
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838433"
 
 
 
-モデルの選択を行うにはさまざまな方法があります。 機械学習で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、クラシック バージョンの Azure Machine Learning Studio の既定のモデル選択メカニズムになっています。 クラシック バージョンの Azure Machine Learning Studio では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
+モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning Studio (クラシック) の既定のモデル選択メカニズムになっています。 Azure Machine Learning Studio (クラシック) では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
@@ -32,7 +32,7 @@ ms.locfileid: "73838433"
 3. **メトリックを定義する**:その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
 4. **トレーニング、評価、および比較を行う**:パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、そのメトリックに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
-次の図は、クラシック バージョンの Azure Machine Learning Studio でこのプロセスを実施する方法を示しています。
+次の図は、Azure Machine Learning Studio (クラシック) でこのプロセスを実施する方法を示しています。
 
 ![最適なパラメーター セットを検索します](./media/algorithm-parameters-optimize/fig1.png)
 

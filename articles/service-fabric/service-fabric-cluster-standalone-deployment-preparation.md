@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs
+title: スタンドアロン クラスターのデプロイの準備
 description: 運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133405"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610065"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -167,5 +159,5 @@ Passed                     : True
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)

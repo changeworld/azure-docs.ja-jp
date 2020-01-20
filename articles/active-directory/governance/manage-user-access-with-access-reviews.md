@@ -1,5 +1,5 @@
 ---
-title: アクセス レビューを使用したユーザー アクセスの管理 - Azure Active Directory | Microsoft Docs
+title: アクセス レビューを使用してユーザー アクセスを管理する - Azure AD
 description: Azure Active Directory のアクセス レビューを使用して、グループのメンバーシップやアプリケーションへの割り当てとしてのユーザー アクセスを管理する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70b6d925772548e6703b57c265ebacf6b7f3f4c9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57956573dfe913828fb20db08397fac52528403d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422432"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 7. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[グループまたはアプリケーションのアクセス レビューの完了](complete-access-review.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 

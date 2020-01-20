@@ -1,6 +1,6 @@
 ---
-title: Azure AD で SCIM を使用してアプリのプロビジョニングを自動化する
-description: SCIM エンドポイントを構築し、SCIM API を Azure Active Directory と統合して、アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
+title: Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを構築する
+description: SCIM エンドポイントを構築し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d4694dfa92d282e1dc098a510ac82dd9c703c1e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433808"
 ---
-# <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) での SCIM のユーザー プロビジョニング
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
 
-この記事では、System for Cross-Domain Identity Management ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) を使用して、アプリケーションに対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動化する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
+アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用し、アプリケーションと Azure AD の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、Azure AD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
 SCIM は、/Users エンドポイントと /Groups エンドポイントという 2 つのエンドポイントの標準化された定義です。 これはオブジェクトの作成、更新、削除を行うための共通の REST 動詞を使用するほか、グループ名、ユーザー名、名、姓、電子メールなどの共通属性に対して定義済みのスキーマを使用します。 SCIM 2.0 REST API を提供するアプリでは、独自のユーザー管理 API を使用する煩わしさを軽減するか、なくすことができます。 たとえば、準拠している SCIM クライアントは、JSON オブジェクトの HTTP POST を /Users エンドポイントに送信して新しいユーザー エントリを作成する方法を認識しています。 同じ基本的なアクションに対して若干異なる API を必要とするのではなく、SCIM 標準に準拠しているアプリでは、既存のクライアント、ツール、およびコードをすぐに利用できます。 
 
@@ -75,7 +75,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
 | streetAddress |addresses[type eq "work"].streetAddress |
-| surname |name.familyName |
+| 姓 |name.familyName |
 | telephone-Number |phoneNumbers[type eq "work"].value |
 | user-PrincipalName |userName |
 
@@ -140,7 +140,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 このセクションでは、Azure AD SCIM クライアントによって出力される SCIM 要求の例と、想定される応答の例を示します。 最良の結果を得るには、このような要求をこの形式で処理し、想定される応答を出力するよう、アプリをコーディングしてください。
 
 > [!IMPORTANT]
-> Azure AD ユーザー プロビジョニング サービスが以下に示す操作を出力する方法とタイミングについては、[ユーザー プロビジョニング中の動作](user-provisioning.md#what-happens-during-provisioning)に関する記事を参照してください。
+> Azure AD ユーザー プロビジョニング サービスが以下に示す操作を出力する方法とタイミングについては、「[プロビジョニング サイクル: 初回と増分](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)」を参照してください。これは「[プロビジョニングのしくみ](how-provisioning-works.md)」に含まれるセクションです。
 
 [ユーザー操作](#user-operations)
   - [ユーザーの作成](#create-user) ([要求](#request) / [応答](#response))
@@ -616,7 +616,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 Azure Active Directory を接続して動作させる SCIM Web サービスを作成することにより、ほとんどすべてのアプリケーションまたは ID ストアの自動ユーザー プロビジョニングを実現することができます。
 
-そのしくみは次のとおりです。
+しくみは次のとおりです。
 
 1. Azure AD では Microsoft.SystemForCrossDomainIdentityManagement という共通言語基盤 (CLI) ライブラリが、以下のサンプル コードと共に提供されています。 システム インテグレーターや開発者は、このライブラリを使用して、Azure AD を任意のアプリケーションの ID ストアに接続できる SCIM ベースの Web サービス エンドポイントを作成してデプロイできます。
 2. 標準化されたユーザー スキーマをアプリケーションで必要なユーザー スキーマやプロトコルに対応付けるためのマッピングが Web サービスに実装されます。 
@@ -634,7 +634,7 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 * SCIM エンドポイントとして使用される ASP.NET framework 4.5 をサポートしている Windows コンピューター。 このマシンにクラウドからアクセスできる必要があります。
 * [無料試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/services/active-directory/)
 
-### <a name="getting-started"></a>使用の開始
+### <a name="getting-started"></a>作業の開始
 
 Azure AD からのプロビジョニング要求を受信できる SCIM エンドポイントを実装する最も簡単な方法は、プロビジョニングするユーザーをコンマ区切り値 (CSV) ファイルに出力するコード サンプルをビルドしてデプロイすることです。
 
@@ -1251,14 +1251,14 @@ SCIM サービスによってアクセスされる ID ストアからユーザ�
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>手順 4:SCIM エンドポイントを Azure AD SCIM クライアントと統合する
 
-Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 プロトコル](https://tools.ietf.org/html/rfc7644)の特定のプロファイルを実装したアプリケーションに自動的にプロビジョニングするように構成できます。 プロファイルの詳細については、「[手順 2: Azure AD SCIM の実装について理解する](#step-2-understand-the-azure-ad-scim-implementation)」に記載されています。
+Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 プロトコル](https://tools.ietf.org/html/rfc7644)の特定のプロファイルを実装したアプリケーションに自動的にプロビジョニングするように構成できます。 プロファイルの詳細は [「手順 2: Azure AD SCIM の実装について理解する](#step-2-understand-the-azure-ad-scim-implementation)」にあります。
 
 これらの要件との互換性に関する記述については、アプリケーション プロバイダー、またはアプリケーション プロバイダーのドキュメントを確認してください。
 
 > [!IMPORTANT]
-> Azure AD SCIM 実装は、Azure AD とターゲット アプリケーション間でユーザーを常に同期するように設計された Azure AD ユーザー プロビジョニング サービスの上に構築され、固有の標準操作セットを実装しています。 Azure AD SCIM クライアントの動作を理解するには、これらの動作を把握しておくことが重要です。 詳細については、「[プロビジョニング中の動作](user-provisioning.md#what-happens-during-provisioning)」を参照してください。
+> Azure AD SCIM 実装は、Azure AD とターゲット アプリケーション間でユーザーを常に同期するように設計された Azure AD ユーザー プロビジョニング サービスの上に構築され、固有の標準操作セットを実装しています。 Azure AD SCIM クライアントの動作を理解するには、これらの動作を把握しておくことが重要です。 詳しくは、「[プロビジョニング サイクル: 初回と増分](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)」を参照してください。これは「[プロビジョニングのしくみ](how-provisioning-works.md)」に含まれるセクションです。
 
-### <a name="getting-started"></a>使用の開始
+### <a name="getting-started"></a>作業の開始
 
 この記事で説明した SCIM プロファイルをサポートするアプリケーションは、Azure AD アプリケーション ギャラリーの "ギャラリー以外のアプリケーション" 機能を使用して Azure Active Directory に接続できます。 接続が完了すると、Azure AD は 40 分ごとに同期処理を実行します。この処理では、割り当て済みのユーザーとグループについてアプリケーションの SCIM エンドポイントに照会し、割り当ての詳細に従ってユーザーとグループを作成または変更します。
 
@@ -1331,12 +1331,12 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 
 ## <a name="related-articles"></a>関連記事
 
-* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
+* [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
-* [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
+* [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+* [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

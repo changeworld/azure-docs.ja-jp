@@ -1,25 +1,16 @@
 ---
-title: Azure マイクロサービスでの障害をシミュレートする | Microsoft Docs
+title: Azure マイクロサービスでの障害をシミュレートする
 description: この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: chackdan
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465589"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -37,9 +28,9 @@ Testability アクションは、次の 2 つに大きく分類されます。
 品質をより深く検証するために、さまざまなグレースフル障害とアングレースフル障害エラーを発生させながら、サービスとビジネスのワークロードを実行します。 アングレースフル障害は、何らかのワークフローの途中でサービス プロセスが突然終了するシナリオで使用します。 Service Fabric によってサービスのレプリカが復元された後で復旧パスをテストします。 障害発生後のデータの整合性とサービス状態が正しく維持されているかどうかをテストするために役立ちます。 もう 1 つの障害セット (グレースフル障害) では、Service Fabric によって移動されるレプリカに対してサービスが正しく反応することをテストします。 これは、RunAsync メソッドでのキャンセル処理をテストします。 サービスは、設定されるキャンセル トークンをチェックし、その状態を正しく保存して、RunAsync メソッドを終了する必要があります。
 
 ## <a name="testability-actions-list"></a>Testability アクションの一覧
-| Action | 説明 | マネージド API | PowerShell コマンドレット | グレースフル/アングレースフル障害 |
+| アクション | [説明] | マネージド API | PowerShell コマンドレット | グレースフル/アングレースフル障害 |
 | --- | --- | --- | --- | --- |
-| CleanTestState |テスト ドライバーの異常なシャットダウンが発生した場合に、クラスターからすべてのテスト状態を削除します。 |CleanTestStateAsync |Remove-ServiceFabricTestState |適用不可 |
+| CleanTestState |テスト ドライバーの異常なシャットダウンが発生した場合に、クラスターからすべてのテスト状態を削除します。 |CleanTestStateAsync |Remove-ServiceFabricTestState |適用なし |
 | InvokeDataLoss |サービス パーティションでデータ損失を発生させます。 |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |グレースフル |
 | InvokeQuorumLoss |特定のステートフル サービス パーティションをクォーラム損失状態にします。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |グレースフル |
 | MovePrimary |ステートフル サービスの指定したプライマリ レプリカを、指定したクラスター ノードに移動します。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |グレースフル |
@@ -49,10 +40,10 @@ Testability アクションは、次の 2 つに大きく分類されます。
 | RestartNode |ノードを再起動することで、Service Fabric のクラスター ノード障害をシミュレートします。 |RestartNodeAsync |Restart-ServiceFabricNode |アングレースフル |
 | RestartPartition |パーティションの一部またはすべてのレプリカを再起動することで、データ センターのブラックアウトまたはクラスターのブラックアウト シナリオをシミュレートします。 |RestartPartitionAsync |Restart-ServiceFabricPartition |グレースフル |
 | RestartReplica |クラスター内の永続化されたレプリカを再起動すし、レプリカを閉じてから再び開くことで、レプリカ障害をシミュレートします。 |RestartReplicaAsync |Restart-ServiceFabricReplica |グレースフル |
-| StartNode |既に停止しているクラスター ノードを起動します。 |StartNodeAsync |Start-ServiceFabricNode |適用不可 |
+| StartNode |既に停止しているクラスター ノードを起動します。 |StartNodeAsync |Start-ServiceFabricNode |適用なし |
 | StopNode |クラスター内のノードを停止することで、ノード障害をシミュレートします。 ノードは、StartNode が呼び出されるまで停止したままになります。 |StopNodeAsync |Stop-ServiceFabricNode |アングレースフル |
-| ValidateApplication |アプリケーション内のすべての Service Fabric サービスの正常性と可用性を検証します。通常は、システムに何らかの障害を発生させた後で実行します。 |ValidateApplicationAsync |Test-ServiceFabricApplication |適用不可 |
-| ValidateService |Service Fabric サービスの正常性と可用性を検証します。通常は、システムに何らかの障害を発生させた後で実行します。 |ValidateServiceAsync |Test-ServiceFabricService |適用不可 |
+| ValidateApplication |アプリケーション内のすべての Service Fabric サービスの正常性と可用性を検証します。通常は、システムに何らかの障害を発生させた後で実行します。 |ValidateApplicationAsync |Test-ServiceFabricApplication |適用なし |
+| ValidateService |Service Fabric サービスの正常性と可用性を検証します。通常は、システムに何らかの障害を発生させた後で実行します。 |ValidateServiceAsync |Test-ServiceFabricService |適用なし |
 
 ## <a name="running-a-testability-action-using-powershell"></a>PowerShell を使用した Testability アクションの実行
 このチュートリアルでは、PowerShell を使用して Testability アクションを実行する方法を示します。 ローカル (ワンボックス) クラスターまたは Azure クラスターに対して Testability アクションを実行する方法を学習します。 Microsoft.Fabric.Powershell.dll (Service Fabric PowerShell モジュール) は Microsoft Service Fabric MSI のインストール時に自動的にインストールされます。 このモジュールは、PowerShell プロンプトを開いたときに自動的に読み込まれます。
@@ -227,7 +218,7 @@ ReplicaSelector replicaByIdSelector = ReplicaSelector.ReplicaIdOf(partitionSelec
 ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(partitionSelector);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Testability のシナリオ](service-fabric-testability-scenarios.md)
 * サービスをテストする方法
   * [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)

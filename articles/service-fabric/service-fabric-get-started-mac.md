@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric を使用するための開発環境を Mac OS X にセットアップする | Microsoft Docs
-description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Mac OS X でアプリケーションを構築する準備が整います。
-services: service-fabric
-documentationcenter: linux
+title: macOS で開発環境をセットアップする
+description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、macOS でアプリケーションを構築する準備が整います。
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035278"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609878"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -202,7 +194,7 @@ Service Fabric アプリケーションを作成して構築したら、[Service
 
 Azure Service Fabric には、Java IDE 用として Eclipse Neon (以降) 用のプラグインが用意されています。 このプラグインを使用すると、Java サービスの作成、ビルド、およびデプロイの手順を簡素化できます。 Eclipse 用の Service Fabric プラグインをインストールしたり、最新バージョンに更新したりするには、[これらの手順](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)に従います。 [Eclipse 用の Service Fabric のドキュメント](service-fabric-get-started-eclipse.md)に記載されている、アプリケーションの構築、アプリケーションへのサービスの追加、アプリケーションのアンインストールなどの他のすべての手順も適用できます。
 
-最後の手順では、ホストと共有されているパスでコンテナーをインスタンス化します。 このプラグインでは、Mac 上の Docker コンテナーを操作するために、この種のインスタンス化が必要です。 例:
+最後の手順では、ホストと共有されているパスでコンテナーをインスタンス化します。 このプラグインでは、Mac 上の Docker コンテナーを操作するために、この種のインスタンス化が必要です。 次に例を示します。
 
 ```bash
 docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
@@ -219,7 +211,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 >`sfonebox` 以外の名前でコンテナーを開始する場合は、Service Fabric アクター Java アプリケーションの testclient.sh ファイルの名前値を更新してください。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 <!-- Links -->
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)

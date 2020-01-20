@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric - システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする | Microsoft Docs
+title: システムに割り当ての MI を使用して Service Fabric アプリをデプロイする
 description: この記事では、システム割り当てのマネージド ID を Azure Service Fabric アプリケーションに割り当てる方法について説明します
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973421"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614827"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
@@ -97,5 +93,5 @@ Azure Service Fabric アプリケーションのマネージド ID 機能にア�
 * マネージド ID サポートを備えた[新しい Azure Service Fabric クラスターをデプロイする](./configure-new-azure-service-fabric-enable-managed-identity.md) 
 * 既存の Azure Service Fabric クラスターで[マネージド ID を有効にする](./configure-existing-cluster-enable-managed-identity-token-service.md)
 * [ソース コードから Service Fabric アプリケーションのマネージド ID](./how-to-managed-identity-service-fabric-app-code.md) を活用する
-* [ユーザー割り当てのマネージド ID を持つアプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセスを許可する](./how-to-grant-access-other-resources.md)
+* [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)

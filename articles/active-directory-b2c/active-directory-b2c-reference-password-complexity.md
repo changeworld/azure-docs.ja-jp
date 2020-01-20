@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5879bbda9dba0d5484ffe6e7083243a299347f9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367488"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードの複雑さの要件を構成する
 
@@ -37,20 +37,20 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. **[ユーザー フロー]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+4. **[ユーザー フロー (ポリシー)]** を選択します。
 2. ユーザー フローを選択し、 **[プロパティ]** をクリックします。
 3. **[パスワードの複雑さ]** で、このユーザー フローのパスワードの複雑さを **[シンプル]** 、 **[強]** 、 **[カスタム]** のいずれかに変更します。
 
 ### <a name="comparison-chart"></a>比較チャート
 
-| 複雑さ | 説明 |
+| 複雑さ | [説明] |
 | --- | --- |
 | シンプル | 少なくとも 8 ～ 64 文字のパスワード。 |
 | Strong | 少なくとも 8 ～ 64 文字のパスワード。 小文字、大文字、数字、記号の 4 種類のうち 3 種が必要です。 |
-| カスタム | このオプションでは、パスワードの複雑さのルールを最も細かく制御できます。  カスタムの長さを構成できます。  数字のみのパスワード (PIN) を受け入れることもできます。 |
+| Custom | このオプションでは、パスワードの複雑さのルールを最も細かく制御できます。  カスタムの長さを構成できます。  数字のみのパスワード (PIN) を受け入れることもできます。 |
 
 ## <a name="custom-options"></a>カスタム オプション
 
@@ -61,7 +61,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 - **[数字のみ]** では、パスワードを入力するときに数字 (0 ～ 9) のみを使用できます。
 - **[すべて]** では、任意の文字、数字、記号を使用できます。
 
-### <a name="length"></a>Length
+### <a name="length"></a>長さ
 
 パスワードの長さの要件を制御できます。
 
@@ -72,7 +72,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 パスワードで使われる異なる文字の種類を制御できます。
 
-- **[2 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol]\(2/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 2 種類の文字が含まれることを保証します。 たとえば、数値と小文字です。
+- **[2 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol]\(3/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 3 種類の文字が含まれることを保証します。 たとえば、数値と小文字です。
 - **3 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol\(3/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 3 種類の文字が含まれることを保証します。 たとえば、数値、小文字、大文字です。
 - **4 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol\(4/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードにすべての文字種が含まれることを保証します。
 

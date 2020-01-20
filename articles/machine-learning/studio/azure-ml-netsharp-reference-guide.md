@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427665"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
 
@@ -56,7 +56,7 @@ Net# では、さまざまな種類の結合バンドルがサポートされて
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
 
-クラシック バージョンの Azure Machine Learning Studio で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
+Azure Machine Learning Studio (クラシック) で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
 
 + 隠れ層を作成し、各層のノード数を管理する。
 + 層間の結合方法を指定する。
@@ -89,17 +89,17 @@ Net# では、さまざまな種類の結合バンドルがサポートされて
 
 `Const X = 28;`
 
-2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 例:
+2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 次に例を示します。
 
 `Const { X = 28; Y = 4; }`
 
-それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 例:
+それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 次に例を示します。
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>層の宣言
 
-層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 例:
+層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 次に例を示します。
 
 ```Net#
 input Data auto;

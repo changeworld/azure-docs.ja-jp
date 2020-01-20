@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight の管理 IP アドレス
 description: Azure HDInsight で仮想ネットワーク用のネットワーク セキュリティ グループとユーザー定義ルートを適切に構成するために、どの IP アドレスからの受信トラフィックを許可する必要があるかについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+author: hol82
+ms.author: hol
+ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/16/2019
+ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435475"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -32,7 +32,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 
 すべての Azure リージョンに適用される Azure HDInsight の正常性サービスと管理サービスに対して、次の IP アドレスからのトラフィックを許可します。
 
-| 送信元 IP アドレス | Destination  | Direction |
+| 送信元 IP アドレス | 宛先  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 受信 |
 | 23.99.5.239 | \*:443 | 受信 |
@@ -48,12 +48,12 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 
 | Country | リージョン | 許可されているソース IP アドレス | 許可されている宛先 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
-| アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | \*:443 | 受信 |
+| Asia | 東アジア | 23.102.235.122</br>52.175.38.134 | \*:443 | 受信 |
 | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | \*:443 | 受信 |
 | オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 受信 |
 | &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 受信 |
 | ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 受信 |
-| カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 受信 |
+| Canada | カナダ東部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 受信 |
 | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 |\*:443 | 受信 |
 | 中国 | 中国 (北部) | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | 受信 |
 | &nbsp; | 中国 (東部) | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | 受信 |
@@ -72,12 +72,13 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | \*:443 | 受信
 | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | \*:443 | 受信 |
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 受信 |
-| 米国 | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
+| United States | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | 受信 |
 | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 受信 |
 | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 受信 |
 | &nbsp; | 米国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 受信 |
 | &nbsp; | 米国西部 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | 受信 |
+| &nbsp; | アラブ首長国連邦北部 | 65.52.252.96</br>65.52.252.97 | \*:443 | 受信 |
 
 Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
 
@@ -85,6 +86,6 @@ Azure Government に使用する IP アドレスについては、「[Azure Gove
 
 ユーザー定義ルート (UDR) を使用する場合は、次ホップが "インターネット" に設定されている上記 IP へのルートを指定し、VNET からそれらの IP への送信トラフィックを許可してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight クラスターの仮想ネットワークの作成](hdinsight-create-virtual-network.md)

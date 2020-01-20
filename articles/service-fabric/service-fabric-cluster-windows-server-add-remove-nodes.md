@@ -1,25 +1,16 @@
 ---
-title: スタンドアロン Service Fabric クラスターでノードを追加または削除する | Microsoft Docs
+title: スタンドアロン Service Fabric クラスターでノードを追加または削除する
 description: Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 585d918026ca40bc1a04c55e2bac454492c55936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa9550d1ec6201f7cbaf552fac5f71c875428e21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458260"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
 [Windows Server マシンでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加や削除が必要になることがあります。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
@@ -128,7 +119,7 @@ ms.locfileid: "60711035"
 プライマリ ノードの置き換えは、まとめて削除して後で追加するのではなく、1 ノードづつ実行する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 * [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)

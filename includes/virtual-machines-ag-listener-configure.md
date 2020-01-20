@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469019"
 ---
 可用性グループ リスナーとは、SQL Server 可用性グループがリッスンする IP アドレスとネットワーク名のことです。 可用性グループ リスナーを作成するには、次の手順を実行します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "67181132"
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d. Click **OK**.
+    d. **[OK]** をクリックします。
 
 1. <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するように設定します。
 
@@ -76,7 +76,7 @@ ms.locfileid: "67181132"
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 Click **OK**. 
+    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]** をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
@@ -140,4 +140,4 @@ ms.locfileid: "67181132"
    b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
 >[!WARNING]
->可用性グループ リスナーの正常性プローブのポートは、クラスター コア IP アドレスの正常性プローブ ポートとは違っている必要があります。 これらの例では、リスナー ポートが 59999 で、クラスター コアの IP アドレスが 58888 です。 どちらのポートも、受信を許可するようにファイアウォール規則が設定されている必要があります。
+>可用性グループ リスナーの正常性プローブのポートは、クラスター コア IP アドレスの正常性プローブ ポートとは違っている必要があります。 これらの例では、リスナー ポートが 59999 で、クラスター コア IP アドレスの正常性プローブ ポートが 58888 です。 どちらのポートも、受信を許可するようにファイアウォール規則が設定されている必要があります。

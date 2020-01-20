@@ -9,36 +9,36 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497774"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529611"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用し、既存のクラウド データ サービスのデータを機械学習パイプラインに読み込みます。 
 
 > [!Note]
-> このモジュールによって提供されるすべての機能は、ワークスペースのランディング ページの**データストア**および**データセット**によって実行されます。 データ監視などの追加機能が含まれる**データストア**および**データセット**の使用をお勧めします。 詳細については、[データへのアクセス方法](../service/how-to-access-data.md)および[データセットの登録方法](../service/how-to-create-register-datasets.md)に関する記事を参照してください。
-> データセットを登録すると、デザイナー インターフェイスの**データセット**  ->  **My Datasets** カテゴリで確認できます。 このモジュールは、使い慣れたエクスペリエンスを実現するために、Studio (クラシック) ユーザー向けに予約されています。 
+> このモジュールによって提供されるすべての機能は、ワークスペースのランディング ページの**データストア**および**データセット**によって実行されます。 データ監視などの追加機能が含まれる**データストア**および**データセット**の使用をお勧めします。 詳細については、[データへのアクセス方法](../how-to-access-data.md)および[データセットの登録方法](../how-to-create-register-datasets.md)に関する記事を参照してください。
+> データセットを登録すると、デザイナー インターフェイスの**データセット** -> **My Datasets** カテゴリで確認できます。 このモジュールは、使い慣れたエクスペリエンスを実現するために、Studio (クラシック) ユーザー向けに予約されています。 
 >
 
 最初に、読み込み元のソースを選択し、追加の設定を完了します。 **データのインポート** モジュールでは、次のソースから読み込んだデータがサポートされます。
 
 - HTTP を使用する URL
-- [**データストア**](../service/how-to-access-data.md)) を使用する Azure クラウド ストレージ
+- [**データストア**](../how-to-access-data.md)) を使用する Azure クラウド ストレージ
     - Azure BLOB コンテナー
     - Azure ファイル共有
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Azure SQL Database
+    - Azure SQL データベース
     - Azure PostgreSQL    
 
-クラウドストレージを使用する前に、まずは Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、[データのアクセス方法](../service/how-to-access-data.md)についてのページを参照してください。 
+クラウドストレージを使用する前に、まずは Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、[データのアクセス方法](../how-to-access-data.md)に関するページを参照してください。 
 
 必要なデータを定義し、ソースに接続すると、 **[データのインポート](./import-data.md)** では、列に含まれる値に基づいて各列のデータ型が推測され、デザイナー パイプラインにデータが読み込まれます。 **データのインポート**からは、あらゆるデザイナー パイプラインで使用できるデータセットが出力されます。
 
@@ -54,7 +54,7 @@ ms.locfileid: "73497774"
 
 1. **[データ ソース]** を選択し、データ ソースの種類を選択します。 HTTP またはデータストアの場合もあります。
 
-    データストアを選択する場合、Azure Machine Learning ワークスペースに既に登録されている既存のデータストアを選択するか、新しいデータストアを作成できます。 次に、データストアにインポートするデータのパスを定義します。 **[パスの参照]** をクリックすると、簡単にパスを参照できます。![インポートするデータのパス](media/module/import-data-path.png)
+    データストアを選択する場合、Azure Machine Learning ワークスペースに既に登録されている既存のデータストアを選択するか、新しいデータストアを作成できます。 次に、データストアにインポートするデータのパスを定義します。 パスを簡単に参照するには、 **[パスの参照]** をクリックします。![import-data-path](media/module/import-data-path.png)
 
 1. プレビュー スキーマを選択して、含める列にフィルターを適用します。 解析オプションで、区切り記号などの詳細設定を定義することもできます。
 
@@ -74,7 +74,7 @@ ms.locfileid: "73497774"
 
     データに既存の列ヘッダーがない場合、「col1, col2,…, coln*」の形式で新しい列に名前が付けられます。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 インポートが完了したら、出力されたデータセットをクリックし、 **[Visualize]\(視覚化\)** を選択し、データが正常にインポートされたかどうかを確認します。
 
@@ -88,6 +88,6 @@ ms.locfileid: "73497774"
 
 - データセットを分割したり、サンプリングを実行したり、上位 n 行を取得したりするには、[[パーティションとサンプル]](./partition-and-sample.md) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

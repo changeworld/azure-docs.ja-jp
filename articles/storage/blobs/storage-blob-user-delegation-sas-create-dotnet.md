@@ -1,27 +1,27 @@
 ---
 title: .NET を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 titleSuffix: Azure Storage
-description: Azure Storage 用の .NET クライアント ライブラリを使用して、Azure Active Directory 資格情報によるユーザー委任 SAS (プレビュー) を作成する方法について説明します。
+description: Azure Storage 用の .NET クライアント ライブラリを使用して、Azure Active Directory 資格情報によるユーザー委任 SAS を作成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371838"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する (プレビュー)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、Azure Active Directory (Azure AD) 資格情報を使用して .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは Blob 用のユーザー委任 SAS (プレビュー) を作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは Blob 用のユーザー委任 SAS を作成する方法について説明します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -31,7 +31,7 @@ Azure AD セキュリティ プリンシパルが Blob データにアクセス�
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Azure Storage から Azure ID クライアント ライブラリを使用して認証する方法の詳細については、[Azure Active Directory と Azure リソースのマネージ ID を使用した BLOB およびキューへのアクセスの承認](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)に関するページの **Azure ID ライブラリを使用した認証**に関する項目を参照してください。
+Azure Storage から Azure ID クライアント ライブラリを使用して認証する方法の詳細については、[Azure Active Directory と Azure リソースのマネージ ID を使用した BLOB およびキューへのアクセスの認証](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)に関するページの「**Azure ID ライブラリを使用した認証**」を参照してください。
 
 ## <a name="add-using-directives"></a>using ディレクティブを追加する
 
@@ -215,7 +215,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
     }
     catch (RequestFailedException e)
     {
-        // Check for a 403 (Forbidden) error. If the SAS is invalid, 
+        // Check for a 403 (Forbidden) error. If the SAS is invalid,
         // Azure Storage returns this error.
         if (e.Status == 403)
         {
@@ -235,7 +235,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)
 - [Get User Delegation Key 操作](/rest/api/storageservices/get-user-delegation-key)

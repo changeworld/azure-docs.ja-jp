@@ -1,31 +1,20 @@
 ---
-title: Azure Service Fabric クラスター テンプレートの作成 | Microsoft Docs
+title: Azure Service Fabric クラスター テンプレートを作成する
 description: Service Fabric クラスター用の Resource Manager テンプレートの作成方法について説明します。 セキュリティ、Azure Key Vault、および Azure Active Directory (Azure AD) をクライアント認証のために構成します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463256"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 
 [Azure Service Fabric クラスター](service-fabric-deploy-anywhere.md)はネットワークで接続された一連の仮想マシンです。マイクロサービスは Service Fabric クラスターにデプロイされ、そこで管理されます。 Azure で動作する Service Fabric クラスターは Azure リソースであり、Resource Manager を使用してデプロイ、管理、および監視されます。  この記事では、Azure で動作する Service Fabric クラスター用の Resource Manager テンプレートの作成方法について説明します。  テンプレートが完成したら、[クラスターを Azure にデプロイ](service-fabric-cluster-creation-via-arm.md)できます。
 
-クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳細については、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」\(クライアントを認証するための Azure AD のセットアップ\)をお読みください。
+クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
 
 運用環境のワークロードを実行するための運用環境クラスターをデプロイする前に、必ず「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」を最初にお読みください。
 
@@ -258,7 +247,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 
 ![Resource Manager の依存関係マップ][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラスター用のテンプレートが完成したので、[クラスターを Azure にデプロイ](service-fabric-cluster-creation-via-arm.md)する方法を学びます。  「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」をまだお読みでない場合は、 運用環境クラスターをデプロイする前にお読みください。
 
 この記事でデプロイしたリソースの JSON 構文およびプロパティについては、次をご覧ください。

@@ -5,14 +5,14 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 0975df8ee9da4a239dbd72e468b967c88ab3feed
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 6a9c31eb46a457433834d5940b3f7e190ebe1476
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467306"
 ---
-ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限の最新情報については、「[Azure Blob Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets)」および「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets)」をご覧ください。
+ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限に関する最新情報については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../articles/storage/blobs/scalability-targets.md)」と「[Azure Files のスケーラビリティとパフォーマンスのターゲット](../articles/storage/files/storage-files-scale-targets.md)」を参照してください。
 
 | Azure ストレージ アカウントにコピーするデータのサイズ                      | 既定の制限          |
 |---------------------------------------------------------------------|------------------------|

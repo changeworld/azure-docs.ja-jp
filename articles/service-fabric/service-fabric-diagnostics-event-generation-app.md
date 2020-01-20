@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のアプリケーション レベルの監視 | Microsoft Docs
+title: Azure Service Fabric のアプリケーション レベルの監視
 description: Azure Service Fabric クラスターの監視と診断に使用するアプリケーションおよびサービス レベルのイベントとログについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 613faf5bbc9498b82bc04460d30b2e94c30340db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464730"
 ---
 # <a name="application-logging"></a>アプリケーションのログ記録
 
@@ -41,6 +32,6 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
 
 コードをインストルメント化する方法を入念に計画することが重要です。 適切なインストルメンテーション計画により、コード ベースの安定性が失われ、コードの再インストルメント化が必要になる状況を回避できます。 リスクを軽減するために、Microsoft ASP.NET Core の一部である [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) などのインストルメンテーション ライブラリを選択できます。 ASP.NET Core には、既存のコードへの影響を最小限に抑えながら、選択したプロバイダーで使用できる [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) インターフェイスがあります。 Windows および Linux 上の ASP.NET Core 内と完全な .NET Framework 内でコードを使用できるので、インストルメンテーション コードが標準化されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションとサービスのインストルメント化にログ プロバイダーを選択したら、任意の分析プラットフォームに送信できるようにログとイベントを集計する必要があります。 Azure Monitor の推奨されるオプションについて理解を深めるには、[Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) および [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) に関する記事をご覧ください。

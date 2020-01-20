@@ -1,5 +1,5 @@
 ---
-title: Azure AD Access Control Service から SAS への移行
+title: Azure Service Bus - Shared Access Signature 承認
 description: Azure Active Directory Access Control Service から Shared Access Signature 承認への移行について学習します。
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: ae0dd3827e17cc63b4b698eb8d88a08799c7278f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462163"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus - Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
 Service Bus アプリケーションでは、以前は 2 つの承認モデルが存在していました。Service Bus により直接提供される [Shared Access Signature (SAS)](service-bus-sas.md) トークン モデルと、承認ルールの管理が [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) によって内部管理される統合モデルです。この統合モデルでは、ACS から取得したトークンが、目的の機能へのアクセスを承認するために Service Bus に渡されます。
 
@@ -29,7 +29,7 @@ SAS は、別のサービスに即時依存することはなく、SAS ルール
 
 ACS に依存しているすべての既存アプリケーションに対して、代わりとして SAS に依存するようにアプリケーションを移行することをお勧めします。
 
-## <a name="migration-scenarios"></a>移行のシナリオ
+## <a name="migration-scenarios"></a>移行シナリオ
 
 ACS と Service Bus は、共有知識である*署名キー*を通して統合されます。 ACS 名前空間は署名キーを使用して認証トークンを署名します。Service Bus は署名キーを使用して、ペアの ACS 名前空間によってトークンが発行されていることを確認します。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認ルールでは、外部 ID プロバイダーによって発行されたどのサービス ID とトークンが、Service Bus 名前空間グラフの一部に対しどのようなタイプのアクセスが可能かを、最長プレフィックス一致の形で定義します。
 
@@ -59,7 +59,7 @@ ACS と Service Bus は、共有知識である*署名キー*を通して統合�
 
 SAS ルールをアカウントにすることは想定されていませんが、権限に関連付けられた署名キーの名前が付けられています。 アプリケーションにより多くのサービス ID が作成され、複数のエンティティや名前空間全体に対してアクセス権限が付与されるようなシナリオでは、引き続きトークンを発行する仲介役が必要となります。 このような仲介機能のガイダンスを入手するには、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus 認証の詳細については、次のトピックをご覧ください。
 

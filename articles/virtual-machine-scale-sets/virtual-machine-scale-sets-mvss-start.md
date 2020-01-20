@@ -1,6 +1,6 @@
 ---
-title: 仮想マシン スケール セット テンプレートの詳細 | Microsoft Docs
-description: 仮想マシン スケール セットの基本のスケール セット テンプレートの作成について説明します。
+title: 仮想マシン スケール セット テンプレートの詳細情報
+description: いくつかの簡単な手順に従って、Azure 仮想マシン スケール セット用の基本的なスケール セット テンプレートを作成する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459374"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
@@ -51,7 +51,7 @@ ms.locfileid: "70376102"
     }
   },
 ```
-## <a name="define-variables"></a>変数を定義する
+## <a name="define-variables"></a>変数の定義
 Resource Manager テンプレートでは、テンプレート内で後ほど使用される変数を定義することもできます。 この例では変数を使用しないため、JSON オブジェクトは空のままです。
 
 ```json
@@ -204,6 +204,6 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

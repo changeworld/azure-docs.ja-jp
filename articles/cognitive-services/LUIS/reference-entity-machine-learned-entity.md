@@ -1,93 +1,336 @@
 ---
 title: 機械学習エンティティ型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: ''
+description: 機械学習エンティティは、LUIS アプリケーションをビルドするのに推奨されるエンティティです。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
+ms.date: 12/30/2019
 ms.author: diberry
-ms.openlocfilehash: 2289e8ac7744a7b4cbee300e77efda89d29ee2f5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74017208"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552000"
 ---
-# <a name="machine-learned-entity"></a>機械学習エンティティ 
+# <a name="machine-learned-entity"></a>機械学習エンティティ
 
+機械学習エンティティは、LUIS アプリケーションをビルドするのに推奨されるエンティティです。
 
-
-**エンティティは、次のようなテキスト データに最適です。**
-
-
-![リスト エンティティ](./media/luis-concept-entities/list-entity.png)
 
 ## <a name="example-json"></a>JSON の例
 
-アプリに `Cities` いう名前のリストがあり、空港がある都市 (Sea-tac)、空港コード (SEA)、郵便番号 (98101)、および電話の市外局番 (206) など、都市名のバリエーションに対応しています。
+たとえば、[分解可能エンティティのチュートリアル](tutorial-machine-learned-entity.md)にあるように、アプリでピザの注文を受け取るとします。 各注文には、さまざまなサイズの複数の異なるピザを含めることができます。
 
-|リスト項目|項目のシノニム|
-|---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
+発話の例を次に示します。
 
-`book 2 tickets to paris`
+|ピザ アプリの発話の例|
+|--|
+|`Can I get a pepperoni pizza and a can of coke please`|
+|`can I get a small pizza with onions peppers and olives`|
+|`pickup an extra large meat lovers pizza`|
 
-前の発話では、単語 `paris` は、`Cities` リスト エンティティの一部として、パリ項目にマップされます。 このリスト エンティティは、項目のシノニムだけでなく、項目の正規化された名前と一致します。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
-
-```JSON
-  "entities": [
-    {
-      "entity": "paris",
-      "type": "Cities",
-      "startIndex": 18,
-      "endIndex": 22,
-      "resolution": {
-        "values": [
-          "Paris"
-        ]
-      }
-    }
-  ]
-```
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
+機械学習エンティティには、制約や記述子を持つ多数のサブコンポーネントを含めることができるため、これは一例にすぎません。 エンティティによって返される内容のガイドと考えてください。
+
+次のクエリを考えてみます。
+
+`deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 
 ```json
 "entities": {
-    "Cities": [
+    "Order": [
+        {
+            "FullPizzaWithModifiers": [
+                {
+                    "PizzaType": [
+                        "cheese pizza"
+                    ],
+                    "Size": [
+                        [
+                            "Large"
+                        ]
+                    ],
+                    "Quantity": [
+                        1
+                    ]
+                },
+                {
+                    "PizzaType": [
+                        "pepperoni pizzas"
+                    ],
+                    "Size": [
+                        [
+                            "Medium"
+                        ]
+                    ],
+                    "Quantity": [
+                        2
+                    ],
+                    "Crust": [
+                        [
+                            "Deep Dish"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "ToppingList": [
         [
-            "Paris"
+            "Cheese"
+        ],
+        [
+            "Pepperoni"
+        ]
+    ],
+    "CrustList": [
+        [
+            "Thin"
         ]
     ]
 }
+
 ```
 
 これは、クエリ文字列で `verbose=true` が設定されている場合の JSON です。
 
 ```json
 "entities": {
-    "Cities": [
+    "Order": [
+        {
+            "FullPizzaWithModifiers": [
+                {
+                    "PizzaType": [
+                        "cheese pizza"
+                    ],
+                    "Size": [
+                        [
+                            "Large"
+                        ]
+                    ],
+                    "Quantity": [
+                        1
+                    ],
+                    "$instance": {
+                        "PizzaType": [
+                            {
+                                "type": "PizzaType",
+                                "text": "cheese pizza",
+                                "startIndex": 16,
+                                "length": 12,
+                                "score": 0.999998868,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ],
+                        "Size": [
+                            {
+                                "type": "SizeList",
+                                "text": "large",
+                                "startIndex": 10,
+                                "length": 5,
+                                "score": 0.998720646,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ],
+                        "Quantity": [
+                            {
+                                "type": "builtin.number",
+                                "text": "1",
+                                "startIndex": 8,
+                                "length": 1,
+                                "score": 0.999878645,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PizzaType": [
+                        "pepperoni pizzas"
+                    ],
+                    "Size": [
+                        [
+                            "Medium"
+                        ]
+                    ],
+                    "Quantity": [
+                        2
+                    ],
+                    "Crust": [
+                        [
+                            "Deep Dish"
+                        ]
+                    ],
+                    "$instance": {
+                        "PizzaType": [
+                            {
+                                "type": "PizzaType",
+                                "text": "pepperoni pizzas",
+                                "startIndex": 56,
+                                "length": 16,
+                                "score": 0.999987066,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ],
+                        "Size": [
+                            {
+                                "type": "SizeList",
+                                "text": "medium",
+                                "startIndex": 49,
+                                "length": 6,
+                                "score": 0.999841452,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ],
+                        "Quantity": [
+                            {
+                                "type": "builtin.number",
+                                "text": "2",
+                                "startIndex": 47,
+                                "length": 1,
+                                "score": 0.9996054,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ],
+                        "Crust": [
+                            {
+                                "type": "CrustList",
+                                "text": "deep dish crust",
+                                "startIndex": 76,
+                                "length": 15,
+                                "score": 0.761551,
+                                "modelTypeId": 1,
+                                "modelType": "Entity Extractor",
+                                "recognitionSources": [
+                                    "model"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "$instance": {
+                "FullPizzaWithModifiers": [
+                    {
+                        "type": "FullPizzaWithModifiers",
+                        "text": "1 large cheese pizza on thin crust",
+                        "startIndex": 8,
+                        "length": 34,
+                        "score": 0.616001546,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    },
+                    {
+                        "type": "FullPizzaWithModifiers",
+                        "text": "2 medium pepperoni pizzas on deep dish crust",
+                        "startIndex": 47,
+                        "length": 44,
+                        "score": 0.7395033,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "ToppingList": [
         [
-            "Paris"
+            "Cheese"
+        ],
+        [
+            "Pepperoni"
+        ]
+    ],
+    "CrustList": [
+        [
+            "Thin"
         ]
     ],
     "$instance": {
-        "Cities": [
+        "Order": [
             {
-                "type": "Cities",
-                "text": "paris",
-                "startIndex": 18,
-                "length": 5,
+                "type": "Order",
+                "text": "1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust",
+                "startIndex": 8,
+                "length": 83,
+                "score": 0.6881274,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "ToppingList": [
+            {
+                "type": "ToppingList",
+                "text": "cheese",
+                "startIndex": 16,
+                "length": 6,
+                "modelTypeId": 5,
+                "modelType": "List Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "ToppingList",
+                "text": "pepperoni",
+                "startIndex": 56,
+                "length": 9,
+                "modelTypeId": 5,
+                "modelType": "List Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "CrustList": [
+            {
+                "type": "CrustList",
+                "text": "thin crust",
+                "startIndex": 32,
+                "length": 10,
                 "modelTypeId": 5,
                 "modelType": "List Entity Extractor",
                 "recognitionSources": [
@@ -98,14 +341,13 @@ ms.locfileid: "74017208"
     }
 }
 ```
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
-* * * 
+このエンティティは、V2 予測ランタイムでは使用できません。
+* * *
 
-|データ オブジェクト|エンティティ名|値|
-|--|--|--|
-|リスト エンティティ|`Cities`|`paris`|
+## <a name="next-steps"></a>次のステップ
 
-
-## <a name="next-steps"></a>次の手順
+機械学習エンティティの詳細については、[チュートリアル](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)、および[ハウツーガイド](luis-how-to-add-entities.md#create-a-machine-learned-entity)を参照してください。
 
 [リスト](reference-entity-list.md) エンティティと[正規表現](reference-entity-regular-expression.md)エンティティについて説明します。

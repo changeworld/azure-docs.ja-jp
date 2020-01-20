@@ -1,25 +1,15 @@
 ---
-title: 'アプリケーションのアップグレード: データのシリアル化 | Microsoft Docs'
+title: 'アプリケーションのアップグレード: データのシリアル化'
 description: データのシリアル化のベスト プラクティスとデータのシリアル化がアプリケーションのローリング アップグレードに与える影響
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457500"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>データのシリアル化がアプリケーションのアップグレードに与える影響
 [アプリケーションのローリング アップグレード](service-fabric-application-upgrade.md)では、アップグレードはノードのサブセットに、一度に 1 つのアップグレード ドメインのみに適用されます。 このプロセス中に、一部のアップグレード ドメインがアプリケーションの新しいバージョンになり、一部のアップグレード ドメインはアプリケーションの以前のバージョンになります。 ロールアウト時に、アプリケーションの新しいバージョンは、古いバージョンのデータを、アプリケーションの古いバージョンは新しいバージョンのデータを読み取ることができる必要があります。 データ形式の上位互換性と下位互換性がない場合は、アップグレードが失敗するか、データが失われたり、破損したりするおそれがあります。 この記事では、データ形式の構成要素と、データが上位互換性と下位互換性を確保するためのベスト プラクティスについて説明します。
@@ -53,7 +43,7 @@ C# クラスによって、データ形式が決まるため、クラスへの�
 
 データ コントラクトは、データの互換性を確保するための推奨されるソリューションです。 これには、フィールドの追加、削除、変更用に適切に定義されたバージョン管理規則があります。 また、不明なフィールドの処理、シリアル化と逆シリアル化プロセスへのフッキング、クラスの継承に対するサポートもあります。 詳細については、[「データ コントラクトの使用」](https://msdn.microsoft.com/library/ms733127.aspx)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。

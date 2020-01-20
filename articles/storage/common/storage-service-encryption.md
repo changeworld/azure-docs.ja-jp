@@ -4,17 +4,17 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895126"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665431"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -48,7 +48,7 @@ Microsoft のマネージド キーを利用してストレージ アカウン�
 |    暗号化/暗号化解除の操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    サポートされている Azure Storage サービス    |    All                                                |    BLOB ストレージ、Azure Files                                                                                                               |    BLOB ストレージ                                                                  |
 |    キー記憶域                         |    Microsoft キー ストア    |    Azure Key Vault                                                                                                                              |    Azure Key Vault またはその他のキー ストア                                                                 |
-|    キーのローテーションの責任         |    Microsoft                                          |    顧客                                                                                                                                     |    顧客                                                                      |
+|    キーのローテーションの責任         |    Microsoft                                          |    Customer                                                                                                                                     |    Customer                                                                      |
 |    キー使用法                           |    Microsoft                                          |    Azure portal、Storage Resource Provider REST API、Azure Storage 管理ライブラリ、PowerShell、CLI        |    Azure Storage REST API (BLOB ストレージ)、Azure Storage クライアント ライブラリ    |
 |    キーへのアクセス                          |    Microsoft のみ                                     |    Microsoft、顧客                                                                                                                    |    顧客のみ                                                                 |
 
@@ -62,7 +62,7 @@ Microsoft のマネージド キーを利用してストレージ アカウン�
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault でのカスタマー マネージド キー
 
-独自のキーを使用して、ストレージ アカウントのレベルで Azure Storage 暗号化を管理できます。 ストレージ アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーは、そのストレージ アカウント内のすべての BLOB およびファイル データを暗号化および暗号化解除するために使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+独自のキーを使用して、ストレージ アカウントのレベルで Azure Storage 暗号化を管理できます。 ストレージ アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーはストレージ アカウントのルート暗号化キーのアクセスを保護および制御するために使用され、ルート暗号化キーはすべての BLOB とファイルのデータを暗号化および暗号化解除するために使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
 
 カスタマー マネージド キーを格納するには、Azure Key Vault を使用する必要があります。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
 
@@ -80,9 +80,11 @@ Microsoft のマネージド キーを利用してストレージ アカウン�
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>ストレージ アカウントのカスタマー マネージド キーを有効にする
 
-ストレージ アカウントのカスタマー マネージド キーを使用した暗号化を有効にすると、Azure Storage は、関連するキー コンテナーのカスタマー キーを使用してアカウント暗号化キーをラップします。 カスタマー マネージド キーを有効にしてもパフォーマンスに影響はなく、アカウントは新しいキーですぐに暗号化され、時間の遅延は発生しません。
+ストレージ アカウントのカスタマー マネージド キーを使用した暗号化を有効にすると、Azure Storage は、関連するキー コンテナーのカスタマー マネージド キーを使用してアカウント暗号化キーをラップします。 カスタマー マネージド キーを有効にしてもパフォーマンスに影響はなく、アカウントは新しいキーですぐに暗号化され、時間の遅延は発生しません。
 
 新しいストレージ アカウントは、常に Microsoft のマネージド キーを使用して暗号化されます。 アカウントの作成時にカスタマー マネージド キーを有効にすることはできません。 カスタマー マネージド キーは Azure Key Vault に格納されます。この Key Vault には、ストレージ アカウントに関連するマネージド ID にキーのアクセス許可を付与するアクセス ポリシーをプロビジョニングする必要があります。 マネージド ID は、ストレージ アカウントが作成された後でのみ使用できます。
+
+カスタマー マネージド キーの有効化または無効化、キーのバージョンの更新、または別のキーの指定によって、Azure Storage の暗号化に使用されるキーを変更すると、ルート キーの暗号化は変わりますが、Azure ストレージ アカウントのデータを再暗号化する必要はありません。
 
 Azure Storage 暗号化用に Azure Key Vault でカスタマー マネージド キーを使用する方法については、次のいずれかの記事を参照してください。
 
@@ -96,6 +98,8 @@ Azure Storage 暗号化用に Azure Key Vault でカスタマー マネージド
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault にカスタマー マネージド キーを格納する
 
 ストレージ アカウントでカスタマー マネージド キーを有効にするには、Azure Key Vault を使用してキーを格納する必要があります。 Key Vault で **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の両方のプロパティを有効にする必要があります。
+
+Azure Storage 暗号化では、サイズが 2048 の RSA キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
 
 Key Vault は、ストレージ アカウントと同じサブスクリプションに配置する必要があります。 Azure Storage は、暗号化および暗号化解除の操作のために、Azure リソースのマネージド ID を使用して Key Vault に対して認証を行います。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。
 
@@ -137,7 +141,7 @@ Azure Storage は、クライアントが要求と共に送信する暗号化キ
 
 REST 呼び出しの場合、クライアントは次のヘッダーを使用して、要求の暗号化キー情報を BLOB ストレージに安全に渡すことができます。
 
-|要求ヘッダー | 説明 |
+|要求ヘッダー | [説明] |
 |---------------|-------------|
 |`x-ms-encryption-key` |書き込み要求と読み取り要求の両方に必要です。 Base64 でエンコードされた AES-256 暗号化キー値です。 |
 |`x-ms-encryption-key-sha256`| 書き込み要求と読み取り要求の両方に必要です。 暗号化キーの Base64 でエンコードされた SHA256 です。 |
@@ -176,7 +180,7 @@ REST 呼び出しの場合、クライアントは次のヘッダーを使用し
 
 Azure Storage 暗号化は、Azure 仮想マシン ディスクをバックアップするページ BLOB を暗号化します。 さらに、すべての Azure 仮想マシンのディスクは、ローカル一時ディスクを含め、[Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) を使用して暗号化することもできます。 Azure Disk Encryption では、業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) (Windows 上) および [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) (Linux 上) が使われており、Azure Key Vault と統合されたオペレーティング システム ベースの暗号化ソリューションが提供されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault とは](../../key-vault/key-vault-overview.md)
 - [Azure portal から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-portal.md)

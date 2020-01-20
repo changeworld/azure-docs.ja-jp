@@ -1,5 +1,5 @@
 ---
-title: サインアウト時にキャッシュからアカウントを削除する - Microsoft ID プラットフォーム | Azure
+title: サインアウト時にトークン キャッシュからアカウントを削除する - Microsoft ID プラットフォーム | Azure
 description: サインアウト時にトークン キャッシュからアカウントを削除する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961660"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423503"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>グローバル サインアウト時にキャッシュからアカウントを削除する
 
@@ -38,7 +38,7 @@ Web アプリにサインインを追加する方法については既に学習�
 
 アプリケーションに対して登録した**ログアウト URL** を使用して、シングル サインアウトを実装することができます。Microsoft ID プラットフォームの `logout` エンドポイントは、アプリケーションに登録されている **Logout URL** を呼び出します。 この呼び出しは、サインアウトがユーザーの Web アプリから開始された場合、または別の Web アプリやブラウザーから開始された場合に行われます。 詳細については、「[シングル サインアウト](v2-protocols-oidc.md#single-sign-out)」をご覧ください。
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
@@ -78,7 +78,7 @@ Python のサンプルでは、グローバル サインアウト時にアカウ
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 

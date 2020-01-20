@@ -1,19 +1,14 @@
 ---
 title: Azure サービス正常性通知とは
 description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
-author: stephbaron
-services: monitoring
-ms.service: azure-monitor
-ms.topic: conceptual
+ms.topic: article
 ms.date: 4/12/2018
-ms.author: stbaron
-ms.subservice: logs
-ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451549"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
@@ -29,7 +24,7 @@ ms.locfileid: "74007083"
 
 各サービスの正常性通知には、その範囲とリソースへの影響に関する詳細が含まれます。 詳細には次のものが含まれます。
 
-プロパティ名 | 説明
+プロパティ名 | [説明]
 -------- | -----------
 channels | 次のいずれかの値:**Admin** または **Operation**。
 correlationId | 通常は文字列形式の GUID。 同じアクションに属するイベントは、通常、同じ correlationId を共有します。
@@ -38,11 +33,11 @@ eventName | イベントのタイトル。
 level | イベントのレベル
 resourceProviderName | 影響を受けるリソースのリソース プロバイダーの名前。
 resourceType| 影響を受けるリソースの種類。
-subStatus | 通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列が含まれる場合もあります。 例: OK (HTTP 状態コード:200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、ゲートウェイ タイムアウト (HTTP 状態コード:504)。
+subStatus | 通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列が含まれる場合もあります。 次に例を示します。OK (HTTP 状態コード: 200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、ゲートウェイ タイムアウト (HTTP 状態コード:504)。
 eventTimestamp | イベントに対応する要求を処理する Azure サービスによってイベントが生成されたときのタイムスタンプ。
 submissionTimestamp | イベントがクエリで使用できるようになったときのタイムスタンプ。
 subscriptionId | このイベントが記録された Azure サブスクリプション。
-status | 操作の状態を説明する文字列。 一般的な値は次のとおりです。**Started**、**In Progress**、**Succeeded**、**Failed**、**Active**、**Resolved**。
+status | 操作の状態を説明する文字列。 いくつかの一般的な値は次のとおりです: **Started**、**In Progress**、**Succeeded**、**Failed**、**Active**、**Resolved**。
 operationName | 操作の名前。
 category | このプロパティは常に **ServiceHealth** です。
 resourceId | 影響を受けるリソースのリソース ID。

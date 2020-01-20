@@ -1,5 +1,5 @@
 ---
-title: MSAL.NET で Web ブラウザーを使用する | Azure
+title: Web ブラウザーを使用する (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android を使用する場合の固有の考慮事項について説明します。
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424171"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>MSAL.NET で Web ブラウザーを使用する
+# <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
+
 対話型の認証には Web ブラウザー が必要です。 MSAL.NET では、Xamarin.iOS と Xamarin.Android での[システム Web ブラウザー](#system-web-browser-on-xamarinios-xamarinandroid)が既定でサポートされています。 ただし、[Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) および [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) のアプリでは、要件に応じて (UX、シングル サインオン (SSO) の必要性、セキュリティ)、[埋め込み Web ブラウザーを有効にすることもできます](#enable-embedded-webviews-on-ios-and-android)。 さらに、Android に Chrome または Chrome カスタム タブをサポートするブラウザーが存在するかどうかに基づいて、使用する Web ブラウザーを[動的に選択する](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)こともできます。 MSAL.NET では、.NET Core デスクトップアプリケーションでシステム ブラウザーがサポートされるのみとなります。
 
 ## <a name="web-browsers-in-msalnet"></a>MSAL.NET での Web ブラウザー
@@ -211,7 +212,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 このメソッドによって返される値と要件に基づいて、決定することができます。
 
-- ユーザーにカスタム エラー メッセージを返すことができます。 例: "認証を続けるには Chrome をインストールしてください"
+- ユーザーにカスタム エラー メッセージを返すことができます。 次に例を示します。"認証を続けるには Chrome をインストールしてください"
 - 埋め込み WebView オプションにフォールバックし、埋め込み WebView として UI を起動できます。
 
 埋め込み WebView オプションのコードを次に示します。

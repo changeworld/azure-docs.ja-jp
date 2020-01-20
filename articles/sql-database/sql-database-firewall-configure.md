@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461471"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -101,7 +101,7 @@ ms.locfileid: "74851828"
 
 ### <a name="connections-from-inside-azure"></a>Azure 内からの接続
 
-Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 開始 IP アドレスと終了 IP アドレスが *0.0.0.0* であるファイアウォール設定は、Azure 接続が許可されていることを示します。 接続が許可されていない場合、要求は SQL Database サーバーに到達しません。
+Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 開始 IP アドレスと終了 IP アドレスが *0.0.0.0* であるファイアウォール設定は、Azure 接続が許可されていることを示します。 これは、ファイアウォール ルールを設定し、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 接続が許可されていない場合、要求は SQL Database サーバーに到達しません。
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
@@ -147,13 +147,13 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Transact-SQL を使用して IP ファイアウォール規則を管理する
 
-| カタログ ビューまたはストアド プロシージャ | Level | 説明 |
+| カタログ ビューまたはストアド プロシージャ | Level | [説明] |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Database |現在のデータベース レベルの IP ファイアウォール規則を表示する |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Database |データベース レベルの IP ファイアウォール規則を作成または更新する |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |データベース |現在のデータベース レベルの IP ファイアウォール規則を表示する |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |データベース |データベース レベルの IP ファイアウォール規則を作成または更新する |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |データベース |データベース レベルの IP ファイアウォール規則を削除する |
 
 次の例では、既存の規則を確認し、*Contoso* サーバーで一定範囲の IP アドレスを有効にして、IP ファイアウォール規則を削除します。
@@ -181,7 +181,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、現在、開発はすべて Az.Sql モジュールを対象に行われています。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-| コマンドレット | Level | 説明 |
+| コマンドレット | Level | [説明] |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
@@ -203,7 +203,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>CLI を使用してサーバー レベルの IP ファイアウォール規則を管理する
 
-| コマンドレット | Level | 説明 |
+| コマンドレット | Level | [説明] |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|サーバー|サーバーの IP ファイアウォール規則を作成する|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|サーバー|サーバーの IP ファイアウォール規則を一覧表示する|
@@ -225,7 +225,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>REST API を使用してサーバー レベルの IP ファイアウォール規則を管理する
 
-| API | Level | 説明 |
+| API | Level | [説明] |
 | --- | --- | --- |
 | [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
 | [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
@@ -262,7 +262,7 @@ SQL Database サービスに期待どおりにアクセスできない場合は�
   - SQL Database サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダーに問い合わせます。 その IP アドレス範囲を IP ファイアウォール規則として追加します。
   - クライアント コンピューターの静的 IP アドレス指定を代わりに取得します。 それらの IP アドレスを IP ファイアウォール規則として追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 企業ネットワーク環境で、Azure データセンターで使用されるコンピューティング IP アドレス範囲 (SQL 範囲を含む) からの受信通信が許可されていることを確認します。 これらの IP アドレスを許可リストに追加することが必要な場合があります。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。  
 - サーバー レベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。

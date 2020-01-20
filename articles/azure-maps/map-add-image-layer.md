@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432861"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>イメージ レイヤーをマップに追加する
 
-この記事では、マップ上の固定された一連の座標に画像をオーバーレイする方法について説明します。 マップへの画像のオーバーレイは、さまざまなシナリオで行われます。 以下に、マップによくオーバーレイされる画像の種類をいくつか挙げます。
+この記事では、マップ上の固定された一連の座標に画像をオーバーレイする方法について説明します。 以下に、マップによくオーバーレイされる画像の種類をいくつか挙げます。
 
-* ドローンからキャプチャされた画像。
-* ビルのフロアプラン。
-* 歴史などの目的に特化したマップ画像。
-* 仕事の現場のブループリント。
-* 気象レーダーの画像。
+* ドローンからキャプチャされた画像
+* ビルのフロアプラン
+* 歴史などの目的に特化したマップ画像
+* 仕事の現場のブループリント
+* 気象レーダーの画像
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) は、マップに画像をオーバーレイする手軽で簡単な方法です。 ただし、画像が大きいと、それを読み込むブラウザーに負荷がかかることがあります。 その場合は、お客様の画像をタイルに分割したうえで、[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) としてマップに読み込むことを検討してください。
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) は、マップに画像をオーバーレイする簡単な方法です。 大きな画像を読み込む場合、ブラウザーに遅延が発生する可能性があります。 その場合は、お客様の画像をタイルに分割したうえで、[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) としてマップに読み込むことを検討してください。
 
 イメージ レイヤーでは、次のイメージ形式がサポートされています。
 
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-上記の機能の完全な実行コード サンプルを以下に示します。
+上記のコードの完全な実行コード サンプルを次に示します。
 
 <br/>
 
@@ -62,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-ground-overlay"></a>KML グラウンド オーバーレイをインポートする
 
-このサンプルは、KML グラウンド オーバーレイ情報を画像レイヤーとしてマップにオーバーレイする方法を示しています。 KML グラウンド オーバーレイでは、東西南北の座標と反時計回りの回転が提供されます。一方、イメージ レイヤーには、画像の四隅の座標を指定する必要があります。 このサンプルの KML グラウンド オーバーレイは、シャルトル大聖堂のもので、その出典は [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml) です。
+この次のサンプルは、KML グラウンド オーバーレイ情報を画像レイヤーとしてマップにオーバーレイする方法を示しています。 KML グラウンド オーバーレイでは、東西南北の座標と反時計回りの回転が提供されます。一方、イメージ レイヤーには、画像の四隅の座標を指定する必要があります。 このサンプルの KML グラウンド オーバーレイは、シャルトル大聖堂のもので、その出典は [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml) です。
 
-次のコードでは、[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) クラスの静的関数 `getCoordinatesFromEdges` を使用して、KML グラウンド オーバーレイから得られる東西南北の情報と回転情報から画像の四隅が計算されています。
+次のコードでは、[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) クラスの静的 `getCoordinatesFromEdges` 関数が使用されます。 KML グラウンド オーバーレイから得られる東西南北の情報と回転情報から画像の四隅を計算しています。
 
 <br/>
 
@@ -80,7 +80,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 <iframe height='700' scrolling='no' title='イメージ レイヤーのオプション' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Image Layer Options</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

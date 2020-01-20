@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 506eb38a2844ed8e8eb9739b116d7647bc1810ec
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c731dae02e9013fc436d6f30d8c8b2ab384968a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453990"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-[New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) コマンドレットを使用して、Azure サブスクリプションで IoT Central アプリケーションを作成します。 例:
+[New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) コマンドレットを使用して、Azure サブスクリプションで IoT Central アプリケーションを作成します。 次に例を示します。
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -63,11 +63,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 このスクリプトでは、まずアプリケーション用に米国東部の場所にリソース グループを作成します。 次の表は、**New-AzIotCentralApp** コマンドで使用されるパラメーターの説明です。
 
-|パラメーター         |説明 |
+|パラメーター         |[説明] |
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
 |Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**米国**、**オーストラリア**、**アジア太平洋**、または **ヨーロッパ** の場所で作成できます。  |
-|名前              |Azure portal 内のアプリケーションの名前。 |
+|Name              |Azure portal 内のアプリケーションの名前。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
 |Sku               |現在使用できる値は **S1** (Standard レベル) のみです。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
 |Template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
@@ -75,16 +75,14 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 **一般公開されている機能を備えたアプリケーション テンプレート**
 
-| テンプレート名            | 説明 |
+| テンプレート名            | [説明] |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
-| iotc-demo@1.0.0          | Refrigerated Vending Machine 用に既に作成したデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、Azure IoT Central の調査を開始するために使用します。 |
-| iotc-devkit-sample@1.0.0 | MXChip または Raspberry Pi デバイスを接続するための準備ができたデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、これらのいずれかのデバイスで実験しているデバイス開発者が使用します。 |
+| iotc-default@1.0.0       | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。
 
 
 **パブリック プレビュー機能を備えたアプリケーション テンプレート**
 
-| テンプレート名            | 説明 |
+| テンプレート名            | [説明] |
 | ------------------------ | ----------- |
 | iotc-pnp-preview@1.0.0   | 独自のデバイス テンプレートとデバイスにデータを入力するための空のプラグ アンド プレイ プレビュー アプリケーションを作成します。 |
 | iotc-condition@1.0.0     | ストア内分析 (条件監視テンプレート) を含むアプリケーションを作成します。 このテンプレートを使用して、ストア環境に接続して監視します。 |
@@ -118,14 +116,14 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>アプリケーションの削除
 
-[Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを削除します。 例:
+[Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) コマンドレットを使用して、IoT Central アプリケーションを削除します。 次に例を示します。
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
  -Name "myiotcentralapp"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Azure PowerShell から Azure IoT Central アプリケーションを管理する方法について説明しました。推奨される次の手順は以下のとおりです。
 

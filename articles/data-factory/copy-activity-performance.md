@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444132"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -242,7 +242,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 
 コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Blob Storage にステージングするかどうかを指定します。 **enableStaging** を `TRUE` に設定した場合は、次の表に記載されている追加のプロパティを指定する必要があります。 ステージング用に Azure Storage または Storage Shared Access Signature のリンクされたサービスがない場合は、作成する必要もあります。
 
-| プロパティ | 説明 | 既定値 | 必須 |
+| プロパティ | [説明] | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | enableStaging |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | linkedServiceName |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
@@ -289,18 +289,19 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 * クラウド コピー (クラウド データ ストアから別のクラウド データ ストアへのデータのコピー、どちらのステージも Azure 統合ランタイムで強化されている) でステージングを使用する場合、料金は、"ステップ 1 とステップ 2 のコピー時間の合計" x "クラウド コピーの単価" で計算されます。
 * ハイブリッド コピー (オンプレミス データ ストアからクラウド データ ストアへのデータのコピー、1 つのステージがセルフホステッド統合ランタイムで強化されている) でステージングを使用する場合、料金は、"ハイブリッド コピーの時間" x "ハイブリッド コピーの単価" + "クラウド コピーの時間" x "クラウド コピーの単価" で計算されます。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Storage (Blob Storage と Table Storage を含む):[Azure Storage のスケーラビリティのターゲット](../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関する記事。
+* Azure Blob ストレージ:[Blob ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [Blob ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
+* Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティの他の記事を参照してください。
 
 - [コピー アクティビティの概要](copy-activity-overview.md)

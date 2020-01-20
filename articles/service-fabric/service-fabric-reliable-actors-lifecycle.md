@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターのライフサイクルの概要 | Microsoft Docs
+title: Azure Service Fabric アクターのライフサイクルの概要
 description: Service Fabric 高信頼アクターのライフ サイクル、ガベージ コレクション、およびアクターとその状態の手動による削除について説明します。
-services: service-fabric
-documentationcenter: .net
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349343"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -116,7 +107,7 @@ public class Program
 ## <a name="manually-deleting-actors-and-their-state"></a>アクターとその状態を手動で削除する
 非アクティブ化されたアクターのガベージ コレクションではアクター オブジェクトのみがクリーンアップされ、アクターの状態マネージャーに格納されているデータは削除されません。 アクターが再アクティブ化されると、そのデータは状態マネージャーを介して再び利用可能になります。 状態マネージャーにデータを格納したアクターが非アクティブ化され、その後も再アクティブ化されなかった場合は、そのデータをクリーンアップする必要が生じる場合があります。  アクターを削除する方法の例については、「[アクターとその状態の削除](service-fabric-reliable-actors-delete-actors.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)

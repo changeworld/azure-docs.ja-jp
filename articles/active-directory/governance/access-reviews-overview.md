@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422764"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -58,19 +58,21 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 | --- | --- | --- | --- |
 | セキュリティ グループ メンバー</br>Office グループ メンバー | 指定されたレビュー担当者</br>グループ所有者</br>自己レビュー | Azure AD アクセス レビュー</br>Azure AD グループ | アクセス パネル |
 | 接続されたアプリに割り当て | 指定されたレビュー担当者</br>自己レビュー | Azure AD アクセス レビュー</br>azure AD エンタープライズ アプリ (プレビュー) | アクセス パネル |
-| Azure AD ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure ポータル |
-| Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure ポータル |
+| Azure AD ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portal |
+| Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portal |
 
 
 ## <a name="onboard-access-reviews"></a>アクセス レビューの配布準備
 
 アクセス レビューをオンボードするには、次の手順に従います。
 
-1. グローバル管理者またはユーザー管理者として、アクセス レビューを使用する [Azure portal](https://portal.azure.com) にサインインします。
+1. アクセス レビューを管理し、グローバル管理者またはユーザー管理者としてサインインするには、[Azure portal](https://portal.azure.com) にアクセスしてください。
 
-1. 左側のナビゲーションで、 **[Azure Active Directory]** をクリックします。
+1. **Azure Active Directory** を検索して選択します。
 
-1. 左側のメニューで、 **[Identity Governance]** をクリックします。
+      ![Azure portal で、Azure Active Directory を検索する](media/access-reviews-overview/search-azure-active-directory.png)
+
+1. **[Identity Governance]** を選択します。
 
 1. **[アクセス レビュー]** をクリックします。
  
@@ -117,9 +119,9 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
 お客様のユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)
-- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)
+- [グループまたはアプリケーションへのアクセスのレビュー](perform-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを完了する](complete-access-review.md)

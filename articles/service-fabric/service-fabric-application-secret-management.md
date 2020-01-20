@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アプリケーション シークレットを管理する | Microsoft Docs
+title: Azure Service Fabric のアプリケーション シークレットを管理する
 description: Service Fabric アプリケーションでシークレット値をセキュリティで保護する方法 (プラットフォーム不可知) について説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457547"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションで暗号化されたシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -146,7 +137,7 @@ if (MySecretIsEncrypted)
 string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Service Fabric [シークレット ストア](service-fabric-application-secret-store.md) 
 * アプリケーション マニフェストとサービス セキュリティの詳細については、[こちら](service-fabric-application-and-service-security.md)をご覧ください。
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67056493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353556"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -35,6 +35,12 @@ ms.locfileid: "67056493"
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+
+### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>接続時、証明書が一致しないと表示された場合、どうすればよいでしょうか。
+
+手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** のチェックを外すか、**証明書と共にサーバーの FQDN を追加**します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
+
+![ポイント対サイト](./media/vpn-gateway-faq-p2s-all-include/servercert.png "サーバー証明書")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 
@@ -60,7 +66,7 @@ Azure では、次の 3 種類のポイント対サイト VPN オプションを
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
-No. ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
+いいえ。 ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
 
@@ -68,7 +74,7 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
-No. SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
+いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 

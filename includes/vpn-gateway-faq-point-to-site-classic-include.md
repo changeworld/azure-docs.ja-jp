@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5c663bb507656dad6f073b9906fdbf104714c8f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450795"
 ---
 この FAQ は、クラシック デプロイ モデルを使用した P2S 接続に適用されます。
 
@@ -35,7 +35,8 @@ ms.locfileid: "67181042"
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>ポイント対サイト構成に存在できる VPN クライアント エンドポイントの最大数を教えてください。
 
-仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+VPN クライアント エンドポイントの量は、ゲートウェイの SKU とプロトコルによって異なります。
+[!INCLUDE Aggregated throughput by SKU]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>ポイント対サイト接続で自社の内部 PKI ルート CA を使用できますか。
 

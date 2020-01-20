@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449000"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできる対話形式の認証されたシェルです。
@@ -27,13 +27,13 @@ Bash または PowerShell どちらかのシェル エクスペリエンスを�
 
 下のボタンをクリックし、shell.azure.com からお試しください。
 
-[![起動の埋め込み](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+[![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
 Azure Portal から Cloud Shell アイコンを使用して試してみる。
 
 ![ポータルの起動](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 ### <a name="browser-based-shell-experience"></a>ブラウザーベースのシェル環境
 Cloud Shell は、Azure の管理タスクを視野に入れて開発されたブラウザーベースのコマンド ライン環境です。
@@ -74,6 +74,9 @@ Cloud Shell マシンは一時的ですが、ファイルは、ディスク イ�
 
 [新規または既存のストレージ アカウント](persisting-shell-storage.md)をマウントする方法または [Cloud Shell で使用される永続化メカニズム](persisting-shell-storage.md#how-cloud-shell-storage-works)に関する記事で詳細をご確認ください。
 
+> [!NOTE]
+> Cloud Shell ストレージ アカウントでは Azure Storage ファイアウォールはサポートされません。
+
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるホスト上で実行されます。
 * Cloud Shell は、無操作状態で 20 分経過するとタイムアウトとなります。
@@ -88,6 +91,6 @@ Cloud Shell マシンは一時的ですが、ファイルは、ディスク イ�
 ## <a name="pricing"></a>価格
 Cloud Shell のホストとなるマシンは無料です。ただし、前提条件として Azure Files 共有をマウントする必要があります。 ストレージのコストは通常どおりに適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイックスタート](quickstart-powershell.md)

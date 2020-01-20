@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461080"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -32,12 +32,12 @@ ms.locfileid: "74973970"
 
 API バージョン `2019-05-06` 以降では、項目レベルのインデクサーのエラーと警告は、原因と次の手順をより明確にするために構造化されています。 次のプロパティが含まれます。
 
-| プロパティ | 説明 | 例 |
+| プロパティ | [説明] | 例 |
 | --- | --- | --- |
 | key | エラーまたは警告によって影響を受けるドキュメントのドキュメント ID。 | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| 名前 | エラーまたは警告が発生した場所を示す操作名。 これは、次の構造によって生成されます: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
+| name | エラーまたは警告が発生した場所を示す操作名。 これは、次の構造によって生成されます: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
 | message | エラーまたは警告の概要。 | Web API 要求が失敗したため、スキルを実行できませんでした。 |
-| details | カスタム スキルの実行に失敗した場合の WebApi 応答など、問題を診断するのに役立つその他の詳細情報。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...スタック トレースの残り... |
+| 詳細 | カスタム スキルの実行に失敗した場合の WebApi 応答など、問題を診断するのに役立つその他の詳細情報。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...スタック トレースの残り... |
 | documentationLink | 問題をデバッグして解決するための詳細情報が記載された関連ドキュメントへのリンク。 このリンクは、多くの場合、このページの以下のいずれかのセクションを指します。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -54,15 +54,15 @@ API バージョン `2019-05-06` 以降では、項目レベルのインデク�
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>エラー:Could not extract document content (ドキュメントの内容を抽出できませんでした)
-BLOB データ ソースを使用するインデクサーで、ドキュメント (PDF ファイルなど) から内容を抽出できませんでした。 これは、次の理由で発生する可能性があります。
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>エラー:ドキュメントから内容やメタデータを抽出できませんでした
+BLOB データ ソースを使用するインデクサーで、ドキュメント (PDF ファイルなど) から内容やメタデータを抽出できませんでした。 これは、次の理由で発生する可能性があります。
 
 | 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
 | BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)で BLOB をスキップできます。 |
-| 一時的な問題 | BLOB の処理エラー:要求が中止されました:要求は取り消されました。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
+| 一時的な問題 | "BLOB の処理エラー:要求が中止されました:要求は取り消されました。" "処理中にドキュメントがタイムアウトしました。" | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
 <a name="could-not-parse-document"/>
 
@@ -158,7 +158,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 | 理由 | 詳細/例
 | --- | ---
-| インデクサーによって抽出されたフィールドのデータ型は、対応する対象のインデックス フィールドのデータ モデルと互換性がありません。 | '_data_' キーを持つドキュメントのデータ フィールド '_data_' に、''Edm.String' 型の ' 無効な値が含まれています。 想定されている型は 'Collection (Edm String)' です。 |
+| インデクサーによって抽出されたフィールドのデータ型は、対応する対象のインデックス フィールドのデータ モデルと互換性がありません。 | '888' キーを持つドキュメントのデータ フィールド '_data_' に、'Edm.String' 型の無効な値が含まれています。 想定されている型は 'Collection (Edm String)' です。 |
 | 文字列値から JSON エンティティを抽出できませんでした。 | フィールド '_data_' の 'Edm.String' 型 ' を JSON オブジェクトとして解析できませんでした。 エラー: '値を解析した後に、予期しない文字が見つかりました: ''。 パス '_path_'、行 1、位置 3162。' |
 | 文字列値から JSON エンティティのコレクションを抽出できませんでした。  | JSON 配列としてフィールド '_data_' ' の 'Edm.String' 型 ' を解析できませんでした。 エラー: '値を解析した後に、予期しない文字が見つかりました: ''。 パス '[0]'、行 1、位置 27。' |
 | ソース ドキュメントで不明な型が検出されました。 | 不明な型 '_unknown_' にインデックスを設定することはできません |
@@ -174,10 +174,18 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>警告:スキルの入力が無効だったため、スキルを実行できませんでした
-スキルへの入力が存在しないか、正しくない型であるか、または無効であるため、インデクサーはスキルセットでスキルを実行できませんでした。
+## <a name="warning-skill-input-was-invalid"></a>警告:スキルの入力が無効でした
+スキルが入力されませんでした。型が間違っているか、それ以外の理由で無効です。 警告メッセージは次のような影響を示します。
+1) スキルを実行できませんでした
+2) スキルは実行されますが、予期しない結果が生じる可能性があります
 
-コグニティブ スキルには、必須の入力と省略可能な入力があります。 たとえば、[キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)には、必須の入力が 2 つ (`text`、`languageCode`) あり、省略可能な入力はありません。 必須の入力が無効な場合は、スキルがスキップされ、警告が生成されます。 スキップされたスキルは出力を生成しません。そのため、スキップされたスキルの出力を他のスキルが使用する場合は、警告がさらに生成される可能性があります。
+コグニティブ スキルには、必須の入力と省略可能な入力があります。 たとえば、[キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)には、必須の入力が 2 つ (`text`、`languageCode`) あり、省略可能な入力はありません。 カスタム スキルの入力はすべて省略可能な入力と見なされます。
+
+必須の入力に入力されていなかったり、入力の型が間違っていたりした場合、スキルはスキップされ、警告が生成されます。 スキップされたスキルは出力を生成しません。そのため、スキップされたスキルの出力を他のスキルが使用する場合は、警告がさらに生成される可能性があります。
+
+省略可能な入力に入力されていなくてもスキルは実行されますが、足りない入力に起因して予想外の出力が生成されることがあります。
+
+いずれの場合でも、この警告はデータの形状に起因して表示されることがあります。 たとえば、フィールド `firstName`、`middleName`、`lastName` を持つ人に関する情報がドキュメントに含まれるとき、一部のドキュメントに `middleName` の入力がないことがあります。 パイプラインのスキルに入力として `middleName` を渡す場合、このスキル入力が不足することがあります。 データとシナリオを評価し、この警告の結果として措置が必要になるかどうかを決定する必要があります。
 
 入力が欠落している場合に既定値を指定する場合は、[条件付きスキル](cognitive-search-skill-conditional.md)を使用して既定値を生成し、[条件付きスキル](cognitive-search-skill-conditional.md)の出力をスキル入力として使用できます。
 
@@ -197,8 +205,8 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 | 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
-| スキルの入力タイプが正しくありません。 | 必須のスキルの入力 `X` が、予期された型 `String` ではありませんでした。 必須のスキルの入力 `X` が、予期された形式ではありませんでした。 | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
-| スキルの入力がありません | 必須のスキルの入力 `X` がありません。 | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントで必要な入力を定義します。 |
+| スキルの入力タイプが正しくありません。 | "必須のスキルの入力が予期された型 `String` ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "必須のスキルの入力が予期された形式ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で反復処理できません。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で `0` を選択できません" | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
+| スキルの入力がありません | "必須のスキルの入力がありません。 名前: `text`、ソース: `/document/merged_content`" "不足値 `/document/normalized_images/0/imageTags`。"  "長さ `0` の非配列 `/document/pages` で `0` を選択できません。" | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントから必要な入力が与えられることを確認します。 |
 | スキル言語コードの入力が無効です | スキルの入力 `languageCode` に次の言語コード `X,Y,Z` が含まれており、その少なくとも 1 つが無効です。 | 詳しくは、[以下](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)をご覧ください |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

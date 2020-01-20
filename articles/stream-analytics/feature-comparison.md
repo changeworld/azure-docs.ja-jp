@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics の機能の比較
 description: この記事では、Azure portal、Visual Studio、Visual Studio Code でサポートされている、Azure Stream Analytics のクラウド ジョブと IoT Edge ジョブの機能を比較します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 4eb19a5b344cc5bda5ecad724daaddf9b0000d7e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8cdba27ac949584e1fa96e3f7b0874f4fc0d4212
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443657"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
@@ -26,27 +25,27 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |クロス プラットフォーム     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |スクリプトの作成     |はい         |はい         |はい         |
 |スクリプトの IntelliSense     |構文の強調表示         |構文の強調表示</br>コード補完</br>エラー マーカー         |構文の強調表示</br>コード補完</br>エラー マーカー         |
-|入力、出力、およびジョブ構成の定義     |はい         |はい         |はい         |
-|Blob 出力のパーティション分割     |はい         |はい         |はい         |
-|出力としての Power BI     |はい         |はい         |いいえ         |
-|SQL Database 参照データ     |はい         |はい         |はい         |
-|カスタム メッセージ プロパティ     |はい         |いいえ         |いいえ         |
-|複数のクエリでの入力と出力の共有     |いいえ         |可能         |はい         |
-|JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
-|Machine Learning のコールアウト     |はい。ただし、クエリはテストできません        |はい。ただし、ローカルではテストできません         |いいえ         |
-|互換性レベル     |1.0</br>1.1</br>1.2         |1.0</br>1.1</br>1.2          |1.0</br>1.1</br>1.2          |
-|組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
-|組み込みの地理空間関数     |はい         |はい         |はい         |
-|サンプル ファイルを使用したクエリのテスト     |はい         |はい         |はい         |
-|ライブ データでのローカル テスト     |いいえ         |はい         |いいえ         |
-|ジョブを一覧表示してジョブ エンティティを表示する     |はい         |はい         |はい         |
-|ジョブのローカル プロジェクトへのエクスポート     |いいえ         |可能         |はい         |
-|ジョブの送信、開始、停止     |はい         |はい         |はい         |
-|ソース管理     |いいえ         |可能         |はい         |
+|すべての種類の入力、出力、およびジョブ構成の定義     |はい         |はい         |はい         |
+|ソース管理     |いいえ         |はい         |はい         |
 |CI/CD のサポート     |部分的         |はい         |はい         |
+|複数のクエリでの入力と出力の共有     |いいえ         |はい         |はい         |
+|サンプル ファイルを使用したクエリのテスト     |はい         |はい        |はい         |
+|ライブ データでのローカル テスト     |いいえ         |はい       |はい      |
+|ジョブを一覧表示してジョブ エンティティを表示する     |はい         |はい        |はい         |
+|ジョブのローカル プロジェクトへのエクスポート     |いいえ         |はい         |はい         |
+|ジョブの送信、開始、停止     |はい         |はい         |はい         |
 |ジョブ メトリックとジョブ ダイアグラムの表示     |はい         |はい         |ポータルで開く         |
 |ジョブの実行時エラーの表示     |はい         |はい         |いいえ         |
 |診断ログ     |はい         |いいえ         |いいえ         |
+|カスタム メッセージ プロパティ     |はい         |はい         |いいえ       |
+|C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
+|JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
+|Machine Learning Service     |はい。ただし、クエリはテストできません        |はい         |いいえ         |
+|Machine Learning Studio     |はい。ただし、クエリはテストできません        |はい |いいえ         |
+|互換性レベル     |1.0</br>1.1</br>1.2 (既定値)         |1.0</br>1.1</br>1.2 (既定値)           |1.0</br>1.1</br>1.2 (既定値)           |
+|組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
+|組み込みの地理空間関数     |はい         |はい         |はい         |
+
 
 
 ## <a name="iot-edge-job-features"></a>IoT Edge ジョブの機能
@@ -66,12 +65,12 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |CI/CD のサポート     |いいえ         |いいえ         |いいえ         |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)
 * [チュートリアル:Azure Stream Analytics IoT Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
 * [Visual Studio Tools を使用して Stream Analytics IoT Edge ジョブを作成する](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
-* [Explore Azure Stream Analytics with Visual Studio Code (Preview)](vscode-explore-jobs.md) (Visual Studio Code で Azure Stream Analytics の詳細を確認する (プレビュー))
+* [Explore Azure Stream Analytics with Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md) (Visual Studio Code で Azure Stream Analytics の詳細を確認する (プレビュー))
 
 

@@ -1,21 +1,21 @@
 ---
-title: ロジック アプリ定義の作成、編集、拡張
-description: Azure Logic Apps でロジック アプリの JSON 定義を作成、編集、拡張する方法
+title: ロジック アプリの JSON ワークフロー定義を作成、編集、拡張する
+description: Azure Logic Apps でロジック アプリの JSON ワークフロー定義を作成、編集、拡張する方法
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 95e9f7211c8cd6cb4edd59d099ae9c189bae3780
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792590"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666926"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps でのロジック アプリ定義の JSON の作成、編集、拡張
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps でロジック アプリ ワークフロー定義の JSON を作成、編集、拡張する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。 ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に [Azure リソース](../azure-resource-manager/resource-group-overview.md)としてロジック アプリ定義を含めることができます。 ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。 ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に [Azure リソース](../azure-resource-manager/management/overview.md)としてロジック アプリ定義を含めることができます。 ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
 
 JSON でロジック アプリ定義を操作するには、Azure Portal または Visual Studio で作業するときにコード ビュー エディターを開くか、任意のエディターに定義をコピーします。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
@@ -25,7 +25,7 @@ JSON でロジック アプリ定義を操作するには、Azure Portal また�
 
 ## <a name="edit-json---azure-portal"></a>JSON を編集する - Azure Portal
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
+1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> にサインインする
 
 2. 左側のメニューの **[すべてのサービス]** を選択します。 検索ボックスで "logic apps" を検索し、検索結果からロジック アプリを選択します。
 
@@ -39,11 +39,11 @@ Visual Studio でロジック アプリ定義を操作する前に、[必要な�
 
 Visual Studio では、Azure Portal から直接デプロイされているか、Visual Studio から Azure Resource Manager プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
 
-1. ロジック アプリを含む、Visual Studio ソリューションまたは [Azureリソース グループ](../azure-resource-manager/resource-group-overview.md) プロジェクトを開きます。
+1. ロジック アプリを含む、Visual Studio ソリューションまたは [Azureリソース グループ](../azure-resource-manager/management/overview.md) プロジェクトを開きます。
 
 2. ロジック アプリの定義を見つけて開きます。既定では、**LogicApp.json** という名前の [Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に表示されます。 このテンプレートを使用し、さまざまな環境へのデプロイ用にカスタマイズできます。
 
-3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。
+3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します
 
    ![Visual Studio ソリューションのロジック アプリを開く](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
@@ -56,11 +56,11 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 5. デザイナー ビューに戻るには、コード ビュー エディターの下部で **[デザイン]** を選択します。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
-デプロイ ライフサイクルには通常、開発、テスト、ステージング、および運用のためのさまざまな環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。 
+通常、デプロイのライフサイクルには、開発、テスト、ステージング、運用の異なる環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。 
 
-これらの値を*パラメーター化する*次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Azure Resource Manager テンプレートを使用したロジック アプリのデプロイの自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)に関するページを参照してください。
+これらの値を*パラメーター化する*次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Automate deployment for logic apps with Azure Resource Manager templates](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
 1. テンプレートで、それぞれ、デプロイ時と実行時に使用する値を受け入れるためのテンプレート パラメーターとワークフロー定義パラメーターを定義します。
 
@@ -72,7 +72,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
    ワークフロー定義パラメーターの値を指定する場合は、ワークフロー定義の外部にあるが、引き続きロジック アプリのリソース定義の内部にある parameters セクションを使用してテンプレート パラメーターを参照できます。 それにより、テンプレート パラメーター値をワークフロー定義パラメーターに渡すことができます。
 
-1. パラメーターの値を個別の[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)に格納し、そのファイルをデプロイに含めます。
+1. パラメーターの値を個別の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納し、そのファイルをデプロイに含めます。
 
 ## <a name="process-strings-with-functions"></a>関数を使用して文字列を処理する
 
@@ -279,7 +279,7 @@ Logic Apps には、文字列を操作するためのさまざまな関数があ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

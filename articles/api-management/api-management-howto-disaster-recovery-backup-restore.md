@@ -1,5 +1,6 @@
 ---
-title: Azure API Management でバックアップと復元を使用してディザスター リカバリーを実装する | Microsoft Docs
+title: API Management でバックアップと復元を使用してディザスター リカバリーを実装する
+titleSuffix: Azure API Management
 description: Azure API Management でバックアップと復元を使用してディザスター リカバリーを行う方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430695"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -54,7 +55,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. API Management サービス インスタンスを含むサブスクリプションを使用して、**Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
 
     > [!NOTE]
@@ -220,7 +221,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > [!NOTE]
 > バックアップと復元の操作は、それぞれ PowerShell の [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) コマンドと [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) コマンドでも実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のリソースでバックアップ/復元プロセスの異なるチュートリアルを確認します。
 

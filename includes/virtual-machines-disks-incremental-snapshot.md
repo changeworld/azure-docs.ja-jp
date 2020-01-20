@@ -5,23 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b936c3a320a99d0853cb331fcd0bc44718527b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469309"
 ---
 増分スナップショット (プレビュー) は、マネージド ディスクの特定の時点のバックアップであり、取得時に、最後のスナップショット以降のすべての変更のみで構成されます。 増分スナップショットをダウンロードまたは使用しようとすると、完全な VHD が使用されます。 マネージド ディスク スナップショットに対するこの新しい機能により、必要に応じて個別のスナップショットごとにディスク全体を保存する必要がなくなるため、コスト効率が向上する可能性があります。 通常のスナップショットと同じように、増分スナップショットを使用して、完全なマネージド ディスクを作成したり、通常のスナップショットを作成したりできます。
 
 増分スナップショットと通常のスナップショットには、いくつかの違いがあります。 増分スナップショットでは、ディスクのストレージの種類に関係なく、常に Standard HDD ストレージが使用されますが、通常のスナップショットでは Premium SSD を使用できます。 VM のデプロイをスケールアップするために Premium Storage で通常のスナップショットを使用している場合は、[Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md) の Standard Storage でカスタム イメージを使用することをお勧めします。 これは、より低コストでさらに大規模なスケールを実現するのに役立ちます。 さらに、増分スナップショットは、[ゾーン冗長ストレージ](../articles/storage/common/storage-redundancy-zrs.md) (ZRS) を使用すると、信頼性が向上する可能性があります。 選択したリージョンで ZRS が使用可能な場合、増分スナップショットは ZRS を自動的に使用します。 そのリージョンで ZRS が使用できない場合、スナップショットは既定で[ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md) (LRS) に設定されます。 この動作をオーバーライドして手動で選択することもできますが、これはお勧めしません。
 
 増分スナップショットには、マネージド ディスクで独自に使用できる差分機能も用意されています。 これにより、同じマネージド ディスクの 2 つの増分スナップショット間の変更内容を、ブロック レベルまで取得できます。 スナップショットを複数のリージョンにわたってコピーするとき、この機能を使用してデータ フットプリントを削減できます。
-
-まだプレビューにサインアップしておらず、増分スナップショットの使用を開始する場合は、パブリック プレビューにアクセスするために AzureDisks@microsoft.com までメールでお問い合わせください。
 
 ## <a name="restrictions"></a>制限
 
@@ -154,10 +152,6 @@ Azure Resource Manager テンプレートを使用して、増分スナップシ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-1. まだプレビューにサインアップしておらず、増分スナップショットの使用を開始する場合は、パブリック プレビューにアクセスするために AzureDisks@microsoft.com までメールでお問い合わせください。 
-
-2. 差分機能を使用した増分スナップショットのリージョン間コピーについては、次のサンプルを参照してください   
-
-    - [Azure .Net Sdk の使用](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+.NET を使用し、増分スナップショットの差分機能を示すサンプル コードを見る場合、[増分スナップショットの差分機能で別のリージョンに Azure マネージド ディスク バックアップをコピーする](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)方法に関するページを参照してください。

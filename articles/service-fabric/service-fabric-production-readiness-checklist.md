@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の運用環境の準備状況チェックリスト | Microsoft Docs
+title: Azure Service Fabric の運用環境の準備状況チェックリスト
 description: ベスト プラクティスに従って、Service Fabric アプリケーションとクラスターの運用準備をします。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376802"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -65,7 +54,7 @@ Service Fabric の Reliable Services または Reliable Actors プログラミ�
 1. [リソース分散](service-fabric-cluster-resource-manager-balancing.md)のためにアプリケーションとレポートの[負荷](service-fabric-cluster-resource-manager-metrics.md)を監視しているカスタム ウォッチドッグをデプロイします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric Windows クラスターをデプロイする](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * [Service Fabric Linux クラスターをデプロイする](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

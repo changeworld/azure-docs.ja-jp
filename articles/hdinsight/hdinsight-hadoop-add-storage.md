@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435583"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -24,19 +24,19 @@ HDInsight に Azure ストレージ *アカウント*を追加するためにス
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* ストレージ アカウントの名前とキー。 「[Azure portal でストレージ アカウント設定を管理する](../storage/common/storage-account-manage.md)」を参照してください。
+* ストレージ アカウントの名前とキー。 「[ストレージ アカウントのアクセス キーの管理](../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * [大文字と小文字が正しく区別されたクラスター名](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)。
 * PowerShell を使用する場合は、AZ モジュールが必要です。  「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview)」を参照してください。
 * Azure CLI をインストールしていない場合は、「[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)」を参照してください。
-* Bash または Windows コマンド プロンプトを使用している場合、**jq** (コマンド ライン JSON プロセッサ) も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。 Windows 10 での Ubuntu の Bash については、「[Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)」(Windows 10 用 Windows Subsystem for Linux インストール ガイド) を参照してください。
+* Bash または Windows コマンド プロンプトを使用している場合、**jq** (コマンド ライン JSON プロセッサ) も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。 Windows 10 での Ubuntu の Bash については、「[Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)」(Windows 10 用 Windows Subsystem for Linux インストール ガイド) を参照してください。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 このスクリプトは、次のパラメーターを受け取ります。
 
-* __Azure ストレージ アカウント名__: HDInsight クラスターに追加するストレージ カウントの名前。 スクリプトの実行後は、HDInsight は、このストレージ アカウントに格納されているデータの読み書きができます。
+* __Azure ストレージ アカウント名__:HDInsight クラスターに追加するストレージ カウントの名前。 スクリプトの実行後は、HDInsight は、このストレージ アカウントに格納されているデータの読み書きができます。
 
-* __Azure ストレージ アカウント キー__: ストレージ アカウントへのアクセスを許可するキー。
+* __Azure ストレージ アカウント キー__:ストレージ アカウントへのアクセスを許可するキー。
 
 * __-p__ (省略可能): 指定した場合、キーは暗号化されず、プレーンテキストとして core-site.xml ファイルに格納されます。
 
@@ -55,11 +55,11 @@ HDInsight に Azure ストレージ *アカウント*を追加するためにス
 > [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
-## <a name="the-script"></a>スクリプト
+## <a name="the-script"></a>スクリプトは、以下のことを行います
 
 __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__要件__:スクリプトを __ヘッド ノード__ に適用する必要があります。 このスクリプトは、クラスターの Ambari 構成を直接更新するため、__Persisted__ としてマークする必要はありません。
+__要件__: スクリプトを __ヘッド ノード__ に適用する必要があります。 このスクリプトは、クラスターの Ambari 構成を直接更新するため、__Persisted__ としてマークする必要はありません。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
@@ -100,7 +100,7 @@ az hdinsight script-action execute ^
     --script-parameters "ACCOUNTNAME ACCOUNTKEY"
 ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 「[実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
 
@@ -108,7 +108,7 @@ az hdinsight script-action execute ^
 
 ### <a name="storage-firewall"></a>ストレージ ファイアウォール
 
-**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 
@@ -220,6 +220,6 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
 
 ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 データが地域データ センターを離れると、エグレス料金が適用されます。 この料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 既存の HDInsight クラスターにストレージ アカウントを追加する方法について説明しました。 スクリプト アクションの詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。

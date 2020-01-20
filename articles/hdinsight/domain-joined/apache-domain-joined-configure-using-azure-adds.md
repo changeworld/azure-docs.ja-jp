@@ -1,6 +1,6 @@
 ---
-title: Azure AD を使用したエンタープライズ セキュリティ - Azure HDInsight
-description: Azure Active Directory Domain Services を使って HDInsight Enterprise セキュリティ パッケージのクラスターをセットアップして構成する方法について説明する。
+title: Azure AD DS を使用したエンタープライズ セキュリティ - Azure HDInsight
+description: Azure Active Directory Domain Services を使って HDInsight Enterprise セキュリティ パッケージのクラスターを設定して構成する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,38 +8,42 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: d31de590d8dc40ff3d5c1dfab060ee4f045ba4d1
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 01de2173ee5d55f24f97e1d057e96d93a56c2af0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435964"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight での Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成
 
-Enterprise セキュリティ パッケージ (ESP) のクラスターでは、Azure HDInsight クラスターに対するマルチ ユーザー アクセスが可能です。 ESP の HDInsight クラスターはドメインに接続されるので、ドメイン ユーザーは自分のドメイン資格情報を使用してクラスターの認証を受け、ビッグ データ ジョブを実行することができます。
+Enterprise セキュリティ パッケージ (ESP) のクラスターでは、Azure HDInsight クラスターに対するマルチユーザー アクセスが可能です。 ESP の HDInsight クラスターはドメインに接続されるので、ドメイン ユーザーは自分のドメイン資格情報を使用してクラスターの認証を受け、ビッグ データ ジョブを実行することができます。
 
-この記事では、Azure Active Directory Domain Services (Azure AD-DS) を使って、ESP の HDInsight クラスターを構成する方法について説明します。
-
-> [!NOTE]  
-> ESP は、HDInsight 3.6 および 4.0 で一般提供となっています。対象となるクラスターの種類は、Apache Spark、Interactive、Hadoop、HBase です。 Apache Kafka クラスター タイプ用の ESP はプレビュー段階で、ベスト エフォート サポートのみを提供します。 ESP GA の日付 (2018 年 10 月 1 日) より前に作成された ESP クラスターはサポートされません。
-
-## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
+この記事では、Azure Active Directory Domain Services (Azure AD DS) を使って、ESP の HDInsight クラスターを構成する方法について説明します。
 
 > [!NOTE]  
-> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage (ADLS) Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Multi-Factor Authentication (MFA) を無効にする必要があります。 [信頼済み IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) または[条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して特定のユーザーの MFA を無効にすることができるのは、HDInsight クラスターの VNET IP 範囲にアクセスしている場合のみです。 条件付きアクセスを使用している場合は、AD サービス エンドポイントが HDInsight VNET 上で有効になっていることを確認してください。
+> ESP は、次の種類のクラスターを対象として、HDInsight 3.6 および 4.0 で一般提供されています: Apache Spark、Interactive、Hadoop、HBase。 クラスターの種類 Apache Kafka 用の ESP は、プレビュー段階にあり、ベスト エフォート サポートのみとなっています。 ESP GA の日付 (2018 年 10 月 1 日) より前に作成された ESP クラスターはサポートされません。
+
+## <a name="enable-azure-ad-ds"></a>Azure AD DS を有効にする
+
+> [!NOTE]  
+> Azure AD DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Storage Gen1 または Gen2 の場合、基本的な Kerberos 認証を使用してクラスターにアクセスする必要があるユーザーに対してのみ、Azure Multi-Factor Authentication を無効にする必要があります。 
 >
-> クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
+> [信頼済み IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) または[条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して特定のユーザーに対して Multi-Factor Authentication を無効にすることができるのは、それらが HDInsight クラスターの仮想ネットワーク用の IP 範囲にアクセスしている場合 "*のみ*" です。 条件付きアクセスを使用している場合は、Active Directory サービス エンドポイントが HDInsight 仮想ネットワーク上で有効になっていることを確認します。
+>
+> クラスター記憶域が Azure Blob Storage である場合は、Multi-Factor Authentication を無効にしないでください。
 
-前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/tutorial-create-instance.md)」を参照してください。 
+Azure AD DS を有効にすることは、ESP を使用する HDInsight クラスターを作成するための前提条件です。 詳細については、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/tutorial-create-instance.md)に関するページを参照してください。 
 
-Azure AD-DS が有効の場合、すべてのユーザーとオブジェクトについて、Azure Active Directory (AAD) から Azure AD-DS への同期が既定で開始されます。 同期操作の長さは、Azure AD 内のオブジェクトの数によって異なります。 数十万のオブジェクトがある場合、同期には数日かかる場合があります。 
+Azure AD DS が有効の場合、すべてのユーザーとオブジェクトについて、Azure Active Directory (Azure AD) から Azure AD DS への同期が既定で開始されます。 同期操作の長さは、Azure AD 内のオブジェクトの数によって異なります。 数十万のオブジェクトがある場合、同期には数日かかることがあります。 
 
-Azure AD-DS で使用するドメイン名は、HDInsight で動作するように、39 文字以下である必要があります。
+Azure AD DS で使用するドメイン名は、HDInsight で動作するように、39 文字以下とする必要があります。
 
-必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、「[Configure scoped synchronization from Azure AD to your managed domain (Azure AD からマネージド ドメインまで範囲指定された同期を構成する)](../../active-directory-domain-services/scoped-synchronization.md)」を参照してください。
+必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、[Azure AD からご利用のマネージド ドメインまで範囲指定された同期の構成](../../active-directory-domain-services/scoped-synchronization.md)に関するページを参照してください。
 
-セキュリティで保護された LDAP を有効にする場合は、証明書のサブジェクト名およびサブジェクトの別名にドメイン名を指定します。 たとえば、お使いのドメイン名が *contoso100.onmicrosoft.com* の場合は、ご自身の証明書サブジェクト名およびサブジェクトの別名にその正確な名前が存在することを確認します。 詳細については、「[Azure AD-DS のマネージド ドメインに対するセキュリティで保護された LDAP の構成](../../active-directory-domain-services/tutorial-configure-ldaps.md)」を参照してください。 以下に、自己署名証明書を作成してサブジェクト名と DnsName (サブジェクト代替名) の両方にドメイン名 (*contoso100.onmicrosoft.com*) を指定する例を示します。
+セキュリティで保護された LDAP を有効にする場合は、証明書のサブジェクト名およびサブジェクトの別名にドメイン名を指定します。 たとえば、お使いのドメイン名が *contoso100.onmicrosoft.com* の場合は、ご自身の証明書サブジェクト名およびサブジェクトの別名にその正確な名前が存在することを確認します。 詳細については、「[Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成](../../active-directory-domain-services/tutorial-configure-ldaps.md)」を参照してください。 
+
+次の例では、自己署名証明書を作成します。 ドメイン名 *contoso100.onmicrosoft.com* は、`Subject` (サブジェクト名) と `DnsName` (サブジェクトの別名) の両方の中にあります。
 
 ```powershell
 $lifetime=Get-Date
@@ -48,75 +52,84 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.onmicrosoft.com, contoso100.onmicrosoft.com
 ```
 
-## <a name="check-azure-ad-ds-health-status"></a>Azure AD-DS 正常性状態の確認
-**[管理]** カテゴリで **[正常性]** を選択して、Azure Active Directory Domain Services の正常性状態を表示します。 Azure AD-DS の状態が緑 (実行中) で、同期が完了していることを確認します。
+## <a name="check-azure-ad-ds-health-status"></a>Azure AD DS 正常性状態の確認
+**[管理]** カテゴリで **[正常性]** を選択して、Azure Active Directory Domain Services の正常性状態を表示します。 Azure AD DS の状態が緑 (実行中) で、同期が完了していることを確認します。
 
-![Azure Active Directory Domain Services の正常性](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
+![Azure AD DS の正常性](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
 ## <a name="create-and-authorize-a-managed-identity"></a>マネージド ID の作成と承認
 
-**ユーザー割り当てマネージド ID** は、ドメイン サービス操作を簡略化して保護するために使用されます。 HDInsight ドメイン サービス共同作成者ロールをマネージド ID に割り当てると、ドメイン サービス操作を読み取り、作成、変更、および削除できるようになります。 OU やサービス プリンシパルの作成など、一部のドメイン サービス操作が HDInsight Enterprise セキュリティ パッケージに必要です。 マネージド ID は、どのサブスクリプションでも作成できます。 一般的なマネージド ID の詳細については、「[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Managed identities in Azure HDInsight (Azure HDInsight のマネージド ID)](../hdinsight-managed-identities.md)」を参照してください。
+"*ユーザー割り当てマネージド ID*" を使用すれば、ドメイン サービス操作を簡略化して、容易にセキュリティで保護することができます。 **HDInsight ドメイン サービス共同作成者**ロールをマネージド ID に割り当てると、ドメイン サービス操作を読み取り、作成、変更、および削除できるようになります。 
 
-ESP クラスターを設定するには、まだ作成していない場合は、ユーザー割り当てマネージド ID を作成します。 手順については、「[Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」をご覧ください。 次に、Azure AD-DS アクセス制御のマネージド ID に **HDInsight ドメイン サービス共同作成者**ロールを割り当てます (このロールを割り当てるには、AAD-DS 管理者特権が必要です)。
+OU やサービス プリンシパルの作成など、一部のドメイン サービス操作が HDInsight Enterprise セキュリティ パッケージに必要です。 マネージド ID は、どのサブスクリプションでも作成できます。 一般的なマネージド ID の詳細については、「[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](../hdinsight-managed-identities.md)」を参照してください。
+
+ESP クラスターを設定するには、まだ作成していない場合は、ユーザー割り当てマネージド ID を作成します。 手順については、[Azure portal を使用した、ユーザー割り当てマネージド ID の作成、一覧表示、削除、またはそれへのロールの割り当て](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)に関するページを参照してください。 
+
+次に、**HDInsight ドメイン サービス共同作成者**ロールを、Azure AD DS の**アクセス制御**でマネージド ID に割り当てます。 このロールの割り当てを行うには、Azure AD DS 管理特権が必要です。
 
 ![Azure Active Directory Domain Services のアクセス制御](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-**HDInsight ドメイン サービス共同作成者**ロールを割り当てると、AAD-DS ドメインで OU の作成や OU の削除などのドメイン サービス操作を行うための適切な (代理の) アクセスがこの ID に付与されます。
+**HDInsight ドメイン サービス共同作成者**ロールを割り当てると、Azure AD DS ドメインに対してドメイン サービス操作を行うための適切な (代理の) アクセスがこの ID に確実に付与されます。 これらの操作には、OU の作成と削除が含まれます。
 
-マネージド ID が作成され、適切なロールに割り当てられると、AAD-DS 管理者はこのマネージド ID を使用できるユーザーを設定できます。 マネージド ID のユーザーを設定するには、管理者はポータルでマネージド ID を選択し、 **[概要]** で **[アクセス制御 (IAM)]** をクリックする必要があります。 次に、右側で **Managed Identity Operator** ロールを、HDInsight ESP クラスターを作成するユーザーまたはグループに割り当てます。 たとえば、AAD-DS 管理者は、次の図に示すように **sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 これにより、組織の適切なユーザーは、ESP クラスターを作成する目的でこのマネージド ID を使用するためのアクセス権を持つようになります。
+マネージド ID が作成され、それに適切なロールが付与されると、Azure AD DS 管理者はこのマネージド ID を使用できるユーザーを設定できます。 まず、管理者はポータルでマネージド ID を選択し、 **[概要]** で **[アクセス制御 (IAM)]** を選択します。 次に、右側で、管理者は**マネージド ID オペレーター** ロールを、HDInsight ESP クラスターを作成するユーザーまたはグループに割り当てます。 
+
+たとえば、Azure AD DS 管理者は、次の図に示すように、**sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 この割り当てにより、組織内の適切なユーザーがマネージド ID を使用して ESP クラスターを確実に作成できるようになります。
 
 ![HDInsight のマネージド ID オペレーター ロールの割り当て](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
-## <a name="networking-considerations"></a>ネットワークに関する考慮事項
+## <a name="network-considerations"></a>ネットワークに関する考慮事項
 
 > [!NOTE]  
-> Azure AD-DS は、Azure Resource Manager ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)」を参照してください。
+> Azure AD DS は、Azure Resource Manager ベースの仮想ネットワークにデプロイする必要があります。 Azure AD DS では、クラシック仮想ネットワークはサポートされません。 詳細については、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)に関するページを参照してください。
 
-Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
+Azure AD DS を有効にしたら、ローカルのドメイン ネーム システム (DNS) サーバーが Active Directory 仮想マシン (VM) 上で実行されます。 ご利用の Azure AD DS 仮想ネットワークを、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下を確認します。
 
 ![ローカル DNS サーバーの IP アドレスを見つける](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
-Azure AD-DS VNET の DNS サーバーの構成を変更し、 **[設定]** カテゴリの下の **[DNS サーバー]** を選択して、これらのカスタム IP を使用します。 次に、 **[カスタム]** の横のラジオ ボタンをクリックし、下のテキスト ボックスに最初の IP アドレスを入力して、 **[保存]** をクリックします。 同じ手順に従って、その他の IP アドレスを追加します。
+これらのカスタム IP を使用するように Azure AD DS 仮想ネットワーク内の DNS サーバーの構成を変更するには、 **[設定]** カテゴリで **[DNS サーバー]** を選択します。 次に、 **[カスタム]** オプションを選択し、テキスト ボックスに最初の IP アドレスを入力して、 **[保存]** を選択します。 同じ手順に従って、さらに IP アドレスを追加します。
 
-![VNet DNS 構成の更新](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+![仮想ネットワークの DNS 構成の更新](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-Azure AD-DS インスタンスと HDInsight クラスターの両方を同じ Azure 仮想ネットワークに配置する方が簡単です。 別の VNet を使用する場合は、ドメイン コント ローラーが HDI VM に表示されるように、これらの仮想ネットワークをピアリングする必要があります。 詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。 
+Azure AD DS インスタンスと HDInsight クラスターは、どちらも同じ Azure 仮想ネットワークに配置した方が簡単です。 別の仮想ネットワークを使用する予定の場合は、ドメイン コント ローラーが HDInsight VM に表示されるように、それらの仮想ネットワークをピアリングする必要があります。 詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。 
 
-VNET がピアリングされたら、HDInsight VNET を カスタム DNS サーバーを使用するように構成し、Azure AD-DS のプライベート IP を DNS サーバーのアドレスとして入力します。 両方の VNET が同じ DNS サーバーを使用したとき、カスタム ドメイン名は、正しい IP に解決され、HDInsight から到達可能になります。 たとえば、ドメイン名が `contoso.com` の場合、この手順の後の `ping contoso.com` で正しい Azure AD-DS IP に解決されるはずです。
+仮想ネットワークがピアリングされたら、HDInsight 仮想ネットワークをカスタム DNS サーバーを使用するように構成し、Azure AD DS のプライベート IP を DNS サーバーのアドレスとして入力します。 両方の仮想ネットワークで同じ DNS サーバーが使用されている場合、ご利用のカスタム ドメイン名は、正しい IP に解決され、HDInsight から到達可能になります。 たとえば、ドメイン名が `contoso.com` の場合、この手順の後の `ping contoso.com` で正しい Azure AD DS IP に解決されるはずです。
 
-![ピアリングされた VNET のカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+![ピアリングされた仮想ネットワークに合わせてカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。
+ご自分の HDInsight サブネット内でネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンドおよびアウトバウンドの両方のトラフィックに対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。
 
-ネットワークが正しく設定されているかどうかを**テストする**には、Windows VM を HDInsight VNET/サブネットに参加させて、ドメイン名に対して ping を実行し (IP に解決されます)、**ldp.exe** を実行して、Azure AD-DS ドメインにアクセスします。 次に、**この Windows VM をドメインに参加**させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。 **nslookup** を使って、ストレージ アカウント、または使用する任意の外部 DB (外部の Hive metastore、Ranger DB など) へのネットワーク アクセスを確認することもできます。
-AAD-DS が NSG によって保護されている場合、[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)がすべて、AAD-DS サブネット ネットワーク セキュリティ グループ ルールのホワイトリストに含まれていることを確認してください。 この Windows VM のドメイン参加に成功した場合、次の手順を続行して ESP クラスターを作成することができます。
+ご利用のネットワークが正しく設定されているかどうかをテストするには、Windows VM を HDInsight 仮想ネットワークまたはサブネットに参加させ、ドメイン名に対して ping を実行します (IP に解決されるはずです)。**ldp.exe** を実行して、Azure AD DS ドメインにアクセスします。 次に、この Windows VM をドメインに参加させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。 
 
-## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP の HDInsight クラスターの作成
+**nslookup** を使って、自分のストレージ アカウント、または使用する可能性がある任意の外部データベース (外部の Hive metastore、Ranger DB など) へのネットワーク アクセスを確認することもできます。 Azure AD DS をセキュリティで保護するのに NSG が役立つ場合は、すべての[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)が Azure AD DS サブネットの NSG 規則で許可されていることを確認します。 この Windows VM のドメイン参加に成功した場合、次の手順を続行して ESP クラスターを作成することができます。
 
-前の手順を正しく設定したら、次の手順は、ESP が有効になった HDInsight クラスターを作成することです。 HDInsight クラスターを作成するとき、 **[セキュリティとネットワーク]** タブで Enterprise セキュリティ パッケージを有効にできます。デプロイ用に Azure Resource Manager テンプレートを使用する場合は、ポータルのエクスペリエンスを一度使用して、 **[確認と作成]** ページに後で再利用するために事前入力されたテンプレートをダウンロードします。
+## <a name="create-an-hdinsight-cluster-with-esp"></a>ESP を使用する HDInsight クラスターを作成する
+
+前の手順を正しく設定したら、次の手順として、ESP が有効になった HDInsight クラスターを作成します。 HDInsight クラスターを作成するとき、 **[セキュリティとネットワーク]** タブで Enterprise セキュリティ パッケージを有効にできます。デプロイ用に Azure Resource Manager テンプレートを使用する場合は、ポータルのエクスペリエンスを一度使用して、 **[確認と作成]** ページに後で再利用するために事前入力されたテンプレートをダウンロードします。 
+
+クラスターの作成時に [HDInsight ID ブローカー](identity-broker.md) 機能を有効にすることもできます。 ID ブローカー機能を使用すると、Multi-Factor Authentication を使用して Ambari にサインインし、Azure AD DS でパスワード ハッシュを使用することなく必要な Kerberos チケットを取得できます。
 
 > [!NOTE]  
-> ESP クラスター名の最初の 6 文字は、環境内で一意である必要があります。 たとえば、異なる VNET 内に複数の ESP クラスターがある場合、クラスター名の最初の 6 文字が一意になるように名前付け規則を選択する必要があります。
+> ESP クラスター名の最初の 6 文字は、環境内で一意である必要があります。 たとえば、異なる仮想ネットワーク内に ESP クラスターが複数ある場合、クラスター名の最初の 6 文字が確実に一意になるように名前付け規則を選択する必要があります。
 
-![Azure HDInsight Enterprise セキュリティ パッケージのドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+![Azure HDInsight Enterprise セキュリティ パッケージにおけるドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-ESP を有効にすると、Azure AD-DS に関連する一般的な構成ミスが自動的に検出され、検証されます。 これらのエラーを修正した後は、次の手順を続行することができます。
+ESP を有効にすると、Azure AD DS に関連する一般的な構成ミスが自動的に検出され、検証されます。 これらのエラーを修正した後は、次の手順を続行することができます。
 
-![Aazure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+![Azure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
-ESP で HDInsight クラスターを作成するときは、次のパラメーターを指定する必要があります。
+ESP を使用する HDInsight クラスターを作成する場合は、次のパラメーターを指定する必要があります。
 
-- **クラスター管理者ユーザー**: 同期された Azure AD-DS からクラスターの管理者を選択します。 このドメイン アカウントは同期済みで、Azure AD-DS で使用できなければなりません。
+- **クラスター管理者ユーザー**: 同期された Azure AD DS インスタンスから、クラスターの管理者を選択します。 このドメイン アカウントは、同期済みであり、Azure AD DS で使用できなければなりません。
 
-- **クラスターのアクセス グループ**: ユーザーをクラスターに同期させてアクセスさせるセキュリティ グループが、Azure AD-DS で使用できる必要があります。 たとえば、HiveUsers グループです。 詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+- **クラスターのアクセス グループ**: ユーザーをクラスターに同期させてアクセスさせるセキュリティ グループが、Azure AD DS で使用できる必要があります。 たとえば、HiveUsers グループです。 詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-- **LDAPS URL**: 例: `ldaps://contoso.com:636`。
+- **LDAPS URL**: たとえば `ldaps://contoso.com:636` です。
 
-作成したマネージド ID は、新しいクラスターを作成するときに、ユーザー割り当てマネージド ID ドロップダウンから選択できます。
+作成したマネージド ID は、新しいクラスターを作成するときに、 **[ユーザー割り当てマネージド ID]** ドロップダウン リストから選択することができます。
 
 ![Azure HDInsight ESP Active Directory Domain Services のマネージド ID](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用した HDInsight クラスター用の Apache Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事を参照してください。
 * SSH と ESP を使用して HDInsight クラスターに接続する方法については、[Linux、Unix、または OS X からの HDInsight 上の Linux ベースの Hadoop での SSH キーの使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関する記事を参照してください。

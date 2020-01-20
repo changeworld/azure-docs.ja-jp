@@ -1,25 +1,16 @@
 ---
-title: Reliable Services の通知 | Microsoft Docs
-description: Service Fabric Reliable Services の通知の概念をまとめたドキュメント
-services: service-fabric
-documentationcenter: .net
+title: Reliable Services の通知
+description: Reliable State Manager と Reliable Dictionary に関して Service Fabric Reliable Services の通知の概念をまとめたドキュメント
 author: mcoskun
-manager: chackdan
-editor: masnider,vturecek
-ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: d009749b7bc31595be26124b9d1eee7666e95bd4
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551669"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639566"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知は 2 種類のオブジェクトでサポートされます: *Reliable State Manager* および *Reliable Dictionary*。
@@ -35,9 +26,9 @@ ms.locfileid: "67551669"
 Reliable State Manager は、次のイベントの通知を提供します。
 
 * トランザクション
-  * コミット
+  * Commit
 * 状態マネージャー
-  * 再構築
+  * [再構築]
   * Reliable State の追加
   * Reliable State の削除
 
@@ -215,7 +206,7 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * トランザクションに複数の操作が含まれている場合、操作はプライマリ レプリカでユーザーから受信した順序で適用されます。
 * 誤った進行の処理の一環として、一部の操作が元に戻されることがあります。 レプリカの状態を安定したポイントにロールバックするこのような元に戻す操作では、通知が発生します。 元に戻す通知の重要な違いの 1 つは、重複するキーを持つイベントが集約されることです。 たとえば、トランザクション T1 を元に戻すと、ユーザーには Delete(X) の通知だけが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Reliable Collection](service-fabric-work-with-reliable-collections.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)

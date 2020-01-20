@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ee8d71cb913dd17bc72023326dbc2ce8a33a3776
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976232"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659544"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -98,13 +98,13 @@ Reset-StorageSyncServer
 このエラーは、ユーザー アカウントがクラウド エンドポイントを作成するための十分な権限を持っていない場合に発生します。 
 
 クラウド エンドポイントを作成するには、次の Microsoft 承認アクセス許可を持つユーザー アカウントが必要です。  
-* 読み取り:ロール定義の取得
+* Read:ロール定義の取得
 * 書き込み:カスタムのロール定義の作成または更新
-* 読み取り:Get role assignment
+* Read:Get role assignment
 * 書き込み:ロール割り当ての作成
 
 次の組み込みロールには、必要な Microsoft 承認アクセス許可が付与されています。  
-* Owner
+* 所有者
 * User Access Administrator
 
 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
@@ -204,7 +204,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure portal のスクリーンショット](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[サーバー](#tab/server)
+# <a name="servertabserver"></a>[[サーバー]](#tab/server)
 イベント ビューアーの `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` にあるテレメトリ ログに移動します。 イベント 9102 は、完了した同期セッションに該当します。同期の最新の状態を調べるには、ID 9102 の最新のイベントを探します。 SyncDirection は、このセッションがアップロードとダウンロードのどちらだったかを示しています。 HResult が 0 の場合、同期セッションは成功しています。 HResult が 0 以外の場合は、同期中にエラーが発生したことを意味します。以下に示す一般的なエラーの一覧を参照してください。 PerItemErrorCount が 0 より大きい場合は、一部のファイルまたはフォルダーが正しく同期されなかったことを意味します。 HResult が 0 であるのに、PerItemErrorCount が 0 より大きい場合もあります。
 
 成功したアップロードの例を次に示します。 簡潔にするために、下の一覧では、各 9102 イベントに含まれる一部の値のみを示しています。 
@@ -239,7 +239,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 # <a name="portaltabportal1"></a>[ポータル](#tab/portal1)
 同期グループ内で、問題のサーバー エンドポイントに移動して [同期アクティビティ] セクションを調べ、現在の同期セッション内のアップロード済みファイルとダウンロード済みファイルの数を確認します。 この状態は約 5 分遅れて表示されるため、この時間内に完了するほど小規模な同期セッションの場合は、ポータルでレポートされない可能性があります。 
 
-# <a name="servertabserver"></a>[サーバー](#tab/server)
+# <a name="servertabserver"></a>[[サーバー]](#tab/server)
 サーバーのテレメトリ ログ (イベント ビューアーで [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] に移動) で、最新の 9302 イベントを調べます。 このイベントは、現在の同期セッションの状態を示します。 TotalItemCount は同期が必要なファイルの数、AppliedItemCount はこれまでに同期されたファイルの数、PerItemErrorCount は同期が失敗しているファイルの数 (処理方法については後で説明します) を示します。
 
 ```
@@ -261,7 +261,7 @@ PerItemErrorCount: 1006.
 - [同期アクティビティ] フィールドに表示された残りの同期ファイル数が非常に少ないか、0 であること。
 - アップロードとダウンロードの両方で、[Files Not Syncing]\(同期していないファイル数\) フィールドが 0 であること。
 
-# <a name="servertabserver"></a>[サーバー](#tab/server)
+# <a name="servertabserver"></a>[[サーバー]](#tab/server)
 完了した同期セッションを調べます。これは、各サーバーのテレメトリ イベント ログ (イベント ビューアーで `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` に移動) で 9102 イベントとマークされています。 
 
 1. 特定のサーバー上で、アップロード セッションとダウンロード セッションが正常に完了したことを確認します。 そのためには、アップロードとダウンロードの両方で HResult と PerItemErrorCount が 0 であることを確認します (SyncDirection フィールドは、そのセッションがアップロード セッションとダウンロード セッションのどちらであるかを示します)。 最近完了した同期セッションが表示されていない場合は、同期セッションが現在進行中である可能性があります。この状況は、大量のデータを追加または変更した直後に発生することがあります。
@@ -360,7 +360,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **エラー文字列** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **修復が必要か** | いいえ |
 
-操作は必要ありません。 Azure Backup を使用してファイルまたはファイル共有 (クラウド エンドポイント) が復元されるとき、Azure ファイル共有に対する変更検出が完了するまでは同期がブロックされます。 復元が完了すると変更検出がただちに実行され、その期間はファイル共有内のファイル数に基づきます。
+必要な操作はありません。 Azure Backup を使用してファイルまたはファイル共有 (クラウド エンドポイント) が復元されるとき、Azure ファイル共有に対する変更検出が完了するまでは同期がブロックされます。 復元が完了すると変更検出がただちに実行され、その期間はファイル共有内のファイル数に基づきます。
 
 <a id="-2147216747"></a>**同期データベースがアンロードされたため、同期が失敗しました。**  
 
@@ -382,7 +382,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **エラー文字列** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
 | **修復が必要か** | はい |
 
-このエラーは、Azure File Sync エージェントが Azure ファイル共有にアクセスできないために発生します。原因としては、Azure ファイル共有またはそれをホストしているストレージ アカウントが存在しなくなったことが考えられます。 次の手順を実行すると、このエラーを解決できます。
+このエラーは、Azure File Sync エージェントが Azure ファイル共有にアクセスできないために発生します。原因としては、Azure ファイル共有またはそれをホストしているストレージ アカウントが存在しなくなったことが考えられます。 次の手順を行うと、このエラーを解決できます。
 
 1. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
 2. [Azure ファイル共有が存在することを確認します。](#troubleshoot-azure-file-share)
@@ -647,9 +647,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_REPLICA_NOT_READY |
 | **修復が必要か** | いいえ |
 
-このエラーは、Azure ファイル共有上で直接変更が行われ、変更の検出が進行中であることが原因で発生します。 変更の検出が完了すると、同期が開始されます。
-
-[!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
+このエラーは、Azure ファイル共有に既に存在するコンテンツを使用してクラウド エンドポイントが作成されたために発生します。 Azure File Sync は、サーバー エンドポイントに初期同期の続行を許可する前に、Azure ファイル共有ですべてのコンテンツをスキャンする必要があります。
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**多数の個別ファイルに問題があるため同期が失敗しました。**  
 
@@ -1090,7 +1088,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 <a id="remove-orphaned"></a>**孤立した階層化ファイルを削除する方法** 
 
-*オプション 1:孤立した階層化ファイルを削除する*
+*オプション 1: 孤立した階層化ファイルを削除する*
 
 このオプションでは、Windows Server 上で孤立している階層化ファイルが削除されますが、サーバー エンドポイントが 30 日後の再作成に起因して存在する場合、あるいは異なる同期グループに接続されている場合、サーバー エンドポイントを削除する必要があります。 サーバー エンドポイントが再作成される前に Windows Server または Azure ファイル共有でファイルが更新された場合、ファイル競合が発生します。
 
@@ -1123,7 +1121,7 @@ $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 
 7. 省略可能:手順 3 で削除した場合、サーバー エンドポイントを再作成します。
 
-*オプション 2:Azure ファイル共有をマウントし、サーバー上で孤立しているファイルをローカルにコピーする*
+*オプション 2: Azure ファイル共有をマウントし、サーバー上で孤立しているファイルをローカルにコピーする*
 
 このオプションでは、サーバー エンドポイントを削除する必要がありませんが、完全なファイルをローカルにコピーするために十分なディスク領域が必要になります。
 
@@ -1174,7 +1172,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 5. 問題を再現します。 操作が終了したら、 **[D]** を入力します。
 6. ログファイルとトレース ファイルを含む .zip ファイルが、指定した出力ディレクトリに保存されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [Azure File Sync の監視](storage-sync-files-monitoring.md)
 - [Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md)
 - [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)

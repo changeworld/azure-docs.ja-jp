@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178197"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689384"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management の IP アドレス
 
@@ -57,17 +57,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 [複数リージョンのデプロイ](api-management-howto-deploy-multi-region.md)では、各地域のデプロイにパブリック IP アドレスが 1 つあります。
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNET 内の API Management サービスの IP アドレス
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNet 内の API Management サービスの IP アドレス
 
 API Management サービスが仮想ネットワーク内にある場合、パブリックとプライベートの 2 種類の IP アドレスがあります。
 
-パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNET 構成では、ランタイム API トラフィックにも使用されます。 要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
+パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNet 構成では、ランタイム API トラフィックにも使用されます。 要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
 
 プライベート仮想 IP (VIP) アドレスは、ネットワーク内から API Management エンドポイント (ゲートウェイ、開発者ポータル、直接 API アクセス用の管理プレーン) に接続するために使用されます。 ネットワーク内の DNS レコードを設定するために、これらを使用できます。
 
 Azure portal と API 呼び出しの応答に両方の型のアドレスが表示されます。
 
-![VNET での API Management の IP アドレス](media/api-management-howto-ip-addresses/vnet-ip.png)
+![VNet での API Management の IP アドレス](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -88,6 +88,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
   ...
 }
 ```
+
+API Management では、VNet 外部の接続にパブリック IP アドレスが使用され、VNet 内の接続にプライベート IP アドレスが使用されます。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>従量課金レベルの API Management サービスの IP アドレス
 

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444502"
 ---
 # <a name="what-are-mapping-data-flows"></a>マッピング データ フローとは
 
@@ -21,7 +21,7 @@ ms.locfileid: "74928300"
 
 マッピング データ フローは、コーディングを必要としない、完全に視覚的なエクスペリエンスを提供します。 データ フローは独自の実行クラスター上で実行されるため、データ処理をスケールアウトできます。 コードの翻訳、パスの最適化、データ フロー ジョブの実行はすべて、Azure Data Factory によって処理されます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 データ フローを作成するには、 **[Factory Resources]\(Factory リソース\)** の下にあるプラス記号アイコンを選択して、 **[データ フロー]** を選択します。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "74928300"
 
 ![キャンバス](media/data-flow/canvas1.png "キャンバス")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>グラフ
 
 グラフには変換ストリームが表示されます。 ここにはソース データが 1 つ以上のシンクに流れるときのソース データの系列が表示されます。 新しいソースを追加するには、 **[ソースの追加]** を選択します。 新しい変換を追加するには、既存の変換の右下にあるプラス記号を選択します。
 
@@ -60,6 +60,8 @@ ADF でクラスター リソース (VM) のプールが維持されるように
 パイプライン内のデータ フローを並列実行する場合、ADF により、各アクティビティに関連付けられている Azure Integration Runtime の設定に基づいて、アクティビティの実行ごとに個別の Azure Databricks クラスターが起動されます。 ADF パイプラインで並列実行を設計するには、UI で優先順位制約のないデータ フロー アクティビティを追加します。
 
 ここで紹介する 3 つの方法のうち、この方法は最も実行時間が短くなる可能性があります。 ただし、並列データ フローはそれぞれ別々のクラスター上で同時に実行されるので、イベントの順序は不確定になります。
+
+パイプライン内でデータ フロー アクティビティを並列実行する場合は、TTL を使用しないことをお勧めします。 これは、同じ Azure Integration Runtime を使用して同時にデータ フローを並列実行すると、データ ファクトリに複数のウォーム プール インスタンスが生成されるためです。
 
 ##### <a name="overload-single-data-flow"></a>単一データ フローのオーバーロード
 
@@ -107,7 +109,7 @@ ADF でクラスター リソース (VM) のプールが維持されるように
 
 ラウンド ロビンは、自動的に各パーティションにデータを均等に分散するシンプルなパーティションです。 堅固でスマートなパーティション分割戦略を実装するための適切な候補がないときは、ラウンド ロビンを使用します。 物理パーティションの数を設定できます。
 
-##### <a name="hash"></a>Hash
+##### <a name="hash"></a>ハッシュ インデックス
 
 Azure Data Factory は、同様の値を持つ行が同じパーティション内に分類されるように、列のハッシュを生成して統一されたパーティションを生成します。 [ハッシュ] オプションを使用するときは、起こり得るパーティションのスキューについてテストします。 物理パーティションの数を設定できます。
 
@@ -145,7 +147,7 @@ Azure Data Factory は、同様の値を持つ行が同じパーティション�
 
 ![[前へ] ボタンと [次へ] ボタン](media/data-flow/showhide.png "[前へ] ボタンと [次へ] ボタン")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ソース変換](data-flow-source.md)を作成する方法について学習します。
 * データ フローを[デバッグ モード](concepts-data-flow-debug-mode.md)で構築する方法について学習します。

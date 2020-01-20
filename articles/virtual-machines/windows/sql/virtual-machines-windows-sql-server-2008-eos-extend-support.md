@@ -14,20 +14,22 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357851"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 
-SQL Server 2008 および SQL Server 2008 R2 は、両方とも[サポート ライフ サイクルの終了 (EOS)](https://www.microsoft.com/sql-server/sql-server-2008) が近づいています。 多くのお客様がまだ両方のバージョンを使用されていることから、引き続きサポートを利用していただくためのいくつかのオプションを提供しています。 オンプレミスの SQL Server インスタンスを Azure 仮想マシン (VM) に移行するか、Azure SQL Database に移行するか、またはオンプレミスのままで延長セキュリティ更新プログラムを購入することができます。
+SQL Server 2008 と SQL Server 2008 R2 は両方とも[サポート ライフ サイクルの終了 (EOS)](https://www.microsoft.com/sql-server/sql-server-2008) に達しています。 多くのお客様がまだ両方のバージョンを使用されていることから、引き続きサポートを利用していただくためのいくつかのオプションを提供しています。 オンプレミスの SQL Server インスタンスを Azure 仮想マシン (VM) に移行するか、Azure SQL Database に移行するか、またはオンプレミスのままで延長セキュリティ更新プログラムを購入することができます。
 
 マネージド インスタンスとは異なり、Azure VM への移行にアプリケーションの再認定は必要ありません。 また、オンプレミスに留まる場合とは異なり、Azure VM に移行することで無料の延長セキュリティ パッチを受信します。
 
 この記事の残りの部分では、Azure VM に SQL Server インスタンスを移行するための考慮事項を示します。
+
+サポート終了オプションの詳細については、「[サポートの終了](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)」を参照してください。
 
 ## <a name="provisioning"></a>プロビジョニング
 
@@ -74,7 +76,7 @@ SQL Server VM の延長セキュリティ更新プログラムは、SQL Server V
 *[自動修正]* は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 SQL Server IaaS 拡張機能がインストールされている場合は、メンテナンス期間の曜日、時刻、および期間を指定できます。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。  詳細については、[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-sql-automated-patching.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure への SQL Server VM の移行:
 
@@ -87,3 +89,7 @@ Azure Virtual Machines における SQL Server の概要:
 SQL Server VM についてよく寄せられる質問とその回答:
 
 * [Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
+
+サポートの終了オプションやセキュリティ延長更新の詳細は次にあります。
+
+* [サポートの終了](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [セキュリティ延長更新](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

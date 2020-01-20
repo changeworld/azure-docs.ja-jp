@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl partition | Microsoft Docs
-description: Service Fabric CLI- sfctl partition のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI- sfctl partition
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 サービスのパーティションを管理するためのコマンドの一覧が含まれています。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 2c2ebb7cb08cb6b6b2130290c81fa9e07766b5e2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901075"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646060"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 任意のサービスで、クエリを実行し、パーティションを管理します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
-|command|説明|
+|command|[説明]|
 | --- | --- |
 | data-loss | この API は、指定されたパーティションのデータ損失を誘発します。 |
 | data-loss-status | StartDataLoss API を使用して開始されたパーティション データ損失操作の進行状況を取得します。 |
@@ -53,7 +44,7 @@ ms.locfileid: "72901075"
 > この API は、呼び出した後に元に戻すことはできません。 CancelOperation を呼び出すと、実行が停止され、内部システム状態がクリーンアップされるだけです。 データ損失を引き起こすほどコマンドが進行した場合、データは復元されません。 この API で開始された操作に関する情報を返すには、同じ OperationId を使用して GetDataLossProgress API を呼び出してください。
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --data-loss-mode [必須] | この列挙型は、誘発するデータ損失の種類を示すために StartDataLoss API に渡されます。 |
 | --operation-id   [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
@@ -63,13 +54,13 @@ ms.locfileid: "72901075"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-data-loss-status"></a>sfctl partition data-loss-status
 StartDataLoss API を使用して開始されたパーティション データ損失操作の進行状況を取得します。
@@ -78,7 +69,7 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -87,13 +78,13 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-health"></a>sfctl partition health
 指定した Service Fabric パーティションの正常性を取得します。
@@ -102,7 +93,7 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --events-health-state-filter | 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
@@ -112,13 +103,13 @@ OperationId を使用して、StartDataLoss で開始されたデータ損失操
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-info"></a>sfctl partition info
 Service Fabric パーティションに関する情報を取得します。
@@ -127,20 +118,20 @@ Service Fabric パーティションに関する情報を取得します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-list"></a>sfctl partition list
 Service Fabric サービスのパーティションの一覧を取得します。
@@ -149,7 +140,7 @@ Service Fabric サービスのパーティションの一覧を取得します�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --service-id [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
@@ -157,13 +148,13 @@ Service Fabric サービスのパーティションの一覧を取得します�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-load"></a>sfctl partition load
 指定された Service Fabric パーティションの負荷情報を取得します。
@@ -172,20 +163,20 @@ Service Fabric サービスのパーティションの一覧を取得します�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-load-reset"></a>sfctl partition load-reset
 Service Fabric パーティションの現在の負荷をリセットします。
@@ -194,20 +185,20 @@ Service Fabric パーティションの現在の負荷をサービスの既定�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-quorum-loss"></a>sfctl partition quorum-loss
 特定のステートフル サービス パーティションをクォーラム損失状態にします。
@@ -216,7 +207,7 @@ Service Fabric パーティションの現在の負荷をサービスの既定�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --operation-id         [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id         [必須] | パーティションの ID。 |
@@ -227,13 +218,13 @@ Service Fabric パーティションの現在の負荷をサービスの既定�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-quorum-loss-status"></a>sfctl partition quorum-loss-status
 StartQuorumLoss API を使用して開始されたパーティションのクォーラム損失操作の進行状況を取得します。
@@ -242,7 +233,7 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -251,13 +242,13 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-recover"></a>sfctl partition recover
 クォーラム損失で現在スタックしている指定されたパーティションの復旧を試みる必要があることを Service Fabric クラスターに示します。
@@ -266,20 +257,20 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-recover-all"></a>sfctl partition recover-all
 現在クォーラム損失の状態に陥っているすべてのサービス (システム サービスを含む) の復旧を試みる必要があることを Service Fabric クラスターに示します。
@@ -288,19 +279,19 @@ StartQuorumLoss API を使用して開始されたパーティションのクォ
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-report-health"></a>sfctl partition report-health
 Service Fabric パーティションの正常性レポートを送信します。
@@ -309,7 +300,7 @@ Service Fabric パーティションの正常性レポートを送信します�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --health-property [必須] | 正常性情報のプロパティ。 <br><br> エンティティには、さまざまなプロパティの正常性レポートを含めることができます。 このプロパティは固定値列挙型ではなく文字列で、これにより、レポーターは、レポートをトリガーする状態の条件を柔軟に分類できます。 たとえば、SourceId が "LocalWatchdog" のレポーターは、ノード上で使用可能なディスクの状態を監視できるため、そのノードの "AvailableDisk" プロパティをレポートできます。 同じレポーターは、ノードの接続性を監視できるため、同じノードの "Connectivity" プロパティをレポートできます。 正常性ストアでは、これらのレポートは、指定されたノードの個々の正常性イベントとして扱われます。 このプロパティは SourceId と共に、正常性情報を一意に識別します。 |
 | --health-state    [必須] | 指定可能な値\: "Invalid"、"Ok"、"Warning"、"Error"、"Unknown"。 |
@@ -324,13 +315,13 @@ Service Fabric パーティションの正常性レポートを送信します�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 この API は、指定されたパーティションのレプリカやインスタンスの一部またはすべてを再起動します。
@@ -339,7 +330,7 @@ Service Fabric パーティションの正常性レポートを送信します�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -349,13 +340,13 @@ Service Fabric パーティションの正常性レポートを送信します�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-restart-status"></a>sfctl partition restart-status
 StartPartitionRestart を使用して開始されたパーティション再起動操作の進行状況を取得します。
@@ -364,7 +355,7 @@ StartPartitionRestart を使用して開始されたパーティション再起�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --partition-id [必須] | パーティションの ID。 |
@@ -373,13 +364,13 @@ StartPartitionRestart を使用して開始されたパーティション再起�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-partition-svc-name"></a>sfctl partition svc-name
 パーティションの Service Fabric サービスの名前を取得します。
@@ -388,22 +379,22 @@ StartPartitionRestart を使用して開始されたパーティション再起�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須] | パーティションの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

@@ -2,21 +2,19 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: 26fe98f5c34e7a3cf7c6336792d7d3341529a5f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aebfedd23ba206ea2ce24f952809121b9d08fd1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442253"
 ---
 ### <a name="regions-and-resource-availability"></a>リージョンとリソースの可用性
 
-| Location | OS | CPU | メモリ (GB) |
+| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) |
 | -------- | :---: | :---: | :-----------: |
-| 北ヨーロッパ、東南アジア、米国中部、米国東部、米国東部 2、米国中南部、米国西部 2 | Linux | 4 | 16 |
-| 西ヨーロッパ | Linux | 4 | 14 |
+| オーストラリア東部、カナダ中部、米国中部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、西ヨーロッパ、米国西部 2 | Linux | 4 | 16 |
 | 東日本 | Linux | 2 | 8 |
-| 米国西部 | Linux | 2 | 3.5 |
-| オーストラリア東部、米国中西部 | Linux | 1 | 1.5 |
+| 米国中北部、インド南部、米国西部 | Linux | 2 | 3.5 |

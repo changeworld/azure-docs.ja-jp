@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/08/2019
-ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/17/2019
+ms.openlocfilehash: 2abdae95e14ecc9dab673216a2c6aef652915988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435465"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -23,7 +23,7 @@ ms.locfileid: "74926424"
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
 
-## <a name="release-date-11072019"></a>リリース日: 2019/07/11
+## <a name="release-date-12172019"></a>リリース日: 12/17/2019
 
 このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。
 
@@ -33,61 +33,54 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 ## <a name="new-features"></a>新機能
 
-### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB) (プレビュー)
-
-HDInsight Identity Broker (HIB) を使用すると、ユーザーは多要素認証 (MFA) を使用して Apache Ambari にサインインし、Azure Active Directory Domain Services (AAD) でパスワードハッシュを必要とせずに必要な Kerberos チケットを取得できます。 現在、HIB は ARM テンプレートを使用してデプロイされたクラスターでのみ使用できます。
-
-### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API プロキシ (プレビュー)
-
-Kafka Rest API プロキシでは、セキュリティで保護された AAD 認証と OAuth プロトコルを使用して、Kafka クラスターで高可用性 REST プロキシをワンクリックでデプロイできます。 
-
-### <a name="auto-scale"></a>自動スケール
-
-Apache Spark および Hadoop クラスターの種類向けに、すべてのリージョンで Azure HDInsight の自動スケールの一般提供が開始されました。 この機能により、よりコスト効率に優れた生産性の高い方法で、ビッグ データ分析のワークロードを管理できるようになります。 HDInsight クラスターの使用を最適化し、必要な分だけ支払うことができるようになりました。
-
-要件に応じて、負荷ベースまたはスケジュール ベースの自動スケーリングを選択できます。 負荷ベースの自動スケールでは、現在のリソースのニーズに基づいてクラスター サイズをスケールアップ/スケールダウンできます。スケジュール ベースの自動スケールでは、事前定義されたスケジュールに基づいてクラスター サイズを変更できます。 
-
-自動スケールでの HBase および LLAP ワークロードのサポートもパブリック プレビュー段階です。 詳細については、「[Azure HDInsight クラスターを自動的にスケール調整する](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)」を参照してください。
-
-### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>HDInsight の Apache HBase 用書き込みアクセラレータ 
-
-高速書き込みでは、Azure Premium SSD マネージド ディスクが使用されて、Apache HBase の先書きログ (WAL) のパフォーマンスが向上します。 詳細については、「[Azure HDInsight の Apache HBase 用書き込みアクセラレータ](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)」を参照してください。
+### <a name="service-tags"></a>サービス タグ
+サービス タグを利用することで、ネットワーク アクセスを Azure サービスに簡単に制限できるため、Azure 仮想マシンと Azure 仮想ネットワークのセキュリティが簡単になります。 ネットワーク セキュリティ グループ (NSG) ルールでサービス タグを使用し、グローバルで、または Azure リージョンごとに特定の Azure サービスへのトラフィックを許可または拒否できます。 Azure では、各タグの基になる IP アドレスが保守管理されます。 ネットワーク セキュリティ グループ (NSG) 用の HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 HDInsight をご利用のお客様は Azure portal、PowerShell、REST API からサービス タグを有効にできます。 詳細については、「[Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)」を参照してください。
 
 ### <a name="custom-ambari-db"></a>カスタム Ambari DB
+HDInsight では、自分の SQL DB for Apache Ambari を使用できるようになりました。 このカスタム Ambari DB は、Azure portal または Resource Manager テンプレートから構成できます。  この機能により、自分に必要な処理と容量に最適な SQL DB を選択できます。 また、事業の成長に合わせて簡単にアップグレードできます。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](hdinsight-custom-ambari-db.md)」を参照してください。
 
-HDInsight では、お客様が独自の SQL DB for Ambari を使用できるようにするための新しい容量が提供されるようになりました。 お客様は、適切な SQL DB for Ambari を選択し、独自のビジネス拡張要件に基づいて簡単にアップグレードすることができます。 デプロイには、Azure Resource Manager テンプレートを使用します。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)」を参照してください。
-
-### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>HDInsight で F シリーズの仮想マシンを使用できるようになりました
-
-F シリーズの仮想マシン (VM) は、低負荷の処理要件を持つ HDInsight の使用を開始する場合に適しています。 F シリーズは時間あたりの料金が抑えられており、vCPU あたりの Azure コンピューティング ユニット (ACU) に基づく Azure ポートフォリオにおいて、最もコスト パフォーマンスに優れています。 詳細については、「[Azure HDInsight クラスターの適切な VM サイズの選択](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)」を参照してください。
+![カスタム Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
 
 ## <a name="deprecation"></a>非推奨
-
-### <a name="g-series-virtual-machine-deprecation"></a>G シリーズの仮想マシンの非推奨
-このリリースから、G シリーズの VM は HDInsight で提供されなくなりました。
-
-### <a name="dv1-virtual-machine-deprecation"></a>Dv1 仮想マシンの非推奨
-このリリースから、HDInsight での Dv1 VM の使用は非推奨とされます。 Dv1 のお客様の要求は、Dv2 で自動的に提供されます。 Dv1 VM と Dv2 VM の価格に違いはありません。
+このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
 
 ## <a name="behavior-changes"></a>動作の変更
-
-### <a name="cluster-managed-disk-size-change"></a>クラスター マネージド ディスクのサイズ変更
-HDInsight では、クラスターにマネージド ディスク領域が用意されています。 このリリースから、新しく作成されたクラスター内の各ノードのマネージド ディスクのサイズが 128 GB に変更されます。
+このリリースに動作変更はありません。 今後の動作変更に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。 
 
+### <a name="transport-layer-security-tls-12-enforcement"></a>トランスポート層セキュリティ (TLS) 1.2 施行
+TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 詳細については、「[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)」を参照してください。 Azure HDInsight クラスターのパブリック HTTPS エンドポイントは TLS 1.2 に対応していますが、旧クライアントとの下位互換性のため、TLS 1.1 も引き続きサポートされます。
+
+次のリリースから、新しい HDInsight クラスターで TLS 1.2 接続のみを許可するように選択し、構成できます。 
+
+2020 年 6 月 30 日以降、Azure HDInsight ではすべての HTTPS 接続で TLS 1.2 以降のバージョンが強制されます。 すべてのクライアントで確実に TLS 1.2 以降のバージョンに対応できるようにすることをお勧めします。
+
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
-HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 12 月以降、HDInsight では代わりに Azure 仮想マシン スケール セットが使用されます。 [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)についてご確認ください。
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 2020 年 2 月より (正式な日付は今後通達します)、HDInsight では Azure 仮想マシン スケール セットが代わりに使用されます。 [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)についてご確認ください。
+
+### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark クラスター ノード サイズの変更 
+次期リリースで:
+- ESP Spark クラスターに許容される最小ノード サイズが Standard_D13_V2 に変更されます。 
+- CPU とメモリの容量が比較的低いことに起因し、A シリーズの VM は ESP クラスターに問題を引き起こす可能性があるため、新しい ESP クラスターの作成するとき、A シリーズ VM は非推奨となります。
 
 ### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
 今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
-
-### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>ESP クラスターにおける A シリーズの仮想マシンの非推奨
-A シリーズの VM では、CPU とメモリの容量が比較的少ないため、ESP クラスターの問題が発生する可能性があります。 今後のリリースでは、新しい ESP クラスターを作成するために A シリーズの VM が非推奨とされます。
 
 ## <a name="bug-fixes"></a>バグの修正
 HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
-このリリースでは、コンポーネントのバージョンの変更はありません。 HDInsight 4.0 および HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)を参照してください。
+HDInsight 3.6 のサポートが 2020 年 12 月 31 日に延長されます。 詳細は「[サポートされている HDInsight バージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」にあります。
+
+HDInsight 4.0 のコンポーネント バージョン変更はありません。
+
+HDInsight 3.6 の Apache Zeppelin:0.7.0 --> 0.7.3 
+
+最新のコンポーネント バージョンについては[こちらのドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)でご確認いただけます。
+
+## <a name="new-regions"></a>新しいリージョン
+
+### <a name="uae-north"></a>アラブ首長国連邦北部
+アラブ首長国連邦北部の管理 IP: `65.52.252.96` と `65.52.252.97`

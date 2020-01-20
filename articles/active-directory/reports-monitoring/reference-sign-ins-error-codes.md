@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429481"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -36,9 +36,13 @@ ms.locfileid: "74786369"
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>失敗したサインインを表示する方法 
 
-[Azure portal](https://portal.azure.com) で[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)に移動します。
+[[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
 
-![サインイン アクティビティ](./media/reference-sign-ins-error-codes/61.png "サインイン アクティビティ")
+![[Azure Active Directory] を選択する](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+**[監視]** で **[サインイン]** を選択し、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
+
+![サインイン アクティビティ](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
 
 **[サインイン状態]** ドロップダウン ボックスから **[失敗]** を選択し、レポートをフィルター処理して失敗したすべてのサインインを表示します。
 
@@ -53,7 +57,7 @@ ms.locfileid: "74786369"
 ## <a name="error-codes"></a>エラー コード
 
 
-|Error|説明|
+|エラー|[説明]|
 |---|---|
 |16000|これは内部の実装の詳細であり、エラー状態ではありません。 このコードは無視してかまいません。|
 |20001|フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。|
@@ -192,7 +196,7 @@ ms.locfileid: "74786369"
 |7000218|要求本文には、次のパラメーターが含まれる必要があります: 'client_assertion' または 'client_secret'。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サインイン レポートの概要](concept-sign-ins.md)
 * [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)

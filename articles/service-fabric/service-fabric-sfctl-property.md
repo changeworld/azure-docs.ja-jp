@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl property | Microsoft Docs
-description: Service Fabric CLI- sfctl property のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI - sfctl プロパティ
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 プロパティのストーリーおよびクエリを実行するためのコマンドの一覧が含まれています。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901072"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639107"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric の名前でプロパティを格納およびクエリします。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
-|command|説明|
+|command|[説明]|
 | --- | --- |
 | delete | 指定した Service Fabric プロパティを削除します。 |
 | get | 指定した Service Fabric プロパティを取得します。 |
@@ -40,21 +31,21 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
-| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-property-get"></a>sfctl property get
 指定した Service Fabric プロパティを取得します。
@@ -63,21 +54,21 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
-| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-property-list"></a>sfctl property list
 指定した名前の下にあるすべての Service Fabric プロパティに関する情報を取得します。
@@ -86,22 +77,22 @@ Service Fabric 名には、カスタム情報を格納している 1 つまた�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --name-id [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --include-values | 返されるプロパティの値を含めるかどうかを指定できます。 メタデータと共に値を返す場合は true、プロパティのメタデータのみを返す場合は false。 |
-| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-property-put"></a>sfctl property put
 Service Fabric プロパティを作成または更新します。
@@ -110,7 +101,7 @@ Service Fabric プロパティを作成または更新します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | Service Fabric プロパティの名前。 |
@@ -120,15 +111,15 @@ Service Fabric プロパティを作成または更新します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

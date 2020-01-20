@@ -1,5 +1,5 @@
 ---
-title: Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
+title: マネージド ディスク ストレージを Standard SSD と Premium SSD の間で変換する
 description: Azure PowerShell を使用し、Azure マネージド ディスクを Standard から Premium に、または Premium から Standard に変換する方法。
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033920"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563311"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
 
 Azure マネージド ディスクには、ディスクの種類が 4 つあります。Azure Ultra SSD (プレビュー)、Premium SSD、Standard SSD、および Standard HDD です。 パフォーマンスのニーズに合わせて、3 つの GA ディスクの種類 (Premium SSD、Standard SSD、および Standard HDD) を切り替えることができます。 まだ Ultra SSD との切り替えはできません。新しいディスクをデプロイする必要があります。
 
-この機能は、アンマネージド ディスクではサポートされていません。 ただし、ディスクの種類を簡単に切り替えるために、簡単に[アンマネージド ディスクをマネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
+この機能は、アンマネージド ディスクではサポートされていません。 ただし、ディスクの種類を切り替えられるようにするために、簡単に[アンマネージド ディスクをマネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
 
  
 
@@ -29,7 +29,7 @@ Azure マネージド ディスクには、ディスクの種類が 4 つあり�
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>VM のすべてのマネージド ディスクを Premium と Standard の間で切り替える
 
-この例では、VM のすべてのマネージド ディスクを Standard ストレージから Premium ストレージに、または Premium ストレージから Standard ストレージに変換する方法について説明します。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
+この例では、VM のすべてのディスクを Standard ストレージから Premium ストレージに、または Premium ストレージから Standard ストレージに変換する方法について説明します。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -72,7 +72,7 @@ foreach ($disk in $vmDisks)
 Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Standard と Premium の間で個々のマネージド ディスクを切り替える
+## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Standard と Premium の間で個別のマネージド ディスクを切り替える
 
 開発/テスト ワークロードでは、コストを削減するために Standard ディスクと Premium ディスクを混在させたい場合があります。 パフォーマンスを上げる必要があるディスクだけをアップグレードするように選択できます。 この例では、1 つの VM ディスクを Standard ストレージから Premium ストレージに、または Premium ストレージから Standard ストレージに変換する方法について説明します。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例では、Premium ストレージに対応するサイズに切り替える方法も示しています。
 
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ポータルの**仮想マシン**の一覧から VM を選択します。
 3. VM が停止していない場合、VM の **[概要]** ウィンドウの一番上で **[停止]** を選択し、VM が停止するまで待ちます。
 3. VM のウィンドウで、メニューから **[ディスク]** を選択します。
@@ -122,7 +122,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 6. **アカウントの種類** を **Standard HDD** から **Premium SSD** に変更します。
 7. **[保存]** をクリックし、ディスク ウィンドウを閉じます。
 
-ディスクの種類の変換は瞬時に行われます。 変換後、VM を再起動できます。
+ディスクの種類の変換は瞬時に行われます。 変換後、VM を起動できます。
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Standard HDD と Standard SSD の間でマネージド ディスクを切り替える 
 
@@ -154,6 +154,6 @@ Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [スナップショット](snapshot-copy-managed-disk.md)を使用して、VM の読み取り専用コピーを取得します。

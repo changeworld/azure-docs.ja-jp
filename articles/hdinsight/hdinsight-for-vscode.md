@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435684"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
 Spark & Hive Tools for Visual Studio Code を使用して Apache Hive バッチ ジョブ、インタラクティブ Hive クエリ、および Apache Spark 用 PySpark スクリプトを作成および送信する方法について説明します。 最初に Visual Studio Code に Spark & Hive Tools をインストールする方法を説明した後、Spark & Hive Tools にジョブを送信する方法を説明します。  
 
-Spark & Hive Tools は、Visual Studio Code でサポートされている、Windows、Linux、macOS などのプラットフォームにインストールできます。 プラットフォームごとに以下の前提条件に注意してください。
+Spark & Hive Tools は、Windows、Linux、macOS など、Visual Studio Code でサポートされているプラットフォームにインストールできます。 プラットフォームごとに以下の前提条件に注意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、次のものが必要です。
+この記事の手順を完了するには、次の項目が必要です。
 
 - Azure HDInsight クラスター。 クラスターを作成するには、[HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)に関するページをご覧ください。 または、Apache Livy エンドポイントをサポートする Spark および Hive クラスターを使用します。
 - [Visual Studio Code](https://code.visualstudio.com/)。
@@ -36,7 +36,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされている、Win
 
 1. Visual Studio Code を開きます。
 
-2. メニュー バーから、 **[表示]**  >  **[拡張機能]** に移動します。
+2. メニュー バーから **[View]\(表示\)**  >  **[Extensions]\(拡張機能\)** に移動します。
 
 3. 検索ボックスに、「**Spark & Hive**」と入力します。
 
@@ -50,7 +50,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされている、Win
 
 作業フォルダーを開いて Visual Studio Code でファイルを作成するには、これらの手順を実行します。
 
-1. メニュー バーから、 **[ファイル]**  >  **[フォルダーを開く...]**  >  **[C:\HD\HDexample]** に移動し、 **[フォルダーの選択]** ボタンをクリックします。 左側の **[エクスプローラー]** ビューに、フォルダーが表示されます。
+1. メニュー バーから、 **[ファイル]**  >  **[フォルダーを開く...]**  >  **[C:\HD\HDexample]** に移動し、 **[フォルダーの選択]** ボタンをクリックします。 左側の **[Explorer]\(エクスプローラー\)** ビューにフォルダーが表示されます。
 
 2. **[エクスプローラー]** ビューで **HDexample** フォルダーを選択し、作業フォルダーの横にある **[新しいファイル]** アイコンを選択します。
 
@@ -84,7 +84,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 [Apache Ambari](https://ambari.apache.org/) マネージド ユーザー名を使用して通常のクラスターをリンクするか、またはドメイン ユーザー名 (`user1@contoso.com` など) を使用して Enterprise Security Pack のセキュリティ保護された Hadoop クラスターをリンクできます。
 
-1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:Link a cluster**」と入力します。
+1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:Link a Cluster**」と入力します。
 
    ![コマンド パレットの link cluster コマンド](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -100,14 +100,14 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 7. クラスターの表示名を設定します (省略可能)。
 
-8. 検証のため、 **[出力]** ビューを確認します。
+8. **[OUTPUT]\(出力\)** ビューを確認します。
 
    > [!NOTE]  
    > リンクされたユーザー名とパスワードは、クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合に使用されます。  
 
 ### <a name="link-generic-livy-endpoint"></a>リンク: ジェネリック Livy エンドポイント
 
-1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:Link a cluster**」と入力します。
+1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:Link a Cluster**」と入力します。
 
 2. リンクされるクラスターの種類として、 **[Generic Livy Endpoint]\(ジェネリック Livy エンドポイント\)** を選択します。
 
@@ -117,15 +117,15 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
     &emsp;a. 自分の Ambari ユーザー名を入力します。既定値は「**admin**」です。  
     &emsp;b. 自分の Ambari パスワードを入力します。
 
-5. 検証のため、 **[出力]** ビューを確認します。
+5. **[OUTPUT]\(出力\)** ビューを確認します。
 
-## <a name="list-clusters"></a>クラスターの一覧表示
+## <a name="list-clusters"></a>クラスターを一覧表示する
 
 1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:List Cluster**」と入力します。
 
 2. 目的のサブスクリプションを選択します。
 
-3. **[出力]** ビューを確認します。 このビューには、リンクされたクラスターと、お使いの Azure サブスクリプションのすべてのクラスターが表示されます。
+3. **[OUTPUT]\(出力\)** ビューを確認します。 このビューには、リンクされたクラスターと、お使いの Azure サブスクリプションのすべてのクラスターが表示されます。
 
     ![既定のクラスター構成を設定する](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -135,7 +135,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 2. [前に](#open-a-work-folder)作成した **HelloWorld.hql** ファイルを選択します。 それがスクリプト エディターで開かれます。
 
-3. スクリプト エディターを右クリックして、 **[Spark / Hive: Set Default Cluster]** を選択します。  
+3. スクリプト エディターを右クリックして、 **[Spark / Hive: Set Default Cluster]\(Spark / Hive: 既定のクラスターの設定\)** を選択します。  
 
 4. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
@@ -169,7 +169,7 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
     - **[メッセージ]** パネル:**行**の番号を選択すると、実行されているスクリプトの最初の行にジャンプします。
 
-## <a name="submit-interactive-pyspark-queries"></a>対話型 PySpark クエリの送信
+## <a name="submit-interactive-pyspark-queries"></a>対話型の PySpark クエリを送信する
 
 対話型 PySpark クエリを送信するには、これらの手順に従います。
 
@@ -177,7 +177,7 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
 2. [前の](#open-a-work-folder)手順に従って、新しい **HelloWorld.py** ファイルを作成します。
 
-3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
+3. 次のコードをコピーしてスクリプト ファイルに貼り付けます。
 
    ```python
    from operator import add
@@ -199,9 +199,9 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
    ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-6. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、新しいタブに **Python Interactive** の結果が表示されます。また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。
+6. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。
 
-   ![PySpark Interactive: PySpark Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+   ![PySpark Interactive の Python Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
 7. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
 
@@ -217,15 +217,15 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
    >
    > 設定で **[Python Extension Enabled]\(Python 拡張機能が有効\)** チェック ボックスがオフ (既定の設定ではオン) の場合、送信される PySpark 対話結果には古いウィンドウが使用されます。
    >
-   > ![PySpark Interactive: Python 拡張機能が無効](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
+   > ![Python Interactive の Python 拡張機能の無効](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
 
-## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブの送信
+## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブを送信する
 
 1. [前に](#open-a-work-folder)説明した **HDexample** フォルダーを閉じていた場合、もう一度開きます。  
 
 2. [前の](#open-a-work-folder)手順に従って、新しい **BatchFile.py** ファイルを作成します。
 
-3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
+3. 次のコードをコピーしてスクリプト ファイルに貼り付けます。
 
     ```python
     from __future__ import print_function
@@ -250,13 +250,13 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
 4. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-5. スクリプト エディターを右クリックして、 **[Spark: PySpark Batch]** を選択するか、キーボード ショートカットの Ctrl + Alt + H を使用します。
+5. スクリプト エディターを右クリックし、 **[Spark:PySpark Batch]** を選択するか、キーボード ショートカットの Ctrl + Alt + H を使用します。
 
 6. PySpark ジョブの送信先となるクラスターを選択します。
 
    ![Python ジョブの送信の結果の出力](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 URL を Web ブラウザーで開くと、ジョブの状態を追跡できます。
+Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)** ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
 
 ## <a name="apache-livy-configuration"></a>Apache Livy の構成
 
@@ -265,9 +265,9 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
 <a id="triggerlivyconf"></a>**Livy の構成をトリガーする方法**
 
 方法 1  
-1. メニュー バーから、 **[ファイル]**  >  **[ユーザー設定]**  >  **[設定]** に移動します。
+1. メニュー バーから **[File]\(ファイル\)**  >  **[Preferences]\(基本設定\)**  >  **[Settings]\(設定\)** に移動します。
 2. **[検索設定]** ボックスに「**HDInsight Job Submission: Livy Conf**」と入力します。  
-3. 関連する検索結果の **[settings.json で編集]** を選択します。
+3. 関連する検索結果に対して **[Edit in settings.json]\(settings.json で編集\)** を選択します。
 
 方法 2: ファイルを送信すると、.vscode フォルダーが自動的に作業フォルダーに追加されます。 Livy の構成は **.vscode\settings.json** を選択することで確認できます。
 
@@ -276,40 +276,40 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     ![HDInsight Apache Livy の構成](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
-    >**driverMemory** と **executorMemory** の設定では、値と単位を設定します。 例: 1 g、1,024 m。
+    >**driverMemory** と **executorMemory** の設定では、値と単位を設定します。 次に例を示します。1 g、1,024 m。
 
 + サポートされている Livy の構成:
 
     **POST/バッチ**要求本文
 
-    | 名前 | description | type |
+    | name | description | 型 |
     | :- | :- | :- |
     | file | 実行するアプリケーションを含むファイル | パス (必須) |
-    | proxyUser | ジョブを実行するときに偽装するユーザー | string |
-    | className | アプリケーションの Java/Spark のメイン クラス | string |
+    | proxyUser | ジョブの実行時に権限を借用するユーザー | String |
+    | className | アプリケーション Java/Spark のメイン クラス | String |
     | args | アプリケーションのコマンドライン引数 | 文字列のリスト |
     | jars | このセッションで使用される Jar | 文字列のリスト | 
     | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
-    | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
-    | driverMemory | ドライバーのプロセスに使用するメモリの量 | string |
-    | driverCores | ドライバーのプロセスに使用するコアの数 | int |
-    | executorMemory | Executor プロセスごとに使用するメモリの量 | string |
-    | executorCores | Executor ごとに使用するコアの数 | int |
-    | numExecutors | このセッションに対して起動する Executor の数 | int |
-    | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | queue | 送信先の YARN キューの名前| string |
-    | name | このセッションの名前 | string |
-    | conf | Spark の構成のプロパティ | キーと値のマップ |
+    | files | このセッションで使用されるファイル | 文字列のリスト |
+    | driverMemory | ドライバー プロセスに使用するメモリの量 | String |
+    | driverCores | ドライバー プロセスに使用するコアの数 | int |
+    | executorMemory | 実行プログラム プロセスごとに使用するメモリの量 | String |
+    | executorCores | 実行プログラムごとに使用するコアの数 | int |
+    | numExecutors | このセッションで起動する実行プログラムの数 | int |
+    | archives | このセッションで使用するアーカイブ | 文字列のリスト |
+    | queue | 送信先の YARN キューの名前| String |
+    | name | このセッションの名前 | String |
+    | conf | Spark の構成プロパティ | キーのマップ = val |
 
     応答本文   作成された Batch オブジェクト。
 
-    | 名前 | description | type |
+    | name | description | 型 |
     | :- | :- | :- |
     | id | セッション ID | int |
-    | appId | このセッションのアプリケーション ID | string |
-    | appInfo | アプリケーションの詳細情報 | キーと値のマップ |
+    | appId | このセッションのアプリケーション ID | String |
+    | appInfo | アプリケーションの詳細情報 | キーのマップ = val |
     | log | ログの行 | 文字列のリスト |
-    | state |バッチの状態 | string |
+    | 状態 |バッチの状態 | String |
 
     > [!NOTE]
     > 割り当てられた Livy の構成は、スクリプトの送信時に出力ウィンドウに表示されます。
@@ -353,14 +353,14 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
 
 Spark & Hive for Visual Studio Code では、次の機能もサポートされています。
 
-- **IntelliSense オートコンプリート**。 キーワード、メソッド、変数、その他のプログラミング要素の候補がポップアップ表示されます。 オブジェクトの種類ごとに異なるアイコンで表されます：
+- **IntelliSense のオートコンプリート**。 キーワード、メソッド、変数、その他のプログラミング要素の候補がポップアップ表示されます。 オブジェクトの種類ごとに異なるアイコンで表されます：
 
     ![Spark & Hive for Visual Studio Code の IntelliSense オブジェクト](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 
 - **IntelliSense エラー マーカー**。 言語サービスにより、Hive スクリプトの編集エラーに下線が引かれます。     
 - **構文の強調表示**。 言語サービスにより、異なる色を使用して、変数、キーワード、データ型、関数、その他のプログラミング要素が区別されます。
 
-    ![Spark & Hive for Visual Studio Code の構文の強調表示](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    ![Spark & Hive Tools for Visual Studio Code の構文の強調表示](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 
@@ -403,9 +403,9 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 > [!NOTE]
 >
-> ストレージ アカウントのアクセス キーは Azure portal から取得できます。 詳細については、[アクセス キーの表示とコピー](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys)に関する記事を参照してください。
+> ストレージ アカウントのアクセス キーは Azure portal から取得できます。 詳細については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」を参照してください。
 
-## <a name="unlink-cluster"></a>クラスターのリンクを解除する
+## <a name="unlink-cluster"></a>クラスターのリンク解除
 
 1. メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Spark / Hive: Unlink a Cluster**」と入力します。  
 
@@ -417,6 +417,6 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Spark & Hive for Visual Studio Code の使用については、[Spark & Hive for Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706) のデモ ビデオをご覧ください。

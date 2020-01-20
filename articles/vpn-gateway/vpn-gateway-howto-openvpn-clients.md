@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425747"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する
 
@@ -63,7 +63,7 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 
 1. [TunnelBlick](https://tunnelblick.net/downloads.html) などの OpenVPN クライアントをダウンロードしてインストールします。 
 2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の "New-AzVpnClientConfiguration" を使用して、実行できます。
-3. プロファイルを展開します。 メモ帳で OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
+3. プロファイルを展開します。 テキスト エディターで OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
 4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 エンコードされた公開キーを取得する証明書をエクスポートする方法については、[公開キーのエクスポート](vpn-gateway-certificates-point-to-site.md#cer)に関するページを参照してください。
 5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーの抽出方法については、[秘密キーのエクスポート](https://openvpn.net/community-resources/how-to/#pki)に関するページを参照してください。
 6. その他のフィールドは変更しないでください。 クライアント入力に入力された構成を使用して VPN に接続します。
@@ -74,6 +74,39 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 > [!IMPORTANT]
 >OpenVPN プロトコルでは、iOS 11.0 以降と MacOS 10.13 以降のみがサポートされます。
 >
+## <a name="iOS"></a>iOS クライアント
+
+1. App store から OpenVPN クライアント (バージョン 2.4 以降) をインストールします。
+2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の "New-AzVpnClientConfiguration" を使用して、実行できます。
+3. プロファイルを展開します。 テキスト エディターで OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
+4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 エンコードされた公開キーを取得する証明書をエクスポートする方法については、[公開キーのエクスポート](vpn-gateway-certificates-point-to-site.md#cer)に関するページを参照してください。
+5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーの抽出方法については、[秘密キーのエクスポート](https://openvpn.net/community-resources/how-to/#pki)に関するページを参照してください。
+6. その他のフィールドは変更しないでください。
+7. ご利用の iPhone 上のメール アプリで構成されている電子メール アカウントにプロファイル ファイル (ovpn) を電子メールで送信します。 
+8. iPhone 上のメール アプリで電子メールを開き、添付ファイルをタップします。
+
+    ![電子メールを開く](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. **[OpenVPN にコピー]** オプションが表示されない場合は、 **[その他]** をタップします。
+
+    ![OpenVPN にコピー](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. **[OpenVPN にコピー]** をタップします。 
+
+    ![OpenVPN にコピー](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. **[プロファイルのインポート]** ページで **[追加]** をタップします。
+
+    ![OpenVPN にコピー](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. **[インポート済みプロファイル]** ページで **[追加]** をタップします。
+
+    ![OpenVPN にコピー](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. OpenVPN アプリを起動し、 **[プロファイル]** ページでスイッチを右にスライドして接続します。
+
+    ![接続する](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux クライアント
 
@@ -132,7 +165,7 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
     ![ファイルからインポート](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. 接続するには、 **[ネットワーク設定]** ページで VPN を**オン**にするか、システム トレイのネットワーク アイコンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VPN クライアントが別の VNet のリソースにアクセスできるようにするには、[VNet 間](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関する記事に記載されている手順に従って、VNet 間接続を設定します。 ゲートウェイと接続で BGP を有効にします。そうしないと、トラフィックは流れません。
 

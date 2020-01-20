@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443412"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -53,9 +53,9 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 
 いいえ、このシナリオはサポートされていません。 Azure への送信トラフィックに転送プロキシを使用するよう構成できるのは、コネクタと更新サービスのみです。 「[既存のオンプレミス プロキシ サーバーと連携する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)」を参照してください。
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>コネクタ サーバーから Azure へのトラフィックに対する SSL 終了 (SSL/HHTPS 検査またはアクセラレーション) はサポートされていますか。
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>コネクタ サーバーから Azure へのトラフィックに対する SSL 終了 (SSL/HTTPS 検査またはアクセラレーション) はサポートされていますか。
 
-アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 SSL 終了 (SSL/HHTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、SSL 終了を実行しているデバイスをすべてバイパスする必要があります。  
+アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 SSL 終了 (SSL/HTTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、SSL 終了を実行しているデバイスをすべてバイパスする必要があります。  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>コネクタを Azure AD アプリケーション プロキシに登録するための専用アカウントを作成する必要がありますか。
 
@@ -117,7 +117,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 いいえ、このシナリオはサポートされていません。  
 
-### <a name="my-users-dont-use-internet-explorer-11-and-the-pre-authentication-scenario-doesnt-work-for-them-is-this-expected"></a>ユーザーが Internet Explorer 11 を使用しておらず、事前認証のシナリオを使用できません。 これは期待される動作ですか。
+### <a name="my-users-dont-use-internet-explorer-11-and-the-pre-authentication-scenario-doesnt-work-for-them-is-this-expected"></a>ユーザーが Internet Explorer 11 を使用しておらず、事前認証のシナリオを使用できません。 これは想定される動作ですか。
 
 はい、そうです。 事前認証のシナリオでは ActiveX コントロールが必要ですが、サード パーティのブラウザーではサポートされていません。
 
@@ -139,7 +139,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Azure AD アプリケーション プロキシを AD FS プロキシ (Web アプリケーション プロキシなど) として使用できますか。
 
-No. Azure AD アプリケーション プロキシは Azure AD で動作するように設計されているため、AD FS プロキシとして機能するための要件を満たしていません。
+いいえ。 Azure AD アプリケーション プロキシは Azure AD で動作するように設計されているため、AD FS プロキシとして機能するための要件を満たしていません。
 
 ## <a name="websocket"></a>WebSocket
 

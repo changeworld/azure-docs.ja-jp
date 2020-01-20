@@ -4,15 +4,15 @@ description: デバイスと Operations Manager で監視されたコンピュ�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
-ms.date: 10/30/2019
-ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+author: bwren
+ms.author: bwren
+ms.date: 12/24/2019
+ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847276"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530988"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -45,7 +45,7 @@ Log Analytics と Operations Manager 管理グループが統合している場�
 
 ゲートウェイは最大 4 つのワークスペースへのマルチホームにすることができます。 これは、Windows エージェントがサポートするワークスペースの合計数です。  
 
-各エージェントは、ゲートウェイとの間で双方向にデータを自動的に転送できるように、ゲートウェイにネットワーク接続する必要があります。 ドメイン コントローラーへのゲートウェイのインストールは避けてください。
+各エージェントは、ゲートウェイとの間で双方向にデータを自動的に転送できるように、ゲートウェイにネットワーク接続する必要があります。 ドメイン コントローラーへのゲートウェイのインストールは避けてください。 ゲートウェイ サーバーの背後にある Linux コンピューターでは、Linux 用 Log Analytics エージェントをインストールする場合に[ラッパー スクリプトのインストール](agent-linux.md#install-the-agent-using-wrapper-script)方法を使用することはできません。 ゲートウェイでは前に説明した Azure サービスとの通信しかサポートされていないので、エージェントを手動でダウンロードし、コンピューターにコピーし、手動でインストールする必要があります。
 
 次の図は、ゲートウェイを使った場合のダイレクト エージェントから Azure Automation および Log Analytics へのデータ フローを示したものです。 エージェントのプロキシ構成のポートは、Log Analytics ゲートウェイに対して構成されているポートと同じになっている必要があります。  
 
@@ -71,19 +71,19 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 
 - 簡体中国語
 - 繁体中国語
-- チェコ語
-- オランダ語
-- 英語
-- フランス語
-- ドイツ語
-- ハンガリー語
-- イタリア語
-- 日本語
-- 韓国語
-- ポーランド語
+- Czech
+- Dutch
+- English
+- French
+- German
+- Hungarian
+- Italian
+- Japanese
+- Korean
+- Polish
 - ポルトガル語 (ブラジル)
 - ポルトガル語 (ポルトガル)
-- ロシア語
+- Russian
 - スペイン語 (インターナショナル)
 
 ### <a name="supported-encryption-protocols"></a>サポート対象の暗号化プロトコル
@@ -98,8 +98,8 @@ Log Analytics ゲートウェイは、トランスポート層セキュリティ
 
 |Gateway |サポートされるエージェントのおおよその数|  
 |--------|----------------------------------|  
-|CPU:Intel Xeon プロセッサ E5-2660 v3 \@ 2.6 GHz 2 コア<br> メモリ:4 GB<br> ネットワーク帯域幅:1 Gbps| 600|  
-|CPU:Intel Xeon プロセッサ E5-2660 v3 \@ 2.6 GHz 4 コア<br> メモリ:8 GB<br> ネットワーク帯域幅:1 Gbps| 1000|  
+|CPU: Intel Xeon プロセッサ E5-2660 v3 \@ 2.6 GHz 2 コア<br> メモリ:4 GB<br> ネットワーク帯域幅:1 Gbps| 600|  
+|CPU: Intel Xeon プロセッサ E5-2660 v3 \@ 2.6 GHz 4 コア<br> メモリ:8 GB<br> ネットワーク帯域幅:1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Log Analytics ゲートウェイのダウンロード
 
@@ -135,25 +135,26 @@ or
    a. ゲートウェイに使用する TCP ポートの番号を入力します。 セットアップでは、このポート番号を使用して Windows ファイアウォールに対して受信ルールが構成されます。  既定値は 8080 です。
       有効なポート番号の範囲は、1 ～ 65535 です。 この範囲の値を入力しないと、エラー メッセージが表示されます。
 
-   b. ゲートウェイがインストールされているサーバーがプロキシを介して通信する必要がある場合は、ゲートウェイが接続する必要のあるプロキシのアドレスを入力します。 たとえば、「 `http://myorgname.corp.contoso.com:80`」のように入力します。  このフィールドを空白のままにすると、ゲートウェイはインターネットに直接接続しようとします。  プロキシ サーバーで認証が必要な場合は、ユーザー名とパスワードを入力します。
+   b. ゲートウェイがインストールされているサーバーがプロキシを介して通信する必要がある場合は、ゲートウェイが接続する必要のあるプロキシのアドレスを入力します。 たとえば、`http://myorgname.corp.contoso.com:80` と入力します。  このフィールドを空白のままにすると、ゲートウェイはインターネットに直接接続しようとします。  プロキシ サーバーで認証が必要な場合は、ユーザー名とパスワードを入力します。
 
    c. **[次へ]** を選択します。
 
    ![ゲートウェイのプロキシの構成のスクリーンショット](./media/gateway/gateway-wizard02.png)
 
 1. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、有効にするかどうかを選択できます。 選択を行い、 **[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
-1. **[インストール先のフォルダー]** ページでは、ゲートウェイのインストール先として、既定のフォルダー C:\Program Files\OMS Gateway をそのまま使用するか、目的の場所を入力します。 次に、 **[次へ]** を選択します。
+1. **[インストール先のフォルダー]** ページでは、ゲートウェイのインストール先として、既定のフォルダー C:\Program Files\OMS Gateway をそのまま使用するか、目的の場所を入力します。 **[次へ]** を選択します。
 1. **[インストールの準備完了]** ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] でインストールのためのアクセス許可が要求された場合は、 **[はい]** を選択します。
 1. セットアップが完了したら、 **[完了]** を選択します。 サービスが実行中であることを確認するには、services.msc スナップインを開きます。そこでサービスの一覧に **[OMS ゲートウェイ]** が表示されており、状態が **[実行中]** であれば、サービスは正常に実行されています。
 
    ![OMS ゲートウェイが実行されていることを示す、ローカル サービスのスクリーンショット](./media/gateway/gateway-service.png)
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>コマンド ラインを使用して Log Analytics ゲートウェイをインストールする
+
 ゲートウェイ用にダウンロードしたファイルは、コマンド ラインまたはその他の自動化された方法によるサイレント インストールをサポートする Windows インストーラー パッケージです。 Windows インストーラーの標準コマンド ライン オプションに慣れていない場合は、「[Command-line options (コマンド ライン オプション)](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)」を参照してください。
  
 次の表に、セットアップでサポートされているパラメーターを示します。
 
-|parameters| メモ|
+|パラメーター| メモ|
 |----------|------| 
 |PORTNUMBER | リッスンするゲートウェイの TCP ポート番号 |
 |PROXY | プロキシ サーバーの IP アドレス |
@@ -183,10 +184,12 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 - **Get-OMSGatewayConfig** – ゲートウェイでリッスンするように構成されている TCP ポートを返します。
 - **Get-OMSGatewayRelayProxy** – 通信するように構成したプロキシ サーバーの IP アドレスを返します。
 
-## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する 
+## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する
+
 ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft [ネットワーク負荷分散 (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md)、またはハードウェアベースのロード バランサーを使用します。 ロード バランサーは、Log Analytics エージェントまたは Operations Manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft ネットワーク負荷分散
+
 Windows Server 2016 のネットワーク負荷分散クラスターの設計およびデプロイの方法については、「[ネットワーク負荷分散](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)」を参照してください。 以下の手順では、Microsoft ネットワーク負荷分散クラスターの構成方法を説明します。  
 
 1. 管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
@@ -197,9 +200,10 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
  
 4. 接続するゲートウェイ サーバーの IP アドレスを入力します。 
 
-    ![ネットワーク負荷分散マネージャー -- ホストをクラスターに追加: 接続](./media/gateway/nlb03.png) 
+    ![ネットワーク負荷分散マネージャー -- ホストをクラスターに追加: 接続する](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
+
 Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この[クイック スタート](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
 
 > [!NOTE]
@@ -213,18 +217,20 @@ Azure Load Balancer を設計してデプロイする方法については、「
 >
 
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Log Analytics エージェントと Operations Manager 管理グループを構成する
+
 このセクションでは、直接接続されている Log Analytics エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して Azure Automation または Log Analytics との通信のために Log Analytics ゲートウェイを構成する方法を説明します。  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>スタンドアロンの Log Analytics エージェントを構成する
+
 Log Analytics エージェントを構成する場合は、プロキシ サーバーの値を Log Analytics ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。 ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、Log Analytics エージェントのプロキシ構成が、ロード バランサーの仮想 IP アドレスとなります。  
 
 >[!NOTE]
->ゲートウェイおよび Log Analytics に直接接続している Windows コンピューターに Log Analytics エージェントをインストールするには、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](agent-windows.md)」を参照してください。 Linux コンピューターを接続するには、「[ハイブリッド環境の Linux コンピューターを対象とした Log Analytics エージェントの構成](../../azure-monitor/learn/quick-collect-linux-computer.md)」を参照してください。 
+>ゲートウェイおよび Log Analytics に直接接続している Windows コンピューターに Log Analytics エージェントをインストールするには、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](agent-windows.md)」を参照してください。 Linux コンピューターを接続するには、「[Linux コンピューターを Azure Monitor に接続する](agent-linux.md)」をご覧ください。 
 >
 
 エージェントをゲートウェイ サーバーにインストールした後は、ゲートウェイと通信するワークスペースのエージェントにレポートを送信するように構成します。 Log Analytics Windows エージェントがゲートウェイにインストールされていない場合は、エージェントをインストールする必要があることを示すイベント 300 が OMS ゲートウェイのイベント ログに書き込まれます。 エージェントがインストールされていても、それを経由して通信するエージェントと同じワークスペースにレポートを送信するよう構成されていない場合は、ゲートウェイ上のエージェントはゲートウェイと通信するエージェントと同じワークスペースにレポートを送信するよう構成する必要があることを示すイベント 105 が、同じログに書き込まれます。
 
-構成が完了した後は、変更を適用するために、OMS ゲートウェイ サービスを再起動します。 そうしないと、ゲートウェイは、Log Analytics との通信を試みるエージェントを拒否し、OMS ゲートウェイのイベント ログにイベント 105 をレポートします。 これは、ゲートウェイ サーバーのエージェント構成にワークスペースを追加または削除するときにも発生します。   
+構成が完了した後は、変更を適用するために、**OMS ゲートウェイ** サービスを再起動します。 そうしないと、ゲートウェイは、Log Analytics との通信を試みるエージェントを拒否し、OMS ゲートウェイのイベント ログにイベント 105 をレポートします。 これは、ゲートウェイ サーバーのエージェント構成にワークスペースを追加または削除するときにも発生します。
 
 Automation Hybrid Runbook Worker に関連する情報については、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](../../automation/automation-hybrid-runbook-worker.md)」を参照してください。
 
@@ -300,13 +306,13 @@ Log Analytics ゲートウェイ サーバーを使用するように特定の�
 
 Update Management ソリューションが 1 つまたは複数の VM で有効化されている場合など、コンピューターが Hybrid Runbook Worker として自動的に登録されている場合は、次のステップに従います。
 
-1. Log Analytics ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Log Analytics ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 例: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 次の PowerShell コマンドレットを使って、Log Analytics ゲートウェイ サービスを再起動します。`Restart-Service OMSGatewayService`
 
 コンピューターが Hybrid Runbook Worker 登録コマンドレットを使用して Azure Automation に接続されている場合は、以下の手順を実行します。
 
-1. Log Analytics ゲートウェイの許可ホスト一覧に、エージェント サービス登録 URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. Log Analytics ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Log Analytics ゲートウェイの許可ホスト一覧に、エージェント サービス登録 URL を追加します。 例: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. Log Analytics ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 例: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Log Analytics ゲートウェイ サービスを再起動します。
     `Restart-Service OMSGatewayService`
 
@@ -327,7 +333,7 @@ Update Management ソリューションが 1 つまたは複数の VM で有効�
 | `Get-OMSGatewayConfig` |Key |サービスの構成を取得します |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |キー (必須) <br> 値 |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |リレー (アップストリーム) プロキシのアドレスを取得します |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> パスワード |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> Password |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |現在許可されているホストを取得します (ローカルに構成されている許可ホストだけであり、自動的にダウンロードされた許可ホストは含みません) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |ホスト (必須) |許可リストにホストを追加します |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |ホスト (必須) |許可リストからホストを削除します |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
@@ -381,6 +387,6 @@ Azure portal にサインインすると、Log Analytics ゲートウェイま�
 
 ![新しいサポート要求のスクリーンショット](./media/gateway/support.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [データ ソースを追加](../../azure-monitor/platform/agent-data-sources.md)して、接続されたソースからデータを収集して Log Analytics ワークスペースにデータを格納します。

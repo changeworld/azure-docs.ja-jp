@@ -1,5 +1,5 @@
 ---
-title: Azure AD のエンタイトルメント管理で新しいアクセス パッケージを作成する - Azure Active Directory
+title: エンタイトルメント管理で新しいアクセス パッケージを作成する - Azure AD
 description: Azure Active Directory エンタイトルメント管理で共有するリソースの新しいアクセス パッケージを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422693"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "73602722"
 
 **事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
 
@@ -131,7 +131,7 @@ ms.locfileid: "73602722"
 
     新しいアクセス パッケージがアクセス パッケージの一覧に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リンクを共有してアクセス パッケージを要求する](entitlement-management-access-package-settings.md)
 - [アクセス パッケージのリソースのロールを変更する](entitlement-management-access-package-resources.md)

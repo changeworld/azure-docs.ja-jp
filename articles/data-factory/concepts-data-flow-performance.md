@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444523"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -81,7 +81,7 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 ### <a name="disable-indexes-on-write"></a>書き込み時にインデックスを無効にする
 
-パイプラインで、シンクからの書き込み先のターゲット テーブルでインデックスを無効にする Data Flow アクティビティの前に、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)を追加します。 Data Flow アクティビティの後に、これらのインデックスを有効にする別のストアド プロシージャ アクティビティを追加します。
+パイプラインで、シンクからの書き込み先のターゲット テーブルでインデックスを無効にする Data Flow アクティビティの前に、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)を追加します。 Data Flow アクティビティの後に、これらのインデックスを有効にする別のストアド プロシージャ アクティビティを追加します。 または、データベース シンクで処理前および処理後のスクリプトを使用します。
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Azure SQL DB と DW のサイズを増やす
 
@@ -114,7 +114,7 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 
 ### <a name="looping-through-file-lists"></a>ファイル リストのループ処理
 
-ソース変換が For Each アクティビティを通じてループするのではなく、複数のファイルを反復処理する場合、マッピング データ フローの方が実行効率に優れています。 ソース変換では、ワイルドカードまたはファイル リストを使用することをお勧めします。 ループ処理を Spark クラスター内で行うことにより、Data Flow プロセスの実行速度を上げることができます。 詳細については、[ソース変換でのワイルドカード](data-flow-source.md#file-based-source-options)に関するセクションを参照してください。
+ソース変換が For Each アクティビティを通じてループするのではなく、複数のファイルを反復処理する場合、マッピング データ フローの方が実行効率に優れています。 ソース変換では、ワイルドカードまたはファイル リストを使用することをお勧めします。 ループ処理を Spark クラスター内で行うことにより、Data Flow プロセスの実行速度を上げることができます。 詳細については、[ソース変換でのワイルドカード](connector-azure-data-lake-storage.md#mapping-data-flow-properties)に関するセクションを参照してください。
 
 たとえば、2019 年 7 月のデータ ファイルの一覧を Blob Storage のフォルダーで処理する場合は、ソース変換で次のワイルドカードを使用できます。
 
@@ -127,10 +127,10 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 CosmosDB シンクのスループットとバッチ プロパティの設定は、パイプライン データ フロー アクティビティからのそのデータ フローの実行中にのみ有効になります。 元のコレクションの設定は、データ フローの実行後に CosmosDB によって受け入れられます。
 
 * バッチ サイズ: データの行のおおよそのサイズを計算し、rowSize * バッチサイズが 200 万未満であることを確認します。 その場合は、バッチ サイズを増やしてスループットを向上させます。
-* スループット:ここでより高いスループットを設定して、CosmosDB にドキュメントを高速で書き込むことができるようにします。 高いスループットの設定に基づいて、RU コストが高くなることに注意してください。
+* スループット: ここでより高いスループットを設定して、CosmosDB にドキュメントを高速で書き込むことができるようにします。 高いスループットの設定に基づいて、RU コストが高くなることに注意してください。
 *   書き込みスループット予算:1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パフォーマンスに関する Data Flow のその他の記事を参照してください。
 

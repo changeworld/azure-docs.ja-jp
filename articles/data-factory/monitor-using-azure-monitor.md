@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 67709ef96ffb8190812d625c04cd9749c0ebb900
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684623"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645193"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリのアラート送信および監視を行う
 
@@ -64,7 +64,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
 * `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
@@ -112,15 +112,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 | --- | --- | --- |
-| **storageAccountId** |string | 診断ログを送信するストレージ アカウントのリソース ID。 |
-| **serviceBusRuleId** |string | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
+| **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
+| **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
 | **workspaceId** | 複合型 | メトリックの時間グレインと、その保持ポリシーの配列。 このプロパティの値は空です。 |
 |**メトリック**| 呼び出されたパイプラインに渡されるパイプライン実行のパラメーター値| パラメーター名を引数値にマップする JSON オブジェクト。 |
 | **logs**| 複合型| リソースの種類に対応する診断ログ カテゴリの名前。 リソースの診断ログ カテゴリの一覧を取得するには、診断設定の取得操作を実行します。 |
-| **category**| string| ログ カテゴリとその保持ポリシーの配列。 |
-| **timeGrain** | string | ISO 8601 期間形式でキャプチャされるメトリックの粒度。 プロパティ値は、1 分を指定する `PT1M` でなければなりません。 |
+| **category**| String| ログ カテゴリとその保持ポリシーの配列。 |
+| **timeGrain** | String | ISO 8601 期間形式でキャプチャされるメトリックの粒度。 プロパティ値は、1 分を指定する `PT1M` でなければなりません。 |
 | **有効**| Boolean | このリソースに対して、メトリックまたはログ カテゴリの収集を有効にするどうかを指定します。 |
 | **retentionPolicy**| 複合型| メトリックまたはログのカテゴリの保持ポリシーを示します。 このプロパティは、ストレージ アカウントのみに使用されます。 |
 |**days**| int| メトリックまたはログを保持する日数。 プロパティ値が 0 の場合、ログは永続的に保持されます。 このプロパティは、ストレージ アカウントのみに使用されます。 |
@@ -185,7 +185,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
 * `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関するページを参照してください。
@@ -287,21 +287,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | 種類 | [説明] | 例 |
 | --- | --- | --- | --- |
-| **Level** |string | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
-| **correlationId** |string | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | string | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
-|**activityRunId**| string| アクティビティの実行の ID。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|**pipelineRunId**| string| パイプラインの実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**resourceId**| string | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| string | 診断ログのカテゴリ。 プロパティ値は `ActivityRuns` に設定してください。 | `ActivityRuns` |
-|**level**| string | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
-|**operationName**| string | 状態付きのアクティビティの名前。 アクティビティが開始ハートビートである場合、プロパティ値は `MyActivity -` です。 アクティビティが終了ハートビートである場合、プロパティ値は `MyActivity - Succeeded` です。 | `MyActivity - Succeeded` |
-|**pipelineName**| string | パイプラインの名前。 | `MyPipeline` |
-|**activityName**| string | アクティビティの名前。 | `MyActivity` |
-|**start**| string | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
-|**end**| string | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。 | `2017-06-26T20:55:29.5007959Z` |
+| **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
+| **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
+|**activityRunId**| String| アクティビティの実行の ID。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|**pipelineRunId**| String| パイプラインの実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| String | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| String | 診断ログのカテゴリ。 プロパティ値は `ActivityRuns` に設定してください。 | `ActivityRuns` |
+|**level**| String | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
+|**operationName**| String | 状態付きのアクティビティの名前。 アクティビティが開始ハートビートである場合、プロパティ値は `MyActivity -` です。 アクティビティが終了ハートビートである場合、プロパティ値は `MyActivity - Succeeded` です。 | `MyActivity - Succeeded` |
+|**pipelineName**| String | パイプラインの名前。 | `MyPipeline` |
+|**activityName**| String | アクティビティの名前。 | `MyActivity` |
+|**start**| String | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
+|**end**| String | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。 | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>パイプライン実行ログの属性
 
@@ -333,20 +333,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | 種類 | [説明] | 例 |
 | --- | --- | --- | --- |
-| **Level** |string | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
-| **correlationId** |string | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | string | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
-|**runId**| string| パイプラインの実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**resourceId**| string | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| string | 診断ログのカテゴリ。 プロパティ値は `PipelineRuns` に設定してください。 | `PipelineRuns` |
-|**level**| string | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
-|**operationName**| string | パイプラインの名前とその状態。 パイプラインの実行が完了すると、プロパティ値は `Pipeline - Succeeded` になります。 | `MyPipeline - Succeeded` |
-|**pipelineName**| string | パイプラインの名前。 | `MyPipeline` |
-|**start**| string | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z` |
-|**end**| string | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| string | パイプライン実行の最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
+| **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
+| **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
+|**runId**| String| パイプラインの実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| String | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| String | 診断ログのカテゴリ。 プロパティ値は `PipelineRuns` に設定してください。 | `PipelineRuns` |
+|**level**| String | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
+|**operationName**| String | パイプラインの名前とその状態。 パイプラインの実行が完了すると、プロパティ値は `Pipeline - Succeeded` になります。 | [https://login.microsoftonline.com/consumers/](`MyPipeline - Succeeded`) |
+|**pipelineName**| String | パイプラインの名前。 | `MyPipeline` |
+|**start**| String | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | [https://login.microsoftonline.com/consumers/](`2017-06-26T20:55:29.5007959Z`) |
+|**end**| String | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。  | `2017-06-26T20:55:29.5007959Z` |
+|**status**| String | パイプライン実行の最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>トリガー実行ログの属性
 
@@ -377,21 +377,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | 種類 | [説明] | 例 |
 | --- | --- | --- | --- |
-| **Level** |string | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
-| **correlationId** |string | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | string | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
-|**triggerId**| string| トリガー実行の ID。 | `08587023010602533858661257311` |
-|**resourceId**| string | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| string | 診断ログのカテゴリ。 プロパティ値は `PipelineRuns` に設定してください。 | `PipelineRuns` |
-|**level**| string | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
-|**operationName**| string | トリガーの名前と、トリガーが正常に起動されたかどうかを示す最終的な状態。 ハートビートが成功した場合、プロパティ値は `MyTrigger - Succeeded` になります。 | `MyTrigger - Succeeded` |
-|**triggerName**| string | トリガーの名前。 | `MyTrigger` |
-|**triggerType**| string | トリガーの種類。 プロパティ値は `Manual Trigger` か、`Schedule Trigger` のいずれかです。 | `ScheduleTrigger` |
-|**triggerEvent**| string | トリガーのイベント。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**start**| string | timespan でのトリガーの起動の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
-|**status**| string | トリガーが正常に起動されたかどうかを示す最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
+| **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
+| **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | timespan でのイベントの時刻 (UTC 形式 `YYYY-MM-DDTHH:MM:SS.00000Z`)。 | `2017-06-28T21:00:27.3534352Z` |
+|**triggerId**| String| トリガー実行の ID。 | `08587023010602533858661257311` |
+|**resourceId**| String | データ ファクトリのリソースに関連付けられている ID。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| String | 診断ログのカテゴリ。 プロパティ値は `PipelineRuns` に設定してください。 | `PipelineRuns` |
+|**level**| String | 診断ログのレベル。 プロパティ値は `Informational` に設定してください。 | `Informational` |
+|**operationName**| String | トリガーの名前と、トリガーが正常に起動されたかどうかを示す最終的な状態。 ハートビートが成功した場合、プロパティ値は `MyTrigger - Succeeded` になります。 | `MyTrigger - Succeeded` |
+|**triggerName**| String | トリガーの名前。 | `MyTrigger` |
+|**triggerType**| String | トリガーの種類。 プロパティ値は `Manual Trigger` または `Schedule Trigger` のいずれかです。 | `ScheduleTrigger` |
+|**triggerEvent**| String | トリガーのイベント。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**start**| String | timespan でのトリガーの起動の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
+|**status**| String | トリガーが正常に起動されたかどうかを示す最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics のスキーマ
 
@@ -407,11 +407,11 @@ Log Analytics は、Monitor からスキーマを継承します。ただし、�
     | $.properties.Annotations | 注釈 | 動的 |
     | $.properties.Input | 入力 | 動的 |
     | $.properties.Output | Output | 動的 |
-    | $.properties.Error.errorCode | ErrorCode | int |
+    | $.properties.Error.errorCode | ErrorCode | INT |
     | $.properties.Error.message | ErrorMessage | string |
-    | $.properties.Error | Error | 動的 |
+    | $.properties.Error | エラー | 動的 |
     | $.properties.Predecessors | Predecessors | 動的 |
-    | $.properties.Parameters | parameters | 動的 |
+    | $.properties.Parameters | パラメーター | 動的 |
     | $.properties.SystemParameters | SystemParameters | 動的 |
     | $.properties.Tags | Tags | 動的 |
     
@@ -431,6 +431,9 @@ Azure Data Factory バージョン 2 では、次のメトリックが出力さ�
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 1 分の枠内で失敗したトリガー実行の合計数。      |
 
 メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)」に記載された手順に従います。
+
+> [!NOTE]
+> 完了済みでトリガーされたアクティビティとパイプライン実行イベントのみが出力されます。 進行中およびサンドボックス/デバッグの実行は出力**されません**。 
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Azure Monitor で Data Factory メトリックを監視する
 
@@ -515,7 +518,7 @@ Azure Data Factory Analytics をインストールすると、既定のセット
 > [!NOTE]
 > Azure Data Factory Analytics (プレビュー) では、診断ログが_リソース固有_の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 Azure portal にサインインし、 **[モニター]**  >  **[アラート]** の順に選択してアラートを作成します。
 
@@ -552,5 +555,5 @@ Azure portal にサインインし、 **[モニター]**  >  **[アラート]** 
 
     ![アクション グループの定義](media/monitor-using-azure-monitor/alerts_image12.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [プログラムでのパイプラインの監視と管理](monitor-programmatically.md)

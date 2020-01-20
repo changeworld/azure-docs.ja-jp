@@ -1,5 +1,5 @@
 ---
-title: Shared Access Signature による Azure Service Bus のアクセスの制御 | Microsoft Docs
+title: Shared Access Signature による Azure Service Bus アクセス制御
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 services: service-bus-messaging
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462079"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -261,20 +261,20 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 
 次の表に、Service Bus のリソースでのさまざまな操作に必要となるアクセス権を示します。
 
-| Operation | 必要な要求 | 要求のスコープ |
+| 操作 | 必要な要求 | 要求のスコープ |
 | --- | --- | --- |
-| **名前空間** | | |
-| 名前空間での承認規則を構成する |管理 |任意の名前空間アドレス |
+| **Namespace** | | |
+| 名前空間での承認規則を構成する |管理する |任意の名前空間アドレス |
 | **サービス レジストリ** | | |
-| プライベート ポリシーを列挙する |管理 |任意の名前空間アドレス |
+| プライベート ポリシーを列挙する |管理する |任意の名前空間アドレス |
 | 名前空間でリッスンを開始する |リッスン |任意の名前空間アドレス |
-| 名前空間のリスナーにメッセージを送信する |送信 |任意の名前空間アドレス |
+| 名前空間のリスナーにメッセージを送信する |Send |任意の名前空間アドレス |
 | **キュー** | | |
-| キューを作成する |管理 |任意の名前空間アドレス |
-| キューを削除する |管理 |任意の有効なキュー アドレス |
-| キューを列挙する |管理 |/$Resources/Queues |
-| キューの説明を取得する |管理 |任意の有効なキュー アドレス |
-| キューの承認規則を構成する |管理 |任意の有効なキュー アドレス |
+| キューを作成する |管理する |任意の名前空間アドレス |
+| キューを削除する |管理する |任意の有効なキュー アドレス |
+| キューを列挙する |管理する |/$Resources/Queues |
+| キューの説明を取得する |管理する |任意の有効なキュー アドレス |
+| キューの承認規則を構成する |管理する |任意の有効なキュー アドレス |
 | キューに送信する |Send |任意の有効なキュー アドレス |
 | キューからメッセージを受信する |リッスン |任意の有効なキュー アドレス |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |任意の有効なキュー アドレス |
@@ -284,28 +284,28 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | メッセージのキュー セッションに関連付けられた状態を設定する |リッスン |任意の有効なキュー アドレス |
 | 後で配信するメッセージのスケジュールを設定する (例: [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_)) |リッスン | 任意の有効なキュー アドレス
 | **トピック** | | |
-| トピックを作成する |Manage |任意の名前空間アドレス |
-| トピックを削除する |管理 |任意の有効なトピック アドレス |
-| トピックを列挙する |管理 |/$Resources/Topics |
-| トピックの説明を取得する |管理 |任意の有効なトピック アドレス |
-| トピックの承認規則を構成する |管理 |任意の有効なトピック アドレス |
+| トピックを作成する |管理する |任意の名前空間アドレス |
+| トピックを削除する |管理する |任意の有効なトピック アドレス |
+| トピックを列挙する |管理する |/$Resources/Topics |
+| トピックの説明を取得する |管理する |任意の有効なトピック アドレス |
+| トピックの承認規則を構成する |管理する |任意の有効なトピック アドレス |
 | トピックに送信する |Send |任意の有効なトピック アドレス |
 | **サブスクリプション** | | |
-| サブスクリプションの作成 |管理 |任意の名前空間アドレス |
-| サブスクリプションを削除する |管理 |../myTopic/Subscriptions/mySubscription |
-| サブスクリプションを列挙する |管理 |../myTopic/Subscriptions |
-| サブスクリプションの説明を取得する |管理 |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションの作成 |管理する |任意の名前空間アドレス |
+| サブスクリプションを削除する |管理する |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションを列挙する |管理する |../myTopic/Subscriptions |
+| サブスクリプションの説明を取得する |管理する |../myTopic/Subscriptions/mySubscription |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |../myTopic/Subscriptions/mySubscription |
 | 後で取得するためにメッセージを保留する |リッスン |../myTopic/Subscriptions/mySubscription |
 | メッセージを配信不能にする |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を取得する |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を設定する |リッスン |../myTopic/Subscriptions/mySubscription |
-| **規則** | | |
-| 規則を作成する |管理 |../myTopic/Subscriptions/mySubscription |
-| 規則を削除する |管理 |../myTopic/Subscriptions/mySubscription |
+| **ルール** | | |
+| 規則を作成する |管理する |../myTopic/Subscriptions/mySubscription |
+| 規則を削除する |管理する |../myTopic/Subscriptions/mySubscription |
 | 規則を列挙する |管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

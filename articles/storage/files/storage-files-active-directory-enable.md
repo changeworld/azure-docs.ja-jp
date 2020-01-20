@@ -1,19 +1,21 @@
 ---
-title: SMB を使用して Azure Files への Azure Active Directory 認証を有効にする - Azure Storage
+title: Azure AD Domain Services を使用して SMB 経由でファイル データへのアクセスを承認する
 description: Azure Active Directory Domain Services を使用して Azure Files に対する Server Message Block (SMB) 経由の ID ベースの認証を有効にする方法について説明します。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 886cacc5e90136380a183f6b9ddd1123d726dcf3
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.subservice: files
+ms.openlocfilehash: fd42a6ffa6ea46d49df673cde617c70ce7425d91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129225"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460381"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>SMB を使用して Azure Files への Azure Active Directory Domain Services 認証を有効にする
+
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 SMB を使用した Azure Files への Azure AD 認証の概要については、「[Overview of Azure Active Directory authentication over SMB for Azure Files (SMB を使用した Azure Files への Azure Active Directory 認証の概要)](storage-files-active-directory-overview.md)」を参照してください。
@@ -21,6 +23,7 @@ SMB を使用した Azure Files への Azure AD 認証の概要については�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
+
 SMB を使用した Azure Files への Azure AD DS 認証を有効にする前に、Azure AD と Azure Storage 環境が正しく構成されていることを確認してください。 [前提条件](#prerequisites)を参照して、必要な手順をすべて完了したことを確認することをお勧めします。
 
 次に、以下の手順を実行して、Azure AD 資格情報を使用して Azure Files のリソースへのアクセス許可を付与します。 
@@ -30,7 +33,7 @@ SMB を使用した Azure Files への Azure AD DS 認証を有効にする前�
 3. SMB を使用したディレクトリおよびファイルへの NTFS アクセス許可を構成します。
 4. ドメインに参加している VM から Azure ファイル共有をマウントします。
 
-次の図は、SMB を使用して Azure Files への Azure AD DS 認証を有効にするためのエンドツーエンドのワークフローを示しています。 
+次の図は、SMB を使用して Azure Files への Azure AD DS 認証を有効にするためのエンドツーエンドのワークフローを示しています。
 
 ![SMB を使用した Azure Files への Azure AD ワークフローを示す図](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
@@ -72,7 +75,7 @@ Azure Files への SMB 経由の Azure AD DS 認証を有効にするには、Az
 
 SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナントに Azure AD DS が正常にデプロイされている必要があることに注意してください。 詳細については、[前提条件](#prerequisites)を参照してください。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) を使用して SMB 経由の Azure AD DS 認証を有効にするには、次の手順に従います。
 
@@ -144,7 +147,7 @@ Azure AD の資格情報を使用して Azure Files のリソースにアクセ�
 
 Azure portal、PowerShell、または Azure CLI を使用して、共有レベルのアクセス許可を付与するために、組み込みのロールをユーザーの Azure AD ID に割り当てることができます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 [Azure portal](https://portal.azure.com) を使用して RBAC ロールを Azure AD ID に割り当てるには、次の手順に従います。
 
 1. Azure portal で、ファイル共有に移動するか、または [Azure Files 内にファイル共有を作成](storage-how-to-create-file-share.md)します。
@@ -240,7 +243,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 
 これで、SMB を使用した Azure AD 認証を有効にし、Azure ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 ファイル共有への追加のユーザー アクセスを許可するには、「[ID にアクセス許可を割り当てる](#assign-access-permissions-to-an-identity)」および「[SMB 経由の NTFS アクセス許可を構成する](#configure-ntfs-permissions-over-smb)」セクションの手順に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Files や、SMB 経由で Azure AD を使用する方法の詳細については、これらのリソースを参照してください。
 

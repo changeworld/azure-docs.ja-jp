@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis で redis-cli を使用する方法
-description: Azure Cache for Redis で redis-clis を使用する方法を説明します。
+description: クライアントとして Azure Cache for Redis とやり取りするためのコマンドラインツールとして *redis-cli.exe* を使用する方法について説明します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: yegu
-ms.openlocfilehash: 510110a201e943b8ffce07fc7d0de1361264ae62
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412683"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 
@@ -85,7 +85,7 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Redis Console](cache-configure.md#redis-console) を使用してコマンドを発行する
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682666"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438885"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -180,7 +180,7 @@ public IDictionary<string, string> Execute(
 
    a. Visual Studio 2012/2013/2015 を起動します。
 
-   b. **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
+   b. **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 
    c. **[テンプレート]** を展開し、 **[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
 
@@ -190,7 +190,7 @@ public IDictionary<string, string> Execute(
 
    f. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
 
-   g. **[OK]** を選択してプロジェクトを作成します。
+   g. **[OK]** を選択すると、プロジェクトが作成されます。
 
 1. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
 
@@ -556,11 +556,11 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![新しいデータ ストア](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-account-manage.md#access-keys)」を参照してください。
+1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」を参照してください。
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
-   ![デプロイ](./media/data-factory-data-processing-using-batch/image8.png)
+   ![配置](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Azure Batch のリンクされたサービスの作成
 この手順では、データ ファクトリのカスタム アクティビティの実行に使用される、Batch アカウント用にリンクされたサービスを作成します。
@@ -578,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
-      > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 例: `"batchUri": "https://eastus.batch.azure.com"`。
+      > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
       >
       >
 
@@ -659,13 +659,13 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    このチュートリアルでは、開始時刻が 2015-11-16T00:00:00Z、終了時刻が 2015-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを毎時生成するようにスケジュールされているので、5 個の入力/出力スライスがあります (**00**:00:00 -\> **05**:00:00)。
+    このチュートリアルでは、開始時刻が 2015-11-16T00:00:00Z、終了時刻が 2015-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを毎時生成するようにスケジュールされているので、5 個の入力および出力スライスがあります (**00**:00:00 から\> **05**:00:00 まで)。
 
     入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に 1 つの入力スライスを利用できます。
 
     各スライスの開始時刻は、上記の JSON スニペットの **SliceStart** システム変数で表されます。 各スライスの開始時刻を次に示します。
 
-    | **スライス** | **開始時刻**          |
+    | **スライス** | **[開始時刻]**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
@@ -675,7 +675,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     **folderPath** は、スライス開始時間 (**SliceStart**) の年、月、日、時間の部分を使用して計算されます。 入力フォルダーをスライスにマップする方法を次に示します。
 
-    | **スライス** | **開始時刻**          | **入力フォルダー**  |
+    | **スライス** | **[開始時刻]**          | **入力フォルダー**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
@@ -722,7 +722,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、`mycontainer\\outputfolder` という 1 つの出力フォルダーに生成されます。
 
-    | **スライス** | **開始時刻**          | **出力ファイル**       |
+    | **スライス** | **[開始時刻]**          | **[出力ファイル]**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
@@ -964,7 +964,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 * [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure と Power BI:基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Azure Data Factory サービスの概要](data-factory-introduction.md)

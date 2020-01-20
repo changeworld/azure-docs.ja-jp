@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351281"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
 この記事では、Azure Storage の移行についてよくある質問の回答を示します。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **コンテナー間でファイルをコピーするスクリプトを作成するにはどうすればよいですか?**
 
@@ -38,7 +38,7 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
 
 **同じリージョン内の同じストレージ アカウントの 2 つのファイル共有間でデータをコピーする場合、料金は発生しますか?**
 
-No. このプロセスの料金は発生しません。
+いいえ。 このプロセスの料金は発生しません。
 
 **ストレージ アカウント全体を他のストレージ アカウントにバックアップするにはどうすればよいですか?**
 
@@ -171,7 +171,7 @@ Azure ファイル共有を使用します。
 
 **Azure Storage Service Encryption (SSE) の詳細はどこで入手できますか?**  
   
-次の記事を参照してください。
+次の記事をご覧ください。
 
 -  [Azure Storage セキュリティ ガイド](storage-security-guide.md)
 
@@ -194,7 +194,7 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
 
 **ストレージ アカウントのレプリケーションを GRS アカウントから LRS に変更する場合、前提条件はありますか?**
 
-No. 
+いいえ。 
 
 **Azure Files の冗長ストレージにアクセスするにはどうすればよいですか?**
 
@@ -259,7 +259,7 @@ Azure CLI をご利用いただけます。
 
 -   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。 
 
--   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウントの管理](storage-account-manage.md#access-keys)」をご覧ください。
+-   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
 
 -   アクセス ポリシーを変更して、匿名アクセスを許可します。 詳細については、「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)」をご覧ください。
 
@@ -275,9 +275,9 @@ Azure CLI をご利用いただけます。
 
 -   ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
--   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 次のいずれかの方法を使用します。  
+-   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 以下のいずれかの方法を使用します。  
       
-    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:  
+    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 次に例を示します。  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

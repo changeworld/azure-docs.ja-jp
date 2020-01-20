@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460505"
 ---
 セキュリティ プリンシパルに RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
 
@@ -26,4 +26,4 @@ ms.locfileid: "67180845"
 - **サブスクリプション。** このスコープでは、ロールの割り当ては、サブスクリプション内のすべてのリソース グループ内の、すべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
 
 > [!IMPORTANT]
-> サブスクリプションに Azure Databricks の名前空間が含まれている場合は、サブスクリプション スコープのロールの割り当ては、BLOB およびキューのデータへのアクセスの許可をブロックされます。
+> サブスクリプションに Azure Databricks の名前空間が含まれている場合、サブスクリプションにスコープ指定されたロールに対して、BLOB およびキューのデータへのアクセス許可は付与されません。 代わりに、ロールのスコープをリソース グループ、ストレージ アカウント、コンテナーまたはキューに指定します。     

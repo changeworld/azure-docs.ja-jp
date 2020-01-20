@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427648"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
 
@@ -53,7 +53,7 @@ Python モジュールへの入力は、Pandas DataFrames として公開され�
 
 ## <a name="translation-of-input-and-output-data-types"></a>入力と出力のデータ型の変換
 
-Studio データセットは Panda DataFrames と同じではありません。 そのため、クラシック バージョンの Studio の入力データセットは Pandas DataFrame に変換され、出力の DataFrame は元の Studio (クラシック) データセットに変換されます。 この変換プロセス中には、次の変換も実行されます。
+Studio データセットは Panda DataFrames と同じではありません。 そのため、Studio (クラシック) の入力データセットは Pandas DataFrame に変換され、出力の DataFrame は元の Studio (クラシック) データセットに変換されます。 この変換プロセス中には、次の変換も実行されます。
 
  **Python データ型** | **Studio 変換手順** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio データセットは Panda DataFrames と同じではありません。 
 
 ## <a id="import-modules"></a>既存の Python スクリプト モジュールをインポートする
 
-Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 クラシック バージョンの Studio は現在、Pip や Conda などのパッケージ管理システムを使用した外部ライブラリのインストールや管理をサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
+Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 Studio (クラシック) は、外部ライブラリのインストールと管理のための Pip や Conda などのパッケージ管理システムの使用を、現時点ではサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
 
-一般的なユースケースは、クラシック バージョンの Studio の実験への既存の Python スクリプトの組み込みです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
+一般的な使用例は、既存の Python スクリプトを Studio (クラシック) の実験に組み込むことです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
 
 たとえば、単純な “Hello, World” 関数を含む Hello.py ファイルについて考えてみます。
 
@@ -79,7 +79,7 @@ Python の実行に使用されるバックエンドは、広く使用されて�
 
 ![ユーザー定義の Python コードを含む zip ファイル](./media/execute-python-scripts/figure5.png)
 
-この zip ファイルをクラシック バージョンの Studio にデータセットとしてアップロードします。 次にそれを、次の図に示すように、**Python スクリプトの実行**モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
+この zip ファイルをデータセットとして Studio (クラシック) にアップロードします。 次にそれを、次の図に示すように、**Python スクリプトの実行**モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
 
 ![Hello.zip を Python スクリプトの実行モジュールへの入力として使用した実験のサンプル](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ MatplotLib からイメージを生成するには、次の手順を実行する
 
 ![Python コードを使用したサンプル実験のプロットの視覚化](./media/execute-python-scripts/figure-v2-9b.png)
 
-さまざまなイメージに保存することで複数の図を返すことができます。 クラシック バージョンの Studio ランタイムはすべてのイメージを取得し、それらを視覚化のために連結します。
+さまざまなイメージに保存することで複数の図を返すことができます。 Studio (クラシック) ランタイムは、すべてのイメージを取得して、視覚化のために連結します。
 
 ## <a name="advanced-examples"></a>高度な例
 
-クラシック バージョンの Studio にインストールされた Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの一般的なパッケージが含まれています。 これらのパッケージは、機械学習パイプラインでのデータ処理のために効果的に使用できます。
+Studio (クラシック) にインストールされた Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの共通のパッケージが含まれています。 これらのパッケージは、機械学習パイプラインでのデータ処理のために効果的に使用できます。
 
 たとえば、次の実験とスクリプトは、データセットの特徴の重要度スコアを計算する、Scikits-Learn のアンサンブル学習者の使い方を示しています。 このスコアは、別のモデルに供給する前に、監視対象の特徴の選択を実行するために使用できます。
 
@@ -153,7 +153,7 @@ MatplotLib からイメージを生成するには、次の手順を実行する
 
 ![スコアによって特徴を順位付ける関数](./media/execute-python-scripts/figure8.png)
 
-次の実験は次に、クラシック バージョンの Azure Machine Learning Studio の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
+次の実験では、Azure Machine Learning Studio (クラシック) の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
 
 ![Python を使用したピマ インディアン糖尿病の特徴の順位付けの実験](./media/execute-python-scripts/figure9a.png)
 
@@ -179,7 +179,7 @@ Python のエントリ ポイントは、1 つのデータ フレームのみを
 
 現時点では、カスタムの Python モジュールを追加する唯一の方法は、前に説明した zip ファイルのメカニズムを使用することです。 これは、小さなモジュールに適していますが、大きなモジュール (特にネイティブ DLL を使用するモジュール) や大量のモジュールでは、使用が面倒です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。
 

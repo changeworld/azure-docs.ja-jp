@@ -1,25 +1,14 @@
 ---
-title: Linux 上で Azure Service Fabric コンテナー アプリケーションを作成する | Microsoft Docs
+title: Linux で Azure Service Fabric コンテナー アプリケーションを作成する
 description: Azure Service Fabric で初めての Linux コンテナー アプリケーションを作成します。 アプリケーションの Docker イメージをビルドして、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457957"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -251,7 +240,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 アプリケーションがビルドされたら、Service Fabric CLI を使用してローカル クラスターにデプロイできます。
 
 ローカルの Service Fabric クラスターに接続します。
@@ -476,7 +465,7 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

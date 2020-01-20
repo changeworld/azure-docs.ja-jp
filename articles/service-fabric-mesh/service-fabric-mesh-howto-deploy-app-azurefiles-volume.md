@@ -1,25 +1,17 @@
 ---
-title: Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームを使用する | Microsoft Docs
+title: Service Fabric Mesh アプリで Azure Files ベースのボリュームを使用する
 description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e2172c1808ddf72c09bc08efe680ed497f960b75
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034723"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498004"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -254,8 +246,8 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) 上の Azure Files ボリューム サンプル アプリケーションを確認します。
-- Service Fabric リソース モデルの詳細については、[Service Fabric メッシュ リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
+- Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
 - Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。

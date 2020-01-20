@@ -1,24 +1,14 @@
 ---
-title: Azure Service Fabric Windows クラスターのディスク暗号化を有効にする | Microsoft Docs
+title: Windows クラスターでのディスク暗号化の有効化
 description: この記事では、Azure Resource Manager 内の Azure Key Vault を使用して、Azure Service Fabric クラスター ノードのディスク暗号化を有効にする方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 64abc48d57196fe20466032652c4b9bfb2e6c71f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599548"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614453"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Windows での Azure Service Fabric クラスター ノードのディスク暗号化の有効化 
 > [!div class="op_single_selector"]
@@ -61,7 +51,7 @@ ms.locfileid: "68599548"
 2. 新しい暗号化コマンドが含まれている、最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 3. [Azure PowerShell の Azure SDK](https://github.com/Azure/azure-powershell/releases) リリースの最新バージョンをインストールします。 暗号化の有効化 ([set](/powershell/module/az.compute/set-azvmssdiskencryptionextension))、暗号化状態の取得 ([get](/powershell/module/az.compute/get-azvmssvmdiskencryption))、および暗号化の削除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) をスケール セット インスタンスに対して行うための仮想マシン スケール セット Azure Disk Encryption コマンドレットを以下に示します。
 
-| command | バージョン |  source  |
+| command | Version |  source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 以降 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 以降 | Az.Compute |
@@ -217,7 +207,7 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここまでで、クラスターがセキュリティで保護され、Service Fabric クラスター ノードと仮想マシン スケール セットでディスク暗号化を有効および無効にする方法を学びました。 Linux での Service Fabric クラスター ノードに関する同様のガイダンスについては、[Linux でのディスクの暗号化](service-fabric-enable-azure-disk-encryption-linux.md)に関するページを参照してください。
 
 [customize-your-cluster-template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure#creating-a-custom-arm-template

@@ -1,25 +1,16 @@
 ---
-title: プログラムによる Azure Service Fabric のスケーリング | Microsoft Docs
+title: プログラムによる Azure Service Fabric のスケーリング
 description: カスタムのトリガーに従って、Azure Service Fabric クラスターをプログラムでスケールインまたはスケールアウトします。
-services: service-fabric
-documentationcenter: .net
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458293"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -124,7 +115,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 自動スケールのロジックを独自に実装するには、次の概念と、便利な API をご確認ください。
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 1c97fd4f4d5646b6654f5261abd99372c521c389
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 564126ab262306f2b01948e29baf239b725083e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427601"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (クラシック) Web サービス: デプロイと使用
 
@@ -41,13 +41,13 @@ Studio (クラシック) ポータルおよび Microsoft Azure Machine Learning 
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
 
-Web サービス用のクラシック バージョンの Azure Machine Learning Studio リソース プロバイダーでは、REST API 呼び出しを使用した Web サービスのデプロイと管理が可能になります。 詳細については、[Machine Learning Web サービス (REST)](/rest/api/machinelearning/index) のリファレンスを参照してください。
+Web サービス用の Azure Machine Learning Studio (クラシック) リソースプロバイダーでは、REST API を使用して Web サービスをデプロイし、管理することができます。 詳細については、[Machine Learning Web サービス (REST)](/rest/api/machinelearning/index) のリファレンスを参照してください。
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>PowerShell コマンドレットを使う
 
-Web サービス用のクラシック バージョンの Azure Machine Learning Studio リソース プロバイダーでは、PowerShell コマンドレットを使用した Web サービスのデプロイと管理が可能になります。
+Web サービス用の Azure Machine Learning Studio (クラシック) リソースプロバイダーでは、PowerShell コマンドレットを使用して Web サービスをデプロイし、管理することができます。
 
 コマンドレットを使用するには、最初に [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../../azure-resource-manager/manage-resources-powershell.md)」をご覧ください。
 

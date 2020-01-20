@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 1bf46240303d1f31cd09c1a2723e18d27d3ef789
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b8b3679676cf019a48c55211d81bee0523764db5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351235"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -70,7 +70,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--- |:--- |
 | ディスク容量:35 TB<br />スナップショット容量:10 TB |受信と送信を合わせて最大 50 GB/秒 |
 
-Premium Storage の仕様の詳細については、[Azure Storage のスケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md#premium-performance-storage-account-scale-limits)に関するページを参照してください。
+Premium Storage の仕様の詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../blobs/scalability-targets-premium-page-blobs.md)」を参照してください。
 
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
@@ -81,14 +81,14 @@ Azure Premium Storage を使用できる場所を選択します。 使用でき
 #### <a name="other-azure-vm-configuration-settings"></a>Azure VM のその他の構成設定
 Azure VM を作成するときに、特定の VM の設定を構成するよう求められます。 VM の有効期間中は固定されている設定がいくつかありまりますが、後で変更または追加できる設定もあることを忘れないでください。 このような Azure VM の構成設定を確認し、ワークロードの要件に合わせて適切に構成されていることを確認します。
 
-### <a name="optimization"></a>最適化
+### <a name="optimization"></a>Optimization
 「[Azure Premium Storage:高パフォーマンスのための設計](../../virtual-machines/windows/premium-storage-performance.md)」では、Azure Premium Storage を使用して高パフォーマンスのアプリケーションを構築するためのガイドラインが示されています。 ガイドラインは、アプリケーションで使われているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使えます。
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
 このセクションでは、VM からの VHD の準備と、Azure Storageへの VHD のコピーに関するガイドラインを提供します。
 
-* [シナリオ 1:"既存の Azure VM を Azure Premium Storage に移行している"](#scenario1)
-* [シナリオ 2:"他のプラットフォームの VM を Azure Premium Storage に移行している"](#scenario2)
+* [シナリオ 1: "既存の Azure VM を Azure Premium Storage に移行している"](#scenario1)
+* [シナリオ 2: "他のプラットフォームの VM を Azure Premium Storage に移行している"](#scenario2)
 
 ### <a name="prerequisites"></a>前提条件
 移行のために VHD を準備するには、次のものが必要です。
@@ -161,7 +161,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
 これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** >  **[ストレージ]** で見つかります。 コンテナーの URL は、"https:\//myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1:AzCopy を使って VHD をコピーする (非同期コピー)
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1: AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
 
 1. 次のリンクから AzCopy をダウンロードしてインストールします:[AzCopy の最新バージョン](https://aka.ms/downloadazcopy)
@@ -250,7 +250,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>手順 3. VHD を Azure Storage にアップロードする
 ローカル ディレクトリに VHD を用意したので、AzCopy または AzurePowerShell を使って .vhd ファイルを Azure Storage にアップロードできます。 ここでは両方のオプションを説明します。
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>オプション 1:Azure PowerShell の Add-AzureVhd を使って .vhd ファイルをアップロードする
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>オプション 1: Azure PowerShell の Add-AzureVhd を使って .vhd ファイルをアップロードする
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
@@ -754,7 +754,7 @@ Update-AzureVM  -VM $vm
 ### <a name="application-migrations"></a>アプリケーションの移行
 データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例: 通常、データベースは、バックアップと復元を使用して移行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
 * [ストレージ アカウント間での Azure 仮想マシンの移行](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
@@ -764,7 +764,7 @@ Update-AzureVM  -VM $vm
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure ストレージ](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [IaaS VM 用のディスクの種類の選択](../../virtual-machines/windows/disks-types.md)
 

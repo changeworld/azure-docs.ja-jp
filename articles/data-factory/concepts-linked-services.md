@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681497"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563542"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービス
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
-> * [現在のバージョン](concepts-datasets-linked-services.md)
+> * [現在のバージョン](concepts-linked-services.md)
 
 この記事では、リンクされたサービスとは何か、それらはどのように JSON 形式で定義され、Azure Data Factory パイプラインでどのように使用されるかを説明します。
 
@@ -61,10 +61,10 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 
 次の表では、上記の JSON のプロパティについて説明します。
 
-プロパティ | 説明 | 必須 |
+プロパティ | [説明] | 必須 |
 -------- | ----------- | -------- |
-名前 | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | リンクされたサービスの種類 例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
+name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+型 | リンクされたサービスの種類 次に例を示します。AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
 typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](concepts-datasets-linked-services.md#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
 connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
 
@@ -77,10 +77,7 @@ connectVia | データ ストアに接続するために使用される[統合�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -100,10 +97,10 @@ Data Factory によってサポートされているデータ ストアの一覧
 ## <a name="compute-linked-services"></a>コンピューティングのリンクされたサービス
 データ ファクトリから接続できるさまざまなコンピューティング環境とさまざまな構成の詳細については、[サポートされるコンピューティング環境](compute-linked-services.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらのツールや SDK のいずれかを使用してパイプラインとデータセットを作成する詳しい手順については、次のチュートリアルを参照してください。
 
-- [クイック スタート: .NET を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [Quickstart: create a data factory using .NET (クイック スタート: .NET を使用してデータ ファクトリを作成する)](quickstart-create-data-factory-dot-net.md)
 - [クイック スタート: PowerShell を使用してデータ ファクトリを作成する](quickstart-create-data-factory-powershell.md)
 - [クイック スタート: REST API を使用してデータ ファクトリを作成する](quickstart-create-data-factory-rest-api.md)
 - [クイック スタート: Azure portal を使用したデータ ファクトリの作成](quickstart-create-data-factory-portal.md)

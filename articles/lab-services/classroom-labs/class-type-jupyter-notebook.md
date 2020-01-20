@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383973"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530682"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 
@@ -46,19 +46,19 @@ ms.locfileid: "74383973"
 | ラボの設定 | 値/説明 |
 | ------------ | ------------------ |
 |仮想マシンのサイズ| Small GPU (Compute)。 このサイズは、人工知能やディープ ラーニングのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です。 |
-|仮想マシン イメージ| Windows Server 2019 上の SQL Server 2019 Standard|
+|仮想マシン イメージ| Data Science Virtual Machine - Windows 2016|
 
 ## <a name="template-machine"></a>テンプレート マシン
 
 [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) イメージには、この種類のクラスに必要なディープ ラーニング フレームワークとツールが用意されています。  このイメージには、Jupyter Notebooks と Visual Studio Code が含まれています。  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) は、データ サイエンティストが生データの取得、計算の実行、および結果の表示をすべて同じ環境で行えるようにする Web アプリです。  テンプレート マシンの場合、Web アプリケーションはローカルで実行されます。  [Visual Studio Code](https://code.visualstudio.com/) は、ノートブックを作成およびテストする際に、豊富な対話型エクスペリエンスを提供する統合開発環境です。  詳細については、「[Visual Studio Code での Jupyter Notebooks の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
 
-クラスを設定する際の残りのタスクは、ローカル ノートブックを提供することです。  Azure Machine Learning サンプルの使用方法については、[Jupyter Notebooks を使用して環境を構成する方法](../../machine-learning/service/how-to-configure-environment.md#jupyter)に関するセクションをご覧ください。  テンプレート マシンで独自のノートブックを提供することもできます。  テンプレートが発行されると、ノートブックはすべての学生用マシンにコピーされます。
+クラスを設定する際の残りのタスクは、ローカル ノートブックを提供することです。  Azure Machine Learning サンプルの使用方法については、[Jupyter Notebooks を使用して環境を構成する方法](../../machine-learning/how-to-configure-environment.md#jupyter)に関するセクションをご覧ください。  テンプレート マシンで独自のノートブックを提供することもできます。  テンプレートが発行されると、ノートブックはすべての学生用マシンにコピーされます。
 
 ## <a name="cost-estimate"></a>コストの見積もり
 
 このクラスの考えられるコスト見積もりを検討しましょう。  クラスの生徒数は 25 人とします。  予定された授業時間は 20 時間です。  また、各学生には、予定された授業時間の他に、宿題や課題を行うための時間として 10 時間が割り当てられます。  ここで選択した仮想マシンのサイズは、139 ラボ ユニットの Small GPU (コンピューティング) です。
 
-以下は、このクラスの考えられるコスト見積もりの例です。
+このクラスで考えられるコスト見積もりの例を次に示します。
 
 25人の学生 \* (予定された 20 時間 + 割り当てられた 10 時間) \* 139 ラボ ユニット \* 0.01 USD/時間 = 1042.5 USD
 
@@ -68,7 +68,7 @@ ms.locfileid: "74383973"
 
 この記事では、Jupyter Notebooks クラス用のラボを作成する手順について説明しました。 他の機械学習クラスにも同様のセットアップを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の手順は、すべてのラボの設定で共通です。
 

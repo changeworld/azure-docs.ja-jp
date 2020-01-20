@@ -1,19 +1,19 @@
 ---
 title: Visual Studio と C# を使った Apache Storm トポロジ - Azure HDInsight
 description: C# で Storm トポロジを作成する方法について説明します。 Hadoop Tools for Visual Studio を使用して、Visual Studio でワード カウント トポロジを作成します。
-ms.service: hdinsight
+ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f59328c5894a53b6337ecc04e3daebb2ef180c59
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 12/31/2019
+ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927915"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612293"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -21,20 +21,17 @@ Azure Data Lake (Apache Hadoop) Tools for Visual Studio を使用して C# Apach
 
 また、C# と Java コンポーネントを使用するハイブリッド トポロジの作成方法についても説明します。
 
-> [!NOTE]  
-> このドキュメントの手順は Visual Studio を使う Windows 開発環境でのものですが、コンパイル済みのプロジェクトは、Linux または Windows ベースの HDInsight クラスターに送信できます。 SCP.NET トポロジをサポートする Linux ベースのクラスターは、2016 年 10 月 28 日より後に作成されたものだけです。
-
-C# トポロジを Linux ベースのクラスターで使うには、プロジェクトによって使用される `Microsoft.SCP.Net.SDK` NuGet パッケージをバージョン 0.10.0.6 以降に更新する必要があります。 また、パッケージのバージョンは、HDInsight にインストールされている Storm のメジャー バージョンと一致する必要もあります。
+C# トポロジは、.NET 4.5 を使い、Mono を使って HDInsight クラスターで実行する必要があります。 非互換性の可能性については、[Mono の互換性](https://www.mono-project.com/docs/about-mono/compatibility/)に関するページを参照してください。 C# トポロジを使うには、プロジェクトで使用される `Microsoft.SCP.Net.SDK` NuGet パッケージをバージョン 0.10.0.6 以降に更新する必要があります。 また、パッケージのバージョンは、HDInsight にインストールされている Storm のメジャー バージョンと一致する必要もあります。
 
 | HDInsight のバージョン | Apache Storm のバージョン | SCP.NET のバージョン | 既定の Mono のバージョン |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>(Windows ベースの HDInsight の場合のみ) | NA |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
-> [!IMPORTANT]  
-> Linux ベースのクラスターの C# トポロジは、.NET 4.5 を使い、Mono を使って HDInsight クラスターで実行する必要があります。 非互換性の可能性については、[Mono の互換性](https://www.mono-project.com/docs/about-mono/compatibility/)に関するページを参照してください。
+## <a name="prerequisite"></a>前提条件
+
+HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
 ## <a name="install-visual-studio"></a>Visual Studio のインストール
 
@@ -52,7 +49,7 @@ Visual Studio から Storm トポロジを送信すると、そのトポロジ�
 
 2. `JAVA_HOME` 環境変数に、Java が含まれるディレクトリを設定します。
 
-3. `PATH` 環境変数を、 *%JAVA_HOME%\bin* ディレクトリが含まれるように設定します。
+3. `PATH` 環境変数を設定して、`%JAVA_HOME%\bin` ディレクトリを含めます。
 
 次の C# コンソール アプリケーションをビルドして実行し、Java と JDK が正しくインストールされていることを確認できます。
 
@@ -144,8 +141,6 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 * *Bolt.cs*:スパウトによって出力される数字の数を保持するボルトの例です。
 
 プロジェクトを作成すると、最新の [SCP.NET パッケージ](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)が NuGet によってダウンロードされます。
-
-[!INCLUDE [scp.net version important](../../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 ### <a name="implement-the-spout"></a>スパウトを実装する
 
@@ -410,12 +405,13 @@ return topologyBuilder;
 
 これで、トポロジを HDInsight クラスターに送信する準備が整いました。
 
+1. **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
+
+1. **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して、サインイン処理を完了します。
+
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
-    > [!NOTE]  
-    > メッセージが表示されたら、Azure サブスクリプションの資格情報を入力します。 2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにサインインします。
-
-2. **[トポロジの送信]** ダイアログボックスの **[Storm クラスター]** ドロップダウン リストで、お使いの Storm on HDInsight クラスターを選択し、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ペインを表示して確認できます。
+1. **[トポロジの送信]** ダイアログボックスの **[Storm クラスター]** ドロップダウン リストで、お使いの Storm on HDInsight クラスターを選択し、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ペインを表示して確認できます。
 
     トポロジが正常に送信されると、クラスターの **[Storm Topology ビュー]** ウィンドウが表示されます。 一覧から **WordCount** トポロジを選択して、実行中のトポロジに関する情報を表示します。
 
@@ -426,7 +422,7 @@ return topologyBuilder;
 
     トポロジ内のコンポーネントに関する情報を表示するには、ダイアグラム内のコンポーネントを選択します。
 
-3. **[トポロジの概要]** セクションで、 **[強制終了]** を選択してトポロジを停止します。
+1. **[トポロジの概要]** セクションで、 **[強制終了]** を選択してトポロジを停止します。
 
     > [!NOTE]  
     > Storm トポロジは非アクティブ化されるか、クラスターが削除されるまで実行し続けます。
@@ -492,7 +488,7 @@ SCP.NET バージョン 0.9.4.203 には、Event Hub スパウト (Event Hubs �
 > [!NOTE]  
 > スパウトによって生成されたデータをシリアル化するには、`CustomizedInteropJSONSerializer` を引き続き使用する必要があります。
 
-## <a id="configurationmanager"></a>ConfigurationManager の使用
+## <a name="use-configurationmanager"></a>ConfigurationManager の使用
 
 **ConfigurationManager** を使ってボルトおよびスパウト コンポーネントから構成値を取得しないでください。 これを行った場合、null ポインター例外が発生する可能性があります。 代わりに、トポロジ コンテキストのキーと値のペアとして、プロジェクトの構成を Storm トポロジに渡します。 構成値に依存する各コンポーネントは、初期化の間にコンテキストから値を取得する必要があります。
 
@@ -552,7 +548,7 @@ Linux ベースの HDInsight クラスターで C# トポロジを使用する�
 
 プロジェクトの構成は、トポロジ コンテキストのキーと値のペアとして Storm トポロジに渡されます。 これは、初期化時にコンポーネントに渡されるディクショナリ オブジェクトから取得できます。
 
-詳細については、このドキュメントの「[ConfigurationManager の使用](#configurationmanager)」セクションをご覧ください。
+詳細については、このドキュメントの「[ConfigurationManager の使用](#use-configurationmanager)」セクションをご覧ください。
 
 ### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
@@ -725,7 +721,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 HDInsight へのトポロジの送信時にエラーが発生した場合、HDInsight クラスターでのトポロジの送信を処理するサーバー側コンポーネントに関するログを確認できます。 これらのログをダウンロードするには、コマンド ラインで次のコマンドを使用します。
 
-```shell
+```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
@@ -743,7 +739,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdin
 * JDK が開発環境のパスに存在しない。 JDK が開発環境にインストールされていること、また `%JAVA_HOME%/bin` がパスにあることを確認してください。
 * Java の依存関係がない。 必要な .jar ファイルを必ず送信に含めてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs からのデータ処理の例は、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する](apache-storm-develop-csharp-event-hub-topology.md)」を参照してください。
 

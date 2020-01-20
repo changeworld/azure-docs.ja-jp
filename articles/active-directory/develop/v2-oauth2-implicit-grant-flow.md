@@ -1,6 +1,6 @@
 ---
-title: Microsoft ID プラットフォームの暗黙的フローを使用してシングルページ アプリをセキュリティで保護する | Azure
-description: シングルページ アプリのための暗黙的フローの Microsoft ID プラットフォーム実装を使用した Web アプリケーションの構築。
+title: OAuth 2.0 暗黙的な許可のフロー - Microsoft ID プラットフォーム | Azure
+description: Microsoft ID プラットフォームの暗黙的なフローを使用してシングルページ アプリをセキュリティで保護します。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afae9535c190c05bca3153dfbe5279cd4c47968
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a73056914d08cc9c0c90b1c91cc67c18eaad86da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423240"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -74,16 +74,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 暗黙的フローを使用したサインインをテストするには、<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize.. をクリックします。</a>サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `id_token` が含まれた状態になります。
 >
 
-| パラメーター |  | 説明 |
+| パラメーター |  | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
-| `response_type` | 必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 response_type `token` が含まれる場合もあります。 ここで `token` を使用すると、アプリでは承認エンドポイントへ 2 度目の要求を行うことなく、承認エンドポイントからアクセス トークンをすぐに受け取ることができます。 `token` response_type を使用する場合、`scope` パラメーターには、トークンを発行するリソースを示すスコープを含める必要があります (たとえば、Microsoft Graph では user.read)。  |
+| `tenant` | required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
+| `client_id` | required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
+| `response_type` | required |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 response_type `token` が含まれる場合もあります。 ここで `token` を使用すると、アプリでは承認エンドポイントへ 2 度目の要求を行うことなく、承認エンドポイントからアクセス トークンをすぐに受け取ることができます。 `token` response_type を使用する場合、`scope` パラメーターには、トークンを発行するリソースを示すスコープを含める必要があります (たとえば、Microsoft Graph では user.read)。  |
 | `redirect_uri` | 推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
-| `scope` | 必須 |[スコープ](v2-permissions-and-consent.md)のスペース区切りリスト。 OpenID Connect (id_tokens) では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 必要に応じて、その他のユーザー データにアクセスするために `email` および `profile` スコープを含めることも可能です。 アクセス トークンを要求する場合、さまざまなリソースに対する同意を求めるこの要求に、他のスコープが含まれていてもかまいません。 |
+| `scope` | required |[スコープ](v2-permissions-and-consent.md)のスペース区切りリスト。 OpenID Connect (id_tokens) では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 必要に応じて、その他のユーザー データにアクセスするために `email` および `profile` スコープを含めることも可能です。 アクセス トークンを要求する場合、さまざまなリソースに対する同意を求めるこの要求に、他のスコープが含まれていてもかまいません。 |
 | `response_mode` | 省略可能 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 既定値は、アクセス トークンだけのクエリ (ただし、要求に id_token が含まれている場合はフラグメント) です。 |
 | `state` | 推奨 |要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
-| `nonce` | 必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 Id_token が要求された場合のみ必須です。 |
+| `nonce` | required |要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 Id_token が要求された場合のみ必須です。 |
 | `prompt` | 省略可能 |ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は 'login'、'none'、'select_account'、'consent' だけです。 `prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` はその反対であり、ユーザーにどのような対話型プロンプトも表示されないようにします。 シングル サインオンで確認なしで要求を完了できない場合は、Microsoft ID プラットフォーム エンドポイントからエラーが返されます。 `prompt=select_account` は、ユーザーを、セッションで記憶されているすべてのアカウントが表示されるアカウント ピッカーに送ります。 `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
 | `login_hint`  |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。|
 | `domain_hint` | 省略可能 |これが含まれていると、ユーザーがサインイン ページで実行する電子メール ベースの検出プロセスがスキップされ、多少効率化されたユーザー エクスペリエンスが提供されます。 これは、1 つのテナントで動作する基幹業務アプリで一般的に使用され、アプリでは特定のテナント内のドメイン名が提供されます。  これにより、ユーザーはそのテナントのフェデレーション プロバイダーに転送されます。  ゲストはこのアプリケーションにサインインできなくなることに注意してください。  |
@@ -104,7 +104,7 @@ GET https://localhost/myapp/#
 &state=12345
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `access_token` |`response_type` に `token` が含まれる場合に含まれます。 アプリが要求したアクセス トークン。 アクセス トークンはデコードしないようにする必要があります。そうしないと、検証した場合に不透明な文字列として扱われます。 |
 | `token_type` |`response_type` に `token` が含まれる場合に含まれます。 常に `Bearer` になります。 |
@@ -123,7 +123,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -172,7 +172,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `access_token` |`response_type` に `token` が含まれる場合に含まれます。 この場合は、Microsoft Graph 用にアプリケーションが要求したアクセス トークンです。 アクセス トークンはデコードしないようにする必要があります。そうしないと、検証した場合に不透明な文字列として扱われます。 |
 | `token_type` | 常に `Bearer` になります。 |
@@ -191,7 +191,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -210,11 +210,11 @@ OpenID Connect `end_session_endpoint` を使用すると、アプリから Micro
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| パラメーター |  | 説明 |
+| パラメーター |  | [説明] |
 | --- | --- | --- |
-| `tenant` |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
+| `tenant` |required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | `post_logout_redirect_uri` | 推奨 | ログアウト完了後にユーザーが戻る URL。 この値は、アプリケーションに登録されているリダイレクト URI のいずれかと一致する必要があります。 一致しない場合、Microsoft ID プラットフォーム エンドポイントにより汎用メッセージが表示されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [MSAL JS のサンプル](sample-v2-code.md)を見直して、コーディング作業を開始します。

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/01/2019
-ms.author: kfollis
-ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.author: mblythe
+ms.openlocfilehash: a3b4d7cb33bf0da0c4431d76a54644208ea6468f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537391"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640458"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
 
@@ -29,7 +29,7 @@ ms.locfileid: "67537391"
 
 この例では、新しいプライベート ダッシュボードを作成し、名前を割り当てます。 作業を開始するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左サイドバーの上部の **[ダッシュボード]** を選択します。 既定のビューがダッシュボードに既に設定されています。
 1. **[+ 新しいダッシュボード]** を選択します。
 
@@ -118,7 +118,7 @@ ms.locfileid: "67537391"
 既存のダッシュボードを新しいダッシュボードのテンプレートとして使用するには、次の手順に従います。
 
 1. コピーするダッシュボードがダッシュボード ビューに表示されていることを確認します。
-1. ページ ヘッダーの ![複製アイコン](./media/azure-portal-dashboards/dashboard-clone.png) **[複製]** を選択します。
+1. ページ ヘッダーで、![複製アイコン](./media/azure-portal-dashboards/dashboard-clone.png) **[複製]** を選択します。
 1. "*ダッシュボード名*の複製" という名前のダッシュボードのコピーが編集モードで開きます。 この記事の前の手順を使用して、ダッシュボードの名前を変更し、カスタマイズします。
 
 ## <a name="publish-and-share-a-dashboard"></a>ダッシュボードを発行して共有する
@@ -170,7 +170,7 @@ ms.locfileid: "67537391"
 
    ![削除の確認のスクリーンショット](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロールベースのアクセス制御を使用したダッシュボードの共有](azure-portal-dashboard-share-access.md)
 * [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)

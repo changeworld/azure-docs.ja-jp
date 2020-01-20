@@ -1,34 +1,25 @@
 ---
-title: Azure Service Fabric CLI- sfctl compose| Microsoft Docs
-description: Service Fabric CLI sfctl compose のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI- sfctl compose
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 Docker Compose アプリケーションのためのコマンドの一覧が含まれています。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901669"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645397"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose アプリケーションを作成、削除、および管理します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
-|command|説明|
+|command|[説明]|
 | --- | --- |
-| create | Service Fabric Compose のデプロイを作成します。 |
+| 作成 | Service Fabric Compose のデプロイを作成します。 |
 | list | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。 |
 | remove | クラスターから既存の Service Fabric Compose デプロイを削除します。 |
 | status | Service Fabric Compose デプロイの情報を取得します。 |
@@ -41,7 +32,7 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの名前。 |
 | --file-path       [必須] | ターゲット Docker Compose ファイルへのパス。 |
@@ -52,13 +43,13 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-list"></a>sfctl compose list
 Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。
@@ -67,7 +58,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
@@ -75,13 +66,13 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-remove"></a>sfctl compose remove
 クラスターから既存の Service Fabric Compose デプロイを削除します。
@@ -90,20 +81,20 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-status"></a>sfctl compose status
 Service Fabric Compose デプロイの情報を取得します。
@@ -112,20 +103,20 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl compose upgrade
 Service Fabric クラスターで、Compose デプロイのアップグレードを開始します。
@@ -134,7 +125,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの名前。 |
 | --file-path        [必須] | ターゲット Docker Compose ファイルへのパス。 |
@@ -159,13 +150,13 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-upgrade-rollback"></a>sfctl compose upgrade-rollback
 Service Fabric クラスターで、Compose デプロイのアップグレードのロールバックを開始します。
@@ -174,20 +165,20 @@ Service Fabric Compose のデプロイのアップグレードをロールバッ
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-compose-upgrade-status"></a>sfctl compose upgrade-status
 この Service Fabric Compose のデプロイで実行された最新のアップグレードの詳細を取得します。
@@ -196,22 +187,22 @@ Compose デプロイ アップグレードの状態、およびアプリケー�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

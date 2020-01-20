@@ -4,15 +4,15 @@ description: Application Insights にデータを送信するように Azure Dia
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450576"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure Diagnostics 拡張機能を使用してデータを収集します。  Azure Diagnostics のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure Diagnostics 拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -66,11 +66,11 @@ Application Insights のシンクの構成の例を以下に示します。
 - **Channels** 要素には、1 つ以上の **Channel** 要素が含まれます。
     - *name* 属性は、そのチャンネルを一意に参照します。
     - *loglevel* 属性では、チャンネルで許可されるログ レベルを指定できます。 使用可能なログ レベルを情報の多い順に並べると、次のようになります。
-        - 詳細
-        - 情報
+        - "詳細"
+        - Information
         - 警告
-        - Error
-        - 重大
+        - エラー
+        - Critical
 
 チャンネルはフィルターのように機能し、対象のシンクに送信する特定のログ レベルを選択するために使用できます。 たとえば、詳細ログを収集してストレージに送信し、シンクにはエラーのみを送信することができます。
 

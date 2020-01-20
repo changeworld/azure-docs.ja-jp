@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433281"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -32,7 +32,8 @@ Durable Functions 拡張機能によって、一連の HTTP API が Azure Functi
 * [オーケストレーションに外部イベントを送信する](durable-functions-http-api.md#raise-event)
 * [オーケストレーション履歴を消去する](durable-functions-http-api.md#purge-single-instance-history)
 * [エンティティに操作イベントを送信する](durable-functions-http-api.md#signal-entity)
-* [エンティティの状態のクエリを実行する](durable-functions-http-api.md#query-entity)
+* [エンティティの状態を取得する](durable-functions-http-api.md#get-entity)
+* [エンティティの一覧を問い合わせる](durable-functions-http-api.md#list-entities)
 
 Durable Functions 拡張機能で公開されているすべての組み込みの HTTP API の詳細については、[HTTP API に関する記事](durable-functions-http-api.md)を参照してください。
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
+前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
 
 実行時に、構成されたトークン ソースにより OAuth 2.0 アクセス トークンが自動的に返されます。 次に、ソースによって、送信要求の Authorization ヘッダーにトークンがベアラー トークンとして追加されます。 このモデルは、次の理由により、Authorization ヘッダーを HTTP 要求に手動で追加するよりも優れています。
 
@@ -240,7 +241,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [持続性のあるエンティティについて学習します](durable-functions-entities.md)

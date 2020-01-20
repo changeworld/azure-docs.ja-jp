@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427074"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
+
+>URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -34,6 +36,40 @@ ms.locfileid: "74420042"
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
 
+## <a name="november-2019"></a>2019 年 11 月
+
+### <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
+
+ライブ文字起こしのパブリック プレビューが始まっており、米国西部 2 リージョンでご利用いただけます。
+
+ライブ文字起こしはアドオン機能としてライブ イベントと連動するように設計されています。  パススルーと Standard または Premium のエンコード ライブ イベントの両方でサポートされています。  この機能が有効になっている場合、このサービスでは Cognitive Services の[音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)機能を使用して、受信したオーディオの音声を文字起こししてテキストにします。 その後、このテキストは、MPEG-DASH および HLS プロトコルのビデオとオーディオで配信できるようになります。 課金は、"実行中" 状態のとき、ライブ イベントの追加コストとなる新しいアドオン メーターに基づきます。  ライブ文字起こしと課金の詳細については、「[ライブ文字起こし](live-transcription.md)」を参照してください。
+
+> [!NOTE]
+> 現在、ライブ文字起こしは、米国西部 2 リージョンのプレビュー機能としてのみ提供されています。 現時点では英語 (en-us) 音声の文字起こしのみサポートされています。
+
+### <a name="content-protection"></a>コンテンツの保護
+
+去る 9 月に限定リージョンで公開された "*トークン再生防止*" 機能が全リージョンで利用できるようになりました。
+Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+
+### <a name="new-recommended-live-encoder-partners"></a>新しいおすすめのライブ エンコーダー パートナー
+
+RTMP ライブ ストリーミングで次の新しいおすすめパートナー エンコーダーのサポートが追加されました。
+
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 および Max アクション カメラ](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>ファイル エンコードの機能強化
+
+- Media Encoder Standard のサイズ変更機能の性能とマルチスレッドが改善されました。 特定の条件下では、お客様は 5% から 40% の VOD エンコードで性能向上をご体験いただけます。 複雑性が低いコンテンツが複数のビットレートにエンコードされるとき、最も高い性能アップを確認できます。 
+- 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
+-  可変フレーム レート (VFR) ソース コンテンツの AV 同期の向上
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer、ビデオ分析
+
+- VideoAnalyzer プリセットで抽出されたキーフレームがサイズ変更なく、動画の元の解像度で与えられるようになりました。 高解像度のキーフレーム抽出により元の画質が与えられ、Microsoft の Computer Vision サービスと Custom Vision サービスで提供される画像を基盤とする人工知能モデルを活用し、動画からさらに踏み込んだ分析情報を得ることができます。
+
 ## <a name="september-2019"></a>2019 年 9 月
 
 ###  <a name="media-services-v3"></a>Media Services v3  
@@ -48,7 +84,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 *Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Indexer](../previous/media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer 2 プレビュー](../previous/media-services-process-content-with-indexer2.md) メディア プロセッサは、2020 年 1 月 1 日に廃止されます。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
 
-詳細については、「[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer に移行する](../previous/migrate-indexer-v1-v2.md)」を参照してください。
+詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
@@ -64,17 +100,17 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
+*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
 
 詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
  
 ## <a name="july-2019"></a>2019 年 7 月
 
-### <a name="content-protection"></a>コンテンツ保護
+### <a name="content-protection"></a>コンテンツの保護
 
-トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
 
-この機能は現在、米国中部と米国中西部でご利用いただけます。
+7 月の時点では、プレビュー機能は米国中部と米国中西部でのみ利用できました。
 
 ## <a name="june-2019"></a>2019 年 6 月
 
@@ -295,7 +331,7 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [概要](media-services-overview.md)
 - [Media Services v2 リリース ノート](../previous/media-services-release-notes.md)

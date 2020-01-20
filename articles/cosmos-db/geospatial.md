@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う
+title: Azure Cosmos DB SQL API アカウントで地理空間データを使用する
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441879"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
 
@@ -94,7 +94,7 @@ GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間�
 ### <a name="coordinate-reference-systems"></a>座標参照系
 地球の形状は不規則であるため、地理空間データの座標は多く座標参照系 (CRS) で表され、それぞれ独自の基準系と測定単位が存在します。 たとえば、"National Grid of Britain" は、イギリスでは精度の高い座標系ですが、イギリス外では精度が下がります。 
 
-今日使われている最も一般的な CRS は、世界測地系の [WGS-84](http://earth-info.nga.mil/GandG/wgs84/) です。 WGS-84 は、GPS 装置や、多くの地図サービス (Google マップ、Bing マップの API など) で使用されています。 Azure Cosmos DB でサポートされるのは、WGS-84 CRS を使用した地理空間データのインデックスとクエリだけです。 
+今日使われている最も一般的な CRS は、世界測地系の [WGS-84](https://earth-info.nga.mil/GandG/update/index.php) です。 WGS-84 は、GPS 装置や、多くの地図サービス (Google マップ、Bing マップの API など) で使用されています。 Azure Cosmos DB でサポートされるのは、WGS-84 CRS を使用した地理空間データのインデックスとクエリだけです。 
 
 ## <a name="creating-documents-with-spatial-data"></a>空間データを使用したドキュメントの作成
 GeoJSON の値を含んだドキュメントを作成すると、対応するコンテナーのインデックス作成ポリシーに従い、空間インデックスを使用して自動的にインデックスが作成されます。 Python や Node.js など動的に型付けされる言語で Azure Cosmos DB SDK を使用している場合は、有効な GeoJSON を作成する必要があります。
@@ -365,7 +365,7 @@ LINQ を使用して、"location" の値が、指定された地点の半径 30 
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の地理空間機能の基本的な使い方を学んだら、次の段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)

@@ -1,27 +1,18 @@
 ---
 title: スタンドアロン Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAADBCAB-F0CF-4CBC-B663-4A6DCCB4DEE1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: feec830a81b9afe572e05bb6be21ad39edd7af04
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232491"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526245"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
+# <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>標準的な Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
 > * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -295,7 +286,7 @@ Service Fabric Explorer でバックアップを表示するには、パーテ�
 - Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 

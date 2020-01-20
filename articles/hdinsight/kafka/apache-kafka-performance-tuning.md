@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/19/2019
+ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689350"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494911"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight クラスターのパフォーマンスの最適化
 
@@ -42,7 +42,7 @@ Apache Kafka のパフォーマンスには、スループットと待ち時間�
 
 Apache Kafka のプロデューサーは、単一のストレージ パーティションに格納される 1 単位として送信される、メッセージのグループ (バッチと呼ばれる) をアセンブルします。 バッチ サイズは、そのグループを送信する前になければならないバイト数を意味します。 `batch.size` パラメーターを増やすと、ネットワークと IO 要求からのオーバーヘッドの処理が減るため、スループットを向上させることができます。 負荷が低く、バッチ サイズが大きくなると、プロデューサーはバッチの準備が完了するのを待機するため、Kafka の送信待ち時間が増える可能性があります。 負荷が高い場合は、スループットを向上させて待ち時間を減らすために、バッチ サイズを増やすことをお勧めします。
 
-### <a name="producer-required-acknowledgements"></a>プロデューサーが必要な確認
+### <a name="producer-required-acknowledgments"></a>プロデューサーが必要な確認
 
 プロデューサーが必要な `acks` 構成では、書き込み要求が完了したと見なされる前に、パーティション リーダーによって要求される確認の数を判別します。 この設定はデータの信頼性に影響し、`0`、`1`、または`-1` の値を取ります。 値 `-1` は、書き込みが完了する前に、確認をすべてのレプリカから受け取る必要があることを意味します。 `acks = -1` を設定すると、データ損失に対する保証は高くなりますが、待ち時間が長くなりスループットが低下することにもなります。 アプリケーションの要件によりさらに高いスループットが求められる場合は、`acks = 0` または `acks = 1` の設定を試みてください。 一部のレプリカを確認しないと、データの信頼性が低くなる可能性があることに留意してください。
 
@@ -57,7 +57,6 @@ Kafka プロデューサーは、メッセージをブローカーに送信す�
 ## <a name="broker-settings"></a>ブローカー設定
 
 次のセクションでは、Kafka ブローカーのパフォーマンスを最適化するための、いくつかの最も重要な設定を強調表示します。 すべてのブローカーの設定の詳細な説明については、「[Apache Kafka documentation on producer configurations](https://kafka.apache.org/documentation/#producerconfigs)」(プロデューサー構成に関する Apache Kafka ドキュメント) を参照してください。
-
 
 ### <a name="number-of-disks"></a>ディスクの数
 
@@ -81,7 +80,7 @@ Azure HDInsight では、Kafka には、少なくとも 3 倍のレプリケー�
 
 レプリケーションの詳細については、「[Apache Kafka: レプリケーション](https://kafka.apache.org/documentation/#replication)」と「[Apache Kafka: レプリケーション係数を増やす](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure で Apache Kafka を使用して 1 日あたり数十億個のイベントを処理する](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)
 * [HDInsight での Apache Kafka とは](apache-kafka-introduction.md)

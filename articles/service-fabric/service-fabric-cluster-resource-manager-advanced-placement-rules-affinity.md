@@ -1,25 +1,18 @@
 ---
-title: Service Fabric クラスター リソース マネージャー - アフィニティ | Microsoft Docs
-description: Service Fabric サービスのアフィニティ設定の概要
+title: Service Fabric クラスター リソース マネージャー - アフィニティ
+description: Azure Service Fabric サービスのサービス アフィニティの概要と、サービス アフィニティ構成に関するガイダンス。
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118417"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551745"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Service Fabric でアフィニティを構成し、使用する
 アフィニティは主に、大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。 これはサービスのパフォーマンスを向上させるための最適化としても使用されますが、副作用が伴う場合があります。
@@ -80,7 +73,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ### <a name="partitioning-support"></a>パーティション分割のサポート
 アフィニティについて注目すべき最後の点は、親がパーティション分割されている場合、アフィニティの関係がサポートされないということです。 パーティション分割サービスは今後サポートされる可能性がありますが、現時点では許可されていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 - サービスを一部のマシンに制限したり、サービスの負荷を集約したりするには、[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)を使用します
 

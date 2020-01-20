@@ -1,23 +1,15 @@
 ---
-title: Jenkins を使用した Azure Service Fabric Linux アプリケーションの継続的なビルドと統合 | Microsoft Docs
+title: Jenkins を使用した Linux アプリケーションの継続的なビルド
 description: Jenkins を使用した Service Fabric Linux アプリケーションの継続的なビルドと統合
-services: service-fabric
-documentationcenter: java
 author: sayantancs
-manager: jpconnock
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/31/2018
-ms.author: jeconnoc
-ms.openlocfilehash: b757a0a5f3ce968b396fa89d5b32c18257d620c3
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 175338fef600f6e726fd02eee6b0f416181bd9dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875078"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610218"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -259,7 +251,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
         ``` 
 
-        PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 例:
+        PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 次に例を示します。
 
         ```sh
         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
@@ -328,7 +320,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 GitHub と Jenkins の構成が完了しました。 リポジトリ (https://github.com/Azure-Samples/service-fabric-java-getting-started ) のフォークの `reliable-services-actor-sample/Actors/ActorCounter` プロジェクトにサンプルの変更を加えてみましょう。 リモートの `master` 分岐 (または動作するように構成したいずれかの分岐) に変更をプッシュすると、 構成した Jenkins ジョブ `MyJob` がトリガーされます。 GitHub から変更内容がフェッチされてビルドが行われ、ビルド後のアクションで指定したクラスターにアプリケーションがデプロイされます。  
 
   <!-- Images -->

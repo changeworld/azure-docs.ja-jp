@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理をトラブルシューティングする - Azure Active Directory
+title: エンタイトルメント管理のトラブルシューティング - Azure AD
 description: Azure Active Directory エンタイトルメント管理をトラブルシューティングする際に確認しておくべき事項について説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422487"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -129,7 +129,7 @@ ms.locfileid: "73173319"
 
 * 複数のポリシーが該当する場合、自動的に選択されるポリシー (要求元に表示されるポリシー) は、次の優先順位ロジックに基づいて決定されます。
 
-    | ポリシーの優先度 | Scope (スコープ) |
+    | ポリシーの優先度 | スコープ |
     | --- | --- |
     | P1 | ディレクトリ内の特定のユーザーとグループ、または接続されている特定の組織 |
     | P2 | ディレクトリ内のすべてのメンバー (ゲストを除く) |
@@ -138,7 +138,7 @@ ms.locfileid: "73173319"
     
     より優先度の高いカテゴリにポリシーが属している場合、それよりも優先度が低いカテゴリは無視されます。 同じ優先度の複数のポリシーが要求元にどのように表示されるかの例については、「[ポリシーの選択](entitlement-management-request-access.md#select-a-policy)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [外部ユーザーのアクセス権の管理](entitlement-management-external-users.md)
 - [エンタイトルメント管理でユーザーがアクセス権をどのように取得したかについてのレポートを確認する](entitlement-management-reports.md)

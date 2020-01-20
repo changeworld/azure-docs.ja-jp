@@ -1,6 +1,6 @@
 ---
 title: データのクエリ (プレビュー) - Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights プレビューのデータのクエリについて説明します。
+description: Azure Time Series Insights Preview のデータのクエリの概念と HTTP REST API の概要
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374580"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータのクエリ
 
@@ -39,8 +39,8 @@ Time Series Insights は、機能が豊富な文字列ベースの式言語で�
 
 次の Environment API を使用できます。
 
-* [Get Environment API](/rest/api/time-series-insights/management/environments/get):呼び出し元がアクセスを許可されている環境の一覧が返されます。
-* [Get Environment Availability API](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability):イベントのタイムスタンプ `$ts` に対するイベント数の分布が返されます。 この API は、イベントの数を返すことによって (ある場合) タイムスタンプにイベントが存在するかどうかを判断するのに役立ちます。
+* [Environment API の取得](/rest/api/time-series-insights/management/environments/get):呼び出し元がアクセスを許可されている環境の一覧が返されます。
+* [Environments Availability API の取得](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability):イベントのタイムスタンプ `$ts` に対するイベント数の分布が返されます。 この API は、イベントの数を返すことによって (ある場合) タイムスタンプにイベントが存在するかどうかを判断するのに役立ちます。
 * [Get Event Schema API](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema):特定の検索範囲に対するイベント スキーマのメタデータが返されます。 この API は、特定の検索範囲に対してスキーマで使用できるすべてのメタデータとプロパティを取得するのに役立ちます。
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model-Query (TSM-Q) API
@@ -71,7 +71,7 @@ Time Series Insights は、機能が豊富な文字列ベースの式言語で�
 
   Aggregate Series API では、各間隔の各変数に対するタイム シリーズの値が返されます。 値は、タイム シリーズ ID と提供された変数のセットに基づきます。 Aggregate Series API では、タイム シリーズ モデルに格納されている変数またはインラインで提供された変数を使用してデータを集計またはサンプリングすることにより、削減が実現されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。
 - Time Series Insights プレビューでの[データ モデリング](./time-series-insights-update-tsm.md)に関する記事を読む。

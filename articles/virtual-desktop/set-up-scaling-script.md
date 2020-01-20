@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451335"
 ---
 # <a name="scale-session-hosts-dynamically"></a>セッション ホストを動的にスケーリングする
 
@@ -50,7 +50,7 @@ Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想�
 
 1. スケジュールされたタスクをドメイン管理者アカウントで実行する VM (スケーラー VM) にサインインします。
 2. スケーリング スクリプトとその構成 (**C:\\scaling-HostPool1** など) を格納するフォルダーをスケーラー VM に作成します。
-3. **basicScale.ps1**、**Config.xml**、**Functions-PSStoredCredentials.ps1** の各ファイルおよび **PowershellModules** フォルダーを[スケーリング スクリプト リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)からダウンロードし、それらを手順 2. で作成したフォルダーにコピーします。 これらのファイルをスケーラー VM にコピーする前に入手します。主な方法は、次の 2 つです。
+3. **basicScale.ps1**、**Config.json**、**Functions-PSStoredCredentials.ps1** の各ファイルおよび **PowershellModules** フォルダーを[スケーリング スクリプト リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)からダウンロードし、それらを手順 2. で作成したフォルダーにコピーします。 これらのファイルをスケーラー VM にコピーする前に入手します。主な方法は、次の 2 つです。
     - Git リポジトリをローカル コンピューターに複製します。
     - 各ファイルの **Raw** バージョンを表示し、各ファイルの内容をコピーしてテキスト エディターに貼り付けた後、対応するファイル名とファイルの種類でそのファイルを保存します。 
 
@@ -73,15 +73,15 @@ Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想�
     ```
     
     たとえば、**Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"** などです
-5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.xml** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
+5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.json** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
     - 別のサービス プリンシパルまたは標準アカウントを使用する場合は、アカウントごとに 1 回ずつ **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行して、ローカルに格納された資格情報を作成します。
 6. **Get-StoredCredential -List** を実行して、資格情報が正常に作成されたことを確認します。
 
-### <a name="configure-the-configxml-file"></a>config.xml ファイルの構成
+### <a name="configure-the-configjson-file"></a>config.json ファイルを構成する
 
-次のフィールドに妥当な値を入力して、config.xml 内のスケーリング スクリプト設定を更新します。
+次のフィールドに妥当な値を入力して、config.json 内のスケーリング スクリプト設定を更新します。
 
-| フィールド                     | 説明                    |
+| フィールド                     | [説明]                    |
 |-------------------------------|------------------------------------|
 | AADTenantId                   | セッション ホスト VM を実行しているサブスクリプションを関連付ける Azure AD テナント ID     |
 | AADApplicationId              | サービス プリンシパルのアプリケーション ID                                                       |
@@ -103,7 +103,7 @@ Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想�
 
 ### <a name="configure-the-task-scheduler"></a>タスク スケジューラの構成
 
-構成 .xml ファイルを構成した後、一定の間隔で basicScaler.ps1 ファイルを実行するようにタスク スケジューラを構成する必要があります。
+構成 JSON ファイルを構成した後、一定の間隔で basicScaler.ps1 ファイルを実行するようにタスク スケジューラを構成する必要があります。
 
 1. **タスク スケジューラ**を起動します。
 2. **[タスク スケジューラ]** ウィンドウで、 **[タスクの作成]** を選択します
@@ -117,13 +117,13 @@ Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想�
 
 ## <a name="how-the-scaling-script-works"></a>スケーリング スクリプトのしくみ
 
-このスケーリング スクリプトでは、config.xml ファイルから、その日のピーク使用期間の開始と終了などの設定を読み取ります。
+このスケーリング スクリプトでは、config.json ファイルから、その日のピーク使用期間の開始と終了などの設定が読み取られます。
 
-ピーク使用時間帯、現在のセッション数と現在実行中の RDSH のキャパシティが、このスクリプトによってホスト プールごとにチェックされます。 実行中のセッション ホスト VM に、既存のセッションをサポートできるだけのキャパシティがあるかどうかが、config.xml ファイルに定義された SessionThresholdPerCPU パラメーターに基づいて計算されます。 存在しない場合は、ホスト プールで追加のセッション ホスト VM を起動します。
+ピーク使用時間帯、現在のセッション数と現在実行中の RDSH のキャパシティが、このスクリプトによってホスト プールごとにチェックされます。 実行中のセッション ホスト VM に、既存のセッションをサポートできるだけのキャパシティがあるかどうかが、config.json ファイルに定義された SessionThresholdPerCPU パラメーターに基づいて計算されます。 存在しない場合は、ホスト プールで追加のセッション ホスト VM を起動します。
 
-オフピーク使用時間帯には、config.xml ファイル内の MinimumNumberOfRDSH パラメーターに基づいて、シャットダウンすべきセッション ホスト VM が特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 config.xml ファイル内で **LimitSecondsToForceLogOffUser** パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーに作業内容を保存するよう通知され、構成された時間待機してからユーザーが強制的にサインアウトされます。セッション ホスト VM のすべてのユーザー セッションがサインオフされると、スクリプトによってサーバーがシャットダウンされます。
+オフピーク使用時間帯には、config.json ファイル内の MinimumNumberOfRDSH パラメーターに基づいて、シャットダウンすべきセッション ホスト VM が特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 config.json ファイル内で **LimitSecondsToForceLogOffUser** パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーに作業内容を保存するよう通知され、構成された時間待機してからユーザーが強制的にサインアウトされます。セッション ホスト VM のすべてのユーザー セッションがサインオフされると、スクリプトによってサーバーがシャットダウンされます。
 
-config.xml ファイルで **LimitSecondsToForceLogOffUser** パラメーターを 0 に設定した場合、ホスト プールのプロパティのセッション構成設定で、ユーザー セッションのサインオフを処理することができます。 セッション ホスト VM にセッションが存在する場合、セッション ホスト VM は実行状態のままとなります。 セッションがまったく存在しない場合、スクリプトによってセッション ホスト VM がシャットダウンされます。
+config.json ファイルで **LimitSecondsToForceLogOffUser** パラメーターを 0 に設定した場合、ホスト プールのプロパティのセッション構成設定で、ユーザー セッションのサインオフを処理することができます。 セッション ホスト VM にセッションが存在する場合、セッション ホスト VM は実行状態のままとなります。 セッションがまったく存在しない場合、スクリプトによってセッション ホスト VM がシャットダウンされます。
 
 スクリプトは、タスク スケジューラを使用してスケーラー VM サーバー上で定期的に実行されるように設計されています。 リモート デスクトップ サービス環境のサイズに基づいて適切な時間間隔を選択し、仮想マシンの起動とシャットダウンにしばらく時間がかかることを忘れないでください。 スケーリング スクリプトを 15 分ごとに実行することをお勧めします。
 

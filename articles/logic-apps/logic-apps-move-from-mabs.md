@@ -1,6 +1,6 @@
 ---
-title: アプリを BizTalk Services から Azure Logic Apps への移行させる
-description: Azure BizTalk Services (MABS) から Azure Logic Apps に移行する
+title: アプリを BizTalk Services から Azure Logic Apps に移行する
+description: アプリとソリューションを Microsoft Azure BizTalk Services (MABS) から Azure Logic Apps に移動する方法
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,14 +8,14 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791883"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666654"
 ---
-# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>アプリとソリューションを BizTalk Services から Azure Logic Apps に移行する
 
 Microsoft Azure BizTalk Services (MABS) は廃止されました。 MABS 統合ソリューションを [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行するときは、この記事のガイダンスに従ってください。 
 
@@ -133,7 +133,7 @@ BizTalk Services で高可用性 (HA) を実現するには、特定のリージ
 
 BizTalk Services では、B2B 処理のためのリージョン外ディザスター リカバリーにはバックアップおよび復元プロセスが必要です。 ビジネス継続性を実現するために、Logic Apps では、リージョン間アクティブ/パッシブ [DR 機能](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)を提供します。この機能により、さまざまなリージョンの統合アカウント間で B2B データの同期が可能になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps とは](../logic-apps/logic-apps-overview.md)
 * [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)または[既製のテンプレート](../logic-apps/logic-apps-create-logic-apps-from-templates.md)の使い方に関するページ  

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707628"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614938"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
@@ -29,7 +29,7 @@ ms.locfileid: "74707628"
 
 ![主な機能](./media/sql-database-managed-instance/key-features.png)
 
-マネージド インスタンス デプロイ モデルは、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境から完全なマネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているユーザー用に設計されています。 Azure で完全に自動化された[データ移行サービス (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNet のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、マネージド インスタンスでは [SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、マネージド インスタンスはクラウド内の最適な移行先です。
+マネージド インスタンス デプロイ モデルは、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境から完全なマネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているユーザー用に設計されています。 Azure で完全に自動化された[データ移行サービス (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNet のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、マネージド インスタンスでは、[SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、マネージド インスタンスはクラウド内の最適な移行先です。
 
 マネージド インスタンス デプロイ オプションでは、段階的リリース計画に基づいて、最新のオンプレミスの SQL Server バージョンとの 100% 近いセキュリティ、外部からのアクセス互換性を実現することが目的とされています。
 
@@ -53,7 +53,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 
 マネージド インスタンスの主な機能を次の表に示します。
 
-|機能 | 説明|
+|機能 | [説明]|
 |---|---|
 | SQL Server のバージョン/ビルド | SQL Server Database Engine (最新の安定版) |
 | 管理される自動バックアップ | はい |
@@ -154,12 +154,12 @@ Azure SQL Database には、新しいマネージド インスタンスを自動
 |デプロイ |空のサブネットまたは空ではないサブネットに 4 仮想コアの最初のインスタンスを作成|仮想クラスターの作成**|操作の 90% は 4 時間以内に完了|
 |デプロイ |空ではないサブネットに後続のインスタンス (第 2、第 3 のインスタンスなど) を作成|仮想クラスターのサイズ変更|操作の 90% は 2.5 時間以内に完了|
 |**アップデート** |インスタンスのプロパティ変更 (管理者パスワード、AAD ログイン、Azure ハイブリッド特典フラグ)|該当なし|最大 1 分|
-|更新 |インスタンスのストレージのスケールアップとスケールダウン (General Purpose サービス レベル)|- 仮想クラスターのサイズ変更<br>- データベース ファイルのアタッチ|操作の 90% は 2.5 時間以内に完了|
+|更新 |インスタンスのストレージのスケールアップとスケールダウン (General Purpose サービス レベル)|データベース ファイルのアタッチ|操作の 90% は 5 分以内に完了|
 |更新 |インスタンスのストレージのスケールアップとスケールダウン (Business Critical サービス レベル)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
 |更新 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更<br>- データベース ファイルのアタッチ|操作の 90% は 2.5 時間以内に完了|
 |更新 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (Business Critical)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
 |更新 |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- データベース ファイルのアタッチ|操作の 90% は 4 時間 5 分以内に完了**|
-|更新 |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- Always On 可用性グループのシード処理|操作の 90% は 4 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+|更新 |4 仮想コアへのインスタンスのスケールダウン (Business Critical)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- Always On 可用性グループのシード処理|操作の 90% は 4 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
 |更新 |インスタンスのサービス レベルの変更 (General Purpose から Business Critical、またはその逆へ)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
 |**削除**|インスタンスの削除|すべてのデータベースに対するログ テールのバックアップ|操作の 90% は最長でも 1 分以内に完了。<br>メモ: この操作では、サブネットの最後のインスタンスが削除された場合、12 時間後に仮想クラスターを削除するようにスケジュールされます***|
 |削除|(ユーザーによって開始された操作としての) 仮想クラスターの削除|仮想クラスターの削除|操作の 90% は最長でも 1.5 時間以内に完了|
@@ -174,14 +174,45 @@ Azure SQL Database には、新しいマネージド インスタンスを自動
 
 デプロイおよび削除の操作中は、クライアント アプリケーションからマネージド インスタンスを利用できません。
 
-更新操作中はマネージド インスタンスを利用できますが、更新の最後に実行されるフェールオーバーにより短いダウンタイムが発生します。通常、これは最長で 10 秒です。
+更新操作中はマネージド インスタンスを利用できますが、更新の最後に実行されるフェールオーバーにより短いダウンタイムが発生します。通常、これは最長で 10 秒です。 この例外は、フェールオーバーの発生も、インスタンスの可用性への影響もない General Purpose サービス レベルの予約済み記憶域スペースの更新です。
 
 > [!IMPORTANT]
 > 実行時間の長いトランザクションがデータベースがあると、[復旧に長時間](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)を要するため、フェールオーバーの所要時間は大きく変化する場合があります。 そのような理由から、実行時間の長いトランザクション (データのインポート、データ処理ジョブ、インデックスの再構築など) と同時に、Azure SQL Database Managed Instance のコンピューティングやストレージをスケーリングしたりサービス レベルを変更したりすることは推奨されません。 実行中のトランザクションは、操作の最後に実行されるデータベースのフェールオーバーによってキャンセルされ、復旧時間が長くなります。
 
+> [!TIP]
+> General Purpose サービス レベルの予約済み記憶域スペースを更新することによる、フェールオーバーの発生、またはインスタンスの可用性への影響はありません。
+
 Azure SQL Database Managed Instance では現在、[高速化データベース復旧](sql-database-accelerated-database-recovery.md)は利用できません。 この機能が利用できるようになれば、実行時間の長いトランザクションのケースであっても、フェールオーバー時間のばらつきは大幅に軽減されます。
 
+### <a name="canceling-management-operations"></a>管理操作のキャンセル
 
+次の表は、特定の管理操作のキャンセル機能と標準的な総所要時間をまとめたものです。
+
+カテゴリ  |操作  |キャンセル可能  |推定キャンセル時間  |
+|---------|---------|---------|---------|
+|デプロイ |インスタンスの作成 |いいえ |  |
+|更新 |インスタンスのストレージのスケールアップとスケールダウン (General Purpose) |いいえ |  |
+|更新 |インスタンスのストレージのスケールアップとスケールダウン (Business Critical) |はい |操作の 90% は 5 分以内に完了 |
+|更新 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (General Purpose) |はい |操作の 90% は 5 分以内に完了 |
+|更新 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (Business Critical) |はい |操作の 90% は 5 分以内に完了 |
+|更新 |インスタンスのサービス レベルの変更 (General Purpose から Business Critical、またはその逆へ) |はい |操作の 90% は 5 分以内に完了 |
+|削除 |インスタンスの削除 |いいえ |  |
+|削除 |(ユーザーによって開始された操作としての) 仮想クラスターの削除 |いいえ |  |
+
+管理操作をキャンセルするには、[概要] ブレードにアクセスし、進行中の操作の通知ボックスをクリックします。 右側から、進行中の操作が表示された画面が出現します。そこには、操作をキャンセルするためのボタンがあります。 最初のクリックの後、もう一度クリックして操作をキャンセルするかどうかを確認するように求められます。
+
+[![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
+
+キャンセル要求が送信および処理された後に、キャンセルの送信が成功したかどうかの通知を取得します。 
+
+キャンセルが完了した場合、管理操作は数分後にキャンセルされ、エラーが発生します。
+
+![操作結果のキャンセル](./media/sql-database-managed-instance/canceling-operation-result.png)
+
+キャンセル要求が失敗するか、[キャンセル] ボタンがアクティブでない場合は、管理操作がキャンセルできない状態に入り、数分後に完了することを意味します。 管理操作は、完了するまで実行が続きます。
+
+> [!IMPORTANT]
+> 現在、キャンセル操作はポータルでのみサポートされています。
 
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
 
@@ -191,7 +222,7 @@ Azure SQL Database Managed Instance では現在、[高速化データベース�
 
 マネージド インスタンスでは、Azure のクラウド内での他のテナントからのセキュリティ分離が追加されています。 セキュリティ分離:
 
-- Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットの実装](sql-database-managed-instance-connectivity-architecture.md)と接続。
+- Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](sql-database-managed-instance-connectivity-architecture.md)と接続。
 - 既定のデプロイでは、SQL エンドポイントはプライベート IP アドレスでのみ公開されるため、Azure またはハイブリッド ネットワークから安全に接続できます。
 - 専用の基になるインフラストラクチャ (コンピューティング、ストレージ) を備えたシングル テナント。
 
@@ -211,7 +242,7 @@ Azure SQL Database は、データを保護するために使用できる一連�
 - [マネージド インスタンスの監査](sql-database-managed-instance-auditing.md)では、データベース イベントが追跡されて、Azure ストレージ アカウント内の監査ログ ファイルにイベントが書き込まれます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 - 移動中のデータの暗号化 - マネージド インスタンスでは、トランスポート層セキュリティを使用して、移動中のデータの暗号化を実現することにより、データがセキュリティで保護されます。 トランスポート層セキュリティに加えて、マネージド インスタンス デプロイ オプションでは [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、転送中、保存中、およびクエリの処理中に機密データが保護されます。 Always Encrypted は、重要なデータの盗難を含む侵害に対する、これまでにないデータ セキュリティを提供する業界初の機能です。 たとえば、クレジット カード番号は、Always Encrypted によって常に暗号化されてデータベースに格納されます。暗号化はクエリ処理中も行われます。復号化は、データを処理する必要がある承認されたスタッフまたはアプリケーションが使用するときに実行することができます。
 - [Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[監査](sql-database-managed-instance-auditing.md)が補完されます。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作が検出されます。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 Advanced Threat Protection のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。  
-- [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)では、特権のないユーザーに対して機微なデータをマスクすることでデータの公開を制限します。 動的データ マスクでは、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能であり、指定されたデータベース フィールドに対するクエリの結果セットに含まれるデリケートなデータが表示されないようにします。データベース内のデータは変更されません。
+- [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)では、特権のないユーザーに対して機微なデータをマスクすることでデータの公開を制限します。 動的データ マスクでは、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能です。これにより、データベース内のデータはそのままで、指定されたデータベース フィールドに対するクエリの結果セットで機微なデータを非表示にすることができます。
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)を使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 行レベルのセキュリティ (RLS) により、アプリケーションでのセキュリティの設計やコーディングが簡略化されます。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、データ アクセスを関連するデータにのみ制限したりできます。
 - [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) では、マネージド インスタンスのデータ ファイルが暗号化されます。これは、保存データの暗号化として知られています。 TDE は、データとログ ファイルの I/O 暗号化と複合化をリアルタイムで実行します。 暗号化は、復旧中に、可用性のためのデータベース ブート レコードに格納されるデータベース暗号化キー (DEK) を使用します。 透過的なデータ暗号化でマネージド インスタンス内のすべてのデータベースを保護することができます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL Server の実証済みの保存データの暗号化テクノロジです。
 
@@ -238,7 +269,7 @@ Azure AD サーバー プリンシパル (ログイン) を作成するための
 
   この認証方法では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 [可能であれば](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)、Active Directory 認証 (統合セキュリティ) を使用します。
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>承認
 
 承認とは、Azure SQL Database 内でユーザーにどのような操作が許可されるかを示すものであり、ユーザー アカウントのデータベース ロールのメンバーシップとオブジェクト レベルのアクセス許可によって制御されます。 マネージド インスタンスには、SQL Server 2017 と同じ承認機能があります。
 
@@ -246,7 +277,7 @@ Azure AD サーバー プリンシパル (ログイン) を作成するための
 
 マネージド インスタンスのデプロイ オプションは、オンプレミスまたは IaaS データベース実装からの大量のデータベース移行を含むユーザー シナリオを対象にしています。 マネージド インスタンスでは、次に示すような複数のデータベース移行オプションがサポートされています。
 
-### <a name="back-up-and-restore"></a>バックアップおよび復元  
+### <a name="back-up-and-restore"></a>バックアップと復元  
 
 移行のアプローチでは、Azure Blob Storage への SQL バックアップが活用されます。 Azure Storage Blob に格納されたバックアップは、[T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)を使用して、マネージド インスタンスに直接復元できます。
 
@@ -292,14 +323,14 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 
 次の表には、Transact SQL を介してアクセスできるプロパティをいくつか示します。これらのプロパティを使用することで、目的のアプリケーションがマネージド インスタンスで動作していることを検出し、重要なプロパティを取得することができます。
 
-|プロパティ|値|Comment (コメント)|
+|プロパティ|値|解説|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|この値は SQL Database の値と同じです。|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|この値は SQL Database の値と同じです。|
 |`SERVERPROPERTY('EngineEdition')`|8|この値では、マネージド インスタンスが一意に識別されます。|
-|`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|次の形式による完全なインスタンス DNS 名:`<instanceName>`.`<dnsPrefix>`.database.windows.net。ここで、`<instanceName>` は顧客が指定する名前です。`<dnsPrefix>` は名前の中で自動生成される部分であり、グローバルな DNS 名の一意性を保証します (例: "wcus17662feb9ce98")|例: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|次の形式による完全なインスタンス DNS 名:`<instanceName>`.`<dnsPrefix>`.database.windows.net。ここで、`<instanceName>` は顧客が指定する名前です。`<dnsPrefix>` は名前の中で自動生成される部分であり、グローバルな DNS 名の一意性を保証します (例: "wcus17662feb9ce98")|例: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 最初のマネージド インスタンスを作成する方法については、[クイック スタート ガイド](sql-database-managed-instance-get-started.md)を参照してください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。

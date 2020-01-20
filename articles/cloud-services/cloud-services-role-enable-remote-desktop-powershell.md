@@ -1,19 +1,20 @@
 ---
-title: PowerShell を使用してロールのリモート デスクトップを有効にする (Azure Cloud Services)
+title: PowerShell を使用してロールのリモート デスクトップを有効にする
+titleSuffix: Azure Cloud Services
 description: PowerShell で Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.author: tagore
+ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386121"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 
@@ -100,3 +101,5 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)
+
+

@@ -1,6 +1,6 @@
 ---
 title: プレビューの環境を計画する - Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights プレビューの環境を計画する方法について説明します。
+description: Azure Time Series Insights プレビュー環境を構成、管理、計画、およびデプロイするためのベスト プラクティスです。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452447"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -48,7 +48,7 @@ Time Series Insights プレビュー環境をプロビジョニングする際�
 ウォーム ストアのクエリは無料ですが、コールド ストアのクエリにはコストが発生します。 クエリ パターンを理解し、それに従ってウォーム ストア構成を計画することが重要です。 最新データに対する対話型分析はウォーム ストアに配置し、パターン分析と長期的傾向はコールド ストアに配置することをお勧めします。
 
 > [!NOTE]
-> 現在、ウォーム ストアでは最大 1000 のプロパティがサポートされています。
+> ウォーム データに対してクエリを実行する方法の詳細については、[こちら](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)を参照してください。
 
 始めに、3 つの追加項目が必要です。
 
@@ -97,7 +97,7 @@ Time Series Insights にイベントを送信する方法を確認できます�
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
 - Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。

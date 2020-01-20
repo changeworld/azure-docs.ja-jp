@@ -5,17 +5,17 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440469"
 ---
-| Category | データ ストア |
+| カテゴリ | データ ストア |
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -28,9 +28,9 @@ ms.locfileid: "72958659"
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
-| **データベース** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| **[データベース]** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "72958659"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) |
-| **ファイル** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **[最近使ったファイル]** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[ファイル システム](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -81,7 +81,7 @@ ms.locfileid: "72958659"
 | &nbsp; |[Oracle Eloqua (プレビュー)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (プレビュー)](../articles/data-factory/connector-oracle-responsys.md) |
 | &nbsp; |[Oracle Service Cloud (プレビュー)](../articles/data-factory/connector-oracle-service-cloud.md) |
-| &nbsp; |[PayPal (プレビュー)](../articles/data-factory/connector-paypal.md) |
+| &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (プレビュー)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |

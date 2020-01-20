@@ -1,6 +1,6 @@
 ---
-title: Batch でのコンピューティング集中型 Azure VM の使用 | Microsoft Docs
-description: Azure Batch プールで HPC および GPU の VM サイズを利用する方法
+title: Batch でのコンピューティング集中型 Azure VM の使用
+description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 documentationcenter: ''
 author: laurenhughes
 manager: gwallace
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390506"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
-特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 例:
+特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 次に例を示します。
 
 * マルチインスタンスの [MPI ワークロード](batch-mpi.md)を実行するには、リモート ダイレクト メモリ アクセス (RDMA) 用のネットワーク インターフェイスを備えた H シリーズなどのサイズを選択できます。 これらのサイズでは、InfiniBand ネットワークに接続してノード間通信を行うため、MPI アプリケーションを高速化できます。 
 
@@ -74,7 +74,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 Batch プール用の特殊な VM サイズを構成するために、必要なソフトウェアやドライバーをインストールするためのいくつかのオプションがあります。
 
-* 仮想マシン構成のプールの場合、ドライバーとソフトウェアがプレインストールされている構成済みの [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) VM イメージを選択します。 次に例を示します。 
+* 仮想マシン構成のプールの場合、ドライバーとソフトウェアがプレインストールされている構成済みの [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) VM イメージを選択します。 例 : 
 
   * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) - RDMA ドライバーと Intel MPI 5.1 が含まれています
 
@@ -106,7 +106,7 @@ Windows NC ノードのプールで CUDA アプリケーションを実行する
 3. パッケージを Batch アカウントにアップロードします。 手順については、[アプリケーション パッケージ](batch-application-packages.md)のガイダンスを参照してください。 アプリケーション ID (*GPUDriver* など) とバージョン (*411.82* など) を指定します。
 1. Batch API または Azure portal で、必要な数のノードとスケールを指定して、仮想マシン構成でプールを作成します。 次の表に、開始タスクを使用して NVIDIA GPU ドライバーを自動的にインストールする際の設定の例を示します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ---- | ----- | 
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | MicrosoftWindowsServer |
@@ -127,7 +127,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -146,7 +146,7 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
 1. Batch API または Azure portal で、[Shared Image Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -161,7 +161,7 @@ Linux H シリーズのノードのプールで MPI アプリケーションを�
 
 Batch API または Azure portal で、このイメージを使い、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、プール設定の例を示します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | OpenLogic |
@@ -171,7 +171,7 @@ Batch API または Azure portal で、このイメージを使い、必要な�
 | **ノード間通信が有効** | True |
 | **ノードごとの最大タスク数** | 1 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) の例を参照してください。
 

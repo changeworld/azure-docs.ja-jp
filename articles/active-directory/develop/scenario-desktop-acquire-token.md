@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ用のトークンを取得する | Azure
+title: Web API を呼び出すトークンを取得する (デスクトップアプリ) | Azure
 titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデスクトップ アプリをビルドする方法について説明します (アプリのトークンの取得)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920228"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423889"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ - トークンの取得
 
@@ -38,7 +38,7 @@ Web API はその `scopes` によって定義されます。 どのようなエ�
 
 ### <a name="in-msalnet"></a>MSAL.NET の場合
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>MSAL.NET の場合
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ Android では、親アクティビティを指定して (`.WithParentActivityOr
 
 対話型の操作には UI が重要です。 `AcquireTokenInteractive` には、特定の省略可能なパラメーターが 1 つあり、それをサポートするプラットフォームに対して親 UI を指定できます。 デスクトップ アプリケーションで使用する場合、`.WithParentActivityOrWindow` の型はプラットフォームによって異なります。
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ WithParentActivityOrWindow(object parent).
 - Windows では、埋め込みブラウザーが適切な UI 同期コンテキストを取得するように、UI スレッドから `AcquireTokenInteractive` を呼び出す必要があります。  UI スレッドから呼び出さない場合は、メッセージが適切にポンプされなかったり、UI によるデッドロックが発生したりする可能性があります。 UI スレッドでない場所で UI スレッドから MSAL を呼び出す方法の 1 つとしては、WPF で `Dispatcher` を使用します。
 - WPF を使用している場合に WPF コントロールからウィンドウを取得するには、`WindowInteropHelper.Handle` クラスを使用できます。 呼び出しは WPF コントロール (`this`) から次のように行われます。
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ WithParentActivityOrWindow(object parent).
 
 この修飾子は、複数のリソースに対するユーザーの事前の同意を求める (通常は MSAL.NET または Microsoft ID プラットフォームで使用されるインクリメンタルな同意を使用しない) 高度なシナリオで使用されます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する方法](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)」を参照してください。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ MSAL によりほとんどのプラットフォームに Web UI の実装が提�
 
 `WithCustomWebUi` は、パブリック クライアント アプリケーション内で独自の UI を提供し、ユーザーが ID プロバイダーの /Authorize エンドポイントを経由し、サインインして同意できるようにするための拡張ポイントです。 MSAL.NET では、その後で認証コードを引き換えて、トークンを取得できます。 たとえば、電子アプリケーション (VS フィードバックなど) に Web 操作を提供させて、ほとんどの処理を MSAL.NET に任せるために Visual Studio で使用されます。 また、UI オートメーションを提供する場合に使用することもできます。 パブリック クライアント アプリケーションの場合、MSAL.NET では PKCE 標準 ([RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients](https://tools.ietf.org/html/rfc7636)) を使用してセキュリティを確保します。コードを引き換えることができるのは MSAL.NET のみです。
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ MSAL によりほとんどのプラットフォームに Web UI の実装が提�
   1. `ICustomWebUi` インターフェイスを実装します ([こちら](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)を参照)。 基本的には、1 つのメソッド `AcquireAuthorizationCodeAsync` を実装する必要があります。このメソッドでは、(MSAL.NET によって計算される) 認証コード URL を受け入れ、ユーザーに ID プロバイダーを操作させて、ID プロバイダーが実装のコールバックに使用した URL (認証コードを含む) を返します。 問題がある場合は、MSAL と適切に連携する `MsalExtensionException` 例外が実装によってスローされます。
   2. `AcquireTokenInteractive` の呼び出しでは、カスタム Web UI のインスタンスを渡す `.WithCustomUI()` 修飾子を使用できます。
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/micr
 
 この構造体を使用するには、次のように記述します。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -407,7 +407,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 統合 Windows 認証 (IWA) は、**フェデレーション** ユーザー (Active Directory で作成され、Azure Active Directory によって支援されているユーザー) に対してのみ使用できます。 AAD で直接作成され、AD による支援のないユーザー (**マネージド** ユーザー) はこの認証フローを使用できません。 この制限は、ユーザー名/パスワードのフローには影響しません。
 - IWA は、.NET Framework、.NET Core、および UWP プラットフォーム用に記述されたアプリを対象としています。
-- IWA では MFA (多要素認証) をバイパスしません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
+- IWA では MFA (多要素認証) はバイパスされません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
   > [!NOTE]
   > これには注意が必要です。 IWA は非対話型ですが、MFA にはユーザーの操作が必要です。 ID プロバイダーが MFA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 弊社の観測によると、MFA が必要なのは、他の国からログインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても MFA が必要になる可能性があります。 決定論的なルール セットを想定しないでください。Azure Active Directory では AI を使用して、MFA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、ユーザー プロンプト (対話型認証またはデバイス コード フロー) にフォールバックする必要があります。
 
@@ -443,7 +443,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 次の例は、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ B2C で ROPC を使用する方法の詳細については、[こちら](https:/
 
 次の例は、シンプルなケースを示しています。
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 次の例は、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Azure AD による対話型認証には Web ブラウザーが必要です (詳�
 
 `IPublicClientApplication` には `AcquireTokenWithDeviceCode` というメソッドが含まれています。
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -908,7 +908,7 @@ Azure AD による対話型認証には Web ブラウザーが必要です (詳�
 
 次のサンプル コードは、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1119,7 +1119,7 @@ ADAL.NET 3.x、ADAL.NET 5.x、および MSAL.NET の間で SSO 状態を共有�
 
 アプリケーションをビルドした後、アプリケーションに `UserTokenCache` を渡す ``TokenCacheHelper.EnableSerialization()`` を呼び出すことで、シリアル化を有効にします。
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 このヘルパー クラスは次のコード スニペットのようになります。
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ static class TokenCacheHelper
 
 トークン キャッシュのシリアル化を統一キャッシュ形式の両方 (同じプラットフォーム上の ADAL.NET 4.x と MSAL.NET 2.x に共通、および同じ世代以前のその他の MSAL を使用) で実装する場合は、次のコードを参考にすることができます。
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 今回のヘルパー クラスは次のコードのようになります。
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -1323,7 +1323,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [デスクトップ アプリから Web API を呼び出す](scenario-desktop-call-api.md)

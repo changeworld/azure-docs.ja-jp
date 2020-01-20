@@ -2,13 +2,14 @@
 title: リージョンごとのリソースの可用性
 description: さまざまな Azure リージョンにある Azure Container Instances サービス用のコンピューティング リソースとメモリ リソースの可用性。
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445828"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -25,24 +26,23 @@ ms.locfileid: "74533482"
 
 次のリージョンとリソースは、Linux および [サポートされている](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 ベースのコンテナーを含むコンテナー グループで使用できます。
 
-| Location | OS | CPU | メモリ (GB) |
+| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| カナダ中部、インド中部、米国中部、東アジア、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、米国西部 | Linux | 4 | 16 |
-| 西ヨーロッパ、米国西部 2 | Linux | 4 | 14 |
+| ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 16 |
 | オーストラリア東部、東日本 | Linux | 2 | 8 |
-| 米国中北部、インド南部 | Linux | 2 | 3.5 |
-| 西ヨーロッパ | Windows | 4 | 16 |
+| 米国中北部 | Linux | 2 | 3.5 |
+| ブラジル南部、東日本、西ヨーロッパ | Windows | 4 | 16 |
 | 米国東部、米国西部 | Windows | 4 | 14 |
-| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 | Windows | 2 | 3.5 |
+| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 | Windows | 2 | 3.5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC、1809 デプロイ (プレビュー)
 
 次のリージョンとリソースは、Windows Server 2019 ベースのコンテナー (プレビュー) を含むコンテナー グループで使用できます。
 
-| Location | OS | CPU | メモリ (GB) |
+| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| 東南アジア、北ヨーロッパ、西ヨーロッパ、米国中部、米国東部、米国西部、米国西部 2 | Windows | 4 | 16 |
-| 米国東部 2 | Windows | 2 | 3.5 |
+| オーストラリア東部、ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ | Windows | 4 | 16 |
+| 米国東部 2、米国西部 2 | Windows | 2 | 3.5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>可用性 - 仮想ネットワークのデプロイ (プレビュー)
@@ -58,7 +58,7 @@ ms.locfileid: "74533482"
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 追加のリージョンやリソースの可用性の増加については、[aka.ms/aci/feedback](https://aka.ms/aci/feedback) でチームにお知らせください。
 

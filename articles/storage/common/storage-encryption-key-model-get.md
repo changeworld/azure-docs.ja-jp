@@ -1,20 +1,21 @@
 ---
-title: ストレージアカウントに使用されている暗号化キーモデルを決定する  - Azure Storage
+title: ストレージ アカウントに使用されている暗号化キー モデルを確認する
+titleSuffix: Azure Storage
 description: Azure portal、PowerShell、または Azure CLI を使用して、ストレージアカウントの暗号化キーがどのように管理されているかを確認します。 キーは、Microsoft (既定)、または顧客が管理できます。 顧客が管理するキーは、Azure Key Vault に格納する必要があります。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666519"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665421"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>ストレージアカウントに使用されている Azure Storage 暗号化キーモデルを決定する
 
@@ -70,6 +71,6 @@ key_source=$(az storage account show \
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)

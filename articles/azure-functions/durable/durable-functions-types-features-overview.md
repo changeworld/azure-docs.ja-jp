@@ -1,18 +1,18 @@
 ---
-title: Azure Functions の Durable Functions 拡張機能の関数の種類
+title: Azure Durable Functions の関数の型
 description: Azure Functions の Durable Functions オーケストレーションでの関数間の情報交換をサポートする、関数とロールの種類について説明します。
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433261"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions の種類と機能 (Azure Functions)
+# <a name="durable-functions-types-and-features"></a>Durable Functions の型と機能
 
 Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 Durable Functions は、関数実行のステートフル オーケストレーションに使用できます。 持続的関数アプリとはさまざまな Azure 関数で構成されるソリューションです。 Functions は永続関数のオーケストレーションでさまざまな役割を果たすことができます。 
 
@@ -59,7 +59,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 オーケストレーターまたはエンティティ関数をトリガーするだけでなく、*持続的クライアント* バインディングを使用して、実行中のオーケストレーションおよびエンティティと対話できます。 たとえば、オーケストレーションに対してクエリを実行したり、オーケストレーションを終了したりできます。また、オーケストレーションに対してイベントを生成することもできます。 オーケストレーションとエンティティの管理の詳細については、[インスタンスの管理](durable-functions-instance-management.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
 

@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433028"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource` クラスには、クラスタリングに関連する以下のメソッドもあります。
 
-| 方法 | 戻り値の型 | 説明 |
+| 方法 | の戻り値の型 : | [説明] |
 |--------|-------------|-------------|
 | getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | クラスターが拡大し始めるか、または分解するズーム レベルを計算します。 |
@@ -88,12 +88,12 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラス
 
 クラスター化されたデータ ポイントを含むレイヤーでマウス イベントが発生すると、クラスター化されたデータ ポイントが GeoJSON ポイント フィーチャー オブジェクトとしてイベントに返されます。 このポイント フィーチャーには次のプロパティがあります。
 
-| プロパティ名 | 種類 | 説明 |
-|---------------|------|-------------|
-| cluster | ブール値 | フィーチャーがクラスターを表すかどうかを示します。 |
-| cluster_id | string | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
-| point_count | number | クラスターに含まれているポイントの数。 |
-| point_count_abbreviated | string | `point_count` の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります) |
+| プロパティ名             | 種類    | [説明]   |
+|---------------------------|---------|---------------|
+| `cluster`                 | boolean | フィーチャーがクラスターを表すかどうかを示します。 |
+| `cluster_id`              | string  | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
+| `point_count`             | number  | クラスターに含まれているポイントの数。  |
+| `point_count_abbreviated` | string  | `point_count` の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります)  |
 
 この例では、クラスター ポイントをレンダリングするバブル レイヤーを受け取り、クリック イベントを追加します。このイベントは、トリガーされると、クラスターが分解する次のズーム レベルを計算してそのレベルにマップをズームします。このとき、`DataSource` クラスの `getClusterExpansionZoom` メソッドと、クリックされたクラスター化データ ポイントの `cluster_id` プロパティが使用されます。 
 
@@ -123,7 +123,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>クラス
 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>クラスター集計</a>の Pen を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

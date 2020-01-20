@@ -1,5 +1,5 @@
 ---
-title: 'Virtual WAN: NVA への仮想ハブ ルート テーブルを作成する: Azure ポータル'
+title: 'Virtual WAN: NVA への仮想ハブ ルート テーブルを作成する: Azure portal'
 description: ポータルを使用して、トラフィックをネットワーク仮想アプライアンスに誘導するための Virtual WAN 仮想ハブ ルート テーブル。
 services: virtual-wan
 author: cherylmc
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534133"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612362"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure ポータル
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure portal
 
 この記事では、Virtual WAN ハブに接続されているブランチ (オンプレミス サイト) から、ネットワーク仮想アプライアンス (NVA) を介してスポーク VNet にトラフィックを誘導する方法について説明します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "74534133"
 
 ハブ ルート テーブルを使用して、ハブを更新します。 この演習のために、次の値を使用できます。
 
-* **間接スポーク VNet アドレス空間:** (VNet1 と VNet2) 10.0.2.0/24 と 10.0.3.0/24
+* **スポーク VNet アドレス空間:** (VNet1 と VNet2) 10.0.2.0/24 と 10.0.3.0/24
 * **DMZ NVA ネットワーク インターフェイスのプライベート IP アドレス:** 10.0.4.5
 
 1. お使いの仮想 WAN に移動します。
@@ -83,7 +83,7 @@ ms.locfileid: "74534133"
 
  この手順では、次の値を使用します。
 
-| VNet の名前| 接続名|
+| VNet の名前| [接続名]|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
@@ -101,6 +101,6 @@ ms.locfileid: "74534133"
     * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
 4. **[OK]** をクリックして、接続を作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

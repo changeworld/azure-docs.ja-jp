@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics に入力としてデータをストリーム配信する
 description: Azure Stream Analytics でデータ接続を設定する方法について説明します。 入力には、イベントからのデータ ストリームだけでなく、参照データも含まれます。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: df111d605b7c05bcb934771b6063f2be04770ea9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606464"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646848"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -31,7 +30,7 @@ Stream Analytics では、すべてのデータ ストリーム入力ソース�
 
 ## <a name="create-edit-or-test-inputs"></a>入力の作成、編集、またはテスト
 
-[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-vs-code.md) を使用して、ストリーミング ジョブに既存の入力を追加、表示、または編集できます。 また、Azure portal、[Visual Studio](stream-analytics-vs-tools-local-run.md)、および [Visual Studio Code](vscode-local-run.md) のサンプル データから、入力接続をテストして、[クエリをテストする](stream-analytics-manage-job.md#test-your-query)ことができます。 クエリを記述する場合は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
+[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-vs-code.md) を使用して、ストリーミング ジョブに既存の入力を追加、表示、または編集できます。 また、Azure portal、[Visual Studio](stream-analytics-vs-tools-local-run.md)、および [Visual Studio Code](visual-studio-code-local-run.md) のサンプル データから、入力接続をテストして、[クエリをテストする](stream-analytics-manage-job.md#test-your-query)ことができます。 クエリを記述する場合は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
@@ -48,7 +47,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 
 次の表に示したのは、Azure Portal の **[新しい入力]** ページで Event Hubs からのデータ入力をストリーム配信するときに使用される各プロパティの説明です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** |この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
 | **サブスクリプション** | イベント ハブ リソースが存在するサブスクリプションを選択します。 | 
@@ -57,12 +56,12 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | **イベント ハブ ポリシー名** | イベント ハブへのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 Event Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に設定されます。|
 | **イベント ハブ コンシューマー グループ** (推奨) | Stream Analytics ジョブごとに個別のコンシューマー グループを使用することを強くお勧めします。 イベント ハブからデータを取り込むために使用するコンシューマー グループが、この文字列によって識別されます。 コンシューマー グループが指定されていない場合、Stream Analytics ジョブは $Default コンシューマー グループを使用します。  |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
-| **Encoding** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| **[エンコード]** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
 イベント ハブ ストリーム入力からデータが送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **EventProcessedUtcTime** |Stream Analytics によってイベントが処理された日時。 |
 | **EventEnqueuedUtcTime** |Event Hubs でイベントを受信した日時。 |
@@ -96,7 +95,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 次の表に、IoT Hub をストリーム入力として構成する場合に使用する、Azure Portal の **[新しい入力]** ページにある各プロパティの説明を示しています。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** | この入力を参照するジョブのクエリで使用するわかりやすい名前。|
 | **サブスクリプション** | IoT Hub リソースが存在するサブスクリプションを選択します。 | 
@@ -106,13 +105,13 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | **共有アクセス ポリシー キー** | IoT Hub へのアクセスを承認するために使用する共有アクセス キー。  IoT Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
 | **コンシューマー グループ** | Stream Analytics ジョブごとに異なるコンシューマー グループを使用することを強くお勧めします。 IoT Hub からのデータを取り込むために使用するコンシューマー グループです。 明示的に指定されない限り、Stream Analytics は $Default コンシューマー グループを使用します。  |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
-| **Encoding** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| **[エンコード]** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
 
 IoT Hub からのストリーム データを使用する場合、Stream Analytics クエリで次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **EventProcessedUtcTime** | イベントが処理された日時。 |
 | **EventEnqueuedUtcTime** | IoT Hub でイベントを受信した日時。 |
@@ -148,7 +147,7 @@ CSV 形式の入力では、データ セットに対してフィールドを定
 
 次の表に、Blob Storage をストリーム入力として構成する場合に使用する、Azure Portal の **[新しい入力]** ページにある各プロパティの説明を示しています。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** | この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
 | **サブスクリプション** | IoT Hub リソースが存在するサブスクリプションを選択します。 | 
@@ -159,12 +158,12 @@ CSV 形式の入力では、データ セットに対してフィールドを定
 | **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` (時) です。 |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
-| **Encoding** | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
+| **[エンコード]** | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | **圧縮** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
 データが Blob Storage のソースから送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **BlobName** |イベントに起因する入力 BLOB の名前。 |
 | **EventProcessedUtcTime** |Stream Analytics によってイベントが処理された日時。 |
@@ -181,9 +180,9 @@ SELECT
 FROM Input
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

@@ -1,25 +1,16 @@
 ---
-title: Azure Cloud Services アプリの Service Fabric への変換 | Microsoft Docs
+title: Azure Cloud Services アプリの Service Fabric への変換
 description: このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463346"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -252,7 +243,7 @@ Service Fabric のスタートアップ エントリ ポイントは、ServiceMa
 ## <a name="a-note-about-development-environment"></a>開発環境に関する注意事項
 Cloud Services と Service Fabric は、いずれもプロジェクト テンプレートで Visual Studio と統合され、デバッグ、構成、ローカルと Azure 両方へのデプロイがサポートされています。 また、Cloud Services と Service Fabric のいずれにも、ローカル開発ランタイム環境が用意されています。 違いは、Cloud Services 開発ランタイムは、実行されている Azure 環境をエミュレートしますが、Service Fabric は、エミュレーターを使用しない点です。Service Fabric は、完全な Service Fabric ランタイムを使用します。 ローカル開発コンピューターで実行している Service Fabric 環境は、運用時に実行する環境と同じです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の全機能を活用できるように、Service Fabric の Reliable Services の詳細と、Cloud Services と Service Fabric アプリケーション アーキテクチャの違いについて説明します。
 
 * [Service Fabric の Reliable Services の概要](service-fabric-reliable-services-quick-start.md)

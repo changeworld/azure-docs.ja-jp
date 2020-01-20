@@ -1,5 +1,6 @@
 ---
-title: Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Docs
+title: Azure Cloud Services に影響を与える Azure サービスの中断に対処する
+titleSuffix: Azure Cloud Services
 description: Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: cloud-services
 documentationcenter: ''
@@ -9,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: a014c3d5ada2024609e9262d8943090ac7b205c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361213"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -31,7 +32,7 @@ Azure には、可用性の高いアプリケーションをサポートする�
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>オプション 1:Azure Traffic Manager を介してバックアップ デプロイを使用する
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>オプション 1: Azure Traffic Manager を介してバックアップ デプロイを使用する
 最も堅牢なディザスター リカバリー ソリューションでは、アプリケーションの複数のデプロイを異なるリージョンで維持し、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用して、それらの間のトラフィックを転送します。 Azure Traffic Manager は複数の[ルーティング メソッド](../traffic-manager/traffic-manager-routing-methods.md)を備えているため、プライマリ/バックアップ モデルを使用してデプロイを管理するか、それらの間のトラフィックを分割するかどうかを選択できます。
 
 ![Balancing Azure Cloud Services across regions with Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
@@ -49,10 +50,10 @@ Azure には、可用性の高いアプリケーションをサポートする�
 * SQL Database ソースの場合は、[概要:SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)に関する記事をご覧になり、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについてご確認ください。
 
 
-## <a name="option-3-wait-for-recovery"></a>オプション 3: 復旧を待つ
+## <a name="option-3-wait-for-recovery"></a>オプション 3:復旧を待つ
 この場合、ユーザーによる操作は不要ですが、リージョンが復元されるまでサービスは利用できません。 現在のサービスの状態は、[Azure サービスの正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ディザスター リカバリーと高可用性戦略を実装する方法の詳細については、[Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
 
 クラウド プラットフォームの機能の詳細な技術について理解を深めるには、「 [Azure の回復性技術ガイダンス](/azure/architecture/checklist/resiliency-per-service)」を参照してください。

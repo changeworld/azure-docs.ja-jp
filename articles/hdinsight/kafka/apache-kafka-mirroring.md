@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767707"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552204"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -86,36 +86,41 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
         ![HDInsight Kafka での VNET ピアリングの追加](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. IP アドバタイズを構成します。
-    1. `https://PRIMARYCLUSTERNAME.azurehdinsight.net` からプライマリ クラスターの Ambari ダッシュボードに移動します。
-    1. **[サービス]**  >  **[Kafka]** を選択します。 **[Configs]** タブをクリックします。
-    1. **kafka env テンプレート** セクションの一番下に次の構成行を追加します。 **[保存]** を選択します。
+### <a name="configure-ip-advertising"></a>IP アドバタイズを構成する
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+クライアントでドメイン名の代わりにブローカー IP アドレスを使用して接続を行えるように、IP アドバタイズを構成します。
 
-    1. **[構成の保存]** 画面でメモを入力し、 **[保存]** をクリックします。
-    1. 構成の警告が表示されたら、 **[Proceed Anyway] (警告を無視して続行)** をクリックします。
-    1. **[Save Configuration Changes] (構成の変更を保存)** の **[OK]** を選択します。
-    1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をク選択します。 **[Confirm Restart All]\(すべて再起動\)** を選択します。
+1. `https://PRIMARYCLUSTERNAME.azurehdinsight.net` からプライマリ クラスターの Ambari ダッシュボードに移動します。
+1. **[サービス]**  >  **[Kafka]** を選択します。 **[Configs]** タブをクリックします。
+1. **kafka env テンプレート** セクションの一番下に次の構成行を追加します。 **[保存]** を選択します。
 
-        ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成します。
-    1. **[サービス]**  >  **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
-    1. **[保存]** を選択します。
-    1. **[再起動]** 、 **[Confirm Restart All] (すべて再起動)** を選択します。
+1. **[構成の保存]** 画面でメモを入力し、 **[保存]** をクリックします。
+1. 構成の警告が表示されたら、 **[Proceed Anyway] (警告を無視して続行)** をクリックします。
+1. **[Save Configuration Changes] (構成の変更を保存)** の **[OK]** を選択します。
+1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をク選択します。 **[Confirm Restart All]\(すべて再起動\)** を選択します。
 
-1. プライマリ クラスターのブローカーの IP アドレスと Zookeeper アドレスを記録します。
-    1. Ambari ダッシュボードの **[ホスト]** を選択します。
-    1. ブローカーと Zookeeper の IP アドレスをメモしておきます。 ブローカー ノードのホスト名の最初の 2 文字は **wn**、Zookeeper ノードのホスト名の最初 2 文字は **zk** です。
+    ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![Apache Ambari でのノードの IP アドレスの表示](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>すべてのネットワーク インターフェイスをリッスンするように Kafka を構成します。
+    
+1. **[サービス]**  >  **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
+1. **[保存]** を選択します。
+1. **[再起動]** 、 **[Confirm Restart All] (すべて再起動)** を選択します。
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>プライマリ クラスターのブローカーの IP アドレスと Zookeeper アドレスを記録します。
+
+1. Ambari ダッシュボードの **[ホスト]** を選択します。
+1. ブローカーと Zookeeper の IP アドレスをメモしておきます。 ブローカー ノードのホスト名の最初の 2 文字は **wn**、Zookeeper ノードのホスト名の最初 2 文字は **zk** です。
+
+    ![Apache Ambari でのノードの IP アドレスの表示](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. 2 番目のクラスター **kafka-secondary-cluster** に対して前の 3 つの手順を繰り返します。IP アドバタイズを構成し、リスナーを設定して、ブローカーと Zookeeper の IP アドレスをメモします。
 
@@ -263,7 +268,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     この例で使用するパラメーターは次のとおりです。
 
-    |パラメーター |説明 |
+    |パラメーター |[説明] |
     |---|---|
     |--consumer.config|コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*プライマリ* Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。|
     |--producer.config|プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*セカンダリ* Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。|
@@ -295,7 +300,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 このドキュメントの手順では、別の Azure リソース グループにクラスターを作成しました。 作成されたすべてのリソースを削除するには、作成した 2 つのリソース グループ **kafka-primary-rg** および **kafka-secondary_rg** を削除します。 リソース グループを削除すると、このドキュメントに従って作成したすべてのリソースが削除されます。これには、クラスター、仮想ネットワーク、ストレージ アカウントなどが含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、[MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して [Apache Kafka](https://kafka.apache.org/) クラスターのレプリカを作成する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 

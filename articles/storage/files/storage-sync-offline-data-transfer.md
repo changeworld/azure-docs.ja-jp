@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box およびその他の方法を使用して Azure File Sync にデータを移行する
+title: Azure Data Box を使用して Azure File Sync にデータを移行する
 description: Azure File Sync と互換性のある方法で大量のデータを移行します。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457369"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -86,6 +86,6 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 > [!IMPORTANT]
 > オフライン データ転送モードを無効にした後は、一括移行からのステージング共有がまだ利用可能であっても、オフライン データ転送モードを再度有効にすることはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)

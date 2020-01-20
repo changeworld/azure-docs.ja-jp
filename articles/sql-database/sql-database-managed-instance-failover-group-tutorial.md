@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286758"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552765"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 
@@ -31,6 +31,7 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
   > [!NOTE]
   > - このチュートリアルを実行するときは、[マネージド インスタンスのフェールオーバー グループを設定するための前提条件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)を使用して、リソースを構成するようにしてください。 
   > - マネージド インスタンスの作成にはかなりの時間がかかることがあります。 そのため、このチュートリアルの完了には数時間かかることがあります。 プロビジョニング時間の詳細については、「[マネージド インスタンスの管理操作](sql-database-managed-instance.md#managed-instance-management-operations)」を参照してください。 
+  > - フェールオーバー グループに参加しているマネージド インスタンスには、[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) または接続された 2 つの VPN ゲートウェイが必要です。 このチュートリアルでは、VPN ゲートウェイを作成して接続する手順を示します。 既に ExpressRoute が構成されている場合は、これらの手順をスキップします。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -728,7 +729,9 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 ---
 
 ## <a name="4---create-primary-gateway"></a>4 - プライマリ ゲートウェイを作成する 
-2 つのマネージド インスタンスをフェールオーバー グループに参加させるには、2 つのマネージド インスタンスの仮想ネットワークの間にネットワーク通信を許可するゲートウェイが構成されている必要があります。 Azure portal を使用して、プライマリ マネージド インスタンスのゲートウェイを作成できます。 
+2 つのマネージド インスタンスをフェールオーバー グループに参加させるには、2 つのマネージド インスタンスの仮想ネットワークの間に、ネットワーク通信が可能になるように ExpressRoute またはゲートウェイが構成されている必要があります。 2 つの VPN ゲートウェイを接続するのではなく [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成する場合は、[手順 7](#7---create-a-failover-group) に進んでください。  
+
+この記事では、2 つの VPN ゲートウェイを作成して接続する手順について説明しますが、代わりに ExpressRoute を構成した場合は、フェールオーバー グループの作成に進むことができます。 
 
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
@@ -1070,12 +1073,12 @@ PowerShell を使用してフェールオーバーをテストします。
 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 リソースをクリーンアップするには、まず、マネージド インスタンス、次に仮想クラスターを削除します。その後、残りのリソース、最後にリソース グループを削除します。 
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。 
-1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスはバックグラウンドで完了するまで時間がかかる場合があります。完了するまでは、"*仮想クラスター*" やその他の依存リソースを削除することはできません。 [アクティビティ] タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。 
+1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスがバックグラウンドで完了するまで時間がかかる場合があります。これが完了するまで、"*仮想クラスター*" やその他の依存リソースを削除することはできません。 [アクティビティ] タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。 
 1. マネージド インスタンスが削除されたら、"*仮想クラスター*" を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 
 1. 残りのリソースを削除します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 
 1. リソース グループを削除するには、 **[リソース グループの削除]** を選択し、リソース グループの名前 (`myResourceGroup`) を入力して、 **[削除]** を選びます。 
@@ -1139,9 +1142,9 @@ Azure portal に使用できるスクリプトはありません。
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、2 つのマネージド インスタンスの間にフェールオーバー グループを構成しました。 以下の方法について学習しました。
+このチュートリアルでは、2 つのマネージド インスタンスの間にフェールオーバー グループを構成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > - プライマリ マネージド インスタンスを作成する

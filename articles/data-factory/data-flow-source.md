@@ -7,15 +7,15 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/12/2019
+ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440214"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>マッピング データ フローのソース変換 
+# <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換 
 
 ソース変換は、データ フローのデータ ソースを構成します。 データ フローを設計する際、最初の手順では、常にソース変換を構成します。 ソースを追加するには、データ フローのキャンバスにある **[Add Source]\(ソースの追加\)** ボックスをクリックします。
 
@@ -23,18 +23,20 @@ ms.locfileid: "74702053"
 
 各ソース変換が関連付けられる Data Factory データセットは 1 つだけです。 データセットは、書き込みまたは読み取りを行うデータの形状と場所を定義します。 ファイルベースのデータセットを使用している場合は、ソース内でワイルドカードやファイル リストを使用すると、一度に複数のファイルを操作できます。
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>マッピング データ フローでサポートされているコネクタ
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>マッピング データ フローでサポートされているソース コネクタ
 
 Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
     
-* Azure Blob Storage (JSON、Avro、テキスト、Parquet)
-* Azure Data Lake Storage Gen1 (JSON、Avro、テキスト、Parquet)
-* Azure Data Lake Storage Gen2 (JSON、Avro、テキスト、Parquet)
-* Azure SQL Data Warehouse
-* Azure SQL Database
-* Azure CosmosDB
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
+* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Azure Data Factory は、80 を超えるネイティブ コネクタにアクセスできます。 それらの他のソースからのデータをデータ フローに含めるには、コピー アクティビティを使用して、サポートされているステージング領域のいずれかにそのデータを読み込みます。
+これらのコネクタに固有の設定は、 **[Source options]\(ソース オプション\)** タブにあります。これらの設定に関する情報は、コネクタのドキュメントに記載されています。 
+
+Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースからのデータをデータ フローに含めるには、コピー アクティビティを使用して、サポートされているステージング領域のいずれかにそのデータを読み込みます。
 
 ## <a name="source-settings"></a>ソースの設定
 
@@ -54,95 +56,12 @@ Azure Data Factory は、80 を超えるネイティブ コネクタにアクセ
 
 **[Sampling]:** ソースからの行数を制限するには、サンプリングを有効にします。 デバッグの目的でソースのデータをテストまたはサンプリングする場合は、この設定を使用します。
 
-**[Multiline rows]\(複数行\):** 値の途中に改行が含まれるなど、複数の行にわたる文字列値がソース テキスト ファイルに含まれる場合は、複数行を選択します。
+**[Multiline rows]\(複数行\):** 値の途中に改行が含まれるなど、複数の行にわたる文字列値がソース テキスト ファイルに含まれる場合は、複数行を選択します。 この設定は、DelimitedText データセットでのみ使用できます。
 
 ソースが正しく構成されていることを確認するには、デバッグ モードを有効にし、データ プレビューを取り込みます。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
 > [!NOTE]
 > デバッグ モードを有効にすると、データ プレビュー時に、デバッグの設定での行数上限の構成によってソースのサンプリング設定が上書きされます。
-
-## <a name="file-based-source-options"></a>ファイルベースのソース オプション
-
-Azure Blob Storage や Azure Data Lake Storage などのファイルベースのデータセットを使用している場合は、 **[Source Options]\(ソース オプション\)** タブを使用して、ソースでファイルを読み取る方法を管理できます。
-
-![ソース オプション](media/data-flow/sourceOPtions1.png "ソース オプション")
-
-**[Wildcard path]\(ワイルドカード パス\)** : ワイルドカード パターンを使用すると、ADF は、単一のソース変換で一致する各フォルダーとファイルをループ処理するよう指示されます。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
-
-ソース コンテナーから、パターンに一致する一連のファイルを選択します。 データセット内で指定できるのはコンテナーのみです。 そのため、ワイルドカード パスには、ルート フォルダーからのフォルダー パスも含める必要があります。
-
-ワイルドカードの例:
-
-* ```*``` - 任意の文字セットを表します。
-* ```**``` - ディレクトリの再帰的な入れ子を表します。
-* ```?``` - 1 文字を置き換えます。
-* ```[]``` - 角カッコ内の文字のいずれか 1 つと一致します。
-
-* ```/data/sales/**/*.csv``` - /data/sales の下のすべての csv ファイルを取得します。
-* ```/data/sales/20??/**``` - 20 世紀のすべてのファイルを取得します。
-* ```/data/sales/2004/*/12/[XY]1?.csv``` - 前に 2 桁の数字が付いた X または Y で始まる、2004 年 12 月のすべての csv ファイルを取得します。
-
-**[Partition root path]\(パーティションのルート パス\):** ```key=value``` 形式 (例: year=2019) のファイル ソース内のフォルダーをパーティション分割した場合、そのパーティション フォルダー ツリーの最上位をデータ フロー データ ストリーム内の列名に割り当てることができます。
-
-最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
-
-![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
-
-パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューを使用してデータの内容を表示すると、ADF によって、各フォルダー レベルで見つかった解決済みのパーティションが追加されることがわかります。
-
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
-
-**[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
-
-**[Column to store file name]\(ファイル名を格納する列\):** ソース ファイルの名前をデータの列に格納します。 ファイル名文字列を格納するための新しい列名をここに入力します。
-
-**[After completion]\(完了後\):** データ フローの実行後にソース ファイルに何もしないか、ソース ファイルを削除するか、またはソース ファイルを移動することを選択します。 移動のパスは相対パスです。
-
-後処理でソース ファイルを別の場所に移動するには、まず、ファイル操作の "移動" を選択します。 次に、"移動元" ディレクトリを設定します。 パスにワイルドカードを使用していない場合、"移動元" 設定はソース フォルダーと同じフォルダーになります。
-
-ワイルドカードを含むソース パスがある場合、構文は次のようになります。
-
-```/data/sales/20??/**/*.csv```
-
-"移動元" は次のように指定できます。
-
-```/data/sales```
-
-"移動先" は次のように指定できます。
-
-```/backup/priorSales```
-
-この場合、ソースとして指定された /data/sales の下のすべてのファイルは /backup/priorSales に移動されます。
-
-> [!NOTE]
-> ファイル操作は、パイプライン内のデータ フローの実行アクティビティを使用するパイプライン実行 (パイプラインのデバッグまたは実行) からデータ フローを開始する場合にのみ実行されます。 データ フロー デバッグ モードでは、ファイル操作は実行*されません*。
-
-**[Filter by last modified]\(最終更新日時でフィルター処理\):** 最終更新日時の範囲を指定することで、処理するファイルをフィルター処理できます。 日時はすべて UTC 形式です。 
-
-### <a name="add-dynamic-content"></a>動的なコンテンツの追加
-
-[Mapping Data Flow の変換式言語](data-flow-expression-functions.md)を使用して、ソースの設定すべてを式として指定できます。 動的なコンテンツを追加するには、設定パネルのフィールドの内部をクリックまたはポイントします。 **[動的なコンテンツの追加]** のハイパーリンクをクリックします。 これにより、式ビルダーが起動します。ここでは、式、静的なリテラル値、またはパラメーターを使用して値を動的に設定できます。
-
-![パラメーター](media/data-flow/params6.png "parameters")
-
-## <a name="sql-source-options"></a>SQL のソース オプション
-
-ソースが SQL Database または SQL Data Warehouse に存在する場合は、 **[Source Options]\(ソース オプション\)** タブで他にも SQL 固有の設定を使用できます。 
-
-**[Input]:** テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
-
-**Query**: [Input] フィールドで [Query] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。 テスト対象またはルックアップ対象の行を減らすうえでも、クエリの使用は有効な手段です。 例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
-
-**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。
-
-**Isolation Level**: マッピング データ フローでの SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
-* コミットされたものを読み取り
-* コミットされていないものを読み取り
-* 反復可能読み取り
-* シリアル化可能
-* なし (分離レベルを無視)
-
-![Isolation Level](media/data-flow/isolationlevel.png "Isolation Level")
 
 ## <a name="projection"></a>Projection
 
@@ -157,15 +76,6 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 ### <a name="import-schema"></a>Import schema
 
 Avro や CosmosDB のように、複雑なデータ構造をサポートするデータセットの場合は、データセットにスキーマ定義が存在している必要はありません。 そのようなタイプのソースについては、 **[プロジェクション]** タブの **[スキーマのインポート]** ボタンをクリックすることができます。
-
-## <a name="cosmosdb-specific-settings"></a>CosmosDB 固有の設定
-
-CosmosDB をソース タイプとして使用する場合、検討すべきオプションがいくつかあります。
-
-* [Include system columns]\(システム列を含める\): このチェック ボックスをオンにすると、CosmosDB からのデータ フローのメタデータに ```id``` や ```_ts``` といったシステム列が含められます。 コレクションを更新するときは、既存の行 ID を把握できるように、これを含めることが重要となります。
-* \[Page size]:クエリ結果のページあたりのドキュメント数。 既定値は "-1" で、サービスの動的ページが最大 1000 個使用されます。
-* スループット: このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小値は 400 です。
-* [Preferred regions]\(優先リージョン\): このプロセスの優先読み取りリージョンを選択できます。
 
 ## <a name="optimize-the-source-transformation"></a>ソース変換を最適化する
 
@@ -185,6 +95,6 @@ SQL Database ソースのデータをパーティション分割する必要は�
 
 マッピング データ フロー内での最適化の詳細については、[[Optimize] タブ](concepts-data-flow-overview.md#optimize)に関する説明を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Derived Column](data-flow-derived-column.md)と[Select](data-flow-select.md)の作成を開始します。

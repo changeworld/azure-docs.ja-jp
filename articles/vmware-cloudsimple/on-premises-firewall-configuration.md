@@ -1,5 +1,6 @@
 ---
 title: オンプレミスから Azure VMware Solution by CloudSimple にアクセスする
+titleSuffix: Azure VMware Solution by CloudSimple
 description: ファイアウォール経由でオンプレミス ネットワークから Azure VMware Solution by CloudSimple にアクセスする
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452404"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>オンプレミスから CloudSimple プライベート クラウド環境およびアプリケーションにアクセスする
 
@@ -23,7 +24,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 
 プライベート クラウドの vCenter と NSX-T Manager にアクセスするには、次の表に定義されているポートをオンプレミスのファイアウォールで開く必要があります。  
 
-| Port       | source                           | Destination                      | 目的                                                                                                                |
+| Port       | source                           | 宛先                      | 目的                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | オンプレミスの DNS サーバー          | プライベート クラウドの DNS サーバー        | *az.cloudsimple.io* の DNS 参照を、オンプレミス ネットワークからプライベート クラウドの DNS サーバーに転送するために必要です。       |
 | 53 (UDP)   | プライベート クラウドの DNS サーバー        | オンプレミスの DNS サーバー          | オンプレミスのドメイン名の DNS 参照を、プライベート クラウドの vCenter からオンプレミスの DNS サーバーに転送するために必要です。 |
@@ -36,7 +37,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 
 オンプレミスの Active Directory をプライベート クラウドの vCenter 上の ID ソースとして構成するには、表に定義されているポートを開く必要があります。  構成手順については、「[CloudSimple プライベート クラウド上の vCenter の ID プロバイダーとして Azure AD を使用する](https://docs.azure.cloudsimple.com/azure-ad/)」を参照してください。
 
-| Port         | source                           | Destination                                         | 目的                                                                                                                                          |
+| Port         | source                           | 宛先                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | プライベート クラウドの DNS サーバー        | オンプレミスの DNS サーバー                             | オンプレミスの Active Directory ドメイン名の DNS 参照を、プライベート クラウドの vCenter からオンプレミスの DNS サーバーに転送するために必要です。          |
 | 389 (TCP/UDP) | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory ドメイン コントローラー     | ユーザー認証のため、プライベートクラウドの vCenter サーバーから Active Directory ドメイン コントローラーへの LDAP 通信に必要です。                |
@@ -48,7 +49,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 
 プライベート クラウドで実行されているワークロード仮想マシンにアクセスするには、オンプレミスのファイアウォールでポートが開いている必要があります。  次の表は、必要とされる一般的なポートとその用途を示しています。  アプリケーション固有のポートの要件については、アプリケーションのドキュメントを参照してください。
 
-| Port         | source                         | Destination                          | 目的                                                                              |
+| Port         | source                         | 宛先                          | 目的                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | オンプレミス ネットワーク            | プライベート クラウドのワークロード ネットワーク       | プライベート クラウドで実行されている Linux 仮想マシンへの Secure Shell アクセス。              |
 | 3389 (TCP)    | オンプレミス ネットワーク            | プライベート クラウドのワークロード ネットワーク       | プライベート クラウドで実行されている Windows 仮想マシンへのリモート デスクトップ。                 |
@@ -57,7 +58,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 | 389 (TCP/UDP) | プライベート クラウドのワークロード ネットワーク | オンプレミスの Active Directory ネットワーク | Windows ワークロード仮想マシンをオンプレミスの Active Directory ドメインに結合します。       |
 | 53 (UDP)      | プライベート クラウドのワークロード ネットワーク | オンプレミス ネットワーク                  | ワークロード仮想マシンからオンプレミスの DNS サーバーへの DNS サービス アクセス。         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VLAN とサブネットを作成して管理する](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
 * [Azure ExpressRoute を使用してオンプレミスのネットワークに接続する](https://docs.azure.cloudsimple.com/on-premises-connection/)

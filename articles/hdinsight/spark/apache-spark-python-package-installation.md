@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215613"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529645"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -43,7 +43,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、次のような数多くのコミュニティ サイトを利用できます: [HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="understand-default-python-installation"></a>Python の既定のインストールを理解する
 
@@ -81,7 +81,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    仮想環境名がわからない場合は、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda info -e` を実行して、すべての仮想環境を表示できます。
+    仮想環境名がわからない場合は、クラスターのヘッド ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda info -e` を実行して、すべての仮想環境を表示できます。
 
 3. Spark と Livy の構成を変更して、作成した仮想環境をポイントします。
 
@@ -128,7 +128,7 @@ Anaconda のバージョンを確認するには、クラスターのヘッダ�
 
 ## <a name="seealso"></a>関連項目
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 

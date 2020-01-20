@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: ed47f18c9dabc685d6fbe02804562ef86a93190a
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285792"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496955"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -41,11 +41,17 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 以下のように、パブリック プレビューにオンボードします。
 
 * ポータルで、[この記事に従って](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)、Recovery Services サービス プロバイダーにご利用のサブスクリプション ID を登録します。
-* PowerShell では、このコマンドレットを実行します。 "登録済み" として完了するはずです。
+* PowerShell の "Az" モジュールでは、このコマンドレットを実行します。 "登録済み" として完了するはずです。
 
     ```powershell
     Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
+* PowerShell で "AzureRM" モジュールを使用している場合は、このコマンドレットを実行します。 "登録済み" として完了するはずです。
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -58,7 +64,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
    * VM が予期したとおりに一覧表示されない場合は、それが既にコンテナーにバックアップされているかどうかを確認してください。
    * 複数の VM を同じ名前にすることはできますが、それらは異なるリソース グループに属しています。
 
-3. **[仮想マシンの選択]** で、データベースの検出のために SAP HANA VM にアクセスする権限を、Azure Backup サービスに提供するスクリプトをダウンロードするためのリンクをクリックします。
+3. **[仮想マシンの選択]** で、リンクをクリックして、データベースの検出のために SAP HANA VM へのアクセス許可を Azure Backup サービスに提供するスクリプトをダウンロードします。
 4. バックアップする SAP HANA データベースをホストしている各 VM でスクリプトを実行します。
 5. VM でスクリプトを実行した後、 **[仮想マシンの選択]** で、VM を選択します。 その後、 **[DB の検出]** をクリックします。
 6. Azure Backup によって、VM 上のすべての SAP HANA データベースが検出されます。 検出中に、Azure Backup によって VM がコンテナーに登録され、VM に拡張機能がインストールされます。 エージェントはデータベースにインストールされません。
@@ -74,10 +80,10 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
     ![バックアップの構成](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. **[バックアップする項目の選択]** で、保護するデータベースをすべて選択し、 **[OK]** を選びます。
 
-    ![バックアップする項目の選択](./media/backup-azure-sap-hana-database/select-items.png)
+    ![バックアップする項目を選択する](./media/backup-azure-sap-hana-database/select-items.png)
 3. **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、以下の手順に従って、データベースの新しいバックアップ ポリシーを作成します。
 
-    ![バックアップ ポリシーの選択](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![バックアップ ポリシーを選択する](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. ポリシーを作成した後、 **[バックアップ]** メニューの **[バックアップの有効化]** をクリックします。
 
     ![バックアップの有効化](./media/backup-azure-sap-hana-database/enable-backup.png)
@@ -106,7 +112,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 3. **[リテンション期間]** で、完全バックアップのリテンション期間の設定を構成します。
     * 既定では、すべてのオプションが選択されています。 使用しないリテンション期間の制限をすべてクリアして、使用するものを設定します。
-    * バックアップのすべての種類 (完全/差分/ログ) の最小リテンション期間は 7 日間です。
+    * あらゆる種類のバックアップ (完全、差分、ログ) の最小保持期間は 7 日間です。
     * 復旧ポイントは、そのリテンション期間の範囲に基づいて、リテンション期間に対してタグ付けされます。 たとえば、日次での完全バックアップを選択した場合、日ごとにトリガーされる完全バックアップは 1 回だけです。
     * 特定の曜日のバックアップがタグ付けされ、週次でのリテンション期間と設定に基づいて保持されます。
     * 月次および年次のリテンション期間の範囲でも、同様の動作になります。
@@ -133,6 +139,9 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 9. **[OK]** をクリックしてポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 10. バックアップ ポリシーの定義が完了した後、 **[OK]** をクリックします。
 
+> [!NOTE]
+> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後、すなわち 30 + 7 日後に、クリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
+
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
 バックアップは、ポリシー スケジュールに従って実行されます。 次のように、バックアップ オンデマンを実行できます。
@@ -157,7 +166,7 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
     * **[enable_auto_log_backup]** を **[Yes]** に設定します。
     * **[log_backup_using_backint]** を **[True]** に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure VM で実行されている SAP HANA データベースを復元する](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)方法を学習します
+* [Azure VM で稼働している SAP HANA データベースを復元する](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)方法を学習する
 * [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)方法を学習します
