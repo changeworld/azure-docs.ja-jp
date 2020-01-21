@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 420db19a5ddcddfe37fa1a922e792fc0c8bc5b66
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701918"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912294"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
 Azure Notebooks を使用して、機械学習モジュールを開発し、Azure IoT Edge を実行している Linux デバイスにデプロイします。 
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure Machine Learning の詳細については、[Azure Machine Learning に関するドキュメント](../machine-learning/service/how-to-deploy-to-iot.md)を参照してください。
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure Machine Learning の詳細については、[Azure Machine Learning に関するドキュメント](../machine-learning/how-to-deploy-and-where.md)を参照してください。
 
 このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
 
@@ -49,24 +49,24 @@ Azure IoT Edge デバイス:
 クラウド リソース:
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* Azure Machine Learning ワークスペース。 [Azure portal での Azure Machine Learning の使用の開始](../machine-learning/service/quickstart-get-started.md)に関するページの手順に従って作成し、その使用方法について学習します。
+* Azure Machine Learning ワークスペース。 [Azure portal での Azure Machine Learning の使用の開始](../machine-learning/tutorial-1st-experiment-sdk-setup.md)に関するページの手順に従って作成し、その使用方法について学習します。
    * ワークスペース名、リソース グループ、およびサブスクリプション ID をメモしておきます。 これらの値はすべて、Azure portal のワークスペースの概要で確認できます。 チュートリアルの後半でこれらの値を使用して、ワークスペース リソースに Azure ノートブックを接続します。 
 
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning モジュールを作成してデプロイする
 
-このセクションでは、トレーニング済みの機械学習モデル ファイルを Azure Machine Learning コンテナーに変換します。 Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。 以下の手順に従って、そのリポジトリを Microsoft Azure Notebooks にアップロードしてコンテナーを作成し、それを Azure Container Registry にプッシュします。
+このセクションでは、トレーニング済みの機械学習モデル ファイルを Azure Machine Learning コンテナーに変換します。 Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。 これらの手順に従って、そのリポジトリを Microsoft Azure Notebooks にアップロードしてコンテナーを作成し、それを Azure Container Registry にプッシュします。
 
 
 1. Azure Notebooks プロジェクトに移動します。 [Azure portal](https://portal.azure.com) の Azure Machine Learning ワークスペースから、またはご自分の Azure アカウントを使用して [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) にサインインすることで、そこに移動できます。
 
 2. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** を選択します。
 
-3. GitHub リポジトリ名として `Azure/ai-toolkit-iot-edge` を指定します。 プロジェクトをプライベートのままにしておく場合は、 **[パブリック]** ボックスをオフにします。 **[インポート]** を選択します。 
+3. GitHub リポジトリ名として `Azure/ai-toolkit-iot-edge` を指定します。 プロジェクトをプライベートのままにしておく場合は、**[パブリック]** ボックスをオフにします。 **[インポート]** を選択します。 
 
-4. インポートが完了したら、新しい **ai-toolkit-iot-edge** プロジェクトに移動して、 **[IoT Edge anomaly detection tutorial]\(IoT Edge 異常検出チュートリアル\)** フォルダーを開きます。 
+4. インポートが完了したら、新しい **ai-toolkit-iot-edge** プロジェクトに移動して、**[IoT Edge anomaly detection tutorial]\(IoT Edge 異常検出チュートリアル\)** フォルダーを開きます。 
 
-5. プロジェクトが実行されていることを確認します。 実行されていない場合は、 **[Run on Free Compute]\(無料のコンピューティングで実行\)** を選択します。
+5. プロジェクトが実行されていることを確認します。 実行されていない場合は、**[Run on Free Compute]\(無料のコンピューティングで実行\)** を選択します。
 
    ![無料のコンピューティングで実行](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
@@ -78,7 +78,7 @@ Azure IoT Edge デバイス:
 
 9. **00-anomaly-detection-tutorial.ipynb** ファイルを開きます。
 
-10. メッセージが表示されたら、 **[Python 3.6]** カーネル、 **[Set Kernel]\(カーネルの設定\)** の順に選択します。
+10. メッセージが表示されたら、**[Python 3.6]** カーネル、**[Set Kernel]\(カーネルの設定\)** の順に選択します。
 
 11. コメントの指示に従って、ノートブックの最初のセルを編集します。 構成ファイルに追加したのと同じリソース グループ、サブスクリプション ID、およびワークスペース名を使用します。
 
@@ -97,15 +97,15 @@ Azure IoT Edge デバイス:
 
 2. **[概要]** セクションには、ワークスペースの詳細と、それに関連するリソースがリストされます。 **[レジストリ]** 値を選択します。これは、後ろに乱数が続くワークスペース名である必要があります。 
 
-3. コンテナー レジストリで、 **[リポジトリ]** を選択します。 前のセクションで実行したノートブックによって作成された、**tempanomalydetection** というリポジトリが表示されるはずです。 
+3. コンテナー レジストリで、**[リポジトリ]** を選択します。 前のセクションで実行したノートブックによって作成された、**tempanomalydetection** というリポジトリが表示されるはずです。 
 
-4. **[tempanomalydetection]** を選択します。 リポジトリに 1 つのタグ **1** があることがわかります。 
+4. **[tempanomalydetection]** を選択します。 リポジトリに 1 つのタグがあることがわかります: **1** 
 
-   これで、レジストリ名前、リポジトリ名、タグ、およびコンテナーの完全なイメージ パスがわかりました。 イメージ パスは **\<registry_name\>.azurecr.io/tempanomalydetection:1** のようになります。 イメージ パスを使用して、IoT Edge デバイスにこのコンテナーをデプロイすることができます。 
+   これでレジストリ名、リポジトリ名およびタグがわかったので、コンテナーの完全なイメージ パスがわかります。 イメージ パスは **\<registry_name\>.azurecr.io/tempanomalydetection:1** のようになります。 イメージ パスを使用して、IoT Edge デバイスにこのコンテナーをデプロイすることができます。 
 
-5. コンテナー レジストリで、 **[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの**ユーザー名**、および**パスワード**を含む、多くのアクセス資格情報が表示されるはずです。
+5. コンテナー レジストリで、**[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの**ユーザー名**、および**パスワード**を含む、多くのアクセス資格情報が表示されるはずです。
 
-   これらの資格情報は、レジストリからコンテナー イメージをプルするアクセス許可を IoT Edge デバイスに付与するために、配置マニフェストに含めることができます。 
+   これらの資格情報は、レジストリからコンテナー イメージをプルするアクセス許可を IoT Edge デバイスに付与するために、デプロイ マニフェストに含めることができます。 
 
 これで、Machine Learning コンテナー イメージの格納場所がわかりました。 次のセクションでは、お使いの IoT Edge デバイス上でモジュールとして実行されているコンテナーを確認する手順について説明します。 
 
@@ -133,11 +133,11 @@ IoT Edge デバイスでは、すべてのモジュールそれぞれから送�
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>IoT ハブに届くデータを表示する
 
-[Visual Studio Code 用の Azure IoT Hub Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (以前の Azure IoT Toolkit の拡張機能) を使用して、IoT ハブが受け取る device-to-cloud メッセージを表示できます。
+IoT ハブが受信する device-to-cloud メッセージは、[Visual Studio Code 用の Azure IoT Hub の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して表示できます。
 
 次の手順は、IoT ハブに届く device-to-cloud メッセージを監視するように Visual Studio Code を設定する方法を示しています。
 
-1. Visual Studio Code で、 **[IoT Hub Devices]\(IoT Hub デバイス\)** を選択します。
+1. Visual Studio Code で、**[IoT Hub Devices]\(IoT Hub デバイス\)** を選択します。
 
 2. **[...]** を選択した後、メニューで **[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。
 
@@ -145,13 +145,13 @@ IoT Edge デバイスでは、すべてのモジュールそれぞれから送�
 
 3. ページの上部に表示されるテキスト ボックスに、IoT Hub の iothubowner の接続文字列を入力します。 IoT Hub デバイスの一覧に、お使いの IoT Edge デバイスが表示されます。
 
-4. もう一度 **[...]** を選択してから、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
+4. もう一度 **[...]** を選択してから、**[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
 5. 5 秒ごとに tempSensor から送られるメッセージを確認します。 メッセージ本文には、machinelearningmodule によって true または false 値が提供される **anomaly** というプロパティが含まれています。 **AzureMLResponse** プロパティには、モジュールの実行に成功した場合、"OK" という値が含まれます。
 
    ![メッセージ本文内の Azure Machine Learning の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。
 
@@ -159,7 +159,7 @@ IoT Edge デバイスでは、すべてのモジュールそれぞれから送�
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Machine Learning を使用する IoT Edge モジュールを展開しました。 引き続き他のチュートリアルを実行し、Azure IoT Edge が、エッジでデータをビジネス上の洞察に変えるうえで、どのように役立つかを確認できます。
 
