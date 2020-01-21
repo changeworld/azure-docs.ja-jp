@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810407"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552782"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL Database インスタンス プール (プレビュー) とは
 
@@ -136,7 +136,7 @@ ms.locfileid: "73810407"
 
 コンピューティング価格 (仮想コア単位) では、次の 2 つの価格オプションを使用できます。
 
-  1. *ライセンス込み*:ソフトウェア アシュアランス付きの既存 SQL Server のライセンスが適用されます。
+  1. *ライセンス込み*:SQL ライセンスの料金が含まれます。 これは、ソフトウェア アシュアランス付きの既存の SQL Server ライセンスを適用しないお客様を対象としています。
   2. *[Azure ハイブリッド特典]* : SQL Server 向けの Azure ハイブリッド特典を含む割引価格。 お客様は、ソフトウェア アシュアランス付きの既存の SQL Server ライセンスを使用してこの価格を選択することができます。 資格情報とその他の詳細については、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)に関するページを参照してください。
 
 プール内の個々のインスタンスに対して、異なる価格オプションを設定することはできません。 親プール内のすべてのインスタンスは、ライセンス込みの価格または Azure ハイブリッド特典の価格である必要があります。 プールのライセンス モデルは、プールの作成後に変更できます。
@@ -148,7 +148,7 @@ ms.locfileid: "73810407"
 
 インスタンス プールの価格の詳細については、[マネージド インスタンスの価格ページ](https://azure.microsoft.com/pricing/details/sql-database/managed/)の "*インスタンス プール*" のセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - インスタンス プールの使用を開始するには、「[Azure SQL Database インスタンス プールの攻略ガイド (プレビュー)](sql-database-instance-pools-how-to.md)」を参照してください。
 - 最初のマネージド インスタンスを作成する方法については、[クイック スタート ガイド](sql-database-managed-instance-get-started.md)を参照してください。

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278008"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971962"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
@@ -40,7 +40,18 @@ ms.locfileid: "68278008"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+
+
+## <a name="enable"></a>[有効化]
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>アクセス権の付与
+
+
+### <a name="create-storage-account"></a>ストレージ アカウントの作成
 
 このセクションでは、ストレージ アカウントを作成します。
 
@@ -53,7 +64,7 @@ ms.locfileid: "68278008"
 
     ![新しいストレージ アカウントを作成する](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>BLOB コンテナーを作成し、ファイルをストレージ アカウントにアップロードする
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>BLOB コンテナーを作成し、ファイルをストレージ アカウントにアップロードする
 
 ファイルには Blob Storage が必要であるため、ファイルを格納する BLOB コンテナーを作成する必要があります。 次に、新しいストレージ アカウントで、BLOB コンテナーにファイルをアップロードします。
 
@@ -69,9 +80,9 @@ ms.locfileid: "68278008"
 7. **[BLOB のアップロード]** ウィンドウの **[ファイル]** で、フォルダー アイコンをクリックし、ローカル コンピューターの **hello_world.txt** を参照してファイルを選択して、 **[アップロード]** をクリックします。
     ![テキスト ファイルをアップロードする](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する
+### <a name="grant-access"></a>アクセス権の付与
 
-VM のシステム割り当てマネージド ID を使用して、Azure Storage Blob のデータを取得できます。
+このセクションでは、Azure Storage コンテナーへのアクセスを VM に許可する方法を説明します。 VM のシステム割り当てマネージド ID を使用して、Azure Storage Blob のデータを取得できます。
 
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。
@@ -83,7 +94,7 @@ VM のシステム割り当てマネージド ID を使用して、Azure Storage
 
     ![アクセス許可の割り当て](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>アクセス トークン取得し、それを使用して Azure Storage を呼び出す 
+## <a name="access-data"></a>データにアクセスする 
 
 Azure Storage は Azure AD 認証をネイティブにサポートするため、マネージド ID を使用して取得したアクセス トークンを直接受け入れることができます。 これは Azure Storage の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
@@ -161,9 +172,16 @@ namespace StorageOAuthToken
 
 `Hello world! :)`
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Windows VM のシステム割り当て ID を使用して Azure Storage にアクセスする方法を説明しました。  Azure Storage の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Storage](/azure/storage/common/storage-introduction)
+> [Azure ストレージ](/azure/storage/common/storage-introduction)

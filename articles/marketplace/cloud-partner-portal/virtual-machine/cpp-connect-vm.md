@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432001"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
 
@@ -33,28 +33,29 @@ Azure にホストされている Windows ベースの VM には、リモート 
 
 Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH) クライアントが必要です。  ここでは、無料の [PuTTY](https://www.ssh.com/ssh/putty/) SHH ターミナルを使用します。
 
-1. [Azure portal](https://ms.portal.azure.com) の **[仮想マシン]** ブレードで、接続先の VM を選択します。  
-2. まだ VM が稼働していない場合は、VM を**起動**します。
-3. VM の名前をクリックしてその **[概要]** ページを開きます。
-4. VM のパブリック IP アドレスと DNS 名をメモします。  これらの値が設定されていない場合は、[ネットワーク インターフェイスを作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)する必要があります。
+1. [Azure ポータル](https://ms.portal.azure.com)にアクセスします。 **[仮想マシン]** を検索して選択します。 
+2. 接続先の VM を選択します。  
+3. まだ VM が稼働していない場合は、VM を**起動**します。
+4. VM の名前をクリックしてその **[概要]** ページを開きます。
+5. VM のパブリック IP アドレスと DNS 名をメモします。  これらの値が設定されていない場合は、[ネットワーク インターフェイスを作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)する必要があります。
 
    ![VM の [概要] の設定](./media/publishvm_019.png)
  
-5. PuTTY アプリケーションを開きます。  
-6. [PuTTY Configuration]\(PuTTY 構成\) ダイアログで、VM の IP アドレスまたは DNS 名を入力します。 
+6. PuTTY アプリケーションを開きます。  
+7. [PuTTY Configuration]\(PuTTY 構成\) ダイアログで、VM の IP アドレスまたは DNS 名を入力します。 
 
    ![PuTTY ターミナルの設定](./media/publishvm_020.png)
  
-7. **[Open]\(開く\)** をクリックして PuTTY ターミナルを開きます。  
-8. プロンプトが表示されたら、Linux VM のアカウント名とパスワードを入力します。 
+8. **[Open]\(開く\)** をクリックして PuTTY ターミナルを開きます。  
+9. プロンプトが表示されたら、Linux VM のアカウント名とパスワードを入力します。 
 
-   接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10:Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors)」を参照してください。
+接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10:Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals)」を参照してください。
 
 プロビジョニング済みの Linux VM にデスクトップを追加する方法など、詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。
 
 
 ## <a name="stop-unused-vms"></a>使用していない VM を停止する
-Azure では、実行中 "*またはアイドル状態*" の VM のホスティングに関して料金が発生します。  したがって、使用していないときには VM を停止するようお勧めします。  たとえば、テストやバックアップ用の VM、不使用になった VM はシャットダウンの候補となります。 VM をシャットダウンするには、次の手順を実行します。
+Azure では、実行中 "*またはアイドル状態*" の VM のホスティングに関して料金が発生します。  そのため、使用していないときには VM を停止するようお勧めします。  たとえば、テストやバックアップ用の VM、不使用になった VM はシャットダウンの候補となります。 VM をシャットダウンするには、次の手順を行います。
 
 1. **[仮想マシン]** ブレードで、停止する VM を選択します。 
 2. ページの上部付近にあるツール バーの **[停止]** ボタンをクリックします。
@@ -66,6 +67,6 @@ Azure では、実行中 "*またはアイドル状態*" の VM のホスティ�
 停止した VM を後で再度有効にしたければ、その VM を選択して、 **[Start]\(スタート\)** ボタンをクリックしてください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リモート接続に成功したら、[VM を構成](./cpp-configure-vm.md)する作業に取り組んでみましょう。

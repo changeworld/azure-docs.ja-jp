@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443717"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -34,14 +34,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-これらのファイルは、zip ファイル (Windows および Mac) または tar ファイル (Linux) として圧縮されます。
-
-これらのコマンドを使用して、Linux 上に tar ファイルをダウンロードして圧縮を解除できます。
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+これらのファイルは、zip ファイル (Windows および Mac) または tar ファイル (Linux) として圧縮されます。 Linux 上で tar ファイルをダウンロードして圧縮を解除するには、お使いの Linux ディストリビューションのドキュメントを参照してください。
 
 > [!NOTE]
 > [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) サービスとの間でデータをコピーする場合、[AzCopy バージョン 7.3](https://aka.ms/downloadazcopynet) をインストールしてください。
@@ -76,7 +69,7 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 |**BLOB ストレージ (階層型名前空間)** | Azure AD および SAS |
 |**File Storage** | SAS のみ |
 
-### <a name="option-1-use-azure-active-directory"></a>オプション 1:Azure Active Directory を使用する
+### <a name="option-1-use-azure-active-directory"></a>オプション 1: Azure Active Directory を使用する
 
 Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
 
@@ -325,6 +318,6 @@ Storage Explorer では、ご自分のアカウント キーを使用して、�
 
 「[AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご質問、問題、一般的なフィードバックは、[GitHub](https://github.com/Azure/azure-storage-azcopy) ページからお送りください。

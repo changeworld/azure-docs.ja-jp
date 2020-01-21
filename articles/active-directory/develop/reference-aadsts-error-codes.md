@@ -1,5 +1,5 @@
 ---
-title: Azure AD 認証と承認のエラー コード | Azure
+title: Azure AD 認証と承認のエラー コード
 description: Azure AD セキュリティ トークン サービス (STS) から返される AADSTS エラー コードについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423962"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 
 ## <a name="aadsts-error-codes"></a>AADSTS エラー コード
 
-| Error | 説明 |
+| エラー | [説明] |
 |---|---|
 | AADSTS16000 | SelectUserAccount - これは Azure AD によってスローされる割り込みで、ユーザーが複数の有効な SSO セッションの中から選択できるようにする UI が表示されます。 このエラーはかなり一般的で、`prompt=none` が指定された場合に、アプリケーションに返される可能性があります。 |
 | AADSTS16001 | UserAccountSelectionInvalid - セッションの選択ロジックが拒否されているタイルをユーザーがクリックした場合に、このエラーが表示されます。 このエラーがトリガーされた場合、ユーザーはタイル/セッションの最新の一覧から選択するか、別のアカウントを選択することで、回復することができます。 このエラーは、コードの欠陥や競合状態が原因で発生することがあります。 |
@@ -133,6 +133,8 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50178 | ExternalChallengeNotSupportedForPassthroughUsers - セッション制御は、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 統合 Windows 認証が必要です。 シームレス SSO に対してテナントを有効にしてください。 |
 | AADSTS50187 | DeviceInformationNotProvided - サービスはデバイス認証を実行できませんでした。 |
+| AADSTS50196 | LoopDetected - クライアント ループが検出されました。 アプリのロジックを調べて、確実にトークンのキャッシュが実装されていて、エラー状態が正しく処理されるようにします。  アプリが非常に短期間にあまりにも多くの同じ要求を行いました。これは、障害がある状態にあるか、またはトークンを不正に要求していることを示しています。 |
+| AADSTS50199 | CmsiInterrupt - この認証にはユーザーの操作が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 機能が無効になっています。 |
 | AADSTS51001 | DomainHintMustbePresent - ドメイン ヒントは、オンプレミスのセキュリティ識別子またはオンプレミスの UPN とともに存在している必要があります。 |
 | AADSTS51004 | UserAccountNotInDirectory - ディレクトリにユーザー アカウントが存在しません。 |
@@ -273,6 +275,6 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - アプリケーションが無効です。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ご質問がありますか。またはお探しの情報が見つかりませんでしたか。 GitHub のイシューを作成するか、「[開発者向けのサポート オプションとヘルプ オプション](active-directory-develop-help-support.md)」で、ヘルプやサポートを受けるためのその他の方法を参照してください。

@@ -1,5 +1,6 @@
 ---
-title: Azure API Management で Key Vault 証明書を使用してカスタム ドメインを追加できない | Microsoft Docs
+title: Key Vault 証明書を使用してカスタム ドメインを追加できません
+titleSuffix: Azure API Management
 description: Key Vault 証明書を使用して Azure API Management にカスタム ドメインを追加できない問題をトラブルシューティングする方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430585"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>API Management サービスのホスト名を更新できなかった
 
@@ -53,7 +54,7 @@ Azure Key Vault の証明書を使って API Management サービスに対する
 
 問題が解決しているかどうかを確認します。 これを行うには、Key Vault 証明書を使用して、API Management サービスでカスタム ドメインを作成してみてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 API Management サービスについてさらに確認します。
 
 - API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。

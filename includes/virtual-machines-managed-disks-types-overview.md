@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467384"
 ---
 現在、Azure マネージド ディスクには 4 種類のディスクがあり、それぞれの種類は特定の顧客シナリオを対象としています。
 
 ## <a name="disk-comparison"></a>ディスクの比較
 
-次の表では、使用するものを決定するときの参考に、マネージド ディスクの Ultra Disk、Premium ソリッド ステート ドライブ (SSD)、Standard SSD、および Standard HDD (ハード ディスク ドライブ) を比較します。
+次の表では、使用するものを決定するときの参考に、マネージド ディスクの Ultra Disk、Premium ソリッド ステート ドライブ (SSD)、Standard SSD、Standard HDD (ハード ディスク ドライブ) を比較します。
 
 |   | Ultra Disk   | Premium SSD   | Standard SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|

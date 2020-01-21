@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196394"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028673"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -82,11 +82,11 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     ![Azure AD のアクセス許可](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
 ## <a name="prepare-for-physical-server-assessment"></a>物理サーバーの評価を準備する
@@ -95,18 +95,18 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 
 ### <a name="verify-physical-server-settings"></a>物理サーバーの設定を確認する
 
-1. サーバー評価のため、[物理サーバーの要件](migrate-support-matrix-physical.md#assessment-physical-server-requirements)を確認します。
-2. 物理サーバー上で[必要なポート](migrate-support-matrix-physical.md#assessment-port-requirements)が開かれていることを確認します。
+1. サーバー評価のため、[物理サーバーの要件](migrate-support-matrix-physical.md#physical-server-requirements)を確認します。
+2. 物理サーバー上で[必要なポート](migrate-support-matrix-physical.md#port-access)が開かれていることを確認します。
 
 
 ### <a name="verify-appliance-settings"></a>アプライアンスの設定の確認
 
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
-1. アプライアンスの要件を[確認](migrate-support-matrix-physical.md#assessment-appliance-requirements)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-physical.md#assessment-appliance-url-access)します。
-3. 検出および評価中にアプライアンスによって収集されるデータを確認します。
-4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-physical.md#assessment-port-requirements)します。
+1. 物理サーバーのアプライアンスの要件を[確認](migrate-appliance.md#appliance---physical)します。
+2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。
+3. 検出および評価中にアプライアンスによって収集されるデータを[確認](migrate-appliance.md#collected-data---vmware)します。
+4. 物理サーバー評価のためのポート アクセスの要件に[注意](migrate-support-matrix-physical.md#port-access)します。
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>物理サーバー検出用のアカウントを設定する
@@ -116,8 +116,17 @@ Azure Migrate には、オンプレミスのサーバーを検出するための
 - **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザーのグループに追加する必要があります。
 - **Linux:** 検出する Linux サーバーのルート アカウントが必要です。
 
+## <a name="prepare-for-physical-server-migration"></a>物理サーバーの移行を準備する
 
-## <a name="next-steps"></a>次の手順
+物理サーバーの移行の要件を確認します。
+
+- 移行のための物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
+- Azure Migrate: サーバー移行では、物理サーバーの移行にレプリケーション サーバーを使用します。
+    - レプリケーション アプライアンスのデプロイ要件と、アプライアンスでの MySQL のインストールの[オプション](migrate-replication-appliance.md#mysql-installation)を[確認](migrate-replication-appliance.md#appliance-requirements)します。
+    - レプリケーション アプライアンスの [URL](migrate-replication-appliance.md#url-access) と[ポート] (migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 

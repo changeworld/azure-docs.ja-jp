@@ -1,17 +1,14 @@
 ---
-title: Resource Manager テンプレートを使用して Azure Resource Health アラートを構成する | Microsoft Docs
+title: Azure Resource Health アラートを作成する - Resource Manager テンプレート
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023915"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551720"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -164,7 +161,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 ],
 ```
 
-次に例を示します。`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+例: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Azure portal に移動し、Azure リソースを表示しているときに URL を確認して、この文字列を取得できます。
 
@@ -436,7 +433,7 @@ Resource Health イベントは、プラットフォームまたはユーザー�
 
 しかし、自分にとって最も効果的な構成を把握するためには、ドキュメントで学習したツールを使用して独自のカスタマイズを行ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)

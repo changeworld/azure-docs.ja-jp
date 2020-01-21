@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の SMOTE モジュールとオーバーサンプリングを使用して、データセット内の少ないインシデント例の数を増やす方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で SMOTE モジュールを使用して、オーバーサンプリングを使用しているデータセットで少ないインシデント例の数を増やす方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428432"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -62,7 +62,7 @@ SMOTE では、データセット全体を入力として受け取りますが�
   
 4.  SMOTE モジュールでは、ラベル列のマイノリティ クラスが自動的に識別され、そのマイノリティ クラスのすべての例が取得されます。 すべての列に NaN を含めることはできません。
   
-5.  **[SMOTE percentage]\(SMOTE 率\)** オプションに、出力データセット内のマイノリティ ケースのターゲットとする割合を示す整数を入力します。 例:  
+5.  **[SMOTE percentage]\(SMOTE 率\)** オプションに、出力データセット内のマイノリティ ケースのターゲットとする割合を示す整数を入力します。 次に例を示します。  
   
     - 「**0**」と入力します。 SMOTE モジュールにより、入力として指定したものとまったく同じデータセットが返されます。 新しいマイノリティ ケースは追加されません。 このデータセットでは、クラスの割合は変化しません。  
   
@@ -97,7 +97,7 @@ SMOTE では、データセット全体を入力として受け取りますが�
   + クラスタリング、バギング、またはアダプティブ ブーストを使用して学習者を直接的に支援するアンサンブル手法。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 

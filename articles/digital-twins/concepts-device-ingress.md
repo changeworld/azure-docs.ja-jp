@@ -1,19 +1,19 @@
 ---
 title: デバイスの接続とテレメトリのイングレス - Azure Digital Twins | Microsoft Docs
-description: Azure Digital Twins 内でデバイスを接続してオンボードする方法について説明します。
+description: Azure Digital Twins 内の IoT デバイスからテレメトリを接続、オンボード、送信する方法について説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010124"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660343"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
@@ -67,17 +67,17 @@ YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **Message** のペイロードの内容はサイズが最大 256 KB の任意のデータです。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 型のプロパティに必要ないくつかの要件があります。 システムによってサポートされる必須および省略可能なプロパティを表に示します。
 
-| プロパティ名 | 値 | 必須 | 説明 |
+| プロパティ名 | 値 | 必須 | [説明] |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | はい | システムに対してメッセージを示す定数値。 |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | はい | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
-| **CreationTimeUtc** | `string` | いいえ | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
+| **CreationTimeUtc** | `string` | いいえ | ペイロードのサンプリング日時を示す [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
 | **CorrelationId** | `string` | いいえ | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
 
 ### <a name="send-your-message-to-digital-twins"></a>Digital Twins へのメッセージの送信
 
 DeviceClient の [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) または [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) の呼び出しを使用して、メッセージを Digital Twins に送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のデータ処理およびユーザー定義関数の機能については、[Azure Digital Twins でのデータ処理とユーザー定義関数](concepts-user-defined-functions.md)に関するページをご覧ください。

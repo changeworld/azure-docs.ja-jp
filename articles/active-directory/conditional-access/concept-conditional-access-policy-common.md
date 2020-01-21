@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424990"
 ---
 # <a name="common-conditional-access-policies"></a>一般的な条件付きアクセス ポリシー
 
-ベースライン保護ポリシーは優れていますが、多くの組織では、それによって提供されるものよりも高い柔軟性が必要です。 たとえば、多くの組織では、緊急アクセス用または非常用の管理アカウントのような特定のアカウントを、多要素認証を要求する条件付きアクセス ポリシーから除外できることが必要です。 それらの組織では、この記事で参照している一般的なポリシーが役に立つ可能性があります。
+[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)は一部の人々には適していますが、多くの組織では、それによって提供されるものよりも高い柔軟性が必要です。 たとえば、多くは、緊急アクセス用または非常用の管理アカウントのような特定のアカウントを、多要素認証を要求する条件付きアクセス ポリシーから除外できることが必要です。 それらの組織では、この記事で参照している一般的なポリシーが役に立つ可能性があります。
 
 ![Azure portal における条件付きアクセス ポリシー](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "74846115"
 * [場所ごとにアクセスをブロックする](howto-conditional-access-policy-location.md)
 * [準拠しているデバイスを要求する](howto-conditional-access-policy-compliant-device.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [条件付きアクセスの What If ツールを使用してサインイン動作をシミュレートします。](troubleshoot-conditional-access-what-if.md)
 - [条件付きアクセスのレポート専用モードを使用して、新しいポリシー決定の影響を判断します。](concept-conditional-access-report-only.md)

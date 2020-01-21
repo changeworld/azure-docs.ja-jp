@@ -1,22 +1,22 @@
 ---
-title: Excel Online への接続
-description: Microsoft Excel REST API と Azure Logic Apps を使用してデータを管理します
+title: Excel Online のデータ、ワークシート、およびテーブルを管理する
+description: Azure Logic Apps を使用して、Excel Online for Business または Excel Online for OneDrive のワークシートおよびテーブルのデータを管理します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445878"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
-Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for Business または OneDrive のデータに基づいて自動化されたタスクとワークフローを作成できます。 このコネクタは、データの操作とスプレッドシートの管理を行う際に役立つアクションを提供します。たとえば、次のアクションがあります。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Excel Online for Business](/connectors/excelonlinebusiness/) コネクタまたは [Excel Online for OneDrive](/connectors/excelonline/) コネクタを使用して、Excel Online for Business または OneDrive のデータに基づいて自動化されたタスクおよびワークフローを作成できます。 このコネクタは、データの操作とスプレッドシートの管理を行う際に役立つアクションを提供します。たとえば、次のアクションがあります。
 
 * 新しいワークシートとテーブルを作成します。
 * ワークシート、テーブル、および行の取得と管理を行います。
@@ -66,6 +66,6 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 * [Excel Online for Business](/connectors/excelonlinebusiness/)
 * [Excel Online for OneDrive](/connectors/excelonline/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

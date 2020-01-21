@@ -1,5 +1,5 @@
 ---
-title: Microsoft ID プラットフォームと OpenID Connect プロトコル | Azure
+title: OpenID Connect プロトコル - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームで導入された OpenID Connect 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3778f31cb5dd68d3f3f49ed3cddf574b1cc3bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423219"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 `{tenant}` は、4 つの値のいずれかを使用できます。
 
-| 値 | 説明 |
+| 値 | [説明] |
 | --- | --- |
 | `common` |個人の Microsoft アカウントを持つユーザーと Azure AD の職場/学校アカウントを持つユーザーのどちらもアプリケーションにサインインできます。 |
 | `organizations` |Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
@@ -76,7 +76,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 }
 ```
 
-アプリに [claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、カスタム署名キーがある場合、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
+[claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、アプリにカスタム署名キーがある場合は、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
 通常、このメタデータ ドキュメントを使用して OpenID Connect ライブラリまたは SDK を構成します。ライブラリは、メタデータを使用して処理を実行します。 ただし、ビルド前の OpenID Connect ライブラリを使用していない場合は、Microsoft ID プラットフォーム エンドポイントを使用した Web アプリへのサインインを実行するには、この記事で後述する手順を行ってください。
 
@@ -91,7 +91,7 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 > [!IMPORTANT]
 > /authorization エンドポイントから ID トークンを適切に要求するには、[登録ポータル](https://portal.azure.com)でのアプリ登録で、[認証] タブの id_tokens の暗黙的な許可を有効する必要があります (これで、[アプリケーション マニフェスト](reference-app-manifest.md)の `oauth2AllowIdTokenImplicitFlow` フラグが `true` に設定されます)。 有効でない場合、`unsupported_response` エラー"The provided value for the input parameter 'response_type' isn't allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
 
-例:
+次に例を示します。
 
 ```
 // Line breaks are for legibility only.
@@ -110,7 +110,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンが指定された `https://localhost/myapp/` にリダイレクトされます。 この要求では `response_mode=fragment` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
 | `tenant` | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御できます。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、[プロトコルの基本](active-directory-v2-protocols.md#endpoints)に関するセクションを参照してください。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -140,7 +140,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `id_token` | アプリが要求した ID トークン。 `id_token` パラメーターを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[`id_tokens` のリファレンス](id-tokens.md)を参照してください。 |
 | `state` | 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
@@ -157,7 +157,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -166,7 +166,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるエラー コードを説明します。
 
-| エラー コード | 説明 | クライアント側の処理 |
+| エラー コード | [説明] | クライアント側の処理 |
 | --- | --- | --- |
 | `invalid_request` | 必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 これは、開発エラーであり、通常は初期テスト中に発生します。 |
 | `unauthorized_client` | クライアント アプリケーションは、承認コードを要求できません。 |これは、通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
@@ -201,7 +201,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。このパラメーターを含めない場合、Microsoft ID プラットフォーム エンドポイントによって生成された汎用メッセージがユーザーに表示されます。 この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。 |
 
@@ -253,7 +253,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `id_token` | アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[`id_tokens` のリファレンス](id-tokens.md)を参照してください。 |
 | `code` | アプリが要求した承認コード。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードの有効期間は短時間です。 通常、認証コードは約 10 分で期限切れになります。 |
@@ -271,7 +271,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |

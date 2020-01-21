@@ -10,37 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824175"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834292"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 
 API Management のポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、名前付きの値を使用して構築できます。
 
-それぞれの API Management サービス インスタンスには、名前付きの値と呼ばれる、サービス インスタンスにグローバルなキー/値ペアのプロパティ コレクションがあります。 コレクション内の項目の数に制限はありません。 名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各名前付きの値は、次の属性を持つことができます。
+それぞれの API Management サービスインスタンスには、サービスインスタンスに対してグローバルなキーと値のペアのコレクションがあり、これは名前付きの値と呼ばれます。 コレクション内の項目の数に制限はありません。 名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各名前付きの値は、次の属性を持つことができます。
 
-| Attribute      | 種類            | 説明                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Attribute      | 種類            | [説明]                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | ポリシー内の名前付きの値を参照するために使用されます。 1 から 256 文字の文字列。 文字、数字、ドット、ダッシュのみを使用できます。 |
-| `Value`        | string          | 実際の値。 空にしたり、空白のみで構成したりすることはできません。 最大文字数は 4,096 文字です。                                     |
-| `Secret`       | ブール値         | 値がシークレットかどうかと暗号化する必要があるかどうかを決定します。                                                            |
+| `Value`        | string          | 実際の値。 空にしたり、空白のみで構成したりすることはできません。 最大文字数は 4,096 文字です。                                        |
+| `Secret`       | boolean         | 値がシークレットかどうかと暗号化する必要があるかどうかを決定します。                                                               |
 | `Tags`         | 文字列の配列 | 名前付きの値の一覧をフィルター処理するために使用されます。 最大 32 のタグ。                                                                                    |
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
 名前付きの値には、リテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
 
-| Name       | Value                      | Secret | Tags          |
+| Name       | 値                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | 値      | 42                         | False  | vital-numbers |
 | 資格情報 | ••••••••••••••••••••••     | True   | security      |
 | 式 | @(DateTime.Now.ToString()) | False  |               |
+
+> [!NOTE]
+> API Management サービス内に格納された名前付きの値ではなく、Azure Key Vault サービスに格納された値を使用できます。こちらが[その例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)です。
 
 ## <a name="to-add-and-edit-a-named-value"></a>名前付きの値を追加および編集するには
 
@@ -50,7 +53,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 2. **[名前付きの値]** を選択します。
 3. **[+ 追加]** を押します。
 
-    [名前] と [値] は必須値です。 値がシークレットの場合、 *[これはシークレットです]* チェックボックスをオンにします。 名前付きの値の整理に役立つ任意のタグを 1 つまたは複数入力し、[保存] をクリックします。
+    [名前] と [値] は必須値です。 値がシークレットの場合、 _[これはシークレットです]_ チェックボックスをオンにします。 名前付きの値の整理に役立つ任意のタグを 1 つまたは複数入力し、[保存] をクリックします。
 
 4. **Create** をクリックしてください。
 
@@ -107,7 +110,7 @@ REST API を利用して名前付きの値を削除する方法については�
 
 名前付きの値にはポリシー式を含めることができますが、他の名前付きの値を含めることはできません。 名前付きの値参照を含むテキストが `Text: {{MyProperty}}` などの値に使用されている場合、その参照は解決されず、置き換えられません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -   ポリシーの使用に関する説明
     -   [API Management のポリシー](api-management-howto-policies.md)

@@ -1,17 +1,17 @@
 ---
-title: コード スニペットの追加および実行
-description: Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
+title: インライン コードを使用してコード スニペットを追加および実行する
+description: Azure Logic Apps で作成する自動化されたタスクおよびワークフロー用のインライン コード アクションを使用して、コード スニペットを作成および実行する方法について説明します
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f28a93e47aa028f152d7ca797abb17cb3832aa60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453493"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
@@ -128,7 +128,7 @@ ms.locfileid: "74792609"
 
 これらのサブプロパティの詳細を次の表に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----------|------|-------|
 | `actions` | オブジェクト コレクション | コード スニペットを実行する前に実行したアクションの結果オブジェクトです。 各オブジェクトには、*key-value* ペアが含まれています。ここで、key はアクション名、value は `@actions('<action-name>')` を含む [actions() 関数](../logic-apps/workflow-definition-language-functions-reference.md#actions)の呼び出しに相当します。 アクションの名前で使用されるアクション名は、基盤となるワークフロー定義で使用されるアクション名と同じです。アクション名内のスペース (" ") がアンダー スコア (_) で置き換えられています。 このオブジェクトにより、現在実行されているワークフロー インスタンスからアクション プロパティの値にアクセスできます。 |
 | `trigger` | Object | トリガーの結果オブジェクトで、 [trigger() 関数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)の呼び出しと同じです。 このオブジェクトにより、現在実行されているワークフロー インスタンスからトリガー プロパティの値にアクセスできます。 |
@@ -205,7 +205,7 @@ ms.locfileid: "74792609"
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>パラメーターを追加する
+## <a name="add-parameters"></a>パラメーターの追加
 
 場合によっては、コードが依存関係として参照するトリガーや特定のアクションの結果を**インライン コード** アクションに含めることを明示的に要求するために、 **[トリガー]** パラメーターや **[アクション]** パラメーターを追加することが必要となります。 このオプションは、参照する結果が実行時に見つからないシナリオで役立ちます。
 
@@ -218,7 +218,7 @@ ms.locfileid: "74792609"
 
    ![パラメーターの追加](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
-   | パラメーター | 説明 |
+   | パラメーター | [説明] |
    |-----------|-------------|
    | **アクション** | 以前のアクションの結果を含めます。 「[アクションの結果を含める](#action-results)」を参照してください。 |
    | **トリガー** | トリガーの結果を含めます。 「[トリガーの結果を含める](#trigger-results)」を参照してください。 |
@@ -264,6 +264,6 @@ ms.locfileid: "74792609"
 
 ワークフロー定義言語を使用したロジック アプリの基盤となるワークフロー定義での **[JavaScript コードの実行]** アクションの構造と構文の詳細については、このアクションの[リファレンス セクション](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Logic Apps のコネクタ](../connectors/apis-list.md)の詳細について学習します。

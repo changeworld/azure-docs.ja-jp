@@ -1,25 +1,14 @@
 ---
-title: 証明書共通名を使用する Azure Service Fabric クラスターを作成する | Microsoft Docs
+title: 証明書の共通名を使用してクラスターを作成する
 description: テンプレートから、証明書共通名を使用する Service Fabric クラスターを作成する方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764723"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614555"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  証明書共通名を使用するクラスターにより、証明書の管理が大幅に単純化されます。 この記事では、Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するようにデプロイする方法について説明します。
@@ -222,7 +211,7 @@ New-AzResourceGroup -Name $groupname -Location $clusterloc
 New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\AzureDeploy.Parameters.json" -TemplateFile "C:\temp\cluster\AzureDeploy.json" -Verbose
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスター セキュリティ](service-fabric-cluster-security.md)について学習します。
 * [クラスター証明書のロールオーバー](service-fabric-cluster-rollover-cert-cn.md)について学習します
 * [クラスター証明書の更新と管理を行います](service-fabric-cluster-security-update-certs-azure.md)

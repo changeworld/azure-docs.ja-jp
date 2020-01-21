@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: geo レプリケーション'
-description: Azure portal を使用して Azure SQL Database の単一データベースまたはプールされたデータベースの geo レプリケーションを構成し、フェールオーバーを開始する
+title: チュートリアル:ポータルの geo レプリケーションとフェールオーバー
+description: Azure portal を使用して Azure SQL Database の単一データベースまたはプールされたデータベースの geo レプリケーションを構成し、フェールオーバーを開始します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348878"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
@@ -69,7 +69,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 2. [SQL Database] ブレードで、 **[すべての設定]**  >  **[geo レプリケーション]** の順に選択します。
 3. **[セカンダリ]** ボックスの一覧で、新しいプライマリとして使用するデータベースを選択し、 **[フェールオーバー]** をクリックします。
 
-    ![[フェールオーバー]](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. **[はい]** をクリックして、フェールオーバーを開始します。
 
 このコマンドは、セカンダリ データベースをプライマリ ロールに即座に切り替えます。 このプロセスは、通常 30 秒以内に完了します。
@@ -91,7 +91,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
     ![セカンダリ データベースの削除](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. 確認ウィンドウが開きます。 **[はい]** をクリックして geo レプリケーション パートナーシップからデータベースを削除します。 (データベースを読み取り/書き込みデータベースに設定することは、レプリケーションの一部ではありません)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アクティブ geo レプリケーションについて詳しくは、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)に関するページを参照してください。
 * 自動フェールオーバー グループについては、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください

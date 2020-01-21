@@ -1,22 +1,24 @@
 ---
-title: Azure Notebooks へのサインイン
+title: Azure Notebooks プレビューにサインインする
 description: Microsoft アカウントまたは職場/学校アカウントを使用して、Azure Notebook のユーザー アカウント構成します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277617"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646298"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks のユーザー アカウント
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks プレビューのユーザー アカウント
 
 Azure Notebooks は、ユーザー アカウントでサインインしてもしなくても使用できます。
 
 - サインインししない場合は、Notebooks を実行できますが、プロジェクトの一部として Notebooks やデータ ファイルを保持することはできません。 たとえば、Azure Notebooks へのリンクを受信するユーザーは、サインインをしなくても Notebooks を利用できます。
 - サインインすると、Azure Notebooks はそのアカウントで利用するすべてのプロジェクトを保持します。 サインイン ユーザーには、他のユーザーと自分のプロジェクトや Notebooks を共有できるユーザー ID も付与されます。
-  - Azure Notebooks を使用するアカウントが Azure サブスクリプションにも関連付けられている場合、さらに強力なサーバー上で Notebooks を実行したり、プライベートの Notebooks を作成したり、個々のユーザーに Notebooks へのアクセス許可を付与したりできる追加のメリットがあります。
+- Azure Notebooks を使用するアカウントが Azure サブスクリプションにも関連付けられている場合、さらに強力なサーバー上で Notebooks を実行したり、プライベートの Notebooks を作成したり、個々のユーザーに Notebooks へのアクセス許可を付与したりできる追加のメリットがあります。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks にサインインするには、Microsoft アカウントまたは「職場または学校」アカウントのいずれかが必要です。 Notebook ページの右上隅にある**サインイン** コマンドを選択すると、アカウントの入力が求められます。
 
@@ -61,7 +63,7 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 
 管理者として同意するには、[管理者の同意ページ](https://notebooks.azure.com/account/adminConsent)を使用します。そのページにはプロセスについての説明があります。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
 > [プロファイルとユーザー ID の編集](azure-notebooks-user-profile.md)

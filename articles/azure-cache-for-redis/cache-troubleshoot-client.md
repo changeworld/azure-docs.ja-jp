@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
-description: Azure Cache for Redis の一般的なクライアント側の問題を解決する方法について説明します
+description: Redis クライアントのメモリ負荷、トラフィック増加、高い CPU、限られた帯域幅、要求または応答の肥大化など、クライアント側で頻繁に発生する問題を Azure Cache for Redis で解決する方法について説明します。
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433369"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 
@@ -102,7 +102,7 @@ Azure Portal で使用可能なメトリックか、またはコンピュータ�
 1. アプリケーションが使用する接続オブジェクトの数を増やします。
     - ラウンド ロビン方式を使用して、さまざまな接続オブジェクト経由で要求を発行します。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
 - [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

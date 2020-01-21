@@ -2,36 +2,33 @@
 title: PowerShell を使用して HDInsight 上で Apache Hive を使用する - Azure
 description: PowerShell を使用して、Azure HDInsight の Apache Hadoop で Apache Hive クエリを実行します
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: 89fa7976b922ba0e40e97b72de5d4eb9a02f0dfd
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736080"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552595"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
+
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-このドキュメントでは、Azure PowerShell を Azure リソース グループ モードで使用して、HDInsight クラスター上の Apache Hadoop で Hive クエリを実行する方法の例を示します。
+このドキュメントでは、Azure PowerShell を使用して HDInsight クラスター上の Apache Hadoop で Apache Hive クエリを実行する例を示します。
 
 > [!NOTE]  
 > このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される HiveQL については、[HDInsight での Apache Hive と Apache Hadoop の使用](hdinsight-use-hive.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* バージョン 3.4 以上の HDInsight クラスター上の Linux ベースの Apache Hadoop。
-
-* Azure PowerShell を搭載するクライアント。
-
-[!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
+* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -43,7 +40,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 * `New-AzHDInsightHiveJobDefinition`:指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
 * `Start-AzHDInsightJob`:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 * `Wait-AzHDInsightJob`:ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
-* `Get-AzHDInsightJobOutput`:ジョブの出力を取得する場合に使用します。
+* `Get-AzHDInsightJobOutput`:ジョブの出力を取得するために使用します。
 * `Invoke-AzHDInsightHiveJob`:HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。
 * `Use-AzHDInsightCluster`:`Invoke-AzHDInsightHiveJob` コマンドに現在のクラスターを使用するように設定します。
 
@@ -57,7 +54,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
         .\hivejob.ps1
 
-    スクリプトの実行時に、クラスター名と HTTPS/クラスター管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのサインインを求められる場合もあります。
+    スクリプトの実行時に、クラスター名と HTTPS またはクラスター管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのサインインを求められる場合もあります。
 
 3. ジョブが完了すると、次のテキストのような情報が返されます。
 
@@ -77,9 +74,9 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]  
-   > より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。 次のスニペットでは、`Invoke-Hive` コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。 HiveQL スクリプト ファイルは、wasb:// にアップロードする必要があります。
+   > より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。 次のスニペットでは、`Invoke-Hive` コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。 HiveQL スクリプト ファイルは、wasbs:// にアップロードする必要があります。
    >
-   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > **Here-Strings** の詳細については、<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>に関するページをご覧ください。
 
@@ -102,7 +99,7 @@ Get-AzHDInsightJobOutput `
 
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -110,5 +107,4 @@ HDInsight での Hive に関する全般的な情報
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)

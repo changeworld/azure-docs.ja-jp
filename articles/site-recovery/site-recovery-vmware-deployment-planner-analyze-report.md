@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961373"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495875"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 
@@ -59,13 +59,13 @@ VMware to Azure レポートの [Recommendations]\(推奨事項\) シートに�
 
 ![Deployment Planner のプロファイリング結果](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
 
-**[Total Profiled Virtual Machines]\(プロファイリングされた仮想マシンの合計\)** : プロファイリング データがある VM の総数です。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM はレポートの生成時に考慮されず、プロファイリングされた VM の合計からは除外されます。
+**[Total Profiled Virtual Machines]\(プロファイリングされた仮想マシンの合計\)** : プロファイリング データを使用できる VM の総数です。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM はレポートの生成時に考慮されず、プロファイリングされた VM の合計からは除外されます。
 
 **[Compatible Virtual Machines]\(適合仮想マシン\)** : Site Recovery を使用して Azure で保護できる VM の数です。 適合する (必要なネットワーク帯域幅、ストレージ アカウント数、Azure コア数、構成サーバー数、追加プロセス サーバー数が計算される) VM の総数になります。 適合する VM ごとの詳しい情報は、「Compatible VMs (適合 VM)」セクションで確認できます。
 
 **[Incompatible Virtual Machines]\(不適合仮想マシン\)** : プロファイリングされた VM のうち、Site Recovery を使用した保護に適合しない VM の数です。 不適合の理由については、「Incompatible VMs (不適合 VM)」セクションで取り上げます。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM は、不適合 VM の数から除外されます。 そのような VM は、[Incompatible VMs (不適合 VM)] セクションの最後に [Data not found (データが見つかりません)] として列挙されます。
 
-**[Desired RPO]\(必要な RPO\)** : 必要な回復ポイントの目標 (分単位) です。 次の 3 つの RPO 値についてレポートが生成されます: 15 分 (既定値)、30 分、および 60 分。 シートの右上にある [Desired RPO (必要な RPO)] ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 *-DesiredRPO* パラメーターに独自の値を指定してレポートを生成した場合、[Desired RPO (必要な RPO)] ボックスの一覧には、その独自の値が既定値として表示されます。
+**[Desired RPO]\(必要な RPO\)** : 必要な回復ポイントの目標 (分単位) です。 次の 3 つの RPO 値についてレポートが生成されます: 15 分 (既定値)、30 分、60 分。 シートの右上にある [Desired RPO (必要な RPO)] ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 *-DesiredRPO* パラメーターに独自の値を指定してレポートを生成した場合、[Desired RPO (必要な RPO)] ボックスの一覧には、その独自の値が既定値として表示されます。
 
 ### <a name="required-network-bandwidth-mbps"></a>必要なネットワーク帯域幅 (Mbps)
 
@@ -134,9 +134,9 @@ Azure Site Recovery を使用してすべての適合 VM を Azure に保護す�
 
 **[Cost by states]\(状態ごとのコスト\)** ディザスター リカバリー (DR) の合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。
 
-**[Replication cost]\(レプリケーション コスト\)** : レプリケーション時に発生するコストです。 ストレージ、ネットワーク、Azure Site Recovery ライセンスのコストが含まれます。
+**[Replication cost]\(レプリケーション コスト\)** :レプリケーション時に発生するコストです。 ストレージ、ネットワーク、Azure Site Recovery ライセンスのコストが含まれます。
 
-**[DR-Drill cost]\(DR ドリル コスト\)** : テスト フェールオーバー時に発生するコストです。 テスト フェールオーバー中は、Azure Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。
+**[DR-Drill cost]\(DR ドリル コスト\)** :テスト フェールオーバー時に発生するコストです。 テスト フェールオーバー中は、Azure Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。
 
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)** Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 VM ごとの詳細なコスト分析は、[[Cost Estimation]\(コスト見積もり\)](site-recovery-vmware-deployment-planner-cost-estimation.md) シートで確認できます。
@@ -171,14 +171,14 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[Placement Summary]\(配置の概要\)** : ストレージの種類別に保護された VM に必要なディスクの概要。 これには、VM の合計数、全ディスクのプロビジョニング済み合計サイズ、ディスクの総数が含まれます。
 
-**[VMs to Place (配置する VM)]** : パフォーマンスと稼働率を最大限に引き出すために、指定のストレージ アカウントに配置すべき全 VM の一覧です。
+**[VMs to Place (配置する VM)]** : パフォーマンスと稼働率を最大限に引き出すために、指定のストレージ アカウントに配置する必要がある全 VM の一覧です。
 
 ## <a name="compatible-vms"></a>Compatible VMs (適合 VM)
 ![適合 VM の Excel スプレッドシート](media/site-recovery-vmware-deployment-planner-analyze-report/compatible-vms-v2a.png)
 
-**[VM 名]** : レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされたディスク (VMDK) もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
+**[VM Name]\(VM 名\)** :レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされたディスク (VMDK) もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
-**[VM Compatibility]\(VM 適合性\)** : **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/windows/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 例:
+**[VM Compatibility]\(VM 適合性\)** : **Yes** と **Yes\*** の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/windows/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 次に例を示します。
 * 128 GB 未満の場合は P10
 * 128 ～ 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20
@@ -210,21 +210,18 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。  
 
-**[OS の種類]** : VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。  
+**[OS Type]\(OS の種類\)** :VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。  
 
 ## <a name="incompatible-vms"></a>Incompatible VMs (不適合 VM)
 
 ![不適合 VM の Excel スプレッドシート
 ](media/site-recovery-vmware-deployment-planner-analyze-report/incompatible-vms-v2a.png)
 
-**[VM 名]** : レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされた VMDK もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
+**[VM Name]\(VM 名\)** :レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされた VMDK もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
 **[VM Compatibility]\(VM 適合性\)** : 指定された VM が Site Recovery での使用に不適合である理由を示します。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
 
-* ディスク サイズが 4,095 GB を超えている。 Azure Storage では現在、4,095 GB を超えるデータ ディスク サイズがサポートされません。
-
-* OS ディスクが 2,048 GB を超えている。 Azure Storage では現在、2,048 GB を超える OS ディスク サイズがサポートされません。
-
+* データ ディスク サイズが間違っているか、OS ディスク サイズが間違っている。 サポートの制限を[確認してください](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
 
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (ディスクあたり 7,500 IOPS) を超えている。
@@ -258,7 +255,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。
 
-**[OS の種類]** : VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。
+**[OS Type]\(OS の種類\)** :VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery の制限
 以下の表は、Azure Site Recovery の制限を示したものです。 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。 理想的な結果を得るために、デプロイ計画後も必ず、テスト フェールオーバーを実行してアプリケーションのテストを徹底し、そのパフォーマンスの真の姿を把握することをお勧めします。
@@ -284,5 +281,5 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 [コスト見積もり](site-recovery-vmware-deployment-planner-cost-estimation.md)について詳しい情報をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [コスト見積もり](site-recovery-vmware-deployment-planner-cost-estimation.md)について詳しい情報をご覧ください。

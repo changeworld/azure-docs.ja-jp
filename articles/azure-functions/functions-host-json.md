@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433189"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -95,11 +95,15 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 この設定は [logging](#logging) の子です。
 
-[Application Insights のサンプリング機能](./functions-monitoring.md#configure-sampling)を制御します。
+[サンプリング オプション](./functions-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
 
 ```json
 {
-    "applicationInsights": {
+    "applicationInsights": {        
+        "enableDependencyTracking": true,
+        "enablePerformanceCountersCollection": true,
+        "samplingExcludedTypes": "Trace;Exception",
+        "samplingIncludedTypes": "Request;Dependency",
         "samplingSettings": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 20
@@ -111,13 +115,14 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 > [!NOTE]
 > ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
-|isEnabled|true|サンプリングを有効または無効にします。| 
-|maxTelemetryItemsPerSecond|20|サンプリングが開始されるしきい値。| 
-|EnableLiveMetrics |true|ライブ メトリックの収集を有効にします。|
-|EnableDependencyTracking|true|依存関係の追跡を有効にします。|
-|EnablePerformanceCountersCollection|true|Kudu パフォーマンス カウンターの収集を有効にします。|
+|enableDependencyTracking|true|依存関係の追跡を有効にします。|
+|enablePerformanceCountersCollection|true|パフォーマンス カウンター コレクションを有効にします。|
+|samplingExcludedTypes|null|サンプリング対象にしない型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。| 
+|samplingIncludedTypes|null|サンプリング対象にする型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はサンプリングされます。他の型のすべてのインスタンスは常に転送されます。|
+|samplingSettings.isEnabled|true|サンプリングを有効または無効にします。| 
+|samplingSettings.maxTelemetryItemsPerSecond|20|サンプリングが開始されるしきい値。|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -181,7 +186,7 @@ Premium プランの有効な範囲は 1 秒から 60 分であり、既定値�
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -213,7 +218,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
@@ -236,7 +241,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
@@ -280,7 +285,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
@@ -302,7 +307,7 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [host.json ファイルを更新する方法について説明します](functions-reference.md#fileupdate)。

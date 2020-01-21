@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 1b03f5569386212905cdeb362cfe0a88774eb887
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406710"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754341"
 ---
 # <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>チュートリアル:Azure Cognitive Search インデクサーを使用して C# で Azure SQL データベースをインポートする
 
@@ -54,7 +54,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -85,7 +85,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 次の演習では、サーバーもデータベースも存在していないことを想定しています。どちらも手順 2. で作成することになります。 既にリソースがある場合には、hotels テーブルをそこに追加して、手順 4. から始めることができます。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。 
+1. [Azure portal](https://portal.azure.com/)にサインインします。 
 
 2. データベース、サーバー、およびリソース グループを作成する **Azure SQL Database** を見つけるか作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
 
@@ -159,7 +159,7 @@ public string HotelName { get; set; }
 
 メイン プログラムには、クライアント、インデックス、データ ソース、インデクサーを作成するためのロジックが含まれます。 このコードは、読者がこのプログラムを繰り返し実行する可能性を考慮し、同じ名前のリソースが既に存在しているかどうかを調べて、削除します。
 
-データ ソース オブジェクトの構成には、Azure SQL に組み込まれている[変更検出機能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)を活用するために、[インデックスの増分作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)を含め、Azure SQL データベース リソースに固有の設定が使用されます。 Azure SQL にあるデモ hotels データベースには、**IsDeleted** という名前の "論理的な削除" 列があります。 データベースでこの列を true に設定すると、インデクサーによって、Azure Cognitive Search インデックスから対応するドキュメントが削除されます。
+データ ソース オブジェクトの構成には、Azure SQL に組み込まれている[変更検出機能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)を活用するために、[部分インデックス作成または増分インデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)を含め、Azure SQL データベース リソースに固有の設定が使用されます。 Azure SQL にあるデモ hotels データベースには、**IsDeleted** という名前の "論理的な削除" 列があります。 データベースでこの列を true に設定すると、インデクサーによって、Azure Cognitive Search インデックスから対応するドキュメントが削除されます。
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -259,11 +259,11 @@ Azure Portal にアクセスし、Search サービスの [概要] ページで�
 
    ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの後で最も速くクリーンアップする方法は、Azure Cognitive Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Cognitive Search サービスの [概要] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 インデクサー パイプラインには、AI エンリッチメント アルゴリズムをアタッチすることができます。 引き続き次のチュートリアルに進んでください。
 

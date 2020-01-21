@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435739"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight 上で Hive クエリを実行する方法について説明します。
 
-Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
+Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline をローカルにインストールするには、以下の「[Beeline クライアントをインストールする](#install-beeline-client)」を参照してください。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
 ## <a name="types-of-connections"></a>接続の種類
 
@@ -59,19 +59,19 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>パブリック エンドポイントまたはプライベート エンドポイント経由
 
-パブリック エンドポイントまたはプライベート エンドポイントを使用してクラスターに接続する場合は、クラスター ログイン アカウント名 (既定値 `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `<clustername>.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
+パブリック エンドポイントまたはプライベート エンドポイントを使用してクラスターに接続する場合は、クラスター ログイン アカウント名 (既定値 `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `clustername.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 プライベート エンドポイントの場合:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `<username>` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 
 プライベート エンドポイントは、同じリージョンでピアリングされた VNET からのみアクセスできる基本のロード バランサーを指します。 詳細については、[グローバル VNet ピアリングとロード バランサーの制約](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事を参照してください。 `-v` オプションを指定して `curl` コマンドを使用すると、パブリック エンドポイントまたはプライベート エンドポイントに関する接続の問題をトラブルシューティングしてから、Beeline を使用できます。
 
@@ -86,16 +86,16 @@ Apache Spark は独自の HiveServer2 実装を提供します。これは Spark
 使用される接続文字列は少し異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2` が含まれます。
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 プライベート エンドポイントの場合:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `<username>` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 
 プライベート エンドポイントは、同じリージョンでピアリングされた VNET からのみアクセスできる基本のロード バランサーを指します。 詳細については、[グローバル VNet ピアリングとロード バランサーの制約](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事を参照してください。 `-v` オプションを指定して `curl` コマンドを使用すると、パブリック エンドポイントまたはプライベート エンドポイントに関する接続の問題をトラブルシューティングしてから、Beeline を使用できます。
 
@@ -117,7 +117,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)に注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
 
-* オプション 1:SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。
+* オプション 1: SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。
 
 * オプション 2:ローカルの Beeline クライアント。
 
@@ -238,7 +238,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 6. Beeline を終了するには、 `!exit`を使用します。
 
-## <a id="file"></a>HiveQL ファイルを実行する
+## <a name="run-a-hiveql-file"></a>HiveQL ファイルを実行する
 
 これは前の例からの続きです。 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
@@ -264,7 +264,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     > [!NOTE]  
     > 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
 
-3. ファイルを保存するには、**Ctrl** + **X** キーを押し、**Y** キー、**Enter** キーの順に押します。
+3. ファイルを保存するには、**Ctrl**+**X** キーを押し、**Y** キー、**Enter** キーの順に押します。
 
 4. 次を使用し、Beeline でファイルを実行します。
 
@@ -292,7 +292,64 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>次の手順
+## <a name="install-beeline-client"></a>Beeline クライアントをインストールする
+
+Beeline はご利用の HDInsight クラスターのヘッド ノードに含まれていますが、それをローカル コンピューターにインストールしたい場合があります。  ローカル コンピューター上に Beeline をインストールするための以下の手順は、[Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)に関するページに基づいています。
+
+1. パッケージ リストを更新します。 ご利用の Bash シェルで次のコマンドを入力します。
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Java がインストールされていない場合はインストールします。 確認するには、`which java` コマンドを使用します。
+
+    1. Java パッケージがインストールされていない場合は、次のコマンドを入力します。
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. bashrc ファイルを修正します (通常は ~/.bashrc にあります)。 `nano ~/.bashrc` を使用してファイルを開いてから、ファイルの末尾に次の行を追加します。
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        次に、**Ctrl + X** キー、**Y** キー、Enter キーの順に押します。
+
+1. Hadoop と Beeline のアーカイブをダウンロードし、次のコマンドを入力します。
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. アーカイブをアンパックし、次のコマンドを入力します。
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
+
+    1. ファイルを開きます: `nano ~/.bashrc`
+    1. 次のコマンドを適切なパスで変更して、bashrc ファイルの末尾にそれらを入力します。
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. 次に、**Ctrl + X** キー、**Y** キー、Enter キーの順に押します。
+
+1. ご利用の Bash セッションを閉じてから再度開きます。
+
+1. 接続をテストします。 上記の「[パブリック エンドポイントまたはプライベート エンドポイント経由](#over-public-or-private-endpoints)」での接続形式を使用します。
+
+## <a name="next-steps"></a>次のステップ
 
 * HDInsight での Hive について詳しくは、[HDInsight 上の Apache Hadoop での Apache Hive の使用](hdinsight-use-hive.md)に関するページをご覧ください。
 

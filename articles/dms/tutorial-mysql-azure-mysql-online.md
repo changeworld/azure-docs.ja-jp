@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
+title: チュートリアル:オンラインで MySQL を Azure Database for MySQL に移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5a35df5b72f51f4ef725b3d764e7dc2c80c19ec2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2a74eb2d39f75c76ae076bc2b0108e9b0a9fead1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437606"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 
@@ -91,7 +92,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-例:
+次に例を示します。
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -103,7 +104,7 @@ mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\emplo
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-例:
+次に例を示します。
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
@@ -259,7 +260,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 3. **[確認]** を選択し、 **[適用]** を選択します。
 4. データベースの移行の状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure SQL Database に接続します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Database for MySQL へのオンライン移行の実行時の既知の問題と制限事項については、[Azure Database for MySQL のオンライン移行に伴う既知の問題と回避策](known-issues-azure-mysql-online.md)に関する記事を参照してください。
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。

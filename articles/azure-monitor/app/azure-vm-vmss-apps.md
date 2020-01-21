@@ -1,5 +1,5 @@
 ---
-title: Azure VM および Azure 仮想マシン スケール セットでホストされているアプリケーション パフォーマンスを監視する | Microsoft Docs
+title: Azure VM のパフォーマンスを監視する - Azure Application Insights
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407334"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -50,7 +50,7 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell を使用して、Azure 仮想マシン上で .NET アプリケーションの Application Insights エージェントを管理する
 
 > [!NOTE]
-> Application Insights エージェントをインストールする前に、インストルメンテーション キーが必要になります。 [新しい Application Insights リソースを作成する](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)か、既存の Application Insights リソースからインストルメンテーション キーをコピーします。
+> Application Insights エージェントをインストールする前に、接続文字列が必要になります。 [新しい Application Insights リソースを作成する](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)か、既存の Application Insights リソースから接続文字列をコピーします。
 
 > [!NOTE]
 > PowerShell の新機能については、 [使用開始ガイド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)を確認してください。
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 また、ポータルの [Azure 仮想マシン ブレード](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)で、インストールされている拡張機能を表示することもできます。
 
 > [!NOTE]
-> インストールを確認するには、Application Insights エージェント拡張機能のデプロイに使用したインストルメンテーション キーに関連付けられている、Application Insights リソース内の Live Metrics Stream をクリックします。 複数の仮想マシンからデータを送信する場合は、[サーバー名] でターゲット Azure 仮想マシンを選択します。 データのフローが開始されるまでに最大で 1 分かかる場合があります。
+> インストールを確認するには、Application Insights エージェント拡張機能のデプロイに使用した接続文字列に関連付けられている、Application Insights リソース内の Live Metrics Stream をクリックします。 複数の仮想マシンからデータを送信する場合は、[サーバー名] でターゲット Azure 仮想マシンを選択します。 データのフローが開始されるまでに最大で 1 分かかる場合があります。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して、Azure 仮想マシン スケール セットで .NET アプリケーションの Application Insights エージェントを管理する
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )
@@ -177,6 +179,6 @@ Azure 仮想マシンと仮想マシン スケール セット上で実行され
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure 仮想マシン スケール セットにアプリケーションをデプロイする](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)方法について学習します。
 * エンドポイントがダウンしている場合に警告を受信するようにするには、[可用性 Web テストを設定](monitor-web-app-availability.md)します。

@@ -1,20 +1,14 @@
 ---
-title: Service Fabric Azure Files ボリューム ドライバー (GA) | Microsoft Docs
+title: Service Fabric Azure Files ボリューム ドライバー (GA)
 description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464791"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバー
 Azure Files ボリューム プラグイン (Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)) が、**GA (一般提供)** になりました。
@@ -247,6 +241,6 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 Docker ログ ドライバーを指定する場合は、クラスター内のログを処理するエージェント (またはコンテナー) をデプロイする必要があります。 **DriverOption** タグを使って、ログ ドライバーのオプションを指定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ボリューム ドライバーを含むコンテナーのサンプルを参照するには、[Service Fabric コンテナーのサンプル](https://github.com/Azure-Samples/service-fabric-containers)をご覧ください
 * Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関する記事をご覧ください

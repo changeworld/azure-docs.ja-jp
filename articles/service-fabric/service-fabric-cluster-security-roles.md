@@ -1,25 +1,14 @@
 ---
-title: 'Service Fabric クラスターのセキュリティ: クライアント ロール | Microsoft Docs'
+title: 'Service Fabric クラスターのセキュリティ: クライアント ロール'
 description: この記事では、2 つのクライアント ロールと、ロールに提供されるアクセス許可について説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 38656d286cae631cb5def0e0c8b171268e4cf428
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167260"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451894"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>ロール ベースのアクセス制御 (Service Fabric クライアント用)
 Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。  
@@ -102,7 +91,7 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 ## <a name="changing-default-settings-for-client-roles"></a>クライアント ロールの既定の設定の変更
 クラスター マニフェスト ファイルでは、必要であれば、クライアントに管理者機能を提供できます。 既定の設定を変更するには、[クラスターの作成](service-fabric-cluster-creation-via-portal.md)中に **[Fabric の設定]** オプションに移動し、**name**、**admin**、**user**、**value** の各フィールドに前述の設定を入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 
 [Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)

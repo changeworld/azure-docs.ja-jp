@@ -4,15 +4,15 @@ description: 個人用の月額プランで Log Analytics ワークスペース�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
-ms.date: 10/28/2019
-ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+author: bwren
+ms.author: bwren
+ms.date: 01/14/2020
+ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326506"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944423"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復元
 
@@ -20,7 +20,10 @@ ms.locfileid: "74326506"
 
 ## <a name="considerations-when-deleting-a-workspace"></a>ワークスペースを削除するときの考慮事項
 
-Log Analytics ワークスペースを削除すると、論理的な削除操作が実行されます。削除操作が不注意によるものであれ、意図的なものであれ、14 日以内であればそのデータや接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除の期間が過ぎると、ワークスペースとそのデータは回復不能になります。データは 30 日以内に完全に削除されるためにキューに配置され、新しいワークスペースを作成するためにその名前を使用できるようになります。
+Log Analytics ワークスペースを削除すると、論理的な削除操作が実行されます。削除操作が不注意によるものであれ、意図的なものであれ、14 日以内であればそのデータや接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除期間が終了すると、ワークスペース リソースとそのデータは回復できなくなります。そのデータは完全な削除用のキューに格納され、30 日以内に完全に消去されます。 ワークスペース名は "リリース済み" であり、新しいワークスペースの作成に使用できます。
+
+> [!NOTE]
+> 論理的な削除の動作を無効にすることはできません。 削除操作に "force" タグを使用した場合に論理的な削除をオーバーライドするオプションをまもなく追加する予定です。
 
 重要なデータや構成が含まれているとサービスの運用に悪影響が生じるおそれがあるため、ワークスペースを削除する場合は注意が必要です。 エージェントやソリューションなど、Log Analytics にデータを格納する各種 Azure サービスとソースを再確認してください。そうしたサービスとソースの例を次に示します。
 
@@ -41,7 +44,7 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 
 ワークスペースは、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)、[Azure portal](https://portal.azure.com) のいずれかの方法で削除することができます。
 
-### <a name="delete-workspace-in-azure-portal"></a>Azure portal でワークスペースを削除する
+### <a name="azure-portal"></a>Azure portal
 
 1. サインインするには、[Azure portal](https://portal.azure.com) に移動します。 
 2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
@@ -49,6 +52,11 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
    ![ワークスペースのプロパティ ウィンドウの削除オプション](media/delete-workspace/log-analytics-delete-workspace.png)
 4. ワークスペースの削除を確定するよう求める確認メッセージ ウィンドウが表示されたら、 **[はい]** をクリックします。
    ![ワークスペースの削除の確定](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+```
 
 ## <a name="recover-workspace"></a>ワークスペースを回復させる
 
@@ -60,6 +68,12 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 * リソース グループ名
 * ワークスペース名
 * リージョン
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
+```
 
 ワークスペースとそのすべてのデータは、復旧操作の後に戻されます。 ソリューションおよびリンクされたサービスは、ワークスペースが削除されたときに完全に削除されます。ワークスペースを以前に構成した状態に戻すには、これらを再構成する必要があります。 ワークスペースの復旧後、関連するソリューションが再インストールされ、そのスキーマがワークスペースに追加されるまで、一部のデータがクエリに使用できないことがあります。
 

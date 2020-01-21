@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のステートフル サービスの単体テストを作成する | Microsoft Docs
-description: Service Fabric ステートフル サービスの単体テストを作成する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: ステートフル サービスの単体テストの開発
+description: ステートフル サービス向け Azure Service Fabric での単体テスト、および開発中に留意すべき特別な考慮事項について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720129"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639838"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>ステートフル サービスの単体テストの作成
 Service Fabric ステートフル サービスの単体テストにより、従来のアプリケーションまたはドメイン固有の単体テストでは必ずしも検出されない一般的な誤りが明らかになります。 ステートフル サービスの単体テストを作成するときに、留意すべき特別な考慮事項があります。
@@ -138,5 +127,5 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [サービス間の通信](service-fabric-testability-scenarios-service-communication.md)をテストし、[制御された混乱を使用して障害をシミュレート](service-fabric-controlled-chaos.md)する方法を確認します。

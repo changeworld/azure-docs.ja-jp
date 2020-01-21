@@ -1,18 +1,18 @@
 ---
-title: ワーカー サービス アプリ (非 HTTP アプリ) 向け Application Insights | Microsoft Docs
-description: Application Insights を使用した .NET Core/.NET Framework (非 HTTP アプリ) の監視。
+title: ワーカー サービス アプリ (非 HTTP アプリ) 向け Application Insights
+description: Azure Monitor Application Insights を使用した .NET Core/.NET Framework (非 HTTP アプリ) の監視。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2019
-ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/16/2019
+ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406180"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -35,7 +35,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
     </ItemGroup>
 ```
 
@@ -127,7 +127,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 または、次のいずれかの環境変数にインストルメンテーション キーを指定します。
 `APPINSIGHTS_INSTRUMENTATIONKEY` または `ApplicationInsights:InstrumentationKey`
 
-次に例を示します。`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+例: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 または `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 通常、`APPINSIGHTS_INSTRUMENTATIONKEY` では Web ジョブとして Web Apps にデプロイされるアプリケーションのインストルメンテーション キーを指定します。
@@ -251,7 +251,8 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
                 IServiceCollection services = new ServiceCollection();
 
                 // Being a regular console app, there is no appsettings.json or configuration providers enabled by default.
-                // Hence instrumentation key must be specified here.
+                // Hence instrumentation key and any changes to default logging level must be specified here.
+                services.AddLogging(loggingBuilder => loggingBuilder.AddFilter<Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider>("Category", LogLevel.Information));
                 services.AddApplicationInsightsTelemetryWorkerService("instrumentationkeyhere");
 
                 // Build ServiceProvider.
@@ -354,7 +355,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 
 `ApplicationInsightsServiceOptions` でよく使用される設定
 
-|Setting | 説明 | Default
+|設定 | [説明] | Default
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
@@ -505,7 +506,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Status Monitor などのツールを利用して Application Insights 監視を有効にできますか?
 
-No. 現在、[Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) と [Status Monitor v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) では、ASP.NET 4.x のみがサポートされます。
+いいえ。 現在、[Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) と [Status Monitor v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) では、ASP.NET 4.x のみがサポートされます。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Linux でアプリケーションを実行する場合、すべての機能がサポートされますか?
 
@@ -536,13 +537,13 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
 
-[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) [こちら](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
+[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
 [コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [API を使用](../../azure-monitor/app/api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
 * [自動的に追跡されない追加の依存関係を追跡します](../../azure-monitor/app/auto-collect-dependencies.md)。

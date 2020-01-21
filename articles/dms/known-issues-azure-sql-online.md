@@ -1,6 +1,7 @@
 ---
-title: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
-description: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
+title: 既知の問題:SQL Database へのオンライン移行
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service を使用した Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 07/27/2019
-ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561502"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437823"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -37,7 +38,7 @@ ms.locfileid: "68561502"
 
  ![テンポラル テーブルのエラーの例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**対処法**
+**回避策**
 
 次の手順に従います。
 
@@ -63,7 +64,7 @@ ms.locfileid: "68561502"
 
 ![hierarchyid のエラーの例](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**対処法**
+**回避策**
 
 次の手順に従います。
 
@@ -79,7 +80,7 @@ ms.locfileid: "68561502"
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"全体のデータの読み込み" または "増分データ同期" 中のスキーマ内のアクティブ トリガーに関する各種の整合性違反による移行エラー
 
-**対処法**
+**回避策**
 
 次の手順に従います。
 
@@ -103,7 +104,7 @@ ms.locfileid: "68561502"
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**対処法**
+**回避策**
 
 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
@@ -113,7 +114,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 Azure Database Migration Service によって、ソース タイムスタンプ値が移行されるのではなく、ターゲット テーブルに新しいタイムスタンプ値が生成されます。
 
-**対処法**
+**回避策**
 
 ソース テーブルに格納されている正確なタイムスタンプ値を移行するために Azure Database Migration Service が必要な場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
@@ -125,7 +126,7 @@ Azure Database Migration Service によって、ソース タイムスタンプ�
 
 ![データ移行エラー時に詳細が表示されない例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**対処法**
+**回避策**
 
 特定のエラーの詳細を表示するには、次の手順を実行します。
 
@@ -143,7 +144,7 @@ Azure Database Migration Service によって、ソース タイムスタンプ�
 
      “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
 
-**対処法**
+**回避策**
 
 Azure Database Migration Service では Azure SQL Database へのオフライン移行で geography データ型がサポートされているのに対し、オンライン移行では、geography データ型がサポートされていません。 このデータベースのオンライン移行に Azure Database Migration Service を使用するには、ソースのデータ型をサポートされている型に変更するための代替手段を試してください。
 
@@ -155,6 +156,6 @@ Azure Database Migration Service では Azure SQL Database へのオフライン
 
     Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
 
-**対処法**
+**回避策**
 
 Azure Database Migration Service を使用した Azure SQL Database へのオンライン移行のサポートは、Enterprise、Standard、Developer の各エディションにのみ拡張されています。 移行プロセスを開始する前に、サポートされているエディションを使用していることを確認してください。

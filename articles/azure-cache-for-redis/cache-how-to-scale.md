@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis のスケーリング方法
-description: Azure Cache for Redis インスタンスをスケーリングする方法学習する
+description: Azure portal、Azure PowerShell などのツール、Azure CLI を使用して Azure Cache for Redis インスタンスをスケーリングする方法を説明します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433513"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -49,7 +49,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
  
 キャッシュを新しい価格レベルにスケーリングするときに、 **[Azure Cache for Redis]** ブレードで状態が **[拡大中]** と表示されます。
 
-![スケーリング][redis-cache-scaling]
+![Scaling][redis-cache-scaling]
 
 スケーリングが完了すると、状態が **[拡大中]** から **[実行中]** に変わります。
 

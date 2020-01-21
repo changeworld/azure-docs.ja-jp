@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427629"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを作成して共有する
 
@@ -47,7 +47,7 @@ Azure Machine Learning Studio (クラシック) を使用するには、Machine 
 > Machine Learning Studio (クラシック) では、ワークフローの実行時に中間データを保存するときにユーザーが指定した Azure ストレージ アカウントが使用されます。 ワークスペースの作成後に、ストレージ アカウントが削除された場合、またはアクセスキーが変更された場合、ワークスペースは機能しなくなり、そのワークスペースのすべての実験は失敗します。
 誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウントと同じリージョンに同じ名前のストレージ アカウントを再作成し、アクセス キーを再同期します。 ストレージ アカウントのアクセス キーを変更した場合は、Azure Portal を使用してワークスペースのアクセス キーを再同期します。
 
-デプロイされたワークスペースは、クラシック バージョンの Machine Learning Studio で開くことができます。
+デプロイしたワークスペースは、Machine Learning Studio (クラシック) で開くことができます。
 
 1. [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio (クラシック) を参照します。
 
@@ -76,7 +76,7 @@ Machine Learning Studio (クラシック) ワークスペースを作成した�
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Studio (クラシック) ワークスペースを共有するには
 
-1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で、クラシック バージョンの Machine Learning Studio にサインインします。
+1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で Machine Learning Studio (クラシック) にサインインします。
 
 2. 左側のパネルの **[設定]** をクリックします。
 

@@ -4,12 +4,12 @@ description: 初めてのカスタム Windows コンテナーを Azure App Servi
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671346"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922310"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure でのカスタム Windows コンテナーの実行 (プレビュー)
 
@@ -79,7 +79,7 @@ ms.locfileid: "74671346"
 
 ## <a name="create-a-windows-container-app"></a>Windows コンテナー アプリの作成
 
-1. [Azure Portal]( https://portal.azure.com) にサインインします。
+1. [Azure portal]( https://portal.azure.com) にサインインする
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
@@ -163,7 +163,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ## <a name="use-a-different-parent-image"></a>別の親イメージを使用する
 
-別のカスタム Docker イメージを使用してアプリを実行することもできます。 ただし、必要なフレームワークに合った適切な[親イメージ](https://docs.docker.com/develop/develop-images/baseimages/)を選ぶ必要があります。
+別のカスタム Docker イメージを使用してアプリを実行することもできます。 ただし、必要なフレームワークに合った適切な[親イメージ (基本イメージ)](https://docs.docker.com/develop/develop-images/baseimages/) を選ぶ必要があります。
 
 - .NET Framework のアプリをデプロイするには、Windows Server Core 2019 [Long-Term Servicing Channel (LTSC: 長期的なサービス チャネル)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
 - .NET Core のアプリをデプロイするには、Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC: 半期サービス チャネル)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
@@ -171,9 +171,9 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
 
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - このイメージは、Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) の Microsoft Windows Nano Server イメージ全体で使用されるベース コンテナーです。
+- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - このイメージは、Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) の Microsoft Windows Nano Server イメージ全体で使用されるベース コンテナーです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure で Windows コンテナーに移行する](app-service-web-tutorial-windows-containers-custom-fonts.md)

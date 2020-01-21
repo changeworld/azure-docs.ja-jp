@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941833"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667530"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -129,7 +129,6 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
     | Linux ディストリビューション | Version |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
@@ -155,7 +154,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 関数プロジェクト ディレクトリには、[host.json](functions-host-json.md) ファイル、[local.settings.json](#local-settings-file) ファイル、および個々の関数のコードを含むサブフォルダーが含まれています。 このディレクトリは、Azure の関数アプリに相当します。 Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
 
-バージョン 2.x では、初期化時にプロジェクトの既定の言語を選択する必要があります。さらに、追加されたすべての関数で、既定の言語テンプレートが使用されます。 バージョン 1.x では、関数を作成するたびに言語を指定します。
+バージョン 2.x では、プロジェクトの初期化時に既定の言語を選択する必要があります。 バージョン 2.x では、追加されたすべての関数に既定の言語テンプレートが使用されます。 バージョン 1.x では、関数を作成するたびに言語を指定します。
 
 ターミナル ウィンドウまたはコマンド プロンプトで、次のコマンドを実行してプロジェクトおよびローカルの Git リポジトリを作成します。
 
@@ -189,7 +188,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` では、次のオプションがサポートされています。特に注意書きがない限り、バージョン 2.x だけが対象です。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | [C# クラス ライブラリ (.cs) プロジェクト](functions-dotnet-class-library.md)を初期化します。 |
 | **`--csx`** | [C# スクリプト (.csx) プロジェクト](functions-reference-csharp.md)を初期化します。 後続のコマンドで、`--csx` を指定する必要があります。 |
@@ -227,9 +226,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>ストレージ接続文字列の取得
 
-開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
+開発のために Microsoft Azure ストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
-- [Azure ポータル] から、 **[ストレージ アカウント]** を検索して選択します。 
+- [Azure portal] から、 **[ストレージ アカウント]** を検索して選択します。 
   ![Azure portal で [ストレージ アカウント] を選択する](./media/functions-run-local/select-storage-accounts.png)
   
   使用するストレージ アカウントを選択し、 **[設定]** の **[アクセス キー]** を選択してから、 **[接続文字列]** の値のいずれかをコピーします。
@@ -252,7 +251,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure にまだサインインしていない場合は、サインインするように求められます。
+    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。
 
 ## <a name="create-func"></a>関数を作成する
 
@@ -290,7 +289,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 次の引数を使用して、コマンドでこれらのオプションを指定することもできます。
 
-| 引数     | 説明                            |
+| 引数     | [説明]                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (バージョン 2.x) バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
 | **`--language -l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x では、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
@@ -346,13 +345,13 @@ func host start
 
 `func start` では、次のオプションがサポートされています。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 実行前に現在のプロジェクトをビルドしません。 dotnet プロジェクトの場合のみ。 既定値は false に設定されます。 Version 2.x のみ。 |
 | **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 |
 | **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 2.x のみを許可します。 |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
-| **`--language-worker`** | 言語ワーカーを構成するための引数。 Version 2.x のみ。 |
+| **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 Version 2.x のみ。 |
 | **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
 | **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
 | **`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
@@ -436,7 +435,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` では、次のオプションがサポートされています。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | インライン コンテンツ。 |
 | **`--debug -d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
@@ -472,14 +471,14 @@ func azure functionapp publish <FunctionAppName>
 
 次の発行オプションは、1.x と 2.x の両方のバージョンに適用されます。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。 ストレージ エミュレーターを使用している場合は、まずアプリ設定を[実際のストレージ接続](#get-your-storage-connection-strings)に変更します。 |
+| **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。 Microsoft Azure ストレージ エミュレーターを使用している場合は、まずアプリ設定を[実際のストレージ接続](#get-your-storage-connection-strings)に変更します。 |
 | **`--overwrite-settings -y`** | `--publish-local-settings -i` を使用するときに、アプリの設定を上書きするプロンプトを抑制します。|
 
 次の発行オプションは、バージョン 2.x でのみサポートされています。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
 |**`--list-ignored-files`** | 発行時に無視されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
@@ -503,7 +502,7 @@ func deploy
 
 次のカスタム コンテナー デプロイ オプションを使用できます。
 
-| オプション     | 説明                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 現在のユーザーがサインインしている Docker レジストリの名前。 |
 | **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは `kubernetes` です。 |
@@ -516,9 +515,9 @@ func deploy
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
-### <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
+### <a name="application-insights-integration"></a>Application Insights の統合
 
-Azure portal で関数アプリを作成する場合、Application Insights との統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+Azure で関数アプリを作成するときに Application Insights の統合を有効にする必要があります。 何らかの理由で関数アプリが Application Insights インスタンスに接続されていない場合は、Azure portal でこの統合を簡単に行うことができます。 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,10 +529,10 @@ Azure portal で関数アプリを作成する場合、Application Insights と�
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-この種類のストリーミング ログを使用するには、関数アプリの [Application Insights との統合](#enable-application-insights-integration)を有効にする必要があります。   
+この種類のストリーミング ログを使用するには、関数アプリの Application Insights との統合を有効にする必要があります。   
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions Core Tools [Microsoft 学習モジュール](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) を使用して Azure Functions を開発、テスト、および発行する方法について説明します。Azure Functions Core Tools は[オープンソースであり、GitHub ](https://github.com/azure/azure-functions-cli)でホストされています。  
 バグまたは機能要求を提出するには、[GitHub の問題をオープン](https://github.com/azure/azure-functions-cli/issues)してください。
@@ -541,8 +540,8 @@ Azure Functions Core Tools [Microsoft 学習モジュール](https://docs.micros
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure ポータル]: https://portal.azure.com 
-[Node.JS]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+[Azure Portal]: https://portal.azure.com 
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [拡張バンドル]: functions-bindings-register.md#extension-bundles

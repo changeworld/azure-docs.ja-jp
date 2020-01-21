@@ -1,25 +1,14 @@
 ---
-title: C# を使用して Linux 上で最初の Azure Service Fabric アプリを作成する | Microsoft Docs
+title: C# を使用して Linux 上で最初の Azure Service Fabric アプリを作成する
 description: C# と .NET Core 2.0 を使用して、Service Fabric アプリケーションを作成し、デプロイする方法について説明します。
-services: service-fabric
-documentationcenter: csharp
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
-ms.service: service-fabric
-ms.devlang: csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/11/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8c34f50e8eb9d9793c146c38aca47691b04049c0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458127"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -77,7 +66,7 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
  ./build.sh
   ```
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 
 ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
@@ -131,7 +120,7 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfcsharp:AddService` を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI を使用した Service Fabric クラスターの対話操作](service-fabric-cli.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

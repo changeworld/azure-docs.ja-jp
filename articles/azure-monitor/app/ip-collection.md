@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432600"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -73,7 +73,7 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 
 3. **[テンプレートの編集]** を選択します (テンプレートに、この例のテンプレートに表示されていない追加のプロパティまたはリソースがある場合は、すべてのリソースでテンプレートのデプロイが増分変更/更新として確実に受け入れられるように注意して作業を進めてください)。
 
-    ![Edit Template](media/ip-collection/edit-template.png)
+    ![テンプレートを編集する](media/ip-collection/edit-template.png)
 
 4. リソースの json を次のように変更してから、 **[保存]** をクリックします。
 
@@ -84,7 +84,7 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 
 5. **[同意する]**  >  **[購入]** の順に選択します。 
 
-    ![Edit Template](media/ip-collection/purchase.png)
+    ![テンプレートを編集する](media/ip-collection/purchase.png)
 
     この場合、新しいものは購入されません。既存の Application Insights リソースの構成を更新するだけです。
 

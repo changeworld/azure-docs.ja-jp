@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430979"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -30,7 +30,7 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 ## <a name="navigating-the-reports"></a>レポート内の移動
 
-各レポートは、レポートの上部に表示されている期間のすべての検出の一覧と共に起動します。 各レポートでは、管理者の設定に基づいて列を追加または削除できます。 管理者は、データを .CSV 形式でダウンロードすることを選択できます。 レポートは、レポートの上部にあるフィルターを使用してフィルター処理できます。
+各レポートは、レポートの上部に表示されている期間のすべての検出の一覧と共に起動します。 各レポートでは、管理者の設定に基づいて列を追加または削除できます。 管理者は、データを .CSV または .JSON 形式でダウンロードすることを選択できます。 レポートは、レポートの上部にあるフィルターを使用してフィルター処理できます。
 
 個々のエントリを選択して、レポートの上部で追加のエントリを有効にすることができます (サインインが侵害されているか安全であるかを確認する機能、ユーザーが侵害されていることを確認する機能、ユーザー リスクを無視する機能など)。
 
@@ -44,7 +44,7 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 - どのユーザーにリスクがあり、リスクが修復されたか無視されたか
 - 検出の詳細
-- 危険なサインインの履歴
+- すべての危険なサインインの履歴
 - リスクの履歴
  
 管理者は、これらのイベントに対してアクションを実行することを選択できます。 管理者は、以下を実行することを選択できます。
@@ -88,7 +88,7 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リスクを軽減するために使用できるポリシー](concept-identity-protection-policies.md)
 

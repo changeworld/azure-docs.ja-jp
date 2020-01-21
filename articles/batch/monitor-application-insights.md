@@ -2,7 +2,7 @@
 title: Azure Application Insights による Batch の監視 | Microsoft docs
 description: Azure Application Insights ライブラリを使用して Azure Batch .NET アプリケーションをインストルメント化する方法を説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: c69ef0bf20e2ade15d2278d0fc2fabd75f39153b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322564"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029505"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -37,7 +37,7 @@ ms.locfileid: "68322564"
 
 * [Application Insights リソース](../azure-monitor/app/create-new-resource.md )
   
-   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 "*一般的*" な**アプリケーションの種類**を選択します。
+   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 **[アプリケーションの種類]** として *[全般]* を選択します。
 
    * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
   
@@ -341,7 +341,7 @@ pool.StartTask = new StartTask()
 運用環境で実行される Azure Batch アプリケーションは大規模となる性質があるため、コストを管理するために Application Insights によって収集されるデータ量を制限することが必要な場合があります。 これを実現するいくつかのメカニズムについては、「[Application Insights におけるサンプリング](../azure-monitor/app/sampling.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Application Insights](../azure-monitor/app/app-insights-overview.md) についてさらに学習します。
 
 * 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../azure-monitor/app/platforms.md)をご覧ください。

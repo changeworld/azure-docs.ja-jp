@@ -1,19 +1,15 @@
 ---
 title: Azure Migrate での移行に向けてマシンを準備する
 description: Azure Migrate での移行に向けてオンプレミス マシンを準備する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974786"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028755"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -44,9 +40,9 @@ ms.locfileid: "74974786"
 
 ## <a name="check-whats-supported"></a>サポート対象を確認する
 
-- VMware VM については、Azure Migrate Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。 移行に関する VMware VM の要件およびサポートを確認してください ([エージェントレスの場合はこちら](migrate-support-matrix-vmware.md#migration---limitations)、[エージェントベースの場合はこちら](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements))。
-- Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)を確認してください。
-- オンプレミスの物理マシンまたは他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical.md)を確認してください。 
+- VMware VM については、Azure Migrate Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。 VMware VM の[移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
+- Hyper-V の[移行の要件とサポート](migrate-support-matrix-hyper-v-migration.md)を確認してください。
+- オンプレミスの物理マシンまたは他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。 
 
 
 
@@ -55,10 +51,11 @@ ms.locfileid: "74974786"
 
 移行中にマシンがインターネットにアクセスすることが必要になることがあります。
 
-- 移行中に VMware VM がアクセスする必要がある URL を確認します ([エージェントレスの場合はこちら](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements)、[エージェントベースの場合はこちら](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements))。
-- 移行中に Hyper-V ホストがアクセスする必要がある URL を確認します。 Hyper-V VM には、インターネット アクセスは必要ありません。
-- 物理マシンまたは他の仮想化されたサーバーが移行中にアクセスする必要がある [URL を確認](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)します。
-- VMware VM または物理サーバーのエージェントベースの移行の場合には、マシン上で稼働しているモビリティ サービスが Azure Migrate コンポーネントにアクセスできるようになっている必要があります。 同サービスはマシンで稼働中、レプリケーション管理のためにインバウンド ポート HTTPS 443 を使ってオンプレミスの Azure Migrate レプリケーション アプライアンスと通信します。 マシンでは、インバウンド ポート HTTPS 9443 を使ってレプリケーション データを Azure Migrate のプロセス サーバーに送信します。 このポートは変更可能です。
+- エージェントレス移行中に Azure Migrate アプライアンスがアクセスする必要がある [URL を確認](migrate-appliance.md#url-access)してください。 [ポートのアクセス](migrate-support-matrix-vmware-migration.md#agentless-ports)要件を確認してください。
+- VMware VM エージェントベースの移行中にレプリケーション アプライアンスによって使用される [URL](migrate-replication-appliance.md#url-access) と[ポート] (migrate-replication-appliance.md#port-access)を確認します。 
+- 移行中に Hyper-V ホストがアクセスする必要がある URL とポートを[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)します。 
+- 物理サーバーの移行中にレプリケーション アプライアンスによって使用される [URL](migrate-replication-appliance.md#url-access) と[ポート] (migrate-replication-appliance.md#port-access)を確認します。
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>移行前に必要な変更を確認する
@@ -77,7 +74,7 @@ ms.locfileid: "74974786"
 Windows マシンを移行する場合は、移行の前に次の変更を行ってください。 これらの変更せずに VM を移行すると、Azure で VM が起動しなくなることがあります。
 
 1. Azure VM で [Azure シリアル アクセス コンソールを有効にします](../virtual-machines/troubleshooting/serial-console-windows.md)。 これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 これは、新しい VM の再起動に相当します。 
-2. Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
+2. Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
 
 ### <a name="prepare-linux-machines"></a>Linux マシンの準備作業
 
@@ -105,7 +102,7 @@ Windows マシンを移行する場合は、移行の前に次の変更を行っ
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM の要件を確認する
 
-オンプレミスのマシンを Azure にレプリケートする場合には、オペレーティング システムとアーキテクチャ、ディスク、ネットワーク設定、および VM 名に関する Azure VM の要件を順守している必要があります。 移行前に要件を確認してください ([VMware VM と物理サーバーはこちら](migrate-support-matrix-vmware.md#azure-vm-requirements)、[Hyper-V VM はこちら](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements))。
+オンプレミスのマシンを Azure にレプリケートする場合には、オペレーティング システムとアーキテクチャ、ディスク、ネットワーク設定、および VM 名に関する Azure VM の要件を順守している必要があります。 移行前に要件を確認してください ([VMware VM と物理サーバーはこちら](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)、[Hyper-V VM はこちら](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements))。
 
 
 ## <a name="prepare-to-connect-after-migration"></a>移行後に接続するための準備を整える
@@ -135,7 +132,7 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 
 移行後は、作成された Azure VM で次の手順を実行します。
 
-1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じアドレスを Azure VM に使用することはできません。 [詳細情報](../virtual-network/virtual-network-public-ip-address.md)。
+1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じアドレスを Azure VM に使用することはできません。 [詳細については、こちらを参照してください](../virtual-network/virtual-network-public-ip-address.md)。
 2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
 3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 
@@ -144,6 +141,6 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure に [VMware VM を移行する](server-migrate-overview.md)のか、[Hyper-V VM ](tutorial-migrate-hyper-v.md) を移行するのか、あるいは[物理サーバー、仮想化された VM、またはクラウドの VM](tutorial-migrate-physical-virtual-machines.md) を移行するのかに応じて、使用する方法を決めます。

@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b05772124ef4bd4408c5926031e7fce51075eeac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3f16d84f66f2da6094054d161f286070fc86a73b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690748"
+ms.locfileid: "75720125"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
 Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想マシンのパスワード、Linux 仮想マシンの SSH 公開キー、または成果物を使用して Git リポジトリを複製するための個人用アクセス トークン) の入力が必要な場合があります。 通常、シークレットは長いランダムな文字列です。 そのため、シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。
 
 この問題を解決してシークレットを安全な場所に保管するために、DevTest Labs では [Azure Key Vault](../key-vault/key-vault-overview.md) へのシークレットの格納をサポートしています。 ユーザーが初めてシークレットを保存する際に、DevTest Labs サービスは、ラボが格納されているのと同じリソース グループ内にキー コンテナーを自動的に作成してシークレットを保存します。 DevTest Labs では、ユーザーごとに個別のキー コンテナーが作成されます。 
 
-[!NOTE]
 ラボ ユーザーは、キー コンテナーでシークレットを作成する前に、まずラボ仮想マシンを作成する必要があることに注意してください。 これは、DevTest Lab サービスでは、キー コンテナーにシークレットを作成および保存する操作を許可する前に、ラボ ユーザーを有効なユーザー ドキュメントに関連付ける必要があるためです。 
 
 

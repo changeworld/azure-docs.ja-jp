@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor を使用して Azure サブスクリプションのオペレーショナル エクセレンスを向上させる | Microsoft Docs
-description: Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます。
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Azure Advisor を使用して Azure サブスクリプションのオペレーショナル エクセレンスを向上させる
+description: Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443073"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Azure Advisor でオペレーショナル エクセレンスを実現する
 
@@ -44,11 +39,11 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 4. Azure Policy を使用して、"マネージド ディスクを使用していない VM を監査する" ポリシーを適用する
 5. Azure Policy を使用して、"リソース グループからタグを継承する" を使用する: このポリシーでは、任意のリソースが作成または更新されるときに、親リソース グループのタグと値が追加または置換されます。 修復タスクをトリガーすることで、既存のリソースを修復できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
-* [作業の開始](advisor-get-started.md)
+* [開始するには](advisor-get-started.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)

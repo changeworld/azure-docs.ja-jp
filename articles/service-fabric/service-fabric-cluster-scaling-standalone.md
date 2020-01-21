@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric スタンドアロン クラスターのスケーリング | Microsoft Docs
+title: Azure Service Fabric スタンドアロン クラスターのスケーリング
 description: Service Fabric スタンドアロン クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: eedf80ec82a748f5da8e51aed8b4d403dffe4169
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451908"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -50,7 +42,7 @@ Service Fabric クラスターは、ネットワークで接続された一連�
 - 長所:ソフトウェアやアプリケーションのアーキテクチャは変わりません。
 - 短所:スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理マシンまたは仮想マシンをオフラインにする必要があるため、ダウンタイムが生じます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。
 * fluent Azure コンピューティング SDK を使用して [Azure クラスターをプログラムでスケーリングします](service-fabric-cluster-programmatic-scaling.md)。

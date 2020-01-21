@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b447a0328de210caeb23a1beb91c532853c180bc
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550470"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867485"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Windows)
 
@@ -85,7 +85,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 このクイックスタートでは、既存のサンプル デバイス機能モデルおよび関連するインターフェイスを使用します。
 
-1. ローカル ドライブに `pnp_app` ディレクトリを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
+1. お使いのローカル ドライブに `pnp_app` フォルダーを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
 
 1. [デバイス機能モデルとインターフェイスのサンプル ファイル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)と[インターフェイスのサンプル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)をダウンロードし、ファイルを `pnp_app` フォルダーに保存します。
 
@@ -109,7 +109,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. デバイス コード スタブの生成に使用する **SampleDevice.capabilitymodel.json** ファイルを選択します。
 
-1. プロジェクト名「**sample_device**」を入力します。 これは、デバイス アプリケーションの名前になります。
+1. プロジェクト名「**sample_device**」を入力します。 これは、対象のデバイス アプリケーションの名前です。
 
 1. 使用する言語として、 **[ANSI C]** を選択します。
 
@@ -124,7 +124,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 ## <a name="build-and-run-the-code"></a>コードのビルドと実行
 
-デバイス SDK のソース コードを使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
+Vcpkg パッケージを使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
 
 1. `sample_device` フォルダーに `cmake` サブディレクトリを作成して、そのフォルダーに移動します。
 

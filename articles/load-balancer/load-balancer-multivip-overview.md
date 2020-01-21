@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f6943a95cd327785d4907bb675958be99b902764
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644938"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771259"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
@@ -98,8 +98,28 @@ Azure Load Balancer は、使用する規則タイプに関係なく、フロン
 * フロントエンド 1: フロントエンド 1 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 * フロントエンド 2: フロントエンド 2 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 
+バックエンドプール内の各 VM に対して、Windows コマンドプロンプトで次のコマンドを実行します。
+
+VM 上のインターフェイス名の一覧を取得するには、次のコマンドを入力します。
+
+    netsh interface show interface 
+
+VM NIC (Azure マネージド) には、次のコマンドを入力します。
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (interfacename の部分をこのインターフェイスの名前に置き換えてください)
+
+追加した各ループバック インターフェイスに対して、次のコマンドを繰り返します。
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+
 > [!IMPORTANT]
 > ループバック インターフェイスの構成については、ゲスト OS 内で実行されます。 この構成は Azure で実行および管理されていません。 この構成なしでは、規則は機能しません。 正常性プローブの定義は、DSR フロントエンドを表すループバック インターフェイスではなく VM の DIP を使用します。 したがって、お使いのサービスでは、DSR フロントエンドを表すループバック インターフェイスで提供されているサービスの状態を反映する、DIP ポートのプローブ応答を提供する必要があります。
+
 
 前のシナリオと同じフロントエンド構成であると仮定します。
 

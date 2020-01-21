@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721561"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968283"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 
@@ -37,7 +37,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 * [.NET 用 Azure Storage Common クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 * [.NET 用 Azure Storage Queue クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* [Azure ストレージ アカウント](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Azure ストレージ アカウント](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -89,7 +89,7 @@ NuGet を使用してこれらのパッケージを取得できます。 次の�
 * クラウド内の Azure ストレージ アカウントに対してコードを実行できます。
 * Azure ストレージ エミュレーターに対してコードを実行できます。 ストレージ エミュレーターは、クラウド内の Azure ストレージ アカウントをエミュレートするローカル環境です。 エミュレーターを使用すると、アプリケーションの開発中にコードのテストとデバッグを無料で実行できます。 エミュレーターでは既知のアカウントとキーを使用します。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../common/storage-use-emulator.md)」を参照してください。
 
-クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「[Access keys](../common/storage-account-manage.md#access-keys)」(アクセス キー) に関するページを参照してください。
+クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「[ストレージ アカウント アクセス キーを管理する](../common/storage-account-keys-manage.md)」を参照してください。
 
 > [!NOTE]
 > ストレージ エミュレーターをターゲットにすると、Azure Storage に関連する利用料金の発生を回避できます。 ただし、クラウド内の Azure ストレージ アカウントをターゲットとしても、このチュートリアルを実行するための利用料金はごくわずかです。
@@ -369,7 +369,7 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 queue.Delete();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 

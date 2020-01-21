@@ -1,6 +1,7 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して、Azure SQL Database または Azure SQL Database マネージド インスタンスへの RDS SQL Server のオンライン移行を行う | Microsoft Docs
-description: Azure Database Migration Service を使用して、RDS SQL Server から Azure SQL Database または Azure SQL Database マネージド インスタンスへのオンライン移行を実行する方法について学習します。
+title: チュートリアル:RDS SQL Server をオンラインで SQL Database に移行する
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service を使用して、RDS SQL Server から Azure SQL Database 単一データベースまたはマネージド インスタンスへのオンライン移行を実行する方法について学習します。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 982ead69ba3d206e1aa2538597927dcbeaab70e9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2c10bde323f3611047fe5c5a0c06a1f2786f642a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416100"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437575"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL Database マネージド インスタンスにオンラインで移行する
 Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL Database マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)に、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database または Azure SQL Database マネージド インスタンスに移行します。
@@ -51,7 +52,7 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
     > Azure SQL Database マネージド インスタンスに移行する場合は、「[Azure SQL Database マネージド インスタンスの作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)」記事の詳細に従った後、**AdventureWorks2012** という名前の空のデータベースを作成します。 
  
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 以降をダウンロードしてインストールします。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure Virtual Network (VNet) を作成します。 Azure SQL Database マネージド インスタンスに移行する場合は、Azure SQL Database マネージド インスタンスに使用されるのと同じ VNet 内の異なるサブネットに、DMS インスタンスを作成します。  または、DMS 用に異なる VNet を使用する場合は、2 つの VNet 間に VNet ピアリングを作成する必要があります。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure Virtual Network (VNet) を作成します。 Azure SQL Database マネージド インスタンスに移行する場合は、Azure SQL Database マネージド インスタンスに使用されるのと同じ VNet 内の異なるサブネットに、DMS インスタンスを作成します。  または、DMS 用に異なる VNet を使用する場合は、2 つの VNet 間に VNet ピアリングを作成する必要があります。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
@@ -104,20 +105,20 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 **AdventureWorks2012** スキーマを Azure SQL Database に移行するには、次の手順を実行します。
 
-1. Data Migration Assistant で、新規 (+) アイコンを選択し、**[プロジェクト タイプ]** で **[移行]** を選択します。
-2. プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
-3. **[移行スコープ]** で、**[Schema only]\(スキーマのみ\)** を選択します。
+1. Data Migration Assistant で、新規 (+) アイコンを選択し、 **[プロジェクト タイプ]** で **[移行]** を選択します。
+2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
+3. **[移行スコープ]** で、 **[Schema only]\(スキーマのみ\)** を選択します。
 
     上記の手順を実行すると、DMA のインターフェイスの表示が次の図のようになります。
 
     ![Data Migration Assistant プロジェクトを作成する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-create-project.png)
 
 4. **[作成]** を選択してプロジェクトを作成します。
-5. DMA で、SQL Server のソース接続詳細を指定し、**[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
+5. DMA で、SQL Server のソース接続詳細を指定し、 **[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
 
     ![Data Migration Assistant のソース接続詳細](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. **[次へ]** を選択し、**[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、**[Connect]\(接続\)** を選択してから、Azure SQL Database で事前にプロビジョニングした **AdventureWorksAzure** データベースを選択します。
+6. **[次へ]** を選択し、 **[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、 **[Connect]\(接続\)** を選択してから、Azure SQL Database で事前にプロビジョニングした **AdventureWorksAzure** データベースを選択します。
 
     ![Data Migration Assistant のターゲット接続詳細](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
@@ -137,11 +138,11 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-select-subscription1.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、 **[リソース プロバイダー]** を選択します。
 
     ![リソース プロバイダーの表示](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
@@ -155,7 +156,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
     ![Azure Marketplace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create1.png)
   
@@ -181,7 +182,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
       ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-search.png)
 
@@ -190,12 +191,12 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
      ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[AWS RDS for SQL Server]** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、 **[ソース サーバーの種類]** テキスト ボックスで **[AWS RDS for SQL Server]** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択します。
 
     > [!NOTE]
     > Azure SQL Database シングルトン データベースと Azure SQL Database マネージド インスタンスのどちらに移行する場合でも、[ターゲット サーバーの種類] で **[Azure SQL Database]** を選択します。
 
-5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+5. **[アクティビティの種類を選択します]** セクションで、 **[オンライン データの移行]** を選択します。
 
     > [!IMPORTANT]
     > 必ず **[オンライン データの移行]** を選択してください。オフライン移行は、このシナリオではサポートされていません。
@@ -203,7 +204,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
     ![Database Migration Service プロジェクトを作成する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
+    > または、 **[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
 
 6. **[保存]** を選択します。
 
@@ -217,7 +218,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
     ソース SQL Server インスタンス名には、必ず完全修飾ドメイン名 (FQDN) を使用してください。
 
-2. 信頼できる証明書をソース サーバーにインストールしていない場合は、**[サーバー証明書を信頼する]** チェック ボックスをオンにします。
+2. 信頼できる証明書をソース サーバーにインストールしていない場合は、 **[サーバー証明書を信頼する]** チェック ボックスをオンにします。
 
     信頼できる証明書がインストールされていない場合、SQL Server はインスタンスの開始時に自己署名証明書を生成します。 この証明書は、クライアント接続の資格情報の暗号化に使用されます。
 
@@ -228,33 +229,33 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[Migration target details]\(移行ターゲットの詳細\)** 画面でターゲット Azure SQL Database サーバーの接続の詳細を指定します。これは、DMA を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
+1. **[保存]** を選択し、 **[Migration target details]\(移行ターゲットの詳細\)** 画面でターゲット Azure SQL Database サーバーの接続の詳細を指定します。これは、DMA を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
 
     ![ターゲットを選択する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-select-target3.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service は既定でターゲット データベースを選択します。
 
     ![ターゲット データベースにマップする](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-map-targets-activity4.png)
 
-3. **[保存]** を選択し、**[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
+3. **[保存]** を選択し、 **[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
 
     Azure Database Migration Service では、ターゲット Azure SQL データベース インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、この画面でテーブルを明示的に選択する必要があります。
 
     ![テーブルを選択する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. 次の **[オンライン移行の詳細設定]** を設定した後、**[保存]** を選択します。
+4. 次の **[オンライン移行の詳細設定]** を設定した後、 **[保存]** を選択します。
 
-    | Setting | 説明 |
+    | 設定 | [説明] |
     | ------------- | ------------- |
     | **同時に読み込むテーブルの最大数** | 移行の間に DMS で並列に実行されるテーブルの数を指定します。 既定値は 5 ですが、POC の移行に基づいて特定の移行ニーズに合った最適な値に設定できます。 |
     | **ソース テーブルが切り捨てられる場合** | 移行の間に、DMS でターゲット テーブルを切り捨てるかどうかを指定します。 この設定は、移行プロセスの一部として 1 つまたは複数のテーブルが切り捨てられる場合に役に立つことがあります。 |
-    | **ラージ オブジェクト (LOB) データの設定を構成する** | DMS で移行される LOB データを無制限にするか、または移行される LOB データを特定のサイズに制限するかを指定します。  移行される LOB データに制限がある場合、その制限を超えるすべての LOB データは切り捨てられます。 運用環境の移行では、**[無制限の LOB サイズを許可する]** を選択してデータ損失を防ぐことをお勧めします。 無制限の LOB サイズの許可を指定する場合は、**[LOB サイズが以下の (KB) よりも小さい場合は、単一ブロックに LOB データを移行します]** チェック ボックスをオンにして、パフォーマンスを向上させます。 |
+    | **ラージ オブジェクト (LOB) データの設定を構成する** | DMS で移行される LOB データを無制限にするか、または移行される LOB データを特定のサイズに制限するかを指定します。  移行される LOB データに制限がある場合、その制限を超えるすべての LOB データは切り捨てられます。 運用環境の移行では、 **[無制限の LOB サイズを許可する]** を選択してデータ損失を防ぐことをお勧めします。 無制限の LOB サイズの許可を指定する場合は、 **[LOB サイズが以下の (KB) よりも小さい場合は、単一ブロックに LOB データを移行します]** チェック ボックスをオンにして、パフォーマンスを向上させます。 |
 
     ![オンライン移行の詳細設定を指定する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
-5. **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
+5. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
     ![移行の概要](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-migration-summary.png)
 
@@ -278,17 +279,17 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 初回の全体の読み込みが完了すると、データベースは **[一括準備完了]** とマークされます。
 
-1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
+1. データベースの移行を完了する準備ができたら、 **[一括で開始]** を選択します。
 
     ![一括で開始](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-start-cutover.png)
 
-2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
-3. **[確認]** を選択し、**[適用]** を選択します。
+2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。 **[保留中の変更]** カウンターが **0** を示すまで待ってください。
+3. **[確認]** を選択し、 **[適用]** を選択します。
 4. データベースの移行の状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure SQL Database に接続します。
 
     ![アクティビティの状態 - 完了](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure SQL Database へのオンライン移行を実行する際の既知の問題と制限事項については、[Azure SQL Database のオンライン移行に伴う既知の問題と回避策](known-issues-azure-sql-online.md)に関する記事を参照してください。
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。

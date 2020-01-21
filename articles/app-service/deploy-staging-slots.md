@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671752"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666459"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ ms.locfileid: "74671752"
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によって破棄される要求はありません。 スワップ前の検証が必要ない場合は、[自動スワップ](#Auto-Swap)を構成することで、このワークフロー全体を自動化できます。
 * スワップ後も、以前のステージング アプリ スロットに元の運用アプリが残っているため、 運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
 
-サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 デプロイ スロットは追加料金なしでご利用いただけます。 使用しているアプリのサービス レベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)」をご覧ください。 
+サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 デプロイ スロットは追加料金なしでご利用いただけます。 使用しているアプリのサービス レベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)」をご覧ください。 
 
 アプリを別のサービス レベルにスケールするには、アプリが既に使用しているスロット数がターゲット レベルによってサポートされていることを確認します。 たとえば、**Standard** レベルではサポートされるデプロイ スロット数は 5 つのみなので、アプリのスロット数が 5 つより多い場合は、**Standard** レベルにスケール ダウンできません。 
 
@@ -32,7 +32,11 @@ ms.locfileid: "74671752"
 ## <a name="add-a-slot"></a>スロットを追加する
 複数のデプロイ スロットを有効にするには、アプリが **Standard**、**Premium**、**Isolated** のいずれかのレベルで実行されている必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
+
+1. [Azure portal](https://portal.azure.com/) で、 **[App Services]** を探して選択し、アプリを選択します。 
+   
+    ![App Services を探す](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. 左側のウィンドウで、 **[デプロイ スロット]**  >  **[スロットの追加]** と選択します。
    
@@ -206,7 +210,7 @@ ms.locfileid: "74671752"
 
 次の[アプリ設定](configure-common.md)の 1 つまたは両方を使用して、ウォームアップの動作をカスタマイズすることもできます。
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 例: `/statuscheck`。 既定値は `/` です。 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 たとえば `/statuscheck` です。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば `200,202` とします。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。
 
 > [!NOTE]
@@ -268,7 +272,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ## <a name="delete-a-slot"></a>スロットを削除する
 
-アプリのリソース ページに移動します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 コマンド バーの **[削除]** を選択します。  
+アプリを検索して選択します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 コマンド バーの **[削除]** を選択します。  
 
 ![デプロイ スロットの削除](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>ARM テンプレートで自動化する
+## <a name="automate-with-resource-manager-templates"></a>Resource Manager テンプレートで自動化する
 
-[ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 ARM テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
+[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 Resource Manager テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
 
 - `buildVersion`: これは、スロットにデプロイされているアプリの現在のバージョンを表す文字列プロパティです。 たとえば、"v1"、"1.0.0.1"、または "2019-09-20T11:53:25.2887393-07:00" のようになります。
 - `targetBuildVersion`: これは、スロットに必要な `buildVersion` を指定する文字列プロパティです。 targetBuildVersion が現在の `buildVersion` と等しくない場合は、指定された `buildVersion` を持つスロットを検索することによってスワップ操作がトリガーされます。
 
-### <a name="example-arm-template"></a>ARM テンプレートの例
+### <a name="example-resource-manager-template"></a>Resource Manager テンプレートの例
 
-次の ARM テンプレートは、ステージング スロットの `buildVersion` を更新し、運用スロットに `targetBuildVersion` を設定します。 これにより、2 つのスロットがスワップされます。 このテンプレートは、"staging" という名前のスロットを持つ Web アプリが既に作成されていることを前提としています。
+次の Resource Manager テンプレートでは、ステージング スロットの `buildVersion` が更新され、運用スロットで `targetBuildVersion` が設定されます。 これにより、2 つのスロットがスワップされます。 このテンプレートは、"staging" という名前のスロットを持つ Web アプリが既に作成されていることを前提としています。
 
 ```json
 {
@@ -380,7 +384,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 }
 ```
 
-この ARM テンプレートはべき等です。つまり、繰り返し実行して、スロットの同じ状態を生成することができます。 最初の実行後、`targetBuildVersion` は現在の `buildVersion` と一致するため、スワップはトリガーされません。
+この Resource Manager テンプレートはべき等です。つまり、繰り返し実行して、スロットの同じ状態を生成することができます。 最初の実行後、`targetBuildVersion` は現在の `buildVersion` と一致するため、スワップはトリガーされません。
 
 <!-- ======== Azure CLI =========== -->
 
@@ -421,5 +425,5 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 - スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [非運用スロットへのアクセスをブロックする](app-service-ip-restrictions.md)

@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すデスクトップ アプリの構成 - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出すデスクトップ アプリを構成する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデスクトップ アプリのコードを構成する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920261"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423893"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -30,11 +30,11 @@ ms.locfileid: "74920261"
 
 デスクトップ アプリケーションをサポートしている Microsoft ライブラリは次のとおりです。
 
-  MSAL ライブラリ | 説明
+  MSAL ライブラリ | [説明]
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 複数のプラットフォーム (Linux、Windows、MacOS) でのデスクトップ アプリケーションの作成をサポートします。
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。 進行中の開発 - パブリック プレビュー中
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。 進行中の開発 - パブリック プレビュー中
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | macOS 上でのみ実行されるデスクトップアプリケーションがサポートされています。
 
 ## <a name="public-client-application"></a>パブリック クライアント アプリケーション
@@ -51,14 +51,14 @@ MSAL.NET `IPublicClientApplication` を作成して操作する必要があり�
 
 以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
 前述のように、対話型認証またはデバイス コード フローを使用する場合は、`.WithRedirectUri` 修飾子を使用することが必要になる可能性があります。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -69,7 +69,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 次のコードは、構成オブジェクトからパブリック クライアント アプリケーションをインスタンス化します。構成オブジェクトは、プログラムで入力することも、構成ファイルから読み取ることもできます
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
         .WithDefaultRedirectUri()
@@ -80,7 +80,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -91,7 +91,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET には、ADFS 2019 用の修飾子も含まれています。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
@@ -100,7 +100,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 最後に、Azure AD B2C テナントのトークンを取得する場合、次のコード スニペットで示されているとおり、お使いのテナントを指定できます。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
@@ -134,7 +134,7 @@ MSAL.NET デスクトップ アプリケーションを構成する方法の詳�
 
 .NET で提供される構成フレームワークを使用してこのファイルを読み込むコードはほとんどありません。
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -177,7 +177,7 @@ public class SampleConfiguration
 
 アプリケーションを作成するには、以下のコードの記述するだけで済みます。
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .WithDefaultRedirectUri()
@@ -263,7 +263,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ```
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [デスクトップ アプリのトークンの取得](scenario-desktop-acquire-token.md)

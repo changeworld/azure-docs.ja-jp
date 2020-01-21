@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309725"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432823"
 ---
 # <a name="get-shape-data"></a>図形データを取得する
 
@@ -40,7 +40,15 @@ function getDrawnShapes() {
 </iframe>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
+描画ツール モジュールのその他の機能の使用方法を確認します。
+
+> [!div class="nextstepaction"]
+> [描画イベントに応答する](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [対話式操作の種類とキーボード ショートカット](drawing-tools-interactions-keyboard-shortcuts.md)
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

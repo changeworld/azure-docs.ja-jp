@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理でレポートとログを表示する - Azure Active Directory
+title: エンタイトルメント管理でレポートおよびログを表示する - Azure AD
 description: Azure Active Directory エンタイトルメント管理でユーザー割り当てレポートと監査ログを表示する方法について説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422549"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する
 
@@ -93,7 +93,7 @@ Azure AD で新しい要求を受け取ると、監査レコードを書き込�
 
 Azure AD は、要求の進行中は、以下を含め追加の監査レコードを書き込みます。
 
-| Category | アクティビティ | 要求の状態 |
+| カテゴリ | アクティビティ | 要求の状態 |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | 要求に承認は必要ありません。 |
 | `UserManagement` | `Create request approval` | 要求には承認が必要 |
@@ -101,13 +101,13 @@ Azure AD は、要求の進行中は、以下を含め追加の監査レコー�
 | `EntitlementManagement` | `Approve access package assignment request` | 要求が承認されました |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |要求が承認されました、または承認は必要ありません。 |
 
-ユーザーにアクセスが割り当てられると、**アクティビティ**`Fulfill access package assignment`の`EntitlementManagement`カテゴリの監査レコードが書き込まれます。  アクセス権を受け取ったユーザーは **[ActorUserPrincipalName]** フィールドで識別されます。
+ユーザーにアクセスが割り当てられると、**アクティビティ** `Fulfill access package assignment` の `EntitlementManagement` カテゴリの監査レコードが Azure AD によって書き込まれます。  アクセス権を受け取ったユーザーは **[ActorUserPrincipalName]** フィールドで識別されます。
 
 アクセスが割り当てられていない場合、Azure AD では`EntitlementManagement`カテゴリの監査レコードを書き込みます。このとき**アクティビティ**は、要求が承認者により拒否されると`Deny access package assignment request`、承認者が承認する前に要求がタイムアウトすると`Access package assignment request timed out (no approver action taken)`になります。
 
 ユーザーのアクセス パッケージの割り当てが期限切れになる、ユーザーがキャンセルする、または管理者が削除すると、`EntitlementManagement`カテゴリの監査レコードが書き込まれ、`Remove access package assignment`の**アクティビティ**になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD エンタイトルメント管理のトラブルシューティング](entitlement-management-troubleshoot.md)
 - [一般的なシナリオ](entitlement-management-scenarios.md)

@@ -1,21 +1,20 @@
 ---
 title: クイック スタート:オーディオ ファイルから音声を認識する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Python 用 Speech SDK を使用する音声テキスト変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 01/14/2020
 ms.author: chlandsi
-ms.openlocfilehash: 8a5652f6cb8b42200e24221921868b084bd6e62f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819475"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037556"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +23,7 @@ ms.locfileid: "74819475"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [LUIS アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
@@ -54,8 +53,7 @@ python quickstart.py
 > [!NOTE]
 > Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
-````Python
-
+```python
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
@@ -72,7 +70,6 @@ audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 
 print("Recognizing first result...")
-
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
 # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -92,8 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
     if cancellation_details.reason == speechsdk.CancellationReason.Error:
         print("Error details: {}".format(cancellation_details.error_details))
-
-````
+```
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Speech SDK と Visual Studio Code をインストールして使用する
 
@@ -115,20 +111,20 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 新しく作成されたファイルに [Python コード](#sample-code)をコピーして貼り付け、保存します。
 1. お使いの Speech サービスのサブスクリプション情報を挿入します。
 1. Python インタープリターが選択されている場合は、ウィンドウの下部にあるステータス バーの左側にそれが表示されます。
-   そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (Ctrl + Shift + P)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
+   そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (<kbd>Ctrl + Shift + P</kbd>)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
 1. Visual Studio Code 内から Speech SDK Python パッケージをインストールできます。 選択した Python インタープリター用にまだインストールされていない場合は、インストールします。
-   Speech SDK パッケージをインストールするには、ターミナルを開きます。 コマンド パレットをもう一度開いて (Ctrl + Shift + P)、「**Terminal: Create New Integrated Terminal**」と入力してターミナルを開きます。
+   Speech SDK パッケージをインストールするには、ターミナルを開きます。 コマンド パレットをもう一度開いて (<kbd>Ctrl + Shift + P</kbd>)、「**Terminal: Create New Integrated Terminal**」と入力してターミナルを開きます。
    開いたターミナルに、コマンド `python -m pip install azure-cognitiveservices-speech` か、システムに応じた適切なコマンドを入力します。
 1. サンプル コードを実行するには、エディター内のどこかを右クリックします。 **[Run Python File in Terminal]\(ターミナル内の Python ファイルを実行する\)** を選択します。
    オーディオ ファイルから最初の 15 秒間の音声入力が認識され、コンソール ウィンドウにログが記録されます。
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```
 
 これらの手順で問題が発生した場合は、より詳しい [Visual Studio Code Python チュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

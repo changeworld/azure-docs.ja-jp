@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790616"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690906"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する
 この記事では、新しい SQL VM リソース プロバイダーである **Microsoft.SqlVirtualMachine** を使用して Azure 内の SQL Server 仮想マシン (VM) のライセンス モデルを変更する方法について説明します。
@@ -129,7 +129,7 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
    - [ソフトウェアアシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview) をお持ちのお客様のみご利用いただけます。
    - SQL Server の Standard および Enterprise エディションでのみサポートされています。 Express、Web、Developer のライセンス変更はサポートされていません。 
    - Azure Resource Manager モデルを介してデプロイされた仮想マシンでのみサポートされます。 クラシック モデルを介してデプロイされた仮想マシンはサポートされていません。 
-   - パブリッククラウドのインストールでのみ使用できます。 
+   - パブリック クラウドまたは Azure Government クラウドでのみ使用できます。 
    - 1 つのネットワークインターフェイス (NIC) を持つ仮想マシンでのみサポートされます。 
 
 
@@ -144,12 +144,12 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
 リソース プロバイダーをサブスクリプションに登録してから、[そのリソース プロバイダーにご利用の SQL Server VM を登録する](virtual-machines-windows-sql-register-with-resource-provider.md)必要があります。 
 
 
-## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>仮想マシン「\<VMName\>」に複数の NIC が関連付けられています
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>仮想マシン「\<VMName\>」に複数の NIC が関連付けられています
 
 このエラーは、複数の NIC を持つ仮想マシンで発生します。 ライセンスモデルを変更する前に、いずれかの NIC を削除します。 ライセンスモデルを変更した後に NIC を VM に再び追加することはできますが、自動バックアップや修正プログラム適用などの Azure portal の操作はサポートされなくなります。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

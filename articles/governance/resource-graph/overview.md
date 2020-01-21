@@ -3,12 +3,12 @@ title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406700"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965973"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -31,7 +31,7 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 
 Azure Resource Manager では現在、基本的なリソース フィールドに対するクエリがサポートされています。具体的には、リソース名、ID、種類、リソース グループ、サブスクリプション、および場所です。 Resource Manager には、一度に 1 つのリソースについて詳細なプロパティを得るために個別のリソース プロバイダーを呼び出す機能も用意されています。
 
-Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。 その他のリソースの種類については、関連する「[Resource Graph テーブル](./concepts/query-language.md#resource-graph-tables)」を参照してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
+Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/templates/complete-mode-deletion.md)に関する表で "**はい**" を探してください。 その他のリソースの種類については、関連する「[Resource Graph テーブル](./concepts/query-language.md#resource-graph-tables)」を参照してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
 
 Azure Resource Graph では、次のことができます。
 
@@ -62,7 +62,7 @@ Resource Graph を使用するためには、最低限、照会したいリソ�
 > [!NOTE]
 > Resource Graph では、プリンシパルがログイン中に利用できるサブスクリプションが使用されます。 アクティブなセッション中に追加された新しいサブスクリプションのリソースを表示するには、プリンシパルがコンテキストを更新する必要があります。 ログアウトしてから再度ログインすると、このアクションが自動的に実行されます。
 
-Azure CLI と Azure PowerShell はユーザーがアクセスできるサブスクリプションを使用します。 REST API を直接使用すると、サブスクリプションの一覧がユーザーごとに提供されます。 一覧内のいずれかのサブスクリプションにユーザーがアクセスできる場合は、ユーザーがアクセス権を持っているサブスクリプションに対するクエリ結果が返されます。 この動作は、[リソース グループ - 一覧](/rest/api/resources/resourcegroups/list)を呼び出す場合と同じです \- アクセス権を持っているリソース グループが取得されますが、この結果が部分的な可能性があるということは示されません。
+Azure CLI と Azure PowerShell はユーザーがアクセスできるサブスクリプションを使用します。 REST API を直接使用すると、サブスクリプションの一覧がユーザーごとに提供されます。 一覧内のいずれかのサブスクリプションにユーザーがアクセスできる場合は、ユーザーがアクセス権を持っているサブスクリプションに対するクエリ結果が返されます。 この動作は、[Resource Groups - 一覧](/rest/api/resources/resourcegroups/list)を呼び出す場合と同じです \- アクセス権を持っているリソース グループが取得されますが、この結果が部分的である可能性は示されません。
 ユーザーに適切な権限があるサブスクリプションがサブスクリプション一覧にない場合の応答は、_403_ (禁止) です。
 
 ## <a name="throttling"></a>Throttling
@@ -87,7 +87,7 @@ Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for .NET などを
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
 - [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。

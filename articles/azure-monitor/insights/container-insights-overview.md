@@ -2,13 +2,13 @@
 title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
 description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 8372d0882c381a8c98cb74ab764097d4f595eeae
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/07/2020
+ms.openlocfilehash: 341dd28f6c1523e4b4c06da30a0a8ffc61b1c6f4
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690015"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730738"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -19,6 +19,8 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 - Azure Stack またはオンプレミスでホストされた自己管理の Kubernetes クラスター
 - Azure Red Hat OpenShift
 
+コンテナー向けの Azure Monitor は、Linux および Windows Server 2019 オペレーティングシステムを実行しているクラスターをサポートします。 
+
 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してメトリックとログが自動的に収集されます。 メトリックはメトリック ストアに書き込まれ、ログ データは [Log Analytics](../log-query/log-query-overview.md) ワークスペースに関連付けられたログ ストアに書き込まれます。 
@@ -27,7 +29,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>コンテナーに対する Azure Monitor の機能
 
-コンテナーに対する Azure Monitor では、お使いの Kubernetes クラスターやコンテナー ワークロードのパフォーマンスと正常性を把握できる Azure Monitor のさまざまな機能を利用した、包括的な監視エクスペリエンスを提供しています。 コンテナーに対する Azure Monitor を利用すると、次のことが可能です。
+コンテナー向けの Azure Monitor は、Azure Monitor のさまざまな機能を使用して、包括的なモニタリング エクスペリエンスを提供します。 これらの機能を使用すると、Linux と Windows Server 2019 オペレーティングシステムを実行している Kubernetes クラスターのパフォーマンスと正常性、およびコンテナーのワークロードを把握できます。 コンテナーに対する Azure Monitor を利用すると、次のことが可能です。
 
 * ノードで実行されている AKS コンテナーと、そのプロセッサおよびメモリの平均使用率を特定します。 この知識は、リソースのボトルネックを特定するのに役立ちます。
 * Azure Container Instances でホストされているコンテナー グループとそのコンテナーのプロセッサおよびメモリ使用率を特定します。  
@@ -42,6 +44,15 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
     >[!NOTE]
     >現時点では、Azure Red Hat OpenShift のサポートはパブリック プレビューの機能です。
     >
+
+Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
+
+- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません。
+- Windows ノードではディスク ストレージ容量の情報を使用できません。
+- コンテナーログは、Windows ノードで実行されているコンテナーでは使用できません。
+- ライブデータ (プレビュー) 機能のサポートは、Windows コンテナーログを除き、利用できます。
+- ポッド環境のみが監視され、Docker 環境は対象外です。
+- プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。 
 
 コンテナーに対する Azure Monitor を使用して AKS クラスターを監視する方法について、中間レベルの詳細情報を紹介した次の動画をご覧ください。
 

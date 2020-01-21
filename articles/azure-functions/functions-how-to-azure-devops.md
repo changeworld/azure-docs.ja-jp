@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: 1358ac667903e5a1a3f00e4f069a448f0cfdc8f7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531583"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834021"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -29,7 +29,7 @@ YAML ベースのパイプラインを作成するには、まずアプリをビ
 
 Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリをデプロイするために使用されます。
 
-#### <a name="net"></a>.NET
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 次のサンプルを使用して、.NET アプリをビルドする YAML ファイルを作成できます。
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次のサンプルを使用して、JavaScript アプリをビルドする YAML ファイルを作成できます。
 
@@ -88,28 +88,27 @@ steps:
     artifactName: 'drop'
 ```
 
-#### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。 Python は Linux Azure Functions でのみサポートされています。 Python 3.7 の YAML は、次の YAML で 3.6 となっている箇所をすべて 3.7 に置き換えることで作成できます。
+次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている関数アプリでのみサポートされています。
+
+**バージョン 3.7**
 
 ```yaml
 pool:
-      vmImage: ubuntu-16.04
+  vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
-  displayName: "Setting python version to 3.6 as required by functions"
+  displayName: "Setting python version to 3.7 as required by functions"
   inputs:
-    versionSpec: '3.6'
+    versionSpec: '3.7'
     architecture: 'x64'
 - bash: |
     if [ -f extensions.csproj ]
     then
         dotnet build extensions.csproj --output ./bin
     fi
-    python3.6 -m venv worker_venv
-    source worker_venv/bin/activate
-    pip3.6 install setuptools
-    pip3.6 install -r requirements.txt
+    pip install --target="./.python_packages/lib/site-packages" -r ./requirements.txt
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -121,7 +120,37 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     artifactName: 'drop'
 ```
-#### <a name="powershell"></a>PowerShell
+
+**バージョン 3.6**
+
+```yaml
+pool:
+  vmImage: ubuntu-16.04
+steps:
+- task: UsePythonVersion@0
+  displayName: "Setting python version to 3.6 as required by functions"
+  inputs:
+    versionSpec: '3.6'
+    architecture: 'x64'
+- bash: |
+    if [ -f extensions.csproj ]
+    then
+        dotnet build extensions.csproj --output ./bin
+    fi
+    pip install --target="./.python_packages/lib/python3.6/site-packages" -r ./requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    artifactName: 'drop'
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 次のサンプルを使用して、PowerShell アプリをパッケージ化する YAML ファイルを作成できます。 PowerShell は、Windows Azure Functions でのみサポートされています。
 
@@ -140,6 +169,8 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     artifactName: 'drop'
 ```
+
+---
 
 ### <a name="deploy-your-app"></a>アプリをデプロイする
 

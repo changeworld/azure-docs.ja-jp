@@ -3,19 +3,15 @@ title: Azure Automation での初めての PowerShell Runbook
 description: 簡単な PowerShell Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 keywords: Azure PowerShell, PowerShell スクリプトのチュートリアル, PowerShell Automation
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07be9aa9ab576845c5b2ad94b1a2b3fb828ea514
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366398"
 ---
 # <a name="my-first-powershell-runbook"></a>初めての PowerShell Runbook
 
@@ -34,7 +30,7 @@ ms.locfileid: "74850875"
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * [Automation アカウント](automation-quickstart-create-account.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
-* 使用するコマンドレットに基づいて [Azure モジュールの更新](automation-update-azure-modules.md)が必要な場合もあります。
+* 使用するコマンドレットに基づいて [Azure モジュールのインポート](shared-resources/modules.md)/[更新](automation-update-azure-modules.md)が必要な場合もあります。
 
 ## <a name="create-new-runbook"></a>新しい Runbook を作成する
 
@@ -163,7 +159,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
 1. **[開始]** をクリックしてテストを開始します。 テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。 この出力は、実行アカウントが有効であることを確認します。
 
-   ![認証](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![Authenticate](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>仮想マシンを開始するコードを追加する
 
@@ -242,10 +238,10 @@ PowerShell Runbook のライフサイクル、機能、管理は、PowerShell Wo
 3. PowerShell Workflow Runbook では、並列実行と順次実行がサポートされています。 PowerShell Runbook では、コマンドを順次実行することしかできません。
 4. PowerShell Workflow Runbook では、アクティビティ、コマンド、またはスクリプト ブロックは独自の実行空間を持つことができます。 PowerShell Runbook では、スクリプトのすべての内容が 1 つの実行空間で実行されます。 さらに、ネイティブの PowerShell Runbook と PowerShell Workflow Runbook には、 [構文の違い](https://technet.microsoft.com/magazine/dn151046.aspx) もあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](/powershell/scripting/overview)に関するページを参照してください。
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
-* PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
+* PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

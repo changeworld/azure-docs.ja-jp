@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Maps を使用してストア ロケーターを作成する
-description: チュートリアル:Azure Maps を使用してストア ロケーターを作成します。
+title: チュートリアル:Azure Maps を使用してストア ロケーター アプリケーションを作成する | Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps Web SDK を使用して、ストア ロケーター Web アプリケーションを作成する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408037"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910963"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -43,13 +43,13 @@ ms.locfileid: "75408037"
 
 <center>
 
-![Contoso Coffee コーヒー ショップの所在地を示すストア ロケーターのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee ショップの場所を示すストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 このストア ロケーターには、その実用性を最大化するために、ユーザーの画面幅が 700 ピクセルよりも狭いときに調整されるレスポンシブ レイアウトを採用しています。 レスポンシブ レイアウトにより、モバイル デバイスなどの小さな画面でも使いやすいストア ロケーターとなっています。 小さな画面レイアウトのワイヤーフレームを次に示します。  
 
 <center>
 
-![モバイル デバイスにおける Contoso Coffee ストア ロケーターのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![モバイル デバイスにおける Contoso Coffee ストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 ワイヤーフレームを見ると、きわめてシンプルなアプリケーションであることがわかります。 このアプリケーションには、検索ボックス、近隣の店舗の一覧、いくつかのマーカー (記号) が表示された地図に加え、ユーザーがマーカーを選択したときに詳しい情報を表示するポップアップ ウィンドウがあります。 さらに、このチュートリアルでこのストア ロケーターに組み込む機能は次のとおりです。
 

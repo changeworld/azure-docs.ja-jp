@@ -3,12 +3,12 @@ title: Azure Policy を使用して VM 作成時のバックアップを自動�
 description: Azure Policy を使用して、特定のスコープで作成されたすべての VM のバックアップを自動的に有効化する方法を説明する記事
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450131"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
 
@@ -25,6 +25,8 @@ ms.locfileid: "74979944"
 * 指定されたコンテナーと、バックアップ用に構成された VM は、異なるリソース グループに属することができます。
 
 * 管理グループのスコープは、現在サポートされていません。
+
+* 組み込みのポリシーは、現在、国内のクラウドでは使用できません。
 
 ## <a name="using-the-built-in-policy"></a>組み込みポリシーの使用
 

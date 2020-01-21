@@ -1,21 +1,21 @@
 ---
 title: Azure for Students Starter を使用して関数を作成する
 description: Azure for Student Starter サブスクリプション内から Azure 関数を作成する方法について説明します
-Customer intent: As a student, I want to be able to create a HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
+Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409896"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921128"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
-このチュートリアルでは、Azure for Students Starter サブスクリプションに hello world HTTP 関数を作成します。 このサブスクリプションの種類の Azure Functions で使用できるものについても説明します。
+このチュートリアルでは、Azure for Students Starter サブスクリプションに "hello world" HTTP 関数を作成します。 このサブスクリプションの種類の Azure Functions で使用できるものについても説明します。
 
 Microsoft *Azure for Students Starter* では、開発に必要な Azure 製品のクラウドでの使用を、無料で開始できます。 [このオファーの詳細についてはこちらを参照してください。](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
+関数の実行をホストするための Function App が存在する必要があります。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-1. Azure Portal の左上隅にある **[新規]** ボタンを選択し、 **[コンピューティング]**  >  **[Function App]** を選択します。
+1. Azure portal の左上隅にある **[リソースの作成]** ボタンを選択します。 次に、 **[Compute]**  >  **[Function App]** を選択します。
 
     ![Azure ポータルでの関数アプリの作成](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -110,13 +110,13 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Azure for Students Starter でサポートされる機能
 
-Azure for Student Starter では、Azure Functions ランタイムのほとんどの機能にアクセスできますが、主に以下のような制限がいくつかあります。
+Azure for Students Starter では、Azure Functions ランタイムのほとんどの機能にアクセスできますが、主に以下のような制限がいくつかあります。
 
 * HTTP トリガーは、サポートされている唯一のトリガーの種類です。
     * すべての入力バインディングとすべての出力バインディングがサポートされています。 [詳細な一覧についてはこちらを参照してください。](functions-triggers-bindings.md)
 * サポートされている言語: 
     * C# (.NET Core 2)
-    * Javascript (Node.js 8 および 10)
+    * JavaScript (Node.js 8 および 10)
     * F# (.NET Core 2)
     * [上位プランでサポートされている言語については、こちらを参照してください](supported-languages.md)
 * サポートされているオペレーティング システムは Windows のみです。

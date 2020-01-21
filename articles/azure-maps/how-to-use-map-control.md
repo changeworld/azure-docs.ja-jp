@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の Web マップ コントロールの概要 | Microsoft Docs
-description: Azure Maps のマップ コントロール クライアント側 JavaScript ライブラリを使用する方法について説明します。
+title: Web マップ コントロールの概要 | Microsoft Azure Maps
+description: Microsoft Azure マップのマップコントロールクライアント側 Javascript ライブラリを使用して、web アプリケーションまたはモバイルアプリケーションにマップと埋め込み Azure Maps 機能をレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d50b97ad47f4b09ae4fec363e7d0a2c7f6b841df
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432912"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911352"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 

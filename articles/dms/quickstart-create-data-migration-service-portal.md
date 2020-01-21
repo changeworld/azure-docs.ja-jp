@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437727"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750089"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -55,11 +55,11 @@ Database Migration Service の最初のインスタンスを作成する前に�
     - インスタンスを作成する Azure **サブスクリプション**を選択します。
     - 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
     - ソースまたはターゲット サーバーに最も近い **[場所]** を選択します。
-    - 既存の**仮想ネットワーク** (VNet) を選択するか、新たに VNet を作成します。
+    - 既存の**仮想ネットワーク**を選択するか、新たに作成します。
 
-        VNet によって、ソース データベースとターゲット環境へのアクセスが Azure Database Migration Service に提供されます。
+        仮想ネットワークによって、ソース データベースとターゲット環境へのアクセスが Azure Database Migration Service に提供されます。
 
-        Azure portal で VNet を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/vnet)に関する記事を参照してください。
+        Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/vnet)に関する記事を参照してください。
 
     - [Basic:1 vCore]\(Basic: 1 仮想コア\) を **[価格レベル]** で選択します。
 

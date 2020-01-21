@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677825"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658136"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -90,7 +90,7 @@ ms.locfileid: "71677825"
 1. 3 番目および最後の手順として、アラートの条件が満たされた場合に、どの**アクション グループ**でそのアラート ルールをトリガーする必要があるかを指定します。 アラートのある既存のアクション グループはすべて選択できます。新しいアクション グループを作成することもできます。 選択したアクション グループによって、アラートがトリガーされた場合に、Azure はメールを送信したり、SMS を送信したり、Webhook を呼び出したり、Azure Runbook を使用して復旧したり、ご利用の ITSM ツールにプッシュしたりします。 [アクション グループ](action-groups.md)の詳細をご覧ください。
 
     > [!NOTE]
-    > Azure アクション グループ経由でログ アラートについてトリガーされる Runbook ペイロードの制限については、「[Azure サブスクリプション サービスの制限](../../azure-subscription-service-limits.md)」をご覧ください
+    > Azure アクション グループ経由でログ アラートについてトリガーされる Runbook ペイロードの制限については、「[Azure サブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください
 
     **ログ アラート**の場合、既定のアクションをオーバーライドするためにいくつかの他の機能を使用できます。
 
@@ -202,7 +202,7 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 
 ```
 
-上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
+上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Azure リソース テンプレートを使用したリソース間クエリでのログ アラート
@@ -299,7 +299,7 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 > [!IMPORTANT]
 > ログ アラートでリソース間クエリを使用する場合、[authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
 
-上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
+上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 
 ## <a name="managing-log-alerts-using-powershell"></a>PowerShell を使用したログ アラートの管理
 
@@ -355,7 +355,7 @@ az group deployment create --resource-group contosoRG --template-file sampleSche
 
 操作が成功すると、新しいアラート ルールの作成を示す 201 が返されます。または、既存のアラート ルールが変更された場合は 200 が返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure アラートのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。
 * [ログ アラートの Webhook アクション](../../azure-monitor/platform/alerts-log-webhook.md)を理解します。

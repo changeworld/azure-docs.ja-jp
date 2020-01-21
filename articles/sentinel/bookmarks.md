@@ -1,27 +1,21 @@
 ---
-title: ハンティング ブックマークを使用して Azure Sentinel でのハンティング中にデータを追跡する | Microsoft Docs
+title: Azure Sentinel でのデータの調査にハンティング ブックマークを使用する
 description: この記事では、Azure Sentinel 検出ブックマークを使用してデータを追跡する方法について説明します。
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935327"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563736"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel でハンティング中にデータを追跡する
 
@@ -29,7 +23,7 @@ ms.locfileid: "72935327"
 
 この操作では、**Azure Sentinel - Logs** で実行したクエリが、関連すると思われるクエリ結果と共に保持される、Azure Sentinel のハンティング ブックマークが役立ちます。 また、メモやタグを追加することにより、コンテキストに関する所見を記録し、調査結果を参照することもできます。 ブックマークが設定されたデータは、自身とチームメイトが見ることができコラボレーションを簡単に行えるようにしています。
 
-**[ハンティング]** ウィンドウの **[ブックマーク]** タブで、ブックマークが設定されたデータにいつでも再訪できます。 フィルタリングおよび検索オプションを使用して、現在の調査の特定のデータをすばやく見つけられます。 または、ブックマークが設定されたデータを、Log Analytics ワークスペースの **[HuntingBookmark]\(ハンティング ブックマーク\)** テーブルで直接確認できます。 例:
+**[ハンティング]** ウィンドウの **[ブックマーク]** タブで、ブックマークが設定されたデータにいつでも再訪できます。 フィルタリングおよび検索オプションを使用して、現在の調査の特定のデータをすばやく見つけられます。 または、ブックマークが設定されたデータを、Log Analytics ワークスペースの **[HuntingBookmark]\(ハンティング ブックマーク\)** テーブルで直接確認できます。 次に例を示します。
 
 > [!div class="mx-imgBorder"]
 > ![HuntingBookmark テーブルを表示する](./media/bookmarks/bookmark-table.png)
@@ -46,7 +40,7 @@ ms.locfileid: "72935327"
 
 2. ハンティング クエリの 1 つを選択し、右側のハンティング クエリの詳細で **[クエリの実行]** を選択します。 
 
-3. **[View query results]\(クエリ結果の表示\)** を選択します。 例:
+3. **[View query results]\(クエリ結果の表示\)** を選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel のハンティングからクエリ結果を表示する](./media/bookmarks/new-processes-observed-example.png)
@@ -62,7 +56,7 @@ ms.locfileid: "72935327"
 
 6. 右側の **[ブックマークの追加]** ウィンドウで、必要に応じてブックマーク名を更新し、タグを追加し、項目に関して興味深かったことを識別するために役立つメモを追加します。
 
-7. **[クエリ情報]** セクションで、ドロップダウン ボックスを使用して **[アカウント]** 、 **[ホスト]** 、および **[IP アドレス]** のエンティティ型のクエリ結果の情報を抽出します。 このアクションにより、選択したエンティティ型がクエリ結果の特定の列にマップされます。 例:
+7. **[クエリ情報]** セクションで、ドロップダウン ボックスを使用して **[アカウント]** 、 **[ホスト]** 、および **[IP アドレス]** のエンティティ型のクエリ結果の情報を抽出します。 このアクションにより、選択したエンティティ型がクエリ結果の特定の列にマップされます。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![ハンティング ブックマークのエンティティ型をマップする](./media/bookmarks/map-entity-types-bookmark.png)
@@ -153,9 +147,9 @@ ms.locfileid: "72935327"
 ブックマークを削除すると、 **[ブックマーク]** タブの一覧からブックマークが除かれます。Log Analytics ワークスペースの **[HuntingBookmark]** (検出ブックマーク) テーブルには、以前のブックマーク エントリが含まれたままですが、最新のエントリでは **[SoftDelete]** 値が true に変更されるため、古いブックマークを簡単に除外できます。 ブックマークを削除しても、他のブックマークやアラートに関連付けられている調査エクスペリエンスからはどのエンティティも削除されません。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel でブックマークを使用して検出調査を実行する方法を学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+この記事では、Azure Sentinel でブックマークを使用して検出調査を実行する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 
 - [脅威を事前に検出する](hunting.md)

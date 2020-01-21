@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric Linux クラスターでの暗号化証明書の設定とシークレットの暗号化 | Microsoft Docs
+title: Linux クラスターでの暗号化証明書の設定
 description: Linux クラスターでの暗号化証明書の設定とシークレットの暗号化を行う方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: shsha
-manager: ''
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126989"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614708"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Linux クラスターでの暗号化証明書の設定とシークレットの暗号化
-この記事では、Linux クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Windows クラスターについては、[Windows クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-windows-specific-link]を参照してください。
+この記事では、Linux クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Windows クラスターについては、「[Windows クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-windows-specific-link]」を参照してください。
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>データ暗号化証明書を取得する
-データ暗号化証明書は、サービスの Settings.xml 内の[パラメータ][parameters-link]およびサービスの ServiceManifest.xml 内の[環境変数][environment-variables-link]の暗号化と暗号化解除のためにのみ使用されます。 認証や暗号テキストの署名には使用されません。 証明書は次の要件を満たす必要があります。
+データ暗号化証明書は、サービスの Settings.xml 内の[パラメーター][parameters-link]、およびサービスの ServiceManifest.xml 内の[環境変数][environment-variables-link]の暗号化と暗号化解除のためにのみ使用されます。 認証や暗号テキストの署名には使用されません。 証明書は次の要件を満たす必要があります。
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書キーの使用法として、データ暗号化 (10) を指定する必要があります。サーバー認証やクライアント認証を指定することは使用できません。
@@ -53,7 +44,7 @@ encrypted.txt に出力される生成された Base-64 エンコード文字列
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション内で暗号化されたシークレットを指定する][secret-management-specify-encrypted-secrets-link]方法について学習します。
 
 <!-- Links -->

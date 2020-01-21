@@ -3,12 +3,12 @@ title: Azure Backup Server でバックアップできる内容
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449888"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -78,13 +78,27 @@ ms.locfileid: "74996155"
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|サポートされていません|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi ライセンス版 5.5/6.0/6.5 |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|V3、V2|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
 |VMware VM|[VMware vSphere ライセンス版 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|V3|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|Linux|Hyper-V または VMware ゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
+|Linux|Hyper-V または VMware ゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護:仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 
-Azure ExpressRoute がプライベートまたは Microsoft ピアリングで構成されている場合は、それを使用してデータを Azure にバックアップできません。
+パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。
 
-Azure ExpressRoute がパブリック ピアリングで構成されている場合は、それを使用してデータを Azure にバックアップできます。
+パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
+* Azure Storage (Recovery Services コンテナーの場所による)
+
+詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。
@@ -93,17 +107,17 @@ Azure ExpressRoute がパブリック ピアリングで構成されている場
 
 Azure Backup Server は、次のクラスタ化されたアプリケーション内のデータを保護できます。
 
-- ファイル サーバー
+* ファイル サーバー
 
-- SQL Server
+* SQL Server
 
-- Hyper-V - スケールアウトされた MABS 保護エージェントを使用して Hyper-V クラスターを保護する場合、保護された Hyper-V ワークロードに二次的な保護を追加することはできません。
+* Hyper-V - スケールアウトされた MABS 保護エージェントを使用して Hyper-V クラスターを保護する場合、保護された Hyper-V ワークロードに二次的な保護を追加することはできません。
 
     Windows Server 2008 R2 上で Hyper-V を実行する場合は、KB [975354](https://support.microsoft.com/kb/975354) で説明されている更新プログラムをインストールするようにしてください。
     クラスター構成内の Windows Server 2008 R2 上で Hyper-V を実行する場合は、SP2 および KB [971394](https://support.microsoft.com/kb/971394) をインストールするようにしてください。
 
-- Exchange Server - Azure Backup Server は、サポートされている Exchange Server バージョンの非共有ディスク クラスター (クラスター連続レプリケーション) を保護することができるほか、ローカル連続レプリケーションのために構成された Exchange Server も保護できます。
+* Exchange Server - Azure Backup Server は、サポートされている Exchange Server バージョンの非共有ディスク クラスター (クラスター連続レプリケーション) を保護することができるほか、ローカル連続レプリケーションのために構成された Exchange Server も保護できます。
 
-- SQL Server - Azure Backup Server は、クラスター共有ボリューム (CSV) 上にホストされた SQL Server データベースのバックアップをサポートしていません。
+* SQL Server - Azure Backup Server は、クラスター共有ボリューム (CSV) 上にホストされた SQL Server データベースのバックアップをサポートしていません。
 
 Azure Backup Server は、MABS サーバーと同じドメイン内、および子または信頼できるドメイン内に配置されたクラスター ワークロードを保護できます。 信頼されていないドメインまたはワークグループ内のデータ ソースを保護する場合は、単一サーバーに対しては NTLM または証明書認証、クラスターに対しては証明書認証のみを使用します。

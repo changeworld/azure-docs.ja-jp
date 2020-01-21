@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 91150251140379c15d4ab3711ded571c9ad2c024
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ace19f17f5d7a5e920808b76258459c0eba62890
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101647"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750533"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -33,13 +33,11 @@ Azure 仮想マシンは、完全に構成可能で柔軟なコンピューテ�
 > * ASM により管理される Oracle DB を作成する
 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
@@ -49,7 +47,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>VM の作成
 
-Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
+Oracle データベース イメージに基づいて仮想マシンを作成した上で、Oracle ASM を使用できるように構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
 
 次の例では、myVM という名前の VM が作成されます。サイズは Standard_DS2_v2 で、50 GB のデータ ディスクが 4 つ装着されます。 これらがキーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -211,7 +209,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    fdisk /dev/sdc
    ```
    
-   上の回答を利用した場合、fdisk コマンドの出力は次のようになります。
+   上の回答を利用した場合、`fdisk` コマンドの出力は次のようになります。
 
    ```bash
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -247,7 +245,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    Syncing disks.
    ```
 
-4. 前述の fdisk コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に対して繰り返します。
+4. 前述の `fdisk` コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に対して繰り返します。
 
 5. ディスク構成を確認します。
 
@@ -580,7 +578,7 @@ Azure Marketplace の Oracle DB イメージ上でOracle Automated Storage Manag
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [チュートリアル:Oracle DataGuard の構成](configure-oracle-dataguard.md)
 

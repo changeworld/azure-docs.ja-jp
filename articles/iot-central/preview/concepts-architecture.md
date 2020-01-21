@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895764"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434982"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central のアーキテクチャ (プレビュー機能)
 
@@ -152,9 +152,9 @@ Azure IoT Central アプリケーションでは、接続されたデバイス�
 
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 
-管理者は、事前に定義されたロールを使用して Azure IoT Central アプリケーションに対する[アクセス ルールを定義できます](howto-administer.md)。 管理者は、ユーザーがアプリケーションのどの領域にアクセスできるかを決定するロールにユーザーを割り当てることができます。
+事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Azure IoT Central 内のセキュリティ機能には、次のものがあります。
 
@@ -170,6 +170,6 @@ UI シェルは、最新の、応答性に優れた、HTML5 ブラウザー ベ�
 
 オペレーターは、パーソナライズされたアプリケーション ダッシュボードを作成できます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](overview-iot-central-get-connected.md)の学習です。

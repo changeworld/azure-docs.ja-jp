@@ -1,5 +1,5 @@
 ---
-title: MSAL for Java (MSAL4j) を使用したトークン キャッシュのアカウントの取得と削除
+title: トークン キャッシュのアカウントを取得および削除する (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for Java を使用してトークン キャッシュのアカウントを表示および削除する方法を確認します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40c5f2e272a44727d4da91600093e8dc691a95f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2f800d8d8665667c51ee57e3fe1c556c3a2d8eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424338"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>MSAL for Java を使用したトークン キャッシュのアカウントの取得と削除
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440026"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 
@@ -33,12 +33,16 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 - **ForEach** では、ルックアップ アクティビティからパーティションの一覧が取得され、各パーティションがコピー アクティビティに対して反復処理されます。
 - **コピー** では各パーティションがソース データベース ストアから宛先ストアにコピーされます。
 
-このテンプレートには、5 つのパラメーターが定義されています。
+このテンプレートでは、次のパラメーターを定義します。
 - *Control_Table_Name* は外部制御テーブルであり、ソース データベースのパーティション一覧が格納されています。
 - *Control_Table_Schema_PartitionID* は、各パーティション ID を格納する外部制御テーブル内の列名です。 ソース データベース内の各パーティションのパーティション ID が一意であることを確認してください。
 - *Control_Table_Schema_SourceTableName* は、ソース データベースからのそれぞれのテーブル名を格納する外部制御テーブルです。
 - *Control_Table_Schema_FilterQuery* は、ソース データベース内の各パーティションからデータを取得するためのフィルター クエリを格納する外部制御テーブル内の列名です。 たとえば、ご利用のデータが年単位でパーティション化されている場合、各行に格納されるクエリは、‘select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999''' のようになる可能性があります。
-- *Data_Destination_Folder_Path* は、宛先ストアにデータがコピーされる場合のパスです。 このパラメーターは、選択した宛先がファイル ベースのストレージである場合のみに表示されます。 宛先ストアとして SQL Data Warehouse を選択した場合、このパラメーターは必要ありません。 ただし、SQL Data Warehouse 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
+- *Data_Destination_Folder_Path* は、データが宛先ストアにコピーされる先のパスです (選択した宛先が "ファイル システム" または "Azure Data Lake Storage Gen1" の場合に適用されます)。 
+- *Data_Destination_Container* は、データが宛先ストアにコピーされる先のルート フォルダーのパスです。 
+- *Data_Destination_Directory* は、データが宛先ストアにコピーされる先のルート以下のディレクトリ パスです。 
+
+宛先ストアのパスを定義する最後の 3 つのパラメーターは、選択した宛先がファイルベースのストレージである場合にのみ表示されます。 宛先ストアとして "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、これらのパラメーターは不要です。 ただし、SQL Data Warehouse 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -68,7 +72,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
 3. データのコピー元であるソース データベースへの**新しい**接続を作成します。
 
-     ![ソース データベースへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![ソース データベースへの新しい接続の作成](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. データのコピー先である宛先データ ストアへの**新しい**接続を作成します。
 
@@ -76,8 +80,6 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
 5. **[このテンプレートを使用]** を選択します。
 
-    ![このテンプレートを使用](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. 次の例に示すように、パイプラインが表示されます。
 
     ![パイプラインのレビュー](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,10 +92,10 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
     ![結果を確認する](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (省略可能) データの宛先として SQL Data Warehouse を選択する場合は、SQL Data Warehouse の Polybase からの要求に従って、ステージングのために Azure Blob Storage への接続を入力する必要があります。 Blob Storage 内のコンテナーが既に作成されていることを確認してください。
+9. (省略可能) データの宛先として "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、SQL Data Warehouse Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
     
     ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory の概要](introduction.md)

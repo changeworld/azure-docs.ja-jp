@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のレプリカとインスタンス | Microsoft Docs
-description: レプリカ、インスタンス、それらの機能とライフサイクルについて説明します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric のレプリカとインスタンス
+description: Service Fabric のレプリカとインスタンスについて、そのライフサイクルと機能の概要を含め説明します。
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882420"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614606"
 ---
 # <a name="replicas-and-instances"></a>レプリカとインスタンス 
 この記事では、ステートフル サービスのレプリカとステートレス サービスのインスタンスのライフサイクルの概要を示します。
@@ -141,7 +132,7 @@ Service Fabric がレプリカをバックアップに戻す必要がある場�
 > [Reliable Actors](service-fabric-reliable-actors-introduction.md) や [Reliable Services](service-fabric-reliable-services-introduction.md) など、抽象度の高いプログラミング モデルの場合、レプリカ ロールの概念は開発者には隠されています。 Actors では、ロールの概念は不要です。 Services では、ほとんどのシナリオで大幅に簡略化されます。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)

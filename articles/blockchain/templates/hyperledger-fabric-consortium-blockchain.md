@@ -4,16 +4,19 @@ description: Azure に Hyperledger Fabric コンソーシアム ネットワー�
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325126"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029168"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric コンソーシアム ネットワーク
 
 Hyperledger Fabric コンソーシアム ソリューション テンプレートを使用して、Azure で Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成できます。
+
+> [!IMPORTANT]
+> [Hyperledger Fabric on Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric) テンプレートは非推奨です。 代わりに [Hyperledger Fabric on Azure Kubernetes Service](hyperledger-fabric-consortium-azure-kubernetes-service.md) を使用してください。  
 
 この記事を読むと、次のことができます。
 
@@ -50,7 +53,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![複数の仮想マシン アーキテクチャ](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 開始するには、複数の仮想マシンと標準のストレージ アカウントをデプロイできる Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成できます。
 
@@ -58,7 +61,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![Hyperledger Fabric シングル メンバー ブロックチェーン Marketplace テンプレート](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 **Hyperledger Fabric コンソーシアム** テンプレートで、 **[作成]** を選択します。
 
@@ -70,7 +73,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![基本](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| パラメーター名 | 説明 | 使用できる値 |
+| パラメーター名 | [説明] | 使用できる値 |
 |---|---|---|
 **[リソース プレフィックス]** | デプロイの一部としてプロビジョニングされたリソースにプレフィックスを指定します |6 文字以下 |
 **ユーザー名** | このメンバーに対してデプロイされている各仮想マシンの管理者のユーザー名 |1 から 64 文字 |
@@ -89,11 +92,11 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![コンソーシアム ネットワークの設定](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| パラメーター名 | 説明 | 使用できる値 |
+| パラメーター名 | [説明] | 使用できる値 |
 |---|---|---|
 **ネットワーク構成** |新しいネットワークを作成することも、既存のネットワークに参加することもできます。 *[Join Existing]\(既存に参加\)* を選択した場合、追加の値を指定する必要があります。 |新しいネットワーク <br/> 既存に参加 |
 **HLF CA パスワード** |デプロイの一部として作成される証明機関によって生成された証明書に使用するパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />仮想マシンにはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|1 から 25 文字 |
-**組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|Default <br/> 詳細 |
+**組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|Default <br/> 詳細設定 |
 **VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | はい <br/> いいえ |
 
 **[OK]** を選択します。
@@ -104,7 +107,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![Fabric 設定](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| パラメーター名 | 説明 | 使用できる値 |
+| パラメーター名 | [説明] | 使用できる値 |
 |---|---|---|
 **スケールの種類** |複数のコンテナーを使用した単一の仮想マシン、またはスケール アウト モデルで複数のコンテナーまたは複数の仮想マシンのいずれかのデプロイの種類。|単一の VM または複数の VM |
 **VM ディスクの種類** |デプロイされた各ノードをバックアップするストレージの種類。 <br/> 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../virtual-machines/windows/disks-types.md)に関する記事を参照してください。|Standard SSD <br/> Premium SSD |
@@ -113,7 +116,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![複数の VM デプロイのファブリック設定](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| パラメーター名 | 説明 | 使用できる値 |
+| パラメーター名 | [説明] | 使用できる値 |
 |---|---|---|
 **orderer ノードの数** |トランザクションを整理してブロックにするノードの数。 <br />ordering サービスの詳細については、Hyperledge の[ドキュメント](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html)をご覧ください。 |1-4 |
 **orderer ノードの仮想マシンのサイズ** |ネットワーク内の orderer ノードで使用される仮想マシンのサイズ|Standard Bs、<br />Standard Ds、<br />Standard FS |
@@ -129,7 +132,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 **[OK]** を選択します。
 
-### <a name="deploy"></a>デプロイ
+### <a name="deploy"></a>配置
 
 **[概要]** で、指定した入力を確認し、基本的なデプロイ前検証を実行します。
 
@@ -137,6 +140,6 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 法律条項とプライバシー条項を確認し、 **[購入]** を選択してデプロイします。 デプロイ時間は、プロビジョニングされる VM の数に基づき、数分から数十分かかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Hyperledger コンソーシアム ブロックチェーン ネットワークに対するアプリケーションとチェーンコードの開発に集中的に取り組むことができます。

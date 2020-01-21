@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/20/2019
-ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497335"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861508"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する
 
@@ -45,7 +45,7 @@ Time Series Insights プレビュー エクスプローラーでは、履歴デ�
 
       [![Contoso Plant 1 の W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 火災の原因についての見解はさまざまです。 Time Series Insights で、火災時に火災アラート センサーが起動されたことを確認できます。
+1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 火災の原因についての見解はさまざまです。 Time Series Insights には、火災時に作動した火災アラート センサーが表示されています。
 
    1. 表示範囲を **3/9/17 20:00:00.00 から 3/10/17 20:00:00.00 (UTC)** に変更します。
    1. **Safety System** > **FireAlert** の順に選択します。
@@ -100,7 +100,7 @@ Time Series Insights とセンサー テレメトリを使用して、履歴デ�
 
       [![期間を 60 日間に拡大](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. センサーの他のデータ ポイントを追加して、コンテキストを拡大できます。 表示するセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を示すマーカーを置いてみましょう。 
+1. センサーの他のデータ ポイントを追加して、コンテキストを拡大できます。 表示するセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を表示するマーカーを置いてみましょう。 
 
     1. **Generator System** を選択してから 3 つのセンサーを選択します: **GridVoltagePhase1**、**GridVoltagePhase2**、**GridVoltagePhase3**。
     1. 表示領域の最後のデータ ポイントにマーカーを置きます。

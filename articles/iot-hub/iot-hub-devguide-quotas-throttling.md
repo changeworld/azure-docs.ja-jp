@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: daeb09acd11d727b11ad8a7b98d97ff90fddc6d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457066"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -93,7 +93,7 @@ ms.locfileid: "74228257"
 
 IoT Hub により、その他の運用上の制限が適用されます。
 
-| Operation | 制限 |
+| 操作 | 制限 |
 | --------- | ----- |
 | デバイス | 1つの IoT ハブに登録できるデバイスとモジュールの合計数は、1,000,000 に制限されています。 この制限を引き上げる唯一の方法は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせいただくことです。|
 | ファイルのアップロード | デバイスごとに 10 個の同時ファイル アップロード。 |
@@ -104,8 +104,8 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | デバイスからクラウドへのメッセージ | 最大メッセージ サイズは 256 KB |
 | cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 デバイスあたりの配信の保留中のメッセージの最大数は 50。 |
 | ダイレクト メソッド<sup>1</sup> | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 |
-| 自動デバイス構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
-| IoT Edge の自動デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ。 無料の SKU ハブあたり 10 デプロイ。 |
+| デバイスおよびモジュールの自動構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
+| IoT Edge の自動デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | 必要なプロパティ セクションと報告されたプロパティ セクションの最大サイズはそれぞれ 32 KB です。 タグ セクションの最大サイズは 8 KB です。 |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。
@@ -126,7 +126,7 @@ IoT Hub は、すべての操作の待機時間を短くするように努めて
 
 操作の待機時間が予想外に増加した場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub スロットルの動作の詳細については、ブログ投稿「[IoT Hub throttling and you (IoT Hub スロットルの操作)](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)」を参照してください。
 

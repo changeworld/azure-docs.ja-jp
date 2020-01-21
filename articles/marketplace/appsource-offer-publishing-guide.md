@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824323"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427209"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power BI、Power Apps 用のオファー発行ガイド
 
 AppSource ストアフロントには、Dynamics 365、Office 365、Power BI、Power Apps 上でビルドされるまたはそれらを拡張するオファーが含まれます。 これらの製品にはそれぞれ発行プロセスをガイドするドキュメントが用意されています。 各オファーの種類について詳しくは、以下のリンクをご覧ください。 
 
-AppSource にはリスト オファーと試用版オファーがあり、行動喚起は "お問い合わせ" か "今すぐ試す" です。 現在、AppSource には取引機能はありません。
+AppSource には有料オファー、リスト オファーと試用版オファーがあり、行動喚起は、"今すぐ入手"、"お問い合わせ"、"今すぐ試す" です。 
 
 ## <a name="product-specific-guides"></a>製品固有のガイド
 
@@ -47,7 +47,7 @@ Cloud パートナー ポータルでオファーを公開する方法につい�
 
 Cloud パートナー ポータルでオファーを公開する方法については、「[Dynamics 365 for Customer Engagement プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、 
 

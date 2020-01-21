@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b5c8ce1b30e8038397c68be2672ac947450d438
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615310"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771208"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -23,7 +23,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python
 
-[Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) を参照してください。
+[Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) を参照してください。
 
 |    |           |
 | ------------- | ------------- |

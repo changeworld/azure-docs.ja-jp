@@ -5,17 +5,17 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a78a44f9e4dd1b64ae989dffa04892a490b986d4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436935"
 ---
-Azure Cloud Shell を使用すると、Azure PowerShell をローカルにインストールしなくても、ほとんどの PowerShell コマンドレットを実行できます。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
+Azure Cloud Shell を使用すると、Azure PowerShell または CLI をローカルにインストールしなくても、ほとんどの PowerShell コマンドレットおよび CLI コマンドを実行できます。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
 
 Cloud Shell は、次のようにいくつかの方法で起動することができます。

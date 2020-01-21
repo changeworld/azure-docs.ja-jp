@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226773"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612974"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"Functions Runtime に到達できない" 問題のトラブルシューティング方法
 
@@ -31,6 +31,8 @@ ms.locfileid: "74226773"
 1. ストレージ アカウントの資格情報が無効
 1. ストレージ アカウントにアクセスできない
 1. 日ごとの実行クォータがいっぱいになった
+1. アプリがファイアウォールの内側にある
+
 
 ## <a name="storage-account-deleted"></a>ストレージ アカウントが削除された
 
@@ -80,6 +82,12 @@ Function App は、ストレージ アカウントにアクセスできる必要
 * 確認するには、ポータルで [プラットフォーム機能]> [Function App の設定] を開きます。 クォータを超過している場合は、次のメッセージが表示されます。
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * 問題を解決するには、クォータを削除し、アプリを再起動します。
+
+## <a name="app-is-behind-a-firewall"></a>アプリがファイアウォールの内側にある
+
+関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている場合、またはインターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-ip-restrictions)がある場合は、Functions Runtime に到達できません。 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、KUDU エンドポイントに対して http 呼び出しを行います。 プラットフォーム レベルの設定は、[`Platform Features`] タブでも使用できます。
+
+* ASE の構成を確認するには、ASE が存在するサブネットの NSG に移動し、アプリケーションにアクセスしているコンピューターのパブリック IP からのトラフィックを許可する受信規則を検証します。 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンから、ポータルを使用することもできます。 [受信規則の構成の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>次の手順
 

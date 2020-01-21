@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440629"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -54,7 +54,7 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,9 +64,9 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 HTTP のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティを **HttpServer** に設定する必要があります。 | はい |
+| 型 | **type** プロパティを **HttpServer** に設定する必要があります。 | はい |
 | url | Web サーバーへのベース URL | はい |
 | enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名証明書を使用している場合は、このプロパティを **false** に設定します。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> このような認証の種類のその他のプロパティと JSON サンプルについては、この表の後のセクションを参照してください。 | はい |
@@ -76,10 +76,10 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 **authenticationType** プロパティを **Basic**、**Digest**、または **Windows** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | userName | HTTP エンドポイントにアクセスするために使用するユーザー名。 | はい |
-| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| パスワード | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -109,11 +109,11 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 ClientCertificate 認証を使用するには、**authenticationType** プロパティを **ClientCertificate** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 でエンコードされた証明書データ。 | **embeddedCertData** または **certThumbprint** のいずれかを指定します。 |
 | certThumbprint | セルフホステッド統合ランタイム マシンの証明書ストアにインストールされている証明書の拇印。 セルフホステッド型の統合ランタイムが **connectVia** プロパティで指定されている場合にのみ適用されます。 | **embeddedCertData** または **certThumbprint** のいずれかを指定します。 |
-| password | 証明書に関連付けられているパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
+| パスワード | 証明書に関連付けられているパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
 
 認証に **certThumbprint** を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、セルフホステッド統合ランタイムに読み取りアクセス許可を付与します。
 
@@ -122,7 +122,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 3. 個人用ストアの証明書を右クリックし、 **[すべてのタスク]**  >  **[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して Integration Runtime Host Service (DIAHostService) を実行しているユーザー アカウントを追加します。
 
-**例 1:certThumbprint の使用**
+**例 1: certThumbprint の使用**
 
 ```json
 {
@@ -142,7 +142,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 }
 ```
 
-**例 2:embeddedCertData の使用**
+**例 2: embeddedCertData の使用**
 
 ```json
 {
@@ -174,9 +174,9 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 HTTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
-| プロパティ    | 説明                                                  | 必須 |
+| プロパティ    | [説明]                                                  | 必須 |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | データセットの `location` の type プロパティは、**HttpServerLocation** に設定する必要があります。 | はい      |
+| 型        | データセットの `location` の type プロパティは、**HttpServerLocation** に設定する必要があります。 | はい      |
 | relativeUrl | データを含むリソースへの相対 URL。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]`   | いいえ       |
 
 > [!NOTE]
@@ -208,63 +208,6 @@ HTTP では、形式ベースのデータセットの `location` 設定におい
 }
 ```
 
-### <a name="legacy-dataset-model"></a>レガシ データセット モデル
-
->[!NOTE]
->下位互換性を確保するために、次のデータセット モデルは引き続き現状のままサポートされます。 今後は、前セクションで言及した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
-
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| type | データセットの **type** プロパティを **HttpFile** に設定する必要があります。 | はい |
-| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ |
-| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
-| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
-| requestBody | HTTP 要求の本文。 | いいえ |
-| format | データを解析せずにデータを HTTP エンドポイントからそのまま取得し、ファイル ベースのストアにデータをコピーする場合は、入力と出力の両方のデータセット定義で **format** セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合に、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format)の各セクションを参照してください。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/><br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
-
-> [!NOTE]
-> サポートされる HTTP 要求のペイロード サイズは約 500 KB です。 Web エンドポイントに渡すペイロード サイズが 500 KB を超える場合は、より小さなチャンクにペイロードをまとめることを検討してください。
-
-**例 1:Get メソッド (既定値) を使用する**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        }
-    }
-}
-```
-
-**例 2:Post メソッドを使用する**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST HTTP request>"
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
 このセクションでは、HTTP ソースでサポートされているプロパティの一覧を示します。
@@ -277,9 +220,9 @@ HTTP では、形式ベースのデータセットの `location` 設定におい
 
 HTTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
-| プロパティ                 | 説明                                                  | 必須 |
+| プロパティ                 | [説明]                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` の type プロパティは **HttpReadSetting** に設定する必要があります。 | はい      |
+| 型                     | `storeSettings` の type プロパティは **HttpReadSetting** に設定する必要があります。 | はい      |
 | requestMethod            | HTTP メソッド。 <br>使用できる値は、**Get** (既定値) と **Post** です。 | いいえ       |
 | addtionalHeaders         | 追加の HTTP 要求ヘッダー。                             | いいえ       |
 | requestBody              | HTTP 要求の本文。                               | いいえ       |
@@ -327,14 +270,74 @@ HTTP では、形式ベースのコピー ソースの `storeSettings` 設定に
 ]
 ```
 
-#### <a name="legacy-source-model"></a>レガシ ソース モデル
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->下位互換性を確保するために、次のコピー ソース モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上のセクションで説明した新しいモデルを使用することをお勧めします。ADF オーサリング UI は、新しいモデルを生成するように切り替えられています。
 
-| プロパティ | 説明 | 必須 |
+### <a name="legacy-dataset-model"></a>レガシ データセット モデル
+
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを **HttpSource** に設定する必要があります。 | はい |
+| 型 | データセットの **type** プロパティを **HttpFile** に設定する必要があります。 | はい |
+| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ |
+| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| requestBody | HTTP 要求の本文。 | いいえ |
+| format | データを解析せずにデータを HTTP エンドポイントからそのまま取得し、ファイル ベースのストアにデータをコピーする場合は、入力と出力の両方のデータセット定義で **format** セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合に、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[JSON 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Text 形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Avro 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)の各セクションを参照してください。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/><br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+
+> [!NOTE]
+> サポートされる HTTP 要求のペイロード サイズは約 500 KB です。 Web エンドポイントに渡すペイロード サイズが 500 KB を超える場合は、より小さなチャンクにペイロードをまとめることを検討してください。
+
+**例 1: Get メソッド (既定値) を使用する**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        }
+    }
+}
+```
+
+**例 2: Post メソッドを使用する**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "requestMethod": "Post",
+            "requestBody": "<body for POST HTTP request>"
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>レガシ コピー アクティビティ ソース モデル
+
+| プロパティ | [説明] | 必須 |
+|:--- |:--- |:--- |
+| 型 | コピー アクティビティのソースの **type** プロパティを **HttpSource** に設定する必要があります。 | はい |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
 
 **例**
@@ -369,11 +372,6 @@ HTTP では、形式ベースのコピー ソースの `storeSettings` 設定に
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
-
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

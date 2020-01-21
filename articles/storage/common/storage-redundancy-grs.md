@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895223"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614898"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション
 
@@ -31,7 +31,7 @@ RA-GRS 使用時の考慮事項:
 
 - RA-GRS を使うときは、通信対象のエンドポイントをアプリケーションで管理する必要があります。
 - 非同期レプリケーションには遅延が伴うため、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更は失われる可能性があります。
-- ストレージ アカウントの最後の同期時刻を確認できます。 最後の同期時刻は、GMT 日付/時刻の値です。 最後の同期時刻より前にプライマリに対して書き込まれたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 最後の同期時刻より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値を、[Azure Portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、または Azure Storage クライアント ライブラリの 1 つを使用して、クエリできます。
+- ストレージ アカウントの **[最後の同期時刻]** プロパティを確認できます。 **最後の同期時刻**は、GMT 日付/時刻の値です。 **最後の同期時刻**より前にプライマリに対して書き込みが行われたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 **最後の同期時刻**より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値は、PowerShell、Azure CLI、または Azure Storage クライアント ライブラリの 1 つを使用して、クエリできます。 詳細については、「[読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time)」の「**最終同期時刻の取得**」を参照してください。
 - セカンダリ リージョンへの GRS または RA-GRS アカウントのアカウント フェールオーバー (プレビュー) を開始する場合、そのアカウントへの書き込みアクセスは、フェールオーバーが完了した後に復元されます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)](storage-disaster-recovery-guidance.md)」を参照してください。
 - RA-GRS は高可用性を目的として作られています。 スケーラビリティのガイダンスについては、[パフォーマンス チェックリスト](storage-performance-checklist.md)をご覧ください。
 - RA-GRS を使用して高可用性を確保するためのお勧めの設計方法については、「[RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)」を参照してください。
@@ -49,7 +49,7 @@ RA-GRS 使用時の考慮事項:
 
 ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 ペアのセカンダリ リージョンはプライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)

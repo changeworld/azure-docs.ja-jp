@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 7208825581a0bf16f6ee3a3947387b01abfd16d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5488606939bafc402210ad35f3a17e71ac072010
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433068"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044536"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
 Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、Java、JavaScript、PowerShell、Python などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを作成できます。
@@ -21,7 +21,7 @@ Azure Functions は、小規模なコード ("関数") をクラウドで手軽�
 ## <a name="features"></a>[機能]
 Functions の主要な機能を次に示します。
 
-* **言語の選択** - C#、Java、Javascript、Python などから選んだ言語を使用して関数を記述できます。 完全な一覧が必要な場合、[サポートされている言語](supported-languages.md)に関するページを参照してください。
+* **言語の選択** - C#、Java、JavaScript、Python などの言語を選択して関数を記述できます。 完全な一覧が必要な場合、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 * **従量課金制の価格モデル** - コードの実行に要した時間に対してのみ課金されます。 [価格に関するセクション](#pricing)にある従量課金ホスティング プラン オプションを確認してください。  
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  
@@ -30,7 +30,7 @@ Functions の主要な機能を次に示します。
 * **オープン ソース** - Azure Functions ランタイムはオープン ソースであり、 [GitHub](https://github.com/azure/azure-webjobs-sdk-script)で提供されています。  
 
 ## <a name="what-can-i-do-with-functions"></a>Functions でできること
-Functions は、データの処理、システムの統合、モノのインターネット (IoT) の操作、単純な API とマイクロサービスの構築に適した優れたソリューションです。 画像処理や注文処理、ファイルの保守、スケジュールに従って実行するタスクに Functions を利用することを検討してください。 
+Functions は、データの処理、システムの統合、モノのインターネット (IoT) の操作、単純な API とマイクロサービスの構築に適した優れたソリューションです。 Web API、画像処理または注文処理、ファイルの保守などのタスクや、スケジュールに従って実行するタスクに、Functions を利用することを検討してください。 
 
 Functions には、次のような主要なシナリオを開始するためのテンプレートが用意されています。
 

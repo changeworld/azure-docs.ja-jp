@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 57bc60cab7e6980f7051af6fc4685bd2a426f4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422412"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -32,7 +32,6 @@ ID インフラストラクチャの状態に問題があることをアラー�
 > [!NOTE]
 > 既定では、電子メール通知は有効です。
 >
->
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Azure AD Connect Health の電子メール通知を有効にするには
 1. 電子メール通知を受信するサービスの **[アラート]** ブレードを開きます。
@@ -41,6 +40,13 @@ ID インフラストラクチャの状態に問題があることをアラー�
 4. すべてのグローバル管理者が電子メール通知を受信するようにする場合は、チェック ボックスをオンにします。
 5. 他の電子メール アドレスで電子メール通知を受信する必要がある場合は、 **[追加の電子メール受信者]** ボックスで指定します。 このリストから電子メール アドレスを削除するには、対象のエントリを右クリックして **[削除]** を選択します。
 6. 変更を確定するには、 **[保存]** をクリックします。 保存した後にのみ変更は有効になります。
+
+>[!NOTE] 
+> バックエンド サービスで同期要求を処理する際に問題が発生した場合は、このサービスからご利用のテナントの管理者の連絡先の電子メール アドレスに、エラーの詳細が記載された通知電子メールが送信されます。 特定のケースではこれらのメッセージの量が非常に多くなるというフィードバックをお客様からいただいたので、これらのメッセージの送信方法を変更中です。 
+>
+> 同期エラーが発生するたびに毎回メッセージを送信するのではなく、バックエンド サービスから返されたすべてのエラーのダイジェストを毎日送信することになります。 これにより、お客様はより効率的な方法でこれらのエラーを処理し、重複するエラー メッセージの数を減らすことができます。
+>
+> この変更は 2020 年 1 月 15 日に実装される予定です。
 
 ## <a name="delete-a-server-or-service-instance"></a>サーバーまたはサービス インスタンスを削除する
 
@@ -104,9 +110,9 @@ Azure AD Connect Health では、次の組み込みのロールがサポート�
 
 | Role | アクセス許可 |
 | --- | --- |
-| Owner |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
+| 所有者 |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
 | Contributor |共同作成者は、ポータルからの "*すべての情報の表示*" (例: アラートの表示) と Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 |
-| 閲覧者 |閲覧者は、ポータルから Azure AD Connect Health 内の "*すべての情報の表示*" (例: アラートの表示) を実行できます。 |
+| Reader |閲覧者は、ポータルから Azure AD Connect Health 内の "*すべての情報の表示*" (例: アラートの表示) を実行できます。 |
 
 上記以外のすべてのロール ("ユーザー アクセス管理者" や "DevTest Labs ユーザー" など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。
 
@@ -159,7 +165,7 @@ Azure AD Connect Health RBAC に追加されたユーザーまたはグループ
 
 [//]: # (RBAC セクションの終了)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)

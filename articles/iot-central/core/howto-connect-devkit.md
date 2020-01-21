@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435067"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -25,12 +25,12 @@ ms.locfileid: "73582932"
 
 この記事の手順を完了するには、次のリソースが必要です。
 
-1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+1. **レガシ アプリケーション** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 1. DevKit デバイス。 DevKit デバイスを購入するには、「[MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)」を参照してください。
 
-## <a name="sample-devkits-application"></a>サンプル Devkit アプリケーション
+## <a name="add-a-device-template"></a>デバイス テンプレートの追加
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次のデバイス特性を定義する **MXChip** デバイス テンプレートが含まれています。
+お使いの Azure IoT Central アプリケーションで、次のデバイス特性を定義する新しい **MXChip** デバイス テンプレートを追加します。
 
 - **湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) のテレメトリ測定値。
 - **デバイス状態**の状態測定。
@@ -40,6 +40,11 @@ ms.locfileid: "73582932"
 - クラウド プロパティである **[メーカー]** 。
 - コマンド **Echo** および **Countdown**。 実際のデバイス上で **Echo** コマンドが受信されると、送信された値がデバイスの画面に表示されます。 実際のデバイスで **Countdown** コマンドが受信されると、LED がパターンを順番に繰り返し、デバイスによってカウントダウン値が IoT Central に送信されます。
 
+1. デバイス テンプレートから **[+ 新規]** を選択します。![デバイス テンプレート](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. **[MXChip]** を選択し、MXChip デバイス テンプレートを作成します ![[デバイス テンプレートの追加]](media/howto-connect-devkit/newtemplate.png)。
+
 構成について詳しくは、「[MXChip デバイス テンプレートの詳細](#mxchip-device-template-details)」をご覧ください
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
@@ -48,7 +53,7 @@ ms.locfileid: "73582932"
 
 Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続詳細を書きとめます。**スコープ ID、デバイス ID、主キー**:
 
-1. Device Explorer から**実際のデバイス**を追加し、 **[+ 新規] > [Real]\(リアル\)** を選択して実際のデバイスを追加します。
+1. [デバイス] から**実際のデバイス**を追加し、 **[+ 新規]、[Real]\(リアル\)** の順に選択して実際のデバイスを追加します。
 
     * 小文字の **[デバイス ID]** を入力するか、推奨される**デバイス ID** を使用します。
     * **[デバイス名]** を入力するか、推奨名を使います
@@ -209,13 +214,13 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
-#### <a name="states"></a>States 
-| 名前          | Display name   | 正常 | 注意 | 危険 | 
+#### <a name="states"></a>状態 
+| Name          | Display name   | NORMAL | 注意 | 危険 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
+| DeviceState   | デバイス状態   | [緑]  | オレンジ  | [赤]    | 
 
 #### <a name="events"></a>events 
-| 名前             | Display name      | 
+| Name             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | ボタン B の押下  | 
 
@@ -233,9 +238,9 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 
 | Display name | フィールド名 | オンテキスト | オフテキスト | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | OFF      | オフ     |
+| IR           | activateIR | ON      | OFF      | Off     |
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 | 種類            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
@@ -243,13 +248,13 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | デバイス プロパティ | デバイスの場所   | location  | location    |
 | Text            | メーカー     | manufacturedIn   | 該当なし       |
 
-### <a name="commands"></a>command
+### <a name="commands"></a>コマンド
 
-| Display name | フィールド名 | 戻り値の型 | 入力フィールドの表示名 | 入力フィールド名 | 入力フィールドの種類 |
+| Display name | フィールド名 | の戻り値の型 : | 入力フィールドの表示名 | 入力フィールド名 | 入力フィールドの種類 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | エコー         | echo       | text        | 表示する値         | displayedValue   | text             |
 | カウントダウン    | countdown  | number      | カウント開始               | countFrom        | number           |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、MXChip IoT DevKit を Azure IoT Central アプリケーションに接続する方法を学習したので、推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

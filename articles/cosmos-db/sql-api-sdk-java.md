@@ -8,19 +8,19 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444839"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -37,7 +37,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API ドキュメント**|[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**作業開始**|[Java SDK の開始](sql-api-java-get-started.md)|
+|**開始するには**|[Java SDK の開始](sql-api-java-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
@@ -48,6 +48,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * パーティション キー範囲のキャッシュ更新を最適化しました。
+* SDK によってサーバーからのパーティション分割のヒントが受け入れられず、クライアント側のルーティング キャッシュが正しく更新されないシナリオを修正します。
 
 ### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
 * コレクションのキャッシュ更新を最適化しました。
@@ -298,9 +299,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。
+## <a name="see-also"></a>参照
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。
 

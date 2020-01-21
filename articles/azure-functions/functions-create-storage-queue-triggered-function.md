@@ -5,12 +5,12 @@ ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227135"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769253"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 
@@ -54,11 +54,11 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     ![ストレージ キューによってトリガーされる関数を構成する。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
 
-    | Setting | 推奨値 | Description |
+    | 設定 | 推奨値 | [説明] |
     |---|---|---|
     | **Name** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
-    | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
+    | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 
 1. **[作成]** をクリックして関数を作成します。
 
@@ -100,11 +100,11 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 1. Storage Explorer に戻り、 **[更新]** をクリックし、メッセージが処理され、キュー内になくなったことを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 メッセージがストレージ キューに追加されたときに実行される関数を作成しました。 Queue Storage トリガーの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
 

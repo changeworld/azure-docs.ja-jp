@@ -1,24 +1,24 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463491"
 ---
 Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
-1. [Azure Portal][Azure portal] にサインインします。
-2. 左側のメニューで、 **[リソースの作成]** をクリックします。
+1. [Azure portal][Azure portal] にサインインする
+2. Azure portal メニューまたは [ホーム] ページで、 **[リソースの作成]** を選択します。
 
     ![command-bar-new][command-bar-new]
-3. **[アドオン]** 、 **[SendGrid Email Delivery (SendGrid 電子メール配信)]** の順にクリックします。
+3. **[SendGrid]** を探して選択します。
 
     ![sendgrid-store][sendgrid-store]
 4. サインアップ フォームに入力し、 **[作成]** を選択します。
@@ -34,11 +34,11 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 10. 所有している場合は、**プロモーション コード**を入力します。
 11. **連絡先情報**を入力します。
 12. **法律条項**を確認し、同意します。
-13. 購入を確認すると、 **[デプロイメントに成功しました]** ポップアップが表示され、 **[すべてのリソース]** セクションにアカウントが表示されます。
+13. 購入が確認されると、 **[デプロイに成功しました]** ポップアップが表示され、お使いのアカウントが一覧に表示されます。
 
     ![all-resources][all-resources]
 
-    購入を完了して **[管理]** をクリックし、電子メール検証プロセスが始まると、SendGrid からアカウントの確認を求める電子メールが届きます。 この電子メールを受信していない場合やアカウントの検証に問題がある場合は、この FAQ を参照してください。
+    購入を完了して **[Manage]** をクリックし、電子メール検証プロセスが始まると、SendGrid からアカウントの確認を求める電子メールが届きます。 この電子メールを受信していない場合やアカウントの検証に問題がある場合は、Microsoft の FAQ を参照してください。
 
     ![manage][manage]
 
@@ -54,7 +54,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 1. **Manage**をクリックします。
 
     ![manage][manage]
-2. SendGrid のダッシュボードの左側のメニューで、 **[設定]** 、 **[API キー]** の順に選択します。
+2. SendGrid のダッシュボードの左側のメニューで、 **[Settings]** 、 **[API Keys]** の順に選択します。
 
     ![api-keys][api-keys]
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241844"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894400"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge" が HDInsight の Apache Spark ストリーミング アプリのログに表示される
 
@@ -26,7 +26,7 @@ ms.locfileid: "73241844"
 
 お使いの Spark イベント ログ ファイルが、WASB に対するファイルの長さの上限に達している可能性があります。
 
-Spark 2.3 では、各 Spark アプリによって 1 つの Spark イベント ログ ファイルが生成されます。 Spark ストリーミング アプリの Spark イベント ログ ファイルは、アプリの実行中も拡張され続けます。 現在、WASB 上のファイルには 5 万ブロックの制限があり、既定のブロック サイズは 4 MB です。 そのため、既定の構成では、最大ファイル サイズは 195 GB です。 ただし、Azure Storage では最大ブロック サイズが 100 MB に増やされており、1 つのファイルの上限は実質的に 4.75 TB になります。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)」をご覧ください。
+Spark 2.3 では、各 Spark アプリによって 1 つの Spark イベント ログ ファイルが生成されます。 Spark ストリーミング アプリの Spark イベント ログ ファイルは、アプリの実行中も拡張され続けます。 現在、WASB 上のファイルには 5 万ブロックの制限があり、既定のブロック サイズは 4 MB です。 そのため、既定の構成では、最大ファイル サイズは 195 GB です。 しかし Azure Storage では最大ブロック サイズが 100 MB に増えており、1 つのファイルの上限は実質的に 4.75 TB になります。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)」を参照してください。
 
 ## <a name="resolution"></a>解決策
 
@@ -56,7 +56,7 @@ Spark 2.3 では、各 Spark アプリによって 1 つの Spark イベント �
 
     1. Ambari UI を使用して、影響を受けるすべてのサービスを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
@@ -64,4 +64,4 @@ Spark 2.3 では、各 Spark アプリによって 1 つの Spark イベント �
 
 * [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

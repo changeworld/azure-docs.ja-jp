@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB を使用した Azure Active Directory 証明書ベースの認証
+title: Azure Cosmos DB と Active Directory を使用した証明書ベースの認証
 description: 証明書ベースの認証で Azure Cosmos DB のキーにアクセスするように Azure AD ID を構成する方法について説明します。
 author: voellm
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442098"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -242,7 +242,7 @@ namespace TodoListDaemonWithCert
 前のセクションと同様に、キー取得要求イベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Key Vault を使用して Azure Cosmos キーをセキュリティで保護する](access-secrets-from-keyvault.md)
 

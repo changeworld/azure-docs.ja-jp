@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793349"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689140"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -50,12 +50,13 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="filesystem-support-in-sdks"></a>SDK でのファイルシステムのサポート
 
-- .NET、Java、Python はパブリック プレビュー段階にあります。 その他の SDK は現在サポートされていません。
-- Get および Set ACL 操作は現在、再帰的ではありません。
+- [.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、および [Python](data-lake-storage-directory-file-acl-python.md) のサポートは、パブリック プレビュー段階です。 その他の SDK は現在サポートされていません。
+- get および set ACL 操作は現在、再帰的ではありません。
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell と Azure CLI でのファイルシステムのサポート
 
-Get および Set ACL 操作は現在、再帰的ではありません。
+- [PowerShell](data-lake-storage-directory-file-acl-powershell.md) と [Azure CLI](data-lake-storage-directory-file-acl-cli.md) のサポートは、パブリック プレビュー段階です。
+- get および set ACL 操作は現在、再帰的ではありません。
 
 ## <a name="support-for-other-blob-storage-features"></a>その他の BLOB ストレージ機能のサポート
 
@@ -63,16 +64,17 @@ Get および Set ACL 操作は現在、再帰的ではありません。
 
 | 機能 / ツール    | 詳細情報    |
 |--------|-----------|
+| **アカウントのフェールオーバー** |まだサポートされていません|
 | **AzCopy** | バージョン固有のサポート <br><br>AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用します。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。|
 | **Azure Blob Storage ライフサイクル管理ポリシー** | ライフサイクル管理ポリシーがサポートされています (プレビュー)。  すべてのアクセス層がサポートされています。 アーカイブ アクセス層は、現在プレビュー段階です。 BLOB スナップショットの削除は、まだサポートされていません。 <br><br> 現在、ライフサイクル管理ポリシーとアーカイブ アクセス層に影響するバグがいくつか存在します。  ライフサイクル管理ポリシーとアーカイブ アクセス層のプレビューに[ここから](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)サインアップします。   |
 | **Azure Content Delivery Network (CDN)** | まだサポートされていません|
 | **Azure Search** |サポート (プレビュー)|
-| **Azure Storage Explorer** | バージョン固有のサポート。 <br><br>バージョン `1.6.0` 以降のみを使用します。 <br> 現時点で、バージョン `1.11.0` に影響を与える、特定のシナリオで認証エラーが発生する可能性のあるストレージのバグが存在します。 ストレージのバグの修正はロールアウトされる予定ですが、回避策として、[無料のダウンロード](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)として入手できるバージョン `1.10.x` を使用することをお勧めします。 `1.10.x` は、ストレージのバグの影響を受けません。|
+| **Azure 記憶域エクスプローラー** | バージョン固有のサポート。 <br><br>バージョン `1.6.0` 以降のみを使用します。 <br> 現時点で、バージョン `1.11.0` に影響を与える、特定のシナリオで認証エラーが発生する可能性のあるストレージのバグが存在します。 ストレージのバグの修正はロールアウトされる予定ですが、回避策として、[無料のダウンロード](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)として入手できるバージョン `1.10.x` を使用することをお勧めします。 `1.10.x` は、ストレージのバグの影響を受けません。|
 | **BLOB コンテナーの ACL** |まだサポートされていません|
 | **Blobfuse** |まだサポートされていません|
 | **カスタム ドメイン** |まだサポートされていません|
 | **Azure portal での Storage Explorer** | 制限付きサポート。 ACL はまだサポートされていません。 |
-| **診断ログ** |診断ログがサポートされています (プレビュー)。<br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
+| **診断ログ** |診断ログがサポートされています (プレビュー)。<br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>[https://login.microsoftonline.com/consumers/](`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`) <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
 | **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
 | **オブジェクト レベルの階層** |クール層とアーカイブ層がサポートされています。 アーカイブ層はプレビュー段階です。 その他のすべてのアクセス層は、まだサポートされていません。 <br><br> 現在、アーカイブ アクセス層に影響するバグがいくつか存在します。  アーカイブ アクセス層のプレビューに[ここから](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)サインアップします。|
 | **静的な Web サイト** |まだサポートされていません <br><br>具体的には、[静的な Web サイト](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)にファイルを提供する機能です。|

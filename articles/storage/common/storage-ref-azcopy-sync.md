@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457462"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -42,7 +42,7 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>詳細
+### <a name="advanced"></a>詳細設定
 
 ファイル拡張子を指定しない場合、AzCopy は、ファイルの拡張子またはコンテンツ (拡張子が指定されていない場合) に基づいて、ローカル ディスクからアップロードするときにファイルのコンテンツの種類を自動的に検出します。
 
@@ -106,8 +106,9 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+1 つの仮想ディレクトリを同期する:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
@@ -136,13 +137,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--delete-destination** string   同期元に存在しない余分なファイルを同期先から削除するかどうかを定義します。 true、false、または prompt に設定できます。 prompt に設定すると、ファイルと BLOB の削除をスケジュールする前に、ユーザーに質問が表示されます。 (既定値は 'false')。 (既定値は "false")
 
-**--exclude-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルを除外します。 例: A;S;R
+**--exclude-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルを除外します。 次に例を示します。A;S;R
+
+**--exclude-path** string コピーするときにこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: myFolder;myFolder/subDirName/file.pdf)。 アカウント トラバーサルと組み合わせて使用する場合、パスにはコンテナー名は含まれません。
 
 **--exclude-pattern** string      名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName
 
 **-h, --help**                sync のヘルプ コンテンツを表示します
 
-**--include-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 例: A;S;R
+**--include-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 次に例を示します。A;S;R
 
 **--include-pattern** string      名前がパターンの一覧と一致するファイルをのみを含めます。 例: *.jpg;* .pdf;exactName
 
@@ -154,11 +157,11 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
-|オプション|説明|
+|オプション|[説明]|
 |---|---|
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [azcopy](storage-ref-azcopy.md)

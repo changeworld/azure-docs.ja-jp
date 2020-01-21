@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: a85f9f8b9d98f77cf673778f031d8f47f132fbe1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 875d8f498fc8405a53d8fb60631c52ce09b30a62
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431923"
 ---
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 
@@ -102,9 +102,9 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 * この機能は、米国西部 2 でのみ使用できます。
 * アプリケーションは、[Media Services v3 OpenAPI の仕様](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)で説明されているプレビュー API を使用する必要があります。
-* サポートされている言語は英語のみです。
+* サポートされている言語は英語 (en-us) のみです。
 * コンテンツ保護については、AES エンベロープ暗号化のみがサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services の概要](media-services-overview.md)

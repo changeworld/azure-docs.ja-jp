@@ -1,25 +1,16 @@
 ---
-title: Microsoft Azure Service Fabric の サービスとコンテナーの自動スケーリング | Microsoft Docs
+title: Azure Service Fabric のサービスとコンテナーの自動スケーリング
 description: Azure Service Fabric では、サービスとコンテナー用の自動スケーリング ポリシーを設定できます。
-services: service-fabric
-documentationcenter: .net
 author: radicmilos
-manager: ''
-editor: nipuzovi
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452084"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -207,5 +198,5 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 実際の物理リソースを表す 2 つのメトリックがあります。 1 つは実際の CPU 使用量を表す servicefabric:/_CpuCores であり (0.5 はコアの半分を表します)、他方はメモリ使用量を MB 単位で表わす servicefabric:/_MemoryInMB です。
 ResourceMonitorService は、ユーザー サービスの CPU とメモリの使用量を追跡します。 このサービスは、潜在的な短時間持続するスパイクに対応するために、加重移動平均を適用します。 リソースの監視は、Windows ではコンテナー化されたアプリケーションとコンテナー化されていないアプリケーションの両方でサポートされ、Linux ではコンテナー化されたアプリケーションでサポートされます。 リソース ベースの自動スケーリングは、[占有プロセス モデル](service-fabric-hosting-model.md#exclusive-process-model)でアクティブ化されるサービスに対してのみ有効にできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。

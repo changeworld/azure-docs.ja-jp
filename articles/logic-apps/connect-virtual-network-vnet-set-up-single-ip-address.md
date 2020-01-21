@@ -1,21 +1,23 @@
 ---
-title: 複数の ISE に対するアクセスの設定
-description: 複数の統合サービス環境 (ISE) の場合、Azure Logic Apps から外部システムにアクセスするための単一のパブリック送信 IP アドレスを設定できます
+title: ISE のパブリック発信 IP アドレスを設定する
+description: Azure Logic Apps で統合サービス環境 (ISE) に対して単一のパブリック発信 IP アドレスを設定する方法について学習します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453480"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で複数の統合サービス環境のアクセスを設定する
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で 1 つまたは複数の統合サービス環境に対して単一の IP アドレスを設定する
 
-Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内のリソースにアクセスする必要があるロジック アプリをホストするために、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を設定できます。 IP 制限がある他のエンドポイントへのアクセスを必要とする ISE インスタンスが複数ある場合は、[Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を仮想ネットワークにデプロイし、そのファイアウォールまたはネットワーク仮想アプライアンスを経由して送信トラフィックをルーティングします。 その後、仮想ネットワーク内のすべての ISE インスタンスで、1 つの予測可能なパブリック IP アドレスを使用して、送信先システムとの通信を行うことができます。 このようにすると、送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。 このトピックでは Azure Firewall 経由で送信トラフィックをルーティングする方法について説明しますが、Azure Marketplace からのサードパーティのファイアウォールなどの仮想ネットワーク仮想アプライアンスにも、同様の概念を適用できます。
+Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内のリソースにアクセスする必要があるロジック アプリをホストするために、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を設定できます。 IP 制限がある他のエンドポイントへのアクセスを必要とする ISE インスタンスが複数ある場合は、[Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を仮想ネットワークにデプロイし、そのファイアウォールまたはネットワーク仮想アプライアンスを経由して送信トラフィックをルーティングします。 その後、仮想ネットワーク内のすべての ISE インスタンスで、1 つの予測可能な静的パブリック IP アドレスを使用して、送信先システムとの通信を行うことができます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+このトピックでは Azure Firewall 経由で送信トラフィックをルーティングする方法について説明しますが、Azure Marketplace からのサードパーティのファイアウォールなどのネットワーク仮想アプライアンスにも、同様の概念を適用できます。 このトピックでは、複数の ISE インスタンスの設定に焦点を当てていますが、アクセスする必要がある IP アドレスの数をシナリオで制限する必要がある場合は、1 つの ISE に対してこの方法を使用することもできます。 ファイアウォールまたは仮想ネットワーク アプライアンスの追加コストが、シナリオにとって妥当かどうかを検討してください。 詳細については、「[Azure Firewall の価格](https://azure.microsoft.com/pricing/details/azure-firewall/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +49,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    ![送信トラフィックの送信用ルールを設定する](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **ルート名** | <*一意のルート名*> | ルート テーブル内のルートの一意の名前 |
    | **アドレス プレフィックス** | <*送信先アドレス*> | トラフィックを送る送信先システムのアドレス。 このアドレスに必ず、[クラスレス ドメイン間ルーティング (CIDR) 表記](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用してください。 |
@@ -69,16 +71,16 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    **ネットワーク ルール コレクションのプロパティ**
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **Name** | <*ネットワーク ルール コレクション名*> | ネットワーク ルール コレクションの名前 |
    | **優先順位** | <*優先順位のレベル*> | ルール コレクションを実行するために使用する優先順位。 詳細については、「[Azure Firewall の概念をいくつか教えてください。](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)」を参照してください。 |
-   | **アクション** | **許可** | このルールのために実行するアクションの種類 |
+   | **操作** | **許可** | このルールのために実行するアクションの種類 |
    |||
 
    **ネットワーク ルールのプロパティ**
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **Name** | <*ネットワーク ルール名*> | ネットワーク ルールの名前 |
    | **プロトコル** | <*接続プロトコル*> | 使用する接続プロトコル。 たとえば、NSG ルールを使用している場合は、 **[TCP]** だけではなく、 **[TCP]** と **[UDP]** の両方を選択します。 |
@@ -95,6 +97,6 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
    * [Azure PowerShell: New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: az network firewall network-rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps から Azure Virtual Network に接続する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)

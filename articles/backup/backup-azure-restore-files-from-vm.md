@@ -3,12 +3,12 @@ title: Azure VM バックアップからファイルとフォルダーを回復�
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392560"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -60,7 +60,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
     アクセスが制限されたコンピューターでスクリプトを実行する場合は、以下にアクセスできることを確認します。
 
     - download.microsoft.com
-    - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure パブリック geo 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure 中国 21Vianet 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure US 政府機関用)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure ドイツ用)
+    - Recovery Service の URL (geo 名は Recovery Service コンテナーが存在するリージョンを表します)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure パブリック geo 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure 中国 21Vianet 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure US 政府機関用)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure ドイツ用)
     - 送信ポート 3260
 
 > [!Note]
@@ -211,9 +211,9 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップからのファイルの回復
 
-このセクションでは、ディスクの数が 16 を超え、かつ各ディスク サイズが 4 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
+このセクションでは、ディスクの数が 16 を超え、かつ各ディスク サイズが 32 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
 
-ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 4 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
+ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 32 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
 
 - ファイルの回復のために個別の復元サーバー (Azure VM D2v3 VM) を保持します。 そのサーバーはファイルの回復にのみ使用でき、必要がないときはシャットダウンできます。 元のコンピューターへの復元は、VM 自体に大きな影響を与えるためお勧めできません。
 - 次に、ファイルの回復操作が成功するかどうかを確認するために、スクリプトを 1 回実行します。
@@ -252,7 +252,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 | Linux 固有:目的のボリュームを表示できない | スクリプトを実行するマシンの OS が、保護された VM の基になるファイル システムを認識していない可能性があります | 復旧ポイントがクラッシュ整合性とファイル整合性のどちらであるかを確認します。 ファイル整合性の場合、OS が保護された VM のファイル システムを認識する別のマシンでスクリプトを実行します。 |
 | Windows 固有:目的のボリュームを表示できない | ディスクはアタッチされている可能性がありますが、ボリュームが構成されていません | ディスクの管理画面から、復旧ポイントに関連する追加のディスクを識別します。 これらのディスクのいずれかがオフライン状態の場合は、そのディスクを右クリックし、[オンライン] をクリックしてオンライン状態にします。|
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 このセクションでは、ユーザーが機能のセキュリティ面を意識するように、Azure VM バックアップからファイルの回復を実装するために講じるさまざまなセキュリティ対策について説明します。
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
-description: Azure Cache for Redis を使用して ASP.NET ページ出力をキャッシュする方法について説明します。
+description: Azure Cache for Redis を使用して ASP.NET ページ出力をキャッシュする方法について説明します。 Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.author: yegu
-ms.openlocfilehash: 5d7099779f330bc0a92f0c8f305ac534ab385119
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412983"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -51,12 +51,12 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
-| Attribute | 種類 | Default | 説明 |
+| Attribute | 種類 | Default | [説明] |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
 | *port* | 正の整数 | 6379 (非 SSL)<br/>6380 (SSL) | Redis サーバー ポート |
 | *accessKey* | string | "" | Redis 認証が有効になっている場合は、Redis サーバーのパスワード。 既定では、値は空の文字列です。これは、セッション状態プロバイダーが Redis サーバーに接続するときにパスワードを使用しないことを意味します。 **Redis サーバーが Azure Redis Cache のようなパブリックにアクセス可能なネットワークにある場合は、セキュリティを強化するために必ず Redis 認証を有効にして、安全なパスワードを提供してください。** |
-| *ssl* | ブール値 | **false** | Redis サーバーに SSL 経由で接続するかどうか。 Redis は初期状態では SSL をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に **true** を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
+| *ssl* | boolean | **false** | Redis サーバーに SSL 経由で接続するかどうか。 Redis は初期状態では SSL をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に **true** を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
 | *databaseIdNumber* | 正の整数 | 0 | *この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>使用する Redis データベースを指定します。 |
 | *connectionTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *ConnectTimeout* を設定するために使用されます。 |
 | *operationTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *SyncTimeout* を設定するために使用されます。 |
@@ -64,7 +64,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、接続文字列を指定します。 *settingsClassName* は、*settingsMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*settingsMethodName* で指定するメソッドは、戻り値の型が **string** の public、static、および void (パラメーターを取らない) である必要があります。 このメソッドは、実際の接続文字列を返します。 |
 | *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、セッション状態/出力キャッシュからのログと StackExchange.Redis からのログを提供することにより、アプリケーションをデバッグします。 *loggingClassName* は、*loggingMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*loggingMethodName* で指定するメソッドは、戻り値の型が **System.IO.TextWriter** の public、static、および void (パラメーターを取らない) である必要があります。 |
 | *applicationName* | string | 現在のプロセスのモジュール名または "/" | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>Redis Cache で使用するアプリ名プレフィックス。 お客様は、異なる目的で同じ Redis Cache を使用できます。 セッション キーが競合しないようにするために、アプリケーション名をプレフィックスとして付けることができます。 |
-| *throwOnError* | ブール値 | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
+| *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
 | *retryTimeoutInMilliseconds* | 正の整数 | 5000 | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>操作が失敗したときに再試行する時間の長さ。 この値が *operationTimeoutInMilliseconds* より小さい場合、プロバイダーは再試行しません。<br/><br/>*retryTimeoutInMilliseconds* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*retryTimeoutInMilliseconds* に関する注意事項](#notes-on-retrytimeoutinmilliseconds)」を参照してください。 |
 | *redisSerializerType* | string | *該当なし* | Microsoft.Web.Redis.ISerializer を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを含むクラスのアセンブリ修飾型名を指定します。 詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*redisSerializerType*](#about-redisserializertype) について」を参照してください。 |
 |
@@ -198,6 +198,6 @@ namespace MyCompany.Redis
 
 ここまでの手順を実行すると、アプリケーションは Redis 出力キャッシュ プロバイダーを使用するように構成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[ASP.NET Session State Provider for Azure Cache for Redis (Azure Cache for Redis の ASP.NET セッション状態プロバイダー)](cache-aspnet-session-state-provider.md)」を参照してください。

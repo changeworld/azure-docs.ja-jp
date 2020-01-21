@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74174975"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75662906"
 ---
 | リソース | 既定/上限 | Note |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ ms.locfileid: "74174975"
 | URL の最大長|32KB| |
 | HTTP/2 向けヘッダーの最大サイズ |4KB| |
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
-| 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |
+| 最大ファイル アップロード サイズ (WAF) |中規模の v1 WAF ゲートウェイ、100 MB<br>大規模の v1 WAF ゲートウェイ、500 MB<br>v2 WAF、750 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
 | WAF カスタム規則の最大数|100||
 | WAF 除外の最大数|100||

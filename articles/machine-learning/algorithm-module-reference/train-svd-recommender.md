@@ -1,7 +1,7 @@
 ---
 title: SVD レコメンダーのトレーニング:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールと SVD アルゴリズムを使用してベイジアン レコメンダーをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で SVD レコメンダーのトレーニング モジュールと SVD アルゴリズムを使用してベイジアン レコメンダーをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428417"
 ---
 # <a name="train-svd-recommender"></a>SVD レコメンダーのトレーニング
 
@@ -74,6 +74,6 @@ Azure Machine Learning デザイナーの **Restaurant ratings** データセッ
 5.  パイプラインを実行します。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

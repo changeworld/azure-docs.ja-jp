@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric クラスターのスケーリング | Microsoft Docs
-description: Azure Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric クラスターのスケーリング
+description: Azure Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。 アプリケーションの要求が変化するように、Service Fabric クラスターも変化します。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: c4d7027438f19cd16fd87d629364cdf725e91607
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599850"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610082"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -87,7 +78,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md) ことができます (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。 サポートされていない方法で VM SKU を変更する場合は、新しい SKU を反映するように仮想マシン スケール セットのモデル定義を変更します。 クラスターにノードの種類が 1 つしかない場合は、すべてのステートフルなアプリケーションが、適切なタイミングですべての[サービス レプリカのライフ サイクル イベント](service-fabric-reliable-services-lifecycle.md) (ビルドでのレプリカの停止など) に応答すること、サービス レプリカのリビルド時間が 5 分未満であることを確認します (Silver 耐久性レベルの場合)。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。
 * fluent Azure コンピューティング SDK を使用して [Azure クラスターをプログラムでスケーリングします](service-fabric-cluster-programmatic-scaling.md)。

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights のユーザー動作分析ツールをトラブルシューティングする
+title: ユーザー分析ツールをトラブルシューティングする - Azure Application Insights
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9222f4611f87869c1bacf3084035c0ab9322fa40
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432275"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか? いくつかの答えを次に示します。
@@ -46,10 +46,10 @@ Web アプリを監視している場合の最も簡単なソリューション�
 
 アプリによって送信されるカスタム イベント名が多すぎる場合は、コード内の名前を具体性の少ないものに変更します。 この場合も、URL やその他のページ単位の情報や動的情報をカスタム イベント名の中に直接配置するのは避けてください。 代わりに、これらの詳細を、`trackEvent` API を使用して、カスタム イベントのカスタム プロパティに移動します。 たとえば、`appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` の代わりに、`appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` のようにすることをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ユーザー動作分析ツールの概要](usage-overview.md)
 
-## <a name="get-help"></a>問い合わせ
-* [スタック オーバーフロー](https://stackoverflow.com/questions/tagged/ms-application-insights)
+## <a name="get-help"></a>ヘルプの参照
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

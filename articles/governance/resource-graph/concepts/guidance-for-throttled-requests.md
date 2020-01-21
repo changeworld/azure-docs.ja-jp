@@ -1,14 +1,14 @@
 ---
 title: スロットルされた要求に関するガイダンス
-description: Azure Resource Graph によって要求がスロットルされないように、バッチ処理、時間差処理、改ページ調整、およびクエリの並列処理を行う方法について説明します。
-ms.date: 11/21/2019
+description: Azure Resource Graph によって要求がスロットルされないように、グループ化、時間差処理、改ページ調整、およびクエリの並列処理を行う方法について説明します。
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436074"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -17,7 +17,7 @@ Azure Resource Graph データのプログラムによる頻繁な使用を作�
 この記事では、Azure Resource Graph でのクエリの作成に関連する 4 つの領域とパターンについて説明します。
 
 - スロットリング ヘッダーを理解する
-- クエリのバッチ処理
+- クエリのグループ化
 - クエリの時間差処理
 - 改ページ位置の自動修正の影響
 
@@ -37,9 +37,9 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
 
 これらのヘッダーを使用したクエリ要求の "_バックオフ_" の例については、「[並行で処理されるクエリ](#query-in-parallel)」を参照してください。
 
-## <a name="batching-queries"></a>クエリのバッチ処理
+## <a name="grouping-queries"></a>クエリのグループ化
 
-サブスクリプション、リソース グループ、または個々のリソースによるクエリのバッチ処理は、クエリの並列化よりも効率的です。 大規模なクエリのクォータ コストは、多くの場合、多数の小規模なターゲット クエリのクォータ コストよりも小さくなります。 バッチ サイズを _300_ 未満にすることが推奨されています。
+サブスクリプション、リソース グループ、または個々のリソースによるクエリのグループ化は、クエリの並列化よりも効率的です。 大規模なクエリのクォータ コストは、多くの場合、多数の小規模なターゲット クエリのクォータ コストよりも小さくなります。 グループ サイズを _300_ 未満にすることが推奨されています。
 
 - 最適化が不足しているアプローチの例
 
@@ -62,19 +62,19 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
   }
   ```
 
-- 最適化されたバッチ処理アプローチの例 1
+- 最適化されたグループ化アプローチの例 1
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
   }
   ```
 
-- 最適化されたバッチ処理アプローチの例 2
+- 1 つのクエリで複数のリソースを取得するための最適化されたグループ化アプローチの例 2
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>並行で処理されるクエリ
 
-並列処理よりもバッチ処理が推奨されますが、クエリを簡単にバッチ処理できない場合があります。 このような場合は、複数のクエリを並列で送信することによって、Azure Resource Graph をクエリします。 このようなシナリオで、スロットリング ヘッダーに基づいて "_バックオフ_" する方法の例を次に示します。
+並列処理よりもグループ化が推奨されますが、クエリを簡単にグループ化できない場合があります。 このような場合は、複数のクエリを並列で送信することによって、Azure Resource Graph をクエリします。 このようなシナリオで、スロットリング ヘッダーに基づいて "_バックオフ_" する方法の例を次に示します。
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {
@@ -233,7 +237,7 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
 - 関心のあるリソースの種類。
 - お使いのクエリ パターン。 Y 秒あたり X 回のクエリなど。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。

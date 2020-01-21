@@ -7,18 +7,21 @@ ms.date: 09/26/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 363739bbab67b92e78e0cdb56cf98cdb8e1446eb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 44fe68b8b04a1192c928e04c7d2a9d147f400130
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350891"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748293"
 ---
 # <a name="azure-storage-samples-using-javascript"></a>JavaScript を使用した Azure Storage サンプル
 
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
-## <a name="blob-samples"></a>BLOB のサンプル
+> [!NOTE]
+> これらのサンプルでは、Azure Storage JavaScript v10 ライブラリが使用されます。 v12 コードについては、GitHub リポジトリの[サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)を参照してください。
+
+## <a name="blob-samples-v10"></a>BLOB のサンプル (v10)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -43,7 +46,7 @@ ms.locfileid: "71350891"
 | CORS ルールを設定する | [JavaScript での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
 | Snapshot Blob | [JavaScript での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
 
-## <a name="file-samples"></a>ファイルのサンプル
+## <a name="file-samples-v10"></a>ファイルのサンプル (v10)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ ms.locfileid: "71350891"
 | ディレクトリとファイルのリスト | [JavaScript での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
 | 共有のリスト | [JavaScript での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
 
-## <a name="queue-samples"></a>キューのサンプル
+## <a name="queue-samples-v10"></a>キューのサンプル (v10)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -71,7 +74,7 @@ ms.locfileid: "71350891"
 | キューの統計 | [JavaScript での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
 | 更新メッセージ | [JavaScript での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
 
-## <a name="table-samples"></a>テーブルのサンプル
+## <a name="table-samples-v10"></a>テーブルのサンプル (v10)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -104,7 +107,7 @@ Azure Storage ライブラリのインストール方法と概要については
 * [JavaScript での Azure Queue サービスの概要](../queues/storage-nodejs-how-to-use-queues.md)
 * [JavaScript での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 

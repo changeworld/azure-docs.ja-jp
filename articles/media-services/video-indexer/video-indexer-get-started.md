@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839560"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941555"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
@@ -30,7 +30,13 @@ Video Indexer での開発を始めるには、[Video Indexer](https://www.video
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Video Indexer Web サイトを使用してビデオをアップロードする
 
 > [!NOTE]
-> ビデオの名前は、80 文字より長くする必要があります。
+> ビデオの名前は、80 文字以下にする必要があります。
+
+### <a name="supported-file-formats-for-video-indexer"></a>Video Indexer でサポートされているファイル形式
+
+Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)」を参照してください。
+
+### <a name="upload-a-video"></a>ビデオをアップロードする
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
 2. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
@@ -43,11 +49,13 @@ Video Indexer での開発を始めるには、[Video Indexer](https://www.video
 
     Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-これで、[Video Indexer](video-indexer-view-edit.md) Web サイトまたは [Video Indexer 開発者ポータル](video-indexer-use-apis.md)を使用してビデオの分析情報を表示できます。 
+詳細については、[ビデオのアップロードとインデックス作成](upload-index-videos.md)に関するページを参照してください。
 
-## <a name="see-also"></a>関連項目
+ビデオをアップロードしてインデックスを付けたら、[Video Indexer](video-indexer-view-edit.md) Web サイトまたは [Video Indexer 開発者ポータル](video-indexer-use-apis.md)を使用して、ビデオの分析情報を表示できます。 
+
+## <a name="see-also"></a>参照
 
 [Video Indexer の概要](video-indexer-overview.md)
 

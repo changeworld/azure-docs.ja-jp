@@ -1,5 +1,5 @@
 ---
-title: MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
+title: Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 description: このドキュメントでは、MongoDB から Cosmos DB にデータを移行する前提条件の概要について説明します。
 author: roaror
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
-ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc7038d0ff5180f15a43268fd3f3aa0cbb0c7a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61330853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445191"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 
@@ -41,7 +41,7 @@ ms.locfileid: "61330853"
 
 - コレクション
 
-- Database
+- データベース
 
 > [!NOTE]
 > データベース内の一部のコレクションには専用のスループットをプロビジョニングし、他はそのスループットを共有するように、上記を組み合わせることも可能です。 詳細については、[データベースおよびコンテナーへのスループットの設定](set-throughput.md)に関するページを参照してください。
@@ -83,7 +83,7 @@ Azure Cosmos DB は、既定で、取り込み時にお使いのすべてのデ�
 
 [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) では、一意のインデックスがある MongoDB のコレクションは自動的に移行されます。 ただし、一意のインデックスは移行前に作成する必要があります。 Azure Cosmos DB では、コレクションにデータが既にある場合、一意のインデックスの作成をサポートしていません。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Database Migration Service を使用してお使いの MongoDB データを Cosmos DB に移行する。](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Azure Cosmos のコンテナーとデータベースにスループットをプロビジョニングする](set-throughput.md)
 * [Azure Cosmos DB でのパーティション分割](partition-data.md)

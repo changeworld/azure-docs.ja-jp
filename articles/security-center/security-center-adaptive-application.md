@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center におけるアダプティブ アプリケーション制御 | Microsoft Docs
-description: このドキュメントは、Azure VM で実行されるアプリケーションのホワイトリストを作成するために、Azure Security Center でアダプティブ アプリケーション制御を使用する際に役に立ちます。
+title: Azure Security Center におけるアダプティブ アプリケーション制御
+description: このドキュメントは、Azure コンピューターで実行されるアプリケーションのホワイトリストを作成するために、Azure Security Center でアダプティブ アプリケーション制御を使用する際に役に立ちます。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353439"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Azure Security Center におけるアダプティブ アプリケーション制御
+# <a name="adaptive-application-controls"></a>アダプティブ アプリケーション制御
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Security Center でのアダプティブ アプリケーション制御とは
-適応型アプリケーション制御は、お使いの Azure および Azure 以外の VM (Windows および Linux) 上でどのアプリケーションが実行できるかを制御できる、Azure Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 いくつかの利点のうち、これは特にマルウェアから VM を強化することに役立ちます。 Security Center では、機械学習を使用して、お使いの VM 上で実行されているアプリケーションを分析し、このインテリジェンスから許可リストを作成します。 この機能を使用すると、アプリケーション許可リスト ポリシーを構成および保守するプロセスが非常にシンプルになり、以下のことが実現できます。
+適応型アプリケーション制御は、お使いの Azure および Azure 以外のコンピューター (Windows および Linux) 上でどのアプリケーションが実行できるかを制御できる、Azure Security Center によるインテリジェントかつ自動化されたエンドツーエンドのソリューションです。 いくつかの利点のうち、これは特にマルウェアからコンピューターを強化することに役立ちます。 Security Center では、機械学習を使用して、お使いのコンピューター上で実行されているアプリケーションを分析し、このインテリジェンスから許可リストを作成します。 この機能を使用すると、アプリケーション許可リスト ポリシーを構成および保守するプロセスが非常にシンプルになり、以下のことが実現できます。
 
 - 悪意のあるアプリケーション (マルウェア対策ソリューションでは見逃される可能性のあるものを含む) の実行が試行されるのをブロックまたは警告する。
 - ライセンスのあるソフトウェアのみを使用するという組織のセキュリティ ポリシーに準拠する。
@@ -34,15 +34,17 @@ ms.locfileid: "71202818"
 - アプリの使用状況を通じて、機密データへのアクセスを IT 部門が制御できるようにする。
 
 > [!NOTE]
-> Azure 以外の VM および Linux VM については、監査モードでのみ適応型アプリケーション制御がサポートされています。
+> Azure 以外のコンピューターおよび Linux コンピューターについては、監査モードでのみ適応型アプリケーション制御がサポートされています。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>アダプティブ アプリケーション制御を有効にする方法
-適応型アプリケーション制御は、構成済みの VM のグループに対する実行が許可される一連のアプリケーションを定義するのに役立ちます。 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) および Linux VM とサーバーで使用できます。 アプリケーションの許可リストを構成するには、次の手順に従います。
+
+適応型アプリケーション制御は、構成済みのコンピューターのグループに対する実行が許可される一連のアプリケーションを定義するのに役立ちます。 この機能は、Azure と Azure 以外の Windows (すべてのバージョン、クラシック、または Azure Resource Manager) コンピューターおよび Linux コンピューターで使用できます。 アプリケーションの許可リストを構成するには、次の手順に従います。
 
 1. **[Security Center]** ダッシュボードを開きます。
-2. 左側のウィンドウで、 **[高度なクラウド防御]** の **[適応型アプリケーション制御]** を選択します。
 
-    ![防衛](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. 左側のウィンドウで、 **[高度なクラウド防御]** の **[適応型アプリケーション制御]** を選択します。
+
+    [![防衛](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 **[適応型アプリケーション制御]** ページが表示されます。
 
@@ -60,7 +62,8 @@ ms.locfileid: "71202818"
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>新しいアプリケーション制御ポリシーの構成
-1. アプリケーション制御の推奨があるグループの一覧を表示するには、 **[推奨]** タブをクリックします。
+
+1. アプリケーション制御の推奨があるグループの一覧を表示するには、 **[推奨]** タブを選択します。
 
    ![推奨](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
@@ -73,7 +76,7 @@ ms.locfileid: "71202818"
 
 2. グループをクリックして、 **[アプリケーションの制御に関する規則の作成]** オプションを開きます。
 
-   ![アプリケーション制御規則](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [![アプリケーション制御規則](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. **[VM の選択]** で、推奨されている VM の一覧を確認し、アプリケーションのホワイトリスト登録ポリシーを適用しないすべての VM のチェック ボックスをオフにします。 今度は、次の 2 つの一覧が表示されます。
 
@@ -170,7 +173,7 @@ Azure Security Center では、推奨されない VM のグループに対して
  > [!NOTE]
 > **[コンピューターの移動]** をクリックしたら、必ず **[保存]** をクリックしてください。 **[保存]** をクリックしないと、コンピューターは移動されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure と Azure 以外の VM で実行されるアプリケーションをホワイトリストに登録するために、Azure Security Center で適応型アプリケーション制御を使用する方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。

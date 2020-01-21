@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric ステートフル Reliable Services の診断 | Microsoft Docs
+title: Azure Service Fabric ステートフル Reliable Services の診断
 description: Azure Service Fabric のステートフル Reliable Services の診断機能
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 50e3368aa8808307fa479a290eaf10ca3f22289d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462921"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
@@ -32,11 +23,11 @@ EventSource イベントの収集や表示に役立つツールとテクノロ�
 ## <a name="events"></a>events
 | イベント名 | イベント ID | Level | イベントの説明 |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1 |情報 |サービスの RunAsync タスクが開始されたときに出力されます |
-| StatefulRunAsyncCancellation |2 |情報 |サービスの RunAsync タスクが取り消されたときに出力されます |
-| StatefulRunAsyncCompletion |3 |情報 |サービスの RunAsync タスクが完了したときに出力されます |
+| StatefulRunAsyncInvocation |1 |Informational |サービスの RunAsync タスクが開始されたときに出力されます |
+| StatefulRunAsyncCancellation |2 |Informational |サービスの RunAsync タスクが取り消されたときに出力されます |
+| StatefulRunAsyncCompletion |3 |Informational |サービスの RunAsync タスクが完了したときに出力されます |
 | StatefulRunAsyncSlowCancellation |4 |警告 |サービスの RunAsync タスクが取り消しの実行に時間がかかりすぎたときに出力されます |
-| StatefulRunAsyncFailure |5 |Error |サービスの RunAsync タスクが例外をスローしたときに出力されます |
+| StatefulRunAsyncFailure |5 |エラー |サービスの RunAsync タスクが例外をスローしたときに出力されます |
 
 ## <a name="interpret-events"></a>イベントの解釈
 StatefulRunAsyncInvocation、StatefulRunAsyncCompletion、および StatefulRunAsyncCancellation イベントは、サービスの作成者が、サービスのライフ サイクルや、サービスの開始、取り消し、または完了のタイミングを知るために役立ちます。 この情報はサービスの問題をデバッグする場合やサービスのライフ サイクルを理解する場合に役立つことがあります。
@@ -50,7 +41,7 @@ StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable Services ランタイムでは、次のパフォーマンス カウンター カテゴリを定義しています。
 
-| Category | 説明 |
+| カテゴリ | [説明] |
 | --- | --- |
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
 | Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
@@ -104,7 +95,7 @@ Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-servi
 
 Reliable Services ランタイムでは、`Service Fabric Transactional Replicator` カテゴリにある次のイベントを出力します。
 
- カウンター名 | 説明 |
+ カウンター名 | [説明] |
 | --- | --- |
 | トランザクションの開始操作数/秒 | 1 秒あたりに作成された新しい書き込みトランザクションの数。|
 | トランザクション操作数/秒 | 1 秒あたりにリライアブル コレクションで実行される追加/更新/削除操作の数。|
@@ -117,12 +108,12 @@ Reliable Services ランタイムでは、`Service Fabric Transactional Replicat
 
 Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリにある次のイベントを出力します。
 
- カウンター名 | 説明 |
+ カウンター名 | [説明] |
 | --- | --- |
 | 項目数 | ストアに含まれる項目数。|
 | ディスク サイズ | ストアのチェックポイント ファイルの合計ディスク サイズ (バイト)。|
 | チェックポイント ファイル書き込みバイト数/秒 | 最新のチェックポイント ファイルで 1 秒あたりに書き込まれたバイト数。|
 | コピー ディスク転送バイト数/秒 | ストア コピー中に (プライマリ レプリカ上で) 読み取られたディスク バイト数/秒と (セカンダリ レプリカ上で) 書き込まれたディスク バイト数/秒。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

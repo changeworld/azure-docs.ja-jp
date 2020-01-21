@@ -1,6 +1,7 @@
 ---
-title: SQL Server Integration Services パッケージを Azure SQL Database マネージド インスタンスに移行する | Microsoft Docs
-description: SQL Server Integration Services パッケージを Azure SQL Database マネージド インスタンスに移行する方法について説明します。
+title: SSIS パッケージを SQL マネージド インスタンスに移行する
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service または Data Migration Assistant を使用して、SQL Server Integration Services (SSIS) パッケージとプロジェクトを Azure SQL Database マネージド インスタンスに移行する方法について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/08/2019
-ms.openlocfilehash: 82a047616c199e37bfa22f53e02f3f7b224b47c1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c0ec3cb21c83c7b9f5ff0cec092ab210ea8894eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437984"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services パッケージを Azure SQL Database マネージド インスタンスに移行する
 SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Database マネージド インスタンスによってホストされている配置先の SSISDB に移行する場合は、Azure Database Migration Service を使用できます。
@@ -149,6 +150,6 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 
 * **[移行の実行]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

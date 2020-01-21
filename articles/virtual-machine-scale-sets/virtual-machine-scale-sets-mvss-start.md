@@ -1,6 +1,6 @@
 ---
-title: 仮想マシン スケール セット テンプレートの詳細 | Microsoft Docs
-description: 仮想マシン スケール セットの基本のスケール セット テンプレートの作成について説明します。
+title: 仮想マシン スケール セット テンプレートの詳細情報
+description: いくつかの簡単な手順に従って、Azure 仮想マシン スケール セット用の基本的なスケール セット テンプレートを作成する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980186"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
@@ -51,7 +51,7 @@ ms.locfileid: "70376102"
     }
   },
 ```
-## <a name="define-variables"></a>変数を定義する
+## <a name="define-variables"></a>変数の定義
 Resource Manager テンプレートでは、テンプレート内で後ほど使用される変数を定義することもできます。 この例では変数を使用しないため、JSON オブジェクトは空のままです。
 
 ```json
@@ -75,7 +75,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ```
 
 ## <a name="specify-location"></a>場所を指定する
-仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
+仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
 
 ```json
        "location": "[resourceGroup().location]",
@@ -204,6 +204,6 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

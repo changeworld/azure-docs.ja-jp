@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456645"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
 
@@ -29,14 +29,14 @@ ms.locfileid: "74792497"
 
 * Basic [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識。
+* [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>統合アカウント用の Liquid テンプレートまたはマップを作成する
 
 1. この例では、この手順で説明するサンプル Liquid テンプレートを作成します。 Liquid テンプレートでは、[Liquid のフィルター](https://shopify.github.io/liquid/basics/introduction/#filters)を使用できます。これらのフィルターでは、[DotLiquid](https://dotliquidmarkup.org/) と C# 名前付け規則が使用されます。 
 
    > [!NOTE]
-   > テンプレートのフィルター名では "*センテンスの大文字小文字を区別*" してください。 そうしないと、フィルターが機能しません。
+   > テンプレートのフィルター名では "*センテンスの大文字小文字を区別*" してください。 そうしないと、フィルターが機能しません。 また、マップには[ファイル サイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)があります。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -57,7 +57,7 @@ ms.locfileid: "74792497"
    }
    ```
 
-2. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスで、統合アカウントを見つけて選択します。
+2. [Azure portal](https://portal.azure.com) にサインインする Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスで、統合アカウントを見つけて選択します。
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "74792497"
 
 4. **[追加]** を選択し、マップの詳細を入力します。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | 値 | [説明] | 
    |----------|-------|-------------|
    | **Name** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
    | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、 **[liquid]** を選択する必要があります。 | 
-   | **Map** | "SimpleJsonToJsonTemplate.liquid" | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 |
+   | **Map** | "SimpleJsonToJsonTemplate.liquid" | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 マップ サイズの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)に関する情報を参照してください。 |
    ||| 
 
    ![Liquid テンプレートを追加する](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
@@ -149,7 +149,7 @@ Liquid は、JSON 変換のみに使用されるわけではありません。 L
 
    ![XML からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
 * [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md "Enterprise Integration マップについて学習する")  

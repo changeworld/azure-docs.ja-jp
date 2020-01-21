@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445109"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>オートパイロット モードで Azure Cosmos のコンテナーとデータベースを作成する (プレビュー)
 
 Azure Cosmos DB を使用すると、手動モードまたはオートパイロット モードでコンテナーにスループットをプロビジョニングできます。 この記事では、オートパイロット モードの利点とユース ケースについて説明します。
 
 > [!NOTE]
-> 現在、オートパイロット モードはパブリック プレビューで利用できます。 Azure Cosmos アカウントのオートパイロット機能を有効にするには、この記事の[オートパイロットの有効化](#enable-autopilot)に関するセクションを参照してください。 オートパイロットは、新しいデータベースとコンテナーに対してのみ有効にできます。既存のコンテナーおよびデータベースには使用できません。
+> 現在、オートパイロット モードはパブリック プレビューで利用できます。 [オートパイロットは、新しいデータベースおよびコンテナーに対してのみ有効にできます](#create-a-database-or-a-container-with-autopilot-mode)。 既存のコンテナーおよびデータベースでは使用できません。
 
 スループットの手動プロビジョニングに加えて、オートパイロット モードでも Azure Cosmos のコンテナーを構成できるようになりました。 オートパイロット モードで構成された Azure Cosmos のコンテナーとデータベースでは、**SLA を損なうことなく、アプリケーションでのニーズに基づいて、プロビジョニング済みスループットが自動的かつ瞬時にスケーリングされます**。
 
@@ -68,31 +68,21 @@ Azure Cosmos DB を使用すると、手動モードまたはオートパイロ�
 | **料金** | 手動でプロビジョニングされた 1 時間あたりの RU/秒。 | 単一書き込みリージョン アカウントでは、1 時間あたりのオートパイロット RU/秒レートを使用して、時間単位でスループット使用量に対して支払います。 <br/><br/>複数の書き込みリージョンがあるアカウントの場合、オートパイロットに対する追加料金は発生しません。 1 時間あたりの同じマルチマスター RU/秒レートを使用して、時間単位でスループット使用量に対して支払います。 |
 | **最適なワークロードの種類** |  予測可能で安定したワークロード|   予測不可能で変動するワークロード  |
 
-## <a id="enable-autopilot"></a> Azure portal からオートパイロットを有効にする
-
-オートパイロットを、Azure portal から有効にすることで、Azure Cosmos アカウントで試すことができます。 オートパイロット オプションを有効にするには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-
-2. Azure Cosmos アカウントに移動して、 **[New Features]\(新機能\)** タブを開きます。次のスクリーンショットに示すように、 **[Auto Pilot]\(オートパイロット\)** と **[Register]\(登録\)** を選択します。
-
-![オートパイロット モードでコンテナーを作成する](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
-
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>オートパイロット モードでデータベースまたはコンテナーを作成する
 
-データベースまたはコンテナーを作成するときに、オートパイロットを構成できます。 新しいデータベースまたはコンテナーで次の手順を使用して、オートパイロットを有効にし、最大スループットを指定します。
+Azure portal を使用して新しいデータベースまたはコンテナーを作成するときに、それらに対してオートパイロットを構成できます。 次の手順を使用して、新しいデータベースまたはコンテナーを作成し、オートパイロットを有効にして、最大スループット (RU/秒) を指定します。
 
 1. [Azure portal](https://portal.azure.com) または [Azure Cosmos Explorer](https://cosmos.azure.com/) にサインインします。
 
 1. Azure Cosmos アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
-1. **[新しいコンテナー]** を選択し、コンテナーの名前 (パーティション キー) を入力します。 **[Autopilot]\(オートパイロット\)** オプションを選択し、オートパイロット オプション使用時にコンテナーが超えてはならない最大スループットを指定します。
+1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 **[Autopilot]\(オートパイロット\)** オプションを選択し、オートパイロット オプション使用時にデータベースまたはコンテナーが超えてはならない最大スループット (RU/秒) を指定します。
 
    ![オートパイロット モードでコンテナーを作成する](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. **[OK]** を選択します。
 
-同様の手順で、オートパイロット モードのプロビジョニング済みスループットを使用してデータベースを作成することもできます。
+**[Provision database throughput]\(データベース スループットのプロビジョニング\)** オプションを選択すると、オートパイロット モードで共有スループット データベースを作成できます。
 
 ## <a id="autopilot-limits"></a> オートパイロットのスループットとストレージ制限
 
@@ -105,8 +95,9 @@ Azure Cosmos DB を使用すると、手動モードまたはオートパイロ�
 |100,000 RU/秒    |  1 TB (テラバイト)   |
 |500,000 RU/秒    |  5 TB  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
+* [オートパイロットの FAQ](autopilot-faq.md)を確認する。
 * [論理パーティション](partition-data.md)の詳細を確認する。
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。
 * [Azure Cosmos データベースのスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法を確認する。

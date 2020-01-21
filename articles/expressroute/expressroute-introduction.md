@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083406"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770953"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -33,13 +33,13 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 詳しくは、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 ### <a name="layer-3-connectivity"></a>レイヤー 3 接続
 Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間でルートを交換します。 さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
 
 ### <a name="redundancy"></a>冗長性
-各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/ネットワーク エッジから 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
+各 ExpressRoute 回線は、接続プロバイダーまたはネットワーク エッジから、[ExpressRoute の場所](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations)にある 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/ネットワーク エッジから 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Microsoft クラウド サービスへの接続
 ExpressRoute 接続によって、次のようなサービスにアクセスできます。
@@ -109,10 +109,10 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
   * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線に与えられる世界中の他のリージョンにあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
   * ExpressRoute ごとの VNet リンクの上限数が 10 からより大きな数に増加 (回線の帯域幅によって異なる)。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。
 * ExpressRoute 接続とルーティング ドメインについて説明します。 「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 * サービス プロバイダーを検索します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。

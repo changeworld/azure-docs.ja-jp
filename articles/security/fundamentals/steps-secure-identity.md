@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101424"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973907"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -47,11 +47,11 @@ ms.locfileid: "73101424"
 
 このチェックリストを読み始める前に、読んでいる間にセキュリティが侵害されないようにしてください。 まず、特権アカウントを保護する必要があります。
 
-攻撃者に特権アカウントを支配されると、多大な損害が発生する可能性があるので、まず特権アカウントを保護することが重要です。 [Azure AD セキュリティの既定値](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)または[条件付きアクセス](../../active-directory/conditional-access/plan-conditional-access.md)を使用して、すべての管理者に関して [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) を有効にして要求します。 MFA を実装していない場合はすぐに実装してください。 これは非常に重要です。
+攻撃者に特権アカウントを支配されると、多大な損害が発生する可能性があるので、まず特権アカウントを保護することが重要です。 [Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)または[条件付きアクセス](../../active-directory/conditional-access/plan-conditional-access.md)を使用して、すべての管理者に関して [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) を有効にして要求します。 MFA を実装していない場合はすぐに実装してください。 これは非常に重要です。
 
 準備はできたでしょうか。 それでは、チェックリストの確認に入りましょう。
 
-## <a name="step-1---strengthen-your-credentials"></a>ステップ 1. - 資格情報を強化する 
+## <a name="step-1---strengthen-your-credentials"></a>ステップ 1. - 資格情報を強化する
 
 ほとんどのエンタープライズのセキュリティ侵害では、パスワード スプレーや侵害リプレイ、フィッシングなど、いくつかある手法のいずれかによるアカウント侵害が原因です。 次の動画 (45 分) で、これらの攻撃についてご確認ください。
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ ms.locfileid: "73101424"
 
 パスワードの推測、フィッシング、マルウェアによる盗難、または再利用が頻繁に行われることを考えると、何らかの強力な資格情報でパスワードを強化することが非常に重要です。[Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) の詳細をご確認ください。
 
-ID セキュリティの基本レベルを簡単に有効にするために、[Azure AD セキュリティの既定値](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)によりワンクリックでの有効化を使用できます。 セキュリティの既定値により、テナント内のすべてのユーザーに Azure MFA が適用され、従来のプロトコル テナント全体からのサインインがブロックされます。
+ID セキュリティの基本レベルを簡単に有効にするために、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)によりワンクリックでの有効化を使用できます。 セキュリティの既定値により、テナント内のすべてのユーザーに Azure MFA が適用され、従来のプロトコル テナント全体からのサインインがブロックされます。
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>攻撃されやすいパスワードを禁止して、従来の複雑さと有効期限にのルールを無効にする。
 
@@ -86,7 +86,7 @@ Azure AD で直接 ID を作成した場合、[PowerShell を使用してユー�
 [パスワード ハッシュ同期](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)のしくみについて、詳しくご確認ください。
 
 > [!NOTE]
-> パスワード ハッシュ同期を有効にしているときに Azure AD Domain Services を使用すると、Kerberos (AES 256) ハッシュとオプションで NTLM (RC4、ソルトなし) ハッシュも暗号化され、Azure AD と同期されます。 
+> パスワード ハッシュ同期を有効にしているときに Azure AD Domain Services を使用すると、Kerberos (AES 256) ハッシュとオプションで NTLM (RC4、ソルトなし) ハッシュも暗号化され、Azure AD と同期されます。
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>AD FS エクストラネットのスマート ロックアウトを実装する
 
@@ -106,19 +106,24 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 1. [AD FS を使用している場合はレガシ認証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)をブロックする。
 2. [最新の認証を使用するよう SharePoint Online と Exchange Online](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md) を設定する。
-3. Azure AD Premium がある場合は、[条件付きアクセス ポリシー](../../active-directory/conditional-access/conditions.md)を使用してレガシ認証をブロックし、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)を使用します。
+3. Azure AD Premium がある場合は、[条件付きアクセス ポリシー](../../active-directory/conditional-access/conditions.md)を使用してレガシ認証をブロックし、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を使用します。
 
 ### <a name="block-invalid-authentication-entry-points"></a>無効な認証エントリ ポイントをブロックする
 
 侵害想定の考え方を取り入れて、ユーザー資格情報の漏洩が発生した場合にその影響を抑える必要があります。 環境内のアプリごとに有効なユース ケースを検討して、どのグループ、ネットワーク、デバイスなどの要素が承認されるかを判断し、残りをブロックします。 [Azure AD の条件付きアクセス](../../active-directory/conditional-access/overview.md)では、定義した特定の条件に基づいて、承認されたユーザーがどのようにアプリとリソースにアクセスするかを制御できます。
 
-### <a name="block-end-user-consent"></a>エンド ユーザーの同意をブロックする
+### <a name="restrict-user-consent-operations"></a>ユーザーの同意操作を制限する
 
-既定では、Azure AD のすべてのユーザーは、OAuth 2.0 と Microsoft ID [同意フレームワーク](../../active-directory/develop/consent-framework.md)を利用するアプリケーションが会社のデータにアクセスすることを許可できます。 同意するとユーザーは Microsoft 365 や Azure と統合する便利なアプリケーションを簡単に入手できますが、慎重に使用および監視しないとリスクが発生する可能性があります。 [将来のユーザーの同意動作をすべて無効にする](../../active-directory/manage-apps/methods-for-removing-user-access.md)と、攻撃の対象となる領域を減らし、このリスクを軽減することができます。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 この機能を無効にする前に、新しいアプリケーションの管理者承認を要求する方法をユーザーに理解させることをお勧めします。このようにすると、ユーザーの抵抗が減り、サポートの量が最小限になり、ユーザーが Azure AD 以外の資格情報を使用してアプリケーションにサインアップしないようにすることができます。
+さまざまな [Azure AD アプリケーションの同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)、[アクセス許可と同意の種類](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)、それらが組織のセキュリティ方針に与える意味を理解することが重要です。 既定では、Azure AD のすべてのユーザーは、Microsoft ID プラットフォームを活用するアプリケーションに組織のデータにアクセスすることを許可できます。 ユーザーが自分で同意することを許可すると、Microsoft 365、Azure、その他のサービスと統合する便利なアプリケーションを簡単に入手できますが、慎重に使用し、監視しないとリスクが発生する可能性があります。
+
+Microsoft では、[将来のユーザーの同意動作をすべて無効にし](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 管理者の同意は、統合された[管理者の同意要求ワークフロー](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)または独自のサポート プロセスによりユーザーが要求できます。 この機能を無効にする前に、監査ログを見直し、ユーザーが同意するアプリケーションを把握し、適宜、変更を計画することをお勧めします。 すべてのユーザーにアクセスを許可するアプリケーションについては、[すべてのユーザーの代わりに同意を与え](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)、個人としてまだ同意していないユーザーがアプリにアクセスできるようにすることを検討してください。 シナリオによってはアプリケーションを利用できるユーザーを限定する場合、[アプリケーション割り当て](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)と[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を利用し、アプリへのユーザー アクセスを制限してください。
+
+ユーザーの摩擦を減らすために、サポート量を最小限に抑えるために、また、ユーザーが Azure AD 以外の資格情報でアプリケーションに新規登録することを防ぐために、ユーザーが新しいアプリケーションに関する管理者承認を要求できるようにしてください。 同意操作を規制したら、管理者はアプリと同意済みのアクセス許可を定期的に監査します。
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を実装する
 
-さらに "侵害想定" に基づくと、セキュリティ侵害されたアカウントが特権ロールで操作され得る確率を最小限に抑える必要があります。 
+さらに "侵害想定" に基づくと、セキュリティ侵害されたアカウントが特権ロールで操作され得る確率を最小限に抑える必要があります。
 
 [Azure AD Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) は、以下をサポートしており、アカウントの特権を最小限に抑えるのに役立ちます。
 
@@ -167,21 +172,23 @@ Microsoft Azure のサービスや機能が提供する構成可能なセキュ�
 
 Azure AD Identity Protection で提供される 2 つの重要なレポートを、毎日監視する必要があります。
 1. リスクの高いサインイン レポートでは、調査する必要があるユーザー サインイン アクティビティが明らかになります。正当な所有者がサインインを実行していない可能性があります。
-2. リスクの高いユーザー レポートでは、侵害された可能性があるユーザー アカウントが明らかになります。たとえば、リークが検出された資格情報や、あり得ない移動イベントが発生する別の場所からサインインしたユーザーなどです。 
+2. リスクの高いユーザー レポートでは、侵害された可能性があるユーザー アカウントが明らかになります。たとえば、リークが検出された資格情報や、あり得ない移動イベントが発生する別の場所からサインインしたユーザーなどです。
 
 ![リスクのフラグ付きユーザー](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>監査アプリと同意されたアクセス許可
 
-だまされたユーザーが侵害された Web サイトやアプリに移動することで、それらがユーザーのプロファイル情報やメールなどのユーザー データにアクセスできるようになる可能性があります。 悪意のあるアクターは、受け取った同意されたアクセス許可を使用して、メールボックスの内容を暗号化し、メールボックス データを回復するための身代金を要求できます。 ユーザーによって付与されたアクセスを許可を[管理者は確認および監査する必要があります](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)。
+だまされたユーザーが侵害された Web サイトやアプリに移動することで、それらがユーザーのプロファイル情報やメールなどのユーザー データにアクセスできるようになる可能性があります。 悪意のあるアクターは、受け取った同意されたアクセス許可を使用して、メールボックスの内容を暗号化し、メールボックス データを回復するための身代金を要求できます。 ユーザーによって与えられたアクセス許可を[管理者が見直し、監視します](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)。あるいは、既定でユーザーが同意を与えられるようになっている場合、それを管理者が無効にします。
+
+ユーザーによって与えられたアクセス許可の監査に加え、プレミアム環境で利用できる機能であり、[危険で望ましくない OAuth アプリケーションを特定する](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)こともお勧めします。
 
 ## <a name="step-5---enable-end-user-self-service"></a>ステップ 5 - エンドユーザー セルフサービスを有効にする
 
 できるだけセキュリティと生産性のバランスをとる必要があります。 長期的なセキュリティの基盤を構築するという考え方と同様の方針の運用アプローチに従って、警戒を緩めないままユーザーに権限を与えることで、組織の手間を省くことができます。
 
-### <a name="implement-self-service-password-reset"></a>セルフサービスのパスワード リセットを実装する
+### <a name="implement-self-service-password-reset"></a>セルフサービス パスワード リセットを実装する
 
-Azure AD の[セルフサービスのパスワード リセット (SSPR)](../../active-directory/authentication/quickstart-sspr.md) では、IT 管理者は簡単に、ユーザーがヘルプ デスクや管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつパスワードをリセットしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
+Azure AD の[セルフサービス パスワード リセット (SSPR)](../../active-directory/authentication/quickstart-sspr.md) では、IT 管理者は簡単に、ユーザーがヘルプ デスクや管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつパスワードをリセットしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
 
 ### <a name="implement-self-service-group-and-application-access"></a>セルフサービス グループとアプリケーションのアクセスを実装する
 
@@ -203,7 +210,7 @@ ID インフラストラクチャのセキュリティについては多数の�
 
 Microsoft は、お客様が ID セキュリティの重要性を認識していることを理解しています。ぜひ、このドキュメントを、組織のセキュリティ体制を強化するためのロードマップとしてお役立てください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 推奨アクションの計画と展開にサポートが必要な場合は、[Azure AD プロジェクト デプロイ計画](https://aka.ms/deploymentplans)をヘルプとして参照してください。
 

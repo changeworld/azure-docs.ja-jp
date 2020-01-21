@@ -1,5 +1,5 @@
 ---
-title: アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする - Azure Active Directory | Microsoft Docs
+title: アクセス レビューでグループおよびアプリに対する自分のアクセスをレビューする - Azure AD
 description: グループまたはアプリケーションに対する自分のアクセスを Azure Active Directory アクセス レビューでレビューする方法を学習します。
 services: active-directory
 author: msaburnley
@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422395"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -79,6 +79,6 @@ ms.locfileid: "71958566"
     > [!NOTE]
     > アクセスが不要になったことを指定した場合、すぐには削除されません。 レビューが終了されたか、管理者がレビューを停止したときに削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを完了する](complete-access-review.md)

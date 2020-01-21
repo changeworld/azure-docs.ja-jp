@@ -1,5 +1,5 @@
 ---
-title: スマート検出 - Azure Application Insights によって検出されるメモリ リークの可能性 | Microsoft Docs
+title: メモリ リークの検出 - Azure Application Insights のスマート検出
 description: Azure Application insights を使用して、メモリ リークの可能性を監視します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406461"
 ---
 # <a name="memory-leak-detection-preview"></a>メモリ リーク検出 (プレビュー)
 

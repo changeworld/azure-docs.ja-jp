@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873303"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732605"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  文字列式の大文字データを小文字に変換して返します。  
-  
+
+LOWER システム関数では、インデックスは使用されません。 大文字と小文字を区別しない比較を頻繁に行う場合、LOWER システム関数は、大量の RU を消費する可能性があります。 この場合は、LOWER システム関数を使用して比較のたびにデータを正規化するのではなく、挿入時に大文字と小文字を正規化することができます。 次に、SELECT * FROM c (LOWER (c. name) = ' bob ') などのクエリは、単に SELECT * FROM c WHERE c.name = ' bob ' になります。
+
 ## <a name="syntax"></a>構文
   
 ```sql
@@ -47,7 +49,7 @@ SELECT LOWER("Abc") AS lower
   
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

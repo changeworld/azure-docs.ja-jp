@@ -1,6 +1,6 @@
 ---
-title: Desired State Configuration と仮想マシン スケール セットの使用 | Microsoft Docs
-description: 仮想マシン スケール セットと Azure DSC 拡張機能の使用
+title: Desired State Configuration と仮想マシン スケール セットの使用
+description: 仮想マシン スケール セットと Azure Desired State Configuration Extension を使用し、仮想マシンを構成します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d3d064bc1d9c0a72b10ca27515d8325e7ca7fef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359300"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>仮想マシン スケール セットと Azure DSC 拡張機能の使用
 [仮想マシン スケール セット](virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能ハンドラーとともに使用できます。 仮想マシン スケール セットは、多数の仮想マシンをデプロイおよび管理する手段であり、負荷に応じて柔軟にスケールインおよびスケールアウトができます。 DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
@@ -100,7 +100,7 @@ ms.locfileid: "72166159"
 ## <a name="behavior-for-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの動作
 仮想マシン スケール セットの動作は、1 つの VM の動作と同じです。 新しく作成された VM は、DSC 拡張機能で自動的にプロビジョニングされます。 拡張機能に新しいバージョンの WMF が必要な場合、VM はオンラインになる前に再起動されます。 オンラインになると、DSC 構成 .zip がダウンロードされ、VM 上でプロビジョニングされます。 詳細については、 [Azure DSC 拡張機能の概要](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [DSC 拡張機能用の Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 [DSC 拡張機能で資格情報を安全に処理する方法](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを確認してください。 

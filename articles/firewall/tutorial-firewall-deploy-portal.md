@@ -241,7 +241,7 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
    Google のホーム ページが表示されます。
 
-5. https://www.microsoft.com ) を参照します。
+5. https://www.microsoft.com を参照します。
 
    ファイアウォールによってブロックされます。
 

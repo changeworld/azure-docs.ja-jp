@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975586"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667554"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -94,10 +94,6 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 HTTP トリガーとタイマー トリガーを除き、バインドは拡張機能パッケージで実装されます。 拡張機能パッケージは、それらを必要とするトリガーおよびバインド用のものをインストールする必要があります。 バインドの拡張機能をインストールするプロセスは、プロジェクトの言語によって異なります。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 ターミナル ウィンドウで [dotnet add package](/dotnet/core/tools/dotnet-add-package) コマンドを実行して、プロジェクトに必要な拡張機能パッケージをインストールします。 次のコマンドは、Blob Storage、Queue Storage、Table Storage のバインドを実装する Azure Storage 拡張機能をインストールします。
@@ -105,6 +101,10 @@ HTTP トリガーとタイマー トリガーを除き、バインドは拡張�
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 このアクションの結果は、お使いのプロジェクトの言語によって異なります。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-プロジェクト内に新しいフォルダーが作成されます。 そのフォルダーには、新しい function.json ファイルと新しい JavaScript コード ファイルが含まれています。
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 新しい C# クラス ライブラリ (.cs) ファイルがプロジェクトに追加されます。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+プロジェクト内に新しいフォルダーが作成されます。 そのフォルダーには、新しい function.json ファイルと新しい JavaScript コード ファイルが含まれています。
 
 ---
 
@@ -130,6 +130,24 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 次の例では、`outqueue` という名前のストレージ キューに接続します。ここで、ストレージ アカウントの接続文字列は、local.settings.json の `MyStorageConnection` アプリケーション設定に指定されています。
 
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+このコードでは、次の `using` ステートメントを追加する必要があります。
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
+
+詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output---c-example)に関するドキュメントをご覧ください。
+
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code では、便利な一連のプロンプトに従って、function.json ファイルにバインドを追加できます。 バインドを作成するには、関数フォルダー内の **function.json** ファイルを右クリック (macOS では Ctrl を押しながらクリック) して **[バインドの追加]** を選択します。
@@ -138,13 +156,13 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 
 以下は、新しいストレージ出力バインドを定義するためのプロンプト例です。
 
-| Prompt | 値 | 説明 |
+| Prompt | 値 | [説明] |
 | -------- | ----- | ----------- |
 | **Select binding direction (バインド方向を選択する)** | `out` | バインドは出力バインドです。 |
 | **Select binding with direction (方向を使用してバインドを選択する)** | `Azure Queue Storage` | バインドは Azure Storage キュー バインドです。 |
 | **コードでこのバインドの特定に使用する名前** | `msg` | コードで参照されているバインド パラメーターを識別する名前。 |
 | **The queue to which the message will be sent (メッセージの送信先のキュー)** | `outqueue` | バインドが書き込むキューの名前。 *queueName* が存在しない場合は、バインドによって最初に使用されるときに作成されます。 |
-| **Select setting from "local.setting.json" ("local.setting.json" から設定を選択する)** | `MyStorageConnection` | ストレージ アカウントの接続文字列を含むアプリケーション設定の名前。 `AzureWebJobsStorage` 設定には、関数アプリで作成したストレージ アカウントの接続文字列が含まれています。 |
+| **Select setting from "local.settings.json" ("local.settings.json" から設定を選択する)** | `MyStorageConnection` | ストレージ アカウントの接続文字列を含むアプリケーション設定の名前。 `AzureWebJobsStorage` 設定には、関数アプリで作成したストレージ アカウントの接続文字列が含まれています。 |
 
 この例では、次のバインドが function.json ファイルの `bindings` 配列に追加されます。
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output---javascript-example)の参照をご覧ください。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-このコードでは、次の `using` ステートメントを追加する必要があります。
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
-
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output---c-example)に関するドキュメントをご覧ください。
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -214,11 +214,11 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. サインしていない場合は、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
-1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この_Advanced_ オプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
+1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この_高度_なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | 値 | 説明 |
+    | Prompt | 値 | [説明] |
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |
@@ -272,7 +272,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
     | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
-    | **Python** | [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|
+    | **Python** | [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|
 
     <sup>*</sup>アクティブ LTS およびメンテナンス LTS のバージョン (8.11.1 および 10.14.1 を推奨)。
 
@@ -383,7 +383,7 @@ Azure でアプリケーション設定を作成した場合は、次のコマ�
 
 Azure Functions 拡張機能には、Azure の関数アプリと対話するための領域に便利なグラフィカル インターフェイスが用意されています。 同じ機能が、コマンド パレット (F1) のコマンドとしても使用できます。 これらの Azure Functions コマンドを使用できます。
 
-|Azure Functions のコマンド  | 説明  |
+|Azure Functions のコマンド  | [説明]  |
 |---------|---------|
 |**Add New Settings**  |  Azure に新しいアプリケーション設定を作成します。 詳細については、「[アプリケーション設定を発行する](#publish-application-settings)」を参照してください。 また、[この設定をローカル設定にダウンロード](#download-settings-from-azure)する必要がある場合もあります。 |
 | **Configure Deployment Source** | Azure の関数アプリをローカル Git リポジトリに接続します。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」をご覧ください。 |
@@ -406,7 +406,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Rename Settings** | Azure の既存の関数アプリ設定のキー名を変更します。 このコマンドは、local.settings.json ファイルの設定に影響を与えません。 Azure で設定の名前を変更したら、[それらの変更をローカル プロジェクトにダウンロードする](#download-settings-from-azure)必要があります。 |
 | **Restart** | Azure で関数アプリを再起動します。 更新をデプロイしても関数アプリが再起動されます。 |
 | **Set AzureWebJobsStorage**| `AzureWebJobsStorage` アプリケーション設定の値を設定します。 この設定は、Azure Functions によって必要になります。 これは、Azure で関数アプリが作成されるときに設定されます。 |
-| **Start** | Azure の停止された関数アプリを起動します。 |
+| **[開始]** | Azure の停止された関数アプリを起動します。 |
 | **Start Streaming Logs** | Azure の関数アプリのストリーミング ログを開始します。 ロギング情報をほぼリアルタイムで確認する必要がある場合は、Azure でのリモート トラブルシューティング中にストリーミング ログを使用します。 詳細については、「[ストリーミング ログ](#streaming-logs)」を参照してください。 |
 | **Stop** | Azure で実行されている関数アプリを停止します。 |
 | **Stop Streaming Logs** | Azure の関数アプリのストリーミング ログを停止します。 |
@@ -416,7 +416,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **View Commit in GitHub** | 関数アプリがリポジトリに接続されているとき、特定のデプロイでの最新のコミットを表示します。 |
 | **View Deployment Logs** | Azure の関数アプリへの具体的なデプロイ用のログを表示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions Core Tools の詳細については、「[Azure Functions Core Tools の操作](functions-run-local.md)」を参照してください。
 

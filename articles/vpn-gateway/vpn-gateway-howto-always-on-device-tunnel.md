@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: cbfc5328dfb4f374ea90c8e6352877d4179f031b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146386"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921179"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN デバイス トンネルの構成
 
@@ -29,7 +29,7 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
 
 デバイス トンネルとユーザー トンネルはどちらも、自身の VPN プロファイルを使用して独立して動作します。 これらは同時に接続でき、必要に応じてさまざまな認証方法と他の VPN の構成設定を使用できます。
 
-## <a name="1-configure-the-gateway"></a>1.ゲートウェイの構成
+## <a name="1-configure-the-gateway"></a>1.ゲートウェイを構成する
 
 この[ポイント対サイトの記事](vpn-gateway-howto-point-to-site-resource-manager-portal.md)を使用して、IKEv2 と証明書ベースの認証を使用するように VPN ゲートウェイを構成します。
 
@@ -37,7 +37,7 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
 
 デバイス トンネルを正常に確立するには、次の要件を満たす必要があります。
 
-* デバイスが、Windows 10 Enterprise または Education バージョン 1709 以降を実行しているドメイン参加済みのコンピューターであること。
+* デバイスが、Windows 10 Enterprise または Education バージョン 1809 以降を実行しているドメイン参加済みのコンピューターであること。
 * トンネルが、Windows の組み込み VPN ソリューションに対してのみ構成可能で、IKEv2 とコンピューター証明書認証を使用して確立されていること。 
 * 構成できるデバイス トンネルは、デバイスごとに 1 つのみ。
 
@@ -102,9 +102,9 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
    ```
 1. 次のテキストをコピーし、***VPNProfile.xml*** として **devicecert.ps1** と同じフォルダーに保存します。 お使いの環境に合わせて次のテキストを編集します。
 
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address> <= IP of resource in the vnet or the vnet address space`
 
    ```
    <VPNProfile>  
@@ -139,15 +139,15 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
 1. 管理者コマンド プロンプトから、次を実行して PowerShell を起動します。
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
    ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. PowerShell で、**devicecert.ps1** と **VPNProfile.xml** が配置されているフォルダーに切り替えて、次のコマンドを実行します。
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -156,7 +156,7 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
    ![rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. **MachineCertTest** エントリを探して、 **[接続]** をクリックします。
 
-   ![接続](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![接続する](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. 接続に成功したら、コンピューターを再起動します。 トンネルが自動的に接続されます。
 
 ## <a name="cleanup"></a>クリーンアップ
@@ -165,6 +165,6 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
 
 ![クリーンアップ](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングについては、[Azure ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)のページを参照してください。

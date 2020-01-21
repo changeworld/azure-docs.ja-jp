@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 76ff8a63c2fbda3ddbaed794d24f7adb66a4dd95
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 01/03/2020
+ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930352"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660309"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>データ処理とユーザー定義関数
 
@@ -118,7 +118,7 @@ Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー
 
 ロールが割り当てられていないユーザー定義関数がマッチャーによってトリガーされることがあります。 その場合、ユーザー定義関数によるグラフからのデータ読み取りは失敗します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 他の Azure サービスにイベントやテレメトリ メッセージをルーティングする方法の詳細については、[イベントとメッセージのルーティング](./concepts-events-routing.md)に関するページを参照してください。
 

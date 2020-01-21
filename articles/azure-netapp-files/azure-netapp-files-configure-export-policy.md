@@ -1,25 +1,19 @@
 ---
-title: Azure NetApp Files を使用して NFS ボリュームのエクスポート ポリシーを構成する | Microsoft Docs
+title: NFS ボリュームのエクスポート ポリシーを構成する - Azure NetApp Files
 description: Azure NetApp Files を使用して NFS ボリュームへのアクセスを制御するエクスポート ポリシーの構成方法について説明します
 services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: b-juche
-ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674923"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551560"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
 
@@ -43,12 +37,12 @@ Azure NetApp Files ボリュームへのアクセスを制御するエクスポ�
         次のアクセス タイプのいずれかを選択します。  
         * アクセス権なし 
         * 読み取りと書き込み
-        * 読み取り専用
+        * [読み取り専用]
 
     ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 * [ボリュームを管理する](azure-netapp-files-manage-volumes.md)
 * [仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [スナップショットを管理する](azure-netapp-files-manage-snapshots.md)

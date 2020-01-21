@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351321"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -67,9 +67,9 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 #### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
+2. Azure portal で、自分のストレージ アカウントを検索して選択します。 
 
 3. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
 
@@ -88,9 +88,9 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 9. **[追加]** を選択して新しいポリシーを追加します。
 
 #### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
+2. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
 3. **[Blob service]** で、 **[Lifecycle management]\(ライフサイクル管理)** を選択してポリシーを表示または変更します。
 
@@ -234,7 +234,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 | パラメーター名 | パラメーターのタイプ | メモ | 必須 |
 |----------------|----------------|-------|----------|
-| `name`         | string |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
+| `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
 | `enabled`      | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
 | `type`         | 列挙型の値 | 現在の有効な種類は `Lifecycle` です。 | True |
 | `definition`   | ライフサイクル ルールを定義するオブジェクト | 各定義は、フィルター セットとアクション セットで構成されます。 | True |
@@ -297,7 +297,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ライフサイクル管理では、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 BLOB または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
 
-| Action        | ベース BLOB                                   | スナップショット      |
+| アクション        | ベース BLOB                                   | スナップショット      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 現在ホット層にある BLOB をサポートします         | サポートされていません |
 | tierToArchive | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
@@ -308,7 +308,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
-| アクションの実行条件             | 条件値                          | 説明                             |
+| アクションの実行条件             | 条件値                          | [説明]                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 古さを日数で示す整数値 | ベース BLOB のアクションの条件     |
 | daysAfterCreationGreaterThan     | 古さを日数で示す整数値 | BLOB スナップショットのアクションの条件 |
@@ -429,7 +429,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか。**  
 ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、アクションによっては、初回実行時に最大 24 時間かかる場合があります。  
@@ -440,7 +440,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 **アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**  
 あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この BLOB に影響を与えるルールを一時的に無効にして、再びアーカイブされないようにします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にします。 BLOB を別の場所にコピーして、ホット層またはクール層から永続的に離れないようにすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 誤って削除したデータを回復する方法を学習します。
 

@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647392"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867691"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -58,6 +58,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure ストレージ**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Table (table、table_secondary)<BR> Queue (queue、queue_secondary)<BR> File (file、file_secondary)<BR> Web (web、web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、Table|
+|**Azure Database for PostgreSQL- シングルサーバー** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
  
 ## <a name="network-security-of-private-endpoints"></a>プライベート エンドポイントのネットワーク セキュリティ 
 Azure サービスでプライベート エンドポイントを使用する場合、トラフィックは特定のプライベート リンク リソースに対してセキュリティで保護されます。 プラットフォームによってアクセス制御が実行され、指定されたプライベート リンク リソースのみに到達するネットワーク接続が検証されます。 同じ Azure サービス内の追加のリソースにアクセスするには、追加のプライベート エンドポイントが必要です。 
@@ -112,6 +115,9 @@ Azure サービスについては、次の表に示すように、推奨され�
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|テーブル|privatelink.table.cosmos.azure.com|
+|Azure Database for PostgreSQL - シングルサーバー (Microsoft DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
+|Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
+|Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
  
 提案されたドメイン名に解決をリダイレクトするために、Azure によってパブリック DNS に正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
  
@@ -136,3 +142,9 @@ Azure サービスについては、次の表に示すように、推奨され�
 - [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](create-private-endpoint-storage-portal.md)
 - [ポータルを使用して Azure Cosmos アカウントのプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)
+- [ポータルを使用して、シングルサーバー用 Azure Database for PostgreSQL への独自の Private Link を作成する](../postgresql/howto-configure-privatelink-portal.md)
+- [CLI を使用して、シングルサーバー用 Azure Database for PostgreSQL への独自の Private Link を作成する](../postgresql/howto-configure-privatelink-cli.md)
+- [ポータルを使用して、Azure Database for MySQL への独自の Private Link を作成する](../mysql/howto-configure-privatelink-portal.md)
+- [CLI を使用して、Azure Database for MySQL への独自の Private Link を作成する](../mysql/howto-configure-privatelink-cli.md)
+- [ポータルを使用して、Azure Database for MariaDB への独自の Private Link を作成する](../mariadb/howto-configure-privatelink-portal.md)
+- [CLI を使用して、Azure Database for MariaDB への独自の Private Link を作成する](../mariadb/howto-configure-privatelink-cli.md)

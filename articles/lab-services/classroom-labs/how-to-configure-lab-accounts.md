@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428982"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを構成する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボ型のコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
@@ -133,9 +133,17 @@ Microsoft アカウントにサインアップするには、講師は [http://s
 
 最後に、GitHub アカウントにリンクされている Microsoft アカウントを作成するように求められます。 これは、講師が **[次へ]** を選択したときに自動的に行われます。  講師はすぐにサインインし、クラスルーム ラボに接続されます。
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>切断時の VM の自動シャットダウン
+リモート デスクトップ接続が切断された後の Windows ラボ VM (テンプレートまたは学生) の自動シャットダウンを有効または無効にできます。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間を指定することもできます。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+![ラボ アカウントの自動シャットダウン設定](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+この設定は、ラボ アカウントで作成されたすべてのラボに適用されます。 ラボ所有者は、ラボ レベルでこの設定をオーバーライドできます。 ラボ アカウントでこの設定を変更した場合、変更後に作成されたラボにのみ変更が適用されます。
+
+ラボ所有者がこの設定をラボ レベルで構成する方法については、[こちらの記事](how-to-enable-shutdown-disconnect.md)を参照してください
+
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
 - [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)

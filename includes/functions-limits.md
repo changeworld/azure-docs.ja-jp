@@ -4,16 +4,16 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322904"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658527"
 ---
 | リソース | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| スケールアウト | イベント ドリブン | イベント ドリブン | [手動/自動スケール](../articles/app-service/manage-scale-up.md) | 
+| スケール アウト | イベント ドリブン | イベント ドリブン | [手動/自動スケール](../articles/app-service/manage-scale-up.md) | 
 | 最大インスタンス数 | 200 | 100 | 10 - 20 |
 |既定の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |5 | 30 |30<sup>2</sup> |
 |最大の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |10 | 60 | 無制限<sup>3</sup> |
@@ -29,7 +29,7 @@ ms.locfileid: "74322904"
 | アプリケーションごとのカスタム ドメイン数</a> |500<sup>7</sup> |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-bindings.md) |無制限の SNI SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 
 
-<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../articles/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。  
+<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。  
 <sup>2</sup> 既定では、App Service プランでの Functions 1.x ランタイムのタイムアウトは無制限です。  
 <sup>3</sup> App Service プランが [Always On](../articles/azure-functions/functions-scale.md#always-on) に設定されている必要があります。 標準[料金](https://azure.microsoft.com/pricing/details/app-service/)でのお支払い。  
 <sup>4</sup> これらの制限は[ホストで設定](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config)されます。  

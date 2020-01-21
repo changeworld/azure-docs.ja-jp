@@ -4,14 +4,14 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166610"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647224"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -33,6 +33,8 @@ Azure portal からキャッシュ インスタンスを開き、左側のサイ
 
 新しい Blob Storage ターゲットには、空の BLOB コンテナーか、Azure HPC Cache クラウド ファイル システム フォーマットでデータが事前設定されているコンテナーが必要です。 BLOB コンテナーの事前読み込みの詳細については、[Azure Blob Storage へのデータの移動](hpc-cache-ingest.md)に関するページを参照してください。
 
+追加する直前に、このページから新しいコンテナーを作成できます。
+
 Azure BLOB コンテナーを定義するには、次の情報を入力します。
 
 ![新しい Azure Blob Storage ターゲットの情報が事前設定されている [ストレージ ターゲットの追加] ページのスクリーンショット](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Azure BLOB コンテナーを定義するには、次の情報を入力します
 
 * **[ストレージ ターゲット名]** - Azure HPC Cache 内でこのストレージ ターゲットを識別する名前を設定します。
 * **[ターゲットの種類]** - **[BLOB]** を選択します。
-* **[ストレージ アカウント]** - 使用するコンテナーが含まれるアカウントを選択します。
+* **[ストレージ アカウント]** - 使用するアカウントを選択します。
 
   [アクセス ロールの追加](#add-the-access-control-roles-to-your-account)に関するセクションの説明に従って、ストレージ アカウントへのアクセスをキャッシュ インスタンスに承認する必要があります。
 
   使用できるストレージ アカウントの種類の詳細については、「[Blob Storage の要件](hpc-cache-prereqs.md#blob-storage-requirements)」を参照してください。
 
-* **[ストレージ コンテナー]** - このターゲットの BLOB コンテナーを選択します。
+* **[ストレージ コンテナー]** - このターゲットの BLOB コンテナーを選択するか、 **[新規作成]** をクリックします。
+
+  ![新しいコンテナーの名前とアクセス レベル (プライベート) を指定するダイアログのスクリーンショット](media/add-blob-new-container.png)
 
 * **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイル パスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
 
@@ -146,15 +150,15 @@ NFS ストレージ システムを指すストレージ ターゲットを作�
 
 | 使用モデル | キャッシュ モード | バックエンド検証 | ライトバックの最大遅延 |
 | ---- | ---- | ---- | ---- |
-| 負荷が高く、頻度の低い書き込みを読み取ります | 読み取り | なし | なし |
+| 負荷が高く、頻度の低い書き込みを読み取ります | Read | なし | なし |
 | 書き込みが 15% を超えています | 読み取り/書き込み | なし | 1 時間 |
-| クライアントはキャッシュをバイパス | 読み取り | 30 秒 | なし |
+| クライアントはキャッシュをバイパス | Read | 30 秒 | なし |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージ ターゲットの作成後は、次のいずれかのタスクを検討してください。
 
-* [Azure HPC Cache をマウントする](hpc-cache-mount.md)
+* [Azure HPC キャッシュをマウントする](hpc-cache-mount.md)
 * [Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)
 
 設定を更新する必要がある場合、[ストレージ ターゲットを編集](hpc-cache-edit-storage.md)できます。

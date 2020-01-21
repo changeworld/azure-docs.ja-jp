@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する - Azure Active Directory
+title: エンタイトルメント管理でリソースを作成および管理する - Azure AD
 description: Azure Active Directory エンタイトルメント管理でリソースとアクセス パッケージの新しいコンテナーを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422638"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -129,7 +129,7 @@ ms.locfileid: "73174422"
 
     ![カタログの設定を編集する](./media/entitlement-management-shared/catalog-edit.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ## <a name="delete-a-catalog"></a>カタログを削除する
 
@@ -145,6 +145,6 @@ ms.locfileid: "73174422"
 
 1. 表示されるメッセージ ボックスで、 **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス パッケージ管理者にアクセス ガバナンスを委任する](entitlement-management-delegate-managers.md)

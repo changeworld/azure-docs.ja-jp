@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427170"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -163,7 +163,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 
 たとえば、顧客がクレジット カードを使用して購入した場合:
 
-|説明    |    Date  |
+|[説明]    |    Date  |
 |----------|----------|
 |注文期間   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期間の終了 (月)   | 2018 年 8 月 30 日 |
@@ -177,7 +177,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 
 顧客がエンタープライズ契約を使用して購入した場合:
 
-| 説明 |    Date  |
+| [説明] |    Date  |
 |----------|----------|
 |注文期間 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期間の終了 (四半期) | 2018 年 9 月 30 日 |
@@ -223,7 +223,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 - オファーの価格モデルには関係なく、取引の公開オプションには Microsoft アカウントと財務情報が必要です。
 - 必須の財務情報には、支払い受取口座と税プロファイルが含まれます。
 
-これらのアカウントの設定の詳細については、[パートナー センター アカウントの管理](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)に関するページを参照してください。
+これらのアカウントの設定の詳細については、[パートナー センター アカウントの管理](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)に関するページを参照してください。
 
 
 ### <a name="requirements-for-specific-offer-types"></a>特定のオファーの種類に関係する要件
@@ -238,7 +238,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 
 1 台または複数台の仮想マシンをプロビジョニングし、仮想マシン価格の合計を求める必要があります。 単一オファーのマネージド アプリの場合、仮想マシン価格ではなく定額の月額サブスクリプションを価格モデルとして選択できます。 場合によっては、Azure インフラストラクチャの使用料金がソフトウェア ライセンス料金とは別に顧客に渡されますが、請求書は同じです。 ただし、ISV インフラストラクチャの料金に対してマネージド アプリ オファリングを構成した場合、Azure リソースは公開元に課金され、顧客にはインフラストラクチャ、ソフトウェア ライセンス、および管理サービスのコストを含む固定料金が請求されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 選択したオファーの種類について、公開オプションにおける適格性の要件を確認し、オファーの選択および構成を確定する。
 * ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。

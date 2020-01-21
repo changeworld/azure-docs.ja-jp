@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/23/2019
+ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112212"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495045"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C# のチュートリアル: 複数のデータ ソースのデータを 1 つの Azure Cognitive Search インデックスに結合する
 
@@ -38,15 +38,15 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの結�
 
 - サンプルのホテルのデータを格納するための [Azure Cosmos DB アカウントを作成](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)します。
 
-- サンプルの JSON BLOB データを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
+- サンプルの部屋データを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
 
-- IDE として使用するために [Visual Studio をインストール](https://visualstudio.microsoft.com/)します。
+- IDE として使用するために [Visual Studio 2019 をインストール](https://visualstudio.microsoft.com/)します。
 
 ### <a name="install-the-project-from-github"></a>GitHub からプロジェクトをインストールする
 
 1. GitHub 上でサンプル リポジトリ [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) を見つけます。
 1. **[Clone or download]\(クローンまたはダウンロード\)** を選択し、リポジトリのプライベート ローカル コピーを作成します。
-1. Visual Studio を開き、Microsoft Azure Cognitive Search NuGet パッケージをまだインストールしていない場合はインストールします。 **[ツール]** メニューの **[NuGet パッケージ マネージャー]** 、 **[ソリューションの NuGet パッケージの管理]** の順に選択します。 **[Browse]\(参照\)** タブで、**Microsoft.Azure.Search** (バージョン 9.0.1 以降) を見つけてインストールします。 インストールを完了するには、クリックしてさらにダイアログを進む必要があります。
+1. Visual Studio 2019 を開き、Microsoft Azure Cognitive Search NuGet パッケージをまだインストールしていない場合はインストールします。 **[ツール]** メニューの **[NuGet パッケージ マネージャー]** 、 **[ソリューションの NuGet パッケージの管理]** の順に選択します。 **[Browse]\(参照\)** タブで、**Microsoft.Azure.Search** (バージョン 9.0.1 以降) を見つけてインストールします。 インストールを完了するには、クリックしてさらにダイアログを進む必要があります。
 
     ![NuGet を使用して Azure ライブラリを追加する](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -56,9 +56,9 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの結�
 
 自分の Azure Cognitive Search サービスを操作するには、サービスの URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+1. [Azure portal](https://portal.azure.com/) にサインインし、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -68,35 +68,35 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの結�
 
 このサンプルでは、7 つの架空のホテルを説明する小さなデータ セットを 2 つ使用します。 一方のセットは、ホテル自体を説明するもので、Azure Cosmos DB データベースに読み込まれます。 もう一方のセットは、ホテルの部屋の詳細を含んでおり、Azure Blob Storage にアップロードする 7 つの個別の JSON ファイルとして提供されます。
 
-1. [Azure portal にサインイン](https://portal.azure.com)し、Azure Cosmos DB アカウントの [概要] ページに移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、Azure Cosmos DB アカウントの [概要] ページに移動します。
 
-1. メニュー バーから、[コンテナーの追加] をクリックします。 "新しいデータベースの作成" を指定し、**hotel-rooms-db** という名前を使用します。 コレクション名には「**hotels**」と入力し、パーティション キーには「 **/HotelId**」と入力します。 **[OK]** をクリックしてデータベースとコンテナーを作成します。
+1. **[データ エクスプローラー]** を選択し、 **[新しいデータベース]** を選択します。
 
-   ![Azure Cosmos DB コンテナーを追加する](media/tutorial-multiple-data-sources/cosmos-add-container.png "Azure Cosmos DB コンテナーを追加する")
+   ![新しいデータベースの作成](media/tutorial-multiple-data-sources/cosmos-newdb.png "新しいデータベースの作成")
 
-1. Cosmos DB データ エクスプローラーに移動し、**hotel-rooms-db** データベース内の **hotels** コンテナーの下にある **items** 要素を選択します。 次に、コマンド バー上の **[Upload Item]\(項目のアップロード\)** をクリックします。
+1. 「**hotel-rooms-db**」という名前を入力します。 残りの設定は既定値のままにします。
+
+   ![データベースを構成する](media/tutorial-multiple-data-sources/cosmos-dbname.png "データベースを構成する")
+
+1. 新しいコンテナーを作成します。 先ほど作成した既存のデータベースを使用します。 コンテナー名として「**hotels**」と入力し、[パーティション キー] に「 **/HotelId**」を使用します。
+
+   ![コンテナーを追加する](media/tutorial-multiple-data-sources/cosmos-add-container.png "コンテナーの追加")
+
+1. **hotels** の下にある **[項目]** を選択し、コマンド バーの **[Upload Item]\(項目のアップロード\)** をクリックします。 プロジェクト フォルダー内のファイル **cosmosdb/HotelsDataSubset_CosmosDb.json** に移動して選択します。
 
    ![Azure Cosmos DB コレクションにアップロードする](media/tutorial-multiple-data-sources/cosmos-upload.png "Cosmos DB コレクションにアップロードする")
-
-1. アップロード パネルで、フォルダー ボタンをクリックし、プロジェクト フォルダー内の **cosmosdb/HotelsDataSubset_CosmosDb.json** ファイルに移動します。 **[OK]** をクリックしてアップロードを開始します。
-
-   ![アップロードするファイルを選択する](media/tutorial-multiple-data-sources/cosmos-upload2.png "アップロードするファイルを選択する")
 
 1. [最新の情報に更新] ボタンを使用して、hotels コレクション内の項目の表示を更新します。 7 つの新しいデータベース ドキュメントが表示されることがわかります。
 
 ## <a name="prepare-sample-blob-data"></a>サンプル BLOB データを準備する
 
-1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
 1. サンプルのホテルの部屋の JSON ファイルを格納するために、**hotel-rooms** という名前の [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
    ![BLOB コンテナーを作成する](media/tutorial-multiple-data-sources/blob-add-container.png "BLOB コンテナーを作成する")
 
-1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
-
-   ![コマンド バーの [アップロード]](media/search-semi-structured-data/upload-command-bar.png "コマンド バーの [アップロード]")
-
-1. サンプル ファイルを含むフォルダーに移動します。 すべてを選択し、 **[アップロード]** をクリックします。
+1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。 サンプル ファイルを含むフォルダーに移動します。 すべてを選択し、 **[アップロード]** をクリックします。
 
    ![ファイルをアップロードする](media/tutorial-multiple-data-sources/blob-upload.png "ファイルをアップロードする")
 
@@ -129,11 +129,11 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの結�
 
 Azure Cognitive Search では、キー フィールドはインデックス内の各ドキュメントを一意に識別します。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 そのキー フィールドは、インデックスに追加されるデータ ソース内のドキュメントごとに存在する必要があります。 (実際のところ、これは唯一の必須フィールドです)。
 
-複数のデータ ソースのデータにインデックスを付ける場合、各データ ソースのキー値を結合インデックスの同じキー フィールドにマップする必要があります。 それには、インデックスにとって意味のあるドキュメント キーを識別し、それがすべてのデータ ソースに存在することを確認するように事前の計画が必要になることがよくあります。
+複数のデータ ソースのデータにインデックスを作成する場合、共通のドキュメント キーを使用して、物理的に異なる 2 つのソース ドキュメントのデータを結合インデックスの新しい検索ドキュメントにマージします。 多くの場合、インデックスにとって意味のあるドキュメント キーを特定し、両方のデータ ソースに存在させるには、事前の計画が必要です。 このデモでは、Cosmos DB の各ホテルの HotelId キーは、Blob ストレージの部屋の JSON BLOB にも存在します。
 
 Azure Cognitive Search インデクサーでは、フィールド マッピングを使用して、インデックス作成プロセス中にデータ フィールドの名前を変更したり、データ フィールドを再フォーマットしたりすることができます。これにより、ソース データを適切なインデックス フィールドに対応させることができます。
 
-たとえば、この Azure Cosmos DB のサンプル データでは、ホテルの識別子に **HotelId** という名前が付けられています。 一方、ホテルの部屋の JSON BLOB ファイルでは、ホテルの識別子に **Id** という名前が付けられています。このプログラムでは、これを処理するために、BLOB の **Id** フィールドをインデックスの **HotelId** キー フィールドにマップします。
+たとえば、この Azure Cosmos DB のサンプル データでは、ホテルの識別子に **`HotelId`** という名前が付けられています。 一方、ホテルの部屋の JSON BLOB ファイルでは、ホテルの識別子に **`Id`** という名前が付けられています。 このプログラムでは、これを処理するために、BLOB の **`Id`** フィールドをインデックスの **`HotelId`** キー フィールドにマップします。
 
 > [!NOTE]
 > ほとんどの場合、自動生成されたドキュメント キー (一部のインデクサーによって既定で作成されるものなど) は、結合インデックスに適切なドキュメント キーにはなりません。 一般的には、対象のデータ ソースに既に存在するか簡単に追加できる、わかりやすい一意のキー値を使用します。
@@ -143,11 +143,11 @@ Azure Cognitive Search インデクサーでは、フィールド マッピン�
 データと構成設定が済んだら、**AzureSearchMultipleDataSources.sln** 内のサンプル プログラムをビルドして実行する準備は完了です。
 
 この単純な C# または .NET コンソール アプリは次のタスクを実行します。
-* (Address クラスと Room クラスも参照する) C# Hotel クラスのデータ構造に基づいて新しい Azure Cognitive Search インデックスを作成する。
-* Azure Cosmos DB データ ソースと、Azure Cosmos DB データをインデックス フィールドにマップするインデクサーを作成する。
-* Azure Cosmos DB インデクサーを実行してホテルのデータを読み込む。
-* Azure Blob Storage データ ソースと、JSON BLOB データをインデックス フィールドにマップするインデクサーを作成する。
-* Azure Blob Storage インデクサーを実行して部屋のデータを読み込む。
+* (Address クラスと Room クラスも参照する) C# Hotel クラスのデータ構造に基づいて新しいインデックスを作成します。
+* 新しいデータソースと、インデックス フィールドに Azure Cosmos DB データをマップするインデクサーを作成します。 これらはどちらも Azure Cognitive Search のオブジェクトです。
+* インデクサーを実行して Cosmos DB からホテル データを読み込みます。
+* 2 番目のデータ ソースと、JSON BLOB データをインデックス フィールドにマップするインデクサーを作成します。
+* 2 番目のインデクサーを実行して、Blob ストレージから部屋データを読み込みます。
 
  プログラムを実行する前に、このサンプルのコードのほかインデックスとインデクサーの定義を時間を取って確認しましょう。 関連するコードは次の 2 つのファイルにあります。
 
@@ -300,7 +300,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-JSON BLOB には、**HotelId** の代わりに **Id** という名前のキー フィールドが含まれます。 このコードでは、`FieldMapping` クラスを使用して、**Id** フィールド値をインデックス内の **HotelId** ドキュメント キーに対応させるようインデクサーに指示しています。
+JSON BLOB には、 **`HotelId`** ではなく、 **`Id`** という名前のキー フィールドが含まれています。 このコードでは、`FieldMapping` クラスを使用して、 **`Id`** フィールド値をインデックス内の **`HotelId`** ドキュメント キーに対応させるようインデクサーに指示しています。
 
 Blob Storage インデクサーでは、使用する解析モードを指定するパラメーターを使用できます。 この解析モードは、1 つのドキュメントを表す BLOB、または同じ BLOB 内の複数のドキュメントで異なります。 この例では、各 BLOB が単一のインデックス ドキュメントを表します。そのため、このコードでは `IndexingParameters.ParseJson()` パラメーターを使用しています。
 
@@ -340,18 +340,13 @@ Azure portal で、検索サービスの **[概要]** ページを開き、 **[�
 
 一覧にある hotel-rooms-sample インデックスをクリックします。 そのインデックスの Search エクスプローラーのインターフェイスが表示されます。 "Luxury" のような用語のクエリを入力します。 結果には少なくとも 1 つのドキュメントが表示されます。また、このドキュメントには、その Rooms 配列内の部屋オブジェクトの一覧が示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの後で最も速くクリーンアップする方法は、Azure Cognitive Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Cognitive Search サービスの [概要] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 JSON BLOB のインデックス作成には、いくつかの方法と複数のオプションがあります。 対象のソース データに JSON コンテンツが含まれている場合は、これらのオプションの中から自分のシナリオに最適なものを見つけてください。
 
 > [!div class="nextstepaction"]
 > [Azure Cognitive Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法](search-howto-index-json-blobs.md)
-
-1 つのデータ ソースの構造化インデックス データは、構造化されていない BLOB またはフルテキスト コンテンツの認知的に優れたデータで強化することができます。 次のチュートリアルでは、.NET SDK を使用して Cognitive Services を Azure Cognitive Search と共に使用する方法を紹介します。
-
-> [!div class="nextstepaction"]
-> [Azure Cognitive Search のインデックス作成パイプラインで Cognitive Services APIs を呼び出す](cognitive-search-tutorial-blob-dotnet.md)

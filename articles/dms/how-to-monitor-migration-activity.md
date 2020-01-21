@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service を使用して移行アクティビティを監視する | Microsoft Docs
+title: 移行アクティビティの監視 - Azure Database Migration Service
 description: Azure Database Migration Service を使用して移行アクティビティを監視する方法について説明します。
 services: database-migration
 author: HJToland3
@@ -8,17 +8,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437927"
 ---
-# <a name="monitor-migration-activity"></a>移行アクティビティの監視
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して移行アクティビティを監視する
 この記事では、データベース レベルとテーブル レベルの両方で移行の進行状況を監視する方法について説明します。
 
 ## <a name="monitor-at-the-database-level"></a>データベース レベルの監視
@@ -108,7 +108,7 @@ ms.locfileid: "60532802"
 
 次の表では、テーブルレベルの詳細で表示されるフィールドについて説明します。
 
-| フィールド名        | 説明       |
+| フィールド名        | [説明]       |
 | ------------- | ------------- |
 | **全体の読み込みが完了しました**      | 全体のデータ読み込みが完了したテーブルの数。 |
 | **全体の読み込みがキューに登録されました**      | 全体の読み込みでキューに登録されているテーブルの数。      |
@@ -129,11 +129,11 @@ ms.locfileid: "60532802"
 
 次の表では、テーブル レベルの移行の進行状況で表示されるフィールドについて説明します。
 
-| フィールド名        | 説明       |
+| フィールド名        | [説明]       |
 | ------------- | ------------- |
 | **状態 - 同期中**      | 継続的同期が実行されています。 |
 | **挿入**      | ターゲットに適用された行に含まれている CDC 挿入の数。      |
-| **Update** | ターゲットに適用された行に含まれている CDC 更新の数。      |
+| **アップデート** | ターゲットに適用された行に含まれている CDC 更新の数。      |
 | **削除**      | ターゲットに適用された行に含まれている CDC 削除の数。 |
 | **適用の合計**      | ターゲットに適用された行に含まれている CDC の更新、挿入、削除の総数。 |
 | **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、 *"511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました"* があります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
@@ -141,5 +141,5 @@ ms.locfileid: "60532802"
 > [!NOTE]
 > [挿入]、[更新]、[削除]、[適用の合計] の CDC 値は、データベースが一括移行されたとき、または移行が再起動されたときに減少することがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

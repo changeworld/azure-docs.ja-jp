@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382043"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613892"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト
 
@@ -25,13 +25,13 @@ Azure Storage には、容量、トランザクション レート、および�
 
 この記事では、パフォーマンスに関する実証済みプラクティスを、BLOB ストレージ アプリケーションの開発中に従うことのできるチェックリストにまとめています。
 
-| 完了 | Category | 設計上の考慮事項 |
+| 完了 | カテゴリ | 設計上の考慮事項 |
 | --- | --- | --- |
 | &nbsp; |スケーラビリティ ターゲット |[使用するストレージ アカウントの数が最大数以下になるようにアプリケーションを設計できますか?](#maximum-number-of-storage-accounts) |
 | &nbsp; |スケーラビリティ ターゲット |[容量とトランザクションの制限に近づかないようにしていますか?](#capacity-and-transaction-targets) |
 | &nbsp; |スケーラビリティ ターゲット |[1 つの BLOB に多数のクライアントが同時にアクセスしていますか?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |スケーラビリティ ターゲット |[アプリケーションは、1 つの BLOB のスケーラビリティ ターゲット内に収まっていますか?](#bandwidth-and-operations-per-blob) |
-| &nbsp; |パーティション分割 |[命名規則は負荷分散を向上できるように設計されていますか?](#partitioning) |
+| &nbsp; |[パーティション分割] |[命名規則は負荷分散を向上できるように設計されていますか?](#partitioning) |
 | &nbsp; |ネットワーク |[クライアント側のデバイスは、必要なパフォーマンスを達成するのに十分な高帯域幅と低遅延を備えていますか?](#throughput) |
 | &nbsp; |ネットワーク |[クライアント側のデバイスには、高品質のネットワーク リンクがありますか?](#link-quality) |
 | &nbsp; |ネットワーク |[クライアント アプリケーションは、ストレージ アカウントと同じリージョンにありますか?](#location) |
@@ -41,10 +41,10 @@ Azure Storage には、容量、トランザクション レート、および�
 | &nbsp; |.NET 構成 |[最適なパフォーマンスを実現するために .NET Core 2.1 以降を使用していますか?](#use-net-core) |
 | &nbsp; |.NET 構成 |[十分な数のコンカレント接続を使用するようにクライアントを構成していますか?](#increase-default-connection-limit) |
 | &nbsp; |.NET 構成 |[.NET アプリケーションの場合、十分な数のスレッドを使用するように .NET を構成しましたか?](#increase-minimum-number-of-threads) |
-| &nbsp; |Parallelism |[クライアントの機能に過剰な負荷をかけたり、スケーラビリティ ターゲットに近づいたりしないように、並列処理が適切に制限されていることを確認しましたか?](#unbounded-parallelism) |
+| &nbsp; |Parallelism |[クライアントの機能に過剰な負荷を掛けたり、スケーラビリティ ターゲットに近づいたりしないように、並列処理が適切に制限されていることを確認しましたか?](#unbounded-parallelism) |
 | &nbsp; |ツール |[Microsoft が提供する最新バージョンのクライアント ライブラリとツールを使用していますか?](#client-libraries-and-tools) |
-| &nbsp; |再試行 |[エクスポネンシャル バックオフを使ってエラーとタイムアウトを調整する再試行ポリシーを使用していますか?](#timeout-and-server-busy-errors) |
-| &nbsp; |再試行 |[再試行できないエラーに対するアプリケーションの再試行を回避していますか?](#non-retryable-errors) |
+| &nbsp; |[再試行の回数] |[エクスポネンシャル バックオフを使ってエラーとタイムアウトを調整する再試行ポリシーを使用していますか?](#timeout-and-server-busy-errors) |
+| &nbsp; |[再試行の回数] |[再試行できないエラーに対するアプリケーションの再試行を回避していますか?](#non-retryable-errors) |
 | &nbsp; |BLOB のコピー |[最も効率的な方法で BLOB をコピーしていますか?](#blob-copy-apis) |
 | &nbsp; |BLOB のコピー |[一括コピー操作に最新バージョンの AzCopy を使用していますか?](#use-azcopy) |
 | &nbsp; |BLOB のコピー |[大量のデータをインポートするために Azure Data Box ファミリを使用していますか?](#use-azure-data-box) |
@@ -58,7 +58,7 @@ Azure Storage には、容量、トランザクション レート、および�
 
 運用中のアプリケーションがいずれかのスケーラビリティ ターゲットに近づいたり超過したりすると、トランザクション待機時間や調整が増加することがあります。 Azure Storage によってアプリケーションが調整されると、サービスが 503 (サーバー ビジー) または 500 (操作タイムアウト) のエラー コードを返し始めます。 スケーラビリティ ターゲットの制限内にとどまることでこれらのエラーを回避することは、アプリケーションのパフォーマンスを強化するうえで重要な部分です。
 
-Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)に関するページを参照してください。
+Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)に関するページを参照してください。
 
 ### <a name="maximum-number-of-storage-accounts"></a>ストレージ アカウントの最大数
 
@@ -74,7 +74,7 @@ Queue サービスのスケーラビリティ ターゲットの詳細につい�
 
 - アプリケーションがトランザクション ターゲットに達している場合は、高いトランザクション レートと一貫して短い待機時間に合わせて最適化されているブロック BLOB ストレージ アカウントを使用することを検討してください。 詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 - 対象のアプリケーションでスケーラビリティ ターゲットに対する接近や超過を引き起こしたワークロードを見直します。 設計を変更して、必要な帯域幅や処理能力を抑えたり、トランザクションを減らしたりすることができないでしょうか?
-- アプリケーションが確実にいずれかのスケーラビリティ ターゲットを超過する場合は、複数のストレージ アカウントを作成し、それらのアカウントにアプリケーション データを分けて配置します。 このパターンを使用する場合は、後で負荷分散用のストレージ アカウントを追加できるようにアプリケーションを設計してください。 ストレージ アカウント自体では、データ保存、トランザクション実行、データ転送以外の使用に料金が発生することはありません。
+- アプリケーションがいずれかのスケーラビリティ ターゲットを超過することがほぼ確実な場合には、複数のストレージ アカウントを作成し、それらのアカウントにアプリケーション データを分けて配置します。 このパターンを使用する場合は、後で負荷分散用のストレージ アカウントを追加できるようにアプリケーションを設計してください。 ストレージ アカウント自体では、データ保存、トランザクション実行、データ転送以外の使用に料金が発生することはありません。
 - アプリケーションが帯域幅ターゲットに近づいてきた場合は、クライアント側でデータを圧縮し、Azure Storage へのデータ送信に必要な帯域幅を削減する方法を検討します。
     データを圧縮することにより帯域幅の節約とネットワーク パフォーマンスの改善が期待できますが、パフォーマンスにマイナスの影響が及ぶ可能性もあります。 クライアント側でデータの圧縮と展開の処理要件が増加することにより生じるパフォーマンスへの影響を評価してください。 圧縮データを格納すると、標準ツールではデータが見づらくなるため、トラブルシューティングが困難になる場合があることに留意してください。
 - アプリケーションがスケーラビリティ ターゲットに近づいている場合は、再試行にエクスポネンシャル バックオフを使用していることを確認してください。 この記事に書かれている推奨事項を実践して、スケーラビリティ ターゲットへの到達を回避することを強くお勧めします。 ただし、再試行にエクスポネンシャル バックオフを使用するとアプリケーションの迅速な再試行が妨げられ、調整が悪化する可能性もあります。 詳細については、「[タイムアウト エラーとサーバー ビジー エラー](#timeout-and-server-busy-errors)」セクションを参照してください。
@@ -93,7 +93,7 @@ Web サイトから提供されるイメージやビデオなどのように CDN
 
 また、Azure CDN などのコンテンツ配信ネットワーク (CDN) を使用して、BLOB での操作を分散することもできます。 Azure CDN の詳細については、[Azure CDN の概要](../../cdn/cdn-overview.md)に関する記事を参照してください。  
 
-## <a name="partitioning"></a>パーティション分割
+## <a name="partitioning"></a>[パーティション分割]
 
 Azure Storage が BLOB データをどのようにパーティション分割するかを理解すると、パフォーマンスの向上に役立ちます。 Azure Storage は、複数のパーティションにまたがるデータよりも、1 つのパーティション内のデータをより迅速に提供できます。 BLOB に適切な名前を付けることで、読み取り要求の効率を向上させることができます。
 
@@ -283,7 +283,7 @@ Azure Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB
 
 ページ BLOB は、アプリケーションがデータにランダムな書き込みを行う必要がある場合に適しています。 たとえば、Azure 仮想マシンのディスクは、ページ BLOB に格納されています。 詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」を参照してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [状態コードとエラー コード](/rest/api/storageservices/Status-and-Error-Codes2)

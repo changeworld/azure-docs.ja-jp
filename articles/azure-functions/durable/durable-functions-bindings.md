@@ -2,14 +2,14 @@
 title: Durable Functions のバインド - Azure
 description: Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410214"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -344,7 +344,7 @@ public static Task Run(string input, IDurableOrchestrationClient starter)
 ```
 
 > [!NOTE]
-> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationClient` の代わりに `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationClient` の代わりに `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 #### <a name="javascript-sample"></a>JavaScript のサンプル
 
@@ -398,7 +398,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、エンテ�
 * **DeleteState()** : エンティティの状態を削除します。 
 * **GetInput\<TInput>()** : 現在操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
 * **Return(arg)** : 操作を呼び出したオーケストレーションに値を返します。 `arg` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
-* **SignalEntity(EntityId, operation, input)** : エンティティに一方向のメッセージを送信します。 `operation` パラメーターは null 以外の文字列とし、`input` パラメーターはプリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトとする必要があります。
+* **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** : エンティティに一方向のメッセージを送信します。 `operation` パラメーターは NULL 以外の文字列にする必要があります。オプションの `scheduledTimeUtc` は、操作を呼び出す UTC 日時にする必要があります。`input` パラメーターはプリミティブまたは JSON にシリアル化できるオブジェクトにする必要があります。
 * **CreateNewOrchestration(orchestratorFunctionName, input)** : 新しいオーケストレーションを開始します。 `input` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
 
 エンティティ関数に渡される `IDurableEntityContext` オブジェクトには、`Entity.Current` 非同期ローカル プロパティを使用してアクセスできます。 この方法は、クラスベースのプログラミング モデルを使用する場合に便利です。
@@ -519,7 +519,7 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
 
 * **ReadEntityStateAsync\<T>** : エンティティの状態を読み取ります。 ターゲット エンティティが存在するかどうかを示す応答が返されます。存在する場合は、その状態も返されます。
 * **SignalEntityAsync**: エンティティに一方向のメッセージを送信し、エンキューされるまで待機します。
+* **ListEntitiesAsync**: 複数のエンティティの状態をクエリします。 エンティティは、*name* と *last operation time* でクエリできます。
 
 シグナルを送信する前にターゲット エンティティを作成する必要はありません。エンティティの状態は、シグナルを処理するエンティティ関数内で作成できます。
 
@@ -640,7 +641,7 @@ module.exports = async function (context) {
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [インスタンス管理用の組み込みの HTTP API リファレンス](durable-functions-http-api.md)

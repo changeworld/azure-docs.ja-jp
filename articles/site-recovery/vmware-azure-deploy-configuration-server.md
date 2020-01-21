@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376292"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -42,7 +42,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
     - アプリケーション開発者のロールがユーザーに割り当てられていることを確認します。 割り当てられていない場合、このアクセス許可を持つユーザーを使用するか、[アクセス許可の有効化を管理者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)に要求します。
     
 2. アプリケーション開発者のロールを割り当てることができない場合は、ID を作成するユーザーに対して **[ユーザーはアプリケーションを登録できる]** フラグが **[はい]** に設定されていることを確認します。 これらのアクセス許可を有効にするには、次の手順を実行します。
-    - Azure ポータルにサインインします。
+    - Azure portal にサインインします。
     - **[Azure Active Directory]**  >  **[ユーザー設定]** に移動します。
     - **[アプリの登録]** の **[ユーザーはアプリケーションを登録できる]** で、 **[はい]** を選択します。
 
@@ -92,7 +92,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 構成サーバーにさらに NIC を追加する場合は、サーバーをコンテナーに登録する前に追加します。 登録後のアダプターの追加はサポートされていません。
 
 1. vSphere Client インベントリで VM を右クリックし、 **[Edit Settings]\(設定の編集\)** を選びます。
-2. **[Hardware]\(ハードウェア\)** で、 **[Add]\(追加\)**  >  **[Ethernet Adapter]\(イーサネット アダプター\)** の順に選択します。 次に、 **[次へ]** を選択します。
+2. **[Hardware]\(ハードウェア\)** で、 **[Add]\(追加\)**  >  **[Ethernet Adapter]\(イーサネット アダプター\)** の順に選択します。 **[次へ]** を選択します。
 3. アダプターの種類およびネットワークを選びます。
 4. VM がオンになったときに仮想 NIC を接続するには、 **[Connect at power- on]\(電源をオンにしたときに接続する\)** を選択します。 次に、 **[Next]\(次へ\)**  >  **[Finish]\(完了\)**  > **OK** の順に選びます。
 
@@ -102,14 +102,14 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 3. インストールの完了後に、管理者として VM にサインインします。
 4. 初めてサインインすると、数秒後に Azure Site Recovery 構成ツールが起動します。
-5. 構成サーバーを Site Recovery に登録するために使う名前を入力します。 次に、 **[次へ]** を選択します。
+5. 構成サーバーを Site Recovery に登録するために使う名前を入力します。 **[次へ]** を選択します。
 6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、 **[サインイン]** を選択して、自分の Azure サブスクリプションにサインインします。</br>
     a. この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。</br>
     b. 選択したユーザー アカウントが、Azure でアプリケーションを作成するアクセス許可を持っていることを確認します。 必要なアクセス許可を有効にするには、「[Azure Active Directory アクセス許可の要件](#azure-active-directory-permission-requirements)」のガイドラインに従ってください。
 7. ツールがいくつかの構成タスクを実行した後、再起動されます。
 8. 再度マシンにサインインします。 構成サーバーの管理ウィザードが数秒後に自動的に起動します。
 
-### <a name="configure-settings"></a>設定を構成する
+### <a name="configure-settings"></a>設定の構成
 
 1. 構成サーバー管理ウィザードで、 **[接続の設定]** を選びます。 ドロップダウン ボックスから、最初に、モビリティ サービスの検出とソース マシンへのプッシュ インストールのために組み込みプロセス サーバーが使用する NIC を選択します。 次に、構成サーバーが Azure との接続に使用する NIC を選択します。 **[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないでください。 構成サーバーに割り当てられている IP が DHCP IP ではなく静的 IP であることを確認してください。
 2. **[Select Recovery Services vault]\(Recovery Services コンテナーの選択\)** で、「[構成サーバーを Azure Site Recovery サービスに登録する](#register-the-configuration-server-with-azure-site-recovery-services)」の手順 6 で使用した資格情報で Microsoft Azure にサインインします。
@@ -142,6 +142,10 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 
 進行中のレプリケーションの中断を回避するには、構成サーバーがコンテナーに登録された後に構成サーバーの IP アドレスが変更されないようにします。 一般的な構成サーバー管理タスクの詳細については、「[VMware VM のディザスター リカバリー用の構成サーバーを管理する](vmware-azure-manage-configuration-server.md)」を参照してください。
 
+## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
+
+デプロイや接続の問題を解決するには、[トラブルシューティング記事](vmware-azure-troubleshoot-configuration-server.md)を参照してください。
+
 ## <a name="faqs"></a>FAQ
 
 * OVF を使用してデプロイされた構成サーバーで提供されているライセンスはどれくらいの期間有効ですか? ライセンスを再アクティブ化しないとどうなりますか?
@@ -150,10 +154,10 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 
 * 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
 
-    No. VM は構成サーバーの目的のみに使用してください。 ディザスター リカバリーを効率的に管理するため、必ず、[前提条件](#prerequisites)に記述されているすべての仕様に従ってください。
+    いいえ。 VM は構成サーバーの目的のみに使用してください。 ディザスター リカバリーを効率的に管理するため、必ず、[前提条件](#prerequisites)に記述されているすべての仕様に従ってください。
 * 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか?
 
-    No. コンテナーは、構成サーバーに登録した後に変更することはできません。
+    いいえ。 コンテナーは、構成サーバーに登録した後に変更することはできません。
 * 物理マシンと仮想マシンの両方を保護するために同じ構成サーバーを使用することはできますか?
 
     はい。 物理マシンと仮想マシンをレプリケートするために同じ構成サーバーを使用することができます。 ただし、物理マシンは VMware VM にしかフェールバックできません。
@@ -168,29 +172,27 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
     パスフレーズをダウンロードするには、「[VMware VM のディザスター リカバリー用の構成サーバーを管理する](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)」を参照してください。
 * パスフレーズは変更できますか?
 
-    No. 構成サーバーのパスフレーズは変更しないでください。 パスフレーズを変更すると、保護されているマシンのレプリケーションが中断されて、重大な正常性状態につながります。
+    いいえ。 構成サーバーのパスフレーズは変更しないでください。 パスフレーズを変更すると、保護されているマシンのレプリケーションが中断されて、重大な正常性状態につながります。
 * コンテナー登録キーはどこでダウンロードできますか?
 
     **[Recovery Services Vault]\(Recovery Services コンテナー\)** で、 **[管理]**  >  **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)**  >  **[Configuration Servers]\(構成サーバー\)** を選択します。 **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 * 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
 
-    No. 複製された構成サーバー コンポーネントの使用はサポートされていません。 スケールアウト プロセス サーバーの複製も、サポートされていないシナリオです。 Site Recovery コンポーネントを複製すると、進行中のレプリケーションに影響します。
+    いいえ。 複製された構成サーバー コンポーネントの使用はサポートされていません。 スケールアウト プロセス サーバーの複製も、サポートされていないシナリオです。 Site Recovery コンポーネントを複製すると、進行中のレプリケーションに影響します。
 
 * 構成サーバーの IP を変更することはできますか?
 
-    No. 構成サーバーの IP アドレスは変更しないでください。 構成サーバーに割り当てられているすべての IP が DHCP IP ではなく静的 IP であることを確認してください。
+    いいえ。 構成サーバーの IP アドレスは変更しないでください。 構成サーバーに割り当てられているすべての IP が DHCP IP ではなく静的 IP であることを確認してください。
 * Azure で構成サーバーを設定できますか?
 
     v-Center との直接の通信経路を使って、またデータ転送の待機時間を最小限に抑えるために、オンプレミス環境で構成サーバーを設定してください。 [フェールバックの目的](vmware-azure-manage-configuration-server.md#failback-requirements)で、構成サーバーのスケジュールされたバックアップを作成することができます。
 
+* 構成サーバーまたはスケールアウト プロセス サーバーでキャッシュ ドライバーを変更できますか。
+
+    いいえ。セットアップの完了後はキャッシュ ドライバーを変更できません。
+
 構成サーバーに関するその他の FAQ については、[構成サーバーに関するよくある質問](vmware-azure-common-questions.md#configuration-server)を参照してください。
 
-## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure への [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーを設定する。

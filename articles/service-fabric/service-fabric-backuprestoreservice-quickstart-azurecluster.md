@@ -1,27 +1,18 @@
 ---
 title: Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 83a267453cd0c4f36fa5819d9d29934cf543bb76
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209594"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526330"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
+# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
 > * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -135,7 +126,7 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 
 ### <a name="create-backup-policy"></a>バックアップ ポリシーを作成する
 
-最初の手順は、バックアップ スケジュール、バックアップ データのターゲット ストレージ、ポリシー名、および完全バックアップをトリガーする前に許可される増分バックアップの最大数、バックアップ ストレージ用のアイテム保持ポリシーを記述するバックアップ ポリシーの作成です。 
+最初の手順は、バックアップ スケジュール、バックアップ データのターゲット ストレージ、ポリシー名、完全バックアップをトリガーする前に許可される増分バックアップの最大数、バックアップ ストレージ用のアイテム保持ポリシーを記述するバックアップ ポリシーの作成です。 
 
 バックアップ ストレージには、先ほど作成した Azure ストレージ アカウントを使用します。 コンテナー `backup-container` は、バックアップを格納するために構成されます。 まだ存在しない場合は、バックアップのアップロード中に、この名前のコンテナーが作成されます。 Azure Storage アカウントの有効な接続文字列を `ConnectionString`に指定して、`account-name` を実際のストレージ アカウント名に、`account-key` を実際のストレージ アカウント キーにそれぞれ置き換えます。
 
@@ -311,7 +302,7 @@ Service Fabric Explorer でバックアップを表示するには、パーテ�
 - Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 

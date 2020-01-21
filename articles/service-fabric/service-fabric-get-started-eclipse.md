@@ -1,25 +1,16 @@
 ---
-title: Eclipse 用の Azure Service Fabric プラグイン | Microsoft Docs
-description: Eclipse 用の Service Fabric プラグインの概要を紹介します。
-services: service-fabric
-documentationcenter: java
+title: Eclipse 用の Azure Service Fabric プラグイン
+description: Eclipse および Service Fabric で提供されているプラグインを使用した、Java の Azure Service Fabric の概要について説明します。
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035438"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645703"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -231,7 +222,7 @@ Eclipse を使用してアプリケーションをアップグレードするに
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>以前の Service Fabric Java アプリケーションを移行して Maven で使用する
 最近、Service Fabric Java ライブラリが Service Fabric Java SDK から Maven リポジトリに移行されました。 Eclipse を使って生成する新しいアプリケーションでは、(Maven で使用可能な) 最新のプロジェクトが生成されますが、(これまで Service Fabric Java SDK を使っていた) 既存の Service Fabric のステートレスまたはアクター Java アプリケーションは、Maven からの Service Fabric Java 依存関係を使うように更新することができます。 以前のアプリケーションを Maven で使用するには、[こちら](service-fabric-migrate-old-javaapp-to-use-maven.md)に記載した手順に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Java Reliable サービス アプリケーションを構築し、それをローカルおよび Azure にデプロイする手順の概要については、「[クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする](./service-fabric-quickstart-java-reliable-services.md)」を参照してください。
 - ローカル クラスター上の Java アプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。

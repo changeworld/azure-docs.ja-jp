@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure 仮想マ�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3d6875d8c466400da79e1b749d11914b3bf77d86
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172102"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611391"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -17,7 +17,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 この記事では、Azure VM 上で稼働している SQL Server データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 
-この記事では、以下の方法について説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 >
@@ -43,32 +43,47 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 次のオプションのいずれかを使用して接続を確立します。
 
-* **Azure データセンターの IP 範囲を許可する**。 このオプションは、ダウンロードで [IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 ネットワーク セキュリティ グループ (NSG) にアクセスするには、Set-AzureNetworkSecurityRule コマンドレットを使用します。 安全な受信者がリージョン固有 IP のみをリストに登録する場合は、認証を有効にするために Azure Active Directory (Azure AD) サービス タグで信頼できる宛先のリストを更新する必要があります。
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure データセンターの IP 範囲を許可する
 
-* **NSG タグを使用してアクセスを許可する**。  NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、ポータルまたは PowerShell から実行できます。
+このオプションは、ダウンロードされたファイルで [IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 ネットワーク セキュリティ グループ (NSG) にアクセスするには、Set-AzureNetworkSecurityRule コマンドレットを使用します。 信頼できる受信者のリストにリージョン固有の IP のみが含まれている場合は、認証を有効にするために Azure Active Directory (Azure AD) サービス タグでその信頼できる受信者のリストを更新する必要があります。
 
-    ポータルを使用して規則を作成するには、次のようにします。
+#### <a name="allow-access-using-nsg-tags"></a>NSG タグを使用してアクセスを許可する
 
-  * **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
-  * **[設定]** で **[送信セキュリティ規則]** を選択します。
-  * **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
-  * **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
+NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、Azure portal または PowerShell から実行できます。
 
-   PowerShell を使用してルールを作成するには、次のようにします。
+ポータルを使用して規則を作成するには、次のようにします。
 
-  * Azure アカウントの資格情報を追加して各国のクラウドを更新する<br/>
-    ``Add-AzureRmAccount``
-  * NSG サブスクリプションを選択する<br/>
-    ``Select-AzureRmSubscription "<Subscription Id>"``
-  * NSG を選択する<br/>
-    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
-  * Azure Backup サービス タグの発信許可規則を追加する<br/>
-   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
-  * NSG を保存する<br/>
-    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+  1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
+  2. **[設定]** で **[送信セキュリティ規則]** を選択します。
+  3. **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
+  4. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
 
-* **Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
-* **トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする**。 Azure VM 上の SQL Server データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
+PowerShell を使用してルールを作成するには、次のようにします。
+
+ 1. Azure アカウントの資格情報を追加して各国のクラウドを更新する<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. NSG サブスクリプションを選択する<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. NSG を選択する<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Azure Backup サービス タグの発信許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. ストレージ サービス タグの発信許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. AzureActiveDirectory サービス タグの発信許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. NSG を保存する<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
+
+**トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする**。 Azure VM 上の SQL Server データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
 
 接続オプションには、次の長所と短所があります。
 
@@ -232,11 +247,12 @@ VM 上で稼働しているデータベースを検出する方法:
 
     ![ログ バックアップ ポリシーを編集する](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. **[バックアップ ポリシー]** メニューで、**SQL バックアップの圧縮**を有効にするかどうかを選択します。
-    * 圧縮は既定で、無効になっています。
-    * バックエンドでは、Azure Backup は SQL ネイティブ バックアップの圧縮を使用します。
+13. **[バックアップ ポリシー]** メニューで、 **[SQL バックアップの圧縮]** を有効にするかどうかを選択します。 既定では、このオプションは無効になっています。 有効にすると、圧縮されたバックアップストリームが SQL Server によって VDI に送信されます。  Azure Backup は、このコントロールの値に応じて、COMPRESSION / NO_COMPRESSION 句を使用して、インスタンス レベルの既定値をオーバーライドすることに注意してください。
 
 14. バックアップ ポリシーに対する編集が完了したら、 **[OK]** を選択します。
+
+> [!NOTE]
+> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後、すなわち 30 + 7 日後に、クリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
 
 ## <a name="enable-auto-protection"></a>自動保護を有効にする  
 
@@ -259,9 +275,9 @@ VM 上で稼働しているデータベースを検出する方法:
 
 ![そのインスタンスの自動保護を無効にする](./media/backup-azure-sql-database/disable-auto-protection.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 * [バックアップした SQL Server データベースの復元](restore-sql-database-azure-vm.md)
 * [バックアップした SQL Server データベースの管理](manage-monitor-sql-database-backup.md)

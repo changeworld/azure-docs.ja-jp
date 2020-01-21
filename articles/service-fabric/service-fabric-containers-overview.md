@@ -1,25 +1,14 @@
 ---
-title: Service Fabric とコンテナーの概要 | Microsoft Docs
+title: Service Fabric とコンテナーの概要
 description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458212"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 
@@ -103,7 +92,7 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 
 Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](https://docs.microsoft.com/azure/containers/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、コンテナーを実行するために Service Fabric が提供するサポートについて説明しました。 次に、各機能の例の紹介と、その使用方法の解説に進みます。
 

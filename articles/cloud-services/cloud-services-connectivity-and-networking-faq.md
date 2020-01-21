@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 | Microsoft Docs
+title: 接続とネットワークの問題
+titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の接続とネットワークについてよくあるご質問を紹介します。
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386750"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 

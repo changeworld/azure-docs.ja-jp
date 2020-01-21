@@ -1,23 +1,23 @@
 ---
-title: Azure portal でのお気に入りの追加、削除、並べ替え | Microsoft Docs
-description: お気に入り一覧に項目を追加または削除する方法と項目の順序を並べ替える方法について説明します
+title: Azure portal でのお気に入りの追加と並べ替え | Microsoft Docs
+description: お気に入り一覧に項目を追加または削除する方法と項目の順序を並べ替える方法について説明します。
 services: azure-portal
-keywords: お気に入り
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: お気に入り、ポータル
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579544"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640569"
 ---
-# <a name="add-remove-and-sort-favorites"></a>お気に入りの追加、削除、並べ替え
+# <a name="add-remove-and-rearrange-favorites"></a>お気に入りの追加、削除、並べ替え
 
 よく使うサービスにすばやくアクセスできるように、 **[お気に入り]** 一覧に項目を追加または削除します。 **[お気に入り]** 一覧には一般的なサービスが既に追加されていますが、カスタマイズすることをお勧めします。 お客様が **[お気に入り]** に加えた変更は、お客様にのみ表示されます。
 
@@ -51,7 +51,7 @@ ms.locfileid: "73579544"
 
 2. 情報カードで星を選択して、塗りつぶされている状態から塗りつぶされていない状態に変更します。 そのサービスが **[お気に入り]** 一覧から削除されます。
 
-## <a name="sort-favorites"></a>お気に入りを並べ替える
+## <a name="rearrange-favorites"></a>お気に入りの並べ替え
 
 お気に入りのサービスが一覧表示される順序を変更することができます。 メニュー項目を **[お気に入り]** の別の場所にドラッグ アンド ドロップするだけです。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73579544"
 
 1. マウス ボタンを押したままで項目を **[お気に入り]** の一番上にドラッグし、ボタンを放します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * プロジェクト重視のワークスペースを作成するには、「[Azure portal でのダッシュボードの作成および共有方法](../azure-portal/azure-portal-dashboards.md)」を参照してください。
 * その他のハウツーについては、[Azure portal の使い方に関するビデオ シリーズ](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)をご覧ください。

@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f68bbc64ee8f0da02d213895a70e4c533b9a5f63
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: f3d99b32b952470f266ed2168d5760c2c72377c4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463795"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666722"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -72,7 +72,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|Publisher|名前|バージョン|
+|Publisher|Name|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -80,7 +80,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3、7.4、7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4、7.5|
-|SUSE|SLES|12 SP3|
+|Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
 > ゲスト構成は、サポートされる OS を実行しているノードを監査できます。 カスタム イメージを使用する仮想マシンを監査する場合は、**DeployIfNotExists** の定義を複製し、**If** セクションを変更してイメージのプロパティを含める必要があります。
@@ -93,10 +93,10 @@ Windows Server Nano Server はどのバージョンでもサポートされて�
 
 Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 アウトバウンド トラフィックが許可されないプライベート仮想ネットワークを Azure で使用している場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則で例外を構成する必要があります。 現時点では、Azure Policy ゲスト構成に対するサービス タグはありません。
 
-IP アドレス一覧では、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。 VM がデプロイされているリージョンの IP への送信アクセスのみを許可する必要があります。
+IP アドレスの一覧については、[Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。 VM がデプロイされているリージョンの IP への送信アクセスのみを許可する必要があります。
 
 > [!NOTE]
-> Azure データセンター IP アドレス XML ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲が一覧表示されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。 更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
+> Azure の IP 範囲とサービス タグの JSON ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲の一覧が記載されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。 更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
@@ -192,7 +192,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 - [サンプル インデックス - ゲスト構成](../samples/index.md#guest-configuration)
 - [Azure Policy サンプルの GitHub リポジトリ](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Azure Policy の定義の構造](definition-structure.md)」を確認します。

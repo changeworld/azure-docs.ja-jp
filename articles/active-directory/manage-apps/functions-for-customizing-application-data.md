@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a346b264afc23e21ccf3e6d5dbf7a8f5d96518d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93b8387d4453a3d83bcce55c739548d914545f2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430075"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -29,16 +29,16 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 各関数内で他の関数を入れ子にすることができます。 例: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。 <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
-  2. 文字列定数。二重引用符で囲む必要があります。 例: "米国"
-  3. 他の関数 例: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "会社名:\\"Contoso\\""
+  2. 文字列定数。二重引用符で囲む必要があります。 次に例を示します。"米国"
+  3. 他の関数 次に例を示します。FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 次に例を示します。"会社名:\\"Contoso\\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -48,10 +48,138 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-| **suffix** |必須 |string |source 値の末尾に追加する文字列。 |
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
+
+---
+### <a name="bitand"></a>BitAnd
+**関数:**<br> BitAnd(value1, value2)
+
+**説明:**<br> この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
+
+0 - value1 と value2 内の対応するビットの 1 つまたは両方が 0 の場合                                                  
+1 - 対応するビットの両方が 1 の場合。                                    
+
+つまり、両方のパラメーターの対応するビットが 1 の場合を除くすべてのケースで 0 を返します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **value1** |必須 |num |value2 と共に AND で処理する数値|
+| **value2** |必須 |num |value1 と共に AND で処理する数値|
+
+**例:**<br>
+BitAnd(&HF, &HF7)                                                                                
+11110111 AND 00000111 = 00000111。BitAnd からは 7 が返されます。その 2 進数は 00000111 です。
+
+---
+### <a name="cbool"></a>CBool
+**関数:**<br> CBool(Expression)
+
+**説明:**<br> CBool からは、式の評価結果に基づいてブール値が返されます。 式の評価結果が 0 以外の値の場合は CBool によって True が返され、それ以外の場合は False が返されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 | expression | 任意の有効な式 |
+
+**例:**<br>
+CBool([attribute1] = [attribute2])                                                                    
+両方の属性が同じ値を持つ場合は、True を返します。
+
+---
+### <a name="coalesce"></a>Coalesce
+**関数:**<br> Coalesce(source1, source2, ..., defaultValue)
+
+**説明:**<br> NULL ではない最初のソース値が返されます。 すべての引数が NULL で、defaultValue が存在する場合、defaultValue が返されます。 すべての引数が NULL で、defaultValue が存在しない場合、Coalesce からは NULL が返されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **source1  … sourceN** | 必須 | String |必須、回数は可変。 通常は、source オブジェクトの属性の名前。 |
+| **defaultValue** | 省略可能 | String | すべてのソース値が NULL の場合に使用される既定値。 空の文字列 ("") を指定できます。
+
+---
+### <a name="converttobase64"></a>ConvertToBase64
+**関数:**<br> ConvertToBase64(source)
+
+**説明:**<br> ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **source** |必須 |String |base 64 に変換される文字列|
+
+**例:**<br>
+ConvertToBase64("Hello world!")                                                                                                        
+"SABlAGwAbABvACAAdwBvAHIAbABkACEA" を返します。
+
+---
+### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
+**関数:**<br> ConvertToUTF8Hex(source)
+
+**説明:**<br> ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **source** |必須 |String |UTF8 Hex に変換される文字列|
+
+**例:**<br>
+ConvertToUTF8Hex("Hello world!")                                                                                                         
+48656C6C6F20776F726C6421 を返します。
+
+---
+### <a name="count"></a>Count
+**関数:**<br> Count(attribute)
+
+**説明:**<br> Count 関数は、複数値の属性内の要素数を返します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **attribute** |必須 |属性 (attribute) |要素がカウントされる複数値の属性|
+
+---
+### <a name="cstr"></a>CStr
+**関数:**<br> CStr(value)
+
+**説明:**<br> CStr 関数では、値が文字列データ型に変換されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **value** |必須 | 数値、参照、またはブール値 | 数値、参照属性、ブール値を指定できます。 |
+
+**例:**<br>
+CStr([dn])                                                            
+"cn=Joe,dc=contoso,dc=com" が返されます
+
+---
+### <a name="datefromnum"></a>DateFromNum
+**関数:**<br> DateFromNum(value)
+
+**説明:**<br> DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **value** |必須 | Date | DateTime 型に変換される AD 日付 |
+
+**例:**<br>
+DateFromNum([lastLogonTimestamp])                                                                                                   
+DateFromNum(129699324000000000)                                                            
+2012-01-01 23:00:00 を表す DateTime を返します。
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -61,11 +189,115 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |string |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
-| **outputFormat** |必須 |string |出力日付の形式。 |
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+| **outputFormat** |必須 |String |出力日付の形式。 |
+
+---
+### <a name="guid"></a>Guid
+**関数:**<br> Guid()
+
+**説明:**<br> GUID 関数は、新しいランダムな GUID を生成します。
+
+---
+### <a name="instr"></a>InStr
+**関数:**<br> InStr(value1,value2,start,compareType)
+
+**説明:**<br> InStr 関数は文字列内の最初の部分文字列を検索します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **value1** |必須 |String |検索対象の文字列 |
+| **value2** |必須 |String |検索する文字列 |
+| **start** |省略可能 |整数 |部分文字列の検索を開始する位置|
+| **compareType** |省略可能 |列挙型 |vbTextCompare か vbBinaryCompare になります |
+
+**例:**<br>
+InStr("The quick brown fox","quick")                                                                             
+評価結果は 5 になります。
+
+InStr("repEated","e",3,vbBinaryCompare)                                                                                  
+評価結果は 7 になります。
+
+---
+### <a name="isnull"></a>IsNull
+**関数:**<br> IsNull(Expression)
+
+**説明:**<br> 式の評価結果が Null の場合、IsNull 関数は true を返します。 属性の場合、Null は属性の不在によって表されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 |expression |評価の対象となる式 |
+
+**例:**<br>
+IsNull([displayName])                                                                                                
+属性がない場合は True が返されます。
+
+---
+### <a name="isnullorempty"></a>IsNullorEmpty
+**関数:**<br> IsNullOrEmpty(Expression)
+
+**説明:**<br> 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。
+この関数の逆の関数は IsPresent です。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 |expression |評価の対象となる式 |
+
+**例:**<br>
+IsNullOrEmpty([displayName])                                               
+属性がないか、空の文字列の場合は True が返されます。
+
+---
+### <a name="ispresent"></a>IsPresent
+**関数:**<br> IsNullOrEmpty(Expression)
+
+**説明:**<br> 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。 この関数の逆関数は IsNullOrEmpty です。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 |expression |評価の対象となる式 |
+
+**例:**<br>
+Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
+
+---
+### <a name="isstring"></a>IsString
+**関数:**<br> IsString(Expression)
+
+**説明:**<br> 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 |expression |評価の対象となる式 |
+
+---
+### <a name="item"></a>アイテム
+**関数:**<br> Item(attribute, index)
+
+**説明:**<br> Item 関数は複数値の文字列/属性から 1 つの項目を返します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **attribute** |必須 |Attribute |検索対象の複数値の属性 |
+| **インデックス** |必須 |整数 | 複数値の文字列内の項目のインデックス|
+
+**例:**<br>
+Item([proxyAddresses], 1)
 
 ---
 ### <a name="join"></a>結合
@@ -77,10 +309,30 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **separator** |必須 |string |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
-| **source1  … sourceN** |必須、回数は可変 |string |結合する文字列値。 |
+| **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
+| **source1  … sourceN** |必須、回数は可変 |String |結合する文字列値。 |
+
+---
+### <a name="left"></a>Left
+**関数:**<br> Left(String,NumChars)
+
+**説明:**<br> Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。 numChars = 0 の場合、空の文字列を返します。
+numChars < 0 の場合、入力文字列を返します。
+string が null の場合、空の文字列を返します。
+string に含まれる文字数が numChars で指定した数より少ない場合は、string と同一の文字列 (パラメーター 1 のすべての文字が含まれる) が返されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **String** |必須 |Attribute | 返される文字を含む文字列 |
+| **NumChars** |必須 |整数 | 文字列の先頭 (左端) から取得する文字数を示す値|
+
+**例:**<br>
+Left("John Doe", 3)                                                            
+"Joh" が返されます
 
 ---
 ### <a name="mid"></a>Mid
@@ -90,11 +342,11 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常、属性の名前。 |
-| **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
-| **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
+| **source** |必須 |String |通常、属性の名前。 |
+| **start** |必須 |整数 (integer) |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
+| **length** |必須 |整数 (integer) |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -104,9 +356,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string | 通常は、名または姓の属性です。 |
+| **source** |必須 |String | 通常は、名または姓の属性です。 |
 
 ---
 ### <a name="not"></a>Not
@@ -116,9 +368,25 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+| **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+
+---
+### <a name="removeduplicates"></a>RemoveDuplicates
+**関数:**<br> RemoveDuplicates(attribute)
+
+**説明:**<br> RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **attribute** |必須 |複数値の属性 |重複が削除される複数値の属性|
+
+**例:**<br>
+RemoveDuplicates([proxyAddresses])                                                                                                       
+重複する値がすべて削除された、校正済みの proxyAddress 属性が返されます
 
 ---
 ### <a name="replace"></a>Replace
@@ -146,15 +414,15 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、**source** オブジェクトの属性の名前。 |
-| **oldValue** |省略可能 |string |**source** または **template** に含まれる置換前の値。 |
-| **regexPattern** |省略可能 |string |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
-| **regexGroupName** |省略可能 |string |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
-| **replacementValue** |省略可能 |string |古い値を置き換える新しい値。 |
-| **replacementAttributeName** |省略可能 |string |置換値に使用する属性の名前 |
-| **template** |省略可能。 |string |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
+| **source** |必須 |String |通常は、**source** オブジェクトの属性の名前。 |
+| **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
+| **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
+| **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
+| **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
+| **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
+| **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -171,9 +439,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |string | 評価する一意値生成ルールの一覧。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
 
 ---
@@ -184,9 +452,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必須 |string |**[appRoleAssignments]** オブジェクト |
+| **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
 
 ---
 ### <a name="split"></a>Split
@@ -196,10 +464,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |**source** 値。 |
-| **delimiter** |必須 |string |文字列の分割に使用される文字を指定します (例: ",") |
+| **source** |必須 |String |**source** 値。 |
+| **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -209,9 +477,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |**source セクション セクション** 値。 |
+| **source** |必須 |String |**source** 値。 |
 
 ---
 ### <a name="switch"></a>Switch
@@ -221,12 +489,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |**Source** 値。 |
-| **defaultValue** |省略可能 |string |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
-| **key** |必須 |string |**source** 値と比較する **key**。 |
-| **値** |必須 |string |key と一致する **source** の置換値。 |
+| **source** |必須 |String |**Source** 値。 |
+| **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
+| **key** |必須 |String |**source** 値と比較する **key**。 |
+| **value** |必須 |String |key と一致する **source** の置換値。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -236,10 +504,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -249,10 +517,37 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 種類 | メモ |
+| Name | 必須/繰り返し | 種類 | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+
+---
+### <a name="word"></a>Word
+**関数:**<br> Word(String,WordNumber,Delimiters)
+
+**説明:**<br> Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。 delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
+
+num < 1 の場合、空の文字列を返します。
+string が null の場合、空の文字列を返します。
+string に含まれる単語の数が指定より少ないか、区切り記号文字で識別されるどの単語も string に含まれていない場合は、空の文字列が返されます。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | 種類 | メモ |
+| --- | --- | --- | --- |
+| **String** |必須 |複数値の属性 |返される単語を含む文字列|
+| **WordNumber** |必須 | 整数 | 返すべき単語の番号を指定する数値|
+| **delimiters** |必須 |String| 単語を識別するために使用される区切り記号を表す文字列|
+
+**例:**<br>
+Word("The quick brown fox",3," ")                                                                                       
+"brown" を返します。
+
+Word("This,string!has&many separators",3,",!&#")                                                                       
+"has" が返されます
+
+---
 
 ## <a name="examples"></a>例
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
@@ -379,6 +674,18 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 * **出力**: John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
 * **出力**: John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
 * **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
+メール属性が存在する場合は、それをフローすることをおすすめします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
+
+**Expression:** <br>
+`Coalesce([mail],[userPrincipalName])`
+
+**サンプル入力/出力:** <br>
+
+* **入力** (mail):NULL
+* **入力** (userPrincipalName): "John.Doe@contoso.com"
+* **出力**:  "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

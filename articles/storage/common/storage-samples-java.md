@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349952"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748030"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java を使用した Azure Storage サンプル
 
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
-## <a name="blob-samples"></a>BLOB のサンプル
+> [!NOTE]
+> これらのサンプルでは、Azure Storage Java v11 ライブラリが使用されます。 v12 コードについては、GitHub リポジトリの[サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)を参照してください。
+
+## <a name="blob-samples-v11"></a>BLOB のサンプル (v11)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -39,7 +42,7 @@ ms.locfileid: "71349952"
 | サービスのプロパティ | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Snapshot Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>ファイルのサンプル
+## <a name="file-samples-v11"></a>ファイルのサンプル (v11)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ ms.locfileid: "71349952"
 | 共有のリスト | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | 共有のプロパティ/メタデータ/統計 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>キューのサンプル
+## <a name="queue-samples-v11"></a>キューのサンプル (v11)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -66,7 +69,7 @@ ms.locfileid: "71349952"
 | キュー サービスのプロパティ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | 更新メッセージ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>テーブルのサンプル
+## <a name="table-samples-v11"></a>テーブルのサンプル (v11)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -92,7 +95,7 @@ Azure Storage ライブラリのインストール方法と概要については
 * [Java での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-java.md)
 * [Java での Azure File サービスの概要](../files/storage-java-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 

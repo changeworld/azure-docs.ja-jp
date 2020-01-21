@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric - ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ | Microsoft Docs
+title: ユーザー割り当てのマネージド ID を持つアプリをデプロイする
 description: この記事では、ユーザー割り当てのマネージド ID を使用して Service Fabric アプリケーションをデプロイする方法について説明します
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037485"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610337"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>ユーザー割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
@@ -103,7 +99,7 @@ ms.locfileid: "71037485"
       </Resources>
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric アプリケーション コードでマネージド ID を使用する方法](how-to-managed-identity-service-fabric-app-code.md)
 * [Service Fabric アプリケーションに他の Azure リソースへのアクセスを許可する方法](how-to-grant-access-other-resources.md)

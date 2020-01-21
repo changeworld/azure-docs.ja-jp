@@ -4,12 +4,12 @@ description: Azure Functions Core Tools と Azure CLI を使用して、Azure �
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433192"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769338"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>クイック スタート:Azure で HTTP によってトリガーされる Python 関数を作成する
 
@@ -122,7 +122,7 @@ Ctrl + C キーを使用して、関数アプリの実行をシャットダウ�
 
 ## <a name="create-a-function-app-in-azure"></a>Azure で関数アプリを作成する
 
-関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 
+関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 次のコマンドを実行します。 `<APP_NAME>` を一意の関数アプリ名に置き換えます。 `<STORAGE_NAME>` をストレージ アカウント名に置き換えます。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
 

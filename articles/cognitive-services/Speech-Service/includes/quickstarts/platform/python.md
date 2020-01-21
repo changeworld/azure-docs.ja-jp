@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 37b0deba6531c8e714b8786f8c815cf323c310ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468327"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752401"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "75468327"
         ```
 
 - Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 パッケージを初めてインストールする場合、このガイドを続行する前に Windows の再起動が必要になる場合があることに注意してください。
-- 最後に、[Python 3.5 以降](https://www.python.org/downloads/)が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
+- 最後に、[Python 3.5、3.6、または 3.7](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code を使用して Speech SDK をインストールする
 

@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687069"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680887"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -36,7 +36,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>ローカル キャッシュによる App Service の動作の変化
 * _D:\home_ は、アプリの起動時に VM インスタンス上に作成されるローカル キャッシュを指します。 _D:\local_ は、一時的な VM 固有の記憶域を引き続き指します。
-* 共有コンテンツ ストアの _/site_ および _/siteextensions_ フォルダーの 1 回限りのコピーが、ローカル キャッシュの _D:\home\site_ および _D:\home\siteextensions_ のそれぞれに格納されます。 ファイルは、アプリの起動時にローカル キャッシュにコピーされます。 各アプリの 2 つのフォルダーのサイズは既定で上限が 300 MB ですが、最大 2 GB まで増やすことができます。
+* 共有コンテンツ ストアの _/site_ および _/siteextensions_ フォルダーの 1 回限りのコピーが、ローカル キャッシュの _D:\home\site_ および _D:\home\siteextensions_ のそれぞれに格納されます。 ファイルは、アプリの起動時にローカル キャッシュにコピーされます。 各アプリの 2 つのフォルダーのサイズは既定で上限が 300 MB ですが、最大 2 GB まで増やすことができます。 コピーしたファイルがローカル キャッシュのサイズを超える場合、App Service ではローカル キャッシュは無視され、リモート ファイル共有から読み取られます。
 * ローカル キャッシュは読み取り/書き込み対応です。 ただし、アプリが仮想マシンを移動した場合や再起動された場合、変更は破棄されます。 コンテンツ ストアにミッション クリティカルなデータを保存するアプリには、ローカル キャッシュを使用しないでください。
 * _D:\home\LogFiles_ と _D:\home\Data_ には、ログ ファイルとアプリ データが格納されます。 この 2 つのサブフォルダーは、VM インスタンスにローカルに格納され、共有コンテンツ ストアに定期的にコピーされます。 アプリは、これらのフォルダーに書き込むことによって、ログ ファイルとデータを保持できます。 ただし、共有コンテンツ ストアへのコピーはベストエフォートで行われるため、VM インスタンスが突然クラッシュした場合はログ ファイルおよびデータが失われる可能性があります。
 * [ログのストリーミング](troubleshoot-diagnostic-logs.md#stream-logs)は、ベストエフォート コピーの影響を受けます。 ストリーム配信されるログにおいて最大で 1 分間の遅延が発生する可能性があります。
@@ -49,7 +49,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ローカル キャッシュは、予約されたアプリケーション設定を組み合わせて使用して構成します。 このアプリケーション設定は、次の方法を使用して構成できます。
 
 * [Azure Portal](#Configure-Local-Cache-Portal)
-* [Azure リソース マネージャー](#Configure-Local-Cache-ARM)
+* [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure ポータルを使用してローカル キャッシュを構成する
 <a name="Configure-Local-Cache-Portal"></a>
@@ -83,7 +83,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>ローカル キャッシュのサイズ設定を変更する
-ローカル キャッシュの既定のサイズは **1 GB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。
+ローカル キャッシュの既定のサイズは **300 MB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service のローカル キャッシュを使用する場合のベスト プラクティス
 ローカル キャッシュは、 [ステージング環境](../app-service/deploy-staging-slots.md) 機能と併用することをお勧めします。

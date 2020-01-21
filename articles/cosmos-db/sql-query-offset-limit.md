@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873252"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732588"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での OFFSET LIMIT 句
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>解説
   
-  OFFSET LIMIT 句では、OFFSET の数と LIMIT の数の両方が必要です。 省略可能な `ORDER BY` 句を使用すると、順序付けられた値に対してスキップを実行することで結果セットが生成されます。 そうでない場合、クエリでは、決められた順序の値が返されます。 現在、この句は単一パーティション内のクエリのみでサポートされており、クロス パーティション クエリではまだサポートしていません。
+  OFFSET LIMIT 句では、OFFSET の数と LIMIT の数の両方が必要です。 省略可能な `ORDER BY` 句を使用すると、順序付けられた値に対してスキップを実行することで結果セットが生成されます。 そうでない場合、クエリでは、決められた順序の値が返されます。 現在この句は、1つのパーティション内のクエリと、クロスパーティションクエリでサポートされています。
 
 ## <a name="examples"></a>例
 
@@ -80,8 +80,8 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
+- [作業の開始](sql-query-getting-started.md)
 - [SELECT 句](sql-query-select.md)
 - [ORDER BY 句](sql-query-order-by.md)

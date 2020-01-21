@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240050"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610473"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Syslog を使用して、ご利用の外部ソリューションを接続する
 
@@ -28,14 +28,18 @@ Syslog をサポートする任意のオンプレミスのアプライアンス�
 > [!NOTE]
 > ご利用のアプライアンスで Syslog CEF がサポートされている場合、接続はより詳細になるので、このオプションを選択し、[CEF からのデータの接続](connect-common-event-format.md)に関するページに記載の手順に従う必要があります。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。
 
 詳細については、「[Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)」を参照してください。
 
 > [!NOTE]
-> エージェントは、複数のソースからログを収集できますが、専用のプロキシ コンピューターにインストールする必要があります。
+> - エージェントは、複数のソースからログを収集できますが、専用のプロキシ コンピューターにインストールする必要があります。
+> - 同じ VM 上の CEF 用と Syslog 用の両方のコネクタをサポートする場合は、次の手順を実行してデータの重複を回避します。
+>    1. 手順に従って、[CEF を接続](connect-common-event-format.md)します。
+>    2. Syslog データを接続するには、 **[設定]**  >  **[ワークスペースの設定]**  >  **[詳細設定]**  >  **[データ]**  >  **[Syslog]** にアクセスして、ファシリティおよびその優先順位を設定し、CEF 構成で使用したファシリティやプロパティと同じにならないようにします。 <br></br>**[下の構成をコンピューターに適用する]** を選択する場合、このワークスペースに接続されるすべての VM にこれらの設定が適用されます。
+
 
 ## <a name="connect-your-syslog-appliance"></a>Syslog アプライアンスを接続する
 
@@ -83,7 +87,7 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
  
 この検出には、Syslog データ コネクタの特定の構成が必要です。 
 
-1. 前の手順のステップ 5 で、監視するファシリティとして **[auth]** と **[authpriv]** の両方が選択されていることを確認してください。 重大度オプションは既定の設定のままにし、すべてが選択されるようにします。 例:
+1. 前の手順のステップ 5 で、監視するファシリティとして **[auth]** と **[authpriv]** の両方が選択されていることを確認してください。 重大度オプションは既定の設定のままにし、すべてが選択されるようにします。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![異常な SSH ログインの検出に必要なファシリティ](./media/connect-syslog/facilities-ssh-detection.png)
@@ -98,7 +102,9 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
     
     結果の数が 0 より大きい場合、Syslog データは、異常な SSH ログインの検出用に適しています。 この検出は、 **[分析]**  >   **[Rule templates]\(ルール テンプレート\)**  >  **[(Preview) Anomalous SSH Login Detection]\((プレビュー) 異常な SSH ログインの検出\)** で有効にします。
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+

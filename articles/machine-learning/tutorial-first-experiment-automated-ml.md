@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532475"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982434"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
         検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 2
         コンカレンシー| 実行される並列イテレーションと、イテレーションごとに使用されるコアの最大数| &nbsp;最大同時イテレーション数:&nbsp;5<br> &nbsp;イテレーションごとのコアの最大数:&nbsp;&nbsp;なし
         
-        **[OK]** を選択します。
+        **[保存]** を選択します。
 
-1. **[作成]** を選択して実験を実行します。 実験の準備が開始されると、 **[Run Detail]\(実行の詳細\)** 画面が開き **[Run status]\(実行の状態\)** が表示されます。
+1. **[完了]** を選択して実験を実行します。 実験の準備が開始されると、 **[Run Detail]\(実行の詳細\)** 画面が開き **[Run status]\(実行の状態\)** が表示されます。
 
 >[!IMPORTANT]
 > 実験の実行の準備に、**10 から 15 分**かかります。

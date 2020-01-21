@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST SDK - Azure HDInsight
 description: Azure HDInsight 上の Phoenix Query Server に対応した REST SDK をインストールし、使用します。
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311683"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612259"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -71,18 +71,18 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 重要なプロパティを次に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | -- | -- |
 | AutoCommit | Phoenix トランザクションに対して `autoCommit` が有効かどうかを示すブール値です。 |
 | ReadOnly | 接続が読み取り専用かどうかを示すブール値です。 |
 | TransactionIsolation | JDBC の仕様に従ってトランザクション分離のレベルを示す整数値です。次の表をご覧ください。|
-| カタログ | 接続プロパティをフェッチするときに使うカタログの名前です。 |
+| Catalog | 接続プロパティをフェッチするときに使うカタログの名前です。 |
 | スキーマ | 接続プロパティをフェッチするときに使うスキーマの名前です。 |
 | IsDirty | プロパティが変更されたかどうかを示すブール値です。 |
 
 `TransactionIsolation` の値を次に示します。
 
-| 分離値 | 説明 |
+| 分離値 | [説明] |
 | -- | -- |
 | 0 | トランザクションはサポートされていません。 |
 | 1 | ダーティ リード、反復不能読み取り、およびファントム読み取りが発生する可能性があります。 |
@@ -164,7 +164,7 @@ finally
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
-この例では、アメリカの州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
+この例では、アメリカ合衆国の州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
@@ -277,7 +277,7 @@ finally
 }
 ```
 
-挿入ステートメントを実行する構造は、新しいテーブルの作成と似ています。 `try` ブロックの最後でトランザクションが明示的にコミットされていることに注意してください。 この例では、挿入トランザクションを 300 回繰り返します。 次の例では、さらに効率的なバッチ挿入処理を示します。
+挿入ステートメントを実行する構造は、新しいテーブルの作成と似ています。 `try` ブロックの最後で、トランザクションが明示的にコミットされています。 この例では、挿入トランザクションを 300 回繰り返します。 次の例では、さらに効率的なバッチ挿入処理を示します。
 
 ## <a name="batch-insert-data"></a>データのバッチ挿入
 
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight の Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
 * [Apache HBase REST SDK の使用](apache-hbase-rest-sdk.md)

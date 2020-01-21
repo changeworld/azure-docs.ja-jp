@@ -5,15 +5,14 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437023"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -39,9 +38,7 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
 
-
-いいえ。サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
-
+いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、必要に応じてより高速にバーストすることはできますか。
 
@@ -57,38 +54,39 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ## <a name="supported-services"></a>サポートされているサービス
 
-ExpressRoute では、プライベート ピアリング、Microsoft ピアリング、パブリック ピアリングといったさまざまな種類のサービスについて、[3 つのルーティング ドメイン](expressroute-circuit-peerings.md)をサポートしています。
+ExpressRoute では、プライベート ピアリング、Microsoft ピアリング、パブリック ピアリングといったさまざまな種類のサービスについて、[3 つのルーティング ドメイン](expressroute-circuit-peerings.md)がサポートされています (非推奨)。
 
 ### <a name="private-peering"></a>プライベート ピアリング
+
+**サポート対象:**
 
 * すべての仮想マシンとクラウド サービスを含む、仮想ネットワーク
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
+
+ExpressRoute 回線が Azure Microsoft ピアリングに対して有効になっている場合は、Azure 内で使用されている[パブリック IP アドレスの範囲](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に回線経由でアクセスできます。 Azure Microsoft ピアリングを使用すると、現在 Azure でホストされているサービスにアクセスできます (ご利用の回線の SKU によっては geo 制限があります)。 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 次に、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧されている範囲と比較します。 あるいは、問題のサービス用のサポート チケットを開いて、明確にすることもできます。
+
+**サポート対象:**
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
 * Azure Active Directory
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>**以下のサービスはサポートされていません**。
-    * CDN
-    * Azure Front Door
-    * Multi-Factor Authentication Server (レガシ)
-    * Traffic Manager
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。
+
+**サポート対象外:**
+
+* CDN
+* Azure Front Door
+* Multi-Factor Authentication Server (レガシ)
+* Traffic Manager
 
 ### <a name="public-peering"></a>パブリック ピアリング
 
->[!NOTE]
->新しい ExpressRoute 回線では、パブリック ピアリングは無効になっています。 Azure サービスは、Microsoft ピアリングで利用できます。
->
+新しい ExpressRoute 回線では、パブリック ピアリングは無効になっています。 Azure サービスは、Microsoft ピアリングで利用できるようになりました。 パブリック ピアリングが非推奨となる前に作成された回線の場合は、必要なサービスに応じて、Microsoft ピアリングまたはパブリック ピアリングのどちらを使用するかを選択できます。
 
-* Power BI
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>
-  **以下のサービスはサポートされていません**。
-    * CDN
-    * Azure Front Door
-    * Multi-Factor Authentication Server (レガシ)
-    * Traffic Manager
+パブリック ピアリングの詳細と構成の手順については、[ExpressRoute パブリック ピアリング](about-public-peering.md)に関するページを参照してください。
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Microsoft のピアリングの構成中に、[アドバタイズされたパブリック プレフィックス] の状態が「検証が必要です」と表示されるのはなぜですか。
 
@@ -151,7 +149,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
 
-### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Microsoft ピアリングまたはパブリック ピアリングで Azure Storage や Azure SQL などの Azure パブリック サービス宛てのトラフィックが、ExpressRoute パスで確実に優先されるようにするにはどうしたらよいですか?
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Microsoft ピアリングまたはパブリック ピアリングで Azure Storage や Azure SQL などの Azure パブリック サービス宛てのトラフィックが、ExpressRoute パスで確実に優先されるようにするにはどうしたらよいですか?
 
 オンプレミスから Azure へのパスが ExpressRoute 回線で確実に優先されるようにするには、お使いのルーターに *Local Preference* 属性を実装する必要があります。
 
@@ -165,9 +163,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 
-
-いいえ。Azure へのレイヤー 2 接続の拡張はサポートされません。
-
+いいえ。 Azure へのレイヤー 2 接続の拡張はサポートされません。
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>1 つのサブスクリプションで複数の ExpressRoute 回線を使用できますか。
 
@@ -216,9 +212,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>同じ回線に接続されている仮想ネットワークは、互いに分離されていますか。
 
-
-いいえ。ルーティングの観点から見た場合、同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、互いに分離されていません。 ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
-
+いいえ。 ルーティングの観点から見た場合、同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、互いに分離されていません。 ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>1 つの仮想ネットワークを複数の ExpressRoute 回線に接続できますか。
 
@@ -306,9 +300,7 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Premium の機能セットから必要な機能だけを選択できますか。
 
-
-いいえ。機能を選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。
-
+いいえ。 機能を選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>ExpressRoute Premium の料金はいくらですか。
 

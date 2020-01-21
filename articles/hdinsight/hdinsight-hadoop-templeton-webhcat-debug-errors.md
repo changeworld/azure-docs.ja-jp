@@ -2,18 +2,18 @@
 title: HDInsight の WebHCat エラーの説明と解決策 - Azure
 description: HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555009"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638852"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -25,19 +25,13 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="modifying-configuration"></a>構成の変更
 
-> [!IMPORTANT]  
-> このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
-
-* **Windows** クラスターの場合:スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)に関するページを参照してください。
-
-* **Linux** クラスターの場合:Apache Ambari (Web または REST API) を使用して値を変更します。 詳細については、「[Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)」を参照してください
-
+このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決手順に値が変更可能であることが示されている場合は、Apache Ambari (web または REST API) を使用して値を変更します。 詳細については、「[Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)」を参照してください
 
 ### <a name="default-configuration"></a>既定の構成
 
 次の既定値を超えた場合、WebHCat のパフォーマンスが低下したり、エラーが発生したりします。
 
-| Setting | 実行内容 | 既定値 |
+| 設定 | 実行内容 | 既定値 |
 | --- | --- | --- |
 | [yarn.scheduler.capacity.maximum-applications][maximum-applications] |同時にアクティブにできるジョブの最大数 (保留中または実行中) |10,000 |
 | [templeton.exec.max-procs][max-procs] |同時に処理できる要求の最大数 |20 |
@@ -49,7 +43,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 | 原因 | 解決策 |
 | --- | --- |
-| WebHCat によって 1 分間に処理される同時要求の最大数を超過した (既定値は 20)。 |最大同時要求数を超える数の要求を送信しないようにワークロードを減らすか、 `templeton.exec.max-procs`を変更して同時要求の上限をより大きな値にします。 詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
+| WebHCat によって処理される 1 分間あたりの最大同時要求数を超過しました (既定値は 20)。 |最大同時要求数を超える数の要求を送信しないようにワークロードを減らすか、`templeton.exec.max-procs` を変更して同時要求の上限を増やします。 詳細については、「[構成の変更](#modifying-configuration)」を参照してください。 |
 
 ## <a name="server-unavailable"></a>Server unavailable
 
@@ -77,7 +71,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 | --- | --- |
 | WebHCat プロセス内で内部ガベージ コレクションが行われている。 |ガベージ コレクションが終了するまで待つか、または WebHCat サービスを再起動します。 |
 | ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 このエラーは、アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 |現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「[構成の変更](#modifying-configuration)」セクションをご覧ください。 |
-| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |*すべて*のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
+| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |"*すべて*" のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 |2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 |現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |
 

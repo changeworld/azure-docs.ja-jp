@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561500"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754595"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -68,7 +68,7 @@ Site Recovery が期待どおりに動作するには、レプリケートする
 
 アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
 
-| **URL** | **詳細** |
+| **[URL]** | **詳細** |
 | ------- | ----------- |
 | *.blob.core.windows.net | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
 | login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証を提供します。 |
@@ -77,15 +77,18 @@ Site Recovery が期待どおりに動作するには、レプリケートする
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
-URL の代わりに IP アドレスを使用してアウトバウンド接続を制御する場合は、IP ベースのファイアウォール、プロキシ、または NSG ルールに関して次のアドレスを許可します。
+NSG を使用している場合、Azure Storage、Azure Active Directory、Site Recovery サービス、Site Recovery 監視を利用するための、サービス タグ ベースの NSG ルールを作成します。 [詳細については、こちらを参照してください](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
+
+NSG ルールの代わりに IP アドレスを使用してアウトバウンド接続を制御する場合は、IP ベースのファイアウォール、プロキシ、または NSG ルールに関して次のアドレスを許可します。
+
+>[!NOTE]
+>アウトバウンド アクセスには必ず、サービス タグを使用して NSG ルールを構成することをお勧めします。
 
   - [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)
   - [ドイツの Windows Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=54770)
   - [中国の Windows Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery サービス エンドポイントの IP アドレス](https://aka.ms/site-recovery-public-ips)
-
-NSG を使用している場合は、ソース リージョン用のストレージ サービス タグ NSG ルールを作成できます。 [詳細情報](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM の証明書の確認
 
@@ -123,7 +126,7 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 Site Recovery は、サブスクリプションとリソース グループ/クラウド サービスに関連付けられている VM の一覧を取得します。
 
 1. **[仮想マシン]** で、レプリケートする VM を選択します。
-2. Click **OK**.
+2. **[OK]** をクリックします。
 
 ### <a name="configure-replication-settings"></a>レプリケーションの設定を構成する
 
@@ -132,7 +135,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 1. **[設定]** をクリックしてターゲットおよびレプリケーションの設定を表示します。
 2. 既定のターゲット設定をオーバーライドするには、 **[リソース グループ、ネットワーク、ストレージ、可用性セット]** の横にある **[カスタマイズ]** をクリックします。
 
-   ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+   ![設定の構成](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 3. 表にまとめたようにターゲット設定をカスタマイズします。
@@ -190,7 +193,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
     - **保護の有効化**ジョブの進行状況を、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡します。
     - **[設定]**  >  **[レプリケートされたアイテム]** では、VM の状態と初期レプリケーションの進行状況を確認できます。 VM の設定をドリルダウンするには、その VM をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure VM のディザスター リカバリーを構成しました。 ディザスター リカバリーのテストを開始して、フェールオーバーが正しく機能していることを確認できます。
 

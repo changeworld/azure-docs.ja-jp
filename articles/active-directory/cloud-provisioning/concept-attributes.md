@@ -1,6 +1,6 @@
 ---
 title: Azure AD スキーマとカスタム式について
-description: このトピックでは、Azure AD スキーマ、プロビジョニング エージェントがフローする属性、およびカスタム式について説明します。
+description: この記事では、Azure AD スキーマ、プロビジョニング エージェントでフローする属性、およびカスタム式について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,34 +15,34 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eae594bcc20e3c4ed1c6fbd0333699de8c9f4452
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795530"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549382"
 ---
-# <a name="understanding-the-azure-ad-schema"></a>Azure AD スキーマについて
-ディレクトリのような Azure AD のオブジェクトは、ユーザー、グループ、連絡先などを表す、プログラムによる高レベルのデータ構造です。  Azure AD で新しいユーザーまたは連絡先を作成すると、そのオブジェクトの新しいインスタンスが作成されます。  これらのインスタンスは、プロパティに基づいて区別できます。
+# <a name="understand-the-azure-ad-schema"></a>Azure AD スキーマについて
+ディレクトリなどの Azure Active Directory (Azure AD) のオブジェクトは、ユーザー、グループ、連絡先などを表す、プログラムによる高レベルのデータ構造です。 Azure AD で新しいユーザーまたは連絡先を作成すると、そのオブジェクトの新しいインスタンスが作成されます。 これらのインスタンスは、プロパティに基づいて区別できます。
 
-Azure AD のプロパティは、Azure AD 内のオブジェクトのインスタンスに関する情報を格納する要素です。  
+Azure AD のプロパティは、Azure AD 内のオブジェクトのインスタンスに関する情報を格納する要素です。
 
-Azure AD スキーマでは、エントリでプロパティが使用できるルール、それらのプロパティが持つことができる値の種類、およびユーザーがこれらの値を操作する方法を定義します。 
+Azure AD スキーマでは、エントリでプロパティを使用するルール、それらのプロパティが持つことができる値の種類、およびユーザーがこれらの値を操作する方法を定義します。 
 
-Azure AD には、2 種類のプロパティがあります。  プロパティは次のとおりです。
-- **組み込みプロパティ** – Azure AD スキーマで事前に定義されているプロパティです。  これらのプロパティはさまざまな用途を提供し、アクセスできる場合と使用できない場合があります。
-- **ディレクトリ拡張機能** – 自分用に Azure AD をカスタマイズできるように提供されるプロパティです。  たとえば、特定の属性を持つオンプレミスの Active Directory を拡張し、その属性をフローさせる場合は、提供されているカスタム プロパティの 1 つを使用できます。 
+Azure AD には、次の 2 種類のプロパティがあります。
+- **組み込みプロパティ**:Azure AD スキーマで事前に定義されているプロパティです。 これらのプロパティにはさまざまな用途があり、アクセスできる場合とできない場合があります。
+- **ディレクトリ拡張機能**:自分用に Azure AD をカスタマイズするために提供されているプロパティです。 たとえば、特定の属性を持つオンプレミスの Active Directory を拡張し、その属性をフローさせる場合は、提供されているカスタム プロパティの 1 つを使用できます。 
 
 ## <a name="attributes-and-expressions"></a>属性と式
-ユーザーなどのオブジェクトが Azure AD にプロビジョニングされると、そのユーザー オブジェクトの新しいインスタンスが作成されます。  この作成物には、そのオブジェクトのプロパティが含まれています。これは属性とも呼ばれます。  初期状態では、新しく作成されたオブジェクトの属性は、同期規則によって決定される値に設定されます。  これらの属性は、クラウド プロビジョニング エージェントを使用して最新の状態に保たれます。
+ユーザーなどのオブジェクトが Azure AD にプロビジョニングされると、そのユーザー オブジェクトの新しいインスタンスが作成されます。 この作成物には、そのオブジェクトのプロパティが含まれています。これは属性とも呼ばれます。 初期状態では、新しく作成されたオブジェクトの属性は、同期規則によって決定される値に設定されます。 これらの属性は、クラウド プロビジョニング エージェントを使用して最新の状態に保たれます。
 
-![](media/concept-attributes/attribute1.png)
+![オブジェクトのプロビジョニング](media/concept-attributes/attribute1.png)
 
-たとえば、ユーザーがマーケティング部門の一員である場合は、プロビジョニング時に最初に Azure AD department 属性が作成され、次にその値が Marketing に設定されます。  しかし、6 か月後には彼らは営業部門に変わります。  オンプレミスの AD department 属性は、Sales に変更されます。  この変更は Azure AD に同期され、Azure AD ユーザー オブジェクトに反映されます。
+たとえば、ユーザーがマーケティング部門に属しているとします。 最初に、プロビジョニング時に Azure AD の部門属性が作成され、値が Marketing に設定されます。 6 か月後に販売に異動した場合、オンプレミスの Active Directory の部門属性が Sales に変更されます。 この変更は Azure AD に同期され、Azure AD ユーザー オブジェクトに反映されます。
 
-属性の同期は、直接行うことができます。この場合、Azure AD の値は、オンプレミスの属性の値に直接設定されます。  または、この同期を処理するプログラム式が存在する場合もあります。  値を設定するために何らかのロジック、または決定を行う必要がある場合は、プログラム式が必要になります。
+属性の同期は、直接行うことができます。この場合、Azure AD の値は、オンプレミスの属性の値に直接設定されます。 または、プログラム式によって同期が処理される場合があります。 値を設定するために何らかのロジックを要するか、または決定を行う必要がある場合は、プログラム式が必要になります。
 
-たとえば、メールの属性 ("john.smith@contoso.com") を持っていて、"@contoso.com" の部分を取り除き、値 "john. smith" だけをフローさせる必要がある場合は、次のようにします。
+たとえば、メールの属性が "john.smith@contoso.com" であり、"@contoso.com" の部分を取り除いて値 "john. smith" だけをフローさせる必要がある場合は、次のコードを使用します。
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
@@ -51,9 +51,9 @@ Azure AD には、2 種類のプロパティがあります。  プロパティ�
 * **入力** (mail): "john.smith@contoso.com"
 * **出力**: "john. smith"
 
-カスタム式の記述および構文の詳細については、「[Azure Active Directory での属性マッピングのための式の作成](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)」を参照してください。
+カスタム式および構文の記述方法の詳細については、「[Azure Active Directory での属性マッピングのための式の作成](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)」を参照してください。
 
-次の一覧では、一般的な属性と、それらが Azure AD に同期される方法を示します。
+次の表では、一般的な属性の一部と、これらが Azure AD に同期される方法を示します。
 
 
 |オンプレミスの Active Directory|マッピングの種類|Azure AD|
@@ -66,14 +66,14 @@ Azure AD には、2 種類のプロパティがあります。  プロパティ�
 |userprincipalName|直接|userPrincipalName|
 |ProxyAdress|直接|ProxyAddress|
 
-## <a name="viewing-the-schema"></a>スキーマの表示
-スキーマを表示して確認するには、次の手順を実行します。
+## <a name="view-the-schema"></a>スキーマを表示する
+スキーマを表示して確認するには、次の手順に従います。
 
 1.  [Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)に移動します。
-2.  自分の全体管理者アカウントでサインインします
-3.  左側で、 **[アクセス許可の変更]** をクリックし、**Directory.ReadWrite.All** が同意になっていることを確認します。
-4.  クエリ https://graph.microsoft.com/beta/serviceprincipals/ を実行します。  このクエリは、サービス プリンシパルの一覧を返します。
-5.  "appDisplayName":"Active Directory to Azure Active Directory Provisioning" を見つけ、"id:" の値をメモします。
+1.  自分の全体管理者アカウントでサインインします。
+1.  左側で、 **[アクセス許可の変更]** を選択し、**Directory.ReadWrite.All** が*同意*になっていることを確認します。
+1.  クエリ https://graph.microsoft.com/beta/serviceprincipals/ を実行します。 このクエリでサービス プリンシパルの一覧が返されます。
+1.  `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` を見つけて、`"id"` の値を書き留めます。
     ```
     "value": [
             {
@@ -146,8 +146,8 @@ Azure AD には、2 種類のプロパティがあります。  プロパティ�
                 "passwordCredentials": []
             },
     ```
-6. {Service Principal id} を実際の値に置き換えて、次のクエリを実行します。`https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`
-7. "id":"AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976" セクションを見つけ、"id:" をメモします。
+1. `{Service Principal id}` を独自の値に置き換え、クエリ `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` を実行します。
+1. `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` を見つけて、`"id"` の値を書き留めます。
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -238,16 +238,17 @@ Azure AD には、2 種類のプロパティがあります。  プロパティ�
                 ]
             }
     ```
-8. クエリ `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` を実行します。
+1. ここで、クエリ `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` を実行します。
  
     例: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
- {Service Principal Id} と {AD2ADD Provisioning Id} を実際の値に置き換えます。
+   `{Service Principal Id}` と `{AD2ADD Provisioning Id}` を独自の値に置き換えます。
 
-9. このクエリでは、スキーマが返されます。
-  ![](media/concept-attributes/schema1.png)
+1. このクエリでスキーマが返されます。
+
+   ![返されたスキーマ](media/concept-attributes/schema1.png)
  
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

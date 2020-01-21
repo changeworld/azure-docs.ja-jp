@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488437"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640722"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
@@ -39,7 +39,7 @@ Azure リージョンおよびサブスクリプションでパブリック IP �
 - 既知の範囲からパブリック IP アドレス リソースを作成できます。
 - ユーザーまたはユーザーのビジネス パートナーは、現在割り当ててあるパブリック IP アドレスだけでなく、まだ割り当てていないアドレスも含まれる範囲で、ファイアウォール規則を作成できます。 これにより、新しいリソースに IP アドレスを割り当てるときにファイアウォール規則を変更する必要がなくなります。
 - 作成できる範囲の既定のサイズは /28 つまり 16 個の IP アドレスです。
-- 作成できる範囲の数に制限はありませんが、Azure サブスクリプションで使用できる静的パブリック IP アドレスの数には上限があります。 その結果、サブスクリプションで使用できる数より多くの静的パブリック IP アドレスが含まれるような数の範囲を作成することはできません。 詳しくは、[Azure での制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
+- 作成できる範囲の数に制限はありませんが、Azure サブスクリプションで使用できる静的パブリック IP アドレスの数には上限があります。 その結果、サブスクリプションで使用できる数より多くの静的パブリック IP アドレスが含まれるような数の範囲を作成することはできません。 詳しくは、[Azure での制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - プレフィックスのアドレスを使用して作成したアドレスは、パブリック IP アドレスを割り当てることができる任意の Azure リソースに割り当てることができます。
 - 範囲内で割り当てられている IP アドレスおよびまだ割り当てられていない IP アドレスを、簡単に確認することができます。
 
@@ -56,7 +56,7 @@ Azure リージョンおよびサブスクリプションでパブリック IP �
 ## <a name="constraints"></a>制約
 
 - プレフィックスに対して IP アドレスを指定することはできません。 プレフィックスの IP アドレスは、ユーザーが指定したサイズに基づいて、Azure によって割り当てられます。
-- 最大 16 個の IP アドレスまたは /28 のプレフィックスを作成できます。 詳しくは、[Azure での制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
+- 最大 16 個の IP アドレスまたは /28 のプレフィックスを作成できます。 詳しくは、[Azure での制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - プレフィックスを作成した後で、範囲を変更することはできません。
 - プレフィックスの範囲から割り当てることができるのは、Standard SKU で作成された静的パブリック IP アドレスのみです。 パブリック IP アドレスの SKU の詳細については、「[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)」をご覧ください。
 - 範囲のアドレスを割り当てることができるのは、Azure Resource Manager リソースのみです。 クラシック デプロイ モデルのリソースにアドレスを割り当てることはできません。
@@ -64,6 +64,6 @@ Azure リージョンおよびサブスクリプションでパブリック IP �
 - 範囲内のいずれかのアドレスが、リソースに関連付けられているパブリック IP アドレス リソースに割り当てられている場合は、プレフィックスを削除できません。 最初に、プレフィックスの IP アドレスを割り当てられているすべてのパブリック IP アドレス リソースの関連付けを解除する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - パブリック IP アドレス プレフィックスを[作成](manage-public-ip-address-prefix.md)する

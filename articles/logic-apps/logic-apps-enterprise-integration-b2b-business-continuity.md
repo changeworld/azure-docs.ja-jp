@@ -1,6 +1,6 @@
 ---
 title: 統合アカウントのディザスター リカバリー
-description: Azure Logic Apps での統合アカウントの複数のリージョンにわたるディザスター リカバリーを設定する
+description: Azure Logic Apps のリージョン間ディザスター リカバリーで統合アカウントと B2B 成果物を設定します
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 25dff0cb14467513bf1cc60fd1fb6c2205bd2276
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793139"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666905"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での統合アカウントの複数のリージョンにわたるディザスター リカバリーを設定する
 
@@ -238,7 +238,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 
 時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
 

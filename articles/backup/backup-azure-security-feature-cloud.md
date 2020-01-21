@@ -3,16 +3,16 @@ title: クラウド ワークロードの保護に役立つセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894030"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496925"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
-マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃から保護するために、Azure Backup では、削除後もバックアップ データを保護するためのセキュリティ機能が提供されるようになりました。 このような機能の 1 つに、論理的な削除があります。 論理的な削除を使用すると、悪意のあるアクターによって VM のバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間の保持期間中は、お客様にコストは発生しません。
+マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃から保護するために、Azure Backup では、削除後もバックアップ データを保護するためのセキュリティ機能が提供されるようになりました。 このような機能の 1 つに、論理的な削除があります。 論理的な削除を使用すると、悪意のあるアクターによって VM のバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間の保持期間中は、お客様にコストは発生しません。 また、Azure では、データをさらにセキュリティで保護するために、保存中のすべてのバックアップ データも [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用して暗号化しています。
 
 > [!NOTE]
 > 論理的な削除では、削除されたバックアップ データのみが保護されます。 バックアップせずに VM が削除された場合、論理的な削除機能ではデータは保持されません。 完全な復元性を確保するには、すべてのリソースを Azure Backup で保護する必要があります。
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 保護を再び有効にするには、[バックアップを再開する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)必要があります。
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>REST API を使用した VM の論理的な削除
+
+- [こちら](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)の説明に従って、REST API を使用してバックアップを削除します。
+- これらの削除操作を元に戻す場合は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)で説明されている手順を参照してください。
+
 ## <a name="disabling-soft-delete"></a>論理的な削除の無効化
 
 論理的な削除は、偶発的または悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナーでは既定で有効になっています。  この機能を無効にすることは推奨されません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。バックアップ管理者のみがこの機能を無効にできます。 この機能を無効にした場合、保護された項目を削除すると、復元する機能はなく、すべてがすぐに削除されます。 この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、完全に削除されるように、削除を取り消してからもう一度削除する必要があります。
@@ -146,6 +151,10 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>REST API を使用した論理的な削除の無効化
+
+REST API を使用して論理的な削除機能を無効にする方法については、[こちら](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)で説明されている手順を参照してください。
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>論理的に削除されたバックアップ項目を完全に削除する
 
 この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、削除を取り消し、もう一度削除して完全に削除します。
@@ -154,7 +163,7 @@ SoftDeleteFeatureState : Disabled
 
 次の手順に従います。
 
-1. [論理的な削除を無効にする](#disabling-soft-delete)には、この手順に従います。 
+1. [論理的な削除を無効にする](#disabling-soft-delete)には、この手順に従います。
 2. Azure portal で、コンテナーにアクセスし、**バックアップ項目**にアクセスして論理的に削除された VM を選択します。
 
 ![論理的に削除された VM の選択](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>REST API の使用
+
+論理的な削除を無効にする前に項目を削除した場合、項目は論理的に削除されている状態になります。 すぐに削除するには、削除操作を元に戻してからもう一度削除する必要があります。
+
+1. まず、[こちら](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)で説明されている手順に従って、削除操作を元に戻します。
+2. 次に、[こちら](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)で説明されている手順に従って、REST API を使用して論理的な削除機能を無効にします。
+3. 次に、[こちら](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)の説明に従って、REST API を使用してバックアップを削除します。
+
 ## <a name="other-security-features"></a>その他のセキュリティ機能
 
 ### <a name="storage-side-encryption"></a>ストレージ側の暗号化
@@ -223,7 +240,7 @@ Azure Storage では、データはクラウドに永続化されるときに自
 
 Azure 内では、Azure ストレージとコンテナー間を転送中のデータは HTTPS によって保護されます。 このデータは、Azure バックボーン ネットワークにとどまります。
 
-詳細については、「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」を参照してください。
+詳細については、「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」を参照してください。  暗号化に関する質問の回答については、[Azure Backup の FAQ](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) のページを参照してください。
 
 ### <a name="vm-encryption"></a>VM の暗号化
 
@@ -237,7 +254,7 @@ Recovery Services コンテナーによって使用されるストレージ ア�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="soft-delete"></a>論理的な削除
+### <a name="for-soft-delete"></a>論理な削除
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>すべてのコンテナーで論理的な削除機能を有効にする必要はありますか?
 
@@ -269,7 +286,7 @@ Recovery Services コンテナー内に論理的に削除された状態のバ�
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除することはできますか?
 
-No. 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
+いいえ。 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 
@@ -277,8 +294,8 @@ No. 論理的に削除された項目を強制的に削除することはでき�
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>他のクラウド ワークロード (Azure VM での SQL Server や Azure VM での SAP HANA など) では、論理的な削除はサポートされていますか?
 
-No. 現在、論理的な削除は Azure 仮想マシンでのみサポートされています。
+いいえ。 現在、論理的な削除は Azure 仮想マシンでのみサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Backup のセキュリティ制御](backup-security-controls.md)を確認する。

@@ -6,48 +6,50 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68f893c694369d95dd82b9e5af3d08d67be78884
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461653"
 ---
-# <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud で永続的ストレージを使用する方法
+# <a name="use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud で永続ストレージを使用する
 
-Azure Spring Cloud には、アプリケーション用に永続的ストレージと一時ストレージの 2 種類のストレージが用意されています。  Azure Spring Cloud では、各アプリケーション インスタンスに対して既定で一時ストレージが有効になります。 一時ストレージは、上限が 5 GB で、既定のマウント パスが `/tmp` となっています。
+Azure Spring Cloud には、アプリケーション用に永続的ストレージと一時ストレージの 2 種類のストレージが用意されています。
 
-> [!WARNING]
-> アプリケーション インスタンスに関連付けられている一時ストレージは、そのインスタンスを再起動すると完全に削除されます。
-
-永続的ストレージは、アプリケーションごとに割り当てられる、Azure が管理するファイル共有コンテナーです。 永続的ストレージに格納されているデータは、アプリケーションの全インスタンスが共有します。 各 Azure Spring Cloud サービス インスタンスは、永続的ディスクを有効にしたアプリケーションを最大 10 個持つことができます。 各アプリケーションは、50 GB の永続的ストレージを受け取ります。 永続的ストレージの既定のマウント パスは、`/persistent` です。
+Azure Spring Cloud の既定では、各アプリケーション インスタンスに一時ストレージが提供されます。 一時ストレージはインスタンスごとに 5 GB に制限されており、既定のマウント パスは /tmp になります。
 
 > [!WARNING]
-> 永続的ストレージを "*無効にする*" と、そのアプリケーションに対するストレージの割り当てが解除されます。  そのストレージ アカウント内のデータはすべて失われます。 
+> アプリケーション インスタンスを再起動すると、それに関連付けられている一時ストレージが完全に削除されます。
 
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Azure portal を使用して永続的ストレージを有効にする
+永続的ストレージは、Azure によって管理され、アプリケーションごとに割り当てられるファイル共有コンテナーです。 永続的ストレージに格納されているデータは、アプリケーションの全インスタンスによって共有されます。 Azure Spring Cloud インスタンスには、永続的ストレージを有効にしたアプリケーションを最大 10 個指定できます。 各アプリケーションには、50 GB の永続的ストレージが割り当てられます。 永続的ストレージの既定のマウント パスは /persistent です。
 
-1. Azure portal のホーム画面から、 **[すべてのリソース]** を選択します。
+> [!WARNING]
+> アプリケーションの永続的ストレージを無効にすると、すべてのストレージの割り当てが解除され、格納されているデータがすべて失われます。
 
-     >![[すべてのリソース] アイコンを見つける](media/portal-all-resources.jpg)
+## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Azure portal を使用して永続的ストレージを有効にする
 
-1. 永続的ストレージを必要とする Azure Spring Cloud リソースを見つけて選択します。  この例では、*jpspring* という名前のアプリケーションです。
+1. Azure portal の**ホーム ページ**から、 **[すべてのリソース]** を選択します。
 
-    > ![applicationb を見つける](media/select-service.jpg)
+    >![[すべてのリソース] アイコンを見つける](media/portal-all-resources.jpg)
+
+1. 永続的ストレージを必要とする Azure Spring Cloud リソースを選択します。 この例では、**upspring** という名前のアプリケーションが選択されています。
+
+    > ![アプリケーションを選択します。](media/select-service.jpg)
 
 1. **[設定]** という見出しの下にある **[アプリ]** を選択します。
 
-1. 表に Spring Cloud のサービスが表示されます。  永続的ストレージを追加するサービスを選択します。  この例では**ゲートウェイ** サービスを選択します。
+1. Azure Spring Cloud サービスが表に表示されます。  永続的ストレージを追加するサービスを選択します。 この例では、**ゲートウェイ** サービスが選択されています。
 
     > ![サービスを選択する](media/select-gateway.jpg)
 
-1. サービスの構成ブレードから、 **[構成]** を選択します
+1. サービスの構成ページから、 **[構成]** を選択します
 
-1. **[Persistent Storage] (永続的ストレージ)** タブを選択し、永続的ストレージを有効にします。
+1. **[Persistent Storage] (永続的ストレージ)** タブを選択し、 **[有効にする]** を選択します。
 
     > ![永続的ストレージを有効にする](media/enable-persistent-storage.jpg)
 
-永続的ストレージが有効になっていると、サイズとパスの両方がこのページに表示されます。
+永続的ストレージが有効になると、そのサイズとパスが構成ページに表示されます。
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Azure CLI を使用して永続的ストレージを変更する
 
@@ -56,28 +58,30 @@ Azure Spring Cloud には、アプリケーション用に永続的ストレー�
 ```azurecli
 az extension add --name spring-cloud
 ```
+その他の操作:
 
-永続的ディスクが有効になった状態のアプリを作成します。
- 
-```azurecli
-az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+* 永続的ストレージが有効になった状態のアプリを作成するには:
 
-既存のアプリで永続的ストレージを有効にします。
+    ```azurecli
+    az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-``` 
+* 既存のアプリで永続的ストレージを有効にするには:
 
-既存のアプリで永続的ストレージを無効にします。
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-> [!WARNING]
-> 永続的ストレージを無効にすると、そのアプリケーションに関するストレージの割り当てが解除されます。そのストレージに保存されていたデータはいずれも、完全に失われます。 
+* 既存のアプリで永続的ストレージを無効にするには:
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
-```
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
+    ```
 
-## <a name="next-steps"></a>次の手順
+    > [!WARNING]
+    > アプリケーションの永続的ストレージを無効にすると、すべてのストレージの割り当てが解除され、格納されているデータがすべて完全に失われます。
 
-[アプリケーションとサービスのクォータ](spring-cloud-quotas.md)または[アプリケーションを手動でスケーリングする方法](spring-cloud-tutorial-scale-manual.md)を確認してください。
+## <a name="next-steps"></a>次のステップ
+
+* アプリケーションとサービスのクォータについては、[こちら](spring-cloud-quotas.md)をご覧ください。
+* [アプリケーションを手動でスケーリングする](spring-cloud-tutorial-scale-manual.md)方法について学習してください。

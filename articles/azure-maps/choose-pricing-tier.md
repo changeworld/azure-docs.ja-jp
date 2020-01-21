@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の適切な価格レベルを選択する | Microsoft Docs
-description: Azure Maps によって提供される価格レベルについて説明します
+title: 適切な価格レベルの選択 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps が提供する価格レベルについて説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/02/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ff774f9848db948058075a98504e6c13db5467a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60796292"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911764"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -55,12 +55,12 @@ S0 および S1 の価格レベルをさらによく理解するには、「**�
 
 ### <a name="pricing-tier-targeted-customers"></a>価格レベルの対象のお客様
 
-| 価格レベル  |     対象となるお客様                                                                |
+| Pricing tier  |     対象となるお客様                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>S0 価格レベルの対象は、小規模または中規模の企業のお客様です。 同時実行ユーザー数が多くないことが予想される場合は、この価格レベルが最適です。 また、前記の表に示されているコア地理空間 API でサービス要件が満たされる場合も、この価格レベルが最適です。 この価格レベルは、一般提供されており、 概念実証開発や早い段階のテストからアプリケーションの運用やデプロイまで、すべての運用ステージのアプリケーションで利用できます。<p>|
 | S1            |    <p>S1 価格レベルは、大企業や、ミッションクリティカルなアプリケーション、多数の同時実行ユーザーのサポートを必要とするお客様に適しています。 また、高度な地理空間サービスを必要とするお客様にも適しています。</p>|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 価格レベルを表示および変更する方法について詳しく学びます。
 

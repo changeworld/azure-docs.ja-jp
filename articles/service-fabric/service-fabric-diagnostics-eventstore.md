@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のイベント ストア | Microsoft Docs
-description: Azure Service Fabric のイベント ストアについて
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric イベント ストア
+description: クラスターまたはワークロードの状態を常に把握および監視する方法である、Azure Service Fabric EventStore について説明します。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449783"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645737"
 ---
 # <a name="eventstore-overview"></a>EventStore の概要
 
@@ -131,7 +122,7 @@ Azure クラスターをバージョン 6.5 以降にアップグレードした
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * EventStore API の概要 - [Azure Service Fabric クラスターでの EventStore API の使用](service-fabric-diagnostics-eventstore-query.md)
 * EventStore によって提供されるイベントの一覧の詳細 - [Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric での監視と診断の概要 - [Service Fabric の監視と診断に関するページ](service-fabric-diagnostics-overview.md)

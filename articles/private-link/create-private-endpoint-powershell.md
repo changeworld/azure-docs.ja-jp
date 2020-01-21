@@ -2,26 +2,26 @@
 title: Azure PowerShell を使用して Azure プライベート エンドポイントを作成する | Microsoft Docs
 description: Azure Private Link について学習する
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430331"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
-プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
+プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
 
-このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database Server に安全にアクセスできます。
+このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソースを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、仮想ネットワークとプライベート エンドポイントをホストするリソース グループを作成する必要があります。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *WestUS* に作成します。
 
@@ -59,6 +59,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
 ```
+
+> [!CAUTION]
+> いずれも長い言葉であり、見た目が似ているため、`PrivateEndpointNetworkPoliciesFlag` パラメーターと利用できる別のフラグ `PrivateLinkServiceNetworkPoliciesFlag` は混同しやすくなっています。  必ず正しい方を、つまり、`PrivateEndpointNetworkPoliciesFlag` を使用してください。
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>サブネットを仮想ネットワークに関連付ける
 
@@ -195,7 +198,7 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>VM から SQL Database サーバーにプライベートにアクセスする
 
 1. myVM のリモート デスクトップで、PowerShell を開きます。
-2. 「 `nslookup myserver.database.windows.net` 」を入力します。 
+2. 「`nslookup myserver.database.windows.net`」と入力します。 
 
     次のようなメッセージが返されます。
     ```azurepowershell
@@ -216,12 +219,12 @@ mstsc /v:<publicIpAddress>
 7. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します
 8. *myVM* へのリモート デスクトップ接続を閉じます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、SQL Database サーバー、VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Private Link](private-link-overview.md) の詳細

@@ -1,6 +1,7 @@
 ---
-title: PostgreSQL から Azure Database for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
-description: PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
+title: 既知の問題:PostgreSQL から Azure Database for PostgreSQL へのオンライン移行
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service を使用した PostgreSQL から Azure Database for PostgreSQL 単一サーバーへのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437867"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>PostgreSQL から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -83,11 +86,11 @@ ms.locfileid: "73043198"
 
 - **制限事項**:ソース PostgreSQL データベースに ENUM データ型がある場合、移行は、継続的同期中に失敗します。
 
-    **対処法**: ENUM データ型を、Azure Database for PostgreSQL で変化する文字に変更します。
+    **回避策**:ENUM データ型を、Azure Database for PostgreSQL で変化する文字に変更します。
 
 - **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
 
-    **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
+    **回避策**:移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 - **制限事項**:JSONB データ型は移行の対象としてサポートされません。
 
@@ -97,7 +100,7 @@ ms.locfileid: "73043198"
 
 - **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
 
-    **対処法**: 主キーを、LOB ではない他のデータ型または列に置き換えます。
+    **回避策**:主キーを、LOB ではない他のデータ型または列に置き換えます。
 
 - **制限事項**:ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
 
@@ -105,11 +108,11 @@ ms.locfileid: "73043198"
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
+    **回避策**:32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 - **制限事項**:テーブルにLOB 列があり、テーブルに主キーが設定されていない場合、このテーブルのデータが移行されない可能性があります。
 
-    **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
+    **回避策**:移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 の対処法
 
@@ -160,25 +163,25 @@ COMMIT;
 
 AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移行を実行しようとすると、次のエラーが発生する場合があります。
 
-- **エラー**: The Default value of column '{column}' in table '{table}' in database '{database}' is different on source and target servers.\(データベース '{database}' のテーブル '{table}' にある列 '{column}' の既定値が、ソース サーバーとターゲット サーバーで異なります。\) It's '{value on source}' on source and '{value on target}' on target.\(ソースでは '{value on source}'、ターゲットでは '{value on target}' です。\)
+- **Error**: The Default value of column '{column}' in table '{table}' in database '{database}' is different on source and target servers.\(データベース '{database}' のテーブル '{table}' にある列 '{column}' の既定値が、ソース サーバーとターゲット サーバーで異なります。\) It's '{value on source}' on source and '{value on target}' on target.\(ソースでは '{value on source}'、ターゲットでは '{value on target}' です。\)
 
   **制限事項**:このエラーは、列スキーマの既定値がソース データベースとターゲット データベースで異なる場合に発生します。
-  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
 
-- **エラー**: ターゲット データベース '{database}' には '{number of tables}' 個のテーブルが含まれていますが、ソース データベース '{database}' に含まれるテーブルは '{number of tables}' 個です。 ソース データベースとターゲット データベースのテーブル数は同じでなければなりません。
+- **Error**: ターゲット データベース '{database}' には '{number of tables}' 個のテーブルが含まれていますが、ソース データベース '{database}' に含まれるテーブルは '{number of tables}' 個です。 ソース データベースとターゲット データベースのテーブル数は同じでなければなりません。
 
   **制限事項**:このエラーは、ソース データベースとターゲット データベースのテーブル数が異なる場合に発生します。
-  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
 
 - **エラー:** ソース データベース {database} が空です。
 
   **制限事項**:このエラーは、ソース データベースが空の場合に発生します。 これは、間違ったデータベースをソースとして選択したことが原因と考えられます。
-  **対処法**: 移行用に選択したソース データベースを再確認して、再試行してください。
+  **回避策**:移行用に選択したソース データベースを再確認して、再試行してください。
 
 - **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
 
   **制限事項**:このエラーは、ターゲット データベースにスキーマがない場合に発生します。 ターゲットのスキーマがソースのスキーマと一致していることを確認してください。
-  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+  **回避策**:ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
 
 ## <a name="other-limitations"></a>その他の制限事項
 

@@ -48,7 +48,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 **My Apps** ポータルにサインインできない場合、次をお試しください。
 
-- 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
+- 使用している URL が正しいことを確認します。 https://myapps.microsoft.com のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
@@ -64,7 +64,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 ## <a name="i-want-to-be-able-to-reset-my-own-password"></a>自分のパスワードをリセットしたい場合はどうすればよいですか。
 
-お使いのパスワードをリセットできるようにするには、まず、管理者が組織に対してその機能をオンにする必要があります。その後、必須の検証方法をご自分で更新し、確認する必要があります。 検証方法を更新する方法については、「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」を参照してください。
+お使いのパスワードをリセットできるようにするには、まず、管理者が組織に対してその機能をオンにする必要があります。その後、必須の検証方法をご自分で更新し、確認する必要があります。 検証方法を更新する方法については、「[セルフサービス パスワード リセット を登録する](active-directory-passwords-reset-register.md)」を参照してください。
 
 ## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>アプリを起動すると、アクセス拒否のメッセージが表示されます
 

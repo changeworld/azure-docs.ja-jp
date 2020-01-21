@@ -1,25 +1,16 @@
 ---
-title: Service Fabric 高信頼アクターの概要 | Microsoft Docs
-description: Service Fabric Reliable Actors のプログラミング モデルの概要。
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric Reliable Actors の概要
+description: Virtual Actor のパターンに基づく Service Fabric Reliable Actors のプログラミング モデルの概要です。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727187"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645567"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors の概要
 Reliable Actors は、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。 Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
@@ -143,7 +134,7 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 ### <a name="scope-of-concurrency-guarantees"></a>コンカレンシーの保証の範囲
 アクター ランタイムは、これらのメソッドの呼び出しを制御する状況でこのようなコンカレンシーを保証します。 たとえば、クライアント要求の受信に対する応答として行われるメソッド呼び出しおよびタイマーとアラームのコールバックに対して、このような保証を提供します。 ただし、アクター コードがアクター ランタイムによって提供されるメカニズム以外でこれらのメソッドを直接呼び出す場合、ランタイムはコンカレンシーを保証できません。 たとえば、メソッドが、アクター メソッドによって返されるタスクに関連付けられていない一部のタスクのコンテキストで呼び出される場合、ランタイムはコンカレンシーを保証することはできません。 アクターが独自に作成するスレッドからメソッドが呼び出される場合、ランタイムはコンカレンシーを保証できません。 そのため、バックグラウンド操作を実行するには、アクターは、ターンごとのコンカレンシーを優先する [アクターのタイマーおよびアクターのアラーム](service-fabric-reliable-actors-timers-reminders.md) を使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 最初の Reliable Actors サービスの開発を始めます。
    * [.NET での Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
    * [Java での Reliable Actors の使用](service-fabric-reliable-actors-get-started-java.md)

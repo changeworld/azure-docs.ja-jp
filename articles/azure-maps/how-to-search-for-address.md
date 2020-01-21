@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432960"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
@@ -28,7 +28,7 @@ Maps Search サービスは、開発者が住所、場所、関心地点、事�
 
 ## <a name="prerequisites"></a>前提条件
 
-Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 アカウント作成の詳細については、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページにある手順に従ってください。また、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従い、アカウントのプライマリ サブスクリプション キーを取得します。
+Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 この記事では、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを構築します。 選択した任意の API 開発環境を使用できます。
 
@@ -50,7 +50,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |---------------|------------------------------------------------|
     | HTTP メソッド | GET |
     | 要求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Authorization | No Auth |
+    | 承認 | No Auth |
 
     URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、[Maps Functional API のリファレンス](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)の「**Get Search Fuzzy**」(あいまいな検索の取得) の定義で確認できます。
 
@@ -86,8 +86,8 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
     | Key | 値 |
     |-----|------------|
-    | 緯度 | 47.620525 |
-    | 経度 | -122.349274 |
+    | lat | 47.620525 |
+    | lon | -122.349274 |
 
 ## <a name="search-for-address-properties-and-coordinates"></a>住所のプロパティと座標の検索
 
@@ -102,7 +102,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |---------------|------------------------------------------------|
     | HTTP メソッド | GET |
     | 要求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Authorization | No Auth |
+    | 承認 | No Auth |
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
@@ -143,7 +143,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |---------------|------------------------------------------------|
     | HTTP メソッド | GET |
     | 要求 URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Authorization | No Auth |
+    | 承認 | No Auth |
   
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
@@ -203,7 +203,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |---------------|------------------------------------------------|
     | HTTP メソッド | GET |
     | 要求 URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Authorization | No Auth |
+    | 承認 | No Auth |
   
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
@@ -215,6 +215,6 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 4. **[送信]** をクリックして、応答の本体を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Maps Search サービス](https://docs.microsoft.com/rest/api/maps/search) API ドキュメントを確認する。

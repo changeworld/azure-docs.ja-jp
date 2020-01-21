@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083442"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530104"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "70083442"
 
 移行の際に使用される手順に従うには、GitHub 上の [Db2onAzure](https://aka.ms/db2onazure) リポジトリ内にあるインストール スクリプトをご覧ください。 これらのスクリプトは、一般的な中規模サイズのオンライン トランザクション処理 (OLTP) ワークロード用のアーキテクチャに基づきます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 このアーキテクチャをデプロイするには、GitHub 上の [DB2onAzure](https://aka.ms/db2onazure) リポジトリ内にある deploy.sh スクリプトをダウンロードして実行します。
 
@@ -40,33 +40,35 @@ ms.locfileid: "70083442"
 
 deploy.sh スクリプトを実行すると、このアーキテクチャの Azure リソースが作成および構成されます。 スクリプトでは、ターゲット環境で使用される Azure サブスクリプションと仮想マシンの入力を要求してから、次の操作を実行します。
 
--   インストール用に、Azure 上でリソース グループ、仮想ネットワーク、およびサブネットを設定します。
+-   インストール用に、Azure 上にリソース グループ、仮想ネットワーク、およびサブネットを設定します。
 
 -   環境に応じて、ネットワーク セキュリティ グループと SSH を設定します。
 
--   GlusterFS および DB2 pureScale 仮想マシンの両方の上で NIC を設定します。
+-   共有ストレージおよび DB2 pureScale 仮想マシンの両方に、複数の NIC を設定します。
 
--   GlusterFS ストレージ仮想マシンを作成します。
+-   共有ストレージ仮想マシンを作成します。 記憶域スペース ダイレクトまたは別のストレージ ソリューションを使用する場合は、「[記憶域スペース ダイレクトの概要](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)」を参照してください。
 
 -   ジャンプボックス仮想マシンを作成します。
 
 -   DB2 pureScale 仮想マシンを作成します。
 
--   DB2 pureScale から ping を実行する監視仮想マシンを作成します。
+-   DB2 pureScale から ping を実行する監視仮想マシンを作成します。 DB2 pureScale のご利用のバージョンで監視を必要としない場合は、デプロイのこの部分をスキップします。
 
 -   テストに使用する Windows 仮想マシンを作成します。ただし、このマシン上には何もインストールしません。
 
-次に、デプロイ スクリプトにより、Azure 上の共有ストレージに対して iSCSI 仮想記憶域ネットワーク (vSAN) が設定されます。 この例では、iSCSI は GlusterFS に接続します。 このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。 GlusterFS の基礎については、Gluster Docs の「[Architecture:Types of volumes (アーキテクチャ: ボリュームの種類)](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/)」トピックをご覧ください。
+次に、デプロイ スクリプトにより、Azure 上の共有ストレージに対して iSCSI 仮想記憶域ネットワーク (vSAN) が設定されます。 この例では、iSCSI が共有ストレージ クラスターに接続されます。 元の顧客ソリューションでは、GlusterFS が使用されていました。 ただし、IBM ではこのアプローチはサポートされなくなりました。 IBM からのサポートを維持するには、サポートされている iSCSI 互換ファイル システムを使用する必要があります。 Microsoft では、記憶域スペース ダイレクト (S2D) をオプションとして提供しています。
+
+このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。
 
 通常、デプロイ スクリプトでは、次の手順が実行されます。
 
-1.  GlusterFS を使用して、Azure 上に共有ストレージ クラスターを設定します。 この手順を実行するには、2 つ以上の Linux ノードが必要です。 セットアップの詳細については、Red Hat Gluster ドキュメントの「[Setting up Red Hat Gluster Storage in Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure)」(Microsoft Azure に Red Hat Gluster ストレージをセットアップする) をご覧ください。
+1.  Azure 上に共有ストレージ クラスターを設定します。 この手順を実行するには、2 つ以上の Linux ノードが必要です。
 
-2.  iSCSI Direct インターフェイスを GlusterFS 対応のターゲット Linux サーバーに設定します。 セットアップの詳細については、「GlusterFS Administration Guide」(GlusterFS 管理ガイド) の「[GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)」をご覧ください。
+2.  共有ストレージ クラスター用のターゲット Linux サーバー上で iSCSI Direct インターフェイスを設定します。
 
-3.  Linux 仮想マシン上で iSCSI イニシエーターを設定します。 イニシエーターは iSCSI ターゲットを使用して GlusterFS クラスターにアクセスします。 セットアップの詳細については、RootUsers ドキュメントの「[How To Configure An iSCSI Target And Initiator In Linux (Linux 内で iSCSI ターゲットおよびイニシエーターを構成する方法)](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)」をご覧ください。
+3.  Linux 仮想マシン上で iSCSI イニシエーターを設定します。 イニシエーターでは、iSCSI ターゲットを使用して共有ストレージ クラスターへのアクセスが行われます。 セットアップの詳細については、RootUsers ドキュメントの「[How To Configure An iSCSI Target And Initiator In Linux (Linux 内で iSCSI ターゲットおよびイニシエーターを構成する方法)](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)」をご覧ください。
 
-4.  iSCSI インターフェイスのストレージ層として、GlusterFS をインストールします。
+4.  iSCSI インターフェイスの共有ストレージ層をインストールします。
 
 スクリプトで iSCSI デバイスを作成したら、最後の手順として DB2 pureScale をインストールします。 DB2 pureScale のセットアップの一環として、[IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (以前は GPFS と呼ばれていた) がコンパイルされ、GlusterFS クラスター上にインストールされます。 このクラスター化されたファイル システムにより、DB2 pureScale では、DB2 pureScale エンジンを実行する仮想マシン間でデータを共有することが可能になります。 詳細については、IBM Web サイトの「[IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html)」をご覧ください。
 
@@ -81,7 +83,7 @@ GitHub リポジトリには、DB2server.rsp という応答 (.rsp) ファイル
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | ようこそ                   |                                              | 新規インストール                                                                                           |
 | プロジェクトの選択          |                                              | DB2 バージョン 11.1.3.3。 DB2 pureScale を搭載した各サーバー エディション                                              |
-| 構成             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| 構成             | ディレクトリ                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | インストールの種類を選択する                 | 通常                                                                                               |
 |                           | IBM 利用規約に同意する                     | オン                                                                                               |
 | インスタンス所有者            | インスタンスに対する既存ユーザー、ユーザー名        | DB2sdin1                                                                                              |
@@ -139,9 +141,7 @@ GitHub リポジトリには、作成者によって管理されるナレッジ 
 
 上記およびその他の既知の問題の詳細については、[DB2onAzure](https://aka.ms/DB2onAzure) リポジトリ内の kb.md ファイルをご覧ください。
 
-## <a name="next-steps"></a>次の手順
-
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+## <a name="next-steps"></a>次のステップ
 
 -   [DB2 pureScale 機能のインストールに必要なユーザーを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

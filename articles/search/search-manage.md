@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113291"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754328"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Microsoft はユーザーのデータを回収できますが、Azure Cognitive 
 
 Microsoft の管理が及ばない外部の壊滅的災害の際にサービスを継続する必要がある場合は、異なるリージョンに[追加のサービスをプロビジョニング](search-create-service-portal.md)し、geo レプリケーション戦略を導入して、インデックスがすべてのサービスで完全に冗長になるようにする必要があります。
 
-インデックスの作成と更新に[インデクサー](search-indexer-overview.md)を使っているお客様は、同じデータ ソースを利用する geo 固有のインデクサーによってディザスター リカバリーを処理できます。 異なるリージョンにある 2 つのサービスそれぞれでインデクサーを実行し、同じデータ ソースのインデックスを作成すると、geo 冗長性を実現できます。 geo 冗長性も備えたデータ ソースからインデックスを作成する場合、Azure Cognitive Search インデクサーは、プライマリ レプリカからの増分インデックス作成のみを実行できることに注意してください。 フェールオーバー イベントでは、新しいプライマリ レプリカをポイントするように再度インデクサーを設定してください。 
+インデックスの作成と更新に[インデクサー](search-indexer-overview.md)を使っているお客様は、同じデータ ソースを利用する geo 固有のインデクサーによってディザスター リカバリーを処理できます。 異なるリージョンにある 2 つのサービスそれぞれでインデクサーを実行し、同じデータ ソースのインデックスを作成すると、geo 冗長性を実現できます。 geo 冗長性も備えたデータ ソースからインデックスを作成する場合、Azure Cognitive Search インデクサーは、プライマリ レプリカからの (新規、変更、または削除されたドキュメントの更新をマージする) 増分インデックスの作成のみを実行できることに注意してください。 フェールオーバー イベントでは、新しいプライマリ レプリカをポイントするように再度インデクサーを設定してください。 
 
 インデクサーを使用しない場合は、アプリケーションのコードを使ってオブジェクトとデータを異なる検索サービスに並列にプッシュします。 詳細については、[Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事をご覧ください。
 
@@ -114,7 +114,7 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 
 <a id="next-steps"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 サービス管理の背後にある概念を把握できたら、[PowerShell](search-manage-powershell.md) を使ってタスクを自動化することを検討してください。
 
 また、[パフォーマンスと最適化の記事](search-performance-optimization.md)を確認することをお勧めします。

@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423608"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web アプリ - コードの構成
 
@@ -35,11 +35,11 @@ ms.locfileid: "74964987"
 
 Web アプリの承認コード フローがサポートされているライブラリは以下のとおりです。
 
-| MSAL ライブラリ | 説明 |
+| MSAL ライブラリ | [説明] |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | サポートされるプラットフォームは、.NET Framework と .NET Core プラットフォームです (UWP、Xamarin.iOS、Xamarin.Android のプラットフォームはパブリック クライアント アプリケーションのビルドに使用されるため、これら以外) |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 進行中の開発 - パブリック プレビュー中 |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 進行中の開発 - パブリック プレビュー中 |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python Web アプリケーションのサポート |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java Web アプリケーションのサポート |
 
 目的のプラットフォームに対応するタブを選択してください。
 
@@ -92,7 +92,7 @@ ASP.NET Core では、原則としてそれは `Startup.cs` ファイル内に�
 
 次に示す [Startup.cs#L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) のコードでは、`AddMicrosoftIdentityPlatformAuthentication` メソッドを呼び出すことによって認証を Web アプリに追加し、`AddMsal` によって Web API を呼び出す機能を追加しています。 `AddInMemoryTokenCaches` の呼び出しでは、可能なトークン キャッシュの実装から 1 つを選択します。
 
-```CSharp
+```csharp
 public class Startup
 {
   // Code not show here
@@ -112,7 +112,7 @@ public class Startup
 
 `Constants.ScopeUserRead` は、[Constants.cs#L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5) で定義されています
 
-```CSharp
+```csharp
 public static class Constants
 {
     public const string ScopeUserRead = "User.Read";
@@ -125,7 +125,7 @@ public static class Constants
 
 `AddMsal` のコードは、[Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159) にあります。
 
-```CSharp
+```csharp
 
 /// <summary>
 /// Extensions for IServiceCollection for startup initialization.
@@ -253,7 +253,7 @@ ASP.NET Core では、Confidential クライアント アプリケーション�
 
 `GetOrBuildConfidentialClientApplication()` メソッドのコードは、[Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333) にあります。 そこでは、依存関係の挿入によって挿入されたメンバーが使用されます ([Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59) で TokenAcquisition のコンストラクターに渡されます)
 
-```CSharp
+```csharp
 public class TokenAcquisition : ITokenAcquisition
 {
   // Code omitted here for clarity
@@ -322,7 +322,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 OpenIdConnect の構成と、`OnAuthorizationCodeReceived` イベントのサブスクリプションが [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) ファイルで行われることを除き、ASP.NET での処理方法は ASP.NET Core と似ています。 ASP.NET では [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15) で RedirectUri を指定する必要があることを除き、ASP.NET Core と同様の概念であることがわかります。 この構成は、アプリケーションをデプロイするときに変更する必要があるため、ASP.NET Core の場合より堅牢さが少し低下します。
 
-```CSharp
+```csharp
 public partial class Startup
 {
   public void ConfigureAuth(IAppBuilder app)
@@ -610,7 +610,7 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この時点で、ユーザーがサインインすると、トークンはトークン キャッシュに格納されます。 これが Web アプリの他の部分でどのように使用されるかを見てみましょう。
 

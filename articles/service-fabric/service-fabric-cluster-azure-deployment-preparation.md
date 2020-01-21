@@ -1,24 +1,14 @@
 ---
-title: Azure Service Fabric クラスターのデプロイを計画する | Microsoft Docs
+title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463322"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -69,7 +59,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 ## <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 お使いのアプリケーションとクラスターは、運用環境のトラフィックに対応する準備ができていますか。 クラスターを運用環境にデプロイする前に、「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」の項目を実行してください。 このチェックリストの項目を実行して、アプリケーションとクラスターの円滑な稼働を維持してください。 運用環境に移行する前に、これらの項目すべてをチェック済みにすることを強くお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Windows を実行する Service Fabric クラスターを作成する](service-fabric-best-practices-overview.md)
 * [Linux を実行する Service Fabric クラスターを作成する](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 

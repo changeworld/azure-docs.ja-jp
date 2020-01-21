@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461147"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする 
 
-AI アルゴリズムは、Azure Cognitive Search のコンテンツ変換に使用される[エンリッチメント パイプライン](cognitive-search-concept-intro.md)を実行します。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) や、エンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの Azure Cognitive Services リソースに基づきます。 Azure Cognitive Search によってドキュメント エンリッチメントの目的で使用されるとき、アルゴリズムは*スキル*内にラップされ、*スキルセット*に入れられ、インデックス作成中に*インデクサー*によって参照されます。
+Azure Cognitive Search でエンリッチメント パイプラインを構成するとき、限られた数のドキュメントを無料で強化できます。 ワークロードが大きくなる場合や頻繁に発生する場合は、有料の Cognitive Services リソースをアタッチしてください。
 
-数には制限がありますが、ドキュメントは無料で強化できます。 または、有料の Cognitive Services リソースを*スキルセット*にアタッチして、さらに大きくて複雑なワークロードに対応できます。 この記事では、課金対象の Cognitive Services リソースをアタッチして、Azure Cognitive Search の[インデックスを作成](search-what-is-an-index.md)中にドキュメントを強化する方法について説明します。
+この記事では、エンリッチメント パイプラインを定義するスキルセットにキーを割り当てることでリソースをアタッチする方法について学習します。
 
-> [!NOTE]
-> 課金対象イベントとしては、Cognitive Services APIs の呼び出しや、Azure Cognitive Search でのドキュメント解析段階の一部としての画像抽出があります。 ドキュメントからのテキスト抽出や、Cognitive Services を呼び出さないスキルに対する課金はありません。
->
-> 課金対象スキルの実行は、[Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)になります。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)」をご覧ください。
+## <a name="resources-used-during-enrichment"></a>エンリッチメント中に使用されるリソース
+
+Azure Cognitive Search には、画像分析と光学式文字認識 (OCR) のための [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/)、自然言語処理のための [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/)、([Text Translation](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) のような) その他のエンリッチメントなど、Cognitive Services との依存関係があります。 Azure Cognitive Search におけるエンリッチメントでは、これらの AI アルゴリズムが "*スキル*" 内にラップされ、"*スキルセット*" に入れられ、インデックス作成中に "*インデクサー*" によって参照されます。
+
+## <a name="how-billing-works"></a>請求体系について
+
++ Azure Cognitive Search では、画像とテキストのエンリッチメントに対して課金する目的でスキルセットに指定する Cognitive Services リソース キーが使用されます。 課金対象スキルの実行は、[Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)になります。
+
++ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は課金対象です。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)」をご覧ください。
+
++ テキスト抽出はドキュメントのクラック段階でも行われます。 それは課金対象ではありません。
+
++ Conditional、Shaper、Text Merge、Text Split といったスキルなど、Cognitive Services を呼び出さないスキルは課金されません。
 
 ## <a name="same-region-requirement"></a>同一リージョンの要件
 
@@ -33,7 +42,7 @@ Azure Cognitive Search と Azure Cognitive Services は同一リージョン内�
 リージョン間でサービスを移動する方法はありません。 このエラーが表示される場合、Azure Cognitive Search と同じリージョンに、新しい Cognitive Services リソースを作成する必要があります。
 
 > [!NOTE]
-> 一部の組み込みスキルは、非リージョンの Cognitive Services ([テキスト翻訳スキル](cognitive-search-skill-text-translation.md)など) をベースとしています。 そうしたスキルをスキルセットに追加すると、Azure Cognitive Search または Cognitive Services リソースと同じリージョンにデータが留まることが保証されないことに注意してください。 詳細については、[サービスの状態に関するページ](https://aka.ms/allinoneregioninfo)を参照してください。
+> 一部の組み込みスキルは、非リージョンの Cognitive Services ([テキスト翻訳スキル](cognitive-search-skill-text-translation.md)など) をベースとしています。 非リージョン スキルを使用すると、Azure Cognitive Search リージョン以外のリージョンで要求に対してサービスが提供される可能性があります。 非リージョン サービスの詳細については、[Cognitive Services のリージョン別製品](https://aka.ms/allinoneregioninfo)に関するページを参照してください。
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
 
@@ -158,7 +167,7 @@ Content-Type: application/json
 
 まとめると、示されたスキルセットでこの種類の PDF ドキュメントを 1,000 個取り込むには、約 $57.00 を支払うことなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 + [Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

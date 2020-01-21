@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423524"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -31,11 +31,11 @@ ms.locfileid: "74964873"
 <!-- This section can be in an include for Web App and Web APIs -->
 Web アプリ (および Web API) を保護するために使用されるライブラリは次のとおりです。
 
-| プラットフォーム | ライブラリ | 説明 |
+| プラットフォーム | ライブラリ | [説明] |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identity Model Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | ASP.NET および ASP.NET Core によって直接使用される .Net 用 Microsoft ID モデル拡張機能は、.NET Framework と .NET Core の両方で実行される DLL のセットを提案します。 ASP.NET または ASP.NET Core Web アプリから、**TokenValidationParameters** クラスを使用してトークン検証を制御できます (特に、一部のパートナー シナリオで)。 |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java 用 Microsoft 認証ライブラリ (MSAL) です。 現在、パブリック プレビュー段階にあります。 |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python 用の MSAL です。 現在、パブリック プレビュー段階にあります。 |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web アプリケーションのサポート |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python Web アプリケーションのサポート |
 
 目的のプラットフォームに対応するタブを選択してください。
 
@@ -210,7 +210,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core Web Apps (および Web API) では、コントローラーまたはコントローラー アクションでの `[Authorize]` 属性があるため、アプリケーションは保護されます。 この属性では、ユーザーが認証されていることが確認されます。 アプリケーションを初期化するコードは、Startup.cs ファイルにあります。 
+ASP.NET Core Web Apps (および Web API) では、コントローラーまたはコントローラー アクションでの `[Authorize]` 属性があるため、アプリケーションは保護されます。 この属性では、ユーザーが認証されていることが確認されます。 アプリケーションを初期化するコードは、Startup.cs ファイルにあります。
 
 Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認証を追加するには、次のコードを追加する必要があります。 コード内のコメントは、見てすぐにわかるものにする必要があります。
 
@@ -221,7 +221,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
 
 次のコードは、[Startup.cs#L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34) から入手できます。
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -256,7 +256,7 @@ public class Startup
 
 OpenID Connect ミドルウェア イベントをトレースすると、認証が機能しない場合の Web アプリケーションのトラブルシューティングに役立ちます。 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` を `true` に設定すると、HTTP 応答から `HttpContext.User` 内のユーザーの ID へ進行する間に、ASP.NET Core ミドルウェアのセットによって情報がどれほど詳しく表示されるかがわかります。
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -321,7 +321,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 ASP.NET Web アプリおよび Web API での認証に関連したコードは、[App_Start/Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) ファイルにあります。
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -345,7 +345,7 @@ ASP.NET Web アプリおよび Web API での認証に関連したコードは�
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java サンプルでは、Spring フレームワークが使用されています。 各 HTTP 応答をインターセプトするフィルターを実装するため、アプリケーションは保護されています。 Java Web アプリのクイックスタートでは、このフィルターは `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` 内の `AuthFilter` です。 
+Java サンプルでは、Spring フレームワークが使用されています。 各 HTTP 応答をインターセプトするフィルターを実装するため、アプリケーションは保護されています。 Java Web アプリのクイックスタートでは、このフィルターは `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` 内の `AuthFilter` です。
 
 フィルターは OAuth 2.0 認証コードフローを処理し、ユーザーが認証されているかどうかを確認します (`isAuthenticated()` メソッド)。 ユーザーが認証されていない場合は、Azure AD 承認エンドポイントの URL が計算されて、ブラウザーはこの URI にリダイレクトされます。
 
@@ -378,7 +378,7 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、サインインとサインアウトをトリガーする方法について説明します。
 

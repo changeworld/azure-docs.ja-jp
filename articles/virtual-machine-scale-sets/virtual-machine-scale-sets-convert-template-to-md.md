@@ -1,6 +1,6 @@
 ---
-title: マネージド ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs
-description: スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換します。
+title: スケール セット テンプレートを変換してマネージド ディスクを使用する
+description: Azure Resource Manager 仮想マシン スケール セットのテンプレートをマネージド ディスク スケール セットのテンプレートに変換します。
 keywords: 仮想マシン スケール セット
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6419da8e87ac32e763e3e796bb49daa562d68030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359615"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換する
 
@@ -143,7 +143,7 @@ Resource Manager テンプレートを基にマネージド ディスクを使�
 スケール セットでデータ ディスクを使用する方法の詳細については、[この記事](./virtual-machine-scale-sets-attached-disks.md)を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケール セットを使用した Resource Manager テンプレートの例については、[Azure クイック スタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
 全般的な情報については、 [スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。

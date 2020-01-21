@@ -1,5 +1,5 @@
 ---
-title: 障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs
+title: 障害と災害に対する Azure Service Bus アプリケーションの保護
 description: 発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。
 services: service-bus-messaging
 author: axisc
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9375ea4637db7727a40477177f180ab70bd4f417
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462139"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -82,7 +82,7 @@ Standard メッセージング価格レベルが使用されているときに�
 
 その後、サービスは、両方のエンドポイント上でリッスンし、クライアントはどちらかのエンドポイントを介してサービスを呼び出すことができます。 クライアント アプリケーションは、いずれかのリレー エンドポイントをプライマリ エンドポイントとしてランダムに選択して、アクティブなエンドポイントに要求を送信します。 操作が失敗してエラー コードが表示された場合、このエラーは、リレー エンドポイントを使用できないことを示します。 アプリケーションは、バックアップ エンドポイントへのチャネルを開き、要求を再び発行します。 この時点で、アクティブなエンドポイントとバックアップ エンドポイントの役割が切り替わります。クライアント アプリケーションは、前のアクティブなエンドポイントを新しいバックアップ エンドポイントと見なし、前のバックアップ エンドポイントを新しいアクティブなエンドポイントと見なします。 両方の送信操作が失敗した場合、2 つのエンティティの役割は変更されず、エラーが返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ディザスター リカバリーの詳細については、次の記事を参照してください。
 
 * [Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)

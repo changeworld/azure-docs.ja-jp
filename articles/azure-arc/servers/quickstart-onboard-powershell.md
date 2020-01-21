@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951447"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834076"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>クイック スタート:サーバー向け Azure Arc を使用してマシンを Azure に接続する - PowerShell
 
@@ -35,6 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="steps-to-create-the-service-principal"></a>サービス プリンシパルを作成する手順
 
 この例では、[Azure PowerShell](/powershell/azure/install-az-ps) を使用してサービス プリンシパル名 (SPN) を作成します。 または、このタスクについては、[Azure portal を使用したサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページに記載されている手順に従う方法もあります。
+
+> [!NOTE]
+> サービス プリンシパルの作成は、オンボーディングに使用したいサブスクリプションの所有者またはユーザー アクセス管理者で行う必要があります。 ロールの割り当てを作成する十分なアクセス許可がない場合、サービス プリンシパルは作成されますが、マシンをオンボードすることはできません。
 
 `Azure Connected Machine Onboarding` ロールには、オンボーディングに必要なアクセス許可のみが含まれています。 そのスコープがリソース グループまたはサブスクリプションに対応できるように、SPN のアクセス許可を定義することができます。
 
@@ -142,7 +145,7 @@ Windows で、ターゲット ノードの管理者として PowerShell を開�
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ azcmagent connect \
 * `tenant-id`:テナントの GUID。 Azure portal で確認するには、 **[Azure Active Directory]**  ->  **[プロパティ]**  ->  **[ディレクトリ ID]** を選択します。
 * `subscription-id`:コンピューターの接続先となる Azure 内のサブスクリプションの GUID。
 * `resource-group`:マシンを接続するリソース グループ。
-* `location`:[Azure リージョンと場所](https://azure.microsoft.com/global-infrastructure/regions/)のページを参照してください。 この場所は、リソース グループの場所と同じ場合と異なる場合があります。 パブリック プレビューの場合、このサービスは**米国西部 2** と**西ヨーロッパ**でサポートされています。
+* `location`:[Azure リージョンと場所](https://azure.microsoft.com/global-infrastructure/regions/)のページを参照してください。 この場所は、リソース グループの場所と同じ場合と異なる場合があります。 パブリック プレビューの場合、このサービスは**米国西部 2**、**東南アジア**、**西ヨーロッパ**でサポートされています。
 * `resource-name`:(*省略可能*) オンプレミス マシンの Azure リソースの表記に使用されます。 この値を指定しない場合は、マシンのホスト名が使用されます。
 
 詳細については、[Azcmagent リファレンス](azcmagent-reference.md)に関する記事の 'azcmagent' ツールを参照してください。
@@ -230,7 +233,7 @@ Restart-Service -Name himds
    sudo apt purge hybridagent
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [接続されているマシンにポリシーを割り当てる](../../governance/policy/assign-policy-portal.md)

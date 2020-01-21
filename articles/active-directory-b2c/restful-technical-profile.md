@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: aa14854807727506f5d697d7871c97e219c096a3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425627"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -36,9 +36,9 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
-次の例は、RESTful 技術プロファイルを示してます。
+RESTful 技術プロファイルの例を次に示します。
 
 ```XML
 <TechnicalProfile Id="REST-UserMembershipValidator">
@@ -61,11 +61,48 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 
 **InputClaimsTransformations** 要素には、REST API に送信する前に、入力要求を修正したり新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが存在する場合があります。
 
+## <a name="send-a-json-payload"></a>JSON ペイロードを送信する
+
+REST API 技術プロファイルを使用すると、複雑な JSON ペイロードをエンドポイントに送信できます。
+
+複雑な JSON ペイロードを送信するには、次のようにします。
+
+1. [GenerateJson](json-transformations.md) 要求の変換を使用して JSON ペイロードをビルドします。
+1. REST API の技術プロファイルで、次のようにします。
+    1. `GenerateJson` 要求の変換への参照を使用して、入力要求の変換を追加します。
+    1. `SendClaimsIn` メタデータ オプションを `body` に設定します。
+    1. `ClaimUsedForRequestPayload` メタデータ オプションを、JSON ペイロードを含む要求の名前に設定します。
+    1. 入力要求に、JSON ペイロードを含む入力要求への参照を追加します。
+
+次の例 `TechnicalProfile` では、サードパーティの電子メール サービス (この場合は SendGrid) を使用して、確認メールを送信します。
+
+```XML
+<TechnicalProfile Id="SendGrid">
+  <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
+  </CryptographicKeys>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="GenerateSendGridRequestBody" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="sendGridReqBody" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ## <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、REST API により返される要求の一覧が存在します。 お使いのポリシーで定義される要求の名前を、REST API で定義される名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、REST API の ID プロバイダーにより返されない要求を追加することもできます。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが存在する場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 次の例は、REST API により返される要求を示しています。
 
@@ -82,14 +119,15 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
-| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 |
+| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
 | SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 |
 | ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 |
+| ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
@@ -110,7 +148,7 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 
 認証の種類が `Basic` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
@@ -135,7 +173,7 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 
 認証の種類が `ClientCertificate` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
@@ -154,15 +192,36 @@ Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービ�
 </TechnicalProfile>
 ```
 
+認証の種類が `Bearer` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
+
+| Attribute | 必須 | [説明] |
+| --------- | -------- | ----------- |
+| BearerAuthenticationToken | いいえ | OAuth 2.0 ベアラー トークン。 |
+
+```XML
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
 ## <a name="returning-error-message"></a>返却エラー メッセージ
 
 REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は次の属性を持つ HTTP 409 エラー メッセージ (応答ステータスコードの競合) を返すことになります。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 |
 | status | はい | 409 |
-| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
+| コード | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
 | requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 |
 | userMessage | はい | ユーザーに示されるエラー メッセージ。 |
 | developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 |
@@ -197,24 +256,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>次に例を示します。
+## <a name="next-steps"></a>次のステップ
+
+RESTful 技術プロファイルの使用例については、次の記事を参照してください。
+
 - [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md)
 - [HTTP 基本認証を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [クライアント証明書を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

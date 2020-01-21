@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24fa03fe12f584e9da32b547f0d8128e5ff28803
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847730"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762860"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD パスワード保護の操作手順
 
@@ -28,7 +28,7 @@ ms.locfileid: "74847730"
 
 ## <a name="enable-password-protection"></a>パスワード保護を有効にする
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[認証方法]** 、 **[パスワード保護]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[セキュリティ]** 、 **[認証方法]** 、 **[パスワード保護]** の順に選択します。
 1. **[Windows Server Active Directory のパスワード保護を有効にする]** を **[はい]** に設定します
 1. [デプロイ ガイド](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)のページで説明しているように、最初に **[モード]** を **[監査]** に設定することをお勧めします
    * 機能に問題がなければ、 **[モード]** を **[強制]** に切り替えることができます
@@ -62,6 +62,6 @@ ms.locfileid: "74847730"
 
 この設定は、既定の有効 (はい) 状態のままにしておく必要があります。 この設定を無効 (いいえ) に設定すると、デプロイされているすべての Azure AD パスワード保護 DC エージェントは休止モードになります。このモードでは、すべてのパスワードがそのまま受け入れられ、検証アクティビティはまったく実行されません (たとえば、監査イベントでさえ実行されません)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD のパスワード保護について監視する](howto-password-ban-bad-on-premises-monitor.md)

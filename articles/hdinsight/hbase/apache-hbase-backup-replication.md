@@ -2,18 +2,18 @@
 title: Apache HBase と Apache Phoenix のバックアップおよびレプリケーション - Azure HDInsight
 description: Azure HDInsight で Apache HBase と Apache Phoenix のバックアップおよびレプリケーションを設定する
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 9611199cf08084505381223ef485ae2b6f00cb21
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044695"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495932"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -60,15 +60,19 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 ## <a name="export-then-import"></a>エクスポート後にインポートする
 
-エクスポート元 HDInsight クラスターで、(HBase に付属の) Export ユーティリティを使用して、エクスポート元テーブルのデータを既定の接続ストレージにエクスポートします。 その後、エクスポートしたフォルダーをエクスポート先のストレージの場所にコピーし、インポート先の HDInsight クラスターで Import ユーティリティを実行することができます。
+エクスポート元 HDInsight クラスターで、(HBase に付属の) [Export ユーティリティ](https://hbase.apache.org/book.html#export)を使用して、エクスポート元テーブルのデータを既定の接続ストレージにエクスポートします。 その後、エクスポートしたフォルダーをエクスポート先のストレージの場所にコピーし、インポート先の HDInsight クラスターで [Import ユーティリティ](https://hbase.apache.org/book.html#import)を実行することができます。
 
-テーブルをエクスポートするには、最初にエクスポート元の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
+テーブル データをエクスポートするには、最初にエクスポート元の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-テーブルをインポートするには、インポート先の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
+エクスポート ディレクトリはまだ存在していてはなりません。 テーブル名は、大文字と小文字が区別されます。
+
+テーブル データをインポートするには、インポート先の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+テーブルは既に存在している必要があります。
 
 既定のストレージまたは接続ストレージ オプションのいずれかへの完全なエクスポート パスを指定します。 たとえば、Azure Storage の場合は次のようになります。
 
@@ -90,11 +94,12 @@ Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
 ## <a name="copy-tables"></a>テーブルをコピーする
 
-CopyTable ユーティリティでは、コピー元テーブルのデータを行単位で、コピー元と同じスキーマを使用した既存のコピー先テーブルにコピーします。 コピー先テーブルは、同じクラスターにあっても別の HBase クラスターにあってもかまいません。
+[CopyTable ユーティリティ](https://hbase.apache.org/book.html#copy.table)を使うと、コピー元テーブルのデータを行単位で、コピー元と同じスキーマを使用した既存のコピー先テーブルにコピーできます。 コピー先テーブルは、同じクラスターにあっても別の HBase クラスターにあってもかまいません。 テーブル名の大文字と小文字は区別されます。
 
 クラスター内で CopyTable を使用するには、コピー元の HDInsight クラスターのヘッドノードに SSH で接続してから、この `hbase` コマンドを実行します。
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+
 
 CopyTable を使用して別のクラスターのテーブルにコピーするには、コピー先のクラスターのアドレスを指定した `peer` スイッチを追加します。
 
@@ -125,7 +130,7 @@ CopyTable は、コピー先テーブルにコピーされる、コピー元テ�
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper クォーラム リストを手動で収集する
 
-両方の HDInsight クラスターが同じ仮想ネットワーク内に存在する場合は、前述のとおり、内部ホスト名解決が自動的に行われます。 VPN ゲートウェイによって接続された 2 つの異なる仮想ネットワーク内の HDInsight クラスターに対して CopyTable を使用するには、クォーラム内の Zookeeper ノードのホスト IP アドレスを指定する必要があります。
+両方の HDInsight クラスターが同じ仮想ネットワーク内に存在する場合は、前述のとおり、内部ホスト名解決が自動的に行われます。 VPN Gateway によって接続された 2 つの異なる仮想ネットワーク内の HDInsight クラスターに対して CopyTable を使用するには、クォーラム内の Zookeeper ノードのホスト IP アドレスを指定する必要があります。
 
 クォーラムのホスト名を取得するには、次の curl コマンドを実行します。
 
@@ -155,7 +160,7 @@ curl コマンドで HBase 構成情報を含む JSON ドキュメントを取�
 
 ## <a name="snapshots"></a>スナップショット
 
-スナップショットを使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 ("*複製*") することも、別のクラスターにエクスポートすることもできます。
+[スナップショット](https://hbase.apache.org/book.html#ops.snapshots)を使用すると、HBase データストア内に特定の時点のデータ バックアップを作成できます。 スナップショットは、最小限のオーバーヘッドで、数秒以内に完了します。これは、スナップショット操作が、事実上、そのインスタンスのストレージ内にあるすべてのファイルの名前をキャプチャするメタデータ操作であるからです。 スナップショットの時点では、実際のデータはコピーされません。 スナップショットは、HDFS に保存されているデータの不変的な性質を利用します。ここでは、更新、削除、挿入すべてが新しいデータとして表されます。 スナップショットは、同じクラスター上に復元 ("*複製*") することも、別のクラスターにエクスポートすることもできます。
 
 スナップショットを作成するには、HDInsight HBase クラスターのヘッド ノードに SSH で接続し、`hbase` シェルを起動します。
 
@@ -189,7 +194,7 @@ HBase シェル内で、テーブルの名前とこのスナップショット�
 
 ## <a name="replication"></a>レプリケーション
 
-HBase レプリケーションでは、レプリケーション元クラスターのオーバーヘッドを最小限に抑えた非同期メカニズムを使用して、レプリケーション元クラスターからレプリケーション先クラスターにトランザクションを自動的にプッシュします。 HDInsight では、次のようなクラスター間のレプリケーションを設定できます。
+[HBase レプリケーション](https://hbase.apache.org/book.html#_cluster_replication)を使うと、レプリケーション元クラスターのオーバーヘッドを最小限に抑えた非同期メカニズムを使用して、レプリケーション元クラスターからレプリケーション先クラスターにトランザクションを自動的にプッシュすることができます。 HDInsight では、次のようなクラスター間のレプリケーションを設定できます。
 
 * レプリケーション元クラスターとレプリケーション先クラスターが同じ仮想ネットワーク内に存在する。
 * レプリケーション元クラスターとレプリケーション先クラスターが VPN ゲートウェイによって接続された別々の仮想ネットワークに存在するが、両方のクラスターが地理的に同じ場所に存在する。
@@ -206,6 +211,7 @@ HBase レプリケーションでは、レプリケーション元クラスタ�
 
 HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[Apache HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache HBase のレプリケーションを構成する](apache-hbase-replication.md)
+* [HBase の Import および Export ユーティリティの使用](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)

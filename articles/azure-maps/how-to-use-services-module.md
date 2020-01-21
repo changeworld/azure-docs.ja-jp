@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408665"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 
@@ -29,17 +29,17 @@ Azure Maps の Web SDK は、*サービス モジュール*を提供します。
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
+    - または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK ソース コード用のサービス モジュールをローカルに読み込み、アプリを使用してそれをホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
     
         > **npm install azure-maps-rest**
     
         次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. 認証パイプラインを作成します。 サービス URL のクライアント エンドポイントを初期化する前に、パイプラインを作成する必要があります。 Azure Maps 検索サービス クライアントを認証するには、自身の Azure Maps アカウント キーまたは Azure Active Directory (Azure AD) 資格情報を使用します。 この例では、検索サービス URL クライアントが作成されます。 
+1. 認証パイプラインを作成します。 サービス URL のクライアント エンドポイントを初期化するには、事前にパイプラインを作成しておく必要があります。 Azure Maps 検索サービス クライアントを認証するには、自身の Azure Maps アカウント キーまたは Azure Active Directory (Azure AD) 資格情報を使用します。 この例では、検索サービス URL クライアントが作成されます。 
 
     サブスクリプション キーを使用して認証する場合は、次のようになります。
 
@@ -163,7 +163,29 @@ Azure Maps の Web SDK は、*サービス モジュール*を提供します。
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>サービス モジュールを使用する</a>ペンを表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Azure Government クラウドのサポート
+
+Azure Maps Web SDK では、Azure Government クラウドがサポートされています。 Azure Maps Web SDK へのアクセスに使用する JavaScript および CSS の URL はすべて同じままです。ただし、Azure Maps プラットフォームの Azure Government クラウド バージョンに接続するには、次のタスクを実行する必要があります。
+
+対話型マップ コントロールを使用する場合は、`Map` クラスのインスタンスを作成する前に、次のコード行を追加します。 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+マップとサービスを認証するときは、Azure Government クラウド プラットフォームからの Azure Maps 認証の詳細を必ず使用してください。
+
+サービス モジュールを使用する場合は、API URL エンドポイントのインスタンスを作成する際にサービス用のドメインを設定する必要があります。 たとえば、次のコードでは `SearchURL` クラスのインスタンスが作成され、ドメインが Azure Government クラウドを指すようにされます。
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Azure Maps REST サービスに直接アクセスする場合は、URL ドメインを `atlas.azure.us` に変更します。 たとえば、検索 API サービスを使用する場合は、URL ドメインを `https://atlas.microsoft.com/search/` から `https://atlas.azure.us/search/` に変更します。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

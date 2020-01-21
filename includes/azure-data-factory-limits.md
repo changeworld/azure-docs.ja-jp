@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 6dc846ab6af0ed4d6d48c6f6db0abbce06427c36
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e1db978dbb7b63aaa4e9d189486faa0dfef520d1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035885"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75662902"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -34,6 +34,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | パイプラインあたりの最大パラメーター数 | 50 | 50 |
 | ForEach 項目数 | 100,000 | 100,000 |
 | ForEach 並列処理 | 20 | 50 |
+| パイプラインあたりのキューに入れられた実行の最大数 | 100 | 100 |
 | 式ごとの文字数 | 8,192 | 8,192 |
 | 最小タンブリング ウィンドウ トリガー間隔 | 15 分 | 15 分 |
 | パイプラインのアクティビティ実行の最大タイムアウト | 7 日 | 7 日 |
@@ -51,7 +52,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 
 <sup>1</sup> データ統合単位 (DIU) は、クラウド間のコピー操作で使用されます。詳細については、[データ統合単位 (バージョン 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) に関するページを参照してください。 課金については、「[Azure Data Factory の価格](https://azure.microsoft.com/pricing/details/data-factory/)」をご覧ください。
 
-<sup>2</sup> [Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) は、データ コンプライアンス、効率、およびネットワーク送信コストの削減を実現するために[グローバルに使用できます](https://azure.microsoft.com/global-infrastructure/services/)。 
+<sup>2</sup> [Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) は、データ コンプライアンス、効率、およびネットワーク エグレス コストの削減を実現するために[グローバルに使用できます](https://azure.microsoft.com/global-infrastructure/services/)。 
 
 | リージョン グループ | リージョン | 
 | -------- | ------ |
@@ -65,7 +66,6 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 
 | **リソース** | **既定の制限** | **上限** |
 | --- | --- | --- |
-| Azure サブスクリプション内の Data Factory |50 |[サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 つの Data Factory 内のパイプライン数 |2,500 |[サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 つのデータ ファクトリ内のデータセット数 |5,000 |[サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | データセットあたりの同時実行のスライス数 |10 |10 |
@@ -88,4 +88,4 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | 再試行のタイムアウト値 |1 秒 |1 秒 |
 
 #### <a name="web-service-call-limits"></a>Web サービス呼び出しの制限
-Azure Resource Manager では、API 呼び出しの制限があります。 API の呼び出しは、 [Azure リソース マネージャーの API 制限](../articles/azure-subscription-service-limits.md#resource-group-limits)内の割合で実行できます。
+Azure Resource Manager では、API 呼び出しの制限があります。 API の呼び出しは、 [Azure リソース マネージャーの API 制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)内の割合で実行できます。

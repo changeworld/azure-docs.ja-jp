@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430220"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Azure portal からプロビジョニング レポートを取得する
 
-特定のアプリケーションに関するプロビジョニング レポート情報を取得するには、まず [Azure portal](https://portal.azure.com) を起動し、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ(プレビュー)]** ( **[アクティビティ]** セクション内) に移動します。 プロビジョニングが構成されているエンタープライズ アプリケーションに移動することもできます。 たとえば、LinkedIn Elevate にユーザーをプロビジョニングする場合、アプリケーションの詳細へのナビゲーション パスは、次のようになります。
+特定のアプリケーションに関するプロビジョニング レポート情報を取得するには、まず [Azure portal](https://portal.azure.com) を起動し、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) に移動します。 プロビジョニングが構成されているエンタープライズ アプリケーションに移動することもできます。 たとえば、LinkedIn Elevate にユーザーをプロビジョニングする場合、アプリケーションの詳細へのナビゲーション パスは、次のようになります。
 
 **[Azure Active Directory] > [エンタープライズ アプリケーション] > [すべてのアプリケーション] > [LinkedIn Elevate]**
 
@@ -55,8 +55,8 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 [プロビジョニング進行状況バー](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)は、指定したアプリケーションの **[プロビジョニング]** タブに表示されます。 これは、 **[設定]** の下にある **[現在の状態]** セクションにあり、現在の初回サイクルまたは増分サイクルの状態を示します。 このセクションには、以下も表示されます。
 
 * ソース システムとターゲット システムの間で同期され、現時点でプロビジョニングの対象となっているユーザーとグループの総数。
-* 同期が最後に実行された時間。 同期は通常、[初回サイクル](user-provisioning.md#what-happens-during-provisioning)が完了した後、20 分から 40 分間隔で行われます。
-* [初回サイクル](user-provisioning.md#what-happens-during-provisioning)が完了したかどうか。
+* 同期が最後に実行された時間。 同期は通常、[初回サイクル](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)が完了した後、20 分から 40 分間隔で行われます。
+* [初回サイクル](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)が完了したかどうか。
 * プロビジョニング プロセスが検疫の対象となったかどうかと、検疫状態になった理由 (たとえば、無効な管理者資格情報のためにターゲット システムとの通信に失敗した)。
 
 **[現在の状態]** は、プロビジョニング ジョブの操作の正常性をチェックするために、管理者が最初に確認するものです。

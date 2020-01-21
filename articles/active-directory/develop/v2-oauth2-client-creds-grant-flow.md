@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423283"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -65,7 +65,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 
-ACL を使用する代わりに、API を使用してアプリケーションのアクセス許可のセットを公開することができます。 アプリケーションのアクセス許可は、組織の管理者によってアプリケーションに付与され、その組織と従業員が所有するデータにアクセスする場合にのみ使用されます。 たとえば、Microsoft Graph は次の操作を行うアクセス許可を公開しています:
+ACL を使用する代わりに、API を使用して**アプリケーションのアクセス許可**のセットを公開することができます。 アプリケーションのアクセス許可は、組織の管理者によってアプリケーションに付与され、その組織と従業員が所有するデータにアクセスする場合にのみ使用されます。 たとえば、Microsoft Graph は次の操作を行うアクセス許可を公開しています:
 
 * すべてのメールボックスのメールの読み取り
 * すべてのメールボックスのメールの読み書き
@@ -75,6 +75,11 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 アプリケーションのアクセス許可の詳細については、[Microsoft Graph](https://developer.microsoft.com/graph) を参照してください。
 
 アプリケーションのアクセス許可をアプリで使用するには、以降のセクションで説明する手順に従います。
+
+
+> [!NOTE]
+> ユーザーとしてではなくアプリケーションとして認証する場合、"委任されたアクセス許可" (ユーザーによって付与されるスコープ) を使用することはできません。  "アプリケーションのアクセス許可" ("ロール" とも呼ばれる) を使用する必要があります。これは、アプリケーションの管理者によって (または、Web API による事前承認を介して) 付与されます。    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 
@@ -113,7 +118,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
 | `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -130,7 +135,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `tenant` | アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | `state` | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
@@ -144,7 +149,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` | エラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | `error_description` | エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -176,7 +181,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
 | `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | `client_id` | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 アプリを登録したポータルで、この情報を確認できます。 |
@@ -198,7 +203,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
 | `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | `client_id` | 必須 |お使いのアプリに割り当てられるアプリケーション (クライアント) ID。 |
@@ -221,7 +226,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `access_token` | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、認証することができます。 |
 | `token_type` | トークン タイプ値を指定します。 Microsoft ID プラットフォームでサポートされる種類は `bearer` のみです。 |
@@ -244,7 +249,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -275,7 +280,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Microsoft 認証ライブラリの[クライアントの資格情報の概要に関するドキュメント](https://aka.ms/msal-net-client-credentials)を参照してください。
 
-| サンプル | プラットフォーム |説明 |
+| サンプル | プラットフォーム |[説明] |
 |--------|----------|------------|
 |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 コンソール | ユーザーの代理ではなく、アプリケーションの ID を使用して Microsoft Graph へのクエリを実行するテナントのユーザーを表示する単純な .NET Core アプリケーション。 このサンプルは、認証に証明書を使用するバリエーションも示しています。 |
 |[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | ユーザーの代理ではなく、アプリケーションの ID を使用して Microsoft Graph のデータを同期する Web アプリケーション。 |

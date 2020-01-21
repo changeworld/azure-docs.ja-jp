@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453069"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
@@ -56,7 +56,7 @@ Microsoft Azure はサービスと機能の最も豊富なポートフォリオ�
 
 ## <a name="well-managed-using-software-defined-innovation"></a>ソフトウェアが定義するイノベーションを用いた適切な管理
 
-マイクロソフトは、世界有数のクラウドの運営を通じて、高性能グローバル インフラストラクチャの[構築と管理](https://myignite.techcommunity.microsoft.com/sessions/66668)の分野で多くの知見と経験を積み重ねてきました。  
+マイクロソフトは、世界有数のクラウドの運営を通じて、高性能グローバル インフラストラクチャの構築と管理の分野で多くの知見と経験を積み重ねてきました。  
  
 また、一連の厳格な運用原則を遵守します。 
  
@@ -70,5 +70,5 @@ Microsoft Azure はサービスと機能の最も豊富なポートフォリオ�
  
 Azure とそのネットワークの急激な成長は、グローバル ネットワークの運用管理において人間の直感に頼ることがもはや不可能になったことを認めざるを得ない段階に達しました。 ネットワークの長期的、中期的、そして短期的な変化を検証するニーズを満たすために、マイクロソフトでは、実稼働ネットワークを合成的にミラー化およびエミュレートするプラットフォームを開発しました。 ミラー化された環境を作成して、何百万回でもシミュレーションを実行できるため、ソフトウェアやハードウェアの変更とその影響を、実稼働のプラットフォームやネットワークにコミットする前にテストすることが可能になります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure で提供されるネットワーク サービスについて詳しく理解する](https://azure.microsoft.com/product-categories/networking/)

@@ -5,20 +5,20 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 77c3aee4fdb5f8b2ee7ed83f92917573ad6ad529
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0ab9302909f86ff4559ece217f8d702710733691
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368005"
 ---
 アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで **[Azure Active Directory]** (Azure AD B2C *ではない*) を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 1. **[管理]** の **[アプリの登録 (レガシ)]** を選択します。
 1. **[新しいアプリケーションの登録]** を選択します。
 1. アプリケーションの名前を入力します。 たとえば、*managementapp1* と入力します。
@@ -29,9 +29,9 @@ ms.locfileid: "73643615"
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*managementapp1* と入力します。
 1. **[この組織のディレクトリ内のアカウントのみ]** を選択します。

@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップに関する一般的�
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d2049036d52eea29b03a2ca3cea29e3d6c52e9cc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173055"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611630"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -66,7 +66,7 @@ Windows マシンの名前を変更すると、現在構成されているすべ
 
 * Backup コンテナーに新しいマシン名を登録する必要があります。
 * コンテナーに新しい名前を登録すると、最初の操作は "*完全*" バックアップになります。
-* 以前のサーバー名を使ってコンテナーにバックアップしたデータを回復する必要がある場合は、データの回復ウィザードで別の場所に復元するためのオプションを使用します。 [詳細情報](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+* 以前のサーバー名を使ってコンテナーにバックアップしたデータを回復する必要がある場合は、データの回復ウィザードで別の場所に復元するためのオプションを使用します。 [詳細については、こちらを参照してください](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>バックアップするファイル パスの最大長はいくつですか。
 
@@ -139,9 +139,9 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
 キャッシュ フォルダーでは、次の各属性またはそれらの組み合わせはサポートされていません。
 
-* 暗号化
+* Encrypted
 * 重複除去
-* 圧縮
+* Compressed
 * スパース
 * 再解析ポイント
 
@@ -149,14 +149,47 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>バックアップに使用される帯域幅の量を調整する方法はありますか。
 
-はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細情報](backup-configure-vault.md#enable-network-throttling)。
+はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細については、こちらを参照してください](backup-configure-vault.md#enable-network-throttling)。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
+### <a name="manage"></a>管理する
+**パスフレーズを忘れた場合、復旧できますか?**<br>
+Azure Backup エージェントでは、バックアップしたデータを復元中に暗号化解除するには、パスフレーズ (登録時に指定したもの) が必要です。 忘れたパスフレーズを処理するためのオプションを理解するには、以下のシナリオを確認してください。<br>
+
+| 元のコンピューター <br> " *(バックアップが作成されているソース マシン)* " | Passphrase | 利用可能なオプション |
+| --- | --- | --- |
+| 利用可能 |忘れた |バックアップが作成されている元のコンピューターが利用可能であり、同じ Recovery Services コンテナーにまだ登録されている場合は、次の[手順](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)に従って、パスフレーズを再生成することができます。  |
+| 紛失 |忘れた |データを復旧できないか、データを利用できません。 |
+
+次の条件を考慮してください。
+- エージェントをアンインストールして、元の同じコンピューターに再登録する場合は、次のようになります。
+  - "*同じパスフレーズ*" を使用すると、バックアップしたデータを復元することができます。<br>
+  - "*異なるパスフレーズ*" を使用すると、バックアップしたデータを復元することができません。
+-   "*別のコンピューター*" にエージェントをインストールする場合は、次のようになります。<br>
+  - 同じパスフレーズ (元のコンピューターで使用していたもの) を使用すると、バックアップしたデータを復元することができます。<br>
+  - 異なるパスフレーズを使用すると、バックアップしたデータを復元することができません。<br>
+-   また、元のコンピューターが破損して、MARS コンソールからパスフレーズを再生成することができないものの、MARS エージェントによって使用される元のスクラッチ フォルダーを復元したり、アクセスしたりすることができる場合は、パスワードを忘れた場合に復元することができる可能性があります。 さらにヘルプが必要な場合は、カスタマー サポートにお問い合わせください。
+
+**バックアップが作成されている元のコンピューターを紛失した場合、復旧するにはどうすればよいですか?**<br>
+
+元のコンピューターと同じパスフレーズ (登録時に指定したもの) がある場合は、バックアップされたデータを別のコンピューターに復元できます。 復元オプションを理解するには、以下のシナリオを確認してください。
+
+| 元のコンピューター | Passphrase | 利用可能なオプション |
+| --- | --- | --- |
+| 紛失 |利用可能 |元のコンピューターの登録時に指定したものと同じパスフレーズを持つ別のコンピューターに、MARS エージェントをインストールして登録することができます。 **[復旧オプション]**  >  **[別の場所]** を選択して、復元を実行します。 詳しくは、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)を参照してください。
+| 紛失 |忘れた |データを復旧できないか、データを利用できません。 |
+
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 
 進行中の復元ジョブがキャンセルされると、復元プロセスが停止します。 すべてのファイルがキャンセル前の状態に復元され、ロールバックされずに、構成された宛先 (元の場所または別の場所) に保持されます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS エージェントでは、ファイル、フォルダー、ボリュームに設定された ACL のバックアップと復元は行われますか?
+
+* MARS エージェントでは、ファイル、フォルダー、ボリュームに設定された ACL のバックアップが行われます。
+* ボリューム復元の復旧オプションについては、MARS エージェントでは、復旧中のファイルまたはフォルダーへの ACL アクセス許可の復元をスキップするオプションが用意されています。
+* 個々のファイルやフォルダーの復旧オプションについては、MARS エージェントでは、ACL アクセス許可を使用して復元が行われます (ACL 復元をスキップするオプションはありません)。
+
+## <a name="next-steps"></a>次のステップ
 
 Windows マシンのバックアップ方法を[確認してください](tutorial-backup-windows-server-to-azure.md)。

@@ -2,18 +2,18 @@
 title: HDInsight 上の Apache Hadoop で MapReduce と Curl を使用する - Azure
 description: HDInsight 上の Apache Hadoop で Curl を使用して MapReduce ジョブをリモートで実行する方法を説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 274d8dc80d9318aa3ddf4a904a5b623319ea01f4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716129"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645006"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する
 
@@ -77,7 +77,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
    * **-u**: 要求の認証に使用するユーザー名とパスワードを示します。
    * **-G**: この操作が GET 要求であることを示します。
 
-   URL の最初の部分 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** は、すべての要求で同じです。
+   URI の最初の部分 `https://CLUSTERNAME.azurehdinsight.net/templeton/v1` は、すべての要求で同じです。
 
 4. MapReduce ジョブを送信するには、次のコマンドを使用します。
 

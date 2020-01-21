@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754424"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890678"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -71,9 +70,8 @@ NetSuite の Azure AD への統合を構成するには、次の手順を実行�
 NetSuite での Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
-
-    a. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、ユーザー B.Simon を使って Azure AD のシングル サインオンをテストします。  
-    b. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、ユーザー B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    * [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、ユーザー B.Simon を使って Azure AD のシングル サインオンをテストします。  
+    * [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、ユーザー B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. [NetSuite SSO を構成](#configure-netsuite-sso)して、アプリケーション側でシングル サインオン設定を構成します。
     * [NetSuite のテスト ユーザーを作成](#create-the-netsuite-test-user)して、NetSuite でユーザー B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. [SSO のテスト](#test-sso)。構成が機能することを確認します。
@@ -90,52 +88,32 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 1. **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > 上記の URL の値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
 
-    NetSuite アプリケーションは、SAML アサーションが特定の形式で表示されることを想定しています。 カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 
-    
-1. **[ユーザー属性]** ウィンドウを開くには、 **[編集]** ("鉛筆") アイコンを選択します。 このウィンドウには、次の図に示すように、既定の属性の一覧が表示されます。 
+1. NetSuite アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![[ユーザー属性] ウィンドウ](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-    これらの属性に加えて、NetSuite アプリケーションでは、その他にいくつかの属性が SAML 応答で返されることが想定されています。 
+1. 上記に加えて、NetSuite アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-1. **[ユーザー属性]** ウィンドウの **[ユーザー要求]** で、次の手順を実行して、次の表に示されている SAML トークン属性を追加します。
-
-    | 名前 | ソース属性 | 
+    | Name | ソース属性 |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. **[新しい要求の追加]** を選択して **[ユーザー要求の管理]** ウィンドウを開きます。
+    > [!NOTE]
+    > account 属性の値は、実際の値ではありません。 この値は、このチュートリアルで後述するように更新します。
 
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** ボックスは空白のままにします。
-
-    d. **[ソース]** ボックスの一覧で、 **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧で、その行に表示される属性値を入力します。
-
-    f. **[OK]** を選択します。
-
-    g. **[保存]** を選択します。
-
-    >[!NOTE]
-    >account 属性の値は、実際の値ではありません。 この値は、このチュートリアルで後述するように更新します。
-
-1. **[SAML によるシングル サインオンのセットアップ]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を見つけます。
-
-1. **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
+1. [SAML によるシングル サインオンのセットアップ] ページの [SAML 署名証明書] セクションで、[フェデレーション メタデータ XML] を探して [ダウンロード] を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -275,7 +253,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 このセクションでは、B.Simon というユーザーを NetSuite に作成します。 NetSuite では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 NetSuite にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -287,4 +265,3 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Azure AD で NetSuite を試す](https://aad.portal.azure.com/)
-

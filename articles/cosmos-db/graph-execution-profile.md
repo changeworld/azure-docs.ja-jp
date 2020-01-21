@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Gremlin API の実行プロファイル関数を使用してクエリを評価する
+title: Azure Cosmos DB Gremlin API で実行プロファイルを使用してクエリを評価する
 description: 実行プロファイル ステップを使用して Gremlin クエリのトラブルシューティングと向上を行う方法について説明します。
 services: cosmos-db
 author: luisbosquez
@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: ab5c55105eeb912281f35e3d6094c0c43a76f89a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441851"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "70915879"
 
 このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され**、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
 
-例:
+次に例を示します。
 
 ```java
     // Basic traversal
@@ -155,7 +155,7 @@ executionProfile() 関数の応答では、次の構造を持つ JSON オブジ�
     - `storeOps.count`:このストレージ操作で返された結果の数を表します。
     - `storeOps.size`:特定のストレージ操作の結果のサイズを表します (バイト単位)。
 
-Cosmos DB Gremlin ランタイム演算子|説明
+Cosmos DB Gremlin ランタイム演算子|[説明]
 ---|---
 `GetVertices`| このステップでは、永続化レイヤーから基にされたオブジェクトのセットが取得されます。 
 `GetEdges`| このステップでは、頂点のセットに隣接するエッジが取得されます。 このステップは、1 つまたは複数のストレージ操作になる可能性があります。
@@ -387,6 +387,6 @@ Cosmos DB Gremlin ランタイム演算子|説明
 - 最初の応答の方が `metrics[0].time` の値が高く、これはこの 1 つのステップの解決に長くかかったことを示します。
 - `metrics[0].counts.resultsCount` の値も最初の応答の方が高く、初期作業データセットが大きかったことを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB で[サポートされている Gremlin の機能](gremlin-support.md)について確認します。 
 * [Azure Cosmos DB での Gremlin API](graph-introduction.md) の詳細について確認します。

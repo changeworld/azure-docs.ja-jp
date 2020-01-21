@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 19a65e688d66738db0b6e4dcca383c6e4abed262
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974405"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691039"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードのサポート (プレビュー)
 
@@ -96,7 +96,7 @@ PowerShell を使用して変更フィードを有効にします。
 5. ストレージ アカウントの変更フィードを有効にします。
 
    ```powershell
-   Update-AzStorageBlobServiceProperty -ResourceGroupName -StorageAccountName -EnableChangeFeed $true
+   Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
@@ -317,7 +317,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 現在、ListContainers API を呼び出しても **$blobchangefeed** コンテナーを表示できず、このコンテナーは Azure portal やストレージ エクスプローラーに表示されません。
 - 以前に[アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md)を開始したストレージ アカウントでは、ログ ファイルが表示されない問題が発生することがあります。 また、将来のアカウントのフェールオーバーもプレビュー中にログ ファイルに影響を与える可能性があります。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>変更フィードと Storage Analytics のログ記録の違いは何ですか。
 分析ログには、すべての操作にわたる成功した要求と失敗した要求を含むすべての読み取り、書き込み、一覧表示、および削除操作のレコードが含まれています。 分析ログはベストエフォートであり、順序は保証されません。
@@ -327,7 +327,7 @@ az provider register --namespace 'Microsoft.Storage'
 ### <a name="should-i-use-change-feed-or-storage-events"></a>変更フィードまたはストレージ イベントを使用する必要がありますか。
 変更フィードと [BLOB ストレージ イベント](storage-blob-event-overview.md)は同じ配信の信頼性保証を備えた同じ情報を提供するため、両方の機能を活用できます。主な違いは、イベント レコードの待機時間、順序、および保存です。 変更フィードでは、変更から数分以内にレコードがログに発行され、BLOB ごとの変更操作の順序も保証されます。 ストレージ イベントはリアルタイムでプッシュされ、順序付けされない可能性があります。 変更フィード イベントが独自の定義された保持期間を持つ読み取り専用の安定したログとしてストレージ アカウントの内部に永続的に格納されるのに対して、ストレージ イベントは、明示的に格納しない限り、イベント ハンドラーによって一時的に使用されます。 変更フィードの場合は、任意の数のアプリケーションが BLOB API または SDK を使用して、それぞれの都合に合わせてログを使用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - .NET クライアント アプリケーションを使用して変更フィードを読み取る方法の例を確認します。 [Azure Blob Storage での変更フィード ログの処理](storage-blob-change-feed-how-to.md)に関するページを参照してください。
 - リアルタイムでイベントに対応する方法について学習します。 「[Blob Storage イベントへの対応](storage-blob-event-overview.md)」を参照してください

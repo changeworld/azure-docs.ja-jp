@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a89e87dad1e940f30e255a919f3f2cf25f21d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f99859fb695281324148683fac24c9e7b8463ef5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224242"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977894"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -40,7 +40,17 @@ ms.locfileid: "74224242"
 
 - 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします
 
-## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
+
+## <a name="enable"></a>[有効化]
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>アクセス権の付与
+
+
+### <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 
 Cosmos DB アカウントがまだない場合は作成します。 この手順をスキップし、既存の Cosmos DB アカウントを使用することもできます。 
 
@@ -51,7 +61,7 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。  Cosmos DB を使用できる **[場所]** を選択します。
 6. **Create** をクリックしてください。
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>Cosmos DB アカウントでコレクションを作成する
+### <a name="create-a-collection"></a>コレクションの作成 
 
 次に、後の手順でクエリを実行できるデータ コレクションを Cosmos DB アカウントに追加します。
 
@@ -59,9 +69,10 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 2. **[概要]** タブで **[+ コレクションの追加]** ボタンをクリックします。[コレクションの追加] パネルが表示されます。
 3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、 **[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
 
-## <a name="grant-windows-vm-system-assigned-managed-identity-access-to-the-cosmos-db-account-access-keys"></a>Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのアクセス キーへのアクセス権を付与する
 
-Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、システム割り当てマネージド ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのキーへのアクセス権を付与します。
+### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>アクセス権を Cosmos DB アカウントのアクセス キーに付与する
+
+このセクションでは、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのアクセス キーへのアクセス権を付与する方法を説明します。 Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、システム割り当てマネージド ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのキーへのアクセス権を付与します。
 
 Azure Resource Manager で PowerShell を使用して Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。  このチュートリアルでは、`Cosmos DB Account Reader Role` を割り当てます。
 
@@ -69,11 +80,15 @@ Azure Resource Manager で PowerShell を使用して Windows VM のシステム
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token-using-the-windows-vm-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して、Azure Resource Manager を呼び出すためのアクセス トークンを取得する
+## <a name="access-data"></a>データにアクセスする
 
-チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
+このセクションでは、Windows VM のシステム割り当てマネージド ID のアクセス トークンを使用して、Azure Resource Manager を呼び出す方法を説明します。 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
 
 最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
+
+
+
+### <a name="get-an-access-token"></a>アクセス トークンを取得する
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
@@ -98,9 +113,9 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Cosmos DB 呼び出しを行うために Azure Resource Manager からアクセス キーを取得する
+### <a name="get-access-keys"></a>アクセス キーを取得する 
 
-ここで、PowerShell を使用して、前のセクションで取得したアクセス トークンで Resource Manager を呼び出し、Cosmos DB アカウント アクセス キーを取得します。 アクセス キーを取得したら、Cosmos DB に対してクエリを実行できます。 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、および `<COSMOS DB ACCOUNT NAME>` の各パラメーターの値は、必ず実際の値に置き換えてください。 `<ACCESS TOKEN>` の値は、以前に取得したアクセス トークンに置き換えます。  読み取り/書き込みキーを取得する場合は、キー操作の種類 `listKeys` を使用します。  読み取り専用キーを取得する場合は、キー操作の種類 `readonlykeys` を使用します。
+このセクションでは、Cosmos DB 呼び出しを行うために Azure Resource Manager からアクセス キーを取得する方法を説明します。 ここで、PowerShell を使用して、前のセクションで取得したアクセス トークンで Resource Manager を呼び出し、Cosmos DB アカウント アクセス キーを取得します。 アクセス キーを取得したら、Cosmos DB に対してクエリを実行できます。 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、および `<COSMOS DB ACCOUNT NAME>` の各パラメーターの値は、必ず実際の値に置き換えてください。 `<ACCESS TOKEN>` の値は、以前に取得したアクセス トークンに置き換えます。  読み取り/書き込みキーを取得する場合は、キー操作の種類 `listKeys` を使用します。  読み取り専用キーを取得する場合は、キー操作の種類 `readonlykeys` を使用します。
 
 ```powershell
 Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
@@ -177,7 +192,14 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Cosmos DB にアクセスするための Windows VM のシステム割り当て ID の使用方法について説明しました。  Cosmos DB の詳細については、以下を参照してください：
 

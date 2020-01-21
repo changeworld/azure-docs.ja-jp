@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230473"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769134"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -73,7 +73,7 @@ Postman から **202 Accepted** の状態が報告されます。
 
 ![手動呼び出しの関数ログの結果](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Functions のコードをテストするための戦略](./functions-test-a-function.md)
 - [Azure Functions の Event Grid トリガーのローカル デバッグ](./functions-debug-event-grid-trigger-local.md)

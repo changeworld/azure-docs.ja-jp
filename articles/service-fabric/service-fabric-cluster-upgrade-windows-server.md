@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric スタンドアロン クラスターのバージョンをアップグレードする | Microsoft Docs
+title: スタンドアロン クラスターのバージョンをアップグレードする
 description: スタンドアロンの Service Fabric クラスターを実行する Azure Service Fabric コードをアップグレードします。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 29d034be5999d0bc3f0a244cfa7a5658a4ecce32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8c146d1a82fd745e6641ac2aea91aa34539d6f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711387"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610031"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>クラスターで実行される Service Fabric のバージョンをアップグレードする 
 
@@ -168,7 +159,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
     ロールバックの原因となった問題を解決したら、前述の手順に従って、もう一度アップグレードを開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)
 * 一部の [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)をカスタマイズします。
 * [クラスターのスケールインとスケールアウト](service-fabric-cluster-scale-up-down.md)

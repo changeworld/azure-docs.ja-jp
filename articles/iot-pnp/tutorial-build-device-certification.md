@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550268"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867416"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -35,7 +35,7 @@ ms.locfileid: "75550268"
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パック
 
-また、[デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device-windows.md)で作成した IoT プラグ アンド プレイ デバイスも必要です。
+また、Windows 向けの、[デバイス機能モデルを使用したデバイスの作成](quickstart-create-pnp-device-windows.md)に関するクイックスタートも完了しておく必要があります。 このクイックスタートでは、Vcpkg を使用して開発環境を設定し、サンプル プロジェクトを作成する方法を示します。
 
 ## <a name="store-a-capability-model-and-interfaces"></a>機能モデルとインターフェイスの格納
 
@@ -107,20 +107,53 @@ Azure CLI を使用して**デバイス情報**インターフェイスを表示
 
 1. デバイス コード スタブの生成に使用する DCM ファイルを選択します。
 
-1. プロジェクト名を入力します。これは、デバイス アプリケーションの名前です。
+1. プロジェクト名 (たとえば、**sample_device**) を入力します。 これは、対象のデバイス アプリケーションの名前です。
 
 1. 言語として、 **[ANSI C]** を選択します。
 
 1. 接続方法として、 **[Via DPS (Device Provisioning Service) symmetric key]\(DPS (デバイス プロビジョニング サービス) の対称キーを使用する\)** を選択します。
 
-1. デバイスの OS に応じて、プロジェクト テンプレートとして **[CMake Project on Windows]\(Windows 上の CMake プロジェクト\)** または **[CMake Project on Linux]\(Linux 上の CMake プロジェクト\)** を選択します。
+1. プロジェクト テンプレートとして **[CMake Project on Windows]\(Windows 上での CMake プロジェクト\)** を選択します。
+
+1. デバイス SDK を含める方法として、 **[Via Vcpkg]\(Vcpkg 経由\)** を選択します。
 
 1. VS Code で新しいウィンドウが開き、生成されたデバイス コード スタブ ファイルが表示されます。
 
-1. コードをビルドした後、アプリケーションのパラメーターとして DPS の資格情報 ( **[DPS ID Scope]\(DPS ID のスコープ\)** 、 **[DPS Symmetric Key]\(DPS 対象キー\)** 、 **[Device Id]\(デバイス ID\)** ) を入力します。 証明書ポータルから資格情報を取得するには、[IoT プラグ アンド プレイ デバイスへの接続とテスト](tutorial-certification-test.md#connect-and-discover-interfaces)に関する記事を参照してください。
+## <a name="build-and-run-the-code"></a>コードのビルドと実行
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+Vcpkg パッケージを使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
+
+1. `sample_device` フォルダーに `cmake` サブディレクトリを作成して、そのフォルダーに移動します。
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. 次のコマンドを実行して、生成されたコード スタブをビルドします (プレースホルダーを Vcpkg リポジトリのディレクトリに置き換えます)。
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > Visual Studio 2017 または2015 を使用している場合、使用しているビルド ツールに基づいて CMake ジェネレーターを指定する必要があります。
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > ご利用の C++ コンパイラが cmake で見つからない場合は、前のコマンドを実行したときにビルド エラーが発生します。 それが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)で次のコマンドを実行してみてください。
+
+1. ビルドが正常に完了したら、アプリケーションのパラメーターとして DPS の資格情報 ( **[DPS ID Scope]\(DPS ID のスコープ\)** 、 **[DPS Symmetric Key]\(DPS 対象キー\)** 、 **[Device Id]\(デバイス ID\)** ) を入力します。 証明書ポータルから資格情報を取得するには、[IoT プラグ アンド プレイ デバイスへの接続とテスト](tutorial-certification-test.md#connect-and-discover-interfaces)に関する記事を参照してください。
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>標準インターフェイスを実装する

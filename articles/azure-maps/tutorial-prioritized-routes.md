@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Maps を使った複数のルート
-description: チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索します
+title: チュートリアル:移動モード別に複数のルートを検索する |Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps を使用して、さまざまな移動モードのルートを検索する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613637"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910863"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -117,7 +117,7 @@ ms.locfileid: "75613637"
 
 2. **MapTruckRoute.html** ファイルを保存し、ブラウザーでページを更新します。 マップと対話してロサンゼルスにズームインすると、道路が現在の交通データ付きで表示されます。
 
-   ![トラフィック マップの表示](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![マップ上にトラフィックを表示する](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

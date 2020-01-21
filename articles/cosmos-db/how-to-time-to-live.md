@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB で Time to Live を構成および管理する方法を学習する
+title: Azure Cosmos DB で Time to Live を構成および管理する
 description: Azure Cosmos DB でコンテナーと項目の Time to Live を構成および管理する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 51022956ad32059771b8d56f0ae177fb5165b450
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 55f94257b604a87460caa279fc0995f1434ac92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441775"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
@@ -21,7 +21,7 @@ Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構�
 
 有効期限のないコンテナーの Time to Live を有効にするには、次の手順を使用します。 これを有効にすると、項目レベルで TTL をオーバーライドできます。 秒数として 0 以外の値を入力して TTL を設定することもできます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. 新しい Azure Cosmos アカウントを作成するか、既存のアカウントを選択します。
 
@@ -133,7 +133,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 項目に対して Time to Live を有効にするには、次の手順を使用します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. 新しい Azure Cosmos アカウントを作成するか、既存のアカウントを選択します。
 
@@ -279,7 +279,7 @@ containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Time to Live の詳細について、以下の記事で学習します。
 

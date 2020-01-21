@@ -1,6 +1,7 @@
 ---
-title: Database Migration Service および PowerShell を使用して SQL Server を Azure SQL Database Managed Instance に移行する | Microsoft Docs
-description: Azure PowerShell を使用してオンプレミスの SQL Server から Azure SQL DB Managed Instance に移行する方法について説明します。
+title: PowerShell:SQL Server から SQL マネージド インスタンスに移行する
+titleSuffix: Azure Database Migration Service
+description: Azure PowerShell と Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database マネージド インスタンスに移行する方法について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,17 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/29/2019
-ms.openlocfilehash: 426285340a9401aa6c84a7ee07f172eee6791d9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 227ef72b53b7334cffcb485e23c3e4227613b344
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437914"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database マネージド インスタンスに移行する
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Database マネージド インスタンスに移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2005 以上のオンプレミス インスタンスに復元された **Adventureworks2016** データベースを Azure SQL Database マネージド インスタンスに移行します。 Microsoft Azure PowerShell で `Az.DataMigration` モジュールを使用すると、データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database マネージド インスタンスに移行できます。
 
 この記事では、次のことについて説明します。
@@ -57,7 +58,7 @@ ms.locfileid: "73163949"
 
 PowerShell を使用して Azure サブスクリプションにサインインします。 詳細については、「[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -417,6 +418,6 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 追加の移行シナリオ (ソースとターゲットのペア) については、Microsoft の[データベース移行ガイド](https://datamigration.microsoft.com/)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」の記事で、Azure Database Migration Service の詳細を確認します。

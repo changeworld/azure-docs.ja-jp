@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182245"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564679"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -53,7 +53,7 @@ IOPS とスループットを向上させるためにアプリケーションを
 - スナップショットからマネージド ディスクを作成する
 - アンマネージド ディスクをマネージド ディスクに変換する
 
-# <a name="performance-application-checklist-for-disks"></a>ディスクのパフォーマンス アプリケーション チェックリスト
+## <a name="performance-application-checklist-for-disks"></a>ディスクのパフォーマンス アプリケーション チェックリスト
 
 Azure Premium Storage で実行される高パフォーマンスのアプリケーションを設計するときには、まず、アプリケーションのパフォーマンス要件を把握します。 パフォーマンス要件を収集したら、最適なパフォーマンスを実現するためにアプリケーションを最適化できます。
 
@@ -92,14 +92,14 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 
 PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論理ディスクと物理ディスクに使用できます。 VM で Premium Storage ディスクを使用している場合、物理ディスク カウンターは各 Premium Storage ディスクを対象としており、論理ディスク カウンターは Premium Storage ディスクに作成された各ボリュームを対象としています。 アプリケーションのワークロードをホストするディスクの値をキャプチャする必要があります。 論理ディスクと物理ディスクの間に一対一のマッピングが存在する場合は、物理ディスク カウンターを参照できます。それ以外の場合は、論理ディスク カウンターを参照します。 Linux では、iostat コマンドによって、CPU とディスクの使用レポートが生成されます。 ディスク使用レポートには、物理デバイスまたはパーティションごとの統計が示されます。 データベース サーバーがデータとログに個別のディスクを使用している場合は、両方のディスクでこのデータを収集します。 次の表に、ディスク、プロセッサ、メモリのカウンターを示します。
 
-| カウンター | 説明 | PerfMon | iostat |
+| カウンター | [説明] | PerfMon | iostat |
 | --- | --- | --- | --- |
 | **1 秒あたりの IOPS またはトランザクション数** |1 秒あたりにストレージ ディスクに発行された I/O 要求の数。 |Disk Reads/sec <br> Disk Writes/sec |tps <br> r/s <br> w/s |
 | **ディスク読み取り回数/書き込み回数** |ディスク上で実行された読み取り操作と書き込み操作の割合。 |% Disk Read Time <br> % Disk Write Time |r/s <br> w/s |
 | **スループット** |1 秒あたりにディスクに対して読み書きされたデータの量。 |Disk Read Bytes/sec <br> Disk Write Bytes/sec |kB_read/s <br> kB_wrtn/s |
 | **待機時間** |ディスク IO 要求を完了するまでの合計時間。 |Average Disk sec/Read <br> Average disk sec/Write |await <br> svctm |
 | **IO サイズ** |ストレージ ディスクに発行される I/O 要求のサイズ。 |Average Disk Bytes/Read <br> Average Disk Bytes/Write |avgrq-sz |
-| **キューの深さ** |ストレージ ディスクに対して読み書きされるのを待機している未処理の I/O 要求の数。 |現在のディスク キューの長さ |avgqu-sz |
+| **キューの深さ** |ストレージ ディスクに対して読み書きされるのを待機している未処理の I/O 要求の数。 |Current Disk Queue Length |avgqu-sz |
 | **最大メモリ** |アプリケーションをスムーズに実行するために必要なメモリ容量。 |% Committed Bytes in Use |Use vmstat |
 | **最大CPU** |アプリケーションをスムーズに実行するために必要な CPU 量。 |% Processor time |% 使用率 |
 
@@ -170,11 +170,11 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 
 ## <a name="high-scale-vm-sizes"></a>高スケール VM サイズ
 
-アプリケーションの設計を始めるときに、最初に行うことの 1 つとして、アプリケーションをホストする VM の選択があります。 Premium Storage には、高いコンピューティング能力と高いローカル ディスク I/O パフォーマンスを必要とするアプリケーションを実行できる、高スケール VM サイズが用意されています。 これらの VM は、高速プロセッサ、高いメモリ対コア比、ローカル ディスク用ソリッド ステート ドライブ (SSD) を提供します。 Premium Storage をサポートする高スケール VM の例として、DS シリーズ VM、DSv2 シリーズ VM、GS シリーズ VM があります。
+アプリケーションの設計を始めるときに、最初に行うことの 1 つとして、アプリケーションをホストする VM の選択があります。 Premium Storage には、高いコンピューティング能力と高いローカル ディスク I/O パフォーマンスを必要とするアプリケーションを実行できる、高スケール VM サイズが用意されています。 これらの VM は、高速プロセッサ、高いメモリ対コア比、ローカル ディスク用ソリッド ステート ドライブ (SSD) を提供します。 Premium Storage をサポートする高スケール VM の例として、DS シリーズ VM、GS シリーズ VM があります。
 
-高スケール VM は、CPU コア数、メモリ容量、OS、一時ディスク サイズが異なるさまざまなサイズで提供されます。 各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。 そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。 また、計算およびストレージ コストにも影響します。 例として、DS シリーズ、DSv2 シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
+高スケール VM は、CPU コア数、メモリ容量、OS、一時ディスク サイズが異なるさまざまなサイズで提供されます。 各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。 そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。 また、計算およびストレージ コストにも影響します。 例として、DS シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
 
-| VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大で、基本および標準の動的ルーティング ゲートウェイでは合計 10 個の接続が可能です。 データ ディスク | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
+| VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大 データ ディスク | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> ローカル SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 512 MB/秒 |4,000 IOPS、33 MB/秒 |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> ローカル SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 2,000 MB/秒 |5,000 IOPS、50 MB/秒 |
@@ -290,31 +290,33 @@ Premium SSD では、次の Linux ディストリビューションが検証さ�
 
 バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが Microsoft の検証によって判明しています。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
-| ディストリビューション | Version | サポートされるカーネル | 詳細 |
+| Distribution | Version | サポートされるカーネル | 詳細 |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 以降| 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 以降| 3.13.0-44.73+  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Ubuntu | 12.04 以降| 3.2.0-75.110+ | &nbsp; |
+| Ubuntu | 14.04 以降| 3.13.0-44.73+  | &nbsp; |
 | Debian | 7.x、8.x またはそれ以降| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 以降| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 12 以降| 3.12.36-38.1+ | &nbsp; |
 | SUSE | SLES 11 SP4 以降| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ 以降| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://www.microsoft.com/download/details.aspx?id=51612) <br> "*次のセクションの注を参照してください*" |
-| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://www.microsoft.com/download/details.aspx?id=51612) <br> "*次のセクションの注を参照してください*" |
+| CoreOS | 584.0.0+ 以降| 3.18.4+ | &nbsp; |
+| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://www.microsoft.com/download/details.aspx?id=55106) <br> "*次のセクションの注を参照してください*" |
+| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://www.microsoft.com/download/details.aspx?id=55106) <br> "*次のセクションの注を参照してください*" |
 | Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+、またはそれ以降 | &nbsp; | &nbsp; |
 | Oracle | 6.0+、7.2+、またはそれ以降 | &nbsp; | UEK4 または RHCK |
-| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
-| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4](https://www.microsoft.com/download/details.aspx?id=55106) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 用 LIS ドライバー
 
 OpenLogic CentOS VM を実行している場合は、次のコマンドを実行して、最新のドライバーをインストールしてください。
 
 ```
-sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
+sudo reboot
 ```
 
-新しいドライバーをアクティブにするには、VM を再起動してください。
+場合によっては、上記のコマンドによってカーネルもアップグレードされます。 カーネルの更新が必要な場合は、再起動後に上記のコマンドを再実行して、Microsoft-HYPER-V パッケージのインストールを完了する必要があります。
+
 
 ## <a name="disk-striping"></a>ディスク ストライピング
 
@@ -381,5 +383,4 @@ SQL Server の [並列処理の次数](https://technet.microsoft.com/library/ms1
 
 Azure Premium Storage では、選択された VM サイズとディスク サイズに応じて、指定された数の IOPS とスループットがプロビジョニングされます。 アプリケーションが、VM またはディスクが対応できるこれらの上限を超えて IOPS やスループットを引き上げようとすると、これを抑制するように調整されます。 これは、アプリケーションのパフォーマンスの低下という形で現れます。 これにより、待機時間が長くなり、スループットや IOPS が低下する可能性があります。 Premium Storage によって調整が行われないと、リソースが対応できる範囲を上回り、アプリケーションが完全に失敗する可能性があります。 そのため、調整によるパフォーマンスの問題を回避するために、常にアプリケーションの十分なリソースをプロビジョニングします。 前の VM サイズとディスク サイズのセクションで説明した考慮事項に注意してください。 ベンチマークは、アプリケーションをホストするために必要なリソースを把握するための最適な方法です。
 
-## <a name="next-steps"></a>次の手順
-
+## <a name="next-steps"></a>次のステップ

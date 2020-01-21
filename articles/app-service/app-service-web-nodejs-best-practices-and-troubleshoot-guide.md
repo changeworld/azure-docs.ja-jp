@@ -1,19 +1,19 @@
 ---
 title: Node.js のベスト プラクティスとトラブルシューティング
 description: Azure App Service で実行されている node.js アプリケーションのベスト プラクティスとトラブルシューティングの手順について説明します。
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430559"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -172,7 +172,7 @@ site/wwwroot ディレクトリに移動します。 次の図のようなコマ
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-コマンド `npm install v8-profiler`を実行します。
+コマンド `npm install v8-profiler` を実行します。
 
 このコマンドは、node\_modules ディレクトリとその依存関係すべてに v8-profiler をインストールします。
 ここで、アプリケーションをプロファイリングするように server.js を編集します。

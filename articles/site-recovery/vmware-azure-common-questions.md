@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084154"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495433"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -50,7 +50,7 @@ VMware VM のディザスター リカバリーに[関与するコンポーネ�
 
 はい、マイクロソフト ソフトウェア アシュランスのお客様は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、Azure に移行する Windows Server マシンのライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Site Recovery では、VMware サーバーへのどのようなアクセスが必要ですか?
 
@@ -116,7 +116,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>新しいマシンをストレージ アカウントにレプリケートできますか?
 
-No. いいえ。2019 年 3 月以降、Azure portal では、Azure のマネージド ディスクだけにレプリケートできます。
+いいえ。 いいえ。2019 年 3 月以降、Azure portal では、Azure のマネージド ディスクだけにレプリケートできます。
 
 ストレージ アカウントへの新しい VM のレプリケーションは、PowerShell または REST API (バージョン 2018-01-10 または 2016-08-10) を使用する場合のみ、行うことができます。
 
@@ -135,7 +135,7 @@ No. いいえ。2019 年 3 月以降、Azure portal では、Azure のマネー�
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>マネージド ディスクからアンマネージド ディスクにレプリケーションを切り替えることはできますか?
 
-No. マネージドからアンマネージドへの切り替えはサポートされていません。
+いいえ。 マネージドからアンマネージドへの切り替えはサポートされていません。
 
 ## <a name="replication"></a>レプリケーション
 
@@ -176,11 +176,11 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>レプリケートされる VM を、ディスクの追加またはサイズ変更によって変更することはできますか?
 
-Azure への VMware のレプリケーションでは、ディスクのサイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
+Azure への VMware のレプリケーションでは、ソース VM のディスク サイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい vCenter Server に移行できますか?
 
-No. VMware Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい vCenter Server を使用して Site Recovery を設定し、マシンのレプリケーションを再度有効にします。
+いいえ。 VMware Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい vCenter Server を使用して Site Recovery を設定し、マシンのレプリケーションを再度有効にします。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>仮想ネットワーク (Azure Storage ファイアウォールあり) が構成されているキャッシュまたはターゲット ストレージ アカウントにレプリケートすることはできますか?
 
@@ -202,7 +202,7 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>アップグレードごとにソース マシンを再起動する必要がありますか?
 
-アップグレードごとに再起動することをお勧めしますが、必須ではありません。 [詳細情報](https://aka.ms/asr_vmware_upgrades)。
+アップグレードごとに再起動することをお勧めしますが、必須ではありません。 [詳細については、こちらを参照してください](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="configuration-server"></a>構成サーバー
 
@@ -234,7 +234,7 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>構成サーバーは複数のリージョンにレプリケートできますか?
 
-No. 複数のリージョンにレプリケートするには、各リージョンに構成サーバーが必要です。
+いいえ。 複数のリージョンにレプリケートするには、各リージョンに構成サーバーが必要です。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Azure で構成サーバーをホストできますか?
 
@@ -266,15 +266,15 @@ No. 複数のリージョンにレプリケートするには、各リージョ�
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
 
-No. VM は構成サーバーにのみ使用します。
+いいえ。 VM は構成サーバーにのみ使用します。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>構成サーバーを複製してオーケストレーションに使用することはできますか?
 
-No. 登録に関する問題を避けるために、新しい構成サーバーを設定します。
+いいえ。 登録に関する問題を避けるために、新しい構成サーバーを設定します。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>構成サーバーが登録されているコンテナーを変更することはできますか?
 
-No. コンテナーは、構成サーバーに関連付けられた後に変更することはできません。 構成サーバーを別のコンテナーに登録する方法を[ご覧ください](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)。
+いいえ。 コンテナーは、構成サーバーに関連付けられた後に変更することはできません。 構成サーバーを別のコンテナーに登録する方法を[ご覧ください](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーの両方のディザスター リカバリーに同じ構成サーバーを使用できますか?
 
@@ -326,7 +326,7 @@ VMware から Azure の場合、使うことができる最も古い復旧ポイ
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>フェールオーバー後にはどのようにして Azure VM にアクセスできますか?
 
-フェールオーバー後、Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するには、いくつかの準備が必要です。 [詳細情報](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
+フェールオーバー後、Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するには、いくつかの準備が必要です。 [詳細については、こちらを参照してください](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 ### <a name="is-failed-over-data-resilient"></a>フェールオーバーされたデータに回復力はありますか?
 
@@ -338,29 +338,26 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>異なる場所にフェールバックすることはできますか?
 
-はい。 Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックできます。 [詳細情報](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+はい。 Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックできます。 [詳細については、こちらを参照してください](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>フェールバックに、プライベート ピアリングを使用した VPN または ExpressRoute が必要なのはなぜですか?
 
 Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>フェールオーバー後に Azure VM をサイズ変更することはできますか?
-
-いいえ、フェールオーバー後にターゲット VM のサイズや種類を変更することはできません。
 
 ## <a name="automation-and-scripting"></a>自動化とスクリプト
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>スクリプトでレプリケーションを設定できますか?
 
-はい。 Rest API、PowerShell、Azure SDK のいずれかを使用して、Site Recovery ワークフローを自動化することができます。 [詳細情報](vmware-azure-disaster-recovery-powershell.md)。
+はい。 Rest API、PowerShell、Azure SDK のいずれかを使用して、Site Recovery ワークフローを自動化することができます。 [詳細については、こちらを参照してください](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>パフォーマンスと容量
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>レプリケーションの帯域幅を調整することができますか?
 
-はい。 [詳細情報](site-recovery-plan-capacity-vmware.md)。
+はい。 [詳細については、こちらを参照してください](site-recovery-plan-capacity-vmware.md)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サポート要件を[確認する](vmware-physical-azure-support-matrix.md)。
 - VMware から Azure へのレプリケーションを[設定する](vmware-azure-tutorial.md)。

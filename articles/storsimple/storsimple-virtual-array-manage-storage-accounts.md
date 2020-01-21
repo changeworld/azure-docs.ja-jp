@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac539b44f09663e6eac5651646d3c9cd02e45b3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360006"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のストレージ アカウント資格情報を管理する
 
@@ -110,12 +110,12 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 4. ストレージ アカウントの資格情報の **[プロパティ]** ブレードで、次の操作を行います。
    
    1. 必要に応じて、 **[SSL を有効にする]** でモード選択を変更できます。
-   2. ストレージ アカウント資格情報のアクセス キーを再生成できます。 詳細については、「[ストレージ アカウント キーの再生成](../storage/common/storage-account-manage.md#access-keys)セクションをご覧ください。 新しいストレージ アカウントの資格情報キーを指定します。 Azure ストレージ アカウントの場合、これはプライマリ アクセス キーです。
+   2. ストレージ アカウント資格情報のアクセス キーを再生成できます。 詳細については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」を参照してください。 新しいストレージ アカウントの資格情報キーを指定します。 Azure ストレージ アカウントの場合、これはプライマリ アクセス キーです。
    3. **[プロパティ]** ブレード上部の **[保存]** をクリックし、設定を保存します。 **[ストレージ アカウントの資格情報]** ブレードで設定が更新されます。
       
       ![ストレージ アカウントの資格情報を編集する](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
 
-## <a name="delete-a-storage-account-credential"></a>ストレージ アカウントの資格情報の削除
+## <a name="delete-a-storage-account-credential"></a>ストレージ アカウントの資格情報を削除する
 > [!IMPORTANT]
 > ストレージ アカウントの資格情報は、使用されていない場合にのみ削除できます。 ストレージ アカウントの資格情報が使用中の場合は、その旨が通知されます。
 > 
@@ -130,7 +130,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
    1. **[削除]** をクリックして、資格情報を削除します。
    2. 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして削除操作を続行します。 表形式の一覧が更新され、変更が反映されます。
       
-      ![ストレージ アカウントの資格情報の削除](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
+      ![ストレージ アカウントの資格情報を削除する](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
 
 ## <a name="synchronizing-storage-account-credential-keys"></a>新しいストレージ アカウントの資格情報キーを同期する
 セキュリティ上の理由から、データ センターではキー ローテーションが必要になることがよくあります。 Microsoft Azure 管理者は、(Microsoft Azure Storage サービス経由で) ストレージ アカウントの資格情報に直接アクセスすることによって、プライマリ キーまたはセカンダリ キーを再生成または変更できます。 この変更は、StorSimple デバイス マネージャー サービスでは自動的に認識されません。
@@ -150,6 +150,6 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
    
     ![アクセス キーの同期](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

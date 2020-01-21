@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230366"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561869"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions の信頼性の高いイベント処理
 
@@ -59,7 +59,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 ### <a name="retry-mechanisms-and-policies"></a>再試行メカニズムとポリシー
 
-一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。 再試行処理規則は自分で書くこともできますが、非常に一般的であるため、多数のツールが使用できます。 このようなライブラリを使用すると、処理順序を維持するのに役立つ、堅牢な再試行ポリシーを定義することができます。
+一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。 再試行処理規則は自分で書くこともできますが、非常に一般的であるため、使用できるツールは多数あります。 これらのライブラリを使用すると、処理順序も維持された堅牢な再試行ポリシーを定義できます。
 
 関数にエラー処理ライブラリを導入すると、基本的な再試行ポリシーと高度な再試行ポリシーの両方を定義できます。 たとえば、次の規則で示すワークフローに従うポリシーを実装できます。
 
@@ -125,7 +125,7 @@ Azure Logic Apps には、さまざまなサービスへの組み込みコネク
 - [信頼できるイベント処理のサンプル](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Azure Durable Functions サーキット ブレーカー](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

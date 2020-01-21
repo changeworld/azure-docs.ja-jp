@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: 5d852378812d8e69480ceb2c5dcea95f1d5f3770
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488616"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982570"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
 
@@ -63,7 +63,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![ロジック アプリの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **Name** | はい | <*ロジック アプリ名*> | 一意の名前をロジック アプリに指定します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | このチュートリアルでは、すべてのサービスで同じ Azure サブスクリプションを選択します。 |
@@ -98,10 +98,10 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    | -------- | -------- | ----- | ----------- |
    | **サブスクリプション** | はい | <*イベント発行者の Azure サブスクリプション名*> | "*イベント発行者*" に関連付けられている Azure サブスクリプションの名前を選択します。 このチュートリアルでは、自分の仮想マシンの Azure サブスクリプション名を選択します。 |
-   | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 |
+   | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 |
    | **リソース名** |  はい | <*イベント発行者の Azure リソース名*> | イベント発行者の Azure リソース名を選択します。 この一覧は、選択したリソースの種類によって異なります。 このチュートリアルでは、自分の仮想マシンがある Azure リソース グループの名前を選択します。 |
    | **イベントの種類の項目** |  いいえ | <*イベントの種類*> | フィルター処理してイベント グリッドに送信する特定のイベントの種類を 1 つ以上選択します。 たとえば、リソースが変更または削除された場合にそれを検出するために、これらのイベントの種類を必要に応じて追加することができます。 <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>詳細については、以下のトピックを参照してください。 <p><p>- [Azure Event Grid のリソース グループ用のイベント スキーマ](../event-grid/event-schema-resource-groups.md) <br>- [イベントのフィルター処理について](../event-grid/event-filtering.md) <br>- [Event Grid のイベントのフィルター処理](../event-grid/how-to-filter-events.md) |
    | オプションのプロパティを追加するには、 **[新しいパラメーターの追加]** を選択して、目的のプロパティを選択します。 | いいえ | {説明を参照} | * **プレフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。 <p>* **サブスクリプション名**:このチュートリアルでは、イベント サブスクリプションの一意の名前を指定します。 |
@@ -145,7 +145,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
       `triggerBody()?['data']['operationName']`
 
-      例:
+      次に例を示します。
 
       ![操作の名前を抽出する式を入力する](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
@@ -173,7 +173,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![条件が true の場合のアクションを追加する](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「`send an email`」と入力します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 次に、コネクタに対して "電子メールの送信" アクションを選択します。 例:
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「`send an email`」と入力します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 次に、コネクタに対して "電子メールの送信" アクションを選択します。 次に例を示します。
 
    * たとえば、Azure 職場または学校アカウントの場合は、Office 365 Outlook コネクタを選択します。
 
@@ -196,7 +196,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
    > [!TIP]
    > 前のワークフロー ステップからの出力を選択するには、編集ボックス内をクリックして動的なコンテンツの一覧を表示するか、 **[動的なコンテンツの追加]** を選択します。 さらに結果を表示するには、一覧の各セクションの **[もっと見る]** を選択します。 動的なコンテンツの一覧を閉じるには、 **[動的なコンテンツの追加]** を再度選択します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    | -------- | -------- | ----- | ----------- |
    | **To** | はい | <*受信者\@ドメイン*> | 受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。 |
    | **[件名]** | はい | `Resource updated:` **件名** | 電子メールの件名の内容を入力します。 このチュートリアルでは、指定されたテキストを入力し、イベントの **[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 |
@@ -224,7 +224,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    たとえば、Azure Portal で仮想マシンのサイズを変更するか、[Azure PowerShell で VM のサイズを変更](../virtual-machines/windows/resize-vm.md)できます。
 
-   しばらくすると、電子メールが届きます。 例:
+   しばらくすると、電子メールが届きます。 次に例を示します。
 
    ![仮想マシンの更新に関する電子メール](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
@@ -245,7 +245,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 * 仮想マシンのディスクの追加または削除。
 * 仮想マシン NIC へのパブリック IP アドレスの割り当て。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルではリソースを使用して、Azure サブスクリプションで料金を発生させるアクションを実行します。 このチュートリアルとテストが完了したら、料金を発生させたくないリソースは必ず無効にするか、削除してください。
 
@@ -258,6 +258,6 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
 * ロジック アプリを完全に削除するには、ロジック アプリのメニューで **[概要]** を選択します。 ツールバーの **[削除]** を選択します。 ロジック アプリを削除することに同意し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Event Grid を使ったカスタム イベントの作成とルーティング](../event-grid/custom-event-quickstart.md)

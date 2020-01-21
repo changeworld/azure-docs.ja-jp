@@ -3,19 +3,19 @@ title: Power BI レポートを構成
 description: Recovery Services コンテナーを使用して Azure Backup の Power BI レポートを構成します。
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173198"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978365"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
 この記事では、Recovery Services コンテナーを使用して Azure Backup のレポートを構成するために実行する手順を示します。 また、Power BI を使用してレポートにアクセスする方法についても説明します。 これらの手順を完了したら、Power BI に直接移動してレポートを表示、カスタマイズ、および作成できます。
 
 > [!IMPORTANT]
-> 2018 年 11 月 1 日以降、Power BI で Azure Backup アプリのデータを読み込んでいるときに問題が発生する場合があり、"JSON 入力の末尾に余分な文字が見つかり、 IDataReader インターフェイスによって例外が発生した" ことが通知される可能性があります。
+> 2018 年 11 月 1 日以降、Power BI で Azure Backup アプリのデータを読み込んでいるときに問題が発生する場合があり、"JSON 入力の末尾に余分な文字が見つかり、 IDataReader インターフェイスによって例外が発生しました" という内容が通知される可能性があります。
 これは、データがストレージ アカウントに読み込まれるときの形式の変更によるものです。
 この問題を回避するには、最新のアプリ (バージョン 1.8) をダウンロードしてください。
 >
@@ -30,7 +30,7 @@ ms.locfileid: "74173198"
 
 ## <a name="prerequisites"></a>前提条件
 
-- レポート用に構成する [Azure ストレージ アカウントを作成](../storage/common/storage-quickstart-create-account.md)します。 このストレージ アカウントは、レポート関連のデータを格納するために使用されます。
+- レポート用に構成する [Azure ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。 このストレージ アカウントは、レポート関連のデータを格納するために使用されます。
 - Power BI ポータルを使用して独自のレポートを表示、カスタマイズ、および作成するための [Power BI アカウントを作成します](https://powerbi.microsoft.com/landing/signin/)。
 - まだ登録されていない場合は、リソース プロバイダー **Microsoft.insights** を登録します。 レポート データがストレージ アカウントに流入できるように、ストレージ アカウントと Recovery Services コンテナー用のサブスクリプションを使用します。 この手順を実行するには、Azure Portal に移動して **[サブスクリプション]**  >  **[リソース プロバイダー]** を選択し、このプロバイダーを確認して登録します。
 
@@ -88,7 +88,7 @@ Recovery Services コンテナーを使用してレポート用のストレー�
 4. 前の手順 5. で構成されたストレージ アカウントの名前を入力し、 **[次へ]** を選択します。
 
     ![ストレージ アカウント名を入力する](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. [Authentication method]\(認証方法) で [Key]\(キー) を使用し、このストレージ アカウントのストレージ アカウント キーを入力します。 [ストレージ アクセス キーを表示してコピーする](../storage/common/storage-account-manage.md#access-keys)には、Azure Portal でストレージ アカウントに移動します。
+5. [Authentication method]\(認証方法) で [Key]\(キー) を使用し、このストレージ アカウントのストレージ アカウント キーを入力します。 ストレージ アカウントのアクセス キーは、Azure portal で確認できます。 詳細については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」を参照してください。
 
      ![ストレージ アカウントを入力する](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 
@@ -119,7 +119,7 @@ Recovery Services コンテナーを使用してレポート用のストレー�
 | バックアップ レポート用のストレージ アカウントを設定した後も、 **[ストレージ アカウント]** が引き続き **[構成されていません]** と表示される。 | ストレージ アカウントを正常に構成している場合は、この問題に関係なく、レポート データは流入します。 この問題を解決するには、Azure Portal に移動し、 **[すべてのサービス]**  >  **[診断設定]**  >  **[Recovery Services コンテナー]**  >  **[設定の編集]** を選択します。 以前に構成された設定を削除し、同じブレードに新しい設定を作成します。 今回は、 **[名前]** ボックスで **[サービス]** を選択します。 これで、構成されたストレージ アカウントが表示されます。 |
 |Power BI で Azure Backup テンプレート アプリをインポートした後、"404- コンテナーが見つかりません" というエラー メッセージが表示される。 | 先に説明したように、Recovery Services コンテナーでレポートを構成した後、それらのレポートが Power BI で正しく表示されるまでに 24 時間待つ必要があります。 24 時間の前にこれらのレポートにアクセスしようとすると、有効なレポートを表示するための完全なデータがまだ存在しないため、このエラー メッセージが表示されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージ アカウントを構成し、Azure Backup テンプレート アプリをインポートしたら、次の手順ではレポートをカスタマイズしたり、レポート データ モデルを使用してレポートを作成したりします。 詳細については、次の記事を参照してください。
 

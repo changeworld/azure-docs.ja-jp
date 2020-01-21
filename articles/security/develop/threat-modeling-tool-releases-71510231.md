@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool のリリース - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool のリリース 2018 年 11 月 1 日 - Azure
 description: Threat Modeling Tool のリリース ノートです
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: 2fb3756e153a52515e598bb31fea1e999144bb28
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a84d31df491a9cf455a21b9640df36ed29c83cbb
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934768"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552085"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 11/1/2018
 
@@ -36,7 +28,7 @@ ms.locfileid: "68934768"
 
 ## <a name="system-requirements"></a>システム要件
 
-- サポートされているオペレーティング システム
+- サポートされるオペレーティング システム
   - Microsoft Windows 10
 - 必要な .NET のバージョン
   - .NET 3.5.2
@@ -47,6 +39,6 @@ ms.locfileid: "68934768"
 
 - Threat Modeling Tool のドキュメントは [docs.microsoft.com](threat-modeling-tool.md) にあり、[ツールの使用について](threat-modeling-tool-getting-started.md)の情報が含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最新バージョンの [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool) をダウンロードしてください。

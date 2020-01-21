@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8c0328c1d82af5e96afca29f05a065450eab9ae4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72941656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435002"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
@@ -38,17 +38,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | 支払プラン | 従量課金制 |
-| アプリケーション テンプレート | サンプル Contoso |
+| アプリケーション テンプレート | レガシ アプリケーション |
 | アプリケーション名 | 既定値を受け入れるか、独自の名前を選択します |
 | URL | 既定値を受け入れるか、独自の一意の URL プレフィックスを選択します |
-| Directory | Azure Active Directory テナント |
+| ディレクトリ | Azure Active Directory テナント |
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
-| リージョン | East US |
+| リージョン | United States |
 
-この記事の例とスクリーンショットでは、**米国東部**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
+この記事の例とスクリーンショットでは、**米国**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
 ### <a name="resource-group"></a>Resource group
 
@@ -58,25 +58,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
-| 名前    | 名前空間名を選択します |
+| Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | Location | East US |
-| スループット ユニット | 1 |
+| スループット単位 | 1 |
 
 ### <a name="stream-analytics-job"></a>Stream Analytics ジョブ
 
 以下の設定を使用して、[Azure portal で Stream Analytics ジョブを作成](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
-| 名前    | ジョブ名を選択します |
-| Subscription | 該当するサブスクリプション |
+| Name    | ジョブ名を選択します |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
-| Location | 米国東部 |
+| Location | East US |
 | ホスティング環境 | クラウド |
 | [ストリーミング ユニット] | 3 |
 
@@ -84,26 +84,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で関数アプリを作成](https://portal.azure.com/#create/Microsoft.FunctionApp)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | アプリの名前    | 関数アプリ名を選択します |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | OS | Windows |
 | ホスティング プラン | 従量課金プラン |
 | Location | East US |
 | ランタイム スタック | .NET |
-| Storage | 新規作成 |
+| ストレージ | 新規作成 |
 
 ### <a name="sendgrid-account"></a>SendGrid アカウント
 
 以下の設定を使用して、[Azure portal で SendGrid アカウントを作成](https://portal.azure.com/#create/Sendgrid.sendgrid)します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
-| 名前    | SendGrid アカウント名を選択します |
-| パスワード | パスワードを作成します |
-| Subscription | 該当するサブスクリプション |
+| Name    | SendGrid アカウント名を選択します |
+| Password | パスワードを作成します |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | Pricing tier | F1 Free |
 | 連絡先情報 | 必須情報を入力します |
@@ -240,20 +240,20 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. Azure portal で Stream analytics ジョブに移動し、 **[ジョブ トポロジ]** で **[入力]** を選択し、 **[+ ストリーム入力の追加]** を選択してから、 **[イベント ハブ]** を選択します。
 1. 次の表の情報を使用して、以前に作成したイベント ハブを使用して入力を構成してから、 **[保存]** を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 入力のエイリアス | centraltelemetry |
-    | Subscription | 該当するサブスクリプション |
+    | サブスクリプション | 該当するサブスクリプション |
     | Event Hub 名前空間 | Event Hub 名前空間 |
     | イベント ハブ名 | 既存のものを使用 - **centralexport** |
 
 1. **[ジョブ トポロジ]** で **[出力]** を選択し、 **[+ 追加]** を選択してから、 **[Azure 関数]** を選択します。
 1. 次の表の情報を使用して出力を構成してから、 **[保存]** を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 出力エイリアス | emailnotification |
-    | Subscription | 該当するサブスクリプション |
+    | サブスクリプション | 該当するサブスクリプション |
     | 関数アプリ | 関数アプリ |
     | Function  | HttpTrigger1 |
 
@@ -310,15 +310,15 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. **[継続的データ エクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
     | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |
-    | デバイス | オフ |
-    | デバイス テンプレート | オフ |
+    | デバイス | Off |
+    | デバイス テンプレート | Off |
 
 ![継続的データ エクスポート構成](media/howto-create-custom-rules/cde-configuration.png)
 
@@ -345,7 +345,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 アプリケーション内の **[管理]** ページから IoT Central アプリケーションを削除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この攻略ガイドで学習した内容は次のとおりです。
 

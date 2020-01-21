@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 監視パートナー | Microsoft Docs
-description: パートナーの監視ソリューションを使用して Azure Service Fabric を監視する方法について説明します
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 監視パートナー
+description: パートナーの監視ソリューションを使用して Azure Service Fabric のアプリケーション、クラスターおよびインフラストラクチャを監視する方法について説明します。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232447"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645720"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 監視パートナー
 
@@ -43,13 +34,13 @@ Service Fabric アプリケーションとの統合の点で親和性の高い A
 
 ## <a name="elk"></a>ELK 
 
-ELK スタックは、各オープンソース テクノロジ (Elasticsearch、Logstash、Kibana) を組み合わせたものです。 これらを組み合わせて使用することで、Service Fabric の監視データと診断データを収集、格納、分析することができます。 これを Service Fabric のネイティブ Java アプリケーションで行うチュートリアルについては、[こちら](service-fabric-tutorial-java-elk.md)を参照してください。 
+ELK スタックは、各オープンソース テクノロジを組み合わせたものです。Elasticsearch、Logstash、Kibana) を組み合わせたものです。 これらのテクノロジを組み合わせて使用することで、Service Fabric の監視データと診断データを収集、格納、分析することができます。 これを Service Fabric のネイティブ Java アプリケーションで行うチュートリアルについては、[こちら](service-fabric-tutorial-java-elk.md)を参照してください。 
 
 ## <a name="humio"></a>Humio
 
-Humio は、ご利用のアプリケーションからのログや、クラウドまたはオンプレミスの Service Fabric からのイベントを、リアルタイムで収集できるログ コレクション サービスです。 ライブの可観測性に加えて、Humio は、ご利用の診断からの分析情報を表示したり収集したりするための最先端の分析機能と視覚化機能を備えています。 Humio にはコスト効率に優れた価格プランが用意されており、超高速を維持しながらスケーリングできるように組み込まれます。 これは、Service Fabric プラットフォームのイベントおよびアプリケーションのテレメトリと直接統合されます。 Humio と Service Fabric の統合については、[こちら](https://github.com/humio/service-fabric-humio)を参照してください。
+Humio は、ご利用のアプリケーションからのログや、クラウドまたはオンプレミスの Service Fabric からのイベントを、リアルタイムで収集できるログ コレクション サービスです。 ライブの可観測性に加えて、Humio は、ご利用の診断からの情報を表示したり収集したりするための最先端の分析機能と視覚化機能を備えています。 Humio にはコスト効率に優れた価格プランが用意されており、超高速を維持しながらスケーリングできるように組み込まれます。 これは、Service Fabric プラットフォームのイベントおよびアプリケーションのテレメトリと直接統合されます。 Humio と Service Fabric の統合については、[こちら](https://github.com/humio/service-fabric-humio)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Fabric における[監視と診断の概要](service-fabric-diagnostics-overview.md)を把握する
 * Microsoft のファースト パーティ ツールを使用して[一般的なシナリオを診断](service-fabric-diagnostics-common-scenarios.md)する方法を知る

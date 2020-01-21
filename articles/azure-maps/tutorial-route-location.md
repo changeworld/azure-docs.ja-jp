@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Maps を使用してルートを検索する
-description: チュートリアル:Azure Maps を使って目的地へのルートを検索する
+title: チュートリアル:場所へのルートを検索する |Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps ルート指定サービスを使用して、マップ上の場所 (目的地) へのルートをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613603"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910848"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使って目的地へのルートを検索する
 
@@ -168,7 +168,7 @@ ms.locfileid: "75613603"
 
 3. **MapRoute.html** ファイルを保存し、ブラウザーを更新します。 マップの中心がシアトルに設定され、起点を示す青色のピンと、終点を示す丸い青色のピンが表示されます。
 
-   ![起点と終点が表示されたマップ](media/tutorial-route-location/map-pins.png)
+   ![マップ上の起点と終点を結ぶルートを表示する](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

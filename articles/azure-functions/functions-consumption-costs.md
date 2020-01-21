@@ -3,18 +3,18 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230854"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613060"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
 現在、Azure Functions で実行されるアプリのホスティング プランには 3 つの種類があり、各プランには独自の価格モデルがあります。 
 
-| プラン | 説明 |
+| プラン | [説明] |
 | ---- | ----------- |
 | [**従量課金**](functions-scale.md#consumption-plan) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
 | [**Premium**](functions-scale.md#premium-plan) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
@@ -45,7 +45,7 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
 関数アプリと関連サービスの全体的なコストを見積もるときは、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=functions)を使用します。 
 
-| 関連コスト | 説明 |
+| 関連コスト | [説明] |
 | ------------ | ----------- |
 | **ストレージ アカウント** | 各関数アプリには、General Purpose [Azure ストレージ アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)が関連付けられている必要があり、これは[別途課金](https://azure.microsoft.com/pricing/details/storage/)されます。 このアカウントは、Functions ランタイムによって内部的に使用されますが、ストレージのトリガーとバインドにも使用できます。 ストレージ アカウントを持っていない場合は、関数アプリの作成時に作成されます。 詳しくは、「[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)」をご覧ください。|
 | **Application Insights** | Functions では、関数アプリに高パフォーマンスの監視エクスペリエンスを提供するために、[Application Insights](../azure-monitor/app/app-insights-overview.md) が利用されます。 必須ではありませんが、[Application Insights の統合を有効にする](functions-monitoring.md#enable-application-insights-integration)ことをお勧めします。 テレメトリ データの無料提供が毎月含まれます。 詳しくは、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページをご覧ください。 |
@@ -76,9 +76,9 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
     ![関数アプリ リソースを選択する](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |Setting  |推奨値  |説明  |
+    |設定  |推奨値  |[説明]  |
     |---------|---------|---------|
-    | Subscription    |  該当するサブスクリプション  | 関数アプリのサブスクリプション。  |
+    | サブスクリプション    |  該当するサブスクリプション  | 関数アプリのサブスクリプション。  |
     | Resource group     | 該当するリソース グループ  | 関数アプリが含まれる既存のリソース グループ。   |
     | リソースの種類     |  アプリケーション サービス | 関数アプリは App Services のインスタンスとしてモニターに表示されます。 |
     | リソース     |  関数アプリ  | 監視する関数アプリ。        |
@@ -89,7 +89,7 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
     ![グラフに追加する関数アプリのメトリックを定義する](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. **[メトリックの追加]** を選択し、手順 2 - 4 を繰り返して **[関数の実行単位]** をグラフに追加します。 
+1. **[メトリックの追加]** を選択し、手順 2 から手順 4 を繰り返して、 **[関数の実行単位]** をグラフに追加します。 
 
 結果のグラフには、選択した時間範囲 (この例では 2 時間) に対する両方の実行メトリックの合計が含まれます。
 
@@ -206,7 +206,7 @@ performanceCounters
 
 結果は次の例のようになります。
 
-| タイムスタンプ \[UTC\]          | 名前          | value       |
+| タイムスタンプ \[UTC\]          | name          | value       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14\.947 AM | Private Bytes | 209,932,288 |
 | 9/12/2019, 1:06:14\.994 AM | Private Bytes | 212,189,184 |
@@ -226,13 +226,13 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| 名前                       | averageDurationMilliseconds |
+| name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
 | QueueTrigger AvgDurationMs | 16\.087                     |
 | QueueTrigger MaxDurationMs | 90\.249                     |
 | QueueTrigger MinDurationMs | 8\.522                      |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [関数アプリの監視についての詳細情報](functions-monitoring.md)

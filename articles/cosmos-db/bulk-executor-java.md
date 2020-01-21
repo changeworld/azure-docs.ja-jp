@@ -1,6 +1,6 @@
 ---
-title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する
-description: Bulk Executor Java ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
+title: Azure Cosmos DB で Bulk Executor Java ライブラリを使用して一括インポートおよび更新操作を実行する
+description: Bulk Executor Java ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新する
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445704"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -211,7 +211,7 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
 * 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコンテナー全体のスループットを消費できない場合 (コンテナーのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Maven パッケージの詳細と Bulk Executor Java ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-java.md)に関するページをご覧ください。
 
 

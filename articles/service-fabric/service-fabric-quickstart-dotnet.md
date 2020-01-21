@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 545e3efc0815e48d5bd16beabbf9f6ef283fea8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464410"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730141"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -51,6 +51,8 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 > クラスターを作成するときに Docker を実行させておく理由は、コンテナー機能を有効にしてクラスターを作成するためです。 Docker が実行されていない場合は、コンテナー機能を有効にするためにクラスターを再作成する必要があります。
 > このクイック スタートでは必要ありませんが、クラスターを作成するときに Docker を実行しておくようにという指示が、ベストプラクティスに含まれています。
 > Docker が実行中であるかどうかをテストするには、ターミナル ウィンドウを開いて `docker ps` を実行し、エラーが発生するかどうか確認します。 応答でエラーが表示されない場合は、Docker は実行中になっており、クラスターを構築する準備ができています。
+>
+> [Windows 10 または Windows Server をコンテナー用に設定する](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. 管理者として、管理者特権で新しく PowerShell ウィンドウを開きます。
 2. 次の PowerShell コマンドを実行して、開発クラスターを作成します。

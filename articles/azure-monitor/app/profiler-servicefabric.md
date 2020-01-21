@@ -1,5 +1,5 @@
 ---
-title: Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする | Microsoft Docs
+title: Application Insights を使用してライブ Azure Service Fabric アプリをプロファイルする
 description: Service Fabric アプリケーションに対して Profiler を有効にします
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a7a64be3c73ea82c6bf3d905772f3278f9bda5df
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 162a8c3f90b7adab356ebb07c80b8de283fd818d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432397"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする
 
@@ -56,7 +56,7 @@ Application Insights Profiler は、Azure Diagnostics に付属しています�
 1. アプリケーションを再デプロイします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 * Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。

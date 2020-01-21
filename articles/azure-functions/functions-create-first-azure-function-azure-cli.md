@@ -5,12 +5,12 @@ ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 222e4a98974a1af40ff860cfc4fdb246d9c97bca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230853"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769389"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>クイック スタート:Azure CLI を使用してコマンド ラインから初めての関数を作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "74230853"
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。 
+関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレスの実行環境を提供します。 これにより、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。
 
 次のコマンドでは、`<APP_NAME>` プレースホルダーを一意の Function App 名で、`<STORAGE_NAME>` をストレージ アカウント名で置き換えます。 `<APP_NAME>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 また、関数アプリの `<language>` ランタイムを `dotnet` (C#) または `node` (JavaScript) から設定する必要があります。
 
