@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531411"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896291"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -429,7 +429,9 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1**adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1**adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  
 
@@ -555,9 +557,9 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[Local Host Name]\(ローカル ホスト名\)** : Enter キーを押して既定値をそのまま使用します
      * **[Do you want to add hosts to the system?]\(システムにホストを追加しますか?\)** : 「**y**」と入力します
      * **[comma-separated host names to add]\(追加するコンマ区切りホスト名\)** : 「**hanadb2, hanadb3**」と入力します
-     * **[Root User Name]\(ルート ユーザー名\)** [root]: Enter キーを押して既定値をそのまま使用します
+     * **[Root User Name]\(ルート ユーザー名\)** [root]\: Enter キーを押して既定値をそのまま使用します
      * **[Root User Password]\(ルート ユーザー パスワード\)** : ルート ユーザーのパスワードを入力します
-     * [roles for host hanadb2]\(host hanadb2 のロール\): 「**1**」と入力します (ワーカーの場合)
+     * [roles for host hanadb2]\(host hanadb2 のロール\)\: 「**1**」と入力します (ワーカーの場合)
      * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
@@ -631,9 +633,9 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 6. 基になる Azure NetApp Files ストレージ向けに SAP HANA を最適化するには、次の SAP HANA パラメーターを設定します。
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
-   - `async_write_submit_blocks` **all**
+   - `async_read_submit` **オン**
+   - `async_write_submit_active` **オン**
+   - `async_write_submit_blocks` **すべて**
 
    詳細については、「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」を参照してください。 
 
@@ -651,7 +653,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 ## <a name="test-sap-hana-failover"></a>SAP HANA フェールオーバーのテスト 
 
-1. SAP HANA ワーカー ノードでノード クラッシュをシミュレートします。 以下の手順を実行します。 
+1. SAP HANA ワーカー ノードでノード クラッシュをシミュレートします。 次の操作を行います。 
 
    a. ノード クラッシュをシミュレートする前に、**hn1**adm として次のコマンドを実行して環境の状態をキャプチャします。  
 
@@ -848,7 +850,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]

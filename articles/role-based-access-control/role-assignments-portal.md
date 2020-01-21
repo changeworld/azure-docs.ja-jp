@@ -25,7 +25,7 @@ ms.locfileid: "74707865"
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure portal を使用してロールを割り当てる方法について説明します。
 
-Azure Active Directory で管理者ロールを割り当てる必要がある場合、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/users-groups-roles/directory-manage-roles-portal.md)」を参照してください。
+Azure Active Directory で管理者ロールを割り当てる必要がある場合は、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/users-groups-roles/directory-manage-roles-portal.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,7 +125,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
    ![ロールの割り当ての削除メッセージ](./media/role-assignments-portal/remove-role-assignment.png)
 
-1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
+1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 
     継承されたロールの割り当ては削除できません。 そのようなロールの割り当てを削除する場合には、ロールの割り当てが作成されたスコープで削除する必要があります。 **[スコープ]** 列の **[(継承済み)]** の横に、このロールが割り当てられているスコープへのリンクが表示されています。 その一覧に表示されているスコープにアクセスして、ロールの割り当てを削除してください。
 

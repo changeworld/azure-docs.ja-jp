@@ -15,4 +15,4 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/18/2019
 ms.locfileid: "67180913"
 ---
-Office 365 は、インターネット経由で安全かつ確実にアクセスできるように作られています。 したがって、特定のシナリオに限り、ExpressRoute の使用が推奨されます。 ExpressRoute を使用した Office 365 へのアクセスについては、「[Office 365 向け Azure ExpressRoute](https://aka.ms/ExpressRouteOffice365)」を参照してください。
+Office 365 は、インターネット経由で安全かつ確実にアクセスできるように作られています。 したがって、ExpressRoute の使用が推奨されるのは特定のシナリオに限られます。 ExpressRoute を使用した Office 365 へのアクセスについては、「[Office 365 向け Azure ExpressRoute](https://aka.ms/ExpressRouteOffice365)」を参照してください。

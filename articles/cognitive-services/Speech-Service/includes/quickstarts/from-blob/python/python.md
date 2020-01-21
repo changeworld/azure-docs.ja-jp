@@ -1,32 +1,25 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する、C# - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469624"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942788"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
+> * [Azure Speech リソースを作成する](../../../../get-started.md)
+> * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>API クライアント ライブラリをダウンロードしてインストールする
 
@@ -43,7 +36,8 @@ ms.locfileid: "75469624"
 1. pip: `pip install path/to/package/python-client` を使用して、抽出された python-client モジュールを、ご自身の Python 環境にインストールします。
 1. インストールされているパッケージの名前は `swagger_client` です。 コマンド `python -c "import swagger_client"` を使用して、インストールが正常に実行されたことを確認できます。
 
-> **注:** [Swagger 自動生成の既知のバグ](https://github.com/swagger-api/swagger-codegen/issues/7541)のため、`swagger_client` パッケージをインポートするときにエラーが発生することがあります。
+> [!NOTE]
+> [Swagger 自動生成の既知のバグ](https://github.com/swagger-api/swagger-codegen/issues/7541)のため、`swagger_client` パッケージをインポートするときにエラーが発生することがあります。
 > これらを修正するには、次のコンテンツを含む行を削除します。
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-(`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http クライアントを作成して構成する
 最初に必要なのは、適切なベース URL と認証セットを含む Http クライアントです。
