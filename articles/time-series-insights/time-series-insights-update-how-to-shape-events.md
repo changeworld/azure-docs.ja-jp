@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452611"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861661"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整
 
@@ -156,5 +156,5 @@ Time Series Insights プレビューは、クエリ時に (フラット化の後
 
 ## <a name="next-steps"></a>次のステップ
 
-- これらのガイドラインを実践するには、[Azure Time Series Insights プレビューのクエリ構文](./time-series-insights-query-data-csharp.md)に関するページを参照してください。 Time Series Insights プレビューのデータ アクセス用 REST API のクエリ構文の詳細について説明します。
-- サポートされている JSON の調整の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)」を参照してください。
+- これらのガイドラインを実践するには、[Azure Time Series Insights プレビューのクエリ構文](./time-series-insights-query-data-csharp.md)に関する記事を参照してください。 Time Series Insights プレビューのデータ アクセス用 REST API のクエリ構文の詳細について説明します。
+- サポートされている JSON の構造については、[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)に関する記事を参照してください。

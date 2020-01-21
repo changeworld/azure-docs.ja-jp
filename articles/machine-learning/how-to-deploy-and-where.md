@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/17/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 51d5afc365c33fe6d4cb719263bad19341170415
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689306"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754006"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -164,6 +164,13 @@ Azure Machine Learning 以外でトレーニングされたモデルの使用の
 次のコンピューティング ターゲット、またはコンピューティング リソースを使用して、Web サービスのデプロイをホストできます。
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+## <a name="single-versus-multi-model-endpoints"></a>シングルモデルエンドポイントとマルチモデルエンドポイント
+Azure ML は、1つのエンドポイントの背後に シングルまたはマルチモデルのデプロイをサポートしています。
+
+マルチモデルエンドポイントは、共有コンテナーを使用して複数モデルをホストします。 これにより、オーバーヘッドコストを削減し、使用率を向上させ、複数のモジュールをアンサンブルとしてチェーンすることができます。 デプロイ スクリプトで指定したモデルはマウントされ、サービスを提供するコンテナーのディスクで使用できるようになります。必要に応じてメモリに読み込んで、スコアリング時に要求されている特定のモデルに基づいてスコア付けすることができます。
+
+1つのコンテナー化されたエンドポイントの背後にある複数モデルの使用方法を示す E2E の例としては、[こちらの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)を参照してください。
 
 ## <a name="prepare-to-deploy"></a>デプロイを準備する
 
@@ -619,13 +626,16 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 [Azure Kubernetes Service へのデプロイ](how-to-deploy-azure-kubernetes-service.md)に関する記事を参照してください。
 
+### <a name="ab-testing-controlled-rollout"></a>A/B テスト (制御ロールアウト)
+詳細については、[「ML モデルの制御ロールアウト」](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)を参照してください。
+
 ## <a name="consume-web-services"></a>Web サービスを使用する
 
 デプロイされた Web サービスはすべて、REST エンドポイントを提供します。そのため、任意のプログラミング言語でクライアント アプリケーションを作成できます。
 サービスに対してキーベースの認証を有効にしている場合、要求ヘッダーでトークンとしてサービス キーを指定する必要があります。
 サービスに対してトークンベースの認証を有効にしている場合、要求ヘッダーでベアラー トークンとして Azure Machine Learning JSON Web トークン (JWT) を指定する必要があります。 
 
-主な違いは、キーは静的であり、手動で再生成することができ、トークンは有効期限に更新する必要があることです**。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで**のみ**使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
+主な違いは、**キーは静的であり、手動で再生成することができ**、**トークンは有効期限に更新する必要があることです**。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで**のみ**使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
 
 > [!TIP]
 > サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)を使用します (例: `service.swagger_uri`)。
@@ -963,7 +973,7 @@ package.wait_for_creation(show_output=True)
 
 パッケージを作成した後、`package.pull()` を使用して、ローカルの Docker 環境にイメージをプルできます。 このコマンドの出力には、イメージの名前が表示されます。 次に例を示します。 
 
-[https://login.microsoftonline.com/consumers/](`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`) 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
 モデルをダウンロードした後、`docker images` コマンドを使用してローカル イメージを一覧表示します。
 

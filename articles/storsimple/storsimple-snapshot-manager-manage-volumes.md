@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager とボリューム | Microsoft Docs
 description: StorSimple Snapshot Manager MMC スナップインを使用して、ボリュームを表示および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: v-sharos
-ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61078304"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931627"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager を使用したボリュームの表示と管理
 ## <a name="overview"></a>概要
@@ -91,7 +91,7 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
    
     ![列の構成](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 結果の列 | 説明 |
+   | 結果の列 | [説明] |
    |:--- |:--- |
    |  Name |**[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。 |
    |  Device |**[デバイス]** 列には、ホスト コンピューターに接続されているデバイスの IP アドレスが表示されます。 |
@@ -205,8 +205,8 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
    * 自動バックアップをスケジュールするには、 **[バックアップ ポリシーの作成]** をクリックします。 **[全般]** ページで、リストからボリューム グループを選択します。 **[スケジュール]** ページで、スケジュールの詳細を入力します。 操作が終了したら、 **[OK]** をクリックします。 
 7. バックアップ ジョブの実行状態を監視できます。 **スコープ** ウィンドウで **[ジョブ]** ノードを展開し、 **[実行中]** をクリックします。**結果**ウィンドウにジョブの詳細が表示されます。 バックアップ ジョブが終了すると、詳細が **[過去 24 時間]** ジョブ リストに転送されます。 
 
-## <a name="next-steps"></a>次の手順
-* [StorSimple Snapshot Manager を使用して StorSimple ソリューションを管理する](storsimple-snapshot-manager-admin.md)方法を確認します。
+## <a name="next-steps"></a>次のステップ
+* [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
 * [StorSimple Snapshot Manager を使用してボリューム グループを作成および管理する](storsimple-snapshot-manager-manage-volume-groups.md)方法を確認します。
 
 <!--Reference links-->

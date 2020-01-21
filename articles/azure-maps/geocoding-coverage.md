@@ -1,23 +1,23 @@
 ---
-title: Azure Maps でのジオコーディングの対象範囲 | Microsoft Docs
-description: Azure Maps でのジオコーディングの対象範囲について説明します
+title: ジオコーディングの対象範囲 | Microsoft Azure Maps
+description: ロケーションアドレスを緯度と経度の座標に変換するプロセスを、ジオコーディングと呼びます。 この記事では、Microsoft Azure Maps のジオコーディングが対象範囲とするリージョンについて説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/22/2019
+ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991367"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911617"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
-Azure Maps を使って位置情報を検索するとき、検索サービスでは検索用語を取得して、緯度と経度の座標を返します。このプロセスはジオコーディングと呼ばれます。 しかし、Maps は、すべての地域と国に対して同じレベルの情報と精度を備えているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。 
+Azure Maps である場所を検索すると、検索サービス（たとえば [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）は検索語句をもとに、緯度と経度の座標を返してきます。 このプロセスはジオコーディングと呼ばれます。 しかし Azure Maps は、すべてのリージョンや国に対して、同じレベルの情報と精度を有しているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。 
 
 ある国/リージョンでジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。 各国/リージョンのジオコーディング サポート レベルを指定する際、次の分類が利用されます。
 * **アドレス ポイント** - アドレス データは、アドレス パーセル (プロパティ境界) 内の緯度/経度座標に解決できます。 この精度は 'Rooftop' と呼ばれることもあります。 これは住所に利用できる最高レベルの精度です。 
@@ -41,7 +41,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | ボリビア                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | ボネール島、セント・ユースタティウス島、サバ島                   |                 |                |              |      ✓     |          ✓         |
 | ブラジル                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| カナダ                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Canada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ケイマン諸島                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | チリ                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | コロンビア                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -297,7 +297,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps でのジオコーディングの詳細については、[検索](https://docs.microsoft.com/rest/api/maps/search)のリファレンス ページを参照してください。
 

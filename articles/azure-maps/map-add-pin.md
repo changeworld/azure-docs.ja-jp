@@ -1,6 +1,6 @@
 ---
-title: Azure Maps にシンボル レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK にシンボルを追加する方法について説明します。
+title: マップにシンボル レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK において、シンボルレイヤーを使用してマップ上のシンボルをカスタマイズ・追加する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480618"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911155"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 
@@ -77,7 +77,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 </iframe>
 
 > [!TIP]
-> Azure Maps Web SDK には、シンボル レイヤーで使用できるカスタマイズ可能なイメージ テンプレートがいくつか用意されています。 詳細については、「[イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)」のドキュメントを参照してください。
+> Azure Maps Web SDK には、シンボル レイヤーで使用できるカスタマイズ可能な画像テンプレートがいくつか用意されています。 詳細については、「[イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)」のドキュメントを参照してください。
 
 ## <a name="customize-a-symbol-layer"></a>シンボル レイヤーをカスタマイズする 
 
@@ -91,7 +91,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 > [!TIP]
 > シンボル レイヤーを使用してテキストをレンダリングするだけの場合は、アイコンのオプションの `image` プロパティを `'none'` に設定することによって、アイコンを非表示にすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
@@ -119,7 +119,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 > [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
+> [画像テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [線レイヤーを追加する](map-add-line-layer.md)

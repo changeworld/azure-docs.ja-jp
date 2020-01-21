@@ -222,7 +222,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![Visual Studio Code コマンド パレットを使用してスクリプトをコンパイルする](./media/quick-create-vs-code/compile-script1.png)
 
-- スクリプトを右クリックし、**ASA: Compile Script**」と入力します。
+- スクリプトを右クリックし、 **[ASA: Compile Script]\(ASA: スクリプトのコンパイル\)** を選択します。
 
     ![Stream Analytics スクリプトを右クリックしてコンパイルする](./media/quick-create-vs-code/compile-script2.png)
 

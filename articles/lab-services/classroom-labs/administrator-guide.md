@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c26e5c6b4bd484b643182e9e4ade3d71929fdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 638a90615d248b3c2829770432dd6a08eb4bb2fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476901"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771736"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 組織のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、組織のラボ アカウントを設定する役割も担います。 管理者または教師は、ラボ アカウントにクラスルーム ラボを作成します。 この記事では、関連する Azure リソースの概要と、それらを作成するためのガイダンスを示します。
@@ -68,7 +68,7 @@ ms.locfileid: "75476901"
 - **ラボ アカウントごとに予算を分ける**
 
     1 つのラボ アカウントに対してすべてのクラスルーム ラボのコストを報告するのではなく、予算をより明確に分けることが必要な場合があります。 上記の箇条書きの例を引き続き使用すると、大学の学部ごとにラボ アカウントを作成し、それに応じて予算を分けることができます。 その後、Azure Cost Management を使用して、個々のラボ アカウントのコストを表示できます。
-•   **パイロット ラボをアクティブ ラボから分離する**
+- **パイロット ラボをアクティブ ラボから分離する**
 
     アクティブ ラボに影響を与えることなく、ポリシーの変更をラボ アカウントに試験的に適用することが必要な場合があります。 この種のシナリオでは、パイロット用に別のラボ アカウントを作成することで変更を分離できます。 
 

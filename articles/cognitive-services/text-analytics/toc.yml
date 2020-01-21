@@ -9,13 +9,15 @@
       href: text-analytics-user-scenarios.md
     - name: 新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: クライアント ライブラリ
       items:
-        - name: クライアント ライブラリを使用したテキストの分析
+        - name: v3.0 プレビューを使用したテキストの分析
           href: quickstarts/text-analytics-sdk.md
+        - name: v2 を使用したテキストの分析
+          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: Java の使用
@@ -42,7 +44,7 @@
     - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す
       href: How-tos/text-analytics-how-to-call-api.md
@@ -92,7 +94,7 @@
       href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
     - name: 外部とコミュニティのコンテンツ
       href: text-analytics-resource-external-community.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: text-analytics-resource-faq.md
     - name: 言語とリージョンのサポート
       href: language-support.md

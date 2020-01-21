@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777820"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -36,7 +36,7 @@ Application Gateway からは、ご利用の Application Gateway インスタン
 
   要求が処理されその応答が送信されるのにかかった平均時間。 これは、Application Gateway が HTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの平均間隔として計算されます。 これには、通常、Application Gateway の処理時間、要求パケットと応答パケットがネットワーク経由で移動する時間、およびバックエンド サーバーが応答するまでの時間が含まれていることに注意することが重要です。
   
-*クライアント RTT* が *Application Gateway の合計時間*を大幅に超える場合は、クライアントで監視された待機時間がクライアントと Application Gateway 間のネットワーク接続によるものであることが推測できます。 両方の待機時間が比較できる場合は、次のいずれかが原因で待機時間が長くなる可能性があります。Application Gateway、Application Gateway とバックエンド アプリケーション間のネットワーク、またはバックエンド アプリケーションのパフォーマンス。
+リスナーによってフィルター処理された後、*クライアント RTT* が *Application Gateway の合計時間*を大幅に超える場合は、クライアントによって観測された待機時間はクライアントと Application Gateway 間のネットワーク接続に起因するものだと推測できます。 両方の待機時間が比較できる場合は、次のいずれかが原因で待機時間が長くなる可能性があります。Application Gateway、Application Gateway とバックエンド アプリケーション間のネットワーク、またはバックエンド アプリケーションのパフォーマンス。
 
 - **バックエンド先頭バイト応答時間**
 

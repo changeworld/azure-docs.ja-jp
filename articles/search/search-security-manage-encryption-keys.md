@@ -1,48 +1,51 @@
 ---
-title: ユーザーが管理するキーを使用した保存時の暗号化 (プレビュー)
+title: カスタマー マネージドのキーを使用した保存時の暗号化
 titleSuffix: Azure Cognitive Search
-description: Azure Key Vault 内で作成して管理するキーを使用して、Azure Cognitive Search 内でインデックスとシノニム マップによるサーバー側暗号化を補完します。 現在、この機能はパブリック プレビュー段階にあります。
+description: Azure Key Vault 内で作成・管理するキーを使用して、Azure Cognitive Search 内でインデックスとシノニム マップによるサーバー側の暗号化を補完します。
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/08/2020
+ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112923"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945717"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 内のユーザーが管理するキーを使用した Azure Cognitive Search でのコンテンツの保存時の暗号化
 
-> [!IMPORTANT] 
-> 保存時の暗号化のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 この機能は、[REST API バージョン 2019-05-06-Preview](search-api-preview.md) と [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md) で提供しています。 現時点でポータルによるサポートはありません。
-
-既定では、Azure Cognitive Search では[サービス管理キー](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)を使用してユーザー コンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
+既定では、Azure Cognitive Search は[サービス マネージドのキー](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)を使用してインデックス付きコンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
 
 サーバー側暗号化は、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 Azure Key Vault を使用してキー使用法を監査することもできます。 
 
 ユーザーが管理するキーを使用した暗号化は、検索サービス レベルではなく、それらのオブジェクトの作成時にインデックス レベルまたはシノニム マップ レベルで構成されます。 既存のコンテンツを暗号化することはできません。 
 
-別のキー コンテナーからの異なるキーを使用することができます。 これは、1 つの検索サービスが (それぞれ異なる、ユーザーが管理するキーを使用して) 暗号化された複数のインデックス/シノニム マップを、ユーザーが管理するキーを使用して暗号化されていないインデックス/シノニム マップと共にホストできることを意味します。 
+キーは、同じ Key Vault に配置する必要はありません。 1つの検索サービスで、暗号化された複数のインデックスや、独自のカスタマー マネージドの暗号化キーで暗号化されてそれぞれ異なる Key Vault に格納されている複数のシノニム マップをホストすることができます。  また、カスタマー マネージドのキーを使用して暗号化されていない同じサービス内に、インデックスとシノニム マップを置くこともできます。 
+
+> [!IMPORTANT] 
+> この機能は、[REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md)で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
 この例では、次のサービスを使用します。 
 
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
 
 + [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
 
-+ プレビュー REST API の呼び出しには、[Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md)、および [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) を使用できます。 現時点では、ユーザーが管理する暗号化のポータル サポートまたは .NET SDK サポートはありません。
++ [Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md) および [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) を使用して REST API を呼び出せます。 現時点では、カスタマー マネージドの暗号化はポータルでサポートされていません。
+
+>[!Note]
+> カスタマー マネージドのキー フィーチャーを使用した暗号化の性質上、Aｚure Key vault キーが削除されている場合には、Azure Cognitive Search はデータを取得できません。 Key Vault キーを誤って削除しデータが損失することを防ぐため、使用前に Key Vault の「論理的な削除」および「消去データ保護」を**必ず**有効にしてください。 詳細については、[Azure Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)に関する記事を参照してください。   
 
 ## <a name="1---enable-key-recovery"></a>1 - キーの回復の有効化
 
-この手順は省略可能ですが、強くお勧めします。 Azure Key Vault リソースを作成したら、次に示す PowerShell コマンドまたは Azure CLI コマンドを実行して、選択したキー コンテナーで**論理的な削除**と**消去保護**を有効にします。   
+Azure Key Vault リソースを作成したら、次に示す PowerShell コマンドまたは Azure CLI コマンドを実行して、選択したキー コンテナーで**論理的な削除**と**消去保護**を有効にします。   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -57,9 +60,6 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
-
->[!Note]
-> ユーザーが管理するキーを使用した暗号化機能の本質により、Azure Key Vault キーが削除されている場合、Azure Cognitive Search ではデータを取得できません。 Key Vault キーの誤削除によるデータ損失を防ぐには、選択したキー コンテナーで論理的な削除と消去保護を有効にすることを強くお勧めします。 詳細については、[Azure Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)に関する記事を参照してください。   
 
 ## <a name="2---create-a-new-key"></a>2 - 新しいキーの作成
 
@@ -231,7 +231,7 @@ REST API を使用した新しいシノニム マップの作成方法の詳細�
 > AAD アプリケーションまたはその認証キーを変更する場合は、以前のアプリケーションまたはその認証キーを削除する**前**、およびそれらへのキー コンテナー アクセスを取り消す前に、アプリケーションを使用する Azure Cognitive Search のインデックスまたはシノニム マップを、新しいアプリケーション ID/キーを使用するように更新する必要があります。
 > そうしないと、インデックスまたはシノニム マップが使用できない状態になり、キー アクセスが失われた場合にコンテンツを暗号化解除できません。   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure セキュリティ アーキテクチャを使い慣れていない場合は、[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)を確認してください。具体的には次の記事です。
 

@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424495"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888770"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -37,9 +37,9 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal を使用してアプリ ロールを宣言する
 
 1. [Azure portal](https://portal.azure.com) にサインインする
-1. 一番上のバーで、自分のアカウントを選択し、 **[ディレクトリの切り替え]** を選択します。
-1. **[ディレクトリ + サブスクリプション]** ウィンドウが開いたら、 **[お気に入り]** または **[すべてのディレクトリ]** リストで、アプリケーションを登録する Active Directory テナントを選択します。
-1. 左側のナビゲーション バーで **[すべてのサービス]** を選択し、 **[Azure Active Directory]** を選択します。
+1. ポータルツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択します。
+1. **[お気に入り]** または **[すべてのディレクトリ]** リストで、アプリケーションを登録する Active Directory テナントを選択します。
+1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 1. **[Azure Active Directory]** ウィンドウで、 **[アプリの登録]** を選択してすべてのアプリケーションを一覧表示します。
 1. アプリ ロールを定義するアプリケーションを選択します。 次に、 **[マニフェスト]** を選択します。
 1. `appRoles` 設定を見つけたら、すべてのアプリケーション ロールを追加して、アプリケーション マニフェストを編集します。

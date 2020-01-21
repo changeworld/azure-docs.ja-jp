@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552680"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780047"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry と Security Center の統合 (プレビュー)
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-レジストリとイメージの脆弱性をより詳細に把握するために、Azure Security Center の Standard レベルのユーザーは、オプションの Container Registry バンドルを有効にすることができます。 この機能の使用にかかるコストは、スキャンごとではなく、イメージごとに課金されます。 詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 バンドルを有効にすると、イメージがレジストリにプッシュされるたびに、Security Center によってレジストリ内のイメージが自動的にスキャンされます。
+Azure Security Center の 標準レベルを使用している場合には、Container Registries のバンドルを追加できます。 このオプションのフィーチャーを使用すると、レジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでバンドルを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 このフィーチャーは、[価格のページ](security-center-pricing.md)に示されているように、スキャンごとではなくイメージごとに課金されます。 
 
-> [!NOTE]
-> Security Center の最初のレジストリ スキャンは、Container Registry バンドルが有効にされ、イメージがレジストリにプッシュされた後でのみ、行われます。
+Container Registries のバンドルを有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 このスキャンはイメージレベルで実行されます。Security Center はレジストリをスキャンするのではなく、レジストリに格納されたイメージをスキャンしています。 
+
+イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
+
 
 スキャンが完了すると (通常は約 10 分後)、次のような Security Center の推奨事項で結果が得られます。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 内のラスター マップ上にカスタム データをレンダリングする方法 | Microsoft Docs
-description: この記事では、Azure Maps の静的イメージ サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
+title: ラスター マップ上にカスタム データをレンダリングする | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps の静的画像サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408896"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911468"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 

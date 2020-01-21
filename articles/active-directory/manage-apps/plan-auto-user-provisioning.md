@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786420"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732452"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) の自動ユーザープロビジョニング�
 
 この機能の詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)」を参照してください。
 
-## <a name="learn"></a>詳細情報
+## <a name="learn"></a>学習する
 
 ユーザー プロビジョニングによって、継続的な ID ガバナンスの基盤が作成され、信頼性の高い ID データに依存するビジネス プロセスの品質が向上します。
 
@@ -74,7 +74,7 @@ Azure AD は、アプリケーション ギャラリー メニューに用意さ
 | オンライン コース| SkillUp オンライン:[ID の管理](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Azure AD を多くの SaaS アプリケーションと統合し、それらのアプリケーションへのユーザー アクセスをセキュリティで保護する方法について学習します。 |
 | 書籍| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> ‎これは、これらの新しい環境向けに Active Directory 認証ソリューションを構築するための、信頼性の高い詳細なガイドです。 |
 | チュートリアル| [SaaS アプリと Azure AD を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照します。 |
-| FAQ| 自動化されたユーザー プロビジョニングに関して[よく寄せられる質問](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) |
+| よく寄せられる質問| 自動化されたユーザー プロビジョニングに関して[よく寄せられる質問](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) |
 
 ### <a name="solution-architectures"></a>ソリューションのアーキテクチャ
 
@@ -138,7 +138,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 ### <a name="plan-a-pilot"></a>パイロットを計画する
 
-自動ユーザー プロビジョニングの初期構成は、運用環境のすべてのユーザーに拡張する前に、小規模なユーザー サブセットを含むテスト環境で行うことをお薦めします。
+自動ユーザー プロビジョニングの初期構成は、運用環境のすべてのユーザーに拡張する前に、小規模なユーザー サブセットを含むテスト環境で行うことをお薦めします。 パイロットの実行については、[ベストプラクティス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot)に関する記事を参照してください。
 
 #### <a name="best-practices-for-a-pilot"></a>パイロットのベスト プラクティス  
 
@@ -289,11 +289,11 @@ Azure AD ユーザー プロビジョニング サービスは、[Microsoft Grap
 
 Azure AD は、監査ログとレポートによって組織のユーザーのプロビジョニング使用状況と操作の正常性に関する[追加の分析情報](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を提供できます。
 
-管理者は、プロビジョニングの概要レポートを確認して、プロビジョニング ジョブの操作の正常性を監視する必要があります。 プロビジョニング サービスによって実行されたアクティビティはすべて、Azure AD の監査ログに記録されます。 手順については、「[チュートリアル: 自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning)」を参照してください。
+管理者は、プロビジョニングの概要レポートを確認して、プロビジョニング ジョブの操作の正常性を監視する必要があります。 プロビジョニング サービスによって実行されたアクティビティはすべて、Azure AD の監査ログに記録されます。 「[チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning)」を参照してください。
 
 これらのレポートの所有権を引き受け、組織の要件が満たされる頻度で使用することをお勧めします。 Azure AD は、ほとんどの監査データを 30 日間保持します。
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 プロビジョニング中に発生する可能性がある問題のトラブルシューティングについては、次のリンクを参照してください。
 
@@ -327,7 +327,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [Stack overflow の Azure AD フォーラム](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [自動ユーザー プロビジョニングの構成](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
 
 * [Microsoft Graph API を使用してプロビジョニング構成をエクスポートまたはインポートする](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)

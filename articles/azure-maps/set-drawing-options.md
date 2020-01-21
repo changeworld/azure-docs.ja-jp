@@ -1,6 +1,6 @@
 ---
-title: Azure Maps で描画ツール モジュールを使用する | Microsoft Docs
-description: Azure Maps Web SDK を使用して描画オプション データを設定する方法
+title: 描画ツール モジュール | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して描画オプションデータを設定する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0ac9bc775798a14e6431718bc602d8ff41288c10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408162"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910582"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 

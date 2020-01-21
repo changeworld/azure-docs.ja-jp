@@ -1,18 +1,18 @@
 ---
 title: サービス プロバイダーのアクティビティを表示する
 description: お客様は、ログに記録されたアクティビティを表示して、Azure の委任されたリソース管理を通じてサービス プロバイダーによって実行されるアクションを確認できます。
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a6ae5668601e3587b7306ba1652f6b107800fcb3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527826"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046117"
 ---
 # <a name="view-service-provider-activity"></a>サービス プロバイダーのアクティビティを表示する
 
-Azure の委任されたリソース管理に委任サブスクリプションのあるお客様は、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md) データを表示して、実行されたすべてのアクションを確認できます。 これによりお客様は、Azure の委任されたリソース管理を通じてサービス プロバイダーが実行している操作と、お客様独自の Azure Active Directory (Azure AD) テナント内のユーザーが実行している操作を完全に可視化できます。
+Azure の委任されたリソース管理に委任サブスクリプションのあるお客様は、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md) データを表示して、実行されたすべてのアクションを確認できます。 これによりお客様は、Azure の委任されたリソース管理を通じてサービス プロバイダーが実行している操作と、お客様独自の Azure Active Directory (Azure AD) テナント内のユーザーが実行している操作を完全に可視化できます。
 
 ## <a name="view-activity-log-data"></a>アクティビティ ログ データを表示する
 
@@ -24,6 +24,9 @@ Azure の委任されたリソース管理に委任サブスクリプション�
 アクティビティ ログには、操作の名前とその状態が、実行された日付および時刻と共に表示されます。 **[イベント開始者]** 列には、操作を実行したユーザー (Azure の委任されたリソース管理を通じて操作しているサービス プロバイダーのテナント内のユーザーと、お客様独自のテナント内のユーザーのどちらの場合も) が表示されます。 テナント、またはそのサブスクリプションについてユーザーに割り当てられているロールではなく、ユーザーの名前が表示されることに注意してください。
 
 ログに記録されたアクティビティは、過去 90 日間について Azure portal に格納されます。 このデータを 90 日間より長く格納する方法については、「[Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](../../azure-monitor/platform/activity-log-collect.md)」を参照してください。
+
+> [!NOTE]
+> サービスプロバイダーからのユーザーはアクティビティログに表示されますが、これらのユーザーとそのロールの割り当ては **Access Control (IAM)** には表示されません。また、Api 経由でロールの割り当て情報を取得したときも同様です。
 
 ## <a name="set-alerts-for-critical-operations"></a>重要な操作のアラートを設定する
 

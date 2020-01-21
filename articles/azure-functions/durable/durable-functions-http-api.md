@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5cf357f5f0c1d58c390cf48d636aadf059579396
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410145"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769627"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 
@@ -105,7 +105,7 @@ Content-Length: 83
 }
 ```
 
-http 応答は、"*ポーリング コンシューマー パターン*" と互換性があるように意図されています。 また、次の重要な応答ヘッダーも含まれています。
+HTTP 応答は、*ポーリング コンシューマー パターン*と互換性があるように意図されています。 また、次の重要な応答ヘッダーも含まれています。
 
 * **[場所]** :状態エンドポイントの URL。 この URL には、`statusQueryGetUri` フィールドと同じ値が含まれます。
 * **Retry-After**:ポーリング操作の間に待機する秒数。 既定値は `10` です。
