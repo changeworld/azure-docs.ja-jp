@@ -1,23 +1,19 @@
 ---
 title: Azure Migrate を使用して Azure に移行するために Hyper-V VM を評価する | Microsoft Docs
 description: Azure Migrate を使用して Azure に移行するためにオンプレミスの Hyper-V VM を評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158390"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029031"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
-この記事では、オンプレミスの Hyper-V VM を評価する方法について説明します。使用するのは、Azure Migrate: Server Assessment ツールです。
+この記事では、オンプレミスの Hyper-V VM を評価する方法について説明します。使用するのは、Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
@@ -43,9 +39,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-hyper-v.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-hyper-v.md#prepare-azure)する。
-    - 評価用に Hyper-V クラスター、ホスト、および VM を[準備](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment)する。
+    - 評価用に Hyper-V クラスター、ホスト、および VM を[準備](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)する。
+    - Hyper-V VM の検出と評価に使用する Azure Migrate アプライアンスの[デプロイを準備](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)する。
 
-## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトの設定
+## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
 
 1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
 2. 検索結果で、 **[Azure Migrate]** を選択します。
@@ -64,10 +61,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **地理的な場所** | **[リージョン]**
     --- | ---
-    アジア  | 東南アジア
+    Asia  | 東南アジア
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
     イギリス |  英国南部または英国西部
-    米国 | 米国東部、米国西部 2、または米国中西部
+    United States | 米国東部、米国西部 2、または米国中西部
 
     - プロジェクトのリージョンは、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。
     - VM を移行するときに、別の Azure ターゲット リージョンを選択できます。 移行ターゲットとしては、すべての Azure リージョンがサポートされています。
@@ -75,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **[次へ]** をクリックします。
 8. **[評価ツールの選択]** で、次を選択します: **[Azure Migrate: Server Assessment]**  >  **[次へ]** 。
 
-    ![Azure Migrate プロジェクトを作成する](./media/tutorial-assess-hyper-v/assessment-tool.png)
+    ![Azure Migrate プロジェクトの作成](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
 9. **[移行ツールの選択]** で、 **[今は移行ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
 10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします。
@@ -84,12 +81,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-## <a name="set-up-the-appliance-vm"></a>アプライアンス VM の設定
+## <a name="set-up-the-appliance-vm"></a>アプライアンスの VM を設定する
 
 Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアンスが実行されます。
 
-- このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate: Server Assessment に送信します。
-- アプライアンスを設定するには:
+- このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate: Server Assessment を使用して作成する方法について説明します。
+- アプライアンスを設定するには、次のようにします。
     - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
     - アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
     - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
@@ -136,9 +133,9 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
     ![VHD をデプロイする](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. 仮想マシンのインポート ウィザードの **[開始する前に]** で、 **[次へ]** をクリックします。
-3. **[フォルダーの検索]** で、 **[Virtual Machines]\(仮想マシン\)** フォルダーを選択します。 その後、 **[次へ]** をクリックします。
+3. **[フォルダーの検索]** で、 **[Virtual Machines]\(仮想マシン\)** フォルダーを選択します。 続けて、 **[次へ]** をクリックします。
 1. **[仮想マシンを選択します]** で、 **[次へ]** をクリックします。
-2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 その後、 **[次へ]** をクリックします。
+2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 続けて、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 4. **[保存フォルダー]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。
@@ -148,7 +145,7 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) に接続できることを確認します。
+アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
@@ -184,7 +181,7 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 
 SMB 上で VHD を実行している場合は、アプライアンスから Hyper-V ホストへの資格情報の委任を有効にする必要があります。 これには、以下が必要です。
 
-- 各ホストがアプライアンスの代理として機能できるようにします。 この操作は、前のチュートリアルで評価と移行のために Hyper-V を準備した時点で完了しています。 ホストの CredSSP を、[手動で](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)設定しているか、[Hyper-V の前提条件の構成スクリプトを実行](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script)して設定しているはずです。
+- 各ホストがアプライアンスの代理として機能できるようにします。 チュートリアルを順番に行っていれば、この操作は、前のチュートリアルで評価と移行のために Hyper-V を準備した時点で完了しています。 ホストの CredSSP を[手動で](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)設定したか、その操作を行う[スクリプトを実行して](tutorial-prepare-hyper-v.md#prepare-with-a-script)設定したはずです。
 - Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。
 
 次のようにアプライアンス上で有効にします。
@@ -214,7 +211,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 1. **[ユーザー名]** と **[パスワード]** に、VM を検出するためにアプライアンスによって使用されるアカウント資格情報を指定します。 資格情報のフレンドリ名を指定し、 **[詳細の保存]** をクリックします。
 2. **[ホストの追加]** をクリックし、Hyper-V のホスト/クラスターの詳細を指定します。
-3. **[Validate (検証)]** をクリックします。 検証後、各ホスト/クラスター上で検出できる VM の数が表示されます。
+3. **[検証]** をクリックします。 検証後、各ホスト/クラスター上で検出できる VM の数が表示されます。
     - ホストで検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。
     - ホストまたはクラスターを削除するには、 **[削除]** を選択します。
     - クラスターから特定のホストを削除することはできません。 削除できるのは、クラスター全体のみです。
@@ -230,7 +227,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 1. Azure Migrate ダッシュボードを開きます。
 2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
-## <a name="set-up-an-assessment"></a>評価の設定
+## <a name="set-up-an-assessment"></a>評価を設定する
 
 Azure Migrate Server Assessment を使用して実行できる評価には、2 つの種類があります。
 
@@ -248,7 +245,7 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
 2. **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[評価]** をクリックします。
 
-    ![評価](./media/tutorial-assess-hyper-v/assess.png)
+    ![アクセス](./media/tutorial-assess-hyper-v/assess.png)
 
 3. **[サーバーの評価]** で、評価の名前を指定します。
 4. **[すべて表示]** をクリックして、評価のプロパティを確認します。
@@ -274,7 +271,7 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 - **月間ストレージ コスト見積もり**: 移行後のディスク ストレージの推定コスト。
 
 
-### <a name="view-an-assessment"></a>評価の表示
+### <a name="view-an-assessment"></a>評価を表示する
 
 1. **[移行の目標]**  >   **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[評価]** をクリックします。
 2. **[評価]** で、評価をクリックして開きます。
@@ -333,13 +330,13 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
 > * Azure Migrate アプライアンスを設定する
-> * 評価の作成と確認
+> * 評価を作成して確認する
 
 このシリーズの 3 番目のチュートリアルに進み、Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する方法について学習します。
 

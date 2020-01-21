@@ -8,19 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563226"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754086"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>REST を使用して Azure Cognitive Search のナレッジ ストアを作成する
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 
 > [!IMPORTANT] 
 > ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
-ナレッジ ストアは、Azure Cognitive Search の機能の 1 つです。AI エンリッチメント パイプラインからの出力を、後から下流で行われる分析などの処理に使用できるよう永続化するものです。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Azure Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
+ナレッジ ストアには、Azure Cognitive Search のエンリッチメント パイプラインからの出力が、後から下流で行われる分析などの処理に使用できるよう格納されます。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
 
 この記事では、REST API インターフェイスを使用して AI エンリッチメントを取り込み、インデックスを作成して、一連のホテルのレビューに適用します。 ホテルのレビューは、Azure Blob Storage にインポートされます。 結果は、Azure Table Storage にナレッジ ストアとして保存されます。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
 
-   **[StorageV2 (汎用 v2)]** のアカウントの種類を選択します。
+   **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
 1. Blob service ページを開き、*hotel-reviews* という名前のコンテナーを作成します。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454551"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028913"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -104,8 +104,9 @@ VMware VM の評価を準備するには、以下が必要です。
 
 ### <a name="verify-vmware-settings"></a>VMware の設定の確認
 
-1. 評価に関する VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements)します。
-2. 必要なポートが vCenter サーバー上で開かれていることを[確認](migrate-support-matrix-vmware.md#assessment-port-requirements)します。
+1. 評価に関する VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#vmware-requirements)します。
+2. 必要なポートが vCenter サーバー上で開かれていることを[確認](migrate-support-matrix-vmware.md#port-access)します。
+3. vCenter Server で、OVA ファイルを使用して VM を作成するためのアクセス許可がアカウントにあることを確認します。 OVA ファイルを使用して、Azure Migrate アプライアンスを VMware VM としてデプロイします。
 
 
 ### <a name="set-up-an-account-for-assessment"></a>評価のためのアカウントの設定
@@ -120,15 +121,12 @@ VMware VM の評価を準備するには、以下が必要です。
 
 ### <a name="verify-appliance-settings-for-assessment"></a>評価用のアプライアンス設定の確認
 
-アプライアンスをデプロイする前にアプライアンスの要件を確認します。
+次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
-1. アプライアンスの要件と制限を[確認](migrate-support-matrix-vmware.md#assessment-appliance-requirements)します。
-2. URL ベースのファイアウォール プロキシを使用している場合は、アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-vmware.md#assessment-url-access-requirements)します。 URL の検索中に受信するすべての CNAME レコードがプロキシによって解決されることを確認します。
-3. 検出および評価中にアプライアンスによって収集される[パフォーマンス データ](migrate-appliance.md#collected-performance-data-vmware)と[メタデータ](migrate-appliance.md#collected-metadata-vmware)を確認します。
-4. アプライアンスによってアクセスされるポートに[注意](migrate-support-matrix-vmware.md#assessment-port-requirements)します。
-5. vCenter Server で、OVA ファイルを使用して VM を作成するためのアクセス許可がアカウントにあることを確認します。 OVA ファイルを使用して、Azure Migrate アプライアンスを VMware VM としてデプロイします。
-
-URL ベースのファイアウォール プロキシを使用している場合は、必要な [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) へのアクセスを許可します。
+1. VMware VM のアプライアンス要件を[確認](migrate-appliance.md#appliance---vmware)します。
+2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。 URL ベースのファイアウォールまたはプロキシを使用している場合は、必要な URL へのアクセスが許可されていることを確認します。
+3. 検出および評価中にアプライアンスによって収集されるデータを[確認](migrate-appliance.md#collected-data---vmware)します。
+4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access)します。
 
 
 
@@ -137,23 +135,22 @@ URL ベースのファイアウォール プロキシを使用している場合
 
 VMware VM のエージェントレス移行の要件を確認します。
 
-1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements)します。
-2. Azure Migrate Server Migration を使用してエージェントレス移行を行うために Azure Migrate が vCenter Server にアクセスできるように、[必須のアクセス許可](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions)を持つアカウントを設定します。
-3. エージェントレス移行を使用して Azure に移行する VMware VM の要件を[確認](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)します。
-4. エージェントレス移行に Azure Migrate アプライアンスを使用するための要件を[確認](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements)します。
-5. Azure Migrate アプライアンスがエージェントレス移行に必要とする [URL アクセス](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements)と[ポート アクセス](migrate-support-matrix-vmware.md#agentless-migration-port-requirements)に注意します。
+1. VMware サーバー要件と、Azure Migrate Server Migration を使用するエージェントレス移行で Azure Migrate が vCenter Server にアクセスするために必要な[アクセス許可](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)を[確認](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)します。
+2. エージェントレス移行を使用して Azure に移行する VMware VM の要件を[確認](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)します。
+4. エージェントレス移行に Azure Migrate アプライアンスを使用するための要件を[確認](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance)します。
+5. エージェントレス移行に必要な [URL アクセス](migrate-appliance.md#url-access)と[ポート アクセス](migrate-support-matrix-vmware-migration.md#agentless-ports)に注意します。
 
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>エージェントベースの VMware 移行の準備
 
 VMware VM の[エージェントベース移行](server-migrate-overview.md)の要件を確認します。
 
-1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。
-2. [必須のアクセス許可](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions)を持つアカウントを設定します。 それにより、Azure Migrate Server Migration を使用してエージェントベース移行を行うために Azure Migrate が vCenter Server にアクセスできるようにします。
-3. エージェントベース移行を使用して Azure に移行する VMware VM の要件 (移行する各 VM へのモビリティ サービスのインストールなど) を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)します。
-4. [URL アクセス](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)に注意します。
-5. Azure Migrate コンポーネントがエージェントベースのアクセスに必要とする[ポート アクセス](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements)を確認します。
-
+1. VMware サーバー要件と、Azure Migrate Server Migration を使用するエージェントベースの移行で Azure Migrate が vCenter Server にアクセスするために必要なアクセス許可を[確認](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers)します。
+2. エージェントベース移行を使用して Azure に移行する VMware VM の要件 (移行する各 VM へのモビリティ サービスのインストールなど) を[確認](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms)します。
+3. エージェントベース移行では、レプリケーション アプライアンスを使用します。
+    - レプリケーション アプライアンスのデプロイ要件と、アプライアンスでの MySQL のインストールの[オプション](migrate-replication-appliance.md#mysql-installation)を[確認](migrate-replication-appliance.md#appliance-requirements)します。
+    - レプリケーション アプライアンスの [URL](migrate-replication-appliance.md#url-access) と[ポート](migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+    
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。

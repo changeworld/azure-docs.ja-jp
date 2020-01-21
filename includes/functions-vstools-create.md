@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 17b7626f79d7d356e3e8f3440e4a6526f2df776d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a27d44a7684b4ad3d39d7fba50ca52e08e932971
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593264"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769772"
 ---
-Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
+Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 1. Visual Studio の **[ファイル]** メニューで､ **[新規作成]**  >  **[プロジェクト]** を選択します。
 
@@ -25,15 +25,15 @@ Visual Studio の Azure Functions プロジェクト テンプレートでは、
 
 1. **[新しい Azure Functions アプリケーションの作成]** で、以下のオプションを使用します。
 
-    + **Azure Functions v2 (.NET Core)** 1
+    + **Azure Functions v2 (.NET Core)**
     + **HTTP トリガー**
     + **[ストレージ アカウント]** : **ストレージ エミュレーター**
     + **承認レベル**: **Anonymous** 
 
-    | オプション      | 推奨値  | 説明                      |
+    | オプション      | 推奨値  | [説明]                      |
     | ------------ |  ------- |----------------------------------------- |
-    | Functions ランタイム | **Azure Functions 2.x <br />(.NET Core)** | この設定で、.NET Core をサポートする Azure Functions のバージョン 2.x ランタイムを使用する関数プロジェクトが作成されます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、[Azure Functions ランタイム バージョンをターゲットにする方法](../articles/azure-functions/functions-versions.md)に関するページを参照してください。   |
-    | 関数テンプレート | **HTTP トリガー** | この設定で、HTTP 要求によってトリガーされる関数が作成されます。 |
+    | **Functions ランタイム** | **Azure Functions 2.x <br />(.NET Core)** | この設定で、.NET Core をサポートする Azure Functions のバージョン 2.x ランタイムを使用する関数プロジェクトが作成されます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、[Azure Functions ランタイム バージョンをターゲットにする方法](../articles/azure-functions/functions-versions.md)に関するページを参照してください。   |
+    | **関数テンプレート** | **HTTP トリガー** | この設定で、HTTP 要求によってトリガーされる関数が作成されます。 |
     | **ストレージ アカウント**  | **ストレージ エミュレーター** | HTTP トリガーは Azure Storage アカウント接続を使用しません。 他のすべてのトリガーの種類では、有効なストレージ アカウント接続文字列が必要です。 Functions にはストレージ アカウントが必要であるため、プロジェクトを Azure に発行するときに割り当てられるか、作成されます。 |
     | **承認レベル** | **Anonymous** | 作成される関数を、すべてのクライアントがキーを使用せずにトリガーできます。 この承認設定により、新しい関数のテストが容易になります。 キーと承認の詳細については、「[Azure Functions における HTTP と webhook のバインド](../articles/azure-functions/functions-bindings-http-webhook.md)」の「[承認キー](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys)」をご覧ください。 |
     

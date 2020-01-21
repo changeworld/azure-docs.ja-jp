@@ -1,19 +1,15 @@
 ---
 title: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する
 description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 78e8a42c4f1e101f8d083c8d58bb452aadfa3a87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454578"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028923"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -25,7 +21,8 @@ ms.locfileid: "75454578"
 
 > [!div class="checklist"]
 > * Azure を準備します。 Azure Migrate を操作するために、自分の Azure アカウントとリソースのアクセス許可を設定します。
-> * サーバー評価用にオンプレミスの Hyper-V ホストと VM を準備します。
+> * サーバー評価用にオンプレミスの Hyper-V ホストと VM を準備します。 構成スクリプトを使用するか、手動で準備することができます。
+> * Azure Migrate アプライアンスのデプロイを準備します。 アプライアンスは、オンプレミスの VM を検出および評価するために使用されます。
 > * サーバー移行用にオンプレミスの Hyper-V ホストと VM を準備します。
 
 
@@ -43,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
 
 - お使いの Azure アカウントで Azure Migrate プロジェクトを作成するためのアクセス許可。
-- お使いの Azure アカウントで Azure Migrate アプライアンスを登録するためのアクセス許可。 アプライアンスは、Hyper-V の検出と移行に使用されます。 アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます。
+- お使いの Azure アカウントで Azure Migrate アプライアンスを登録するためのアクセス許可。 アプライアンスは、移行する Hyper-V VM を検出および評価するために使用されます。 アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます。
     - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。
     - 2 つ目のアプリは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
 
@@ -92,30 +89,25 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
-## <a name="prepare-for-hyper-v-assessment"></a>Hyper-V の評価の準備
+## <a name="prepare-hyper-v-for-assessment"></a>Hyper-V の評価の準備
 
-Hyper-V の評価を準備するには、次の手順を実行します。
+Hyper-V の VM 評価を、手動で、または構成スクリプトを使用して、準備することができます。 スクリプトでも[手動](#prepare-hyper-v-manually)でも、以下の準備が必要です。
 
-1. Hyper-V ホストの設定を確認します。
-2. 各ホスト上で PowerShell リモート処理を設定して、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。
-3. VM ディスクがリモート SMB ストレージに配置されている場合は、資格情報の委任が必要になります。
-    - Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。
-    - 次に示すように、各ホストがアプライアンスの代理として機能できるようにします。
-    - 後でアプライアンスを設定するときに、アプライアンス上で委任を有効にします。
-4. アプライアンスの要件と、アプライアンスに必要な URL またはポート アクセスを確認します。
-5. アプライアンスで VM の検出に使用されるアカウントを設定します。
-6. 検出と評価を行いたい各 VM で Hyper-V 統合サービスを設定します。
+- Hyper-V のホスト設定を[検証](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements)し、Hyper-V ホスト上で[必要なポート](migrate-support-matrix-hyper-v.md#port-access)が開かれていることを確認します。
+- 各ホスト上で PowerShell リモート処理を設定して、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。
+- VM ディスクがリモート SMB 共有に配置されている場合は、資格情報を委任します。
+- Hyper-V ホスト上で VM を検出するためにアプライアンスによって使用されるアカウントを設定します。
+- 検出と評価を行いたい各 VM で Hyper-V 統合サービスを設定します。
 
 
-これらの設定は、下記の手順を使用して手動で構成できます。 または、Hyper-V の前提条件の構成スクリプトを実行します。
 
-### <a name="hyper-v-prerequisites-configuration-script"></a>Hyper-V の前提条件の構成スクリプト
+## <a name="prepare-with-a-script"></a>スクリプトの準備
 
-このスクリプトを使用して、Hyper-V ホストを検証し、Hyper-V VM を検出して評価するために必要な設定を構成します。 これは次のように動作します。
+スクリプトでは次を実行します。
 
 - サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。
 - 自分 (スクリプトを実行しているユーザー) が Hyper-V ホストの管理特権を持っていることを確認します。
-- Azure Migrate サービスが Hyper-V ホストと通信するために使用されるローカル ユーザー アカウント (管理者ではありません) を作成できるようにします。 このユーザー アカウントは、ホスト上のこれらのグループに追加されます。
+- Hyper-V ホストと通信するために Azure Migrate サービスによって使用されるローカル ユーザー アカウント (管理者ではありません) を作成できるようにします。 このユーザー アカウントは、ホスト上のこれらのグループに追加されます。
     - リモート管理ユーザー
     - Hyper-V 管理者
     - パフォーマンス モニター ユーザー
@@ -144,7 +136,7 @@ Hyper-V の評価を準備するには、次の手順を実行します。
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
-#### <a name="hashtag-values"></a>ハッシュタグの値
+### <a name="hashtag-values"></a>ハッシュタグの値
 
 ハッシュ値は次のとおりです。
 
@@ -153,10 +145,34 @@ Hyper-V の評価を準備するには、次の手順を実行します。
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
+
+## <a name="prepare-hyper-v-manually"></a>手動での Hyper-V の準備
+
+スクリプトを使用するのではなく、手動で Hyper-V を準備する場合は、このセクションの手順に従います。
+
+### <a name="verify-powershell-version"></a>PowerShell のバージョンを確認する
+
+Hyper-V ホストに PowerShell バージョン 4.0 以降がインストールされていることを確認します。
+
+
+
+### <a name="set-up-an-account-for-vm-discovery"></a>VM 検出用のアカウントの設定
+
+Azure Migrate には、オンプレミスの VM を検出するためのアクセス許可が必要です。
+
+- Hyper-V ホストおよびクラスターに対する管理者アクセス許可を備えた、ドメインまたはローカルのユーザー アカウントを設定します。
+
+    - 検出に含めるすべてのホストとクラスターに対して 1 つのアカウントが必要です。
+    - アカウントは、ローカル アカウントでもドメイン アカウントでもかまいません。 Hyper-V ホストまたはクラスターに対する管理者アクセス許可を用意することをお勧めします。
+    - または、管理者アクセス許可を割り当てたくない場合、以下のアクセス許可が必要です。
+        - リモート管理ユーザー
+        - Hyper-V 管理者
+        - パフォーマンス モニター ユーザー
+
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V ホストの設定の確認
 
-1. サーバー評価のための [Hyper-V ホストの要件](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements)を確認します。
-2. Hyper-V ホスト上で[必要なポート](migrate-support-matrix-hyper-v.md#assessment-port-requirements)が開かれていることを確認します。
+1. サーバー評価のための [Hyper-V ホストの要件](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements)を確認します。
+2. Hyper-V ホスト上で[必要なポート](migrate-support-matrix-hyper-v.md#port-access)が開かれていることを確認します。
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>ホスト上での PowerShell リモート処理の有効化
 
@@ -168,6 +184,12 @@ Hyper-V の評価を準備するには、次の手順を実行します。
     ```
     Enable-PSRemoting -force
     ```
+### <a name="enable-integration-services-on-vms"></a>VM での統合サービスの有効化
+
+Azure Migrate が VM 上のオペレーティング システム情報をキャプチャできるように、各 VM で統合サービスを有効にする必要があります。
+
+検出と評価を行う VM については、各 VM で [Hyper-V 統合サービス](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)を有効にします。
+
 
 ### <a name="enable-credssp-on-hosts"></a>ホスト上での CredSSP の有効化
 
@@ -185,43 +207,24 @@ Hyper-V の評価を準備するには、次の手順を実行します。
     Enable-WSManCredSSP -Role Server -Force
     ```
 
-アプライアンスを設定したら、[アプライアンス上で CredSSP を有効にして](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds)その設定を終了します。 これについては、このシリーズの次のチュートリアルで説明します。
+アプライアンスを設定したら、[アプライアンス上で CredSSP を有効にして](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds)、その設定を終了します。 これについては、このシリーズの次のチュートリアルで説明します。
 
 
-### <a name="verify-appliance-settings"></a>アプライアンスの設定の確認
+## <a name="prepare-for-appliance-deployment"></a>アプライアンスのデプロイの準備
 
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
-1. アプライアンスの要件を[確認](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)します。
+1. アプライアンスの要件を[確認](migrate-appliance.md#appliance---hyper-v)します。
+2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。
 3. 検出および評価中にアプライアンスによって収集されるデータを確認します。
-4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-hyper-v.md#assessment-port-requirements)します。
+4. アプライアンスのポート アクセス要件に[注意](migrate-appliance.md#collected-data---hyper-v)します。
 
-
-### <a name="set-up-an-account-for-vm-discovery"></a>VM 検出用のアカウントの設定
-
-Azure Migrate には、オンプレミスの VM を検出するためのアクセス許可が必要です。
-
-- Hyper-V ホストおよびクラスターに対する管理者アクセス許可を備えた、ドメインまたはローカルのユーザー アカウントを設定します。
-
-    - 検出に含めるすべてのホストとクラスターに対して 1 つのアカウントが必要です。
-    - アカウントは、ローカル アカウントでもドメイン アカウントでもかまいません。 Hyper-V ホストまたはクラスターに対する管理者アクセス許可を用意することをお勧めします。
-    - または、管理者アクセス許可を割り当てたくない場合、以下のアクセス許可が必要です。
-        - リモート管理ユーザー
-        - Hyper-V 管理者
-        - パフォーマンス モニター ユーザー
-
-### <a name="enable-integration-services-on-vms"></a>VM での統合サービスの有効化
-
-Azure Migrate が VM 上のオペレーティング システム情報をキャプチャできるように、各 VM で統合サービスを有効にする必要があります。
-
-検出と評価を行う VM については、各 VM で [Hyper-V 統合サービス](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)を有効にします。
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V の移行の準備
 
-1. 移行のための Hyper-V ホスト要件を[確認](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements)します。
-2. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)します。
-3. VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[メモ](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access)します。
+1. Hyper-V ホストの移行の要件と、VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)します。
+2. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -230,8 +233,9 @@ Azure Migrate が VM 上のオペレーティング システム情報をキャ�
 > [!div class="checklist"]
 > * Azure アカウントのアクセス許可を設定しました。
 > * 評価および移行のために Hyper-V ホストおよび VM を準備しました。
+> * Azure Migrate アプライアンスのデプロイを準備しました。
 
-次のチュートリアルに進み、Azure Migrate プロジェクトを作成し、Azure に移行するために Hyper-V VM を評価します。
+次のチュートリアルに進み、Azure Migrate プロジェクトを作成し、アプライアンスをデプロイして、Azure に移行する Hyper-V VM を検出および評価します。
 
 > [!div class="nextstepaction"]
 > [Hyper-V VM を評価する](./tutorial-assess-hyper-v.md)

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707199"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028355"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -48,7 +48,7 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 使用できるメトリックの一部の概要を次に示します。
 
-* 容量 (プレビュー): APIM サービスのアップグレード/ダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
+* 容量: APIM サービスのアップグレードとダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
 * ゲートウェイ要求の合計: 期間中の API 要求の数。 
 * 成功したゲートウェイ要求: 304、307 および 301 よりも小さな値 (200 など) を含む成功した HTTP 応答コードを受信した API 要求の数。
 * 失敗したゲートウェイ要求: 400 および 500 よりも大きな値を含む失敗した HTTP 応答コードを受信した API 要求の数。
@@ -180,13 +180,13 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | 種類 | 説明 |
+| プロパティ  | 種類 | [説明] |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
+| isRequestSuccess | boolean | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイが要求の処理を開始した日時のタイムスタンプ |
 | operationName | string | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
 | category | string | "GatewayLogs" (定数値) |
-| durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数。 これには clienTime、cacheTime、backendTime が含まれます。 |
+| durationMs | 整数 (integer) | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数。 これには clienTime、cacheTime、backendTime が含まれます。 |
 | callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
@@ -196,17 +196,17 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | method | string | 受信要求の HTTP メソッド |
 | url | string | 受信要求の URL |
 | clientProtocol | string | 受信要求の HTTP プロトコル バージョン |
-| responseCode | integer | クライアントに送信された HTTP 応答の状態コード |
+| responseCode | 整数 (integer) | クライアントに送信された HTTP 応答の状態コード |
 | backendMethod | string | バックエンドに送信された要求の HTTP メソッド |
 | backendUrl | string | バックエンドに送信された要求の URL |
-| backendResponseCode | integer | バックエンドから受信した HTTP 応答のコード |
+| backendResponseCode | 整数 (integer) | バックエンドから受信した HTTP 応答のコード |
 | backendProtocol | string | バックエンドに送信された要求の HTTP プロトコル バージョン | 
-| requestSize | integer | 要求の処理中にクライアントから受信したバイト数 | 
-| responseSize | integer | 要求の処理中にクライアントに送信されたバイト数 | 
+| requestSize | 整数 (integer) | 要求の処理中にクライアントから受信したバイト数 | 
+| responseSize | 整数 (integer) | 要求の処理中にクライアントに送信されたバイト数 | 
 | cache | string | 要求の処理における API Management キャッシュ使用の状態 (ヒット、ミス、なし) | 
-| cacheTime | integer | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
-| backendTime | integer | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
-| clientTime | integer | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| cacheTime | 整数 (integer) | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| backendTime | 整数 (integer) | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| clientTime | 整数 (integer) | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
 | apiId | string | 現在の要求の API エンティティ識別子 | 
 | operationId | string | 現在の要求の操作エンティティ識別子 | 
 | productId | string | 現在の要求の製品エンティティ識別子 | 
@@ -214,14 +214,14 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | apimSubscriptionId | string | 現在の要求のサブスクリプション エンティティ識別子 | 
 | backendId | string | 現在の要求のバックエンド エンティティ識別子 | 
 | lastError | object | 最後の要求処理エラー | 
-| elapsed | integer | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
+| elapsed | 整数 (integer) | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
 | source | string | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
 | scope | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
 | section | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
 | reason | string | エラーの理由 | 
 | message | string | エラー メッセージ | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

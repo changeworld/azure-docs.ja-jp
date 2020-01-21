@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 55bcefc19723dc275cc8b421d5620c5dfe2c96e7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614968"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750504"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Queue storage のパフォーマンスとスケーラビリティのチェックリスト
 
 Microsoft は、Queue storage を使用して高パフォーマンス アプリケーションを開発するための多数の実証済みプラクティスを開発してきました。 このチェックリストでは、パフォーマンスを最適化するために開発者が従うことのできる主要なプラクティスを示します。 アプリケーションを設計している間、およびプロセス全体を通して、これらのプラクティスに留意してください。
 
-Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。
+Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」および「[Queue storage のスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)」を参照してください。
 
 ## <a name="checklist"></a>チェック リスト
 
@@ -194,5 +194,6 @@ Nagle のアルゴリズムは、ネットワーク パフォーマンスを向�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Queue storage のスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)
+- [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [状態コードとエラー コード](/rest/api/storageservices/Status-and-Error-Codes2)

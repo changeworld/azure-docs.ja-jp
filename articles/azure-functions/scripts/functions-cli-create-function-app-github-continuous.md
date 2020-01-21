@@ -4,16 +4,16 @@ description: Azure Functions を使用して、関数アプリを作成し、Git
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e424737b67be58ac0c3880ad2454c87fab803a15
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532819"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922729"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
 
-この Azure Functions のサンプル スクリプトは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して、関数アプリと関連リソースを作成します。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
+この Azure Functions のサンプル スクリプトでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して、関数アプリと関連リソースが作成されます。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
 
 このサンプルでは、以下が必要です。
 
@@ -44,7 +44,7 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

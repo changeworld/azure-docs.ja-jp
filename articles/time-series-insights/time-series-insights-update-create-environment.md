@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530409"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861814"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -62,7 +62,7 @@ ms.locfileid: "75530409"
 
    [![デバイス シミュレーション ソリューションをプロビジョニングする。](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. プロビジョニングが完了すると、2 つの更新が表示され、デプロイ状態が **[プロビジョニング中]** から **[準備完了]** に移行したことがわかります。 
+1. プロビジョニングが完了すると、2 つの通知が表示され、デプロイ状態が **[プロビジョニング中]** から **[準備完了]** に移行したことがわかります。 
 
    >[!IMPORTANT]
    > まだソリューション アクセラレータは入力しないでください。 後で戻ってくるので、この Web ページは開いたままにしておきます。
@@ -169,7 +169,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     **[シミュレーションの開始]** を選択します。
 
-    デバイス シミュレーション ダッシュボードで、 **[アクティブなデバイス]** と **[Total messages]\(メッセージの総数\)** を確認します。
+    デバイス シミュレーション ダッシュボードに、 **[アクティブなデバイス]** と **[Total messages]\(メッセージの総数\)** が表示されます。
 
     [![Azure IoT シミュレーション ダッシュボード。](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -254,7 +254,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     **[適用]** を選択します。
 
-1. **[保存]** を選択します。 3 つの変数が作成されたことがわかります。
+1. **[保存]** を選択します。 3 つの変数が作成されて表示されます。
 
     [![型を追加した後は、[Model]\(モデル\) ビューで確認します。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 

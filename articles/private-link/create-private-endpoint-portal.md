@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459942"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028880"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -162,7 +162,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
     |プライベート DNS ゾーン |*[(New)privatelink.database.windows.net]* を選択します。 |
@@ -199,9 +199,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>VM から SQL データベース サーバーにプライベートにアクセスする
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
-2. 「 `nslookup myserver.database.windows.net`」と入力します。 
+2. 「`nslookup myserver.database.windows.net`」と入力します。 
 
     次のようなメッセージが返されます。
     ```azurepowershell
@@ -227,11 +227,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. **[接続]** を選択します。
 2. 左側のメニューでデータベースを参照します。
 3. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します。
-4.  *myVm* へのリモート デスクトップ接続を閉じます。 
+4. *myVm* へのリモート デスクトップ接続を閉じます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、SQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。 
 2. **[リソース グループの削除]** を選択します。 
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 

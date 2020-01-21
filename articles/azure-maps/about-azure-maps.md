@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の概要 | Microsoft Docs
-description: Azure Maps の概要
+title: 概要 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps のサービスと機能、およびそれらをアプリケーションで使用する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/04/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516633"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911845"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -179,7 +179,7 @@ Azure Maps API シリーズは現在、以下を除くすべての国と地域�
 
 ご自身の現在の IP アドレスの場所が上記のサポートされていない国に含まれていないことを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps を紹介するサンプル アプリを試す。
 

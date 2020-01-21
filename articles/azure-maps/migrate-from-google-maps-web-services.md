@@ -1,20 +1,20 @@
 ---
-title: Google マップから Web サービスを移行する | Microsoft Docs
-description: Web サービスを Google マップから Microsoft Azure Maps に移行する方法に関するチュートリアルです。
+title: チュートリアル:Google マップから Web サービスを移行する | Microsoft Azure Maps
+description: Google マップから Microsoft Azure Maps に Web サービスを移行する方法。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8fc3270d15f77576ff353a110d8a3a9a17c7144d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51c00524c781d9af58f60b36aa3baeb079c6eafa
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474997"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910755"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -292,7 +292,7 @@ Google マップでは、次のスタイル オプション名を使用してカ
 
 ![Google マップのマーカー](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
 
-**移行後: Azure Maps**
+**後: Azure Maps**
 
 Azure Maps では、URL で `pins` パラメーターを指定することにより、マーカーを静的マップ イメージに追加できます。 Google マップと同様、このパラメーターでスタイルと場所の一覧を指定できます。また、異なるスタイルのマーカーをサポートするために、`pins` パラメーターを複数回指定することができます。
 
@@ -375,7 +375,7 @@ Google マップで経路のスタイルを追加するには、形式 `optionNa
 
 ![Google マップのポリライン](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
 
-**移行後: Azure Maps**
+**後: Azure Maps**
 
 Azure Maps では、URL で `path` パラメーターを指定することにより、線とポリゴンを静的マップ イメージに追加できます。 Google マップと同様、このパラメーターでスタイルと場所の一覧を指定できます。また、異なるスタイルの複数の円、線、ポリゴンをレンダリングするために、`path` パラメーターを複数回指定することができます。
 

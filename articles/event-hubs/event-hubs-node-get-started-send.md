@@ -8,20 +8,23 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ded2c83bc648e509c8cf00236cdf453b9c61af53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720562"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940723"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>クイック スタート:Node.js を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
 このチュートリアルでは、Node.js アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。
+
+> [!IMPORTANT]
+> このクイックスタートでは、Azure Event Hubs JavaScript SDK のバージョン 2 を使用します。 Azure Event Hubs を初めて使用する場合は、JavaScript SDK のバージョン 5 を使用してください。 JavaScript SDK のバージョン 5 を使用するクイックスタートについては、[こちらの記事](get-started-node-send-v2.md)を参照してください。 既存のコードをバージョン 2 からバージョン 5 に移行する必要がある場合は、[移行ガイド](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)をご覧ください。
 
 > [!NOTE]
 > このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
@@ -37,10 +40,10 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 
 ### <a name="install-npm-package"></a>npm パッケージをインストールする
-[Event Hubs 用の npm パッケージ](https://www.npmjs.com/package/@azure/event-hubs)をインストールするには、パスに `npm` を設定してコマンド プロンプトを開き、サンプルを格納するフォルダーにディレクトリを変更してから、このコマンドを実行します。
+[Event Hubs 用の npm パッケージ](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)をインストールするには、パスに `npm` を設定してコマンド プロンプトを開き、サンプルを格納するフォルダーにディレクトリを変更してから、このコマンドを実行します。
 
 ```shell
-npm install @azure/event-hubs
+npm install @azure/event-hubs@2
 ```
 
 [イベント プロセッサ ホスト用の npm パッケージ](https://www.npmjs.com/package/@azure/event-processor-host)をインストールするには、代わりに以下のコマンドを実行します。
@@ -57,7 +60,7 @@ npm install @azure/event-processor-host
 2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 次の記事の手順に従って、イベント ハブ名前空間用の接続文字列を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs");
+    const { EventHubClient } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -95,7 +98,7 @@ npm install @azure/event-processor-host
 1. [Visual Studio Code](https://code.visualstudio.com) など、お好みのエディターを開きます。 
 2. `receive.js` というファイルを作成し、そこに以下のコードを貼り付けます。
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs");
+    const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -186,7 +189,7 @@ npm install @azure/event-processor-host
 
 お疲れさまでした。 これで、イベント プロセッサ ホストを使用して、イベント ハブからイベントを受信できました。 これにより、お使いの Event Hub の既定のコンシューマー グループのすべてのパーティションから、イベントを受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

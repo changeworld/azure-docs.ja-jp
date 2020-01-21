@@ -4,16 +4,16 @@ description: 関数アプリを作成して Azure DevOps から関数コード�
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 3fa11d5cd81d93b89b6e8ae63fd491842be78633
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532803"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922638"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps からデプロイされる関数を Azure で作成する
 
-このトピックでは、Azure Functions を使用して、[消費プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリを作成する方法を説明します。 関数アプリは、ユーザーの関数用のコンテナーであり、Azure DevOps リポジトリから継続的にデプロイされます。 
+このトピックでは、Azure Functions を使用して、[従量課金プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリを作成する方法を説明します。 関数アプリは、ユーザーの関数用のコンテナーであり、Azure DevOps リポジトリから継続的にデプロイされます。 
 
 このトピックを完了するには、以下が必要です。
 
@@ -45,7 +45,7 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
 | [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

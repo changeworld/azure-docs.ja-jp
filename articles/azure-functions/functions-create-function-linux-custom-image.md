@@ -4,12 +4,12 @@ description: カスタム Linux イメージで実行する Azure Functions を�
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5a7fbecca2dc7585ff7110d53deccbbbbf23087c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551490"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769321"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -17,7 +17,7 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 
 このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みのコンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。 
 
-このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。 後で、Azure Queue storage に接続するように関数を更新します。 有効にすることもできます。  
+このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。 後で、Azure Queue storage に接続するように関数を更新します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -118,7 +118,7 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ## <a name="push-to-docker-hub"></a>Docker Hub にプッシュする
 
-レジストリは、イメージをホストし、サービス イメージとコンテナー サービスを提供するアプリケーションです。 イメージを共有するには、レジストリにプッシュする必要があります。 Docker Hub は Docker イメージのレジストリであり、パブリックまたはプライベートの独自のリポジトリをホストすることができます。
+レジストリは、イメージをホストし、イメージとコンテナー サービスを提供するアプリケーションです。 イメージを共有するには、レジストリにプッシュする必要があります。 Docker Hub は Docker イメージのレジストリであり、パブリックまたはプライベートの独自のリポジトリをホストすることができます。
 
 イメージをプッシュする前に、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して Docker Hub にサインインする必要があります。 `<docker-id>` をアカウント名に置き換え、プロンプトで、コンソールにパスワードを入力します。 その他の Docker Hub パスワード オプションについては、[docker login コマンドのドキュメント](https://docs.docker.com/engine/reference/commandline/login/)を参照してください。
 
@@ -346,13 +346,13 @@ Functions では、各種のバインドで、`direction`、`type`、および�
 ルート フォルダーで [docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを再度実行します。今回は、タグ内のバージョンを `v1.0.2` に更新します。 以前と同様に、`<docker-id>` を Docker Hub アカウント ID に置き換えてください。 
 
 ```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+docker build --tag <docker-id>/mydockerimage:v1.0.2
 ```
 
 更新されたイメージをリポジトリにプッシュして戻します。
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0
+docker push <docker-id>/mydockerimage:v1.0.2
 ```
 
 ### <a name="verify-the-updates-in-azure"></a>Azure で更新を確認する

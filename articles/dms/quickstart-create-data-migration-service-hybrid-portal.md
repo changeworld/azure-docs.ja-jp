@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 12/17/2019
-ms.openlocfilehash: c93ff5d97826ee618716cc15361a439a5429d696
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437753"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708293"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>クイック スタート:Azure portal と Azure Database Migration Service を使用してハイブリッド モード インスタンスを作成する
 
@@ -172,7 +172,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 
 ## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>PowerShell を使用して Azure Database Migration Service ハイブリッド worker を設定する
 
-Azure Database Migration Service のハイブリッド worker のインストール手段は Azure portal だけではありません。PowerShell スクリプトも用意されています。ハイブリッド モードで Azure Database Migration Service の新しいインスタンスを作成した後、そのスクリプトを使用して worker のインストール手順を自動化することができます。 スクリプト:
+Azure Database Migration Service のハイブリッド worker のインストール手段は Azure portal だけではありません。[PowerShell スクリプト](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip)も用意されています。ハイブリッド モードで Azure Database Migration Service の新しいインスタンスを作成した後、そのスクリプトを使用して worker のインストール手順を自動化することができます。 スクリプト:
 
 1. 新しい AdApp を作成します。
 2. インストーラーをダウンロードします。

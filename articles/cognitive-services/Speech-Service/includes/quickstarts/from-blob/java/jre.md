@@ -1,32 +1,26 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する、Java - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469677"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942635"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=dotnet)
+
 
 ## <a name="open-your-project-in-eclipse"></a>Eclipse でプロジェクトを開く
 
@@ -45,7 +39,8 @@ pom.xml を開き、次の参照 [!code-xml[](~/samples-cognitive-services-speec
 このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON ラッパー
 

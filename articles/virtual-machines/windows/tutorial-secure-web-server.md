@@ -15,14 +15,17 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c84bc3633ccd25fd2206c9e6912a6b8c8d46a5f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ccddfa9834b51885d827601d348e34698928930
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974191"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981242"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている SSL 証明書を使用して Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護する
+
+> [!NOTE]
+> 現在、このドキュメントは一般化されたイメージにのみ適用できます。 特殊化されたディスクを使用してこのチュートリアルを実行しようとすると、エラーが発生します。 
 
 Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の Windows 仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -89,7 +92,7 @@ Add-AzKeyVaultCertificate `
 $cred = Get-Credential
 ```
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
+これで、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
 
 ```azurepowershell-interactive
 # Create a VM
@@ -168,8 +171,8 @@ Web ブラウザーを開き、アドレス バーに「`https://<myPublicIP>`�
 ![セキュリティで保護された実行中の IIS サイトの表示](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Key Vault に格納されている SSL 証明書を使用して IIS Web サーバーをセキュリティ保護しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Key Vault に格納されている SSL 証明書を使用して IIS Web サーバーをセキュリティ保護しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Key Vault を作成する

@@ -5,15 +5,15 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/14/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 1838cfefee8c1cf9ca6548aa64fa7a6fcb46f66a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b668d2bfecfba53c2a1b0904a8b6b77805ad965b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967417"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -98,6 +98,43 @@ resources:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
+```
+
+または、マニフェスト ファイルを作成して、オートスケーラーの動作とリソースの制限を定義することもできます。 `azure-vote-hpa.yaml` という名前のマニフェスト ファイルの例を次に示します。
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-back-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-back
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-front-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-front
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+```
+
+`kubectl apply` を使用して、`azure-vote-hpa.yaml` マニフェスト ファイルに定義されているオートスケーラーを適用します。
+
+```
+$ kubectl apply -f azure-vote-hpa.yaml
 ```
 
 自動スケーラーの状態を見るには、次のように `kubectl get hpa` コマンドを使用します。

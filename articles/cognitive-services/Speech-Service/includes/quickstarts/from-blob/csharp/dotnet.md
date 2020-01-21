@@ -1,32 +1,25 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する、C# - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466494"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942813"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Visual Studio でプロジェクトを開きます。
 
@@ -35,7 +28,7 @@ ms.locfileid: "75466494"
 1. Visual Studio 2019 を起動します。
 2. プロジェクトを読み込んで `Program.cs` を開きます。
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>NewtonSoftJSon への参照を追加する
+## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft.Json への参照を追加する
 
 1. ソリューション エクスプローラーで **helloworld** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択して NuGet パッケージ マネージャーを表示します。
 
@@ -45,7 +38,7 @@ ms.locfileid: "75466494"
 
 1. 検索ボックスで、「*newtonsoft.json*」と入力し、 **[入力]** を選択します。
 
-1. 検索結果から **[Newtonsoft.Json]** パッケージを選択し、次に、 **[インストール]** を選択して最新の安定バージョンをインストールします。
+1. 検索結果から [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) パッケージを選択し、 **[インストール]** を選択して最新の安定バージョンをインストールします。
 
 1. すべての契約とライセンスに同意して、インストールを開始します。
 
@@ -56,7 +49,9 @@ ms.locfileid: "75466494"
 このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON ラッパー
 
 REST API は JSON 形式で要求を受け取り、結果も JSON で返すため、それらとは文字列のみを使用してやりとりすることが可能ですが、これについてはお勧めしていません。

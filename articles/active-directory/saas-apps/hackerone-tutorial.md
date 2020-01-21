@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0158a7df96f4c83763c5b2324ccc2bfcb5a72b5d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159160"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル:Azure Active Directory と HackerOne の統合
 
@@ -107,12 +107,9 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     ![HackerOne のドメインと URL のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://hackerone.com/<company name>/authentication`
+    a. **[サインオン URL]** ボックスに「`https://hackerone.com/users/saml/auth`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://hackerone.com/users/saml/metadata` という URL を入力します。
-
-    > [!NOTE]
-    > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[HackerOne クライアント サポート チーム](mailto:support@hackerone.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに「`hackerone.com`」と入力します。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -150,7 +147,7 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     c. Azure portal からダウンロードした**証明書ファイル**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 Certificate]\(X509 証明書\)** ボックスに貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 5. [Authentication Settings] ダイアログで、次の手順を実行します。
 

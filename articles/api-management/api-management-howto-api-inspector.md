@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b646c64b0ec45a11f99350ff5bd81a89418b2ecd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072520"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768531"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>要求トレースを使用して API をデバッグする
 
@@ -47,8 +47,10 @@ ms.locfileid: "70072520"
 4. **[GetSpeakers]** 操作を選択します。
 5. **Ocp-Apim-Trace** という名前の HTTP ヘッダーを、値を **true** に設定して含めます。
 
-    > [!NOTE]
-    > Ocp-Apim-Subscription-Key が自動的に入力されない場合は、開発者ポータルに移動し、プロファイル ページのキーを公開することで取得できます。
+   > [!NOTE]
+   > * Ocp-Apim-Subscription-Key が自動的に入力されない場合は、開発者ポータルに移動し、プロファイル ページのキーを公開することで取得できます。
+   > * Ocp-Apim-Trace HTTP ヘッダーが使用されたときにトレースを取得するには、サブスクリプション キーの **[トレースを許可]** の設定を有効にする必要があります。 **[トレースを許可]** 設定を構成するには、左側のメニューの **[API Management]** で **[サブスクリプション]** を選択します。
+   >   ![[API Management] の [サブスクリプション] ペインの [トレースを許可]](media/api-management-howto-api-inspector/allowtracing.png)
 
 6. **[送信]** をクリックして、API 呼び出しを行います。 
 7. 呼び出しが完了するのを待ちます。 
@@ -63,7 +65,7 @@ ms.locfileid: "70072520"
     > [!TIP]
     > 各ステップには、API Management が要求を受信してからの経過時間も表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure Maps を使った対話型のマップ検索
-description: Azure クイック スタート - Azure Maps を使用したデモ版の対話型マップ検索を作成する
+title: クイック スタート:Azure Maps を使った対話型のマップ検索 | Microsoft Azure Maps
+description: Microsoft Azure Maps Web SDK を使用して対話型のマップ検索用のデモ Web アプリケーションを作成する方法について学習します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408415"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910693"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -51,13 +51,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 
-Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。 Azure Maps サービスを呼び出す際は、ご利用のアカウントのプライマリ キーをサブスクリプション キーに使用することをお勧めします。
+Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。 Azure Maps サービスを呼び出す際は、ご利用のアカウントの主キーをサブスクリプション キーに使用することをお勧めします。
 
 1. ポータルで、Maps アカウントを開きます。
 2. [設定] セクションで **[認証]** を選択します。
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
-![ポータルで主キーを取得する](./media/quick-demo-map-app/get-key.png)
+![Azure portal で主キー Azure Maps キーを取得する](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>アプリケーションのダウンロード
 
@@ -73,7 +73,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 4. これで、対話形式の検索を実行できます。 デモ版の Web アプリケーションの左上隅にある検索ボックスに「**レストラン**」と入力します。
 5. 検索ボックスの下に表示された住所/場所のリストにマウスを合わせます。 対応するピンがマップに現れ、その場所に関する情報がポップアップに表示されることがわかります。 民間事業のプライバシー保護のために、架空の名前と住所が表示されています。
 
-    ![対話型の検索 Web アプリケーション](./media/quick-demo-map-app/interactive-search.png)
+    ![対話型のマップ検索 Web アプリケーション](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

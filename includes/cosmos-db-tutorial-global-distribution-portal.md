@@ -2,18 +2,18 @@
 title: Azure Cosmos DB のグローバルな分散
 description: Azure Portal で Azure Cosmos DB を使用してデータをグローバルにレプリケートする方法について説明します
 services: cosmos-db
-author: rimman
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180918"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751961"
 ---
 ## <a id="addregion"></a>Azure Portal を使用したグローバル データベース リージョンの追加
 Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions]で利用できます。 データベース アカウントの既定の一貫性レベルを選択すると、選択した既定の一貫性レベルとグローバル配信の必要性に応じて、1 つまたは複数のリージョンを関連付けることができます。

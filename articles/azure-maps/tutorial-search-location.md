@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Maps を使用した検索
-description: チュートリアル:Azure Maps を使用して近くの目的地を検索する
+title: チュートリアル:マップ上の近くの場所を検索する | Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps を使用して、マップ上の近くの場所 (関心のあるポイント) を検索する方法について学習します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432741"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910822"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     * **[作成]** ボタンをクリックします。
 
-![ポータルでの Azure Maps アカウントの作成](./media/tutorial-search-location/create-account.png)
+![Azure portal で Azure Maps アカウントを作成する](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 2. [設定] セクションで **[認証]** を選択します。
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
-![ポータルで主キーを取得する](./media/tutorial-search-location/get-key.png)
+![Azure portal で主キーを取得する](./media/tutorial-search-location/get-key.png)
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 

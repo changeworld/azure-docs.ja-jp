@@ -5,12 +5,12 @@ ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be8d7abc6d7bb583516ca75f316edd18965ac395
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65717e4373f64ae38a324fd19624f049dba9dfb1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227163"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769304"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 
@@ -53,10 +53,10 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
-    | Setting | 推奨値 | Description |
+    | 設定 | 推奨値 | [説明] |
     |---|---|---|
     | **Name** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
-    | **パス**   | samples-workitems/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
+    | **[パス]**   | samples-workitems/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
 
 1. **[作成]** をクリックして関数を作成します。
@@ -77,7 +77,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![ストレージ資格情報を入力し、接続します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 接続されたストレージ アカウントを展開し、 **[Blob containers] \(Blob コンテナー)** を右クリックして、 **[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`samples-workitems`」と入力して、Enter キーを押します。
+1. 接続されたストレージ アカウントを展開し、 **[BLOB コンテナー]** を右クリックして、 **[BLOB コンテナーの作成]** をクリックし、「`samples-workitems`」と入力して、Enter キーを押します。
 
     ![ストレージ キューを作成します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -87,7 +87,7 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-1. Storage Explorer で、ストレージ アカウント、 **[Blob containers]** \(BLOB コンテナー\)、 **[samples-workitems]** の順に展開します。 **[アップロード]** 、 **[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
+1. Storage Explorer で、ストレージ アカウント、 **[BLOB コンテナー]** 、 **[samples-workitems]** の順に展開します。 **[アップロード]** 、 **[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
 
     ![Blob コンテナーにファイルをアップロードします。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
@@ -100,11 +100,11 @@ Blob コンテナーが用意されているので、このコンテナーにフ
     >[!NOTE]
     > 既定の従量課金プランで Function App を実行する場合、Blob が追加されたり更新されてから関数がトリガーされるまで、最高数分間の遅延が生じることがあります。 Blob でトリガーされた関数で待機時間を短くする必要がある場合は、App Service プランで Function App を実行することを検討してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Blob Storage で Blob が追加または更新されたときに実行する関数を作成しました。 Blob Storage トリガーの詳細については、「[Azure Functions における Blob Storage バインディング](functions-bindings-storage-blob.md)」を参照してください。
 

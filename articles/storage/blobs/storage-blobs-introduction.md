@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 51f72011b89656d8f56e996d4654a2714f2f482b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615595"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972448"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -41,7 +41,7 @@ Blob Storage には、3 種類のリソースがあります。
 http://mystorageaccount.blob.core.windows.net 
 ```
 
-ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../common/storage-account-create.md)」を参照してください。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 ### <a name="containers"></a>Containers
 
@@ -71,7 +71,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 - **Azure Data Box** サービスは、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するために使用できるサービスです。 データのサイズに応じて、[Azure Data Box Disk](../../databox/data-box-disk-overview.md)、[Azure Data Box](../../databox/data-box-overview.md)、または [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) デバイスを Microsoft に要求できます。 その後にデータをそれらのデバイスにコピーし、Microsoft に送り返すことで、Blob Storage にアップロードすることができます。
 - **Azure Import/Export サービス**を使用して、お客様が用意したハード ディスクを使用して、大量のデータをお客様のストレージ アカウントにインポートまたはお客様のストレージ アカウントからエクスポートすることができます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../common/storage-import-export-service.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)
+- [ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)

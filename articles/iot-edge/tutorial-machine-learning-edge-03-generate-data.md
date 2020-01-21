@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707737"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912276"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>チュートリアル:シミュレートされたデバイスのデータを生成する
 
@@ -123,7 +123,7 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
 1. いずれかのデバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択することによって、ハブに送信されているメッセージを表示できます。 これらのメッセージは、Visual Studio Code の出力ウィンドウに表示されます。
 
-1. 監視を停止するには、**Azure IoT Hub Toolkit** の出力ウィンドウをクリックし、 **[Stop Monitoring Built-in Event Endpoint] (組み込みイベント エンドポイントの監視を停止する)** を選択します。
+1. 監視を停止するには、**Azure IoT Hub** の出力ペインをクリックし、 **[Stop Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を停止する\)** を選択します。
 
 1. アプリケーションを完了するまで実行します。これには数分かかります。
 
@@ -157,7 +157,7 @@ DeviceHarness によって送信されたデータは IoT ハブに転送され�
 
 1. 現時点ではデータを読み取ったり、解釈したりしようとする必要はありません。それは、次の記事で行う予定です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、.NET Core プロジェクトを使用して一連の仮想デバイスを作成し、これらのデバイス経由で IoT Hub を通して Azure Storage コンテナーにデータを送信しました。 このプロジェクトは、物理デバイスが、センサー読み取り、動作設定、障害のシグナルやモードなどを含むデータを IoT Hub に、さらには選別されたストレージに送信する実際のシナリオをシミュレートします。 十分なデータが収集されたら、それを使用して、デバイスの残存耐用年数 (RUL) を予測するモデルをトレーニングします。それは、次の記事で示す予定です。
 

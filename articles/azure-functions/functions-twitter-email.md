@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226618"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768964"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -43,7 +43,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 Cognitive Services API は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートの感情を検出します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
@@ -51,7 +51,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Cognitive リソースを作成するページ](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | Setting      |  推奨値   | Description                                        |
+    | 設定      |  推奨値   | [説明]                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
     | **Location** | 米国西部 | お近くの場所を使用します。 |
@@ -129,7 +129,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します   
 
-1. Azure Portal で、左上隅にある **[新規]** ボタンをクリックします。
+1. Azure portal で、左上隅にある **[リソースの作成]** ボタンをクリックします。
 
 2. **[Web]**  >  **[ロジック アプリ]** の順にクリックします。
  
@@ -137,7 +137,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Azure Portal でロジック アプリを作成する](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | Setting      |  推奨値   | Description                                        |
+    | 設定      |  推奨値   | [説明]                                        |
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | アプリの適切な名前を選択します。 |
     | **リソース グループ** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
@@ -161,7 +161,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Twitter コネクタの設定](media/functions-twitter-email/10-tweet-settings.png)
 
-    | Setting      |  推奨値   | 説明                                        |
+    | 設定      |  推奨値   | [説明]                                        |
     | ----------------- | ------------ | ------------- |
     | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **間隔** | 15 | 頻度の単位での、Twitter に対する要求間の間隔です。 |
@@ -232,13 +232,13 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/21-configure-email.png)
     
-| Setting      |  推奨値   | 説明  |
+| 設定      |  推奨値   | [説明]  |
 | ----------------- | ------------ | ------------- |
 | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
 | **[件名]** | "ネガティブなツイートの感情を検出しました"  | 電子メール通知の件名。  |
 | **本文** | [ツイート テキスト]、[場所] | **[ツイート テキスト]** パラメーターと **[場所]** パラメーターをクリックします。 |
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 これでワークフローが完成したので、ロジック アプリを有効にして、関数の動作を確認できます。
 
@@ -281,7 +281,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
 ![関数のログ](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

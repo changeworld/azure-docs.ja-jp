@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649059"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903266"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>マネージド アプリケーション定義を作成して発行する
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649059"
 
 組織のメンバーを対象とする Azure [マネージド アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織の基準を満たすマネージ アプリケーションを発行できます。 これらのマネージド アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
 
-サービス カタログ用のマネージド アプリケーションを発行するには、次の操作を行う必要があります。
+対象の Azure サービス カタログにマネージド アプリケーションを発行するには、次の操作を行う必要があります。
 
 * マネージド アプリケーションでデプロイするリソースを定義するテンプレートを作成する。
 * マネージド アプリケーションをデプロイするときに、ポータルのユーザー インターフェイス要素を定義する。
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>マネージド アプリケーション定義用に独自のストレージを使用する
+管理アプリケーション定義は、作成時に指定したストレージ アカウント内に保存することを選択できます。これにより、規制のニーズに合わせて場所とアクセスを完全に管理できます。
+
+> [!NOTE]
+> 独自のストレージの使用は、マネージド アプリケーション定義の ARM テンプレートまたは REST API デプロイでのみサポートされます。
+
+### <a name="select-your-storage-account"></a>使うストレージ アカウントを選ぶ
+サービス カタログで使用するマネージド アプリケーション定義を含めるための[ストレージ アカウントを作成](../../storage/common/storage-account-create.md)する必要があります。
+
+ストレージ アカウントのリソース ID をコピーします。 これは、後で定義をデプロイするときに使用します。
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>ストレージ アカウントに "アプライアンス リソースプロバイダー" のロールの割り当てを設定する
+マネージド アプリケーション定義をストレージ アカウントにデプロイするには、ストレージ アカウントのコンテナーに定義ファイルを書き込むことができるように、事前に**アプライアンス リソースプロバイダー** ロールに共同作成者のアクセス許可を付与する必要があります。
+
+1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
+1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
+1. **[ロールの割り当ての追加]** ウィンドウで、 **[共同作成者]** ロールを選択します。 
+1. **[アクセスの割り当て先]** フィールドで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
+1. **[選択]** で、**アプライアンス リソースプロバイダー** ロールを検索して選択します。
+1. ロールの割り当てを保存します。
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>ARM テンプレートを使用してマネージド アプリケーション定義をデプロイする 
+
+パッケージ化されたマネージド アプリケーションをサービス カタログの新しいマネージド アプリケーション定義としてデプロイし、その定義ファイルを独自のストレージ アカウントに格納して保持するには、次の ARM テンプレートを使用します。
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+applicationDefintion のプロパティに **storageAccountId** という名前の新しいプロパティが追加されています。その値として、対象の定義を格納するストレージ アカウントの ID を指定します。
+
+アプリケーション定義ファイルが、指定されたストレージ アカウントの **applicationdefinitions** という名前のコンテナーに保存されることを確認できます。
+
+> [!NOTE]
+> セキュリティを強化するために、マネージド アプリケーション定義を作成し、[暗号化が有効になっている Azure ストレージ アカウント BLOB に保存できます](../../storage/common/storage-service-encryption.md)。 定義の内容は、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、サービス カタログ内の定義を確認できます。
 
 ### <a name="make-sure-users-can-see-your-definition"></a>ユーザーが定義を確認できるようにする
 

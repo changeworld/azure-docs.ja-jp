@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Maps を使用してジオフェンスを作成する
-description: チュートリアル:Azure Maps を使用してジオフェンスを設定します。
+title: チュートリアル:マップにジオフェンスを作成してデバイスを追跡する |Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps 空間サービスを使用して、ジオフェンスを設定し、ジオフェンスを基準にしてデバイスを追跡する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407827"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910939"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -56,9 +56,9 @@ Azure Maps の Data Upload API を使用して建設現場のジオフェンス�
     
     URL パス内の GEOJSON パラメーターは、アップロードするデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key 値を自分の Azure Maps キーに変更します。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key 値を自分の Azure Maps キーに置き換えます。
    
-    ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-geofence/postman-key-vals.png)
+    ![Postman でデータ (ジオフェンス) をアップロードするためのパラメーター](./media/tutorial-geofence/postman-key-vals.png)
 
 4. **[Body]\(本文\)** をクリックして未加工入力形式を選択し、入力形式として JSON をドロップダウン リストから選択します。 アップロードするデータとして次の JSON を入力します。
 
@@ -177,7 +177,7 @@ Operations Manager に enter イベントと exit イベントを通知するに
 
 1. Azure portal でロジック アプリを作成します。
 
-   ![ロジック アプリを作成する](./media/tutorial-geofence/logic-app.png)
+   ![ジオフェンス イベントを処理する Azure Logic Apps を作成する](./media/tutorial-geofence/logic-app.png)
 
 2. HTTP 要求トリガーを選択し、Outlook Connector のアクションとして [電子メールの送信] を選択します
   
@@ -185,7 +185,7 @@ Operations Manager に enter イベントと exit イベントを通知するに
 
 3. ロジック アプリを保存して HTTP URL エンドポイントを生成し、HTTP URL をコピーします。
 
-   ![Logic Apps エンドポイント](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps エンドポイントを生成する](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps イベントのサブスクリプションの作成
@@ -196,15 +196,15 @@ Azure Maps では、3 種類のイベントがサポートされています。 
 
 1. [こちらのポータル リンク](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/)から Azure Maps アカウントに移動し、[イベント] タブを選択します。
 
-   ![Azure Maps の [イベント]](./media/tutorial-geofence/events-tab.png)
+   ![Azure Maps アカウントのイベントに移動する](./media/tutorial-geofence/events-tab.png)
 
 2. イベント サブスクリプションを作成するには、[イベント] ページの [イベント サブスクリプション] を選択します。
 
-   ![Azure Maps のイベント サブスクリプション](./media/tutorial-geofence/create-event-subscription.png)
+   ![Azure Maps イベントのサブスクリプションの作成](./media/tutorial-geofence/create-event-subscription.png)
 
 3. イベント サブスクリプションに名前を付け、イベントの種類として Enter をサブスクライブします。 次に、[エンドポイントのタイプ] として [Web hook] を選択し、ロジック アプリの HTTP URL エンドポイントを [エンドポイント] にコピーします。
 
-   ![イベント サブスクリプション](./media/tutorial-geofence/events-subscription.png)
+   ![Azure Maps イベントのサブスクリプションの詳細](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Geofence API の使用
@@ -214,7 +214,7 @@ Geofence API を使用すると、**デバイス** (機材は状態の一部) �
 > [!Note]
 > 前述のシナリオと動作は、同じ**デバイス ID** に基づくものです。以下の図にある 5 つの場所が、この ID で示されます。
 
-![ジオフェンス マップ](./media/tutorial-geofence/geofence.png)
+![Azure Maps のジオフェンス マップ](./media/tutorial-geofence/geofence.png)
 
 Postman アプリで、先ほど作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択します。
 

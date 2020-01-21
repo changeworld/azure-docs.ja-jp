@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 588f9595dbe04b98cb8d70a33beb5740d812bd7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457615"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749553"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Table Storage のパフォーマンスとスケーラビリティのチェックリスト
 
 Microsoft は、Table Storage を使用して高パフォーマンス アプリケーションを開発するための多数の実証済みプラクティスを開発してきました。 このチェックリストでは、パフォーマンスを最適化するために開発者が従うことのできる主要なプラクティスを示します。 アプリケーションを設計している間、およびプロセス全体を通して、これらのプラクティスに留意してください。
 
-Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)」を参照してください。
+Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)」および「[Table Storage のスケーラビリティおよびパフォーマンスのターゲット](scalability-targets.md)」を参照してください。
 
 ## <a name="checklist"></a>チェック リスト
 
@@ -289,5 +289,6 @@ Azure Storage では、バッチ トランザクションがエンティティ �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Table Storage のスケーラビリティおよびパフォーマンスのターゲット](scalability-targets.md)
+- [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [状態コードとエラー コード](/rest/api/storageservices/Status-and-Error-Codes2)

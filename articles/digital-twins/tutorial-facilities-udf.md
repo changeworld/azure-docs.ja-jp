@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383234"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895362"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>チュートリアル:Azure Digital Twins プレビューを使用して建物をプロビジョニングし、作業環境を監視する
 
@@ -38,7 +38,7 @@ ms.locfileid: "74383234"
 - サンプルをビルドして実行する開発用マシンに [.NET Core SDK バージョン 2.1.403 以降](https://www.microsoft.com/net/download)があること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。 
 - [Visual Studio Code](https://code.visualstudio.com/)。サンプル コードを確認するために使用します。 
 
-> [!TIP]
+>[!TIP]
 > 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
 
 ## <a name="define-conditions-to-monitor"></a>監視する条件を定義する
@@ -74,7 +74,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
    温度とその他の条件を監視するように JavaScript ファイルを変更します。 室内でモーションが検出されず、二酸化炭素レベルが 1,000 ppm 未満、温度が華氏 78 度未満の条件を検索するために、次のコード行を追加します。
 
-   > [!NOTE]
+   >[!NOTE]
    > このセクションでは、ユーザー定義関数の 1 つの記述方法を詳しく学習できるように、ファイル *src\actions\userDefinedFunctions\availability.js* を変更しています。 ただし、セットアップ内の [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) ファイルを直接使用してもかまいません。 このファイルには、このチュートリアルに必要なすべての変更が含まれています。 代わりにこのファイルを使用する場合は、[src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 内の **script** キーに適切なファイル名を使用するようにしてください。
 
     a. ファイルの先頭で、コメント `// Add your sensor type here` の下に温度用の次の行を追加します。
@@ -178,7 +178,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Digital Twins Management API への不正アクセスを防ぐために、**occupancy-quickstart** アプリケーションでは Azure アカウントの資格情報を使用してサインインする必要があります。 資格情報は一時的に保存されるため、実行するたびにサインインする必要はありません。 このプログラムを初めて実行したときと、その後保存された資格情報が期限切れになったときは、アプリケーションによってサインイン ページが表示され、そのページに入力するセッション固有のコードが与えられます。 プロンプトに従って、Azure アカウントを使用してサインインします。
 
 1. アカウントが認証された後、アプリケーションによって、*provisionSample.yaml* の構成どおりにサンプル空間グラフの作成が開始されます。 プロビジョニングが完了するまで待機します。 これには数分かかります。 その後、コマンド ウィンドウのメッセージを見て、空間グラフがどのように作成されているかを確認します。 アプリケーションによってルート ノードまたは `Venue` に IoT ハブがどのように作成されているかに注目します。
@@ -187,7 +187,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
     [![サンプルをプロビジョニングする](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > プロビジョニングの途中で "The I/O operation has been aborted because of either a thread exit or an application request (スレッドの終了またはアプリケーション要求のため I/O 操作が中止されました)" のようなエラー メッセージが表示された場合は、コマンドをもう一度実行してみてください。 これは、ネットワークの問題が原因で HTTP クライアントがタイムアウトしたときに発生する可能性があります。
 
 ## <a name="simulate-sensor-data"></a>センサー データをシミュレートする
@@ -229,12 +229,12 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > シミュレーション サンプルは Digital Twins インスタンスと直接通信しないため、認証を行う必要はありません。
 
 ## <a name="get-results-of-the-user-defined-function"></a>ユーザー定義関数の結果を取得する
 
-ユーザー定義関数は、インスタンスがデバイスとセンサーのデータを受信するたびに実行されます。 このセクションでは、Azure Digital Twins インスタンスに対するクエリを実行して、ユーザー定義関数の結果を取得します。 部屋が使用可能な場合、空気が新鮮であり温度が適切であることが、ほぼリアルタイムでわかります。 
+ユーザー定義関数は、インスタンスがデバイスとセンサーのデータを受信するたびに実行されます。 このセクションでは、Azure Digital Twins インスタンスに対するクエリを実行して、ユーザー定義関数の結果を取得します。 部屋が使用可能な場合、空気が新鮮であり温度が適切であることが、ほぼリアルタイムで通知されます。 
 
 1. サンプルのプロビジョニングに使用したコマンド ウィンドウを開くか、新しいコマンド ウィンドウを開き、再度サンプルの **occupancy-quickstart\src** フォルダーに移動します。
 
@@ -246,22 +246,22 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
 出力ウィンドウに、どのようにユーザー定義関数が実行され、デバイス シミュレーションからのイベントがインターセプトされているかが表示されます。 
 
-   [![UDF の出力](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![UDF の出力](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 監視されている条件が満たされると、[前述](#create-a-user-defined-function)のとおりに、ユーザー定義関数によって空間の値が関連メッセージと共に設定されます。 メッセージは、`GetAvailableAndFreshSpaces` 関数によってコンソールに出力されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この時点で Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** をクリックし、目的の Digital Twins リソース グループを選択して **[削除]** を選択します。
 
-    > [!TIP]
+    >[!TIP]
     > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。
 
 2. 必要に応じて、作業マシン上のサンプル アプリケーションを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、空間をプロビジョニングし、カスタム通知をトリガーするフレームワークを作成できたので、次のいずれかのチュートリアルに進むことができます。
 

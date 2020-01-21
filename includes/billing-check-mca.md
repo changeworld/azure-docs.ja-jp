@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 42aaacca4ceb59e38687c8396a6c384d107e8038
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58bf7c300d7f52807bd255da62bf1cc452883811
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75388163"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779350"
 ---
 契約の種類を確認して、Microsoft 顧客契約の請求先アカウントへのアクセスがあるかどうかを判断します。
  
@@ -23,4 +23,4 @@ ms.locfileid: "75388163"
  
 3. アクセスできる課金スコープが複数ある場合は、課金アカウント列で種類を確認します。 任意のスコープの課金アカウントの種類が **Microsoft 顧客契約**である場合、Microsoft 顧客契約の課金アカウントにアクセスできます。
  
-    ![Microsoft 顧客契約、課金アカウントの種類、課金アカウント一覧、Microsoft Azure portal](./media/billing-check-mca/billing-mca-in-the-list.png)
+    [![Microsoft 顧客契約、課金アカウントの種類、課金アカウント一覧、Microsoft Azure portal](./media/billing-check-mca/billing-mca-in-the-list.png)](./media/billing-check-mca/billing-mca-in-the-list-zoomed-in.png#lightbox)

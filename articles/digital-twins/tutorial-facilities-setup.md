@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383022"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895416"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
 
@@ -75,7 +75,7 @@ Visual Studio Code で、展開されたサンプル フォルダー内の **dig
 
 * プロビジョニング サンプル **occupancy-quickstart** を使用すると、[空間インテリジェンス グラフ](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)を構成およびプロビジョニングできます。 このグラフは、物理空間とそこに含まれるリソースのデジタル化画像です。 これには、スマート ビルのためのオブジェクトを定義する[オブジェクト モデル](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)が使用されています。 Digital Twins オブジェクトと REST API の完全な一覧については、[この REST API ドキュメント](https://docs.westcentralus.azuresmartspaces.net/management/swagger)または[お客様のインスタンス](#deploy-digital-twins)用に作成された Management API URL を参照してください。
 
-   サンプルを確認し、サンプルと Digital Twins インスタンスの通信のしくみを見るには、**src\actions** フォルダーから開始できます。 このフォルダー内のファイルによって、これらのチュートリアルで使用するコマンドが実装されます。
+   サンプルを確認し、サンプルと Digital Twins インスタンスの通信のしくみを理解するには、**src\actions** フォルダーから開始できます。 このフォルダー内のファイルによって、これらのチュートリアルで使用するコマンドが実装されます。
     - **provisionSample.cs** ファイルでは、空間グラフのプロビジョニング方法が示されます。
     - **getSpaces.cs** ファイルでは、プロビジョニングされた空間に関する情報が取得されます。
     - **getAvailableAndFreshSpaces.cs** ファイルでは、ユーザー定義関数と呼ばれるカスタム関数の結果が取得されます。
@@ -102,7 +102,7 @@ Visual Studio Code で、展開されたサンプル フォルダー内の **dig
    * **Tenant**: [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)のディレクトリ ID を入力します。 この ID も、[アプリのアクセス許可の設定](#grant-permissions-to-your-app)に関するセクションでメモしたものです。
    * **BaseUrl**: Digital Twins インスタンスの URL を入力します。 この URL を取得するには、URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` 内のプレースホルダーをお客様のインスタンスの値に置き換えます。 また、[デプロイに関するセクション](#deploy-digital-twins)に示されている Management API URL を変更することによってもこの URL を取得できます。 **swagger/** は **api/v1.0/** に置き換えてください。
 
-1. サンプルを使用して確認できる Digital Twins の機能の一覧を表示します。 次のコマンドを実行します。
+1. サンプルを使用して確認できる Digital Twins の機能の一覧を確認します。 次のコマンドを実行します。
 
     ```cmd/sh
     dotnet run
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 この関数では、同じフォルダー内の [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) が使用されています。 このファイルを開き、オフィス ビルの階層が *Venue*、*Floor*、*Area*、*Rooms* となっている点に注目してください。 これらの物理空間のいずれにも、*devices* と *sensors* を含めることができます。 各エントリには、Floor、Room など、あらかじめ定義された `type` があります。
@@ -150,7 +149,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 - **devices**: 空間には `devices` を含めることができます。これは、複数のセンサーを管理する物理エンティティまたは仮想エンティティです。 たとえば、ユーザーの電話機、Raspberry Pi センサー ポッド、ゲートウェイなどがデバイスに該当します。 サンプルにある架空の建物の **Focus Room** という名前の部屋に **Raspberry Pi 3 A1** デバイスがどのように含まれているかに注目してください。 それぞれのデバイス ノードは一意の `hardwareId` で識別されます。これは、サンプルではハードコーディングされています。 このサンプルを実際の運用環境用に構成する場合は、これらの値をお客様の設定の値に置き換えてください。  
 
-- **sensors**: デバイスは、複数の `sensors` を含むことができます。 これらは、温度、モーション、バッテリー レベルなどの物理的な変化を検出して記録することができます。 それぞれのセンサー ノードは `hardwareId` で一意に識別されます。これは、ここではハードコーディングされています。 実際のアプリケーションではこれらを、お客様の設定に含まれているセンサーの一意の識別子に置き換えてください。 provisionSample.yaml ファイルには、*Motion* と *CarbonDioxide* を記録する 2 つのセンサーがあります。 CarbonDioxide センサーの行の下に次の行を追加して、*Temperature* を記録する別のセンサーを追加します。 これらは、provisionSample.yaml 内でコメントにされた行として提供されていることに注意してください。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。 
+- **sensors**: デバイスは、複数の `sensors` を含むことができます。 これらは、温度、モーション、バッテリー レベルなどの物理的な変化を検出して記録することができます。 それぞれのセンサー ノードは `hardwareId` で一意に識別されます。これは、ここではハードコーディングされています。 実際のアプリケーションではこれらを、お客様の設定に含まれているセンサーの一意の識別子に置き換えてください。 provisionSample.yaml ファイルには、*Motion* と *CarbonDioxide* を記録する 2 つのセンサーがあります。 CarbonDioxide センサーの行の下に次の行を追加して、*Temperature* を記録する別のセンサーを追加します。 これらは、provisionSample.yaml 内でコメントアウトされた行として提供されます。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。 
 
     ```yaml
             - dataType: Temperature
@@ -162,9 +161,9 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 provisionSample.yaml ファイルを保存して閉じます。 次のチュートリアルでは、このファイルに情報をさらに追加したうえで、Azure Digital Twins のサンプルの建物をプロビジョニングします。
 
 > [!TIP]
-> [Azure Digital Twins グラフ ビューア―](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
+> [Azure Digital Twins グラフ ビューアー](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この時点で Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
@@ -175,8 +174,8 @@ provisionSample.yaml ファイルを保存して閉じます。 次のチュー�
 
 1. 必要に応じて、作業マシン上のサンプル アプリケーションを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サンプルの建物の状態を監視するためのカスタム ロジックを実装する方法について学習するために、シリーズの次のチュートリアルに進んでください。 
 > [!div class="nextstepaction"]
-> [チュートリアル: 建物をプロビジョニングし、作業環境を監視する](tutorial-facilities-udf.md)
+> [チュートリアル:建物をプロビジョニングし、作業環境を監視する](tutorial-facilities-udf.md)

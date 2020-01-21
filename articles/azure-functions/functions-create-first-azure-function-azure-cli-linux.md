@@ -4,12 +4,12 @@ description: コマンド ライン ツール、Azure Functions Core Tools、お
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 972feedf880ed55210c8422094d5b26a85b31d5e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964142"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769406"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>クイック スタート:コマンド ライン ツールを使用して Linux でホストされる初めての関数を作成する
 
@@ -47,7 +47,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Azure に Linux の関数アプリを作成する
 
-Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードを実行するためのサーバーレス環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Linux 上で動作する関数アプリの作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。
+Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードを実行するためのサーバーレス環境を提供します。 これにより、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。 Linux 上で動作する関数アプリの作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。
 
 次のコマンドの `<app_name>` プレースホルダーには一意の Function App 名を、`<storage_name>` にはストレージ アカウント名を使用します。 `<app_name>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。 また、関数アプリの `<language>` ランタイムを `dotnet` (C#)、`node` (JavaScript/TypeScript)、または `python` から設定する必要があります。
 

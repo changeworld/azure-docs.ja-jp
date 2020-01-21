@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: a622370fca3144aeb6a5d7c071c227b3c21cf135
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bb84f6b362adf7c190f3300e6e3f1bc572153151
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287189"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753979"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -55,11 +55,60 @@ sudo zypper install unixODBC
 
 ## <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 
-すべての操作において、SAP HANA VM では、Azure パブリック IP アドレスへの接続を必要とします。 接続がないと、VM の操作 (データベースの検出、バックアップの構成、バックアップのスケジュール、復旧ポイントの復元など) を行うことはできません。 Azure データセンターの IP 範囲へのアクセスを許可することで、接続を確立します。
+すべての操作において、SAP HANA VM では、Azure パブリック IP アドレスへの接続を必要とします。 Azure パブリック IP アドレスへの接続がないと、VM の操作 (データベースの検出、バックアップの構成、バックアップのスケジュール、復旧ポイントの復元など) が失敗します。
 
-* Azure データセンターの [IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードしてから、これらの IP アドレスへのアクセスを許可できます。
-* ネットワーク セキュリティ グループ (NSG) を使用している場合は、Azure Cloud の[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用して、Azure パブリック IP アドレスをすべて許可することができます。 [Set-AzureNetworkSecurityRule コマンドレット](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0)を使用して、NSG ルールを変更することができます。
-* 転送は HTTPS 経由で行われるため、ポート 443 を許可リストに追加する必要があります。
+次のオプションのいずれかを使用して接続を確立します。
+
+### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure データセンターの IP 範囲を許可する
+
+このオプションは、ダウンロードされたファイルで [IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 ネットワーク セキュリティ グループ (NSG) にアクセスするには、Set-AzureNetworkSecurityRule コマンドレットを使用します。 信頼できる受信者のリストにリージョン固有の IP のみが含まれている場合は、認証を有効にするために Azure Active Directory (Azure AD) サービス タグでその信頼できる受信者のリストを更新する必要があります。
+
+### <a name="allow-access-using-nsg-tags"></a>NSG タグを使用してアクセスを許可する
+
+NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、Azure portal または PowerShell から実行できます。
+
+ポータルを使用して規則を作成するには、次のようにします。
+
+  1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
+  2. **[設定]** で **[送信セキュリティ規則]** を選択します。
+  3. **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
+  4. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
+
+PowerShell を使用してルールを作成するには、次のようにします。
+
+ 1. Azure アカウントの資格情報を追加して各国のクラウドを更新する<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. NSG サブスクリプションを選択する<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. NSG を選択する<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Azure Backup サービス タグの発信許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. ストレージ サービス タグのアウトバウンド許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. AzureActiveDirectory サービス タグのアウトバウンド許可規則を追加する<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. NSG を保存する<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
+
+**トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする**。 Azure VM 上の SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
+
+接続オプションには、次の長所と短所があります。
+
+**オプション** | **長所** | **短所**
+--- | --- | ---
+IP 範囲を許可する | 追加のコストが発生しない | IP アドレス範囲が時間の経過と共に変化するため、管理が複雑である <br/><br/> Azure Storage だけでなく、Azure 全体へのアクセスを提供することになる
+NSG サービス タグを使用する | 範囲の変更が自動的にマージされるため管理しやすい <br/><br/> 追加のコストが発生しない <br/><br/> | NSG でのみ使用可能 <br/><br/> サービス全体へのアクセスを提供する
+Azure Firewall の FQDN タグを使用する | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能
+HTTP プロキシを使用する | 許可するストレージ URL をプロキシで詳細に制御可能 <br/><br/> VM に対するインターネット アクセスを単一の場所で実現 <br/><br/> Azure の IP アドレスの変更の影響を受けない | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する
 
 ## <a name="setting-up-permissions"></a>アクセス許可の設定
 
@@ -179,7 +228,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 5. 次に、 **[差分バックアップ]** を選択して、差分ポリシーを追加します。
 6. **差分バックアップのポリシー**で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。 ここでは、毎週**日曜日**の**午前 2:00** に実行され、**30 日間**保持される差分バックアップを有効にしました。
 
-   ![差分バックアップのポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
+   ![差分バックアップ ポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
 >[!NOTE]
 >増分バックアップは現在、サポートされていません。
@@ -187,7 +236,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 7. **[OK]** をクリックしてポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 8. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
-   * **[ログ バックアップ]** は既定で **[有効]** に設定されています。 SAP HANA によってすべてのログ バックアップが管理されるため、これを無効にすることはできません。
+   * **[ログ バックアップ]** は既定で **[有効]** に設定されています。 SAP HANA ではすべてのログ バックアップが管理されるため、これを無効にすることはできません。
    * ここでは、バックアップのスケジュールとして **2 時間**を設定し、保持期間として **15 日間**を設定しています。
 
     ![ログ バックアップのポリシー](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
@@ -205,5 +254,5 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 * [Azure VM で稼働している SAP HANA データベースでオンデマンド バックアップを実行する](backup-azure-sap-hana-database.md#run-an-on-demand-backup)方法を学習する
 * [Azure VM で稼働している SAP HANA データベースを復元する](sap-hana-db-restore.md)方法を学習する
-* [Azure Backup を使用してバックアップされている SAP HANA データベースを管理する](sap-hana-db-manage.md)方法を学習する
-* [SAP HANA データベースのバックアップ時に発生する一般的な問題のトラブルシューティング](backup-azure-sap-hana-database-troubleshoot.md)方法を学習する
+* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](sap-hana-db-manage.md)方法を学習する
+* [SAP HANA データベースのバックアップ時に発生する一般的な問題をトラブルシューティングする](backup-azure-sap-hana-database-troubleshoot.md)方法を学習する

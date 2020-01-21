@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034566"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778415"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -163,7 +163,7 @@ Azure Pipelines でリリース パイプラインを作成するには、次の
 
 1. **[+ リリース]** を選択し、 **[リリースの作成]** を選択します。
 2. 強調表示されているドロップダウン リストから完了したビルドを選択し、 **[キュー]** を選択します。
-3. ポップアップ メッセージでリリース リンクを選択します。 例: "リリース **Release-1** が作成されました。"
+3. ポップアップ メッセージでリリース リンクを選択します。 次に例を示します。"リリース **Release-1** が作成されました。"
 4. **[ログ]** タブを開いて、リリース コンソールの出力を確認します。
 5. ブラウザーで、デプロイ グループに追加したサーバーのいずれかについて URL を開きます。 たとえば、**http://{your-server-ip-address}** と入力します。
 6. ソース Git リポジトリに移動し、app/views/index.jade ファイル内の **[h1]** 見出しの内容を、変更を行ったテキストで変更します。
@@ -174,17 +174,19 @@ Azure Pipelines でリリース パイプラインを作成するには、次の
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ビルドに Jenkins を、リリースに Azure DevOps Services を使用して、Azure へのアプリのデプロイを自動化しました。 以下の方法について学習しました。
+このチュートリアルでは、ビルドに Jenkins を、リリースに Azure DevOps Services を使用して、Azure へのアプリのデプロイを自動化しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Jenkins でアプリをビルドする。
 > * Azure DevOps Services との統合のために Jenkins を構成する。
 > * Azure 仮想マシンのデプロイ グループを作成する。
-> * VM を構成し、アプリをデプロイするリリース パイプラインを作成する。
+> * VM を構成し、アプリをデプロイする Azure パイプラインを作成する。
 
-LAMP (Linux、Apache、MySQL、および PHP) スタックをデプロイする方法の詳細については、次のチュートリアルに進んでください。
+ビルドとリリースの両方のステップで Azure Pipelines を使用する方法については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)を参照してください。
+
+VM へのデプロイを行う YAML ベースの CI/CD パイプラインを作成する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [LAMP スタックのデプロイ](tutorial-lamp-stack.md)
+> [Azure Pipelines を使用した CI/CD](tutorial-build-deploy-azure-pipelines.md)

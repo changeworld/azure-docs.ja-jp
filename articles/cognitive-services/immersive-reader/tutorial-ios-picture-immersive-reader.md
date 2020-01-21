@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 48e74f7dd6fa6f2c7fafe10797a301b3d4cc7f1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899374"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045243"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>チュートリアル:写真のコンテンツを含むイマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Azure Active Directory (Azure AD) 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./azure-active-directory-authentication.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * このサンプルを使用するには、Computer Vision Cognitive Services に対する Azure サブスクリプションが必要です。 [Azure portal で Computer Vision Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトを作成する
@@ -73,19 +73,13 @@ Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the reso
 
 ViewController.swift ファイルが含まれているメイン プロジェクト フォルダー内に、Constants.swift という名前の Swift クラス ファイルを作成します。 このクラスを次のコードに置き換え、必要に応じて実際の値を追加します。 このファイルは、お使いのマシンのみに存在するローカル ファイルとして保持してください。また、公開すべきでないシークレットを含んでいるため、このファイルをソース管理にコミットしないでください。 アプリではシークレットを保持しないことをお勧めします。 代わりに、バックエンド サービスを使用してトークンを取得することをお勧めします。この場合、シークレットはアプリやデバイスの外部で保持することができます。 バックエンド API エンドポイントは、なんらかの認証形式 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがお使いのイマーシブ リーダー サービスと請求に対して使用するトークンを取得できないようにする必要があります。この作業は、このチュートリアルの範囲外です。
 
-[!code-swift[Constants](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/Constants.swift)]
-
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>ストーリーボードを使用せずに実行するようアプリを設定する
 
 AppDelegate.swift を開き、このファイルを次のコードに置き換えます。
 
-[!code-swift[AppDelegate](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/AppDelegate.swift)]
-
 ## <a name="add-functionality-for-taking-and-uploading-photos"></a>写真を撮影してアップロードするための機能を追加する
 
 ViewController.swift の名前を PictureLaunchViewController.swift に変更し、このファイルを次のコードに置き換えます。
-
-[!code-swift[PictureLaunchViewController](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/PictureLaunchViewController.swift)]
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
@@ -103,6 +97,6 @@ Xcode で、Ctrl キーを押しながら R キーを押すか再生ボタンを
 
 ![Immersive Reader](./media/ios/picture-to-immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [イマーシブ リーダー iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) と[イマーシブ リーダー iOS SDK リファレンス](./ios-reference.md)を探索する
+* [イマーシブ リーダー SDK リファレンス](./reference.md)を参照する

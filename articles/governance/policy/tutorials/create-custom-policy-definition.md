@@ -3,12 +3,12 @@ title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885451"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966018"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -58,7 +58,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
   - 作成エクスペリエンス
   - クイック スタート テンプレート (GitHub)
   - テンプレートのリファレンス ドキュメント
-- Azure リソース エクスプローラー
+- Azure Resource Explorer
 
 ### <a name="view-resources-in-vs-code-extension"></a>VS Code 拡張機能でリソースを表示する
 
@@ -66,7 +66,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 ### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
-管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)を確認する方法はいくつかあります。
+管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)を確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
@@ -151,7 +151,7 @@ GitHub 上の [Azure クイック スタート テンプレート](https://githu
 **supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、Resource Manager テンプレート リファレンスで、ストレージ プロバイダーの[ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。
 プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
 
-### <a name="azure-resource-explorer"></a>Azure リソース エクスプローラー
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 Azure リソースを探すもう 1 つの方法は、[Azure Resource Explorer](https://resources.azure.com) (プレビュー) を使用することです。 このツールはお使いのサブスクリプションのコンテキストを使用するため、Web サイトで Azure 資格情報を使用して認証する必要があります。 認証されると、プロバイダー、サブスクリプション、リソース グループ、リソースごとに参照できます。
 
@@ -348,7 +348,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 }
 ```
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>メタデータ
 
 最初の 3 つのコンポーネントは、ポリシー メタデータです。 ルールを作成する目的がわかっているため、これらのコンポーネントに値を指定するのは簡単です。 [Mode](../concepts/definition-structure.md#mode) は、主にタグとリソースの場所に関するコンポーネントです。 タグをサポートするリソースに評価を制限する必要はないため、**mode** には _all_ という値を使用します。
 
@@ -358,7 +358,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 "mode": "all",
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 評価の変更のためにパラメーターは使用していませんが、トラブルシューティング用にパラメーターを使用して**効果**を変更できるようにしたいと思います。 **effectType** パラメーターを定義し、それを **Deny** と **Disabled** のみに制限します。 これら 2 つのオプションは、目的のビジネス要件に一致しています。 完成した parameters ブロックの例を次に示します。
 
@@ -453,7 +453,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 
 この完成した定義を使用して、新しいポリシーを作成できます。 ポータルと各 SDK (Azure CLI、Azure PowerShell、REST API) で定義の受け入れ方は異なるので、それぞれのコマンドを参照して適切な使用方法を確認してください。 次に、パラメーター化した効果を使用して適切なリソースに割り当て、ストレージ アカウントのセキュリティを管理します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルのリソースに対する作業が完了した場合は、次の手順を使用して、ここで作成した割り当てまたは定義をすべて削除してください。
 
@@ -463,7 +463,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 
 1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
 
-## <a name="review"></a>レビュー
+## <a name="review"></a>確認
 
 このチュートリアルでは、以下のタスクを完了しました。
 
@@ -474,7 +474,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 > - 使用する効果を決定する
 > - ポリシー定義を作成する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、カスタム ポリシー定義を使用し、ポリシーを作成して割り当てます。
 

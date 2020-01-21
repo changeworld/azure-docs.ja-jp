@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor を使用して Azure 仮想マシンからデータを収集する | Microsoft Docs
-description: Log Analytics エージェントの VM 拡張機能を有効にし、Log Analytics で Azure VM からデータを収集できるようにする方法について説明します。
+title: Azure Monitor を使用して Azure リソースを監視する
+description: Azure Monitor で Azure リソースのデータを収集して分析する方法について説明します。
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 85c953c4acdc31cc6d79600951ba745346771b0c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75542228"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863980"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure リソースを監視する
 [Azure Monitor](../overview.md) は、作成された時点から Azure リソースからのデータ収集を開始します。 このクイックスタートでは、リソースについて自動的に収集されるデータを簡単に説明し、特定のリソースの Azure portal でそのデータを表示する方法について説明します。 後で、追加のデータを収集するための構成を追加して Azure Monitor メニューに移動すると、同じツールを使用して、ご利用のサブスクリプション内のすべてのリソースについて収集されたデータにアクセスできます。

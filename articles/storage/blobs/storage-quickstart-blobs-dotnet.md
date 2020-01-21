@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f788f7827f778029a0f34ec1f7e73b174738e1f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a1a9b1973ded5db7182fb1898fc7222904c39c3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351300"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863963"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -229,7 +229,8 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 ```csharp
 // Download the blob to a local file
-// Append the string "DOWNLOAD" before the .txt extension so you can see both files in MyDocuments
+// Append the string "DOWNLOAD" before the .txt extension 
+// so you can compare the files in the data directory
 string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
 
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
@@ -267,7 +268,7 @@ Console.WriteLine("Done");
 
 ## <a name="run-the-code"></a>コードの実行
 
-このアプリは、ローカルの *[マイ ドキュメント]* フォルダーにテスト ファイルを作成し、BLOB ストレージにアップロードします。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
+このアプリでは、ローカルの *data* フォルダーにテスト ファイルが作成され、BLOB ストレージにアップロードされます。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
 
 お使いのアプリケーションのディレクトリに移動し、アプリケーションをビルドして実行します。
 
@@ -299,7 +300,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-クリーンアップ プロセスを開始する前に、 *[MyDocuments]* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
+クリーンアップ プロセスを開始する前に、*data* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
 
 ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 

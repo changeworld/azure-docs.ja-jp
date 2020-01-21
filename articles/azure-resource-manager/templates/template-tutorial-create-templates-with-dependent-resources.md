@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 15c707b5424e84e99e0b1942bb623e6d3845213a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471257"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834359"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -69,11 +69,11 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     テンプレートによって定義されたリソースは、5 つあります。
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Storage/storageAccounts`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/publicIPAddresses`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/virtualNetworks`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/networkInterfaces`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Compute/virtualMachines`) [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * `Microsoft.Storage/storageAccounts`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+   * `Microsoft.Network/publicIPAddresses`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+   * `Microsoft.Network/virtualNetworks`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+   * `Microsoft.Network/networkInterfaces`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+   * `Microsoft.Compute/virtualMachines`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 
@@ -161,7 +161,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、テンプレートを作成してデプロイし、仮想マシン、仮想ネットワーク、および依存リソースを作成しました。 条件に基づいて Azure リソースをデプロイする方法については、以下を参照してください。
+このチュートリアルでは、テンプレートを作成してデプロイし、仮想マシン、仮想ネットワーク、および依存リソースを作成しました。 デプロイ スクリプトを使用してデプロイ前後の操作を実行する方法については、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [使用条件](./template-tutorial-use-conditions.md)
+> [デプロイ スクリプトの使用](./template-tutorial-deployment-script.md)

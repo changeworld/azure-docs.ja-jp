@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790349"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933685"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
@@ -51,7 +51,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 [Event Grid トピック](../event-grid/concepts.md#topics)は、ユーザー定義関数によって生成されたイベントをルーティングするためのインターフェイスを提供します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 
 
@@ -65,7 +65,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. **[アクセス キー]** を選択し、**キー 1** と**キー 2** を一時ファイルにコピーします。 これらの値は、次のセクションでエンドポイントを作成するために必要になります。
 
-    [![Event Grid キー](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [![Event Grid キー](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Event Grid トピックのエンドポイントを作成する
 
@@ -114,7 +114,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **作成** を選択します。
 
-    [![Logic Apps リソースを作成する](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![Logic Apps リソースを作成する](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. Logic Apps リソースがデプロイされたらこれを開き、 **[ロジック アプリ デザイナー]** ペインを開きます。 
 
@@ -172,7 +172,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    c. 2 番目の **[値の選択]** ボックスに「`UdfCustom`」と入力します。
 
-   [![選択された条件](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [![選択された条件](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. **[true の場合]** ウィンドウで、次の操作を行います。
 
@@ -184,7 +184,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    d. 同じウィンドウの **[Body]\(本文\)** に、「**室内で空気の質の悪化が検出されました。温度を調整する必要があります**」のようなテキストを入力します。 **[動的なコンテンツ]** の一覧の要素を自由に使用して詳しい説明を追加してください。
 
-   [![Logic Apps での [電子メールの送信] の選択](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps での [電子メールの送信] の選択](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. **[ロジック アプリ デザイナー]** ペインの最上部にある **[保存]** ボタンを選択します。
 
@@ -196,7 +196,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 これらのメールの受信を停止するには、ポータルで目的の Logic Apps リソースに移動し、 **[概要]** ウィンドウを選択します。 **[無効]** を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この時点で Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
@@ -207,7 +207,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 2. 必要に応じて、作業マシン上のサンプル アプリケーションを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 センサー データの視覚化、傾向の分析、異常の特定を行う方法について学習するために、次のチュートリアルに進んでください。
 

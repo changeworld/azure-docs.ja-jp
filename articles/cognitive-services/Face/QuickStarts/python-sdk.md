@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e41817e3409f79aab3fbb3d57195b6b7ff13e7af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448208"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770358"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -153,7 +153,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-次に、以下のコードをスクリプトの末尾に追加します。 このコードでは、**PersongGroup** オブジェクトと 3 つの **Person** オブジェクトが作成されます。
+次に、以下のコードをスクリプトの末尾に追加します。 このコードでは、**PersonGroup** オブジェクトと 3 つの **Person** オブジェクトが作成されます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 

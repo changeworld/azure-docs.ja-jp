@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670475"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922269"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>コンテナーの特性
 
-App Service on Linux にデプロイされた Python アプリは、GitHub リポジトリの [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) または [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) で定義されている Docker コンテナー内で実行されます。
+App Service on Linux にデプロイされた Python アプリは、[App Service Python GitHub リポジトリ](https://github.com/Azure-App-Service/python)で定義されている Docker コンテナー内で実行されます。 イメージの構成は、バージョン固有のディレクトリ内で見つけることができます。
 
 このコンテナーには次の特性があります。
 
@@ -171,7 +171,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#customize-startup-command)を使用します。
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)

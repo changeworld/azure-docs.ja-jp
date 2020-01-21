@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227171"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769287"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -48,12 +48,12 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | Setting | 推奨値 | Description |
+    | 設定 | 推奨値 | [説明] |
     |---|---|---|
     | **Name** | Default | タイマーによってトリガーされる関数の名前を定義します。 |
-    | **スケジュール** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
+    | **[スケジュール]** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
 
-4. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。
+4. **Create** をクリックしてください。 選択した言語で、毎分 (00 秒) に実行する関数が作成されます。
 
 5. ログに書き込まれたトレース情報を表示して、実行を確認します。
 
@@ -69,13 +69,13 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 ![関数が、Azure Portal のタイマー スケジュールを更新します。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-関数が 1 時間ごとに実行されるようになりました。 
+関数が 1 時間ごと (正時) に実行されるようになりました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スケジュールに基づいて実行する関数を作成しました。 タイマー トリガーの詳細については、[Azure Functions を使用したコード実行のスケジュール設定](functions-bindings-timer.md)に関するページを参照してください。
 

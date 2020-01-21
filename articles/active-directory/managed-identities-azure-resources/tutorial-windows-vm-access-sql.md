@@ -5,22 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: bryanla
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2fc5596c6914b77b09db10528af891d7e6bd0159
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181178"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977858"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -38,7 +37,13 @@ ms.locfileid: "74181178"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>VM に Azure SQL サーバー内のデータベースへのアクセス権を付与する
+
+## <a name="enable"></a>[有効化]
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+## <a name="grant-access"></a>アクセス権の付与
 
 Azure SQL Server 内のデータベースに対するアクセス権を VM に付与する際は、既存の SQL サーバーを使用する方法と、SQL サーバーを新しく作成する方法とがあります。 Azure ポータルを使用して新しいサーバーとデータベースを作成するには、[Azure SQL のクイック スタート](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に従います。 [Azure SQL のドキュメント](https://docs.microsoft.com/azure/sql-database/)に、Azure CLI と Azure PowerShell を使用するクイックスタートも用意されています。
 
@@ -47,9 +52,9 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 1. SQL サーバーに対する Azure AD 認証を有効にします。
 2. VM のシステム割り当て ID を表す**包含ユーザー**をデータベースに作成します。
 
-## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>SQL サーバーに対する Azure AD 認証を有効にする
+### <a name="enable-azure-ad-authentication"></a>Azure AD 認証を有効にする
 
-次の手順を使用して、[SQL サーバーに対する Azure AD 認証を構成](/azure/sql-database/sql-database-aad-authentication-configure)します。
+**[SQL サーバーに対する Azure AD 認証を構成にする](/azure/sql-database/sql-database-aad-authentication-configure)には:**
 
 1.  Azure ポータルで、左側のナビゲーションから **[SQL サーバー]** を選択します。
 2.  Azure AD 認証で有効にする SQL サーバーをクリックします。
@@ -58,14 +63,16 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 5.  サーバーの管理者になる Azure AD ユーザー アカウントを選択し、 **[選択]** をクリックします。
 6.  コマンド バーで、 **[保存]** をクリックします。
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する
+### <a name="create-contained-user"></a>包含ユーザーを作成する
 
-この次の手順では、[Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
+このセクションでは、VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する方法を説明します。 このステップでは、[Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
 
 - [SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](/azure/sql-database/sql-database-aad-authentication-configure)
 
 SQL DB では、一意の AAD 表示名が必要です。 これにより、ユーザー、グループ、サービス プリンシパル (アプリケーション)、およびマネージド ID 用に有効化された VM 名などの AAD アカウントの表示名を、AAD で一意に定義する必要があります。 SQL DB では、このようなユーザーの T-SQL の作成時に AAD 表示名がチェックされ、一意でない場合には、指定したアカウントに一意の AAD 表示名を指定するように要求するコマンドが失敗します。
+
+**包含ユーザーを作成するには:**
 
 1. SQL Server Management Studio を起動します。
 2. **[サーバーに接続]** ダイアログで、 **[サーバー名]** フィールドに SQL サーバーの名前を入力します。
@@ -99,9 +106,9 @@ SQL DB では、一意の AAD 表示名が必要です。 これにより、ユ�
 
 これで、VM 上で実行されるコードは、システム割り当てマネージド ID を使用してトークンを取得し、そのトークンを使用して SQL サーバーへの認証を行うようになりました。
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure SQL を呼び出す
+## <a name="access-data"></a>データにアクセスする
 
-Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 SQL への接続を作成する**アクセス トークン** メソッドを使用します。 これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
+このセクションでは、VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure SQL を呼び出す方法を説明します。 Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 SQL への接続を作成する**アクセス トークン** メソッドを使用します。 これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
 アクセス トークンを使用して SQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、 **.NET Framework 4.6** 以降または **.NET Core 2.2** 以降が必要です。 AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。 Azure SQL のリソース ID が `https://database.windows.net/` であることにご注意ください。
 
@@ -193,7 +200,13 @@ if (accessToken != null) {
 
 `$DataSet.Tables[0]` の値を調べて、クエリの結果を確認します。
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、システム割り当てマネージド ID を使用して Azure SQL サーバーにアクセスする方法について説明しました。 Azure SQL Server の詳細については、以下を参照してください。
 

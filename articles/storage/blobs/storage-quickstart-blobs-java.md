@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 477f13f58d9b630519faa79424f22cb1bb34918c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffd91bbcc33ef313d496e793c8263126db81b685
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351256"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863946"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -349,7 +349,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-クリーンアップ プロセスを開始する前に、 *[MyDocuments]* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
+クリーンアップ プロセスを開始する前に、*data* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
 
 ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 

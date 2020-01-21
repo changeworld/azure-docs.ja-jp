@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552323"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888035"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -54,7 +54,7 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 * コンテナー グループあたりの複数のコンテナー
 * ボリューム マウント ([Azure Files](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[シークレット](container-instances-volume-secret.md))
 * [リソース使用量メトリック](container-instances-monitor.md)と Azure Monitor
-* [仮想ネットワークのデプロイ](container-instances-vnet.md) (プレビュー)
+* [仮想ネットワークのデプロイ](container-instances-vnet.md)
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
 Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づくイメージを使用します。
@@ -66,12 +66,9 @@ Windows コンテナーのデプロイでは、一般的な [Windows ベース�
 
 Azure Container Instances は、ホスト コンピューター、ローカル ネットワーク、ストレージ、およびライフサイクルを共有する[複数コンテナー グループ](container-instances-container-groups.md)のスケジュール設定をサポートします。 これにより、メイン アプリケーション コンテナーを、サイドカーのように主要な機能と併走しながら補助的な役割をつかさどるコンテナー (ログ記録など) と結合することができます。
 
-## <a name="virtual-network-deployment-preview"></a>仮想ネットワークのデプロイ (プレビュー)
+## <a name="virtual-network-deployment"></a>仮想ネットワークのデプロイ
 
-これは [Azure 仮想ネットワークにコンテナー インスタンスをデプロイ](container-instances-vnet.md)する機能です。Azure Container Instances の機能であり、現在はプレビュー段階となっています。 コンテナー インスタンスを仮想ネットワーク内のサブネットにデプロイすることで、オンプレミス上のリソースとの ([VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) 経由での) 通信も含め、仮想ネットワークに存在する他のリソースとの通信を安全に行うことができます。
-
-> [!IMPORTANT]
-> Azure Container Instances の一部の機能はプレビュー段階にあり、一部の[制限が適用されます](container-instances-vnet.md#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 このような機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+Azure Container Instances のこの機能を使用すると、[Azure 仮想ネットワークにコンテナー インスタンスをデプロイ](container-instances-vnet.md)できます。現在、Azure リージョンのサブセットの運用ワークロードで使用できます。 コンテナー インスタンスを仮想ネットワーク内のサブネットにデプロイすることで、オンプレミス上のリソースとの ([VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) 経由での) 通信も含め、仮想ネットワークに存在する他のリソースとの通信を安全に行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

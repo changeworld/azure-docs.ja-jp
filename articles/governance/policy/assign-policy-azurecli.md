@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:Azure CLI を使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure CLI を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 11/25/2019
+ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 80dbccdb728da94d9f9fdd0aeb506ade40fd7394
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482633"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978320"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>クイック スタート:Azure CLI を使用して準拠していないリソースを識別するポリシー割り当てを作成する
 
@@ -31,7 +31,7 @@ Azure CLI は、コマンド ラインやスクリプトで Azure リソース�
   az provider register --namespace 'Microsoft.PolicyInsights'
   ```
 
-  リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+  リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 - [ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 Azure Resource Manager ベースの API に HTTP 要求を送信するツールです。
 
@@ -58,17 +58,16 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 この新しい割り当てに準拠していないリソースを表示するには、次のコマンドを実行してポリシー割り当て ID を取得します。
 
-```azurepowershell-interactive
-$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
-$policyAssignment.PolicyAssignmentId
+```azurecli-interactive
+az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-ポリシー割り当て ID の詳細については、「[Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)」を参照してください。
+ポリシー割り当て ID の詳細については、「[az policy assignment](/cli/azure/policy/assignment)」を参照してください。
 
 続けて、次のコマンドを実行して、非準拠リソースの ID を取得します。該当するリソース ID が JSON ファイルに出力されます。
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-09-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 次のような結果が返されます。
@@ -99,7 +98,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 
 この結果は、普段 Azure Portal ビューの **[準拠していないリソース]** に一覧表示される内容に相当します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した割り当てを削除するには、次のコマンドを使用します。
 
@@ -107,7 +106,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、ポリシー定義を割り当てて、Azure 環境内で準拠していないリソースを特定しました。
 

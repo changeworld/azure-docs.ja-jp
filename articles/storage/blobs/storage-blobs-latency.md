@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d4fae87d999bd0f6b0b388613098a17c181dae0c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392741"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749714"
 ---
 # <a name="latency-in-blob-storage"></a>Blob Storage での待ち時間
 
@@ -65,7 +65,7 @@ Azure Storage 要求の処理には、クライアントの CPU リソースと�
 
 待ち時間を評価するには、まず実際のシナリオのベースライン メトリックを確立します。 ベースライン メトリックにより、実際のワークロード プロファイル、アプリケーションの構成設定、クライアント リソース、ネットワーク パイプなどの要因に応じて、アプリケーション環境のコンテキストで予想されるエンド ツー エンドの待ち時間とサーバーの待ち時間を得ることができます。 ベースライン メトリックがあれば、異常な状況と正常な状況とをより容易に見分けることができます。 また、アプリケーションの構成や VM サイズなど、パラメーターを変更した場合の効果も、ベースライン メトリックを基に観察することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md)
-- [Azure Storage のパフォーマンスとスケーラビリティに対するチェックリスト](../common/storage-performance-checklist.md)
+- [BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)
+- [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)

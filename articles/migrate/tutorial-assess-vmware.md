@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453296"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028728"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して VMware VM を評価する
 
@@ -41,11 +41,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-vmware.md#prepare-azure)する。
 - 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。
-   - VMware の設定を確認する。
-   - OVA テンプレートを使用して VMware VM を作成するためのアクセス許可を設定する。
-   - VM 検出用のアカウントを設定する。 
-   - 必要なポートを使用できるようにする。
-   - Azure へのアクセスに必要な URL に注意する。
+   - VMware の設定を[確認](migrate-support-matrix-vmware.md#vmware-requirements)する。
+   - OVA テンプレートを使用して VMware VM を作成するためのアクセス許可を VMware で設定する。
+   - [VM 検出用のアカウント](migrate-support-matrix-vmware.md#vmware-requirements)を設定する。 
+   - [必要なポート](migrate-support-matrix-vmware.md#port-access)を使用できるようにする。
+   - Azure へのアクセスに[必要な URL](migrate-replication-appliance.md#url-access) に注意する。
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
 
@@ -130,7 +130,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) に接続できることを確認します。
+アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
@@ -172,7 +172,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server インスタンスの名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
 1. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
 
-   [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。 vCenter アカウントへのアクセスを制限することで、[検出のスコープを指定](tutorial-assess-vmware.md#set-the-scope-of-discovery)できます。
+   [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#vmware-requirements)がアカウントにあることを確認します。 vCenter アカウントへのアクセスを制限することで、[検出のスコープを指定](tutorial-assess-vmware.md#set-the-scope-of-discovery)できます。
 1. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
 
 ### <a name="specify-vm-credentials"></a>VM の資格情報を指定する

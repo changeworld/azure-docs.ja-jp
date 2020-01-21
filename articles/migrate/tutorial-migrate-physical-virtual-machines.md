@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907115"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028802"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>物理または仮想サーバーを Azure に移行する 
 
@@ -37,7 +37,7 @@ ms.locfileid: "73907115"
 > * レプリケーション アプライアンスを設定します。
 > * 移行したいマシンにモビリティ サービスをインストールします。
 > * レプリケーションを有効にします。
-> * テスト移行を実行して、すべてが想定どおりに動作していることを確認します。
+> * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
 > * Azure への完全な移行を実行します。
 
 > [!NOTE]
@@ -100,11 +100,11 @@ Azure Migrate Server Migration を使用して移行する前に、Azure のア�
     ![Azure AD のアクセス許可](./media/tutorial-migrate-physical-virtual-machines/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て 
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="assign-permissions-to-create-key-vault"></a>キー コンテナーを作成するためのアクセス許可を割り当てる
 
@@ -123,19 +123,18 @@ Azure Migrate Server Migration を使用して移行する前に、Azure のア�
 > [!NOTE]
 > Azure Migrate Server Migration を使用したエージェントベースの移行は、Azure Site Recovery サービスの機能に基づいています。 一部の要件は、Site Recovery のドキュメントにリンクされている場合があります。
 
-1. サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。
-2. 移行のための VM サポート要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)します。
-3. VM 設定を確認します。 Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](migrate-support-matrix-vmware.md#azure-vm-requirements)」に準拠している必要があります。
+1. 物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
+2. VM 設定を確認します。 Azure にレプリケートするオンプレミスのマシンは、[Azure VM の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>レプリケーション アプライアンス用のマシンの準備
 
 Azure Migrate Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
 
-- **構成サーバー**:構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
+- **構成サーバー**: 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
 - **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 
 
-開始する前に、レプリケーション アプライアンスをホストするように Windows Server 2016 マシンを準備する必要があります。 このマシンは、[これらの要件](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements)に準拠している必要があります。 保護対象のソース マシンにはアプライアンスをインストールしないでください。
+開始する前に、レプリケーション アプライアンスをホストするように Windows Server 2016 マシンを準備する必要があります。 このマシンは、[これらの要件](migrate-replication-appliance.md)に準拠している必要があります。 保護対象のソース マシンにはアプライアンスをインストールしないでください。
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
@@ -159,9 +158,9 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 
     **地理的な場所** | **[リージョン]**
     --- | ---
-    アジア | 東南アジア
+    Asia | 東南アジア
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
-    米国 | 米国東部または米国中西部
+    United States | 米国東部または米国中西部
 
     プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。 実際の移行では、任意のターゲット リージョンを選択できます。
 8. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
@@ -237,7 +236,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
     UnifiedAgentConfigurator.exe  /CSEndPoint <replication appliance IP address> /PassphraseFilePath <Passphrase File Path>
     ```
 
-### <a name="install-on-linux"></a>Linux へのインストール
+### <a name="install-on-linux"></a>Linux をインストールする
 
 1. 次のように、マシン上のローカル フォルダー (/tmp/MobSvcInstaller など) にインストーラー tarball の内容を展開します。
     ```
@@ -283,12 +282,12 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 10. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。
 11. **[Azure ハイブリッド特典]** で、
 
-    - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 その後、 **[次へ]** をクリックします。
-    - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 その後、 **[次へ]** をクリックします。
+    - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
+    - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
     ![ターゲットの設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、可用性セットを確認します。 VM は [Azure の要件](migrate-support-matrix-vmware.md#azure-vm-requirements)に準拠している必要があります。
+12. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、可用性セットを確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 既定では、Azure Migrate Server Migration によって、Azure サブスクリプション内の最も近似するサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。 
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。 
@@ -296,7 +295,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 
     ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 その後、 **[次へ]** をクリックします。
+13. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
@@ -379,8 +378,8 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
 
 - 復元性の向上:
-    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細情報](../backup/quick-backup-vm-portal.md)。
-    - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細情報](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
+    - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
+    - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
     - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
@@ -390,6 +389,6 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
     - [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure クラウド導入フレームワークでの[クラウド移行の工程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。

@@ -10,20 +10,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 97df5c309a3bdbf5055d67f893e33ab1a0c3232a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851028"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832774"
 ---
-# <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
+# <a name="what-is-azure-key-vault"></a>Azure Key Vault とは?
 
 Azure Key Vault は、次の問題の解決に役立ちます。
 
 - **シークレットの管理** - Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。
 - **キー管理** - Azure Key Vault は、キー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 
-- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Secure Sockets Layer/Transport Layer Security (SSL/TLS) 証明書を簡単にプロビジョニング、管理、デプロイすることができるサービスでもあります。 
+- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Transport Layer Security/Secure Sockets Layer (TLS/SSL) 証明書を簡単にプロビジョニング、管理、デプロイすることができるサービスでもあります。 
 - **ハードウェア セキュリティ モジュールに基づくシークレットの格納** - シークレットとキーは、ソフトウェアまたは FIPS 140-2 レベル 2 検証済み HSM で保護できます。
 
 ## <a name="why-use-azure-key-vault"></a>Azure Key Vault を使用する理由
@@ -77,7 +77,7 @@ Azure 内の安全なストアとして、Key Vault は次のようなシナリ�
 
 Key Vault 自体は、ストレージ アカウント、イベント ハブ、ログ分析と統合できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート:CLI を使用した Azure キーコンテナーの作成](quick-create-cli.md)
 - [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872411"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863708"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -61,7 +61,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
 1.  **[今すぐ試してみる]** をクリックします。 その後、 **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
 
-   パラメーター|説明
+   パラメーター|[説明]
    ---|---
    **デプロイ名** | この一意の値は、新しいリソース グループを作成するために使用されます。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。
    **Azure サブスクリプション** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じサブスクリプションを指定します。
@@ -95,14 +95,14 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
 1. **[Time Series Insights 環境]** ページで、必須パラメーターを入力します。
 
-   パラメーター|説明
+   パラメーター|[説明]
    ---|---
    **環境名** | Time Series Insights 環境の一意の名前を選択します。 その名前は Time Series Insights エクスプローラーと [Query API シリーズ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)で使用されます。
    **サブスクリプション** | サブスクリプションとは、Azure リソース用のコンテナーです。 Time Series Insights 環境を作成するサブスクリプションを選択します。
    **リソース グループ** | リソース グループとは、Azure リソース用のコンテナーです。 Time Series Insights 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。
    **Location** | Time Series Insights 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、Time Series Insights 環境を他の IoT リソースと同じリージョンに作成します。
    **レベル** | 必要なスループットを選択します。 **[S1]** を選択します。
-   **Capacity** | 容量は、選択した SKU に関連するイングレス レートとストレージ容量に適用される乗数です。 この容量は、作成後に変更できます。 容量には **1** を選択します。
+   **[容量]** | 容量は、選択した SKU に関連するイングレス レートとストレージ容量に適用される乗数です。 この容量は、作成後に変更できます。 容量には **1** を選択します。
 
    終了したら、 **[次へ:イベント ソース]** を選択して次の手順に進みます。
 
@@ -134,7 +134,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
 1. **[+ New simulation]\(+ 新しいシミュレーション\)** を選択します。 **[Simulation setup]\(シミュレーションのセットアップ\)** ページの読み込み後、次の必須パラメーターを入力します。
 
-   パラメーター|説明
+   パラメーター|[説明]
    ---|---
    **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** を選択します。
    **[デバイス モデル]** | **[Chiller]** を選択します。
@@ -162,7 +162,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
    [![Time Series Insights エクスプローラー](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Time Series Insights エクスプローラーでは、Azure portal アカウントを使用して読み込みと認証が行われます。 最初のビューのグラフ領域で、シミュレートされたテレメトリ データが Time Series Insights 環境に入力されたことを確認できます。 時間の範囲を限定するには、左上隅のドロップダウンを選択します。 デバイス シミュレーションの期間が含まれる時間の範囲を入力します。 次に、検索の虫眼鏡をクリックします。
+1. Time Series Insights エクスプローラーでは、Azure portal アカウントを使用して読み込みと認証が行われます。 まず、Time Series Insights 環境に入力されたグラフ エリアが、シミュレートされた利用統計情報と共に表示されます。 時間の範囲を限定するには、左上隅のドロップダウンを選択します。 デバイス シミュレーションの期間が含まれる時間の範囲を入力します。 次に、検索の虫眼鏡をクリックします。
 
    [![Time Series Insights エクスプローラーの時間の範囲フィルター](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -174,7 +174,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
    [![Time Series Insights エクスプローラーの時間の範囲フィルターが適用されたビューとイベント](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルでは、稼働する Azure サービスをいくつか作成し、Time Series Insights 環境とデバイス シミュレーション ソリューションをサポートします。 これらを削除するには、Azure portal に戻ります。
 
@@ -184,7 +184,7 @@ Azure portal の左側のメニューで、次のようにします。
 
 1. **[リソース グループ]** アイコンを選択します。 次に、デバイス シミュレーション ソリューション アクセラレータによって作成されたリソース グループを選択します。 ページの上部で **[リソース グループの削除]** を選択し、リソース グループの名前を入力して、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

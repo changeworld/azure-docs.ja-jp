@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351161"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747992"
 ---
 # <a name="azure-storage-samples-using-python"></a>Python を使用した Azure Storage サンプル
 
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
-## <a name="blob-samples"></a>BLOB のサンプル
+> [!NOTE]
+> これらのサンプルでは、Azure Storage Python v2.1 ライブラリが使用されます。 v12 コードについては、GitHub リポジトリの[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)を参照してください。
+
+## <a name="blob-samples-v21"></a>BLOB のサンプル (v2.1)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -39,7 +42,7 @@ ms.locfileid: "71351161"
 | サービスのプロパティ | [Python での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Snapshot Blob | [Python での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>ファイルのサンプル
+## <a name="file-samples-v21"></a>ファイルのサンプル (v2.1)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ ms.locfileid: "71351161"
 | 共有のリスト | [Python での Azure File service の概要](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | 共有のプロパティ/メタデータ/統計 | [Python での Azure File service の概要](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>キューのサンプル
+## <a name="queue-samples-v21"></a>キューのサンプル (v2.1)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -66,7 +69,7 @@ ms.locfileid: "71351161"
 | キュー サービスのプロパティ | [Python での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | 更新メッセージ | [Python での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>テーブルのサンプル
+## <a name="table-samples-v21"></a>テーブルのサンプル (v2.1)
 
 | **シナリオ** | **サンプル コード** |
 |--------------|-----------------|
@@ -93,7 +96,7 @@ Azure Storage ライブラリのインストール方法と概要については
 * [Python での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-python.md)
 * [Python での Azure File service の概要](../files/storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829021"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772851"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) と Azure Virtual WAN VPN ゲートウェイの違いは何ですか。
 
@@ -22,6 +22,9 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Virtual WAN と Azure 仮想ネットワーク ゲートウェイは、どんな点が違いますか。
 
 仮想ネットワーク ゲートウェイの VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 各リージョン (仮想ハブ) につき最大 1,000 個の支店接続を、ハブあたり合計 20 Gbps で接続できます。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ全体で 1,000 を超える支店を接続できることを意味します。
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Virtual WAN ゲートウェイ スケール ユニットとは何か
+スケール ユニットは、仮想ハブにおけるゲートウェイの総スループットを選択するために定義された単位です。 VPN の 1 スケール ユニットは 500 Mbps です。 ExpressRoute の 1 スケール ユニットは 2 Gbps です。 例:VPN の 10 スケール ユニットは 5 Gbps (= 500 Mbps * 10) を意味します。
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>どのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。
 
@@ -33,7 +36,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>推奨パートナー デバイスを使用する必要がありますか。
 
-No. Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
+いいえ。 Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Virtual WAN パートナーはどのように Azure Virtual WAN との接続を自動化しますか。
 
@@ -41,7 +44,7 @@ No. Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>推奨パートナー デバイスを使用する必要がありますか。
 
-No. Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
+いいえ。 Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Virtual WAN では SD-WAN デバイスがどのようにサポートされますか。
 
@@ -73,7 +76,7 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>スポーク VNet に仮想ネットワーク ゲートウェイを配置することはできますか。
 
-No. 仮想ハブに接続されている場合、スポーク VNet に仮想ネットワーク ゲートウェイを配置することはできません。
+いいえ。 仮想ハブに接続されている場合、スポーク VNet に仮想ネットワーク ゲートウェイを配置することはできません。
 
 ### <a name="is-there-support-for-bgp"></a>BGP のサポートはありますか。
 
@@ -111,9 +114,11 @@ No. 仮想ハブに接続されている場合、スポーク VNet に仮想ネ�
 
 自分の仮想 WAN とは別のリージョンにある VNet を接続できます。
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>仮想ハブに接続されているスポーク VNet は相互に通信できますか。
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>仮想ハブに接続されているスポーク VNet は相互に通信 (V2V 転送) できますか。
 
-はい。 Standard Virtual WAN では、Vnet が接続されている Virtual WAN ハブを介して、Vnet 間の推移的な接続がサポートされています。 Virtual WAN の用語では、これらのパスを、VNet が単一のリージョン内の Virtual Wan Hub に接続されている場合は "ローカル Virtual WAN VNet 転送" と呼び、VNet が 2 つ以上のリージョンにまたがる複数の Virtual WAN Hub を通じて接続されている場合は "グローバル Virtual WAN VNet 転送" と呼びます。 VNet 転送では、パブリック プレビュー期間中、最大 3 Gbps のスループットがサポートされます。 グローバル転送が GA になると、スループットが拡張されます。   
+はい。 Standard Virtual WAN では、Vnet が接続されている Virtual WAN ハブを介して、Vnet 間の推移的な接続がサポートされています。 Virtual WAN の用語では、これらのパスを、VNet が単一のリージョン内の Virtual Wan Hub に接続されている場合は "ローカル Virtual WAN VNet 転送" と呼び、VNet が 2 つ以上のリージョンにまたがる複数の Virtual WAN Hub を通じて接続されている場合は "グローバル Virtual WAN VNet 転送" と呼びます。 VNet 転送では、パブリック プレビュー期間中、最大 3 Gbps のスループットがサポートされます。 グローバル転送が GA になると、スループットが拡張されます。
+
+注:現在、V2V 転送 (プレビュー) でルーティング要素の起動をトリガーするには、仮想ハブに VPN GW がデプロイされている必要があります。 この VPN GW は、V2V 転送パスには使用されません。 これは既知の制限であり、V2V GA の時点で解除される予定です。 ハブの VPN Gateway は、V2V 転送機能には不要であるため、完全に起動した後は削除することができます。 
 
 一部のシナリオでは、ローカルまたはグローバルの Virtual WAN VNet 転送の他に、[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)を使用してスポーク Vnet を相互に直接ピアリングすることもできます。 この場合、Vnet ピアリングは、Virtual WAN ハブを介した推移的な接続よりも優先されます。 
 

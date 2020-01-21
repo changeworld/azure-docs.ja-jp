@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ca172e16fc13d2b8e10d0797f5b57b5b48136349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430446"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768329"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -41,6 +41,7 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 * 複数の ASE を使って水平方向にスケーリングすることができます。 詳細については、[地理的に分散したアプリ フットプリントの設定](app-service-app-service-environment-geo-distributed-scale.md)に関するページを参照してください。
 * AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
 * ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳細については、[Web アプリケーション ファイアウォール (WAF)][AppGW] に関するページを参照してください。
+* Availability Zones (AZ) には、ゾーンの固定を使用して App Service Environment をデプロイできます。  詳細については、「[App Service Environment の Availability Zones サポート][ASEAZ]」を参照してください。
 
 ## <a name="dedicated-environment"></a>専用の環境 ##
 
@@ -102,3 +103,4 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

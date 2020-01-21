@@ -10,16 +10,16 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8f937bcfb1bd03c970f21263c1cd09a1c3baba0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e353a65544e86e702bd216db5c8b5f81f033c46a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429419"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772246"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Python IoT Edge モジュールを開発およびデプロイする
 
-Visual Studio Code を使用して、Azure IoT Edge を実行している Linux デバイス用の C コードを開発し、デプロイします。 
+Visual Studio Code を使用して、Azure IoT Edge を実行している Linux デバイス用の Python コードを開発し、デプロイします。 
 
 Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、クイック スタートで設定した IoT Edge デバイス上のセンサー データをフィルター処理する IoT Edge モジュールの作成とデプロイについて段階的に説明します。 このチュートリアルでは、以下の内容を学習します。    
 
@@ -100,7 +100,7 @@ VS Code を使用して、ソリューションのベースにする Python ソ�
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
-現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。 
+現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の Python モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。 
 
 1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 

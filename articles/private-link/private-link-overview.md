@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647358"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867562"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Private Link とは (プレビュー)
 Azure Private Link を使用すると、仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、Azure Cosmos DB、SQL Database など) と Azure でホストされている顧客/パートナー サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 また、独自の [Private Link サービス](private-link-service-overview.md)を仮想ネットワーク (VNet) 内に作成し、そのサービスを顧客に非公開で配信することもできます。 Azure Private Link を使用した設定と消費のエクスペリエンスは、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
@@ -46,6 +46,9 @@ Azure Private Link には次のような利点があります。
 |  |  Azure SQL データベース         | すべてのパブリック リージョン      |   プレビュー      |
 ||Azure SQL Data Warehouse| すべてのパブリック リージョン |プレビュー|
 ||Azure Cosmos DB| 米国中西部、米国西部、米国中北部 |プレビュー|
+|  |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン      |   プレビュー      |
+|  |  Azure Database for MySQL         | すべてのパブリック リージョン      |   プレビュー      |
+|  |  Azure Database for MariaDB         | すべてのパブリック リージョン      |   プレビュー      |
 
 最新情報については、[Azure 仮想ネットワークの更新情報ページ](https://azure.microsoft.com/updates/?product=virtual-network)をご覧ください。
 

@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670402"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834312"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
 
-この記事では、[Azure App Service](app-service-linux-intro.md) で Ruby アプリが実行される方法と、必要に応じて App Service の動作をカスタマイズする方法について説明します。 Ruby アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。
+この記事では、[Azure App Service](app-service-linux-intro.md) で Ruby アプリが実行される方法と、必要に応じて App Service の動作をカスタマイズする方法について説明します。 Ruby アプリは、必要なすべての [gems](https://rubygems.org/gems) と共にデプロイする必要があります。
 
 このガイドでは、App Service のビルトイン Linux コンテナーを使用する Ruby 開発者のために、主要な概念と手順を紹介します。 Azure App Service を使用したことがない場合は、まず [Ruby 用のクイック スタート](quickstart-ruby.md)と [PostgreSQL を使った Ruby のチュートリアル](tutorial-ruby-postgres-app.md)に従ってください。
 
@@ -82,7 +82,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="precompile-assets"></a>アセットをプリコンパイルする
 
-既定では、デプロイ後のステップでアセットがプリコンパイルされることはありません。 アセットのプリコンパイルを有効にするには、`ASSETS_PRECOMPILE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 これで、デプロイ後ステップの最後に `bundle exec rake --trace assets:precompile` コマンドが実行されます。 例:
+既定では、デプロイ後のステップでアセットがプリコンパイルされることはありません。 アセットのプリコンパイルを有効にするには、`ASSETS_PRECOMPILE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 これで、デプロイ後ステップの最後に `bundle exec rake --trace assets:precompile` コマンドが実行されます。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -111,7 +111,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Ruby コンテナー内の Rails サーバーは、既定では実稼働モードで実行され、また、[アセットがプリコンパイル済みで Web サーバーから提供されることを想定](https://guides.rubyonrails.org/asset_pipeline.html#in-production)しています。 Rails サーバーから静的アセットを提供するには、次の 2 つのことを行う必要があります。
 
 - **アセットをプリコンパイルする** - [静的アセットをローカルでプリコンパイル](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)し、それらを手動でデプロイします。 または、その処理をデプロイ エンジンで行います (「[アセットをプリコンパイルする](#precompile-assets)」を参照)。
-- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、[`RAILS_SERVE_STATIC_FILES` アプリ設定を `true` に設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)します。 例:
+- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、[`RAILS_SERVE_STATIC_FILES` アプリ設定を `true` に設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)します。 次に例を示します。
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -125,7 +125,7 @@ Ruby コンテナー内の Rails サーバーは、既定では実稼働モー�
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-ただし、この設定だけを行った場合、Rails サーバーが開発モードで起動し、localhost 要求しか受け付けなくなるので、コンテナーの外部からアクセスすることができません。 リモートのクライアント要求を受け付けるには、`APP_COMMAND_LINE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `rails server -b 0.0.0.0` に設定してください。 このアプリ設定により、Ruby コンテナーでカスタム コマンドを実行することができます。 例:
+ただし、この設定だけを行った場合、Rails サーバーが開発モードで起動し、localhost 要求しか受け付けなくなるので、コンテナーの外部からアクセスすることができません。 リモートのクライアント要求を受け付けるには、`APP_COMMAND_LINE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `rails server -b 0.0.0.0` に設定してください。 このアプリ設定により、Ruby コンテナーでカスタム コマンドを実行することができます。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -133,7 +133,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secret_key_base-manually"></a> secret_key_base を手動で設定する
 
-`secret_key_base` の値を App Service で自動的に生成するのではなく独自の値を使用するには、`SECRET_KEY_BASE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)にその値を設定します。 例:
+`secret_key_base` の値を App Service で自動的に生成するのではなく独自の値を使用するには、`SECRET_KEY_BASE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)にその値を設定します。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
@@ -147,7 +147,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PostgreSQL を使った Rails アプリ](tutorial-ruby-postgres-app.md)

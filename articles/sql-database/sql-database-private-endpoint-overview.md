@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821304"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045625"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL Database と Data Warehouse の Private Link (プレビュー)
 
@@ -57,7 +57,7 @@ Private Link を使用すると、お客様は Express Route (ER) プライベ�
 ### <a name="approval-process"></a>承認プロセス
 ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、SQL 管理者は SQL Database へのプライベート エンドポイント接続 (PEC) を管理できます。
 
-1. Azure portal で SQL サーバー リソースに移動します。
+1. 次のスクリーンショットに示されている手順に従って、Azure portal で SQL サーバー リソースに移動します
 
     - (1) 左側のウィンドウで、プライベート エンドポイント接続を選択
     - (2) すべてのプライベート エンドポイント接続 (PEC) の一覧を表示
@@ -146,8 +146,10 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続を確認する
+> [!NOTE]
+>クライアントの接続文字列で、**サーバーの完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接行われたログイン試行は、設計上すべて失敗します。
 
-最後の手順では、[SSMS を使用して SQL Database](sql-database-connect-query-ssms.md) に接続します。 SSMS を使用して SQL Database に接続したら、次のクエリを実行して、Azure VM のプライベート IP アドレスから接続していることを確認します。
+ここに示す手順に従い、[SSMS を使用して SQL データベースに接続します](sql-database-connect-query-ssms.md)。 SSMS を使用して SQL Database に接続したら、次のクエリを実行して、Azure VM のプライベート IP アドレスから接続していることを確認します。
 
 ````
 select client_net_address from sys.dm_exec_connections 
@@ -179,7 +181,7 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database のセキュリティの概要については、「[データベースの保護](sql-database-security-overview.md)」を参照してください。
 - Azure SQL Database 接続の概要については、「[Azure SQL の接続アーキテクチャ](sql-database-connectivity-architecture.md)」を参照してください

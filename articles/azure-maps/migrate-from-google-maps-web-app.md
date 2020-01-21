@@ -1,20 +1,20 @@
 ---
-title: Google Maps から Web アプリを移行する | Microsoft Docs
-description: Google Maps から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアル。
+title: チュートリアル:Google マップから Web アプリを移行する | Microsoft Azure Maps
+description: Google マップから Microsoft Azure Maps に Web アプリを移行する方法。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: a414d7b15f81ab81783b66f8297a207afe569365
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562172"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910881"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps から Web アプリを移行する
 
@@ -443,7 +443,7 @@ var marker = new google.maps.Marker({
 
 **後: HTML マーカーを使用した Azure Maps**
 
-Azure Maps で HTML マーカーをカスタマイズする場合は、HTML `string` または `HTMLElement` をマーカーの `htmlContent` オプションに渡すことができます。 Azure Maps では、`anchor` オプションを使用して、9 つの定義済みの参照ポイントである "center"、"top"、"bottom"、"left"、"right"、"top-left"、"top-right"、"bottom-left"、"bottom-right" のいずれかを使用して、位置座標を基準とするマーカーの相対位置を指定します。 既定では、コンテンツは html コンテンツの下中央に固定されます。 Google Maps からコードをより簡単に移行できるようにするには、`anchor` を "top-left" に設定してから、Google Maps で使用したものと同じオフセットで `pixelOffset` オプションを利用します。 Azure Maps のオフセットは、Google Maps の反対方向に移動するため、-1 を乗算します。
+Azure Maps で HTML マーカーをカスタマイズする場合は、HTML `string` または `HTMLElement` をマーカーの `htmlContent` オプションに渡すことができます。 Azure Maps では、`anchor` オプションを使用して、9 つの定義済みの参照ポイントである "center"、"top"、"bottom"、"left"、"right"、"top-left"、"top-right"、"bottom-left"、"bottom-right" のいずれかを使用して、位置座標を基準とするマーカーの相対位置を指定します。 既定では、コンテンツは html コンテンツの下中央に固定されます。 Google Maps からコードをより簡単に移行できるようにするには、`anchor` を "top-left" に設定してから、Google Maps で使用したものと同じオフセットで `pixelOffset` オプションを使用します。 Azure Maps のオフセットは、Google Maps の反対方向に移動するため、-1 を乗算します。
 
 > [!TIP]
 > html コンテンツにスタイルとして `pointer-events:none` を追加して、不要なアイコンを表示する、Microsoft Edge での既定のドラッグ動作を無効にします。

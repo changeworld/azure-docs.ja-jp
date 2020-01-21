@@ -1,0 +1,132 @@
+---
+title: マッピング データ フローのビデオ チュートリアル
+description: マッピング データ フローの概念を説明するビデオ チュートリアルの一覧
+author: djpmsft
+ms.author: daperlov
+ms.service: data-factory
+ms.topic: tutorial
+ms.date: 01/14/2020
+ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030021"
+---
+# <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
+
+以下に示すのは、Azure Data Factory チームによって作成された、マッピング データ フローのチュートリアル ビデオの一覧です。
+
+製品は常に更新されているため、現在の Azure Data Factory のユーザー エクスペリエンスでは、いくつかの機能が追加されたり異なったりしています。
+
+## <a name="getting-started"></a>作業の開始
+
+[Getting started with mapping data flows in Azure Data Factory (Azure Data Factory でのマッピング データ フローの開始)](http://youtu.be/MFw7t_8tuV4)
+
+## <a name="debugging-and-developing-mapping-data-flows"></a>マッピング データ フローのデバッグと開発
+
+[Debugging and testing mapping data flows (マッピング データ フローのデバッグとテスト)](https://www.youtube.com/watch?v=3ANxyvDGfjA)
+
+[データの探索](https://www.youtube.com/watch?v=En1ztyh5GaA)
+
+[Data preview quick actions (データ プレビューのクイック アクション)](https://www.youtube.com/watch?v=CP0TnNmaLA0)
+
+[Monitor and manage mapping data flow performance (マッピング データ フローのパフォーマンスの監視と管理)](https://www.youtube.com/watch?v=fktIWdJiqTk)
+
+## <a name="transformation-overviews"></a>変換の概要
+
+[Aggregate transformation (集計変換)](http://youtu.be/jdL75xIr98I)
+
+[Alter row transformation (行の変更変換)](https://www.youtube.com/watch?v=4ktoohwptmQ)
+
+[Derived Column transformation (派生列変換)](https://www.youtube.com/watch?v=FFCbU4ujCiY)
+
+[Join transformation (結合変換)](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[参照変換](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
+
+[Pivot transformation (ピボット変換)](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
+
+[Pivot transformation: mapping drifted columns (ピボット変換: 誤差のある列のマッピング)](https://youtu.be/5MygzCX0wnM)
+
+[Select transformation (選択変換)](http://youtu.be/F9VjQ_YyRyU?hd=1)
+
+[Select transformation:Rule-based mapping (選択変換: ルールベースのマッピング)](https://youtu.be/5lf1lh1qMwU)
+
+[Surrogate key transformation (代理キー変換)](https://www.youtube.com/watch?v=ISpegL9CbTM)
+
+[和集合変換](http://youtu.be/_Et6mg1tEr8?hd=1)
+
+[Unpivot transformation (ピボット解除変換)](http://youtu.be/KFYkxcpB8b0?hd=1)
+
+[Window Transformation (ウィンドウ変換)](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
+
+[Filter Transformation (フィルター変換)](https://youtu.be/OhbKDOXSfeE)
+
+[条件分割変換](http://youtu.be/W1lQHojhKZw?hd=1)
+
+[Exists Transformation (存在変換)](http://youtu.be/GS8JVgNBMfs?hd=1)
+
+## <a name="source-and-sink"></a>ソースとシンク
+
+[Reading and writing JSONs (JSON の読み取りと書き込み)](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+
+[Parquet and delimited text files (Parquet および区切り形式のテキスト ファイル)](https://youtu.be/V_2a60j2Kjo)
+
+[CosmosDB connector (CosmosDB コネクタ)](http://youtu.be/plp1etT2ftY?hd=1)
+
+[Infer data types in delimited text files (区切り形式のテキスト ファイルでのデータ型の推論)](https://www.youtube.com/watch?v=nJjRzlFktlA)
+
+[Reading and writing partitioned files (パーティション分割されたファイルの読み取りと書き込み)](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
+
+[Transform and create multiple SQL tables (複数の SQL テーブルの変換と作成)](https://www.youtube.com/watch?v=Sj15Yjwai1A)
+
+[Partition your files in the data lake (データ レイクでのファイルのパーティション分割)](https://youtu.be/VNWv-MvLQ_0)
+
+[Data warehouse loading pattern (データ ウェアハウスの読み込みパターン)](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+
+## <a name="optimizing-mapping-data-flows"></a>マッピング データ フローの最適化
+
+[Data lineage (データ系列)](https://www.youtube.com/watch?v=5KvqYF-y93s)
+
+[Optimization tips (最適化のヒント)](https://www.youtube.com/watch?v=a2KtwUJngHo)
+
+[Iterate files with parameters (パラメーターを使用したファイルの反復処理)](http://youtu.be/uEgz0ptYRDM?hd=1)
+
+[Decrease start-up times (起動時間の短縮)](https://youtu.be/FFCbU4ujCiY?t=528)
+
+[SQL DB performance (SQL DB のパフォーマンス)](https://youtu.be/iyZT5CY3V_4)
+
+## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
+
+[Fuzzy lookups (あいまい参照)](http://youtu.be/7gdwExjHBbw)
+
+[Staging data pattern (データのステージングのパターン)](https://youtu.be/mZLKdyoL3Mo)
+
+[Clean addresses pattern (アドレスのクリーニングのパターン)](https://youtu.be/axEYbuU3lmw)
+
+[Deduplication (重複除去)](https://www.youtube.com/watch?v=OLenvYwg__I)
+
+[Merge files (ファイルのマージ)](http://youtu.be/WbDTBAyYte8)
+
+[Slowly changing dimensions type 1: overwrite (緩やかに変化するディメンションのタイプ 1: 上書き)](http://youtu.be/Rz2zx5GRbrA)
+
+[Slowly changing dimensions type 2: history (緩やかに変化するディメンションのタイプ 2: 履歴)](http://youtu.be/123CptslKvU)
+
+[Fact table loading (ファクト テーブルの読み込み)](http://youtu.be/ABG3X9pgFPQ)
+
+[Transform SQL Server on-prem with delta data loading pattern (差分データ読み込みパターンを使用したオンプレミスでの SQL Server の変換)](https://youtu.be/IN-4v0e7UIs)
+
+[[パラメーター化]](https://www.youtube.com/watch?v=vpuuQcFojt8)
+
+[Distinct row & row counts (個別の行と行数)](https://youtu.be/ryYo8UFUgTI)
+
+[Handling truncation errors (切り捨てエラーの処理)](http://youtu.be/sPpcSiKQz34)
+
+[Intelligent data routing (インテリジェントなデータ ルーティング)](https://youtu.be/PIGw-Z-0upw)
+
+[Data masking for sensitive data (機密データのデータ マスキング)](https://www.youtube.com/watch?v=OFd4LeiTmfs)
+
+[Logical Models vs. Physical Models (論理モデルと物理モデル)](http://youtu.be/K5tgzLjEE9Q)
+
+[Detect source data changes (ソース データの変更の検出)](http://youtu.be/CaxIlI7oXfI?hd=1)

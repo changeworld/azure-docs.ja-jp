@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326442"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945225"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory (Azure AD) 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./azure-active-directory-authentication.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Git](https://git-scm.com/)
 * [イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) と [pip](https://docs.python.org/3/installing/index.html)。 Python 3.4 以降では、pip は Python バイナリ インストーラーに既定で含まれています。
@@ -40,20 +40,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [requests モジュール](https://pypi.org/project/requests/2.7.0/)
 * [Visual Studio Code](https://code.visualstudio.com/) などの IDE
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD 認証トークンを取得する
+## <a name="configure-authentication-credentials"></a>認証資格情報の構成
 
-Azure AD 認証トークンを取得するバックエンド API を記述します。
-
-この部分については、上の Azure AD 認証構成の前提条件の手順におけるいくつかの値が必要です。 そのセッションで保存したテキスト ファイルを参照します。
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-これらの値が用意できたら、 _.env_ という名前の新しいファイルを作成し、そこに次のコードを貼り付けて、上記のカスタム プロパティ値を指定します。 サンプル アプリ内の _.env._ ファイルを、新しく作成したファイルに置き換えます。
+_.env_ という名前の新しいファイルを作成し、そこに次のコードを貼り付けて、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -321,7 +310,7 @@ flask run
 
 ブラウザーを開き、 _http://localhost:5000_ に移動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
 * [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/) でコード サンプルを見る

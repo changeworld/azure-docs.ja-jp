@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701842"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772365"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -524,7 +524,7 @@ Avro Writer モジュールには、ソリューションにおいて、メッ�
 
 3. 対応する変更を deployment.debug.template.json に行います。
 
-## <a name="install-dependencies"></a>依存関係をインストールする
+## <a name="install-dependencies"></a>依存関係のインストール
 
 ライター モジュールは 2 つの Python ライブラリ、fastavro と PyYAML に依存します。 依存関係を開発用コンピューターにインストールし、それらをモジュールのイメージにインストールするよう Docker ビルド プロセスに指示する必要があります。
 
@@ -639,7 +639,7 @@ IoT Edge デバイスとモジュールをシステムに導入したことで�
 
 13. **[Test route] \(ルートのテスト\)** を選択します。 テストが成功した場合、"The message matched the query." (メッセージがクエリに一致しました。) と表示されます。
 
-14. **[Save]** をクリックします。
+14. **[保存]** をクリックします。
 
 #### <a name="update-turbofandevicetostorage-route"></a>turbofanDeviceToStorage ルートを更新する
 
@@ -821,7 +821,7 @@ IoT Edge デバイスにログインすると、モジュールの状態に関�
    sudo docker exec -it avroFileWriter bash
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、分類器、ルーター、ファイル ライター/アップローダーの 3 つのモジュールを含む IoT Edge ソリューションを Visual Studio Code で作成しました。 エッジ デバイス上でモジュールが互いに通信できるようルートを設定し、エッジ デバイスの構成を変更しました。また、モジュールのコンテナーに依存関係をインストールしバインド マウントを追加するために Dockerfile を更新しました。 次に、種類に応じてメッセージをルーティングしたり、ファイルのアップロードを処理したりするために、IoT Hub の構成を更新しました。 すべての準備が整ったので、モジュールを IoT Edge デバイスにデプロイし、モジュールが正しく実行されていることを確認しました。
 

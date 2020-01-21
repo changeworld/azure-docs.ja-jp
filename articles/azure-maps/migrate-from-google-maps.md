@@ -1,28 +1,28 @@
 ---
-title: Google Maps から移行する | Microsoft Docs
-description: Google Maps から Azure Maps に移行する方法についてのチュートリアルです。
+title: チュートリアル:Google マップから Azure Maps に移行する | Microsoft Azure Maps
+description: Google マップから Microsoft Azure Maps に移行する方法に関するチュートリアル。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ea9afc413a7fb187042c9d832fa1c16802993eed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e841b1f386d45ddb4af8598855d8e739750307e
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475369"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910739"
 ---
-# <a name="migrate-from-google-maps"></a>Google Maps から移行する
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Google マップから Azure Maps に移行する
 
 このチュートリアルでは、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Google Maps から Microsoft Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このチュートリアルには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
-Azure Maps には、あらゆる業界の開発者向けに、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するための、定期的に更新されるマップ データが搭載された強力な地理空間機能が用意されています。 Azure Maps には、Azure One API に準拠した一連の REST API があり、それらの API はマップ、検索、経路指定、交通状況、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算に対応しています。Web SDK と Android SDK の両方が用意されており、開発を簡単かつ柔軟に行えるうえ、複数のプラットフォーム全体での移植が可能です。
+Azure Maps には、あらゆる業界の開発者向けに、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するための、定期的に更新されるマップ データが搭載された強力な地理空間機能が用意されています。 Azure Maps には、マップ、検索、ルート指定、交通情報、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、モビリティ、空間演算に対応する、Azure One API に準拠した一連の REST API があります。Web SDK と Android SDK の両方が付属しており、開発が簡単かつ柔軟になるほか、複数のプラットフォーム間での移植が可能になります。
 
 ## <a name="high-level-platform-comparison"></a>プラットフォームのおおまかな比較
 

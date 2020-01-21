@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670733"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768464"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
@@ -21,7 +21,7 @@ ms.locfileid: "74670733"
 
 次の表に、App Service で証明書を追加するためのオプションを示します。
 
-|オプション|説明|
+|オプション|[説明]|
 |-|-|
 | 無料の App Service マネージド証明書を作成する (プレビュー) | App Service で `www` [カスタム ドメイン](app-service-web-tutorial-custom-domain.md)またはネイキッド以外のドメインをセキュリティで保護することだけが必要な場合に、簡単に使用できるプライベート証明書。 |
 | App Service 証明書を購入する | Azure によって管理されるプライベート証明書。 自動証明書管理のシンプルさと、更新オプションとエクスポート オプションの柔軟性が組み合わされています。 |
@@ -109,12 +109,12 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 次の表を使用して、証明書を構成できます。 完了したら、 **[作成]** をクリックします。
 
-| Setting | 説明 |
+| 設定 | [説明] |
 |-|-|
-| 名前 | App Service 証明書のフレンドリ名。 |
+| Name | App Service 証明書のフレンドリ名。 |
 | ネイキッド ドメインのホスト名 | ルート ドメインはここで指定します。 発行された証明書によって、ルート ドメインと `www` サブドメインの "*両方*" が保護されます。 発行された証明書の [共通名] フィールドにはルート ドメインが含まれ、[サブジェクトの別名] フィールドには `www` ドメインが含まれています。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。|
-| Subscription | Web アプリがホストされているデータ センターです。 |
-| Resource group | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
+| サブスクリプション | 証明書が格納されるサブスクリプション。 |
+| Resource group | 証明書が格納されるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
 | 証明書 SKU | 作成する証明書の種類 (標準の証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)) を決定します。 |
 | 法律条項 | クリックして法律条項に同意したことを確認します。 証明書は GoDaddy から取得されます。 |
 
@@ -128,18 +128,18 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。 これは App Service 証明書に対して選択するストレージです。
 
-**[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 同じサブスクリプションおよびリソース グループ内に新しい Key Vault を作成します。
+**[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 App Service アプリと同じサブスクリプションおよび同じリソース グループに新しい Key Vault を作成します。
 
-| Setting | 説明 |
+| 設定 | [説明] |
 |-|-|
-| 名前 | 英数字とダッシュで構成される一意の名前。 |
+| Name | 英数字とダッシュで構成される一意の名前。 |
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | Location | App Service アプリと同じ場所を選択します。 |
 | Pricing tier | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
 
-コンテナーを選択したら、 **[Key Vault リポジトリ]** ページを閉じます。 **[ストア]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
+コンテナーを選択したら、 **[Key Vault リポジトリ]** ページを閉じます。 **[手順 1: 格納]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
 
 ### <a name="verify-domain-ownership"></a>ドメインの所有権を検証する
 
@@ -183,15 +183,15 @@ Azure Key Vault を使用して証明書を管理している場合は、[要件
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Key Vault 証明書のインポート]** を選択します。
 
-![App Service に Key Vault 証明書をインポートする](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![App Service に Key Vault 証明書をインポートする](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 次の表を使用すると、証明書を選択する際に役立ちます。
 
-| Setting | 説明 |
+| 設定 | [説明] |
 |-|-|
-| Subscription | Key Vault が属するサブスクリプション。 |
+| サブスクリプション | Key Vault が属するサブスクリプション。 |
 | Key Vault | インポートする証明書を含むコンテナー。 |
-| 証明書 | コンテナー内の PKCS12 証明書の一覧から選択します。 コンテナー内のすべての PKCS12 証明書がその拇印と共に一覧表示されますが、App Service ですべてがサポートされているわけではありません。 |
+| Certificate | コンテナー内の PKCS12 証明書の一覧から選択します。 コンテナー内のすべての PKCS12 証明書がその拇印と共に一覧表示されますが、App Service ですべてがサポートされているわけではありません。 |
 
 操作が完了すると、 **[秘密キー証明書]** の一覧に証明書が表示されます。 インポートがエラーで失敗する場合は、証明書が [App Service の要件](#private-certificate-requirements)を満たしていません。
 

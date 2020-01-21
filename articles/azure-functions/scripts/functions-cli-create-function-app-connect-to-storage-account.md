@@ -4,12 +4,12 @@ description: Azure CLI スクリプトのサンプル - Azure Storage に接続�
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 9c2a70066e673bfa164a58884891f29e220c7bd6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532830"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922684"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>名前付きストレージ アカウント接続を使用して関数アプリを作成する 
 
@@ -41,7 +41,7 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 | [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | アカウント用の接続文字列を取得します。 |
 | [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 関数アプリのアプリ設定として接続文字列を設定します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

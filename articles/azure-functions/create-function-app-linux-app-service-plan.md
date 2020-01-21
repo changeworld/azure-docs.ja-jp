@@ -3,12 +3,12 @@ title: Linux 上で Azure portal から関数アプリを作成する
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7689b24a4f9bf17d495917bbf4078d6e5fe4fcff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410502"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971446"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に関数アプリを作成する
 
@@ -24,7 +24,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードの実行環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 この記事では、関数アプリを作成するときに App Service プランを作成します。
+Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードの実行環境を提供します。 これにより、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。 この記事では、関数アプリを作成するときに App Service プランを作成します。
 
 1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、 **[コンピューティング]**  >  **[Function App]** を選択します。
 
@@ -44,7 +44,7 @@ Linux での関数の実行をホストするための関数アプリが必要�
     | **[ホスティング プラン](functions-scale.md)** | App Service プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 App Service プランで実行する場合は、[関数アプリのスケーリング](functions-scale.md)を制御できます。  |
     | **App Service プラン/場所** | プランの作成 | **[新規作成]** を選択し、 **[App Service プラン]** の名前を指定します。 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 目的の **[[価格レベル]](https://azure.microsoft.com/pricing/details/app-service/linux/)** を選択します。 <br/>同じ App Service プランで Linux と Windows の両方の関数アプリを実行することはできません。 |
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
-    | **[Storage](../storage/common/storage-quickstart-create-account.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
+    | **[Storage](../storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
     | **[Application Insights](functions-monitoring.md)** | 有効 | Application Insights は、既定で無効です。 今すぐ Application Insights 統合を有効にして、App Service プランの場所に近いホスティング場所を選択することをお勧めします。 これを後で行う場合は、「[Azure 関数を監視する](functions-monitoring.md)」を参照してください。  |
 
 3. **[作成]** を選択して、Function App をプロビジョニングし、デプロイします。

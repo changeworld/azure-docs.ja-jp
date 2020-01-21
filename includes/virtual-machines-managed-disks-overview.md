@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355906"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913770"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -127,6 +127,6 @@ Azure では、ディスク トラフィックに優先順位が付けられた�
 
 ## <a name="next-steps"></a>次のステップ
 
-マネージド ディスクについて詳しく解説した動画については、「[マネージド ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」をご覧ください。
+マネージド ディスクについて詳しく解説した次のビデオをご覧ください: 「[マネージド ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」。
 
 ディスクの種類に関する記事で、Azure が提供する個々のディスクの種類と、ニーズに適した種類について学習し、パフォーマンス ターゲットについて学習します。
