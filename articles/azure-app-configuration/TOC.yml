@@ -63,6 +63,8 @@
       href: concept-point-time-snapshot.md
     - name: 機能の管理
       href: concept-feature-management.md
+    - name: GitHub Actions を使用した同期
+      href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
     - name: 高可用性

@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: SQL Server データベースの保護
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure ファイル共有
+    - name: Azure ファイル共有のバックアップ
       items:
-        - name: Azure ファイル共有のバックアップ
-          href: backup-azure-files.md
+        - name: Azure portal から
+          items:
+            - name: Azure ファイル共有のバックアップ
+              href: backup-afs.md
+            - name: Azure ファイル共有を復元する
+              href: restore-afs.md
+            - name: Azure ファイル共有のバックアップを管理する
+              href: manage-afs-backup.md
+        - name: Azure CLI の場合
+          items:
+            - name: CLI を使用して Azure ファイル共有をバックアップする
+              href: backup-afs-cli.md
+            - name: CLI を使用して Azure ファイル共有を復元する
+              href: restore-afs-cli.md
+            - name: CLI を使用して Azure ファイル共有のバックアップを管理する
+              href: manage-afs-backup-cli.md
+        - name: PowerShell の場合
+          items:
+            - name: PowerShell を使用した Azure ファイル共有
+              href: backup-azure-afs-automation.md
     - name: Azure VM のバックアップ
       items:
         - name: Azure VM バックアップについて
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Azure portal での Windows Server
           href: backup-client-automation.md
-        - name: Azure portal での Azure ファイル共有
-          href: backup-azure-afs-automation.md
         - name: Azure VM バックアップ内の SQL
           href: backup-azure-sql-automation.md
     - name: Azure Backup REST API の使用
