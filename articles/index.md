@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 4c1b7c49002d9ff6cd8c782c3308edaaa5d2373d
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1b89c076f94750150b7fb57b2eb623b35f719f7b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519847"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "76294203"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -35,17 +35,17 @@ ms.locfileid: "73519847"
                 </a>
             </li>
             <li>
-                <a href="/azure/architecture/guide/">
+                <a href="/azure/cloud-adoption-framework/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
                                 <div class="cardImageOuter">
                                     <div class="cardImage">
-                                        <img data-hoverimage="media/index/getstarted-architecture.png" src="media/index/getstarted-architecture.png" alt="" />
+                                        <img data-hoverimage="media/index/cloud-adoption-framework.png" src="media/index/cloud-adoption-framework.png" alt="" />
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Azure アプリケーション アーキテクチャ ガイド</span>
+                                    <span class="likeAnH3">Azure 向けのクラウド導入フレームワーク</span>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@ ms.locfileid: "73519847"
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Storage</h4>
+                                                <h4>ストレージ</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -321,7 +321,7 @@ ms.locfileid: "73519847"
                             <li></li>
                             <li class="bottomRightItem">
                                 <a href="https://docs.microsoft.com/azure/index#pivot=products&panel=all">
-                                    <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">すべての Azure サービスを表示する<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z" /></svg></button>
+                                    <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">すべての Azure サービスを表示する<svg viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z" /></svg></button>
                                 </a>
                             </li>
                         </ul>
@@ -359,7 +359,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -735,7 +735,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>関数</p>
                                             </a>
                                         </li>
                                         <li>
@@ -860,7 +860,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/sql-database/">
                                                 <img src="media/index/SQLDatabase.svg" alt="" />
-                                                <p>Azure SQL Database</p>
+                                                <p>Azure SQL データベース</p>
                                             </a>
                                         </li>
                                         <li>
@@ -947,7 +947,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/visualstudio/products">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_visual-studio.svg" alt="" />
-                                                <p>Visual Studio</p>
+                                                <p>Visual Studio</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1002,7 +1002,7 @@ ms.locfileid: "73519847"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1104,6 +1104,15 @@ ms.locfileid: "73519847"
                                             </a>
                                         </li>
                                     </ul>
+                                    <h3>業界</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                                <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                <p>Azure FarmBeats</p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </li>
                             <li>
@@ -1173,7 +1182,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>関数</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1252,7 +1261,7 @@ ms.locfileid: "73519847"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1314,7 +1323,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/azure-portal/">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
-                                                <p>Azure ポータル</p>
+                                                <p>Azure portal</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1661,7 +1670,7 @@ ms.locfileid: "73519847"
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>セキュリティ</h3>
+                                    <h3>Security</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/security/">
@@ -1769,12 +1778,12 @@ ms.locfileid: "73519847"
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Storage</h3>
+                                    <h3>ストレージ</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>Storage</p>
+                                                <p>ストレージ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1829,6 +1838,12 @@ ms.locfileid: "73519847"
                                             <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/hpc-cache/">
+                                                <img src="media/index/hpc-cache.svg" alt="" />
+                                                <p>Azure HPC Cache</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1891,7 +1906,7 @@ ms.locfileid: "73519847"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1994,7 +2009,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>完全に管理された、サービスとしての検索</p>
                                                 </div>
                                             </div>
@@ -2735,7 +2750,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
+                                                    <h3>関数</h3>
                                                     <p>サーバーレス コードを使用してイベントを処理</p>
                                                 </div>
                                             </div>
@@ -3182,7 +3197,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure SQL Database</h3>
+                                                    <h3>Azure SQL データベース</h3>
                                                     <p>サービスとしての管理されたリレーショナル SQL Database</p>
                                                 </div>
                                             </div>
@@ -3453,7 +3468,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Visual Studio</h3>
+                                                    <h3>Visual Studio</h3>
                                                     <p>Android、iOS、Windows、Web およびクラウド用の完全な機能を備えた統合開発環境 (IDE)</p>
                                                 </div>
                                             </div>
@@ -3638,7 +3653,7 @@ ms.locfileid: "73519847"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3863,7 +3878,7 @@ ms.locfileid: "73519847"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>セキュリティ情報</h3>
-                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて確認</p>
+                                                    <p>ベスト プラクティスやガイダンスを使用して、Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明する</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3953,6 +3968,109 @@ ms.locfileid: "73519847"
                             </li>
                         </ul>
                     </li>
+<li>
+                        <a href="#industry">業界</a>
+                        <ul id="industry" class="cardsA">
+                            <li class="fullSpan">
+                                <h2>業界</h2>
+                            </li>
+                            <li>
+                                <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure FarmBeats</h3>
+                                                    <p>デジタル農業ソリューションをクラウドに迅速に構築します。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/financial/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-financial.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>金融サービス</h3>
+                                                    <p>金融サービス業界向けのソリューションとユース ケース。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/health/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-health.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>ヘルス + ライフ サイエンス</h3>
+                                                    <p>医療とライフ サイエンス業界向けのソリューションとユース ケース。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/manufacturing/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-manufacturing.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>製造</h3>
+                                                    <p>製造業界向けのソリューションとユース ケース。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/retail/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-retail.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>小売</h3>
+                                                    <p>小売業界向けのソリューションとユース ケース。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#iot">モノのインターネット (IoT)</a>
                         <ul id="iot" class="cardsA">
@@ -3987,7 +4105,7 @@ ms.locfileid: "73519847"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Central</h3>
-                                                    <p>クラウドに関する専門知識が不要な IoT 向け SaaS の利用</p>
+                                                    <p>IoT ソリューションの作成を加速</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4157,7 +4275,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
+                                                    <h3>関数</h3>
                                                     <p>サーバーレス コードを使用してイベントを処理</p>
                                                 </div>
                                             </div>
@@ -4399,7 +4517,7 @@ ms.locfileid: "73519847"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4599,7 +4717,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure ポータル</h3>
+                                                    <h3>Azure portal</h3>
                                                     <p>単一の統合コンソールですべての Azure 製品をビルド、管理、監視</p>
                                                 </div>
                                             </div>
@@ -5607,23 +5725,39 @@ ms.locfileid: "73519847"
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
+                                                <div class="cardImageOuter">
                                                     <div class="cardImage">
                                                         <img src="media/index/peering-service.svg" alt="" />
                                                     </div>
-                                            </div>
-                                            <div class="cardText">
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Peering Service</h3>
                                                     <p>最適なインターネット接続を利用して Microsoft のネットワークにアクセスする</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#security">セキュリティ</a>
-                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/internet-analyzer/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/internet-analyzer.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Internet Analyzer</h3>
+                                                    <p>ネットワーク インフラストラクチャの変更による顧客のパフォーマンスへの影響を評価する</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="https://go.microsoft.com/fwlink/?linkid=2097091">
                                     <div class="cardSize">
@@ -5656,6 +5790,30 @@ ms.locfileid: "73519847"
                                                 <div class="cardText">
                                                     <h3>Azure Firewall Manager</h3>
                                                     <p>グローバルに分散されたセキュリティ管理サービス</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                         </ul>
+                    </li>
+                    <li>
+                        <a href="#security">セキュリティ</a>
+                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/security/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>セキュリティ情報</h3>
+                                                    <p>ベスト プラクティスやガイダンスを使用して、Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明する</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5987,7 +6145,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Storage</h3>
+                                                    <h3>ストレージ</h3>
                                                     <p>耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ</p>
                                                 </div>
                                             </div>
@@ -6160,6 +6318,25 @@ ms.locfileid: "73519847"
                                                 <div class="cardText">
                                                     <h3>Data Box ファミリ</h3>
                                                     <p>オフラインまたはネットワークベースのデータ転送を可能にするストレージ デバイスのファミリ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/hpc-cache/" data-linktype="absolute-path">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img alt="" src="media/index/hpc-cache.svg" data-linktype="relative-path">
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure HPC Cache</h3>
+                                                    <p>ファイルベースの柔軟性のあるワークロードを Azure で実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -6353,7 +6530,7 @@ ms.locfileid: "73519847"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>完全に管理された、サービスとしての検索</p>
                                                 </div>
                                             </div>
@@ -6633,7 +6810,7 @@ Azure CLI </h3>
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure ポータル</h3>
+                                                <h3>Azure portal</h3>
                                                 <p>
                                                     <a href="/azure/azure-portal/">作業開始</a>
                                                 </p>

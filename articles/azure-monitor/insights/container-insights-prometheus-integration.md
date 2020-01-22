@@ -1,23 +1,62 @@
 ---
 title: Azure Monitor for containers の Prometheus 統合を構成する | Microsoft Docs
-description: この記事では、Azure Kubernetes Service クラスターで Prometheus からメトリックをスクレーピングするために Azure Monitor for containers エージェントを構成する方法について説明します。
+description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレーピングするために、Azure Monitor for containers エージェントを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403515"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931419"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する
 
-[Prometheus](https://prometheus.io/) は、人気のあるオープン ソースのメトリック監視ソリューションであり、[Cloud Native Compute Foundation](https://www.cncf.io/) の一部です。 Azure Monitor for containers では、Prometheus メトリックを収集するためのシームレスなオンボード エクスペリエンスをご利用いただけます。 通常、Prometheus を使用するには、ストアで Prometheus サーバーを設定および管理する必要があります。 Azure Monitor と統合することにより、Prometheus サーバーは必要ありません。 エクスポーターまたはポッド (アプリケーション) を使用して Prometheus メトリック エンドポイントを公開するだけで、Azure Monitor for containers 向けのコンテナー化されたエージェントがメトリックを自動的にスクレーピングできます。 
+[Prometheus](https://prometheus.io/) は、人気のあるオープン ソースのメトリック監視ソリューションであり、[Cloud Native Compute Foundation](https://www.cncf.io/) の一部です。 Azure Monitor for containers では、Prometheus メトリックを収集するためのシームレスなオンボード エクスペリエンスをご利用いただけます。 通常、Prometheus を使用するには、ストアとともに Prometheus サーバーを設定し、管理する必要があります。 Azure Monitor と統合することにより、Prometheus サーバーは必要ありません。 エクスポーターまたはポッド (アプリケーション) を使用して Prometheus メトリック エンドポイントを公開するだけで、Azure Monitor for containers 向けのコンテナー化されたエージェントがメトリックを自動的にスクレーピングできます。 
 
 ![Prometheus のコンテナー監視アーキテクチャ](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->Prometheus メトリックのスクレーピングでサポートされているエージェントの最小バージョンは ciprod07092019 以降であり、`KubeMonAgentEvents` テーブルへの構成エラーおよびエージェント エラーの書き込みでサポートされているエージェント バージョンは ciprod10112019 です。 エージェント バージョンおよび各リリースに含まれている機能の追加情報については、[エージェントのリリース ノート](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)を参照してください。 お使いのエージェントのバージョンを確認するには、 **[ノード]** タブでノードを選択し、プロパティ ウィンドウで **[エージェント イメージ タグ]** プロパティの値に注目します。
+>Prometheus メトリックのスクレーピングでサポートされているエージェントの最小バージョンは ciprod07092019 以降であり、`KubeMonAgentEvents` テーブルへの構成エラーおよびエージェント エラーの書き込みでサポートされているエージェント バージョンは ciprod10112019 です。 エージェント バージョンおよび各リリースに含まれている内容の詳細については、「[エージェントのリリース ノート](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)」を参照してください。 お使いのエージェントのバージョンを確認するには、 **[ノード]** タブでノードを選択し、プロパティ ウィンドウで **[エージェント イメージ タグ]** プロパティの値に注目します。
+
+Prometheus メトリックのスクレ―ピングは、次にホストされている Kubernetes クラスターでサポートされています。
+
+- Azure Kubernetes Service (AKS)
+- Azure Container Instances
+- Azure Stack またはオンプレミス
+- Azure Red Hat OpenShift
+
+>[!NOTE]
+>Azure Red Hat OpenShift では、テンプレートの ConfigMap ファイルが *openshift-Azure-logging* 名前空間に作成されます。 これは、エージェントからアクティブにメトリックをスクレ―ピングしたり、データ収集したりするようには構成されていません。
+>
+
+## <a name="azure-red-hat-openshift-prerequisites"></a>Azure Red Hat OpenShift の前提条件
+
+コンテナー化されたエージェントと Prometheus スクレ―ピング設定を構成するために、開始する前に Azure Red Hat OpenShift クラスターの顧客クラスター管理者ロールのメンバーであることを確認します。 *osa-customer-admins* グループのメンバーであることを確認するには、次のコマンドを実行します。
+
+``` bash
+  oc get groups
+```
+
+出力は次のようになります。
+
+``` bash
+NAME                  USERS
+osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
+```
+
+*osa-customer-admins* グループのメンバーである場合は、次のコマンドを使用して `container-azm-ms-agentconfig` ConfigMap を一覧表示できます。
+
+``` bash
+oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+出力は次のようになります。
+
+``` bash
+NAME                           DATA      AGE
+container-azm-ms-agentconfig   4         56m
+```
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus のスクレーピングの設定
 
@@ -53,11 +92,22 @@ ConfigMaps はグローバル リストであり、エージェントに適用�
 
 ## <a name="configure-and-deploy-configmaps"></a>ConfigMap を構成してデプロイする
 
-ConfigMap 構成ファイルを構成してクラスターにデプロイするには、次の手順のようにします。
+Kubernetes クラスター用の ConfigMap 構成ファイルを構成するには、次の手順を実行します。
 
 1. テンプレート ConfigMap の yaml ファイルを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml)し、container-azm-ms-agentconfig.yaml として保存します。
 
-2. Prometheus メトリックをスクレーピングするためにご自分のカスタマイズで ConfigMap yaml ファイルを編集します。
+   >[!NOTE]
+   >Azure Red Hat OpenShift を使用する場合は、ConfigMap テンプレートがクラスターに既に存在しているため、この手順は必要ありません。
+
+2. Prometheus メトリックをスクレーピングするためにご自分のカスタマイズで ConfigMap yaml ファイルを編集します。 Azure Red Hat OpenShift の ConfigMap yaml ファイルを編集している場合は、最初にコマンド `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` を実行して、テキスト エディターでファイルを開きます。
+
+    >[!NOTE]
+    >調整が行われないようにするために、次の注釈 `openshift.io/reconcile-protect: "true"` を *container-azm-ms-agentconfig* ConfigMap のメタデータの下に追加する必要があります。 
+    >```
+    >metadata:
+    >   annotations:
+    >       openshift.io/reconcile-protect: "true"
+    >```
 
     - Kubernetes サービス クラスター全体で収集するには、次の例を使用して ConfigMap ファイルを構成します。
 
@@ -121,21 +171,35 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
     
           注釈があるポッドの特定の名前空間に監視を制限する (たとえば、運用ワークロード専用のポッドのみを含める) 場合は、ConfigMap で `monitor_kubernetes_pod` を `true` に設定し、スクレーピングする名前空間を指定して名前空間フィルター `monitor_kubernetes_pods_namespaces` を追加します。 たとえば、`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` のように指定します。
 
-3. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
+3. Azure Red Hat OpenShift 以外のクラスターの場合は、次の kubectl コマンドを実行します: `kubectl apply -f <configmap_yaml_file.yaml>`。
     
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+
+    Azure Red Hat OpenShift では、エディターの変更内容を保存します。
+
+構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+
+コマンド `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging` を実行すると、Azure Red Hat OpenShift の更新された ConfigMap を表示できます。 
 
 ## <a name="applying-updated-configmap"></a>更新された ConfigMap を適用する
 
-クラスターに ConfigMap を既にデプロイしてあり、それを新しい構成で更新したい場合は、前に使用した ConfigMap ファイルを編集した後、同じコマンド `kubectl apply -f <configmap_yaml_file.yaml` を使って適用できます。
+クラスターに ConfigMap を既にデプロイしていて、それを新しい構成で更新したい場合は、前に使用した ConfigMap ファイルを編集した後、同じコマンドを使って適用できます。
+
+Azure Red Hat OpenShift 以外の Kubernetes クラスターの場合は、コマンド `kubectl apply -f <configmap_yaml_file.yaml` を実行します。 
+
+Azure Red Hat OpenShift クラスターの場合は、コマンド `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` を実行して既定のエディターでファイルを開き、変更して保存します。
 
 構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" updated`。
 
-## <a name="verify-configuration"></a>構成の確認 
+## <a name="verify-configuration"></a>構成の確認
 
-構成が正常に適用されたことを検証するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
+クラスターに構成が正常に適用されたことを検証するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 
+
+>[!NOTE]
+>このコマンドは、Azure Red Hat OpenShift クラスターには使用できません。
+> 
+
+omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
 
 ``` 
 ***************Start Config Processing******************** 
@@ -144,17 +208,24 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 構成変更の適用に関連するエラーも確認できます。 次のオプションを使用して、構成変更および Prometheus メトリックのスクレーピングに関する追加のトラブルシューティングを実行できます。
 
-- エージェント ポッド ログから。同じ `kubectl logs` コマンドを使用。 
+- エージェント ポッド ログから。同じ `kubectl logs` コマンドを使用 
+    >[!NOTE]
+    >このコマンドは、Azure Red Hat OpenShift クラスターには使用できません。
+    > 
 
-- ライブ ログから。 ライブ ログでは、次のようなエラーが示されます。
+- ライブ データ (プレビュー) から。 ライブ データ (プレビュー) ログには、次のようなエラーが表示されます。
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 スクレーピング エラーの場合は "*警告*" の重大度、構成エラーの場合は "*エラー*" の重大度で 1 時間ごとにデータが送信されます。 エラーがない場合、テーブルのエントリには "*情報*" の重大度のデータが含まれ、エラーは報告されません。 **[タグ]** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、過去 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
+- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 スクレーピング エラーの場合は "*警告*" の重大度、構成エラーの場合は "*エラー*" の重大度で 1 時間ごとにデータが送信されます。 エラーがない場合、テーブルのエントリには "*情報*" の重大度のデータが含まれ、エラーは報告されません。 **[タグ]** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、直近 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
 
-エラーがあると omsagent でファイルを解析できず、再起動されて、既定の構成が使用されます。 ConfigMap でエラーを修正した後、yaml ファイルを保存し、次のコマンドを実行して更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。
+- Azure Red Hat OpenShift の場合は、openshift-azure-logging のログ収集が有効になっているかどうかを確認するために、**ContainerLog** テーブルを検索して omsagent ログを確認します。
+
+エラーがあると omsagent でファイルを解析できず、再起動されて、既定の構成が使用されます。 Azure Red Hat OpenShift 以外のクラスターでは、ConfigMap のエラーを修正した後で、次のコマンドを実行して yaml ファイルを保存し、更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。 
+
+Azure Red Hat OpenShift の場合は、次のコマンドを実行して、更新された ConfigMap を編集して保存します: `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`。
 
 ## <a name="query-prometheus-metrics-data"></a>Prometheus メトリック データのクエリを実行する
 
