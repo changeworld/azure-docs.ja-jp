@@ -88,6 +88,8 @@
       href: templates-cloud-consistency.md
     - name: デプロイ モード
       href: deployment-modes.md
+    - name: 完全モードの削除
+      href: complete-mode-deletion.md
     - name: Deployment Manager
       items:
         - name: 概要
@@ -237,12 +239,6 @@
           href: template-functions-resource.md
         - name: 文字列関数
           href: template-functions-string.md
-    - name: リソースの機能
-      items:
-        - name: 完全モードの削除
-          href: complete-mode-deletion.md
-        - name: 拡張リソースの種類
-          href: extension-resource-types.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell
