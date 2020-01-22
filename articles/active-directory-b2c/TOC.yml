@@ -76,7 +76,7 @@
   items:
     - name: アプリの統合
       items:
-        - name: OIDC アプリケーションを登録する
+        - name: アプリケーションを登録する
           href: tutorial-register-applications.md
         - name: SAML サービス プロバイダーを登録する
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: ローカライズ文字列 ID
                       href: localization-string-ids.md
+                - name: DisplayControl
+                  href: display-controls.md
+                  items:
+                    - name: 検証
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -320,11 +325,6 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: 検証
                       href: validation-technical-profile.md
-            - name: DisplayControl
-              href: display-controls.md
-              items:
-                - name: 検証
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

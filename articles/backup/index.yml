@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e352f5aa764795c27dd94ef2750b1265ffcc527d
-  ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+  ms.openlocfilehash: 607603965b0935941fa5ad06c39110535aa33633
+  ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/02/2019
-  ms.locfileid: "74669082"
+  ms.lasthandoff: 01/21/2020
+  ms.locfileid: "76290786"
 landingContent:
 - title: Azure Backup について
   linkLists:
@@ -92,7 +92,7 @@ landingContent:
     links:
     - text: Azure VM での SAP HANA データベースのバックアップ
       url: backup-azure-sap-hana-database.md
-    - text: バックアップされる SAP HANA データベースを管理および監視する
+    - text: バックアップされた SAP HANA データベースを管理および監視する
       url: sap-hana-db-manage.md
     - text: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
       url: sap-hana-faq-backup-azure-vm.md
@@ -103,7 +103,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure ファイル共有のバックアップと復元
-      url: backup-azure-files.md
+      url: backup-afs.md
     - text: FAQ - Azure Files のバックアップ
       url: backup-azure-files-faq.md
 - title: Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップする
