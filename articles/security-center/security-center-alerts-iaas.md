@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: b101fd30ddbdbf0f8fdf6e02394cb10b9af5f4b0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a5ed91cef6e49fcb71c35f2262479be45a018651
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666402"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754311"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Azure Security Center での VM とサーバーの脅威検出
 
@@ -41,7 +41,7 @@ Azure Security Center は Azure サービスと統合し、Windows ベースの�
 
     しかし、メモリ分析を使用すると、この種の攻撃を検出できます。 クラッシュ ダンプでメモリを分析すると、Security Center では、攻撃で使用されている手法を検出できます。 たとえば、攻撃では、ソフトウェアの脆弱性の悪用、機密データへのアクセス、侵害されたコンピューターでの不正な保持が試みられている可能性があります。 Security Center では、ホストへのパフォーマンスへの影響を最小限に抑えながら、これが行われます。
 
-    クラッシュ ダンプ分析アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-crashdump)に関するページを参照してください。
+    クラッシュ ダンプ分析アラートの詳細については、[アラートのリファレンス表](alerts-reference.md#alerts-windows)に関するページを参照してください。
 
 * **ファイルレス攻撃の検出** <a name="windows-fileless"></a> - エンドポイントを対象とするファイルレス攻撃は一般的です。 ファイルレス攻撃は、検出を回避するために悪意のあるペイロードをメモリに挿入します。 侵害されたプロセスのメモリ内に存続する攻撃者のペイロードにより、さまざまな悪意のあるアクティビティが実行されます。
 
@@ -49,7 +49,7 @@ Azure Security Center は Azure サービスと統合し、Windows ベースの�
 
     これは、悪用、コード インジェクション、および悪意のあるペイロードの実行の証拠を見つけます。 ファイルレス攻撃の検出により、アラートのトリアージ、相関関係、およびダウン ストリームの応答時間を高速化するための詳細なセキュリティ アラートが生成されます。 このアプローチにより、イベント ベースの EDR ソリューションが補完され、検出範囲が拡大します。
 
-    ファイルレス攻撃の検出アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-filelessattackdetect)に関するページを参照してください。
+    ファイルレス攻撃の検出アラートの詳細については、[アラートのリファレンス表](alerts-reference.md#alerts-windows)に関するページを参照してください。
 
 > [!NOTE]
 > Windows のアラートをシミュレートするには、「[Azure Security Center プレイブック:セキュリティ アラート](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)」をダウンロードします。

@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792170"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863123"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search インデクサーから SQL マネージド インスタンスへの接続を構成する
 
@@ -34,10 +34,17 @@ ms.locfileid: "72792170"
 
    ![NSG インバウンド セキュリティ規則](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG インバウンド セキュリティ規則")
 
+> [!NOTE]
+> 現在の規則 (`public_endpoint_inbound`) を 2 つの規則に置き換えることによって、マネージ SQL インスタンスへの受信アクセスの制限をより厳しく選択できます。
+>
+> * `AzureCognitiveSearch` [サービスタグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`) からの受信アクセスを許可する
+>
+> * 検索サービスの IP アドレスからの受信アクセスを許可します。これは、完全修飾ドメイン名 (`<your-search-service-name>.search.windows.net` など) を ping することで取得できます。 ("SOURCE" = `IP address`)
+
 ## <a name="get-public-endpoint-connection-string"></a>パブリック エンドポイントの接続文字列を取得する
 **パブリック エンドポイント**の接続文字列 (ポート 1433 ではなく、ポート 3342) を使用していることを確認します。
 
    ![パブリック エンドポイントの接続文字列](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "パブリック エンドポイントの接続文字列")
 
-## <a name="next-steps"></a>次の手順
-これで構成が完了したため、ポータルまたは REST API のどちらかを使用して、Azure Cognitive Search インデクサーのデータ ソースとして SQL マネージド インスタンスを指定できるようになりました。 詳細については、「[インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
+これで構成が完了したため、ポータルまたは REST API のどちらかを使用して、Azure Cognitive Search インデクサーのデータ ソースとして SQL マネージド インスタンスを指定できるようになりました。 詳細については、[インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)に関する記事をご覧ください。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615044"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772620"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 
@@ -212,11 +212,11 @@ Standard ストレージの新しいディスク オファリングでは、IOPS
 
 #### <a name="references"></a>References
 
-* [仮想マシンのディスクのスケーラビリティ ターゲット](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Premium ページ BLOB ストレージ アカウントのスケーラビリティおよびパフォーマンス ターゲット](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 ストレージ アカウントの帯域幅は、ストレージ アカウントのメトリックで測定されます: TotalIngress および TotalEgress。 帯域幅のしきい値は、冗長性とリージョンの種類によって異なります。
 
-* [BLOB、キュー、テーブル、およびファイルのスケーラビリティ ターゲット](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../../storage/common/scalability-targets-standard-account.md)
 
 ストレージ アカウントの冗長性の種類とリージョンのイングレスおよびエグレスの制限に対して TotalIngress と TotalEgress を確認します。
 

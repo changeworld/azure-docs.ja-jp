@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 1/10/2020
 ms.author: raynew
-ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133034"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863895"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -30,7 +30,7 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
-**サーバー** | **要件** | **詳細**
+**[サーバー]** | **必要条件** | **詳細**
 --- | --- | ---
 Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
 Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。<br/><br/>
@@ -49,7 +49,7 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
 
-**アクション** | **詳細**
+**操作** | **詳細**
 --- | ---
 レプリケートされた Hyper-V VM のディスク サイズの変更 | サポートされていません。 レプリケーションを無効にし、変更を行った後、VM のレプリケーションを再び有効にします。
 レプリケートされた Hyper-V VM でのディスクの追加 | サポートされていません。 レプリケーションを無効にし、変更を行った後、VM のレプリケーションを再び有効にします。
@@ -110,11 +110,11 @@ NFS | NA | NA
 SMB 3.0 | いいえ | いいえ
 RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
-ディスク: 4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
-ディスク: 4K 論理および 512 バイトの物理セクター | はい |  はい
+ディスク:4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
+ディスク:4K 論理および 512 バイトの物理セクター | はい |  はい
 論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
 ストライピングされたディスクのボリューム > 1 TB | はい | はい
-記憶域 | いいえ | いいえ
+記憶域スペース | いいえ | いいえ
 ディスクのホット アド/削除 | いいえ | いいえ
 ディスクの除外 | はい | はい
 マルチパス (MPIO) | はい | はい
@@ -130,11 +130,11 @@ geo 冗長ストレージ | はい | はい
 ホット ストレージ| いいえ | いいえ
 ブロック blob | いいえ | いいえ
 保存時の暗号化 (SSE)| はい | はい
-保存時の暗号化 (CMK)| いいえ | いいえ
+保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure ストレージ アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
-ストレージ アカウントの変更 | No. レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
+ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能
@@ -149,7 +149,7 @@ Premium Storage | はい | はい
 
 Azure にレプリケートするオンプレミス VM は、この表にまとめられている Azure VM の要件を満たしている必要があります。
 
-**コンポーネント** | **要件** | **詳細**
+**コンポーネント** | **必要条件** | **詳細**
 --- | --- | ---
 ゲスト オペレーティング システム | Site Recovery では、[Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。  | サポートされていない場合、前提条件の確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 32 ビット (Windows Server 2008)/64 ビット | サポートされていない場合、前提条件の確認は失敗します。
@@ -163,11 +163,11 @@ FC ディスク | サポートされていません | サポートされてい�
 ハード ディスク フォーマット | VHD <br/><br/> VHDX | Azure にフェールオーバーすると、Site Recovery によって自動的に VHDX が VHD に変換されます。 オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
 BitLocker | サポートされていません | VM のレプリケーションを有効にする前に、BitLocker を無効にする必要があります。
 VM 名 | 1 ～ 63 文字で指定します。 名前に使用できるのは、英文字、数字、およびハイフンのみです。 VM 名の最初と最後は、文字か数字とする必要があります。 | Site Recovery の VM プロパティ値を更新します。
-VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスクの種類が基本 (VHDX としてフォーマットされている 1 つまたは 2 つのデータ ボリュームが含まれる) でディスク容量が 300 GB 未満の第 2 世代の VM はサポートされています。<br></br>第 2 世代の Linux VM はサポートされていません。 [詳細情報](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
+VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスクの種類が基本 (VHDX としてフォーマットされている 1 つまたは 2 つのデータ ボリュームが含まれる) でディスク容量が 300 GB 未満の第 2 世代の VM はサポートされています。<br></br>第 2 世代の Linux VM はサポートされていません。 [詳細については、こちらを参照してください](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services コンテナーのアクション
 
-**アクション** |  **Hyper-V (VMM あり)** | **Hyper-V (VMM なし)**
+**操作** |  **Hyper-V (VMM あり)** | **Hyper-V (VMM なし)**
 --- | --- | ---
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
@@ -190,5 +190,5 @@ Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 オンプレミス Hyper-V VM のディザスター リカバリーのために [Azure を準備する](tutorial-prepare-azure.md)方法を学びます。

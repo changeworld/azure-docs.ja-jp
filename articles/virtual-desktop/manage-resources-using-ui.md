@@ -1,25 +1,22 @@
 ---
-title: 管理ツールのデプロイ - Azure
-description: Windows Virtual Desktop のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
+title: Azure Resource Manager テンプレートを使用して管理ツールをデプロイする - Azure
+description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: tutorial
-ms.date: 11/09/2019
+ms.topic: conceptual
+ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384280"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887361"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>チュートリアル:管理ツールをデプロイする
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする
 
-管理ツールは、Microsoft 仮想デスクトップのリソースを管理するためのユーザー インターフェイス (UI) を提供します。 このチュートリアルでは、管理ツールをデプロイして接続する方法を学習します。
-
->[!NOTE]
->これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
+この記事の手順では、Azure Resource Manager テンプレートを使用して UI をデプロイする方法を説明します。
 
 ## <a name="important-considerations"></a>重要な考慮事項
 
@@ -33,18 +30,17 @@ ms.locfileid: "74384280"
 - Mozilla Firefox 52.0 以降
 - Safari 10 以降 (macOS のみ)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの実行に必要なもの
+## <a name="what-you-need-to-deploy-the-management-tool"></a>管理ツールのデプロイに必要なもの
 
-Azure Resource Manager テンプレートをデプロイする前に、管理 UI をデプロイする Azure Active Directory ユーザーが必要です。 このユーザーには、次の要件があります。
+管理ツールをデプロイする前に、アプリの登録を作成して管理 UI をデプロイする Azure Active Directory (Azure AD) ユーザーが必要です。 このユーザーには、次の要件があります。
 
 - Azure Multi-Factor Authentication (MFA) が無効になっている
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
-- Azure AD アプリケーションを作成するためのアクセス許可を持っている これらの手順に従って、実際のユーザーが[必要なアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)を持っているかどうかを確認します。
+- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
-Azure Resource Manager テンプレートをデプロイした後に、管理 UI を起動して検証する必要があります。 このユーザーには、次の要件があります。
-- ご使用の Windows Virtual Desktop テナントを表示または編集するためのロールが割り当てられている
+管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Windows Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Azure Resource Manager テンプレートを実行して、管理 UI をプロビジョニングする
+## <a name="deploy-the-management-tool"></a>管理ツールをデプロイする
 
 開始する前に、[Windows Virtual Desktop の同意ページ](https://rdweb.wvd.microsoft.com)にアクセスして指定した Azure Active Directory (AAD) に対する同意をサーバーおよびクライアント アプリが得ていることを確認してください。
 
@@ -52,26 +48,24 @@ Azure Resource Manager テンプレートをデプロイした後に、管理 UI
 
 1. [GitHub の Azure RDS-Templates ページ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)に移動します。
 2. テンプレートを Azure にデプロイします。
-    - Enterprise サブスクリプションにデプロイする場合は、下へスクロールし、 **[Azure に配置する]** を選択します。 「[テンプレート パラメーターのガイダンス](#guidance-for-template-parameters)」を参照してください。
+    - Enterprise サブスクリプションにデプロイする場合は、下へスクロールし、 **[Azure に配置する]** を選択します。 
     - クラウド ソリューション プロバイダー サブスクリプションにデプロイする場合は、これらの手順に従って Azure にデプロイします。
         1. 下にスクロールし、 **[Deploy to Azure]\(Azure へのデプロイ\)** を右クリックしてから **[リンク先をコピー]** を選択します。
         2. メモ帳などのテキスト エディターを開き、そこにリンクを貼り付けます。
         3. <https://portal.azure.com/> の直後のハッシュタグ (#) の前に、アット マーク (@) とそれに続けてテナント ドメイン名を入力します。 形式の例を次に示します<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
         4. クラウド ソリューション プロバイダー サブスクリプションに対する管理者/共同作成者のアクセス許可を持つユーザーとして Azure portal にサインインします。
         5. テキスト エディターにコピーしたリンクをアドレス バーに貼り付けます。
-
-### <a name="guidance-for-template-parameters"></a>テンプレート パラメーターのガイダンス
-このツールを構成するためのパラメーターを入力する方法は次のとおりです。
-
-- **isServicePrincipal** パラメーターには、**false** を選択します。
-- 資格情報には、多要素認証を無効にした Azure Active Directory 資格情報を入力します。 この資格情報は、Azure にサインインして Azure AD アプリケーションと Azure Web アプリのリソースを作成するために使用するものです。 詳細については、「[Azure Resource Manager テンプレートの実行に必要なもの](#what-you-need-to-run-the-azure-resource-manager-template)」を参照してください。
-- **applicationName** には、ご使用の Azure Active Directory に登録されるアプリの一意の名前を使用します。 この名前は、Web アプリの URL にも使用されます。 たとえば、"Apr3UX" のような名前を使用できます。
+3. パラメーターを入力するときには、次の手順を実行します。
+    - **isServicePrincipal** パラメーターには、**false** を選択します。
+    - 資格情報には、多要素認証を無効にした Azure AD 資格情報を入力します。 これらの資格情報は、Azure AD アプリケーションと Azure リソースを作成するために使用されます。 詳細については、[管理ツールのデプロイに必要なもの](#what-you-need-to-deploy-the-management-tool)に関するページを参照してください。
+    - **applicationName** には、ご使用の Azure Active Directory に登録されるアプリの一意の名前を使用します。 この名前は、Web アプリの URL にも使用されます。 たとえば、"Apr3UX" のような名前を使用できます。
+4. パラメーターを入力したら、使用条件に同意して、 **[購入]** を選択します。
 
 ## <a name="provide-consent-for-the-management-tool"></a>管理ツールに対して同意を与える
 
 GitHub の Azure Resource Manager テンプレートが完成すると、Azure portal 内で、1 つの App Service プランと共に 2 つのアプリ サービスがリソース グループに含まれていることを確認できます。
 
-管理ツールにサインインして使用する前に、管理ツールに関連付けられている新しい Azure Active Directory アプリケーションに対して同意を与える必要があります。 同意を与えることにより、管理ツールにサインインしたユーザーに代わり、このツールが Windows Virtual Desktop の管理呼び出しを行うことを許可したことになります。
+管理ツールにサインインして使用する前に、管理ツールに関連付けられている新しい Azure AD アプリケーションに対して同意を与える必要があります。 同意を与えることにより、ツールに現在サインインしているユーザーに代わり、管理ツールが Windows Virtual Desktop の管理呼び出しを行うことができるようになります。
 
 ![UI 管理ツールに同意するときに提示されるアクセス許可を示すスクリーンショット。](media/management-ui-delegated-permissions.png)
 
@@ -102,18 +96,15 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
 3. テナント グループを選択するよう求められたら、ドロップダウン リストから **[Default Tenant Group]\(既定のテナント グループ\)** を選択します。
-4. [Default Tenant Group]\(既定のテナント グループ\) を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューで、テナント グループの名前を探して選択します。
-
-> [!NOTE]
-> カスタムのテナント グループがある場合は、ドロップダウン リストから選択せずに、手動でその名前を入力します。
+4. **[既定のテナント グループ]** を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューの中から、テナント グループの名前を探して選択します。
+  
+  > [!NOTE]
+  > カスタムのテナント グループがある場合は、ドロップダウン リストから選択せずに、手動でその名前を入力します。
 
 ## <a name="report-issues"></a>レポートに関する問題
 
-管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合は、「[リモート デスクトップ サービスの ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従って、GitHub で報告してください。
+管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合には、「[Remote Desktop Services のための Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従い、GitHub でそれを報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-管理ツールをデプロイして接続する方法を学習したので、Azure Service Health を使用して、サービスの問題と正常性の勧告を監視する方法を学習できます。
-
-> [!div class="nextstepaction"]
-> [サービス アラートを設定するチュートリアル](./set-up-service-alerts.md)
+これで、管理ツールをデプロイして接続する方法が学習できました。次は、Azure Service Health を使用してサービスの問題と正常性の勧告をモニターする方法を学習しましょう。 詳細については、[「サービスアラート設定のチュートリアル」](./set-up-service-alerts.md)を参照してください。

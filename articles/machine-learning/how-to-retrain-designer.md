@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 12/15/2019
-ms.openlocfilehash: 462b41b3f75857c85ea82916ed94860c39ce5866
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 734acd712eb954e66a9c0b037d10b7b1fd626c6a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535011"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732163"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "75535011"
 
 1. お使いのデータへのパスを指定します。 **[パスの参照]** を選択してデータストアを視覚的に移動することもできます。 
 
-1. キャンバス上部の **[実行]** を選択してパイプラインを実行します。
+1. キャンバス上部の **[実行]** を選択します。
     
     > [!NOTE]
     > このパイプライン ドラフトに既定のコンピューティングを既に設定している場合、パイプラインは自動的に実行されます。 それ以外の場合は、表示される設定ウィンドウの指示に従って、ここで設定可能です。
@@ -77,7 +77,7 @@ ms.locfileid: "75535011"
 
 ## <a name="create-a-pipeline-parameter"></a>パイプライン パラメーターを作成する
 
-パイプライン パラメーターを追加して実行時に変数を動的に設定できます。 このパイプラインについては、新しいデータセットに関してモデルを再トレーニングできるように、トレーニング データ パスのパイプライン パラメーターを追加します。
+パイプライン パラメーターを追加して実行時に変数を動的に設定します。 このパイプラインについては、新しいデータセットに関してモデルを再トレーニングできるように、トレーニング データ パスのパラメーターを追加します。
 
 1. **[データのインポート]** モジュールを選択します。
 1. 設定ウィンドウで、 **[パス]** フィールドの上にある省略記号を選択します。
@@ -87,11 +87,11 @@ ms.locfileid: "75535011"
     > [!NOTE]
     > パイプライン ドラフトのタイトルの横にある **[設定] 歯車アイコン**を選択すると、パイプライン パラメーターを調べて編集することができます。 
 
-[パイプライン パラメーターの作成方法を示すスクリーンショット](media/how-to-retrain-designer/add-pipeline-parameter.png)
+![パイプライン パラメーターの作成方法を示すスクリーンショット](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 ## <a name="publish-a-training-pipeline"></a>トレーニング パイプラインを発行する
 
-パイプラインを発行すると、パイプライン エンドポイントが作成されます。 パイプライン エンドポイントを使用すると、再現性と自動化のためにパイプラインの再利用と管理を行えます。 このシナリオでは、トレーニング パイプラインを発行して再トレーニングのために再利用します。
+パイプラインを発行すると、パイプライン エンドポイントが作成されます。 パイプライン エンドポイントを使用すると、再現性と自動化のためにパイプラインの再利用と管理を行えます。 この例では、再トレーニング用にパイプラインを設定します。
 
 1. デザイナー キャンバス上の **[Publish] (発行)** を選択します。
 1. パイプライン エンドポイントを選択するか新規作成します。

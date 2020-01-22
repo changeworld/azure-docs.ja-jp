@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807410"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903224"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -29,7 +29,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 [アクティビティ ログ アラート](../azure-monitor/platform/activity-logs-overview.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
+- 段階はお客様への通知で始まります。 既定では、通知はサービス管理者と共同管理者に送信されます。 [アクティビティ ログ アラート](../service-health/alerts-activity-log-service-notifications.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
 - 通知が送信されたら、*セルフサービス期間*を確認できます。 この期間中、どの仮想マシンが影響を受けるかを照会し、独自のスケジュールのニーズに基づいてメンテナンスを開始することができます。 セルフサービス期間は通常、約 35 日間です。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
@@ -69,7 +69,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 - 2 つの更新ドメイン (UD) の間に 30 分を超える VM 復旧時間が必要である。 更新ドメイン間の時間を制御するには、一度に 1 つの更新ドメイン (UD) で、VM に対してメンテナンスをトリガーする必要があります。
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 
 **Q:仮想マシンを今すぐ再起動する必要があるのはなぜですか?**
@@ -84,7 +84,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
-**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、電子メール通知がサブスクリプションの所有者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
+**A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、電子メール通知がサブスクリプションの管理者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
 
 **Q:ポータル、PowerShell、または CLI に計画メンテナンスの情報が表示されません。何がおかしいのでしょうか?**
 
@@ -123,7 +123,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを処理できます。
 

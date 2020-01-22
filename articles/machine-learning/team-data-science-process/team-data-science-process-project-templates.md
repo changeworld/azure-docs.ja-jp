@@ -2,21 +2,21 @@
 title: Team Data Science Process のプロジェクト計画
 description: データ サイエンス プロジェクトを計画し、管理するのに役立つ Microsoft Project と Excel のテンプレート。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253047"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864232"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process のプロジェクト計画
 
@@ -27,7 +27,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 - ビジネスの把握
 - データの取得と理解
 - モデリング
-- Deployment
+- デプロイ
 - 顧客による受け入れ
 
 このような各ステージの説明については、「[Team Data Science Process ライフサイクル](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle)」を参照してください。
@@ -56,9 +56,9 @@ Microsoft Project へのアクセス権がない場合は、同じデータす�
 
 この[プロジェクト テンプレート リポジトリ](https://github.com/Azure/Azure-TDSP-ProjectTemplate)を使用して、効率的なプロジェクトの実行とコラボレーションをサポートします。 このリポジトリには、独自の TDSP プロジェクトで使用できる標準化されたディレクトリ構造とドキュメント テンプレートが用意されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[データ サイエンス プロジェクトのアジャイル開発](agile-development.md) このドキュメントでは、Team Data Science Process を使用した、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法によるデータ サイエンス プロジェクトの実行ついて説明します。
+[データ サイエンス プロジェクトのアジャイル開発](agile-development.md) このドキュメントでは、Team Data Science Process を使用したバージョン コントロールされた体系的、協調的な方法によるデータ サイエンス プロジェクトについて説明します。
 
 また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 

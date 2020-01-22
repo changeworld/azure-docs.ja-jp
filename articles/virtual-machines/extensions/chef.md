@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073199"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933621"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -67,16 +67,16 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="core-property-values"></a>コア プロパティ値
 
-| 名前 | 値/例 | データ型
+| Name | 値/例 | データ型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
+| 型 | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>設定
 
-| 名前 | 値/例 | データ型 | 必須
+| Name | 値/例 | データ型 | 必須
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
@@ -84,7 +84,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="protected-settings"></a>保護された設定
 
-| 名前 | 例 | データ型 | 必須
+| Name | 例 | データ型 | 必須
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
@@ -152,6 +152,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 トラブルシューティングに関する追加情報は、[Chef VM 拡張機能の readme](https://github.com/chef-partners/azure-chef-extension) に記載されています。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Chef に直接関連する他のものについては、[Chef サポート](https://www.chef.io/support/)にお問い合わせください。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

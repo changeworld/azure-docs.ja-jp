@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2b6c6f2882701515d868e96ae10af85890004587
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954679"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772229"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
 この記事では、Azure Disk Encryption (ADE) 対応の Azure VM を Azure リージョン間でレプリケートする方法について説明します。
 
 >[!NOTE]
-> Site Recovery は現在、Windows を実行している VM について、Azure Active Directory (AAD) がある場合とない場合の両方の ADE をサポートしています。  ADE 1.1 (AAD なし) を実行しているコンピューターでは、Windows VM がマネージド ディスクを使用している必要があります。 アンマネージド ディスクを使用する VM はサポートされません。 ADE 0.1 (AAD あり) から 1.1 に切り替える場合は、レプリケーションを無効にし、1.1 を有効にした後で、VM のレプリケーションを有効にする必要があります。
+> Site Recovery は現在、Windows および Linux オペレーティング システムを実行している VM について、Azure Active Directory (AAD) がある場合とない場合の両方の ADE をサポートしています。  ADE 1.1 (AAD なし) を実行しているコンピューターでは、VM がマネージド ディスクを使用している必要があります。 アンマネージド ディスクを使用する VM はサポートされません。 ADE 0.1 (AAD あり) から 1.1 に切り替える場合は、レプリケーションを無効にし、1.1 を有効にした後で、VM のレプリケーションを有効にする必要があります。
 
 
 ## <a id="required-user-permissions"></a>必要なユーザー アクセス許可
@@ -155,6 +155,6 @@ Azure Site Recovery では、シークレットを読み取ってターゲット
 
 **修正方法:** **[ホーム]**  >  **[Keyvaults]\(Keyvault\)**  >  **[ContosotargetKeyvault]**  >  **[アクセス ポリシー]** に移動して、適切なアクセス許可を追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト フェールオーバーの実行に関する[詳細を確認](site-recovery-test-failover-to-azure.md)する。

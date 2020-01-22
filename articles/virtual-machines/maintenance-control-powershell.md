@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932256"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979012"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>プレビュー:メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -36,7 +36,7 @@ ms.locfileid: "74932256"
 ## <a name="limitations"></a>制限事項
 
 - VM は、[専用ホスト](./linux/dedicated-hosts.md)上にあるか、[分離された VM サイズ](./linux/isolation.md)を使用して作成される必要があります。
-- 35日後に、更新が自動的に適用され、可用性の制約は尊重されなくなります。
+- 35 日後に、更新プログラムが自動的に適用されます。
 - ユーザーは、**リソース所有者**のアクセス権を持っている必要があります。
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>専用のホスト
+### <a name="dedicated-host"></a>専用ホスト
 
 専用ホストに構成を適用するには、`-ResourceType hosts` と `-ResourceParentName` を含める必要もあります。これらには、ホスト グループの名前と `-ResourceParentType hostGroups` を使用します。 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>保留中の更新プログラムを確認する
 
-[Get-AzMaintenanceUpdat](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) を使用して、保留中の更新プログラムがあるかどうかを確認します。 ログインしている VM と異なる場合は、`-subscription` を使用して、VM の Azure サブスクリプションを指定します。 
+[Get-AzMaintenanceUpdat](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) を使用して、保留中の更新プログラムがあるかどうかを確認します。 ログインしている VM と異なる場合は、`-subscription` を使用して、VM の Azure サブスクリプションを指定します。
+
+更新プログラムが存在しない場合、コマンドは "`Resource not found...StatusCode: 404`" というエラー メッセージを返します。
 
 ### <a name="isolated-vm"></a>分離された VM
 
@@ -157,7 +159,7 @@ Get-AzMaintenanceUpdate `
    -ProviderName Microsoft.Compute | Format-Table
 ```
 
-## <a name="apply-updates"></a>更新プログラムを適用する
+## <a name="apply-updates"></a>更新プログラムの適用
 
 [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) を使用して、保留中の更新プログラムを適用します。
 
@@ -187,6 +189,39 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
+## <a name="check-update-status"></a>更新プログの状態の確認
+更新プログラムの状態を確認するには、[Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) を使用します。 次に示すコマンドは、`-ApplyUpdateName` パラメーターに `default` を使用して、最新の更新プログラムの状態を表示します。 更新プログラムの名前を置き換えて ([New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) コマンドによって返されます)、特定の更新プログラムの状態を取得できます。
+
+表示される更新プログラムがない場合、コマンドは "`Resource not found...StatusCode: 404`" というエラー メッセージを返します。
+
+### <a name="isolated-vm"></a>分離された VM
+
+特定の仮想マシンの更新プログラムを確認します。
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>専用ホスト
+
+専用ホストの更新プログラムを確認します。
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
 ## <a name="remove-a-maintenance-configuration"></a>メンテナンスの構成を削除する
 
 [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) を使用して、メンテナンス構成を削除します。
@@ -197,5 +232,5 @@ Remove-AzMaintenanceConfiguration `
    -Name $config.Name
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[メンテナンスと更新プログラム](maintenance-and-updates.md)に関するページを参照してください。

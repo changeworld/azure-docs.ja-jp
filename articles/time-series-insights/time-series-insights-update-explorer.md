@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 17ba808ebfabb68765cf35bbf0799d117bc6383b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133435"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861763"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights プレビュー エクスプローラー
 
@@ -48,7 +48,7 @@ Azure Time Series Insights プレビュー エクスプローラーは次の 7 �
 
 ## <a name="1-environment-panel"></a>1.環境パネル
 
-環境パネルには、アクセスできるすべての Time Series Insights 環境が表示されます。 一覧には、従量課金制 (プレビュー) 環境と S1/S2 環境 (一般提供) が含まれます。 使用する Time Series Insights 環境をクリックするだけですぐにそこに移動します。
+環境パネルには、アクセスできるすべての Time Series Insights 環境が表示されます。 一覧には、従量課金制 (プレビュー) 環境と S1/S2 環境 (一般提供) が含まれます。 使用する Time Series Insights 環境を選択するだけですぐにそこに移動します。
 
 1. 表示された環境の横にあるドロップダウン矢印を選択します。
 
@@ -58,7 +58,7 @@ Azure Time Series Insights プレビュー エクスプローラーは次の 7 �
 
 ## <a name="2-navigation-bar"></a>2.ナビゲーション バー
 
-  [![ナビゲーション バー](media/v2-update-explorer/navigation-bar.png)](media/v2-update-explorer/navigation-bar.png#lightbox)
+  [![ナビゲーション バー](media/v2-update-explorer/tsi-preview-navigation-bar.png)](media/v2-update-explorer/tsi-preview-navigation-bar.png#lightbox)
 
 ナビゲーション バーを使用して、次の 2 つのビューを選択します。
 
@@ -75,13 +75,13 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 * **タイム シリーズ モデルの階層**:階層は、データの体系的な編成です。 階層は、Time Series Insights データ内のさまざまなエンティティ間のリレーションシップを示しています。
 * **タイム シリーズ モデルのインスタンス**:インスタンスは、タイム シリーズ自体を表します。 ほとんどの場合は、環境内での資産の一意識別子である **DeviceID** または **AssetID** を持っています。
 
-タイム シリーズ モデルの詳細については、「[Times Series Models](./time-series-insights-update-tsm.md)」(タイム シリーズ モデル) をご覧ください。
+タイム シリーズ モデルの詳細については、[「タイム シリーズ モデル」](./time-series-insights-update-tsm.md)に関するページをご覧ください。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3.階層ツリーと検索パネル
 
 階層ツリーと検索パネルを利用すると、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)階層を簡単に検索してその内部を移動し、グラフに表示する特定のタイム シリーズ インスタンスを見つけることができます。 選択したインスタンスは、現在のグラフだけでなく、データ ウェルにも追加されます。 
 
-[![階層ツリーと検索パネル](media/v2-update-explorer/hierarchy-search.png)](media/v2-update-explorer/hierarchy-search.png#lightbox)
+[![階層ツリーと検索パネル](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 検索結果ウィンドウでは、階層ビューやリスト ビューで結果を表示し、表示するインスタンスを見つけやすくすることもできます。
  
@@ -89,7 +89,7 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 
 ウェルには、選択した Time Series Insights インスタンスに関連付けられているインスタンス フィールドとその他のメタデータが表示されます。 右側にあるチェック ボックスを選択して、現在のグラフでの特定のインスタンスの表示/非表示を切り替えることができます。 
 
-  [![プレビューのウェル](media/v2-update-explorer/preview-well.png)](media/v2-update-explorer/preview-well.png#lightbox)
+  [![プレビューのウェル](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
 要素の左にある赤い **[削除]** (ごみ箱) コントロールを選択することで、現在のデータ ウェルから特定のデータ要素を削除できます。 ウェルでは、グラフにおける各要素の表示方法も制御できます。 最小/最大値に陰影を付けたり、データ ポイントを追加したり、時系列の要素を動かしたり、段階的にインスタンスを視覚化したりできます。 
 
@@ -100,19 +100,19 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 > [!NOTE]
 > 次のメッセージが表示される場合、インスタンスには選択した時間範囲のデータがありません。 問題を解決するには、時間範囲を広げるか、またはインスタンスがデータをプッシュしていることを確認します。
 >
-> ![データ通知なし](media/v2-update-explorer/no-data-warning.png)
+> ![データ通知なし](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
 ## <a name="5-chart-panel"></a>5.グラフ パネル
 
 グラフでは、タイム シリーズのインスタンスを線として表示できます。 Web コントロールをクリックすることで、環境パネル、データ モデル、時間範囲コントロール パネルを折りたたみ、グラフを大きくすることができます。 
 
-  [![プレビューのグラフの概要](media/v2-update-explorer/chart-overview.png)](media/v2-update-explorer/chart-overview.png#lightbox)
+  [![プレビューのグラフの概要](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
 1. **グラフの種類**:視覚化に使用できるデータ要素を制御します。
 
-1. **間隔のサイズ**:間隔のサイズ スライダー ツールでは、同じ期間で時間間隔を拡大/縮小できます。 これにより、緩やかな傾向を示す長期間からミリ秒単位の短期間に至るまで、より細かく動作を制御できます。粒度の細かい、高解像度のデータ片を表示することが可能になります。 スライダーの既定の開始点は、解像度、クエリ速度、および粒度のバランスをとって、選択したデータが最適に表示されるよう設定されます。
+1. **間隔のサイズ**:間隔のサイズ スライダー ツールでは、同じ期間で時間間隔を拡大/縮小できます。 これにより、緩やかな傾向を示す長期間からミリ秒単位の短期間に至るまで、より細かく動作を制御できます。粒度の細かい、高解像度のデータ片を確認することが可能になります。 スライダーの既定の開始点は、解像度、クエリ速度、および粒度のバランスをとって、選択したデータが最適に表示されるよう設定されます。
 
-1. **ズームとパン**:このコントロールをクリックすると、グラフがズームまたはパンされます。
+1. **ズームとパン**:このコントロールを選択すると、グラフがズームまたはパンされます。
 
 1. **Y 軸コントロール**:Y 軸の使用可能な表示オプションを順番に切り替えます。
 
@@ -122,29 +122,29 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 
 1. **マーカー要素**:現在選択されているデータ要素とそれに関連する詳細です。
 
-現在のグラフ上にあるデータ ポイントを**左クリック**したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 下の画像のように、薄青い選択領域を**右クリック**し、 **[ズーム]** をクリックします。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
+現在のグラフ上にあるデータ ポイントを**左クリック**したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 下の画像のように、青い選択領域を**右クリック**し、 **[ズーム]** を選択します。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
 
   [![プレビューのグラフのズーム](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
 **ズーム**操作を実行すると、選択したデータ セットが表示されます。 フォーマット コントロールを選択すると、Time Series Insights データの 3 とおりの Y 軸表現が順番に表示されます。
 
-  [![プレビューのグラフの Y 軸](media/v2-update-explorer/standard-chart.png)](media/v2-update-explorer/standard-chart.png#lightbox)
+  [![プレビューのグラフの Y 軸](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-下は**重複グラフ**の例です。
+下に**重複グラフ**の例を示します。
 
-  [![重複グラフのオプション](media/v2-update-explorer/overlapping-chart.png)](media/v2-update-explorer/overlapping-chart.png#lightbox)
+  [![重複グラフのオプション](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-**[その他の操作]** ボタンをクリックすると、展開して **[CSV としてダウンロードする]** オプションと **[Export to Power BI]\(Power BI にエクスポートする\)** オプションが表示されます。
+**[その他の操作]** ボタンをクリックすると、画面が展開され、 **[CSV としてダウンロードする]** 、 **[Power BI に接続]** 、 **[グラフ データをテーブルとして表示します]** 、および **[生イベントの探索]** オプションが表示されます。
 
-  [![[その他のアクション] オプション](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
+  [![[その他の操作] オプション](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-Time Series Insights ネイティブ Power BI コネクタの詳細は[こちら](concepts-power-bi.md)でご確認いただけます。
+[Time Series Insights ネイティブ Power BI コネクタ](concepts-power-bi.md)の **[Power BI に接続]** の詳細を参照してください。
 
 ## <a name="6-time-editor-panel"></a>6.期間編集パネル
 
 Time Series Insights を使用するときは、最初に時間範囲を選択します。 選択した時間範囲によって、Time Series Insights アップデート ウィジェットで操作できるデータセットを制御します。
 
-  [![日時選択パネル](media/v2-update-explorer/timeline-element.png)](media/v2-update-explorer/timeline-element.png#lightbox)
+  [![日時選択パネル](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png)](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png#lightbox)
 
 > [!TIP]
 > タイムラインの一部が琥珀 (オレンジ) 色で強調表示され、ウォーム ストアで利用できるデータの範囲を示します。
@@ -171,15 +171,15 @@ Time Series Insights プレビューのナビゲーション パネルは、Time
 
 ### <a name="current-session-share-link-control"></a>現在のセッションの共有リンク コントロール
 
-  [![共有アイコン](media/v2-update-explorer/share-icon.png)](media/v2-update-explorer/share-icon.png#lightbox)
+  [![共有アイコン](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 URL リンクをチームと共有するには、新しい **[Share]\(共有\)** アイコンを選択します。
 
-  [![インスタンスの URL を共有する](media/v2-update-explorer/share-your-view.png)](media/v2-update-explorer/share-your-view.png#lightbox)
+  [![インスタンスの URL を共有する](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png)](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png#lightbox)
 
 ### <a name="tenant-section"></a>テナント セクション
 
-  [![テナントの選択](media/v2-update-explorer/tenant-selection.png)](media/v2-update-explorer/tenant-selection.png#lightbox)
+  [![テナントの選択](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png)](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png#lightbox)
 
 * 現在の Time Series Insights サインイン アカウントの情報が表示されます。
 * Time Series Insights の使用可能なテーマを切り替えるために使用します。
@@ -189,7 +189,7 @@ URL リンクをチームと共有するには、新しい **[Share]\(共有\)**
 
 新しいテーマを選択するには、右上隅にあるプロフィール アイコンを選択します。 次に、 **[Change Theme]\(テーマの変更\)** を選択します。
 
-  [![テーマの選択](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [![テーマの選択](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
 > [!TIP]
 > プロフィール アイコンを選択して言語を選択することもできます。
@@ -199,7 +199,7 @@ Azure Time Series Insights プレビューでは、2 つのテーマがサポー
 * **ライト テーマ**:このドキュメントで示されている既定のテーマです。
 * **ダーク テーマ**:次に示すようにエクスプローラーをレンダリングします。
 
-  [![選択されたダーク テーマ](media/v2-update-explorer/dark-theme-selected.png)](media/v2-update-explorer/dark-theme-selected.png#lightbox)
+  [![選択されたダーク テーマ](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 環境コントロール
 
@@ -207,7 +207,7 @@ Azure Time Series Insights プレビューでは、2 つのテーマがサポー
 
 このセクションは、更新された UI でのエクスプローラーの使用を試みる既存の S1/S2 環境のみに適用されます。 一般提供製品とプレビューを組み合わせて使用できます。 既存の UI から更新されたエクスプローラーにいくつかの機能が追加されていますが、既存の Time Series Insights エクスプローラーで S1/S2 環境向けの完全な UI エクスペリエンスを利用できます。 
 
-階層の代わりに、Time Series Insights 条件パネルが表示され、環境内でのクエリを定義します。 述語に基づいてデータをフィルター処理するために使用します。
+階層の代わりに、Time Series Insights 条件パネルが表示されます。 条件パネルでは、環境でのクエリを定義できます。 述語に基づいてデータをフィルター処理するために使用することもできます。
 
   [![Where クエリ パネル](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -215,18 +215,18 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 
 **Where**:次の表で示すオペランドのセットを使用して、イベントをすばやくフィルター処理するには、Where 句を使用します。 オペランドを選択して検索を実施した場合、述語はその検索に基づいて自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
 
-| Operation | サポートされている型   | メモ |
+| 操作 | サポートされている型   | メモ |
 | --- | --- | --- |
 | `<`、`>`、`<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`、`!=`、`<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | すべてのオペランドは同じ型か NULL 定数である必要があります。 |
-| `HAS` | string | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
+| `HAS` | String | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
 
 サポートされているクエリ操作とデータ型の詳細については、[タイム シリーズ式 (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) に関する記事を参照してください。
 
 ### <a name="examples-of-where-clauses"></a>Where 句の例
 
-  [![Where 句の例](media/v2-update-explorer/example-queries.png)](media/v2-update-explorer/example-queries.png#lightbox)
+  [![Where 句の例](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
 **[メジャー]** :現在のグラフの要素として使用できるすべての数値列 (**Double**) が表示されるドロップダウン リスト。
 
@@ -238,7 +238,7 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 
   [![クエリ/フィルター オプションの取り消し](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。
 

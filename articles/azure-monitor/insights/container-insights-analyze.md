@@ -2,13 +2,13 @@
 title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 3fc8d8d1f8c214c3bebe7af2cf670732b20529d3
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690042"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731018"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -20,14 +20,7 @@ Azure Monitor for containers を有効にする方法については、[Azure Mo
 
 Azure Monitor には、ご使用のサブスクリプション内のリソース グループにデプロイされ、Linux および Windows Server 2019 を実行しているすべての監視対象 Kubernetes クラスターの正常性状態が表示される複数クラスター ビューが用意されています。 ここでは、ソリューションによって監視されない、すべての環境にわたって検出されたクラスターが表示されます。 すぐにクラスターの正常性を把握することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。 検出され、監視対象外として識別された AKS クラスターについては、いつでも監視を有効にできます。 
 
-Azure Monitor for containers を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
-
-- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません。
-- Windows ノードではディスク ストレージ容量の情報を使用できません。
-- コンテナー ログは、Windows ノードで実行されているコンテナーでは使用できません。
-- ライブ ログのサポートは Windows コンテナーのログを除き使用可能です。
-- ポッド環境のみが監視され、Docker 環境は対象外です。
-- プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。 
+Azure Monitor for containers を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点については、概要のアーティクルの[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

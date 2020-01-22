@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280663"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754428"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -106,6 +106,18 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが使�
 >[!Note]
 >ブート診断以外の設定を有効にした場合は、フェールオーバーの前に Azure VM エージェントを仮想マシンにインストールする必要があります。
 
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>UEFI ベースのマシンを Azure にフェールオーバーした後、シリアル コンソールを開くことができない
+
+RDP を使用してマシンに接続できても、シリアル コンソールを開くことができない場合は、次の手順に従います。
+
+* マシンの OS が Red Hat または Oracle Linux 7.*/8.0 の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
+
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+
+* マシンの OS が CentOS 7.* の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
+
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>予期しないシャット ダウンのメッセージ (イベント ID 6008)
 
 フェールオーバー後の Windows VM 起動時に、回復した VM で、予期しないシャット ダウンのメッセージを受信した場合、それはフェールオーバーに使用された復旧ポイントで、VM のシャット ダウン状態がキャプチャされなかったことを示しています。 これは、VM が完全にはシャット ダウンされていないときのポイントに復旧すると発生します。
@@ -157,7 +169,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
      - マスター ターゲット サーバーでプロキシを無効にします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Windows VM への RDP 接続](../virtual-machines/windows/troubleshoot-rdp-connection.md)のトラブルシューティング
 - [Linux VM への SSH 接続](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)のトラブルシューティング
 
