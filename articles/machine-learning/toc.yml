@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: アルゴリズム チート シート
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: アルゴリズムの選択方法
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671507"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768488"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -37,7 +37,7 @@ Web アプリ、データベース、コンテンツやデータを保持する�
 送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使っているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが使われていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js と送信 http 要求
-Node.js と多数の送信 http 要求を処理する場合は、HTTP - Keep-Alive の処理が重要です。 これは、[agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` パッケージを使用して、コード内で簡単に処理することができます。
+Node.js と多数の送信 http 要求を処理する場合は、HTTP - Keep-Alive の処理が重要です。 [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` パッケージを使用して、コード内で簡単に処理することができます。
 
 ハンドラーで何もしない場合でも、`http` 応答を常に処理します。 応答を適切に処理しなかった場合、使用できるソケットがなくなるため、アプリケーションは最終的にスタックします。
 
@@ -63,5 +63,15 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 バックアップ エラーが発生した場合は、最新のバックアップ結果を確認してどちらの種類のエラーが発生しているのかを把握します。 ストレージへのアクセス エラーが発生している場合は、バックアップ構成で使用しているストレージ設定を確認し、更新します。 データベースへのアクセス エラーが発生している場合は、アプリ設定に含まれる接続文字列を確認し、更新してから、必要なデータベースが正しく含まれるようにバックアップ構成を更新します。 アプリのバックアップについて詳しくは、[Azure App Service での Web アプリのバックアップ](manage-backup.md)に関する記事をご覧ください。
 
 ## <a name="nodejs"></a>新しい Node.js アプリを Azure App Service にデプロイする場合
-Node.js アプリ向けの Azure App Service の既定の構成は、最も一般的なアプリのニーズに最も合うように設計されています。Node.js アプリの構成で、パーソナライズされたチューニングの利点を活用してパフォーマンスの向上または CPU/メモリ/ネットワーク リソースのリソース使用量の最適化を行う場合には、「[Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)」を参照してください。この記事では、Node.js アプリでの構成に必要となる可能性のある iisnode 設定について、また、アプリが直面する可能性のあるさまざまなシナリオや問題を説明し、これらの問題に対処する方法が示されています。
+Node.js アプリ向けの Azure App Service の既定の構成は、最も一般的なアプリのニーズに最も合うように設計されています。 Node.js アプリの構成で、パーソナライズされたチューニングの利点を活用してパフォーマンスの向上または CPU/メモリ/ネットワーク リソースのリソース使用量の最適化を行う場合には、「[Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)」をご覧ください。 この記事では、Node.js アプリでの構成に必要となる可能性のある iisnode 設定について、また、アプリが直面する可能性のあるさまざまなシナリオや問題を説明し、これらの問題に対処する方法が示されています。
 
+
+## <a name="next-steps"></a>次の手順
+ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
+
+- [Azure portal](https://portal.azure.com) で Web App に移動します。
+- 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。
+- **[ベスト プラクティス]** ホームページ タイルを選択します。
+- **[Best Practices for Availability & Performance]\(可用性 & パフォーマンスのベスト プラクティス\)** または **[Best Practices for Optimal Configuration]\(最適な構成のベスト プラクティス\)** をクリックして、これらのベスト プラクティスに関するアプリの現在の状態を表示します。
+
+また、こちらのリンクを使用して、リソースの App Service 診断を直接開くこともできます: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。

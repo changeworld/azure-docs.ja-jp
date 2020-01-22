@@ -1,18 +1,18 @@
 ---
-title: JavaScript Web アプリのための Azure Application Insights | Microsoft Docs
-description: ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
+title: JavaScript Web アプリのための Azure Application Insights
+description: ページ ビューとセッション数、Web クライアントのデータ、シングル ページ アプリケーション (SPA) を取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706597"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045839"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -97,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>構成
 ほとんどの構成フィールドは、既定値を false にできるように指定されています。 `instrumentationKey`以外のすべてのフィールドは省略可能です。
 
-| 名前 | Default | 説明 |
+| Name | Default | [説明] |
 |------|---------|-------------|
 | instrumentationKey | null | **必須**<br>Azure portal で入手したインストルメンテーション キー |
 | accountId | null | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 |
@@ -108,8 +108,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | disableExceptionTracking | false | true の場合、例外は自動収集されません。 既定値は false です。 |
 | disableTelemetry | false | true の場合、テレメトリは収集または送信されません。 既定値は false です。 |
 | enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部**デバッグ データはログに記録される**代わりに**例外としてスローされます。 既定値は false です。 <br>***注:*** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
-| loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2\.すべて (エラーおよび警告) |
-| loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2\.すべて (エラーおよび警告) |
+| loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
+| loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
 | diagnosticLogInterval | 10000 | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) |
 | samplingPercentage | 100 | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 |
 | autoTrackPageVisitTime | false | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 既定値は false です。 |
@@ -147,7 +147,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="react-extensions"></a>React の拡張機能
 
-| Extensions |
+| 拡張機能 |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|

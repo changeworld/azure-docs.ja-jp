@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273392"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708527"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -73,14 +73,56 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 > [!NOTE]
 > Recovery Services コンテナーの**ストレージのレプリケーションの種類** (ローカル冗長/geo 冗長) の変更は、コンテナーでバックアップを構成する前に行う必要があります。 バックアップをいったん構成すると、変更オプションは無効になり、**ストレージのレプリケーションの種類**は変更できません。
 
+## <a name="set-cross-region-restore"></a>リージョンをまたがる復元の設定
+
+復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)) で復元できます。 このオプションを使用すると、次のことができます。
+
+- 監査またはコンプライアンスの必要がある場合にドリルを行う
+- プライマリ リージョンで障害が発生した場合に、VM またはそのディスクを復元する。
+
+この機能を選択するには、 **[バックアップ構成]** ブレードから **[Enable Cross Region Restore]\(リージョンをまたがる復元を有効にする\)** を選択します。
+
+このプロセスは、ストレージ レベルでの料金に影響します。
+
+>[!NOTE]
+>作業を開始する前に、次のことを行います。
+>
+>- サポートされているマネージド型とリージョンの一覧については、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
+>- リージョンをまたがる復元 (CRR) 機能は、現在 WCUS リージョンでのみご利用いただけます。
+>- CRR は、任意の GRS コンテナーのためのコンテナー レベルのオプトイン機能です (既定ではオフになっています)。
+>- *"featureName":"CrossRegionRestore"* を使用して、この機能に対してサブスクリプションを利用開始してください。
+>- 制限付きのパブリック プレビュー中にこの機能に対して利用開始した場合、レビューの承認メールに価格ポリシーの詳細が含まれます。
+>- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
+>- 現在 CRR は、バックアップ管理の種類「ARM Azure VM」でのみサポートされています (クラシック Azure VM はサポートされません)。  追加の管理の種類が CRR をサポートすると、それらは自動的に**登録**されます。
+
+### <a name="configure-cross-region-restore"></a>リージョンをまたがる復元の構成
+
+GRS 冗長性を使用して作成されたコンテナーには、リージョンをまたがる復元機能を構成するためのオプションが含まれています。 すべての GRS コンテナーにはバナーがあり、それはドキュメントにリンクされます。 コンテナーの CRR を構成するには、[バックアップ構成] ブレードにアクセスします。ここには、この機能を有効にするオプションが含まれています。
+
+ ![バックアップ構成のバナー](./media/backup-azure-arm-restore-vms/banner.png)
+
+1. ポータルから [Recovery Services コンテナー] > [設定] > [プロパティ] にアクセスします。
+2. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** をクリックして、機能を有効にします。
+
+   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) をクリックする前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+
+   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) をクリックした後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+
+[セカンダリ リージョンのバックアップ項目を表示する](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)方法について学習します。
+
+[セカンダリ リージョンで復元する](backup-azure-arm-restore-vms.md#restore-in-secondary-region)方法について学習します。
+
+[セカンダリ リージョンの復元ジョブを監視する](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)方法について説明します。
+
 ## <a name="modifying-default-settings"></a>既定の設定を変更する
 
-コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。 
-* 既定では、 **[ストレージ レプリケーションの種類]** は **[Geo-redundant]\(geo 冗長\)** に設定されます。 バックアップを構成すると、変更オプションは無効になります。 この[手順](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)に従って、設定を確認、変更します。 
-* 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 この[手順](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)に従って、設定を確認、変更します。
+コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。
 
+- 既定では、 **[ストレージ レプリケーションの種類]** は **[Geo-redundant]\(geo 冗長\)** に設定されます。 バックアップを構成すると、変更オプションは無効になります。 この[手順](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)に従って、設定を確認、変更します。
 
-## <a name="next-steps"></a>次の手順
+- 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 この[手順](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)に従って、設定を確認、変更します。
+
+## <a name="next-steps"></a>次のステップ
 
 Recovery Services コンテナーの[詳細情報](backup-azure-recovery-services-vault-overview.md)。
 Recovery Services コンテナーの削除の[詳細情報](backup-azure-delete-vault.md)。

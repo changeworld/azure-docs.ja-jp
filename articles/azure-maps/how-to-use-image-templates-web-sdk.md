@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Web SDK の画像テンプレート | Microsoft Docs
-description: Azure Maps Web SDK で画像テンプレートを使用する方法について説明します。
+title: Azure Maps Web SDK の画像テンプレート | Microsoft Azure Maps
+description: この記事では、HTML マーカーおよび Microsoft Azure Maps Web SDK のさまざまなレイヤーで、画像テンプレートを使用する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976665"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911568"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 
-画像は、Azure Maps Web SDK 内の HTML マーカーとさまざまなレイヤーで使用できます。
+画像は、HTML マーカーおよび Azure Maps Web SDK 内のさまざまなレイヤーで使用できます。
 
  - シンボル レイヤーでは、画像アイコンを使用してマップ上にポイントをレンダリングできます。 線のパスに沿ってシンボルをレンダリングすることもできます。
  - 塗りつぶしパターン画像を使用して多角形レイヤーをレンダリングできます。 
@@ -32,7 +32,7 @@ ms.locfileid: "68976665"
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-ここで、`id` は、マップ画像スプライトに追加されるときに画像に割り当てられる一意の識別子です。 レイヤーでこの識別子を使用して、レンダリングする画像リソースを指定します。 `templateName` では、使用する画像テンプレートを指定します。 `color` オプションでは画像の第一の色を設定し、`secondaryColor` オプションでは画像の第二の色を設定します。 `scale` オプションでは、画像スプライトに適用する前に画像テンプレートを拡大縮小します。 画像が画像スプライトに適用されると、画像は PNG に変換されます。 上質なレンダリングを確保するには、画像テンプレートをレイヤーで拡大するよりも、画像テンプレートを拡大してからスプライトに追加することをお勧めします。
+ここで、`id` は、マップ画像スプライトに追加されるときに画像に割り当てられる一意の識別子です。 レイヤーでこの識別子を使用して、レンダリングする画像リソースを指定します。 `templateName` では、使用する画像テンプレートを指定します。 `color` オプションでは画像の原色を設定し、`secondaryColor` オプションでは画像の補色を設定します。 `scale` オプションでは、画像スプライトに適用する前に画像テンプレートを拡大縮小します。 画像が画像スプライトに適用されると、画像は PNG に変換されます。 上質なレンダリングを確保するには、画像テンプレートをレイヤーで拡大するよりも、画像テンプレートを拡大してからスプライトに追加することをお勧めします。
 
 この関数では、画像を画像スプライトに非同期的に読み込みます。その結果、この関数が完了するまで待機できる Promise が返されます。
 
@@ -81,7 +81,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 画像テンプレートをマップ画像スプライトに読み込んだ後は、レイヤーの `fillPattern` オプションで画像リソース ID を参照することで、多角形レイヤーに塗りつぶしパターンとしてレンダリングすることができます。
 
-次のサンプルでは、第一の色が赤で第二の色が透明の `dot` 画像テンプレートを使用して、多角形レイヤーをレンダリングします。  
+次のサンプルでは、原色が赤で補色が透明の `dot` 画像テンプレートを使用して、多角形レイヤーをレンダリングします。  
 
 <br/>
 
@@ -108,7 +108,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 アプリケーションで同じアイコンと異なるアイコンを使用する場合、またはさらに画像テンプレートを追加するモジュールを作成する場合、`atlas` 名前空間上で次の静的関数を使用して、Azure Maps Web SDK からこれらのアイコンを簡単に追加および取得できます。
 
-| EnableAdfsAuthentication | 戻り値の型 | 説明 | 
+| Name | 戻り値の型 | [説明] | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | カスタム SVG 画像テンプレートを atlas 名前空間に追加します。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | 名前を指定して SVG テンプレートを取得します。 |
@@ -116,10 +116,10 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 SVG 画像テンプレートでは、次のプレースホルダー値がサポートされています。
 
-| プレースホルダー | 説明 |
+| プレースホルダー | [説明] |
 |-|-|
 | `{color}` | 第一の色。 | 
-| `{secondaryColor}` | 第二の色。 | 
+| `{secondaryColor}` | 補色。 | 
 | `{scale}` | SVG 画像は、マップ画像スプライトに追加されると png 画像に変換されます。 このプレースホルダーを使用すると、テンプレートがきれいにレンダリングされるように、変換する前にテンプレートを拡大縮小できます。 | 
 | `{text}` | HTML マーカーと共に使用する場合にテキストを表示する位置。 |
 
@@ -178,7 +178,7 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 
 ## <a name="try-it-now-tool"></a>すぐに試せるツール
 
-次のツールを使用すると、さまざまな方法でさまざまな組み込みの画像テンプレートをレンダリングし、第一の色、第二の色、およびスケールをカスタマイズできます。
+次のツールを使用すると、さまざまな方法でさまざまな組み込みの画像テンプレートをレンダリングし、原色、補色、およびスケールをカスタマイズできます。
 
 <br/>
 
@@ -186,7 +186,7 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Icon template options (アイコン テンプレート オプション)</a>」を参照してください。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

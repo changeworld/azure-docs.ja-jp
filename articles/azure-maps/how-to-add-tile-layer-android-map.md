@@ -1,6 +1,6 @@
 ---
-title: Azure Maps での Android マップへのタイル レイヤーの追加 |Microsoft Docs
-description: Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する方法
+title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにタイル レイヤーをレンダリングする方法を示します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886454"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911524"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 
@@ -174,7 +174,7 @@ ms.locfileid: "68886454"
 
 ![Android マップの線](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
 

@@ -1,6 +1,6 @@
 ---
-title: Update Management のエラーをトラブルシューティングする
-description: Update Management の問題をトラブルシューティングする方法を説明します。
+title: Azure Update Management のエラーをトラブルシューティングする
+description: Azure の Update Management ソリューションに関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5346f2f11df2282a1cd2592db930f7ff829a2d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416774"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769797"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 

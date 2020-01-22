@@ -5,12 +5,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483999"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867303"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
@@ -26,7 +26,7 @@ Kubernetes のコマンドライン クライアントである [kubectl][kubect
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -146,7 +146,12 @@ azds prep --public
 azds up
 ```
 
-`azds prep --public` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。 `azds up` コマンドでは、名前空間でサービスが実行されます。
+`azds prep --public` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。
+
+> [!TIP]
+> プロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works.md#prepare-your-code)は、コードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+
+`azds up` コマンドでは、名前空間でサービスが実行されます。
 
 ```console
 $ azds up
@@ -168,7 +173,7 @@ azds up コマンドの出力に示されているパブリック URL を開く�
 
 ![mywebapi から Windows のバージョンを通知するサンプル アプリ](../media/run-dev-spaces-windows-containers/sample-app.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 

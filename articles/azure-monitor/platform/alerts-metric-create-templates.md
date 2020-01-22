@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397342"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969430"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "75397342"
 1. アラートの作成方法を記述した JSON ファイルとして以下のテンプレートの 1 つを利用します｡
 2. 対応するパラメーター ファイルを編集し、JSON として利用してアラートをカスタマイズします。
 3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」で使用可能なメトリックを確認してください。
-4. [任意のデプロイ方法](../../azure-resource-manager/resource-group-template-deploy.md)を使用してテンプレートをデプロイします｡
+4. [任意のデプロイ方法](../../azure-resource-manager/templates/deploy-powershell.md)を使用してテンプレートをデプロイします｡
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>単純な静的しきい値メトリック アラートのテンプレート
 
@@ -378,6 +378,13 @@ Resource Manager テンプレートを使用してアラートを作成するに
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Resource Manager テンプレートを使用してアラートを作成するに
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -555,7 +566,12 @@ az group deployment create \
 
 新しいメトリック アラートは､多次元メトリックでのアラートをサポートするばかりでなく､複数の基準もサポートしています｡ 次のテンプレートを使用して､多次元メトリックに高度なメトリック アラート ルールを作成し､複数の条件を指定することができます｡
 
-アラート ルールに複数の条件が含まれている場合、ディメンションの使用は各条件内のディメンションごとに 1 つの値に制限されることに注意してください。
+複数の条件を含む警告ルールでディメンションを使用する場合は、次の制約に注意してください。
+- 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
+- "\*" をディメンション値として使用することはできません。
+- 異なる基準で構成されているメトリックが同じディメンションをサポートしている場合、構成されたディメンションの値は、これらのすべての (関連する基準の) メトリックに対して同じ方法で明示的に設定する必要があります。
+    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため*criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
+
 
 このチュートリアルでは､以下の JSON を advancedstaticmetricalert.json として保存します｡
 
@@ -784,9 +800,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> アラート ルールに複数の条件が含まれている場合、ディメンションの使用は各条件内のディメンションごとに 1 つの値に制限されます。
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>複数のディメンションを監視する静的なしきい値メトリック アラートのテンプレート
 

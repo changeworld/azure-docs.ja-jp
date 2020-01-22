@@ -3,12 +3,12 @@ title: Azure Functions 1.x の host.json のリファレンス
 description: Azure Functions の v1 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975467"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769610"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 
@@ -136,7 +136,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
 |Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください|
@@ -188,7 +188,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -211,7 +211,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|この設定を有効にすると、要求処理パイプラインが、システム パフォーマンス カウンター (接続、スレッド、プロセス、メモリ、CPU など) を定期的にチェックし、カウンターのいずれかが組み込まれた上限閾値 (80%) を超えた場合は、カウンターが正常なレベルに戻るまで要求は 429 "Too Busy" 応答で拒否されます。|
 |maxConcurrentRequests|unbounded (`-1`)|並列で実行される HTTP 関数の最大数。 これによりコンカレンシーを制御でき、リソース使用率の管理に役立ちます。 たとえば、多くのシステム リソース (メモリ、CPU、ソケット) を消費する HTTP 関数があった場合、コンカレンシー率が高すぎると問題が発生します。 または、サードパーティのサービスに対して要求を送信する関数があり、その呼び出し速度を制限する必要がある場合です。 このような場合は、調整を適用することができます。|
@@ -222,7 +222,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ジョブ ホストの一意の ID。 ダッシュを削除した小文字の GUID を指定できます。 ローカルで実行しているときに必要です。 Azure で実行するときは、ID 値を設定しないことをお勧めします。 `id` を省略すると、ID は Azure で自動的に生成されます。 
 
-ストレージ アカウントを複数の関数アプリで共有している場合は、各関数アプリの `id` がそれぞれ異なることを確認してください。 `id` プロパティは省略することができます。あるいは、各関数アプリの `id` を手動でそれぞれ異なる値に設定することもできます。 1 つの関数アプリが複数のインスタンスにスケール アウトする場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリが同じ `id` を共有していて、それぞれタイマー トリガーを使用している場合は、1 つのタイマーのみが実行されます。
+ストレージ アカウントを複数の関数アプリで共有している場合は、各関数アプリの `id` がそれぞれ異なることを確認してください。 `id` プロパティは省略することができます。または、各関数アプリの `id` を手動でそれぞれ異なる値に設定することもできます。 1 つの関数アプリが複数のインスタンスにスケール アウトする場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリが同じ `id` を共有していて、それぞれタイマー トリガーを使用している場合は、1 つのタイマーのみが実行されます。
 
 ```json
 {
@@ -249,7 +249,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
 |defaultLevel|Information|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
@@ -271,7 +271,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |maxPollingInterval|60000|キューのポーリングの最大間隔 (ミリ秒)。| 
 |visibilityTimeout|0|メッセージの処理が失敗したときの再試行間隔。| 
@@ -290,7 +290,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
     }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |from|該当なし|すべての関数の送信者の電子メール アドレス。| 
 
@@ -308,7 +308,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 | 
 |prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。| 
@@ -330,7 +330,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
@@ -353,7 +353,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 |consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
 |fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 
@@ -368,7 +368,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [host.json ファイルを更新する方法について説明します](functions-reference.md#fileupdate)。

@@ -4,12 +4,12 @@ description: Azure Functions Tools for Visual Studio 2019 を使用して、Azur
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230652"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769773"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -63,7 +63,7 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 1. 更新が完了したら、 **[閉じる]** を選択して Visual Studio を再起動します。
 
 > [!NOTE]  
-Visual Studio 2019 以降では、Azure Functions ツールの拡張機能が Visual Studio の一部として更新されます。  
+> Visual Studio 2019 以降では、Azure Functions ツールの拡張機能が Visual Studio の一部として更新されます。  
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する
 
@@ -228,7 +228,7 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 
 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 

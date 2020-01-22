@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: fe70bd5994d835bdc2651a64d35c988ea38b8511
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130412"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770035"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway の SSL ポリシーの概要
 
@@ -98,6 +98,17 @@ Application Gateway では、カスタム ポリシーで選択できる次の�
 > [!NOTE]
 > 接続に使用される SSL 暗号化スイートはまた、使用される証明書の種類にも基づきます。 クライアントからアプリケーション ゲートウェイへの接続では、使用される暗号化スイートはそのアプリケーション ゲートウェイ リスナー上のサーバー証明書の種類に基づきます。 アプリケーション ゲートウェイからバックエンド プールへの接続では、使用される暗号化スイートはそのバックエンド プール サーバー上のサーバー証明書の種類に基づきます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="known-issue"></a>既知の問題
+Application Gateway v2 では現在、次の暗号はサポートされていません。
+- DHE-RSA-AES128-GCM-SHA256
+- DHE-RSA-AES128-SHA
+- DHE-RSA-AES256-GCM-SHA384
+- DHE-RSA-AES256-SHA
+- DHE-DSS-AES128-SHA256
+- DHE-DSS-AES128-SHA
+- DHE-DSS-AES256-SHA256
+- DHE-DSS-AES256-SHA
+
+## <a name="next-steps"></a>次のステップ
 
 SSL ポリシーを構成する方法については、「[Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する](application-gateway-configure-ssl-policy-powershell.md)」を参照してください。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382169"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707007"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
 
@@ -47,6 +47,8 @@ Microsoft で推奨しているのは、ユーザー リスク ポリシーの�
 
 すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
 
+Identity Protection で構成済みのセキュリティで保護された[ネットワークの場所](../conditional-access/location-condition.md)を使用することで、リスクを検出して偽陽性を減らすことができます。
+
 ## <a name="enable-policies"></a>ポリシーを有効にする
 
 ユーザー リスクとサインイン リスク ポリシーを有効にするには、次の手順を完了します。
@@ -70,9 +72,9 @@ Microsoft で推奨しているのは、ユーザー リスク ポリシーの�
    1. **[コントロール]** で:
       1. **[アクセス]** - Microsoft で推奨しているのは、 **[アクセスを許可]** と **[多要素認証が必要です]** を設定することです。
    1. **[ポリシーの適用]**  -  **[オン]**
-   1. **[[Save]]**
+   1. **および**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
 

@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974225"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769014"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -42,7 +42,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 
 | プロパティ | 値/型 | 説明 |
 | --- | --- | --- |
-| `type` |string |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
+| `type` |string |バインドの種類。 たとえば、「 `queueTrigger` 」のように入力します。 |
 | `direction` |"in"、"'out" |バインドが関数への受信データか、関数からの送信データかを示します。 |
 | `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
@@ -95,11 +95,11 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Azure Functions をローカルでコーディングしてテストする](./functions-develop-local.md)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
+* [Azure Functions Node.js 開発者向けリファレンス](functions-reference-node.md)

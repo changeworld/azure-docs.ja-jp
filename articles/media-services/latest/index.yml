@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Media Services v3 のドキュメント
+title: Azure Media Services v3 のクラウドベース プラットフォームについて説明します
 summary: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 metadata:
   title: Azure Media Services v3 のドキュメント
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 10/07/2019
-  ms.openlocfilehash: b55677aba5f99d4960d51d3a717175d47db026e2
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 70eab66c3bd2d8536e415c9ac7c62161f3710c0c
+  ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72244208"
+  ms.lasthandoff: 01/22/2020
+  ms.locfileid: "76314676"
 landingContent:
 - title: Media Services について
   linkLists:
@@ -41,11 +41,11 @@ landingContent:
       url: use-azure-media-player.md
     - text: v3 API を使用した開発のガイダンス
       url: media-services-apis-overview.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: アカウントの作成
+    - text: アカウントを作成する
       url: create-account-cli-how-to.md
     - text: API へのアクセス
       url: access-api-cli-how-to.md

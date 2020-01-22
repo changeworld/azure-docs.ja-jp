@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665328"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830209"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -46,11 +46,11 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | --- | --- | --- |
 | バックアップ | オンライン回復ポイントを作成できませんでした | **エラー メッセージ**:Windows Azure Backup エージェントが、選択されたボリュームのスナップショットを作成できませんでした。 <br> **回避策**:レプリカと復旧ポイント ボリュームの領域を増やしてください。<br> <br> **エラー メッセージ**:Windows Azure Backup エージェントが、OBEngine サービスに接続できませんでした <br> **対処法**: コンピューター上で実行中のサービス一覧に OBEngine が存在することを確認してください。 OBEngine サービスが実行されていない場合は、"net start OBEngine" コマンドを使用して、OBEngine サービスを開始します。 <br> <br> **エラー メッセージ**:このサーバーの暗号化パスフレーズは設定されていません。 暗号化パスフレーズを構成してください。 <br> **回避策**:暗号化パスフレーズを構成してください。 失敗した場合は、次の手順を実行します。 <br> <ol><li>スクラッチ場所が存在することを確認します。 レジストリ **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config** に **ScratchLocation** という名前で場所が存在している必要があります。</li><li> このスクラッチ場所が存在する場合は、以前のパスフレーズを使用して再登録します。 *暗号化のパスフレーズを構成したら、必ず安全な場所に保管してください。*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>指定されたコンテナー資格情報は、サーバーが登録されているコンテナーの資格情報と異なります
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>元の DPM サーバーと外部の DPM サーバーを同じコンテナーに登録する必要があります
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| [復元] | **エラー コード**:CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**エラー メッセージ**:指定されたコンテナー資格情報は、サーバーが登録されているコンテナーの資格情報と異なります | **原因**:この問題は、外部 DPM の復旧オプションを使用して元のサーバーから代替サーバーにファイルを復元しようとしているときに、復旧先のサーバーと、データのバックアップ元のサーバーが同じ Recovery Services コンテナーに関連付けられていない場合に発生します。<br/> <br/>**対処法**: この問題を解決するには、元のサーバーと代替サーバーの両方を必ず同じコンテナーに登録します。|
+| [復元] | **エラー コード**:CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**エラー メッセージ**:元の DPM サーバーと外部の DPM サーバーを同じコンテナーに登録する必要があります | **原因**:この問題は、外部 DPM の復旧オプションを使用して元のサーバーから代替サーバーにファイルを復元しようとしているときに、復旧先のサーバーと、データのバックアップ元のサーバーが同じ Recovery Services コンテナーに関連付けられていない場合に発生します。<br/> <br/>**対処法**: この問題を解決するには、元のサーバーと代替サーバーの両方を必ず同じコンテナーに登録します。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM のオンライン復旧ポイント作成ジョブが失敗します
 
