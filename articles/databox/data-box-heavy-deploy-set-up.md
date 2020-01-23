@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3b27a4788bd144a8d2d423af1fa23ef09c5379f8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772852"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514427"
 ---
 ::: zone target = "docs"
 
@@ -57,7 +57,7 @@ ms.locfileid: "70772852"
 5. ストレージ デバイスで使用するためのアース端子付き電源ケーブルを 4 本受け取っていること。
 6. データセンター ネットワークに接続されているホスト コンピューターがあること。 Data Box Heavy はこのコンピューターからデータをコピーします。 お使いのホスト コンピューターで、[サポート対象のオペレーティング システム](data-box-heavy-system-requirements.md)が実行されていること。
 7. お客様のデータセンターには、高速ネットワークが必要です。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 
-8. RJ-45 ケーブルを使用してローカル UI に接続し、デバイスを構成するためのノート PC があること。 このノート PC を使用して、デバイスの各ノードで 1 度構成を行います。
+8. RJ-45 ケーブルを使用してローカル UI に接続し、デバイスを構成するためのノート PC があること。 このノート PC を使用して、デバイスの各ノードで 1 回構成を行います。
 9. デバイス ノードごとに 40 Gbps ケーブルまたは 10 Gbps ケーブルが 1 本あること。
     - [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) ネットワーク インターフェイスと互換性のあるケーブルを選択します。
     - 40 Gbps ケーブルの場合、ケーブルのデバイス側の端は QSFP+ である必要があります。
@@ -148,7 +148,7 @@ ms.locfileid: "70772852"
 
 デバイスの設定が完了したら、デバイス共有に接続し、コンピューターからデバイスにデータをコピーすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Heavy に関する次のようなトピックについて説明しました。
 

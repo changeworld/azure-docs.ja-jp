@@ -1,20 +1,20 @@
 ---
-title: Microsoft Azure Virtual Network への VPN スループットの検証 | Microsoft Docs
+title: Microsoft Azure Virtual Network への VPN スループットを検証する
 description: このドキュメントの目的は、ユーザーがオンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証できるようにすることです。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058809"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860488"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -260,7 +260,7 @@ MS ネットワーク バックボーンに入る前にいずれかのホップ�
 
 "msn.net" 内のホップから大規模で異常な待ち時間のスパイクがあることに気付いた場合は、詳細な調査を行うために MS サポートにお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細やヘルプについては、次のリンク先を確認してください。
 

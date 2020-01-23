@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241376"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514410"
 ---
 ::: zone target = "docs"
 
@@ -32,9 +32,9 @@ ms.locfileid: "70241376"
 
 開始する前に次の点を確認します。
 
-- デバイスが搬入経路全体を問題なく通過できること。 デバイスのサイズは次のとおりです。幅: 26 インチ、長さ: 48 インチ、高さ: 28 インチ。
+- デバイスが搬入経路全体を問題なく通過できること。 デバイスのサイズは次のとおりです。幅:26 インチ、長さ: 48 インチ、高さ: 28 インチ。
 - 1 階以外のフロアに設置する場合、エレベーターまたはスロープからでもデバイスにアクセスできること。
-- デバイスの運搬担当者が 2 人いること。 デバイスの重量は約 500 ポンドで、 車輪付きです。
+- デバイスの運搬担当者が 2 人いること。 デバイスの重量は約 500 ポンドです。 車輪付きです。
 - データセンター内に、これだけの設置面積を占めるデバイスを収容可能な平らな場所があり、その近くに使用可能なネットワーク接続用設備があること。
 
 ### <a name="for-service"></a>サービスでは
@@ -51,7 +51,7 @@ ms.locfileid: "70241376"
 
 - [Data Box Heavy の安全性のガイドライン](data-box-safety.md)を確認していること。
 - データセンター ネットワークに接続されているホスト コンピューターがあること。 Data Box Heavy はこのコンピューターからデータをコピーします。 お使いのホスト コンピューターでは、[サポート対象のオペレーティング システム](data-box-heavy-system-requirements.md)が実行されている必要があります。
-- RJ-45 ケーブルを使用してローカル UI に接続し、デバイスを構成するためのノート PC があること。 このノート PC を使用して、デバイスの各ノードで 1 度構成を行います。
+- RJ-45 ケーブルを使用してローカル UI に接続し、デバイスを構成するためのノート PC があること。 このノート PC を使用して、デバイスの各ノードで 1 回構成を行います。
 - データセンターに高速ネットワークが備わっており、少なくとも 1 つの 10 GbE 接続を使用できること。
 - デバイス ノードごとに 40 Gbps ケーブルまたは 10 Gbps ケーブルが 1 本あること。 Mellanox MCX314A-BCCT ネットワーク インターフェイスとの互換性のあるケーブルを選んでください。
     - 40 Gbps ケーブルの場合、ケーブルのデバイス側の端は QSFP+ である必要があります。
@@ -61,9 +61,9 @@ ms.locfileid: "70241376"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-## <a name="order"></a>順序
+## <a name="order"></a>Order
 
 この手順には約 5 分かかります。
 
@@ -160,7 +160,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
     1. 失敗していないかエラー ログで確認し、適切な措置を講じます。
     2. コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この手順を完了するには、2 分から 3 分かかります。
 
@@ -168,7 +168,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 - Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure へのデータのインポートを支援する Data Box Heavy をデプロイしました。 Azure Data Box Heavy の管理の詳細については、次のチュートリアルを参照してください。
 

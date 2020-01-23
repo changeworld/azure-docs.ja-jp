@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1558b2eb12b1d4745cdfeab41fc2d1bd829b3d9c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816697"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944690"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>クイック スタート:Python の長い形式の音声の非同期合成 (プレビュー)
 
-このクイックスタートでは、Long Audio API を使用し、テキストを音声に非同期で変換し、サービスにより提供される URI からオーディオ出力を取得します。 この REST API は、10,000 文字または 50 段落を超えるテキスト ファイルを合成音声に変換する必要があるコンテンツ プロバイダーに最適です。 詳細については、「[Long Audio API](../../long-audio-api.md)」を参照してください。
+このクイックスタートでは、Long Audio API を使用し、テキストを音声に非同期で変換し、サービスにより提供される URI からオーディオ出力を取得します。 この REST API は、5,000 文字 (または長さ 10 分) を超えるテキストから音声を合成する必要のあるコンテンツ プロバイダーに最適です。 詳細については、「[Long Audio API](../../long-audio-api.md)」を参照してください。
 
 > [!NOTE]
 > 長い形式のオーディオの非同期合成は、[カスタム ニューラル音声](../../how-to-custom-voice.md#custom-neural-voices)でのみ使用できます。
@@ -56,7 +56,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ## <a name="get-a-list-of-supported-voices"></a>サポートされている音声の一覧を取得する
 
-このコードからは、テキスト読み上げの変換に利用できる音声の一覧が取得されます。 このコード `voice_synthesis_client.py` を追加します。
+このコードからは、テキスト読み上げの変換に利用できる音声の一覧が取得されます。 このコードを `voice_synthesis_client.py` に追加してください。
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,13 +80,18 @@ if args.voices:
 
 ### <a name="test-your-code"></a>コードのテスト
 
-ここまでの内容をテストしてみましょう。 このコマンドを実行します。`<your_key>` は音声サブスクリプション キーに、`<region>` は音声リソースが作成されたリージョン (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+ここまでの内容をテストしてみましょう。 下の要求でいくつかの項目を更新する必要があります。
+
+* `<your_key>` をお使いの音声サービスのサブスクリプションに置き換えます。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+* `<region>` を音声リソースが作成された場所 (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+
+次のコマンドを実行します。
 
 ```console
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-出力は次のようになります。
+次のような出力が表示されます。
 
 ```console
 There are xx voices available:
@@ -95,14 +100,16 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+## <a name="prepare-input-files"></a>入力ファイルを準備する
+
+入力テキスト ファイルを準備します。 プレーンテキストまたは SSML テキストを使用できます。 入力ファイルの要件については、[合成用にコンテンツを準備する](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)方法に関するセクションを参照してください。
+
 ## <a name="convert-text-to-speech"></a>テキストを音声に変換する
 
-次の手順では、入力テキスト ファイルを準備します。 プレーンテキストか SSML にできますが、10,000 文字以上か 50 段落以上にする必要があります。 要件の完全な一覧については、「[Long Audio API](../../long-audio-api.md)」を参照してください。
-
-テキスト ファイルを準備したら、 次の手順では、音声合成用のコードをプロジェクトに追加します。 このコードを `voice_synthesis_client.py` に追加します。
+入力テキスト ファイルを準備したら、音声合成用のコード (下記) を `voice_synthesis_client.py` に追加します。
 
 > [!NOTE]
-> 既定では、オーディオ出力は riff-16khz-16bit-mono-pcm に設定されています。 サポートされているオーディオ出力の詳細については、「[Long Audio API](../../long-audio-api.md#audio-output-formats)」を参照してください。
+> "concatenateResult" はオプション パラメーターです。 このパラメーターを設定しなかった場合、オーディオ出力が段落ごとに生成されます。 このパラメーターを設定することで、複数の音声を 1 つの出力に連結することもできます。 既定では、オーディオ出力は riff-16khz-16bit-mono-pcm に設定されています。 サポートされているオーディオ出力の詳細については、「[音声出力形式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)」を参照してください。
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -123,7 +130,7 @@ def submitSynthesis():
         files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
-        location = response.headers['Operation-Location']
+        location = response.headers['Location']
         id = location.split("/")[-1]
         print("Submit synthesis request successful")
         return id
@@ -169,9 +176,9 @@ if args.submit:
 
 * `<your_key>` をお使いの音声サービスのサブスクリプションに置き換えます。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
 * `<region>` を音声リソースが作成された場所 (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
-* `<input>` を、テキスト読み上げから変換するテキスト ファイルのパスに置換します。
+* `<input>` を、テキスト読み上げ用に準備したテキスト ファイルのパスに置換します。
 * `<locale>` を必要な出力ロケールに置換します。 詳細については、「[言語サポート](../../language-support.md#neural-voices)」を参照してください。
-* `<voice_guid>` を、オーディオ出力に必要な音声に置換します。 「[サポートされている音声の一覧を取得する](#get-a-list-of-supported-voices)」から返される音声の 1 つを使用するか、[言語サポート](../../language-support.md#neural-voices)で提供されるニューラル音声の一覧を使用します。
+* `<voice_guid>` を必要な出力音声に置換します。 「[サポートされている音声の一覧を取得する](#get-a-list-of-supported-voices)」から返されるいずれかの音声を使用してください。
 
 このコマンドでテキストを音声に変換します。
 
@@ -180,9 +187,11 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 ```
 
 > [!NOTE]
-> "concatenateResult" は省略可能なパラメーターです。このパラメーターが指定されない場合、出力は複数の wave ファイルとして提供されます。行ごとに 1 つとなります。
+> 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 注意すべきいくつかの制限事項があります。 
+> * クライアントは、各 Azure サブスクリプション アカウントに対して 1 秒あたり最大 **5** 個の要求をサーバーに送信できます。 制限を超えると、クライアントはエラー コード 429 (要求が多すぎます) を受け取ります。 1 秒あたりの要求の数を減らしてください
+> * サーバーは、各 Azure サブスクリプション アカウントに対して最大 **120** 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないで待ってください
 
-出力は次のようになります。
+次のような出力が表示されます。
 
 ```console
 Submit synthesis request successful
@@ -200,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-与えられた結果には、入力テキストと、サービスによって生成されたオーディオ出力ファイルが含まれます。 これらは zip としてダウンロードされます。
+結果には、入力テキストと、サービスによって生成されたオーディオ出力ファイルが含まれます。 それらのファイルを zip 形式でダウンロードできます。
 
 ## <a name="remove-previous-requests"></a>前の要求を削除する
 
-サブスクリプションごとに 2000 要求という上限があります。 そのため、前に送信した要求を削除しないと新しい要求を作成できない場合があります。 既存の要求を削除しない場合、2,000 を超過したときにエラーが表示されます。
+サーバーは、各 Azure サブスクリプション アカウントごとに最大 **2 万**個の要求を保持します。 この制限を要求の量が超える場合は、新しい要求を送信する前に、以前の要求を削除してください。 既存の要求を削除しない場合、エラー通知が返されます。
 
-このコードを `voice_synthesis_client.py` に追加します。
+このコードを `voice_synthesis_client.py` に追加してください。
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -239,13 +248,18 @@ if args.delete:
 
 ### <a name="test-your-code"></a>コードのテスト
 
-このコマンドを実行します。`<your_key>` は音声サブスクリプション キーに、`<region>` は音声リソースが作成されたリージョン (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+それでは、先ほどどのような要求を送信したかをチェックしてみましょう。 先に進む前に、この要求にいくつか変更を加える必要があります。
+
+* `<your_key>` をお使いの音声サービスのサブスクリプションに置き換えます。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+* `<region>` を音声リソースが作成された場所 (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+
+次のコマンドを実行します。
 
 ```console
-python voice_synthesis_client.py – syntheses -key <your_key> -region <Region>
+python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-これで、要求した合成の一覧が返されます。 出力は次のようになります。
+送信済みの合成要求の一覧が返されます。 次のような出力が表示されます。
 
 ```console
 There are <number> synthesis requests submitted:
@@ -254,16 +268,22 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-それでは、いくつかの値を使用し、前に送信した要求を削除してみましょう。 このコマンドを実行します。`<your_key>` は音声サブスクリプション キーに、`<region>` は音声リソースが作成されたリージョン (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。 `<synthesis_id>` は、前の要求で返された値のいずれかにしてください。
+今度は、先ほど送信した要求を削除しましょう。 下のコードでいくつかの項目を更新する必要があります。
+
+* `<your_key>` をお使いの音声サービスのサブスクリプションに置き換えます。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+* `<region>` を音声リソースが作成された場所 (`eastus` や `westus` など) に置換します。 この情報は、[Azure portal](https://aka.ms/azureportal) のご利用のリソースの **[概要]** タブで確認できます。
+* `<synthesis_id>` を前の要求で返された値に置き換えます。
 
 > [!NOTE]
 > 状態が "実行中"/"待機中" の要求は削除できません。
 
+次のコマンドを実行します。
+
 ```console
-python voice_synthesis_client.py – delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
+python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-出力は次のようになります。
+次のような出力が表示されます。
 
 ```console
 delete voice synthesis xxx
@@ -274,7 +294,7 @@ delete successful
 
 完全な `voice_synthesis_client.py` は [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py) からダウンロードできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Long Audio API について学習する](../../long-audio-api.md)

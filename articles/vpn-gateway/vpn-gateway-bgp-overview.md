@@ -1,5 +1,5 @@
 ---
-title: BGP と Azure VPN ゲートウェイの概要 | Microsoft Docs
+title: 'BGP と Azure VPN Gateway: 概要'
 description: この記事では、Azure VPN ゲートウェイを使用した BGP の概要を説明します。
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: e85eb756e416f1170a0cb2b19ab68888b5a9422f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516435"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779777"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>BGP と Azure VPN Gateway について
 この記事では、Azure VPN ゲートウェイでの BGP (Border Gateway Protocol) のサポートの概要を説明します。
@@ -47,6 +47,6 @@ BGP では、接続が直接か間接的かにかかわらず、複数のゲー�
 ## <a name="faq"></a>BGP のよくある質問
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クロスプレミス接続と VNet 間接続向けに BGP を構成する手順については、 [Azure VPN ゲートウェイでの BGP の使用](vpn-gateway-bgp-resource-manager-ps.md) に関する記事を参照してください。
 

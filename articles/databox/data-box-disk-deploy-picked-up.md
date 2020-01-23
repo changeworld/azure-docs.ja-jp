@@ -9,13 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092074"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514121"
 ---
 ::: zone target="chromeless"
 
@@ -29,7 +28,7 @@ ms.locfileid: "74092074"
 
 このチュートリアルでは、Azure Data Box Disk を返送するための集荷をスケジュールする方法について説明します。 集荷の手順は、デバイスを返送する場所によって決まります。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
 > * Data Box Disk を Microsoft に発送する
@@ -161,7 +160,7 @@ ms.locfileid: "74092074"
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Disk に関する次のようなトピックについて説明しました。
 

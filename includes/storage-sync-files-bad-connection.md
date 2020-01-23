@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391701"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772929"
 ---
 このエラーは、サーバーから Azure File Sync サービスにアクセスできない場合に発生します。 次の手順を行うと、このエラーを解決できます。
 
@@ -31,5 +31,6 @@ ms.locfileid: "72391701"
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-    
-4. ネットワーク接続のトラブルシューティングについてさらにサポートが必要な場合は、ネットワーク管理者に相談してください。
+4. このサービス エンドポイントへのネットワーク接続を確認するには、Test-StorageSyncNetworkConnectivity コマンドレットを使用します。 詳細については、[サービス エンドポイントへのネットワーク接続のテスト](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)に関するページを参照してください。    
+
+5. ネットワーク接続のトラブルシューティングについてさらにサポートが必要な場合は、ネットワーク管理者に相談してください。

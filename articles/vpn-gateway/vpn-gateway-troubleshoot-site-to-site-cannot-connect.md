@@ -1,27 +1,20 @@
 ---
-title: 接続できない Azure サイト間 VPN 接続のトラブルシューティング | Microsoft Docs
+title: 接続できない Azure サイト間 VPN 接続のトラブルシューティング titleSuffixAzure VPN Gateway
 description: 突然停止して再接続できないサイト間 VPN 接続をトラブルシューティングする方法を説明します。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058869"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862579"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング:Azure サイト間 VPN が動作を停止して接続できない
 
 オンプレミスのネットワークと Azure 仮想ネットワークの間にサイト間 VPN 接続を構成した後、VPN 接続が突然動作を停止して再接続できません。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。 
 
@@ -111,7 +104,7 @@ Azure Resource Manager デプロイ モデルの場合:
 
 接続切断の問題は、Perfect Forward Secrecy 機能によって引き起こされる可能性があります。 VPN デバイスで Perfect Forward Secrecy が有効になっている場合は、その機能を無効にしてください。 その後、VPN ゲートウェイの IPsec ポリシーを更新します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -   [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d86da3013a3cb4573556bc14ea1e6a0fbab72623
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: c82a67bbbf8f1a4f77db6ca965031e85e69ee100
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240391"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514172"
 ---
 ::: zone target="docs"
 
@@ -73,7 +73,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 Click **OK**.
+2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
     ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
@@ -130,7 +130,7 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
   
  属性については次の表で説明します。
     
-|Attribute  |説明  |
+|Attribute  |[説明]  |
 |---------|---------|
 |/e     |サブディレクトリをコピーします (空のディレクトリを含む)。         |
 |/r:     |失敗したコピーの再試行回数を指定します。         |
@@ -278,7 +278,7 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 

@@ -9,27 +9,16 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70232913"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514070"
 ---
 ::: zone target="docs"
 
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box Disk をデプロイする
-
-::: zone-end
-
-::: zone target="chromeless"
-
-## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk を使ってみる 
-
-::: zone-end
-
-::: zone target="docs"
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 ここでは、すばやく注文を作成する手順や、ディスクを受け取る手順、開梱の手順、接続手順のほか、Azure にアップロードできるようデータをディスクにコピーする手順などについて取り上げています。
 
@@ -55,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
+Azure Portal [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) にサインインします。
 
 ::: zone-end
 
@@ -74,7 +63,7 @@ Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredata
 
 ::: zone target="docs"
 
-## <a name="order"></a>順序
+## <a name="order"></a>Order
 
 この手順には約 5 分かかります。
 
@@ -143,7 +132,7 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
     1. 失敗していないかエラー ログで確認し、適切な措置を講じます。
     2. コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この手順を完了するには、2 分から 3 分かかります。
 
@@ -157,7 +146,7 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
     注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure へのデータのインポートを支援する Azure Data Box Disk をデプロイしました。 Azure Data Box Disk の管理について詳しくは、次のチュートリアルをご覧ください。
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/02/2020
-ms.openlocfilehash: b45b27fd2e3dc6cf92d83934d571df25c2ce204f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/03/2020
+ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644989"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767672"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -93,8 +93,10 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 
         ![HDInsight で Data Lake Storage Gen2 を使用するための ID 設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
-> [!Note]
-> セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに以前に作成したマネージド ID を割り当てます。セカンダリ Data Lake Storage Gen2 アカウントを HDInsight 上の「追加のストレージ アカウント」 ブレードを使用して追加することはサポートされませんのでご注意ください。
+> [!NOTE]
+> * セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに、作成済みのマネージド ID を割り当てるだけです。 HDInsight の [追加のストレージ アカウント] ブレードを使用したセカンダリ Data Lake Storage Gen2 アカウントの追加はサポートされていないことに注意してください。
+> * HDInsight で使用する Azure ストレージ アカウントで、RA-GRS または RA-ZRS を有効にすることができます。 ただし、RA-GRS または RA-ZRS セカンダリ エンドポイントに対するクラスターの作成はサポートされていません。
+
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Data Lake Storage Gen2 を使用して Azure CLI からクラスターを作成する
 

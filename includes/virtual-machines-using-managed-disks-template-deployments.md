@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013108"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037590"
 ---
 このドキュメントでは、Azure Resource Manager テンプレートを使って仮想マシンをプロビジョニングする際のマネージド ディスクと非管理対象ディスクの違いについて説明します。 以下の例は、非管理対象ディスクが使用されている既存のテンプレートを管理ディスクに更新する際にお役立てください。 ここでは参考として [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) テンプレートを使用しています。 [マネージド ディスク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)を使用したテンプレートと[非管理対象ディスク](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)を使用した以前のバージョンを見て直接比較することもできます。
 
@@ -94,7 +94,16 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 ### <a name="default-managed-disk-settings"></a>マネージド ディスクの既定の設定
 
-今後、マネージド ディスクを使用して VM を作成する場合、ストレージ アカウント リソースを作成する必要はありません。既存の仮想マシン リソースは次のように更新することができます。 具体的には、`apiVersion` に `2017-03-30` が反映され、`osDisk` と `dataDisks` には、VHD の具体的な URI が指定されていません。 追加のプロパティを指定せずにデプロイすると、ディスクでは VM のサイズに基づいてストレージの種類が使用されます。 たとえば、Premium 対応の VM サイズ (Standard_D2s_v3 など、名前に "s" が付くサイズ) が使用されている場合、システムに Premium_LRS ストレージが使用されます。 ディスクの sku 設定を使用してストレージの種類を指定します。 名前を指定しなかった場合、OS ディスクには `<VMName>_OsDisk_1_<randomstring>` 形式の名前が、各データ ディスクには `<VMName>_disk<#>_<randomstring>` 形式の名前が付きます。 既定では、Azure Disk Encryption が無効になり、キャッシュは、OS ディスクの場合は "読み取り/書き込み" に、データ ディスクの場合は "なし" になります。 下の例を見るとわかるように、ストレージ アカウントの依存関係は依然として存在します。ただし、これはあくまで診断のストレージ用であって、ディスク ストレージに必要なものではありません。
+今後、マネージド ディスクを使用して VM を作成する場合、ストレージ アカウント リソースを作成する必要はありません。 以下のテンプレート例を見ると、前出のアンマネージド ディスクの例とは、いくつかの違いがあることがわかります。
+
+- `apiVersion` は、マネージド ディスクをサポートするバージョンです。
+- `osDisk` と `dataDisks` は、VHD の具体的な URI を参照していません。
+- 追加のプロパティを指定せずにデプロイすると、ディスクでは VM のサイズに基づいてストレージの種類が使用されます。 たとえば、Premium Storage をサポートする VM サイズ (Standard_D2s_v3 など、名前に "s" が含まれるサイズ) を使用する場合、既定で Premium ディスクが構成されます。 これは、ディスクの sku 設定でストレージの種類を指定することによって変更できます。
+- ディスクの名前を指定しなかった場合、OS ディスクには `<VMName>_OsDisk_1_<randomstring>` 形式の名前が、各データ ディスクには `<VMName>_disk<#>_<randomstring>` 形式の名前が付きます。
+  - カスタム イメージから VM を作成する場合、ストレージ アカウントの種類とディスクの名前に使用される既定の設定は、カスタム イメージ リソースに定義されているディスクのプロパティから取得されます。 これらは、テンプレートで対応する値を指定することでオーバーライドすることができます。
+- 既定では、Azure Disk Encryption が無効になっています。
+- 既定では、ディスク キャッシュが、OS ディスクでは "読み取り/書き込み" に、データ ディスクでは "なし" になっています。
+- 下の例を見るとわかるように、ストレージ アカウントの依存関係は依然として存在します。ただし、これはあくまで診断のストレージ用であって、ディスク ストレージに必要なものではありません。
 
 ```json
 {
@@ -245,7 +254,7 @@ Resource Manager テンプレートで Standard SSD ディスクを作成する�
 
 REST API の仕様の詳細については、[マネージド ディスク作成の REST API に関するドキュメント](/rest/api/manageddisks/disks/disks-create-or-update)を参照してください。 その他のシナリオや、テンプレートのデプロイ時に API に送信できる既定値や許容値についても説明されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * マネージド ディスクを使用した完全なテンプレートについては、次の Azure クイック スタート リポジトリのリンクを参照してください。
     * [マネージド ディスクを使用した Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)

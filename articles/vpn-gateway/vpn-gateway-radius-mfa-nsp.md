@@ -1,5 +1,5 @@
 ---
-title: Multi-Factor Authentication 用の NPS サーバーを使用した Azure VPN ゲートウェイ RADIUS 認証のセキュリティ保護 | Microsoft Docs
+title: MFA 用に NPS と VPN Gateway RADIUS 認証を統合する
 description: Azure ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーの統合について説明します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174248"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780370"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -42,8 +42,8 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 
     - **[ゲートウェイの種類]** : **[VPN]** を選択します。
     - **VPN の種類**: **[ルート ベース]** を選択します。
-    - **[SKU]** : 要件に基づいて SKU の種類を選択します。
-    - **[仮想ネットワーク]** : ゲートウェイ サブネットを作成した仮想ネットワークを選択します。
+    - **SKU**:要件に基づいて SKU の種類を選択します。
+    - **仮想ネットワーク**:ゲートウェイ サブネットを作成した仮想ネットワークを選択します。
 
         ![仮想ネットワーク ゲートウェイの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -79,7 +79,7 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 
       ![ポイント対サイトの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 - [Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../active-directory/authentication/howto-mfa-nps-extension.md)

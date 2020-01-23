@@ -1,19 +1,18 @@
 ---
-title: 'Azure VPN ゲートウェイで BGP を構成する: Resource Manager と CLI | Microsoft Docs'
+title: 'Azure VPN Gateway 上で BGP を構成する: CLI'
 description: この記事では、Azure Resource Manager と CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209503"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863616"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法
 
@@ -56,7 +55,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-#### <a name="2-create-a-resource-group"></a>手順 2.リソース グループの作成
+#### <a name="2-create-a-resource-group"></a>2.リソース グループを作成する
 
 次の例では、TestRG1 という名前のリソース グループを "eastus" の場所に作成します。 仮想ネットワークを作成するリージョンにリソース グループが既にある場合は、代わりにそのリソース グループを使用できます。
 
@@ -64,7 +63,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 az group create --name TestBGPRG1 --location eastus
 ```
 
-#### <a name="3-create-testvnet1"></a>手順 3.TestVNet1 を作成する
+#### <a name="3-create-testvnet1"></a>3.TestVNet1 を作成する
 
 次の例では、TestVNet1 という名前の仮想ネットワークと、次の 3 つのサブネットを作成します: GatewaySubnet、FrontEnd、BackEnd。 値を代入するときは、ゲートウェイ サブネットの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
@@ -302,6 +301,6 @@ az network vpn-connection create -n VNet2ToVNet1 -g TestBGPRG2 --vnet-gateway1 /
 
 これらの手順を完了すると、数分後に接続が確立します。 BGP ピアリング セッションは、VNet 間の接続が完了すると有効になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。

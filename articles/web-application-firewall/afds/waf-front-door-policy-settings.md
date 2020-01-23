@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: f763ad9afd2238ebe63bf878882011eb3745df5c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 08b21ccd7f7958f00546583f680ecb8cde4a20c8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511600"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932613"
 ---
 # <a name="policy-settings-for-web-application-firewall-on-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのポリシーの設定
 
@@ -51,5 +51,5 @@ WAF ポリシーは、次の 2 つのモードで実行するように構成で�
 WAF ポリシーに含まれるいずれかの規則に対して**リダイレクト** アクションが選択されている場合は、要求をリダイレクトする URI を定義する必要があります。 このリダイレクト URI には有効な HTTP(S) サイトを指定する必要があり、構成すると、"リダイレクト" アクションを含む規則と一致したすべての要求が、指定したサイトにリダイレクトされます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - WAF の[カスタム応答](waf-front-door-configure-custom-response-code.md)を定義する方法を確認する

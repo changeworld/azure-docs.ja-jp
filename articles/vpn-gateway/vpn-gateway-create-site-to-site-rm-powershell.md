@@ -1,18 +1,19 @@
 ---
-title: オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN:PowerShell | Microsoft Docs
+title: オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN:PowerShell
 description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、PowerShell を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699898"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045704"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する
 
@@ -32,23 +33,15 @@ ms.locfileid: "68699898"
 
 ## <a name="before"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="running-powershell-locally"></a>ローカルでの PowerShell の実行
-
-PowerShell をローカルにインストールして使用する場合は、Azure Resource Manager PowerShell コマンドレットの最新版をインストールします。 PowerShell コマンドレットは頻繁に更新されるため、最新の機能を利用するには、通常、PowerShell コマンドレットを更新する必要があります。 PowerShell コマンドレットを更新しないと、値の指定が失敗することがあります。 
-
-使用しているバージョンを確認するには、'Get-Module -ListAvailable Az' を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
-PowerShell をローカルで実行している場合、'Connect-AzAccount' を実行して Azure との接続を作成することも必要です。
-
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example"></a>値の例
 
@@ -257,7 +250,16 @@ VPN 接続を検証する方法はいくつかあります。
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="deleteconnection"></a>ゲートウェイ接続を削除するには
+
+接続の名前がわからない場合は、"Get-AzVirtualNetworkGatewayConnection" コマンドレットを使用して調べることができます。
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+-ResourceGroupName TestRG1
+```
+
+## <a name="next-steps"></a>次のステップ
 
 *  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

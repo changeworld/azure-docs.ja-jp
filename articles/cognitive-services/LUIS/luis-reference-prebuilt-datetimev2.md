@@ -9,23 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 01/07/2020
 ms.author: diberry
-ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8c29ebd675bb6af66203c13824dacbe9ea2421a2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837363"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732797"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
-**datetimeV2** 作成済みエンティティは、日付と時刻の値を抽出します。 これらの値は、クライアント プログラムで使用できるように標準化された形式に解決されます。 発話に完全ではない日付または時刻が含まれる場合、LUIS は "_過去と未来両方の値_" をエンドポイントの応答に含めます。 このエンティティは既にトレーニングされているので、datetimeV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 
+**datetimeV2** 作成済みエンティティは、日付と時刻の値を抽出します。 これらの値は、クライアント プログラムで使用できるように標準化された形式に解決されます。 発話に完全ではない日付または時刻が含まれる場合、LUIS は "_過去と未来両方の値_" をエンドポイントの応答に含めます。 このエンティティは既にトレーニングされているので、datetimeV2 を含む発話の例をアプリケーション意図に追加する必要はありません。
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 のタイプ
 DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub リポジトリから管理されます。
 
-## <a name="example-json"></a>JSON の例 
+## <a name="example-json"></a>JSON の例
 
 次に示す発話とその部分的な JSON 応答を次に示します。
 
@@ -115,14 +115,14 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 |プロパティ名 |プロパティの型と説明|
 |---|---|
-|エンティティ|**string** - 日付、時刻、日付範囲、時刻範囲の種類を含む発話から抽出されたテキスト。|
-|type|**string** - [datetimeV2 のサブタイプ](#subtypes-of-datetimev2)の 1 つ
+|Entity|**string** - 日付、時刻、日付範囲、時刻範囲の種類を含む発話から抽出されたテキスト。|
+|型|**string** - [datetimeV2 のサブタイプ](#subtypes-of-datetimev2)の 1 つ
 |startIndex|**int** - エンティティが開始する発話内の位置のインデックス。|
 |endIndex|**int** - エンティティが終了する発話内の位置のインデックス。|
 |resolution|1、2、または 4 つの[解決の値](#values-of-resolution)を持つ `values` 配列。|
 |end|時刻範囲または日付範囲の終わりの値。`value` と同じ形式です。 `type` が `daterange`、`timerange`、または `datetimerange` の場合にのみ使用されます。|
 
-* * * 
+* * *
 
 ## <a name="subtypes-of-datetimev2"></a>datetimeV2 のサブタイプ
 
@@ -141,13 +141,14 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
   * 年に関してあいまいな日付または日付範囲
   * 午前か午後かに関してあいまいな時刻または 時刻範囲。 たとえば、4 月 3 日3 時 0 分などです。
 
-`values` 配列の各要素には、次のフィールドが含まれることがあります。 
+`values` 配列の各要素には、次のフィールドが含まれることがあります。
 
 |プロパティ名|プロパティの説明|
 |--|--|
 |timex|[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)に従う TIMEX 形式および TimeML 言語を使用した注釈のための TIMEX3 属性で表された時刻、日付、日付範囲。 この注釈については、[TIMEX のガイドライン](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)のページをご覧ください。|
-|type|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
-|value|**省略可能。** yyyy-MM-dd  (date)、HH:mm:ss (time)、yyyy-MM-dd HH:mm:ss (datetime) 形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
+|mod|値の使用方法を説明する際に使用される用語 (例: `before`、`after`)。|
+|型|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
+|value|**省略可。** yyyy-MM-dd  (date)、HH:mm:ss (time)、yyyy-MM-dd HH:mm:ss (datetime) 形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
 
 ## <a name="valid-date-values"></a>有効な日付の値
 
@@ -159,13 +160,13 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 ## <a name="ambiguous-dates"></a>あいまいな日付
 
-日付が過去または未来のどちらでもありうる場合、LUIS は両方の値を提供します。 たとえば、月と日だけで、年が含まれない発話などです。  
+日付が過去または未来のどちらでもありうる場合、LUIS は両方の値を提供します。 たとえば、月と日だけで、年が含まれない発話などです。
 
 たとえば、次の発話があるとします。
 
 `May 2nd`
 
-* 今日の日付が 2017 年 5 月 3 日の場合、LUIS は値として "2017-05-02" と "2018-05-02" の両方を提供します。 
+* 今日の日付が 2017 年 5 月 3 日の場合、LUIS は値として "2017-05-02" と "2018-05-02" の両方を提供します。
 * 今日の日付が 2017 年 5 月 1 日のときは、LUIS は値として "2016-05-02" と "2017-05-02" の両方を提供します。
 
 次の例では、エンティティ "5 月 2 日" の解決を示します。 この解決では、今日の日付が 2017 年 5 月 2 日から 2018 年 5 月 1 日の間の日付であるものと仮定します。
@@ -269,7 +270,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>数字の日付に対する日付範囲の解決の例
 
@@ -373,7 +374,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>曜日に対する日付範囲の解決の例
 
@@ -474,7 +475,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="ambiguous-time"></a>あいまいな時刻
 時刻または時刻範囲があいまいな場合、値の配列には 2 つの時刻要素が含まれます。 あいまいな時刻がある場合は、値には午前の時刻と 午後の時刻の 両方の値が含まれます。
@@ -484,7 +485,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 DatetimeV2 JSON 応答は API V3 で変更されました。 次の例では、時刻の範囲を含む発話の解決に LUIS が **datetimeV2** を使用する方法を示します。
 
 API V2 からの変更点:
-* `datetimeV2.timex.type` プロパティは、親レベル `datetimev2.type` で返されるため、返されなくなりました。 
+* `datetimeV2.timex.type` プロパティは、親レベル `datetimev2.type` で返されるため、返されなくなりました。
 * `datetimeV2.value` プロパティは `datetimeV2.timex` に名前が変更されました。
 
 次に示す発話とその部分的な JSON 応答を次に示します。
@@ -579,7 +580,7 @@ API V2 からの変更点:
   ]
 ```
 
-* * * 
+* * *
 
 ## <a name="time-resolution-example"></a>時刻の解決の例
 
@@ -666,22 +667,22 @@ API V2 からの変更点:
 ]
 ```
 
-* * * 
+* * *
 
 ## <a name="deprecated-prebuilt-datetime"></a>非推奨の作成済み datetime
 
-`datetime` 事前構築済みエンティティは非推奨であり、**datetimeV2** に置き換えられています。 
+`datetime` 事前構築済みエンティティは非推奨であり、**datetimeV2** に置き換えられています。
 
 LUIS アプリで `datetime` を `datetimeV2` に置き換えるには、次の手順のようにします。
 
-1. LUIS Web インターフェイスの **[Entities]\(エンティティ\)** ウィンドウを開きます。 
+1. LUIS Web インターフェイスの **[Entities]\(エンティティ\)** ウィンドウを開きます。
 2. **datetime** 作成済みエンティティを削除します。
 3. **[Add prebuilt entity]\(作成済みエンティティの追加\)** をクリックします。
 4. **datetimeV2** を選択し、 **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。 
+[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。
 

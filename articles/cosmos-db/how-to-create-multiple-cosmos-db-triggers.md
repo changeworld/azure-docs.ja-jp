@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445352"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548885"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 
@@ -38,7 +38,7 @@ Cosmos DB 用 Azure Functions トリガーの "*要件*" を考えると、状�
 
 ## <a name="configuring-a-shared-leases-container"></a>共有リース コンテナーの構成
 
-共有リース コンテナーを構成するには、トリガーに対して行う必要がある唯一の追加の構成として、`LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) (C# を使用している場合) または `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) (JavaScript を使用している場合) を追加します。 この属性の値は、その特定のトリガーの論理的な記述子である必要があります。
+共有リース コンテナーを構成するには、トリガーに対して行う必要がある唯一の追加の構成として、`LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) (C# を使用している場合) または `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) (JavaScript を使用している場合) を追加します。 この属性の値は、その特定のトリガーの論理的な記述子である必要があります。
 
 たとえば、メールを送信するトリガー、具体化されたビューを作成するために集計を実行するトリガー、後で分析するために変更を別のストレージに送信するトリガーという 3 つのトリガーがある場合、最初のトリガーには "emails"、2 番目のトリガーには "materialized"、3 番目のトリガーには "analytics" を `LeaseCollectionPrefix` に割り当てることができます。
 
@@ -109,5 +109,5 @@ JavaScript の場合は、`leaseCollectionPrefix` 属性を使用して `functio
 ## <a name="next-steps"></a>次のステップ
 
 * [Cosmos DB 用 Azure Functions トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の全体的な構成を確認する
-* すべての言語向けに拡張された[サンプルの一覧](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example)を確認する。
+* すべての言語向けに拡張された[サンプルの一覧](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)を確認する。
 * その他のサンプルについては、Azure Cosmos DB および Azure Functions を使用したサーバーレス レシピの [GitHub リポジトリ](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)を参照する。

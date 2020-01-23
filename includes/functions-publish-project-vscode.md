@@ -1,20 +1,18 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 66c100ecd40e9f0899f7686397339ab849315c3e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020869"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279439"
 ---
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
 

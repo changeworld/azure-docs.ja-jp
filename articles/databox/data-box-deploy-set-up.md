@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338478"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514138"
 ---
 ::: zone target="docs"
 
@@ -128,7 +128,7 @@ ms.locfileid: "71338478"
     
 7. 前の手順で Azure portal から取得したデバイスのパスワードを指定して、デバイスのローカル Web UI にサインインします。 **[サインイン]** をクリックします。
 8. **[ダッシュボード]** で、ネットワーク インターフェイスが構成されていることを確認します。 
-   - 環境で DHCP が有効になっている場合、ネットワーク インターフェイスは自動的に構成されます。 
+   - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 
    - DHCP が有効ではない場合、必要であれば **[ネットワーク インターフェイスの設定]** に移動し静的な IP を割り当てます。
 
      ![デバイス ダッシュボード](media/data-box-deploy-set-up/data-box-dashboard-1.png)
@@ -153,7 +153,7 @@ ms.locfileid: "71338478"
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 

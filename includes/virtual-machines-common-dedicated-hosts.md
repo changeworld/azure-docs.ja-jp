@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390545"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833887"
 ---
+## <a name="limitations"></a>制限事項
+
+- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
+- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
+
 ## <a name="benefits"></a>メリット 
 
 ホスト全体を予約すると、次のような利点があります。
@@ -22,7 +27,6 @@ ms.locfileid: "72390545"
 -   物理サーバー レベルでのハードウェアの分離。 他の VM はホスト上に配置されません。 専用ホストは同じデータ センターに展開され、他の分離されていないホストと同じネットワークおよび基になるストレージ インフラストラクチャを共有します。
 -   Azure プラットフォームによって開始されるメンテナンス イベントの制御。 ほとんどのメンテナンス イベントでは仮想マシンに対する影響はほとんど、またはまったくありませんが、1 秒間の一時停止が影響する可能性のある機密性の高いワークロードがいくつかあります。 専用ホストを使用すると、メンテナンス期間を選択して、サービスへの影響を減らすことができます。
 -   Azure ハイブリッド特典を使用すると、Windows と SQL のライセンスを Azure に持ち込むことができます。 ハイブリッド特典を使用すると、追加のメリットが得られます。 詳細については、「[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)」を参照してください。
-
 
 
 ## <a name="groups-hosts-and-vms"></a>グループ、ホスト、VM  
@@ -103,7 +107,7 @@ SKU はホストに対して定義され、VM サイズ シリーズとタイプ
 
 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
-プレビュー期間中は、次のホスト SKU\タイプがサポートされます: DSv3_Type1 と ESv3_Type1
+Dedicated Host は、次のホスト SKU\types をサポートします: DSv3_Type1 と ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>ホストのライフ サイクル
@@ -111,7 +115,7 @@ SKU はホストに対して定義され、VM サイズ シリーズとタイプ
 
 Azure では、ホストの正常性状態が監視および管理されます。 ホストのクエリを実行すると、次の状態が返されます。
 
-| 正常性の状態   | 説明       |
+| 正常性の状態   | [説明]       |
 |----------|----------------|
 | 使用可能なホスト     | ホストに既知の問題はありません。   |
 | 調査対象のホスト  | ホストには調査中の問題がいくつかあります。 これは、識別された問題のスコープと根本原因を Azure で特定するために必要な移行状態です。 ホストで実行されている仮想マシンが影響を受ける可能性があります。 |

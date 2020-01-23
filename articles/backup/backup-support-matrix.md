@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 603bbc715176515afd21f286ea64e79e974266ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449867"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708482"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -141,6 +141,19 @@ Backup では、次の表にまとめられているように、バックアッ�
 **復旧ポイントの保持期間** | 毎日、毎週、毎月、毎年
 **最大保有期間** | バックアップ頻度次第
 **DPM または MABS ディスクの復旧ポイント数** | ファイル サーバーの場合 64 個、アプリ サーバーの場合 448 個。 <br/><br/>テープの復旧ポイント数は、オンプレミス DPM に対しては無制限。
+
+## <a name="cross-region-restore"></a>リージョンをまたがる復元
+
+Azure Backup に、データの可用性と回復性の機能を強化するために、リージョンをまたがる復元機能が追加されました。これにより、お客様は、セカンダリ リージョンにデータを完全に復元することができます。 この機能を構成するには、[リージョンをまたがる復元の設定に関する記事](backup-create-rs-vault.md#set-cross-region-restore)を参照してください。 この機能は、次の管理の種類でサポートされています。
+
+| バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Azure VM               | はい。 暗号化された VM と 4 TB 未満のディスクがある VM ではパブリック限定プレビューがサポートされます | 米国中西部   |
+| MARS エージェント/オンプレミス | いいえ                                                           | 該当なし               |
+| SQL/SAP HANA          | いいえ                                                           | 該当なし               |
+| AFS                    | いいえ                                                           | 該当なし               |
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

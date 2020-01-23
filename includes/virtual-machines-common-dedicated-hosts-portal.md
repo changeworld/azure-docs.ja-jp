@@ -5,24 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73591050"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833931"
 ---
-> [!IMPORTANT]
-> 現在、専用ホストはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> **プレビューに関する既知の制限事項**
-> - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-> - プレビューの初期リリースでは、次の VM シリーズがサポートされています: DSv3 と ESv3。 
+## <a name="limitations"></a>制限事項
 
+- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
+- 初期リリースでは、次の VM シリーズがサポートされています。DSv3 と ESv3。 
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
@@ -39,10 +35,10 @@ ms.locfileid: "73591050"
 
 1. Azure [portal](https://portal.azure.com) を開きます。
 1. 左上隅にある **[リソースの作成]** を選択します。
-1. **[ホストグループ]** を検索し、結果から **[ホスト グループ (プレビュー)]** を選択します。
+1. **[ホストグループ]** を検索し、結果から **[ホスト グループ]** を選択します。
 
     ![ホスト グループの検索結果。](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
-1. **[ホスト グループ (プレビュー)]** ページで、 **[作成]** を選択します。
+1. **[ホスト グループ]** ページで、 **[作成]** を選択します。
 1. 使用するサブスクリプションを選択し、 **[新規作成]** を選択して新しいリソース グループを作成します。
 1. **[名前]** として「*myDedicatedHostsRG*」と入力し、 **[OK]** を選択します。
 1. **[Host group name]\(ホスト グループ名\)** に「*myHostGroup*」と入力します。
@@ -58,17 +54,17 @@ ms.locfileid: "73591050"
 
 ## <a name="create-a-dedicated-host"></a>専用ホストを作成する
 
-次に、ホスト グループに専用ホストを作成します。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  プレビュー期間中は、次のホスト SKU 値がサポートされます: DSv3_Type1 と ESv3_Type1。
+次に、ホスト グループに専用ホストを作成します。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。 次のホスト SKU 値がサポートされています。DSv3_Type1 と ESv3_Type1。
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。
 
 ホスト グループの障害ドメイン数を設定した場合は、ホストの障害ドメインを指定するように求められます。  
 
 1. 左上隅にある **[リソースの作成]** を選択します。
-1. "**専用ホスト**" を検索し、結果から **[Dedicated hosts (preview)]\(専用ホスト (プレビュー)\)** を選択します。
+1. "**専用ホスト**" を検索し、結果から **[Dedicated hosts]\(専用ホスト\)** を選択します。
 
     ![ホスト グループの検索結果。](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
-1. **[Dedicated hosts (preview)]\(専用ホスト (プレビュー)\)** ページで、 **[作成]** を選択します。
+1. **[Dedicated hosts]\(専用ホスト\)** ページで、 **[作成]** を選択します。
 1. 使用するサブスクリプションを選択します。
 1. *[リソース グループ]* として **myDedicatedHostsRG** を選択します。
 1. **[インスタンスの詳細]** で、 **[名前]** に「*myHost*」と入力し、場所として *[米国東部]* を選択します。

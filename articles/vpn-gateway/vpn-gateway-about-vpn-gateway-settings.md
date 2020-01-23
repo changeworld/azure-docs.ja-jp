@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: c72b85bc978191744c55afb73973caa6d3b45db6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9ecea0576f7cec4e70d6e223b5412a8d8057b2ab
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150950"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894738"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -39,7 +39,7 @@ VPN Gateway の接続は複数のリソースの構成に依存し、それぞ�
 * Vpn
 * ExpressRoute
 
-VPN Gateway では、 `-GatewayType` *Vpn*にする必要があります。
+VPN Gateway では、`-GatewayType` *Vpn* にする必要があります。
 
 例:
 
@@ -55,7 +55,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>ゲートウェイの SKU を構成する
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 Azure Portal を使用して Resource Manager の仮想ネットワーク ゲートウェイを作成する場合、ドロップダウンを使用してワーク ゲートウェイ SKU を選択できます。 表示されるオプションは、選択したゲートウェイの種類と VPN の種類に対応します。
 
@@ -175,6 +175,6 @@ VPN Gateway 構成に対して REST API、PowerShell コマンドレット、ま
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用可能な接続構成の詳細については、「[VPN Gateway の構成設定について](vpn-gateway-about-vpngateways.md)」を参照してください。

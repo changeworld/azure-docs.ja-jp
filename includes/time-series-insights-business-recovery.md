@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980719"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861466"
 ---
 ## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
 
@@ -55,7 +55,7 @@ Time Series Insights のデータ、アプリ、およびサービスが中断�
 
 重複する環境を作成するには、以下の操作を行います。
 
-1. 2 つ目のリージョンに環境を作成します。 詳細については、「[Azure Portal で新しい Time Series Insights 環境を作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)」を参照してください。
+1. 2 つ目のリージョンに環境を作成します。 詳細については、「[Azure portal で新しい Time Series Insights 環境を作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)」を参照してください。
 1. イベント ソースの 2 つ目の専用コンシューマー グループを作成します。
 1. そのイベント ソースを新しい環境に接続します。 必ず 2 つ目の専用コンシューマー グループを指定してください。
 1. Time Series Insights の [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) と [Event Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) のドキュメントを参照します。
@@ -71,5 +71,5 @@ Time Series Insights のデータ、アプリ、およびサービスが中断�
 > * 遅延も発生することがあります。
 > * 操作が再ルーティングされるため、メッセージの処理に瞬間的なスパイクが発生する可能性もあります。
 > 
-> 詳細については、[Time Series Insights の待機時間の短縮](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)に関するページを参照してください。
+> 詳細については、[Time Series Insights の待ち時間の短縮](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)に関するページを参照してください。
 

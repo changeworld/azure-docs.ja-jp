@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855026"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770205"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics についてよく寄せられる質問
 
@@ -76,6 +76,10 @@ Project Acoustics は、アーキテクチャのすべての側面を考慮に�
 
 ベイクは、各リスナー プローブを中心とした立方体シミュレーション領域の音波シミュレーションで構成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="is-my-source-content-secure"></a>ソース コンテンツはセキュリティで保護されていますか?
+
+ソース シーン ジオメトリが Project Acoustics によってクラウドにアップロードされることはありません。 シミュレーションはシーンのボクセル化に対して作用し、シーンはプローブ位置データと共に独自の形式で保存されます。     
+
+## <a name="next-steps"></a>次のステップ
 * [Project Acoustics Unity サンプル コンテンツ](unity-quickstart.md)または [Unreal サンプル コンテンツ](unreal-quickstart.md)を試してください
 

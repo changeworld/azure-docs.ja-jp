@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903108"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945277"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
 
 Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 SDK では、次の関数が公開されています。
 
@@ -39,14 +39,14 @@ Web アプリケーションの `iframe` 内でイマーシブ リーダーを�
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-| 名前 | Type | 説明 |
+| Name | 種類 | [説明] |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
-| `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
+| `token` | string | Azure AD 認証トークン。 |
+| `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 |
 | `content` | [コンテンツ](#content) | イマーシブ リーダーで表示するコンテンツを含むオブジェクト。 |
-| `options` | [オプション](#options) | イマーシブ リーダーの特定の動作を構成するオプション。 省略可能。 |
+| `options` | [[オプション]](#options) | イマーシブ リーダーの特定の動作を構成するオプション。 省略可能。 |
 
 ### <a name="returns"></a>戻り値
 
@@ -78,9 +78,9 @@ close(): void;
 renderButtons(options?: RenderButtonsOptions): void;
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-| 名前 | Type | 説明 |
+| Name | 種類 | [説明] |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | renderButtons 関数の特定の動作を構成するためのオプション。 省略可能。 |
 
@@ -109,13 +109,21 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>CookiePolicy 列挙型
+
+イマーシブ リーダーの Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [オプション](#options)を参照してください。
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>サポートされている MIME タイプ
 
-| MIME タイプ | 説明 |
+| MIME タイプ | [説明] |
 | --------- | ----------- |
 | text/plain | プレーンテキスト。 |
 | text/html | HTML コンテンツ。 [詳細情報](#html-support)|
-| application/mathml+xml | Mathematical Markup Language (MathML)。 [詳細情報](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/mathml+xml | Mathematical Markup Language (MathML)。 [詳細については、こちらを参照してください](./how-to/display-math.md)。
 | application/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word の .docx 形式のドキュメント。
 
 ### <a name="html-support"></a>HTML サポート
@@ -142,6 +150,7 @@ renderButtons(options?: RenderButtonsOptions): void;
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -155,7 +164,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
-### <a name="error"></a>Error
+### <a name="error"></a>エラー
 
 エラーに関する情報が含まれます。
 
@@ -168,7 +177,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="error-codes"></a>エラー コード
 
-| コード | 説明 |
+| コード | [説明] |
 | ---- | ----------- |
 | BadArgument | 与えられた引数が無効です。詳細は `message` を参照してください。 |
 | タイムアウト | 指定されたタイムアウト時間内にイマーシブ リーダーを読み込めませんでした。 |
@@ -187,7 +196,7 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 
 ボタンのルック アンド フィールを構成するには、次の属性を使用します。
 
-| Attribute | 説明 |
+| Attribute | [説明] |
 | --------- | ----------- |
 | `data-button-style` | ボタンのスタイルを設定します。 `icon`、`text`、または `iconAndText` を指定できます。 既定値は `icon` です。 |
 | `data-locale` | ロケールを設定します。 たとえば、`en-US` または `fr-FR` です。 既定値は英語 `en` です。 |
@@ -203,7 +212,7 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 * Mozilla Firefox
 * Apple Safari
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
 * [クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)

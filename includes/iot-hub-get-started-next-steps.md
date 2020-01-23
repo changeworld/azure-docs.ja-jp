@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8bf7f3a423b97f6cd84f0b575d00d60776c598c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476019"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911922"
 ---
 引き続き Azure IoT Hub の使用方法を確認すると共に、すべての拡張された IoT のシナリオについて調べるには、次のページを参照してください。
 
-- [Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用したクラウド デバイス メッセージングの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Visual Studio Code 用 Azure IoT Hub 拡張機能を使用したクラウド デバイス メッセージングの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能を使用したデバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Visual Studio Code 用 Azure IoT Hub 拡張機能を使用したデバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
 - [メッセージ ルーティングを設定する](../articles/iot-hub/tutorial-routing.md)
 

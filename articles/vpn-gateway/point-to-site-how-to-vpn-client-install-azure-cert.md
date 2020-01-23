@@ -1,19 +1,18 @@
 ---
-title: ポイント対サイトのクライアント証明書のインストールAzure | Microsoft Docs
+title: Azure VPN Gateway:ポイント対サイトのクライアント証明書のインストール
 description: P2S 証明書認証用のクライアント証明書のインストール - Windows、Mac、Linux
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: c278c1c85961fbeb0779cad98f8ac16d4961ba75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787b8a34ed4b232b9e6cc033e67b1a8162c85f6c
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679995"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902845"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S 証明書認証接続用のクライアント証明書のインストール
 
@@ -40,6 +39,6 @@ ms.locfileid: "60679995"
 
 Linux のクライアント証明書は、クライアント構成の一部としてクライアントにインストールされています。 手順については、「[クライアント構成 - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポイント対サイト構成の手順を続行し、[VPN クライアント構成ファイルを作成およびインストール](point-to-site-vpn-client-configuration-azure-cert.md)します。

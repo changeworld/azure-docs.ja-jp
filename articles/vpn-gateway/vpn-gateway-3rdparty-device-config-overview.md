@@ -1,26 +1,18 @@
 ---
-title: Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成 | Microsoft Docs
+title: Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成
 description: この記事では、Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成の概要について説明します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 7d3a32b5f2b2742a36716bac9747f20c47c98858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150175"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778024"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -40,7 +32,7 @@ Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイー�
 ### <a name="connection-parameters"></a>接続パラメーター
 このセクションでは、前のセクションで説明した例に使用されている一連のパラメーターを列挙しています。
 
-| **パラメーター**                | **値**                    |
+| **パラメーター**                | **Value**                    |
 | ---                          | ---                          |
 | 仮想ネットワーク アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN Gateway IP         | Azure VPN Gateway IP         |
@@ -156,6 +148,6 @@ S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイ
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アクティブ/アクティブ VPN ゲートウェイを設定する具体的な手順については、[クロスプレミス接続と VNet 間接続にアクティブ/アクティブ VPN ゲートウェイを構成する方法](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
 

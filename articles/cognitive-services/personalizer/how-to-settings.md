@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4ab1dcf4f3554c941107ec653f717b3680543da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d20f81bf7db2e098f2bca674c5540bc067577f30
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490723"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833906"
 ---
 # <a name="configure-personalizer"></a>Personalizer を構成する
 
@@ -23,9 +23,9 @@ ms.locfileid: "73490723"
 
 ## <a name="create-personalizer-resource"></a>Personalizer リソースを作成する
 
-フィードバック ループごとに Personalizer リソースを作成します。 
+フィードバック ループごとに Personalizer リソースを作成します。
 
-1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。 
+1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。
 1. サービス名を入力し、サブスクリプション、場所、価格レベル、リソース グループを選択します。
 1. 確認を選択し、 **[作成]** を選択します。
 
@@ -33,8 +33,8 @@ ms.locfileid: "73490723"
 
 ## <a name="configure-service-in-the-azure-portal"></a>Azure portal でサービスを構成する
 
-1. [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) にサインインします。
-1. Personalizer リソースを検索します。 
+1. [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) にサインインする
+1. Personalizer リソースを検索します。
 1. **[リソース管理]** セクションで、 **[設定]** を選択します。
 
     Azure portal を終了する前に、 **[キー]** のページからいずれかのリソース キーをコピーします。 これは、[Personalizer SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer) を使用するために必要になります。
@@ -55,9 +55,9 @@ ms.locfileid: "73490723"
 
 これらの値を変更した後は、必ず **[保存]** を選択してください。
 
-### <a name="configure-exploration"></a>探索を構成する 
+### <a name="configure-exploration"></a>探索を構成する
 
-パーソナル化では、新しいパターンを検出し、代替手段を探ることによって、時間の経過に伴うユーザーの行動の変化に適応できます。 **[探索]** の値は、Rank 呼び出しの何パーセントが探索で応答されるかを決定します。 
+パーソナル化では、新しいパターンを検出し、代替手段を探ることによって、時間の経過に伴うユーザーの行動の変化に適応できます。 **[探索]** の値は、Rank 呼び出しの何パーセントが探索で応答されるかを決定します。
 
 この値を変更すると、現在の Personalizer モデルはリセットされ、過去 2 日分のデータで再トレーニングされます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "73490723"
 
 ### <a name="model-update-frequency"></a>モデルの更新頻度
 
-すべてのアクティブ イベントからの Reward API 呼び出しからトレーニングされた最新のモデルは、Personalizer の Rank 呼び出しで自動的に使用されません。 **[Model update frequency]\(モデルの更新頻度\)** は、Rank 呼び出しによって使用されるモデルが更新される頻度を設定します。 
+すべてのアクティブ イベントからの Reward API 呼び出しからトレーニングされた最新のモデルは、Personalizer の Rank 呼び出しで自動的に使用されません。 **[Model update frequency]\(モデルの更新頻度\)** は、Rank 呼び出しによって使用されるモデルが更新される頻度を設定します。
 
 モデルの更新頻度を高くすると、ユーザーの動作の変化を詳細に追跡したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 ほとんどのユース ケースでは、更新頻度が低い方が効果的です。 1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードをデバッグするとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。
 
@@ -83,14 +83,9 @@ ms.locfileid: "73490723"
 
 ## <a name="export-the-personalizer-model"></a>Personalizer モデルをエクスポートする
 
-**[モデルと学習設定]** のリソース管理セクションで、モデルの作成日と最終更新日を確認し、現在のモデルをエクスポートします。 Azure portal または Personalizer API を使用すると、アーカイブ目的でモデル ファイルをエクスポートすることができます。 
+**[モデルと学習設定]** のリソース管理セクションで、モデルの作成日と最終更新日を確認し、現在のモデルをエクスポートします。 Azure portal または Personalizer API を使用すると、アーカイブ目的でモデル ファイルをエクスポートすることができます。
 
 ![現在の Personalizer モデルをエクスポートする](media/settings/export-current-personalizer-model.png)
-
-## <a name="import-and-export-learning-policy"></a>学習ポリシーのインポートとエクスポート
-
-**[モデルと学習設定]** のリソース管理セクションで、新しい学習ポリシーをインポートしたり、現在の学習ポリシーをエクスポートしたりします。
-以前のエクスポートから学習ポリシー ファイルを取得したり、オフライン評価中に検出された最適化されたポリシーをダウンロードしたりできます。 これらのファイルに手動で変更を加えると、機械学習のパフォーマンスとオフライン評価の精度に影響します。Microsoft では、手動で編集されたポリシーによる機械学習と評価の精度やサービス例外を保証することはできません。
 
 ## <a name="clear-data-for-your-learning-loop"></a>学習ループのデータを消去する
 
@@ -105,9 +100,8 @@ ms.locfileid: "73490723"
     |Personalizer モデルのリセット。|このモデルは、再トレーニングのたびに変わります。 このトレーニング頻度は、 **[構成]** ページの **[upload model frequency]\(モデルのアップロードの頻度\)** で指定されています。 |
     |学習ポリシーを既定に設定する。|オフライン評価の一部として学習ポリシーを変更した場合、これにより元の学習ポリシーにリセットされます。|
 
-1. **[選択したデータの消去]** を選択して、消去プロセスを開始します。 状態は、右上のナビゲーションにある Azure 通知で報告されます。 
+1. **[選択したデータの消去]** を選択して、消去プロセスを開始します。 状態は、右上のナビゲーションにある Azure 通知で報告されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-
-[リージョンの可用性の詳細](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[学習ポリシーの管理方法を確認する](how-to-learning-policy.md)

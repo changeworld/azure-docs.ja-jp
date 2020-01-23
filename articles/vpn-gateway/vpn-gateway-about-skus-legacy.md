@@ -1,19 +1,18 @@
 ---
-title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU | Microsoft Docs
+title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU
 description: 古い仮想ネットワーク ゲートウェイ SKU (Basic、Standard、HighPerformance) を使用する方法。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533912"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861916"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -60,7 +59,7 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しいゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 

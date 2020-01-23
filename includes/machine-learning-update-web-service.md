@@ -2,19 +2,21 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 01/10/2019
 ms.author: larryfr
-ms.openlocfilehash: 04e8f1f212eb4fa7cf4d8e19132107f2ddb53729
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926979"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901676"
 ---
 Web サービスを更新するには、`update` メソッドを使用します。 推論の構成で指定できる新しいモデル、新しいエントリ スクリプト、または新しい依存関係を使用するように Web サービスを更新することができます。 詳細については、[Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-) のドキュメントを参照してください。
 
 > [!IMPORTANT]
 > 新しいバージョンのモデルを作成するときは、それを使用したい各サービスを手動で更新する必要があります。
+>
+> Azure Machine Learning デザイナーから発行された Web サービスを、SDK を使用して更新することはできません。
 
 **SDK を使用する**
 

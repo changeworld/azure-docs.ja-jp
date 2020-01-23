@@ -1,26 +1,19 @@
 ---
-title: 'VPN Gateway と PowerShell を使用して仮想ネットワークを複数のサイトに接続する: Classic | Microsoft Docs'
+title: 'VPN Gateway を使用して VNet を複数のサイトに接続する: クラシック'
 description: VPN Gateway を使用して複数のローカルのオンプレミスのサイトをクラシック仮想ネットワークに接続します。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836102"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902437"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
@@ -163,7 +156,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="6-download-keys"></a>6.キーをダウンロードする
 新しいトンネルが追加されたら、PowerShell コマンドレット 'Get-AzureVNetGatewayKey' を使用して、IPsec/IKE 事前共有キーを各トンネル用に取得します。
 
-例:
+次に例を示します。
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
@@ -207,6 +200,6 @@ Get-AzureVnetConnection -VNetName VNET1
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VPN Gateway について詳しくは、「 [VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。

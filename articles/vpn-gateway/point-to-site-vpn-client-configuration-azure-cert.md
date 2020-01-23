@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143786"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045776"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -99,12 +99,17 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、**VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
 
    ![サーバー情報](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. **[認証設定]** をクリックし、 **[証明書]** を選択します。 
+5. **[認証設定]** をクリックし、 **[証明書]** を選択します。 **Catalina** の場合は、 **[None]\(なし\)** をクリックし、 **[certificate]\(証明書\)** をクリックします。
 
    ![認証設定](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を**選択**してください。
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. **[選択]** をクリックして、 認証に使用するクライアント証明書を選択します。 これは、手順 2 でインストールした証明書です。
 
-   ![証明書](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![証明書 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、 **[続ける]** をクリックします。
 
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
@@ -164,7 +169,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 [!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install-and-configure"></a>インストールと構成
+### <a name="install-and-configure"></a>[インストールと構成]
 
 1. Azure portal から VPNClient パッケージをダウンロードします。
 2. ファイルを抽出します。
@@ -200,7 +205,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
    # ipsec up azure
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [P2S 構成を完了する](vpn-gateway-howto-point-to-site-rm-ps.md)ための記事に戻ります。
 

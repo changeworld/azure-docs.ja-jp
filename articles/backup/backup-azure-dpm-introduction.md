@@ -3,12 +3,12 @@ title: DPM サーバーを準備してワークロードをバックアップす
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173148"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753952"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -42,7 +42,7 @@ Azure VM 上の DPM | System Center 2012 R2 の DPM 2012 R2 更新プログラ�
 物理サーバー上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。
 HYPER-V VM 上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。
 VMware VM 上の DPM | System Center 2012 R2 の更新プログラムのロールアップ 5 以降。
-コンポーネント | DPM サーバーには、Windows PowerShell および .NET Framework 4.5 がインストール済みである必要があります。
+Components | DPM サーバーには、Windows PowerShell および .NET Framework 4.5 がインストール済みである必要があります。
 サポート対象アプリ | DPM がバックアップできるものについて[学習](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)します。
 サポートされるファイルの種類 | Azure Backup では次のファイルの種類をバックアップできます。暗号化ファイル (完全バックアップのみ)、圧縮ファイル (増分バックアップがサポートされる)、スパース ファイル (増分バックアップがサポートされる)、圧縮されたスパース ファイル (スパースとして処理)。
 サポートされていないファイルの種類 | 大文字小文字を区別するファイル システム上のサーバー、ハード リンク (スキップされる)、再解析ポイント (スキップされる)、暗号化されている圧縮ファイル (スキップされる)。暗号化されているスパース ファイル (スキップされる)、圧縮ストリーム、解析ストリーム。
@@ -97,7 +97,7 @@ DPM サーバーをコンテナーに登録する場合、コンテナーの資�
 
 次の手順に従って、コンテナーの資格情報ファイルをローカル コンピューターにダウンロードします。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. DPM サーバーを登録するコンテナーを開きます。
 3. **[設定]** で、 **[プロパティ]** をクリックします。
 
@@ -127,7 +127,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
 7. Azure Backup エージェントは、.NET Framework 4.5 と Windows PowerShell を (インストールされていない場合は) インストールして、インストールを完了します。
 8. エージェントがインストールされたら、ウィンドウを **閉じます**。
 
-    ![閉じます](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
+    ![閉じる](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>DPM サーバーのコンテナーへの登録
 
@@ -165,7 +165,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
 
 7. **[登録]** をクリックしてコンテナーに DPM サーバーを登録します。
 
-サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。
+サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。 ワークロードを Azure にバックアップするには、DPM コンソールで保護グループを構成する必要があります。 保護グループを展開する[方法を確認](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)してください。
 
 ## <a name="troubleshoot-vault-credentials"></a>コンテナーの資格情報のトラブルシューティング
 

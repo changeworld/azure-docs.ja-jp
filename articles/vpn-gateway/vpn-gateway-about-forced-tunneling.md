@@ -1,26 +1,18 @@
 ---
-title: 'Azure のサイト間接続用に強制トンネリングを構成する: クラシック | Microsoft Docs'
+title: 'Azure VPN Gateway:強制トンネリングを構成する - サイト間接続: クラシック'
 description: すべてのインターネットへのトラフィックをオンプレミスの場所に "強制的に" リダイレクトする方法。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60506029"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834582"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 

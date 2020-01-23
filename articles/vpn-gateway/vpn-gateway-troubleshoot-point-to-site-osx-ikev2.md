@@ -1,26 +1,18 @@
 ---
-title: Mac OS X クライアントからの Azure ポイント対サイト VPN 接続のトラブルシューティング | Microsoft Docs
+title: 'Azure VPN Gateway:ポイント対サイト接続のトラブルシューティング: Mac OS X クライアント'
 description: Mac OS X クライアント P2S VPN 接続のトラブルシューティング手順
 services: vpn-gateway
-documentationcenter: na
 author: anzaman
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457080"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780183"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN クライアントからのポイント対サイト VPN 接続のトラブルシューティング
 
@@ -70,5 +62,5 @@ ms.locfileid: "60457080"
   
 3. ネットワーク トレースにサーバーの応答がない場合は、Azure Portal Web サイトの Azure ゲートウェイ構成ページで IKEv2 プロトコルを有効にしたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 サポートが必要な場合、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を参照してください。

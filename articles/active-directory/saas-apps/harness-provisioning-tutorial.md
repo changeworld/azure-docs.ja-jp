@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Harness を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Harness に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
+description: Azure Active Directory を構成して、ユーザー アカウントを Harness に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,60 +15,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 34d05d6392e00757bf1e5562ffd8341ad04cc9dc
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807665"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767842"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>チュートリアル:Harness を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザー、グループ、またはその両方を Harness に対して自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、Harness と Azure AD で実行する手順を示すことです。
+この記事では、Azure Active Directory (Azure AD) を構成して、ユーザーまたはグループを Harness に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> この記事では、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスについての重要な情報とよく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 >
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> このコネクタは、現在プレビューの段階です。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
+この記事で説明するシナリオでは、次の前提条件があることを前提としています。
 
 * Azure AD テナント
 * [Harness テナント](https://harness.io/pricing/)
-* 管理者アクセス許可がある Harness のユーザー アカウント
+* *管理者*アクセス許可がある Harness のユーザー アカウント
 
-## <a name="assigning-users-to-harness"></a>Harness へのユーザーの割り当て
+## <a name="assign-users-to-harness"></a>ユーザーを Harness に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Harness へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを Harness に割り当てることができます。
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+自動ユーザー プロビジョニングを構成して有効にする前に、Harness にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 その後、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の手順に従って、これらのユーザーまたはグループを Harness に割り当てることができます。
 
 ## <a name="important-tips-for-assigning-users-to-harness"></a>ユーザーを Harness に割り当てるときの重要なヒント
 
-* 単一の Azure AD ユーザーを Harness に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Harness に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後で追加のユーザーまたはグループを割り当てることができます。
 
-* Harness にユーザーを割り当てるときは、割り当てダイアログで、有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* Harness にユーザーを割り当てるときに、有効なアプリケーション固有ロール (ある場合) を **[割り当て]** ダイアログ ボックスで選択する必要があります。 *既定のアクセス* ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="set-up-harness-for-provisioning"></a>プロビジョニングのための Harness の設定
 
-1. [Harness 管理コンソール](https://app.harness.io/#/login)にサインインします。 **[Continuous Security]\(継続的なセキュリティ\) > [アクセス管理]** の順に移動します。
+1. [Harness 管理コンソール](https://app.harness.io/#/login)にサインインし、 **[Continuous Security]\(継続的セキュリティ\)**  >  **[Access Management]\(アクセス管理\)** に移動します。
 
     ![Harness 管理コンソール](media/harness-provisioning-tutorial/admin.png)
 
-2.  **[API キー]** をクリックします。
+1. **[API Keys]\(API キー\)** を選択します。
 
-    ![Harness での SCIM の追加](media/harness-provisioning-tutorial/apikeys.png)
+    ![Harness の [API Keys]\(API キー\) リンク](media/harness-provisioning-tutorial/apikeys.png)
 
-3. **[新しいキーを追加]** をクリックします。 **[Add Api Key]\(API キーの追加\)** ダイアログ ボックスで、**名前**を指定し、 **[Permissions Inherited from]\(アクセス許可の継承元\)** ドロップダウン メニューからオプションを選択します。 **[送信]** ボタンをクリックします。
+1. **[Add API Key]\(API キーの追加\)** を選択します。 
 
-    ![Harness の [新しいキーを追加]](media/harness-provisioning-tutorial/addkey.png)
+    ![Harness の [Add API Key]\(API キーの追加\) リンク](media/harness-provisioning-tutorial/addkey.png)
 
-    ![Harness の [新しいキーを追加] ダイアログ](media/harness-provisioning-tutorial/title.png)
+1. **[Add Api Key]\(API キーの追加\)** ウィンドウで、次の操作を行います。
 
-3.  **キー**をコピーします。 この値を、Azure portal で Harness アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+    ![Harness の [Add Api Key]\(API キーの追加\) ウィンドウ](media/harness-provisioning-tutorial/title.png)
+   
+   a. **[Name]\(名前\)** ボックスにキーの名前を入力します。  
+   b. **[Permissions Inherited from]\(アクセス許可の継承元\)** ドロップダウン リストで、オプションを選択します。 
+   
+1. **[Submit]\(送信\)** をクリックします。
+
+1. このチュートリアルで後から使用するので、**キー**をコピーしておきます。
 
     ![Harness でのトークンの作成](media/harness-provisioning-tutorial/token.png)
 
@@ -76,93 +82,95 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD での自動ユーザー プロビジョニング用に Harness を構成する前に、Azure AD アプリケーション ギャラリーから Harness をマネージド SaaS アプリケーションの一覧に追加する必要があります。
 
-**Azure AD アプリケーション ギャラリーから Harness を追加するには、次の手順を実行します。**
-
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![[すべてのアプリケーション] リンク](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Harness**」と入力し、結果パネルで **[Harness]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 検索ボックスに「**Harness**」と入力し、結果一覧から **[Harness]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![結果一覧の Harness](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-harness"></a>Harness への自動ユーザー プロビジョニングを構成する 
+## <a name="configure-automatic-user-provisioning-to-harness"></a>Harness への自動ユーザー プロビジョニングを構成する 
 
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Harness のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Harness では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Harness シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Harness では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Harness シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 > [!NOTE]
-> Harness の SCIM エンドポイントの詳細については、[こちら](https://docs.harness.io/article/smloyragsm-api-keys)を参照してください。
+> Harness の SCIM エンドポイントの詳細については、Harness の [API キー](https://docs.harness.io/article/smloyragsm-api-keys)の記事ご覧ください。
 
-### <a name="to-configure-automatic-user-provisioning-for-harness-in-azure-ad"></a>Azure AD で Harness の自動ユーザー プロビジョニングを構成するには:
+Azure AD で Harness の自動ユーザー プロビジョニングを構成するには、以下を行います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Harness]** を選択します。
+1. アプリケーションの一覧で **[Harness]** を選択します。
 
     ![アプリケーションの一覧の Harness のリンク](common/all-applications.png)
 
-3. **[プロビジョニング]** タブを選択します。
+1. **[プロビジョニング]** を選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] ボタン](common/provisioning.png)
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。
+1. **[プロビジョニング モード]** ドロップダウン リストで、 **[自動]** を選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[プロビジョニング モード] ドロップダウン リスト](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Harness への接続を確認します。 接続できない場合は、使用中の Harness アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+1. **[管理者資格情報]** で、次の操作を行います。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
+ 
+   a. **[テナント URL]** ボックスに、「 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 」と入力します。  
+   b. **[シークレット トークン]** ボックスに、「プロビジョニングのためのハーネスの設定」セクションの手順 6 で保存した SCIM 認証トークンの値を入力します。  
+   c. Azure AD から Harness に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Harness アカウントに "*管理者*" アクセス許可があることを確認してから、もう一度試します。
 
-6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+1. **[通知用メール]** ボックスに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力し、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    ![通知用メール](common/provisioning-notification-email.png)
+    ![[通知用メール] ボックス](common/provisioning-notification-email.png)
 
-7. **[Save]** をクリックします。
+1. **[保存]** を選択します。
 
-8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\)** を選択します。
+1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\)** を選択します。
 
-    ![Harness のユーザー マッピング](media/harness-provisioning-tutorial/usermappings.png)
+    ![Harness の [Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\) リンク](media/harness-provisioning-tutorial/usermappings.png)
 
-9. **[属性マッピング]** セクションで、Azure AD から Harness に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Harness のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** の下で、Azure AD から Harness に同期されるユーザーの属性を確認します。 *[Matching]\(照合\)* として選択されている属性を使用して、更新操作で Harness のユーザー アカウントとの照合が行われます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![Harness ユーザーの属性](media/harness-provisioning-tutorial/userattributes.png)
+    ![Harness ユーザーの [属性マッピング] ウィンドウ](media/harness-provisioning-tutorial/userattributes.png)
 
-10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\)** を選択します。
+1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\)** を選択します。
 
-    ![Harness グループのマッピング](media/harness-provisioning-tutorial/groupmappings.png)
+    ![Harness の [Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\) リンク](media/harness-provisioning-tutorial/groupmappings.png)
 
-11. **[属性マッピング]** セクションで、Azure AD から Harness に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Harness のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** の下で、Azure AD から Harness に同期されるグループの属性を確認します。 *[Matching]\(照合\)* プロパティとして選択されている属性は、更新操作で Harness のグループとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![Harness のグループ属性](media/harness-provisioning-tutorial/groupattributes.png)
+    ![Harness のグループの [属性マッピング] ウィンドウ](media/harness-provisioning-tutorial/groupattributes.png)
 
-12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+1. スコープ フィルターを構成するには、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)」を参照します。
 
-13. Harness に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. **[設定]** セクションで、Harness に対する Azure AD プロビジョニング サービスを有効にするために、 **[プロビジョニング状態]** スイッチを **[オン]** に切り替えます。
 
-    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
+    ![[オン] に切り替えられた [プロビジョニング状態] スイッチ](common/provisioning-toggle-on.png)
 
-14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Harness にプロビジョニングするユーザーやグループを定義します。
+1. **[設定]** の下の **[スコープ]** ドロップダウン リストで、Harness にプロビジョニングするユーザーまたはグループの同期方法を選択します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+1. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
-    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+    ![プロビジョニングの [保存] ボタン](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Harness に対して実行されたすべてのアクションが記載されています。
+この操作により、プロビジョニングするユーザーまたはグループの初期同期が開始されます。 初期同期は、以降の同期よりも実行に時間がかかります。 同期は、Azure AD プロビジョニング サービスが実行されている限り、約 40 分ごとに発生します。 進行状況を監視するには、 **[同期の詳細]** セクションに移動します。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Harness に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
@@ -171,6 +179,6 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

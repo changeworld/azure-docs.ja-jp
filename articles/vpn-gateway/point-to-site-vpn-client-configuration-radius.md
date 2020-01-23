@@ -1,18 +1,18 @@
 ---
-title: P2S RADIUS 接続の VPN クライアント構成ファイルを作成してインストールする:PowerShell:Azure | Microsoft Docs
+title: Azure VPN Gateway:VPN クライアント構成ファイルを作成してインストールする - P2S RADIUS 接続
 description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115385"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903033"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -50,7 +50,7 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 
 Azure portal または Azure PowerShell を使用して VPN クライアント構成ファイルを生成することができます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. 仮想ネットワーク ゲートウェイに移動します。
 2. **[ポイント対サイトの構成]** をクリックします。
@@ -280,7 +280,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
    
    **GenericDevice** フォルダーには、**VpnServerRoot** という .cer ファイルも含まれています。 このファイルには、P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。 Azure 仮想ネットワークに接続するすべてのデバイスに、証明書をインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [P2S 構成を完了する](point-to-site-how-to-radius-ps.md)ための記事に戻ります。
 

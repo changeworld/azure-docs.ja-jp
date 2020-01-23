@@ -4,19 +4,19 @@ description: この記事では、Azure Application Gateway による複数サ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/17/2019
+ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 61184fc7415de3c142b460710cceefed61a25af3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835340"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719955"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの contoso.com および fabrikam.com のトラフィックを処理します。
+複数サイトのホストにより、1 つのアプリケーション ゲートウェイの同じポートで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの contoso.com および fabrikam.com のトラフィックを処理します。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "73835340"
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 複数サイトのホストについて学習した後に、 [複数サイトのホストを使用するアプリケーション ゲートウェイの作成](tutorial-multiple-sites-powershell.md) に関するページにアクセスして、複数の Web アプリケーションをサポートする機能を備えたアプリケーション ゲートウェイを作成してください。
 

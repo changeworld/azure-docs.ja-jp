@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62e2168c674693ded31bd94206e2e13c82c67b68
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490356"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546386"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。  
   
@@ -36,7 +36,7 @@ ms.locfileid: "73490356"
 
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)** :モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
   
 3.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
   
@@ -52,13 +52,9 @@ ms.locfileid: "73490356"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
 
-## <a name="results"></a>結果
-
-トレーニングの完了後、次の作業を行います。
-
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックします。
 
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

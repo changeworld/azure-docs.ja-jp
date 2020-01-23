@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424803"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768150"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -29,8 +29,6 @@ ms.locfileid: "75424803"
 - クライアント アプリケーションの条件
 - 承認されたクライアント アプリケーションの要件
 
-これらが探している情報でない場合には、この記事の最後にコメントを入力してください。
-
 ## <a name="cloud-apps-assignments"></a>クラウド アプリの割り当て
 
 条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](conditions.md#cloud-apps-and-actions)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
@@ -41,6 +39,7 @@ ms.locfileid: "75424803"
 
 Microsoft から、次のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。
 
+- Office 365 (プレビュー)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL Database と Data Warehouse - [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -73,6 +72,22 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Skype for Business Online
 - 仮想プライベート ネットワーク (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 (プレビュー)
+
+Office 365 では、Exchange、SharePoint、Microsoft Teams などのクラウドベースの生産性およびコラボレーション サービスを提供されます。 Office 365 クラウド サービスは、スムーズで共同作業を行うために緊密に統合されています。 Office 365 (プレビュー) アプリを使用すると、これらのサービスを一度にすべてターゲットにすることができます。 ポリシーとサービスの依存関係が一貫していないために発生する可能性のある問題を回避するために、Office 365 Exchange Online や Office 365 SharePoint Online などの個々のクラウドアプリをターゲットにするのではなく、新しい Office 365 (プレビュー) アプリを使用することをお勧めします。
+
+Office 365 (プレビュー) クライアント アプリに含まれる主要なアプリケーション:
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office ポータル
+- Microsoft フォーム
+- Microsoft Power Automate
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>他のアプリケーション
 

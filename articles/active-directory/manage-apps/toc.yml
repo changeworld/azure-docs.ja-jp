@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: ユーザーの割り当てとアプリへのアクセスの管理
           items:
+            - name: ユーザーの同意の構成
+              href: configure-user-consent.md
             - name: 同意要求の管理と評価
               href: manage-consent-requests.md
             - name: テナント全体の管理者の同意を許可する

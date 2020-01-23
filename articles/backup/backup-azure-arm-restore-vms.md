@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0caad9488e4ab84c85ef27b559c34453ad6cad32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98101639d82ede2a6c625ea9da413bcf93f6a185
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450175"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753934"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -23,7 +23,8 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 --- | ---
 **新しい VM を作成する** | 基本的な VM を復元ポイントからすばやく作成し、起動して実行します。<br/><br/> VM の名前を指定し、配置先のリソース グループと仮想ネットワーク (VNet) を選択して、復元された VM のストレージ アカウントを指定することができます。 新しい VM は、ソース VM と同じリージョンに作成する必要があります。
 **ディスクを復元する** | 新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br> 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> ディスクは、指定したリソース グループにコピーされます。<br/><br/> または、ディスクを既存の VM に接続することや、PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合や、バックアップの時点では存在していなかった構成設定を追加する場合や、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合に役立ちます。
-**既存の以下のものを置き換えます** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br/><br/>
+**既存の以下のものを置き換えます** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM ではサポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。
+**リージョンをまたがる (セカンダリ リージョン)** | リージョンをまたがる復元を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)) に復元できます。<br><br> セカンダリ リージョンにバックアップが実行されている場合は、選択されている回復ポイントのすべての Azure VM を復元できます。<br><br> この機能は、次のオプションで使用できます。<br> * [VM の作成](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [ディスクの復元](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> 現時点では、[[既存のディスクの置き換え]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) オプションはサポートされていません。<br><br> アクセス許可<br> セカンダリ リージョンでの復元操作は、バックアップ管理者とアプリ管理者が実行できます。
 
 > [!NOTE]
 > Azure VM 上の特定のファイルとフォルダーを復旧することもできます。 [詳細については、こちらを参照してください](backup-azure-restore-files-from-vm.md)。
@@ -38,7 +39,7 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 - **ディスクの復元**: 復元したディスクは、指定したストレージ アカウントにコピーされます。 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定できます。 このテンプレートは、指定したストレージ アカウントに配置されます。
 - **ディスクの交換**: 既存の VM でディスクを交換するとき、ディスク交換の前に Azure Backup によって既存の VM のスナップショットが取得されます。 スナップショットは指定したステージング場所 (ストレージ アカウント) に格納されます。 このストレージ アカウントは、復元プロセス中、スナップショットを一時的に格納するときに使用されます。後で簡単に削除できるように、このためのアカウントを新しく作成することをお勧めします。
 - **ストレージ アカウントの場所**: ストレージ アカウントは、コンテナーと同じリージョンに存在する必要があります。 これらのアカウントのみが表示されます。 その場所にストレージ アカウントがない場合は、作成する必要があります。
-- **[Storage type]\(ストレージの種類\)** :Blob Storage はサポートされていません。
+- **ストレージの種類**:Blob Storage はサポートされていません。
 - **ストレージ冗長**: ゾーン冗長ストレージ (ZRS) はサポートされていません。 アカウントのレプリケーションおよび冗長性の情報は、アカウント名の後のかっこ内に表示されます。
 - **Premium Storage**:
   - Premium 以外の VM を復元する場合、Premium Storage アカウントはサポートされません。
@@ -62,9 +63,9 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 ## <a name="choose-a-vm-restore-configuration"></a>VM の復元の構成を選択する
 
-1. **[復元の構成]** で、復元オプションを選択します:
+1. **[復元の構成]** で、復元オプションを選択します。
     - **新規作成**: 新しい VM を作成する場合、このオプションを使用します。 単純な設定で VM を作成することも、ディスクを復元して、カスタマイズされた VM を作成することもできます。
-    - **既存の以下のものを置き換えます**:既存の VM 上のディスクを置き換える場合、このオプションを使用します。
+    - **既存の以下のものを置き換えます:** :既存の VM 上のディスクを置き換える場合、このオプションを使用します。
 
         ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
@@ -128,10 +129,51 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 [復元オプション](#restore-options)の 1 つであり、選択した復元ポイントで既存の VM ディスクを置き換えることができます。 すべての復元オプションを[確認](#restore-options)します。
 
 1. **[復元の構成]** で、 **[既存の以下のものを置き換えます]** をクリックします。
-2. **[リストアの種類]** で、 **[Replace disk/s]\(ディスクの交換\)** を選択します。 これは、既存の VM ディスクを置き換えるために使用される復元ポイントです。
+2. **[リストアの種類]** で、 **[ディスクの交換]** を選択します。 これは、既存の VM ディスクを置き換えるために使用される復元ポイントです。
 3. **[ステージングの場所]** で、復元プロセス中に現在のマネージド ディスクのスナップショットを保存する場所を指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
    ![復元の構成ウィザードの [既存の以下のものを置き換えます]](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
+
+## <a name="cross-region-restore"></a>リージョンをまたがる復元
+
+[復元オプション](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。
+
+プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)」セクションをお読みください。
+
+CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
+
+### <a name="view-backup-items-in-secondary-region"></a>セカンダリ リージョンのバックアップ項目を表示する
+
+CRR が有効になっている場合は、セカンダリ リージョンのバックアップ項目を表示できます。
+
+1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ項目]** に移動します。
+2. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** をクリックします。
+
+![セカンダリ リージョン内の仮想マシン](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![セカンダリ リージョンを選択する](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+
+### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
+
+セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ブレードで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
+
+![復元する VM の選択](./media/backup-azure-arm-restore-vms/sec-restore.png)
+
+![復元ポイントの選択](./media/backup-azure-arm-restore-vms/sec-rp.png)
+
+![復元の構成](./media/backup-azure-arm-restore-vms/rest-config.png)
+
+![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+- VM を復元して作成する方法については、「[VMの作成](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)」を参照してください。
+- ディスクとして復元するには、「[ディスクを復元する](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)」を参照してください。
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
+
+1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ ジョブ]** に移動します。
+2. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** をクリックします。
+
+![フィルター処理されたバックアップ ジョブ](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
 
 ## <a name="restore-vms-with-special-configurations"></a>特別な構成を持つ VM を復元する
 
@@ -164,7 +206,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 2. 復元の進行状況を監視するには、ステータスが **[進行中]** である任意の復元ジョブをクリックします。 復元の進行状況に関する情報が進行状況バーに表示されます。
 
     - **[Estimated time of restore]\(復元の推定時間\)** :最初は、復元操作の完了にかかる時間を示します。 操作の進行に伴って所要時間が減り、復元操作が終了するとゼロになります。
-    - **[Percentage of restore]\(復元率\)** 。 実行された復元操作の割合を示します。
+    - **Percentage of restore**. Shows the percentage of restore operation that's done.
     - **[転送バイト数]** :新しい VM を作成することによって復元している場合、転送予定の合計バイト数に対する転送されたバイト数を示します。
 
 ## <a name="post-restore-steps"></a>復元後の手順
@@ -206,4 +248,4 @@ VM を復元した後の注意点がいくつかあります:
 ## <a name="next-steps"></a>次のステップ
 
 - 復元処理中に問題が発生した場合は、一般的な問題とエラーを[確認](backup-azure-vms-troubleshoot.md#restore)してください。
-- VM が復元されたら、[仮想マシンの管理](backup-azure-manage-vms.md)について理解します
+- します[VM が復元されたら、仮想マシンの管理](backup-azure-manage-vms.md)についての詳細情報を参照してください

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8da233088389797271541b1aae55ec2e842f252d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181285"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912500"
 ---
 ## <a name="extended-iot-scenarios"></a>IoT の拡張シナリオ
 
@@ -21,15 +21,15 @@ ms.locfileid: "67181285"
 
 | シナリオ                                                   | Azure サービスまたは Azure ツール              |
 |----------------------------------------------------------- |------------------------------------|
-| [IoT Hub メッセージの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub Toolkit 拡張機能|
+| [IoT Hub メッセージの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub 拡張機能|
 | [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI と IoT 拡張機能    |
-| [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub Toolkit 拡張機能|
+| [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub 拡張機能|
 | [Azure Storage への IoT Hub メッセージの保存](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
 | [センサー データによる気象予測](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
 | [異常自動検出および対応](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらのチュートリアルを完了した後は、「[開発者ガイド](../articles/iot-hub/iot-hub-devguide.md)」で IoT Hub の機能の詳細を確認できます。 

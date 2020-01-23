@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073576"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708357"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
@@ -46,7 +46,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 + [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 + [API をインポートおよび発行する](import-and-publish.md)
 
-## <a name="caching-policies"> </a>キャッシュ ポリシーの追加
+## <a name="caching-policies"> </a>キャッシュ ポリシーを追加する
 
 この例に示すキャッシュ ポリシーでは、**GetSpeakers** 操作に対する最初の要求は、バックエンド サービスからの応答を返します。 この応答はキャッシュされ、指定されたヘッダーとクエリ文字列パラメーターによってキーが設定されます。 パラメーターが一致する後続の操作の呼び出しに対しては、キャッシュの有効期間が超過するまで、キャッシュに格納された応答が返されます。
 
@@ -70,14 +70,14 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 9. **outbound** 要素で、次のポリシーを追加します。
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     **[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、間隔は **20** 秒です。
 
 > [!TIP]
 > 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `caching-type` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
 
-## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
+## <a name="test-operation"> </a>操作を呼び出してキャッシュをテストする
 動作中のキャッシュを確認するには、開発者ポータルから操作を呼び出します。
 
 1. Azure Portal で、APIM インスタンスに移動します。

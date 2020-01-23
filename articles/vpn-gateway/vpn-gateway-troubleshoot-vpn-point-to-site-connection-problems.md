@@ -1,25 +1,19 @@
 ---
-title: Azure ポイント対サイト接続の問題のトラブルシューティング | Microsoft Docs
+title: Azure ポイント対サイト接続の問題のトラブルシューティング
+titleSuffix: Azure VPN Gateway
 description: ポイント対サイト接続の問題のトラブルシューティング方法について説明します。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695539"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863650"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -45,7 +39,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | Certificate | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
@@ -121,7 +115,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | Certificate | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|

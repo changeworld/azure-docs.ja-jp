@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379200"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707946"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -28,10 +28,10 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | デバイスの状態 |
 | ---   | ---   | ---   | ---   |
-| はい | NO | NO | Azure AD 参加済み |
-| NO | NO | はい | ドメイン参加済み |
-| はい | NO | はい | ハイブリッド AD 参加済み |
-| NO | はい | はい | オンプレミス DRS 参加済み |
+| YES | NO | NO | Azure AD 参加済み |
+| NO | NO | YES | ドメイン参加済み |
+| YES | NO | YES | ハイブリッド AD 参加済み |
+| NO | YES | YES | オンプレミス DRS 参加済み |
 
 > [!NOTE]
 > Workplace Join (Azure AD 登録済み) 状態は、[User State]\(ユーザー状態\) セクションに表示されます
@@ -297,10 +297,22 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 ## <a name="ngc-prerequisite-check"></a>NGC の前提条件チェック
 
-このセクションでは、NGC キーのプロビジョニングのための前提条件チェックを実行します。 
+このセクションでは、Windows Hello for Business (WHFB) をプロビジョニングするための前提条件チェックを実行します。 
 
 > [!NOTE]
-> ユーザーが既に NGC 資格情報を適切に構成している場合は、dsregcmd /status で NGC の前提条件チェックの詳細が表示されないことがあります。
+> ユーザーが既に WHFB を適切に構成している場合は、dsregcmd /status で NGC の前提条件チェックの詳細が表示されないことがあります。
+
+- **IsDeviceJoined:** - デバイスが Azure AD に参加している場合は、"YES" に設定されます。
+- **IsUserAzureAD:** - ログインしているユーザーが Azure AD に存在する場合は、"YES" に設定されます。
+- **PolicyEnabled:** - デバイスで WHFB ポリシーが有効になっている場合は "YES" に設定されます。
+- **PostLogonEnabled:** - WHFB 登録がプラットフォームによってネイティブでトリガーされる場合は、"YES" に設定されます。 "NO" に設定されている場合は、Windows Hello for Business の登録がカスタム メカニズムによってトリガーされることを示します。
+- **DeviceEligible:** - デバイスが WHFB に登録するためのハードウェア要件を満たしている場合は、"YES" に設定されます。
+- **SessionIsNotRemote:** - 現在のユーザーがリモートではなくデバイスに直接ログインしている場合は、"YES" に設定されます。
+- **CertEnrollment:** - WHFB 証明書信頼展開に固有であり、WHFB の証明書登録機関を示します。 WHFB ポリシーのソースがグループ ポリシーの場合は "enrollment authority" に設定され、ソースが MDM の場合は "mobile device management" に設定されます。 それ以外の場合は "none" になります。
+- **AdfsRefreshToken:** - WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ユーザー用のエンタープライズ PRT がデバイスにあるかどうかを示します。
+- **AdfsRaIsReady:** - WHFB 証明書信頼展開固有です。  CertEnrollment が "enrollment authority" の場合にのみ存在します。 探索メタデータに示されている ADFS で WHFB がサポートされ、"*かつ*" ログオン証明書テンプレートを利用できる場合は "YES" に設定されます。
+- **LogonCertTemplateReady:** - WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ログオン証明書テンプレートの状態が有効であり、ADFS RA のトラブルシューティングに役立つ場合は、"YES" に設定されます。
+- **PreReqResult:** - すべての WHFB の前提条件評価の結果が提示されます。 ユーザーが次回サインインするときに、ログオン後のタスクとして WHFB 登録を起動する場合は、"Will Provision" に設定されます。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>NGC の前提条件チェックの出力例
 
@@ -323,6 +335,6 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 +----------------------------------------------------------------------+
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご不明な点がある場合は、[デバイス管理の FAQ](faq.md) をご覧ください。

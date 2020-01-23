@@ -1,26 +1,18 @@
 ---
-title: VPN Gateway の構成と接続のトラブルシューティング | Microsoft Docs
+title: Azure VPN Gateway:構成と接続のトラブルシューティング
 description: この記事では、お使いの VPN Gateway の構成、接続のトラブルシューティングを行い、スループットを検証する際に役立つ記事へのリンクを紹介します。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: cherylmc
-ms.openlocfilehash: 263c1010ec6cf5f6140c4dc9323dd9bd149b2368
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727286"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780166"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN Gateway のトラブルシューティング
 
@@ -36,6 +28,6 @@ VPN Gateway の接続は、さまざまな原因で失敗する可能性があ�
 
 * [サイト間接続](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>オンプレミスのネットワークと Azure 仮想ネットワークの間にサイト間 VPN 接続を構成した後、VPN 接続が突然動作を停止して再接続できません。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の手順を使用して、[VNet および VPN 接続を検証する](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)こともできます。

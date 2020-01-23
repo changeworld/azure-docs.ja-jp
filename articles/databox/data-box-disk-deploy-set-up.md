@@ -9,13 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: ef6f342ec2308897d8c2221250ce92f81ce66863
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375897"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514104"
 ---
 ::: zone target="docs"
 
@@ -320,7 +319,7 @@ ms.locfileid: "70375897"
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Disk に関する次のようなトピックについて説明しました。
 

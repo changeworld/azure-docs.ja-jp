@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 7f51021df2234438eb81a29887a714b0f09d0998
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 2978ffa68814d176ea1caf485e7e4f1ba72f2597
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563192"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867572"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -188,35 +188,7 @@ Answer2
 
 ナレッジ ベースのコンテンツを直接追加または編集する場合は、**マークダウンの書式設定**を使用してリッチ テキスト コンテンツを作成するか、既に回答に含まれているマークダウン形式コンテンツを変更します。 QnA Maker は多くのマークダウン形式をサポートしているため、コンテンツにリッチ テキスト機能を取り込むことができます。 ただし、チャット ボットなどのクライアント アプリケーションは、同じマークダウン形式のセットをサポートしていない場合があります。 クライアント アプリケーションの回答の表示をテストすることが重要です。
 
-QnA Maker で使用できるマークダウン形式の一覧を次に示します。
-
-|目的|Format|マークダウンの例|表示<br>チャット ボットの表示|
-|--|--|--|--|
-2 つの文の間の改行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![2 つの文の間の改行を書式設定する](../media/qnamaker-concepts-datasources/format-newline.png)|
-|h1 から h6 までのヘッダー。`#` の番号はヘッダーを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](../media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
-|斜体 |`*text*`|`How do I create a bot with *QnA Maker*?`|![斜体を使用した書式設定](../media/qnamaker-concepts-datasources/format-italics.png)|
-|文字列 (太字)|`**text**`|`How do I create a bot with **QnA Maker**?`|![太字の強力なマーキングを使用した書式設定](../media/qnamaker-concepts-datasources/format-strong.png)|
-|リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](../media/qnamaker-concepts-datasources/format-url.png)|
-|\* 公開画像の URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公開画像の URL の書式設定 ](../media/qnamaker-concepts-datasources/format-image-url.png)|
-|取り消し線|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![取り消し線の書式設定](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|太字と斜体|`***text***`|`How can I create a ***QnA Maker*** bot?`|![太字と斜体の書式設定](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|リンクの太字の URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![太字の URL の書式設定](../media/qnamaker-concepts-datasources/format-bold-url.png)|
-|リンクの斜体の URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜体の URL の書式設定](../media/qnamaker-concepts-datasources/format-url-italics.png)|
-|マークダウン記号のエスケープ|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![斜体の URL の書式設定](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
-|番号付きリスト|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>上の例では、マークダウンに組み込まれた自動番号付けを使用しています。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>上の例では明示的な番号付けを使用しています。|![番号付きリストの書式設定](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|記号付きリスト|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![記号付きリストの書式設定](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
-|入れ子になったリスト|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>番号付きリストと記号付きリストを一緒に入れ子にすることができます。 タブ `\t` は、子要素のインデント レベルを示します。|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![入れ子になった記号付きリストの書式設定](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![入れ子になった番号付きリストの書式設定](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
-
-\* QnA Maker ではどのような方法でも画像は処理されません。 画像をレンダリングするのはクライアント アプリケーションの役割です。
-
-更新/置換ナレッジベース API を使用してコンテンツを追加し、コンテンツ/ファイルに html タグが含まれている場合は、タグの開始と終了がエンコードされた形式に変換されるようにすることで、ファイル内の HTML を維持できます。
-
-| HTML の維持  | API 要求での表記  | KB での表記 |
-|-----------|---------|-------------------------|
-| はい | \&lt;br\&gt; | &lt;br&gt; |
-| はい | \&lt;h3\&gt;header\&lt;/h3\&gt; | &lt;h3&gt;header&lt;/h3&gt; |
-
-さらに、CR LF (\r\n) は KB では \n に変換されます。 LF (\n) はそのまま維持されます。 \t や \n のようなエスケープ シーケンスをエスケープする場合は、円記号を使用できます。例: '\\\\r\\\\n' および '\\\\t'
+詳細については、[QnA Maker マークダウン リファレンス](../reference-markdown-format.md)に記載されているマークダウンの例を参照してください。
 
 ## <a name="editing-your-knowledge-base-locally"></a>ナレッジ ベースのローカルな編集
 

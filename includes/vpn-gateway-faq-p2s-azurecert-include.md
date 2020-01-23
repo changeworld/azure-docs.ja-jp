@@ -8,14 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69520855"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751918"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
+
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>証明書認証を使用した接続時、証明書が一致しないと表示された場合、どうすればよいでしょうか。
+
+手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** チェック ボックスをオフにするか、**証明書と共にサーバーの FQDN を追加**します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
+
+一般に、サーバー ID の検証は回避しないようお勧めします。ただし、Azure 証明書認証では、VPN トンネリング プロトコル (IKEv2 または SSTP) と EAP プロトコルとで同じ証明書がサーバー検証に使用されます。 サーバー証明書と FQDN は VPN トンネリング プロトコルによって既に検証済みであるため、EAP で再度検証する必要はありません。
+
+![ポイント対サイト](./media/vpn-gateway-faq-p2s-all-include/servercert.png "サーバー証明書")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>内部 PKI ルート CA を使用して、ポイント対サイト接続用に証明書を生成できますか?
 
@@ -23,7 +31,7 @@ ms.locfileid: "69520855"
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>Azure Key Vault の証明書を使用できますか?
 
-No.
+いいえ。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>証明書の作成にどのようなツールを使用できますか。
 

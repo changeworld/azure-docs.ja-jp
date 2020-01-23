@@ -1,5 +1,5 @@
 ---
-title: 'ルートベースの Azure VPN ゲートウェイを作成する: CLI | Microsoft Docs'
+title: 'ルートベースの Azure VPN Gateway を作成する: CLI'
 description: CLI を使用して VPN Gateway を作成する方法を簡単に説明します
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f0cc1d63f8560399d1d71c8d010c37bd2c5e387
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391244"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778755"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "60391244"
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -170,7 +170,7 @@ az network public-ip show \
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したリソースが必要でなくなったら、[az group delete](/cli/azure/group) を使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
 
@@ -178,7 +178,7 @@ az network public-ip show \
 az group delete --name TestRG1 --yes
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ゲートウェイの作成が完了したら、自分の仮想ネットワークと別の VNet の間の接続を作成できます。 または、自分の仮想ネットワークとオンプレミスの場所の間の接続を作成します。
 

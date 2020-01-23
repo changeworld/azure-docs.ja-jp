@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67622108"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901649"
 ---
 | リソース | 既定/上限 |
 | --- | --- |
@@ -43,3 +43,6 @@ ms.locfileid: "67622108"
 | 100 Gbps* |10 |100 |
 
 **100 Gbps ExpressRoute Direct のみ*
+
+> [!NOTE]
+> Global Reach の接続数は、ExpressRoute 回線あたりの仮想ネットワーク接続数の上限にカウントされます。 たとえば、10 Gbps Premium 回線であれば、Global Reach 接続が 5 本と ExpressRoute ゲートウェイへの接続が 95 本、または Global Reach 接続が 95 本と ExpressRoute ゲートウェイへの接続が 5 本許容されます。回線に対して 100 接続という上限を超えなければ、他のどのような組み合わせでもかまいません。

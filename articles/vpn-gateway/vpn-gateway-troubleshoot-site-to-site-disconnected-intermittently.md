@@ -1,27 +1,21 @@
 ---
-title: Azure サイト間 VPN が断続的に切断される問題のトラブルシューティング | Microsoft Docs
+title: 'トラブルシューティング: サイト間 VPN 接続が断続的に切断される'
 description: サイト間 VPN 接続が頻繁に切断される問題をトラブルシューティングする方法について説明します。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058835"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862562"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: Azure サイト間 VPN 接続が断続的に切断される
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング:Azure サイト間 VPN 接続が断続的に切断される
 
 新規または既存の Microsoft Azure サイト間 VPN 接続が不安定になったり頻繁に切断されたりする問題に遭遇することがあります。 この記事では、問題の原因の特定と解決に役立つトラブルシューティング手順について説明します。 
 
@@ -70,7 +64,7 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 接続切断の問題は、**Perfect Forward Secrecy** 機能によって引き起こされる可能性があります。 VPN デバイスで **Perfect Forward Secrecy** が有効になっている場合は、その機能を無効にしてください。 そのうえで、[仮想ネットワーク ゲートウェイの IPsec ポリシーを更新](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)

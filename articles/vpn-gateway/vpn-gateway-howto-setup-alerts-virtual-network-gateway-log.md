@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway からの診断ログ イベントにアラートを設定する
+title: Azure VPN Gateway:診断ログ イベントでアラートを構成する
 description: VPN Gateway 診断ログ イベントにアラートを構成する手順
 services: vpn-gateway
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: eb8f0204771b204af740c4ddc8e359499520a012
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307006"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045931"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Gateway からの診断ログ イベントにアラートを設定する
 
@@ -39,7 +39,7 @@ Azure では、次のログを使用できます。
 
 2. **[Log Analytics]** ページで **[作成]** を選択します。
 
-   ![[作成] ボタンがある log Analytics ページ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選択")
+   ![[作成] ボタンがある Log Analytics ページ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選択")
 
 3. **[新規作成]** を選択し、詳細を入力します。
 
@@ -55,7 +55,10 @@ Azure では、次のログを使用できます。
 
 6. 詳細を入力し、確実に **[Log Analytics への送信]** と **[TunnelDiagnosticLog]** が選択されているようにします。 手順 3 で作成した Log Analytics ワークスペースを選択します。
 
-   ![選択されたチェック ボックス](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選択")
+   ![チェック ボックスをオン](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選択")
+
+   > [!NOTE]
+   > 最初はデータが表示されるまでに数時間かかる場合があります。
 
 7. 仮想ネットワーク ゲートウェイ リソースの概要に移動し、 **[監視]** タブから **[アラート]** を選択します。次に新しいアラート ルールを作成するか、または既存のアラート ルールを編集します。
 
@@ -93,8 +96,8 @@ Azure では、次のログを使用できます。
 
 12. **[ルールの作成]** ページで、 **[アクションをカスタマイズする]** に詳細を入力し、 **[アクション グループ名]** セクションに正しい名前が表示されていることを確認します。 **[アラート ルールの作成]** を選択して、ルールを作成します。
 
-    ![ルールを作成するための選択](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選択")
+    ![ルールを作成するための選択内容](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選択")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トンネル メトリックにアラートを構成するには、「[Set up alerts on VPN Gateway metrics](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)」(VPN Gateway メトリックにアラートを設定する) を参照してください。

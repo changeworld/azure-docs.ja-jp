@@ -1,26 +1,19 @@
 ---
-title: 'VNet 対 VNet 接続を使用して仮想ネットワークを別の VNet に接続する: Azure CLI | Microsoft Docs'
+title: 'VNet 対 VNet 接続を使用して VNet を VNet に接続する: Azure CLI'
 description: VNet 間接続と Azure CLI を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60411833"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834565"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -74,11 +67,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 この演習では、構成を組み合わせるか、希望する方のみを選んでもかまいません。 どの構成でも、接続の種類として VNet 間を使用します。 ネットワーク トラフィックは、互いに直接接続されている VNet 間を行き来します。 この演習では、TestVNet4 からのトラフィックが TestVNet5 にルーティングされることはありません。
 
-* [同じサブスクリプション内にある VNet:](#samesub) この構成の手順では、TestVNet1 と TestVNet4 を使用します。
+* [同じサブスクリプション内にある VNet:](#samesub)この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [異なるサブスクリプション内にある VNet:](#difsub) この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+* [異なるサブスクリプション内にある VNet:](#difsub)この構成の手順では、TestVNet1 と TestVNet5 を使用します。
 
   ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -99,7 +92,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 * VNet 名: TestVNet1
 * リソース グループ:TestRG1
-* 場所:米国東部
+* 場所:East US
 * TestVNet1: 10.11.0.0/16 と 10.12.0.0/16
 * FrontEnd:10.11.0.0/24
 * BackEnd: 10.12.0.0/24
@@ -382,7 +375,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](https://docs.microsoft.com/azure/)を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

@@ -1,19 +1,20 @@
 ---
-title: '複数の VPN Gateway サイト間接続を VNet に追加するAzure portal: Resource Manager| Microsoft Docs'
+title: 複数の VPN Gateway サイト間接続を VNet に追加するAzure portal
 description: マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244619"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779690"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -58,10 +59,10 @@ ms.locfileid: "72244619"
    * **[名前]:** 作成している接続先のサイトに付ける名前です。
    * **[接続の種類]** : **[サイト対サイト (IPsec)]** を選択します。
      
-     ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続追加] ページ")<br>
+     ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続の追加] ページ")<br>
 
 ## <a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
-1. **[ローカル ネットワーク ゲートウェイ]** 、***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
+1. **[ローカル ネットワーク ゲートウェイ]** の ***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
    
     ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "ローカル ネットワーク ゲートウェイの選択")<br>
 2. **[新規作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
@@ -85,6 +86,6 @@ ms.locfileid: "72244619"
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[仮想マシンのラーニング パス](/learn/paths/deploy-a-website-with-azure-virtual-machines/)を参照してください。

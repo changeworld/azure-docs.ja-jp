@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: c65ed214747fd6a3729c2e9acff5489f5fa1b9d7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 51c60c8cd13c8ad7cef123f2001fcd0ec61f38ba
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770800"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
 
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-Computer Vision では、単一の Docker コンテナー *Read* を使用できます。 *Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳しくは、「[Read API](concept-recognizing-text.md#read-api)」のドキュメントをご覧ください。
+Computer Vision では、単一の Docker コンテナー *Read* を使用できます。 *Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳細については、[Read](concept-recognizing-text.md#read-api) API のドキュメントを参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
+|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
-| 読み取り | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Read | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
@@ -313,7 +313,7 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 > [!IMPORTANT]
 > Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [Computer Vision の概要](Home.md)ページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する

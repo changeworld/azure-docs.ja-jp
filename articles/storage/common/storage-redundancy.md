@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: cdddf284028c6fc9749082e1991e5b9dee4acf99
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560370"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748179"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -52,7 +52,7 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。
 
 > [!NOTE]
-> 現在、Azure Premium Disk Storage は、ローカル冗長ストレージ (LRS) のみをサポートしています。 Azure Premium ブロック Blob ストレージは、特定のリージョンで、ローカル redudant ストレージ (LRS) とゾーン redudant ストレージ (ZRS) をサポートしています。
+> 現在、Azure Premium Disk Storage は、ローカル冗長ストレージ (LRS) のみをサポートしています。 Azure Premium ブロック BLOB ストレージは、特定のリージョンで、ローカル冗長ストレージ (LRS) とゾーン冗長ストレージ (ZRS) をサポートしています。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 
@@ -76,7 +76,7 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 - [ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [高可用性と最大の持続性を実現するための geo ゾーン冗長ストレージ (GZRS) (プレビュー)](storage-redundancy-gzrs.md)
-- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
+- [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](scalability-targets-standard-account.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP ペーパー - Azure Storage:強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
