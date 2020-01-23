@@ -2,18 +2,18 @@
 title: Apache Hadoop で MapReduce と PowerShell を使用する - Azure HDInsight
 description: PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2ba8ab07edc4fd036b82c97f0ae3fb565d5eed72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: hdinsightactive
+ms.date: 01/08/2020
+ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078393"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830073"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 
@@ -21,29 +21,25 @@ ms.locfileid: "67078393"
 
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
 
-## <a id="prereq"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* HDInsight の Apache Hadoop クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
-* **Azure HDInsight (HDInsight で Hadoop を使用) クラスター**
+* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/overview)。
 
-* **Azure PowerShell を実行できるワークステーション**。
-
-## <a id="powershell"></a>MapReduce ジョブを実行する
+## <a name="run-a-mapreduce-job"></a>MapReduce ジョブを実行する
 
 Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *コマンドレット* が提供されます。 PowerShell は、HDInsight クラスター上で実行されている [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (旧称: Templeton) への REST 呼び出しを内部的に行います。
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Connect-AzAccount**:Azure サブスクリプションに対して Azure PowerShell を認証します。
-
-* **New-AzHDInsightMapReduceJobDefinition**:指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。
-
-* **Start-AzHDInsightJob**:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
-
-* **Wait-AzHDInsightJob**:ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
-
-* **Get-AzHDInsightJobOutput**:ジョブの出力を取得するために使用します。
+|コマンドレット | [説明] |
+|---|---|
+|Connect-AzAccount|Azure サブスクリプションに対して Azure PowerShell を認証します。|
+|New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。|
+|Start-AzHDInsightJob|ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。|
+|Wait-AzHDInsightJob|ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。|
+|Get-AzHDInsightJobOutput|ジョブの出力を取得するために使用します。|
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -83,9 +79,9 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 > [!NOTE]  
 > MapReduce ジョブの出力ファイルは変更できません。 そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-## <a id="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
-ジョブが完了しても情報が返されない場合は、ジョブのエラーを調べてください。 このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
+ジョブが完了しても情報が返されない場合は、ジョブのエラーを調べてください。 このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加します。 その後、ファイルを保存し、スクリプトを再実行します。
 
 ```powershell
 # Print the output of the WordCount job.
@@ -99,17 +95,9 @@ Get-AzHDInsightJobOutput `
 
 このコマンドレットは、ジョブ実行時に STDERR に書き込まれた情報を返します。
 
-## <a id="summary"></a>概要
+## <a name="next-steps"></a>次のステップ
 
-このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。
-
-## <a id="nextsteps"></a>次のステップ
-
-HDInsight での MapReduce ジョブに関する全般的な情報:
+このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。 HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight Hadoop での MapReduce の使用](hdinsight-use-mapreduce.md)
-
-HDInsight での Hadoop のその他の使用方法に関する情報
-
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)

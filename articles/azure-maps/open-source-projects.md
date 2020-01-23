@@ -1,5 +1,5 @@
 ---
-title: Azure Maps コミュニティのオープンソース プロジェクト | Microsoft Docs
+title: Azure Maps コミュニティのオープンソース プロジェクト | Microsoft Azure Maps
 description: Microsoft Azure Maps プラットフォーム用に調整されたオープンソース プロジェクト。
 author: rbrundritt
 ms.author: richbrun
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6a03972bd8b6e73ed19aeeb0665ff20dccffd373
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474973"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908937"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 

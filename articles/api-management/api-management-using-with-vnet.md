@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074624"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889542"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -45,33 +45,36 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure ポータルを使用して VNET 接続を有効にする
 
-1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
-2. **[仮想ネットワーク]** を選択します。
-3. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
+1. [Azure portal](https://portal.azure.com) に移動し、お使いの API Management インスタンスを検索します。 **API Management サービス**を検索して選択します。
+
+2. お使いの API Management インスタンスを選択します。
+
+3. **[仮想ネットワーク]** を選択します。
+4. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
 
     ![API Management の [仮想ネットワーク] メニュー][api-management-using-vnet-menu]
-4. 目的のアクセスの種類を選択します。
+5. 目的のアクセスの種類を選択します。
 
-   * **オフ**: これは既定値です。 API Management は仮想ネットワークにデプロイされません。
+    * **Off**:これは既定値です。 API Management は仮想ネットワークにデプロイされません。
 
-   * **外部**: API Management のゲートウェイと開発者ポータルには、パブリック インターネットから外部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
+    * **外部**:API Management のゲートウェイと開発者ポータルには、パブリック インターネットから外部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
 
-     ![パブリック ピアリング][api-management-vnet-public]
+        ![パブリック ピアリング][api-management-vnet-public]
 
-   * **内部**: API Management のゲートウェイと開発者ポータルには、仮想ネットワークから内部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
+    * **内部**:API Management のゲートウェイと開発者ポータルには、仮想ネットワークから内部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
 
-     ![プライベート ピアリング][api-management-vnet-private]
+        ![プライベート ピアリング][api-management-vnet-private]
 
-     API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 すべてのリージョンについて、VNET とサブネットを選択します。 この一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれます。
+6. **[外部]** または **[内部]** を選択した場合、API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 **[場所]** を選択し、その **[仮想ネットワーク]** と **[サブネット]** を選択します。 仮想ネットワークの一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれています。
 
-     > [!IMPORTANT]
-     > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
-     >
+    > [!IMPORTANT]
+    > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
 
-     ![VPN の選択][api-management-setup-vpn-select]
+    次に、 **[適用]** を選択します。 API Management インスタンスの **[仮想ネットワーク]** ページが、新しい仮想ネットワークとサブネットの選択によって更新されます。
 
-5. 上部のナビゲーション バーの **[保存]** をクリックします。
-6. 上部のナビゲーション バーの **[ネットワーク構成の適用]** をクリックします。
+    ![VPN の選択][api-management-setup-vpn-select]
+
+7. 上部のナビゲーションバーで、 **[保存]** を選択し、 **[ネットワーク構成の適用]** を選択します。
 
 > [!NOTE]
 > API Management インスタンスの VIP アドレスは VNET を有効または無効にするたびに変更されます。
@@ -135,7 +138,7 @@ API Management サービスを Virtual Network にデプロイするときに発
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`East US 2` が eastus2.warm.ingestion.msftcloudes.com である `azure region`.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 中国       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **SMTP リレー**:SMTP リレー用の送信ネットワーク接続。`smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` の各ホストで解決されます。
 
@@ -153,7 +156,7 @@ API Management サービスを Virtual Network にデプロイするときに発
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、52.159.16.255/32、40.82.157.167/32、51.137.136.0/32、40.81.185.8/32、40.81.47.216/32、51.145.56.125/32、40.81.89.24/32、52.224.186.99/32、51.145.179.78/32、52.140.238.179/32、40.66.60.111/32、52.139.80.117/32、20.46.144.85/32、191.233.24.179/32、40.90.185.46/32、102.133.130.197/32、52.139.20.34/32、40.80.232.185/32、13.71.49.1/32、13.64.39.16/32、20.40.160.107/32、20.37.52.67/32、20.44.33.246/32、13.86.102.66/32、20.40.125.155/32、51.143.127.203/32、52.253.225.124/32、52.253.159.160/32、20.188.77.119/32、20.44.72.3/32、52.142.95.35/32、52.139.152.27/32、20.39.80.2/32、51.107.96.8/32、20.39.99.81/32、20.37.81.41/32、51.107.0.91/32、102.133.0.79/32、51.116.96.0/32、51.116.0.0/32 |
     | Azure Government  | 52.127.42.160/32、52.127.34.192/32 |
-    | Azure China       | 139.217.51.16/32、139.217.171.176/32 |
+    | Azure 中国       | 139.217.51.16/32、139.217.171.176/32 |
 
   * 強制的にトンネリングされる、API Management サービスの他の依存関係については、ホスト名を解決し、エンドポイントに到達するための方法が必要です。 次のような方法があります。
       - メトリックと正常性の監視
@@ -164,7 +167,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 ## <a name="troubleshooting"> </a>トラブルシューティング
 * **初回のセットアップ**:API Management サービスのサブネットへの初回のデプロイが成功しなかった場合は、同じサブネットに仮想マシンを先にデプロイすることをお勧めします。 次に、リモート デスクトップを仮想マシンにデプロイし、Azure サブスクリプション内の次のリソースのいずれかに接続できることを確認します。
     * Azure Storage BLOB
-    * Azure SQL Database
+    * Azure SQL データベース
     * Azure Storage Table
 
   > [!IMPORTANT]
@@ -174,14 +177,14 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 * **リソース ナビゲーション リンク**:Resource Manager スタイルの VNET サブネットにデプロイすると、API Management では、リソース ナビゲーション リンクを作成することでサブネットが予約されます。 サブネットに別のプロバイダーのリソースが既に含まれている場合、デプロイは**失敗**します。 同様に、API Management サービスを別のサブネットに 移動するか削除すると、そのリソース ナビゲーション リンクが削除されます。
 
-## <a name="subnet-size"></a>サブネットのサイズ要件
+## <a name="subnet-size"> </a>サブネットのサイズ要件
 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 API Management インスタンスは、Premium SKU のユニットごとに 2 つの IP アドレス、または Developer SKU 用に 1 つの IP アドレスを使用します。 各インスタンスによって、外部ロード バランサー用の IP アドレスが別途予約されています。 内部 VNET に展開する場合は、内部ロード バランサー用に追加の IP アドレスが必要です。
 
 前述の計算によると、API Management で展開できるサブネットの最小サイズは /29 で、3 つの IP アドレスが提供されます。
 
-## <a name="routing"> </a> ルーティング
+## <a name="routing"> </a>ルーティング
 + 負荷分散されたパブリック IP アドレス (VIP) は、すべてのサービス エンドポイントへのアクセスを提供するために予約されます。
 + サブネット IP 範囲 (DIP) の IP アドレスは VNET 内のリソースにアクセスするために使用され、パブリック IP アドレス (VIP) は VNET の外部のリソースにアクセスするために使用されます。
 + 負荷分散されたパブリック IP アドレスは、Azure Portal の [概要]/[要点] ブレードで確認できます。

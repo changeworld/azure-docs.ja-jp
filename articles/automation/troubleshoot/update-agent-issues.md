@@ -1,6 +1,6 @@
 ---
-title: Azure Update Management での Windows Hybrid Runbook Worker の正常性について理解する
-description: Update Management をサポートする Windows の Hybrid Runbook Worker に関する問題をトラブルシューティングする方法について説明します。
+title: Windows Hybrid Runbook Worker の診断 - Azure Update Management
+description: Update Management をサポートする Windows の Azure Automation Hybrid Runbook Worker に関する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850127"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769814"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Windows Hybrid Runbook Worker の正常性について理解する
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Windows Hybrid Runbook Worker の正常性を把握して解決する
 
 Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
@@ -203,6 +203,6 @@ CheckResultMessageId        : TlsVersionCheck.Passed.EnabledByDefault
 CheckResultMessageArguments : {}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。

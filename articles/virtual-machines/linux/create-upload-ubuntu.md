@@ -3,28 +3,23 @@ title: Azure 上での Ubuntu Linux VHD の作成とアップロード
 description: Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: adea86420c974d7e342dc5803d9d814d5792fe78
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258261"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934038"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>公式の Ubuntu クラウド イメージ
+
 Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) でダウンロードできます。 Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。 最新のイメージ リリースは、常に次の場所にあります。
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
@@ -102,7 +97,16 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
         (recommended) sudo apt-get dist-upgrade
 
         # sudo reboot
+    
+    Ubuntu 18.04.04:
+    
+        # sudo apt-get update
+        # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
+        # sudo apt-get install --install-recommends linux-cloud-tools-generic-hwe-18.04
+        (recommended) sudo apt-get dist-upgrade
 
+        # sudo reboot
+    
     **関連項目:**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
@@ -133,9 +137,9 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 1. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 [Ubuntu HardWare Enablement (HWE) カーネル](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
 

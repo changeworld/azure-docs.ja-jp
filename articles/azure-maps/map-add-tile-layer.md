@@ -1,6 +1,6 @@
 ---
-title: Azure Maps にタイル レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK にタイル レイヤーを追加する方法。
+title: マップにタイル レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにタイル レイヤーをオーバーレイする方法を示します。 タイル レイヤーを使用すると、マップに画像をレンダリングできます。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976449"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911088"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -68,7 +68,7 @@ map.layers.add(new atlas.layer.TileLayer({
 <iframe height='700' scrolling='no' title='タイル レイヤーのオプション' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Tile Layer Options</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

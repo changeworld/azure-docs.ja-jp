@@ -1,28 +1,28 @@
 ---
-title: Azure Automation での SCCM コレクションを使用したターゲットの更新 - Update Management
-description: この記事は、このソリューションを使用して System Center Configuration Manager を構成し、SCCM マネージド コンピューターの更新を管理するのに役立ちます。
+title: 構成マネージャー クライアントで Azure Update Management を使用する
+description: この記事では、ConfigMgr クライアントにソフトウェア更新プログラムを展開するために、このソリューションを使用して Microsoft Endpoint Configuration Manager を構成する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 03/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: b52db95b6a6ce21a5e5b68342ac123526d11ca62
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769950"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
+# <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する
 
-PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。
+PC、サーバー、モバイル デバイスを管理するために Microsoft Endpoint Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。
 
 Configuration Manager でソフトウェア更新プログラムのデプロイを作成および事前ステージングして、管理対象の Windows サーバーのレポートと更新を行えます。また、[Update Management ソリューション](automation-update-management.md)を使用して、完了した更新プログラムのデプロイの詳細な状態を取得できます。 Windows サーバーでの更新プログラムのデプロイ管理にではなく、更新プログラムのコンプライアンス レポートに Configuration Manager を使用すると、Update Management ソリューションでセキュリティ更新プログラムを管理しながら Configuration Manager へのレポートを継続できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Update Management ソリューション](automation-update-management.md)を Automation アカウントに追加しておく必要があります。
-* 現在 System Center Configuration Manager 環境で管理されている Windows サーバーも、Update Management ソリューションが有効になっている Log Analytics ワークスペースにレポートを行う必要があります。
-* この機能は、System Center Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Azure Monitor ログと統合してコレクションをインポートするには、[Configuration Manager と Azure Monitor ログの接続](../azure-monitor/platform/collect-sccm.md)に関するページを参照してください。  
+* 現在 Configuration Manager 環境で管理されている Windows サーバーも、Update Management ソリューションが有効になっている Log Analytics ワークスペースにレポートを行う必要があります。
+* この機能は、Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Azure Monitor ログと統合してコレクションをインポートするには、[Configuration Manager と Azure Monitor ログの接続](../azure-monitor/platform/collect-sccm.md)に関するページを参照してください。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するように構成するか、Configuration Manager からセキュリティ更新プログラムを受信しない場合は Microsoft Update にアクセスできるように構成する必要があります。   
 
 Azure IaaS でホストされているクライアントを既存の Configuration Manager 環境でどのように管理するかは、主に Azure データセンターとインフラストラクチャの間の接続に依存します。 この接続は、Configuration Manager インフラストラクチャに必要となる可能性のある設計変更や、これらの必要な変更をサポートするための関連コストに影響します。 続行する前に評価する必要がある計画上の考慮事項を把握するには、「[Azure の Configuration Manager - よく寄せられる質問](/sccm/core/understand/configuration-manager-on-azure#networking)」を参照してください。

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035260"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747799"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
 
 この記事では、Linux を実行している Azure Virtual Machine に PostgreSQL をインストールして構成する方法を説明します。
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>PostgreSQL のインストール
 > [!NOTE]
@@ -64,7 +63,7 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. ドキュメント (HTML およびマニュアル ページ) や追加モジュール (contrib) など、ビルドできるものをすべてビルドする場合は、代わりに次のコマンドを実行します。
+5. ドキュメント (HTML およびマニュアル ページ) や追加モジュール (`contrib`) など、ビルドできるものをすべてビルドする場合は、代わりに次のコマンドを実行します。
    
         # gmake install-world
    

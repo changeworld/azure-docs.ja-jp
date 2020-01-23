@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669392"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976323"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -66,7 +66,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 Azure のデータ サイエンス環境をセット アップするには、
 
-1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
+1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)
 2. [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
 3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
    
@@ -163,7 +163,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     -- Report number of columns in table nyctaxi_trip
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
-#### <a name="exploration-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。 **pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。 データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
 
     SELECT medallion, COUNT(*)
@@ -172,7 +172,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索: medallion および hack_license ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索:medallion および hack_license ごとの乗車回数の分布
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
@@ -191,7 +191,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索: チップが支払われた乗車と支払われなかった乗車の分布
+#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索:チップが支払われた乗車と支払われなかった乗車の分布
 この例では、特定の期間中 (または、1 年間をカバーする場合はデータセット全体で) チップが支払われた乗車と支払われなかった乗車の数を確認します。 この分布は、後で二項分類のモデリングで使用する二項ラベルの分布を反映しています。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -200,7 +200,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-#### <a name="exploration-tip-classrange-distribution"></a>探索: チップのクラス/範囲の分布
+#### <a name="exploration-tip-classrange-distribution"></a>探索:チップのクラス/範囲の分布
 この例では、特定の期間中に (または、1 年間をカバーする場合はデータセット全体で) チップの範囲の分布を計算します。 これは、後で多クラス分類のモデリングに使用されるラベル クラスの分布です。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -215,7 +215,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>探索: 乗車距離の計算と比較
+#### <a name="exploration-compute-and-compare-trip-distance"></a>探索:乗車距離の計算と比較
 この例では、pickup (乗車) と drop-off (降車) の経度と緯度を、SQL geography ポイントに変換し、SQL geography ポイントの差を使用して乗車距離を計算し、比較するためにランダムな結果のサンプルを返します。 この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
 
     SELECT
@@ -233,7 +233,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 ラベルの生成と geography 変換探索クエリは、カウントする部分を削除してラベルや特徴を生成することにも使用できます。 その他の特徴エンジニアリングの SQL の例は、「 [IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb) 」セクションにあります。 SQL Server データベースのインスタンスで直接実行する SQL クエリを使用して、データセット全体または大規模なサブセットで特徴生成クエリを実行するとより効率的です。 クエリは **SQL Server Management Studio**、IPython Notebook、データベースにローカルやリモートにアクセスできるいずれかの開発ツールまたは環境で実行します。
 
 #### <a name="preparing-data-for-model-building"></a>モデル作成用にデータを準備する
-次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。 このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。 このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データ インジェストを行うことができます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -328,14 +328,14 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     df1['trip_distance'].describe()
 
-#### <a name="visualization-box-plot-example"></a>視覚化: ボックス プロットの例
+#### <a name="visualization-box-plot-example"></a>視覚化:ボックス プロットの例
 次に、変位置を視覚化するために、乗車距離のボックス プロットを確認します
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
 ![プロット #1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>視覚化: 配布プロットの例
+#### <a name="visualization-distribution-plot-example"></a>視覚化:配布プロットの例
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
@@ -344,7 +344,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 ![プロット #2][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>視覚化: 棒と線のプロット
+#### <a name="visualization-bar-and-line-plots"></a>視覚化:棒と線のプロット
 この例では、乗車距離を 5 つの箱にビン分割し、ビン分割の結果を視覚化します。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -362,7 +362,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 ![プロット #4][4]
 
-#### <a name="visualization-scatterplot-example"></a>視覚化: 散布図の例
+#### <a name="visualization-scatterplot-example"></a>視覚化:散布図の例
 **trip\_time\_in\_secs** と **trip\_distance** 間の散布図を表示し、相関関係があるか判断できます。
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -407,7 +407,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython Notebook での SQL クエリを使用したデータの探索
 このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。 元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup\_datetime** パーティションを使用して結果を指定した期間に限定することでも、同様の探索が行えることに注意してください。これは、「[SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
 
-#### <a name="exploration-daily-distribution-of-trips"></a>探索: 1 日ごとの乗車の分布
+#### <a name="exploration-daily-distribution-of-trips"></a>探索:1 日ごとの乗車の分布
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM nyctaxi_one_percent
@@ -621,7 +621,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 ### <a name="license-information"></a>ライセンス情報
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
-### <a name="references"></a>参照
+### <a name="references"></a>References
 •    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)  
 •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

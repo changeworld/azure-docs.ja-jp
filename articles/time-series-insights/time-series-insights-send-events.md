@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894892"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861780"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
@@ -55,13 +55,13 @@ ms.locfileid: "74894892"
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights のインスタンスを追加する
 
-Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 Time Series Insight のインスタンスと**タイム シリーズ ID** について詳しくは、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」をご覧ください。
+Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 Time Series Insight のインスタンスと**時系列 ID** について詳しくは、「[時系列 モデル](./time-series-insights-update-tsm.md)」をご覧ください。
 
 ### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
 
 1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
 
-1. `timeSeriesId` の値を設定します。 **タイム シリーズ ID** について詳しくは、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」をご覧ください。
+1. `timeSeriesId` の値を設定します。 **時系列 ID** について詳しくは、「[時系列 モデル](./time-series-insights-update-tsm.md)」をご覧ください。
 
 ### <a name="push-events-to-windmills-sample"></a>風力発電のサンプルにイベントをプッシュする
 
@@ -195,7 +195,7 @@ Time Series Insights の更新では、インスタンスを使用して、受�
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
 

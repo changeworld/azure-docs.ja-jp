@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6513cfc5432e969fc53aa72b075af194a064d178
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440421"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892134"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,14 +34,14 @@ ms.locfileid: "75440421"
 
 ODBC ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを ODBC シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この ODBC コネクタは、**基本**または**匿名**認証を使用して、**任意の ODBC 対応データ ストア**をコピー元またはコピー先とするデータのコピーをサポートします。
+具体的には、この ODBC コネクタは、**基本**または**匿名**認証を使用して、**任意の ODBC 対応データ ストア**をコピー元またはコピー先とするデータのコピーをサポートします。 **64 ビットの ODBC ドライバー**が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
 この ODBC コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- データ ストア用の ODBC ドライバーを統合ランタイム コンピューターにインストールする。
+- データ ストア用の 64 ビット ODBC ドライバーを Integration Runtime マシンにインストールする。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -289,4 +289,4 @@ Data Factory ソリューションで SAP HANA シンクを使用する前に、
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

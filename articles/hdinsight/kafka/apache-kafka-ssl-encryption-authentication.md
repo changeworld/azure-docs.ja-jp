@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241985"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751311"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
 
@@ -49,7 +49,7 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 次の詳細な手順を使って、ブローカーのセットアップを完了します。
 
 > [!Important]
-> 次のコード スニペットで、wnX は 3 つのワーカー ノードの 1 つの省略形であり、`wn0`、`wn1`、または `wn2` のいずれか適切なものに置き換える必要があります。 `WorkerNode0_Name` と `HeadNode0_Name` は、`wn0-abcxyz` や `hn0-abcxyz` など、それぞれのコンピューターの名前に置き換える必要があります。
+> 次のコード スニペットで、wnX は 3 つのワーカー ノードの 1 つの省略形であり、`wn0`、`wn1`、または `wn2` のいずれか適切なものに置き換える必要があります。 `WorkerNode0_Name` と `HeadNode0_Name` はそれぞれのコンピューターの名前に置き換える必要があります。
 
 1. ヘッド ノード 0 で初期セットアップを実行します。HDInsight の場合は、証明機関 (CA) のロールを設定します。
 
@@ -157,10 +157,10 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
 次の手順を実行して、クライアントのセットアップを完了します。
 
-1. クライアント コンピューター (hn1) にサインインします。
+1. クライアント コンピューター (スタンバイ ヘッド ノード) にサインインします。
 1. java キーストアを作成し、ブローカーの署名証明書を取得します。 証明書を CA が実行されている VM にコピーします。
-1. CA コンピューター (hn0) に切り替えて、クライアント証明書に署名します。
-1. クライアント コンピューター (hn1) に移動して、`~/ssl` フォルダーに移動します。 署名証明書をクライアント コンピューターにコピーします。
+1. CA コンピューター (アクティブ ヘッド ノード) に切り替えて、クライアント証明書に署名します。
+1. クライアント コンピューター (スタンバイ ヘッド ノード) に移動して、`~/ssl` フォルダーに移動します。 署名証明書をクライアント コンピューターにコピーします。
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
@@ -234,6 +234,6 @@ ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
 ssl.truststore.password=MyClientPassword123
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight での Apache Kafka とは](apache-kafka-introduction.md)

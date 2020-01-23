@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442651"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834335"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
@@ -30,9 +30,12 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 この記事の手順を行う前に、クライアント証明書の認証用にバックエンド サービスを構成する必要があります ([Azure WebSites で証明書の認証を構成するには、こちらの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])。 証明書へのアクセスと、API Management サービスに証明書をアップロードするためのパスワードが必要です。
+このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 この記事の手順を行う前に、クライアント証明書の認証用にバックエンド サービスを構成する必要があります ([Azure App Service で証明書の認証を構成するには、こちらの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])。 証明書へのアクセスと、API Management サービスに証明書をアップロードするためのパスワードが必要です。
 
 ## <a name="step1"> </a>証明書のアップロード
+
+> [!NOTE]
+> アップロードした証明書の代わりに、この[例](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)に示すように、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) サービスに格納されている証明書を使用できます。
 
 ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 1. Azure portal で Azure API Management サービス インスタンスに移動します。
 2. 一覧から **証明書** を選択します。
-3. **[+ 追加]** ボタンをクリックします。  
-    ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. 証明書を参照し、ID とパスワードを入力します。  
+3. **[+ 追加]** ボタンをクリックします。
+    ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. 証明書を参照し、ID とパスワードを入力します。
 5. **Create** をクリックしてください。
 
 > [!NOTE]
@@ -65,14 +68,14 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ## <a name="step2">API を構成して、ゲートウェイ認証にクライアント証明書を使用する</a>
 
-1. 左側の **[API Management]** メニューの **[API]** をクリックし、API に移動します。  
+1. 左側の **[API Management]** メニューの **[API]** をクリックし、API に移動します。
     ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. **[デザイン]** タブで、 **[バックエンド]** セクションの鉛筆アイコンをクリックします。 
-3. **[ゲートウェイ サーバーの資格情報]** を **[クライアント証明書]** に変更し、ドロップダウンから証明書を選択します。  
+2. **[デザイン]** タブで、 **[バックエンド]** セクションの鉛筆アイコンをクリックします。
+3. **[ゲートウェイ サーバーの資格情報]** を **[クライアント証明書]** に変更し、ドロップダウンから証明書を選択します。
     ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. **[保存]** をクリックします。 
+4. **[保存]** をクリックします。
 
 > [!WARNING]
 > この変更は即時に有効になり、その API の操作の呼び出しは、証明書を使用してバックエンド サーバーを認証するようになります。

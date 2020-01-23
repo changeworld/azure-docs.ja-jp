@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd57231901c157ffc0d5a3d4219d827629b401f3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764183"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863344"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74764183"
 - [Azure Time Series Insights 環境の作成](./time-series-insights-update-create-environment.md)に関する記事の説明に従って、Time Series Insights 環境を作成します。
 - イベント ハブを作成します。 [Azure portal を使用した Event Hubs 名前空間およびイベント ハブの作成](../event-hubs/event-hubs-create.md)に関する記事を参照してください。
 - イベント ハブには、アクティブなメッセージ イベントが送信される必要があります。 [.NET Framework を使用して Azure Event Hubs にイベントを送信する](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)方法を参照します。
-- Time Series Insights 環境で使用する専用コンシューマー グループをイベント ハブで作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 イベント ハブごとに 20 個のコンシューマー グループという制限があります。 詳細については、[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)に関するページをご覧ください。
+- Time Series Insights 環境で使用する専用コンシューマー グループをイベント ハブで作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 イベント ハブごとに 20 個のコンシューマー グループという制限があります。 詳細については、[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)をご覧ください。
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>イベント ハブにコンシューマー グループを追加する
 
@@ -54,7 +54,7 @@ ms.locfileid: "74764183"
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 既存の Time Series Insights 環境を見つけます。 左のメニューで **[すべてのリソース]** を選択し、自分の Time Series Insights 環境を選択します。
 
@@ -76,9 +76,9 @@ ms.locfileid: "74764183"
 
        [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | プロパティ | 説明 |
+       | プロパティ | [説明] |
        | --- | --- |
-       | Subscription | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
+       | サブスクリプション | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
        | Event Hub 名前空間 | 目的のイベント ハブ インスタンスが属しているイベント ハブ名前空間。 |
        | イベント ハブ名 | 目的のイベント ハブ インスタンスの名前。 |
        | イベント ハブ ポリシーの値 | 目的の共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。 |
@@ -88,7 +88,7 @@ ms.locfileid: "74764183"
 
        **[イベント ハブ設定を手動で行う]** オプションに必要なプロパティについて次の表で説明します。
  
-       | プロパティ | 説明 |
+       | プロパティ | [説明] |
        | --- | --- |
        | サブスクリプション ID | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
        | Resource group | 目的のイベント ハブ インスタンスと名前空間が属しているリソース グループ。 |
@@ -99,7 +99,7 @@ ms.locfileid: "74764183"
 
     * どちらのオプションも以下の構成オプションを共有します。
 
-       | プロパティ | 説明 |
+       | プロパティ | [説明] |
        | --- | --- |
        | イベント ハブ コンシューマー グループ | イベント ハブからイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。 |
        | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージはこの形式にする必要があります。そうでないとデータを読み取ることができません。 |
@@ -111,7 +111,7 @@ ms.locfileid: "74764183"
 
    イベント ソースの作成後、Time Series Insights では自動的に環境へのデータのストリーミングを開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
 

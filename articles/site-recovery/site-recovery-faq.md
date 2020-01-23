@@ -2,13 +2,14 @@
 title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497534"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863565"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -101,7 +102,8 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
 オンプレミスのサイト間で仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化がサポートされます。 Azure に仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化と [(Azure での) 保管データの暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされます。
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>すべてのオンプレミス Azure Site Recovery コンポーネントに TLS 1.2 を適用するにはどうすればよいですか。
+レプリケートされたアイテムにインストールされているモビリティ エージェントは、TLS 1.2 でのみプロセス サーバーと通信します。 ただし、構成サーバーから Azure への通信と、プロセス サーバーから Azure への通信は、TLS 1.1 または 1.0 で行うことができます。 設定したすべての構成サーバーとプロセス サーバーに TLS 1.2 を適用するには、[ガイダンス](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)に従ってください。
 
 
 ## <a name="disaster-recovery"></a>障害復旧

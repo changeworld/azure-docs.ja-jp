@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440338"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754465"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -252,6 +252,25 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 このサンプルでは、コピーの実行時に、Data Factory ではシンク Azure SQL Database で高い DTU 使用率が追跡されます。 この条件により、書き込み操作が遅くなります。 Azure SQL Database 層の DTU を増やすことが提案されます。
 
 ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="resume-from-last-failed-run"></a>前回失敗した実行から再開する
+
+コピー アクティビティでは、ファイル ベースのストア間でバイナリ形式を使用してサイズの大きいファイルをそのままコピーする場合に、ソースからシンクへのフォルダー/ファイル階層を保持することを選択した場合 (Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する場合など)、前回失敗した実行からの再開をサポートします。 これは、次のファイルベース コネクタに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、および [SFTP](connector-sftp.md)。
+
+コピー アクティビティの再開は、次の 2 つの方法で利用できます。
+
+- **アクティビティ レベルの再試行:** コピー アクティビティに再試行回数を設定できます。 パイプラインの実行中に、このコピー アクティビティの実行が失敗した場合、次の自動再試行は最後の試行の失敗ポイントから開始されます。
+- **失敗したアクティビティから再実行する:** パイプラインの実行完了後、ADF UI 監視ビューまたはプログラムによって失敗したアクティビティから再実行をトリガーすることもできます。 失敗したアクティビティがコピー アクティビティの場合、パイプラインはそのアクティビティから再実行されるだけでなく、前の実行の失敗ポイントからも再開されます。
+
+    ![コピーの再開](media/copy-activity-overview/resume-copy.png)
+
+いくつかの注意点があります。
+
+- 再開は、ファイル レベルで行われます。 ファイルのコピー時にコピー アクティビティが失敗した場合、次回の実行時に、この特定のファイルが再コピーされます。
+- 再開が正常に機能するには、再実行の間でコピー アクティビティの設定を変更しないでください。
+- Amazon S3、Azure BLOB、Azure Data Lake Storage Gen2、および Google Cloud Storage からデータをコピーする場合、コピー アクティビティは任意の数のコピーされたファイルから再開できます。 ソースとしてのその他のファイル ベースのコネクタの場合、現在のコピー アクティビティは、限られた数のファイルからの再開をサポートしています。通常は 1 万単位の範囲であり、ファイル パスの長さによって異なります。この数を超えるファイルが再実行中に再コピーされます。
+
+バイナリ ファイル コピー以外の他のシナリオでは、コピー アクティビティの再実行は先頭から開始されます。
 
 ## <a name="preserve-metadata-along-with-data"></a>データと共にメタデータを保存する
 

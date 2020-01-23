@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f75e7112a8fc90c6c49ede7cd0ac726401fc1a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b70604c62ae21f9c433b3cd7d9e59f4ccebb61bd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452675"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861729"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理
 
@@ -86,7 +86,7 @@ Azure Time Series Insights プレビューの環境を作成するには:
 
 ## <a name="manage-the-environment"></a>環境の管理
 
-Azure portal を使用して Azure Time Series Insights プレビュー環境を管理できます。 Azure portal を通じて管理する場合、PAYG の Azure Time Series Insights プレビュー環境と、一般に利用可能な S1 または S2 環境との間には、いくつかの重要な違いがあります。
+Azure portal を使用して Azure Time Series Insights プレビュー環境を管理できます。 Azure portal を使用して環境を管理する場合、PAYG の Azure Time Series Insights プレビュー環境と、一般に利用可能な S1 または S2 環境との間には、注意すべき重要な違いがいくつかあります。
 
 * Azure portal プレビューの **[概要]** ブレードには、次の変更点があります。
 

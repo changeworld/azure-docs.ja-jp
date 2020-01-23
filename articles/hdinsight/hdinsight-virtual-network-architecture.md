@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665316"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744736"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -22,7 +22,7 @@ ms.locfileid: "73665316"
 
 Azure HDInsight クラスターには、さまざまな種類の仮想マシン、つまりノードがあります。 それぞれのノードの種類が、システムの運用において役割を果たしています。 次の表は、これらのノードの種類とクラスターでのそれぞれの役割をまとめたものです。
 
-| 種類 | 説明 |
+| 種類 | [説明] |
 | --- | --- |
 | ヘッド ノード |  Apache Storm を除くすべてのクラスターの種類で、ヘッド ノードは、分散アプリケーションの実行を管理するプロセスをホストします。 ヘッド ノードはまた、SSH 接続して、複数のクラスター リソースで実行するように調整されるアプリケーションを実行できるノードでもあります。 ヘッド ノードの数は、すべてのクラスターの種類で 2 台に固定されています。 |
 | ZooKeeper ノード | Zookeeper は、データ処理を実行しているノード間でタスクを調整します。 また、ヘッド ノードのリーダー選定を行って、どのノードが特定のマスター サービスを実行しているかを追跡します。 ZooKeeper ノードの数は、3 台に固定されています。 |
@@ -31,6 +31,16 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 | リージョン ノード | HBase のクラスターの種類では、リージョン ノード (データ ノードとも呼ばれる) はリージョン サーバーを実行します。 リージョン サーバーは、HBase によって管理されるデータの一部を提供および管理します。 リージョン ノードをクラスターに追加したりクラスターから削除したりすることで、コンピューティング機能をスケーリングしてコストを管理できます。|
 | Nimbus ノード | Storm のクラスターの種類では、Nimbus ノードは、ヘッド ノードと同様の機能を提供します。 Nimbus ノードは、Storm トポロジの実行を調整する Zookeeper を介してクラスター内の他のノードにタスクを割り当てます。 |
 | スーパーバイザー ノード | Storm のクラスターの種類では、スーパーバイザー ノードは、Nimbus ノードによって提供された命令を実行して、必要な処理を行います。 |
+
+## <a name="resource-naming-conventions"></a>リソースの名前付け規則
+
+クラスター内のノードをアドレスを指定するときは、完全修飾ドメイン名 (FQDN) を使用してください。 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) を使用すると、クラスター内のさまざまなノードの種類の FQDN を取得できます。 
+
+これらの FQDN の形式は、`<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` のようになります。
+
+`<node-type-prefix>` は、ヘッド ノードの場合は *hn*、ワーカー ノードの場合は *wn*、ZooKeeper ノードの場合は *zn* になります。
+
+ホスト名のみが必要な場合は、FQDN の最初の部分 (`<node-type-prefix><instance-number>-<abbreviated-clustername>`) のみを使用します。
 
 ## <a name="basic-virtual-network-resources"></a>基本的な仮想ネットワーク リソース
 
@@ -72,6 +82,6 @@ HDInsight クラスターには次の 3 つの方法でアクセスできます�
 1. 1 つのパブリック IP は、インターネットからクラスターに接続するときに使用する完全修飾ドメイン名 (FQDN) のために、ロード バランサーに割り当てられています `CLUSTERNAME.azurehdinsight.net`。
 1. 2 つ目のパブリック IP アドレスは、SSH 専用のドメイン名に使用されます `CLUSTERNAME-ssh.azurehdinsight.net`。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Secure incoming traffic to HDInsight clusters in a virtual network with private endpoint](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/) (プライベート エンドポイントを使用した、仮想ネットワーク内の HDInsight クラスターへのセキュリティで保護された着信トラフィック)

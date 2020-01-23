@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082673"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863912"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -45,11 +45,11 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 * 1 つ以上の VM を含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。 Hyper-V サーバーは、直接、またはプロキシを経由して、インターネットに接続されている必要があります。
 * レプリケートする VM は、[こちらの前提条件](hyper-v-azure-support-matrix.md#replicated-vms)に従う必要があります。
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>ステップ 1:Azure アカウントへのサインイン
+## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1:Azure アカウントへのサインイン
 
 1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると、アカウントの資格情報を入力する Web ページが表示されます:**Connect-AzAccount**。
     - または、 **-Credential** パラメーターを使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
-    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 例: **Connect-AzAccount -Tenant "fabrikam.com"**
+    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 次に例を示します。**Connect-AzAccount -Tenant "fabrikam.com"**
 2. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
     `Select-AzSubscription -SubscriptionName $SubscriptionName`
@@ -86,7 +86,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>ステップ 4:Hyper-V サイトを作成する
+## <a name="step-4-create-a-hyper-v-site"></a>手順 4:Hyper-V サイトを作成する
 
 1. 次のコマンドを使用して、新しい Hyper-V サイトを作成します。
 
@@ -104,7 +104,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 5. ダウンロードしたキーを Hyper-V ホストにコピーします。 このキーは、Hyper-V ホストをサイトに登録するときに必要になります。
 
-## <a name="step-5-install-the-provider-and-agent"></a>ステップ 5:プロバイダーとエージェントのインストール
+## <a name="step-5-install-the-provider-and-agent"></a>手順 5:プロバイダーとエージェントのインストール
 
 1. 最新版のプロバイダーのインストーラーを[マイクロソフト](https://aka.ms/downloaddra)からダウンロードします。
 2. Hyper-V ホストでインストーラーを実行します。
@@ -188,9 +188,15 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
 
         Succeeded
 
+> [!NOTE]
+> Azure で CMK が有効になっているマネージド ディスクにレプリケートする場合は、Az PowerShell 3.3.0 以降を使用して次の手順を実行します。
+>
+> 1. VM のプロパティを更新して、マネージド ディスクへのフェールオーバーを有効にします
+> 2. Get-AsrReplicationProtectedItem コマンドレットを使用して、保護された項目の各ディスクのディスク ID を取得します
+> 3. New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]" コマンドレットを使用してディクショナリ オブジェクトを作成し、ディスク暗号化セットにディスク ID のマッピングを含めます。 これらのディスク暗号化セットは、ターゲット リージョンで事前に作成されている必要があります。
+> 4. ディクショナリ オブジェクトを -DiskIdToDiskEncryptionSetMap パラメーターに渡し、Set-AsrReplicationProtectedItem コマンドレットを使用して VM のプロパティを更新します。
 
-
-## <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
+## <a name="step-8-run-a-test-failover"></a>手順 8:テスト フェールオーバーの実行
 1. 次のように、テスト フェールオーバーを実行します。
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
@@ -203,5 +209,5 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
 
         $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://docs.microsoft.com/powershell/module/az.recoveryservices)します。

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901358"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732571"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -190,7 +190,7 @@ Azure AD 管理者をプロビジョニングするには、次のような Azur
 
 SQL マネージド インスタンスの Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
-| コマンドレット名 | 説明 |
+| コマンドレット名 | [説明] |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者を削除します。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 次の CLI コマンドを呼び出して、SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングすることもできます。
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | SQL マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | SQL マネージド インスタンスの Azure Active Directory 管理者を削除します。 |
@@ -236,7 +236,7 @@ CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」�
 
 次の 2 つの手順は、Azure Portal と PowerShell を使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングする方法を示しています。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、サブスクリプションに関連付けられている Active Directory を Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。
 
@@ -281,7 +281,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 Azure SQL Database および Azure SQL Data Warehouse の Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
-| コマンドレット名 | 説明 |
+| コマンドレット名 | [説明] |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -326,7 +326,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -345,14 +345,17 @@ CLI コマンドの詳細については、「[az sql server](/cli/azure/sql/ser
 Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Warehouse に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
 
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) の .NET Framework 4.6 以降。
-- SQL Server 用の Azure Active Directory 認証ライブラリ (*ADALSQL.DLL*)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](https://www.microsoft.com/download/details.aspx?id=48742)」から複数の言語版 (x86 と amd64 の両方) を入手できます。
+- SQL Server 用 Azure Active Directory 認証ライブラリ (*ADAL.DLL*)。 *ADAL.DLL* ライブラリを含む最新の SSMS、ODBC、OLE DB ドライバーをインストールするためのダウンロード リンクを以下に示します。
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 これらの要件は、次の操作を行うことで満たすことができます。
 
-- [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) または [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) をインストールすると、.NET Framework 4.6 の要件が満たされます。
-- SSMS の場合、x86 バージョンの *ADALSQL.DLL*がインストールされます。
-- SSDT の場合、amd64 バージョンの *ADALSQL.DLL*がインストールされます。
-- 「 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs) 」にある最新の Visual Studio をインストールすると、.NET Framework 4.6 の要件は満たされますが、必要な amd64 バージョンの *ADALSQL.DLL*はインストールされません。
+- 最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) をインストールすると、.NET Framework 4.6 の要件が満たされます。
+    - SSMS の場合、x86 バージョンの *ADAL.DLL*がインストールされます。
+    - SSDT の場合、amd64 バージョンの *ADAL.DLL*がインストールされます。
+    - [Visual Studio の「ダウンロード」](https://www.visualstudio.com/downloads/download-visual-studio-vs)にある最新の Visual Studio をインストールすると、.NET Framework 4.6 の要件は満たされますが、必要な amd64 バージョンの *ADAL.DLL* はインストールされません。
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 
@@ -513,11 +516,15 @@ conn.Open();
 > `-G` を使用する `sqlcmd` コマンドは、システム ID で動作しないため、ユーザー プリンシパル ログインが必要です。
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="troubleshooting-azure-ad-authentication"></a>Azure AD Authentication のトラブルシューティング
+
+Azure AD Authentication での問題のトラブルシューティングに関するガイダンスは、ブログ (<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>) に掲載されています。
+
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database でのアクセスおよび制御の概要については、[SQL Database のアクセスと制御](sql-database-control-access.md)に関するページを参照してください。
 - SQL Database のログイン、ユーザー、データベース ロールの概要については、[ログイン、ユーザー、およびデータベース ロール](sql-database-manage-logins.md)に関するページを参照してください。

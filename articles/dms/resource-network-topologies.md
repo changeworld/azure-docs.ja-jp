@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/07/2019
-ms.openlocfilehash: db875ea099b0093bf1d43bd64b1ae4c07db05b45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 9a313ea798519273ce57961544ec5b37c4d9c5ca
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437715"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749254"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ
 
@@ -31,8 +31,8 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 **必要条件**
 
-- このシナリオでは、Azure SQL Database マネージド インスタンスと Azure Database Migration Service インスタンスが同じ Azure VNet 内に作成されますが、サブネットはそれぞれ別のものが使用されます。  
-- このシナリオで使用される VNet は、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークに接続されます。
+- このシナリオでは、Azure SQL Database マネージド インスタンスと Azure Database Migration Service インスタンスが同じ Microsoft Azure Virtual Network 内に作成されますが、サブネットはそれぞれ別のものが使用されます。  
+- このシナリオで使用される仮想ネットワークは、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークに接続されます。
 
 ## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>オンプレミス ネットワークから分離された Azure SQL Database マネージド インスタンス
 
@@ -40,18 +40,18 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 - Azure SQL Database マネージド インスタンスはオンプレミス接続から分離されているが、Azure Database Migration Service はオンプレミス ネットワークに接続されている。
 - ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、Azure SQL Database マネージド インスタンスをホストしているのと同じサブスクリプションに制限する必要がある。
-- Azure SQL Database マネージド インスタンス用に使用される VNet と Azure Database Migration Service 用に使用される VNet が、それぞれ異なるサブスクリプションに属している。
+- Azure SQL Database Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワークが、それぞれ異なるサブスクリプションに属している。
 
 ![オンプレミス ネットワークから分離されたマネージド インスタンス用のネットワーク トポロジ](media/resource-network-topologies/mi-isolated-workload.png)
 
 **必要条件**
 
-- このシナリオで Azure Database Migration Service に使用される VNet は、 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークにも接続される必要があります。
-- Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
+- このシナリオで Azure Database Migration Service に使用される仮想ネットワークは、 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークにも接続される必要があります。
+- Azure SQL Database Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワーク間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
 
-## <a name="cloud-to-cloud-migrations-shared-vnet"></a>クラウド間の移行: 共有 VNet
+## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>クラウド間の移行:共有仮想ネットワーク
 
-ソース SQL Server が Azure VM でホストされていて、Azure SQL Database Managed Instance および Azure Database Migration Service と同じ VNet を共有している場合は、このトポロジを使用します。
+ソース SQL Server が Azure VM でホストされていて、Azure SQL Database Managed Instance および Azure Database Migration Service と同じ仮想ネットワークを共有している場合は、このトポロジを使用します。
 
 ![共有 VNet があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud.png)
 
@@ -59,19 +59,19 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 - その他の要件はありません。
 
-## <a name="cloud-to-cloud-migrations-isolated-vnet"></a>クラウド間の移行: 分離 VNet
+## <a name="cloud-to-cloud-migrations-isolated-virtual-network"></a>クラウド間の移行:分離された仮想ネットワーク
 
 使用する環境において、次の 1 つ以上のシナリオが当てはまる場合は、このネットワーク トポロジを使用します。
 
-- Azure SQL Database マネージド インスタンスが、分離 VNet でプロビジョニングされている。
+- Azure SQL Database マネージド インスタンスが、分離された仮想ネットワークでプロビジョニングされている。
 - ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、Azure SQL Database マネージド インスタンスをホストしているのと同じサブスクリプションに制限する必要がある。
-- Azure SQL Database Managed Instance 用に使用される VNet と Azure Database Migration Service 用に使用される VNet が、それぞれ異なるサブスクリプションに属している。
+- Azure SQL Database Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワークが、それぞれ異なるサブスクリプションに属している。
 
 ![分離 VNet があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **必要条件**
 
-- Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
+- Azure SQL Database Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワーク間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
 
 ## <a name="inbound-security-rules"></a>受信セキュリティ規則
 
