@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547015"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863582"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -26,7 +26,7 @@ Azure Digital Twins は堅牢なログ記録、監視、分析をサポートし
 
 ## <a name="review-activity-logs"></a>アクティビティ ログを確認する
 
-Azure の[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)はサブスクリプション レベルのイベントと Azure の各サービス インスタンスの操作履歴に関する簡単な分析情報を提供します。
+Azure の[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)はサブスクリプション レベルのイベントと Azure の各サービス インスタンスの操作履歴に関する簡単な分析情報を提供します。
 
 サブスクリプション レベルのイベントには次のようなものがあります。
 
@@ -57,7 +57,7 @@ Azure Digital Twins のアクティビティ ログの記録は既定で有効�
 
 ## <a name="enable-customer-diagnostic-logs"></a>顧客の診断ログを有効にする
 
-Azure の[診断設定](../azure-monitor/platform/resource-logs-overview.md)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
+Azure の[診断設定](../azure-monitor/platform/platform-logs-overview.md)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
 
 診断ログの例は次のとおりです。
 
@@ -109,7 +109,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
    [![ログの管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-強力なクエリ操作について詳しくは、[クエリの概要](../azure-monitor/log-query/get-started-queries.md)に関するページをご覧ください。
+高性能なクエリ操作について詳しくは、[クエリの概要](../azure-monitor/log-query/get-started-queries.md)に関するページをご覧ください。
 
 > [!NOTE]
 > 初めて **Log Analytics ワークスペース** にイベントを送信するときに 5 分の遅延が発生することがあります。
@@ -125,10 +125,10 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
 Azure Digital Twins はアプリケーション固有のログ記録やセキュリティ監査もサポートします。 Azure Digital Twins インスタンスで利用できる Azure のすべてのログ記録オプションの概要については、[Azure のログの監査](../security/fundamentals/log-audit.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)の詳細を確認する。
+- Azure [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)の詳細を確認する。
 
-- [診断ログの概要](../azure-monitor/platform/resource-logs-overview.md)を確認して Azure 診断の設定の詳細を確認する。
+- [診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)を確認して Azure 診断の設定の詳細を確認する。
 
 - 詳細については、「[Azure Monitor ログ](../azure-monitor/log-query/get-started-portal.md)」を参照してください。

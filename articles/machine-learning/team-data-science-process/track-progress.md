@@ -2,24 +2,24 @@
 title: Team Data Science Process プロジェクトの進行状況の追跡
 description: データ サイエンス グループのマネージャー、チーム リーダー、プロジェクト リーダーが、データ サイエンス プロジェクトの進行状況を追跡できる方法です。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244081"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864198"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
 
-データ サイエンス グループ マネージャー、チーム リーダー、プロジェクト リーダーは、行われた作業、作業の担当者、残っている作業など、プロジェクトの進捗状況を追跡できます。 
+データ サイエンス グループのマネージャー、チーム リーダー、プロジェクト リーダーがプロジェクトの進行状況を追跡できます。  マネージャーは、行われた作業、作業の担当者、残っている作業を知る必要があります。   予測の管理は、成功する上での重要な要素です。
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps ダッシュ ボード
 
@@ -48,6 +48,6 @@ Azure DevOps でダッシュボードとウィジェットの作成方法とカ�
 
 ![ダッシュボード](./media/track-progress/dashboard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-「[Team Data Science Process を実行するチュートリアル](walkthroughs.md)」には、特定のシナリオのプロセスのすべての手順を示すチュートリアルと、リンクとサムネイルの説明が記載されています。 これらのリンクされたシナリオでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。 
+「[Team Data Science Process を実行するチュートリアル](walkthroughs.md)」では、プロセスのすべての手順を示すチュートリアルを一覧に示しています。 リンクされたシナリオでは、クラウドとオンプレミスのリソースをインテリジェントなアプリケーションに管理する方法を説明します。 

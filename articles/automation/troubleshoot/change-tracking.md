@@ -1,6 +1,6 @@
 ---
 title: Azure Change Tracking の問題を解決する
-description: この記事では、Change Tracking のトラブルシューティングに関する情報を提供します
+description: Azure Automation Change Tracking とインベントリ機能に関する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 482b263b7c8427276d4fdb8681372c2be1ae69ee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 51a9dbf8be6538534c05a4b8b6fcd913ef8c6ae3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849396"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769933"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Change Tracking とインベントリのトラブルシューティング
 
@@ -60,7 +60,7 @@ net start healthservice
 > [!NOTE]
 > 既定では、エラー トレースは有効になっています。前の例のような詳しいエラー メッセージを有効にするには、`VER` パラメーターを使用します。 情報トレースが必要であれば、`StartTracing.cmd` を呼び出すときに `INF` を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

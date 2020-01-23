@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 11/06/2019
+ms.date: 01/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123717"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750659"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL Data Warehouse 用の Visual Studio 2019 を始める
 Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能にする単一ツールです。
@@ -45,8 +45,9 @@ SQL Data Warehouse の機能リリースに SSDT のサポートが含まれな�
 - [動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
   - この機能がサポートされるようにするには、サポート チケットを送信するか、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)で投票してください。 
 - [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) 関数 
+- [テーブルの制約](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints)はサポートされていません。 これらのテーブル オブジェクトについては、ビルド アクションを "なし" に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、最新バージョンの SSDT がインストールされたので、SQL Data Warehouse に[接続][connect]できるようになりました。
 

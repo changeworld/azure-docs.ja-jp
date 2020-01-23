@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: c345b31c218c4678e7811c36113c94e0c4d2ac03
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: d343f09320a95265ac5e84c80941f454a268ffd4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019050"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772178"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 
@@ -48,7 +48,7 @@ Azure 仮想ネットワークに Azure サービスを統合すると、仮想�
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>仮想ネットワークにデプロイできるサービス
 
-|Category|Service| 専用¹ サブネット
+|カテゴリ|サービス| 専用¹ サブネット
 |-|-|-|
 | Compute | 仮想マシン:[Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[クラウド サービス](https://msdn.microsoft.com/library/azure/jj156091):仮想ネットワーク (クラシック) のみ<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| いいえ <br/> いいえ <br/> いいえ <br/> いいえ²
 | ネットワーク | [Application Gateway - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[ネットワーク仮想アプライアンス](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | はい <br/> はい <br/> はい <br/> いいえ

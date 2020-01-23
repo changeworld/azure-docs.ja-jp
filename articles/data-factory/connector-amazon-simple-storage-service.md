@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/13/2019
-ms.openlocfilehash: 682bda67bb8b310608570062b81608e818b30d9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 56cc7425eea184cd26010cde48e42e38b27e68a4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440898"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893292"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -154,7 +154,7 @@ Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設�
 
 | プロパティ                 | [説明]                                                  | 必須                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| 型                     | `storeSettings` の type プロパティは **AmazonS3ReadSetting** に設定する必要があります。 | はい                                                         |
+| 型                     | `storeSettings` の type プロパティは **AmazonS3ReadSettings** に設定する必要があります。 | はい                                                         |
 | recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                                          |
 | prefix                   | ソース オブジェクトをフィルター処理するためにデータセットで構成されている、特定のバケットの下の S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 <br>`wildcardFolderPath` および `wildcardFileName` プロパティが指定されていないときにのみ適用されます。 | いいえ                                                          |
 | wildcardFolderPath       | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のバケットの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                                          |
@@ -186,11 +186,11 @@ Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設�
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AmazonS3ReadSetting",
+                    "type": "AmazonS3ReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -353,4 +353,4 @@ Amazon S3 から Azure Data Lake Storage Gen2/Azure Blob にファイルをコ�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

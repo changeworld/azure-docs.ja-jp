@@ -1,5 +1,5 @@
 ---
-title: Widevine で保護されたコンテンツのオフライン ストリーミング用にアカウントを構成する - Azure
+title: Azure Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services アカウントを構成する方法を示します。
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974157"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779911"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -211,7 +211,7 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 

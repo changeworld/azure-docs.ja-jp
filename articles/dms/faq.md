@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/10/2019
-ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438014"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745404"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -37,7 +37,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 その他の移行シナリオはプレビュー段階にあり、入手するには DMS プレビュー サイト経由で申請を送信する必要があります。 プレビュー段階にあるシナリオの完全な一覧、およびこれらのオファリングのいずれかに参加するためのサインアップについては、[DMS プレビュー サイト](https://aka.ms/dms-preview/)を参照してください。
 
 **Q.Azure Database Migration Service でソースとしてサポートされるのは、どのバージョンの SQL Server ですか。**
-SQL Server から移行する場合、Azure Database Migration Service でサポートされているソースは SQL Server 2005 から SQL Server 2017 までです。
+SQL Server から移行する場合、Azure Database Migration Service でサポートされているソースは SQL Server 2005 から SQL Server 2019 までです。
 
 **Q:Azure Database Migration Service を使用する場合、オフライン移行とオンライン移行の違いは何ですか。**
 Azure Database Migration Service は、オフライン移行およびオンライン移行を行うことができます。 *オフライン*移行では、アプリケーションのダウンタイムが、移行の開始時に開始されます。 *オンライン*移行では、ダウンタイムが移行の最後の切り替え時だけに限定されます。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。許容できない場合は、オンライン移行を行います。
@@ -58,8 +58,8 @@ Azure Migrate は、オンプレミスの仮想マシンから Azure IaaS への
 
 サポートされているすべての移行シナリオで共通の、Azure Database Migration Service の前提条件は、次のとおりです。
 
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNet を作成します。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) のどちらかを使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。
-* Azure Virtual Network (VNet) のネットワーク セキュリティ グループの規則によって 443、53、9354、445、12000 の通信ポートがブロックされていないことを確認します。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続が提供されます。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって 443、53、9354、445、12000 の通信ポートがブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 
 Azure Database Migration Service を使用して特定の移行シナリオを試すために必要なすべての前提条件の一覧については、docs.microsoft.com にある Azure Database Migration Service [ドキュメント](https://docs.microsoft.com/azure/dms/dms-overview)の関連チュートリアルを参照してください。
@@ -85,8 +85,8 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
     GO
 ```
 
-**Q.Azure Virtual Network をセットアップするにはどうすればよいですか。**
-Azure VNET のセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは「[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)」という記事に掲載されています。
+**Q.Microsoft Azure Virtual Network をセットアップするにはどうすればよいですか。**
+仮想ネットワークのセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) に関する記事に掲載されています。
 
 ## <a name="usage"></a>使用法
 
@@ -106,7 +106,7 @@ Azure VNET のセットアップ手順を説明する複数の Microsoft チュ�
 ## <a name="troubleshooting-and-optimization"></a>トラブルシューティングと最適化
 
 **Q.DMS で移行プロジェクトをセットアップしていますが、ソース データベースへの接続で問題が発生しています。どうすればよいですか。**
-移行作業中にソース データベース システムへの接続に問題が発生した場合、DMS インスタンスを設定する VNet に仮想マシンを作成します。 その仮想マシンでは、UDL ファイルを使用して SQL Server への接続をテストする、または Robo 3T をダウンロードして MongoDB の接続をテストするなど、接続テストを実行できるはずです。 接続テストに成功した場合、ソース データベースへの接続に問題はありません。 接続テストが成功しなかった場合は、ネットワーク管理者に問い合わせてください。
+移行作業中にソース データベース システムへの接続に問題が発生した場合、DMS インスタンスを設定する仮想ネットワークに仮想マシンを作成します。 その仮想マシンでは、UDL ファイルを使用して SQL Server への接続をテストする、または Robo 3T をダウンロードして MongoDB の接続をテストするなど、接続テストを実行できるはずです。 接続テストに成功した場合、ソース データベースへの接続に問題はありません。 接続テストが成功しなかった場合は、ネットワーク管理者に問い合わせてください。
 
 **Q.Azure Database Migration Service が利用できないか停止しています。なぜですか。**
 ユーザーが明示的に Azure Database Migration Service (DMS) を停止した場合、またはサービスが 24 時間非アクティブ状態になった場合、サービスは停止状態または自動一時停止状態になります。 いずれの場合も、サービスは利用できなくなり、停止状態になります。  アクティブな移行を再開するには、サービスを再起動します。

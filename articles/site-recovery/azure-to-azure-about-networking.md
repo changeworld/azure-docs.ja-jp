@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 1/8/2020
 ms.author: sutalasi
-ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954206"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754502"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -46,7 +46,7 @@ ms.locfileid: "73954206"
 送信接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の Site Recovery の URL を許可してください。
 
 
-**URL** | **詳細**  
+**[URL]** | **詳細**  
 --- | ---
 *.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) へのアクセスを許可することができます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
@@ -55,20 +55,21 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
-IP ベースのファイアウォール プロキシ、または NSG ルールを使用して送信接続を制御している場合は、次の IP 範囲を許可する必要があります。
+IP ベースのファイアウォール プロキシ、または NSG を使用して送信接続を制御している場合は、次の IP 範囲を許可する必要があります。
 
 - ソース リージョンのストレージ アカウントに対応するすべての IP アドレス範囲
     - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
 - AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
     - 今後、新しいアドレスが Azure Active Directory (AAD) に追加された場合は、新しい NSG ルールを作成する必要があります。
-- Site Recovery サービス エンドポイント IP アドレス - [XML ファイル](https://aka.ms/site-recovery-public-ips)で入手できます。ターゲットの場所によって異なります。 
+- EventsHub サービス タグ ベースの NSG ルールをターゲット リージョンに対して作成し、Site Recovery 監視へのアクセスを許可します。
+- 任意のリージョンでの Site Recovery サービスへのアクセスを許可するために、AzureSiteRecovery サービス タグ ベースの NSG ルールを作成します。
 - 必要な NSG ルールをテスト NSG に作成し、問題がないことを確認してから、運用環境の NSG にルールを作成することをお勧めします。
 
 
-Site Recovery IP アドレスの範囲は次のとおりです。
+Site Recovery の IP アドレス範囲を使用する場合 (非推奨) は、次の表を参照してください。
 
-   **ターゲット** | **Site Recovery IP** |  **Site Recovery 監視 IP**
+   **移行先** | **Site Recovery IP** |  **Site Recovery 監視 IP**
    --- | --- | ---
    東アジア | 52.175.17.132 | 13.94.47.61
    東南アジア | 52.187.58.193 | 13.76.179.223
@@ -137,11 +138,9 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
+3. 上記のセキュリティ規則と同様に、ターゲットの場所に対応する NSG 上の "EventHub.CentralUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
 
-   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
-    --- | --- | ---
-   米国中部 | 40.69.144.231 | 52.165.34.144
+4. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 ### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部
 
@@ -151,12 +150,9 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 2. NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
 
-3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
+3. 上記のセキュリティ規則と同様に、ソースの場所に対応する NSG 上の "EventHub.EastUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
 
-   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
-    --- | --- | ---
-   East US | 13.82.88.226 | 104.45.147.24
-
+4. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 ## <a name="network-virtual-appliance-configuration"></a>ネットワーク仮想アプライアンスの構成
 
@@ -179,7 +175,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)することで、ワークロードの保護を開始します。
 - Azure 仮想マシンのフェールオーバーの [IP アドレスの保持](site-recovery-retain-ip-azure-vm-failover.md)について詳しく学習します。
 - [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習します。

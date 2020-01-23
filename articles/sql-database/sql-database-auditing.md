@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928693"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028534"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -73,7 +73,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. SQL データベース/サーバー ペインの [セキュリティ] 見出しの下にある **[監査]** に移動します。
 
-    <a id="auditing-screenshot"></a> ![ナビゲーション ウィンドウ][1]
+    <a id="auditing-screenshot"></a>![ナビゲーション ウィンドウ][1]
 
 3. サーバーの監査ポリシーを設定する場合は、データベース監査ページの **[サーバー設定を表示]** リンクを選択できます。 そうすると、サーバー監査設定を表示または修正することができます。 サーバー監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
 
@@ -86,8 +86,11 @@ SQL Database 監査を使用して、以下を行うことができます。
     ![ナビゲーション ウィンドウ][3]
 
 5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成する顧客は、[Azure Storage で提供される手順](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)に従う必要があります
+  
+  > [!WARNING]
    > Log Analytics に対する監査を有効にすると、インジェストのレートに基づくコストが発生します。 この[オプション](https://azure.microsoft.com/pricing/details/monitor/)を使用した場合のコストを承知のうえで利用するか、または、監査ログを Azure ストレージ アカウントに格納することを検討してください。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
@@ -108,7 +111,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![イベント ハブ](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. **[Save]** をクリックします。
+9. **[保存]** をクリックします。
 10. 監査対象イベントをカスタマイズする場合は、[PowerShell コマンドレット](#subheading-7)または [REST API](#subheading-9) を使用して行います。
 11. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。
 
@@ -242,8 +245,18 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 - AAD 認証を使用している場合、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
 
+- Azure SQL Database 監査は、可用性とパフォーマンスのために最適化されています。 非常に負荷の高いアクティビティの実行時には、Azure SQL Database は操作の続行を可能にするために一部の監査イベントを記録しない場合があります。
 
-## <a id="subheading-7"></a>Azure PowerShell を使用して SQL Database の監査を管理する
+- ストレージ アカウントで不変の監査を構成するには、「[保護された追加 BLOB の書き込みを許可する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)」を参照してください。 監査のコンテナー名は **sqldbauditlogs** であることに注意してください。
+
+> [!IMPORTANT] 
+>  時間ベースの保持における保護された追加 BLOB の書き込みの許可の設定は、現時点では次のリージョンでのみ使用および表示できます。
+> - East US
+> - 米国中南部
+> - 米国西部 2
+
+
+## <a id="subheading-7"></a>Azure PowerShell を使用して Azure SQL Server およびデータベースの監査を管理する
 
 **PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)** :
 
@@ -256,7 +269,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 
-## <a id="subheading-9"></a>REST API を使用して SQL Database の監査を管理する
+## <a id="subheading-8"></a>REST API を使用して Azure SQL Server およびデータベースの監査を管理する
 
 **REST API**:
 
@@ -272,7 +285,7 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 - [データベース "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [サーバー "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Azure Resource Manager テンプレートを使用した SQL データベースの管理
+## <a id="subheading-9"></a>Azure Resource Manager テンプレートを使用して Azure SQL Server およびデータベースの監査を管理する
 
 以下の例で確認できるように、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートを使用して Azure SQL データベース監査を管理できます。
 
@@ -289,10 +302,9 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

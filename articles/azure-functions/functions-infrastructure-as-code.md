@@ -4,12 +4,12 @@ description: 関数アプリをデプロイする Azure Resource Manager テン�
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433153"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978803"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -90,7 +90,7 @@ Application Insights は、関数アプリを監視するために推奨され�
             },
             "properties": {
                 "Application_Type": "web",
-                "ApplicationId": "[variables('functionAppName')]"
+                "ApplicationId": "[variables('appInsightsName')]"
             }
         },
 ```
@@ -372,7 +372,7 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>App Service プランでデプロイする
 
@@ -419,7 +419,7 @@ Linux でアプリを実行するには、`kind` を `Linux` に設定するこ�
 }
 ```
 
-### <a name="create-a-function-app"></a>Function App を作成する 
+### <a name="create-a-function-app"></a>Function App を作成する
 
 App Service プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。
 
@@ -637,10 +637,10 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 次のいずれかの方法を使用して、テンプレートをデプロイできます。
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
 

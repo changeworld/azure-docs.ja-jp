@@ -3,12 +3,12 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230395"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769032"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -156,7 +156,7 @@ JKD および関数アプリに関する問題に対する [Azure サポート](
 
 `JAVA_OPTS` という名前のアプリ設定には、追加の引数を指定できます。 Azure portal または Azure CLI で、Azure にデプロイされているお使いの関数アプリにアプリ設定を追加することができます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) の [[アプリケーション設定]](functions-how-to-use-azure-function-app-settings.md#settings) タブを使用して `JAVA_OPTS` の設定を追加します。
 
@@ -189,7 +189,7 @@ Plain old Java object (POJO)、`azure-functions-java-library` 内で定義され
 
 入力データを POJO に変換する場合、[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) では [gson](https://github.com/google/gson) ライブラリが使用されます。 関数への入力として使用される POJO の型は `public` である必要があります。
 
-### <a name="binary-data"></a>バイナリ データ
+### <a name="binary-data"></a>Binary Data
 
 バイナリの入力または出力を `byte[]` にバインドするには、使用する function.json 内の `dataType` フィールドを `binary` に設定します。
 
@@ -331,12 +331,12 @@ public class Function {
 
  これらは `azure-functions-java-library` で定義されます。 HttpTrigger 関数と共に機能するヘルパー型です。
 
-| 特殊な型      |       ターゲット        | 一般的な用途                  |
+| 特殊な型      |       移行先        | 一般的な用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
 | `HttpResponseMessage` | HTTP 出力のバインド | 200 以外の状態を返す   |
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
 いくつかのトリガーでは、入力データと共に[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings)が送信されます。 注釈 `@BindingName` を使用して、トリガー メタデータにバインドできます。
 
@@ -444,7 +444,7 @@ public class Function {
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Java による Azure Functions 開発の詳細については、次のリソースを参照してください。
 

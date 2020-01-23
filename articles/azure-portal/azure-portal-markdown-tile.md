@@ -5,34 +5,51 @@ services: azure-portal
 keywords: ''
 author: mblythe
 ms.author: mblythe
-ms.date: 01/25/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3d2e6d2d0bde76a35a18373fabf64ce36c6c320e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640144"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832679"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
-マークダウン タイルを Azure ダッシュボードに追加して、カスタム コンテンツ、静的コンテンツを表示できます。 たとえば、マークダウン タイルを使用して、基本的な手順、画像、または一連のハイパーリンクを表示できます。
+マークダウン タイルを Azure ダッシュボードに追加して、カスタム コンテンツ、静的コンテンツを表示できます。 たとえば、マークダウン タイルで、基本的な手順、画像、または一連のハイパーリンクを表示できます。
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>マークダウン タイルをダッシュボードに追加する
 
-1. Azure portal のサイドバーから **[ダッシュボード]** を選択します。 カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー**を開きます。
+1. Azure portal のサイドバーから **[ダッシュボード]** を選択します。
+
+   ![ポータルのサイドバーを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+
+1. カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー**を開きます。
 
    ![ダッシュボード編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. **[タイル ギャラリー]** で **[Markdown]\(マークダウン\)** というタイルを見つけて、 **[追加]** をクリックします。 タイルがダッシュボードに追加され、 **[マークダウンの編集]** ウィンドウが開きます。
+1. **[タイル ギャラリー]** で **[マークダウン]** というタイルを見つけて、 **[追加]** を選択します。 タイルがダッシュボードに追加され、 **[マークダウンの編集]** ウィンドウが開きます。
 
-1. **[タイトル]** 、 **[サブタイトル]** 、および **[コンテンツ]** フィールドを編集して、タイルをカスタマイズします。 以下の例では、マークダウン タイルがカスタム ヘルプ デスク情報を表示するように編集されています。
+1. **[タイトル]** と **[サブタイトル]** の値を入力します。これらは、別のフィールドに移動するとタイルに表示されます。
 
-   ![マークダウン タイルの編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![タイトルとサブタイトルの入力結果を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-4. **[完了]** を選択して、 **[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
+1. マークダウン コンテンツを含めるオプションとして、 **[インライン編集]** または **[URL を使用してコンテンツを挿入する]** のいずれかのオプションを選択します。
+
+   - マークダウンを直接入力する場合は、 **[インライン編集]** を選択します。
+
+      ![インライン コンテンツの入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+
+   - オンラインでホストされている既存のマークダウン コンテンツを使用する場合は、 **[URL を使用してコンテンツを挿入する]** を選択します。
+
+      ![URL の入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+
+      > [!NOTE]
+      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。
+
+1. **[完了]** を選択して、 **[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
 
    ![カスタムのマークダウン タイルを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

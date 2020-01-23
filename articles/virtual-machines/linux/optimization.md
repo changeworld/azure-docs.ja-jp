@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035386"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934718"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -33,7 +33,7 @@ ms.locfileid: "74035386"
 Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、 **/dev/sdb** は一時ディスクを表します。  メインの OS ディスク ( **/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>サイズとパフォーマンスの目標に向けたディスクの追加
-VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。
+VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 32 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 20,000 IOPS です。
 
 キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに**バリア**を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
 

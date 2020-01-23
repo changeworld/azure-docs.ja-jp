@@ -4,12 +4,12 @@ description: ポータル開発用に Azure Functions の Durable Functions 拡�
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231480"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769644"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -22,7 +22,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-すべての関数の実行をホストするには関数アプリが必要です。 関数アプリを使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 .NET アプリまたは JavaScript アプリを作成することができます。
+すべての関数の実行をホストするには関数アプリが必要です。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。 .NET アプリまたは JavaScript アプリを作成することができます。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -130,7 +130,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 
 これで最初の Durable Functions が稼働し、Azure で実行されるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Durable Functions の一般的なパターンについて学習する](durable-functions-overview.md#application-patterns)

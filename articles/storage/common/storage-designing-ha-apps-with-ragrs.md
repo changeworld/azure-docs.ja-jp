@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895340"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945446"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計
 
@@ -99,7 +99,7 @@ RA-GRS または RA-GZRS 用のアプリケーションを設計する際には�
 
 ## <a name="handling-retries"></a>再試行の処理
 
-Azure Storage クライアント ライブラリは、どのエラーが再試行できるかの判断に役立ちます。 たとえば、404 エラー (リソースが見つかりません) は、再試行が成功する可能性が低いので再試行可能です。 一方、500 エラーはサーバー エラーであり、単に一時的な問題である可能性があるので再試行できません。 詳細については、.NET ストレージ クライアント ライブラリの [ExponentialRetry クラスのオープン ソース コード](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)を参照してください (ShouldRetry メソッドを検索)。
+Azure Storage クライアント ライブラリは、どのエラーが再試行できるかの判断に役立ちます。 たとえば、404 エラー (リソースが見つかりません) は、再試行が成功する可能性が低いので再試行されません。 一方、500 エラーはサーバー エラーであり、単に一時的な問題である可能性があるので再試行可能です。 詳細については、.NET ストレージ クライアント ライブラリの [ExponentialRetry クラスのオープン ソース コード](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)を参照してください (ShouldRetry メソッドを検索)。
 
 ### <a name="read-requests"></a>読み取り要求
 
@@ -200,12 +200,12 @@ geo 冗長ストレージは、プライマリ リージョンからセカンダ
 
 次の表は、ある従業員を "*管理者*" ロールのメンバーにするためにその従業員の詳細データを更新した場合に起こりうる例を示しています。 この例では、**従業員**エンティティを更新し、さらに**管理者ロール** エンティティの合計管理者数を更新します。 セカンダリ リージョンで更新が順不同に適用される様子に着目してください。
 
-| **Time** | **トランザクション**                                            | **レプリケーション**                       | **最後の同期時刻** | **結果** |
+| **Time** | **トランザクション**                                            | **レプリケーション**                       | **[最終同期時刻]** | **結果** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | トランザクション A: <br> 従業員エンティティを <br> プライマリに挿入する |                                   |                    | トランザクション A はプライマリに挿入されていますが、<br> まだレプリケートされていません。 |
 | T1       |                                                            | トランザクション A が <br> セカンダリに<br> レプリケートされる | T1 | トランザクション A がセカンダリにレプリケートされ、 <br>最後の同期時刻が更新されます。    |
 | T2       | トランザクション B:<br>更新<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
-| T3       | トランザクション C:<br> プライマリの <br>administrator<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
+| T3       | トランザクション C:<br> 更新 <br>administrator<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | *T4*     |                                                       | トランザクション C が <br>セカンダリに<br> レプリケートされる | T1         | トランザクション C はセカンダリにレプリケートされています。<br>トランザクション B がレプリケートされていないため、 <br>最後の同期時刻はまだ更新されていません。|
 | *T5*     | セカンダリからの <br>エンティティの読み取り                           |                                  | T1                 | トランザクション B がまだレプリケート <br> されていないので、従業員エンティティは <br> 古い値になります。 トランザクション C が既にレプリケートされているため、<br> 管理者ロール エンティティは<br> 新しい値になります。 トランザクション B がレプリケートされていないので、<br> 最後の同期時刻は<br> まだ更新されていません。 管理者ロール エンティティの日時が<br>最後の同期時刻よりも新しいことから、 <br>このエンティティが不整合な状態である <br>ことがわかります。 |
 | *T6*     |                                                      | トランザクション B が<br> セカンダリに<br> レプリケートされる | T6                 | *T6* – C までのすべてのトランザクションが <br>レプリケートされ、最後の同期時刻が<br> 更新されます。 |
@@ -220,7 +220,7 @@ geo 冗長ストレージは、プライマリ リージョンからセカンダ
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、geo レプリケーションの統計情報の取得をサポートする Azure Storage プレビュー モジュールをインストールします。例:
+PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、geo レプリケーションの統計情報の取得をサポートする Azure Storage プレビュー モジュールをインストールします。次に例を示します。
 
 ```powershell
 Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force

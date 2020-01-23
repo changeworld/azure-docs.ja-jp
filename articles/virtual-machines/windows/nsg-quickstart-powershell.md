@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371209"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754176"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -97,5 +97,5 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
 * [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)
-* [ロード バランサー用の Azure Resource Manager の概要](../../load-balancer/load-balancer-arm.md)
+* [Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)
 

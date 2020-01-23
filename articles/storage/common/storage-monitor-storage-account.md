@@ -4,16 +4,16 @@ description: Azure ポータルを使用して Azure でストレージ アカ�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211855"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862834"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -53,7 +53,7 @@ ms.locfileid: "71211855"
 メトリックの収集とログ記録を無効にするには、 **[ステータス]** を **[オフ]** に設定します。
 
 > [!NOTE]
-> Azure Storage では[テーブル ストレージ](storage-introduction.md#table-storage)を使用して、ストレージ アカウントのメトリックが保存されます。メトリックが保存されるのはアカウントのテーブルです。 詳細については、 「[メトリックの保存](storage-analytics-metrics.md#how-metrics-are-stored)」を参照してください。
+> Azure Storage では[テーブル ストレージ](storage-introduction.md#table-storage)を使用して、ストレージ アカウントのメトリックが保存されます。メトリックが保存されるのはアカウントのテーブルです。 詳細については、以下を参照してください。 「[メトリックの保存](storage-analytics-metrics.md#how-metrics-are-stored)」を参照してください。
 >
 
 ## <a name="customize-metrics-charts"></a>メトリック グラフのカスタマイズ
@@ -129,19 +129,19 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 >
 
 1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択して、ストレージ アカウント ブレードを開きます。
-1. メニュー ブレードの **[監視]** セクションで **[診断]** を選択します。
+1. メニュー ブレードの **[監視 (クラシック)]** セクションで **[Diagnostics settings (classic)]\(診断設定 (クラシック)\)** を選択します。
 
     ![Azure Portal の [監視] の [診断] メニュー。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. **[ステータス]** を **[オン]** に設定して、ログを有効にする**サービス**を選択します。
 
     ![Azure Portal でログを構成する。](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
 
 $Logs コンテナーへのアクセスについては、[ストレージ分析ログ](storage-analytics-logging.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Storage Analytics の[メトリック、ログ、および課金](storage-analytics.md)の詳細について確認する。

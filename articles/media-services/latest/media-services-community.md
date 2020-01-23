@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services コミュニティの概要 | Microsoft Docs
+title: Azure Media Services v3 コミュニティの概要 | Microsoft Docs
 description: この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 2bfa50068c5a61e8d6807da895dd5bf932ef05ba
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598346"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780353"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 コミュニティ  
 
 この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 
@@ -46,6 +46,6 @@ ms.locfileid: "72598346"
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Media Services の概要](media-services-overview.md)

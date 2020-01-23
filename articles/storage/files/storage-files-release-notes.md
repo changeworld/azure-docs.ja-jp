@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cc919cabab94e078b8a212feec40047639a36341
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452912"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749607"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -142,6 +142,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 ### <a name="cloud-tiering"></a>クラウドの階層化
 - 階層化されたファイルが Robocopy を使用して別の場所にコピーされた場合、その結果のファイルは階層化されません。 誤ってオフライン属性が Robocopy によるコピー操作の対象となり、オフライン属性が設定される場合があります。
 - robocopy を使用してファイルをコピーする場合は、/MIR オプションを使用してファイルのタイムスタンプを保存します。 これにより、必ず最近アクセスされたファイルより先に、古いファイルが階層化されます。
+- クラウドの階層化が有効になっているボリュームに pagefile.sys が配置されていると、ファイルの階層化に失敗することがあります。 pagefile.sys は、クラウドの階層化が無効になっているボリューム上に配置する必要があります。
 
 ## <a name="agent-version-8000"></a>エージェント バージョン 8.0.0.0
 次のリリース ノートは、Azure File Sync エージェントのバージョン 8.0.0.0 (2019 年 10 月 8 日にリリース) を対象としています。

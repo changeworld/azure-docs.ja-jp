@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bc6a9c8910c25f5fdb403e7f45c5f567f7c1224
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950920"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930654"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -74,7 +74,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     ![Visual Studio で Web API テンプレートを選択する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 1. 認証が **[認証なし]** に設定されていることを確認します。
-1. **[OK]** を選択してプロジェクトを作成します。
+1. **[OK]** を選択すると、プロジェクトが作成されます。
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>手順 2:REST API エンドポイントを準備する
 
@@ -337,7 +337,9 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>手順 7:ポリシーをテナントにアップロードする
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を開きます。
+1. [Azure portal](https://portal.azure.com) で、ポータル ツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 
 1. **[Identity Experience Framework]** を選択します。
 
@@ -351,7 +353,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 1. SignUpOrSignIn.xml ファイルを使用して前の手順を繰り返します。
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>ステップ 8:[今すぐ実行] を使用してカスタム ポリシーをテストする
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>手順 8:[今すぐ実行] を使用してカスタム ポリシーをテストする
 
 1. **[Azure AD B2C の設定]** を選択してから、 **[Identity Experience Framework]** に移動します。
 
@@ -393,11 +395,11 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 
-* [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
+* 「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
 
-* 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
+* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のタスクは、基本認証またはクライアント証明書認証を使用して RESTful API をセキュリティで保護することです。 API をセキュリティで保護する方法については、次の記事を参照してください。
 

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 01/14/2020
+ms.openlocfilehash: 7ff504a466224594c0098bc9d80557d45e4197a6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173790"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027892"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>メトリックを使用した Azure Data Explorer のパフォーマンス、正常性、および使用状況の監視
 
@@ -26,7 +26,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="using-metrics"></a>メトリックの使用
 
@@ -51,7 +51,11 @@ Azure Data Explorer クラスターで、 **[メトリック]** を選択して 
     | インジェストの量 (MB 単位) | Count | Max、Min、Sum | 圧縮前にクラスターにインジェストされたデータの合計サイズ (MB 単位)。 |
     | キープ アライブ | Count | Avg | クラスターの応答性を追跡します。 応答性の高いクラスターは 1 の値を返し、ブロックまたは切断されたクラスターは 0 を返します。 |
     | クエリ実行時間 | Seconds | Count、Avg、Min、Max、Sum | クエリ結果を受け取るまでの合計時間 (ネットワーク待ち時間は含まれません)。 |
-    | | | |
+    | 同時クエリの合計数 | Count | Avg、Max、Min、Sum | クラスターで並列実行されるクエリの数。 このメトリックは、クラスターの負荷を見積もるのに適した方法です。 |
+    | スロットルされたクエリの合計数 | Count | Avg、Max、Min、Sum | クラスター内のスロットルされた (拒否された) クエリの数。 許可される同時 (並列) クエリの最大数は、同時クエリ ポリシーで定義されます。 |
+    | スロットルされたコマンドの合計数 | Count | Avg、Max、Min、Sum | 同時 (並列) コマンドの最大許容数に達したために、クラスター内でスロットルされた (拒否された) コマンドの数。 |
+    | エクステントの合計数 | Count | Avg、Max、Min、Sum | クラスター内のデータ エクステントの合計数。 データ エクステントのマージは CPU 負荷が高いアクティビティであるため、このメトリックの変化は、データ構造の大幅な変更とクラスターでの高負荷を示している可能性があります。 |
+    | | | | |
 
     [サポートされる Azure Data Explorer クラスター メトリック](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)に関する追加情報
 
@@ -65,7 +69,7 @@ Azure Data Explorer クラスターで、 **[メトリック]** を選択して 
 [メトリックス エクスプローラー](/azure/azure-monitor/platform/metrics-getting-started)の使用に関する追加情報。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する](/azure/data-explorer/ingest-data-no-code)
 * [診断ログを使用して Azure Data Explorer インジェスト操作を監視する](/azure/data-explorer/using-diagnostic-logs)

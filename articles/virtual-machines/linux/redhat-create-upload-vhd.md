@@ -3,7 +3,7 @@ title: Azure で使用するための Red Hat Enterprise Linux VHD の作成と�
 description: Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 6adb800b0c56866aa76f98fc078fdc3d8f1ffbff
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035172"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941433"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview) を参照してください。
@@ -154,7 +154,7 @@ ms.locfileid: "74035172"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT=yes  NM_CONTROLLED=yes
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
@@ -164,7 +164,7 @@ ms.locfileid: "74035172"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 次に例を示します。
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -408,7 +408,7 @@ ms.locfileid: "74035172"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT=yes  NM_CONTROLLED=yes
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
@@ -418,7 +418,7 @@ ms.locfileid: "74035172"
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 次に例を示します。
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -568,7 +568,7 @@ ms.locfileid: "74035172"
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 次に例を示します。
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -666,7 +666,7 @@ ms.locfileid: "74035172"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT=yes  NM_CONTROLLED=yes
 
 1. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
@@ -676,7 +676,7 @@ ms.locfileid: "74035172"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 次に例を示します。
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -883,8 +883,7 @@ ms.locfileid: "74035172"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT=yes NM_CONTROLLED=yes     EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
@@ -914,7 +913,7 @@ ms.locfileid: "74035172"
 
 Hyper-V 環境で実行されていることを Linux が検出しなかった場合、Linux インストーラーは、初期 RAM ディスク (initrd または initramfs) に Hyper-V 用のドライバーを追加しないことがあります。
 
-別の仮想化システム (Virtualbox、Xen など) を使用して Linux イメージを準備する場合は、少なくとも hv_vmbus と hv_storvsc のカーネル モジュールを初期 RAM ディスクで使用できるように initrd の再構築が必要になる場合があります。 これは少なくとも、アップストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
+別の仮想化システム (VirtualBox、Xen など) を使用して Linux イメージを準備する場合は、少なくとも hv_vmbus と hv_storvsc のカーネル モジュールを初期 RAM ディスクで使用できるように initrd の再構築が必要になる場合があります。 これは少なくとも、アップストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
 
 この問題を解決するには、initramfs に Hyper-V モジュールを追加して再構築する必要があります。
 
@@ -928,7 +927,7 @@ initramfs を再構築します。
 
 詳細については、 [initramfs の再構築](https://access.redhat.com/solutions/1958)に関する情報を参照してください。
 
-## <a name="next-steps"></a>次の手順
-これで、Red Hat Enterprise Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
-
-Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、 [Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
+## <a name="next-steps"></a>次のステップ
+* これで、Red Hat Enterprise Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
+* Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、 [Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
+* 実稼働可能な RHEL BYOS イメージの詳細については、[BYOS](../workloads/redhat/byos.md)のドキュメント ページにアクセスしてください。

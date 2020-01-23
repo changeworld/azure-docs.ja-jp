@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670224"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945178"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -20,7 +20,7 @@ ms.locfileid: "74670224"
 
 - 以前のデプロイから残っているファイルの削除。
 - 既定のビルド プロセスを有効にするオプション (パッケージの復元を含む)。
-- [デプロイのカスタマイズ](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings) (デプロイ スクリプトの実行など)。  
+- デプロイのカスタマイズ (デプロイ スクリプトの実行など)。  
 - デプロイ ログ。 
 - ファイル サイズの上限は 2048 MB です。
 
@@ -28,47 +28,25 @@ ms.locfileid: "74670224"
 
 WAR ファイルの展開では、Java Web アプリを実行するために [WAR](https://wikipedia.org/wiki/WAR_(file_format)) ファイルを App Service に展開します。 「[WAR ファイルの展開](#deploy-war-file)」を参照してください。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を完了するには、次のことが条件となります。
+この記事の手順を完了するには、[App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
 
-* [App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-project-zip-file"></a>プロジェクトの ZIP ファイルを作成する
-
->[!NOTE]
-> ファイルを ZIP ファイルでダウンロードした場合は、まずファイルを抽出します。 たとえば、GitHub から ZIP ファイルをダウンロードした場合、そのファイルをそのままデプロイすることはできません。 GitHub では、入れ子になったディレクトリが追加されますが、これらは App Service と連携しません。 
->
-
-ローカル ターミナル ウィンドウで、アプリ プロジェクトのルート ディレクトリに移動します。 
-
-このディレクトリには、Web アプリへの入力ファイルを含める必要があります (_index.html_、 _index.php_、_app.js_ など)。 パッケージ管理ファイルを含めることもできます (_project.json_、_composer.json_、_package.json_、_bower.json_、_requirements.txt_ など)。
-
-プロジェクト内のすべての ZIP アーカイブを作成します。 次のコマンドには、お使いの端末の既定のツールを使用します。
-
-```
-# Bash
-zip -r <file-name>.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath <file-name>.zip
-``` 
+[!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) の使用を検討してください。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLI を使って ZIP ファイルを展開する
 
-Azure CLI バージョンが 2.0.21 以降であることを確認します。 使用しているバージョンを確認するには、ターミナル ウィンドウで `az --version` コマンドを実行します。
-
 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。  
 
 次に示すのは、アップロードした ZIP ファイルをデプロイするコマンドの例です。 Azure CLI のローカル インストールを使用する場合は、`--src` にローカル ZIP ファイルのパスを指定します。
 
 ```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
+az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
 ```
 
 このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。
@@ -76,10 +54,8 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 既定で、展開エンジンでは ZIP ファイルがそのまま実行できる状態で、ビルド自動化は実行されないことが想定されています。 [Git デプロイ](deploy-local-git.md)の場合と同じビルド自動化を有効にするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することで、`SCM_DO_BUILD_DURING_DEPLOYMENT` アプリ設定を設定します。
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
 ```
-
-
 
 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)をご覧ください。
 
@@ -87,7 +63,9 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="deploy-war-file"></a>WAR ファイルの展開
 
-WAR ファイルを App Service にデプロイするには、 POST 要求を `https://<app_name>.scm.azurewebsites.net/api/wardeploy` に送信します。 POST 要求のメッセージの本文に .war ファイルを含める必要があります。 アプリの展開資格情報は、HTTP 基本認証を使って要求で提供します。
+WAR ファイルを App Service にデプロイするには、 POST 要求を `https://<app-name>.scm.azurewebsites.net/api/wardeploy` に送信します。 POST 要求のメッセージの本文に .war ファイルを含める必要があります。 アプリの展開資格情報は、HTTP 基本認証を使って要求で提供します。
+
+WAR ファイルを展開するときは常に `/api/wardeploy` を使用します。 この API により、WAR ファイルが拡張され、共有ファイル ドライブに配置されます。 他の展開 API を使用すると、動作の一貫性が損なわれる可能性があります。 
 
 HTTP BASIC 認証では、App Service 展開資格情報が必要です。 自分の展開資格情報を設定する方法については、「[ユーザー レベルの資格情報の設定とリセット](deploy-configure-credentials.md#userscope)」を参照してください。
 
@@ -96,7 +74,7 @@ HTTP BASIC 認証では、App Service 展開資格情報が必要です。 自�
 次の例は cURL ツールを使用して .war ファイルを展開します。 プレースホルダー `<username>`、`<war-file-path>`、`<app-name>` を置き換えます。 cURL によって要求されたら、パスワードを入力します。
 
 ```bash
-curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
 ```
 
 ### <a name="with-powershell"></a>PowerShell の場合
@@ -109,7 +87,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 高度なデプロイ シナリオの詳細については、[Git を使用した Azure へのデプロイ](deploy-local-git.md)に関するページをご覧ください。 Azure への Git ベース デプロイでは、バージョン管理、パッケージの復元、MSBuild などが可能です。
 

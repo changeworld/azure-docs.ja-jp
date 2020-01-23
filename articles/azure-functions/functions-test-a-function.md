@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: c60cd631e703f929eaae56138a2acd3687121924
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226573"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768879"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -38,7 +38,7 @@ ms.locfileid: "74226573"
 2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して *HttpTrigger* という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して *TimerTrigger* という名前を付けます。
 4. Visual Studio で **[ファイル] > [新規作成] > [プロジェクト] > [Visual C#] > [.NET Core] > [xUnit テスト プロジェクト]** の順にクリックして [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)し、*Functions.Test* という名前を付けます。 
-5. Nuget を使用して、テスト アプリ [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) からの参照を追加します
+5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
 6. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
@@ -47,7 +47,7 @@ ms.locfileid: "74226573"
 
 各関数は、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) のインスタンスを取得して、メッセージ ログを処理します。 テストによっては、メッセージをログに記録しないことも、ログの実装方法に対する懸念がないこともあります。 その他のテストは、テストを渡すかどうかを判断するために、ログに記録されたメッセージを評価する必要があります。
 
-`ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
+`ListLogger` クラスは、`ILogger` インターフェイスを実装し、テスト中に評価するメッセージの内部リストを保持します。
 
 *Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
 
@@ -370,7 +370,7 @@ npm test
 
 次に、テストにブレークポイントを設定し、**F5** を押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関数に対する自動テストを記述する方法を習得したので、以下のリソースに進みます。
 - [HTTP によってトリガーされない関数を手動で実行する](./functions-manually-run-non-http.md)

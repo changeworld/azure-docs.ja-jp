@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639856"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908864"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 
@@ -99,7 +99,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
     > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
 
 -   Front Door によって送信された受信ヘッダー "**X-Forwarded-Host**" の値をフィルター処理します。 ヘッダーの許可される値は、Front Door の構成で定義されているすべてのフロント エンド ホストだけにする必要があります。実際には、さらに具体的に言えば、複数ある実際のバックエンドのうち、この特定のバックエンドでトラフィックを受け入れたいホスト名のみにします。
-    - 例: Front Door の構成に、 _`contoso.azurefd.net`_ (A)、 _`www.contoso.com`_ (B)、_ (C)、 _`notifications.contoso.com`_ (D) というフロント エンド ホストがあるとします。 バックエンドは X と Y の 2 つがあると仮定します。 
+    - 例: Front Door の構成に、 _`contoso.azurefd.net`_ (A)、 _`www.contoso.com`_ (B)、 _`api.contoso.com`_ (C)、 _`notifications.contoso.com`_ (D) というフロント エンド ホストがあるとします。 バックエンドは X と Y の 2 つがあると仮定します。 
     - バックエンド X はホスト名 A および B からのトラフィックのみを受け取る必要があり、バックエンド Y は A、C、D からのトラフィックを受け取れます。
     - そのため、バックエンド X では、ヘッダー "**X-Forwarded-Host**" が _`contoso.azurefd.net`_ または _`www.contoso.com`_ のいずれかに設定されているトラフィックのみを受け入れる必要があります。 バックエンド X は、その他のすべてのトラフィックを拒否する必要があります。
     - 同様に、バックエンド Y では、ヘッダー "**X-Forwarded-Host**" が _`contoso.azurefd.net`_ 、 _`api.contoso.com`_ 、 _`notifications.contoso.com`_ のいずれかに設定されているトラフィックのみを受け入れる必要があります。 バックエンド Y は、その他のすべてのトラフィックを拒否する必要があります。

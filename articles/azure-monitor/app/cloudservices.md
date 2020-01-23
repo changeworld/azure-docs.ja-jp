@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887538"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979851"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -52,7 +52,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 ## <a name="plan-resources-and-resource-groups"></a>リソースとリソース グループを計画する
 お客様のアプリからのテレメトリは、Application Insights 型の Azure リソースで格納、分析、表示されます。 
 
-各リソースはリソース グループに属しています。 リソース グループは、コストの管理、チーム メンバーへのアクセスの許可、調整された単一のトランザクションでの更新のデプロイに使用されます。 たとえば、1 回の操作で Azure クラウド サービスとその Application Insights 監視リソースを[デプロイするスクリプトを記述](../../azure-resource-manager/resource-group-template-deploy.md)できます。
+各リソースはリソース グループに属しています。 リソース グループは、コストの管理、チーム メンバーへのアクセスの許可、調整された単一のトランザクションでの更新のデプロイに使用されます。 たとえば、1 回の操作で Azure クラウド サービスとその Application Insights 監視リソースを[デプロイするスクリプトを記述](../../azure-resource-manager/templates/deploy-powershell.md)できます。
 
 ### <a name="resources-for-components"></a>コンポーネント用のリソース
 お客様のアプリのコンポーネントごとに別個のリソースを作成することをお勧めします。 つまり、web ロールと worker ロールにそれぞれリソースを作成します。 各コンポーネントを別個に分析できますが、すべてのコンポーネントから主要なグラフをまとめる[ダッシュボード](../../azure-monitor/app/overview-dashboard.md)を作成して、1 つのビューでまとめて比較および監視することもできます。 
@@ -275,7 +275,7 @@ worker ロールでこのビューを実現するには、カスタムのテレ�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Application Insights に Azure Diagnostics を送信するための構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Application Insights リソースの自動的な作成](../../azure-monitor/app/powershell.md)
 * [Azure 診断の自動化](../../azure-monitor/app/powershell-azure-diagnostics.md)

@@ -1,5 +1,5 @@
 ---
-title: オフラインの Apple FairPlay で HLS コンテンツを保護する - Azure | Microsoft Docs
+title: Azure Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 description: このトピックでは、Azure Media Services を使って HTTP ライブ ストリーミング (HLS) コンテンツをオフライン モードの Apple FairPlay で動的に暗号化する方法の概要を説明します。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), オフライン, iOS 10
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 83fa8c9c6d98728d48ff4ed8993963cdbd522724
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c0d87de25cae44f17789dfaf7b1ec805138c351c
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974123"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779928"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -29,7 +29,7 @@ ms.locfileid: "74974123"
 - Microsoft PlayReady
 - Google Widevine
     
-    Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+    Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 - Apple FairPlay
 - AES-128 暗号化
 
@@ -201,7 +201,7 @@ Media Services の 3 つのテスト サンプルには、次の 3 つのシナ�
 これらのサンプルはこちらの[デモ サイト](https://aka.ms/poc#22)にあり、対応するアプリケーション証明書は Azure Web アプリでホストされています。
 FPS Server SDK のバージョン 3 またはバージョン 4 サンプルでは、マスター再生リストに代替オーディオが含まれる場合、オフライン モードのときに、オーディオのみが再生されます。 そのため、代替オーディオを削除する必要があります。 つまり、前述の 2 番目と 3 番目のサンプルは、オンライン モードとオフライン モードで動作します。 最初のサンプルは、オフライン モードでのみオーディオが再生され、オンライン ストリーミングは正常に動作します。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 次のよく寄せられる質問は、トラブルシューティングに役立ちます。
 
@@ -243,6 +243,6 @@ boot.xml ファイルのサンプル:
 </HLSMoviePackage>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [AES-128 での保護](protect-with-aes128.md)の方法に関する記事を参照してください。

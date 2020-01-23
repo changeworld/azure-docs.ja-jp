@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212838"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748565"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -417,7 +417,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 * 通常よりも長期間に渡り、予想された **E2ELatency** 値および **ServerLatency** 値よりも高くなっているキュー操作がないかどうか、Storage Logging ログを調べます。
 
 ### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>メトリックが PercentThrottlingError の増加を示す
-Storage サービスのスケーラビリティ ターゲットを超えると、調整エラーが生じます。 Storage サービスは、1 つのクライアントやテナントがサービスを占有してしまうことがないよう、調整を行います。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照し、ストレージ アカウントのスケーラビリティ ターゲットと、ストレージ アカウントのパーティション用のパフォーマンス ターゲットの詳細を確認してください。
+Storage サービスのスケーラビリティ ターゲットを超えると、調整エラーが生じます。 Storage サービスは、1 つのクライアントやテナントがサービスを占有してしまうことがないよう、調整を行います。 詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](scalability-targets-standard-account.md)」を参照し、ストレージ アカウントのスケーラビリティ ターゲットと、ストレージ アカウントのパーティション用のパフォーマンス ターゲットの詳細を確認してください。
 
 **PercentThrottlingError** メトリックが、調整エラーによって失敗した要求の割合が増加していることを示す場合、以下の 2 つのシナリオのいずれかについて調査する必要があります。
 
@@ -471,14 +471,14 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 | source | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
-| Microsoft.Azure.Storage |Information |3 |85d077ab -… |[https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;amp;api-version=2014-02-14](<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14>) に同期要求を開始しています。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |[https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14](<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14>) に同期要求を開始しています。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |応答を待機しています。 |
 | Microsoft.Azure.Storage |警告 |2 |85d077ab -… |応答の待機中に例外がスローされました。リモート サーバーがエラー(403) 禁止。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |応答を受け取りました。 状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = . |
 | Microsoft.Azure.Storage |警告 |2 |85d077ab -… |操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |操作を再試行する必要があるかどうかを検査しています。 再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |次の場所が、場所モードに基づいてプライマリに設定されています。 |
-| Microsoft.Azure.Storage |Error |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 失敗しました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
+| Microsoft.Azure.Storage |エラー |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 失敗しました。リモート サーバーがエラー(403) 禁止。 |
 
 このシナリオでは、クライアントが SAS トークンをサーバーに送信する前にトークンが期限切れになった理由を調査しなければなりません。
 
@@ -506,7 +506,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 ストレージ クライアント ライブラリによって生成された以下のクライアント側のログには、作成する BLOB 用のコンテナーをクライアントが検出できないという問題が示されています。 このログには、以下のストレージ操作の詳細が示されています。
 
-| 要求 ID | Operation |
+| 要求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** メソッド。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 |
 | e2d06d78… |**CreateIfNotExists** 。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 ここで、 **HEAD** から 404 メッセージが返されますが、処理を続行します。 |
@@ -516,14 +516,14 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 | 要求 ID | [操作テキスト] |
 | --- | --- |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 200、要求 ID = eeead849-...Content-MD5 = 、ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | 07b26a5d-... |応答の本文をダウンロードしています。 |
 | 07b26a5d-... |操作は正常に完了しました。 |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 202、要求 ID = 6ab2a4cf-...、Content-MD5 = ETag = 。 |
@@ -627,7 +627,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 次の表は、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用した **CreateIfNotExists** の 2 つのクライアント操作に関するサーバー側のログからの抜粋を示しています。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-| Timestamp | Operation | 結果 | コンテナー名 | クライアント要求 ID |
+| Timestamp | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -809,7 +809,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 詳細については、「 [Application Insights とは何か?](../../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Storage の分析については、次のリソースを参照してください。
 
