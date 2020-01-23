@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232811"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262811"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "74232811"
 
 次の例は、シングルトン バックグラウンド ジョブのオーケストレーションを作成する HTTP トリガー関数を示しています。 このコードは、指定されたインスタンス ID の インスタンスが 1 つだけ存在することを保証します。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,11 +52,12 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> 前の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-function.json ファイルを次に示します。
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -82,7 +83,8 @@ function.json ファイルを次に示します。
 }
 ```
 
-JavaScript コードを次に示します。
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -110,6 +112,8 @@ module.exports = async function(context, req) {
 };
 ```
 
+---
+
 既定では、インスタンス ID は、ランダムに生成される GUID です。 ただし、前記の例では、URL からルート データにインスタンス ID が渡されています。 コードは、`GetStatusAsync` (C#) または `getStatus` (JavaScript) を呼び出して、指定した ID を持つインスタンスが既に実行されているかどうかを確認します。 そのようなインスタンスが実行されていない場合は、その ID で新しいインスタンスが作成されます。
 
 > [!NOTE]
@@ -117,7 +121,7 @@ module.exports = async function(context, req) {
 
 オーケストレーター関数の実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [オーケストレーションのネイティブ HTTP 機能について学習する](durable-functions-http-features.md)

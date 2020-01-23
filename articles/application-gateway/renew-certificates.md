@@ -3,17 +3,16 @@ title: Azure Application Gateway の証明書を更新する
 description: アプリケーション ゲートウェイ リスナーに関連付けられている証明書を更新する方法を説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133692"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278009"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway の証明書を更新する
 
@@ -21,7 +20,7 @@ SSL 暗号化対応にアプリケーション ゲートウェイを構成した
 
 Azure portal、Azure PowerShell、または Azure CLI を使って、リスナーに関連付けられている証明書を更新することができます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 ポータルからリスナー証明書を更新するには、アプリケーション ゲートウェイ リスナーに移動します。 更新が必要な証明書のあるリスナーをクリックして、 **[選択した証明書の更新または編集]** をクリックします。
 
@@ -61,6 +60,6 @@ az network application-gateway ssl-cert update \
   --cert-password "<password>"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Application Gateway で SSL オフロードを構成する方法を学習するには、[SSL オフロードの構成](application-gateway-ssl-portal.md)に関するページをご覧ください。

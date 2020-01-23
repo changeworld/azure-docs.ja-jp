@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966040"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290616"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Python を使用して Data Lake Storage Gen1 を操作するには、3 つの�
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
 * `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](/python/api/azure-mgmt-datalake-store/)をご覧ください。
-* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)に関するページをご覧ください。
+* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)に関するページをご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 
@@ -135,5 +135,5 @@ pip install azure-datalake-store
 
 ## <a name="see-also"></a>参照
 
-* [azure-datalake-store Python (ファイルシステム) リファレンス](https://azure-datalake-store.readthedocs.io/en/latest)
+* [azure-datalake-store Python (ファイルシステム) リファレンス](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)

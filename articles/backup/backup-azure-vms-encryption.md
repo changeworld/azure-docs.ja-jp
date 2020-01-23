@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449982"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513781"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -53,7 +53,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 さらに、状況によっては、いくつか行う必要があることがあります。
 
 - **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](backup-azure-arm-vms-prepare.md#install-the-vm-agent)が必要な場合があります。
-- **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)する必要があります。
 
 ## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
 

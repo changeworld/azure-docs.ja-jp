@@ -3,12 +3,12 @@ title: テンプレート内の子リソース
 description: Azure Resource Manager テンプレートで子リソースの名前と種類を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 058c28329942a1bd2e5d0e12321022fb022ef74f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474869"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122017"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 
@@ -56,8 +56,8 @@ Resource Manager テンプレートでは、親リソースの内側または外
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -69,10 +69,10 @@ Resource Manager テンプレートでは、親リソースの内側または外
     },
     "resources": [
       {
-        "apiVersion": "2018-10-01",
         "type": "subnets",
-        "location": "[parameters('location')]",
+        "apiVersion": "2018-10-01",
         "name": "Subnet1",
+        "location": "[parameters('location')]",
         "dependsOn": [
           "VNet1"
         ],
@@ -103,8 +103,8 @@ Resource Manager テンプレートでは、親リソースの内側または外
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -116,8 +116,8 @@ Resource Manager テンプレートでは、親リソースの内側または外
     }
   },
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks/subnets",
+    "apiVersion": "2018-10-01",
     "location": "[parameters('location')]",
     "name": "VNet1/Subnet1",
     "dependsOn": [
@@ -132,6 +132,6 @@ Resource Manager テンプレートでは、親リソースの内側または外
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。 
+* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
 
 * リソースを参照する際のリソース名の形式については、[reference 関数](template-functions-resource.md#reference)の説明を参照してください。

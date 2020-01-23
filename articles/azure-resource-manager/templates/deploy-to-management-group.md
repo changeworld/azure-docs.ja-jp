@@ -3,12 +3,12 @@ title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: e3661225dd69721ab223da0b44d69a592abb59bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474309"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121915"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
@@ -63,7 +63,7 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 * [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
 * [subscription()](template-functions-resource.md#subscription) 関数は、サポートされて**いません**。
-* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 管理グループ レベルのデプロイで使用されているリソースのリソース ID を取得するには、これを使用します。 たとえば、`resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` と指定して、ポリシー定義のリソース ID を取得します。 リソース ID は `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` の形式で返されます。
+* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 管理グループ レベルのデプロイで使用されているリソースのリソース ID を取得するには、これを使用します。 たとえば、`resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))` と指定して、ポリシー定義のリソース ID を取得します。 リソース ID は `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` の形式で返されます。
 * [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
 
 ## <a name="create-policies"></a>ポリシーの作成
@@ -74,30 +74,30 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 
@@ -107,36 +107,34 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

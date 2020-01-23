@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432629"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169607"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -60,13 +60,17 @@ IoT ハブに対して設定できるプロパティをいくつか以下に示�
 
 特定のアクセス許可によって付与されるアクセスの詳細については、[IoT Hub のアクセス許可に関するセクション](./iot-hub-devguide-security.md#iot-hub-permissions)を参照してください。
 
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
 ## <a name="message-routing-for-an-iot-hub"></a>IoT ハブのメッセージ ルーティング
 
 **[メッセージング]** で **[メッセージ ルーティング]** をクリックして、メッセージ ルーティング ウィンドウを表示します。ここでハブのルートとカスタム エンドポイントを定義することができます。 [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md) では、デバイスからエンドポイントへのデータの送信方法を管理することができます。 最初の手順では、新しいルートを追加します。 その後、ルートに既存のエンドポイントを追加したり、Blob Storage など、サポートされる新しい種類のいずれかを作成したりすることができます。 
 
 ![メッセージ ルーティング ウィンドウ](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
-### <a name="routes"></a>Routes
+### <a name="routes"></a>ルート
 
 [ルート] は、メッセージ ルーティング ウィンドウで最初のタブです。 新しいルートを追加するには、[+ **追加]** をクリックします。 次の画面が表示されます。 
 
@@ -114,7 +118,7 @@ IoT ハブに対して最大 10 個のカスタム エンドポイントを定�
 
 IoT ハブを削除するには、削除する IoT ハブを見つけて、IoT ハブ名の下にある **[削除]** ボタンをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 

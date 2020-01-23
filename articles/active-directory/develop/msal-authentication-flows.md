@@ -14,27 +14,27 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917201"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291586"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
 この記事では、Microsoft Authentication Library (MSAL) によって提供されるさまざまな認証フローについて説明します。  これらのフローは、さまざまなアプリケーション シナリオで使用できます。
 
-| Flow | 説明 | 使用される場所|  
+| Flow | [説明] | 使用される場所|  
 | ---- | ----------- | ------- | 
 | [対話](#interactive) | ブラウザーまたはポップアップ ウィンドウでユーザーに資格情報を求める対話型プロセスによりトークンを取得します。 | [デスクトップ アプリ](scenario-desktop-overview.md)、[モバイル アプリ](scenario-mobile-overview.md) |
 | [暗黙的な許可](#implicit-grant) | バックエンド サーバーと資格情報をやり取りせずに、アプリはトークンを取得できます。 これにより、アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得を、すべてクライアント JavaScript コード内で実行できます。| [シングル ページ アプリケーション (SPA)](scenario-spa-overview.md) |
 | [承認コード](#authorization-code) | デバイスにインストールされているアプリで、Web API などの保護されたリソースにアクセスするために使用されます。 これにより、モバイル アプリおよびデスクトップ アプリにサインインおよび API アクセスを追加できます。 | [デスクトップ アプリ](scenario-desktop-overview.md)、[モバイル アプリ](scenario-mobile-overview.md)、[Web アプリ](scenario-web-app-call-api-overview.md) | 
 | [On-Behalf-Of](#on-behalf-of) | アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要があります。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 | [Web API](scenario-web-api-call-api-overview.md) |
 | [クライアントの資格情報](#client-credentials) | アプリケーションの ID を使って Web でホストされているリソースにアクセスできます。 バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 | [デーモン アプリ](scenario-daemon-overview.md) |
-| [デバイス コード](#device-code) | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [デバイス コード](#device-code) | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication) | ドメインまたは Azure Active Directory (Azure AD) に参加しているコンピューターのアプリケーションは、サイレントで (ユーザーからの UI 操作なしで) トークンを取得できます。| [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [ユーザー名/パスワード](scenario-desktop-acquire-token.md#username--password) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#username--password) |
+| [ユーザー名/パスワード](scenario-desktop-acquire-token.md#username-and-password) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>各フローがトークンとコードを生成する方法
  

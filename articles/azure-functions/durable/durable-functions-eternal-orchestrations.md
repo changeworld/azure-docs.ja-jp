@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8d28ae18c44c434dba053b23a60eb78728f8d8e0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232908"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262981"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -33,7 +33,7 @@ ms.locfileid: "74232908"
 
 永続的オーケストレーションのユース ケースの 1 つが、定期的な作業を無期限に実行する必要があるコードです。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,6 +70,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 この例と、タイマーによってトリガーされる関数の違いは、クリーンアップ トリガーのタイミングです。この例のタイミングはスケジュールに基づいていません。 たとえば、1 時間ごとに関数を実行する CRON スケジュールでは、1:00、2:00、3:00 といったタイミングで関数が実行され、重複の問題が発生する可能性があります。 この例では、クリーンアップ所要時間が 30 分の場合は、1:00、2:30、4:00 にスケジュールされるため、重複することはありません。
 
 ## <a name="starting-an-eternal-orchestration"></a>永続的オーケストレーションの開始
@@ -78,6 +80,8 @@ module.exports = df.orchestrator(function*(context) {
 
 > [!NOTE]
 > 単一の永続的オーケストレーションを確実に実行するには、オーケストレーションの開始時に同じインスタンス `id` を維持することが重要です。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -95,13 +99,32 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 > [!NOTE]
 > 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    const client = df.getClient(context);
+    const instanceId = "StaticId";
+    
+    // null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.startNew("Periodic_Cleanup_Loop", instanceId, null);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+    return client.createCheckStatusResponse(context.bindingData.req, instanceId);
+};
+```
+
+---
+
 ## <a name="exit-from-an-eternal-orchestration"></a>永続的オーケストレーションの終了
 
 オーケストレーター関数は、最終的に完了する必要がある場合は、`ContinueAsNew` を "*呼び出さない*" でください。呼び出さなければ、関数は終了します。
 
 オーケストレーター関数が無限ループにあり、停止する必要がある場合は、[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)の `TerminateAsync` (.NET) メソッドまたは `terminate` (JavaScript) メソッドを使用してそれを停止します。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一のオーケストレーションを実装する方法を確認する](durable-functions-singletons.md)

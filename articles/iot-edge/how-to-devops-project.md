@@ -7,12 +7,12 @@ ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccf6ea567143180daa848566d1e7e1420c181c5f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 66401678f03ee0043345208eb32560f589829226
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457382"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510313"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Azure DevOps Projects を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
@@ -28,9 +28,9 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
 1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。  
 
-1.  **作成** を選択します。
+1. **作成** を選択します。
 
-## <a name="create-a-new-application-pipeline"></a>新しいアプリケーション パイプラインを作成する 
+## <a name="create-a-new-application-pipeline"></a>新しいアプリケーション パイプラインを作成する
 
 1. Azure IoT Edge モジュールは、[C#](tutorial-csharp-module.md)、[Node.js](tutorial-node-module.md)、[Python](tutorial-python-module.md)、[C](tutorial-c-module.md)、および [Java](tutorial-java-module.md) で記述できます。 **.NET**、**Node.js**、**Python**、**C**、または **Java** から、新しいアプリケーションを始めるために使用する言語を選択します。 **[次へ]** をクリックして続行します。
 
@@ -46,26 +46,25 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
 4. 新しい無料の Azure DevOps 組織を作成するか、既存の組織を選択します。
 
-   1. プロジェクトの名前を指定します。 
+   1. プロジェクトの名前を指定します。
 
-   2. Azure DevOps 組織を選択します。 既存の組織がない場合は、 **[追加設定]** を選択し、新しい組織を作成します。 
+   2. Azure DevOps 組織を選択します。 既存の組織がない場合は、 **[追加設定]** を選択し、新しい組織を作成します。
 
    3. Azure サブスクリプションを選択します。
 
    4. プロジェクト名によって生成された IoT Hub 名を使用するか、または独自に指定します。
 
-   5. 既定の場所をそのまま使用するか、近くの名前を選択します。 
+   5. 既定の場所をそのまま使用するか、近くの名前を選択します。
 
-   5. **[追加設定]** を選択して、DevOps プロジェクトが自動的に作成する Azure リソースを構成します。
+   6. **[追加設定]** を選択して、DevOps プロジェクトが自動的に作成する Azure リソースを構成します。
 
-   6. **[完了]** を選択して、プロジェクトの作成を完了します。 
+   7. **[完了]** を選択して、プロジェクトの作成を完了します。
 
    ![アプリケーションに名前を付けて作成する](media/how-to-devops-project/select-devops.png)
 
 数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 プロジェクト名を選択して、進行状況を表示します。 ページを更新する必要がある場合があります。 サンプルの IoT Edge アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが IoT Edge デバイスにデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
 
    ![Azure portal にアプリケーションを表示する](./media/how-to-devops-project/devops-portal.png)
-
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
 
@@ -75,14 +74,13 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
    ![Azure Repos 内に生成されたリポジトリを表示する](./media/how-to-devops-project/view-repositories.png)
 
-2. 次の手順では、Web ブラウザーを使用して、コードを変更します。 代わりにローカルにリポジトリを複製する場合は、ウィンドウの右上の **[複製]** を選択します。 指定された URL を使用し、Visual Studio Code またはお好みの開発ツールで、Git リポジトリを複製します。 
+2. 次の手順では、Web ブラウザーを使用して、コードを変更します。 代わりにローカルにリポジトリを複製する場合は、ウィンドウの右上の **[複製]** を選択します。 指定された URL を使用し、Visual Studio Code またはお好みの開発ツールで、Git リポジトリを複製します。
 
 3. リポジトリには、作成プロセスで選択したアプリケーションの言語に基づいて、**FilterModule** というモジュールに既にコードが含まれています。 **modules/FilterModule/module.json** ファイルを開きます。
 
    ![Azure Repos 内の module.json ファイルを開く](./media/how-to-devops-project/open-module-json.png)
 
-4. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。 
-
+4. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD パイプラインを確認する
 
@@ -114,7 +112,7 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
     ![リリース パイプラインの表示](media/how-to-devops-project/release-pipeline.png)
 
-10. **[成果物]** で、 **[ドロップ]** を選択します。 この成果物によって監視されるソースは、前の手順で調べたビルド パイプラインの出力です。 
+10. **[成果物]** で、 **[ドロップ]** を選択します。 この成果物によって監視されるソースは、前の手順で調べたビルド パイプラインの出力です。
 
 11. **[ドロップ]** アイコンの横にある稲妻アイコンのように見える **[継続的配置トリガー]** を選択します。 このリリース パイプラインでは、新しいビルド成果物が使用可能になるたびにデプロイが実行されるトリガーが有効にされています。 必要に応じて、手動でのデプロイが必須となるように、トリガーを無効にすることができます。  
 
@@ -126,12 +124,12 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
 14. リリースの名前を選択して、その詳細情報を表示します。
 
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 * 「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)」で Azure DevOps 上の Azure IoT Edge のタスクについて確認します。
 * 「[1 台のデバイスまたは一群のデバイスを対象とした IoT Edge デプロイについて](module-deployment-monitoring.md)」で IoT Edge デプロイについて理解します。
 * 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)](how-to-deploy-monitor.md)」で、デプロイを作成、更新、または削除するための手順を学習してください。

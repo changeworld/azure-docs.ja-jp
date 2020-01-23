@@ -1,20 +1,18 @@
 ---
 title: (非推奨) クイック スタート - Linux 用 Azure Docker CE クラスター
 description: Azure CLI を使用して Azure Container Service で Linux コンテナー用 Docker CE クラスターを作成する方法を簡単に説明します。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721796"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274875"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>(非推奨) Docker CE クラスターのデプロイ
 
@@ -28,9 +26,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループは、Azure リソースが展開され管理される論理グループです。
 
 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus2* に作成します。
 
@@ -65,9 +63,9 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az-acs-create) コマンドに追加して、既定のエージェント数を減らします。 
 
-数分してコマンドが完了すると、このクラスターに関する情報が JSON 形式で表示されます。
+数分後、コマンドが完了すると、クラスターに関する JSON 形式の情報が返されます。
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 このクイック スタートでは、Docker Swarm マスターと Docker エージェント プールの両方の FQDN が必要です。 マスターとエージェントの両方の FQDN を返す次のコマンドを実行します。
 
@@ -106,7 +104,6 @@ export DOCKER_HOST=localhost:2374
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:
@@ -167,7 +164,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Docker Swarm クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 

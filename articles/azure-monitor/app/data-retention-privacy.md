@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052500"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513458"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -98,7 +98,7 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 * 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
-* No. アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
+* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
@@ -118,7 +118,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 すべてのデータが、保存時とデータ センター間での移動時に暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
-はい。ほぼすべての SDK からポータル (Web サーバー、デバイス、HTTPS Web ページなど) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
+はい。ほぼすべての SDK からポータル (Web サーバー、デバイス、HTTPS Web ページなど) への送信に https が使用されます。 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK では一時的なローカル ストレージが作成されますか?
 
@@ -234,15 +234,15 @@ SDK はプラットフォームごとに異なり、インストールできる�
 
 | 操作 | 収集されるデータのクラス (次の表を参照) |
 | --- | --- |
-| [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
+| [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**例外**<br/>Session<br/>users |
 | [Status Monitor を IIS にインストールする][redfield] |依存関係<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>Request<br/>Session<br/>users |
 | [JavaScript SDK を Web ページに追加する][client] |ClientContext <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
 | [既定のプロパティを定義する][apiproperties] |**Properties** (すべての標準イベントおよびカスタム イベント) |
-| [TrackMetric を呼び出す][api] |数値<br/>**プロパティ** |
-| [Track* を呼び出す][api] |イベント名<br/>**プロパティ** |
-| [TrackException を呼び出す][api] |**Exceptions**<br/>Stack dump<br/>**プロパティ** |
-| SDK はデータを収集できません。 例: <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
+| [TrackMetric を呼び出す][api] |数値<br/>**Properties** |
+| [Track* を呼び出す][api] |イベント名<br/>**Properties** |
+| [TrackException を呼び出す][api] |**例外**<br/>Stack dump<br/>**Properties** |
+| SDK はデータを収集できません。 次に例を示します。 <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
 
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
 
@@ -263,7 +263,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | Ajax |Web ページからサーバーへの HTTP 呼び出し |
 | Requests |URL、期間、応答コード |
 | 依存関係 |種類 (SQL、HTTP、...)、接続文字列または URI、同期または非同期、期間、成功、SQL ステートメント (Status Monitor による) |
-| **Exceptions** |種類、**メッセージ**、呼び出し履歴、ソース ファイル、行の番号、`thread id` |
+| **例外** |種類、**メッセージ**、呼び出し履歴、ソース ファイル、行の番号、`thread id` |
 | Crashes |`Process id`、`parent process id`、`crash thread id`。アプリケーションの修正プログラム、`id`、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類 |
 | Trace |**メッセージ** と重大度レベル |
 | Perf counters |プロセッサ時間、使用可能なメモリ、要求レート、例外レート、プロセスのプライベート バイト、IO レート、要求の期間、要求のキューの長さ |

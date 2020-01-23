@@ -1,25 +1,21 @@
 ---
-title: Azure CLI を使用した Azure DNS の DNS レコードの管理 | Microsoft Docs
+title: Azure CLI を使用した Azure DNS の DNS レコードの管理
 description: Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。
-services: dns
-documentationcenter: na
 author: asudbring
-manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: allensu
-ms.openlocfilehash: a0316710f78afc8810f5f65e108638b08fae3da2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a7ecbb5eb2ff6e9b62091496b4debab14e906c55
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211630"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278589"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 
@@ -270,7 +266,7 @@ az network dns record-set a update --resource-group myresourcegroup --zone-name 
 
 ### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>既存のレコード セットのメタデータを変更するには
 
-[レコード セットのメタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 既存のレコード セットのメタデータを変更するには、`az network dns record-set <record-type> update` を使用します。 `az network dns record-set <record-type> update --help` を使用すると、ヘルプが表示されます。
+[レコード セット メタデータ](dns-zones-records.md#tags-and-metadata)を使用すると、アプリケーション固有のデータを、キーと値のペアとして各レコード セットに関連付けることができます。 既存のレコード セットのメタデータを変更するには、`az network dns record-set <record-type> update` を使用します。 `az network dns record-set <record-type> update --help` を使用すると、ヘルプが表示されます。
 
 次の例は、"dept=finance" と "environment=production" という 2 つのメタデータ エントリを含むレコード セットを変更する方法を示しています。 既存のメタデータは指定した値に*置換*されることに注意してください。
 
@@ -293,7 +289,7 @@ az network dns record-set a delete --resource-group myresourcegroup --zone-name 
 
 削除操作の確認を求めるプロンプトが表示されます。 このプロンプトを抑制するには、`--yes` スイッチを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure DNS におけるゾーンとレコード](dns-zones-records.md)について確認します。
 <br>

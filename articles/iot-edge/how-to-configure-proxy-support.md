@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cc37875b84e215066c52ca8daef0fa0d879c54f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434466"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510823"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -40,7 +40,7 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 4. **今後のすべてのモジュールのデプロイのために、プロキシ経由で通信するすべてのモジュールの環境変数を設定します。**
 
-   IoT Edge デバイスが設定され、プロキシ サーバー経由で IoT Hub に接続されたら、今後すべてのモジュールのデプロイで接続を維持する必要があります。 詳細な手順については、この記事の「[配置マニフェストを構成する](#configure-deployment-manifests)」セクションを参照してください。 
+   IoT Edge デバイスが設定され、プロキシ サーバー経由で IoT Hub に接続されたら、今後すべてのモジュールのデプロイで接続を維持する必要があります。 詳細な手順については、この記事の「[配置マニフェストを構成する](#configure-deployment-manifests)」セクションを参照してください。
 
    この手順は、リモートで実行される継続的なプロセスです。そのため、新しいモジュールまたはデプロイの更新ごとに、プロキシ サーバー経由で通信するデバイスの機能が維持されます。
 
@@ -70,7 +70,7 @@ Windows デバイス上に IoT Edge ランタイムをインストールして�
 
 以下の手順は、`-proxy` 引数を使用した Windows インストールの例です。
 
-1. Invoke-WebRequest コマンドは、インストーラー スクリプトにアクセスするためにプロキシ情報が必要です。 次に、Deploy-IoTEdge コマンドで、インストール ファイルをダウンロードするためにプロキシ情報が必要になります。 
+1. Invoke-WebRequest コマンドは、インストーラー スクリプトにアクセスするためにプロキシ情報が必要です。 次に、Deploy-IoTEdge コマンドで、インストール ファイルをダウンロードするためにプロキシ情報が必要になります。
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
@@ -164,13 +164,13 @@ Restart-Service iotedge
 
 IoT Edge エージェントは、すべての IoT Edge デバイス上で最初に起動するモジュールです。 最初は、IoT Edge config.yaml ファイルの情報に基づいて起動されます。 その後、IoT Edge エージェントは IoT Hub に接続して、デバイスへの配置が必要な他のモジュールを宣言する配置マニフェストを取得します。
 
-この手順は、デバイスの初期設定中に IoT Edge デバイス上で 1 回行われます。 
+この手順は、デバイスの初期設定中に IoT Edge デバイス上で 1 回行われます。
 
-1. お使いの IoT Edge デバイス上で、config.yaml ファイルを開きます。 Linux システムの場合、このファイルは **/etc/iotedge/config.yaml** に配置されています。 Windows システムの場合、このファイルは **C:\ProgramData\iotedge\config.yaml** に配置されています。 構成ファイルは保護されているため、アクセスするには管理者権限が必要です。 Linux システムの場合、好みのテキスト エディターでファイルを開く前に `sudo` コマンドを使用します。 Windows の場合、管理者としてメモ帳などのテキスト エディターを開いてから、ファイルを開きます。 
+1. お使いの IoT Edge デバイス上で、config.yaml ファイルを開きます。 Linux システムの場合、このファイルは **/etc/iotedge/config.yaml** に配置されています。 Windows システムの場合、このファイルは **C:\ProgramData\iotedge\config.yaml** に配置されています。 構成ファイルは保護されているため、アクセスするには管理者権限が必要です。 Linux システムの場合、好みのテキスト エディターでファイルを開く前に `sudo` コマンドを使用します。 Windows の場合、管理者としてメモ帳などのテキスト エディターを開いてから、ファイルを開きます。
 
-2. config.yaml ファイルで、**Edge Agent module spec** セクションを探します。 IoT Edge エージェント定義には、環境変数を追加できる **env** パラメーターが組み込まれています。 
+2. config.yaml ファイルで、**Edge Agent module spec** セクションを探します。 IoT Edge エージェント定義には、環境変数を追加できる **env** パラメーターが組み込まれています。
 
-3. env パラメーターのプレースホルダ―である中かっこを削除して、新しい行に新しい変数を追加します。 YAML では、インデントはスペース 2 つであることに注意してください。 
+3. env パラメーターのプレースホルダ―である中かっこを削除して、新しい行に新しい変数を追加します。 YAML では、インデントはスペース 2 つであることに注意してください。
 
    ```yaml
    https_proxy: "<proxy URL>"
@@ -184,7 +184,7 @@ IoT Edge エージェントは、すべての IoT Edge デバイス上で最初�
 
    ![環境変数を使用した edgeAgent 定義](./media/how-to-configure-proxy-support/edgeagent-edited.png)
 
-5. config.yaml への変更を保存して、エディターを閉じます。 IoT Edge を再起動して、変更を有効にします。 
+5. config.yaml への変更を保存して、エディターを閉じます。 IoT Edge を再起動して、変更を有効にします。
 
    * Linux:
 

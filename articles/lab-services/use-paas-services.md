@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用 | Microsoft Docs
+title: Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用
 description: Azure DevTest Labs でサービスとしてのプラットフォーム (PasS) サービスを使用する方法について説明します。
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976243"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169205"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用
 PaaS は、環境機能を使用して DevTest Labs でサポートされます。 DevTest Labs 内の環境は、Git リポジトリ内の事前構成済みの Azure Resource Manager テンプレートでサポートされます。 環境には、PaaS と IaaS の両方のリソースを含めることができます。 これらを使用すると、仮想マシン、データベース、仮想ネットワーク、Web アプリなど、連携するようにカスタマイズされている Azure リソースを含めることができる複雑なシステムを作成できます。 これらのテンプレートでは、ソース コード管理を使用して、環境の一貫したデプロイと管理の向上を実現できます。 

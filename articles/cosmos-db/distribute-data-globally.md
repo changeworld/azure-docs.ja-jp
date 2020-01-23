@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 4f17fc7df5aef449c3b0f6dd8d02ae58df959070
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384894"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264307"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
@@ -19,9 +19,7 @@ ms.locfileid: "68384894"
 
 Azure Cosmos DB は、待機時間の短縮、スループットのエラスティックなスケーラビリティ、データの一貫性を保つための明確に定義されたセマンティクス、および高可用性を確保するように設計された、グローバル分散データベース サービスです。 つまり、世界のどの場所でも高速な応答時間を保証すること、常にオンラインであること、スループットとストレージのスケーラビリティが無制限でエラスティックなことがアプリケーションに求められる場合は、Azure Cosmos DB を使用してアプリケーションを構築してください。
 
-
-お客様は、データベースをいくつかの Azure リージョンにグローバルに分散して利用できるように構成することができます。待機時間を短縮するには、データをユーザーの所在地の近くに配置してください。どのリージョンを選択するかは、アプリケーションのグローバル リーチと、ユーザーの所在地によって決まります。Cosmos DB では、Cosmos アカウントに関連付けられている全リージョンに対して透過的にデータがレプリケートされます。グローバルに分散された Azure Cosmos データベースとコンテナーの単一のシステム イメージが利用できるようになっており、アプリケーションからは、読み取りと書き込みをローカルに実行することができます。 
-
+お客様は、データベースをいくつかの Azure リージョンにグローバルに分散して利用できるように構成することができます。 待機時間を短縮するには、データをユーザーの所在地の近くに配置してください。 どのリージョンを選択するかは、アプリケーションのグローバル リーチと、ユーザーの所在地によって決まります。 Cosmos DB では、Cosmos アカウントに関連付けられている全リージョンに対して透過的にデータがレプリケートされます。 グローバルに分散された Azure Cosmos データベースとコンテナーの単一のシステム イメージが利用できるようになっており、アプリケーションからは、読み取りと書き込みをローカルに実行することができます。 
 
 Azure Cosmos DB に関してご利用のアカウントに関連付けられるリージョンは、いつでも追加したり削除したりすることができます。 リージョンの追加や削除のために、アプリケーションを一時停止したり再デプロイしたりする必要はありません。 サービスでネイティブに提供されるマルチホーム機能により、高い可用性が常に維持されます。
 
@@ -60,4 +58,4 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 * [アプリケーションのための適切な整合性レベルを選択する](consistency-levels-choosing.md)
 * [Azure Cosmos DB API における整合性レベル](consistency-levels-across-apis.md)
 * [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-* [カスタム同期を実装して可用性とパフォーマンスの向上のために最適化する方法](how-to-custom-synchronization.md)
+

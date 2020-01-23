@@ -4,12 +4,12 @@ description: ロールベースのアクセス制御を使用して、Recovery S
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172209"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156388"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 
@@ -35,25 +35,25 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | Recovery Services コンテナーの作成 | Backup Contributor | コンテナーを含むリソース グループ |
 | Azure VM のバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |
 | | Virtual Machine Contributor | VM リソース |
-| VM のオンデマンド バックアップ | Backup Operator | 復旧コンテナー リソース |
+| VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |
 | VM の復元 | Backup Operator | Recovery Services コンテナー |
 | | Contributor | VM がデプロイされるリソース グループ |
 | | Virtual Machine Contributor | バックアップされたソース VM |
-| アンマネージド ディスク VM バックアップの復元 | Backup Operator | 復旧コンテナー リソース |
+| アンマネージド ディスク VM バックアップの復元 | Backup Operator | Recovery Services コンテナー |
 | | Virtual Machine Contributor | バックアップされたソース VM |
 | | Storage Account Contributor | ディスクの復元先となるストレージ アカウント リソース |
-| VM バックアップからのマネージド ディスクの復元 | Backup Operator | 復旧コンテナー リソース |
+| VM バックアップからのマネージド ディスクの復元 | Backup Operator | Recovery Services コンテナー |
 | | Virtual Machine Contributor | バックアップされたソース VM |
 | | Storage Account Contributor | マネージド ディスクに変換する前にコンテナーからのデータを保持する目的で、復元の一部として選択された一時ストレージ アカウント |
 | | Contributor | マネージド ディスクの復元先となるリソース グループ |
-| VM バックアップからの個々のファイルの復元 | Backup Operator | 復旧コンテナー リソース |
+| VM バックアップからの個々のファイルの復元 | Backup Operator | Recovery Services コンテナー |
 | | Virtual Machine Contributor | バックアップされたソース VM |
-| Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | 復旧コンテナー リソース |
-| Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | 復旧コンテナー リソース |
-| Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | 復旧コンテナー リソース |
-| VM バックアップでのバックアップの停止 (データを保持またはデータを削除) | Backup Contributor | 復旧コンテナー リソース |
-| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録 | Backup Operator | 復旧コンテナー リソース |
-| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | Backup Contributor | 復旧コンテナー リソース |
+| Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | Recovery Services コンテナー |
+| Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | Recovery Services コンテナー |
+| Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | Recovery Services コンテナー |
+| VM バックアップでのバックアップの停止 (データを保持またはデータを削除) | Backup Contributor | Recovery Services コンテナー |
+| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録 | Backup Operator | Recovery Services コンテナー |
+| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | Backup Contributor | Recovery Services コンテナー |
 
 > [!IMPORTANT]
 > VM 共同作成者を VM リソース スコープで指定し、VM 設定の一部としてバックアップをクリックした場合は、VM が既にバックアップされていても、[バックアップの有効化] 画面が開きます。これは、バックアップ状態を確認するための呼び出しが、サブスクリプション レベルでのみ機能するためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、VM 共同作成者ロールをサブスクリプション レベルで指定します。
@@ -75,7 +75,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | コンテナーからのストレージ アカウントの登録解除 |Backup Contributor | Recovery Services コンテナー |
 | |Storage Account Contributor | ストレージ アカウント リソース|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細

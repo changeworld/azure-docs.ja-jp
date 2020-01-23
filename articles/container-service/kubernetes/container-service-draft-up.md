@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service と Azure Container Registry で Draft を使用する
 description: ACS Kubernetes クラスターと Azure Container Registry を作成し、Draft を使用して Azure に最初のアプリケーションを作成します。
-services: container-service
 author: squillace
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712672"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271129"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(非推奨) Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -284,7 +282,7 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
    ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、ACS Kubernetes クラスターが用意されました。[Azure Container Registry](../../container-registry/container-registry-intro.md) を使用して調査し、このシナリオのさまざまなデプロイを作成できます。 たとえば、特定の ACS デプロイの深い階層のサブドメインの処理を制御する、draft._basedomain.toplevel_ ドメイン DNS レコードセットを作成できます。
 

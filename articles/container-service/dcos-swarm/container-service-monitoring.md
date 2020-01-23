@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターの監視 - Datadog
 description: Datadog を使用して Azure コンテナー サービス クラスターを監視します。 DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。
-services: container-service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a094369d467b3b1f3d5fe93f870dccc9eae7519c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508117"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275249"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(非推奨) Datadog を使用した Azure Container Service DC/OS クラスターの監視
 

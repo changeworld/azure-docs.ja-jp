@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391842"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513849"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -89,7 +89,6 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 **原因 1:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot の拡張操作に失敗しました
 
@@ -113,7 +112,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 5:リソース グループのロックが原因で、バックアップ サービスに古い復元ポイントを削除するためのアクセス許可がない** <br>
-**原因 6:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize - The configured disk size(s) is currently not supported by Azure Backup. (構成されたディスク サイズは、Azure Backup では現在サポートされていません。)
 
@@ -141,16 +140,6 @@ VM をバックアップするときにディスク サイズが 32 TB よりも
 スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、および[復元に関する考慮事項](backup-azure-vms-introduction.md#backup-and-restore-considerations)について確認してください。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
-
-### <a name="the-vm-has-no-internet-access"></a>VM がインターネットにアクセスできない
-
-デプロイ要件に準拠したインターネット アクセスが VM にありません。 または、Azure インフラストラクチャへのアクセスを禁止する制限が設けられている可能性があります。
-
-バックアップ拡張機能が正常に機能するには、Azure のパブリック IP アドレスへの接続が必要です。 この拡張機能が、VM のスナップショットを管理するコマンドを、Azure Storage エンドポイント (HTTP URL) に送信するためです。 拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
-
-#### <a name="solution"></a>解決策
-
-ネットワークの問題を解決するには、「[ネットワーク接続を確立する](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>エージェントが VM にインストールされているが応答しない (Windows VM の場合)
 
@@ -239,7 +228,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
 4. ロックを解除するには、省略記号を選択し、 **[削除]** をクリックします。
@@ -268,7 +257,7 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 
 リソース グループのロックのために消去されない復元ポイント コレクションを手動で消去するには、次の手順を試行してください。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[ハブ]** メニューの **[すべてのリソース]** をクリックし、VM が配置されている、AzureBackupRG_`<Geo>`_`<number>` という形式のリソース グループを選択します。
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/resource-group.png)

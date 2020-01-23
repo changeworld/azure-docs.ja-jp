@@ -8,16 +8,16 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f3627a79cad6833b5fb20f3c829c1e3bcbd9c3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d11d23cf7d96482028a9d3738196fc5a787fec91
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457352"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510211"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes に IoT Edge をインストールする方法 (プレビュー)
 
-IoT Edge を Kubernetes と統合し、それを回復性があり、可用性が高いインフラストラクチャ層として利用できます。 これは IoT Edge *Custom Resource Definition* (CRD) を Kubernetes API Server に登録します。 また、クラウドにより管理される目的の状態とローカル クラスターの状態を照合する *Operator* (IoT Edge エージェント) を提供します。 
+IoT Edge を Kubernetes と統合し、それを回復性があり、可用性が高いインフラストラクチャ層として利用できます。 これは IoT Edge *Custom Resource Definition* (CRD) を Kubernetes API Server に登録します。 また、クラウドにより管理される目的の状態とローカル クラスターの状態を照合する *Operator* (IoT Edge エージェント) を提供します。
 
 モジュールの有効期間は Kubernetes スケジューラーによって管理されます。このスケジューラーはモジュールの可用性を管理し、その配置を選択します。 IoT Edge は一番上で実行されるエッジ アプリケーション プラットフォームを管理し、IoT Hub に指定されている目的の状態とエッジ クラスターでの状態と継続的に照合します。 エッジ アプリケーション モデルはそれでも、IoT Edge のモジュールとルートを基礎とするおなじみのモデルです。 IoT Edge エージェントの演算子は、ポッド、デプロイ、サービスなど、Kubernetes ネイティブのコンストラクトへの*自動*変換を実行します。
 
@@ -34,7 +34,7 @@ IoT Edge を Kubernetes と統合し、それを回復性があり、可用性�
 
 ### <a name="prerequisites"></a>前提条件
 
-* Kubernetes 1.10 以降。 既存のクラスター セットアップがない場合、[Minikube](https://kubernetes.io/docs/setup/minikube/) をローカル クラスター環境として利用できます。 
+* Kubernetes 1.10 以降。 既存のクラスター セットアップがない場合、[Minikube](https://kubernetes.io/docs/setup/minikube/) をローカル クラスター環境として利用できます。
 
 * [Helm](https://helm.sh/docs/using_helm/#quickstart-guide)。これは Kubernetes パッケージ マネージャーです。
 
@@ -71,6 +71,7 @@ IoT Edge を Kubernetes と統合し、それを回復性があり、可用性�
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
+
 1. ブラウザーで Kubernetes ダッシュボードを開きます。
 
     ```shell
@@ -83,7 +84,7 @@ IoT Edge を Kubernetes と統合し、それを回復性があり、可用性�
 
 1. 数秒後、ダッシュボードのエッジ デバイス名前空間の下で **[ポッド]** ページが更新され、IoT Edge ハブとシミュレートされたセンサー ポッドが実行中として一覧表示されます。IoT Edge ハブ ポッドは IoT Hub にデータを取り込んでいます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 エッジ デプロイにより作成されたリソースをすべて削除するには、次のコマンドを使用します。その際、前のセクションの手順 5 で使用した名前を指定します。
 
@@ -91,8 +92,8 @@ IoT Edge を Kubernetes と統合し、それを回復性があり、可用性�
 helm delete --purge k8s-edge1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>高可用エッジ ゲートウェイとしてデプロイする 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>高可用エッジ ゲートウェイとしてデプロイする
 
 Kubernetes クラスターのエッジ デバイスは、ダウンストリーム デバイスの IoT ゲートウェイとして利用できます。 ノードの故障に対して回復性が与えられ、エッジ デプロイの可用性が上がるように構成できます。 このシナリオで IoT Edge を使用する方法については、こちらの[詳しいチュートリアル](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes)をご覧ください。

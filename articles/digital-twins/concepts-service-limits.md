@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/17/2020
+ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383079"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264952"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
@@ -73,6 +73,6 @@ Azure Digital Twins Management API に対する要求のレート制限は次の
 - 全デバイスで 1 秒あたり 100 件のメッセージ
 -   デバイスごとに 1 秒あたり 25 件のメッセージ
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](./quickstart-view-occupancy-dotnet.md)のページをご覧ください。

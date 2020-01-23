@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561014"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509277"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -23,14 +23,14 @@ Visual Studio Code で、C#、Node.js、または Java で記述されたモジ�
 
 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。
 
-この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[言語とアーキテクチャのサポート](module-development.md#language-and-architecture-support)」を参照してください。
+この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[Language and architecture support (言語とアーキテクチャのサポート)](module-development.md#language-and-architecture-support)」を参照してください。
 
 >[!NOTE]
 >Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows、macOS、または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用できます。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。 
+Windows、macOS、または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用できます。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。
 
 まず [Visual Studio Code](https://code.visualstudio.com/) をインストールしてから、次の拡張機能を追加します。
 
@@ -38,7 +38,7 @@ Windows、macOS、または Linux を実行しているコンピューターま�
 - [Docker 拡張機能](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - 開発に使用している言語固有の Visual Studio 拡張機能
   - C# (Azure Functions を含む): [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-  - Python: [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  - Python: [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - Java:[Visual Studio Code 向け Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C: [C/C++ 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
@@ -66,6 +66,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
+   
 > [!NOTE]
 > 現在、iotedgehubdev では、Python 3.8 と互換性のない docker-py ライブラリが使用されています。
 >
@@ -77,7 +78,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 
 次の手順では、Visual Studio Code と Azure IoT Tools を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
 
-1. **[ビュー]**  >  **[コマンド パレット]** の順に選択します。
+1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
@@ -171,7 +172,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
 
-   - **Node.JS**
+   - **Node.js**
      - Visual Studio Code 統合ターミナルで、ディレクトリを ***&lt;対象のモジュール名&gt;*** フォルダーに変更し、次のコマンドを実行して Node パッケージをインストールします。
 
        ```cmd
@@ -316,7 +317,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
   [開発用マシンと IoT Edge デバイス上で SSH チャネルを構成し](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes)、アタッチする `launch.json` ファイルを編集します。
 
-- **Node.JS**
+- **Node.js**
 
   - デバッグ対象のマシン上のモジュールが実行されており、デバッガーがアタッチする準備が整えられていること、およびポート 9229 が外部からアクセス可能であることを確認します。 これを確認するには、デバッガー マシン上で `http://<target-machine-IP>:9229/json` を開きます。 この URL に、デバッグ対象の Node.js モジュールに関する情報が表示されます。
   
@@ -362,7 +363,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 詳細情報と手順については、こちらの [IoT 開発者のブログ記事](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 モジュールをビルドしたら、[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](how-to-deploy-modules-vscode.md)方法を確認してください。
 

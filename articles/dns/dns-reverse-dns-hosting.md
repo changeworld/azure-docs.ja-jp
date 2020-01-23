@@ -1,23 +1,18 @@
 ---
-title: Azure DNS での逆引き DNS 参照ゾーンのホスト | Microsoft Docs
+title: Azure DNS での逆引き DNS 参照ゾーンのホスト
 description: Azure DNS を使って IP アドレス範囲の逆引き DNS 参照ゾーンをホストする方法について説明します
-services: dns
-documentationcenter: na
 author: asudbring
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: allensu
-ms.openlocfilehash: aeefb523b401effe4dedb21a8284f296948bbef9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6052934e15d6975265c9eded459eea4446c9eee1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211259"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277949"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
@@ -33,7 +28,7 @@ Azure サービスに割り当てられている Azure が所有する IP アド
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>逆引き参照 DNS ゾーンを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[ハブ]** メニューで、 **[新規]**  >  **[ネットワーク]** の順に選択し、 **[DNS ゾーン]** を選択します。
 
    ![[DNS ゾーン] の選択](./media/dns-reverse-dns-hosting/figure1.png)
@@ -245,7 +240,7 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
     azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>ISP から割り当てられた IP アドレス ブロックの逆引き DNS 参照ゾーンを Azure DNS でホストできますか?
 
@@ -267,7 +262,7 @@ ISP によって割り当てられた IP アドレス ブロックの逆引き D
 
 詳しくは、[Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

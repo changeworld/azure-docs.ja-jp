@@ -2,23 +2,23 @@
 title: Azure Bastion で VM と NSG を使用する | Microsoft Docs
 description: この記事では、Azure Bastion に NSG アクセスを組み込む方法を説明します
 services: bastion
-author: cherylmc
+author: ashjain
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.author: cherylmc
-ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.author: ashishj
+ms.openlocfilehash: 8fb48b3dbe0d727f92bd2e0fec91ac2dbf33338b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707566"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547627"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
 Azure Bastion の使用時にネットワーク セキュリティ グループ (NSG) を使用できます。 詳細については、「[セキュリティ グループ](../virtual-network/security-overview.md)」を参照してください。 
 
-![アーキテクチャ](./media/bastion-nsg/nsg-architecture.png)
+![Architecture](./media/bastion-nsg/nsg-architecture.png)
 
 この図の内容は次のとおりです。
 
@@ -60,6 +60,6 @@ NSG を作成して ***AzureBastionSubnet*** に適用する場合は、NSG に�
 
 NSG ルールの例は、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)で参照できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Bastion の詳細については、[FAQ](bastion-faq.md) をご覧ください。

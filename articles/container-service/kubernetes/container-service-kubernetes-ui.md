@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Web UI を使用した Azure Kubernetes クラスターの管理
 description: Azure Container Service の Kubernetes Web UI を使用する
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309768"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276992"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes Web UI を使用する
 

@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service の DC/OS エージェント プール
 description: パブリックおよびプライベートのエージェント プールが Azure Container Service の DC/OSクラスターで機能する仕組み
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478448"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278375"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(非推奨) Azure Container Service の DC/OS エージェント プール
 
@@ -42,7 +40,7 @@ Azure Container Service の DC/OS エージェント プールは、次のよう
 ## <a name="use-agent-pools"></a>エージェント プールの使用
 既定では、 **Marathon** は新しいアプリケーションを *プライベート* エージェント ノードにデプロイします。 アプリケーションの作成中に、アプリケーションを *パブリック* ノードに明示的にデプロイする必要があります。 **[Optional (オプション)]** タブを選択し、 **[Accepted Resource Roles (承認されたリソース ロール)]** の値として「**slave_public**」と入力します。 このプロセスについては、[こちら](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)と [ DC\OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) のドキュメントに記載されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)で詳細を確認します。
 
 * DC/OS コンテナーへのパブリック アクセスが可能になるように Azure によって提供される[ファイアウォールを開く](container-service-enable-public-access.md)方法を確認します。

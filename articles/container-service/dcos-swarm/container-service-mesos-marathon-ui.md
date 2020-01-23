@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Marathon UI を使用した Azure DC/OS クラスターの管理
 description: Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61468229"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277801"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(非推奨) Marathon Web UI による Azure Container Service DC/OS クラスターの管理
 
@@ -50,12 +48,12 @@ Marathon を使用して新しいコンテナーをデプロイするには、 *
 
 | フィールド | 値 |
 | --- | --- |
-| ID |nginx |
+| id |nginx |
 | メモリ | 32 |
 | Image |nginx |
 | ネットワーク |ブリッジ |
 | ホスト ポート |80 |
-| プロトコル |TCP |
+| Protocol |TCP |
 
 ![New Application UI--General](./media/container-service-mesos-marathon-ui/dcos4.png)
 
@@ -103,7 +101,7 @@ DC/OS の Web UI (http:\//localhost/) に戻ると、タスク (この場合は 
     ![インターネットから nginx へ](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
 
 * Mesos と共に Azure Container Service を使用する方法の詳細

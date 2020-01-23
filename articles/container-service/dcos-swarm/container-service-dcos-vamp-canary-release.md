@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターでの Vamp によるカナリア リリース
 description: Vamp を使用してサービスをカナリア リリースし、Azure Container Service DC/OS クラスターでスマート トラフィック フィルタリングを適用する方法を説明します。
-services: container-service
 author: gggina
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458193"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275655"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -145,7 +143,6 @@ Vamp が稼働状態になったので、ブループリントからサービス
     9050: sava_cluster/webport      # stable endpoint
    clusters:
     sava_cluster:               # cluster to create
-     services:
         -
           breed:
             name: sava:1.0.0        # service variant name
@@ -154,7 +151,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. **[Save]** をクリックします。 Vamp により、デプロイが初期化されます。
+4. **[保存]** をクリックします。 Vamp により、デプロイが初期化されます。
 
 デプロイが **[デプロイ]** ページに一覧表示されます。 その状態を監視するデプロイをクリックします。
 
@@ -206,7 +203,6 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
    name: sava:1.1.0      # blueprint name
    clusters:
     sava_cluster:       # cluster to update
-      services:
         -
           breed:
             name: sava:1.1.0    # service variant name
@@ -215,7 +211,7 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. **[Save]** をクリックします。 ブループリントが格納され、 **[ブループリント]** ページに一覧表示されます。
+3. **[保存]** をクリックします。 ブループリントが格納され、 **[ブループリント]** ページに一覧表示されます。
 
 4. sava:1.1 ブループリントでアクション メニューを開き、 **[Merge to]\(マージ先\)** をクリックします。
 
@@ -289,7 +285,7 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 また、次のような Vamp の強力な機能の一部を紹介しました。新しいサービス バリアントを実行中のデプロイにマージし、それを段階的に導入した後、トラフィックをフィルター処理して既知の非互換性を解決しました。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Vamp アクションの管理について詳しくは、「[Vamp REST API](https://vamp.io/documentation/api/api-reference/)」を参照してください。
 

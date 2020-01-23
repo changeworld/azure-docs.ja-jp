@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a7f9969c7c9a341b48581536dd856b25b50bf96f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371957"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779878"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -61,7 +61,7 @@ BLOB ストレージと GPv2 アカウントからは、アカウント レベ�
 
 アーカイブ アクセス層では、ストレージ コストは最も低くなります。 しかし、ホット層やクール層と比べて、データ取得コストは高くなります。 アーカイブ層のデータの取得には数時間かかることがあります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。
 
-BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取り、コピー、上書き、または変更を行うことはできません。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB とそのプロパティの一覧を表示することができます。 アーカイブに保存された BLOB に対する有効な操作は、GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、DeleteBlob のみです。
+BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取り、上書き、または変更を行うことはできません。 アーカイブ内の BLOB を読み取るかダウンロードするには、最初にそれをオンライン層にリハイドレートする必要があります。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB とそのプロパティの一覧を表示することができます。 アーカイブに保存された BLOB に対する有効な操作は、GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、CopyBlob、および DeleteBlob のみです。 「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。
 
 アーカイブ アクセス層の使用シナリオの例には、次のようなものがあります。
 
@@ -77,9 +77,9 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 
 ## <a name="blob-level-tiering"></a>BLOB レベルの階層制御
 
-BLOB レベルの階層制御では、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) と呼ばれる 1 つの操作を使用して、オブジェクト レベルでデータの層を変更できます。 使用パターンの変化に応じて、アカウント間でデータを移動することなく、BLOB のアクセス層をホット、クール、またはアーカイブに簡単に変更することができます。 すべての階層変更は直ちに行われます。 ただし、アーカイブからの BLOB のリハイドレートには、数時間かかる場合があります。
+BLOB レベルの階層制御では、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) と呼ばれる 1 つの操作を使用して、オブジェクト レベルでデータの層を変更できます。 使用パターンの変化に応じて、アカウント間でデータを移動することなく、BLOB のアクセス層をホット、クール、またはアーカイブに簡単に変更することができます。 すべての階層変更要求はすぐに発生し、ホットとクール間の層の変更は瞬時に行われます。 ただし、アーカイブからの BLOB のリハイドレートには、数時間かかる場合があります。
 
-BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更時間**プロパティを介して公開されます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。
+BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更時間**プロパティを介して公開されます。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。 
 
 > [!NOTE]
 > アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。 また、現時点では、スナップショットがあるブロック BLOB の層を変更することもできません。
@@ -127,18 +127,19 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 <sup>2</sup> Archive Storage では、取得待ち時間が異なる High と Standard の 2 つのリハイドレート優先度が現在サポートされています。 詳細については、「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」を参照してください。
 
 > [!NOTE]
-> BLOB ストレージ アカウントは、汎用 v2 ストレージ アカウントと同じパフォーマンスとスケーラビリティ ターゲットをサポートしています。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+> BLOB ストレージ アカウントは、汎用 v2 ストレージ アカウントと同じパフォーマンスとスケーラビリティ ターゲットをサポートしています。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)」を参照してください。
 
 ## <a name="quickstart-scenarios"></a>クイックスタート シナリオ
 
-このセクションでは、Azure Portal を使用して、次のシナリオについて説明します。
+このセクションでは、Azure portal と powershell を使用して、次のシナリオについて説明します。
 
 - GPv2 または BLOB ストレージ アカウントの既定のアクセス層を変更する方法。
 - GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する方法。
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの既定のアクセス層を変更する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal で、 **[すべてのリソース]** を探して選択します。
 
@@ -150,11 +151,27 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 1. 上部にある **[保存]** をクリックします。
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する
+![ストレージ アカウント層を変更する](media/storage-tiers/account-tier.png)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+次の PowerShell スクリプトを使用すると、アカウント層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 
+```powershell
+#Initialize the following with your resource group and storage account names
+$rgName = ""
+$accountName = ""
+
+#Change the storage account tier to hot
+Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
+```
+---
+
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal で、 **[すべてのリソース]** を探して選択します。
+
+1. 使うストレージ アカウントを選びます。
 
 1. コンテナーを選択し、お使いの BLOB を選択します。
 
@@ -163,6 +180,29 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 1. **[ホット]** 、 **[クール]** 、または **[アーカイブ]** アクセス層を選択します。 BLOB が現在アーカイブ内にあるときに、オンライン層にリハイドレートする場合は、リハイドレート優先度として **[標準]** または **[高]** を選択することもできます。
 
 1. 下部にある **[保存]** を選択します。
+
+![ストレージ アカウント層を変更する](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+次の PowerShell スクリプトを使用すると、BLOB 層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 `$containerName` 変数は、ご自身のコンテナー名で初期化する必要があります。 `$blobName` 変数は、ご自身の BLOB 名で初期化する必要があります。 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to archive
+$blob.ICloudBlob.SetStandardBlobTier("Archive")
+```
+---
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
@@ -214,11 +254,11 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 **BLOB をアーカイブ層からホット層またはクール層にリハイドレートするとき、リハイドレートが完了したことは、どのようにしてわかるのですか。**
 
-リハイドレート中は、BLOB のプロパティの取得操作を使用して**アーカイブ ステータス**属性をポーリングし、層変更がいつ完了したかを確認できます。 ステータスは、変更先の層に応じて "rehydrate-pending-to-hot" または "rehydrate-pending-to-cool" になります。 完了すると、アーカイブ ステータス プロパティが削除され、BLOB の**アクセス層**プロパティに新しい階層としてホット層またはクール層が反映されます。  
+リハイドレート中は、BLOB のプロパティの取得操作を使用して**アーカイブ ステータス**属性をポーリングし、層変更がいつ完了したかを確認できます。 ステータスは、変更先の層に応じて "rehydrate-pending-to-hot" または "rehydrate-pending-to-cool" になります。 完了すると、アーカイブ ステータス プロパティが削除され、BLOB の**アクセス層**プロパティに新しい階層としてホット層またはクール層が反映されます。 「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。
 
 **BLOB の層を設定した後、いつから該当料金で課金されるのですか。**
 
-それぞれの BLOB は常に、BLOB の**アクセス層**プロパティによって示された階層に基づいて課金されます。 BLOB に新しい層を設定すると、**アクセス層**プロパティに、すべての切り替えに対する新しい層がすぐに反映されます。 ただし、アーカイブ層からホット層またはクール層に BLOB をリハイドレートするには、数時間かかる場合があります。 この場合、**アクセス層**プロパティに新しい層が反映されて、リハイドレートが完了するまで、アーカイブの料金が適用されます。 その時点で、その BLOB に対してホットまたはクールの料金が課金されます。
+それぞれの BLOB は常に、BLOB の**アクセス層**プロパティによって示された階層に基づいて課金されます。 BLOB に新しいオンライン層を設定すると、**アクセス層**プロパティに、すべての切り替えに対する新しい層がすぐに反映されます。 ただし、アーカイブ層からホット層またはクール層に BLOB をリハイドレートするには、数時間かかる場合があります。 この場合、**アクセス層**プロパティに新しい層が反映されて、リハイドレートが完了するまで、アーカイブの料金が適用されます。 オンライン層にリハイドレートされると、その BLOB に対してホットまたはクールの料金が課金されます。
 
 **クール層またはアーカイブ層から BLOB を移動したとき、早期削除料金が発生したかどうかは、どのようにしてわかるのですか。**
 
@@ -230,7 +270,7 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 
 **ホット、クール、アーカイブの各層には、どの程度の量のデータを保存できますか。**
 
-データ ストレージの上限は、アクセス層ごとに設定されるのではなく、その他の制限と共にアカウント レベルで設定されます。 すべての制限を 1 つの層で使用するか、3 つすべての層で使用するかは、ユーザーが選択できます。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+データ ストレージの上限は、アクセス層ごとに設定されるのではなく、その他の制限と共にアカウント レベルで設定されます。 すべての制限を 1 つの層で使用するか、3 つすべての層で使用するかは、ユーザーが選択できます。 詳しくは、「[標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

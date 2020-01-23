@@ -1,27 +1,18 @@
 ---
-title: Azure Availability Zones とは | Microsoft Docs
+title: Azure Availability Zones とは
 description: Azure に高可用性で回復力のあるアプリケーションを作成できるように、Availability Zones ではリソースの実行に使用できる物理的に独立した場所が提供されています。
-services: ''
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/17/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac8c13c187b85a7a1a8fc5770a94d1c4253c7f5
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 4b1af742182d9c953846e723b6d48809818565b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195993"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271285"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Azure の Availability Zones の概要
 Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 ゾーン冗長サービスによって、単一障害点から保護されるように Availability Zones 全体でアプリケーションとデータがレプリケートされます。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
@@ -73,7 +64,7 @@ Availability Zones がサポートされている Azure サービスとリージ
 | **統合**                     |            |              |           |           |                |              |          |             |            |                |
 | Service Bus (Premium レベルのみ) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
-| **ID**                     |            |              |           |           |                |              |          |             |            |                |
+| **[ID]**                     |            |              |           |           |                |              |          |             |            |                |
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 
 ## <a name="services-resiliency"></a>サービスの回復性
@@ -99,5 +90,5 @@ Availability Zones にデプロイされる仮想マシンに追加のコスト�
 - [Azure Active Directory Domain Services インスタンスの作成](../active-directory-domain-services/tutorial-create-instance.md)
 - [可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する](../aks/availability-zones.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [クイック スタート テンプレート](https://aka.ms/azqs)

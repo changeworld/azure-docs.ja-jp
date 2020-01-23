@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップに関するトラブルシ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 08/20/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 8b88ae568b07b36d2dd80c0ef30fe86646335043
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664617"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293948"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップに関する問題のトラブルシューティング
 
@@ -69,5 +69,5 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 Azure ファイル共有のバックアップの詳細については、以下を参照してください。
 
-- [Azure ファイル共有のバックアップ](backup-azure-files.md)
+- [Azure ファイル共有のバックアップ](backup-afs.md)
 - [Azure ファイル共有のバックアップに関する FAQ](backup-azure-files-faq.md)

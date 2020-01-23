@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474693"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152954"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
@@ -91,14 +91,14 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.ApiManagement/service | SuccessfulRequests | 成功したゲートウェイ要求 (非推奨) | Count | 合計
 はい | Microsoft.ApiManagement/service | TotalRequests | ゲートウェイ要求の合計 (非推奨) | Count | 合計
 はい | Microsoft.ApiManagement/service | UnauthorizedRequests | 未承認ゲートウェイ要求 (非推奨) | Count | 合計
-はい | Microsoft.AppPlatform/Spring | AppCpuUsagePercentage | アプリ CPU 使用率 (%) | Percent | Average
+はい | Microsoft.AppPlatform/Spring | AppCpuUsagePercentage | アプリの CPU 使用率 (%) | Percent | Average
 はい | Microsoft.AppPlatform/Spring | AppMemoryCommitted | 割り当て済みアプリ メモリ | バイト | Average
 はい | Microsoft.AppPlatform/Spring | AppMemoryMax | 最大のアプリ メモリ | バイト | 最大値
 はい | Microsoft.AppPlatform/Spring | AppMemoryUsed | 使用済みアプリ メモリ | バイト | Average
 はい | Microsoft.AppPlatform/Spring | GCPauseTotalCount | GC の一時停止回数 | Count | 合計
 はい | Microsoft.AppPlatform/Spring | GCPauseTotalTime | GC の一時停止合計時間 | ミリ秒 | 合計
 はい | Microsoft.AppPlatform/Spring | MaxOldGenMemoryPoolBytes | 使用可能な古い世代データの最大サイズ | バイト | Average
-はい | Microsoft.AppPlatform/Spring | OldGenMemoryPoolBytes | 古い世代データのサイズ | バイト | Average
+はい | Microsoft.AppPlatform/Spring | OldGenMemoryPoolBytes | 古い世代のデータのサイズ | バイト | Average
 はい | Microsoft.AppPlatform/Spring | OldGenPromotedBytes | 古い世代データのサイズに昇格 | バイト | 最大値
 はい | Microsoft.AppPlatform/Spring | SystemCpuUsagePercentage | システム CPU 使用率 (%) | Percent | Average
 はい | Microsoft.AppPlatform/Spring | TomcatErrorCount | Tomcat グローバル エラー | Count | 合計
@@ -154,13 +154,13 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.BatchAI/workspaces | アイドル状態のコア | アイドル状態のコア | Count | Average
 はい | Microsoft.BatchAI/workspaces | アイドル状態のノード | アイドル状態のノード | Count | Average
 はい | Microsoft.BatchAI/workspaces | 完了したジョブ | 完了したジョブ | Count | 合計
-はい | Microsoft.BatchAI/workspaces | 送信済みジョブ | 送信済みジョブ | Count | 合計
+はい | Microsoft.BatchAI/workspaces | 送信済みジョブ | 送信されたジョブ | Count | 合計
 はい | Microsoft.BatchAI/workspaces | 終了中のコア | 終了中のコア | Count | Average
 はい | Microsoft.BatchAI/workspaces | 終了中のノード | 終了中のノード | Count | Average
 はい | Microsoft.BatchAI/workspaces | 割り込まれたコア | 割り込まれたコア | Count | Average
 はい | Microsoft.BatchAI/workspaces | 割り込まれたノード | 割り込まれたノード | Count | Average
 はい | Microsoft.BatchAI/workspaces | クォータ使用率 | クォータ使用率 | Count | Average
-はい | Microsoft.BatchAI/workspaces | コア総数 | コア総数 | Count | Average
+はい | Microsoft.BatchAI/workspaces | コア総数 | コアの合計 | Count | Average
 はい | Microsoft.BatchAI/workspaces | ノード総数 | ノード総数 | Count | Average
 はい | Microsoft.BatchAI/workspaces | 使用できないコア | 使用できないコア | Count | Average
 はい | Microsoft.BatchAI/workspaces | 使用できないノード | 使用できないノード | Count | Average
@@ -578,7 +578,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.DataBoxEdge/dataBoxEdgeDevices | TotalCapacity | 合計容量 | バイト | Average
 はい | Microsoft.DataFactory/datafactories | FailedRuns | 失敗した実行 | Count | 合計
 はい | Microsoft.DataFactory/datafactories | SuccessfulRuns | 成功した実行 | Count | 合計
-はい | Microsoft.DataFactory/factories | ActivityCancelledRuns | キャンセルしたアクティビティ実行回数のメトリック | Count | 合計
+はい | Microsoft.DataFactory/factories | ActivityCancelledRuns | キャンセルしたアクティビティの実行回数のメトリック | Count | 合計
 はい | Microsoft.DataFactory/factories | ActivityFailedRuns | 失敗したアクティビティ実行回数のメトリック | Count | 合計
 はい | Microsoft.DataFactory/factories | ActivitySucceededRuns | 成功したアクティビティ実行回数のメトリック | Count | 合計
 はい | Microsoft.DataFactory/factories | FactorySizeInGbUnits | 合計の工場出荷時サイズ (GB 単位) | Count | 最大値
@@ -689,10 +689,10 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | ルーティング: Service Bus キューのメッセージの待機時間 | ミリ秒 | Average
 はい | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | ルーティング: Service Bus トピックのメッセージの待機時間 | ミリ秒 | Average
 はい | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | ルーティング: ストレージのメッセージの待機時間 | ミリ秒 | Average
-はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | ルーティング: 破棄されたテレメトリ メッセージ� | Count | 合計
+はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | ルーティング: 破棄されたテレメトリ メッセージ  | Count | 合計
 はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.fallback | ルーティング: フォールバックのために配信されたメッセージ | Count | 合計
 はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | ルーティング: 互換性のないテレメトリ メッセージ | Count | 合計
-はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | ルーティング: 孤立したテレメトリ メッセージ� | Count | 合計
+はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | ルーティング: 孤立したテレメトリ メッセージ  | Count | 合計
 はい | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | ルーティング: 配信されたテレメトリ メッセージ | Count | 合計
 はい | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol | テレメトリ メッセージ送信試行 | Count | 合計
 はい | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | 調整エラーの数 | Count | 合計
@@ -745,7 +745,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 いいえ | Microsoft.DocumentDB/databaseAccounts | MongoRequestsDelete | Mongo Delete 要求のレート | CountPerSecond | Average
 いいえ | Microsoft.DocumentDB/databaseAccounts | MongoRequestsInsert | Mongo Insert 要求のレート | CountPerSecond | Average
 いいえ | Microsoft.DocumentDB/databaseAccounts | MongoRequestsQuery | Mongo Query 要求のレート | CountPerSecond | Average
-いいえ | Microsoft.DocumentDB/databaseAccounts | MongoRequestsUpdate | Mongo Update 要求のレート | CountPerSecond | Average
+いいえ | Microsoft.DocumentDB/databaseAccounts | MongoRequestsUpdate | Mongo 更新要求のレート | CountPerSecond | Average
 いいえ | Microsoft.DocumentDB/databaseAccounts | ProvisionedThroughput | プロビジョニングされたスループット | Count | 最大値
 はい | Microsoft.DocumentDB/databaseAccounts | ReplicationLatency | P99 のレプリケーション待機時間 | MilliSeconds | Average
 いいえ | Microsoft.DocumentDB/databaseAccounts | ServiceAvailability | サービスの可用性 | Percent | Average
@@ -968,14 +968,14 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.MachineLearningServices/workspaces | 終了中のノード | 終了中のノード | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | モデル デプロイ失敗 | モデル デプロイ失敗 | Count | 合計
 はい | Microsoft.MachineLearningServices/workspaces | モデル デプロイ開始 | モデル デプロイ開始 | Count | 合計
-はい | Microsoft.MachineLearningServices/workspaces | モデル デプロイ成功 | モデル デプロイ成功 | Count | 合計
+はい | Microsoft.MachineLearningServices/workspaces | モデル デプロイ成功 | モデル デプロイが成功しました | Count | 合計
 はい | Microsoft.MachineLearningServices/workspaces | モデル登録失敗 | モデル登録失敗 | Count | 合計
 はい | Microsoft.MachineLearningServices/workspaces | モデル登録成功 | モデル登録成功 | Count | 合計
 はい | Microsoft.MachineLearningServices/workspaces | 割り込まれたコア | 割り込まれたコア | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | 割り込まれたノード | 割り込まれたノード | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | クォータ使用率 | クォータ使用率 | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | 開始した実行数 | 開始した実行数 | Count | 合計
-はい | Microsoft.MachineLearningServices/workspaces | コア総数 | コア総数 | Count | Average
+はい | Microsoft.MachineLearningServices/workspaces | コア総数 | コアの合計 | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | ノード総数 | ノード総数 | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | 使用できないコア | 使用できないコア | Count | Average
 はい | Microsoft.MachineLearningServices/workspaces | 使用できないノード | 使用できないノード | Count | Average
@@ -996,7 +996,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.Microservices4Spring/appClusters | GCPauseTotalCount | GC の一時停止回数 | Count | 合計
 はい | Microsoft.Microservices4Spring/appClusters | GCPauseTotalTime | GC の一時停止合計時間 | ミリ秒 | 合計
 はい | Microsoft.Microservices4Spring/appClusters | MaxOldGenMemoryPoolBytes | 使用可能な古い世代データの最大サイズ | バイト | Average
-はい | Microsoft.Microservices4Spring/appClusters | OldGenMemoryPoolBytes | 古い世代データのサイズ | バイト | Average
+はい | Microsoft.Microservices4Spring/appClusters | OldGenMemoryPoolBytes | 古い世代のデータのサイズ | バイト | Average
 はい | Microsoft.Microservices4Spring/appClusters | OldGenPromotedBytes | 古い世代データのサイズに昇格 | バイト | 最大値
 はい | Microsoft.Microservices4Spring/appClusters | ServiceCpuUsagePercentage | サービス CPU 使用率 (%) | Percent | Average
 はい | Microsoft.Microservices4Spring/appClusters | ServiceMemoryCommitted | 割り当て済みサービス メモリ | バイト | Average
@@ -1452,7 +1452,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 はい | Microsoft.Storage/storageAccounts/tableServices | トランザクション | トランザクション | Count | 合計
 はい | Microsoft.StorageCache/caches | ClientIOPS | クライアント IOPS の合計 | Count | Average
 はい | Microsoft.StorageCache/caches | ClientLatency | クライアントの平均待機時間 | ミリ秒 | Average
-はい | Microsoft.StorageCache/caches | ClientLockIOPS | クライアントのロック IOPS | CountPerSecond | Average
+はい | Microsoft.StorageCache/caches | ClientLockIOPS | クライアント ロック IOPS | CountPerSecond | Average
 はい | Microsoft.StorageCache/caches | ClientMetadataReadIOPS | クライアント メタデータの読み取り IOPS | CountPerSecond | Average
 はい | Microsoft.StorageCache/caches | ClientMetadataWriteIOPS | クライアント メタデータの書き込み IOPS | CountPerSecond | Average
 はい | Microsoft.StorageCache/caches | ClientReadIOPS | クライアントの読み取り IOPS | CountPerSecond | Average

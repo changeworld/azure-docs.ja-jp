@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424323"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548154"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -38,10 +38,6 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - **ポップアップ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じないか動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを通じて認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、MSAL.js がポップアップ ウィンドウの制御を失うためポップアップ ウィンドウが閉じなくなります。  
-
-    Microsoft Edge の問題追跡ツールでのこれらの問題へのリンクを次に示します。  
-    - [バグ 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [バグ 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Update: MSAL.js 0.2.3 で使用可能な修正プログラム
 認証のリダイレクト ループの問題に対する修正プログラムが [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) でリリースされました。 この修正プログラムを利用するには、MSAL.js 構成ファイルのフラグ `storeAuthStateInCookie` を有効にします。 既定では、このフラグは false に設定されています。

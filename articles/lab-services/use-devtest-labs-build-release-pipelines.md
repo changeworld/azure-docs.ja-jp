@@ -1,5 +1,5 @@
 ---
-title: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する | Microsoft Docs
+title: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
 description: Azure Pipelines のビルドとリリースのパイプライン内で Azure DevTest Labs を使用する方法について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774479"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169235"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
 この記事では、Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する方法について説明します。 
@@ -67,7 +67,7 @@ DevTest Labs で環境を作成し、環境にデプロイするには、3 つ�
 
 情報を手動で入力するのではなく、ページのドロップダウン リストを使用することをお勧めします。 情報を手動で入力する場合は、完全修飾の Azure リソース ID を入力します。 このタスクでは、リソース ID ではなくフレンドリ名が表示されます。 
 
-環境名は、DevTest Labs 内に表示される表示名です。 ビルドごとに一意の名前にする必要があります。 例: **TestEnv$(Build.BuildId)** 
+環境名は、DevTest Labs 内に表示される表示名です。 ビルドごとに一意の名前にする必要があります。 次に例を示します。**TestEnv$(Build.BuildId)** 
 
 パラメーター ファイルまたはパラメーターのいずれかを指定して、Resource Manager テンプレートに情報を渡すことができます。 
 
@@ -95,8 +95,8 @@ DevTest Labs で環境を作成し、環境にデプロイするには、3 つ�
 ## <a name="test-run"></a>テストの実行
 これで両方のパイプラインが設定されたので、手動でビルドをキューに入れて、それが動作することを確認します。 次の手順では、ビルドに適切なトリガーを設定し、ビルドをリリース パイプラインに接続します。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する](devtest-lab-integrate-ci-cd-vsts.md)
 - [環境を Azure Pipelines CI/CD パイプラインに統合する](integrate-environments-devops-pipeline.md)

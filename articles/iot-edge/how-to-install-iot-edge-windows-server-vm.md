@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964657"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510041"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Windows Server 仮想マシンで Azure IoT Edge を実行する
 
@@ -26,28 +26,30 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketplace からデプロイする
 
-1.  [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
-2.  **[今すぐ入手する]** を選択します。 
-3.  **ソフトウェア プラン**で、「Windows Server 2019 Datacenter Server Core with Containers」を検索し、次のダイアログで **[続行]** を選択します。
+1. [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
+2. **[今すぐ入手する]** を選択します。
+3. **ソフトウェア プラン**で、「Windows Server 2019 Datacenter Server Core with Containers」を検索し、次のダイアログで **[続行]** を選択します。
     * 他のバージョンの Windows Server with Containers でこれらの手順を使用することもできます。
-4.  Azure portal に移動したら、 **[作成]** を選択し、ウィザードに従って VM をデプロイします。 
-    *   VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで RDP と SSH を有効にするのが最も簡単です。 
-    *   リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
-5.  仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
-    1.  IoT Hub で作成された IoT Edge デバイスからデバイス接続文字列をコピーします。 手順については、「[Azure portal で接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)」を参照してください。
-    1.  Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
-    1.  **[RunPowerShellScript]** オプションを選択します
-    1.  使用するデバイスの接続文字列を使用して、下記のスクリプトをコマンド ウィンドウにコピーします。 
+4. Azure portal に移動したら、 **[作成]** を選択し、ウィザードに従って VM をデプロイします。
+    * VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで RDP と SSH を有効にするのが最も簡単です。
+    * リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
+5. 仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
+    1. IoT Hub で作成された IoT Edge デバイスからデバイス接続文字列をコピーします。 手順については、「[Azure portal で接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)」を参照してください。
+    1. Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
+    1. **[RunPowerShellScript]** オプションを選択します
+    1. 使用するデバイスの接続文字列を使用して、下記のスクリプトをコマンド ウィンドウにコピーします。
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  **[Run]\(実行\)** を選択してスクリプトを実行し、IoT Edge ランタイムをインストールして接続文字列を設定します。
-    1.  1、2 分すると、Edge ランタイムがインストールされ、正常にプロビジョニングされたことを示すメッセージが表示されます。
+
+    1. **[Run]\(実行\)** を選択してスクリプトを実行し、IoT Edge ランタイムをインストールして接続文字列を設定します。
+    1. 1、2 分すると、Edge ランタイムがインストールされ、正常にプロビジョニングされたことを示すメッセージが表示されます。
 
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal からデプロイする
 
-1. Azure portal で "Windows Server" を検索し、**Windows Server 2019 Datacenter** を選択して VM の作成ワークフローを開始します。 
+1. Azure portal で "Windows Server" を検索し、**Windows Server 2019 Datacenter** を選択して VM の作成ワークフローを開始します。
 2. **ソフトウェア プランの選択**で、"Windows Server 2019 Datacenter Server Core with Containers" を選択してから、 **[作成]** を選択します。
 3. 上記の説明の「Azure Marketplace からデプロイする」にある手順 5 を実行します。
 
@@ -69,7 +71,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
    1. 使用するサブスクリプションの SubscriptionID フィールドをコピーします
    1. コピーした ID を使用して、次のコマンドを実行します。
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
@@ -94,7 +96,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunPowerShellScript --script ". {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'"
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
 

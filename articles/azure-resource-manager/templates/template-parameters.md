@@ -3,12 +3,12 @@ title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレートでパラメーターを定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: 3c0c40d5ddb47144fb42c99a9377d1b6e66854b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476193"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122425"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーター
 
@@ -119,8 +119,8 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 ```json
 "resources": [
   {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2015-06-15",
     "name": "[parameters('VNetSettings').name]",
     "location": "[parameters('VNetSettings').location]",
     "properties": {

@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: a94bc4825f70b9858260feaadaeded6c76ba46e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457257"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509294"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -30,7 +30,7 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
   
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、Windows を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。 
+この記事では、Windows を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。
 
 この記事ではメインの開発ツールとして Visual Studio 2019 を使うため、Visual Studio をインストールします。 Visual Studio 2019 のインストールには、必ず **Azure の開発**と **C++ によるデスクトップ開発**のワークロードを含めてください。 [Visual Studio 2019 を変更](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)して、必須のワークロードを追加することができます。
 

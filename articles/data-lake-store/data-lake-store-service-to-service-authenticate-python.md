@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b63209c9174867e69356bb6800d70502f2afdaa4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088827"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290769"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 に対する Python を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ ms.locfileid: "71088827"
 Python を使用して Data Lake Storage Gen1 を操作するには、3 つのモジュールをインストールする必要があります。
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
-* `azure-mgmt-datalake-store` モジュール。これには、Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](/python/api/azure-mgmt-datalake-store/)に関するページをご覧ください。
-* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
+* `azure-mgmt-datalake-store` モジュール。これには、Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](/python/api/azure-mgmt-datalake-store/)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)をご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 
@@ -127,7 +127,7 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、サービス間認証を使って、Python を使用して Data Lake Storage Gen1 で認証する方法を説明しました。 これで、Python を使用して Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
 * [Python を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-python.md)

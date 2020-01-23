@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984947"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122153"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
@@ -53,7 +53,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
 
 ポリシーを有効にするには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[コストの管理と請求]** で検索します。
 
@@ -71,7 +71,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
 
 ## <a name="resellers"></a>リセラー
 
-CSP の [2 層モデル](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect)の間接プロバイダーは、Azure portal で顧客のサブスクリプションを作成するときにリセラーを選択できます。 作成後、顧客はリセラーでフィルター処理されたサブスクリプションの一覧を表示し、Azure コスト分析でリセラーごとの顧客のコストを分析することができます。
+CSP の [2 層モデル](https://docs.microsoft.com/partner-center)の間接プロバイダーは、Azure portal で顧客のサブスクリプションを作成するときにリセラーを選択できます。 作成後、顧客はリセラーでフィルター処理されたサブスクリプションの一覧を表示し、Azure コスト分析でリセラーごとの顧客のコストを分析することができます。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft Partner Agreement へのアクセスの確認
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

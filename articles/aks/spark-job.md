@@ -1,20 +1,18 @@
 ---
 title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
 description: Azure Kubernetes Service (AKS) を使用して Apache Spark job を実行します
-services: container-service
 author: lenadroid
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928996"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274661"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -31,7 +29,7 @@ ms.locfileid: "73928996"
 * システムにインストールされた SBT ([Scala Build Tool][sbt-install])。
 * システムにインストールされた Git コマンド ライン ツール。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Kubernetes Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
 
@@ -330,7 +328,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 > [!WARNING]
 > Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、Spark ドキュメントをご覧ください。
 

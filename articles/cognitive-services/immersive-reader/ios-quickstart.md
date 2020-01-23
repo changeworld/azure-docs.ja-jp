@@ -8,18 +8,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: b82a86d6a3f7b2afd8feee18a863e34b7a6079a4
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 7f46f7697207fe194f4fb7c3584c40c87abdb727
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945458"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514206"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift)で入手できます。
+このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

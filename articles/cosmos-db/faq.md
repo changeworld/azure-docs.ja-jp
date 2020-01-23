@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: dc627fc4bb7be449547a07cc34eb2cb3694964e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445432"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310018"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -76,8 +76,6 @@ Azure を初めてお使いの場合は、[Azure の無料アカウント](https
 新機能を要求するには、[User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
 
 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-
-その他の質問は、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) でチームに送信できます。ただし、これはテクニカル サポートの別名ではありません。
 
 ## <a id="try-cosmos-db"></a>Azure Cosmos DB サブスクリプションを試す
 
@@ -288,8 +286,6 @@ Azure Cosmos DB は Shared Access Signature (SAS) をサポートしています
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
-
-これらの相違点のいずれかがプロジェクトで問題になる場合は、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) でお知らせください。
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>SDK やバグに関するフィードバックを提供するにはどうすればよいですか?
 

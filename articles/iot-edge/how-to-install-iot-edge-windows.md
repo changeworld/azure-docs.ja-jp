@@ -9,16 +9,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 401e988e41a25a999c047bf93b6794388d38461e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456797"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510007"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
-Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 
+Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。
 
 IoT Edge ランタイムの動作については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
@@ -27,7 +27,7 @@ IoT Edge ランタイムの動作については、「[Azure IoT Edge ランタ�
 > [!NOTE]
 > Windows オペレーティング システムの既知の問題では、IoT Edge モジュール (プロセスから分離された Windows Nano Server コンテナー) の実行時に、電源状態がスリープおよび休止状態に移行できなくなります。 この問題は、デバイスのバッテリ寿命に影響を与えます。
 >
-> この問題を回避するには、これらの電源状態を使用する前に、コマンド `Stop-Service iotedge` を使用して実行中のすべての IoT Edge モジュールを停止します。 
+> この問題を回避するには、これらの電源状態を使用する前に、コマンド `Stop-Service iotedge` を使用して実行中のすべての IoT Edge モジュールを停止します。
 
 Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。 詳しくは、「[Windows で IoT Edge を使用し、Linux コンテナーを実行する](how-to-install-iot-edge-windows-with-linux.md)」をご覧ください。
 
@@ -35,41 +35,41 @@ IoT Edge の最新バージョンの内容については、[Azure IoT Edge リ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このセクションを使用して、使用する Windows デバイスが IoT Edge をサポートできるかどうかを確認し、インストールする前に Windows デバイスをコンテナー エンジン用に準備します。 
+このセクションを使用して、使用する Windows デバイスが IoT Edge をサポートできるかどうかを確認し、インストールする前に Windows デバイスをコンテナー エンジン用に準備します。
 
 ### <a name="supported-windows-versions"></a>サポートされている Windows バージョン
 
-開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 (ビルド 17763) に、Azure IoT Edge と Windows コンテナーをインストールできます。 運用シナリオ向けに現在サポートされているオペレーティング システムについては、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。 
+開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 (ビルド 17763) に、Azure IoT Edge と Windows コンテナーをインストールできます。 運用シナリオ向けに現在サポートされているオペレーティング システムについては、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
 
-IoT Core デバイスには、IoT Core (IoT Edge ランタイムをサポートするための Windows コンテナー オプション機能) が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。 
+IoT Core デバイスには、IoT Core (IoT Edge ランタイムをサポートするための Windows コンテナー オプション機能) が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。
 
 ```powershell
 Get-Service vmcompute
 ```
 
-サービスが存在する場合は、正常な応答が返され、サービスの状態が**実行中**として表示されます。 vmcompute サービスが見つからない場合、お使いのデバイスは IoT Edge の要件を満たしていません。 この機能のサポートについて、ハードウェア プロバイダーにお問い合わせください。 
+サービスが存在する場合は、正常な応答が返され、サービスの状態が**実行中**として表示されます。 vmcompute サービスが見つからない場合、お使いのデバイスは IoT Edge の要件を満たしていません。 この機能のサポートについて、ハードウェア プロバイダーにお問い合わせください。
 
-### <a name="prepare-for-a-container-engine"></a>コンテナー エンジンを準備する 
+### <a name="prepare-for-a-container-engine"></a>コンテナー エンジンを準備する
 
-Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー エンジンに依存します。 運用シナリオの場合は、インストール スクリプトに含める Moby エンジンを使用して、Windows デバイスで Windows コンテナーを実行します。 
+Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー エンジンに依存します。 運用シナリオの場合は、インストール スクリプトに含める Moby エンジンを使用して、Windows デバイスで Windows コンテナーを実行します。
 
 ## <a name="install-iot-edge-on-a-new-device"></a>新しいデバイスに IoT Edge をインストールする
 
 >[!NOTE]
 >Azure IoT Edge ソフトウェア パッケージには、(LICENSE ディレクトリ内の) パッケージ内にあるライセンス条項が適用されます。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
 
-PowerShell スクリプトは、Azure IoT Edge セキュリティ デーモンをダウンロードしてインストールします。 セキュリティ デーモンは、2 つのランタイム モジュールのうちの 1 つである IoT Edge エージェントを開始し、これによってもう 1 つモジュールのリモート デプロイが可能になります。 
+PowerShell スクリプトは、Azure IoT Edge セキュリティ デーモンをダウンロードしてインストールします。 セキュリティ デーモンは、2 つのランタイム モジュールのうちの 1 つである IoT Edge エージェントを開始し、これによってもう 1 つモジュールのリモート デプロイが可能になります。
 
 >[!TIP]
 >IoT Core デバイスの場合、RemotePowerShell セッションを使用してインストール コマンドを実行することをお勧めします。 詳細については、「[Windows IoT 用 PowerShell の使用](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)」を参照してください。
 
-IoT Edge ランタイムをデバイスに初めてインストールするときは、IoT ハブからの ID を使用してデバイスをプロビジョニングする必要があります。 IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングできます。 Device Provisioning Service (DPS) を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、セットアップするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。 
+IoT Edge ランタイムをデバイスに初めてインストールするときは、IoT ハブからの ID を使用してデバイスをプロビジョニングする必要があります。 IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングできます。 Device Provisioning Service (DPS) を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、セットアップするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。
 
-次のセクションでは、新しいデバイス上で IoT Edge インストール スクリプトを使用する場合の一般的なユース ケースとパラメーターについて説明します。 
+次のセクションでは、新しいデバイス上で IoT Edge インストール スクリプトを使用する場合の一般的なユース ケースとパラメーターについて説明します。
 
-### <a name="option-1-install-and-manually-provision"></a>オプション 1:インストールして手動でプロビジョニングする
+### <a name="option-1-install-and-manually-provision"></a>オプション 1: インストールして手動でプロビジョニングする
 
-この最初のオプションでは、IoT Hub で生成される**デバイス接続文字列**を指定して、デバイスをプロビジョニングします。 
+この最初のオプションでは、IoT Hub で生成される**デバイス接続文字列**を指定して、デバイスをプロビジョニングします。
 
 この例は、Windows コンテナーでの手動インストールを示します。
 
@@ -88,7 +88,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。 
+3. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -97,18 +97,18 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 4. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
 
-5. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 
+5. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge
    ```
 
-6. 入力を求められたら、手順 1 で取得したデバイス接続文字列を指定します。 このデバイス接続文字列により、物理デバイスと IoT Hub のデバイス ID が関連付けられます。 
+6. 入力を求められたら、手順 1 で取得したデバイス接続文字列を指定します。 このデバイス接続文字列により、物理デバイスと IoT Hub のデバイス ID が関連付けられます。
 
    デバイス接続文字列は次の形式をとります。疑問符は入れないでください。`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-7. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。 
+7. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。
 
 デバイスを手動でインストールおよびプロビジョニングするとき、追加のパラメーターを使用して、インストールを次のように変更できます。
 
@@ -151,7 +151,7 @@ IoT Edge の最新のインストール ファイルとその以前のバージ�
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-この記事で後ほど紹介する Update-IoTEdge コマンドで、オフライン インストール パス パラメーターを使用することもできます。 
+この記事で後ほど紹介する Update-IoTEdge コマンドで、オフライン インストール パス パラメーターを使用することもできます。
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
@@ -161,7 +161,7 @@ IoT Edge サービスの状態を確認します。 実行中として一覧表�
 Get-Service iotedge
 ```
 
-過去 5 分のサービス ログを調べます。 IoT Edge ランタイムのインストールが終了した直後は、**Deploy-IoTEdge** と **Initialize-IoTEdge** が実行している間、エラーの一覧が表示される可能性があります。 サービスは構成される前に開始しようとしているので、これらのエラーは予期されるものです。 
+過去 5 分のサービス ログを調べます。 IoT Edge ランタイムのインストールが終了した直後は、**Deploy-IoTEdge** と **Initialize-IoTEdge** が実行している間、エラーの一覧が表示される可能性があります。 サービスは構成される前に開始しようとしているので、これらのエラーは予期されるものです。
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -173,7 +173,7 @@ Get-Service iotedge
 iotedge check
 ```
 
-実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
+実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。
 
 ```powershell
 iotedge list
@@ -181,11 +181,11 @@ iotedge list
 
 ## <a name="manage-module-containers"></a>モジュール コンテナーを管理する
 
-IoT Edge サービスでは、デバイス上でコンテナー エンジンが実行されている必要があります。 モジュールをデバイスにデプロイすると、IoT Edge ランタイムでは、コンテナー エンジンを使用してクラウドのレジストリからコンテナー イメージをプルします。 IoT Edge サービスを使用すると、モジュールを操作し、ログを取得できますが、コンテナー エンジンを使用してコンテナー自体を操作することが必要な場合もあります。 
+IoT Edge サービスでは、デバイス上でコンテナー エンジンが実行されている必要があります。 モジュールをデバイスにデプロイすると、IoT Edge ランタイムでは、コンテナー エンジンを使用してクラウドのレジストリからコンテナー イメージをプルします。 IoT Edge サービスを使用すると、モジュールを操作し、ログを取得できますが、コンテナー エンジンを使用してコンテナー自体を操作することが必要な場合もあります。
 
-モジュールの概念の詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」をご覧ください。 
+モジュールの概念の詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」をご覧ください。
 
-Windows IoT Edge デバイス上で Windows コンテナーを実行している場合、IoT Edge のインストールに Moby コンテナー エンジンが含まれていました。 Moby エンジンは Docker と同じ標準に基づいており、Docker Desktop と同じマシン上で並列実行されるように設計されています。 そのため、Moby エンジンによって管理されているコンテナーをターゲットにする場合は、Docker ではなくそのエンジンを明確にターゲットにする必要があります。 
+Windows IoT Edge デバイス上で Windows コンテナーを実行している場合、IoT Edge のインストールに Moby コンテナー エンジンが含まれていました。 Moby エンジンは Docker と同じ標準に基づいており、Docker Desktop と同じマシン上で並列実行されるように設計されています。 そのため、Moby エンジンによって管理されているコンテナーをターゲットにする場合は、Docker ではなくそのエンジンを明確にターゲットにする必要があります。
 
 たとえば、すべての Docker イメージを一覧表示するには、次のコマンドを使用します。
 
@@ -193,13 +193,13 @@ Windows IoT Edge デバイス上で Windows コンテナーを実行している
 docker images
 ```
 
-すべての Moby イメージを一覧表示するには、Moby エンジンへのポインターを指定して同じコマンドを変更します。 
+すべての Moby イメージを一覧表示するには、Moby エンジンへのポインターを指定して同じコマンドを変更します。
 
 ```powershell
 docker -H npipe:////./pipe/iotedge_moby_engine images
 ```
 
-エンジン URI は、インストール スクリプトの出力に示されてます。また、config.yaml ファイルのコンテナー ランタイム設定セクションでも確認できます。 
+エンジン URI は、インストール スクリプトの出力に示されてます。また、config.yaml ファイルのコンテナー ランタイム設定セクションでも確認できます。
 
 ![config.yaml の moby_runtime uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
@@ -207,11 +207,11 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 
 ## <a name="update-an-existing-installation"></a>既存のインストールを更新する
 
-IoT Edge ランタイムを以前デバイスにインストールしたことがあり、IoT Hub からの ID によってデバイスがプロビジョニングされている場合、デバイスの情報を再入力せずにランタイムを更新できます。 
+IoT Edge ランタイムを以前デバイスにインストールしたことがあり、IoT Hub からの ID によってデバイスがプロビジョニングされている場合、デバイスの情報を再入力せずにランタイムを更新できます。
 
 詳細については、[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)を参照してください。
 
-この例では、既存の構成ファイルを指定し、Windows コンテナーを使用するインストールを示します。 
+この例では、既存の構成ファイルを指定し、Windows コンテナーを使用するインストールを示します。
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -221,29 +221,29 @@ Update-IoTEdge
 IoT Edge を更新するときは、追加のパラメーターを使用して次のように更新を変更できます。
 
 * プロキシ サーバーを経由するようトラフィックを誘導する
-* インストーラーでオフライン ディレクトリを指定する 
+* インストーラーでオフライン ディレクトリを指定する
 * 必要な場合は、プロンプトなしで再起動する
 
-IoT Edge エージェント コンテナー イメージは、以前のインストールの構成ファイルですでに設定されているため、スクリプト パラメーターで宣言することはできません。 エージェント コンテナー イメージを変更する場合は、config.yaml ファイルで行います。 
+IoT Edge エージェント コンテナー イメージは、以前のインストールの構成ファイルですでに設定されているため、スクリプト パラメーターで宣言することはできません。 エージェント コンテナー イメージを変更する場合は、config.yaml ファイルで行います。
 
 これらの更新オプションについて詳しくは、`Get-Help Update-IoTEdge -full` コマンドを使用するか、「[すべてのインストール パラメーター](#all-installation-parameters)」を参照してください。
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 
-IoT Edge のインストールを Windows デバイスから削除する場合は、管理用 PowerShell ウィンドウから次のコマンドを使用します。 このコマンドは、IoT Edge ランタイムを既存の構成と Moby エンジン データと一緒に削除します。 
+IoT Edge のインストールを Windows デバイスから削除する場合は、管理用 PowerShell ウィンドウから次のコマンドを使用します。 このコマンドは、IoT Edge ランタイムを既存の構成と Moby エンジン データと一緒に削除します。
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
 
-Uninstall-IoTEdge コマンドは、Windows IoT Core では動作しません。 Windows IoT Core デバイスから IoT Edge を削除するには、Windows IoT Core イメージを再デプロイする必要があります。 
+Uninstall-IoTEdge コマンドは、Windows IoT Core では動作しません。 Windows IoT Core デバイスから IoT Edge を削除するには、Windows IoT Core イメージを再デプロイする必要があります。
 
-アンインストール オプションの詳細については、`Get-Help Uninstall-IoTEdge -full` コマンドを使用してください。 
+アンインストール オプションの詳細については、`Get-Help Uninstall-IoTEdge -full` コマンドを使用してください。
 
 ## <a name="all-installation-parameters"></a>すべてのインストール パラメーター
 
-前のセクションでは、パラメーターを使用してインストール スクリプトを変更する方法の例を用いた一般的なインストール シナリオについて紹介しました。 このセクションでは、IoT Edge のインストール、更新、アンインストールに使用される一般的なパラメーターの参照テーブルを提供します。 
+前のセクションでは、パラメーターを使用してインストール スクリプトを変更する方法の例を用いた一般的なインストール シナリオについて紹介しました。 このセクションでは、IoT Edge のインストール、更新、アンインストールに使用される一般的なパラメーターの参照テーブルを提供します。
 
 ### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
@@ -259,7 +259,7 @@ Deploy-IoTEdge コマンドでは、IoT Edge セキュリティ デーモンと�
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の詳細で IoT Edge を構成します。 このコマンドによって生成される情報の多くは、その後 iotedge\config.yaml ファイルに格納されます。 初期化コマンドでは、たとえば次のような一般的なパラメーターが受け付けられます。 完全なリストについては、`Get-Help Initialize-IoTEdge -full` コマンドを使用してください。 
+Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の詳細で IoT Edge を構成します。 このコマンドによって生成される情報の多くは、その後 iotedge\config.yaml ファイルに格納されます。 初期化コマンドでは、たとえば次のような一般的なパラメーターが受け付けられます。 完全なリストについては、`Get-Help Initialize-IoTEdge -full` コマンドを使用してください。
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
@@ -289,10 +289,10 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
-| **Force** | なし | このフラグは、前回のアンインストールの試行が失敗した場合に、アンインストールを強制します。 
+| **Force** | なし | このフラグは、前回のアンインストールの試行が失敗した場合に、アンインストールを強制します。
 | **RestartIfNeeded** | なし | このフラグを使用すると、必要に応じて、アンインストール スクリプトでメッセージを表示せずにコンピューターを再起動できます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
 

@@ -1,20 +1,18 @@
 ---
 title: (非推奨) クイック スタート - Windows 用 Azure Kubernetes クラスター
 description: Azure CLI を使用して Azure Container Service で Windows コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148813"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277643"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(非推奨) Windows コンテナー用の Kubernetes クラスターをデプロイする
 
@@ -32,9 +30,9 @@ CLI をローカルにインストールして使用する場合、このクイ�
 > Azure Container Service における Kubernetes での Windows コンテナーのサポートはプレビュー段階です。 
 >
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -191,7 +189,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、`kubectl` で接続される Kubernetes クラスターをデプロイし、IIS コンテナーを含むポッドをデプロイしました。 Azure Container Service の詳細を学ぶには、Kubernetes のチュートリアルに進みます。
 

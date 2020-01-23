@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/17/2020
+ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383366"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264935"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
 
@@ -65,7 +65,7 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
 
      [![Azure Active Directory リソース プロバイダー](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins でユーザー定義関数を使用する方法の詳細については、[Azure Digital Twins のユーザー定義関数の作成方法](./how-to-user-defined-functions.md)に関するページを参照してください。
 

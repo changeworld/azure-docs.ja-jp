@@ -1,21 +1,19 @@
 ---
 title: 既存の MongoDB アプリケーションを MongoDB 用 Azure Cosmos DB API および Open Service Broker for Azure (OSBA) と統合する
 description: この記事では、Open Service Broker for Azure (OSBA) を使用して既存の Java および MongoDB アプリケーションを MongoDB 用 Azure Cosmos DB API と統合する方法について説明します。
-services: azure-dev-spaces
 author: zr-msft
-manager: jeconnoc
 ms.service: azure-dev-spaces
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61028426"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277699"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>既存の MongoDB アプリケーションを MongoDB 用 Azure Cosmos DB API および Open Service Broker for Azure (OSBA) と統合する
 
@@ -271,7 +269,7 @@ press Ctrl+C to detach
 
 アプリケーションで変更内容が表示されることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、MongoDB を使用している既存のアプリケーションを、MongoDB 用 Cosmos DB API を使用するように更新する方法を説明しました。 また、この記事では、Open Service Broker for Azure を使用して Cosmos DB サービスをプロビジョニングし、そのアプリケーションを Azure Dev Spaces で AKS にデプロイする方法についても説明しました。
 

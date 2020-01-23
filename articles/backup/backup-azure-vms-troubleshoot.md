@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664640"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513798"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -262,7 +262,6 @@ Windows VM 上で VM エージェントのバージョンを確認するには�
 
 VM のバックアップは、基礎をなすストレージへのスナップショット コマンドの発行に依存します。 ストレージにアクセスできなかったり、スナップショット タスクの実行が遅延したりすると、バックアップ ジョブが失敗することがあります。 次の場合にスナップショットのタスクが失敗することがあります。
 
-* **NSG を使用してストレージへのネットワーク アクセスがブロックされています**。 IP の許可リストまたはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-arm-vms-prepare.md#establish-network-connectivity)方法の詳細を参照してください。
 * **SQL Server のバックアップが構成されている VM はスナップショット タスクの遅延を引き起こすことがあります**。 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性があります。 スナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。
 
    ```text
@@ -276,29 +275,9 @@ VM のバックアップは、基礎をなすストレージへのスナップ�
 
 ## <a name="networking"></a>ネットワーク
 
-Backup 拡張機能は、他の拡張機能と同様に、パブリックなインターネットへのアクセスが必要です。 パブリック インターネットにアクセスできない場合、さまざまな問題が発生する可能性があります。
+IaaS VM バックアップが正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用して構成します。 VM 内の DHCP オプションが有効になっていることを確認します。
+PowerShell を使用して静的 IP を設定する方法については、以下を参照してください。
 
-* 拡張機能のインストールが失敗する。
-* ディスク スナップショットなどのバックアップ操作が失敗する。
-* バックアップ操作の状態を表示できない。
+* [既存の VM に静的内部 IP を追加する方法](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [ネットワーク インターフェイスに割り当てられているプライベート IP アドレスの割り当て方法を変更する](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-パブリック インターネット アドレスを解決する必要性については、[この Azure サポート ブログ](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)をご覧ください。 VNET 用の DNS 構成を確認し、Azure の URI が解決できることを確認してください。
-
-名前解決が正しく実行された後で、Azure IP へのアクセスも提供する必要があります。 Azure インフラストラクチャへのアクセスのブロックを解除するには、次のいずれかの手順に従います。
-
-* Azure データセンターの IP 範囲の許可リスト:
-   1. 許可リストに登録する [Azure データセンター IP](https://www.microsoft.com/download/details.aspx?id=41653) の一覧を取得します。
-   1. [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) コマンドレットを使用して、IP アドレスのブロックを解除します。 管理者特権の PowerShell ウィンドウで、Azure VM 内でこのコマンドレットを実行します。 管理者として実行します。
-   1. NSG を使用している場合は、規則を NSG に追加して IP にアクセスできるようにします。
-* フローに対する HTTP トラフィック用のパスを作成します。
-   1. 何らかのネットワーク制限を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。 たとえば、ネットワーク セキュリティ グループです。 HTTP プロキシ サーバーをデプロイする手順は、「[ネットワーク接続を確立する](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
-   1. NSG を使用している場合は、規則を NSG に追加して HTTP プロキシからインターネットにアクセスできるようにします。
-
-> [!NOTE]
-> IaaS VM バックアップが正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を使用して構成します。 VM 内の DHCP オプションが有効になっていることを確認します。
-> PowerShell を使用して静的 IP を設定する方法については、以下を参照してください。
->
-> * [既存の VM に静的内部 IP を追加する方法](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [ネットワーク インターフェイスに割り当てられているプライベート IP アドレスの割り当て方法を変更する](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

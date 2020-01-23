@@ -7,14 +7,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922149"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512914"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する (プレビュー)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する
 
 Azure Data Lake Storage は、スケーラビリティが高く拡張性と費用対効果に優れた、ビッグ データ分析用のデータ レイク ソリューションです。 ハイパフォーマンス ファイル システムの能力に加えて、非常に高いスケーラビリティと効率性を兼ね備えており、お客様が分析情報を得るまでの時間を短縮するのに役立ちます。 Data Lake Storage Gen2 は Azure BLOB ストレージの機能を拡張するもので、分析ワークロード用に最適化されています。
  
@@ -24,7 +24,7 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
 > 最良のクエリ パフォーマンスを得るには、Azure Data Explorer へのデータの取り込みが必要です。 事前に取り込まずに Azure Data Lake Storage Gen2 内のデータのクエリを実行する機能は、履歴データか、ほとんどクエリが実行されないデータに対してのみ使用してください。 最高の結果を得るために、[レイク内でのクエリのパフォーマンスを最適化](#optimize-your-query-performance)してください。
  
 
-## <a name="create-an-external-table"></a>外部テーブルの作成
+## <a name="create-an-external-table"></a>外部テーブルを作成する
 
  > [!NOTE]
  > 現在サポートされているストレージ アカウントは、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2 です。 現在サポートされているデータ形式は、json、csv、tsv、および txt です。
@@ -250,7 +250,7 @@ Azure Data Explorer は、Parquet および ORC の列形式をサポートし�
  
 圧縮を使用して、リモート ストレージからフェッチされるデータの量を減らします。 Parquet 形式の場合は、内部 Parquet 圧縮メカニズムを使用して列グループを個別に圧縮するため、個別に読み取ることができます。 圧縮メカニズムの使用を検証するには、ファイル名が “<filename>.parquet.gz” ではなく、“<filename>.gz.parquet” または “<filename>.snappy.parquet” であることを確認します。 
  
-### <a name="partitioning"></a>パーティション分割
+### <a name="partitioning"></a>[パーティション分割]
  
 "フォルダー" パーティションを使用してデータを整理し、クエリで無関係なパスをスキップできるようにします。 パーティション分割を計画するときは、クエリ内でタイムスタンプやテナント ID などの、ファイル サイズおよび一般的なフィルターを検討してください。
  
@@ -258,6 +258,6 @@ Azure Data Explorer は、Parquet および ORC の列形式をサポートし�
  
 よりコア数が多く、ネットワーク スループットが高い VM SKU を選択します (メモリはあまり重要ではありません)。 詳細については、[Azure Data Explorer クラスターに適した VM SKU を選択する](manage-cluster-choose-sku.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行します。 [クエリを記述](write-queries.md)して、データから追加の分析情報を得る方法について学習します。

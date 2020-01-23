@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Marathon REST API を使用した Azure DC/OS クラスターの管理
 description: Marathon REST API を使用して、Azure Container Service DC/OS クラスターにコンテナーをデプロイします。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 73fa9c4433a2af780798f0439c0a119bc32a678f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3492f35d54dd3ee61ab8d29a3af06e4998bbd477
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916697"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277780"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(非推奨) Marathon REST API を使用した DC/OS コンテナー管理
 
@@ -186,7 +184,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Mesos HTTP エンドポイントの詳細](https://mesos.apache.org/documentation/latest/endpoints/)
 * [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

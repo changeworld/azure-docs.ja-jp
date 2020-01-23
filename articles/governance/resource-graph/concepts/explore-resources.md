@@ -3,12 +3,12 @@ title: Azure リソースの探索
 description: Resource Graph クエリ言語を使用してリソースを探索し、それらがどのように接続されているかを確認する方法について説明します。
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959238"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156983"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
@@ -152,7 +152,7 @@ JSON 結果は次の例のように構成されます。
 ```kusto
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
-| project name, resourceGroup"
+| project name, resourceGroup
 ```
 
 ```azurecli-interactive
@@ -307,8 +307,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 
 `join` 演算子を使用して 1 つのクエリでこれらの手順を行う方法については、[仮想マシン、ネットワーク インターフェイス、パブリック IP を一覧表示するサンプル](../samples/advanced.md#join-vmpip)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [クエリ言語](query-language.md)について詳しく確認します。
+- [クエリ言語](query-language.md)の詳細について学習します。
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。

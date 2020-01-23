@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のイベント ドメイン
-description: イベント ドメインを使用して、Azure Event Grid のトピックを管理する方法について説明します。
+description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305403"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511384"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -112,6 +112,6 @@ Event Grid には、RBAC がイベント ドメインでより簡単に動作す
 
 イベント ドメインでの操作は、カスタム トピックの場合と同じように動作します。 イベント ドメインへのイベントの各取り込みは 1 回の操作であり、イベントの各配信試行も 1 回の操作となります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント ドメインの設定、トピックの作成、イベント サブスクリプションの作成、イベントの発行の詳細については、[イベント ドメインの管理](./how-to-event-domains.md)に関するページを参照してください。

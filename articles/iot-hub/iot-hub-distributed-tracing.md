@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457055"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911891"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -208,15 +208,15 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 1. (省略可能) サンプリング レートを別の値に変更して、アプリケーション プロパティに `tracestate` が含まれるメッセージの頻度の変化を監視します。
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>VS Code 用 Azure IoT Hub Toolkit を使用して更新する
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>VS Code 用 Azure IoT Hub を使用して更新する
 
-1. VS Code をインストールし、[ここ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)から VS Code 用 Azure IoT Hub Toolkit の最新バージョンをインストールします。
+1. VS Code をインストールし、[ここ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)から VS Code 用 Azure IoT Hub の最新バージョンをインストールします。
 
 1. VS Code を開き、[IoT Hub 接続文字列を設定](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)します。
 
 1. デバイスを展開し、 **[Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー)\)** を探します。 その下で、サブ ノードの **[Update Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー) の更新\)** をクリックします。
 
-    ![Azure IoT Hub Toolkit で分散トレースを有効にする](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Azure IoT Hub 拡張機能で分散トレースを有効にする](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. ポップアップ ウィンドウで、 **[有効]** を選択し、Enter キーを押してサンプリング レートとして 100 を確定します。
 

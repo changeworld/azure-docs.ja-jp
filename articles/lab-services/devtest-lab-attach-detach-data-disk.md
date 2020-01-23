@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする | Microsoft Docs
+title: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 description: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする方法について説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2e168867ed342fb0b0545b5fdc330ba790f78de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b470c55815255c50a42821b0bf52219d890206
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304523"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170075"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
@@ -35,7 +35,7 @@ ms.locfileid: "60304523"
 ### <a name="attach-a-new-disk"></a>新しいディスクの接続
 Azure DevTest Labs で新しいマネージド データ ディスクを作成して VM にアタッチするには、次の手順に従います。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
 1. **[自分の仮想マシン]** の一覧で、実行中の VM を選択します。
@@ -105,6 +105,6 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [要求可能な仮想マシン](devtest-lab-add-claimable-vm.md#unclaim-a-vm)のためにデータ ディスクを管理する方法について学習します。
 

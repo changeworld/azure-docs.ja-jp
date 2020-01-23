@@ -4,12 +4,12 @@ description: Azure Functions の拡張機能である Durable Functions のオ�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 379f2cb238aef08faba8dd3c8e5d9da4542a1867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231292"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261519"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
@@ -22,7 +22,7 @@ ms.locfileid: "74231292"
 
 次の例では、プロビジョニングが必要な複数のデバイスがある IoT ("モノのインターネット") シナリオについて説明しています。 次の関数は、各デバイスに対して実行する必要があるプロビジョニング ワークフローを表します。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -64,11 +64,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 このオーケストレーター関数は、そのまま一回限りのデバイス プロビジョニングに使用するか、または大規模なオーケストレーションに組み込むことができます。 後者の場合、親のオーケストレーター関数は `CallSubOrchestratorAsync` (.NET) または `callSubOrchestrator` (JavaScript) API を使用して `DeviceProvisioningOrchestration` のインスタンスをスケジュールできます。
 
 複数のオーケストレーター関数を並列で実行する方法を次に示します。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,7 +96,7 @@ public static async Task ProvisionNewDevices(
 > [!NOTE]
 > 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -118,10 +120,12 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!NOTE]
 > 親オーケストレーションと同じ関数アプリでサブオーケストレーションを定義する必要があります。 別の関数アプリでオーケストレーションを呼び出して待機する必要がある場合は、HTTP API の組み込みサポートと HTTP 202 ポーリング コンシューマー パターンの使用を検討してください。 詳細については、「[HTTP 機能](durable-functions-http-features.md)」トピックを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [カスタム オーケストレーションの状態を設定する方法を学習します](durable-functions-custom-orchestration-status.md)

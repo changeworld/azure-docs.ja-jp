@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e35e18be20af3bd9f6fdc9541f9abfe857a6b87c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863582"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511860"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 

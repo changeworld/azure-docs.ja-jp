@@ -3,32 +3,32 @@ title: PowerShell を使用して Azure Files をバックアップおよび復�
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files をバックアップおよび復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224170"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294050"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを使用して Azure Files のファイル共有をバックアップおよび復元するために Azure PowerShell を使用する方法を説明します。
 
-この記事では、次の方法について説明します。
+この記事では、以下の方法について説明します。
 
 > [!div class="checklist"]
 >
 > * PowerShell を設定し、Azure Recovery Services プロバイダーを登録します。
 > * Recovery Services コンテナーを作成する。
 > * Azure ファイル共有のバックアップを構成する。
-> * バックアップ ジョブを実行する。
+> * バックアップ ジョブを実行します。
 > * バックアップされた Azure ファイル共有、または共有に含まれる個々のファイルを復元する。
-> * バックアップ ジョブと復元ジョブを監視する。
+> * バックアップ ジョブと復元ジョブを監視します。
 
 ## <a name="before-you-start"></a>開始する前に
 
 * Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
-* [Azure ファイル共有のバックアップ](backup-azure-files.md)に関するプレビュー機能を確認します。
+* [Azure ファイル共有のバックアップ](backup-afs.md)に関するプレビュー機能を確認します。
 * Recovery Services の PowerShell オブジェクト階層を確認します。
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services オブジェクトの階層
@@ -37,7 +37,7 @@ ms.locfileid: "74224170"
 
 ![Recovery Services オブジェクトの階層](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレット リファレンス](/powershell/module/az.recoveryservices)を確認します。
+Azure ライブラリの **Az.RecoveryServices** [コマンドレット リファレンス](/powershell/module/az.recoveryservices)のリファレンスを確認します。
 
 ## <a name="set-up-and-install"></a>設定とインストール
 
@@ -119,7 +119,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 Get-AzRecoveryServicesVault
 ```
 
-出力は次のようになります。 関連するリソース グループと場所が指定されていることに注目してください。
+次のように出力されます。 関連するリソース グループと場所が指定されていることに注目してください。
 
 ```powershell
 Name              : Contoso-vault
@@ -182,7 +182,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-出力は次のようになります。
+次のように出力されます。
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -206,7 +206,7 @@ NewAFSPolicy           AzureFiles            AzureStorage              10/24/201
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-出力は次のようになります。
+次のように出力されます。
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -311,7 +311,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-出力は次のようになります。
+次のように出力されます。
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -417,6 +417,6 @@ $job.ErrorDetails
 1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure portal での Azure Files のバックアップについて[学習します](backup-azure-files.md)。
+Azure portal での Azure Files のバックアップについて[学習します](backup-afs.md)。

@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409649"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769100"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
@@ -25,11 +25,11 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
 ## <a name="setting-up"></a>設定
 
-[監視] セクションで **[診断設定]** を選択し、 **[追加]** をクリックします。
+**[監視]** セクションで **[診断設定]** を選択し、 **[診断設定を追加する]** をクリックします。
 
 ![診断設定を追加する](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-[設定] ページで **[Log Analytics への送信]** を選択し、 **[ログ]** の下の **[FunctionAppLogs]** を選択します。このテーブルに目的のログが含まれています。
+**[診断設定]** ページで **[Log Analytics への送信]** を選択して、Log Analytics ワークスペースを選択します。 **[log]\(ログ\)** で **[FunctionAppLogs]** を選択すると、このテーブルに目的のログが含まれています。
 
 ![診断設定を追加する](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -72,7 +72,7 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>ログのクエリ
 
-生成されたログに対してクエリを実行するには、Log Analytics ワークスペースに移動し、 **[ログ]** をクリックします。
+生成されたログに対してクエリを実行するには、関数ログの送信先として構成した Log Analytics ワークスペースに移動し、 **[ログ]** をクリックします。
 
 ![LA ワークスペースのクエリ ウィンドウ](media/functions-monitor-log-analytics/querying.png)
 

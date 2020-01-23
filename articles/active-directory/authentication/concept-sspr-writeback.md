@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 151e7b2ab091959c8b6c08d366318a49987aefd9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848529"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544023"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -47,7 +47,7 @@ ms.locfileid: "74848529"
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
 
-**オンプレミスの書き戻しによるセルフサービスのパスワードのリセット/変更/ロック解除は、Azure AD の Premium 機能です**。 ライセンスの詳細については、[Azure Active Directory の価格サイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+**オンプレミスの書き戻しによるセルフサービス パスワード リセット/変更/ロック解除は、Azure AD の Premium 機能です**。 ライセンスの詳細については、[Azure Active Directory の価格サイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 パスワード ライトバックを使用するには、次のいずれかのライセンスがご自分のテナントに割り当てられている必要があります。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74848529"
 * Microsoft 365 Business
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービス パスワード リセット /変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。
 
 ## <a name="how-password-writeback-works"></a>パスワード ライトバックのしくみ
 
@@ -117,9 +117,9 @@ ms.locfileid: "74848529"
 
 ユーザーがパスワードのリセットを送信した後、リセット要求はオンプレミスの環境に届く前に、いくつかの暗号化ステップを通過します。 これらの暗号化ステップにより、サービスの最大限の信頼性とセキュリティが保証されます。 暗号化ステップの説明を次に示します。
 
-* **手順 1:2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
+* **ステップ 1:2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
 * **手順 2:AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、ServiceBus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
-* **手順 3:すべての通信が TLS/SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
+* **ステップ 3:すべての通信が TLS/SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
 * **半年ごとの自動キー ロールオーバー**: 半年ごとに、または Azure AD Connect でパスワード ライトバックが無効化されて再び有効化されるたびに、すべてのキーがロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
 
 ### <a name="password-writeback-bandwidth-usage"></a>パスワード ライトバックの帯域幅の使用
@@ -131,7 +131,7 @@ ms.locfileid: "74848529"
 * 新しいパスワードが送信されるたびに 2 つのメッセージが送信されます。
    * 1 番目のメッセージは操作の実行を要求します。
    * 2 番目のメッセージには操作の結果が含まれ、次の状況で送信されます。
-      * ユーザーのセルフサービスのパスワードのリセット時に新しいパスワードが送信された場合
+      * ユーザーのセルフサービス パスワード リセット時に新しいパスワードが送信された場合
       * ユーザーのパスワード変更操作時に新しいパスワードが送信された場合
       * 管理者によるユーザー パスワードのリセット時に新しいパスワードが送信された場合 (Azure 管理ポータルからのみ)
 
@@ -146,11 +146,11 @@ ms.locfileid: "74848529"
 * **サポートされるエンドユーザーの操作**
    * エンド ユーザーによる自発的なパスワード変更
    * エンドユーザーによる強制的なパスワード変更 (パスワードの期限切れなど)
-   * エンドユーザーにより、[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行されたセルフサービスによるパスワードのリセット
+   * エンドユーザーにより、[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行されたセルフサービス パスワード リセット
 * **サポートされる管理者の操作**
    * 管理者による自発的なパスワード変更
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)
-   * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービスによるパスワードのリセット
+   * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービス パスワード リセット
    * [Azure Portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
@@ -164,8 +164,8 @@ ms.locfileid: "74848529"
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット
 
 > [!WARNING]
-> [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの Active Directory 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用は、Azure AD Connect のプレビュー機能としてサポートされています。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)」の記事を参照してください。
+> [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの Active Directory 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用は、Azure AD Connect のプレビュー機能としてサポートされています。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)」の記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルの「[パスワード ライトバックを有効にする](tutorial-enable-writeback.md)」を使用して、パスワード ライトバックを有効にする

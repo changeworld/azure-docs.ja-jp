@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173813"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277427"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>診断ログを使用して Azure Data Explorer インジェスト操作を監視する (プレビュー)
 
@@ -25,7 +25,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターの診断ログを設定する
 
@@ -52,7 +52,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
     1. 診断設定の **[名前]** を選択します。
     1. ストレージ アカウント、イベント ハブ、Log Analytics から 1 つ以上のターゲットを選択します。
     1. 収集するログ (`SucceededIngestion` または `FailedIngestion`) を選択します。
-    1. 収集する [[メトリック]](using-metrics.md) を選択します (省略可能)。   
+    1. 収集する [[メトリック]](using-metrics.md#supported-azure-data-explorer-metrics) を選択します (省略可能)。  
     1. **[保存]** を選択して、新しい診断ログの設定とメトリックを保存します。
     1. 診断ログのアクティブ化を要求するには、Azure portal で **[新しいサポート要求]** を作成します。
 
@@ -66,7 +66,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-|名前               |説明
+|Name               |[説明]
 |---                |---
 |time               |レポートされた時刻
 |resourceId         |Azure Resource Manager リソース ID
@@ -100,12 +100,12 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 ```
 **成功した操作の診断ログのプロパティ**
 
-|名前               |説明
+|Name               |[説明]
 |---                |---
 |succeededOn        |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
-|database           |ターゲット データベースの名前
-|table              |ターゲット テーブルの名前
+|[データベース]           |ターゲット データベースの名前
+|テーブル              |ターゲット テーブルの名前
 |ingestionSourceId  |インジェスト データ ソースの ID
 |ingestionSourcePath|インジェスト データ ソースまたは BLOB URI のパス
 |rootActivityId     |アクティビティ ID
@@ -141,22 +141,22 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 **失敗した操作の診断ログのプロパティ**
 
-|名前               |説明
+|Name               |[説明]
 |---                |---
 |failedOn           |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
-|database           |ターゲット データベースの名前
-|table              |ターゲット テーブルの名前
+|[データベース]           |ターゲット データベースの名前
+|テーブル              |ターゲット テーブルの名前
 |ingestionSourceId  |インジェスト データ ソースの ID
 |ingestionSourcePath|インジェスト データ ソースまたは BLOB URI のパス
 |rootActivityId     |アクティビティ ID
-|details            |エラーとエラーメッセージの詳しい説明
+|詳細            |エラーとエラーメッセージの詳しい説明
 |errorCode          |エラー コード 
 |failureStatus      |`Permanent` または `Transient`。 一時的なエラーは、再試行することで成功する可能性があります。
 |originatesFromUpdatePolicy|エラーが更新ポリシーによって発生した場合は True です
 |shouldRetry        |再試行が成功した場合は True です
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する](ingest-data-no-code.md)
 * [メトリックを使用してクラスターの正常性を監視する](using-metrics.md)

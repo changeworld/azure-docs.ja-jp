@@ -3,12 +3,12 @@ title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: d41eb9970ea3578b4d50923758907b03cd081875
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476513"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121881"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
@@ -97,62 +97,62 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgName": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgName": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[parameters('rgName')]",
-            "properties": {}
-        }
-    ],
-    "outputs": {}
+    "rgLocation": {
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
+      "properties": {}
+    }
+  ],
+  "outputs": {}
 }
 ```
 
-複数のリソース グループを作成するには、リソース グループで [copy 要素](create-multiple-instances.md)を使用します。 
+複数のリソース グループを作成するには、リソース グループで [copy 要素](create-multiple-instances.md)を使用します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgNamePrefix": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        },
-        "instanceCount": {
-            "type": "int"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgNamePrefix": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
-            "copy": {
-                "name": "rgCopy",
-                "count": "[parameters('instanceCount')]"
-            },
-            "properties": {}
-        }
-    ],
-    "outputs": {}
+    "rgLocation": {
+      "type": "string"
+    },
+    "instanceCount": {
+      "type": "int"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "location": "[parameters('rgLocation')]",
+      "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
+      "copy": {
+        "name": "rgCopy",
+        "count": "[parameters('instanceCount')]"
+      },
+      "properties": {}
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -166,64 +166,64 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgName": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        },
-        "storagePrefix": {
-            "type": "string",
-            "maxLength": 11
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgName": {
+      "type": "string"
     },
-    "variables": {
-        "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, parameters('rgName')))]"
+    "rgLocation": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[parameters('rgName')]",
-            "properties": {}
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "storageDeployment",
-            "resourceGroup": "[parameters('rgName')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Storage/storageAccounts",
-                            "apiVersion": "2017-10-01",
-                            "name": "[variables('storageName')]",
-                            "location": "[parameters('rgLocation')]",
-                            "kind": "StorageV2",
-                            "sku": {
-                                "name": "Standard_LRS"
-                            }
-                        }
-                    ],
-                    "outputs": {}
-                }
+    "storagePrefix": {
+      "type": "string",
+      "maxLength": 11
+    }
+  },
+  "variables": {
+    "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, parameters('rgName')))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "location": "[parameters('rgLocation')]",
+      "name": "[parameters('rgName')]",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "storageDeployment",
+      "resourceGroup": "[parameters('rgName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2017-10-01",
+              "name": "[variables('storageName')]",
+              "location": "[parameters('rgLocation')]",
+              "sku": {
+                "name": "Standard_LRS"
+              }
+              "kind": "StorageV2",
             }
+          ],
+          "outputs": {}
         }
-    ],
-    "outputs": {}
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -235,33 +235,33 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "scope": "[subscription().id]",
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "scope": "[subscription().id]",
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -301,42 +301,42 @@ New-AzDeployment `
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "location-lock",
-            "apiVersion": "2018-05-01",
-            "dependsOn": [
-                "locationpolicy"
-            ],
-            "properties": {
-                "scope": "[subscription().id]",
-                "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-05-01",
+      "name": "location-lock",
+      "dependsOn": [
+        "locationpolicy"
+      ],
+      "properties": {
+        "scope": "[subscription().id]",
+        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -363,5 +363,5 @@ New-AzDeployment `
 * ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * サンプル テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) に掲載されています。
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。 
+* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
 * テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](template-functions.md)に関するページを参照してください。

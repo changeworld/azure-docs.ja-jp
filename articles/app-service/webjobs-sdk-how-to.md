@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421959"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549089"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -681,8 +681,8 @@ public static void CreateQueueMessage(
 Azure Functions のドキュメントでは、各バインドの種類に関する参照情報が提供されています。 各バインド参照記事には、以下の情報が記載されています。 (この例は、Storage キューに基づいています。)
 
 * [パッケージ](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 WebJobs SDK プロジェクトにバインドのサポートを含めるためにインストールする必要のあるパッケージです。
-* [例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
-* [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 バインドの種類に使用する属性です。
+* [例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
+* [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 バインドの種類に使用する属性です。
 * [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
 * [使用方法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
   

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7570030f4b0cc2e7bc1a1d64ad9eea7a74429eee
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423837"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293472"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API を呼び出すモバイル アプリ - トークンの取得
 
@@ -241,7 +241,7 @@ catch(MsalUiRequiredException)
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-この修飾子は、複数のリソースに対するユーザーの事前の同意を求める (通常は MSAL.NET/Microsoft ID プラットフォーム v2.0 で使用されるインクリメンタルな同意を使用しない) 高度なシナリオで使用されます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する方法](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)」を参照してください。
+この修飾子は、複数のリソースに対するユーザーの事前の同意を求める (通常は MSAL.NET/Microsoft ID プラットフォーム v2.0 で使用されるインクリメンタルな同意を使用しない) 高度なシナリオで使用されます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する方法](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)

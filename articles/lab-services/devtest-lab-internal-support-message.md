@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs のラボに社内サポートの説明文を追加する | Microsoft Docs
+title: Azure DevTest Labs のラボに社内サポートの説明文を追加する
 description: 社内サポートの説明文を Azure DevTest Labs のラボに投稿する方法を説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60562312"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170349"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに社内サポートの説明文を追加する
 
@@ -31,7 +31,7 @@ Azure DevTest Labs では、社内サポートの説明文を付けてラボを�
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>サポートの説明文を既存のラボに追加する手順
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、 **[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、 **[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
 1. ラボの一覧から、サポートの説明文を追加するラボを選択します。  
 1. ラボの **[概要]** で、 **[Configuration and policies]\(構成とポリシー\)** を選択します。  
@@ -68,6 +68,6 @@ Azure DevTest Labs では、社内サポートの説明文を付けてラボを�
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 社内サポートの説明文は、通常、頻繁に変わらないサポート情報を提供するために使用されます。 ラボの一時的な変更や更新プログラムをユーザーに知らせるために、[ラボにお知らせを投稿する](devtest-lab-announcements.md)方法を学ぶこともできます。
 * カスタマイズしたポリシーを使用して、サブスクリプションに他の制限と規則を適用する方法については[ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)に関するページを参照してください。

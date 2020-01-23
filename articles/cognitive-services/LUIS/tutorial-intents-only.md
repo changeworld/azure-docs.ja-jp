@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89fb76f8c5cc4323e1211524340c0965a7d0716d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381564"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262753"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -66,6 +66,7 @@ ms.locfileid: "75381564"
     |`delivery for a small pepperoni pizza`|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
+    |`Order a pizza for me`|
 
     ![発話の例を追加する](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 

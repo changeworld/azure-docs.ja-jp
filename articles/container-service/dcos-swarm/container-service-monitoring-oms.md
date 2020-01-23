@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターの監視 - Operations Management
 description: Log Analytics で Azure Container Service DC/OS クラスターを監視します。
-services: container-service
 author: keikhara
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809942"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277332"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -62,7 +60,7 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 
 Linux 用 Log Analytics エージェントを VM にインストールしたら、次に Log Analytics ダッシュボードを設定します。 Azure portal でダッシュ ボードを設定することができます。
 
-### <a name="azure-portal"></a>Azure ポータル 
+### <a name="azure-portal"></a>Azure portal 
 
 <https://portal.microsoft.com/> で Azure portal にサインインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、 **[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、 **[作成]** をクリックします。
 
@@ -99,6 +97,6 @@ $ dcos package uninstall msoms
 ## <a name="let-us-know"></a>ご意見をお聞かせください。
 どの部分が実用的でしたか。 足りない情報はありましたか。 この記事を実用的なものにするうえで他に必要なものはありますか。 <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a> までご意見をお寄せください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  これで、コンテナーを監視するように Log Analytics が設定されたので、[コンテナー ダッシュボードを参照してください](../../azure-monitor/insights/containers.md)。

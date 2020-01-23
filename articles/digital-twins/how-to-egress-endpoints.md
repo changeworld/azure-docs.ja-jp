@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456916"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511571"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure Digital Twins でのエグレスとエンドポイント
 
@@ -47,7 +47,7 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 }
 ```
 
-| Attribute | 種類 | 説明 |
+| Attribute | 種類 | [説明] |
 | --- | --- | --- |
 | id | string | イベントの一意識別子。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -90,7 +90,7 @@ Event Grid イベント スキーマの詳細については、
 - センサー
 - SensorBlobMetadata
 - SensorExtendedProperty
-- スペース
+- Space
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -248,7 +248,7 @@ Event Grid イベント スキーマの詳細については、
 
 認証済みの HTTP POST 要求:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
@@ -356,7 +356,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
 エンドポイントが到達不能になると、システムは最大 30 分の指数バックオフ待機時間に入ります。 トリガーされた各バックオフ待機時間では、イベントは削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)を確認します。
 

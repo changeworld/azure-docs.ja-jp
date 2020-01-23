@@ -3,17 +3,16 @@ title: Azure Kubernetes Service (AKS) での GPU の使用
 description: Azure Kubernetes Service (AKS) で高パフォーマンス コンピューティングやグラフィックを集中的に使用するワークロードに GPU を使用する方法について説明します
 services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a68bd124f323225062a86a3e1fc178d2fc089c5d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899461"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276013"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -30,7 +29,7 @@ GPU (Graphical processing units) は、多くの場合に、グラフィック�
 
 また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 最小要件 (GPU 対応ノードと Kubernetes バージョン 1.10 以降) を満たしている AKS クラスターが必要な場合は、次の手順を実行します。 これらの要件を満たしている AKS クラスターが既にある場合は、[次のセクションに進んでください](#confirm-that-gpus-are-schedulable)。
 
@@ -320,7 +319,7 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成され、関連付けられている Kubernetes オブジェクトを削除するには、次のように [kubectl delete job][kubectl delete] コマンドを使用します。
 
@@ -328,7 +327,7 @@ Adding run metadata for 499
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Apache Spark ジョブを実行するには、[AKS での Apache Spark ジョブの実行][aks-spark]に関する記事を参照してください。
 

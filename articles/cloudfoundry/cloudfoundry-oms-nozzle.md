@@ -3,21 +3,20 @@ title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ
 description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286641"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277353"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -194,7 +193,7 @@ OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**
 
 [アラートを作成](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)して、必要に応じてクエリとしきい値をカスタマイズできます。 次のアラートが推奨されます。
 
-| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | 説明                                                                       |
+| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | [説明]                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 結果の数: 1 より小さい   | **bbs.Domain.cf-apps** は、cf-apps ドメインが最新の状態かどうかを示します。 つまり、Cloud Controller からの CF App 要求が、実行に備えて bbs.LRPsDesired (Diego-desired AIs) に同期されていることを意味します。 データが受信されない場合、指定された時間枠内で cf-apps ドメインが最新ではないことを示します。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 結果の数: 0 より大きい   | Diego セルの場合、0 は正常、1 は問題があることを意味します。 指定された時間枠内で問題がある Diego セルが複数検出される場合にアラートを設定します。 |

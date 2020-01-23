@@ -3,18 +3,18 @@ title: Azure portal のユーザーに対するディレクトリ レベルの�
 description: 管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで設定されます。
 services: azure-portal
 keywords: 設定、タイムアウト
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 55136b5418b0c455ef66bd322f519c1e52114b93
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640501"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310800"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>ディレクトリ レベルの非アクティブ タイムアウトの設定
 
@@ -24,7 +24,7 @@ ms.locfileid: "75640501"
 
 管理者として、Azure portal のすべてのユーザーに対してアイドル タイムアウト設定を適用する場合は、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. グローバル ページ ヘッダーから **[設定]** を選択します。
 3. リンク テキスト「**ディレクトリ レベルのタイムアウトの構成**」を選択します。
 

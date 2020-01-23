@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: dapine
-ms.openlocfilehash: 0e5bbafee04a909be53c2143c72aba6f5a4e05f9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: edb6846974dc58af04ba800c0aa32e3ecc5d4b9a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037702"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76309045"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,6 +48,7 @@ ms.locfileid: "76037702"
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace HelloWorld
 {
@@ -150,6 +151,7 @@ switch (result.Reason)
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace HelloWorld
 {

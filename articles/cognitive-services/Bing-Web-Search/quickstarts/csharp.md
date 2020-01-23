@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978817"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167667"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74978817"
 
 このクイック スタートを実行するには、以下のものが必要です。
 
-* Windows:[Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
+* Windows: [Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
 * Linux/macOS:[モノラル](https://www.mono-project.com/)  
 * サブスクリプション キー
 
@@ -259,9 +259,9 @@ Bing Web Search API からの応答は、JSON として返されます。 この
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -363,7 +363,7 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
