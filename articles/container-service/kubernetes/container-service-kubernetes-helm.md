@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Helm を使用して Azure Kubernetes にコンテナーをデプロイする
 description: Helm パッケージ化ツールを使用して、Azure Container Service の Kubernetes クラスターにコンテナーをデプロイする
-services: container-service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712316"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271079"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(非推奨) Helm を使用して、Kubernetes クラスターにコンテナーをデプロイする
 
@@ -149,7 +147,7 @@ sudo mysql –h v1-mariadb
  
  
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Kubernetes チャートの管理に関する詳細については、「[Helm ドキュメント](https://github.com/kubernetes/helm/blob/master/docs/index.md)」を参照してください。 
 
