@@ -165,7 +165,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 [IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
-[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインにクエリを実行できます。
+[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[](#job)とデバイス ツインにクエリを実行できます。
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub リソース REST API
 [IoT Hub リソース REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
@@ -257,7 +257,7 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
 
 ## <a name="twin-queries"></a>ツイン クエリ
-[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
+[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[](#job)に関する情報を取得できます。
 
 ## <a name="twin-synchronization"></a>ツインの同期
 ツインの同期では、デバイス ツインまたはモジュール ツインの[必要なプロパティ](#desired-properties)を使用してデバイスまたはモジュールを構成し、それらから[報告されたプロパティ](#reported-properties)を取得して、ツインに格納します。
