@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064334"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119654"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -25,7 +25,7 @@ ms.locfileid: "71064334"
 
 ユーザー インターフェイスをカスタマイズするには、**ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、**LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
-**ContentDefinitions** 要素には、ユーザー体験で使用できる HTML5 テンプレートへの URL が含まれています。 HTML5 ページの URI は、指定されたユーザー インターフェイス ステップで使用されます。 たとえば、サインインまたはサインアップ、パスワード リセット、またはエラー ページなどです。 外観を変更するには、HTML5 ファイルの LoadUri をオーバーライドします。 必要に応じて新しいコンテンツ定義を作成できます。 この要素には、[Localization](localization.md) 要素で指定されたローカライズ識別子への、ローカライズされたリソース参照を含めることができます。
+**ContentDefinitions** 要素には、ユーザー体験で使用できる HTML5 テンプレートへの URL が含まれています。 HTML5 ページの URI は、指定されたユーザー インターフェイス ステップで使用されます。 たとえば、サインインまたはサインアップ、パスワード リセット、またはエラー ページなどです。 HTML5 ファイルの LoadUri をオーバーライドすることで、外観を変更できます。 必要に応じて新しいコンテンツ定義を作成できます。 この要素には、[Localization](localization.md) 要素で指定されたローカライズ識別子への、ローカライズされたリソース参照を含めることができます。
 
 次の例は、コンテンツ定義識別子とローカライズされたリソースの定義を示しています。
 
@@ -37,7 +37,7 @@ ms.locfileid: "71064334"
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
@@ -61,25 +61,25 @@ ms.locfileid: "71064334"
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | コンテンツ定義用の HTML5 ページの URL を含む文字列。 |
 | RecoveryUri | 0:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
 | DataUri | 1:1 | ステップに対して呼び出すユーザー エクスペリエンスを提供する、HTML ファイルの相対 URL を含む文字列。 |
-| Metadata | 1:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
+| メタデータ | 1:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
 | LocalizedResourcesReferences | 0:1 | ローカライズされたリソース参照のコレクション。 この要素を使用して、ユーザー インターフェイスと要求属性のローカライズをカスタマイズします。 |
 
 ### <a name="datauri"></a>DataUri
 
 **DataUri** 要素は、ページ識別子を指定するために使用されます。 Azure AD B2C は、ページ識別子を使用して、UI 要素とクライアント側の JavaScript を読み込み開始します。 この値のフォーマットは `urn:com:microsoft:aad:b2c:elements:page-name:version` です。  次の表に、使用できるページ識別子を一覧表示します。
 
-| 値 |   説明 |
+| 値 |   [説明] |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 例外またはエラーが発生したときにエラー ページを表示します。 |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 |
@@ -93,13 +93,13 @@ ms.locfileid: "71064334"
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | コンテンツ定義のローカライズされたリソース参照の一覧。 |
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
 | 言語 | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
 | LocalizedResourcesReferenceId | はい | **LocalizedResources** 要素の識別子。 |
@@ -141,7 +141,7 @@ ms.locfileid: "71064334"
 
 **ContentDefinition** 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 この要素は、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表は、Identity Experience Framework によって認識される一連のコンテンツ定義 ID と、それらに関連するページの種類を示しています。 任意の ID を使用して独自のコンテンツ定義を作成できます。
 
-| id | 既定のテンプレート | 説明 |
+| id | 既定のテンプレート | [説明] |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ** - 例外またはエラーが発生したときにエラーページを表示します。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ** - ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |

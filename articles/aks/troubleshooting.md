@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889443"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120963"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -45,7 +45,7 @@ Azure CNI (高度なネットワーク) を使用した場合、構成された 
 このモードでポッドがスタックする理由は複数あります。 以下を確認します。
 
 * ポッド自体。`kubectl describe pod <pod-name>` を使用します。
-* ログ。`kubectl log <pod-name>` を使用します。
+* ログ。`kubectl logs <pod-name>` を使用します。
 
 ポッドの問題のトラブルシューティング方法について詳しくは、「[Debug applications (アプリケーションをデバッグする)](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)」をご覧ください。
 

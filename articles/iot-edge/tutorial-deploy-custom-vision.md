@@ -5,18 +5,18 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701874"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167011"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
 
 Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
 
@@ -42,7 +42,7 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 >[!TIP]
 >このチュートリアルは、[Raspberry Pi 3 での Custom Vision と Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) サンプル プロジェクトの簡易バージョンです。 このチュートリアルは、クラウド VM 上で実行するように設計されており、静的な画像を使用して画像分類器のトレーニングとテストを行います。これは、IoT Edge 上で Custom Vision の評価を始めたばかりのユーザーに役立ちます。 このサンプル プロジェクトでは、物理ハードウェアを使用し、画像分類器のトレーニングとテストを行うためのライブ カメラ フィードを設定します。これは、より詳細な実際のシナリオを試す場合に便利です。
 
-このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。 
+このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
@@ -50,23 +50,23 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
-Custom Vision サービスを使用して IoT Edge モジュールを開発するには、開発用マシンに次の追加の前提条件をインストールします。 
+Custom Vision サービスを使用して IoT Edge モジュールを開発するには、開発用マシンに次の追加の前提条件をインストールします。
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Custom Vision を使用して画像分類器を構築する
 
 画像分類器を構築するには、Custom Vision プロジェクトを作成し、トレーニング画像を用意する必要があります。 このセクションで行う手順の詳細については、「[Custom Vision で分類子を構築する方法](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md)」を参照してください。
 
-画像分類器は、構築してトレーニングした後、Docker コンテナーとしてエクスポートし、IoT Edge デバイスにデプロイすることができます。 
+画像分類器は、構築してトレーニングした後、Docker コンテナーとしてエクスポートし、IoT Edge デバイスにデプロイすることができます。
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
 1. Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai/)に移動します。
 
-2. **[サインイン]** を選択し、Azure リソースへのアクセスに使用するのと同じアカウントを使用してサインインします。 
+2. **[サインイン]** を選択し、Azure リソースへのアクセスに使用するのと同じアカウントを使用してサインインします。
 
 3. **[新しいプロジェクト]** を選択します。
 
@@ -74,8 +74,8 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
    | フィールド | 値 |
    | ----- | ----- |
-   | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
-   | 説明 | オプションのプロジェクトの説明。 |
+   | Name | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
+   | [説明] | オプションのプロジェクトの説明。 |
    | リソース | Custom Vision Service リソースを含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
    | プロジェクトの種類 | **分類** |
    | 分類の種類 | **[Multiclass (single tag per image)]\(マルチクラス (画像ごとに 1 つのタグ)\)** |
@@ -86,21 +86,21 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 ### <a name="upload-images-and-train-your-classifier"></a>画像をアップロードして分類器をトレーニングする
 
-画像分類器を作成するには、トレーニング画像のセットと、テスト画像が必要です。 
+画像分類器を作成するには、トレーニング画像のセットと、テスト画像が必要です。
 
-1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンに複製またはダウンロードします。 
+1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンに複製またはダウンロードします。
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。 
+2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。
 
-3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。 
+3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
 
-4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。 
+4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。
 
-5. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 
+5. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。
 
    ![Custom Vision にドクニンジンのタグが付けられたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -108,17 +108,17 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 7. **[Add images]\(画像の追加\)** をもう一度選択します。
 
-8. 2 つ目の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Japanese Cherry** を参照します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。 
+8. 2 つ目の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Japanese Cherry** を参照します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
 
-9. この画像のグループにタグ **japanese cherry** を追加し、**Enter** キーを押してタグを適用します。 
+9. この画像のグループにタグ **japanese cherry** を追加し、**Enter** キーを押してタグを適用します。
 
-10. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 画像が正常にアップロードされたら、 **[完了]** を選択します。 
+10. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 画像が正常にアップロードされたら、 **[完了]** を選択します。
 
-11. 両方の画像のセットがタグ付けされ、アップロードされたら、 **[Train]\(トレーニング\)** を選択して分類器をトレーニングします。 
+11. 両方の画像のセットがタグ付けされ、アップロードされたら、 **[Train]\(トレーニング\)** を選択して分類器をトレーニングします。
 
 ### <a name="export-your-classifier"></a>分類器をエクスポートする
 
-1. 分類器をトレーニングした後、分類器の [パフォーマンス] ページで **[エクスポート]** を選択します。 
+1. 分類器をトレーニングした後、分類器の [パフォーマンス] ページで **[エクスポート]** を選択します。
 
    ![トレーニング済みの画像分類器をエクスポートする](./media/tutorial-deploy-custom-vision/export.png)
 
@@ -144,7 +144,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 1. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
-1. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
+1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
    | フィールド | 値 |
    | ----- | ----- |
@@ -172,7 +172,7 @@ Visual Studio Code ウィンドウによって、IoT Edge ソリューション 
 
 1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 
-2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** を維持します。 
+2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** のままにします。 
 
 ### <a name="add-your-image-classifier"></a>画像分類器を追加する
 
@@ -210,7 +210,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
 
 このセクションでは、同じ CustomVisionSolution に新しいモジュールを追加し、シミュレートされたカメラを作成するコードを設定します。 
 
-1. 同じ Visual Studio Code ウィンドウで、コマンド パレットを使用して **Azure IoT Edge: Add IoT Edge Module** を実行します。 コマンド パレットで、新しいモジュールに以下の情報を指定します。 
+1. 同じ Visual Studio Code ウィンドウで、コマンド パレットを使用して **Azure IoT Edge: Add IoT Edge Module** を実行することで追加できます。 コマンド パレットで、新しいモジュールに以下の情報を指定します。 
 
    | Prompt | 値 | 
    | ------ | ----- |
@@ -263,7 +263,8 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
 
 3. IoT Edge ソリューションのディレクトリに移動し、**modules** / **cameraCapture** フォルダーにテスト画像を貼り付けます。 この画像は、前のセクションで編集した main.py ファイルと同じフォルダー内にある必要があります。 
 
-3. Visual Studio Code で、cameraCapture モジュールの **Dockerfile.amd64** ファイルを開きます 
+4. Visual Studio Code で、cameraCapture モジュールの **Dockerfile.amd64** ファイルを開きます
 
-4. 作業ディレクトリ `WORKDIR /app` を確立する行の後に、次のコード行を追加します。 
+5. 作業ディレクトリ `WORKDIR /app` を確立する行の後に、次のコード行を追加します。
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Dockerfile を保存します。 
+6. Dockerfile を保存します。
 
 ### <a name="prepare-a-deployment-manifest"></a>配置マニフェストを準備する
 
@@ -358,7 +360,7 @@ Visual Studio Code 用の IoT Edge 拡張機能では、各 IoT Edge ソリュ�
 
     Custom Vision モジュールに *classifier* 以外の名前を付けた場合は、それに一致するように画像処理エンドポイントの値を更新します。 
 
-5. ファイルの末尾で、$edgeHub モジュールの **routes** パラメーターを更新します。 予測結果を cameraCapture から IoT Hub にルーティングできます。 
+6. ファイルの末尾で、$edgeHub モジュールの **routes** パラメーターを更新します。 予測結果を cameraCapture から IoT Hub にルーティングできます。
 
     ```json
         "routes": {
@@ -410,8 +412,7 @@ Visual Studio Code で、IoT Edge デバイスの名前を右クリックし、 
 
 cameraCapture モジュールからのメッセージとして送信される、Custom Vision モジュールの結果には、画像がドクニンジンまたは桜のものである確率が含まれます。 画像はドクニンジンであるため、確率は 1.0 と表示されるはずです。 
 
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
@@ -419,8 +420,7 @@ cameraCapture モジュールからのメッセージとして送信される、
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Custom Vision モデルをトレーニングし、モジュールとして IoT Edge デバイスにデプロイしました。 次に、画像分類サービスに対してクエリを実行し、その結果を IoT Hub にレポートできるモジュールを構築しました。 
 

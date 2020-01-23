@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950240"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931198"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 
@@ -40,7 +40,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 `ContentDefinitions` セクションには一連の `ContentDefinition` XML 要素が含まれます。 `ContentDefinition` 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 つまり、要素では、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表で、IEF エンジンで認識されたコンテンツ定義 ID のセットと、それに関連するページの種類について説明します。
 
-| コンテンツ定義 ID | 既定の HTML5 テンプレート| 説明 |
+| コンテンツ定義 ID | 既定の HTML5 テンプレート| [説明] |
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーが一覧表示されます。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
@@ -81,7 +81,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
     ![Web アプリケーション テンプレートを選択する](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. **[OK]** を選択してプロジェクトを作成します。
+6. **[OK]** を選択すると、プロジェクトが作成されます。
 
 ## <a name="step-2-create-mvc-view"></a>手順 2:MVC ビューを作成する
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>手順 2.1:B2C 組み込み HTML5 テンプレートをダウンロードする
@@ -217,17 +217,19 @@ HTML5 テンプレートを使用する準備はできています。 ただし�
     ![LoadUri 要素が強調表示された XML スニペットの例](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>手順 6:ポリシーをテナントにアップロードする
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、ポータル ツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
 
-2. **[Identity Experience Framework]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 
-3. **[すべてのポリシー]** を選択します。
+1. **[Identity Experience Framework]** を選択します。
 
-4. **[ポリシーのアップロード]** を選択します。
+1. **[すべてのポリシー]** を選択します。
 
-5. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+1. **[ポリシーのアップロード]** を選択します。
 
-6. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格することを確認します。
+1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+
+1. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格することを確認します。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>手順 7:[今すぐ実行] を使用してカスタム ポリシーをテストする
 1. **[Azure AD B2C の設定]** を選択してから、 **[Identity Experience Framework]** を選択します。
@@ -342,10 +344,6 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 5. ポリシーのテストを実行し、 **[今すぐサインアップ]** を選択して結果を確認します。
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
-* [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)が提供されています。
+## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
+* 「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)が提供されています。
 * 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)からダウンロードできます。
-
-
-
-

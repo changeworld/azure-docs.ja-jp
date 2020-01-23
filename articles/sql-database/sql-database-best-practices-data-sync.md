@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821854"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771685"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -218,7 +218,15 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 データベースを削除した後、変更のいずれかをデプロイする前に同期グループを編集すると、いずれか一方の操作が失敗します。 ポータルのインターフェイスが不整合な状態になる場合があります。 その場合は、ページを更新することで正しい状態を復元できます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="avoid-schema-refresh-timeout"></a>スキーマ更新のタイムアウトを回避する
+
+複雑なスキーマを同期する場合、同期メタデータ データベースの SKU が低いと (例: Basic)、スキーマの更新時に "操作のタイムアウト" が発生する可能性があります。 
+
+#### <a name="solution"></a>解決策
+
+この問題を軽減するには、同期メタデータ データベースを S3 などの上位の SKU にスケールアップします。 
+
+## <a name="next-steps"></a>次のステップ
 SQL データ同期の詳細については、以下を参照してください。
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)

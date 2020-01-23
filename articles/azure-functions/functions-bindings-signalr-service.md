@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769491"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120339"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -1011,9 +1011,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
-|**type**|| `signalRConnectionInfo` に設定する必要があります。|
-|**direction**|| `in` に設定する必要があります。|
-|**name**|| 接続情報オブジェクトの関数コードで使用される変数名。 |
+|**type**| 該当なし | `signalRConnectionInfo` に設定する必要があります。|
+|**direction**| 該当なし | `in` に設定する必要があります。|
+|**name**| 該当なし | 接続情報オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、接続情報が生成される SignalR ハブの名前に設定する必要があります。|
 |**userId**|**UserId**| 省略可能:アクセス キー トークンに設定するユーザー識別子要求の値。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
@@ -1024,9 +1024,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
-|**type**|| `signalR` に設定する必要があります。|
-|**direction**|| `out` に設定する必要があります。|
-|**name**|| 接続情報オブジェクトの関数コードで使用される変数名。 |
+|**type**| 該当なし | `signalR` に設定する必要があります。|
+|**direction**| 該当なし | `out` に設定する必要があります。|
+|**name**| 該当なし | 接続情報オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、接続情報が生成される SignalR ハブの名前に設定する必要があります。|
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
 

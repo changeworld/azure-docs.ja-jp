@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811348"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732401"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 
-Azure SQL Database での高可用性アーキテクチャの目的は、メンテナンス操作や障害の影響を心配せずに、データベースの稼働および実行の時間が 99.99% 以上になるように保証することです。 Azure では、パッチ適用、バックアップ、Windows および SQL のアップグレードなどの重要なサービス タスクに加えて、基本となるハードウェア、ソフトウェア、またはネットワークのエラーなどの計画外のイベントを自動的に処理します。  基本となる SQL インスタンスがパッチを適用されるか、またはフェールオーバーした場合、お使いのアプリで[再試行ロジックを使用](sql-database-develop-overview.md#resiliency)していれば、ダウンタイムは認識されません。 Azure SQL Database は、クリティカルな状況であっても迅速な復旧が可能であるため、データが常に使用可能であることが保証されます。
+Azure SQL Database での高可用性アーキテクチャの目的は、メンテナンス操作や障害の影響を心配せずに、データベースの稼働および実行の時間が 99.99% 以上になるように保証することです (さまざまなレベルに固有の SLA の詳細については、「[Azure SQL Database の SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)」を参照してください)。 Azure では、パッチ適用、バックアップ、Windows および SQL のアップグレードなどの重要なサービス タスクに加えて、基本となるハードウェア、ソフトウェア、またはネットワークのエラーなどの計画外のイベントを自動的に処理します。  基本となる SQL インスタンスがパッチを適用されるか、またはフェールオーバーした場合、お使いのアプリで[再試行ロジックを使用](sql-database-develop-overview.md#resiliency)していれば、ダウンタイムは認識されません。 Azure SQL Database は、クリティカルな状況であっても迅速な復旧が可能であるため、データが常に使用可能であることが保証されます。
 
 高可用性ソリューションは、コミットされたデータが障害によって失われないこと、メンテナンス操作がワークロードに影響を及ぼさないこと、また、データベースがソフトウェア アーキテクチャでの単一障害点にならないことを保証するように設計されています。 データベースのアップグレードやメンテナンスを行うときでも、ワークロードの停止が必要なメンテナンス期間やダウンタイムは発生しません。 
 
@@ -102,7 +102,7 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 
 Azure SQL Database の特徴は、Azure プラットフォームと緊密に統合される、組み込みの高可用性ソリューションです。 障害の検出と復旧に Service Fabric を、データ保護に Azure BLOB ストレージを、フォールト トレランスを高めるために Availability Zones を活用しています。 さらに、Azure SQL データベースでは、レプリケーションとフェールオーバーのために、SQL Server から AlwaysOn 可用性グループのテクノロジを活用しています。 これらのテクノロジを組み合わせることで、アプリケーションでは混合ストレージ モデルを最大限に活用して、高要件の SLA にも対応できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure 可用性ゾーン](../availability-zones/az-overview.md)の詳細
 - [Service Fabric](../service-fabric/service-fabric-overview.md) の詳細

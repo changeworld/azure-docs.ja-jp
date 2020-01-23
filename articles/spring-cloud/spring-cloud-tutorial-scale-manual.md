@@ -3,15 +3,15 @@ title: チュートリアル:Azure Spring Cloud でアプリケーションを�
 description: このチュートリアルでは、Azure portal で Azure Spring Cloud を使用してアプリケーションをスケーリングする方法を学習します
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: eaf7e7ec39555e5b933020835f3bb96429e3aa81
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461437"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277472"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
 
@@ -31,7 +31,7 @@ ms.locfileid: "75461437"
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal で [スケール] ページに移動する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure Spring Cloud の **[概要]** ページに移動します。
 

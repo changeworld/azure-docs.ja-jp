@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure Spring Cloud で Spring アプリケーションをデプロイ用に準備する
 description: このチュートリアルでは、Java Spring アプリケーションをデプロイ用に準備します。
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 6e35430713a3dbc8317944fed1180432a2083676
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: brendm
+ms.openlocfilehash: 9918c7866b21cd2a9e021a355fb43977c91a89cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461605"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277442"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 

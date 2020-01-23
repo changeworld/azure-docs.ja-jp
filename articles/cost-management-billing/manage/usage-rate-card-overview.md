@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: baf3d0e0e40cb9089ac91c51dd40c079232a973b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984971"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121099"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
@@ -42,13 +42,13 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 * **時間単位または日単位の集計** - 呼び出し元は、時間単位のバケットまたは日単位のバケットのどちらで Azure 使用状況データを取得するかを指定できます。 既定値は日単位です。
 * **インスタンス メタデータ (リソース タグなど)** - 完全修飾リソース URI (/subscriptions/{subscription-id}/..) などのインスタンスレベルの詳細情報、リソース グループ情報、リソース タグを取得できます。 これらのメタデータを利用すると、クロス課金のようなユースケースにおいて、プログラムでタグを使って確定的に使用状況を割り当てることができます。
 * **リソース メタデータ** - 呼び出し元は、測定名、測定カテゴリ、測定サブカテゴリ、単位、リージョンなどのリソースの詳細情報をもとに、消費内容をより詳しく理解できます。 また、エクスペリエンス全体でデータを関連付けることができるように、現在、Azure Portal、Azure 使用状況 CSV、EA 課金 CSV など、一般公開されているエクスペリエンス全体でリソース メタデータの用語の調整を進めています。
-* **さまざまなプラン タイプの使用状況** - 従量課金制、MSDN、料金コミットメント、料金クレジット、EA などのプラン タイプについて使用状況データを取得できます。ただし、[CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription) の場合は対象外となります。
+* **さまざまなプラン タイプの使用状況** - 従量課金制、MSDN、料金コミットメント、料金クレジット、EA などのプラン タイプについて使用状況データを取得できます。ただし、[CSP](https://docs.microsoft.com/partner-center) の場合は対象外となります。
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (プレビュー)
 [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) を使用して、使用可能な Azure リソースの一覧と、それぞれの推定料金情報を取得できます。 この API には次の要素が含まれています。
 
 * **Azure ロールベースのアクセス制御** - [Azure Portal](https://portal.azure.com) または [Azure PowerShell コマンドレット](/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、RateCard データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
-* **従量課金制、MSDN、料金コミットメント、料金クレジット プランのサポート (EA および [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) はサポートされていません)** - この API は、Azure のプラン レベルの料金情報を提供します。  この API の呼び出し元は、プラン情報を渡してリソースの詳細と料金を取得する必要があります。 EA プランには登録ごとにカスタマイズされた料金があるため、現在は EA 料金を提供できません。
+* **従量課金制、MSDN、料金コミットメント、料金クレジット プランのサポート (EA および [CSP](https://docs.microsoft.com/partner-center) はサポートされていません)** - この API は、Azure のプラン レベルの料金情報を提供します。  この API の呼び出し元は、プラン情報を渡してリソースの詳細と料金を取得する必要があります。 EA プランには登録ごとにカスタマイズされた料金があるため、現在は EA 料金を提供できません。
 
 ## <a name="scenarios"></a>シナリオ
 Usage API と RateCard API を組み合わせて実現できるシナリオ例を次に示します。

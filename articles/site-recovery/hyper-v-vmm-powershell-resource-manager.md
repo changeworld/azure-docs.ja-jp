@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084905"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867033"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
@@ -195,6 +195,14 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
+> [!NOTE]
+> Azure で CMK が有効になっているマネージド ディスクにレプリケートする場合は、Az PowerShell 3.3.0 以降を使用して次の手順を実行します。
+>
+> 1. VM のプロパティを更新して、マネージド ディスクへのフェールオーバーを有効にします
+> 2. Get-AsrReplicationProtectedItem コマンドレットを使用して、保護された項目の各ディスクのディスク ID を取得します
+> 3. New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]" コマンドレットを使用してディクショナリ オブジェクトを作成し、ディスク暗号化セットにディスク ID のマッピングを含めます。 これらのディスク暗号化セットは、ターゲット リージョンで事前に作成されている必要があります。
+> 4. ディクショナリ オブジェクトを -DiskIdToDiskEncryptionSetMap パラメーターに渡し、Set-AsrReplicationProtectedItem コマンドレットを使用して VM のプロパティを更新します。
+
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 
 デプロイをテストするには、単一の仮想マシンについてテスト フェールオーバーを実行します。 複数の VM が含まれる復旧計画を作成し、その計画についてテスト フェールオーバーを実行することもできます。 テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。
@@ -276,6 +284,6 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Site Recovery と Resource Manager PowerShell コマンドレットの詳細については、[こちら](/powershell/module/az.recoveryservices)を参照してください。

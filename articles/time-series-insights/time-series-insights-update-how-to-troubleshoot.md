@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452504"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861576"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>プレビュー環境の診断とトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "75452504"
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>問題: プレビュー エクスプローラーにデータが表示されない
 
-[Azure Time Series Insights プレビュー エクスプローラー](https://insights.timeseries.azure.com/preview)でデータが表示されない場合、一般的な理由がいくつかあります。
+[Azure Time Series Insights プレビュー エクスプローラー](https://insights.timeseries.azure.com/preview)でデータが表示されない場合、いくつかの一般的な理由が考えられます。
 
 - イベント ソースでデータが受信されていない可能性があります。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75452504"
 
 - イベント ソースのデータが JSON 形式ではありません。
 
-    Time Series Insights では、JSON データのみがサポートされています。 JSON のサンプルについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
+    Time Series Insights では、JSON データのみがサポートされています。 JSON のサンプルについては、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
 
 - イベント ソース キーに必要なアクセス許可がありません。
 
@@ -61,13 +61,13 @@ ms.locfileid: "75452504"
 
 - プロビジョニング時に指定したタイム シリーズ ID プロパティが、正しくないか、不足しているか、または null です。
 
-    この問題は、環境のプロビジョニング時に、タイム シリーズ ID プロパティを誤って構成した場合に発生する可能性があります。 詳しくは、「[Best practices for choosing a Time Series ID](./time-series-insights-update-how-to-id.md)」(タイム シリーズ ID の選択のベスト プラクティス) をご覧ください。 現時点では、別のタイム シリーズ ID を使うように既存の Time Series Insights 環境を更新することはできません。
+    この問題は、環境のプロビジョニング時に、タイム シリーズ ID プロパティを誤って構成した場合に発生する可能性があります。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./time-series-insights-update-how-to-id.md)」を参照してください。 現時点では、別のタイム シリーズ ID を使うように既存の Time Series Insights 環境を更新することはできません。
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>問題: 表示されるデータと表示されないデータがある
 
 タイム シリーズ ID を持たないデータを送信している場合があります。
 
-- この問題は、ペイロードにタイム シリーズ ID フィールドのないイベントを送信すると発生する可能性があります。 詳しくは、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事をご覧ください。
+- この問題は、ペイロードにタイム シリーズ ID フィールドのないイベントを送信すると発生する可能性があります。 詳細については、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
 - この問題は、お使いの環境が調整されているために発生する可能性があります。
 
     > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "75452504"
 
 - Time Series Insights S1 または S2 環境にアクセスしている可能性があります。
 
-   タイム シリーズ モデルは、従量課金制環境でのみサポートされます。 Time Series Insights プレビュー エクスプローラーから S1 または S2 環境にアクセスする方法について詳しくは、「[Visualize data in the explorer](./time-series-insights-update-explorer.md)」(エクスプローラーでデータを視覚化する) をご覧ください。
+   タイム シリーズ モデルは、従量課金制環境でのみサポートされます。 Time Series Insights プレビュー エクスプローラーから S1 または S2 環境にアクセスする方法について詳しくは、[エクスプローラーでのデータの視覚化](./time-series-insights-update-explorer.md)に関する記事を参照してください。
 
    [![環境内にイベントがない。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ ms.locfileid: "75452504"
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>問題: プレビュー エクスプローラーですべての自分のインスタンスに親がない
 
-この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳しくは、「[Work with Time Series Models](./time-series-insights-update-how-to-tsm.md)」(タイム シリーズ モデルを使用する) をご覧ください。
+この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳細については、[タイム シリーズ モデルの使用](./time-series-insights-update-how-to-tsm.md)に関する記事を参照してください。
 
   [![親のないインスタンスによって、警告が表示されます。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787048"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030083"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
@@ -36,7 +36,16 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 たとえば、Office 365 Outlook コネクタの[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
 
 > [!NOTE]
-> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。
+> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 詳細については、以下のトピックを参照してください。
 
@@ -58,7 +67,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
 この組み込みトリガーは、指定されたサービスにコールバック URL を登録し、そのサービスがその URL に対して HTTP POST 要求を送信するのを待ちます。 このイベントが発生すると、トリガーが起動してすぐにロジック アプリを実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
 1. デザイナーの検索ボックスに、フィルターとして「http webhook」と入力します。 **[トリガー]** の一覧から、 **[HTTP Webhook]** トリガーを選択します。
 
@@ -86,7 +95,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
 この組み込みアクションは、指定されたサービスにコールバック URL を登録し、ロジック アプリのワークフローを一時停止して、そのサービスがその URL に HTTP POST 要求を送信するのを待ちます。 このイベントが発生すると、アクションはロジック アプリの実行を再開します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーでロジック アプリを開きます。
 
    この例では、最初のステップとして HTTP Webhook トリガーを使用しています。
 
@@ -100,7 +109,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
    この例では、このステップの名前がわかりやすくなるように、アクション名を "HTTP Webhook action" に変更します。
 
-1. HTTP Webhook アクション パラメーターの値を指定します。これは、サブスクライブおよびサブスクライブ解除の呼び出しに使用する [HTTP Webhook トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)に似ています。次に例を示します。
+1. HTTP Webhook アクション パラメーターの値を指定します。これは、サブスクライブおよびサブスクライブ解除の呼び出しに使用する [HTTP Webhook トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)に似ています。次に例を示します。
 
    ![HTTP Webhook アクション パラメーターを入力する](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,22 +123,22 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-互いに類似するトリガーおよびアクション パラメーターの詳細については、[HTTP Webhook のパラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)に関するページを参照してください。
+互いに類似するトリガーおよびアクション パラメーターの詳細については、[HTTP Webhook のパラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)に関するページを参照してください。
 
 ### <a name="output-details"></a>出力の詳細
 
 ここでは、以下の情報を返す HTTP Webhook トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | 種類 | [説明] |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
-| status code | int | 要求の状態コード |
+| status code | INT | 要求の状態コード |
 |||
 
-| status code | 説明 |
+| status code | [説明] |
 |-------------|-------------|
-| 200 | OK |
+| 200 | [OK] |
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
@@ -138,6 +147,6 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

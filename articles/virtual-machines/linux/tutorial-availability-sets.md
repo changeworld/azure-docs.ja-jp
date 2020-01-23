@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034618"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277261"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して高可用性仮想マシンを作成して展開する
 
@@ -37,22 +37,12 @@ ms.locfileid: "74034618"
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="high-availability-in-azure-overview"></a>Azure における高可用性の概要
-Azure では、さまざまな方法で高可用性を形成できます。 提供されている 2 つの選択肢として、可用性セットと可用性ゾーンがあります。 可用性セットを使用すると、データセンター内で発生する可能性のある障害から VM が保護されます。 これには、ハードウェア障害や Azure ソフトウェア障害が含まれます。 可用性ゾーンを使用すると、物理的に独立したインフラストラクチャに VM が配置されます。リソースは共有されないので、VM は、データセンター全体の障害から保護されます。
-
-Azure 内で信頼性の高い VM ベースのソリューションをデプロイする必要がある場合に、可用性セットまたは可用性ゾーンを使用します。
-
-### <a name="availability-set-overview"></a>可用性セットの概要
+## <a name="overview"></a>概要
 
 可用性セットは、Azure で使用できる論理グループ作成機能であり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、アプリケーション全体が停止することはなく、顧客は引き続きアプリケーションを利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
 フロントエンド Web サーバーが 4 台あり、データベースをホストする 2 台のバックエンド VM を使用する典型的な VM ベースのソリューションを考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット ("Web" 階層用に 1 つ、"データベース" 層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース VM の他のインスタンスは別のハードウェアで実行されているため、稼働し続けます。
 
-### <a name="availability-zone-overview"></a>可用性ゾーンの概要
-
-Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 ゾーン冗長サービスによって、単一障害点から保護されるように Availability Zones 全体でアプリケーションとデータがレプリケートされます。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
-
-可用性セットと同様、フロントエンド Web サーバーが 4 台あり、データベースをホストする 2 台のバックエンド VM を使用する典型的な VM ベースのソリューションを考えてみましょう。 可用性セットと同様、2 つの独立した可用性ゾーンに VM をデプロイします。1 つは "Web" 層のための可用性ゾーンで、もう 1 つは "データベース" 層のための可用性ゾーンです。 新しい VM を作成する際に、az vm create コマンドのパラメーターとして可用性ゾーンを指定すれば、作成した VM が、まったく別々の可用性ゾーンに分離されることが Azure によって自動的に保証されます。 いずれかの Web サーバー VM またはデータベース サーバー VM が稼動しているデータセンター全体に問題が生じても、完全に分離されたデータセンターで稼動している他の Web サーバー VM インスタンスおよびデータベース VM インスタンスは稼動し続けるという確信が得られます。
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
@@ -111,7 +101,7 @@ az vm availability-set list-sizes \
      --output table
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: 9329ac33a771c829b8d67670bc07d9a353c58ff1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb60e80189da89b3f634c14582be606307536e6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930595"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166675"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの Azure 多要素認証 (MFA)を有効にします。
 
@@ -22,27 +22,7 @@ ms.locfileid: "75930595"
 
 この構成の前提条件は、[テナントの構成](openvpn-azure-ad-tenant.md)の手順を使用して構成された Azure AD テナントです。
 
-## <a name="mfa"></a>MFA ページを開く
-
-1. Azure portal にサインインします。
-2. **[Azure Active Directory]、[ユーザー]** の順に移動します。
-3. **[Multi-Factor Authentication]** を選択して、[多要素認証] ページを開きます。
-
-   ![サインイン](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a> ユーザーを選択します。
-
-1. **[Multi-factor authentication]** のページで、MFA を有効にするユーザーを選択します。
-2. **[有効化]** を選択します。
-
-   ![選択](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>認証を有効にする
-
-1. **[Azure Active Directory] > [エンタープライズ アプリケーション] > [すべてのアプリケーション]** へ移動します。
-2. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページで、 **[Azure VPN]** を選択します。
-
-   ![ディレクトリ ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a> サインインの設定を構成する
 

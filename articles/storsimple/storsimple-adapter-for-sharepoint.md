@@ -3,7 +3,7 @@ title: SharePoint 用 StorSimple アダプターのインストール | Microsof
 description: SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成または削除する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: v-sharos
-ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: twooley
+ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633427"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930221"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールして構成する
 ## <a name="overview"></a>概要
@@ -32,7 +32,7 @@ SharePoint 用 StorSimple アダプターはリモート BLOB ストレージ (R
 
 
 * SharePoint 用 StorSimple アダプターをダウンロードするには、Microsoft ダウンロード センターの [SharePoint 用 StorSimple アダプター][1]にアクセスしてください。
-* RBS の計画と RBS の制限の詳細については、「[SharePoint 2013 で RBS の使用を決める][2]」、または「[RBS を計画する (SharePoint Server 2010)][3]」を参照してください。
+* RBS の計画と RBS の制限の詳細については、[SharePoint 2013 での RBS の使用の決定][2]に関する記事または「[RBS を計画する (SharePoint Server 2010)][3]」を参照してください。
 
 この概要の残りの部分では、SharePoint 用 StorSimple アダプターのロールのほか、アダプターをインストールおよび構成する前に認識しておく必要がある SharePoint の容量とパフォーマンスの制限事項について簡単に説明します。 この情報を確認してから、「 [SharePoint インストール用 StorSimple アダプター](#storsimple-adapter-for-sharepoint-installation) 」に進み、アダプターの設定を開始してください。
 
@@ -50,7 +50,7 @@ RBS の Microsoft Azure StorSimple 実装には、次の利点があります。
 * Kroll Ontrack PowerControls などのデータ復旧ソフトウェアと BLOB データの StorSimple スナップショットを使用することで、SharePoint コンテンツをアイテムレベルで復旧できます (このデータ復旧ソフトウェアは別途購入します)。
 * SharePoint 用 StorSimple アダプターは SharePoint サーバーの全体管理ポータルに接続されるため、1 か所で SharePoint ソリューション全体を管理できます。
 
-BLOB コンテンツをファイル システムに移動すると、さらにコストの節約や利点があります。 たとえば、RBS を使用すると、コストの高い層 1 ストレージの必要性が軽減されます。また、コンテンツ データベースのサイズが小さくなるため、RBS により SharePoint サーバー ファームで必要なデータベース数を減らすことができます。 ただし、データベース サイズの制限や RBS 以外のコンテンツの量など、他の要因がストレージの要件に影響する可能性もあります。 RBS を使用する場合のコストと利点の詳細については、「[RBS を計画する (SharePoint Foundation 2010)][4]」と「[SharePoint 2013 で RBS の使用を決める][5]」を参照してください。
+BLOB コンテンツをファイル システムに移動すると、さらにコストの節約や利点があります。 たとえば、RBS を使用すると、コストの高い層 1 ストレージの必要性が軽減されます。また、コンテンツ データベースのサイズが小さくなるため、RBS により SharePoint サーバー ファームで必要なデータベース数を減らすことができます。 ただし、データベース サイズの制限や RBS 以外のコンテンツの量など、他の要因がストレージの要件に影響する可能性もあります。 RBS を使用する場合のコストと利点の詳細については、「[RBS を計画する (SharePoint Foundation 2010)][4]」と [SharePoint 2013 での RBS の使用の決定][5]に関する記事を参照してください。
 
 ### <a name="capacity-and-performance-limits"></a>容量とパフォーマンスに関する制限事項
 SharePoint ソリューションで RBS を使用することを検討する前に、SharePoint Server 2010 と SharePoint Server 2013 でテストされたパフォーマンスと容量に関する制限事項と、その制限事項と許容可能なパフォーマンスとの関連について注意する必要があります。 詳細については、「 [ソフトウェアの境界と制限 (SharePoint 2013)](https://technet.microsoft.com/library/cc262787.aspx)」を参照してください。
@@ -140,7 +140,7 @@ SharePoint サーバー ファームが次のように正しく構成されて�
   3. 左側のウィンドウにある **[ローカル サーバー]** をクリックします。
   4. 右側のウィンドウの **[IE セキュリティ強化の構成]** の横にある **[オン]** をクリックします。
   5. **[管理者]** の **[オフ]** をクリックします。
-  6. Click **OK**.
+  6. **[OK]** をクリックします。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>リモート BLOB ストレージ (RBS) の前提条件
 サポート対象バージョンの SQL Server を使用していることを確認します。 次のバージョンのみがサポート対象であり、RBS を使用できます。
@@ -172,7 +172,7 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 
 このメンテナンス プログラム (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) は、RBS を有効にするとすべての SharePoint WFE サーバーとアプリケーション サーバーに自動的にインストールされます。 このプログラムは次の場所にインストールされます。*ブート ドライブ*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
 
-メンテナンス プログラムの構成と使用の詳細については、「[SharePoint Server 2013 で RBS のメンテナンスを行う][8]」を参照してください。
+メンテナンス プログラムの構成と使用の詳細については、[SharePoint Server 2013 での RBS のメンテナンス][8]に関する記事を参照してください。
 
 > [!IMPORTANT]
 > RBS メンテナンス ツール プログラムはリソースを多用します。 この実行をスケジュールするのは、SharePoint ファームでのアクティビティが少ない時間帯のみにしてください。
@@ -253,7 +253,7 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 1. コントロール パネルを開き、 **[プログラムと機能]** をクリックします。
 2. **[SharePoint 用 StorSimple アダプター]** を選択してから、 **[アンインストール]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple の詳細](storsimple-overview.md)
 
 <!--Reference links-->

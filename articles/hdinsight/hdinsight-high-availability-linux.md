@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682248"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747864"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -33,7 +33,7 @@ HDInsight クラスターのノードは、Azure Virtual Machines を使用し�
 
 Hadoop サービスの高可用性を確保するために、HDInsight では 2 つのヘッド ノードが提供されます。 ヘッド ノードはどちらも、HDInsight クラスター内で同時にアクティブに実行されます。 Apache HDFS や Apache Hadoop YARN などの一部のサービスは、常にどちらかのヘッド ノードで "アクティブ" になります。 HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
 
-ヘッド ノード (および HDInsight の他のノード) では、ノードのホスト名の一部として数値が使用されます。 たとえば、`hn0-CLUSTERNAME` または `hn4-CLUSTERNAME` です。
+クラスター内のさまざまなノードの種類のホスト名を取得するには、[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) を使用してください。
 
 > [!IMPORTANT]  
 > 数値は、ノードがプライマリかセカンダリかということと関連付けないでください。 数値には、各ノードに対して一意の名前を付与する役割しかありません。
@@ -64,7 +64,7 @@ Nimbus ノードは、Apache Storm クラスターで使用できます。 Nimbu
 
 パブリック ゲートウェイ経由のアクセスは、ポート 443 (HTTPS)、22、および 23 に制限されます。
 
-|Port |説明 |
+|Port |[説明] |
 |---|---|
 |443|ヘッド ノードでホストされている Ambari やその他の Web UI または REST API にアクセスするために使用されます。|
 |22|SSH でプライマリ ヘッド ノードまたはエッジ ノードにアクセスするために使用されます。|
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 このコマンドは、`oozie` コマンドで使用する内部 URL を含む、次のような値を返します。
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 Ambari REST API の使用方法の詳細については、[Apache Ambari REST API を使用した HDInsight の監視および管理](hdinsight-hadoop-manage-ambari-rest-api.md)に関するページを参照してください。
@@ -97,7 +97,7 @@ Ambari REST API の使用方法の詳細については、[Apache Ambari REST AP
 
 インターネット経由で直接アクセスできないノードには、次の方法を使用して接続できます。
 
-|方法 |説明 |
+|方法 |[説明] |
 |---|---|
 |SSH|SSH を使用してヘッド ノードに接続すると、ヘッド ノードから SSH を使用してクラスター内の他のノードに接続できます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。|
 |SSH トンネル|インターネットに公開されていないノードのいずれかでホストされている Web サービスにアクセスする必要がある場合は、SSH トンネルを使用する必要があります。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。|
@@ -119,7 +119,7 @@ Ambari ページにアクセスすると、インストールされているサ�
 
 次のアラートは、クラスターの可用性を監視するのに役立ちます。
 
-| アラート名                               | 説明                                                                                                                                                                                  |
+| アラート名                               | [説明]                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | メトリック監視ステータス                    | このアラートは、監視ステータス スクリプトによって算出されるメトリック監視プロセスのステータスを示します。                                                                                   |
 | Ambari エージェントのハートビート                   | サーバーがエージェントとの接続を失った場合、このアラートがトリガーされます。                                                                                                                        |
@@ -149,7 +149,7 @@ Ambari ページにアクセスすると、インストールされているサ�
 | 利用可能な NodeManager の割合           | クラスター内でダウンしている NodeManager の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、NodeManager プロセス チェックの結果が集計されます。        |
 | NodeManager ヘルス                       | このホスト レベルのアラートは、NodeManager コンポーネントから利用可能なノードの正常性のプロパティを確認します。                                                                                              |
 | NodeManager Web UI                       | NodeManager Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                 |
-| NameNode の高可用性のヘルス        | アクティブの NameNode またはスタンバイの NameNode が実行されていない場合に、このサービス レベルのアラートがトリガーされます。                                                                                     |
+| NameNode の高可用性のヘルス        | アクティブな NameNode またはスタンバイの NameNode が実行されていない場合に、このサービス レベルのアラートがトリガーされます。                                                                                     |
 | DataNode プロセス                         | このホスト レベルのアラートは、個々の DataNode プロセスが稼働していてネットワークをリッスンしていると確認できない場合にトリガーされます。                                                         |
 | DataNode Web UI                          | DataNode Web UI に到達できない場合に、このホスト レベルのアラートがトリガーされます。                                                                                                                    |
 | 利用可能な JournalNode の割合           | クラスター内でダウンしている JournalNode の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、JournalNode プロセス チェックの結果が集計されます。        |
@@ -194,7 +194,7 @@ curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycl
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycl
 }
 ```
 
-URL から、サービスが現在 **hn0-CLUSTERNAME** というヘッド ノードで実行されていることがわかります。
+URL から、サービスが現在 **mycluster.wutj3h4ic1zejluqhxzvckxq0g** というヘッド ノードで実行されていることがわかります。
 
 「state」から、サービスが現在実行されている( **STARTED**) ことがわかります。
 
@@ -276,7 +276,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 * **Azure PowerShell**:[New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットを使用するときに、`-HeadNodeSize`、`-WorkerNodeSize`、および`-ZookeeperNodeSize`のパラメーターを使用してヘッド、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で説明した項目の詳細については、次を参照してください。
 
