@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824457"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762894"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 
@@ -30,14 +30,14 @@ ms.locfileid: "73824457"
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |
 | **タイトル\***                 | プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 |
-| **Summary (概要)\***               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
-| **[Long Summary]\(長い概要\)\***          | ソリューションの目的または機能。  最大長は 256 文字です。 |
-| **説明\***           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
+| **要約\***               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
+| **[Long Summary]\(長い要約\)\***          | ソリューションの目的または機能。  最大長は 256 文字です。 |
+| **Description\***           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
 | **Microsoft CSP Reseller channel (Microsoft CSP リセラー チャネル)\*** | クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。 |
-| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Preview Subscription Ids (プレビュー サブスクリプション ID)\*** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
+| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  次に例を示します。 <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\*** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | ドキュメント、リリース ノート、FAQ などに URL を追加します。 |
-| **Suggested Categories (Max 5) (推奨されるカテゴリ (最大 5 個))\*** | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 5 個設定できます。  |
+| **Suggested Categories (推奨されるカテゴリ)\*** | プライマリ カテゴリとセカンダリ カテゴリ を含む、最大 2 つのカテゴリを選択します (省略可能)。 プライマリ カテゴリまたはセカンダリ カテゴリごとに最大 2 つのサブカテゴリを選択します。 サブカテゴリを選択しない場合でも、選択したカテゴリのみで検出できます。 |
 |  |  |
 
 
@@ -127,6 +127,6 @@ Cloud パートナー ポータルにアップロードされるすべてのロ�
 |  |  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の [[サポート]](./cpp-support-tab.md) タブでは、プランに対してテクニカル サポートとユーザー サポートのリソースを指定します。

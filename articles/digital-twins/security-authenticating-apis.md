@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0aed84dc4d78f8e83f568ff3e73d1300aaedbcaa
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456896"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860964"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API に接続して認証を行う
 
@@ -24,7 +24,7 @@ Azure AD の概要については、[基礎ページ](https://docs.microsoft.com
 > [!TIP]
 > [チュートリアル](tutorial-facilities-setup.md)に従って、Azure Digital Twins サンプル アプリをセットアップして実行します。
 
-アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。 詳しい手順とスクリーンショットについては、[こちらのクイック スタート](../active-directory/develop/quickstart-register-app.md)をご覧ください。
+アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。 詳しい手順とスクリーンショットについては、[こちらのクイックスタート](../active-directory/develop/quickstart-register-app.md)をご覧ください。
 
 Azure AD でサポートされる [5 つの主要なアプリケーション シナリオ](../active-directory/develop/v2-app-types.md)は、次のとおりです。
 
@@ -49,9 +49,9 @@ Azure AD でサポートされる [5 つの主要なアプリケーション シ
 
 1. この取得されたトークンは、認証と、On-Behalf-Of フローを使用するさらにダウンストリームである API の呼び出しに使用されます
 
-On-Behalf-Of フローを調整する方法については、[OAuth 2.0 の On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)に関するページを参照してください。 また、コード サンプルについては、[ダウンストリーム Web API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)に関するページを参照してください。
+On-Behalf-Of フローを調整する方法については、[OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)に関するページを参照してください。 また、コード サンプルについては、[ダウンストリーム Web API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 OAuth 2.0 の暗黙的な許可フローを使用して Azure Digital Twins を構成およびテストするには、[Postman の構成](./how-to-configure-postman.md)に関するページを参照してください。
 

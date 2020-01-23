@@ -1,18 +1,18 @@
 ---
 title: ベスト プラクティス - Azure Batch
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534879"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026148"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -76,7 +76,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 - **Azure リージョンの依存関係**  
     時間の制約のあるワークロードまたは運用ワークロードがある場合は、単一の Azure リージョンに依存しないようにすることをお勧めします。 まれに、リージョン全体に影響する可能性がある問題が発生することがあります。 たとえば、特定の時刻に処理を開始する必要がある場合は、*開始時刻の十分前に*、プライマリ リージョンでプールをスケールアップすることを検討してください。 プールのスケーリングに失敗した場合は、バックアップ リージョン (複数可) のプールのスケールアップにフォールバックできます。 さまざまなリージョンの複数のアカウントにまたがるプールには、他のプールで問題が発生した場合に、簡単にアクセスできるバックアップが用意されています。 詳細については、「[高可用性を実現するようにアプリケーションを設計する](high-availability-disaster-recovery.md)」を参照してください。
 
-## <a name="jobs"></a>[ジョブ]
+## <a name="jobs"></a>ジョブ
 
 ジョブは、数百、数千、あるいは数百万ものタスクを含むように設計されたコンテナーです。
 
@@ -90,7 +90,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 
 既定の[アクティブ ジョブおよびジョブ スケジュールのクォータ](batch-quota-limit.md#resource-quotas)があります。 完了状態のジョブおよびジョブ スケジュールは、このクォータにはカウントされません。
 
-## <a name="tasks"></a>タスク
+## <a name="tasks"></a>処理手順
 
 タスクは、ジョブを構成する個々の作業単位です。 タスクはユーザーによって送信され、Batch によって計算ノードに対してスケジュールされます。 タスクを作成および実行する際には、いくつかの設計上の考慮事項があります。 以下のセクションでは、一般的なシナリオと、問題を処理して効率的に実行するためのタスクの設計方法について説明します。
 
@@ -147,7 +147,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 - **問題が発生した場合に Batch エージェントログを収集します**  
     ノードまたはノードで実行されているタスクの動作に関連する問題が発生した場合は、該当するノードの割り当てを解除する前に、Batch エージェント ログを収集することをお勧めします。 Batch エージェント ログは、Batch サービス ログのアップロード API を使用して収集できます。 これらのログは、サポート チケットの一部として Microsoft に提供することができ、問題のトラブルシューティングと解決に役立ちます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="security-isolation"></a>セキュリティ分離
 

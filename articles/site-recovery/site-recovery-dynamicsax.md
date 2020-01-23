@@ -1,18 +1,16 @@
 ---
-title: Azure Site Recovery を使用した多層 Dynamics AX デプロイのディザスター リカバリー | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Dynamics AX のディザスター リカバリーを設定する方法について説明します
-author: asgang
+title: Azure Site Recovery を使用した Dynamics AX のディザスター リカバリー
+description: Azure Site Recovery を使用して Dynamics AX のディザスター リカバリーを設定する方法について説明します
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620753"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941588"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定   
 
@@ -123,7 +121,7 @@ Dynamics AX アプリケーションの復旧計画は、次の手順を追加�
 * **フェールオーバー グループ 1**:Application Object Server VM をフェールオーバーします。
 選択された復旧ポイントは、データベース PIT にできるだけ近いが、先ではないことを確認してください。
 
-* **スクリプト**:ロード バランサーを追加します (E-A のみ)。
+* **Script**: ロード バランサーを追加します (E-A のみ)。
 Application Object Server VM グループが立ち上がった後、そのグループにロード バランサーを追加する (Azure Automation 経由の) スクリプトを追加します。 このタスクを実行するのにスクリプトを使用することができます。 詳細については、[多層アプリケーションのディザスター リカバリー用のロード バランサーの追加方法](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)に関する記事を参照してください。
 
 * **フェールオーバー グループ 2**:Dynamics AX クライアント VM をフェールオーバーします。 復旧計画の一部として、Web 層の VM をフェールオーバーします。
@@ -183,5 +181,5 @@ Application Object Server VM グループが立ち上がった後、そのグル
 ## <a name="summary"></a>まとめ
 Site Recovery を使用することで、Dynamics AX アプリケーション用の完全に自動されたディザスター リカバリー計画を作成できます。 障害発生時には、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。

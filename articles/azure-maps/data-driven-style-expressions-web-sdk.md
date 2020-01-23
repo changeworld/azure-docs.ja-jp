@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 |Microsoft Docs
-description: Azure Maps Web SDK でデータ ドリブンのスタイルの式を使用する方法。
+title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK でデータ ドリブンのスタイルの式を使用する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480640"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911774"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -41,7 +41,7 @@ ms.locfileid: "74480640"
 
 Azure Maps Web SDK では、単独で、または他の式と組み合わせて使用できる、さまざまな種類の式がサポートされています。
 
-| 式の種類 | 説明 |
+| 式の種類 | [説明] |
 |---------------------|-------------|
 | [集計式](#aggregate-expression) | データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義する式です。 |
 | [ブール式](#boolean-expressions) | ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。 |
@@ -81,18 +81,18 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 データ式では、機能内のプロパティ データへのアクセスを提供します。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | 配列から項目を取得します。 |
 | `['geometry-type']` | string | 機能の geometry 型: Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon を取得します。 |
 | `['get', string]` | value | 現在の機能のプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
 | `['get', string, object]` | value | 指定されたオブジェクトのプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
-| `['has', string]` | ブール値 | 機能のプロパティに、指定されたプロパティがあるかどうかを判断します。 |
-| `['has', string, object]` | ブール値 | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
+| `['has', string]` | boolean | 機能のプロパティに、指定されたプロパティがあるかどうかを判断します。 |
+| `['has', string, object]` | boolean | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
 | `['id']` | value | 機能の ID がある場合は取得します。 |
 | `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
 
-**例**
+**使用例**
 
 機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 次の例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
 
@@ -139,7 +139,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数式では、式のフレームワーク内でデータ ドリブンの計算を実行する数学演算子を提供します。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | 指定された数値の合計が計算されます。 |
 | `['-', number]` | number | 0 から、指定された数値が減算されます。 |
@@ -184,7 +184,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 - initialValue:最初の計算値が集計される初期値。
 - mapExpression:データ セット内の各ポイントに適用される式。
 
-**例**
+**使用例**
 
 データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 データ セットから作成されたクラスター内のすべてのポイントの合計収益は、次の集計式を使用して計算できます: `['+', 0, ['get', 'revenue']]`
 
@@ -194,17 +194,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 値を比較する際に、比較は厳密に型指定されます。 異なる型の値は、常に等しくないと見なされます。 解析時に型が異なるとがわかった場合は、無効と見なされ、解析エラーが生成されます。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
-| `['! ', boolean]` | ブール値 | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
-| `['!= ', value, value]` | ブール値 | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
-| `['<', value, value]` | ブール値 | 最初の入力が厳密に 2 番目の入力未満の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['<=', value, value]` | ブール値 | 最初の入力が 2 番目の入力以下の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['==', value, value]` | ブール値 | 入力値が等しい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['>', value, value]` | ブール値 | 最初の入力が厳密に 2 番目の入力より大きい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['>=' value, value]` | ブール値 | 最初の入力が 2 番目の入力以上の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['all', boolean, boolean, …]` | ブール値 | すべての入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
-| `['any', boolean, boolean, …]` | ブール値 | いずれかの入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['! ', boolean]` | boolean | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
+| `['!= ', value, value]` | boolean | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['<', value, value]` | boolean | 最初の入力が厳密に 2 番目の入力未満の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['<=', value, value]` | boolean | 最初の入力が 2 番目の入力以下の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['==', value, value]` | boolean | 入力値が等しい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['>', value, value]` | boolean | 最初の入力が厳密に 2 番目の入力より大きい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['>=' value, value]` | boolean | 最初の入力が 2 番目の入力以上の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['all', boolean, boolean, …]` | boolean | すべての入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['any', boolean, boolean, …]` | boolean | いずれかの入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
 
 ## <a name="conditional-expressions"></a>条件式
 
@@ -272,7 +272,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-**例**
+**使用例**
 
 次の例では、バブル レイヤー内のポイント機能の `entityType` プロパティを確認し、一致を検索します。 一致が見つかると、その指定値が返されるか、フォールバック値が返されます。
 
@@ -397,11 +397,11 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 型式では、文字列、数値、ブール値などのさまざまなデータ型をテストおよび変換するためのツールを提供します。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
 | `['image', string]` | string | 指定されたイメージ ID がマップ イメージ スプライトに読み込まれているかどうかを確認します。 そうである場合は、ID が返されます。それ以外の場合は、null 値が返されます。 |
-| `['to-boolean', value]` | ブール値 | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
+| `['to-boolean', value]` | boolean | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 入力値が色に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 可能な場合は、入力値を数値に変換します。 入力が `null` または `false` の場合、結果は 0 になります。 入力が `true` の場合、結果は 1 になります。 入力が文字列である場合は、ECMAScript 言語仕様の [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) 文字列関数を使用して、数値に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-string', value]` | string | 入力値が文字列に変換されます。 入力が `null` の場合、結果は `""` になります。 入力がブール値の場合、結果は `"true"` または `"false"` になります。 入力が数値である場合は、ECMAScript 言語仕様の [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) 数値関数を使用して、文字列に変換されます。 入力が色である場合は、CSS RGBA 色文字列 `"rgba(r,g,b,a)"` に変換されます。 それ以外の場合、入力は ECMAScript 言語仕様の [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) 関数を使用して、文字列に変換されます。 |
@@ -433,7 +433,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 色の式を使用すると、色の値の作成と操作が容易になります。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、およびアルファ コンポーネント `1` から、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
 | `['rgba', number, number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、および `0` から `1` の範囲内のアルファ コンポーネントから、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
@@ -461,7 +461,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 文字列演算子式では、連結や大文字と小文字の変換など、文字列の変換操作を実行します。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | 複数の文字列を連結します。 各値は文字列である必要があります。 必要に応じて、`to-string` 型式を使用して、他の型の値を文字列に変換します。 |
 | `['downcase', string]` | string | 指定された文字列を小文字に変換します。 |
@@ -821,10 +821,10 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照できるようにします。 これは、多くの計算を含む式で便利な最適化です。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | [説明] |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 結果を返す子式内に、`var` 式で使用する変数として 1 つまたは複数の値を格納します。 |
-| `['var', name: string]` | 任意 | `let` 式を使用して作成された変数を参照します。 |
+| `['var', name: string]` | any | `let` 式を使用して作成された変数を参照します。 |
 
 **例**
 
@@ -854,7 +854,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 式を実装するその他のコード サンプルについては、次の記事を参照してください。
 

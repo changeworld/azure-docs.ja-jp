@@ -1,6 +1,6 @@
 ---
-title: Azure Maps にデータのフィードバックを提供する方法 | Microsoft Docs
-description: Azure Maps のフィードバック ツールを使用してデータのフィードバックを提供します。
+title: Azure Maps にデータのフィードバックを提供する | Microsoft Azure Maps
+description: Microsoft Azure Maps のフィードバック ツールを使用してデータのフィードバックを提供します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/19/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 59670742586f596a817ad52383160a38358a6786
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776594"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911379"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure Maps にデータのフィードバックを提供する
 
@@ -63,7 +63,7 @@ Azure Maps は 2018 年 5 月から一般提供が始まり、さまざまなビ
   ![フィードバックの状態](./media/how-to-use-feedback-tool/feedback-status.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps に関する技術的な質問を投稿するには、以下にアクセスしてください。
 

@@ -2,24 +2,27 @@
 title: コンテナーに対する Azure Monitor エージェントを管理する方法 | Microsoft Docs
 description: この記事では、コンテナーに対する Azure Monitor によって使用されるコンテナー化された Log Analytics エージェントで、最も一般的なメンテナンス タスクを管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 5bd3af7787ee38011c52224f5830d8b719031db8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: b1fd9b70865dfb6bb71dadfe76620129e053acbb
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404259"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932875"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
+
 コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 初期のデプロイ後は、ライフ サイクル中に実行する必要のあるルーチンまたは省略可能なタスクが存在します。 この記事では、エージェントを手動でアップグレードし、特定のコンテナーから環境変数のコレクションを無効にする方法について詳しく説明します。 
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントをアップグレードする方法
+
 コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 エージェントの新しいバージョンがリリースされると、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスター上のエージェントが自動的にアップグレードされます。  
 
 エージェントのアップグレードが失敗した場合のために、この記事では、エージェントを手動でアップグレードするプロセスについて説明します。 リリースされたバージョンを確認するには、[エージェントのリリースのお知らせ](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。   
 
 ### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>監視対象の Kubernetes クラスター上のエージェントのアップグレード
-エージェントをアップグレードするプロセスは、2 つの単純な手順で構成されます。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。  [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
+
+Azure Red Hat OpenShift 以外のクラスター上のエージェントをアップグレードするプロセスは、2 つの簡単な手順で構成されています。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。  [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
 
 >[!NOTE]
 >このメンテナンス アクティビティを実行している間、クラスター内のノードによる収集されたデータの転送は行われず、エージェントを削除して新しいバージョンをインストールするまでの間、パフォーマンス ビューにデータは表示されません。 
@@ -51,18 +54,25 @@ ms.locfileid: "75404259"
     docker-cimprov 1.0.0.31
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>コンテナーの環境変数コレクションを無効にする方法
-コンテナーに対する Azure Monitor は、ポッドで実行されているコンテナーから環境変数を収集し、 **[コンテナー]** ビューで選択したコンテナーのプロパティ ウィンドウに表示します。 この動作を制御するには、AKS クラスターのデプロイ中、またはデプロイ後に環境変数 *AZMON_COLLECT_ENV* を設定して、特定のコンテナーのコレクションを無効にします。 この機能は、エージェント バージョン ciprod11292018 以降で使用できます。  
 
-新規または既存のコンテナーの環境変数のコレクションを無効にするには、Kubernetes デプロイ yaml 構成ファイルで変数 **AZMON_COLLECT_ENV** を値 **False** に設定します。   
+コンテナーに対する Azure Monitor は、ポッドで実行されているコンテナーから環境変数を収集し、 **[コンテナー]** ビューで選択したコンテナーのプロパティ ウィンドウに表示します。 この動作を制御するには、Kubernetes クラスターのデプロイ中、またはデプロイ後に環境変数 *AZMON_COLLECT_ENV* を設定して、特定のコンテナーのコレクションを無効にします。 この機能は、エージェント バージョン ciprod11292018 以降で使用できます。  
+
+新規または既存のコンテナーの環境変数のコレクションを無効にするには、Kubernetes デプロイ yaml 構成ファイルで変数 **AZMON_COLLECT_ENV** を値 **False** に設定します。 
 
 ```  
 - name: AZMON_COLLECT_ENV  
   value: "False"  
 ```  
 
-AKS コンテナーに変更を適用するには、次のコマンドを実行します: `kubectl apply -f  <path to yaml file>`。
+`kubectl apply -f  <path to yaml file>` コマンドを実行して、Azure Red Hat OpenShift 以外の Kubernetes クラスターに変更を適用します。 ConfigMap を編集し、この変更を Azure Red Hat OpenShift クラスターに適用するには、次のコマンドを実行します。
 
-構成の変更が有効になったことを確認するには、コンテナーに対する Azure Monitor の **[コンテナー]** ビューでコンテナーを選択し、プロパティ ウィンドウで **[環境変数]** を展開します。  このセクションには、先ほど作成した変数 - **AZMON_COLLECT_ENV = FALSE** のみが表示されます。 その他のすべてのコンテナーでは、[環境変数] セクションには、検出されたすべての環境変数がリストされます。   
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+これにより、既定のテキスト エディターが開きます。 変数を設定したら、ファイルをエディターに保存します。
+
+構成の変更が有効になったことを確認するには、コンテナーに対する Azure Monitor の **[コンテナー]** ビューでコンテナーを選択し、プロパティ ウィンドウで **[環境変数]** を展開します。  このセクションには、先ほど作成した変数 - **AZMON_COLLECT_ENV = FALSE** のみが表示されます。 その他のすべてのコンテナーでは、[環境変数] セクションには、検出されたすべての環境変数がリストされます。
 
 環境変数の検出を再度有効にするには、先ほどと同じプロセスを適用し、値を **False** から **True** に変更して、`kubectl` コマンドを再実行してコンテナーを更新します。  
 
@@ -72,4 +82,5 @@ AKS コンテナーに変更を適用するには、次のコマンドを実行�
 ```  
 
 ## <a name="next-steps"></a>次のステップ
+
 エージェントのアップグレード中に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を参照してください。

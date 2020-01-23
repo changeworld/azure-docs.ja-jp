@@ -1,6 +1,6 @@
 ---
-title: Azure Automation を使用した VM の起動と停止のトラブルシューティング
-description: この記事では、Azure Automation での VM の起動と停止のトラブルシューティングについて説明します
+title: VM の起動と停止のトラブルシューティング - Azure Automation
+description: この記事では、Azure Automation での VM の起動と停止のトラブルシューティングについて説明します。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1817d8e060f944b1bcc31c8ea9eb4fbcff58a165
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850110"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966684"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -67,13 +67,13 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
 1. Automation アカウントは、異なるリソース グループ内にある場合でも、Azure リージョン内で一意である必要があります。 ターゲット リージョンの既存の Automation アカウントをチェックします。
-2. 既存のポリシーによって、VM の起動/停止ソリューションをデプロイするために必要なリソースの使用が妨げられています。 Azure portal でポリシーの割り当てに移動し、そのリソースのデプロイを許可していないポリシーの割り当てがあるかどうかを確認します。 詳細については、[RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md) を参照してください。
+2. 既存のポリシーによって、VM の起動/停止ソリューションをデプロイするために必要なリソースの使用が妨げられています。 Azure portal でポリシーの割り当てに移動し、そのリソースのデプロイを許可していないポリシーの割り当てがあるかどうかを確認します。 詳細については、[RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md) を参照してください。
 3. VM の起動/停止ソリューションをデプロイするには、次の Azure リソースの名前空間にサブスクリプションが登録されている必要があります。
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   プロバイダーの登録時のエラーについては、「[Resolve errors for resource provider registration (リソースプロバイダーの登録エラーを解決する)](../../azure-resource-manager/resource-manager-register-provider-errors.md)」を参照してください。
+   プロバイダーの登録時のエラーについては、「[Resolve errors for resource provider registration (リソースプロバイダーの登録エラーを解決する)](../../azure-resource-manager/templates/error-register-resource-provider.md)」を参照してください。
 4. Log Analytics ワークスペースがロックされている場合は、Azure portal でワークスペースに移動し、すべてのリソースのロックを削除します。
 5. 上記の解決方法でイシューが解決しない場合は、「[ソリューションを更新する](../automation-solution-vm-management.md#update-the-solution)」の手順に従って、起動/停止ソリューションを再デプロイします。
 
@@ -226,7 +226,7 @@ Start/Stop VMs during off-hours ソリューションの使用時に、このペ
 
 何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。 さらに、[ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探すことができます。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

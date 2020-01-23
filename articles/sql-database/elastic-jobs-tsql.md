@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820592"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861338"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -405,7 +405,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|ストアド プロシージャ  |説明  |
+|ストアド プロシージャ  |[説明]  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     新しいジョブを追加します。    |
 |[sp_update_job](#sp_update_job)    |      既存のジョブを更新します。   |
@@ -625,7 +625,7 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 ステップを追加するジョブの名前。 job_name は nvarchar(128) です。
 
 [ **\@step_id =** ] step_id  
-ジョブ ステップのシーケンス ID 番号。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 指定した ID を持つステップが既に存在する場合は、既存のステップとそれ以降のすべてのステップの ID が増分されて、新しいステップをシーケンスに挿入できるようになります。 step_id を指定しないと、ステップのシーケンスの最後に自動的に割り当てられます。 step_id は int です。
+ジョブ ステップのシーケンス ID 番号を指定します。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 指定した ID を持つステップが既に存在する場合は、既存のステップとそれ以降のすべてのステップの ID が増分されて、新しいステップをシーケンスに挿入できるようになります。 step_id を指定しないと、ステップのシーケンスの最後に自動的に割り当てられます。 step_id は int です。
 
 [ **\@step_name =** ] step_name  
 ステップの名前。 最初のステップを除き、必ず指定する必要があります。最初のステップは (利便性のため)、既定の名前 "JobStep" になります。 step_name は nvarchar(128) です。
@@ -746,7 +746,7 @@ sp_add_jobstep が成功した場合、ジョブの現在のバージョン番�
 
 #### <a name="arguments"></a>引数
 [ **\@job_name =** ] 'job_name'  
-ステップが属するジョブの名前。 job_name は nvarchar(128) です。
+ステップが属するジョブの名前を指定します。 job_name は nvarchar(128) です。
 
 [ **\@step_id =** ] step_id  
 変更するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
@@ -853,7 +853,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 #### <a name="arguments"></a>引数
 [ **\@job_name =** ] 'job_name'  
-ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
+ステップを削除するジョブの名前を指定します。 job_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@step_id =** ] step_id  
 削除するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
@@ -897,7 +897,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 #### <a name="arguments"></a>引数
 [ **\@job_name =** ] 'job_name'  
-ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
+ステップを削除するジョブの名前を指定します。 job_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@job_execution_id =** ] job_execution_id OUTPUT  
 ジョブ実行の ID が割り当てられる出力パラメーター。job_version は uniqueidentifier です。
@@ -906,7 +906,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 0 (成功) または 1 (失敗)
 
 #### <a name="remarks"></a>解説
-なし。
+[なし] :
  
 #### <a name="permissions"></a>アクセス許可
 既定では、sysadmin 固定サーバー ロールのメンバーは、このストアド プロシージャを実行できます。 これにより、ジョブの監視しか行えないようにユーザーが制限されます。そのユーザーには、ジョブ エージェントを作成するときに、指定されたジョブ エージェント データベースの次のデータベース ロールのいずれかを許可できます。
@@ -934,7 +934,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 0 (成功) または 1 (失敗)
 
 #### <a name="remarks"></a>解説
-なし。
+[なし] :
  
 #### <a name="permissions"></a>アクセス許可
 既定では、sysadmin 固定サーバー ロールのメンバーは、このストアド プロシージャを実行できます。 これにより、ジョブの監視しか行えないようにユーザーが制限されます。そのユーザーには、ジョブ エージェントを作成するときに、指定されたジョブ エージェント データベースの次のデータベース ロールのいずれかを許可できます。
@@ -994,7 +994,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 0 (成功) または 1 (失敗)
 
 #### <a name="remarks"></a>解説
-なし。
+[なし] :
 
 #### <a name="permissions"></a>アクセス許可
 既定では、sysadmin 固定サーバー ロールのメンバーは、このストアド プロシージャを実行できます。 これにより、ジョブの監視しか行えないようにユーザーが制限されます。そのユーザーには、ジョブ エージェントを作成するときに、指定されたジョブ エージェント データベースの次のデータベース ロールのいずれかを許可できます。
@@ -1163,7 +1163,7 @@ GO
  レコードを削除するジョブのジョブ ID 番号。 job_id は uniqueidentifier であり、既定値は NULL です。 job_id または job_name のいずれかを指定する必要がありますが、両方を指定することはできません。
 
 [ **\@oldest_date =** ] oldest_date  
- 履歴に保持する最も古いレコード。 oldest_date は DATETIME2 であり、既定値は NULL です。 oldest_date を指定すると、sp_purge_jobhistory は指定した値より古いレコードのみを削除します。
+ 履歴の中で保持する最も古いレコードを指定します。 oldest_date は DATETIME2 であり、既定値は NULL です。 oldest_date を指定すると、sp_purge_jobhistory は指定した値より古いレコードのみを削除します。
 
 #### <a name="return-code-values"></a>リターン コードの値
 0 (成功) または 1 (失敗) 解説 ターゲット グループを使うと、簡単にデータベースのコレクションをジョブのターゲットにできます。
@@ -1192,7 +1192,7 @@ GO
 [ジョブ データベース](sql-database-job-automation-overview.md#job-database)では次のビューを使用できます。
 
 
-|表示  |説明  |
+|表示  |[説明]  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  ジョブの実行履歴を表示します。      |
 |[jobs](#jobs-view)     |   すべてのジョブを表示します。      |
@@ -1200,7 +1200,7 @@ GO
 |[jobsteps](#jobsteps-view)     |     各ジョブの現在のバージョンのすべてのステップを表示します。    |
 |[jobstep_versions](#jobstep_versions-view)     |     各ジョブのすべてのバージョンのすべてのステップを表示します。    |
 |[target_groups](#target_groups-view)     |      すべてのターゲット グループを表示します。   |
-|[target_group_members](#target_groups_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
+|[target_group_members](#target_group_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
 
 
 ### <a name="job_executions-view"></a>job_executions view
@@ -1210,23 +1210,23 @@ GO
 ジョブの実行履歴を表示します。
 
 
-|列名|   データ型   |説明|
+|列名|   データ型   |[説明]|
 |---------|---------|---------|
-|**job_execution_id**   |uniqueidentifier|  ジョブ実行のインスタンスの一意の ID。
+|**job_execution_id**   |UNIQUEIDENTIFIER|  ジョブ実行のインスタンスの一意の ID。
 |**job_name**   |nvarchar(128)  |ジョブの名前。
-|**job_id** |uniqueidentifier|  ジョブの一意の ID。
-|**job_version**    |int    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。
-|**step_id**    |int|   ステップの (このジョブで) 一意の ID。 NULL は、これが親ジョブの実行であることを示します。
+|**job_id** |UNIQUEIDENTIFIER|  ジョブの一意の ID。
+|**job_version**    |INT    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。
+|**step_id**    |INT|   ステップの (このジョブで) 一意の ID。 NULL は、これが親ジョブの実行であることを示します。
 |**is_active**| bit |情報がアクティブか非アクティブかを示します。 1 はアクティブなジョブを示し、0 は非アクティブなジョブを示します。
 |**lifecycle**| nvarchar(50)|ジョブの状態を示す値: 'Created'、'In Progress'、'Failed'、'Succeeded'、'Skipped'、'SucceededWithSkipped'|
 |**create_time**|   datetime2(7)|   ジョブが作成された日付と時刻。
 |**start_time** |datetime2(7)|  ジョブが実行を開始した日付と時刻。 ジョブがまだ実行されていない場合は NULL です。
 |**end_time**|  datetime2(7)    |ジョブが実行を終了した日付と時刻。 ジョブがまだ実行されていない場合、またはまだ実行を完了していない場合は、NULL です。
-|**current_attempts**   |int    |ステップが再試行された回数。 親ジョブの場合は 0 です。子ジョブの場合は、実行ポリシーに基づいて 1 以上になります。
+|**current_attempts**   |INT    |ステップが再試行された回数。 親ジョブの場合は 0 です。子ジョブの場合は、実行ポリシーに基づいて 1 以上になります。
 |**current_attempt_start_time** |datetime2(7)|  ジョブが実行を開始した日付と時刻。 NULL は、これが親ジョブの実行であることを示します。
 |**last_message**   |nvarchar(max)| ジョブまたはステップの履歴メッセージ。 
 |**target_type**|   nvarchar(128)   |ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、またはデータベースです。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、または 'SqlDatabase' です。 NULL は、これが親ジョブの実行であることを示します。
-|**target_id**  |uniqueidentifier|  ターゲット グループ メンバーの一意の ID。  NULL は、これが親ジョブの実行であることを示します。
+|**target_id**  |UNIQUEIDENTIFIER|  ターゲット グループ メンバーの一意の ID。  NULL は、これが親ジョブの実行であることを示します。
 |**target_group_name**  |nvarchar(128)  |ターゲット グループの名前。 NULL は、これが親ジョブの実行であることを示します。
 |**target_server_name**|    nvarchar(256)|  ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
 |**target_database_name**   |nvarchar(128)| ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
@@ -1238,14 +1238,14 @@ GO
 
 すべてのジョブを表示します。
 
-|列名|   データ型|  説明|
+|列名|   データ型|  [説明]|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |ジョブの名前。|
-|**job_id**|    uniqueidentifier    |ジョブの一意の ID。|
-|**job_version**    |int    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
+|**job_id**|    UNIQUEIDENTIFIER    |ジョブの一意の ID。|
+|**job_version**    |INT    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
 |**description**    |nvarchar(512)| ジョブの説明。 enabled bit    ジョブが有効か無効かを示します。 1 は有効なジョブを示し、0 は無効なジョブを示します。|
 |**schedule_interval_type** |nvarchar(50)   |ジョブが実行されるときを示す値: 'Once'、'Minutes'、'Hours'、'Days'、'Weeks'、'Months'
-|**schedule_interval_count**|   int|    ジョブの各実行の間に発生する schedule_interval_type 期間の数。|
+|**schedule_interval_count**|   INT|    ジョブの各実行の間に発生する schedule_interval_type 期間の数。|
 |**schedule_start_time**    |datetime2(7)|  ジョブが最後に実行を開始した日付と時刻。|
 |**schedule_end_time**| datetime2(7)|   ジョブが最後に実行を完了した日付と時刻。|
 
@@ -1256,11 +1256,11 @@ GO
 
 すべてのジョブのバージョンを表示します。
 
-|列名|   データ型|  説明|
+|列名|   データ型|  [説明]|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |ジョブの名前。|
-|**job_id**|    uniqueidentifier    |ジョブの一意の ID。|
-|**job_version**    |int    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
+|**job_id**|    UNIQUEIDENTIFIER    |ジョブの一意の ID。|
+|**job_version**    |INT    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
 
 
 ### <a name="jobsteps-view"></a>jobsteps ビュー
@@ -1269,33 +1269,33 @@ GO
 
 各ジョブの現在のバージョンのすべてのステップを表示します。
 
-|列名    |データ型| 説明|
+|列名    |データ型| [説明]|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| ジョブの名前。|
-|**job_id** |uniqueidentifier   |ジョブの一意の ID。|
-|**job_version**|   int|    ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
-|**step_id**    |int    |ステップの (このジョブで) 一意の ID。|
+|**job_id** |UNIQUEIDENTIFIER   |ジョブの一意の ID。|
+|**job_version**|   INT|    ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。|
+|**step_id**    |INT    |ステップの (このジョブで) 一意の ID。|
 |**step_name**  |nvarchar(128)  |ステップの (このジョブで) 一意の名前。|
 |**command_type**   |nvarchar(50)   |ジョブ ステップで実行されるコマンドの種類。 v1 の場合、値は 'TSql' でなければならず、これが既定値です。|
 |**command_source** |nvarchar(50)|  コマンドの場所。 v1 の場合、'Inline' が既定値であり、受け入れられる値はこれだけです。|
 |**command**|   nvarchar(max)|  command_type によってエラスティック ジョブで実行されるコマンド。|
 |**credential_name**|   nvarchar(128)   |ジョブの実行に使われるデータベース スコープの資格情報の名前。|
 |**target_group_name**| nvarchar(128)   |ターゲット グループの名前。|
-|**target_group_id**|   uniqueidentifier|   ターゲット グループの一意の ID。|
-|**initial_retry_interval_seconds**|    int |最初の再試行の前の遅延。 既定値は 1 です。|
-|**maximum_retry_interval_seconds** |int|   再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 既定値は 120 です。|
+|**target_group_id**|   UNIQUEIDENTIFIER|   ターゲット グループの一意の ID。|
+|**initial_retry_interval_seconds**|    INT |最初の再試行の前の遅延。 既定値は 1 です。|
+|**maximum_retry_interval_seconds** |INT|   再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 既定値は 120 です。|
 |**retry_interval_backoff_multiplier**  |real|  ジョブ ステップの実行が複数回にわたり失敗した場合に、再試行の遅延に適用する乗数。 既定値は 2.0 です。|
-|**retry_attempts** |int|   このステップが失敗した場合に使う再試行の回数。 既定値は 10 で、10 回再試行することを示します。|
-|**step_timeout_seconds**   |int|   再試行する間隔を示す分単位の時間。 既定値は 0 で、0 分間隔を示します。|
+|**retry_attempts** |INT|   ステップが失敗したときに行う再試行の回数を指定します。 既定値は 10 で、10 回再試行することを示します。|
+|**step_timeout_seconds**   |INT|   再試行する間隔を示す分単位の時間。 既定値は 0 で、0 分間隔を示します。|
 |**output_type**    |nvarchar(11)|  コマンドの場所。 現在のプレビューでは、'Inline' が既定値であり、受け入れられる値はこれだけです。|
 |**output_credential_name**|    nvarchar(128)   |結果セット格納先サーバーへの接続に使われる資格情報の名前。|
-|**output_subscription_id**|    uniqueidentifier|   クエリ実行からの結果セットの格納先サーバー/データベースのサブスクリプションの一意の ID。|
+|**output_subscription_id**|    UNIQUEIDENTIFIER|   クエリ実行からの結果セットの格納先サーバー/データベースのサブスクリプションの一意の ID。|
 |**output_resource_group_name** |nvarchar(128)| 格納先サーバーが存在するリソース グループの名前。|
 |**output_server_name**|    nvarchar(256)   |結果セットの格納先サーバーの名前。|
 |**output_database_name**   |nvarchar(128)| 結果セットの格納先データベースの名前。|
 |**output_schema_name** |nvarchar(max)| 格納先スキーマの名前。 指定されていない場合の既定値は dbo です。|
 |**output_table_name**| nvarchar(max)|  クエリ結果からの結果セットを格納するテーブルの名前。 テーブルがまだ存在しない場合は、結果セットのスキーマに基づいて自動的に作成されます。 スキーマは、結果セットのスキーマと一致する必要があります。|
-|**max_parallelism**|   int|    ジョブ ステップが一度に実行される、エラスティック プールごとのデータベースの最大数。 既定値は NULL で、無制限を意味します。 |
+|**max_parallelism**|   INT|    ジョブ ステップが一度に実行される、エラスティック プールごとのデータベースの最大数。 既定値は NULL で、無制限を意味します。 |
 
 
 ### <a name="jobstep_versions-view"></a>jobstep_versions ビュー
@@ -1310,26 +1310,26 @@ GO
 
 すべてのターゲット グループを一覧表示します。
 
-|列名|データ型| 説明|
+|列名|データ型| [説明]|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |ターゲット グループ (データベースのコレクション) の名前。 
-|**target_group_id**    |uniqueidentifier   |ターゲット グループの一意の ID。
+|**target_group_id**    |UNIQUEIDENTIFIER   |ターゲット グループの一意の ID。
 
-### <a name="target_groups_members-view"></a>target_groups_members ビュー
+### <a name="target_group_members-view"></a>target_group_members ビュー
 
-[jobs].[target_groups_members]
+[jobs].[target_group_members]
 
 すべてのターゲット グループのすべてのメンバーを表示します。
 
-|列名|データ型| 説明|
+|列名|データ型| [説明]|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128)|ターゲット グループ (データベースのコレクション) の名前。 |
-|**target_group_id**    |uniqueidentifier   |ターゲット グループの一意の ID。|
-|**membership_type**    |int|   ターゲット グループ メンバーがターゲット グループに含まれるか除外されるかを指定します。 target_group_name の有効な値は、'Include' または 'Exclude' です。|
+|**target_group_id**    |UNIQUEIDENTIFIER   |ターゲット グループの一意の ID。|
+|**membership_type**    |INT|   ターゲット グループ メンバーがターゲット グループに含まれるか除外されるかを指定します。 target_group_name の有効な値は、'Include' または 'Exclude' です。|
 |**target_type**    |nvarchar(128)| ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、またはデータベースです。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。|
-|**target_id**  |uniqueidentifier|  ターゲット グループ メンバーの一意の ID。|
+|**target_id**  |UNIQUEIDENTIFIER|  ターゲット グループ メンバーの一意の ID。|
 |**refresh_credential_name**    |nvarchar(128)  |ターゲット グループ メンバーへの接続に使われるデータベース スコープの資格情報の名前。|
-|**subscription_id**    |uniqueidentifier|  サブスクリプションの一意の ID。|
+|**subscription_id**    |UNIQUEIDENTIFIER|  サブスクリプションの一意の ID。|
 |**resource_group_name**    |nvarchar(128)| ターゲット グループ メンバーが存在するリソース グループの名前。|
 |**server_name**    |nvarchar(128)  |ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 |
 |**database_name**  |nvarchar(128)  |ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。|
@@ -1339,10 +1339,10 @@ GO
 
 ## <a name="resources"></a>リソース
 
- - ![トピック リンク アイコン](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "トピック リンク アイコン") [Transact-SQL 構文の表記規則](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![トピック リンク アイコン](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "トピック リンク アイコン") [Transact-SQL 構文表記規則](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
 - [SQL Server の承認と権限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

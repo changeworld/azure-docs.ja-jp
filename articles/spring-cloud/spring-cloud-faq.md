@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229244"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891855"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -36,7 +36,7 @@ Azure Spring Cloud サービス インスタンスあたりのアプリ イン�
 サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10
 永続ボリューム | 10 x 50 GB
 
-\* _制限を増やすには、[サポート チケット](https://azure.microsoft.com/support/faq/)を開いてください。_
+\*_制限を増やすには、[サポート チケット](https://azure.microsoft.com/support/faq/)を開いてください。_
 
 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -63,7 +63,7 @@ OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッ
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
 
 ## <a name="development"></a>開発
 
@@ -83,7 +83,7 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
-はい。 詳細については、[チュートリアル: Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)」を参照してください。
+はい。 詳細については、「[チュートリアル:Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)」を参照してください。
 
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
@@ -93,14 +93,14 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 はい。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud はブルーグリーン デプロイをサポートしていますか?
 はい。 詳細については、[ステージング環境の設定](spring-cloud-howto-staging-environment.md)に関するページを参照してください。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kubernetes にアクセスしてアプリケーション コンテナーを操作することはできるのでしょうか?
 
-No.  Azure Spring Cloud は、基盤となるアーキテクチャの管理作業から開発者を解放し、開発者がアプリケーションのコードとビジネス ロジックに専念できるようにするためのものです。
+いいえ。  Azure Spring Cloud は、基盤となるアーキテクチャの管理作業から開発者を解放し、開発者がアプリケーションのコードとビジネス ロジックに専念できるようにするためのものです。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
@@ -108,7 +108,7 @@ No.  Azure Spring Cloud は、基盤となるアーキテクチャの管理作�
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
-No.
+いいえ。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
@@ -121,6 +121,6 @@ No.
 
 移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](spring-cloud-troubleshoot.md)に関するページを参照してください。

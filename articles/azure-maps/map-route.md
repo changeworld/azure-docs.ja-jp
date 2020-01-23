@@ -1,6 +1,6 @@
 ---
-title: Azure Maps を使った道順の表示 | Microsoft Docs
-description: Azure Maps Web SDK を使用してマップ上の 2 つの場所の間の方向を表示する方法。
+title: マップにルート方向を表示する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップに 2 地点間の方向を表示する方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 53e207e33c56455642edc9dcfcf328f5ca87945f
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976485"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910984"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 
@@ -66,7 +66,7 @@ ms.locfileid: "68976485"
 
 マップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内でルート クエリ、データ ソース、シンボル、および線レイヤーとカメラ境界が作成および設定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

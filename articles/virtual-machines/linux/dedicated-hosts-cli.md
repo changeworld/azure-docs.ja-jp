@@ -2,38 +2,32 @@
 title: CLI を使用して Azure 専用ホストをデプロイする
 description: Azure CLI を使用して専用ホストに VM をデプロイします。
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036403"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834936"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>プレビュー:Azure CLI を使用して専用ホストに VM をデプロイする
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストに VM をデプロイする
  
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 
 Azure CLI バージョン2.0.70 以降がインストールされていること、および `az login` を使用して Azure アカウントにサインインしていることを確認します。 
 
-> [!IMPORTANT]
-> 現在、専用ホストはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> **プレビューに関する既知の制限事項**
-> - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-> - プレビューの初期リリースでは、次の VM シリーズがサポートされています: DSv3 と ESv3。 
+
+## <a name="limitations"></a>制限事項
+
+- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
+- 初期リリースでは、次の VM シリーズがサポートされています。DSv3 と ESv3。 
  
 
 ## <a name="create-resource-group"></a>リソース グループの作成 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>ホストを作成する 
 
-次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  プレビュー期間中は、次のホスト SKU 値がサポートされます: DSv3_Type1 と ESv3_Type1。
-
+次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  次の SKU 値がサポートされています。DSv3_Type1 と ESv3_Type1。
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。
 
@@ -278,7 +271,7 @@ az vm host group delete -g myDHResourceGroup --host-group myHostGroup
 az group delete -n myDHResourceGroup 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、[専用ホスト](dedicated-hosts.md)の概要に関するページを参照してください。
 

@@ -1,19 +1,19 @@
 ---
 title: REST API バージョン 2019-05-06-Preview
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search サービス REST API バージョン 2019-05-06-Preview には、ナレッジ ストアや顧客管理の暗号化キーなどの試験的機能が含まれています。
+description: Azure Cognitive Search サービス REST API バージョン 2019-05-06-Preview には、ナレッジ ストアやインクリメンタル エンリッチメント用のインデクサー キャッシュなどの試験的機能が含まれています。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720031"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922468"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search サービス REST API バージョン 2019-05-06-Preview
 
@@ -25,19 +25,17 @@ ms.locfileid: "73720031"
 
 ## <a name="new-in-2019-05-06-preview"></a>2019-05-06-Preview の新機能
 
-+ [増分インデックスの作成](cognitive-search-incremental-indexing-conceptual.md)は、スキルセットに状態とキャッシュを追加するインデックス作成用の新しいモードであり、ソース データ、インデクサー、スキルセットの定義が変更されていない場合に、既存の出力を再利用できます。 この機能は、コグニティブ スキルセットを通じて定義されたエンリッチメントにのみ適用されます。
++ [インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) では、エンリッチメント パイプラインにキャッシュが追加されます。これにより、スキルセットや別のオブジェクトに対する更新など、対象を絞った変更によってコンテンツが変更されない場合に、既存の出力を再利用できるようになります。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。
 
-+ [Cosmos DB インデクサー](search-howto-index-cosmosdb.md)は、MongoDB API、Gremlin API、Cassandra API をサポートしています。
++ [Cosmos DB インデクサー](search-howto-index-cosmosdb.md)では、MongoDB API (プレビュー)、Gremlin API (プレビュー)、Cassandra API (プレビュー) がサポートされています。
 
-+ [Azure Data Lake Storage Gen2 インデクサー](search-howto-index-azure-data-lake-storage.md)では、Data Lake Storage Gen2 のコンテンツとメタデータのインデックスを作成できます。
++ [Azure Data Lake Storage Gen2 インデクサー (プレビュー)](search-howto-index-azure-data-lake-storage.md) では、Data Lake Storage Gen2 のコンテンツとメタデータにインデックスを付けることができます。
 
 + [ドキュメント抽出 (プレビュー)](cognitive-search-skill-document-extraction.md) は、インデックスの作成中に使用されるコグニティブ スキルであり、スキルセット内からファイルのコンテンツを抽出できます。 ドキュメント解析は、これまでスキルセットの実行前にのみ行われていました。 このスキルを追加することで、スキルセットの実行内でこの操作を実行することもできます。
 
 + [テキスト翻訳 (プレビュー)](cognitive-search-skill-text-translation.md) は、インデックスの作成中に使用されるコグニティブ スキルであり、テキストを評価し、各レコードについて、指定したターゲット言語に翻訳されたテキストを返します。
 
 + [ナレッジ ストア](knowledge-store-concept-intro.md)は、AI ベースのエンリッチメント パイプラインの新しい宛先です。 その物理データ構造は Azure Blob Storage と Azure Table Storage に存在し、コグニティブ スキルセットがアタッチされているインデクサーを実行した時点で作成され、データが挿入されます。 ナレッジ ストア自体の定義は、スキルセットの定義の中で指定されます。 ナレッジ ストアの定義では、"*プロジェクション*" 要素によってデータの物理構造 (データの形状をどのようにするか、データの保存先をテーブル ストレージと BLOB ストレージのどちらにするか、ビューが複数存在するかどうか) を制御できます。
-
-+ サービス側で保存時の暗号化に使用する[顧客が管理する暗号化キー](search-security-manage-encryption-keys.md)も新しいプレビュー機能です。 Microsoft が管理する組み込みの暗号化の保存だけではなく、自分だけが鍵を所有している暗号化のレイヤーを追加で適用できます。
 
 ## <a name="earlier-preview-features"></a>これまでのプレビュー機能
 
@@ -57,7 +55,7 @@ ms.locfileid: "73720031"
 
 Azure Cognitive Search サービスは複数のバージョンで使用できます。 詳しくは、[API バージョン](search-api-versions.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Search REST API リファレンス ドキュメントを確認します。 問題が発生した場合は、[StackOverflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
 

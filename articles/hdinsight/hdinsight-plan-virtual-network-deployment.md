@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228987"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044716"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -251,9 +251,15 @@ HDInsight クラスターからの送信トラフィックを制御する方法�
 
 ## <a name="load-balancing"></a>負荷分散
 
-HDInsight クラスターを作成すると、ロード バランサーも作成されます。 このロード バランサーの種類は [Basic SKU レベル](../load-balancer/load-balancer-overview.md#skus)にあり、一定の制約があります。 これらの制約の 1 つは、異なるリージョンに 2 つの仮想ネットワークがある場合、基本的なロード バランサーに接続できないことです。 詳細については、[仮想ネットワークに関する FAQ: グローバル vnet ピアリングでの制約](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関するページを参照してください。
+HDInsight クラスターを作成すると、ロード バランサーも作成されます。 このロード バランサーの種類は [Basic SKU レベル](../load-balancer/concepts-limitations.md#skus)にあり、一定の制約があります。 これらの制約の 1 つは、異なるリージョンに 2 つの仮想ネットワークがある場合、基本的なロード バランサーに接続できないことです。 詳細については、[仮想ネットワークに関する FAQ: グローバル vnet ピアリングでの制約](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="transport-layer-security"></a>トランスポート層セキュリティ
+
+パブリック クラスター エンドポイント `https://<clustername>.azurehdinsight.net` 経由でのクラスターへの接続は、クラスター ゲートウェイ ノードを介してプロキシされます。 これらの接続は、TLS と呼ばれるプロトコルを使用してセキュリティ保護されます。 ゲートウェイでより高いバージョンの TLS を適用すると、これらの接続のセキュリティが向上します。 新しいバージョンの TLS を使用する必要がある理由について詳しくは、「[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)」をご覧ください。
+
+HDInsight クラスターのゲートウェイ ノードでサポートされる TLS の最小バージョンは、デプロイ時に Resource Manager テンプレートで *minSupportedTlsVersion* プロパティを使用して制御できます。 サンプル テンプレートについては、[HDInsight の最小 TLS 1.2 クイックスタートのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)を参照してください。 このプロパティでは、次の 3 つの値がサポートされています: "1.0"、"1.1"、"1.2"。それぞれ、TLS 1.0+、TLS 1.1+、TLS 1.2+ に対応します。 このプロパティを指定しないと、既定の Azure HDInsight クラスターのパブリック HTTPS エンドポイントでは、TLS 1.2 接続だけでなく、下位互換性のために古いバージョンも受け入れられます。 最終的には、HDInsight のすべてのゲートウェイ ノード接続で、TLS 1.2 以降が適用されるようになります。
+
+## <a name="next-steps"></a>次のステップ
 
 * コード サンプルおよび Azure Virtual Network の作成例については、[Azure HDInsight クラスター用の仮想ネットワークの作成](hdinsight-create-virtual-network.md)に関するページを参照してください。
 * HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454286"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830515"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -90,10 +90,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **ストレージ アカウントに関する考慮事項**: 
 
-1. 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
-2. ファイアウォールなし: NSG フロー ログは、[信頼性の高い Azure Storage 向け Microsoft サービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)としては、オンボードされません。 ファイアウォールを無効にするには、「[ストレージ アカウント上でファイアウォールを無効にする方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account)」を参照してください。 
-3. サービス エンドポイントなし: 現在の制限により、ログは、サービス エンドポイント経由ではなく、ストレージ アカウントへの直接出力のみが可能です。 既存のサービス エンドポイントの削除に関するヘルプについては、「[サービス エンドポイントによって NSG フローログを使用する方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints)」を参照してください。
-4. キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
+- 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
+- キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
 **リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスが適用されたすべての NSG で NSG フロー ログ記録を有効にして、すべてのトラフィックを確実に記録することをお勧めします。 詳細については、ネットワーク セキュリティ グループの 「[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)」 に関するページを参照してください。
 

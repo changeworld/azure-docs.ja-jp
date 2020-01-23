@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456995"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863531"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -50,7 +50,7 @@ Management API オブジェクト モデルも一覧表示されます。
 
 一覧表示されている各オブジェクト モデルを選択すると、キー属性の詳細な概要が表示されます。
 
-[![Swagger モデルを展開されてモデルの内容が表示されている](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger モデルが展開されてモデルの内容が読めるようになっている](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 生成された Swagger オブジェクト モデルは、Azure Digital Twins の使用可能なすべての[オブジェクトおよび API](./concepts-objectmodel-spatialgraph.md) を確認するのに便利です。 開発者は、Azure Digital Twins でソリューションを作成するときに、このリソースの使用できます。
 
@@ -66,13 +66,13 @@ Swagger では、Management API を構成するすべてのエンドポイント
 
 [![Swagger UI に表示されている Swagger エンドポイント](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-さらに詳細な概要を見るには、各リソースをクリックします。
+各リソースを選択すると、追加の内容が表示され、さらに詳細な概要が得られます。
 
 ## <a name="use-swagger-to-test-endpoints"></a>Swagger を使用してエンドポイントをテストする
 
 Swagger が提供する強力な機能の 1 つは、ドキュメントの UI から直接、API エンドポイントをテストできることです。
 
-特定のエンドポイントを選択すると、 **[試してみる]** と表示されます。
+特定のエンドポイントを選択すると、 **[試してみる]** ボタンが表示されます。
 
 [![Swagger の [試してみる] ボタン](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 ## <a name="swagger-response-data"></a>Swagger の応答データ
 
-一覧表示されている各エンドポイントには、開発およびテストを検証するための応答本文データも含まれます。 これらの例には、HTTP 要求が成功したときに表示される状態コードと JSON が含まれます。
+一覧表示されている各エンドポイントには、開発およびテストを検証するための応答本文データも含まれます。 これらの例には、成功した HTTP 要求の状態コードおよび JSON が含まれます。
 
 [![Swagger JSON 応答例](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -104,7 +104,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | 名前  | 置換後の文字列 | 例 |
+    | Name  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -124,9 +124,9 @@ Azure Active Directory の登録を完了した後:
 
     [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)を参照してください。
+OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)をお読みください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のオブジェクト モデルおよび空間インテリジェンス グラフについて詳しくは、[Azure Digital Twins オブジェクト モデル](./concepts-objectmodel-spatialgraph.md)に関する記事をご覧ください。
 

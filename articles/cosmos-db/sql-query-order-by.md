@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444787"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929592"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    ORDER BY 句では、並べ替えるフィールドのインデックスがインデックス作成ポリシーに含まれている必要があります。 Azure Cosmos DB のクエリ ランタイムでは、計算されたプロパティに対してではなく、プロパティ名に対する並べ替えがサポートされています。 Azure Cosmos DB では、複数の ORDER BY プロパティがサポートされています。 複数の ORDER BY プロパティを使ったクエリを実行するには、並べ替えるフィールドに対する[複合インデックス](index-policy.md#composite-indexes)を定義する必要があります。
    
 > [!Note] 
-> .NET SDK 3.4.0 以上を使用しているとき、一部のドキュメントについて並べ替えの基準となっているプロパティが定義されていない可能性がある場合は、そのプロパティにインデックスを明示的に作成する必要があります。 既定のインデックス作成ポリシーでは、並べ替えプロパティが定義されていないドキュメントを取得することができません。
+> 一部のドキュメントについて並べ替えの基準となっているプロパティが定義されていない可能性があり、ORDER BY クエリでそれを取得したい場合は、そのプロパティにインデックスを明示的に作成する必要があります。 既定のインデックス作成ポリシーでは、並べ替えプロパティが定義されていないドキュメントを取得することができません。
 
 ## <a name="examples"></a>例
 

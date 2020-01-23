@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 30c7137de42a141f5f10e3348d93d6db9ebe75ff
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535439"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834765"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,28 +111,28 @@ test_labels = test_data.pop(label).values
 * 季節のパターンの学習を支援する時間ベースの機能を作成します
 * カテゴリ変数を数量にエンコードします
 
-`AutoMLConfig` オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 次の表に、各パラメーターとその使用法を示します。
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 次の表に、各パラメーターとその使用法を示します。
 
 | Param | [説明] | 必須 |
 |-------|-------|-------|
 |`time_column_name`|時系列の構築とその頻度の推定に使用される入力データで、datetime 列を指定するために使用されます。|✓|
 |`grain_column_names`|入力データ内の個々の系列グループを定義する名前。 グレインが定義されていない場合、データ セットは 1 つの時系列であると見なされます。||
 |`max_horizon`|時系列頻度を単位にした目的の最大予測期間を定義します。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
-|`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 これは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 たとえば、製品の需要を予測しようとする場合、任意の月の需要は、3 か月前の特定の商品の価格によって異なる可能性があります。 この例では、モデルが正しいリレーションシップでトレーニングされるように、目標 (要求) を 3 か月間遅延させてください。||
+|`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 たとえば、製品の需要を予測しようとする場合、任意の月の需要は、3 か月前の特定の商品の価格によって異なる可能性があります。 この例では、モデルが正しいリレーションシップでトレーニングされるように、目標 (要求) を 3 か月間遅延させてください。||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。||
 |`enable_dnn`|予測 DNN を有効にします。||
 
 詳しくは、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)をご覧ください。
 
-ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。
+ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。 `max_horizon`、`target_rolling_window_size`、および `target_lags` は "auto" に設定することをお勧めします。これにより、これらの値が自動的に検出されます。 次の例では、これらのパラメーターに "auto" 設定が使用されています。 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50,
-    "target_lags": 2,
-    "target_rolling_window_size": 10,
+    "max_horizon": "auto",
+    "target_lags": "auto",
+    "target_rolling_window_size": "auto",
     "preprocess": True,
 }
 ```
@@ -140,7 +140,7 @@ time_series_settings = {
 > [!NOTE]
 > 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
-上記のコード スニペットで `grain_column_names` を定義することで、AutoML では 2 つの個別の時系列グループを作成します (複数の時系列とも呼ばれます)。 グレインが定義されていない場合、AutoML ではデータセットが単一の時系列であると想定されます。 単一の時系列の詳細については、「[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)」を参照してください。
+上記のコード スニペットで `grain_column_names` を定義することで、AutoML では 2 つの個別の時系列グループを作成します (複数の時系列とも呼ばれます)。 グレインが定義されていない場合、AutoML ではデータセットが単一の時系列であると想定されます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。
 
 次に標準的な `AutoMLConfig` オブジェクトを作成し、`forecasting` タスクの種類を指定して、実験を送信します。 モデルの終了後、最適な実行イテレーションを取得します。
 
@@ -167,12 +167,13 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-次のような高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
+次のような高度な予測の構成の詳細なコード例については、[予測サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)を参照してください。
 
-* 休日の検出と特性付け
-* ローリング オリジン クロス検証
-* 構成可能なラグ
-* ローリング ウィンドウの集計機能
+* [休日の検出と特性付け](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [ローリング オリジン クロス検証](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [構成可能なラグ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [ローリング ウィンドウの集計機能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>DNN が有効な予測実験を構成する
 
@@ -229,7 +230,7 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供するだけで、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `max_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
+モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供すると、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `max_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
 
     day_datetime,store,week_of_year
     01/01/2019,A,1

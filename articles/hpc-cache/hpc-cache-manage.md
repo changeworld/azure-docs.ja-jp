@@ -4,14 +4,14 @@ description: Azure portal を使用して Azure HPC Cache を管理および更�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166720"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867080"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する
 
@@ -23,7 +23,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ページの上部のボタンは、キャッシュを管理する助けになります。
 
-* [ **[フラッシュ]** ](#flush-cached-data) - キャッシュされたすべてのデータをストレージ ターゲットに書き込みます
+* [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
 * [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
 * **[最新の情報に更新]** - 概要ページを再読み込みします
 * [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
@@ -63,9 +63,18 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 **[削除]** ボタンでキャッシュが破棄されます。 キャッシュを削除すると、そのリソースすべてが破棄され、アカウントの料金が発生しなくなります。
 
-キャッシュを削除してもストレージ ターゲットは影響を受けません。 後で新しいキャッシュに追加することも、個別に使用を停止することもできます。
+キャッシュを削除しても、ストレージ ターゲットとして使用されたバックエンド ストレージ ボリュームは影響を受けません。 後で新しいキャッシュに追加することも、個別に使用を停止することもできます。
 
-キャッシュは、最終的なシャットダウンの一部として、保存されていないデータをストレージ ターゲットに自動的にフラッシュします。
+> [!NOTE]
+> Azure HPC Cache は、キャッシュを削除する前に、変更されたデータをキャッシュからバックエンド ストレージ システムに自動的に書き込みません。
+>
+> キャッシュ内のすべてのデータが長期ストレージに書き込まれるようにするには、次の手順を実行します。
+>
+> 1. ストレージ ターゲット ページの [削除] ボタンを使用して、Azure HPC Cache から各ストレージ ターゲットを[削除](hpc-cache-edit-storage.md#remove-a-storage-target)します。 ターゲットを削除する前に、システムは、変更されたデータをキャッシュからバックエンド ストレージ システムに自動的に書き込みます。
+> 1. ストレージ ターゲットが完全に削除されるまで待ちます。 キャッシュから書き込むデータが大量にある場合、このプロセスには 1 時間以上かかることがあります。 この処理が完了すると、削除操作が正常に完了したことを示すポータル通知が表示され、ストレージ ターゲットは一覧に表示されなくなります。
+> 1. 影響を受けるすべてのストレージ ターゲットが削除された後は、キャッシュを削除しても安全です。
+>
+> あるいは、[フラッシュ](#flush-cached-data) オプションを使用して、キャッシュされたデータを保存することもできます。ただし、フラッシュの完了後、キャッシュ インスタンスが破棄される前に、クライアントが変更をキャッシュに書き込んだ場合、作業が失われるわずかな危険性があります。
 
 ## <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
 
@@ -75,7 +84,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 その他のツールとアラートは、ポータルのサイドバーにある **[監視]** という見出しの下にあるページから利用できます。 詳細については、[Azure 監視のドキュメント](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)のポータルに関するセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 <!-- * Learn more about metrics and statistics for hpc cache -->
 * [Azure のメトリックと統計ツール](../azure-monitor/index.yml)について確認する

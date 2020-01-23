@@ -1,20 +1,20 @@
 ---
-title: Service Fabric のシークレット ストア
-description: この記事では、Service Fabric のシークレット ストアを使用する方法について説明します。
+title: Azure Service Fabric セントラル シークレット ストア
+description: この記事では、Azure Service Fabric のセントラル シークレット ストアを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457512"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980940"
 ---
-#  <a name="service-fabric-secrets-store"></a>Service Fabric のシークレット ストア
-この記事では、Service Fabric のシークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成および使用する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するために使用されるローカル シークレット ストア キャッシュです。
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric のセントラル シークレット ストア 
+この記事では、Azure Service Fabric のセントラル シークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するローカル シークレット ストア キャッシュです。
 
-## <a name="enabling-secrets-store"></a>シークレット ストアの有効化
- `fabricSettings` の下でクラスター構成に以下を追加して、CSS を有効にします。 CSS には、クラスター証明書とは異なる証明書を使用することをお勧めします。 すべてのノードに暗号化証明書がインストールされていること、および `NetworkService` が証明書の秘密キーの読み取りアクセス許可を持っていることを確認してください。
+## <a name="enable-central-secrets-store"></a>セントラル シークレット ストアを有効にする
+`fabricSettings` の下でクラスター構成に次のスクリプトを追加して、CSS を有効にします。 CSS には、クラスター証明書以外の証明書を使用することをお勧めします。 すべてのノードに暗号化証明書がインストールされていること、および `NetworkService` が証明書の秘密キーの読み取りアクセス許可を持っていることを確認してください。
   ```json
     "fabricSettings": 
     [
@@ -46,10 +46,14 @@ ms.locfileid: "75457512"
         ...
      ]
 ```
-## <a name="declare-secret-resource"></a>シークレット リソースを宣言する
-シークレット リソースを作成するには、Resource Manager テンプレートを使用するか、REST API を使用します。
+## <a name="declare-a-secret-resource"></a>シークレット リソースを宣言する
+シークレット リソースは、Resource Manager テンプレートまたは REST API を使用することで作成できます。
 
-* Resource Manager テンプレートの使用
+### <a name="use-resource-manager"></a>Resource Manager の使用
+
+Resource Manager を使用してシークレット リソースを作成するには、次のテンプレートを使用します。 このテンプレートは `supersecret` シークレット リソースを作成しますが、シークレット リソースの値はまだ設定されていません。
+
+
 ```json
    "resources": [
       {
@@ -66,20 +70,20 @@ ms.locfileid: "75457512"
         }
       ]
 ```
-上記のテンプレートは `supersecret` シークレット リソースを作成しますが、シークレット リソースの値はまだ設定されていません。
 
-* REST API の使用
+### <a name="use-the-rest-api"></a>REST API の使用
 
-シークレット リソースを作成するために、`supersecret` は `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` に PUT 要求を出します。 シークレットを作成するには、クラスター証明書または管理者クライアント証明書が必要です。
+REST API を使用して `supersecret` シークレット リソースを作成するために、`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` に PUT 要求を出します。 シークレット リソースを作成するには、クラスター証明書または管理者クライアント証明書が必要です。
 
 ```powershell
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
 ```
 
-## <a name="set-secret-value"></a>シークレット値を設定する
-* Resource Manager テンプレートの使用
+## <a name="set-the-secret-value"></a>シークレット値を設定する
 
-次の Resource Manager テンプレートは、バージョン `ver1` を使用してシークレット `supersecret` の値を作成して設定します。
+### <a name="use-the-resource-manager-template"></a>Resource Manager テンプレートを使用する
+
+シークレット値を作成および設定するには、次の Resource Manager を使用します。 このテンプレートは、`supersecret` シークレットリソースのシークレット値をバージョン `ver1` として設定します。
 ```json
   {
   "parameters": {
@@ -117,67 +121,68 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
     }
   ],
   ```
-* REST API の使用
+### <a name="use-the-rest-api"></a>REST API の使用
 
+REST API を使用してシークレット値を設定するには、次のスクリプトを使用します。
 ```powershell
 $Params = @{"properties": {"value": "mysecretpassword"}}
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-## <a name="using-the-secret-in-your-application"></a>アプリケーションでのシークレットの使用
+## <a name="use-the-secret-in-your-application"></a>アプリケーションでのシークレットの使用
 
-1.  settings.xml ファイルに次の内容を含むセクションを追加します。 ここで、Value の形式は {`secretname:version`} であることに注意してください
+Service Fabric アプリケーションでシークレットを使用するには、次の手順に従います。
 
-```xml
-  <Section Name="testsecrets">
-   <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
-  </Section>
-```
-2. 次に、ApplicationManifest.xml にこのセクションをインポートします
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
-        </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
+1. **settings.xml** ファイルに次のスニペットを含むセクションを追加します。 ここでは、値が {`secretname:version`} の形式であることに注意してください。
 
-環境変数 "SecretPath" は、すべてのシークレットが格納されているディレクトリを指します。 セクション `testsecrets` の下に一覧表示される各パラメーターは、別のファイルに格納されます。 アプリケーションは、次に示すようにシークレットを使用できるようになりました
-```C#
-secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
-```
-3. コンテナーへのシークレットのマウント
+   ```xml
+     <Section Name="testsecrets">
+      <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
+     </Section>
+   ```
 
-コンテナー内でシークレットを使用できるようにするために必要な変更は、`<ConfigPackage>` に MountPoint を指定することだけです。
-変更された ApplicationManifest.xml の例を次に示します  
+1. **ApplicationManifest.xml** にこのセクションをインポートします。
+   ```xml
+     <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
+           </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
 
-```xml
-<ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
-        <!-- Linux Container
-         <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
-        -->
-      </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
-シークレットは、コンテナー内のマウント ポイントで使用可能になります。
+   環境変数 `SecretPath` は、すべてのシークレットが格納されているディレクトリを指します。 `testsecrets` セクションの下に一覧表示される各パラメーターは、別のファイルに格納されます。 アプリケーションは、次のようにシークレットを使用できるようになりました。
+   ```C#
+   secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
+   ```
+1. コンテナーにシークレットをマウントします。 コンテナー内でシークレットを使用できるようにするために必要な変更は、`<ConfigPackage>` にマウント ポイントを `specify` することだけです。
+次のスニペットは、変更された **ApplicationManifest.xml** です。  
 
-4. 環境変数へのシークレットのバインド 
+   ```xml
+   <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
+           <!-- Linux Container
+            <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
+           -->
+         </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
+   シークレットは、コンテナー内のマウント ポイントで使用可能です。
 
-Type="SecretsStoreRef" を指定することにより、プロセス環境変数にシークレットをバインドできます。 ServiceManifest.xml で `supersecret` バージョン `ver1` を 環境変数 `MySuperSecret` にバインドする方法の例を次に示します。
+1. `Type='SecretsStoreRef` を指定することにより、プロセス環境変数にシークレットをバインドできます。 次のスニペットは、**ServiceManifest.xml** で `supersecret` バージョン `ver1` を環境変数 `MySuperSecret` にバインドする方法の例です。
 
-```xml
-<EnvironmentVariables>
-  <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
-</EnvironmentVariables>
-```
+   ```xml
+   <EnvironmentVariables>
+     <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
+   </EnvironmentVariables>
+   ```
+
 ## <a name="next-steps"></a>次のステップ
 アプリケーション マニフェストとサービス セキュリティの詳細については、[こちら](service-fabric-application-and-service-security.md)をご覧ください。

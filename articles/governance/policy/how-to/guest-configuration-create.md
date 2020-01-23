@@ -3,12 +3,12 @@ title: ゲスト構成ポリシーを作成する方法
 description: zure PowerShell を使用して Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608526"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867333"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
@@ -65,7 +65,7 @@ Azure マシンの状態を検証するための独自の構成を作成する�
 
 #### <a name="configuration-requirements"></a>構成要件
 
-ゲスト構成でカスタム構成を使用するための唯一の要件は、構成の名前を、それが使用されるすべての箇所で一貫したものにすることです。  これには、コンテンツ パッケージの .zip ファイルの名前、コンテンツ パッケージ内に保存される mof ファイル内の構成名、ゲスト割り当て名として ARM 内で使用される構成名が含まれます。
+ゲスト構成でカスタム構成を使用するための唯一の要件は、構成の名前を、それが使用されるすべての箇所で一貫したものにすることです。 この名前要件には、コンテンツ パッケージの .zip ファイルの名前、コンテンツ パッケージ内に保存される MOF ファイル内の構成名、ゲスト割り当て名として Resource Manager テンプレート内で使用される構成名が含まれます。
 
 #### <a name="get-targetresource-requirements"></a>Get-TargetResource の要件
 
@@ -181,7 +181,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 Azure Policy のゲスト構成で、実行時に使われるシークレットを管理する最適な方法は、Azure Key Vault に保存することです。 この設計は、カスタム DSC リソース内に実装されます。
 
-1. 最初に、Azure でユーザー割り当てマネージド ID を作成します。
+1. Azure でユーザー割り当てマネージド ID を作成します。
 
    その ID は、Key Vault に格納されているシークレットにアクセスするために、マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
 
@@ -195,7 +195,7 @@ Azure Policy のゲスト構成で、実行時に使われるシークレット�
    詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
    大規模な場合は、Azure Resource Manager を使って Azure Policy でこの ID を割り当てます。 詳しい手順については、[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)に関する記事をご覧ください。
 
-1. 最後に、カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。
+1. カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。
 
    `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Linux ポリシーの場合は、構成に **AttributesYmlContent** プロパティを含め、それに従って値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる YaML ファイルが自動的に作成されます。 次の例を見てください。
+Linux ポリシーの場合は、構成に **AttributesYmlContent** プロパティを含め、必要に応じて値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる AML ファイルが自動的に作成されます。 次の例を見てください。
 
 ```powershell
 Configuration FirewalldEnabled {

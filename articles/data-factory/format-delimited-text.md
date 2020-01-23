@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931259"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830192"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
 
@@ -26,9 +26,9 @@ ms.locfileid: "74931259"
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、区切りテキスト データセットでサポートされるプロパティの一覧を示します。
 
-| プロパティ         | 説明                                                  | 必須 |
+| プロパティ         | [説明]                                                  | 必須 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | データセットの type プロパティは、**DelimitedText** に設定する必要があります。 | はい      |
+| 型             | データセットの type プロパティは、**DelimitedText** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。  | はい      |
 | columnDelimiter  | ファイル内の列を区切るために使用する文字。 現時点では、複数文字の区切り記号はマッピング データ フローについてのみサポートされており、コピー アクティビティではサポートされていません。 <br>既定値は**コンマ `,`** です。列区切り記号が区切り記号なしを意味する空の文字列として定義されている場合は、行全体が 1 つの列と見なされます。 | いいえ       |
 | rowDelimiter     | ファイル内の行を区切るために使われる 1 文字または "\r\n"。<br>既定値は、**読み取りでは "\r\n"、"\r"、"\n" のいずれか**、**書き込みでは "\n" または "\r\n"** (それぞれ、マッピング データ フローおよびコピー アクティビティ)。 <br>`rowDelimiter` を区切り記号なし (空の文字列) に設定するときは、`columnDelimiter` も区切り記号なし (空の文字列) に設定する必要があります。これは、コンテンツ全体を 1 つの値として扱うことを意味します。 | いいえ       |
@@ -37,7 +37,7 @@ ms.locfileid: "74931259"
 | firstRowAsHeader | 1 行目を列の名前が含まれるヘッダー行として扱うかどうか、またはヘッダー行にするかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は**空の文字列**です。 | いいえ       |
 | encodingName     | テスト ファイルの読み取り/書き込みに使用するエンコードの種類です。 <br>使用できる値は次のとおりです。"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>マッピング データ フローでは UTF-7 エンコードはサポートされないことに注意してください。 | いいえ       |
-| compressionCodec | テキスト ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 <br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに注意してください。 <br>コピー アクティビティを使用して ZipDeflate ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは `<path specified in dataset>/<folder named as source zip file>/` フォルダーに抽出されます。 | いいえ       |
+| compressionCodec | テキスト ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 <br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに注意してください。 <br>コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されます。 | いいえ       |
 | compressionLevel | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage の区切りテキスト データセットの例を次に示します。
@@ -75,41 +75,41 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ       | 説明                                                  | 必須 |
+| プロパティ       | [説明]                                                  | 必須 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | コピー アクティビティのソースの type プロパティは **DelimitedTextSource** に設定する必要があります。 | はい      |
+| 型           | コピー アクティビティのソースの type プロパティは **DelimitedTextSource** に設定する必要があります。 | はい      |
 | formatSettings | プロパティのグループ。 後の**区切りテキストの読み取り設定**に関する表をご覧ください。 | いいえ       |
 | storeSettings  | データ ストアからデータを読み取る方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる読み取り設定があります。 | いいえ       |
 
 `formatSettings` でサポートされている**区切りテキストの読み取り設定**:
 
-| プロパティ      | 説明                                                  | 必須 |
+| プロパティ      | [説明]                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | formatSettings の type は、**DelimitedTextReadSetting** に設定する必要があります。 | はい      |
-| skipLineCount | 入力ファイルからのデータ読み取り時にスキップする**空でない**行数を示します。 <br>skipLineCount と firstRowAsHeader の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。 | いいえ       |
+| 型          | formatSettings の type は、**DelimitedTextReadSetting** に設定する必要があります。 | はい      |
+| skipLineCount | 入力ファイルからのデータ読み取り時にスキップする**空でない**行数を示します。 <br>skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 | いいえ       |
 
 ### <a name="delimited-text-as-sink"></a>シンクとしての区切りテキスト
 
-コピー アクティビティの ***\*sink\**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ       | 説明                                                  | 必須 |
+| プロパティ       | [説明]                                                  | 必須 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | コピー アクティビティのソースの type プロパティは **DelimitedTextSink** に設定する必要があります。 | はい      |
+| 型           | コピー アクティビティのソースの type プロパティは **DelimitedTextSink** に設定する必要があります。 | はい      |
 | formatSettings | プロパティのグループ。 後の**区切りテキストの書き込み設定**に関する表をご覧ください。 |          |
 | storeSettings  | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。  | いいえ       |
 
 `formatSettings` でサポートされている**区切りテキストの書き込み設定**:
 
-| プロパティ      | 説明                                                  | 必須                                              |
+| プロパティ      | [説明]                                                  | 必須                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | formatSettings の type は、**DelimitedTextWriteSetting** に設定する必要があります。 | はい                                                   |
-| fileExtension | 出力ファイルの名前に使用するファイル拡張子 (`.csv`、`.txt` など)。 出力の DelimitedText データセットで `fileName` が指定されていない場合、指定する必要があります。 | 出力データセットでファイル名が指定されていない場合、はい |
+| 型          | formatSettings の type は、**DelimitedTextWriteSetting** に設定する必要があります。 | はい                                                   |
+| fileExtension | 出力ファイルの名前に使用するファイル拡張子 (`.csv`、`.txt` など)。 出力の DelimitedText データセットで `fileName` が指定されていない場合、指定する必要があります。 ファイル名が出力データセット内で構成されている場合は、シンク ファイル名として使用され、ファイル拡張子の設定は無視されます。  | 出力データセットでファイル名が指定されていない場合、はい |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
 Mapping Data Flow の[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事で詳細を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [マッピング データ フロー](concepts-data-flow-overview.md)

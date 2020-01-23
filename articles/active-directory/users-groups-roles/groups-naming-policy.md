@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a9136ce26f0070c8822292c741be59de537d3667
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027048"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941055"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
 
@@ -65,7 +65,12 @@ ms.locfileid: "74027048"
 - 禁止単語に文字の制限はありません。
 - 禁止単語リストで構成できるフレーズの上限は 5000 フレーズです。 
 
-### <a name="administrator-override"></a>管理者のオーバーライド
+### <a name="roles-and-permissions"></a>ロールとアクセス許可
+
+名前付けポリシーを構成するには、次のいずれかのロールが必要です。
+- 全体管理者
+- グループ管理者
+- ユーザー管理者
 
 すべてのグループ ワークロードおよびエンドポイントで、選択した管理者をこれらのポリシーから除外できます。これにより、管理者は禁止単語や独自の名前付け規則を使用してグループを作成できます。 グループ名前付けポリシーから除外される管理者ロールを次に示します。
 
@@ -77,7 +82,7 @@ ms.locfileid: "74027048"
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する
 
-1. 全体管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グループ管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
     ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy.png)
@@ -252,7 +257,7 @@ Azure Active Directory PowerShell コマンドレット | Azure Active Directory
 Exchange 管理センター | Exchange 管理センターは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアスで名前付け規則に従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。
 Microsoft 365 管理センター | Microsoft 365 管理センターは名前付けポリシーに準拠しています。 ユーザーがグループ名を作成または編集すると、名前付けポリシーが自動的に適用されます。ユーザーがカスタム禁止単語を入力すると、該当するエラーが返されます。 Microsoft 365 管理センターでは、名前付けポリシーのプレビューはまだ表示されず、ユーザーがグループ名を入力したときにカスタム禁止単語エラーは返されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、Azure AD グループに関する追加情報が提供されています。
 

@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851965"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903319"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Azure portal (プレビュー) を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
 
 ## <a name="overview"></a>概要
@@ -27,20 +27,19 @@ BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ
 > カスタマー マネージド キーには、サービス側の暗号化に関するいくつかの注意事項があります。 
 >   * この機能は [Azure Service Bus Premium](service-bus-premium-messaging.md) レベルでサポートされます。 これは、Standard レベルの Service Bus 名前空間に対して有効にすることはできません。
 >   * 暗号化は、新規または空の名前空間に対してのみ有効にすることができます。 名前空間にデータが含まれている場合、暗号化操作は失敗します。
->   * お使いの Service Bus 名前空間の Azure Key Vault に[仮想ネットワーク (VNet) サービスのエンドポイント](service-bus-service-endpoints.md)が構成されている場合、BYOK はサポートされません。 
 
 キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/key-vault-overview.md)
 
 この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/quick-create-portal.md)」をご覧ください。
 
 > [!IMPORTANT]
-> Azure Service Bus でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 次に例を示します。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
+> Azure Service Bus でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 これらは次のとおりです。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
 
 ## <a name="enable-customer-managed-keys"></a>カスタマー マネージド キーを有効にする
 Azure portal でカスタマー マネージド キーを有効にするには、次の手順のようにします。
 
 1. お使いの Service Bus Premium 名前空間に移動します。
-2. Service Bus 名前空間の **[設定]** ページで、 **[暗号化 (プレビュー)]** を選択します。
+2. Service Bus 名前空間の **[設定]** ページで、 **[暗号化]** を選択します。
 3. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化**を選択します。
 
     ![カスタマー マネージド キーの有効化](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -107,11 +106,8 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 
 暗号化キーを取り消すと、暗号化されている名前空間で Service Bus サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除済みのキーを復元すると、Service Bus サービスによってキーが選択され、暗号化された Service Bus 名前空間からデータにアクセスできるようになります。
 
-> [!NOTE]
-> お使いのキー コンテナーから既存の暗号化キーを削除し、Service Bus 名前空間の新しいキーに置き換えた場合、削除済みのキーは (キャッシュされているため) 最大 1 時間は引き続き有効であるため、新しいキーを使用してのみアクセスできる新しいデータと共に、古いデータ (古いキーで暗号化されているデータ) に引き続きアクセスできる可能性があります。 この動作は、プレビュー バージョンの機能の設計によるものです。 
-
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 - [Service Bus の概要](service-bus-messaging-overview.md)
 - [Key Vault の概要](../key-vault/key-vault-overview.md)
 

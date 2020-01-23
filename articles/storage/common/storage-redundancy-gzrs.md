@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534300"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973377"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
 geo ゾーン冗長ストレージ (GZRS) (プレビュー) では、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) の高可用性と、[geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) によって提供されるリージョン障害からの保護を融合させます。 GZRS ストレージ アカウント内のデータは、プライマリ リージョンの 3 つの [Azure 可用性ゾーン](../../availability-zones/az-overview.md)間でレプリケートされ、リージョンの災害から保護するためにセカンダリ リージョンにもレプリケートされます。 各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 詳細と例外については、[ドキュメント](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)をご覧ください。
 
-GZRS ストレージ アカウントを使用すると、可用性ゾーンが使用できなくなったり、回復できなくなった場合に、引き続きデータの読み取りと書き込みを行うことができます。 さらに、リージョン全体の障害が発生した場合や、プライマリ リージョンを回復できない災害が発生した場合にも、データは保持されます。 GZRS は、オブジェクトに年間 99.99999999999999% (シックスティーンナイン) 以上の持続性を確保するように設計されています。 GZRS では、LRS、ZRS、GRS、または RA-GRS と同じ[スケーラビリティ ターゲット](storage-scalability-targets.md)も提供されます。 プライマリ リージョンで災害が発生した場合にアプリケーションでデータを読み取れるようにする必要がある場合は、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を使用して、必要に応じてセカンダリ リージョンのデータに対する読み取りアクセスを有効にすることができます。
+GZRS ストレージ アカウントを使用すると、可用性ゾーンが使用できなくなったり、回復できなくなった場合に、引き続きデータの読み取りと書き込みを行うことができます。 さらに、リージョン全体の障害が発生した場合や、プライマリ リージョンを回復できない災害が発生した場合にも、データは保持されます。 GZRS は、オブジェクトに年間 99.99999999999999% (シックスティーンナイン) 以上の持続性を確保するように設計されています。 GZRS では、LRS、ZRS、GRS、または RA-GRS と同じスケーラビリティ ターゲットも提供されます。 プライマリ リージョンで災害が発生した場合にアプリケーションでデータを読み取れるようにする必要がある場合は、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を使用して、必要に応じてセカンダリ リージョンのデータに対する読み取りアクセスを有効にすることができます。
 
 一貫性、持続性、高可用性、優れたパフォーマンス、ディザスター リカバリーのための回復性を必要とするアプリケーションに対しては、GZRS を使用することをお勧めします。 リージョンの災害が発生した場合のセカンダリ リージョンへの読み取りアクセスのセキュリティを強化するには、ストレージ アカウントに対して RA-GZRS を有効にします。
 
@@ -51,7 +51,7 @@ GZRS または RA-GZRS が有効になっているストレージ アカウン�
 > [!IMPORTANT]
 > 非同期レプリケーションでは、データがプライマリ リージョンに書き込まれる時間から、それがセカンダリ リージョンにレプリケートされるまでの遅延が伴います。 地域的な災害が発生した場合に、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更が失われる可能性があります。
 
-ストレージ アカウントを作成するときは、そのアカウントのデータをレプリケートする方法を指定し、そのアカウントのプライマリ リージョンも指定します。 geo レプリケートされたアカウントのペアになっているセカンダリ リージョンは、プライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。 GZRS または RA-GZRS を使用したストレージ アカウントの作成については、「[ストレージアカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+ストレージ アカウントを作成するときは、そのアカウントのデータをレプリケートする方法を指定し、そのアカウントのプライマリ リージョンも指定します。 geo レプリケートされたアカウントのペアになっているセカンダリ リージョンは、プライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。 GZRS または RA-GZRS を使用したストレージ アカウントの作成については、「[ストレージアカウントの作成](storage-account-create.md)」を参照してください。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>高可用性を確保するために RA-GZRS を使用する
 
@@ -146,7 +146,7 @@ GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみ
 4. **[Problem]\(問題)** セクションで以下の値を指定します。
     - **[重大度]** :既定値をそのまま使用します。
     - **[問題の種類]** : **[データ移行]** を選択します。
-    - **[カテゴリ]** : **[Migrate to (RA-)GZRS within a region]\(リージョン内の (RA-)GZRS への移行\)** を選択します。
+    - **カテゴリ**: **[Migrate to (RA-)GZRS within a region]\(リージョン内の (RA-)GZRS への移行\)** を選択します。
     - **[タイトル]** : **(RA-)GZRS アカウント移行**などのわかりやすいタイトルを入力します。
     - **[詳細]** : **[詳細]** ボックスには、たとえば、"\_\_ リージョンで [LRS、GRS] から GZRS に移行する" などの詳細情報を入力します。 または、「\_\_ リージョンで [LRS、RA-GRS] から RA-GZRS に移行する」と入力します。
 5. **[次へ]** を選択します。
@@ -155,8 +155,9 @@ GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみ
 
 サポート担当者から連絡があり、サポートを受けることができます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](scalability-targets-standard-account.md)

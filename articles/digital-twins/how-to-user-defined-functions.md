@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383311"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863514"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-より複雑なユーザー定義関数のコード サンプルについては、[占有率のクイック スタート](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)に関するページをご覧ください。
+より複雑なユーザー定義関数のコード サンプルについては、[占有率のクイック スタート](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)に関するページをお読みください。
 
 ## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
-ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
+ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをお読みください。
 
 1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#retrieve-all-roles)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
@@ -252,7 +252,7 @@ function process(telemetry, executionContext) {
 1. どのマッチャーが正常に評価されたかに応じて、関連付けられているユーザー定義関数を取得します。
 1. 各ユーザー定義関数を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - イベントの送信先となる [Azure Digital Twins エンドポイントを作成する](./how-to-egress-endpoints.md)方法を学習する。
 

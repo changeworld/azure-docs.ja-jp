@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538788"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940991"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -48,9 +48,9 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 > [!NOTE]
 > ルール ビルダーは、テキスト ボックスで作成された一部のルールを表示できない場合があります。 ルール ビルダーがルールを表示できない場合は、メッセージが表示されることがあります。 ルール ビルダーは、動的グループ ルールのサポートされている構文、検証、または処理をどのような方法でも変更しません。
 
-具体的な手順については、[動的グループの更新](groups-update-rule.md)に関するページを参照してください。
+具体的な手順については、[動的グループの作成または更新](groups-create-rule.md)に関するページを参照してください。
 
-![動的グループのメンバーシップのルールを追加する](./media/groups-update-rule/update-dynamic-group-rule.png)
+![動的グループのメンバーシップのルールを追加する](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>単一式のルール構文
 
@@ -69,7 +69,7 @@ user.department -eq "Sales"
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
 - プロパティ
-- Operator
+- 演算子
 - 値
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
@@ -79,21 +79,21 @@ user.department -eq "Sales"
 メンバーシップ ルールを作成するとき、3 種類のプロパティを使用できます。
 
 - Boolean
-- string
+- String
 - 文字列コレクション
 
 次は、単一式の作成に使用できるユーザー プロパティです。
 
 ### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
 
-| properties | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
 
-| properties | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
@@ -114,9 +114,9 @@ user.department -eq "Sales"
 | postalCode |任意の文字列値または *null* |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 コード |(user.preferredLanguage -eq "en-US") |
 | sipProxyAddress |任意の文字列値または *null* |(user.sipProxyAddress -eq "value") |
-| state |任意の文字列値または *null* |(user.state -eq "value") |
+| 状態 |任意の文字列値または *null* |(user.state -eq "value") |
 | streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
-| surname |任意の文字列値または *null* |(user.surname -eq "value") |
+| 姓 |任意の文字列値または *null* |(user.surname -eq "value") |
 | telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
 | usageLocation |2 文字の国コード |(user.usageLocation -eq "US") |
 | userPrincipalName |任意の文字列値 |(user.userPrincipalName -eq "alias@domain") |
@@ -124,7 +124,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
 
-| properties | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -135,12 +135,12 @@ user.department -eq "Sales"
 
 次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
 
-| Operator | 構文 |
+| 演算子 | 構文 |
 | --- | --- |
 | 等しくない |-ne |
 | 等しい |-eq |
 | 指定値で始まらない |-notStartsWith |
-| 指定値で始まる |-startsWith |
+| [指定値で始まる] |-startsWith |
 | 指定値を含まない |-notContains |
 | Contains |-contains |
 | 一致しない |-notMatch |
@@ -160,7 +160,7 @@ user.department -eq "Sales"
 
 
 ### <a name="using-the--match-operator"></a>-match 演算子の使用 
-**-match** 演算子は、正規表現の照合に使用されます。 次に例を示します。
+**-match** 演算子は、正規表現の照合に使用されます。 例 :
 
 ```
 user.displayName -match "Da.*"   
@@ -249,7 +249,7 @@ null 値を参照する正しい方法は次のとおりです。
 
 複数値プロパティは、同じ型のオブジェクトのコレクションです。 論理演算子の -any と -all でメンバーシップ ルールを作成するときに使用できます。
 
-| properties | 値 | 使用法 |
+| Properties | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans | コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -321,7 +321,12 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 "すべてのユーザー" ルールは、-ne 演算子と null 値を利用した単一式で構成されます。 このルールでは、メンバー ユーザーと共に B2B ゲスト ユーザーがグループに追加されます。
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+グループでゲスト ユーザーを除外し、ご自身のテナントのメンバーのみを含めるようにする場合は、次の構文を使用できます。
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>"すべてのデバイス" ルールを作成する
@@ -331,7 +336,7 @@ user.objectid -ne null
 "すべてのデバイス" ルールは、-ne 演算子と null 値を利用した単一式で構成されます。
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>拡張機能プロパティとカスタム拡張機能プロパティ
@@ -390,7 +395,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 > [!Note]  
 > デバイスに動的グループを作成する場合、deviceOwnership には、"Company" と等しい値を設定する必要があります。 Intune 上のデバイスの所有権には、代わりに Corporate として表されます。 詳細については、「[OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)」を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 

@@ -1,16 +1,16 @@
 ---
 title: カスタム ストレージの追加 (Windows コンテナー)
-description: Azure App Service でカスタムの Windows コンテナーにカスタム ネットワーク共有をアタッチする方法について説明します。 アプリ間でのファイルの共有、静的なコンテンツのリモート管理、ローカルでのアクセスなどを行います。
+description: Azure App Service でカスタムの Windows コンテナーにカスタム ネットワーク共有をアタッチする方法について説明します。 アプリ間でのファイルの共有、静的コンテンツのリモート管理、ローカルでのアクセスなどを行います。
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671006"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866978"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>App Service の Windows コンテナーで Azure Files を構成します。
 
@@ -31,6 +31,15 @@ ms.locfileid: "74671006"
 > Azure Files は、既定ではないストレージであり、別途請求され、Web アプリには含まれません。 インフラストラクチャの制限のため、ファイアウォール構成の使用はサポートされません。
 >
 
+## <a name="limitations"></a>制限事項
+
+- Windows コンテナーの Azure Storage は**プレビュー段階**であり、**運用シナリオ**では**サポートされていません**。
+- Windows コンテナーの Azure Storage では、**Azure Files コンテナー** (読み取り/書き込み) のみをマウントできます。
+- Windows コンテナーの Azure Storage は、Windows App Service プランでの独自のコード使用のシナリオでは**サポートされていません**。
+- Windows コンテナーの Azure Storage では、インフラストラクチャの制限により、**Storage Firewall** 構成の使用は**サポートされていません**。
+- Windows コンテナーの Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
+- Azure Storage は個別に課金され、Web アプリには**含まれていません**。 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage)の詳細を確認してください。
+
 ## <a name="link-storage-to-your-web-app-preview"></a>ストレージを Web アプリにリンクする (プレビュー)
 
  Azure Files 共有を App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類は、AzureFiles である必要があります。
@@ -41,7 +50,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 Azure Files 共有にリンクする他のすべてのディレクトリについて、これを行う必要があります。
 
-## <a name="verify"></a>確認
+## <a name="verify"></a>Verify (英語の可能性あり)
 
 Azure Files 共有を Web アプリにリンクしたら、次のコマンドを実行してこれを確認できます。
 
@@ -49,7 +58,6 @@ Azure Files 共有を Web アプリにリンクしたら、次のコマンドを
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する](app-service-web-tutorial-windows-containers-custom-fonts.md)。

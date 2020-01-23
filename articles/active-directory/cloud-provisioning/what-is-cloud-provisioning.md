@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951124"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767605"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングとは
 Azure AD Connect クラウド プロビジョニングは、ユーザー、グループ、および連絡先を Azure AD に同期するためのハイブリッド ID の 目標を満たすために設計された新しい Microsoft エージェントです。  これは Azure AD Connect sync と共に使用することができ、次のような利点があります。
@@ -61,8 +61,9 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 | 書き戻しのサポート (パスワード、デバイス、グループ) |● | |
 | Azure AD Domain Services のサポート|● | |
 | Exchange ハイブリッドの構成 |● | |
+| AD ドメインあたり 5 万を超えるオブジェクトのサポート |● | |
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [クラウド プロビジョニングのインストール](how-to-install.md)

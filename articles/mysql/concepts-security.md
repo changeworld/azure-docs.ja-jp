@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fb0a71a650a8c36d4da962adaf3f1f314c30d4c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764969"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980004"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL のセキュリティ
 
@@ -37,6 +37,8 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 仮想ネットワーク サービス エンドポイントにより、Azure バックボーンを介して仮想ネットワーク接続が拡張されます。 仮想ネットワークの規則を使用して、仮想ネットワーク内の選択したサブネットからの接続を許可するように、Azure Database for MySQL サーバーを有効にすることができます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](concepts-data-access-and-security-vnet.md)に関するページを参照してください。
 
+### <a name="private-ip"></a>プライベート IP
+Private Link を使用すると、プライベート エンドポイントを経由して Azure 内の Azure Database for MySQL に接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 PaaS リソースには、VNet 内のその他のリソースと同様に、プライベート IP アドレスを使用してアクセスできます。 詳細については、「[Private Link の概要](concepts-data-access-security-private-link.md)」を参照してください
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -50,5 +52,5 @@ Azure Database for MySQL サーバーを作成するときに、管理者ユー�
 [監査ログ](concepts-audit-logs.md)を使うと、データベースのアクティビティを追跡できます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [IP](concepts-firewall-rules.md) または[仮想ネットワーク](concepts-data-access-and-security-vnet.md)のファイアウォール規則を有効にする

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529570"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887157"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight での Apache HBase のパフォーマンスに関する問題のトラブルシューティング
 
@@ -45,7 +45,7 @@ ms.locfileid: "72529570"
 
 ## <a name="test-methodology-and-metrics-monitoring"></a>テスト方法とメトリックの監視
 
-Yahoo! Cloud Serving Benchmark、JMeter、または Pherf を使用して、パフォーマンスのテストと調整を行っている場合は、次の点を確認してください。
+Yahoo! Cloud Serving Benchmark、JMeter、Pherf などのベンチマークを使用してパフォーマンスのテストと調整を行っている場合は、次の点を確認してください。
 
 - クライアント コンピューターがボトルネックになっていない。 これを確認するには、クライアント コンピューターの CPU 使用率をチェックします。
 
@@ -116,7 +116,7 @@ HDInsight HBase では、HFiles はリモート ストレージに格納され�
 
 - 読み取り要求および書き込み要求用に予約するキューの割合を調整するなどの試験的な設定。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題が解決しない場合は、次のいずれかのチャネルにアクセスして追加のサポートを受けてください。
 
@@ -124,4 +124,4 @@ HDInsight HBase では、HFiles はリモート ストレージに格納され�
 
 - [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。
+- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。

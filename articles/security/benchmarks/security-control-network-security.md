@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563957"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934327"
 ---
 # <a name="security-control-network-security"></a>セキュリティ コントロール:ネットワークのセキュリティ
 
@@ -29,9 +29,11 @@ ms.locfileid: "75563957"
 
 または、特定のユース ケースがある場合は、Azure Firewall を実装することで要件を満たすことができます。
 
-Private Link に関する一般情報: https://docs.microsoft.com/azure/private-link/private-link-overview
+Private Link に関する一般情報:
 
-Virtual Network の作成方法:
+https://docs.microsoft.com/azure/private-link/private-link-overview
+
+Virtual Network を作成する方法:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
@@ -97,11 +99,11 @@ Azure Security Center の統合された脅威インテリジェンスの概要:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Azure Security Center のアダプティブ ネットワークのセキュリティ強化の概要
+Azure Security Center のアダプティブ ネットワークのセキュリティ強化の概要:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Azure Security Center の Just In Time ネットワーク アクセス制御の概要
+Azure Security Center の Just In Time ネットワーク アクセス制御の概要:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 フロー レコードを生成するために、NSG フロー ログをストレージ アカウントに記録します。 異常なアクティビティを調査する必要がある場合は、Network Watcher パケット キャプチャを有効にします。
 
-NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG フロー ログを有効にする方法:
 
-Network Watcher を有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Network Watcher を有効にする方法:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
@@ -137,11 +143,17 @@ Azure Firewall でアラートを構成する方法: https://docs.microsoft.com/
 
 信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイします。
 
-Application Gateway をデプロイする方法: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Application Gateway をデプロイする方法:
 
-HTTPS を使用するように Application Gateway を構成する方法: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散の概要: https://docs.microsoft.com/azure/application-gateway/overview
+HTTPS を使用するように Application Gateway を構成する方法:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散の概要:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
@@ -149,9 +161,11 @@ Azure Web アプリケーション ゲートウェイを使用したレイヤー
 |--|--|--|
 | 1.8 | 1.5 | Customer |
 
-Virtual Network サービス タグ&nbsp;を使用して、ネットワーク セキュリティ グループまたは Azure Firewall のネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+Virtual Network サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall のネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-サービス タグの概要と使用方法: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+サービス タグの概要と使用方法:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
@@ -161,7 +175,7 @@ Virtual Network サービス タグ&nbsp;を使用して、ネットワーク �
 
 Azure Policy を使用して、ネットワーク リソースの標準的なセキュリティ構成を定義し、実装します。
 
-Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に適用し、バージョン管理によって制御と管理を微調整できます。
+Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。
 
 Azure Policy を構成して管理する方法:
 

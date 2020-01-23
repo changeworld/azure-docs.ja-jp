@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842749"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720296"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -65,18 +64,18 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
 
     ![[セキュリティ] を選択する][10]
 
-2. **[セキュリティ]** ページで、 **[API リファレンス]** を選択します。
+1. **[セキュリティ]** ページで、 **[API リファレンス]** を選択します。
 
     ![API リファレンスを選択する][15]
 
-3. **[API アクセスを有効にする]** を選択します。
+1. **[API アクセスを有効にする]** を選択します。
 
     ![API リファレンスを選択する][16]
 
    > [!IMPORTANT]
    > G Suite にプロビジョニングしようとしているすべてのユーザーについて、その Azure AD でのユーザー名がカスタム ドメインに関連付けられている**必要があります**。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 既存のユーザーのドメインは、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)にある手順に従って変更できます。
 
-4.  Azure AD で目的のカスタム ドメインを追加して検証したら、それらを G Suite で再度検証する必要があります。 G Suite でドメインを検証するには、次の手順を参照してください。
+1. Azure AD で目的のカスタム ドメインを追加して検証したら、それらを G Suite で再度検証する必要があります。 G Suite でドメインを検証するには、次の手順を参照してください。
 
     a. [G Suite の管理コンソール](https://admin.google.com/)で、 **[ドメイン]** を選択します。
 
@@ -94,11 +93,11 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
 
     e. G Suite に追加しようとしているすべての追加のドメインについて、前の手順を繰り返します。
 
-5. 次に、G Suite でユーザー プロビジョニングを管理するためにどの管理者アカウントを使用するかを決定します。 **[Admin Roles] (管理者ロール)** に移動します。
+1. 次に、G Suite でユーザー プロビジョニングを管理するためにどの管理者アカウントを使用するかを決定します。 **[Admin Roles] (管理者ロール)** に移動します。
 
     ![Google Apps を選択する][26]
-    
-6. そのアカウントの **[Admin role] (管理者ロール)** で、そのロールの **[特権]** を編集します。 このアカウントをプロビジョニングに使用できるように、 **[Admin API Privileges]\(管理 API の権限\)** がすべて有効になっていることを確認します。
+
+1. そのアカウントの **[Admin role] (管理者ロール)** で、そのロールの **[特権]** を編集します。 このアカウントをプロビジョニングに使用できるように、 **[Admin API Privileges]\(管理 API の権限\)** がすべて有効になっていることを確認します。
 
     ![Google Apps を選択する][27]
 
@@ -110,15 +109,15 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**G Suite**」と入力し、結果ウィンドウで **[G Suite]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 検索ボックスに「**G Suite**」と入力し、結果ウィンドウで **[G Suite]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の G Suite](common/search-new-app.png)
 
@@ -134,69 +133,72 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[G Suite]** を選択します。
+1. アプリケーションの一覧で **[G Suite]** を選択します。
 
     ![アプリケーションの一覧の G Suite のリンク](common/all-applications.png)
 
-3. **[プロビジョニング]** タブを選択します。
+1. **[プロビジョニング]** タブを選択します。
 
     ![[プロビジョニング] タブ](common/provisioning.png)
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。
+1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションにある **[承認する]** を選択します。 これで、ブラウザーの新しいウィンドウで Google 認可ダイアログ ボックスが開きます。
+1. **[管理者資格情報]** セクションにある **[承認する]** を選択します。 これで、ブラウザーの新しいウィンドウで Google 認可ダイアログ ボックスが開きます。
 
     ![G Suite の [承認する]](media/google-apps-provisioning-tutorial/authorize.png)
 
-6. Azure AD に G Suite テナントを変更するためのアクセス許可を付与することを確認します。 **[Accept]\(承認\)** を選択します。
+1. Azure AD に G Suite テナントを変更するためのアクセス許可を付与することを確認します。 **[Accept]\(承認\)** を選択します。
 
     ![Confirm permissions.][28]
 
-7. Azure portal で、 **[テスト接続]** を選択して Azure AD がアプリに接続できることを確認します。 接続が失敗した場合は、使用中の G Suite アカウントに Team Admin アクセス許可があることを確認します。 その後、**承認**手順を再び試します。
+1. Azure portal で、 **[テスト接続]** を選択して Azure AD がアプリに接続できることを確認します。 接続が失敗した場合は、使用中の G Suite アカウントに Team Admin アクセス許可があることを確認します。 その後、**承認**手順を再び試します。
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+1. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-8. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
-9. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to G Suite] (Azure Active Directory ユーザーを G Suite に同期する)** を選択します。
+1. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to G Suite] (Azure Active Directory ユーザーを G Suite に同期する)** を選択します。
 
     ![G Suite のユーザー マッピング](media/google-apps-provisioning-tutorial/usermappings.png)
 
-10. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるユーザー属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のユーザー アカウントを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるユーザー属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のユーザー アカウントを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![G Suite のユーザー属性](media/google-apps-provisioning-tutorial/userattributes.png)
 
-11. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to G Suite] (Azure Active Directory グループを G Suite に同期する)** を選択します。
+1. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to G Suite] (Azure Active Directory グループを G Suite に同期する)** を選択します。
 
     ![G Suite のグループ マッピング](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるグループ属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のグループを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。 Azure AD と G Suite 間の既定の属性マッピング一式が UI に表示されます。 [新しいマッピングの追加] をクリックすることによって、さらに別の属性 (組織単位など) を追加することができます。 
+1. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるグループ属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のグループを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。 Azure AD と G Suite 間の既定の属性マッピング一式が UI に表示されます。 [新しいマッピングの追加] をクリックすることによって、さらに別の属性 (組織単位など) を追加することができます。
 
     ![G Suite のグループ属性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-14. G Suite で Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+1. G Suite で Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-15. **[設定]** セクションの **[スコープ]** で目的の値を選択することによって、G Suite にプロビジョニングするユーザーまたはグループ、あるいはその両方を定義します。
+1. **[設定]** セクションの **[スコープ]** で目的の値を選択することによって、G Suite にプロビジョニングするユーザーまたはグループ、あるいはその両方を定義します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-16. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+1. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視したり、G Suite 上で Azure AD プロビジョニング サービスによって実行されたすべてのアクションが記載されているプロビジョニング アクティビティ レポートへのリンクに従ったりできます。
+
+> [!NOTE]
+> ユーザーが Azure AD ユーザーのメール アドレスを使用する既存の個人/コンシューマー アカウントを既に持っている場合は、何らかの問題が発生する可能性がありますが、ディレクトリ同期を実行する前に Google の転送ツールを使用して解決できます。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
@@ -208,10 +210,9 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="common-issues"></a>一般的な問題
 * 接続の確立に使用されたアカウントが GSuite の管理者のものではない場合、認可エラーが発生することがあります。 アクセス承認用のアカウントに、ユーザーのプロビジョニングに使用する**すべてのドメイン**に対する管理者権限があることを確認してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
-
 
 <!--Image references-->
 

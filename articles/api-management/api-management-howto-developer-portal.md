@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442603"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045585"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "75442603"
 開発者ポータルは 2 つの方法で構築できます。
 
 - **マネージド バージョン** - API Management インスタンスに組み込まれたポータルを編集およびカスタマイズします。URL `<your-api-management-instance-name>.developer.azure-api.net` からアクセスできます。 マネージド ポータルにアクセスしてカスタマイズする方法については、[こちらのドキュメント記事](api-management-howto-developer-portal-customize.md)を参照してください。
-- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチを使用すると、ポータルのコードベースを編集したり、提供されているコア機能を拡張したりできます。 また、自分でポータルを最新バージョンにアップグレードする必要もあります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも取り上げられています。
+- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチを使用すると、ポータルのコードベースを編集したり、提供されているコア機能を拡張したりできます。 また、自分でポータルを最新バージョンにアップグレードする必要もあります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][4]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも取り上げられています。
 
 ## <a name="portal-architectural-concepts"></a>ポータルのアーキテクチャの概念
 
@@ -101,6 +101,10 @@ ms.locfileid: "75442603"
 以前の開発者ポータルと発行者ポータルは、*レガシ機能*となりました。セキュリティ更新プログラムのみ受け取ることになります。 新しい機能は、新しい開発者ポータルにのみ実装されます。
 
 レガシ ポータルの廃止については、あらためて発表されます。 質問、懸念事項、またはコメントがある場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/121)に提起してください。
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>必要な機能がポータルでサポートされていない
+
+セルフホステッド バージョンを使用し、[独自のウィジェットを実装します][4]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>ポータルのデプロイを自動化するにはどうすればよいですか。
 
@@ -216,6 +220,7 @@ API Management サービスが VNet 内にある場合は、VNet 接続に関す
 
 - [マネージド開発者ポータルへのアクセスとカスタマイズ](api-management-howto-developer-portal-customize.md)
 - [ポータルのセルフホステッド バージョンの設定][2]
+- [独自のウィジェットの実装][4]
 
 その他のリソースを参照します:
 
@@ -225,3 +230,4 @@ API Management サービスが VNet 内にある場合は、VNet 接続に関す
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の座標に関する情報を表示する | Microsoft Docs
-description: ユーザーが座標を選択したときにマップ上の住所に関する情報を表示する方法
+title: マップの座標に関する情報を表示する | Microsoft Azure Maps
+description: ユーザーが座標を選択したときにマップ上の住所に関する情報を表示する方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: df0966569a753d5000414451a2b69f1e69449b2c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5450ada04a1af44a3fff0402b30540e899cc4dd5
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638670"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911044"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -54,7 +54,7 @@ ms.locfileid: "68638670"
 
 座標情報を取得する前にマップの読み込みが完全に行われるように、カーソル、ポップアップ オブジェクト、およびクリック イベントの変更はすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

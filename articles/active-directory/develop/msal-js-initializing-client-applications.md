@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916504"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777838"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 この記事では、ユーザー エージェント アプリケーションのインスタンスを使用して JavaScript 用 Microsoft Authentication Library (MSAL.js) を初期化する方法について説明します。 ユーザー エージェント アプリケーションは、Web ブラウザーなどのユーザー エージェントでクライアント コードが実行されるパブリック クライアント アプリケーションの一種です。 これらのクライアントでは、シークレットは格納されません。ブラウザーのコンテキストが公開されアクセス可能であるからです。 クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -116,7 +116,7 @@ export type Configuration = {
         * `https://login.microsoftonline.com/common` - 職場および学校のアカウント、または Microsoft の個人アカウントを持つユーザーにサインインする場合に使用されます。
         * `https://login.microsoftonline.com/organizations/` - 職場および学校のアカウントを持つユーザーにサインインする場合に使用されます。
         * `https://login.microsoftonline.com/consumers/` - 個人用の Microsoft アカウント (ライブ) のみを持つユーザーにサインインする場合に使用されます。
-    * Azure AD B2C では、その形式は `https://<instance>/tfp/<tenant>/<policyName>/` となります。ここで、instance は Azure AD B2C ドメインです。tenant は Azure AD B2C テナントの名前です。policyName は適用する B2C ポリシーの名前です。
+    * Azure AD B2C では、その形式は `https://<instance>/tfp/<tenant>/<policyName>/` となります。ここで、instance は Azure AD B2C ドメイン (つまり、{your-tenant-name}.b2clogin.com) です。tenant は Azure AD B2C テナントの名前 (つまり、{your-tenant-name}.onmicrosoft.com) です。policyName は適用する B2C ポリシーの名前です。
 
 
 - **validateAuthority**: 省略可能。  トークンの発行者を検証します。 既定値は `true` です。 B2C アプリケーションの場合、機関の値は既知でありポリシーによって異なる可能性があるので、機関の検証は機能せず、必然的に `false` に設定されます。

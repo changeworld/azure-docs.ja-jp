@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818906"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028399"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
 この記事では、組織のドメインを Active Directory フェデレーション サービス (AD FS) からパスワード ハッシュ同期に移行する方法について説明します。
 
-[この記事はダウンロード](https://aka.ms/ADFSTOPHSDPDownload)することができます。
+> [!NOTE]
+> 認証方法を変更するには、計画、テスト、予測されるダウンタイムが必要です。 [段階的なロールアウト](how-to-connect-staged-rollout.md)では、フェデレーションからパスワード ハッシュ同期を使用するクラウド認証への段階的な移行をテストして実行するための、別の方法が提供されます。
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>パスワード ハッシュ同期への移行の前提条件
 
@@ -74,12 +75,12 @@ Azure AD Connect は、簡易設定またはカスタム インストールを�
    * **[シームレス シングル サインオン]** が **[無効]** に設定されている。
    * **[パススルー認証]** が **[無効]** に設定されている。
 
-   ![Azure AD Connect の [ユーザー サインイン] セクションの設定のスクリーン ショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image1.png)
+   ![Azure AD Connect の [ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image1.png)
 
 #### <a name="verify-the-azure-ad-connect-configuration"></a>Azure AD Connect の構成を確認する
 
 1. Azure AD Connect サーバーで、Azure AD Connect を開きます。 **[構成]** をクリックします。
-2. **[追加のタスク]** ページで **[現在の構成を表示する]** を選択し、 **[次へ]** を選択します。<br />
+2. **[追加のタスク]** ページで **[現在の構成を表示する]** を選んでから、 **[次へ]** を選択します。<br />
 
    ![[追加のタスク] ページで選択されている [現在の構成を表示する] オプションのスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
 3. **[ソリューションのレビュー]** ページで、 **[パスワード ハッシュの同期]** の状態を確認します。<br /> 
@@ -135,7 +136,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 フェデレーション ID からマネージド ID に変換する前に、Azure AD、Office 365、およびその他のアプリケーション (証明書利用者信頼) で現在どのように AD FS を使用しているかを詳しく調べます。 具体的には、次の表に記載されているシナリオについて検討します。
 
-| 状況 | 対処 |
+| 状況 | THEN |
 |-|-|
 | 引き続き AD FS を (Azure AD と Office 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Office 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
@@ -276,7 +277,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 #### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>オプション A: Azure AD Connect を使用してフェデレーションからパスワード ハッシュ同期に移行する
 
-最初に Azure AD Connect を使用して AD FS 環境を構成した場合は、この方法を使用します。 最初に Azure AD Connect を使用して AD FS 環境を構成 "*しなかった*" 場合は、この方法を使用できません。
+最初に Azure AD Connect を使用して AD FS 環境を構成した場合は、この方法を使用します。 最初に Azure AD Connect を使用して AD FS 環境を構成*しなかった*場合は、この方法を使用できません。
 
 まず、サインイン方法を変更します。
 
@@ -471,7 +472,7 @@ Azure AD Connect を実行しているオンプレミス サーバーで、シ�
 
 詳細については、「[AZUREADSSOACC コンピューター アカウントの Kerberos の復号化キーをロールオーバーするにはどうすればよいですか](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Connect の設計概念](plan-connect-design-concepts.md)について学習する。
 * [適切な認証](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)を選択する。

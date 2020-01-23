@@ -2,17 +2,17 @@
 title: リソース ログの収集と分析
 description: 認証、イメージのプッシュ、イメージのプルなど、Azure Container Registry のリソース ログ イベントを記録および分析します。
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456410"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748006"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure コンテナー レジストリのログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの[リソース ログ](../azure-monitor/platform/resource-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure コンテナー レジストリのログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの[リソース ログ](../azure-monitor/platform/platform-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
 
 * レジストリ認証イベントを監査して、セキュリティとコンプライアンスを確保する 
 
@@ -26,9 +26,14 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-リポジトリレベルのイベントのログ記録には、現在、削除またはタグ解除イベントは含まれません。 次のリポジトリ イベントのみがログに記録されます。
-* イメージとその他の成果物の**プッシュ イベント**
-* イメージとその他の成果物の**プル イベント**
+現在、イメージとその他の成果物に対して次のリポジトリレベル イベントがログに記録されています。
+
+* **プッシュ イベント**
+* **プル イベント**
+* **タグの解除イベント**
+* **削除イベント** (リポジトリの削除イベントを含む)
+
+現在ログに記録されていないリポジトリレベル イベント: 消去イベント。
 
 ## <a name="registry-resource-logs"></a>レジストリのリソース ログ
 
@@ -42,7 +47,7 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
   * 成功または失敗の状態
   * 開始および終了のタイム スタンプ
 
-Azure には、リソース ログに加えて、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)が用意されています。これは、コンテナー レジストリの作成や削除など、Azure 管理イベントの単一サブスクリプションレベルのレコードです。
+Azure には、リソース ログに加えて、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)が用意されています。これは、コンテナー レジストリの作成や削除など、Azure 管理イベントの単一サブスクリプションレベルのレコードです。
 
 ## <a name="enable-collection-of-resource-logs"></a>リソース ログの収集を有効にする
 
@@ -99,7 +104,7 @@ ContainerRegistryRepositoryEvents
 
 また、診断ログ イベントを [Azure イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)にストリーム配信することもできます。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Log Analytics](../azure-monitor/log-query/get-started-portal.md) の使用と[ログ クエリ](../azure-monitor/log-query/get-started-queries.md)の作成の詳細について学習します。
 * 「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照して、Azure のさまざまなレイヤーで使用できるプラットフォーム ログについて学習します。

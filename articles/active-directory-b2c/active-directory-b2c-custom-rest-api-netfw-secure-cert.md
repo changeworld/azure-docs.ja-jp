@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949859"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930635"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -100,17 +100,19 @@ ms.locfileid: "74949859"
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>手順 4:ポリシーをテナントにアップロードする
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
 
-2. **[Identity Experience Framework]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 
-3. **[すべてのポリシー]** を選択します。
+1. **[Identity Experience Framework]** を選択します。
 
-4. **[ポリシーのアップロード]** を選択します。
+1. **[すべてのポリシー]** を選択します。
 
-5. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+1. **[ポリシーのアップロード]** を選択します。
 
-6. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格したことを確認します。
+1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+
+1. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格したことを確認します。
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>手順 5:[今すぐ実行] を使用してカスタム ポリシーをテストする
 1. **[Azure AD B2C の設定]** を開き、 **[Identity Experience Framework]** を選択します。
@@ -299,5 +301,5 @@ if (IsValidClientCertificate() == false)
 この手順をトラブルシューティングする必要がある場合は、[Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)に関する記事をご覧ください。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
-* [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)が提供されています。
+* 「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)が提供されています。
 * 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。

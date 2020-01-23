@@ -8,30 +8,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 01/08/2020
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a90d54932561ed564a23d4d2785170aa85b5c9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422969"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768012"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
-Azure Active Directory (Azure AD) は、組織のグループを使用した、クラウド ベースのアプリ、オンプレミスのアプリ、およびリソースの管理に役立ちます。 リソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のように、ディレクトリの一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、ディレクトリの外部リソースである場合があります。
+Azure Active Directory (Azure AD) では、グループを使用してクラウド ベースのアプリ、オンプレミスのアプリ、およびリソースへのアクセスの管理できます。 リソースは、Azure AD 内のロールを使用してオブジェクトを管理するアクセス許可のように、Azure AD 組織の一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、Azure AD 組織の外部リソースである場合があります。
 
 >[!NOTE]
 >Azure Active Directory を使用するには、Azure のアカウントが必要です。 アカウントを持っていない場合は、 [無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)できます。
+>
+> Azure portal では、ポータルで管理できないメンバーシップやグループの詳細を含むいくつかのグループが確認できます。
+>
+> - オンプレミスの Active Directory から同期されたグループは、オンプレミスの Active Directory でのみ管理できます。
+> - 配布リストやメールが有効なセキュリティ グループなど、他のグループの種類は、Exchange 管理センターまたは Microsoft 365 管理センターでのみ管理されます。 これらのグループを管理するには、Exchange 管理センターまたは Microsoft 365 管理センターにサインインする必要があります。
 
-## <a name="how-does-access-management-in-azure-ad-work"></a>Azure AD でのアクセス管理のしくみ
+## <a name="how-access-management-in-azure-ad-works"></a>Azure AD でのアクセス管理のしくみ
+
 Azure AD では、1 人のユーザーまたは Azure AD のグループ全体にアクセス権を提供することで、組織のリソースに対するアクセスをより容易に付与できるようにしています。 グループの使用によって、リソース所有者 (または Azure AD ディレクトリの所有者) は、各人に権限を提供する必要なしに、グループのすべてのメンバーにアクセス権限のセットを割り当てることができます。 リソースまたはディレクトリの所有者は、メンバー一覧の管理権限を、部門のマネージャーやヘルプ デスクの管理者などの他のユーザーに付与し、そのユーザーが必要に応じてメンバーの追加と削除を行えるようにすることもできます。 グループ所有者を管理する方法の詳細については、[グループ所有者の管理](active-directory-accessmanagement-managing-group-owners.md)に関するページを参照してください
 
 ![Azure Active Directory アクセス管理図](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
 ## <a name="ways-to-assign-access-rights"></a>アクセス権を割り当てる方法
+
 ユーザーにリソースへのアクセス権を割り当てる方法は 4 つあります。
 
 - **直接割り当て。** リソース所有者は、ユーザーをリソースに直接割り当てます。

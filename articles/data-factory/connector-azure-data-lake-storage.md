@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: e1729d9e0c793b944b1e02d3108388f9d2533e5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441082"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893204"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
     - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに対する**書き込み**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
 
 >[!NOTE]
->Data Factory の UI を使用して作成する場合で、なおかつ IAM でサービス プリンシパルに "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、読み取りおよび実行アクセス許可のあるパスを指定して続行してください。 現時点では、ファイル システムへのテスト接続は失敗するため、サブディレクトリを指定してテストするか、この操作をスキップしてください。
+>Data Factory の UI を使用して作成する場合で、なおかつ IAM でサービス プリンシパルに "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行**アクセス許可のあるパスを指定して続行してください。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -170,7 +170,7 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
     - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに対する**書き込み**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
 
 >[!NOTE]
->Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、読み取りおよび実行アクセス許可のあるパスを指定して続行してください。 現時点では、ファイル システムへのテスト接続は失敗するため、サブディレクトリを指定してテストするか、この操作をスキップしてください。
+>Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行**アクセス許可のあるパスを指定して続行してください。
 
 >[!IMPORTANT]
 >PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込む場合、Data Lake Storage Gen2 にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1. と 2. に従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りの部分は Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
@@ -255,7 +255,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 
 | プロパティ                 | [説明]                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| 型                     | `storeSettings` の type プロパティは **AzureBlobFSReadSetting** に設定する必要があります。 | はい                                           |
+| 型                     | `storeSettings` の type プロパティは **AzureBlobFSReadSettings** に設定する必要があります。 | はい                                           |
 | recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                            |
 | wildcardFolderPath       | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のファイル システムの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | wildcardFileName         | ソース ファイルをフィルター処理するための、特定のファイル システム + folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい (データセットで `fileName` が指定されていない場合) |
@@ -286,11 +286,11 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AzureBlobFSReadSetting",
+                    "type": "AzureBlobFSReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -312,7 +312,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 
 | プロパティ                 | [説明]                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| 型                     | `storeSettings` の type プロパティは **AzureBlobFSWriteSetting** に設定する必要があります。 | はい      |
+| 型                     | `storeSettings` の type プロパティは **AzureBlobFSWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | maxConcurrentConnections | データ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
 
@@ -342,7 +342,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
             "sink": {
                 "type": "ParquetSink",
                 "storeSettings":{
-                    "type": "AzureBlobFSWriteSetting",
+                    "type": "AzureBlobFSWriteSettings",
                     "copyBehavior": "PreserveHierarchy"
                 }
             }
@@ -452,18 +452,18 @@ Azure Data Lake Storage Gen1 から Gen2 にファイルをコピーするとき
 
 シンク変換では、Azure Data Lake Storage Gen2 内のコンテナーまたはフォルダーに書き込むことができます。 **[設定]** タブで、ファイルへの書き込み方法を管理できます。
 
-![シンク オプション](media/data-flow/file-sink-settings.png "シンク オプション")
+![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
 
-**Clear the folder (フォルダーのクリア):** データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
+**Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 
-**File name option (ファイル名のオプション):** 書き込み先のフォルダー内の書き込み先ファイルの命名方法を決定します。 ファイル名のオプションを次に示します。
+**File name option**\(ファイル名のオプション\):書き込み先のフォルダー内の書き込み先ファイルの命名方法を決定します。 ファイル名のオプションを次に示します。
    * **既定**:Spark は PART の既定値に基づいて、ファイルに名前を付けることができます。
    * **パターン**:パーティションごとに出力ファイルを列挙するパターンを入力します。 たとえば、**loans[n].csv** と入力すると、loans1.csv、loans2.csv のように作成されます。
    * **Per partition**(パーティションあたり):パーティションごとに 1 つのファイル名を入力します。
    * **As data in column**(列内のデータとして):出力ファイルを列の値に設定します。 パスは、書き込み先フォルダーではなく、データセット コンテナーからの相対パスです。
    * **Output to a single file**(1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 このマージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大規模なデータセットに対しては推奨されません。
 
-**Quote all (すべてを引用符で囲む):** すべての値を引用符で囲むかどうかを決定します。
+**Quote all**\(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -609,4 +609,4 @@ Azure Data Lake Storage Gen1 から Gen2 にファイルをコピーするとき
 
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

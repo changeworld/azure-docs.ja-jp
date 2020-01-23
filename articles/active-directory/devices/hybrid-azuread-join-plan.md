@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379312"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029862"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -77,7 +77,7 @@ ID データを複数の Azure AD テナントに同期する単一 AD フォレ
 
 環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)」を参照してください。
 
-Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 WIndows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
+Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 Windows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
 
 ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
@@ -146,14 +146,14 @@ Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じ
 
 次の表は、Windows 10 の Hybrid Azure AD 参加における、これらのオンプレミスの AD UPN のサポートに関する詳細を示しています
 
-| オンプレミスの AD UPN の種類 | ドメインの種類 | Windows 10 のバージョン | 説明 |
+| オンプレミスの AD UPN の種類 | ドメインの種類 | Windows 10 のバージョン | [説明] |
 | ----- | ----- | ----- | ----- |
 | ルーティング可能 | フェデレーション | 1703 リリースから | 一般公開 |
 | ルーティング不可能 | フェデレーション | 1803 リリースから | 一般公開 |
 | ルーティング可能 | マネージド | 1803 リリースから | 一般公開されており、Windows ロック画面の Azure AD SSPR はサポートされていません。 |
 | ルーティング不可能 | マネージド | サポートされていません | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [フェデレーション環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)

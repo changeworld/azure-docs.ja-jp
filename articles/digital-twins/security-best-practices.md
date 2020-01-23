@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229051"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860947"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins のセキュリティのベストプラクティス
 
@@ -46,7 +46,7 @@ IoT スペースを安全にセキュリティで保護するためのいくつ�
 > [!div class="checklist"]
 > * 保存済み、格納済み、または永続的なデータを暗号化します。
 > * パスワードまたはキーを定期的に変更または更新する必要があります。
-> * ロールによって、アクセスとアクセス許可を慎重に制限します。 後の「[ロールベースのアクセス制御のベスト プラクティス](#role-based-access-control-best-practices)」セクションをご覧ください。
+> * ロールによって、アクセスとアクセス許可を慎重に制限します。 後述する「[ロールベースのアクセス制御のベスト プラクティス](#role-based-access-control-best-practices)」セクションをご覧ください。
 > * 各ネットワーク上のデバイスが他と分離されるように、ネットワーク トポロジの分割を検討してください。
 > * 強力な暗号化を使用します。 長いパスワードを要求し、セキュリティで保護されたプロトコルおよび[多要素認証](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)を使用します。
 
@@ -74,7 +74,7 @@ Azure Digital Twins は、[Azure Active Directory](https://docs.microsoft.com/az
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure IoT のベスト プラクティスの詳細については、「[IoT セキュリティのベスト プラクティス](../iot-fundamentals/iot-security-best-practices.md)」をご覧ください。
 

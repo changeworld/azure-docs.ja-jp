@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: a1bd9b8cbcbc785425c2d1870dc555ff91f695f7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484800"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972581"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL のセキュリティ - 単一サーバー
 
@@ -37,6 +37,9 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 仮想ネットワーク サービス エンドポイントにより、Azure バックボーンを介して仮想ネットワーク接続が拡張されます。 仮想ネットワークの規則を使用して、仮想ネットワーク内の選択したサブネットからの接続を許可するように、Azure Database for PostgreSQL サーバーを有効にすることができます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](concepts-data-access-and-security-vnet.md)に関するページを参照してください。
 
+### <a name="private-ip"></a>プライベート IP
+Private Link を使用すると、プライベート エンドポイントを経由して Azure 内の Azure Database for PostgreSQL 単一サーバーに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 PaaS リソースには、VNet 内のその他のリソースと同様に、プライベート IP アドレスを使用してアクセスできます。 詳細については、[Private Link の概要](concepts-data-access-and-security-private-link.md)に関するページを参照してください。
+
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -52,6 +55,6 @@ Azure Database for PostgreSQL サーバーを作成するときに、管理者�
 [監査ログ](concepts-audit.md)を使うと、データベースのアクティビティを追跡できます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [IP](concepts-firewall-rules.md) または[仮想ネットワーク](concepts-data-access-and-security-vnet.md)のファイアウォール規則を有効にする
 - Azure Database for PostgreSQL の [Azure Active Directory 認証](concepts-aad-authentication.md)について学習する

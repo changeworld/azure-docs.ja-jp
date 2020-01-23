@@ -1,6 +1,6 @@
 ---
-title: Azure Maps に線レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK に線レイヤーを追加する方法。
+title: マップに線レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに線レイヤーを追加する方法を示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f07e36d82c9044a212cda8173df9fe0a9544393a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976564"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911182"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>マップに線レイヤーを追加する
 
@@ -76,14 +76,14 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="customize-a-line-layer"></a>線レイヤーをカスタマイズする
 
-線レイヤーにはいくつかのスタイル オプションがあります。 次のツールでそれらを試してください。
+線レイヤーにはいくつかのスタイル オプションがあります。 次のツールでそれらをお試しください。
 
 <br/>
 
 <iframe height='700' scrolling='no' title='線レイヤーのオプション' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GwLrgb/'>Line Layer Options</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

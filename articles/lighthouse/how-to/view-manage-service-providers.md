@@ -1,14 +1,14 @@
 ---
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-ms.date: 11/15/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463819"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046128"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
@@ -61,7 +61,10 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 
 そのページの上部にある各フィルターで委任情報を並べ替えたりグループ化したりできるほか、特定の顧客やオファー、キーワードで委任情報をフィルター処理することができます。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> これらのロールの割り当て、またはこれらのロールが付与されているサービス プロバイダー テナントのユーザーは、API 経由または [Azure portal で委任されたスコープのロールの割り当て情報を表示している](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)場合、顧客には表示されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Lighthouse](../overview.md) の詳細を学習します。
 - サービス プロバイダーが Azure portal の **[マイ カスタマー]** に移動して[顧客を表示したり管理したりする](view-manage-customers.md)方法を学習します。

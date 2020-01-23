@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758801"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030097"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure データ エクスプローラーのデータベース アクセス許可を管理する
 
@@ -36,7 +36,7 @@ Azure データ エクスプローラーには、次のロールがあります�
 
 ## <a name="manage-permissions-in-the-azure-portal"></a>Azure portal でアクセス許可を管理する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. Azure データ エクスプローラー クラスターに移動します。
 
@@ -46,7 +46,7 @@ Azure データ エクスプローラーには、次のロールがあります�
 
 1. **[アクセス許可]** を選択し、 **[追加]** を選択します。
 
-    ![データベースのアクセス許可](media/manage-database-permissions/database-permissions.png)
+    ![データベース権限](media/manage-database-permissions/database-permissions.png)
 
 1. **[Add database permissions]\(データベース アクセス許可の追加\)** でプリンシパルを割り当てるロールを選択し、 **[Select principals]\(プリンシパルの選択\)** を選択します。
 
@@ -73,7 +73,9 @@ Azure データ エクスプローラーには、次のロールがあります�
     ```
 
     コマンドの出力は、既存のユーザーと、データベース内でそれらに割り当てられたロールの一覧を示します。
+    
+    Azure Active Directory と Kusto 認証モデルに関する例については、「[プリンシパルと Id プロバイダー](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [クエリを作成する](write-queries.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083252"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912012"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74083252"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>学習内容
+## <a name="what-you-will-learn"></a>学習する内容
 
 Visual Studio Code 用 Azure IoT Tools を使用して、デバイスからクラウドへのメッセージを監視し、クラウドからデバイスへのメッセージを送信する方法について説明します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。このコマンドによって、そのデバイスに接続されている LED が点滅します。
 
@@ -64,7 +64,7 @@ Visual Studio Code 用 Azure IoT Tools を使用して、デバイスからク�
 
 1. デバイスを右クリックして、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
-2. 監視対象のメッセージが、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
+2. 監視対象のメッセージが、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub]** ビューに表示されます。
 
 3. 監視を停止するには、 **[OUTPUT]\(出力\)** ビューを右クリックして、 **[Stop Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を停止する\)** を選択します。
 
@@ -76,9 +76,9 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
 2. 入力ボックスにメッセージを入力します。
 
-3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
+3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub]** ビューに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 

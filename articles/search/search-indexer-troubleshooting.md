@@ -8,40 +8,64 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c5a16d957f1e0414f92d0cc03442d88d438e4c92
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793624"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931120"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
 Azure Cognitive Search においてデータにインデックスを付けるとき、インデクサーでいくつかの問題が発生することがあります。 エラーは次のように分類されます。
 
-* [データ ソースへの接続](#data-source-connection-errors)
+* [データ ソースまたはその他のリソースへの接続](#connection-errors)
 * [ドキュメントの処理](#document-processing-errors)
 * [インデックスへのドキュメントの取り込み](#index-errors)
 
-## <a name="data-source-connection-errors"></a>データ ソースの接続エラー
+## <a name="connection-errors"></a>接続エラー
 
-### <a name="blob-storage"></a>Blob Storage
+> [!NOTE]
+> インデクサーでは、Azure ネットワーク セキュリティ メカニズムによって保護されているデータ ソースやその他のリソースへのアクセスに対するサポートが制限されています。 現時点では、対応する IP アドレス範囲の制限メカニズムまたは NSG 規則 (該当する場合) を通じてのみデータ ソースにアクセスできます。 サポートされている各データ ソースへのアクセス方法の詳細については、以下を参照してください。
+>
+> 検索サービスの IP アドレスを確認するには、その完全修飾ドメイン名 (例: `<your-search-service-name>.search.windows.net`) を ping します。
+>
+> `AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
 
-#### <a name="storage-account-firewall"></a>ストレージ アカウント ファイアウォール
+### <a name="configure-firewall-rules"></a>ファイアウォール規則を構成する
 
-Azure Storage では、構成可能なファイアウォールが提供されます。 既定ではファイアウォールは無効になっているため、Azure Cognitive Search はご使用のストレージ アカウントに接続できます。
+Azure Storage、CosmosDB、および Azure SQL では、構成可能なファイアウォールが提供されます。 ファイアウォールが有効になっているとき、特定のエラー メッセージはありません。 通常、ファイアウォールのエラーは一般的であり、`The remote server returned an error: (403) Forbidden` や `Credentials provided in the connection string are invalid or have expired` のようなものです。
 
-ファイアウォールが有効になっているとき、特定のエラー メッセージはありません。 通常、ファイアウォールのエラーは `The remote server returned an error: (403) Forbidden` のようなものです。
+こうした場合にインデクサーがこれらのリソースにアクセスできるようにするには、次の 2 つのオプションがあります。
 
-ファイアウォールが有効であることは[ポータル](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)で確認できます。 唯一のサポートされている回避策は、[[すべてのネットワーク]](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) からのアクセスを許可することを選択して、ファイアウォールを無効にすることです。
+* **[すべてのネットワーク]** からのアクセスを許可して、ファイアウォールを無効にします (可能な場合)。
+* または、リソースのファイアウォール規則 (IP アドレス範囲の制限) で、検索サービスの IP アドレスと `AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) の IP アドレス範囲に対するアクセスを許可することもできます。
 
-インデクサーにスキルセットが添付されていない場合、検索サービスの IP アドレスの[例外を追加](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)してみる_ことができます_。 ただし、このシナリオはサポートされておらず、動作は保証されていません。
+データ ソースの種類ごとに IP アドレス範囲の制限を構成する方法の詳細については、次のリンクを参照してください。
 
-検索サービスの IP アドレスは、その FQDN (`<your-search-service-name>.search.windows.net`) を ping することで確認できます。
+* [Azure ストレージ](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-### <a name="cosmos-db"></a>Cosmos DB
+* [Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-#### <a name="indexing-isnt-enabled"></a>インデックス付けが有効でない
+* [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+
+**制限事項**:上記の Azure Storage のドキュメントに記載されているように、IP アドレス範囲の制限は、検索サービスとストレージ アカウントが異なるリージョンにある場合にのみ機能します。
+
+([カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)として使用されている場合がある) Azure 関数でも [IP アドレスの制限](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)がサポートされています。 構成する IP アドレスの一覧は、検索サービスの IP アドレスと `AzureCognitiveSearch` サービス タグの IP アドレス範囲になります。
+
+Azure VM 上の SQL Server のデータへのアクセス方法の詳細については、[こちら](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)で説明しています
+
+### <a name="configure-network-security-group-nsg-rules"></a>ネットワーク セキュリティ グループ (NSG) 規則を構成する
+
+SQL マネージド インスタンスのデータにアクセスする場合、または Azure VM を[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)の Web サービス URI として使用する場合、お客様は特定の IP アドレスを気にする必要はありません。
+
+このような場合は、Azure VM または SQL マネージド インスタンスを仮想ネットワーク内に配置するように構成できます。 そして、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理するようにネットワーク セキュリティ グループを構成できます。
+
+`AzureCognitiveSearch` サービス タグは、IP アドレス範囲を検索しなくても、受信 [NSG 規則](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules)で直接使用できます。
+
+SQL マネージド インスタンス内のデータへのアクセス方法の詳細については、[こちら](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)で説明しています
+
+### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "インデックス付け" が有効でない
 
 Azure Cognitive Search は、Cosmos DB のインデックス付けに暗黙に依存しています。 Cosmos DB の自動インデックス付けをオフにすると、Azure Cognitive Search から成功状態が返されますが、コンテナーの内容をインデックス付けすることができません。 設定を確認してインデックス付けをオンにする手順については、[Azure Cosmos DB でのインデックス付けの管理](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal)に関する記事をご覧ください。
 

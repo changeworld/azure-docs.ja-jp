@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913501"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867161"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -108,7 +108,7 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
   - *Microsoft.Network/publicIPAddresses/write*
 - または、仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 別のリソース グループにある既存のディスク リソースにアクセスしなければならない場合があります。 ロールの一連のアクセス許可として、次のいずれかを割り当てます。
 
@@ -121,7 +121,7 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
 
 Virtual Kubelet を使用して AKS と統合し、AKS クラスターとは別のリソース グループで Azure Container Instances (ACI) を実行する場合は、AKS サービス プリンシパルに ACI リソース グループに対する "*共同作成者*" 権限を与える必要があります。
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 AKS と Azure AD サービス プリンシパルを使用する場合は、以下の考慮事項を念頭に置いてください。
 
@@ -131,6 +131,8 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 - サービス プリンシパルの**クライアント ID** を指定するときには、`appId` の値を使用します。
 - Kubernetes クラスター内のエージェント ノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
 - [az aks create][az-aks-create] コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
+- 追加の AKS CLI コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/aksServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。  
+- 必要に応じて、aksServicePrincipal.json ファイルを削除することもできます。これにより、AKS は新しいサービス プリンシパルを作成します。
 - [az aks create][az-aks-create] によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。
     - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad app delete][az-ad-app-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
 
@@ -138,7 +140,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 AKS クラスターのサービス プリンシパルの資格情報は、Azure CLI によってキャッシュされます。 これらの資格情報が期限切れになると、AKS クラスターのデプロイ中にエラーが発生します。 [az aks create][az-aks-create] を実行しているときの次のエラー メッセージは、キャッシュされているサービス プリンシパルの資格情報に問題があることを示す可能性があります。
 
@@ -156,7 +158,7 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 
 サービス プリンシパルの資格情報の既定の有効期限は 1 年です。 *aksServicePrincipal.json* ファイルが 1 年よりも古い場合は、ファイルを削除して AKS クラスターを再度デプロイします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory サービス プリンシパルの詳細については、「[アプリケーション オブジェクトとサービス プリンシパル オブジェクト][service-principal]」を参照してください。
 

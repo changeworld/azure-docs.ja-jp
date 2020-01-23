@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848597"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979455"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -43,9 +43,9 @@ Azure Active directory (Azure AD) のセルフサービスによるパスワー�
 
 この連絡先メールは、次の受信者に次の順序で送信されます。
 
-1. **パスワード管理者**ロールが割り当てられている場合は、このロールを持つ管理者が通知を受け取ります。
-2. パスワード管理者が割り当てられていない場合は、**ユーザー管理者**ロールを持つ管理者が通知を受け取ります。
-3. 上記のどちらのロールも割り当てられていない場合は、**グローバル管理者**が通知を受け取ります。
+1. **ヘルプデスク管理者**ロールまたは**パスワード管理者**ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
+1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、**ユーザー管理者**ロールを持つ管理者が通知を受け取ります。
+1. 上記のどのロールも割り当てられていない場合は、**グローバル管理者**が通知を受け取ります。
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
 
@@ -88,13 +88,13 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 * メールのフレンドリ名 (例: "Microsoft on behalf of CONTOSO demo")
 * メールの件名行 (例: "CONTOSO demo account email verification code")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

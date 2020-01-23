@@ -16,14 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edbc6f9ce4c1434fa27989f053c108914a151320
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939875"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745779"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
+
+> [!WARNING]
+> 現在、この機能はプレビュー段階にあり、安定性がまだテスト中です。
 
 このチュートリアルでは、Azure [Network Watcher](network-watcher-monitoring-overview.md) サービスを使用して、ユーザーの統計分析に基づいてアプリケーションまたはサービスをデプロイする Azure リージョンを決定する方法について説明します。 このチュートリアルは、サービス プロバイダーの Azure への接続を評価する場合にも役立ちます。  
         

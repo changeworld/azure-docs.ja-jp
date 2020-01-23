@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の消費モデル | Microsoft Docs
-description: Azure Maps の消費モデルについて説明します
+title: ルート指定のための車両消費モデル | Microsoft Azure Maps
+description: この記事では Microsoft Azure Maps でのルート指定に使用される車両消費モデルについて説明します。
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a8a0778ce279846b0d7a66b1729b6898e80a4b5
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60797902"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911707"
 ---
 # <a name="consumption-model"></a>消費モデル
 

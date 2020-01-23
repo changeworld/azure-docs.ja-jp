@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/06/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3966a93f15d8853348d314d078fa1fa5fc90941
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535391"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765665"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,6 +72,15 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+### <a name="secured-web-service"></a>セキュリティで保護された Web サービス
+
+SSL 証明書を使用してデプロイされた Web サービスをセキュリティで保護した場合、[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を使用して、スコアリングまたは swagger URI を使用してサービスに接続できます。 HTTPS は、クライアントと Web サービスの間の通信を暗号化することで双方の間の通信をセキュリティで保護する場合に役立ちます。 暗号化は[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用します。 TLS は、現在も、TLS の前身である *Secure Sockets Layer* (SSL) と呼ばれることがあります。
+
+> [!IMPORTANT]
+> Azure Machine Learning によってデプロイされた Web サービスは、TLS バージョン 1.2 のみをサポートします。 クライアント アプリケーションを作成するときは、このバージョンがサポートされていることを確認してください。
+
+詳細については、「[SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)」を参照してください。
 
 ### <a name="authentication-for-services"></a>サービスの認証
 
@@ -495,7 +504,7 @@ print(resp.text)
 
 Power BI では、予測によって Power BI のデータを拡充できるように、Azure Machine Learning Web サービスの使用がサポートされています。 
 
-Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-entry-script)。
+Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)。
 
 デプロイした Web サービスは、Power BI データフローから使用できます。 [Power BI から Azure Machine Learning Web サービスを使用する方法をご確認ください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 

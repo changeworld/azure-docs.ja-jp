@@ -4,7 +4,7 @@ description: この簡単なサンプル アプリでは、セキュリティの
 keywords: NA
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159839"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771276"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD アプリ用のセキュリティで保護されたアプリの開発
 ## <a name="overview"></a>概要
@@ -39,7 +39,7 @@ ms.locfileid: "73159839"
 
 このアプリを開発してデプロイすると、次のサンプル Web アプリと、説明されている構成およびセキュリティ対策が設定されます。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 このアプリは、3 つの階層を持つ典型的な n 層アプリケーションです。 次に示すように、フロントエンド、バックエンド、データベースの各レイヤーに、監視コンポーネントとシークレット管理コンポーネントが統合されています。
 
 ![アプリのアーキテクチャ](./media/secure-aad-app/architecture.png)
@@ -443,7 +443,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 1.  Azure portal に戻ります。 左側のナビゲーション ウィンドウで、[Azure Active Directory] サービスを選択し、[アプリの登録] を選択します。
 2.  結果の画面で、WebApp-OpenIDConnect-DotNet-code-v2 アプリケーションを選択します。
 3.  [認証] タブの [リダイレクト URI] セクションで、コンボボックスの [Web] を選択し、次のリダイレクト URI を追加します。
-    [https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net](https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ) https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc [詳細設定] セクションの [ログアウト URL] を「 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc 」に設定します。
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   [詳細設定] セクションで、[ログアウト URL] を https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc に設定します。
 4.  [ブランド] タブで、ホーム ページの URL を App Service のアドレスに更新します (たとえば https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net )。
         構成を保存します。
 5.  アプリケーションで Web API を呼び出す場合、appsettings.json プロジェクトに必要な変更を適用し、localhost でなく公開された API の URL が呼び出されるようにしてください。
@@ -555,7 +555,7 @@ Azure Sentinel を設定するには、さまざまなリソースから収集�
 
    セキュリティ機能を備えたサンプル アプリのリソースをデプロイするには、いくつかの Premium 機能に対して料金を支払う必要があります。 アプリケーションの規模が拡大し、Azure によって提供される無料レベルと試用版をアップグレードしてアプリケーションの要件を満たす必要が生じるにつれ、コストが増加する可能性があります。 コストの見積もりには、Azure [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)をご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
    次の記事は、セキュリティで保護されたアプリケーションを設計、開発、およびデプロイする際に役立ちます。
 
 - [Design (デザイン)](secure-design.md)

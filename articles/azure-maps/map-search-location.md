@@ -1,6 +1,6 @@
 ---
-title: Azure Maps を使った検索結果の表示 | Microsoft Docs
-description: Azure Maps で検索要求を実行して、結果を Azure Maps Web SDK に表示する方法。
+title: マップに検索結果を表示する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して検索要求を実行し、結果を地図上に表示する方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7c4c78e1d21754d42391a3762e9f7ed199a7376b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7123bfda0baa3054dbed336dc4bed8958680cb62
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975960"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910919"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
 
@@ -57,7 +57,7 @@ ms.locfileid: "68975960"
 
 マップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内で検索要求、データ ソース、シンボル レイヤー、およびカメラ境界が設定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 あいまい検索の詳細については、**こちら**を参照してください。
 

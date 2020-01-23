@@ -1,21 +1,21 @@
 ---
-title: コンテナー グループのリソース ログ
+title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533730"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770545"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
-Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、ログとイベント データを Azure Monitor ログに送信するための組み込みサポートが含まれています。
+Log Analytics ワークスペースは、Azure リソースからだけでなく、オンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、ログとイベント データを Azure Monitor ログに送信するための組み込みサポートが含まれています。
 
-コンテナー グループのログとイベント データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに Log Analytics ワークスペース ID とワークスペース キーを指定する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
+コンテナー グループのログとイベント データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに既存の Log Analytics ワークスペース ID とワークスペース キーを指定します。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成方法と、ログに対するクエリの実行方法について説明します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,7 +46,7 @@ Azure Container Instances が Log Analytics ワークスペースにデータを
 
 ログ分析のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。
 
-次の例は、1 つの [fluentd][fluentd] コンテナーが含まれたコンテナー グループを作成する 2 つの方法を示しています。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
+次の例は、1 つの [fluentd][fluentd] コンテナーで構成されるコンテナー グループを作成する 2 つの方法を示しています。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
 
 ### <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
 
@@ -145,7 +145,7 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 

@@ -1,19 +1,19 @@
 ---
 title: Marketplace の測定サービス API | Azure Marketplace
 description: Azure Marketplace での SaaS オファーの使用状況イベント。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825473"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933585"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace の測定サービス API
 
@@ -52,7 +52,7 @@ ms.locfileid: "73825473"
 ### <a name="responses"></a>Responses
 
 コード:200<br>
-OK 
+[OK] 
 
 ```json
 {
@@ -161,7 +161,7 @@ OK
 ### <a name="responses"></a>Responses
 
 コード:200<br>
-OK
+[OK]
 
 ```json
 {
@@ -195,7 +195,7 @@ OK
 
 `BatchUsageEvent` API 応答で参照される状態コードの説明:
 
-| status code  | 説明 |
+| status code  | [説明] |
 | ---------- | -------------------- |
 | `Accepted` | コードが受け付けられました。 |
 | `Expired` | 使用状況の有効期限が切れています。 |
@@ -234,6 +234,6 @@ OK
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[SaaS の従量制課金](./saas-metered-billing.md)に関するページを参照してください。

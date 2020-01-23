@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953209"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911907"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
@@ -71,7 +71,7 @@ ms.locfileid: "73953209"
 
 2. 入力ボックスにメソッド名とペイロードを入力します。
 
-3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
+3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub]** ビューに表示されます。
 
 ## <a name="read-device-twin"></a>デバイス ツインの読み取り
 
@@ -95,9 +95,9 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
 2. 入力ボックスにメッセージを入力します。
 
-3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
+3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub]** ビューに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、さまざまな管理オプションを使って、Visual Studio Code 用 Azure IoT Tools 拡張機能を使用する方法について学びました。
 

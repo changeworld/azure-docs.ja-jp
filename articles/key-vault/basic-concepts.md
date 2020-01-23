@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault とは | Microsoft Docs
+title: Azure Key Vault とは? | Microsoft Docs
 description: Azure Key Vault で、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをどのように保護するかについて学習します。
 services: key-vault
 author: msmbaldwin
@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63d02dc3e098a48292731de84089fc4547987a25
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7f32664f4bb9407d915b7909f9ecdeebe96bd551
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004156"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771940"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 
@@ -74,7 +74,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 開発者は、API を使用してキーを直接管理することもできます。 詳細については、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法を学習する。
 

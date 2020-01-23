@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409100"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921911"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
-Azure で関数アプリを作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions に利用できるホスティング プランは 3 つあります。[従量課金プラン](#consumption-plan)、[Premium プラン](#premium-plan)、および [App Service プラン](#app-service-plan)です。
+Azure で関数アプリを作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions に利用できるホスティング プランは 3 つあります。[従量課金プラン](#consumption-plan)、[Premium プラン](#premium-plan)、[専用 (App Service) プラン](#app-service-plan)です。
 
 お客様が選択したホスティング プランによって、次の動作が決まります。
 
 * 関数アプリをスケールする方法。
 * 各関数アプリ インスタンスに利用できるリソース。
-* VNET 接続などの高度な機能のサポート。
+* Azure Virtual Network 接続などの高度な機能のサポート。
 
-従量課金プランと Premium プランのいずれも、コードの実行時に自動的にコンピューティング能力が追加されます。 アプリは、負荷を処理する必要があるときはスケールアウトされ、コードの実行が停止するとスケールダウンされます。 従量課金プランの場合、アイドル状態の仮想マシンの料金や、予約容量の事前の料金を支払う必要もありません。  
+従量課金プランと Premium プランのいずれも、コードの実行時に自動的にコンピューティング能力が追加されます。 アプリは、負荷を処理する必要があるときはスケールアウトされ、コードの実行が停止するとスケールインされます。 従量課金プランの場合、アイドル状態の仮想マシンの料金や、予約容量の事前の料金を支払う必要もありません。  
 
 Premium プランには、Premium コンピューティング インスタンス、無期限にインスタンスをウォーム状態に保つ機能、VNet 接続などの追加機能があります。
 
@@ -33,7 +33,7 @@ App Service プランでは、お客様が管理している専用のインフ�
 機能のサポートは次の 2 つのカテゴリに分類されます。
 
 * _一般提供 (GA)_ : 完全にサポートされ、運用環境用に承認されています。
-* _プレビュー_: まだ完全にはサポートされておらず、運用環境用として承認されていません。
+* "_プレビュー_": まだ完全にはサポートされておらず、運用環境用として承認されていません。
 
 次の表は、Windows または Linux 上で実行される場合の 3 つのホスティング プランに対する現在のサポート レベルを示しています。
 
@@ -78,7 +78,7 @@ Premium プランの課金は、実行や消費されたメモリごとの課金
 * 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒の請求額は低い。
 * 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
 * 従量課金プランで[許可されている最大実行時間](#timeout)よりも長くコードを実行する必要がある。
-* VNET/VPN 接続など、Premium プランでのみ利用できる機能が必要である。
+* 仮想ネットワーク接続など、Premium プランでのみ利用できる機能が必要である。
 
 Premium プランで JavaScript 関数を実行する場合は、vCPU の少ないインスタンスを選ぶ必要があります。 詳しくは、[シングルコア Premium プランの選択](functions-reference-node.md#considerations-for-javascript-functions)に関する記事をご覧ください。  
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430316"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028576"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -141,7 +141,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1.  *myVM* のリモートデスクトップで、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) をインストールします。
+1. *myVM* のリモート デスクトップで、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) をインストールします。
 
 1. 右クリックで **[Cosmos DB Accounts (Preview)]\(Cosmos DB アカウント (プレビュー)\)** を選択します。
 
@@ -159,22 +159,22 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. (省略可能必要に応じて) *mycosmosaccount* に新しい項目を追加します。
 
-1.  *myVM* へのリモート デスクトップ接続を閉じます。
+1. *myVM* へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 プライベート エンドポイント、Azure Cosmos アカウント、および VM の使用が完了したら、リソース グループとそこに含まれるすべてのリソースを削除します。 
 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。
 
 1. **[リソース グループの削除]** を選択します。
 
-1. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。
+1. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワーク上に VM を作成し、Azure Cosmos アカウントとプライベート エンドポイントを作成しました。 インターネットから VM に接続し、Private Link を使用して Azure Cosmos アカウントと安全に通信を行いました。
 
-* プライベート エンドポイントの詳細については、「 [Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
+* プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
 
 * Azure Cosmos DB で使用する際のプライベート エンドポイントの制限の詳細については、[Azure Cosmos DB での Azure Private Link](../cosmos-db/how-to-configure-private-endpoints.md) に関する記事をご覧ください。

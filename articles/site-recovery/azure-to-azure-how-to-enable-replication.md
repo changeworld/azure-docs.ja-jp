@@ -1,19 +1,16 @@
 ---
-title: Azure Site Recovery で Azure VM のレプリケーションを構成する | Microsoft Docs
-description: この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの Azure VM のレプリケーションを構成する方法について説明します。
-services: site-recovery
-author: asgang
+title: Azure Site Recovery で Azure VM のレプリケーションを構成する
+description: Site Recovery を使用して、Azure VM の別のリージョンへのレプリケーションを構成する方法について説明します。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2018
-ms.author: asgang
-ms.openlocfilehash: 7559bfd3d97f7b430b92578473501b519eb0a07f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934556"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973688"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
 
@@ -65,7 +62,7 @@ ms.locfileid: "68934556"
      >[!NOTE]
      >レプリケーションを有効にした後は、可用性の種類 (単一インスタンス、可用性セット、または可用性ゾーン) を変更できません。 可用性の種類を変更するには、レプリケーションを無効にし、有効にする必要があります。
      >
-    
+
    - **レプリケーション ポリシー**:復旧ポイントのリテンション履歴と、アプリ整合性スナップショットの頻度の設定を定義します。 既定では、Azure Site Recovery によって、既定の設定 (復旧ポイントのリテンション期間が "24 時間"、アプリ整合性スナップショットの頻度が "4 時間") で新しいレプリケーション ポリシーが作成されます。
 
      ![レプリケーションを有効にする](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -77,7 +74,7 @@ ms.locfileid: "68934556"
 -   追加されたディスクの保護を有効にすると、ディスクの初回のレプリケーション後に警告は表示されなくなります。
 -   ディスクのレプリケートを有効にしないことを選択した場合は、この警告の無視を選択できます。
 
-    
+
     ![新しいディスクの追加](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 追加されたディスクのレプリケーションを有効にするには、次の手順を実行します。
@@ -91,7 +88,7 @@ ms.locfileid: "68934556"
 レプリケーションの有効化ジョブが実行され、初回のレプリケーションが完了すると、ディスクの問題に関するレプリケーションの正常性の警告は削除されます。
 
 
-  
+
 ## <a name="customize-target-resources"></a>ターゲット リソースのカスタマイズ
 
 Site Recovery によって使用される既定のターゲット設定を変更することができます。
@@ -115,7 +112,7 @@ Site Recovery によって使用される既定のターゲット設定を変更
     - ポート 20004 経由での VM 間の内部通信をブロックするファイアウォール アプライアンスがないことを確認します。
     - Linux VM をレプリケーション グループに含めるには、ポート 20004 の送信トラフィックが、特定の Linux バージョンのガイダンスに従って手動で開かれていることを確認します。
 ![Enable replication](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. **[Create target resource]\(ターゲット リソースを作成する\)**  >  **[レプリケーションを有効にする]** の順にクリックします。
 6. VM のレプリケーションが有効になったら、 **[レプリケートされたアイテム]** で VM の正常性の状態を確認できます。
 
@@ -123,6 +120,6 @@ Site Recovery によって使用される既定のターゲット設定を変更
 >初期レプリケーションの間は、状態の更新に少し時間がかかり、進捗が見られない場合があります。 **[更新]** ボタンをクリックして、最新の状態を取得します。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト フェールオーバーの実行に関する[詳細を確認](site-recovery-test-failover-to-azure.md)する。

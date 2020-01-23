@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 6e44ea1b219e60f547806afb7ce04277d27f7408
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445770"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708310"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -32,7 +32,7 @@ ms.locfileid: "75445770"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
 
-はい。 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
+はい。 [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
 
@@ -101,7 +101,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [イメージを削除した後もレジストリ クォータの使用量が減少しないのはなぜですか?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [ストレージ クォータの変更を検証するにはどうすればよいですか?](#how-do-i-validate-storage-quota-changes)
 - [コンテナーで CLI を実行しているときにレジストリに対して認証するにはどうすればよいですか?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Azure Container Registry では TLS v1.2 のみの構成が提供されますか? また、TLS v1.2 を有効にする方法は?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [TLS 1.2 はどのようにして有効にするのですか?](#how-to-enable-tls-12)
 - [Azure Container Registry はコンテンツの信頼をサポートしていますか?](#does-azure-container-registry-support-content-trust)
 - [レジストリ リソースを管理するためのアクセス許可なしで、イメージをプルまたはプッシュするためのアクセス権を付与するにはどうすればよいですか?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [レジストリに対するイメージの自動検疫を有効にするにはどうすればよいですか?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,9 @@ apk --update add docker
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Azure Container Registry では TLS v1.2 のみの構成が提供されますか? また、TLS v1.2 を有効にする方法は?
+### <a name="how-to-enable-tls-12"></a>TLS 1.2 はどのようにして有効にするのですか?
 
-はい。 最新の docker クライアント (バージョン 18.03.0 以上) を使用して TLS を有効にします。 
+最新の docker クライアント (バージョン 18.03.0 以上) を使用して TLS 1.2 を有効にします。 
 
 > [!IMPORTANT]
 > 2020 年 1 月 13 日以降、Azure Container Registry では、サーバーとアプリケーションからのセキュリティで保護されたすべての接続で TLS 1.2 を使用する必要があります。 TLS 1.0 と 1.1 のサポートは、廃止される予定です。

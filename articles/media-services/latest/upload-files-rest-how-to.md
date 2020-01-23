@@ -1,5 +1,5 @@
 ---
-title: REST を使用した Azure Media Services アカウントへのファイルのアップロード | Microsoft Docs
+title: REST を使用した Azure Media Services v3 アカウントへのファイルのアップロード | Microsoft Docs
 description: アセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389795"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779163"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
 
@@ -61,6 +61,6 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md) や [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)

@@ -16,18 +16,18 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e54e26bba1618a3b5835480ed1b1fe698bc8db4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423587"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043419"
 ---
-# <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web API - コードの構成
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
 
 Web API を登録した後は、アプリケーションのコードを構成することができます。
 
-ダウンストリーム Web API を呼び出すように Web API を構成するコードは、Web API を保護するために使用されるコードの上に構築されます。 詳細については、「[保護された Web API - アプリ構成](scenario-protected-web-api-app-configuration.md)」をご覧ください。
+ダウンストリーム Web API を呼び出すように Web API を構成するために使用するコードは、Web API を保護するために使用されるコードの上に構築されます。 詳細については、[保護された Web API: アプリ構成](scenario-protected-web-api-app-configuration.md)に関するページを参照してください。
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>OnTokenValidated をサブスクライブするコード
 
@@ -35,10 +35,10 @@ Web API を登録した後は、アプリケーションのコードを構成す
 
 ```csharp
 /// <summary>
-/// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
+/// Protects the web API with the Microsoft identity platform, or Azure Active Directory (Azure AD) developer platform
 /// This supposes that the configuration files have a section named "AzureAD"
 /// </summary>
-/// <param name="services">Service collection to which to add authentication</param>
+/// <param name="services">The service collection to which to add authentication</param>
 /// <param name="configuration">Configuration</param>
 /// <returns></returns>
 public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollection services,
@@ -49,14 +49,14 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
         // When an access token for our own web API is validated, we add it 
-        // to MSAL.NET's cache so that it can be used from the controllers.
+        // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
         options.Events.OnTokenValidated = async context =>
         {
             context.Success();
 
-            // Adds the token to the cache, and also handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent 
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -70,14 +70,14 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 
 AddAccountToCacheFromJwt() メソッドは次を実行する必要があります。
 
-- MSAL 機密クライアント アプリケーションをインスタンス化します。
-- `AcquireTokenOnBehalf` を呼び出して、Web API のクライアントによって取得されたベアラー トークンを、同じユーザーのベアラー トークンに照らして交換します (ただし、API がダウンストリーム API を呼び出すため)。
+- Microsoft Authentication Library (MSAL) 機密クライアント アプリケーションをインスタンス化します。
+- `AcquireTokenOnBehalf` メソッドを呼び出します。 この呼び出しにより、Web API のクライアントによって取得されたベアラー トークンが同じユーザーのベアラー トークンに照らして交換されます (ただし、ダウンストリーム API を呼び出す API が含まれています)。
 
 ### <a name="instantiate-a-confidential-client-application"></a>機密クライアントをインスタンス化する
 
-このフローは機密クライアント フローでのみ使用可能なため、保護された Web API は、クライアントの資格情報 (クライアント シークレットまたは証明書) を、それぞれ `WithClientSecret` メソッドまたは `WithCertificate` メソッドを介して [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) に提供します。
+このフローは機密クライアント フローでのみ使用可能なため、保護された Web API は、クライアントの資格情報 (クライアント シークレットまたは証明書) を、`WithClientSecret` メソッドまたは `WithCertificate` メソッドを介して [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) クラスに提供します。
 
-![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![IConfidentialClientApplication メソッドの一覧](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -95,18 +95,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-最後に、機密クライアント アプリケーションでは、クライアント シークレットや証明書ではなく、クライアント アサーションを使用して ID を証明することもできます。
-この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください
+最後に、機密クライアント アプリケーションでは、クライアント シークレットや証明書を介して ID を証明するのではなく、クライアント アサーションを使用して ID を証明することができます。
+この高度なシナリオの詳細については、「[機密クライアント アサーション](msal-net-client-assertions.md)」を参照してください。
 
-### <a name="how-to-call-on-behalf-of"></a>On-behalf-of を呼び出す方法
+### <a name="how-to-call-on-behalf-of"></a>On-Behalf-Of を呼び出す方法
 
-on-behalf-of (OBO) 呼び出しは、`IConfidentialClientApplication` インターフェイスで [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) メソッドを呼び出すことによって行われます。
+On-Behalf-Of (OBO) 呼び出しを行うには、`IConfidentialClientApplication` インターフェイスで [AcquireTokenOnBehalf メソッド](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)を呼び出します。
 
-`UserAssertion` は、独自のクライアントから Web API で受信されたベアラー トークンから構築されます。 [2 つのコンストラクター](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)、すなわち JWT ベアラー トークンを取るものと、任意の種類のユーザー アサーション (別の種類のセキュリティ トークン。その型は、`assertionType` という名前の追加パラメーターに指定される) を取るものがあります。
+`UserAssertion` クラスは、Web API によって専用のクライアントから受信されるベアラー トークンで構築されます。 [2 つのコンストラクター](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)、すなわち
+* JSON Web トークン (JWT) ベアラー トークンを取得するものと、
+* 任意の種類のユーザー アサーション (別の種類のセキュリティ トークン。その型は、`assertionType` という名前の追加パラメーターに指定される) を取得するものがあります
 
-![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![UserAssertion のプロパティとメソッド](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-実際には、OBO フローは、ダウンストリーム API のトークンを取得して、それを MSAL.NET ユーザー トークン キャッシュに格納するためによく使用されます。それにより、Web API の他の部分は後で ``AcquireTokenOnSilent`` の[オーバーライド](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)で呼び出してダウンストリーム API を呼び出すことができます。 この呼び出しには、必要な場合、トークンを最新の情報に更新する効果があります。
+実際には、OBO フローは、ダウンストリーム API のトークンを取得して、それを MSAL.NET ユーザー トークン キャッシュに格納するためによく使用されます。 こうすれば、Web API の他の部分は、後で ``AcquireTokenOnSilent`` の[オーバーライド](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)で呼び出してダウンストリーム API を呼び出すことができます。 この呼び出しには、必要な場合、トークンを最新の情報に更新する効果があります。
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -128,7 +130,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
         // Create the application
         var application = BuildConfidentialClientApplication(httpContext, principal);
 
-        // .Result to make sure that the cache is filled-in before the controller tries to get access tokens
+        // .Result to make sure that the cache is filled in before the controller tries to get access tokens
         var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
                                                         userAssertion)
                                 .ExecuteAsync()
@@ -142,13 +144,13 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-また、[NodeJS と Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) のフロー実装の例を見ることもできます。
+また、[Node.js と Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) への OBO フロー実装の例を確認することもできます。
 
 ## <a name="protocol"></a>Protocol
 
-on-behalf-of プロトコルの詳細情報については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)」をご覧ください。
+OBO プロトコルの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)
+> [Web API を呼び出す Web API:アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)

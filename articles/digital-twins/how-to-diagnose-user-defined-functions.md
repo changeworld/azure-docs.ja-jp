@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 94038d743bf0aafaadb4693ffc48108e5351bca4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457026"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863548"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
@@ -35,7 +35,7 @@ Azure Digital Twins は堅牢なログ記録、監視、分析をサポートし
 
 * Azure Digital Twins 固有のログ構成については、[監視とログを構成する方法](./how-to-configure-monitoring.md)に関する記事を参照してください。
 * Azure Monitor を使って実現できる強力なログ設定については、[Azure Monitor](../azure-monitor/overview.md) の概要を参照してください。
-* Azure portal、Azure CLI、または PowerShell を使用して Azure Digital Twins で診断ログの設定を構成する方法については、[お使いの Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)に関する記事を参照してください。
+* Azure portal、Azure CLI、または PowerShell を使用して Azure Digital Twins で診断ログの設定を構成する方法については、[お使いの Azure リソースからのログ データの収集と使用](../azure-monitor/platform/platform-logs-overview.md)に関する記事を参照してください。
 
 一度構成すると、すべてのログ カテゴリ、メトリックを選択し、強力な Azure Monitor ログ分析ワークスペースを使用してデバッグ作業を補助できるようになります。
 
@@ -56,7 +56,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | イベント データで指定した相関 ID |
 
-最近のテレメトリ ログのクエリをすべて表示するには、次の手順に従います。
+最近のテレメトリ ログのクエリをすべてお読みになるには、次のようにします。
 
 ```Kusto
 AzureDiagnostics
@@ -212,8 +212,8 @@ function process(telemetry, executionContext) {
 
 1. **承認されていない**: ユーザー定義関数にロールの割り当てが設定されていない、またはトポロジから特定のメタデータにアクセスするための十分なアクセス許可がない場合、操作は失敗します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins で[監視とログ](./how-to-configure-monitoring.md)を有効にする方法について確認する。
 
-- Azure のログ記録オプションの詳細については、[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)の記事を参照してください。
+- Azure のログ記録オプションの詳細については、[Azure アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)の記事を参照してください。

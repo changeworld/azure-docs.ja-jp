@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 277a745d26961ed509258d5423fc3c0da9b79a24
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219396"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903538"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs のセキュリティ コントロール
 
@@ -42,14 +42,14 @@ ms.locfileid: "71219396"
 | セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
 |---|---|--|--|
 | 認証| はい | | [Azure Event Hubs へのアクセスを承認する](authorize-access-event-hubs.md)、[Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する](authorize-access-azure-active-directory.md)、[Shared Access Signature を使用して Event Hubs リソースへのアクセスを承認する](authorize-access-shared-access-signature.md) |
-| Authorization|  はい | | [Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](authenticate-managed-identity.md)、[Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する](authenticate-application.md)、[Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する](authenticate-shared-access-signature.md) |
+| 承認|  はい | | [Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](authenticate-managed-identity.md)、[Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する](authenticate-application.md)、[Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する](authenticate-shared-access-signature.md) |
 
 ## <a name="data-protection"></a>データ保護
 
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
 |---|---|--|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  はい | |  |
-| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | いいえ |  |  |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー |  はい | |  |
+| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい。 専用クラスターとして使用可能。 | Azure KeyVault 内のカスタマー マネージド キーを使用して、保存されているイベント ハブのデータを暗号化できます。 | [Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する](configure-customer-managed-key.md) |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |  |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | |  |
 | API 呼び出しの暗号化| はい |  |  |
@@ -60,6 +60,6 @@ ms.locfileid: "71219396"
 |---|---|--|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | |  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

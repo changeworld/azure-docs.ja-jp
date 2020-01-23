@@ -191,6 +191,9 @@
         - name: ラベル イメージ
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: ラベル付きのデータセットを作成する
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: モデルをトレーニングする
       items:
         - name: デザイナーを使用する

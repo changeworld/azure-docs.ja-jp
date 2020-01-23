@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269472"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029926"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>ローカルでの Azure Storage の開発とテストに Azurite エミュレーターを使用する (プレビュー)
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>ルーズ モード
+
+**省略可能**: Azurite では、既定で、サポートされていない要求ヘッダーとパラメーターをブロックするために厳格モードが適用されます。 **--loose** スイッチを使用すると、厳格モードが無効になります。
+
+```console
+azurite --loose
+```
+
+ショートカット スイッチは大文字の "L" です。
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>ツールと SDK の認証
 
 任意の認証方法を使用して、Azure Storage の SDK またはツール ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など) から Azurite に接続します。 認証が必要です。 Azurite は、共有キーと Shared Access Signature (SAS) を使用した認証をサポートしています。 Azurite ではパブリック コンテナーへの匿名アクセスもサポートされています。
@@ -307,6 +321,33 @@ Azurite では次のアカウント名とキーを使用できます。 これ�
 ```
 
 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+
+### <a name="custom-storage-accounts-and-keys"></a>カスタム ストレージ アカウントとキー
+
+Azurite では、`AZURITE_ACCOUNTS` 環境変数を次の形式で設定することにより、カスタム ストレージ アカウント名とキーがサポートされます: `account1:key1[:key2];account2:key1[:key2];...`。
+
+たとえば、1 つのキーを持つカスタム ストレージ アカウントを使用する場合は、次のように指定します。
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+それぞれ 2 つのキーを持つ複数のストレージ アカウントを使用する場合は、次のように指定します。
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Azurite では、既定で、1 分ごとにカスタム アカウント名とキーが環境変数から更新されます。 この機能により、アカウント キーを動的にローテーションしたり、Azurite を再起動することなく新しいストレージ アカウントを追加したりできます。
+
+> [!NOTE]
+> カスタム ストレージ アカウントを設定すると、既定の `devstoreaccount1` ストレージ アカウントは無効になります。
+
+> [!NOTE]
+> カスタム アカウント名とキーを使用する場合は、それに応じて接続文字列を更新します。
+
+> [!NOTE]
+> Linux 環境で環境変数を設定するには、`export` キーワードを使用します。Windows では `set` を使用します。
 
 ### <a name="storage-explorer"></a>ストレージ エクスプローラー
 
@@ -354,7 +395,7 @@ Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GR
 
 Azurite への参加や提案をお待ちしています。 近日公開される機能やバグ修正のために追跡しているマイルストーンと作業項目については、Azurite の [GitHub プロジェクト](https://github.com/Azure/Azurite/projects) ページまたは [GitHub の課題](https://github.com/Azure/Azurite/issues)を参照してください。 GitHub では詳細な作業項目も追跡されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Azure ストレージ エミュレーターを使用した開発とテスト](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについて記載されています。
 * 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。

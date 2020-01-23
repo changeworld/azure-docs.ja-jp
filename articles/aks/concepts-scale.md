@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048189"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768624"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -28,6 +28,8 @@ Azure Kubernetes Service (AKS) でアプリケーションを実行すると、�
 ## <a name="manually-scale-pods-or-nodes"></a>ポッドまたはノードを手動でスケーリングする
 
 レプリカ (ポッド) とノードを手動でスケーリングし、使用可能なリソースと状態の変化に対するアプリケーションの対応をテストできます。 手動によるリソースのスケーリングでは、ノード数などの固定コストを維持するために、使用する一定量のリソースを定義することもできます。 手動でスケーリングするには、レプリカまたはノードの数を定義します。 その後、そのレプリカまたはノードの数に基づき、Kubernetes API によって追加ポッドの作成またはノードのドレインのスケジュールが設定されます。
+
+ノードをスケールダウンすると、Kubernetes API によって、クラスターで使用されるコンピューティングの種類に関連付けられている Azure コンピューティング API が呼び出されます。 たとえば、VM Scale Sets 上に構築されたクラスターの場合は、VM Scale Sets API によって、削除するノードを選択するロジックが決められます。 スケールダウン時に削除対象のノードがどのように選択されるかの詳細については、[VMSS の FAQ](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)を参照してください。
 
 ポッドとノードの手動によるスケーリングを開始するには、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング][aks-scale]」を参照してください。
 
@@ -87,7 +89,7 @@ ACI では、追加のインフラストラクチャのオーバーヘッドな�
 
 仮想ノードは、AKS クラスターと同じ仮想ネットワーク内の追加サブネットにデプロイされます。 この仮想ネットワーク構成は、ACI と AKS 間のトラフィックをセキュリティで保護できます。 AKS クラスターと同様に、ACI インスタンスは、他のユーザーから分離されたセキュリティ保護された論理的なコンピューティング リソースです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スケーリング アプリケーションを開始するには、最初に[クイックスタートに従って、Azure CLI で AKS クラスターを作成][aks-quickstart]します。 次に、AKS クラスターでスケーリング アプリケーションを手動でも自動でも開始できます。
 

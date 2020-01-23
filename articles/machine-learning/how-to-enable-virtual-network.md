@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/13/2020
+ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690814"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934379"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>ワークスペース用のストレージ アカウントを使用する
 
-仮想ネットワークでワークスペース用の Azure ストレージ アカウントを使用するには、次のようにします。
+仮想ネットワーク内のワークスペースに Azure ストレージ アカウントを使用するには、次の手順を使用します。
 
 1. 仮想ネットワークの背後にコンピューティング リソース (Machine Learning コンピューティング インスタンスやクラスターなど) を作成するか、ワークスペースにコンピューティング リソース (HDInsight クラスター、仮想マシン、Azure Kubernetes Service クラスターなど) をアタッチします。 コンピューティング リソースは、実験またはモデル デプロイに使用できます。
 
@@ -58,7 +58,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
    ![Azure portal 内の Azure Storage ページの [ファイアウォールと仮想ネットワーク] 領域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. __[ファイアウォールと仮想ネットワーク]__ ページで、次のようにします。
+1. __[ファイアウォールと仮想ネットワーク]__ ページで、次の操作を行います。
     - __[選択されたネットワーク]__ を選択します。
     - __[仮想ネットワーク]__ で、 __[Add existing virtual network]\(既存の仮想ネットワークを追加\)__ というリンクを選択します。 この操作により、コンピューティングが置かれている仮想ネットワークが追加されます (手順 1. 参照)。
 
@@ -88,7 +88,8 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 * Azure コンテナー リポジトリ インスタンスへのパスワード
 * データ ストアへの接続文字列
 
-仮想ネットワークの背後で、Azure Key Vault と一緒に Azure Machine Learning 実験機能を使用するには、次のようにします。
+仮想ネットワークの内側で、Azure Machine Learning 実験機能を Azure Key Vault で使用するには、次の手順を使用します。
+
 1. ワークスペースに関連付けられているキー コンテナーに移動します。
 
    [![Azure Machine Learning のワークスペースに関連するキー コンテナー](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -97,7 +98,7 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 
    ![[キー コンテナー] ウィンドウの [ファイアウォールと仮想ネットワーク] セクション](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
-1. __[ファイアウォールと仮想ネットワーク]__ ページで、次のようにします。
+1. __[ファイアウォールと仮想ネットワーク]__ ページで、次の操作を行います。
     - __[許可するアクセス元]__ の __[選択されたネットワーク]__ を選択します。
     - __[仮想ネットワーク]__ で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティングが存在する仮想ネットワークを追加します。
     - __[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)__ で、 __[はい]__ を選択します。
@@ -158,15 +159,15 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 
 ### <a id="limiting-outbound-from-vnet"></a> 仮想ネットワークからのアウトバウンド接続を制限する
 
-既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限したい場合には、次のようにします。
+既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限する場合は、次の手順を使用します。
 
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
-- 次のものを宛先とするアウトバウンド トラフィックを制限します。
+- 次の項目へのアウトバウンド トラフィックを制限します。
    - Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の __サービス タグ__ を使用)
    - Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の __サービス タグ__ を使用)
    - Azure Machine Learning (__AzureMachineLearning__ の__サービス タグ__を使用)
-   - コンピューティング インスタンス (Azure クラウド) の場合は Azure Cloud (__AzureCloud.Region_Name__ (例: AzureCloud.NorthCentralUS) の__サービス タグ__ を使用)
+   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の__サービス タグ__を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
@@ -223,13 +224,13 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>仮想ネットワーク内にコンピューティング クラスターを作成する
 
-Machine Learning コンピューティング クラスターを作成するには、次のようにします。
+Machine Learning コンピューティング クラスターを作成するには、次の手順を使用します。
 
 1. [Azure portal](https://portal.azure.com) で、Azure Machine Learning ワークスペースを選択します。
 
 1. __[アプリケーション]__ セクションで、 __[コンピューティング]__ 、 __[コンピューティングの追加]__ の順に選択します。
 
-1. このコンピューティング リソースで仮想ネットワークを使用するように構成するには、次のようにします。
+1. 仮想ネットワークを使用するようにこのコンピューティング リソースを構成するには、次の操作を実行します。
 
     a. __[ネットワーク構成]__ で、 __[詳細設定]__ を選択します。
 
@@ -297,14 +298,14 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure Machine Learning では、Ubuntu を実行する仮想マシンのみがサポートされています。
 
-ワークスペースのある仮想ネットワークで仮想マシンまたは Azure HDInsight クラスターを使用するには、次のようにします。
+ワークスペースのある仮想ネットワークで仮想マシンまたは Azure HDInsight クラスターを使用するには、次の手順を使用します。
 
 1. Azure portal または Azure CLI を使用して VM または HDInsight クラスターを作成し、そのクラスターを Azure の仮想ネットワークに配置します。 詳細については、次の記事を参照してください。
     * [Linux VM 用の Azure 仮想ネットワークの作成と管理を行う](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Azure Virtual Network を使用した Azure HDInsight の拡張](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Azure Machine Learning で VM またはクラスターの SSH ポートと通信できるようにするために、ネットワーク セキュリティ グループ用のソース エントリを構成します。 SSH ポートは、通常はポート 22 です。 このソースからのトラフィックを許可するには、次のようにします。
+1. Azure Machine Learning で VM またはクラスターの SSH ポートと通信できるようにするために、ネットワーク セキュリティ グループ用のソース エントリを構成します。 SSH ポートは、通常はポート 22 です。 このソースからのトラフィックを許可するには、次の操作を実行します。
 
     * __[ソース]__ ボックスの一覧で、 __[サービス タグ]__ を選択します。
 
@@ -332,7 +333,7 @@ except ComputeTargetException:
 
 ## <a name="use-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)を使用する
 
-仮想ネットワーク内の AKS をワークスペースに追加するには、次のようにします。
+仮想ネットワーク内の AKS をワークスペースに追加するには、次の手順を使用します。
 
 > [!IMPORTANT]
 > 次の手順を開始する前に、「[Azure Kubernetes サービス (AKS) における高度なネットワークの構成](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)」攻略ガイドの前提条件に従って、クラスターの IP アドレス指定を計画してください。
@@ -347,7 +348,7 @@ except ComputeTargetException:
 
 1. __[アプリケーション]__ セクションで、 __[コンピューティング]__ 、 __[コンピューティングの追加]__ の順に選択します。
 
-1. このコンピューティング リソースで仮想ネットワークを使用するように構成するには、次のようにします。
+1. 仮想ネットワークを使用するようにこのコンピューティング リソースを構成するには、次の操作を実行します。
 
     - __[ネットワーク構成]__ で、 __[詳細設定]__ を選択します。
 
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論 (モデルのスコアリング) を実行できるようになります。 詳細については、[AKS へのデプロイ方法](how-to-deploy-and-where.md)に関するページをご覧ください。
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Azure Kubernetes Service でプライベート IP を使用する
+
+既定で、AKS デプロイにはパブリック IP アドレスが割り当てられます。 仮想ネットワーク内で AKS を使用する場合は、代わりにプライベート IP アドレスを使用できます。 プライベート IP アドレスには、仮想ネットワークまたは結合されたネットワーク内からのみアクセスできます。
+
+プライベート IP アドレスを有効にするには、_内部ロード バランサー_を使用するように AKS を構成します。 
+
+> [!IMPORTANT]
+> Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
+
+次のコード スニペットは、**新しい AKS クラスターを作成**し、プライベート IP/内部ロード バランサーを使用するように更新する方法を示しています。
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure CLI__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+コマンドによって参照される `body.json` ファイルの内容は、次の JSON ドキュメントに似ています。
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> 現時点では、既存のクラスターに対して__アタッチ__操作を実行しているときにロード バランサーを構成することはできません。 最初にクラスターをアタッチしてから、更新操作を実行してロード バランサーを変更する必要があります。
+
+AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
+
 ## <a name="use-azure-firewall"></a>Azure Firewall の使用
 
 Azure Firewall を使用する場合は、次のアドレスとの間で送受信されるトラフィックを許可するネットワーク ルールを構成する必要があります。
@@ -414,4 +491,3 @@ Azure Firewall を使用する場合は、次のアドレスとの間で送受�
 * [トレーニング環境をセットアップする](how-to-set-up-training-targets.md)
 * [モデルをデプロイする場所](how-to-deploy-and-where.md)
 * [SSL を使用してモデルを安全にデプロイする](how-to-secure-web-service.md)
-

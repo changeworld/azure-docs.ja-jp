@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185518"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028434"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
@@ -26,13 +26,7 @@ ms.locfileid: "74185518"
 
 ## <a name="prerequisites"></a>前提条件
 
-問題のある VM をマウントするには、復旧 VM が次の前提条件を満たしている必要があります。
-
--   問題のある VM と同じ場所に復旧 VM が存在している必要があります。
-
--   問題のある VM と同じリソース グループに復旧 VM が存在している必要があります。
-
--   問題のある VM と同じタイプのストレージ アカウント (Standard または Premium) が復旧 VM に使用されている必要があります。
+問題のある VM をマウントするには、問題のある VM と同じタイプのストレージ アカウント (Standard または Premium) が復旧 VM に使用されている必要があります。
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>手順 1:復旧 VM を作成し、Hyper-V ロールをインストールする
 
@@ -122,6 +116,6 @@ ms.locfileid: "74185518"
 3.  [VM によって使用されている OS ディスクを修復された OS ディスクに交換](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 )します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](troubleshoot-rdp-connection.md)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Windows VM でのアプリケーションの接続の問題のトラブルシューティング](troubleshoot-app-connection.md)に関する記事をご覧ください。

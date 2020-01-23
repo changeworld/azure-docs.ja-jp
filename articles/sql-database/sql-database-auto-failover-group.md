@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 48eb9cfe16062ac587a12b845b2fb226ac5faf23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/05/2020
+ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348868"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732418"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -152,34 +152,57 @@ ms.locfileid: "75348868"
 
 ビジネス継続性を考慮してサービスを設計する場合は、次の一般的なガイドラインに従います。
 
-- **1 つまたは複数のフェールオーバー グループを使用して複数のデータベースのフェールオーバーを管理する**
+### <a name="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>1 つまたは複数のフェールオーバー グループを使用して複数のデータベースのフェールオーバーを管理する
 
-  1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。
+1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。
   
-  > [!IMPORTANT]
-  > 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、単一データベースとエラスティック プールではサポートされていません。 フェールオーバー グループを作成した後で、プライマリ サーバーまたはセカンダリ サーバーを別のサブスクリプションに移動した場合、フェールオーバー要求やその他の操作が失敗する可能性があります。
+> [!IMPORTANT]
+> 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、単一データベースとエラスティック プールではサポートされていません。 フェールオーバー グループを作成した後で、プライマリ サーバーまたはセカンダリ サーバーを別のサブスクリプションに移動した場合、フェールオーバー要求やその他の操作が失敗する可能性があります。
 
-- **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
+### <a name="using-read-write-listener-for-oltp-workload"></a>OLTP ワークロードに読み取り/書き込みのリスナーを使用する
 
-  OLTP 操作を実行するときに、サーバー URL として `<fog-name>.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
+OLTP 操作を実行するときに、サーバー URL として `<fog-name>.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
 
-- **読み取り専用ワークロードには読み取り専用リスナーを使用する**
+### <a name="using-read-only-listener-for-read-only-workload"></a>読み取り専用ワークロードに読み取り専用リスナーを使用する
 
-  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に `ApplicationIntent=ReadOnly` を使用して、読み取りの意図を示すこともお勧めします。 フェールオーバー後またはセカンダリ サーバーがオフラインになったときに読み取り専用ワークロードを再接続できるようにする場合、フェールオーバー ポリシーの `AllowReadOnlyFailoverToPrimary` プロパティを構成してください。
+データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に `ApplicationIntent=ReadOnly` を使用して、読み取りの意図を示すこともお勧めします。 フェールオーバー後またはセカンダリ サーバーがオフラインになったときに読み取り専用ワークロードを再接続できるようにする場合、フェールオーバー ポリシーの `AllowReadOnlyFailoverToPrimary` プロパティを構成してください。
 
-- **パフォーマンスの低下に備える**
+### <a name="preparing-for-performance-degradation"></a>パフォーマンスの低下に対して準備する
 
-  SQL のフェールオーバーの決定は、アプリケーションの他の領域や、使用されている他のサービスとは無関係に行われます。 アプリケーションが、同じリージョン内のコンポーネントや別のリージョン内のコンポーネントと "混在" する場合があります。 パフォーマンスの低下を防ぐには、確実に DR リージョンで冗長アプリケーションをデプロイし、これらの[ネットワーク セキュリティ ガイドライン](#failover-groups-and-network-security)に従います。
+一般的な Azure アプリケーションは、複数の Azure サービスを使用し、複数のコンポーネントで構成されています。 フェールオーバー グループの自動フェールオーバーは、Azure SQL コンポーネントだけの状態に基づいてトリガーされます。 プライマリ リージョンのその他の Azure サービスは機能停止の影響を受けない場合があり、それらのコンポーネントを引き続きそのリージョンで利用できる可能性があります。 プライマリ データベースが DR リージョンに切り替えられると、依存コンポーネント間の待機時間が長くなる場合があります。 待機時間が長引くことがアプリケーションのパフォーマンスに影響しないように、DR リージョンにあるすべてのアプリケーションのコンポーネントの冗長性を確保し、これらの[ネットワーク セキュリティ ガイドライン](#failover-groups-and-network-security)に従ってください。
 
-  > [!NOTE]
-  > DR リージョン内のアプリケーションでは、別の接続文字列を使用する必要はありません。  
+### <a name="preparing-for-data-loss"></a>データ損失に対して準備する
 
-- **データの損失に備える**
+機能停止が検出された場合は、`GracePeriodWithDataLossHours` で指定した期間、SQL が待機状態となります。 既定値は 1 時間です。 データの損失が許容できない場合は、必ず、`GracePeriodWithDataLossHours` を十分大きい数値 (24 時間など) に設定してください。 セカンダリからプライマリにフェールバックするには、手動のグループ フェールオーバーを使用します。
 
-  機能停止が検出された場合は、`GracePeriodWithDataLossHours` で指定した期間、SQL が待機状態となります。 既定値は 1 時間です。 データの損失が許容できない場合は、必ず、`GracePeriodWithDataLossHours` を十分大きい数値 (24 時間など) に設定してください。 セカンダリからプライマリにフェールバックするには、手動のグループ フェールオーバーを使用します。
+> [!IMPORTANT]
+> 800 以下の DTU と 250 を超えるデータベースを持ち、geo レプリケーションを使用するエラスティック プールでは、計画されたフェールオーバーに時間がかかったりパフォーマンスが低下したりする問題が発生することがあります。  こうした問題は、geo レプリケーション エンドポイントが地理的に広く分散している場合や、各データベースで複数のセカンダリ エンドポイントが使用されている場合に、書き込みの負荷が高いワークロードで発生しやすくなります。  このような症状は、geo レプリケーションのラグが時間の経過と共に増加するときに見られます。  このラグは、[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) を使用して監視できます。  この問題が発生する場合は、プール DTU の数を増やしたり、同じプール内で geo レプリケーションされるデータベースの数を減らしたりするなどの緩和策があります。
 
-  > [!IMPORTANT]
-  > 800 以下の DTU と 250 を超えるデータベースを持ち、geo レプリケーションを使用するエラスティック プールでは、計画されたフェールオーバーに時間がかかったりパフォーマンスが低下したりする問題が発生することがあります。  こうした問題は、geo レプリケーション エンドポイントが地理的に広く分散している場合や、各データベースで複数のセカンダリ エンドポイントが使用されている場合に、書き込みの負荷が高いワークロードで発生しやすくなります。  このような症状は、geo レプリケーションのラグが時間の経過と共に増加するときに見られます。  このラグは、[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) を使用して監視できます。  この問題が発生する場合は、プール DTU の数を増やしたり、同じプール内で geo レプリケーションされるデータベースの数を減らしたりするなどの緩和策があります。
+### <a name="changing-secondary-region-of-the-failover-group"></a>フェールオーバー グループのセカンダリ リージョンを変更する
+
+変更のシーケンスを説明するために、サーバー A はプライマリ サーバー、サーバー B は既存のセカンダリ サーバー、サーバー C は 3 番目のリージョンの新しいセカンダリであると仮定します。  移行を行うには、次の手順を実行します。
+
+1.  サーバー A の各データベースの追加のセカンダリを、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用してサーバー C に作成します。 サーバー A の各データベースには、2 つのセカンダリがあり、1 つはサーバー B に、もう 1 つはサーバー C にあります。これにより、移行中、プライマリ データベースが確実に保護された状態を維持できます。
+2.  フェールオーバー グループを削除します。 この時点では、ログインは失敗します。 これは、フェールオーバー グループ リスナーの SQL エイリアスが削除されていて、ゲートウェイがフェールオーバー グループの名前を認識しないためです。
+3.  サーバー A と C の間で同じ名前のフェールオーバー グループを再作成します。この時点で、ログインは失敗しなくなります。
+4.  サーバー A のすべてのプライマリ データベースを新しいフェールオーバー グループに追加します。
+5.  サーバー B を削除します。B のすべてのデータベースは自動的に削除されます。 
+
+
+### <a name="changing-primary-region-of-the-failover-group"></a>フェールオーバー グループのプライマリ リージョンを変更する
+
+変更のシーケンスを説明するために、サーバー A はプライマリ サーバー、サーバー B は既存のセカンダリ サーバー、サーバー C は 3 番目のリージョンの新しいプライマリであると仮定します。  移行を行うには、次の手順を実行します。
+
+1.  計画されたフェールオーバーを実行して、プライマリ サーバーを B に切り替えます。サーバー A が新しいセカンダリ サーバーになります。 フェールオーバーによって、数分間のダウンタイムが発生する場合があります。 実際の時間は、フェールオーバー グループのサイズによって異なります。
+2.  サーバー B の各データベースの追加のセカンダリを、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用してサーバー C に作成します。 サーバー B の各データベースには、2 つのセカンダリがあり、1 つはサーバー A に、もう 1 つはサーバー C にあります。これにより、移行中、プライマリ データベースが確実に保護された状態を維持できます。
+3.  フェールオーバー グループを削除します。 この時点では、ログインは失敗します。 これは、フェールオーバー グループ リスナーの SQL エイリアスが削除されていて、ゲートウェイがフェールオーバー グループの名前を認識しないためです。
+4.  サーバー A と C の間で同じ名前のフェールオーバー グループを再作成します。この時点で、ログインは失敗しなくなります。
+5.  B のすべてのプライマリ データベースを新しいフェールオーバー グループに追加します。 
+6.  フェールオーバー グループの計画されたフェールオーバーを実行して B と C を切り替えます。これで、サーバー C がプライマリになり、B がセカンダリになります。 サーバー A 上のすべてのセカンダリ データベースは、自動的に C のプライマリにリンクされます。手順 1 と同様に、フェールオーバーによって数分間のダウンタイムが発生する場合があります。
+6.  サーバー A を削除します。A のすべてのデータベースは自動的に削除されます。
+
+> [!IMPORTANT]
+> フェールオーバー グループを削除すると、リスナー エンドポイントの DNS レコードも削除されます。 その時点では、他のユーザーが同じ名前のフェールオーバー グループまたはサーバー エイリアスを作成する可能性がゼロではなく、それが起こると、そのフェールオーバー グループやサーバー エイリアスは再び使用できなくなります。 このリスクを最小限に抑えるために、一般的なフェールオーバー グループ名は使用しないでください。
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>マネージド インスタンスでフェールオーバー グループを使用する場合のベスト プラクティス
 
@@ -194,62 +217,86 @@ ms.locfileid: "75348868"
 
 アプリケーションでデータ層としてマネージド インスタンスを使用する場合は、ビジネス継続性を考慮して設計する際に以下の一般的なガイドラインに従います。
 
-- **プライマリ インスタンスと同じ DNS ゾーンでセカンダリ インスタンスを作成する**
+### <a name="creating-the-secondary-instance"></a>セカンダリ インスタンスを作成する 
 
-  フェールオーバー後にプライマリ インスタンスに中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ インスタンスを作成し、プライマリ インスタンスと DNS ゾーンを共有していることを確認します。 これは、Azure ポータル、PowerShell、または REST API を使用し、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。
+フェールオーバー後にプライマリ インスタンスに中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ インスタンスを作成し、プライマリ インスタンスと DNS ゾーンを共有していることを確認します。 これは、Azure ポータル、PowerShell、または REST API を使用し、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。
 
 > [!IMPORTANT]
 > サブネットに作成された最初のインスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。
 
-  プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
+プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
 
-- **2 つのインスタンス間のレプリケーション トラフィックを有効にする**
+### <a name="enabling-replication-traffic-between-two-instances"></a>2 つのインスタンス間のレプリケーション トラフィックを有効にする
 
-  各インスタンスは独自の VNet に分離されるため、これらの VNet 間の 2 方向トラフィックを許可する必要があります。 [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)に関するページを参照してください
+各インスタンスは独自の VNet に分離されるため、これらの VNet 間の 2 方向トラフィックを許可する必要があります。 [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)に関するページを参照してください
 
-- **異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成する**
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成する
 
-  2 つの異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成できます。 PowerShell API を使用している場合、セカンダリ インスタンスの `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
+2 つの異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成できます。 PowerShell API を使用している場合、セカンダリ インスタンスの `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
   
-  > [!IMPORTANT]
-  > Azure Portal では、異なるサブスクリプション間でのフェールオーバー グループはサポートされません。
+> [!IMPORTANT]
+> Azure Portal では、異なるサブスクリプション間でのフェールオーバー グループはサポートされません。
 
-- **インスタンス全体のフェールオーバーを管理するようにフェールオーバー グループを構成する**
+### <a name="managing-failover-to-secondary-instance"></a>セカンダリ インスタンスへのフェールオーバーを管理する
 
-  フェールオーバー グループでは、インスタンス内のすべてのデータベースのフェールオーバーを管理します。 グループが作成されると、インスタンス内の各データベースはセカンダリ インスタンスに自動的に geo レプリケートされます。 フェールオーバー グループを使用して、データベース サブセットの部分的なフェールオーバーを開始することはできません。
+フェールオーバー グループでは、インスタンス内のすべてのデータベースのフェールオーバーを管理します。 グループが作成されると、インスタンス内の各データベースはセカンダリ インスタンスに自動的に geo レプリケートされます。 フェールオーバー グループを使用して、データベース サブセットの部分的なフェールオーバーを開始することはできません。
 
-  > [!IMPORTANT]
-  > データベースは、プライマリ インスタンスから削除された場合、geo セカンダリ インスタンスでも自動的に削除されます。
+> [!IMPORTANT]
+> データベースは、プライマリ インスタンスから削除された場合、geo セカンダリ インスタンスでも自動的に削除されます。
 
-- **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
+### <a name="using-read-write-listener-for-oltp-workload"></a>OLTP ワークロードに読み取り/書き込みのリスナーを使用する
 
-  OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zone_id.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。 セカンダリ インスタンスでは DNS ゾーンをプライマリと共有するため、同じ SAN 証明書を使用してクライアント アプリケーションを再接続できます。
+OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zone_id.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。 セカンダリ インスタンスでは DNS ゾーンをプライマリと共有するため、同じ SAN 証明書を使用してクライアント アプリケーションを再接続できます。
 
-- **読み取り専用クエリのために geo レプリケートされたセカンダリに直接接続する**
+### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>読み取り専用リスナーを使用してセカンダリ インスタンスに接続する
 
-  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 geo レプリケートされたセカンダリに直接接続するには、`server.secondary.zone_id.database.windows.net` をサーバー URL として使用します。これにより、geo レプリケートされたセカンダリに直接接続されます。
+データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 geo レプリケートされたセカンダリに直接接続するには、`server.secondary.zone_id.database.windows.net` をサーバー URL として使用します。これにより、geo レプリケートされたセカンダリに直接接続されます。
 
-  > [!NOTE]
-  > 特定のサービス レベルでは、Azure SQL Database で、1 つの読み取り専用レプリカの容量を使用し、また、接続文字列の `ApplicationIntent=ReadOnly` パラメーターを使用して、読み取り専用クエリ ワークロードの負荷を分散するための[読み取り専用レプリカ](sql-database-read-scale-out.md)の使用がサポートされます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
-  > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.zone_id.database.windows.net` を使用します。
-  > - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.secondary.zone_id.database.windows.net` を使用します。
+> [!NOTE]
+> 特定のサービス レベルでは、Azure SQL Database で、1 つの読み取り専用レプリカの容量を使用し、また、接続文字列の `ApplicationIntent=ReadOnly` パラメーターを使用して、読み取り専用クエリ ワークロードの負荷を分散するための[読み取り専用レプリカ](sql-database-read-scale-out.md)の使用がサポートされます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
+> - プライマリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.zone_id.database.windows.net` を使用します。
+> - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.secondary.zone_id.database.windows.net` を使用します。
 
-- **パフォーマンスの低下に備える**
+### <a name="preparing-for-performance-degradation"></a>パフォーマンスの低下に対して準備する
 
-  SQL のフェールオーバーの決定は、アプリケーションの他の領域や、使用されている他のサービスとは無関係に行われます。 アプリケーションが、同じリージョン内のコンポーネントや別のリージョン内のコンポーネントと "混在" する場合があります。 パフォーマンスの低下を防ぐには、確実に DR リージョンで冗長アプリケーションをデプロイし、これらの[ネットワーク セキュリティ ガイドライン](#failover-groups-and-network-security)に従います。
+一般的な Azure アプリケーションは、複数の Azure サービスを使用し、複数のコンポーネントで構成されています。 フェールオーバー グループの自動フェールオーバーは、Azure SQL コンポーネントだけの状態に基づいてトリガーされます。 プライマリ リージョンのその他の Azure サービスは機能停止の影響を受けない場合があり、それらのコンポーネントを引き続きそのリージョンで利用できる可能性があります。 プライマリ データベースが DR リージョンに切り替えられると、依存コンポーネント間の待機時間が長くなる場合があります。 待機時間が長引くことがアプリケーションのパフォーマンスに影響しないように、DR リージョンにあるすべてのアプリケーションのコンポーネントの冗長性を確保し、これらの[ネットワーク セキュリティ ガイドライン](#failover-groups-and-network-security)に従ってください。
 
-- **データの損失に備える**
+### <a name="preparing-for-data-loss"></a>データ損失に対して準備する
 
-  機能停止が検出された場合、経験的にデータの損失がゼロであれば、読み取り/書き込みのフェールオーバーが SQL によって自動的にトリガーされます。 それ以外の場合、`GracePeriodWithDataLossHours` で指定した期間、待機状態となります。 `GracePeriodWithDataLossHours` を指定した場合は、データの損失に備えてください。 一般に、機能の停止中、Azure では可用性が重視されます。 データの損失が許容できない場合は、必ず、GracePeriodWithDataLossHours を十分大きい数値 (24 時間など) に設定してください。
+機能停止が検出された場合、経験的にデータの損失がゼロであれば、読み取り/書き込みのフェールオーバーが SQL によって自動的にトリガーされます。 それ以外の場合、`GracePeriodWithDataLossHours` で指定した期間、待機状態となります。 `GracePeriodWithDataLossHours` を指定した場合は、データの損失に備えてください。 一般に、機能の停止中、Azure では可用性が重視されます。 データの損失が許容できない場合は、必ず、GracePeriodWithDataLossHours を十分大きい数値 (24 時間など) に設定してください。
 
-  読み取り/書き込みリスナーの DNS の更新は、フェールオーバーが開始された後すぐに行われます。 この操作でデータが失われることはありません。 しかし、データベース ロールの切り替えプロセスには、通常の状況で最大 5 分かかる場合があります。 これが完了するまで、新しいプライマリ インスタンスの一部のデータベースは引き続き読み取り専用となります。 PowerShell を使用してフェールオーバーが開始された場合、操作全体が同期されます。 Azure ポータルを使用して開始された場合、UI で完了状態が示されます。 REST API を使用して開始された場合は、標準的な Azure リソース マネージャーのポーリング メカニズムを使用して、完了を監視します。
+読み取り/書き込みリスナーの DNS の更新は、フェールオーバーが開始された後すぐに行われます。 この操作でデータが失われることはありません。 しかし、データベース ロールの切り替えプロセスには、通常の状況で最大 5 分かかる場合があります。 これが完了するまで、新しいプライマリ インスタンスの一部のデータベースは引き続き読み取り専用となります。 PowerShell を使用してフェールオーバーが開始された場合、操作全体が同期されます。 Azure ポータルを使用して開始された場合、UI で完了状態が示されます。 REST API を使用して開始された場合は、標準的な Azure リソース マネージャーのポーリング メカニズムを使用して、完了を監視します。
 
-  > [!IMPORTANT]
-  > プライマリを元の場所に戻すには、手動のグループ フェールオーバーを使用します。 フェールオーバーの原因となった機能停止が軽減されたら、プライマリ データベースを元の場所に移動できます。 そのためには、グループの手動フェールオーバーを開始する必要があります。
+> [!IMPORTANT]
+> プライマリを元の場所に戻すには、手動のグループ フェールオーバーを使用します。 フェールオーバーの原因となった機能停止が軽減されたら、プライマリ データベースを元の場所に移動できます。 そのためには、グループの手動フェールオーバーを開始する必要があります。
+  
+### <a name="changing-secondary-region-of-the-failover-group"></a>フェールオーバー グループのセカンダリ リージョンを変更する
 
-- **フェールオーバー グループの既知の制限事項を確認する**
+インスタンス A がプライマリ インスタンス、インスタンス B が既存のセカンダリ インスタンス、インスタンス C が 3 番目のリージョン内の新しいセカンダリ インスタンスであるとします。  移行を行うには、次の手順を実行します。
 
-  データベース名の変更は、フェールオーバー グループ内のインスタンスに対してはサポートされていません。 データベース名を変更するには、フェールオーバー グループを一時的に削除する必要があります。
+1.  同じ DNS ゾーン内で、A と同じサイズのインスタンス C を作成します。 
+2.  インスタンス A と B 間のフェールオーバー グループを削除します。この時点ではログインは失敗します。フェールオーバー グループ リスナーの SQL エイリアスが削除されていて、ゲートウェイがフェールオーバー グループ名を認識しないためです。 セカンダリ データベースはプライマリから切断され、読み取り/書き込みデータベースになります。 
+3.  インスタンス A と C の間に同じ名前のフェールオーバー グループを作成します。[マネージド インスタンスを含むフェールオーバー グループのチュートリアル](sql-database-managed-instance-failover-group-tutorial.md)に関する記事の手順に従ってください。 これはデータ サイズに左右される操作であり、インスタンス A のすべてのデータベースがシード処理され、同期されると完了します。
+4.  不要な料金が発生しないように、インスタンス B が不要であれば削除してください。
+
+> [!NOTE]
+> 手順 2 の後、手順 3 が完了するまでは、インスタンス A のデータベースは、インスタンス A の致命的な障害から保護されないままになります。
+
+### <a name="changing-primary-region-of-the-failover-group"></a>フェールオーバー グループのプライマリ リージョンを変更する
+
+インスタンス A がプライマリ インスタンス、インスタンス B が既存のセカンダリ インスタンス、インスタンス C が 3 番目のリージョン内の新しいプライマリ インスタンスであるとします。  移行を行うには、次の手順を実行します。
+
+1.  同じ DNS ゾーン内で、B と同じサイズのインスタンス C を作成します。 
+2.  インスタンス B に接続し、手動でフェールオーバーしてプライマリ インスタンスを B に切り替えます。インスタンス A が自動的に新しいセカンダリ インスタンスになります。
+3.  インスタンス A と B 間のフェールオーバー グループを削除します。この時点ではログインは失敗します。フェールオーバー グループ リスナーの SQL エイリアスが削除されていて、ゲートウェイがフェールオーバー グループ名を認識しないためです。 セカンダリ データベースはプライマリから切断され、読み取り/書き込みデータベースになります。 
+4.  インスタンス A と C の間に同じ名前のフェールオーバー グループを作成します。[マネージド インスタンスを含むフェールオーバー グループのチュートリアル](sql-database-managed-instance-failover-group-tutorial.md)に関する記事の手順に従ってください。 これはデータ サイズに左右される操作であり、インスタンス A のすべてのデータベースがシード処理され、同期されると完了します。
+5.  不要な料金が発生しないように、インスタンス A が不要であれば削除してください。
+
+> [!NOTE] 
+> 手順 3 の後、手順 4 が完了するまでは、インスタンス A のデータベースは、インスタンス A の致命的な障害から保護されないままになります。
+
+> [!IMPORTANT]
+> フェールオーバー グループを削除すると、リスナー エンドポイントの DNS レコードも削除されます。 その時点では、他のユーザーが同じ名前のフェールオーバー グループまたはサーバー エイリアスを作成する可能性がゼロではなく、それが起こると、そのフェールオーバー グループやサーバー エイリアスは再び使用できなくなります。 このリスクを最小限に抑えるために、一般的なフェールオーバー グループ名は使用しないでください。
 
 ## <a name="failover-groups-and-network-security"></a>フェールオーバー グループとネットワーク セキュリティ
 
@@ -290,16 +337,16 @@ ms.locfileid: "75348868"
 2 つの異なるリージョンのプライマリとセカンダリのマネージド インスタンスの間にフェールオーバー グループを設定すると、各インスタンスは独立した仮想ネットワークを使用して分離されます。 これらの VNet 間のレプリケーション トラフィックを許可するには、以下の前提条件が満たされていることを確認します。
 
 1. 2 つのマネージド インスタンスは、異なる Azure リージョンにある必要があります。
-1. 2 つのマネージ インスタンスは同じサービス レベルである必要があり、ストレージ サイズも同じである必要があります。
-1. セカンダリ マネージド インスタンスは空 (ユーザー データベースなし) である必要があります。
-1. マネージド インスタンスによって使用される仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または Express Route 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポートされません。
-1. 2 つのマネージド インスタンス VNet に重複する IP アドレスを含めることはできません。
-1. 他のマネージド インスタンス サブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します
+2. 2 つのマネージ インスタンスは同じサービス レベルである必要があり、ストレージ サイズも同じである必要があります。
+3. セカンダリ マネージド インスタンスは空 (ユーザー データベースなし) である必要があります。
+4. マネージド インスタンスによって使用される仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポートされません。
+5. 2 つのマネージド インスタンス VNet に重複する IP アドレスを含めることはできません。
+6. 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。
 
    > [!IMPORTANT]
    > NSG セキュリティ規則が正しく構成されていないと、データベースのコピー操作が停止します。
 
-1. セカンダリ インスタンスが正しい DNS ゾーン ID で設定されます。 DNS ゾーンは、マネージド インスタンスと仮想クラスターのプロパティであり、ホスト名のアドレスにその ID が含まれます。 ゾーン ID は、各 VNet で最初のマネージド インスタンスが作成されたとき、ランダムな文字列として生成され、同じ ID が同じサブネットの他のすべてのインスタンスに割り当てられます。 一度割り当てられると、DNS ゾーンは変更できません。 同じフェールオーバー グループに属するマネージド インスタンスでは、DNS ゾーンが共有される必要があります。 これは、セカンダリ インスタンスの作成時、プライマリ インスタンスのゾーン ID を DnsZonePartner パラメーターの値として渡すことで実行します。 
+7. セカンダリ インスタンスが正しい DNS ゾーン ID で設定されます。 DNS ゾーンは、マネージド インスタンスと仮想クラスターのプロパティであり、ホスト名のアドレスにその ID が含まれます。 ゾーン ID は、各 VNet で最初のマネージド インスタンスが作成されたとき、ランダムな文字列として生成され、同じ ID が同じサブネットの他のすべてのインスタンスに割り当てられます。 一度割り当てられると、DNS ゾーンは変更できません。 同じフェールオーバー グループに属するマネージド インスタンスでは、DNS ゾーンが共有される必要があります。 これは、セカンダリ インスタンスの作成時、プライマリ インスタンスのゾーン ID を DnsZonePartner パラメーターの値として渡すことで実行します。 
 
    > [!NOTE]
    > マネージド インスタンスを使用したフェールオーバー グループの構成の詳細なチュートリアルについては、[フェールオーバー グループへのマネージド インスタンスの追加](sql-database-managed-instance-failover-group-tutorial.md)に関する記事を参照してください。
@@ -324,6 +371,14 @@ ms.locfileid: "75348868"
 
 フェールオーバー グループでのポイントインタイム リストアの使用については、[特定の時点への復元 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) に関するページを参照してください。
 
+## <a name="limitations-of-failover-groups"></a>フェールオーバー グループの制限
+
+次の制限事項に注意してください。
+
+- 同じ Azure リージョン内の 2 つのサーバーまたはインスタンス間でフェールオーバー グループを作成することはできません。
+- フェールオーバー グループの名前を変更することはできません。 グループを削除し、別の名前で再作成する必要があります。 
+- データベース名の変更は、フェールオーバー グループ内のインスタンスに対してはサポートされていません。 データベース名を変更するには、フェールオーバー グループを一時的に削除する必要があります。
+
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 
 前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
@@ -335,20 +390,20 @@ ms.locfileid: "75348868"
 | コマンドレット | [説明] |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | フェールオーバー グループ構成を取得します。 |
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | フェールオーバー グループをサーバーから削除します。 |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | フェールオーバー グループの構成を取得します。 |
 | [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |フェールオーバー グループの構成を変更します。 |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。 |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Azure SQL データベース フェールオーバー グループに 1 つまたは複数のデータベースを追加する|
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|1 つまたは複数のデータベースをフェールオーバー グループに追加します。|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
 | コマンドレット | [説明] |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |フェールオーバー グループ構成を取得します。|
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を取得します。|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |フェールオーバー グループのセカンダリ インスタンスに対するフェールオーバーをトリガーします。|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | フェールオーバー グループを削除します|
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -358,19 +413,19 @@ ms.locfileid: "75348868"
 | command | [説明] |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループ構成を取得します。 |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成を変更するか、Azure SQL Database フェールオーバー グループに 1 つ以上のデータベースを追加します。|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。 |
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループの構成を取得します。 |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
 | command | [説明] |
 | --- | --- |
-| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。 |
 | [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | フェールオーバー グループの構成を変更します。|
-| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | フェールオーバー グループ構成を取得します。|
-| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
+| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | フェールオーバー グループの構成を取得します。|
+| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | フェールオーバー グループのセカンダリ インスタンスに対するフェールオーバーをトリガーします。|
 | [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | フェールオーバー グループを削除します |
 
 * * *
@@ -384,21 +439,21 @@ ms.locfileid: "75348868"
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
-| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 この操作を行うとデータが失われる可能性があります。 |
-| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | フェールオーバー グループを取得します。 |
-| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | サーバーにフェールオーバー グループが表示されます。 |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | フェールオーバー グループを更新します。 |
+| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。|
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ サーバーからセカンダリ サーバーへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
+| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | フェールオーバー グループの構成を取得します。 |
+| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | サーバーのフェールオーバー グループの一覧を表示します。 |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | フェールオーバー グループの構成を更新します。 |
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する
 
 | API | [説明] |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
-| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 この操作を行うとデータが失われる可能性があります。 |
-| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループを取得します。 |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループの構成を作成または更新します。 |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをインスタンスから削除します。 |
+| [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 完全なデータ同期を行って、現在のプライマリ インスタンスからこのインスタンスへのフェールオーバーをトリガーします。 |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | データを同期せずに、現在のプライマリ インスタンスからセカンダリ インスタンスへのフェールオーバーをトリガーします。 この操作を行うとデータが失われる可能性があります。 |
+| [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループの構成を取得します。 |
 | [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 場所ごとにフェールオーバー グループをリストします。 |
 
 ## <a name="next-steps"></a>次のステップ

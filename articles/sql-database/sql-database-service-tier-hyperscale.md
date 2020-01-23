@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614922"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940807"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -251,6 +251,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 | データベース コピー | 現時点では、データベース コピーを使用して、Azure SQL Hyperscale に新しいデータベースを作成することはできません。 |
 | TDE/AKV の統合 | Azure Key Vault を使用した透過的データベース暗号化 (通常、Bring Your Own Key (BYOK) と呼ばれます) は、Azure SQL Database Hyperscale ではまだサポートされていませんが、サービス マネージド キーを使用した TDE は完全にサポートされています。 |
 |インテリジェント データベース機能 | [Force Plan] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
+|Query Performance Insights | Query Performance Insight は現在、Hyperscale データベースではサポートされていません。 |
 | データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Hyperscale データベースではサポートされていません。 |
 | データベースの整合性チェック | DBCC CHECKDB は現在、Hyperscale データベースではサポートされていません。 Azure SQL Database におけるデータ整合性管理の詳細については、「[Azure SQL Database でのデータ整合性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」を参照してください。 |
 

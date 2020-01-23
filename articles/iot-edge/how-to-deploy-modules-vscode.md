@@ -4,23 +4,23 @@ description: Visual Studio Code を Azure IoT Tools と共に使用して、デ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 01/8/2019
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8c90c2a13d111d01a1e7a1bd9b63da180621ded
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434285"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772093"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。
 
-この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)」をご覧ください。
+この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、[Visual Studio Code を使用して IoT Edge モジュールを大規模にデプロイする](how-to-deploy-monitor-vscode.md)方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -87,7 +87,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
          "properties.desired": {
            "schemaVersion": "1.0",
            "routes": {
-               "route": "FROM /* INTO $upstream"
+               "route": "FROM /messages/* INTO $upstream"
            },
            "storeAndForwardConfiguration": {
              "timeToLiveSecs": 7200
@@ -107,11 +107,11 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 1. Visual Studio Code で**エクスプローラー** ビューを開きます。
 
-1. エクスプローラーの下部で、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. エクスプローラーの下部で、 **[Azure IoT Hub]** セクションを展開します。
 
-   ![[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\) セクションを展開する](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Azure IoT Hub セクションを展開する](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをポイントします。
+1. **[Azure IoT Hub]** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをポイントします。
 
 1. **[Select IoT Hub]\(IoT ハブの選択\)** を選択します。
 
@@ -125,7 +125,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 モジュールをデバイスにデプロイするには、モジュール情報で構成されている配置マニフェストを適用します。
 
-1. Visual Studio Code エクスプローラー ビューで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. Visual Studio Code エクスプローラー ビューで **[Azure IoT Hub]** セクションを展開し、 **[デバイス]** ノードを展開します。
 
 1. デプロイ マニフェストで構成する IoT Edge デバイスを右クリックします。
 
@@ -142,7 +142,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 ## <a name="view-modules-on-your-device"></a>デバイス上のモジュールを表示する
 
-モジュールをデバイスにデプロイした後で、そのすべてを **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションで表示できます。 IoT Edge デバイスの横の矢印を選択して展開します。 現在実行中のすべてのモジュールが表示されます。
+モジュールをデバイスにデプロイした後で、そのすべてを **[Azure IoT Hub]** セクションで表示できます。 IoT Edge デバイスの横の矢印を選択して展開します。 現在実行中のすべてのモジュールが表示されます。
 
 デバイスに新しいモジュールを最近デプロイした場合は、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーをポイントし、更新アイコンをクリックしてビューを更新します。
 
@@ -150,4 +150,4 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 ## <a name="next-steps"></a>次のステップ
 
-[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)の方法を学習します
+[Visual Studio Code を使用して IoT Edge を大規模にデプロイおよび監視する](how-to-deploy-monitor.md)方法を確認します。

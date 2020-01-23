@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357568"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028874"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
@@ -127,11 +127,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     |Location|**[WestCentralUS]** を選択します。|
-    |Name|「 *myPrivateEndpoint*」と入力します。  |
+    |Name|「*myPrivateEndpoint*」と入力します。  |
     |ストレージ サブリソース|既定値の **[BLOB]** のままにします。 |
     | **ネットワーク** |  |
-    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     | **プライベート DNS 統合**|  |
     | プライベート DNS ゾーンとの統合  | 既定値 **[はい]** のままにします。 |
     | プライベート DNS ゾーン  | 既定値の **(新規) privatelink.blob.core.windows.net** のままにします。 |
@@ -172,8 +172,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 このセクションでは、プライベート エンドポイントを使ったストレージ アカウントに非公開で接続します。
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
-2. 「 `nslookup mystorageaccount.blob.core.windows.net`」と入力します。次のようなメッセージが返されます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
+2. 「`nslookup mystorageaccount.blob.core.windows.net`」と入力します。次のようなメッセージが返されます。
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 10. **[接続]** を選択します。
 11. mystorageaccount から BLOB コンテナーを参照する 
 12. (オプションで) フォルダーを作成するか、*mystorageaccount* にファイルをアップロードするか、またはその両方を行います。 
-13.  *myVM* へのリモート デスクトップ接続を閉じます。 
+13. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 ストレージ アカウントにアクセスするためのその他のオプション:
 - Microsoft Azure Storage Explorer は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料スタンドアロン アプリです。 そのアプリケーションをインストールすると、ストレージ アカウントの内容を非公開で参照できます。 
@@ -202,9 +202,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、ストレージ アカウント、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。 
 2. **[リソース グループの削除]** を選択します。 
-3. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。 
+3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。 
 
 ## <a name="next-steps"></a>次のステップ
-このクイックスタートでは、仮想ネットワーク上に VM を作成し、ストレージ アカウントとプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用してストレージ アカウントと安全に通信を行いました。 プライベート エンドポイントの詳細については、「 [Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
+このクイックスタートでは、仮想ネットワーク上に VM を作成し、ストレージ アカウントとプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用してストレージ アカウントと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。

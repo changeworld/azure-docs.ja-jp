@@ -1,108 +1,55 @@
 ---
-title: Azure Migrate での物理サーバーの評価/移行のサポート
-description: Azure Migrate での物理サーバーの評価/移行のサポートについてまとめます。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure Migrate での物理サーバーの評価のサポート
+description: Azure Migrate での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454618"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028763"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>物理サーバーの評価と移行のサポート マトリックス
+# <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
 [Azure Migrate サービス](migrate-overview.md)を使用すると、コンピューターを評価したり、Microsoft Azure クラウドに移行したりできます。 この記事では、オンプレミスの物理サーバーを評価して移行する際にサポートされる設定と制限について概要を説明します。
 
 
+## <a name="overview"></a>概要
 
-## <a name="physical-server-scenarios"></a>物理サーバーのシナリオ
+この記事を使用して オンプレミス マシンの Azure への移行を評価するには、Azure Migrate: Server Assessment ツールを Azure Migrate プロジェクトに追加します。 [Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。 アプライアンスは、オンプレミス マシンを継続的に検出し、構成データとパフォーマンス データを Azure に送信します。 マシンの検出後、検出されたマシンをグループにまとめ、グループの評価を実行します
 
-この表は、物理サーバーに関してサポートされるシナリオをまとめたものです。
-
-**デプロイ** | **詳細***
---- | ---
-**オンプレミスの物理サーバーを評価する** | 最初の評価を[設定](tutorial-prepare-physical.md)します。<br/><br/> 評価を[実行](tutorial-assess-physical.md)する。
-**物理サーバーを Azure に移行する** | Azure への移行を[試します](tutorial-migrate-physical-virtual-machines.md)。
-
-
-## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
+## <a name="limitations"></a>制限事項
 
 **サポート** | **詳細**
 --- | ---
-**Azure のアクセス許可** | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
-**物理サーバー** | 1 つのプロジェクトで最大 35,000 個の物理サーバーを評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに物理サーバー、VMware VM、Hyper-V VM を含めることができます。
-**地理的な場所** | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのは特定の地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+**評価の上限**| 1 つの[プロジェクト](migrate-support-matrix.md#azure-migrate-projects)で最大 35,000 個の物理サーバーを検出して評価します。
+**プロジェクトの制限** | 1 つの Azure サブスクリプションで複数のプロジェクトを作成できます。 評価の上限に達するまで、1 つのプロジェクトに VMware VM、Hyper-V VM、および物理サーバーを含めることができます。
+**検出** | Azure Migrate アプライアンスでは、最大 250 台の物理サーバーを検出できます。
+**評価** | 1 つのグループに最大 35,000 個のマシンを追加できます。<br/><br/> 1 回の評価で最大 35,000 個のマシンを評価できます。
 
-  **地理的な場所** | **メタデータ ストレージの場所**
-  --- | ---
-  Azure Government | 米国政府バージニア州
-  アジア太平洋 | 東アジアまたは東南アジア
-  オーストラリア | オーストラリア東部またはオーストラリア南東部
-  ブラジル | ブラジル南部
-  Canada | カナダ中部またはカナダ東部
-  ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
-  フランス | フランス中部
-  インド | インド中部またはインド南部
-  日本 |  東日本または西日本
-  韓国 | 韓国中部または韓国南部
-  イギリス | 英国南部または英国西部
-  United States | 米国中部または米国西部 2
+評価の詳細については[こちら](concepts-assessment-calculation.md)をご覧ください。
 
 
- > [!NOTE]
- > Azure Government は現在、[古いバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)の Azure Migrate でのみサポートされます。
 
 
-## <a name="assessment-physical-server-requirements"></a>評価 - 物理サーバーの要件
+## <a name="physical-server-requirements"></a>物理サーバーの要件
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
-| **アクセス許可**           | **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、これらのグループ (リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー) に追加する必要があります。 <br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
+| **アクセス許可**           | **Windows:** 検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 ユーザー アカウントは、これらのグループ (リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー) に追加する必要があります。 <br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
 | **オペレーティング システム** | 次を除くすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システムがサポートされています。<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>評価 - アプライアンスの要件
+## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
 
-Azure Migrate では、評価のために軽量アプライアンスを実行して物理サーバーを検出し、サーバー メタデータとパフォーマンス データを Azure Migrate に送信します。 アプライアンスは物理サーバーまたは VM のいずれかで実行でき、Azure portal からダウンロードした PowerShell スクリプトを使用して設定します。 次の表は、アプライアンスの要件をまとめたものです。
+Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用して検出と評価を行います。 物理サーバーのアプライアンスは、VM または物理マシン上で実行できます。 これは、Azure portal からダウンロードした PowerShell スクリプトを使用して設定します。
 
-| **サポート**                | **詳細**               
-| :-------------------       | :------------------- |
-| **アプライアンスのデプロイ**   |  アプライアンス インストーラー スクリプトは、ポータルからダウンロードできます (zip フォルダー形式)。 <br/> フォルダーを解凍して、専用の物理サーバーまたは仮想マシンで PowerShell スクリプト (AzureMigrateInstaller.ps1) を実行し、アプライアンスを設定します。<br/>  アプライアンスをインストールするために選択したマシンでは、Windows Server 2016 が実行されている必要があります。<br/> マシンには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
-| **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個のマシンを評価できます。
-| **検出**              | 1 つのアプライアンスで最大 250 個のサーバーを検出できます。
-| **評価グループ**       | 1 つのグループに最大 35,000 個のマシンを追加できます。
-| **評価**             | 1 回の評価で最大 35,000 個のマシンを評価できます。
+- 物理サーバーの[アプライアンスの要件](migrate-appliance.md#appliance---physical)を確認します。
+- アプライアンスがアクセスする必要のある [URL](migrate-appliance.md#url-access) を確認します。
 
-
-## <a name="assessment-appliance-url-access"></a>評価 - アプライアンスの URL アクセス
-
-VM を評価するには、Azure Migrate アプライアンスがインターネットに接続されている必要があります。
-
-- アプライアンスをデプロイすると、下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
-- URL ベースのプロキシを使用している場合は、表内の URL へのアクセスを許可して、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
-- インターセプト プロキシがある場合は、プロキシ サーバーからアプライアンスへのサーバー証明書のインポートが必要になる場合があります。
-
-
-**[URL]** | **詳細**  
---- | ---
-*.portal.azure.com | Azure portal への移動
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure サブスクリプションにサインインします。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
-management.azure.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
-dc.services.visualstudio.com | ログ記録と監視
-*.vault.azure.net | アプライアンスとサービス間の通信時の Azure Key Vault のシークレットを管理します。
-aka.ms/* | aka リンクへのアクセスを許可します。
-https://download.microsoft.com/download/* | Microsoft ダウンロード サイトからのダウンロードを許可します。
-
-
-
-## <a name="assessment-port-requirements"></a>評価 - ポートの要件
+## <a name="port-access"></a>ポート アクセス
 
 次の表は、評価のためのポート要件をまとめたものです。
 
@@ -114,4 +61,4 @@ https://download.microsoft.com/download/* | Microsoft ダウンロード サイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-物理サーバーの評価と移行のために、[物理サーバーの評価を準備します](tutorial-prepare-physical.md)。
+[物理サーバーの評価を準備します](tutorial-prepare-physical.md)。

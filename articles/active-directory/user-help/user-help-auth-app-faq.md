@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266960"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045270"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)。
 
@@ -49,10 +49,11 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 | Apple Watch とスマートフォン間で通信エラーが発生します。 トラブルシューティングを行うにはどうすればよいですか? | このエラーは、スマートフォンとの通信を終了する前に Watch 画面がスリープ状態になったときに発生します。<br><br><b>セットアップ中にこのエラーが発生した場合:</b><br>セットアップをもう一度実行し、プロセスが完了するまで Watch が起動状態を保つようにしてください。 同時に、スマートフォンでアプリを開き、表示されるプロンプトに応答します。<br><br>それでもスマートフォンと Watch が通信しない場合は、以下を試すことができます。<ol><li>iPhone 上の Microsoft Authenticator アプリを強制終了し、iPhone でもう一度開きます。</li><li>Apple Watch 上のコンパニオン アプリを強制終了します。<ol><li> Watch で Microsoft Authenticator コンパニオン アプリを開きます。</li><li>**[シャット ダウン]** 画面が表示されるまで、サイド ボタンを押し続けます。</li><li>サイド ボタンを放し、デジタル クラウンを押し続けて、アクティブなアプリを強制終了します。</li></ol></li><li>スマートフォンと Watch の両方で、Bluetooth と Wi-fi の両方をオフにした後、オンに戻します。</li><li>iPhone と Watch を再起動します。</li></ol><b>通知を承認しようとしているときにこのエラーが発生した場合:</b><br>次回 Apple Watch で通知の承認を試行するときに、要求が完了し、要求が成功したことを示す音が聞こえるまで画面が起動状態を保つようにしてください。 |
 | Apple Watch 用の Microsoft Authenticator コンパニオン アプリが、Watch と同期も表示も行いません。なぜですか? | アプリが Watch に表示されない場合は、以下を試してください。 <ol><li>Watch が watchOS 4.0 以降で実行されていることを確認します。</li><li>Watch を再度同期します。</li></ol> |
 | Apple Watch コンパニオン アプリがクラッシュしました。 調査できるようにクラッシュ ログを送信できますか? | まず、分析を Microsoft と共有することを選択しているかどうかを確認する必要があります。 TestFlight ユーザーであれば、既にサインアップしています。 それ以外の場合は、 **[設定] > [プライバシー] > [解析]** の順に移動し、 **[iPhone と Watch 解析を共有]** オプションと **[App デベロッパと共有]** オプションの両方を選択します。<br><br>サインアップした後、調査のためにクラッシュ ログが自動的に送信されるように、クラッシュの再現を試みることができます。 ただし、クラッシュを再現できなくても、ログ ファイルを手動でコピーして送信できます。<ol><li>スマートフォン上で Watch アプリを開き、 **[設定] > [一般]** の順に移動し、 **[Watch 解析のコピー]** をクリックします。</li><li>**[設定] > [プライバシー] > [解析] > [解析データ]** で、該当するクラッシュを探し、テキスト全体を手動でコピーします。</li><li>スマートフォン上で Microsoft Authenticator アプリを開き、 **[ログの送信]** ページの **[App デベロッパと共有]** テキスト ボックスに、コピーしたテキストを貼り付けます。</li></ol> |
-| アプリ ロック機能とは何ですか、セキュリティの強化にどのように役立ちますか? | ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティを強化するには、Microsoft Authenticator アプリのアプリ ロック機能をオンにします。 Microsoft Authenticator アプリの **[設定]** 画面からアプリ ロック機能をオンにすることは、Microsoft Authenticator アプリを開くたびに、PIN または生体認証を使用して、認証を求められることを意味します。 この機能は保護を追加するもので、Microsoft Authenticator アプリで通知を承認する方法は変更されません。<br><br>**注**<br>30 秒以内に Android デバイスで実行されている Microsoft Authenticator アプリに戻った場合は、認証が再度求められることはありません。 |
+| アプリ ロック機能とは何ですか、セキュリティの強化にどのように役立ちますか? | ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティを強化するには、Microsoft Authenticator アプリのアプリ ロック機能をオンにします。 Microsoft Authenticator アプリの **[設定]** 画面からアプリ ロック機能をオンにすることは、Microsoft Authenticator アプリを開くたびに、PIN または生体認証を使用して、認証を求められることを意味します。 この機能は保護を追加するもので、Microsoft Authenticator アプリで通知を承認する方法は変更されません。<br><br>**注**<br>デバイスの登録は、Microsoft Authenticator アプリ以外の場所 (ポータル サイト アプリや Android アカウント設定内など) で行われる可能性があるため、アプリ ロックによってユーザーが Microsoft Authenticator アプリにアクセスできなくなるという保証はありません。 |
 | なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか? | お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、アカウントの [[アカウントに関する重要でない通知の設定]](https://account.live.com/SecurityNotifications/Update) ページにサインインします。 |
+| iOS に付属している既定のメール アプリを使用して職場または学校のアカウントにサインインしているときに、Microsoft Authenticator アプリからセキュリティ検証情報を入力するよう求められます。 その情報を入力して、メール アプリに戻ると、エラーが表示されます。 どうすればよいですか。 | これは、サインインとメール アプリが 2 つの異なるアプリで実行されている場合に発生する可能性が高くなります。これにより、初期のバックグラウンド サインイン プロセスが動作しなかったり失敗したりします。 この問題を解決するには、メール アプリにサインインしているときに、画面の右下にある **[Safari]** アイコンを選択することをお勧めします。 Safari に移行することで、サインイン プロセス全体が 1 つのアプリで実行されるため、アプリに正常にサインインできます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「[Microsoft アカウントのセキュリティ情報と確認コード](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)」の記事の「**確認コードの問題のトラブルシューティング**」セクションを参照してください。
 

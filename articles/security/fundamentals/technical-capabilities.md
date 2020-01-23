@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 45ef5c2feb7365384980fd002d89c243ed7772e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353173"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970650"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
-この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つセキュリティ サービスの概要を提供します。
+この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
 
 ## <a name="azure-platform"></a>Azure プラットフォーム
 
@@ -499,7 +499,7 @@ Security Center は、Azure リソース、ネットワーク、パートナー 
 - 同じタグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。
 
 > [!Note]
-> リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、[Resource Manager デプロイメントとクラシック デプロイメント](../../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
+> リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、[Resource Manager デプロイメントとクラシック デプロイメント](../../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

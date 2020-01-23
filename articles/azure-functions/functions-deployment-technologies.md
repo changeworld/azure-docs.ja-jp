@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227006"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921036"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -39,7 +39,7 @@ Azure Functions は、クロス プラットフォームのローカル開発と
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> [トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
+<sup>1</sup>[トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
 <sup>2</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
 ## <a name="key-concepts"></a>主要な概念
@@ -196,7 +196,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](../app-service/deploy-staging-slots.md)のドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関数アプリのデプロイの詳細については、次の記事を参照してください。 
 

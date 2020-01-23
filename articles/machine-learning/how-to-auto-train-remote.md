@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afdfe6cd660466a0ff262d5823be0a5104946d6a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bad957a70079a5513f103968066e2ff6a436cd77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535651"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754150"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -40,26 +40,43 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>リソースを作成する
 
-まだ存在しない場合は、ワークスペース (`ws`) に AmlCompute ターゲットを作成します。
+まだ存在しない場合、[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) ターゲットをワークスペース (`ws`) に作成します。
 
 **推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
 
 ```python
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
+import os
 
-amlcompute_cluster_name = "automlcl"  # Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
-                                                            # for GPU, use "STANDARD_NC6"
-                                                            # vm_priority = 'lowpriority', # optional
-                                                            max_nodes=6)
-compute_target = ComputeTarget.create(
-    ws, amlcompute_cluster_name, provisioning_config)
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
-# Can poll for a minimum number of nodes and for a specific timeout.
-# If no min_node_count is provided, it will use the scale settings for the cluster.
-compute_target.wait_for_completion(
-    show_output=True, min_node_count=None, timeout_in_minutes=20)
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
+
+    # create the cluster
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 リモート コンピューティング ターゲットとして `compute_target` オブジェクトを使用できるようになりました。
@@ -70,7 +87,7 @@ compute_target.wait_for_completion(
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset 関数を使用してデータにアクセスする
 
-training_data は `TabularDataset` およびラベルとして定義されています。これらは AutoMLConfig 内の自動化された ML に渡されます。 `from_delimited_files` により既定で `infer_column_types` は true に設定されます。これにより、列の型が自動的に推測されます。 
+training_data ([`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) として) とラベルを定義しました。これらは、[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) で 自動 ML に渡されます。 `TabularDataset` メソッド `from_delimited_files` は既定で `infer_column_types` を true に設定します。これにより、自動的に列の型が推測されます。 
 
 列の型を手動で設定する場合は、各列の型を手動で設定するように `set_column_types` 引数を設定できます。 次のコード サンプルでは、sklearn パッケージのデータが使用されています。
 
@@ -86,8 +103,8 @@ import os
 if not os.path.isdir('data'):
     os.mkdir('data')
     
-if not os.path.exists(project_folder):
-    os.makedirs(project_folder)
+if not os.path.exists('project_folder'):
+    os.makedirs('project_folder')
 
 X = pd.DataFrame(data_train.data[100:,:])
 y = pd.DataFrame(data_train.target[100:])

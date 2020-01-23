@@ -1,19 +1,16 @@
 ---
 title: Azure Site Recovery を使用して記憶域スペース ダイレクトを実行している Azure VM をレプリケートする
-description: この記事では、Azure Site Recovery を使用して、記憶域スペース ダイレクトを実行している Azure VM をレプリケートにする方法について説明します。
-services: site-recovery
-author: asgang
+description: Azure Site Recovery を使用して記憶域スペース ダイレクトを実行している Azure VM をレプリケートする方法について説明します。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973659"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>記憶域スペース ダイレクトを実行している Azure VM を別のリージョンにレプリケートする
 
@@ -23,17 +20,17 @@ ms.locfileid: "73954458"
 >記憶域スペース ダイレクト クラスターでは、クラッシュ整合性復旧ポイントのみがサポートされています。
 >
 
-## <a name="introduction"></a>はじめに 
-[記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) はソフトウェアで定義されたストレージであり、Azure 上に[ゲスト クラスター](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)を作成する手段を提供します。  Microsoft Azure のゲスト クラスターは、IaaS VM で構成されるフェールオーバー クラスターです。 ホストされた VM ワークロードはゲスト クラスター間でフェールオーバーすることができ、アプリケーションに対して、単独の Azure VM で可能なものより高い可用性 SLA を実現できます。 SQL やスケールアウト ファイル サーバーなどの重要なアプリケーションを VM でホストしている場合に便利です。
+[記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) はソフトウェアで定義されたストレージであり、Azure 上に[ゲスト クラスター](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)を作成する手段を提供します。  Microsoft Azure のゲスト クラスターは、IaaS VM で構成されるフェールオーバー クラスターです。 ホストされた VM ワークロードはゲスト クラスター間でフェールオーバーすることができ、アプリケーションに対して、単独の Azure VM で可能なものより高い可用性 SLA を実現できます。 SQL やスケールアウト ファイル サーバーなどの重要なアプリケーションを VM でホストする場合に便利です。
 
-## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>記憶域スペース ダイレクトを使用している Azure 仮想マシンのディザスター リカバリー
+## <a name="disaster-recovery-with-storage-spaces-direct"></a>記憶域スペース ダイレクトを使用したディザスター リカバリー
+
 一般的なシナリオでは、スケールアウト ファイル サーバーのようなアプリケーションの高い回復性のために、Azure で仮想マシン ゲスト クラスターを使用できます。 これでもアプリケーションに高可用性を提供できますが、リージョン レベルの障害に対して Site Recovery を使用し、これらのアプリケーションを保護することができます。 Site Recovery では、1 つのリージョンから別の Azure リージョンにデータがレプリケートされ、フェールオーバーのときはディザスター リカバリー リージョンでクラスターが稼働されます。
 
-次の図は、記憶域スペース ダイレクトを使用している 2 つの Azure VM フェールオーバー クラスターを視覚的に表現したものです。
+次の図は、記憶域スペース ダイレクトを使用している 2 ノードの Azure VM フェールオーバー クラスターを示しています。
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Windows フェールオーバー クラスターには 2 つの Azure 仮想マシンがあり、各仮想マシンは 2 つ以上のデータ ディスクを備えています。
 - S2D は、データ ディスク上のデータを同期し、同期されたストレージを記憶域プールとして提供します。
 - 記憶域プールは、フェールオーバー クラスターに対するクラスターの共有ボリューム (CSV) になります。
@@ -42,7 +39,7 @@ ms.locfileid: "73954458"
 **ディザスター リカバリーの考慮事項**
 
 1. クラスターに対する[クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)をセットアップするときは、監視をディザスター リカバリー リージョン内に維持します。
-2. ソース リージョンとは異なる DR リージョン上のサブネットに仮想マシンをフェールオーバーする場合は、フェールオーバーの後でクラスターの IP アドレスを変更する必要があります。  クラスターの IP アドレスを変更するには、ASR の[復旧計画スクリプト](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)を使用する必要があります。</br>
+2. ソース リージョンとは異なる DR リージョン上のサブネットに仮想マシンをフェールオーバーする場合は、フェールオーバーの後でクラスターの IP アドレスを変更する必要があります。  クラスターの IP を変更するには、Site Recovery の[復旧計画スクリプト](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)を使用する必要があります。</br>
 カスタム スクリプト拡張機能を使用して VM 内でコマンドを実行する[サンプル スクリプト](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>S2D クラスターに対して Site Recovery を有効にする
@@ -54,7 +51,7 @@ ms.locfileid: "73954458"
 
    ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. レプリケートされたアイテムに移動すると、両方の仮想マシンの状態を確認できます。 
+2. レプリケートされたアイテムに移動すると、両方の仮想マシンの状態を確認できます。
 3. 両方の仮想マシンが保護されており、マルチ VM 整合性グループの一部としても表示されます。
 
    ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
@@ -73,7 +70,7 @@ ms.locfileid: "73954458"
 
 
 ### <a name="failover-of-the-virtual-machines"></a>仮想マシンのフェールオーバー 
-[ASR 復旧計画](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)を使用して、仮想マシンの両方のノードをフェールオーバーする必要があります 
+Site Recovery の[復旧計画](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)を使用して VM の両方のノードをフェールオーバーする必要があります 
 
 ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -95,6 +92,6 @@ ms.locfileid: "73954458"
 4.  フェールオーバー プロセスを開始するには、復旧ポイントを選択します。
 
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 フェールバックの実行について[さらに学習する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)。

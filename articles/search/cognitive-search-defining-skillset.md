@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114540"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754556"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure コグニティブ検索で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
@@ -171,7 +171,7 @@ Content-Type: application/json
 
 * このスキルには、```"organizations"``` と呼ばれる出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/organizations"``` としてこの出力を参照します。
 
-* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 例:
+* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 次に例を示します。
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -235,7 +235,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 ## <a name="add-structure"></a>構造を追加する
 
-スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を考えてみます。
+スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を確認してください。
 
 "*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。* "
 
@@ -249,7 +249,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 [ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure コグニティブ検索のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
 
-ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)に関するページをご覧ください。
+ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[REST でのナレッジ ストアの作成](knowledge-store-create-rest.md)に関するページをご覧ください。
 
 ```json
 "knowledgeStore": {
@@ -275,6 +275,6 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンリッチメント パイプラインとスキルセットについて学習したので、引き続き[スキルセットの注釈を参照する方法](cognitive-search-concept-annotations-syntax.md)または[インデックス内のフィールドに出力をマップする方法](cognitive-search-output-field-mapping.md)を確認してください。 

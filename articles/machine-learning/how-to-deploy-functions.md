@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 2f5658d6df2b20e5bce0fab2ca1787ede5ab7883
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535231"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024912"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
     > * `model` - デプロイされる登録済みのモデル。
     > * `inference_config` - モデルの推論構成。
     >
-    > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+    > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prepare-for-deployment"></a>展開を準備する
 
@@ -53,7 +53,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
     >
     > 要求データがモデルで使用できない形式になっている場合、スクリプトで受け入れ可能な形式に変換することができます。 また、応答をクライアントに返す前に変換することもできます。
     >
-    > 既定では、関数のパッケージ化の際、入力はテキストとして扱われます。 入力の生バイトの使用に関心がある場合 (たとえば、BLOB トリガーの場合)、[生データを受け入れる AMLRequest](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#binary-data) を使用する必要があります。
+    > 既定では、関数のパッケージ化の際、入力はテキストとして扱われます。 入力の生バイトの使用に関心がある場合 (たとえば、BLOB トリガーの場合)、[生データを受け入れる AMLRequest](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data) を使用する必要があります。
 
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
@@ -79,7 +79,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
-推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
 > Functions にデプロイするときに__デプロイ構成__を作成する必要はありません。
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 Azure Functions にデプロイする Docker イメージを作成するには、[azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) または使用するトリガーに固有のパッケージ関数を使用します。 次のコード スニペットで、モデルと推論構成から、BLOB トリガーを使用する新しいパッケージを作成する方法を示します。
 
 > [!NOTE]
-> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ```python
 from azureml.contrib.functions import package
@@ -156,27 +156,35 @@ print(blob.location)
     > [!IMPORTANT]
     > Azure Machine Learning によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
 
-1. 関数アプリを作成するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagename>` を、前の手順で返された `package.location` の値に置き換えます。
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > この時点で、関数アプリが作成されています。 しかし、イメージを含む Azure コンテナー レジストリに資格情報または BLOB トリガーの接続文字列が指定されていないため、関数アプリはアクティブになりません。 次の手順で、コンテナー レジストリの認証情報と接続文字列を指定します。 
-
-1. トリガーとして使用するストレージ アカウントを作成し、その接続文字列を取得します。
+1. Web ジョブ ストレージに使用するストレージ アカウントを作成し、その接続文字列を取得します。 `<webjobStorage>` を使用する名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. 関数アプリを作成するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagename>` を、前の手順で返された `package.location` の値に置き換えます。 `<webjobStorage>` は、前の手順で作成したストレージ アカウントの名前で置き換えます。
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > この時点で、関数アプリが作成されています。 しかし、イメージを含む Azure コンテナー レジストリに資格情報または BLOB トリガーの接続文字列が指定されていないため、関数アプリはアクティブになりません。 次の手順で、コンテナー レジストリの認証情報と接続文字列を指定します。 
+
+1. BLOB トリガー ストレージに使用するストレージ アカウントを作成し、その接続文字列を取得します。 `<triggerStorage>` を使用する名前に置き換えます。
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     関数アプリに提供するため、この接続文字列を記録しておきます。 これは後で `<triggerConnectionString>` に使用します。
 
-1. ストレージ アカウントに入力用と出力用のコンテナーを作成します。 
+1. ストレージ アカウントに入力用と出力用のコンテナーを作成します。 `<triggerConnectionString>` は、先ほど返された接続文字列で置き換えます。
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. 次のコマンドを使用して、作成したコンテナーに関連付けられているタグを取得する必要があります。
+1. トリガー接続文字列を関数アプリに関連付けるには、次のコマンドを使用します。 `<app-name>` は、関数アプリの名前で置き換えます。 `<triggerConnectionString>` は、先ほど返された接続文字列で置き換えます。
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. 次のコマンドを使用して、作成したコンテナーに関連付けられているタグを取得する必要があります。 `<username>` は、先ほどコンテナー レジストリから返されたユーザー名で置き換えます。
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    表示される最新のタグは、次の `imagetag` になります。
+    返された値を保存します。これは次の手順で `imagetag` として使用します。
 
 1. コンテナー レジストリにアクセスするために必要な資格情報を関数アプリに指定するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagetag>` を、前の手順の AZ CLI 呼び出しの値に置き換えます。 `<username>` と `<password>` を、前の手順で取得した ACR ログイン情報に置き換えます。
 
@@ -238,6 +251,6 @@ print(blob.location)
 
 * [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) のドキュメントで、関数アプリを構成する方法を学習する。
 * [Azure Blob Storage のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)に関する記事で、Blob Storage のトリガーの詳細について学習する。
-* [Azure App Service にモデルをデプロイする](service/how-to-deploy-app-service.md)。
+* [Azure App Service にモデルをデプロイする](how-to-deploy-app-service.md)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)
 * [API リファレンス](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

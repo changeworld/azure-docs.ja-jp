@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561357"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863395"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74561357"
 - 割り当てられた受信レートを超えるかもしれない古いデータを含むイベント ソースを追加した (Time Series Insights はキャッチアップする必要があります)。
 - 環境にイベント ソースを追加した結果、追加イベントによるスパイクが発生した (環境の容量を超えた可能性があります)。
 - 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Time Series Insights はキャッチアップする必要があります)。
-- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。  調整の観点から、パケット サイズが 32 KB の受信データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
+- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。  調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
 
 ## <a name="video"></a>ビデオ
 
@@ -56,7 +56,7 @@ ms.locfileid: "74561357"
 
    そこから、次のいずれかの条件を使用してアラートを構成できます。
 
-   |メトリック  |説明  |
+   |メトリック  |[説明]  |
    |---------|---------|
    |**受信バイトの受信**     | イベント ソースから読み取られた生バイト数。 通常、生バイト数にはプロパティの名前と値が含まれます。  |  
    |**無効な受信メッセージの受信**     | すべての Azure Event Hubs または Azure IoT Hub イベント ソースから読み取られた無効なメッセージの数。      |
@@ -74,7 +74,7 @@ ms.locfileid: "74561357"
 
 ## <a name="throttling-and-ingress-management"></a>調整とイングレスの管理
 
-* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から Time Series Insights 環境が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
+* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が登録され、メッセージがイベント ソースに届く実際の時間から Time Series Insights 環境が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
 
   *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
 
@@ -90,9 +90,9 @@ ms.locfileid: "74561357"
 
 調整や待機時間を軽減するための最善の修正方法は、環境の容量を増やすことです。
 
-分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。 環境内に容量を追加する方法の詳細については、「[環境のスケーリング](time-series-insights-how-to-scale-your-environment.md)」を参照してください。
+分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。 環境内に容量を追加する方法の詳細については、[環境のスケーリング](time-series-insights-how-to-scale-your-environment.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)を確認します。
 

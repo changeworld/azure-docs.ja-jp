@@ -1,6 +1,6 @@
 ---
-title: Azure Maps を使用してポップアップを追加する | Microsoft Docs
-description: Azure Maps Web SDK にポップアップを追加する方法について説明します。
+title: マップ上のポイントにポップアップを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、ポイントにポップアップを追加する方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976546"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911146"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
@@ -112,7 +112,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>ポップアップ イベント</a>を参照してください。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

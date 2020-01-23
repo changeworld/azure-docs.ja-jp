@@ -1,6 +1,6 @@
 ---
-title: Event Grid を使用して Azure Maps イベントに反応する | Microsoft Docs
-description: Event Grid を使用して Azure Maps のイベントに対応する方法を説明します。
+title: Event Grid を使用してマップ イベントに対応する | Microsoft Azure Maps
+description: この記事では、Event Grid を使用して Microsoft Azure Maps イベントに対応する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799157"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911808"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
 
@@ -30,7 +30,7 @@ Azure Event Grid は、パブリッシュ - サブスクライブ モデルを�
 
 Event Grid は、[イベント サブスクリプション](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Azure Maps アカウントから出力されるイベントの種類は次のとおりです。 
 
-| イベントの種類 | 説明 |
+| イベントの種類 | [説明] |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 受信した座標が指定されたジオフェンスの外部から内部に移動したときに発生します |
 | Microsoft.Maps.GeofenceExited | 受信した座標が指定されたジオフェンスの内部から外部に移動したときに発生します |
@@ -84,7 +84,7 @@ Azure Maps ジオフェンス イベントを処理するアプリケーショ�
 * メッセージは、順不同で、または遅延の後に、到着する場合があります。 応答ヘッダーの `X-Correlation-id` フィールドを使用して、オブジェクトに関する情報が最新かどうかを確認します。
 * モード パラメーターを `EnterAndExit` に設定して Get および POST Geofence API を呼び出すと、前回の Geofence API 呼び出しの後で状態が変化したジオフェンスのジオメトリごとに、Enter または Exit イベントが生成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ジオフェンシングを使用して建設現場での操作を制御する方法について詳しくは、以下をご覧ください。
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996733"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768590"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -35,13 +35,13 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 * HTTP アプリケーションのルーティング アドオンは使用できません。
 * AKS クラスターが複数のノード プールを使用するためには、Standard SKU のロード バランサーを使用する必要があります。Basic SKU のロード バランサーでは、この機能がサポートされません。
 * AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
-* ほとんどの操作と同様に、既存の Resource Manager テンプレートを使用してノード プールを追加したり、削除したりすることはできません。 代わりに、[別の Resource Manager テンプレートを使用](#manage-node-pools-using-a-resource-manager-template)して、AKS クラスター内のノード プールに変更を加えます。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux ノード プールの場合、長さは 1 から 12 文字である必要があります。Windows ノード プールの場合、長さは 1 から 6 文字である必要があります。
 * AKS クラスターは、最大で 8 つノード プールを持つことができます。
 * AKS クラスターには、これらの 8 つのノード プールにまたがる最大 800 個のノードを含めることができます。
-* すべてのノード プールは、同じサブネット内に存在する必要があります。
+* すべてのノード プールは、同じ VNET およびサブネット内に存在する必要があります。
+* クラスターの作成時に複数のノード プールを作成する場合は、ノード プールで使用されるすべての Kubernetes のバージョンが、コントロール プレーンに設定されたバージョンと一致している必要があります。 これは、ノード プールごとの操作を使用してクラスターがプロビジョニングされた後で更新できます。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.13.10* の *--kubernetes-version* を使用してノード プールを更新する方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
 
@@ -556,7 +556,7 @@ az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerSe
 
 登録が正常に完了したら、[上記](#manage-node-pools-using-a-resource-manager-template)と同じ手順に従って Azure Resource Manager テンプレートをデプロイし、ブール値プロパティ `enableNodePublicIP` を agentPoolProfiles に追加します。 指定しない場合は、既定で `false` として設定されるため、これを `true` に設定します。 これは作成時限定のプロパティであり、2019-06-01 の最小 API バージョンが必要です。 これは、Linux と Windows のどちらのノード プールにも適用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、GPU ベースのノードを含む AKS クラスターを作成しました。 不要なコストを減らすには、*gpunodepool*、または AKS クラスター全体を削除してください。
 
@@ -572,7 +572,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS クラスターで複数のノード プールを作成および管理する方法を学習しました。 すべてのノード プールのポッドを制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。
 

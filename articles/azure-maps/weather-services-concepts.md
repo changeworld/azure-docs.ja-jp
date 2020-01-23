@@ -1,6 +1,6 @@
 ---
-title: Azure Maps における気象サービスの概念 | Microsoft Docs
-description: Azure Maps の気象サービスについて説明します
+title: Weather Services の概念 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Weather Services に適用される概念について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382806"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911022"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
@@ -23,7 +23,7 @@ ms.locfileid: "74382806"
 
 気象サービス API の中には、データをメトリックとヤード単位のどちらで返すかをユーザーが指定できるものがあります。 これらの API に対して返される応答には、単位を変換するために使用できる数値である unitType も含まれています。 これらの値を解釈するには、次の表を参照してください。
 
-|unitType|説明         |
+|unitType|[説明]         |
 |--------|--------------------|
 |0       |フィート                |
 |1       |インチ              |
@@ -47,14 +47,14 @@ ms.locfileid: "74382806"
 |19      |kelvin              |
 |20      |パーセント             |
 |21      |float               |
-|22      |integer             |
+|22      |整数 (integer)             |
 
 
 ## <a name="weather-icons"></a>天気アイコン
 
 Weather サービス API の中には、アイコンを定義するために使用できる数値であるアイコン コード (iconCode) が応答内に返されるものがあります。 アプリケーションからこれらの画像に直接リンクしないでください。URL は変更される可能性があります。
 
-| アイコン番号 |アイコン| 日中 | 夜間 | Text |
+| アイコン番号 |アイコン| 日 | 夜間 | Text |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | はい |  いいえ    | 晴れ|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | はい |  いいえ    | 晴れ一時曇り|
@@ -81,10 +81,10 @@ Weather サービス API の中には、アイコンを定義するために使�
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | はい |  はい   | みぞれ|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | はい |  はい   | 雨氷|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | はい |  はい   | 雨と雪|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | はい |  はい   | 暑い|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | はい |  はい   | 寒い|
+| 30           |![](./media/weather-services-concepts/hot-i.png)                       | はい |  はい   | ホット|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | はい |  はい   | アイス|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | はい |  はい   | 強風|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | いいえ  |  はい   | 晴夜|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | いいえ  |  はい   | Clear|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | いいえ  |  はい   | 晴夜一時曇り|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | いいえ  |  はい   | 晴夜時々曇り|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | いいえ  |  はい   | 晴れたり曇ったり|

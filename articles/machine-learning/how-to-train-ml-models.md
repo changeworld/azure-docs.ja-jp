@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3205f853088245461e854562999164f9813f3bd5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534123"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942234"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ print(run.get_portal_url())
 次のコードを実行すると、ご自分のワークスペースにモデルが登録され、リモート コンピューティング コンテキストまたはデプロイ スクリプトで名前によってそのモデルを参照できるようになります。 詳細およびその他のパラメーターについては、リファレンス ドキュメントで [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) を参照してください。
 
 ```python
-model = run.register_model(model_name='sklearn-sample')
+model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
 ## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
@@ -158,3 +158,4 @@ deep-learning-framework 固有の Estimator を使用してモデルをトレー
 * [TensorFlow モデルをトレーニングする](how-to-train-tensorflow.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)

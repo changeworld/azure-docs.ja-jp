@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Search Service を使用して効率よく検索する方法 | Microsoft Docs
-description: Azure Maps Search Service を使用して検索するためのベスト プラクティスの使用方法について説明します。
+title: Azure Maps Search Service を使用して効率よく検索する | Microsoft Azure Maps
+description: Microsoft Azure Maps Search Service を使用して検索するためのベスト プラクティスの使用方法について説明します
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408711"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911365"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure Maps Search Service を使用するためのベスト プラクティス
 
@@ -33,7 +33,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 > Search Service のクエリを実行するには、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを作成するか、または好みの API 開発環境を使用することができます。
 
 
-## <a name="best-practices-for-geocoding"></a>ジオコーディングに関するベスト プラクティス
+## <a name="best-practices-for-geocoding-address-search"></a>ジオコーディングに関するベスト プラクティス (住所の検索)
 
 Azure Maps Search Service を使用して、完全な住所または部分的な住所を検索するとき、サービスは検索語句を受け取って、住所の経度と緯度の座標を返します。 このプロセスはジオコーディングと呼ばれます。 ある国でジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。
 
@@ -58,10 +58,12 @@ Azure Maps Search Service を使用して、完全な住所または部分的な
 
 
    **あいまい検索パラメーター**
+   
+   検索クエリでユーザーの入力内容がわからない場合は、Azure Maps [Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用することをお勧めします。 この API は、目的地 (POI) 検索とジオコーディングを正規の *一行検索* で組み合わせています。 
 
    1. `minFuzzyLevel` と `maxFuzzyLevel` を使用すると、クエリ パラメーターが目的の情報に正確に対応していない場合でも、関連する一致を返すことができます。 ほとんどの検索クエリでは、パフォーマンスを高めて想定外の結果を減らすため、既定で `minFuzzyLevel=1` と `maxFuzzyLevel=2` に設定されます。 検索語句 "restrant" を例にすると、`maxFuzzyLevel` が 2 に設定されている場合は "restaurant" と一致します。 既定のあいまいレベルは、要求のニーズに応じてオーバーライドできます。 
 
-   2. また、`idxSet` パラメーターを使用することで、正確な結果の種類のセットを返すように指定することもできます。 そのためには、インデックスのコンマ区切りリストを送信できます。項目の順序は関係ありません。 次のインデックスがサポートされています。
+   2. また、`idxSet` パラメーターを使用して、返される正確な結果の種類のセットに優先順位を付けることもできます。 そのためには、インデックスのコンマ区切りリストを送信できます。項目の順序は関係ありません。 次のインデックスがサポートされています。
 
        * `Addr` - **住所範囲**: 街路によっては、街路の開始と終了から補間される住所ポイントが存在します。このようなポイントは、住所範囲として表されます。
        * `Geo` - **地域**: 土地の行政区分を表すマップ上の領域です (つまり、国、州、市)。
@@ -317,7 +319,10 @@ url.QueryEscape(query)
 
 結果と応答内の情報の関連性を向上させるため、目的地 (POI) 検索の応答には、応答をさらに解析するために使用できるブランド情報が含まれます。
 
+要求に含まれるブランド名のコンマ区切りリストを送信することもできます。 このリストを使用して、`brandSet` パラメーターで結果を特定のブランドに限定することができます。 項目の順序は関係ありません。 複数のブランドを指定すると、指定されたリストの (少なくとも) 1 つ に属する結果のみが返されます。
+
 Microsoft キャンパス (ワシントン州レドモンド) の近くのガソリン スタンドに関する [POI Category Search](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) 要求を行ってみましょう。 応答を確認すると、各 POI に対するブランド情報が返されることがわかります。
+
 
 **サンプル クエリ:**
 

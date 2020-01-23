@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799399"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832917"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -22,7 +22,7 @@ Azure Key Vault では、Microsoft Azure アプリケーションとユーザー
 
 - 暗号化キー:複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 
 - シークレット:パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。
-- 証明書:キーとシークレットを基に構築され、自動更新機能を追加します。
+- Certificates:キーとシークレットを基に構築され、自動更新機能を追加します。
 - Azure Storage:Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 
 
 Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。
@@ -40,7 +40,7 @@ JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryp
 -   [JSON Web Algorithms (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
 -   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
 
-### <a name="data-types"></a>データの種類
+### <a name="data-types"></a>データ型
 
 キー、暗号化、および署名に関連するデータ型については、JOSE の仕様をご覧ください。  
 
@@ -139,9 +139,9 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 Key Vault では、キー オブジェクトに対する次の操作がサポートされます。  
 
 -   **作成**:クライアントは、Key Vault にキーを作成できます。 キーの値は、Key Vault によって生成されて格納され、クライアントにはリリースされません。 Key Vault では非対称キーを作成できます。  
--   **インポート**:クライアントは、既存のキーを Key Vault にインポートできます。 JWK コンストラクト内の複数のパッケージング方法を使用して、非対称キーを Key Vault にインポートできます。 
+-   **Import**:クライアントは、既存のキーを Key Vault にインポートできます。 JWK コンストラクト内の複数のパッケージング方法を使用して、非対称キーを Key Vault にインポートできます。 
 -   **更新**:十分なアクセス許可を持つクライアントは、以前に Key Vault に格納されたキーに関連付けられているメタデータ (キー属性) を変更できます。  
--   **削除**:十分なアクセス許可を持つクライアントは、Key Vault からキーを削除できます。  
+-   **[削除]** :十分なアクセス許可を持つクライアントは、Key Vault からキーを削除できます。  
 -   **一覧表示**:クライアントは、特定の Key Vault 内のすべてのキーを一覧表示できます。  
 -   **バージョンの一覧表示**:クライアントは、特定の Key Vault 内の特定のキーのすべてのバージョンを一覧表示できます。  
 -   **取得**:クライアントは、Key Vault 内の特定のキーの公開部分を取得できます。  
@@ -198,7 +198,7 @@ IntDate および他のデータ型について詳しくは、「[データ型](
 
 Key Vault によって管理されているキーのアクセス制御は、キーのコンテナーとして機能する Key Vault のレベルで提供されます。 キーのアクセス制御ポリシーは、同じキー コンテナー内のシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成してキーを保持することができ、キーのセグメント化と管理に適切なシナリオを維持する必要があります。 キーのアクセス制御は、シークレットのアクセス制御に依存しません。  
 
-コンテナーのキー アクセス制御エントリでは、ユーザー/サービス プリンシパルごとに、次のアクセス許可を付与できます。 これらのアクセス許可は、キー オブジェクトに対して許可される操作を厳密に反映しています。  キー コンテナーのサービス プリンシパルへのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要なすべての証明書をデプロイできます。 
+コンテナーのキー アクセス制御エントリでは、ユーザー/サービス プリンシパルごとに、次のアクセス許可を付与できます。 これらのアクセス許可は、キー オブジェクトに対して許可される操作を厳密に反映しています。  キー コンテナーのサービス プリンシパルへのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要な数だけ証明書をデプロイできます。 
 
 - キー管理操作に対するアクセス許可
   - *get*:キーの公開部分とその属性を読み取ります
@@ -376,9 +376,9 @@ Key Vault 証明書を最初から作成するときは、ポリシーを提供�
 
 Key Vault 証明書オブジェクトは、x509 証明書を要求するための選択された証明書発行者プロバイダーとの通信に使用される構成を保持しています。  
 
--   Key Vault は、SSL 証明書の次の証明書発行者プロバイダーと提携しています
+-   Key Vault は、TLS/SSL 証明書の次の証明書発行者プロバイダーと提携しています
 
-|**プロバイダー名**|**場所**|
+|**プロバイダー名**|**[場所]**|
 |----------|--------|
 |DigiCert|パブリック クラウドおよび Azure Government 内のすべての Key Vault サービスの場所でサポートされます|
 |GlobalSign|パブリック クラウドおよび Azure Government 内のすべての Key Vault サービスの場所でサポートされます|
@@ -389,7 +389,7 @@ Key Vault で証明書発行者を作成するには、その前に、次の前�
 
     -   組織の管理者は、会社 (例: Contoso) を少なくとも 1 つの CA プロバイダーにオンボードする必要があります。  
 
-2. 管理者は、SSL 証明書を登録 (および更新) するための Key Vault に対する要求者資格情報を作成します  
+2. 管理者は、TLS/SSL 証明書を登録 (および更新) するための Key Vault に対する要求者資格情報を作成します  
 
     -   キー コンテナー内のプロバイダーの発行者オブジェクトの作成に使用される構成を提供します  
 
@@ -473,7 +473,7 @@ Key Vault では、Azure ストレージ アカウント キーを管理でき�
 
 詳しくは、[Key Vault REST API リファレンス内のストレージ アカウントの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [認証、要求、応答](authentication-requests-and-responses.md)
 - [Key Vault 開発者ガイド](/azure/key-vault/key-vault-developers-guide)

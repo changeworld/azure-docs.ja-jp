@@ -3,7 +3,7 @@ title: デプロイ済みの StorSimple デバイスのトラブルシューテ�
 description: デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: v-sharos
-ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713062"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933291"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>StorSimple 運用デバイスのトラブルシューティング
 > [!NOTE]
@@ -45,11 +45,11 @@ ms.locfileid: "64713062"
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>セットアップ ウィザードを 2 回以上実行したときに発生するエラー
 次の表では、運用しているデバイスでセットアップ ウィザードを実行した場合に発生する可能性のあるエラー、エラーの考えられる原因、エラーを解決するための推奨される操作について説明します。 
 
-| No. | エラー メッセージまたは条件 | 考えられる原因 | 推奨される操作 |
+| いいえ。 | エラー メッセージまたは条件 | 考えられる原因 | 推奨される操作 |
 |:--- |:--- |:--- |:--- |
 | 1 |エラー 350032:このデバイスは既に非アクティブ化されています。 |非アクティブ化されたデバイスでセットアップ ウィザードを実行すると、このエラーが表示されます。 |[Microsoft サポート](storsimple-contact-microsoft-support.md) に対処法をお問い合わせください。 非アクティブ化されているデバイスを利用することはできません。 デバイスを再アクティブ化する前に、出荷時の設定に戻す必要があります。 |
 | 2 |Invoke-HcsSetupWizard :ERROR_INVALID_FUNCTION(HRESULT からの例外:0x80070001) |DNS サーバーの更新に失敗しました。 DNS の設定はグローバル設定であるため、有効なすべてのネットワーク インターフェイスに適用されます。 |インターフェイスを有効にし、再度、DNS の設定を適用します。 これらの設定はグローバルであるため、有効になっている他のインターフェイスのネットワークが中断される可能性があります。 |
-| 3 |StorSimple Manager サービスのポータルではデバイスがオンラインであると表示されますが、最小のセットアップを完了して構成を保存しようとすると、操作に失敗します。 |実際のプロキシ サーバーがあるにもかかわらず、初期セットアップ時に、Web プロキシが構成されませんでした。 |[Test-HcsmConnection コマンドレット][2] を使用して、エラーを特定します。 [Microsoft サポート](storsimple-contact-microsoft-support.md) ください。 |
+| 3 |StorSimple Manager サービスのポータルではデバイスがオンラインであると表示されますが、最小のセットアップを完了して構成を保存しようとすると、操作に失敗します。 |実際のプロキシ サーバーがあるにもかかわらず、初期セットアップ時に、Web プロキシが構成されませんでした。 |[Test-HcsmConnection コマンドレット][2]を使用して、エラーを特定します。 [Microsoft サポート](storsimple-contact-microsoft-support.md) ください。 |
 | 4 |Invoke-HcsSetupWizard:値が期待される範囲内にありません。 |不適切なサブネット マスクがこのエラーの原因です。 次の原因が考えられます。 <ul><li> サブネット マスクが存在しないか空である。</li><li>Ipv6 プレフィックスの形式が正しくない。</li><li>インターフェイスはクラウドに対応しているが、ゲートウェイが見つからないか、正しくない。</li></ul>DATA 0 は、セットアップ ウィザードを使用して構成した場合は自動的にクラウド対応になります。 |問題を特定するには、サブネット 0.0.0.0 または 256.256.256.256 を使用して出力を確認します。 必要に応じて、サブネット マスク、ゲートウェイ、および IPv6 プレフィックスの正しい値を入力します。 |
 
 ## <a name="error-codes"></a>エラー コード
@@ -63,7 +63,7 @@ ms.locfileid: "64713062"
 | 390061 |システムは、ビジー状態か利用できない状態です。 |数分待ってから操作をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。 |
 | 390143 |エラー コード 390143 でエラーが発生しました (不明なエラー)。 |引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 問題を解決できない場合は、 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md) ください。 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx

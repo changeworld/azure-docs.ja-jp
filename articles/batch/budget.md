@@ -2,20 +2,20 @@
 title: コスト分析と予算 - Azure Batch
 description: コスト分析を取得し、Batch ワークロードの予算を設定する方法について説明します。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094202"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029576"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch のコスト分析と予算
 
@@ -23,7 +23,7 @@ Azure Batch 自体に料金はかかりません。Batch ワークロードの�
 
 ## <a name="batch-resources"></a>Batch リソース
 
-仮想マシンは、Batch 処理に使用される最も重要なリソースです。 Batch に VM を使用するコストは、使用の種類、量、および期間に基づいて計算されます。 VM の課金オプションには、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)または[予約](../billing/billing-save-compute-costs-reservations.md) (前払い) があります。 どちらの支払いオプションにも、コンピューティング ワークロードに応じてさまざまなメリットがあります。また、両方の支払いモデルが請求に与える影響は異なります。
+仮想マシンは、Batch 処理に使用される最も重要なリソースです。 Batch に VM を使用するコストは、使用の種類、量、および期間に基づいて計算されます。 VM の課金オプションには、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)または[予約](../cost-management-billing/reservations/save-compute-costs-reservations.md) (前払い) があります。 どちらの支払いオプションにも、コンピューティング ワークロードに応じてさまざまなメリットがあります。また、両方の支払いモデルが請求に与える影響は異なります。
 
 [アプリケーション パッケージ](batch-application-packages.md)を使用してアプリケーションを Batch ノード (VM) デプロイすると、アプリケーション パッケージが使用する Azure Storage リソースに対して課金されます。 また、リソース ファイルやその他のログデータなどの入力ファイルまたは出力ファイルのストレージに対しても課金されます。 一般に、Batch に関連付けられているストレージ データのコストは、コンピューティング リソースのコストよりはるかに低くなります。 **VirtualMachineConfiguration** を使用して作成されたプール内の各 VM には、Azure マネージド ディスクを使用する関連 OS ディスクがあります。 Azure マネージド ディスクには追加のコストがかかり、他のディスク パフォーマンス層にも異なるコストがあります。
 
@@ -50,7 +50,7 @@ Azure portal では、Batch プールまたは Batch アカウントの予算と
 1. Azure portal で、左側のナビゲーションバーから **[コストの管理と請求]** を選択します。
 1. **[サブスクリプション]** セクションからサブスクリプションを選択します
 1. 左のナビゲーション バーの **[コスト管理]** セクションにある **[コスト分析]** に移動します。次のようなビューが表示されます。
-1. **[フィルターの追加]** を選択します 最初のドロップダウンで **[リソース]** を選択します。![リソース フィルターを選択する](./media/batch-budget/resource-filter.png)
+1. **[フィルターの追加]** を選択します 最初のドロップダウンで、 **[リソース]** を選択します。![リソース フィルターを選択する](./media/batch-budget/resource-filter.png)
 1. 2 番目のドロップダウンで、Batch プールを選択します。 プールが選択されると、コスト分析は次の分析のようになります。
     ![プールのコスト分析](./media/batch-budget/pool-cost-analysis.png)
 
@@ -58,7 +58,7 @@ Azure portal では、Batch プールまたは Batch アカウントの予算と
 
 プールの予算を作成するには、 **[Budget: none]\(予算: なし\)** を選択してから **[新しい予算の作成 >]** を選択します。 ウィンドウを使用して、お使いのプールに合わせて予算を構成します。
 
-予算の構成の詳細については、「[Azure の予算を作成して管理する](../cost-management/tutorial-acm-create-budgets.md)」を参照してください。
+予算の構成の詳細については、「[Azure の予算を作成して管理する](../cost-management-billing/costs/tutorial-acm-create-budgets.md)」を参照してください。
 
 > [!NOTE]
 > Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジに基づいて構築されています。 **Cloud Services 構成**を選択した場合は、Cloud Services の料金体系に基づいて課金されます。 **仮想マシン構成**を選択した場合は、Virtual Machines の料金体系に基づいて課金されます。 このページの例では、**仮想マシン構成**を使用しています。
@@ -81,7 +81,7 @@ Premium SSD OS ディスクはより高価ですが、パフォーマンスが�
 
 ### <a name="reserved-virtual-machine-instances"></a>予約仮想マシン インスタンス
 
-長期間 Batch を使用する予定の場合は、ワークロードに [Azure の予約](../billing/billing-save-compute-costs-reservations.md)を使用することで VM のコストを節約できます。 予約料金は、従量課金制の料金よりもかなり低価です。 予約なしで使用された仮想マシン インスタンスは、従量課金制で課金されます。 予約を購入すると、予約割引が適用され、従量課金制の料金では課金されなくなります。
+長期間 Batch を使用する予定の場合は、ワークロードに [Azure の予約](../cost-management-billing/reservations/save-compute-costs-reservations.md)を使用することで VM のコストを節約できます。 予約料金は、従量課金制の料金よりもかなり低価です。 予約なしで使用された仮想マシン インスタンスは、従量課金制で課金されます。 予約を購入すると、予約割引が適用され、従量課金制の料金では課金されなくなります。
 
 ### <a name="automatic-scaling"></a>自動スケーリング
 
@@ -89,7 +89,7 @@ Premium SSD OS ディスクはより高価ですが、パフォーマンスが�
 
 自動スケーリングの詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Batch ソリューションの構築と監視に使用できる [Batch API とツール](batch-apis-tools.md)の詳細を確認します。  
 

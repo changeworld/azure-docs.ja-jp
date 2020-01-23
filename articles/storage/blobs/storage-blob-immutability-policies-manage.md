@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556080"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903466"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する
 
@@ -57,7 +57,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
     ![[ポリシーの種類] の下にある [タグ名] ボックス](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除するだけです。
+9. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除します。
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -166,6 +166,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="enabling-allow-protected-append-blobs-writes"></a>保護された追加 BLOB の書き込みを有効にする
+
+この時点では、この特定の[ポータル リンク](https://aka.ms/immutableappendblobs)からは、時間ベースの保持ポリシーに対する `allowProtectedAppendWrites` の設定にのみアクセスできます。 
+
+> [!IMPORTANT] 
+>  時間ベースの保持における保護された追加 BLOB の書き込みの許可の設定は、現時点では次のリージョンでのみ使用および表示できます。
+> - East US
+> - 米国中南部
+> - 米国西部 2
+>
+> 詳細については、「[保護された追加 BLOB の書き込みを許可する](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
+
+![さらに追加の書き込みを許可する](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+## <a name="next-steps"></a>次のステップ
 
 [不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933638"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770018"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -84,23 +84,23 @@ IoT デバイスに関する次の質問に答えて、適切なエージェン�
 どちらのエージェント フレーバーでも同じ機能セットが提供され、同じ構成オプションがサポートされています。
 詳しくは、[セキュリティ エージェントの比較](how-to-deploy-agent.md#understand-security-agent-options)に関する記事をご覧ください。
 
-## <a name="supported-platforms"></a>サポートされるプラットフォーム
+## <a name="supported-platforms"></a>サポートされているプラットフォーム
 
 次の一覧には、現在サポートされているすべてのプラットフォームが含まれています。
 
-|Azure Security Center for IoT のエージェント |オペレーティング システム |アーキテクチャ |
+|Azure Security Center for IoT のエージェント |オペレーティング システム |Architecture |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64、ARMv7|
 |C|Debian 9 |   x64、x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64、ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core ビルド 17763    |x64|
 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 構成オプションの詳細については、エージェント構成の攻略ガイドに進んでください。 
 > [!div class="nextstepaction"]

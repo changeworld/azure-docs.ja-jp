@@ -3,16 +3,16 @@ title: イベント ハブから Azure Data Explorer にデータを取り込む
 description: この記事では、Event Hub から Azure Data Explorer にデータを取り込む (読み込む) 方法について学習します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667436"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779955"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -33,7 +33,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
@@ -49,7 +49,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 1. イベント ハブを作成するサブスクリプションを選択し、*test-hub-rg* というリソース グループを作成します。
 
-    ![リソース グループの作成](media/ingest-data-event-hub/create-resource-group.png)
+    ![リソース グループを作成する](media/ingest-data-event-hub/create-resource-group.png)
 
 1. フォームに次の情報を入力します。
 
@@ -59,7 +59,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Subscription | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
+    | サブスクリプション | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | Resource group | *test-hub-rg* | 新しいリソース グループを作成します。 |
     | Location | *[米国西部]* | この記事では *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
     | 名前空間名 | 一意の名前空間名 | 名前空間を識別する一意の名前を選択します。 たとえば、*mytestnamespace* と指定します。 指定した名前にドメイン名 *servicebus.windows.net* が付加されます。 この名前には、文字、数字、ハイフンのみを含めることができます。 名前の先頭は英字、末尾は英字または数字にする必要があります。 値の長さは 6 から 50 文字にする必要があります。
@@ -109,7 +109,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![イベント ハブの接続](media/ingest-data-event-hub/event-hub-connection.png)
 
-    データ ソース:
+    **データ ソース:**
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
@@ -120,7 +120,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のものに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/tables#create-table)または[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)して、選択したプロパティを含めます。 |
     | | |
 
-    ターゲット テーブル:
+    **ターゲット テーブル:**
 
     挿入したデータをルーティングするには、"*静的*" と "*動的*" という 2 つのオプションがあります。 
     この記事では、静的ルーティングを使用し、テーブル名、データ形式、およびマッピングを指定します。 そのため、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** はオフのままにしておきます。
@@ -137,6 +137,8 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     > * データ接続の作成後にエンキューされたイベントのみが取り込まれたます。
     > * [Azure portal のサポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を開いて、静的ルーティングのための GZip 圧縮を有効にします。 [サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)で示しているように、動的ルーティングのための GZip 圧縮を有効にします。 
     > * Avro 形式とイベント システム プロパティは、圧縮ペイロードではサポートされていません。
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>接続文字列のコピー
 
@@ -198,7 +200,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     > * イベント ハブ インジェストには、10 秒または 1 MB のイベント ハブの応答時間が含まれます。 
     > * ストリーミングをサポートし、応答時間でのラグを削除するようにテーブルを構成します。 [ストリーミング ポリシー](/azure/kusto/concepts/streamingingestionpolicy)に関するページを参照してください。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このイベント ハブを今後使用する予定がない場合は、コストが発生しないように **test-hub-rg** をクリーンアップします。
 
@@ -212,6 +214,6 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

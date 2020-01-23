@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793308"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732251"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) に成果物を追加する
 
-[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどの成果物を追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。
+[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどの成果物を追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。 たとえば、ISE の作成後に使用可能になる ISE マネージド コネクタは、ロジック アプリ デザイナーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,17 +84,17 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
 
 ## <a name="add-ise-connectors"></a>ISE のコネクタを追加する
 
-自分の ISE で使用できる (ただし自分の ISE にはデプロイされない) Microsoft のマネージド コネクタを追加できます。
+ISE の作成後に使用可能になる Microsoft が管理するコネクタは、ロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動でこれらのコネクタを追加して ISE にデプロイし、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 1. ISE メニューの **[設定]** で、 **[マネージド コネクタ]** を選択します。 ツールバーの **[追加]** を選択します。
 
    ![マネージド コネクタを表示する](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. **[新しいマネージド コネクタの追加]** ウィンドウの **[コネクタの検索]** ボックスの一覧を開きます。 希望するコネクタが利用可能である場合、そのコネクタを選択し、 **[作成]** を選択します。
+1. **[新しいマネージド コネクタの追加]** ウィンドウの **[コネクタの検索]** ボックスの一覧を開きます。 使用したいが、まだ ISE にデプロイされていない ISE コネクタを選択します。 **作成** を選択します。
 
-   ボックスの一覧に表示されるのは、候補となるコネクタのうち、自分の ISE にはデプロイされないコネクタだけです。 自分の ISE に既にデプロイされているコネクタは選択不可の状態で表示されます。
+   ![ISE にデプロイする ISE コネクタを選択します](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![候補となるコネクタを選択する](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   選択できるのは、適格であっても、まだ ISE にデプロイされていない ISE コネクタだけです。 自分の ISE に既にデプロイされているコネクタは選択不可の状態で表示されます。
 
 <a name="create-custom-connectors-environment"></a>
 
@@ -120,6 +120,6 @@ ISE でカスタム コネクタを使用するには、ISE 内から直接こ�
 
 1. ISE でカスタム コネクタを管理するには、[統合サービス環境の管理](../logic-apps/ise-manage-integration-service-environment.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [統合サービス環境を管理する](../logic-apps/ise-manage-integration-service-environment.md)

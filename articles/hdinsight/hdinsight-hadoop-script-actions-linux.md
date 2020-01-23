@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687739"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931689"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -26,7 +26,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 | この方法を使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
 | --- |:---:|:---:|
-| Azure ポータル |✓ |✓ |
+| Azure portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure クラシック CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -161,13 +161,13 @@ HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述�
 > [!NOTE]  
 > Apache Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
-ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 例:
+ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 次に例を示します。
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 例:
+既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 次に例を示します。
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 次のヘルパーがスクリプトで使用できます。
 
-| ヘルパーの使用 | 説明 |
+| ヘルパーの使用 | [説明] |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
@@ -313,7 +313,7 @@ Azure Storage account または Azure Data Lake Storage にファイルを格納
 
 次のメソッドを使用して HDInsight クラスターをカスタマイズする場合、スクリプト アクションを使用できます。
 
-* Azure ポータル
+* Azure portal
 * Azure PowerShell
 * Azure Resource Manager のテンプレート
 * HDInsight .NET SDK
@@ -322,10 +322,7 @@ Azure Storage account または Azure Data Lake Storage にファイルを格納
 
 ## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
-Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 その他のスクリプト アクションの例については、次のリンクを参照してください。
-
-* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
+Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 スクリプト アクションの例については、[HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md)に関する記事を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

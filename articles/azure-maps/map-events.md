@@ -1,6 +1,6 @@
 ---
-title: Azure Maps でイベントを処理する | Microsoft Docs
-description: マップ イベントを使用して対話型 Web SDK マップを作成する方法
+title: マップ イベントを処理する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ イベントを含む対話型の Web SDK マップを作成する方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 99ef5aa0ee8fa542b0aa807cc536ebfbee369e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484282"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911075"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 
@@ -49,7 +49,7 @@ ms.locfileid: "74484282"
 
 次の表には、サポートされているマップ クラス イベントがすべてリストされています。
 
-| Event               | 説明 |
+| Event               | [説明] |
 |---------------------|-------------|
 | `boxzoomend`        | "ボックス ズーム" 操作が終了したときに発生します。|
 | `boxzoomstart`      | "ボックス ズーム" 操作が開始されたときに発生します。|
@@ -109,7 +109,7 @@ ms.locfileid: "74484282"
 | `zoomstart`         | ユーザーの操作またはメソッドの結果として、マップでズーム レベル間の遷移が開始される直前に発生します。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 完全なコードの例については、次の記事を参照してください。
 

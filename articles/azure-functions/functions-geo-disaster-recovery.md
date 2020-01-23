@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226967"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920790"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo ディザスター リカバリー
 
@@ -34,7 +34,7 @@ Azure Functions は特定のリージョンで実行されます。  可用性�
 
 ## <a name="activeactive-for-non-https-functions"></a>HTTPS 以外の関数でのアクティブ/アクティブ
 
-HTTPS 以外の関数でも、アクティブ/アクティブ デプロイを実現できます。  ただし、2 つのリージョンが相互に作用または調整し合う方法を検討する必要があります。  同じ関数アプリを 2 つのリージョンにデプロイし、それぞれが同じ Service Bus キューでトリガーする場合、それらはそのキューのデキューで競合するコンシューマーとして動作します。  これは、各メッセージがいずれかのインスタンスによってのみ処理されることを意味しますが、1 つの Service Bus に単一障害点があることも意味します。  2 つの Service Bus キューを (プライマリ リージョンに 1 つ、セカンダリ リージョンに 1 つ) デプロイし、2 つの関数アプリがそれらのリージョン キューを指している場合、2 つのリージョン間でどのようにキュー メッセージが分配されるのかが課題になります。  多くの場合、これは、各発行元がメッセージを "*両方*" のリージョンに発行しようとし、各メッセージが両方のアクティブ関数アプリによって処理されることを意味します。  これによってアクティブ/アクティブ パターンが作成されますが、計算の重複やデータをいつどのように統合するかに関する別の課題が生じます。  このような理由で、HTTPS 以外のトリガーではアクティブ/パッシブ パターンの使用をお勧めします。
+HTTPS 以外の関数でも、アクティブ/アクティブ デプロイを実現できます。  ただし、2 つのリージョンが相互に作用または調整し合う方法を検討する必要があります。  同じ関数アプリを 2 つのリージョンにデプロイし、それぞれが同じ Service Bus キューでトリガーする場合、それらはそのキューのデキューで競合するコンシューマーとして動作します。  これは、各メッセージがいずれかのインスタンスによってのみ処理されることを意味しますが、1 つのサービス バスに単一障害点があることも意味します。  2 つの Service Bus キューを (プライマリ リージョンに 1 つ、セカンダリ リージョンに 1 つ) デプロイし、2 つの関数アプリがそれらのリージョン キューを指している場合、2 つのリージョン間でどのようにキュー メッセージが分配されるのかが課題になります。  多くの場合、これは、各発行元がメッセージを "*両方*" のリージョンに発行しようとし、各メッセージが両方のアクティブ関数アプリによって処理されることを意味します。  これによってアクティブ/アクティブ パターンが作成されますが、計算の重複やデータをいつどのように統合するかに関する別の課題が生じます。  このような理由で、HTTPS 以外のトリガーではアクティブ/パッシブ パターンの使用をお勧めします。
 
 ## <a name="activepassive-for-non-https-functions"></a>HTTPS 以外の関数でのアクティブ/パッシブ
 
@@ -54,7 +54,7 @@ HTTPS 以外の関数でも、アクティブ/アクティブ デプロイを実
 
 [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) と[イベント ハブ](../event-hubs/event-hubs-geo-dr.md)によるフェールオーバーに関する情報と考慮事項の詳細を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Front Door の作成](../frontdoor/quickstart-create-front-door.md)
 * [Event Hubs のフェールオーバーの考慮事項](../event-hubs/event-hubs-geo-dr.md#considerations)

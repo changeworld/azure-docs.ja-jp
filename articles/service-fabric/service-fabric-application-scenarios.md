@@ -2,18 +2,20 @@
 title: アプリケーションのシナリオと設計
 description: Service Fabric のクラウド アプリケーションのカテゴリの概要 ステートフル サービスとステートレス サービスを使用したアプリケーションの設計について説明します。
 ms.topic: conceptual
-ms.date: 4/24/2019
-ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.custom: sfrev
+ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464912"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024740"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
-Azure Service Fabric はさまざまな種類のビジネス アプリケーションやサービスを作成し実行できる信頼性の高い柔軟なプラットフォームを提供します。 これらのアプリケーションとマイクロサービスはステートレスまたはステートフルが考えられますが、最大限に効率化するために仮想マシン間でリソース分散されます。 
 
-Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、アプリケーションを簡単にスケール アップまたはスケール ダウン (実際にはスケール インまたはスケール アウト) できます。
+Azure Service Fabric はさまざまな種類のビジネス アプリケーションやサービスを作成し実行できる信頼性の高い柔軟なプラットフォームを提供します。 これらのアプリケーションとマイクロサービスはステートレスまたはステートフルが考えられますが、最大限に効率化するために仮想マシン間でリソース分散されます。
+
+Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、アプリケーションを簡単にスケールインまたはスケールアウトできます。
 
 アプリケーションの構築での設計のガイダンスについては、「[Azure Service Fabric でのマイクロサービス アーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)」 および「[Service Fabric を使用したアプリケーションの設計に関するベスト プラクティス](service-fabric-best-practices-applications.md)」をご覧ください。
 
@@ -33,8 +35,8 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 
 * **データの計算**: Service Fabric では、集中型のデータ計算処理を行うステートフル アプリケーションを構築できます。 Service Fabric では、アプリケーションでの処理 (計算) とデータの併置を実現できます。 
 
-   通常、アプリケーションでデータにアクセスする必要があるときは、外部のデータ キャッシュまたはストレージ階層に関連するネットワーク待機時間により、計算時間が制限されます。 ステートフルな Service Fabric サービスでは、その待機時間をなくして、いっそう最適化された読み取りと書き込みを実現できます。 
-   
+   通常、アプリケーションでデータにアクセスする必要があるときは、外部のデータ キャッシュまたはストレージ階層に関連するネットワーク待機時間により、計算時間が制限されます。 ステートフルな Service Fabric サービスでは、その待機時間をなくして、いっそう最適化された読み取りと書き込みを実現できます。
+
    たとえば、顧客に対してリアルタイムに近い推奨選択を実行するアプリケーションがあり、そのラウンド トリップ時間の要件が 100 ミリ秒未満であるとします。 リモート ストレージから必要なデータを取得する必要がある標準的な実装モデルの場合と比較して、Service Fabric サービスの待機時間とパフォーマンスの特性は、ユーザーに応答性の高いエクスペリエンスを提供します。 推奨選択の計算がデータおよび規則と併置されているため、システムの応答性は高くなります。
 
     計算サービスを構築されているお客様としては、[Solidsoft Reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) や [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura) などがあります。
@@ -44,16 +46,18 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 * **スケーラブルなサービス**: クラスター間でスケールアウトの状態になれるよう個々のサービスをパーティション分割できます。 個々のサービスは、その場で作成したり削除したりすることもできます。 数個のノード上の数個のインスタンスから、多数のノード上の数千個のインスタンスまで、サービスをスケールアウトし、必要に応じて再びそれらをスケールインすることができます。 Service Fabric を使用することで、このようなサービスを構築し、その完全なライフサイクルを管理することができます。
 
 ## <a name="application-design-case-studies"></a>アプリケーション設計のケース スタディ
-アプリケーション設計における Service Fabric の使用方法を示すケース スタディが、[顧客事例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/)サイトと [Azure のマイクロサービス](https://azure.microsoft.com/solutions/microservice-applications/) サイトで公開されています。
+
+アプリケーション設計における Service Fabric の使用方法を示すケース スタディが、[顧客事例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)サイトと [Azure のマイクロサービス](https://azure.microsoft.com/solutions/microservice-applications/) サイトで公開されています。
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>ステートレスとステートフルなマイクロサービスから成るアプリケーションを設計する
-Azure Cloud Services worker ロールでのアプリケーションの構築は、ステートレス サービスの一例です。 対照的に、ステートフルなマイクロサービスは、要求とその応答を超える権限のある状態を維持します。 この機能では、レプリケーションによって裏付けられたトランザクションの保証を提供するシンプルな API により、状態の高可用性と一貫性が実現されます。 
+
+Azure Cloud Services worker ロールでのアプリケーションの構築は、ステートレス サービスの一例です。 対照的に、ステートフルなマイクロサービスは、要求とその応答を超える権限のある状態を維持します。 この機能では、レプリケーションによって裏付けられたトランザクションの保証を提供するシンプルな API により、状態の高可用性と一貫性が実現されます。
 
 Service Fabric のステートフル サービスは、データベースや他のデータ ストアだけでなく、すべての種類のアプリケーションに高可用性をもたらします。 これは自然な進展です。 アプリケーションは既に、高可用性のための純粋なリレーショナル データベースから NoSQL データベースに移っています。 アプリケーション自体を「ホット」な状態にして、データを中で管理し、信頼性、一貫性、可用性を犠牲にすることなく、パフォーマンスを上げることができるようになりました。
 
 マイクロサービスから成るアプリケーションを構築している場合、通常、ステートレスとステートフルなビジネス中間層サービスを呼び出すステートレスな Web アプリの組み合わせ (ASP.NET と Node.js など) があります。 アプリとサービスは、Service Fabric のデプロイ コマンドを使用して、すべて同じ Service Fabric クラスターにデプロイされます。 これらの各サービスは、スケール、信頼性、およびリソースの使用に関して独立しています。 この独立性により、開発およびライフサイクル管理での俊敏性と柔軟性が向上します。
 
-純粋にステートレスなアプリケーションの可用性と待機時間の要件に対応するために従来必要だった追加のキューとキャッシュは、ステートフル マイクロサービスでは不要になるため、アプリケーション設計が単純化されます。 ステートフル サービスは可用性が高く待機時間が短いため、アプリケーションで管理すべき詳細は少なくなります。 
+純粋にステートレスなアプリケーションの可用性と待機時間の要件に対応するために従来必要だった追加のキューとキャッシュは、ステートフル マイクロサービスでは不要になるため、アプリケーション設計が単純化されます。 ステートフル サービスは可用性が高く待機時間が短いため、アプリケーションで管理すべき詳細は少なくなります。
 
 次の図では、ステートレスとステートフルなアプリケーション設計の違いを示しています。 [Reliable Services](service-fabric-reliable-services-introduction.md) と [Reliable Actors](service-fabric-reliable-actors-introduction.md) のプログラミング モデルを利用することで、高スループットと低待機時間を実現しながら、ステートフル サービスによりアプリケーションの複雑さが軽減されます。
 
@@ -63,18 +67,16 @@ Service Fabric のステートフル サービスは、データベースや他�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [パターンとシナリオ](service-fabric-patterns-and-scenarios.md)の詳細について説明します。
-
 * Service Fabric の [Reliable Services](service-fabric-reliable-services-quick-start.md) プログラミング モデルと [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
 * [Azure でのマイクロサービスの構築](https://docs.microsoft.com/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
 * アプリケーションの設計のガイダンスについては、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)」をご覧ください。
 
-* 次のトピックもご覧ください。
+* 関連項目:
   * [マイクロサービスについて](service-fabric-overview-microservices.md)
   * [サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
-  * [Service Fabric サービスの可用性](service-fabric-availability-services.md)
-  * [Service Fabric サービスのスケーリング](service-fabric-concepts-scalability.md)
-  * [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+  * [サービスの可用性](service-fabric-availability-services.md)
+  * [サービスをスケーリングする](service-fabric-concepts-scalability.md)
+  * [サービスをパーティション分割する](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

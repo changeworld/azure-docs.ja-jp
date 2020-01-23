@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 2e5b8647bb65659b97dc8afe78bddfa45ea8c019
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 484596b4eb4908ca84d018267d605acc41a8ccea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474109"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749475"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>Table Storage のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -29,3 +29,4 @@ ms.locfileid: "75474109"
 - [Table Storage のパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)
 - [Standard Storage アカウントのスケーラビリティ ターゲット](../common/scalability-targets-standard-account.md)
 - [Azure Storage リソース プロバイダーのスケーラビリティ ターゲット](../common/scalability-targets-resource-provider.md)
+- [Azure サブスクリプションの制限とクォータ](../../azure-resource-manager/management/azure-subscription-service-limits.md)

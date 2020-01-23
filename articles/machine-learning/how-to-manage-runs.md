@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534295"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834722"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) と [Machine Learning CLI](reference-azure-machine-learning-cli.md) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning Studio](https://ml.azure.com) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
 
 この記事では、次のタスクの例を示します。
 
@@ -105,6 +105,16 @@ notebook_run.log(name="message", value="Hello from run!")
 
     詳しくは、「[az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio の使用
+
+デザイナー (プレビュー) でパイプラインの実行の送信を開始するには、以下の手順を使用します。
+
+1. パイプラインの既定のコンピューティング先を設定します。
+
+1. パイプライン キャンバス上部の **[実行]** を選択します。
+
+1. パイプラインの実行をグループ化する実験を選択します。
+
 ## <a name="monitor-the-status-of-a-run"></a>実行の状態を監視する
 
 ### <a name="using-the-sdk"></a>SDK を使用する
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     詳しくは、「[az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)」をご覧ください。
 
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio の使用
+
+Studio で実験のアクティブな実行の数を表示するには、次の手順に従います。
+
+1. **[実験]** セクションに移動します。 
+
+1. 実験を選択します。
+
+    実験ページでは、アクティブなコンピューティング先の数と各実行の期間を確認できます。 
+
+1. 特定の実行番号を選択します。
+
+1. **[ログ]** タブで、パイプラインの実行に関する診断ログとエラー ログを確認できます。
+
+
 ## <a name="cancel-or-fail-runs"></a>実行のキャンセルまたは失敗
 
 間違いに気付いた場合、または実行の完了に時間がかかりすぎる場合は、実行をキャンセルできます。
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 詳しくは、「[az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)」をご覧ください。
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio の使用
+
+Studio で実行をキャンセルするには、次の手順を使用します。
+
+1. **[実験]** または **[パイプライン]** セクションで、実行中のパイプラインに移動します。 
+
+1. キャンセルするパイプラインの実行番号を選択します。
+
+1. ツール バーで、 **[キャンセル]** を選択します
+
 
 ## <a name="create-child-runs"></a>子実行の作成
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コマンドの出力のクエリ](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)」を参照してください。
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio の使用
+
+1. **[パイプライン]** セクションに移動します。
+
+1. タグ、説明、実験名、および送信者名を使用してパイプラインをフィルター処理するには、検索バーを使用します。
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 

@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーからオンプレミスのデ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572851"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029883"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -25,13 +25,13 @@ ms.locfileid: "73572851"
 **最低限必要なもの**
 
 * .NET Framework 4.5
-* Windows 7/Windows Server 2008 R2 (以降) の 64 ビット版
+* Windows 8/Windows Server 2012 R2 (以降) の 64 ビット版
 
-**推奨されるもの:**
+**推奨:**
 
 * 8 コア CPU
 * 8 GB メモリ
-* Windows 2012 R2 (以降) の 64 ビット バージョン
+* Windows 8/Windows Server 2012 R2 (以降) の 64 ビット版
 
 **重要な考慮事項**
 
@@ -75,14 +75,14 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 1.  **[このコンピューターに新しいゲートウェイを登録します]** を選択します。
 
-    ![Register](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![[登録]](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. ゲートウェイの名前と回復キーを入力します。 既定では、ゲートウェイは、サブスクリプションの既定のリージョンを使用します。 別のリージョンを選択する必要がある場合は、 **[リージョンの変更]** を選択します。
 
     > [!IMPORTANT]
     > 回復キーを安全な場所に保存します。 ゲートウェイの引き継ぎ、移行、復元には回復キーが必要となります。 
 
-   ![Register](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![[登録]](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Azure ゲートウェイ リソースを作成する
@@ -129,7 +129,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 これで終了です。 ポートを開くか、トラブルシューティングを実行する必要がある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を必ず確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Analysis Services を管理する](analysis-services-manage.md)   
 * [Azure Analysis Services からデータを取得する](analysis-services-connect.md)   

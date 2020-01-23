@@ -1,22 +1,22 @@
 ---
 title: R、Python、T-SQL を使用した SQL Server での分析 - Team Data Science Process
-description: SQL Server で R、Python、T-SQL を使用して予測分析を行う例を紹介します。
+description: SQL Server 上で R、Python、T-SQL を使用して予測分析を行う例を示します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 342db6cc7c6c9f50345d7e72b7d68d5f116c87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589101"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864096"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>R、Python、T-SQL を使用した SQL Server データ サイエンスのチュートリアル
 
@@ -27,12 +27,12 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Python、SQL クエリ、SQL Server を使ってタクシーのチップを予測する 
 
-[SQL Server の使用](sql-walkthrough.md)に関するチュートリアルでは、SQL Server と公開されている NYC タクシー乗車および料金データセットを使用して、機械学習の分類および回帰モデルの構築とデプロイを行う方法を説明します。
+[SQL Server の使用](sql-walkthrough.md)に関するチュートリアルでは、機械学習の分類および回帰モデルの構築とデプロイを行う方法を説明します。  データは、一般公開されている NYC タクシーの乗車と料金のデータセットです。
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Microsoft R と SQL Server を使ってタクシーのチップを予測する 
 
-[SQL Server R Services を使用する](https://msdn.microsoft.com/library/mt612857.aspx)に関するチュートリアルでは、データ サイエンティスト向けに、R モデルを構築して SQL Server にデプロイするための、R コード、SQL Server データ、カスタム SQL 関数の組み合わせを提供します。 このチュートリアルの目的は、R 開発者に R Services (In-Database) を紹介することです。
+[SQL Server R Services の使用](https://msdn.microsoft.com/library/mt612857.aspx)に関するチュートリアルでは、R モデルを構築して SQL Server にデプロイする方法を説明します。 このチュートリアルの目的は、R 開発者に R Services (In-Database) を紹介することです。
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>SQL Server で T-SQL またはストアド プロシージャから R を使ってタクシーのチップを予測する
@@ -45,7 +45,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 [SQL Server Python Services で T-SQL を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers)に関するチュートリアルでは、SQL プログラマが SQL Server で機械学習ソリューションの構築を体験できます。 Python コードをストアド プロシージャに追加することによって、Python をアプリケーションに組み込む方法を示しています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

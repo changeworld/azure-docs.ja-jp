@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5ee07e5b0ac9c73a686a0f8c7d489ecc7ee96425
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422191"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750741"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -238,11 +238,9 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 
 ### <a name="using-the-java-key-store"></a>Java キー ストアの使用
 
-既定では、[App Service Linux にアップロードされた](../configure-ssl-certificate.md)パブリック証明書またはプライベート証明書は、コンテナーの起動時に Java キー ストアに読み込まれます。 これは、送信 TLS 接続を行うときに、アップロードされた証明書が接続コンテキストで使用可能になることを意味します。 証明書のアップロード後、証明書が Java キー ストアに読み込まれるようにするために、App Service を再起動する必要があります。
+既定では、[App Service Linux にアップロードされた](../configure-ssl-certificate.md)パブリック証明書またはプライベート証明書は、コンテナーの起動時にそれぞれの Java キー ストアに読み込まれます。 証明書のアップロード後、証明書が Java キー ストアに読み込まれるようにするために、App Service を再起動する必要があります。 パブリック証明書は `$JAVA_HOME/jre/lib/security/cacerts` のキー ストアに読み込まれ、プライベート証明書は `$JAVA_HOME/lib/security/client.jks` に格納されます。
 
-App Service への [SSH 接続を開き](app-service-linux-ssh-support.md)、コマンド `keytool` を実行することで、Java キー ツールと対話することやデバッグを行うことができます。 コマンドの一覧については、[キー ツールのドキュメント](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)を参照してください。 証明書は、Java の既定のキー ストア ファイルの場所である `$JAVA_HOME/jre/lib/security/cacerts` に格納されます。
-
-JDBC 接続を暗号化するために、追加の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
+Java キー ストアの証明書を使用して JDBC 接続を暗号化するために、追加の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
@@ -250,11 +248,27 @@ JDBC 接続を暗号化するために、追加の構成が必要になる場合
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>キー ストアを手動で初期化して読み込む
+#### <a name="initializing-the-java-key-store"></a>Java キー ストアを初期化する
 
-キー ストアの初期化と証明書の追加を手動で行うことができます。 アプリ設定 `SKIP_JAVA_KEYSTORE_LOAD` を作成し、値を `1` に設定して、証明書がキー ストアに自動的に読み込まれないように App Service を無効にします。 Azure portal 経由で App Service にアップロードされたすべてのパブリック証明書は `/var/ssl/certs/` に格納されます。 プライベート証明書は `/var/ssl/private/` に格納されます。
+`import java.security.KeyStore` オブジェクトを初期化するには、キー ストア ファイルをパスワードと共に読み込みます。 両方のキー ストアの既定のパスワードは "changeit" です。
 
-キー　ストア API の詳細については、[公式ドキュメント](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)を参照してください。
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
+
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>キー ストアを手動で読み込む
+
+キー ストアに証明書を手動で読み込むことができます。 アプリ設定 `SKIP_JAVA_KEYSTORE_LOAD` を作成し、値を `1` に設定して、証明書がキー ストアに自動的に読み込まれないように App Service を無効にします。 Azure portal 経由で App Service にアップロードされたすべてのパブリック証明書は `/var/ssl/certs/` に格納されます。 プライベート証明書は `/var/ssl/private/` に格納されます。
+
+App Service への [SSH 接続を開き](app-service-linux-ssh-support.md)、コマンド `keytool` を実行することで、Java キー ツールと対話することやデバッグを行うことができます。 コマンドの一覧については、[キー ツールのドキュメント](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)を参照してください。 キー　ストア API の詳細については、[公式ドキュメント](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)を参照してください。
 
 ## <a name="configure-apm-platforms"></a>APM プラットフォームを構成する
 
@@ -372,7 +386,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 xsl ファイルの例は次のとおりです。 この xsl ファイルの例では、新しいコネクタ ノードが Tomcat server.xml に追加されます。

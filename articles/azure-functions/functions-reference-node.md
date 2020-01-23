@@ -4,12 +4,12 @@ description: JavaScript を使用して関数を開発する方法について�
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: 506f71664616686a66227af7e55fe3f4046376f2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561917"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921993"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -371,9 +371,9 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 + **`context` オブジェクトの `req` プロパティと `res` プロパティから。** この方法で、完全な `context.bindings.name` パターンを使用する代わりに、従来のパターンを使用して context オブジェクトから HTTP データにアクセスできます。 次の例では、`context` の `req` オブジェクトと `res` オブジェクトにアクセスする方法を示します。
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -408,7 +408,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 
 ## <a name="scaling-and-concurrency"></a>スケーリングと同時性
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、[「従量課金プランと Premium プランのしくみ」](functions-scale.md#how-the-consumption-and-premium-plans-work) をご覧ください。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
 
 ほとんどの Node.js アプリケーションでは、このスケーリング動作で十分です。 CPUにバインドされたアプリケーションの場合、複数の言語ワーカープロセスを使用して、パフォーマンスをさらに向上させることができます。
 

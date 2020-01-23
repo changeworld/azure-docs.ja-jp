@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810348"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754046"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL Database インスタンス プール (プレビュー) の攻略ガイド
 
@@ -26,7 +26,7 @@ ms.locfileid: "73810348"
 
 次の表は、インスタンス プールに関連する使用可能な操作と、Azure portal と PowerShell でそれらを使用できるかどうかを示しています。
 
-|command|Azure ポータル|PowerShell|
+|command|Azure portal|PowerShell|
 |:---|:---|:---|
 |インスタンス プールを作成する|いいえ|はい|
 |インスタンス プールを更新する (プロパティ数に制限あり)|いいえ |はい |
@@ -41,7 +41,7 @@ ms.locfileid: "73810348"
 
 使用可能な [PowerShell コマンド](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|コマンドレット |説明 |
+|コマンドレット |[説明] |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Azure SQL Database インスタンス プールを作成します。 |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Azure SQL インスタンス プールに関する情報を返します。 |
@@ -92,11 +92,17 @@ Powershell を使用するには、[最新バージョンの PowerShell Core を
 
 - パブリック プレビューでは、General Purpose と Gen5 のみを使用できます。
 - プール名に使用できるのは、小文字、数字、ハイフンのみで、先頭をハイフンにすることはできません。
-- サブネット ID を取得するには、`Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork` を使用します。
 - AHB (Azure ハイブリッド特典) を使用する場合は、インスタンス プール レベルで適用されます。 プールの作成時にライセンスの種類を設定できます。また、作成後にいつでも更新することができます。
 
 > [!IMPORTANT]
 > インスタンス プールのデプロイは実行時間の長い操作であり、約 4.5 時間かかります。
+
+ネットワーク パラメーターを取得するには:
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 インスタンス プールを作成するには:
 
@@ -104,7 +110,7 @@ Powershell を使用するには、[最新バージョンの PowerShell Core を
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `
@@ -261,7 +267,7 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 複数のデータベースがある場合は、データベースごとにプロセスを繰り返します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
 - VNet の構成の詳細については、[マネージド インスタンス VNet の構成](sql-database-managed-instance-connectivity-architecture.md)に関するページを参照してください。

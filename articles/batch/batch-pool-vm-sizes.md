@@ -3,7 +3,7 @@ title: プールの VM サイズを選択する - Azure Batch | Microsoft Docs
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983751"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026613"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -43,8 +43,8 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | 基本の A シリーズ | Basic_A0 (A0) を*除く*すべてのサイズ | Any |
 | A シリーズ | Standard_A0 を*除く*すべてのサイズ | Any |
 | Av2 シリーズ | すべてのサイズ | Any |
-| B シリーズ | なし | 使用できません。 |
-| DC シリーズ | なし | 使用できません。 |
+| B シリーズ | なし | 使用不可 |
+| DC シリーズ | なし | 使用不可 |
 | Dv2、DSv2 シリーズ | すべてのサイズ | Any |
 | Dv3/DSv3 シリーズ | すべてのサイズ | Any |
 | Ev3、Esv3 シリーズ | すべてのサイズ | Any |
@@ -53,17 +53,17 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | HB シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | HC シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | Ls シリーズ | すべてのサイズ | Any |
-| Lsv2 シリーズ | なし | 使用できません。 |
+| Lsv2 シリーズ | なし | 使用不可 |
 | M シリーズ | Standard_M64ms (低優先度のみ)、Standard_M128s (低優先度のみ) | Any |
-| Mv2 シリーズ | なし | 使用できません。 |
+| Mv2 シリーズ | なし | 使用不可 |
 | NC シリーズ | すべてのサイズ | Any |
 | NCv2 シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | NCv3 シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | ND シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | NDv2 シリーズ | すべてのサイズ | ユーザー サブスクリプション モード |
 | NV シリーズ | すべてのサイズ | Any |
-| NVv3 シリーズ | なし | 使用できません。 |
-| SAP HANA | なし | 使用できません。 |
+| NVv3 シリーズ | なし | 使用不可 |
+| SAP HANA | なし | 使用不可 |
 
 <sup>1</sup> 一部の新しい VM シリーズは、最初は部分的にサポートされます。 これらの VM シリーズは、**プール割り当てモード**が**ユーザー サブスクリプション**に設定された Batch アカウントで割り当てることができます。 Batch アカウントの構成の詳細については、[Batch アカウントの管理](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)に関するセクションをご覧ください。 **ユーザー サブスクリプション**の Batch アカウントを対象とする、これらの部分的にサポートされた VM シリーズのクォータを要求する方法については、[クォータと制限](batch-quota-limit.md)に関する記事をご覧ください。  
 
@@ -71,7 +71,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 
-クラウド サービス構成のバッチ プールでは、次を "**除く**" すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
+クラウド サービス構成のバッチ プールでは、次を**除く**すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
 
 | VM シリーズ  | サポートされないサイズ |
 |------------|-------------------|
@@ -92,7 +92,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 * **プールの構成** - 一般的に、仮想マシン構成のプールを作成する際は、クラウド サービス構成と比較して VM サイズ オプションが増えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
 * コンピューティング集中型 VM のサイズを使用する方法について詳しくは、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」をご覧ください。

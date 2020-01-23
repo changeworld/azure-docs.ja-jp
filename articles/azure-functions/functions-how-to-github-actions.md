@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769151"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -46,7 +46,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="download-the-publishing-profile"></a>発行プロファイルのダウンロード
 
-functionapp の発行プロファイルをダウンロードするには、アプリの **[概要]** ページに移動し、 **[発行プロファイルの取得]** をクリックします。
+関数アプリの発行プロファイルをダウンロードするには、アプリの **[概要]** ページに移動し、 **[発行プロファイルの取得]** をクリックします。
 
    ![[発行プロファイルのダウンロード]](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -58,7 +58,10 @@ functionapp の発行プロファイルをダウンロードするには、ア�
 
    ![シークレットの追加](media/functions-how-to-github-actions/add-secret.png)
 
-1. **[Name]\(名前\)** には `AZURE_CREDENTIALS` を、 **[Value]\(値\)** にはコピーしたコマンド出力を使用し、 **[Add secret]\(シークレットの追加\)** を選択します。 発行プロファイルを使用している場合は、 **[Name]\(名前\)** には `SCM_CREDENTIALS`、 **[Value]\(値\)** にはファイルの内容を使用します。
+1. 新しいシークレットを追加します。
+
+   * Azure CLI を使用して作成したサービス プリンシパルを使用している場合は、 **[名前]** に `AZURE_CREDENTIALS` を使用します。 次に、コピーした JSON オブジェクト出力を **[値]** に貼り付け、 **[Add secret]\(シークレットの追加\)** を選択します。
+   * 発行プロファイルを使用している場合は、`SCM_CREDENTIALS`[名前]**に** を使用します。 次に、発行プロファイルのファイルの内容を **[値]** に使用し、 **[Add secret]\(シークレットの追加\)** を選択します。
 
 これで GitHub は、お使いの Azure の関数アプリに認証できるようになりました。
 

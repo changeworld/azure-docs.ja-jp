@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889424"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045123"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -47,10 +47,11 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 | OS                  | TLS ライブラリ                  | その他の要件                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL、WolfSSL、または BearSSL | Berkeley ソケット</br></br>ポータブル オペレーティング システム インターフェイス (POSIX)                       |
-| iOS 12.2            | OpenSSL またはネイティブ OSX        | OSX 10.13.4 でエミュレートされる XCode                                                               |
+| iOS 12.2            | OpenSSL                      | OSX 10.13.4 でエミュレートされる XCode                                                               |
 | Windows 10 ファミリ   | SChannel                     |                                                                                             |
 | Mbed OS 5.4         | Mbed TLS 2                   | [MXChip IoT 開発キット](https://microsoft.github.io/azure-iot-developer-kit/)                  |
 | Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | BearSSL                      | [ESP32 または ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -58,11 +59,11 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 
 | OS                  | コンパイラ                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
-| MacOS High Sierra   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
-| Windows 10 ファミリ   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
+| Linux               | Python 2.7.*、3.5 以降 |
+| MacOS High Sierra   | Python 2.7.*、3.5 以降 |
+| Windows 10 ファミリ   | Python 2.7.*、3.5 以降 |
 
-*非同期 API は Python バージョン 3.5.3 以降でのみサポートされます。3.7 以降を使用することをお勧めします。
+非同期 API は Python バージョン 3.5.3 以降でのみサポートされます。バージョン 3.7 以降を使用することをお勧めします。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -98,7 +99,7 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 
 Microsoft ではさまざまなパートナーと連携して、複数のマイクロプロセッサ アーキテクチャ向けの開発キットを提供しています。 これらのパートナーは、Azure IoT C SDK を自社のプラットフォームに移植しています。 パートナーは、SDK のプラットフォーム アブストラクション レイヤー (PAL) を作成および管理しています。 Microsoft では、これらのパートナーと連携して延長サポートを提供しています。
 
-| パートナー             | デバイス                            | Link                     | サポート |
+| Partner             | デバイス                            | Link                     | サポート |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT モデム     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [フォーラム](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
@@ -115,7 +116,7 @@ Microsoft では数多くのパートナーと連携して、Azure IoT のテス
 
 * Azure IoT の認定デバイスを確認するには、[Microsoft Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)を参照してください。
 
-* Microsoft の信頼できるパートナーの詳細、または Microsoft の信頼できるパートナーになる方法については、「[Microsoft Azure のモノのインターネットの信頼できる認定パートナー](https://azure.microsoft.com/marketplace/certified-iot-partners/)」を参照してください。
+* Azure Certified for IoT エコシステムの詳細については、「[Certified for IoT エコシステムに参加](https://catalog.azureiotsolutions.com/register)」を参照してください。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK を使用せずに IoT Hub に接続する
 
@@ -141,7 +142,7 @@ Azure IoT device SDK の使用中に問題が発生した場合は、いくつ�
 
 **機能の要望** – Azure IoT 機能の要望は、製品の[ユーザーの声のページ](https://feedback.azure.com/forums/321918-azure-iot)を介して追跡されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
 * [移植ガイダンス](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

@@ -1,20 +1,18 @@
 ---
-title: Azure Site Recovery エージェントに関する問題のトラブルシューティング | Microsoft Docs
-description: Azure Site Recovery エージェントのエラーの症状、原因、解決策に関する情報を提供します。
-author: asgang
+title: Azure Site Recovery を使用した ディザスター リカバリーのための Azure VM 拡張機能のトラブルシューティング
+description: Azure Site Recovery を使用したディザスター リカバリーのための Azure VM 拡張機能に関する問題をトラブルシューティングします。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280673"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970397"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM 拡張機能に関する問題のトラブルシューティング
 
 この記事では、VM エージェントと拡張機能に関連する Azure Site Recovery のエラーの解決に役立つ可能性のあるトラブルシューティング手順について説明します。
 
@@ -30,7 +28,7 @@ ms.locfileid: "61280673"
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[Site Recovery 拡張機能の更新または読み込みに失敗した](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-エラー メッセージ:「Previous site recovery extension operation is taking more time than expected. (前の Site Recovery 機能拡張の操作に想定以上に時間がかかっています。)」<br>
+エラー メッセージ:「前の Site Recovery 機能拡張の操作に想定以上に時間がかかっています。」<br>
 エラー コード:"150066"<br>
 
 **原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
@@ -107,8 +105,6 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 4. **[Site Recovery 拡張機能]** を選択します。
 5. **[アンインストール]** を選択します。
 
-Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してから、保護を実行します。 
+Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してから、保護を実行します。
 
 この手順を済ませておくと、保護中に拡張機能が再インストールされます。
-
-

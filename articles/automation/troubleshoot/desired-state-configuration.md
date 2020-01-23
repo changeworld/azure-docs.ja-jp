@@ -1,5 +1,5 @@
 ---
-title: Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする
+title: Azure Automation Desired State Configuration (DSC) をトラブルシューティングする
 description: この記事では、Desired State Configuration (DSC) のトラブルシューティングに関する情報を説明します。
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951464"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834271"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする
 
 この記事では、Desired State Configuration (DSC) の問題のトラブルシューティングに関する情報を説明します。
 
@@ -270,7 +270,7 @@ Automation アカウント以外の別のサブスクリプションにあるノ
 
 以下の手順に従って、ノードを登録します。
 
-* Windows - [オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)。
+* Windows - [オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
 * Linux - [オンプレミス、または Azure 以外のクラウド内の物理/仮想 Linux マシン](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
 
 ### <a name="agent-has-a-problem"></a>シナリオ:エラー メッセージ - "プロビジョニングに失敗しました"
@@ -327,7 +327,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 最善の回避策としては、ローカルで、または CI/CD パイプラインでコンパイルを行い、サービスに MOF ファイルを直接アップロードします。  サービス内でコンパイルを行うことが必須である場合、最善の回避策として次に推奨されるのは、名前が重複しないように、コンパイル ジョブを分割することです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195758"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945647"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -53,7 +53,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 このシナリオが正しく機能するために重要な要件が 3 つあります。
 
-- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは BGP ルート伝達を**無効**にする必要があります。
+- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは仮想ネットワーク ゲートウェイのルート伝達を**無効**にする必要があります。
 - ハブ ゲートウェイ サブネット上の UDR が、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すこと。
 
    Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
@@ -355,7 +355,7 @@ Set-AzVirtualNetwork
 
 #Now create the default route
 
-#Create a table, with BGP route propagation disabled
+#Create a table, with BGP route propagation disabled. The property is now called "Virtual network gateway route propagation," but the API still refers to the parameter as "DisableBgpRoutePropagation."
 $routeTableSpokeDG = New-AzRouteTable `
   -Name 'UDR-DG' `
   -ResourceGroupName $RG1 `
@@ -489,11 +489,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ここで、テストを再実行します。 このとき、すべてが失敗するはずです。 既存のリモート デスクトップをすべて閉じてから、変更したルールをテストします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**FW-Hybrid-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421873"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834279"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -59,7 +59,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 コンピューターが Update Management ソリューション、または Change Tracking および Inventory ソリューションに追加されると、それらはワークスペースの 2 つの保存された検索条件のいずれかに追加されます。 保存された検索条件は、これらのソリューションの対象となるコンピューターを含むクエリです。
 
-使用している Automation アカウントに移動し、 **[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
+Log Analytics ワークスペースに移動し、 **[全般]** の **[保存された検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
 |Name     |カテゴリ  |エイリアス  |
 |---------|---------|---------|

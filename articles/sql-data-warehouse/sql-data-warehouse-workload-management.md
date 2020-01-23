@@ -1,5 +1,5 @@
 ---
-title: ワークロード管理
+title: ワークロードの管理
 description: Azure SQL Data Warehouse でのワークロード管理の実装に関するガイダンス。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692347"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940592"
 ---
 # <a name="what-is-workload-management"></a>ワークロード管理とは
 
@@ -49,8 +49,9 @@ SQL Data Warehouse のワークロード管理は、次の 3 つの大まかな�
 ワークロードの分離では、ワークロード グループのリソースが予約されます。  ワークロード グループに予約されているリソースは、そのワークロード グループのみで実行されるように保証されます。  ワークロード グループでは、リソース クラスと同様に、要求ごとに割り当てられるリソースの量を定義することもできます。  ワークロード グループを使用すると、一連の要求で消費できるリソースの量を予約したり上限を設定したりできます。  最後に、ワークロード グループは、クエリ タイムアウトなどのルールを要求に適用するためのメカニズムです。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ワークロードの分類の詳細については、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。  
 - ワークロードの分離の詳細については、[ワークロードの分離](sql-data-warehouse-workload-isolation.md)に関するページを参照してください。  
 - ワークロードの重要度の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)に関するページを参照してください。  
+- ワークロード管理の監視の詳細については、[ワークロード管理ポータルの監視](sql-data-warehouse-workload-management-portal-monitor.md)に関するページをご覧ください。  

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 34cf1e91b1fe5aae516c77bf2c280dfe70000611
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561301"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894750"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
 
@@ -33,7 +33,7 @@ ms.locfileid: "74561301"
 また、Azure Time Series Insights 環境には、 **[ストレージ制限を超過したときの動作]** という設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 この設定には、次の 2 つの動作の選択肢があります。
 
 - **[Purge old data]\(古いデータを消去\)** (既定値)  
-- **イングレスを一時停止**
+- **[Pause ingress]\(イングレスを一時停止\)**
 
 > [!NOTE]
 > 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure portal で、必要に応じて、作成後にこの設定を切り替えることができます。Time Series Insights 環境の **[構成]** ページを利用してください。
@@ -44,7 +44,7 @@ ms.locfileid: "74561301"
 ## <a name="purge-old-data"></a>古いデータを消去
 
 - **[古いデータを消去]** は、Azure Time Series Insights 環境の既定の設定です。  
-- ユーザーが使用する Time Series Insights 環境に "*最も新しいデータ*" を常に表示する場合は、 **[古いデータを消去]** を選択します。
+- ユーザーが使用する Time Series Insights 環境に "*最も新しいデータ*" が常に表示されるようにする場合は、 **[古いデータを消去]** を選択します。
 - **[古いデータを消去]** 設定では、環境の上限に到達したとき (保有期間、サイズ、カウントのいずれかが上限に達した時点で)、データが "*消去*" されます。 リテンション期間は既定で 30 日間に設定されます。
 - 取り込まれた日が最も古いデータが先に消去されます ("先入れ先出し" 手法)。
 
@@ -94,7 +94,7 @@ Time Series Insights では、イベント ソースでプロパティが構成�
 
 環境を拡張して、容量を増やすか、リテンション期間を延ばす必要がある場合、「[Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - データ保有設定を構成または変更する方法については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
 

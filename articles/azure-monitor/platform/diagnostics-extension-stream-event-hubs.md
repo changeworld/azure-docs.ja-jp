@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b84f752467d630142f1920aac08bf5321b13acb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363729"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770171"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する
 Azure Diagnostics では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -21,8 +21,7 @@ Azure Diagnostics では柔軟な方法でクラウド サービスの仮想マ�
 
 * Windows イベント トレーシング (ETW) イベント
 * パフォーマンス カウンター
-* Windows イベント ログ
-* アプリケーション ログ
+* Windows イベント ログ (Windows イベント ログのアプリケーション ログを含む)
 * Azure Diagnostics インフラストラクチャ ログ
 
 この記事では、Event Hubs で Azure Diagnostics を構成する方法全体を説明します。 次の一般的なシナリオ向けのガイダンスも提供しています。

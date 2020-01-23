@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466766"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045045"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索エンリッチメント パイプラインにカスタム スキルを追加する方法
 
@@ -122,7 +122,7 @@ Web API は、入力レコードのバッチを受け取る準備ができてい
 
 ## <a name="consuming-custom-skills-from-skillset"></a>スキルセットのカスタム スキルの使用
 
-Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメーターを要求の一部として記述できます。 次のスニペットは、要求パラメーターと HTTP ヘッダーをスキルセット定義の一部として記述する方法を示しています。
+Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメーターを要求の一部として記述できます。 次のスニペットは、要求パラメーターと "*オプションの*" HTTP ヘッダーをスキルセット定義の一部として記述する方法を示しています。 HTTP ヘッダーは要件ではありませんが、これを使用すると、追加の構成機能をスキルに追加して、スキルセット定義から設定できます。
 
 ```json
 {
@@ -152,7 +152,7 @@ Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、カスタム スキルをスキルセットに統合するために必要なインターフェイス要件について説明しました。 カスタム スキルとスキルセットの構成の詳細については、次のリンクをクリックしてください。
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422853"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978903"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
 
@@ -28,7 +28,10 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 ![セキュリティ デフォルトを有効にするためのトグルがある Azure portal のスクリーンショット](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-テナントでは、次のセキュリティ構成が有効になります。 
+> [!TIP]
+> お使いのテナントが 2019 年 10 月 22 日以降に作成された場合は、新しい "既定のセキュリティ保護" 動作により、セキュリティの既定値群が既にテナントで有効になっている可能性があります。 すべてのユーザーを保護するために、セキュリティの既定値群は、新しく作成されたすべてのテナントにロールアウトされます。
+
+セキュリティの既定値群が使用可能になっている理由の詳細については、Alex Weinert の「[セキュリティの既定値群の導入](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)」というブログ記事をお読みください。
 
 ## <a name="unified-multi-factor-authentication-registration"></a>多要素認証の登録手続きの統一
 

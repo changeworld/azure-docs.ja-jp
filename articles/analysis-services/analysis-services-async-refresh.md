@@ -4,21 +4,21 @@ description: Azure Analysis Services REST API を使用し、モデル データ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573395"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029877"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
 
-データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabular Object Model)、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (Tabular Model Scripting Language) などの既存のメソッドを使用して呼び出していました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
+データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
 
 Azure Analysis Services 用の REST API なら、データ更新操作を非同期で実行できます。 REST API を使用すれば、クライアント アプリケーションからの実行時間の長い HTTP 接続は不要になります。 他にも、自動の再試行やバッチ処理されたコミットなどの信頼性を高める組み込み機能もあります。
 
@@ -30,7 +30,7 @@ Azure Analysis Services 用の REST API なら、データ更新操作を非同�
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-たとえば、米国西部の Azure リージョンにある myserver という名前のサーバーの、AdventureWorks という名前のモデルの場合、 サーバー名は次のようになります。
+たとえば、米国西部の Azure リージョンにある `myserver` という名前のサーバーの、AdventureWorks という名前のモデルの場合、 サーバー名は次のようになります。
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -93,11 +93,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-| Name             | Type  | 説明  |Default  |
+| Name             | 種類  | [説明]  |Default  |
 |------------------|-------|--------------|---------|
 | `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
 | `CommitMode`     | 列挙型  | オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
@@ -110,9 +110,20 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 > [!NOTE]
 > 書き込み時、バッチ サイズは MaxParallelism の値になりますが、この値は変わる可能性があります。
 
+### <a name="status-values"></a>状態の値
+
+|ステータス値  |[説明]  |
+|---------|---------|
+|`notStarted`    |   操作はまだ開始されていません。      |
+|`inProgress`     |   操作は実行中です。      |
+|`timedOut`     |    ユーザー指定のタイムアウトに基づいて、操作がタイムアウトしました。     |
+|`cancelled`     |   操作はユーザーまたはシステムによって取り消されました。      |
+|`failed`     |   操作に失敗しました。      |
+|`succeeded`      |   操作に成功しました。      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として **inProgress** が返されます。
+更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として `inProgress` が返されます。
 
 ```
 {
@@ -187,11 +198,11 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 - 0:レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
 - 1:リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
-- 2\.完了。 同期操作は正常に完了しました。
+- 2:完了。 同期操作は正常に完了しました。
 - 3:失敗。 同期操作は失敗しました。
 - 4:終了処理中。 同期操作は完了しましたが、クリーンアップ手順を実行中です。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 開始するための C# コードのサンプルは [GitHub の RestApiSample](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample) にあります。
 
@@ -211,7 +222,7 @@ Azure AS でサービス プリンシパルを設定し、必要なアクセス�
 3.  サンプルを実行します。
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [サンプル](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

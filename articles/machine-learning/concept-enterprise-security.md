@@ -9,19 +9,22 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/17/2019
-ms.openlocfilehash: 4b2f9e7f12b468f12fcfbe1b0af5c2918aa6c6ad
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: 9dad936e2e6cc7a9b0cdde78a9557a51d3074e71
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535519"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930874"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
 この記事では、Azure Machine Learning で利用できるセキュリティ機能について学習します。
 
 クラウド サービスを使用する場合は、アクセスを必要とするユーザーのみに制限することをお勧めします。 まず、サービスによって使用される認証および認可モデルについて理解します。 ネットワーク アクセスを制限したり、オンプレミス ネットワークのリソースをクラウドと安全に結合したりすることも必要になる場合があります。 保存時とサービス間の移動時の両方でデータを暗号化することも不可欠です。 最後に、サービスを監視し、すべてのアクティビティの監査ログを生成できることも必要です。
+
+> [!NOTE]
+> この記事の情報は、Azure Machine Learning Python SDK バージョン 1.0.83.1 以降に対応します。
 
 ## <a name="authentication"></a>認証
 
@@ -33,7 +36,8 @@ ms.locfileid: "75535519"
 
 [![Azure Machine Learning での認証](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
-自動化ワークフローのサービス プリンシパル認証を含む、認証の設定に関する詳細な例と手順については、 [認証の設定](how-to-setup-authentication.md)に関するハウツーを参照してください。
+詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md)」を参照してください。 この記事では、サービス プリンシパルや自動化ワークフローの使用など、認証に関する情報と例を提供します。
+
 
 ### <a name="authentication-for-web-service-deployment"></a>Web サービスのデプロイ用の認証
 
@@ -44,7 +48,7 @@ Azure Machine Learning では、Web サービスに関してキーとトーク�
 |Key|キーは静的であり、更新する必要はありません。 キーは手動で再生成できます。|既定で無効| 既定で有効|
 |トークン|トークンは、指定した期間が経過すると期限切れになり、更新する必要があります。| 使用不可| 既定で無効 |
 
-Azure Machine Learning での Web サービスへの認証に関するコード例については、「[Web サービス認証」セクション](how-to-setup-authentication.md#web-service-authentication) を参照してください。
+コード例については、[「Web サービス認証」のセクション](how-to-setup-authentication.md#web-service-authentication)を参照してください。
 
 ## <a name="authorization"></a>承認
 
@@ -93,7 +97,7 @@ Azure Machine Learning での Web サービスへの認証に関するコード�
 
 管理者が上記の表のリソースに対するマネージド ID のアクセスを取り消すことはお勧めできません。 キーの再同期操作を使用して、アクセスを復元できます。
 
-Azure Machine Learning では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` または `Microsoft-AzureML-Support-App-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部にあるワークスペースがあり、北ヨーロッパには別のワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning を有効にします。
+Azure Machine Learning では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` または `Microsoft-AzureML-Support-App-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部に 1 つのワークスペースがあり、北ヨーロッパに 1 つのワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning を有効にします。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -105,36 +109,93 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
+> [!IMPORTANT]
+> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 これにより Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。
+
+
 #### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
 Azure Machine Learning では、Azure Machine Learning ワークスペースとサブスクリプションに関連付けられている Azure BLOB ストレージ アカウントにスナップショット、出力、ログを格納します。 Azure BLOB ストレージに格納されるすべてのデータは、Microsoft によって管理されたキーを使用して保存時に暗号化されます。
 
-Azure BLOB ストレージに格納されるデータに独自のキーを使用する方法については、[Azure Key Vault でのカスタマー マネージド キーによる Azure Storage の暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)に関するページを参照してください。
+Azure BLOB ストレージに格納されるデータに独自のキーを使用する方法については、[Azure Key Vault でのカスタマー マネージド キーによる Azure Storage の暗号化](../storage/common/storage-encryption-keys-portal.md)に関するページを参照してください。
 
 通常はトレーニング データも、トレーニング コンピューティング先にアクセスできるように Azure BLOB ストレージに格納されます。 このストレージは、Azure Machine Learning によって管理されませんが、リモート ファイル システムとしてコンピューティング先にマウントされます。
 
-ご利用のワークスペースで使われる Azure ストレージ アカウントのアクセス キーの再生成については、[ストレージ アクセス キーの再生成](how-to-change-storage-access-key.md)に関するページを参照してください。
+アクセス キーを再生成する方法の詳細については、「[ストレージ アカウント アクセス キーの再生成](how-to-change-storage-access-key.md)」を参照してください。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning では、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられた Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
+Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 このインスタンスは、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられています。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
+
+独自の (カスタマーマネージド) キーを使用して Azure Cosmos DB インスタンスを暗号化する場合は、ワークスペースで使用する専用の Cosmos DB インスタンスを作成できます。 実行履歴情報などのデータを、Microsoft サブスクリプションでホストされているマルチテナント Cosmos DB インスタンスの外部に格納する場合は、この方法をお勧めします。 
+
+> [!NOTE]
+> この機能は、現時点では米国東部、米国西部 2、米国中南部でのみご利用いただけます。
+
+カスタマー マネージド キーを使用してサブスクリプションに Cosmos DB インスタンスをプロビジョニングできるようにするには、次の操作を実行します。
+
+* Cosmos DB 用にカスタマー マネージド キーの機能を有効にします。 この時点で、この機能を使用するためにアクセスを要求する必要があります。 これを行うには、[cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com) にお問い合わせください。
+
+* サブスクリプションに Azure Machine Learning と Azure Cosmos DB リソース プロバイダーを登録します (まだ登録していない場合)。
+
+* サブスクリプションに対する共同作成者のアクセス許可を使用して、Machine Learning アプリ (ID 管理とアクセス管理) を承認します。
+
+    ![ポータルの ID 管理とアクセス管理で 'Azure Machine Learning アプリ' を承認する](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
+
+* Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、CLI、REST API、および Resource Manager のテンプレートでは、両方のパラメーターが必須であり、サポートされています。
+
+    * `resource_cmk_uri`:このパラメーターは、[キーのバージョン情報](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)を含む、キー コンテナー内のカスタマー マネージド キーの完全なリソース URI です。 
+
+    * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
+    
+        > [!NOTE]
+        > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
+
+この Cosmos DB インスタンスは、サブスクリプション内の Microsoft が管理対象リソース グループに作成されます。 
+
+> [!IMPORTANT]
+> * この Cosmos DB インスタンスを削除する必要がある場合は、それを使用する Azure Machine Learning ワークスペースを削除する必要があります。 
+> * この Cosmos DB アカウントの既定の[__要求ユニット__](../cosmos-db/request-units.md)は __8000__ に設定されています。 この値の変更はサポートされていません。 
+
+カスタマー マネージド キーと Cosmos DB の詳細については、[Azure Cosmos DB アカウントのカスタマー マネージド キーの構成](../cosmos-db/how-to-setup-cmk.md)に関する記事を参照してください。
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
 
-レジストリ (Azure Container Registry) 内のすべてのコンテナー イメージは、保存時に暗号化されます。 Azure では、イメージは保存前に自動的に暗号化され、Azure Machine Learning がイメージをプルするときにその場で暗号解除されます。
+レジストリ (Azure Container Registry) 内のすべてのコンテナー イメージは、保存時に暗号化されます。 Azure では、イメージは保存前に自動的に暗号化され、Azure Machine Learning がイメージをプルするときに暗号解除されます。
+
+独自の (カスタマー マネージド) キーを使用して Azure Container Registry を暗号化するには、独自の ACR を作成し、ワークスペースのプロビジョニング中にアタッチするか、ワークスペースのプロビジョニング時に作成された既定のインスタンスを暗号化する必要があります。
+
+既存の Azure Container Registry を使用してワークスペースを作成する例については、次の記事を参照してください。
+
+* [Azure CLI を使用して Azure Machine Learning のワークスペースを作成する](how-to-manage-workspace-cli.md)。
+* [Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成する](how-to-create-workspace-template.md)
+
+#### <a name="azure-container-instance"></a>Azure Container Instances
+
+Azure Container Instance はディスク暗号化をサポートしていません。 ディスク暗号化が必要な場合は、代わりに [Azure Kubernetes Service インスタンスにデプロイする](how-to-deploy-azure-kubernetes-service.md)ことを お勧めします。 この場合は、ロールベースのアクセス制御のための Azure Machine Learning のサポートを使用して、サブスクリプション内の Azure Container Instance にデプロイされないようにすることもできます。
+
+#### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+デプロイされた Azure Kubernetes Service リソースは、カスタマー マネージド キーを使用していつでも暗号化できます。 詳細については、[https://aka.ms/aks/byok](https://aka.ms/aks/byok) を参照してください。 
+
+このプロセスでは、Kubernetes クラスター内のデプロイされた仮想マシンのデータと OS ディスクの両方を暗号化できます。
+
+> [!IMPORTANT]
+> このプロセスは、AKS K8s バージョン 1.16 以降でのみ機能します。 Azure Machine Learning は、2020 年 1 月 13 日に AKS 1.16 のサポートを追加しました。
 
 #### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
 Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。
 
-各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 ディスクは暗号化されません。
+各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースでは、ディスクは既定で暗号化されます。 この環境は、実行中だけ有効期間が短く、暗号化のサポートはシステム管理キーのみに制限されています。
+
 Azure での保存時の暗号化のしくみについて詳しくは、[保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)を参照してください。
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
 SSL を使用して、Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護し、スコアリング エンドポイントへの外部呼び出しをセキュリティで保護することができます。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
 
-詳細については、「[SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service)」を参照してください。
+詳細については、「[SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 
@@ -147,6 +208,22 @@ Azure Machine Learning では、ワークスペースに関連付けられた Az
 Azure HDInsight や VM などのコンピューティング先に対する SSH パスワードとキーは、Microsoft サブスクリプションに関連付けられている別のキー コンテナーに格納されます。 Azure Machine Learning には、ユーザーによって提供されるパスワードやキーは格納されません。 代わりに、VM と HDInsight に接続して実験を行うために、独自の SSH キーを生成、承認、および格納します。
 
 各ワークスペースには、ワークスペースと同じ名前を持つ、関連付けられたシステム割り当て済みマネージド ID があります。 このマネージド ID では、キー コンテナー内のすべてのキー、シークレット、および証明書にアクセスできます。
+
+## <a name="data-collection-and-handling"></a>データの収集と処理
+
+### <a name="microsoft-collected-data"></a>Microsoft が収集したデータ
+
+Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。
+
+また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。
+
+ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、CLI、REST API、または Azure Resource Manager のテンプレートを使用する場合にサポートされます。
+
+### <a name="microsoft-generated-data"></a>Microsoft が生成したデータ
+
+自動化された機械学習などのサービスを使用する場合、Microsoft では、複数のモデルをトレーニングするために、一時的な処理済みのデータを生成することがあります。 このデータはワークスペース内のデータストアに格納されます。これにより、アクセス制御と暗号化を適切に適用できます。
+
+また、[デプロイされているエンドポイントからログ記録された診断情報](how-to-enable-app-insights.md)を Azure Application Insights インスタンスに暗号化することもできます。
 
 ## <a name="monitoring"></a>監視
 
@@ -168,7 +245,15 @@ Azure Monitor メトリックを使用し、Azure Machine Learning ワークス�
 
 [![ワークスペースのアクティビティ ログを示すスクリーンショット](media/concept-enterprise-security/workspace-activity-log.png)](media/concept-enterprise-security/workspace-activity-log-expanded.png#lightbox)
 
-スコアリング要求の詳細は Application Insights に格納されます。 Application Insights は、ワークスペースの作成時にサブスクリプションに作成されます。 ログに記録される情報には、HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、および Duration などのフィールドが含まれます。
+スコアリング要求の詳細は Application Insights に格納されます。 Application Insights は、ワークスペースの作成時にサブスクリプションに作成されます。 ログに記録される情報には、次のようなフィールドがあります。
+
+* HTTPMethod
+* UserAgent
+* ComputeType
+* RequestUrl
+* StatusCode
+* RequestId
+* Duration
 
 > [!IMPORTANT]
 > Azure Machine Learning ワークスペース内の一部のアクションでは、情報はアクティビティ ログに記録されません。 たとえば、トレーニングの実行の開始やモデルの登録はログに記録されません。
@@ -181,8 +266,8 @@ Azure Monitor メトリックを使用し、Azure Machine Learning ワークス�
 
 次の図は、ワークスペース作成のワークフローを示したものです。
 
-* ユーザーは、サポートされている Azure Machine Learning クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
-* ユーザーは、ワークスペースを作成するために Azure Resource Manager を呼び出します。 
+* サポートされている Azure Machine Learning クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
+* ワークスペースを作成するために Azure Resource Manager を呼び出します。 
 * Azure Resource Manager では、Azure Machine Learning のリソース プロバイダーに連絡し、ワークスペースをプロビジョニングします。
 
 ワークスペースの作成中に、追加のリソースがユーザーのサブスクリプションに作成されます。

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 01/06/2020
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479639"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922497"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -43,7 +43,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 
 ## <a name="feature-descriptions"></a>機能の説明
 
-| コア&nbsp;検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 機能 |
+| コア&nbsp;検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | [機能] |
 |-------------------|----------|
 |自由形式のテキスト検索 | [**フルテキスト検索**](search-lucene-query-architecture.md)は、大部分の検索ベース アプリの主な用途です。 クエリは、サポートされている構文を使用して作成できます。 <br/><br/>[**単純なクエリ構文**](query-simple-syntax.md)では、論理演算子、語句検索演算子、後置演算子、優先順位演算子を使用できます。<br/><br/>[**Lucene クエリ構文**](query-lucene-syntax.md)には、あいまい検索、近接検索、用語ブースト、正規表現の拡張機能を含む、簡単な構文でのすべての操作が含まれています。|
 | 関連性 | [**シンプルなスコアリング**](index-add-scoring-profiles.md)は、Azure Cognitive Search の主な利点です。 スコアリング プロファイルを使用して、ドキュメント自体の値の関数として、関連性をモデル化できます。 たとえば、新しい製品や割り引き製品を検索結果の上位に表示することが望ましい場合があります。 あるいは、追跡記録し、個別に保存しておいた顧客の検索傾向に基づいてパーソナライズされたスコアリングのタグを利用し、スコアリング プロファイルを作成できます。 |
@@ -51,23 +51,24 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 | フィルターとファセット | 1 つのクエリ パラメーターで[**ファセット ナビゲーション**](search-faceted-navigation.md)を有効にできます。 Azure Cognitive Search は、ファセット ナビゲーション構造を返します。これをカテゴリ一覧の背後のコードとして使用すると、自律フィルター処理 (たとえば、価格帯やブランド別のカタログ品目のフィルター処理) を実現できます。 <br/><br/> [**フィルター**](query-odata-filter-orderby-syntax.md)を使用することで、ファセット ナビゲーションをアプリケーションの UI に組み込み、クエリ形成を拡張し、ユーザーまたは開発者が指定した条件に基づいてフィルター処理することができます。 フィルターを作成するには、OData 構文を使用します。 |
 | ユーザー エクスペリエンス機能 | 検索バーでの先行入力クエリで、[**オートコンプリート**](search-autocomplete-tutorial.md)を有効にすることができます。 <br/><br/>[**検索候補**](https://docs.microsoft.com/rest/api/searchservice/suggesters) も検索バーでの部分テキスト入力に使用できますが、結果はクエリ用語ではなくインデックス内の実際のドキュメントです。 <br/><br/>[**シノニム**](search-synonyms.md)は、ユーザーが代替用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 <br/><br/>[**ヒットの強調表示**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)は、検索結果内の一致するキーワードにテキスト書式を適用します。 強調表示されるスニペットを返すフィールドを選択できます。<br/><br/>[**並べ替え**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に 1 つの検索パラメーターで切り替えることができます。<br/><br/> [**ページング**](search-pagination-page-layout.md)とスロットルは、Azure Cognitive Search が検索結果に適用する微調整された制御によって簡単に行うことができます。  <br/><br/>|
 
-| AI&nbsp;エンリッチメント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 機能 |
+| AI&nbsp;エンリッチメント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | [機能] |
 |-------------------|----------|
-|AI エンリッチメントされたドキュメント | イメージおよびテキスト分析のための [**AI エンリッチメント**](cognitive-search-concept-intro.md)をインデックス作成パイプラインに適用して、生のコンテンツからテキスト情報を抽出できます。 [組み込みのスキル](cognitive-search-predefined-skills.md)の例には、光学式文字認識 (スキャン済みの JPEG を検索可能にする)、エンティティ認識 (組織、名前、または場所を識別する)、キー フレーズ認識などがあります。 [カスタム スキルをコーディング](cognitive-search-create-custom-skill-example.md)してパイプラインにアタッチすることもできます。 |
-| 分析と消費用のストアド エンリッチメント| [**ナレッジ ストア (プレビュー)** ](knowledge-store-concept-intro.md) は、AI ベースのインデックス作成の拡張機能です。 Azure ストレージをバックエンドとして使用して、インデックス作成時に作成されたエンリッチメントを保存できます。 これらの成果物を使用して、より優れたスキルを設計したり、不定形またはあいまいなデータからシェイプと構造体を作成したりできます。 特定のワークロードまたはユーザーをターゲットとするこれらの構造体のプロジェクションを作成できます。 抽出されたデータを直接分析したり、他のアプリに読み込むこともできます。<br/><br/> |
+|インデックス作成中の AI 処理 | イメージおよびテキスト分析のための [**AI エンリッチメント**](cognitive-search-concept-intro.md)をインデックス作成パイプラインに適用して、生のコンテンツからテキスト情報を抽出できます。 [組み込みのスキル](cognitive-search-predefined-skills.md)の例には、光学式文字認識 (スキャン済みの JPEG を検索可能にする)、エンティティ認識 (組織、名前、または場所を識別する)、キー フレーズ認識などがあります。 [カスタム スキルをコーディング](cognitive-search-create-custom-skill-example.md)してパイプラインにアタッチすることもできます。 |
+| 検索以外のシナリオでの分析と使用のためのエンリッチされたコンテンツの格納 | [**ナレッジ ストア (プレビュー)** ](knowledge-store-concept-intro.md) は、AI ベースのインデックス作成の拡張機能です。 Azure ストレージをバックエンドとして使用して、インデックス作成時に作成されたエンリッチメントを保存できます。 これらの成果物を使用して、より優れたスキルを設計したり、不定形またはあいまいなデータからシェイプと構造体を作成したりできます。 特定のワークロードまたはユーザーをターゲットとするこれらの構造体のプロジェクションを作成できます。 抽出されたデータを直接分析したり、他のアプリに読み込むこともできます。<br/><br/> |
+| キャッシュされたコンテンツ | [**インクリメンタル エンリッチメント (プレビュー)** ](cognitive-search-incremental-indexing-conceptual.md) では、パイプラインに対する特定の編集によって変更されたドキュメントのみに処理が制限され、パイプラインの変更されていない部分に対してはキャッシュされたコンテンツが使用されます。 |
 
-| データ&nbsp;インポート/インデックス作成 | 機能 |
+| データ&nbsp;インポート/インデックス作成 | [機能] |
 |----------------------------------|----------|
 | データ ソース | Azure Cognitive Search インデックスは、JSON データ構造として送信されていれば、すべてのソースからのデータを受け入れます。 <br/><br/> [**インデクサー**](search-indexer-overview.md)では、サポートされている Azure データ ソースのデータ インジェストが自動化され、JSON のシリアル化が処理されます。 [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md)、または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) に接続して、プライマリ データ ストア内の検索可能なコンテンツを抽出します。 Azure Blob インデクサーは、"*ドキュメント クラッキング*" を実行して、Microsoft Office、PDF、HTML ドキュメントなどの[主要なファイル形式からテキストを抽出](search-howto-indexing-azure-blob-storage.md)することができます。 |
 | 階層データ構造と入れ子になったデータ構造 | [**複合型**](search-howto-complex-data-types.md)とコレクションでは、事実上すべての種類の JSON 構造を Azure Cognitive Search インデックスとしてモデル化できます。 一対多と多対多のカーディナリティは、コレクション、複合型、および複合型のコレクションを通じてネイティブに表現できます。|
 | Linguistic Analysis | アナライザーは、インデックス作成および検索操作中のテキスト処理に使用するコンポーネントです。 次の 2 つの種類があります。 <br/><br/>[**カスタム字句アナライザー**](index-add-custom-analyzers.md)は、発音照合と正規表現を使用する複雑な検索クエリで使用されます。 <br/><br/>Lucene または Microsoft の[**言語アナライザー**](index-add-language-analyzers.md)は、動詞の時制や名詞の性、不規則な複数形の名詞 (例: 'mouse' と 'mice')、二重複合語、(スペースを使用しない言語の) 改行などをインテリジェントに処理するために使用されます。 <br/><br/>|
 
 
-| プラットフォーム&nbsp;レベル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 機能 |
+| プラットフォーム&nbsp;レベル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [機能] |
 |-------------------|----------|
 | プロトタイピングと検査のためのツール | ポータルでは、[**データのインポート ウィザード**](search-import-data-portal.md)を使用してインデクサーを構成したり、インデックス デザイナーを使用してインデックスを設定したりできます。また、[**Search エクスプローラー**](search-explorer.md)を使用してクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。 |
 | 監視と診断 | [**監視機能を有効にして**](search-monitor-usage.md)、ポータルに常に表示される、ひとめで確認できるメトリックの先に進みます。 1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。|
-| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、[**顧客管理の暗号化キー (プレビュー)** ](search-security-manage-encryption-keys.md) を使用して既定の暗号化を補完することができます。 Azure Key Vault 内で作成して管理するキーは、Azure Cognitive Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
+| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、既定の暗号化を[**顧客が管理する暗号化キー**](search-security-manage-encryption-keys.md)で補足できます。 Azure Key Vault 内で作成して管理するキーは、Azure Cognitive Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
 | インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、[Azure Cognitive Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Cognitive Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Cognitive Search の使用方法
@@ -84,14 +85,14 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 
 スキーマは Azure Portal で作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](/rest/api/searchservice/) を使用してプログラムによって作成できます。
 
-### <a name="step-3-load-data"></a>手順 3:データを読み込む
+### <a name="step-3-load-data"></a>手順 3:データの読み込み
 インデックスを定義したら、コンテンツをアップロードする準備が完了します。 プッシュ モデルまたはプル モデルを使用できます。
 
 プル モデルは、外部データ ソースからデータを取得します。 データへの接続、読み取り、シリアル化など、データ取り込みの諸側面を効率化および自動化する "*インデクサー*" を通じてサポートされます。 [インデクサー](/rest/api/searchservice/Indexer-operations)は、Azure Cosmos DB、Azure SQL Database、Azure Blob Storage、および Azure VM でホストされている SQL Server で使用できます。 インデクサーは、オンデマンドで、またはスケジュールされたデータ更新のために構成できます。
 
 プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。 JSON 形式を使用して、事実上すべてのデータセットからデータをプッシュできます。 データの読み込み方法については、「[ドキュメントの追加、更新、削除](/rest/api/searchservice/addupdate-or-delete-documents)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-### <a name="step-4-search"></a>手順 4:Search
+### <a name="step-4-search"></a>手順 4:検索
 インデックスを入力したら、[REST API](/rest/api/searchservice/Search-Documents) または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations) によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](search-query-overview.md)できます。
 
 [初めての検索アプリの作成](tutorial-csharp-create-first-app.md)を行うことで、ユーザー入力を収集して結果を処理する Web ページをビルドして拡張します。 [対話型 REST 向けの Postman](search-get-started-postman.md) 呼び出しや Azure portal の組み込みの[検索エクスプローラー](search-explorer.md)を使用して、既存のインデックスに対するクエリを実行することもできます。
@@ -126,7 +127,7 @@ Microsoft のお客様は、オンライン カタログ、基幹業務プログ
 
 多くのタスクを実行できるポータルに対し、Azure Cognitive Search は既存のアプリケーションに検索機能を統合したいと考えている開発者向けのものです。 次のプログラミング インターフェイスが用意されています。
 
-|プラットフォーム |説明 |
+|プラットフォーム |[説明] |
 |-----|------------|
 |[REST](/rest/api/searchservice/) | あらゆるプログラミング プラットフォームと言語 (Xamarin、Java、JavaScript など) でサポートされている HTTP コマンド|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 用の .NET ラッパーにより、C# と .NET Framework をターゲットとするその他のマネージ コード言語で効率的なコーディングを実現できます。 |

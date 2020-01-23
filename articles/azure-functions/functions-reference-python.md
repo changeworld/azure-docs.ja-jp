@@ -3,12 +3,12 @@ title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409082"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921790"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -100,8 +100,8 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 * *local.settings.json*:ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-run-local.md#local-settings-file)」に関するページを参照してください。
 * *requirements.txt*:Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
 * *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
-* *funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
-* *gitignore*:(省略可能) git リポジトリから除外されるファイル (local.settings.json など) を宣言します。
+* *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
+* *.gitignore*:(省略可能) git リポジトリから除外されるファイル (local.settings.json など) を宣言します。
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、 で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
+この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、AzureWebJobsStorage アプリ設定で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
 
 
 ## <a name="outputs"></a>出力
@@ -282,7 +282,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="scaling-and-concurrency"></a>スケーリングとコンカレンシー
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 Functions では、インスタンスを追加するタイミングを決定するために、メッセージの経過時間や QueueTrigger のキュー サイズなど、トリガーの種類に応じた組み込みの (ユーザーが構成できない) しきい値を使用します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
 
 多くのアプリケーションでは、このスケーリング動作で十分です。 ただし、次のいずれかの特性を持つアプリケーションは、効果的にスケーリングできない場合があります。
 
@@ -382,7 +382,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="python-version"></a>Python バージョン 
 
-現時点では、Azure Functions は Python 3.6.x と 3.7.x (公式の CPython ディストリビューション) の両方をサポートしています。 ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。 Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。  
+現時点では、Azure Functions は Python 3.6.x と 3.7.x (公式の CPython ディストリビューション) の両方をサポートしています。 ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。 Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。 バージョンの変更は、関数アプリの作成時にのみ許可されます。  
 
 ## <a name="package-management"></a>パッケージの管理
 
@@ -641,7 +641,7 @@ OPTIONS HTTP メソッドをサポートするように、function.json も更�
     ...
 ```
 
-このメソッドは、許可配信元一覧をネゴシエートするために Chrome ブラウザーによって使用されます。 
+この HTTP メソッドは、許可配信元一覧をネゴシエートするために Web ブラウザーによって使用されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

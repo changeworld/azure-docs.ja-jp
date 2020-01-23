@@ -4,7 +4,7 @@
   items:
     - name: Spatial Anchors について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Unity アプリの作成
@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: C++/WinRT の場合
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: デバイス上のセンサーを使用して近くのアンカーを検出する
+    - name: 粗い再局在化を使用して近くのアンカーを検出する
       items:
         - name: 'C#/Unity の場合'
           href: how-tos/set-up-coarse-reloc-unity.md
@@ -87,7 +87,7 @@
       href: concepts/logging-diagnostics.md
     - name: 粗い再局在化
       href: concepts/coarse-reloc.md
-- name: 参照
+- name: References
   items:
     - name: Unity 用 SDK
       href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
@@ -105,7 +105,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Azure Mixed Reality Resource Management REST API
       href: 'https://docs.microsoft.com/rest/api/mixedreality/'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: spatial-anchor-faq.md
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'

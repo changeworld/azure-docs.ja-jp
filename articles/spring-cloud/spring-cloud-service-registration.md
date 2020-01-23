@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 72327e116e498ce0f6881a5c585a08e56c8bf8c2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 1a45e744db36be651e770f7b5c7cc6df530f887d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038674"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772059"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud サービスを検出して登録する
 
@@ -20,24 +20,7 @@ ms.locfileid: "72038674"
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Spring Cloud Service Registry を使用してアプリケーションを登録する
 
 アプリケーションで Spring Cloud Service Registry を使用してサービスの登録と検出を管理できるようにするには、先に、アプリケーションの *pom.xml* ファイルに複数の依存関係を含める必要があります。
-
-最初に、*pom.xml* の *repository* セクションにスナップショット リポジトリを追加します
-
-```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-```
-
-## <a name="include-dependencies"></a>依存関係を含める
-
-次に、*spring-cloud-starter-netflix-eureka-client* および *spring-cloud-starter-azure-spring-cloud-client* に対する依存関係を *pom.xml* に含めます
+*spring-cloud-starter-netflix-eureka-client* および *spring-cloud-starter-azure-spring-cloud-client* に対する依存関係を *pom.xml* に含めます
 
 ```xml
     <dependency>
@@ -47,7 +30,7 @@ ms.locfileid: "72038674"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.0</version>
     </dependency>
 ```
 

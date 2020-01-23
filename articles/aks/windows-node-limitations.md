@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279150"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768573"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -66,6 +66,10 @@ Windows ノード プールの AKS クラスターでは、Azure CNI (高度) �
 > 更新された Windows Server イメージは、ノード プールをアップグレードする前にクラスターのアップグレード (コントロール プレーンのアップグレード) が実行された場合にのみ使用されます。
 >
 
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Windows ノード プールのサービス プリンシパルはどのようにローテーションするのですか?
+
+プレビュー期間中、Windows ノード プールでは、プレビューの制限としてサービス プリンシパルのローテーションはサポートされません。 サービス プリンシパルを更新するには、新しい Windows ノード プールを作成し、ポッドを古いプールから新しいプールに移行します。 この処理が完了したら、古いノード プールを削除します。
+
 ## <a name="how-many-node-pools-can-i-create"></a>ノード プールはいくつ作成できますか?
 
 AKS クラスターでは、最大で 8 つのノード プールを作成できます。 それらのノード プール全体で最大 400 個のノードを使用できます。 [ノード プールの制限][nodepool-limitations]に関するページを参照してください。
@@ -98,7 +102,7 @@ Azure Dev Spaces は現在、Linux ベースのノード プールに対して�
 
 AKS での Windows に必要なすべての機能を組み込む作業が行われていますが、ギャップに気付かれた場合は、オープンソースのアップストリーム [aks-engine][aks-engine] プロジェクトで、Azure で Kubernetes を実行する簡単で完全にカスタマイズ可能な方法が提供されており、Windows のサポートが含まれます。 [AKS のロードマップ][aks-roadmap]に関するページで今後の機能のロードマップを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS で Windows Server コンテナーの使用を開始するには、[AKS で Windows Server を実行するノード プールを作成][windows-node-cli]します。
 

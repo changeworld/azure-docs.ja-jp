@@ -11,19 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462270"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934487"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
+
+> [!NOTE]
+> 組織が、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>ユーザーまたはグループのロールの割り当てを一覧表示する
 
@@ -40,6 +43,22 @@ ms.locfileid: "75462270"
     ![ユーザーのロールの割り当て](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
+
+## <a name="list-owners-of-a-subscription"></a>サブスクリプションの所有者を一覧表示する
+
+サブスクリプションの[所有者](built-in-roles.md#owner)ロールが割り当てられているユーザーは、サブスクリプション内のすべてを管理できます。 サブスクリプションの所有者を一覧表示するには、次の手順に従います。
+
+1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]** の順にクリックします。
+
+1. 所有者を一覧表示するサブスクリプションをクリックします。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+1. **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
+
+1. **[所有者]** セクションまでスクロールして、このサブスクリプションの所有者ロールが割り当てられているすべてのユーザーを表示します。
+
+   ![サブスクリプションへのアクセスの制御 - [ロールの割り当て] タブ](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>あるスコープのロールの割り当てを一覧表示する
 

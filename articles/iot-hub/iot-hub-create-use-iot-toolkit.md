@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890566"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912239"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure IoT Tools を使用して IoT ハブを作成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "73890566"
 
 11. IoT ハブが作成されるまで数分待ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Visual Studio Code 用の Azure IoT Tools を使用して IoT ハブをデプロイしました。 次の記事に進んでください。
 
@@ -64,4 +64,4 @@ ms.locfileid: "73890566"
 
 * [Azure IoT Hub デバイスの管理に Visual Studio Code 用の Azure IoT Tools を使用する](iot-hub-device-management-iot-toolkit.md)
 
-* [Azure IoT Hub Toolkit の Wiki ページを参照する](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki)。
+* [VS Code 用 Azure IoT Hub の Wiki ページを参照する](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki)。

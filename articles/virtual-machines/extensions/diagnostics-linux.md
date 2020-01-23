@@ -2,19 +2,19 @@
 title: Azure Compute - Linux Diagnostic Extension
 description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
-author: abhijeetgaiha
+author: MicahMcKittrick-MSFT
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: gwallace
-ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: 8b69da027878edddb3b553c097865a86985357f5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359364"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970106"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -197,7 +197,7 @@ Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Event Hubs 用の SAS トークン生成の詳細については、[この Web ページ](../../event-hubs/event-hubs-authentication-and-security-model-overview.md)を参照してください。
+Event Hubs 用の SAS トークンでの情報の生成と取得の詳細については、[こちらの Web ページ](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)を参照してください。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob シンク
 
@@ -602,8 +602,8 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 ```json
 {
   "StorageAccount": "yourdiagstgacct",
-  "sampleRateInSeconds": 15,
   "ladCfg": {
+    "sampleRateInSeconds": 15,
     "diagnosticMonitorConfiguration": {
       "performanceCounters": {
         "sinks": "MyMetricEventHub,MyJsonMetricsBlob",

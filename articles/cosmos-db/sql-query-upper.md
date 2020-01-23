@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b0f025948803a23c5b3c8bb6415c0e111b946b2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349043"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728890"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  文字列式の小文字データを大文字に変換して返します。  
-  
+
+UPPER システム関数では、インデックスは使用されません。 大文字と小文字を区別しない比較を頻繁に行う場合、UPPER システム関数は、大量の RU を消費する可能性があります。 この場合は、UPPER システム関数を使用して比較のたびにデータを正規化するのではなく、挿入時に大文字と小文字を正規化することができます。 その後、SELECT * FROM c WHERE UPPER(c.name) = 'BOB' などのクエリは、単に SELECT * FROM c WHERE c.name = 'BOB' になります。
+
 ## <a name="syntax"></a>構文
   
 ```sql
@@ -46,7 +48,7 @@ SELECT UPPER("Abc") AS upper
 [{"upper": "ABC"}]  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

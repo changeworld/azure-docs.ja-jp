@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435168"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777786"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -41,28 +41,36 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 または、Azure Cloud Shell から次のスクリプトを実行することで、資格情報を生成することもできます。 次の手順に従います。
 
-1. [zip ファイル](https://aka.ms/farmbeatspartnerscript)をダウンロードし、ローカル ドライブに展開します。 この zip ファイルには 2 つのファイルが含まれています。
-2. https://portal.azure.com/ にサインインし、Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
+1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
+2. https://portal.azure.com/ にサインインし、[Azure Active Directory] -> [アプリの登録] に進みます。
+
+3. FarmBeats デプロイの一部として作成された アプリの登録］ をクリックします。 それは、FarmBeats Datahub と同じ名前になります。
+
+4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、azure cli (Cloud Shell) にアクセスして、次の手順を実行することができます。
+
+5. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
     ![Azure portal のツール バー](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
+6. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
 
     ![PowerShell ツール バーの設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. 手順 1 の 2 つのファイルを Cloud Shell インスタンスにアップロードします。
+7. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
 
     ![ツール バーの [アップロード] ボタン](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. ファイルがアップロードされたディレクトリに移動します 既定では、それらはホーム ディレクトリのユーザー名の下にアップロードされます。
-6. 次のスクリプトを実行します。
+8. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
+
+9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] -> [概要] ページから取得できるテナント ID を要求します。
 
     ```azurepowershell-interactive 
 
-    ./generateCredentials.ps1   
+    ./generatePartnerCredentials.ps1   
 
     ```
-7. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。 EventHub 接続文字列は、Swagger で API 応答の一部として確認できます。
+
+10. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 

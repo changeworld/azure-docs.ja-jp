@@ -10,18 +10,21 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442538"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967356"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
-Azure API Management サービス インスタンスを作成すると、Azure によって azure-api.net サブドメイン (例: `apim-service-name.azure-api.net`) に割り当てられます。 ただし、独自のカスタム ドメイン名 (**contoso.com** など) を使用する API Management エンドポイントを公開できます。 このチュートリアルでは、既存のカスタム DNS 名を、API Management インスタンスによって公開されるエンドポイントにマップする方法を説明します。
+Azure API Management サービス インスタンスを作成すると、Azure によって `azure-api.net` サブドメイン (例: `apim-service-name.azure-api.net`) に割り当てられます。 ただし、独自のカスタム ドメイン名 (**contoso.com** など) を使用する API Management エンドポイントを公開できます。 このチュートリアルでは、既存のカスタム DNS 名を、API Management インスタンスによって公開されるエンドポイントにマップする方法を説明します。
+
+> [!IMPORTANT]
+> API Management は、既定のドメイン名または構成されているいずれかのカスタム ドメイン名と一致する[ホスト ヘッダー](https://tools.ietf.org/html/rfc2616#section-14.23)値を持つ要求のみを受け入れます。
 
 > [!WARNING]
 > アプリケーションのセキュリティを許可するために証明書のピン留めを使用するお客様は、カスタム ドメイン名と、既定の証明書ではなく、お客様が管理する証明書を使用する必要があります。 代わりに、既定の証明書をピン留めするお客様は、制御しない証明書のプロパティでハードの依存関係を取得することになります。この方法はお勧めしません。

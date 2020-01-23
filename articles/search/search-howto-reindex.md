@@ -1,19 +1,19 @@
 ---
 title: 検索インデックスの再構築
 titleSuffix: Azure Cognitive Search
-description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Cognitive Search インデックスを更新します。
+description: 完全な再構築または部分的なインデックス作成で新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Cognitive Search インデックスを更新します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112971"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754399"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "74112971"
 
 ## <a name="rebuild-conditions"></a>再構築の条件
 
-| 条件 | 説明 |
+| 条件 | [説明] |
 |-----------|-------------|
 | フィールド定義を変更する | フィールドの名前、データ型、または特定の[インデックス属性](https://docs.microsoft.com/rest/api/searchservice/create-index) (検索可能、フィルター可能、ソート可能、ファセット可能) を変更すると、完全な再構築が必要です。 |
 | アナライザーをフィールドに割り当てる | [アナライザー](search-analyzers.md)はインデックスで定義されてからフィールドに割り当てられます。 新しいアナライザー定義はいつでもインデックスに追加できますが、アナライザーを "*割り当てる*" ことができるのはフィールドの作成時のみです。 これは **analyzer** と **indexAnalyzer** の両方のプロパティに当てはまります。 **searchAnalyzer** プロパティは例外です (このプロパティは既存のフィールドに割り当てることができます)。 |
@@ -93,7 +93,7 @@ Azure Cognitive Search では、フィールド単位でインデックスの作
 
 最初のドキュメントが読み込まれたらすぐに、インデックスのクエリを始めることができます。 ドキュメントの ID がわかっている場合、[Lookup Document REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) では特定のドキュメントが返されます。 さらに範囲の広いテストでは、インデックスが完全に読み込まれるまで待ってから、クエリを使用して表示されるはずのコンテキストを確認する必要があります。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [インデクサーの概要](search-indexer-overview.md)
 + [大規模なデータ セットに大規模にインデックスを付ける](search-howto-large-index.md)

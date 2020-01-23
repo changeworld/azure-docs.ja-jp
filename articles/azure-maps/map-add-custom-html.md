@@ -1,6 +1,6 @@
 ---
-title: Azure Maps に HTML マーカーを追加する | Microsoft Docs
-description: Azure Maps Web SDK に HTML マーカーを追加する方法。
+title: マップに HTML マーカーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに HTML マーカーを追加する方法を示します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976198"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911244"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
@@ -69,7 +69,7 @@ HTML マーカーの既定の `htmlContent` は、プレースホルダー `{col
 </iframe>
 
 > [!TIP]
-> Azure Maps Web SDK には、HTML マーカーと共に使用できるいくつかの SVG イメージ テンプレートが用意されています。 詳細については、「[イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)」のドキュメントを参照してください。
+> Azure Maps Web SDK には、HTML マーカーと共に使用できるいくつかの SVG イメージ テンプレートが用意されています。 詳細については、[画像テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)のドキュメントを参照してください。
 
 ## <a name="add-a-css-styled-html-marker"></a>CSS スタイルの HTML マーカーを追加する
 
@@ -98,7 +98,7 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 <iframe height='500' scrolling='no' title='マウス イベントを HTML マーカーに追加する' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Adding Mouse Events to HTML Markers</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
@@ -114,7 +114,7 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 マップに追加するコード例の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
+> [画像テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](./map-add-pin.md)

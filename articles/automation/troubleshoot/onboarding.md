@@ -1,5 +1,5 @@
 ---
-title: Update Management、Change Tracking、および Inventory のオンボード時のエラーをトラブルシューティングする
+title: Azure Automation 管理ソリューションのオンボード時にトラブルシューティングする
 description: Update Management、Change Tracking、および Inventory ソリューションのオンボード時のエラーをトラブルシューティングする方法について説明します。
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849311"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889332"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Update Management、Change Tracking、および Inventory のオンボード時のエラーをトラブルシューティングする
 
 Update Management または Change Tracking や Inventory などのソリューションをオンボードする際にエラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>原因
 
-このエラーは、Log Analytics ワークス ペース内に Automation アカウントに依存するアクティブなソリューションまだ存在し、Log Analtyics ワークスペースがリンクされている場合に発生します。
+このエラーは、Log Analytics ワークス ペース内に Automation アカウントに依存するアクティブなソリューションがまだ存在し、Log Analytics ワークスペースがリンクされている場合に発生します。
 
 ### <a name="resolution"></a>解決策
 
@@ -156,7 +156,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
   * Automation アカウントから、更新プログラムの展開 (スケジュール) を削除します。
 * 勤務時間外に VM を起動/停止する
   * **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。
-  * Start/Stop VMs during off-hours ソリューションを削除する追加の手順については、[Start/Stop VM during off-hours ソリューションの削除](../automation-solution-vm-management.md##remove-the-solution)に関する記事を参照してください。
+  * Start/Stop VMs during off-hours ソリューションを削除する追加の手順については、[Start/Stop VM during off-hours ソリューションの削除](../automation-solution-vm-management.md#remove-the-solution)に関する記事を参照してください。
 
 ## <a name="mma-extension-failures"></a>MMA 拡張機能のエラー
 
@@ -247,7 +247,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 VM の負荷が低いときに、MMA 拡張機能をインストールしてみてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

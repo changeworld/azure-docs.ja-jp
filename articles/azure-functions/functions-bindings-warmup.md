@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925181"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933333"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
@@ -30,11 +30,11 @@ ms.locfileid: "74925181"
 
 ## <a name="trigger"></a>トリガー
 
-ウォームアップ トリガーを使用すると、実行中のアプリに追加されたときにインスタンス上で実行される関数を定義できます。 ウォームアップ関数を使用すると、アプリでトラフィックの受信を開始される前に、接続を開く、依存関係を読み込むなどのカスタム ロジックを実行できます。 
+ウォームアップ トリガーを使用すると、実行中のアプリに追加されたときに新しいインスタンス上で実行される関数を定義できます。 ウォームアップ関数を使用すると、アプリでトラフィックの受信を開始される前に、接続を開く、依存関係を読み込むなどのカスタム ロジックを実行できます。 
 
 ウォームアップ トリガーは、アプリ内の他の関数で使用される共有依存関係を作成することを目的としています。 [共有依存関係の例についてはこちらを参照してください](./manage-connections.md#client-code-examples)。
 
-ウォームアップ トリガーはスケールアップ操作中にのみ呼び出され、再起動やその他の非スケール スタートアップ中には呼び出されない点に注意してください。 ロジックで、ウォームアップ トリガーを使用せずに、すべての必要な依存関係を読み込めることを確認する必要があります。 これを実現するには、遅延読み込みがお勧めのパターンです。
+ウォームアップ トリガーはスケールアウト操作中にのみ呼び出され、再起動やその他の非スケール スタートアップ中には呼び出されない点に注意してください。 ロジックで、ウォームアップ トリガーを使用せずに、すべての必要な依存関係を読み込めることを確認する必要があります。 これを実現するには、遅延読み込みがお勧めのパターンです。
 
 ## <a name="trigger---example"></a>トリガー - 例
 
@@ -243,7 +243,7 @@ public void run( ExecutionContext context) {
 
 次の表は、*function.json* ファイルと `WarmupTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 | **type** | 該当なし| 必須 - `warmupTrigger` に設定する必要があります。 |
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
@@ -260,6 +260,6 @@ public void run( ExecutionContext context) {
 * インスタンスが既に実行中の場合、ウォームアップ トリガーを呼び出すことはできません。
 * 関数アプリごとに使用できるウォームアップ トリガー関数は 1 つのみです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

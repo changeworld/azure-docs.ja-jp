@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f9c427045c9d42f6a11cc4bcc798cfc47a4428c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523101"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832578"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files のサービス レベル
 サービス レベルは容量プールの属性の 1 つです。 サービス レベルは、容量プール内のボリュームに割り当てられたクォータに基づいて許可された、ボリュームの最大スループットによって定義および区別されます。
@@ -54,8 +54,9 @@ Azure NetApp Files では、次の 3 つのサービス レベルがサポート
 
 上記の例 2 では、100 GiB のクォータが割り当てられている Premium ストレージ層の容量プールからのボリュームに、6.25 MiB/s (0.09765625 TiB * 64 MiB/s) のスループットの制限が割り当てられます。 このシナリオは、容量プールのサイズや実際のボリューム消費量に関係なく適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - さまざまなサービス レベルの価格については、[Azure NetApp Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)を参照してください
 - 容量プールでの容量消費の計算については、「[Cost model for Azure NetApp Files (Azure NetApp Files のコスト モデル)](azure-netapp-files-cost-model.md)」を参照してください 
 - [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+- 「[Azure NetApp File のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)」を参照してください

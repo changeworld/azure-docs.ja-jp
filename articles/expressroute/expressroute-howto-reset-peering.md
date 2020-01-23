@@ -5,14 +5,14 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: b14b8a9a2bc43c33095bf07e7fb7ebcc2d6c1ffa
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9f32eb439872de9e4687d046745c03bafd86b2fa
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769525"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941736"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute 回線のピアリングをリセットする
 
@@ -20,7 +20,7 @@ ms.locfileid: "74769525"
 
 ExpressRoute ピアリングをリセットすると役立つ可能性のあるシナリオがいくつかの存在します。
 * ディザスター リカバリーの設計と実装をテストします。 たとえば、2 つの ExpressRoute 回線があるとします。 1 つの回線のピアリングを無効にして、ネットワーク トラフィックをもう一方の回線に強制的にフェールオーバーするようにできます。
-* ExpressRoute 回線の Azure プライベート ピアリングで BFD (Bidirectional Forwarding Detection) を有効にします。 ExpressRoute 回線が 2018 年 8 月 1 日の後に作成されている場合、BFD は既定で有効になります。 回線がその前に作成された場合、BFD は有効になっていません。 ピアリングを無効にし、再度有効にすることによって、BFD を有効にすることができます。 BFD が Azure プライベート ピアリングでのみサポートされることに注意する必要があります。
+* ExpressRoute 回線の Azure プライベート ピアリングまたは Microsoft ピアリングで BFD (Bidirectional Forwarding Detection) を有効にします。 BFD は、Azure プライベート ピアリングでは ExpressRoute 回線が 2018 年 8 月 1 日以降に作成された場合、また Microsoft ピアリングでは ExpressRoute 回線が 2020 年 1 月 10 日以降に作成された場合、既定で有効です。 回線がその前に作成された場合、BFD は有効になっていません。 ピアリングを無効にし、再度有効にすることによって、BFD を有効にすることができます。 
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
@@ -141,7 +141,7 @@ ExpressRoute ピアリングをリセットすると役立つ可能性のある�
    ```
    ピアリングが、設定された状態になります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ExpressRoute の問題をトラブルシューティングするためにサポートが必要な場合は、次の記事をチェックしてください。
 * [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
 * [ネットワーク パフォーマンスのトラブルシューティング](expressroute-troubleshooting-network-performance.md)

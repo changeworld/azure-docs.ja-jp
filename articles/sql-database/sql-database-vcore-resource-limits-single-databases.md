@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647851"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834976"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 
@@ -322,9 +322,10 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |TempDB の最大データ サイズ (GB)|333|
 |ストレージの種類|リモート SSD|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|最大データ IOPS *|23,040|
+|最大データ IOPS *|12,800|
 |最大ログ速度 (Mbps)|30|
 |最大同時実行ワーカー (要求) 数|3600|
+|最大同時ログイン数|3600|
 |最大同時セッション数|30,000|
 |レプリカの数|1|
 |マルチ AZ|該当なし|
@@ -448,21 +449,22 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 
 ### <a name="m-series-compute-generation-preview"></a>M シリーズのコンピューティング世代 (プレビュー)
 
-|コンピューティング サイズ|GP_M_128|
+|コンピューティング サイズ|BC_M_128|
 |:--- | --: |
 |コンピューティング世代|M シリーズ|
 |仮想コア|128|
-|メモリ (GB)|3767|
+|メモリ (GB)|3767.1|
 |列ストアをサポート|はい|
-|インメモリ OLTP ストレージ (GB)|481|
+|インメモリ OLTP ストレージ (GB)|1768|
 |データの最大サイズ (GB)|4096|
 |最大ログ サイズ (GB)|2048|
 |TempDB の最大データ サイズ (GB)|4096|
 |ストレージの種類|ローカル SSD|
 |IO 待機時間 (概算)|1 ～ 2 ミリ秒 (書き込み)<br>1 ～ 2 ミリ秒 (読み取り)|
-|最大データ IOPS *|204,800|
-|最大ログ速度 (Mbps)|192|
-|最大同時実行ワーカー (要求) 数|12800|
+|最大データ IOPS *|160,000|
+|最大ログ速度 (Mbps)|264|
+|最大同時実行ワーカー (要求) 数|12,800|
+|最大同時ログイン数|12,800|
 |最大同時セッション数|30000|
 |レプリカの数|4|
 |マルチ AZ|はい|

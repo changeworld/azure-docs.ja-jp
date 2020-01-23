@@ -1,22 +1,20 @@
 ---
 title: Azure Site Recovery を使用した Azure VM のディザスター リカバリーについてよく寄せられる質問
-description: この記事では、Azure Site Recovery を使用した Azure VM の別の Azure リージョンへのディザスター リカバリーについてよく寄せられる質問に回答します。
-author: asgang
+description: この記事では、Azure Site Recovery を使用した Azure VM のディザスター リカバリーについてよく寄せられる質問に回答します。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621068"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973820"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
-この記事では、[Site Recovery](site-recovery-overview.md) を使用して Azure VM を別の Azure リージョンにディザスター リカバリーする場合についてよく寄せられる質問に回答します。 
+この記事では、[Site Recovery](site-recovery-overview.md) を使用して Azure VM を別の Azure リージョンにディザスター リカバリーする場合についてよく寄せられる質問に回答します。
 
 
 ## <a name="general"></a>全般
@@ -25,10 +23,10 @@ ms.locfileid: "73621068"
 詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)」をご覧ください。
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery の Free レベルの課金はどのように行われますか?
 Azure Site Recovery で保護されるすべてのインスタンスは、保護を開始してから 31 日間は無料になります。 32 日目以降は、インスタンスの保護に対して上記の料金が課金されます。
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、他の Azure 料金は発生しますか?
-はい。Azure Site Recovery は保護されたインスタンスに対して最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、データ転送について課金が発生する場合があります。 仮想マシンの復旧も、Azure の通常の課金の対象になる場合があります。 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery)からご確認ください
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、その他の Azure 料金は発生しますか?
+はい。Azure Site Recovery は保護されたインスタンスに対して最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、データ転送について課金が発生する場合があります。 また、復旧された仮想マシンも、Azure のコンピューティングの料金が発生する場合があります。 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery)からご確認ください
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーに関するベスト プラクティスはどこで確認できますか? 
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーに関するベスト プラクティスはどこで確認できますか?
 1. [Azure から Azure へのアーキテクチャを理解する](azure-to-azure-architecture.md)
 2. [サポートされている構成とサポートされていない構成を確認する](azure-to-azure-support-matrix.md)
 3. [Azure VM のディザスター リカバリーを設定する](azure-to-azure-how-to-enable-replication.md)
@@ -45,7 +43,7 @@ Site Recovery チームは Azure 容量管理チームと連携し、十分な�
 はい。Site Recovery では、Azure Disk Encryption (ADE) が有効になっている VM のディザスター リカバリーがサポートされています。 レプリケーションを有効にすると、必要なすべての暗号化キーとシークレットがユーザー コンテキストでソース リージョンからターゲット リージョンにコピーされます。 適切なアクセス許可がない場合は、すぐに使用できるスクリプトをセキュリティ管理者に渡して、キーとシークレットをコピーできます。
 
 - Site Recovery では、Windows を実行している Azure VM で ADE がサポートされています。
-- Site Recovery は、Azure Active Directory (AAD) を使用したスキーマを含む ADE バージョン 0.1 と AAD を使用しないバージョン 1.1 がサポートされています。 [詳細情報](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- Site Recovery では、Azure Active Directory (AAD) を使用したスキーマを含む ADE バージョン 0.1 と AAD を使用しないバージョン 1.1 がサポートされています。 [詳細については、こちらを参照してください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
 - ADE バージョン 1.1 では、Windows VM でマネージド ディスクを使用する必要があります。
 - 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 
@@ -97,7 +95,7 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 * 復旧ポイントの保持履歴は 24 時間。
 * アプリ整合性スナップショットの頻度は 60 分。
 
-[詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
+[詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>クラッシュ整合性復旧ポイントとは何ですか?
 クラッシュ整合性復旧ポイントは、VM がクラッシュしたか、スナップショットの作成時に電源コードがサーバーから引き抜かれたときの、ディスク上のデータを表します。 これには、スナップショットの作成時にメモリ内にあったものは一切含まれません。
@@ -163,7 +161,7 @@ Site Recovery の [マルチ VM 整合性] オプションを選択した場合�
 CPU を多く消費するので、マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 これは、複数のマシンが同じワークロードを実行していて、複数のマシン間に整合性を持たせる必要がある場合にのみ使用してください。 たとえば、2 個の SQL Server インスタンスと 2 個の Web サーバーがアプリケーション内にある場合、SQL Server インスタンスに対してのみマルチ VM 整合性を有効にする必要があります。
 
 
-## <a name="failover"></a>フェールオーバー
+## <a name="failover"></a>[フェールオーバー]
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように保証されますか?
 Site Recovery チームは Azure 容量管理チームと連携し、十分なインフラストラクチャ容量を計画し、フェールオーバーが開始されたときにディザスター リカバリーに対応した VM がターゲット リージョンに確実にデプロイされるように支援しています。
@@ -225,12 +223,12 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 ![Site Recovery ジョブの一覧](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)
 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>復旧計画に Automation Runbook を追加できますか?
-はい、Azure Automation Runbooks を復旧計画に組み込むことができます。 [詳細情報](site-recovery-runbook-automation.md)。
+はい、Azure Automation Runbooks を復旧計画に組み込むことができます。 [詳細については、こちらを参照してください](site-recovery-runbook-automation.md)。
 
 ## <a name="reprotection-and-failback"></a>再保護とフェールバック
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>プライマリ リージョンからディザスター リカバリー リージョンへのフェールオーバーの後、DR リージョン内の VM は自動的に保護されますか?
-No. あるリージョンから別のリージョンに Azure VM を[フェールオーバー](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)すると、その VM は DR リージョン内で保護されていない状態で起動されます。 プライマリ リージョンに VM をフェールバックするには、セカンダリ リージョン内の VM を[再保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)する必要があります。
+いいえ。 あるリージョンから別のリージョンに Azure VM を[フェールオーバー](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)すると、その VM は DR リージョン内で保護されていない状態で起動されます。 プライマリ リージョンに VM をフェールバックするには、セカンダリ リージョン内の VM を[再保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)する必要があります。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>再保護時に、Site Recovery ではセカンダリ リージョンからプライマリ リージョンに完全なデータがレプリケートされますか?
 状況によって異なります。 たとえば、ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを比較することで差分が計算された後、データが転送されます。 通常、このプロセスには数時間かかります。 再保護中に行われることについて詳しくは、「[プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)」をご覧ください。
@@ -247,7 +245,7 @@ Site Recovery チームは Azure 容量管理チームと連携し、十分な�
 はい、ディザスター リカバリー リージョンで[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を購入することができ、それらは Site Recovery のフェールオーバー操作で使用されます。 </br> 追加の構成は必要ありません。
 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ、Site Recovery はレプリケートされたデータを傍受しません。また、VM 上の実行内容に関するどのような情報も保持しません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
@@ -256,7 +254,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
 はい、転送中の暗号化と [Azure に保存中の暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * サポート要件を[確認する](azure-to-azure-support-matrix.md)。
 * Azure から Azure へのレプリケーションを[設定する](azure-to-azure-tutorial-enable-replication.md)。
 - この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。

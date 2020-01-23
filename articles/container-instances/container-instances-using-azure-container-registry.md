@@ -3,15 +3,15 @@ title: Azure Container Registry からコンテナー イメージをデプロ�
 description: Azure コンテナー レジストリのコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法を紹介します。
 services: container-instances
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533290"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981687"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -25,7 +25,9 @@ ms.locfileid: "74533290"
 
 ## <a name="configure-registry-authentication"></a>レジストリの認証を構成する
 
-本番環境シナリオでは、Azure コンテナー レジストリへのアクセス権を[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して提供する必要があります。 サービス プリンシパルを使用すると、コンテナー イメージに[ロールベースのアクセス制御](../container-registry/container-registry-roles.md)を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+"ヘッドレス" サービスとアプリケーションへのアクセスを提供する運用シナリオでは、[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリ アクセスを構成することをお勧めします。 サービス プリンシパルを使用すると、コンテナー イメージに[ロールベースのアクセス制御](../container-registry/container-registry-roles.md)を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+
+Azure Container Registry は、追加の[認証オプション](../container-registry/container-registry-authentication.md)を提供します。
 
 次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。 
 
@@ -33,7 +35,9 @@ ms.locfileid: "74533290"
 
 [Azure キー コンテナー](../key-vault/key-vault-overview.md)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
 
-`RES_GROUP` 変数をキー コンテナーが作成される既存のリソース グループの名前で、また `ACR_NAME` をコンテナー レジストリの名前で更新します。 `AKV_NAME` で新しいキー コンテナーの名前を指定します。 コンテナー名は、3 ～ 24 文字の英数字で、Azure 内で一意である必要があります。名前の先頭には英字、末尾には英字または数字を使用する必要があります。また、ハイフンを連続させることはできません。
+`RES_GROUP` 変数をキー コンテナーが作成される既存のリソース グループの名前で、また `ACR_NAME` をコンテナー レジストリの名前で更新します。 簡潔にするために、この記事のコマンドでは、レジストリ、キー コンテナー、コンテナー インスタンスがすべて同じリソース グループ内に作成されることを前提としています。
+
+ `AKV_NAME` で新しいキー コンテナーの名前を指定します。 コンテナー名は、3 ～ 24 文字の英数字で、Azure 内で一意である必要があります。名前の先頭には英字、末尾には英字または数字を使用する必要があります。また、ハイフンを連続させることはできません。
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -45,12 +49,12 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>サービス プリンシパルを作成し、資格情報を格納する
 
-今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
+今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納します。
 
 次のコマンドでは、[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用してコンテナーにサービス プリンシパルの**パスワード**を格納します。
 
 ```azurecli
-# Create service principal, store its password in AKV (the registry *password*)
+# Create service principal, store its password in vault (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
   --name $ACR_NAME-pull-pwd \
@@ -67,14 +71,14 @@ az keyvault secret set \
 次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure コンテナー レジストリに渡す**ユーザー名**です。
 
 ```azurecli
-# Store service principal ID in AKV (the registry *username*)
+# Store service principal ID in vault (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Azure キー コンテナーを作成してに 2 つのシークレットを格納します。
+Azure キー コンテナーを作成し、そこに 2 つのシークレットを格納します。
 
 * `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの**ユーザー名**として使用します。
 * `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
@@ -116,9 +120,10 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したデプロイ
 
-`imageRegistryCredentials` プロパティをコンテナー グループに含めることで、Azure Resource Manager テンプレート内に Azure Container Registry のプロパティを指定できます。
+`imageRegistryCredentials` プロパティをコンテナー グループに含めることで、Azure Resource Manager テンプレート内に Azure Container Registry のプロパティを指定できます。 たとえば、レジストリの資格情報を直接指定できます。
 
 ```JSON
+[...]
 "imageRegistryCredentials": [
   {
     "server": "imageRegistryLoginServer",
@@ -126,9 +131,12 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
     "password": "imageRegistryPassword"
   }
 ]
+[...]
 ```
 
-Resource Manager テンプレートでの Azure キー コンテナーシークレットの参照については、「[デプロイ時に Azure キー コンテナーを使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)」を参照してください。
+コンテナー グループ設定の詳細については、[Resource Manager テンプレート リファレンス](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)を参照してください。    
+
+Resource Manager テンプレートでの Azure キー コンテナーシークレットの参照については、「[デプロイ時に Azure キー コンテナーを使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)」を参照してください。
 
 ## <a name="deploy-with-azure-portal"></a>Azure Portal でのデプロイ
 
@@ -150,7 +158,7 @@ Azure Container Registry にコンテナー イメージを保持している場
 
     ![Azure Container Instances のコンテナー グループの詳細ビュー][aci-detailsview]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure コンテナー レジストリの認証について詳しくは、「[Azure コンテナー レジストリによる認証](../container-registry/container-registry-authentication.md)」をご覧ください。
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815403"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972622"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -40,6 +40,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
 - Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます。
 - Video Indexer では、1 つのファイルの最大時間制限は 4 時間です。
+- 1 分あたり最大 60 本の映画をアップロードできます。
 
 > [!Tip]
 > .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
@@ -61,15 +62,15 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |名前|説明|
+        |Name|[説明]|
         |---|---|
         |id|ビデオ ID|
-        |state|ビデオの状態|  
+        |状態|ビデオの状態|  
     - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - ビデオで特定された人物:
-  - properties
+  - Properties
     
-      |名前|説明|
+      |Name|[説明]|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
@@ -116,7 +117,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 `videoUrl` が指定されていない場合、ファイルを multipart/form 本文のコンテンツとして渡すことが Video Indexer で想定されます。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 次の C# コード スニペットは、すべての Video Indexer API の使用方法を示しています。
 
@@ -311,11 +312,11 @@ public class AccountContractSlim
 
 アップロード操作によって返される場合がある状態コードを次の表に示します。
 
-|status code|ErrorType (応答本体内)|説明|
+|status code|ErrorType (応答本体内)|[説明]|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
+|409|VIDEO_INDEXING_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
 |400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API によって生成される Azure Video Indexer の出力を調べる](video-indexer-output-json-v2.md)

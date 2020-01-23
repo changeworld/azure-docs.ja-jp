@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792682"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861202"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -42,8 +42,6 @@ ms.locfileid: "74792682"
 
 * [Azure Portal](#azure-portal-system-logic-app)
 * [Azure リソース マネージャーのテンプレート](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -59,7 +57,7 @@ ms.locfileid: "74792682"
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当て ID を表すグローバル一意識別子 (GUID) |
    ||||
@@ -105,7 +103,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 }
 ```
 
-| プロパティ (JSON) | 値 | 説明 |
+| プロパティ (JSON) | 値 | [説明] |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すマネージド ID のサービス プリンシパル オブジェクトのグローバル一意識別子 (GUID)。 この GUID は、"オブジェクト ID" (`objectID`) として表されることがあります。 |
 | `tenantId` | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 |
@@ -115,7 +113,17 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 ## <a name="give-identity-access-to-resources"></a>ID にリソースへのアクセス権を付与する
 
-ロジック アプリ用にマネージド ID を設定すると、[その ID に他の Azure リソースへのアクセス権を与える](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)ことができます。 その後、その ID を認証に使用できます。
+ロジック アプリのシステム割り当て済みマネージド ID を認証に使用するには、事前に、ID を使用する予定の Azure リソースへのアクセスを、その ID に付与します。 このタスクを完了するには、ターゲットの Azure リソース上でその ID に適切な役割を割り当てます。 次に、使用できるオプションを示します。
+
+* [Azure Portal](#azure-portal-assign-access)
+* [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) - 詳細については、[Azure RBAC と Azure PowerShell を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
+* Azure CLI ([az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
+* [Azure REST API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>Azure portal 上でアクセスを割り当てる
 
 1. [Azure portal](https://portal.azure.com) で、マネージド ID にアクセス権を与える Azure リソースに移動します。
 
@@ -165,9 +173,9 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    たとえば、HTTP トリガーまたはアクションでは、ロジック アプリに対して有効にしたシステム割り当て ID を使用できます。 一般に、HTTP トリガーまたはアクションでは、次のプロパティを使用して、アクセスするリソースまたはエンティティを指定します。
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | [説明] |
    |----------|----------|-------------|
-   | **メソッド** | はい | 実行する操作によって使用される HTTP メソッド |
+   | **方法** | はい | 実行する操作によって使用される HTTP メソッド |
    | **URI** | はい | ターゲットの Azure リソースまたはエンティティにアクセスするためのエンドポイント URL。 URI 構文には、通常、Azure リソースまたはサービスの[リソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) が含まれています。 |
    | **ヘッダー** | いいえ | コンテンツ タイプなど、送信要求に含める必要がある (または含めたい) ヘッダーの値 |
    | **クエリ** | いいえ | 特定の操作のパラメーターや実行する操作の API バージョンなど、要求に含める必要がある (または含めたい) クエリ パラメーター |
@@ -181,9 +189,9 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    [Snapshot Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
 
-   | プロパティ | 必須 | 値の例 | 説明 |
+   | プロパティ | 必須 | 値の例 | [説明] |
    |----------|----------|---------------|-------------|
-   | **メソッド** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
+   | **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
    | **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |
    | **ヘッダー** | はい (Azure Storage の場合) | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure Storage 操作に必要な `x-ms-blob-type` ヘッダーと `x-ms-version` ヘッダーの値。 <p><p>**重要**:Azure Storage の発信 HTTP トリガーおよびアクションの要求では、ヘッダーに `x-ms-version` プロパティと実行する操作の API バージョンが必要です。 <p>詳細については、以下のトピックを参照してください。 <p><p>- [要求ヘッダー - Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Azure Storage サービスのバージョン管理](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **クエリ** | はい (この操作の場合) | `comp` = `snapshot` | Snapshot Blob 操作のクエリ パラメーターの名前と値。 |
@@ -275,6 +283,6 @@ Azure Resource Manager テンプレートを使用してロジック アプリ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps におけるアクセスとデータのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)

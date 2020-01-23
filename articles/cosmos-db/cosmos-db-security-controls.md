@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872147"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913093"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Azure Cosmos DB のセキュリティ コントロール
 
@@ -42,17 +42,17 @@ ms.locfileid: "74872147"
 | セキュリティ コントロール | はい/いいえ | メモ|
 |---|---|--|
 | 認証| はい | データベース アカウント レベルでは「はい」です。データ プレーン レベルでは、Cosmos DB では、リソース トークンとキー アクセスが使用されます。 |
-| Authorization| はい | マスター キー (プライマリおよびセカンダリ) とリソース トークンを持つ Azure Cosmos アカウントでサポートされます。 マスター キーを使用して、データに対して、読み取り/書き込みアクセスまたは読み取り専用アクセスを実行できます。 リソース トークンを使用して、ドキュメントやコンテナーなどのリソースに、限られた時間だけアクセスできます。 |
+| 承認| はい | マスター キー (プライマリおよびセカンダリ) とリソース トークンを持つ Azure Cosmos アカウントでサポートされます。 マスター キーを使用して、データに対して、読み取り/書き込みアクセスまたは読み取り専用アクセスを実行できます。 リソース トークンを使用して、ドキュメントやコンテナーなどのリソースに、限られた時間だけアクセスできます。 |
 
 ## <a name="data-protection"></a>データ保護
 
 | セキュリティ コントロール | はい/いいえ | メモ |
 |---|---|--|
-| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | すべての Azure Cosmos データベースとバックアップは、既定で暗号化されます。「[Azure Cosmos DB でのデータの暗号化](database-encryption-at-rest.md)」を参照してください。 カスタマー マネージド キーによるサーバー側での暗号化はサポートされていません。 |
-| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | いいえ |  |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | すべての Azure Cosmos データベースとバックアップは、既定で暗号化されます。「[Azure Cosmos DB でのデータの暗号化](database-encryption-at-rest.md)」を参照してください。 |
+| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | [Azure Cosmos DB アカウントのカスタマー マネージド キーの構成](how-to-setup-cmk.md)に関する記事を参照してください。  |
 | 列レベルの暗号化 (Azure Data Services)| はい | Tables API Premium でのみ。 この機能は、すべての API でサポートされるわけではありません。 「[Azure Cosmos DB の概要:Table API](table-introduction.md)」を参照してください。 |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Cosmos DB のすべてのデータは、転送中に暗号化されます。 |
-| API 呼び出しの暗号化| はい | Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では、TLS 1.2 接続もサポートされますが、これはまだ実施されていません。 お客様が自分の側で下位レベルの TLS をオフにすると、Cosmos DB に確実に接続できます。  |
+| API 呼び出しの暗号化| はい | Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では TLS 1.2 もサポートされます。<br>サーバー側で最低限の TLS バージョンを強制できます。 これを行うには、[cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com]) にお問い合わせください。 |
 
 ## <a name="configuration-management"></a>構成管理
 
@@ -66,6 +66,6 @@ ms.locfileid: "74872147"
 |---|---|--|
 | クロスオリジン リソース共有 (CORS) | はい | 「[クロスオリジン リソース共有 (CORS) の構成](how-to-configure-cross-origin-resource-sharing.md)」を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

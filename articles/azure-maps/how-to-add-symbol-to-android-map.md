@@ -1,6 +1,6 @@
 ---
-title: Azure Maps での Android マップへのシンボル レイヤーの追加 |Microsoft Docs
-description: Azure Maps Android SDK を使用してマップにシンボルを追加する方法
+title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加することによってマップ上にポイント データをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0292c8a441589a01241fbef6923246b4bcafb5c8
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 877147bc0fd680278f999d2007040a92b0cbff38
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976259"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911536"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
 
@@ -173,7 +173,7 @@ ms.locfileid: "68976259"
 ![Android マップのピン](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに内容をマップに追加するには、次を参照してください。
 
@@ -181,4 +181,4 @@ ms.locfileid: "68976259"
 > [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
 
 > [!div class="nextstepaction"]
-> [機能情報を表示する](display-feature-information-android.md)
+> [フィーチャーの情報を表示する](display-feature-information-android.md)

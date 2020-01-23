@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 77915409e3c44a01e26c35c0facb2d577c331fd8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914930"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922425"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -53,7 +53,7 @@ Azure Portal から拡張機能をインストールするには、それを参�
 どちらの場合も、インストールする拡張機能の指定に関する警告が表示されます。 **[インストール]** をクリックして拡張機能を取得します。 それぞれの拡張機能は、関数アプリごとに 1 回のみインストールする必要があります。 
 
 > [!Note] 
-> ポータル内のインストール プロセスは、従量課金プランで最大 10 分かかります。
+> ポータル内のインストール プロセスは、従量課金プランでは最大 10 分かかることがあります。
 
 Visual Studio を使用している場合は、[この記事の前半で説明した NuGet パッケージ](#packages)をインストールして、拡張機能を取得できます。
 
@@ -77,7 +77,7 @@ Azure Portal を使用している場合は、拡張機能のインストール�
 
 * [例](#auth-token---example)
 * [属性](#auth-token---attributes)
-* [構成](#auth-token---configuration)
+* [Configuration](#auth-token---configuration)
 * [使用方法](#auth-token---usage)
 
 ### <a name="auth-token---example"></a>認証トークン - 例
@@ -205,12 +205,12 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Token` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
 |**type**||必須 - `token` に設定する必要があります。|
 |**direction**||必須 - `in` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
 |**リソース**|**resource**|必須 - トークンが要求される Azure AD リソース URL です。|
@@ -235,7 +235,7 @@ Excel テーブルの入力バインドは、OneDrive に格納されている E
 
 * [例](#excel-input---example)
 * [属性](#excel-input---attributes)
-* [構成](#excel-input---configuration)
+* [Configuration](#excel-input---configuration)
 * [使用方法](#excel-input---usage)
 
 ### <a name="excel-input---example"></a>Excel の入力 - example
@@ -340,15 +340,15 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
 |**type**||必須 - `excel` に設定する必要があります。|
 |**direction**||必須 - `in` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
+|**path**|**[パス]**|必須 - OneDrive での Excel ブックへのパスです。|
 |**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
 |**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
 
@@ -357,7 +357,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|リソース|権限|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
@@ -384,7 +384,7 @@ Excel の出力バインドは、OneDrive に格納されている Excel テー�
 
 * [例](#excel-output---example)
 * [属性](#excel-output---attributes)
-* [構成](#excel-output---configuration)
+* [Configuration](#excel-output---configuration)
 * [使用方法](#excel-output---usage)
 
 ### <a name="excel-output---example"></a>Excel の出力 - 例
@@ -502,25 +502,25 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
 |**type**||必須 - `excel` に設定する必要があります。|
 |**direction**||必須 - `out` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
+|**path**|**[パス]**|必須 - OneDrive での Excel ブックへのパスです。|
 |**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
 |**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
-|**updateType**|**UpdateType**|必須 - テーブルに対して行われる変更の種類です。 次のいずれかの値を指定できます。<ul><li><code>update</code> - OneDrive 内のテーブルの内容を置き換えます。</li><li><code>append</code> - 新しい行を作成することで、OneDrive 内のテーブルの末尾にペイロードを追加します。</li></ul>|
+|**updateType**|**UpdateType**|必須 - テーブルに対して行われる変更の種類です。 次の値のいずれかです。<ul><li><code>update</code> - OneDrive 内のテーブルの内容を置き換えます。</li><li><code>append</code> - 新しい行を作成することで、OneDrive 内のテーブルの末尾にペイロードを追加します。</li></ul>|
 
 <a name="excel-output-code"></a>
 ### <a name="excel-output---usage"></a>Excel の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|リソース|権限|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
@@ -543,7 +543,7 @@ OneDrive ファイルの入力バインドは、OneDrive に格納されてい�
 
 * [例](#file-input---example)
 * [属性](#file-input---attributes)
-* [構成](#file-input---configuration)
+* [Configuration](#file-input---configuration)
 * [使用方法](#file-input---usage)
 
 ### <a name="file-input---example"></a>ファイルの入力 - 例
@@ -648,22 +648,22 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
 |**type**||必須 - `onedrive` に設定する必要があります。|
 |**direction**||必須 - `in` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
+|**path**|**[パス]**|必須 - OneDrive でのファイルへのパスです。|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|リソース|権限|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
@@ -687,7 +687,7 @@ OneDrive ファイルの出力バインドは、OneDrive に格納されてい�
 
 * [例](#file-output---example)
 * [属性](#file-output---attributes)
-* [構成](#file-output---configuration)
+* [Configuration](#file-output---configuration)
 * [使用方法](#file-output---usage)
 
 ### <a name="file-output---example"></a>ファイルの出力 - 例
@@ -796,22 +796,22 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
 |**type**||必須 - `onedrive` に設定する必要があります。|
 |**direction**||必須 - `out` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
+|**path**|**[パス]**|必須 - OneDrive でのファイルへのパスです。|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|リソース|権限|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
@@ -834,7 +834,7 @@ Outlook メッセージの出力バインドは、Outlook でメール メッセ
 
 * [例](#outlook-output---example)
 * [属性](#outlook-output---attributes)
-* [構成](#outlook-output---configuration)
+* [Configuration](#outlook-output---configuration)
 * [使用方法](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook の出力 - 例
@@ -947,12 +947,12 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Outlook` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `outlook` に設定する必要があります。|
 |**direction**||必須 - `out` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
 
@@ -961,7 +961,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|リソース|権限|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|
 
@@ -999,7 +999,7 @@ Microsoft Graph webhook トリガーを使用すると、関数は、Microsoft G
 
 * [例](#webhook-trigger---example)
 * [属性](#webhook-trigger---attributes)
-* [構成](#webhook-trigger---configuration)
+* [Configuration](#webhook-trigger---configuration)
 * [使用方法](#webhook-trigger---usage)
 
 ### <a name="webhook-trigger---example"></a>webhook トリガー - 例
@@ -1090,12 +1090,12 @@ module.exports = function (context) {
 
 次の表は、*function.json* ファイルと `GraphWebhookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhook` に設定する必要があります。|
 |**direction**||必須 - `trigger` に設定する必要があります。|
-|**resourceType**|**ResourceType**|必須 - この関数が webhook に応答する必要がある、グラフ リソースです。 次のいずれかの値を指定できます。<ul><li><code>#Microsoft.Graph.Message</code> - Outlook メッセージに行われた変更です。</li><li><code>#Microsoft.Graph.DriveItem</code> - OneDrive ルート項目に行われた変更です。</li><li><code>#Microsoft.Graph.Contact</code> - Outlook の個人用連絡先に行われた変更です。</li><li><code>#Microsoft.Graph.Event</code> - Outlook の予定表アイテムに行われた変更です。</li></ul>|
+|**resourceType**|**ResourceType**|必須 - この関数が webhook に応答する必要がある、グラフ リソースです。 次の値のいずれかです。<ul><li><code>#Microsoft.Graph.Message</code> - Outlook メッセージに行われた変更です。</li><li><code>#Microsoft.Graph.DriveItem</code> - OneDrive ルート項目に行われた変更です。</li><li><code>#Microsoft.Graph.Contact</code> - Outlook の個人用連絡先に行われた変更です。</li><li><code>#Microsoft.Graph.Event</code> - Outlook の予定表アイテムに行われた変更です。</li></ul>|
 
 > [!Note]
 > 関数アプリは、指定された `resourceType` 値に対して登録されている関数を、1 つだけ持つことができます。
@@ -1118,7 +1118,7 @@ Microsoft Graph webhook の入力バインドを使用すると、この関数�
 
 * [例](#webhook-input---example)
 * [属性](#webhook-input---attributes)
-* [構成](#webhook-input---configuration)
+* [Configuration](#webhook-input---configuration)
 * [使用方法](#webhook-input---usage)
 
 ### <a name="webhook-input---example"></a>webhook の入力 - 例
@@ -1242,12 +1242,12 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
 |**direction**||必須 - `in` に設定する必要があります。|
-|**filter**|**Filter**| `userFromRequest` に設定すると、バインドは呼び出し元のユーザーが所有するサブスクリプションのみを取得します ([HTTP トリガー]でのみ有効)。| 
+|**filter**|**Assert**| `userFromRequest` に設定すると、バインドは呼び出し元のユーザーが所有するサブスクリプションのみを取得します ([HTTP トリガー]でのみ有効)。| 
 
 ### <a name="webhook-input---usage"></a>webhook の入力 - 使用方法
 
@@ -1269,7 +1269,7 @@ webhook サブスクリプションの出力バインドを使用すると、Mic
 
 * [例](#webhook-output---example)
 * [属性](#webhook-output---attributes)
-* [構成](#webhook-output---configuration)
+* [Configuration](#webhook-output---configuration)
 * [使用方法](#webhook-output---usage)
 
 ### <a name="webhook-output---example"></a>webhook の出力 - 例
@@ -1383,15 +1383,15 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
 |**direction**||必須 - `out` に設定する必要があります。|
-|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**action**|**アクション**|必須 - バインドが実行する必要があるアクションを指定します。 次のいずれかの値を指定できます。<ul><li><code>create</code> - 新しいサブスクリプションを登録します。</li><li><code>delete</code> - 指定したサブスクリプションを削除します。</li><li><code>refresh</code> - 指定したサブスクリプションが期限切れにならないように更新します。</li></ul>|
+|**action**|**操作**|必須 - バインドが実行する必要があるアクションを指定します。 次の値のいずれかです。<ul><li><code>create</code> - 新しいサブスクリプションを登録します。</li><li><code>delete</code> - 指定したサブスクリプションを削除します。</li><li><code>refresh</code> - 指定したサブスクリプションが期限切れにならないように更新します。</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|_action_ が `create` に設定された場合にのみ必要です。 変更を監視する Microsoft Graph リソースを指定します。 「[Microsoft Graph の Webhooks での作業]」をご覧ください。 |
 |**changeType**|**ChangeType**|_action_ が `create` に設定された場合にのみ必要です。 サブスクライブしているリソースで、通知が表示される変更の種類を表します。 サポートされる値は `created`、`updated`、`deleted` です。 コンマ区切りのリストを使用して複数の値を組み合わせることができます。|
 
@@ -1583,7 +1583,7 @@ public class UserSubscription {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

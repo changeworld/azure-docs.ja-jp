@@ -1,19 +1,16 @@
 ---
 title: Azure Site Recovery を使用した Azure 間のディザスター リカバリーの接続のトラブルシューティング
-description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするとき発生するエラーや問題に関するトラブルシューティング
-services: site-recovery
-author: asgang
+description: Azure VM ディザスター リカバリーでの接続に関する問題のトラブルシューティング
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/05/2019
-ms.author: asgang
-ms.openlocfilehash: 4995a4086c471a06fe859febfd2d1af7fbb22a76
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d55f06669a538c2f26f3a1d2da0d96a73529f76e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622450"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941465"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -21,7 +18,7 @@ ms.locfileid: "73622450"
 
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。
 
-**URL** | **詳細**  
+**[URL]** | **詳細**  
 --- | ---
 *.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (たとえば、cache1.blob.core.windows.net および cache2.blob.core.windows.net) を許可リストに登録できます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
@@ -118,5 +115,5 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure 仮想マシンのレプリケート](site-recovery-replicate-azure-to-azure.md)

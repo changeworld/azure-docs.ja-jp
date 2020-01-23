@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927739"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867364"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 
@@ -46,7 +46,7 @@ REST ソースから、サポートされている任意のシンク データ �
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -56,9 +56,9 @@ REST ソースから、サポートされている任意のシンク データ �
 
 REST のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
+| 型 | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
 | enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
@@ -68,10 +68,10 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 **authenticationType** プロパティを **Basic** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | userName | REST エンドポイントにアクセスするために使用するユーザー名。 | はい |
-| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| パスワード | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -101,7 +101,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 **authenticationType** プロパティを **AadServicePrincipal** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | はい |
 | servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
@@ -138,7 +138,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 **authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| はい |
 
@@ -170,9 +170,9 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 REST からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
+| 型 | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]` | いいえ |
 
 データセットに `requestMethod`、`additionalHeaders`、`requestBody`、および `paginationRules` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
@@ -206,9 +206,9 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
+| 型 | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
 | requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
@@ -219,7 +219,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 >[!NOTE]
 >REST コネクタは、`additionalHeaders` で指定された "Accept" ヘッダーをすべて無視します。 REST コネクタは JSON の応答のみをサポートし、`Accept: application/json` のヘッダーを自動生成します。
 
-**例 1:改ページ位置の自動修正で Get メソッドを使用する**
+**例 1: 改ページ位置の自動修正で Get メソッドを使用する**
 
 ```json
 "activities":[
@@ -257,7 +257,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 ]
 ```
 
-**例 2:Post メソッドを使用する**
+**例 2: Post メソッドを使用する**
 
 ```json
 "activities":[
@@ -308,7 +308,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 改ページ位置の自動修正規則で**サポートされるキー**:
 
-| Key | 説明 |
+| Key | [説明] |
 |:--- |:--- |
 | AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか**です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
@@ -316,7 +316,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 改ページ位置の自動修正規則で**サポートされる値**:
 
-| 値 | 説明 |
+| 値 | [説明] |
 |:--- |:--- |
 | Headers.*response_header* または Headers['response_header'] | "response_header" は、現在の HTTP 応答内で 1 つのヘッダー名を参照するユーザー定義で、次の要求を発行するために使用される値です。 |
 | (応答本文のルートを表す) "$" から始まる JSONPath 式 | 応答本文には、1 つの JSON オブジェクトのみを含める必要があります。 JSONPath 式では、1 つのプリミティブ値が返される必要があります。この値は、次の要求を発行するために使用されます。 |
@@ -372,6 +372,75 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 }
 ```
 
+## <a name="use-oauth"></a>OAuth を使用する
+このセクションでは、OAuth を使って REST コネクタから Azure Data Lake Storage にデータを JSON 形式でコピーするためのソリューション テンプレートの使用方法について説明します。 
+
+### <a name="about-the-solution-template"></a>ソリューション テンプレートについて
+
+このテンプレートには、2 つのアクティビティが含まれています。
+- **Web** アクティビティでは、ベアラー トークンを取得し、それを後のコピー アクティビティに認証として渡します。
+- **コピー** アクティビティでは、データを REST から Azure Data Lake Storage にコピーします。
+
+このテンプレートには、次の 2 つのパラメーターが定義されています。
+- **SinkContainer** は、Azure Data Lake Storage 内のデータのコピー先となるルート フォルダーのパスです。 
+- **SinkDirectory** は、Azure Data Lake Storage 内のデータのコピー先となるルートの下のディレクトリ パスです。 
+
+### <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
+
+1. **[Copy from REST or HTTP using OAuth]** (OAuth を使用して REST または HTTP からコピーする) テンプレートにアクセスします。 コピー元の接続用に新しい接続を作成します。 
+    ![新しい接続を作成する](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    新しいリンクされたサービス (REST) 設定の主要な手順を以下に示します。
+    
+     1. **[ベース URL]** で、自分のソース REST サービスの URL パラメーターを指定します。 
+     2. **[認証の種類]** で *[匿名]* を選択します。
+        ![新しい REST 接続](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. コピー先の接続用に新しい接続を作成します。  
+    ![新しい Gen2 接続](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. **[このテンプレートを使用]** を選択します。
+    ![このテンプレートを使用](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. 次の例に示すように、作成されたパイプラインが表示されます。![パイプライン](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. **[Web]** アクティビティを選択します。 **[設定]** で、対応する **[URL]** 、 **[Method]** (メソッド)、 **[Headers]** (ヘッダー)、および **[Body]** (本文) を指定して、データのコピー元となるサービスのログイン API から OAuth ベアラー トークンを取得します。 テンプレート内のプレースホルダーは、Azure Active Directory (AAD) OAuth のサンプルを示しています。 AAD 認証が REST コネクタによってネイティブにサポートされていることに注意してください。OAuth フローの一例を次に示します。 
+
+    | プロパティ | [説明] |
+    |:--- |:--- |:--- |
+    | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、この例では https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |。 
+    | 方法 | HTTP メソッド。 使用できる値は **Post** と **Get** です。 | 
+    | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
+    | Body | HTTP 要求の本文。 | 
+
+    ![パイプライン](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. **[データのコピー]** アクティビティで *[ソース]* タブを選択すると、前の手順で取得したベアラー トークン (access_token) が、[追加ヘッダー] で **[認証]**  として [データのコピー] アクティビティに渡されることを確認できます。 パイプラインの実行を開始する前に、次のプロパティの設定を確認してください。
+
+    | プロパティ | [説明] |
+    |:--- |:--- |:--- | 
+    | 要求メソッド | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | 
+    | 追加ヘッダー | 追加の HTTP 要求ヘッダー。| 
+
+   ![コピー元の認証](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
+   ![パイプラインの実行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。![パイプラインの実行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. **[アクション]** 列で WebActivity の [出力] アイコンをクリックすると、サービスによって返された access_token が表示されます。
+
+   ![トークンの出力](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. **アクション** 列で CopyActivity の [入力] アイコンをクリックすると、WebActivity によって取得された access_token が、認証のために CopyActivity に渡されます。 
+
+    ![トークンの入力](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >トークンがプレーン テキストでログに記録されないようにするには、Web アクティビティの "セキュリティで保護された出力" とコピー アクティビティの "セキュリティで保護された入力" を有効にします。
+
+
 ## <a name="export-json-response-as-is"></a>JSON の応答をそのままエクスポートする
 
 この REST コネクタを使用して REST API JSON の応答をそのままさまざまなファイル ベースのストアにエクスポートできます。 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
@@ -380,6 +449,6 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 
 REST エンドポイントから表形式のシンクにデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

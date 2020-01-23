@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/17/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459441"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965743"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -59,7 +59,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows Virtual Desktop セッション ホスト VM の作成
 
-セッションホスト VM はいくつかの方法で作成できますが、Windows Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Windows Virtual Desktop を使用に関する問題 - Azure Marketplace でのホストプールのプロビジョニング](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」 を参照してください。
+セッションホスト VM はいくつかの方法で作成できますが、Windows Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」 を参照してください。
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題
 
@@ -98,7 +98,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 1. 現在の Azure Marketplace デプロイ オファリングを終了します。
 2. 上部の検索バーで、**アクティビティ ログ** を検索して選択します。
-3. **デプロイの検証** という名前の **[失敗]** の状態を示すアクティビティを検索して、アクティビティを選択します。
+3. **[デプロイの検証]** という名前で状態が **[失敗]** のアクティビティを見つけて、そのアクティビティを選択します。
    ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. [JSON] を選択し、"statusMessage" フィールドが表示されるまで、画面の一番下までスクロールします。
@@ -125,7 +125,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 未処理エラーの例:
 
 ```Error
- {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. 
+ {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details.
  Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Conflict","message":"{\r\n \"status\": \"Failed\",\r\n \"error\":
  {\r\n \"code\": \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.
  \",\r\n \"details\": [\r\n {\r\n \"code\": \"VMExtensionProvisioningError\",\r\n \"message\": \"VM has reported a failure when processing
@@ -138,8 +138,16 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **原因 2:** ドメイン名が解決されません。
 
-**解決策 2:** [セッション ホストの VM の構成](troubleshoot-vm-configuration.md)に関するページで、「VMs are not joined to the domain」\(VM がドメインに参加していません\) の「Domain name doesn't resolve」\(ドメイン名が解決されません\) エラーを参照してください。
+**解決策 2:** 各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー:ドメイン名が解決されません](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」) を参照してください。
 
+**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が**既定**に設定されています。
+
+これを解決するには、次の操作を実行します。
+
+1. Azure portal を開き、 **[仮想ネットワーク]** ブレードに移動します。
+2. お使いの VNET を見つけて、 **[DNS サーバー]** を選択します。
+3. 画面の右側に DNS サーバーのメニューが表示されます。 そのメニューで、 **[カスタム]** を選択します。
+4. [カスタム] の下に表示されている DNS サーバーが、ドメイン コントローラーまたは Active Directory ドメインと一致していることを確認します。 お使いの DNS サーバーが表示されない場合は、 **[DNS サーバーの追加]** フィールドに値を入力して追加できます。
 
 ### <a name="error-your-deployment-failedunauthorized"></a>エラー:デプロイに失敗しました...\権限がありません
 
@@ -159,7 +167,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **原因 2:** 一時的な接続エラーです。
 
-**解決策:** PowerShell を使用してサインインすることによって、Windows Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」で、VM の登録を手動で終了します。
+**解決策:** PowerShell を使用してサインインすることによって、Windows Virtual Desktop 環境が正常であることを確認します。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」で、VM の登録を手動で終了します。
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
@@ -193,11 +201,11 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
  "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
- Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few: 
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource": 
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft. 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+ Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
+ { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
  Compute/virtualMachines/desktop-1/extensions/dscextension",
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
@@ -215,7 +223,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 ```Error
 {
     "code": "DeploymentFailed",
-   "message": "At least one resource deployment operation failed. Please list 
+   "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
          { "code": "Conflict",  
@@ -316,13 +324,13 @@ the VM.\\\"
 未処理エラーの例:
 
 ```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00", 
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing 
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s). 
+"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
+"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
+extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
 Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
  functionality with error message: User is not authorized to query the management service.
 \nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n 
+\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
@@ -347,7 +355,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 **原因:** 指定された Windows Virtual Desktop テナント管理者が、サインインするために Azure 多要素認証 (MFA) を必要としています。
 
-**解決策:** 次の手順に従って、サービス プリンシパルを作成し、それに Windows Virtual Desktop のロールを割り当てます: [チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)。 サービス プリンシパルを使用して Windows Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
+**解決策:** 次の手順に従って、サービス プリンシパルを作成し、それに Windows Virtual Desktop のロールを割り当てます: [チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)。 サービス プリンシパルを使用して Windows Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
 
 Azure Marketplace オファリングを実行している場合、Windows Virtual Desktop に正しく認証されるよう、次のパラメーターの値を指定します。
 
@@ -371,6 +379,6 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
-- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」をご覧ください。
-- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/resource-manager-deployment-operations.md)に関するページを参照してください。
+- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894908"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864351"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整 
 
@@ -46,11 +46,11 @@ Time Series Insights にイベントを送信する方法を検討します。 �
 1. [参照データ](time-series-insights-add-reference-data-set.md)を使用して、ネットワーク上で静的なデータを送信しないようにします。
 1. 複数のイベントでディメンションのプロパティを共有して、ネットワーク経由でのデータ送信を効率化します。
 1. 深い入れ子の配列を使用しない。 Time Series Insights では、オブジェクトを含む入れ子配列は 2 つのレベルの入れ子までサポートされています。 Time Series Insights では、メッセージ内の配列は、プロパティ値のペアを使用する複数のイベントにフラット化されます。
-1. すべて、またはほとんどのイベントに対して数個のメジャーのみが存在する場合は、これらのメジャーを同じオブジェクト内の個別のプロパティとして送信することをお勧めします。 個別に送信することでイベントの数が減少し、処理する必要があるイベントが少なくなるため、クエリのパフォーマンスが向上します。 複数のメジャーが存在する場合、1 つのプロパティの値として送信すると、最大プロパティ制限に達する可能性を最小限に抑えられます。
+1. すべて、またはほとんどのイベントに対して数個のメジャーのみが存在する場合は、これらのメジャーを同じオブジェクト内の個別のプロパティとして送信することをお勧めします。 個別に送信することでイベントの数が減少し、処理する必要があるイベントが少なくなるため、クエリのパフォーマンスが向上する可能性があります。 複数のメジャーが存在する場合、1 つのプロパティの値として送信すると、最大プロパティ制限に達する可能性を最小限に抑えられます。
 
 ## <a name="example-overview"></a>サンプルの概要
 
-次の 2 つの例では、前述した推奨事項のイベントの送信方法を説明しています。 各例の後には、推奨事項の適用方法を示しています。
+次の 2 つの例では、前述した推奨事項のイベントの送信方法を説明しています。 各例の後で、推奨事項の適用方法を確認できます。
 
 例では、複数のデバイスがメジャーや信号を送信するシナリオを使用しています。 メジャーまたは信号には、フロー レート、エンジン オイル圧、温度、または湿度を使用できます。 最初の例では、すべてのデバイスにわたって数個のメジャーがあります。 2 番目の例には、デバイスが多数あり、各デバイスは数多くの一意のメジャーを送信しています。
 
@@ -165,7 +165,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
 
 * キー プロパティ **deviceId** および **series.tagId** がある参照データ テーブル:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | unit |
+   | deviceId | series.tagId | messageId | deviceLocation | 型 | unit |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi |
@@ -174,7 +174,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
 
 * Time Series Insights イベント テーブル (フラット化後):
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
+   | deviceId | series.tagId | messageId | deviceLocation | 型 | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |
@@ -196,7 +196,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
   - 最初の例では、少数のプロパティにいくつか値があります。そのため、それぞれを別のプロパティにすることが適切です。
   - 2 番目の例では、メジャーは個々のプロパティとして指定されていません。 代わりに、共通の一連のプロパティに収められた値またはメジャーの配列として指定されています。 新しいキー **tagId** を送信すると、フラット化されたテーブルに、新しい列 **series.tagId** が作成されます。 参照データを使用して **type** および **unit** の新しいプロパティが作成され、プロパティ制限の超過が回避されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [IoT Hub デバイス メッセージをクラウド](../iot-hub/iot-hub-devguide-messages-construct.md)に送信する方法の詳細を参照してください。
 

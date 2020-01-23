@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3d48d53c2d4d0c859b58a94b12ffa94590b18a5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989630"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896356"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -25,6 +25,7 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
 > - 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
+> - 現在、第 2 世代 VM では Azure Disk Encryption はサポートされていません。 詳細については、「[Azure での第 2 世代 VM のサポート](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)」を参照してください。
 
 「[クイックスタート: Azure CLI で Linux VM を作成して暗号化する](disk-encryption-cli-quickstart.md)」または「[クイックスタート: Azure PowerShell で Linux VM を作成して暗号化する](disk-encryption-powershell-quickstart.md)」では、Linux 用 Azure Disk Encryption の基礎について数分で学習できます。
 
@@ -44,7 +45,7 @@ Linux 仮想マシンの OS ディスクの暗号化プロセスが完了する�
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。 
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 Azure Disk Encryption は [Azure での動作が保証された一部の Linux ディストリビューション](endorsed-distros.md)でサポートされています。Azure での動作が保証された Linux ディストリビューションはそれ自体があらゆる Linux サーバー ディストリビューションの一部となります。
 
@@ -107,10 +108,10 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 
 詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 次の表では、Azure Disk Encryption のドキュメントで使用される一般的な用語の一部を定義します。
 
-| 用語集 | 定義 |
+| 用語 | 定義 |
 | --- | --- |
 | Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。 これらの標準は、暗号化キーと機密性の高いシークレットを保護するために役立ちます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
@@ -119,7 +120,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート - Azure CLI を使用して Linux VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
 - [クイック スタート - Azure PowerShell を使用して Linux VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 999743fb3eafddb236a039e2f3702065b1a236d6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a61dea2b200b6e4962ce20e39939a75e78e81d0f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535255"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024937"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-- ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+- ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 - [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
 
@@ -51,9 +51,9 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
     * `model` - 登録済みのモデルに設定されている。
     * `inference_config` - モデルの推論構成に設定されている。
 
-    これらの変数の設定について詳しくは、「[Azure Machine Learning service を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+    これらの変数の設定について詳しくは、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- この記事の __CLI__ スニペットは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+- この記事の __CLI__ スニペットは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="create-a-new-aks-cluster"></a>新しい AKS クラスターを作成する
 
@@ -115,7 +115,7 @@ az ml computetarget create aks -n myaks
 
 **推定所要時間:** 約 5 分です。
 
-お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.15 より低い場合は、それを使用してお客様のイメージをデプロイできます。
+Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.16 以前である場合は、それを使用してイメージをデプロイできます。
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。
@@ -187,7 +187,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
-Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
@@ -223,13 +223,13 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
+詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
 
 ### <a name="using-vs-code"></a>VS コードを使用する
 
 VS Code の使用については、「[モデルを展開して管理する](how-to-vscode-tools.md#deploy-and-manage-models)」を参照してください。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>制御されたロールアウト (プレビュー) を使用して AKS にモデルをデプロイする
@@ -245,13 +245,13 @@ from azureml.core.compute import AksCompute
 from azureml.core.compute import ComputeTarget
 # select a created compute
 compute = ComputeTarget(ws, 'myaks')
-namespace_name= endpointnamespace 
+namespace_name= endpointnamespace
 # define the endpoint and version name
 endpoint_name = "mynewendpoint",
 version_name= "versiona",
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
-                                                              enable_app_insights = true, 
+                                                              enable_app_insights = true,
                                                               tags = {'sckitlearn':'demo'},
                                                               decription = testing versions,
                                                               version_name = version_name,
@@ -262,34 +262,34 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>バージョンの更新とエンドポイントへの追加
 
-エンドポイントに別のバージョンを追加し、スコアリング トラフィック パーセンタイルをバージョンに合わせて構成します。 バージョンには、コントロールと処理バージョンの 2 種類があります。 1 つのコントロール バージョンと比較するために、複数の処理バージョンを使用できます。 
+エンドポイントに別のバージョンを追加し、スコアリング トラフィック パーセンタイルをバージョンに合わせて構成します。 バージョンには、コントロールと処理バージョンの 2 種類があります。 1 つのコントロール バージョンと比較するために、複数の処理バージョンを使用できます。
 
  ```python
 from azureml.core.webservice import AksEndpoint
 
 # add another model deployment to the same endpoint as above
-version_name_add = "versionb" 
-endpoint.create_version(version_name = version_name_add, 
+version_name_add = "versionb"
+endpoint.create_version(version_name = version_name_add,
                         inference_config=inference_config,
-                        models=[model], 
-                        tags = {'modelVersion':'b'}, 
-                        description = "my second version", 
+                        models=[model],
+                        tags = {'modelVersion':'b'},
+                        description = "my second version",
                         traffic_percentile = 10)
 ```
 
-既存のバージョンを更新するか、エンドポイント内で削除します。 バージョンの既定の種類、コントロールの種類、およびトラフィック パーセンタイルを変更できます。 
- 
+既存のバージョンを更新するか、エンドポイント内で削除します。 バージョンの既定の種類、コントロールの種類、およびトラフィック パーセンタイルを変更できます。
+
  ```python
 from azureml.core.webservice import AksEndpoint
 
-# update the version's scoring traffic percentage and if it is a default or control type 
-endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
-                        description="my second version update", 
+# update the version's scoring traffic percentage and if it is a default or control type
+endpoint.update_version(version_name=endpoint.versions["versionb"].name,
+                        description="my second version update",
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
 
-# delete a version in an endpoint 
+# delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 
 ```

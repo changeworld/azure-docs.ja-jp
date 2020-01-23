@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146855"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768556"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
-オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 インストールするゲートウェイはこれらすべてのサービスで同じですが、Azure Analysis Services と Logic Apps には追加の手順がいくつかあります。
+オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Power Automate でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 インストールするゲートウェイはこれらすべてのサービスで同じですが、Azure Analysis Services と Logic Apps には追加の手順がいくつかあります。
 
 Azure Analysis Services の場合、ゲートウェイの初回のセットアップは、4 つのプロセスで構成されます。
 
@@ -31,7 +31,7 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 ## <a name="how-it-works"> </a>動作のしくみ
 組織のコンピューターにインストールしたゲートウェイは、Windows サービス **オンプレミスのデータ ゲートウェイ**として実行されます。 このローカル サービスは、Azure Service Bus を通して Gateway Cloud Service に登録されます。 次に、Azure サブスクリプション用のオンプレミス データ ゲートウェイ リソースを作成します。 Azure Analysis Services サーバーは、Azure ゲートウェイ リソースに接続されます。 サーバー上のモデルが、クエリや処理を行うためにオンプレミスのデータ ソースに接続する必要がある場合、クエリとデータ フローは、ゲートウェイ リソース、Azure Service Bus、ローカルのオンプレミスのデータ ゲートウェイ サービスを経由してデータ ソースに接続します。 
 
-![動作のしくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![しくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 クエリとデータ フロー:
 
@@ -48,13 +48,13 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 
 ## <a name="ports-and-communication-settings"></a>ポートと通信の設定
 
-ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 から 9354 です。  ゲートウェイでは受信ポートは必要ありません。
+ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 ～ 9354 の送信ポート上で通信します。  ゲートウェイでは受信ポートは必要ありません。
 
 ファイアウォール内のデータ領域用に IP アドレスを含めることが必要な場合があります。 [Microsoft Azure データセンターの IP リスト](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードできます。 このリストは毎週更新されます。 Azure データセンターの IP リストには、IP アドレスが CIDR 表記法で記載されています。 詳細については、[クラスのないドメイン間ルーティング ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)に関するページを参照してください。
 
 ゲートウェイで使用される完全修飾ドメイン名を次に示します。
 
-| ドメイン名 | 送信ポート | 説明 |
+| ドメイン名 | 送信ポート | [説明] |
 | --- | --- | --- |
 | *.powerbi.com |80 |インストーラーのダウンロードに使用される HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -79,7 +79,7 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 </setting>
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 次の記事は、ゲートウェイがサポートするすべてのサービスに適用される、オンプレミス データ ゲートウェイの一般的なコンテンツに含まれています。
 
@@ -89,5 +89,5 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 * [プロキシ設定の構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
 * [通信設定の調整](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
 * [ログ ファイルの構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [トラブルシューティング](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [[トラブルシューティング]](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)

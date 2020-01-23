@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327853"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941497"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -56,12 +56,17 @@ AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/res
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
+ これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。 
+
 ### <a name="copy-an-object"></a>オブジェクトをコピーする
+
+階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **例** (階層型名前空間) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > この記事の例では、AWS S3 バケットにパス形式の URL を使用します (例: `http://s3.amazonaws.com/<bucket-name>`)。 
@@ -72,31 +77,43 @@ AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/res
 
 ### <a name="copy-a-directory"></a>ディレクトリをコピーする
 
+階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
+
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>バケットをコピーする
+
+階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>すべてのリージョン内のすべてのバケットをコピーする
+
+階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>特定の S3 リージョン内のすべてのバケットをコピーする
+
+階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>オブジェクトの名前付け規則の違いに対処する
 
@@ -112,7 +129,7 @@ AWS S3 と Azure では、オブジェクト キーの名前にさまざまな�
 
 AzCopy の `copy` コマンドの一部として、オプションの `s2s-invalid-metadata-handle` フラグの値を指定することができます。これは、ファイルのメタデータに互換性のないキー名が含まれているファイルを処理する方法を指定します。 次の表は、それぞれのフラグ値の説明です。
 
-| フラグ値 | 説明  |
+| フラグ値 | [説明]  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (既定のオプション) メタデータは転送されたオブジェクトに含まれていません。 AzCopy は警告を記録します。 |
 | **FailIfInvalid** | オブジェクトはコピーされません。 AzCopy はエラーを記録し、そのエラーを、転送の概要に表示される失敗の数に含めます。  |
@@ -134,13 +151,13 @@ AzCopy では次の手順が実行されます。
    このキーは、元のメタデータの無効な**キー**を保存するために使用されます。
    メタデータ キーは BLOB ストレージ サービスに値として保持されるため、このキーを使用して、Azure 側でメタデータを試して復元することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事にサンプルがあります。
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
-- [AzCopy と BLOB ストレージでデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
 
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 

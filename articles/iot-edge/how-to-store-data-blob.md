@@ -1,26 +1,26 @@
 ---
 title: デバイスでのブロック blob の格納 -Azure IoT Edge | Microsoft Docs
 description: 階層化機能と Time-To-Live 機能を理解してから、サポートされている Blob Storage の操作を確認し、その後、ご自身の Blob Storage アカウントに接続します。
-author: arduppal
-manager: brymat
-ms.author: arduppal
+author: kgremban
+ms.author: kgremban
 ms.reviewer: arduppal
 ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfd47848bc07915b0d7be3620d950c11c0e4b6e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457312"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970844"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
 IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) および[追加 BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure の BLOB サービスのように動作しますが、その BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れている BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
 このモジュールは、次のシナリオで役立ちます。
+
 * データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のある場合。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
 * 接続が制限されている場所にデバイスが配置されている場合。
 * 緊急事態にできるだけ迅速に対応できるように、データをローカルで効率的に処理し、データに短い待機時間でアクセスしたい場合。
@@ -33,38 +33,37 @@ IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https:/
 
 **deviceToCloudUpload** は構成可能な機能です。 この機能は、断続的なインターネット接続のサポートによりローカルの Blob Storage から Azure にデータを自動的にアップロードすることができます。 これにより次の操作を行うことができます。
 
-- deviceToCloudUpload 機能のオン/オフを切り替える。
-- データを Azure にコピーする順序 (NewestFirst や OldestFirst など) を選択する。
-- データのアップロード先の Azure Storage アカウントを選択する。
-- Azure にアップロードするコンテナーを指定する。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。
-- クラウド ストレージへのアップロードが完了した後ですぐに BLOB を削除する機能を選択する
-- 完全な BLOB アップロード (`Put Blob` 操作を使用) とブロック レベルのアップロード (`Put Block`、`Put Block List`、および `Append Block` 操作を使用) を行う。
+* deviceToCloudUpload 機能のオン/オフを切り替える。
+* データを Azure にコピーする順序 (NewestFirst や OldestFirst など) を選択する。
+* データのアップロード先の Azure Storage アカウントを選択する。
+* Azure にアップロードするコンテナーを指定する。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。
+* クラウド ストレージへのアップロードが完了した後ですぐに BLOB を削除する機能を選択する
+* 完全な BLOB アップロード (`Put Blob` 操作を使用) とブロック レベルのアップロード (`Put Block`、`Put Block List`、および `Append Block` 操作を使用) を行う。
 
 このモジュールは、BLOB がブロックで構成されている場合、ブロック レベルのアップロードを使用します。 一般的なシナリオのいくつかを次に示します。
 
-- アプリケーションにより、以前にアップロードしたブロック BLOB のいくつかのブロックが更新されるか、追加 BLOB に新しいブロックが追加されると、このモジュールでは、BLOB 全体ではなく更新されたブロックのみがアップロードされます。
-- BLOB のアップロード中にインターネット接続がなくなると、接続が戻ったときに、BLOB 全体ではなく残りのブロックのみアップロードされます。
- 
+* アプリケーションにより、以前にアップロードしたブロック BLOB のいくつかのブロックが更新されるか、追加 BLOB に新しいブロックが追加されると、このモジュールでは、BLOB 全体ではなく更新されたブロックのみがアップロードされます。
+* BLOB のアップロード中にインターネット接続がなくなると、接続が戻ったときに、BLOB 全体ではなく残りのブロックのみアップロードされます。
+
 BLOB のアップロード中に予期しないプロセスの終了 (電源障害など) が発生すると、モジュールがオンラインに戻ったときに、アップロード予定だったすべてのブロックが再度アップロードされます。
 
 **deviceAutoDelete** は構成可能な機能です。 この機能では、指定した期限 (分単位) が過ぎると、モジュールによって BLOB がローカル ストレージから自動的に削除されます。 これにより次の操作を行うことができます。
 
-- deviceAutoDelete 機能のオン/オフを切り替える。
-- BLOB が自動的に削除されるまでの分単位の時間 (deleteAfterMinutes) を指定する。
-- deleteAfterMinutes 値が期限切れになった場合に、アップロード中は BLOB を保持する機能を選択する。
-
+* deviceAutoDelete 機能のオン/オフを切り替える。
+* BLOB が自動的に削除されるまでの分単位の時間 (deleteAfterMinutes) を指定する。
+* deleteAfterMinutes 値が期限切れになった場合に、アップロード中は BLOB を保持する機能を選択する。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure IoT Edge デバイス:
 
-- [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って、開発マシンまたは仮想マシンを IoT Edge デバイスとして使用できます。
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って、開発マシンまたは仮想マシンを IoT Edge デバイスとして使用できます。
 
-- サポートされているオペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。 IoT Edge モジュールの Azure Blob Storage では、次のアーキテクチャがサポートされます。
-    - Windows AMD64
-    - Linux AMD64
-    - Linux ARM32
-    - Linux ARM64 (プレビュー)
+* サポートされているオペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。 IoT Edge モジュールの Azure Blob Storage では、次のアーキテクチャがサポートされます。
+  * Windows AMD64
+  * Linux AMD64
+  * Linux ARM32
+  * Linux ARM64 (プレビュー)
 
 クラウド リソース:
 
@@ -171,15 +170,15 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 
 次のクイック スタート サンプルでは IoT Edge からもサポートされる言語を使用するため、BLOB ストレージ モジュールと共に IoT Edge モジュールとして言語をデプロイできます。
 
-- [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-    - このバージョンのモジュールは BLOB の作成時刻を返さないため、この SDK の使用中に既知の問題が発生します。 そのため、BLOB の一覧表示などのいくつかの方法は機能しません。 回避策として、BLOB クライアントで API バージョンを明示的に "2017-04-17" に設定します。 <br>例: `block_blob_service._X_MS_VERSION = '2017-04-17'`
-    - [追加 BLOB のサンプル](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
-- [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
-- [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
-- [Go](../storage/blobs/storage-quickstart-blobs-go.md)
-- [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
+* [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Python](../storage/blobs/storage-quickstart-blobs-python.md)
+  * バージョン 2.1 より前の Python SDK には、このモジュールが BLOB の作成時刻を返さないという既知の問題があります。 この問題により、list_blobs (BLOB の一覧表示) などの一部のメソッドが機能しません。 回避策として、BLOB クライアントで API バージョンを「'2017-04-17'」に明示的に設定します。 例: `block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * [追加 BLOB のサンプル](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
+* [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+* [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Storage Explorer を使用してお使いのローカル ストレージに接続する
 
@@ -211,65 +210,65 @@ IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が
 
 サポート対象:
 
-- コンテナーの一覧表示
+* コンテナーの一覧表示
 
 サポート外:
 
-- Blob service プロパティの取得と設定
-- BLOB 要求のプレフライト
-- Blob service の統計情報の取得
-- アカウント情報の取得
+* Blob service プロパティの取得と設定
+* BLOB 要求のプレフライト
+* Blob service の統計情報の取得
+* アカウント情報の取得
 
 ### <a name="containers"></a>Containers
 
 サポート対象:
 
-- コンテナーの作成と削除
-- コンテナーのプロパティとメタデータの取得
-- BLOB を一覧表示する
-- コンテナー ACL の取得と設定
-- コンテナー メタデータの設定
+* コンテナーの作成と削除
+* コンテナーのプロパティとメタデータの取得
+* BLOB を一覧表示する
+* コンテナー ACL の取得と設定
+* コンテナー メタデータの設定
 
 サポート外:
 
-- コンテナーのリース
+* コンテナーのリース
 
 ### <a name="blobs"></a>BLOB
 
 サポート対象:
 
-- BLOB の配置、取得、削除
-- BLOB プロパティの取得と設定
-- BLOB メタデータの取得と設定
+* BLOB の配置、取得、削除
+* BLOB プロパティの取得と設定
+* BLOB メタデータの取得と設定
 
 サポート外:
 
-- BLOB のリリース
-- BLOB のスナップショット
-- BLOB のコピーとコピーの中止
-- BLOB の削除の取り消し
-- BLOB レベルの設定
+* BLOB のリリース
+* BLOB のスナップショット
+* BLOB のコピーとコピーの中止
+* BLOB の削除の取り消し
+* BLOB レベルの設定
 
 ### <a name="block-blobs"></a>ブロック blob
 
 サポート対象:
 
-- ブロックの配置
-- ブロック一覧の配置と取得
+* ブロックの配置
+* ブロック一覧の配置と取得
 
 サポート外:
 
-- URL からブロックの配置
+* URL からブロックの配置
 
 ### <a name="append-blobs"></a>追加 BLOB
 
 サポート対象:
 
-- ブロックの追加
+* ブロックの追加
 
 サポート外:
 
-- URL からブロックの追加
+* URL からブロックの追加
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid on IoT Edge の統合
 > [!CAUTION]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076984"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903344"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -210,11 +210,7 @@ Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つ
 
 サービス アーキテクチャを理解することなく、選択肢の優劣を判断するための一般的なガイダンスはありません。  障害シナリオに対するアプリケーションの回復性を向上させるには、[Azure クラウド設計パターン](https://docs.microsoft.com/azure/architecture/patterns/)に関する記事を参照してください。
 
-## <a name="limitations"></a>制限事項
-
-- データ プレーンは完全にゾーン冗長ですが (ゾーン ベースの保証が指定されていない場合)、制御プレーンの動作は完全にゾーン冗長ではありません。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を確認する
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
 - [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](load-balancer-standard-public-zonal-cli.md)を確認する

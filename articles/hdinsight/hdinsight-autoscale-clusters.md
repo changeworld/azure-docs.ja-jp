@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666037"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780064"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
@@ -28,12 +28,14 @@ Azure HDInsight のクラスター自動スケーリング機能では、クラ�
 
 | Version | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 (ESP なし) | はい (2.3 のみ)| はい | いいえ | いいえ | いいえ | いいえ | いいえ |
-| HDInsight 4.0 (ESP なし) | はい | はい | いいえ | いいえ | いいえ | いいえ | いいえ |
-| HDInsight 3.6 (ESP あり) | はい (2.3 のみ) | はい | いいえ | いいえ | いいえ | いいえ | いいえ |
-| HDInsight 4.0 (ESP あり) | はい | はい | いいえ | いいえ | いいえ | いいえ | いいえ |
+| HDInsight 3.6 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
+| HDInsight 4.0 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
+| HDInsight 3.6 (ESP あり) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
+| HDInsight 4.0 (ESP あり) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
 
-## <a name="how-it-works"></a>動作のしくみ
+\* HBase クラスターは、負荷ベースではなく、スケジュールベースのスケーリングの場合にのみ構成できます。
+
+## <a name="how-it-works"></a>しくみ
 
 HDInsight クラスターでは、負荷ベースのスケーリングまたはスケジュール ベースのスケーリングを選択できます。 負荷ベースのスケーリングでは、ユーザーが設定した範囲内でクラスター内のノードの数が変更され、最適な CPU 使用率と最小のランニング コストが保証されます。
 
@@ -70,7 +72,7 @@ HDInsight サービスによって、現在の CPU とメモリの要件を満�
 
 ノードごとの AM コンテナーの数および現在の CPU とメモリの要件に基づき、自動スケーリングにより、特定の数のノードを削除する要求が発行されます。 また、サービスでは、現在のジョブの実行に基づいて、削除候補のノードも検出されます。 スケールダウン操作では、最初にノードの使用が停止された後、クラスターから削除されます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>負荷ベースの自動スケーリングでクラスターを作成する
 
@@ -88,7 +90,7 @@ HDInsight サービスによって、現在の CPU とメモリの要件を満�
 
     ![ワーカー ノードの負荷ベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は、3 以上に設定する必要があります 。 クラスターを 3 つのノード未満にスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。 詳細については、「[セーフ モードでスタックする]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)」を参照してください。
+ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は、3 以上に設定する必要があります 。 クラスターを 3 つ未満のノードにスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。 詳細については、「[セーフ モードでスタックする]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)」を参照してください。
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>スケジュール ベースの自動スケーリングでクラスターを作成する
 
@@ -249,7 +251,7 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 | 更新中  | クラスターの自動スケーリング構成は更新されています。  |
 | HDInsight 構成  | クラスターのスケールアップまたはスケールダウン操作が進行中です。  |
 | 更新エラー  | 自動スケーリング構成の更新中に HDInsight で問題が発生しました。 お客様は、更新の再試行または自動スケーリングの無効化を選択できます。  |
-| Error  | クラスターに何らかの問題があり、使用できません。 このクラスターを削除し、新しいクラスターを作成してください。  |
+| エラー  | クラスターに何らかの問題があり、使用できません。 このクラスターを削除し、新しいクラスターを作成してください。  |
 
 クラスターの現在のノード数を見るには、クラスターの **[概要]** ページの **[クラスター サイズ]** グラフに移動するか、または **[設定]** の **[クラスター サイズ]** をクリックします。
 
@@ -261,6 +263,6 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 
 ![ワーカー ノードのスケジュールベースの自動スケーリング メトリックを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * クラスターを手動でスケール調整するためのベスト プラクティスについては、[スケール調整のベスト プラクティス](hdinsight-scaling-best-practices.md)に関するページを参照してください。

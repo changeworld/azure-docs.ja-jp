@@ -1,22 +1,171 @@
 ---
 title: Azure Update Management ログにクエリを実行する
-description: この記事では、Update Management のログにクエリを実行する方法について説明します
+description: この記事では、Log Analytics ワークスペースで Update Management のログに対してクエリを実行する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b09aa32c8ddee6406469a2adc44e067c58e186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420321"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867068"
 ---
-# <a name="query-update-records-for-update-management-in-log-analytics"></a>Log Analytics の Update Management に更新レコードのクエリを実行する
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor Logs で Update Management の更新レコードに対してクエリを実行する
 
-Azure Portal で提供されている詳細情報に加え、ログに対する検索を実行できます。 ソリューション ページで **[Log Analytics]** を選択します。 **[ログ検索]** ウィンドウが開きます。
+Update Management ソリューションで提供される詳細に加えて、Log Analytics ワークスペースに格納されているログを検索することができます。 ソリューション ページの左側のペインで、 **[ログ]** を選択します。 **[ログ検索]** ページが開きます。
 
 クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法などについては、[Log Analytics の検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
+
+## <a name="update-records"></a>Update レコード
+
+Windows および Linux VM の Update Management によって収集されるレコードと、ログ検索結果に表示されるデータの種類。 以下のセクションで、これらのレコードについて説明します。
+
+### <a name="required-updates"></a>必要な更新プログラム
+
+コンピューターで必要な更新プログラムを表す `RequiredUpdate` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+| プロパティ | [説明] | 
+|----------|-------------|
+| Computer | レポート コンピューターの完全修飾ドメイン名。 |
+| KBID | Windows Update のサポート技術情報の記事 ID。 |
+| ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 | 
+| Product | 更新プログラムが適用される製品。 | 
+| PublishDate | Windows Update から更新プログラムをダウンロードしてインストールする準備ができた日付。 |
+| サーバー | | 
+| SourceHealthServiceId | Log Analytics Windows エージェント ID を表す一意識別子。 |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 | 
+| TimeGenerated | レコードが作成された日付と時刻。 | 
+| 種類 | *アップデート* | 
+| UpdateClassification | 適用できる更新プログラムの種類を示します。 Windows の場合:<br> *緊急更新プログラム*<br> *セキュリティ更新プログラム*<br> *更新プログラムのロールアップ*<br> *Feature Pack*<br> *Service Pack*<br> *定義ファイルの更新*<br> *ツール*<br> *[Updates]* (更新)。 Linux の場合:<br> *重要な更新プログラムとセキュリティ更新プログラム*<br> *その他* |
+| UpdateSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> *重大*<br> *重要*<br> *中*<br> *低* |
+| UpdateTitle | 更新プログラムのタイトル。|
+
+### <a name="update"></a>更新
+
+`Update` という種類のレコードが作成されます。これは、使用可能な更新プログラムと、コンピューターでのそのインストール状態を表します。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+| プロパティ | [説明] | 
+|----------|-------------|
+| ApprovalSource | Windows オペレーティング システムにのみ適用されます。 値は "*Microsoft Update*" です。 |
+| Approved | "*True*" または "*False*" |
+| 分類 | *更新プログラム* |
+| Computer | レポート コンピューターの完全修飾ドメイン名。 |
+| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 |
+| MSRCBulletinID | セキュリティ情報 ID 番号 | 
+| MSRCSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> *重大*<br> *重要*<br> *中*<br> *低* |  
+| KBID | Windows Update のサポート技術情報の記事 ID。 |
+| ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
+| UpdateID | ソフトウェア更新プログラムの一意識別子。 |
+| RevisionNumber | 更新プログラムの特定のリビジョンのリビジョン番号。 |
+| 省略可能 | "*True*" または "*False*" | 
+| RebootBehavior | 更新プログラムをインストールまたはアンインストールした後の再起動動作。 |
+| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+| 種類 | *アップデート* |
+| VMUUID | 仮想マシンの一意識別子。 |
+| MG | 管理グループまたは Log Analytics ワークスペースの一意識別子。 | 
+| TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 | 
+| SourceSystem | *OperationsManager* | 
+| TimeGenerated | レコードが作成された日付と時刻。 | 
+| SourceComputerId | ソース コンピューターを表す一意識別子。 | 
+| タイトル | 更新プログラムのタイトル。 |
+| PublishedDate (UTC) | Windows Update から更新プログラムをダウンロードしてインストールする準備ができた日付。  |
+| UpdateState | 更新プログラムの現在の状態。 | 
+| Product | 更新プログラムが適用される製品。 |
+| SubscriptionId | Azure サブスクリプションの一意識別子。 | 
+| ResourceGroup | リソースがメンバーであるリソース グループの名前。 | 
+| ResourceProvider | リソース プロバイダーを指定します。 | 
+| リソース | リソースの名前。 | 
+| ResourceType | リソースの種類の名前。 | 
+
+### <a name="update-agent"></a>更新エージェント
+
+コンピューター上の更新エージェントの詳細を提供する `UpdateAgent` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+| プロパティ | [説明] | 
+|----------|-------------|
+| AgeofOldestMissingRequiredUpdate | | 
+| AutomaticUpdateEnabled | | 
+| Computer | レポート コンピューターの完全修飾ドメイン名。 |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
+| OSVersion | オペレーティング システムのバージョン。 |
+| サーバー | |
+| SourceHealthServiceId | Log Analytics Windows エージェント ID を表す一意識別子。 |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 |
+| TimeGenerated | レコードが作成された日付と時刻。 |
+| 種類 | *アップデート* | 
+| WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
+| WSUSServer | Windows Update エージェントにトラブルシューティングに役立つ問題がある場合は、エラーが表示されます。 |
+
+### <a name="update-deployment-status"></a>更新プログラムのデプロイの状態 
+
+コンピューターごとにスケジュールされたデプロイの更新プログラムのデプロイの状態を提供する、`UpdateRunProgress` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+| プロパティ | [説明] | 
+|----------|-------------|
+| Computer | レポート コンピューターの完全修飾ドメイン名。 |
+| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
+| CorrelationId | 更新プログラムに対して実行される Runbook ジョブの一意識別子。 |
+| EndTime | 同期プロセスが終了した時刻。 | 
+| ErrorResult | 更新プログラムのインストールに失敗した場合に生成される Windows Update のエラー コード。 | 
+| InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態 ("*実行中*"、"*成功*"、"*部分的に失敗*")。 |
+| KBID | Windows Update のサポート技術情報の記事 ID。 | 
+| ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
+| OSType | オペレーティング システムの種類 ("*Windows*" または "*Linux*") を指定します。 | 
+| Product | 更新プログラムが適用される製品。 |
+| リソース | リソースの名前。 | 
+| ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+| ResourceProvider | リソース プロバイダーを指定します。 | 
+| ResourceType | リソースの種類の名前。 | 
+| SourceComputerId | ソース コンピューターを表す一意識別子。 | 
+| SourceSystem | *OperationsManager* |
+| StartTime | 更新プログラムのインストールがスケジュールされている時刻。 |
+| SubscriptionId | Azure サブスクリプションの一意識別子。 | 
+| SucceededOnRetry | 最初の試行で更新プログラムの実行がいつ失敗したかと、現在の操作が再試行であることを示します。 |
+| TimeGenerated | レコードが作成された日付と時刻。 |
+| タイトル | 更新プログラムのタイトル。 |
+| 種類 | *UpdateRunProgress* |
+| UpdateId | ソフトウェア更新プログラムの一意識別子。 |
+| VMUUID | 仮想マシンの一意識別子。 |
+| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+
+### <a name="update-summary"></a>概要の更新 
+
+コンピューターごとの更新の概要を提供する `UpdateSummary` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+| プロパティ | [説明] | 
+|----------|-------------|
+| Computer | レポート コンピューターの完全修飾ドメイン名。 |
+| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
+| CriticalUpdatesMissing | 適用可能だが、インストールされていない重要な更新プログラムの数。 | 
+| ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
+| NETRuntimeVersion | Windows コンピューターにインストールされている .NET Framework のバージョン。 |
+| OldestMissingSecurityUpdateBucket | | 
+| OldestMissingSecurityUpdateInDays | |
+| OsVersion | オペレーティング システムのバージョン。 |
+| OtherUpdatesMissing | インストールされていない更新プログラムの検出数。 |
+| リソース |  リソースの名前。 | 
+| ResourceGroup | リソースがメンバーであるリソース グループの名前。 |
+| ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+| ResourceProvider | リソース プロバイダーを指定します。 |
+| ResourceType | リソースの種類の名前。 |
+| RestartPending | *True* または *False* です。 |
+| SecurityUpdatesMissing | 適用可能だが、インストールされていないセキュリティ更新プログラムの数。| 
+| SourceComputerId | 仮想マシンの一意識別子。 |
+| SourceSystem | *OpsManager* | 
+| SubscriptionId | Azure サブスクリプションの一意識別子。 |
+| TimeGenerated | レコードが作成された日付と時刻。 |
+| TotalUpdatesMissing | 適用可能だが、インストールされていない更新プログラムの合計数。 | 
+| 種類 | *UpdateSummary* |
+| VMUUID | 仮想マシンの一意識別子。 |
+| WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
+| WindowsUpdateSetting | Windows Update エージェントの状態を表示します。 次のいずれかの値になります。<br> "*Scheduled installation*" (スケジュールに従ってインストールする)<br> "*Notify before installation*" (インストールする前に通知する)<br> 異常な WUA エージェントからはエラーが返されます。 | 
+| WSUSServer | Windows Update エージェントにトラブルシューティングに役立つ問題がある場合は、エラーが表示されます。 |
+| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
 
 ## <a name="sample-queries"></a>サンプル クエリ
 

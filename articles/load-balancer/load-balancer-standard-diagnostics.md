@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048739"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772042"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
 Azure Standard Load Balancer では、次の診断機能が公開されています。
 
-* **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を介して新しい多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
+* **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を介して多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
 
 * **[リソース正常性]** :Azure portal の [ロード バランサー] ページと ([監視] の) [リソース正常性] ページに、Standard Load Balancer に対する [リソース正常性] セクションが表示されます。 
 
@@ -31,18 +31,18 @@ Azure Standard Load Balancer では、次の診断機能が公開されていま
 
 ## <a name = "MultiDimensionalMetrics"></a>多次元メトリック
 
-Azure Load Balancer では Azure Portal の新しい Azure メトリックを介して新しい多次元メトリックが提供されており、Load Balancer リソースにリアルタイム診断分析情報を取り込むために役立ちます。 
+Azure Load Balancer では Azure portal の Azure メトリックを介して多次元メトリックが提供されており、Load Balancer リソースにリアルタイム診断分析情報を取り込むために役立ちます。 
 
 Standard Load Balancer をさまざまに構成することで、次のメトリックを取得できます。
 
-| メトリック | リソースの種類 | 説明 | 推奨される集計 |
+| メトリック | リソースの種類 | [説明] | 推奨される集計 |
 | --- | --- | --- | --- |
-| データ パスの可用性 (VIP 可用性)| パブリックおよび内部ロード バランサー | Standard Load Balancer は、リージョン内からロード バランサー フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。| 平均 |
-| 正常性プローブの状態 (DIP 可用性) | パブリックおよび内部ロード バランサー | Standard Load Balancer では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスが使われます。 このメトリックは、ロード バランサー プールのインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。 正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。 |  平均 |
-| SYN (同期) パケット | パブリックおよび内部ロード バランサー | Standard Load Balancer は、伝送制御プロトコル (TCP) 接続を終了したり、TCP または UDP のパケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。| 平均 |
-| SNAT 接続 | パブリック ロード バランサー |Standard Load Balancer は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 送信元ネットワーク アドレス変換 (SNAT) ポートは、有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。 成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。| 平均 |
-| バイト カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたデータ量を報告します。| 平均 |
-| パケット カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたパケット数を報告します。| 平均 |
+| データ パスの可用性 (VIP 可用性)| パブリックおよび内部ロード バランサー | Standard Load Balancer は、リージョン内からロード バランサー フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。| Average |
+| 正常性プローブの状態 (DIP 可用性) | パブリックおよび内部ロード バランサー | Standard Load Balancer では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスが使われます。 このメトリックは、ロード バランサー プールのインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。 正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。 |  Average |
+| SYN (同期) パケット | パブリックおよび内部ロード バランサー | Standard Load Balancer は、伝送制御プロトコル (TCP) 接続を終了したり、TCP または UDP のパケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。| Average |
+| SNAT 接続 | パブリック ロード バランサー |Standard Load Balancer は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 送信元ネットワーク アドレス変換 (SNAT) ポートは、有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。 成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。| Average |
+| バイト カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたデータ量を報告します。| Average |
+| パケット カウンター |  パブリックおよび内部ロード バランサー | Standard Load Balancer は、フロントエンドごとに処理されたパケット数を報告します。| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Azure Portal でロード バランサーのメトリックを表示する
 
@@ -142,7 +142,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
 
 バイト数またはパケット数の統計情報を取得するには:
 1. メトリックの種類として **[Bytes Count]\(バイト数\)** および **[Packet Count]\(パケット数\)** 、またはその両方を、集計として **[平均]** を選択します。 
-2. 次のいずれかを実行します。
+2. 以下のいずれかを実行します。
    * 特定のフロントエンド IP、フロントエンド ポート、バックエンド IP、またはバックエンド ポートにフィルターを適用します。
    * フィルターを適用せずにロード バランサー リソースの全体的な統計情報を取得します。
 
@@ -193,13 +193,13 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
  
 さまざまなリソースの正常性状態とその説明を次の表に示します。 
 
-| リソースの正常性状態 | 説明 |
+| リソースの正常性状態 | [説明] |
 | --- | --- |
-| 使用可能 | ご利用の Standard Load Balancer リソースは正常であり、使用可能です。 |
+| 利用可能 | ご利用の Standard Load Balancer リソースは正常であり、使用可能です。 |
 | 使用不可 | ご利用の Standard Load Balancer リソースは正常ではありません。 **[Azure Monitor]**  >  **[メトリック]** の順に選択して、正常性を診断します<br>("*使用不可*" 状態は、ご利用の Standard Load Balancer にリソースが接続されていないことを意味している可能性もあります)。 |
 | Unknown | ご利用の Standard Load Balancer リソースの正常性状態はまだ更新されていません。<br>("*不明*" 状態は、ご利用の Standard Load Balancer にリソースが接続されていないことを意味している可能性もあります)。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
 - [ロード バランサーの送信接続](https://aka.ms/lboutbound)の詳細を確認します。

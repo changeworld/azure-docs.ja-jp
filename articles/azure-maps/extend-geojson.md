@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の拡張された GeoJSON ジオメトリ | Microsoft Docs
-description: Azure Maps で GeoJSON ジオメトリを拡張する方法について説明します。
+title: 拡張された GeoJSON ジオメトリ | Microsoft Azure Maps
+description: この記事では、特定のジオメトリを表すために、Microsoft Azure Maps で GeoJSON 仕様がどのように拡張されるかについて説明します。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 52325248d21a5d5112c9a7f9497c3e03fdf102a4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881995"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911626"
 ---
 # <a name="extended-geojson-geometries"></a>拡張された GeoJSON ジオメトリ
 
@@ -27,8 +27,8 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 * MultiLineString
 * MultiPoint
 * MultiPolygon
-* Point
-* Polygon
+* ポイント
+* 多角形
 
 Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) など) の中には、[GeoJSON 仕様][1]に含まれない "Circle" などのジオメトリが使用できるものもあります。
 
@@ -46,7 +46,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 
 - Radius
 
-    円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、_メートル_単位で、`double` 型である必要があります。
+    円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、_メートル_ 単位で、`double` 型である必要があります。
 
 - SubType
 
@@ -99,7 +99,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 }
 
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps の GeoJSON データの詳細について学習します。
 

@@ -1,6 +1,6 @@
 ---
-title: Web SDK でサポートされているブラウザー - Azure Maps | Microsoft Docs
-description: Azure Maps Web SDK でサポートされているブラウザーについて説明します。
+title: Web SDK でサポートされているブラウザー | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK でサポートされているブラウザーについて説明します。また、ブラウザーがサポート対象のブラウザーかどうかを確認する方法についても説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a67a358d45ac61c955c26f495169f7cd8364074
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432783"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910446"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 

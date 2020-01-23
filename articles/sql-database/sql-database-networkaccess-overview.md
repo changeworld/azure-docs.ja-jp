@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802934"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894789"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
 
@@ -47,24 +47,53 @@ ms.locfileid: "73802934"
 
 **[オン]** に設定すると、Azure SQL Server により、Azure 境界内のすべてのリソース (自分のサブスクリプションの一部であることも、そうでないこともあります) からの通信が許可されます。
 
-多くの場合、 **[オン]** 設定は、ほとんどのお客様が望むよりも許容範囲が広くなっています。この設定を **[オフ]** に設定し、より制限の厳しい IP ファイアウォール規則または仮想ネットワーク ファイアウォール規則に置き換えてもかまいません。 そうすると、次の機能に影響します。
+多くの場合、 **[オン]** 設定は、ほとんどのお客様が望むよりも許容範囲が広くなっています。この設定を **[オフ]** に設定し、より制限の厳しい IP ファイアウォール規則または仮想ネットワーク ファイアウォール規則に置き換えてもかまいません。 その場合、VNet の一部ではない Azure の VM で実行され、そのため Azure IP アドレスを介して SQL Database に接続される次の機能に影響があります。
 
 ### <a name="import-export-service"></a>Import Export Service
+**[Azure サービスにサーバーへのアクセスを許可する]** を [オフ] に設定すると、インポート/エクスポート サービスは機能しません。 ただし、[Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)、この問題を回避することができます。
 
-Azure SQL Database Import Export Service は、Azure の VM 上で実行されます。 これらの VM は VNet に存在しないため、データベースに接続するときに Azure IP を取得します。 **[Azure サービスにサーバーへのアクセスを許可する]** を削除すると、これらの VM はデータベースにアクセスできなくなります。
-DACFx API を使用して BACPAC インポートまたはエクスポートをコードで直接実行することにより、問題を回避できます。
+### <a name="data-sync"></a>データ同期
+**[Azure サービスにサーバーへのアクセスを許可する]** を [オフ] に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ**から [IP アドレスを追加](sql-database-server-level-firewall-rule.md)する、個々のファイアウォール規則エントリを作成する必要があります。
+これらのサーバー レベルのファイアウォール規則を、**ハブ**と**メンバー**の両方のデータベース (異なるリージョンに存在する可能性がある) をホストする論理サーバーに追加します。
 
-### <a name="sql-database-query-editor"></a>SQL Database クエリ エディター
+次の PowerShell スクリプトを使用して、米国西部リージョンの SQL サービス タグに対応する IP アドレスを生成します。
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-Azure SQL Database クエリ エディターは、Azure の VM にデプロイされます。 これらの VM は VNet に存在しません。 そのため、VM はデータベースに接続するときに Azure IP を取得します。 **[Azure サービスにサーバーへのアクセスを許可する]** を削除すると、これらの VM はデータベースにアクセスできなくなります。
+> [!TIP]
+> Location パラメーターを指定しても、Get-AzNetworkServiceTag は SQL サービス タグのグローバル範囲を返します。 それを必ずフィルターに掛けて、同期グループによって使用されるハブ データベースをホストするリージョンを見つけます
 
-### <a name="table-auditing"></a>テーブル監査
+PowerShell スクリプトの出力は Classless Inter-Domain Routing (CIDR) 表記であり、次のように [Get-IPrangeStartEnd ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) を使用して、開始と終了の IP アドレスの形式に変換する必要があることに注意してください
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-現在、お使いの SQL Database で監査を有効にする方法は 2 つあります。 Azure SQL Server でサービス エンドポイントを有効にすると、テーブル監査は失敗します。 この問題を軽減するには、BLOB 監査に移行します。
+次の追加手順を実行して、すべての IP アドレスを CIDR から開始と終了の IP アドレスの形式に変換します。
 
-### <a name="impact-on-data-sync"></a>データ同期への影響
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+これで、これらを個別のファイアウォール規則として追加し、 **[Azure サービスにサーバーへのアクセスを許可する]** を [オフ] に設定することができます。
 
-Azure SQL Database には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合は、お使いの SQL Database サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** アクセスをオフにし、データ同期機能を無効にします。
 
 ## <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 IP ベースのファイアウォールは、Azure SQL Server の機能であり、明示的にクライアント マシンの [IP アドレスを追加](sql-database-server-level-firewall-rule.md)するまで、データベース サーバーへのすべてのアクセスを遮断します。
@@ -100,7 +129,7 @@ Azure SQL Server のファイアウォールでは、SQL Database への通信�
 > [!NOTE]
 > サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク規則や IP ルールがなくても、VM は SQL Database と通信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サーバーレベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。
 

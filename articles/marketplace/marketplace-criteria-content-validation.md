@@ -2,25 +2,25 @@
 title: Marketplace 条件のコンテンツ検証 | Azure Marketplace
 description: この記事では、Marketplace で公開元になる方法について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
-manager: nunoc
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 060856cd43b978cec58ab08e1bb5b524bc2a4285
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/31/2019
+ms.author: evansma
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822961"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980870"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
 このドキュメントには、Azure Marketplace に掲載される新しいオファーやサービスのレビュー担当者に向けた要件のガイドラインとチェックリストが含まれています。
 
-すべてオファーが、以下に示した[すべての掲載要件](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements)を満たす必要があります。 [試用版](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)、[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements)、[コンテナー](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)、[コンサルティング オファー](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)が付属するオファーを含め、特定の掲載タイプについては、追加の要件とチェックリストがあります。
+すべてオファーが、以下に示した[すべての掲載要件](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements)を満たす必要があります。 [試用版](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)、[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements)、[コンテナー](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)、[コンサルティング オファー](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)が付属するオファーを含め、特定の掲載タイプについては、追加の要件とチェックリストがあります。
 
 
 ## <a name="all-listing-requirements"></a>すべての掲載要件
@@ -29,14 +29,14 @@ ms.locfileid: "73822961"
 |:--- |:--- |:--- |:--- |
 | 1 | リードの宛先 | リードの宛先が構成されている| OCP カタログに、パートナー ソリューション タブにも記載されているリードの宛先の CRM 情報が記載されている | 
 | 2 | オファーのタイトル | ソリューション オファリングの説明。 パートナー Web サイトでのソリューションのオンライン プロモーションと一致する | 主要な検索語が含まれている |
-| 3 | ロゴ | ロゴが正しく表示される | ロゴが正しく表示され、Azure Portal での大判イメージである[ヒーロー イメージ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish)が含まれている |
+| 3 | ロゴ | ロゴが正しく表示される | ロゴが正しく表示され、Azure portal での大判イメージであるヒーロー イメージが含まれている |
 | 4 |  オファーの説明 | <br>• 2 ～ 3 段落 <br>• ソリューション オファリングが一目で簡単に理解できる <br>• オファーの説明にスペルと文法の誤りがない <br>• オファーの説明は包括的で、対象ユーザー、ユーザーの種類、それが役立つ理由などを捉えている (価値提案) <br>• オファーの説明が、段落形式の、理解しやすい短文での語り口になっている | <br>• 対象業界がおおよそ示されている (適切な場合) <br>• 各段落の見出しが、後続の内容をまとめた 1 つの文または語句になっている適切なスタイルで書式設定されていて、主なメリットを強調する箇条書き記号が含まれる (適切な場合)。 ここでの目的は、見やすい形式で読者が一目でオファーのことを理解し、複数の段落を読まずに済むようにすることです。 <br>• 各段落の間にスペースがあり、車のパンフレットのように読める。 技術的な特徴やコードの専門用語ではなく、簡単な言葉でオファーを説明していて、多くの情報を含むことを意味します。 | 
 | 5 | カテゴリと業界 | <br>• カテゴリが、ソリューション オファリングの機能と一致している <br>• ソリューションが適合しないカテゴリまで広げない <br>• 最適な業界、またはすべての業界が選択されている (最適な業界でない場合) | <br>• 最大で 3 つのカテゴリ <br>• 最大で 3 つの業界 |
 | 6 | イメージ | <br>• イメージは必須ではないが、提供する場合は表示され、高解像度イメージにする必要がある。 <br>• イメージの要件は CPP 内とここにも記載されている <br>• スクリーン ショットに含まれるテキストは、はっきり見えるイメージを使っていて読みやすい | ソリューション オファリングが一目で簡単に理解できる |
 | 7 | ビデオ | <br>• ビデオは必須ではないが、提供する場合はエラーなく再生される必要がある。 <br>• 提供する場合は、移行ソリューションのデモである場合を除き、競合企業に言及してはいけない |<br>• 理想的には 3 分以上 <br>• ビデオ コンテンツを通して容易に理解できるソリューション オファリング <br>• ソリューションの機能のデモ |
 | 8 | 一覧の状態 (行動喚起) | <br>ラベルは以下のいずれかの種類になっている必要がある。 <ul>o 連絡する</ul><ul>o 試用版/試用版を入手する/試用を開始する/体験版</ul><ul>o 今すぐ購入/今すぐ入手</ul> | 顧客は、次に選択できるステップは次のうち何であるかを容易に理解できる。 <ul>1.試用版を試す</ul> <ul>2.今すぐ購入する</ul><ul>3.PoC、評価、または説明会を手配するために電子メールまたは電話番号で問い合わせる。</ul> | 
 | 9 | ソリューションの価格 | ソリューションの価格のタブ/詳細を備えていて、パートナー ソリューション オファーの現地通貨で示されている必要がある | 顧客が複数の選択肢を持てるよう、レベル別の価格が示される課金オプションが複数用意されている |    
-| 10 | 詳細情報 | 下部 (左側のマーケットプレース リンクではなく、説明の下) にあるリンクが、ソリューションに関する詳細情報に移動できるようになっていて、一般にアクセス可能で、正常に表示される |   パートナーのホーム ページのサイトだけでなく、特定の項目 (パートナー サイトでの特定ページなど) へのリンクがある | 
+| 10 | 詳細情報 | 下部 (左側のマーケットプレース リンクではなく、説明の下) にあるリンクが、ソリューションに関する詳細情報に移動できるようになっていて、一般にアクセス可能で、正常に表示される |    パートナーのホーム ページのサイトだけでなく、特定の項目 (パートナー サイトでの特定ページなど) へのリンクがある | 
 | 11 | ソリューションのサポートとヘルプ | 以下のうち、少なくとも 1 つへのリンク: <br>o   電話番号 <br>o 電子メールでのサポート <br>o チャット エージェント <br>o   コミュニティ フォーラム |<br>• 示したサポート方法すべて: 電話と電子メールでのサポート。 <br>•    試用版や体験版の期間中は有料サポートを無料で提供 | 
 | 12 | 法的情報 | ポリシーや条件をパブリック URL で参照可能 |  | 
 
@@ -45,16 +45,16 @@ ms.locfileid: "73822961"
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
 |:--- |:--- |:--- |:--- |
-|  | 一覧の状態 | リンクは顧客主導の試用エクスペリエンスにつながっている必要がある | その他の CTA (今すぐ購入など) も使用できる | 
+|  | 状態を一覧表示します。 | リンクは顧客主導の試用エクスペリエンスにつながっている必要がある | その他の CTA (今すぐ購入など) も使用できる | 
 
 ---
-## <a name="saas-apps-requirements"></a>SaaS アプリの要件
+## <a name="saas-app-requirements"></a>SaaS アプリの要件
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
 |:--- |:--- |:--- |:--- |
 | 1 | オファーのタイトル |<br>• 小文字の英数字、ダッシュ、アンダースコアのみで構成する必要がある。 いったん公開すると変更できない <br>• ソリューション オファリングの説明。<br>• パートナー Web サイトでのソリューションのオンライン プロモーションと一致する。 | 主要な検索語が含まれている |
 | 2 | 技術情報:構成 |<br>• SaaS アプリの場合、アプリを掲載するかどうかだけを選択するか、顧客が Azure を通してアプリを購入できるようにするかどうかを選択する。<br>• オファー入手用のボタンに表示するのに適したテキストを選択する(無料、無料試用版、連絡する)<br>• アプリが次の技術を利用している場合は、これらの該当製品のいずれかのみを (ポップアップ ボックスで) 選択する:Cortana Intelligence、Power BI ソリューション テンプレート、Power Apps |  |
-| 3 | 体験版 | 選択肢:はい/いいえ | 顧客は、次に選択できるステップは次のうち何であるかを容易に理解できる。 <br>1.試用版を試す <br>2.今すぐ購入する <br>3.PoC、評価、または説明会を手配するために電子メールまたは電話番号で問い合わせる。 |
+| 3 | 体験版 | 選択:はい、いいえ | 顧客は、次に選択できるステップは次のうち何であるかを容易に理解できる。 <br>1.試用版を試す <br>2.今すぐ購入する <br>3.PoC、評価、または説明会を手配するために電子メールまたは電話番号で問い合わせる。 |
 | 4 | ネットショップの詳細:オファーの概要 | これはアプリの検索ページに表示される (最大 100 文字) | |
 | 5 | ネットショップの詳細:業界 | 業界 (最大 2):アプリに最もよく当てはまり、アプリを適用できる業界を選択します。 | |
 | 6 | オファーの説明 | <br>• 単純な HTML を使用可能 (p、em、ul、li、ol、ヘッダー タグなど)。 最大 3,000 文字。 <br>•  2 ～ 3 段落 <br>•    ソリューション オファリングが一目で簡単に理解できる <br>•    説明は包括的で、対象ユーザー*、ユーザーの種類、それが役立つ理由などを捉えている (価値提案) <br>• オファーの説明が、段落形式の、理解しやすい短文での語り口になっている。 | <br>•   対象業界がおおよそ示されている (適切な場合) <br>• 各段落の見出しが、後続の内容をまとめた 1 つの文または語句になっている適切なスタイルで書式設定されていて、主なメリットを強調する箇条書き記号が含まれる (適切な場合)。 ここでの目的は、見やすい形式で読者が一目でオファーのことを理解し、複数の段落を読まずに済むようにすることです。 <br>• 各段落の間にスペースがあり、車のパンフレットのように読める。 技術的な特徴やコードの専門用語ではなく、簡単な言葉でオファーを説明していて、多くの情報を含むことを意味します。 | 
@@ -81,7 +81,7 @@ ms.locfileid: "73822961"
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 |
 |:--- |:--- |:--- |:--- |
-| 1 | オファーのタイトル  |  <br>• サービスの種類と期間を次の形式で明確に示す必要がある:名前 :期間の種類。 (例: "オファー エンゲージメント:1 週間の概念実証")  | <br>• パブリッシャー名は繰り返さない <br>•  説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
+| 1 | オファーのタイトル  |  <br>• サービスの種類と期間を次の形式で明確に示す必要がある:名前: 期間の種類。 (すなわち、"オファー エンゲージメント:1 週間の概念実証")  | <br>• パブリッシャー名は繰り返さない <br>•  説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
 | 2 | オファーの説明  |<br>• [Microsoft の製品名](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)が適切に使用されるようにする <br>• 価格で区分したオファー:概算では、オファーの上部または下部のいずれかに、変動要因 (クライアントへの移動費、移行されるサーバー数など) を説明する注記を付ける必要があります <br>• オファーの種類ごとに、次のような説明の要件がある。 <ul><br>o 簡単な説明には、簡単な説明で取り上げられるトピックに関する情報の箇条書きが少なくとも 4 ～ 5 つ必要 </ul> <ul><br>o すべてワーク ショップに議題が必要 </ul><ul><br>o ワークショップの期間に応じて、すべての議題を日単位または週単位で分けする必要がある </ul><ul><br>o 評価、POC、トレーニング以外のワーク ショップ、実装のオファーには成果物が必要 </ul><ul><br>o トレーニング ワークショップには、成果物は不要だが、取り上げられるトピックを示したより詳細な議題が必要。 | <br>•  どのオファーにも議題と成果物がある <br>•  オファーの最上部セクションに、サービスを提供する企業に関する状況を示した段落が含まれる <br>•  オファーの最上部セクションとして、サービス自体の価値に関する段落が含まれる |
 | 3 | Markdown 書式設定  | すべてのオファーで、HTML への変換時にオファーが正しくレンダリングされるように Markdown 書式設定を使用する必要がある  |  |
 | 4 | カテゴリと業界 | カテゴリは関係がない |  | 
@@ -95,6 +95,6 @@ ms.locfileid: "73822961"
 | 12 | 詳細情報  | <br>• 下部 (左側のマーケットプレース リンクではなく、説明の下) にあるリンクが、ソリューションに関する詳細情報に移動できるようになっていて、一般にアクセス可能で、正常に表示される。 <br>•  リンクには "表示名" が付いていて、どのダウンロードでもファイル名としては表示されない | |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * マーケットプレースでのさまざまなオファーの種類について学びます。 <br>[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[コンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。

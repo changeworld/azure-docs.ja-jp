@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8b29bbce1511b022def522d46c74b99967a76ea3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204482"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834348"
 ---
 # <a name="sql-server-vm-on-an-azure-dedicated-host"></a>Azure 専用ホストでの SQL Server VM 
 
@@ -28,9 +28,10 @@ ms.locfileid: "71204482"
 ## <a name="overview"></a>概要
 [Azure 専用ホスト](/azure/virtual-machines/windows/dedicated-hosts)は、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは Microsoft のデータ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
 
+## <a name="limitations"></a>制限事項
 
-[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
-
+- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
+- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
 
 ## <a name="licensing"></a>ライセンス
 
@@ -64,13 +65,13 @@ Azure 専用ホストに SQL Server VM を追加する場合は、2 つの異な
 
 これは独自のホストであるため、1:2 の比率で仮想化を設定することができます。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **Q:Azure 専用ホストで Windows Server/SQL Server ライセンスの Azure ハイブリッド特典はどのように適用されますか?**
 
 A:お客様はソフトウェア アシュアランス付きの既存の Windows Server/SQL Server ライセンス、または条件を満たすサブスクリプション ライセンスの価値を利用し、Azure ハイブリッド特典を使用して Azure 専用ホストの支払いに割引料金を適用できます。 Windows Server Datacenter および SQL Server Enterprise Edition を使用するお客様は、ホスト全体のライセンスを取得して Azure ハイブリッド特典を使用すると、無制限の仮想化 (基になるサーバーの物理容量に応じて、できるだけ多くの Windows Server 仮想マシンをホスト上にデプロイすること) が可能になります。  Windows Server と SQL Server 2008/R2 の延長セキュリティ更新プログラムは、Azure 専用ホストの Windows Server と SQL Server のすべてのワークロードにも無料で適用されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

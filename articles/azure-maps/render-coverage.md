@@ -1,6 +1,6 @@
 ---
-title: Azure Maps のレンダリング範囲 | Microsoft Docs
-description: Azure Maps のレンダリング範囲について説明します
+title: レンダリング範囲 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps のレンダリング範囲となるリージョンと、レンダリングの詳細レベルについて説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934288"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910662"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -23,7 +23,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 
 ## <a name="legend"></a>凡例
 
-| シンボル | 意味 |
+| Symbol | 意味 |
 |--------|---------|
 | ✓ | 地域は詳細なデータで表されます。   |
 | Ø | 地域は簡略化されたデータで表されます。 |
@@ -105,7 +105,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | ボリビア多民族国 | ✓ | ✓ |
 | ボネール島、セント・ユースタティウス島、サバ島 | ✓ | ✓ |
 | ブラジル                    | ✓ | ✓ |
-| カナダ                    | ✓ | ✓ |
+| Canada                    | ✓ | ✓ |
 | ケイマン諸島            | ✓ | ✓ |
 | チリ                     | ✓ | ✓ |
 | コロンビア                  | ✓ | ✓ |
@@ -146,13 +146,13 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | スリナム                  | ✓ | ✓ |
 | トリニダード・トバゴ       | ✓ | ✓ |
 | タークス・カイコス諸島  | ✓ | ✓ |
-| 米国             | ✓ | ✓ |
+| United States             | ✓ | ✓ |
 | ウルグアイ                   | ✓ | ✓ |
 | ベネズエラ                 | ✓ | ✓ |
 | イギリス領ヴァージン諸島   | ✓ | ✓ |
 | アメリカ領ヴァージン諸島      | ✓ | ✓ |
 
-## <a name="asia"></a>アジア 
+## <a name="asia"></a>Asia 
 
 | 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
@@ -298,7 +298,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | イギリス            | ✓ | ✓ |
 | バチカン              | ✓ | ✓ |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps のレンダリングの詳細については、「[Zoom levels and tile grid](zoom-levels-and-tile-grid.md)」(ズーム レベルとタイル グリッド) を参照してください。
 

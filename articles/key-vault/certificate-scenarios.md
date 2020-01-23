@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879311"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832849"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -38,10 +38,10 @@ ms.locfileid: "70879311"
 **手順 1** - 証明機関 (CA) プロバイダー  
 -   特定の会社 (たとえば、 Contoso など) の IT 管理者、PKI 管理者または CA のアカウントを管理する任意のユーザーとしてのオンボーディングは、Key Vault 証明書を使用するための前提条件です。  
     次の CA は、現在 Key Vault と提携しているプロバイダーです。  
-    -   DigiCert - Key Vault は、DigiCert による OV SSL 証明書を提供します。  
-    -   GlobalSign - Key Vault では、GlobalSign による OV SSL 証明書が提供されます。  
+    -   DigiCert - Key Vault は、DigiCert による OV TLS/SSL 証明書を提供します。  
+    -   GlobalSign - Key Vault は、GlobalSign による OV TLS/SSL 証明書を提供します。  
 
-**手順 2** - CA プロバイダーのアカウント管理者は、Key Vault が使用する資格証明を作成して、Key Vault を介して SSL 証明書を登録、更新、使用します。
+**手順 2** - CA プロバイダーのアカウント管理者は、Key Vault が使用する資格証明を作成して、Key Vault を介して TLS/SSL 証明書を登録、更新、使用します。
 
 **手順 3** - Contoso 管理者と証明書を所有する Contoso 従業員 (Key Vault ユーザー) は、CA に応じて、証明書を管理者から取得するか、CA のアカウントから直接取得できます。  
 
@@ -62,9 +62,9 @@ ms.locfileid: "70879311"
 
 **手順 4** - 次の説明は、前の図の緑の番号付きの手順に対応しています。  
   (1) - 上の図で、アプリケーションは証明書を作成しています。これは、キー コンテナーにキーを作成することで内部的に開始します。  
-  (2) - Key Vault は、SSL 証明書の要求を CA に送信します。  
+  (2) - Key Vault は、TLS/SSL 証明書要求を CA に送信します。  
   (3) - アプリケーションは、ループおよび待機プロセスで Key Vault に証明書の完了をポーリングします。 Key Vault が CA の応答で x509 証明書を受信すると、証明書の作成が完了します。  
-  (4) - CA は、X509 SSL 証明書で Key Vault の SSL 証明書の要求に応答します。  
+  (4) - CA は、X509 TLS/SSL 証明書で Key Vault の TLS/SSL 証明書要求に応答します。  
   (5) - 新しい証明書の作成は、CA の X509 証明書の合併で完了します。  
 
   Key Vault ユーザー - ポリシーを指定することで証明書を作成します
@@ -125,6 +125,6 @@ PEM 形式の EC キーは現在サポートされていません。
 
   (5) - アプリケーションは、CA からの X509 証明書の合併で新しい証明書の作成を完了します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)

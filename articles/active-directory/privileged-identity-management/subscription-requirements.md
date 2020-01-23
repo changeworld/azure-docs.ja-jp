@@ -13,45 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895112"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932315"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用するには、有効なライセンスがディレクトリになければいけません。 さらに、管理者と関連ユーザーにライセンスが割り当てられている必要があります。 この記事では、Privileged Identity Management を使用するためのライセンス要件について説明します。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="valid-licenses"></a>有効なライセンス
 
-Privileged Identity Management を使用するには、お客様のディレクトリに次のいずれかの有料ライセンスまたは試用版ライセンスが必要です。
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+## <a name="how-many-licenses-must-you-have"></a>ライセンスはいくつ必要ですか?
 
-詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください。
+少なくとも、次のタスクを実行する従業員と同じ数の Azure AD Premium P2 ライセンスがディレクトリにあることを確認します。
 
-## <a name="which-users-must-have-licenses"></a>ライセンスが必要なユーザー
-
-Privileged Identity Management を操作する管理者または PIM の恩恵を受けるユーザーには、それぞれライセンスが必要です。 たとえば、次のようになります。
-
-- PIM を使用して管理された Azure AD ロールを持つ管理者
-- PIM を使用して管理された Azure リソース ロールを持つ管理者
-- 特権ロール管理者のロールに割り当てられた管理者
 - PIM を使用して管理された Azure AD ロールに対象として割り当てられたユーザー
-- PIM で要求を承認または却下できるユーザー
+- PIM でアクティブ化要求を承認または却下できるユーザー
 - Just-In-Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当てられたユーザー  
 - アクセス レビューに割り当てられたユーザー
 - アクセス レビューを実行するユーザー
 
-お客様のユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」を参照してください。
+Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありません**。
+
+- PIM のセットアップ、ポリシーの構成、アラートの受信、アクセス レビューの設定を行うグローバル管理者ロールまたは特権ロール管理者ロールを持つユーザーには、ライセンスは必要ありません。
+
+ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
+
+## <a name="example-license-scenarios"></a>ライセンスのシナリオ例
+
+必要なライセンス数の決定に役立つライセンスのシナリオ例をいくつか以下に示します。
+
+| シナリオ | 計算 | ライセンス数 |
+| --- | --- | --- |
+| Woodgrove Bank には、各部門に 10 人の管理者がいて、PIM を構成および管理するグローバル管理者が 2 人います。 5 人の管理者を対象とします。 | 資格のある管理者用の 5 ライセンス | 5 |
+| Graphic Design Institute には 25 人の管理者がいて、そのうちの 14 人は PIM で管理されています。 ロールのアクティブ化には承認が必要であり、組織にはアクティブ化を承認できるユーザーが 3 人います。 | 資格のあるロール用の 14 ライセンス + 3 承認者 | 17 |
+| Contoso には 50 人の管理者がいて、そのうちの 42 人は PIM で管理されています。 ロールのアクティブ化には承認が必要であり、組織にはアクティブ化を承認できるユーザーが 5 人います。 また、Contoso では、管理者ロールに割り当てられているユーザーのレビューが毎月行われており、レビュー担当者はユーザーのマネージャーで、そのうちの 6 人は PIM によって管理される管理者ロールにはなっていません。 | 資格のあるロール用の 42 ライセンス + 5 承認者 + 6 レビュー担当者 | 53 |
 
 ## <a name="what-happens-when-a-license-expires"></a>ライセンスの有効期限が切れた場合に発生すること
 
@@ -63,7 +68,7 @@ Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限�
 - Azure AD ロールのすべての実行中のアクセス レビューが終了し、Privileged Identity Management の構成設定が削除されます。
 - ロールの割り当てを変更しても、Privileged Identity Management から電子メールが送信されなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management をデプロイする](pim-deployment-plan.md)
 - [Privileged Identity Management の使用を開始する](pim-getting-started.md)

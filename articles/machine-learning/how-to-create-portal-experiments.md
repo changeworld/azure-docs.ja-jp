@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 581b6b4143f5924c27bac726bbea823761574c1b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535383"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894032"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio で自動化された機械学習の実験を作成、調査、およびデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Variance| この列のデータが平均値からどのくらい離れている�
 傾斜| この列のデータが正規分布とどのくらい異なるかを示す尺度。
 尖度| この列のデータが正規分布と比較してどのくらい裾の重い分布になっているかを示す尺度。
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>詳細な前処理オプション
 
-実験を構成するときに、詳細設定の `Preprocess` を有効にすることができます。 そうすることで、以下のデータの前処理と特性付けの手順が自動的に実行されます。
+実験を構成するときに、詳細設定の `Preprocess` を有効にすることができます。 そうすることで、前処理の一環として、以下のデータ ガードレールと特徴付けの手順が自動的に実行されます。
 
 |前処理手順&nbsp;| [説明] |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ Variance| この列のデータが平均値からどのくらい離れている�
 |テキスト ターゲット エンコード|テキスト入力の場合、bag-of-words を使用するスタック線形モデルは、各クラスの確率を生成するために使用されます。|
 |証拠の重み (WoE)|ターゲット列に対するカテゴリ列の相関関係のメジャーとして、WoE を計算します。 それは、クラス内およびクラス外の確率に対する比率の対数として計算されます。 このステップでは、クラスごとに 1 つの数値特徴列を出力し、明示的に欠損値と外れ値の処理を補完する必要がなくなります。|
 |クラスターの距離|k-means クラスタリング モデルを、すべての数値列を対象にトレーニングします。  k 個の新しい特徴 (クラスターごとに 1 つの新しい数値特徴) を出力します。各クラスターの重心までの各サンプルの距離を含みます。|
+
+### <a name="data-guardrails"></a>データ ガードレール
+
+自動機械学習では、データの潜在的な問題 (欠損値、クラスの不均衡など) を特定してより優れた結果を得るための是正措置を取るのに役立つ、データ ガードレールが提供されています。 多数のベスト プラクティスが提供されており、信頼できる結果を得るために適用できます。 
+
+次の表は、現在サポートされているデータ ガードレールと、実験を送信するときにユーザーに表示される可能性がある関連ステータスを示しています。
+
+ガードレール|Status|トリガー&nbsp;の&nbsp;条件
+---|---|---
+欠損&nbsp;値&nbsp;の補完 |**成功** <br> <br> **修正済み**|    どの入力&nbsp;列にも欠損値がありません <br> <br> 一部の列に欠損値があります
+クロス検証|**完了**|明示的な検証セットが指定されていない場合
+高い&nbsp;カーディナリティ&nbsp;の機能の&nbsp;検出|  **成功** <br> <br>**完了**|   カーディナリティの高い機能は検出されませんでした <br><br> カーディナリティの高い機能が検出されました
+クラス均衡の検出 |**成功** <br><br><br>**通知済み** |クラスは、トレーニング データ内で均衡が取られます。サンプルの数と比率によって測定され、データセット内で各クラスに適正な表現がある場合、データセットは均衡がとれていると見なされます。 <br> <br> トレーニング データ内でクラスが不均衡になっています
+時系列データの一貫性|**成功** <br><br><br><br> **修正済み** |<br> 選択した {期間、ラグ、ローリング ウィンドウ} の値が分析され、潜在的なメモリ不足の問題は検出されませんでした。 <br> <br>選択した {期間、ラグ、ローリング ウィンドウ} の値が分析され、潜在的に実験がメモリ不足に陥ることがあります。 ラグまたはローリング ウィンドウがオフになっています。
 
 ## <a name="run-experiment-and-view-results"></a>実験を実行して結果を表示
 
@@ -226,4 +241,4 @@ Variance| この列のデータが平均値からどのくらい離れている�
 * [Azure Machine Learning を使用して初めての自動化された ML の実験を作成するエンドツーエンドのチュートリアル](tutorial-first-experiment-automated-ml.md)をお試しください。 
 * [自動化された機械学習の詳細](concept-automated-ml.md)と Azure Machine Learning について学習します。
 * [自動化された機械学習の結果を解釈します](how-to-understand-automated-ml.md)。
-* [Web サービスを使用する方法を学習します](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)。
+* [Web サービスを使用する方法を学習します](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。

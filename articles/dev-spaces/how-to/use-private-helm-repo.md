@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure Dev Space でプライベート Helm リポジトリを使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー, Helm
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279916"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867284"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces でプライベート Helm リポジトリを使用する
 
@@ -35,6 +35,9 @@ helm repo update
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> `prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works.md#prepare-your-code)の生成が試行されます。 これらのファイルは、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 アプリケーションのチャート ディレクトリにチャートを含む [requirements.yaml][helm-requirements] ファイルを作成します。 たとえば、アプリケーションの名前が *app1* の場合は、*charts/app1/requirements.yaml* を作成します。
 
@@ -72,7 +75,7 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Helm とそのしくみ][helm]についてさらに学習します。
 

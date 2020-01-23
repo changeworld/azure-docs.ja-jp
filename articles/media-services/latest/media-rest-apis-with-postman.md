@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services REST API 呼び出し用の Postman の構成
+title: Azure Media Services v3 REST API 呼び出し用に Postman を構成する
 description: この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように Postman を構成する方法を示します。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888106"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779639"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
 
 この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
@@ -78,7 +78,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 AMS v3 リソースの操作を開始する前に、サービス プリンシパル認証用の Azure AD トークンを取得して設定する必要があります。
 
-1. Postman アプリの左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Step 1: Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
 2. 次に、[Get Azure AD Token for Service Principal Authentication]\(\サービス プリンシパル認証のために Azure AD トークンを取得する) を選択します。
 3. **[送信]** をクリックします。
 
@@ -97,13 +97,13 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 * アプリケーションが失敗し、"HTTP 504:ゲートウェイ タイムアウト" というエラーが表示される場合、Media Services アカウントに求められる場所以外の値に場所変数が明示的に設定されていることを確認します。 
 * "アカウントが見つかりません" というエラーが表示される場合、Media Services アカウントが入っている場所に本文の JSON メッセージの場所プロパティが設定されていることも確認します。 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
 - [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [REST を使用してファイルのストリーム配信を行う](stream-files-tutorial-with-rest.md)。  
 - [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357997"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933956"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 
@@ -77,7 +77,7 @@ Azure 内の SQL Server データベースのディザスター リカバリー 
 
 ## <a name="free-dr-replica-in-azure"></a>Azure での無料 DR レプリカ
 
-[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)を所有している場合は、パッシブ DR インスタンスの追加のライセンス価格を発生させることなく、Always On 可用性グループまたはフェールオーバー クラスター インスタンスを使用して SQL Server でハイブリッド ディザスター リカバリー (DR) プランを実装できます。
+[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)を所有している場合は、パッシブ DR インスタンスの追加のライセンス価格を発生させることなく、SQL Server でハイブリッド ディザスター リカバリー (DR) プランを実装できます。
 
 下の図で、このセットアップは Azure 仮想マシン上で実行されている 12 個のコアを利用する SQL Server を、12 個のコアを使用するオンプレミスの SQL Server デプロイのディザスター リカバリー レプリカとして使用しています。 以前は、オンプレミスと Azure 仮想マシン デプロイの SQL Server の 12 個のコアをライセンスする必要がありました。 新しい特典では、Azure 仮想マシン上で実行されているパッシブ レプリカの特典が提供されます。 現在は、Azure 仮想マシン上のパッシブ レプリカのディザスター リカバリーの条件が満たされている限り、オンプレミスで実行されている SQL Server の 12 個のコアのみをライセンスする必要があります。
 

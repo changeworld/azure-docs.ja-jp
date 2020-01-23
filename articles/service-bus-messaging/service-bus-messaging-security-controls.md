@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894399"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903246"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus Messaging のセキュリティ コントロール
 
@@ -42,14 +42,14 @@ ms.locfileid: "74894399"
 | セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
 |---|---|--|--|
 | 認証| はい | [Azure Active Directory マネージド サービス ID](service-bus-managed-service-identity.md) を通じて管理されます。| [Service Bus の認証と承認](service-bus-authentication-and-authorization.md) |
-| Authorization| はい | [RBAC](authenticate-application.md) と SAS トークンを使用した承認をサポートしています。 | [Service Bus の認証と承認](service-bus-authentication-and-authorization.md) |
+| 承認| はい | [RBAC](authenticate-application.md) と SAS トークンを使用した承認をサポートしています。 | [Service Bus の認証と承認](service-bus-authentication-and-authorization.md) |
 
 ## <a name="data-protection"></a>データ保護
 
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
 |---|---|--|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  はい (サーバー側の保存時の暗号化では既定で)。 |  |  |
-| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい。 現在プレビューの段階 | Azure KeyVault 内のカスタマー マネージド キーを使用して、保存されている Service Bus 名前空間のデータを暗号化できます。 | [Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する (プレビュー)](configure-customer-managed-key.md)  |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー |  はい (サーバー側の保存時の暗号化では既定で)。 |  |  |
+| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい。 | Azure KeyVault 内のカスタマー マネージド キーを使用して、保存されている Service Bus 名前空間のデータを暗号化できます。 | [Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する](configure-customer-managed-key.md)  |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |   |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | 標準の HTTPS/TLS メカニズムがサポートされます。 |   |
 | API 呼び出しの暗号化| はい | API 呼び出しは、[Azure Resource Manager](../azure-resource-manager/index.yml) と HTTPS を使用して行われます。 |   |
@@ -60,6 +60,6 @@ ms.locfileid: "74894399"
 |---|---|--|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | [Azure Resource Manager API](/rest/api/resources/) によるリソース プロバイダーのバージョン管理がサポートされます。|   |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

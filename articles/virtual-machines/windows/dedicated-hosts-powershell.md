@@ -12,39 +12,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033361"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833836"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>プレビュー:Azure PowerShell を使用して専用ホストに VM をデプロイする
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 
-Azure PowerShell バージョン 2.4.2 以降がインストールされ、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。 バージョン2.4.2 をインストールするには、PowerShell プロンプトを開き、次のように入力します。
+Azure PowerShell バージョン 2.8.0 以降がインストールされていて、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>制限事項
 
-PowerShell でプレビュー モジュールの機能を有効にするには、PowerShellGet モジュールのバージョン 1.6.0 以降が必要です。 PowerShell Core の最新バージョンにはこの機能が自動的に組み込まれていますが、前のバージョンの PowerShell では、次のコマンドを実行して最新バージョンに更新することができます。
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> 現在、専用ホストはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> **プレビューに関する既知の制限事項**
-> - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-> - プレビューの初期リリースでは、次の VM シリーズがサポートされています: DSv3 と ESv3。 
-
-
+- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
+- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
@@ -215,7 +199,7 @@ Remove-AzResourceGroup -Name $rgName
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
 

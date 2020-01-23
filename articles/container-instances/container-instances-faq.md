@@ -3,19 +3,19 @@ title: よく寄せられる質問
 description: Azure Container Instances サービスに関連するよく寄せられる質問の回答
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484137"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888024"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
 この記事では、Azure Container Instances についてよく寄せられる質問に回答します。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 ### <a name="how-large-can-my-container-image-be"></a>コンテナー イメージのサイズはどのくらいになる可能性がありますか。
 
@@ -83,7 +83,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>カスタム VNet で実行されているインスタンスにはどのような機能を使用できますか。
 
-選択した Azure 仮想ネットワークにコンテナー グループをデプロイし、プライベート IP をコンテナー グループにデリゲートして、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは現在プレビュー段階にあり、この機能の一部の側面は一般提供 (GA) の前に変更される可能性があります。 最新情報については、「[プレビューの制限事項](container-instances-vnet.md#preview-limitations)」を参照してください。
+選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは、現在、Azure リージョンのサブセット内にある運用環境ワークロードで使用できます。
 
 ## <a name="pricing"></a>価格
 
@@ -95,7 +95,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 コンテナー グループ全体が停止すると、測定は停止します。 コンテナー グループのコンテナーが実行されている限り、コンテナーを再起動する場合に備えてリソースは保持されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Service の[詳細情報](container-instances-overview.md)。
 * Azure Container Instances の[一般的な問題のトラブルシューティング](container-instances-troubleshooting.md)。

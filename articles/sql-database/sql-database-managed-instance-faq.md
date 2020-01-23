@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443855"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835007"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -105,7 +105,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="tune-performance"></a>パフォーマンスの調整
 
-**マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか? **
+**マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?**
 
 General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 詳しくは、「[General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」をご覧ください。
 
@@ -180,8 +180,8 @@ Azure SQL Database マネージド インスタンスのデプロイに関連す
 
 ## <a name="dns-refresh"></a>DNS の更新 
 
-**DNS の更新はできますか? **
-  
+**DNS の更新はできますか?**
+
 現在、マネージド インスタンスの DNS サーバー構成を更新する機能は提供されていません。
 
 DNS 構成は、最終的に次の場合に更新されます。

@@ -3,20 +3,20 @@ title: Hive を用いた Azure HDInsight Hadoop での分析 - Team Data Science
 description: Azure HDInsight Hadoop で Hive を使用して予測分析を行う Team Data Science Process の例を紹介します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804657"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864164"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル 
 
@@ -36,10 +36,10 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Hive と HDInsight Hadoop を使って広告クリックを予測する
 
-[1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)に関するチュートリアルでは、公開されている [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) のクリック データセットを使用して、チップが支払われるかどうかと、想定される金額の範囲を予測します。 このシナリオでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)と Hive を使って、データの格納、調査、特徴エンジニアリング、ダウン サンプリングが実行されています。 ユーザーが広告をクリックするかどうかを予測する二項分類モデルの構築、トレーニング、スコア付けを、Azure Machine Learning を使って行います。 そのモデルの 1 つを Web サービスとして公開する方法が、チュートリアルの最後に紹介されています。
+[1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)に関するチュートリアルでは、公開されている [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) のクリック データセットを使用して、チップが支払われるかどうかと、想定される金額を予測します。 このシナリオでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)と Hive を使って、データの格納、調査、特徴エンジニアリング、ダウン サンプリングが実行されています。 ユーザーが広告をクリックするかどうかを予測する二項分類モデルの構築、トレーニング、スコア付けを、Azure Machine Learning を使って行います。 そのモデルの 1 つを Web サービスとして公開する方法が、チュートリアルの最後に紹介されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

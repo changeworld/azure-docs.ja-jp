@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972372"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922448"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -515,7 +515,7 @@ public HttpResponseMessage<String> HttpTrigger(
 
 次の表は、*function.json* ファイルと `HttpTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 | **type** | 該当なし| 必須 - `httpTrigger` に設定する必要があります。 |
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
@@ -825,7 +825,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 匿名要求を許可できます。この要求ではキーが不要です。 マスター キーを使用するように要求することもできます。 既定の承認レベルを変更するには、バインド JSON の `authLevel` プロパティを使用します。 詳しくは、「[トリガー - 構成](#trigger---configuration)」をご覧ください。
 
 > [!NOTE]
-> 機能をローカルで実行する場合、指定された認証レベルの設定に関係なく、許可は無効になります。 Azure に発行した後、トリガーの`authLevel`設定が適用されます。 [コンテナーをローカル](functions-create-function-linux-custom-image.md#run-the-image-locally)で実行する場合もキーが必要です。
+> 機能をローカルで実行する場合、指定された承認レベルの設定に関係なく、許可は無効になります。 Azure に発行した後、トリガーの`authLevel`設定が適用されます。 [コンテナーをローカル](functions-create-function-linux-custom-image.md#run-the-image-locally)で実行する場合もキーが必要です。
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>運用環境で HTTP エンドポイントを保護します。
@@ -838,7 +838,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 * Azure App Service 環境 (ASE) で関数アプリをデプロイします。 ASE では、関数を実行するための専用のホスティング環境を提供します。 ASE では、すべての着信要求の認証に使用できる 1 つのフロント エンド ゲートウェイを構成できます。 詳細情報については、[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)を参照してください。
 
-これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数認証レベルを`anonymous`に設定する必要があります。
+これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数の承認レベルを `anonymous` に設定する必要があります。
 
 ### <a name="webhooks"></a>Webhooks
 
@@ -868,7 +868,7 @@ webhook の承認は、HTTP トリガーの一部である webhook レシーバ�
 
 HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
 
-HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場合、ゲートウェイでタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
+HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
 
 ## <a name="output"></a>Output
 
@@ -878,7 +878,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 C# クラス ライブラリには、*function.json* のこれらのプロパティに対応する属性プロパティはありません。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 | **type** |`http` に設定する必要があります。 |
 | **direction** | `out` に設定する必要があります。 |
@@ -892,7 +892,7 @@ HTTP 応答を送信するには、言語標準の応答パターンを使いま
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、[Azure Functions の host.json のリファレンス](functions-host-json.md)に関する記事を参照してください。
+このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md#http)」を参照してください。
@@ -917,16 +917,16 @@ HTTP 応答を送信するには、言語標準の応答パターンを使いま
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------| 
 | customHeaders|なし|HTTP 応答でカスタム ヘッダーを設定できます。 前の例では、コンテンツ タイプのスニッフィングを避けるために、`X-Content-Type-Options` ヘッダーを応答に追加しています。 |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|この設定を有効にすると、要求処理パイプラインが、システム パフォーマンス カウンター (接続、スレッド、プロセス、メモリ、CPU など) を定期的にチェックし、カウンターのいずれかが組み込まれた上限閾値 (80%) を超えた場合は、カウンターが正常なレベルに戻るまで要求は 429 "Too Busy" 応答で拒否されます。<br/><sup>\*</sup>従量課金プランの既定値は、`true` です。 専用プランの既定値は、`false` です。|
-|hsts|無効|`isEnabled` が `true` に設定されている場合、[`HstsOptions` クラス](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)で定義されているように、[.NET Core の HTTP Strict Transport Security (HSTS) 動作](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)が適用されます。 上の例では、[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) プロパティも 10 日間に設定されています。 `hsts` のサポートされているプロパティは次のとおりです。 <table><tr><th>プロパティ</th><th>説明</th></tr><tr><td>excludedHosts</td><td>HSTS ヘッダーが追加されていないホスト名の文字列配列。</td></tr><tr><td>includeSubDomains</td><td>Strict-Transport-Security ヘッダーの includeSubDomain パラメーターが有効になっているかどうかを示すブール値。</td></tr><tr><td>maxAge</td><td>Strict-Transport-Security ヘッダーの最長有効期間パラメーターを定義する文字列。</td></tr><tr><td>preload</td><td>Strict-Transport-Security ヘッダーの事前読み込みパラメーターが有効になっているかどうかを示すブール値。</td></tr></table>|
+|hsts|無効|`isEnabled` が `true` に設定されている場合、[`HstsOptions` クラス](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)で定義されているように、[.NET Core の HTTP Strict Transport Security (HSTS) 動作](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)が適用されます。 上の例では、[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) プロパティも 10 日間に設定されています。 `hsts` のサポートされているプロパティは次のとおりです。 <table><tr><th>プロパティ</th><th>[説明]</th></tr><tr><td>excludedHosts</td><td>HSTS ヘッダーが追加されていないホスト名の文字列配列。</td></tr><tr><td>includeSubDomains</td><td>Strict-Transport-Security ヘッダーの includeSubDomain パラメーターが有効になっているかどうかを示すブール値。</td></tr><tr><td>maxAge</td><td>Strict-Transport-Security ヘッダーの最長有効期間パラメーターを定義する文字列。</td></tr><tr><td>preload</td><td>Strict-Transport-Security ヘッダーの事前読み込みパラメーターが有効になっているかどうかを示すブール値。</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|並列で実行される HTTP 関数の最大数。 これによりコンカレンシーを制御でき、リソース使用率の管理に役立ちます。 たとえば、多くのシステム リソース (メモリ、CPU、ソケット) を消費する HTTP 関数があった場合、コンカレンシー率が高すぎると問題が発生します。 または、サードパーティのサービスに対して要求を送信する関数があり、その呼び出し速度を制限する必要がある場合です。 このような場合は、調整を適用することができます。 <br/><sup>*</sup>従量課金プランでの既定値は 100 です。 専用プランでの既定値は無制限です (`-1`)。|
 |maxOutstandingRequests|200<sup>\*</sup>|特定の時点で保持される未処理の要求の最大数。 この制限には、キューに格納され、まだ実行が開始されていない要求と、処理中の実行が含まれます。 この制限を超える受信要求は、429 "Too Busy" 応答で拒否されます。 これにより、呼び出し元は時間ベースの再試行戦略を採用でき、要求の最大待機時間の制御にも役立ちます。 この設定は、スクリプト ホストの実行パス内で発生するキューのみを制御します。 ASP.NET 要求キューなどの他のキューは有効なままで、この設定の影響を受けません。 <br/><sup>\*</sup>従量課金プランでの既定値は 200 です。 専用プランでの既定値は無制限です (`-1`)。|
 |routePrefix|api|すべてのルートに適用されるルート プレフィックス。 既定のプレフィックスを削除するには、空の文字列を使用します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

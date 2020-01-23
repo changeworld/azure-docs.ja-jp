@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
-ms.openlocfilehash: ec463efb1282c311757bb90fd614e1247459c80f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7cd0935177ad4070750a9b2a0ff129af2e13959f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457325"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772416"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -108,11 +108,11 @@ apt update を実行します。
    sudo apt-get install iotedge
    ```
 
-IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 「[Azure IoT Edge セキュリティ デーモンを構成する](#configure-the-security-daemon)」の手順に従って、デバイスのプロビジョニングを完了します。 
+IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 「[セキュリティ デーモンを構成する](#configure-the-security-daemon)」の手順に従って、デバイスのプロビジョニングを完了します。 
 
 ## <a name="install-a-specific-runtime-version"></a>特定のランタイム バージョンをインストールする
 
-特定のバージョンの Azure IoT Edge ランタイムをインストールする場合は、IoT Edge GitHub リポジトリから直接コンポーネント ファイルを対象にすることができます。 次の手順に従って、すべての IoT Edge コンポーネントをデバイスに取得します。Moby エンジンと CLI、libiothsm、IoT Edge セキュリティ デーモンの順に取得します。
+最新バージョンを使用する代わりに、特定のバージョンの Moby と Azure IoT Edge ランタイムをインストールする場合は、IoT Edge GitHub リポジトリからコンポーネント ファイルを直接ターゲットにすることができます。 次の手順に従って、すべての IoT Edge コンポーネントをデバイスに取得します。Moby エンジンと CLI、libiothsm、IoT Edge セキュリティ デーモンの順に取得します。 特定のランタイム バージョンに変更しない場合は、次のセクションの「[セキュリティ デーモンを構成する](#configure-the-security-daemon)」に進んでください。
 
 1. [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に移動し、対象とするリリース バージョンを見つけます。 
 
@@ -203,7 +203,7 @@ sudo nano /etc/iotedge/config.yaml
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>オプション 2: 自動プロビジョニング
+### <a name="option-2-automatic-provisioning"></a>オプション 2:自動プロビジョニング
 
 デバイスを自動的にプロビジョニングするには、[Device Provisioning Service を設定し、デバイス登録 ID を取得](how-to-auto-provision-simulated-device-linux.md)します。 自動プロビジョニングを使用する場合、IoT Edge によってサポートされる構成証明メカニズムは多数ありますが、ハードウェア要件も選択に影響します。 たとえば、Raspberry Pi デバイスには、既定でトラステッド プラットフォーム モジュール (TPM) チップが搭載されていません。
 
@@ -265,7 +265,9 @@ journalctl -u iotedge --no-pager --no-full
 sudo iotedge check
 ```
 
-実行中のモジュールを一覧表示します:
+最初のモジュールをデバイス上の IoT Edge にデプロイするまで、 **$edgeHub** システム モジュールはデバイスに展開されません。 その結果、自動チェックからは `Edge Hub can bind to ports on host` 接続チェックのエラーが返されます。 このエラーは、モジュールをデバイスに展開した後に発生した場合でなければ、無視できます。
+
+最後に、実行中のモジュールを一覧表示します。
 
 ```bash
 sudo iotedge list
@@ -323,7 +325,7 @@ sudo apt-get remove --purge moby-cli
 sudo apt-get remove --purge moby-engine
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
 

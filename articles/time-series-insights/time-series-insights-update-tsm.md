@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374731"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861389"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
 
@@ -391,7 +391,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)」をご覧ください。
+- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページをご覧ください。
 
 - [Azure Time Series Insights プレビューでのデータ モデリング](./time-series-insights-update-how-to-tsm.md)における一般的なタイム シリーズ モデル操作について学習します
 

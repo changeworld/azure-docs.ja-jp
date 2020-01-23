@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007273"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945585"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードレスの環境
 
@@ -109,7 +109,7 @@ Windows Hello for Business が関係する他のシナリオの認証プロセ�
 
 [Microsoft PIN リセット サービス](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)は、必要に応じてユーザーが自分の PIN をリセットできる Azure AD の機能です。 管理者は、グループ ポリシー、Microsoft Intune、または互換性のある MDM を使用して、Microsoft PIN リセット サービスを安全に使用するように Windows 10 デバイスを構成できます。これにより、ユーザーは、忘れた PIN を再登録することなく、設定またはロック画面上でリセットできるようになります。
 
-場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分でブロックを解除できるようにすることで、組織としては、生産に寄与しない時間と、パスワード関連で最も一般的な問題の高いサポート コストを、削減できます。
+場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポートコストを削減できます。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Microsoft Authenticator でのパスワードレスのサインイン
 
@@ -299,7 +299,7 @@ Microsoft のパスワードレステクノロジを選択する際には、考�
 |**インフォメーション ワーカー**|業務効率化作業| モバイルまたは Windows 以外のデバイス|Microsoft Authenticator アプリでのパスワードレスのサインイン|
 |**現場のワーカー**|工場、プラント、小売店、またはデータ入力でのキオスク|共有 Windows 10 デバイス|FIDO2 セキュリティ キー|
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 パスワードレスの認証は次代を担うものであり、より安全な環境へとつながる道です。 組織はこの変化に備えて計画を立て、パスワードへの依存度を減らすことをお勧めします。 まず次の目標を考慮します。
 
@@ -311,7 +311,7 @@ Microsoft のパスワードレステクノロジを選択する際には、考�
 
 * モビリティのために Microsoft Authenticator アプリを展開します。
 
-* Windows Hello for Business を展開します (1903: 最新の状態を維持します)。
+* Windows Hello for Business を展開します (1909: 最新の状態を維持します)。
 
 * 電話を使用できないユーザー用に FIDO2 デバイスを配置します。
 
@@ -340,7 +340,7 @@ Microsoft のパスワードレステクノロジを選択する際には、考�
 
 生体認証や公開キーの暗号化などの最新の多要素認証テクノロジを広くアクセス可能なデバイスに採用することは、企業の ID リスクを有意に減らすことができる最も影響度の高い手順の 1 つです。 パスワードレスへの移行は、セキュリティで保護された認証のための長期的なアプローチであり、現在も進化中です。 新たな要件が生じても、組織は、パスワードレスのテクノロジへの移行を開始する計画を立てることで備えることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[what is passwordless? (パスワードレスとは)](../../active-directory/authentication/concept-authentication-passwordless.md)」の概要
 * [Azure AD でパスワードレスを有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

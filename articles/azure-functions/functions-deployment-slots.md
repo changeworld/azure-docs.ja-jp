@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230679"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769219"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -77,11 +77,11 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ![デプロイ スロットの設定](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 スロットの作成時は、スロットは空になっています。 [サポートされているデプロイ テクノロジ](./functions-deployment-technologies.md)のいずれかを使用して、アプリケーションをスロットにデプロイできます。
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
 すべてのスロットが、運用スロットと同じ数のワーカーにスケーリングされます。
 
@@ -179,10 +179,10 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | Windows Consumption       | 一般公開 |
 | Windows Premium           | 一般公開  |
 | Windows Dedicated         | 一般公開 |
-| Linux Consumption         | サポートされていません          |
+| Linux Consumption         | サポートされていない          |
 | Linux Premium             | 一般公開  |
 | Linux Dedicated           | 一般公開 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Functions のデプロイ テクノロジ](./functions-deployment-technologies.md)

@@ -8,18 +8,26 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: bdf687437a278a125bcb6196f44dcaccff4cc3f1
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689389"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770324"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Power BI への Time Series Insights の接続  
- 
+
 時系列データの関連付け、鮮明な視覚エフェクトの作成、および組織全体の分析情報の共有に役立つソリューションをお探しですか?
 
-Time Series Insights が [Power BI](https://powerbi.microsoft.com/) とシームレスに統合されるようになりました。ストリーミング データでのより強力な視覚化とダッシュボード機能を利用でき、組織全体で分析情報と結果を共有できます。
+Azure Time Series Insights が [Power BI](https://powerbi.microsoft.com/) とシームレスに統合されるようになりました。ストリーミング データでのより強力な視覚化とダッシュボード機能を利用でき、組織全体で分析情報と結果を共有できます。
+
+## <a name="video"></a>ビデオ
+
+Power BI との Azure Time Series Insight の統合の詳細を確認してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
+
+## <a name="summary"></a>まとめ
 
    [![Time Series Insights のエクスポートのオプション](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 

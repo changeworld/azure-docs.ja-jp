@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195295"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974577"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Storage Gen1 は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Storage Gen1 のセキュリティ機能について説明します。
 
-* Authentication
-* Authorization
+* 認証
+* 承認
 * ネットワークの分離
 * データ保護
 * 監査
@@ -54,7 +54,7 @@ Data Lake Storage Gen1 には既定で基本のロールが 4 つ定義されて
 | ロール | 管理権限 | データ アクセス権限 | 説明 |
 | --- | --- | --- | --- |
 | ロールの割り当てなし |なし |ACL によって管理 |Azure portal または Azure PowerShell コマンドレットを使って Data Lake Storage Gen1 を参照することはできません。 ユーザーは、コマンドライン ツールのみ使用できます。 |
-| Owner |All |All |所有者ロールは、スーパーユーザーです。 このロールではあらゆるものを管理できるほか、データに対するフル アクセスが認められます。 |
+| 所有者 |All |All |所有者ロールは、スーパーユーザーです。 このロールではあらゆるものを管理できるほか、データに対するフル アクセスが認められます。 |
 | Reader |読み取り専用 |ACL によって管理 |閲覧者ロールでは、どのユーザーがどのロールに割り当てられているかなど、アカウント管理に関するあらゆる情報を表示できます。 ただし、閲覧者ロールでは変更を加えることはできません。 |
 | Contributor |ロールの追加と削除を除くすべて |ACL によって管理 |共同作業者ロールでは、デプロイ、アラートの作成と管理など、アカウントの一部の側面を管理できます。 共同作業者ロールでは、ロールを追加または削除することはできません。 |
 | User Access Administrator |ロールの追加と削除 |ACL によって管理 |ユーザー アクセス管理者ロールでは、アカウントへのユーザー アクセスを管理できます。 |
@@ -66,7 +66,7 @@ Data Lake Storage Gen1 は Hadoop 分散ファイル システム (HDFS) と同�
 
 複数ユーザーを対象に ACL を定義するときは、 [セキュリティ グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)を使うことをお勧めします。 ユーザーをセキュリティ グループに追加し、ファイルまたはフォルダーの ACL をそのセキュリティ グループに割り当てます。 割り当てられたアクセス許可のエントリ数は最大 28 に制限されているため、これは割り当てられたアクセス許可を提供する場合に役立ちます。 Azure Active Directory のセキュリティ グループを使用して Data Lake Storage Gen1 に保存されているデータのセキュリティを強化する方法について詳しくは、「[ユーザーまたはセキュリティ グループを ACL として Data Lake Storage Gen1 ファイル システムに割り当てる](data-lake-store-secure-data.md#filepermissions)」をご覧ください。
 
-![アクセス許可の一覧表示](./media/data-lake-store-security-overview/adl.acl.2.png "アクセス許可の一覧表示")
+![アクセス許可を一覧表示する](./media/data-lake-store-security-overview/adl.acl.2.png "アクセス許可を一覧表示する")
 
 ## <a name="network-isolation"></a>ネットワークの分離
 データ ストアに対するアクセスをネットワーク レベルで制御する場合にも、Data Lake Storage Gen1 が役立ちます。 ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが Data Lake Storage Gen1 に接続できます。
@@ -95,12 +95,12 @@ Data Lake Storage Gen1 では、アカウントに格納されているデータ
 
 ![アクティビティ ログ](./media/data-lake-store-security-overview/activity-logs.png "アクティビティ ログ")
 
-アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 ### <a name="diagnostics-logs"></a>[診断ログ]
 Azure portal でデータ アクセス監査および診断ログを有効にし、それらのログを Azure Blob Storage アカウント、イベント ハブ、または Azure Monitor ログに送信できます。
 
-![診断ログ](./media/data-lake-store-security-overview/diagnostic-logs.png "診断ログ")
+![診断ログ](./media/data-lake-store-security-overview/diagnostic-logs.png "[診断ログ]")
 
 Data Lake Storage Gen1 の診断ログの操作の詳細については、「[Data Lake Storage Gen1 の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」を参照してください。
 
@@ -109,8 +109,7 @@ Data Lake Storage Gen1 の診断ログの操作の詳細については、「[Da
 
 Data Lake Storage Gen1 に追加を希望する機能がある場合には、[Data Lake Storage Gen1 UserVoice フォーラム](https://feedback.azure.com/forums/327234-data-lake)からフィードバックをお送りください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
-

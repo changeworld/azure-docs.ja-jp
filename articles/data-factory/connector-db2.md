@@ -9,17 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 304d0615a12871fb4a9610058bc1be0ad6dff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929541"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941764"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-db2-connector.md)
 > * [現在のバージョン](connector-db2.md)
 
@@ -46,18 +46,13 @@ DB2 データベースのデータを、サポートされているシンク デ
 * IBM DB2 for LUW 10.5
 * IBM DB2 for LUW 10.1
 
-> [!TIP]
-> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE=51002 SQLCODE=-805" というエラー メッセージは、その OS で通常のユーザー用に必要なパッケージが作成されなかったために表示されます。 DB2 サーバーの種類に応じて、次の手順に従います。
-> - DB2 for i (AS400): コピー アクティビティを使用する前に、パワー ユーザーにログイン ユーザー用のコレクションを作成できるようにします。 コマンド: `create collection <username>`
-> - DB2 for Z/OS または LUW: 高い特権を持つアカウント (パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を持つパワー ユーザーまたは管理者) を使用して、コピー アクティビティを 1 回実行します。コピー中に、必要なパッケージが自動的に作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
-
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 統合ランタイムには DB2 ドライバーが組み込まれているため、DB2 からデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -67,17 +62,20 @@ DB2 データベースのデータを、サポートされているシンク デ
 
 DB2 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Db2** | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**Db2** | はい |
 | server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
-| database |DB2 データベースの名前です。 |はい |
+| [データベース] |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| packageCollection | データベースに対してクエリを実行するときに、ADF によって必要なパッケージが自動的に作成される場所を指定します。 | いいえ |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 | いいえ |
 | certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+
+> [!TIP]
+> `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` というエラー メッセージが表示された場合は、そのユーザーに必要なパッケージが作成されていません。 既定の場合、ADF では、DB2 への接続に使用したユーザーの名前が付けられたコレクションの下にパッケージを作成しようとします。 データベースに対してクエリを実行するときに、ADF によって必要なパッケージを作成する場所を示すパッケージ コレクション プロパティを指定してください。
 
 **例:**
 
@@ -110,11 +108,11 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 DB2 からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**Db2Table** | はい |
+| 型 | データセットの type プロパティは、次のように設定する必要があります:**Db2Table** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
-| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| テーブル | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -145,9 +143,9 @@ DB2 からのデータ コピーについては、次のプロパティがサポ
 
 DB2 からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Db2Source** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Db2Source** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -193,33 +191,33 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | BigInt |Int64 |
 | Binary |Byte[] |
 | BLOB |Byte[] |
-| Char |string |
-| Clob |string |
+| Char |String |
+| Clob |String |
 | Date |Datetime |
-| DB2DynArray |string |
-| DbClob |string |
+| DB2DynArray |String |
+| DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |string |
-| Integer |Int32 |
+| Graphic |String |
+| 整数 |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |string |
-| LongVarGraphic |string |
-| Numeric |Decimal |
+| LongVarChar |String |
+| LongVarGraphic |String |
+| 数値 |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Timestamp |DateTime |
 | VarBinary |Byte[] |
-| VarChar |string |
-| VarGraphic |string |
+| VarChar |String |
+| VarGraphic |String |
 | xml |Byte[] |
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+## <a name="next-steps"></a>次のステップ
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

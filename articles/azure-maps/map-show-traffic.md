@@ -1,6 +1,6 @@
 ---
-title: Azure Maps でのトラフィックの表示 | Microsoft Docs
-description: Azure Maps Web SDK でトラフィック データを表示する方法。
+title: マップ上にトラフィックを表示する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上にトラフィック データを表示する方法を示します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b765f6f35cecfdd3183b4432954fcfb2548de046
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874873"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910889"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
@@ -53,7 +53,7 @@ map.setTraffic({
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>トラフィック オーバーレイのオプション</a>を参照してください。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

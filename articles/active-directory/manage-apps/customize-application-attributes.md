@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997056"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940903"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -33,7 +33,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 次の手順に従って、ユーザー プロビジョニングの**マッピング**機能にアクセスします。
 
-1. [Azure Active Directory portal](https://aad.portal.azure.com) にサインインします。
+1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインします。
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 ギャラリーから追加されたアプリを含む、構成済みのすべてのアプリの一覧が表示されます。
 1. 任意のアプリを選択し、そのアプリの管理ウィンドウを読み込み、そこでレポートを表示したり、アプリの設定を管理したりできます。
 1. 選択したアプリのユーザー アカウントのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
@@ -71,6 +71,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 - **ソース属性** - ソース システムのユーザー属性 (例:Azure Active Directory)。
 - **対象の属性** - ターゲット システムのユーザー属性 (例:できます。
+- **null の場合の既定値 (オプション)** - ソース属性が null の場合にターゲット システムに渡される値。 この値は、ユーザーを作成するときにのみプロビジョニングされます。 既存のユーザーを更新したときは、"null の場合の既定値" はプロビジョニングされません。 たとえば、ターゲット システムのすべての既存ユーザーを特定の役職でプロビジョニングする必要がある場合は (ソース システムでは null の場合)、次の[式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)を使用できます。Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]) "DefaultValue" は、ソース システムで null の場合にプロビジョニングする値に置き換えてください。 
 - **この属性を使用してオブジェクトを照合する** - このマッピングを使用して、ソースとターゲットのシステム間でユーザーを一意に識別するかどうかを示します。 通常、これは Azure AD の userPrincipalName または mail 属性で設定され、一般的にターゲット アプリケーションのユーザー名フィールドにマップされます。
 - **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 - **このマッピングを適用する**
@@ -315,7 +316,7 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 
 - Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 - [属性マッピングの式の書き方](functions-for-customizing-application-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps でデータ ソースを作成する | Microsoft Docs
-description: データ ソースを作成し、Azure Maps Web SDK で使用する方法。
+title: マップのデータ ソースを作成する | Microsoft Azure Maps
+description: この記事では、データ ソースを作成し、Microsoft Azure Maps Web SDK を使用してマップに追加する方法を示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433009"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911731"
 ---
 # <a name="create-a-data-source"></a>データ ソースを作成する
 

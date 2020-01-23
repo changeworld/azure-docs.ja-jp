@@ -3,12 +3,12 @@ title: コンテナーとサービスのリソース ガバナンス
 description: Azure Service Fabric では、内部または外部のコンテナーを実行するサービスのリソース制限を指定できます。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609454"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772382"
 ---
 # <a name="resource-governance"></a>リソース管理
 
@@ -65,7 +65,7 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 </Section>
 ```
 
-ノード容量を完全に手動で設定する必要がある場合は、クラスター内のノードを記述するための通常のメカニズムを使用できます。 4 つのコアと 2 GB のメモリを持つノードを設定する方法の例を次に示します。
+ほとんどのお客様とシナリオでは、CPU とメモリのノード容量の自動検出値が推奨される構成です (自動検出は既定でオンになっています)。 ただし、ノード容量を完全に手動で設定する必要がある場合は、クラスター内のノードを記述するメカニズムを使用して、ノードの種類ごとに構成することができます。 4 つのコアと 2 GB のメモリを持つノードの種類を設定する方法の例を次に示します。
 
 ```xml
     <NodeType Name="MyNodeType">

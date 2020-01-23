@@ -9,16 +9,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928619"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945617"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 
-仮想コアベースの購入モデルのプロビジョニングされたコンピューティング レベルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、既存のライセンスを SQL Database の割引料金で交換できます。 この Azure 特典では、ソフトウェア アシュアランスを含むオンプレミスの SQL Server ライセンスを使用して、Azure SQL Database について最大 30 % 節約できます。 
+仮想コアベースの購入モデルのプロビジョニングされたコンピューティング レベルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、既存のライセンスを SQL Database の割引料金で交換できます。 この Azure 特典では、ソフトウェア アシュアランスを含むオンプレミスの SQL Server ライセンスを使用して、Azure SQL Database で最大 30 % 以上節約できます。 正しい値については、前に説明したリンクを使用して、Azure ハイブリッド特典計算ツールを使用してください。 
 
 > [!NOTE]
 > Azure ハイブリッド特典に変更してもダウンタイムは必要ありません。
@@ -60,7 +60,7 @@ REST API を使用してライセンスの種類を設定または更新する�
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database デプロイ オプションの選択については、「[Azure SQL で適切なデプロイ オプションを選択する](sql-database-paas-vs-sql-server-iaas.md)」を参照してください。
 - SQL Database 機能の比較については、「[Azure SQL Database の機能](sql-database-features.md)」を参照してください。

@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779916"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028567"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
 この記事では、組織のドメインを Active Directory フェデレーション サービス (AD FS) からパススルー認証に移行する方法について説明します。
 
-[この記事はダウンロード](https://aka.ms/ADFSTOPTADPDownload)することができます。
+> [!NOTE]
+> 認証方法を変更するには、計画、テスト、予測されるダウンタイムが必要です。 [段階的なロールアウト](how-to-connect-staged-rollout.md)では、フェデレーションからパススルー認証を使用するクラウド認証への段階的な移行をテストして実行するための、別の方法が提供されます。
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>パススルー認証への移行に関する前提条件
 
@@ -36,7 +37,7 @@ AD FS の使用からパススルー認証の使用に移行するには、次�
 > [!IMPORTANT]
 > 古いドキュメント、ツール、およびブログでは、ドメインをフェデレーション ID からマネージド ID に変換する際に、ユーザーの変換が必要であると記載されている場合があります。 "*ユーザーの変換*" は必要なくなりました。 Microsoft では、この変更を反映するようにドキュメントやツールを更新しています。
 
-Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)」の手順を完了します。
+Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)」の手順を完了してください。
 
 ### <a name="plan-authentication-agent-number-and-placement"></a>認証エージェントの数と配置を計画する
 
@@ -46,11 +47,11 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
 
 ### <a name="plan-the-migration-method"></a>移行方法を計画する
 
-フェデレーション ID 管理からパススルー認証とシームレスなシングル サインオン (SSO) に移行する場合、2 つの方法から選ぶことができます。 使用する方法は、お客様が最初に AD FS インスタンスをどのように構成したかによって決まります。
+フェデレーション ID 管理からパススルー認証とシームレスなシングル サインオン (SSO) に移行する場合、2 つの方法から選ぶことができます。 使用する方法は、最初に AD FS インスタンスをどのように構成したかによって決まります。
 
 * **Azure AD Connect**。 最初に Azure AD Connect を使用して AD FS を構成した場合は、Azure AD Connect ウィザードを使ってパススルー認証に変更する*必要があります*。
 
-   ‎ユーザー サインインの方法を変更すると、Azure AD Connect によって自動的に **Set-MsolDomainAuthentication** コマンドレットが実行されます。 Azure AD Connect によって、Azure AD テナント内のすべての確認済みフェデレーション ドメインが自動的にフェデレーション解除されます。
+   ‎ユーザー サインインの方法を変更する際、Azure AD Connect によって自動的に **Set-MsolDomainAuthentication** コマンドレットが実行されます。 Azure AD Connect によって、Azure AD テナント内のすべての確認済みフェデレーション ドメインが自動的にフェデレーション解除されます。
 
    > [!NOTE]
    > 現在、最初に Azure AD Connect を使用して AD FS を構成した場合、ユーザー サインインをパススルー認証に変更したときに、お客様のテナントに含まれているすべてのドメインがフェデレーション解除されることは避けられません。
@@ -61,7 +62,7 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
 
 #### <a name="verify-current-user-sign-in-settings"></a>現在のユーザー サインイン設定を確認する
 
-1. グローバル管理者アカウントを使用して、[Azure AD ポータル](https://aad.portal.azure.com/)にサインインします。
+1. 全体管理者アカウントを使用して、[Azure AD ポータル](https://aad.portal.azure.com/)にサインインします。
 2. **[ユーザー サインイン]** セクションで、次のように設定されていることを確認します。
    * **[フェデレーション]** が **[有効]** に設定されている。
    * **[シームレス シングル サインオン]** が **[無効]** に設定されている。
@@ -75,7 +76,7 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
 2. **[追加のタスク]** ページで **[現在の構成を表示する]** を選んでから、 **[次へ]** を選択します。<br />
  
    ![[追加のタスク] ページの [現在の構成を表示する] オプションのスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. **[ソリューションのレビュー]** ページで、 **[Active Directory Federation Services (AD FS)]** までスクロールします。<br />
+3. **[ソリューションのレビュー]** ページで、 **[Active Directory フェデレーション サービス (AD FS)]** までスクロールします。<br />
 
    * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「**オプション A: Azure AD Connect を使用してパススルー認証を構成する**」セクションを参照してください。
    * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、ドメインをフェデレーション ID からマネージド ID に手動で変換する必要があります。 このプロセスの詳細については、次のセクションを参照してください。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。
@@ -124,7 +125,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 フェデレーション ID からマネージド ID に変換する前に、Azure AD、Office 365、およびその他のアプリケーション (証明書利用者信頼) で現在どのように AD FS を使用しているかを詳しく調べます。 具体的には、次の表に記載されているシナリオについて検討します。
 
-| 状況 | 対処 |
+| 状況 | THEN |
 |-|-|
 | 引き続き AD FS を (Azure AD と Office 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Office 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
@@ -199,7 +200,7 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 
 ### <a name="plan-communications"></a>連絡を計画する
 
-デプロイとサポートの計画で重要な部分は、今後の変更について、ユーザーに必ず事前に通知することです。 ユーザーは、何が起きるかや必要なものについて、事前に知っておく必要があります。
+デプロイとサポートの計画で重要な部分は、今後の変更について、ユーザーに必ず事前に通知することです。 ユーザーは、何が起きるか、また何を行う必要があるかについて、事前に知っておく必要があります。
 
 パススルー認証とシームレス SSO の両方がデプロイされた後、Azure AD を通じて認証される Office 365 およびその他のリソースにアクセスするためのユーザーのサインイン エクスペリエンスが変更されます。 ネットワークの外部のユーザーには、Azure AD サインイン ページのみが表示されます。 これらのユーザーは、外部に接続する Web アプリケーション プロキシ サーバーによって表示されるフォームベースのページにはリダイレクトされません。
 
@@ -213,9 +214,9 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 
 ## <a name="implement-your-solution"></a>ソリューションを実装する
 
-ソリューションの計画は済みました。 これで、実装することができます。 実装には次のコンポーネントが含まれます。
+ソリューションの計画は済みました。 これで、実装することができます。 実装には次の要素が含まれます。
 
-* シームレス SSO の準備。
+* シームレス SSO を準備する。
 * サインイン方法のパススルー認証への変更とシームレス SSO の有効化。
 
 ### <a name="step-1-prepare-for-seamless-sso"></a>手順 1:シームレス SSO を準備する
@@ -240,11 +241,11 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 > [!IMPORTANT]
 > 次の手順を完了した後、すべてのドメインがフェデレーション ID からマネージド ID に変換されます。 詳細については、「[移行方法を計画する](#plan-the-migration-method)」を確認してください。
 
-まず、ユーザー サインイン方法を変更します。
+まず、サインイン方法を変更します。
 
 1. Azure AD Connect サーバーで、Azure AD Connect ウィザードを開きます。
-2. **[ユーザー サインインの変更]** を選択してから、 **[次へ]** を選びます。 
-3. **[Azure AD に接続]** ページで、グローバル管理者アカウントのユーザー名とパスワードを入力します。
+2. **[ユーザー サインインの変更]** を選択し、 **[次へ]** を選択します。 
+3. **[Azure AD に接続]** ページで、全体管理者アカウントのユーザー名とパスワードを入力します。
 4. **[ユーザー サインイン]** ページで、 **[パススルー認証]** ボタン、 **[シングル サインオンを有効にする]** 、 **[次へ]** の順に選択します。
 5. **[シングル サインオンを有効にする]** ページで、ドメイン管理者アカウントの資格情報を入力し、 **[次へ]** を選択します。
 
@@ -288,7 +289,7 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 「[テストと次のステップ](#testing-and-next-steps)」に進みます。
 
 > [!IMPORTANT]
-> 「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。 そのセクションの手順は、サインイン方法をパススルー認証に変更し、シームレス SSO を有効にするオプション A を選択した場合、適用されません。 
+> 次のセクションはスキップします。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。 そのセクションの手順は、サインイン方法をパススルー認証に変更し、シームレス SSO を有効にするオプション A を選択した場合、適用されません。 
 
 #### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>オプション B: Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える
 
@@ -297,9 +298,9 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 まず、次のようにしてパススルー認証を有効にします。
 
 1. Azure AD Connect サーバーで、Azure AD Connect ウィザードを開きます。
-2. **[ユーザー サインインの変更]** を選択してから、 **[次へ]** を選びます。
-3. **[Azure AD に接続]** ページで、グローバル管理者アカウントのユーザー名とパスワードを入力します。
-4. **[ユーザー サインイン]** ページで、 **[パススルー認証]** ボタンを選択します。 **[シングル サインオンを有効にする]** を選択してから、 **[次へ]** を選びます。
+2. **[ユーザー サインインの変更]** を選択し、 **[次へ]** を選択します。
+3. **[Azure AD に接続]** ページで、全体管理者アカウントのユーザー名とパスワードを入力します。
+4. **[ユーザー サインイン]** ページで、 **[パススルー認証]** ボタンを選択します。 **[シングル サインオンを有効にする]** を選択してから、 **[次へ]** を選択します。
 5. **[シングル サインオンを有効にする]** ページで、ドメイン管理者アカウントの資格情報を入力し、 **[次へ]** を選択します。
 
    > [!NOTE]
@@ -372,7 +373,7 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
 
 ### <a name="test-pass-through-authentication"></a>パススルー認証をテストする 
 
-テナントでフェデレーション ID が使用されていたときに、ユーザーは Azure AD サインイン ページから AD FS 環境にリダイレクトされていました。 フェデレーション認証ではなく、パススルー認証を使用するようにテナントが構成されたので、ユーザーは AD FS にリダイレクトされません。 代わりに、ユーザーは Azure AD サインイン ページで直接サインインします。
+テナントでフェデレーション ID が使用されていたときに、ユーザーは Azure AD サインイン ページから AD FS 環境にリダイレクトされていました。 フェデレーション認証ではなく、パススルー認証を使用するようにテナントが構成されたので、ユーザーは AD FS にリダイレクトされません。 代わりに、ユーザーは Azure AD サインイン ページから直接サインインします。
 
 パススルー認証をテストするには、次のようにします。
 
@@ -392,7 +393,7 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
 
 シームレス SSO をテストするには、次のようにします。
 
-1. 企業ネットワークに接続されているドメイン参加済みマシンにサインインします。
+1. 企業ネットワークに接続されたドメイン参加済みマシンにサインインします。
 2. Internet Explorer または Chrome で、次のいずれかの URL に移動します ("contoso" はご自分のドメインに置き換えてください)。
 
    * https:\/\/myapps.microsoft.com/contoso.com
@@ -431,7 +432,7 @@ AD FS を他の目的で (つまり、他の証明書利用者信頼で) 使用�
 * ユーザーがマネージド (非フェデレーション) ID ドメインに存在する。
 * ユーザーにライセンスが割り当てられていない。
 
-この機能を確認または有効にする方法については、[userPrincipalName 更新の同期](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features)に関するページを参照してください。
+この機能を確認または有効にする方法については、「[userPrincipalName の更新を同期する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features)」を参照してください。
 
 ## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>シームレス SSO の Kerberos 復号化キーのロールオーバー
 
@@ -439,7 +440,7 @@ AD FS を他の目的で (つまり、他の証明書利用者信頼で) 使用�
 
 Azure AD Connect を実行しているオンプレミス サーバーで、シームレス SSO Kerberos 復号化キーのロールオーバーを開始します。
 
-詳細については、[AZUREADSSOACC コンピューター アカウントの Kerberos 暗号化解除キーをロールオーバーする方法](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq)に関するページを参照してください。
+詳細については、「[AZUREADSSOACC コンピューター アカウントの Kerberos の復号化キーをロールオーバーするにはどうすればよいですか](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq)」を参照してください。
 
 ## <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -451,7 +452,7 @@ Azure AD Connect を実行しているオンプレミス サーバーで、シ�
 
 詳細については、「[Azure Active Directory パススルー認証のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Connect の設計概念](plan-connect-design-concepts.md)について学習する。
 * [適切な認証](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)を選択する。

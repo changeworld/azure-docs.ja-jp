@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 5e840960c66f586882e64a655ddbfa078dae51ef
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/08/2019
+ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646644"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867668"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -213,7 +213,7 @@ az ml computetarget create amlcompute -n cpu-cluster --max-nodes 4 --vm-size Sta
 `dataset.json` ファイルを使用してデータセットを登録するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az ml dataset register -f dataset.json
+az ml dataset register -f dataset.json --skip-validation
 ```
 
 このコマンドの出力は、次の JSON のようになります。
@@ -242,8 +242,14 @@ az ml dataset register -f dataset.json
 }
 ```
 
+
 > [!IMPORTANT]
 > `id` エントリの値をコピーします。これは次のセクションで使用します。
+
+データセットを記述する JSON ファイルのより包括的なテンプレートを確認するには、次のコマンドを使用します。
+```azurecli-interactive
+az ml dataset register --show-template
+```
 
 ## <a name="reference-the-dataset"></a>データセットを参照する
 
@@ -368,6 +374,9 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
 ```
 
+> [!NOTE]
+> "LocalWebservice の存在を確認できませんでした" という警告が表示される場合があります。 ローカル Web サービスをデプロイしていないので、この問題は無視してかまいません。
+
 このコマンドでは、以前に登録したモデルのバージョン 1 を使用して、`myservice` という名前の新しいサービスをデプロイします。
 
 `inferenceConfig.yml` ファイルでは、入力スクリプト (`score.py`) やソフトウェアの依存関係など、推論の実行方法に関する情報が提供されます。 このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
@@ -413,6 +422,13 @@ REST エンドポイントを使用して、サービスにデータを送信で
 ```azurecli-interactive
 az ml service run -n myservice -d @testdata.json
 ```
+
+> [!TIP]
+> PowerShell を使用している場合は、代わりに次のコマンドを使用します。
+>
+> ```powershell
+> az ml service run -n myservice -d `@testdata.json
+> ```
 
 コマンドからの応答は `[ 3 ]` のようになります。
 

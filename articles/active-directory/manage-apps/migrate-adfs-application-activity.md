@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420439"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978029"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
 
@@ -73,7 +73,7 @@ AD FS アプリケーション アクティビティ レポートは、Azure por
 
 次の表に、AD FS アプリケーションに対して実行されるすべての構成テストの一覧を示します。
 
-|結果  |合格/警告/不合格  |説明  |
+|結果  |合格/警告/不合格  |[説明]  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> At least one non-migratable rule was detected for AdditionalAuthentication. (AdditionalAuthentication について、移行できない規則が 1 つ以上検出された)。       | 合格/警告          | 証明書利用者には、多要素認証 (MFA) を要求するための規則があります。 Azure AD に移行するには、これらの規則を条件付きアクセス ポリシーに変換します。 オンプレミス MFA を使用している場合は、Azure MFA に移行することをお勧めします。 [条件付きアクセスの詳細についてご確認ください](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Relying party has AdditionalWSFedEndpoint set to true. (証明書利用者の AdditionalWSFedEndpoint が true に設定されている)。       | 合格/不合格          | AD FS の証明書利用者で、複数の WS-Fed アサーション エンドポイントが許可されています。 現在、Azure AD でサポートされているのは 1 つだけです。 この結果によって移行が妨げられている場合は、[ご連絡ください](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
@@ -109,7 +109,7 @@ AD FS でアプリケーションの要求規則を構成している場合は�
 
 次の表に、AD FS アプリケーションに対して実行されるすべての要求規則テストの一覧を示します。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | 条件ステートメントで、要求が特定のパターンに一致するかどうかを評価するために正規表現が使用されています。  Azure AD で同様の機能を実現するには、IfEmpty()、StartWith()、Contains() など、事前に定義された変換を使用できます。 詳細については、[エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)に関するページを参照してください。          |
 |UNSUPPORTED_CONDITION_CLASS      | 条件ステートメントで、発行ステートメントを実行する前に評価する必要がある複数の条件が使用されています。 Azure AD では、複数の要求値を評価できる要求の変換関数でこの機能をサポートする場合があります。  詳細については、[エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)に関するページを参照してください。          |
@@ -122,8 +122,9 @@ AD FS でアプリケーションの要求規則を構成している場合は�
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 発行ステートメントで、出力される要求の値を変換するために正規表現が使用されています。 Azure AD で同様の機能を実現するには、Extract()、Trim()、ToLower など、事前に定義された変換を使用できます。 詳細については、[エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)に関するページを参照してください。          |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
+- [ビデオ: AD FS アクティビティ レポートを使用してアプリケーションを移行する方法](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)
 - [アプリへのアクセスを管理する](what-is-access-management.md)
 - [Azure AD Connect フェデレーション](../hybrid/how-to-connect-fed-whatis.md)

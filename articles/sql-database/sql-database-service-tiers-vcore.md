@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351398"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045186"
 ---
 # <a name="vcore-model-overview"></a>仮想コア モデルの概要
 
@@ -32,8 +32,8 @@ ms.locfileid: "75351398"
 ||**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
-|ストレージ|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**マネージド インスタンス**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**マネージド インスタンス**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
-|I/O スループット (概算)|**単一データベースとエラスティック プール**:仮想コアあたり 500 IOPS (最大 40000 IOPS)。<br/>**マネージド インスタンス**:[ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存します。|仮想コアあたり 5000 IOPS (最大 320,000 IOPS)|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。|
+|ストレージ|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**Managed Instance**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**Managed Instance**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
+|IOPS とスループット (概算)|**単一データベースとエラスティック プール**:[単一データベース](../sql-database/sql-database-vcore-resource-limits-single-databases.md)と[エラスティック プール](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)に関するリソース制限を参照してください。<br/>**Managed Instance**:「[Azure SQL Database マネージド インスタンスのリソース制限の概要](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics)」を参照してください。|[単一データベース](../sql-database/sql-database-vcore-resource-limits-single-databases.md)と[エラスティック プール](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](sql-database-read-scale-out.md)|
 |バックアップ|[ 読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
 |メモリ内|サポートされていません|サポートされています|サポートされていません|
@@ -142,6 +142,16 @@ Azure portal では、作成時に SQL データベースまたはプールの�
   
 **既存のマネージドインスタンスのハードウェア世代を変更するには**
 
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+
+マネージド インスタンスのページで、[設定] セクションの下にある **[価格レベル]** リンクを選択します
+
+![マネージド インスタンスのハードウェアを変更する](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+**[価格レベル]** ページで、前の手順で説明したようにハードウェア世代を変更できます。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 次の PowerShell スクリプトを使用します：
 
 ```powershell-interactive
@@ -176,7 +186,9 @@ $properties = New-Object System.Object
 Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
 ```
 
-必ず、マネージドインスタンスのサブスクリプション ＩＤ、名前、およびリソースグループを入力してください。
+必ず、マネージド インスタンスのサブスクリプション ID、名前、およびリソースグループを入力してください。
+
+---
 
 ### <a name="hardware-availability"></a>ハードウェアの可用性
 
@@ -213,9 +225,9 @@ M シリーズは、次のリージョンで使用できます: 米国東部、�
 
 **[詳細]** ページで、以下を設定します。
 
-5. **[問題の詳細]** セクションで、 **[詳細の指定]** リンクを選択します。 
-6. **[SQL Database のクォータの種類]** で、 **[M シリーズ]** を選択します。
-7. **[リージョン]** で、M シリーズを有効にするリージョンを選択します。
+1. **[問題の詳細]** セクションで、 **[詳細の指定]** リンクを選択します。 
+2. **[SQL Database のクォータの種類]** で、 **[M シリーズ]** を選択します。
+3. **[リージョン]** で、M シリーズを有効にするリージョンを選択します。
     M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
 
 承認されたサポート リクエストは、通常、5 営業日以内に完了します。

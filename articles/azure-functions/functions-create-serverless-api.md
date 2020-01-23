@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230689"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769270"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
-この記事では、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.JS、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 この記事では、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
+この記事では、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.js、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 この記事では、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -25,7 +25,7 @@ ms.locfileid: "74230689"
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal を開きます。 これを行うには、Azure アカウントで [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure portal を開きます。 これを行うには、Azure アカウントで [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="customize-your-http-function"></a>HTTP 関数のカスタマイズ
 
@@ -37,7 +37,7 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
 
 1. 次の表で指定されている HTTP トリガーの設定を使用します。
 
-    | フィールド | 値の例 | 説明 |
+    | フィールド | 値の例 | [説明] |
     |---|---|---|
     | [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
     | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
@@ -47,7 +47,7 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
     > [!NOTE] 
     > ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)」をご覧ください。
 
@@ -97,9 +97,9 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
     ![プロキシの作成](./media/functions-create-serverless-api/creating-proxy.png)
 1. 次の表で指定されているプロキシの設定を使用します。 
 
-    | フィールド | 値の例 | 説明 |
+    | フィールド | 値の例 | [説明] |
     |---|---|---|
-    | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
+    | Name | HelloProxy | 管理にのみ使用するフレンドリ名です |
     | [ルート テンプレート] | /api/remotehello | このプロキシの呼び出しに使用するルートを決定します |
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
     
@@ -176,7 +176,7 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 
 ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Functions の API を作成しカスタマイズする方法について説明します。 また、モックなどの複数の API をまとめて 1 つの API サーフェスにする方法についても説明します。 これらの手法を使用することで、Azure Functions のサーバーレス コンピューティング モデルで API を実行しながら、複雑な API も構築できます。
 

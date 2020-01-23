@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ストアでのプロジェクションの操作 (プレビュー)
+title: ナレッジ ストアでのプロジェクション (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: 全文検索以外のシナリオで使用するために、AI エンリッチメントのインデックス作成パイプラインからエンリッチされたデータをナレッジ ストアに保存して整形します。 ナレッジ ストアは現在、パブリック プレビューの段階です。
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790008"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754526"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでのプロジェクションの操作
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでのプロジェクション
 
 > [!IMPORTANT] 
 > ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
-Azure Cognitive Search では、インデックス作成の一環として組み込みのコグニティブ スキルとカスタム スキルを使ってコンテンツをエンリッチすることができるようになっています。 強化によってドキュメントに構造が追加され、検索がより効果的になります。 多くの場合、強化されたドキュメントは、ナレッジ マイニングなど、検索以外のシナリオに役立ちます。
+Azure Cognitive Search では、インデックス作成の一環として組み込みのコグニティブ スキルとカスタム スキルを使ってコンテンツをエンリッチすることができるようになっています。 エンリッチメントによって、イメージからの情報抽出、テキストからのセンチメント、キー フレーズ、エンティティの検出など、これまで存在しなかった新しい情報が作成されます。 また、エンリッチメントによって、区別されていないテキストに構造体が追加されます。 これらのすべてのプロセスの結果として、全文検索をより効果的にするドキュメントが作成されます。 多くの場合、エンリッチされたドキュメントは、ナレッジ マイニングなど、検索以外のシナリオに役立ちます。
 
 [ナレッジ ストア](knowledge-store-concept-intro.md)のコンポーネントであるプロジェクションは、ナレッジ マイニングの目的で物理ストレージに保存できる強化されたドキュメントのビューです。 プロジェクションを使用すると、Power BI などのツールで追加の作業なしでデータを読み取ることができるように、関係を維持しながら、ニーズに合った形状にデータを "射影" できます。
 
@@ -28,13 +28,13 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 ナレッジ ストアは 3 種類のプロジェクションをサポートしています。
 
-+ **テーブル**:行と列として最も適切に表現されているデータの場合、テーブル プロジェクションを使用すると、テーブル ストレージでスキーマ化された形状またはプロジェクションを定義できます。 有効な JSON オブジェクトのみをテーブルとして投影できます。強化されたドキュメントには、名前付き JSON オブジェクトではないノードを含めることができます。また、これらのオブジェクトを投影するときに、シェーパー スキルまたはインライン シェイプを使用して有効な JSON オブジェクトを作成します。
++ **[テーブル]** : 行と列として最も適切に表現されているデータの場合、テーブル プロジェクションを使用すると、テーブル ストレージでスキーマ化された形状またはプロジェクションを定義できます。 有効な JSON オブジェクトのみをテーブルとして投影できます。強化されたドキュメントには、名前付き JSON オブジェクトではないノードを含めることができます。また、これらのオブジェクトを投影するときに、シェーパー スキルまたはインライン シェイプを使用して有効な JSON オブジェクトを作成します。
 
 + **オブジェクト**:データと強化の JSON 表現が必要な場合は、オブジェクトのプロジェクションを BLOB として保存します。 有効な JSON オブジェクトのみをオブジェクトとして投影できます。強化されたドキュメントには、名前付き JSON オブジェクトではないノードを含めることができます。また、これらのオブジェクトを投影するときに、シェーパー スキルまたはインライン シェイプを使用して有効な JSON オブジェクトを作成します。
 
 + **ファイル**: ドキュメントから抽出した画像を保存する必要がある場合には、ファイル プロジェクションを使うと、正規化済みの画像を BLOB ストレージに保存できます。
 
-コンテキスト内の定義済みプロジェクションを確認する方法については、[ナレッジ ストアを使い始める方法](knowledge-store-howto.md)に関する手順を参照してください。
+コンテキスト内の定義されているプロジェクションを確認する方法については、[REST でのナレッジ ストアの作成](knowledge-store-create-rest.md)に関する手順を参照してください。
 
 ## <a name="projection-groups"></a>プロジェクション グループ
 
@@ -114,12 +114,6 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 この例で示すように、キー フレーズとエンティティは異なるテーブルにモデル化されており、各行の親 (MainTable) への参照が含まれます。
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>オブジェクト プロジェクション
 
 オブジェクト プロジェクションは、任意のノードをソースにすることができる強化ツリーの JSON 表現です。 多くのケースでは、テーブル プロジェクションの作成と同じ **Shaper** スキルを使用してオブジェクト プロジェクションを生成できます。 
@@ -143,10 +137,8 @@ The following illustration is a reference to the Case-law exercise in [How to ge
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ The following illustration is a reference to the Case-law exercise in [How to ge
 
 オブジェクト プロジェクションを生成するには、いくつかのオブジェクト固有の属性が必要です。
 
-+ storageContainer:オブジェクトが保存されるコンテナー
++ storageContainer:オブジェクトが保存される BLOB コンテナー
 + source:プロジェクションのルートとなる強化ツリーのノードのパス
-+ key:格納するオブジェクトの一意のキーを表すパス。 コンテナー内の BLOB 名を作成するために使用されます。
 
 ## <a name="file-projection"></a>ファイル プロジェクション
 
@@ -214,9 +205,9 @@ The following illustration is a reference to the Case-law exercise in [How to ge
 
 最後に、ナレッジ ストアからデータをエクスポートする必要がある場合、Azure Data Factory には、データをエクスポートして任意のデータベースに格納するコネクタがあります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の手順として、サンプル データと手順を使用して最初のナレッジ ストアを作成します。
 
 > [!div class="nextstepaction"]
-> [ナレッジ ストアを作成する方法](knowledge-store-howto.md)。
+> [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps に多角形レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK に多角形レイヤーを追加する方法。
+title: マップに多角形レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK で地図上に多角形およびマルチ ポリゴンをレンダリングする方法について説明します。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976135"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911123"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>マップに多角形レイヤーを追加する
 
@@ -73,11 +73,11 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 
 > [!TIP]
-> Azure Maps Web SDK には、塗りつぶしパターンとして使用できるカスタマイズ可能なイメージ テンプレートがいくつか用意されています。 詳細については、「[イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)」のドキュメントを参照してください。
+> Azure Maps Web SDK には、塗りつぶしパターンとして使用できるカスタマイズ可能なイメージ テンプレートがいくつか用意されています。 詳細については、[画像テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)のドキュメントを参照してください。
 
 ## <a name="customize-a-polygon-layer"></a>ポリゴン レイヤーをカスタマイズする
 
-Polygon レイヤーにはごくわずかのスタイル オプションしかありません。 次のツールでそれらを試してください。
+Polygon レイヤーにはごくわずかのスタイル オプションしかありません。 次のツールでそれらをお試しください。
 
 <br/>
 
@@ -88,7 +88,7 @@ Polygon レイヤーにはごくわずかのスタイル オプションしか�
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 値 `"Circle"` の `subType` プロパティとメートル単位の半径を表す数値を含む `radius` プロパティを含む `Point` フィーチャーを作成することで、円をマップ上にレンダリングすることができます。 例:
+Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 値 `"Circle"` の `subType` プロパティとメートル単位の半径を表す数値を含む `radius` プロパティを含む `Point` フィーチャーを作成することで、円をマップ上にレンダリングすることができます。 次に例を示します。
 
 ```javascript
 {
@@ -130,7 +130,7 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 <iframe height='500' scrolling='no' title='シェイプのプロパティを更新する' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Update shape properties</a>」Pen を表示します。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
@@ -155,7 +155,7 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 > [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
+> [画像テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [線レイヤーを追加する](map-add-line-layer.md)

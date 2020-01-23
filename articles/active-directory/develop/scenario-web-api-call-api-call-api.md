@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 701f1f7c26731f3e9653955907f5f16d2688cdb2
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423575"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043445"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API を呼び出す Web API - API の呼び出し
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
-トークンを取得すると、保護された Web API を呼び出せます。 これは、ASP.NET/ASP.NET Core web API のコント ローラーから行われます。
+トークンを取得した後に、保護された Web API を呼び出せます。 これは、ASP.NET または ASP.NET Core の Web API のコントローラーから行います。
 
 ## <a name="controller-code"></a>コントローラー コード
 
-以下に示すのは、API コントローラーのアクションで呼び出されて、ダウンストリーム API (todolist という名前) を呼び出す「[Web API を呼び出す保護された Web API - トークンの取得](scenario-web-api-call-api-acquire-token.md)」で示されたサンプル コードの続きです。
+次のコードは、「[Web API を呼び出す Web API: アプリのトークンを取得する](scenario-web-api-call-api-acquire-token.md)」で示されているコード例の続きです。 このコードは、API コントローラーのアクションで呼び出されます。 *todolist* という名前のダウンストリーム API を呼び出します。
 
-トークンを取得したら、ダウン ストリーム API を呼び出すベアラー トークンとしてそれを使用します。
+トークンを取得した後、ダウンストリーム API を呼び出すベアラー トークンとしてそれを使用します。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [運用環境への移行](scenario-web-api-call-api-production.md)
+> [Web API を呼び出す Web API: 運用環境に移行する](scenario-web-api-call-api-production.md)

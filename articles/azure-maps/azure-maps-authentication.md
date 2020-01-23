@@ -1,20 +1,20 @@
 ---
-title: Azure Maps による認証 | Microsoft Docs
-description: Azure Maps サービスを使用するための認証
+title: 認証方法 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps サービスを使用するための Azure Active Directory (Azure AD) 認証または共有キー認証について説明します。 Azure Maps のサブスクリプション キーを取得する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575653"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911821"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -22,12 +22,14 @@ Azure Maps には、要求の認証方法が 2 つあります。共有キーと
 
 ## <a name="shared-key-authentication"></a>共有キー認証
 
-共有キー認証は、Azure Maps への要求ごとに Azure Maps アカウントによって生成されたキーを渡します。  Azure Maps アカウントの作成時に 2 つのキーが生成されます。 Azure Maps サービスへの要求ごとに、サブスクリプション キーをパラメーターとして URL に追加する必要があります。
+共有キー認証では、Azure Maps への要求ごとに Azure Maps アカウントによって生成されたキーを渡します。 Azure Maps サービスへの要求ごとに、"*サブスクリプション キー*" をパラメーターとして URL に追加する必要があります。 Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
+
+Azure portal でキーを表示する方法について詳しくは、[認証の管理](https://aka.ms/amauthdetails)に関する記事をご覧ください。
 
 > [!Tip]
 > キーを定期的に再生成することをお勧めします。 キーは 2 つ提供されるため、1 つのキーを使用して接続を保持したまま、もう 1 つのキーを再生成することが可能です。 キーを再生成したら、新しいキーを使用するように、アカウントにアクセスするすべてのアプリケーションを更新する必要があります。
 
-キーを表示する方法については、「[認証の詳細を表示する](https://aka.ms/amauthdetails)」をご覧ください。
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Azure Active Directory による認証 (プレビュー)
 
@@ -60,7 +62,7 @@ Azure AD からトークンを受信したら、次の 2 つの必須の要求�
 | 要求ヘッダー    |    値    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
-| Authorization     | Bearer eyJ0e….HNIVN |
+| 承認     | Bearer eyJ0e….HNIVN |
 
 > [!Note]
 > `x-ms-client-id` は、Azure Maps 認証ページに表示される Azure Maps アカウント ベースの GUID です。
@@ -90,7 +92,7 @@ RBAC 設定を確認する方法については、[Azure Maps RBAC を構成す�
 
 [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) では、Azure Maps サービスへのアクセスを認可できる自動マネージド ID を使用して、Azure サービス (Azure App Service、Azure Functions、Virtual Machines など) を提供します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure AD と Azure Maps を使用してアプリケーションを認証する方法について詳しく確認するには、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
 

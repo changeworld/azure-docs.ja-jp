@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328265"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894802"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -27,7 +27,7 @@ ms.locfileid: "74328265"
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights へのサインイン
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 1. Time Series Insights 環境を検索します。 **[検索ボックス]** に「`Time Series`」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。
 1. リストから Time Series Insights 環境を選択します。
 
@@ -113,7 +113,7 @@ ms.locfileid: "74328265"
 
 1. ゲストは、管理者が提供する環境 URL を使用して共有環境にアクセスできるようになります。 この URL を Web ブラウザーに入力すると、すぐにアクセスできます。
 
-1. ゲスト ユーザーが管理者のテナントを確認するには、Time Series エクスプローラーの右上隅にある自分のプロファイル アイコンを選択します。
+1. ゲスト ユーザーが管理者のテナントを表示するには、Time Series エクスプローラーの右上隅にある自分のプロファイル アイコンを選択します。
 
     [![insights.azure.com でのアバターの選択](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
@@ -124,7 +124,7 @@ ms.locfileid: "74328265"
 
     [![ゲスト ユーザーがドロップダウンから Azure テナントを選択する](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Time Series Insights 環境に Azure Event Hubs のイベント ソースを追加する方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)について説明します。
 

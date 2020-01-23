@@ -1,14 +1,14 @@
 ---
 title: Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する | Microsoft Docs
-description: この記事では、Azure Red Hat OpenShift でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
+description: この記事では、Azure Red Hat OpenShift でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405569"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979789"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する
 
@@ -21,16 +21,14 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エン
 次のサポートされている方法を使用して、新規または 1 つ以上の既存の Azure Red Hat OpenShift のデプロイに対して Azure Monitor for containers を有効にできます。
 
 - Azure portal または Azure Resource Manager テンプレートを使用した既存のクラスター向け
-- Azure Resource Manager テンプレートを使用している新しいクラスター向け 
+- Azure Resource Manager テンプレートを使用している新しいクラスター向け
 
 ## <a name="supported-and-unsupported-features"></a>サポートされている機能とサポートされていない機能
 
 Azure Monitor for containers では、次の機能を除き、[概要](container-insights-overview.md)記事で説明されている通り Azure Red Hat OpenShift の監視をサポートしています。
 
-- ライブ データ
-- Prometheus メトリックのスクレ―ピング
+- ライブ データ (プレビュー)
 - クラスターノードとポッドから[メトリックを収集](container-insights-update-metrics.md)し、Azure Monitor メトリック データベースに格納する
-- 正常性機能
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +42,7 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視が有効になっているクラスターをデプロイする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
-- Azure Red Hat OpenShift クラスター リソース ID 
+- Azure Red Hat OpenShift クラスター リソース ID
 
 - クラスターが展開されているリソース グループ。
 
@@ -62,15 +60,15 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 - エージェント プール プロファイル内の計算ノードの数。
 
-- エージェント プール プロファイル内のインフラストラクチャ ノードの数。 
+- エージェント プール プロファイル内のインフラストラクチャ ノードの数。
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
-- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
+- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して設定できます。
 
@@ -78,20 +76,20 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
-2. Azure へのサインイン 
+2. Azure へのサインイン
 
     ```azurecli
     az login    
     ```
-    
+
     複数のサブスクリプションへのアクセス権がある場合は、`az account set -s {subscription ID}` を実行して、`{subscription ID}` を、使用するサブスクリプションに置き換えます。
- 
-3. クラスターのリソース グループをまだ作成していない場合は、作成します。 Azure 上の OpenShift がサポートされる Azure リージョンの一覧については、[サポートされるリージョン](../../openshift/supported-resources.md#azure-regions)に関する記事を参照してください。 
+
+3. クラスターのリソース グループをまだ作成していない場合は、作成します。 Azure 上の OpenShift がサポートされる Azure リージョンの一覧については、[サポートされるリージョン](../../openshift/supported-resources.md#azure-regions)に関する記事を参照してください。
 
     ```azurecli
-    az group create -g <clusterResourceGroup> -l <location> 
+    az group create -g <clusterResourceGroup> -l <location>
     ```
 
 4. JSON パラメーター ファイル **newClusterWithMonitoringParam.json** を編集し、次の値を更新します。
@@ -100,19 +98,19 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*
-    - *aadClientSecret* 
-    - *aadCustomerAdminGroupId* 
+    - *aadClientSecret*
+    - *aadCustomerAdminGroupId*
     - *workspaceResourceId*
     - *masterNodeCount*
     - *computeNodeCount*
     - *infraNodeCount*
 
-5. 次の手順では、Azure CLI を使用して、監視が有効になっているクラスターをデプロイします。 
+5. 次の手順では、Azure CLI を使用して、監視が有効になっているクラスターをデプロイします。
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
- 
+
     出力結果は、以下のようになります。
 
     ```azurecli
@@ -124,30 +122,30 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視を有効にするには、次の手順を実行します。 これは、Azure portal から、または提供されているテンプレートを使用して行うことができます。
 
 ### <a name="from-the-azure-portal"></a>Azure portal から
- 
+
 1. [Azure portal](https://portal.azure.com) にサインインする
 
-2. Azure portal メニュー上または **[ホーム]** ページから、[Azure Monitor] を選択します。 **[分析情報]** セクションで **[コンテナー]** を選択します。 
+2. Azure portal メニュー上または **[ホーム]** ページから、[Azure Monitor] を選択します。 **[分析情報]** セクションで **[コンテナー]** を選択します。
 
 3. **[モニター - コンテナー]** ページで、 **[Non-monitored clusters] (監視対象外のクラスター)** を選択します。
 
 4. 監視対象外のクラスターの一覧でクラスターを検索し、 **[有効にする]** をクリックします。 一覧の結果を確認するには、 **[クラスターの種類]** 列から **ARO** を探します。
 
 5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  
-    このリストでは、サブスクリプションでクラスターがデプロイされている既定のワークスペースと場所が事前に選択されています。 
+    このリストでは、サブスクリプションでクラスターがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![監視対象外のクラスターの監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、RedHat OpenShift クラスターがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。 
- 
-監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
+    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、RedHat OpenShift クラスターがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。
+
+監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
 ### <a name="enable-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して有効にする
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視を有効にする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
-- Azure Red Hat OpenShift クラスター リソース ID。 
+- Azure Red Hat OpenShift クラスター リソース ID。
 
 - クラスターが展開されているリソース グループ。
 
@@ -155,11 +153,11 @@ Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視�
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
-- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
+- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して設定できます。
 
@@ -167,9 +165,9 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
-2. Azure へのサインイン 
+2. Azure へのサインイン
 
     ```azurecli
     az login    
@@ -186,15 +184,15 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 4. 次のコマンドを実行して、クラスターの場所とリソース ID を指定します。
 
     ```azurecli
-    az openshift show -g <clusterResourceGroup> -n <clusterName> 
+    az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. JSON パラメーターファイル **existingClusterParam.json** を編集し、*araResourceId* および *araResoruceLocation*の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。 
+5. JSON パラメーターファイル **existingClusterParam.json** を編集し、*araResourceId* および *araResoruceLocation*の値を更新します。 **workspaceResourceId** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID です。
 
-6. Azure CLI を使用してデプロイするには、次のコマンドを実行します。 
+6. Azure CLI を使用してデプロイするには、次のコマンドを実行します。
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
     出力結果は、以下のようになります。

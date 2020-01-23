@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c984faf22b8e4cd499a5588f45d7072610f33544
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784457"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767927"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
@@ -68,10 +68,10 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Serv
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用するためのライセンス要件
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 
 - [簡単設定](how-to-connect-install-express.md)

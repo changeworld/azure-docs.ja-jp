@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791952"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045021"
 ---
 #   <a name="language-detection-cognitive-skill"></a>言語検出コグニティブ スキル
 
-**言語検出**スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 言語コードは、分析の強度を示すスコアとペアリングされます。 このスキルでは、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) Cognitive Services によって提供される機械学習モデルが使用されます。
+**言語検出**スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 言語コードは、分析の強度を示すスコアとペアリングされます。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
 
 この機能は、テキストの言語をその他のスキル ([感情分析スキル](cognitive-search-skill-sentiment.md)や[テキスト分割スキル](cognitive-search-skill-textsplit.md)など) への入力として提供する必要がある場合に特に便利です。
 
@@ -33,19 +33,19 @@ ms.locfileid: "72791952"
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>データ制限
-レコードの最大サイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用できます。
+レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データを言語検出スキルに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用できます。
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力     | 説明 |
+| 入力     | [説明] |
 |--------------------|-------------|
 | text | 分析されるテキスト。|
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名    | 説明 |
+| 出力名    | [説明] |
 |--------------------|-------------|
 | languageCode | 識別された言語の ISO 6391 言語コード。 例: "en"。 |
 | languageName | 言語の名前。 例: "English"。 |
@@ -134,7 +134,7 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 ## <a name="error-cases"></a>エラーになる場合
 テキストがサポートされていない言語で表されている場合、エラーが生成され、言語識別子は返されません。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

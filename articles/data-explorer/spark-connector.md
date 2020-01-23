@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 4/29/2019
-ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.date: 1/14/2020
+ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383046"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027926"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Apache Spark 用の Azure Data Explorer コネクタ (プレビュー)
 
@@ -33,7 +33,7 @@ Azure Data Explorer Spark コネクタは、あらゆる Spark クラスター�
 * Azure Data Explorer コネクタ ライブラリと、次の [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) ライブラリを含む、[依存関係](https://github.com/Azure/azure-kusto-spark#dependencies)に記載されているライブラリをインストールします。
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* [Spark 2.4、Scala 2.11 向けに事前構築されたライブラリ](https://github.com/Azure/azure-kusto-spark/releases)
+* [Spark 2.4、Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases)、および [Maven リポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)向けに事前構築されたライブラリ
 
 ## <a name="how-to-build-the-spark-connector"></a>Spark コネクタのビルド方法
 
@@ -82,20 +82,13 @@ mvn clean install
 > [!NOTE]
 > 次の手順を実行するとき、最新の Azure Data Explorer Spark コネクタ リリースを使用することをお勧めします。
 
-1. Spark 2.4 と Scala 2.11 を使用し、Azure Databricks に基づいて Spark クラスターを次のように設定します。 
+1. Spark 2.4.4 と Scala 2.11 を使用し、Azure Databricks クラスターに基づいて Spark クラスターを次のように設定します。 
 
     ![Databricks クラスターの設定](media/spark-connector/databricks-cluster.png)
-
-1. Azure Data Explorer コネクタ ライブラリのインポート:
+    
+1. Maven から最新の spark-kusto-connector ライブラリをインストールします。
 
     ![Azure Data Explorer ライブラリをインポートする](media/spark-connector/db-create-library.png)
-
-1. 依存関係をさらに追加します (maven から使用する場合は必ずしもする必要はありません):
-
-    ![依存関係を追加する](media/spark-connector/db-dependencies.png)
-
-    > [!TIP]
-    > 各 Spark リリースの正しい java リリース バージョンは[こちら](https://github.com/Azure/azure-kusto-spark#dependencies)にあります。
 
 1. 必要なライブラリがすべてインストールされていることを確認します。
 
@@ -109,7 +102,7 @@ Azure Data Explorer Spark コネクタでは、[Azure AD アプリケーショ�
 
 最も簡単で一般的な認証方法。 この方法は Azure Data Explorer Spark コネクタを使用するときにお勧めです。
 
-|properties  |説明  |
+|Properties  |[説明]  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   Azure AD アプリケーション (クライアント) ID。      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD 認証機関。 Azure AD Directory (テナント) ID。        |
@@ -117,14 +110,14 @@ Azure Data Explorer Spark コネクタでは、[Azure AD アプリケーショ�
 
 ### <a name="azure-data-explorer-privileges"></a>Azure Data Explorer の特権
 
-Azure Data Explorer クラスターで次の特権を付与する必要があります。
+Azure Data Explorer クラスターには次の特権を付与する必要があります。
 
 * 読み取りには (データ ソース)、Azure AD アプリケーションに対象データベースの*ビューアー*特権を与えるか、対象テーブルの*管理者*特権を与える必要があります。
 * 書き込みには (データ シンク)、Azure AD アプリケーションに対象データベースの*インジェスター*特権を与える必要があります。 新しいテーブルを作成するには、対象データベースの*ユーザー*特権も与える必要があります。 対象テーブルが既に存在する場合、対象テーブルの*管理者*特権を設定できます。
  
 Azure Data Explorer のプリンシパル ロールの詳細については、[ロールベースの承認](/azure/kusto/management/access-control/role-based-authorization)に関するページを参照してください。 セキュリティ ロールの管理については、「[security roles management](/azure/kusto/management/security-roles)」(セキュリティ ロールの管理) を参照してください。
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark シンク:Azure Data Explorer に書き込む
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark シンク: Azure Data Explorer に書き込む
 
 1. シンクのパラメーターの設定:
 
@@ -144,19 +137,19 @@ Azure Data Explorer のプリンシパル ロールの詳細については、[�
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
-    val conf = Map(
-            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-            KustoSinkOptions.KUSTO_TABLE -> table,
-            KustoSinkOptions.KUSTO_DATABASE -> database,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
-    
+    import org.apache.spark.sql.{SaveMode, SparkSession}
+
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .options(conf)
-      .save()
-      
+      .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
+      .option(KustoSinkOptions.KUSTO_DATABASE, database)
+      .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
+      .mode(SaveMode.Append)
+      .save()  
     ```
     
    または、簡略化された構文を使用します。
@@ -189,10 +182,9 @@ Azure Data Explorer のプリンシパル ロールの詳細については、[�
           .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
           .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
           .start()
-    
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark ソース:Azure Data Explorer から読み込む
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark ソース: Azure Data Explorer から読み取る
 
 1. 少量のデータを読み込むとき、データ クエリを定義します。
 
@@ -252,3 +244,9 @@ Azure Data Explorer のプリンシパル ロールの詳細については、[�
     
     display(dfFiltered)
     ```
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Data Explorer Spark コネクタ](https://github.com/Azure/azure-kusto-spark/tree/master/docs)についての詳細情報
+* [コード サンプル](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+

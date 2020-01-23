@@ -3,12 +3,12 @@ title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233060"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769671"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -46,7 +46,7 @@ Azure Functions には、Azure App Service によって提供されている、�
 
   1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
 
-  2. **[概要]** タブで、 **[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、 **[ダウンロード]** を選択します。
+  2. **[概要]** タブで、 **[アプリのコンテンツのダウンロード]** を選択します。 ダウンロード オプションを選択し、 **[ダウンロード]** を選択します。
 
       ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
 
@@ -66,10 +66,10 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
 
-次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を、お使いの関数アプリの一意の名前に置き換えてください。 
+次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を関数アプリの一意の名前に置き換え、`<resource_group>` をリソース グループの名前に置き換えます。
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 
@@ -87,7 +87,7 @@ zip デプロイとこの機能は統合されており、関数アプリの設�
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)

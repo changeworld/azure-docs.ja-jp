@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の Mobility Service のデータ構造 | Microsoft Docs
-description: Azure Maps Mobility Service のデータ構造
+title: Azure Maps の Mobility Service のデータ構造 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Mobility Service を介して返される一般的なフィールドとデータ構造について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 29e8a9d7555ca836b6266879f3b3c1e32ffd3980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735868"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910721"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility Service のデータ構造
 
@@ -52,7 +52,7 @@ Mobility Service では、[GTFS](https://gtfs.org/) ルートおよび移動デ�
 始めに、[Get Transit Line API](https://aka.ms/AzureMapsMobilityTransitLine) を使用して路線グループを要求し、後で路線にドリルダウンすることができます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Mobility Service を使用して輸送データを要求する方法について説明します。
 

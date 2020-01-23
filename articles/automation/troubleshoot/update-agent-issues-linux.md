@@ -1,6 +1,6 @@
 ---
-title: Azure Update Management での Linux Hybrid Runbook Worker の正常性について理解する
-description: Update Management をサポートする Linux の Hybrid Runbook Worker に関する問題をトラブルシューティングする方法について説明します。
+title: Linux Hybrid Runbook Worker の診断 - Azure Update Management
+description: Update Management をサポートする Linux の Azure Automation Hybrid Runbook Worker に関する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849261"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769831"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Linux Hybrid Runbook Worker の正常性について理解する
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Update Management 用の Linux Hybrid Runbook Worker の正常性を理解して解決する
 
 Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
@@ -102,7 +102,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 このチェックでは、Hybrid Runbook Worker が Azure Automation および Log Analytics ワークスペースと正しく通信できるかどうかが確認されます。
 
-Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)を参照してください
+Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください
 
 ### <a name="operations-endpoint"></a>操作エンドポイント
 
@@ -122,7 +122,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 このチェックでは、Log Analytics エージェントで必要なエンドポイントにマシンがアクセスできることが確認されます。
 
-## <a name="troubleshoot-offline"></a>オフラインでトラブルシューティングする
+## <a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
 スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 python スクリプト [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) は、スクリプト センターにあります。 このスクリプトの出力例を次に示します。
 
@@ -177,6 +177,6 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。

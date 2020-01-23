@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2e55f98f8c7b6ddbc21f7ea8633467461ea5be29
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596567"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922175"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center for IoT のアーキテクチャ
 
@@ -56,12 +56,12 @@ Azure Security Center for IoT では、分析パイプラインを使用して�
  
 Azure Security Center for IoT の推奨事項とアラート (分析パイプライン出力) は、各顧客の Log Analytics ワークスペースに書き込まれます。 ワークスペースおよび未加工のイベントにアラートと推奨事項を含めると、検出された不審なアクティビティの正確な情報を使用して詳細な調査とクエリを行うことができます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Security Center for IoT ソリューションの基本的なアーキテクチャとワークフローについて説明しました。 IoT Hub でセキュリティ ソリューションの使用を開始し、有効化するための前提条件と方法の詳細については、次の記事を参照してください。
 
 - [サービスの前提条件](service-prerequisites.md)
-- [使用の開始](getting-started.md)
+- [作業の開始](getting-started.md)
 - [ソリューションを構成する](quickstart-configure-your-solution.md)
 - [IoT Hub でセキュリティを有効化する](quickstart-onboard-iot-hub.md)
 - [Azure Security Center for IoT の FAQ](resources-frequently-asked-questions.md)

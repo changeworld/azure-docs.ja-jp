@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792915"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981171"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -45,7 +45,7 @@ Azure Logic Apps におけるアクセスを制御し、データを保護する
 
 次の表で説明するように、各 URL にはクエリ パラメーター `sp`、`sv`、`sig` が含まれています。
 
-| Query parameter (クエリ パラメーター) | 説明 |
+| Query parameter (クエリ パラメーター) | [説明] |
 |-----------------|-------------|
 | `sp` | 使用が許可された HTTP メソッドのアクセス許可を指定します。 |
 | `sv` | 署名の生成に使用する SAS バージョンを指定します。 |
@@ -174,7 +174,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 * [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator): ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
 
-他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用できます。 この機能を使用すると、他のユーザーは運用リソースを変更または削除できなくなります。
+他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/management/lock-resources.md)を使用できます。 この機能を使用すると、他のユーザーは運用リソースを変更または削除できなくなります。
 
 <a name="secure-run-history"></a>
 
@@ -356,7 +356,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ## <a name="access-to-parameter-inputs"></a>パラメーターの入力へのアクセス
 
-デプロイ先が複数の異なる環境にまたがる場合、環境に応じて変わる値は、ワークフロー定義内でパラメーター化することを検討してください。 そのようにすると、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)を使用してロジック アプリをデプロイすることでデータのハードコーディングを避け、セキュリティで保護されたパラメーターを定義することで機密データを保護し、[パラメーター ファイル](../azure-resource-manager/resource-manager-parameter-files.md)を使用することで[テンプレートのパラメーター](../azure-resource-manager/template-parameters.md)で個別の入力としてそのデータを渡すことができます。
+デプロイ先が複数の異なる環境にまたがる場合、環境に応じて変わる値は、ワークフロー定義内でパラメーター化することを検討してください。 そのようにすると、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用してロジック アプリをデプロイすることでデータのハードコーディングを避け、セキュリティで保護されたパラメーターを定義することで機密データを保護し、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用することで[テンプレートのパラメーター](../azure-resource-manager/templates/template-parameters.md)で個別の入力としてそのデータを渡すことができます。
 
 たとえば、[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護することができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を非表示にするには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
 
@@ -368,11 +368,11 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 * [ワークフロー定義内のパラメーターをセキュリティで保護する](#secure-parameters-workflow)
 * [難読化を使用して実行履歴のデータを非表示にする](#obfuscate)
 
-[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合は、デプロイ時に評価される、セキュリティで保護された[テンプレート パラメーター](../azure-resource-manager/template-parameters.md)を、`securestring` 型と `secureobject` 型を使用して定義できます。 テンプレート パラメーターを定義するには、テンプレートの最上位の `parameters` セクションを使用します。このセクションは独立しており、ワークフロー定義の `parameters` セクションとは異なります。 テンプレートのパラメーターに値を指定するには、別途[パラメーター ファイル](../azure-resource-manager/resource-manager-parameter-files.md)を使用します。
+[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合は、デプロイ時に評価される、セキュリティで保護された[テンプレート パラメーター](../azure-resource-manager/templates/template-parameters.md)を、`securestring` 型と `secureobject` 型を使用して定義できます。 テンプレート パラメーターを定義するには、テンプレートの最上位の `parameters` セクションを使用します。このセクションは独立しており、ワークフロー定義の `parameters` セクションとは異なります。 テンプレートのパラメーターに値を指定するには、別途[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用します。
 
 たとえばシークレットを使用する場合、それらのシークレットをデプロイ時に [Azure Key Vault](../key-vault/key-vault-overview.md) から取得する、セキュリティで保護されたテンプレート パラメーターを定義して使用することができます。 その後、パラメーター ファイルの中で、キー コンテナーとシークレットを参照することができます。 詳細については、以下のトピックを参照してください。
 
-* [デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 * このトピックの後にある [Azure Resource Manager テンプレート内のパラメーターをセキュリティで保護する](#secure-parameters-deployment-template) (このトピックで後出)
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーターをセキュリティで保護する
 
-ロジック アプリ用の [Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)には、複数の `parameters` セクションが存在します。 パスワード、キー、シークレットなどの秘匿性の高い情報を保護するには、テンプレート レベルおよびワークフロー定義レベルで、`securestring` または `secureobject` 型を使用して、セキュリティで保護されたパラメーターを定義します。 その後、これらの値を [Azure Key Vault](../key-vault/key-vault-overview.md) に格納すれば、[パラメーター ファイル](../azure-resource-manager/resource-manager-parameter-files.md)を使用して Key Vault とシークレットを参照することができます。 その後、デプロイ時にご利用のテンプレートからその情報を取得します。 詳しくは、[デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)方法に関する記事をご覧ください。
+ロジック アプリ用の [Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)には、複数の `parameters` セクションが存在します。 パスワード、キー、シークレットなどの秘匿性の高い情報を保護するには、テンプレート レベルおよびワークフロー定義レベルで、`securestring` または `secureobject` 型を使用して、セキュリティで保護されたパラメーターを定義します。 その後、これらの値を [Azure Key Vault](../key-vault/key-vault-overview.md) に格納すれば、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用して Key Vault とシークレットを参照することができます。 その後、デプロイ時にご利用のテンプレートからその情報を取得します。 詳しくは、[デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)方法に関する記事をご覧ください。
 
 次に、これらの `parameters` セクションについて詳しく説明します。
 
-* テンプレートの最上位の `parameters` セクションには、そのテンプレートが "*デプロイ*" 時に使用する値のパラメーターを定義します。 たとえば、特定のデプロイ環境の接続文字列がそのような値として考えられます。 これらの値は、独立した[パラメーター ファイル](../azure-resource-manager/resource-manager-parameter-files.md)に格納できるので、値の変更も容易に行うことができます。
+* テンプレートの最上位の `parameters` セクションには、そのテンプレートが "*デプロイ*" 時に使用する値のパラメーターを定義します。 たとえば、特定のデプロイ環境の接続文字列がそのような値として考えられます。 これらの値は、独立した[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納できるので、値の変更も容易に行うことができます。
 
 * ロジック アプリのリソース定義内、かつワークフロー定義の外側にある `parameters` セクションでは、ワークフロー定義のパラメーターの値を指定します。 このセクションでは、テンプレートのパラメーターを参照するテンプレート式を使用して、それらの値を割り当てることができます。 これらの式は、デプロイ時に評価されます。
 
@@ -437,7 +437,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 この例のテンプレートには、`securestring` 型を使用する、セキュリティで保護されたパラメーターの定義が複数存在します。
 
-| パラメーター名 | 説明 |
+| パラメーター名 | [説明] |
 |----------------|-------------|
 | `TemplatePasswordParam` | パスワードを受け取るテンプレート パラメーター。パスワードはその後、ワークフロー定義の `basicAuthPasswordParam` パラメーターに渡されます。 |
 | `TemplateUsernameParam` | ユーザー名を受け取るテンプレート パラメーター。ユーザー名はその後、ワークフロー定義の `basicAuthUserNameParam` パラメーターに渡されます。 |
@@ -572,7 +572,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
   HTTP、HTTP + Swagger、Webhook など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、次の認証の種類を使用できます。
 
-  * [基本認証](#basic-authentication)
+  * [[基本認証]](#basic-authentication)
 
   * [クライアント証明書認証](#client-certificate-authentication)
 
@@ -618,11 +618,11 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>基本認証
+### <a name="basic-authentication"></a>[基本認証]
 
 [[基本]](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
+| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Basic | 使用する認証の種類 |
 | **ユーザー名** | `username` | はい | <*user-name*>| ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
@@ -653,11 +653,11 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[クライアント証明書]](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
+| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **パスワード** | `password`| 説明を参照してください | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード。 <p><p>**メモ**:このプロパティ値は、ロジック アプリ デザイナーで作業するときに必要ですが、コードビューで作業するときは必要*ありません*。 |
+| **パスワード** | `password`| 説明を参照してください | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード。 <p><p>**注**:このプロパティ値は、ロジック アプリ デザイナーで作業するときに必要ですが、コードビューで作業するときは必要*ありません*。 |
 |||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ClientCertificate` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -692,17 +692,17 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[Active Directory OAuth]](../active-directory/develop/about-microsoft-identity-platform.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
+| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **対象ユーザー** | `audience` | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **クライアント ID** | `clientId` | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
-| **資格情報の種類** | `credentialType` | はい | 証明書 <br>or <br>Secret | 承認を要求するためにクライアントで使用される資格情報の種類。 このプロパティと値はロジック アプリの基になっている定義には出現しませんが、選択した資格情報の種類に対して表示されるプロパティがそれによって決まります。 |
+| **資格情報の種類** | `credentialType` | はい | Certificate <br>or <br>Secret | 承認を要求するためにクライアントで使用される資格情報の種類。 このプロパティと値はロジック アプリの基になっている定義には出現しませんが、選択した資格情報の種類に対して表示されるプロパティがそれによって決まります。 |
 | **シークレット** | `secret` | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*client-secret*> | 承認を要求しているクライアント シークレット |
 | **Pfx** | `pfx` | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
 | **パスワード** | `password` | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
-| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 <p>**メモ**:このプロパティがデザイナーに表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[機関]** を選択します。 |
+| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 <p>**注**:このプロパティがデザイナーに表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[機関]** を選択します。 |
 |||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ActiveDirectoryOAuth`、資格情報の種類として `Secret` が指定されており、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -746,10 +746,10 @@ Authorization: OAuth realm="Photos",
 
 Raw 認証をサポートするトリガーまたはアクションでは、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
+| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Raw | 使用する認証の種類 |
-| **値** | `value` | はい | <*authorization-header-value*> | 認証に使用する Authorization ヘッダーの値 |
+| **Value** | `value` | はい | <*authorization-header-value*> | 認証に使用する Authorization ヘッダーの値 |
 ||||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `Raw` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -781,10 +781,10 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 3. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
 
-   | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
+   | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
-   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**メモ**:このプロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と正確に一致するようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
+   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**:このプロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と正確に一致するようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
    |||||
 
    たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ManagedServiceIdentity` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -804,7 +804,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps のデプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)  
 * [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  

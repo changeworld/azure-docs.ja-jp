@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900245"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863412"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74900245"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A: イベント ソース データが JSON 形式でない
 
-Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
+Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B: イベント ソース キーに必要なアクセス許可がない
 
@@ -82,7 +82,7 @@ Time Series Insights エクスプローラーにデータが表示されるの�
 
 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。 
 
-フラット化のロジックのしくみについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
+フラット化のロジックのしくみについては、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>調整が過剰な場合の推奨される解決
 
@@ -109,7 +109,7 @@ Time Series Insights エクスプローラーにデータが表示されるの�
 
 タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights エクスプローラーを使用することです。 Time Series Insights エクスプローラー内でグラフを使用して、タイムスタンプのプロパティ名を入力した後で期間を選択します。 選択内容を右クリックして、 **[イベントの探索]** オプションを選択します。
 
-最初の列見出しは、タイムスタンプ プロパティ名になるはずです。 **タイムスタンプ**の語の横に **($ts)** と表示されるはずです。
+最初の列見出しは、タイムスタンプ プロパティ名になるはずです。 "**Timestamp**" という語の横に **($ts)** が表示されます。
 
 次の値は表示されません。
 
@@ -117,7 +117,7 @@ Time Series Insights エクスプローラーにデータが表示されるの�
 - *カレンダー アイコン*:Time Series Insights が*日時*としてデータ値を読み取っていることを示します。
 - *#* :Time Series Insights が整数としてデータ値を読み取っていることを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Time Series Insights 内での待機時間を軽減する方法](time-series-insights-environment-mitigate-latency.md)を確認します。
 

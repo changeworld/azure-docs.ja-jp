@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747690"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768505"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
 
@@ -33,7 +33,7 @@ ms.locfileid: "73747690"
 - [API Management インスタンスにゲートウェイ リソースをプロビジョニングします](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> セルフホステッド ゲートウェイは、Linux ベースの Docker コンテナーとしてパッケージ化されます。
+> セルフホステッド ゲートウェイは、x86-64 の Linux ベースの Docker コンテナーとしてパッケージ化されます。
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Docker にセルフホステッド ゲートウェイをデプロイする
 
@@ -64,7 +64,7 @@ CONTAINER ID        IMAGE                                                 COMMAN
 >
 > <code>docker container logs --help</code> コマンドを使用して、すべてのログ表示オプションを表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関するページを参照してください。
 * [セルフホステッド ゲートウェイのカスタム ドメイン名を構成する](api-management-howto-configure-custom-domain-gateway.md)。

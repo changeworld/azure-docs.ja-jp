@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 0ad569977194441b026c2c987ecad544ce40cfa1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227358"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921111"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -51,7 +51,7 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-トリガーの例をスキップする
+[トリガーの例をスキップする](#trigger---c-attributes)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -87,11 +87,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-トリガーの例をスキップする
+[トリガーの例をスキップする](#trigger---c-attributes)
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
-次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Cosmos DB レコードが追加または変更されるとログ メッセージを書き込みます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -125,11 +125,11 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-トリガーの例をスキップする
+[トリガーの例をスキップする](#trigger---c-attributes)
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
-次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、Cosmos DB レコードが追加または変更されるとログ メッセージを書き込みます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -156,9 +156,11 @@ JavaScript コードを次に示します。
     }
 ```
 
+[トリガーの例をスキップする](#trigger---c-attributes)
+
 ### <a name="trigger---java-example"></a>トリガー - Java の例
 
-次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 指定されたデータベースとコレクション内に挿入または更新がある場合に、関数が関与します。
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 指定されたデータベースとコレクション内に挿入または更新がある場合に、関数が呼び出されます。
 
 ```json
 {
@@ -193,11 +195,12 @@ Java コードを次に示します。
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に由来するパラメーター上で `@CosmosDBTrigger` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional\<T> を使用した null 許容値で使用できます。
 
 
-トリガーの例をスキップする
+[トリガーの例をスキップする](#trigger---c-attributes)
+
 
 ### <a name="trigger---python-example"></a>トリガー - Python の例
 
-次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、Cosmos DB レコードが追加または変更されるとログ メッセージを書き込みます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -250,7 +253,7 @@ Python コードを次に示します。
 
 次の表は、*function.json* ファイルと `CosmosDBTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** || `cosmosDBTrigger` に設定する必要があります。 |
 |**direction** || `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -258,7 +261,7 @@ Python コードを次に示します。
 |**connectionStringSetting**|**ConnectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
 |**databaseName**|**DatabaseName**  | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
 |**collectionName** |**CollectionName** | 監視されているコレクションの名前。 |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (省略可能) リース コレクションを保持するサービスへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 リース コレクションの接続文字列には書き込み権限が必要です。|
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (省略可能) リース コレクションを保持する Azure Cosmos DB アカウントへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 リース コレクションの接続文字列には書き込み権限が必要です。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
 |**leaseCollectionName** | **LeaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
@@ -333,7 +336,7 @@ namespace CosmosDBSamplesV2
 
 #### <a name="queue-trigger-look-up-id-from-json-c"></a>キュー トリガー、JSON からの ID の検索 (C#)
 
-次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、JSON オブジェクトを含むキュー メッセージによってトリガーされます。 キュー トリガーにより、検索する ID とパーティション キー値を含む、`ToDoItemLookup` という名前のオブジェクトに JSON が解析されます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、JSON オブジェクトを含むキュー メッセージによってトリガーされます。 キュー トリガーにより、検索する ID とパーティション キー値を含む、`ToDoItemLookup` タイプのオブジェクトに JSON が解析されます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -1115,7 +1118,7 @@ module.exports = function (context, req, toDoItem) {
 
 #### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP トリガー、ルート データからの ID の検索 (JavaScript)
 
-次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
 
 *function.json* ファイルを次に示します。
 
@@ -1328,7 +1331,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 #### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP トリガー、ルート データからの ID の検索 (Python)
 
-次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
 
 *function.json* ファイルを次に示します。
 
@@ -1732,7 +1735,7 @@ public class DocsFromRouteSqlQuery {
 
 次の表は、*function.json* ファイルと `CosmosDB` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**     || `cosmosDB` に設定する必要があります。        |
 |**direction**     || `in` に設定する必要があります。         |
@@ -2100,14 +2103,6 @@ F# コードを次に示します。
     open FSharp.Interop.Dynamic
     open Newtonsoft.Json
     open Microsoft.Extensions.Logging
-
-    type Employee = {
-      id: string
-      name: string
-      employeeId: string
-      address: string
-    }
-
     let Run(myQueueItem: string, employeeDocument: byref<obj>, log: ILogger) =
       log.LogInformation(sprintf "F# Queue trigger function processed: %s" myQueueItem)
       let employee = JObject.Parse(myQueueItem)
@@ -2369,7 +2364,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 次の表は、*function.json* ファイルと `CosmosDB` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**     || `cosmosDB` に設定する必要があります。        |
 |**direction**     || `out` に設定する必要があります。         |
@@ -2417,13 +2412,13 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 }
 ```
 
-|プロパティ  |Default | 説明 |
+|プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
 |Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください|
 |leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](../cosmos-db/serverless-computing-database.md)
 * [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

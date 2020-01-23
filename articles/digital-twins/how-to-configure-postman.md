@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 01/10/2020
+ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304848"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933439"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -37,7 +37,7 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
 1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ウィンドウで、 **[所属する組織で使用している API]** タブを選択し、以下を探します:
     
-    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
+    1. `Azure Digital Twins`. **Azure Digital Twins** API を選択します。
 
         [![API または Azure Digital Twins を検索する](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -66,7 +66,7 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
     Manifest.json 内の **oauth2AllowImplicitFlow** 設定を有効にするには、 **[アクセス トークン]** をオンにします。
 
-    [![パブリック クライアントの構成設定](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![パブリック クライアントの構成設定](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Azure Active Directory アプリの**アプリケーション ID** をコピーして保管します。 これは後述する手順で使用されます。
 
@@ -98,7 +98,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
     | コールバック URL | `https://www.getpostman.com/oauth2/callback` |
     | 認証 URL | **ステップ 2** の**承認 URL** を使用します |
     | クライアント ID | 前のセクションで作成または再利用した Azure Active Directory アプリの**アプリケーション ID** を使用します |
-    | Scope (スコープ) | 空白 |
+    | スコープ | 空白 |
     | State | 空白 |
     | クライアント認証 | `Send as Basic Auth header` |
 
@@ -130,9 +130,15 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
    > * これらのヘッダーをパートごとに指定する必要がありません。
    > * 要求全体に `multipart/mixed` か別の適切な **Content-Type** を選択する必要がありません。
 
-1. 最後に、 **[送信]** を選択し、マルチパート HTTP POST 要求を送信します。 `200` または `201` の状態コードは成功した要求を示します。 また、適切な応答メッセージも表示されます。
+1. 最後に、 **[送信]** を選択し、マルチパート HTTP POST 要求を送信します。 `200` または `201` の状態コードは成功した要求を示します。 適切な応答メッセージが、クライアント インターフェイスに表示されます。
 
-## <a name="next-steps"></a>次の手順
+1. API エンドポイントを呼び出して、HTTP POST 要求データを検証します。 
+
+   ```URL
+   YOUR_MANAGEMENT_API_URL/spaces/blobs?includes=description
+   ```
+
+## <a name="next-steps"></a>次のステップ
 
 - Digital Twins 管理 API の概要とその使用方法については、「[Azure Digital Twins 管理 API の使用方法](how-to-navigate-apis.md)」をご覧ください。
 

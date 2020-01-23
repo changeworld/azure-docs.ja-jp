@@ -1,60 +1,108 @@
 ---
-title: Azure Migrate アプライアンスのアーキテクチャ
+title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 49545ca6c43c272c3fd84f8bee59b8617aae136d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232567"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028814"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
-この記事では、Azure Migrate アプライアンスについて説明します。 Azure Migrate Assessment および Migration ツールを使用して、アプリ、インフラストラクチャ、およびワークロードを検出、評価し、それらを Microsoft Azure に移行する場合、アプライアンスをデプロイします。 
-
-[Azure Migrate](migrate-services-overview.md) は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、およびそれらの Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
-
-
+この記事では、Azure Migrate アプライアンスについて説明します。 アプライアンスは、Microsoft Azure への移行のために [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールを使用してアプリ、インフラストラクチャ、およびワークロードを検出および評価する場合にデプロイします。 また、アプライアンスは、[Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-migration-tool) と[エージェントレスの移行](server-migrate-overview.md)を使用して VMware VM を Azure に移行する場合にも使用します。
 
 ## <a name="appliance-overview"></a>アプライアンスの概要
 
-Azure Migrate アプライアンスの種類と使用方法を次に示します。
+Azure Migrate アプライアンスは、次のシナリオで使用します。
 
-**以下としてデプロイ** | **用途** | **詳細**
---- | --- |  ---
-VMware VM | Azure Migrate Assessment ツールを使用した VMware VM の評価。<br/><br/> Azure Migrate Server Migration ツールを使用した VMware VM のエージェントレス移行。 | OVA テンプレートをダウンロードし、それを vCenter Server にインポートして、アプライアンス VM を作成します。
-Hyper-V VM | Azure Migrate Assessment ツールを使用した Hyper-V VM の評価。 | Zip 形式の VHD をダウンロードし、それを Hyper-V にインポートして、アプライアンス VM を作成します。
+**シナリオ** | **ツール** | **用途** 
+--- | --- | ---
+VMware VM | Azure Migrate: Server Assessment<br/><br/> Azure Migrate: Server Migration | VMware VM を検出する<br/><br/> マシンのアプリと依存関係を検出する<br/><br/> 評価のためにマシン メタデータとパフォーマンス メタデータを収集する。<br/><br/> エージェントレス移行で VMware VM を移行する。
+Hyper-V VM | Azure Migrate: Server Assessment | Hyper-V VM を検出する<br/><br/> 評価のためにマシン メタデータとパフォーマンス メタデータを収集する。
+物理マシン |  Azure Migrate: Server Assessment |  物理サーバーを検出する<br/><br/> 評価のためにマシン メタデータとパフォーマンス メタデータを収集する。
 
-## <a name="appliance-access"></a>アプライアンスへのアクセス
+## <a name="appliance---vmware"></a>アプライアンス - VMware 
 
-アプライアンスを構成した後、TCP ポート 3389 を介してアプライアンス VM にリモート アクセスできます。 また、URL: `https://<appliance-ip-or-name>:44368` を使用して、ポート 44368 でアプライアンスの Web 管理アプリにリモート アクセスすることもできます。
-
-## <a name="appliance-license"></a>アプライアンスのライセンス
-アプライアンスには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
-
-## <a name="appliance-agents"></a>アプライアンスのエージェント
-アプライアンスには、これらのエージェントがインストールされています。
-
-**エージェント** | **詳細**
+**要件** | **VMware** 
 --- | ---
-検出エージェント | オンプレミスの仮想マシンの構成データを収集する
-評価エージェント | VM のパフォーマンス データを収集するために、オンプレミス環境をプロファイルします。
-移行アダプター | VM のレプリケーションを調整し、VM と Azure 間の通信を調整します。
-移行ゲートウェイ | レプリケートされた VM のデータを Azure に送信します。
+**ダウンロード形式** | .OVA 
+**ダウンロード リンク** | https://aka.ms/migrate/appliance/vmware 
+**ダウンロード サイズ** | 11.2 GB
+**License** | ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**デプロイ** | アプライアンスは VMware VM としてデプロイします。 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/> バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。<br/><br/> アプライアンスは、1 つの vCenter Server に接続できます。
+**ハードウェア** | 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるための、vCenter 上のリソース。 
+**ハッシュ値** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256: 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**vCenter サーバー/ホスト** | バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。<br/><br/> 5\.5、6.0、6.5、または 6.7 を実行する vCenter Server。
+**Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
+**検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
+**アプライアンスのコンポーネント** | 管理アプリ: デプロイ時のユーザー入力用のアプライアンスの Web アプリ。<br/> 検出エージェント: マシン構成データを収集します。<br/> 評価エージェント: パフォーマンス データを収集します。<br/> DRA: VM のレプリケーションを調整し、マシンと Azure 間の通信を調整します。<br/> ゲートウェイ:レプリケートされたデータを Azure に送信します。<br/> 自動更新サービス: コンポーネントを更新します (24 時間ごとに実行されます)。
+**VDDK (エージェントレス移行)** | Azure Migrate Server Migration を使用してエージェントレス移行を実行する場合は、VMware vSphere VDDK がアプライアンス VM にインストールされている必要があります。
 
 
-## <a name="appliance-deployment-requirements"></a>アプライアンスのデプロイ要件
+## <a name="appliance---hyper-v"></a>アプライアンス - Hyper-V
 
-- VMware アプライアンスのデプロイ要件と、アプライアンスがアクセスする必要がある URL を[確認](migrate-support-matrix-vmware.md#assessment-appliance-requirements)します。
-- Hyper-V アプライアンスのデプロイ要件と、アプライアンスがアクセスする必要がある URL を[確認](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements)します。
+**要件** | **Hyper-V** 
+--- | ---
+**ダウンロード形式** | zip 形式のフォルダー (VHD を含む)
+**ダウンロード リンク** | https://aka.ms/migrate/appliance/hyperv 
+**ダウンロード サイズ** | 10 GB
+**License** | ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**アプライアンスのデプロイ**   |  アプライアンスを Hyper-V VM としてデプロイします。<br/> Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+**ハードウェア** | アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための、Hyper-V ホスト上のリソース。
+**ハッシュ値** | MD5: 29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256: 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Hyper-V ホスト** | Windows Server 2012 R2 以降を実行します。
+**Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
+**検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 5,000 台検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
+**アプライアンスのコンポーネント** | 管理アプリ: デプロイ時のユーザー入力用のアプライアンスの Web アプリ。<br/> 検出エージェント: マシン構成データを収集します。<br/> 評価エージェント: パフォーマンス データを収集します。<br/>  自動更新サービス: コンポーネントを更新します (24 時間ごとに実行されます)。
 
 
-## <a name="collected-performance-data-vmware"></a>収集対象のパフォーマンス データ - VMware
+## <a name="appliance---physical"></a>アプライアンス - 物理
+
+**要件** | **物理** 
+--- | ---
+**ダウンロード形式** | zip 形式のフォルダー (PowerShell インストーラー スクリプトを含む)
+**ダウンロード リンク** | [ダウンロード リンク](https://go.microsoft.com/fwlink/?linkid=2105112)
+**ダウンロード サイズ** | 59.7 MB
+**ハードウェア** | 専用の物理マシン、または VM。 アプライアンスを実行するマシンには、16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、および外部スイッチが必要です。<br/><br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+**ハッシュ値** | MD5: 96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+**ソフトウェア** | アプライアンス マシンでは、Windows Server 2016 を実行する必要があります。 
+**アプライアンスのデプロイ**   |  アプライアンス インストーラー スクリプトは、ポータルからダウンロードします (zip 形式のフォルダー)。 <br/> フォルダーを解凍し、PowerShell スクリプト (AzureMigrateInstaller.ps1) を実行します。
+**検出** | 1 つのアプライアンスで最大 250 台の物理サーバーを検出できます。
+**アプライアンスのコンポーネント** | 管理アプリ: デプロイ時のユーザー入力用のアプライアンスの Web アプリ。<br/> 検出エージェント: マシン構成データを収集します。<br/> 評価エージェント: パフォーマンス データを収集します。<br/>  自動更新サービス: コンポーネントを更新します (24 時間ごとに実行されます)。
+**ポート アクセス** | アプライアンスの構成後の、TCP ポート 3389 でアプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> "https://<appliance-ip-or-name>:44368" という URL を使用して、ポート 44368 でアプライアンス管理アプリにリモートでアクセスするための受信接続。<br/><br/> ポート 443、5671、5672 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
+
+
+
+## <a name="url-access"></a>URL アクセス
+
+Azure Migrate アプライアンスには、インターネットへの接続が必要です。
+
+- アプライアンスをデプロイすると、下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
+- URL ベースのプロキシを使用してインターネットに接続している場合は、それらの URL へのアクセスを許可して、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
+
+**[URL]** | **詳細**  
+--- | --- |
+*.portal.azure.com  | Azure Portal に移動します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure サブスクリプションにサインインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスが Azure Migrate と通信するための Active Directory アプリを作成します。
+management.azure.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
+dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+*.vault.azure.net | Azure Key Vault でシークレットを管理します。
+aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
+download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。
+*.servicebus.windows.net | VMware のエージェントレス移行のために使用します。<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | VMware のエージェントレス移行のために使用します。<br/><br/> Azure Migrate サービスの URL に接続します。
+*.blob.core.windows.net |  VMware のエージェントレス移行のために使用します。<br/><br/>ストレージにデータをアップロードします。
+
+
+
+
+## <a name="collected-data---vmware"></a>収集されるデータ - VMware
+
+### <a name="collected-performance-data-vmware"></a>収集対象のパフォーマンス データ - VMware
 
 アプライアンスが収集して Azure に送信する VMware VM のパフォーマンス データを次に示します。
 
@@ -70,7 +118,7 @@ NIC 読み取りのスループット (MB/秒) | net.received.average | VM サ�
 NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM サイズの計算
 
 
-## <a name="collected-metadata-vmware"></a>収集対象のメタデータ - VMware
+### <a name="collected-metadata-vmware"></a>収集対象のメタデータ - VMware
 
 > [!NOTE]
 > Azure Migrate アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
@@ -112,7 +160,7 @@ IPv6 アドレス | vm.Guest.Net
 読み取りのスループット (MB/秒) | net.received.average
 書き込みのスループット (MB/秒) | net.transmitted.average
 **インベントリ パスの詳細** | 
-名前 | container.GetType().Name
+Name | container.GetType().Name
 子オブジェクトの型 | container.ChildType
 参照の詳細 | container.MoRef
 親の詳細 | Container.Parent
@@ -122,9 +170,9 @@ IPv6 アドレス | vm.Guest.Net
 各ホストのクラスターの詳細 | ((ClusterComputeResource)container).Host
 各 VM のホストの詳細 | ((HostSystem)container).VM
 
+## <a name="collected-data---hyper-v"></a>収集されるデータ - Hyper-V
 
-
-## <a name="collected-performance-data-hyper-v"></a>収集対象のパフォーマンス データ - Hyper-V
+### <a name="collected-performance-data-hyper-v"></a>収集対象のパフォーマンス データ - Hyper-V
 
 > [!NOTE]
 > Azure Migrate アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
@@ -144,7 +192,7 @@ Hyper-V の仮想ネットワーク アダプター | 送信バイト数/秒 | V
 - メモリ使用率は、(現在の負荷 * ゲストの可視物理メモリ) / 100 です。
 - ディスクとネットワークの使用率の値は、一覧にある Hyper-V パフォーマンス カウンターから収集されます。
 
-## <a name="collected-metadata-hyper-v"></a>収集対象のメタデータ - Hyper-V
+### <a name="collected-metadata-hyper-v"></a>収集対象のメタデータ - Hyper-V
 
 アプライアンスが収集して Azure に送信する Hyper-V VM のメタデータの全一覧を次に示します。
 
@@ -180,24 +228,23 @@ NIC MAC ID (レガシ NIC) | MsvmEmulatedEthernetPortSetting データ | Address
 
 アプライアンスは、次のプロセスを使用して、vCenter サーバーおよび Hyper-V ホスト/クラスターと通信します。
 
-
 1. **検出を開始する**:
     - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) および 5986 (HTTPS) で Hyper-V ホストとの通信が行われます。
     - VMware アプライアンスで検出を開始すると、既定では TCP ポート 443 で vCenter サーバーとの通信が行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス Web アプリで構成できます。
 2. **メタデータとパフォーマンス データを収集する**:
     - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 および 5986 で Hyper-V ホストから Hyper-V VM のデータを収集します。
     - アプライアンスは、既定ではポート 443 を使用して通信を行い、vCenter サーバーから VMware VM のデータを収集します。
-3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。
+3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスはインターネット経由で Azure に接続できます。または、ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
     - パフォーマンス データの場合、アプライアンスはリアルタイムの使用状況データを収集します。
         - パフォーマンス データは、各パフォーマンス メトリックについて、VMware では 20 秒ごとに収集され、Hyper-V では 30 秒ごとに収集されます。
         - 収集されたデータは、10 分間に 1 つのデータ ポイントを作成するためにロールアップされます。
-        - ピーク時の使用率の値は、すべての 20/30 秒のデータ ポイントから選択され、評価計算のために Azure に送信されます。
+        - ピーク時の使用率の値は、すべての 20 または 30 秒のデータ ポイントから選択され、評価計算のために Azure に送信されます。
         - 評価のプロパティで指定されたパーセンタイル値 (50/90/95/99) に基づいて、10 分間のポイントが昇順に並べ替えられ、適切なパーセンタイル値を使用して評価が計算されます。
     - Server Migration の場合、アプライアンスは VM データの収集を開始し、それを Azure にレプリケートします。
 4. **評価および移行する**:これで、Azure Migrate Server Assessment を使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 また、Azure Migrate Server Migration を使用して VMware VM の移行を開始し、エージェントレスの VM レプリケーションを調整することもできます。
 
 
-![アーキテクチャ](./media/migrate-appliance/architecture.png)
+![Architecture](./media/migrate-appliance/architecture.png)
 
 
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
@@ -212,7 +259,7 @@ NIC MAC ID (レガシ NIC) | MsvmEmulatedEthernetPortSetting データ | Address
 
 手動で更新する場合は、アプライアンスの古いエージェントごとに **[更新]** ボタンを使用して、アプライアンスのすべてのエージェントを同時に更新してください。 更新設定は、いつでも自動更新に戻すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VMware 用にアプライアンスを設定する[方法を確認する](tutorial-assess-vmware.md#set-up-the-appliance-vm)。
 Hyper-V 用にアプライアンスを設定する[方法を確認する](tutorial-assess-hyper-v.md#set-up-the-appliance-vm)。

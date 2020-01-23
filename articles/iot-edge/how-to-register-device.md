@@ -4,17 +4,17 @@ description: Azure CLI の IoT 拡張機能を使用して新しい IoT Edge デ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ab9c778adef29a8e531158e062e9d35d4e80ae4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434125"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772433"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge デバイスを登録する
 
@@ -22,9 +22,9 @@ Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハ�
 
 次のいずれかのツールを使用して、登録できます。
 
-* [Azure portal](https://portal.azure.com) は、Azure リソースを作成、表示、および管理するためのグラフィカル ユーザー インターフェイスを備えています。
-* [Visual Studio Code](https://code.visualstudio.com/) は、ソース コード エディターです。 Azure IoT 拡張機能を使用すると、IoT ソリューションの開発と同じツールで、IoT リソースを簡単に管理できます。
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、Azure リソースを管理するためのコマンドライン ツールです。 再利用可能なコマンドが、タスクの自動化に役立ちます。
+* Azure リソースを作成、表示、および管理するためにグラフィカル ユーザー インターフェイスを使用する場合は、[Azure portal でデバイスを登録します](#register-in-the-azure-portal)。
+* IoT ソリューションの開発と同じ場所で Azure IoT リソースを管理する場合は、[Visual Studio Code にデバイスを登録します](#register-with-visual-studio-code)。
+* Azure リソースを管理するためのコマンドライン ツールを使用する場合、またはタスクを自動化する場合は、[Azure CLI にデバイスを登録します](#register-with-the-azure-cli)。
 
 ## <a name="register-in-the-azure-portal"></a>Azure portal での登録
 

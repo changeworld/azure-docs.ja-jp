@@ -4,24 +4,37 @@ description: Azure Spring Cloud で診断データを分析する方法につい
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 01/06/2020
 ms.author: jeconnoc
-ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607860"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730044"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
-Azure Spring Cloud の診断機能を使用すると、次のいずれかのサービスを使用してログとメトリックを分析できます。
+Azure Spring Cloud の診断機能を使用することで、次のいずれかのサービスを使用してログとメトリックを分析できます。
 
-* Azure Log Analytics を使用する。最初にストレージに書き込まなくても、データはすぐに書き込まれます。
-* 監査や手動での検査に使用するためにストレージ アカウントに保存する。 保持期間を指定できます (日数)。
-* サード パーティのサービスやカスタム分析ソリューションで取り込むためにイベント ハブにストリーム配信する。
+* データが Azure Storage に書き込まれる Azure Log Analytics を使用する。 Log Analytics にログをエクスポートするときに遅延が発生します。
+* 監査や手動での検査に使用するために、ログをストレージ アカウントに保存する。 保持期間を指定できます (日数)。
+* サード パーティのサービスやカスタム分析ソリューションで取り込むために、ログをイベント ハブにストリーム配信する。
 
-まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を確認してください。 
+監視するログ カテゴリとメトリック カテゴリを選択します。
+
+## <a name="logs"></a>ログ
+
+|ログ | [説明] |
+|----|----|
+| **ApplicationConsole** | すべての顧客アプリケーションのコンソール ログ。 | 
+| **SystemLogs** | 現在、このカテゴリーでは [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) ログのみ。 |
+
+## <a name="metrics"></a>メトリック
+
+メトリックの完全な一覧については、[Spring Cloud のメトリック](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)に関する記事を参照してください。
+
+まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。 
 
 ## <a name="configure-diagnostics-settings"></a>診断設定の構成
 
@@ -38,17 +51,44 @@ Azure Spring Cloud の診断機能を使用すると、次のいずれかのサ�
 > [!NOTE]
 > ログまたはメトリックが生成されてから、ストレージ アカウント、イベント ハブ、または Log Analytics に表示されるまでに、最大 15 分のギャップがある場合があります。
 
-## <a name="view-the-logs"></a>ログを表示する
+## <a name="view-the-logs-and-metrics"></a>ログとメトリックの表示
+次の見出しで説明しているように、ログとメトリックを表示するにはさまざまな方法があります。
+
+### <a name="use-logs-blade"></a>[ログ] ブレードを使用する
+
+1. Azure portal で Azure Spring Cloud インスタンスに移動します。
+1. **[ログ検索]** ウィンドウを開くには、 **[ログ]** を選択します。
+1. **[ログ]** 検索ボックスで、
+   * ログを表示するには、次のような単純なクエリを入力します。
+
+    ```sql
+    AppPlatformLogsforSpring
+    | limit 50
+    ```
+   * メトリックを表示するには、次のような単純なクエリを入力します。
+
+    ```sql
+    AzureMetrics
+    | limit 50
+    ```
+1. 検索結果を表示するには、 **[実行]** を選択します。
 
 ### <a name="use-log-analytics"></a>Log Analytics の使用
 
 1. Azure portal の左ウィンドウで、 **[Log Analytics]** を選択します。
 1. 診断設定を追加したときに選択した Log Analytics ワークスペースを選択します。
 1. **[ログ検索]** ウィンドウを開くには、 **[ログ]** を選択します。
-1. **[ログ]** 検索ボックスに、次のような単純なクエリを入力します。
+1. **[ログ]** 検索ボックスで、
+   * ログを表示するには、次のような単純なクエリを入力します。
 
     ```sql
     AppPlatformLogsforSpring
+    | limit 50
+    ```
+    * メトリックを表示するには、次のような単純なクエリを入力します。
+
+    ```sql
+    AzureMetrics
     | limit 50
     ```
 
@@ -60,6 +100,8 @@ Azure Spring Cloud の診断機能を使用すると、次のいずれかのサ�
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
+> [!NOTE]  
+> `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
 Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
 
@@ -87,9 +129,9 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 
 ## <a name="analyze-the-logs"></a>ログの分析
 
-Azure Log Analytics には Kusto が用意されているので、ログをクエリして分析することができます。 Kusto を使用したログのクエリの簡単な概要については、[Log Analytics チュートリアル](../azure-monitor/log-query/get-started-portal.md)を確認してください。
+Azure Log Analytics は Kusto エンジンを使用して実行されているので、ログに対してクエリを実行して分析することができます。 Kusto を使用したログのクエリの簡単な概要については、[Log Analytics チュートリアル](../azure-monitor/log-query/get-started-portal.md)を確認してください。
 
-アプリケーション ログには、アプリケーションの正常性やパフォーマンスなどに関する重要な情報が記載されています。 次のセクションでは、アプリケーションの現在の状態と過去の状態を理解するのに役立つ単純なクエリを示します。
+アプリケーション ログには、アプリケーションの正常性やパフォーマンスなどに関する重要な情報と詳細ログが記載されています。 次のセクションでは、アプリケーションの現在の状態と過去の状態を理解するのに役立つ単純なクエリを示します。
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>Azure Spring Cloud からアプリケーション ログを表示する
 

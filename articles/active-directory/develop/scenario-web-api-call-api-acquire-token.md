@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423616"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044126"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API を呼び出す Web API - アプリのトークンの取得
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web API: アプリのトークンを取得する
 
-クライアント アプリケーション オブジェクトを構築したら、それを使用して、Web API を呼び出すために使用できるトークンを取得します。
+クライアント アプリケーション オブジェクトを構築した後、それを使用して、Web API を呼び出すために使用できるトークンを取得します。
 
 ## <a name="code-in-the-controller"></a>コントローラーのコード
 
-ダウンストリーム API (todolist という名前) を呼び出す API コントローラーのアクションで呼び出されるコードの例を以下に示します。
+API コントローラーのアクションで呼び出されるコードの例を次に示します。 *todolist* という名前のダウンストリーム API を呼び出します。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` は、記事「[Web API を呼び出す Web API - アプリの構成](scenario-web-api-call-api-app-configuration.md)」で説明されているものと類似しています。 `BuildConfidentialClient()` は、1 つのアカウントの情報のみが含まれているキャッシュを使用して `IConfidentialClientApplication` をインスタンス化します。 アカウントは、`GetAccountIdentifier` メソッドによって提供されます。
+`BuildConfidentialClient()` は、「[Web API を呼び出す Web API: アプリの構成](scenario-web-api-call-api-app-configuration.md)」のシナリオに似ています。 `BuildConfidentialClient()` では、1 つのアカウントの情報のみが含まれているキャッシュを使用して、`IConfidentialClientApplication` がインスタンス化されます。 アカウントは、`GetAccountIdentifier` メソッドによって提供されます。
 
-`GetAccountIdentifier` メソッドは、Web API で JWT を受信したユーザーの ID に関連付けられた要求を使用します。
+`GetAccountIdentifier` メソッドでは、Web API で JSON Web トークン (JWT) を受け取ったユーザーの ID に関連付けられている要求が使用されます。
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -73,4 +73,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Web API の呼び出し](scenario-web-api-call-api-call-api.md)
+> [Web API を呼び出す Web API: API を呼び出す](scenario-web-api-call-api-call-api.md)

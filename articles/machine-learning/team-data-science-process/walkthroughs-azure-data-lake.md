@@ -3,20 +3,20 @@ title: Azure Data Lake での U-SQL を使用した分析 - Team Data Science Pr
 description: Azure Data Lake で U-SQL を使用して予測分析を行う例を紹介します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804700"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864181"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル
 
@@ -27,11 +27,11 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 
 ## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>U-SQL と Azure Data Lake を使ってタクシーのチップを予測する
 
-[Azure Data Lake を使用したデータ サイエンス](data-lake-walkthrough.md)のチュートリアルでは、NYC タクシーのデータセットのサンプルで Azure Data Lake を使用して、データ調査タスクと二項分類タスクを実行し、乗客ごとにチップが支払われるかどうかを予測します。 
+[Azure Data Lake を使用したデータ サイエンス](data-lake-walkthrough.md)のチュートリアルでは、Azure Data Lake を使用して、データ調査タスクと二項分類タスクを実行します。  データは、NYC タクシーのデータセットのサンプルです。  タスクでは、乗客ごとにチップが支払われるかどうかを予測します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
+Team Data Science Process の概要については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 
-データ サイエンス プロジェクトの構築に使用できる Team Data Science Process のライフサイクルについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」を参照してください。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 
+Team Data Science Process ライフサイクルについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」を参照してください。 このライフサイクルは、プロジェクトを実行する際に進められる通常のステップを大まかにまとめたものです。 

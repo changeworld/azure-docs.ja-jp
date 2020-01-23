@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977269"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921090"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -109,6 +109,19 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
+## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
+
+この設定により、関数アプリはバージョン 3.x ランタイムでバージョン 2.x 互換モードで実行できるようになります。 この設定は、[関数アプリをランタイムのバージョン 2.x から 3.x にアップグレードする](functions-versions.md#migrating-from-2x-to-3x)ときに問題が発生した場合にのみ使用してください。 
+
+>[!IMPORTANT]
+> この設定は、アプリケーションをバージョン 3.x で正常に動作するように更新するときに、短期的な回避策としてのみ使用することを目的としています。 [2.x ランタイムがサポートされている](functions-versions.md)限り、この設定はサポートされます。 この設定を使用せずにバージョン 3.x でアプリを実行できない問題が発生した場合は、[問題を報告](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)してください。
+
+[FUNCTIONS\_EXTENSION\_VERSION](functions-app-settings.md#functions_extension_version) を `~3` に設定する必要があります。
+
+|Key|値の例|
+|---|------------|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|true|
+
 ## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
 言語ワーカー プロセスの最大数を指定します。既定値は `1` です。 許容される最大値は `10` です。 関数呼び出しは、言語ワーカー プロセス間で均等に分散されます。 言語ワーカー プロセスは、FUNCTIONS\_WORKER\_PROCESS\_COUNT によって設定されたカウントに達するまで、10 秒ごとに生成されます。 複数の言語ワーカー プロセスの使用は、[スケーリング](functions-scale.md)と同じではありません。 CPU にバインドされた呼び出しと I/O にバインドされた呼び出しがワークロードに混在している場合は、この設定を使用することを検討してください。 この設定はすべての非 .NET 言語に適用されます。
@@ -128,7 +141,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-使用量および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+従量課金および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -136,7 +149,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-使用量および Premium プランのみ。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+従量課金および Premium プランのみ。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -176,7 +189,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
 
-|Key|値|説明|
+|Key|値|[説明]|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
@@ -186,7 +199,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|値|説明|
+|Key|値|[説明]|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|
@@ -214,7 +227,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 |false|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#settings)
 

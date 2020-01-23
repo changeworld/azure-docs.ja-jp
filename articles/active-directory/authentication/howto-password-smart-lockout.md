@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847594"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762877"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -67,8 +67,8 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. *Azure Active Directory* を検索して選択します。 **[認証方法]**  >  **[パスワード保護]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[認証方法]**  >  **[パスワード保護]** を選択します。
 1. 何回サインインに失敗したらアカウントがロックアウトされるかを基に **[ロックアウトのしきい値]** を設定します。 既定値は 10 です。
 1. **[Lockout duration in seconds]\(秒単位のロックアウト期間\)** で、各ロックアウトの長さを秒単位で設定します。 既定値は 60 秒 (1 分) です。
 
@@ -83,7 +83,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 **ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)
 * [ユーザーが自分でアカウントのロックを解除できるよう、セルフ サービスのパスワード リセット機能を構成します。](quickstart-sspr.md)

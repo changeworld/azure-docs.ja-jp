@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562053"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834042"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診断の概要
 
@@ -42,9 +42,9 @@ Azure Functions 診断にアクセスするには:
 
 トピックを選択した後、対象の関数アプリに固有の診断レポートを表示できます。 診断レポートは、アプリに特定の問題があるかどうかをステータス アイコンを使用して示します。 問題の詳細な説明、推奨されるアクション、関連メトリック、および役立つドキュメントが表示されます。カスタマイズされた診断レポートは、関数アプリで実行される一連のチェックから生成されます。 診断レポートは、関数アプリの問題を特定するのに便利なツールであり、問題の解決方法についての指針となります。
 
-## <a name="find-the-problem-code"></a>問題のあるコードを見つける 
+## <a name="find-the-problem-code"></a>問題のあるコードを見つける
 
-スクリプトベースの関数では、 **[Function Execution] (関数の実行)** や **[Function App がダウンしているか、エラーが報告される]** の **[エラー]** を使用して、例外やエラーを引き起こしているコード行を絞り込むことができます。 この機能は、根本原因を特定し、特定のコード行の問題を修正するための便利なツールです。 このオプションは、プリコンパイル済み C# 関数と Java 関数では使用できません。
+スクリプトベースの関数では、 **[Function App がダウンしているか、エラーが報告される]** の **[関数の実行とエラー]** を使用して、例外やエラーを引き起こしているコード行を絞り込むことができます。 この機能は、根本原因を特定し、特定のコード行の問題を修正するための便利なツールです。 このオプションは、プリコンパイル済み C# 関数と Java 関数では使用できません。
 
 ![関数の実行エラーに関する診断レポート](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

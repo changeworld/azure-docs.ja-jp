@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225384"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045476"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
@@ -48,7 +48,7 @@ ms.locfileid: "74225384"
 * プローブ構成:仮想マシンの正常性状態のプローブ。
 * 受信 NAT ルール:仮想マシンに対する直接アクセスのポート ルール。
 
-ロード バランサー コンポーネントの詳細については、「[Azure Load Balancer での Azure Resource Manager のサポートの使用](load-balancer-arm.md)」を参照してください。
+ロード バランサー コンポーネントの詳細については、[Azure Load Balancer コンポーネント](concepts-limitations.md#load-balancer-components)に関するページを参照してください。
 
 次の手順では、2 つの仮想マシンの間でロード バランサーを構成する方法について説明します。
 
@@ -281,7 +281,7 @@ $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
-### <a name="step-5-save-the-network-interface-object"></a>手順 5: ネットワーク インターフェイス オブジェクトを保存する
+### <a name="step-5-save-the-network-interface-object"></a>手順 5:ネットワーク インターフェイス オブジェクトを保存する
 
 ネットワーク インターフェイス オブジェクトを保存します。
 

@@ -2,26 +2,26 @@
 title: Team Data Science Process チームでのチーム リーダーのタスク
 description: Team Data Science Process チームでのチーム リーダーのタスクの詳細なチュートリアル
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327246"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864283"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
 
 この記事では、"*チーム リーダー*" がデータ サイエンス チームで行うタスクについて説明します。 リーム リーダーの目的は、[Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することです。 TDSP は、コラボレーションとチーム学習の向上を支援するように設計されています。 
 
-TDSP は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 このプロセスは、企業が分析プログラムのメリットを完全に実現できるように、データ サイエンスへの取り組みの実施を成功に導くために必要なベスト プラクティスと構造を Microsoft と業界から抽出したものです。 TDSP を標準とするデータ サイエンス チームの個人的役割とそれに関連したタスクの概要については、「[Team Data Science Process の役割とタスク](roles-tasks.md)」をご覧ください。
+TDSP は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 このプロセスによって、Microsoft や業界のベスト プラクティスと構造が抽出されます。  ゴールは、データ サイエンス イニシアチブの実装を成功させ、分析プログラムの利点を完全に実現することです。 TDSP を標準とするデータ サイエンス チームの個人的役割とそれに関連したタスクの概要については、「[Team Data Science Process の役割とタスク](roles-tasks.md)」をご覧ください。
 
 チーム リーダーは、企業のデータ サイエンス ユニットの複数のデータ サイエンティストで構成されるチームを管理します。 データ サイエンス ユニットの規模と構成により、[グループ マネージャー](group-manager-tasks.md)とチーム リーダーを 1 人が兼任している場合や、それぞれがタスクを代理人に委任している場合があります。 ただし、タスク自体は変わりません。 
 
@@ -61,9 +61,9 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
-- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細および手順については、[Data Science Virtual Machine のドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM の場合は、コンピューターにインストールされた [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 *README.md* ファイルで、下へスクロールして「**ダウンロードとインストール**」セクションを表示し、**最新のインストーラー**を選択します。 インストーラーのページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細および手順については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
 ## <a name="create-a-team-project-and-repositories"></a>チーム プロジェクトとリポジトリの作成
 
@@ -186,7 +186,7 @@ Azure DevOps でファイルやフォルダーの変更、アップロード、�
 
 1. **MyTeam** プロジェクトの **[概要]** ページで、 **[リポジトリ]** を選択し、ページの上部で複製するリポジトリを選択します。
    
-1. リポジトリのページで、右上にある **[複製]** を選択します。
+1. [リポジトリ] ページで、右上にある **[クローン]** を選択します。
    
 1. **[リポジトリの複製]** ダイアログの **[コマンド ライン]** で、HTTP 接続として **[HTTPS]** を選択するか、SSH 接続として **[SSH]** を選択し、クローン URL をクリップボードにコピーします。
    
@@ -324,7 +324,7 @@ Azure HDInsight Spark クラスターなど、他のリソースをチームと�
    
 1. 新しいドライブとストレージがコンピューターに正常にマウントされたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process で定義されている他の役割とタスクの詳細な説明へのリンクを次に示します。
 

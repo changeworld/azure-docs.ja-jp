@@ -1,6 +1,6 @@
 ---
-title: Azure Maps での Android マップへの図形の追加 |Microsoft Docs
-description: Azure Maps Android SDK を使用してマップに図形を追加する方法
+title: Android マップへの図形の追加 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにさまざまな図形をレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 8135d11624fa57547528b023b6d2dc5c3caecb39
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976592"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911597"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップへの図形の追加
 
@@ -178,7 +178,7 @@ ms.locfileid: "68976592"
 
 <center>
 
-![Android マップの線](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Android マップにレンダリングされた線](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
 ## <a name="add-a-polygon-to-the-map"></a>マップに多角形を追加する
@@ -350,10 +350,10 @@ ms.locfileid: "68976592"
 
 <center>
 
-![Android マップの多角形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![Android マップにレンダリングされた多角形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マップにさらにデータを追加するには:
 

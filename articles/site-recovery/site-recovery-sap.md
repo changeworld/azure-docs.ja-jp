@@ -1,18 +1,16 @@
 ---
 title: Azure Site Recovery を使用して SAP NetWeaver のディザスター リカバリーを設定する
-description: この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーション デプロイのディザスター リカバリーを設定する方法について説明します。
-author: asgang
+description: Azure Site Recovery を使用して SAP NetWeaver のディザスター リカバリーを設定する方法について説明します。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982362"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -62,40 +60,40 @@ Site Recovery をデプロイする前に、このインフラストラクチャ
 ディザスター リカバリー (DR) を確保するために、セカンダリ リージョンにフェールオーバーできる必要があります。 各層では、さまざまな戦略を利用して、ディザスター リカバリー (DR) の保護を提供しています。
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>SAP Web Dispatcher プールを実行する VM 
-Web Dispatcher コンポーネントは、SAP アプリケーション サーバー間の SAP トラフィックのロード バランサーとして使用されます。 Web Dispatcher コンポーネントの高可用性を実現するために、Azure Load Balancer を使って Web Dispatcher セットアップがラウンドロビン構成で並列に実装されます。これにより、HTTP (S) トラフィックはバランサー プール内の使用可能 Web Dispatcher 間で分散されます。 これは、Azure Site Recovery (ASR) を使ってレプリケートされます。ディザスター リカバリー リージョンのロード バランサーの構成には、オートメーション スクリプトが使用されます。 
+Web Dispatcher コンポーネントは、SAP アプリケーション サーバー間の SAP トラフィックのロード バランサーとして使用されます。 Web Dispatcher コンポーネントの高可用性を実現するために、Azure Load Balancer を使って Web Dispatcher セットアップがラウンドロビン構成で並列に実装されます。これにより、HTTP (S) トラフィックはバランサー プール内の使用可能 Web Dispatcher 間で分散されます。 これは、Site Recovery を使ってレプリケートされます。ディザスター リカバリー リージョンのロード バランサーの構成には、オートメーション スクリプトが使用されます。 
 
 #### <a name="vms-running-application-servers-pool"></a>アプリケーション サーバー プールを実行する VM
-ABAP アプリケーション サーバーのログオン グループの管理には、SMLG トランザクションが使用されます。 この場合、セントラル サービスのメッセージ サーバー内の負荷分散機能を使って、SAPGUI および RFC トラフィックの SAP アプリケーション サーバーのプールにワークロードが分散されます。 これは、Azure Site Recovery を使ってレプリケートされます。 
+ABAP アプリケーション サーバーのログオン グループの管理には、SMLG トランザクションが使用されます。 この場合、セントラル サービスのメッセージ サーバー内の負荷分散機能を使って、SAPGUI および RFC トラフィックの SAP アプリケーション サーバーのプールにワークロードが分散されます。 これは、Site Recovery を使ってレプリケートされます。
 
 #### <a name="vms-running-sap-central-services-cluster"></a>SAP セントラル サービス クラスターを実行する VM
 この参照アーキテクチャでは、アプリケーション層の VM でセントラル サービスが実行されます。 セントラル サービスは、1 つの VM にデプロイすると単一障害点 (SPOF) になる可能性があります (これは高可用性が不要な場合の一般的なデプロイです)。<br>
 
-高可用性ソリューションの実装には、共有ディスク クラスターまたはファイル共有クラスターのいずれかを使用できます。VM を共有ディスク クラスター用に構成するには、Windows Server フェールオーバー クラスターを使用します。 クォーラム監視としてクラウド監視をお勧めします。 
+高可用性ソリューションの実装には、共有ディスク クラスターまたはファイル共有クラスターのいずれかを使用できます。VM を共有ディスク クラスター用に構成するには、Windows Server フェールオーバー クラスターを使用します。 クォーラム監視としてクラウド監視をお勧めします。
  > [!NOTE]
- > Azure Site Recovery ではクラウド監視はレプリケートされないため、ディザスター リカバリー リージョンにクラウド監視をデプロイすることをお勧めします。
+ > Site Recovery ではクラウド監視はレプリケートされないため、ディザスター リカバリー リージョンにクラウド監視をデプロイすることをお勧めします。
 
-フェールオーバー クラスター環境をサポートするために、[SIOS DataKeeper クラスター エディション](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8)では、クラスター ノードが所有する独立したディスクをレプリケートすることによって、クラスターの共有ボリューム機能が実行されます。 Azure では共有ディスクがネイティブでサポートされていないため、SIOS 提供のソリューションが必要です。 
+フェールオーバー クラスター環境をサポートするために、[SIOS DataKeeper クラスター エディション](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8)では、クラスター ノードが所有する独立したディスクをレプリケートすることによって、クラスターの共有ボリューム機能が実行されます。 Azure では共有ディスクがネイティブでサポートされていないため、SIOS 提供のソリューションが必要です。
 
-ファイル共有クラスターを実装してクラスタリングを処理することもできます。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) では、UNC パスを介して /sapmnt グローバル ディレクトリにアクセスするための、セントラル サービス デプロイ パターンを最近変更しました。 ただし、/sapmnt UNC 共有の高可用性は確保することをお勧めします。 セントラル サービス インスタンスでこれを実現するには、Windows Server フェールオーバー クラスターと、Windows Server 2016 のスケールアウト ファイル サーバー (SOFS) および記憶域スペース ダイレクト (S2D) 機能を使用します。 
+ファイル共有クラスターを実装してクラスタリングを処理することもできます。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) では、UNC パスを介して /sapmnt グローバル ディレクトリにアクセスするための、セントラル サービス デプロイ パターンを最近変更しました。 ただし、/sapmnt UNC 共有の高可用性は確保することをお勧めします。 セントラル サービス インスタンスでこれを実現するには、Windows Server フェールオーバー クラスターと、Windows Server 2016 のスケールアウト ファイル サーバー (SOFS) および記憶域スペース ダイレクト (S2D) 機能を使用します。
  > [!NOTE]
- > 現在 Azure Site Recovery でサポートされるのは、記憶域スペース ダイレクトと SIOS Datakeeper のパッシブ ノードを使ったクラッシュ整合性ポイント レプリケーションのみです
+ > 現在 Site Recovery でサポートされるのは、記憶域スペース ダイレクトと SIOS Datakeeper のパッシブ ノードを使ったクラッシュ整合性ポイント レプリケーションのみです
 
 
 ## <a name="disaster-recovery-considerations"></a>ディザスター リカバリーの考慮事項
 
-Azure Site Recovery を使用することで、複数の Azure リージョンにまたがるフル SAP デプロイを対象としたフェールオーバーのオーケストレーションを行うことができます。
+Site Recovery を使用することで、複数の Azure リージョンにまたがるフル SAP デプロイを対象としたフェールオーバーのオーケストレーションを行うことができます。
 ディザスター リカバリーの設定手順は次のとおりです。 
 
-1. 仮想マシンのレプリケート 
+1. 仮想マシンのレプリケート
 2. 復旧ネットワークを設計する
 3.  ドメイン コントローラーをレプリケートする
-4.  データベース層をレプリケートする 
-5.  テスト フェールオーバーを実行する 
-6.  フェールオーバーを実行する 
+4.  データベース層をレプリケートする
+5.  テスト フェールオーバーを実行する
+6.  フェールオーバーを実行する
 
-この例で使用される各層のディザスター リカバリーの推奨事項は次のとおりです。 
+この例で使用される各層のディザスター リカバリーの推奨事項は次のとおりです。
 
- **SAP 層** | **推奨事項**
+ **SAP 層** | **推奨**
  --- | ---
 **SAP Web Dispatcher プール** |  Site Recovery を使ったレプリケーション 
 **SAP アプリケーション サーバー プール** |  Site Recovery を使ったレプリケーション 
@@ -133,7 +131,7 @@ Azure ディザスター リカバリー データ センターへのすべて�
 お使いのアプリケーションを正常に機能させるには、フェールオーバー後、またはテスト フェールオーバー時に、Azure の仮想マシンに対して一定の操作を実行することが必要な場合があります。 フェールオーバー後の操作は一部自動化することもできます。 たとえば、対応するスクリプトを復旧計画に追加することで、DNS エントリを更新したり、バインドと接続を変更したりできます。
 
 
-次の [Deploy to Azure] ボタンをクリックすると、オートメーション アカウントによく使われる Azure Site Recovery のスクリプトをデプロイできます。 公開されているスクリプトを使用する場合は､必ず､そのスクリプトのガイダンスに従ってください｡
+次の [Deploy to Azure] ボタンをクリックすると、オートメーション アカウントによく使われる Site Recovery のスクリプトをデプロイできます。 公開されているスクリプトを使用する場合は､必ず､そのスクリプトのガイダンスに従ってください｡
 
 [![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
@@ -163,6 +161,6 @@ Azure ディザスター リカバリー データ センターへのすべて�
 
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
-* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法の詳細については、「[SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr_sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
+## <a name="next-steps"></a>次のステップ
+* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法の詳細については、「[SAP NetWeaver: Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr_sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
 * Site Recovery を使用した[他のワークロードのレプリケート](site-recovery-workload.md)に関する記事をご覧ください。
