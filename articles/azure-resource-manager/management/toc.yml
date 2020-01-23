@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
+    - name: 拡張リソースの種類
+      href: extension-resource-types.md
     - name: リソース インスタンスの制限
       href: resources-without-resource-group-limit.md
 - name: 方法
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: タグのサポート
           href: tag-support.md
-    - name: 管理する
+    - name: リソース グループの管理
       items:
-        - name: リソース グループの管理
-          items:
-            - name: Azure ポータルの使用
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Azure CLI の使用
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Azure PowerShell の使用
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: リソースの管理
-          items:
-            - name: Azure ポータルの使用
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Azure CLI の使用
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Azure PowerShell の使用
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: リソース グループとリソースの削除
-          href: delete-resource-group.md
-        - name: リソースのロック
-          href: lock-resources.md
-        - name: EA サブスクリプションを作成する
+        - name: Azure portal
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure CLI
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: リソースの管理
+      items:
+        - name: Azure portal
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure CLI
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: EA サブスクリプション
+      items:
+        - name: 作成
           href: programmatically-create-subscription.md
-        - name: EA サブスクリプションを作成するためのアクセスを許可する
+        - name: 作成のアクセス権を付与する
           href: grant-access-to-create-subscription.md
-        - name: テナントをまたいだ認証
-          href: authenticate-multi-tenant.md
-    - name: アクティビティ ログを表示する
-      href: view-activity-logs.md
     - name: リソース プロバイダーと種類
       href: resource-providers-and-types.md
+    - name: リソース グループとリソースの削除
+      href: delete-resource-group.md
+    - name: リソースのロック
+      href: lock-resources.md
+    - name: テナントをまたいだ認証
+      href: authenticate-multi-tenant.md
+    - name: アクティビティ ログを表示する
+      href: view-activity-logs.md
     - name: スロットル リクエスト
       href: request-limits-and-throttling.md
     - name: 非同期操作の追跡

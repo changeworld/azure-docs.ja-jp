@@ -3,14 +3,14 @@ title: Azure の Update Management ソリューション
 description: この記事では、Azure Update Management ソリューションを使用して Windows および Linux コンピューターの更新プログラムを管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420350"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945121"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -237,7 +237,9 @@ Linux の場合、クラウドでのデータ エンリッチメントにより�
 sudo yum -q --security check-update
 ```
 
-CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこれを自分で使用可能にした場合には、できる範囲内のサポートのみを提供しています。
+CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこれを自分で使用可能にした場合には、できる範囲内のサポートのみを提供しています。 
+
+Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 
@@ -251,7 +253,7 @@ Update Management は、サポート対象の Windows システムへの修正�
 
 ## <a name="patch-linux-machines"></a>Linux マシンのパッチ
 
-次のセクションでは、Linux のパッチ適用に関する潜在的な問題について説明します。
+次のセクションでは、Linux ディストリビューションのパッチ適用に関する潜在的な問題について説明します。
 
 ### <a name="unexpected-os-level-upgrades"></a>予期しない OS レベルのアップグレード
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463938"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771617"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -24,7 +24,7 @@ ms.locfileid: "75463938"
 
 ![ファイル構造](./media/storage-files-introduction/files-concepts.png)
 
-* **[ストレージ アカウント]** : Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、[拡張性とパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+* **[ストレージ アカウント]** : Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 * **共有**:File Storage 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて親の共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量まで増やすことができます。 Premium および Standard ファイル共有の合計容量は 100 TiB です。
 
@@ -205,29 +205,40 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 
 |リージョン |サポートされる冗長性 |
 |-------|---------|
+|オーストラリア中部    |LRS     |
+|オーストラリア中部 2    |LRS     |
 |オーストラリア東部 |LRS     |
 |オーストラリア南東部|LRS |
+|ブラジル南部    |LRS     |
 |カナダ中部  |LRS     |
 |カナダ東部     |LRS     |
 |インド中部  |LRS     |
-|米国中部*   |LRS     |
+|米国中部*   |LRS、ZRS    |
 |東アジア      |LRS     |
 |米国東部*        |LRS、ZRS|
-|米国東部 2*      |LRS     |
+|米国東部 2*      |LRS、ZRS     |
 |フランス中部 |LRS、ZRS|
 |フランス南部   |LRS     |
 |東日本     |LRS     |
+|西日本     |LRS     |
+|韓国中部  |LRS     |
+|韓国南部    |LRS     |
 |米国中北部 |LRS   |
 |北ヨーロッパ   |LRS     |
 |インド南部    |LRS     |
 |米国中南部 |LRS     |
 |東南アジア |LRS、ZRS|
+|スイス北部    |LRS     |
+|スイス西部    |LRS     |
 |アラブ首長国連邦中部    |LRS     |
-|英国南部   |LRS     |
+|アラブ首長国連邦北部    |LRS     |
+|英国北部   |LRS、ZRS    |
+|英国南部    |LRS     |
 |英国西部    |LRS     |
 |米国中西部|LRS     |
 |西ヨーロッパ*    |LRS、ZRS|
-|米国西部*        |LRS     |
+|インド西部   |LRS     |
+|米国西部        |LRS     |
 |米国西部 2      |LRS、ZRS|
 
 \* 新しいアカウントでサポートされていますが、すべての既存のアカウントのアップグレード プロセスが完了しているわけではありません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
@@ -248,7 +259,7 @@ Azure ファイル同期を使って複数の Azure ファイル共有を 1 つ�
 
 オンプレミスのファイル共有などの既存のファイル共有から Azure Files にデータを一括転送するには、多くの簡単なオプションがあります。 以下は一般的な方法の一部です (すべてではありません)。
 
-* **Azure File Sync**:Azure のファイル共有 ("クラウド エンドポイント") と Windows ディレクトリ名前空間 ("サーバー エンドポイント") との間で最初に行われる同期の一部として、Azure File Sync では、すべてのデータが既存のファイル共有から Azure Files にレプリケートされます。
+* **[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** :Azure のファイル共有 ("クラウド エンドポイント") と Windows ディレクトリ名前空間 ("サーバー エンドポイント") との間で最初に行われる同期の一部として、Azure File Sync では、すべてのデータが既存のファイル共有から Azure Files にレプリケートされます。
 * **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データセンターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** :Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。

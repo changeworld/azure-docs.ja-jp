@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: a2c2e05b11c538918ad63559267b5377ce9faa7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412167"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708058"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -50,15 +50,15 @@ Redis .NET Core クライアントは、既定で最新の TLS バージョン�
 
 ### <a name="java"></a>Java
 
-Redis Java クライアントは、Java バージョン 6 以前では TLS 1.0 を使用します。 TLS 1.0 がキャッシュで無効になっている場合、Jedis、Lettuce、Radisson は Azure Cache for Redis に接続できません。 現在、既知の回避策はありません。
+Redis Java クライアントは、Java バージョン 6 以前では TLS 1.0 を使用します。 TLS 1.0 がキャッシュで無効になっている場合、Jedis、Lettuce、Redisson は Azure Cache for Redis に接続できません。 新しい TLS バージョンを使用するように Java フレームワークをアップグレードします。
 
-Java 7 以降では、Redis クライアントは既定では TLS 1.2 を使用しませんが、使用するように構成できます。 Lettuce と Radisson は、現時点ではこの構成をサポートしていません。 キャッシュが TLS 1.2 接続のみを受け入れる場合は、中断されます。 Jedis では、次のコード スニペットを使用して、基になる TLS 設定を指定できます。
+Java 7 の場合、Redis クライアントは既定では TLS 1.2 を使用しませんが、使用するように構成できます。 Jedis では、次のコード スニペットを使用して、基になる TLS 設定を指定できます。
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -67,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Lettuce クライアントと Redisson クライアントは、TLS バージョンの指定をまだサポートしていないため、キャッシュで TLS 1.2 接続のみが受け入れられる場合、これらのクライアントは中断されます。 これらのクライアントの修正プログラムはレビュー中であるため、これらのパッケージによって、このサポートに更新されたバージョンがないかどうか確認してください。
+
+Java 8 では、既定で TLS 1.2 が使用され、ほとんどの場合、クライアント構成に更新プログラムは必要ありません。 念のため、アプリケーションをテストしてください。
 
 ### <a name="nodejs"></a>Node.js
 

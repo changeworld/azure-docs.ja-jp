@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: モビリティ サービスのプッシュ インストールを準備する
                   href: vmware-azure-install-mobility-service.md
-                - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
+                - name: Configuration Manager を使用して Mobility Service をデプロイする
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: フェールオーバーとフェールバックを実行する
           href: physical-to-azure-failover-failback.md

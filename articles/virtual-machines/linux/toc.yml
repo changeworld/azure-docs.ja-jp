@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a - Jenkins でビルドする
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b - Azure Pipelines を使用したデプロイ (クラシック)
+    - name: 14b - Jenkins を Azure DevOps と統合する
       href: tutorial-build-deploy-jenkins.md
-    - name: 15 - Azure Pipelines を使用した CI/CD (YAML)
+    - name: 15a - Azure での IaaS と PaaS の DevOps
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b - Azure Pipelines を使用した CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - LAMP スタックの作成
       href: tutorial-lamp-stack.md

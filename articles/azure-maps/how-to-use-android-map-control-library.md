@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の Android マップ コントロールの概要 | Microsoft Docs
-description: Azure Maps の Android マップ コントロール。
+title: Android マップ コントロールの概要 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用した Android マップ コントロールの概要を説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432932"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911395"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -43,7 +43,7 @@ Azure Maps Android SDK をインストールする前に、Android Studio をダ
 
 Android Studio のインストールと新しいプロジェクトの作成の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/intro/)を参照してください。
 
-![プロジェクトの作成](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Android Studio でプロジェクトを作成する ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>仮想デバイスを設定する
 
@@ -217,7 +217,7 @@ Android Studio でアプリケーションをビルドするには、数秒か�
 
 <center>
 
-![Android マップ](./media/how-to-use-android-map-control-library/android-map.png)</center>
+![Android アプリケーションでの Azure Maps](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>マップのローカライズ
 
@@ -263,7 +263,7 @@ mapControl.onReady(map -> {
 
 <center>
 
-![ラベルをフランス語で表示するマップ イメージ](./media/how-to-use-android-map-control-library/android-localization.png)
+![Azure Maps、ラベルをフランス語で表示するマップ イメージ](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。

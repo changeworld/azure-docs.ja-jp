@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356240"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772552"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
@@ -40,7 +40,7 @@ ms.locfileid: "75356240"
      >[!NOTE]
      >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](https://docs.microsoft.com/windows-insider/at-home/)を参照してください。
 
-2. **[Select edition]\(エディションの選択\)** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド XXXXX]** を選択します。
+2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19035]** 以降のビルドを選択します。
 
 3. **[確認]** を選択し、使用する言語を選択してから、 **[確認]** をもう一度選択します。
     
