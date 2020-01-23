@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912325"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511146"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 
@@ -26,6 +26,7 @@ Modbus TCP または RTU プロトコルを使用する IoT デバイスを Azur
 この記事は、Modbus TCP プロトコルの使用を前提として執筆されています。 Modbus RTU をサポートするようにモジュールを構成する方法について詳しくは、GitHub の [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 * Azure IoT Edge デバイス。 そのセットアップ方法を紹介したチュートリアルについては、「[Windows に Azure IoT Edge をデプロイする](quickstart.md)」(またはその [Linux](quickstart-linux.md) 版) を参照してください。
 * IoT Edge デバイスの主キー接続文字列。
 * Modbus TCP をサポートする物理 (またはシミュレーション) Modbus デバイス。 その IPv4 アドレスがわかっている必要があります。

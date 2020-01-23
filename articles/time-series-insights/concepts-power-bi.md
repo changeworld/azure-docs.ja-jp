@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770324"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276864"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Power BI への Time Series Insights の接続  
 
@@ -23,7 +23,7 @@ Azure Time Series Insights が [Power BI](https://powerbi.microsoft.com/) とシ
 
 ## <a name="video"></a>ビデオ
 
-Power BI との Azure Time Series Insight の統合の詳細を確認してください。
+### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>Power BI との Azure Time Series Insight の統合の詳細を確認してください。</br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9604259d0610faeee36b9ad80dfb4aa2ae83d19a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: c68206eda008b93220fdde8f2666c0495499bdef
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834839"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311378"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,6 +62,7 @@ from azureml.core import Workspace, Run
 
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
+from azureml.train.dnn import TensorFlow
 ```
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
@@ -157,7 +158,7 @@ est = TensorFlow(source_directory=script_folder,
                  script_params=script_params,
                  compute_target=compute_target,
                  use_gpu=True,
-                 pip_packages=['azureml-dataprep[pandas,fuse]')
+                 pip_packages=['azureml-dataprep[pandas,fuse]'])
 ```
 
 > [!TIP]
@@ -241,7 +242,7 @@ estimator= TensorFlow(source_directory=project_folder,
                       distributed_training=MpiConfiguration(),
                       framework_version='1.13',
                       use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]')
+                      pip_packages=['azureml-dataprep[pandas,fuse]'])
 ```
 
 ### <a name="parameter-server"></a>パラメーター サーバー
@@ -265,7 +266,7 @@ estimator= TensorFlow(source_directory=project_folder,
                       process_count_per_node=1,
                       distributed_training=distributed_training,
                       use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]')
+                      pip_packages=['azureml-dataprep[pandas,fuse]'])
 
 # submit the TensorFlow job
 run = exp.submit(tf_est)

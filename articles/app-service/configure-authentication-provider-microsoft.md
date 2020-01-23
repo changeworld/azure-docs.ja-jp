@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671917"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768437"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリを構成する
 
@@ -18,11 +18,11 @@ ms.locfileid: "74671917"
 
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。 
 
-## <a name="register-microsoft-account"> </a>Microsoft アカウントにアプリを登録する
+## <a name="register-microsoft-account"></a>Microsoft アカウントにアプリを登録する
 
 1. Azure portal で [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動します。 必要であれば、Microsoft アカウントを使ってサインインします。
 1. **[New registration]\(新規登録\)** を選択し、アプリケーション名を入力します。
-1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`」と入力します。 *\<app-domain-name>* をアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
+1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/microsoftaccount/callback`」と入力します。 *\<app-domain-name>* をアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
 
 1. **[登録]** を選択します。
 1. **アプリケーション (クライアント) ID** をコピーします。 この情報は後で必要になります。
@@ -30,9 +30,9 @@ ms.locfileid: "74671917"
 1. **[Certificates & secrets]\(証明書とシークレット\)** ページに表示される値をコピーします。 この値はページから移動すると再び表示されません。
 
     > [!IMPORTANT]
-    > パスワードは重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > クライアント シークレット値 (パスワード) は、重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-## <a name="secrets"> </a>Microsoft アカウントの情報を App Service アプリケーションに追加する
+## <a name="secrets"></a>Microsoft アカウントの情報を App Service アプリケーションに追加する
 
 1. [Azure portal] で自分のアプリケーションに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。

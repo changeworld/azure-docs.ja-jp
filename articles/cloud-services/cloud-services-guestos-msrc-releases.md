@@ -10,41 +10,38 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/13/2019
+ms.date: 01/08/2020
 ms.author: raiye
-ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386206"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779588"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
 ## <a name="december-2019-guest-os"></a>2019 年 12 月のゲスト OS
 
->[!NOTE]
->12 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 12 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
-
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 19-12  |  [4530692]  |  Windows セキュリティ  | 2.93 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 2.93 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 3.80 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530698]  |  Windows セキュリティ  | 3.80 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530730]  |  Windows セキュリティ  | 4.73 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 4.73 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530689]  |  最新の累積更新プログラム  | 5.38 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4530715]  |  最新の累積更新プログラム  | 6.14 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4525235]  |  セキュリティ以外  | 2.93 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4531786]  |  サービス スタック更新プログラム  | 2.93 | 2019 年 12 月 10 日 |
-|  Rel 19-12  |  [4525246]  |  セキュリティ以外  | 3.80 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4523208]  |  サービス スタック更新プログラム  | 3.8 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4525243]  |  セキュリティ以外  | 4.73 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4524445]  |  サービス スタック更新プログラム  | 4.73 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4520724]  |  サービス スタック更新プログラム  | 5.38 | 2019 年 11 月 12 日 |
-|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | 6.14 | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4530692]  |  Windows セキュリティ  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3.80] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530698]  |  Windows セキュリティ  | [3.80] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530730]  |  Windows セキュリティ  | [4.73] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4.73] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530689]  |  最新の累積更新プログラム  | [5.38] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530715]  |  最新の累積更新プログラム  | [6.14] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4525235]  |  セキュリティ以外  | [2.93] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4531786]  |  サービス スタック更新プログラム  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4525246]  |  セキュリティ以外  | [3.80] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4523208]  |  サービス スタック更新プログラム  | [3.80] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4525243]  |  セキュリティ以外  | [4.73] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4524445]  |  サービス スタック更新プログラム  | [4.73] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4520724]  |  サービス スタック更新プログラム  | [5.38] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | [6.14] | 2019 年 11 月 12 日 |
 
 [4530692]: https://support.microsoft.com/kb/4530692
 [4530677]: https://support.microsoft.com/kb/4530677
@@ -62,6 +59,12 @@ ms.locfileid: "75386206"
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
+[6.14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
 
 
 ## <a name="november-2019-guest-os"></a>2019 年 11 月のゲスト OS

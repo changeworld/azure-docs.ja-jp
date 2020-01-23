@@ -3,12 +3,12 @@ title: ゲスト構成ポリシーを作成する方法
 description: zure PowerShell を使用して Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867333"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278473"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
@@ -176,42 +176,6 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 完成したパッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。 たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。
 また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>ゲスト構成パッケージでのシークレットの使用
-
-Azure Policy のゲスト構成で、実行時に使われるシークレットを管理する最適な方法は、Azure Key Vault に保存することです。 この設計は、カスタム DSC リソース内に実装されます。
-
-1. Azure でユーザー割り当てマネージド ID を作成します。
-
-   その ID は、Key Vault に格納されているシークレットにアクセスするために、マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
-
-1. Key Vault のインスタンスを作成します。
-
-   詳しい手順については、[PowerShell を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-powershell.md)に関する記事をご覧ください。
-   インスタンスにアクセス許可を割り当てて、Key Vault に格納されているシークレットにユーザー割り当て ID でアクセスできるようにします。 詳しい手順については、[.NET を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)に関する記事をご覧ください。
-
-1. ユーザー割り当て ID をマシンに割り当てます。
-
-   詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
-   大規模な場合は、Azure Resource Manager を使って Azure Policy でこの ID を割り当てます。 詳しい手順については、[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)に関する記事をご覧ください。
-
-1. カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。
-
-   `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
-
-カスタム リソースで次のコード サンプルを使うことで、ユーザー割り当て ID を使って Key Vault からシークレットを取得できます。 Key Vault への要求から返される値はプレーンテキストです。 ベスト プラクティスとしては、それを資格情報オブジェクト内に格納します。
-
-```azurepowershell-interactive
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.net/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.net" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>ゲスト構成パッケージをテストする
 

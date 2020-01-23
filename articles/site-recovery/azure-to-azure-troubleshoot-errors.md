@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery での Azure VM レプリケーションのトラブルシューティング
 description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするときに発生するエラーに関するトラブルシューティング
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084919"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902551"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "74084919"
 
 ### <a name="fix-the-problem"></a>問題の解決
 
-[Azure 課金のサポート](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
+[Azure 課金のサポート](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
 
 ターゲットの場所に容量の制約がある場合は、その場所へのレプリケーションを無効にします。 次に、必要なサイズの VM を作成できるだけのクォータがサブスクリプションに確保されている別の場所へのレプリケーションを有効にします。
 
@@ -66,7 +66,7 @@ Windows オペレーティング システムを実行中の VM の場合、す�
 
 お使いの Linux オペレーティング システム バージョンのディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と最新の証明書失効リストを取得します。
 
-SuSE Linux ではシンボリック リンク (*symlink*) を使用して証明書リストを保持しているため、次の手順に従います。
+SUSE Linux ではシンボリック リンク (*symlink*) を使用して証明書リストを保持しているため、次の手順に従います。
 
 1. ルート ユーザーとしてサインインします。
 
@@ -466,7 +466,7 @@ Linux GRUB 構成ファイル (/boot/grub/menu.lst"、/boot/grub/grub.cfg、/boo
 
 各デバイス名を対応する UUID に置き換えます。
 
-1. **blkid** ***device name*** コマンドを実行して、デバイスの UUID を検出します。 例:
+1. **blkid** ***device name*** コマンドを実行して、デバイスの UUID を検出します。 次に例を示します。
 
     ```
     blkid /dev/sda1
@@ -524,6 +524,6 @@ Site Recovery モビリティ サービスには多数のコンポーネント�
 
 エラー メッセージに示されているレプリカ ディスクを削除し、失敗した保護ジョブを再度開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure 仮想マシンのレプリケート](site-recovery-replicate-azure-to-azure.md)

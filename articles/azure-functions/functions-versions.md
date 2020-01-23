@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921868"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290378"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -143,7 +143,7 @@ Visual Studio では、プロジェクトを作成するときにランタイム
 ```
 
 > [!NOTE]
-> Azure Functions 3.x と .NET では、`Microsoft.Sdk.NET.Functions` 拡張機能を `3.0.0` 以上にする必要があります。
+> Azure Functions 3.x と .NET では、`Microsoft.NET.Sdk.Functions` 拡張機能を `3.0.0` 以上にする必要があります。
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Visual Studio で 2.x アプリを 3.x に更新する
 

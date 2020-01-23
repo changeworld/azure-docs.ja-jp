@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7987555dfd435aae1f580c73795a5617c192490a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722120"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280606"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>C# を使用してカスタマー マネージド キーを構成する
 
 > [!div class="op_single_selector"]
-> * [C#](create-cluster-database-csharp.md)
-> * [Azure Resource Manager テンプレート](create-cluster-database-resource-manager.md)
+> * [C#](customer-managed-keys-csharp.md)
+> * [Azure Resource Manager テンプレート](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
@@ -32,11 +32,11 @@ ms.locfileid: "75722120"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-### <a name="install-c-nuget"></a>C# Nuget をインストールする
+### <a name="install-c-nuget"></a>C# NuGet をインストールする
 
 * [Azure Data Explorer (Kusto) NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)をインストールします。
 
-* 認証用に [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
+* 認証用に、[Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
 
 ### <a name="authentication"></a>認証
 

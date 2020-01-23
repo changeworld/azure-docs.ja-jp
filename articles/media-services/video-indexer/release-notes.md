@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: a8f4174fca1a8703bb112c19e785d4d9686a82f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453300"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832306"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,42 @@ ms.locfileid: "75453300"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="december-2019"></a>2019 年 12 月
+
+### <a name="update-transcript-with-the-new-api"></a>新しい API を使用して音声テキストを更新する
+
+[Update-Video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API を使用して、音声テキストの特定のセクションを更新します。
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Video Indexer ポータルからアカウント構成を修正する
+
+次のような問題を解決するために、Media Services 接続構成を更新できるようになりました。 
+
+* Azure Media Services のリソースが正しくない
+* パスワードの変更
+* Media Services リソースがサブスクリプション間で移動された  
+
+アカウント構成を修正するには、Video Indexer ポータルで、(所有者として) [設定] > [アカウント] タブの順に移動します。
+
+### <a name="configure-the-custom-vision-account"></a>Custom Vision アカウントを構成する
+
+Video Indexer ポータルを使用して、有料アカウントで Custom Vision アカウントを構成します (以前は API でのみサポートされていました)。 これを行うには、Video Indexer ポータルにサインインし、[モデルのカスタマイズ] > [アニメーション化されたキャラクター] > [構成] の順に選択します。 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>シーン、ショット、キーフレーム - 1 つの分析情報ウィンドウに表示されるようになりました
+
+シーン、ショット、およびキーフレームは、使用とナビゲーションを容易にするために 1 つの分析情報に結合されるようになりました。 目的のシーンを選択すると、そこに含まれるショットとキーフレームが表示されます。 
+
+### <a name="notification-about-a-long-video-name"></a>長いビデオ名に関する通知
+
+ビデオ名が 80 文字より長い場合、Video Indexer はアップロード時に状況を説明するエラーを表示します。
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>ストリーミング エンドポイントが無効になっているという通知
+
+ストリーミング エンドポイントが無効になっている場合、Video Indexer には、プレーヤー ページに状況を説明するエラーが表示されます。
+
+### <a name="error-handling-improvement"></a>エラー処理の改善
+
+現在のインデックスの再作成の変更が誤って上書きされるのを防ぐために、ビデオにアクティブにインデックスが作成された場合は、[ビデオのインデックスを再作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) API と[ビデオ インデックス](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API から状態コード 409 が返されるようになりました。
 
 ## <a name="november-2019"></a>2019 年 11 月
  

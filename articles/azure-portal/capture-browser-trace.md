@@ -3,18 +3,18 @@ title: トラブルシューティングのためにブラウザー トレース
 description: Azure portal での問題のトラブルシューティングに役立つように、ブラウザー トレースからネットワーク情報をキャプチャします。
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/09/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 86a1f522810a29fa2f3188a2ef3a5e0a470187ba
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030970"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310698"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>トラブルシューティングのためにブラウザー トレースをキャプチャする
 
@@ -24,7 +24,7 @@ Azure portal での問題のトラブルシューティングを行っていて�
 
 Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オープンソース プロジェクト](https://www.chromium.org/Home)が基になっています。 次の手順では、開発者ツールを使用する方法について説明します。これらのツールは、2 つのブラウザーで非常によく似ています。 詳細については、「[Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)」および「[Microsoft Edge (Chromium) 開発者ツール](/microsoft-edge/devtools-guide-chromium)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
@@ -70,7 +70,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Microsoft Edge (EdgeHTML) の開発者ツールを使用する方法について説明します。 詳細については、「[Microsoft Edge (EdgeHTML) 開発者ツール](/microsoft-edge/devtools-guide)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
@@ -126,7 +126,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
         ![Safari の詳細設定のスクリーンショット](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. [Azure portal](https://portal.azure.com) にサインインする サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
 
 1. ポータルで実行した手順の記録を始めます。 詳細については、「[Mac の画面を記録する方法](https://support.apple.com/HT208721)」を参照してください。
 

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980811"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289528"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -41,11 +41,11 @@ ms.locfileid: "75980811"
 - プロキシに承認資格情報が必要な場合は、それを提供します。
 - URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、以下の URL を許可リストに追加します。
 
-    - [VMware 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-    - [Hyper-V 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-    - [VMware のエージェントレスの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-    - [VMware のエージェント ベースの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-    - [Hyper-V の移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+    - [VMware 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-V 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
+    - [VMware のエージェントレスの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [VMware のエージェント ベースの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-V の移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
 
 - インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](https://docs.microsoft.com/azure/migrate/concepts-collector)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
 

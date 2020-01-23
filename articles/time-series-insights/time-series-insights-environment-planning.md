@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046196"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314812"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -24,7 +24,7 @@ ms.locfileid: "76046196"
 
 ## <a name="video"></a>ビデオ
 
-**Azure Time Series Insights でのデータ リテンション期間と、その計画方法について詳細を確認するには、以下のビデオをご覧ください**。<br />
+**Azure Time Series Insights でのデータ リテンション期間と、その計画方法について詳細を確認するには、以下のビデオをご覧ください**。<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -68,7 +68,7 @@ Azure portal 内の環境の構成ページ上で、リテンション期間を�
 
 1. **[データ リテンション期間 (日)]** ボックスに、1 から 400 までの値を入力します。
 
-   [![リテンション期間の構成](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [![リテンション期間の構成](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > 適切なデータ リテンション ポリシーの実装方法について詳しくは、[リテンション期間の構成方法](./time-series-insights-how-to-configure-retention.md)に関する記事をご覧ください。
