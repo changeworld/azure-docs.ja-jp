@@ -1,26 +1,24 @@
 ---
 title: (非推奨) Azure Kubernetes クラスターを CoScale を使用して監視する
 description: Azure Container Service の Kubernetes クラスターを CoScale を使用して監視します
-services: container-service
 author: fryckbos
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713079"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271109"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(非推奨) Azure Container Service の Kubernetes クラスターを CoScale を使用して監視する
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-この記事では、Azure Container Service の Kubernetes クラスター内のすべてのノードとコンテナーを監視する [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) エージェントのデプロイする方法を説明します。 この構成を行うには、CoScale のアカウントが必要です。 
+この記事では、Azure Container Service の Kubernetes クラスター内のすべてのノードとコンテナーを監視する [CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/) エージェントのデプロイする方法を説明します。 この構成を行うには、CoScale のアカウントが必要です。 
 
 
 ## <a name="about-coscale"></a>CoScale について 
@@ -34,7 +32,7 @@ CoScale は、複数のオーケストレーション プラットフォーム�
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に [CoScale アカウントを作成する](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial)必要があります
+最初に [CoScale アカウントを作成する](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial)必要があります
 
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。
 
@@ -79,7 +77,7 @@ CoScale にログインしたら、[エージェント ページ](https://app.co
 CoScale エージェントは、クラスター内の新しいマシンに自動的にデプロイされます。 エージェントは、新しいバージョンがリリースされたときに自動的に更新されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-CoScale 監視ソリューションの詳細については、[CoScale のドキュメントと](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/)と[ブログ](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog)を参照してください。 
+CoScale 監視ソリューションの詳細については、[CoScale のドキュメントと](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/)と[ブログ](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog)を参照してください。 
 

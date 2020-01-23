@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485928"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548341"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成するには、このモジュールを使用します。 
 
@@ -40,12 +40,11 @@ ms.locfileid: "73485928"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
   
 3.  **[Optimization tolerance]\(最適化の許容範囲\)** に、モデルを最適化する際に使用するしきい値を指定します。 指定したしきい値をイテレーション間の改善が下回った場合に、アルゴリズムは解に収束したと見なされ、トレーニングが終了します。  
   
 4.  正則化パラメーター L1 と L2 に使用する値を **[L1 regularization weight]\(L1 正則化の重み\)** と **[L2 regularization weight]\(L2 正則化の重み\)** に入力します。 どちらも 0 以外の値にすることをおすすめします。  
-  
      "*正則化*" とは、極端な係数の値を備えるモデルにペナルティーを与えることによってオーバーフィットを防止する手法です。 正則化は、仮説の誤りに対し、係数値に関連付けられているペナルティを加算することによって機能します。 これにより、極端な係数の値を持った正確なモデルにはより大きなペナルティが与えられる一方、相対的に値が控えめで正確でないモデルに与えられるペナルティは小さくなります。  
   
      L1 正則化と L2 正則化とでは、効果と用途が異なります。  
@@ -76,15 +75,14 @@ ms.locfileid: "73485928"
   
 9. パイプラインを実行します。  
   
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 トレーニングの完了後:
-
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。   
+ 
   
 + 新しいデータについての予測を行うために、トレーニング済みのモデルと新しいデータを[モデルのスコア付け](./score-model.md)モジュールの入力として使用します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

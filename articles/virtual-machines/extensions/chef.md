@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933621"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544720"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -50,7 +50,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.12",
+    "typeHandlerVersion": "1210.13",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -72,7 +72,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | 型 | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | string (double) |
+| typeHandlerVersion | `1210.13` | string (double) |
 
 ### <a name="settings"></a>設定
 
@@ -118,7 +118,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.12 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 

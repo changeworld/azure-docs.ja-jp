@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769355"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167897"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Azure で初めての PowerShell 関数を作成する
 
@@ -20,9 +20,6 @@ ms.locfileid: "75769355"
 ![Visual Studio Code プロジェクトの Azure Functions コード](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
 [Visual Studio Code 用 Azure Functions 拡張機能]を使用して、PowerShell 関数をローカルに作成し、Azure の新しい関数アプリにデプロイします。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
-
-> [!NOTE]  
-> [Azure Functions 拡張機能][Visual Studio Code 用 Azure Functions 拡張機能]への PowerShell のサポートは、既定では現在無効になっています。 PowerShell のサポートを有効にすることが、この記事の手順の 1 つです。
 
 次の手順は、macOS、Windows、および Linux ベースのオペレーティング システムでサポートされます。
 

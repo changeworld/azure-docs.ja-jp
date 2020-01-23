@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f725d7e902b1e020c26e82007d4d257b2fd21c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451361"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293183"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -222,7 +222,7 @@ Tricerat は、Windows Virtual Desktop などのデスクトップ プラット�
 
 Tricerat を使用すると、Windows Virtual Desktop よりもさらに印刷がシームレスになります。 Tricerat ソフトウェアを使用すると、管理者は、オンプレミスのプリンターをクラウドに簡単に接続できるため、従来の環境から新しい最新のワークスペースにエンタープライズの印刷管理を拡張することができます。
 
-- [パートナーの Web サイトにアクセスする。](https://www.tricerat.com/solutions/wvd-microsoft/)
+- [パートナーの Web サイトにアクセスする。](https://www.tricerat.com/microsoft-printing)
 
 ## <a name="workspot"></a>Workspot
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457369"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291160"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -79,7 +79,7 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 この段階では、次のようにしてステージング共有をクリーンアップしてコストを節約できます。
 
 1. 状態が **[完了]** のときに、 **[サーバー エンドポイントのプロパティ]** ブレードで **[オフラインのデータ転送を無効にする]** を選択します。
-2. コストを節約するためにステージング共有を削除することを検討します。 ステージング共有にファイルとフォルダーの ACL が含まれていることはほとんどないため、ステージング共有はそれほど役に立ちません。 バックアップの特定の時点の目的で、[同期する Azure ファイル共有の実際のスナップショット](storage-snapshots-files.md)を作成します。 スケジュールに基づいて[スナップショットを作成するように Azure Backup を設定する]( ../../backup/backup-azure-files.md)ことができます。
+2. コストを節約するためにステージング共有を削除することを検討します。 ステージング共有にファイルとフォルダーの ACL が含まれていることはほとんどないため、ステージング共有はそれほど役に立ちません。 バックアップの特定の時点の目的で、[同期する Azure ファイル共有の実際のスナップショット](storage-snapshots-files.md)を作成します。 スケジュールに基づいて[スナップショットを作成するように Azure Backup を設定する]( ../../backup/backup-afs.md)ことができます。
 
 状態が **[完了]** の場合、または構成の誤りが原因で中止したい場合にのみ、オフライン データ転送モードを無効にしてください。 デプロイ時にこのモードを無効にすると、ステージング共有がまだ利用可能であっても、ファイルはサーバーからアップロードされ始めます。
 

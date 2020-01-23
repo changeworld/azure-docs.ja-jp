@@ -1,23 +1,19 @@
 ---
 title: Windows VM の Azure 可用性オプション
 description: Azure で Windows 仮想マシンを実行するための可用性機能について学習します
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
+ms.author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/05/2019
-ms.author: cynthn
-ms.openlocfilehash: f374c1f69c1e31d8d162e256ee99e34c2809fca0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2c6831af5306be4a0a66e750a7ffa622b4470b09
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039292"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277199"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 [!INCLUDE [virtual-machines-common-availability](../../../includes/virtual-machines-common-availability.md)]

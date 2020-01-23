@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190437"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288916"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -51,7 +51,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 <table>
 <thead>
-    <tr><th>Type</th><th>説明</th><th>使用目的:</th></tr>
+    <tr><th>種類</th><th>[説明]</th><th>使用目的:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 SSD は Azure で最高のストレージ パフォーマンスを提供します。 (このドキュメントの執筆時点では) 次のオプションが利用できます。
 
-| Type         | Size           | IOPS                  |
+| 種類         | Size           | IOPS                  |
 |--------------|----------------|-----------------------|
 | Ultra SSD    | 4 GB ～ 64 TB  | 1,200 ～ 160,000 IOPS |
 | Premium SSD  | 32 GB ～ 32 TB | 12 ～ 15,000 IOPS     |
@@ -102,7 +102,7 @@ SSD は Azure で最高のストレージ パフォーマンスを提供しま�
 
 BLOB ストレージは、Azure 上で最大のストレージ容量を提供します。 ストレージ サイズに加えて、Azure はマネージド ストレージとアンマネージド ストレージの両方を提供します。 マネージド ストレージでは、基になるストレージ アカウントの管理は Azure が受け持ちます。 アンマネージド ストレージでは、ユーザーの責任で、ストレージ要件を満たす適切なサイズの Azure ストレージ アカウントをセットアップします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Azure 仮想マシンでのメインフレーム リホスト](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
@@ -126,6 +126,5 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 
 ### <a name="more-migration-resources"></a>その他の移行リソース
 
-- [プラットフォーム近代化のための提携:Azure 上の IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Azure 仮想データ センターのリフト アンド シフト ガイド](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

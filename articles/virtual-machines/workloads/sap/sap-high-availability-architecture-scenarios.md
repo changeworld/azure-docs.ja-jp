@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638206"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291483"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -294,7 +294,7 @@ Azure では、[Azure Availability Zones](https://docs.microsoft.com/azure/avail
 Availability Zones を使用する際には、考慮すべき点がいくつかあります。 考慮事項を次に示します。
 
 - 可用性ゾーン内に Azure 可用性セットをデプロイすることはできません。 可用性ゾーンまたは可用性セットのいずれかを VM のデプロイ フレームとして選択する必要があります。
-- [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) を使用して Windows フェールオーバー クラスター サービスまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります
+- [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) を使用して Windows フェールオーバー クラスター サービスまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります
 - Azure Availability Zones は、1 つのリージョン内のさまざまな異なる間の特定の距離を保証するものではありません
 - 異なる Azure リージョン内の異なる Azure Availability Zones 間のネットワーク待ち時間は、Azure リージョンごとに異なる可能性があります。 1 つのゾーンからアクティブな DBMS VM までのネットワーク待ち時間がビジネス プロセスへの影響から依然として許容できるようなケースでは、顧客が異なるゾーンをまたがってデプロイされた SAP アプリケーション レイヤーを合理的に実行できる場合があります。 一方、あるゾーン内のアクティブな DBMS VM と別のゾーンにある VM 内の SAP アプリケーション インスタンスとの間の待ち時間が過度に侵入的であり、SAP ビジネス プロセスにとって許容できない顧客シナリオがあります。 そのため、待ち時間が長すぎる場合は、デプロイ アーキテクチャをアプリケーションのアクティブ/アクティブ アーキテクチャまたはアクティブ/パッシブ アーキテクチャとは異なるものにする必要があります。
 - Azure Availability Zones にデプロイするには、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)の使用が必須です 

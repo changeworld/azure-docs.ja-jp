@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 096a880dc1553bec4c9d4dce36e14af7a917fc2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535423"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156881"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -259,7 +259,7 @@ Visual Studio Code は、[Visual Studio マーケットプレース](https://mar
 
 1. Visual Studio Code 用の Azure Machine Learning 拡張機能をインストールするには、「[Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)」を参照してください。
 
-    詳細については、[Visual Studio Code 用の Azure Machine Learning の使用](how-to-vscode-tools.md)に関するページを参照してください。
+    詳細については、[Visual Studio Code 用の Azure Machine Learning の使用](tutorial-setup-vscode-extension.md)に関するページを参照してください。
 
 1. あらゆる種類の Python 開発に Visual Studio Code を使用する方法については、「[VSCode での Python の使用](https://code.visualstudio.com/docs/python/python-tutorial)」を参照してください。
 

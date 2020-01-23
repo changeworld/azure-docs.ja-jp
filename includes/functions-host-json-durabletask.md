@@ -1,20 +1,18 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 284aad7dd5b51268b1c8ff8a02f4489d6f1cd3d9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410204"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279342"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
 

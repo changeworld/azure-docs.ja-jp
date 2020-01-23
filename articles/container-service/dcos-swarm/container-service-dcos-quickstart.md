@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service クイック スタート - DC/OS クラスターのデプロイ
 description: Azure Container Service クイックスタート - DC/OS のデプロイ
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000514"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278494"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(非推奨) Docker DC/OS クラスターのデプロイ
 
@@ -34,9 +32,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az login
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -165,7 +163,7 @@ az network public-ip list --resource-group myResourceGroup --query "[?contains(n
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、DC/OS クラスターをデプロイし、このクラスター上で単純な Docker コンテナーを実行しました。 Azure Container Service をより深く学習するには、ACS チュートリアルに進んでください。
 

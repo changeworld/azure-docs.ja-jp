@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305845"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289800"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -92,7 +92,7 @@ VM などの Azure IaaS の場合、特定のシステム関数によってフ�
 
 メインフレームは通常スケールアップしますが、クラウド環境はスケールアウトします。Azure は、ユーザーのニーズを満たすために、さまざまな [Linux](/azure/virtual-machines/linux/sizes) および [Windows](/azure/virtual-machines/windows/sizes) のサイズを提供しています。 クラウドはまた、正確なユーザー仕様に一致するようにスケールアップまたはスケールダウンします。 コンピューティング能力、ストレージ、およびサービスは、使用量ベースの課金モデルのもとで、オンデマンドで[スケール調整](/azure/architecture/best-practices/auto-scaling)されます。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 クラウドには、柔軟でスケーラブルなストレージ オプションがあり、必要な分だけ支払うことができます。 [Azure Storage](/azure/storage/common/storage-introduction) は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージング ストア、および NoSQL ストアを提供します。 VM の場合、マネージド ディスクとアンマネージド ディスクは、永続的でセキュリティで保護されたディスク ストレージを提供します。
 
@@ -110,9 +110,9 @@ Azure Government は、この種類の環境が必要なシステムに対して
 
 開始するには、[メインフレーム アプリケーション用の Microsoft Azure Government クラウド](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)をダウンロードします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-メインフレーム アプリケーションの移行またはリホストの手伝いを Microsoft [パートナー](partner-workloads.md)に依頼します。 パートナー ソリューションの選択に関する詳細なガイダンスについては、[プラットフォーム最新化アライアンス](https://www.platformmodernization.org/pages/mainframe.aspx)の Web ページを参照してください。
+メインフレーム アプリケーションの移行またはリホストの手伝いを Microsoft [パートナー](partner-workloads.md)に依頼します。 
 
 関連項目:
 

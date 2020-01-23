@@ -3,12 +3,12 @@ title: チュートリアル - Azure Files のファイル共有のバックア�
 description: このチュートリアルでは、Azure portal を使用して、Recovery Services コンテナーを構成し、Azure ファイル共有をバックアップする方法について説明します。
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921640"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293931"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal 内での Azure ファイル共有のバックアップ
 
@@ -43,29 +43,29 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 1. 使用しているファイル共有と同じリージョンに Recovery Services コンテナーを作成します。 コンテナーが既にある場合は、そのコンテナーの [概要] ページを開き、 **[バックアップ]** をクリックします。
 
-    ![コンテナーの [概要] ページで [バックアップ] をクリックする](./media/backup-file-shares/overview-backup-page.png)
+    ![コンテナーの [概要] ページで [バックアップ] をクリックする](./media/tutorial-backup-azure-files/overview-backup-page.png)
 
 2. **[バックアップの目標]** メニューの **[What do you want to back up?]\(何をバックアップしますか?\)** で [Azure ファイル共有] を選択します。
 
-    ![バックアップの目標として Azure ファイル共有を選択する](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
+    ![バックアップの目標として Azure ファイル共有を選択する](./media/tutorial-backup-azure-files/choose-azure-fileshare-from-backup-goal.png)
 
 3. **[バックアップ]** をクリックして、Recovery Services コンテナーに対して Azure ファイル共有を構成します。
 
-   ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/set-backup-goal.png)
+   ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/tutorial-backup-azure-files/set-backup-goal.png)
 
     コンテナーが Azure ファイル共有に関連付けられると、[バックアップ] メニューが開き、ストレージ アカウントを選択するように求められます。 このメニューには、対象のコンテナーが存在するリージョン内にある、まだ Recovery Services コンテナーに関連付けられていない、サポートされているストレージ アカウントがすべて表示されます。
 
-   ![使うストレージ アカウントを選ぶ](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![使うストレージ アカウントを選ぶ](./media/tutorial-backup-azure-files/list-of-storage-accounts.png)
 
 4. ストレージ アカウントの一覧でアカウントを選択し、 **[OK]** をクリックします。 Azure は、バックアップ可能なファイル共有のストレージ アカウントを検索します。 最近ファイル共有を追加していても一覧に表示されない場合は、ファイル共有が表示されるまで少し時間を置いてください。
 
-   ![ファイル共有の検出中](./media/backup-file-shares/discover-file-shares.png)
+   ![ファイル共有の検出中](./media/tutorial-backup-azure-files/discover-file-shares.png)
 
 5. **[ファイル共有]** の一覧から、バックアップするファイル共有を 1 つ以上選択し、 **[OK]** をクリックします。
 
 6. ファイル共有を選択すると、[バックアップ] メニューが **[バックアップ ポリシー]** に切り替わります。 このメニューから、既存のバックアップ ポリシーを選択するか新しいバックアップ ポリシーを作成し、 **[バックアップの有効化]** をクリックします。
 
-   ![バックアップ ポリシーを選択する、または新しいバックアップ ポリシーを作成する](./media/backup-file-shares/apply-backup-policy.png)
+   ![バックアップ ポリシーを選択する、または新しいバックアップ ポリシーを作成する](./media/tutorial-backup-azure-files/apply-backup-policy.png)
 
     バックアップ ポリシーを確立すると、スケジュールされた時刻にファイル共有のスナップショットが作成され、復旧ポイントは選択した期間保持されます。
 
@@ -77,19 +77,19 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 1. ファイル共有の復旧ポイントが含まれている Recovery Services コンテナーを開き、 **[Backup Items]\(バックアップ項目\)** をクリックします。 バックアップ項目の種類の一覧が表示されます。
 
-   ![バックアップ項目の一覧](./media/backup-file-shares/list-of-backup-items.png)
+   ![バックアップ項目の一覧](./media/tutorial-backup-azure-files/list-of-backup-items.png)
 
 2. 一覧から **[Azure Storage (Azure Files)]** を選択します。 Azure ファイル共有の一覧が表示されます。
 
-   ![Azure ファイル共有の一覧](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Azure ファイル共有の一覧](./media/tutorial-backup-azure-files/list-of-azure-files-backup-items.png)
 
 3. Azure ファイル共有の一覧から、目的のファイル共有を選択します。 選択したファイル共有の [Backup Item]\(バックアップ項目\) メニューが開きます。
 
-   ![選択したファイル共有の [Backup Item]\(バックアップ項目\) メニュー](./media/backup-file-shares/backup-item-menu.png)
+   ![選択したファイル共有の [Backup Item]\(バックアップ項目\) メニュー](./media/tutorial-backup-azure-files/backup-item-menu.png)
 
 4. [Backup Item]\(バックアップ項目\) メニューから **[今すぐバックアップ]** をクリックします。 これはオンデマンド バックアップ ジョブのため、復旧ポイントに関連付けられた保持ポリシーはありません。 **[今すぐバックアップ]** ダイアログが開きます。 復旧ポイントの保持期限を指定します。
 
-   ![復旧ポイントの保持期間を選択する](./media/backup-file-shares/backup-now-menu.png)
+   ![復旧ポイントの保持期間を選択する](./media/tutorial-backup-azure-files/backup-now-menu.png)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -103,4 +103,4 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 次の記事に進み、Azure ファイル共有のバックアップから復元します。
 
 > [!div class="nextstepaction"]
-> [Azure ファイル共有のバックアップから復元する](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
+> [Azure ファイル共有のバックアップから復元する](restore-afs.md)

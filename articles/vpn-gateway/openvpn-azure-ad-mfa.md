@@ -1,59 +1,39 @@
 ---
-title: 'VPN ユーザーの MFA を有効にする: Azure AD 認証'
-description: VPN ユーザーの多要素認証を有効にします
+title: VPN ユーザー用の MFA を有効にする：Azure AD 認証
+description: VPN ユーザー用の多要素認証を有効にします。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382203"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169707"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの多要素認証 (MFA) を有効にする
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの Azure 多要素認証 (MFA)を有効にします。
 
-ユーザーにアクセス許可を付与する前に 2 つ目の認証要素の入力を求める場合は、Azure AD テナントに対して Azure Multi-Factor Authentication (MFA) を構成できます。 この記事の手順は、2 段階認証の要件を有効にするために役立ちます。
+ユーザーにアクセスを許可する前に2つ目の認証要素の入力を求めるようにしたい場合には、Azure AD テナント用の Azure Multi-Factor Authentication (MFA) を構成できます。 ここに記載手順では、2 段階認証の要件を有効にする方法について説明します。
 
 ## <a name="prereq"></a>前提条件
 
-この構成の前提条件は、[テナントの構成](openvpn-azure-ad-tenant.md)に関する記事の手順に従って構成された Azure AD テナントです。
+この構成の前提条件は、[テナントの構成](openvpn-azure-ad-tenant.md)の手順を使用して構成された Azure AD テナントです。
 
-## <a name="mfa"></a>MFA ページを開く
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
-1. Azure ポータルにサインインします。
-2. **[Azure Active Directory]、[すべてのユーザー]** の順に移動します。
-3. **[多要素認証]** を選択して、[多要素認証] ページを開きます。
+## <a name="enablesign"></a> サインインの設定を構成する
 
-   ![サインイン](./media/openvpn-azure-ad-mfa/mfa1.jpg)
+**[Azure VPN のプロパティ]** ページで、サインインの設定を構成します。
 
-## <a name="users"></a>ユーザーを選択する
-
-1. **[多要素認証]** ページで、MFA を有効にするユーザーを選択します。
-2. **[有効化]** を選択します。
-
-   ![選択](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>認証を有効にする
-
-1. **[Azure Active Directory]、[エンタープライズ アプリケーション]、[すべてのアプリケーション]** の順に移動します。
-2. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページで、 **[Azure VPN]** を選択します。
-
-   ![ディレクトリ ID](./media/openvpn-azure-ad-mfa/user1.jpg)
-
-## <a name="enablesign"></a>サインイン設定を構成する
-
-**[Azure VPN - プロパティ]** ページで、サインイン設定を構成します。
-
-1. **[ユーザーのサインインが有効になっていますか?]** を **[はい]** に設定します。 これにより、AD テナントのすべてのユーザーが VPN に正常に接続できるようになります。
-2. サインインを Azure VPN にアクセスできるユーザーだけに制限する場合は、 **[ユーザーの割り当てが必要ですか?]** を **[はい]** に設定します。
+1. **ユーザーのサインインを有効にしますか？** で、**はい**を選択します。 これにより、AD テナントのすべてのユーザーが，VPN に正常に接続できるようになります。
+2. **ユーザー割り当てが必用ですか？** で、Azure VPN に対するアクセス許可を持つユーザーのみにサインインを制限する場合は、**はい**を選択します。
 3. 変更を保存します。
 
    ![アクセス許可](./media/openvpn-azure-ad-mfa/user2.jpg)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-仮想ネットワークに接続するには、VPN クライアント プロファイルを作成して構成する必要があります。 「[VPN クライアントを P2S VPN 接続用に構成する](openvpn-azure-ad-client.md)」を参照してください。
+仮想ネットワークに接続するには、VPN クライアント プロファイルを作成し、構成する必要があります。 「[VPN クライアントを P2S VPN 接続用に構成する](openvpn-azure-ad-client.md)」を参照してください。

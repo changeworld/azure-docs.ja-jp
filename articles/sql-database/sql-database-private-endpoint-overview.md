@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045625"
+ms.locfileid: "76121082"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL Database と Data Warehouse の Private Link (プレビュー)
 
@@ -43,8 +43,6 @@ Private Link を使用することで、お客様が NSG のようなネット�
 お客様がオンプレミスのマシンからパブリック エンドポイントに接続する場合、[サーバーレベルのファイアウォール規則](sql-database-server-level-firewall-rule.md)を使用して、ご自分の IP アドレスを IP ベースのファイアウォールに追加する必要があります。 このモデルは、開発またはテストのワークロード用に個々のコンピューターへのアクセスを許可する場合には適していますが、運用環境で管理するのは困難です。
 
 Private Link を使用すると、[ExpressRoute](../expressroute/expressroute-introduction.md)、プライベート ピアリング、または VPN トンネリングを使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、お客様はパブリック エンドポイント経由のすべてのアクセスを無効にし、IP ベースのファイアウォールを使用して任意の IP アドレスを許可しないようにすることができます。
-
-Private Link を使用すると、お客様は Express Route (ER) プライベート ピアリングまたは VPN トンネルを使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。その後、パブリック エンドポイント経由のすべてのアクセスを無効にして、IP ベースのファイアウォールを使用しないようにすることができます。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL Database に Private Link を設定する方法 
 

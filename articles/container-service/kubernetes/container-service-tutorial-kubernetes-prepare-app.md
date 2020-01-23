@@ -1,25 +1,23 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - アプリの準備
 description: Azure Container Service チュートリアル - アプリの準備
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995396"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275421"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(非推奨) Azure Container Service で使用するコンテナー イメージを作成する
 
 > [!TIP]
-> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備](../../aks/tutorial-kubernetes-prepare-app.md)」を参照してください。
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備](../../aks/tutorial-kubernetes-prepare-app.md)」を参照してください。
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -107,7 +105,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーションの機能を検証したので、実行中のコンテナーを停止して削除できます。 コンテナー イメージは削除しないでください。 `azure-vote-front` イメージは、次のチュートリアルで Azure Container Registry インスタンスにアップロードされます。
 
@@ -125,7 +123,7 @@ docker-compose down
 
 完了すると、Azure Vote アプリケーションを含むコンテナー イメージが完成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 次の手順を完了しました。
 

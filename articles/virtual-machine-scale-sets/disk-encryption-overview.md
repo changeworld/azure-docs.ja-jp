@@ -3,16 +3,16 @@ title: 仮想マシン スケール セットで Azure Disk Encryption を有効
 description: この記事では、仮想マシン スケール セットで Microsoft Azure Disk Encryption を有効にする手順について説明します
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177783"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278972"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure Disk Encryption
 
@@ -25,7 +25,7 @@ Azure Disk Encryption は、仮想マシンの OS とデータ ディスクの�
 
 仮想マシン スケール セットでの Azure Disk Encryption の基礎については、[Azure CLI を使用した仮想マシン スケール セットの暗号化](disk-encryption-cli.md)または [Azure PowerShell を使用した仮想マシン スケール セットの暗号化](disk-encryption-powershell.md)に関するチュートリアルを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Manager を使用して仮想マシン スケール セットを暗号化する](disk-encryption-azure-resource-manager.md)
 - [Azure Disk Encryption のキー コンテナーを作成して構成する](disk-encryption-key-vault.md)

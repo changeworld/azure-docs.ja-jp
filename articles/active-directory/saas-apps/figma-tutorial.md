@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2da2214cd5fab378368a363e6f18e02626b9d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373113"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Figma の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "72373113"
 
 * Figma にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Figma に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -92,7 +92,7 @@ Figma に対する Azure AD SSO を構成してテストするには、次の構
     **[サインオン URL]** ボックスに、`https://www.figma.com/saml/<TENANT ID>/start` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)」の手順 11. で、`TENANT ID` を取得できます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory)」の手順 11. で、`TENANT ID` を取得できます。
 
 1. Figma アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -100,7 +100,7 @@ Figma に対する Azure AD SSO を構成してテストするには、次の構
 
 1. その他に、Figma アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |
@@ -146,7 +146,7 @@ Figma に対する Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-figma-sso"></a>Figma の SSO の構成
 
-Figma 側でシングル サインオンを構成するには、Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)」に従う必要があります。
+Figma 側でシングル サインオンを構成するには、Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory)」に従う必要があります。
 
 ### <a name="create-figma-test-user"></a>Figma のテスト ユーザーの作成
 

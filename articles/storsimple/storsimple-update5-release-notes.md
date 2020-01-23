@@ -1,25 +1,18 @@
 ---
-title: StorSimple 8000 シリーズ Update 5 リリース ノート | Microsoft Docs
+title: StorSimple 8000 シリーズ Update 5 リリース ノート
 description: StorSimple 8000 シリーズ Update 5 における新機能、問題、回避策について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844093"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275165"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 シリーズ Update 5 リリース ノート
 
@@ -55,7 +48,7 @@ Update 5 では、主に次の機能強化とバグ修正が行われていま�
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell のリモート処理 |以前のリリースでは、Windows PowerShell 経由で StorSimple Cloud Appliance へのリモート接続の確立を試行しているときに、ユーザーはエラーを受信しました。 このリリースでは、この問題の根本原因が特定され、問題が修正されました。 |いいえ |はい |
 | 2 |帯域幅テンプレート |以前のリリースでは、帯域幅のテンプレートに問題があり、デバイスでの構成よりも少ない帯域幅になっていました。 この問題は今回のリリースで解決されました。 |はい |はい |
-| 3 |フェールオーバー |以前のリリースでは、ボリューム数の多いデバイスが Update 4 を実行している別のデバイスに対してフェールオーバーした場合に、アクセス制御レコードを適用しようとすると、プロセスが失敗していました。 この問題は今回のリリースで修正されました。 |はい |はい |
+| 3 |[フェールオーバー] |以前のリリースでは、ボリューム数の多いデバイスが Update 4 を実行している別のデバイスに対してフェールオーバーした場合に、アクセス制御レコードを適用しようとすると、プロセスが失敗していました。 この問題は今回のリリースで修正されました。 |はい |はい |
 
 
 

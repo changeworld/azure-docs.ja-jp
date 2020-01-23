@@ -1,26 +1,18 @@
 ---
-title: StorSimple デバイスにリモート接続する | Microsoft Docs
+title: StorSimple デバイスにリモート接続する
 description: リモート管理用にデバイスを構成する方法と、HTTP または HTTPS を介して StorSimple 用 Windows PowerShell に接続する方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631881"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277292"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -244,8 +236,8 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
    
     ![HTTPS と SSL を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-8000-windows-powershell-administration.md)の詳細を確認する。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細を確認する。
+* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

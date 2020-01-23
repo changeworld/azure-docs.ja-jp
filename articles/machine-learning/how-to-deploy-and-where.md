@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754006"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543564"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
 - モデルです。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](https://aka.ms/azml-deploy-cloud)で提供されているモデルと依存関係のファイルを使用できます。
 
-- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
+- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 ## <a name="connect-to-your-workspace"></a>ワークスペースに接続する
 
@@ -59,7 +59,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
 + **VS コードを使用する**
 
-   VS コードを使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、VS Code 拡張機能のドキュメントの「[モデルを展開して管理する](how-to-vscode-tools.md#deploy-and-manage-models)」をご覧ください。
+   VS コードを使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、VS Code 拡張機能のドキュメントの「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」をご覧ください。
 
 ## <a id="registermodel"></a> モデルを登録する
 
@@ -115,7 +115,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
 + **VS コードを使用する**
 
-  [VS コード](how-to-vscode-tools.md#deploy-and-manage-models)拡張機能を使用して、任意のモデル ファイルまたはフォルダーを使用してモデルを登録します。
+  [VS コード](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)拡張機能を使用して、任意のモデル ファイルまたはフォルダーを使用してモデルを登録します。
 
 ### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
 
@@ -185,7 +185,7 @@ Azure ML は、1つのエンドポイントの背後に シングルまたはマ
     >
     > * Azure Machine Learning SDK には、データストアまたはデータセットにアクセスするための Web サービスまたは IoT Edge のデプロイの手段は用意されていません。 デプロイしたモデルが、デプロイの外部に格納されているデータ (Azure Storage アカウントのデータなど) にアクセスする必要がある場合、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
     >
-    >   シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスできます。
+    >   シナリオに適したもう 1 つの方法として[バッチ予測](how-to-use-parallel-run-step.md)があります。これにより、スコアリング時にデータストアにアクセスできます。
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
@@ -551,7 +551,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ```python
 import json
-test_sample = json.dumps({'data': [
+test_data = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10]
 ]})
 
@@ -973,7 +973,7 @@ package.wait_for_creation(show_output=True)
 
 パッケージを作成した後、`package.pull()` を使用して、ローカルの Docker 環境にイメージをプルできます。 このコマンドの出力には、イメージの名前が表示されます。 次に例を示します。 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` 
 
 モデルをダウンロードした後、`docker images` コマンドを使用してローカル イメージを一覧表示します。
 

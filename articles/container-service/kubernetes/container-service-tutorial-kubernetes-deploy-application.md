@@ -1,25 +1,23 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - アプリケーションのデプロイ
 description: Azure Container Service チュートリアル - アプリケーションのデプロイ
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998767"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275491"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを実行する
 
 > [!TIP]
-> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -107,7 +105,7 @@ azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Vote アプリケーションを Azure Container Service の Kubernetes クラスターにデプロイしました。 次のタスクを行います。  
 

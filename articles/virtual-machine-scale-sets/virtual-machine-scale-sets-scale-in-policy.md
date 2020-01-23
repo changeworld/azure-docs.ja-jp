@@ -1,22 +1,20 @@
 ---
-title: Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する | Microsoft Docs
+title: Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
 description: Azure 仮想マシン スケール セットで、自動スケーリング構成を使用してインスタンス数を管理するカスタム スケールイン ポリシーを使用する方法について説明します
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452961"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271762"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>プレビュー:Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
 
@@ -169,12 +167,12 @@ NewestVM を Default または OldestVM に変更する場合も、同じプロ�
 
 非ゾーン仮想マシン スケール セットの場合は、スケール セット全体で最も新しい VM が削除対象に選択されます。 "保護されている" VM は削除からスキップされます。 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 1. スケールイン ポリシーを有効にできない: "タイプ 'properties' のオブジェクトにメンバー 'scaleInPolicy' が見つかりませんでした" でエラー メッセージが始まる "BadRequest" エラーが発生する場合は、仮想マシン スケール セットに使用されている API のバージョンを確認します。 このプレビューでは、API バージョン 2019-03-01 以降が必要です。
 
 2. 間違った VM がスケールインに選択される: 上記の例を参照してください。 仮想マシン スケール セットがゾーン デプロイの場合、スケールイン ポリシーは、最初に不均衡なゾーンに適用され、ゾーンが均衡された後でスケール セット全体に適用されます。 スケールインの順序が上記の例と一致しない場合は、仮想マシン スケール セット チームにトラブルシューティングのためのクエリを提出してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

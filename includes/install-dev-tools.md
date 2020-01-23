@@ -1,15 +1,15 @@
 ---
-author: jpconnock
+author: tanmaygore
+ms.author: tagore
 ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: jeconnoc
-ms.openlocfilehash: a73e8b2d0c35fe4575f36598beee1c1e4bbca488
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a8fae34622e5306dd9f462ed49c876cbacb504ba
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968898"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279476"
 ---
 > [!NOTE]
 > このセクションを適切に実行するには、正常に動作している Node.js のインストールと、ご利用のプラットフォーム用の Azure SDK for Node.js が必要です。

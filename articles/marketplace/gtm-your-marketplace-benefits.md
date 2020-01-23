@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: evansma
-ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121813"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -86,7 +86,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 ### <a name="publisher-agreement"></a>発行元契約
 
-このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://docs.microsoft.com/legal/marketplace/terms)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
+このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892738"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545893"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -29,7 +29,7 @@ ms.locfileid: "74892738"
 
 コグニティブな分析情報ウィジェットには、ビデオのインデックス作成プロセスから抽出されたビジュアルな分析情報がすべて含まれます。 コグニティブな分析情報ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|名前|定義|説明|
+|Name|定義|[説明]|
 |---|---|---|
 |`widgets`|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/> 例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます。<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>バージョン 2 では、`widgets` URL パラメーターがサポートされていないことに注意してください。<br/>|
 |`locale`|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 <br/> 例: `locale=de`.|
@@ -39,7 +39,7 @@ ms.locfileid: "74892738"
 
 プレーヤーウィジェットは、アダプティブ ビット レートを使ってビデオをストリーム配信するために使用できます。 プレーヤー ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|名前|定義|説明|
+|Name|定義|[説明]|
 |---|---|---|
 |`t`|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/> 例: `t=60`.|
 |`captions`|言語コード|ウィジェットを読み込むときに、指定された言語のキャプションを取り込んで、 **[キャプション]** メニューで使用できるようにします。<br/> 例: `captions=en-US`.|
@@ -52,9 +52,9 @@ ms.locfileid: "74892738"
 
 エディター ウィジェットは、新しいプロジェクトの作成とビデオの分析情報の管理に使用できます。 エディター ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|名前|定義|説明|
+|Name|定義|[説明]|
 |---|---|---|
-|`accessToken`<sup>*</sup>|string|ウィジェットの埋め込みに使用されているアカウント内にのみ存在するビデオへのアクセスが提供されます。<br> エディター ウィジェットには `accessToken` パラメーターが必要です。|
+|`accessToken`<sup>*</sup>|String|ウィジェットの埋め込みに使用されているアカウント内にのみ存在するビデオへのアクセスが提供されます。<br> エディター ウィジェットには `accessToken` パラメーターが必要です。|
 |`language`|言語コード|プレーヤーの言語を制御します。 既定値は `en-US` です。<br/>例: `language=de-DE`.|
 |`locale`|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。<br/>例: `language=de`.|
 
@@ -159,7 +159,8 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.
@@ -186,7 +187,7 @@ Azure Media Player 以外のビデオ プレーヤーを使用する場合、通
         </video>    
 
 2. コグニティブな分析情報ウィジェットを埋め込みます。
-3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 例:
+3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 次に例を示します。
 
         <script>
     
@@ -247,7 +248,7 @@ iframe ウィンドウのタイトルも、iframe の URL に `&title=<YourTitle
 
 Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを指定することで、プレーヤーのサイズを選択できます。
 
-例:
+次に例を示します。
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -264,7 +265,7 @@ Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを�
 #### <a name="autoplay"></a>AutoPlay
 既定では、プレーヤーでビデオの再生が開始されます。 前の埋め込み URL に `&autoplay=false` を渡すことによって、そうしないことを選択できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Video Indexer の分析情報を表示および編集する方法の詳細については、「[Video Indexer の分析情報の表示と編集](video-indexer-view-edit.md)」をご覧ください。
 

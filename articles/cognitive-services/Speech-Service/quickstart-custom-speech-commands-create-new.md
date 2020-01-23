@@ -3,19 +3,19 @@ title: クイック スタート:カスタム コマンドを作成する (プ�
 titleSuffix: Azure Cognitive Services
 description: この記事では、ホストされたカスタム コマンド アプリケーションを作成してテストします。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446858"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155589"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>クイック スタート:カスタム コマンドを作成する (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "75446858"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Speech サブスクリプション 
+- Speech サブスクリプション
 
 Speech サブスクリプションがない場合は、[Speech Studio](https://speech.microsoft.com/) に移動し、 **[Speech リソースを作成する]** を選択して作成できます。
 
@@ -73,7 +73,7 @@ Speech サブスクリプションがない場合は、[Speech Studio](https://s
 
 ## <a name="update-luis-resources-optional"></a>LUIS リソースを更新する (省略可能)
 
-[新しいプロジェクト] ウィンドウにセットされた作成リソースを更新し、実行時に入力を認識するために使用される予測リソースをセットできます。 
+[新しいプロジェクト] ウィンドウにセットされた作成リソースを更新し、実行時に入力を認識するために使用される予測リソースをセットできます。
 
 > [!NOTE]
 > アプリケーションが、オーサリング リソースが提供する 1,000 件の要求を超えた予測を要求する前に、予測リソースをセットする必要があります。
@@ -154,4 +154,4 @@ turn on the tv
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+> [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)

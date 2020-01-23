@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - Azure Portal で公開/サブスクライブ チャネルとトピック フィルターを使用して小売在庫品を更新する | Microsoft Docs
+title: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 description: このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、.NET を使用してフィルター ルールを追加および使用する方法について説明します。
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991935"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310120"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル:Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![出力を受信する](./media/service-bus-tutorial-topics-subscriptions-portal/receive-output.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、名前空間とキューを削除します。 これを行うには、ポータルでこれらのリソースを選択し、 **[削除]** をクリックします。
 
@@ -397,9 +397,9 @@ private async Task ReceiveMessages(string subscription)
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Portal を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法について学習しました。
+このチュートリアルでは、Azure Portal を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して、Service Bus トピックとそのトピックへの 1 つ以上のサブスクリプションを作成する

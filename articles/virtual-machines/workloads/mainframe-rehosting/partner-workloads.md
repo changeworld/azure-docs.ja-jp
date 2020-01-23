@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 1923d6fe71a0a7c4b469dc88b61a6ab3a794c45e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf02ff7078fe5d33f220c0abc2d941d483e5c125
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487309"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293506"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Azure でサポートされているメインフレーム ワークロード
 
@@ -29,8 +29,8 @@ ms.locfileid: "61487309"
 - メインフレームの PL/I 構文、データ型、動作をサポートする、.NET プラットフォーム向け [Micro Focus PL/I](https://www.microfocus.com/campaign/download/pli-modernization/) レガシ コンパイラ。
 - [Micro Focus Enterprise Server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) メインフレーム統合プラットフォーム。
 - [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) 開発および統合ツール。
-- [NTT Data Enterprise COBOL](https://www.nttdataservices.com/en-ie/services/application-modernization-services) 開発および統合ツール。
-- メインフレームの PL/I 構文、データ型、動作をサポートする、.NET プラットフォーム向け [NTT Open PL/I](https://www.nttdataservices.com/en-ie/services/application-modernization-services) レガシ コンパイラ。
+- [NTT Data Enterprise COBOL](https://us.nttdata.com/en/digital/application-development-and-modernization) 開発および統合ツール。
+- メインフレームの PL/I 構文、データ型、動作をサポートする、.NET プラットフォーム向け [NTT Open PL/I](https://us.nttdata.com/en/digital/application-development-and-modernization) レガシ コンパイラ。
 - [Raincode COBOL コンパイラ](https://www.raincode.com/products/cobol/)開発および統合ツール。
 - メインフレームの PL/I 構文、データ型、動作をサポートする、.NET プラットフォーム向け [Raincode PL/I コンパイラ](https://www.raincode.com/products/pli/)。
 - メインフレームのアセンブラー 370 および HLASM 構文に対応する [Raincode ASM370 コンパイラ](https://www.raincode.com/technical-landscape/asm370/)。

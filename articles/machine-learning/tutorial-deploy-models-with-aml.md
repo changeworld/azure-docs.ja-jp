@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532195"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122085"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + [Azure Machine Learning のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。
 + [Web サービス用のクライアントを作成](how-to-consume-web-service.md)する方法について学習します。
-+  [大量のデータの予測](how-to-run-batch-predictions.md)を非同期的に行います。
++  [大量のデータの予測](how-to-use-parallel-run-step.md)を非同期的に行います。
 + [Application Insights を使用して Azure Machine Learning のモデルを監視](how-to-enable-app-insights.md)します。
 + [アルゴリズムの自動選択](tutorial-auto-train-models.md)に関するチュートリアルを試します。 

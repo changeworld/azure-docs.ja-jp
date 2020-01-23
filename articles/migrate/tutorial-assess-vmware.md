@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028728"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289443"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して VMware VM を評価する
 
@@ -176,7 +176,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 1. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
 
 ### <a name="specify-vm-credentials"></a>VM の資格情報を指定する
-アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)してください。
+アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)してください。
 
 > [!NOTE]
 > この入力は省略可能ですが、アプリケーションの検出とエージェントレスの依存関係の視覚化を有効にする場合は必要です。
@@ -210,7 +210,7 @@ vCenter Server インスタンスと VM の資格情報 (省略可能) を指定
 1.  ドロップダウン メニューから vCenter Server インスタンスを選択します。
 1.  **[ロールの作成]** を選択します。
 1.  新しいロールの名前 (<em>Azure_Migrate</em> など) を入力します。
-1.  新しく定義されたロールに[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)を割り当てます。
+1.  新しく定義されたロールに[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)を割り当てます。
 1.  **[OK]** を選択します。
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3.vCenter オブジェクトに対するアクセス許可を割り当てる
@@ -219,7 +219,7 @@ vCenter のインベントリ オブジェクトに対するアクセス許可�
 
 サーバー評価に関しては、検出対象の VM がホストされるすべての親オブジェクトの**読み取り専用**ロールを vCenter ユーザー アカウントに適用する必要があります。 データセンター以下の階層内にあるすべての親オブジェクト (クラスターのホスト、ホストのフォルダー、クラスター、フォルダー) が含まれます。 階層内の子オブジェクトには、これらのアクセス許可が反映されます。
 
-Server Migration の場合と同様に、移行する VM がホストされているすべての親オブジェクトに対して[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)を持つユーザー定義ロールを vCenter ユーザー アカウントに適用する必要があります。 このロールには、<em>Azure_Migrate</em> と名前を付けることができます。
+Server Migration の場合と同様に、移行する VM がホストされているすべての親オブジェクトに対して[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)を持つユーザー定義ロールを vCenter ユーザー アカウントに適用する必要があります。 このロールには、<em>Azure_Migrate</em> と名前を付けることができます。
 
 ![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860206"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513169"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer でのコンテンツ モデルのカスタマイズ
 
@@ -45,6 +45,6 @@ Video Indexer を使用すると、モデルの一部をカスタマイズして
 * [Video Indexer Web サイトを使用した人物モデルのカスタマイズ](customize-person-model-with-website.md)
 * [Video Indexer API を使用した人物モデルのカスタマイズ](customize-person-model-with-api.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Video Indexer の概要](video-indexer-overview.md)

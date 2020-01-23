@@ -1,17 +1,17 @@
 ---
 title: Azure Spring Cloud のトラブルシューティング ガイド | Microsoft Docs
 description: Azure Spring Cloud のトラブルシューティング ガイド
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: af3b0b6113833dfd36be8b604b6b3d3e7b33fe5f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.author: brendm
+ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151128"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277575"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -74,7 +74,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
 3. **インスタンス**ごとにメトリックを分割します。
 
-"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[チュートリアル: Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
+"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、「[チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
 
 "*一部のインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、インスタンスの状態とその検出状態を確認します。
 
@@ -158,7 +158,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 > [!WARNING]
 > この手順では、テスト エンドポイントを使用して環境変数が公開されます。  テスト エンドポイントがパブリックにアクセスできる場合や、アプリケーションにドメイン名が割り当てられている場合は、この先の手順を行わないようにしてください。
 
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`https://<your application test endpoint>/actuator/health`) にアクセスします。  
+1. `https://<your application test endpoint>/actuator/health` にアクセスします。  
     - `{"status":"UP"}` のような応答は、エンドポイントが有効になっていることを示します。
     - 応答が否定的である場合は、*POM.xml* ファイルに次の依存関係を追加します。
 

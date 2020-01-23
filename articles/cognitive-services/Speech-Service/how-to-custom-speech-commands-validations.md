@@ -3,19 +3,19 @@ title: 方法:カスタム コマンド パラメーターに検証を追加す�
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム コマンドで検証をパラメーターに追加する方法について説明します。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446912"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156456"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>方法:カスタム コマンド パラメーターに検証を追加する (プレビュー)
 
@@ -25,8 +25,8 @@ ms.locfileid: "75446912"
 
 次の記事の手順を完了している必要があります。
 
-- [クイック スタート:カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
-- [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+- [クイック スタート: カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
+- [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-settemperature-command"></a>SetTemperature コマンドを作成する
 

@@ -1,26 +1,19 @@
 ---
-title: Azure 仮想マシン スケール セットを変更する | Microsoft Docs
+title: Azure 仮想マシン スケール セットを変更する
 description: REST API、Azure PowerShell、Azure CLI を使って、Azure 仮想マシン スケール セットに変更を加え、更新する方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803141"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274447"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -456,5 +449,5 @@ Azure Load Balancer を使用するスケール セットがあり、Azure Load 
 > これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、*0* 以外のリスト インデックスを使用する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケール セットに関する一般的な管理タスクは、[Azure CLI](virtual-machine-scale-sets-manage-cli.md) または [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) を使用して実行することもできます。

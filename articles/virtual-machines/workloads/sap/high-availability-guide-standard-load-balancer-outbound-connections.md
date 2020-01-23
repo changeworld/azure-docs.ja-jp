@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045256"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293812"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -35,7 +35,7 @@ ms.locfileid: "73045256"
 
 Standard Azure Load Balancer には、Basic ロード バランサーより優れた点がいくつかあります。 たとえば、Azure 可用性ゾーンをまたがって機能し、トラブルシューティングが容易になる強化された監視とログ記録の機能を備え、待機時間が短縮されます。 "HA ポート" 機能は、すべてのポートが対象です。つまり、すべてのポートを個別に指定する必要がなくなります。  
 
-Azure Load Balancer の Basic SKU と Standard SKU には、いくつかの重要な違いがあります。 そのうちの 1 つは、パブリック エンドポイントへの送信トラフィックの処理です。 Basic SKU と Standard SKU の Load Balancerの詳細な比較については、「[Load Balancer の SKU の比較](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)」をご覧ください。  
+Azure Load Balancer の Basic SKU と Standard SKU には、いくつかの重要な違いがあります。 そのうちの 1 つは、パブリック エンドポイントへの送信トラフィックの処理です。 Basic SKU と Standard SKU の Load Balancerの詳細な比較については、「[Load Balancer の SKU の比較](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」をご覧ください。  
  
 パブリック IP アドレスを持たない VM が、内部 (パブリック IP アドレスがない) Standard Azure Load Balancer のバックエンド プール内に配置されている場合、追加の構成を行わない限り、パブリック エンドポイントへの送信接続はありません。  
 
@@ -217,7 +217,7 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure の SUSE で Pacemaker を構成する方法を学習します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
 * [Azure の Red Hat で Pacemaker を構成する方法を学習します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)

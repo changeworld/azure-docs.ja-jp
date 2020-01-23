@@ -3,15 +3,15 @@ title: Azure Disk Encryption と Azure 仮想マシン スケール セットの
 description: この記事では、Linux IaaS VM で Microsoft Azure Disk Encryption を有効にする手順を説明します。
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
-ms.openlocfilehash: 351c3603ddc069647577b5465ea9fa839810cbc1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529983"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279025"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
 
@@ -155,7 +155,7 @@ Azure ディスク暗号化などの拡張機能は、指定された順序で�
 * ディスク (Linux) をフォーマットするカスタム シェル スクリプトの後に Azure Disk Encryption 拡張機能を適用する場合: [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 拡張機能のシーケンス処理に関する詳細情報:[仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する](virtual-machine-scale-sets-extension-sequencing.md)。
 - `provisionAfterExtensions` プロパティに関する詳細情報:[Microsoft.Compute virtualMachineScaleSets/extensions template reference](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
 - [仮想マシン スケール セットの Azure Disk Encryption](disk-encryption-overview.md)

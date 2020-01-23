@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762808"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314336"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -46,7 +46,7 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 + R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
 
-+ [Visual Studio Code 拡張機能](how-to-vscode-tools.md)
++ [Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning CLI](reference-azure-machine-learning-cli.md)
 
@@ -66,7 +66,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 コード不要またはわずかなコードしか使用しないトレーニングとデプロイを行うには、以下をお試しください。
 
-+ **Azure Machine Learning デザイナー (プレビュー)**
++ **Azure Machine Learning デザイナー**
 
   デザイナーを使用すると、コードを書かなくても、データの準備、機械学習モデルのトレーニング、テスト、デプロイ、管理、追跡を行うことができます。 プログラミングは必要ありません。データセットとモジュールを視覚的に接続してモデルを構築します。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
@@ -85,7 +85,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
 
-これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-run-batch-predictions.md)予測を返したりすることができます。
+これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-use-parallel-run-step.md)予測を返したりすることができます。
 
 さらに、高度な[機械学習パイプライン](concept-ml-pipelines.md)を使用して、データの準備、モデルのトレーニングと評価、およびデプロイの各手順で共同で作業することができます。 パイプラインを使用すると、次のことができます。
 

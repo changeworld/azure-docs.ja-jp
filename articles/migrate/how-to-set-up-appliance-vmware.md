@@ -3,12 +3,12 @@ title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029065"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291942"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -115,7 +115,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 3. **[接続の検証]** をクリックし、アプライアンスが vCenter Server に接続できることを確認します。
 
 ### <a name="specify-vm-credentials"></a>VM の資格情報を指定する
-アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス特権の詳細については、[こちらを参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)してください。
+アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス特権の詳細については、[こちらを参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)してください。
 
 > [!NOTE]
 > この入力は省略可能ですが、アプリケーションの検出とエージェントレスな依存関係の視覚化を有効にする際に必要になります。

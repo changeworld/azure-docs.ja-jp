@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aba33730d235cc50742cdc86007933e12f763053
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465970"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548460"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多クラスのロジスティック回帰モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 複数の値を予測するのに使用できるロジスティック回帰モデルを作成するには、このモジュールを使用します。
 
@@ -38,7 +38,7 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
 2. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
 
-    + **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合はこのオプションを使用し、特定の値のセットを引数として渡します。
+    + **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合はこのオプションを使用し、特定の値のセットを引数として渡します。
 
     + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを使用したい場合は、このオプションを使用します。
 
@@ -60,11 +60,8 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
 9. パイプラインを実行します。
 
-## <a name="results"></a>結果
-
-トレーニングの完了後、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択することで、モデルのパラメーターとトレーニングから学習された特徴の重みを確認することができます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -1,21 +1,19 @@
 ---
-title: Azure のテナント間でギャラリー イメージを共有する |Microsoft Docs
+title: Azure のテナント間でギャラリー イメージを共有する
 description: 共有イメージ ギャラリーを使用して、Azure テナント間で VM イメージを共有する方法について説明します。
-services: virtual-machine-scale-sets
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: cbaaac629fd013602eed75cc7dc357f13a62e3b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157943"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276336"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
 
@@ -50,6 +48,6 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題が生じた場合は、[共有イメージ ギャラリーに関するトラブルシューティング](troubleshooting-shared-images.md)を行うことができます。

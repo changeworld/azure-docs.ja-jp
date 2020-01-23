@@ -1,20 +1,17 @@
 ---
 title: Azure Virtual Machine Scale Sets のセキュリティ コントロール
 description: Azure Virtual Machine Scale Sets を評価するためのセキュリティ コントロールのチェックリスト
-services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6aee9edaf3c594a2e7083416726da8e57bbf5c6b
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 51ddd4f3775ae8e41c0d0bdd4ed8a3a2a59b7db4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529142"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271776"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets のセキュリティ コントロール
 
@@ -44,7 +41,7 @@ ms.locfileid: "72529142"
 | セキュリティ コントロール | はい/いいえ | メモ|
 |---|---|--|
 | 認証| はい |  |
-| Authorization| はい |  |
+| 承認| はい |  |
 
 ## <a name="data-protection"></a>データ保護
 
@@ -62,6 +59,6 @@ ms.locfileid: "72529142"
 |---|---|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい |  | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

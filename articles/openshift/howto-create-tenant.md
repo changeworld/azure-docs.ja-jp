@@ -1,18 +1,17 @@
 ---
-title: Azure Red Hat OpenShift 用の Azure AD テナントの作成 | Microsoft Docs
+title: Azure Red Hat OpenShift 用の Azure AD テナントの作成
 description: Microsoft Azure Red Hat OpenShift クラスターをホストする Azure Active Directory (Azure AD) テナントを作成する方法について説明します。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 560cdcf8a99a486c7f5177b675cff327c6fb6a41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306461"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270463"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 用の Azure AD テナントの作成
 
@@ -42,7 +41,7 @@ Azure AD テナントをまだお持ちでない場合は、次の手順に従�
 
 [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)の詳細については、[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サービス プリンシパルの作成、クライアント シークレットと認証コールバック URL の生成、Azure Red Hat OpenShift クラスター上でアプリをテストするための Active Directory ユーザーの新規作成の方法を学習します。
 

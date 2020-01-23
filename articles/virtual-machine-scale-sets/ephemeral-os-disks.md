@@ -1,21 +1,19 @@
 ---
 title: Azure Virtual Machine Scale Sets のエフェメラル OS ディスク
 description: Azure Virtual Machine Scale Sets のエフェメラル オペレーティング システム ディスクについて説明します。
-services: virtual-machine-scale-sets
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: a5ef62cf048aa0588b8b5bb0e00a7883dcf5b683
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d459d55c0a1fcdf14e95b28e2a9c1b634846751
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459390"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278954"
 ---
 # <a name="ephemeral-os-disks-for-vm-instances"></a>VM インスタンスのエフェメラル OS ディスク
 

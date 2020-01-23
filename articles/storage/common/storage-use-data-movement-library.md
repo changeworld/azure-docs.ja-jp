@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978389"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509004"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
 
-Azure Storage データ移動ライブラリは、BLOB およびファイルをハイ パフォーマンスでアップロード、ダウンロード、およびコピーできるように設計された、クロスプラットフォームのオープンソース ライブラリです。 このライブラリは、[AzCopy](../storage-use-azcopy.md) を動作させているコア データ移動フレームワークです。 データ移動ライブラリには、.NET 用の Azure Storage クライアント ライブラリでは使用できない便利なメソッドが用意されています。 これらのメソッドを使用すると、並列操作数を設定したり、転送の進行状況を追跡したり、取り消された転送を簡単に再開したりすることができます。
+Azure Storage データ移動ライブラリは、BLOB およびファイルをハイ パフォーマンスでアップロード、ダウンロード、およびコピーできるように設計された、クロスプラットフォームのオープンソース ライブラリです。 データ移動ライブラリには、.NET 用の Azure Storage クライアント ライブラリでは使用できない便利なメソッドが用意されています。 これらのメソッドを使用すると、並列操作数を設定したり、転送の進行状況を追跡したり、取り消された転送を簡単に再開したりすることができます。
 
 また、.NET Core が採用されているため、Windows、Linux、macOS 向け .NET アプリを構築するときにも、このライブラリを使用できます。 .NET Core の詳細については、[.NET Core のドキュメント](https://dotnet.github.io/)を参照してください。 このライブラリは、Windows 用の従来の .NET Framework アプリにも利用できます。
 

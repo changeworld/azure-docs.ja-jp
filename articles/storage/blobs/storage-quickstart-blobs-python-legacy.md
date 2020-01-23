@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825299"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122680"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>クイック スタート:Python 用 Azure Blob Storage クライアント ライブラリ v2.1
 
@@ -67,7 +67,7 @@ Python プログラムを確認するには、リポジトリのルートにあ�
 1. 依存関係をインストールする:
 
     ```console
-    pip install azure-storage-blob
+    pip install azure-storage-blob==2.1.0
     ```
 
 1. サンプル アプリケーションに移動します。
@@ -196,7 +196,7 @@ block_blob_service.get_blob_to_path(
     container_name, local_file_name, full_path_to_file2)
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 このクイック スタートでアップロードした BLOB が不要になった場合は、`delete_container` メソッドを使ってコンテナー全体を削除できます。 代わりに個々のファイルを削除するには、`delete_blob` メソッドを使用します。
 
 ```python
@@ -219,7 +219,7 @@ BLOB ストレージを使用する Python 開発の詳細については、以�
 - Python クライアント ライブラリの詳細については、[Python 用 Azure Storage ライブラリ](https://docs.microsoft.com/python/api/overview/azure/storage)に関する記事を参照してください。
 - Python クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 このクイック スタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 
 

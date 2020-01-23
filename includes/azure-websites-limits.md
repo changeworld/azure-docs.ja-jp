@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414455"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548218"
 ---
 | リソース | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,14 +24,14 @@ ms.locfileid: "74414455"
 | 帯域幅 |165 MB |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |
 | アプリケーションのアーキテクチャ |32 ビット |32 ビット |32 ビット/64 ビット |32 ビット/64 ビット |32 ビット/64 ビット |32 ビット/64 ビット |
 | インスタンスごとの Web ソケット数<sup>7</sup> |5 |35 |350 |無制限 |無制限 |無制限 |
-| IP 接続数 | 600 | 600 | インスタンス サイズによって異なる<sup>8</sup> | インスタンス サイズによって異なる<sup>8</sup> | インスタンス サイズによって異なる<sup>8</sup> | 64,000 |
+| IP 接続数 | 600 | 600 | インスタンス サイズによって異なる<sup>8</sup> | インスタンス サイズによって異なる<sup>8</sup> | インスタンス サイズによって異なる<sup>8</sup> | 16,000 |
 | アプリケーションごとの同時 [デバッガー接続](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | サブスクリプションあたりの App Service 証明書数<sup>9</sup>| サポートされていません | サポートされていません |10 |10 |10 |10 |
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
 | プランあたりのハイブリッド接続数 | | | 5 | 25 | 200 | 200 |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |
-| [常時接続](../articles/app-service/configure-common.md) | | |X |X |X |X |
+| [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [スケジュールされたバックアップ](../articles/app-service/manage-backup.md) | | | | 2 時間ごとにスケジュールされたバックアップ。1 日あたり最大 12 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) |
 | [Autoscale](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |

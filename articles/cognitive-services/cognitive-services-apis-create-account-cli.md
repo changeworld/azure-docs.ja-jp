@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887912"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169172"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -76,7 +76,7 @@ az group create \
 
 ### <a name="multi-service"></a>マルチサービス
 
-| Service                    | 種類                      |
+| サービス                    | 種類                      |
 |----------------------------|---------------------------|
 | 複数のサービス。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。            | `CognitiveServices`     |
 
@@ -91,11 +91,11 @@ az group create \
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision - Prediction | `CustomVision.Prediction` |
 | Custom Vision - Training   | `CustomVision.Training`   |
-| Face API                   | `Face`                    |
+| Face                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>検索
 
 | サービス            | 種類                  |
 |--------------------|-----------------------|
@@ -188,7 +188,7 @@ az cognitiveservices account list-usage \
     --subscription subscription-name
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services リソースをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのグループに含まれている他のリソースも削除されます。
 
@@ -198,7 +198,7 @@ Cognitive Services リソースをクリーンアップして削除したい場�
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
 * [Azure Cognitive Services とは](Welcome.md)

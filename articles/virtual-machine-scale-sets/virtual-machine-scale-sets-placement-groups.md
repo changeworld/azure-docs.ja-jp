@@ -1,26 +1,19 @@
 ---
 title: 大規模な Azure 仮想マシン スケール セットの操作
 description: 大規模な Azure 仮想マシン スケール セットをアプリケーションで使用するために知る必要があること。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: rajsqr
-manager: jeconnoc
-editor: ''
+author: cynthn
+ms.author: cynthn
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 618b677ee836327e8ed4ab7798ab35d92b364c98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459343"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272538"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 

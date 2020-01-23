@@ -1,24 +1,24 @@
 ---
 title: az spring cloud
-description: Azure CLI を使用して Azure Spring Cloud を管理します
-author: jpconnock
+description: Azure CLI を使用して Azure Spring Cloud を管理する
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
-ms.author: jeconnoc
-ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607819"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279041"
 ---
 # <a name="az-spring-cloud"></a>az spring-cloud
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Azure CLI を使用して Azure Spring Cloud を管理する
 
 >[!Note]
-> Azure Spring Cloud は現在プレビューの段階です。  これらのコマンドは、今後のリリースで変更または削除される可能性があります。
+> Azure Spring Cloud は、現在プレビューの段階です。  これらのコマンドは、今後のリリースで変更または削除される可能性があります。
 
 | az spring-cloud |  |
 |------|------:|
@@ -500,9 +500,9 @@ az spring-cloud app update --name -n
 | 省略可能なパラメーター | |
 | --- | ---: |
 | --deployment -d | アプリの既存のデプロイの名前。  既定値は運用環境です。 |
-| --enable-persistent-storage | ブール値。  true の場合、既定のパスに 50 GB のディスクをマウントします。 |
+| --enable-persistent-storage | Boolean です。  true の場合、既定のパスに 50 GB のディスクをマウントします。 |
 | --env | スペースで区切られた "key[=value]" 形式の環境変数。 |
-| --is-public | ブール値。  true の場合、アプリにパブリック ドメインを割り当てます。 |
+| --is-public | Boolean です。  true の場合、アプリにパブリック ドメインを割り当てます。 |
 | --jvm-options | JVM オプションが含まれる文字列。  シェル解析エラーを回避するため、" " ではなく "=" を使用します。 例: `--jvm-options='-Xms1024m -Xmx2048m`。 |
 | --no-wait | 実行時間の長い操作の完了を待機しません。 |
 | --runtime-version | アプリで使用される言語のランタイム バージョン。  使用できる値: `Java_11`、`Java_8`。 |
@@ -601,7 +601,7 @@ az spring-cloud app binding list --app
 |省略可能なパラメーター | |
 | --- | ---: |
 | --collection-name | コレクションの名前。  Gremlin を使用するときに必要です。 |
-| --database-name | データベースの名前。  Mongo、SQL、Gremlin を使用するときに必要です。 |
+| --database-name | データベースの名前です。  Mongo、SQL、Gremlin を使用するときに必要です。 |
 | --key-space | Cassandra のキー スペース。  Cassandra を使用するときに必要です。 |
 
 ## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az spring-cloud app binding cosmos update
@@ -626,7 +626,7 @@ az spring-cloud app binding cosmos update --app
 |省略可能なパラメーター | |
 | --- | ---: |
 | --collection-name | コレクションの名前。  Gremlin を使用するときに必要です。 |
-| --database-name | データベースの名前。  Mongo、SQL、Gremlin を使用するときに必要です。 |
+| --database-name | データベースの名前です。  Mongo、SQL、Gremlin を使用するときに必要です。 |
 | --key-space | Cassandra のキー スペース。  Cassandra を使用するときに必要です。 |
 
 ## <a name="az-spring-cloud-app-binding-mysql-add"></a>az spring-cloud app binding mysql add
@@ -644,7 +644,7 @@ az spring-cloud app binding mysql add --app
 | 必須のパラメーター | |
 | --- | ---: |
 | --app | アプリの名前。 |
-| --database-name | データベースの名前。 |
+| --database-name | データベースの名前です。 |
 | --key | サービスの API キー。 |
 | --name | サービス バインドの名前。 |
 | --resource-group -g | リソース グループの名前。  `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -675,7 +675,7 @@ az spring-cloud app binding mysql update --add
 
 | 省略可能なパラメーター | |
 | --- | ---: |
-| --database-name | データベースの名前。 |
+| --database-name | データベースの名前です。 |
 | --key | サービスの API キー。 |
 | --username | データベース アクセスのユーザー名。 |
 

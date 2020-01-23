@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497749"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548443"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、パイプラインで使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
 
@@ -71,7 +71,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 3. **[L2 regularization weight]\(L2 正規化の重み\)** に、L2 正規化に対する重みとして使用する値を入力します。 オーバーフィットを避けるために、ゼロ以外の値を使用することをお勧めします。
 
-     正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+     正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」
 
 4. 切片の用語を表示する場合、 **[Include intercept term]\(切片の用語を含める\)** オプションを選択します。
 
@@ -88,9 +88,8 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
 
-トレーニングの完了後、次の作業を行います。
+トレーニングの完了後:
 
-+ モデルのパラメーターを表示するには、トレーナーの出力を右クリックして、 **[Visualize]\(可視化\)** を選択します。
 
 + 予測するには、新しい値のデータセットと共に、トレーニング済みのモデルを [Score Model (モデルのスコア付け) ](./score-model.md)モジュールに接続します。 
 
@@ -120,7 +119,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 7. **[L2 regularization weight]\(L2 正規化の重み\)** に、L2 正規化に対する重みとして使用する値を入力します。 オーバーフィットを避けるために、ゼロ以外の値を使用することをお勧めします。
 
-    正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+    正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」
 
 
 9. イテレーションが進むときに学習速度を下げる必要がある場合、 **[Decrease learning rate]\(学習速度の低下\)** のオプションを選択します。  
@@ -136,11 +135,11 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
 
-トレーニングの完了後、次の作業を行います。
+トレーニングの完了後:
 
 + 予測するには、新しい入力データと一緒に、トレーニング済みのモデルを [Score Model (モデルのスコア付け)](./score-model.md) モジュールに接続します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

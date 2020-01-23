@@ -1,5 +1,5 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - プライベート クラウド用のワークロード DNS と DHCP の設定
+title: Azure VMware Solution by CloudSimple - プライベート クラウド用のワークロード DNS と DHCP の設定
 description: CloudSimple プライベート クラウド環境で実行されるアプリケーションとワークロードのために DNS および DHCP を設定する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619464"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121864"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドでの DNS および DHCP アプリケーションとワークロードの設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "69619464"
 
 ## <a name="linux-based-dns-server-setup"></a>Linux ベースの DNS サーバーの設定
 
-Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。  ここでは、[DigitalOcean による設定例](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)と、オープンソースの BIND DNS サーバーを設定する手順を示します。
+Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。  ここでは、[DigitalOcean による設定例](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)と、オープンソースの BIND DNS サーバーを設定する手順を示します。
 
 ## <a name="windows-based-setup"></a>Windows ベースのセットアップ
 

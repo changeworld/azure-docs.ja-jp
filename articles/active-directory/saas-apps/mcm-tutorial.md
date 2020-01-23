@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed3e5c543f96876d9b6078f1bd47839a0a0396a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227495"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>チュートリアル:Azure Active Directory と MCM の統合
 
@@ -110,7 +110,7 @@ MCM で Azure AD シングル サインオンを構成するには、次の手�
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://myaba.co.uk/<companyname>`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[MCM クライアント サポート チーム](https://mcmtechnology.com/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[MCM クライアント サポート チーム](https://mcmtechnology.com/support)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -128,7 +128,7 @@ MCM で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="configure-mcm-single-sign-on"></a>MCM のシングル サインオンの構成
 
-**MCM** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [MCM サポート チーム](https://mcmtechnology.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**MCM** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [MCM サポート チーム](https://mcmtechnology.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -183,7 +183,7 @@ MCM で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="create-mcm-test-user"></a>MCM のテスト ユーザーの作成
 
-このセクションでは、MCM で Britta Simon というユーザーを作成します。  [MCM サポート チーム](https://mcmtechnology.com/support/)と連携して、MCM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、MCM で Britta Simon というユーザーを作成します。  [MCM サポート チーム](https://mcmtechnology.com/support)と連携して、MCM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 >[!NOTE]
 >他の MCM ユーザー アカウント作成ツールや、MCM によって提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

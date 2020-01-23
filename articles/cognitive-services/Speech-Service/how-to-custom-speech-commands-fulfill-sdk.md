@@ -3,19 +3,19 @@ title: Speech SDK を使用してクライアントでカスタム コマンド�
 titleSuffix: Azure Cognitive Services
 description: この記事では、Speech SDK を使用して、クライアントでカスタム コマンド アクティビティを処理する方法について説明します。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 687ae8fb30f7e81f0e35e4d4d9281b9500fd4923
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770742"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156507"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>方法:Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)
 
@@ -32,9 +32,9 @@ ms.locfileid: "75770742"
 - 音声サービス用の Azure サブスクリプション キー
   - [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
 - 以前に作成したカスタム コマンド アプリ
-  - [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 - Speech SDK が有効なクライアント アプリケーション
-  - [クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [クイック スタート: Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>省略可能:すぐに開始
 

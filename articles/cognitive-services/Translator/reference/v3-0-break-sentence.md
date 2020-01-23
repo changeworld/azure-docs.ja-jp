@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446696"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548120"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-<table width="100%">
-  <th width="20%">Query parameter (クエリ パラメーター)</th>
-  <th>[説明]</th>
-  <tr>
-    <td>api-version</td>
-    <td>"*必須のクエリ パラメーター*" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。</td>
-  </tr>
-  <tr>
-    <td>script</td>
-    <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。</td>
-  </tr>
-</table> 
+| クエリ パラメーター | [説明] |
+| -------| ----------- |
+| api-version <img width=200/>   | "**必須のクエリ パラメーター**" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
+| language | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。 |
+| script    | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。  | 
 
 要求ヘッダーには次のものがあります。
 
-<table width="100%">
-  <th width="20%">ヘッダー</th>
-  <th>[説明]</th>
-  <tr>
-    <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
-  </tr>
-</table> 
+| ヘッダー | [説明] |
+| ------- | ----------- |
+| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
+| Content-Length    | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。  | 
+| X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。  | 
 
 ## <a name="request-body"></a>要求本文
 

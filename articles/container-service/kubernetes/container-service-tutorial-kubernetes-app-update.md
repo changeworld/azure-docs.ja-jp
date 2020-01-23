@@ -1,25 +1,23 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - アプリケーションの更新
 description: Azure Container Service チュートリアル - アプリケーションの更新
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006253"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275557"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを更新する
 
 > [!TIP]
-> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新](../../aks/tutorial-kubernetes-app-update.md)」を参照してください。
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新](../../aks/tutorial-kubernetes-app-update.md)」を参照してください。
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -160,7 +158,7 @@ kubectl get service azure-vote-front
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アプリケーションを更新し、この更新を Kubernetes クラスターにロールアウトしました。 次のタスクを完了しました。
 

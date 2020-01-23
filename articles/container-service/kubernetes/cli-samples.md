@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service のサンプル スクリプト
 description: Azure Container Service のサンプル スクリプト
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: sample
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b64f7af8eda9a4f62463486b00480efbd8cffe57
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2781955a2e1a565471399130e61771e2b8eb77f0
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992564"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271264"
 ---
 # <a name="deprecated-azure-cli-samples-for-azure-container-service"></a>(非推奨) Azure Container Service の Azure CLI サンプル
 

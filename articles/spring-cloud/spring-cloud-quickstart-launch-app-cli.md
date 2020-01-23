@@ -1,17 +1,17 @@
 ---
 title: クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 description: このクイックスタートでは、Azure CLI でサンプル アプリケーションを Azure Spring Cloud にデプロイします。
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 41801fce41cd79898e9ebd12f9ca970f17b017bb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: brendm
+ms.openlocfilehash: 44b2f39cb1467e3459ee326bf81381830510d6b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891712"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278943"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 

@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453102"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291959"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>コンピューティング サービスを利用してモバイル バックエンド コンポーネントを構築する
 あらゆるモバイル アプリケーションが、データ ストレージ、ビジネス ロジック、セキュリティを担当するバックエンドを必要とします。 バックエンド コードをホストして実行するインフラストラクチャを管理するには、複数のサーバーのサイズ指定、プロビジョニング、およびスケーリングを行う必要があります。 また、OS の更新プログラムと関連するハードウェアを管理し、セキュリティ パッチを適用する必要があります。 さらに、パフォーマンス、可用性、フォールト トレランスのために、これらのインフラストラクチャ コンポーネントをすべて監視する必要があります。 
@@ -36,7 +36,7 @@ ms.locfileid: "75453102"
 - イベント駆動型であり、スケーラブル。トリガーとバインドを使用して、関数が呼び出されるタイミングと関数が接続するデータを定義できます。
 - Functions は NuGet と NPM をサポートしているため、独自の依存関係を使用できます。これにより、お気に入りのライブラリを使用できます。
 - セキュリティの統合により、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーを使用して、HTTP によってトリガーされる関数を保護できます。
-- 簡潔化された統合。さまざまな [Azure サービス](/azure/azure-functions/functions-overview#integrations)とサービスとしてのソフトウェア (SaaS) サービスを利用できます。
+- 簡潔化された統合。さまざまな [Azure サービス](/azure/azure-functions/functions-overview)とサービスとしてのソフトウェア (SaaS) サービスを利用できます。
 - 柔軟な開発。関数を Azure portal 内で直接作成したり、継続的インテグレーションを設定し、GitHub や Azure DevOps Services などのサポート対象開発ツールを使用してコードをデプロイしたりできます。
 - Functions ランタイムはオープン ソースであり、[GitHub](https://github.com/azure/azure-webjobs-sdk-script) で入手できます。
 - 強化された開発体験により、任意のエディターか、ツールや DevOps 機能が組み込まれた監視機能を持つ使いやすい Web インターフェイスを使用して、ローカルでコードの作成、テスト、デバッグができます。

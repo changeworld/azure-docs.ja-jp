@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232277"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264680"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -123,7 +123,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>プログレッシブ ダウンロード
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。 .ism* (ismv、isma、ismt、ismc) ファイルのプログレッシブ ダウンロードはできません。
@@ -155,7 +155,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>スムーズ ストリーミング マニフェスト バージョンへの変更
-2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。 バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。 例:
+2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。 バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。 次に例を示します。
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
         </StreamIndex>
     </SmoothStreamingMedia>
 
-2016 年 7 月のサービス リリースでは、生成される Smooth Streaming のマニフェストがバージョン 2.2 に対応しており、フラグメントの継続期間で繰り返しタグを使用できます。 例:
+2016 年 7 月のサービス リリースでは、生成される Smooth Streaming のマニフェストがバージョン 2.2 に対応しており、フラグメントの継続期間で繰り返しタグを使用できます。 次に例を示します。
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">

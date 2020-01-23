@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533694"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169082"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -65,7 +65,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 
 新機能を要求するには、UserVoice に投稿します。 開発しているアプリケーションで Cognitive Services と関連 API をいっそう適切に動作させるためのアイデアを共有します。
 
-| Service                       | Cognitive Services UserVoice の URL |
+| サービス                       | Cognitive Services UserVoice の URL |
 |-------------------------------|---------------|
 | Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Bing サービス                 | https://cognitive.uservoice.com/forums/555907-bing-search |
@@ -73,7 +73,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Face                          | https://cognitive.uservoice.com/forums/430315-face |
-| フォーム                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Form                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | イマーシブ                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -91,8 +91,8 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 
 リリース ノートは、新しいリリースが使用可能になると更新されます。 ノートには、新機能、改善、バグ修正に関する情報が含まれます。
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Face API](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Face](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Speech Services](speech-service/releasenotes.md)
  - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
@@ -106,7 +106,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 
 Cognitive Services に関するニュースは、[Azure ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)で共有されています。
 
-## <a name="search"></a>Search
+## <a name="search"></a>検索
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
@@ -180,7 +180,7 @@ Cognitive Services に関するニュースは、[Azure ブログ](https://azure
 
 Reddit は、Web コンテンツの評価とディスカッションのためのコミュニティ主導の Web サイトであり、[Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) の最新の詳細情報を提供します。 登録されたメンバーはコンテンツを送信でき、他のユーザーはそれに投票できます。最も関連性の高いコンテンツを組織的に有効にすると、そのコンテンツは一番上に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Cognitive Services とは](welcome.md)

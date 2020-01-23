@@ -1,25 +1,17 @@
 ---
-title: StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs
+title: StorSimple Virtual Array Update 1.0 のリリース ノート
 description: Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fdf37a8360ec69017458fabee2a9e16aa2c160aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789673"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271333"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 のリリース ノート
 
@@ -55,18 +47,18 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| 番号 | 機能 | 問題 |
+| いいえ。 | 機能 | 問題 |
 | --- | --- | --- |
 | 1 |AAD ベースの認証| このリリースに含まれる変更により、AAD が、StorSimple デバイス マネージャーで認証を行うことができます。|
 | 2 |ガベージ コレクション| この問題は、デバイス アカウントとストレージ アカウントが異なるリージョンにあるお客様のサイトで報告されました。ネットワーク エラーが断続的に発生し、請求が影響を受けるとの報告がお客様からありました。 今回のリリースで、この問題は修正されました。 |
 | 3 |パフォーマンス| このリリースに含まれる変更により、復元/クラウドの読み取り/階層化のパフォーマンスが向上しています。|
-| 4 |アップデート| 前のリリースの更新プログラムに問題があり、お客様のサイトでバックアップ エラーが発生しました。 この問題は今回のリリースで修正されました。|
+| 4 |更新| 前のリリースの更新プログラムに問題があり、お客様のサイトでバックアップ エラーが発生しました。 この問題は今回のリリースで修正されました。|
 
 ## <a name="known-issues-in-update-10"></a>Update 1.0 の既知の問題
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| No. | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想アレイは、サポートされている一般提供版に更新することはできません。 |これらの仮想アレイは、ディザスター リカバリー (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple Virtual Array を作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -88,10 +80,10 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 | **18.** |更新プログラム |ローカル Web UI を使用して仮想アレイに Update 1 をインストールする場合は、Update 0.6 が実行されていることを確認する必要があります。 実行されているバージョンが Update 0.6 よりも低い場合は、Update 0.6 を最初にインストールしてから、Update 1 を適用してください。 Update 0.6 より前のバージョンから直接 Update 1.0 をインストールすると、一部の更新プログラムが不足し、監視チャートは機能しません。   | |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 StorSimple Virtual Array に [Update 1.0 をインストール](storsimple-virtual-array-install-update-1.md)します。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 以前のリリース ノートをお探しですか。 参照先:
 *  [StorSimple Virtual Array Update 0.6 のリリース ノート](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0.5 のリリース ノート](storsimple-virtual-array-update-05-release-notes.md)
