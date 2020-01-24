@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534063"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834790"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-また、[Azure Machine Learning Studio (クラシック)](https://ml.azure.com/) を使用して、実験から `input_datasets` を見つけることもできます。 
+また、[Azure Machine Learning Studio](https://ml.azure.com/) を使用して、実験から `input_datasets` を見つけることもできます。 
 
-次の図は、Azure Machine Learning Studio (クラシック) で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
+次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
 
 ![入力データセット](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-登録後は、Python または [Azure Machine Learning Studio (クラシック)](https://ml.azure.com/) を使用して、データセットに登録されたモデルのリストを表示できます。 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
+登録後は、Python または [Azure Machine Learning Studio](https://ml.azure.com/) を使用して、データセットに登録されたモデルのリストを表示できます。 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
 
 ![入力データセットのモデル](./media/how-to-version-track-datasets/dataset-models.png)
 

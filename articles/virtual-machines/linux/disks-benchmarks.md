@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 454ed6123d65d49947d90075c2fa68e11c6e36ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462565"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720057"
 ---
 # <a name="benchmarking-a-disk"></a>ディスクのベンチマーク
 
@@ -26,7 +26,6 @@ ms.locfileid: "75462565"
 
 ## <a name="next-steps"></a>次のステップ
 
-高パフォーマンス用の設計に関する記事に進んでください。 この記事では、プロトタイプについて、既存のアプリケーションと同様のチェックリストを作成します。 ベンチマーク ツールを使用して、ワークロードをシミュレートし、プロトタイプ アプリケーションでパフォーマンスを測定します。 こうすることで、どのディスク オファリングがアプリケーションのパフォーマンス要件に合っているか、上回っているかを判断できます。 その後、実稼働アプリケーションにも同じガイドラインを実装できます。
+[ハイ パフォーマンスのための設計](premium-storage-performance.md)に関する記事に進んでください。
 
-> [!div class="nextstepaction"]
-> [高パフォーマンス用の設計](premium-storage-performance.md)に関する記事を参照してください。
+この記事では、プロトタイプについて、既存のアプリケーションと同様のチェックリストを作成します。 ベンチマーク ツールを使用して、ワークロードをシミュレートし、プロトタイプ アプリケーションでパフォーマンスを測定します。 こうすることで、どのディスク オファリングがアプリケーションのパフォーマンス要件に合っているか、上回っているかを判断できます。 その後、実稼働アプリケーションにも同じガイドラインを実装できます。

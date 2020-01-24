@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459167"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912512"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。
 
@@ -30,7 +30,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)を参照してください。
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>2020 年 2 月 15 日の D15_v2/DS15_v2 分離の廃止
-Azure Dedicated Host の一般提供が開始されました。これを利用すると、シングル テナントの物理サーバー上で、組織の Linux と Windows の仮想マシンを実行できます。 これにより分離された Azure VM を Azure Dedicated Host と完全に置き換えることを計画しています。 **2020 年 2 月 15 日**以降、D15_v2/DS15_v2 Azure VM は、ハードウェアとして分離できなくなります。
+Azure Dedicated Host の一般提供が開始されました。これを利用すると、シングル テナントの物理サーバー上で、組織の Linux と Windows の仮想マシンを実行できます。 これにより分離された Azure VM を Azure Dedicated Host と完全に置き換えることを計画しています。 **2020 年 2 月 15 日**以降、D15_v2/DS15_v2 Azure VM はハードウェア分離されなくなります。
 
 ## <a name="how-does-this-affect-me"></a>どのような影響がありますか?
 2020 年 2 月 15 日以降、D15_v2/DS15_v2 Azure 仮想マシンの分離保証は提供されなくなります。 

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 27c83bffe40fd80f87542ee4486ef90e684bd5a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/16/2019
+ms.openlocfilehash: f024659385a92df97b55e88ae217aa9e1e13d860
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931853"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732350"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
-ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、パブリックまたは "グローバル" の Logic Apps サービスとは別に保存されている他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。
+ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、パブリック、"グローバル"、マルチテナントの Logic Apps サービスとは別に保存されている他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*" され、その仮想ネットワークに Logic Apps サービスがデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、お使いの ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
 
@@ -33,7 +33,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 * ISE に容量を追加します。
 
 > [!IMPORTANT]
-> ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」を参照してください。
+> ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,10 @@ Azure 仮想ネットワークで ISE を使用した場合、一般的な設定
 
 ISE にアクセスできること、および ISE 内のロジック アプリが仮想ネットワーク内のサブネット間で通信できることを確認するには、[この表にあるポートを開きます](#network-ports-for-ise)。 いずれかの必要なポートが使用できなった場合、ISE は正常に機能しません。
 
-* 複数の ISE があり、仮想ネットワークで [Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を使用している場合は、送信先システムと通信するために、[単一、送信、パブリック、および予測可能な IP アドレスを設定](connect-virtual-network-vnet-set-up-single-ip-address.md)することができます。 このようにすると、送信先で ISE ごとに追加のファイアウォールを設定する必要はありません。
+* IP 制限がある他のエンドポイントへのアクセスを必要とする ISE インスタンスが複数ある場合は、[Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を仮想ネットワークにデプロイし、そのファイアウォールまたはネットワーク仮想アプライアンスを経由して送信トラフィックをルーティングします。 その後、送信先システムとの通信のために仮想ネットワーク内のすべての ISE インスタンスで使用可能な、[静的かつ予測可能な 1 つの送信パブリック IP アドレスを設定](connect-virtual-network-vnet-set-up-single-ip-address.md)できます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+   > [!NOTE]
+   > アクセスする必要がある IP アドレスの数をシナリオで制限する必要がある場合は、1 つの ISE に対してこの方法を使用できます。 ファイアウォールまたは仮想ネットワーク アプライアンスの追加コストが、シナリオにとって妥当かどうかを検討してください。 [Azure Firewall の価格](https://azure.microsoft.com/pricing/details/azure-firewall/)の詳細を確認してください。
 
 * 新しい Azure 仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定する必要はありません。
 
@@ -84,16 +87,16 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 > [!IMPORTANT]
 > ソース ポートは一時的なものです。そのため、すべての規則に対して `*` に設定してください。
-> サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことがお使いの ISE では必要になります。
 
 | 目的 | Direction | 宛先ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
+| Intrasubnet 通信 | 受信および送信 | * | - | - | **重要**:サブネット内のコンポーネント間の通信については、それらのサブネット内のすべてのポートを開いていることを確認してください。 |
+| Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
 | Azure Logic Apps からの通信 | 送信 | 80、443 | VirtualNetwork | インターネット | このポートは、Logic Apps サービスが通信する外部サービスに依存しています。 |
 | Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage の依存関係 | 送信 | 80、443 | VirtualNetwork | Storage | |
-| Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
-| Azure Logic Apps への通信 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
-| ロジック アプリの実行履歴 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
+| Azure Storage の依存関係 | 送信 | 80、443 | VirtualNetwork | ストレージ | |
+| Azure Logic Apps への通信 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**注**:これらのエンドポイントは、[ISE 作成時に選択](connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
+| ロジック アプリの実行履歴 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**注**:これらのエンドポイントは、[ISE 作成時に選択](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
 | 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
 | 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
 | Azure Traffic Manager からの通信 | 受信 | 443 | AzureTrafficManager | VirtualNetwork | |
@@ -129,15 +132,15 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    ![環境の詳細を指定する](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 環境に使用する Azure サブスクリプション |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 環境を作成する Azure リソース グループ |
    | **統合サービス環境の名前** | はい | <*environment-name*> | ISE 名。英字、数字、ハイフン (`-`)、アンダースコア (`_`)、ピリオド (`.`) のみを含めることができます。 |
    | **Location** | はい | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン |
    | **SKU** | はい | **Premium** または **Developer (SLA なし)** | 作成および使用する ISE SKU。 これらの SKU の違いについては、[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に関する記事を参照してください。 <p><p>**重要**:このオプションは、ISE 作成時にのみ使用できます。後で変更することはできません。 |
-   | **追加容量** | Premium: <br>はい <p><p>Developer: <br>適用不可 | Premium: <br>0 から 10 <p><p>Developer: <br>適用不可 | この ISE リソースに使用する追加の処理ユニット数。 作成後に容量を追加する場合は、「[ISE の容量を追加する](#add-capacity)」を参照してください。 |
-   | **アクセス エンドポイント** | はい | **内部**または**外部** | ISE に使用するアクセス エンドポイントの種類。ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかを決定します。 エンドポイントの種類は、ロジック アプリの実行履歴の入力と出力へのアクセスにも影響します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 <p><p>**重要**:このオプションは、ISE 作成時にのみ使用できます。後で変更することはできません。 |
+   | **追加容量** | Premium: <br>はい <p><p>Developer: <br>適用なし | Premium: <br>0 から 10 <p><p>Developer: <br>適用なし | この ISE リソースに使用する追加の処理ユニット数。 作成後に容量を追加する場合は、「[ISE の容量を追加する](#add-capacity)」を参照してください。 |
+   | **アクセス エンドポイント** | はい | **内部**または**外部** | ISE に使用するアクセス エンドポイントの種類。 これらのエンドポイントにより、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 <p><p>選択した内容は、ロジック アプリの実行履歴の入力と出力の表示やアクセスの方法にも影響します。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 <p><p>**重要**:このオプションは、ISE 作成時にのみ使用できます。後で変更することはできません。 |
    | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、[まず Azure 仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 <p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 |
    | **サブネット** | はい | <*subnet-resource-list*> | ISE では、環境内にリソースを作成およびデプロイするために "*空の*" サブネットが 4 つ必要です。 各サブネットを作成するには、[この表の下の手順に従います](#create-subnet)。 |
    |||||
@@ -156,7 +159,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
 
-   * 各サブネットには*最小値*として*少なくとも* 32 個のアドレスが必要なため、そのアドレス空間で最低でも `/27` を使用する。 例:
+   * 各サブネットには*最小値*として*少なくとも* 32 個のアドレスが必要なため、そのアドレス空間で最低でも `/27` を使用する。 次に例を示します。
 
      * 2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。
 
@@ -182,7 +185,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    1. **[サブネットの追加]** ウィンドウで次の情報を指定します。
 
-      * **名前**:サブネットの名前
+      * **Name**:サブネットの名前
       * **アドレス範囲 (CIDR ブロック)** :仮想ネットワークのサブネットの範囲 (CIDR 形式)
 
       ![サブネットの詳細を追加する](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
@@ -223,6 +226,9 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 1. ISE 内でロジック アプリやその他の成果物の作成を開始するには、「[成果物を統合サービス環境に追加する](../logic-apps/add-artifacts-integration-service-environment-ise.md)」を参照してください。
 
+   > [!IMPORTANT]
+   > ISE の作成後に使用可能になるマネージド ISE コネクタは、ロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを ISE に追加](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
+
 <a name="add-capacity"></a>
 
 ## <a name="add-ise-capacity"></a>ISE の容量を追加する
@@ -255,7 +261,13 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 1. 自動スケーリングの設定が終了したら、変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="delete-ise"></a>ISE の削除
+
+不要になった ISE、または ISE を含む Azure リソース グループを削除する前に、これらのリソースを含む Azure リソース グループ、または Azure 仮想ネットワークにポリシーやロックがないことを確認してください。これらの項目が削除をブロックする可能性があるからです。
+
+ISE を削除した後、Azure 仮想ネットワークまたはサブネットの削除を試みる前に、最大 9 時間の待機が必要な場合があります。
+
+## <a name="next-steps"></a>次のステップ
 
 * [成果物を統合サービス環境に追加する](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [統合サービス環境のネットワーク正常性を確認する](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

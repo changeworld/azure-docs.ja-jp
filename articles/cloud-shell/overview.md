@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449000"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832465"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできる対話形式の認証されたシェルです。
@@ -40,11 +40,14 @@ Cloud Shell は、Azure の管理タスクを視野に入れて開発された�
 Cloud Shell を利用することで、ローカル コンピューターに拘束されることなくクラウドならではの作業が可能となります。
 
 ### <a name="choice-of-preferred-shell-experience"></a>最適なシェル エクスペリエンスの選択
-ユーザーは、シェルのドロップダウンから Bash または PowerShell を選択できます。
+ユーザーは、Bash または PowerShell のいずれかを選択できます。
+1. **[Cloud Shell]** を選択します。
 
-![Cloud Shell の Bash](media/overview/overview-bash-pic.png)
+    ![[Cloud Shell] アイコン](media/overview/overview-cloudshell-icon.png)
 
-![Cloud Shell の PowerShell](media/overview/overview-ps-pic.png)
+2. **[Bash]** または **[PowerShell]** を選択します。
+
+    ![[Bash] または [PowerShell] を選択する](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>認証済みかつ構成済みの Azure ワークステーション
 Cloud Shell は Microsoft によって管理されており、広く使われているコマンド ライン ツールと言語サポートを提供しています。 さらに、Azure CLI または Azure PowerShell コマンドレットを介してすばやくリソースにアクセスできるよう、Cloud Shell では安全に自動認証が行われます。

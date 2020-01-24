@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690423"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932179"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための環境を再利用します。
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>サンプルの Notebook
 
 この[サンプル Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) は、この記事で説明している概念と方法論をベースに拡張したものです。
+
+## <a name="create-and-manage-environments-with-the-cli"></a>CLI を使用して環境を作成および管理する
+
+[Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) は、Python SDK のほとんどの機能を反映し、環境の作成と管理に使用できます。 次のコマンドは、基本的な機能を示しています。
+
+以下のコマンドでは、指定されたディレクトリ内の既定の環境定義のファイルをスキャフォールディングします。 これらのファイルは、SDK の対応するクラスと同様の機能を持つ JSON ファイルであり、カスタム設定で新しい環境を作成するために使用できます。 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+次のコマンドを実行して、指定されたディレクトリから環境を登録します。
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+次のコマンドを実行すると、登録されたすべての環境が一覧表示されます。
+
+```azurecli-interactive
+az ml environment list
+```
+
+次のコマンドを使用して、登録された環境をダウンロードします。
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>次のステップ
 

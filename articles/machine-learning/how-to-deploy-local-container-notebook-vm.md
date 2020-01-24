@@ -10,12 +10,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 0c80604bba78289c7612e3ca54a359de1a5e992d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535219"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763523"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ
 
@@ -31,7 +31,7 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 - 開発中のモデルをテストします。
 
 > [!TIP]
-> コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、_ローカル デプロイ_です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](service/how-to-deploy-and-where.md)」を参照してください。
+> コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、_ローカル デプロイ_です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,16 +63,33 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 
 実行中のサービスにサンプル データを送信するには、次のコードを使用します。 値 `service_url` を、前の手順で取得した URL に置き換えます。
 
+> [!NOTE]
+> コンピューティング インスタンスでのデプロイに対して認証を行う場合、認証は Azure Active Directory を使用して行われます。 コード例の `interactive_auth.get_authentication_header()` を呼び出すと、AAD を使用してあなたが認証され、コンピューティング インスタンスでのサービスに対する認証に使用できるヘッダーが返されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#interactive-authentication)」を参照してください。
+>
+> Azure Kubernetes Service または Azure Container Instances でのデプロイに対して認証を行う場合は、別の認証方法が使用されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#web-service-authentication)」を参照してください。
+
 ```python
 import requests
 import json
+from azureml.core.authentication import InteractiveLoginAuthentication
+
+# Get a token to authenticate to the compute instance from remote
+interactive_auth = InteractiveLoginAuthentication()
+auth_header = interactive_auth.get_authentication_header()
+
+# Create and submit a request using the auth header
+headers = auth_header
+# Add content type header
+headers.update({'Content-Type':'application/json'})
+
+# Sample data to send to the service
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
-access_token = "your bearer token"
-headers = {'Content-Type':'application/json', 'Authorization': 'Bearer ' + access_token}
+
+# Replace with the URL for your compute instance, as determined from the previous section
 service_url = "https://vm-name-6789.northcentralus.notebooks.azureml.net/score"
 # for a compute instance, the url would be https://vm-name-6789.northcentralus.instances.azureml.net/score
 resp = requests.post(service_url, test_sample, headers=headers)
@@ -81,7 +98,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](service/how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

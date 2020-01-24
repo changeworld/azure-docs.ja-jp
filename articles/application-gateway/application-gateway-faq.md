@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658306"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770086"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -122,7 +122,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 はい、Application Gateway v2 SKU では、自動スケールをサポートします。 詳しくは、「[自動スケーリングとゾーン冗長 Application Gateway](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手動でのスケールアップまたはスケールダウンによってダウンタイムが発生することはありますか?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手動または自動のスケールアップまたはスケールダウンによってダウンタイムは発生しますか?
 
 いいえ。 インスタンスはアップグレード ドメインと障害ドメインに分散されます。
 

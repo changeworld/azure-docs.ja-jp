@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: 多要素認証の構成
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: BYOK を使用した TDE の構成
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: TDE BYOK キーの回転
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: TDE 保護機能の削除
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: データ保護
           items:
             - name: Transparent Data Encryption (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: Bring Your Own Key を使用した TDE
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: BYOK を使用した TDE の構成
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: TDE BYOK キーの回転
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: TDE 保護機能の削除
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: 動的データ マスク
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Always Encrypted

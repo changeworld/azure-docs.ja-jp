@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461080"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763166"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -144,7 +144,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 | --- | --- | --- |
 | フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
 | ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
-| ドキュメントでコレクションに含まれているオブジェクトが多すぎます | ドキュメント内のコレクションが、[すべての複合コレクション制限にわたる最大要素数](search-limits-quotas-capacity.md#index-limits)を超えています | ドキュメント内の複合コレクションのサイズを制限より小さくし、記憶域の使用率が高くならないようにすることをお勧めします。
+| ドキュメントでコレクションに含まれているオブジェクトが多すぎます | ドキュメント内のコレクションが、[すべての複雑なコレクション制限の最大要素](search-limits-quotas-capacity.md#index-limits)を超えています。"キー `'1000052'` のドキュメントのコレクションに `'4303'` オブジェクトがあります (JSON アレイ)。 ドキュメント全体のコレクションに最大で `'3000'` 個のオブジェクトを含めることができます。 コレクションからオブジェクトを削除して、ドキュメントのインデックス作成を再試行してください。" | ドキュメント内の複合コレクションのサイズを制限より小さくし、記憶域の使用率が高くならないようにすることをお勧めします。
 | サービスにその他の負荷 (クエリやインデックスの作成など) がかかっているため、ターゲット インデックス (再試行後も保持されます) に接続できません。 | インデックスを更新するための接続を確立できませんでした。 Search サービスの負荷が高くなっています。 | [検索サービスをスケールアップする](search-capacity-planning.md)
 | Search サービスは、サービスの更新に対して修正プログラムが適用されているか、トポロジの再構成中です。 | インデックスを更新するための接続を確立できませんでした。 Search サービスは現在ダウンしているか、Search サービスが移行中です。 | [SLA ドキュメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)による 99.9% の可用性を確保するために、少なくとも 3 つのレプリカでサービスを構成します
 | 基になるコンピューティング/ネットワーク リソースでエラーが発生しました (まれ) | インデックスを更新するための接続を確立できませんでした。 不明なエラーが発生しました。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366381"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834120"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -31,8 +31,7 @@ Azure Automation State Configuration を使用した場合の利点について�
 
 - Azure の仮想マシン
 - Azure Virtual Machines (クラシック)
-- アマゾン ウェブ サービス (AWS) EC2 インスタンス
-- オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
+- オンプレミスの物理または仮想 Windows マシン、または Azure 以外のクラウド (AWS EC2 インスタンスなど)
 - オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
 また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation State Configuration をレポートのみのエンドポイントとして使用することもできます。
@@ -82,11 +81,7 @@ PowerShell を使用して Azure に仮想マシンをオンボードするに�
 例については、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)」を参照してください。
 このテンプレートのパラメーターとして使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 仮想マシン
-
-AWS DSC Toolkit を使用して Azure Automation State Configuration による構成管理のためのアマゾン ウェブ サービス仮想マシンを簡単にオンボードできます。 ツールキットの詳細については、 [こちら](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)を参照してください。
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>オンプレミスの物理または仮想 Windows マシン、または Azure 以外のクラウド (AWS EC2 インスタンスなど)
 
 オンプレミスまたは他のクラウド環境で実行している Windows サーバーも、[Azure にアウトバウンド アクセス](automation-dsc-overview.md#network-planning)できる限り、Azure Automation State Configuration にオンボードできます。
 

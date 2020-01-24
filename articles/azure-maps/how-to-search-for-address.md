@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Search サービスを使用して住所を検索する | Microsoft Docs
-description: Azure Maps Search サービスを使用して住所を検索する方法について説明します。
+title: Azure Maps Search Service を使用して場所を検索する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Search Service を使用して場所を検索する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59d58b9ecb42a7329df6c91e0a646c557d78a415
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432960"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911451"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 

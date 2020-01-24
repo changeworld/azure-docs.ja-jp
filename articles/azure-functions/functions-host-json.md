@@ -2,13 +2,13 @@
 title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
-ms.date: 09/08/2018
-ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433189"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978807"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -27,7 +27,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
-次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
+次のサンプルの *host.json* ファイルには、使用可能なすべてのオプションが指定されています (内部でのみ使用するオプションは除く)。
 
 ```json
 {
@@ -67,7 +67,48 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 20
+              "maxTelemetryItemsPerSecond" : 20,
+              "evaluationInterval": "01:00:00",
+              "initialSamplingPercentage": 1.0, 
+              "samplingPercentageIncreaseTimeout" : "00:00:01",
+              "samplingPercentageDecreaseTimeout" : "00:00:01",
+              "minSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 0.1,
+              "movingAverageRatio": 1.0
+            },
+            "samplingExcludedTypes" : "Dependency;Event",
+            "samplingIncludedTypes" : "PageView;Trace",
+            "enableLiveMetrics": true,
+            "enableDependencyTracking": true,
+            "enablePerformanceCountersCollection": true,            
+            "httpAutoCollectionOptions": {
+                "enableHttpTriggerExtendedInfoCollection": true,
+                "enableW3CDistributedTracing": true,
+                "enableResponseHeaderInjection": true
+            },
+            "snapshotConfiguration": {
+                "agentEndpoint": null,
+                "captureSnapshotMemoryWeight": 0.5,
+                "failedRequestLimit": 3,
+                "handleUntrackedExceptions": true,
+                "isEnabled": true,
+                "isEnabledInDeveloperMode": false,
+                "isEnabledWhenProfiling": true,
+                "isExceptionSnappointsEnabled": false,
+                "isLowPrioritySnapshotUploader": true,
+                "maximumCollectionPlanSize": 50,
+                "maximumSnapshotsRequired": 3,
+                "problemCounterResetInterval": "24:00:00",
+                "provideAnonymousTelemetry": true,
+                "reconnectInterval": "00:15:00",
+                "shadowCopyFolder": null,
+                "shareUploaderProcess": true,
+                "snapshotInLowPriorityThread": true,
+                "snapshotsPerDayLimit": 30,
+                "snapshotsPerTenMinutesLimit": 1,
+                "tempFolder": null,
+                "thresholdForSnapshotting": 1,
+                "uploaderProxy": null
             }
         }
     },
@@ -97,32 +138,73 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 [サンプリング オプション](./functions-monitoring.md#configure-sampling)など、Application Insights のオプションを制御します。
 
-```json
-{
-    "applicationInsights": {        
-        "enableDependencyTracking": true,
-        "enablePerformanceCountersCollection": true,
-        "samplingExcludedTypes": "Trace;Exception",
-        "samplingIncludedTypes": "Request;Dependency",
-        "samplingSettings": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 20
-        }
-    }
-}
-```
+完全な JSON 構造については、前の [サンプル host.json ファイル](#sample-hostjson-file) を参照してください。
 
 > [!NOTE]
-> ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。
+> ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。 ログ サンプリングを回避するには、`samplingExcludedTypes: "Request"` を `applicationInsights` 値に追加します。
 
-|プロパティ  |Default | [説明] |
-|---------|---------|---------| 
-|enableDependencyTracking|true|依存関係の追跡を有効にします。|
-|enablePerformanceCountersCollection|true|パフォーマンス カウンター コレクションを有効にします。|
-|samplingExcludedTypes|null|サンプリング対象にしない型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。| 
-|samplingIncludedTypes|null|サンプリング対象にする型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はサンプリングされます。他の型のすべてのインスタンスは常に転送されます。|
-|samplingSettings.isEnabled|true|サンプリングを有効または無効にします。| 
-|samplingSettings.maxTelemetryItemsPerSecond|20|サンプリングが開始されるしきい値。|
+| プロパティ | Default | [説明] |
+| --------- | --------- | --------- | 
+| samplingSettings | 該当なし | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
+| samplingExcludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
+| samplingIncludedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `samplingExcludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
+| enableLiveMetrics | true | ライブ メトリックの収集を有効にします。 |
+| enableDependencyTracking | true | 依存関係の追跡を有効にします。 |
+| enablePerformanceCountersCollection | true | Kudu パフォーマンス カウンターの収集を有効にします。 |
+| liveMetricsInitializationDelay | 00:00:15 | 内部使用専用です。 |
+| httpAutoCollectionOptions | 該当なし | 「[applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)」を参照してください。 |
+| snapshotConfiguration | 該当なし | 「[applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)」を参照してください。 |
+
+### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
+
+|プロパティ | Default | [説明] |
+| --------- | --------- | --------- | 
+| isEnabled | true | サンプリングを有効または無効にします。 | 
+| maxTelemetryItemsPerSecond | 20 | 各サーバー ホストで 1 秒あたりにログに記録されるテレメトリ項目の目標数。 アプリを多数のホストで実行する場合、トラフィックの全体的なターゲット レート内に収まるように、この値を削減します。 | 
+| evaluationInterval | 01:00:00 | テレメトリの現在のレートを再評価する間隔。 評価は移動平均として実行されます。 急変しやすいテレメトリの場合は、この間隔を短くすることもできます。 |
+| initialSamplingPercentage| 1.0 | サンプリング率が動的に変化するサンプリング プロセスの開始時に適用される初期サンプリング率。 デバッグ中はこの値を減らさないでください。 |
+| samplingPercentageIncreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を上げてキャプチャ データ量を増やすことができるようになるかが決まります。 |
+| samplingPercentageDecreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を下げてキャプチャ データ量を減らすことができるようになるかが決まります。 |
+| minSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最小サンプリング率が決定されます。 |
+| maxSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
+| movingAverageRatio | 1.0 | 移動平均の計算で最新値に割り当てられる重み。 1 以下の値を使用します。 小さい値にすると、急変に対する反応が低いアルゴリズムになります。 |
+
+### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
+
+|プロパティ | Default | [説明] |
+| --------- | --------- | --------- | 
+| enableHttpTriggerExtendedInfoCollection | true | HTTP トリガーの拡張 HTTP 要求情報 (受信要求の関連付けヘッダー、複数のインストルメンテーション キーのサポート、HTTP メソッド、パス、応答) を有効または無効にします。 |
+| enableW3CDistributedTracing | true | W3C 分散トレース プロトコルのサポートを有効または無効にします (さらに、レガシの相関スキーマをオンにします)。 `enableHttpTriggerExtendedInfoCollection` が true の場合、既定で有効になります。 `enableHttpTriggerExtendedInfoCollection` が false の場合、このフラグは、送信要求にのみ適用され、受信要求には適用されません。 |
+| enableResponseHeaderInjection | true | 複数のコンポーネントの関連付けヘッダーの応答への挿入を有効または無効にします。 挿入を有効にすると、複数のインストルメンテーション キーを使用する場合に、Application Insights でアプリケーション マップを作成できます。 `enableHttpTriggerExtendedInfoCollection` が true の場合、既定で有効になります。 `enableHttpTriggerExtendedInfoCollection` が false の場合、この設定は適用されません。 |
+
+### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights.snapshotConfiguration
+
+スナップショットの詳細については、「[.NET アプリでの例外でのデバッグ スナップショット](/azure/azure-monitor/app/snapshot-debugger)」および「[Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)」を参照してください。
+
+|プロパティ | Default | [説明] |
+| --------- | --------- | --------- | 
+| agentEndpoint | null | Application Insights スナップショット デバッガー サービスに接続するために使用されるエンドポイント。 null の場合、既定のエンドポイントが使用されます。 |
+| captureSnapshotMemoryWeight | 0.5 | スナップショットを取得するのに十分なメモリがあるかどうかを確認するときに、現在のプロセス メモリのサイズに割り当てられる重み。 予期される値は、0 より大きい真分数 (0 < CaptureSnapshotMemoryWeight < 1) です。 |
+| failedRequestLimit | 3 | テレメトリ プロセッサが無効になるまでに、スナップショットを要求する要求が失敗する回数の制限。|
+| handleUntrackedExceptions | true | Application Insights テレメトリで追跡されない例外の追跡を有効または無効にします。 |
+| isEnabled | true | スナップショットの収集を有効または無効にします。 | 
+| isEnabledInDeveloperMode | false | 開発モードでのスナップショットの収集を有効または無効にします。 |
+| isEnabledWhenProfiling | true | Application Insights Profiler で詳細なプロファイル セッションを収集している場合でも、スナップショットの作成を有効または無効にします。 |
+| isExceptionSnappointsEnabled | false | 例外のフィルター処理を有効または無効にします。 |
+| isLowPrioritySnapshotUploader | true | SnapshotUploader プロセスを通常の優先順位以下で実行するかどうかを決定します。 |
+| maximumCollectionPlanSize | 50 | 任意の時点で追跡可能な問題の最大個数 (1 から 9999 の範囲内)。 |
+| maximumSnapshotsRequired | 3 | 単一の問題について収集されるスナップショットの最大数 (1 から 999 の範囲内)。 問題は、アプリケーション内の個別の throw ステートメントと見なすことができます。 問題について収集されるスナップショット数がこの値に達すると、問題カウンターがリセットされるまで (`problemCounterResetInterval` を参照)、および `thresholdForSnapshotting` 制限に再度達するまで、その問題のスナップショットは収集されなくなります。 |
+| problemCounterResetInterval | 24:00:00 | 問題カウンターをリセットする頻度 (1 分から 7 日の範囲内)。 この間隔に達すると、すべての問題カウントが 0 にリセットされます。 既存の問題について、スナップショットを実行するためのしきい値に達していても、`maximumSnapshotsRequired` で指定された数のスナップショットが生成されていない場合は、アクティブのままです。 |
+| provideAnonymousTelemetry | true | 使用状況とエラー テレメトリを匿名で Microsoft に送信するかどうかを決定します。 スナップショット デバッガーに関する問題のトラブルシューティングのサポートを Microsoft に求める場合に、このテレメトリを使用できます。 また、使用状況パターンの監視にも使用されます。 |
+| reconnectInterval | 00:15:00 | スナップショット デバッガー エンドポイントに再接続する頻度。 指定可能な範囲は、1 分から 1 日です。 |
+| shadowCopyFolder | null | シャドウ コピー バイナリに使用するフォルダーを指定します。 設定しない場合、次の環境変数で指定されたフォルダーがこの順で試行されます: Fabric_Folder_App_Temp、LOCALAPPDATA、APPDATA、TEMP。 |
+| shareUploaderProcess | true | true の場合、SnapshotUploader の 1 つのインスタンスだけで、InstrumentationKey を共有する複数のアプリのスナップショットが収集され、アップロードされます。 false に設定すると、SnapshotUploader は、各 (ProcessName, InstrumentationKey) タプルごとに固有になります。 |
+| snapshotInLowPriorityThread | true | スナップショットを、IO 優先度の低いスレッドで処理するかどうかを決定します。 スナップショットの作成は高速操作ですが、スナップショットをスナップショット デバッガー サービスにアップロードするには、最初にスナップショットをミニダンプとしてディスクに書き込む必要があります。 これは、SnapshotUploader プロセスで発生します。 この値を true に設定すると、低優先度の IO を使用してミニダンプが書き込まれ、アプリケーションとのリソースの競合は発生しません。 この値を false に設定すると、ミニダンプの作成速度は速くなりますが、アプリケーションの速度は低下します。 |
+| snapshotsPerDayLimit | 30 | 1 日 (24 時間内) に許容されるスナップショットの最大数。 この制限は、Application Insights サービス側にも適用されます。 アップロードの頻度は、アプリケーション (つまり、インストルメンテーション キー) ごとに、1 日あたり 50 回に制限されます。 この値は、最終的にアップロード時に拒否される追加のスナップショットが作成されるのを防ぐのに役立ちます。 値を 0 に設定すると、制限が完全に取り除かれます。これは推奨されません。 |
+| snapshotsPerTenMinutesLimit | 1 | 10 分間に許容されるスナップショットの最大数。 この値に上限はありませんが、この値はアプリケーションのパフォーマンスに影響を与える可能性があるため、運用ワークロードでこの値を増加する場合は注意する必要があります。 スナップショットの作成は高速ですが、スナップショットのミニダンプの作成とスナップショット デバッガーへのアップロードの操作は非常に遅くなり、アプリケーションとのリソース (CPU と I/O の両方) の競合が発生します。 |
+| tempFolder | null | ミニダンプとアップローダー ログ ファイルを書き込むフォルダーを指定します。 設定しない場合、 *%TEMP%\Dumps* が使用されます。 |
+| thresholdForSnapshotting | 1 | Application Insights により、スナップショットが要求される前に確認される必要がある例外の回数。 |
+| uploaderProxy | null | Snapshot Uploader プロセスで使用されるプロキシ サーバーをオーバーライドします。 アプリケーションがプロキシ サーバーを経由してインターネットに接続する場合、この設定を使用することが必要になる場合があります。 Snapshot Collector はアプリケーションのプロセス内で実行され、同じプロキシ設定を使用します。 しかし、Snapshot Uploader は個別のプロセスとして実行され、プロキシ サーバーを手動で構成することが必要になる場合があります。 この値が null の場合、Snapshot Collector により、System.Net.WebRequest.DefaultWebProxy が調べられ、値が Snapshot Uploader に渡されて、プロキシのアドレスの自動検出が試みられます。 この値が null 以外の場合、Snapshot Uploader では、自動検出は使用されず、ここで指定されたプロキシ サーバーが使用されます。 |
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -160,7 +242,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 すべての関数のタイムアウト期間を示します。 これは、期間文字列形式に従います。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。  
 
-Premium プランの有効な範囲は 1 秒から 60 分であり、既定値は 30 分です。
+Premium プランの有効な範囲は 1 秒から 60 分で、既定値は 30 分です。
 
 専用 (App Service) プランでは、全体的な制限はなく、既定値は 30 分です。 `-1` の値は無制限の実行を示しますが、固定の上限を維持することをお勧めします。
 
@@ -221,7 +303,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
 |console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 

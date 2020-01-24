@@ -1,14 +1,14 @@
 ---
 title: Azure の委任されたリソース管理に顧客をオンボードする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 12/17/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 16d1b4d9d51c377c4aa09b5e35b02790d8a1b8dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453550"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834125"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -34,7 +34,10 @@ ms.locfileid: "75453550"
 - 顧客のテナント (リソースはサービス プロバイダーで管理されます) のテナント ID
 - サービス プロバイダーで管理される (またはサービス プロバイダーで管理されるリソース グループを含む) 顧客のテナントにある特定のサブスクリプションそれぞれのサブスクリプション ID
 
-この情報がまだない場合は、次のいずれかの方法で取得できます。 デプロイではこれらの正確な値を必ず使用してください。
+> [!NOTE]
+> サブスクリプション内の 1 つ以上のリソース グループのみをオンボードする場合でも、サブスクリプション レベルでデプロイを行う必要があるため、サブスクリプション ID が必要になります。
+
+こうした ID 値がまだない場合は、次のいずれかの方法で取得できます。 デプロイではこれらの正確な値を必ず使用してください。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -113,9 +116,9 @@ az role definition list --name "<roleName>" | grep name
 |フィールド  |定義  |
 |---------|---------|
 |**mspOfferName**     |この定義を説明する名前。 この値は、プランのタイトルとして顧客に表示されます。         |
-|**mspOfferDescription**     |自分のオファーの簡単な説明 (例: "Contoso VM 管理オファー")      |
+|**mspOfferDescription**     |自分のオファーの簡単な説明 (例: "Contoso VM 管理オファー")。      |
 |**managedByTenantId**     |テナント ID。          |
-|**authorizations**     |**principalId** 値はテナントのユーザー、グループ、または SPN を表し、それぞれに、顧客が承認の目的を理解するのに役立つ **principalIdDisplayName** が指定されているほか、アクセス レベルを指定するための組み込みの **roleDefinitionId** 値がマップされています。         |
+|**authorizations**     |**principalId** 値はテナントのユーザー、グループ、または SPN を表し、それぞれに、顧客が承認の目的を理解するのに役立つ **principalIdDisplayName** が指定されているほか、アクセス レベルを指定するための組み込みの **roleDefinitionId** 値がマップされています。      |
 
 > [!TIP]
 > **managedByTenantID**、**principalIdDisplayName**、**roleDefinitionId** の各エントリが Azure で使用される値と同じであることを確認してください。 これらの値には大文字を使用しないでください。
@@ -132,7 +135,7 @@ az role definition list --name "<roleName>" | grep name
 |サブスクリプション (Azure Marketplace に公開されたオファーの使用時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> ここで説明しているプロセスでは、オンボードの対象となるサブスクリプションが同じ顧客テナント内にあったとしても、それぞれについて個別のデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのデプロイで実行できます。
+> ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のサブスクリプション レベルのデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのサブスクリプションレベルのデプロイで実行できます。
 >
 > また、同じサブスクリプション (またはサブスクリプション内のリソース グループ) に適用される複数のプランに対しても個別のデプロイが必要です。 適用される各プランに、それぞれ異なる **mspOfferName** を使用する必要があります。
 
@@ -198,7 +201,7 @@ az role definition list --name "<roleName>" | grep name
 これはサブスクリプション レベルのデプロイなので、Azure portal 上で開始することはできません。 デプロイは、次に示すように PowerShell または Azure CLI を使用して、行うことができます。
 
 > [!IMPORTANT]
-> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開いて[すべてのロールを表示](../../role-based-access-control/role-definitions-list.md#list-all-roles)し、 **[所有者]** を選択します。これにより、そのロールを持つすべてのユーザーが表示されます。
+> このサブスクリプションレベルのデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
 ### <a name="powershell"></a>PowerShell
 

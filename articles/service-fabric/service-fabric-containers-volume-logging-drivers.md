@@ -1,22 +1,21 @@
 ---
-title: Service Fabric Azure Files ボリューム ドライバー (GA)
+title: Service Fabric 用の Azure Files ボリューム ドライバー
 description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464791"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750045"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバー
-Azure Files ボリューム プラグイン (Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)) が、**GA (一般提供)** になりました。
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 用の Azure Files ボリューム ドライバー
 
-この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure Files ベースのボリュームを提供することです。
+Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
 
 > [!NOTE]
-> Azure Files ボリューム プラグインのバージョン 6.5.661.9590 は GA (一般提供) リリースです。 
+> Azure Files ボリューム プラグインのバージョン 6.5.661.9590 が一般公開されています。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -55,7 +54,6 @@ Azure Resource Manager テンプレート (Azure デプロイの場合) また�
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバーを使用してサンプル アプリケーションをデプロイする
 

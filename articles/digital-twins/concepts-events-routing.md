@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660326"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862358"
 ---
 # <a name="routing-iot-events-and-messages"></a>IoT イベントとメッセージのルーティング
 
@@ -68,4 +68,4 @@ Azure Digital Twins サービスでは、現在、以下の **EndpointTypes** �
 
 - Azure Digital Twins のプレビューの制限については、「[パブリック プレビューのサービスの制限](concepts-service-limits.md)」をご覧ください。
 
-- Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](quickstart-view-occupancy-dotnet.md)のページをご覧ください。
+- Azure Digital Twins のサンプルを試すには、[空き部屋を探すクイック スタート](quickstart-view-occupancy-dotnet.md)のページをご覧ください。

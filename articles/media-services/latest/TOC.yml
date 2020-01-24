@@ -90,7 +90,7 @@
     - name: パッケージと配信
       items:
         - name: 動的パッケージ
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
           href: dynamic-packaging-overview.md
         - name: 動的マニフェスト
           href: filters-dynamic-manifest-overview.md

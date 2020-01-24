@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5cfe6b790d5eb2877e46845317779c89cf33884
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424990"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978020"
 ---
 # <a name="common-conditional-access-policies"></a>一般的な条件付きアクセス ポリシー
 
@@ -33,14 +33,16 @@ ms.locfileid: "75424990"
 
 ## <a name="typical-policies-deployed-by-organizations"></a>組織によってデプロイされる一般的なポリシー
 
-* [管理者に対して MFA を必須にする](howto-conditional-access-policy-admin-mfa.md)
-* [Azure 管理のために MFA を必須にする](howto-conditional-access-policy-azure-management.md)
-* [すべてのユーザーに対して MFA を必須にする](howto-conditional-access-policy-all-users-mfa.md)
-* [レガシ認証をブロックする](howto-conditional-access-policy-block-legacy.md)
+* [管理者に対して MFA を必須にする](howto-conditional-access-policy-admin-mfa.md)\*
+* [Azure 管理のために MFA を必須にする](howto-conditional-access-policy-azure-management.md)\*
+* [すべてのユーザーに対して MFA を必須にする](howto-conditional-access-policy-all-users-mfa.md)\*
+* [レガシ認証をブロックする](howto-conditional-access-policy-block-legacy.md)\*
 * [リスクベースの条件付きアクセス (Azure AD Premium P2 が必要)](howto-conditional-access-policy-risk.md)
 * [信頼できる場所を MFA 登録で必須にする](howto-conditional-access-policy-registration.md)
 * [場所ごとにアクセスをブロックする](howto-conditional-access-policy-location.md)
 * [準拠しているデバイスを要求する](howto-conditional-access-policy-compliant-device.md)
+
+\* これらの 4 つのポリシーをまとめて構成すると、[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)によって有効にされた機能が模倣されます。
 
 ## <a name="next-steps"></a>次のステップ
 

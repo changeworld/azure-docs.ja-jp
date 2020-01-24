@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437023"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770987"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -48,6 +48,14 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 はい。 ExpressRoute 回線のセットアップが完了すると、1 本の回線で仮想ネットワーク内のサービスや他の Azure サービスに同時にアクセスできるようになります。 仮想ネットワークにはプライベート ピアリング パス経由で接続し、他のサービスには Microsoft ピアリング パス経由で接続します。
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet はどのようにアドバタイズされますか?
+
+ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>オンプレミス ネットワークからのルートをフィルター処理できますか?
+
+ルートをフィルター処理する、または含める唯一の方法は、オンプレミスのエッジ ルーター上にあります。 VNet にユーザー定義ルートを追加して特定のルーティングに影響を与えることはできますが、これは静的であり、BGP アドバタイズの一部ではありません。
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>ExpressRoute ではサービス レベル アグリーメント (SLA) は提供されますか。
 
 詳しくは、[ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) ページをご覧ください。
@@ -73,7 +81,8 @@ ExpressRoute 回線が Azure Microsoft ピアリングに対して有効にな�
 * Azure Active Directory
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。
+* IaaS (Virtual Machine、Virtual Network ゲートウェイ、Load Balancer など) の Azure パブリック IP アドレス  
+* 他のほとんどの Azure サービスもサポートされています。 サポートの確認に使うサービスで直接確認してください。
 
 **サポート対象外:**
 

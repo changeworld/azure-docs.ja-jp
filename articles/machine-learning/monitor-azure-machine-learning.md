@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 2adf4ed18069a9504e3eaf7713724e1bf99c5e8e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534031"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894863"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -25,7 +25,7 @@ ms.locfileid: "75534031"
 >
 > * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
 > * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
-> * [MLflow を使用して実験を追跡する](service/how-to-use-mlflow.md)
+> * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
 > * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor

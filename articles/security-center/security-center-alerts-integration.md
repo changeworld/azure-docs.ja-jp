@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center での Azure セキュリティ製品に対する脅威検出
-description: このトピックでは、Azure Security Center で脅威の検出を提供できる Azure セキュリティ製品について説明します。
+title: Azure Security Center の Azure セキュリティ製品からの脅威検出アラート
+description: このトピックでは、Azure Security Center で脅威アラートを表示できる Azure セキュリティ製品について説明します
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: memildin
-ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 16cae819b1714c2b410cfa311a3602e0f4ed968a
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665712"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913035"
 ---
-# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Azure WAF と Azure DDoS Protection の脅威検出
+# <a name="threat-detection-alerts-from-azure-waf-and-azure-ddos-protection"></a>Azure WAF と Azure DDoS Protection からの脅威検出アラート
 
-Azure Security Center では、次の Azure セキュリティ製品に対して脅威検出機能を提供できます (製品ごとに個別のライセンスが必要です)。
+Azure Security Center では、次の Azure セキュリティ製品によって生成される脅威検出アラートを表示して収集することができます (製品ごとに個別のライセンスが必要です)。
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)

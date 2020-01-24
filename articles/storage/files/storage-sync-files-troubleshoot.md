@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659544"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027786"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -122,6 +122,9 @@ Reset-StorageSyncServer
 <a id="-2147024894"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2147024894 または 0x80070002)** というエラーで失敗する  
 このエラーは、指定したサーバー エンドポイントのパスが有効でない場合に発生します。 指定したサーバー エンドポイントのパスがローカルに接続された NTFS ボリュームであることを確認します。 Azure File Sync は、サーバー エンドポイント パスとして、マップされたドライブをサポートしていないことに注意してください。
 
+<a id="-2134375640"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134375640 or 0x80c80328)**  
+このエラーは、指定したサーバー エンドポイント パスが NTFS ボリュームでない場合に発生します。 指定したサーバー エンドポイントのパスがローカルに接続された NTFS ボリュームであることを確認します。 Azure File Sync は、サーバー エンドポイント パスとして、マップされたドライブをサポートしていないことに注意してください。
+
 <a id="-2134347507"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134347507 または 0x80c8710d)** というエラーで失敗する  
 このエラーは、Azure File Sync が、圧縮されたシステム ボリューム情報フォルダーがあるボリューム上でサーバー エンドポイントをサポートしていないことが原因で発生します。 この問題を解決するには、システム ボリューム情報フォルダーを圧縮解除します。 システム ボリューム情報フォルダーがボリュームにある唯一の圧縮フォルダーである場合は、次の手順を実行します。
 
@@ -172,14 +175,13 @@ Set-AzStorageSyncServerEndpoint `
 - **GetNextJob の完了状態が -2134347756** であると記録されている場合、サーバーはファイアウォールまたはプロキシが原因で Azure File Sync サービスと通信できません。 
     - サーバーがファイアウォールの背後にある場合は、送信ポート 443 が許可されていることを確認します。 ファイアウォールで特定のドメインへのトラフィックが制限されている場合は、ファイアウォールの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)に記載されているドメインにアクセスできることを確認します。
     - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
+    - このサービス エンドポイントへのネットワーク接続を確認するには、Test-StorageSyncNetworkConnectivity コマンドレットを使用します。 詳細については、[サービス エンドポイントへのネットワーク接続のテスト](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)に関するページを参照してください。
 
 - **GetNextJob の完了状態が -2134347764** であると記録されている場合、サーバーは証明書の有効期限切れまたは削除が原因で Azure File Sync サービスと通信できません。  
     - サーバーで次の PowerShell コマンドを実行して、認証に使用される証明書をリセットしてください。
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**サーバー エンドポイントの正常性状態が [アクティビティなし] で、登録済みサーバー ブレードのサーバーの状態が [オフライン] になっている**  
 
 サーバー エンドポイントの正常性状態 [アクティビティなし] とは、過去 2 時間にわたってサーバー エンドポイントで同期アクティビティが記録されていないことを意味します。
@@ -318,7 +320,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x0010FFFE、0x0010FFFF | 2 |
 
 ### <a name="common-sync-errors"></a>一般的な同期エラー
-<a id="-2147023673"></a>**同期セッションが取り消されました。**  
+<a id="-2147023673"></a>**同期セッションは取り消されました。**  
 
 | | |
 |-|-|
@@ -388,6 +390,22 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 2. [Azure ファイル共有が存在することを確認します。](#troubleshoot-azure-file-share)
 3. [Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](#troubleshoot-rbac)
 4. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134351804"></a>**この要求にこの操作の実行権限がないために同期が失敗しました。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (10 進値)** | -2134351804 |
+| **エラー文字列** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **修復が必要か** | はい |
+
+このエラーは、Azure File Sync エージェントが Azure ファイル共有へのアクセスを承認されていないために発生します。 次の手順を行うと、このエラーを解決できます。
+
+1. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
+2. [Azure ファイル共有が存在することを確認します。](#troubleshoot-azure-file-share)
+3. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](#troubleshoot-rbac)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**使用されているストレージ アカウント名を解決できませんでした。**  
 
@@ -491,7 +509,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **修復が必要か** | はい |
 
-このエラーは、Azure サブスクリプションが中断されている場合に発生します。 Azure サブスクリプションが復元されると、同期は再度有効になります。 詳細については、「[私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。](../../billing/billing-subscription-become-disable.md)」を参照してください。
+このエラーは、Azure サブスクリプションが中断されている場合に発生します。 Azure サブスクリプションが復元されると、同期は再度有効になります。 詳細については、「[私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。](../../cost-management-billing/manage/subscription-disabled.md)」を参照してください。
 
 <a id="-2134364052"></a>**ストレージ アカウントにファイアウォールまたは仮想ネットワークが構成されています。**  
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps にイメージ レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK にイメージ レイヤーを追加する方法。
+title: マップに画像レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上に画像をオーバーレイする方法を示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2260e5c9e4125be1c4b0fa5e9d7c39a8e03d43f
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432861"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911193"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>イメージ レイヤーをマップに追加する
 

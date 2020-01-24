@@ -84,9 +84,9 @@
 - name: 概念
   items:
     - name: TLS サポート
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: TLS 1.0 および 1.1 の廃止
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: メッセージ エンリッチメントの概要
       href: iot-hub-message-enrichments-overview.md
     - name: デバイス管理の概要

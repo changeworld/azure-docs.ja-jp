@@ -5,18 +5,18 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612974"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834232"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"Functions Runtime に到達できない" 問題のトラブルシューティング方法
 
 
 ## <a name="error-text"></a>エラー テキスト
-このドキュメントは、Functions ポータルで次のエラーが表示された場合のトラブルシューティングを行うことを目的としています。
+この記事は、Functions ポータルで次のエラーが表示された場合のトラブルシューティングを行うことを目的としています。
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
@@ -40,7 +40,7 @@ ms.locfileid: "75612974"
 
 ### <a name="how-to-find-your-storage-account"></a>ストレージ アカウントの検索方法
 
-まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列でラップされたストレージ アカウントの名前が含まれます。 詳細については、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)のアプリケーション設定のリファレンスをご覧ください。
+まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列でラップされたストレージ アカウントの名前が含まれます。 詳細については、[こちらのアプリケーション設定のリファレンス](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)をご覧ください。
 
 Azure portal でご自分のストレージ アカウントを検索し、まだ存在しているかどうかを確認します。 削除されている場合は、ストレージ アカウントを作成し直して、ストレージ接続文字列を置換する必要があります。 関数コードが失われ、もう一度デプロイし直す必要があります。
 
@@ -56,7 +56,7 @@ Azure portal でご自分のストレージ アカウントを検索し、まだ
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-これらのアプリケーション設定については、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)をご覧ください
+これらのアプリケーション設定については、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)をご覧ください。
 
 ### <a name="guidance"></a>ガイダンス
 
@@ -85,7 +85,7 @@ Function App は、ストレージ アカウントにアクセスできる必要
 
 ## <a name="app-is-behind-a-firewall"></a>アプリがファイアウォールの内側にある
 
-関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている場合、またはインターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-ip-restrictions)がある場合は、Functions Runtime に到達できません。 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、KUDU エンドポイントに対して http 呼び出しを行います。 プラットフォーム レベルの設定は、[`Platform Features`] タブでも使用できます。
+関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている場合、またはインターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-ip-restrictions)がある場合は、Functions Runtime に到達できません。 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、KUDU エンドポイントに対して HTTP 呼び出しを行います。 プラットフォーム レベルの設定は、[`Platform Features`] タブでも使用できます。
 
 * ASE の構成を確認するには、ASE が存在するサブネットの NSG に移動し、アプリケーションにアクセスしているコンピューターのパブリック IP からのトラフィックを許可する受信規則を検証します。 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンから、ポータルを使用することもできます。 [受信規則の構成の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 

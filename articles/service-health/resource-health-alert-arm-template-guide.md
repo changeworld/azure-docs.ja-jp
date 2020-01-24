@@ -3,12 +3,12 @@ title: Azure Resource Health アラートを作成する - Resource Manager テ�
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: d42dfdc5806fa6340cf4bb7051b53764e98c26e3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551720"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922769"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "75551720"
 Azure Resource Health では、Azure リソースの現在および過去の正常性状態に関する情報が持続的に通知されます。 Azure Resource Health アラートでは、これらのリソースの正常性状態が変化すると、ほぼリアルタイムで通知できます。 Resource Health アラートをプログラムで作成すると、ユーザーは通知を一括で作成およびカスタマイズできます。
 
 > [!NOTE]
-> Resource Health アラートは、現在プレビューの段階です。
+> Resource Health アラートは、現在プレビュー段階です。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f3d99b32b952470f266ed2168d5760c2c72377c4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666722"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830498"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -91,12 +91,8 @@ Windows Server Nano Server はどのバージョンでもサポートされて�
 
 ## <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
 
-Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 アウトバウンド トラフィックが許可されないプライベート仮想ネットワークを Azure で使用している場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則で例外を構成する必要があります。 現時点では、Azure Policy ゲスト構成に対するサービス タグはありません。
-
-IP アドレスの一覧については、[Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。 VM がデプロイされているリージョンの IP への送信アクセスのみを許可する必要があります。
-
-> [!NOTE]
-> Azure の IP 範囲とサービス タグの JSON ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲の一覧が記載されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。 更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
+Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 アウトバウンド トラフィックが許可されないプライベート仮想ネットワークを Azure で使用している場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則で例外を構成する必要があります。
+[サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 

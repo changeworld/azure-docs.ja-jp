@@ -1,71 +1,69 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 description: このドキュメントでは、MongoDB から Cosmos DB にデータを移行する前提条件の概要について説明します。
-author: roaror
+author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: roaror
-ms.openlocfilehash: 4dc7038d0ff5180f15a43268fd3f3aa0cbb0c7a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.author: lbosq
+ms.openlocfilehash: 73ac1a6ffd5fc2b2d52f169e1e0332044638f9f7
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445191"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942075"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 
-(オンプレミスまたはクラウド (IaaS) 上の) MongoDB から Azure Cosmos DB の MongoDB 用 API にデータを移行する前に、次を実行する必要があります。
+(オンプレミスまたはクラウド内の) MongoDB から Azure Cosmos DB の MongoDB 用 API にデータを移行する前に、以下のことを行う必要があります。
 
-1. [Azure Cosmos DB アカウントの作成](#create-account)
-2. [ワークロードに必要なスループットの見積もり](#estimate-throughput)
-3. [データに最適なパーティション キーの選択](#partitioning)
-4. [データに設定できるインデックス作成ポリシーの理解](#indexing)
+1. [Azure Cosmos DB の MongoDB 用 API の使用に関する重要な考慮事項の参照](#considerations)
+2. [データを移行するためのオプションの選択](#options)
+3. [ワークロードに必要なスループットの見積もり](#estimate-throughput)
+4. [データに最適なパーティション キーの選択](#partitioning)
+5. [データに設定できるインデックス作成ポリシーの理解](#indexing)
 
-上記の移行の前提条件が既に完了している場合、実際のデータの移行手順を、[MongoDB データの Azure Cosmos DB の MongoDB 用 API への移行](../dms/tutorial-mongodb-cosmos-db.md)に関するページで参照してください。 まだ行っていない場合、これらの前提条件の実行方法をこのドキュメントで確認してください。 
+上記の移行の前提条件が既に完了している場合は、[Azure Database Migration Service を使用して、Azure Cosmos DB の MongoDB 用 API に MongoDB データを移行](../dms/tutorial-mongodb-cosmos-db.md)することができます。 また、アカウントを作成していない場合は、アカウントを作成する手順を示す[クイックスタート](create-mongodb-dotnet.md)のいずれかを参照できます。
 
-## <a id="create-account"></a> Azure Cosmos DB アカウントの作成 
+## <a id="considerations"></a>Azure Cosmos DB の MongoDB 用 API を使用する場合の考慮事項
 
-移行を開始する前に、[Azure Cosmos DB の MongoDB 用 API を使用して Azure Cosmos アカウントを作成](create-mongodb-dotnet.md)する必要があります。 
+以下は、Azure Cosmos DB の MongoDB 用 API に関する具体的な特性です。
 
-アカウントを作成したら、データを[グローバルに分散](distribute-data-globally.md)する設定を選択します。 また、お使いの各リージョンが書き込みリージョンおよび読み取りリージョンの両方になるよう、マルチリージョン書き込み (またはマルチマスター構成) を有効にするオプションがあります。
+- **容量モデル**:Azure Cosmos DB のデータベース容量は、スループットベースのモデルに基づいています。 このモデルは[要求ユニット/秒](request-units.md)に基づいています。これは、1 秒ごとにコレクションに対して実行できるデータベース操作の数を表す単位です。 この容量は、[データベースまたはコレクション レベル](set-throughput.md)で割り当てることができます。また、割り当てモデルで、あるいは [AutoPilot モデル](provision-throughput-autopilot.md)を使用して、プロビジョニングすることができます。
 
-![アカウントの作成](./media/mongodb-pre-migration/account-creation.png)
+- **要求ユニット**:すべてのデータベース操作には、Azure Cosmos DB に関連付けられた要求ユニット (RU) コストがあります。 実行すると、指定された秒で使用可能な要求ユニット レベルからこれが減算されます。 要求に、現在割り当てられている RU/秒よりも多くの RU が必要な場合、問題を解決するための 2 つの選択肢があります。つまり、RU の量を増やすか、次の秒が開始されるまで待機してから操作を再試行します。
+
+- **エラスティック容量**:特定のコレクションまたはデータベースの容量は、いつでも変更できます。 これにより、データベースをワークロードのスループット要件に柔軟に適応させることができます。
+
+- **自動シャーディング**:Azure Cosmos DB では、シャード (またはパーティション キー) のみを必要とする自動パーティション分割システムが提供されます。 [自動パーティション分割メカニズム](partition-data.md)は、すべての Azure Cosmos DB API 間で共有されます。これにより、水平分布を通じて、シームレスなデータおよびスループットのスケーリングが可能になります。
+
+## <a id="options"></a>Azure Cosmos DB の MongoDB 用 API の移行オプション
+
+[Azure Cosmos DB の MongoDB 用 API の Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) では、フル マネージド ホスティング プラットフォーム、移行の監視オプションおよび自動調整処理を提供することで、データの移行を簡略化するメカニズムが提供されます。 オプションの完全な一覧を以下に示します。
+
+|**移行の種類**|**ソリューション**|**考慮事項**|
+|---------|---------|---------|
+|オフライン|[データ移行ツール](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; セットアップが簡単で、さまざまなソースをサポートします <br/>&bull; 大規模なデータセットには適していません。|
+|オフライン|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; セットアップが簡単で、さまざまなソースをサポートします <br/>&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します <br/>&bull; 大規模なデータセットに適しています <br/>&bull; チェックポイントがなく、移行の途中で問題が発生した場合、移行プロセスを全部やり直す必要があります<br/>&bull; 配信不能キューがなく、エラーが含まれるファイルがいくつかあると、移行プロセス全体が停止することがあります <br/>&bull; 特定のデータ ソースの読み取りスループットを向上させるためのカスタム コードが必要です|
+|オフライン|[既存の Mongo ツール (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; セットアップと統合が簡単 <br/>&bull; スロットルのカスタム処理が必要です|
+|オンライン|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; フル マネージド移行サービス。<br/>&bull; 移行タスクのためのホスティングおよび監視ソリューションを提供します。 <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します <br/>&bull; 他の MongoDB ソースでのみ機能します|
+
 
 ## <a id="estimate-throughput"></a> ワークロードに必要なスループットの見積もり
 
-[Database Migration Service (DMS)](../dms/dms-overview.md) を使用して移行を開始する前に、Azure Cosmos データベースおよびコレクションにプロビジョニングするスループットの量を見積もる必要があります。
+Azure Cosmos DB では、スループットは事前にプロビジョニングされ、1 秒あたりの要求ユニット (RU) で測定されます。 VM やオンプレミス サーバーとは異なり、RU はいつでも簡単にスケールアップしたりスケールダウンしたりすることができます。 プロビジョニングされた RU の数をすぐに変更することができます。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」を参照してください。
 
-スループットは、以下のいずれかにプロビジョニングできます。
-
-- コレクション
-
-- データベース
-
-> [!NOTE]
-> データベース内の一部のコレクションには専用のスループットをプロビジョニングし、他はそのスループットを共有するように、上記を組み合わせることも可能です。 詳細については、[データベースおよびコンテナーへのスループットの設定](set-throughput.md)に関するページを参照してください。
->
-
-まず、データベースまたはコレクション レベルのスループットをプロビジョニングするか、この両方の組み合わせをプロビジョニングするかを決定する必要があります。 一般的には、コレクション レベルで専用のスループットを構成することが推奨されます。 データベース レベルでスループットをプロビジョニングすると、お使いのデータベース内のコレクションがそのプロビジョニング済みのスループットを共有できるようになります。 ただし、共有のスループットでは、個々のそれぞれのコレクションに特定のスループットが保証されないので、どの特定のコレクションのパフォーマンスも予測できなくなります。
-
-個々のそれぞれのコレクションにどれくらいのスループットを確保すべきかわからない場合、データベースレベルのスループットを選択します。 お使いの Azure Cosmos データベースに構成されたプロビジョニング済みスループットは、MongoDB VM や物理サーバーの計算容量と論理的に同等であると考えることができます。ただし、弾力的にスケーリングでき、よりコスト効率が高いです。 詳細については、[Azure Cosmos コンテナーおよびデータベースへのスループットのプロビジョニング](set-throughput.md)に関するページを参照してください。
-
-スループットをデータベース レベルでプロビジョニングした場合、そのデータベース内に作成したすべてのコレクションは、パーティションとシャード キーを使用して作成する必要があります。 パーティションの詳細については、[Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)に関するページをご覧ください。 移行中にパーティションまたはシャード キーを指定しない場合、Azure Database Migration Service によって各ドキュメントに自動生成されるシャード キーのフィールドに、 *_id* 属性が自動入力されます。
-
-### <a name="optimal-number-of-request-units-rus-to-provision"></a>プロビジョニングする要求ユニット (RU) の最適な数
-
-Azure Cosmos DB では、スループットは事前にプロビジョニングされ、1 秒あたりの要求ユニット (RU) で測定されます。 VM またはオンプレミスに MongoDB を実行するワークロードがある場合、RU は、VM のサイズ、またはオンプレミス サーバーとそれらが所有しているメモリ、CPU、IOPS などのリソースなど、物理リソースを単純に抽象化したものであると考えてください。 
-
-VM やオンプレミス サーバーとは異なり、RU はいつでも簡単にスケールアップしたりスケールダウンしたりすることができます。 プロビジョニング済みの RU 数は数秒で変更でき、ユーザーは指定した 1 時間の間にプロビジョニングした RU の最大数に対してのみ課金されます。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」を参照してください。
+[Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) を使用すると、データベース アカウントの構成、データの量、ドキュメント サイズ、1 秒あたりの必要な読み取りと書き込みに基づいて、要求ユニットの量を確認できます。
 
 必要な RU 数に影響する主な要因は、次のとおりです。
-- **アイテム (例: ドキュメント) のサイズ**:アイテム/ドキュメントのサイズが増加すると、そのアイテム/ドキュメントの読み書きに消費される RU 数も増加します。
-- **アイテム プロパティの数**:すべてのプロパティに[既定でインデックスが作成される](index-overview.md)場合、アイテムのプロパティ数の増加に伴い、アイテムを書き込むために消費される RU 数も増加します。 [インデックス付きのプロパティ数を制限する](index-policy.md)と、書き込み操作で消費される要求ユニットを削減できます。
-- **同時実行操作**:消費される要求ユニットの数は、(書き込み、読み取り、更新、削除など) さまざまな CRUD 操作やより複雑なクエリが実行される頻度にも依存します。 [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) を使用すると、ご自分の現在の MongoDB データでのコンカレンシーの必要性を出力できます。
-- **クエリのパターン**:クエリが複雑であると、そのクエリで消費される要求ユニット数に影響します。
+- **ドキュメント サイズ**:アイテム/ドキュメントのサイズが増加すると、そのアイテム/ドキュメントの読み書きに消費される RU 数も増加します。
 
-[mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) を使用して JSON ファイルをエクスポートし、1 秒あたりに実行される書き込み、読み取り、更新および削除の数がわかると、プロビジョニングする RU の最初の数を [Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) を使用して見積もることができます。 Capacity Planner では、より複雑なクエリのコストは考慮されません。 そのため、データに対して複雑なクエリがある場合、追加の RU が消費されます。 電卓でも、すべてのフィールドにインデックスが作成され、セッションの整合性が使用されることを想定しています。 クエリのコストを理解する最良の方法は、データ (またはサンプル データ) を Azure Cosmos DB に移行し、[Cosmos DB のエンドポイントに接続](connect-mongodb-account.md)し、`getLastRequestStastistics` コマンドを使用して MongoDB Shell からサンプル クエリを実行して、消費される RU の数を出力する要求の料金を取得することです。
+- **ドキュメント プロパティの数**: ドキュメントの作成または更新で消費される RU の数は、そのプロパティの数、複雑さ、長さに関連します。 [インデックス付きのプロパティ数を制限する](mongodb-indexing.md)と、書き込み操作で消費される要求ユニットを削減できます。
+
+- **クエリのパターン**:クエリが複雑であると、そのクエリで消費される要求ユニット数に影響します。 
+
+クエリのコストを理解する最良の方法は、Azure Cosmos DB でサンプル データを使用し、`getLastRequestStastistics` コマンドを使って [MongoDB Shell からサンプル クエリを実行](connect-mongodb-account.md)して、消費される RU の数を出力する、要求の料金を取得することです。
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
@@ -73,13 +71,15 @@ VM やオンプレミス サーバーとは異なり、RU はいつでも簡単�
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-クエリで消費される RU 数とそのクエリでのコンカレンシーの必要性がわかったら、プロビジョニングされている RU 数を調整できます。 RU の調整を行うのは一回だけではありません。負荷の高いワークロードまたはデータのインポートとは対照的に、大量のトラフィックを予期していないかどうかに関わらず、プロビジョニングされている RU は、継続して最適化またはスケールアップする必要があります。
+[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) に送信できます。  
 
 ## <a id="partitioning"></a>パーティション キーの選択
-Azure Cosmos DB などのグローバルに分散されるデータベースに移行する前に考慮すべき重要な点は、パーティション分割です。 Azure Cosmos DB では、パーティション分割を使用して、データベースの個々のコンテナーをスケーリングし、お使いのアプリケーションの拡張とパフォーマンスに対するニーズを満たしています。 パーティション分割では、コンテナー内の項目は論理パーティションと呼ばれる明確なサブセットに分割されます。 データに適したパーティション キーの選択の詳細および推奨については、[パーティション キーの選択に関するセクション](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)を参照してください。 
+パーティション分割 (シャーディングともいう) は、データを移行する前に考慮すべき重要な点です。 Azure Cosmos DB では、フルマネージド パーティション分割を使用して、ストレージとスループットの要件を満たすためにデータベースの容量を増やします。 この機能では、ルーティング サーバーのホストや構成は必要ありません。   
+
+同様の方法で、パーティション分割機能によって自動的に容量が追加され、それに応じてデータが再調整されます。 データに適したパーティション キーの選択に関する詳細および推奨事項については、「[パーティション キーの選択](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)」記事を参照してください。 
 
 ## <a id="indexing"></a>データのインデックス作成
-Azure Cosmos DB は、既定で、取り込み時にお使いのすべてのデータ フィールドにインデックス作成を行います。 Azure Cosmos DB の[インデックス作成のポリシー](index-policy.md)はいつでも変更できます。 実際、データの移行時にはインデックス作成をオフにして、データが Cosmos DB に入ったらオンに戻すことがしばしば推奨されます。 インデックス作成の詳細については、[Azure Cosmos DB でのインデックス作成](index-overview.md)のセクションを参照してください。 
+既定では、Azure Cosmos DB で、挿入されたすべてのデータに対して自動インデックス作成が提供されます。 Azure Cosmos DB によって提供されるインデックス作成機能には、複合インデックス、一意のインデックス、Time-to-Live (TTL) インデックスの追加が含まれます。 インデックス管理インターフェイスは、`createIndex()` コマンドにマップされます。 詳細については、[Azure Cosmos DB の MongoDB 用 API でのインデックス作成](mongodb-indexing.md)に関するページを参照してください。
 
 [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) では、一意のインデックスがある MongoDB のコレクションは自動的に移行されます。 ただし、一意のインデックスは移行前に作成する必要があります。 Azure Cosmos DB では、コレクションにデータが既にある場合、一意のインデックスの作成をサポートしていません。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
 

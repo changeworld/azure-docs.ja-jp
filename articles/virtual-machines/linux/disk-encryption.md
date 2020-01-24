@@ -2,17 +2,17 @@
 title: Azure Managed Disks のサーバー側暗号化 - Azure CLI
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。また、カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。
 author: roygara
-ms.date: 12/13/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 4495b4489fd98df8dcba47548b64ddec2ad419d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462550"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027825"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure Managed Disks のサーバー側暗号化
 
@@ -24,7 +24,7 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
-プラットフォーム マネージド キーを利用してマネージド ディスクを暗号化することも、独自のキーを使用して暗号化を管理することもできます (パブリック プレビュー)。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する*カスタマー マネージド キー*を指定できます。 
+プラットフォーム マネージド キーを利用してお使いのマネージド ディスクを暗号化することも、お使いの独自のキーを使用して暗号化を管理することもできます。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する*カスタマー マネージド キー*を指定できます。 
 
 以降のセクションでは、キー管理の各オプションについてさらに詳しく説明します。
 
@@ -32,7 +32,7 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 
 既定では、マネージド ディスクはプラットフォーム マネージド暗号化キーを使用します。 2017 年 6 月 10 日をもって、新しいすべてのマネージド ディスク、スナップショット、イメージ、および既存のマネージド ディスクに書き込まれる新しいデータは、プラットフォーム マネージド キーで保存時に自動的に暗号化されます。 
 
-## <a name="customer-managed-keys-public-preview"></a>カスタマー マネージド キー (パブリック プレビュー)
+## <a name="customer-managed-keys"></a>カスタマー マネージド キー
 
 ユーザー独自のキーを使用して、各マネージド ディスクのレベルで暗号化を管理できます。 カスタマー マネージド キーを使用したサーバー側でのマネージド ディスクの暗号化により、Azure Key Vault との統合されたエクスペリエンスが提供されます。 [ご使用の RSA キー](../../key-vault/key-vault-hsm-protected-keys.md)を Key Vault にインポートするか、Azure Key Vault で新しい RSA キーを生成することができます。 Azure マネージド ディスクは[エンベロープ暗号化](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)を使用して、暗号化と暗号化解除を完全に透過的な方法で処理します。 これは、[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 ベースのデータ暗号化キー (DEK) を使用してデータを暗号化します。このキーは、ご使用のキーを使用して保護されます。 DEK の暗号化と暗号化解除にキーを使用するための、Key Vault 内のマネージド ディスクへのアクセス権の付与を行う必要があります。 これにより、データとキーを完全に制御できます。 任意の時点で、キーを無効にしたり、マネージド ディスクへのアクセスを取り消したりすることができます。 また、Azure Key Vault 監視で暗号化キーの使用状況を監査して、マネージド ディスクまたは他の信頼された Azure サービスのみがキーにアクセスしていることを確認することもできます。
 
@@ -54,42 +54,44 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 
 カスタマー マネージド キーへのアクセスを取り消すには、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) および [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関する記事をご覧ください。 アクセスを取り消すと、Azure Storage が暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全データへのアクセスが事実上ブロックされます。
 
-### <a name="supported-scenarios-and-restrictions"></a>サポートされるシナリオと制限
+### <a name="supported-regions"></a>サポートされているリージョン
 
-プレビュー期間中は次のシナリオのみがサポートされています。
+現在サポートされているリージョンは次のとおりです。
 
-- Azure Marketplace イメージから仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してサーバー側の暗号化で OS ディスクを暗号化します。
-- サーバー側の暗号化とカスタマー マネージド キーで暗号化されたカスタム イメージを作成します。
-- カスタム イメージから VM を作成し、サーバー側の暗号化とカスタマー マネージド キーを使用して OS ディスクを暗号化します。
-- サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化されたデータ ディスクを作成します。
-- サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化されたスナップショットを作成します。
-- サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化された仮想マシン スケール セットを作成します。
+- 米国東部、米国西部 2、および米国中南部の各リージョンでは GA オファリングとしてご利用いただけます。
+- 米国中西部、米国東部 2、カナダ中部、北ヨーロッパの各リージョンではパブリック プレビューとしてご利用いただけます。
 
-プレビューには、次の制限もあります。
+### <a name="restrictions"></a>制限
 
-- 米国中西部でのみご利用いただけます。
+現在、カスタマー マネージド キーには次の制限があります。
+
+- サイズ 2080 の ["ソフト" と "ハード" の RSA キー](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)のみがサポートされており、その他のキーまたはサイズはサポートされていません。
 - サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化されたカスタム イメージから作成されたディスクは、同じカスタマー マネージド キーを使用して暗号化する必要があり、同じサブスクリプション内に存在する必要があります。
 - サーバー側の暗号化とカスタマー マネージド キーで暗号化されたディスクから作成されたスナップショットは、同じカスタマー マネージド キーを使用して暗号化する必要があります。
 - サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化されたカスタム イメージは、共有イメージ ギャラリーでは使用できません。
-- Key Vault は、カスタマー マネージド キーと同じサブスクリプションおよびリージョン内にある必要があります。
+- お使いのカスタマー マネージド キー (Azure Key Vault、ディスク暗号化セット、VM、ディスク、およびスナップショット) に関連するすべてのリソースは、同じサブスクリプションとリージョンに存在する必要があります。
 - カスタマー マネージド キーで暗号化されたディスク、スナップショット、およびイメージは、別のサブスクリプションに移動できません。
+- Azure portal を使用してご自分のディスク暗号化セットを作成する場合、現時点ではスナップショットを使用できません。
 
-### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault と DiskEncryptionSet の設定
+### <a name="cli"></a>CLI
+#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault と DiskEncryptionSet の設定
 
-1.  Azure Key Vault と暗号化キーのインスタンスを作成します。
+1. [Azure CLI ](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index) で Azure アカウントにログインしていることを確認します。
+
+1. Azure Key Vault と暗号化キーのインスタンスを作成します。
 
     Key Vault インスタンスを作成する場合、論理的な削除と消去保護を有効にする必要があります。 論理的な削除では、Key Vault は削除されたキーを特定の保持期間 (既定では90日) にわたって保持します。 消去保護では、保持期間が経過するまで、削除されたキーを完全に削除できないようになります。 これらの設定は、誤って削除したためにデータが失われるのを防ぎます。 これらの設定は、Key Vault を使用してマネージド ディスクを暗号化する場合は必須です。
 
     ```azurecli
-    subscriptionId = <yourSubscriptionIDHere>
-    rgName = <yourResourceGroupNameHere>
-    location = <yourDesiredLocationHere>
-    keyVaultName = <yourKeyVaultNameHere>
-    keyName = <yourKeyNameHere>
-    diskEncryptionSetName = <yourDiskEncryptionSetNameHere>
-    diskName = <yourDiskNameHere>
+    subscriptionId=yourSubscriptionID
+    rgName=yourResourceGroupName
+    location=WestCentralUS
+    keyVaultName=yourKeyVaultName
+    keyName=yourKeyName
+    diskEncryptionSetName=yourDiskEncryptionSetName
+    diskName=yourDiskName
 
-    az account set -subscription $subscriptionId
+    az account set --subscription $subscriptionId
 
     az keyvault create -n $keyVaultName -g $rgName -l $location --enable-purge-protection true --enable-soft-delete true
 
@@ -99,63 +101,82 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 1.  DiskEncryptionSet のインスタンスを作成します。 
     
     ```azurecli
-    keyVaultId = $(az keyvault show --name $keyVaultName --query [id] -o tsv)
+    keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
 
-    keyVaultKeyUrl = $(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+    keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
 
-    az group deployment create -g $rgName --template-uri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateDiskEncryptionSet.json" --parameters "diskEncryptionSetName = $diskEncryptionSetName" "keyVaultId = $keyVaultId" "keyVaultKeyUrl=$keyVaultKeyUrl" "region=$location"
+    az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
     ```
 
-1.  DiskEncryptionSet リソースに Key Vault へのアクセス権を付与します。
+1.  DiskEncryptionSet リソースに Key Vault へのアクセス権を付与します。 
+
+    > [!NOTE]
+    > Azure がお使いの Azure Active Directory にご自分の DiskEncryptionSet の ID を作成するのには数分かかる場合があります。 次のコマンドを実行しているときに "Active Directory オブジェクトが見つかりません" のようなエラーが表示された場合は、数分待ってから再試行してください。
 
     ```azurecli
-    desIdentity=$(az ad sp list --display-name $diskEncryptionSetName --query[].[objectId] -o tsv)
+    desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
 
     az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
 
     az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
     ```
 
-### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Marketplace イメージを使用して VM を作成し、カスタマー マネージド キーで OS とデータ ディスクを暗号化する
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Marketplace イメージを使用して VM を作成し、カスタマー マネージド キーで OS とデータ ディスクを暗号化する
 
 ```azurecli
-rgName="<yourResourceGroupName>"
-vmName="<yourVMName>"
-region="westcentralus"
-password="<yourVMLocalAdminPassword>"
-vmSize="Standard_DS3_V2"
-diskEncryptionSetName="<yourDiskEncryptionSetName>"
-templateURI="https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateVMWithDisksEncryptedWithCMK.json"
+rgName=yourResourceGroupName
+vmName=yourVMName
+location=WestCentralUS
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskencryptionSetName
 
-diskEncryptionSetId=$(az resource show -n $diskEncryptionSetName -g ssecmktesting --resource-type "Microsoft.Compute/diskEncryptionSets" --query [id] -o tsv)
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 
-az group deployment create -g $rgName --template-uri $templateURI --parameters "virtualMachineName=$vmName" "adminPassword=$password" "vmSize=$vmSize" "diskEncryptionSetId=$diskEncryptionSetId" "region=$region"
-
+az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 128 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>カスタマー マネージド キーを使用したサーバー側の暗号化で暗号化された空のディスクを作成し、VM に接続する
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Marketplace イメージを使用して仮想マシン スケール セットを作成し、カスタマー マネージド キーで OS とデータ ディスクを暗号化する
 
 ```azurecli
-vmName="<yourVMName>"
-rgName="<yourResourceGroupName>"
-diskName="<yourDiskName>"
-diskSkuName="Premium_LRS"
-diskSizeinGiB="30"
-region="westcentralus"
+rgName=ssecmktesting
+vmssName=ssecmktestvmss5
+location=WestCentralUS
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=diskencryptionset786
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+az vmss create -g $rgName -n $vmssName --image UbuntuLTS --upgrade-policy automatic --admin-username azureuser --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 64 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>カスタマー マネージド キーを使用したサーバー側の暗号化で暗号化された空のディスクを作成し、VM に接続する
+
+```azurecli
+vmName=yourVMName
+rgName=yourResourceGroupName
+diskName=yourDiskName
+diskSkuName=Premium_LRS
+diskSizeinGiB=30
+location=WestCentralUS
 diskLUN=2
-diskEncryptionSetName="<yourDiskEncryptionSetName>"
-templateURI="https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateEmptyDataDiskEncryptedWithSSECMK.json"
-
-diskEncryptionSetId=$(az resource show -n $diskEncryptionSetName -g ssecmktesting --resource-type "Microsoft.Compute/diskEncryptionSets" --query [id] -o tsv)
+diskEncryptionSetName=yourDiskEncryptionSetName
 
 
-az group deployment create -g $rgName --template-uri $templateURI --parameters  "diskName=$diskName" "diskSkuName=$diskSkuName" "dataDiskSizeInGb=$diskSizeinGiB" "diskEncryptionSetId=$diskEncryptionSetId" "region=$region"
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az disk create -n $diskName -g $rgName -l $location --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId --size-gb $diskSizeinGiB --sku $diskSkuName
 
 diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 
-az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId
+az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
 
 ```
+
+> [!IMPORTANT]
+> カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。
+
+[!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。

@@ -4,12 +4,12 @@ description: Azure Container Instances のコンテナー グループ、ライ�
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442292"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888058"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -32,7 +32,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 * ボリューム マウントとして 2 つの Azure ファイル共有が含まれています。各コンテナーは共有のいずれかをローカルにマウントします。
 
 > [!NOTE]
-> 現在、複数コンテナー グループでサポートされているのは、Linux コンテナーのみです。 Windows コンテナーの場合、Azure Container Instances では、1 つのインスタンスのデプロイのみをサポートします。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、サービスの[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
+> 現在、複数コンテナー グループでサポートされているのは、Linux コンテナーのみです。 Windows コンテナーの場合、Azure Container Instances では、1 つのコンテナー インスタンスのデプロイのみをサポートします。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、サービスの[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
 ## <a name="deployment"></a>デプロイ
 
@@ -44,19 +44,19 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="resource-allocation"></a>リソース割り当て
 
-Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのインスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
+Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのコンテナー インスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
 
-### <a name="resource-usage-by-instances"></a>インスタンス別のリソース使用量
+### <a name="resource-usage-by-container-instances"></a>コンテナー インスタンス別のリソース使用量
 
-グループ内の各コンテナー インスタンスには、そのリソース要求で指定されたリソースが割り当てられます。 ただし、省略可能な[リソースの制限][resource-limits]プロパティを構成している場合、グループ内のインスタンスに使用される最大リソースが異なる場合があります。 インスタンスのリソース制限は、必須の[リソース要求][resource-requests]プロパティ以上にする必要があります。
+グループ内の各コンテナー インスタンスには、そのリソース要求で指定されたリソースが割り当てられます。 ただし、省略可能な[リソース制限][resource-limits]プロパティを構成している場合、グループ内のコンテナー インスタンスに使用される最大リソースが異なる場合があります。 コンテナー インスタンスのリソース制限は、必須の[リソース要求][resource-requests]プロパティ以上にする必要があります。
 
-* リソース上限を指定しない場合、インスタンスの最大リソース使用量はそのリソース要求と同じになります。
+* リソース制限を指定しない場合、コンテナー インスタンスの最大リソース使用量はそのリソース要求と同じになります。
 
-* インスタンスの制限を指定した場合、インスタンスの最大使用量は要求よりも大きくなり、設定した上限に達する可能性があります。 それに応じて、グループ内の他のインスタンスによるリソースの使用量が減少する可能性があります。 インスタンスに設定できるリソース上限の最大値は、グループに割り当てられているリソース合計になります。
+* コンテナー インスタンスの制限を指定した場合、インスタンスの最大使用量は要求よりも大きくなり、設定した上限に達する可能性があります。 それに応じて、グループ内の他のコンテナー インスタンスによるリソースの使用量が減少する可能性があります。 コンテナー インスタンスに設定できるリソース制限の最大値は、グループに割り当てられているリソース合計になります。
     
-たとえば、あるグループに属する 2 つのインスタンスがそれぞれ 1 CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
+たとえば、あるグループに属する 2 つのコンテナー インスタンスがそれぞれ 1 CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
 
-このシナリオでは、インスタンスに対して 2 CPU のリソース制限を設定できます。 この構成にすると、コンテナーには使用可能な場合に最大 2 CPU まで使用できます。
+このシナリオでは、コンテナー インスタンスに対して 2 CPU のリソース制限を設定できます。 この構成にすると、コンテナー インスタンスには使用可能な場合に最大 2 CPU まで使用できます。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小値と最大値の割り当て
 
@@ -66,15 +66,21 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 ## <a name="networking"></a>ネットワーク
 
-コンテナー グループは、外部接続 IP アドレスと、その IP アドレス上のポートの名前空間を共有できます。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 
+コンテナー グループは、外部に接続する IP アドレス、その IP アドレス上の 1 つ以上のポート、完全修飾ドメイン名 (FQDN) を持つ DNS ラベルを共有することができます。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 コンテナー グループの IP アドレスと FQDN は、コンテナー グループを削除すると解放されます。 
 
 コンテナー グループ内では、コンテナー インスタンスは任意のポートの localhost を通じて相互にアクセスできます。それらのポートがグループの IP アドレスまたはコンテナーで外部に公開されていなくてもかまいません。
 
-必要に応じて、[Azure 仮想ネットワーク][virtual-network] (プレビュー) にコンテナー グループをデプロイして、コンテナーで仮想ネットワーク内の他のリソースと安全に通信することを許可します。
+必要に応じて、[Azure 仮想ネットワーク][virtual-network]にコンテナー グループをデプロイして、コンテナーで仮想ネットワーク内の他のリソースと安全に通信できるようにします。
 
 ## <a name="storage"></a>ストレージ
 
-コンテナー グループにマウントする外部ボリュームを指定できます。 これらのボリュームは、グループの個別のコンテナーの特定のパスにマップできます。
+コンテナー グループにマウントする外部ボリュームを指定できます。 サポートされるボリュームは次のとおりです。
+* [Azure ファイル共有][azure-files]
+* [シークレット][secret]
+* [空のディレクトリ][empty-directory]
+* [複製された Git リポジトリ][volume-gitrepo]
+
+これらのボリュームは、グループの個別のコンテナーの特定のパスにマップできます。 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -110,5 +116,8 @@ Azure Resource Manager テンプレートを使用してマルチコンテナー
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

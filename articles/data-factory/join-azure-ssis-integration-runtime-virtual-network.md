@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497019"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892339"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -30,10 +30,20 @@ Azure Data Factory で SQL Server Integration Services (SSIS) を使用する場
 
 - Azure-SSIS IR 上で実行される SSIS パッケージから、IP ファイアウォール規則で構成されたデータ ストアまたはリソースに接続する必要がある。
 
-Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS IR を参加させることができます。 
+Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS IR を参加させることができます。
 
 > [!IMPORTANT]
 > 従来の仮想ネットワークは非推奨になるため、代わりに Azure Resource Manager 仮想ネットワークを使用してください。  既に従来の仮想ネットワークを使っている場合は、できるだけ早期に Azure Resource Manager 仮想ネットワークに切り替えます。
+
+「[仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する](tutorial-deploy-ssis-virtual-network.md)」のチュートリアルでは、Azure portal を使用した最小限の手順を示しています。 この記事ではそのチュートリアルをさらに掘り下げて、オプションのタスクすべてについて説明します。
+
+- 仮想ネットワーク (クラシック) を使用する。
+- Azure-SSIS IR に独自のパブリック IP アドレスを使用する。
+- 独自のドメイン ネーム システム (DNS) サーバーを使用する。
+- サブネット上でネットワーク セキュリティ グループ (NSG) を使用する。
+- Azure ExpressRoute またはユーザー定義ルート (UDR) を使用する。
+- カスタマイズされた Azure-SSIS IR を使用する。
+- Azure PowerShell のプロビジョニングを使用する。
 
 ## <a name="access-to-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
 
@@ -47,7 +57,7 @@ Azure-SSIS IR を仮想ネットワークに参加させる場合は、次の重
 
 - 従来の仮想ネットワークが、Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成できます。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。 
  
-- Azure Resource Manager 仮想ネットワークが Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、まず Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md##create-a-virtual-network)を作成できます。 次に、Azure Resource Management と Azure Resource Manager 間の仮想ネットワーク接続を構成します。 
+- Azure Resource Manager 仮想ネットワークが Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、まず Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成できます。 次に、Azure Resource Management と Azure Resource Manager 間の仮想ネットワーク接続を構成します。 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>SQL Database での SSIS カタログのホスト
 
@@ -231,7 +241,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して Azure Resou
 
 1. Microsoft Edge または Google Chrome を起動します。 現時点では、Data Factory UI をサポートしているのはこれらの Web ブラウザーのみです。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 1. **[そのほかのサービス]** を選択します。 フィルターを適用して **[仮想ネットワーク]** を選択します。 
 
@@ -261,7 +271,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
 1. Microsoft Edge または Google Chrome を起動します。 現時点では、Data Factory UI をサポートしているのはこれらの Web ブラウザーのみです。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 1. **[そのほかのサービス]** を選択します。 **[仮想ネットワーク (クラシック)]** を選びます。 
 
@@ -319,7 +329,7 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
    ![データ ファクトリの一覧](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. 一覧で Azure-SSIS IR を使用するデータ ファクトリを選択します。 データ ファクトリのホーム ページが表示されます。 **[作成およびデプロイ]** タイルを選びます。 Data Factory の UI が別のタブに表示されます。 
+1. 一覧で Azure-SSIS IR を使用するデータ ファクトリを選択します。 データ ファクトリのホーム ページが表示されます。 **[作成と監視]** タイルを選択します。 Data Factory の UI が別のタブに表示されます。 
 
    ![データ ファクトリのホーム ページ](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

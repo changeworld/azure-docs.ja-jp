@@ -2,19 +2,23 @@
 title: コンテナーの Azure Monitor エージェントのデータ収集を構成する | Microsoft Docs
 description: この記事では、コンテナーの Azure Monitor エージェントによる stdout/stderr および環境変数のログ収集の制御を構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405676"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933015"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
-コンテナーの Azure Monitor では、コンテナー化されたエージェントにより、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードからの stdout、stderr、および環境変数が収集されます。 このエクスペリエンスを制御するためのカスタム Kubernetes ConfigMaps を作成することにより、エージェントのデータ収集の設定を構成できます。 
+コンテナーの Azure Monitor では、コンテナー化されたエージェントにより、マネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードからの stdout、stderr、および環境変数が収集されます。 このエクスペリエンスを制御するためのカスタム Kubernetes ConfigMaps を作成することにより、エージェントのデータ収集の設定を構成できます。 
 
 この記事では、ConfigMap を作成し、要件に基づいてデータの収集を構成する方法を示します。
+
+>[!NOTE]
+>Azure Red Hat OpenShift では、テンプレートの ConfigMap ファイルが *openshift-azure-loggin* 名前空間に作成されます。 
+>
 
 ## <a name="configmap-file-settings-overview"></a>ConfigMap ファイル設定の概要
 
@@ -44,9 +48,12 @@ ConfigMaps はグローバル リストであり、エージェントに適用�
 
 ConfigMap 構成ファイルを構成してクラスターにデプロイするには、次の手順のようにします。
 
-1. テンプレート ConfigMap の yaml ファイルを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml)し、container-azm-ms-agentconfig.yaml として保存します。  
+1. テンプレート ConfigMap の yaml ファイルを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml)し、container-azm-ms-agentconfig.yaml として保存します。 
 
-2. カスタマイズで ConfigMap yaml ファイルを編集し、stdout、stderr、または環境変数を収集します。
+   >[!NOTE]
+   >Azure Red Hat OpenShift を使用する場合は、ConfigMap テンプレートがクラスターに既に存在しているため、この手順は必要ありません。
+
+2. カスタマイズで ConfigMap yaml ファイルを編集し、stdout、stderr、または環境変数を収集します。 Azure Red Hat OpenShift の ConfigMap yaml ファイルを編集している場合は、最初にコマンド `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` を実行して、テキスト エディターでファイルを開きます。
 
     - stdout のログ収集から特定の名前空間を除外するには、次の例を使ってキー/値を構成します: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`。
     
@@ -54,15 +61,17 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
     
     - クラスター全体で stderr のログ収集を無効にするには、次の例を使ってキー/値を構成します: `[log_collection_settings.stderr] enabled = false`。
 
-3. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
+3. Azure Red Hat OpenShift 以外のクラスターの場合は、Azure Red Hat OpenShift 以外のクラスターで kubectl コマンド `kubectl apply -f <configmap_yaml_file.yaml>` を実行して、ConfigMap を作成します。 
     
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
 
-## <a name="verify-configuration"></a>構成の確認 
+    Azure Red Hat OpenShift では、エディターの変更内容を保存します。
 
-構成が正常に適用されたことを検証するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
+構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+
+## <a name="verify-configuration"></a>構成の確認
+
+Azure Red Hat OpenShift 以外のクラスターに構成が正常に適用されたことを確認するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
 
 ``` 
 ***************Start Config Processing******************** 
@@ -73,6 +82,10 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 - エージェント ポッド ログから。同じ `kubectl logs` コマンドを使用。 
 
+    >[!NOTE]
+    >このコマンドは、Azure Red Hat OpenShift クラスターには適用できません。
+    > 
+
 - ライブ ログから。 ライブ ログでは、次のようなエラーが示されます。
 
     ```
@@ -81,11 +94,21 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 - Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 データは、構成エラーに関する*エラー*の重大度と共に、1 時間ごとに送信されます。 エラーがない場合、テーブルのエントリには "*情報*" の重大度のデータが含まれ、エラーは報告されません。 **[タグ]** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、過去 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
 
-エラーがあると omsagent でファイルを解析できず、再起動されて、既定の構成が使用されます。 ConfigMap でエラーを修正した後、yaml ファイルを保存し、次のコマンドを実行して更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。
+- Azure Red Hat OpenShift では、openshift-azure-logging のログ収集が有効になっているかどうかを確認するために、**ContainerLog** テーブルを検索して omsagent ログを確認します。
+
+Azure Red Hat OpenShift 以外のクラスターで ConfigMap のエラーを修正した後、次のコマンドを実行して yaml ファイルを保存し、更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。 Azure Red Hat OpenShift の場合は、次のコマンドを実行して、更新された ConfigMap を編集して保存します。
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 ## <a name="applying-updated-configmap"></a>更新された ConfigMap を適用する
 
-クラスターに ConfigMap を既にデプロイしてあり、それを新しい構成で更新したい場合は、前に使用した ConfigMap ファイルを編集した後、同じコマンド `kubectl apply -f <configmap_yaml_file.yaml` を使って適用できます。
+Azure Red Hat OpenShift 以外のクラスターに ConfigMap を既にデプロイしてあり、それをより新しい構成で更新したい場合は、前に使用した ConfigMap ファイルを編集してから、前と同じコマンド `kubectl apply -f <configmap_yaml_file.yaml` を使って適用できます。 Azure Red Hat OpenShift の場合は、次のコマンドを実行して、更新された ConfigMap を編集して保存します。
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" updated`。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps にヒート マップ レイヤーを追加する | Microsoft Docs
-description: Azure Maps Web SDK にヒート マップ レイヤーを追加する方法。
+title: マップにヒート マップ レイヤーを追加する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにヒート マップ レイヤーを追加する方法を示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b0d07f18682bf39558180753de38a9c5ff106ee3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ead30a80a6568e72f922f355916d31121b49a93b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408536"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911221"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 

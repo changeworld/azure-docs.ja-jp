@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 2abdae95e14ecc9dab673216a2c6aef652915988
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2019
+ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435465"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027760"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -21,49 +21,41 @@ ms.locfileid: "75435465"
 
 ## <a name="summary"></a>まとめ
 
-Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
+Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
 
-## <a name="release-date-12172019"></a>リリース日: 12/17/2019
+## <a name="release-date-01092019"></a>リリース日: 2019 年 1 月 9 日
 
-このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。
+このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更がない場合は、数日以内にリリースがご自分のリージョンでライブになるまでお待ちください。
 
 > [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
-
 ## <a name="new-features"></a>新機能
+### <a name="tls-12-enforcement"></a>TLS 1.2 の適用
+TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0) の詳細を参照してください。 HDInsight はパブリック HTTPs エンドポイントで TLS 1.2 を使用しますが、TLS 1.1 も下位互換性のために引き続きサポートされています。 
 
-### <a name="service-tags"></a>サービス タグ
-サービス タグを利用することで、ネットワーク アクセスを Azure サービスに簡単に制限できるため、Azure 仮想マシンと Azure 仮想ネットワークのセキュリティが簡単になります。 ネットワーク セキュリティ グループ (NSG) ルールでサービス タグを使用し、グローバルで、または Azure リージョンごとに特定の Azure サービスへのトラフィックを許可または拒否できます。 Azure では、各タグの基になる IP アドレスが保守管理されます。 ネットワーク セキュリティ グループ (NSG) 用の HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 HDInsight をご利用のお客様は Azure portal、PowerShell、REST API からサービス タグを有効にできます。 詳細については、「[Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)」を参照してください。
+このリリースでは、お客様はパブリック クラスター エンドポイント経由のすべての接続でのみ TLS 1.2 を選択できます。 これのサポートに、クラスターの作成時に指定できる新しいプロパティ **minSupportedTlsVersion** が導入されました。 このプロパティを設定しない場合、クラスターは TLS 1.0、1.1、1.2 を引き続きサポートします。これは、今日の動作と同じです。 お客様はこのプロパティの値を "1.2" に設定できます。これは、クラスターが TLS 1.2 以降のみをサポートすることを意味します。 詳細については、[仮想ネットワークの計画に関するページの「トランスポート層セキュリティ」](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security)のセクションを参照してください。
 
-### <a name="custom-ambari-db"></a>カスタム Ambari DB
-HDInsight では、自分の SQL DB for Apache Ambari を使用できるようになりました。 このカスタム Ambari DB は、Azure portal または Resource Manager テンプレートから構成できます。  この機能により、自分に必要な処理と容量に最適な SQL DB を選択できます。 また、事業の成長に合わせて簡単にアップグレードできます。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](hdinsight-custom-ambari-db.md)」を参照してください。
-
-![カスタム Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key でディスクを暗号化する
+HDInsight のマネージド ディスクはすべて、Azure Storage Service Encryption (SSE) で保護されます。 これらのディスク上のデータは、既定で Microsoft が管理するキーを使用して暗号化されます。 このリリース以降、ディスクの暗号化に Bring Your Own Key (BYOK) を使用し、Azure Key Vault を使用して管理することができます。 BYOK 暗号化はクラスターの作成時に 1 回のステップで構成でき、追加コストはかかりません。 Azure Key Vault にマネージド ID として HDInsight を登録し、お使いのクラスターの作成時に暗号化キーを追加するだけです。 詳細については、「[お客様が管理するキー ディスクの暗号化](https://docs.microsoft.com/azure/hdinsight/disk-encryption)」を参照してください。
 
 ## <a name="deprecation"></a>非推奨
 このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
 
 ## <a name="behavior-changes"></a>動作の変更
-このリリースに動作変更はありません。 今後の動作変更に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
+このリリースに動作変更はありません。 今後の変更に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。 
 
-### <a name="transport-layer-security-tls-12-enforcement"></a>トランスポート層セキュリティ (TLS) 1.2 施行
-TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 詳細については、「[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)」を参照してください。 Azure HDInsight クラスターのパブリック HTTPS エンドポイントは TLS 1.2 に対応していますが、旧クライアントとの下位互換性のため、TLS 1.1 も引き続きサポートされます。
-
-次のリリースから、新しい HDInsight クラスターで TLS 1.2 接続のみを許可するように選択し、構成できます。 
-
-2020 年 6 月 30 日以降、Azure HDInsight ではすべての HTTPS 接続で TLS 1.2 以降のバージョンが強制されます。 すべてのクライアントで確実に TLS 1.2 以降のバージョンに対応できるようにすることをお勧めします。
-
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
-HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 2020 年 2 月より (正式な日付は今後通達します)、HDInsight では Azure 仮想マシン スケール セットが代わりに使用されます。 [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)についてご確認ください。
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>ヘッド ノードには最低 4 コアの VM が必要 
+HDInsight クラスターの高可用性および信頼性を確保するには、ヘッド ノードに最低 4 コアの VM が必要です。 2020 年 4 月 6 日以降、お客様は新しい HDInsight クラスターのヘッド ノードに、4 コア以上の VM のみを選択することができます。 既存のクラスターは正常に実行されます。 
 
 ### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark クラスター ノード サイズの変更 
-次期リリースで:
-- ESP Spark クラスターに許容される最小ノード サイズが Standard_D13_V2 に変更されます。 
-- CPU とメモリの容量が比較的低いことに起因し、A シリーズの VM は ESP クラスターに問題を引き起こす可能性があるため、新しい ESP クラスターの作成するとき、A シリーズ VM は非推奨となります。
+今後のリリースで、ESP Spark クラスターに許容される最小ノード サイズは Standard_D13_V2 に変更されます。 A シリーズの VM は、CPU とメモリの容量が比較的少ないため、ESP クラスターで問題が発生する可能性があります。 新しい ESP クラスターの作成に A シリーズの VM は非推奨です。
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 今後のリリースでは、HDInsight では代わりに Azure 仮想マシン スケール セットを使用します。 Azure 仮想マシン スケール セットの詳細をご確認ください。
 
 ### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
 今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
@@ -72,15 +64,4 @@ HDInsight では、Azure 仮想マシンを使用してクラスターをプロ�
 HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
 
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
-HDInsight 3.6 のサポートが 2020 年 12 月 31 日に延長されます。 詳細は「[サポートされている HDInsight バージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」にあります。
-
-HDInsight 4.0 のコンポーネント バージョン変更はありません。
-
-HDInsight 3.6 の Apache Zeppelin:0.7.0 --> 0.7.3 
-
-最新のコンポーネント バージョンについては[こちらのドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)でご確認いただけます。
-
-## <a name="new-regions"></a>新しいリージョン
-
-### <a name="uae-north"></a>アラブ首長国連邦北部
-アラブ首長国連邦北部の管理 IP: `65.52.252.96` と `65.52.252.97`
+このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 および HDInsight 3.6 の現在のコンポーネント バージョンについては、こちらを参照してください。

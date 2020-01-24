@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535735"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974103"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -54,7 +54,7 @@ Azure Machine Learning コンピューティング インスタンスを使用�
 |Intel MPI ライブラリ||
 |Azure CLI ||
 |Azure Machine Learning サンプル ||
-|Azure Machine Learning EDAT エンジン ||            
+|Azure Machine Learning EDAT エンジン ||
 |Docker||
 |Nginx||
 |NCCL 2.0 ||
@@ -76,11 +76,26 @@ Azure Machine Learning コンピューティング インスタンスを使用�
 |その他の PyPI パッケージ|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda パッケージ|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |ディープ ラーニング パッケージ|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning の Python と R SDK のサンプル||
+
+Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインストールされます。  
 
 通常、コンピューティング インスタンスは開発環境として使用されます。  また、開発時やテスト時におけるトレーニングや推論のコンピューティング ターゲットとして使用することもできます。  大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
 
+### <a name="installing-packages"></a>パッケージのインストール
+
+パッケージを Jupyter Notebook または RStudio に直接インストールできます。
+
+* RStudio: 右下にある **[Packages]** タブ、または左上にある **[Console]** タブを使用します。  
+* Python: インストール コードを追加して、Jupyter Notebook のセルで実行します。
+
+または、次のいずれかの方法でターミナル ウィンドウにアクセスすることもできます。
+
+* RStudio: 左上にある **[Terminal]** を選択します。
+* Jupyter Lab: [Launcher] タブの見出し **[Other]** の下にある **[Terminal]** タイルを選択します。
+* Jupyter: [Files] タブの右上にある **[New] > [Terminal]** を選択します。
+* マシンに SSH 接続します。  次に、Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
 
 ## <a name="accessing-files"></a>ファイルにアクセスする
 

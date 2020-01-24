@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613892"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749220"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト
 
 Microsoft は、BLOB ストレージを使用して高パフォーマンス アプリケーションを開発するための多数の実証済みプラクティスを開発してきました。 このチェックリストでは、パフォーマンスを最適化するために開発者が従うことのできる主要なプラクティスを示します。 アプリケーションを設計している間、およびプロセス全体を通して、これらのプラクティスに留意してください。
 
-Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+Azure Storage には、容量、トランザクション レート、および帯域幅についてスケーラビリティとパフォーマンスのターゲットがあります。 Azure Storage のスケーラビリティ ターゲットの詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」および「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)」を参照してください。
 
 ## <a name="checklist"></a>チェック リスト
 
@@ -285,5 +285,6 @@ Azure Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Blob ストレージのスケーラビリティおよびパフォーマンス ターゲット](scalability-targets.md)
+- [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [状態コードとエラー コード](/rest/api/storageservices/Status-and-Error-Codes2)

@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: danlep
-ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445828"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888007"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -45,9 +45,9 @@ ms.locfileid: "75445828"
 | 米国東部 2、米国西部 2 | Windows | 2 | 3.5 |
 
 
-## <a name="availability---virtual-network-deployment-preview"></a>可用性 - 仮想ネットワークのデプロイ (プレビュー)
+## <a name="availability---virtual-network-deployment"></a>可用性 - 仮想ネットワークのデプロイ
 
-次のリージョンとリソースは、[Azure 仮想ネットワーク](container-instances-vnet.md) (プレビュー) にデプロイされたコンテナー グループで使用できます。
+次のリージョンとリソースは、[Azure 仮想ネットワーク](container-instances-vnet.md)にデプロイされたコンテナー グループで使用できます。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 

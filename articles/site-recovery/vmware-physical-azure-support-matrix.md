@@ -3,13 +3,14 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645941"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864334"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -226,7 +227,7 @@ geo 冗長ストレージ | はい
 ホット ストレージ| いいえ
 ブロック blob | いいえ
 保存時の暗号化 (SSE)| はい
-保存時の暗号化 (CMK)| いいえ
+保存時の暗号化 (CMK)| はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | はい
 インポート/エクスポート サービス | いいえ
 VNet 用 Azure Storage ファイアウォール | はい。<br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたもの。

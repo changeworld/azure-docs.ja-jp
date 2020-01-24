@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9615abe3a3373c0fd943fdb5c392eb095bc26a1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430430"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772263"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる。
 
 Azure Active Directory (Azure AD) の全体管理者には、自分のディレクトリにおいて、すべてのサブスクリプションと管理グループにアクセスする権限が与えられていない場合があります。 この記事では、すべてのサブスクリプションと管理グループにアクセスできるよう、権限を昇格させる方法について説明します。
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) の全体管理者には、自分のディレ�
 - 組織内にある Azure のすべてのサブスクリプションと管理グループを表示する
 - オートメーション アプリ (請求書作成アプリや監査アプリなど) から Azure のすべてのサブスクリプションと管理グループへのアクセスを許可する
 
-## <a name="how-does-elevate-access-work"></a>アクセス権の昇格のしくみ
+## <a name="how-does-elevated-access-work"></a>昇格されたアクセスはどのように機能しますか?
 
 Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
 

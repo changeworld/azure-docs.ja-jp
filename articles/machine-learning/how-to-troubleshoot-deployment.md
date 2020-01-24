@@ -6,39 +6,33 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-author: chris-lauren
+author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5d6f94d9b454ee0144ef6d495b164686014952e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534883"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945812"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
 Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーの回避方法または解決方法について説明します。
 
-Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。 デプロイ タスクの内容:
+Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。
+
+モデル デプロイで推奨される最新の方法は、[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由することです。 この場合、サービスによって、デプロイ段階で基本的な docker イメージが自動的に作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
-2. Docker イメージをビルドします。これには次のタスクが含まれます。
-    1. 登録済みのモデルをレジストリからダウンロードします。 
-    2. 環境 yaml ファイルに指定した依存関係に基づき、Python 環境を利用し、Dockerfile を作成します。
-    3. Dockerfile で指定するモデル ファイルとスコアリング スクリプトを追加します。
-    4. Dockerfile を使用して新しい Docker イメージをビルドします。
-    5. ワークスペースに関連付けられている Azure Container Registry に Docker イメージを登録します。
+2. 推論構成を定義する:
+    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを作成するか、調達された環境のいずれかを使用します。
+    2. 環境とスコアリング スクリプトに基づいて、推論構成 (InferenceConfig オブジェクト) を作成します。
 
-    > [!IMPORTANT]
-    > コードによっては、入力なしでイメージの作成が自動的に行われます。
-
-3. Docker イメージを Azure Container Instance (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
-
-4. ACI または AKS で新しいコンテナーを起動します。 
+3. モデルを Azure コンテナー インスタンス (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
 
 このプロセスの詳細は[モデル管理](concept-model-management-and-deployment.md)の概要にあります。
 
@@ -56,11 +50,14 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-デプロイを複数のタスクに分割すると、[Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API または [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API を使用している場合に役立ちます。どちらの関数も、前述の手順を単一のアクションとして実行するためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
+[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを入力パラメーターとして指定し、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 経由で新しいまたは推奨されるデプロイ方法を使用していると仮定した場合、コードは次の 3 つの主な手順に分けることができます。
 
-1. モデルを登録します。 サンプル コードは次のようになります。
+1. モデルを登録します。 サンプル コードをいくつか以下に示します。
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. イメージをビルドします。 サンプル コードは次のようになります。
+2. デプロイの推論構成を定義する:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. サービスとしてイメージをデプロイします。 サンプル コードは次のようになります。
+3. 前の手順で作成された推論構成を使用して、モデルをデプロイします。
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 デプロイ プロセスを個別タスクに分割できたところで、最も一般的なエラーをいくつか確認してみましょう。
-
-## <a name="image-building-fails"></a>イメージをビルドできない
-
-Docker イメージをビルドできない場合、[image.wait_for_creation()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) または [service.wait_for_deployment()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) 呼び出しは失敗し、手掛かりを示すいくつかのエラー メッセージが表示されます。 エラーに関する詳細は、イメージ ビルド ログにもあります。 下のサンプル コードでイメージ ビルド ログ URI の確認方法がわかります。
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-イメージ ログ URI は、Azure Blob Storage に保存されているログ ファイルを指す SAS URL です。 URI をコピーし、ブラウザー ウィンドウに貼り付けます。ログ ファイルはダウンロードして参照できます。
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault アクセス ポリシーと Azure Resource Manager テンプレート
-
-Azure Key Vault に対するアクセス ポリシーの問題が原因でイメージ ビルドも失敗する可能性があります。 この状況は、Azure Resource Manager テンプレートを使用してワークスペースおよび関連付けられたリソース (Azure Key Vault など) を複数回作成するときに、発生する可能性があります。 たとえば、継続的インテグレーションおよびデプロイ パイプラインの一部として同じパラメーターを指定して、テンプレートを複数回使用する場合が挙げられます。
-
-テンプレートによるリソース作成操作のほとんどはべき等操作ですが、テンプレートを使用するたびに Key Vault によってアクセス ポリシーはクリアされます。 アクセス ポリシーをクリアすると、それを使用している既存のワークスペース用の Key Vault へのアクセスは中断されます。 この状況で新しいイメージを作成しようとすると、エラーが発生します。 表示される可能性のあるエラーの例を次に示します。
-
-__ポータル__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-この問題を回避するには、次のいずれかのアプローチをお勧めします。
-
-* パラメーターが同じである場合は、テンプレートを複数回デプロイしないでください。 または、テンプレートを使用してリソースを作成する前に、既存の同じものを削除してください。
-* Key Vault のアクセス ポリシーを調べ、これらのポリシーを使用してテンプレートの `accessPolicies` プロパティを設定します。
-* Key Vault リソースが既に存在しているかどうかを確認します。 存在している場合は、テンプレートを使ってそれを再作成しないでください。 たとえば、既に存在する場合は、Key Vault リソースの作成を無効にするためのパラメーターを追加します。
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
@@ -169,17 +102,17 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 > [!WARNING]
 > ローカル Web サービスのデプロイは、運用シナリオではサポートされていません。
 
-ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (`model` 変数に含まれる) をローカル Web サービスとしてデプロイします。
+ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (モデル変数に含まれる) をローカル Web サービスとしてデプロイします。
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -208,6 +141,8 @@ test_sample = bytes(test_sample, encoding='utf8')
 prediction = service.run(input_data=test_sample)
 print(prediction)
 ```
+
+Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。 
 
 ### <a name="update-the-service"></a>サービスの更新
 
@@ -327,13 +262,12 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 `autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) モジュール リファレンスを参照してください。
 
-
 ## <a name="advanced-debugging"></a>高度なデバッグ
 
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 Visual Studio Code と Python Tools for Visual Studio (PTVSD) を使用することによって、Docker コンテナー内で実行されるコードにアタッチできます。
 
 > [!IMPORTANT]
-> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) クラスを使用してイメージを作成する必要があります。 
+> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
 
 ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 
@@ -382,13 +316,14 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -404,70 +339,33 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
     print("Debugger attached...")
     ```
 
-1. デバッグ中に、イメージを再作成せずに、イメージ内のファイルに変更を加える必要が生じる場合があります。 Docker イメージにテキスト エディター (vim) をインストールするには、`Dockerfile.steps` という名前の新しいテキスト ファイルを作成し、ファイルの内容として次を使用します。
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    テキスト エディターを使用すると、新しいイメージを作成せずに Docker イメージ内のファイルを変更し、その変更をテストできます。
-
-1. `Dockerfile.steps` ファイルを使用するイメージを作成するには、イメージの作成時に `docker_file` パラメーターを使用します。 次の例に、この方法を示します。
+1. 環境定義に基づいてイメージを作成し、そのイメージをローカル レジストリにプルします。 デバッグ中に、イメージを再作成せずに、イメージ内のファイルに変更を加える必要が生じる場合があります。 Docker イメージにテキスト エディター (vim) をインストールするには、`Environment.docker.base_image` と `Environment.docker.base_dockerfile` のプロパティを使用します。
 
     > [!NOTE]
     > この例は、`ws` が Azure Machine Learning ワークスペースをポイントし、`model` がデプロイされているモデルであることを前提としています。 `myenv.yml` ファイルには、手順 1. で作成した Conda の依存関係が含まれています。
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = None
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-イメージが作成されたら、レジストリにイメージの場所が表示されます。 場所は次のテキストのようになります。
+    イメージが作成されてダウンロードされると、イメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が次のようなメッセージに表示されます。
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-このテキストの例では、レジストリ名は `myregistry`、イメージの名前は `myimage` となります。 イメージのバージョンは `1` です。
-
-### <a name="download-the-image"></a>イメージのダウンロード
-
-1. コマンド プロンプト、ターミナル、またはその他のシェルを開き、次の [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) コマンドを使用して、Azure Machine Learning ワークスペースを含む Azure サブスクリプションに対して認証を行います。
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. イメージを含む Azure Container Registry (ACR) に対して認証を行うには、次のコマンドを使用します。 `myregistry` を、イメージを登録したときに返されたもので置き換えます。
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. ローカルの Docker にイメージをダウンロードするには、次のコマンドを使用します。 `myimagepath` を、イメージを登録したときに返された場所で置き換えます。
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    イメージ パスは `myregistry.azurecr.io/myimage:1` のようになります。 ここで、`myregistry` がお使いのレジストリ、`myimage` がイメージ、`1` がイメージのバージョンとなります。
-
-    > [!TIP]
-    > 前の手順の認証は、持続的なものではありません。 認証コマンドとプル コマンドの間の時間が長すぎると、認証エラーが発生します。 この場合は、再認証を行ってください。
-
-    ダウンロードの完了にかかる時間は、インターネット接続の速度によって異なります。 処理中は、ダウンロードの進行状態が表示されます。 ダウンロードが完了したら、`docker images` コマンドを使用してイメージがダウンロードされたことを確認できます。
-
-1. イメージの操作を容易にするには、次のコマンドを使用してタグを追加します。 `myimagepath` を、手順 2. の場所の値で置き換えます。
+1. イメージの操作を容易にするには、次のコマンドを使用してタグを追加します。 `myimagepath` を、前の手順の場所の値で置き換えます。
 
     ```bash
     docker tag myimagepath debug:1

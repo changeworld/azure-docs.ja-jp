@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613060"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890315"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -22,7 +22,7 @@ ms.locfileid: "75613060"
 
 関数のパフォーマンスとコストの要件に最適なプランを選択します。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
 
-従量課金プランではコストが変動するため、この記事ではこのプランについてのみ説明します。 
+従量課金プランではコストが変動するため、この記事ではこのプランについてのみ説明します。 この記事は、「[従量課金プランのコストの請求に関する FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)」を置き換えるものです。
 
 Durable Functions も従量課金プランで実行できます。 Durable Functions を使用する場合のコストに関する考慮事項の詳細については、「[Durable Functions の課金](./durable/durable-functions-billing.md)」を参照してください。
 

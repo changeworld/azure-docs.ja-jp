@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667530"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277975"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -26,8 +26,8 @@ Core Tools を使用して、ローカル コンピューターで関数を開�
 > * [トリガーとバインド拡張を登録します。](#register-extensions)
 > * [ストレージとその他の接続を定義します。](#local-settings-file)
 > * [トリガーおよび言語固有のテンプレートから関数を作成します。](#create-func)
-> * [関数をローカルで実行します](#start)
-> * [Azure にプロジェクトを発行します](#publish)
+> * [関数をローカルで実行します。](#start)
+> * [Azure にプロジェクトを発行します。](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools のバージョン
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 + **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
-+ [**バージョン 2.x および 3.x**](#v2): [Azure Functions ランタイムのバージョン 2.x および 3.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
++ [**バージョン 2.x および 3.x**](#v2): [Azure Functions ランタイムのバージョン 2.x および 3.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)、および [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
 
@@ -45,18 +45,18 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ### <a name="v2"></a>バージョン 2.x および 3.x
 
-バージョン 2.x および 3.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、[Linux](#linux) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
+バージョン 2.x および 3.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)、[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
 
 > [!IMPORTANT]
 > [拡張バンドル]を使用すると、.NET Core SDK をインストールするための要件をバイパスできます。
 
-#### <a name="windows-npm"></a>Windows
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
 
 1. [Node.js]をインストールします。これには、npm が同梱されています。
     - 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
-    - バージョン 3.x のツールの場合、Node 10 以降のバージョンのみがサポートされています。
+    - 3\.x バージョンのツールの場合、Node.js 10 以降のバージョンのみがサポートされています。
 
 1. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
@@ -76,7 +76,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 1. [拡張バンドル]を使用しない場合、[.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows) をインストールします。
 
-#### <a name="brew"></a>Homebrew による MacOS
+# <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
 次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
 
@@ -100,7 +100,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-#### <a name="linux"></a>APT による Linux (Ubuntu/Debian)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
 
@@ -122,7 +122,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
    Debian の APT ソース リストを設定するには、次のコマンドを実行します。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
 1. `/etc/apt/sources.list.d/dotnetdev.list` ファイルを調べて、次に示す適切な Linux バージョン文字列のいずれかがあることを確認します。
@@ -149,6 +149,8 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
     ```
 
 1. [拡張バンドル]を使用しない場合、[.NET Core 2.x SDK for Linux](https://www.microsoft.com/net/download/linux) をインストールします。
+
+---
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
@@ -234,7 +236,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
   使用するストレージ アカウントを選択し、 **[設定]** の **[アクセス キー]** を選択してから、 **[接続文字列]** の値のいずれかをコピーします。
   ![Azure portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。
+- [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、 **[ストレージ アカウント]** を展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
@@ -292,9 +294,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 | 引数     | [説明]                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (バージョン 2.x) バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
-| **`--language -l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x では、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
-| **`--name -n`** | 関数名。 |
-| **`--template -t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
+| **`--language`** 、 **`-l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x では、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
+| **`--name`** 、 **`-n`** | 関数名。 |
+| **`--template`** 、 **`-t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
 
 たとえば、JavaScript HTTP トリガーを 1 つのコマンドで作成するには、次を実行します。
 
@@ -352,12 +354,12 @@ func host start
 | **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 2.x のみを許可します。 |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
 | **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 Version 2.x のみ。 |
-| **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
+| **`--nodeDebugPort`** 、 **`-n`** | 使用する Node.js デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
 | **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
-| **`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
+| **`--port`** 、 **`-p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
 | **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Core Tools を起動した場合にのみ使用されます。|
-| **`--script-root --prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
-| **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
+| **`--script-root`** 、 **`--prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
+| **`--timeout`** 、 **`-t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
 | **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
@@ -371,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->ローカルで実行される場合、HTTP エンドポイントに対して認証は適用されません。 つまり、ローカルの HTTP 要求はすべて、`authLevel = "anonymous"` として処理されます。 詳細については、[HTTP バインディング](functions-bindings-http-webhook.md#authorization-keys)に関する記事を参照してください。
+>ローカルで実行される場合、HTTP エンドポイントに対して承認は適用されません。 つまり、ローカルの HTTP 要求はすべて、`authLevel = "anonymous"` として処理されます。 詳細については、[HTTP バインディング](functions-bindings-http-webhook.md#authorization-keys)に関する記事を参照してください。
 
 ### <a name="passing-test-data-to-a-function"></a>関数へのテスト データの受け渡し
 
@@ -437,10 +439,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 | オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | インライン コンテンツ。 |
-| **`--debug -d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
-| **`--timeout -t`** | Functions ホストの準備が完了するまでの待機時間 (秒単位)。|
-| **`--file -f`** | コンテンツとして使用するファイル名。|
+| **`--content`** 、 **`-c`** | インライン コンテンツ。 |
+| **`--debug`** 、 **`-d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
+| **`--timeout`** 、 **`-t`** | Functions ホストの準備が完了するまでの待機時間 (秒単位)。|
+| **`--file`** 、 **`-f`** | コンテンツとして使用するファイル名。|
 | **`--no-interactive`** | 入力を促しません。 自動シナリオで便利です。|
 
 たとえば、HTTP によってトリガーされる関数を呼び出して、コンテンツ本文を渡すには、次のコマンドを実行します。
@@ -480,12 +482,12 @@ func azure functionapp publish <FunctionAppName>
 
 | オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
+| **`--publish-settings-only`** 、 **`-o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
 |**`--list-ignored-files`** | 発行時に無視されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--list-included-files`** | 発行されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--nozip`** | 既定の `Run-From-Package` モードをオフにします。 |
 | **`--build-native-deps`** | Python 関数アプリを発行するときに、.wheels フォルダーの生成をスキップします。 |
-| **`--build`**<br/>**`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
+| **`--build`** 、 **`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
 | **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧。 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
