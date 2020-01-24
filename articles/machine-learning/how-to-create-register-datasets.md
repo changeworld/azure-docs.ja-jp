@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 65bc164f344090894622a7b2db62336b19d3599e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535367"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045621"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -67,21 +67,10 @@ Python SDK を使用して [Azure データストア](how-to-access-data.md)か�
 
 1. 登録された Azure データストアへの `contributor` または `owner` アクセス権を持っていることを確認します。
 
-1. データストア内のパスを参照してデータセットを作成します。
+2. データストア内のパスを参照してデータセットを作成します。
+> [!Note]
+> 複数のデータストア内の複数のパスからデータセットを作成できます。 データセットの作成元として使用できるファイルの数やデータ サイズには、厳密な制限はありません。 ただし、データ パスごとに、いくつかの要求がストレージ サービスに送信され、ファイルまたはフォルダーを指しているかどうかが確認されます。 このオーバーヘッドによって、パフォーマンスが低下したり、エラーが発生したりする可能性があります。 1000 個のファイルを含む 1 つのフォルダーを参照するデータセットは、1 つのデータ パスを参照していると見なされます。 最適なパフォーマンスを得るために、データストア内の 100 未満のパスを参照するデータセットを作成することをお勧めします。
 
-    ```Python
-    from azureml.core.workspace import Workspace
-    from azureml.core.datastore import Datastore
-    from azureml.core.dataset import Dataset
-    
-    datastore_name = 'your datastore name'
-    
-    # get existing workspace
-    workspace = Workspace.from_config()
-    
-    # retrieve an existing datastore in the workspace by name
-    datastore = Datastore.get(workspace, datastore_name)
-    ```
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
@@ -90,12 +79,20 @@ TabularDatasets を作成するには、SDK を使用するか、または Azure
 .csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。
 
 ```Python
-# create a TabularDataset from multiple paths in datastore
-datastore_paths = [
-                  (datastore, 'weather/2018/11.csv'),
-                  (datastore, 'weather/2018/12.csv'),
-                  (datastore, 'weather/2019/*.csv')
-                 ]
+from azureml.core import Workspace, Datastore, Dataset
+
+datastore_name = 'your datastore name'
+
+# get existing workspace
+workspace = Workspace.from_config()
+    
+# retrieve an existing datastore in the workspace by name
+datastore = Datastore.get(workspace, datastore_name)
+
+# create a TabularDataset from 3 paths in datastore
+datastore_paths = [(datastore, 'ather/2018/11.csv'),
+                   (datastore, 'weather/2018/12.csv'),
+                   (datastore, 'weather/2019/*.csv')]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -156,16 +153,12 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [
-                  (datastore, 'animals')
-                 ]
+datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 
 # create a FileDataset from image and label files behind public web urls
-web_paths = [
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -203,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 SDK から Azure Open Datasets を使用してデータセットを作成するには、`pip install azureml-opendatasets` を使用してパッケージがインストールされていることを確認してください。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは `TabularDataset`、`FileDataset`、またはその両方として使用できます。 すべてのクラスの一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)を参照してください。
 
-ほとんどのクラスは、`TabularDataset` から継承し、そのインスタンスを返します。 これらのクラスの例としては、`PublicHolidays`、`BostonSafety`、`UsPopulationZip` などがあります。 これらの種類のクラスから `TabularDataset` を作成するには、引数を指定せずにコンストラクターを使用します。 Open Datasets から作成されたデータセットを登録すると、データはすぐにはダウンロードされませんが、中央の保存場所から要求したとき (たとえばトレーニング中に) にデータにアクセスできます。 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-特定のクラスは、`TabularDataset` または `FileDataset` として取得できます。こうすることで、ファイルを直接操作したり、ダウンロードしたりできます。 他のクラスは、`get_tabular_dataset()` または `get_file_dataset()` 関数を使用してのみ、データセットを取得できます。 次のコード サンプルは、これらの種類のクラスのいくつかの例を示しています。
+特定のクラスは、`TabularDataset` または `FileDataset` として取得できます。こうすることで、ファイルを直接操作したり、ダウンロードしたりできます。 他のクラスは、`get_tabular_dataset()` 関数または`get_file_dataset()` 関数を使用する場合に**のみ**、データセットを取得できます。 次のコード サンプルは、これらの種類のクラスのいくつかの例を示しています。
 
 ```python
 from azureml.opendatasets import MNIST
@@ -226,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Open Datasets から作成されたデータセットを登録すると、データはすぐにはダウンロードされませんが、中央の保存場所から要求したとき (たとえばトレーニング中に) にデータにアクセスできます。
 
 ### <a name="use-the-ui"></a>UI を使用する
 
@@ -248,10 +234,8 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 新しいバージョンを作成すると、新しいデータセットを同じ名前で登録できます。 データセットのバージョンは、実験または将来の複製に対して特定のバージョンのデータセットを適用できるように、データの状態をブックマークする方法です。 [データセットのバージョンの詳細](how-to-version-track-datasets.md)を参照してください。
 ```Python
 # create a TabularDataset from Titanic training data
-web_paths = [
-            'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
-            'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]
+web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b16d78c9670d05fcec8126c5544d1dd97f6a03bd
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452447"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045710"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -48,7 +48,7 @@ Time Series Insights プレビュー環境をプロビジョニングする際�
 ウォーム ストアのクエリは無料ですが、コールド ストアのクエリにはコストが発生します。 クエリ パターンを理解し、それに従ってウォーム ストア構成を計画することが重要です。 最新データに対する対話型分析はウォーム ストアに配置し、パターン分析と長期的傾向はコールド ストアに配置することをお勧めします。
 
 > [!NOTE]
-> ウォーム データに対してクエリを実行する方法の詳細については、[こちら](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)を参照してください。
+> ウォーム データに対してクエリを実行する方法の詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)に関するページを参照してください。
 
 始めに、3 つの追加項目が必要です。
 

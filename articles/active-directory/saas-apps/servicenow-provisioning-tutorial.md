@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443231"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044724"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -80,7 +80,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD で ServiceNow の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -142,6 +142,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * **EntryJoiningPropertyValueIsMissing:** [属性マッピング](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を確認して、一致する属性を特定します。 この値は、プロビジョニング対象のユーザーまたはグループに存在する必要があります。 
 * [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認して、要件や制限事項 (たとえば、ユーザーの国番号を指定するための形式) を理解してください。
 * ServiceNow のデプロイによっては、Azure AD プロビジョニング サービスの IP 範囲を許可する必要があります。 Azure AD プロビジョニング サービスに予約されている IP 範囲については、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)の「AzureActiveDirectoryDomainServices」を参照してください。
+* ServiceNow 政府機関向けクラウドへのユーザーのプロビジョニングは現在サポートされていません。
 
 ## <a name="additional-resources"></a>その他のリソース
 

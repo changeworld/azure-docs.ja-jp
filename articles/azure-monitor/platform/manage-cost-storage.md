@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658021"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045174"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
@@ -43,6 +43,8 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
   
 従量課金制モデルに加えて、Log Analytics には**容量予約**レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 
 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
+
+すべての価格レベルで、データ ボリュームは、格納するための準備としてデータの文字列表現から計算されます。 `_ResourceId`、`_ItemId`、`_IsBillable`、`_BilledSize` など、[すべてのデータ型に共通するいくつかのプロパティ](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)は、イベント サイズの計算に含まれません。
 
 また、[Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) や [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) などの一部のソリューションには、独自の価格モデルがあります。 
 
@@ -164,6 +166,9 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 > [!NOTE]
 > 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、1 日の上限では、Azure Security Center からのデータ収集は停止されません。 
+
+> [!NOTE]
+> 1 日の上限の適用には待機時間が内在するため、指定された 1 日の上限レベルが正確には適用されない可能性があります。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
 

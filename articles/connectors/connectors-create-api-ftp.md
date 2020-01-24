@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446097"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044290"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
@@ -25,7 +25,7 @@ Azure Logic Apps と FTP コネクタを使用すると、FTP サーバー上の
 
 FTP サーバーからの応答を取得するトリガーを使用し、その出力を他のアクションから使用可能にすることができます。 ロジック アプリから実行アクションを使用して、FTP サーバー上のファイルを管理できます。 また、FTP アクションからの出力を他のアクションで使用するようにもできます。 たとえば、FTP サーバーから定期的にファイルを取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルとその内容に関する電子メールを送信できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-## <a name="limits"></a>制限
+## <a name="limitations"></a>制限事項
 
 * FTP コネクタは明示的 FTP over SSL (FTPS) のみをサポートし、暗黙的 FTPS とは互換性がありません。
 
@@ -36,6 +36,8 @@ FTP サーバーからの応答を取得するトリガーを使用し、その�
   * **[When a file is added or modified (properties only)]\(ファイルの追加または変更時 (プロパティのみ)\)** などのファイルのプロパティが返される FTP トリガーを使用します。
 
   * FTP トリガーの **ファイルのコンテンツの取得**アクションに従います。これにより、暗黙的にチャンクを使用してファイル全体が読み取られます。
+
+* オンプレミスの FTP サーバーがある場合は、オンプレミスのデータ ゲートウェイを使用せずにオンプレミスのデータ ソースにアクセスできるようにするために、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成するか、または [Azure App Service ハイブリッド接続](../app-service/app-service-hybrid-connections.md)を使用することを検討してください。
 
 ## <a name="how-ftp-triggers-work"></a>FTP トリガーの動作
 

@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 30a5058dc47bb9ef22ee3fddb9cc4c2b90271bc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474733"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043519"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -177,7 +178,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. `<RelyingParty>` 要素の下に次の XML スニペットを追加します。 この XML により、_SignUpOrSignIn_ ユーザー体験のオーケストレーション ステップ番号 7 が上書きされます。 オーケストレーション ステップを追加または削除してユーザー体験をカスタマイズした場合は、(`order` 要素内の) 番号が、トークン発行者手順のユーザー体験で指定されているものと一致していることを確認してください。
+1. `<RelyingParty>` 要素の下に次の XML スニペットを追加します。 この XML により、_SignUpOrSignIn_ ユーザー体験のオーケストレーション ステップ番号 7 が上書きされます。 スターター パックの別のフォルダーから開始した場合、またはオーケストレーション ステップを追加または削除してユーザー体験をカスタマイズした場合は、番号 (`order` 要素内) が、ユーザー体験でトークン発行者ステップに対して指定されている番号と一致していることを確認します (たとえば、スターター パックの別のフォルダーで、`LocalAccounts` に対してステップ番号 4、`SocialAccounts` に対して 6、`SocialAndLocalAccountsWithMfa` に対して 9)。
 
     ```XML
     <UserJourneys>
@@ -268,12 +269,12 @@ Azure AD B2C ポリシーのメタデータは、次の URL から入手でき�
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Azure Active Directory にアプリケーションを登録する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*SAMLApp1* です。
-1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリまたは任意の ID プロバイダーのアカウント]** を選択します。
+1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://localhost`」と入力します。 この値は、後でアプリケーションの登録のマニフェストで変更します。
 1. **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** を選択します。
 1. **[登録]** を選択します。
@@ -285,11 +286,11 @@ SAML アプリの場合、アプリケーションの登録のマニフェスト
 1. [Azure portal](https://portal.azure.com) で、前のセクションで作成したアプリケーションの登録に移動します。
 1. **[管理]** で、 **[マニフェスト]** を選択してマニフェスト エディターを開きます。 次のセクションで、いくつかのプロパティを変更します。
 
-#### <a name="identifieruri"></a>IdentifierUri
+#### <a name="identifieruris"></a>identifierUris
 
-`IdentifierUri` は、Azure AD B2C テナント内の Web アプリを一意に識別するユーザー定義 URI が含まれる文字列コレクションです。 識別子 URI は組織のディレクトリ内で検証済みのドメインのものである必要があります。 たとえば、「 `https://contoso.onmicrosoft.com/app-name` 」のように入力します。 サービス プロバイダーは、SAML 要求の `Issuer` 要素にこの値を設定する必要があります。
+`identifierUris` は、Azure AD B2C テナント内の Web アプリを一意に識別するユーザー定義 URI が含まれる文字列コレクションです。 サービス プロバイダーは、SAML 要求の `Issuer` 要素にこの値を設定する必要があります。
 
-#### <a name="samlmetadataurl"></a>SamlMetadataUrl
+#### <a name="samlmetadataurl"></a>samlMetadataUrl
 
 このプロパティは、サービス プロバイダーの公開されているメタデータ URL を表します。 このメタデータ URL により、匿名でアクセスできる任意のエンドポイント (BLOB ストレージなど) にアップロードされたメタデータ ファイルを指すことができます。
 
@@ -303,7 +304,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
-#### <a name="replyurlwithtype-optional"></a>ReplyUrlWithType (省略可能)
+#### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (省略可能)
 
 メタデータ URI を設定しない場合は、応答 URL を明示的に指定できます。 この省略可能なプロパティは `AssertionConsumerServiceUrl` (サービス プロバイダーのメタデータ内の `SingleSignOnService` URL) を表し、`BindingType` は `HTTP POST` であると見なされます。
 
@@ -320,7 +321,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 ],
 ```
 
-#### <a name="logouturl-optional"></a>LogoutUrl (省略可能)
+#### <a name="logouturl-optional"></a>logoutUrl (省略可能)
 
 この省略可能なプロパティは `Logout` URL (証明書利用者のメタデータ内の `SingleLogoutService` URL) を表し、この `BindingType` は `Http-Redirect` であると見なされます。
 
