@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: データの暗号化
           href: concepts-data-encryption-mysql.md
+        - name: データの暗号化
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD 認証
+          href: concepts-azure-ad-authentication.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -238,6 +242,10 @@
       items:
         - name: Azure portal
           href: howto-data-encryption-portal.md
+    - name: Azure AD との統合
+      items:
+        - name: Azure AD の統合の構成
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: サーバーの再起動
       items:
         - name: Azure portal
