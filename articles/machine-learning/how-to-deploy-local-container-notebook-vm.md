@@ -31,7 +31,7 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 - 開発中のモデルをテストします。
 
 > [!TIP]
-> コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、_ローカル デプロイ_です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+> コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、"_ローカル デプロイ_" です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

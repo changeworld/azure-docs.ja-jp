@@ -57,7 +57,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 このプロジェクトの `examples/cli-train-deploy` ディレクトリには、モデルのトレーニング時に使用される以下のファイルが含まれています。
 
-* `.azureml\mnist.runconfig`:__実行構成__ファイル。 このファイルでは、モデルのトレーニングに必要なランタイム環境を定義します。 この例では、トレーニング環境へのモデルのトレーニングに使用されるデータもマウントします。
+* `.azureml\mnist.runconfig`:__実行構成__ ファイル。 このファイルでは、モデルのトレーニングに必要なランタイム環境を定義します。 この例では、トレーニング環境へのモデルのトレーニングに使用されるデータもマウントします。
 * `scripts\train.py`:トレーニング スクリプト。 このファイルでは、モデルをトレーニングします。
 * `scripts\utils.py`:トレーニング スクリプトによって使用されるヘルパー ファイル。
 * `.azureml\conda_dependencies.yml`:トレーニング スクリプトの実行に必要なソフトウェアの依存関係を定義します。
@@ -67,8 +67,8 @@ git clone https://github.com/microsoft/MLOps.git
 
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
-* `aciDeploymentConfig.yml`:__デプロイ構成__ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.yml`:推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
+* `inferenceConfig.yml`:__推論構成__ ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 リソース グループは、Azure プラットフォーム上のリソースの基本的なコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
 
-__新しいリソース グループを作成__するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
+__新しいリソース グループを作成__ するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 
 > [!TIP]
 > Azure Machine Learning が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。

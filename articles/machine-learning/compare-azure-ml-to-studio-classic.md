@@ -29,7 +29,7 @@ ms.locfileid: "75974133"
 Azure Machine Learning デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用されています。また、スケーラブルで、Azure Machine Learning に完全に統合されています。  
 
 > [!TIP]
-> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに__加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
+> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに __加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比較:Azure Machine Learning と Machine Learning Studio (クラシック)
 
