@@ -56,6 +56,8 @@
               href: supportability/networking-quota-requests.md
     - name: Azure portal に関する問題のトラブルシューティング
       items:
+        - name: 削除されたダッシュボードの復旧
+          href: recover-shared-deleted-dashboard.md
         - name: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
           href: supportability/sku-series-unavailable.md
         - name: トラブルシューティングを目的としたブラウザー トレースのキャプチャ

@@ -501,6 +501,8 @@
               href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
             - name: Apache Ambari でダウンしたホストとサービスが表示される
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: Apache Ambari の古いアラート
+              href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
             - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS のトラブルシューティング
@@ -509,6 +511,8 @@
               href: ./hdinsight-troubleshoot-yarn.md
             - name: Data Lake Store ファイルのトラブルシューティング
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
+            - name: Apache Ambari のディレクトリに関するアラート
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
 - name: Apache Kafka
   items:
     - name: 概要

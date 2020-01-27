@@ -4,7 +4,7 @@
   items:
     - name: Time Series Insights について
       href: time-series-insights-update-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Azure Time Series Insights GA
@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI 統合
               href: concepts-power-bi.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: データ アクセスの許可
       href: time-series-insights-data-access.md
@@ -91,7 +91,7 @@
           href: time-series-insights-send-events.md
         - name: 環境のスケーリング
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: クエリのための JSON の作成
+        - name: イングレスとクエリに対する JSON の調整
           href: how-to-shape-query-json.md
         - name: 調整の緩和
           href: time-series-insights-environment-mitigate-latency.md
@@ -107,7 +107,7 @@
           href: time-series-insights-update-how-to-troubleshoot.md
         - name: データ モデリング
           href: time-series-insights-update-how-to-tsm.md
-        - name: クエリのための JSON の作成
+        - name: イングレスとクエリに対する JSON の調整
           href: time-series-insights-update-how-to-shape-events.md
         - name: Power BI に接続する
           href: how-to-connect-power-bi.md
