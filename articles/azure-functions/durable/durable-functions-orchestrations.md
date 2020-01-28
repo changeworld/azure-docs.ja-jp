@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545708"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261553"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
-Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 "*オーケストレーター関数*" を使用すると、関数アプリ内の他の持続的関数の実行を調整できます。 オーケストレーター関数には次のような特性があります。
+Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 *オーケストレーター関数*を使用すると、関数アプリ内の他の持続的関数の実行を調整できます。 オーケストレーター関数には次のような特性があります。
 
 * オーケストレーター関数では、手続き型コードを使用して関数のワークフローが定義されています。 宣言型スキーマまたはデザイナーは必要ありません。
 * オーケストレーター関数では、他の持続的関数を同期および非同期のどちらでも呼び出すことができます。 呼び出された関数からの出力を、ローカル変数に確実に保存できます。
@@ -39,7 +39,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ほとんどの[インスタンス管理操作](durable-functions-instance-management.md)で、オーケストレーション インスタンス ID は必須のパラメーターです。 また、トラブルシューティングや分析を目的とする Application Insights での[オーケストレーション追跡データによる検索](durable-functions-diagnostics.md#application-insights)などの診断にも重要です。 このため、生成されたインスタンス ID は、後で簡単に参照できる外部の場所 (データベースやアプリケーション ログなど) に保存することをお勧めします。
 
-## <a name="reliability"></a>信頼性
+## <a name="reliability"></a>[信頼性]
 
 オーケストレーター関数は、[イベント ソーシング](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)設計パターンを使用して、この関数の実行状態を確実に管理します。 Durable Task Framework では、オーケストレーションの現在の状態を直接格納する代わりに、追加専用ストアを使用して、関数オーケストレーションによって実行されるすべてのアクションが記録されます。 追加専用ストアには、実行時のすべての状態の "ダンプ" に比べて、多くのメリットがあります。 メリットには、パフォーマンス、スケーラビリティ、および応答性の向上が含まれます。 トランザクション データの最終的な一貫性、完全な監査証跡、および監査履歴も取得できます。 監査証跡では、信頼性の高い補正アクションがサポートされます。
 
@@ -55,7 +55,9 @@ Durable Functions では、イベント ソーシングが透過的に使用さ�
 
 ## <a name="orchestration-history"></a>オーケストレーションの履歴
 
-Durable Task Framework のイベント ソーシング動作は、記述したオーケストレーター関数のコードと密接に結び付けられています。 次の C# のオーケストレーター関数のような、アクティビティ チェーン オーケストレーター関数があるものとします。
+Durable Task Framework のイベント ソーシング動作は、記述したオーケストレーター関数のコードと密接に結び付けられています。 次のオーケストレーター関数のような、アクティビティ チェーン オーケストレーター関数があるものとします。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-JavaScript でコーディングしている場合、アクティビティ チェーン オーケストレーター関数は次のコード例のようになります。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ステートメントごとに、関数の実行状態のチェックポイントが、持続的なストレージ バックエンド (通常は Azure Table Storage) に記録されます。 この状態は、"*オーケストレーションの履歴*" と呼ばれます。
 
@@ -106,7 +110,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 完了すると、Azure Table Storage の上記の関数の履歴は次の表のようになります (わかりやすくするために一部省略されています)。
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | 名前             | 結果                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -123,7 +127,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 完了           |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | [完了]           |
 
 列の値に関する注意点:
 
@@ -139,7 +143,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
   * **OrchestratorCompleted**:オーケストレーター関数が待機状態になりました。
   * **ContinueAsNew**:オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
   * **ExecutionCompleted**:オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
-* **Timestamp**:履歴イベントの UTC タイムスタンプ。
+* **[タイムスタンプ]** : 履歴イベントの UTC タイムスタンプ。
 * **Name**:呼び出された関数の名前。
 * **入力**:関数の JSON 形式の入力。
 * **Result**:関数の出力、つまり、戻り値。
@@ -182,7 +186,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 詳細と例については、[エラー処理](durable-functions-error-handling.md)に関する記事をご覧ください。
 
-### <a name="critical-sections-durable-functions-2x"></a>重要なセクション (Durable Functions 2.x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要なセクション (Durable Functions 2.x、現在 .NET のみ)
 
 オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の `LockAsync` メソッドを使用して "*クリティカル セクション*" を定義できます。
 
@@ -212,7 +216,9 @@ public static async Task Synchronize(
 
 [オーケストレーター関数のコードの制約](durable-functions-code-constraints.md)に関する記事で説明されているように、オーケストレーター関数は I/O を行うことを許可されていません。 この制限に対する一般的な回避策は、I/O を行う必要があるすべてのコードをアクティビティ関数内にラップすることです。 外部システムとのやりとりが頻繁に行われるオーケストレーションでは、アクティビティ関数を使用して、HTTP の呼び出しを行い、その結果をオーケストレーションに返します。
 
-この一般的なパターンを簡略化するため、オーケストレーター関数では、.NET の `CallHttpAsync` メソッドを使用して、HTTP API を直接呼び出すことができます。 基本的な要求/応答パターンのサポートに加えて、`CallHttpAsync` では、一般的な非同期 HTTP 202 ポーリング パターンの自動処理がサポートされており、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した外部サービスによる認証もサポートされています。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+この一般的なパターンを簡略化するため、オーケストレーター関数では、`CallHttpAsync` メソッドを使用して、HTTP API を直接呼び出すことができます。
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+基本的な要求と応答のパターンのサポートに加えて、このメソッドでは、一般的な非同期 HTTP 202 ポーリング パターンの自動処理がサポートされており、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した外部サービスによる認証もサポートされています。
+
 詳細と例については、[HTTP 機能](durable-functions-http-features.md)に関する記事をご覧ください。
 
 > [!NOTE]
@@ -251,9 +263,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="passing-multiple-parameters"></a>複数のパラメーターを渡す
 
-アクティビティ関数に複数のパラメーターを直接渡すことはできません。 オブジェクトの配列を渡すか、.NET の [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することをお勧めします。
+アクティビティ関数に複数のパラメーターを直接渡すことはできません。 オブジェクトの配列または複合オブジェクトを渡すことをお勧めします。
 
-次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -290,7 +304,37 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>オーケストレーター
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>アクティビティ
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [オーケストレーター コードの制約](durable-functions-code-constraints.md)

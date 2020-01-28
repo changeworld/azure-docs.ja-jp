@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:Face API (C#)
+title: チュートリアル:Face 接続済みサービス
 titleSuffix: Azure Cognitive Services
-description: Cognitive Services Face API を利用して画像内の顔の特徴を検出する Windows アプリを作成します。
+description: Cognitive Services Face サービスを利用して画像内の顔の特徴を検出する Windows アプリを作成します。
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970297"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170238"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを使用して Cognitive Services Face API に接続する
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを使用して Face サービスに接続する
 
-Cognitive Services Face API を使用して、写真の中の顔を検出、分析、整理、タグ付けすることができます。
+Azure Face サービスを使用して、写真の中の顔を検出、分析、整理、タグ付けすることができます。
 
-この記事と関連記事では、Cognitive Services Face API に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Cognitive Services 拡張機能がインストールされた Visual Studio 2017 15.7 またはそれ以降の両方で使用できます。
+この記事と関連記事では、Face サービスに Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Cognitive Services 拡張機能がインストールされた Visual Studio 2017 15.7 またはそれ以降の両方で使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>プロジェクトを作成して Cognitive Services Face API のサポートを追加する
+## <a name="create-a-project-and-add-support-for-face"></a>プロジェクトを作成し、Face のサポートを追加する
 
 1. 新しい ASP.NET Core Web プロジェクトを作成します。 [空のプロジェクト] テンプレートを使用します。 
 
@@ -47,16 +47,16 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
 
    ![サブスクリプションを選択します。](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. 使用するサブスクリプションを選択し、Face API の名前を選択するか、または [編集] リンクを選択して自動生成の名前を修正し、リソース グループ、および価格レベルを選択します。
+1. 使用するサブスクリプションを選択し、Face サービスの名前を選択するか、または [編集] リンクを選択して自動生成の名前を修正し、リソース グループ、および価格レベルを選択します。
 
    ![接続済みサービスの詳細を編集する](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    価格レベルの詳細については、リンク先を参照してください。
 
 1. [追加] を選択して、接続済みサービスのサポートを追加します。
-   Face API の接続をサポートするために、Visual Studio はプロジェクトを修正し、NuGet パッケージ、構成ファイルのエントリ、およびその他の変更を追加します。
+   Face サービスへの接続をサポートするために、Visual Studio はプロジェクトを修正し、NuGet パッケージ、構成ファイルのエントリ、およびその他の変更を追加します。
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Face API を使用して画像の中の顔の属性を検出する
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>Face サービスを使用して画像の中の顔の属性を検出する
 
 1. Startup.cs で次の using ステートメントを追加します。
  
@@ -79,7 +79,7 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
       }
    ```
 
-1. プロジェクトの wwwroot フォルダー内に images フォルダーを追加して、画像ファイルを wwwroot フォルダーに追加します。 たとえば、この [Face API ページ](https://azure.microsoft.com/services/cognitive-services/face/)にある画像の 1 つを使用できます。 画像の 1 つを右クリックしてローカルのハード ドライブに保存し、ソリューション エクスプローラーで images フォルダーを右クリックし、 **[追加]**  >  **[既存の項目]** を選択してその画像をプロジェクトに追加します。 ソリューション エクスプローラーで、プロジェクトは次のようになります。
+1. プロジェクトの wwwroot フォルダー内に images フォルダーを追加して、画像ファイルを wwwroot フォルダーに追加します。 たとえば、Azure portal の [Face ページ](https://azure.microsoft.com/services/cognitive-services/face/)にある画像の 1 つを使用できます。 画像の 1 つを右クリックしてローカルのハード ドライブに保存し、ソリューション エクスプローラーで images フォルダーを右クリックし、 **[追加]**  >  **[既存の項目]** を選択してその画像をプロジェクトに追加します。 ソリューション エクスプローラーで、プロジェクトは次のようになります。
  
    ![images フォルダーと画像ファイル](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
 
    ![新しい場合はコピーする](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. Face API にアクセスして画像をテストするには、Configure メソッドを次のコードに置き換えます。 imagePath 文字列を、顔の画像の正しいパスとファイル名に変更します。
+1. Face サービスにアクセスして画像をテストするには、Configure メソッドを次のコードで置き換えます。 imagePath 文字列を、顔の画像の正しいパスとファイル名に変更します。
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,11 +231,11 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
         }
    ```
 
-1. Web アプリケーションを実行し、どの Face API が画像内に見つかったか確認します。
+1. Web アプリケーションを実行し、Face サービスによって画像内に何が見つかったか確認します。
  
-   ![Face API の画像とフォーマットされた結果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![Face サービスの画像とフォーマットされた結果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、リソース グループを削除します。 これにより、Cognitive Service と関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
@@ -243,6 +243,6 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
 1. **[リソース グループの削除]** を選択します。
 1. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Face API のドキュメント](Overview.md)を読み、Face API について理解を深めます。
+[Face のドキュメント](Overview.md)を読み、Face サービスについて理解を深めます。

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106586"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263643"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106586"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-このチュートリアルでは、コネクテッド空調デバイスの温度が華氏 90&deg; 度を超えた場合にメールが送信されるルールを作成します。
+このチュートリアルでは、コネクテッド空調デバイスの温度が華氏 70&deg; を超えた場合にメールが送信されるルールを作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * テレメトリベースのルールを作成する
 > * アクションを追加する
 
@@ -48,13 +49,13 @@ ms.locfileid: "74106586"
 
     ![[ルール] ビュー](media/tutorial-configure-rules/newrule.png)
 
-5. ルールを定義するには、次の表の情報を使用します。
+4. ルールを定義するには、次の表の情報を使用します。
 
-    | Setting                                      | 値                             |
+    | 設定                                      | 値                             |
     | -------------------------------------------- | ------------------------------    |
-    | 名前                                         | 空調機の温度アラート |
+    | Name                                         | 空調機の温度アラート |
     | [Enable rule for all devices of this template]\(このテンプレートのすべてのデバイスに対してルールを有効にする\) | On                                |
-    | 条件                                    | Temperature is greater than 90    |
+    | 条件                                    | 温度が 70 度を超える    |
     | 集計                                  | なし                              |
 
     ![温度ルールの条件](media/tutorial-configure-rules/temperaturerule.png)
@@ -71,10 +72,11 @@ ms.locfileid: "74106586"
 
 2. アクションを定義するには、次の表の情報を使用します。
 
-    | Setting   | 値                          |
-    | --------- | ------------------------------ |
-    | ターゲット        | メール アドレス             |
-    | メモ     | 空調機の温度がしきい値を超えました。 |
+    | 設定      | 値                                               |
+    | ------------ | --------------------------------------------------- |
+    | Display name | 温度のアラートをメールで通知                             |
+    | ターゲット           | メール アドレス                                  |
+    | メモ        | 空調機の温度がしきい値を超えました。 |
 
     > [!NOTE]
     > メール通知を受け取るには、メール アドレスが[アプリケーションのユーザー ID](howto-administer.md) である必要があります。また、そのユーザーが少なくとも一度アプリケーションにサインインしている必要があります。
@@ -90,18 +92,20 @@ ms.locfileid: "74106586"
 > [!NOTE]
 > テストの完了後は、ルールを無効にして、受信トレイに届くアラートを停止してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * テレメトリベースのルールを作成する
 > * アクションを追加する
 
 これでしきい値に基づいたルールを定義できました。推奨される次の手順は、[オペレーターのビューのカスタマイズ](tutorial-customize-operator.md)です。
 
 Azure IoT Central のさまざまな種類のルールとルール定義をパラメーター化する方法の詳細については、以下を参照してください。
+
 * [テレメトリ ルールを作成して通知を設定する](howto-create-telemetry-rules.md)。
 * [イベント ルールを作成して通知を設定する](howto-create-event-rules.md)。
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846404"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154841"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>チュートリアル:Azure Multi-Factor Authentication のパイロット ロール アウトを完了する
 
@@ -24,7 +24,7 @@ ms.locfileid: "74846404"
 
 > [!div class="checklist"]
 > * Azure Multi-Factor Authentication の有効化
-> * Azure Multi-Factor Authentication のテスト
+> * Azure Multi-Factor Authentication をテストする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "74846404"
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の有効化
 
 1. 全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]** 、 **[条件付きアクセス]** の順に移動します
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します
 1. **[新しいポリシー]** を選択します
 1. ポリシーに「**MFA Pilot**」という名前を付けます
 1. **[ユーザーとグループ]** の下で、 **[ユーザーとグループの選択]** を選択します
@@ -47,11 +47,11 @@ ms.locfileid: "74846404"
     * **[選択]** をクリックします。
     * **[完了]** をクリックします
 1. **[条件]** セクションはスキップします
-1. **[許可]** の下で、 **[アクセス権の付与]** が選択されていることを確認します
-    * **[多要素認証を要求する]** ボックスをオンにします
+1. **[許可]** で、 **[アクセス権の付与]** ラジオ ボタンが選択されていることを確認します
+    * **[多要素認証を要求する]** チェック ボックスをオンにします。
     * **[選択]** をクリックします。
 1. **[セッション]** セクションはスキップします
-1. **[ポリシーを有効にする]** を **[オン]** にします
+1. **[ポリシーを有効にする]** を **[オン]** に切り替えます。
 1. **[作成]**
 
 ## <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication をテストする
@@ -59,24 +59,24 @@ ms.locfileid: "74846404"
 条件付きアクセス ポリシーが機能することを証明するには、MFA を必要としないリソースへのログインをテストし、次に MFA を必要とする Azure portal へのログインをテストします。
 
 1. InPrivate または incognito モードで新しいブラウザー ウィンドウを開き、[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com) に移動します。
-   * この記事の前提条件のセクションで作成したテスト ユーザーでログインし、MFA を完了するように求められないことに注意してください。
+   * この記事の前提条件のセクションで作成したテスト ユーザーとしてログインし、MFA を完了するように求められないことを確認します。
    * ブラウザー ウィンドウを閉じます。
 2. InPrivate または incognito モードで新しいブラウザー ウィンドウを開き、[https://portal.azure.com](https://portal.azure.com) に移動します。
-   * この記事の前提条件のセクションで作成したテスト ユーザーでログインし、今度は Azure Multi-Factor Authentication に登録してこれを使用するように要求されることに注意してください。
+   * この記事の前提条件のセクションで作成したテスト ユーザーでログインし、今度は Azure Multi-Factor Authentication に登録してこれを使用するように要求されることを確認します。
    * ブラウザー ウィンドウを閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで構成した機能をもう使用しないと判断した場合は、次の変更を行います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]** 、 **[条件付きアクセス]** の順に移動します
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. 作成した条件付きアクセス ポリシーを選択します。
 1. **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Multi-Factor Authentication を有効にしました。 次のチュートリアルに進み、Azure Identity Protection をセルフサービスによるパスワードのリセットと Multi-Factor Authentication のエクスペリエンスに統合する方法を参照してください。
+このチュートリアルでは、Azure Multi-Factor Authentication を有効にしました。 次のチュートリアルに進み、Azure Identity Protection をセルフサービス パスワード リセット と Multi-Factor Authentication のエクスペリエンスに統合する方法を参照してください。
 
 > [!div class="nextstepaction"]
 > [サインイン時にリスクを評価する](tutorial-risk-based-sspr-mfa.md)

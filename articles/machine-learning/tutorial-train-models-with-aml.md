@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532465"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261366"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>コンピューティング先の作成または既存のコンピューティング先のアタッチ
 
-マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。
+マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 その VM 上で実行する Python コードは、後でこのチュートリアルの中で送信します。 
+
+以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。
 
  **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-これで、クラウドでモデルをトレーニングするために必要なパッケージとコンピューティング リソースが揃いました。
+これで、クラウドでモデルをトレーニングするために必要なパッケージとコンピューティング リソースが揃いました。 
 
 ## <a name="explore-data"></a>データの探索
 
@@ -215,7 +217,7 @@ plt.show()
 
 ## <a name="train-on-a-remote-cluster"></a>リモート クラスターでのトレーニング
 
-このタスクでは、以前に設定したリモート トレーニング クラスターにジョブを送信します。  ジョブを送信するには、次のようにします。
+このタスクでは、あらかじめ設定しておいたリモート トレーニング クラスターで実行するジョブを送信します。  ジョブを送信するには、次のようにします。
 * ディレクトリを作成する
 * トレーニング スクリプトを作成する
 * エスティメータ オブジェクトを作成する

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865224"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156728"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -38,7 +38,7 @@ ms.locfileid: "75865224"
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>Azure Data Factory 環境を設定する
 
-このセクションでは、Azure portal から Azure Data Factory ユーザー エクスペリエンス (ADF UX) にアクセスする方法について説明します。 ADF UX に移動したら、リンクされたサービスを 3 つ、使用する各データ ストア (Azure SQL DB、ADLS Gen2、Azure Synapse Analytics) について構成します。
+このセクションでは、Azure portal から Azure Data Factory ユーザー エクスペリエンス (ADF UX) にアクセスする方法について説明します。 ADF UX に移動したら、使用するデータ ストアごとに、次の 3 つのリンクされたサービスを構成します: Azure SQL DB、ADLS Gen2、および Azure Synapse Analytics。
 
 Azure Data Factory では、リンクされたサービスによって外部リソースへの接続情報が定義されます。 Azure Data Factory では現在、85 を超えるコネクタをサポートしています。
 
@@ -99,7 +99,7 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 ![ポータル](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む
+## <a name="ingest-data-using-the-copy-activity"></a>コピー アクティビティを使用してデータを取り込む
 
 このセクションでは、Azure SQL DB から ADLS Gen2 ストレージ アカウントにテーブルを 1 つ取り込むコピー アクティビティを含んだパイプラインを作成します。 ADF UX を介してパイプラインを追加し、データセットを構成して、パイプラインをデバッグする方法を見ていきましょう。 このセクションで使用される構成パターンは、リレーショナル データ ストアからファイルベースのデータ ストアへのコピーに適用できます。
 

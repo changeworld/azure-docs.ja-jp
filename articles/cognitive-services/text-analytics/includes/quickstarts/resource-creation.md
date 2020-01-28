@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446288"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159598"
 ---
 Text Analytics API は、次のいずれかの方法で使い始めることができます。
 
@@ -20,10 +20,10 @@ Text Analytics API は、次のいずれかの方法で使い始めることが�
     * Text Analytics API を試してみたいものの Azure サブスクリプションをお持ちでない方に最適な方法です。
     
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成する"  target="_blank">Text Analytics リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。
+    * リソースを削除するまで使用できます。
     * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードします。
      
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="複数のサービスのリソースを作成する" target="_blank">マルチサービス リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。  
-    * 複数の Cognitive Services 全体で同じキーとエンドポイントをアプリケーションに使用します。
+    * リソースを削除するまで使用できます。  
+    * 同じキーとエンドポイントを使用して、複数の Cognitive Services にアクセスします。
     

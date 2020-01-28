@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232024"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549293"
 ---
+> [!NOTE]
+> SmarterU を Azure Active Directory に統合するプロセスは、[SmarterU のヘルプ システム](https://help.smarteru.com/ID2053086)でも文書化され、整備されています。
+
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル:Azure Active Directory と SmarterU の統合
 
 このチュートリアルでは、SmarterU と Azure Active Directory (Azure AD) を統合する方法について説明します。
@@ -145,7 +148,7 @@ SmarterU で Azure AD シングル サインオンを構成するには、次の
 
     f. **[Identifier Attribute/Claim]\(識別子属性\要求)** を選択します。
   
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -218,7 +221,7 @@ Azure AD ユーザーが SmarterU にサインインできるようにするに�
 
     c. **[Active]** をクリックします。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 > [!NOTE]
 > 他の SmarterU ユーザー アカウント作成ツールや、SmarterU から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 54a028afa9da22bddddb855558668cccb027f70b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68d63fbc71ea2dcd07522c6ba42808f88966cd7b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961048"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166620"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
@@ -88,6 +88,10 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。
 
+> [!NOTE]
+> 領域の座標をマークするためのクリックアンド ドラッグ ユーティリティがない場合は、[Customvision.ai](https://www.customvision.ai/) で Web UI を使用できます。 この例では、座標は既に指定されています。
+
+
 画像、タグ、領域をプロジェクトに追加するには、タグの作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードの行内にハードコードされています。 各領域は、正規化座標で境界ボックスを指定しており、座標は、左、上、幅、高さの順に指定しています。
 
 ```Python
@@ -140,9 +144,12 @@ scissors_image_regions = {
 
 さらに、この関連付けのマップを使用して、それぞれのサンプル画像を対応する領域の座標と共にアップロードします (1 回のバッチで最大 64 個の画像をアップロードできます。)。 次のコードを追加します。
 
+> [!NOTE]
+> 画像のパスは、事前に Cognitive Services Python SDK Samples リポジトリをダウンロードした場所に応じて変更する必要があります。
+
 ```Python
 # Update this with the path to where you downloaded the images.
-base_image_url = "<path to the images>"
+base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
 
 # Go through the data table above and create the images
 print ("Adding images...")
@@ -172,7 +179,7 @@ if not upload_result.is_batch_successful:
 
 ### <a name="train-the-project-and-publish"></a>プロジェクトをトレーニングして公開する
 
-このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
+このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```Python
 import time
@@ -221,7 +228,7 @@ python sample.py
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 

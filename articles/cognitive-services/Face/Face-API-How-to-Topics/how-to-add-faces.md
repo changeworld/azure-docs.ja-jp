@@ -1,7 +1,7 @@
 ---
-title: 例:顔を PersonGroup に追加する方法 - Face API
+title: 例:顔を PersonGroup に追加する方法 - Face
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Azure Cognitive Services Face API を使用して PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。
+description: このガイドでは、Azure Cognitive Services Face サービスを使用して PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744246"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169824"
 ---
 # <a name="add-faces-to-a-persongroup"></a>顔を PersonGroup に追加する
 
-このガイドでは、PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。 この同じ戦略は、LargePersonGroup、FaceList、および LargeFaceList の各オブジェクトにも適用されます。 このサンプルは Azure Cognitive Services Face API .NET クライアント ライブラリを使用して C# で記述されています。
+このガイドでは、PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。 この同じ戦略は、LargePersonGroup、FaceList、および LargeFaceList の各オブジェクトにも適用されます。 このサンプルは Azure Cognitive Services Face .NET クライアント ライブラリを使用して C# で記述されています。
 
-## <a name="step-1-initialization"></a>手順 1:初期化する
+## <a name="step-1-initialization"></a>手順 1:初期化
 
 以下のコードは、いくつかの変数を宣言し、顔の追加要求をスケジュール設定するヘルパー関数を実装します。
 
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>手順 2:API 呼び出しを承認する
 
-クライアント ライブラリを使用するときは、サブスクリプション キーを **FaceClient** クラスのコンストラクターに渡す必要があります。 例:
+クライアント ライブラリを使用するときは、サブスクリプション キーを **FaceClient** クラスのコンストラクターに渡す必要があります。 次に例を示します。
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -87,7 +87,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 複数の人を同時に作成します。また、`await WaitCallLimitPerSecondAsync()` を適用して、呼び出し制限を超えないようにします。
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();

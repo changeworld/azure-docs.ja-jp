@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443327"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday の統合
 
@@ -42,7 +41,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Workday では、**SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* Workday では、**SP** によって開始される SSO がサポートされます。
+
+* Workday を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-workday-from-the-gallery"></a>ギャラリーからの Workday の追加
 
@@ -244,7 +247,7 @@ Workday で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="create-workday-test-user"></a>Workday テスト ユーザーの作成
 
-このセクションでは、Workday で B.Simon というユーザーを作成します。 [Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)と連携し、Workday プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Workday で B.Simon というユーザーを作成します。 [Workday クライアント サポート チーム](https://www.workday.com/partners-services/services/support.html)と連携し、Workday プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 
@@ -259,3 +262,7 @@ Workday で Azure AD SSO を構成してテストするには、次の構成要�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD を使用して Workday を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-workday)
+
+- [高度な可視性と制御によって Workday を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

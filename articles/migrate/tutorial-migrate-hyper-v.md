@@ -4,12 +4,12 @@ description: Azure Migrate Server Migration を使用してオンプレミスの
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028972"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545910"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -181,7 +181,7 @@ Azure Migrate Server Migration では、軽量の Hyper-V VM アプライアン�
 - **サービス バス**: Azure Migrate: Server Migration では、Service Bus を使用して、レプリケーション オーケストレーション メッセージをアプライアンスに送信します。
 - **ゲートウェイ ストレージ アカウント**: Azure Migrate: Server Migration では、ゲートウェイ ストレージ アカウントを使用して、レプリケートされる VM に関する状態情報を格納します。
 - **ログ ストレージ アカウント**: Azure Migrate アプライアンスでは、VM のレプリケーション ログをログ ストレージ アカウントにアップロードします。 Azure Migrate により、レプリケーション情報がレプリカ マネージド ディスクに適用されます。
-- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 準備を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 Hyper-V VM の評価と移行を行うための [Azure の準備](tutorial-prepare-hyper-v.md#prepare-azure)。 
+- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 Hyper-V VM の評価と移行を行うための [Azure の準備](tutorial-prepare-hyper-v.md#prepare-azure)を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 
 
 
 ## <a name="track-and-monitor"></a>追跡して監視する

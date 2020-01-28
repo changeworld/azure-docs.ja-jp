@@ -11,42 +11,40 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 196de1cacb977305c778e16182b21c8dcfafe13e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 95be73bd125c124409585a478fa9707e7b6a2ac2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161160"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289069"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform Identity Authentication の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Cloud Platform Identity Authentication の統合
 
-このチュートリアルでは、SAP Cloud Platform Identity Authentication と Azure Active Directory (Azure AD) を統合する方法について説明します。
-SAP Cloud Platform Identity Authentication を Azure AD と統合すると、次の利点があります。
+このチュートリアルでは、SAP Cloud Platform Identity Authentication と Azure Active Directory (Azure AD) を統合する方法について説明します。 SAP Cloud Platform Identity Authentication を Azure AD と統合すると、次のことができます。
 
 * SAP Cloud Platform Identity Authentication にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して SAP Cloud Platform Identity Authentication に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して SAP Cloud Platform Identity Authentication に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-SAP Cloud Platform Identity Authentication と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* SAP Cloud Platform Identity Authentication でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* SAP Cloud Platform Identity Authentication でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * SAP Cloud Platform Identity Authentication では、**SP** および **IDP** によって開始される SSO がサポートされます
+* SAP Cloud Platform Identity Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 技術的な詳細の説明に入る前に、調べようとしている事柄の概念を理解する必要があります。 SAP Cloud Platform Identity Authentication と Active Directory フェデレーション サービスにより、SAP Cloud Platform Identity Authentication で保護された SAP アプリケーションおよびサービスに対し、(IdP としての) Azure AD によって保護されたアプリケーションまたはサービス全体で SSO を実装できます。
 
@@ -71,57 +69,38 @@ Azure Active Directory Marketplace を通じて SAP Cloud Platform Identity Auth
 
 Azure AD への SAP Cloud Platform Identity Authentication の統合を構成するには、SAP Cloud Platform Identity Authentication をギャラリーから一連のマネージド SaaS アプリに追加する必要があります。
 
-**ギャラリーから SAP Cloud Platform Identity Authentication を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Cloud Platform Identity Authentication**」と入力します。
+1. 結果のパネルから **[SAP Cloud Platform Identity Authentication]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-platform-identity-authentication"></a>SAP Cloud Platform Identity Authentication に対する Azure AD シングル サインオンの構成とテスト
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+**B.Simon** というテスト ユーザーを使用して、SAP Cloud Platform Identity Authentication に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと SAP Cloud Platform Identity Authentication の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+SAP Cloud Platform Identity Authentication で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[SAP Cloud Platform Identity Authentication SSO の構成](#configure-sap-cloud-platform-identity-authentication-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[SAP Cloud Platform Identity Authentication テスト ユーザーの作成](#create-sap-cloud-platform-identity-authentication-test-user)** - SAP Cloud Platform Identity Authentication で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「**SAP Cloud Platform Identity Authentication**」と入力して、結果パネルで **[SAP Cloud Platform Identity Authentication]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-     ![結果リストの SAP Cloud Platform Identity Authentication](common/search-new-app.png)
+1. [Azure portal](https://portal.azure.com/) の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで **[管理]** セクションを探し、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
-
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[SAP Cloud Platform Identity Authentication シングル サインオンの構成](#configure-sap-cloud-platform-identity-authentication-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[SAP Cloud Platform Identity Authentication テスト ユーザーの作成](#create-sap-cloud-platform-identity-authentication-test-user)** - SAP Cloud Platform Identity Authentication で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードで構成する場合は、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、**IDP** Initiated モードで構成する場合は、次の手順を実行します。
 
     ![[SAP Cloud Platform Identity Authentication] のシングル サインオン情報](common/idp-intiated.png)
 
@@ -141,29 +120,15 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
     > [!NOTE]
     > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 特定のビジネス アプリケーションのサインオン URL を使ってください。 わからないことがある場合は、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。
 
-6. SAP Cloud Platform Identity Authentication アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+1. SAP Cloud Platform Identity Authentication アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-7. SAP アプリケーションで **firstName** などの属性が期待されている場合は、 **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションに **firstName** 属性を追加し、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+1. 上記に加えて、SAP Cloud Platform Identity Authentication アプリケーションでは、以下に示す SAML 応答で返される属性がほとんどないことが想定されます。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **[名前]** ボックスに、属性名 firstName を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** リストから、属性値 user.givenname を選択します。
-
-    f. **[OK]** をクリックします。
-
-    g. **[Save]** をクリックします。
+    | Name | ソース属性|
+    | ---------------| --------------- |
+    | firstName | User.givenname |
 
 8. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
 
@@ -179,7 +144,37 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
     c. ログアウト URL
 
-### <a name="configure-sap-cloud-platform-identity-authentication-single-sign-on"></a>SAP Cloud Platform Identity Authentication のシングル サインオンの構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に SAP Cloud Platform Identity Authentication へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、 **[SAP Cloud Platform Identity Authentication]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>SAP Cloud Platform Identity Authentication SSO の構成
 
 1. アプリケーション用に構成された SSO を入手するために、SAP Cloud Platform Identity Authentication 管理コンソールにアクセスします。 URL は `https://<tenant-id>.accounts.ondemand.com/admin` というパターンです。 次に、「[Integration with Microsoft Azure AD (Microsoft Azure AD との統合)](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html)」で SAP Cloud Platform Identity Authentication に関するドキュメントを読みます。
 
@@ -196,57 +191,6 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 > [!NOTE]
 > 新しいアプリケーションでは、前の SAP アプリケーションのシングル サインオン構成が再利用されます。 SAP Cloud Platform Identity Authentication 管理コンソールで、同じ会社の ID プロバイダーを使用していることを確認してください。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に SAP Cloud Platform Identity Authentication へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SAP Cloud Platform Identity Authentication]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で、 **[SAP Cloud Platform Identity Authentication]** を選択します。
-
-    ![アプリケーションの一覧の [SAP Cloud Platform Identity Authentication] リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
 ### <a name="create-sap-cloud-platform-identity-authentication-test-user"></a>SAP Cloud Platform Identity Authentication のテスト ユーザーの作成
 
 SAP Cloud Platform Identity Authentication でユーザーを作成する必要はありません。 Azure AD ユーザー ストアに存在するユーザーは、SSO 機能を使用できます。
@@ -257,7 +201,7 @@ SAP Cloud Platform Identity Authentication は、ID フェデレーション オ
 
 SAP Cloud Platform Identity Authentication との ID フェデレーションを有効または無効にする方法の詳細については、[SAP Cloud Platform Identity Authentication のユーザー ストアとの ID フェデレーションの構成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?c029bbbaefbf4350af15115396ba14e2.html)に関するページで、SAP Cloud Platform Identity Authentication との ID フェデレーションの有効化に関するセクションを参照してください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -267,6 +211,12 @@ SAP Cloud Platform Identity Authentication との ID フェデレーションを
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で SAP Cloud Platform Identity Authentication を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって SAP Cloud Platform Identity Authentication を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2019
 ms.author: allensu
-ms.openlocfilehash: dc986d40d50b93720c87ba36d265ed3044b0abc9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9f824c1348420393f8fbf67bf96932e40b67bc32
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045370"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264918"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
 "*負荷分散*" とは、負荷 (受信ネットワーク トラフィック) をバックエンド リソースまたはサーバーのグループ全体に均等に分散することです。 Azure には、[さまざまな負荷分散方法](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)が用意されており、必要に応じた方法を選択することができます。 このドキュメントでは、Azure Load Balancer について取り上げます。
 
-Azure Load Balancer は、開放型システム間相互接続 (OSI) モデルのレイヤー 4 で動作します。 クライアントにとっての単一接続点となります。 ロード バランサーは、ロード バランサーのフロントエンドに到着した新しいインバウンド フローを、バックエンド プールのインスタンスに分配します。 これらのフローは、構成された負荷分散規則と正常性プローブに従っています。 バックエンド プール インスタンスには、Azure Virtual Machines か、仮想マシン スケール セット内のインスタンスを使用できます。
-
+Azure Load Balancer は、開放型システム間相互接続 (OSI) モデルのレイヤー 4 で動作します。 クライアントにとっての単一接続点となります。 Load Balancer は、ロード バランサーのフロントエンドに到着したインバウンド フローを、バックエンド プールのインスタンスに分配します。 これらのフローは、構成された負荷分散規則と正常性プローブに従っています。 バックエンド プール インスタンスには、Azure Virtual Machines か、仮想マシン スケール セット内のインスタンスを使用できます。
 
 **[パブリック ロード バランサー](./concepts-limitations.md#publicloadbalancer)** は、仮想ネットワーク内の仮想マシン (VM) にアウトバウンド接続を提供できます。 これらの接続は、プライベート IP アドレスをパブリック IP アドレスに変換することで実現されます。 パブリック ロード バランサーは、インターネット トラフィックを VM に負荷分散する目的で使用されます。
 
@@ -40,14 +39,10 @@ Azure Load Balancer は、開放型システム間相互接続 (OSI) モデル�
 
 個々のロード バランサー コンポーネントの詳細については、[Azure Load Balancer のコンポーネントと制限](./concepts-limitations.md)に関するページを参照してください
 
->[!NOTE]
-> Microsoft では、[Standard Load Balancer](./load-balancer-standard-overview.md) を推奨しています。
-スタンドアロン VM、可用性セット、および仮想マシン スケール セットは、どちらか一方の SKU にのみ接続でき、両方には接続できません。 パブリック IP アドレスで使うときは、Load Balancer とパブリック IP アドレスの SKU が一致していなければなりません。 Load Balancer とパブリック IP の SKU は変更できません。
-
 ## <a name="why-use-azure-load-balancer"></a>Azure Load Balancer を使用する理由
-Azure Load Balancer を使用すると、アプリケーションをスケーリングしたり、高可用性サービスを作成したりすることができます。 ロード バランサーは、インバウンドとアウトバウンドの両方のシナリオをサポートしています。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。
+Standard Load Balancer を使用すると、アプリケーションをスケーリングしたり、高可用性サービスを作成したりすることができます。 ロード バランサーは、インバウンドとアウトバウンドの両方のシナリオをサポートしています。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。
 
-Azure Load Balancer を使用して実現できる主なシナリオは、次のとおりです。
+Standard Load Balancer を使用して実現できる主なシナリオは、次のとおりです。
 
 - **[内部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** および **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** トラフィックを Azure 仮想マシンに負荷分散する。
 
@@ -61,7 +56,7 @@ Azure Load Balancer を使用して実現できる主なシナリオは、次の
 
 - **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** の **[負荷分散](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** のサポートを有効にする。
 
-- Azure Load Balancer の **[メトリックと診断](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)** を **[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)** で活用する。
+- Standard Load Balancer は [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
 
 - **[複数のポート、複数の IP アドレス、またはその両方](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** にサービスを負荷分散する。
 
@@ -69,20 +64,17 @@ Azure Load Balancer を使用して実現できる主なシナリオは、次の
 
 - **[HA ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** を使用して、TCP と UDP のフローをすべてのポートに同時に負荷分散する。
 
-## <a name="pricing"></a>価格
+### <a name="securebydefault"></a>既定でのセキュリティ保護
 
-Standard Load Balancer の使用量は課金されます。
+Standard Load Balancer は、ゼロ トラスト ネットワーク セキュリティ モデルを中核として構築されています。 既定では Standard Load Balancer はセキュリティで保護され、仮想ネットワークの一部です。 仮想ネットワークは、プライベートの分離されたネットワークです。  つまり、Standard Load Balancer と Standard パブリック IP アドレスは、ネットワーク セキュリティ グループによって開かれない限り、インバウンド フローに閉じられています。 NSG は、トラフィックを明示的に許可したりホワイトリストに登録したりするために使用されます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合、トラフィックはこのリソースに到達することを許可されません。 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関する記事をご覧ください。
+Basic Load Balancer は、既定ではインターネットに対して公開されています。
 
-* 構成された負荷分散および送信規則の数。 受信 NAT 規則は規則の合計数にカウントされません。
-* 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量。
+
+## <a name="pricing-and-sla"></a>料金と SLA
 
 Standard Load Balancer の価格の情報については、「[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)」を参照してください。
-
 Basic Load Balancer は無料で提供されます。
-
-## <a name="sla"></a>SLA
-
-Standard Load Balancer の SLA については、「[Load Balancer の SLA](https://aka.ms/lbsla)」を参照してください。
+[Load Balancer の SLA](https://aka.ms/lbsla) を参照してください。 Basic Load Balancer には SLA がありません。
 
 ## <a name="next-steps"></a>次のステップ
 

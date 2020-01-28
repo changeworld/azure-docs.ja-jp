@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969923"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170006"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法
 
@@ -108,7 +108,9 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい_イテレーション_を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
-## <a name="next-steps"></a>次の手順
+トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Custom Vision Web サイトを使用して、オブジェクト検出器モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
 

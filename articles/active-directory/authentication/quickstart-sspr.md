@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a168f9bf58c4942fc0b76b9ffefc2b32b5bfbe5a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dd178f52665c77f03a48d87a9e73c9019390bb21
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549365"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154858"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>クイック スタート:Azure Active Directory のセルフサービス パスワード リセットを構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "75549365"
 * 非管理者テスト ユーザーがメンバーであることをテストするパイロット グループ (たとえば、*SSPR-Test-Group*)。
     * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)方法を参照してください。
 
-## <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
+## <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
 [このプロセスを YouTube のビデオとして表示する](https://youtu.be/Pa0eyqjEjvQ)
 
@@ -58,7 +58,7 @@ ms.locfileid: "75549365"
    * サインイン時にユーザーに登録を求める:**はい**
    * ユーザーが認証情報を再確認するように求められるまでの日数を設定する:**365**
 
-## <a name="test-self-service-password-reset"></a>セルフサービスによるパスワードのリセットをテストする
+## <a name="test-self-service-password-reset"></a>セルフサービス パスワード リセット をテストする
 
 ここで、前のセクションで選択したグループの一部であるテスト ユーザー (たとえば、*testuser*) を使用して、SSPR 構成をテストします。 Microsoft は Azure 管理者アカウントに対して強力な認証要件を強制しているため、管理者アカウントを使用してテストすると結果が変わる可能性があります。 管理者のパスワード ポリシーの詳細については、[パスワード ポリシー](concept-sspr-policy.md)に関する記事を参照してください。
 
@@ -71,14 +71,14 @@ ms.locfileid: "75549365"
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-セルフサービス パスワード リセットを無効にするには、Azure portal で **[Azure Active Directory]** を検索して選択します。 **[プロパティ]**  >  **[パスワードのリセット]** の順に選択し、 **[パスワード リセットのセルフサービスが有効]** で **[なし]** を選択します。 準備ができたら、 **[保存]** を選択します。
+セルフサービス パスワード リセットを無効にするには、Azure portal で **[Azure Active Directory]** を検索して選択します。 **[パスワードのリセット]** を選択し、 **[パスワード リセットのセルフサービスが有効]** で **[なし]** を選択します。 準備ができたら、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、クラウド限定ユーザーのためにセルフサービス パスワード リセットを構成する方法を学習しました。 より詳細なロール アウトを完了する方法については、ロール アウト ガイドに進んでください。
 
 > [!div class="nextstepaction"]
-> [セルフサービスによるパスワードのリセットをロール アウトする](howto-sspr-deployment.md)
+> [セルフサービス パスワード リセット をロール アウトする](howto-sspr-deployment.md)
 
 [Authentication]: ./media/quickstart-sspr/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"
 

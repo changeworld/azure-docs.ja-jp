@@ -16,20 +16,23 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815cffab118f6900c1c9d42a7e44821f8af62532
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081983"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Creative Cloud の統合
+
+> [!NOTE]
+> この記事では、Azure Active Directory (Azure AD) 用の Adobe Admin Console の SAML ベースのカスタム セットアップについて説明します。 新しい構成の場合は、[Azure AD コネクタ](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html)を使用することをお勧めします。 Azure AD コネクタは数分で設定できるため、ドメイン要求、シングル サインオンのセットアップ、およびユーザー同期のプロセスを短時間で終えることができます。
 
 このチュートリアルでは、Adobe Creative Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。 Adobe Creative Cloud と Azure AD を統合すると、次のことができます。
 
 * Adobe Creative Cloud にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Adobe Creative Cloud に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -100,7 +103,7 @@ Adobe Creative Cloud に対する Azure AD SSO を構成してテストするに
 
 1. その他に、Adobe Creative Cloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     |----- | --------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
@@ -109,7 +112,7 @@ Adobe Creative Cloud に対する Azure AD SSO を構成してテストするに
     > [!NOTE]
     > ユーザーは、電子メール要求の値を、SAML 応答で設定するために、 有効な Office 365 ExO ライセンス　を持つ必要があります。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[Federation Data XML]\(フェデレーション データ XML\)** を見つけて **[ダウンロード]** を選択し、XML メタデータ ファイルをダウンロードしてコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -149,31 +152,26 @@ Adobe Creative Cloud に対する Azure AD SSO を構成してテストするに
 
 ## <a name="configure-adobe-creative-cloud-sso"></a>Adobe Creative Cloud の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、[Adobe Admin Console](https://adminconsole.adobe.com) に管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、[Adobe Admin Console](https://adminconsole.adobe.com) にシステム管理者としてログインします。
 
-2. 上部のナビゲーション バーの **[Settings]\(設定\)** に移動して、 **[Identity]\(ID\)** を選択します。 ドメインの一覧が開きます。 自分のドメインの **[Configure]\(構成\)** リンクをクリックします。 その後、 **[Single Sign On Configuration Required (シングル サインオンの構成が必要です)]** セクションで、次の手順を実行します。 詳細については、「[Setup a domain (ドメインの設定)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)」を参照してください。
+1. 上部のナビゲーション バーの **[Settings]\(設定\)** に移動し、 **[Identity]\(ID\)** を選択します。 ディレクトリの一覧が開きます。 必要なフェデレーション ディレクトリを選択します。
 
-    ![設定](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "設定")
+1. **[Directory Details]\(ディレクトリの詳細\)** ページで、 **[Configure]\(構成\)** を選択します。
 
-    a. **[Browse (参照)]** をクリックして、Azure AD からダウンロードした証明書を **[IDP Certificate (IDP 証明書)]** にアップロードします。
-
-    b. **[IDP issuer]\(IDP 発行者\)** テキスト ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
-
-    c. **[IDP Login URL]\(IDP ログイン URL\)** テキスト ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
-
-    d. **[IDP Binding (IDP バインディング)]** として **[HTTP - Redirect (HTTP - リダイレクト)]** を選択します。
-
-    e. **[User Login Setting (ユーザー ログイン設定)]** として **[Email Address (電子メール アドレス])** を選択します。
-
-    f. **[保存]** ボタンをクリックします。
-
-3. ダッシュボードに、XML の **"メタデータのダウンロード"** ファイルが表示されます。 これには、アドビの EntityDescriptor URL と AssertionConsumerService URL が含まれています。 ファイルを開き、Azure AD アプリケーションでこれらを構成してください。
+1. エンティティ ID と ACS URL (Assertion Consumer Service URL、つまり応答 URL) をコピーします。 Azure portal の適切なフィールドに URL を入力します。
 
     ![アプリ側でのシングル サインオンの構成](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. **[アプリケーション設定の構成]** ダイアログの**識別子**として、アドビによって提供された EntityDescriptor 値を使用します。
+    a. **[アプリケーション設定の構成]** ダイアログの **[識別子]** として、Adobe によって提供されたエンティティ ID 値を使用します。
 
-    b. **[アプリケーション設定の構成]** ダイアログの **[応答 URL]** として、アドビによって提供された AssertionConsumerService 値を使用します。
+    b. **[アプリケーション設定の構成]** ダイアログの **[応答 URL]** として、Adobe によって提供された ACS URL (Assertion Consumer Service URL) 値を使用します。
+
+1. ページの下部で、Azure portal からダウンロードした**フェデレーション データ XML** ファイルをアップロードします。 
+
+    ![フェデレーション データ XML ファイル](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "IdP メタデータ XML")
+
+1. **[保存]** を選択します。
+
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>Adobe Creative Cloud のテスト ユーザーの作成
 
@@ -206,7 +204,7 @@ Azure AD ユーザーが Adobe Creative Cloud にサインインできるよう�
 
 - [Azure AD で Adobe Creative Cloud を試す](https://aad.portal.azure.com/)
 
-- [ドメインをセットアップする (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [ID を設定する (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Adobe SSO で使用するために Azure を構成する (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acd4b8014aad7b70f1a67c91368477599a97901
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fda662d7de66bfb56feba8f405bd0e52c4cf3e76
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972559"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル:Azure Active Directory と Snowflake の統合
 
@@ -116,6 +116,8 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
     ![[Snowflake のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` という形式で URL を入力します。
+    
+    **[ログアウト URL]** テキスト ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/logout` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Snowflake クライアント サポート チーム](https://support.snowflake.net/s/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

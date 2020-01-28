@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152951"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル:Azure Active Directory と &frankly の統合
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="adding-frankly-from-the-gallery"></a>ギャラリーからの &frankly の追加
 
-Azure AD への &amp;frankly の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に &amp;frankly を追加する必要があります。
+Azure AD への &frankly の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に &amp;amp;frankly を追加する必要があります。
 
 **ギャラリーから &frankly を追加するには、次の手順を実行します。**
 
@@ -123,19 +123,15 @@ Azure AD への &amp;frankly の統合を構成するには、ギャラリーか
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-7. **[&frankly のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
 
 ### <a name="configure-frankly-single-sign-on"></a>&frankly シングル サインオンの構成
 
-**&frankly** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [&frankly サポート チーム](mailto:help@andfrankly.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+&frankly でシングル サインオンを有効にするには、次の手順を実行します。
+
+1. &frankly にログインします。 **[Account]\(アカウント\)**  >  **[User Management]\(ユーザー管理\)** に移動します。
+1. 既定の認証メカニズムを **[Enterprise Sign-on (SAML)]\(エンタープライズ サインオン (SAML)\)** に変更します。
+1. 前のセクションの手順 6. でダウンロードした**フェデレーション メタデータ XML** をアップロードします。
+1. **[保存]** を選択します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

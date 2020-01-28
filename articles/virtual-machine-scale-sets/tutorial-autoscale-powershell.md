@@ -1,27 +1,19 @@
 ---
-title: 'チュートリアル: Azure PowerShell を使用したスケール セットの自動スケール | Microsoft Docs'
+title: チュートリアル - Azure PowerShell を使用してスケール セットを自動スケーリングする
 description: Azure PowerShell を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677588"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278406"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -35,7 +27,7 @@ ms.locfileid: "68677588"
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 Azure PowerShell モジュール バージョン 6.8.1 以降 (現在のバージョンの Azure Cloud Shell を含む) に関係する問題が確認されています。 このチュートリアルには必ず、Azure PowerShell モジュール バージョン 6.0.0 から 6.8.0 を使用してください。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
@@ -76,12 +68,12 @@ CPU に対する負荷の平均が 5 分間に 70% を上回った場合に、�
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | スケール セット アクションを監視して適用するパフォーマンス メトリック。                                                   | Percentage CPU |
 | *-TimeGrain*            | 分析のためにメトリックを収集する頻度。                                                                   | 1 分       |
-| *-MetricStatistic*      | 分析のために収集したメトリックの集計方法を定義します。                                                | 平均        |
+| *-MetricStatistic*      | 分析のために収集したメトリックの集計方法を定義します。                                                | Average        |
 | *-TimeWindow*           | メトリックとしきい値を比較する前に監視する時間。                                   | 5 分      |
 | *-Operator*             | しきい値に対してメトリック データを比較するために使用する演算子。                                                     | より大きい   |
 | *-Threshold*            | 自動スケール ルールがアクションをトリガーする値。                                                      | 70%            |
 | *-ScaleActionDirection* | ルールが適用されるときに、スケール セットをスケールアップするかスケールダウンするかを定義します。                                             | Increase (増加)       |
-| *– ScaleActionScaleType* | VM インスタンスの数を特定の値で変更することを示します。                                    | 変更数   |
+| *-ScaleActionScaleType* | VM インスタンスの数を特定の値で変更することを示します。                                    | 変更数   |
 | *-ScaleActionValue*     | ルールがトリガーされたときに VM インスタンスのパーセンテージを変更する必要があります。                                            | 3              |
 | *-ScaleActionCooldown*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
@@ -97,7 +89,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
   -Operator "GreaterThan" `
   -Threshold 70 `
   -ScaleActionDirection "Increase" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 3 `
   -ScaleActionCooldown 00:05:00
 ```
@@ -119,7 +111,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
   -TimeWindow 00:05:00 `
   -ScaleActionCooldown 00:05:00 `
   -ScaleActionDirection "Decrease" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 1
 ```
 
@@ -163,7 +155,7 @@ $lb = Get-AzureRmLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoad
 Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
 ```
 
-次の出力例には、インスタンス名、ロード バランサーのパブリック IP アドレス、および NAT 規則によってトラフィックが転送されるポート番号が示されています。
+次の出力例には、インスタンス名、ロード バランサーのパブリック IP アドレス、および NAT 規則によってトラフィックが転送される先のポート番号が示されています。
 
 ```powershell
 Name        Protocol FrontendPort BackendPort
@@ -246,7 +238,7 @@ MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6        
 `Ctrl-c` キーを押して *while* を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 スケール セットと追加のリソースを削除するには、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
 
 ```azurepowershell-interactive
@@ -254,7 +246,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure PowerShell を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
 
 > [!div class="checklist"]

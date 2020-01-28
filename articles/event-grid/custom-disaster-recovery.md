@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
-description: リージョン障害に対応して、Azure Event Grid を接続された状態に維持する方法について説明します。
+description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790271"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511520"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -46,7 +46,7 @@ ms.locfileid: "72790271"
 
 最初に、Event Grid トピックを 2 つ作成します。 これらのトピックは、お客様のプライマリとセカンダリとして機能します。 既定では、イベントはお客様のプライマリ トピック経由で流れます。 プライマリ リージョンでサービスが停止した場合、お客様のセカンダリに引き継がれます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 1. Azure のメイン メニューの左上隅で **[すべてのサービス]** を選択し、「**Event Grid**」を検索して、 **[Event Grid トピック]** を選択します。
 
@@ -207,7 +207,7 @@ namespace EventGridFailoverPublisher
 
 同様に、お客様の特定のニーズに基づいてフェールバック ロジックを実装するとよいでしょう。 最も近いデータ センターに発行することが、待ち時間を短縮するうえで非常に重要である場合、フェールオーバーしたトピックの正常性 API を定期的にプローブできます。 再び正常になったら、最も近いデータ センターに安心してフェールバックできることがわかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [http エンドポイントでイベントを受信](./receive-events.md)する方法について学習する
 - [イベントをハイブリッド接続にルーティング](./custom-event-to-hybrid-connection.md)する方法を理解する

@@ -5,15 +5,15 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 5/31/2019
+ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472673"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310205"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 AKS クラスターを作成するには、次の手順を実行します。
 
@@ -45,7 +45,7 @@ AKS クラスターを作成するには、次の手順を実行します。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    **[次へ:スケール]** を完了後に選択します。
+    **スケール** を完了後に選択します。
 
 4. **[スケール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
     > [!CAUTION]
@@ -61,7 +61,7 @@ AKS クラスターの作成には数分かかります。 デプロイが完了
 
 ![Azure portal の AKS ダッシュボードの例](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 `kubectl` クライアントは Azure Cloud Shell に事前にインストールされています。
 
@@ -75,7 +75,7 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -95,7 +95,7 @@ Kubernetes のマニフェスト ファイルでは、どのコンテナー イ�
 > [!TIP]
 > このクイック スタートでは、アプリケーション マニフェストの作成と AKS クラスターへのデプロイを手動で行います。 より現実に即したシナリオでは、[Azure Dev Spaces][azure-dev-spaces] を使用して、AKS クラスター内で直接、コードの反復とデバッグを迅速に実行することができます。 Dev Spaces は、OS プラットフォームと開発環境の垣根を越えて使用でき、チーム内の他のメンバーと連携することができます。
 
-Cloud Shell で、`nano` または `vi` を使用して `azure-vote.yaml` という名前のファイルを作成し、次の YAML 定義にコピーします。
+Cloud Shell から `nano azure-vote.yaml` または `vi azure-vote.yaml` コマンドを使用して、`azure-vote.yaml` という名前のファイルを作成します。 そこに次の YAML 定義をコピーします。
 
 ```yaml
 apiVersion: apps/v1
@@ -182,7 +182,7 @@ spec:
     app: azure-vote-front
 ```
 
-[kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、YAML マニフェストの名前を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、ご利用の YAML マニフェストの名前を指定します。
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
@@ -260,7 +260,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 

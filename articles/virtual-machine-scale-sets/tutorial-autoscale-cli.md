@@ -1,27 +1,19 @@
 ---
-title: 'チュートリアル: Azure CLI を使用したスケール セットの自動スケール | Microsoft Docs'
+title: チュートリアル - Azure CLI を使用してスケール セットを自動スケーリングする
 description: Azure CLI を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4064816ae932a0f26fd3478420c69f3e8fba8732
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9ede78933e6b9e6933b0c5dabce395eb10713c88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751278"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278454"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -206,7 +198,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 `Ctrl-c` キーを押して *watch* を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
@@ -214,7 +206,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure CLI を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978681"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170021"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
@@ -111,7 +111,9 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 分類子をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。また、 **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
-## <a name="next-steps"></a>次の手順
+トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Custom Vision Web サイトを使用して、画像分類モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
 

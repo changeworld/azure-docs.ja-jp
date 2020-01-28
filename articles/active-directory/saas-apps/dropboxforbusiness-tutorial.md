@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964244"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293438"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>チュートリアル:Dropbox for Business と Azure Active Directory の統合
 
@@ -29,7 +28,7 @@ ms.locfileid: "74964244"
 
 * Dropbox for Business にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Dropbox for Business に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -45,6 +44,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Dropbox for Business では、**SP** によって開始される SSO がサポートされます
 
 * Dropbox for Business では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](dropboxforbusiness-tutorial.md)がサポートされます
+* Dropbox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>ギャラリーから Dropbox for Business を追加
 
@@ -55,7 +55,7 @@ Azure AD への Dropbox for Business の統合を構成するには、ギャラ�
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Dropbox for Business**」と入力します。
-1. 結果ウィンドウで **[Dropbox for Business]** を選択し、アプリを追加します。 アプリがテナントに追加される間、数秒待ちます。
+1. 結果ウィンドウで **[Dropbox for Business]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -63,16 +63,16 @@ Azure AD への Dropbox for Business の統合を構成するには、ギャラ�
 
 Dropbox for Business で Azure AD の SSO を構成してテストするには、次の構成要素を完了します。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[Dropbox for Business SSO の構成](#configure-dropbox-for-business-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Dropbox for Business のテスト ユーザーの作成](#create-dropbox-for-business-test-user)** - Dropbox for Business で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうか確認します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。    
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Dropbox for Business SSO の構成](#configure-dropbox-for-business-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Dropbox for Business のテスト ユーザーの作成](#create-dropbox-for-business-test-user)** - Dropbox for Business で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Dropbox for Business** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
@@ -103,7 +103,38 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     c. ログアウト URL
 
-### <a name="configure-dropbox-for-business-sso"></a>Dropbox for Business SSO の構成
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`Britta Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Britta Simon に Dropbox for Business へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Dropbox for Business]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-dropbox-for-business-sso"></a>Dropbox for Business SSO の構成
 
 1. Dropbox for Business 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
 
@@ -147,37 +178,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     d. **[Copy link]\(リンクのコピー\)** をクリックし、コピーした値を Azure portal の **[Dropbox for Business のドメインと URL]** セクションの **[サインオン URL]** テキストボックスに貼り付けます。
 
-    e. **[Save]** をクリックします。
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`Britta Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Dropbox for Business へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Dropbox for Business]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-dropbox-for-business-test-user"></a>Dropbox for Business のテスト ユーザーの作成
 
@@ -196,4 +197,6 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+
+- [高度な可視性と制御によって Dropbox を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

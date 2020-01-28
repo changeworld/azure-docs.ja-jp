@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768318"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル:Azure Active Directory と HackerOne の統合
 
@@ -107,7 +107,7 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     ![HackerOne のドメインと URL のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに「`https://hackerone.com/users/saml/auth`」と入力します。
+    a. **[サインオン URL]** ボックスに「`https://hackerone.com/users/saml/sign_in?email=<configured domain>`」と入力します。
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに「`hackerone.com`」と入力します。
 
@@ -155,7 +155,13 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     a. **[テストの実行]** をクリックします。
 
-    b. **[状態]** フィールドの値が **[Last test status: created]\(最後のテストの状態: 作成済み\)** と同じ場合は、[HackerOne サポート チーム](mailto:support@hackerone.com)にお使いの構成の確認をご依頼ください。
+6. テストが正常に完了し、 **[Status]\(状態\)** フィールドに **[Last test status: success]\(最新のテスト状態: 成功\)** と表示されている場合は、 **[Request Verification]\(確認の要求\)** ボタンを選択して HackerOne に承認を求めます。
+
+    ![HackerOne に承認を求める](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. HackerOne によって設定が承認されたら、 **[Migrate Users]\(ユーザーを移行する\)** ボタンを選択して、すべてのユーザーに SSO 認証を要求することができます。
+
+    ![SAML を有効にする](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -174,7 +180,7 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

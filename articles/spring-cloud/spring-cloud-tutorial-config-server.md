@@ -3,15 +3,15 @@ title: チュートリアル - Azure Spring Cloud で Config Server インスタ
 description: このチュートリアルでは、Azure portal で自分の Azure Spring Cloud 向けに Spring Cloud Config Server インスタンスを設定する方法を説明します
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708797"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277521"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>チュートリアル:自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -21,7 +21,7 @@ Spring Cloud Config は、分散システムで外部化された構成用に、
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定して起動するには、[Azure CLI を使用して Java Spring アプリケーションを起動する方法に関するクイックスタート](spring-cloud-quickstart-launch-app-cli.md)を参照してください。
+* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](spring-cloud-quickstart-launch-app-cli.md)」を参照してください。
 
 ## <a name="restriction"></a>Restriction
 
@@ -124,7 +124,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 自分の構成ファイルがリポジトリに保存されているので、Azure Spring Cloud をそれに接続する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure Spring Cloud の **[概要]** ページに移動します。
 
@@ -187,7 +187,7 @@ YAML ファイルの情報が Azure portal に表示されます。 完了する
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Spring Cloud Config Server インスタンスを有効にし、構成する方法を学習しました。 アプリケーションの管理の詳細については、手動によるアプリのスケーリングに関するチュートリアルに進んでください。
 

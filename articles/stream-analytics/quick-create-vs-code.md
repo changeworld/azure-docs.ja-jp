@@ -4,15 +4,15 @@ description: このクイックスタートでは、Visual Studio Code を使っ
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659595"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313877"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics ジョブを作成する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "75659595"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure portal](https://portal.azure.com/) にサインインする
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
 * [Visual Studio Code](https://code.visualstudio.com/) をインストールします。
 
@@ -52,7 +52,7 @@ ms.locfileid: "75659595"
 
 Stream Analytics ジョブを定義する前に、後でジョブの入力として構成されるデータを準備する必要があります。 ジョブに必要な入力データを準備するには、次の手順を完了します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[リソースの作成]**  >  **[モノのインターネット]**  >  **[IoT Hub]** を選択します。
 
@@ -67,7 +67,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![IoT Hub の作成](./media/quick-create-vs-code/create-iot-hub.png)
 
-4. **[次へ:Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
+4. **Set size and scale\(次へ: サイズとスケールの設定\)** を選択します。
 
 5. **[価格とスケールティア]** で選択を行います。 このクイック スタートでは、 **[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 Free レベルを使用できない場合は、使用可能な最も低いレベルを選択します。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -179,9 +179,11 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
    |IotHubNamespace|MyASAIoTHub|対象の IoT ハブの名前を選択または入力します。 IoT ハブが同じサブスクリプション内に作成されている場合、IoT ハブ名は自動的に検出されます。|
    |SharedAccessPolicyName|iothubowner| |
 
-   CodeLens 機能を使用すると、文字列の入力、ドロップダウン リストからの選択、テキストの変更をファイル内で直接行うことができます。 次のスクリーンショットは、例として **[Select from your Subscriptions]\(自分のサブスクリプションから選択\)** を示しています。
+   CodeLens 機能を使用すると、文字列の入力、ドロップダウン リストからの選択、テキストの変更をファイル内で直接行うことができます。 次のスクリーンショットは、例として **[Select from your Subscriptions]\(自分のサブスクリプションから選択\)** を示しています。 資格情報が自動的にリストされて、ローカル資格情報マネージャーに保存されます。
 
    ![Visual Studio Code で入力を構成する](./media/quick-create-vs-code/configure-input.png)
+
+   ![Visual Studio Code で入力値を構成する](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>入力をプレビューする
 
@@ -222,7 +224,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![Visual Studio Code コマンド パレットを使用してスクリプトをコンパイルする](./media/quick-create-vs-code/compile-script1.png)
 
-- スクリプトを右クリックし、 **[ASA: Compile Script]\(ASA: スクリプトのコンパイル\)** を選択します。
+- スクリプトを右クリックし、**ASA: Compile Script**」と入力します。
 
     ![Stream Analytics スクリプトを右クリックしてコンパイルする](./media/quick-create-vs-code/compile-script2.png)
 

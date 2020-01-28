@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e5e6a2fe856915a3625f22bffa91403e3c036a22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481352"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544108"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
@@ -39,10 +39,13 @@ Azure AD DS では、ID 情報が Azure AD からレプリケートされるた�
 IT 管理者は、多くの場合、次のいずれかのソリューションを使用して、Azure で実行されるアプリケーションに ID サービスを提供します。
 
 * Azure で実行されるワークロードとオンプレミスの AD DS 環境で実行されるワークロードの間でサイト間 VPN 接続を構成する。
-* Azure 仮想マシン (VM) を使用してレプリカ ドメイン コントローラーを作成し、AD DS ドメイン/フォレストを拡張する。
+    * この場合、オンプレミスのドメイン コントローラーが VPN 接続経由で認証を提供します。
+* Azure 仮想マシン (VM) を使用してレプリカ ドメイン コントローラーを作成し、オンプレミスから AD DS ドメインまたはフォレストを拡張する。
+    * Azure VM 上で実行されるドメイン コントローラーが認証を提供し、オンプレミス AD DS 環境間でディレクトリ情報をレプリケートします。
 * Azure VM で実行されるドメイン コントローラーを使用して、Azure 内にスタンドアロンの AD DS 環境をデプロイする。
+    * Azure VM 上で実行されるドメイン コントローラーによって認証は提供されますが、オンプレミス AD DS 環境からレプリケートされるディレクトリ情報はありません。
 
-これらのアプローチでは、オンプレミスのディレクトリに VPN 接続するため、アプリケーションはネットワークの一時的な異常や停止の影響を受けやすくなります。 Azure 内の VM を使用してドメイン コントローラーをデプロイする場合、それらの管理、セキュリティ保護、修正プログラムの適用、監視、バックアップ、およびトラブルシューティングを IT チームの VM で行う必要があります。
+これらのアプローチでは、オンプレミスのディレクトリに VPN 接続するため、アプリケーションはネットワークの一時的な異常や停止の影響を受けやすくなります。 Azure 内の VM を使用してドメイン コントローラーをデプロイする場合、VM の管理、セキュリティ保護、パッチの適用、監視、バックアップ、トラブルシューティングは IT チームが行う必要があります。
 
 Azure AD DS では、ID サービスを提供するため、オンプレミスの AD DS 環境への VPN 接続を作成したり、Azure で VM を実行および管理したりする必要のない代替方法が提供されます。 マネージド サービスである Azure AD DS により、ハイブリッドとクラウド専用の両方の環境に使用できる統合された ID ソリューションを作成する複雑さが軽減されます。
 
@@ -53,25 +56,26 @@ Azure AD DS では、ID サービスを提供するため、オンプレミス�
 * **デプロイ操作の簡略化:** Azure portal の単一のウィザードを使用して、Azure AD DS を Azure AD テナントに対して有効にします。
 * **Azure AD との統合:** ユーザー アカウント、グループ メンバーシップ、および資格情報は、ご利用の Azure AD テナントから自動的に利用できるようになります。 Azure AD テナントやオンプレミスの AD DS 環境で新規作成されたユーザーおよびグループ、または変更が加えられた属性は、Azure AD DS に自動的に同期されます。
     * Azure AD DS では、Azure AD にリンクされている外部ディレクトリのアカウントは使用できません。 これらの外部ディレクトリでは、資格情報を使用できないため、Azure AD DS マネージド ドメインには同期できません。
-* **会社の資格情報とパスワードの使用:** Azure AD テナントでのユーザーのパスワードは、Azure AD DS と同じです。 ユーザーは、コンピューターのドメイン参加、対話形式またはリモート デスクトップ経由によるサインイン、Azure AD DS マネージド ドメインに対する認証に会社の資格情報を使用できます。
+* **会社の資格情報とパスワードの使用:** Azure AD DS におけるユーザーのパスワードは、Azure AD テナントと同じです。 ユーザーは、コンピューターのドメイン参加、対話形式またはリモート デスクトップ経由によるサインイン、Azure AD DS マネージド ドメインに対する認証に会社の資格情報を使用できます。
 * **NTLM と Kerberos の認証:** NTLM と Kerberos の認証がサポートされているので、Windows 統合認証を利用するアプリケーションをデプロイできます。
 * **高可用性:** Azure AD DS には複数のドメイン コントローラーが含まれるため、マネージド ドメインの高可用性を実現できます。 この高可用性により、サービスの稼働時間と障害に対する復元性が保証されます。
-    * [Azure Availability Zones][availability-zones] をサポートするリージョンでは、回復性を高めるため、これらのドメイン コントローラは複数のゾーンにも分散されます。 
+    * [Azure Availability Zones][availability-zones] をサポートするリージョンでは、回復性を高めるため、これらのドメイン コントローラは複数のゾーンにも分散されます。
 
 Azure AD DS マネージド ドメインの重要な特徴の一部を以下に示します。
 
 * Azure AD DS マネージド ドメインは、スタンドアロンのドメインです。 オンプレミスのドメインの拡張機能ではありません。
+    * 必要であれば、Azure AD DS からオンプレミス AD DS 環境への一方向の出力方向のフォレストの信頼を作成できます。 詳細については、「[Azure AD DS のリソース フォレストの概念と機能][ forest-trusts]」を参照してください。
 * IT チームが、この Azure AD DS マネージド ドメインのドメイン コントローラーに対して管理、修正プログラムの適用、監視を行う必要はありません。
 
 オンプレミスで AD DS を実行するハイブリッド環境では、Azure AD DS マネージド ドメインへの AD レプリケーションを管理する必要はありません。 オンプレミスのディレクトリからのユーザー アカウント、グループ メンバーシップ、および資格情報は、[Azure AD Connect][azure-ad-connect] を介して Azure AD に同期されます。 これらのユーザー アカウント、グループ メンバーシップ、および資格情報は、Azure AD DS マネージド ドメイン内で自動的に利用できるようになります。
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS のしくみ
 
-Azure では、ID サービスを提供するために、選択した仮想ネットワークで AD DS インスタンスが作成されます。 バックグラウンドでは、管理、セキュリティ保護、更新を行わなくても、Windows Server ドメイン コントローラーのペアを通じて冗長性が提供されます。
+Azure では、ID サービスを提供するために、選択した仮想ネットワークで AD DS インスタンスが作成されます。 見えないところで、Azure VM 上で実行される一対の Windows Server ドメイン コントローラーが作成されます。 これらのドメイン コントローラーの管理、構成、更新を自分で行う必要はありません。 ドメイン コントローラーは、Azure プラットフォームが Azure AD DS サービスの一部として管理します。
 
 Azure ADAzure AD DS マネージド ドメインは、Azure AD からの一方向の同期を実行して、集中管理された一連のユーザー、グループ、および資格情報へのアクセスを提供するように構成されます。 Azure AD DS マネージド ドメイン内で直接リソースを作成できますが、それらは Azure AD に同期されません。 この仮想ネットワークに接続される Azure 内のアプリケーション、サービス、および VM は、共通の AD DS 機能 (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を使用することができます。
 
-オンプレミスの AD DS 環境とのハイブリッド環境では、[Azure AD Connect][azure-ad-connect] により、ID 情報が Azure AD と同期されます。
+オンプレミスの AD DS 環境とのハイブリッド環境では、[Azure AD Connect][azure-ad-connect] により、ID 情報が Azure AD と同期された後、Azure AD DS と同期されます。
 
 ![AD Connect を使用した、Azure AD Domain Services における Azure AD とオンプレミスの Active Directory Domain Services の同期](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
@@ -102,7 +106,7 @@ Azure AD DS の実際の動作を確認するために、いくつかの例を�
 
 クラウド専用 Azure AD テナントには、オンプレミスの ID ソースはありません。 たとえば、ユーザー アカウントとグループ メンバーシップは、Azure AD 内で直接作成および管理されます。
 
-ここで、ID に Azure AD のみを使用するクラウド専用組織である Contoso の例を見てみましょう。 ユーザー ID、ユーザーの資格情報、およびグループ メンバーシップはすべて Azure AD で作成および管理されます。 オンプレミスのディレクトリから ID 情報を同期するために Azure AD Connect を追加構成する必要はありません。
+ここで、ID に Azure AD を使用するクラウド専用組織である Contoso の例を見てみましょう。 ユーザー ID、ユーザーの資格情報、およびグループ メンバーシップはすべて Azure AD で作成および管理されます。 オンプレミスのディレクトリから ID 情報を同期するために Azure AD Connect を追加構成する必要はありません。
 
 ![オンプレミスの同期を行わない、クラウド専用組織向けの Azure Active Directory Domain Services](./media/overview/cloud-only-tenant.png)
 
@@ -110,7 +114,7 @@ Azure AD DS の実際の動作を確認するために、いくつかの例を�
 * Contoso の IT チームは、この仮想ネットワークまたはピアリングされた仮想ネットワーク内の Azure AD テナントに対して Azure AD DS を有効にします。
 * Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS と他の ID ソリューションとの比較、および同期のしくみの詳細については、次の記事を参照してください。
 
@@ -126,3 +130,4 @@ Azure AD DS と他の ID ソリューションとの比較、および同期の�
 [azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 [password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md
 [availability-zones]: ../availability-zones/az-overview.md
+[forest-trusts]: concepts-resource-forest.md

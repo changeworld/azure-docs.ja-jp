@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services と Azure CLI を使用して動画ファイルをストリーム配信する | Microsoft Docs
+title: Azure Media Services と Azure CLI を使用して動画ファイルをストリーム配信する
 description: このチュートリアルの手順に従って、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639975"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514376"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - CLI
 
@@ -38,7 +38,7 @@ Azure でメディア コンテンツの暗号化、エンコード、分析、�
 
 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 待ち時間やデータ エグレス コストを抑えるために、ストレージ アカウントを Media Services アカウントと同じ場所で使用することをお勧めします。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 ```azurecli
 az group create -n amsResourceGroup -l westus2
@@ -340,7 +340,7 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 >[!NOTE]
 >Azure Media Player はテストには使用できますが、運用環境では使わないでください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、リソース グループを削除します。
 
@@ -350,7 +350,7 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 az group delete --name amsResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services の概要](media-services-overview.md)
 

@@ -1,19 +1,17 @@
 ---
-title: チュートリアル - Azure Red Hat OpenShift クラスターを削除する |Microsoft Docs
+title: チュートリアル - Azure Red Hat OpenShift クラスターを削除する
 description: このチュートリアルでは、Azure CLI を使用して Azure Red Hat OpenShift クラスターを削除する方法を学習します
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669335"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278769"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを削除する
 
@@ -72,7 +70,7 @@ az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
 
 リソース グループを削除すると、Azure Red Hat OpenShift クラスターを構築するときに作成されるすべての関連リソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 > [!div class="checklist"]

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969686"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291415"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workplace by Facebook の統合
 
@@ -48,9 +47,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Workplace by Facebook では、**SP** によって開始される SSO がサポートされます
-* Workplace by Facebook では、 **[自動化されたユーザー プロビジョニングとプロビジョニング解除 (推奨)](workplacebyfacebook-provisioning-tutorial.md)** がサポートされます
 * Workplace by Facebook では、**Just-In-Time プロビジョニング**がサポートされます
+* Workplace by Facebook では、 **[自動ユーザー プロビジョニング](workplacebyfacebook-provisioning-tutorial.md)** がサポートされます
 * Workplace by Facebook Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+* Workplace by Facebook を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>ギャラリーからの Workplace by Facebook の追加
 
@@ -90,10 +90,12 @@ Workplace by Facebook で Azure AD SSO を構成してテストするには、�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.facebook.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://www.facebook.com/company/<instanceID>` という形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.facebook.com/company/<instanceID>`
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 Workplace コミュニティの適切な値については、Workplace Company Dashboard の認証ページを参照してください。
+    c. **[応答 URL]** ボックスに、`https://www.facebook.com/company/<instanceID>` のパターンを使用して URL を入力します
+
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 Workplace コミュニティの適切な値については、Workplace Company Dashboard の認証ページを参照してください。この点については、このチュートリアルの中で後述します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -172,13 +174,15 @@ Workplace by Facebook で Azure AD SSO を構成してテストするには、�
 
     f. インスタンスの **[Recipient URL]\(受信者 URL\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
-    g. セクションの下部にスクロールし、 **[Test SSO]\(SSO のテスト\)** をクリックします。 これにより、Azure AD ログイン ページで表示されるポップアップ ウィンドウが表示されます。 通常どおり資格情報を入力して認証を行います。
+    g. インスタンスの **ACS (Assertion Consumer Service) URL** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
+
+    h. セクションの下部にスクロールし、 **[Test SSO]\(SSO のテスト\)** をクリックします。 これにより、Azure AD ログイン ページで表示されるポップアップ ウィンドウが表示されます。 通常どおり資格情報を入力して認証を行います。
 
     **トラブルシューティング:** Azure AD から返された電子メール アドレスが、ログインに使用した Workplace アカウントと同じであることを確認してください。
 
-    h. テストが正常に完了したら、ページの下部にスクロールして **[保存]** をクリックします。
+    i. テストが正常に完了したら、ページの下部にスクロールして **[保存]** をクリックします。
 
-    i. Workplace を使用しているすべてのユーザーに、認証用の Azure AD ログイン ページが表示されるようになりました。
+    j. Workplace を使用しているすべてのユーザーに、認証用の Azure AD ログイン ページが表示されるようになりました。
 
 1. **SAML ログアウト リダイレクト (オプション)**  -
 
@@ -241,3 +245,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 - [[ユーザー プロビジョニングの構成]](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Azure AD で Workplace by Facebook を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって Workplace by Facebook を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

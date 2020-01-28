@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a8a1736092578634680da5d56b5ec02f70cdde38
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885370"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と G Suite の統合
 
@@ -29,7 +28,7 @@ ms.locfileid: "73885370"
 
 * G Suite にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して G Suite に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -88,6 +87,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * G Suite では、**SP** によって開始される SSO がサポートされます
 
 * G Suite では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)がサポートされます
+* G Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-g-suite-from-the-gallery"></a>ギャラリーからの G Suite の追加
 
@@ -154,31 +154,8 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 
 1. G Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、G Suite ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
-
-    | Name | ソース属性 |
-    | ---------------| --------------- |
-    | 一意のユーザー ID | User.mail |
-
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    f. **[OK]** をクリックします。
-
-    g. **[Save]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -275,7 +252,9 @@ G Suite では、自動ユーザー プロビジョニングもサポートさ�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [[ユーザー プロビジョニングの構成]](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 - [Azure AD で G Suite を試す](https://aad.portal.azure.com/)
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
+- [高度な可視性と制御によって G Suite を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

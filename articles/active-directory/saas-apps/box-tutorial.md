@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aceec8ad6ca23a1bd89b93a6442d48aa81597e55
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecd4ad3e2e3da9dce3a5bab36137ce65807b6a9a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964176"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -47,6 +46,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Box では、**SP** によって開始される SSO がサポートされます
 * Box では、[**自動化された**ユーザー プロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) (推奨) がサポートされます
 * Box では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Box を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-box-from-the-gallery"></a>ギャラリーからの Box の追加
 
@@ -154,3 +154,7 @@ Box に対する Azure AD SSO を構成してテストするには、次の構�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Box を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-box)
+
+- [高度な可視性と制御によって Box を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

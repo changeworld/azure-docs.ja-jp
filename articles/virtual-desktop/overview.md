@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348804"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514274"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -86,17 +86,27 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条�
 >[!NOTE]
 >Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアウトバウンド TCP 443 アクセスが必要です。
+Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアクセスが必要です。
 
-* *.wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|Address|送信ポート|目的|
+|---|---|---|
+|*.wvd.microsoft.com|TCP ポート 443|サービス トラフィック|
+|*.blob.core.windows.net|TCP ポート 443|エージェント、SXS スタックの更新、エージェント トラフィック|
+|*.core.windows.net|TCP ポート 443|エージェント トラフィック|
+|*.servicebus.windows.net|TCP ポート 443|エージェント トラフィック|
+|prod.warmpath.msftcloudes.com|TCP ポート 443|エージェント トラフィック|
+|catalogartifact.azureedge.net|TCP ポート 443|Azure Marketplace|
+|kms.core.windows.net|TCP ポート 1688|Windows 10 のライセンス認証|
+
+>[!IMPORTANT]
+>Windows Virtual Desktop を確実にデプロイするためには、これらの URL を開放することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure AD など) の URL は含まれません。
 
 >[!NOTE]
->Windows Virtual Desktop を確実にデプロイするためには、これらの URL を開放することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure AD など) の URL は含まれません。
+>サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
+>
+>1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
+>2. **イベント ビューアー**を開き、 **[Windows]**  >  **[アプリケーション ログ]** に移動して、イベント ID 3702 を探します。
+>3. イベント ID 3702 に見つけた URL をホワイトリストに登録します。 イベント ID 3702 にある URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ホワイトリスト登録プロセスを繰り返す必要があります。
 
 Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 

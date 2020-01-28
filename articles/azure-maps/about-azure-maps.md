@@ -1,34 +1,35 @@
 ---
 title: 概要 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のサービスと機能、およびそれらをアプリケーションで使用する方法について説明します。
+description: Microsoft Azure Maps のサービスと機能、およびそれらをアプリケーションで使用する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/04/2019
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2909dbebc7531be0e45b321cc31b599b0f63ee4a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911845"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262573"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
-Azure Maps は、最新のマッピング データを使用して、精度の高い地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスです。 Azure Maps は以下を提供します。
+Azure Maps は、最新のマッピング データを使用して、地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスです。 Azure Maps は以下を提供します。
 
 * 複数のスタイルと衛星映像でマップを表示するための REST API シリーズ。
 * 世界中の住所、場所、および目的地の検索。
-* ポイント間、マルチポイント、マルチポイント最適化、等時線、商用車、影響を受ける交通、マトリックス ルーティングの経路設定、交通の流れとインシデントの表示。
+* ポイント間、マルチポイント、マルチポイント最適化、等時線、商用車、影響を受ける交通、マトリックス ルーティングなど、さまざまなタイプのルーティング。
+* 交通の流れとインシデントの表示。
 * 公共交通機関や代替移動手段 (自転車シェアリング、スクーター シェアリング、カー シェアリングなど) を要求したり、リアルタイムでルートを計画したりするためのモビリティ サービス。 
 * 位置情報によるユーザーの場所の特定、場所からタイム ゾーンへの変換。 
 * Azure 内でホストされている位置情報を使用した、ジオフェンシングとマップ データ ストレージ用のサービス。 
 * 地理空間分析による位置情報インテリジェンス。 
 
-Azure Maps サービスは、REST API シリーズのほか、Web SDK または Android SDK を介して使用できます。 これらのツールは、開発者が、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行うのに役立ちます。 
+加えて、Azure Maps サービスは、Web SDK または Android SDK を介して使用できます。 これらのツールは、開発者が、位置情報を Azure ソリューションに統合するソリューションの開発とスケーリングを迅速に行うのに役立ちます。 
 
 無料の [Azure Maps アカウント](https://azure.microsoft.com/services/azure-maps/)にサインアップして、開発を始めることができます。
 
@@ -42,7 +43,7 @@ Azure Maps サービスは、REST API シリーズのほか、Web SDK または 
 
 ### <a name="web-sdk"></a>Web SDK
 
-Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットをハイ パフォーマンスでレンダリングすることができます。 この SDK を使った開発は、JavaScript または TypeScript を使用して行います。
+Azure Maps Web SDK では、Web アプリケーションまたはモバイル アプリケーション用に独自のコンテンツや映像を使用して、インタラクティブ マップをカスタマイズすることができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットをハイ パフォーマンスでレンダリングすることができます。 この SDK を使った開発は、JavaScript または TypeScript を使用して行います。
 
 ![人口変動のマップの例](media/about-azure-maps/Introduction_WebMapControl.png)
 
@@ -62,9 +63,9 @@ Azure Maps は、Azure アプリケーションに地理的なコンテキスト
 
 ### <a name="mobility-service"></a>モビリティ サービス
 
-Azure Maps Mobility Service を使用すると、リアルタイムで旅行を計画できます。 考えられる最善のルート オプションが返され、さまざまな移動手段が提示されます。 都市圏 (都市) の場合、こうした手段には徒歩、自転車、公共交通機関があります。 開発者は、路線ジオメトリや停留所のリスト、スケジュールどおりおよびリアルタイムの到着、サービス アラートなどの詳細な交通移動プランを要求できます。
+Azure Maps Mobility Service を使用すると、リアルタイムで旅行を計画できます。 考えられる最善のルート オプションが返され、さまざまな移動手段が提示されます。 都市圏 (都市) の場合、こうした手段には徒歩、自転車、公共交通機関があります。 路線ジオメトリや停留所のリスト、スケジュールどおりおよびリアルタイムの到着、サービス アラートなどの交通移動プランを要求できます。
 
-このサービスでは、ある場所の周辺でシェアされている自転車、スクーター、自動車など、特定のオブジェクトの種類を検索することもできます。 ユーザーは、利用可能なシェア自転車が一番近くのドックに何台残っているかを要求できます。 カー シェアリングの利用可能な車両を検索し、先の予約状況や現在の燃料レベルなどの詳細を確認できます。
+このサービスでは、ある場所の周辺でシェアされている自転車、スクーター、自動車など、特定のオブジェクトの種類を検索することもできます。 ユーザーは、利用可能な自転車が一番近くのドックに何台あるかを要求したり、利用可能なライドシェア用車両を検索したりすることができます。 また、先の車両予約状況や現在の燃料レベルなどの詳細を確認することもできます。
 
 このサービスの詳細については、[Mobility API のドキュメント](https://docs.microsoft.com/rest/api/maps/mobility)を参照してください。
 
@@ -109,11 +110,11 @@ Search Service では、次のような高度な機能も提供されます。
 
 Azure Maps Spatial Operations Service は、位置情報を取得し、すぐさまこれを分析し、その時間と空間で発生している進行中のイベントをお客様にお知らせします。 ほぼリアルタイムの分析とイベントの予測モデリングを可能にします。 
 
-このサービスでは、お客様が、最接近点、大圏距離、バッファーなど、一般的な地理空間数学計算のライブラリを使用して、位置情報のインテリジェンスを強化できます。 このサービスとそのさまざまな機能の詳細については、[Spatial Operations API のドキュメント](https://docs.microsoft.com/rest/api/maps/spatial)を参照してください。
+このサービスでは、お客様が、一般的な地理空間数学計算のライブラリを使用して、位置情報のインテリジェンスを強化できます。 一般的な計算の例としては、最接近点、大圏距離、バッファーが挙げられます。 このサービスとそのさまざまな機能の詳細については、[Spatial Operations API のドキュメント](https://docs.microsoft.com/rest/api/maps/spatial)を参照してください。
 
 ### <a name="time-zone-service"></a>Time Zone Service
 
-Time Zone Service では、緯度と経度の組み合わせまたは [IANA ID](https://www.iana.org/) を使って、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 Time Zone Service では、次のこともできます。
+Time Zone Service では、現在、過去、未来のタイム ゾーン情報のクエリを実行できます。 緯度と経度のペアを使用するか、または [IANA ID](https://www.iana.org/) を使用することができます。 Time Zone Service では、次のこともできます。
 
 * Windows タイム ゾーン ID を IANA タイム ゾーンに変換する。
 * UTC に対するタイム ゾーン オフセットをフェッチする。
@@ -143,7 +144,7 @@ Time Zone Service に対するクエリの一般的な JSON 応答は、次の�
 
 ### <a name="traffic-service"></a>Traffic Service
 
-Traffic Service は、開発者が交通情報を必要とする Web およびモバイル アプリケーションの作成に使用できる Web サービスのスイートです。 サービスでは、次の 2 つのデータ型が提供されます。
+Traffic Service は、交通情報を必要とする Web またはモバイル アプリケーションの開発に使用できる Web サービスのスイートです。 サービスでは、次の 2 つのデータ型が提供されます。
 
 * トラフィック フロー:ネットワーク内のすべての主要道路で観察されたリアルタイムの速度と移動時間。
 * トラフィック インシデント:道路ネットワークでの交通渋滞およびインシデントに関する最新のビュー。
@@ -154,15 +155,15 @@ Traffic Service は、開発者が交通情報を必要とする Web および�
 
 ### <a name="ip-to-location-service"></a>IP to Location Service
 
-IP to Location Service は、特定の IP アドレスに関して、取得した 2 文字の国番号をプレビューするのに使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを調整して強化するのに役立てることができます。
+IP to Location Service は、特定の IP アドレスに関して、取得した 2 文字の国番号をプレビューするのに使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
 
-IP to Location Service の REST API シリーズの詳細については、[Azure Maps Geolocation API のドキュメント](https://docs.microsoft.com/rest/api/maps/geolocation)を参照してください。
+REST API の IP to Location Service の詳細については、[Azure Maps Geolocation API のドキュメント](https://docs.microsoft.com/rest/api/maps/geolocation)を参照してください。
 
 ## <a name="programming-model"></a>プログラミング モデル
 
 Azure Maps は、モビリティ向けに構築されており、クロスプラットフォーム アプリケーションの開発に役立てることができます。 言語に依存せず、[REST API シリーズ](https://docs.microsoft.com/rest/api/maps/)を介して JSON 出力をサポートするプログラミング モデルを使用します。
 
-さらに、Azure Maps は Web アプリケーションとモバイル アプリケーションの両方をすばやく簡単に開発できるように、単純なプログラミング モデルの便利な [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-control)を提供します。
+さらに、Azure Maps は、便利な [JavaScript マップ コントロール](https://docs.microsoft.com/javascript/api/azure-maps-control)を単純なプログラミング モデルで提供します。 Web アプリケーションであれ、モバイル アプリケーションであれ、すばやく簡単に開発することができます。
 
 ## <a name="usage"></a>使用法
 
@@ -177,14 +178,14 @@ Azure Maps API シリーズは現在、以下を除くすべての国と地域�
 * 中国
 * 韓国
 
-ご自身の現在の IP アドレスの場所が上記のサポートされていない国に含まれていないことを確認してください。
+ご利用中の IP アドレスの場所が、サポート対象の国に含まれていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Maps を紹介するサンプル アプリを試す。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Web アプリを作成する](quick-demo-map-app.md)
+> [クイック スタート: Web アプリを作成する](quick-demo-map-app.md)
 
 Azure Maps に関する最新情報を受け取る。 
 

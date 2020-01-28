@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442335"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544091"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
@@ -66,13 +66,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. **[フロントエンド]** タブで、 **[フロントエンド IP アドレスの種類]** が **[パブリック]** に設定されていることを確認します。 <br>ユース ケースに従って、フロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
    > [!NOTE]
-   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成のみ (ILB のみモード) が、この v2 SKU で現在有効になっていません。 パブリックおよびプライベートの両方のフロントエンド IP 構成を使用できます。
+   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成が存在する必要があります。 パブリックとプライベートの両方のフロントエンド IP 構成が存在していることはかまいませんが、プライベートのみのフロントエンド IP 構成 (ILB のみモード) は現在、v2 SKU では有効ではありません。 
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
      ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. **[次へ:バックエンド]** を選択します。
+3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
 
@@ -118,7 +118,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
      ![新しいアプリケーションゲートウェイの作成: ルーティング規則](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
-7. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+7. **タグ**、**次へ:確認と作成** をクリックします。
 
 ### <a name="review--create-tab"></a>[確認と作成] タブ
 

@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc91d51d49ac1a317b88835e4d2e51773216020
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3eace60445dc9d52f9690da74360282efbb4cbe5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159494"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291213"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>チュートリアル:Azure Active Directory と Lucidchart の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lucidchart の統合
 
-このチュートリアルでは、Lucidchart と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Lucidchart と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Lucidchart と Azure Active Directory (Azure AD) を統合する方法について説明します。 Lucidchart を Azure AD と統合すると、次のことができます。
 
-* Lucidchart にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して自動的に Lucidchart にサインイン (シングル サインオン) するよう指定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Lucidchart にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Lucidchart に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Lucidchart と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Lucidchart でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Lucidchart でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Lucidchart では、**SP** によって開始される SSO がサポートされます
 * Lucidchart では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Lucidchart を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-lucidchart-from-the-gallery"></a>ギャラリーからの Lucidchart の追加
 
 Azure AD への Lucidchart の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Lucidchart を追加する必要があります。
 
-**ギャラリーから Lucidchart を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Lucidchart**」と入力します。
+1. 結果のパネルから **[Lucidchart]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-lucidchart"></a>Lucidchart の Azure AD シングル サインオンの構成とテスト
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+**B.Simon** というテスト ユーザーを使用して、Lucidchart に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Lucidchart の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+Lucidchart で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Lucidchart の SSO の構成](#configure-lucidchart-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[Lucidchart のテスト ユーザーの作成](#create-lucidchart-test-user)** - Lucidchart で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「**Lucidchart**」と入力し、結果パネルで **Lucidchart** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-     ![結果一覧の Lucidchart](common/search-new-app.png)
+1. [Azure portal](https://portal.azure.com/) の **Lucidchart** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Lucidchart で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Lucidchart 内の関連ユーザー間にリンク関係が確立されている必要があります。
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-Lucidchart で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Lucidchart シングル サインオンの構成](#configure-lucidchart-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Lucidchart のテスト ユーザーの作成](#create-lucidchart-test-user)** - Lucidchart で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Lucidchart で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Lucidchart** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
-
-    ![[Lucidchart のドメインと URL] のシングル サインオン情報](common/sp-signonurl.png)
-
-    **[サインオン URL]** テキスト ボックスに、「`https://chart2.office.lucidchart.com/saml/sso/azure`」と入力します。
+   **[サインオン URL]** テキスト ボックスに、「`https://chart2.office.lucidchart.com/saml/sso/azure`」と入力します。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -123,7 +100,37 @@ Lucidchart で Azure AD シングル サインオンを構成するには、次�
 
     c. ログアウト URL
 
-### <a name="configure-lucidchart-single-sign-on"></a>Lucidchart のシングル サインオンの構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に Lucidchart へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Lucidchart]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-lucidchart-sso"></a>Lucidchart の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Lucidchart の企業サイトに管理者としてログインします。
 
@@ -151,58 +158,7 @@ Lucidchart で Azure AD シングル サインオンを構成するには、次�
 
     d. **[Automatically Add new users to the team]\(新しいユーザーを自動的にチームに追加する\)** を選んで、 **[Save changes]\(変更を保存\)** をクリックします。
 
-    ![Save Changes](./media/lucidchart-tutorial/ic791195.png "[変更を保存]")
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Lucidchart へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Lucidchart]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で **[Lucidchart]** を選択します。
-
-    ![アプリケーションの一覧の [Lucidchart] リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+    ![[変更の保存]](./media/lucidchart-tutorial/ic791195.png "[変更の保存]")
 
 ### <a name="create-lucidchart-test-user"></a>Lucidchart のテスト ユーザーの作成
 
@@ -210,7 +166,7 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Lucidchart により自動的に作成されます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -220,6 +176,12 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で Lucidchart を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって Lucidchart を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

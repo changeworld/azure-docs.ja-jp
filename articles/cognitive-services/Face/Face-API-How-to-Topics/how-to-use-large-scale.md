@@ -1,5 +1,5 @@
 ---
-title: 例:大規模機能を使用する方法 - Face API
+title: 例:大規模なフィーチャーを使用する - Face
 titleSuffix: Azure Cognitive Services
 description: このガイドは、既存の PersonGroup および FaceList オブジェクトから LargePersonGroup および LargeFaceList オブジェクトにスケールアップする方法に関する記事です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743731"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169782"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -23,14 +23,14 @@ ms.locfileid: "73743731"
 
 LargePersonGroup と LargeFaceList は、まとめて大規模操作と呼びます。 LargePersonGroup には、最大 100 万人、その 1 人あたり最大 248 個の顔を保持できます。 LargeFaceList には、最大 100 万人の顔を保持できます。 大規模操作は、従来の PersonGroup と FaceList に似ていますが、新しいアーキテクチャなのでいくつかの違いがあります。 
 
-サンプルは Azure Cognitive Services Face API クライアント ライブラリを使用して C# で記述されています。
+サンプルは Azure Cognitive Services Face クライアント ライブラリを使用して C# で記述されています。
 
 > [!NOTE]
 > Identification と FindSimilar に対して大規模な顔検索パフォーマンスを有効にするには、トレーニング操作を導入して LargeFaceList と LargePersonGroup を事前に処理します。 トレーニング時間は実際の容量に応じて変わり、数秒から約 30 分かかります。 以前にトレーニング操作に成功している場合、トレーニング期間中に Identification と FindSimilar を実行できます。 欠点は、大規模なトレーニングへの新しい移行後処理が完了するまで、新しく追加された人物や顔が結果に表示されないことです。
 
 ## <a name="step-1-initialize-the-client-object"></a>手順 1:クライアント オブジェクトを初期化する
 
-Face API クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceClient クラスのコンストラクターを介して渡されます。 例:
+Face クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceClient クラスのコンストラクターを介して渡されます。 次に例を示します。
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -67,7 +67,7 @@ PersonGroup または Person 関連の実装では、API パスまたは SDK ク
 | 削除 | 削除 |
 | 取得 | 取得 |
 | List | List |
-| アップデート | アップデート |
+| 更新 | 更新 |
 | - | トレーニング |
 | - | トレーニング状態の取得 |
 
@@ -268,7 +268,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 - LargePaceGroup と LargeFaceList は、LargeFaceList によるトレーニング操作が必要であることを除けば、PersonGroup または FaceList と同様に機能します。
 - 大規模なデータセットの動的なデータ更新には、適切なトレーニング戦略を実行してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行する方法を学習します。
 
