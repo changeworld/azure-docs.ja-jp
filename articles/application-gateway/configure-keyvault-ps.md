@@ -1,5 +1,5 @@
 ---
-title: Key Vault 証明書を使用して SSL ターミネーションを構成する - PowerShell
+title: Key Vault 証明書を使用して SSL 終焉を構成する - PowerShell
 titleSuffix: Azure Application Gateway
 description: HTTPS 対応リスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
 services: application-gateway
@@ -15,11 +15,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/03/2020
 ms.locfileid: "75640552"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して SSL ターミネーションを構成する
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して SSL 終焉を構成する
 
 [Azure Key Vault](../key-vault/key-vault-overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
 
-詳細については、「[Key Vault 証明書での SSL ターミネーション](key-vault-certs.md)」を参照してください。
+詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
 
 この記事では、Azure PowerShell スクリプトを使用して SSL 終了証明書のためにキー コンテナーとアプリケーション ゲートウェイを統合する方法を示します。
 
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>次のステップ
 
-[SSL ターミネーションに関する詳細](ssl-overview.md)
+[SSL 終焉に関する詳細](ssl-overview.md)
