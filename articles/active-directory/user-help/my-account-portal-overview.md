@@ -1,6 +1,6 @@
 ---
-title: マイ アカウント ポータルの概要 - Azure Active Directory | Microsoft Docs
-description: マイ アカウント ポータルとその機能の概要と詳細情報へのリンク。
+title: マイ アカウント ポータルとは - Azure AD
+description: マイ アカウント ポータルとその機能 (セキュリティ情報、デバイス、パスワード、組織、プライバシー、自分のサインインの設定と管理など) にアクセスする方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,26 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/28/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d831add42f60df2688b5c846d556f5dea8cef556
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b6c54f8754b0ca67107f48b2dcfa912a98252b8b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585958"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293302"
 ---
-# <a name="my-account-portal-overview"></a>マイ アカウント ポータルの概要
+# <a name="what-is-the-my-account-portal"></a>マイ アカウント ポータルとは
 
 **マイ アカウント** ポータルでは、職場または学校アカウントを管理するために、セキュリティ情報の設定と管理や、接続されている組織とデバイスの管理を行うことができるほか、所属する組織で自分のデータがどのように使用されているかを確認することができます。
-
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
-
-![マイ アカウント ポータル、[概要] ページ](media/my-account-portal/my-account-portal-overview.png)
-
-## <a name="go-to-the-my-account-portal"></a>マイ アカウント ポータルにアクセスする
 
 **マイ アカウント** ポータル (https://myprofile.microsoft.com) ) には、次のブラウザーの最新バージョンからアクセスできます。
 
@@ -38,24 +31,28 @@ ms.locfileid: "73585958"
 - Firefox
 - Internet Explorer 11
 
-## <a name="my-account-portal-articles"></a>マイ アカウント ポータルの記事
+![マイ アカウント ポータル、[概要] ページ](media/my-account-portal/my-account-portal-overview.png)
 
-**マイ アカウント** ポータルの機能に関する詳細と利用手順については、次の記事を参照してください。
+>[!Important]
+>この記事の対象読者は、マイ アカウント ポータルにアクセスして自分のセキュリティ情報やデバイス情報、パスワード、接続されている組織、プライバシー、以前のサインイン情報を更新したいと考えているユーザーです。 認証を初めとする Azure Active Directory (Azure AD) 機能を従業員その他のユーザーに対して有効にする方法についての情報を探している管理者の方は、[管理者向け Azure AD ドキュメント](https://docs.microsoft.com/azure/active-directory/)に関するページを参照してください。
 
-|記事 |説明 |
-|------|------------|
-| [セキュリティ情報を追加する](user-help-security-info-overview.md) | Microsoft Authenticator アプリ、テキスト メッセージ、または電話を認証方法として設定する方法を説明する記事を複数紹介しています。 また、忘れてしまったパスワードをリセットできるように、必要に応じてメール アドレスまたは事前定義のセキュリティの質問を追加する方法に関する記事も紹介しています。|
-| [接続されているデバイスを表示または無効化する](my-account-portal-devices-page.md) | 職場または学校アカウントに接続されているデバイスを表示する方法と無効化する方法を説明します。|
-| [職場または学校アカウントのパスワードを変更する](my-account-change-password-page.md) | 職場または学校アカウントのパスワードを変更する方法を説明します。 |
-| [接続されている組織を表示または脱退する](my-account-portal-organizations-page.md) | 職場または学校アカウントに接続されている組織を表示する方法と、その組織から脱退する方法を説明します。|
-| [プライバシーに関連する情報の表示](my-account-portal-privacy-page.md) | 職場または学校アカウントに接続されているオンライン サービス、および組織の利用規約を表示する方法を説明します。|
-| [最近のサインイン アクティビティの表示](my-account-portal-sign-ins-page.md) | 職場または学校アカウントのサインイン アクティビティを表示する方法を説明します。 |
+## <a name="next-steps"></a>次のステップ
 
-## <a name="related-office-content"></a>関連する Office コンテンツ
+- 自分の[セキュリティ情報](user-help-security-info-overview.md)の表示または管理を選択する
+
+- 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する
+
+- 自分の[組織](my-account-portal-organizations-page.md)を表示し、管理する
+
+- [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する
+
+- 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示する
+
+## <a name="related-microsoft-office-content"></a>関連する Microsoft Office コンテンツ
 
 - [Office 製品にサインインして管理する](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Office の **[マイ アカウント]** ページにアクセスする](https://portal.office.com/account/#home)
+- [Office の **[マイ アカウント]** ページにアクセスする](https://portal.office.com/account/)
 
 - [Office の **[インストール情報]** ページにアクセスする](https://portal.office.com/account/#installs)
 

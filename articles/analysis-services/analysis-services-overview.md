@@ -4,15 +4,15 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749688"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274787"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -34,7 +34,7 @@ Azure Analysis Services とさまざまな Azure サービスを統合するこ�
 
 ## <a name="the-right-tier-when-you-need-it"></a>必要に応じたレベルを選ぶ
 
-Azure Analysis Services は、**Developer** レベル、**Basic** レベル、および **Standard** レベルでご利用いただけます。 各レベルのプランのコストは、処理能力、QPU、メモリ サイズによって異なります。 サーバーの作成時に、レベル内のプランを選択します。 プランは、同一レベル内で変更することも、上位レベルにアップグレードすることもできますが、上位レベルから下位レベルにダウングレードすることはできません。
+Azure Analysis Services は、**Developer** レベル、**Basic** レベル、および **Standard** レベルでご利用いただけます。 各レベルのプランのコストは、処理能力、クエリ処理ユニット (QPU)、およびメモリ サイズによって異なります。 サーバーの作成時に、レベル内のプランを選択します。 プランは、同一レベル内で変更することも、上位レベルにアップグレードすることもできますが、上位レベルから下位レベルにダウングレードすることはできません。
 
 ### <a name="developer-tier"></a>Developer レベル
 
@@ -232,7 +232,7 @@ Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microso
 
 ここには、Azure Analysis Services 固有のドキュメントが含まれています。 記事を検索するには、ブラウザー画面の左側にある目次を使用します。 
 
-Azure Analysis Services の表形式モデルは、SQL Server Analysis Services の表形式モデルとほぼ同じなので、[SQL Server Analysis Services のドキュメント](https://docs.microsoft.com/analysis-services/analysis-services-overview)の概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 SQL Server Analysis Services ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。
+Azure Analysis Services の表形式モデルは、SQL Server Analysis Services の表形式モデルとほぼ同じなので、[SQL Server Analysis Services のドキュメント](https://docs.microsoft.com/analysis-services/analysis-services-overview)のデータ モデリング チュートリアル、概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 SQL Server Analysis Services ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。
 
 ![共有ドキュメント](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -260,7 +260,7 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 > [Azure 無料アカウントにサインアップする](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート:サーバーの作成 - ポータル](analysis-services-create-server.md)   
+> [クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート:サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  
+> [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  

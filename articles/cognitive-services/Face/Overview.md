@@ -1,7 +1,7 @@
 ---
-title: Face API とは
+title: Face サービスとは
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Face API は、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。
+description: Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961541"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170248"
 ---
-# <a name="what-is-the-azure-face-api"></a>Azure Face API とは
+# <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
-Azure Cognitive Services Face API は、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
+Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
 
-Face API にはいくつかの異なる機能があります。 それぞれの機能について以降のセクションで説明します。 これらの詳細については、後の説明を参照してください。
+Face サービスにはいくつかの異なる機能があります。 それぞれの機能について以降のセクションで説明します。 これらの詳細については、後の説明を参照してください。
 
 ## <a name="face-detection"></a>顔検出
 
-Face API では、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出ではオプションとして、顔関連の属性を抽出できます。 たとえば、頭部姿勢、性別、年齢、感情、顔ひげ、眼鏡です。
+Face サービスでは、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出ではオプションとして、顔関連の属性を抽出できます。 たとえば、頭部姿勢、性別、年齢、感情、顔ひげ、眼鏡です。
 
 > [!NOTE]
-> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) でも利用できます。 顔のデータを使ってさらに操作を行いたい場合は、この記事で取り上げる Face API というサービスを使用してください。
+> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) でも利用できます。 顔のデータを使ってさらに操作を行いたい場合は、この記事で取り上げる Face サービスを使用してください。
 
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
@@ -73,16 +73,16 @@ Identify API を使用して、人のデータベースと照らして、検出�
 
 ## <a name="sample-apps"></a>サンプル アプリ
 
-以下のサンプル アプリケーションは、Face API の使用方法をいくつか示しています。
+以下のサンプル アプリケーションは、Face サービスの使用方法をいくつか示しています。
 
-- [Microsoft Face API: Windows クライアント ライブラリとサンプル](https://github.com/Microsoft/Cognitive-Face-Windows) は、顔の検出、分析、識別についていくつかのシナリオを実証する WPF アプリです。
+- [Face API: Windows クライアント ライブラリとサンプル](https://github.com/Microsoft/Cognitive-Face-Windows) は、顔の検出、分析、識別についていくつかのシナリオを実証する WPF アプリです。
 - [FamilyNotes UWP アプリ](https://github.com/Microsoft/Windows-appsample-familynotes)は、家族でノートを共有するシナリオにおいて、音声、Cortana、インク、カメラと共に顔の識別が使用されるユニバーサル Windows プラットフォーム (UWP) アプリです。
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
 Cognitive Services リソース全般に言えることですが、Face サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 クイック スタートに従って、顔検出のシナリオをコードで実装します。
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345571"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290072"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -49,6 +48,7 @@ SaaS (サービスとしてのソフトウェア) アプリと Azure AD の統�
 * DocuSign では、*Just-In-Time* ユーザー プロビジョニングがサポートされます。
 
 * DocuSign では、[自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)がサポートされます。
+* DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-docusign-from-the-gallery"></a>ギャラリーからの DocuSign の追加
 
@@ -72,7 +72,7 @@ DocuSign で Azure AD SSO を構成してテストするには、次の構成要
     1. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、B.Simon を使って Azure AD のシングル サインオンをテストします。
     1. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. [DocuSign の SSO を構成](#configure-docusign-sso)して、アプリケーション側でシングル サインオン設定を構成します。
-1. [DocuSign のテスト ユーザーを作成](#create-docusign-test-user)して、DocuSign で B.Simon に対応するユーザーを生成し、Azure AD の B.Simon にリンクさせます。
+    1. [DocuSign のテスト ユーザーを作成](#create-docusign-test-user)して、DocuSign で B.Simon に対応するユーザーを生成し、Azure AD の B.Simon にリンクさせます。
 1. [SSO のテスト](#test-sso)。構成が機能することを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -236,6 +236,10 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 - [Azure AD の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で DocuSign を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって DocuSign を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

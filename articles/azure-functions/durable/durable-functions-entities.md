@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433314"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262998"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -53,7 +53,9 @@ ms.locfileid: "75433314"
 
 **関数ベースの構文**: エンティティは関数として表され、操作はアプリケーションによって明示的にディスパッチされます。 この構文は、単純な状態のエンティティ、操作が少ないエンティティ、または動的な操作のセット (アプリケーション フレームワーク内のような) を備えたエンティティに適しています。 この構文は、コンパイル時に型エラーがキャッチされないため、保守が煩雑になる可能性があります。
 
-**クラスベースの構文**: エンティティおよび操作はクラスおよびメソッドによって表されます。 この構文では、より読みやすいコードが生成され、タイプ セーフな方法で操作を呼び出すことができます。 クラスベースの構文は、関数ベースの構文の上にあるシン レイヤーであるため、同じアプリケーションで両方のバリアントを同じ意味で使用できます。
+**クラスベースの構文 (.NET のみ)** : エンティティおよび操作はクラスおよびメソッドによって表されます。 この構文では、より読みやすいコードが生成され、タイプ セーフな方法で操作を呼び出すことができます。 クラスベースの構文は、関数ベースの構文の上にあるシン レイヤーであるため、同じアプリケーションで両方のバリアントを同じ意味で使用できます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>例:関数ベースの構文 - C#
 
@@ -107,11 +109,13 @@ public class Counter
 
 クラスベースの構文とその使用方法の詳細については、「[エンティティ クラスの定義](durable-functions-dotnet-entities.md#defining-entity-classes)」を参照してください。
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>例:JavaScript のエンティティ
 
 `durable-functions` npm パッケージのバージョン **1.3.0** 以降では、JavaScript で持続エンティティが利用できます。 以下のコードは、JavaScript で記述されている持続的関数として実装された `Counter` エンティティです。
 
-**function.json**
+**Counter (function.json)**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ public class Counter
 }
 ```
 
-**index.js**
+**Counter (index.js)**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>エンティティへのアクセス
 
 エンティティには、一方向または双方向の通信を使用してアクセスできます。 次の用語は、2 つの通信の形式を区別します。 
@@ -161,12 +167,14 @@ module.exports = df.entity(function(context) {
 
 次の例では、エンティティにアクセスするこれらのさまざまな方法を示しています。
 
-> [!NOTE]
-> わかりやすくするために、次の例では、エンティティにアクセスするための緩やかに型指定された構文を示しています。 一般に、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)ことをお勧めします。
-
 ### <a name="example-client-signals-an-entity"></a>例:クライアントがエンティティにシグナル通知を出す
 
 通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> わかりやすくするために、次の例では、エンティティにアクセスするための緩やかに型指定された構文を示しています。 一般に、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)ことをお勧めします。
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 "*シグナル通知*" とは、エンティティの API 呼び出しが一方向で非同期であることを意味します。 クライアント関数は、エンティティが操作をいつ処理したかを認識できません。 また、クライアント関数は、結果の値または例外を確認することはできません。 
 
 ### <a name="example-client-reads-an-entity-state"></a>例:クライアントがエンティティの状態を読み取る
 
 次の例に示すように、クライアント関数では、エンティティの状態についてクエリを実行することもできます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 エンティティ状態のクエリは永続性追跡ストアに送信され、エンティティの最後に保存された状態が返されます。 この状態は、常に "コミット済み" 状態です。つまり、操作の実行中に想定される一時的な中間状態ではありません。 ただし、この状態は、エンティティのメモリ内の状態より古い可能性があります。 次のセクションで説明するように、エンティティのメモリ内の状態を読み取ることができるのはオーケストレーションだけです。
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>例:オーケストレーションがエンティティにシグナル通知を出し、エンティティを呼び出す
 
 オーケストレーター関数では、[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)に対する API を使用して、エンティティにアクセスできます。 次のコード例では、オーケストレーター関数による `Counter` エンティティの呼び出しとシグナル通知を示します。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript では現在、オーケストレーターからのエンティティのシグナル通知はサポートされていません。 代わりに `callEntity` を使用してください
 
+---
+
 エンティティを呼び出して応答 (戻り値または例外) を取得できるのは、オーケストレーションだけです。 [クライアント バインド](durable-functions-bindings.md#entity-client)を使用するクライアント関数は、エンティティに対するシグナル通知だけが可能です。
 
 > [!NOTE]
@@ -266,6 +290,8 @@ module.exports = df.orchestrator(function*(context){
 
 エンティティ関数は、操作の実行中に他のエンティティ (またはそれ自体) にシグナルを送信することができます。
 たとえば、前の `Counter` エンティティの例を変更して、カウンターが値 100 に達したときに "マイルストーン到達" シグナルを一部の監視エンティティに送信することができます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-## <a name="entity-coordination"></a>エンティティの調整
+---
+
+## <a name="entity-coordination"></a>エンティティの調整 (現在 .NET のみ)
 
 複数のエンティティ間で操作を調整することが必要になる場合があります。 たとえば、銀行のアプリケーションでは、個々の銀行口座を表すエンティティがある場合があります。 口座間で送金を行う場合は、送金元口座に十分な資金があることを確認する必要があります。 さらに、送金元口座と送金先口座の両方に対する更新がトランザクション的に一貫した方法で実行されることを確認する必要もあります。
 

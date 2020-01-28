@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と Go を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Go で Face API を使って画像から顔を検出します。
+description: このクイックスタートでは、Go で Face サービスを使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 3ebcd7dfb7b1138f52663d7c919d4ce4d8bd088a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890535"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165834"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>クイック スタート:REST API と Go を使用して画像内の顔を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "75890535"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
 ## <a name="write-the-script"></a>スクリプトを作成する
@@ -311,7 +311,7 @@ detect-face
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す Go コンソール アプリケーションを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、Azure Face サービスを呼び出して画像内の顔を検出し、その属性を返す Go コンソール アプリケーションを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

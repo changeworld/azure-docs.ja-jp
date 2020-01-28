@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278992"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156116"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する
 
@@ -26,6 +26,19 @@ ms.locfileid: "74278992"
 このプロンプトは、組織で要求されているセキュリティ情報を設定していない場合にのみ表示されます。 以前にセキュリティ情報を設定してあり、それを変更したい場合は、さまざまなメソッドに基づく方法に関する記事の手順を利用できます。 詳しくは、[セキュリティ情報の追加または更新の概要](security-info-add-update-methods-overview.md)に関する記事をご覧ください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>セキュリティ認証とパスワードのリセット認証
+
+セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
+
+| 方法 | 使用目的 |
+| ------ | -------- |
+| Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
+| テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
+| 電話 | 2 要素認証とパスワードのリセット認証。 |
+| セキュリティ キー | 2 要素認証とパスワードのリセット認証。 |
+| 電子メール アカウント | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
+| セキュリティの質問 | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>職場または学校アカウントにサインインする
 
@@ -136,7 +149,7 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 
     ![完了通知が表示されたアプリ パスワード ページ](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 既定のセキュリティ情報メソッドの変更、削除、または更新については、以下をご覧ください。
 
@@ -154,4 +167,4 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

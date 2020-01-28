@@ -1,27 +1,19 @@
 ---
-title: チュートリアル - Azure 仮想マシン スケール セットの作成および管理 | Microsoft Docs
+title: チュートリアル - Azure 仮想マシン スケール セットを作成および管理する
 description: Azure CLI を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751023"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277218"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -40,8 +32,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシン スケール セットの前にリソース グループを作成する必要があります。 [az group create](/cli/azure/group) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシン スケール セットの前にリソース グループを作成する必要があります。 [az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -192,13 +184,13 @@ VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモ
 ### <a name="vm-instance-sizes"></a>VM インスタンス サイズ
 次の表は、ユース ケース別に一般的な VM サイズを分類したものです。
 
-| type                     | 一般的なサイズ           |    説明       |
+| 種類                     | 一般的なサイズ           |    [説明]       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
 | [メモリの最適化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
 | [ストレージの最適化](../virtual-machines/linux/sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック レンダリングやビデオ編集に特化した VM です。       |
 | [高性能](../virtual-machines/linux/sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
 
 ### <a name="find-available-vm-instance-sizes"></a>利用可能な VM インスタンス サイズを確認する
@@ -294,7 +286,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 リソース グループを削除すると、グループに含まれているリソース (VM インスタンス、仮想ネットワーク、ディスクなど) もすべて削除されます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
@@ -302,7 +294,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure CLI を使用して基本的なスケール セットの作成タスクおよび管理タスクを実行する方法について学習しました。
 
 > [!div class="checklist"]

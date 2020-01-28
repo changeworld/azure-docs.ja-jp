@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528353"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314074"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) とは
 
@@ -38,13 +38,13 @@ Azure Machine Learning Studio (クラシック) では、予測分析モデル�
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Machine Learning Studio (クラシック) と Azure Machine Learning の違い
 
-[Azure Machine Learning](../overview-what-is-azure-ml.md) には、SDK と Azure Machine Learning デザイナー (プレビュー) の**両方**が用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning に完全に統合されています。
+[Azure Machine Learning](../overview-what-is-azure-ml.md) には、SDK と Azure Machine Learning デザイナーの**両方**が用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning に完全に統合されています。
 
 簡単な比較を次に示します。
 
 || Machine Learning Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
-| ドラッグ アンド ドロップ インターフェイス | はい | はい - [Azure Machine Learning デザイナー (プレビュー)](../concept-designer.md) |
+| ドラッグ アンド ドロップ インターフェイス | はい | はい - [Azure Machine Learning デザイナー](../concept-designer.md) |
 | 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
 | ドラッグ アンド ドロップ インターフェイスのモジュール | 多数 | 人気のある[モジュール](../algorithm-module-reference/module-reference.md)の初期セット|
 |コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング (GPU または CPU) と Notebook VM をサポートします。<br/>([他のコンピューティングは SDK でサポート](../concept-compute-target.md#train))|

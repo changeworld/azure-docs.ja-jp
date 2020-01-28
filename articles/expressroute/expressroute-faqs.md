@@ -97,9 +97,9 @@ ExpressRoute 回線が Azure Microsoft ピアリングに対して有効にな�
 
 パブリック ピアリングの詳細と構成の手順については、[ExpressRoute パブリック ピアリング](about-public-peering.md)に関するページを参照してください。
 
-### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Microsoft のピアリングの構成中に、[アドバタイズされたパブリック プレフィックス] の状態が「検証が必要です」と表示されるのはなぜですか。
+### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Microsoft のピアリングの構成中に、[アドバタイズされたパブリック プレフィックス] の状態が [検証が必要です] と表示されるのはなぜですか。
 
-Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、「検証が必要です」というメッセージが表示されます。
+Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、[検証が必要です] というメッセージが表示されます。
 
 '検証が必要です' というメッセージが表示された場合は、ルーティング レジストリにプレフィックスの所有者として一覧表示されているエンティティによって組織にパブリック プレフィックスが割り当てられていることを示すドキュメントを収集し、下に示すようにサポート チケットを開くことにより、これらのドキュメントを手動検証のために送信してください。
 
@@ -176,7 +176,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>1 つのサブスクリプションで複数の ExpressRoute 回線を使用できますか。
 
-はい。 1 つのサブスクリプションで、複数の ExpressRoute 回線をご利用いただけます。 既定の制限は 10 に設定されています。 上限を増やす必要がある場合は、Microsoft サポートにご連絡ください。
+はい。 1 つのサブスクリプションで、複数の ExpressRoute 回線をご利用いただけます。 既定の上限は 10 に設定されています。 上限を増やす必要がある場合は、Microsoft サポートにご連絡ください。
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>別のサービス プロバイダーから ExpressRoute 回線を使用することはできますか。
 
@@ -255,7 +255,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>BGP セッションを介してアドバタイズできる IP 範囲に制限はありますか。
 
-Microsoft ピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。 Microsoft とプライベート ピアリングの両方で、任意のプレフィックス サイズ (最大 /32) を受け入れることができます。
+Microsoft ピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。 Microsoft とプライベートの両方の ピアリングで、任意のプレフィックス サイズ (最大 /32) を受け入れることができます。
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>BGP の上限を超えるとどうなりますか。
 
@@ -269,7 +269,7 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 
 はい、Azure Portal または PowerShell を使用して、ExpressRoute 回線の帯域幅を増やすことを試すことができます。 回線が作成された物理ポートで使用可能な容量があれば、変更は成功します。 
 
-変更が失敗した場合は、現在のポートに十分な容量が残っていないため、帯域幅が大きい新しい ExpressRoute 回線を作成する必要がある、またはその場所には追加の容量がないため、帯域幅を増やすことはできないことを意味します。 
+変更が失敗した場合は、現在のポートに十分な容量が残っていないために帯域幅が大きい新しい ExpressRoute 回線を作成する必要がある、ということ、またはその場所には追加の容量がないために帯域幅を増やすことはできない、ということになります。 
 
 また、接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。 ただし、ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅が小さい新しい ExpressRoute 回線を作成し、古い回線を削除する必要があります。
 
@@ -321,17 +321,17 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
 ### <a name="what-is-expressroute-local"></a>ExpressRoute Local とは何ですか。
-ExpressRoute Local とは、Standard SKU と Premium SKU 以外の ExpressRoute 回線の SKU のことです。 Local の主な機能は、ExpressRoute ピアリングの場所の Local 回線で、ユーザーが、同じ都市圏内またはその近くにある 1 つまたは 2 つの Azure リージョンにのみアクセスできるようにすることです。 これに対し Standard 回線では地政学的領域内のすべての Azure リージョンに、Premium 回線では世界中のすべての Azure リージョンにユーザーがアクセスできます。 
+ExpressRoute Local とは、Standard SKU と Premium SKU 以外の ExpressRoute 回線の SKU のことです。 Local の主な機能は、ExpressRoute ピアリングの場所の Local 回線で、ユーザーが、同じ都市圏内またはその近くにある 1 つまたは 2 つの Azure リージョンにのみアクセスできるようにすることです。 これに対し Standard 回線では地政学的領域内のすべての Azure リージョンに、Premium 回線では世界中のすべての Azure リージョンに、ユーザーはアクセスすることができます。 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute Local のメリットは何ですか。
-お使いの ExpressRoute 回線が Standard または Premium の場合、エグレス データ転送に対して料金が発生しますが、ExpressRoute Local 回線ではエグレス データ転送に対して個別に料金が発生することはありません。 つまり、ExpressRoute Local の価格には、データ転送料金が含まれます。 転送するデータが大量にある場合は、ExpressRoute Local がコスト効率の高いソリューションです。このソリューションでは、ご自身のデータを、プライベート接続経由で、必要な Azure リージョンの近くにある ExpressRoute ピアリングの場所に送信できます。 
+お使いの ExpressRoute 回線が Standard または Premium の場合、エグレス データ転送に対して料金が発生しますが、ExpressRoute Local 回線ではエグレス データ転送に対して個別に料金が発生することはありません。 つまり、ExpressRoute Local の価格には、データ転送料金が含まれます。 転送するデータが大量にある場合、ExpressRoute Local はコスト効率の高いソリューションです。このソリューションではご自身のデータをプライベート接続経由で、必要な Azure リージョンの近くにある ExpressRoute ピアリングの場所に送信できます。 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>ExpressRoute Local ではどのような機能を使用できますか。また、何を使用できませんか。
 Standard ExpressRoute 回線の機能セットとほぼ同じですが、次の機能が異なります。
 * 上述した Azure リージョンへのアクセス範囲
-* ExpressRoute Global Reach が Local では使用できません
+* ExpressRoute Global Reach が Local では使用不可
 
-ExpressRoute Local では、リソース制限 (回線あたりの VNet 数など) も Standard と同じです。 
+ExpressRoute Local では、リソースの制限 (回線あたりの VNet 数など) も Standard と同じです。 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute Local はどこで使用できますか。また、ピアリングの場所はそれぞれどの Azure リージョンにマッピングされていますか。
 ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近くにあるピアリングの場所で使用できます。 ピアリングの場所の州、都道府県、国に Azure リージョンがない場合、そこで使用することはできません。 正確なマッピングについては、[場所のページ](expressroute-locations-providers.md)をご覧ください。  
@@ -352,7 +352,7 @@ ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近く�
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>既存の ExpressRoute 回線が Office 365 サービスへの接続をサポートするようにできますか。
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>既存の ExpressRoute 回線で Office 365 サービスへの接続をサポートすることはできますか。
 
 はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](https://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
@@ -375,7 +375,7 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 ### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute で Office 365 ネットワーク トラフィックの高可用性を計画するにはどうすればよいですか?
 「[Azure ExpressRoute の高可用性とフェールオーバー](https://aka.ms/erhighavailability)」に記載の推奨事項を参照してください。
 
-### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じてOffice 365 US Government Community (GCC) サービスにアクセスすることはできますか。
+### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じて Office 365 US Government Community (GCC) サービスにアクセスすることはできますか。
 
 はい。 Office 365 GCC サービス エンドポイントに、Azure US Government ExpressRoute を通してアクセスすることができます。 ただし、まず、Azure Portal でサポート チケットを開いて、Microsoft にアドバタイズするプレフィックスを提供する必要があります。 サポート チケットが解決された後に、Office 365 GCC サービスへの接続が確立されます。 
 

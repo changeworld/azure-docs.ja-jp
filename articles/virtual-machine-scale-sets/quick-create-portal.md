@@ -1,9 +1,7 @@
 ---
 title: クイックスタート - Azure portal で仮想マシン スケール セットを作成する
 description: Azure portal を使用して仮想マシン スケール セットをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
-services: virtual-machine-scale-sets.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351137"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543139"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
@@ -33,7 +31,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信トラフィックを正常な仮想マシン インスタンス間で分散します。 
 
-最初に、ポータルを使用してパブリック Basic Load Balancer を作成します。 作成する名前とパブリック IP アドレスは、ロード バランサーのフロント エンドとして自動的に構成されます。
+最初に、ポータルを使用してパブリック Standard Load Balancer を作成します。 作成する名前とパブリック IP アドレスは、ロード バランサーのフロント エンドとして自動的に構成されます。
 
 1. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果の **[マーケットプレース]** で、 **[ロード バランサー]** を選択します。
 1. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。

@@ -23,7 +23,7 @@
       href: iot-accelerators-device-simulation-overview.md
     - name: 予測的なメンテナンス
       href: iot-accelerators-predictive-walkthrough.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: リモート監視ソリューションを試す
@@ -62,7 +62,7 @@
   items:
     - name: リモート監視
       items:
-        - name: アーキテクチャ
+        - name: Architecture
           href: iot-accelerators-remote-monitoring-architectural-choices.md
         - name: デバイス モデル スキーマ
           href: iot-accelerators-remote-monitoring-device-schema.md
@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: OPC Vault アーキテクチャ
           href: overview-opc-vault-architecture.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: リモート監視
       items:
@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
     - name: リモート監視
       items:
         - name: 開発者向けリファレンス ガイド (.NET)
@@ -262,7 +264,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
             - name: デジタル サイネージ ソリューション
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: iot-accelerators-faq.md
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

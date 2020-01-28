@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と Ruby を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Ruby で Face API を使って画像から顔を検出します。
+description: このクイックスタートでは、Ruby で Face REST API を使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce76136f166660bf34c81aab065ba761e4c2867a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 892e7e0fe362e25cf1ca69146bd27a77baf41f24
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977881"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169431"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>クイック スタート:REST API と Ruby を使用して画像内の顔を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74977881"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
 ## <a name="write-the-script"></a>スクリプトを作成する
@@ -255,9 +255,9 @@ ruby faceDetection.rb
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す Ruby スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、Azure Face サービスを呼び出して画像内の顔を検出し、その属性を返す Ruby スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

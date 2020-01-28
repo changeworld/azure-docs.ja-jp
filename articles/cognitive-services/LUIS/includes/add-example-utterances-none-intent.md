@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325905"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262752"
 ---
 クライアント アプリケーションは、発話がアプリケーションにとって無意味または不適切なものでないかどうかを把握する必要があります。 **None** 意図は、クライアント アプリケーションが発話に返答すべきでないかどうかを判断するために、作成プロセスの一部として各アプリケーションに追加されます。
 
@@ -30,7 +30,6 @@ LUIS が発話に対して **None** 意図を返した場合、クライアン�
     |`None` の発話例|
     |--|
     |`Barking dogs are annoying`|
-    |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
-    これらの例では、主題の領域で予測される単語 (`pizza`、`cheese`、`crust`、`pickup` `deliver` など) を使用しないでください。
+    これらの例では、主題の領域で予測される単語 (`pizza`、`cheese`、`crust`、`pickup``deliver` など) を使用しないでください。

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 8d0793c863f4f682c967c7a5ae61c5a0b78cdb4d
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561893"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292537"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -50,6 +50,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Salesforce では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * Salesforce Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+* Salesforce を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-salesforce-from-the-gallery"></a>ギャラリーからの Salesforce の追加
 
@@ -241,3 +242,7 @@ Salesforce で Azure AD SSO を構成してテストするには、次の構成�
 - [[ユーザー プロビジョニングの構成]](salesforce-provisioning-tutorial.md)
 
 - [Azure AD で Salesforce を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+
+- [高度な可視性と制御によって Salesforce を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

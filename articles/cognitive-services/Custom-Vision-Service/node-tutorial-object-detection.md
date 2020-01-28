@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 648a9d43f911ffb7f4d6bc97fd63c2ea97ec84e9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 944c3f8fcf440ce71cbb059aff21b7c8b63e74ab
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977439"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166901"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して物体検出プロジェクトを作成する
 
@@ -47,7 +47,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。 物体検出と画像分類のプロジェクト作成の違いは **createProject** 呼び出しに指定されるドメインであることにご注目ください。
 
 ```javascript
 const fs = require('fs');
@@ -86,7 +86,10 @@ const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。
+物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。 
+
+> [!NOTE]
+> 領域の座標をマークするためのクリックアンド ドラッグ ユーティリティがない場合は、[Customvision.ai](https://www.customvision.ai/) で Web UI を使用できます。 この例では、座標は既に指定されています。
 
 画像、タグ、領域をプロジェクトに追加するには、タグの作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードに埋め込まれていることにご注目ください。 各領域は、正規化座標で境界ボックスを指定しており、座標は、左、上、幅、高さの順に指定しています。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
@@ -187,7 +190,7 @@ await Promise.all(fileUploadPromises);
 
 ### <a name="train-the-project-and-publish"></a>プロジェクトをトレーニングして公開する
 
-このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
+このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```javascript
 console.log("Training...");
@@ -197,6 +200,7 @@ let trainingIteration = await trainer.trainProject(sampleProject.id);
 console.log("Training started...");
 while (trainingIteration.status == "Training") {
     console.log("Training status: " + trainingIteration.status);
+    // wait for one second
     await setTimeoutPromise(1000, null);
     trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
 }
@@ -236,7 +240,7 @@ node sample.js
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 

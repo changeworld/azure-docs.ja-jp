@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 59c0ca0c47a29c4399d0ea0fb88b7d3c69fbc0f3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7490e1261262ff26eec48a691e22ec177954dcf3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976198"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169446"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して画像分類プロジェクトを作成する
 
@@ -46,7 +46,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。 物体検出と画像分類のプロジェクト作成の違いは **createProject** 呼び出しに指定されるドメインであることにご注目ください。
 
 ```javascript
 const util = require('util');
@@ -109,7 +109,7 @@ await Promise.all(fileUploadPromises);
 
 ### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
 
-このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
+このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```javascript
 console.log("Training...");
@@ -174,7 +174,7 @@ Results:
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
 

@@ -1,5 +1,5 @@
 ---
-title: 例:画像内の顔を識別する - Face API
+title: 例:画像内の顔を識別する - Face
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、既知のユーザーから事前に作成される PersonGroups オブジェクトを使用して不明な顔を識別する方法を示します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977184"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169910"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 
-このガイドでは、既知のユーザーから事前に作成される PersonGroups オブジェクトを使用して不明な顔を識別する方法を示します。 サンプルは Azure Cognitive Services Face API クライアント ライブラリを使用して C# で記述されています。
+このガイドでは、既知のユーザーから事前に作成される PersonGroups オブジェクトを使用して不明な顔を識別する方法を示します。 サンプルは Azure Cognitive Services Face クライアント ライブラリを使用して C# で記述されています。
 
 ## <a name="preparation"></a>準備
 
@@ -42,7 +42,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 その代わりに、HTTP 要求ヘッダー内でサブスクリプション キーを指定します (**ocp-apim-subscription-key: &lt;サブスクリプション キー&gt;** )。
-クライアント ライブラリを使用するとき、サブスクリプション キーが FaceClient クラスのコンストラクターを介して渡されます。 例:
+クライアント ライブラリを使用するとき、サブスクリプション キーが FaceClient クラスのコンストラクターを介して渡されます。 次に例を示します。
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>手順 4:定義されている PersonGroup に対して顔を識別する
 
-Face API は、識別を実行するときに、グループ内のすべての顔についてテストする顔との類似性を計算します。 テストする顔に最も似たユーザーを返します。 このプロセスには、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API またはクライアント ライブラリの IdentifyAsync メソッドを使用します。
+Face サービスは、識別を実行するときに、グループ内のすべての顔についてテストする顔との類似性を計算します。 テストする顔に最も似たユーザーを返します。 このプロセスには、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API またはクライアント ライブラリの IdentifyAsync メソッドを使用します。
 
 テストする顔は、前の手順を使用して検出する必要があります。 次に、顔 ID が 2 番目の引数として識別 API に渡されます。 複数の顔 ID を一度に識別できます。 結果には、識別されたすべての結果が含まれています。 既定では、識別プロセスは、テストする顔に最も一致する 1 人だけのユーザーを返します。 希望する場合は、識別プロセスが複数の候補を返せるようにする省略可能なパラメーター maxNumOfCandidatesReturned を指定します。
 

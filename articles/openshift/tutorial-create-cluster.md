@@ -1,19 +1,17 @@
 ---
-title: チュートリアル - Azure Red Hat OpenShift クラスターを作成する |Microsoft Docs
+title: チュートリアル - Azure Red Hat OpenShift クラスターを作成する
 description: Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成する方法を学習します
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771344"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274898"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -125,7 +123,7 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 最初に、**既存の**ログ分析ワークスペースの識別子を取得します。 この識別子は次の形式になります。
 
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`
 
 ログ分析ワークスペースの名前、または既存のログ分析ワークスペースが属しているリソース グループがわからない場合は、[ログ分析ワークスペース](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)にアクセスし、お使いのログ分析ワークスペースをクリックします。 ログ分析ワークスペース ページが表示され、ワークスペースの名前と所属しているリソース グループが表示されます。
 

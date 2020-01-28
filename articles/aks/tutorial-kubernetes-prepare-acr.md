@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5089326af1d7f6e057667cd916f35de92bf517ef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 04fbea9714224f0ecbac0e14618caaf39fa3cedf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614239"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291143"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル:Azure Container Registry をデプロイして使用する
 
@@ -37,7 +37,7 @@ Azure Container Registry (ACR) は、コンテナー イメージ用のプライ
 
 Azure Container Registry を作成するには、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create][az-group-create] コマンドでリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -80,7 +80,7 @@ ACR で *azure-vote-front* コンテナー イメージを使用するには、�
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-ここで、ローカルの *azure-vote-front* イメージに、コンテナー レジストリの *acrloginServer* アドレスでタグを付けます。 イメージのバージョンを示すには、イメージ名の最後に *:v1* を追加します。
+ここで、ローカルの *azure-vote-front* イメージに、コンテナー レジストリの *acrLoginServer* アドレスでタグを付けます。 イメージのバージョンを示すには、イメージ名の最後に *:v1* を追加します。
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -140,9 +140,9 @@ v1
 
 これで、プライベートの Azure Container Registry インスタンスに格納されているコンテナー イメージができました。 このイメージは、次のチュートリアルで、ACR から Kubernetes クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Container Registry を作成し、AKS クラスターで使用するためのイメージをプッシュしました。 以下の方法について学習しました。
+このチュートリアルでは、Azure Container Registry を作成し、AKS クラスターで使用するためのイメージをプッシュしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Container Registry (ACR) インスタンスを作成する

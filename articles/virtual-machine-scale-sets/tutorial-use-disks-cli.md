@@ -1,27 +1,19 @@
 ---
-title: チュートリアル - Azure CLI を使用したスケール セットのディスクの作成および使用 | Microsoft Docs
+title: チュートリアル - Azure CLI を使用してスケール セットのディスクを作成および使用する
 description: Azure CLI を使用して仮想マシン スケール セットの Managed Disks を作成および使用する方法 (ディスクの追加、準備、一覧表示、切断方法など) を説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751159"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278244"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -45,10 +37,10 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 **オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM インスタンスのオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成では、OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
 
-**一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、*/mnt* というマウント ポイントがあります。
+**一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
-| type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](../virtual-machines/linux/sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md) | F シリーズ | 576 |
@@ -62,7 +54,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 アプリケーションをインストールしたりデータを保存したりする必要がある場合は、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 VM インスタンス サイズによって、接続できるデータ ディスクの数が決まります。 各 VM vCPU に、2 つのデータ ディスクを接続できます。
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
-| type | 一般的なサイズ | VM あたりの最大データ ディスク数 |
+| 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](../virtual-machines/linux/sizes-general.md) | A、B、D シリーズ | 64 |
 | [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md) | F シリーズ | 64 |
@@ -164,7 +156,7 @@ ssh azureuser@52.226.67.166 -p 50001
 sudo fdisk -l
 ```
 
-次の出力例は、*/dev/sdc*、*/dev/sdd*、および */dev/sde* の 3 つのディスクが VM インスタンスに接続されていることを示しています。 これらの各ディスクにはパーティションが 1 つあり、このパーティションが使用可能なすべての領域を使用しています。
+次の出力例は、 */dev/sdc*、 */dev/sdd*、および */dev/sde* の 3 つのディスクが VM インスタンスに接続されていることを示しています。 これらの各ディスクにはパーティションが 1 つあり、このパーティションが使用可能なすべての領域を使用しています。
 
 ```bash
 Disk /dev/sdc: 64 GiB, 68719476736 bytes, 134217728 sectors
@@ -289,7 +281,7 @@ az vmss disk detach \
 ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 スケール セットとディスクを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
@@ -297,7 +289,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure CLI を使用してスケール セットのディスクを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]

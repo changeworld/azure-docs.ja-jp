@@ -1,6 +1,6 @@
 ---
 title: Swift での粗い再局在化
-description: Swift でデバイス上のセンサーを使用してアンカーを作成して配置する方法の詳細な説明。
+description: Swift で粗い再局在化を使用してアンカーを作成して配置する方法の詳細な説明。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1381f6340d1b85376ad5be9e00c596aa921d957f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277175"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546165"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-swift"></a>Swift でデバイス上のセンサーを使用してアンカーを作成して配置する方法
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Swift で粗い再局在化を使用してアンカーを作成して配置する方法
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

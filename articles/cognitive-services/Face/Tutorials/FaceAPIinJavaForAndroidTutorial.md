@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Android SDK を使用して画像内の顔を検出し、フレームに収める
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
+description: このチュートリアルでは、Face サービスを使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977796"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165975"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 
-このチュートリアルでは、Java SDK から Azure Face API を使用して画像内の顔を検出する Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
+このチュートリアルでは、Java SDK から Azure Face サービスを使用して画像内の人の顔を検出する Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
 
 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > - Android アプリケーションを作成する
-> - Face API クライアント ライブラリをインストールする
+> - Face クライアント ライブラリをインストールする
 > - クライアント ライブラリを使用して画像の中にある顔を検出する
 > - 検出された顔の周囲にそれぞれフレームを描画する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 - [Android Studio](https://developer.android.com/studio/) (API レベル 22 以降) (Face クライアント ライブラリで必要)。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?name=snippet_activitymain)]
 
-### <a name="create-the-main-class"></a>main クラスを作成する
+### <a name="create-the-main-class"></a>メイン クラスの作成
 
 *MainActivity.java* を開き、既存の `import` ステートメントを次のコードに置き換えます。
 
@@ -115,15 +115,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最後に、**onActivityResult** 内の **detectAndFrame** メソッドの呼び出しをコメント解除します。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 アプリケーションを実行し、顔が写っている画像を参照します。 Face サービスが応答するまで数秒お待ちください。 画像内のそれぞれの顔に赤色の四角形が表示されます。
 
 ![顔を囲む赤い四角形が描かれた Android のスクリーンショット](../Images/android_getstarted2.1.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Face API Java SDK を使用するための基本的なプロセスを学習し、画像内の顔を検出してフレームに収めるアプリケーションを作成しました。 次は、顔検出の詳細について学習してください。
+このチュートリアルでは、Face Java SDK を使用するための基本的なプロセスを学習し、画像内の顔を検出してフレームに収めるアプリケーションを作成しました。 次は、顔検出の詳細について学習してください。
 
 > [!div class="nextstepaction"]
 > [画像内の顔を検出する方法](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

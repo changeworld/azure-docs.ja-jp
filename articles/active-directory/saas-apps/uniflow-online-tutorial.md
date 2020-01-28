@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823154"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と uniFLOW Online の統合
 
 このチュートリアルでは、uniFLOW Online と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と uniFLOW Online を統合すると、次のことができます。
 
 * uniFLOW Online にアクセスできるユーザーを Azure AD で制御する。
-* ユーザーが自分の Azure AD アカウントを使用して uniFLOW Online に自動的にサインインできるようにする。
+* ユーザーが自分の Azure AD アカウントを使用して uniFLOW Online にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -38,7 +38,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* uniFLOW Online でのシングル サインオン (SSO) が有効なサブスクリプション。
+* uniFLOW Online テナント。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -64,11 +64,10 @@ Azure AD への uniFLOW Online の統合を構成するには、ギャラリー�
 uniFLOW Online に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+   1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+   1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[uniFLOW Online SSO の構成](#configure-uniflow-online-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[uniFLOW Online テスト ユーザーの作成](#create-uniflow-online-test-user)** - uniFLOW Online で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    * **[作成済みのテスト ユーザーを使用した uniFLOW Online へのサインイン](#sign-in-to-uniflow-online-using-the-created-test-user)** - ユーザーのサインインをアプリケーション側でテストします。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -86,24 +85,24 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[uniFLOW Online クライアント サポート チーム](mailto:support@nt-ware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[uniFLOW Online クライアント サポート チーム](mailto:support@nt-ware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照したり、uniFLOW Online テナントに表示されている応答 URL を参照したりすることもできます。
 
 1. uniFLOW Online アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -111,10 +110,13 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
 1. その他に、uniFLOW Online アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 |  ソース属性|
+    | Name |  ソース属性|
     | -----------| --------------- |
     | displayName | user.displayname |
     | nickname | user.onpremisessamaccountname |
+
+   > [!NOTE]
+   > `user.onpremisessamaccountname` 属性に値が格納されるのは、Azure AD のユーザーがローカルの Windows Active Directory から同期されている場合のみです。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -138,17 +140,20 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[uniFLOW Online]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションに移動し、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+   ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+> [!NOTE]
+> 割り当てを手動で行うことなく、すべてのユーザーにアプリケーションへのアクセスを許可するには、 **[管理]** セクションに移動し、 **[プロパティ]** を選択します。 次に、 **[ユーザーの割り当てが必要ですか]** パラメーターを **[いいえ]** に変更します。
 
 ## <a name="configure-uniflow-online-sso"></a>uniFLOW Online SSO の構成
 
@@ -177,7 +182,7 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
     c. **[WS-Fed type]\(WS-Fed の種類\)** で、ドロップダウンの **[Azure Active Directory]** オプションを選択します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 1. **[General]\(全般\)** タブで、次の手順を実行します。
 
@@ -185,7 +190,7 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
     a. 表示名を入力します (例: *AzureAD SSO*)。
 
-    b. **[ADGS Federation Metadata]\(ADGS フェデレーション メタデータ\)** で **[From URL]\(URL から\)** オプションを選択します。
+    b. **[ADFS Federation Metadata]\(ADFS フェデレーション メタデータ\)** で **[From URL]\(URL から\)** オプションを選択します。
 
     c. **[Federation Metadata URl]\(フェデレーション メタデータ URI\)** ボックスに、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** の値を貼り付けます。
 
@@ -193,33 +198,15 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
     e. **[Automatic user registration]\(自動ユーザー登録\)** で **[Activated]\(アクティブ化\)** を選択します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
-### <a name="create-uniflow-online-test-user"></a>uniFLOW Online テスト ユーザーの作成
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>作成済みのテスト ユーザーを使用した uniFLOW Online へのサインイン
 
-1. 別の Web ブラウザー ウィンドウで、uniFLOW Online Web サイトに管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、テナントの uniFLOW Online URL に移動します。
 
-1. 左側のナビゲーション パネルで **[User]\(ユーザー\)** タブを選択します。
+1. 作成済みの ID プロバイダーを選択し、Azure AD インスタンス経由でサインインします。
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure1.png)
-
-1. **[Add user]\(ユーザーの追加\)** をクリックします。
-
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/user1.png)
-
-1. **[Create user manually]\(ユーザーを手動で作成\)** をクリックします。
-
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/user2.png)
-
-1. **[CREATE USER MANUALLY]\(ユーザーを手動で作成\)** タブで、組織の要件に従って必要な値を入力します。
-
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>SSO のテスト
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-
-アクセス パネルで [uniFLOW Online] タイルをクリックすると、SSO を設定した uniFLOW Online に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+1. テスト ユーザーを使用してサインインします。
 
 ## <a name="additional-resources"></a>その他のリソース
 

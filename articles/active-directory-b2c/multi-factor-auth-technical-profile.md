@@ -72,7 +72,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 | Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
-| 操作 | はい | **OneWaySMS** になっている必要があります。  |
+| Operation | はい | **OneWaySMS** になっている必要があります。  |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
 | UserMessageIfCouldntSendSms | いいえ | 指定された電話番号で SMS が受け付けられない場合のカスタム エラー メッセージ |
 | UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のカスタム エラー メッセージ |
@@ -132,7 +132,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 | Attribute | 必須 | [説明] |
 | --------- | -------- | ----------- |
-| 操作 | はい | **Verify** になっている必要があります |
+| Operation | はい | **Verify** になっている必要があります |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
 | UserMessageIfWrongCodeEntered | いいえ | 検証のために入力されたコードが間違っている場合のカスタム エラー メッセージ |
 | UserMessageIfMaxAllowedCodeRetryReached | いいえ | ユーザーによる確認コードの試行回数が多すぎる場合のカスタム エラー メッセージ |

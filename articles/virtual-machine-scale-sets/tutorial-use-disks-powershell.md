@@ -1,27 +1,19 @@
 ---
-title: チュートリアル - Azure PowerShell を使用したスケール セットのディスクの作成および使用 | Microsoft Docs
+title: チュートリアル - Azure PowerShell を使用してスケール セットのディスクを作成および使用する
 description: Azure PowerShell を使用して仮想マシン スケール セットの管理ディスクを作成および使用する方法 (ディスクの追加、準備、一覧表示、切断方法など) を説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728583"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278252"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
 
@@ -34,7 +26,7 @@ ms.locfileid: "66728583"
 > * ディスクのパフォーマンス
 > * データ ディスクの接続および準備
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -49,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 **一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
-| Type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](../virtual-machines/windows/sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md) | F シリーズ | 576 |
@@ -63,7 +55,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 アプリケーションをインストールしたりデータを保存したりする必要がある場合は、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 VM インスタンス サイズによって、接続できるデータ ディスクの数が決まります。 各 VM vCPU に、2 つのデータ ディスクを接続できます。
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
-| Type | 一般的なサイズ | VM あたりの最大データ ディスク数 |
+| 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](../virtual-machines/windows/sizes-general.md) | A、B、D シリーズ | 64 |
 | [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md) | F シリーズ | 64 |
@@ -304,7 +296,7 @@ Update-AzVmss `
 ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 スケール セットとディスクを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
 
 ```azurepowershell-interactive
@@ -312,7 +304,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure PowerShell を使用してスケール セットのディスクを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]

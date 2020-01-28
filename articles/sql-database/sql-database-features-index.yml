@@ -16,7 +16,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: Azure SQL Database は、SQL 言語を使用してデータをクエリできるようにする単なる Classic リレーショナル データベース エンジンにとどまりません。 Azure SQL Database の Database 機能によって、より強力な操作を行って、高度なシナリオを実現できます。
+        text: Azure SQL Database は、SQL 言語を使用してデータをクエリできるようにする単なる Classic リレーショナル データベース エンジンにとどまりません。 Azure SQL Database のデータベース機能を使用すると、より強力な操作を行って、高度なシナリオを実現できます。
       - type: list
         style: cards
         className: cardsM

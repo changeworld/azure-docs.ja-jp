@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561986"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293693"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
 
@@ -46,9 +46,15 @@ ms.locfileid: "75561986"
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 ServiceNow では、**SP** initiated SSO と、[自動化されたユーザー プロビジョニング](servicenow-provisioning-tutorial.md)がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-ServiceNow Classic (モバイル) アプリケーションを Azure AD と共に構成して SSO を有効にできます。 Android と iOS の両方のユーザーがサポートされます。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+* ServiceNow では、**SP** Initiated SSO がサポートされます。
+
+* ServiceNow では、[自動化されたユーザー プロビジョニング](servicenow-provisioning-tutorial.md)がサポートされます。
+
+* ServiceNow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+
+* ServiceNow Classic (モバイル) アプリケーションを Azure AD と共に構成して SSO を有効にできます。 Android と iOS の両方のユーザーがサポートされます。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 ## <a name="add-servicenow-from-the-gallery"></a>ギャラリーからの ServiceNow の追加
 
@@ -460,3 +466,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 - [ユーザー プロビジョニングの構成](servicenow-provisioning-tutorial.md)
 
 - [Azure AD で ServiceNow を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [高度な可視性と制御によって ServiceNow を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

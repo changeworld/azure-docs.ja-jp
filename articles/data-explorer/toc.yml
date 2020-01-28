@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: 概念
   items:
-    - name: データ取り込みの概要
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: データ インジェスト
+      items:
+        - name: データ取り込みの概要
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: データ視覚化の概要
       href: viz-overview.md
     - name: セキュリティの概要
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: ストリーミング インジェスト
           href: ingest-data-streaming.md
+        - name: SDK の使用
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET Standard SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Azure Data Factory を使用してデータをコピーする
-          href: data-factory-load-data.md
+        - name: JSON 書式付きデータ
+          href: ingest-json-formats.md
     - name: クエリ データ
       items:
         - name: クエリを作成する
@@ -204,6 +208,8 @@
           items:
             - name: Data Factory との統合
               href: data-factory-integration.md
+            - name: Azure Data Factory を使用してデータをコピーする
+              href: data-factory-load-data.md
             - name: Azure Data Factory テンプレートを使用してデータを一括コピーする
               href: data-factory-template.md
             - name: Azure Data Factory を使用して制御コマンドを実行する

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 93fce95ad73f5e93afdbb794af3279a35243e2e2
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046448"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263542"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer のコンポーネントと制限事項
 Azure Load Balancer には、その操作に必要な重要なコンポーネントがいくつか含まれています。  これらのコンポーネントは、サブスクリプションで、Azure portal、Azure CLI、または Azure PowerShell を使用して構成できます。  
@@ -31,7 +31,8 @@ Azure Load Balancer には、その操作に必要な重要なコンポーネン
     - **[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)**
     - **[プライベート IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)**
 
-* **[バックエンド プール]** : 受信要求を処理することになる仮想マシンのグループまたは仮想マシン スケール セット内のインスタンスのグループ。 コスト効果に優れた方法でスケーリングして大量の受信トラフィックに対処するために、コンピューティングのガイドラインでは通常、バックエンド プールにインスタンスを追加することが推奨されます。 ロード バランサーは、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、ロード バランサー リソースの追加操作なしに、ロード バランサーが再構成されます。
+* **[バックエンド プール]** : 受信要求を処理することになる仮想マシンのグループまたは仮想マシン スケール セット内のインスタンスのグループ。 コスト効果に優れた方法でスケーリングして大量の受信トラフィックに対処するために、コンピューティングのガイドラインでは通常、バックエンド プールにインスタンスを追加することが推奨されます。 Load Balancer は、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、追加操作なしに、Load Balancer が再構成されます。 バックエンド プールのスコープは、仮想ネットワーク内の任意の仮想マシンです。 バックエンド プールには、最大 1,000 個のバックエンド インスタンスまたは IP 構成を含めることができます。
+Basic Load Balancer ではスコープ (可用性セット) が制限されており、スケールアップは最大 300 個の IP 構成に限定されます。 制限の詳細については、「[Load Balancer の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)」を参照してください。 バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間をさらに最適化できます。 データ プレーンのパフォーマンスやスケールに違いはありません。
 * **正常性プローブ**: **[正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** は、バックエンド プール内のインスタンスの正常性を判断する目的で使用されます。 正常性プローブには、異常しきい値を定義できます。 プローブで応答できない場合、Load Balancer は異常なインスタンスへの新しい接続の送信を停止します。 プローブの失敗は、既存の接続には影響しません。 
     
     接続は、アプリケーションが以下を実行するまで続行されます。 
@@ -42,14 +43,15 @@ Azure Load Balancer には、その操作に必要な重要なコンポーネン
     Load Balancer は、エンドポイントにさまざまな種類の正常性プローブを提供します。
     - TCP
     - HTTP
-    - HTTPS
+    - HTTPS (トランスポート層セキュリティ (TLS) ラッパーを使用した HTTP プローブ)
      
+     Basic Load Balancer では、HTTPS プローブはサポートされていません。 また、Basic Load Balancer は、すべての TCP 接続 (確立済み接続を含む) を終了します。 
     詳細については、「[プローブの種類](load-balancer-custom-probe-overview.md#types)」を参照してください。
 
 * **負荷分散規則**: 負荷分散規則は、いつ何を行うべきかをロード バランサーに伝える規則です。 
 * **受信 NAT 規則**:インバウンド NAT 規則により、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートにトラフィックを転送することができます。 **[ポート フォワーディング](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** も、負荷分散と同じハッシュベースの分散によって実行されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのポートにマップできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても VM をリモート管理できます。
-* **アウトバウンド規則**: **[アウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)** では、バックエンド プールによって特定され、フロントエンドに変換されるすべての仮想マシンまたはインスタンスのアウトバウンド ネットワーク アドレス変換 (NAT) を構成します。
-
+* **アウトバウンド規則**: **[アウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)** では、Standard Load Balancer のバックエンド プールによって特定されるすべての仮想マシンまたはインスタンスがフロントエンドに変換されるように、アウトバウンド ネットワーク アドレス変換 (NAT) が構成されます。
+Basic Load Balancer では、アウトバウンド規則がサポートされていません。
 ![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
 
 ## <a name = "load-balancer-concepts"></a>Load Balancer の概念
@@ -81,12 +83,45 @@ Azure Load Balancer には、その操作に必要な重要なコンポーネン
   * アプリケーション ペイロードは Load Balancer に対して透過的です。 任意の UDP または TCP アプリケーションをサポートできます。
   * Load Balancer は TCP ペイロードとやり取りせず、TLS オフロードを提供しているため、エンドツーエンドの暗号化されたシナリオを構築できます。 Load Balancer を使用すると、VM 自体の TLS 接続が終了されることで、TLS アプリケーションの大規模なスケールアウトを実現できます。 たとえば、TLS セッションのキー容量は、バックエンド プールに追加する VM の数と種類によってのみ制限されます。
 
-* **アウトバウンド接続 (SNAT)** : 仮想ネットワーク内のプライベート IP アドレスから、インターネット上のパブリック IP アドレスへのすべての送信フローは、Load Balancer のフロントエンド IP アドレスに変換することができます。 パブリック フロントエンドが負荷分散規則によってバックエンドの VM に関連付けられていると、Azure は送信接続をパブリック フロントエンドの IP アドレスに変換します。 この構成には次の利点があります。
+* **アウトバウンド接続**: 仮想ネットワーク内のプライベート IP アドレスから、インターネット上のパブリック IP アドレスへのすべての送信フローは、Load Balancer のフロントエンド IP アドレスに変換できます。 パブリック フロントエンドが負荷分散規則によってバックエンドの VM に関連付けられていると、Azure はアウトバウンド接続をパブリック フロントエンドの IP アドレスに変換します。 この構成には次の利点があります。
   * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
   * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP として表される ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。 送信接続をマシンより少ない数の IP アドレスに変換すると、安全な受信者リストの実装負荷を軽減できます。
-詳しくは、「[Azure の送信接続](load-balancer-outbound-connections.md)」を参照してください。
-Standard Load Balancer には、以下に示すような、これらの基礎には含まれない追加の SKU 固有機能があります。
 
+  Standard Load Balancer では、[堅牢でスケーラブルで予測可能な SNAT アルゴリズム](load-balancer-outbound-connections.md#snat)が利用されています。Standard Load Balancer を操作するときに覚えておくとよい重要な原則は、次のとおりです。
+
+    - 負荷分散ルールでは、SNAT のプログラミング方法が推測されます。 負荷分散ルールはプロトコルに固有です。 SNAT はプロトコルに固有であり、構成は副作用を作成するのではなくプロトコルを反映する必要があります。
+
+    - **複数のフロントエンド** 複数のフロントエンドが使用可能な場合、すべてのフロントエンドが使われて、各フロントエンドは使用可能な SNAT ポートの数を乗算します。 送信接続の需要が多くなると予想されるため、または既に多くなっているために、SNAT ポートを増やす必要がある場合は、同じ仮想マシン リソースに対してフロントエンド、ルール、およびバックエンド プールを追加構成することにより、増分 SNAT ポート インベントリを追加することもできます。
+
+    - **アウトバウンドに使用されるフロントエンドを制御する** アウトバウンド接続に特定のフロントエンドを使用したくない場合は、フロントエンドを選択して制御できます。 アウトバウンド接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、アウトバウンド マッピングを表すルールで送信 SNAT を無効にすることができます。
+
+    - **アウトバウンド接続を制御する** アウトバウンド シナリオは明示的であり、アウトバウンド接続は指定されるまで存在しません。 Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、VNET サービス エンドポイントには到達できます。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
+        - Standard SKU のパブリック IP アドレスを、インスタンスレベル パブリック IP アドレスとして、仮想マシン リソースに割り当てます
+        - または、仮想マシン リソースを、パブリック Standard Load Balancer のバックエンド プールに配置します。
+
+        どちらの方法でも、仮想ネットワークから、仮想ネットワークの外部に、送信接続できます。 
+
+        仮想マシン リソースが配置されているバックエンド プールに関連付けられている内部 Standard Load Balancer "_のみ_" がある場合、仮想マシンは仮想ネットワーク リソースと [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に対してだけ到達できます。  前の段落で説明されている手順に従って、送信接続を作成できます。
+
+        Standard SKU に関連付けられていない仮想マシン リソースの送信接続は前に説明したままです。
+
+        [送信接続の詳細な説明](load-balancer-outbound-connections.md)に関するページをご覧ください。
+
+* **可用性ゾーン**: Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。 これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の両方の種類の Standard Load Balancer で利用できます。
+ ゾーン冗長フロントエンドは、ゾーンの障害の影響を受けず、すべてのゾーンで同時に専用のインフラストラクチャによって提供されます。 
+さらに、特定のゾーンにフロントエンドを保証することができます。 ゾーンのフロントエンドはそれぞれのゾーンと運命を供にし、1 つのゾーンの専用インフラストラクチャによってのみ提供されます。
+バックエンド プールではゾーン間負荷分散を使用でき、仮想ネットワーク内のすべての仮想マシン リソースがバックエンド プールの一部になることができます。
+Basic Load Balancer では、ゾーンがサポートされていません。
+詳細については、[可用性ゾーン関連の機能の詳細な説明](load-balancer-standard-availability-zones.md)に関するページと、[可用性ゾーンの概要](../availability-zones/az-overview.md)に関するページを参照してください。
+
+* **HA ポート**: アプリケーションがスケーラブルで高信頼性になるように、負荷分散ルールを構成できます。 HA ポートの負荷分散ルールを使うと、Standard Load Balancer は、内部 Standard Load Balancer のフロントエンド IP アドレスのすべてのエフェメラル ポートで、フローごとの負荷分散を提供します。  また、個々のポートを指定するのは実用的ではなかったり、望ましくなかったりするその他のシナリオにも対応できるようになります。 HA ポートの負荷分散ルールでは、ネットワーク仮想アプライアンスおよび大きな範囲の受信ポートを必要とするすべてのアプリケーションに対し、アクティブ/パッシブまたはアクティブ/アクティブの n+1 シナリオを作成することができます。  正常性プローブを使って、新しいフローを受信する必要があるバックエンドを決定できます。  ネットワーク セキュリティ グループを使って、ポート範囲のシナリオをエミュレートできます。 Basic Load Balancer では、HA ポートがサポートされていません。
+[HA ポートの詳細な説明](load-balancer-ha-ports-overview.md)に関するページを参照してください
+>[!IMPORTANT]
+> ネットワーク仮想アプライアンスを使う予定の場合は、製品が HA ポートでテストされているかどうかをベンダーに確認し、実装に関する具体的なガイダンスに従います。 
+
+* **複数のフロントエンド**: Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  アウトバウンド シナリオは基本的に、インバウンド負荷分散ルールの逆です。  インバウンド負荷分散ルールも、アウトバウンド接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、アウトバウンド接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
+
+これに対し、Basic Load Balancer は単一のフロントエンドをランダムに選び、選ばれるものを制御する機能はありません。
 ## <a name="load-balancer-types"></a>Load Balancer の種類
 
 ### <a name = "publicloadbalancer"></a>パブリック ロード バランサー
@@ -135,16 +170,21 @@ SKU によって、完全なシナリオ構成が若干異なる場合があり�
 
 詳細については、「[Load Balancer の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)」を参照してください。 Standard Load Balancer について詳しくは、[概要](load-balancer-standard-overview.md)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページもご覧ください。
 
-
 ## <a name = "limitations"></a>制限事項
 
-* Load Balancer は特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
+- SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
+- スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
+- Load Balancer の規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとその関連するバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
+- [サブスクリプションの移動操作](../azure-resource-manager/management/move-resource-group-and-subscription.md)は、Standard LB およびパブリック IP リソースではサポートされていません。
+- VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、内部 Standard Load Balancer の内側にあるインスタンスからのみです。 各サービス自体または基になるプラットフォームは予告なく変更される場合があるため、これに依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、[送信接続](load-balancer-outbound-connections.md)を明示的に作成する必要があることを常に想定する必要があります。
+
+- Load Balancer は特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
 
   Load Balancer は、UDP または TCP のフローのペイロードを終了したり、それに応答したり、それ以外の対話を行うことはありません。 プロキシではありません。 フロントエンドへの接続の正常な検証は、負荷分散規則または受信 NAT 規則で使用されているプロトコルと同じプロトコルを使用して帯域内で行う必要があります。 フロントエンドからの応答を確認するには、少なくとも 1 つの仮想マシンがクライアントに対して応答を生成する必要があります。
 
   Load Balancer フロントエンドからの帯域内応答を受け取らない場合は、仮想マシンが応答できないことを示します。 応答できる仮想マシンがない状態で、Load Balancer フロントエンドと対話することはできません。 この原理は、ポート マスカレード SNAT が TCP および UDP に対してのみサポートされている送信接続にも当てはまります。 ICMP などの他の IP プロトコルも失敗します。 この問題を軽減するには、インスタンスレベルのパブリック IP アドレスを割り当てます。 詳細については、「[SNAT と PAT の理解](load-balancer-outbound-connections.md#snat)」を参照してください。
 
-* 内部ロード バランサーは、送信接続を内部ロード バランサーのフロントエンドに変換しません。これは、両方ともプライベート IP アドレス空間にあるためです。 パブリック ロード バランサーは、仮想ネットワーク内のプライベート IP アドレスからパブリック IP アドレスへの[送信接続](load-balancer-outbound-connections.md)を提供します。 内部ロード バランサーの場合、この方法を使用すると、変換が必要ない固有内部 IP アドレス空間内で SNAT ポートの枯渇が発生する可能性が回避されます。
+- 内部ロード バランサーは、送信接続を内部ロード バランサーのフロントエンドに変換しません。これは、両方ともプライベート IP アドレス空間にあるためです。 パブリック ロード バランサーは、仮想ネットワーク内のプライベート IP アドレスからパブリック IP アドレスへの[送信接続](load-balancer-outbound-connections.md)を提供します。 内部ロード バランサーの場合、この方法を使用すると、変換が必要ない固有内部 IP アドレス空間内で SNAT ポートの枯渇が発生する可能性が回避されます。
 
   副作用として、バックエンド プール内の VM からの送信フローが、そのプール内の内部ロード バランサーのフロントエンドへのフローを試み、"_かつ_"、それ自体にマップバックされている場合、フローの 2 つのレッグは一致しません。 これらは一致しないため、フローは失敗します。 フローが、フロントエンドへのフローを作成したバックエンド プール内の同じ VM にマップバックしなかった場合、フローは成功します。
 
@@ -154,8 +194,18 @@ SKU によって、完全なシナリオ構成が若干異なる場合があり�
 
   ユーザーは、内部ロード バランサーを任意のサード パーティ製プロキシと組み合わせるか、HTTP/HTTPS を使用したプロキシ シナリオに内部の [Application Gateway](../application-gateway/application-gateway-introduction.md) を使用することができます。 この問題はパブリック ロード バランサーを使って軽減できますが、結果として得られるシナリオでは [SNAT の枯渇](load-balancer-outbound-connections.md#snat)が発生しやすくなります。 慎重に管理しない限り、この 2 番目のアプローチは避けてください。
 
-* 一般に、転送 IP フラグメントは、負荷分散規則ではサポートされていません。 UDP パケットと TCP パケットの IP の断片化は負荷分散規則ではサポートされていません。 高可用性ポートの負荷分散規則を使用すると、既存の IP フラグメントを転送できます。 詳細については、「[高可用性ポートの概要](load-balancer-ha-ports-overview.md)」を参照してください。
+- 一般に、転送 IP フラグメントは、負荷分散規則ではサポートされていません。 UDP パケットと TCP パケットの IP の断片化は負荷分散規則ではサポートされていません。 高可用性ポートの負荷分散規則を使用すると、既存の IP フラグメントを転送できます。 詳細については、「[高可用性ポートの概要](load-balancer-ha-ports-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Load Balancer の使用を始めるには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参考に Load Balancer を 1 つ作成し、カスタム IIS 拡張機能がインストールされている VM を作成して、Web アプリを VM 間で負荷分散します。
+- Load Balancer の使用を始めるには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参考に Load Balancer を 1 つ作成し、カスタム IIS 拡張機能がインストールされている VM を作成して、Web アプリを VM 間で負荷分散します。
+- [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
+- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
+- [正常性プローブ](load-balancer-custom-probe-overview.md)について学習する。
+- [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
+- [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
+- [アウトバウンド規則](load-balancer-outbound-rules-overview.md)について学習する。
+- [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。
+- [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
+- [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) の使用について学習する。
+- [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。

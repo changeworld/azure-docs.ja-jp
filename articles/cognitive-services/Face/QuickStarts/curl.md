@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 59ffaa68cb2ee537b4eb688746f70eafb492d3a2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a1a6d1fdce4853a2ac73f10eb4cf0a0505fa4c7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977847"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165909"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>クイック スタート:Face REST API と cURL を使用して画像から顔を検出する
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 
 ## <a name="write-the-command"></a>コマンドを作成する
  
@@ -61,7 +61,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="run-the-command"></a>コマンドを実行します
 
-変更を加えたら、コマンド プロンプトを開いて新しいコマンドを入力します。 コンソール ウィンドウに、顔の情報が JSON データとして表示されます。 例:
+変更を加えたら、コマンド プロンプトを開いて新しいコマンドを入力します。 コンソール ウィンドウに、顔の情報が JSON データとして表示されます。 次に例を示します。
 
 ```json
 [
@@ -155,9 +155,9 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す cURL コマンドを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、Azure Face サービスを呼び出して画像内の顔を検出し、その属性を返す cURL コマンドを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

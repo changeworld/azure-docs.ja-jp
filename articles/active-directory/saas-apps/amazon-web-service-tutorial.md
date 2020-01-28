@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689768"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -66,6 +65,7 @@ Azure AD ではこれらの値から **#** の値を削除し、正しい値 `ht
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
+* Amazon Web Services (AWS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -197,7 +197,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d. **[次へ:Permissions]\(次へ: アクセス許可\)** をクリックします。
+    d. **Permissions\(次へ: アクセス許可\)** をクリックします。
 
 9. **[Attach アクセス権限ポリシー]** ダイアログ ボックスで、組織の規定に準拠した適切なポリシーをアタッチします。 次に、**次のステップ: 確認\)** をクリックします。  
 
@@ -374,6 +374,10 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD でアマゾン ウェブ サービス (AWS) を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-aws)
+
+- [高度な可視性と制御によって Amazon Web Services (AWS) を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

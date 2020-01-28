@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890678"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289035"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -48,6 +48,7 @@ NetSuite では、以下がサポートされます。
 * IDP-Initiated SSO。
 * JIT (Just-In-Time) ユーザー プロビジョニング。
 * [自動化されたユーザー プロビジョニング](NetSuite-provisioning-tutorial.md)。
+* NetSuite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -265,3 +266,6 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Azure AD で NetSuite を試す](https://aad.portal.azure.com/)
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって NetSuite を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

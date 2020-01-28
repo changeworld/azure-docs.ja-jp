@@ -1,19 +1,19 @@
 ---
-title: クイック スタート - Azure portal を使用して Service Bus キューを作成する | Microsoft Docs
+title: Azure portal を使用して Service Bus キューを作成する
 description: このクイック スタートでは、Azure portal を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル クライアント アプリケーションを使用してキューとの間でメッセージを送受信します。
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242388"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260839"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>クイック スタート:Azure portal を使用して Service Bus キューを作成する
 このクイックスタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
@@ -72,7 +72,7 @@ ms.locfileid: "70242388"
 
    ![プログラムの出力](./media/service-bus-quickstart-portal/dotnet.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ポータルを使用して、リソース グループ、名前空間、およびキューを削除できます。
 
@@ -211,7 +211,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの作成についてさらに詳しく学習するには、「**メッセージを送受信する**」セクションのチュートリアルに進んでください。 
 

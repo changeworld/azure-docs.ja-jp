@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468472"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264731"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -47,13 +47,15 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このシナリオが正しく機能するために重要な要件が 3 つあります。
+ハイブリッド ネットワークでは、ハブおよびスポーク アーキテクチャ モデルを使用して、Azure VNet とオンプレミス ネットワーク間でトラフィックをルーティングします。 ハブおよびスポーク アーキテクチャには、次の要件があります。
 
-- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは BGP ルート伝達を**無効**にする必要があります。
-- ハブ ゲートウェイ サブネット上の UDR が、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すこと。
+- VNet-Hub を VNet-Spoke にピアリングする場合は、**AllowGatewayTransit** を設定します。 ハブおよびスポーク ネットワーク アーキテクチャでは、ゲートウェイ転送によってスポーク仮想ネットワークがハブ内の VPN ゲートウェイを共有でき、VPN ゲートウェイをすべてのスポーク仮想ネットワークにデプロイする必要はありません。 
 
-   Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
-- VNet-Hub を VNet-Spoke にピアリングするときは **AllowGatewayTransit** を設定し、VNet-Spoke を VNet-Hub にピアリングするときは **UseRemoteGateways** を設定してください。
+   また、ゲートウェイに接続された仮想ネットワークまたはオンプレミス ネットワークへのルートは、ピアリングされた仮想ネットワークのルーティング テーブルにゲートウェイ転送を使用して自動的に伝達されます。 詳細については、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)」を参照してください。
+
+- VNet-Spoke を VNet-Hub にピアリングする場合は、**UseRemoteGateways** を設定します。 **UseRemoteGateways** が設定され、リモート ピアリングに対する **AllowGatewayTransit** も設定されている場合、スポーク仮想ネットワークは転送にリモート仮想ネットワークのゲートウェイを使用します。
+- スポーク サブネット トラフィックをハブ ファイアウォール経由でルーティングするには、 **[BGP ルート伝達を無効にする]** オプションが設定されたファイアウォールを指すユーザー定義ルート (UDR) が必要です。 **[BGP ルート伝達を無効にする]** オプションを使用すると、スポーク サブネットへのルート配布ができなくなります。 これにより、学習されたルートと UDR との競合が防止されます。
+- ハブ ゲートウェイ サブネット上の UDR を、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すように構成します。 Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 
 これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
@@ -71,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 まず、このチュートリアルのリソースを含めるためのリソース グループを作成します。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure portal のホーム ページで **[リソース グループ]**  >  **[追加]** の順に選択します。
 3. **[リソース グループ名]** に「**FW-Hybrid-Test**」と入力します。
 4. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
@@ -149,11 +151,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 左側の列で **[ネットワーク]** を選択してから、 **[ファイアウォール]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |Setting  |値  |
+   |設定  |値  |
    |---------|---------|
-   |Subscription     |\<該当するサブスクリプション\>|
+   |サブスクリプション     |\<該当するサブスクリプション\>|
    |Resource group     |**FW-Hybrid-Test** |
-   |名前     |**AzFW01**|
+   |Name     |**AzFW01**|
    |Location     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)** :<br> **VNet-hub**|
    |パブリック IP アドレス     |[新規作成]: <br>**名前** - **fw-pip**。 |
@@ -363,7 +365,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
     - **[仮想マシン名]** : *VM-Spoke-01*。
     - **[リージョン]** - 先ほど使用したものと同じリージョン。
     - **[ユーザー名]** : *azureuser*。
-    - **Password**:*Azure123456!*
+    - **パスワード**:*Azure123456!*
 4. **[Next:Disks]\(次へ: ディスク\)** を選択します。
 5. 既定値をそのまま使用し、 **[次へ: ネットワーク]** を選択します。
 6. 仮想ネットワークとして **[VNet-Spoke]** を選択します。サブネットは **SN-Workload** です。
@@ -401,7 +403,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
     - **[仮想マシン名]**  - *VM-Onprem*。
     - **[リージョン]** - 先ほど使用したものと同じリージョン。
     - **[ユーザー名]** : *azureuser*。
-    - **Password**:*Azure123456!* 。
+    - **パスワード**:*Azure123456!* 。
 4. **[Next:Disks]\(次へ: ディスク\)** を選択します。
 5. 既定値をそのまま使用し、 **[Next:Networking]\(次へ: ネットワーク\)** を選択します。
 6. 仮想ネットワークとして **[VNet-Onprem]** を選択します。サブネットは **SN-Corp** です。
@@ -442,11 +444,11 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
 
 既存のリモート デスクトップをすべて閉じてから、変更したルールをテストします。 ここで、テストを再実行します。 このとき、すべてが失敗するはずです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**FW-Hybrid-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 

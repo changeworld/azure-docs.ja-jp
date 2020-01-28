@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB に組み込まれている Jupyter Notebook のサポートの概要
+title: Azure Cosmos DB に組み込まれている Jupyter Notebook のサポートの概要 (プレビュー)
 description: Azure Cosmos DB に組み込まれている Jupyter Notebook のサポートを使用して、クエリを対話的に実行する方法について説明します。
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756975"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260873"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Azure Cosmos DB に組み込まれている Jupyter Notebook のサポート
 
@@ -54,7 +54,7 @@ Jupyter ノートブックには、さまざまな種類の構成要素を含め
 
 * **データ:** Azure Cosmos コンテナーのデータとクエリの結果を、プログラムで Jupyter ノートブックにインポートできます。 たとえば、任意の Cosmos DB API またはネイティブに組み込まれている Apache Spark を使用して、データのクエリを実行するコードをノートブックに含めます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB に組み込まれている Jupyter Notebook の使用を開始するには、次の記事を参照してください。
 

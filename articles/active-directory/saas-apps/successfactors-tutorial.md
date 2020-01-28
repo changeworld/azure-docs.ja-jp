@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989504"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SuccessFactors の統合
 
@@ -29,7 +28,7 @@ ms.locfileid: "68989504"
 
 * SuccessFactors にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して SuccessFactors に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -44,7 +43,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SuccessFactors では、**SP** によって開始される SSO がサポートされます
+* SuccessFactors では、**SP** Initiated SSO がサポートされます。
+* SuccessFactors を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-successfactors-from-the-gallery"></a>ギャラリーからの SuccessFactors の追加
 
@@ -92,7 +92,7 @@ SuccessFactors で Azure AD SSO を構成してテストするには、次の構
     | `https://<companyname>.successfactors.eu/<companyname>`|
     | `https://<companyname>.sapsf.eu`|
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     | |
     |--|
@@ -224,7 +224,7 @@ SuccessFactors で Azure AD SSO を構成してテストするには、次の構
 
     b. **[Enable Non-Case-Sensitive Username]\(大文字と小文字を区別しないユーザー名\)** の横のチェック ボックスをオンにします。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
     > [!NOTE]
     > これを有効にしようとすると、重複する SAML ログイン名が作成されるかどうかがシステムによって確認されます。 たとえば、顧客が User1 および user1 というユーザー名を持っている場合などです。 大文字と小文字の区別をしないと、これらの重複が発生します。 システムによってエラー メッセージが表示され、機能は有効になりません。 顧客はユーザー名の一方を、違うスペルになるように変更する必要があります。
@@ -250,6 +250,10 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で SuccessFactors を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって SuccessFactors を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

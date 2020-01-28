@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d44e85b069a38f48ad4ad06814db5fbcb58c9dc6
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 10e218098c1831f213db25b87ef2c9ebfdd9e749
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665229"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293880"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -110,33 +110,37 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
+   
+3. モジュール ソリューション内の **.env** ファイルを開きます。 (既定では、このファイルがソリューション エクスプローラーで非表示になっているため、表示するためには、 **[Show All Files]** ボタンを選択しなければならない場合があります。).env ファイルには、deployment.template.json ファイルにあったものと同じ、ユーザー名とパスワードの変数が含まれている必要があります。 
 
-3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
+4. Azure コンテナー レジストリからの **Username** と **Password** の値を追加します。 
 
-4. Add the **Username** and **Password** values from your Azure container registry. 
+5. 変更内容を .env ファイルに保存します。
 
-5. Save your changes to the .env file.
+### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-### Update the module with custom code
-
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+既定のモジュール コードは、入力キュー上のメッセージを受け取り、出力キューを介してそれらを渡します。 モジュールがメッセージを IoT Hub に転送する前に、エッジでそれらを処理できるように、追加のコードを追加してみましょう。 メッセージごとに温度データを分析し、温度が特定のしきい値を超えた場合にのみ IoT Hub にメッセージを送信するように、モジュールを更新します。 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. このシナリオでは、センサーからのデータは JSON 形式で提供されます。 JSON 形式のメッセージをフィルター処理するには、C 用の JSON ライブラリをインポートします。このチュートリアルでは、Parson を使用します。
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. [Parson GitHub リポジトリ](https://github.com/kgabis/parson)をダウンロードします。 **parson.c** と **parson.h** ファイルを **CModule** プロジェクトにコピーします。
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. Visual Studio で、CModule プロジェクト フォルダーの **CMakeLists.txt** ファイルを開きます。 ファイルの先頭で、**my_parson** という名前のライブラリとして Parson ファイルをインポートします。
 
       ```
-      add_library(my_parson        parson.c        parson.h    )
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add `my_parson` to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. CMakeLists.txt ファイルの **target_link_libraries** セクション内のライブラリの一覧に `my_parson` を追加します。
 
-   4. Save the **CMakeLists.txt** file.
+   4. **CMakeLists.txt** ファイルを保存します。
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. **[CModule]**  >  **[main.c]** の順に開きます。 include ステートメントの一覧の一番下に、JSON サポート用の `parson.h` をインクルードするための新しいステートメントを追加します。
 
       ```c
       #include "parson.h"

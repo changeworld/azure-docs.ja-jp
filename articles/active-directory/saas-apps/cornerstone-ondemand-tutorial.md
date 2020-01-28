@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1254c3d241befdd0842dd68c8f34291f148c7ee6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227626"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291466"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cornerstone OnDemand の統合
 
@@ -46,6 +45,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Cornerstone OnDemand では、**SP** によって開始される SSO がサポートされます
 * Cornerstone OnDemand では、[自動化されたユーザー プロビジョニング](cornerstone-ondemand-provisioning-tutorial.md)がサポートされます
+* Cornerstone OnDemand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>ギャラリーからの Cornerstone OnDemand の追加
 
@@ -134,7 +134,7 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 
 ### <a name="create-cornerstone-ondemand-test-user"></a>Cornerstone OnDemand テスト ユーザーの作成
 
-このセクションの目的は、Cornerstone OnDemand で B.Simon というユーザーを作成することです。 Cornerstone OnDemand では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial)を参照してください。
+このセクションの目的は、Cornerstone OnDemand で B.Simon というユーザーを作成することです。 Cornerstone OnDemand では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial)をご覧ください。
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
@@ -158,3 +158,7 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Cornerstone OnDemand を試す](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって Cornerstone OnDemand を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

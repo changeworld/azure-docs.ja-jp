@@ -3,18 +3,18 @@ title: クイック スタート:Azure Maps を使った対話型のマップ検
 description: Microsoft Azure Maps Web SDK を使用して対話型のマップ検索用のデモ Web アプリケーションを作成する方法について学習します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910693"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156439"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 <a id="createaccount"></a>
 
@@ -61,7 +61,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 ## <a name="download-the-application"></a>アプリケーションのダウンロード
 
-1. [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
+1. [interactiveSearch .html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) に移動し、それをクリックして、GitHub ユーザー インターフェイス内の内容を表示します。 **[Raw]** ボタンを右クリックし、ファイルの内容をコピーするか、[名前を付けて保存] をクリックしてファイルをダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存します。 それをテキスト エディターで開きます。
 3. `<Your Azure Maps Key>` という文字列を検索します。 これを前のセクションで取得した**主キー**の値に置き換えます。
 

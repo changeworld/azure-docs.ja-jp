@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:.NET SDK を使用して画像内の顔データを検出して表示する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収める Windows アプリを作成します。
+description: このチュートリアルでは、Face サービスを使用して画像内の顔を検出し、フレームに収める Windows アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977966"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165914"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する Windows Presentation Framework (WPF) アプリを作成する
 
-このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用し、画像内の顔を検出した後にそのデータを UI に示す方法を学習します。 顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する WPF アプリケーションを作成します。 
+このチュートリアルでは、.NET クライアント SDK を通じて Azure Face サービスを使用し、画像内の顔を検出した後にそのデータを UI に示す方法を学習します。 顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する WPF アプリケーションを作成します。 
 
 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > - WPF アプリケーションを作成する
-> - Face API クライアント ライブラリをインストールする
+> - Face クライアント ライブラリをインストールする
 > - クライアント ライブラリを使用して画像の中にある顔を検出する
 > - 検出された顔の周囲にそれぞれフレームを描画する
 > - 強調表示された顔の説明をステータス バーに表示する
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
-### <a name="create-the-main-class"></a>main クラスを作成する
+### <a name="create-the-main-class"></a>メイン クラスの作成
 
 *MainWindow.xaml.cs* を開き、クライアント ライブラリの名前空間を、その他必要な名前空間と共に追加します。 
 
@@ -117,14 +117,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 このアプリケーションを実行し、顔が含まれる画像を参照します。 Face サービスが応答するまで数秒お待ちください。 画像内のそれぞれの顔に赤色の四角形が表示されます。 顔の四角形の上にマウスを移動すると、その顔の説明がステータス バーに表示されます。
 
 ![顔を検出して四角形のフレームに収めた画像のスクリーンショット](../Images/getting-started-cs-detected.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Face サービス .NET SDK を使用するための基本的なプロセスを学習し、画像内の顔を検出してフレームに収めるアプリケーションを作成しました。 次は、顔検出の詳細について学習してください。
 

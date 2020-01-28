@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6d926ccaac5ca05fe6f137102cbfdd45b0e182bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bb3af4ddad7e40cbf7edd58cf5899ced2757512
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434629"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548800"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>クイック スタート:Node.js を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -147,7 +147,10 @@ Node.js サービスのサンプルを調べる予定の場合は、このクイ
 3. Azure portal の Device Provisioning サービスから、 **[証明書]** を選択し、このクイックスタート用にアップロードした証明書を選択したら、 **[証明書の詳細]** ウィンドウの上部にある **[削除]** を押します。  
  
 ## <a name="next-steps"></a>次のステップ
+
 このクイックスタートでは、Azure IoT Hub Device Provisioning Service を使用して X.509 中間またはルート CA 証明書のグループ登録を作成しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 
+
+[Node.js デバイス プロビジョニング サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples)も参照してください。
  
 > [!div class="nextstepaction"]
 > [Azure IoT Hub Device Provisioning Service のチュートリアル](./tutorial-set-up-cloud.md)

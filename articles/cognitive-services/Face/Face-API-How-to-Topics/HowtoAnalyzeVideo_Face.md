@@ -1,7 +1,7 @@
 ---
-title: 例:リアルタイムのビデオ分析 - Face API
+title: 例:リアルタイムのビデオ分析 - Face
 titleSuffix: Azure Cognitive Services
-description: ライブ ビデオ ストリームから取得したフレームに対し、Face API を使用して、ほぼリアルタイムに分析を実行します。
+description: ライブ ビデオ ストリームから取得したフレームに対し、Face サービスを使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114344"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169896"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>例:リアルタイムでビデオを分析する方法
 
@@ -136,13 +136,13 @@ while (true)
 
 ## <a name="implementing-the-solution"></a>ソリューションの実装
 
-### <a name="getting-started"></a>Getting Started (概要)
+### <a name="getting-started"></a>作業の開始
 
 できるだけ迅速にアプリを稼働させるために、前述した柔軟なシステム実装を使用します。 コードにアクセスするには、[https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis) に移動します。
 
 ライブラリには、FrameGrabber クラスが含まれています。これは Web カメラからのビデオ フレームを処理するために、前述したプロデューサー/コンシューマー システムを実装しています。 ユーザーは、正確なフォームの API 呼び出しを指定でき、クラスは、新しいフレームが獲得されたとき、または新しい分析結果が利用可能になったときに呼び出しコードに知らせるためにイベントを使用します。
 
-いくつかの可能性を示すため、ライブラリを使用する 2 つのサンプル アプリを取り上げます。 1 つは、単純なコンソール アプリであり、その簡略化バージョンを下に再現しています。 これは既定の Web カメラからのフレームを取得し、それらを顔検出のために Face API に送信します。
+いくつかの可能性を示すため、ライブラリを使用する 2 つのサンプル アプリを取り上げます。 1 つは、単純なコンソール アプリであり、その簡略化バージョンを下に再現しています。 これは既定の Web カメラからのフレームを取得し、それらを顔検出のために Face サービスに送信します。
 
 ```csharp
 using System;
@@ -159,7 +159,7 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
+            // Create Face Client. Insert your Face API key here.
             private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials("<subscription key>"),
             new System.Net.Http.DelegatingHandler[] { });
@@ -203,13 +203,12 @@ namespace VideoFrameConsoleApplication
 
 1. Vision API の API キーを[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)から取得します。 ビデオ フレーム分析の場合、適用可能な API は次のとおりです。
     - [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Emotion API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 
 2. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub リポジトリを複製します
 
 3. Visual Studio 2015 でサンプルを開き、サンプル アプリケーションをビルドして実行します。
-    - BasicConsoleSample の場合、Face API キーは、 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
+    - BasicConsoleSample の場合、Face キーは、 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコーディングされています。
     - LiveCameraSample の場合、アプリの設定ウィンドウにキーを入力する必要があります。 これらは、セッションを移動してもユーザー データとして残されます。
         
 

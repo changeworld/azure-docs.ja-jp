@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474716"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544278"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -27,8 +27,8 @@ Active Directory ベースのこの 3 つの ID ソリューションは、共�
     * AD DS は、オンプレミスの IT 環境を使用する多くの組織で中心的なコンポーネントであり、主要なユーザー アカウント認証機能とコンピューター管理機能が提供されます。
 * **Azure Active Directory (Azure AD)** - Office 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
     * Azure AD をオンプレミスの AD DS 環境と同期させて、クラウドでネイティブに機能する単一の ID をユーザーに提供できます。
-* **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。
-    * Azure AD DS は Azure AD と統合され、それ自体で、オンプレミスの AD DS 環境と同期して、ID の一元管理のユース ケースを、リフト アンド シフト戦略の一部として Azure で実行される従来の Web アプリケーションに拡張することができます。
+* **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。
+    * Azure AD DS は Azure AD と統合され、それ自体でオンプレミスの AD DS 環境と同期することができます。 この機能により、ID の一元管理のユース ケースを、リフト アンド シフト戦略の一部として Azure で実行される従来の Web アプリケーションに拡張することができます。
 
 この概要記事では、組織のニーズに応じて、これらの ID ソリューションを連携させる場合と個別に使用する場合を比較対比します。
 
@@ -66,7 +66,7 @@ Azure AD DS では、機能のより小さいサブセットが従来の自己�
 | **カスタムの OU 構造**                           | **&#x2713;** | **&#x2713;** |
 | **グループ ポリシー**                                  | **&#x2713;** | **&#x2713;** |
 | **スキーマの拡張機能**                             | **&#x2715;** | **&#x2713;** |
-| **AD ドメイン/フォレストの信頼**                     | **&#x2715;** | **&#x2713;** |
+| **AD ドメイン/フォレストの信頼**                     | **&#x2713;** (一方向の出力方向フォレスト信頼のみ) | **&#x2713;** |
 | **Secure LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP の読み取り**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP の書き込み**                                    | **&#x2713;** (マネージド ドメイン内) | **&#x2713;** |
@@ -107,7 +107,7 @@ Azure AD DS に参加しているデバイスでは、アプリケーション�
 | ネットワーク                      | インターネット経由で動作                             | マネージド ドメインがデプロイされている仮想ネットワークに接続されているか、ピアリングされている必要があります |
 | 最適な対象                    | エンドユーザーのモバイルまたはデスクトップ デバイス                  | Azure にデプロイされるサーバー VM                                              |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS の使用を開始するには、[Microsoft Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
 
