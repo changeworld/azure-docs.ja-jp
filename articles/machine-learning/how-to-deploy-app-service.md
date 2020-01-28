@@ -71,7 +71,7 @@ Azure App Service によって提供される機能の詳細については、[A
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
-これらのエンティティは、__推論構成__にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
+これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
 > Azure App Service で使用するための推論構成を作成する際は、[環境](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
@@ -96,7 +96,7 @@ Azure App Service によって提供される機能の詳細については、[A
 推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
-> Azure App Service にデプロイするときに__デプロイ構成__を作成する必要はありません。
+> Azure App Service にデプロイするときに __デプロイ構成__ を作成する必要はありません。
 
 ## <a name="create-the-image"></a>イメージの作成
 

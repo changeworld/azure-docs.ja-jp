@@ -75,13 +75,13 @@ ms.locfileid: "75425606"
 
 **TechnicalProfile** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 |---------|---------|---------|
 | Id | はい | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
 | DisplayName | 0:1 | ユーザーに表示できる技術プロファイルの名前。 |
@@ -108,24 +108,24 @@ ms.locfileid: "75425606"
 
 **Protocol** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
 | Handler | いいえ | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
 **Metadata** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。 |
 
-### <a name="item"></a>アイテム
+### <a name="item"></a>Item
 
 **Metadata** 要素の **Item** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Key | はい | メタデータ キー。 メタデータ項目の一覧については、各技術プロファイルの種類を参照してください。 |
 
@@ -133,7 +133,7 @@ ms.locfileid: "75425606"
 
 **CryptographicKeys** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | Key | 1:n | この技術プロファイルで使用される暗号化キー。 |
 
@@ -141,7 +141,7 @@ ms.locfileid: "75425606"
 
 **Key** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Id | いいえ | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
 | StorageReferenceId | はい | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
@@ -150,7 +150,7 @@ ms.locfileid: "75425606"
 
 **InputClaimsTransformations** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | 要求がクレーム プロバイダーまたは証明書利用者に送信される前に実行する必要がある、要求変換の識別子。 要求変換は、既存の ClaimsSchema の要求を変更したり、新しい要求を生成するために使用できます。 |
 
@@ -158,7 +158,7 @@ ms.locfileid: "75425606"
 
 **InputClaimsTransformation** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
@@ -166,7 +166,7 @@ ms.locfileid: "75425606"
 
 **InputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
@@ -174,7 +174,7 @@ ms.locfileid: "75425606"
 
 **InputClaim** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
@@ -184,7 +184,7 @@ ms.locfileid: "75425606"
 
 **DisplayClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1:n | 予想される入力要求の種類。 |
 
@@ -194,7 +194,7 @@ ms.locfileid: "75425606"
 
 **DisplayClaim** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | いいえ | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DisplayControlReferenceId | いいえ | ポリシー ファイルまたは親ポリシー ファイルの ClaimsSchema セクションで定義されている[表示コントロール](display-controls.md)の識別子。 |
@@ -206,7 +206,7 @@ ms.locfileid: "75425606"
 
 **PersistedClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 保持する要求の種類。 |
 
@@ -214,7 +214,7 @@ ms.locfileid: "75425606"
 
 **PersistedClaim** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
@@ -224,7 +224,7 @@ ms.locfileid: "75425606"
 
 **OutputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 予想される出力要求の種類。 |
 
@@ -232,7 +232,7 @@ ms.locfileid: "75425606"
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
@@ -243,7 +243,7 @@ ms.locfileid: "75425606"
 
 **OutputClaimsTransformations** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | 要求がクレーム プロバイダーまたは証明書利用者に送信される前に実行する必要がある、要求変換の識別子。 要求変換は、既存の ClaimsSchema の要求を変更したり、新しい要求を生成するために使用できます。 |
 
@@ -251,7 +251,7 @@ ms.locfileid: "75425606"
 
 **OutputClaimsTransformation** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
@@ -259,7 +259,7 @@ ms.locfileid: "75425606"
 
 **ValidationTechnicalProfiles** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用される技術プロファイルの識別子。 参照先の技術プロファイルのすべての入力要求は、参照元の技術プロファイルの出力要求に表示する必要があります。 |
 
@@ -267,7 +267,7 @@ ms.locfileid: "75425606"
 
 **ValidationTechnicalProfile** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
@@ -275,7 +275,7 @@ ms.locfileid: "75425606"
 
 **SubjectNamingInfo** には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimType | はい | ポリシー ファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 
@@ -283,7 +283,7 @@ ms.locfileid: "75425606"
 
 **IncludeTechnicalProfile** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
@@ -291,7 +291,7 @@ ms.locfileid: "75425606"
 
 **UseTechnicalProfileForSessionManagement** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
