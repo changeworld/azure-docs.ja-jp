@@ -1,23 +1,21 @@
 ---
-title: チュートリアル - Azure Red Hat OpenShift クラスターをスケーリングする | Microsoft Docs
+title: チュートリアル - Azure Red Hat OpenShift クラスターをスケーリングする
 description: Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターをスケーリングする方法を学習します
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: deb136a70c24cb7bd1b6c60505cc6ab0376a7b02
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672430"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278303"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターをスケーリングする
 
-このチュートリアルは、シリーズの第 2 部です。 Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成し、スケーリングしてから、削除してリソースをクリーンアップする方法について説明します。
+このチュートリアルは、シリーズの第 2 部です。 Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成し、スケーリングしてからこれを削除してリソースをクリーンアップする方法について説明します。
 
 シリーズの第 2 部で学習する内容は次のとおりです。
 
@@ -62,7 +60,7 @@ az openshift scale --resource-group $CLUSTER_NAME --name $CLUSTER_NAME --compute
 
 数分後に `az openshift scale` は正常に完了し、スケーリングされたクラスターの詳細を含む JSON ドキュメントが返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

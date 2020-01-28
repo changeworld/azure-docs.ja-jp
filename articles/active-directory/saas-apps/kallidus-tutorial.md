@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734df138bc58deb0c96916ba5178c84a63f3c53a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e3caa48e1461552f2999aa2fd91447a41d146379
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711160"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120317"
 ---
 # <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>チュートリアル:Kallidus と Azure Active Directory の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "67711160"
 
 * Kallidus にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Kallidus に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -91,7 +91,7 @@ Kallidus で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="configure-kallidus"></a>Kallidus を構成する
 
-**Kallidus** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Kallidus サポート チーム](https://kallidus.zendesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Kallidus** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** と**署名証明書 (パブリック)** を [Kallidus サポート チーム](https://kallidus.zendesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

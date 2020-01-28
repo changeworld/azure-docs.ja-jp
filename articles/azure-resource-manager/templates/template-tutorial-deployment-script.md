@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75843509"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548987"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
@@ -264,10 +264,10 @@ Azure Resource Manager テンプレートでデプロイ スクリプトを使�
     * **azPowerShellVersion**: 使用する Azure PowerShell モジュールのバージョンを指定します。 現在、デプロイ スクリプトでは、バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。
     * **timeout**: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
     * **arguments**: パラメーター値を指定します。 値はスペースで区切ります。
-    * **scriptContent**: スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに **primaryScriptURI** を使用します。 詳細については、「[外部関数を使用する](./deployment-script-template.md#use-external-scripts)」を参照してください。
+    * **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに **primaryScriptURI** を使用します。 詳細については、「[外部関数を使用する](./deployment-script-template.md#use-external-scripts)」を参照してください。
         **$DeploymentScriptOutputs** の宣言は、ローカル コンピューターでスクリプトをテストする場合にのみ必要です。 変数を宣言すると、変更を加えなくても、ローカル コンピューターと deploymentScript リソースでスクリプトを実行できます。 $DeploymentScriptOutputs に割り当てられた値は、デプロイの出力として使用できます。 詳細については、「[デプロイ スクリプトからの出力を操作する](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)」を参照してください。
     * **cleanupPreference**: デプロイ スクリプト リソースをいつ削除するかに関する設定を指定します。  既定値は **Always** です。これは、最終状態 (Succeeded、Failed、canceled) にかかわらず、デプロイ スクリプト リソースが削除されることを意味します。 このチュートリアルでは、スクリプトの実行結果が表示されるように **OnSuccess** を使用します。
-    * **retentionInterval**: 最終状態に達した後にサービスがスクリプト リソースを保持する期間を指定します。 この期間が経過すると、リソースは削除されます。 期間は ISO 8601 のパターンに基づきます。 このチュートリアルでは、1 日を意味する P1D を使用します。  このプロパティは、**retentionInterval** が **OnExpiration** に設定されている場合に使用されます。 このプロパティは現在有効ではありません。
+    * **retentionInterval**: 最終状態に達した後にサービスがスクリプト リソースを保持する期間を指定します。 この期間が経過すると、リソースは削除されます。 期間は ISO 8601 のパターンに基づきます。 このチュートリアルでは、1 日を意味する P1D を使用します。  このプロパティは、**cleanupPreference** が **OnExpiration** に設定されている場合に使用されます。 このプロパティは現在有効ではありません。
 
     デプロイ スクリプトは、3 つのパラメーター (キー コンテナー名、証明書名、サブジェクト名) を受け取ります。  それにより、証明書が作成された後、キー コンテナーにその証明書が追加されます。
 
@@ -319,7 +319,7 @@ program.\nCheck the spelling of the name, or if a path was included, verify that
 
 ## <a name="debug-the-failed-script"></a>失敗したスクリプトをデバッグする
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. リソース グループを開きます。 これは、**rg** が付加されたプロジェクト名です。 リソース グループには 2 つの追加リソースが表示されます。 これらのリソースは、"*デプロイ スクリプト リソース*" と呼ばれます。
 
     ![Resource Manager テンプレートのデプロイ スクリプト リソース](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

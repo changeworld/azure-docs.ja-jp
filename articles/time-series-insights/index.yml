@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 12/17/2019
-  ms.openlocfilehash: feb7d6d9581590741e8ff5ce04ae2a1e1e044cca
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: ce539fcc3a2e5f6d067ebbb56c21df70c1b3ba49
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75374660"
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "76712892"
 landingContent:
 - title: Azure Time Series Insights について
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
       url: time-series-insights-update-how-to-manage.md
     - text: データ アクセスの許可
       url: time-series-insights-data-access.md
-    - text: クエリのための JSON の作成
+    - text: イングレスとクエリに対する JSON の調整
       url: time-series-insights-update-how-to-shape-events.md
 - title: API リファレンス
   linkLists:

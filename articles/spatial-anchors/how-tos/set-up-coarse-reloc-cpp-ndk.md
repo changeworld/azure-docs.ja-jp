@@ -1,6 +1,6 @@
 ---
 title: C++/NDK での粗い再局在化
-description: C++/NDK でデバイス上のセンサーを使用してアンカーを作成して配置する方法の詳細な説明。
+description: C++ と NDK で粗い再局在化を使用してアンカーを作成して配置する方法の詳細な説明。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e505e6a8a3c9f28905c1b1fc3d90dbeee959a793
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: db7480b8aa2a78e40cf52d22cbaa7a15422602e8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277246"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545417"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cndk"></a>C++/NDK でデバイス上のセンサーを使用してアンカーを作成して配置する方法
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cndk"></a>C++ と NDK で粗い再局在化を使用してアンカーを作成して配置する方法
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

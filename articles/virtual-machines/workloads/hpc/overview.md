@@ -1,23 +1,19 @@
 ---
-title: H シリーズ VM でのハイ パフォーマンス コンピューティング - Azure Virtual Machines | Microsoft Docs
+title: H シリーズ VM でのハイ パフォーマンス コンピューティング - Azure Virtual Machines
 description: HPC 用に最適化された H シリーズ VM の機能について説明します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: jeconnoc
-editor: ''
+ms.author: amverma
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.author: amverma
-ms.openlocfilehash: d6e857a87e4c7df8ffb2be1eefb7a0290da5b10a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799007"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271014"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>H シリーズ VM でのハイ パフォーマンス コンピューティング
 
@@ -41,7 +37,7 @@ HB シリーズと HC シリーズの VM をサポートする InfiniBand 構成
 
 HB シリーズまたは HC シリーズの VM での InfiniBand の設定について詳しくは、[InfiniBand の有効化](enable-infiniband.md)に関する記事をご覧ください。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 まず、どの H シリーズの VM を使うかを決定します。 HPC 用に最適化された VM について詳しくは、[HB シリーズの概要](hb-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事をご覧ください。 仕様については、「[ハイ パフォーマンス コンピューティング仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)」をご覧ください。
 
@@ -51,7 +47,7 @@ HPC ワークロードの重要なコンポーネントは、MPI です。 HB �
 
 VM シリーズを選択し、InfiniBand と MPI を設定した後は、HPC ワークロードの構築を始めることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [HB シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)を確認し、主な相違点と仕様について学習します。
 

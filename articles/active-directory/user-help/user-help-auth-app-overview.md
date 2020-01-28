@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator アプリの概要 - Azure Active Directory | Microsoft Docs
+title: Microsoft Authenticator アプリとは - Azure Active Directory | Microsoft Docs
 description: Microsoft Authenticator アプリについて、その概要としくみのほか、コンテンツのこのセクションに記載されている情報を説明します。
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382341"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155810"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリとは
-
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
 Microsoft Authenticator アプリは、2 要素認証を使用する場合に、アカウントにサインインするために役立ちます。 2 要素認証は、特に機密情報を閲覧する際に、アカウントにより安全にアクセスするために役立ちます。 パスワードは忘れたり、盗まれたり、侵害されたりすることがあるため、2 要素認証は、他のユーザーの侵入を困難にすることでお客様のアカウントの保護に役立つ追加のセキュリティ手順です。
 
@@ -32,18 +29,16 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 
 - ユーザー名、認証アプリ、およびモバイル デバイスで指紋、顔、または PIN を使用して、パスワードを入力せずにサインインする。
 
-- 認証アプリをサポートする他のアカウント用のコード ジェネレーターとして使用する。
+- 認証アプリをサポートする他のアカウント用のコード ジェネレーターとして使用します。
 
 > [!Important]
 > Microsoft Authenticator アプリは、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
 >
-> 組織では、サインインして組織のデータやドキュメントにアクセスするために、認証アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録プロセスを完了するまで、アカウントは検証方法として機能するように実際に設定されてはいません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-add-work-school-account.md)」をご覧ください。
-> 
-> アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。 Microsoft アカウントへのサインイン試行時に ["指定した Microsoft アカウントは登録されていません"](https://support.microsoft.com/help/13811) というメッセージが表示される場合の対処方法を、詳しく確認してください。
+>この記事は、セキュリティ検証の方法として Microsoft Authenticator アプリをダウンロードして使用するユーザーを対象としています。 従業員その他のユーザーに対して Authenticator アプリを使用してパスワードなしのサインインを有効にする方法に関する情報を探している管理者の方は、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)」を参照してください。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
-| 期間|説明|
+| 期間|[説明]|
 | ----|-----------|
 | 2 要素認証 | わずか 2 種類の認証情報 (パスワードと PIN など) を特に使用しなければならない認証プロセスです。 Microsoft Authenticator アプリでは、標準の 2 要素認証とパスワードなしのサインインの両方がサポートされます。 |
 | Multi-Factor Authentication (MFA) | すべての 2 要素認証は多要素認証です。お客様の組織の要件に基づいて、"*少なくとも*" 2 種類の認証情報を使用することが求められます。 |
@@ -77,7 +72,7 @@ PIN を使用して認証プロセスを完了する場合、代わりにお客�
 
 ## <a name="in-this-section"></a>このセクションの内容
 
-| 記事 | 説明 |
+| [アーティクル] | [説明] |
 | ------ | ------------ |
 | [アプリのダウンロードとインストール](user-help-auth-app-download-install.md) | Android および iOS が実行されている各デバイス用の Microsoft Authenticator アプリの入手場所、入手方法、およびインストール方法について説明します。 |
 | [職場または学校アカウントの追加](user-help-auth-app-add-work-school-account.md) | さまざまな職場または学校アカウントと個人アカウントを Microsoft Authenticator アプリに追加する方法について説明します。 |

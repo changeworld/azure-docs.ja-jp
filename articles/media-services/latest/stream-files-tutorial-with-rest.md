@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services を使用して URL に基づいてリモート ファイルをエンコードしてストリーム配信する - REST | Microsoft Docs
+title: Azure Media Services v3 を使用してリモート ファイルとストリームをエンコードする
 description: Azure Media Services で REST を使用して URL に基づいてファイルをエンコードし、コンテンツをストリーム配信します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685112"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514342"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -36,7 +36,7 @@ Azure Media Services では、メディア ファイルをさまざまなブラ�
 > * Postman を構成する
 > * Postman を使用して要求を送信する
 > * ストリーミング URL をテストする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -211,7 +211,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
         }
         ```
 
-### <a name="create-a-job"></a>ジョブを作成する
+### <a name="create-a-job"></a>ジョブの作成
 
 [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、作成された**変換**を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
 
@@ -382,7 +382,7 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 リソースを削除するには、削除するリソースの [削除] 操作を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。  
 
@@ -392,11 +392,11 @@ Azure Media Player はテストには使用できますが、運用環境では�
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ビデオをアップロード、エンコード、ストリーム配信する方法がわかったので、次の記事を参照してください。 
 

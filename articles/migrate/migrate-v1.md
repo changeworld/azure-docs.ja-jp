@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186532"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514988"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
 この記事では、旧バージョンの Azure Migrate の使用方法に関する情報を提供します。
 
 
-Azure Migrate サービスには次の 2 つのバージョンがあります。
+Azure Migrate サービスのバージョンには、次の 2 つがあります。
 
-- **最新バージョン**:Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
-- **旧バージョン**:旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 旧バージョンで作成した Azure Migrate プロジェクトを今後も使用する必要がある場合にできることとできないことは、以下のとおりです。
+- **現在のバージョン**: Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
+- **以前のバージョン**: 旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 旧バージョンで作成した Azure Migrate プロジェクトを今後も使用する必要がある場合にできることとできないことは、以下のとおりです。
     - 移行プロジェクトは作成できなくなります。
     - 新しく検出を行わないことをお勧めします。
     - 既存のプロジェクトには引き続きアクセスできます。
@@ -72,7 +72,7 @@ Azure Migrate サービスには次の 2 つのバージョンがあります。
 前の段階で合格したマシンだけが次の段階に進みます。 たとえば、マシンが適合性チェックで不合格になった場合、Azure に不適合とマークされ、サイズとコストの見積もりは行われません。
 
 
-### <a name="review-azure-readiness"></a>Azure 対応性を確認する
+### <a name="review-azure-readiness"></a>Azure 対応性の確認
 
 評価の Azure 対応性ビューには、各 VM の対応状態が表示されます。
 
@@ -92,7 +92,7 @@ Azure に未対応 |  この VM は Azure では起動しません。 たとえ�
 --- | --- | ---
 **ブートの種類** | BIOS がサポートされています。 UEFI はサポートされていません。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数が、Azure VM でサポートされる最大コア数 (128) 以下。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が考慮されます。<br/>アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**メモリ** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
@@ -216,7 +216,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 4. ワークスペース ID とキーをコピーします。 これらは、MMA をオンプレミスのマシンにインストールするときに必要になります。
 
 > [!NOTE]
-> エージェントのインストールを自動化するには、System Center Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
+> エージェントのインストールを自動化するには、Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Windows マシンに MMA エージェントをインストールする
@@ -229,7 +229,7 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントは、コマンド ラインからインストールするか、System Center Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
+エージェントは、コマンド ラインからインストールするか、Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Linux マシンに MMA エージェントをインストールする
 
@@ -244,7 +244,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager による監視対象マシンに MMA エージェントをインストールする
 
-System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 必要な依存関係データを収集するために、Service Map が Operations Manager の MMA と統合されています。 [詳細情報](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 依存関係エージェントはインストールする必要があります。
+System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 必要な依存関係データを収集するために、Service Map が Operations Manager の MMA と統合されています。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 依存関係エージェントはインストールする必要があります。
 
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
@@ -340,5 +340,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 最新バージョンの Azure Migrate の[詳細を確認してください](migrate-services-overview.md)。

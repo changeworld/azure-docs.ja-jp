@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813095"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512110"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -38,7 +38,7 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 > * ハイブリッド Azure AD 参加の構成
 > * ダウンレベルの Windows デバイスの有効化
 > * 参加済みデバイスの確認
-> * トラブルシューティング
+> * [トラブルシューティング]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,19 +59,19 @@ Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバ�
 
 この記事の構成手順は、Azure AD Connect でこのウィザードを使用することに基づいています。
 
-ハイブリッド Azure AD 参加を使用するには、デバイスが組織のネットワーク内から次の Microsoft リソースにアクセスできる必要があります。  
+ハイブリッド Azure AD 参加では、デバイスが組織のネットワーク内から次の Microsoft リソースにアクセスできる必要があります。  
 
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
 
-送信プロキシを介してインターネットにアクセスする必要がある組織の場合、Microsoft では、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨しています。 WPAD の構成と管理で問題が発生した場合、[自動検出のトラブルシューティング](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))に関する記事を参照してください。 
+組織が送信プロキシ経由でのインターネットへのアクセスを必要とする場合、Microsoft では、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨しています。 WPAD の構成と管理で問題が発生した場合は、[自動検出のトラブルシューティング](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))に関する記事を参照してください。 
 
 WPAD を使用せず、コンピューターでプロキシ設定を構成する必要がある場合、Windows 10 1709 以降、これを実行できます。 詳細については、[グループ ポリシー オブジェクト (GPO) を使用した WinHTTP 設定の構成](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)に関するページを参照してください。
 
 > [!NOTE]
-> WinHTTP 設定を使用してコンピューターでプロキシ設定を構成すると、構成したプロキシに接続できないコンピューターでインターネットへの接続が失敗します。
+> WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。
 
 組織が認証された送信プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。
 
@@ -134,6 +134,9 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 - シームレス SSO の構成
 - ダウンレベルの Windows コンピューターへの Microsoft Workplace Join のインストール
 
+> [!NOTE]
+> Windows 7 のサポートは 2020 年 1 月 14 日に終了しました。 詳細については、[Windows 7 のサポート終了](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)に関する記事を参照してください。
+
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>デバイスの登録用のローカル イントラネット設定の構成
 
 ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するため、およびデバイスが Azure AD で認証を受けるときに証明書の指定を求めるメッセージが表示されないようにするために、対象のドメイン参加済みデバイスにポリシーをプッシュして、以下の URL を Internet Explorer のローカル イントラネット ゾーンに追加することができます。
@@ -151,7 +154,7 @@ Azure AD クラウド認証方法として [PHS](../hybrid/whatis-phs.md) また
 
 ダウンレベルの Windows デバイスを登録するには、組織で [Windows 10 以外のコンピューター向けの Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) をインストールする必要があります。 Windows 10 以外のコンピューター向けの Microsoft Workplace Join は、Microsoft ダウンロード センターで入手できます。
 
- [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 このパッケージは、`quiet` パラメーターを使用した標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
+ [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 このパッケージは、`quiet` パラメーターを使用した標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
 
 インストーラーによって、ユーザー コンテキストで実行されるシステムにスケジュール済みタスクが作成されます。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクでは、デバイスは Azure AD で認証が行われた後、そのユーザー資格情報を使用してサイレントに Azure AD に参加します。
 
@@ -169,7 +172,7 @@ Azure テナントでのデバイス登録状態を確認するために、[Azur
 
 1. Windows PowerShell を管理者として開きます。
 1. 「`Connect-MsolService`」と入力して Azure テナントに接続します。  
-1. 「 `get-msoldevice -deviceId <deviceId>` 」を入力します。
+1. 「`get-msoldevice -deviceId <deviceId>`」と入力します。
 1. **[有効]** が **[True]** に設定されていることを確認します。
 
 ## <a name="troubleshoot-your-implementation"></a>実装のトラブルシューティング
@@ -179,6 +182,6 @@ Azure テナントでのデバイス登録状態を確認するために、[Azur
 - [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
 - [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure portal を使用してデバイス ID を管理する](device-management-azure-portal.md)方法を学習します。

@@ -1,5 +1,6 @@
 ---
 title: Azure Key Vault 証明書での SSL ターミネーション
+
 description: HTTPS 対応リスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
 services: application-gateway
 author: vhorne
@@ -21,6 +22,7 @@ ms.locfileid: "73571974"
 Key Vault 統合では、SSL ターミネーションに次の 2 つのモデルが提供されています。
 
 - リスナーにアタッチされている SSL 証明書を明示的に提供できます。 このモデルは、SSL ターミネーションのために SSL 証明書を Application Gateway に渡す従来の方法を示しています。
+
 - HTTPS 対応リスナーの作成時に、必要に応じて、既存の Key Vault 証明書またはシークレットへの参照を指定できます。
 
 Application Gateway と Key Vault の統合には、次のようにさまざまな利点があります。

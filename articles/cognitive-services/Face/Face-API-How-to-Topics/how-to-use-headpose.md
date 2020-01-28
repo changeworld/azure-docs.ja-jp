@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 168b4fce873206e39a32a83da3dc5509b431d6a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058579"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169801"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose 属性を使用する
 
@@ -129,8 +129,8 @@ HeadPose の変化をリアルタイムで追跡することで、うなずき�
 > [!CAUTION]
 > 頭のジェスチャをリアルタイムで検出するには、Face API を高速に (1 秒に 1 回より多く) 呼び出す必要があります。 Free レベル (f0) サブスクリプションをご利用の場合、これは不可能です。 有料レベルのサブスクリプションをご利用の場合、頭のジェスチャ検出のための高速 API 呼び出しのコストを計算済みであることを確認してください。
 
-頭のジェスチャ検出の実施例については、GitHub の [Face API HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) を参照してください。
+頭のジェスチャ検出の実施例については、GitHub の [Face HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-回転した顔矩形の実施例については、GitHub の [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) アプリを参照してください。 または、[Face API HeadPose サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) アプリを参照してください。HeadPose 属性をリアルタイムに追跡して頭の動きを検出します。
+回転した顔矩形の実施例については、GitHub の [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) アプリを参照してください。 または、[Face HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) アプリを参照してください。HeadPose 属性をリアルタイムに追跡して頭の動きを検出します。

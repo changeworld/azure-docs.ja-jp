@@ -24,7 +24,7 @@ Azure Machine Learning を使用してトレーニング済みモデルをデプ
 
 トレーニング済みのモデルを Web サービスまたは IoT Edge デバイスにデプロイするとき、受信要求を処理する Web サーバーを含んだパッケージが作成されます。
 
-Azure Machine Learning には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、Azure Machine Learning __環境__を使用して、特定のベース イメージを選択することも、独自に指定したものを使用することもできます。
+Azure Machine Learning には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、Azure Machine Learning __環境__ を使用して、特定のベース イメージを選択することも、独自に指定したものを使用することもできます。
 
 ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 デプロイ プロセスでは、デプロイ前に、モデル、conda 環境、その他のアセットなどのコンポーネントがイメージに追加されます。
 
@@ -221,7 +221,7 @@ myenv.docker.enabled = True
 myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-ご自分のワークスペース内にない__プライベート コンテナー レジストリ__のイメージを使用するには、`docker.base_image_registry` でリポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
+ご自分のワークスペース内にない __プライベート コンテナー レジストリ__ のイメージを使用するには、`docker.base_image_registry` でリポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
 
 ```python
 # Set the container registry information

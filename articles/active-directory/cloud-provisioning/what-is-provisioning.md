@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868645"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167620"
 ---
 # <a name="what-is-identity-provisioning"></a>ID プロビジョニングとは
 
@@ -50,9 +50,7 @@ Azure Active Directory に関して言えば、プロビジョニングは大き
 
 ![クラウド プロビジョニング](media/what-is-provisioning/cloud3.png)
 
-アプリのプロビジョニングには、ユーザーがアクセスする必要のあるアプリケーションへのユーザーおよびロールのプロビジョニングが含まれます。  
-
-最も一般的なシナリオは、Azure AD 内のユーザーが O365 や Salesforce にプロビジョニングされるケースです。
+Azure Active Directory (Azure AD) での **[アプリのプロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** という用語は、ユーザーがアクセスする必要のあるクラウド アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
 
 ## <a name="directory-provisioning"></a>ディレクトリのプロビジョニング
 
@@ -64,7 +62,7 @@ Azure Active Directory に関して言えば、プロビジョニングは大き
 
 これは Azure AD Connect 同期と Azure AD Connect クラウド プロビジョニング、Microsoft Identity Manager によって実現されています。 
  
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
 - [クラウド プロビジョニングのインストール](how-to-install.md)

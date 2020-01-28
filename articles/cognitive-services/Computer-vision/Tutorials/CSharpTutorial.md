@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170037"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168877"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -89,7 +89,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 1. ナビゲーション ウィンドウの **[Select a scenario]\(シナリオの選択\)** で、サンプル アプリに現在含まれるシナリオのいずれかを選択します。  
 
-   | シナリオ | 説明 |
+   | シナリオ | [説明] |
    |----------|-------------|
    |Analyze Image (画像を分析する) | [Analyze Image (画像の分析)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) 操作を使用して、ローカルまたはリモートの画像を分析します。 分析のための視覚的な特徴と言語を選択して、画像と結果の両方を表示できます。  |
    |Analyze Image with Domain Model (ドメイン モデルで画像を分析する) | [List Domain Specific Models (ドメイン固有モデルの一覧表示)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) 操作を使用して選択できるドメイン モデルの一覧を表示し、[Recognize Domain Specific Content (ドメイン固有コンテンツの認識)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) 操作を使用して、選択したドメイン モデルを使用してローカルまたはリモートの画像を分析します。 分析用の言語を選択することもできます。 |
@@ -304,11 +304,11 @@ Computer Vision のサンプル アプリに含まれる他のシナリオとは
 
 `RecognizeUrlAsync` メソッドでは、指定されたサブスクリプション キーとエンドポイント URL を使用して、新しい `ComputerVisionClient` インスタンスが作成されます。 `ComputerVisionClient.GenerateThumbnailAsync` メソッドを呼び出して、幅、高さ、画像の URL、およびスマート トリミングを使用するかどうかを渡し、結果を `Stream` として返します。 `ImageScenarioPage` クラスから継承されたメソッドは、返された結果をシナリオ ページに表示します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったときは、`Microsoft/Cognitive-Vision-Windows` リポジトリを複製したフォルダーを削除します。 サンプル画像を使用した場合は、`Microsoft/Cognitive-Face-Windows` リポジトリを複製したフォルダーも削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Face API を使ってみる](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Face サービスを使ってみる](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

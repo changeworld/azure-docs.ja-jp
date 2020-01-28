@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612872"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514648"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -262,7 +262,7 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    "certificates:" の前にスペースがないこと、また各証明書の前に 2 つのスペースがあることを確認してください。
+    **certificates** 行の前にスペースがないこと、また入れ子になった各証明書が 2 つのスペースによってインデントされていることを確認してください。
 
     nano 内で右クリックすると、クリップボードの内容が現在のカーソル位置に貼り付けられます。 文字列を置換するには、キーボードの矢印キーを使って置換する文字列に移動し、文字列を削除した後、右クリックしてバッファーから貼り付けます。
 

@@ -1,30 +1,28 @@
 ---
 title: Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 description: Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758279"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276804"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 
-[Kubernetes サービス カタログ][kubernetes-service-catalog]と共に Open Service Broker for Azure (OSBA) を使うと、開発者は Azure で管理されたサービスを Kubernetes で利用できます。 このガイドでは、Kubernetes サービス カタログ、Open Service Broker for Azure (OSBA)、および Kubernetes を使ってAzure で管理されたサービスを使うアプリケーションのデプロイに注目します。
+[Kubernetes サービス カタログ][kubernetes-service-catalog]と共に Open Service Broker for Azure (OSBA) を使うと、開発者は Azure で管理サービスを Kubernetes で利用できます。 このガイドでは、Kubernetes サービス カタログ、Open Service Broker for Azure (OSBA)、および Kubernetes を使ってAzure で管理されたサービスを使うアプリケーションのデプロイに注目します。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション
 
-* Azure CLI: [ローカルにインストールする][azure-cli-install]ことも、[Azure Cloud Shell][azure-cloud-shell] で使うこともできます。
+* Azure CLI: [ローカルにインストールする][azure-cli-install]か、[Azure Cloud Shell][azure-cloud-shell] で使用します。
 
-* Helm CLI 2.7 以降: [ローカルにインストールする][helm-cli-install]ことも、[Azure Cloud Shell][azure-cloud-shell] で使うこともできます。
+* Helm CLI 2.7 以降: [ローカルにインストールする][helm-cli-install]か、[Azure Cloud Shell][azure-cloud-shell] で使用します。
 
 * Azure サブスクリプションの共同作成者ロールでサービス プリンシパルを作成するためのアクセス許可。
 
@@ -187,7 +185,7 @@ helm install azure/wordpress --name wordpress --namespace wordpress --set resour
 kubectl get secrets -n wordpress -o yaml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Kubernetes Service (AKS) クラスターにサービス カタログをデプロイしました。 Open Service Broker for Azure を使って、Azure で管理されたサービス (この例では Azure Database for MySQL) を使う WordPress のインストールをデプロイしました。
 

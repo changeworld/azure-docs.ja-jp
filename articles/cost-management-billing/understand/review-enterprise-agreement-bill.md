@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2020
+ms.date: 01/17/2020
 ms.author: banders
-ms.openlocfilehash: 2beb1d3e4468ff96f629dd6ec7015376a7f3a904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984007"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274024"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -127,7 +127,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 ![使用状況の要約上での M + C オプションを示すスクリーンショット。](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-**Azure Marketplace** 合計は、marketplace 請求書に記載されている**販売合計**と一致している必要があります。 使用に基づく料金に関する詳細については、**使用量のダウンロード**をご確認ください。 **Marketplace の料金**下で、**ダウンロード**を選択します。 このレポートは税または 1 回限りの購入を含みません。  
+**Azure Marketplace** 合計は、marketplace 請求書に記載されている**販売合計**と一致している必要があります。 使用に基づく料金に関する詳細については、**使用量のダウンロード**をご確認ください。 **Marketplace の料金**下で、**ダウンロード**を選択します。 Marketplace の価格には、発行元によって決定された税金が含まれます。 トランザクションの税金を収集するための個別の請求書を顧客が発行元から受け取ることはありません。
 
 ![Marketplace の料金下のダウンロード オプションを表示するスクリーンショット。](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 

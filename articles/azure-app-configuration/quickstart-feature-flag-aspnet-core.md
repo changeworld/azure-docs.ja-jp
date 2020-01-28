@@ -1,29 +1,21 @@
 ---
-title: ASP.NET Core に機能フラグを追加するためのクイック スタート | Microsoft Docs
-description: ASP.NET Core アプリに機能フラグを追加し、Azure App Configuration で管理するためのクイック スタートです。
-services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
+title: ASP.NET Core に機能フラグを追加するためのクイックスタート
+description: ASP.NET Core アプリに機能フラグを追加し、Azure App Configuration を使用して管理します。
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 04/19/2019
-ms.author: yegu
-ms.openlocfilehash: 1b36bc1b1f28c687450acad4cc61fa5442cff082
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/14/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184982"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260287"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
-このクイック スタートでは、Azure App Configuration を ASP.NET Core Web アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。 
+このクイックスタートでは、Azure App Configuration を使用して、ASP.NET Core アプリケーションにエンド ツー エンドの機能管理の実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを 1 か所に格納し、その状態を制御します。 
 
 .NET Core 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、.NET Core 構成システム上に構築されます。 また、.NET Core 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
@@ -36,11 +28,12 @@ ms.locfileid: "74184982"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[機能マネージャー]**  >  **[+ 追加]** を選択し、次の機能フラグを追加します。
+6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
 
-    | Key | State |
-    |---|---|
-    | Beta | オフ |
+    > [!div class="mx-imgBorder"]
+    > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
+
+    現時点では `label` を空欄にしておいてください。
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
@@ -58,9 +51,13 @@ ms.locfileid: "74184982"
 
 プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業のための機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
 
+> [!IMPORTANT]
+> .NET Core 2.x と 3.x の間には大きな違いがあります。  お使いの環境に応じて適切な構文を選択します。
+
 1. *.csproj* ファイルを開きます。
 1. 次の例に示すように、`UserSecretsId` 要素を追加し、その値を独自の値 (通常は GUID) に置き換えます。
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -76,16 +73,25 @@ ms.locfileid: "74184982"
 
     </Project>
     ```
-
-1. ファイルを保存します。
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    </Project>
+    ```
+    ---
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` パッケージと `Microsoft.FeatureManagement.AspNetCore` NuGet パッケージへの参照を追加します。
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
     ```
 
 1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
@@ -108,19 +114,13 @@ ms.locfileid: "74184982"
 
     このシークレットには、App Configuration API を使用してアクセスできます。 構成名の中のコロン (:) は、サポートされているすべてのプラットフォーム上の App Configuration API で機能します。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)に関するページを参照してください。
 
-1. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
-
-    ```csharp
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-    ```
-
 1. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
     
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2.x 用に `CreateWebHostBuilder` を更新する
-
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -135,8 +135,8 @@ ms.locfileid: "74184982"
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3.x 用に `CreateHostBuilder` を更新する
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -151,7 +151,7 @@ ms.locfileid: "74184982"
         })
         .UseStartup<Startup>());
     ```
-
+    ---
 
 1. *Startup.cs* を開き、.NET Core 機能マネージャーへの参照を追加します。
 
@@ -161,22 +161,75 @@ ms.locfileid: "74184982"
 
 1. `services.AddFeatureManagement()` メソッドを呼び出して機能フラグ サポートを追加するように、`ConfigureServices` メソッドを更新します。 必要に応じて、`services.AddFeatureFilter<FilterType>()` を呼び出すことで、機能フラグで使用される任意のフィルターを含めることができます。
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
         services.AddFeatureManagement();
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
+    ---
 
 1. `Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
-
+    
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        app.UseAzureAppConfiguration();
-        app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseAzureAppConfiguration();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseAzureAppConfiguration();
+    }
+    ```
+    ---
 
 1. *MyFeatureFlags.cs* ファイルを追加します。
 
@@ -278,29 +331,29 @@ ms.locfileid: "74184982"
     dotnet run
     ```
 
-1. ブラウザー ウィンドウを開いて、`https://localhost:5001` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+1. ブラウザー ウィンドウを開いて、`https://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+    Azure Cloud Shell で作業している場合は、 *[Web プレビュー]* 、 *[構成]* の順に選択します。  確認を求められたら、ポート 5000 を選択します。
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
+    ![[Web プレビュー] ボタンを見つける](./media/quickstarts/cloud-shell-web-preview.png)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
+    ブラウザーに、次の画像のようなページが表示されます。
+    ![クイックスタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 1. **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
 
-    | Key | State |
-    |---|---|
-    | Beta | On |
-
-1. コマンド プロンプトに戻り、`Ctrl-C` を押して実行中の `dotnet` プロセスを取り消し、`dotnet run` を再実行して、アプリケーションを再起動します。
+1. コマンド プロンプトに戻り、`Ctrl-C` キーを押して、`dotnet` プロセスの実行をキャンセルします。  `dotnet run` を使用してアプリケーションを再起動します。
 
 1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して ASP.NET Core Web アプリの機能を管理しました。
 

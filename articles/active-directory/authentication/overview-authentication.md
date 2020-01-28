@@ -1,66 +1,99 @@
 ---
-title: ユーザーの認証とセキュリティ保護 - Azure Active Directory
-description: Azure AD 管理者がエンドユーザーへの影響を抑えながらユーザー認証を保護するには、どうすればよいでしょうか。
+title: Azure Active Directory 認証の概要
+description: Azure Active Directory を使用したユーザー サインインに関するさまざまな認証方法とセキュリティ機能について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3077851f5feafdec9d46d9365c45f5729ca2b0b1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9f4c2fa8488490561e8f11746e8e737718ee9f37
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846676"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261264"
 ---
-# <a name="what-methods-are-available-for-authentication"></a>認証には、どのような方式がありますか。
+# <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 認証とは
 
-パスワードが盗まれたとか、ID が不正アクセスされたという報告をニュースで耳にします。 パスワードに加えて 2 つ目の要素を要求すると、組織のセキュリティは、直ちに向上します。 Microsoft Azure Active Directory (Azure AD) には、Azure Multi-Factor Authentication (Azure MFA) や Azure AD のセルフサービスによるパスワードのリセット (SSPR) などの機能が組み込まれています。これにより、管理者は、追加の認証方式を使用して、組織とユーザーを保護することができます。
+ID プラットフォームの主な機能の 1 つとして、ユーザーがデバイス、アプリケーション、またはサービスにサインインする際の資格情報の確認、つまり "*認証*" があります。 Azure Active Directory (Azure AD) での認証は、ユーザー名とパスワードの確認だけではありません。 セキュリティを強化し、ヘルプ デスクによるサポートのニーズを軽減するために、Azure AD の認証には、次の構成要素が含まれています。
 
-さまざまなシナリオが考えられます。アプリケーションにサインインするときや、パスワードをリセットするとき、Windows Hello を有効にするときなど、ユーザーは、身元を証明する追加の検証を求められる場合があります。
+* セルフサービス パスワード リセット
+* Azure Multi-Factor Authentication
+* パスワードの変更をオンプレミス環境に書き戻すためのハイブリッド統合
+* パスワード保護ポリシーをオンプレミス環境に適用するためのハイブリッド統合
+* パスワードレスの認証
 
-追加の検証は、以下のような認証方式の形式で行われます。
+## <a name="improve-the-end-user-experience"></a>エンドユーザーのエクスペリエンスを向上させる
 
-* メールまたはテキスト メッセージで提供されるコード
-* 音声通話
-* 電話での通知またはコード
-* セキュリティの質問に回答する
+Azure AD は、ユーザーの ID を保護し、サインイン エクスペリエンスを簡略化するのに役立ちます。 セルフサービス パスワード リセットなどの機能により、ユーザーは任意のデバイスから Web ブラウザーを使用して自分のパスワードを更新または変更することができます。 この機能が特に役立つのは、ユーザーがパスワードを忘れた場合やアカウントがロックされた場合です。 ヘルプデスクや管理者の対応を待つことなく、ユーザーは自分自身のブロックを解除し、作業を継続することができます。
 
-![Chrome の login.microsoftonline.com ログイン ページの例](media/overview-authentication/overview-login.png)
+Azure Multi-Factor Authentication を使用すると、ユーザーは、サインイン時の認証形式を追加で選択できます (通話、モバイル アプリ通知など)。 この機能によって、ハードウェア トークンなど、単一の固定された形式のセカンダリ認証の必要性が低減します。 追加の認証形式をユーザーが有していなければ、別の方法を選んで作業を継続することができます。
 
-Azure MFA と Azure AD のセルフサービスによるパスワードのリセットにより、管理者は、Azure AD と Azure Portal を使用して構成、ポリシー、監視、レポートを制御し、組織を保護することができます。
+![サインイン画面で使用されている認証方法](media/concept-authentication-methods/overview-login.png)
 
-## <a name="self-service-password-reset"></a>セルフサービスのパスワード リセット
+パスワードレス認証を使用すれば、ユーザーが安全なパスワードを作成して記憶する必要がなくなります。 Windows Hello for Business や FIDO2 セキュリティ キーなどの機能を使用すると、ユーザーはパスワードなしで、デバイスやアプリケーションにサインインできます。 この機能により、さまざまな環境でパスワードを管理する複雑さが軽減されます。
 
-セルフサービスによるパスワードのリセットにより、ユーザーは、いつでも、どこでも、管理者の介入なしでパスワードをリセットできます。
+## <a name="self-service-password-reset"></a>セルフサービス パスワード リセット
 
-> [!VIDEO https://www.youtube.com/embed/hc97Yx5PJiM]
+セルフサービス パスワード リセットにより、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。
 
-セルフサービスによるパスワードのリセットには、次のものがあります。
+セルフサービス パスワード リセットは、次のようなシナリオで役立ちます。
 
-* **パスワードの変更:** 自分のパスワードを知っているが、新しいパスワードに変更する場合に使用します。
-* **パスワードのリセット:** サインインできないため、承認されている 1 つ以上の認証方式を使用して、パスワードをリセットする場合に使用します。
-* **アカウントのロック解除:** アカウントがロックされていてサインインできないため、承認されている 1 つ以上の認証方式を使用して、アカウントをロック解除する場合に使用します。
+* **パスワードの変更 -** ユーザーが自分のパスワードを知っているものの、新しいパスワードへの変更を希望する場合。
+* **パスワードのリセット -** ユーザーがパスワードを忘れるなどしてサインインできず、パスワードのリセットを希望する場合。
+* **アカウントのロック解除 -** アカウントがロックアウトされているためにサインインできなくなったユーザーが、アカウントのロック解除を希望する場合。
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+ユーザーがセルフサービス パスワード リセットを使用して自分のパスワードを更新またはリセットすると、そのパスワードは、オンプレミスの Active Directory 環境に書き戻すこともできます。 パスワード ライトバックのおかげで、ユーザーは、更新された資格情報をすぐに、オンプレミスのデバイスやアプリケーションで使用できるようになります。
 
-Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure MFA では、データやアプリケーションへのアクセスを保護しながら、シンプルなサインイン プロセスへの要求に応えることができます。
+## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-## <a name="license-requirements"></a>ライセンスの要件
+多要素認証は、携帯電話にコードを入力する、指紋スキャンを行うなど、サインイン プロセス中に追加で本人確認できるものをユーザーに求めるプロセスです。
 
-[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
+ユーザーの認証にパスワードのみを使用する場合、不安な攻撃ベクトルが残ります。 パスワードの強度が低いか、どこかで流出していたとしたら、そのユーザー名とパスワードでサインインしようとしているユーザーは本人なのか、攻撃者なのかわかりません。 2 つ目の認証形式を義務付ければ、その二次的な要素は攻撃者が容易に取得したり複製したりできるようなものではないため、セキュリティが向上します。
 
-## <a name="next-steps"></a>次の手順
+![さまざまな形式の多要素認証の概念図](./media/concept-mfa-howitworks/methods.png)
 
-次の手順では、セルフサービスによるパスワードのリセットと Azure Multi-Factor Authentication の説明および構成を行います。
+Azure Multi-Factor Authentication は、次の認証方法のうち 2 つ以上を要求することで機能します。
 
-セルフサービスによるパスワードのリセットを始めるには、「[enable SSPR quickstart article](quickstart-sspr.md)」 (クイック スタート: SSPR を有効にする) を参照してください。
+* ユーザーが知っているもの (通常はパスワード)。
+* ユーザーが持っているもの (携帯電話やハードウェア キーのように、簡単には複製できない信頼できるデバイスなど)。
+* ユーザー自身 (指紋スキャンや顔面認識などの生体認証)。
 
-この記事で説明したセルフサービスによるパスワードのリセットの詳細については、「[機能: Azure AD のセルフ サービスによるパスワードのリセット](concept-sspr-howitworks.md)」を参照してください。
+オンボーディング エクスペリエンスを簡略化するために、セルフサービス パスワード リセットと Azure Multi-Factor Authentication の両方にユーザー自身が 1 回のステップで登録できるようになっています。 どのような形式のセカンダリ認証を使用できるかは、管理者が定義できます。 Azure Multi-Factor Authentication は、ユーザーがセルフサービス パスワード リセットを実行してさらにそのプロセスのセキュリティを高める際に義務付けることもできます。
 
-この記事で説明した Azure Multi-Factor Authentication の詳細については、「[しくみ: Azure Multi-Factor Authentication](concept-mfa-howitworks.md)」を参照してください。
+## <a name="password-protection"></a>パスワード保護
+
+既定で、脆弱なパスワード (*Password1* など) は Azure AD によってブロックされます。 既知の脆弱なパスワードを含んだグローバル禁止パスワード リストが自動的に更新されて適用されます。 Azure AD ユーザーが自分のパスワードをこれらの脆弱なパスワードのいずれかに設定しようとすると、より安全なパスワードを選択するよう通知されます。
+
+セキュリティを強化するために、カスタム パスワード保護ポリシーを定義できます。 これらのポリシーでは、フィルターを使用して、*Contoso* などの名前や *London* のような地名が含まれるパスワードのバリエーションをブロックすることができます。
+
+ハイブリッド セキュリティが必要であれば、Azure AD によるパスワード保護をオンプレミスの Active Directory 環境と統合することができます。 オンプレミス環境にインストールされたコンポーネントが Azure AD からグローバル禁止パスワード リストとカスタム パスワード保護ポリシーを受信すると、ドメイン コントローラーがそれらを使用してパスワード変更イベントを処理します。 ユーザーがどこでどのように資格情報を変更しても、このハイブリッドなアプローチであれば、強力なパスワードの使用を確実に強制することができます。
+
+## <a name="passwordless-authentication"></a>パスワードレスの認証
+
+多くの環境が最終的に目指しているのは、サインイン イベントの過程でパスワードの使用をなくすことです。 Azure パスワード保護や Azure Multi-Factor Authentication などの機能はセキュリティの強化に役立ちますが、ユーザー名とパスワードは、流出やブルート フォース攻撃の標的になりうる脆弱な認証形式であることに変わりありません。
+
+![パスワードレスに至るまでの認証プロセスでのセキュリティと利便性の関係](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+パスワードレスの方法でサインインする際には、Windows Hello for Business での生体認証や FIDO2 セキュリティ キーなどの方法を使用して資格情報が渡されます。 これらの認証方法は、攻撃者が簡単に複製することはできません。
+
+ユーザーのサインイン エクスペリエンスを簡略化し、攻撃のリスクを軽減するために、Azure AD にはパスワードレスの方法を使用してネイティブに認証する方法が用意されています。
+
+## <a name="next-steps"></a>次のステップ
+
+最初に、[セルフサービス パスワード リセットのクイックスタート][quickstart-sspr]と [Azure Multi-Factor Authentication のチュートリアル][tutorial-mfa-applications]を参照してください。
+
+セルフサービス パスワード リセットの概念の詳細については、[Azure AD のセルフサービス パスワード リセットのしくみ][concept-sspr]に関するページを参照してください。
+
+多要素認証の概念の詳細については、[Azure Multi-Factor Authentication のしくみ][concept-mfa]に関するページを参照してください。
+
+<!-- INTERNAL LINKS -->
+[quickstart-sspr]: quickstart-sspr.md
+[tutorial-mfa-applications]: tutorial-mfa-applications.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

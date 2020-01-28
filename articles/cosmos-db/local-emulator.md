@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441678"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309984"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -283,7 +283,6 @@ Azure Cosmos Emulator で作成できるコンテナーの数の既定値は、�
 現在のパーティション数を超えた後にコンテナーを作成しようとすると、次のメッセージと共に ServiceUnavailable 例外がスローされます。
 
 "申し訳ありません。このリージョンでは現在需要が高まっており、要求にお応えすることができない状況です。 Microsoft では引き続きオンラインの容量を拡充し、もう一度お試しいただくご案内ができるよう取り組んでまいります。
-ご不明な点がありましたら、内容を問わずいつでも askcosmosdb@microsoft.com までメールをお送りください。
 ActivityId:12345678-1234-1234-1234-123456789abc"
 
 Azure Cosmos Emulator で利用可能なコンテナーの数を変更する手順は次のとおりです。
@@ -496,7 +495,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 新しいバージョンのエミュレーターをインストールしてエラーが発生している場合は、データをリセットしていることを確認します。 システム トレイの [Azure Cosmos Emulator] アイコンを右クリックし、[Reset Data]\(データのリセット\) をクリックすると、データをリセットできます。 それでもエラーが解消しない場合には、エミュレーターを (旧バージョンがあれば、それも含めて) アンインストールし、"C:\Program files\Azure Cosmos DB Emulator" ディレクトリを削除してから、エミュレーターを再インストールします。 手順については、「[ローカル エミュレーターのアンインストール](#uninstall)」をご覧ください。
 
-- Azure Cosmos Emulator がクラッシュした場合には、%LOCALAPPDATA%\CrashDumps フォルダーからダンプ ファイルを収集し、圧縮したうえでメールに添付して [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) にお送りください。
+- Azure Cosmos Emulator がクラッシュした場合には、"%LOCALAPPDATA%\CrashDumps" フォルダーからダンプ ファイルを収集し、圧縮したうえで、[Azure portal](https://portal.azure.com) からサポート チケットを開いてください。
 
 - `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` にクラッシュが発生した場合、パフォーマンス カウンターが破損していることを示す兆候である可能性が考えられます。 この問題は通常、管理者のコマンド プロンプトから次のコマンドを実行すると解消します。
 
@@ -504,7 +503,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
   lodctr /R
    ```
 
-- 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) への電子メールに添付します。
+- 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[Azure portal](https://portal.azure.com) からサポート チケットを開いてください。
 
 - "**サービス利用不可**" というメッセージが表示された場合、エミュレーターがネットワーク スタックの初期化に失敗している可能性があります。 Pulse Secure クライアントまたは Juniper Networks クライアントのネットワーク フィルター ドライバーが問題の原因である可能性があるため、これらのクライアントがインストールされているかどうかを確認してください。 通常、サード パーティのネットワーク フィルター ドライバーをアンインストールすると、問題が解決されます。 このほか、/DisableRIO オプションを指定してエミュレーターを起動する方法もあります。このオプションを使うと、エミュレーターのネットワーク通信が通常の Winsock に切り替わります。 
 
@@ -515,13 +514,13 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.Cosmos.Emulator.exe /shutdown`) プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
+2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown` プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. `%ProgramFiles%\Azure Cosmos DB Emulator` に移動し、docdbemulator_000001.etl ファイルを見つけます。
-7. デバッグのために、再現手順と共に .etl ファイルを [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に送付します。
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. `%ProgramFiles%\Azure Cosmos DB Emulator` に移動し、docdbemulator_000001.etl ファイルを見つけます。
+8. [Azure portal](https://portal.azure.com) でサポート チケットを開き、再現手順と共に .etl ファイルを追加します。
 
 ### <a id="uninstall"></a>ローカル エミュレーターのアンインストール
 

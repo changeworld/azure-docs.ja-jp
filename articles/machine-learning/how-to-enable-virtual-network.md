@@ -145,7 +145,7 @@ Machine Learning コンピューティングは、現在、Azure Batch サービ
 
 - インターネットに向かう全ポートのアウトバウンド トラフィック。
 
-- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の__サービス タグ__からの、ポート 44224 で受信するインバウンド TCP トラフィック。
+- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
 
 Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が拒否された場合は、コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
 
@@ -166,15 +166,15 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - 次の項目へのアウトバウンド トラフィックを制限します。
    - Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の __サービス タグ__ を使用)
    - Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の __サービス タグ__ を使用)
-   - Azure Machine Learning (__AzureMachineLearning__ の__サービス タグ__を使用)
-   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の__サービス タグ__を使用)
+   - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
+   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の __サービス タグ__ を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
 [![Machine Learning コンピューティングのアウトバウンド NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の__サービス タグ__も使用する必要があります。
+> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の __サービス タグ__ も使用する必要があります。
 >
 > この構成は、トレーニング スクリプトの一部として、以下のスニペットに似たコードを使用している場合に必要です。
 >
@@ -287,7 +287,7 @@ except ComputeTargetException:
 > [!div class="checklist"]
 > * 仮想ネットワークは Azure Machine Learning のワークスペースと同じサブスクリプションとリージョンになければなりません。
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Databricks クラスターと同じ仮想ネットワークに存在する必要があります。
-> * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された__既定の__サブネットも必要です。
+> * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された __既定の__ サブネットも必要です。
 
 仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
 
@@ -398,7 +398,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 既定で、AKS デプロイにはパブリック IP アドレスが割り当てられます。 仮想ネットワーク内で AKS を使用する場合は、代わりにプライベート IP アドレスを使用できます。 プライベート IP アドレスには、仮想ネットワークまたは結合されたネットワーク内からのみアクセスできます。
 
-プライベート IP アドレスを有効にするには、_内部ロード バランサー_を使用するように AKS を構成します。 
+プライベート IP アドレスを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
 
 > [!IMPORTANT]
 > Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
@@ -466,7 +466,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 ```
 
 > [!NOTE]
-> 現時点では、既存のクラスターに対して__アタッチ__操作を実行しているときにロード バランサーを構成することはできません。 最初にクラスターをアタッチしてから、更新操作を実行してロード バランサーを変更する必要があります。
+> 現時点では、既存のクラスターに対して __アタッチ__ 操作を実行しているときにロード バランサーを構成することはできません。 最初にクラスターをアタッチしてから、更新操作を実行してロード バランサーを変更する必要があります。
 
 AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
 
@@ -482,7 +482,7 @@ Azure Firewall を使用する場合は、次のアドレスとの間で送受�
 - `mlworkspace.azure.ai`
 - `*.aether.ms`
 
-ルールを追加するときは、__プロトコル__を任意に、ポートを `*` に設定します。
+ルールを追加するときは、__プロトコル__ を任意に、ポートを `*` に設定します。
 
 ネットワーク ルールの構成の詳細については、「[Azure Firewall のデプロイと構成](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)」を参照してください。
 

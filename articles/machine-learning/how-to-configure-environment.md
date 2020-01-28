@@ -264,7 +264,7 @@ Visual Studio Code は、[Visual Studio マーケットプレース](https://mar
 1. あらゆる種類の Python 開発に Visual Studio Code を使用する方法については、「[VSCode での Python の使用](https://code.visualstudio.com/docs/python/python-tutorial)」を参照してください。
 
     - SDK を含む SDK Python 環境を選択するには、VS Code を開いてから、Ctrl+Shift+P キー (Linux と Windows) または Command+Shift+P キー (Mac) を選択します。
-        - __コマンド パレット__が開きます。
+        - __コマンド パレット__ が開きます。
 
     - 「__Python:Select Interpreter__」と入力した後、適切な環境を選択します。
 

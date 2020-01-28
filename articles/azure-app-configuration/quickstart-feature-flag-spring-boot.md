@@ -3,8 +3,7 @@ title: Spring Boot に機能フラグを追加するためのクイックスタ�
 description: Spring Boot アプリに機能フラグを追加し、Azure App Configuration で管理するためのクイックスタートです。
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184958"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310069"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -41,20 +40,20 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
     | Key | State |
     |---|---|
-    | Beta | オフ |
+    | ベータ | Off |
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot アプリを作成する
 
 [Spring Initializr](https://start.spring.io/) を使用して、新しい Spring Boot プロジェクトを作成します。
 
-1. [https://www.microsoft.com](<https://start.spring.io/>) を参照します。
+1. <https://start.spring.io/> を参照します。
 
 2. 次のオプションを指定します。
 
    - **Java** で **Maven** プロジェクトを生成します。
    - **Spring Boot** のバージョンとして、2.0 以降を指定します。
    - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
-   - **Web** 依存関係を追加します。
+   - **Spring Web** の依存関係を追加します。
 
 3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
 
@@ -68,12 +67,12 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
-1. アプリの resources ディレクトリにある `bootstrap.properties` を開き、そのファイルに以下の行を追加します。 App Configuration 情報を追加します。
+1. アプリの _resources_ ディレクトリの _bootstrap.properties_ を開きます。 _bootstrap.properties_ が存在しない場合は作成します。 次の行をファイルに追加します。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. 構成ストアの App Configuration ポータルで、[アクセス キー] に移動します。 [読み取り専用キー] タブを選択します。このタブで、いずれかの接続文字列の値をコピーし、`APP_CONFIGURATION_CONNECTION_STRING` という変数名で、新しい環境変数として追加します。
+1. 構成ストアの App Configuration ポータルで、[アクセス キー] に移動します。 [読み取り専用キー] タブを選択します。このタブで、いずれかの接続文字列の値をコピーし、`APP_CONFIGURATION_CONNECTION_STRING` という変数名で、新しい環境変数として追加します。
 
-3. メイン アプリケーションの Java ファイルを開き、`@EnableConfigurationProperties` を追加してこの機能を有効にします。
+1. メイン アプリケーションの Java ファイルを開き、`@EnableConfigurationProperties` を追加してこの機能を有効にします。
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-5. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。 次の行を追加します。
+1. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。 次の行を追加します。
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
     ```
 
-6. CSS という名前の新しいフォルダーを static 下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。 次の行を追加します。
+1. CSS という名前の新しいフォルダーを static 下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。 次の行を追加します。
 
     ```css
     html {
@@ -234,17 +252,17 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
     | Key | State |
     |---|---|
-    | Beta | On |
+    | ベータ | On |
 
 4. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して Spring Boot Web アプリの機能を管理しました。
 

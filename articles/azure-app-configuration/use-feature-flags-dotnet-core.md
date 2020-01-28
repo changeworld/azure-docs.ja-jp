@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798375"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121252"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "67798375"
 
 「[クイック スタート: ASP.NET Core アプリに機能フラグを追加する](./quickstart-feature-flag-aspnet-core.md)」では、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、それらの方法についてより詳細に説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2091410)をご覧ください。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリケーションの主要部分に機能フラグを追加して、機能の可用性を制御します。
@@ -172,12 +172,12 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>機能フラグのチェック
 
-機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 例:
+機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 次に例を示します。
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -254,7 +254,7 @@ MVC ビューでは、`<feature>` タグを使用して、機能フラグが有�
 
 ## <a name="mvc-filters"></a>MVC フィルター
 
-MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下のコードは、`SomeMvcFilter` という名前の MVC フィルターを追加します。 このフィルターは、`FeatureA` が有効になっている場合のみ、MVC パイプライン内でトリガーされます。
+MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下のコードは、`SomeMvcFilter` という名前の MVC フィルターを追加します。 このフィルターは、`FeatureA` が有効になっている場合のみ、MVC パイプライン内でトリガーされます。 この機能は `IAsyncActionFilter` に制限されます。 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -267,16 +267,6 @@ public void ConfigureServices(IServiceCollection services)
         options.Filters.AddForFeature<SomeMvcFilter>(nameof(MyFeatureFlags.FeatureA));
     });
 }
-```
-
-## <a name="routes"></a>Routes
-
-機能フラグを使用して、ルートを動的に公開することができます。 以下のコードは、`FeatureA` が有効になっている場合にのみ、`Beta` を既定のコントローラーとして設定するルートを追加します。
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
 ```
 
 ## <a name="middleware"></a>ミドルウェア
@@ -295,7 +285,7 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、`Microsoft.FeatureManagement` ライブラリを使用して ASP.NET Core アプリケーションで機能フラグを実装する方法を説明しました。 ASP.NET Core と App Configuration での機能管理サポートの詳細については、次のリソースをご覧ください。
 

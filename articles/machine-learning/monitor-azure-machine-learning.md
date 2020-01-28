@@ -96,7 +96,7 @@ Azure Machine Learning の次のログを構成できます。
 
 ## <a name="analyzing-log-data"></a>ログ データの分析
 
-Azure Monitor Log Analytics を使用するには、診断構成を作成して、__Log Analytics への情報の送信__を有効にする必要があります。 詳細については、「[構成](#configuration)」セクションを参照してください。
+Azure Monitor Log Analytics を使用するには、診断構成を作成して、__Log Analytics への情報の送信__ を有効にする必要があります。 詳細については、「[構成](#configuration)」セクションを参照してください。
 
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Machine Learning は、次のテーブルにデータを格納します。
 

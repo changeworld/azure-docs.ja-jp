@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907837"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512863"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -46,7 +46,7 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、[チュートリアル: Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
+このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、「[チュートリアル:Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
 
 ## <a name="ssl-certificates"></a>SSL 証明書の数
 
@@ -91,7 +91,7 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door Service 用のサービス プリンシパルを登録します。
 
 > [!NOTE]
-> このアクションは、テナントごとに **1 回**だけ実行する必要があります。
+> この操作はグローバル管理者のアクセス許可を必要とし、テナントごとに **1 回**だけ実行する必要があります。
 
 1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
@@ -147,7 +147,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | Type  | 値                 |
+| Name            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -267,7 +267,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
     いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476953"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263950"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を取り付ける
 
@@ -50,7 +50,7 @@ ms.locfileid: "66476953"
 - セットアップを行う予定の現場に以下のものがあることを確認します。
     - 独立した電源からの標準 AC 電源
 
-        - または -
+        \- または -
     - 無停電電源装置 (UPS) を備えたラック配電ユニット (PDU)
     - デバイスを取り付ける予定のラックの、空いている 1 つの 1U スロット
 
@@ -154,21 +154,10 @@ ms.locfileid: "66476953"
 
     ![スラム ラッチの掛け外し](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
-### <a name="route-the-cables"></a>ケーブルの整理
-
-> [!NOTE]
->  オプションのケーブル管理アーム (CMA) を注文しなかった場合には、レール キットに含まれる 2 本のフック & ループ ストラップを使ってケーブルをシステムの後ろにまとめてください。
-
-1. ラックの両方のフランジの内側に、CMA の外部ブラケットがあることを確認します。
-2. ケーブルを引っ張ってシステム コネクタ近辺から左右に持っていき、軽く束ねます。
-3. システムの左右それぞれの CMA 外部ブラケットに設けてある穴にフック & ループ ストラップを通し、ケーブルの束を固定します。
-
-
-    ![ケーブルの整理](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>デバイスをケーブル接続する
 
-以降の手順では、Data Box Edge デバイスの電源とネットワークのケーブルを接続する方法を説明します。
+ケーブルを配備し、デバイスを接続します。 以降の手順では、Data Box Edge デバイスの電源とネットワークのケーブルを接続する方法を説明します。
 
 デバイスのケーブル接続を開始する前に、次の前提条件を満たす必要があります。
 
@@ -222,7 +211,7 @@ Data Box Edge デバイスで:
     - ポート 2 を接続する場合は、RJ-45 ネットワーク ケーブルを使用します。
     - 10/25 GbE ネットワーク インターフェイスの場合は、SFP+ 銅線ケーブルを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Data Box Edge に関する次のような作業の方法について説明しました。
 
