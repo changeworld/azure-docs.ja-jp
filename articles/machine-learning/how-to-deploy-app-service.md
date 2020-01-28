@@ -242,7 +242,7 @@ print(package.location)
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-このコマンドでは、`<app-name>.azurewebsites.net` というホスト名のような情報が返されます。 この値は、サービスの__ベース URL__ の一部として使用します。
+このコマンドでは、`<app-name>.azurewebsites.net` というホスト名のような情報が返されます。 この値は、サービスの __ベース URL__ の一部として使用します。
 
 ## <a name="use-the-web-app"></a>Web アプリを使用する
 
