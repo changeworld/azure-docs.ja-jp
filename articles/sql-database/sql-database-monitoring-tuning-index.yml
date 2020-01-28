@@ -10,13 +10,13 @@ metadata:
   ms.collection: performance
   author: CarlRabeler
   ms.author: carlrab
-  ms.date: 01/24/2020
-  ms.openlocfilehash: 237e9dccb84948b9d60ba6d54367d538b90e1d55
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 01/25/2020
+  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
+  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76715222"
+  ms.lasthandoff: 01/26/2020
+  ms.locfileid: "76756625"
 landingContent:
 - title: 監視とパフォーマンスのチューニングについて
   linkLists:
@@ -56,7 +56,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure portal で人工知能を使用してパフォーマンスを調整する
+    - text: AI を使用した監視と調整
       url: sql-database-performance.md
   - linkListType: concept
     links:
@@ -94,6 +94,8 @@ landingContent:
       url: sql-database-xevent-db-diff-from-svr.md
     - text: Hyperscale パフォーマンス診断
       url: sql-database-hyperscale-performance-diagnostics.md
+    - text: インテリジェントなクエリの処理
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: リソースのスケーリング
   linkLists:
   - linkListType: overview
