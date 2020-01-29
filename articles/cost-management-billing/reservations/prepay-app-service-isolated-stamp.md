@@ -17,7 +17,7 @@ ms.locfileid: "75986855"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated 印紙税のコストの節約
 
-3 年分のスタンプ使用の予約をコミットすることで、Azure App Service Isolated スタンプにかかるコストを節約でます。 Isolated スタンプ料金の予約容量を購入するには、スタンプがデプロイされる Azure リージョンと、購入するスタンプ数を選択する必要があります。
+3 年分のスタンプ使用の予約をコミットすることで、Azure App Service Isolated スタンプにかかるコストを節約できます。 Isolated スタンプ料金の予約容量を購入するには、スタンプがデプロイされる Azure リージョンと、購入するスタンプ数を選択する必要があります。
 
 予約を購入すると、予約の属性に一致する Isolated スタンプ料金の使用状況は従量課金制で課金されなくなります。 予約は、予約容量のスコープとリージョンに一致する Isolated スタンプ数に自動的に適用されます。 Isolated スタンプに予約を割り当てる必要はありません。 予約は worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
 
