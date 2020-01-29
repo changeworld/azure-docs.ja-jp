@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: 複数のテナント (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: カスタマー マネージド キー (CMK) の設定
+      href: customer-managed-keys.md
     - name: アラートからのインシデントの作成
       href: create-incidents-from-alerts.md
     - name: 検出

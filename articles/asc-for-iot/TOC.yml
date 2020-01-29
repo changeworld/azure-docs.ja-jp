@@ -18,7 +18,7 @@
           href: iot-hub-integration.md
         - name: セキュリティ エージェント
           href: security-agents.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: IoT Hub で Azure Security Center for IoT をオンボードする
@@ -37,6 +37,8 @@
       href: concept-security-module.md
     - name: セキュリティのアラート
       href: concept-security-alerts.md
+    - name: カスタマイズ可能なセキュリティ アラート
+      href: concept-customizable-security-alerts.md
     - name: セキュリティに関する推奨事項
       href: concept-recommendations.md
     - name: ベースライン
@@ -45,7 +47,7 @@
       href: event-aggregation.md
     - name: 価格と関連コスト
       href: concept-pricing.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: デプロイが推奨されるエージェント
       items:

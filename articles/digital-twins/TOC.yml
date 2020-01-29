@@ -4,7 +4,7 @@
   items:
     - name: Azure Digital Twins について
       href: about-digital-twins.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 使用可能な部屋を確認する
@@ -33,9 +33,9 @@
       href: concepts-events-routing.md
     - name: パブリック プレビューのサービスの制限
       href: concepts-service-limits.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: セキュリティのベスト プラクティス
+        - name: セキュリティの運用方法
           href: security-best-practices.md
         - name: ロールベースのアクセス制御
           href: security-role-based-access-control.md
@@ -43,7 +43,7 @@
           href: security-create-manage-role-assignments.md
         - name: 管理 API の認証
           href: security-authenticating-apis.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: マルチテナント アプリケーションの有効化
       href: how-to-multitenant-applications.md
@@ -73,6 +73,8 @@
       href: reference-user-defined-functions-client-library.md
 - name: リソース
   items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 'C# 用 Azure Digital Twins サンプル (.NET)'
       href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
     - name: Azure Digital Twins の REST API
@@ -93,3 +95,31 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: ビデオ
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+- name: 関連項目
+  items:
+    - name: ソリューション
+      items:
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: マップ
+          href: /azure/azure-maps
+        - name: サービス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge ソリューション
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

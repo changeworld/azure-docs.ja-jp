@@ -4,7 +4,7 @@
   items:
     - name: Network Watcher について
       href: network-watcher-monitoring-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: VM トラフィック フィルターに関する問題を診断する - ポータル
@@ -41,7 +41,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: ロールベースのアクセス制御のアクセス許可
       href: required-rbac-permissions.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Network Watcher を構成する
       href: network-watcher-create.md
@@ -61,7 +61,7 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: 送信接続に関する問題を診断する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
@@ -73,7 +73,7 @@
           items:
             - name: パケット キャプチャを管理する
               items:
-                - name: Azure ポータル
+                - name: Azure portal
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resoure Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
         - name: NSG フロー ログ ストレージ BLOB の削除
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG フロー ログの分析
@@ -134,7 +136,7 @@
           href: network-watcher-nsg-auditing-powershell.md
     - name: VPN ゲートウェイと接続を診断する
       items:
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md

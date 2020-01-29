@@ -2,10 +2,14 @@
   items:
     - name: Linux SQL Server VM について
       href: sql-server-linux-virtual-machines-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: SQL VM の作成 - ポータル
       href: provision-sql-server-linux-virtual-machine.md
+- name: チュートリアル
+  items:
+    - name: STONITH を使用した Azure RHEL VM 可用性グループの設定
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -20,7 +24,7 @@
       href: /rest/api/
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: sql-server-linux-faq.md
     - name: SQL Server on Linux のドキュメント
       href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
@@ -30,7 +34,7 @@
       href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
-    - name: SQL Server Tools
+    - name: SQL Server のツール
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

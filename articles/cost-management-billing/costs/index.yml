@@ -9,14 +9,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.manager: dougeby
-  ms.date: 12/18/2019
-  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
-  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 274d4f6b88923fc0c6d3cda03a4ffa73535e13b1
+  ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/15/2020
-  ms.locfileid: "75983224"
+  ms.lasthandoff: 01/28/2020
+  ms.locfileid: "76769650"
 landingContent:
 - title: Cost Management について
   linkLists:
@@ -32,6 +31,10 @@ landingContent:
       url: understand-cost-mgt-data.md
     - text: スコープを理解して使用する
       url: understand-work-scopes.md
+  - linkListType: video
+    links:
+    - text: Azure Cost Management のビデオ
+      url: https://www.youtube.com/c/AzureCostManagement
 - title: Azure のコストの分析と管理
   linkLists:
   - linkListType: quickstart
@@ -58,14 +61,6 @@ landingContent:
       url: get-started-partners.md
     - text: Power BI Desktop を使用して接続する
       url: /power-bi/desktop-connect-azure-cost-management
-- title: AWS のコストの分析と管理
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: AWS 統合の設定と構成
-      url: aws-integration-set-up-configure.md
-    - text: AWS のコストと使用量の管理
-      url: aws-integration-manage.md
 - title: Cost Management API
   linkLists:
   - linkListType: concept
@@ -82,3 +77,19 @@ landingContent:
       url: /azure/templates/microsoft.consumption/budgets
     - text: Cost Management REST API のサンプル
       url: https://github.com/Azure-Samples/Cost-Management-Samples
+- title: 最新の機能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 毎月の更新プログラム
+      url: https://azure.microsoft.com/blog/tag/cost-management/
+    - text: 機能更新プログラム
+      url: https://azure.microsoft.com/updates/?product=cost-management
+- title: AWS のコストの分析と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS 統合の設定と構成
+      url: aws-integration-set-up-configure.md
+    - text: AWS のコストと使用量の管理
+      url: aws-integration-manage.md

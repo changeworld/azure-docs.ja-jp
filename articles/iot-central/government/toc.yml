@@ -20,7 +20,7 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: 水質監視の参照アーキテクチャ
       href: concepts-waterqualitymonitoring-architecture.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Dynamics 365 フィールド サービスを使用したアプリの接続
       href: how-to-configure-connected-field-services.md
@@ -100,7 +100,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge ソリューション
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -108,6 +108,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 顧客データ要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: サポートされているブラウザー

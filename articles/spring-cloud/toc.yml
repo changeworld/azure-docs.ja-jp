@@ -34,8 +34,6 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: アプリケーションを Azure MySQL にバインドする
       href: spring-cloud-tutorial-bind-mysql.md
-    - name: Jenkins と Azure CLI を使用して Azure Spring Cloud にアプリをデプロイする
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: 概念
   items:
     - name: Azure Spring Cloud のクォータと制限について
@@ -56,10 +54,18 @@
       href: diagnostic-services.md
     - name: Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
       href: spring-cloud-howto-log-streaming.md
-    - name: Azure Spring Cloud で CI/CD パイプラインを自動化する
-      href: spring-cloud-howto-cicd.md
     - name: Azure Spring Cloud で永続ストレージを使用する
       href: spring-cloud-howto-persistent-storage.md
+- name: Azure Spring Cloud への DevOps デプロイ
+  items:
+    - name: Azure DevOps を使用した CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: GitHub Actions を使用した CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
+      href: spring-cloud-github-actions-key-vault.md
+    - name: Jenkins での CI/CD
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン

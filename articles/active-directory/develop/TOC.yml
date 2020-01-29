@@ -404,6 +404,8 @@
               href: active-directory-optional-claims.md
             - name: トークンの有効期間の構成
               href: active-directory-configurable-token-lifetimes.md
+            - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: アプリケーションの構成
           items:
             - name: 新しい Azure portal アプリの登録トレーニング ガイド

@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: 追加のサブスクリプションを作成する
           href: create-subscription.md
+        - name: CSP サブスクリプションの移動
+          href: transfer-subscriptions-subscribers-csp.md
         - name: サブスクリプション情報のエクスポート
           href: export-subscriptions.md
     - name: Enterprise Agreement サブスクリプションの管理

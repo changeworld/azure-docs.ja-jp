@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Apache Ambari の古いアラート
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Apache Ambari のディレクトリに関するアラート
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS のトラブルシューティング
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Apache Hadoop YARN のトラブルシューティング
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Yarn ログからの無効な BCFile エラー
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Data Lake Store ファイルのトラブルシューティング
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Apache Ambari のディレクトリに関するアラート
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: サービス開始時のポートの競合
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: 概要
@@ -870,5 +874,5 @@
           items:
             - name: ESP 認証の問題
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: ESP を使用して Zeppelin にサインインできない
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: DomainNotFound でクラスターの作成が失敗する
+              href: ./domain-joined/troubleshoot-domainnotfound.md
