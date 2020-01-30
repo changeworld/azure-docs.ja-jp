@@ -34,7 +34,7 @@ Azure Key Vault は、お使いのアプリケーション、サービス、IT �
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Git](https://git-scm.com/downloads)。
+* [Git](https://git-scm.com/downloads).
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * [Azure CLI 2.0 以降](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)または Azure Cloud Shell。
 
