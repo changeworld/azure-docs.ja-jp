@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple 8000 シリーズ デバイスのバッテリ交換 | Microsoft Docs
+title: Microsoft Azure StorSimple 8000 シリーズ デバイスのバッテリ交換
 description: StorSimple デバイスのバックアップ バッテリ モジュールの取り外し、交換、メンテナンスの方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693746"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276903"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple デバイスのバックアップ バッテリ モジュールを交換する
 
@@ -47,7 +39,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
    
     **図 1** PCM およびコントローラー モジュールが示されているプライマリ デバイスの背面
    
-   | Label | 説明 |
+   | Label | [説明] |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -60,7 +52,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
    
     **図 2** モニタリング インジケーター LED が示されている PCM の背面
    
-   | Label | 説明 |
+   | Label | [説明] |
    |:--- |:--- |
    | 1 |AC 電源障害 |
    | 2 |ファン障害 |
@@ -106,6 +98,6 @@ Azure Portal の **[監視]** ブレードの **[ハードウェアの正常性]
 > [!IMPORTANT]
 > 国または地域の規定に従って、故障したバッテリを廃棄します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
 

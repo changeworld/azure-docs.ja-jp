@@ -2,14 +2,14 @@
 title: コンテナー インスタンスのセキュリティ
 description: Azure Container Instances のイメージとシークレットをセキュリティで保護する推奨事項、およびコンテナー プラットフォームに関する一般的なセキュリティの考慮事項です
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481696"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260499"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -23,13 +23,17 @@ ms.locfileid: "74481696"
 
 ### <a name="use-a-private-registry"></a>プライベート レジストリを使用する
 
-コンテナーのイメージは、1 つ以上のリポジトリに格納されています。 これらのリポジトリは、[Docker Hub](https://hub.docker.com) などのパブリック レジストリに属していても、プライベート レジストリに属していてもかまいません。 プライベート レジストリには [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/) があります。これは、オンプレミスまたは仮想プライベート クラウドにインストールできます。 また、[Azure Container Registry](../container-registry/container-registry-intro.md) などの、クラウドベースのプライベート コンテナー レジストリ サービスを使うこともできます。 
+コンテナーのイメージは、1 つ以上のリポジトリに格納されています。 これらのリポジトリは、[Docker Hub](https://hub.docker.com) などのパブリック レジストリに属していても、プライベート レジストリに属していてもかまいません。 プライベート レジストリには [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/) があります。これは、オンプレミスまたは仮想プライベート クラウドにインストールできます。 また、[Azure Container Registry](../container-registry/container-registry-intro.md) などの、クラウドベースのプライベート コンテナー レジストリ サービスを使うこともできます。 
 
-パブリックに使用可能なコンテナー イメージでは、セキュリティは保証されません。 コンテナー イメージは、複数のソフトウェア レイヤーから構成され、各ソフトウェア レイヤーが脆弱である可能性があります。 攻撃の脅威を減らすには、Azure Container Registry や Docker Trusted Registry などのプライベート レジストリにイメージを格納して、そこから取得する必要があります。 Azure Container Registry では、マネージド プライベート レジストリが提供されるだけでなく、基本認証フロー用に Azure Active Directory による[サービス プリンシパルに基づく認証](../container-registry/container-registry-authentication.md)がサポートされています。 この認証には、読み取り専用 (プル)、書き込み (プッシュ)、所有者のアクセス許可を対象としたロールベースのアクセスが含まれます。
+パブリックに使用可能なコンテナー イメージでは、セキュリティは保証されません。 コンテナー イメージは、複数のソフトウェア レイヤーから構成され、各ソフトウェア レイヤーが脆弱である可能性があります。 攻撃の脅威を減らすには、Azure Container Registry や Docker Trusted Registry などのプライベート レジストリにイメージを格納して、そこから取得する必要があります。 Azure Container Registry では、マネージド プライベート レジストリが提供されるだけでなく、基本認証フロー用に Azure Active Directory による[サービス プリンシパルに基づく認証](../container-registry/container-registry-authentication.md)がサポートされています。 この認証には、読み取り専用 (プル)、書き込み (プッシュ)、およびその他のアクセス許可を対象としたロールベースのアクセスが含まれます。
 
 ### <a name="monitor-and-scan-container-images"></a>コンテナー イメージを監視してスキャンする
 
-[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) や [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) などのセキュリティの監視とスキャンのソリューションを、Azure Marketplace から入手できます。 それらを使ってプライベート レジストリ内のコンテナー イメージをスキャンし、潜在的な脆弱性を識別できます。 さまざまなソリューションのスキャンの深さを理解することが重要です。 
+ソリューションを利用して、プライベート レジストリ内のコンテナー イメージをスキャンし、潜在的な脆弱性を識別します。 さまざまなソリューションの脅威検出の深さを理解することが重要です。
+
+たとえば、Azure Container Registry を必要に応じて [Azure Security Center と統合](../security-center/azure-container-registry-integration.md)して、レジストリにプッシュされたすべての Linux イメージを自動的にスキャンします。 Azure Security Center の統合 Qualys スキャナーにより、イメージの脆弱性が検出され、それらが分類され、修復のガイダンスが提供されます。
+
+[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) や [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) などのセキュリティの監視とイメージ スキャンのソリューションは、Azure Marketplace からも入手できます。  
 
 ### <a name="protect-credentials"></a>資格情報を保護する
 
@@ -90,13 +94,13 @@ ms.locfileid: "74481696"
 
 使用されていない、または必要のないプロセスや特権をコンテナー ランタイムから削除することにより、潜在的な攻撃面を最小化することもできます。 特権を持つコンテナーは、ルートとして実行されます。 悪意のあるユーザーまたはワークロードが特権のあるコンテナー内に紛れ込むと、そのコンテナーはルートとしてそのシステム上で実行されます。
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>コンテナーがアクセスまたは実行を許可されたファイルと実行可能ファイルをホワイトリストに登録する 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>コンテナーがアクセスまたは実行を許可されたファイルと実行可能ファイルを事前に承認する 
 
-変数または未知の要素の数を減らすことは、安定した信頼性の高い環境を維持するのに役立ちます。 コンテナーでアクセスまたは実行できるものを、事前に承認されているかホワイトリストに登録されているファイルおよび実行可能ファイルだけに制限することは、リスクにさらされる機会を制限する実績のある方法です。  
+変数または未知の要素の数を減らすことは、安定した信頼性の高い環境を維持するのに役立ちます。 コンテナーでアクセスまたは実行できるものを、事前に承認されているかセーフリストに登録されているファイルおよび実行可能ファイルだけに制限することは、リスクにさらされる機会を制限する実績のある方法です。  
 
-最初から実装しておけば、ホワイトリストの管理ははるかに簡単になります。 アプリケーションの正常な機能に必要なファイルと実行可能ファイルがわかっていれば、ホワイトリストで制御と管理の手段が提供されます。 
+最初から実装しておけば、セーフリストの管理がはるかに簡単になります。 アプリケーションの正常な機能に必要なファイルと実行可能ファイルがわかっていれば、セーフリストで制御と管理の手段が提供されます。 
 
-ホワイトリストでは、攻撃面が減るだけでなく、異常に対するベースラインが提供され、"迷惑な隣人" やコンテナー ブレイクアウトのシナリオのユース ケースも防止されます。 
+セーフリストでは、攻撃面が減るだけでなく、異常に対するベースラインが提供され、"迷惑な隣人" やコンテナー ブレイクアウトのシナリオのユース ケースも防止されます。 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>実行中のコンテナーでネットワークのセグメント化を適用する  
 
@@ -108,9 +112,9 @@ ms.locfileid: "74481696"
 
 他の IT 環境と同様、コンテナー エコシステムに対するアクティビティおよびユーザー アクセスを常に監視し、疑わしいアクティビティや悪意のあるアクティビティをすばやく識別する必要があります。 Azure では、次のようなコンテナー監視ソリューションが提供されます。
 
-* Azure Kubernetes Service (AKS) 上でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスを監視するための[コンテナー向け Azure Monitor](../azure-monitor/insights/container-insights-overview.md)。 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 
+* [コンテナー向け Azure Monitor](../azure-monitor/insights/container-insights-overview.md) では、Azure Kubernetes Service (AKS) 上でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスが監視されます。 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 
 
-* [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)を使用すると、他の Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。 例:
+* [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)を使用すると、他の Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。 次に例を示します。
 
   * コンテナーで使用されるコマンドを示す詳細な監査情報を確認します。 
   * Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行います。  
@@ -125,14 +129,18 @@ ms.locfileid: "74481696"
 
 [Azure Monitor](../azure-monitor/overview.md) は、Azure サービスのコアな監視用に、メトリック、アクティビティ ログ、および診断ログを収集します。 たとえば、アクティビティ ログでは、新しいリソースが作成または変更されたときに通知するよう設定できます。 
 
-メトリックでは、各種リソースはもちろんのこと、仮想マシン内のオペレーティング システムについても、パフォーマンス統計情報を収集できます。 Azure Portal で、いずれかのエクスプローラーを使用してこのデータを表示し、これらのメトリックに基づいてアラートを作成することができます。 Azure Monitor では非常に高速なメトリックのパイプライン (5 分から 1 分) が提供されるため、タイム クリティカルなアラートと通知に使用する必要があります。 
+  メトリックでは、各種リソースはもちろんのこと、仮想マシン内のオペレーティング システムについても、パフォーマンス統計情報を収集できます。 Azure Portal で、いずれかのエクスプローラーを使用してこのデータを表示し、これらのメトリックに基づいてアラートを作成することができます。 Azure Monitor では非常に高速なメトリックのパイプライン (5 分から 1 分) が提供されるため、タイム クリティカルなアラートと通知に使用する必要があります。 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>監査のためにコンテナー管理ユーザーのすべてのアクセスをログに記録する 
 
-コンテナー エコシステム、コンテナー レジストリ、およびコンテナー イメージへの管理アクセスの正確な監査証跡を維持します。 これらのログは、監査のために必要な場合があり、セキュリティ インシデント後の法的証拠として役に立ちます。 この目的を達成するには [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)を使用できます。 
+ご使用の Kubernetes クラスター、コンテナー レジストリ、およびコンテナー イメージを含むコンテナー エコシステムへの管理アクセスの正確な監査証跡を維持します。 これらのログは、監査のために必要な場合があり、セキュリティ インシデント後の法的証拠として役に立ちます。 Azure ソリューションには次のものがあります。
 
-## <a name="next-steps"></a>次の手順
+* クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Azure Security Center との統合](../security-center/azure-kubernetes-service-integration.md)
+* [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)
+* [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Security Center](../security-center/container-security.md) を使用して、コンテナー化された環境でリアルタイムの脅威検出を行う方法について詳しく学習します。
 
 * [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) および [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/) のソリューションによるコンテナーの脆弱性の管理について詳しく学習します。
-
-* [Azure でのコンテナー セキュリティ](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/)について詳しく学習します。

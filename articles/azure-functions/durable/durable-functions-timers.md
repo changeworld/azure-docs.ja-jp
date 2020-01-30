@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で持続的タ�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 463d5e6c253643c82935c82c7dee5996c8e44b5f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706117"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261485"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74706117"
 
 次の例は、実行を遅らせる持続的タイマーを使用する方法を示しています。 この例では、10 日間、請求の通知を毎日発行します。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -48,7 +48,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -63,6 +63,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
 > オーケストレーター関数の無限ループが発生しなようにしてください。 無限ループ シナリオを安全かつ効率的に実装する方法については、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)に関するページをご覧ください。
 
@@ -70,7 +72,7 @@ module.exports = df.orchestrator(function*(context) {
 
 この例は、持続的タイマーを使用して、タイムアウトを実装する方法を示しています。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,7 +106,7 @@ public static async Task<bool> Run(
 > [!NOTE]
 > 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -130,14 +132,16 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
-> コードでタイマーの完了を待たない場合は、`CancellationTokenSource` を使用して持続的タイマーをキャンセルするか (.NET)、返された `TimerTask` に対して `cancel()` を呼び出します (JavaScript)。 Durable Task Framework では、未処理のタスクすべてが完了するかキャンセルされるまで、オーケストレーションの状態は "完了" に変更されません。
+> コードでタイマーの完了を待たない場合、`CancellationTokenSource` を使用するか (.NET)、返された `TimerTask` で `cancel()` を呼び出し (JavaScript)、持続的タイマーをキャンセルします。 Durable Task Framework では、未処理のタスクすべてが完了するかキャンセルされるまで、オーケストレーションの状態は "完了" に変更されません。
 
 このキャンセル メカニズムは、進行中のアクティビティ関数またはサブオーケストレーションの実行は終了させません。 オーケストレーター関数が、単に結果を無視して、次に進めるようにするだけです。 関数アプリが従量課金プランを使用している場合は、アクティビティ関数を破棄しても、その関数によって消費される時間とメモリはすべて課金対象となります。 既定では、従量課金プランで実行されている関数のタイムアウトは、5 分に設定されています。 この制限を超えると、Azure Functions ホストは、すべての実行を停止し、ランナウェイ課金状況を回避するために、リサイクルされます。 [関数のタイムアウトは構成可能](../functions-host-json.md#functiontimeout)です。
 
 オーケストレーター関数でタイムアウトを実装する方法の詳細な例については、[人による操作とタイムアウト - 電話検証](durable-functions-phone-verification.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [外部イベントを発生させて処理する方法を確認する](durable-functions-external-events.md)

@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 7b23da81143a4ae66d9f25cd953c4a3952f27455
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678363"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277681"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
-*依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、依存関係呼び出しの時間、その失敗と成功、追加情報 (依存関係の名前など) が計測されます。 特定の依存関係呼び出しを調査し、要求や例外に関連付けることができます。
+"*依存関係*" は、アプリケーションによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、依存関係呼び出しの時間、その失敗と成功、追加情報 (依存関係の名前など) が計測されます。 特定の依存関係呼び出しを調査し、要求や例外に関連付けることができます。
 
 ## <a name="automatically-tracked-dependencies"></a>自動追跡された依存関係
 
@@ -189,9 +189,9 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 * 依存関係の呼び出しに失敗すると、"成功" フィールドが False に設定されます。 `DependencyTrackingTelemetryModule` から `ExceptionTelemetry` が報告されることはありません。 依存関係の完全なデータ モデルは[こちら](data-model-dependency-telemetry.md)で説明されています。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
-あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題報告は[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行います。
+あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [例外](../../azure-monitor/app/asp-net-exceptions.md)
 * [ユーザーとページのデータ](../../azure-monitor/app/javascript.md)

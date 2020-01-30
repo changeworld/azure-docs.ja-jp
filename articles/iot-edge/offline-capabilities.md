@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 951c81b2d65fe17f6e79dbdd699051ba43b86c49
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a057eac8d2a0114cb58f738277e3e9a8fed90672
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867390"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548664"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -52,24 +52,23 @@ IoT Edge 以外のデバイスのみを子デバイスとして追加できま�
 
 ## <a name="set-up-parent-and-child-devices"></a>親デバイスと子デバイスを設定する
 
-IoT Edge デバイスによってその拡張オフライン機能を子 IoT デバイスまで拡張するには、2 つの手順を完了する必要があります。 最初に、Azure portal で親子関係を宣言します。 次に、親デバイスとすべての子デバイスの間に信頼関係を作成した後、device-to-cloud 通信をゲートウェイとして親を経由するように構成します。 
+IoT Edge デバイスによってその拡張オフライン機能を子 IoT デバイスまで拡張するには、2 つの手順を完了する必要があります。 最初に、Azure portal で親子関係を宣言します。 次に、親デバイスとすべての子デバイスの間に信頼関係を作成した後、device-to-cloud 通信をゲートウェイとして親を経由するように構成します。
 
 ### <a name="assign-child-devices"></a>子のデバイスを割り当てる
 
-子デバイスには、同じ IoT Hub に登録されている IoT Edge 以外の任意のデバイスを指定できます。 親デバイスには複数の子デバイスを設定できますが、子デバイスの親は 1 つだけ設定できます。 エッジ デバイスに子デバイスを設定する方法には、Azure portal を使用する、Azure CLI を使用する、または IoT Hub サービス SDK を使用するという 3 つのオプションがあります。 
+子デバイスには、同じ IoT Hub に登録されている IoT Edge 以外の任意のデバイスを指定できます。 親デバイスには複数の子デバイスを設定できますが、子デバイスの親は 1 つだけ設定できます。 エッジ デバイスに子デバイスを設定する方法には、Azure portal を使用する、Azure CLI を使用する、または IoT Hub サービス SDK を使用するという 3 つのオプションがあります。
 
 次のセクションで、既存の IoT デバイスに対する IoT Hub での親/子の宣言方法の例を示します。 子デバイス用の新しい ID を作成する場合は、[Azure IoT Hub へのダウンストリーム デバイスの認証](how-to-authenticate-downstream-device.md)に関する記事で詳細を確認してください。
 
 #### <a name="option-1-iot-hub-portal"></a>オプション 1: IoT Hub ポータル
 
-新しいデバイスを作成するときに、親子関係を宣言できます。 または、既存のデバイスに対して、親 IoT Edge デバイスまたは子 IoT デバイスのデバイスの詳細ページから関係を宣言できます。 
+新しいデバイスを作成するときに、親子関係を宣言できます。 または、既存のデバイスに対して、親 IoT Edge デバイスまたは子 IoT デバイスのデバイスの詳細ページから関係を宣言できます。
 
    ![IoT Edge デバイスの詳細ページから子デバイスを管理する](./media/offline-capabilities/manage-child-devices.png)
 
-
 #### <a name="option-2-use-the-az-command-line-tool"></a>オプション 2:`az` コマンドライン ツールを使用する
 
-[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。 
+[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。
 
 ```shell
 # Set IoT Edge parent device
@@ -89,39 +88,39 @@ az iot hub device-identity add-children \
   --child-list $device_list \
   --hub-name replace-with-hub-name \
   --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name 
+  --subscription replace-with-sub-name
 ```
 
 [クエリ](../iot-hub/iot-hub-devguide-query-language.md)を変更して、デバイスのさまざまなサブセットを選択できます。 大量のデバイス セットを指定する場合、このコマンドは数秒かかる場合があります。
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>オプション 3:IoT Hub サービス SDK を使用する 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>オプション 3:IoT Hub サービス SDK を使用する
 
 最後に、C#、Java、または Node.js の IoT Hub サービス SDK を使用してプログラムで親子関係を管理できます。 ここに、C# SDK を使用した[子デバイスの割り当て例を](https://aka.ms/set-child-iot-device-c-sharp)があります。
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>親デバイスをゲートウェイとして設定する
 
-親/子関係は、透過的なゲートウェイと考えることができます。子デバイスは IoT Hub 内に独自の ID を持っていますが、クラウドでの通信はその親経由で行われます。 セキュリティで保護された通信では、親デバイスが信頼できるソースに由来していることを子デバイスで検証できる必要があります。 そうしないと、サードパーティによって親を偽装する悪意のあるデバイスが設定され、通信が傍受される可能性があります。 
+親/子関係は、透過的なゲートウェイと考えることができます。子デバイスは IoT Hub 内に独自の ID を持っていますが、クラウドでの通信はその親経由で行われます。 セキュリティで保護された通信では、親デバイスが信頼できるソースに由来していることを子デバイスで検証できる必要があります。 そうしないと、サードパーティによって親を偽装する悪意のあるデバイスが設定され、通信が傍受される可能性があります。
 
 この信頼関係を作成する 1 つの方法については、次の記事で詳しく説明されています。
 
 * [透過的なゲートウェイとして機能するように IoT Edge デバイスを構成](how-to-create-transparent-gateway.md)します。
 * [ダウンストリーム (子) デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>DNS サーバーの指定 
+## <a name="specify-dns-servers"></a>DNS サーバーの指定
 
 堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 DNS サーバーを IoT Edge に設定するには、トラブルシューティングの記事の「[Edge エージェント モジュールで継続的に "空の構成ファイル" が報告され、デバイスでモジュールが開始しない](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)」を参照してください。
 
 ## <a name="optional-offline-settings"></a>オプションのオフライン設定
 
-デバイスがオフラインになった場合は、接続が再び確立されるまで、すべての device-to-cloud メッセージが IoT Edge 親デバイスに格納されます。 オフライン メッセージの格納と転送は、IoT Edge ハブ モジュールによって管理されます。 長時間オフラインになる可能性があるデバイスでは、2 つの IoT Edge ハブ設定を構成することで、パフォーマンスを最適化します。 
+デバイスがオフラインになった場合は、接続が再び確立されるまで、すべての device-to-cloud メッセージが IoT Edge 親デバイスに格納されます。 オフライン メッセージの格納と転送は、IoT Edge ハブ モジュールによって管理されます。 長時間オフラインになる可能性があるデバイスでは、2 つの IoT Edge ハブ設定を構成することで、パフォーマンスを最適化します。
 
-最初に、デバイスが再接続されるまで IoT Edge ハブでメッセージが保持されるように、有効期限設定を大きくします。 次に、メッセージを格納するためのディスク領域をさらに追加します。 
+最初に、デバイスが再接続されるまで IoT Edge ハブでメッセージが保持されるように、有効期限設定を大きくします。 次に、メッセージを格納するためのディスク領域をさらに追加します。
 
 ### <a name="time-to-live"></a>Time to Live
 
-有効期限設定は、有効期限が切れる前にメッセージが配信されるのを待機できる時間の量 (秒単位) です。 既定値は 7200 秒 (2 時間) です。 最大値は、整数の変数の最大値 (約 20 億) によってのみ制限されます。 
+有効期限設定は、有効期限が切れる前にメッセージが配信されるのを待機できる時間の量 (秒単位) です。 既定値は 7200 秒 (2 時間) です。 最大値は、整数の変数の最大値 (約 20 億) によってのみ制限されます。
 
-この設定は、モジュール ツインに格納される、IoT Edge ハブの必須のプロパティです。 Azure portal で構成するか、デプロイ マニフェスト内に直接構成できます。 
+この設定は、モジュール ツインに格納される、IoT Edge ハブの必須のプロパティです。 Azure portal で構成するか、デプロイ マニフェスト内に直接構成できます。
 
 ```json
 "$edgeHub": {
@@ -141,7 +140,7 @@ az iot hub device-identity add-children \
 
 ## <a name="next-steps"></a>次のステップ
 
-親/子デバイス接続用の透過的なゲートウェイの設定方法の詳細を確認します。 
+親/子デバイス接続用の透過的なゲートウェイの設定方法の詳細を確認します。
 
 * [透過的なゲートウェイとして機能するように IoT Edge デバイスを構成](how-to-create-transparent-gateway.md)します。
 * [Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)

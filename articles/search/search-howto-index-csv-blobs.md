@@ -1,7 +1,7 @@
 ---
 title: CSV BLOB を検索する
 titleSuffix: Azure Cognitive Search
-description: delimitedText 解析モード (現在パブリック プレビュー段階) を使用して Azure BLOB ストレージから CSV を抽出し、インポートします。
+description: delimitedText 解析モードを使用して Azure BLOB ストレージから CSV を抽出し、インポートします。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,17 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2166e100f03f21c218618d19dc37ee70c6ab29ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113036"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122323"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search で delimitedText 解析モードと BLOB インデクサーを使用して CSV BLOB のインデックスを作成する方法 
-
-> [!IMPORTANT] 
-> delimitedText 解析モードは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点では、ポータルと .NET SDK によるサポートはありません。
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search で delimitedText 解析モードと BLOB インデクサーを使用して CSV BLOB のインデックスを作成する方法
 
 既定では、[Azure Cognitive Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
 
@@ -46,7 +43,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-`delimitedTextDelimiter` 構成設定を使用して区切り記号をカスタマイズできます。 例:
+`delimitedTextDelimiter` 構成設定を使用して区切り記号をカスタマイズできます。 次に例を示します。
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
@@ -63,7 +60,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 データソース: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -76,7 +73,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 インデクサー:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -87,6 +84,6 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search の品質向上にご協力ください
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure コグニティブ検索の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。
 

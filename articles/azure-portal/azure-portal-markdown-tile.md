@@ -3,18 +3,18 @@ title: Azure ダッシュボードでカスタムのマークダウン タイル
 description: マークダウン タイルを Azure ダッシュボードに追加して、静的コンテンツを表示する方法について説明します
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832679"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310715"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
@@ -36,7 +36,7 @@ ms.locfileid: "75832679"
 
    ![タイトルとサブタイトルの入力結果を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-1. マークダウン コンテンツを含めるオプションとして、 **[インライン編集]** または **[URL を使用してコンテンツを挿入する]** のいずれかのオプションを選択します。
+1. マークダウン コンテンツを含めるオプションとして、 **[インライン編集]** または **[URL を使用してコンテンツを挿入する]** のいずれかを選択します。
 
    - マークダウンを直接入力する場合は、 **[インライン編集]** を選択します。
 

@@ -4,15 +4,15 @@ description: Azure File Sync の一般的な問題をトラブルシューティ
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027786"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545043"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -41,8 +41,28 @@ installer.log をレビューして、インストールが失敗した原因を
 
 この問題を解決するには、Windows Server 2012 R2 以降を実行している別のドメイン コントローラーに PDC ロールを転送してから、同期エージェントをインストールします。
 
-<a id="server-registration-prerequisites"></a> **[サーバー登録] に"前提条件が見つからない" というメッセージが表示される**
+<a id="parameter-is-incorrect"></a>**Windows Server 2012 R2 でボリュームにアクセスできず、エラーが表示される:パラメーターが正しくありません**  
+Windows Server 2012 R2 でサーバー エンドポイントを作成した後、ボリュームにアクセスすると次のエラーが発生する:
 
+driveletter:\ にアクセスできません。  
+パラメーターが正しくありません。
+
+解決するには、Windows Server 2012 R2 の最新更新プログラムをインストールし、サーバーを再起動します。
+
+<a id="server-registration-missing-subscriptions"></a>**サーバー登録で一部の Azure サブスクリプションが一覧に表示されない**  
+ServerRegistration.exe を使用してサーバーを登録している場合、[Azure サブスクリプション] ドロップダウンをクリックしたとき、サブスクリプションが表示されません。
+
+この問題は、ServerRegistration.exe で現在、マルチテナント環境がサポートされていないために発生します。 この問題は、Azure File Sync エージェントの今後の更新で修正される予定です。
+
+この問題を回避するには、次の PowerShell コマンドを使用してサーバーを登録します。
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
+
+<a id="server-registration-prerequisites"></a> **[サーバー登録] に"前提条件が見つからない" というメッセージが表示される**  
 このメッセージは、Az または AzureRM PowerShell モジュールが PowerShell 5.1 にインストールされていない場合に表示されます。 
 
 > [!Note]  
@@ -304,6 +324,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | 予期しないエラーが発生したため、ファイルを同期できません。 | エラーが数日間継続して発生する場合は、サポート ケースを開いてください。 |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
+| 0x80070017 | -2147024873 | ERROR_CRC | CRC エラーが発生したため、ファイルを同期できません。 このエラーは、サーバー エンドポイントを削除する前に、階層化されたファイルがリコールされなかったか、ファイルが壊れている場合に発生することがあります。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照し、孤立状態の階層化されたファイルを削除してください。 孤立状態にあった階層化されたファイルを削除した後もエラーが解消されない場合、ボリュームで [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) を実行します。 |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 競合ファイルの最大数に達したため、ファイルを同期できません。 Azure File Sync は、1 つのファイルにつき 100 個の競合ファイルをサポートします。 ファイル競合の詳細については、Azure File Sync の[よく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) を参照してください。 | この問題を解決するには、競合ファイルの数を減らします。 競合ファイルの数が 100 個未満になると、ファイルは同期されます。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
@@ -435,6 +456,17 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 
 1. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
 2. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**ストレージ アカウントがロックされているため、同期できませんでした。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (10 進値)** | -2134364014 |
+| **エラー文字列** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **修復が必要か** | はい |
+
+このエラーは、ストレージ アカウントに読み取り専用の[リソース ロック](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)がある場合に発生します。 この問題を解決するには、ストレージ アカウント上の読み取り専用のリソース ロックを削除します。 
 
 <a id="-1906441138"></a>**同期データベースの問題により、同期が失敗しました。**  
 

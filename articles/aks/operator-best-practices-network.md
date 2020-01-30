@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
-ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614760"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549123"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -47,7 +47,7 @@ Azure CNI ネットワークを使用する場合、仮想ネットワーク リ
 
 AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。
 
-各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケール アップ イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。 Windows Server コンテナー (現在 AKS でプレビュー段階) を使用している場合、これらの追加のアドレス空間は特に重要です。これらのノード プールをアップグレードして最新のセキュリティ パッチを適用する必要があるためです。 Windows Server ノードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関する記事を参照してください。
+各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケールアウト イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。 Windows Server コンテナー (現在 AKS でプレビュー段階) を使用している場合、これらの追加のアドレス空間は特に重要です。これらのノード プールをアップグレードして最新のセキュリティ パッチを適用する必要があるためです。 Windows Server ノードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関する記事を参照してください。
 
 必要な IP アドレスを計算するには、[AKS での Azure CNI ネットワークの構成][advanced-networking]に関するページを参照してください。
 
@@ -160,7 +160,7 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 
 踏み台ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ネットワーク接続およびセキュリティに焦点を当てました。 Kubernetes におけるネットワークの基礎の詳細については、「[Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念][aks-concepts-network]」を参照してください。
 

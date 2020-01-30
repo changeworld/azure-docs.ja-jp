@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス | Microsoft Docs
+title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596458"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264697"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -84,7 +84,7 @@ Service Bus は "受信して削除" 操作のトランザクションをサポ�
 
 既定では、クライアントは 20 ミリ秒のバッチ間隔を使用します。 バッチ間隔を変更するには、メッセージング ファクトリを作成する前に [BatchFlushInterval][BatchFlushInterval] プロパティを設定します。 この設定は、このファクトリによって作成されるすべてのクライアントに影響します。
 
-バッチ処理を無効にするには、[BatchFlushInterval][BatchFlushInterval] プロパティを **TimeSpan.Zero** に設定します。 例:
+バッチ処理を無効にするには、[BatchFlushInterval][BatchFlushInterval] プロパティを **TimeSpan.Zero** に設定します。 次に例を示します。
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 
 この間隔中に発生した追加のストアの操作はバッチに追加されます。 バッチ処理ストア アクセスは**送信**操作と**完了**操作にのみ影響を与えます。受信操作には影響を与えません。 バッチ処理ストア アクセスはエンティティのプロパティです。 バッチ処理は、バッチ処理ストア アクセスが有効になっているすべてのエンティティで発生します。
 
-新しいキュー、トピック、サブスクリプションを作成すると、バッチ処理ストア アクセスは既定で有効になります。 バッチ処理ストア アクセスを無効にするには、エンティティを作成する前に [EnableBatchedOperations][EnableBatchedOperations] プロパティを **false** に設定します。 例:
+新しいキュー、トピック、サブスクリプションを作成すると、バッチ処理ストア アクセスは既定で有効になります。 バッチ処理ストア アクセスを無効にするには、エンティティを作成する前に [EnableBatchedOperations][EnableBatchedOperations] プロパティを **false** に設定します。 次に例を示します。
 
 ```csharp
 QueueDescription qd = new QueueDescription();

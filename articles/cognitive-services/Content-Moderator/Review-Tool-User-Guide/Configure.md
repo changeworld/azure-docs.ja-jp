@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757425"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169590"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
 
@@ -90,14 +90,14 @@ ms.locfileid: "72757425"
 
 **[コネクタ]** タブを使用すると、コンテンツ [ワークフロー](../review-api.md#workflows)の一部としてさまざまな方法でコンテンツを処理できるサービス固有のプラグインであるコネクタを管理できます。
 
-ワークフローを作成するときの既定のコネクタは、コンテンツを **adult** または **racy** としてマークしたり、不適切な表現を見つけたりできる Content Moderator コネクタです。 ただし、対応するサービスの資格情報を持っていれば、次に一覧表示されている他のコネクタを使用できます (たとえば、Face API コネクタを使用するには、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) サブスクリプション キーを取得する必要があります)。
+ワークフローを作成するときの既定のコネクタは、コンテンツを **adult** または **racy** としてマークしたり、不適切な表現を見つけたりできる Content Moderator コネクタです。 ただし、対応するサービスの資格情報を持っていれば、次に一覧表示されている他のコネクタを使用できます (たとえば、Face コネクタを使用するには、[Face](https://docs.microsoft.com/azure/cognitive-services/face/overview) サブスクリプション キーを取得する必要があります)。
 
 [レビュー ツール](./human-in-the-loop.md)には、次のコネクタが含まれています。
 
-- Emotion API
-- Face API
+- Emotion
+- Face
 - PhotoDNA Cloud Service
-- Text Analytics API
+- Text Analytics
 
 ### <a name="add-a-connector"></a>コネクタを追加する
 
@@ -111,7 +111,7 @@ ms.locfileid: "72757425"
 
 ![Content Moderator のワークフロー設定](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>資格情報
+## <a name="credentials"></a>[資格情報]
 
 **[資格情報]** タブを使用すると、REST 呼び出しまたはクライアント SDK からいずれかのモデレーション サービスにアクセスするために必要な Content Moderator サブスクリプション キーにすばやくアクセスできます。
 
@@ -138,6 +138,6 @@ Azure で [Content Moderator リソース](https://ms.portal.azure.com/#create/M
 
 両方の場所にサブスクリプション キーを入力した場合、レビュー ツール アカウントに付属する試用版キーは使用されなくなりますが、引き続き使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [レビュー ツールのクイック スタート](../quick-start.md)に従って、コンテンツ モデレーションのシナリオでレビュー ツールの使用を開始してください。

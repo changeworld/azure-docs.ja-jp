@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fec34c54971878178b2a5ea4548ad20d3b51b104
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892339"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119915"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -140,49 +140,96 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 - これらと仮想ネットワークは、同じサブスクリプションと同じリージョンにある必要があります。
 
 ### <a name="dns_server"></a> DNS サーバーを設定する 
+プライベート ホスト名を解決するために Azure-SSIS IR が参加している仮想ネットワークで独自の DNS サーバーを使用する必要がある場合は、グローバルな Azure ホスト名 (たとえば、`<your storage account>.blob.core.windows.net` という名前の Azure Storage Blob) を解決できることも確認してください。 
 
-Azure-SSIS IR が参加する仮想ネットワークで独自の DNS サーバーを使用する必要がある場合は、グローバルな Azure ホスト名 (たとえば、`<your storage account>.blob.core.windows.net` という名前の Azure Storage BLOB) を解決できることを確認してください。 
+推奨される方法の 1 つを以下に示します。 
 
-次の手順が推奨されます。 
-
-- 要求を Azure DNS に転送するようにカスタム DNS を構成します。 独自の DNS サーバー上で、未解決の DNS レコードを Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) に転送することができます。 
-
-- カスタム DNS を仮想ネットワークのプライマリ DNS サーバーとして設定します。 セカンダリ DNS サーバーとして Azure DNS を設定します。 独自の DNS サーバーが利用できない場合に備えて、Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) をセカンダリ DNS サーバーとして登録します。 
+-   要求を Azure DNS に転送するようにカスタム DNS を構成します。 独自の DNS サーバー上で、未解決の DNS レコードを Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) に転送することができます。 
 
 詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。 
 
-### <a name="nsg"></a> NSG を設定する
+> [!NOTE]
+> プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください。たとえば、`<your_private_server>` ではなく、`<your_private_server>.contoso.com` を使用します。これは、独自の DNS サフィックスが Azure-SSIS IR によって自動的に追加されないためです。
 
+### <a name="nsg"></a> NSG を設定する
 Azure-SSIS IR によって使用されるサブネットに NSG を実装する必要がある場合は、次のポートを経由する受信および送信トラフィックを許可します。 
+
+-   **Azure-SSIS IR の受信要件**
 
 | Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
 |---|---|---|---|---|---|---|
 | 受信 | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS IR のノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
+| 受信 | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (省略可能) この規則は、Microsoft サポーターがお客様に対して、高度なトラブルシューティングのために開くように依頼した場合にのみ必要になり、トラブルシューティングの直後に閉じることができます。 **CorpNetSaw** サービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションでのみ、リモート デスクトップの使用が許可されます。 このサービス タグはポータルから選択することはできず、Azure PowerShell または Azure CLI 経由でのみ使用できます。 <br/><br/> NIC レベルの NSG では、ポート 3389 が既定で開かれ、サブネット レベルの NSG ではポート 3389 を制御できます。一方、保護のために各 IR ノードの Windows ファイアウォール規則では既定で、Azure-SSIS IR によってポート 3389 の送信が禁止されています。 |
+||||||||
+
+-   **Azure-SSIS IR の送信要件**
+
+| Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
+|---|---|---|---|---|---|---|
 | 送信 | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
-| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 |
-| 送信 | TCP | VirtualNetwork | * | Sql | 1433、11000 ～ 11999 | 仮想ネットワーク内の Azure-SSIS IR のノードでは、これらのポートを使用して、SQL Database サーバーによってホストされている SSISDB にアクセスします。 SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 この送信セキュリティ規則は、仮想ネットワーク内のマネージド インスタンスによってホストされる SSISDB には適用されません。 |
+| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「**Azure ExpressRoute または UDR を使用する**」のセクションを参照してください|
+| 送信 | TCP | VirtualNetwork | * | Sql | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、SQL Database サーバーによってホストされている SSISDB にアクセスする場合にのみ必要です。 SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 <br/><br/> この送信セキュリティ規則は、プライベート エンドポイントで構成された Azure Database サーバーまたは仮想ネットワーク内のマネージド インスタンスによってホストされている SSISDB には適用できません。 |
+| 送信 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、プライベート エンドポイントで構成された Azure Database サーバーまたは仮想ネットワーク内のマネージド インスタンスによってホストされている SSISDB にアクセスする場合にのみ必要です。 SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
+| 送信 | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
 ||||||||
 
 ### <a name="route"></a> Azure ExpressRoute または UDR を使用する
+Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-SSIS IR から開始されたトラフィックを、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 強制トンネリングを使用して (仮想ネットワークへの、BGP ルート、0.0.0.0/0、をアドバタイズする) オンプレミス ファイアウォール アプライアンスに、あるいは [UDR](../virtual-network/virtual-networks-udr-overview.md) 経由で [Azure Firewall](https://docs.microsoft.com/azure/firewall/) またはファイアウォールとしてのネットワーク仮想アプライアンス (NVA) にルーティングできます。 
 
-[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回線を仮想ネットワーク インフラストラクチャに接続してオンプレミス ネットワークを Azure に拡張する場合、一般的な構成では強制トンネリングを使用します (BGP ルート 0.0.0.0/0 を仮想ネットワークにアドバタイズします)。 このトンネリングによって、検査およびログ記録のために、仮想ネットワーク フローからオンプレミス ネットワーク アプライアンスへの送信インターネット トラフィックが強制されます。 
- 
-または、[UDR](../virtual-network/virtual-networks-udr-overview.md) を定義して、Azure-SSIS IR をホストするサブネットから、検査およびログ記録用のファイアウォールまたは Azure Firewall としてネットワーク仮想アプライアンス (NVA) をホストする別のサブネットへの送信インターネット トラフィックを強制することができます。 
+![Azure-SSIS IR の NVA シナリオ](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
-どちらの場合も、トラフィック ルートで、依存している Azure Data Factory サービス (具体的には Azure Batch 管理サービス) から仮想ネットワーク内の Azure-SSIS IR への接続で必要な受信接続が切断されます。 これを回避するには、Azure-SSIS IR を含むサブネット上に 1 つ以上の UDR を定義します。 
+シナリオ全体を機能させるには、以下の作業を行う必要があります
+   -   Azure Batch 管理サービスと Azure-SSIS IR 間の受信トラフィックを、ファイアウォール アプライアンス経由でルーティングすることはできません。
+   -   ファイアウォール アプライアンスでは、Azure-SSIS IR に必要な送信トラフィックを許可します。
 
-Azure ExpressRoute のシナリオで Azure-SSIS IR をホストするサブネット上で、次ホップの種類が **[インターネット]** の 0.0.0.0/0 ルートを適用できます。 または、NVA のシナリオで、次ホップの種類の既存の 0.0.0.0/0 ルートを **[仮想アプライアンス]** から **[インターネット]** に変更することもできます。
+Azure Batch 管理サービスと Azure-SSIS IR 間の受信トラフィックを、ファイアウォール アプライアンスにルーティングすることはできません。これを行うと、非対称ルーティングの問題によってトラフィックが切断されます。 受信トラフィックに対してルートを定義して、トラフィックが受信されたときと同じ方法で応答できるようにする必要があります。 Azure Batch 管理サービスと、次ホップの種類が **[インターネット]** である Azure-SSIS IR 間でトラフィックをルーティングする特定の UDR を定義できます。
 
-![ルートを追加する](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
-
-そのサブネットからの送信インターネット トラフィックを検査する機能が失われることが懸念される場合は、次ホップの種類が **[インターネット]** の Azure Batch 管理サービスと Azure-SSIS IR 間のトラフィックのみをルーティングする特定の UDR を定義できます。
-
-たとえば、Azure-SSIS IR が `UK South` にある場合は、[サービス タグの IP 範囲のダウンロード リンク](https://www.microsoft.com/en-us/download/details.aspx?id=56519)または [Service Tag Discovery API](https://aka.ms/discoveryapi) を使用して、サービス タグ `BatchNodeManagement.UKSouth` の IP 範囲一覧を取得します。 次ホップの種類が **[インターネット]** である関連する IP 範囲のルートの次の UDR を適用します。
+たとえば、Azure-SSIS IR が `UK South` にあり、Azure Firewall 経由の送信トラフィックを検査する場合は、まず、[サービス タグの IP 範囲のダウンロード リンク](https://www.microsoft.com/download/details.aspx?id=56519)から、または [Service Tag Discovery API](https://aka.ms/discoveryapi) を通じて、サービス タグ `BatchNodeManagement.UKSouth` の IP 範囲一覧を取得します。 その後、次ホップの種類が **[インターネット]** である関連する IP 範囲ルートの以下の UDR を、次ホップの種類が **[仮想アプライアンス]** である 0.0.0.0/0 ルートと共に適用します。
 
 ![Azure Batch UDR の設定](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
 > [!NOTE]
-> この方法では、追加のメンテナンス コストが発生します。 Azure-SSIS IR が中断されないように、IP 範囲を定期的に確認し、UDR に新しい IP 範囲を追加します。 IP 範囲は月単位で確認することをお勧めします。これは、新しい IP がサービス タグに出現した場合、IP が有効になるまでに 1 か間かかるためです。 
+> この方法では、追加のメンテナンス コストが発生します。 Azure-SSIS IR が中断されないように、IP 範囲を定期的に確認し、UDR に新しい IP 範囲を追加します。 IP 範囲は月単位で確認することをお勧めします。これは、新しい IP がサービス タグに示された場合、IP が有効になるまでさらに 1 か月かかるためです。 
+
+ファイアウォール アプライアンスで送信トラフィックを許可するには、NSG アウトバウンド規則の要件と同じように、以下のポートへの送信を許可する必要があります。
+-   送信先が Azure クラウド サービスであるポート 443。
+
+    Azure Firewall を使用する場合は、Azure クラウド サービス タグでネットワーク規則を指定できます。それ以外の場合は、包括的なファイアウォール アプライアンスとして送信先を許可することができます。
+
+-   送信先が CRL のダウンロード サイトであるポート 80。
+
+    Azure-SSIS IR の管理目的で、証明書の CRL (証明書失効リスト) ダウンロード サイトとして使用される以下の FQDN を許可します。
+    -  crl.microsoft.com:80
+    -  mscrl.microsoft.com:80
+    -  crl3.digicert.com:80
+    -  crl4.digicert.com:80
+    -  ocsp.digicert.com:80
+    -  cacerts.digicert.com:80
+    
+    CRL が異なる証明書を使用する場合は、それらも含めることをお勧めします。 詳細については、こちらの「[証明書失効リスト](https://social.technet.microsoft.com/wiki/contents/articles/2303.understanding-access-to-microsoft-certificate-revocation-list.aspx)」を参照してください。
+
+    このトラフィックを許可しない場合、Azure-SSIS IR の開始時にパフォーマンスが低下し、セキュリティの観点から推奨されていない証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。
+
+-   送信先が Azure SQL であるポート 1433、11000 から 11999 (仮想ネットワーク内の Azure-SSIS IR のノードから、SQL Database サーバーによってホストされている SSISDB にアクセスする場合にのみ必要)。
+
+    Azure Firewall を使用する場合は、Azure SQL サービス タグでネットワーク規則を指定できます。それ以外の場合は、ファイアウォール アプライアンスの特定の azure sql url として送信先を許可することができます。
+
+-   送信先が Azure Storage であるポート 445 (Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要)。
+
+    Azure Firewall を使用する場合は、Storage サービス タグでネットワーク規則を指定できます。それ以外の場合は、ファイアウォール アプライアンスの特定の azure ファイル ストレージとして送信先を許可することができます。
+
+> [!NOTE]
+> Azure SQL と Storage の場合、サブネット上で仮想ネットワーク サービス エンドポイントを構成すると、Azure-SSIS IR と、同じリージョン内の Azure SQL、または同じリージョンあるいはペアのリージョン内の Azure Storage との間のトラフィックが、ファイアウォール アプライアンスではなく、Microsoft Azure バックボーン ネットワークに直接ルーティングされます。
+
+Azure-SSIS IR の送信トラフィックを検査する機能が必要でない場合は、次ホップの種類である **[インターネット]** へのすべてのトラフィックを強制するルートを単に適用できます。
+
+-   Azure ExpressRoute のシナリオでは、Azure-SSIS IR をホストするサブネット上で、次ホップの種類が **[インターネット]** の 0.0.0.0/0 ルートを適用できます。 
+-   NVA シナリオでは、Azure-SSIS IR をホストするサブネット上で適用されている既存の 0.0.0.0/0 ルートの次ホップの種類を、 **[仮想アプライアンス]** から **[インターネット]** に変更できます。
+
+![ルートを追加する](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+
+> [!NOTE]
+> 次ホップの種類が **[インターネット]** であるルートを指定することは、すべてのトラフィックがインターネットを経由するようになることを意味するわけではありません。 送信先アドレスが Azure のいずれかのサービスに対するものである限り、Azure では、トラフィックをインターネットにルーティングするのではなく、Azure のバックボーン ネットワーク経由でサービスに直接トラフィックをルーティングします。
 
 ### <a name="resource-group"></a> リソース グループを設定する
 
@@ -291,21 +338,21 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    1. 左側のメニューの **[アクセス制御 (IAM)]** を選択し、 **[ロール割り当て]** タブを選択します。 
 
-   ![[アクセス制御] ボタンと [追加] ボタン](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+       ![[アクセス制御] ボタンと [追加] ボタン](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
    1. **[ロールの割り当ての追加]** を選択します。
 
    1. **[ロールの割り当ての追加]** ページで、 **[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに「**ddbf3205-c6bd-46ae-8127-60eb93363864**」を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選択します。 
 
-   ![[ロールの割り当ての追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+       ![[ロールの割り当ての追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
    1. **[保存]** を選択して設定を保存し、ページを閉じます。 
 
-   ![アクセス設定の保存](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+       ![アクセス設定の保存](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
    1. 共同作成者の一覧に **Microsoft Azure Batch** があることを確認します。 
 
-   ![Azure Batch アクセスの確認](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+       ![Azure Batch アクセスの確認](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 
 1. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 または、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。) 
 
@@ -345,9 +392,9 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
    ![統合ランタイムを編集する](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
 
-1. 統合ランタイムの設定パネルで、 **[次へ]** ボタンを選択して **[全般設定]** および **[SQL 設定]** セクションに進みます。 
+1. 統合ランタイムの設定パネルで、 **[全般設定]** と **[SQL 設定]** セクションの **[次へ]** ボタンを選択して、先に進みます。 
 
-1. **[詳細設定]** セクションで次のようにします。 
+1. **[詳細設定]** セクションで、次の手順を実行します。 
 
    1. **[Select a VNet for your Azure-SSIS Integration Runtime to join, allow ADF to create certain network resources, and optionally bring your own static public IP addresses]\(参加させる Azure-SSIS 統合ランタイムの VNet を選択し、ADF で特定のネットワーク リソースを作成できるようにし、必要に応じて独自の静的パブリック IP アドレスを使用する\)** チェック ボックスをオンにします。 
 
@@ -357,9 +404,9 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
    1. **[種類]** で、仮想ネットワークの種類の (クラシックまたは Azure Resource Manager) を選択します。 クラシック仮想ネットワークは間もなく非推奨になるので、Azure Resource Manager 仮想ネットワークを選択することをお勧めします。
 
-   1. **[VNet 名]** で、仮想ネットワークの名前を選択します。 これは、SSISDB をホストするために、仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスに使用されているものと同じである必要があります。 または、オンプレミス ネットワークに接続されているものと同じである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意の仮想ネットワークにすることができます。
+   1. **[VNet 名]** で、仮想ネットワークの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスに使用されているものと同じである必要があります。 または、オンプレミス ネットワークに接続されているものと同じである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意の仮想ネットワークを指定できます。
 
-   1. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするために、仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーに使用されているものと同じである必要があります。 または、SSISDB をホストするために、プライベート エンドポイントを備えたマネージド インスタンスに使用されているものとは異なるサブネットである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意のサブネットにすることができます。
+   1. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーに使用されているものと同じである必要があります。 または、SSISDB をホストするためにプライベート エンドポイントを備えたマネージド インスタンスに使用されているものとは異なるサブネットである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意のサブネットにすることができます。
 
    1. Azure-SSIS IR に独自の静的パブリック IP アドレスを使用して、それらをデータ ソースのファイアウォールで許可するかどうかを選択するには、 **[Bring static public IP addresses for your Azure-SSIS Integration Runtime]\(Azure-SSIS 統合ランタイムに静的パブリック IP アドレスを使用する\)** チェック ボックスをオンにします。
 

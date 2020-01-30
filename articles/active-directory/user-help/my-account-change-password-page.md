@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231869"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156235"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>マイ アカウント ポータルから職場または学校アカウントのパスワードを変更する
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>[パスワードの変更] ページで、職場または学校のアカウントのパスワードを変更します。
 
-**マイ アカウント** ポータルの **[パスワードの変更]** ページで、職場または学校アカウントのパスワードを更新できます。 これは、既存のパスワードがわかっていて、アカウントからロックアウトされていない場合にのみ有効です。
+パスワードを覚えており、ロックアウトされていない場合は、 **[マイ アカウント]** ポータルの **[パスワードの変更]** ページを使用して、職場または学校アカウントの既存のパスワードを更新することができます。 パスワードを覚えていない場合、アカウントからロックアウトされている場合、または組織からパスワードを受け取ったことがない場合は、ご自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。
 
-パスワードを覚えていない場合、アカウントからロックアウトされている場合、または会社のサポート チームからパスワードを受け取ったことがない場合は、自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。 詳細については、「[職場または学校のパスワードをリセットする](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)」を参照してください。
+>[!Important]
+>この記事は、既存の職場または学校アカウントの既知のパスワードを更新しようとしているユーザーを対象としています。 Xbox、Hotmail、Outlook.com などの個人アカウントを回復しようとしているユーザーの場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。 従業員または他のユーザーのセルフサービス パスワード リセットをテストする方法の詳細情報が必要な管理者の場合は、[セルフサービス パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)に関する記事を参照してください。
 
->[!Note]
->Xbox、hotmail.com、outlook.com などの個人アカウントを回復する場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。
+## <a name="update-a-password-from-the-change-password-page"></a>[パスワードの変更] ページからパスワードを更新する
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>マイ アカウント ポータルからパスワードを変更するには
-
-1. 既存のパスワードを使用して、職場または学校アカウントにサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
+1. 既存のパスワードを使用して、職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myprofile.microsoft.com/) ページに移動します。
 
 2. 左側のナビゲーション ペインで **[パスワード]** を選択するか、 **[パスワード]** ブロックの **[パスワードの変更]** リンクを選択します。
 
@@ -44,16 +42,16 @@ ms.locfileid: "74231869"
 
     パスワードが変更され、職場または学校アカウントに再度サインインするように求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パスワードを変更した後、次のことができます。
 
-- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理します。
+- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理する。
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 
 - [組織](my-account-portal-organizations-page.md)を表示または管理する。
 
-- [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示します。
+- [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する。
 
 - 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。

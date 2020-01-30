@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771838"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156354"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -364,7 +364,7 @@ Azure Machine Learning 用の [CLI 拡張機能](reference-azure-machine-learnin
 
 ## <a name="set-up-with-vs-code"></a>VS Code を使用した設定
 
-Azure Machine Learning 用の [VS Code 拡張機能](how-to-vscode-tools.md#create-and-manage-compute-targets)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスし、これを作成および管理することができます。
+Azure Machine Learning 用の [VS Code 拡張機能](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスし、これを作成および管理することができます。
 
 ## <a id="submit"></a>Azure Machine Learning SDK を使用してトレーニングの実行を送信する
 
@@ -414,7 +414,7 @@ Azure Machine Learning 用の [VS Code 拡張機能](how-to-vscode-tools.md#crea
 
 * [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。
 * [ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)用の HyperDrive 実行を送信します。
-* [VS Code 拡張機能](how-to-vscode-tools.md#train-and-tune-models)を介して実験を送信します。
+* [VS Code 拡張機能](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)を介して実験を送信します。
 
 詳細については、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) および [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) のドキュメントを参照してください。
 

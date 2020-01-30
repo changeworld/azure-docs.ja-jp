@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206549"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314710"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
 
@@ -47,7 +47,7 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>デスクトップ環境のサイズを見積もる
 
 * 識別された構成が VMware の運用上の制限内にあることを確認します。
-* オンプレミス環境を保護するために DR サイト内で必要なリソースを見積もります。
+* お使いのすべてのデスクトップおよびお使いの Horizon 管理コンポーネントに必要なすべてのリソースを見積もります。
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>自分の環境用のプライベート クラウドを作成する
 

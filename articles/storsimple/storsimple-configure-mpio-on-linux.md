@@ -1,25 +1,18 @@
 ---
-title: StorSimple Linux ホストの MPIO の構成 | Microsoft Docs
+title: StorSimple Linux ホスト上の MPIO の構成
 description: CentOS 6.6 を実行している Linux ホストに接続されている StorSimple で MPIO を構成します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: tysonn
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: d6d4a5b9688540e5aa96dd8789dbb609aedeca97
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077847"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278360"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -303,7 +296,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 1. 使用可能なパスを確認します。 型:
 
       ```
-      multipath –l
+      multipath -l
       ```
 
       次の例は、2 つの使用可能なパスで 1 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
@@ -358,7 +351,7 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
      
      または
   
-    `$ fdisk –l`
+    `$ fdisk -l`
   
     これらによって、最近追加したディスクの詳細が返されます。
 * これが StorSimple ディスクであるかどうかを判断するには、次のコマンドを使用します。
@@ -380,7 +373,7 @@ Q. 自分のデバイスがホワイトリストに登録されているかど�
 
 A. ご使用のデバイスがホワイトリストに登録されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
 
-    multipathd –k
+    multipathd -k
     multipathd> show devices
     available block devices:
     ram0 devnode blacklisted, unmonitored
@@ -420,7 +413,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 詳細については、[マルチパスのトラブルシューティング](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)に関するページを参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
-| 確認を求められたら、「 | command | 説明 |
+| 種類 | command | [説明] |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |iSCSI サービスを開始する |
 | &nbsp; |`service iscsid stop` |iSCSI サービスを停止する |
@@ -429,19 +422,19 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 | &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |ISCSI ターゲットにログインする |
 | &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |iSCSI ターゲットからログアウトする |
 | &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |iSCSI イニシエーターの名前を出力する |
-| &nbsp; |`iscsiadm –m session –s <sessionid> -P 3` |ホストで検出された iSCSI セッションとボリュームの状態を確認する |
-| &nbsp; |`iscsi –m session` |ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する |
+| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |ホストで検出された iSCSI セッションとボリュームの状態を確認する |
+| &nbsp; |`iscsi -m session` |ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する |
 |  | | |
 | **マルチパス** |`service multipathd start` |マルチパス デーモンを開始する |
 | &nbsp; |`service multipathd stop` |マルチパス デーモンを停止する |
 | &nbsp; |`service multipathd restart` |マルチパス デーモンを再開する |
-| &nbsp; |`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y` |ブート時にマルチパス デーモンを開始するようにする |
-| &nbsp; |`multipathd –k` |トラブルシューティングのために対話型コンソールを起動する |
-| &nbsp; |`multipath –l` |マルチパス接続とデバイスを一覧表示する |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |ブート時にマルチパス デーモンを開始するようにする |
+| &nbsp; |`multipathd -k` |トラブルシューティングのために対話型コンソールを起動する |
+| &nbsp; |`multipath -l` |マルチパス接続とデバイスを一覧表示する |
 | &nbsp; |`mpathconf --enable` |`/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキュメントも参照することが必要になる場合があります。
 
 * [CentOS での MPIO の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)

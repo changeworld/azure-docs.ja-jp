@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892806"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289919"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 
@@ -27,43 +27,15 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="create-a-brand"></a>ブランドを作成する
 
-新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。
+[ブランドの作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API では、新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。 
 
-### <a name="request-url"></a>要求 URL
+> [!NOTE]
+> **enabled** (本文内) を true に設定すると、Video Indexer での検出対象として "*対象*" リストにブランドが配置されます。 **enabled** を false に設定すると、 *[除外]* リストにブランドが配置されます。したがって、Video Indexer では検出されません。
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
+本文で設定できるその他のパラメーターは次のとおりです。
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-これらのパラメーターに加え、以下の例の形式に従って、新しいブランドに関する情報を提供する要求本文の JSON オブジェクトを指定する必要があります。
-
-```json
-{
-  "name": "Example",
-  "enabled": true,
-  "tags": ["Tag1", "Tag2"],
-  "description": "This is an example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example"
-}
-```
-
-**enabled** を true に設定すると、Video Indexer での検出対象として *[含める]* リストにブランドが配置されます。 **enabled** を false に設定すると、 *[除外]* リストにブランドが配置されます。したがって、Video Indexer では検出されません。
-
-**referenceUrl** 値は、Wikipedia ページへのリンクなど、ブランドの参照 Web サイトにすることができます。
-
-**tags** 値はブランドのタグ リストです。 これは、Video Indexer Web サイトのブランドの *[カテゴリ]* フィールドに表示されます。 たとえば、ブランドが "Azure" の場合、"クラウド" としてタグを付けたり、分類したりすることができます。
+* **referenceUrl** 値は、Wikipedia ページへのリンクなど、ブランドの参照 Web サイトにすることができます。
+* **tags** 値はブランドのタグ リストです。 これは、Video Indexer Web サイトのブランドの *[カテゴリ]* フィールドに表示されます。 たとえば、ブランドが "Azure" の場合、"クラウド" としてタグを付けたり、分類したりすることができます。
 
 ### <a name="response"></a>Response
 
@@ -89,28 +61,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="delete-a-brand"></a>ブランドを削除する
 
-指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは **accountId** パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、 *[含める]* や *[除外]* のブランド リストに配置されなくなります。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|id|integer|はい|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
+[ブランドの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API では、指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは **accountId** パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、 *[含める]* や *[除外]* のブランド リストに配置されなくなります。
 
 ### <a name="response"></a>Response
 
@@ -118,28 +69,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-a-specific-brand"></a>特定のブランドを取得する
 
-ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|id|integer|はい|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
+[ブランドの取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="response"></a>Response
 
@@ -168,44 +98,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="update-a-specific-brand"></a>特定のブランドを更新する
 
-ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|id|integer|はい|ブランド ID (ブランドの作成時に生成されます)|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-これらのパラメーターに加え、以下の例の形式に従って、更新するブランドに関する更新された情報を提供する、要求本文の JSON オブジェクトを指定する必要があります。
-
-```json
-{
-  "name": "Example",
-  "enabled": false,
-  "tags": ["Tag1", "NewTag2"],
-  "description": "This is an update example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example",
-  "lastModifierUserName": "SampleUserName",
-  "created": "2018-04-25T14:59:52.7433333",
-  "lastModified": "2018-04-28T15:52:22.3413983",
-}
-```
-
-> [!NOTE]
-> この例では、「**ブランドを作成する**」セクションの要求本文例で作成されたブランドが、ここで新しいタグと説明で更新されます。 *[除外]* リストに配置するために、**enabled** 値も false に変更されています。
+[ブランドの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="response"></a>Response
 
@@ -231,27 +124,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-all-of-the-brands"></a>すべてのブランドを取得する
 
-ブランドが *[含める]* と *[除外]* のどちらのブランド リストに配置されるようになっているかに関係なく、指定されたアカウント用のカスタム ブランド モデルのブランドがすべて返されます。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
+[すべてのブランドの取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API では、ブランドが "*対象*" と "*除外*" のどちらのブランド リストに配置されるようになっているかに関係なく、指定されたアカウント用のカスタム ブランド モデルのブランドがすべて返されます。
 
 ### <a name="response"></a>Response
 
@@ -291,27 +164,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-brands-model-settings"></a>ブランド モデルの設定を取得する
 
-指定されたアカウントのブランド モデル設定が返されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
+[ブランドの設定の取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) API では、指定されたアカウントのブランド モデル設定が返されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
 
 ### <a name="response"></a>Response
 
@@ -329,40 +182,14 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="update-brands-model-settings"></a>ブランド モデルの設定を更新する
 
-指定されたアカウントのブランド モデル設定が更新されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
+[ブランドの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)では、指定されたアカウントのブランド モデル設定が更新されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
 
-### <a name="request-url"></a>要求 URL:
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-これらのパラメーターに加え、以下の例の形式に従って、新しいブランドに関する情報を提供する要求本文の JSON オブジェクトを指定する必要があります。
-
-```json
-{
-    "useBuiltIn":true
-}
-```
-
-> [!NOTE]
-> **useBuiltIn** が true に設定されている場合、Bing ブランドが有効であることを表します。 *useBuiltin* が false の場合、Bing ブランドは無効です。
+**useBuiltIn** フラグが true に設定されている場合、Bing ブランドが有効であることを表します。 *useBuiltin* が false の場合、Bing ブランドは無効です。
 
 ### <a name="response"></a>Response
 
 ブランド モデル設定が正常に更新されたときに返されるコンテンツはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Web サイトを使用してブランド モデルをカスタマイズする](customize-brands-model-with-website.md)

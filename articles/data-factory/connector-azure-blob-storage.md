@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 9001a7837e6106df4e052277168388064e65e7ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: f245254c85cbf9223ab5dda60799c6b7ce72f11c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893306"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120215"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -270,7 +270,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 一般的な Azure Storage 認証については、[Azure Active Directory を使用した Azure Storage へのアクセスの認証](../storage/common/storage-auth-aad.md)に関する記事をご覧ください。 Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
+1. ファクトリと共に生成された**マネージド ID オブジェクト ID** の値をコピーして、[データ ファクトリのマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. Azure BLOB ストレージでマネージド ID に適切なアクセス許可を付与します。 ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](../storage/common/storage-auth-aad-rbac.md)に関する記事をご覧ください。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705205"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509055"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
 
@@ -69,7 +69,7 @@ Azure AD DS 管理 VM から、次の手順を実行します。
 
     ![SharePoint サービス アカウントを [AAD DC Service Accounts]\(AAD DC サービス アカウント\) セキュリティ グループに追加する](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[SharePoint Server でプロファイルを同期するために Active Directory Domain Services のアクセス許可を付与する](https://technet.microsoft.com/library/hh296982.aspx)」を参照してください
 

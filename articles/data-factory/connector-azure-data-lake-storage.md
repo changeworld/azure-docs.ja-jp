@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: 7845e381c5a8851683edf6b955d40070bd4e0c30
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893204"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122272"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -162,7 +162,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 
 Azure リソースのマネージド ID 認証を使用するには、次の手順に従います。
 
-1. ファクトリと共に生成された**サービス ID アプリケーション ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
+1. ファクトリと共に生成された**マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. マネージド ID に適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
@@ -377,7 +377,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 
 ## <a name="preserve-metadata-during-copy"></a>コピー中にメタデータを保持する
 
-Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 から Azure Data Lake Storage Gen2/Azure Blob にファイルをコピーする場合、ファイルのメタデータをデータと共に保持することもできます。 詳細については、[メタデータの保持](copy-activity-preserve-metadata.md#preserve-metadata)に関するページを参照してください。
+Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Storage Gen2、Azure Blob にファイルをコピーする場合、ファイルのメタデータをデータと共に保持することもできます。 詳細については、[メタデータの保持](copy-activity-preserve-metadata.md#preserve-metadata)に関するページを参照してください。
 
 ## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の ACL を保持する
 

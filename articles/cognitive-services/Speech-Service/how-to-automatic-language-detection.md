@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/15/2020
 ms.author: qiohu
-ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+zone_pivot_groups: programming-languages-set-seven
+ms.openlocfilehash: bc438c3e606fefc10e9ffbb64c79f7167d9af062
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110185"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122051"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -24,7 +25,7 @@ ms.locfileid: "74110185"
 この記事では、`AutoDetectSourceLanguageConfig` を利用して `SpeechRecognizer` オブジェクトを構築し、検出された言語を取得する方法について説明します。
 
 > [!IMPORTANT]
-> この機能は Speech SDK for C++ と Speech SDK for Java でのみ利用できます。
+> この機能は C#、C++、Java 用の Speech SDK でのみ利用できます。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Speech SDK による自動言語検出
 
@@ -35,6 +36,22 @@ ms.locfileid: "74110185"
 
 次のスニペットからは、自分のアプリで自動言語検出を使用する方法を確認できます。
 
+::: zone pivot="programming-language-csharp"
+
+```csharp
+var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "de-DE" });
+using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig))
+{
+    var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
+    var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+    var detectedLanguage = autoDetectSourceLanguageResult.Language;
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
 ```C++
 auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
@@ -42,6 +59,10 @@ speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
 auto autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
@@ -58,11 +79,28 @@ audioConfig.close();
 result.close();
 ```
 
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>自動言語検出にカスタム モデルを使用する
 
 Speech サービス モデルを利用した言語検出に加え、認識を強化するためのカスタム モデルを指定できます。 カスタム モデルが指定されていない場合、このサービスでは既定の言語モデルが使用されます。
 
 下のスニペットからは、Speech サービスの呼び出しにカスタム モデルを指定する方法を確認できます。 検出された言語が `en-US` の場合、既定のモデルが使用されます。 検出された言語が `fr-FR` の場合、カスタム モデルのエンドポイントが使用されます。
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+var sourceLanguageConfigs = new SourceLanguageConfig[]
+{
+    SourceLanguageConfig.FromLanguage("en-US"),
+    SourceLanguageConfig.FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR")
+};
+var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(sourceLanguageConfigs);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
 
 ```C++
 std::vector<std::shared_ptr<SourceLanguageConfig>> sourceLanguageConfigs;
@@ -71,6 +109,10 @@ sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("fr-FR", "The
 auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(sourceLanguageConfigs);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
 ```Java
 List sourceLanguageConfigs = new ArrayList<SourceLanguageConfig>();
 sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("en-US"));
@@ -78,6 +120,8 @@ sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoi
 AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(sourceLanguageConfigs);
 ```
 
-## <a name="next-steps"></a>次の手順
+::: zone-end
+
+## <a name="next-steps"></a>次のステップ
 
 - [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

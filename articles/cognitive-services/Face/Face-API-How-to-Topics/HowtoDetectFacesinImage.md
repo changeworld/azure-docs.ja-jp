@@ -1,5 +1,5 @@
 ---
-title: 画像の中にある顔を検出する - Face API
+title: 画像の中にある顔を検出する - Face
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、顔検出を使用して、特定の画像から性別、年齢、姿勢などの属性を抽出する方法について説明します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744285"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169872"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 
-このガイドでは、顔検出を使用して、特定の画像から性別、年齢、姿勢などの属性を抽出する方法について説明します。 このガイドのコード スニペットは Azure Cognitive Services Face API クライアント ライブラリを使用して C# で記述されています。 同じ機能を [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) でも使用できます。
+このガイドでは、顔検出を使用して、特定の画像から性別、年齢、姿勢などの属性を抽出する方法について説明します。 このガイドのコード スニペットは Azure Cognitive Services Face クライアント ライブラリを使用して C# で記述されています。 同じ機能を [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) でも使用できます。
 
 このガイドでは、次の方法について説明します。
 
@@ -140,7 +140,7 @@ foreach (var face in faces)
 
 各属性の詳細については、「[Face detection and attributes (顔の検出と属性)](../concepts/face-detection.md)」概念ガイドを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、顔検出のさまざまな機能を使用する方法について説明しました。 次は詳細なチュートリアルに従って、お使いのアプリにこれらの機能を統合します。
 

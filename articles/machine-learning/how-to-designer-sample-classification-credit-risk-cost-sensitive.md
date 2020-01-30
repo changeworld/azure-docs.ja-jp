@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763404"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311089"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して、分類子を作成し、Python スクリプトを使って信用リスクを予測する
 
-**デザイナー (プレビュー) サンプル 4**
+**デザイナー サンプル 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-この記事では、デザイナー (プレビュー) を使用して、複雑な機械学習パイプラインを構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
+この記事では、デザイナーを使用して、複雑な機械学習パイプラインを構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 
 このサンプルでは、分類器をトレーニングして、クレジット履歴、年齢、クレジット カードの枚数などのクレジット アプリケーション情報を使用して信用リスクを予測します。 ただし、この記事の概念を適用して、独自の機械学習の問題に取り組むことができます。
 

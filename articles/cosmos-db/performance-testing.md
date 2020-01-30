@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616785"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313757"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 
@@ -89,11 +89,11 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
     Press any key to exit...
 
 
-**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションまたは一連のコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが安定したら、他のクライアント マシンでアプリの複数のインスタンスを開始します。 この手順についてご不明な点がありましたら、askcosmosdb@microsoft.com にメールをお送りいただくか、[Azure Portal](https://portal.azure.com) からサポート チケットを申請してください。
+**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションまたは一連のコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが安定したら、他のクライアント マシンでアプリの複数のインスタンスを開始します。 この手順についてご不明な点がある場合、[Azure portal](https://portal.azure.com) からサポート チケットを申請してください。
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](index-policy.md)と[整合性レベル](consistency-levels.md)を試しながら、スループットと待ち時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、.NET コンソール アプリを使用して Azure Cosmos DB でパフォーマンスとスケーリングのテストを実行する方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)

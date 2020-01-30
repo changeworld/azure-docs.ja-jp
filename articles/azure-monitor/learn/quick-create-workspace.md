@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc8162a157cee10deeb8bf3f1e62a53fbdd30d0e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365531"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513441"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure ポータルで Log Analytics ワークスペースを作成する
 Azure portal で、 **[Log Analytics ワークスペース]** メニューを使用して、Log Analytics ワークスペースを作成します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
 
 * サブスクリプション内の Azure リソース
 * System Center Operations Manager によって監視されているオンプレミスのコンピューター
-* System Center Configuration Manager のデバイス コレクション 
+* Configuration Manager のデバイス コレクション 
 * Azure ストレージからの診断またはログ データ
 
 環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
@@ -31,7 +31,7 @@ Azure portal で、 **[Log Analytics ワークスペース]** メニューを使
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。

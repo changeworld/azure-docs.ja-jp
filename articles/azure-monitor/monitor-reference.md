@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969591"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263423"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -181,7 +181,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Azure Sentinel](/azure/sentinel/) | Office 365 やアマゾン ウェブ サービスの Cloud Trail などのさまざまなソースに接続します。 「[データ ソースの接続](/azure/sentinel/connect-data-sources)」のページを参照してください。 |
 | [Key Vault Analytics](insights/azure-key-vault.md) | Azure Key Vault の AuditEvent ログを分析します。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Azure Monitor にログを送信するための診断設定を作成します。 「[Intune でストレージ、イベント ハブ、または Log Analytics にログ データを送信する (プレビュー)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)」を参照してください。  |
-| ネットワーク  | [DNS Analytics](insights/dns-analytics.md) - Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。<br>[Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
+| ネットワーク  | [Network Performance Monitor](insights/network-performance-monitor.md) - サービスとアプリケーションのエンドポイントへのネットワーク接続とパフォーマンスを監視します。<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway からログとメトリックを分析します。<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) - Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する分析情報を提供します。 |
 | [Office 365](insights/solution-office-365.md) | Office 365 環境を監視します。 Azure Sentinel から使用できる改善されたオンボード機能を備えた更新バージョンです。 |
 | [SQL Analytics](insights/azure-sql.md) | 複数のサブスクリプションにわたって大規模に Azure SQL データベース、エラスティック プール、マネージド インスタンスのパフォーマンスを監視します。 |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub デバイスの正常性と使用状況を追跡します。 |
@@ -200,6 +200,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Active Directory Assessment](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
 | [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
 | [Activity Log Analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 定義済みのログ クエリおよびビューを使用して、アクティビティ ログのエントリを分析します。 |
+| [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
 | [Containers](insights/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |
 | [オンデマンド評価](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |

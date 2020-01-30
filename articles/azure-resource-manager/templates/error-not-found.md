@@ -3,12 +3,12 @@ title: リソースが見つからないエラー
 description: Azure Resource Manager テンプレートでデプロイ時にリソースが見つからないエラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 01/21/2020
-ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310664"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773262"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
@@ -98,5 +98,5 @@ Reference 関数では、`Full` を使用して、マネージド ID を含む�
 たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934379"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289614"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,23 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 >
 > 既定のストレージ アカウントは、ワークスペースを作成するときに自動的にプロビジョニングされます。
 >
-> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
+> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
+
+## <a name="use-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 を使用する
+
+Azure Data Lake Storage Gen 2 は、Azure BLOB ストレージに基づいて構築されたビッグ データ分析用の機能セットです。 これは、Azure Machine Learning でモデルをトレーニングするために使用されたデータの格納に使用できます。 
+
+Azure Machine Learning ワークスペースの仮想ネットワーク内で Data Lake Storage Gen 2 を使用するには、次の手順に従います。
+
+1. Azure Data Lake Storage Gen 2 アカウントを作成します。 詳細については、[Azure Data Lake Storage Gen2 ストレージ アカウントの作成](../storage/blobs/data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
+
+1. 前のセクションの手順 2-4 に従って、[ご利用のワークスペース用のストレージ アカウントを使用](#use-a-storage-account-for-your-workspace)し、そのアカウントを仮想ネットワークに配置します。
+
+仮想ネットワーク内で Data Lake Storage Gen 2 と共に Azure Machine Learning を使用する場合は、次のガイダンスを使用します。
+
+* __SDK を使用してデータセットを作成__し、コードを実行しているシステムが__仮想ネットワークにない__場合は、`validate=False` パラメーターを使用します。 このパラメーターは、システムがストレージ アカウントと同じ仮想ネットワーク内にない場合に失敗する検証をスキップします。 詳細については、[from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを参照してください。
+
+* Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターを使用し、データセットを使用してモデルをトレーニングする場合は、ストレージ アカウントと同じ仮想ネットワーク内に存在する必要があります。
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>ワークスペース内でキー コンテナー インスタンスを使用する
 
@@ -145,7 +161,7 @@ Machine Learning コンピューティングは、現在、Azure Batch サービ
 
 - インターネットに向かう全ポートのアウトバウンド トラフィック。
 
-- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
+- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の__サービス タグ__からの、ポート 44224 で受信するインバウンド TCP トラフィック。
 
 Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が拒否された場合は、コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
 
@@ -166,15 +182,15 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - 次の項目へのアウトバウンド トラフィックを制限します。
    - Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の __サービス タグ__ を使用)
    - Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の __サービス タグ__ を使用)
-   - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
-   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の __サービス タグ__ を使用)
+   - Azure Machine Learning (__AzureMachineLearning__ の__サービス タグ__を使用)
+   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の__サービス タグ__を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
 [![Machine Learning コンピューティングのアウトバウンド NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の __サービス タグ__ も使用する必要があります。
+> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の__サービス タグ__も使用する必要があります。
 >
 > この構成は、トレーニング スクリプトの一部として、以下のスニペットに似たコードを使用している場合に必要です。
 >
@@ -287,7 +303,7 @@ except ComputeTargetException:
 > [!div class="checklist"]
 > * 仮想ネットワークは Azure Machine Learning のワークスペースと同じサブスクリプションとリージョンになければなりません。
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Databricks クラスターと同じ仮想ネットワークに存在する必要があります。
-> * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された __既定の__ サブネットも必要です。
+> * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された__既定の__サブネットも必要です。
 
 仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
 
@@ -398,7 +414,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 既定で、AKS デプロイにはパブリック IP アドレスが割り当てられます。 仮想ネットワーク内で AKS を使用する場合は、代わりにプライベート IP アドレスを使用できます。 プライベート IP アドレスには、仮想ネットワークまたは結合されたネットワーク内からのみアクセスできます。
 
-プライベート IP アドレスを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
+プライベート IP アドレスを有効にするには、_内部ロード バランサー_を使用するように AKS を構成します。 
 
 > [!IMPORTANT]
 > Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
@@ -466,7 +482,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 ```
 
 > [!NOTE]
-> 現時点では、既存のクラスターに対して __アタッチ__ 操作を実行しているときにロード バランサーを構成することはできません。 最初にクラスターをアタッチしてから、更新操作を実行してロード バランサーを変更する必要があります。
+> 現時点では、既存のクラスターに対して__アタッチ__操作を実行しているときにロード バランサーを構成することはできません。 最初にクラスターをアタッチしてから、更新操作を実行してロード バランサーを変更する必要があります。
 
 AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](/azure/aks/internal-lb)」を参照してください。
 
@@ -482,7 +498,7 @@ Azure Firewall を使用する場合は、次のアドレスとの間で送受�
 - `mlworkspace.azure.ai`
 - `*.aether.ms`
 
-ルールを追加するときは、__プロトコル__ を任意に、ポートを `*` に設定します。
+ルールを追加するときは、__プロトコル__を任意に、ポートを `*` に設定します。
 
 ネットワーク ルールの構成の詳細については、「[Azure Firewall のデプロイと構成](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)」を参照してください。
 

@@ -1,14 +1,14 @@
 ---
 title: Azure の委任されたリソース管理に顧客をオンボードする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834125"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543411"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -229,15 +229,15 @@ New-AzDeployment -Name <deploymentName> `
 # Log in first with az login if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-az deployment create –-name <deploymentName> \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-file <pathToTemplateFile> \
                      --parameters <parameters/parameterFile> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create –-name <deploymentName \
-                     –-location <AzureRegion> \
+az deployment create --name <deploymentName> \
+                     --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
                      --verbose
@@ -302,6 +302,12 @@ Azure の委任されたリソース管理に顧客をオンボードすると�
 ```
 
 このアクセス許可を持つユーザーは、次のいずれかの方法で委任を削除できます。
+
+### <a name="azure-portal"></a>Azure portal
+
+1. [[マイ カスタマー] ページ](view-manage-customers.md)に移動します。
+2. **[委任]** を選択します。
+3. 削除する委任を見つけ、その行に表示されるごみ箱アイコンを選択します。
 
 ### <a name="powershell"></a>PowerShell
 

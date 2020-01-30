@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 01/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772637"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264791"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの自動シャットダウン ポリシーを管理する
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
+
+この記事では、DevTest Labs のラボ VM とコンピューティング VM の自動シャットダウン設定を構成する方法について説明します。 
+
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>ラボ VM (DevTest Labs) の自動シャットダウンを構成する
 Azure DevTest Labs では、各ラボのポリシー (設定) を管理することで、ラボのコストを制御し、無駄を最小限に抑えることができます。 この記事では、ラボ アカウントに対して自動シャットダウン ポリシーを構成する方法、およびラボ アカウントのラボに対して自動シャットダウンの設定を構成する方法を示します。 すべてのラボ ポリシーを設定する方法については、[Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>ラボに自動シャットダウン ポリシーを設定する
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>ラボに自動シャットダウン ポリシーを設定する
 ラボ所有者は、ラボ内のすべての VM のシャットダウン スケジュールを構成できます。 これを行うことで、使用中ではない (アイドル状態の) マシンを実行するコストを節約できます。 すべてのラボの VM 上にあるシャットダウン ポリシーを一元的に適用できるだけでなく、ラボ ユーザーが個々のマシンのスケジュールを設定する手間もかかりません。 この機能を利用して、制御権なしから完全な制御権の提供まで、ラボ ユーザーにラボ スケジュール上でのポリシーを設定できます。 ラボ所有者は、次の手順を実行してこのポリシーを構成できます。
 
 1. ラボの [ホーム] ページで、 **[構成とポリシー]** を選択します。
@@ -33,12 +37,12 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
     ![自動シャットダウン ポリシーのオプション](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>自動シャットダウンの設定を構成する
+### <a name="configure-auto-shutdown-settings"></a>自動シャットダウンの設定を構成する
 自動シャットダウン ポリシーでは、このラボの VM をシャットダウンする時刻を指定できるので、ラボの無駄を最小限に抑えるのに役立ちます。
 
 ラボのポリシーを表示 (および変更) するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。   
 4. **[Configuration and policies (構成とポリシー)]** を選択します。
@@ -72,7 +76,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 ![自動シャットダウン ポリシーのオプション - 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="notifications"></a>通知
+### <a name="notifications"></a>通知
 ラボ所有者が自動シャットダウンを設定すると、影響を受ける VM のユーザーに対し、自動シャットダウンがトリガーされる 30 分前に通知が送信されます。 このオプションにより、ラボ ユーザーはシャットダウンされる前に作業を保存する機会があります。 また、通知では、各 VM に対して次のアクションのためのリンクが提供されます。
 
 - この時間の自動シャットダウンをスキップします
@@ -82,7 +86,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 さまざまなアプリ (たとえば、Slack、Azure Logic Apps など) で広範にサポートされていて、独自の通知送信方法を実装できるため、Web hook を使うことをお勧めします。 この記事では、例として、Azure Logic Apps を使用してメールで自動シャットダウン通知を受け取る方法を示します。 最初に、ラボで自動シャットダウン通知を有効にする基本的な手順を簡単に見ておきましょう。   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>メール通知を受信するロジック アプリを作成する
+### <a name="create-a-logic-app-that-receives-email-notifications"></a>メール通知を受信するロジック アプリを作成する
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) で提供されている既製のコネクタを使うと、Office 365 や Twitter などの他のクライアントとサービスを簡単に統合できます。 メール通知用にロジック アプリをセットアップする概要レベルの手順は、4 つのフェーズに分類できます。 
 
 - ロジック アプリを作成します。 
@@ -185,5 +189,16 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
+## <a name="configure-autoshutdown-for-compute-vms"></a>コンピューティング VM の自動シャットダウンを構成する
+
+1. **[仮想マシン]** ページの左側メニューにある **[自動シャットダウン]** を選択します。 
+2. **[自動シャットダウン]** ページでこのポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+3. このポリシーを有効にする場合、VM をシャットダウンする**時刻**を指定 (と**タイム ゾーン**) します。
+4. 指定した自動シャットダウン時刻の 30 分前に通知を送信するオプションに対して、 **[はい]** または **[いいえ]** を指定します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。 詳しくは、「[通知](#notifications)」セクションをご覧ください。 
+9. **[保存]** を選択します。
+
+    ![コンピューティング VM の自動シャットダウンを構成する](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
 ## <a name="next-steps"></a>次のステップ
 すべてのポリシーの設定方法については、[Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。
+

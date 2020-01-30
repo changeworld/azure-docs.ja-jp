@@ -2,15 +2,15 @@
 title: トラブルシューティング
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438104"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548851"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-このエラーは、AKS ノードでマルチステージ ビルドをサポートしていない旧バージョンの Docker が実行されているために発生します。 マルチステージ ビルドを回避するには、Dockerfile を書き直します。
+このエラーが発生するのは、Azure Dev Spaces が現在マルチステージ ビルドをサポートしていないためです。 マルチステージ ビルドを回避するには、Dockerfile を書き直します。
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>開発マシンに接続するときに、ネットワーク トラフィックが AKS クラスターに転送されない
 
@@ -475,3 +475,12 @@ kubectl -n my-namespace delete pod --all
 | gcr.io | HTTP:443 | helm/tiller イメージをプルします|
 | storage.googleapis.com | HTTP:443 | helm/tiller イメージをプルします|
 | azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>エラー "Could not find the cluster \<cluster\> in subscription \<subscriptionId\>" (サブスクリプション subscriptionId にクラスター cluster が見つかりませんでした)
+
+kubeconfig ファイルが、Azure Dev Spaces クライアント側ツールで使用しようとしているものとは異なるクラスターまたはサブスクリプションを対象としている場合に、このエラーが表示されることがあります。 Azure Dev Spaces クライアント側ツールは、*kubectl* の動作をレプリケートし、[1 つ以上の kubeconfig ファイル](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)を使用して、クラスターを選択して通信します。
+
+この問題を解決するには、次の手順に従います。
+
+* `az aks use-dev-spaces -g <resource group name> -n <cluster name>` を使用して、現在のコンテキストを更新します。 このコマンドによって、AKS クラスターで Azure Dev Spaces も有効になります (まだ有効になっていない場合)。 または、`kubectl config use-context <cluster name>` を使用して現在のコンテキストを更新することもできます。
+* `az account show` を使用して、対象となっている現在の Azure サブスクリプションを表示し、これが正しいことを確認します。 `az account set` を使用して、対象とするサブスクリプションを変更できます。

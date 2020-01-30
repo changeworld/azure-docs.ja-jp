@@ -1,25 +1,17 @@
 ---
-title: StorSimple ボリュームの管理 (Update 3) | Microsoft Docs
+title: StorSimple ボリュームの管理 (Update 3)
 description: StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634818"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278840"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -325,7 +317,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 4. **[保存]** をクリックし、確認を求められたら、 **[はい]** をクリックします。 Azure Portal には、ボリュームの更新についての通知が表示され、その後、ボリュームが正常に更新された後、成功についてのメッセージが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple ボリュームを複製する](storsimple-8000-clone-volume-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。

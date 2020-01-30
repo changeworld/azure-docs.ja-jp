@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974155"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156762"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -48,9 +48,8 @@ Just-In-Time が有効になっている場合、Security Center では NSG ル�
 
 | ユーザーを有効にする目的: | 設定するアクセス許可|
 | --- | --- |
-| VM の JIT ポリシーを構成または編集する | *これらのアクションをロールに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/> ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` </li><li> VM のサブスクリプションまたはリソース グループの範囲: <br/>```Microsoft.Compute/virtualMachines/write```</li></ul> | 
-| ||
-|VM への JIT アクセスを要求する | *これらのアクションをユーザーに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  ```Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action``` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> ```Microsoft.Compute/virtualMachines/read``` </li></ul>|
+| VM の JIT ポリシーを構成または編集する | *これらのアクションをロールに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> VM のサブスクリプションまたはリソース グループの範囲: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+|VM への JIT アクセスを要求する | *これらのアクションをユーザーに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
 ## <a name="configure-jit-on-a-vm"></a>VM で JIT を構成する

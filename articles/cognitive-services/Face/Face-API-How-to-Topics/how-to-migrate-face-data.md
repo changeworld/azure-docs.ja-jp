@@ -1,7 +1,7 @@
 ---
-title: サブスクリプション間で顔データを移行する - Face API
+title: サブスクリプション間で顔データを移行する - Face
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、保存した顔データをある Face API サブスクリプションから別の Face API サブスクリプションに移行する方法について説明します。
+description: このガイドでは、保存した顔データをある Face サブスクリプションから別の Face サブスクリプションに移行する方法について説明します。
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859165"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169804"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
-このガイドでは、顔データ (顔と一緒に保存したPersonGroup オブジェクトなど) を別の Azure Cognitive Services Face API サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料試用版サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のために異なるリージョンのサブスクリプション間で顔データを同期することが必要な場合もあります。
+このガイドでは、顔データ (顔と一緒に保存した PersonGroup オブジェクトなど) を別の Azure Cognitive Services Face サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料試用版サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のために異なるリージョンのサブスクリプション間で顔データを同期することが必要な場合もあります。
 
-この同じ移行戦略は、LargePersonGroup オブジェクトと LargeFaceList オブジェクトにも適用されます。 このガイドの概念についてよくわからない場合は、「[顔認識の概念](../concepts/face-recognition.md)」ガイドにあるそれらの定義を参照してください。 このガイドでは、C# と共に Face API .NET クライアント ライブラリを使用しています。
+この同じ移行戦略は、LargePersonGroup オブジェクトと LargeFaceList オブジェクトにも適用されます。 このガイドの概念についてよくわからない場合は、「[顔認識の概念](../concepts/face-recognition.md)」ガイドにあるそれらの定義を参照してください。 このガイドでは、C# と共に Face .NET クライアント ライブラリを使用しています。
 
 ## <a name="prerequisites"></a>前提条件
 
 次のものが必要です。
 
-- 2 つの Face API サブスクリプション キー (1 つは既存のデータがあり、もう 1 つは移行先)。 Face API サービスをサブスクライブし、キーを取得するには、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従ってください。
-- ターゲット サブスクリプションに対応する Face API サブスクリプション ID の文字列。 これを見つけるには、Azure portal で **[概要]** を選択します。 
+- 2 つの Face サブスクリプション キー (1 つは既存のデータがあり、もう 1 つは移行先)。 Face サービスをサブスクライブし、キーを取得するには、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従ってください。
+- ターゲット サブスクリプションに対応する Face サブスクリプション ID の文字列。 これを見つけるには、Azure portal で **[概要]** を選択します。 
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-このガイドでは、顔データの移行を実行するために簡単なコンソール アプリを使用します。 完全な実装については、GitHub の [Face API のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)に関するページを参照してください。
+このガイドでは、顔データの移行を実行するために簡単なコンソール アプリを使用します。 完全な実装については、GitHub の [Face のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)に関するページを参照してください。
 
 1. Visual Studio で、新しいコンソール アプリ .NET Framework プロジェクトを作成します。 これに **FaceApiSnapshotSample** という名前を付けます。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブを選択し、 **[プレリリースを含める]** を選択します。 次のパッケージを検索してインストールします。
@@ -220,7 +220,7 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 
 今後ターゲットの PersonGroup を改めて更新するには、スナップショットを受け取るために新しい PersonGroup を作成します。 これを行うには、このガイドの手順に従います。 1 つの PersonGroup オブジェクトには 1 つのスナップショットを 1 回のみ適用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 顔データの移行が完了したら、スナップショット オブジェクトを手動で削除します。
 
@@ -228,12 +228,12 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、関連する API リファレンス ドキュメントを参照するか、スナップショット機能を使用するサンプル アプリを調べるか、またはハウツー ガイドに従って、ここで説明されているその他の API 操作の使用を開始してください。
 
 - [スナップショット リファレンス ドキュメント (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Face API のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [Face のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [顔を追加する](how-to-add-faces.md)
 - [画像内の顔を検出する](HowtoDetectFacesinImage.md)
 - [画像内の顔を識別する](HowtoIdentifyFacesinImage.md)

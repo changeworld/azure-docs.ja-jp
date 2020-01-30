@@ -1,5 +1,5 @@
 ---
-title: Azure Lab Services のクラスルーム ラボの使用設定を構成する | Microsoft Docs
+title: Azure Lab Services のクラスルーム ラボの使用設定を構成する
 description: ラボのユーザー数の構成、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584164"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169223"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 この記事では、ラボへのユーザーの追加、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。 
@@ -171,8 +171,8 @@ Microsoft アカウントにサインアップするには、学生は [http://s
 
 最後に、GitHub アカウントにリンクされている Microsoft アカウントを作成するように求められます。 これは、学生が **[次へ]** を選択したときに自動的に行われます。  学生はすぐにサインインし、クラスルーム ラボに接続されます。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)

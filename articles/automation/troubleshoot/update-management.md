@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769797"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513271"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -376,7 +376,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>更新プログラムを利用できることはわかっているが、自分のマシンに利用可能として表示されない
 
-* これは、多くの場合、WSUS または System Center Configuration Manager (SCCM) から更新プログラムを取得するようにマシンが構成されているのに、WSUS および SCCM で更新プログラムが承認されなかった場合に発生します。
+* これは、多くの場合、WSUS または Microsoft Endpoint Configuration Manager から更新プログラムを取得するようにマシンが構成されているのに、WSUS および Configuration Manager で更新プログラムが承認されなかった場合に発生します。
 * WSUS と SCCM のためにマシンが構成されているかどうかは、[こちらの記事の「レジストリを編集して自動更新を構成する」セクション内のレジストリ キーに対して UseWUServer レジストリ キーを相互参照する](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)ことでチェックできます。
 * 更新プログラムは、WSUS 内で承認されていない場合、インストールされません。 次のクエリを実行して、Log Analytics 内で未承認の更新プログラムを確認できます。
 

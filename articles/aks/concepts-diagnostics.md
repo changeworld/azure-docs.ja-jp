@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510616"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291381"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes Service (AKS) 診断の概要
 
@@ -72,13 +72,13 @@ AKS 診断にアクセスするには:
 
 ### <a name="identity-and-security-management"></a>ID とセキュリティ管理
 
-[Identity and security Management] (ID とセキュリティ管理) では、クラスターとの通信を妨げる可能性がある認証と承認のエラーを検出します。
+ID とセキュリティ管理では、クラスターとの通信を妨げる可能性がある認証と承認のエラーを検出します。
 
 - ノード承認エラー
 - 401 エラー
 - 403 エラー
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [AKS Periscope](https://aka.ms/aksperiscope) を使用してログを収集すると、クラスターの問題のさらなるトラブルシューティングに役立ちます。
 

@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892572"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293999"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -36,7 +36,7 @@ ms.locfileid: "74892572"
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>自分のファイル共有のバックアップ先コンテナーを変更することはできますか?
 
-はい。 ただし、接続されているコンテナーからの[保護を停止](backup-azure-files.md#stop-protecting-an-azure-file-share)し、そのストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)したうえで、別のコンテナーから保護する必要があります。
+はい。 ただし、接続されているコンテナーからの[ファイル共有の保護を停止](manage-afs-backup.md#stop-protection-on-a-file-share)し、そのストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)したうえで、別のコンテナーから保護する必要があります。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>どの geo に Azure ファイル共有をバックアップできますか?
 
@@ -91,7 +91,7 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>同じストレージ アカウントにある 2 つの異なるファイル共有を別々のコンテナーで保護することはできますか?
 
-No. 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
+いいえ。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
 
 ## <a name="backup"></a>バックアップ
 
@@ -103,7 +103,7 @@ Azure Backup では、現在、Azure ファイル共有の 1 日 1 回のスケ�
 
 どの時点でも、ファイル共有のスナップショットを 200 個まで作成することができます。 この制限には、ポリシーの定義に従って Azure Backup により作成されたスナップショットの数も含まれます。 この制限に達した後でバックアップが失敗するようになったら、将来のバックアップを正常に実行できるよう、オンデマンドの復元ポイントを削除してください。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>削除した Azure ファイル共有から復旧できますか。
 
@@ -135,7 +135,7 @@ Azure ファイル共有のバックアップでは、最大 180 日のリテン
 
 新しいポリシーをファイル共有に適用すると、新しいポリシーのスケジュールと保持期間が適用されます。 リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。 リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Backup のその他の領域の詳細については、これらの Backup に関する他の FAQ を参照してください。
 

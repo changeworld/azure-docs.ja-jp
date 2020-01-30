@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454655"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288959"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>エージェントレスの依存関係の視覚化を評価用に設定する
 
-この記事では、エージェントレスの依存関係マッピングを Azure Migrate:Server Assessment を使用して作成する方法について説明します。 現在、この機能は、Azure Migrate アプライアンスを使用して検出された VMware マシンに、プレビューとして利用できます。 
+この記事では、エージェントレスの依存関係マッピングを Azure Migrate:Server Assessment を使用して作成する方法について説明します。 
 
 > [!IMPORTANT]
 > Azure Migrate アプライアンスを使用して検出された Azure VMware VM のエージェントレスの依存関係の視覚化は現在プレビュー段階です。
@@ -54,17 +54,8 @@ ms.locfileid: "75454655"
 - 現在、エージェントレスの依存関係の分析は、VMware マシンでのみ使用できます。
 - プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
 - VMWare マシンが Azure Migrate で検出されていることを確認します。これを実行するには、[VMware](how-to-set-up-appliance-vmware.md) 用に Azure Migrate アプライアンスを設定します。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
-- 次の表に示すように、エージェントレスの依存関係の視覚化について VMware VM がサポートされていることを確認します。
+- エージェントレスの依存関係の視覚化を設定するための[要件を確認](migrate-support-matrix-vmware.md#agentless-dependency-visualization)します。
 
-
-### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-
-エージェントレスの依存関係の視覚化でサポートされるオペレーティング システムは次のとおりです。
-
-**Type** | **サポートされているオペレーティング システム**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 ビット)
-**Linux** | Red Hat Enterprise Linux 7、6、5 <br/> Ubuntu Linux 14.04、16.04 <br/> Debian 7、8 <br/> Oracle Linux 6、7 <br/> CentOS 5、6、7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>検出用のユーザー アカウントを作成する
@@ -96,10 +87,10 @@ ms.locfileid: "75454655"
 
 1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. **[依存関係の分析]** アイコンをクリックします。
-3. **[Start dependency discovery]\(依存関係の検出を開始する\)** をクリックします。
-3. **[Start dependency discovery]\(依存関係の検出を開始する\)** ページで、関連するマシンを検出しているアプライアンスを選択します。
+3. **[サーバーの追加]** をクリックします。
+3. **[サーバーの追加]** ページで、関連するマシンを検出しているアプライアンスを選択します。
 4. マシン一覧からマシンを選択します。
-5. **[Start dependency discovery]\(依存関係の検出を開始する\)** をクリックします。
+5. **[サーバーの追加]** をクリックします。
 
     ![依存関係の検出を開始する](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -132,10 +123,10 @@ ms.locfileid: "75454655"
 
 1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. **[依存関係の分析]** アイコンをクリックします。
-3. **[Stop dependency discovery]\(依存関係の検出を停止する\)** をクリックします。
-3. **[Stop dependency discovery]\(依存関係の検出を停止する\)** ページで、依存関係の検出を停止する対象の VM が検出された**アプライアンス**を選択します。
+3. **[サーバーの削除]** をクリックします。
+3. **[サーバーの削除]** ページで、依存関係の検出を停止する対象の VM が検出された**アプライアンス**を選択します。
 4. マシン一覧からマシンを選択します。
-5. **[Stop dependency discovery]\(依存関係の検出を停止する\)** をクリックします
+5. **[サーバーの削除]** をクリックします。
 
 
 ## <a name="next-steps"></a>次のステップ

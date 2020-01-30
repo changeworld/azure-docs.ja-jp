@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936200"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289137"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -58,7 +58,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 3. **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
-   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、西ヨーロッパ、東南アジア、オーストラリア南東部、米国中西部、東日本、英国南部、インド中部、カナダ中部。
+   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、米国西部 2、米国中南部、米国中西部、カナダ中部、西ヨーロッパ、英国南部、東南アジア、東日本、インド中部、オーストラリア南東部。
 
 4. **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
@@ -131,7 +131,7 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 
 6. ドロップダウン メニューから **[作業項目]** の種類を選択します。
    既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
-7. Click **OK**.
+7. **[OK]** をクリックします。
 
 Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成/更新されます。
 
@@ -152,7 +152,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 Service Map ソリューション内で、影響を受けるコンピューターに対して同期されたインシデントを視覚化することもできます。
 
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細情報](../../azure-monitor/insights/service-map.md)。
+サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細については、こちらを参照してください](../../azure-monitor/insights/service-map.md)。
 
 Service Map ソリューションを使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
@@ -161,7 +161,7 @@ Service Map ソリューションを使用する場合は、ITSM ソリューシ
 詳細情報: [サービス マップ](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM 製品から同期されるデータ
 インシデントと変更要求は、接続の構成に基づいて、ITSM 製品から Log Analytics ワークスペースに同期されます。
@@ -175,7 +175,7 @@ ITSMC によって収集されるデータの例を以下に示します。
 **作業項目:** **インシデント**  
 ServiceDeskWorkItemType_s="Incident"
 
-**フィールド**
+**Fields**
 
 - サービス デスク接続名
 - サービス デスク ID
@@ -189,9 +189,9 @@ ServiceDeskWorkItemType_s="Incident"
 - 終了者
 - source
 - 割当先
-- Category
+- カテゴリ
 - タイトル
-- 説明
+- [説明]
 - 作成日
 - 終了日
 - 解決日
@@ -203,7 +203,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
-**フィールド**
+**Fields**
 - サービス デスク接続名
 - サービス デスク ID
 - 作成者
@@ -212,8 +212,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 割当先
 - タイトル
 - 種類
-- Category
-- 状態
+- カテゴリ
+- State
 - エスカレーション
 - 競合状態
 - 緊急度
@@ -229,7 +229,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 終了予定日
 - 作業開始日
 - 作業終了日
-- 説明
+- [説明]
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow インシデントの出力データ
@@ -246,7 +246,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | 終了者 |
 | Source_s| 連絡先の種類 |
 | AssignedTo_s | 割り当て先  |
-| Category_s | Category |
+| Category_s | カテゴリ |
 | Title_s|  簡単な説明 |
 | Description_s|  メモ |
 | CreatedDate_t|  開始済み |
@@ -264,7 +264,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
 | Type_s|  種類 |
-| Category_s|  Category |
+| Category_s|  カテゴリ |
 | CRState_s|  State|
 | Urgency_s|  緊急度 |
 | Priority_s| Priority|
@@ -276,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | 説明 |
+| Description_s | [説明] |
 | Computer  | 構成項目 |
 
 
@@ -303,5 +303,5 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 IT Service Management Connector に関するご質問やフィードバックは、[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) にお寄せください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ITSM 製品/サービスを IT Service Management Connector に追加する](../../azure-monitor/platform/itsmc-connections.md)。

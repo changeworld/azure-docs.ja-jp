@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442065"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513511"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -395,4 +395,3 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 ## <a name="next-steps"></a>次のステップ 
   
 * 変更フィードについて詳しくは、「[Azure Cosmos DB での変更フィード サポートの使用](change-feed.md)」をご覧ください。 
-* Azure Cosmos DB を使用した医療組織用の[変更フィード通知ソリューション](change-feed-hl7-fhir-logic-apps.md)。

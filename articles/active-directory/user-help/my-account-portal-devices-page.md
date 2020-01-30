@@ -11,25 +11,27 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60eb0fb0f7129b148b4a30f9ed96b402d6b018fb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233210"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705158"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>[デバイス] ページから、ご利用の職場または学校アカウントに接続されているデバイスを管理する
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>接続されているデバイスを [デバイス] ページから管理する
 
-**[マイ アカウント]** ポータルの **[デバイス]** ページから、次のことができます。
+**マイ アカウント** ポータルの **[デバイス]** ページでは、ご利用の職場または学校アカウントに接続されているデバイスを管理できます。 **[デバイス]** ページから、次のことを実行できます。
 
 - 職場や学校のアカウントに接続されているデバイスを表示します。
 
 - 手放した、なくした、あるいは盗まれたデバイスがあれば、それを無効にします。
 
+>[!Important]
+>この記事は、職場または学校アカウントに接続されているデバイス情報を更新しようとしているユーザーを対象としています。 従業員およびその他の用途のデバイス管理情報を探している管理者の場合は、[デバイス ID のドキュメント](https://docs.microsoft.com/azure/active-directory/devices/index)を参照してください。
+
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
 
-1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** ページ (https://myprofile.microsoft.com/) に移動します。
 
 2. 左側のナビゲーション ウィンドウから **[デバイス]** を選択するか、 **[デバイス]** ブロックから **[デバイスの管理]** リンクを選択します。
 
@@ -62,7 +64,7 @@ ms.locfileid: "74233210"
 
 2. ロックアウトされたデバイスの **[Bitlocker キーを表示する]** を選択し、鍵を掛けられたデバイスの BitLocker キーを書き留めます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 接続されているデバイスを表示したら、次のことができます。
 
@@ -73,3 +75,13 @@ ms.locfileid: "74233210"
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する。
 
 - 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。
+
+## <a name="related-office-content"></a>関連する Office コンテンツ
+
+- [Office 製品にサインインして管理する](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Office の **[マイ アカウント]** ページにアクセスする](https://portal.office.com/account/)
+
+- [Office の **[インストール情報]** ページにアクセスする](https://portal.office.com/account/#installs)
+
+- [Office の **[サブスクリプション]** ページにアクセスする](https://portal.office.com/account/#subscriptions)

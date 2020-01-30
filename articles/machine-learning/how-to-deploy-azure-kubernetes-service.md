@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 11/06/2019
-ms.openlocfilehash: a61dea2b200b6e4962ce20e39939a75e78e81d0f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/16/2020
+ms.openlocfilehash: 32a1ac971edb55c6e162f02b60042056cd0fee0f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024937"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315050"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 - この記事の __Python__ コード スニペットは、次の変数が設定されていることを前提としています。
 
@@ -109,13 +109,13 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
 
 ## <a name="attach-an-existing-aks-cluster"></a>既存の AKS クラスターをアタッチする
 
 **推定所要時間:** 約 5 分です。
 
-Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.16 以前である場合は、それを使用してイメージをデプロイできます。
+Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.17 以前である場合は、それを使用してイメージをデプロイできます。
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。
@@ -187,7 +187,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
-Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
@@ -227,7 +227,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ### <a name="using-vs-code"></a>VS コードを使用する
 
-VS Code の使用については、「[モデルを展開して管理する](how-to-vscode-tools.md#deploy-and-manage-models)」を参照してください。
+VS Code の使用については、「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」を参照してください。
 
 > [!IMPORTANT]
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
@@ -251,9 +251,9 @@ endpoint_name = "mynewendpoint",
 version_name= "versiona",
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
-                                                              enable_app_insights = true,
+                                                              enable_app_insights = True,
                                                               tags = {'sckitlearn':'demo'},
-                                                              decription = testing versions,
+                                                              description = "testing versions",
                                                               version_name = version_name,
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
@@ -297,9 +297,9 @@ endpoint.delete_version(version_name="versionb")
 
 ## <a name="web-service-authentication"></a>Web サービス認証
 
-Azure Kubernetes Service にデプロイする場合、__キーベース__ の認証は既定で有効になります。 __トークン ベース__ の認証を有効にすることもできます。 トークン ベースの認証では、クライアントが Azure Active Directory アカウントを使用して認証トークンを要求する必要があります。これは、展開されたサービスへの要求を行うために使用されます。
+Azure Kubernetes Service にデプロイする場合、__キーベース__の認証は既定で有効になります。 __トークン ベース__の認証を有効にすることもできます。 トークン ベースの認証では、クライアントが Azure Active Directory アカウントを使用して認証トークンを要求する必要があります。これは、展開されたサービスへの要求を行うために使用されます。
 
-認証を __無効__ にするには、デプロイ構成の作成時に `auth_enabled=False` パラメーターを設定します。 次の例では、SDK を使用して認証を無効にします。
+認証を__無効__にするには、デプロイ構成の作成時に `auth_enabled=False` パラメーターを設定します。 次の例では、SDK を使用して認証を無効にします。
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)

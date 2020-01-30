@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428417"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313911"
 ---
 # <a name="train-svd-recommender"></a>SVD レコメンダーのトレーニング
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づいてレコメンデーション モデルをトレーニングできます。  
+この記事では、Azure Machine Learning デザイナーで Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づいてレコメンデーション モデルをトレーニングできます。  
 
 Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールは、ユーザー、項目、評価を表す 3 つの要素からなるデータセットを読み取ります。 これにより、トレーニング済みの SVD レコメンダーが返されます。 その後、トレーニング済みのモデルを使用して、[SVD レコメンダーのスコア付け](score-svd-recommender.md)モジュールを使用して評価を予測したり提案を生成したりすることができます。  
 

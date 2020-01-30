@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045270"
+ms.locfileid: "76155861"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)。
 
@@ -52,6 +52,7 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 | アプリ ロック機能とは何ですか、セキュリティの強化にどのように役立ちますか? | ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティを強化するには、Microsoft Authenticator アプリのアプリ ロック機能をオンにします。 Microsoft Authenticator アプリの **[設定]** 画面からアプリ ロック機能をオンにすることは、Microsoft Authenticator アプリを開くたびに、PIN または生体認証を使用して、認証を求められることを意味します。 この機能は保護を追加するもので、Microsoft Authenticator アプリで通知を承認する方法は変更されません。<br><br>**注**<br>デバイスの登録は、Microsoft Authenticator アプリ以外の場所 (ポータル サイト アプリや Android アカウント設定内など) で行われる可能性があるため、アプリ ロックによってユーザーが Microsoft Authenticator アプリにアクセスできなくなるという保証はありません。 |
 | なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか? | お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、アカウントの [[アカウントに関する重要でない通知の設定]](https://account.live.com/SecurityNotifications/Update) ページにサインインします。 |
 | iOS に付属している既定のメール アプリを使用して職場または学校のアカウントにサインインしているときに、Microsoft Authenticator アプリからセキュリティ検証情報を入力するよう求められます。 その情報を入力して、メール アプリに戻ると、エラーが表示されます。 どうすればよいですか。 | これは、サインインとメール アプリが 2 つの異なるアプリで実行されている場合に発生する可能性が高くなります。これにより、初期のバックグラウンド サインイン プロセスが動作しなかったり失敗したりします。 この問題を解決するには、メール アプリにサインインしているときに、画面の右下にある **[Safari]** アイコンを選択することをお勧めします。 Safari に移行することで、サインイン プロセス全体が 1 つのアプリで実行されるため、アプリに正常にサインインできます。 |
+| ワンタイム パスワード (OTP) コードが機能していません。 どうすればよいですか。 | デバイスの日付と時刻が正しいことと、自動的に同期されていることを確認してください。 日付と時刻が間違っているか、同期されていない場合、コードは機能しません。 |
 
 ## <a name="next-steps"></a>次のステップ
 

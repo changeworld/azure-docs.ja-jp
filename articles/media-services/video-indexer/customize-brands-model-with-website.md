@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838345"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513900"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用してブランド モデルをカスタマイズする
 
@@ -89,6 +89,6 @@ Bing ブランド データベースからのブランドを検出するかど�
 1. 削除するブランドの横にあるごみ箱アイコンをクリックします。
 2. [削除] をクリックすると、 *[ブランドの除外]* の一覧からそのブランドが消去されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API を使用してブランド モデルをカスタマイズする](customize-brands-model-with-api.md)

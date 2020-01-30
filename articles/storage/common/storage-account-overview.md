@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975703"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274560"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -64,17 +64,15 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage アカウント
 
-BlockBlobStorage アカウントは、非構造化オブジェクト データをブロック BLOB として格納するために使用する、特殊なストレージ アカウントです。 BlockBlobStorage アカウントを使用して、premium ブロック blob を作成することもできます。 この種類のストレージ アカウントは、ブロック BLOB と追加 BLOB をサポートしますが、ページ BLOB、テーブル、およびキューはサポートしません。
+BlockBlobStorage アカウントは、Premium パフォーマンス レベルで、非構造化オブジェクト データをブロック BLOB または追加 BLOB として格納することに特化したストレージ アカウントです。 汎用 v2 アカウントと BlobStorage アカウントと比べると、BlockBlobStorage アカウントは待ち時間が一貫して低く、高いトランザクション レートが実現されます。
 
-汎用 v2 ストレージ アカウントおよび BlobStorage アカウントと比べると、BlockBlobStorage アカウントは待ち時間が一貫して低く、高いトランザクション レートが実現されます。
-
-BlockBlobStorage アカウントは、現在、ホット、クール、またはアーカイブアクセス層への階層化をサポートしていません。
+BlockBlobStorage アカウントは、現在、ホット、クール、またはアーカイブアクセス層への階層化をサポートしていません。 この種類のストレージ アカウントでは、ページ BLOB、テーブル、またはキューはサポートされません。
 
 ### <a name="filestorage-accounts"></a>FileStorage アカウント
 
 FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 この種類のストレージ アカウントでは、ファイルはサポートされますが、ブロック BLOB、追加 BLOB、ページ BLOB、テーブル、およびキューはサポートされません。
 
-FileStorage ストレージ アカウントでは、IOPS バーストなど、固有のパフォーマンスに特化した特性が提供されています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
+FileStorage アカウントでは、IOPS バーストなど、固有のパフォーマンス特性が提供されています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
 
 ## <a name="naming-storage-accounts"></a>ストレージ アカウントの名前付け
 
@@ -85,12 +83,20 @@ FileStorage ストレージ アカウントでは、IOPS バーストなど、�
 
 ## <a name="performance-tiers"></a>パフォーマンス レベル
 
+作成するストレージ アカウントの種類に応じて、Standard と Premium のパフォーマンス レベルから選択できます。
+
+### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
+
 汎用ストレージ アカウントは、次のパフォーマンス レベルのいずれか向けに構成できます。
 
 - BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。 Standard Storage アカウントのスケーラビリティ ターゲットの詳細については、「[Standard Storage アカウントのスケーラビリティ ターゲット](scalability-targets-standard-account.md)」に関するページを参照してください。
-- アンマネージド仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。 Microsoft は、Azure 仮想マシンでアンマネージド ディスクではなく、マネージド ディスクを使用することをお勧めします。 Premium パフォーマンス レベルのスケーラビリティ ターゲットの詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../blobs/scalability-targets-premium-page-blobs.md)」に関するページを参照してください。
+- 仮想マシンのアンマネージド ディスクを格納するための Premium パフォーマンス レベル。 Microsoft は、Azure 仮想マシンでアンマネージド ディスクではなく、マネージド ディスクを使用することをお勧めします。 Premium パフォーマンス レベルのスケーラビリティ ターゲットの詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../blobs/scalability-targets-premium-page-blobs.md)」に関するページを参照してください。
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage ストレージ アカウント
 
 BlockBlobStorage アカウントでは、ブロック BLOB と追加 BLOB を格納するための Premium パフォーマンス レベルが提供されます。 詳細については、「[Premium ブロック BLOB ストレージ アカウントのスケーラビリティ ターゲット](../blobs/scalability-targets-premium-block-blobs.md)」を参照してください。
+
+### <a name="filestorage-storage-accounts"></a>FileStorage ストレージ アカウント
 
 FileStorage ストレージ アカウントは、Azure ファイル共有のための Premium パフォーマンス レベルを提供します。 詳細については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../files/storage-files-scale-targets.md)」を参照してください。
 
@@ -102,7 +108,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 
 - **ホット** アクセス層。 この層は、ストレージ アカウント内のオブジェクトへの頻繁なアクセスに対応するように最適化されています。 ホット層でのデータのアクセスは、費用対効果は最も高くなりますが、ストレージ コストは高くなります。 新しいストレージ アカウントは、既定ではホット層に作成されます。
 - **クール** アクセス層。 この層は、アクセスされる頻度が低いデータで、少なくとも 30 日以上保管される大量データを格納するために最適化されています。 クール層でのデータの格納は、費用対効果が高くなりますが、データへのアクセスがホット層でのデータへのアクセスよりも高くなる場合があります。
-- **アーカイブ**層。 アーカイブ層は、個々のブロック BLOB 用にのみ使用できます。 このアーカイブ層は、数時間の取得待機時間が許容され、少なくとも 180 日以上アーカイブ層に保持されるデータ用に最適化されています。 アーカイブ層は、データを格納するための最もコスト効率のよいオプションです。 しかし、ホット層またはクール層のデータにアクセスするよりも、そのデータにアクセスする方がコストが高くなります。
+- **アーカイブ**層。 この層は、個々のブロック BLOB と追加 BLOB 用にのみ使用できます。 このアーカイブ層は、数時間の取得待機時間が許容され、少なくとも 180 日以上アーカイブ層に保持されるデータ用に最適化されています。 アーカイブ層は、データを格納するための最もコスト効率のよいオプションです。 しかし、ホット層またはクール層のデータにアクセスするよりも、そのデータにアクセスする方がコストが高くなります。
 
 データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えできます。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 

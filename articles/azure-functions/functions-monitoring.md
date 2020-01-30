@@ -4,12 +4,12 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978085"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292928"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -74,7 +74,7 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 ![Application Insights で実行する](media/functions-monitoring/run-in-ai.png)
 
-次のクエリが表示されます。 呼び出しの一覧が過去 30 日間に制限されていることがわかります。 この一覧には最大 20 行 (`where timestamp > ago(30d) | take 20`) 表示されます。 呼び出しの詳細の一覧には、過去 30 日間のデータが、無制限で表示されます。
+次のクエリが表示されます。 クエリの結果が過去 30 日間 (`where timestamp > ago(30d)`) に制限されていることがわかります。 さらに、結果には 20 行以下しか表示されません (`take 20`)。 一方、関数の呼び出し詳細の一覧には、過去 30 日間のデータが無制限で表示されます。
 
 ![Application Insights Analytics 呼び出しの一覧](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -92,13 +92,13 @@ Application Insights の使用方法については、「[Application Insights �
 
 Application Insights の次の領域は、関数の動作、パフォーマンス、およびエラーを評価するときに役立ちます。
 
-| Tab | 説明 |
+| タブ | [説明] |
 | ---- | ----------- |
 | **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
 | **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | パフォーマンスの問題を分析します。 |
 | **サーバー** | サーバーごとのリソース使用率とスループットを表示します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。 |
 | **[メトリック](../azure-monitor/app/metrics-explorer.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
-| **[ライブ メトリック ストリーム](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをリアルタイムに表示します。 |
+| **[ライブ メトリック ストリーム](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをほぼリアルタイムに表示します。 |
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
@@ -119,7 +119,7 @@ requests
 
 使用可能なテーブルは、左側の **[スキーマ]** タブに表示されます。 次のテーブルで、関数呼び出しによって生成されたデータを確認できます。
 
-| テーブル | 説明 |
+| テーブル | [説明] |
 | ----- | ----------- |
 | **traces** | ランタイムや関数コードによって作成されたログ。 |
 | **requests** | 関数呼び出しごとの要求。 |
@@ -161,8 +161,8 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |デバッグ       | 1 |
 |Information | 2 |
 |警告     | 3 |
-|Error       | 4 |
-|重大    | 5 |
+|エラー       | 4 |
+|Critical    | 5 |
 |なし        | 6 |
 
 ログ レベル `None` については、次のセクションで説明します。 
@@ -337,7 +337,7 @@ Application Insights で traces として表示されるログを、ご使用の
 
 関数では、`TraceWriter` パラメーターではなく [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) パラメーターを使用します。 `TraceWriter` を使って作成されたログは Application Insights に送られますが、`ILogger` では[構造化ログ](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)を記録することができます。
 
-`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function" の `Information` ログが書き込まれます。
+`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function.<YOUR_FUNCTION_NAME>.User" の `Information` ログが書き込まれます。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -561,7 +561,7 @@ namespace functionapp0915
 
 関数呼び出しの要求が重複するため、`TrackRequest` や `StartOperation<RequestTelemetry>` を呼び出さないでください。  Functions ランタイムでは、要求が自動的に追跡されます。
 
-`telemetryClient.Context.Operation.Id` は設定しないでください。 このグローバル設定により、多くの関数が同時に実行されていると、正しくない相関関係が発生します。 代わりに、新しいテレメトリ インスタンス (`DependencyTelemetry`、`EventTelemetry`) を作成し、その `Context` プロパティを変更してください。 その後、テレメトリ インスタンスを、`TelemetryClient` (`TrackDependency()`、`TrackEvent()`) の対応する `Track` メソッドに渡します。 このメソッドにより、現在の関数呼び出しについて、テレメトリが必ず正しい相関関係の詳細を持つようになります。
+`telemetryClient.Context.Operation.Id` は設定しないでください。 このグローバル設定により、多くの関数が同時に実行されていると、正しくない相関関係が発生します。 代わりに、新しいテレメトリ インスタンス (`DependencyTelemetry`、`EventTelemetry`) を作成し、その `Context` プロパティを変更してください。 その後、テレメトリ インスタンスを、`TelemetryClient` (`TrackDependency()`、`TrackEvent()`、`TrackMetric()`) の対応する `Track` メソッドに渡します。 このメソッドにより、現在の関数呼び出しについて、テレメトリが必ず正しい相関関係の詳細を持つようになります。
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript 関数でカスタム テレメトリをログに記録する
 
@@ -590,7 +590,7 @@ module.exports = function (context, req) {
 
 ## <a name="dependencies"></a>依存関係
 
-Functions v2 は、HTTP 要求、ServiceBus、SQL の依存関係を自動的に収集します。
+Functions v2 により、HTTP 要求、ServiceBus、EventHub、SQL の依存関係が自動的に収集されます。
 
 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
 
@@ -670,7 +670,7 @@ Application Insights を有効にする場合は、Azure Storage を使用する
 
 組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

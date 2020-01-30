@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763166"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314727"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -168,9 +168,26 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
 
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>エラー:テーブルに複合主キーが含まれているため、統合された変更追跡ポリシーを使用できません
+
+これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
+
+
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>エラー:インデクサーの最大実行時間内にドキュメントを処理できませんでした
 
 このエラーは、許可された実行時間内にインデクサーがデータ ソースからの 1 つのドキュメントの処理を完了できない場合に発生します。 スキルセットが使用されていると、[最大実行時間](search-limits-quotas-capacity.md#indexer-limits)は短くなります。 このエラーが発生したとき、maxFailedItems が 0 以外の値に設定されていると、インデクサーは将来の実行時にドキュメントをバイパスして、インデックス作成を継続できるようにします。 ドキュメントをスキップする余裕がない場合、またはこのエラーが常に表示される場合は、1 回のインデクサー実行内で部分的にでも処理を進められるよう、ドキュメントを小さなドキュメントに分割することを検討してください。
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>エラー:ドキュメントを投影できませんでした
+
+このエラーは、インデクサーが[データをナレッジ ストアに投影](knowledge-store-projection-overview.md)しようとして失敗した場合に発生します。  この失敗は、一貫性があり修正可能な場合もあれば、プロジェクション出力シンクの一時的な失敗で、解決するには待機して再試行することが必要な場合もあります。  既知の障害状態と考えられる解決策のセットを次に示します。
+
+| 理由 | 詳細/例 | 解決策 |
+| --- | --- | --- |
+| コンテナー `'containerName'` 内のプロジェクション BLOB `'blobUri'` を更新できませんでした |指定されたコンテナーが存在しません。 | インデクサーは、指定されたコンテナーが既に作成されているかどうかを確認し、必要に応じて作成します。ただし、このチェックは、インデクサーの実行ごとに 1 回だけ実行されます。 このエラーは、この手順の後に、何らかによってコンテナーが削除されたことを意味します。  このエラーを解決するには、ストレージ アカウント情報をそのままにして、インデクサーが完了するのを待ってから再実行します。 |
+| コンテナー `'containerName'` 内のプロジェクション BLOB `'blobUri'` を更新できませんでした |データをトランスポート接続に書き込めません: リモート ホストによって、既存の接続は強制的に切断されました。 | これは、Azure Storage の一時的な失敗であると予想されるため、インデクサーを再実行して解決する必要があります。 このエラーが常に発生する場合は、さらに調査できるように、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。  |
+| テーブル `'tableName'` 内の行 `'projectionRow'` を更新できませんでした | サーバーがビジーです。 | これは、Azure Storage の一時的な失敗であると予想されるため、インデクサーを再実行して解決する必要があります。 このエラーが常に発生する場合は、さらに調査できるように、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

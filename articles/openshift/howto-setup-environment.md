@@ -1,20 +1,18 @@
 ---
-title: Azure Red Hat OpenShift 開発環境の設定 | Microsoft Docs
+title: Azure Red Hat OpenShift 開発環境の設定
 description: Microsoft Azure Red Hat OpenShift を使用して作業するための前提条件を示します。
-services: openshift
 keywords: red hat openshift セットアップ設定
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581611"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276084"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -108,11 +106,11 @@ Azure Red Hat OpenShift には、ストレージの構成など、クラスタ�
 
 「[Azure AD アプリ オブジェクトとユーザーの作成](howto-aad-app-configuration.md)」の手順に従って、サービス プリンシパルを作成し、アプリのクライアント シークレットと認証コールバック URL を生成し、クラスターにアクセスするための新しい Azure AD セキュリティ グループとユーザーを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以上で Azure Red Hat OpenShift を使用する準備ができました。
 
-チュートリアルをお試しください。
+次のチュートリアルを試してください。
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md)
 

@@ -3,18 +3,18 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173368"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152869"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
 この記事では、Azure Backup Server を使用して、VMware ESXi ホスト/vCenter Server 上で実行されている VMware VM を Azure にバックアップする方法について説明します。
 
-この記事では、次の方法について説明します。
+この記事では、以下の方法について説明します。
 
 - Azure Backup Server が HTTPS 経由で VMware サーバーと通信できるように、セキュリティで保護されたチャネルを設定します。
 - Azure Backup Server が VMware サーバーにアクセスするために使用する VMware アカウントを設定します。
@@ -24,7 +24,7 @@ ms.locfileid: "74173368"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- バックアップに対してサポートされている vCenter/ESXi のバージョン (バージョン 6.5、6.0、5.5) を実行していることを確認します。
+- バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)のサポート マトリックスを参照してください。
 - Azure Backup Server がセットアップされていることを確認します。 まだの場合は、始める前に[行います](backup-azure-microsoft-azure-backup.md)。 Azure Backup Server が最新の更新プログラムで実行されている必要があります。
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server へのセキュリティで保護された接続の作成
@@ -96,9 +96,11 @@ ms.locfileid: "74173368"
 
 1. 以下のテキストをコピーして、.txt ファイルに貼り付けます。
 
-       ```text
-      Windows Registry Editor Version 5.00    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]    "IgnoreCertificateValidation"=dword:00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. そのファイルを **DisableSecureAuthentication.reg** という名前で Azure Backup Server マシンに保存します。
 
@@ -128,26 +130,41 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 ### <a name="role-permissions"></a>ロールのアクセス許可
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **vCenter 6.5 以上のユーザー アカウントの権限**        | **vCenter 6.0 ユーザー アカウントの権限**               | **vCenter 5.5 ユーザー アカウントの権限** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| [データストア].[データストアの参照]                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
+| [データストア].[低レベルのファイル操作]                          | [グローバル].[カスタム属性の管理]                           | Datastore.AllocateSpace                     |
+| [データストア クラスタ].[データストア クラスタの設定]             | [グローバル].[カスタム属性の設定]                               | VirtualMachine.Config.ChangeTracking        |
+| [グローバル].[メソッドを無効にする]                                       | [ホスト].[ローカル操作].[仮想マシンの作成]              | VirtualMachine.State.RemoveSnapshot         |
+| [グローバル].[メソッドを有効にする]                                        | ネットワーク。 ネットワークの割り当て                                   | VirtualMachine.State.CreateSnapshot         |
+| [グローバル].[ライセンス]                                              | [リソース]. リソース プールへの仮想マシンの割り当て         | VirtualMachine.Provisioning.DiskRandomRead  |
+| [グローバル].[ログ イベント]                                             | [仮想マシン].[設定].[新規ディスクの追加]                | VirtualMachine.Interact.PowerOff            |
+| [グローバル].[カスタム属性の管理]                              | [仮想マシン].[設定].[詳細]                    | VirtualMachine.Inventory.Create             |
+| [グローバル].[カスタム属性の設定]                                  | [仮想マシン].[設定].[ディスク変更の追跡]        | VirtualMachine.Config.AddNewDisk            |
+| [ネットワーク].[ネットワークの割り当て]                                       | [仮想マシン].[設定].[ホストの USB デバイス]             | VirtualMachine.Config.HostUSBDevice         |
+| [リソース]. リソース プールへの仮想マシンの割り当て            | [仮想マシン].[設定].[所有していないファイルのクエリ]         | VirtualMachine.Config.AdvancedConfig        |
+| [仮想マシン].[設定].[新規ディスクの追加]                   | [仮想マシン].[設定].[スワップファイルの配置]          | VirtualMachine.Config.SwapPlacement         |
+| [仮想マシン].[設定].[詳細]                       | [仮想マシン].[相互作用].[パワーオフ]                     | Global.ManageCustomFields                   |
+| [仮想マシン].[設定].[ディスク変更の追跡]           | [仮想マシン].[インベントリ]. 新規作成                     |                                             |
+| [仮想マシン].[設定].[ディスクのリース]                     | [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]            |                                             |
+| [仮想マシン].[設定].[仮想ディスクの拡張]            | [仮想マシン].[プロビジョニング]. 読み取り専用ディスク アクセスの許可 |                                             |
+| [仮想マシン].[ゲスト操作].[ゲスト操作の変更] | [仮想マシン].[スナップショット管理].[スナップショットの作成]       |                                             |
+| [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行] | [仮想マシン].[スナップショット管理].[スナップショットの削除]       |                                             |
+| [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]     |                                                           |                                             |
+| [仮想マシン].[相互作用].[デバイス接続]              |                                                           |                                             |
+| [仮想マシン].[相互作用].[VIX API によるゲスト オペレーティング システム管理] |                                                           |                                             |
+| [仮想マシン].[インベントリ].[登録]                          |                                                           |                                             |
+| [仮想マシン].[インベントリ].[削除]                            |                                                           |                                             |
+| [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]              |                                                           |                                             |
+| [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]    |                                                           |                                             |
+| [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可] |                                                           |                                             |
+| [仮想マシン].[スナップショット管理]. スナップショットの作成        |                                                           |                                             |
+| [仮想マシン].[スナップショット管理].[スナップショットの削除]         |                                                           |                                             |
+| [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]      |                                                           |                                             |
+| [vApp].[仮想マシンの追加]                                     |                                                           |                                             |
+| [vApp].[リソース プールの割り当て]                                    |                                                           |                                             |
+| [vApp].[登録解除]                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>VMware アカウントを作成する
 
@@ -217,7 +234,7 @@ Azure Backup Server に vCenter Server を追加します。
 
     ![運用サーバーの追加ウィザード](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. **[Select Computers]** > **[サーバー名/IP アドレス]** で、VMware サーバーの FQDN または IP アドレスを指定します。 すべての ESXi サーバーが同じ vCenter で管理されている場合は、その vCenter の名前を指定します。 それ以外の場合は、ESXi ホストを追加します。
+3. **[コンピューターの選択]** の **[サーバー名/IP アドレス]** で、VMware サーバーの FQDN または IP アドレスを指定します。 すべての ESXi サーバーが同じ vCenter で管理されている場合は、その vCenter の名前を指定します。 それ以外の場合は、ESXi ホストを追加します。
 
     ![VMware サーバーを指定する](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
@@ -227,7 +244,7 @@ Azure Backup Server に vCenter Server を追加します。
 
     ![資格情報を指定する](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. **[追加]** をクリックして、VMware サーバーをサーバーのリストに追加します。 その後、 **[次へ]** をクリックします。
+6. **[追加]** をクリックして、VMware サーバーをサーバーのリストに追加します。 続けて、 **[次へ]** をクリックします。
 
     ![VMWare サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -255,14 +272,14 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
 1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** をクリックします。 **[グループ メンバーの選択]** ページが表示されます。
 
-1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 その後、 **[次へ]** をクリックします。
+1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 続けて、 **[次へ]** をクリックします。
 
     - フォルダーを選択すると、そのフォルダー内の VM またはフォルダーもバックアップ対象に選択されます。 バックアップしたくないフォルダーや VM はオフにすることができます。
 1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。
 
     ![グループ メンバーの選択](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 その後、 **[次へ]** をクリックします。
+1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 続けて、 **[次へ]** をクリックします。
 
     ![データ保護方法の選択](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -293,17 +310,17 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
     ![レプリカ作成方法の選択](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 その後、 **[次へ]** をクリックします。
+1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 続けて、 **[次へ]** をクリックします。
       - 整合性チェックは、レプリカ データが不整合になったときに実行することや、設定したスケジュールで実行することができます。
       - 自動整合性チェックを構成しない場合は、チェックを手動で実行できます。 これを行うには、保護グループを右クリックして、 **[Perform Consistency Check]\(整合性チェックの実行\)** を選択します。
 
-1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** をクリックしてすべてのメンバーを選択することができます。 その後、 **[次へ]** をクリックします。
+1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** をクリックしてすべてのメンバーを選択することができます。 続けて、 **[次へ]** をクリックします。
 
     ![オンライン保護データの指定](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. **[オンライン バックアップ スケジュールの指定]** ページで、ローカル ストレージから Azure にデータをバックアップする頻度を指定します。
 
-    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 その後、 **[次へ]** をクリックします。
+    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 続けて、 **[次へ]** をクリックします。
     - 復旧ポイントは生成されると、Azure の Recovery Services コンテナーに転送されます。
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -324,32 +341,32 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 vSphere 6.7 をバックアップするには、次の操作を行います。
 
 - DPM サーバー上で TLS 1.2 を有効にします
-  >[!Note]
-  >VMware 6.7 以降では、通信プロトコルとして TLS が有効になっていました。
+
+>[!NOTE]
+>VMWare 6.7 以降では、TLS が通信プロトコルとして有効になっています。
 
 - 次のようにレジストリ キーを設定します。
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 バックアップを設定するときの問題をトラブルシューティングする場合は、「[Azure Backup Server のトラブルシューティング](./backup-azure-mabs-troubleshoot.md)」をご覧ください。

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232786"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262488"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
@@ -96,9 +96,9 @@ ms.locfileid: "74232786"
 }
 ```
 
-次のコードはプリコンパイル済みの C# の例であり、アプリ設定として構成されているタスク ハブを操作するために[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)を使用する関数の記述方法を示しています。
+次のコードでは、アプリ設定として構成されているタスク ハブを操作するために[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)を使用する関数の記述方法を示しています。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -119,9 +119,9 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 `function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
 
@@ -133,6 +133,8 @@ public static async Task<HttpResponseMessage> Run(
     "direction": "in"
 }
 ```
+
+---
 
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、次の表に示すように、既定のタスク ハブ名が使用されます。
 
@@ -146,7 +148,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を明示的に構成する必要があります。 このようにしないと、複数の関数アプリがメッセージをめぐって互いに競合し、その結果、オーケストレーションが `Pending` または `Running` 状態で予期せず "スタック" するなど、未定義の動作が発生する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [オーケストレーションのバージョン管理を処理する方法の詳細](durable-functions-versioning.md)

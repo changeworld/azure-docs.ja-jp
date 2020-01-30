@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: ecc2a8236b51013895bfe831d6785ff3e6925906
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 03674d8fb42d56d6b4b40d8111c1a7bbce7c312b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979680"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514488"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -61,6 +61,7 @@ RTMP ライブ ストリーミングで次の新しいおすすめパートナ�
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>ファイル エンコードの機能強化
+
 - 新しいコンテンツに対応したエンコードのプリセットが使用できるようになりました。 これは、コンテンツに対応したエンコードを使用して、GOP がアラインメントされた MP4 セットを生成します。 入力コンテンツが指定されると、サービスは入力コンテンツの最初の軽量分析を実行します。 その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤー数、適切なビット レート、解像度の設定を決定します。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[オープン API 仕様](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)を参照してください。
 - Media Encoder Standard のサイズ変更機能の性能とマルチスレッドが改善されました。 特定の条件下では、お客様は 5% から 40% の VOD エンコードで性能向上をご体験いただけます。 複雑性が低いコンテンツが複数のビットレートにエンコードされるとき、最も高い性能アップを確認できます。 
 - 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
@@ -82,7 +83,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Indexer](../previous/media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer 2 プレビュー](../previous/media-services-process-content-with-indexer2.md) メディア プロセッサは、2020 年 1 月 1 日に廃止されます。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
@@ -100,7 +101,7 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
+お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、廃止される予定です。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。
 
 詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
  

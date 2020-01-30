@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462079"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121745"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** - アクセスされているリソースの URI。
 * **`sig`** - 署名。
 
-`signature-string` は、リソースの URI (前のセクションで説明した**スコープ**) とトークンの有効期限の文字列表現を CRLF で区切ったものに対して計算された SHA-256 ハッシュです。
+`signature-string` は、リソースの URI (前のセクションで説明した**スコープ**) とトークンの有効期限の文字列表現を LF で区切ったものに対して計算された SHA-256 ハッシュです。
 
 ハッシュ計算は次の擬似コードのようなもので、256 ビット/32 バイトのハッシュ値を返します。
 

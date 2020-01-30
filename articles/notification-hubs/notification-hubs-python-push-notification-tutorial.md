@@ -1,6 +1,6 @@
 ---
 title: Python で Notification Hubs を使用する方法
-description: Python バックエンドから Azure Notification Hubs を使用する方法について説明します。
+description: Python アプリケーションから Azure Notification Hubs を使用する方法について説明します。
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213067"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313829"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 
@@ -32,7 +32,7 @@ MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST 
 > [!NOTE]
 > これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。 サンプルは Python 3.4 を使用して作成されました。
 
-この記事では、その方法について説明します。
+この記事で取り上げるテクニック:
 
 - Python で Notification Hubs 機能の REST クライアントを記述します。
 - 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。
@@ -447,7 +447,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Notification Hubs 用の Python REST クライアントを作成する方法を示しました。 次は、以下を実行できます。
+この記事では、Notification Hubs 用の Python REST クライアントを作成する方法を示しました。 ここでは、次の操作を実行できます。
 
 - この記事のすべてのコードを含む完全な [Python REST ラッパー サンプル]をダウンロードします。
 - 引き続き、「 [ニュース速報チュートリアル]

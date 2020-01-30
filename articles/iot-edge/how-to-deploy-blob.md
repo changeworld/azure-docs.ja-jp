@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729609"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548783"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -37,7 +37,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 ### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レビューと作成** を行います。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レビューと作成** を行います。
 
 #### <a name="add-modules"></a>モジュールを追加する
 
@@ -57,11 +57,11 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    > [!IMPORTANT]
    > Azure IoT Edge は、モジュールを呼び出すときに大文字と小文字を区別し、Storage SDK も既定で小文字になります。 [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) でのモジュールの名前は **AzureBlobStorageonIoTEdge** ですが、名前を小文字に変更すると、IoT Edge モジュールの Azure Blob Storage への接続が中断されないことが保証されます。
 
-3. **[コンテナーの作成オプション]** タブで、ストレージアカウント情報を提供する JSON コードと、デバイス上のストレージのマウントを提供します。
+3. **[コンテナーの作成オプション]** タブを開きます。
 
    ![モジュール ツインの設定](./media/how-to-deploy-blob/addmodule-tab3.png)
 
-   次の手順で、プレースホルダーの説明を参照して、以降の JSON をコピーしてボックスに貼り付けます。
+   次の JSON をコピーしてボックスに貼り付け、ストレージ アカウント情報とデバイス上のストレージのマウントを提供します。
   
    ```json
    {
@@ -80,13 +80,13 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    }
    ```
 
-4. **コンテナーの作成オプション** にコピーした JSON を、次の情報で更新します:
+4. **[コンテナーの作成オプション]** にコピーした JSON を、次の情報で更新します。
 
    - `<your storage account name>` を覚えやすい名前に置き換えます。 アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。 スペースは含めません。
 
    - `<your storage account key>` を 64 バイトの Base64 キーに置き換えます。 [GeneratePlus](https://generate.plus/en/base64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
 
-   - コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。
+   - コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 BLOB モジュールによってそのデータが格納される[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上の既存のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。
 
      - Linux コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:/blobroot* です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:/blobroot**
@@ -94,7 +94,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
      - Windows コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:C:/BlobRoot* です。 次に例を示します。
          - [ボリュームマウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:C:/blobroot**。
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する:**C:/ContainerData:C:/BlobRoot**。
-         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
+         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、「[ローカル ストレージとして SMB 共有を使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)」を参照してください
 
      > [!IMPORTANT]
      > モジュールの特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
@@ -130,7 +130,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 6. **[追加]** を選択します。
 
-7. **次へ:ルート** 　でルート のセクションに進みます。
+7. **ルート** 　でルート のセクションに進みます。
 
 #### <a name="specify-routes"></a>ルートを指定する
 
@@ -261,6 +261,7 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 追加の BLOB ストレージ モジュールに接続すると、更新されたホスト ポートをポイントするエンドポイントを変更します。
 
 ## <a name="next-steps"></a>次のステップ
+
 [IoT Edge 上のAzure Blob Storage ](how-to-store-data-blob.md)の詳細を確認する
 
 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。

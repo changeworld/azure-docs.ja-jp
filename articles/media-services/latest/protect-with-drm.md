@@ -1,5 +1,5 @@
 ---
-title: DRM 動的暗号化とライセンス配信サービスの使用
+title: Azure Media Services DRM の暗号化とライセンス配信サービス
 titleSuffix: Azure Media Services
 description: Microsoft PlayReady、Google Widevine、または Apple FairPlay のライセンスで暗号化されたストリームを、DRM 動的暗号化とライセンス販売サービスを使用して配信する方法について説明します。
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974072"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513067"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -131,7 +131,7 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 1. [ストリーミング ロケーター](streaming-locators-concept.md)を作成します。
 2. クライアントが使用できるストリーミング URL を作成します。
 
-**ストリーミング ロケーター**を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に**ストリーミング ロケーター**が有効になります。 オプションで開始時刻と終了時刻を構成しない限り、これは削除されるまで存続します。
+**ストリーミング ロケーター**を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に**ストリーミング ロケーター**が有効になります。 オプションの開始時間と終了時間を構成しない限り、その状態は削除されるまで継続されます。
 
 **ストリーミング ロケーター**を作成するときは、使用する `StreamingPolicyName` を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。このポリシーは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 PlayReady と Widevine の暗号化が適用され、キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
 
@@ -150,7 +150,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="build-a-streaming-url"></a>ストリーミング URL を作成する
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、"*既定の*" **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の***ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の***ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -166,7 +166,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。
 
@@ -178,13 +178,13 @@ az group delete --name amsResourceGroup
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のページを確認してください
 

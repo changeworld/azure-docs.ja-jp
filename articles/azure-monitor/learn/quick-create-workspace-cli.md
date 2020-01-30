@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 66850c3871981a537d36c3b2a3a664d8a2f2eee7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b696d57919383e87f8e5e647b774fc9e4dbdf16b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977716"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513475"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -20,7 +20,7 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 
 * サブスクリプション内の Azure リソース  
 * System Center Operations Manager によって監視されているオンプレミスのコンピューター  
-* System Center Configuration Manager のデバイス コレクション  
+* Configuration Manager のデバイス コレクション  
 * Azure ストレージからの診断またはログ データ  
 
 環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。

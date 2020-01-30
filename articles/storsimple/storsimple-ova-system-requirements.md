@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array のシステム要件 | Microsoft Docs
+title: Microsoft Azure StorSimple Virtual Array のシステム要件
 description: StorSimple Virtual Array のソフトウェア要件とネットワーク要件について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516697"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273768"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 
@@ -43,7 +36,7 @@ ms.locfileid: "68516697"
 ソフトウェア要件には、サポートされている Web ブラウザー、SMB のバージョン、仮想化プラットフォーム、仮想デバイスの最小要件に関する情報が含まれています。
 
 ### <a name="supported-virtualization-platforms"></a>サポートされている仮想化プラットフォーム
-| **ハイパーバイザー** | **バージョン** |
+| **ハイパーバイザー** | **Version** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 以降 |
 | VMware ESXi |5.0、5.5、6.0、および 6.5。 |
@@ -65,7 +58,7 @@ ms.locfileid: "68516697"
 <sup>2</sup> - ネットワーク要件は、日次データ変化率によって異なる場合があります。 たとえば、デバイスで 1 日に 10 GB 以上の変更をバックアップする必要がある場合、5 Mbps 接続での日次バックアップには最大 4.25 時間かかる可能性があります (データの圧縮も重複除去もできなかった場合)。
 
 ### <a name="supported-web-browsers"></a>サポートされている Web ブラウザー
-| **コンポーネント** | **バージョン** | **その他の要件/注意事項** |
+| **コンポーネント** | **Version** | **その他の要件/注意事項** |
 | --- | --- | --- |
 | Microsoft Edge |最新バージョン | |
 | Internet Explorer |最新バージョン |Internet Explorer 11 でテスト済み |
@@ -102,9 +95,9 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 <br></br> ファイル サーバーをデプロイする場合は、ローカル DNS サーバーを使用することをお勧めします。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。<br></br> ファイル サーバーをデプロイする場合は、Active Directory ドメイン コントローラーと時刻を同期することをお勧めします。 |
-| TCP 80 (HTTP) |イン |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 <br></br> HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。 |
-| TCP 443 (HTTPS) |イン |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 |
-| TCP 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| TCP 80 (HTTP) |場所 |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 <br></br> HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。 |
+| TCP 443 (HTTPS) |場所 |LAN |はい |これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。 |
+| TCP 3260 (iSCSI) |場所 |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -136,5 +129,5 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | `https://*.partners.extranet.microsoft.com/*` |サポート パッケージ |
 | `https://*.data.microsoft.com` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)

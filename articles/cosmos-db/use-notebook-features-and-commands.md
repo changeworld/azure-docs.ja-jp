@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB の組み込みノートブックのコマンドと機能を使用する
+title: Azure Cosmos DB の組み込みノートブックのコマンドと機能を使用する (プレビュー)
 description: Azure Cosmos DB の組み込みノートブックを使用し、組み込みのコマンドと機能で一般的な操作を実行する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444654"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513401"
 ---
-# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Azure Cosmos DB の組み込みノートブックのコマンドと機能を使用する
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Azure Cosmos DB の組み込みノートブックのコマンドと機能を使用する (プレビュー)
 
 Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると、Azure portal のデータを分析して視覚化することができます。 この記事では、組み込みノートブックのコマンドと機能を使用して一般的な操作を行う方法について説明します。
 

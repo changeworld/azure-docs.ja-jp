@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680530"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293982"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -92,6 +92,19 @@ RPO が 15 分の SAP HANA バックアップに対するプライベート プ�
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>毎日のバックアップ ポイントに許容される最小リテンション期間の範囲はどれぐらいですか。
 
 Azure Virtual Machine のバックアップ ポリシーでは、最小リテンション期間の範囲として 7 日から 9999 日までがサポートされています。 7 日間未満に設定された既存の VM バックアップ ポリシーを変更するには、7 日間という最小リテンション期間の範囲を満たすように更新する必要があります。
+
+### <a name="can-i-backup-or-restore-selective-disks-attached-to-a-vm"></a>VM に接続されているディスクを選択的にバックアップまたは復元できますか。
+
+Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。
+
+現在、Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 ディスクを除外する機能を使用すると、VM の多数のデータ ディスクから 1 つまたは複数のデータ ディスクのバックアップを作成することができます。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクのデータが含まれています。これにより、復元操作中に特定の復旧ポイントから復元されたディスクのサブセットを使用できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
+
+このソリューションは、次のようなシナリオで特に役立ちます。
+  
+1. 重要なデータを 1 つのディスクのみにバックアップし、VM に接続されている残りのディスクをバックアップしないようにすることができます。 これにより、バックアップ ストレージのコストが最小限に抑えられます。  
+2. VM データの一部については、他のバックアップ ソリューションがあります。 たとえば、データベースまたはデータを別のワークロード バックアップ ソリューションでバックアップし、残りのディスクとデータに対して Azure VM レベルのバックアップを使用して、使用可能な最適な機能を活用した効率的で堅牢なシステムを構築できます。
+
+プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
 
 ## <a name="restore"></a>[復元]
 

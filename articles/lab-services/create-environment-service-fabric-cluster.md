@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs で Service Fabric クラスターがある環境を作成する | Microsoft Docs
+title: Azure DevTest Labs で Service Fabric クラスター環境を作成する
 description: 自己完結型 Service Fabric クラスターがある環境を作成し、そのクラスターをスケジュールを使用して開始および停止する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325250"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170335"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs で Service Fabric クラスターがある環境を作成する
 この記事では、Azure DevTest Labs で自己完結型 Service Fabric クラスターがある環境を作成する方法について説明します。 
@@ -127,7 +127,7 @@ Service Fabric クラスターは、スケジュールに従って開始また�
 
     ![Service Fabric クラスターのホーム ページ](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 環境の詳細については、次の記事を参照してください。 
 
 - [Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)

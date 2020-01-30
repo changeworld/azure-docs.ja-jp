@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b939e88606fba5d7759e55239838d5308bf0563c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428485"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314948"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Permutation Feature Importance (順列の特徴量の重要度) モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
+この記事では、Azure Machine Learning デザイナーで順列の特徴量の重要度モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
 
 このモジュールでは、特徴の値は一度に 1 列ずつランダムにシャッフルされます。 その前後のモデルのパフォーマンスが測定されます。 標準メトリックの 1 つを選択してパフォーマンスを測定できます。
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690794"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122442"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -223,7 +223,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. [SQL 仮想マシン](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) リソースに移動します。 
 1. 対象の SQL Server 仮想マシンを選択し、 **[概要]** を選択します。 
 1. IaaS モードが NoAgent または軽量である SQL Server VM では、**SQL IaaS 拡張機能で利用できるのはライセンスの種類とエディションの更新のみ**という内容のメッセージを選択します。
@@ -265,7 +265,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
 
 ### <a name="azure-portal"></a>Azure portal 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. お使いの [SQL Server 仮想マシン](virtual-machines-windows-sql-manage-portal.md)に移動します。
 1. 一覧から SQL Server VM を選択します。 お使いの SQL Server VM がここに表示されていない場合は、SQL VM リソースプロバイダーに登録されていない可能性があります。 
 1. **[状態]** の値を確認します。 **[状態]** が **[成功]** の場合は、その SQL Server VM が正常に SQL VM リソースプロバイダーに登録されています。 
@@ -419,11 +419,11 @@ SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必�
 
 **SQL Server をインストールする前に、VM を SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
+いいえ。 SQL VM リソース プロバイダーに正常に登録するには、VM に少なくとも 1 つの SQL Server (データベース エンジン) インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
 
 **複数の SQL Server インスタンスがある場合、VM を SQL VM リソースプロバイダーに登録できますか?**
 
-はい。 SQL VM リソースプロバイダーが登録する SQL Server インスタンスは 1 つだけです。 複数のインスタンスがある場合、SQL VM リソースプロバイダーは既定の SQL Server インスタンスを登録します。 既定のインスタンスがない場合、軽量モードでの登録のみがサポートされます。 軽量から完全管理モードにアップグレードするには、既定の SQL Server インスタンスが存在するか、VM に名前付き SQL Server インスタンスが 1 つだけ存在する必要があります。
+はい。 SQL VM リソース プロバイダーが登録する SQL Server インスタンス (データベース エンジン) は 1 つだけです。 複数のインスタンスがある場合、SQL VM リソースプロバイダーは既定の SQL Server インスタンスを登録します。 既定のインスタンスがない場合、軽量モードでの登録のみがサポートされます。 軽量から完全管理モードにアップグレードするには、既定の SQL Server インスタンスが存在するか、VM に名前付き SQL Server インスタンスが 1 つだけ存在する必要があります。
 
 **SQL Server フェールオーバー クラスター インスタンスを SQL VM リソースプロバイダーに登録できますか?**
 

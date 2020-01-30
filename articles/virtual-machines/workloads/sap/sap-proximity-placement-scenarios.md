@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805707"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277589"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ
 SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP アプリケーションは、SAP アプリケーション層と SAP データベース層の間のネットワーク待ち時間の影響を受けます。 この影響は、アプリケーション レイヤーで実行されているほとんどのビジネス ロジックの結果です。 SAP アプリケーション レイヤーはビジネス ロジックを実行するため、データベース層に対して、1 秒あたり何千回または何万回という高い頻度でクエリを実行します。 これらのクエリの性質は、ほとんどの場合単純です。 多くの場合、データベース層で 500 マイクロ秒以内で実行できます。
@@ -156,14 +156,14 @@ New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Locati
 > 1 つの DBMS VM をあるゾーンにデプロイし、2 つ目の DBMS VM を別のゾーンにデプロイして高可用性構成を作成するため、ゾーンごとに異なる近接通信配置グループが必要になります。 使用するどの可用性セットでも同様です。
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>既存のシステムを近接通信配置グループに移動する
-既に SAP システムをデプロイしている場合は、重要なシステムの一部のネットワーク待ち時間を最適化し、アプリケーション レイヤーと DBMS レイヤーを同じデータセンターに配置することができます。 近接通信配置グループのパブリック プレビュー中は、VM を削除し、新しい VM を作成して、近接通信配置グループにシステムを移動する必要があります。 現時点では、単に VM をシャットダウンして、それらを近接通信配置グループに割り当てることはできません。
+既に SAP システムをデプロイしている場合は、重要なシステムの一部のネットワーク待ち時間を最適化し、アプリケーション レイヤーと DBMS レイヤーを同じデータセンターに配置することができます。 完全な Azure 可用性セットの VM を、既にスコープが設定されている既存の近接通信配置グループに移動するには、Azure portal、PowerShell または CLI を使用して、可用性セットの VM をすべてシャットダウンし、可用性セットを既存の近接通信配置グループに割り当てる必要があります。 可用性セットの一部ではない VM を既存の近接通信配置グループに移動する場合は、その VM をシャットダウンして、既存の近接通信配置グループに割り当てるだけです。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のドキュメントを参照してください。
 
 - [Azure での SAP ワークロードの計画とデプロイに関するチェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [プレビュー: Azure CLI を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [プレビュー: PowerShell を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
+- [プレビュー:Azure CLI を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
+- [プレビュー:PowerShell を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
 - [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 

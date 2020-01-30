@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service と Swarm を使用した CI/CD
 description: Azure Container Service、Docker Swarm、Azure Container Registry、および Azure DevOps を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します
-services: container-service
 author: jcorioland
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598542"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549055"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(非推奨) Docker Swarm と Azure DevOps Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -22,7 +20,6 @@ ms.locfileid: "68598542"
 
 クラウド向けの最新のアプリケーションを開発する際の最も大きな課題の 1 つは、これらのアプリケーションを継続的に配信できるようにすることです。 この記事では、Azure Container Service、Docker Swarm、Azure Container Registry、および Azure Pipelines 管理を使用して、完全な CI/CD (継続的な統合とデプロイ) パイプラインを実装する方法について説明します。
 
-この記事は、[GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs) から入手できる、ASP.NET Core で開発された単純なアプリケーションに基づいています。 このアプリケーションは、4 つの異なるサービス、3 つの Web API、および 1 つの Web フロント エンドで構成されています。
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -46,16 +43,16 @@ ms.locfileid: "68598542"
 このチュートリアルを開始する前に、次のタスクを実行する必要があります。
 
 - [Azure コンテナー サービスに Swarm クラスターを作成する](container-service-deployment.md)
-- [Azure コンテナー サービスの Swarm クラスターと接続する](../container-service-connect.md)
+- [Azure Container Service 内の Swarm クラスターと接続する](../container-service-connect.md)
 - [Azure コンテナー レジストリを作成する](../../container-registry/container-registry-get-started-portal.md)
 - [Azure DevOps Services 組織とプロジェクトを作成しておく](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [GitHub アカウントに GitHub リポジトリをフォークする](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Docker がインストールされた Ubuntu (14.04 または 16.04) マシンも必要です。 このマシンは、Azure Pipelines プロセスの間に Azure DevOps Services によって使用されます。 このマシンを作成する方法の 1 つに、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) から入手できるイメージを使用する方法があります。 
+Docker がインストールされた Ubuntu (14.04 または 16.04) マシンも必要です。 このマシンは、Azure Pipelines プロセスの間に Azure DevOps Services によって使用されます。 このマシンを作成する方法の 1 つに、Azure Marketplace から入手できるイメージを使用する方法があります。 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>手順 1: Azure DevOps Services 組織の構成 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>手順 1:Azure DevOps Services 組織の構成 
 
 このセクションでは、Azure DevOps Services 組織を構成します。
 
@@ -107,7 +104,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 
 これで、すべての構成は完了です。 次の手順では、アプリケーションをビルドし、Docker Swarm クラスターにデプロイする CI/CD パイプラインを作成します。 
 
-## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインを作成する
+## <a name="step-2-create-the-build-pipeline"></a>手順 2:ビルド パイプラインを作成する
 
 この手順では、Azure DevOps Services プロジェクトのビルド パイプラインを設定し、コンテナー イメージのビルド ワークフローを定義します
 
@@ -172,7 +169,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 
 1. **[保存]** をクリックし、ビルド パイプラインに名前を付けます。
 
-## <a name="step-3-create-the-release-pipeline"></a>手順 3: リリース パイプラインの作成
+## <a name="step-3-create-the-release-pipeline"></a>手順 3:リリース パイプラインの作成
 
 Azure DevOps Services を使用すると、[複数の環境のリリースを管理](https://www.visualstudio.com/team-services/release-management/)できます。 継続的なデプロイを有効にして、さまざまな環境 (開発、テスト、運用前、運用など) にアプリケーションをスムーズにデプロイすることができます。 Azure Container Service の Docker Swarm クラスターを表す新しい環境を作成できます。
 

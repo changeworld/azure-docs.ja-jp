@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476153"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773142"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
 
@@ -22,7 +22,7 @@ Azure の主な利点は一貫性です。 ある場所に対する開発投資�
 Microsoft は、次のように、インテリジェントでエンタープライズ対応のクラウド サービスをさまざまな場所で提供しています。
 
 * Microsoft が管理するデータセンターのネットワークを世界中のリージョンに拡大することでサポートされるグローバル Azure プラットフォーム。
-* Azure Germany、Azure Government、Azure China (21Vianet が運営する Azure) など、分離されたソブリン クラウド。 ソブリン クラウドは、グローバル Azure ユーザーがアクセスできるものと同じ優れた機能の大部分と一貫性があるプラットフォームを提供します。
+* Azure Germany、Azure Government、Azure China 21Vianet など、分離されたソブリン クラウド。 ソブリン クラウドは、グローバル Azure ユーザーがアクセスできるものと同じ優れた機能の大部分と一貫性があるプラットフォームを提供します。
 * ユーザーが組織のデータセンターから Azure サービスを提供できるようにするハイブリッド クラウド プラットフォームである Azure Stack。 企業は、自社のデータセンターに Azure Stack を設定することも、(ホストされたリージョンとも呼ばれる) 自社の施設で Azure Stack を運用するサービス プロバイダーから Azure サービスを利用することもできます。
 
 すべてのクラウドの中核では、Azure Resource Manager が提供する API により、さまざまなユーザー インターフェイスが Azure プラットフォームと通信できます。 この API は、コードとしてのインフラストラクチャの強力な機能を提供します。 Azure Resource Manager では、Azure クラウド プラットフォームで利用可能なすべての種類のリソースを展開して構成できます。 1 つのテンプレートを使って、完全なアプリケーションを展開して構成し、最終的な運用状態にすることができます。
@@ -47,15 +47,15 @@ Azure Resource Manger テンプレートの概要については、「[テンプ
 
 Resource Manager テンプレートの基本的な構文は JSON です。 テンプレートは JSON のスーパーセットを使用しており、式と関数について構文が拡張されています。 テンプレートの言語プロセッサは、追加されたテンプレート関数をサポートするために頻繁に更新されます。 使用可能なテンプレート関数の詳細については、「[Azure Resource Manager テンプレートの関数](template-functions.md)」をご覧ください。
 
-ソブリン クラウドまたは Azure Stack では、Azure Resource Manager に導入された新しいテンプレート関数をすぐに利用することはできません。 テンプレートを正常に展開するには、テンプレートで参照されているすべての関数を展開先のクラウドで使用できる必要があります。 
+ソブリン クラウドまたは Azure Stack では、Azure Resource Manager に導入された新しいテンプレート関数をすぐに利用することはできません。 テンプレートを正常に展開するには、テンプレートで参照されているすべての関数を展開先のクラウドで使用できる必要があります。
 
-Azure Resource Manager の機能は、常にグローバル Azure に最初に導入されます。 次の PowerShell スクリプトを使用すると、新しく導入されたテンプレート関数を Azure Stack でも使用できるかどうかを確認できます。 
+Azure Resource Manager の機能は、常にグローバル Azure に最初に導入されます。 次の PowerShell スクリプトを使用すると、新しく導入されたテンプレート関数を Azure Stack でも使用できるかどうかを確認できます。
 
 1. GitHub リポジトリ [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) の複製を作成します。
 
 1. リポジトリのローカルな複製を作成したら、PowerShell で対象の Azure Resource Manager に接続します。
 
-1. psm1 モジュールをインポートし、Test-AzureRmureRmTemplateFunctions コマンドレットを実行します。
+1. psm1 モジュールをインポートし、Test-AzureRmTemplateFunctions コマンドレットを実行します。
 
    ```powershell
    # Import the module
@@ -69,7 +69,7 @@ Azure Resource Manager の機能は、常にグローバル Azure に最初に�
 
 ## <a name="working-with-linked-artifacts"></a>リンクされた成果物の操作
 
-テンプレートは、リンクされた成果物への参照、および別のテンプレートにリンクしている展開リソースを含むことができます。 リンクされたテンプレート (入れ子になったテンプレートとも呼ばれます) は、Resource Manager によって実行時に取得されます。 テンプレートは、仮想マシン (VM) 拡張機能に対する成果物への参照も含むことができます。 これらの成果物は、テンプレートの展開中に VM 拡張機能を構成するため、VM 内で実行している VM 拡張機能によって取得されます。 
+テンプレートは、リンクされた成果物への参照、および別のテンプレートにリンクしている展開リソースを含むことができます。 リンクされたテンプレート (入れ子になったテンプレートとも呼ばれます) は、Resource Manager によって実行時に取得されます。 テンプレートは、仮想マシン (VM) 拡張機能に対する成果物への参照も含むことができます。 これらの成果物は、テンプレートの展開中に VM 拡張機能を構成するため、VM 内で実行している VM 拡張機能によって取得されます。
 
 次のセクションでは、メインのデプロイ テンプレートの外部にある成果物を含むテンプレートを開発するときのクラウドの一貫性に関する考慮事項について説明します。
 
@@ -82,9 +82,9 @@ Azure Resource Manager の機能は、常にグローバル Azure に最初に�
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Azure Resource Manager は、実行時にメイン テンプレートを評価�
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>リンクされたテンプレートをクラウド間でアクセスできるようにする
 
-使用するリンクされたテンプレートを格納する場所と方法を検討します。 実行時に、Azure Resource Manager はリンクされたテンプレートをすべてフェッチするので、リンクされたテンプレートに直接アクセスする必要があります。 一般的な方法としては、GitHub を使用して入れ子になったテンプレートを格納します。 GitHub リポジトリは、URL を使ってパブリックにアクセスできるファイルを含むことができます。 パブリック クラウドとソブリン クラウドの場合はこの方法で問題ありませんが、Azure Stack 環境は、企業ネットワーク上または切断されたリモートの場所に配置されていて、インターネットに送信アクセスできないことがあります。 このような場合、Azure Resource Manager は入れ子になったテンプレートを取得できません。 
+使用するリンクされたテンプレートを格納する場所と方法を検討します。 実行時に、Azure Resource Manager はリンクされたテンプレートをすべてフェッチするので、リンクされたテンプレートに直接アクセスする必要があります。 一般的な方法としては、GitHub を使用して入れ子になったテンプレートを格納します。 GitHub リポジトリは、URL を使ってパブリックにアクセスできるファイルを含むことができます。 パブリック クラウドとソブリン クラウドの場合はこの方法で問題ありませんが、Azure Stack 環境は、企業ネットワーク上または切断されたリモートの場所に配置されていて、インターネットに送信アクセスできないことがあります。 このような場合、Azure Resource Manager は入れ子になったテンプレートを取得できません。
 
-クロスクラウド デプロイでのよりよい方法は、ターゲット クラウドがアクセスできる場所にリンクされたテンプレートを格納することです。 理想的には、すべての展開成果物を、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインで保持し、そこから展開します。 または、入れ子になったテンプレートを BLOB ストレージ コンテナーに格納することもでき、Azure Resource Manager はそこからテンプレートを取得できます。 
+クロスクラウド デプロイでのよりよい方法は、ターゲット クラウドがアクセスできる場所にリンクされたテンプレートを格納することです。 理想的には、すべての展開成果物を、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインで保持し、そこから展開します。 または、入れ子になったテンプレートを BLOB ストレージ コンテナーに格納することもでき、Azure Resource Manager はそこからテンプレートを取得できます。
 
 各クラウド上の BLOB ストレージは異なるエンドポイントの完全修飾ドメイン名 (FQDN) を使用するので、リンクされたテンプレートの場所を 2 つのパラメーターで指定してテンプレートを構成します。 パラメーターは、展開時にユーザー入力を受け取ることができます。 通常、テンプレートは複数のユーザーによって作成されて共有されるため、ベスト プラクティスはこれらのパラメーターに標準的な名前を使うことです。 名前付け規則を設けると、異なるリージョン、クラウド、作成者の間でテンプレートをいっそう再利用しやすくなります。
 
@@ -132,9 +132,9 @@ Azure Resource Manager は、実行時にメイン テンプレートを評価�
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Azure Resource Manager は、実行時にメイン テンプレートを評価�
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>リンクをハードコーディングするのではなく _artifactsLocation を使用する
 
-入れ子になったテンプレートに使われるだけでなく、`_artifactsLocation` パラメーターの URL は、展開テンプレートの関連するすべての成果物のベースとしても使われます。 一部の VM 拡張機能には、テンプレートの外部に格納されているスクリプトへのリンクが含まれます。 これらの拡張機能では、リンクをハードコーディングしないようにする必要があります。 たとえば、カスタム スクリプトと PowerShell DSC 拡張機能では、次に示すように、GitHub 上の外部スクリプトにリンクすることがあります。 
+入れ子になったテンプレートに使われるだけでなく、`_artifactsLocation` パラメーターの URL は、展開テンプレートの関連するすべての成果物のベースとしても使われます。 一部の VM 拡張機能には、テンプレートの外部に格納されているスクリプトへのリンクが含まれます。 これらの拡張機能では、リンクをハードコーディングしないようにする必要があります。 たとえば、カスタム スクリプトと PowerShell DSC 拡張機能では、次に示すように、GitHub 上の外部スクリプトにリンクすることがあります。
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Azure のリージョンやクラウドによって使用できるサービス�
 
 テンプレートは、リソースを展開して構成します。 リソースの種類は、リソース プロバイダーによって提供されます。 たとえば、コンピューティング リソース プロバイダー (Microsoft.Compute) は、virtualMachines や availabilitySets などの複数のリソースの種類を提供します。 各リソース プロバイダーは、共通のコントラクトによって定義されている API を Azure Resource Manager に提供し、すべてのリソース プロバイダーで一貫性があり統合されたオーサリング エクスペリエンスを可能にします。 ただし、グローバル Azure で利用可能なリソース プロバイダーは、ソブリン クラウドまたは Azure Stack リージョンでは利用できないことがあります。
 
-![リソース プロバイダー](./media/templates-cloud-consistency/resource-providers.png) 
+![リソース プロバイダー](./media/templates-cloud-consistency/resource-providers.png)
 
 特定のクラウドで使用可能なリソース プロバイダーを確認するには、Azure コマンド ライン インターフェイス ([CLI](/cli/azure/install-azure-cli)) で次のスクリプトを実行します。
 
@@ -253,7 +253,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 テンプレートでリソース プロパティを指定するときはリージョン名をハードコーディングできますが、このアプローチでは、他の Azure Stack 環境にテンプレートを展開できる保証はありません。なぜなら、他の Azure Stack 環境にはリージョン名がほぼ間違いなく存在しないためです。
 
-異なるリージョンに対応するには、既定値を持つ入力パラメーター location をテンプレートに追加します。 展開時に値が指定されない場合は、既定値が使われます。 
+異なるリージョンに対応するには、既定値を持つ入力パラメーター location をテンプレートに追加します。 展開時に値が指定されない場合は、既定値が使われます。
 
 テンプレート関数 `[resourceGroup()]` は、次のキー/値ペアを含むオブジェクトを返します。
 
@@ -284,9 +284,9 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Azure Stack に存在するすべての利用可能なリソース プロバイ�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ API プロファイルのバージョンは、Azure と Azure Stack に共通す
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ API プロファイルは、テンプレートの必須要素ではありませ�
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 
 ## <a name="check-endpoint-references"></a>エンドポイント参照を確認する
 
-リソースは、プラットフォーム上の他のサービスへの参照を持つことができます。 たとえば、パブリック IP アドレスには、パブリック DNS 名を割り当てることができます。 パブリック クラウド、ソブリン クラウド、および Azure Stack ソリューションは、独自に個別のエンドポイント名前空間を持っています。 ほとんどの場合、リソースはテンプレートでの入力としてプレフィックスのみを必要とします。 実行時に、Azure Resource Manager はそれにエンドポイントの値を追加します。 いくつかのエンドポイントの値を、テンプレートで明示的に指定する必要があります。 
+リソースは、プラットフォーム上の他のサービスへの参照を持つことができます。 たとえば、パブリック IP アドレスには、パブリック DNS 名を割り当てることができます。 パブリック クラウド、ソブリン クラウド、および Azure Stack ソリューションは、独自に個別のエンドポイント名前空間を持っています。 ほとんどの場合、リソースはテンプレートでの入力としてプレフィックスのみを必要とします。 実行時に、Azure Resource Manager はそれにエンドポイントの値を追加します。 いくつかのエンドポイントの値を、テンプレートで明示的に指定する必要があります。
 
 > [!NOTE]
 > クラウドの一貫性のためのテンプレートを開発するには、エンドポイントの名前空間をハードコーディングしないでください。
@@ -444,19 +444,19 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 一般に、テンプレートにエンドポイントをハードコーディングすることは避けます。 ベスト プラクティスは、参照テンプレート関数を使ってエンドポイントを動的に取得することです。 たとえば、最もよくハードコーディングされるエンドポイントは、ストレージ アカウントのエンドポイント名前空間です。 各ストレージ アカウントは、ストレージ アカウントの名前とエンドポイントの名前空間を連結して作成される一意の FQDN を持っています。 mystorageaccount1 という名前の BLOB ストレージ アカウントは、クラウドによって異なる FQDN になります。
 
 * **mystorageaccount1.blob.core.windows.net**: グローバル Azure クラウドで作成されたとき。
-* **mystorageaccount1.blob.core.chinacloudapi.cn**: Azure China クラウドで作成されたとき。
+* **mystorageaccount1.blob.core.chinacloudapi.cn**: Azure China 21Vianet クラウドで作成されたとき。
 
 次の参照テンプレート関数は、ストレージ リソース プロバイダーからエンドポイントの名前空間を取得します。
 
 ```json
-"diskUri":"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, 'container/myosdisk.vhd')]"
+"diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
 ハードコーディングされたストレージ アカウント エンドポイントの値を `reference` テンプレート関数に置き換えることで、エンドポイント参照を変更することなく、同じテンプレートを使って、異なる環境に正常に展開できます。
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>一意の ID で既存のリソースを参照する
 
-同じクラウド内の同じテナント内の同じサブスクリプション内または別のサブスクリプション内の同じリソース グループまたは別のリソース グループから既存のリソースを参照することもできます。 リソースのプロパティを取得するには、リソース自体の一意識別子を使う必要があります。 次のコードに示すように、`resourceId` テンプレート関数は、SQL Server などのリソースの一意 ID を取得します。 
+同じクラウド内の同じテナント内の同じサブスクリプション内または別のサブスクリプション内の同じリソース グループまたは別のリソース グループから既存のリソースを参照することもできます。 リソースのプロパティを取得するには、リソース自体の一意識別子を使う必要があります。 次のコードに示すように、`resourceId` テンプレート関数は、SQL Server などのリソースの一意 ID を取得します。
 
 ```json
 "outputs": {
@@ -602,8 +602,8 @@ VM 拡張機能はファースト パーティ Resource Manager リソースで�
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 特定の VM 拡張機能で使用可能なバージョンの一覧を取得するには、[Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) コマンドレットを使います。 次の例では、PowerShell DSC (Desired State Configuration) VM 拡張機能で使用可能なバージョンを **myLocation** から取得しています。
@@ -655,12 +655,12 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 次の図では、統合開発環境 (IDE) を使用するチームの開発プロセスの典型的な例を示します。 タイムラインの異なる段階で、異なる種類のテストが実行されます。 ここでは 2 人の開発者が同じソリューションで作業していますが、このシナリオは単独開発者や大規模なチームにも等しく適用されます。 通常、各開発者は中央リポジトリのローカル コピーを作成し、同じファイルの作業をしている可能性がある他の開発者に影響を与えることなく、ローカルのコピーを使用して作業できます。
 
-![ワークフロー](./media/templates-cloud-consistency/workflow.png) 
+![ワークフロー](./media/templates-cloud-consistency/workflow.png)
 
 テストと自動化については次のヒントを考慮してください。
 
 * テスト ツールを利用します。 たとえば、Visual Studio Code と Visual Studio には、テンプレートの検証を支援できる IntelliSense や他の機能が含まれます。
-* ローカル IDE での開発時にコードの品質を向上させるには、単体テストと統合テストで静的コード分析を実行します。 
+* ローカル IDE での開発時にコードの品質を向上させるには、単体テストと統合テストで静的コード分析を実行します。
 * 初期開発時のエクスペリエンスをさらによくするには、単体テストと統合テストでは問題が見つかってテストを続行するときにのみ警告する必要があります。 そうすることで、対処する問題を特定して、変更の優先順位を決めることができます。これはテスト駆動型展開 (TDD) とも呼ばれます。
 * 一部のテストは Azure Resource Manager に接続しなくても実行できることに注意してください。 テンプレート展開テストなど、他のテストには、オフラインで実行できない特定のアクションを実行するために Resource Manager が必要です。
 * 検証 API に対する展開テンプレートのテストは、実際の展開と同じではありません。 また、ローカル ファイルからテンプレートを展開する場合でも、テンプレート内の入れ子になったテンプレートへの参照は Resource Manager によって直接取得され、VM 拡張機能によって参照される成果物は、展開される VM 内で実行されている VM エージェントによって取得されます。

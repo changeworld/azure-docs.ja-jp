@@ -1,25 +1,17 @@
 ---
-title: PowerShell for StorSimple デバイス管理 | Microsoft Docs
+title: StorSimple 用 PowerShell のデバイス管理
 description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621636"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277102"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -58,7 +50,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 1. PuTTY の **[Reconfiguration]** ダイアログ ボックスで、 **[Category]** パネルの **[Keyboard]** を選択します。
 2. 次のオプションが選択されていることを確認します (これらは新しいセッションを開始したときの既定の設定です)。
    
-   | キーボードの項目 | Select |
+   | キーボードの項目 | 選択 |
    | --- | --- |
    | Backspace key |Control-? (127) |
    | Home and End keys |Standard |
@@ -107,7 +99,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    * 工場出荷時設定をリセットする
    * パスワードを変更する
    * サポート アクセスを有効または無効にする
-   * 更新プログラムを適用する
+   * 更新プログラムの適用
    * 修正プログラムをインストールする
 
      > [!NOTE]
@@ -183,7 +175,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 > 実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8db1d782b6f92637ad929ba863a8d24c81280577
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497930"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548426"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 値を入力して小さなデータセットを作成するには、このモジュールを使用します。 データセットには、複数の列を含めることができます。
   
@@ -97,9 +97,9 @@ ms.locfileid: "73497930"
   
      欠損値を含んだ行を作成した場合、それらの行は、後からいつでもフィルターで除去できます。  
   
-5.  モジュールを右クリックし、 **[Run selected]\(選択項目の実行\)** を選択すると、データが解析されて、データセットとしてワークスペースに読み込まれます。  
+5.  出力ポートを他のモジュールに接続し、パイプラインを実行します。  
   
-     データセットを表示するには、出力ポートをクリックして **[Visualize]\(可視化\)** を選択します。  
-## <a name="next-steps"></a>次の手順
+     データセットを表示するには、モジュールを右クリックして **[可視化]** を選択します。  
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

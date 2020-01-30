@@ -1,6 +1,6 @@
 ---
-title: テンプレート
-description: このトピックでは、Azure の通知ハブのテンプレートについて説明します。
+title: Azure Notification Hubs テンプレート
+description: Azure Notification Hubs のテンプレートの使用について説明します。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212989"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263746"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -133,7 +133,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 
 次の表に、テンプレートで使用できる言語を示します。
 
-| 式       | 説明 |
+| 式       | [説明] |
 | ---------------- | --- |
 | $ (prop)          | 指定された名前のイベント プロパティを参照します。 プロパティ名では、大文字と小文字は区別されません。 この式は、プロパティのテキスト値に解決されます。ただし、プロパティが存在しない場合は空の文字列に解決されます。 |
 | $(prop, n)       | 上記と同じですが、テキストは明示的に n 文字に省略されます。たとえば $(title, 20) は title プロパティの内容を 20 文字に省略します。 |
@@ -159,7 +159,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 </tile>
 ```
 
-先に説明したように、連結を使用している場合は、式を中かっこで囲む必要があります。 例:
+先に説明したように、連結を使用している場合は、式を中かっこで囲む必要があります。 次に例を示します。
 
 ```xml
 <tile>
@@ -170,3 +170,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>次のステップ
+
+[Notification Hubs について学習する](notification-hubs-push-notification-overview.md)

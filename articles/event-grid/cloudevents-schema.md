@@ -1,18 +1,18 @@
 ---
 title: CloudEvents スキーマ内のイベントで Azure Event Grid を使用する
-description: CloudEvents スキーマを Azure Event Grid 内のイベント用に設定する方法について説明します。
+description: CloudEvents スキーマを Azure Event Grid 内のイベント用に使用する方法について説明します。 サービスでは、CloudEvents の JSON 実装でのイベントをサポートしています。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922741"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844736"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 
@@ -73,7 +73,6 @@ Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の
 |--------------------|---------------------
 | CloudEvents 形式 | CloudEvents 形式
 | Event Grid 形式  | CloudEvents 形式
-| CloudEvents 形式 | Event Grid 形式
 | Event Grid 形式  | Event Grid 形式
 
 いずれのイベント スキーマについても、Event Grid では、イベント グリッド トピックへの発行時やイベント サブスクリプションの作成時に検証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
@@ -110,8 +109,6 @@ New-AzureRmEventGridTopic `
   -InputSchema CloudEventSchemaV1_0
 ```
 
-CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマを使ったイベントをトピックに 対して発行するには、各イベントを個別に発行してください。
-
 ### <a name="output-schema"></a>出力スキーマ
 
 イベント サブスクリプションを作成するときは、出力スキーマを設定します。
@@ -139,11 +136,85 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用します。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
+ 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用します。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、[Azure Functions での CloudEvents の使用](#azure-functions)に関する記事を参照してください。
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
 
 Event Grid を既に使い慣れている場合、不正使用を防ぐための Event Grid のエンドポイント検証ハンドシェイクをご存じかもしれません。 CloudEvents v1.0 では、HTTP OPTIONS メソッドを使用して、独自の[不正使用防止のセマンティクス](security-authentication.md#webhook-event-delivery)が実装されています。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>Azure Functions と共に使用する
+
+[Azure Functions Event Grid バインド](../azure-functions/functions-bindings-event-grid.md)では CloudEvents がネイティブにサポートされていないため、CloudEvents メッセージの読み取りには HTTP によってトリガーされる関数が使用されます。 CloudEvents の読み取りに HTTP トリガーを使用する場合は、Event Grid トリガーによって自動的に行われる処理のコードを記述する必要があります。
+
+* [サブスクリプション検証要求](../event-grid/security-authentication.md#webhook-event-delivery)に検証応答を送信します。
+* 要求本文に含まれるイベント配列の要素ごとに、関数を 1 回呼び出します。
+
+関数をローカルに呼び出す場合、または Azure 内で実行するときに使う URL については、[HTTP トリガーのバインドに関するリファレンス ドキュメント](../azure-functions/functions-bindings-http-webhook.md)をご覧ください
+
+次に示す HTTP トリガーの C# コード サンプルでは、Event Grid トリガーの動作をシミュレートします。  CloudEvents スキーマで配信されたイベントでは、この例を使用します。
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.LogInformation("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.LogInformation($"Source: {message["source"]}");
+        log.LogInformation($"Time: {message["eventTime"]}");
+        log.LogInformation($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+次に示す HTTP トリガーの JavaScript コード サンプルでは、Event Grid トリガーの動作をシミュレートします。 CloudEvents スキーマで配信されたイベントでは、この例を使用します。
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>次のステップ
 

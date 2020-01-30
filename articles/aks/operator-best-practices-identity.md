@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614778"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549140"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 
@@ -48,7 +48,7 @@ Azure AD を使用する AKS クラスターを作成する方法については
 
 **ベスト プラクティス ガイダンス** - Kubernetes RBAC を使用し、クラスターのリソースに対するユーザーまたはグループのアクセス許可を定義します。 必要最低限のアクセス許可を割り当てるロールとバインディングを作成します。 ユーザーの状態やグループ メンバーシップが変わったとき、それが自動的に更新されるように、また、クラスター リソースへのアクセスが最新の状態になるように、Azure AD と統合します。
 
-Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可はクラスター レベルで定義するか、特定の名前空間に定義できます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールは、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
+Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可はクラスター レベルで定義するか、特定の名前空間に定義できます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールはその後、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
 
 たとえば、*finance-app* という名前の名前空間にあるリソースに完全アクセスできる Role を作成できます。次のサンプル YAML マニフェストをご覧ください。
 
@@ -113,7 +113,7 @@ Azure リソース (関連付けられた AKS オープン ソース プロジ�
 
 ポッド ID を使用する方法については、[Kubernetes アプリケーションのための Azure Active Directory ID][aad-pod-identity] に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このベスト プラクティスの記事では、クラスターとリソースの認証と認可について取り上げました。 これらのベスト プラクティスのいくつかを実装する場合は、次の記事を参照してください。
 

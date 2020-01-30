@@ -1,26 +1,18 @@
 ---
-title: Azure 仮想マシン スケール セット インスタンスのインスタンス保護 | Microsoft Docs
+title: Azure 仮想マシン スケール セット インスタンスのインスタンス保護
 description: Azure 仮想マシン スケール セット インスタンスをスケールインおよびスケールセット操作から保護する方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416556"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275800"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 仮想マシン スケール セット インスタンスのインスタンス保護 (プレビュー)
 Azure 仮想マシン スケール セットを使用すると、[自動スケーリング](virtual-machine-scale-sets-autoscale-overview.md)によるワークロードの弾力性が向上するので、インフラストラクチャのスケールアウトとスケールインのタイミングを構成できます。 また、スケール セットを使用すると、さまざまな[アップグレード ポリシー](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)設定を介して多数の VM の管理、構成、および更新を一元的に行うこともできます。 アップグレード ポリシーを [自動] または [ローリング] に設定すると、スケール セット モデル上で更新プログラムを構成して、新しい構成がすべてのスケール セット インスタンスに自動的に適用されるようにすることができます。
@@ -164,7 +156,7 @@ az vmss update \
   --protect-from-scale-set-actions true
 ```
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 ### <a name="no-protectionpolicy-on-scale-set-model"></a>スケール セット モデル対して protectionPolicy がない
 インスタンス保護は、スケール セット インスタンスにのみ適用され、スケール セット モデルには適用されません。
 
@@ -176,5 +168,5 @@ az vmss update \
 ### <a name="not-able-to-apply-instance-protection"></a>インスタンス保護を適用できない
 インスタンス保護は、API バージョン 2019-03-01 以降でのみサポートされています。 使用されている API のバージョンを確認し、必要に応じて更新します。 必要に応じて、PowerShell または CLI を最新バージョンに更新します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

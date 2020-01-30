@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863497"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314889"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -38,7 +38,9 @@ ms.locfileid: "75863497"
 
 1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
-1. **[概要]** ページを選択します。 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
+1. **[概要]** ページを選択します。 ページの上部付近にある **[Essentials]** セクションを展開して、 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
+
+   [![[Essentials] セクションを展開する](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
    お使いの Time Series Insights 環境に対するエクスプローラーを表示します。
 

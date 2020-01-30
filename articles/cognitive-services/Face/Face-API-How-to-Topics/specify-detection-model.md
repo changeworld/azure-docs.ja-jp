@@ -1,7 +1,7 @@
 ---
-title: 検出モデルの指定方法 - Face API
+title: 検出モデルの指定方法 - Face
 titleSuffix: Azure Cognitive Services
-description: この記事では、Azure Face API アプリケーションで使用する顔検出モデルを選択する方法を示します。
+description: この記事では、Azure Face アプリケーションで使用する顔検出モデルを選択する方法を示します。
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5b524ca6156dab7c0d1e38ad320b721f40a49ef
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306681"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169754"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
-このガイドでは、Azure Face API の顔検出モデルを指定する方法を示します。
+このガイドでは、Azure Face サービスの顔検出モデルを指定する方法を示します。
 
-Face API では、機械学習モデルを使用して、画像内の人間の顔に対して操作を実行します。 お客様からのフィードバックや研究の進展に基づいてモデル精度の改善を続けており、これらの改善をモデルの更新として提供します。 開発者には、使用する顔検出モデルのバージョンを指定する選択肢があり、自分のユースケースに最も適したモデルを選択できます。
+Face サービスでは、機械学習モデルを使用して、画像内の人間の顔に対して操作を実行します。 お客様からのフィードバックや研究の進展に基づいてモデル精度の改善を続けており、これらの改善をモデルの更新として提供します。 開発者には、使用する顔検出モデルのバージョンを指定する選択肢があり、自分のユースケースに最も適したモデルを選択できます。
 
-特定の顔操作での顔検出モデルの指定方法について、後続の説明をお読みください。 Face API は、顔の画像を他の形式のデータに変換するときは常に、顔検出を使用します。
+特定の顔操作での顔検出モデルの指定方法について、後続の説明をお読みください。 Face サービスは、顔の画像を他の形式のデータに変換するときは常に、顔検出を使用します。
 
 最新モデルを使用すべきかどうかわからない場合は、「[さまざまなモデルを評価する](#evaluate-different-models)」のセクションに進み、新しいモデルを評価したり、現在のデータセットを使用して結果を比較したりしてください。
 
@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>指定したモデルを使用して Person に顔を追加する
 
-Face API は画像から顔データを抽出し、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
+Face サービスは画像から顔データを抽出し、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -105,7 +105,7 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 `detection_01` と `detection_02` モデルのパフォーマンスを比較する最良の方法は、それらをサンプル データセットで使用することです。 さまざまな画像、特に多数の顔や識別しづらい顔に対して、それぞれの検出モデルを使用して [Face - Detect] API を呼び出すことをお勧めします。 各モデルによって返される顔の数に注意してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、さまざまな Face API で使用する検出モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
 

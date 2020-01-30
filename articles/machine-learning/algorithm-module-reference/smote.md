@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428432"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311412"
 ---
 # <a name="smote"></a>SMOTE
 
-この記事では Azure Machine Learning デザイナー (プレビュー) で SMOTE モジュールを使用して、機械学習に使用されるデータセット内の、少ししか存在しないケースの数を増やす方法について説明します。 SMOTE は、単純に既存のケースを複製するよりも、まれなケースの数を増やす方法として適しています。  
+この記事では Azure Machine Learning デザイナーで SMOTE モジュールを使用して、機械学習に使用するデータセット内の小数派のケースの数を増やす方法について説明します。 SMOTE は、単純に既存のケースを複製するよりも、まれなケースの数を増やす方法として適しています。  
 
 SMOTE モジュールを、"*不均衡*" データセットに接続します。 データセットが不均衡になる理由は数多くあります。 たとえば、ターゲットとするカテゴリが母集団にほとんどない場合や、データの収集が困難な場合です。 通常、SMOTE は、分析する "*クラス*" が少ししか存在しない場合に使用します。 
   

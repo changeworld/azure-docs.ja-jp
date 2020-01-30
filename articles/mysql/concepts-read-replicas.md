@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790103"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167343"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -71,7 +71,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-レプリカでは、作成時にマスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらのルールはマスター サーバーからは独立します。
+作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらの規則はマスター サーバーから独立したものになります。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -124,7 +124,7 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
 
-ファイアウォール規則、仮想ネットワーク規則、およびパラメーター設定は、レプリカの作成時にマスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立しています。
+レプリカが作成されるとき、ファイアウォール規則、仮想ネットワーク規則、パラメーターの設定が、マスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 
@@ -132,7 +132,7 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 
 ### <a name="deleted-master-and-standalone-servers"></a>削除されたマスターおよびスタンドアロン サーバー
 
-マスター サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカはスタンドアロン サーバーになります。 マスター サーバー自体は削除されます。
+マスター サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカは自動的にスタンドアロン サーバーになり、読み取りと書き込みの両方を受け入れることができます。 マスター サーバー自体は削除されます。
 
 ### <a name="user-accounts"></a>ユーザー アカウント
 
@@ -156,7 +156,7 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 - マスター サーバーのテーブルに主キーがあることを確認します。 主キーがないと、マスターとレプリカ間でレプリケーションの待機時間が発生する可能性があります。
 - MySQL レプリケーションの制限事項の完全な一覧については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)をご確認ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用して読み取りレプリカの作成と管理](howto-read-replicas-portal.md)を行う方法について確認する。
 - [Azure CLI と REST API を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

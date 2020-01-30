@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707658"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515124"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>マネージド インスタンス内の SQL データベースを以前の特定の時点に復元する
 
@@ -58,7 +58,7 @@ Azure portal、PowerShell、または Azure CLI を使用することで、既�
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. ご利用のマネージド インスタンスに移動し、復元するデータベースを選択します。
 3. データベース ページで **[復元]** を選択します。
 
@@ -136,7 +136,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
 
 ## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
 
-削除されたデータベースの復元は、PowerShell を使用することでのみ行うことができます。 データベースは、同じインスタンスまたは別のインスタンスに復元できます。
+削除されたデータベースは、PowerShell または Azure Portal を使用して復元できます。[Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1) で行うには、このドキュメントを使用してください。 データベースは、同じインスタンスまたは別のインスタンスに復元できます。
 
 PowerShell を使用して削除されたデータベースを復元するには、次のコマンドでパラメーターの値を指定します。 次に、次のコマンドを実行します。
 
@@ -239,6 +239,6 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 - [ポイント対サイト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [自動化されたバックアップ](sql-database-automated-backups.md)について確認します。

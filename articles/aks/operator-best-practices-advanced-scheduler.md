@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472600"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293659"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -181,7 +181,7 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 
 この例のデプロイは、ノード セレクターまたはノード アフィニティを使用する場合より複雑です。 デプロイでは、Kubernetes スケジューラによるノードでのポッドのスケジュール方法を制御でき、リソースを論理的に分離できます。 Azure Cache for Redis を使用するこの Web アプリケーションの完全な例については、[同じノードへのポッドの併置][k8s-pod-affinity]に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Kubernetes の高度なスケジューラ機能に注目しました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 

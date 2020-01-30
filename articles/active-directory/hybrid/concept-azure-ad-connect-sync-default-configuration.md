@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227416"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548868"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -42,7 +42,7 @@ ms.locfileid: "68227416"
 
 次のユーザー オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])`. 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `IsPresent([isCriticalSystemObject])` 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
 * `IsPresent([sAMAccountName]) = False` sAMAccountName 属性のないユーザー オブジェクトは同期されません。 このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
 * `Left([sAMAccountName], 4) = "AAD_"`、`Left([sAMAccountName], 5) = "MSOL_"`。 Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
 * Exchange Online で機能しない Exchange アカウントは同期しないでください。
@@ -148,7 +148,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 同期規則には、[説明]、[スコープ フィルター]、[結合規則]、[変換] という 4 つの構成セクションがあります。
 
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
 ![Description tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -173,7 +173,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 ![Join rules tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[Provision (プロビジョニング)]** に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
+結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[プロビジョニング]** に設定されている場合、結合条件に少なくとも 1 つの属性が存在する (値がある) と、ターゲットのメタバースに新しいオブジェクトが作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
 
 結合規則は、1 回のみ評価されます。 コネクタ スペース オブジェクトとメタバース オブジェクトが結合されている場合は、同期規則のスコープが引き続き満たされている限り、結合が維持されます。
 
@@ -220,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。 ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-| 名前 | Comment (コメント) |
+| Name | 解説 |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
 | AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |
@@ -229,7 +229,7 @@ NULL
 | AD からの受信 - ユーザー Exchange |Exchange が検出された場合にのみ存在します。 インフラストラクチャの Exchange 属性がすべてフローされます。 |
 | AD からの受信 - ユーザー Lync |Lync が検出された場合にのみ存在します。 インフラストラクチャの Lync 属性がすべてフローされます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](concept-azure-ad-connect-sync-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)」をご覧ください。
 * 既定の構成の動作についてさらに詳しく知りたい場合には、「 [ユーザーと連絡先について](concept-azure-ad-connect-sync-user-and-contacts.md)

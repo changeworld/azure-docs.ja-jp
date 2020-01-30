@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814943"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543921"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -78,7 +78,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 #### <a name="password-complexity-policy"></a>パスワードの複雑性のポリシー
 
-パスワード ハッシュ同期が有効になっている場合、オンプレミスの Active Directory インスタンスでのパスワードの複雑性ポリシーによって、同期済みユーザーに対するクラウドでの複雑性ポリシーが上書きされます。 オンプレミスの Active Directory インスタンスからの有効なパスワードすべてを、Azure AD サービスへのアクセスに使用することができます。
+パスワード ハッシュ同期が有効になっている場合、オンプレミスの Active Directory インスタンスでのパスワードの複雑性ポリシーによって、同期済みユーザーに対するクラウドでの複雑性ポリシーがオーバーライドされます。 オンプレミスの Active Directory インスタンスからの有効なパスワードすべてを、Azure AD サービスへのアクセスに使用することができます。
 
 > [!NOTE]
 > クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
@@ -98,9 +98,16 @@ Azure AD 統合サービスのみを操作し、パスワードの有効期限�
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
 
-EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。
-
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
+EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、下に示すように、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。 場合によっては、下に示すように、Enable パラメーターに「yes」と入力する必要があります。
+```
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
+`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
+`Supply values for the following parameters:`
+`Enable: yes`
+`Confirm`
+`Continue with this operation?`
+`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+```
 
 有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD 上で次にパスワードを変更するときに、次のパスワードの同期中に、ユーザーごとに値が `None` に設定されます。  
 
@@ -117,7 +124,7 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 > [!NOTE]
 > この機能は現在、パブリック プレビュー段階にあります。
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>一時パスワードと "次回ログオン時にパスワードを適用" を同期する (パブリック プレビュー)
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>一時パスワードと "次回ログオン時にパスワード リセットを適用" を同期する (パブリック プレビュー)
 
 通常は、最初のログオン時、特に管理者によるパスワードのリセットが行われた後に、ユーザーにパスワードの変更を強制します。  一般的に "一時" パスワードの設定と呼ばれており、Active Directory (AD) では、ユーザー オブジェクト上の [ユーザーは次回ログオン時にパスワード変更が必要] フラグのチェックをオンにすることで実現できます。
   
@@ -131,7 +138,7 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 > 次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。
 
 > [!CAUTION]
-> Azure AD 上でセルフサービスのパスワード リセット (SSPR) を有効にしていない場合、Azure AD 上でパスワードをリセットしてから、新しいパスワードを使用して Active Directory にサインインしようとすると、Active Directory では新しいパスワードが有効ではないため、混乱が生じます。 この機能は、テナント上で SSPR とパスワード ライトバックが有効になっている場合にのみ使用してください。
+> Azure AD 上でセルフサービス パスワード リセット (SSPR) を有効にしていない場合、Azure AD 上でパスワードをリセットしてから、新しいパスワードを使用して Active Directory にサインインしようとすると、Active Directory では新しいパスワードが有効ではないため、混乱が生じます。 この機能は、テナント上で SSPR とパスワード ライトバックが有効になっている場合にのみ使用してください。
 
 > [!NOTE]
 > この機能は現在、パブリック プレビュー段階にあります。
@@ -227,7 +234,7 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 ## <a name="troubleshoot-password-hash-synchronization"></a>パスワード ハッシュ同期のトラブルシューティング
 パスワード ハッシュ同期に問題がある場合は、[パスワード ハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
-* [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
+## <a name="next-steps"></a>次のステップ
+* [Azure AD Connect 同期:同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 * [ADFS からパスワード ハッシュ同期に移行するための詳細なデプロイ計画の取得](https://aka.ms/authenticationDeploymentPlan)

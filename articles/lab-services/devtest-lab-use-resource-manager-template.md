@@ -1,5 +1,5 @@
 ---
-title: 仮想マシンの Azure Resource Manager テンプレートを表示し使用する | Microsoft Docs
+title: 仮想マシンの Azure Resource Manager テンプレートの表示と使用
 description: 仮想マシンから Azure Resource Manager テンプレートを使用して他の VM を作成する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7064fdeec04f4dc5ae2c73c1a3896cf2d10dd01d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854276"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169111"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -63,12 +63,12 @@ Resource Manager テンプレートを保存したら、使用する前に、テ
 
 これで、Resource Manager テンプレートを使用して [VM を作成する](devtest-lab-create-environment-from-arm.md)準備ができました。
 
-## <a name="set-expiration-date"></a>有効期限の設定
+## <a name="set-expiration-date"></a>有効期限を設定する
 トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 VM の **expirationDate** プロパティを指定することで、有効期限があるラボ VM を作成できます。 [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)で同じ Resource Manager テンプレートを確認してください。
 
 
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。
 * [Resource Manager テンプレートをデプロイして VM を作成する](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
-* [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタートの Resource Manager テンプレートをもっと探します。
+* [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタート Resource Manager テンプレートをさらに調べます。

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214583"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546692"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、トレーニング済みモデルの正確性を測定します。 モデルから生成されたスコアを含むデータセットを指定すると、**Evaluate Model (モデルの評価)** モジュールが業界標準の一連の評価メトリックを計算します。
   
@@ -61,14 +61,11 @@ ms.locfileid: "74214583"
 
 1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
 2. 2 つ目のモデルのモデルのスコア付けモジュールの出力を **Evaluate Model (モデルの評価)** の右側の入力に接続します。
-3. **Evaluate Model (モデルの評価)** を右クリックして、 **[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
+3. パイプラインを実行します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
-**Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Evaluation results]\(評価結果\)** を選択し、結果を表示します。 次のようにすることができます。
-
-+ 他のツールでの分析を簡単にするため、データセットとして結果を保存する
-+ デザイナーで視覚化を生成する
+**Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Visualize Evaluation results]\(評価結果の視覚化\)** を選択し、結果を表示します。
 
 データセットを **Evaluate Model (モデルの評価)** の両方の入力に接続すると、結果には両方のデータのセットまたは両方のモデルのメトリックが含まれます。
 左側のポートに接続されているモデルまたはデータがレポートの先頭に表示され、その後にデータセットのメトリック、または右側のポートに接続されているモデルが表示されます。  
@@ -123,6 +120,6 @@ ms.locfileid: "74214583"
 - **Coefficient of determination (決定係数)** (大抵は R<sup>2</sup> と呼ばれます) は、モデルの予測能力を 0 から 1 の値で表します。 ゼロはモデルがランダム (何も説明しない) であることを意味し、1 は完全一致があることを意味します。 ただし、R<sup>2</sup> 値の解釈には注意が必要です。低い値はまったく正常で、高い値は疑わしい場合があります。
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

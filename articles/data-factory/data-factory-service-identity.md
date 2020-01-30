@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928444"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121779"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -155,17 +155,19 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Azure portal を使用したマネージド ID の取得
 
-[Azure Portal] -> 自分のデータ ファクトリ -> [プロパティ] でマネージド ID 情報を検索できます。
+Azure portal -> ご自分のデータ ファクトリ -> [プロパティ] でマネージド ID 情報を検索できます。
 
 - マネージド ID オブジェクト ID
 - マネージド ID のテナント
-- **マネージド ID アプリケーション ID** > この値をコピーします
+- マネージド ID アプリケーション ID
 
-![マネージド ID の取得](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+マネージ ID 情報は、Azure Blob、Azure Data Lake Storage、Azure Key Vault などのマネージド ID 認証をサポートする、リンクされたサービスを作成するときにも表示されます。
+
+アクセス許可を付与する場合は、オブジェクト ID またはデータ ファクトリ名 (マネージド ID 名) を使用して、この ID を検索します。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell を使用したマネージド ID の取得
 
-特定のデータ ファクトリを取得すると、次のように、マネージド ID のプリンシパル ID とテナント ID が返されます。
+特定のデータ ファクトリを取得すると、次のように、マネージド ID のプリンシパル ID とテナント ID が返されます。 **PrincipalId** を使用してアクセス権を付与します。
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-**ApplicationId** を取得するには、プリンシパル ID をコピーし、プリンシパル ID をパラメーターとして指定して次の Azure Active Directory コマンドを実行します。ApplicationId は、アクセス権を付与するために使用します。
+アプリケーション ID を取得するには、上のプリンシパル ID をコピーし、プリンシパル ID をパラメーターとして指定して次の Azure Active Directory コマンドを実行します。
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -187,7 +189,7 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ファクトリのマネージド ID を使用する状況と方法を紹介する次のトピックをご覧ください。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)

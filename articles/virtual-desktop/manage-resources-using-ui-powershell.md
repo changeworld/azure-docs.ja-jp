@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898595"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772792"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell で管理ツールをデプロイする
 
@@ -135,7 +135,7 @@ Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.Us
    
    [![入力したリダイレクト URI の認証ページ](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. 左側のパネルで **[API のアクセス許可]** を選択し、アクセス許可が追加されたことを確認します。 あなたがグローバル管理者の場合は、 **[`tenantname`に対する全体管理者の同意]** ボタンを選択し、ダイアログ プロンプトに従って、あなたの組織に対する管理者の同意を提供します。
+5. 左側のパネルで **[API のアクセス許可]** を選択し、アクセス許可が追加されたことを確認します。 あなたがグローバル管理者の場合は、 **[`tenantname` に管理者の同意を与えます]** ボタンを選択し、ダイアログ プロンプトに従って、あなたの組織に対する管理者の同意を提供します。
     
     [ ![[API のアクセス許可] ページ](media/management-ui-permissions-inline.png) ](media/management-ui-permissions-expanded.png#lightbox)
 
@@ -159,8 +159,8 @@ Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.Us
 
 ## <a name="report-issues"></a>レポートに関する問題
 
-管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合には、「[Remote Desktop Services のための Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」 の指示に従い、GitHub でそれを報告してください。
+管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合には、「[Remote Desktop Services のための Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従い、GitHub でそれを報告してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、管理ツールをデプロイして接続する方法が学習できました。次は、Azure Service Health を使用してサービスの問題と正常性の勧告をモニターする方法を学習しましょう。 詳細については、[サービスアラート設定のチュートリアル](./set-up-service-alerts.md)を参照してください。
+管理ツールをデプロイして接続する方法を学習したので、Azure Service Health を使用して、サービスの問題と正常性の勧告を監視する方法を学習できます。 詳細については、[「サービスアラート設定のチュートリアル」](./set-up-service-alerts.md)を参照してください。

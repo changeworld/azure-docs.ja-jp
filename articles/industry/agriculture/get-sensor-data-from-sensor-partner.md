@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777786"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513739"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
 Azure FarmBeats を使用すると、IoT デバイスとセンサーからデータ ハブにストリーミング データを取り込むことができます。 現時点では、次のセンサー デバイス パートナーがサポートされています。
 
-  ![FarmBeats パートナー](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats パートナー](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
 デバイス データを Azure FarmBeats と統合すると、ファームに配置されている IoT センサーから地上データをデータ ハブに取り込む際に役立ちます。 データが使用可能になったら、FarmBeats アクセラレーターを使用して視覚化できます。 FarmBeats を使用して、データをデータ融合と機械学習/人工知能 (ML/AI) モデルの構築に使用できます。
 
@@ -44,9 +44,9 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
 2. https://portal.azure.com/ にサインインし、[Azure Active Directory] -> [アプリの登録] に進みます。
 
-3. FarmBeats デプロイの一部として作成された アプリの登録］ をクリックします。 それは、FarmBeats Datahub と同じ名前になります。
+3. FarmBeats デプロイの一部として作成された アプリの登録］ をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
 
-4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、azure cli (Cloud Shell) にアクセスして、次の手順を実行することができます。
+4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
 5. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 

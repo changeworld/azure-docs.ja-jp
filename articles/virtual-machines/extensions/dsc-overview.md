@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497280"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293166"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -59,7 +59,7 @@ Azure DSC 拡張機能は、Azure VM エージェント フレームワークを
 - **wmfVersion** プロパティを指定した場合は、そのバージョンに VM の OS と互換性がない場合を除いて、そのバージョンの WMF がインストールされます。
 - **wmfVersion** プロパティを指定しなかった場合は、WMF の適用可能な最新バージョンがインストールされます。
 
-WMF をインストールするには、再起動が必要です。 再起動後、**modulesUrl** プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます (指定した場合)。 その場所が Azure Blob ストレージ内の場合は、 **sasToken** プロパティに SAS トークンを指定して、ファイルにアクセスできます。 .zip がダウンロードされて展開された後、**configurationFunction** で定義されている構成関数が実行され、.mof ファイルが生成されます。 その後、拡張機能によって、生成された .mof ファイルを使用して `Start-DscConfiguration -Force` が実行されます。 拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。
+WMF をインストールするには、再起動が必要です。 再起動後、**modulesUrl** プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます (指定した場合)。 その場所が Azure Blob ストレージ内の場合は、 **sasToken** プロパティに SAS トークンを指定して、ファイルにアクセスできます。 .zip がダウンロードされて展開された後、**configurationFunction** で定義されている構成関数が実行され、.mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) ファイルが生成されます。 その後、拡張機能によって、生成された .mof ファイルを使用して `Start-DscConfiguration -Force` が実行されます。 拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。
 
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 

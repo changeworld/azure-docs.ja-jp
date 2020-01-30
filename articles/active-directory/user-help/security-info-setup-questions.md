@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6fb6153c2dc5794fce0e74d1981e98ad1f37fc1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279005"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156099"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>セキュリティの質問を検証方法として設定する
 
 次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 
-パスワードのリセット メソッドを設定した後、[Authenticator アプリ](security-info-setup-auth-app.md)、[テキスト メッセージ](security-info-setup-text-msg.md)、または[電話呼び出し](security-info-setup-phone-number.md)を使用して、2 要素認証メソッドも設定する必要があります。
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>セキュリティの質問オプションが表示されない場合は、組織がパスワード リセット方法にこのオプションの使用を許可していない可能性があります。 この場合、別の方法を選択するか、組織のヘルプ デスクに連絡して、さらに支援を依頼する必要があります。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>セキュリティ認証とパスワードのリセット認証
+
+セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
+
+| 方法 | 使用目的 |
+| ------ | -------- |
+| Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
+| テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
+| 電話 | 2 要素認証とパスワードのリセット認証。 |
+| セキュリティ キー | 2 要素認証とパスワードのリセット認証。 |
+| 電子メール アカウント | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
+| セキュリティの質問 | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
 
 ## <a name="set-up-your-security-questions-from-the-security-info-page"></a>[セキュリティ情報] ページでセキュリティの質問を設定する
 
@@ -79,7 +93,7 @@ ms.locfileid: "74279005"
 
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
 
-- **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[Set up security info to use an authenticator app](security-info-setup-auth-app.md)」(認証アプリを使用するようにセキュリティ情報を設定する) を参照してください。
+- **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)」を参照してください。
 
 - **モバイル デバイスのテキスト。** モバイル デバイスの番号を入力し、2 段階認証やパスワード リセットに使用するテキスト コードを取得します。 テキスト メッセージ (SMS) による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md)」(テキスト メッセージ (SMS) を使用するようにセキュリティ情報を設定する) を参照してください。
 
@@ -92,8 +106,8 @@ ms.locfileid: "74279005"
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

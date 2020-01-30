@@ -1,5 +1,5 @@
 ---
-title: Java から Notification Hubs を使用する方法
+title: Java から Azure Notification Hubs を使用する方法
 description: Java バックエンドから Azure Notification Hubs を使用する方法について説明します。
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213214"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263865"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
 
@@ -71,7 +71,7 @@ MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.
     hub = namespaceManager.createNotificationHub(hub);
     ```
 
- または
+ OR
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
@@ -374,7 +374,7 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 
 ## <a name="next-steps"></a>次のステップ
 
-このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 次は、以下を実行できます。
+このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 ここでは、次の操作を実行できます。
 
 * [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。
 * サンプルを試します。

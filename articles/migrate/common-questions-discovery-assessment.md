@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Migrate での検出、評価、お�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0b7bb425bff1d26c2a0d6feeaf70be826eab2b9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563925"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513288"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>検出、評価、および依存関係分析に関してよく寄せられる質問
 
@@ -20,7 +20,7 @@ ms.locfileid: "75563925"
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM の数を教えてください？
 
-1つのアプライアンスで最大 10,000 までの VMware VM と最大 5,000 までのHyper-V VM を検出できます。 オンプレミス環境にさらに多くのマシンがある場合は、[Hyper-V](scale-hyper-v-assessment.md) のスケーリングと [VMware](scale-vmware-assessment.md) の評価を参照してください。
+1 つのアプライアンスで最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 250 までのサーバーを検出できます。 オンプレミス環境にさらに多くのマシンがある場合は、[Hyper-V](scale-hyper-v-assessment.md) 評価、[VMware](scale-vmware-assessment.md) 評価、および[物理](scale-physical-assessment.md)評価のスケーリングに関する記事を参照してください。
 
 
 
@@ -99,7 +99,7 @@ Azure Migrate アプライアンスは、オンプレミス環境の情報を継
 
 こちらの[依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を使用してください。 コマンド ラインまたはオートメーションを使用して [MMA をインストールするには、こちらの手順](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)に従ってください。 MMA の場合は、[このスクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
 
-スクリプトのほか、デプロイ ツール (System Center Configuration Manager と [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
+スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA ではどのようなオペレーティング システムがサポートされていますか?

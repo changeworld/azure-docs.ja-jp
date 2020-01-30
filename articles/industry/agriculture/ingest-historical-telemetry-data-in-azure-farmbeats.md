@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 76d355413bc0dceb91f7cfa1a3988f48e2701d5e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667503"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513934"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -20,7 +20,7 @@ ms.locfileid: "75667503"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を読み進める前に、FarmBeats がインストールされていること、また、IoT から履歴データが収集されていることを確認してください。
+この記事を読み進める前に、FarmBeats がインストールされていること、また、IoT デバイスから履歴データが収集されていることを確認してください。
 次の手順で説明するように、パートナー アクセスを有効にする必要もあります。
 
 ## <a name="enable-partner-access"></a>パートナー アクセスを有効にする
@@ -38,31 +38,36 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 >[!NOTE]
 > 次の手順を実行するには、管理者である必要があります。
 
-1. この[スクリプト](https://aka.ms/farmbeatspartnerscript)をダウンロードして、ローカル ドライブ上に展開します。 この zip ファイルには 2 つのファイルが含まれています。
-2. [Azure portal](https://portal.azure.com/) にサインインして、Azure Cloud Shell を開きます。 このオプションは、ポータルの右上隅にあるツール バー上で使用できます。
+1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
+2. https://portal.azure.com/ にサインインし、[Azure Active Directory]、[アプリの登録] の順に進みます。
 
-    ![Azure portal のツール バー](./media/for-tutorials/navigation-bar-1.png)
+3. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats Datahub と同じ名前になります。
 
-3. 環境が **[PowerShell]** に設定されていることを確認します。
+4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
-    ![PowerShell の設定](./media/for-tutorials/power-shell-new-1.png)
+5. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
-4. Cloud Shell インスタンス内で、(上記の手順 1 で) ダウンロードした 2 つのファイルをアップロードします。
+    ![Azure portal のツール バー](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![ツール バー上の [アップロード] ボタン](./media/for-tutorials/power-shell-two-1.png)
+6. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
 
-5. ファイルがアップロードされたディレクトリに移動します
+    ![PowerShell ツール バーの設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > 既定では、ファイルはホーム ディレクトリ /home/username/ にアップロードされます。
-6. 次のコマンドを使用して、スクリプトを実行します。
+7. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![ツール バーの [アップロード] ボタン](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
+
+9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。 EventHub 接続文字列は、Swagger で API 応答の一部として確認できます。
-
+10. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
 ## <a name="create-device-or-sensor-metadata"></a>デバイスまたはセンサーのメタデータを作成する
 
  必要な資格情報が得られたので、デバイスとセンサーを定義できます。 これを行うには、FarmBeats API を呼び出してメタデータを作成します。 前のセクションで作成したクライアント アプリとして API を呼び出す必要があることに注意してください。
@@ -326,11 +331,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

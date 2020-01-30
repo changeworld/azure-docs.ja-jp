@@ -1,14 +1,14 @@
 ---
 title: 顧客と委任されたリソースを表示し、管理する
 description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456822"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543428"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
@@ -40,13 +40,20 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 - オファーとその委任の詳細を表示するには、そのオファーの名前を選択します。
 - 委任されたサブスクリプションまたはリソース グループについて、ロールの割り当ての詳細を表示するには、該当するエントリを **[委任]** 列で選択します。
 
-## <a name="view-delegations"></a>委任を表示する
+## <a name="view-and-manage-delegations"></a>委任を表示して管理する
 
 [委任] には、委任されたサブスクリプションまたはリソース グループが、そのアクセス権を持つユーザーおよびアクセス許可と共に表示されます。 この情報を表示するには、 **[マイ カスタマー]** ページの左側にある **[委任]** を選択します。
 
 このページの上部にある各フィルターでアクセス権の割り当てを並べ替えたりグループ化したりできるほか、特定の顧客やオファー、キーワードでアクセス権の割り当てをフィルター処理することができます。
 
+### <a name="view-role-assignments"></a>ロールの割り当てを表示する
+
 それぞれの委任に関連付けられているユーザーおよびアクセス許可は、 **[ロール割り当て]** 列に表示されます。 各エントリを選択すると、サブスクリプションまたはリソース グループへのアクセス権が与えられたユーザー、グループ、サービス プリンシパルをすべて一覧表示できます。 そこから特定のユーザー、グループ、またはサービス プリンシパルの名前を選択すれば、さらに詳しい情報が表示されます。
+
+### <a name="remove-delegations"></a>委任を削除する
+
+Azure の委任されたリソース管理に顧客をオンボードするときに、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)をユーザーに付与すると、そのユーザーは、委任の行に表示されたごみ箱アイコンを選択することで委任を削除できます。 これが行われると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>委任されたサブスクリプションのコンテキストで作業する
 

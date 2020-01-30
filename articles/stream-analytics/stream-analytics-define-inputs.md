@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646848"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314795"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -55,6 +55,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | **イベント ハブ名** | 入力として使用するイベント ハブの名前。 |
 | **イベント ハブ ポリシー名** | イベント ハブへのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 Event Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に設定されます。|
 | **イベント ハブ コンシューマー グループ** (推奨) | Stream Analytics ジョブごとに個別のコンシューマー グループを使用することを強くお勧めします。 イベント ハブからデータを取り込むために使用するコンシューマー グループが、この文字列によって識別されます。 コンシューマー グループが指定されていない場合、Stream Analytics ジョブは $Default コンシューマー グループを使用します。  |
+| **パーティション キー** | 入力がプロパティでパーティション分割される場合、このプロパティの名前を追加できます。 パーティション キーは省略可能で、このプロパティに PARTITION BY 句または GROUP BY 句が含まれている場合、クエリのパフォーマンスを向上させるために使用されます。 |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **[エンコード]** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
@@ -104,6 +105,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | **共有アクセス ポリシー名** | IoT Hub へのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
 | **共有アクセス ポリシー キー** | IoT Hub へのアクセスを承認するために使用する共有アクセス キー。  IoT Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
 | **コンシューマー グループ** | Stream Analytics ジョブごとに異なるコンシューマー グループを使用することを強くお勧めします。 IoT Hub からのデータを取り込むために使用するコンシューマー グループです。 明示的に指定されない限り、Stream Analytics は $Default コンシューマー グループを使用します。  |
+| **パーティション キー** | 入力がプロパティでパーティション分割される場合、このプロパティの名前を追加できます。 パーティション キーは省略可能で、このプロパティに PARTITION BY 句または GROUP BY 句が含まれている場合、クエリのパフォーマンスを向上させるために使用されます。 |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **[エンコード]** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
@@ -157,6 +159,7 @@ CSV 形式の入力では、データ セットに対してフィールドを定
 | **パス パターン** (省略可能) | 指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。 コンテナーのルートから BLOB を読み取る場合は、パス パターンを設定しないでください。 このパス内に、3 つの変数 (`{date}`、`{time}`、`{partition}`) の 1 つ以上のインスタンスを指定できます。<br/><br/>例 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>例 2: `cluster1/logs/{date}`<br/><br/>`*` 文字はパス プレフィックスの許容値ではありません。 許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。 コンテナー名またはファイル名を含めないでください。 |
 | **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` (時) です。 |
+| **パーティション キー** | 入力がプロパティでパーティション分割される場合、このプロパティの名前を追加できます。 パーティション キーは省略可能で、このプロパティに PARTITION BY 句または GROUP BY 句が含まれている場合、クエリのパフォーマンスを向上させるために使用されます。 |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **[エンコード]** | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | **圧縮** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
@@ -182,7 +185,7 @@ FROM Input
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

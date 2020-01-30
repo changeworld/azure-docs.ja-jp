@@ -3,12 +3,12 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613127"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547474"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -277,7 +277,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 
 ## <a name="how-to-test-locally"></a>ローカルでテストする方法
 
-ローカルでテストするには、[ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok) を使用します。
+ローカルでテストするには、「[Azure Functions の Event Grid トリガーのローカル デバッグ](../functions-debug-event-grid-trigger-local.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

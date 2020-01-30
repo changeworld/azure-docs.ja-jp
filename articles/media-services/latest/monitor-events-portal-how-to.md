@@ -1,5 +1,5 @@
 ---
-title: ポータルを使用した Event Grid による Azure Media Services イベントの監視 | Microsoft Docs
+title: ポータルを使用した Event Grid による Azure Media Services イベントの監視
 description: この記事では、Azure Media Services イベントを監視するために Event Grid をサブスクライブする方法を説明します。
 services: media-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326531"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509225"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal を使用した Event Grid による Media Services イベントの作成と監視
 
@@ -79,13 +79,13 @@ Media Services アカウントのイベントをサブスクライブする前�
 
 ## <a name="send-an-event-to-your-endpoint"></a>エンドポイントへのイベントの送信
 
-エンコード ジョブを実行して、Media Services アカウントのイベントをトリガーできます。 [このクイックスタート](stream-files-dotnet-quickstart.md)に従って、ファイルをエンコードし、イベントの送信を開始できます。 すべてのイベントをサブスクライブしている場合は、次のような画面が表示されます。
+エンコード ジョブを実行して、Media Services アカウントのイベントをトリガーできます。 [このクイック スタート](stream-files-dotnet-quickstart.md)に従って、ファイルをエンコードし、イベントの送信を開始できます。 すべてのイベントをサブスクライブしている場合は、次のような画面が表示されます。
 
 > [!TIP]
 > 目のアイコンを選択してイベント データを展開します。 すべてのイベントを表示したい場合は、ページを最新の情報に更新しないでください。
 
 ![サブスクリプション イベントの表示](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アップロード、エンコード、およびストリーミング](stream-files-tutorial-with-api.md)

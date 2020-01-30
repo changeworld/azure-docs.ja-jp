@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: e8fc6e8c2f37dcd3edec24fb4d8ed81b32a84bd0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816579"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264205"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
@@ -45,6 +45,9 @@ Speech SDK には、さまざまなプログラミング言語と環境にわた
   - C++/Windows および Linux
   - C# (Framework および .NET Core)/Windows および UWP および Linux
   - Java/Windows および Linux および Android (Speech Devices SDK)
+- **マルチデバイスの会話**
+  - C++/Windows
+  - C# (Framework と .NET Core)/Windows
 - **コール センターの文字起こし**
   - REST API、任意の状況で使用できます
 - **コーデック圧縮オーディオ入力**

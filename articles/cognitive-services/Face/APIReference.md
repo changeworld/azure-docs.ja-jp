@@ -1,5 +1,5 @@
 ---
-title: API リファレンス - Face API
+title: API リファレンス - Face
 titleSuffix: Azure Cognitive Services
 description: API リファレンスでは、Person、LargePersonGroup/PersonGroup、LargeFaceList/FaceList、Face アルゴリズム API に関する情報を説明します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 940a5e25125acc2631fd3629bd610bb0e927e650
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 431525964eb69431600d36ba8249c6dc465a5df3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390105"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169925"
 ---
 # <a name="face-api-reference-list"></a>Face API リファレンス リスト
 
-Azure Face API は、顔検出および顔認識のアルゴリズムを提供するクラウド ベースの API です。 Face API は、以下のカテゴリで構成されます。
+Azure Face は、顔検出および顔認識のアルゴリズムを提供するクラウド ベースのサービスです。 Face API は、以下のカテゴリで構成されます。
 
 - Face アルゴリズム API:[検出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[類似アイテムの検索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)、[検証](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)、[識別](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[グループ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)などのコア機能をカバーします。
 - [FaceList API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b):[類似アイテムの検索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)の FaceList の管理に使用します。

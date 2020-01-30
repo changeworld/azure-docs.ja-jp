@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ac23bbb0465be2f15e0a35bb4fd7c331e83988
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848716"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155131"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
@@ -48,11 +48,11 @@ MFA プロバイダーが Azure AD テナントにリンクされていない場
 > [!CAUTION]
 > 認証プロバイダーを削除するときに確認は行われません。 **[削除]** の選択は永続的な処理です。
 
-認証プロバイダーは、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[プロバイダー]** で見つけられます。 一覧表示されたプロバイダーをクリックすると、そのプロバイダーに関連付けられている詳細と構成が表示されます。
+認証プロバイダーは、**Azure portal** >  **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[プロバイダー]** で見つけられます。 一覧表示されたプロバイダーをクリックすると、そのプロバイダーに関連付けられている詳細と構成が表示されます。
 
 認証プロバイダーを削除する前に、プロバイダーで構成されているカスタマイズされた設定を記録しておいてください。 ご利用のプロバイダーから一般的な MFA の設定に移行する必要がある設定を決定し、それらの設定の移行を完了します。 
 
-プロバイダーにリンクされている Azure MFA サーバーを、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[サーバーの設定]** で生成される資格情報を使って、再アクティブ化する必要があります。 再アクティブ化する前に、環境内の Azure MFA サーバーの `\Program Files\Multi-Factor Authentication Server\Data\` ディレクトリから次のファイルを削除する必要があります。
+プロバイダーにリンクされている Azure MFA サーバーを、**Azure portal** >  **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[サーバーの設定]** で生成される資格情報を使って、再アクティブ化する必要があります。 再アクティブ化する前に、環境内の Azure MFA サーバーの `\Program Files\Multi-Factor Authentication Server\Data\` ディレクトリから次のファイルを削除する必要があります。
 
 - caCert
 - cert
@@ -64,7 +64,7 @@ MFA プロバイダーが Azure AD テナントにリンクされていない場
 
 ![Azure portal から認証プロバイダーを削除する](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-すべての設定が移行されたことを確認した後、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[プロバイダー]** を参照し、省略記号 **[...]** を選択して、 **[削除]** を選択できます。
+すべての設定が移行されたことを確認した後、**Azure portal** >  **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[プロバイダー]** を参照し、省略記号 **[...]** を選択して、 **[削除]** を選択できます。
 
 > [!WARNING]
 > 認証プロバイダーを削除すると、そのプロバイダーに関連付けられているすべてのレポート情報が削除されます。 プロバイダーを削除する前に、アクティビティ レポートを保存することができます。
@@ -72,6 +72,6 @@ MFA プロバイダーが Azure AD テナントにリンクされていない場
 > [!NOTE]
 > 古いバージョンの Microsoft Authenticator アプリと Azure MFA Server を使用しているユーザーは、アプリの再登録が必要な場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)

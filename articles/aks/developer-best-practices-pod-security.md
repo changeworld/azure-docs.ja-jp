@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65073964"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547678"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -64,7 +64,7 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
-クラスター オペレーターと連携して、どのようなセキュリティ コンテキスト設定が必要かを判断します。 ポッドが必要とする追加のアクセス許可およびアクセスを最小限に抑えるように、アプリケーションを設計してみてください。 クラスター オペレーターが実装できる、AppArmor および seccomp (セキュリティで保護されたコンピューティング) を使用してアクセスを制限する追加のセキュリティ機能があります。 詳細については、[リソースへのコンテナーのアクセスをセキュリティで保護する方法][apparmor-seccomp]に関する記事を参照してください。
+クラスター オペレーターと連携して、どのようなセキュリティ コンテキスト設定が必要かを判断します。 ポッドが必要とする追加のアクセス許可およびアクセスを最小限に抑えるように、アプリケーションを設計してみてください。 クラスター オペレーターが実装できる、AppArmor および seccomp (セキュリティで保護されたコンピューティング) を使用してアクセスを制限する追加のセキュリティ機能があります。 詳細については、「[リソースへのコンテナー アクセスをセキュリティで保護する][apparmor-seccomp]」を参照してください。
 
 ## <a name="limit-credential-exposure"></a>資格情報の公開を制限する
 
@@ -81,7 +81,7 @@ spec:
 
 ### <a name="use-pod-managed-identities"></a>ポッドのマネージド ID を使用する
 
-Azure リソースのマネージド ID を使用すると、ポッドは、Storage や SQL など、この機能をサポートする Azure 内の任意のサービスに対して自己認証を行うことができます。 ポッドには、Azure Active Directory に対して自己認証を行い、デジタル トークンを受信するために、Azure ID が割り当てられます。 このデジタル トークンを他の Azure サービスに提示すると、これらのサービスは、ポッドにそのサービスへのアクセス権が付与されているかどうかを確認し、必要なアクションを実行します。 つまり、このアプローチでは、(たとえばデータベース接続文字列用に) シークレットは何も必要ありません。 次の図に、ポッドのマネージド ID の簡略化されたワークフローを示します。
+Azure リソースのマネージド ID を使用すると、ポッドは、Storage や SQL など、この機能をサポートする Azure サービスに対して自己認証を行うことができます。 ポッドには、Azure Active Directory に対して自己認証を行い、デジタル トークンを受信するために、Azure ID が割り当てられます。 このデジタル トークンを他の Azure サービスに提示すると、これらのサービスは、ポッドにそのサービスへのアクセス権が付与されているかどうかを確認し、必要なアクションを実行します。 つまり、このアプローチでは、(たとえばデータベース接続文字列用に) シークレットは何も必要ありません。 次の図に、ポッドのマネージド ID の簡略化されたワークフローを示します。
 
 ![Azure でのポッドのマネージド ID の簡略化されたワークフロー](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
@@ -101,7 +101,7 @@ Key Vault では、資格情報、ストレージ アカウント キー、証�
 
 Flex Vol を備えた Azure Key Vault は、Linux のポッドおよびノードで実行されているアプリケーションとサービスでの使用を目的としています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ポッドをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 

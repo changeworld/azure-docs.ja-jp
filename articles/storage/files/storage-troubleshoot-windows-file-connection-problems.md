@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968271"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544975"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -139,28 +139,30 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 > [!Note]  
 > Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"承認エラー" エラーが発生する
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Azure ファイル共有にアクセスするか、Azure ファイル共有を削除しようとしたときのエラー "アクセスなし"  
+ポータルで Azure ファイル共有にアクセスするか、Azure ファイル共有を削除しようとしたとき、以下のエラーが発生する場合があります。
 
-ポータルで Azure ファイル共有を参照すると、以下のエラーが発生する場合があります。
+アクセス権なし  
+エラー コード:403 
 
-承認エラー  
-アクセス権がありません 
-
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 1:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)」をご覧ください。
+ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)」をご覧ください。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
+ファイルを削除しようとすると、次のエラーが表示される場合があります。
+
+指定されたリソースは SMB クライアントが削除対象に設定しています。
 
 ### <a name="cause"></a>原因
 この問題は、通常、ファイルまたはディレクトリのハンドルが開いている場合に発生します。 

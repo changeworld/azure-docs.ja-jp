@@ -1,26 +1,18 @@
 ---
-title: 拡張機能のシーケンス処理と Azure 仮想マシン スケール セットを使用する | Microsoft Docs
+title: 拡張機能のシーケンス処理と Azure 仮想マシン スケール セットを使用する
 description: 仮想マシン スケール セット上で複数の拡張機能をデプロイする際に拡張機能のプロビジョニングをシーケンス処理する方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620174"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278048"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
 Azure 仮想マシンの拡張機能は、デプロイ後の構成と管理、監視、セキュリティなどの機能を提供します。 通常、運用環境のデプロイでは、目的の結果を実現するために、VM インスタンス用に構成された複数の拡張機能の組み合わせを使用します。
@@ -245,7 +237,7 @@ az vmss extension set \
 ```
 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>依存関係を持つ拡張機能を追加できない
 1. provisionAfterExtensions で指定された拡張機能がスケール セット モデル内に定義されていることを確認します。
@@ -255,5 +247,5 @@ az vmss extension set \
 ### <a name="not-able-to-remove-extensions"></a>拡張機能を削除できない
 削除する拡張機能が他の拡張機能の provisionAfterExtensions に表示されてないことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

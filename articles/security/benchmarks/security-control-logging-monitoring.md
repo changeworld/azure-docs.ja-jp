@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930028"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545502"
 ---
 # <a name="security-control-logging-and-monitoring"></a>セキュリティ コントロール: ログ記録と監視
 
@@ -21,7 +21,7 @@ ms.locfileid: "75930028"
 
 ## <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.1 | 6.1 | Microsoft |
 
@@ -33,7 +33,7 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 ## <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.2 | 6.5、6.6 | Customer |
 
@@ -57,7 +57,7 @@ https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/
 
 ## <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.3 | 6.2、6.3 | Customer |
 
@@ -73,11 +73,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2.4:オペレーティング システムからセキュリティ ログを収集する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.4 | 6.2、6.3 | Customer |
 
-コンピューティング リソースが Microsoft に所有されている場合、その監視は Microsoft が担当します。 コンピューティング リソースがお客様の組織に所有されている場合、その監視はお客様が担当します。 OS は Azure Security Center を使用して監視できます。 Security Center によってオペレーティング システムから収集されるデータには、OS の種類とバージョン、OS (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 Log Analytics エージェントは、クラッシュ ダンプ ファイルも収集します。
+コンピューティング リソースが Microsoft に所有されている場合、その監視は Microsoft が担当します。 コンピューティング リソースがお客様の組織に所有されている場合、その監視はお客様が担当します。 OS は Azure Security Center を使用して監視できます。 Security Center によってオペレーティング システムから収集されるデータには、OS の種類とバージョン、OS ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 Log Analytics エージェントは、クラッシュ ダンプ ファイルも収集します。
 
 Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法:
 
@@ -89,7 +89,7 @@ https://docs.microsoft.com/azure/security-center/security-center-enable-data-col
 
 ## <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.5 | 6.4 | Customer |
 
@@ -101,7 +101,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ## <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.6 | 6.7 | Customer |
 
@@ -123,7 +123,7 @@ https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 ## <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.7 | 6.8 | Customer |
 
@@ -145,7 +145,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 ## <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.8 | 8.6 | Customer |
 
@@ -165,7 +165,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 ## <a name="29-enable-dns-query-logging"></a>2.9:DNS クエリのログ記録を有効にする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.9 | 8.7 | Customer |
 
@@ -173,7 +173,7 @@ DNS ログ記録用のサード パーティ ソリューションを実装し�
 
 ## <a name="210-enable-command-line-audit-logging"></a>2.10:コマンドライン監査ログ記録を有効にする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 2.1 | 8.8 | Customer |
 

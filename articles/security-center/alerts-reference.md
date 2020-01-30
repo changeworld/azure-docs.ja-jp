@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: e030b1954d5546e6bad4eabfdb3e456b0c07e8eb
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028853"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514767"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -29,25 +29,14 @@ ms.locfileid: "76028853"
 
 アラート テーブルの後には、これらのアラートの意図を分類するために使用される Azure Security Center のキル チェーンについて説明した表があります。 
 
-この表に含まれるアラートの種類:
-* [Windows マシンのアラート](#alerts-windows)
-* [Linux マシンのアラート](#alerts-linux)
-* [Azure App Service のアラート](#alerts-azureappserv)
-* [AKS クラスター レベルのアラート](#alerts-akscluster)
-* [コンテナー ホスト レベルのアラート](#alerts-containerhost)
-* [SQL Database および SQL Data Warehouse のアラート](#alerts-sql-db-and-warehouse)
-* [Azure Storage のアラート](#alerts-azurestorage)
-* [Azure Cosmos DB のアラート](#alerts-azurecosmos)
-* [Azure ネットワーク レイヤーのアラート](#alerts-azurenetlayer)
-* [Azure Resource Manager (プレビュー) のアラート](#alerts-azureresourceman)
-* [Azure Key Vault (プレビュー) のアラート](#alerts-azurekv)
-* [Azure DDoS Protection のアラート](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Azure Security Center のアラート
+
+## <a name="alerts-windows"></a>Windows マシンのアラート
+
+[詳細な説明と注意](security-center-alerts-iaas.md#windows-)
 
 |アラート:|[説明]|意図 ([詳細](#intentions))|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Windows マシン</h3> [詳細な説明と注意](security-center-alerts-iaas.md#windows-)||
 |**A logon from a malicious IP has been detected (悪意のある IP からのログオンが検出されました)**|アカウント 'tristan.schleining' とプロセス 'Advapi' のリモート認証は正常に行われましたが、ログオン IP アドレス [IP アドレス] は、以前に悪意のあるまたは極めて異常として報告されています。 攻撃が成功した可能性があります。|-|
 |**A logon from a malicious IP has been detected [seen multiple times] (悪意のある IP からのログオンが検出されました [複数回表示])**|アカウント 'IUSR_10001' とプロセス 'Advapi' のリモート認証は正常に行われましたが、ログオン IP アドレス [IP アドレス] は、以前に悪意のあるまたは極めて異常として報告されています。 攻撃が成功した可能性があります。 .scr 拡張子を持つファイルはスクリーンセーバー ファイルで、通常は Windows システム ディレクトリに常駐しており、そこから実行されます。|-|
 |**Addition of Guest account to Local Administrators group (Local Administrators グループへの Guest アカウントの追加)**|ホスト データの分析により、%{Compromised Host} で組み込みの Guest アカウントが Local Administrators グループに追加されたことが検出されました。これは、攻撃者のアクティビティと密接に関連しています。|-|
@@ -128,8 +117,16 @@ ms.locfileid: "76028853"
 |**Code injection discovered (コード インジェクションが検出されました)**|コード インジェクションとは、実行中のプロセスやスレッドに実行可能なモジュールを挿入することです。 この手法は、マルウェアが、検出されて削除されるのを防ぐためにうまく隠れながら、データにアクセスするために使用されます。<br>このアラートは、挿入されたモジュールがクラッシュ ダンプに存在することを示します。 悪意のある挿入モジュールと悪意のない挿入モジュールを区別するために、Security Center は、挿入されたモジュールが疑わしい動作の特徴に合致するかどうかをチェックします。|-|
 |**Suspicious code segment detected (疑わしいコード セグメントが検出されました)**|反射型インジェクションやプロセス ハロウイングなど、標準以外の方法を使用してコード セグメントが割り当てられたことを示します。 このアラートは、処理されたコード セグメントの他の特性を提供して、報告されるコード セグメントの能力および動作に関するコンテキストを提供します。|-|
 |**Shellcode discovered (シェルコードが検出されました)**|シェルコードは、マルウェアがソフトウェアの脆弱性を突破した後に実行されるペイロードです。<br>このアラートは、悪意のあるペイロードに共通した振る舞いをする実行可能コードがクラッシュ ダンプ分析によって検出されたことを示します。 悪意のないソフトウェアでもこのような動作が行われる可能性がありますが、これはソフトウェア開発の標準的な慣例からは逸脱しています。|-|
-|**Fileless attack technique detected (ファイルレス攻撃手法が検出されました)**|指定されたプロセスのメモリに、ファイルレス攻撃ツールキットが含まれています: Meterpreter。 ファイルレス攻撃ツールキットは通常、ファイル システムに存在せず、従来のウイルス対策ソフトウェアでは検出が困難です。|防御回避/実行|
-||<a name="alerts-linux"></a><h3>Linux マシン</h3> [詳細な説明と注意](security-center-alerts-iaas.md#linux-)||
+|**Fileless attack technique detected (ファイルレス攻撃手法が検出されました)**|指定されたプロセスのメモリに、ファイルレス攻撃ツールキットが含まれています: [ツールキットの名前]。 ファイルレス攻撃ツールキットは通常、ファイル システムに存在せず、従来のウイルス対策ソフトウェアでは検出が困難です。|防御回避/実行|
+||||
+
+
+## <a name="alerts-linux"></a>Linux マシンのアラート
+
+[詳細な説明と注意](security-center-alerts-iaas.md#linux-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Process seen accessing the SSH authorized keys file in an unusual way (通常とは異なる方法で SSH 承認済みキー ファイルにアクセスするプロセスが確認されました)**|SSH 承認済みキー ファイルが、既知のマルウェア活動に似た方法でアクセスされました。 このアクセスは、攻撃者がマシンへの永続的なアクセスを取得しようとしていることを示している可能性があります。|-|
 |**Detected Persistence Attempt (永続化の試行が検出されました)**|ホスト データ分析で、シングル ユーザー モードのスタートアップ スクリプトがインストールされていることが検出されました。<br>正当なプロセスがそのモードでの実行を要求されることはまれであるため、これは、攻撃者が持続性を保証するために、すべての実行レベルに悪意のあるプロセスを追加したことを示している可能性があります。 |永続化|
 |**Suspicious file timestamp modification (ファイルのタイムスタンプの不審な変更)**|ホスト データ分析で、不審なタイムスタンプの変更が検出されました。 攻撃者は、既存の正当なファイルから新しいツールにタイムスタンプをコピーし、これらの新しくドロップされたファイルの検出を回避することがよくあります。|永続化/防御回避|
@@ -210,7 +207,15 @@ ms.locfileid: "76028853"
 |**Suspicious password accesss [seen multiple times] (不審なパスワード アクセス [複数回表示])**|ホスト データの分析で、%{Compromised Host} で暗号化されたユーザー パスワードへの不審なアクセスが検出されました。 この動作は、次のマシンで今日 [x] 回見られました: [マシン名]|-|
 |**Suspicious PHP execution detected (疑わしい PHP の実行が検出されました)**|マシン ログは、不審な PHP プロセスが実行されていることを示しています。 このアクションには、PHP プロセスを使用してコマンドラインから OS コマンドまたは PHP コードを実行する試みが含まれていました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は Web シェルで Web サイトを感染させようとするなどの悪意のあるアクティビティでも観察されます。|-|
 |**Suspicious request to Kubernetes API (Kubernetes API への疑わしい要求)**|マシンのログは、Kubernetes API に対して疑わしい要求が行われたことを示しています。 要求は、Kubernetes ノードから送信されました。ノードで実行されているいずれかのコンテナーからのものである可能性があります。 この動作が意図的である場合もありますが、侵害されたコンテナーをノードが実行していることを示している可能性があります。|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [詳細な説明と注意](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Azure App Service のアラート
+
+[詳細な説明と注意](security-center-alerts-compute.md#azure-app-service-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Suspicious WordPress theme invocation detected (不審な WordPress テーマの呼び出しが検出されました)**|App Service のアクティビティ ログは、App Service リソースに対するコード インジェクション アクティビティの可能性を示しています。<br>この不審なアクティビティは、WordPress テーマを操作してサーバー側でのコード実行をサポートし、操作されたテーマ ファイルを呼び出すための直接の Web 要求を行うアクティビティに似ています。 この種のアクティビティは、WordPress での攻撃活動の一部である可能性があります。|-|
 |**Web fingerprinting detected (Web フィンガー プリントが検出されました)**<br>(NMAP / Blind Elephant)|App Service のアクティビティ ログは、App Service リソースに対する Web フィンガー プリント アクティビティの可能性を示しています。<br>この不審なアクティビティは、Blind Elephant と呼ばれるツールに関連しています。 このツールは、Web サーバーのフィンガープリントを取得し、インストールされているアプリケーションとそのバージョンを検出しようとします。 攻撃者はこのツールを使用して Web アプリケーションを調べ、脆弱性を見つけることがよくあります。 |-|
 |**Suspicious access to possibly vulnerable web page detected (脆弱な可能性がある Web ページへの不審なアクセスが検出されました)**|App Service のアクティビティ ログは、機密性が高いと思われる Web ページがアクセスされたことを示しています。<br>この不審なアクティビティは、Web スキャナーのアクセス パターンに似たアクセス パターンを持つソース アドレスから発生しています。 この種のアクティビティは、多くの場合、攻撃者がネットワークをスキャンして、機密性が高いか、脆弱な Web ページへのアクセス権を取得しようとする試みと関連しています。 |-|
@@ -226,7 +231,15 @@ ms.locfileid: "76028853"
 |**Suspicious User Agent detected (疑わしいユーザー エージェントが検出されました)**|Azure App Service のアクティビティ ログに、疑わしいユーザー エージェントの要求が示されています。 この動作は、App Service アプリケーションの脆弱性を悪用する試行を示している可能性があります。|-|
 |**PHP file in upload folder (アップロード フォルダー内の PHP ファイル)**|Azure App Service のアクティビティ ログに、アップロード フォルダー内にある不審な PHP ページへのアクセスが示されています。 この種のフォルダーには通常、 PHP ファイルは含まれません。 この種のファイルが存在する場合は、任意のファイル アップロードの脆弱性を利用した悪用を示している可能性があります。|-|
 |**Anomalous requests pattern detected (異常な要求パターンが検出されました)**|Azure App Service のアクティビティ ログに、%{Source IP} から App Service に対する異常な HTTP アクティビティが示されています。 このアクティビティは、ファジングやブルート フォース アクティビティのパターンに似ています。|-|
-||<a name="alerts-akscluster"></a><h3>AKS クラスター レベル</h3> [詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>AKS クラスター レベルのアラート
+
+[詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**PREVIEW - Role binding to the cluster-admin role detected (プレビュー - クラスター管理者ロールへのロール バインドが検出されました)**|Kubernetes 監査ログ分析によって、管理者特権をもたらす、クラスター管理者ロールへの新しいバインドが検出されました。 不必要な管理者特権を提供すると、クラスターで特権エスカレーションの問題が発生する可能性があります。|永続化|
 |**PREVIEW - Exposed Kubernetes dashboard detected (プレビュー - 公開された Kubernetes ダッシュボードが検出されました)**|Kubernetes 監査ログ分析によって、LoadBalancer サービスによる Kubernetes ダッシュボードの公開が検出されました。 ダッシュボードが公開されると、クラスター管理への認証されていないアクセスが可能になり、セキュリティ上の脅威が生じます。|永続化|
 |**PREVIEW - New high privileges role detected (プレビュー - 新しい高い特権のロールが検出されました)**|Kubernetes 監査ログ分析によって、高い特権を持つ新しいロールが検出されました。 高い特権を持つロールにバインドすると、クラスター内のユーザーやグループに、昇格された特権が付与されます。 不必要に昇格された特権を提供すると、クラスターで特権エスカレーションの問題が発生する可能性があります。|永続化|
@@ -234,7 +247,14 @@ ms.locfileid: "76028853"
 |**PREVIEW - Digital currency mining container detected (プレビュー - デジタル通貨マイニング コンテナーが検出されました)**|Kubernetes 監査ログ分析によって、デジタル通貨マイニング ツールに関連付けられているイメージを含むコンテナーが検出されました。|実行|
 |**PREVIEW - Privileged container detected (プレビュー - 特権コンテナーが検出されました)**|Kubernetes 監査ログ分析によって、新しい特権コンテナーが検出されました。 特権コンテナーは、ノードのリソースにアクセスできるため、コンテナー間の分離が破壊されます。 侵害された場合、攻撃者はノードにアクセスするために、特権コンテナーを使用できます。|特権エスカレーション|
 |**PREVIEW - Container with a sensitive volume mount detected (プレビュー - 機密のボリューム マウントを持つコンテナーが検出されました)**|Kubernetes 監査ログ分析によって、機密のボリューム マウントを持つ新しいコンテナーが検出されました。 検出されたボリュームは、機密性の高いファイルまたはフォルダーをノードからコンテナーにマウントする hostPath 型です。 コンテナーが侵害された場合、攻撃者はこのマウントを使用して、ノードにアクセスできます。|特権エスカレーション|
-||<a name="alerts-containerhost"></a><h3>コンテナー ホスト レベル</h3> [詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>コンテナー ホスト レベルのアラート
+
+[詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Privileged Container Detected (特権コンテナーが検出されました)**|マシンのログは、アクセス許可された Docker コンテナーが実行していることを示しています。 特権コンテナーは、ホストのリソースへのフル アクセスを持ちます。 侵害された場合、攻撃者はホスト マシンへのアクセス許可を得るために、アクセス許可されたコンテナーを使用できます。|特権エスカレーション/実行|
 |**Privileged command run in container (コンテナーで特権コマンドが実行されました)**|マシンのログは、Docker コンテナーで特権コマンドが実行されたことを示しています。 特権コマンドには、ホスト マシンに対する拡張特権があります。|特権エスカレーション|
 |**Exposed Docker daemon detected (公開されている Docker デーモンが検出されました)**|マシンのログは、Docker デーモン (dockerd) が TCP ソケットを公開していることを示します。 既定では、Docker の構成で、TCP ソケットが有効である場合には暗号化または認証は使用されません。 そのため、関連するポートへのアクセス権を持つすべてのユーザーが、Docker デーモンへのフル アクセスを取得できます。|悪用/実行|
@@ -242,7 +262,15 @@ ms.locfileid: "76028853"
 |**Container with a miner image detected (マイナー イメージを持つコンテナーが検出されました)**|マシンのログは、デジタル通貨マイニングに関連付けられているイメージを実行している Docker コンテナーの実行を示しています。 この動作は、リソースが悪用されていることを示している可能性があります。|実行|
 |**Suspicious request to Kubernetes API (Kubernetes API への疑わしい要求)**|マシンのログは、Kubernetes API に対して疑わしい要求が行われたことを示しています。 要求は、Kubernetes ノードから送信されました。ノードで実行されているいずれかのコンテナーからのものである可能性があります。 この動作が意図的である場合もありますが、侵害されたコンテナーをノードが実行していることを示している可能性があります。|実行|
 |**Suspicious request to the Kubernetes Dashboard (Kubernetes ダッシュボードへの疑わしい要求)**|マシンのログは、Kubernetes ダッシュボードに対して疑わしい要求が行われたことを示しています。 要求は、Kubernetes ノードから送信されました。ノードで実行されているいずれかのコンテナーからのものである可能性があります。 この動作が意図的である場合もありますが、侵害されたコンテナーをノードが実行していることを示している可能性があります。|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL Database と SQL Data Warehouse</h3> [詳細な説明と注意](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>SQL Database および SQL Data Warehouse のアラート
+
+[詳細な説明と注意](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**A possible vulnerability to SQL Injection (SQL インジェクションにつながる可能性のある脆弱性)**|アプリケーションにより、データベースでエラーのある SQL ステートメントが生成されました。 これは、SQL インジェクション攻撃に対する脆弱性があることを示している可能性があります。 エラーのあるステートメントの理由としては、次の 2 つが考えられます。 アプリケーション コードの欠陥により、エラーのある SQL ステートメントが作成された可能性がある。 または、アプリケーション コードまたはストアド プロシージャでユーザー入力がサニタイズされず、エラーのある SQL ステートメントが作成され、SQL インジェクションに悪用される可能性がある。|-|
 |**SQL インジェクションの可能性**|SQL インジェクションに脆弱な特定されたアプリケーションに対してアクティブな悪用が発生しました。 これは、攻撃者が脆弱なアプリケーション コードまたはストアド プロシージャを使用して、悪意のある SQL ステートメントを挿入しようとしていることを意味します。|-|
 |**Logon from an unusual location (通常とは異なる場所からのログオン)**|SQL Server へのアクセス パターンに変化があり、何者かが通常とは異なる地理的な場所からサーバーにサインインしました。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員や外部の攻撃者など) が検出されます。|悪用|
@@ -252,7 +280,15 @@ ms.locfileid: "76028853"
 |**Logon from an unusual Azure Data Center (通常とは異なる Azure データ センターからのログオン)**|SQL Server へのアクセス パターンに変化があり、何者かが通常とは異なる Azure データ センターからサーバーにサインインしました。 このアラートで正当なアクション (新しいアプリケーションや Azure サービス) が検出されることがあります。 それ以外の場合は、アラートによって悪意のあるアクション (Azure の侵害されたリソースからの攻撃者の操作) が検出されます。|プローブ|
 |**Potentially Unsafe Action (安全でない可能性のあるアクション)**|悪意のあるセッションでよく使用される、高い特権を持つ SQL コマンドが SQL Server で実行されました。 これらのコマンドは、既定で無効にすることをお勧めします。 このアラートで正当なアクション (管理スクリプトの実行) が検出されることがあります。 それ以外の場合は、アラートによって悪意のあるアクション (攻撃者が SQL 信頼を使用して Windows レイヤーに侵入する) が検出されます。|実行|
 |**Unusual export location (通常とは異なるエクスポート場所)**|SQL インポートおよびエクスポート操作用の、ストレージのエクスポート先が変更されました。 このアラートで正当なアクション (新しいバックアップ先) が検出されることがあります。 それ以外の場合は、このアラートによって、悪意のあるアクション (攻撃者が容易にデータをファイルに抜き出した) が検出されます。|窃盗|
-||<a name="alerts-azurestorage"></a><h3>Azure Storage</h3> [詳細な説明と注意](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Azure Storage のアラート
+
+[詳細な説明と注意](security-center-alerts-data-services.md#azure-storage-)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Access from an unusual location to a storage account (ストレージ アカウントへの通常とは異なる場所からのアクセス)**|Azure Storage アカウントへのアクセス パターンに変化があったことを示しています。 最近のアクティビティと比較して見慣れない IP アドレスから誰かがこのアカウントにアクセスしました。 攻撃者がアカウントへのアクセス権を取得したか、あるいは正当なユーザーが新しい、または通常とは異なる地理的場所から接続しました。 後者の例には、新しいアプリケーションまたは開発者からのリモート メンテナンスがあります。|悪用|
 |**Unusual application accessed a storage account (通常とは異なるアプリケーションがストレージ アカウントにアクセスしました)**|通常とは異なるアプリケーションがこのストレージ アカウントにアクセスしたことを示します。 原因として考えられるのは、攻撃者が新しいアプリケーションを使用して、ご自分のストレージ アカウントにアクセスしたことです。|悪用|
 |**Anonymous access to a storage account (ストレージ アカウントに対する匿名アクセス)**|ストレージ アカウントへのアクセス パターンに変化が生じたことを示します。 たとえば、アカウントへの匿名 (認証なし) アクセスがあり、それがこのアカウントでの最近のアクセス パターンと比較して予測外である場合などです。 原因として考えられるのは、攻撃者が Blob Storage を保持するコンテナーへのパブリック読み取りアクセスを悪用したことです。|悪用|
@@ -265,10 +301,26 @@ ms.locfileid: "76028853"
 |**Unusual access inspection in a storage account (ストレージ アカウントでの通常と異なるアクセスの検査)**|ストレージ アカウントのアクセス許可が、このアカウントでの最近のアクティビティと比較して、通常とは異なる方法で検査されたことを示します。 原因として考えられるのは、攻撃者が将来の攻撃のための偵察を実行したことです。|コレクション|
 |**Unusual access inspection in a storage account (ストレージ アカウントでの通常と異なるデータの探索)**|ストレージ アカウント内の BLOB またはコンテナーが、このアカウントでの最近のアクティビティと比較して、通常と異なる方法で列挙されたことを示します。 原因として考えられるのは、攻撃者が将来の攻撃のための偵察を実行したことです。|コレクション|
 |**PREVIEW - Potential malware uploaded to a storage account (プレビュー - マルウェアがストレージ アカウントにアップロードされた可能性)**|マルウェアを含んだ BLOB がストレージ アカウントにアップロードされた可能性があることを示します。 原因としては、攻撃者が意図的にマルウェアをアップロードするケースと、正当なユーザーが意図せず悪意のある BLOB をアップロードしてしまうケースが考えられます。|横移動|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [詳細な説明と注意](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[詳細な説明と注意](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Access from an unusual location to a Cosmos DB account (Cosmos DB アカウントへの通常とは異なる場所からのアクセス)**|Azure Cosmos DB アカウントへのアクセス パターンに変化があったことを示します。 最近のアクティビティと比較して、誰かが未知の IP アドレスからこのアカウントにアクセスしました。 攻撃者がアカウントにアクセスしてたか、あるいは正当なユーザーが通常と異なる新しい地理的場所からアカウントにアクセスしました。 後者の例には、新しいアプリケーションまたは開発者からのリモート メンテナンスがあります。|悪用|
 |**Unusual amount of data extracted from a Cosmos DB account (通常とは異なる量のデータが Cosmos DB アカウントから抽出されました)**|Azure Cosmos DB アカウントからのデータ抽出パターンに変化があったことを示します。 最近のアクティビティと比較して、誰かが通常と異なる量のデータを抽出しました。 攻撃者が、Azure Cosmos DB データベースから大量のデータを抽出した可能性があります (たとえば、データの窃盗や漏えい、データの不正な転送など)。 あるいは、正当なユーザーまたはアプリケーションによって、コンテナーから通常とは異なる量のデータが抽出された可能性もあります (メンテナンス バックアップ アクティビティの場合など)。|窃盗|
-||<a name="alerts-azurenetlayer"></a><h3>Azure ネットワーク レイヤー</h3> [詳細な説明と注意](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Azure ネットワーク レイヤーのアラート
+
+[詳細な説明と注意](security-center-alerts-service-layer.md#azure-network-layer)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**Traffic detected from IP addresses recommended for blocking (ブロックを推奨されていた IP アドレスからトラフィックが検出されました)**|Azure Security Center で、ブロックすることを推奨されている IP アドレスからの受信トラフィックを検出しました。 これは通常、この IP アドレスがこのリソースと定期的に通信していない場合に発生します。 または、その IP アドレスが、Security Center の脅威インテリジェンス ソースによって、悪意があるというフラグが付けられています。|プローブ|
 |**Network communication with a malicious machine detected (悪意のあるマシンとのネットワーク通信が検出されました)**|ネットワーク トラフィック分析で、ご使用のマシン (IP %{Victim IP}) がコマンド アンド コントロール センターの可能性がある対象と通信していることが検出されました。 侵害されたリソースがロード バランサーまたはアプリケーション ゲートウェイである場合、疑わしいアクティビティは、(ロード バランサーまたはアプリケーション ゲートウェイの) バックエンド プール内の 1 つ以上のリソースが、コマンド アンド コントロール センターの可能性がある対象と通信していることを示している可能性があります。|-|
 |**Possible compromised machine detected (侵害された可能性のあるマシンが検出されました)**|脅威インテリジェンスは、ご使用のマシン (IP% {Machine IP}) が Conficker タイプのマルウェアによって侵害された可能性があることを示しています。 Conficker は、Microsoft Windows オペレーティング システムをターゲットにしたコンピューター ワームで、2008 年 11 月に初めて検出されました。 Conficker は、200 か国以上で政府、企業、および自宅のコンピューターを含む何百万台ものコンピューターに感染し、2003 年の Welchia ワーム以来最大のコンピューター ワーム感染として知られるようになりました。|-|
@@ -285,7 +337,15 @@ ms.locfileid: "76028853"
 |**複数の送信元への疑わしい発信 RDP ネットワーク アクティビティ**|ネットワーク トラフィックの分析で、デプロイ内のリソース %{Compromised Host} (%{Attacker IP}) から複数の宛先に、異常なリモート デスクトップ プロトコル (RDP) 通信が発信されたことが検出されました。 侵害されたリソースがロード バランサーまたはアプリケーション ゲートウェイである場合、疑わしい送信トラフィックは、(ロード バランサーまたはアプリケーション ゲートウェイの) バックエンド プール内の 1 つ以上のリソースから送信されています。 具体的には、サンプリングされたネットワーク データでは、ご使用のマシンが %{Number of Attacked IPs} の固有の IP に接続していることが示されていますが、この環境では異常と考えられます。 このアクティビティは、ご使用のリソースが侵害され、現在、外部の RDP エンド ポイントのブルート フォース攻撃に使用されていることを示している可能性があります。 この種の活動によって、自分の IP が外部のエンティティによって悪意のある IP とフラグが付けられる可能性があることに注意してください。|-|
 |**疑わしい発信 SSH ネットワーク アクティビティ**|ネットワーク トラフィックの分析で、デプロイ内のリソース %{Compromised Host} (%{Attacker IP}) から %{Victim IP} に、異常な SSH 通信が発信されたことが検出されました。 侵害されたリソースがロード バランサーまたはアプリケーション ゲートウェイである場合、疑わしい送信トラフィックは、(ロード バランサーまたはアプリケーション ゲートウェイの) バックエンド プール内の 1 つ以上のリソースから送信されています。 具体的には、サンプリングされたネットワーク データでは、ご使用のリソースから %{Number of Connections} の送信接続が示されていますが、これはこの環境では異常と考えられます。 このアクティビティは、ご使用のリソースが侵害され、現在、外部の SSH エンド ポイントのブルート フォース攻撃に使用されていることを示している可能性があります。 この種の活動によって、自分の IP が外部のエンティティによって悪意のある IP とフラグが付けられる可能性があることに注意してください。|-|
 |**複数の送信先への疑わしい発信 SSH ネットワーク アクティビティ**|ネットワーク トラフィックの分析で、デプロイ内のリソース %{Compromised Host} (%{Attacker IP}) から複数の宛先に、異常な SSH 通信が発信されたことが検出されました。 侵害されたリソースがロード バランサーまたはアプリケーション ゲートウェイである場合、疑わしい送信トラフィックは、(ロード バランサーまたはアプリケーション ゲートウェイの) バックエンド プール内の 1 つ以上のリソースから送信されています。 具体的には、サンプリングされたネットワーク データでは、ご使用のリソースが %{Number of Attacked IPs} の固有の IP に接続していることが示されていますが、この環境では異常と考えられます。 このアクティビティは、ご使用のリソースが侵害され、現在、外部の SSH エンド ポイントのブルート フォース攻撃に使用されていることを示している可能性があります。 この種の活動によって、自分の IP が外部のエンティティによって悪意のある IP とフラグが付けられる可能性があることに注意してください。|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure Resource Manager (プレビュー)</h3> [詳細な説明と注意](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Azure Resource Manager のアラート (プレビュー)
+
+[詳細な説明と注意](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**PREVIEW - MicroBurst toolkit function run detected (プレビュー - MicroBurst ツールキット関数の実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 [MicroBurst](https://github.com/NetSPI/MicroBurst) ツールは、攻撃者 (または侵入テスター) によって、サブスクリプション リソースのマッピング、安全でない構成の特定、および機密情報の漏えいに使用される恐れがあります。|-|
 |**PREVIEW - Azurite toolkit run detected (プレビュー - Azurite ツールキットの実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 [Azurite](https://github.com/mwrlabs/Azurite) ツールは、攻撃者 (または侵入テスター) によって、サブスクリプション リソースのマッピングおよび安全でない構成の特定に使用される恐れがあります。|-|
 |**PREVIEW - Suspicious management session using an inactive account detected (プレビュー - 非アクティブ アカウントを使用する疑わしい管理セッションが検出されました)**|サブスクリプションのアクティビティ ログ分析で、疑わしい動作が検出されました。 長期間使用されなかったプリンシパルでは、現在、攻撃者の永続化をセキュリティで保護できるアクションが実行されています。|永続化|
@@ -295,7 +355,15 @@ ms.locfileid: "76028853"
 |**頻度の低い国からのアクティビティ**|組織内のユーザーが最近アクセスしていなかった場所や一度もアクセスしていない場所からアクティビティが発生しました。<br>この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。|-|
 |**匿名の IP アドレスからのアクティビティ**|匿名プロキシ IP アドレスとして識別されている IP アドレスからのユーザー アクティビティが検出されました。<br>このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される恐れがあります。 この検出では、組織内の他のユーザーがよく使用する IP アドレスのタグ付けが間違っているなどの誤検知を低減する機械学習アルゴリズムが活用されます。|-|
 |**Impossible travel activity (あり得ない移動アクティビティ)**|地理的に離れた場所を起点とする 2 つのユーザー アクティビティ (1 つまたは複数のセッションで) が発生しました。 これは、ユーザーが 1 番目の場所から 2 番目の場所に移動するのにかかった時間よりも短い時間内に発生します。 これは、別のユーザーが同じ資格情報を使用していることを示します。<br>この検出では、組織内の他のユーザーによって定期的に使用される VPN や場所など、あり得ない移動状況の原因になる明らかな誤検知を無視する機械学習アルゴリズムが使用されます。 この検出には 7 日間の初期学習期間があり、その間に新しいユーザーのアクティビティ パターンの学習が行われます。 |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault (プレビュー)</h3> [詳細な説明と注意](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Azure Key Vault のアラート (プレビュー)
+
+[詳細な説明と注意](security-center-alerts-service-layer.md#azure-keyvault)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**TOR 出口ノードからキー コンテナーへのアクセス**|TOR IP 匿名化システムを使用して自分の場所を隠ぺいしているユーザーが、キー コンテナーにアクセスしました。 悪意のあるアクターは、インターネットに接続されたリソースへの不正アクセスを試みるときに、自分の場所を隠そうとすることがよくあります。|-|
 |**キー コンテナーでの疑わしいポリシーの変更とシークレット クエリ**|キー コンテナーのポリシーの変更が行われた後で、シークレットの一覧表示や取得の操作が行われました。 また、この操作パターンは、このコンテナーでユーザーによって通常実行されるものではありません。 これは、高い確率で、キー コンテナーが侵害され、その中のシークレットが悪意のあるアクターによって盗まれたことを示しています。|-|
 |**キー コンテナーでの疑わしいシークレット一覧取得とクエリ**|シークレット一覧取得操作の後で、多くのシークレット取得操作が行われました。 また、この操作パターンは、このコンテナーでユーザーによって通常実行されるものではありません。 これは、潜在的に悪意のある目的のためにキー コンテナーに格納されているシークレットをだれかがダンプしている可能性があることを示します。|-|
@@ -305,11 +373,18 @@ ms.locfileid: "76028853"
 |**キー コンテナーでの通異常な操作パターン**|履歴データと比較して異常なキー コンテナー操作のセットが実行されました。 通常、Key Vault のアクティビティは、時間が経過しても変わることはありません。 これは、アクティビティの正当な変更である可能性があります。 または、インフラストラクチャが侵害されていて、さらに調査が必要である可能性もあります。|-|
 |**キー コンテナーでの大量の操作**|履歴データと比較して大量のキー コンテナー操作が実行されました。 通常、Key Vault のアクティビティは、時間が経過しても変わることはありません。 これは、アクティビティの正当な変更である可能性があります。 または、インフラストラクチャが侵害されていて、さらに調査が必要である可能性もあります。|-|
 |**ユーザーによるキー コンテナーへの大量のアクセス**|ユーザーまたはアプリケーションがアクセスしているコンテナーの数が、履歴データと比較して変化しました。 通常、Key Vault のアクティビティは、時間が経過しても変わることはありません。 これは、アクティビティの正当な変更である可能性があります。 または、インフラストラクチャが侵害されていて、さらに調査が必要である可能性もあります。|-|
-||<a name="alerts-azureddos"></a><h3>Azure DDoS Protection</h3> [詳細な説明と注意](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Azure DDoS Protection のアラート
+
+[詳細な説明と注意](security-center-alerts-integration.md#azure-ddos)
+
+|アラート:|[説明]|意図 ([詳細](#intentions))|
+|----|----|:----:|
 |**DDoS Attack detected for Public IP (パブリック IP に対する DDoS 攻撃が検出されました)**|パブリック IP (IP アドレス) に対する DDoS 攻撃が検出されましたが、軽減策が実施されています。|プローブ|
 |**DDoS Attack mitigated for Public IP (パブリック IP に対する DDoS 攻撃の軽減策が実施されました)**|パブリック IP (IP アドレス) に対する DDoS 攻撃の軽減策が実施されました。|プローブ|
 ||||
-
 
 ## <a name="intentions"></a>意図
 

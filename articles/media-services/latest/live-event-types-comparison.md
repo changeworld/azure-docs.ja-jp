@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888395"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543054"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
@@ -28,7 +28,7 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 
 次の表は、ライブ イベントの種類の機能を比較したものです。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
-* **LiveEventEncodingType.None** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 
+* **LiveEventEncodingType.None** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー ライブ イベントとも呼ばれています。
 * **LiveEventEncodingType.Standard** - オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 コントリビューション フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします (詳細については、この記事で後に説明)。
 * **LiveEventEncodingType.Premium1080p** - オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 Default1080p プリセットは、解像度とビットレートのペアの出力セットを指定します (詳細については、この記事で後に説明)。 
 
@@ -49,9 +49,10 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 | 出力ビデオの最大ビデオ解像度|入力と同じ|Standard - 720p、Premium1080p - 1080p|
 | 入力ビデオの最大フレームレート|60 フレーム/秒|Standard または Premium1080p - 30 フレーム/秒|
 | 入力プロトコル|RTMP、フラグメント化された MP4 (スムーズ ストリーミング)|RTMP、フラグメント化された MP4 (スムーズ ストリーミング)|
-| 料金|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|
+| Price|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。|
 | 最長実行時間| 24 時間 365 日、ライブ リニア | 24 時間 365 日、ライブ リニア (プレビュー)|
 | キャプション データから埋め込まれた CEA 608/708 をパス スルーする機能|はい|はい|
+| ライブ文字起こしをオンにする機能|はい|はい|
 | スレートの挿入のサポート|いいえ|いいえ|
 | API による広告信号のサポート| いいえ|いいえ|
 | インバンド SCTE-35 メッセージによる広告信号のサポート|はい|はい|
@@ -71,7 +72,7 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 
 コントリビューション フィードの解像度が 720p 以上である場合、**Default720p** プリセットはそのフィードを次の 6 つのレイヤーにエンコードします。 以下の表で、ビットレートは kbps 単位、MaxFPS は、許可される最大フレーム レート (フレーム/秒単位) を表し、プロファイルは、使用されている H.264 プロファイルを表しています。
 
-| Bitrate | 幅 | 高さ | 最大 FPS | プロファイル |
+| Bitrate | 幅 | [高さ] | 最大 FPS | プロファイル |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |
 | 2200 |960 |540 |30 |高 |
@@ -88,7 +89,7 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 
 コントリビューション フィードの解像度が 1080p である場合、**Default1080p** プリセットはフィードを次の 6 つのレイヤーにエンコードします。
 
-| Bitrate | 幅 | 高さ | 最大 FPS | プロファイル |
+| Bitrate | 幅 | [高さ] | 最大 FPS | プロファイル |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |高 |
 | 3000 |1280 |720 |30 |高 |
@@ -115,7 +116,7 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 
 ### <a name="frame-rate"></a>フレーム レート
 
-ライブ エンコーダーは、コントリビューション フィードの個々のビデオ フレームの時間にも従います。つまり、出力レイヤーは同じ時間のフレームを持ちます。 したがって、固定のフレーム レート (最大で 30 フレーム/秒) を持つコントリビューション フィードを生成するようにオンプレミス エンコーダーを構成することをお勧めします。 これにより、サービスからの発信 HLS ストリームと MPEG DASH ストリームも固定のフレーム レート時間を持つことになります。 フレーム レートのわずかな違いは大部分のデバイスで許容される可能性がありますが、正しく再生される出力がライブ エンコーダーで生成される保証はありません。 オンプレミスのライブ エンコーダーでは、(たとえば、 バッテリ残量が低下している状態で) フレームがドロップしたり、いかなる方法でもフレーム レートが変更されるようなことがあってはなりません。
+ライブ エンコーダーは、コントリビューション フィードの個々のビデオ フレームの時間にも従います。つまり、出力レイヤーは同じ時間のフレームを持ちます。 したがって、固定のフレーム レート (最大で 30 フレーム/秒) を持つコントリビューション フィードを生成するようにオンプレミス エンコーダーを構成することをお勧めします。 これにより、サービスからの発信 HLS ストリームと MPEG DASH ストリームも固定のフレーム レート時間を持つことになります。 フレーム レートのわずかな違いは大部分のデバイスで許容される可能性がありますが、正しく再生される出力がライブ エンコーダーで生成される保証はありません。 オンプレミスのライブ エンコーダーでは、フレームが欠落したり ( バッテリーの状態が低いときなど)、フレームレートが変化したりすることがあってはなりません。
 
 ### <a name="resolution-of-contribution-feed-and-output-layers"></a>コントリビューション フィードと出力レイヤーの解像度
 
@@ -127,6 +128,6 @@ Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest
 
 ライブ エンコーダーは、コントリビューション フィードのビットレートに関係なく、プリセットのビットレート設定に従うように構成されています。 その結果、出力レイヤーのビットレートが、コントリビューション フィードのものを超える場合があります。 たとえば、1 Mbps に 720p の解像度でコントリビューション フィードを送信すると、出力レイヤーは上記の[表](live-event-types-comparison.md#output-video-streams-for-default720p)と同じままになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ライブ ストリーミングの概要](live-streaming-overview.md)

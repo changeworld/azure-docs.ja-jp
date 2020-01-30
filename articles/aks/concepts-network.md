@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913877"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547967"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -66,7 +66,7 @@ AKS では、次の 2 つのネットワーク モデルのいずれかを使用
 
 ### <a name="kubenet-basic-networking"></a>Kubenet (基本) ネットワーク
 
-*kubenet* ネットワーク オプションは、AKS クラスターを作成するための既定の構成です。 *kubenet* を使用して、ノードでは Azure 仮想ネットワーク サブネットから IP アドレスを取得します。 ポッドでは、ノードの Azure 仮想ネットワーク サブネットとは論理的に異なるアドレス空間から IP アドレスを受け取ります。 その後、ポッドで Azure 仮想ネットワークのリソースに到達できるように、ネットワーク アドレス変換 (NAT) が構成されます。 トラフィックの発信元 IP アドレスは、ノードのプライマリ IP アドレスに NAT 変換されます。
+*kubenet* ネットワーク オプションは、AKS クラスターを作成するための既定の構成です。 *kubenet* を使用すると、ノードでは Azure 仮想ネットワーク サブネットから IP アドレスが取得されます。 ポッドでは、ノードの Azure 仮想ネットワーク サブネットとは論理的に異なるアドレス空間から IP アドレスを受け取ります。 その後、ポッドで Azure 仮想ネットワークのリソースに到達できるように、ネットワーク アドレス変換 (NAT) が構成されます。 トラフィックの発信元 IP アドレスは、ノードのプライマリ IP アドレスに NAT 変換されます。
 
 ノードでは、[kubenet][kubenet] Kubernetes プラグインを使用します。 Azure プラットフォームで仮想ネットワークを作成および構成させることができます。または、既存の仮想ネットワーク サブネットに AKS クラスターをデプロイするように選択できます。 ここでも、ルーティング可能な IP アドレスを受信するのはノードのみであり、ポッドでは NAT を使用して、AKS クラスター外の他のリソースと通信します。 この方法では、ポッド用にネットワーク空間で予約する必要がある IP アドレスの数が大幅に減ります。
 
@@ -115,7 +115,7 @@ kubenet と Azure CNI は、両方とも、使用するネットワーク モデ
 * Azure プラットフォームは、AKS クラスターを作成したときに自動的に仮想ネットワーク リソースを作成して構成することができます。
 * 仮想ネットワーク リソースを手動で作成して構成し、AKS クラスターを作成するときにそれらのリソースにアタッチすることができます。
 
-サービス エンドポイントや UDR のような機能は kubenet と Azure CNI の両方でサポートされていますが、[AKS のサポート ポリシー][support-policies]は、どのような変更を行うことができるかを定義します。 例:
+サービス エンドポイントや UDR のような機能は kubenet と Azure CNI の両方でサポートされていますが、[AKS のサポート ポリシー][support-policies]は、どのような変更を行うことができるかを定義します。 次に例を示します。
 
 * AKS クラスターの仮想ネットワーク リソースを手動で作成する場合は、独自の UDR またはサービス エンドポイントを構成するときにサポートされます。
 * Azure プラットフォームが AKS クラスター用の仮想ネットワーク リソースを自動的に作成する場合、それらの AKS 管理対象リソースを手動で変更して独自の UDR またはサービスエンドポイントを構成することはサポートされていません。
@@ -146,7 +146,7 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護][use-network-policies]」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] または [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
 

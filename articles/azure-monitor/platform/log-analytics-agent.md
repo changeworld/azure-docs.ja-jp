@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 58d6c8d18e03ab248cfbebcf910ae13c5fee439e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530971"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513628"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -142,9 +142,9 @@ Azure Monitor ログを直接、Azure サブスクリプションまたはハイ
 
 |source | 方法 | [説明]|
 |-------|-------------|-------------|
-|Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md)<br>- [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)| - この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。<br>- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。|
-| ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 
-| ハイブリッド Linux コンピューター| [手動インストール](agent-linux.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールするか、手動でエージェントをダウンロードしてインストールします。 | 
+|Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)| - この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。<br>- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。|
+| ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 
+| ハイブリッド Linux コンピューター| [手動インストール](../../azure-monitor/learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
 | System Center Operations Manager|[Operations Manager を Log Analytics に統合する](om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
 
 ## <a name="next-steps"></a>次のステップ

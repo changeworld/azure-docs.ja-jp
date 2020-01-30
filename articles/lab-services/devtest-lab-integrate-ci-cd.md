@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs を Azure Pipelines の継続的インテグレーションと配信パイプラインに統合する | Microsoft Docs
+title: Azure DevTest Labs を Azure Pipelines に統合する
 description: Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224482"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293217"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs を Azure Pipelines CI/CD パイプラインに統合する
 
@@ -120,7 +120,7 @@ ms.locfileid: "71224482"
    
 1. 変数ごとに **[追加]** を選択し、名前と値を入力します。
    
-   |名前|値|
+   |Name|値|
    |---|---|
    |*vmName*|Resource Manager テンプレートで割り当てた VM 名|
    |*userName*|VM にアクセスするユーザー名|
@@ -140,7 +140,7 @@ ms.locfileid: "71224482"
    
    |フィールド|値|
    |---|---|
-   |**Azure RM サブスクリプション**|必要に応じて、ドロップダウンリストの **[利用可能な Azure サービス接続]** または **[利用可能な Azure サブスクリプション]** からサービス接続またはサブスクリプションを選択し、 **[承認]** を選択します。<br /><br />**注:** Azure サブスクリプションへのさらに制限されたアクセス許可を持つ接続の作成方法については、[Azure Resource Manager サービス エンドポイント](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)に関するページを参照してください。|
+   |**Azure RM サブスクリプション**|必要に応じて、ドロップダウンリストの **[利用可能な Azure サービス接続]** または **[利用可能な Azure サブスクリプション]** からサービス接続またはサブスクリプションを選択し、 **[承認]** を選択します。<br /><br />**注:** Azure サブスクリプションへのさらに制限されたアクセス許可を持つ接続の作成方法については、[Azure Resource Manager サービス エンドポイント](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)に関するページを参照してください。|
    |**ラボ名**|ラボ VM が作成される既存のラボの名前を選択します。|
    |**テンプレート名**|ソース コード リポジトリに保存したテンプレート ファイルの完全なパスと名前を入力します。 組み込みのプロパティを使用して、パスを簡略化できます。次に例を示します。<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**テンプレート パラメーター**|前に定義した変数のパラメーターを次のように入力します。<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
@@ -154,7 +154,7 @@ ms.locfileid: "71224482"
    
 1. **[Add tasks]\(タスクの追加\)** で、 **[Azure PowerShell]** を選択し、 **[追加]** を選択します。 
    
-1. 左側のウィンドウの **[Azure PowerShell スクリプト: FilePath]** を選択します。 
+1. **[Azure PowerShell スクリプト: FilePath]** を左側のペインで選択します。 
    
 1. 右側のウィンドウのフォームに、次のとおりに入力します。
    
@@ -226,7 +226,7 @@ ms.locfileid: "71224482"
 
 カスタム イメージを使用して、必要な場合にいつでも VM を作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。
 - [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタート Resource Manager テンプレートをさらに調べます。
 - 必要に応じて、[Azure DevOps のトラブルシューティング](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting)に関するページを参照します。

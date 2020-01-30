@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462547"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512200"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
@@ -24,7 +24,7 @@ Azure AD 参加は、クラウド優先またはクラウド専用であるこ�
 
 |   | Azure AD Join |
 | --- | --- |
-| **定義** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
+| **[定義]** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
 | **主な対象** | クラウド専用およびハイブリッド組織の両方に適しています。 |
 |   | 組織内のすべてのユーザーに適用できます |
 | **デバイスの所有権** | Organization |
@@ -33,19 +33,19 @@ Azure AD 参加は、クラウド優先またはクラウド専用であるこ�
 |   | 一括登録 |
 |   | Windows Autopilot |
 | **デバイスのサインイン オプション** | 以下を使用する組織アカウント: |
-|   | パスワード |
+|   | Password |
 |   | Windows Hello for Business |
 |   | FIDO2.0 セキュリティ キー (プレビュー) |
 | **デバイス管理** | モバイル デバイス管理 (例:Microsoft Intune) |
-|   | Microsoft Intune および System Center Configuration Manager との共同管理 |
+|   | Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理 |
 | **主な機能** | クラウドとオンプレミスの両方のリソースへの SSO |
 |   | MDM 登録と MDM コンプライアンス評価を使用する条件付きアクセス |
-|   | ロック画面でのセルフサービスによるパスワードのリセットおよび Windows Hello PIN のリセット |
+|   | ロック画面でのセルフサービス パスワード リセット および Windows Hello PIN のリセット |
 |   | デバイス間での Enterprise State Roaming |
 
 Azure AD 参加済みデバイスには、組織の Azure AD アカウントを使用してサインインします。 組織内のリソースへのアクセスは、その Azure AD アカウントと、デバイス ID に適用される[条件付きアクセス ポリシー](../conditional-access/overview.md)に基づいてさらに制限することができます。
 
-管理者は、Microsoft Intune などの Mobile Device Management (MDM) ツールを使用するか、System Center Configuration Manager を使用する共同管理シナリオで、Azure AD 登録済みデバイスをセキュリティで保護し、さらに制御することができます。 これらのツールでは、ストレージの暗号化、パスワードの複雑さ、ソフトウェアのインストール、およびソフトウェアの更新を必要とするなど、組織に必要な構成を適用する手段が提供されます。 管理者は、[System Center Configuration Manager およびビジネス向け Microsoft Store](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business) を使用して、Azure AD 登録済みデバイスで組織のアプリケーションを利用できるようにすることができます。
+管理者は、Microsoft Intune などの Mobile Device Management (MDM) ツールを使用するか、Microsoft Endpoint Configuration Manager を使用する共同管理シナリオで、Azure AD 登録済みデバイスをセキュリティで保護し、さらに制御することができます。 これらのツールでは、ストレージの暗号化、パスワードの複雑さ、ソフトウェアのインストール、およびソフトウェアの更新を必要とするなど、組織に必要な構成を適用する手段が提供されます。 管理者は、Configuration Manager を利用して Azure AD 参加済みデバイスで組織のアプリケーションを利用できるようにし、[ビジネス向けおよび教育機関向けの Microsoft Store からのアプリを管理する](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)ことができます。
 
 Azure AD 参加は、Out of Box Experience (OOBE)、一括登録、または [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot) などのセルフサービス オプションを使用して実行できます。
 
@@ -78,7 +78,7 @@ Azure AD Join は、次の方法のいずれかを使用して展開できます
 - [Bulk の展開](https://docs.microsoft.com/intune/windows-bulk-enroll)
 - [セルフ サービス エクスペリエンス](azuread-joined-devices-frx.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 参加の実装を計画する](azureadjoin-plan.md)
 - [Azure AD 参加済みデバイスのローカル管理者グループの管理方法](assign-local-admin.md)

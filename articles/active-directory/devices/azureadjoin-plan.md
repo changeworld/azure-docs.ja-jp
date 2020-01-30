@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746051"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512421"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -129,7 +129,7 @@ Azure AD 参加済みデバイスの管理には 2 つのアプローチがあ�
 
 MDM ソリューションを Azure AD アプリ ギャラリーから入手できない場合は、「[Azure Active Directory integration with MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)」(Azure Active Directory と MDM の統合) に概説されているプロセスに従って追加できます。 
 
-共同管理では、SCCM を使用してデバイスの特定の側面を管理しながら、MDM プラットフォームを通じてポリシーを配信できます。 Microsoft Intune では、SCCM との共同管理を行うことができます。 詳しくは、「[Windows 10 デバイスの共同管理](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview)」をご覧ください。 Intune 以外の MDM 製品を使用する場合は、適用可能な共同管理のシナリオについて MDM のプロバイダーにお問い合わせください。
+共同管理では、SCCM を使用してデバイスの特定の側面を管理しながら、MDM プラットフォームを通じてポリシーを配信できます。 Microsoft Intune では、SCCM との共同管理を行うことができます。 Windows 10 デバイスの共同管理については、「[共同管理とは](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview)」を参照してください。 Intune 以外の MDM 製品を使用する場合は、適用可能な共同管理のシナリオについて MDM のプロバイダーにお問い合わせください。
 
 **推奨事項:** Azure AD 参加済みデバイスについては MDM のみの管理をご検討ください。
 

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f43f7424cddae8659301be0ddc4842412a62952
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986135"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270868"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -86,7 +86,7 @@ Visual Studio と Microsoft Partner Network のサブスクリプションでは
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>マイクロソフト エンタープライズ契約 (EA) サブスクリプションの課金所有権を譲渡する
 
-エンタープライズ管理者は、加入契約に含まれるアカウント間でサブスクリプションの所有権を譲渡できます。 詳細については、EA ポータルで「[アカウントの所有権の譲渡](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)」を参照してください。
+エンタープライズ管理者は、加入契約に含まれるアカウント間でサブスクリプションの所有権を譲渡できます。 詳細については、EA Portal の「[アカウント所有者を変更する](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)」を参照してください。
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>所有権を受け取った後の手順
 
@@ -190,7 +190,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースは、次の手順を使って更新できます。
 
-  1. [Azure portal](https://portal.azure.com) にサインインする
+  1. [Azure portal](https://portal.azure.com) にサインインします。
   2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
   4. リソースのページで **[設定]** をクリックします。 ここで、既存のシークレットを表示して更新できます。

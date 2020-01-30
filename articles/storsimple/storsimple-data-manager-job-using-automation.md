@@ -1,25 +1,17 @@
 ---
-title: Azure Automation を使用して StorSimple Data Manager でジョブを起動する | Microsoft Docs
+title: Azure Automation を使用して StorSimple Data Manager でジョブを起動する
 description: Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634106"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273987"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -124,6 +116,6 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
     ![Runbook の追加 10](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

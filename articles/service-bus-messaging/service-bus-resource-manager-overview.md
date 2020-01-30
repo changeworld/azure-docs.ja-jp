@@ -1,5 +1,5 @@
 ---
-title: Resource Manager テンプレートを使用して Azure Service Bus リソースを作成する | Microsoft Docs
+title: テンプレートを使用した Azure Service Bus のリソースの作成
 description: Azure Resource Manager テンプレートを使用して Service Bus リソースの作成を自動化する
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d473cf2a79fb86028797205ee7885b51169b10bf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978231"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264460"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 

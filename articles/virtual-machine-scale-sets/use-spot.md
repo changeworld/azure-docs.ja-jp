@@ -1,21 +1,19 @@
 ---
 title: Azure スポット VM (プレビュー) を使用するスケール セットを作成する
 description: コスト削減のためにスポット VM を使う Azure 仮想マシン スケール セットを作成する方法を説明します。
-services: virtual-machine-scale-sets
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: b57c13d4a5c671595a3e82ac7858c027456107f2
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894070"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544788"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>プレビュー:仮想マシン スケール セット用の Azure スポット VM 
 
@@ -93,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
-スポット VM を使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* のリソースの種類に "priority" プロパティを追加し、値として*スポット*を指定します。 必ず *2019-03-01* API バージョン以降を使用してください｡ 
+スポット VM を使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 
 
-排除ポリシーを削除に設定するには、"evictionPolicy" パラメーターを追加して、値を *delete* に設定します。
-
-次の例では、*米国中西部*に *myScaleSet* という名前で Linux のスポット スケール セットを作成します。排除時には、スケール セットの VM は*削除*されます。
+スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティを追加します。 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+無効にしたインスタンスを削除するには、`evictionPolicy` パラメーターを `Delete` に変更します。
+
 ## <a name="faq"></a>よく寄せられる質問
 
 **質問:** 作成後、スポット インスタンスは標準のインスタンスと同じですか。

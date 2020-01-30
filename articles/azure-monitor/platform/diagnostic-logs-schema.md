@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750944"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120147"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -86,6 +86,9 @@ ms.locfileid: "75750944"
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
+
+一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 いくつかの形式で使用できるすべてのものを次の一覧に示します。  たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../sql-database/sql-database-metrics-diag-logging.md)を参照してください。 
+
 |リソースの種類|カテゴリ|カテゴリの表示名|
 |---|---|---|
 |Microsoft.AAD/domainServices|SystemSecurity|SystemSecurity|

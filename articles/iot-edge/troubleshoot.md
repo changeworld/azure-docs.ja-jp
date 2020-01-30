@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912286"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514257"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -105,7 +105,7 @@ Windows の場合:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Security Manager が実行されていない場合は、yaml 構成ファイルを確認してください。
 
 > [!WARNING]
-> YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。
+> YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。 最上位の要素の先頭にはスペースを入れないでください。
 
 Linux の場合:
 
@@ -121,7 +121,7 @@ Windows の場合:
 
 ### <a name="check-container-logs-for-issues"></a>コンテナーのログで問題を確認する
 
-IoT Edge セキュリティ デーモンが実行されている場合は、コンテナーのログを参照して問題を検出します。 デプロイされたコンテナーから開始して、IoT Edge ランタイムを形成しているコンテナーである edgeAgent および edgeHub を確認します。 通常、IoT Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 IoT Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。 
+IoT Edge セキュリティ デーモンが実行されている場合は、コンテナーのログを参照して問題を検出します。 デプロイされたコンテナーから開始して、IoT Edge ランタイムを形成しているコンテナーである edgeAgent および edgeHub を確認します。 通常、IoT Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 IoT Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Windows の場合:
    ```
 
    > [!WARNING]
-   > YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。
+   > YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。 最上位の項目の先頭に空白を入れることはできません。
 
 ファイルを保存し、IoT Edge Security Manager を再起動します。
 
@@ -435,6 +435,6 @@ IoT Edge のデプロイで各モジュールの *createOptions* に DNS サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 
+IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。
 
 その他に質問がある場合は、[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成して対応を要請してください。

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826173"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543156"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
@@ -44,13 +44,13 @@ ms.locfileid: "73826173"
 
 次の SKU 値を指定します。  アスタリスクが付いているフィールドは必須です。
 
-|    フィールド         |       説明                                                            |
+|    フィールド         |       [説明]                                                            |
 |  ---------       |     ---------------                                                          |
-|  **[Title]\(タイトル\)\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
-| **[Summary]\(概要\)\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
-| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+|  **タイトル\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
+| **要約\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
+| **Description\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
 | **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Solution Template]\(ソリューション テンプレート\)** を選択します。 |
-| **[クラウドの可用性]\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。  |
+| **クラウドの可用性\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。  |
 | **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |
 |   |   |
 
@@ -66,13 +66,13 @@ ms.locfileid: "73826173"
 
 次の SKU 設定を構成します。 アスタリスクが付いているフィールドは必須です。
 
-|    フィールド         |       説明                                                            |
+|    フィールド         |       [説明]                                                            |
 |  ---------       |     ---------------                                                          |
-|  **[Title]\(タイトル\)\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
-| **[Summary]\(概要\)\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
-| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+|  **タイトル\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
+| **要約\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
+| **Description\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
 | **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Managed Application]\(マネージド アプリケーション\)** を選択します。 
-| **[クラウドの可用性]\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。   Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。 |
+| **クラウドの可用性\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。   Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。 |
 | **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |
 | **[国/リージョンの可用性]\*** | 利用できる国/リージョンの一覧を表示するには、 **[Select regions]\(リージョンの選択\)** を使用します。 国またはリージョンごとにチェックマークを入れ、 **[OK]** を選択して選択内容を保存します。  <b/>   ![[利用可能な国とリージョンの一覧]](./media/azure-app-select-country-region.png)  |
 | **[Old Pricing]\(以前の価格\)\*** | SKU の月額 (米国ドル)。 価格は構成時、最新の為替レートを使用して現地通貨で設定されます。 設定した価格は有効性を確認してください。最終的に、ここの設定が自分のものになります。 各国/各リージョンの価格を個別に設定または表示するには、価格スプレッドシートをエクスポートし、カスタム価格と共にインポートします。  価格データのエクスポート/インポートを有効にするには、価格設定変更を保存する必要があります。  |
@@ -82,17 +82,19 @@ ms.locfileid: "73826173"
 
 ### <a name="package-details-for-solution-template"></a>ソリューション テンプレートのパッケージ詳細
 
-   ![ソリューション テンプレートのパッケージ詳細](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![ソリューション テンプレートのパッケージ詳細](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 次の **[パッケージ詳細]** の値を指定してください。  アスタリスクが付いているフィールドは必須です。
 
 - **[バージョン]\*** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
 - **[パッケージ ファイル (.zip)]\*** - このパッケージには、.zip ファイルに保存された次のファイルが含まれています。
-  - MainTemplate.json - デプロイ テンプレート ファイル。ソリューションまたはアプリケーションをデプロイしたり、そのソリューションに対して定義されたリソースを作成したりするために使用されます。 詳細については、[デプロイ テンプレート ファイルの作成方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)に関するページを参照してください。
-  - createUIDefinition.json - このファイルは、このソリューションまたはアプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために、Azure portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
+  - **mainTemplate.json\*** - デプロイ テンプレート ファイル。ソリューションまたはアプリケーションをデプロイしたり、そのソリューションに対して定義されたリソースを作成したりするために使用されます。 詳細については、[デプロイ テンプレート ファイルの作成方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)に関するページを参照してください。
+  - **createUIDefinition.json\*** - このファイルは、このソリューションまたはアプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために、Azure portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
+  - スクリプト (必要な場合) - `Microsoft.Compute/virtualMachines/extensions` など、テンプレートの実行時に必要になる場合がある追加のスクリプト。
+  - 入れ子になったテンプレート (必要な場合) - 追加の入れ子になったテンプレート。
 
-  >[!IMPORTANT] 
-  >入れ子になったテンプレートまたはスクリプトがこのアプリケーションのプロビジョニングに必要であれば、このパッケージに含めてください。 MainTemplate.json ファイルと createUIDefinition.json ファイルは、ルート フォルダーに存在する必要があります。
+  > [!IMPORTANT] 
+  > 入れ子になったテンプレートまたはスクリプトがこのアプリケーションのプロビジョニングに必要であれば、このパッケージに含めてください。 mainTemplate.json ファイルと createUIDefinition.json ファイルは、ルート フォルダーに存在する必要があります。 デプロイの成果物の詳細については、[ベスト プラクティス ガイドの Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts)に関するセクションを参照してください。
 
 
 ### <a name="package-details-for-managed-application"></a>マネージド アプリケーションのパッケージ詳細
@@ -123,7 +125,7 @@ ms.locfileid: "73826173"
 マネージド アプリケーションの場合、承認設定とポリシー設定を構成する必要があります。
 
 
-#### <a name="authorization"></a>Authorization
+#### <a name="authorization"></a>承認
 
 アクセス許可を付与するユーザー、グループ、アプリケーションの Azure Active Directory ID をマネージド リソース グループに追加します。 付与されるアクセス許可はロール定義 ID によって示されます。所有者、共同作成者、またはカスタム ロールになります。
 
@@ -154,6 +156,6 @@ ms.locfileid: "73826173"
 4. **[ポリシー SKU]** については、ポリシー SKU の種類として Free または Standard を選択します。 監査ポリシーには Standard SKU が必要です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[Marketplace]](./cpp-marketplace-tab.md) タブで、オファーについてさらに説明し、マーケティング資産を提供します。 

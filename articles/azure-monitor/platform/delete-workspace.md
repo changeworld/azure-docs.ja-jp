@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944423"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547253"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復元
 
@@ -57,6 +57,29 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>ワークスペースの完全削除
+開発やテストなどの一部のシナリオでは、同じ設定とワークスペース名を使用してデプロイを繰り返す必要があるため、論理的な削除方法は適さない場合があります。 このような場合は、ワークスペースを完全に削除し、論理的な削除期間を "オーバーライド" できます。 ワークスペースの完全削除を行うと、そのワークスペース名は解放され、同じ名前を使用して新しいワークスペースを作成できるようになります。
+
+
+> [!IMPORTANT]
+> この操作を元に戻すことはできず、ワークスペースとそのデータは回復できなくなるため、ワークスペースを完全に削除する場合は注意してください。
+
+現在、ワークスペースの完全削除は REST API を使用して実行できます。
+
+> [!NOTE]
+> すべての API 要求には、要求ヘッダーにベアラー認証トークンを含める必要があります。
+>
+> 以下を使用してトークンを取得できます。
+> - [アプリの登録](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - ブラウザーで、開発者コンソール (F12) を使用して Azure portal に移動します。 **[要求ヘッダー]** 下にある認証文字列について **batch?** インスタンスのいずれかを見つけます。 これは、*authorization:Bearer <token>* というパターンです。 次の例に示すように、これをコピーして API 呼び出しに追加します。
+> - Azure REST ドキュメント サイトに移動します。 任意の API で **[使ってみる]** を押し、ベアラー トークンをコピーして API 呼び出しに追加します。
+ワークスペースを完全に削除するには、「[ワークスペース - Delete]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)」REST API 呼び出しを force タグと共に使用します。
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>ワークスペースを回復させる
 

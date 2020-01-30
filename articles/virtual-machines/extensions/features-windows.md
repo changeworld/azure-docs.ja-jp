@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073077"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544754"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳細については、[Set-AzVMExtension のリファレンス](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)を参照してください。
 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、 **[拡張機能]** を選択してから、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
 
@@ -252,6 +252,10 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 }
 ```
 
+拡張機能を使用する Azure IaaS VM の証明書コンソールには、 **_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
+
+これらの証明書により、拡張機能によって使用される保護された設定 (パスワードやその他の資格情報) の転送中、VM とそのホストの間の通信がセキュリティで保護されます。 証明書は Azure ファブリック コントローラーによって作られ、VM エージェントに渡されます。 VM を毎日起動し、停止する場合、ファブリック コントローラーによって新しい証明書が作成されることがあります。 証明書はコンピューターの個人用証明書ストアに保存されます。 これらの証明書は削除できます。 必要に応じて、VM エージェントにより証明書が再作成されます。
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>エージェントと拡張機能を更新する方法
 
 エージェントと拡張機能は、同じ更新メカニズムを共有します。 一部の更新プログラムでは、追加のファイアウォール規則を必要としません。
@@ -259,7 +263,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
 
 - データ ディスク
-- Extensions
+- 拡張機能
 - ブート診断コンテナー
 - ゲスト OS のシークレット
 - VM サイズ
@@ -417,13 +421,13 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 4. **[アンインストール]** を選択します。
 
 ## <a name="common-vm-extensions-reference"></a>一般的な VM 拡張機能のリファレンス
-| 拡張機能の名前 | 説明 | 詳細情報 |
+| 拡張機能の名前 | [説明] | 詳細情報 |
 | --- | --- | --- |
-| Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Windows でのカスタムのスクリプト拡張機能](custom-script-windows.md) |
+| Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Windows でのカスタムのスクリプト拡張機能](custom-script-windows.md) |
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](dsc-overview.md) |
 | Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure Diagnostics 拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

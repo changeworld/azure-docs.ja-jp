@@ -1,19 +1,17 @@
 ---
-title: Azure Red Hat OpenShift のサポートされているリソース | Microsoft Docs
+title: Azure Red Hat OpenShift でサポートされているリソース
 description: Microsoft Azure Red Hat OpenShift でサポートされている Azure リージョンと仮想マシンのサイズについて説明します。
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306215"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274918"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース
 
@@ -63,6 +61,6 @@ Azure Red Hat OpenShift の REST API では、次のマスター/インフラス
 |Standard D16s v3|16|64 GB|
 |Standard D32s v3|32|128 GB|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)に関するチュートリアルを試してください。

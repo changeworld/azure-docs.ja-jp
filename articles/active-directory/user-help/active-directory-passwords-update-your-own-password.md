@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad4831cfb5b09083b4ee76b6badf3936b2256138
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160792"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263491"
 ---
-# <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
+# <a name="reset-your-work-or-school-password-using-security-info"></a>セキュリティ情報を使用し、職場または学校のパスワードをリセットする
 
-パスワードを忘れた場合、会社のサポートからパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。
+職場または学校のパスワードを忘れた場合、組織からパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用して職場または学校のパスワードをリセットすることができます。 ご自分の情報を設定したり、ご自分のパスワードをリセットしたりするためには、管理者がこの機能を有効にする必要があります。
 
->[!NOTE]
->パスワードを忘れておらず、変更するのみの場合は、この記事の「[パスワードを変更する](#how-to-change-your-password)」の手順に進みます。<br><br>
->Xbox、hotmail.com、outlook.com などの個人アカウントを回復する場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。
+パスワードは忘れていないが、ただ変更を希望する場合、この記事の[パスワードを変更する](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)方法に関するセクションを参照してください。
+
+>[!Important]
+>この記事は、職場または学校のアカウントのパスワードを忘れた、あるいはパスワードを知らないときにパスワードのリセットを望むユーザーのために作成されています。 管理者が従業員またはその他のユーザーのためにセルフサービス パスワード リセットをオンにする方法を探している場合、「[Azure AD のパスワード リセットのセルフサービスをデプロイする](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)」やその他の記事を参照してください。
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>職場または学校アカウントのパスワードをリセットまたはロックを解除する方法
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
     1. **[連絡用電子メール アドレスにメールを送信]** を選択し、 **[電子メール]** を選択します。
 
     2. 電子メールの確認コードをボックスに入力し、 **[次へ]** を選択します。
-    
+
     3. 新しいパスワードを入力して確認し、 **[完了]** を選択します。
 
 - **テキスト メッセージを使用してパスワードをリセットする。** 事前にセキュリティ情報に設定した電話番号にテキスト メッセージを送信します。 管理者がセキュリティ情報のエクスペリエンスをオンにしている場合、テキスト メッセージングの設定に関する詳しい情報は、「[Set up security info to use text messaging (preview)](security-info-setup-text-msg.md)」(テキスト メッセージングを使用するようにセキュリティ情報を設定する (プレビュー)) の記事で確認できます。 まだセキュリティ情報を使用していない場合、テキスト メッセージングの設定に関する詳しい情報は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の記事で確認できます。
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
   3. 新しいパスワードを入力して確認し、 **[完了]** を選択します。
 
   4. パスワードがリセットされたことを示すメッセージを受け取ったら、新しいパスワードを使用してアカウントにサインインできます。
-        
+
      まだアカウントにアクセスできない場合は、組織の管理者に連絡してサポートを依頼してください。
 
 パスワードをリセットした後に、"Microsoft (\<*組織*> の代理)" などのアカウントから送信された確認メールを受け取ることがあります。 似たようなメールを受け取ったものの、最近パスワードをリセットした覚えがない場合は、すぐに組織の管理者に連絡してください。
@@ -155,18 +155,15 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
 
 次に、一般的なエラーになる場合とその解決方法を示します。
 
-|問題点|説明|解決策|
+|問題|[説明]|解決策|
 | --- | --- | --- |
 |パスワードを変更しようとするとエラーが表示されます。 |パスワードを簡単に推測できる単語、語句、またはパターンが含まれています。| より強力なパスワードを使用してもう一度お試しください。|
 |ユーザー ID を入力すると、「管理者にお問い合わせください」と書かれたページに移動します。|オンプレミスの環境で、お使いのユーザー アカウントのパスワードが管理者によって管理されていることをマイクロソフトが検出しました。 その結果、[アカウントにアクセスできません] リンクから、パスワードをリセットできません。 |サポートを受けるには、管理者にお問い合わせください。|
 |ユーザー ID を入力すると、「アカウントは、パスワード リセットが有効になっていません」というエラーが表示されます。|お使いのアカウントは管理者によって設定されていないため、自身でパスワードをリセットできます。|管理者が [アカウントにアクセスできません] リンクからパスワードのリセットをオンにしていない、またはその機能を使用するライセンスをユーザーに付与していません。<br><br> パスワードをリセットするには、"管理者に連絡するリンク" を選択して会社の管理者にメールを送信し、パスワードをリセットしたいことを伝える必要があります。|
 |ユーザー ID を入力すると、「We couldn't verify your account」\(アカウントを確認できません\) というエラーが表示されます。|サインイン プロセスでユーザーのアカウント情報を確認できませんでした。|このメッセージが表示される理由は次の 2 つです。<br><br>1.管理者が組織のパスワードのリセットをオンにしているものの、ユーザーがそのサービスを利用するように登録されていない。 パスワードのリセットに登録するには、使用する確認方法に基づいて、「[認証アプリを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-auth-app.md)」、「[電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-phone-number.md)」、「[テキスト メッセージを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-text-msg.md)」、「[メールを使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-email.md)」、「[あらかじめ定義されたセキュリティの質問を使用するようにセキュリティ情報を設定する (プレビュー)](security-info-setup-questions.md)」のいずれかの記事をご覧ください。<br><br>2.管理者が組織のパスワードのリセットをオンにしていない。 この状況でパスワードをリセットするには、"管理者に連絡するリンク" を選択し、管理者にメールで依頼する必要があります。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 - 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」の記事でセキュリティ情報について学習する。
 
-- 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」の記事で 2 段階認証について学習する。 
-
-- [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)でパスワードをリセットする (パスワードをなくしたか忘れた場合)
-
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。
+- Xbox、hotmail.com、outlook.com などの個人アカウントを回復する場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。

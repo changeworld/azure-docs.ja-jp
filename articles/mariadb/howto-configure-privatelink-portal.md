@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 4e05de1fc1bfb880767d113e88d5c49082fc146c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976097"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280834"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>ポータルを使用して Azure Database for MariaDB (プレビュー) 用のプライベート リンクを作成および管理する
 
@@ -23,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > この機能は、Azure Database for MariaDB で汎用およびメモリ最適化の価格レベルがサポートされているすべての Azure リージョンで使用できます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-an-azure-vm"></a>Azure VM の作成
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[次へ:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Name | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
-5. **[次へ:リソース]** を選択します。
+5. **リソース** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -153,7 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | リソース |*[myServer]* を選択します。|
     |ターゲット サブリソース |*mariadbServer* を選択します|
     |||
-7. **[次へ:構成]** を選択します。
+7. **構成** を選択します。
 8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -163,7 +163,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Subnet |  *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
-    |プライベート DNS ゾーン |*(New)privatelink.database.azure.com* を選択します |
+    |プライベート DNS ゾーン |*[(新規)privatelink.mariadb.database.azure.com]* を選択します。 |
     |||
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
@@ -201,14 +201,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
 
-2. 「 `nslookup mydemomserver.mariadb.privatelink.database.azure.com`」と入力します。 
+2. 「 `nslookup mydemomserver.privatelink.mariadb.database.azure.com`」と入力します。 
 
     次のようなメッセージが返されます。
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemoMariaDBserver.mariadb.privatelink.database.azure.com
+    Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -219,7 +219,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.MariaDB.privatelink.database.azure.com* |
+    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
     |Password |Enter a password provided during the MariaDB server creation. |
     |SSL|Select **Required**.|

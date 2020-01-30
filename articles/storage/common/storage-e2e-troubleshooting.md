@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460386"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314761"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 
@@ -143,10 +143,10 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 Azure Storage は、サーバー ログ データを BLOB に書き込みますが、メトリックについてはテーブルに書き込みます。 ログ BLOB は、ストレージ アカウントの `$logs` コンテナー内にあります。 ログ BLOB は、年、月、日、時間により階層的に名前が付けられるので、調査する時間範囲が簡単に見つかります。 たとえば、`storagesample` アカウントでの、2015 年 1 月 2 日の午前 8 時から 9 時に記録されたログ BLOB のコンテナーは、`https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` です。 このコンテナー内の個々の BLOB は、 `000000.log`から始まる連番で名前が付けられます。
 
-AzCopy コマンドライン ツールを使用して、これらのサーバー側のログ ファイルをローカル コンピューター上の好きな場所にダウンロードすることができます。 たとえば、次のコマンドを使用して、2015 年 1 月 2 日に記録された BLOB 操作のログ ファイルを、`C:\Temp\Logs\Server` フォルダーにダウンロードすることができます。`<storageaccountname>` はストレージ アカウント名に置き換え、`<storageaccountkey>` はアカウントのアクセス キーに置き換えます。
+AzCopy コマンドライン ツールを使用して、これらのサーバー側のログ ファイルをローカル コンピューター上の好きな場所にダウンロードすることができます。 たとえば、次のコマンドを使用して、2015 年 1 月 2 日に記録された BLOB 操作のログ ファイルを、`C:\Temp\Logs\Server` フォルダーにダウンロードすることができます。`<storageaccountname>` はストレージ アカウント名に置き換えます。
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy は、 [Azure ダウンロード](https://azure.microsoft.com/downloads/) のページからダウンロードできます。 AzCopy の使用方法の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。

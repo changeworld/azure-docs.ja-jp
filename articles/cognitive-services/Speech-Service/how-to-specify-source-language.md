@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109959"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121711"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する
 
@@ -26,23 +26,28 @@ ms.locfileid: "74109959"
 
 ## <a name="how-to-specify-source-language-in-c"></a>C# でソース言語を指定する方法
 
-最初のステップは、`SpeechConfig` を作成することです。
+この例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-次に、`SpeechRecognitionLanguage` でオーディオのソース言語を指定します。
+この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-認識にカスタムモデルを使っている場合は、`EndpointId` でエンドポイントを指定できます。
+この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> `SpeechRecognitionLanguage` および `EndpointId` の set メソッドは、C# の `SpeechConfig` クラスでは非推奨になっています。 これらのメソッドの使用は推奨されておらず、`SpeechRecognizer` を構築するときは使わないでください。
 
 ::: zone-end
 
@@ -174,10 +179,10 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * 音声テキスト変換に対してサポートされている言語とロケールの一覧については、[言語のサポート](language-support.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

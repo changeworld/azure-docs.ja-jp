@@ -3,23 +3,23 @@ title: Azure Maps Search Service を使用して場所を検索する | Microsof
 description: この記事では、Microsoft Azure Maps Search Service を使用して場所を検索する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 59d58b9ecb42a7329df6c91e0a646c557d78a415
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911451"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264188"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
-Maps Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計された RESTful API のセットです。 このサービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 検索で返された緯度と経度の値は、ルートや交通の流れなどの他の Maps サービスのパラメーターとして使用できます。
+Maps Search サービスは、開発者向けとして設計された RESTful API のセットです。 このサービスでは、住所、場所、目的地、事業所一覧、その他の地理情報を検索できます。 特定の住所、交差点、地理的特徴、目的地 (POI) にはそれぞれ、緯度値と経度値が与えられています。 クエリから返された緯度値と経度値は、他の地図サービスでパラメーターとして利用できます。 たとえば、返された値は、経路指定サービスや渋滞情報サービスのパラメーターになります。 
 
-この記事では、次のことについて説明します。
+それでは次の方法を学習しましょう。
 
 * [あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用した住所の検索
 * 住所をプロパティや座標と一緒に検索
@@ -28,13 +28,13 @@ Maps Search サービスは、開発者が住所、場所、関心地点、事�
 
 ## <a name="prerequisites"></a>前提条件
 
-Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 Azure Maps のアカウントを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するセクションの指示に従ってください。 主キーの取得方法がわからない場合、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)手順に従ってください。 Azure Maps での認証の詳細については、[Azure Maps での認証の管理](./how-to-manage-authentication.md)に関するページを参照してください。
 
 この記事では、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを構築します。 選択した任意の API 開発環境を使用できます。
 
 ## <a name="using-fuzzy-search"></a>あいまい検索の使用
 
-この検索サービスの既定の API は、[あいまい検索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)であり、検索クエリにユーザーが何を入力したかわからないときに便利です。 この API は、POI 検索およびジオコーディングを '一行検索' で組み合わせます。 たとえば、この API では、任意のアドレスまたは POI のトークンの組み合わせの入力を処理できます。 また、コンテキストの位置 (緯度/経度 のペア) で重み付けされたり、座標と半径によって完全に制約を受けたりする場合があります。あるいは、地理的偏向のアンカー ポイントなしで、より汎用的に API を実行することもできます。
+検索サービスの既定の API は[あいまい検索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)です。 このサービスは、検索クエリのユーザー入力形式がわからないときに便利です。 この API は、POI 検索およびジオコーディングを '一行検索' で組み合わせます。 たとえば、この API では、任意のアドレスまたは POI のトークンの組み合わせの入力を処理できます。 また、コンテキストの位置 (緯度と経度 のペア) で重み付けされたり、座標と半径によって完全に制約を受けたりする場合があります。あるいは、地理的偏向のアンカー ポイントなしで、より汎用的に API を実行することもできます。
 
 ほとんどの検索クエリは、パフォーマンスを得るためと想定外の結果を減らすために、既定で `maxFuzzyLevel=1` に設定されます。 この既定値は、クエリ パラメーターに `maxFuzzyLevel=2` または `3` を渡すことで、必要に応じて要求ごとにオーバーライドできます。
 
@@ -52,7 +52,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     | 要求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | 承認 | No Auth |
 
-    URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、[Maps Functional API のリファレンス](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)の「**Get Search Fuzzy**」(あいまいな検索の取得) の定義で確認できます。
+    URL パスの **json** 属性で、応答形式が決定まります。 この記事では、使いやすく、読みやすい json を使用します。 使用可能な応答形式については、[Maps Functional API のリファレンス](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)の「**Get Search Fuzzy**」(あいまいな検索の取得) の定義で確認できます。
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
 
@@ -66,9 +66,9 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 4. **[送信]** をクリックして、応答の本体を確認します。
 
-    あいまいなクエリ文字列 "pizza" によって、"pizza" と "restaurant" のカテゴリに含まれる 10 [か所の関心地点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) の結果が返されました。 各結果は、該当の場所の所在地住所、緯度/経度の値、ビュー ポート、およびエントリ ポイントを返します。
+    あいまいなクエリ文字列 "pizza" からは結果として、"pizza" と "restaurant" のカテゴリに含まれる 10 か所の[目的地](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) が返されました。 各結果からは、該当の場所の所在地住所、緯度値と経度値、ビュー ポート、エントリ ポイントが返されます。
   
-    特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用して、お使いのアプリケーションで対応する必要がある国や地域のみを指定することができます。既定の動作では全世界を検索するため、潜在的に不要な結果が返されます。
+    特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用すると、アプリケーションの対象にする必要がある国または地域のみを指定できます。 既定の動作では全世界が検索されるので、必要のない結果が返される可能性があります。
 
 5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
@@ -91,7 +91,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 ## <a name="search-for-address-properties-and-coordinates"></a>住所のプロパティと座標の検索
 
-住所検索の API に所在地住所のすべてまたは一部を渡すと、緯度と経度による位置の値と、市町村や区などの詳細な住所プロパティを含む応答を受け取ることができます。
+検索アドレス API には、完全な番地を渡すか、部分的な番地を渡すことができます。 いずれにせよ、詳しい住所プロパティが含まれる応答が返されます。 詳しい住所プロパティとは、高度、緯度、地方自治体、下位区分の位置値のような値です。
 
 1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力して、承認プロトコルを選択します (存在する場合)。
@@ -165,7 +165,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | number | true |
 
-    [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
+    [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが要求と共に送信された場合、応答には、通りの側 (左または右) とその数値からのオフセット位置が含まれることがあります。
   
 6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
@@ -173,7 +173,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | returnSpeedLimit | true |
   
-    [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
+    [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定されているとき、応答からは公示速度制限が返されます。
 
 7. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
@@ -189,7 +189,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
     |-----|------------|
     | roadUse | true |
 
-    [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターを使用して、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
+    [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターを使用し、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>交差点住所の逆引き検索を使用して交差点を検索する
 

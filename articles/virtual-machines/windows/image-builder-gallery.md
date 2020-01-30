@@ -1,26 +1,30 @@
 ---
 title: Windows VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
-description: Azure Image Builder と Shared Image Gallery を使って Windows VM イメージを作成します。
+description: Azure Image Builder と Azure PowerShell を使用し、Azure Shared Gallery イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 01/14/2020
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d5856780d0d9f1a1943bca1c2f076bb3ec914e1d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976079"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263355"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
-この記事では、Azure Image Builder を使って[共有イメージ ギャラリー](shared-image-galleries.md)にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。
+この記事では、Azure Image Builder と Azure PowerShell を使用して [Shared Image Gallery](shared-image-galleries.md) にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は [Azure CLI](../linux/image-builder-gallery.md) で実行することもできます。
 
-.json テンプレートを使って、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json) です。 
+.json テンプレートを使って、イメージを構成します。 今回使用する .json ファイルは [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json) です。 テンプレートのローカル バージョンをダウンロードして編集します。そのため、この記事はローカル PowerShell セッションを使用して作成されています。
 
 イメージを共有イメージ ギャラリーに配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) が使われています。
+
+Azure Image Builder では、sysprep が自動的に実行され、イメージが汎用化されます。これは汎用 sysprep コマンドであり、必要に応じて[オーバーライド](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)できます。 
+
+カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -29,160 +33,226 @@ ms.locfileid: "74976079"
 ## <a name="register-the-features"></a>機能の登録
 プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
 
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
+```powershell
+Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
 機能の登録の状態を確認します。
 
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
+```powershell
+Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-登録を確認します。
+`RegistrationState` が `Registered` になってから次の手順に移ります。
 
-```azurecli-interactive
-az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
-az provider show -n Microsoft.Compute | grep registrationState
+プロバイダー登録を確認してください。 いずれからも `Registered` が返されることを確認します。
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.Storage | Format-table -Property ResourceTypes,RegistrationState 
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-登録されていない場合、次のコマンドを実行します。
+`Registered` が返されない場合、次を使用してプロバイダーを登録します。
 
-```azurecli-interactive
-az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
-az provider register -n Microsoft.Compute
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
-## <a name="set-variables-and-permissions"></a>変数とアクセス許可の設定 
+## <a name="create-variables"></a>変数の作成
 
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。 `username` や `vmpassword` などの変数の値は、ご自分の情報に置き換えてください。
 
-```azurecli-interactive
-# Resource group name - we are using ibsigRG in this example
-sigResourceGroup=myIBWinRG
-# Datacenter location - we are using West US 2 in this example
-location=westus
-# Additional region to replicate the image to - we are using East US in this example
-additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
-sigName=my22stSIG
-# name of the image definition to be created - in this example we are using myImageDef
-imageDefName=winSvrimages
-# image distribution metadata reference name
-runOutputName=w2019SigRo
-# User name and password for the VM
-username="azureuser"
-vmpassword="passwordfortheVM"
-```
+```powershell
+# Get existing context
+$currentAzContext = Get-AzContext
 
-サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
+# Get your current subscription ID. 
+$subscriptionID=$currentAzContext.Subscription.Id
 
-```azurecli-interactive
-subscriptionID="Subscription ID"
-```
+# Destination image resource group
+$imageResourceGroup="aibwinsig"
 
-リソース グループを作成します。
+# Location
+$location="westus"
 
-```azurecli-interactive
-az group create -n $sigResourceGroup -l $location
+# Image distribution metadata reference name
+$runOutputName="aibCustWinManImg02ro"
+
+# Image template name
+$imageTemplateName="helloImageTemplateWin02ps"
+
+# Distribution properties object name (runOutput).
+# This gives you the properties of the managed image on completion.
+$runOutputName="winclientR01"
 ```
 
 
-そのリソース グループ内にリソースを作成するアクセス許可を Azure Image Builder に付与します。 `--assignee` 値は、Image Builder サービスのアプリ登録 ID です。 
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+## <a name="create-the-resource-group"></a>リソース グループの作成
+
+リソース グループを作成し、そのリソース グループ内にリソースを作成するアクセス許可を Azure Image Builder に付与します。
+
+```powershell
+New-AzResourceGroup `
+   -Name $imageResourceGroup `
+   -Location $location
+New-AzRoleAssignment `
+   -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 `
+   -Scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup `
+   -RoleDefinitionName Contributor
 ```
 
 
-## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
+
+## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する
 
 共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
 
 使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
 
-```azurecli-interactive
-az sig create \
-    -g $sigResourceGroup \
-    --gallery-name $sigName
+```powershell
+# Image gallery name
+$sigGalleryName= "myIBSIG"
+
+# Image definition name
+$imageDefName ="winSvrimage"
+
+# additional replication region
+$replRegion2="eastus"
+
+# Create the gallery
+New-AzGallery `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup  `
+   -Location $location
+
+# Create the image definition
+New-AzGalleryImageDefinition `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup `
+   -Location $location `
+   -Name $imageDefName `
+   -OsState generalized `
+   -OsType Windows `
+   -Publisher 'myCompany' `
+   -Offer 'WindowsServer' `
+   -Sku 'WinSrv2019'
 ```
 
-次に、イメージ定義を作成します。
-
-```azurecli-interactive
-az sig image-definition create \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --publisher corpIT \
-   --offer myOffer \
-   --sku 2019 \
-   --os-type Windows
-```
 
 
-## <a name="download-and-configure-the-json"></a>.json のダウンロードと構成
+## <a name="download-and-configure-the-template"></a>テンプレートをダウンロードし、構成する
 
 .Json テンプレートをダウンロードし、変数を使用して構成します。
 
-```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json -o helloImageTemplateforWinSIG.json
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region1>/$location/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforWinSIG.json
+```powershell
+
+$templateFilePath = "armTemplateWinSIG.json"
+
+Invoke-WebRequest `
+   -Uri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
+   -OutFile $templateFilePath `
+   -UseBasicParsing
+
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<subscriptionID>',$subscriptionID | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<rgName>',$imageResourceGroup | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<runOutputName>',$runOutputName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<imageDefName>',$imageDefName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<sharedImageGalName>',$sigGalleryName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region1>',$location | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region2>',$replRegion2 | Set-Content -Path $templateFilePath
+
 ```
+
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-次の部分では、ギャラリー内でイメージ バージョンを作成します。 
+テンプレートはサービスに提出する必要があります。このサービスによって、スクリプトなど、あらゆる依存成果物がダウンロードされ、*IT_* で始まるステージング リソース グループに保存されます。
 
-Azure Image Builder サービスにイメージ構成を送信します。
-
-```azurecli-interactive
-az resource create \
-    --resource-group $sigResourceGroup \
-    --properties @helloImageTemplateforWinSIG.json \
-    --is-full-object \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+```powershell
+New-AzResourceGroupDeployment `
+   -ResourceGroupName $imageResourceGroup `
+   -TemplateFile $templateFilePath `
+   -api-version "2019-05-01-preview" `
+   -imageTemplateName $imageTemplateName `
+   -svclocation $location
 ```
 
-イメージのビルドを開始します。
+イメージをビルドするには、テンプレート上で "Run" を呼び出す必要があります。
 
-```azurecli-interactive
-az resource invoke-action \
-     --resource-group $sigResourceGroup \
-     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateforWinSIG01 \
-     --action Run 
+```powershell
+Invoke-AzResourceAction `
+   -ResourceName $imageTemplateName `
+   -ResourceGroupName $imageResourceGroup `
+   -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
+   -ApiVersion "2019-05-01-preview" `
+   -Action Run
 ```
 
 イメージを作成し、両方のリージョンにレプリケートするまでにしばらくかかることがあります。 この部分が終了するまで待ってから、VM の作成に進みます。
+
+イメージ ビルド ステータスの取得を自動化するためのオプションについては、GitHub でこのテンプレートの [Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) をご覧ください。
 
 
 ## <a name="create-the-vm"></a>VM の作成
 
 Azure Image Builder で作成されたイメージ バージョンから VM を作成します。
 
-```azurecli-interactive
-az vm create \
-  --resource-group $sigResourceGroup \
-  --name aibImgWinVm001 \
-  --admin-username $username \
-  --admin-password $vmpassword \
-  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
-  --location $location
+作成したイメージ バージョンを取得します。
+```powershell
+$imageVersion = Get-AzGalleryImageVersion `
+   -ResourceGroupName $imageResourceGroup `
+   -GalleryName $sigGalleryName `
+   -GalleryImageDefinitionName $imageDefName
 ```
 
+イメージがレプリケートされた 2 番目のリージョンで VM を作成します。
+
+```powershell
+$vmResourceGroup = "myResourceGroup"
+$vmName = "myVMfromImage"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzResourceGroup -Name $vmResourceGroup -Location $replRegion2
+
+# Network pieces
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzVMSourceImage -Id $imageVersion.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
+```
 
 ## <a name="verify-the-customization"></a>カスタマイズの確認
 VM を作成したときに設定したユーザー名とパスワードを使用して、VM へのリモート デスクトップ接続を作成します。 VM 内で、コマンド プロンプトを開き、次のように入力します。
@@ -194,60 +264,30 @@ dir c:\
 イメージのカスタマイズ中に作成された `buildActions` という名前のディレクトリが表示されます。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 ここでイメージ バージョンを再度カスタマイズして同じイメージの新しいバージョンを作成してみる場合は、**このステップをスキップ**して、[Azure Image Builder を使用した別のイメージ バージョンの作成](image-builder-gallery-update-image-version.md)に関するページに進みます。
 
 
 これにより、他のすべてのリソース ファイルとともに、作成されたイメージが削除されます。 リソースを削除する前に、このデプロイを終了していることを確認します。
 
-イメージ ギャラリー リソースを削除する場合、それらの作成に使用したイメージ定義を削除する前に、すべてのイメージ バージョンを削除する必要があります。 ギャラリーを削除するには、最初にギャラリー内のすべてのイメージ定義を削除していることが必要です。
+まず、リソース グループ テンプレートを削除します。削除しないと、AIB で使用されているステージング リソース グループ (*IT_* ) が消去されません。
 
-Image Builder テンプレートを削除します。
+イメージ テンプレートの ResourceID を取得します。 
 
-```azurecli-interactive
-az resource delete \
-    --resource-group $sigResourceGroup \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+```powerShell
+$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Image Builder で作成されたイメージ バージョン (これは常に `0.` で始まります) を取得し、続いてイメージ バージョンを削除します。
+イメージ テンプレートを削除します。
 
-```azurecli-interactive
-sigDefImgVersion=$(az sig image-version list \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
-az sig image-version delete \
-   -g $sigResourceGroup \
-   --gallery-image-version $sigDefImgVersion \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
-```   
-
-
-イメージ定義を削除します。
-
-```azurecli-interactive
-az sig image-definition delete \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
-```
-
-ギャラリーを削除します。
-
-```azurecli-interactive
-az sig delete -r $sigName -g $sigResourceGroup
+```powerShell
+Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
 ```
 
 リソース グループを削除します。
 
-```azurecli-interactive
-az group delete -n $sigResourceGroup -y
+```powerShell
+Remove-AzResourceGroup $imageResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

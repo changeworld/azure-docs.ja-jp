@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045621"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260856"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -49,7 +49,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、2 つの種類に分類されます。
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを pandas または spark の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、.csv、.tsv、および parquet ファイルと、SQL クエリ結果から作成できます。 完全な一覧については、「[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)」を参照してください。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを pandas または spark の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、.csv ファイル、.tsv ファイル、.parquet ファイル、.jsonl ファイル、SQL クエリ結果から作成できます。 完全な一覧については、「[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)」を参照してください。
 
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) クラスは、データストア内の 1 つまたは複数のファイル、またはパブリック URL を参照します。 このメソッドによって、ファイルを FileDataset オブジェクトとしてコンピューターにダウンロードまたはマウントできます。 任意の形式のファイルを使用できます。これにより、ディープ ラーニングなどの幅広い機械学習シナリオに対応します。
 
@@ -74,7 +74,7 @@ Python SDK を使用して [Azure データストア](how-to-access-data.md)か�
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
-TabularDatasets を作成するには、SDK を使用するか、または Azure Machine Learning Studio を使用します。 データの列から、またはデータが格納されているパス パターンからタイム スタンプを指定して、時系列特性を有効にすることができます。 この指定により、時間による簡単かつ効率的なフィルター処理が可能になります。
+TabularDatasets を作成するには、SDK を使用するか、または Azure Machine Learning Studio を使用します。 
 
 .csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。
 
@@ -244,7 +244,6 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'new titanic training data',
                                  create_new_version = True)
 ```
-
 
 ## <a name="access-datasets-in-your-script"></a>スクリプトでデータセットにアクセスする
 

@@ -4,21 +4,21 @@ description: Azure Analysis Services サーバーからオンプレミスのデ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029883"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264069"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
-同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。  インストールするゲートウェイは、Power BI、Power Apps、Logic Apps などの他のサービスで使用されているものと同じですが、Azure Analysis Services にインストールするときは、いくつかの追加手順を実行する必要があります。 このインストール記事は、**Azure Analysis Services** に固有のものです。
+同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。  インストールするゲートウェイは、Power BI、Power Apps、Logic Apps などの他のサービスで使用されているものと同じですが、Azure Analysis Services にインストールするときは、いくつかの追加手順を実行する必要があります。 このインストール記事は、**Azure Analysis Services** に固有のものです。 
 
-ゲートウェイの詳細と Azure Analysis Services での使用方法については、[オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)に関する記事を参照してください。
+Azure Analysis Services とゲートウェイの連動に関する詳細については、[オンプレミス データ ソースに接続する](analysis-services-gateway.md)方法に関するページを参照してください。 高度なインストール シナリオとゲートウェイ全般に関する詳細については、[オンプレミス データ ゲートウェイ](/data-integration/gateway/service-gateway-onprem)に関するドキュメントを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,11 +35,11 @@ ms.locfileid: "76029883"
 
 **重要な考慮事項**
 
-* セットアップ中に、ゲートウェイを Azure に登録するときは、サブスクリプションの既定のリージョンが選択されます。 別のリージョンを選択できます。 複数のリージョンにサーバーがある場合は、各リージョン用のゲートウェイをインストールする必要があります。 
+* セットアップ中に、ゲートウェイを Azure に登録するときは、サブスクリプションの既定のリージョンが選択されます。 別のサブスクリプションとリージョンを選択できます。 複数のリージョンにサーバーがある場合は、各リージョン用のゲートウェイをインストールする必要があります。 
 * ドメイン コントローラーにゲートウェイをインストールすることはできません。
 * 1 台のコンピューターにインストールできるゲートウェイは 1 つだけです。
 * 常に稼働していてスリープ状態にならないコンピューターにゲートウェイをインストールします。
-* ネットワークにワイヤレス接続されているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
+* ネットワークに無線のみで接続しているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
 * ゲートウェイをインストールするときは、コンピューターにサインインしているユーザーアカウントに [サービスとしてログオン] 特権が必要です。 インストールが完了すると、オンプレミスのデータ ゲートウェイ サービスは NT SERVICE\PBIEgwService アカウントを使用して、サービスとしてログオンします。 セットアップ中に、またはセットアップ完了後に [サービス] で別のアカウントを指定できます。 グループ ポリシー設定で、インストール時にサインインしているアカウントと、選択したサービス アカウントの両方に [サービスとしてログオン] 特権が許可されていることを確認してください。
 * ゲートウェイを登録するサブスクリプションと同じ[テナント](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
 * データ ソースが Azure Virtual Network (VNet) 上にある場合は、[AlwaysUseGateway](analysis-services-vnet-gateway.md) サーバー プロパティを構成する必要があります。
@@ -87,7 +87,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 ## <a name="create-resource"></a>Azure ゲートウェイ リソースを作成する
 
-ゲートウェイをインストールして登録した後、Azure サブスクリプションにゲートウェイ リソースを作成する必要があります。 ゲートウェイを登録するときに使用したのと同じアカウントを使用して Azure にサインインします。
+ゲートウェイをインストールして登録した後、Azure でゲートウェイ リソースを作成する必要があります。 ゲートウェイを登録するときに使用したのと同じアカウントを使用して Azure にサインインします。
 
 1. Azure portal で、 **[リソースの作成]** をクリックし、 **[オンプレミスのデータ ゲートウェイ]** を探して、 **[作成]** をクリックします。
 

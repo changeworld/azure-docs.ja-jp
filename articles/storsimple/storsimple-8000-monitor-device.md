@@ -1,25 +1,17 @@
 ---
-title: StorSimple 8000 シリーズ デバイスを監視する | Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスの監視
 description: StorSimple デバイス マネージャー サービスを使用して、使用状況、I/O パフォーマンス、および容量使用率を監視する方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634564"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277053"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 
@@ -146,7 +138,7 @@ iSCSI にのみ対応する別の 1 GbE ネットワーク インターフェイ
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイス マネージャー サービスのデバイス ダッシュボードを使用する](storsimple-device-dashboard.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-manager-service-administration.md)方法について説明します。
 

@@ -1,26 +1,19 @@
 ---
-title: Azure 仮想マシン スケール セットにアプリをデプロイする | Microsoft Docs
+title: 仮想マシン スケール セットへのアプリケーションのデプロイ
 description: スケール セット内の Linux と Windows の仮想マシン インスタンスにアプリケーションを展開する方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960740"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278102"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 
@@ -47,7 +40,7 @@ Azure プラットフォーム イメージの 1 つを使用してスケール 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>PowerShell DSC を使用して Windows VM にアプリをインストールする
 [PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。
 
-PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケール セット内の VM インスタンスをカスタマイズできます。 次の例をご覧ください。
+PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケール セット内の VM インスタンスをカスタマイズできます。 次に例を示します。
 
 - GitHub から DSC パッケージをダウンロードするように VM インスタンスに指示する - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - インストール スクリプトを実行するよう拡張機能を設定する - `configure-http.ps1`
@@ -118,5 +111,5 @@ OS の新しいリリースが使用できる場合は、新しいカスタム �
 アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築してデプロイするデプロイ パイプラインを実行する場合は、[Packer イメージを作成し、Azure DevOps Services でデプロイする](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)ことができます。また、[Spinnaker](https://www.spinnaker.io/) や [Jenkins](https://jenkins.io/) などの別のプラットフォームを使用することもできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーションを構築してスケール セットに展開します。[スケール セットの設計の概要](virtual-machine-scale-sets-design-overview.md)を参照してください。 スケール セットの管理方法の詳細については、[PowerShell を使用してスケール セットを管理する](virtual-machine-scale-sets-windows-manage.md)を参照してください。

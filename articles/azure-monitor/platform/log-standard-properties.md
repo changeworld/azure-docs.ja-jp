@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979745"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289154"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor ログ レコードの標準プロパティ
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのいずれかにレコード セットとして格納され](../log-query/logs-structure.md)、それぞれが独自のプロパティ セットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。

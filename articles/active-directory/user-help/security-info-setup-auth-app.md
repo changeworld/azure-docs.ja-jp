@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 223dc6c340beb1b584ffbf90adc12667ed2feb23
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279064"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156184"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Microsoft Authenticator アプリを検証方法として設定する
 
@@ -28,7 +28,20 @@ ms.locfileid: "74279064"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->認証アプリ オプションが表示されない場合、検証に認証アプリを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、管理者に支援を要請する必要があります。
+> 認証アプリ オプションが表示されない場合、検証にこのオプションを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、組織のヘルプ デスクに連絡して、さらに支援を依頼する必要があります。
+
+## <a name="security-vs-password-reset-verification"></a>セキュリティとパスワード リセットの検証
+
+セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
+
+| 方法 | 使用目的 |
+| ------ | -------- |
+| Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
+| テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
+| 電話 | 2 要素認証とパスワードのリセット認証。 |
+| セキュリティ キー | 2 要素認証とパスワードのリセット認証。 |
+| 電子メール アカウント | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
+| セキュリティの質問 | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>[セキュリティ情報] ページから Microsoft Authenticator アプリを設定する
 
@@ -36,7 +49,7 @@ ms.locfileid: "74279064"
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを設定するには
 
-1. 職場または学校アカウントでサインインし、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
@@ -57,9 +70,9 @@ ms.locfileid: "74279064"
    > [!Note]
    > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、 **[別の認証アプリを使用します]** リンクを選択します。
    >
-   > 組織で、認証アプリのほかに別の方法を選択できる場合は、 **[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
+   > 組織で、認証アプリのほかに別の方法を選択できる場合は、 **[別の方法を設定します]** リンクを選択できます。
 
-5. モバイル デバイスでの Microsoft Authenticator アプリの設定中に、 **[アカウントのセットアップ]** ページに留まります。
+5. モバイル デバイスで Microsoft Authenticator アプリを設定している間は、 **[アカウントのセットアップ]** ページに留まります。
 
     ![認証アプリのセットアップ ページ](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
@@ -88,7 +101,7 @@ ms.locfileid: "74279064"
 
      ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-     2 段階認証またはパスワード リセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
+     2 段階認証またはパスワードのリセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>セキュリティ情報メソッドから認証アプリを削除する
 
@@ -121,7 +134,7 @@ ms.locfileid: "74279064"
 
 2. 使用可能な方法のドロップダウン リストから、 **[Microsoft Authenticator - notification]\(Microsoft Authenticator - 通知\)** を選択します。 Microsoft Authenticator アプリを使用していない場合は、 **[Authenticator app or hardware token]\(認証アプリまたはハードウェア トークン\)** オプションを選択します。
 
-    ![既定のサインインの方法を選択する](media/security-info/securityinfo-myprofile-defaultauthapp.png)
+    ![既定のサインインのメソッドを選択する](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
 3. **[確認]** を選択します。
 
@@ -144,10 +157,10 @@ ms.locfileid: "74279064"
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[2 段階認証またはセキュリティ情報を使ったサインイン方法](security-info-setup-signin.md)」の手順に従って、Microsoft Authenticator アプリを使用してサインインします。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

@@ -1,6 +1,6 @@
 ---
 title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
-description: Azure Event Hubs のスケーリングする方法について説明します。
+description: この記事では、パーティションとスループット ユニットを使用して Azure Event Hubs をスケーリングする方法について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,18 +14,18 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827666"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309525"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 
 Event Hubs によるスケーリングに影響する 2 つの要素があります。
 *   スループット ユニット
-*   パーティション
+*   [メジャー グループ]
 
 ## <a name="throughput-units"></a>スループット ユニット
 
@@ -43,11 +43,11 @@ Event Hubs の**自動インフレ**機能は、使用量のニーズに合わ�
 - データの受信レートが、設定されたスループット単位を超えている。
 - データの送信要求レートが、設定されたスループット単位を超えている。
 
-負荷が最小しきい値を超えた場合、ServerBusy エラーなどで失敗する要求なく、Event Hubs サービスでスループットが増えます。
+負荷が最小しきい値を超えていて、ServerBusy エラーなどで失敗した要求がない場合、Event Hubs サービスでスループットが増えます。 
 
 自動インフレ機能の詳細については、[スループット単位の自動的なスケーリング](event-hubs-auto-inflate.md) に関する記事を参照してください。
 
-## <a name="partitions"></a>パーティション
+## <a name="partitions"></a>[メジャー グループ]
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 ### <a name="partition-key"></a>パーティション キー
@@ -57,7 +57,7 @@ Event Hubs の**自動インフレ**機能は、使用量のニーズに合わ�
 イベント発行元は、そのパーティション キーのみを認識し、イベントの発行先となるパーティションは認識しません。 このようにキーとパーティションを分離することにより、送信者はダウンストリーム処理について余分な情報を把握しなくてもよくなります。 デバイスごとまたはユーザーの一意の ID は適切なパーティション キーになりますが、地理的条件などのその他の属性を使用して関連するイベントを 1 つのパーティションにまとめることもできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 - [スループット単位の自動スケール](event-hubs-auto-inflate.md)

@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300442"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293557"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Azure Data Factory テンプレートを使用してデータベースから Azure Data Explorer に一括コピーする 
 
 Azure Data Explorer は、フル マネージドの高速データ分析サービスです。 アプリケーション、Web サイト、IoT デバイスなど、さまざまなソースからストリーム配信される大量のデータをリアルタイムに分析することができます。 
 
-Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 これを使用して、既存のシステムから Azure Data Explorer データベースにデータを設定することができます。 また、分析ソリューションの構築にかかる時間を短縮する効果もあります。 
+Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータベースから Azure Data Explorer にデータをコピーするには、複数のテーブルから膨大な量のデータを読み込む必要があります。 通常は、複数のスレッドを並列して使用して単一のテーブルから行が読み込まれるように、各テーブルでデータをパーティション化する必要があります。 この記事では、これらのシナリオで使用するテンプレートについて説明します。
 
 [Azure Data Factory テンプレート](/azure/data-factory/solution-templates-introduction)は、定義済みの Data Factory パイプラインです。 テンプレートを通じて Data Factory をすぐに使い始めることができ、また、データ統合プロジェクトでの開発時間を短縮することができます。 
 
@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 各コード要素について次の表で説明します。
 
-|プロパティ  |説明  | 例
+|プロパティ  |[説明]  | 例
 |---------|---------| ---------|
 |PartitionId   |  コピー順序 | 1  |  
 |SourceQuery   |  パイプライン ランタイム中にコピーされるデータを示すクエリ | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
@@ -109,7 +109,7 @@ ControlTableDataset の形式が異なる場合は、ご自分の形式に対応
 
 テンプレートを使用して、データベースとテーブルから大量のデータを効率的にコピーできるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Factory を使用して Azure Data Explorer にデータをコピーする](data-factory-load-data.md)方法について確認する。
 * Azure Data Factory 内の [Azure Data Explorer コネクタ](/azure/data-factory/connector-azure-data-explorer)について学習する。

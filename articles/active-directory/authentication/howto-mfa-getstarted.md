@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848393"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155148"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -85,17 +85,17 @@ Microsoft では、組織が条件付きアクセスを使用し、[ネームド
 ### <a name="configuring-a-named-location"></a>ネームド ロケーションを構成する
 
 1. Azure portal で **[Azure Active Directory]** を開きます
-2. **[条件付きアクセス]** をクリックします
-3. **[ネームド ロケーション]** をクリックします
-4. **[新しい場所]** をクリックします
+2. **[セキュリティ]** を選択します。
+3. **[管理]** で、 **[ネームド ロケーション]** を選択します。
+4. **[新しい場所]** を選択します。
 5. **[名前]** フィールドに、わかりやすい名前を入力します
-6. 場所の定義に IP 範囲または国/地域のどちらを使用するかを選択します
-   1. IP 範囲を使用する場合
-      1. 場所を信頼済みとしてマークするかどうかを決定します。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。 入力した IP 範囲が確立され、組織内で信用されていることがわかる場合のみ、この場所を信頼できる場所とマークしてください。
+6. 場所の定義に *[IP 範囲]* または *[国/地域]* のどちらを使用するかを選択します
+   1. *[IP 範囲]* を使用する場合
+      1. *[信頼できる場所としてマークする]* かどうかを決定します。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。 入力した IP 範囲が確立され、組織内で信用されていることがわかる場合のみ、この場所を信頼できる場所とマークしてください。
       2. IP 範囲を指定します
-   2. 国/地域を使用する場合
+   2. *[国/地域]* を使用する場合
       1. ドロップダウン メニューを開き、このネームド ロケーションに対して定義する国または地域を選択します。
-      2. 不明な領域を含めるかどうかを決定します。 不明な領域は、国/地域にマップできない IP アドレスです。
+      2. *[不明な領域を含める]* かどうかを決定します。 不明な領域は、国/地域にマップできない IP アドレスです。
 7. **[作成]**
 
 ## <a name="plan-authentication-methods"></a>認証方法を計画する
@@ -137,7 +137,7 @@ Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ご�
 
 ## <a name="plan-registration-policy"></a>登録ポリシーを計画する
 
-管理者は、ユーザーが方法を登録する方法を決定する必要があります。 組織では、Azure MFA とパスワード リセットのセルフサービス (SSPR) に対する[新しい組み合わせの登録エクスペリエンスを有効にする](howto-registration-mfa-sspr-combined.md)必要があります。 SSPR では、ユーザーは、多要素認証に使用するのと同じ方法を使用して、セキュリティで保護された方法でパスワードをリセットすることができます。 両方のサービスに 1 回で登録できるユーザーにとって優れたエクスペリエンスであるため、この組み合わせ登録 (現在パブリック プレビュー中) をお勧めします。 SSPR と Azure MFA に対して同じ方法を有効にすると、ユーザーは両方の機能を使用するよう登録できます。
+管理者は、ユーザーが方法を登録する方法を決定する必要があります。 組織では、Azure MFA とセルフサービス パスワード リセット (SSPR) に対する[新しい組み合わせの登録エクスペリエンスを有効にする](howto-registration-mfa-sspr-combined.md)必要があります。 SSPR では、ユーザーは、多要素認証に使用するのと同じ方法を使用して、セキュリティで保護された方法でパスワードをリセットすることができます。 両方のサービスに 1 回で登録できるユーザーにとって優れたエクスペリエンスであるため、この組み合わせ登録 (現在パブリック プレビュー中) をお勧めします。 SSPR と Azure MFA に対して同じ方法を有効にすると、ユーザーは両方の機能を使用するよう登録できます。
 
 ### <a name="registration-with-identity-protection"></a>Identity Protection を使用する登録
 
@@ -221,7 +221,7 @@ MFA やその他の制御がいつ必要になるかを決定する条件付き�
 ### <a name="create-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
 1. グローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]** 、 **[条件付きアクセス]** の順に移動します
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. **[新しいポリシー]** を選択します。
    ![パイロット グループ内の Azure portal ユーザーに対して MFA を有効にする条件付きアクセス ポリシーを作成する](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. ポリシーのわかりやすい名前を指定します。
@@ -347,7 +347,7 @@ Azure MFA に対するレポート
 
 Azure Multi-Factor Authentication では、Azure portal でレポートが提供されます。
 
-| レポート | Location | 説明 |
+| レポート | Location | [説明] |
 | --- | --- | --- |
 | 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
 
@@ -355,8 +355,8 @@ Azure Multi-Factor Authentication では、Azure portal でレポートが提供
 
 Azure MFA での一般的な問題の解決策については、Microsoft サポート センターで [Azure Multi-Factor Authentication のトラブルシューティングに関する記事](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues)を検索してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [認証方法とは](concept-authentication-methods.md)
-* [Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)
+* [Azure Multi-Factor Authentication と Azure AD のセルフサービス パスワード リセット で集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)
 * MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。

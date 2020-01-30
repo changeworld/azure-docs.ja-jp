@@ -1,20 +1,20 @@
 ---
 title: Windows コンテナーを操作する
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867303"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157000"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
-Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。
+Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。 現時点では、Azure Dev Spaces を使用して、Windows コンテナーのデバッグやアタッチを行うことはできません。
 
 ## <a name="set-up-your-cluster"></a>クラスターのセットアップ
 
@@ -36,8 +36,9 @@ kubectl get nodes
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 Windows ノードに [taint][using-taints] を適用します。 Windows ノードに taint があると、Dev Spaces がその Windows ノードで Linux コンテナーの実行をスケジューリングしなくなります。 次のコマンド例では、前の例の Windows ノード *aksnpwin987654* に taint を適用しています。
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-サンプル アプリケーションでは、クラスターで Windows サービスを実行するために [Helm 2][helm-installed] が使用されます。 クラスターに Helm をインストールし、適切なアクセス許可を付与します。
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-`charts` ディレクトリに移動し、Windows サービスを実行します。
+サンプル アプリケーションでは、クラスターで Windows サービスを実行するために [Helm][helm-installed] が使用されます。 `charts` ディレクトリに移動し、Helm を使用して Windows サービスを実行します。
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 上のコマンドでは、Helm を使用して *dev* 名前空間で Windows サービスを実行しています。 *dev* という名前空間がない場合は作成されます。
@@ -122,16 +115,15 @@ spec:
 `helm list` を使用して、Windows サービスのデプロイを一覧表示します。
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-上の例では、デプロイの名前が *gilded-jackal* となっています。 `helm upgrade` を使用して Windows サービスを新しい構成で更新します。
+上の例では、デプロイの名前が *windows-service* となっています。 `helm upgrade` を使用して Windows サービスを新しい構成で更新します。
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 `deployment.yaml` を更新したため、Dev Spaces がサービスをインストルメント化しようとすることはありません。
@@ -182,7 +174,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
