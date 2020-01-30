@@ -722,6 +722,6 @@ JavaScript では、`context.bindings.<name>` を使用して出力イベント�
 
 |プロパティ  |Default | [説明] |
 |---------|---------|---------|
-|maxBatchSize|64|受信ループあたりで受信される最大イベント数。|
-|prefetchCount|該当なし|基になる EventProcessorHost に使用される既定の PrefetchCount。|
+|maxBatchSize|10|受信ループあたりで受信される最大イベント数。|
+|prefetchCount|300|基になる EventProcessorHost に使用される既定の PrefetchCount。|
 |batchCheckpointFrequency|1|EventHub カーソル チェックポイントを作成する前に処理するイベント バッチ数。|
