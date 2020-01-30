@@ -13,13 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d156ccd4b3f81081433962dcd939a91ab1bc7143
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963231"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696420"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
 
@@ -74,7 +73,7 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
 * 増分同意のための動的スコープ。
 
-    v1.0 を使用してアプリケーションを構築するときは、ユーザーがログイン時に同意するよう、アプリケーションで必要なアクセス許可 (静的スコープ) の完全なセットを登録する必要がありました。 V2.0 では、スコープ パラメーターを使用して、必要なときにアクセス許可を要求できます。 これらを動的スコープといいます。 これにより、ユーザーは、スコープに増分同意を提供できます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 例:
+    v1.0 を使用してアプリケーションを構築するときは、ユーザーがログイン時に同意するよう、アプリケーションで必要なアクセス許可 (静的スコープ) の完全なセットを登録する必要がありました。 V2.0 では、スコープ パラメーターを使用して、必要なときにアクセス許可を要求できます。 これらを動的スコープといいます。 これにより、ユーザーは、スコープに増分同意を提供できます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 次に例を示します。
 
     ```javascript
     var request = {
@@ -86,7 +85,7 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
 * V1.0 API 用のスコープ
 
-    MSAL.js を使用して、V1.0 API のトークンを取得する場合は、スコープとして `.default` を API のアプリケーション ID URI に付加することで、API に登録されているすべての静的スコープを要求できます。 例:
+    MSAL.js を使用して、V1.0 API のトークンを取得する場合は、スコープとして `.default` を API のアプリケーション ID URI に付加することで、API に登録されているすべての静的スコープを要求できます。 次に例を示します。
 
     ```javascript
     var request = {
@@ -96,5 +95,5 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
     acquireTokenPopup(request);
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関するページを参照してください。

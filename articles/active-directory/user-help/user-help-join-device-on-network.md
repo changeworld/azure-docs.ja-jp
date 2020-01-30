@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028540"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704648"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -111,7 +110,7 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 デバイスを組織のネットワークに参加させたら、職場または学校アカウントの情報を使用してすべてのリソースにアクセスできるようになります。
 
 - 組織で電話などの個人デバイスを登録させるようにする場合は、「[個人デバイスを組織のネットワークに登録する](user-help-register-device-on-network.md)」を参照してください。

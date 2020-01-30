@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030064"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281344"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>フォロワー データベースを使用して Azure Data Explorer にデータベースをアタッチする
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したデータベースのアタッチ
 
-このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用して、フォロワー クラスターを作成し、データベースをそれにアタッチする方法について説明します。 クラスターが既にある場合は、下のリソースの一覧から `Microsoft.Kusto/clusters` リソースを削除します。
+このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してデータベースを既存のクラスターにアタッチする方法について説明します。 
 
 ```json
 {
@@ -138,7 +138,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 |**設定**  |**説明**  |
 |---------|---------|
-|Follower Cluster Name (フォロワー クラスター名)     |  フォロワー クラスターの名前。 クラスター名が存在する場合は、ARM テンプレートのリソースの一覧から `Microsoft.Kusto/clusters` リソースを削除します。 それ以外の場合は、新しいクラスターが作成されます。     |
+|Follower Cluster Name (フォロワー クラスター名)     |  フォロワー クラスターの名前。  |
 |Attached Database Configurations Name (アタッチされたデータベースの構成名)    |    アタッチされたデータベースの構成オブジェクトの名前。 この名前はクラスター レベルで一意である必要があります。     |
 |データベース名     |      フォローするデータベースの名前。 リーダーのデータベースをすべてフォローする場合は、'*' を使用します。   |
 |Leader Cluster Resource ID (リーダー クラスターのリソース ID)    |   リーダー クラスターのリソース ID。      |
@@ -394,6 +383,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 * フォロワー クラスターとリーダー クラスターは、同じリージョンに存在する必要があります。
 * [ストリーミング インジェスト](/azure/data-explorer/ingest-data-streaming)は、フォローされているデータベースでは使用できません。
+* [カスタマー マネージド キー](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)を使用したデータ暗号化は、リーダー クラスターとフォロワー クラスターの両方でサポートされていません。 
 * 別のクラスターにアタッチされているデータベースは、デタッチ前に削除することはできません。
 * 別のクラスターにアタッチされているデータベースを持つクラスターは、デタッチ前に削除することはできません。
 * フォロワー データベースまたはリーダー データベースがアタッチされているクラスターを停止することはできません。 

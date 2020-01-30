@@ -14,13 +14,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1699aad41d8a5da153199f79f65af67bd04c6b2c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 26ebee446523c138569b9d5379c9a5e1b9e93e7d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966097"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698443"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232311"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711456"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
@@ -56,7 +56,7 @@ ms.locfileid: "74232311"
 
 Azure AD には、アプリケーションで自動ユーザー プロビジョニングを有効にするための統合パスがいくつか用意されています。
 
-* [Azure AD プロビジョニング サービス](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)では、Azure AD からアプリケーションへ (外向きのプロビジョニング) とアプリケーションから Azure AD へ (内向きのプロビジョニング) のユーザーのプロビジョニングとプロビジョニング解除が管理されます。 このサービスは、あなたのアプリケーションによって提供される System for Cross-Domain Identity Management (SCIM) ユーザー管理 API エンドポイントに接続します。
+* [Azure AD プロビジョニング サービス](user-provisioning.md)では、Azure AD からアプリケーションへ (外向きのプロビジョニング) とアプリケーションから Azure AD へ (内向きのプロビジョニング) のユーザーのプロビジョニングとプロビジョニング解除が管理されます。 このサービスは、あなたのアプリケーションによって提供される System for Cross-Domain Identity Management (SCIM) ユーザー管理 API エンドポイントに接続します。
 
 * [Microsoft Graph](https://docs.microsoft.com/graph/) を使用しているときに、そのアプリケーションは、Microsoft Graph API のクエリを実行して、Azure AD からそのアプリケーションに対するユーザーとグループの内向きのプロビジョニングと外向きのプロビジョニングを管理します。
 
@@ -87,9 +87,9 @@ Azure AD プロビジョニング サービスでの SCIM の使用方法につ�
 
 * [SCIM 標準についての詳細情報](https://aka.ms/SCIMOverview)
 
-* [System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする](use-scim-to-provision-users-and-groups.md)
 
-* [Azure AD SCIM の実装について](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Azure AD SCIM の実装について](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>プロビジョニングのための Microsoft Graph
 
@@ -115,7 +115,7 @@ SAML JIT は、SAML トークン内の要求情報を使用して、アプリケ
 
 ## <a name="next-steps"></a>次の手順
 
-* [アプリケーションのシングル サインオンを有効にする](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [アプリケーションのシングル サインオンを有効にする](isv-sso-content.md)
 
 * [アプリケーションの一覧を提出し](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)、Microsoft と連携して Microsoft のサイトでドキュメントを作成します。
 

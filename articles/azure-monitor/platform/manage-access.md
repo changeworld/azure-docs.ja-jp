@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 890e2fb06b9194bba49b94eae4b8ea3f0bfed1d7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932177"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289120"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -28,7 +28,7 @@ Azure Monitor は、[ログ](data-platform-logs.md) データを Log Analytics �
 
 Azure portal から、あるいは Azure PowerShell を利用し、ワークスペース上で構成されたアクセス制御モードを表示できます。  この設定は、サポートされている次のいずれかの方法で変更できます。
 
-* Azure ポータル
+* Azure portal
 
 * Azure PowerShell
 
@@ -40,7 +40,7 @@ Azure portal から、あるいは Azure PowerShell を利用し、ワークス�
 
 ![ワークスペースのアクセス制御モードの表示](media/manage-access/view-access-control-mode.png)
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 1. Azure portal で、[Log Analytics ワークスペース]、目的のワークスペース の順に選択します。
 
 ワークスペースの **[プロパティ]** ページからこの設定を変更できます。 ワークスペースを構成するアクセス許可を持たない場合、設定の変更は無効になります。
@@ -104,7 +104,7 @@ Azure Resource Manager テンプレートでアクセス モードを構成す�
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
-|Action |必要とされる Azure のアクセス許可 |メモ |
+|アクション |必要とされる Azure のアクセス許可 |メモ |
 |-------|-------------------------|------|
 | 監視ソリューションの追加と削除 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
 | 価格レベルの変更 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -132,12 +132,12 @@ Azure には、Log Analytics ワークスペース用に、次の 2 つの組み
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
-| 種類    | アクセス許可 | 説明 |
+| 種類    | 権限 | [説明] |
 | ------- | ---------- | ----------- |
-| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
-| Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
-| Action | `Microsoft.OperationalInsights/workspaces/search/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
-| Action | `Microsoft.Support/*` | サポート ケースを開く機能 |
+| アクション | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
+| アクション | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
+| アクション | `Microsoft.OperationalInsights/workspaces/search/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
+| アクション | `Microsoft.Support/*` | サポート ケースを開く機能 |
 |非アクション | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | データ コレクション API の使用とエージェントのインストールに必要なワークスペース キーの読み取りを防ぎます。 これにより、ユーザーは新しいリソースをワークスペースに追加できなくなります |
 
 "*Log Analytics 共同作成者*" ロールのメンバーは、以下の操作を行うことができます。
@@ -160,7 +160,7 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 Log Analytics 共同作成者ロールには、次の Azure アクションが含まれています。
 
-| アクセス許可 | 説明 |
+| 権限 | [説明] |
 | ---------- | ----------- |
 | `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
@@ -187,12 +187,12 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 ユーザーがリソースコンテキストのアクセスを使用するワークスペースのログを照会するときは、リソースに対する次のアクセス許可を持っています。
 
-| アクセス許可 | 説明 |
+| 権限 | [説明] |
 | ---------- | ----------- |
-| `Microsoft.Insights/logs/<tableName>/read`<br><br>次に例を示します。<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
+| `Microsoft.Insights/logs/<tableName>/read`<br><br>例 :<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 診断設定を構成し、このリソースに設定を許可する機能。 |
 
-通常、`/read` のアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
+通常、`/read` のアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read または_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
 
 さまざまな表に対して異なるアクセス制御を作成する場合は、下記の[テーブルごとのアクセス制御の定義](#table-level-rbac)に関する説明を参照してください。
 
@@ -241,13 +241,12 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 **テーブル レベルの RBAC** では他のアクセス許可に加えて、Log Analytics ワークスペースのデータをさらにきめ細かく定義できます。 この制御を使用すると、特定のユーザーのグループのみがアクセスできる特定のデータ型を定義できます。
 
-[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を使用したテーブル アクセス制御を実装して、ワークスペース内の特定の[テーブル](../log-query/logs-structure.md)に対するアクセスを付与または拒否します。 これらのロールは、ユーザーの[アクセス モード](design-logs-deployment.md#access-mode)とは関係なく、ワークスペースコンテキストまたはリソースコンテキストどちらかの[アクセス制御モード](design-logs-deployment.md#access-control-mode)のワークスペースに適用されます。
+[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を使用したテーブル アクセス制御を実装して、ワークスペース内の特定の[テーブル](../log-query/logs-structure.md)に対するアクセスを付与します。 これらのロールは、ユーザーの[アクセス モード](design-logs-deployment.md#access-mode)とは関係なく、ワークスペースコンテキストまたはリソースコンテキストどちらかの[アクセス制御モード](design-logs-deployment.md#access-control-mode)のワークスペースに適用されます。
 
 次の操作の[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成して、テーブル アクセス制御を定義します。
 
-* テーブルへのアクセス権を付与するには、ロール定義の **[Actions]** セクションにそのテーブルを含めます。
-* テーブルへのアクセス権を拒否するには、ロール定義の **[NotActions]** セクションにそのテーブルを含めます。
-* すべてのテーブルを指定するには * を使用します。
+* テーブルへのアクセス権を付与するには、ロール定義の **[Actions]** セクションにそのテーブルを含めます。 許可されている**アクション**からアクセスを削除するには、 **[NotActions]** セクションに含めます。
+* すべてのテーブルを指定するには、Microsoft.OperationalInsights/workspaces/query/* を使用します。
 
 たとえば、_Heartbeat_ テーブルと _AzureActivity_ テーブルへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
@@ -260,7 +259,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
   ],
 ```
 
-_SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのアクセス権は持たないロールを作成するには、次の操作を使用してカスタム ロールを作成します。
+_SecurityBaseline_ テーブルのみのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
 ```
 "Actions":  [
@@ -268,16 +267,13 @@ _SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのア�
     "Microsoft.OperationalInsights/workspaces/query/read",
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
-"NotActions":  [
-    "Microsoft.OperationalInsights/workspaces/query/*/read"
-],
 ```
 
 ### <a name="custom-logs"></a>カスタム ログ
 
  カスタム ログは、カスタム ログや HTTP Data Collector API などのデータ ソースから作成されます。 ログの種類を特定する最も簡単な方法は、[ログ スキーマの [カスタム ログ]](../log-query/get-started-portal.md#understand-the-schema)に一覧表示されるテーブルを確認することです。
 
- 現時点では、個々のカスタム ログに対するアクセスを付与または拒否することはできませんが、すべてのカスタム ログに対するアクセスを付与または拒否することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
+ 現時点では、個々のカスタム ログに対するアクセスを付与することはできませんが、すべてのカスタム ログに対するアクセスを付与することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
 ```
 "Actions":  [
@@ -295,7 +291,7 @@ _SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのア�
 * ワークスペース所有者は、テーブルとごのアクセス制御では他のすべてのユーザーと同様に扱われます。
 * 割当て数を減らすには、ロールは個々のユーザーではなくセキュリティ グループに割り当てることをお勧めします。 こうすると、既存のグループ管理ツールを使用して、アクセス権の構成と確認する際に役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 

@@ -12,13 +12,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd060e0c627e8183f8d7f7b449f8d6f19c951b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b7f9daa61e012a9420702d7df7411d0c07c6e193
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967049"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697865"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -100,7 +99,7 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 
 以下のセクションでは、より複雑な一般的なシナリオについて説明します。 主要な運用原則では、条件付きアクセス ポリシーは、条件付きアクセス ポリシーが適用されるサービスに対してトークンが要求されたときに評価されます。
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ:On-Behalf-Of フローを実行するアプリ
 
 このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 呼び出されたサービスは、On-Behalf-Of フローでダウンストリーム サービスを呼び出します。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリではなく、ネイティブ アプリを使用しています。 
 
@@ -145,7 +144,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 アプリが ADAL ライブラリを使用しており、トークンの取得に失敗した場合、常に対話形式で再試行されます。 この対話型の要求が発生すると、エンド ユーザーには、条件付きアクセスに準拠する機会が与えられます。 これは、要求が `AcquireTokenSilentAsync` または `PromptBehavior.Never` でない限り該当し、この場合、アプリは対話型の ```AcquireToken``` 要求を実行し、エンドユーザーはポリシーに準拠する機会が与えられます。
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: ADAL.js を使用するシングル ページ アプリ (SPA)
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ:ADAL.js を使用するシングル ページ アプリ (SPA)
 
 このシナリオでは、条件付きアクセスで保護されている Web API を呼び出すための ADAL.js がシングル ページ アプリ (SPA) において使用される場合について説明します。 これは、シンプルなアーキテクチャですが、条件付きアクセスの周辺を開発するときに考慮する必要がある点がいくつかあります。
 
@@ -173,7 +172,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 このシナリオを試すには、[JS SPA On-Behalf- コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。 このコード サンプルでは、条件付きアクセス ポリシーと、このシナリオを説明するために、上記で JS SPA に登録された Web API が使用されます。 クレーム チャレンジを正しく処理し、Web API で使用できるアクセス トークンを取得する方法を示します。 または、Angular SPA については、一般的な [Angular.js コード サンプル](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)」をご覧ください。
 * Azure AD コード サンプルについては、[GitHub リポジトリのコード サンプル](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)を参照してください。

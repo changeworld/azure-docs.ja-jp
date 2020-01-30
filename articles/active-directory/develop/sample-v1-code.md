@@ -17,13 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: b0b9e8215789936eb4f61900faae552407d01252
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809285"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702591"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -124,7 +123,7 @@ ASP.NET Web アプリ  | ![.NET のロゴを示す画像](media/sample-v2-code/l
 
 Azure AD での認証を含む、Microsoft Graph API のさまざまな使用パターンを示すサンプルとチュートリアルについては、[Microsoft Graph コミュニティのサンプルとチュートリアル](https://github.com/microsoftgraph/msgraph-community-samples)をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [Azure Active Directory 開発者ガイド](v1-overview.md)
 

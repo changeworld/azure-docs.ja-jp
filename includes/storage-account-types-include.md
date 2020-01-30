@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0c0f1f4dfd873c8c9a18d300b249ace0295e450e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6e8c0e1c7fef884844b8aaae9dc4c7e3eaa220a2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174016"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274549"
 ---
 Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
 
 - **汎用 v2 アカウント**:BLOB、ファイル、キュー、およびテーブル用の基本的なストレージ アカウントの種類。 Azure Storage を使用するほとんどのシナリオにお勧めします。
 - **汎用 v1 アカウント**:BLOB、ファイル、キュー、およびテーブル用の従来のアカウントの種類。 可能な場合は汎用 v2 アカウントを代わりに使用してください。
-- **BlockBlobStorage アカウント**:Premium パフォーマンスの特徴を持つ BLOB 専用ストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用される、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。
+- **BlockBlobStorage アカウント**:ブロック BLOB と追加 BLOB の Premium パフォーマンス特性を持つストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。
 - **FileStorage アカウント**:Premium パフォーマンスの特徴を持つファイル専用ストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。
 - **BlobStorage アカウント**:従来の BLOB 専用ストレージ アカウント。 可能な場合は汎用 v2 アカウントを代わりに使用してください。
 
@@ -27,11 +27,11 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 | ストレージ アカウントの種類 | サポートされているサービス                       | サポートされているパフォーマンス レベル      | サポートされているアクセス層         | レプリケーション オプション               | デプロイメント モデル<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | 暗号化<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| 汎用 v2   | BLOB、ファイル、キュー、テーブル、ディスク、および Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS、ZRS、GZRS (プレビュー)、RA-GZRS (プレビュー)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | リソース マネージャー             | 暗号化              |
-| 汎用 v1   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 該当なし                            | LRS、GRS、RA-GRS                  | Resource Manager、クラシック    | 暗号化              |
-| BlockBlobStorage   | BLOB (ブロック BLOB と追加 BLOB のみ) | Premium                       | 該当なし                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | リソース マネージャー             | 暗号化              |
-| FileStorage   | ファイルのみ | Premium                       | 該当なし                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | リソース マネージャー             | 暗号化              |
-| BlobStorage         | BLOB (ブロック BLOB と追加 BLOB のみ) | Standard                      | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS                  | リソース マネージャー             | 暗号化              |
+| 汎用 v2   | BLOB、ファイル、キュー、テーブル、ディスク、および Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS、ZRS、GZRS (プレビュー)、RA-GZRS (プレビュー)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | リソース マネージャー             | Encrypted              |
+| 汎用 v1   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 該当なし                            | LRS、GRS、RA-GRS                  | Resource Manager、クラシック    | Encrypted              |
+| BlockBlobStorage   | BLOB (ブロック BLOB と追加 BLOB のみ) | Premium                       | 該当なし                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | リソース マネージャー             | Encrypted              |
+| FileStorage   | ファイルのみ | Premium                       | 該当なし                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | リソース マネージャー             | Encrypted              |
+| BlobStorage         | BLOB (ブロック BLOB と追加 BLOB のみ) | Standard                      | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS                  | リソース マネージャー             | Encrypted              |
 
 <div id="deployment-model"><sup>1</sup> Azure Resource Manager デプロイ モデルが推奨されます。 一部の場所では、クラシック デプロイ モデルを使用するストレージ アカウントを引き続き作成でき、既存のクラシック アカウントもサポートされます。 詳細については、「<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager とクラシック デプロイ:デプロイ モデルとリソースの状態について</a>」を参照してください。</div>
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971801"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714510"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内の BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。
@@ -24,7 +24,7 @@ Import/Export により、異なる Azure Cache for Redis インスタンス間�
 この記事では Azure Cache for Redis でデータをインポートまたはエクスポートする方法を説明し、よく寄せられる質問に回答します。
 
 > [!IMPORTANT]
-> Import/Export はプレビュー版ですので、 [Premium レベル](cache-premium-tier-intro.md) キャッシュにのみ使用可能です。
+> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。
 >
 >
 

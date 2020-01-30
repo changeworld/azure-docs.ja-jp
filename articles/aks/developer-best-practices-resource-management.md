@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107645"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549242"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -102,7 +102,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 多くの開発チームとアプリケーションをホストする AKS クラスターでは、これらのリソースの要求と制限が設定されていないポッドを追跡するのは困難な場合があります。 ベスト プラクティスとして、AKS クラスターで `kube-advisor` を定期的に実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このベスト プラクティスの記事では、クラスター オペレーターの観点からクラスターとワークロードを実行する方法に重点を置きました。 管理のベスト プラクティスについては、[Azure Kubernetes Service (AKS) での分離とリソース管理に関するクラスター オペレーターのベスト プラクティス][operator-best-practices-isolation]に関するページを参照してください。
 

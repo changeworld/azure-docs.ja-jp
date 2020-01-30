@@ -17,13 +17,12 @@ ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2591485c6e528eb9f422ce966ec7738af49dbddc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532408"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701044"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
@@ -68,7 +67,7 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 
 バックエンドを含む Web アプリケーションを開発しており、そのバックエンド コードから API を使用する場合も、暗黙的フローはあまり向いていません。 他の方法の方がはるかに便利です。 たとえば、OAuth2 クライアント資格情報付与では、ユーザー委任とは対照的に、アプリケーション自体に割り当てられているアクセス許可を反映したトークンを取得できます。 これは、ユーザーがセッションにアクティブに関与していない場合などでも、クライアントがプログラムによるリソース アクセスを維持できることを意味します。 メリットはそれだけにとどまりません。このような付与では、セキュリティ保証が強化されます。 たとえば、アクセス トークンがユーザーのブラウザーを通過せず、ブラウザーの履歴に保存されるなどのリスクがありません。 また、クライアント アプリケーションは、トークンの要求時に強力な認証を実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure AD によってサポートされるプロトコルや OAuth2 承認付与フローなどの開発者向けリソースの一覧については、[Azure Active Directory 開発者ガイド][AAD-Developers-Guide]を参照してください。
 * アプリケーションの統合プロセスの詳細については、[アプリケーションを Azure AD と統合する方法][ACOM-How-To-Integrate]についてのページを参照してください。

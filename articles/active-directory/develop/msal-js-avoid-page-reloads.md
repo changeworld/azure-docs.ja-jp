@@ -13,13 +13,12 @@ ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916437"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696148"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL.js を使用してトークンを自動的に取得、更新するときにページのリロードを回避する
 JavaScript (MSAL.js) 用 Microsoft Authentication Library では非表示の `iframe` 要素を使用して、バックグラウンドでトークンが自動的に取得、更新されます。 Azure AD によって、トークン要求で指定された登録済み redirect_uri にトークンが戻されます (既定では、これはアプリのルート ページです)。 応答は 302 なので、結果は `iframe` にロードされる `redirect_uri` に対応する HTML になります。 通常、アプリの `redirect_uri` はルート ページで、これにより、リロードされます。
@@ -36,7 +35,7 @@ config 上の `redirect_uri`プロパティを、単純なページに設定し�
 
 ## <a name="initialization-in-your-main-app-file"></a>メイン アプリ ファイルの初期化
 
-アプリの初期化、ルーティングなどを定義する中央の単一 Javascript ファイルが存在するようにアプリが構成されている場合、アプリが `iframe` に読み込まれるかどうかに基づいてアプリ モジュールを条件付きで読み込むことができます。 例:
+アプリの初期化、ルーティングなどを定義する中央の単一 Javascript ファイルが存在するようにアプリが構成されている場合、アプリが `iframe` に読み込まれるかどうかに基づいてアプリ モジュールを条件付きで読み込むことができます。 次に例を示します。
 
 AngularJS: app.js の場合
 
@@ -146,5 +145,5 @@ export class MsalComponent {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、MSAL.js を使用した[シングル ページ アプリケーション (SPA) のビルド](scenario-spa-overview.md)に関する記事をご覧ください。

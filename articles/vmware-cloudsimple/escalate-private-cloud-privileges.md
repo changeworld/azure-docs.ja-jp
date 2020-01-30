@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372773"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544448"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
 
@@ -27,7 +27,7 @@ vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのア
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="escalate-privileges"></a>権限をエスカレートする
 
@@ -55,6 +55,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 > [!IMPORTANT]
 > エスカレートされた特権を持つことができるユーザーは 1 人だけです。  そのユーザーの特権のエスカレートを解除してからでないと、別のユーザーの特権をエスカレートすることはできません。
+
+> [!CAUTION]
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *[管理者]* グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。
 
 ## <a name="extend-privilege-escalation"></a>特権エスカレーションを延長する
 

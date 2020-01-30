@@ -12,13 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f221ed773677c28094d2e5eaecc10a191e84addb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638971"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698766"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -287,7 +286,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
        }
     ```
 
-   | 省略可能な要求のスキーマ | 値 |
+   | 省略可能な要求のスキーマ | Value |
    |----------|-------------|
    | **name:** | 必ず "groups" になります |
    | **source:** | 使用されていません。 省略するか、null を指定します |
@@ -382,7 +381,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
     [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **マニフェストの構成：**
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探し、クリックします。

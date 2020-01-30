@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896024"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291517"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -53,7 +53,7 @@ ms.locfileid: "75896024"
         - SAP HANA でサポートされる Azure VM と [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) の一覧は、[SAP の Web サイト](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に掲載されています。
         - [SAP 製品の可用性マトリックス](https://support.sap.com/en/)。
         - 他の SAP 固有製品に関する SAP ノート。     
-    - SAP の運用システムには厳密な 3 層設計をお勧めします。 1 つの VM 上で ASCS とアプリ サーバーを組み合わせることはお勧めしません。 SAP セントラル サービスに対するマルチ SID クラスター構成の使用は、Azure での Windows ゲスト オペレーティング システム上でサポートされます。 ただし、この構成は、Azure での Linux オペレーティング システム上の SAP セントラル サービスではサポートされていません。 Windows ゲスト OS のシナリオに関するドキュメントについては、次の記事を参照してください。
+    - SAP の運用システムには厳密な 3 層設計をお勧めします。 1 つの VM 上で ASCS、DBMS、またはアプリ サーバーを組み合わせることはお勧めしません。 SAP セントラル サービスに対するマルチ SID クラスター構成の使用は、Azure での Windows ゲスト オペレーティング システム上でサポートされます。 ただし、この構成は、Azure での Linux オペレーティング システム上の SAP セントラル サービスではサポートされていません。 Windows ゲスト OS のシナリオに関するドキュメントについては、次の記事を参照してください。
         - [Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - 高可用性とディザスター リカバリーのアーキテクチャ。
@@ -135,7 +135,7 @@ ms.locfileid: "75896024"
         - SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション レイヤーと同じ可用性セットにデプロイできます。
         - パッシブ レプリケーションを使用して高可用性用に SAP セントラル サービスと DBMS レイヤーを保護する場合は、SAP セントラル サービス用の 2 つのノードを 1 つの独立した可用性セットに配置し、2 つの DBMS ノードを別の可用性セットに配置します。
         - Azure Availability Zones にデプロイする場合は、可用性セットを使用できません。 しかし、アクティブとパッシブのセントラル サービス ノードを 2 つの異なる Availability Zones にデプロイする必要があります。 待機時間が最も短い Availability Zones を使用します。
-          Azure Availability Zones をまたがる DBMS および SAP セントラル サービス レイヤーに対して Windows または Pacemaker のフェールオーバー クラスターを確立する場合は、[Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があることに注意してください。 [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) をゾーン間のデプロイに使用することはできません。
+          Azure Availability Zones をまたがる DBMS および SAP セントラル サービス レイヤーに対して Windows または Pacemaker のフェールオーバー クラスターを確立する場合は、[Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があることに注意してください。 [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) をゾーン間のデプロイに使用することはできません。
    5. タイムアウトの設定。
         - SAP インスタンスの SAP NetWeaver 開発者トレースをチェックして、エンキュー サーバーと SAP ワーク プロセスの間の接続が切断されていないことを確認します。 このような接続の切断は、次の 2 つのレジストリ パラメーターを設定することによって回避できます。
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000。 詳細については、「[KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))」を参照してください。

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471687"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773199"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにパラメーターを追加する
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 お気付きかもしれませんが、このテンプレートには問題があります。 ストレージ アカウント名がハードコーディングされています。 このテンプレートは、同じストレージ アカウントを毎回デプロイする目的でしか使用できません。 別の名前でストレージ アカウントをデプロイするためには、新しいテンプレートを作成する必要があり、デプロイを自動化する方法としては明らかに実用的ではありません。
 
@@ -36,7 +36,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
@@ -80,7 +80,7 @@ az group deployment create \
 
 前のテンプレートでは常に Standard_LRS ストレージ アカウントがデプロイされていました。 環境に応じて異なる SKU をデプロイする柔軟性が必要になることもあるでしょう。 次の例は、SKU のパラメーターを追加するための変更点を示しています。 ファイル全体をコピーして、既存のテンプレートに貼り付けてください。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 **storageSKU** パラメーターには既定値があります。 デプロイ中に値が指定されなければ、この値が使用されます。 また、指定できる一連の値も存在します。 これらの値は、ストレージ アカウントの作成に必要な値と一致します。 機能しない SKU がテンプレートのユーザーによって渡されるのを防ぐ必要があります。
 

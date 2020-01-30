@@ -11,13 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e246ffe66dca38916d1072c489cf8e3ab265334
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423179"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700152"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 

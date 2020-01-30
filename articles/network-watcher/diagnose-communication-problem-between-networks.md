@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: このチュートリアルでは、Azure 仮想ネットワークと、Azure 仮想ネットワーク ゲートウェイを介して接続されているオンプレミスまたはその他の仮想ネットワークの間の通信に関する問題を、Network Watcher の VPN の診断機能を使用して診断する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419738"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834687"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
@@ -47,7 +45,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="enable-network-watcher"></a>Network Watcher を有効にする
 
@@ -80,7 +78,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
     **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** が **[異常]** であるのを確認できるのと同時に、 **[状態]** タブで問題の **[概要]** と **[Detail (詳細)]** を確認できます。
 10. **[アクション]** タブを選択すると、VPN 診断から追加の情報が提供されます。 この例では、次の図に示すように、VPN 診断により、各接続の正常性を調べる必要があることがわかります。
 
-    ![Action](./media/diagnose-communication-problem-between-networks/action.png)
+    ![アクション](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>ゲートウェイ接続を診断する
 
@@ -88,12 +86,12 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. 今回は接続を選択して、「[ゲートウェイを診断する](#diagnose-a-gateway)」の手順 7. を完了します。 次の例では、**VNet1toSite1** という名前の接続がテストされます。
 
-    ![接続](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Connection](./media/diagnose-communication-problem-between-networks/connection.png)
 
     テストは数分間実行されます。
 2. 接続のテストが完了した後は、 **[状態]** タブと **[アクション]** タブに、以下の図に示すような結果が表示されます。
 
-    ![接続の状態](./media/diagnose-communication-problem-between-networks/connection-status.png)
+    ![[接続状態]](./media/diagnose-communication-problem-between-networks/connection-status.png)
 
     ![接続のアクション](./media/diagnose-communication-problem-between-networks/connection-action.png)
 
@@ -103,7 +101,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
     この問題を解決するには、オンプレミス VPN ゲートウェイが[正しく構成されている](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)ことを確認し、ローカル ネットワーク ゲートウェイのためにスクリプトによって構成された IP アドレスを、オンプレミス VPN ゲートウェイの実際のパブリック アドレスに変更する必要があります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了するためだけに[前提条件](#prerequisites)のスクリプトを使用して VPN ゲートウェイを作成した場合は、それが不要になったら、リソース グループと、それに含まれるすべてのリソースを削除します。
 
@@ -111,7 +109,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、仮想ネットワーク ゲートウェイに関する問題を診断する方法について学習しました。 異常がないかログを確認できるように、VM との間のネットワーク通信をログに記録することをお勧めします。 その方法については、次のチュートリアルに進んでください。
 

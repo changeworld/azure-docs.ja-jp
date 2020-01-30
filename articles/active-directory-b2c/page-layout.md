@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425652"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840317"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ レイアウトを選択する | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory B2C (Azure AD B2C) ポリシーでクライアント側 JavaScript コードを有効にできます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、ページ レイアウトを選択して、要求内で [b2clogin.com](b2clogin.md) を使用します。
+ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory B2C (Azure AD B2C) ポリシーでクライアント側 JavaScript コードを有効にできます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](custom-policy-overview.md)に要素を追加し、ページ レイアウトを選択して、要求内で [b2clogin.com](b2clogin.md) を使用します。
 
 ページ レイアウトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。
 
@@ -113,4 +113,4 @@ ms.locfileid: "75425652"
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。
+アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](custom-policy-ui-customization.md)」を参照してください。

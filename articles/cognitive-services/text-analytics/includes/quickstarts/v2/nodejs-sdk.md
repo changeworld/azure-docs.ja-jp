@@ -2,18 +2,18 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 7cb3dce31592771deb5c57b9d73670465f7424fe
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d5197cfe749ae27b9f8807ba62825c8a73371c85
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281429"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748774"
 ---
 <a name="HOLTop"></a>
 
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [パッケージ (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,13 +28,13 @@ ms.locfileid: "76281429"
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。 
+`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。
 
 ```console
 npm init
@@ -67,9 +67,9 @@ npm install @azure/cognitiveservices-textanalytics @azure/ms-rest-js
 
 Text Analytics クライアントは、ご利用のキーを使用して Azure に対して認証を行う [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) オブジェクトです。 このクライアントには、テキストを単一の文字列として、またはバッチとして分析するためのメソッドがいくつか備わっています。
 
-テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
+テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。
 
-応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。 
+応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。
 
 ## <a name="code-examples"></a>コード例
 

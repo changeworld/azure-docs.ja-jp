@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750355"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264171"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -29,10 +29,7 @@ SAP HANA のインストールはユーザーが行う必要があります。 A
 > [!Note]
 > SAP ポリシーに従い、SAP HANA のインストールは、SAP HANA インストールの認定試験である Certified SAP Technology Associate の合格者または SAP 認定システム インテグレーター (SI) によって実施される必要があります。
 
-HANA 2.0 をインストールする予定の場合は、「[SAP support note #2235581 - SAP HANA: Supported operating systems (SAP サポート ノート #2235581 - SAP HANA: サポートされているオペレーティング システム)](https://launchpad.support.sap.com/#/notes/2235581/E)」を参照して、インストールする SAP HANA リリースで OS がサポートされていることを確認してください。 HANA 2.0 でサポートされる OS は、HANA 1.0 でサポートされる OS より限られています。 
-
-> [!IMPORTANT] 
-> Type II ユニットの場合、現在は SLES 12 SP2 OS バージョンのみがサポートされています。 
+HANA 2.0 をインストールする予定の場合は、「[SAP support note #2235581 - SAP HANA: Supported operating systems (SAP サポート ノート #2235581 - SAP HANA: サポートされているオペレーティング システム)](https://launchpad.support.sap.com/#/notes/2235581/E)」を参照して、インストールする SAP HANA リリースで OS がサポートされていることを確認してください。 HANA 2.0 でサポートされる OS は、HANA 1.0 でサポートされる OS より限られています。 また、対象の OS リリースが、公開されている本[リスト](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の特定の HLI ユニットでサポートされているものとして一覧表示されているかどうかも確認する必要があります。 ユニットをクリックすると、そのユニットでサポートされている OS リストの詳細が表示されます。 
 
 HANA のインストールを開始する前に、以下について検証します。
 - [HLI ユニット](#validate-the-hana-large-instance-units)
@@ -84,9 +81,6 @@ RHEL 6.3 以降のすべての RHEL リリースについては、次のこと�
 
 ## <a name="operating-system"></a>オペレーティング システム
 
-> [!IMPORTANT] 
-> Type II ユニットの場合、現在は SLES 12 SP2 OS バージョンのみがサポートされています。 
-
 提供される OS イメージのスワップ領域は、「[SAP support note #1999997 - FAQ: SAP HANA memory (SAP サポート ノート #1999997 - FAQ: SAP HANA のメモリ)](https://launchpad.support.sap.com/#/notes/1999997/E)」に従って、2 GB に設定されています。 異なる設定が必要な場合は、お客様ご自身で設定する必要があります。
 
 [SAP アプリケーション用の SUSE Linux Enterprise Server 12 SP1](https://www.suse.com/products/sles-for-sap/download/) は、SAP HANA on Azure (L インスタンス) 用にインストールされる Linux ディストリビューションです。 このディストリビューションでは、SAP 特有の機能を "そのままで使う" ことができます (SAP on SLES を効果的に実行するための事前設定されたパラメーターを含む)。
@@ -107,7 +101,7 @@ SAP HANA on SLES 12 の実装に適用できる SAP サポート ノートは次
 - [SAP support note #171356 – SAP software on Linux:General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 7.2 および 7.3 のリリースが利用でき、サポートされます。 
 
 その他の便利な SAP on Red Hat 関連のリンクは次のとおりです。
 - [SAP HANA on Red Hat Linux のサイト](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)。
@@ -116,11 +110,9 @@ SAP HANA on Red Hat の実装に適用できる SAP サポート ノートは次
 
 - [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System (SAP サポート ノート #2009879 – Red Hat Enterprise Linux (RHEL) オペレーティング システムに関する SAP HANA ガイドライン)](https://launchpad.support.sap.com/#/notes/2009879/E)
 - [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7 (SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2292690)
-- [SAP Support Note #2247020 - SAP HANA DB:Recommended OS settings for RHEL 6.7 (SAP サポート ノート #2247020 – SAP HANA DB: RHEL 6.7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2247020)
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)
 - [SAP support note #2228351 - Linux:SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11 (SAP サポート ノート #2228351 - Linux: RHEL 6 または SLES 11 の SAP HANA データベース SPS 11 リビジョン 110 以上)](https://launchpad.support.sap.com/#/notes/2228351)
 - [SAP support note #2397039 - FAQ: SAP on RHEL (SAP サポート ノート #2397039 - FAQ: SAP on RHEL)](https://launchpad.support.sap.com/#/notes/2397039)
-- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x: Installation and Upgrade (SAP サポート ノート #1496410 - Red Hat Enterprise Linux 6.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/1496410)
 - [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and Upgrade (SAP サポート ノート #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/2002167)
 
 ### <a name="time-synchronization"></a>時刻同期
@@ -142,7 +134,7 @@ Azure 仮想ネットワークの設計と、それらの仮想ネットワー�
 
 アーキテクチャのイーサネットの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)についてのページを参照してください。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP が推奨するガイドラインに従う SAP HANA on Azure `service management` によって構成されます。 これらのガイドラインについては、ホワイト ペーパー「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。 
 
@@ -211,7 +203,7 @@ HANA L インスタンスで使用されるストレージには、ファイル 
 > - datavolume_striping=true
 > - datavolume_striping_size_gb = 15000
 > - SAP Note [#2400005](https://launchpad.support.sap.com/#/notes/2400005) も参照してください
-> - SAP Note [#2631285](https://launchpad.support.sap.com/#/notes/2631285)に注意してください
+> - SAP Note [#2631285](https://launchpad.support.sap.com/#/notes/2631285) に注意してください
 
 
 SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりました。 この結果、これらのパラメーターは SQL コマンドを使用して設定する必要があります。 詳しくは、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
@@ -219,7 +211,7 @@ SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりまし�
 アーキテクチャのストレージ レイアウトの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 
 
-**次のステップ**
+**次の手順**
 
 - [HLI への HANA のインストール](hana-example-installation.md)に関するページを参照してください
 

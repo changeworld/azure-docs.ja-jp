@@ -12,13 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c79d9226b3a8965ad6ce853350f2e4c46617b5b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15206f394f63e9373a4a0016588bc1e2e2c65d44
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843429"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697712"
 ---
 # <a name="how-application-consent-works"></a>アプリケーションの同意のしくみ
 
@@ -31,5 +30,5 @@ ms.locfileid: "74843429"
 - 詳細については、[マルチテナント アプリケーションが同意フレームワークを使用して](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)多層アプリケーションのパターンのサポートが強化されている、"user" と "admin" の同意を実装する方法について学習します。
 - 詳細については、[認証コードの付与フロー中に、OAuth 2.0 プロトコル層で同意がどのようにサポートされるか、学習してください。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6654b523cef4623a55bf9f857fd5a723fae2dc47
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921964"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695978"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js の対話型要求におけるプロンプト動作
 
@@ -49,6 +48,6 @@ Azure AD での認証時に、次のプロンプト値が渡されます。
 
 **none:** この値では、ユーザーに対話型のプロンプトを常に表示しません。 予期しない動作が発生する可能性があるため、この値を MSAL.js 内の対話型メソッドに渡すことはお勧めしません。 代わりに、`acquireTokenSilent` メソッドを使用して、サイレント呼び出しを実現します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 `prompt`MSAL.js ライブラリで使用される [OAuth 2.0 の暗黙的な許可](v2-oauth2-implicit-grant-flow.md)のプロトコルに関する詳細を確認してください。

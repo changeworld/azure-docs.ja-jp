@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401032"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168890"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -156,7 +156,7 @@ Azure Monitor の評価ソリューションを使用するには、そのソリ
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で「**Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[モニター]** を選択します。
 3. メニューの **[洞察]** セクションで、 **[詳細]** を選択します。  
 4. **[概要]** ページで、 **[SQL 正常性チェック]** タイルをクリックします。
@@ -196,6 +196,19 @@ Azure Monitor の評価ソリューションを使用するには、そのソリ
 3. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 正常性チェック ソリューションについてよく寄せられる質問 (FAQ)
+
+*SQL Assessment ソリューションでは、どのようなチェックが行われますか*
+
+* 次のクエリは、現在実行されているすべてのチェックの説明を示します。
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+結果を Excel にエクスポートしてレビューすることができます。
+
+
 *正常性チェックはどのような頻度で実行されますか?*
 
 * チェックは 7 日ごとに実行されます。

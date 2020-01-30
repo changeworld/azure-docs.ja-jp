@@ -11,13 +11,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4e0f434831f624dbd8c9c1302aab6816cd3d148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2801ccc69f15aa275e58e433984ddb4f7c18b66
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966165"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699038"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -49,7 +48,7 @@ AcquireTokenSilent は、エンド ユーザーにユーザー インターフ�
 
 基本的に、AcquireTokenSilent エラーには 2 つのケースがあります。
 
-| ケース | 説明 |
+| ケース | [説明] |
 |------|-------------|
 | **ケース 1**:エラーは対話型のサインインで解決できる | 有効なトークンがないことが原因のエラーの場合は、対話型の要求が必要です。 具体的には、キャッシュ参照と無効/有効期限切れの更新トークンを解決するには AcquireToken 呼び出しが必要です。<br><br>このような場合は、エンド ユーザーにサインインを求める必要があります。 アプリケーションは対話型の要求をすぐに行うか、エンドユーザーの操作 ([サインイン] ボタンを押すなど) の後に行うか、またはそれ以降に行うかを選択できます。 選択は、アプリケーションの目的の動作によって決まります。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。|
 | **ケース 2**:エラーは対話型のサインインで解決できない | ネットワーク エラーと一時的なエラー、またはその他のエラーの場合は、対話型の AcquireToken 要求を実行しても問題は解決しません。 不必要な対話型サインインのプロンプトはエンド ユーザーにストレスを感じさせることもあります。 ADAL は、AcquireTokenSilent エラー発生時にほとんどのエラーについて再試行を自動的に 1 回行います。<br><br>クライアント アプリケーションは後で再試行してみることもできますが、実行するタイミングと方法は、アプリケーションの動作と必要なエンドユーザー エクスペリエンスによって決まります。 たとえば、アプリケーションは数分後に、またはなんらかのエンドユーザー アクションへの応答として AcquireTokenSilent の再試行を行うことができます。 すぐに再試行するとアプリケーションが制限されるため、試行しないでください。<br><br>後続の再試行が同じエラーで失敗しても、クライアントが AcquireToken を使って対話型の要求を行う必要があるということは意味しません。対話型の要求ではエラーは解決されません。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。 |

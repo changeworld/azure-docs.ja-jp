@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949842"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76839093"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 
-Azure Active Directory B2C (Azure AD B2C) の[カスタム ポリシー](active-directory-b2c-get-started-custom.md)は、アプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。
+Azure Active Directory B2C (Azure AD B2C) の[カスタム ポリシー](custom-policy-get-started.md)は、アプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](tokens-overview.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。
 
-Azure AD B2C では、[OAuth 2.0](active-directory-b2c-reference-oauth-code.md) および [OpenID Connect](active-directory-b2c-reference-oidc.md) ID プロバイダーのアクセス トークンを渡すことがサポートされています。 その他すべての ID プロバイダーについては、要求が空で返されます。
+Azure AD B2C では、[OAuth 2.0](authorization-code-flow.md) および [OpenID Connect](openid-connect.md) ID プロバイダーのアクセス トークンを渡すことがサポートされています。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,8 +84,8 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
 ### <a name="upload-the-files"></a>ファイルのアップロード
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックし、テナントを含むディレクトリを選択することによって、Azure AD B2C テナントを含むディレクトリを使用していることを確認します。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認します。そのためには、上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックし、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
 5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
@@ -103,6 +103,6 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
     ![Idp_access_token block が強調表示されている jwt.ms 内のデコードされたトークン](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure Active Directory B2C のトークン リファレンス](active-directory-b2c-reference-tokens.md)でトークンの詳細について学習します。
+[Azure Active Directory B2C のトークン リファレンス](tokens-overview.md)でトークンの詳細について学習します。

@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple データ マネージャーの UI | Microsoft Docs
+title: Microsoft Azure StorSimple Data Manager の UI
 description: StorSimple Data Manager サービスの UI を使う方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796640"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273978"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
@@ -112,7 +104,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
    4. データ変換サービスは、スナップショットを使用して Azure にプッシュされたデータで機能します。 このジョブを実行するとき、ジョブを実行するたびに (最新のデータで機能する) バックアップを作成するように選択できます。また、クラウド内の既存のバックアップを使うこともできます (アーカイブされたデータで作業している場合)。
 
-   5. Click **OK**.
+   5. **[OK]** をクリックします。
 
       ![ソース データ リポジトリを構成する 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -129,7 +121,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
     
     1. **[Target repository]\(ターゲット リポジトリ\)** のドロップダウン リストから、作成したリポジトリをターゲットとして選びます。
 
-    2. ストレージの種類として、BLOB またはファイルを選びます。 変換後のデータが存在するストレージ コンテナーの名前を指定します。 Click **OK**.
+    2. ストレージの種類として、BLOB またはファイルを選びます。 変換後のデータが存在するストレージ コンテナーの名前を指定します。 **[OK]** をクリックします。
 
         ![ターゲット データ リポジトリのストレージ アカウントを構成する](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -160,6 +152,6 @@ StorSimple のデータを、ジョブ定義で指定したストレージ ア�
     ![ジョブの実行を開始する 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [.NET SDK を使用して StorSimple データ マネージャー ジョブを起動します](storsimple-data-manager-dotnet-jobs.md)。

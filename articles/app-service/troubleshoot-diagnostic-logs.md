@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684251"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121360"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -23,11 +23,11 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 >
 
-|種類|プラットフォーム|Location|説明|
+|種類|プラットフォーム|Location|[説明]|
 |-|-|-|-|
 | アプリケーションのログ記録 | Windows、Linux | App Service ファイル システムおよび Azure Storage BLOB | アプリケーションのコードによって生成されたメッセージがログに記録されます。 メッセージは、選択した Web フレームワークによって、またはお使いの言語の標準ログ パターンを使用してアプリケーションのコードから直接、生成できます。 各メッセージには、次のいずれかのカテゴリが割り当てられます: **重大**、**エラー**、**警告**、**情報**、**デバッグ**、**トレース**。 アプリケーションのログ記録を有効にするときに、重大度レベルを設定することにより、ログ記録の詳細さを指定できます。|
 | Web サーバーのログ記録| Windows | App Service ファイル システムまたは Azure Storage BLOB| [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)の生 HTTP 要求データ。 各ログ メッセージには、HTTP メソッド、リソース URI、クライアント IP、クライアント ポート、ユーザー エージェント、応答コードなどのデータが含まれます。 |
-| 詳細なエラー ログ記録 | Windows | App Service ファイル システム | クライアントのブラウザーに送信された *.htm* エラー ページのコピー。 セキュリティ上の理由から、詳細なエラー ページを運用環境のクライアントに送信することはできませんが、App Service では、HTTP コード 400 以上のアプリケーション エラーが発生するたびにエラー ページを保存できます。 ページには、サーバーによってエラー コードが返される理由を特定するのに役立つ情報が記録されている場合があります。 |
+| 詳細なエラー メッセージ| Windows | App Service ファイル システム | クライアントのブラウザーに送信された *.htm* エラー ページのコピー。 セキュリティ上の理由から、詳細なエラー ページを運用環境のクライアントに送信することはできませんが、App Service では、HTTP コード 400 以上のアプリケーション エラーが発生するたびにエラー ページを保存できます。 ページには、サーバーによってエラー コードが返される理由を特定するのに役立つ情報が記録されている場合があります。 |
 | 失敗した要求トレース | Windows | App Service ファイル システム | 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細なトレース情報。 これは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーを分離したりする場合に役立ちます。 失敗した要求ごとに 1 つのフォルダーが生成され、それには、XML ログ ファイルと、ログ ファイルを表示するための XSL スタイルシートが含まれます。 |
 | デプロイ ログ | Windows、Linux | App Service ファイル システム | アプリにコンテンツを発行するときのログ。 デプロイ ログの記録は自動的に行われ、デプロイ ログの構成可能な設定はありません。 デプロイが失敗した理由を判断するのに役立ちます。 たとえば、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。 |
 
@@ -61,9 +61,9 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 |-|-|
 |**Disabled** | なし |
 |**Error** | エラー、クリティカル |
-|**Warning** | 警告、エラー、クリティカル|
+|**警告** | 警告、エラー、クリティカル|
 |**情報** | 情報、警告、エラー、クリティカル|
-|**Verbose** | トレース、デバッグ、情報、警告、エラー、クリティカル (すべてのカテゴリ) |
+|**詳細** | トレース、デバッグ、情報、警告、エラー、クリティカル (すべてのカテゴリ) |
 
 終わったら、 **[保存]** を選択します。
 
@@ -105,9 +105,9 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 ## <a name="add-log-messages-in-code"></a>コードでログ メッセージを追加する
 
-アプリケーションのコードでは、通常のログ記録機能を使用して、ログ メッセージをアプリケーション ログに送信します。 例:
+アプリケーションのコードでは、通常のログ記録機能を使用して、ログ メッセージをアプリケーション ログに送信します。 次に例を示します。
 
-- ASP.NET アプリケーションは、 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例:
+- ASP.NET アプリケーションは、 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 次に例を示します。
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 例:
+特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 次に例を示します。
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 例:
+特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 次に例を示します。
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -163,7 +163,7 @@ Linux/コンテナー アプリの場合、ZIP ファイルには、Docker ホ�
 
 Windows アプリの場合、ZIP ファイルには、App Service ファイル システムの *D:\Home\LogFiles* ディレクトリの内容が含まれています。 その構造を次に示します。
 
-| ログのタイプ | Directory | 説明 |
+| ログのタイプ | ディレクトリ | [説明] |
 |-|-|-|
 | **アプリケーション ログ** |*/LogFiles/Application/* | 1 つ以上のテキスト ファイルが含まれます。 ログ メッセージの形式は、使用するログ プロバイダーによって異なります。 |
 | **失敗した要求のトレース** | */LogFiles/W3SVC#########/* | XML ファイルと XSL ファイルが含まれます。 書式設定された XML ファイルをブラウザーで表示できます。 |
@@ -182,7 +182,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
+| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | [説明] |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
 | AppServiceHTTPLogs | はい | はい | Web サーバー ログ |

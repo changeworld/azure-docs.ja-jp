@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659527"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841933"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-独自の JavaScript クライアント側コードを、Azure Active Directory B2C (Azure AD B2C) アプリケーションに追加できます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、[ページ レイアウト](page-layout.md)を選択して、要求内で [b2clogin.com](b2clogin.md) を使用します。 このアーティクルでは、カスタム ポリシー を変更してスクリプトの実行を有効にする方法について説明します。
+独自の JavaScript クライアント側コードを、Azure Active Directory B2C (Azure AD B2C) アプリケーションに追加できます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](custom-policy-overview.md)に要素を追加し、[ページ レイアウト](page-layout.md)を選択して、要求内で [b2clogin.com](b2clogin.md) を使用します。 このアーティクルでは、カスタム ポリシー を変更してスクリプトの実行を有効にする方法について説明します。
 
 > [!NOTE]
 > ユーザー フローに対して JavaScript を有効にする場合、「[Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン](user-flow-javascript-overview.md)」を参照してください。
@@ -151,4 +151,4 @@ function addTermsOfUseLink() {
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。
+アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](custom-policy-ui-customization.md)」を参照してください。

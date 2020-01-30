@@ -13,13 +13,12 @@ ms.date: 11/07/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3060f79f85db6504c38ba4fc6b7d3df97f0edb55
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9a9dda1bba4d587881d32d937fa0e20b68a5b383
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963564"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696572"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする
 
@@ -39,11 +38,11 @@ MSAL で v1.0 のリソースにアクセスすることもできます。 詳�
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Web API に対して特定のスコープを要求する
 
-アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、 *&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります
+アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、 *&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります。
 
-たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です
+たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です。
 
-または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です
+または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です。
 
 Microsoft Graph API の場合のみ、スコープの値 `user.read` は `https://graph.microsoft.com/User.Read` という形式にマップされ、区別なく使用できます。
 
@@ -80,7 +79,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 
 ## <a name="acquiring-tokens"></a>トークンの取得
 
-一般に、トークンを取得する方法は、パブリック クライアント アプリケーションか機密クライアント アプリケーションかによって決まります。
+一般に、トークンを取得する方法は、アプリケーションがパブリック クライアントか機密クライアントかによって決まります。
 
 ### <a name="public-client-applications"></a>パブリック クライアント アプリケーション
 
@@ -108,7 +107,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 - トークンが発行されたスコープ。
 - ユーザーの一意の ID。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 MSAL for Java を使用している場合、[MSAL for Java のカスタム トークン キャッシュのシリアル化](msal-java-token-cache-serialization.md)について学習してください。
 

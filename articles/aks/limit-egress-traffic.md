@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 01/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 208ffaa4c78e00031e41b6e2b8c01edb667b54a6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: df8b4d7ea44f885ee0fed0479ba87a4bc9ba1a29
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481157"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310171"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -55,6 +55,7 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 * API サーバーと通信する必要があるアプリがある場合は、TCP [IPAddrOfYourAPIServer]:443 が必要です。  この変更は、クラスターの作成後に設定できます。
 * トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000* と TCP ポート *22*。
     * より具体的な情報を得るには、次の表の * *.hcp.\<location\>.azmk8s.io* アドレスと * *.tun.\<location\>.azmk8s.io* アドレスを参照してください。
+* UDP ポート *123* ネットワーク タイム プロトコル (NTP) の時刻同期 (Linux ノード) 用です。
 * API サーバーに直接アクセスするポッドがある場合は、DNS に対する UDP ポート *53* も必要です。
 
 次の FQDN/アプリケーション規則が必要です。
@@ -73,7 +74,7 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
 | packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
 | acs-mirror.azureedge.net   | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
-- Azure China
+- Azure China 21Vianet
 
 | FQDN                       | Port      | 用途      |
 |----------------------------|-----------|----------|
@@ -142,7 +143,7 @@ Azure Dev Spaces が有効になっている AKS クラスターの場合、次�
 | cloudflare.docker.com | HTTPS: 443 | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
 | gcr.io | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 | storage.googleapis.com | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーの Azure Dev Spaces バックエンド サービスと通信するためのもの。 正確な FQDN は %USERPROFILE%\.azds\settings.json の "dataplaneFqdn" で確認できます |
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Policy (パブリック プレビュー) が有効な AKS クラスターに必要なアドレスとポート
 
@@ -155,8 +156,8 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
 | raw.githubusercontent.com | HTTPS: 443 | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
-| *.gk.<location>.azmk8s.io | HTTPS: 443 | Azure Policy アドオンは、マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得します。 |
-| dc.services.visualstudio.com | HTTPS: 443 | Azure Policy アドオンは、テレメトリ データを Application Insights エンドポイントに送信します。 |
+| *.gk.<location>.azmk8s.io | HTTPS: 443 | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
+| dc.services.visualstudio.com | HTTPS: 443 | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server ベースのノード (パブリック プレビュー) が有効な場合に必要
 
@@ -172,7 +173,7 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 | kms.core.windows.net | TCP: 1688 | Windows 関連のバイナリをインストールするため |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、クラスターのエグレス トラフィックを制限する場合に許可するポートとアドレスについて学習しました。 また、ポッド自体が通信する方法と、それらのクラスター内の制限を定義することもできます。 詳細については、[AKS のネットワーク ポリシーを使用したポッド間のトラフィックの保護][network-policy]に関する記事を参照してください。
 

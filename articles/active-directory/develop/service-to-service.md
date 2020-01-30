@@ -16,13 +16,12 @@ ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a94fcaffc190016a5377fe4b32484f84dc46ed25
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284913"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701503"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
@@ -70,7 +69,7 @@ ms.locfileid: "74284913"
 
 最初のアプリケーションは、認証コードを使用して JWT アクセス トークンを取得するときに、JWT 更新トークンも受信します。 アクセス トークンの有効期限が切れたときは、資格情報を要求しなくても、更新トークンを使用してユーザーを再認証できます。 この更新トークンがユーザーの認証に使用されると、新しいアクセス トークンと更新トークンが取得されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
 - Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

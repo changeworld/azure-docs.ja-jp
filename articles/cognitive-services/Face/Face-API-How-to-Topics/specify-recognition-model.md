@@ -1,7 +1,7 @@
 ---
-title: 認識モデルの指定方法 - Face API
+title: 認識モデルの指定方法 - Face
 titleSuffix: Azure Cognitive Services
-description: この記事では、Azure Face API アプリケーションで使用する認識モデルを選択する方法を示します。
+description: この記事では、Azure Face アプリケーションで使用する認識モデルを選択する方法を示します。
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771021"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166454"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
-このガイドでは、Azure Face API を使用した顔の検出、識別、および類似検索のための顔認識モデルを指定する方法を示します。
+このガイドでは、Azure Face サービスを使用した顔の検出、識別、および類似検索のための顔認識モデルを指定する方法を示します。
 
-Face API では、機械学習モデルを使用して、画像内の人間の顔に対して操作を実行します。 お客様からのフィードバックや研究の進展に基づいてモデル精度の改善を続けており、これらの改善をモデルの更新として提供します。 開発者には、使用する顔認識モデルのバージョンを指定する選択肢があり、ユースケースに最も適したモデルを選択できます。
+Face サービスでは、機械学習モデルを使用して、画像内の人間の顔に対して操作を実行します。 お客様からのフィードバックや研究の進展に基づいてモデル精度の改善を続けており、これらの改善をモデルの更新として提供します。 開発者には、使用する顔認識モデルのバージョンを指定する選択肢があり、ユースケースに最も適したモデルを選択できます。
 
 新しいユーザーは、最新のモデルを使用することをお勧めします。 以下、モデルの競合を回避しながら、さまざまな顔の操作でそれを指定する方法について説明します。 上級ユーザーであり、最新モデルに切り替えるべきかどうかわからない場合は、[さまざまなモデルを評価する](#evaluate-different-models)のセクションに進み、新しいモデルを評価したり、現在のデータ セットを使用して結果を比較したりしてください。
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
 
-Face API は画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、[Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
+Face サービスは画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、[Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
 
 **PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ([PersonGroup - Create] または [LargePersonGroup - Create]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
 
@@ -103,7 +103,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 信頼度しきい値 (顔を識別するために要求されるモデルの信頼度を決定する 0 ～ 1 の値) をいつも指定する場合、モデルごとに異なるしきい値を使用することが必要な場合があります。 あるモデルのしきい値を別のモデルと共有することは想定されておらず、共有しても同じ結果が得られるとは限りません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
 

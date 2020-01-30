@@ -14,13 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1a466902ccb47d57e5f9590ba94bf08c76ec5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918442"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698681"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -56,9 +55,9 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 **[名前識別子の形式の選択]** ドロップダウンで、次のオプションのいずれかを選択できます。
 
-| NameID の形式 | 説明 |
+| NameID の形式 | [説明] |
 |---------------|-------------|
-| **既定値** | Azure AD では、既定のソース形式が使用されます。 |
+| **[Default]** | Azure AD では、既定のソース形式が使用されます。 |
 | **永続的** | Azure AD では、NameID の形式として "永続的" が使用されます。 |
 | **EmailAddress** | Azure AD では、NameID の形式として "EmailAddress" が使用されます。 |
 | **未指定** | Azure AD では、NameID の形式として "未指定" が使用されます。 |
@@ -70,7 +69,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| 名前 | 説明 |
+| Name | [説明] |
 |------|-------------|
 | Email | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
@@ -100,7 +99,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 要求変換関数を使用することもできます。
 
-| Function | 説明 |
+| Function | [説明] |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
@@ -127,7 +126,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 次の関数を使用して、要求を変換できます。
 
-| Function | 説明 |
+| Function | [説明] |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 NameID 要求の変換では、結合は検証済みドメインに制限されます。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
@@ -177,7 +176,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 ![要求の条件付き構成](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD のアプリケーション管理](../manage-apps/what-is-application-management.md)
 * [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)

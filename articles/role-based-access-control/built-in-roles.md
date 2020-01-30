@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979321"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264256"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -48,6 +48,8 @@ ms.locfileid: "75979321"
 > | [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [App Configuration データ所有者](#app-configuration-data-owner) | App Configuration データへのフル アクセスを許可します。 | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [App Configuration データ閲覧者](#app-configuration-data-reader) | App Configuration データへの読み取りアクセスを許可します。 | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ ms.locfileid: "75979321"
 > | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Azure Connected Machine のオンボード](#azure-connected-machine-onboarding) | Azure Connected Machine をオンボードできます。 | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Azure Connected Machine のリソース管理者](#azure-connected-machine-resource-administrator) | Azure Connected Machine の読み取り、書き込み、削除、再オンボードを実行できます。 | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Azure Event Hubs データ所有者](#azure-event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure Event Hubs データ受信者](#azure-event-hubs-data-receiver) | Azure Event Hubs リソースへの受信アクセスを許可します。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure Event Hubs データ送信者](#azure-event-hubs-data-sender) | Azure Event Hubs リソースへの送信アクセスを許可します。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ ms.locfileid: "75979321"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="app-configuration-data-owner"></a>App Configuration データ所有者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | App Configuration データへのフル アクセスを許可します。 |
+> | **Id** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.AppConfiguration/configurationStores/*/read |  |
+> | Microsoft.AppConfiguration/configurationStores/*/write |  |
+> | Microsoft.AppConfiguration/configurationStores/*/delete |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="app-configuration-data-reader"></a>App Configuration データ閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | App Configuration データへの読み取りアクセスを許可します。 |
+> | **Id** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.AppConfiguration/configurationStores/*/read |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="application-insights-component-contributor"></a>Application Insights Component Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ ms.locfileid: "75979321"
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Azure Connected Machine のオンボード
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Connected Machine をオンボードできます。 |
+> | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **アクション** |  |
+> | Microsoft.HybridCompute/machines/read | Azure Arc マシンを読み取ります |
+> | Microsoft.HybridCompute/machines/write | Azure Arc マシンを書き込みます |
+> | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | ゲスト構成の割り当てを取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Azure Connected Machine のリソース管理者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Connected Machine の読み取り、書き込み、削除、再オンボードを実行できます。 |
+> | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **アクション** |  |
+> | Microsoft.HybridCompute/machines/read | Azure Arc マシンを読み取ります |
+> | Microsoft.HybridCompute/machines/write | Azure Arc マシンを書き込みます |
+> | Microsoft.HybridCompute/machines/delete | Azure Arc マシンを削除します |
+> | Microsoft.HybridCompute/machines/reconnect/action | Azure Arc マシンを再接続します |
+> | Microsoft.HybridCompute/*/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -821,7 +893,6 @@ ms.locfileid: "75979321"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | バックアップの管理に関連するメタ データの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | バックアップ ポリシーの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | バックアップできるアイテムの作成および管理 |
@@ -886,7 +957,6 @@ ms.locfileid: "75979321"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
@@ -952,7 +1022,6 @@ ms.locfileid: "75979321"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |

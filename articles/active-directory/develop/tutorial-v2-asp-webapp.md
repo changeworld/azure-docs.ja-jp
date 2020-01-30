@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423468"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701332"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -426,7 +425,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
-|プロパティ |値 |[説明] |
+|プロパティ |Value |[説明] |
 |---|---|---|
 |**Name** |ユーザーのフルネーム | ユーザーの姓と名
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されるユーザー名|

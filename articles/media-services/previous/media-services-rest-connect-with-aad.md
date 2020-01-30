@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 66c69552157df957e572a3af092131a3b7e560d5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871690"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774976"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
@@ -62,7 +62,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 Media Services API にアクセスするには、以下のデータ ポイントを収集する必要があります。
 
-|Setting|例|説明|
+|設定|例|[説明]|
 |---|-------|-----|
 |Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、<https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
 |REST API エンドポイント|<https://amshelloworld.restv2.westus.media.azure.net/api/>|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
@@ -180,7 +180,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 5. Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックします。
 6. 次のヘッダーを貼り付けます。
 
-        x-ms-version:2.15
+        x-ms-version:2.19
         Accept:application/json
         Content-Type:application/json
         DataServiceVersion:3.0
@@ -190,7 +190,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 返される応答には、アカウント内の資産が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Authentication for Azure Media Services Access: Both via REST API (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用)](https://github.com/willzhan/WAMSRESTSoln) のサンプル コードを試してください。
 * [.NET を使用したファイルのアップロード](media-services-dotnet-upload-files.md)

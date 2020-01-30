@@ -1,5 +1,5 @@
 ---
-title: PHP で Notification Hubs を使用する方法
+title: PHP から Azure Notification Hubs を使用する方法
 description: PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213174"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263848"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 
@@ -282,7 +282,7 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 
 ## <a name="next-steps"></a>次の手順
 
-このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 次は、以下を実行できます。
+このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 ここでは、次の操作を実行できます。
 
 * [PHP REST wrapper sample (PHP REST ラッパー サンプル)]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
 * 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。

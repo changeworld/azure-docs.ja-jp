@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231804"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704889"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>[Security info (preview)] (セキュリティ情報 (プレビュー)) ページからアプリ パスワードを作成する
 
@@ -83,6 +82,6 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 
 2. 確認ボックスで **[はい]** を選択して、**アプリ パスワード**を削除します。 アプリ パスワードを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
-## <a name="for-more-information"></a>BLOB の詳細
+## <a name="for-more-information"></a>詳細情報
 
 - **[セキュリティ情報]** ページとその設定方法の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。

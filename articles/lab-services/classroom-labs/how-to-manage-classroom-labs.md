@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606345"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264833"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -40,7 +40,7 @@ ms.locfileid: "73606345"
     4. ページに表示される **1 時間あたりの合計料金**を確認します。 
     6. **[保存]** を選択します。
 
-        ![[New Lab]\(新しいラボ\) ウィンドウ](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで、ラボ内のすべての VM 用の既定の資格情報を指定します。
     1. ラボ内のすべての VM に使う**ユーザーの名前**を指定します。
     2. ユーザーの**パスワード**を指定します。 
@@ -51,11 +51,11 @@ ms.locfileid: "73606345"
 
         教師は、ラボ内のすべての VM に同じパスワードを使用するか、学生に自分の VM のパスワードを設定させるかを選択できます。 既定では、この設定は、Ubuntu を除き、すべての Windows と Linux のイメージで有効になっています。 **Ubuntu** VM を選択すると、この設定は無効になり、初めてサインインしたときに、パスワードを設定するよう求めるプロンプトが学生に表示されます。  
 
-        ![[New Lab]\(新しいラボ\) ウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+        ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
         > [!IMPORTANT]
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。    
     4. 次に、 **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで **[次へ]** を選択します。 
-5. **[Lab policies]\(ラボのポリシー\)** ページで、ラボに対してスケジュールされた時間外で各ユーザーに割り当てられる時間数を入力し ( **[quota for each user]\(各ユーザーのクォータ\)** )、 **[完了]** を選択します。 
+5. **[Lab policies]\(ラボのポリシー\)** ページで、ラボに対してスケジュールされた時間以外に各ユーザーに割り当てられる時間数を入力し ( **[Quota for each user]\(各ユーザーのクォータ\)** )、 **[完了]** を選択します。 
 
     ![[Quota for each user]\(各ユーザーのクォータ\)](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
 5. テンプレート VM の作成の状態を示す次の画面が表示されます。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
@@ -88,11 +88,11 @@ ms.locfileid: "73606345"
     
     1. ラボの容量 (ラボ内の VM の数) を変更するには、ツール バーの **[Lab capacity]\(ラボの容量\)** を選択します。
     2. すべての VM を一度に起動するには、ツール バーの **[Start all]\(すべて起動\)** を選択します。 
-    3. 特定の VM を起動するには、 **[状態]** の下向き矢印を選択し、 **[開始]** を選択します。 また、最初の列で VM を選択した後にツール バーの **[開始]** を選択して、VM を起動することもできます。                
+    3. 特定の VM を起動するには、 **[状態]** の下向き矢印を選択し、 **[開始]** を選択します。 また、最初の列で VM を選択した後にツール バーの **[Start]\(起動\)** を選択して、1 台の VM を起動することもできます。                
 
 ### <a name="vm-sizes"></a>VM サイズ  
 
-| Size | コア | RAM | 説明 | 
+| Size | コア | RAM | [説明] | 
 | ---- | ----- | --- | ----------- | 
 | Small | 2 | 3.5 GB | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
 | Medium | 4 | 7 GB | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 | 
@@ -101,6 +101,9 @@ ms.locfileid: "73606345"
 | Small GPU (視覚化) | 6 | 56 GB | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 | 
 | Small GPU (Compute) | 6 | 56 GB | このサイズは、人工知能やディープ ラーニング アプリケーションのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です。 | 
 | Medium GPU (視覚化) | 12 | 112 GB | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 | 
+
+> [!NOTE]
+> GPU イメージを含むラボを作成すると、Azure Lab Services によって必要な GPU ドライバーが自動的にインストールされ、構成されます。  
 
 ## <a name="view-all-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 1. [Azure Lab Services ポータル](https://labs.azure.com)に移動します。
@@ -128,8 +131,8 @@ ms.locfileid: "73606345"
 
 別のラボ アカウントに切り替えるには、ラボ アカウントの横にあるドロップダウンを選択し、他の ラボアカウントを選択します。 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
 - [ラボ所有者としてラボの使用を構成および制御する](how-to-configure-student-usage.md)

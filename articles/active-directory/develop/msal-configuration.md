@@ -13,13 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb44e078a3958a788d23356c970b62fd97cbf420
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424384"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696318"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -31,7 +30,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 ### <a name="general-settings"></a>全般設定
 
-| プロパティ | データ型 | 必須 | メモ |
+| プロパティ | データ型 | Required | メモ |
 |-----------|------------|-------------|-------|
 | `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
 | `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
@@ -102,7 +101,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="authority-properties"></a>機関のプロパティ
 
-| プロパティ | データ型  | 必須 | メモ |
+| プロパティ | データ型  | Required | メモ |
 |-----------|-------------|-----------|--------|
 | `type` | String | はい | ご利用のアプリがターゲットとする対象ユーザーまたはアカウントの種類をミラー化します。 指定できる値: `AAD`、`B2C` |
 | `audience` | Object | いいえ | Type=`AAD` の場合にのみ適用されます。 ご利用のアプリがターゲットとする ID を指定します。 ご利用のアプリの登録からの値を使用します |
@@ -111,7 +110,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="audience-properties"></a>対象ユーザーのプロパティ
 
-| プロパティ | データ型  | 必須 | メモ |
+| プロパティ | データ型  | Required | メモ |
 |-----------|-------------|------------|-------|
 | `type` | String | はい | ご利用のアプリでターゲットとする対象ユーザーを指定します。 指定できる値: `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
 | `tenant_id` | String | はい | `"type":"AzureADMyOrg"` の場合にのみ必要です。 他の `type` 値の場合は省略可能です。 これには、`contoso.com` などのテナント ドメインや、`72f988bf-86f1-41af-91ab-2d7cd011db46` などのテナント ID にすることができます |
@@ -139,7 +138,7 @@ Microsoft ID ブローカーと互換性のあるブローカー内リダイレ�
 
 HTTP タイムアウトのグローバル設定を構成します。次に例を示します。
 
-| プロパティ | データ型 | 必須 | メモ |
+| プロパティ | データ型 | Required | メモ |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | INT | いいえ | ミリ秒単位 |
 | `read_timeout` | INT | いいえ | ミリ秒単位 |
@@ -148,7 +147,7 @@ HTTP タイムアウトのグローバル設定を構成します。次に例を
 
 次のグローバル設定は、ログ記録用のものです。
 
-| プロパティ | データ型  | 必須 | メモ |
+| プロパティ | データ型  | Required | メモ |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | いいえ | 個人データを出力するかどうか |
 | `log_level`   | boolean | いいえ | どのログ メッセージを出力するか |

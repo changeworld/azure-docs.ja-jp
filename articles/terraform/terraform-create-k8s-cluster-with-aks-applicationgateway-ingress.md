@@ -3,12 +3,12 @@ title: チュートリアル - Azure Kubernetes Service で Application Gateway 
 description: Azure Kubernetes Service を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867396"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772868"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service で Application Gateway イングレス コントローラーを作成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "75867396"
     cd clouddrive
     ```
 
-1. `terraform-aks-k8s` という名前のディレクトリを作成します。
+1. `terraform-aks-appgw-ingress` という名前のディレクトリを作成します。
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/maste
     - `armAuth.secretJSON`:サービス プリンシパル シークレットの種類を選択した場合にのみ必要です (`armAuth.type` が `servicePrincipal` に設定されている場合)。
 
     重要事項:
-    - `identityResourceID` の値は terraform スクリプトで作成され、`echo "$(terraform output identity_client_id)"` を実行して確認できます。
-    - `identityClientID` の値は terraform スクリプトで作成され、`echo "$(terraform output identity_resource_id)"` を実行して確認できます。
+    - `identityResourceID` の値は terraform スクリプトで作成され、`echo "$(terraform output identity_resource_id)"` を実行して確認できます。
+    - `identityClientID` の値は terraform スクリプトで作成され、`echo "$(terraform output identity_client_id)"` を実行して確認できます。
     - `<resource-group>` の値は App Gateway のリソース グループです。
     - `<identity-name>` の値は作成された ID の名前です。
     - 特定のサブスクリプションのすべての ID は、`az identity list` を使用して一覧表示できます。

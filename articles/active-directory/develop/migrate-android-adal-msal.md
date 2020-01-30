@@ -13,13 +13,12 @@ ms.date: 09/6/2019
 ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0653eef585dd81d2e03585bf45b45ee9df9de292
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917253"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696709"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド
 
@@ -29,7 +28,7 @@ ms.locfileid: "74917253"
 
 ADAL は、Azure Active Directory v1.0 エンドポイントで動作します。 Microsoft Authentication Library (MSAL) は、以前は Azure Active Directory v2.0 エンドポイントと呼ばれていた、Microsoft ID プラットフォームと連動します。 Microsoft ID プラットフォームは、以下の点で Azure Active Directory v1.0 とは異なります。
 
-サポート:
+サポートするものは次のとおりです。
   - 組織 ID (Azure Active Directory)
   - Outlook.com、Xbox Live などの組織以外の ID
   - (B2C のみ) Google、Facebook、Twitter、Amazon とのフェデレーション ログイン
@@ -128,7 +127,7 @@ MSAL には、機関の検証を有効または無効にするフラグがあり
 
 Microsoft では知られておらず、構成に含まれていない機関を使用しようとすると、`UnknownAuthorityException` が表示されます。
 
-### <a name="logging"></a>ログの記録
+### <a name="logging"></a>ログ記録
 次のように、宣言によってログ記録を構成の一部として構成できるようになりました。
 
  ```
@@ -241,7 +240,7 @@ MSAL には、例外の階層があり、それぞれに関連する特定のエ
 
 MSAL 例外のリスト
 
-|例外  | 説明  |
+|例外  | [説明]  |
 |---------|---------|
 | `MsalException`     | MSAL によってスローされた既定のチェック例外。  |
 | `MsalClientException`     | エラーがクライアント側である場合にスローされます。 |

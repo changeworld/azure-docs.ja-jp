@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99eb1581c03732691af5eaf9f482ca4ba0605863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471137"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765420"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
 このテンプレートを使用すれば、ストレージ アカウントと App Service プランをデプロイできますが、さらに Web サイトを追加してみましょう。 作成済みのテンプレートを使用すれば、リソースのデプロイに必要な JSON をすばやく見つけることができます。
 
@@ -45,7 +45,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 クイックスタート テンプレートを既存のテンプレートにマージします。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
 Web アプリ名は、Azure 全体で一意であることが必要です。 名前の重複を防ぐために、**webAppPortalName** 変数は **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** から **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** に更新しました。
 

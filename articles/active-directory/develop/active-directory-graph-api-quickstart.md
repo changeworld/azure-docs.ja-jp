@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4baee8186894e985143b7d68d3c4a9ec34b55b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845129"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698936"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 
@@ -84,7 +83,7 @@ Azure AD Graph Explorer の次の機能と制限事項に注意してくださ�
 
 **アクセス トークンを取得する**:Azure AD Graph にアクセスするには、クライアントの Azure AD に対する認証が成功している必要があります。 詳細については、[Azure AD の認証シナリオ](v1-authentication-scenarios.md)に関するページを参照してください。
 
-**クエリを構成して実行する**:次の手順を完了します。
+**クエリを構成して実行する**:次の手順を実行します。
 
 1. Fiddler Web Debugger を開き、 **[Composer]** タブに切り替えます。
 2. 新しいセキュリティ グループを作成するため、プルダウン メニューから HTTP メソッドとして **[Post]** を選択します。 グループ オブジェクトに対する操作とアクセス許可の詳細については、[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)の [Group](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) に関するセクションを参照してください。
@@ -119,7 +118,7 @@ Azure AD Graph Explorer の次の機能と制限事項に注意してくださ�
 
 Graph によって公開される Azure AD エンティティと型の詳細と、それらに対して Graph を使用して実行できる操作に関する情報については、[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 * [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)

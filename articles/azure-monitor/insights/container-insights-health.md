@@ -3,12 +3,12 @@ title: Azure Monitor for containers を使用して Kubernetes クラスター�
 description: この記事では、Azure Monitor for containers を使用して、AKS クラスターと非 AKS クラスターの正常性を表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405090"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843992"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターの正常性を把握する
 
@@ -23,7 +23,7 @@ Azure Monitor for containers を有効にする方法については、[Azure Mo
 >[!NOTE]
 >AKS エンジン クラスターをサポートするには、次の条件が満たされていることを確認してください。
 >- 最新バージョンの [HELM クライアント](https://helm.sh/docs/using_helm/)を使用している。
->- コンテナー化されたエージェントのバージョンが *microsoft/oms:ciprod11012019* である。 エージェントをアップグレードするには、[Kubernetes クラスターでのエージェントのアップグレード](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)に関するページを参照してください。
+>- コンテナー化されたエージェントのバージョンが *microsoft/oms:ciprod11012019* である。 エージェントをアップグレードするには、[Kubernetes クラスターでのエージェントのアップグレード](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)に関するページを参照してください。
 >
 
 ## <a name="overview"></a>概要
@@ -63,7 +63,7 @@ Azure Monitor for containers の正常性機能をサポートする各モニタ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com) にサインインする 
+[Azure portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS または非 AKS クラスターの正常性を表示する
 

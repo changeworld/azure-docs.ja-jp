@@ -4,12 +4,12 @@ description: Ansible を使用して Azure Kubernetes Service (AKS) クラスタ
 keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コンテナー, aks, kubernetes, azure active directory, rbac
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156873"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836968"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>チュートリアル:Ansible を使用して Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) ロールを構成する
 
@@ -46,11 +46,11 @@ Azure テナント管理者に問い合わせて、次の値を取得します�
 
 これらの値は、サンプルのプレイブックを実行するために必要です。  
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 このセクションでは、[Azure AD アプリケーション](#configure-azure-ad-for-aks-authentication)を使用して AKS を作成します。
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - このプレイブックは `~/.ssh/id_rsa.pub` から `ssh_key` を読み込みます。 これを変更する場合は、"ssh-rsa" (引用符は除く) で始まる単一行形式を使用してください。
 - `client_id` および `client_secret` の値は、既定の資格情報ファイルである `~/.azure/credentials` から読み込まれます。 これらの値をサービス プリンシパルに設定するか、環境変数からこれらの値を読み込むことができます。
@@ -119,7 +119,7 @@ Azure テナント管理者に問い合わせて、次の値を取得します�
 
 RBAC のバインドを作成するには、まず Azure AD オブジェクト ID を取得する必要があります。 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. ページの上部にある検索フィールドに、`Azure Active Directory` と入力します。 
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-`&lt;your-aad-account>` プレースホルダーは、お使いの Azure AD テナント [オブジェクト ID](#get-the-azure-ad-object-id) に置き換えます。
+`<your-aad-account>` プレースホルダーは、お使いの Azure AD テナント [オブジェクト ID](#get-the-azure-ad-object-id) に置き換えます。
 
 新しいロールを AKS にデプロイする次のプレイブックを `aks-kube-deploy.yml` という名前で保存します。
 
@@ -233,7 +233,7 @@ aks-nodepool1-33413200-1   Ready    agent   49m   v1.12.6
 aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -263,7 +263,7 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure 上の Ansible](/azure/ansible/)

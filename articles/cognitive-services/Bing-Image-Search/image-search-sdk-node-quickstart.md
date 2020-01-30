@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 01/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e41c3409ac5b81fe9e099ab34abd7256ef39d330
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd81942832e598319261829e67fd0b8f1704fc99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930587"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716206"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>クイック スタート:Bing Image Search SDK for Node.js を使用してイメージを検索する
 
@@ -26,8 +26,8 @@ ms.locfileid: "74930587"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js 用の Cognitive Services Image Search SDK](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
-    * `npm install azure-cognitiveservices-imagesearch` を使用してインストールする
+* [Node.js 用の Cognitive Services Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+    * `npm install @azure/cognitiveservices-imagesearch` を使用してインストールする
 * [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) モジュール
     * `npm install ms-rest-azure` を使用してインストールする
 
@@ -39,11 +39,11 @@ ms.locfileid: "74930587"
 
     ```javascript
     'use strict';
-    const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
+    const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     ```
 
-2. プロジェクトの main メソッドでは、有効なサブスクリプション キー、Bing で返す必要のあるイメージの結果、および検索語句の変数を作成します。 その後、キーを使用してイメージ検索クライアントをインスタンス化します。
+2. プロジェクトの main メソッドでは、有効なサブスクリプション キー、Bing で返す必要のある画像の結果、および検索語句の変数を作成します。 その後、キーを使用して画像検索クライアントをインスタンス化します。
 
     ```javascript
     //replace this value with your valid subscription key.
@@ -52,7 +52,7 @@ ms.locfileid: "74930587"
     //the search term for the request
     let searchTerm = "canadian rockies";
 
-    //instantiate the image search client 
+    //instantiate the image search client
     let credentials = new CognitiveServicesCredentials(serviceKey);
     let imageSearchApiClient = new ImageSearchAPIClient(credentials);
 
@@ -60,7 +60,7 @@ ms.locfileid: "74930587"
 
 ## <a name="create-an-asynchronous-helper-function"></a>非同期ヘルパー関数を作成する
 
-1. クライアントを非同期に呼び出す関数を作成し、Bing Image Search サービスから応答を返します。  
+1. クライアントを非同期に呼び出す関数を作成し、Bing Image Search サービスから応答を返します。
     ```javascript
     //a helper function to perform an async call to the Bing Image Search API
     const sendQuery = async () => {
@@ -71,7 +71,7 @@ ms.locfileid: "74930587"
 
 1. ヘルパー関数を呼び出して `promise` を処理し、応答で返されたイメージの結果を解析します。
 
-    応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。  
+    応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。
     ```javascript
     sendQuery().then(imageResults => {
         if (imageResults == null) {
@@ -91,15 +91,15 @@ ms.locfileid: "74930587"
       .catch(err => console.error(err))
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Image Search の単一ページ アプリのチュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure Cognitive Services SDK の Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278943"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156082"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>セキュリティ キーを検証方法として設定する
 
@@ -25,8 +25,21 @@ ms.locfileid: "74278943"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
+>[!Note]
+> セキュリティ キー オプションが表示されない場合、検証に電話呼び出しを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、組織のヘルプ デスクに連絡して、さらに支援を依頼する必要があります。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>セキュリティ認証とパスワードのリセット認証
+
+セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
+
+| 方法 | 使用目的 |
+| ------ | -------- |
+| Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
+| テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
+| 電話 | 2 要素認証とパスワードのリセット認証。 |
+| セキュリティ キー | 2 要素認証とパスワードのリセット認証。 |
+| 電子メール アカウント | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
+| セキュリティの質問 | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
 
 ## <a name="what-is-a-security-key"></a>セキュリティ キーとは
 
@@ -148,7 +161,7 @@ ms.locfileid: "74278943"
 
 セキュリティ キーを登録するには、少なくとも 1 つの追加のセキュリティ検証方法を登録しておく必要があります。 詳細については、[概要](security-info-add-update-methods-overview.md)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - パスワードなしの検証方法の詳細については、[Microsoft の Azure AD での FIDO2 セキュリティ キーのパブリック プレビューの開始 (パスワードなしのログインの有効化)](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) に関するブログ、または「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」および [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を参照してください。
 
@@ -156,4 +169,4 @@ ms.locfileid: "74278943"
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52eb4eb5958357a90c1db773f45c9928e4652755
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917507"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696879"
 ---
 # <a name="configure-keychain"></a>キーチェーンの構成
 
@@ -105,10 +104,10 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 エラー -34018 は通常、キーチェーンが正しく構成されていないことを意味します。 MSAL で構成されているキーチェーン アクセス グループが、エンタイトルメントで構成されているものと一致していることを確認します。
 
-## <a name="ensure-your-application-is-properly-signed"></a>アプリケーションが正しく署名されていることを確認する
+## <a name="ensure-your-application-is-properly-signed"></a>アプリケーションが正しく署名されていることを確認します。
 
 macOS では、アプリケーションは開発者が署名していない場合でも実行できます。 MSAL の機能のほとんどは引き続き動作しますが、キーチェーン アクセスを使用した SSO では、アプリケーションへの署名が必要になります。 複数のキーチェーン プロンプトが発生している場合は、アプリケーションの署名が有効であることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 キーチェーン アクセス グループの詳細については、Apple の記事「[Sharing Access to Keychain Items Among a Collection of Apps](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)」を参照してください。

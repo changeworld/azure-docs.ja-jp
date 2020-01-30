@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 11/12/2019
+ms.date: 1/14/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092237"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122459"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -31,6 +31,13 @@ ms.locfileid: "74092237"
 ![SQL Data Warehouse のバージョン](./media/release-notes/t47-1-version.png)
 
 示されたバージョンを使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
+
+## <a name="january-2020"></a>2020 年 1 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**ワークロード管理ポータル メトリック (プレビュー)**|10 月にプレビューでリリースされた[ワークロードの分離](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation)により、ユーザーは独自の[ワークロード グループ](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)を作成してシステム リソースを効率的に管理し、ビジネス SLA を確実に満たすことができます。  Azure Synapse Analytics の全体的な[ワークロード管理](/azure/sql-data-warehouse/sql-data-warehouse-workload-management)拡張機能の一部として、新しい[ワークロード管理の監視メトリック](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor)が使用できるようになりました。</br> </br> ワークロードの監視では、次のメトリックを使用してより多くの分析情報を得ることができるようになりました。 </br> - 有効な上限リソース割合  </br> - 有効な最小リソース割合 </br> - ワークロード グループのアクティブなクエリ </br> - 最大リソース割合別のワークロード グループの割り当て </br> - システム割合別のワークロード グループの割り当て </br> - ワークロード グループのクエリのタイムアウト </br> - ワークロード グループのキューに登録されたクエリ </br></br> これらのメトリックを使用して、[ワークロード グループのボトルネック](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck)または[使用率が低いワークロードの分離](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)で構成されているワークロード グループを特定します。  これらのメトリックは、ワークロード グループ別の分割を可能にする Azure Portal で使用できます。  お気に入りのグラフをフィルター処理してダッシュボードにピン留めすることで、分析情報にすばやくアクセスできます。|
+|**ポータル監視メトリック**| クエリ全体の利用状況を監視するために、次のメトリックがポータルに追加されました。 </br> - アクティブなクエリ </br> - キューに置かれたクエリ </br> </br>これらのメトリックについては、既存のメトリックと共に[リソース使用率とクエリ アクティビティの監視に関するドキュメント](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)に詳しく記載されています。|
 
 ## <a name="october-2019"></a>2019 年 10 月
 
@@ -142,7 +149,7 @@ ms.locfileid: "74092237"
 |**重要なバグ**|DW2000 以降のデータ ウェアハウスでの小さいリソース クラスにおける Parquet に対する CETAS のエラー - この修正により、Create External Table As 内での Parquet コード パスに対する null 参照が正しく識別されます。<br/><br/>一部の CTAS 操作で ID 列の値が失われることがある - 別のテーブルへの CTAS を行うと、ID 列の値が維持されない場合があります。 [ブログ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)で報告。<br/><br/>クエリがまだ実行している間にセッションが終了されたときに発生する場合がある内部エラー - この修正では、クエリがまだ実行している間にセッションが終了されると、InvalidOperationException がトリガーされます。<br/><br/>(2018 年 11 月に配置) 顧客が Polybase を使用して複数の小さなファイルを ADLS (Gen1) からの読み込もうとしたときに、パフォーマンスは十分に最適ではありませんでした。 - AAD セキュリティ トークンの検証中のシステムのパフォーマンスがボトルネックでした。 セキュリティ トークンのキャッシュを有効にすると、パフォーマンスの問題は軽減されました。 |
 | | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SQL Data Warehouse の作成](./create-data-warehouse-portal.md)
 

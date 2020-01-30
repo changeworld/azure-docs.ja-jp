@@ -3,23 +3,21 @@ title: Azure トラフィック分析 | Microsoft Docs
 description: トラフィック分析を使用して、Azure ネットワーク セキュリティ グループ フロー ログを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907141"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840589"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -125,7 +123,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 |デプロイメント モデル   | Role                   |
 |---------          |---------               |
-|リソース マネージャー   | Owner                  |
+|リソース マネージャー   | 所有者                  |
 |                   | Contributor            |
 |                   | Reader                 |
 |                   | Network Contributor    |
@@ -200,7 +198,7 @@ New-AzStorageAccount `
 
     ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。 NSG ごとに異なる処理間隔を設定した場合、データは異なる間隔で収集されます。 例: 重大な VNET には 10 分、重要でない VNET には 1 時間の処理間隔を有効にするように選択できます。
+トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。 NSG ごとに異なる処理間隔を設定した場合、データは異なる間隔で収集されます。 次に例を示します。重大な VNET には 10 分、重要でない VNET には 1 時間の処理間隔を有効にするように選択できます。
 
 また、Azure PowerShell で [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
@@ -386,7 +384,7 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
 
 よく寄せられる質問とその回答については、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 - Traffic Analytics のスキーマと処理の詳細について学ぶには、「[Traffic Analytics のスキーマ](traffic-analytics-schema.md)」を参照してください。

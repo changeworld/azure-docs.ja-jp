@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d421de69f856790b89c866a6c8b7221e9214aef4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773004"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761416"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,19 +39,19 @@ ms.locfileid: "75773004"
 
 このプロジェクトのスケルトンとして機能するコードを追加しましょう。 `recognizeIntent()` という非同期メソッドを作成済みであることを確認します。
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,73-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,72-80)]
 
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
-`IntentRecognizer` オブジェクトを初期化する前に、LUIS 予測リソース用のキーとリージョンを使用する構成を作成する必要があります。 
+`IntentRecognizer` オブジェクトを初期化する前に、LUIS 予測リソース用のキーとリージョンを使用する構成を作成する必要があります。
 
 > [!IMPORTANT]
-> スターター キーとオーサリング キーは機能しません。 前の手順で作成した予測キーと場所を使用する必要があります。 詳細については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。 
+> スターター キーとオーサリング キーは機能しません。 前の手順で作成した予測キーと場所を使用する必要があります。 詳細については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 このコードを `recognizeIntent()` メソッドに挿入します。 次の値を必ず更新してください。
 
-* `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。 
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 
+* `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
@@ -70,14 +70,14 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と意図を追加する
 
-`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。 
+`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。
 
-次のコードを `IntentRecognizer` の下に挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。 
+次のコードを `IntentRecognizer` の下に挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。
 
 >[!TIP]
 > この値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-34)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 
@@ -85,7 +85,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 次のコードをモデルの下に挿入します。
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=43)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>認識結果 (またはエラー) を表示する
 
@@ -93,7 +93,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 次のコードを `auto result = recognizer->RecognizeOnceAsync().get();` の下に挿入します。
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=47-72)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=46-71)]
 
 ## <a name="check-your-code"></a>コードを確認する
 
@@ -102,7 +102,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 > [!NOTE]
 > このバージョンにはいくつかのコメントを追加してあります。
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-79)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

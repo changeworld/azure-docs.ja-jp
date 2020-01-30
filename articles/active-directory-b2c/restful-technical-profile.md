@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263372"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840283"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -119,9 +119,9 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
@@ -148,7 +148,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Basic` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
@@ -173,7 +173,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `ClientCertificate` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
@@ -194,7 +194,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Bearer` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | いいえ | OAuth 2.0 ベアラー トークン。 |
 
@@ -217,7 +217,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は次の属性を持つ HTTP 409 エラー メッセージ (応答ステータスコードの競合) を返すことになります。
 
-| Attribute | 必須 | [説明] |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 |
 | status | はい | 409 |
@@ -260,7 +260,7 @@ public class ResponseContent
 
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md)
-- [HTTP 基本認証を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [クライアント証明書を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください
+- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](rest-api-claims-exchange-dotnet.md)
+- [HTTP 基本認証を使用して RESTful サービスを保護する](secure-rest-api-dotnet-basic-auth.md)
+- [クライアント証明書を使用して RESTful サービスを保護する](secure-rest-api-dotnet-certificate-auth.md)
+- [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)」をご覧ください

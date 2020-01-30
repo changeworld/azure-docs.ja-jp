@@ -1,0 +1,93 @@
+---
+title: データのインポート
+titleSuffix: Azure Machine Learning
+description: さまざまなデータ ソースから Azure Machine Learning デザイナーにデータをインポートする方法について説明します。
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: how-to
+author: peterclu
+ms.author: peterlu
+ms.date: 01/16/2020
+ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314030"
+---
+# <a name="import-your-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーへデータをインポートする
+
+この記事では、デザイナーに独自のデータをインポートして、カスタム ソリューションを作成する方法について説明します。 デザイナーにデータをインポートするには、次の 2 つの方法があります。 
+
+* **Azure Machine Learning データセット** - Azure Machine Learning に[データセット](concept-data.md#datasets)を登録して、データを管理するのに役立つ高度な機能を有効にします。
+* **データのインポート モジュール** - [データのインポート](algorithm-module-reference/import-data.md) モジュールを使用して、オンライン データ ソースから直接データにアクセスします。
+
+## <a name="use-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用する
+
+Microsoft では、[データセット](concept-data.md#datasets) 使用して、デザイナーにデータをインポートすることをお勧めします。 データセットを登録すると、[バージョン管理と追跡](how-to-version-track-datasets.md)や[データ監視](how-to-monitor-datasets.md)などの高度なデータ機能を最大限に活用できます。
+
+### <a name="register-a-dataset"></a>データセットを登録する
+
+既存のデータセットは、[SDK を使用してプログラム](how-to-create-register-datasets.md#use-the-sdk)で登録することも、[Azure Machine Learning studio で視覚的](how-to-create-register-datasets.md#use-the-ui)に登録することもできます。
+
+また、任意のデザイナー モジュールの出力をデータセットとして登録することもできます。
+
+1. 登録するデータを出力するモジュールを選択します。
+
+1. [プロパティ] ウィンドウで、 **[出力]**  >  **[データセットの登録]** の順に選択します。
+
+    ![データセットの登録オプションに移動する方法を示すスクリーンショット](media/how-to-designer-import-data/register-dataset-designer.png)
+
+### <a name="use-a-dataset"></a>データセットを使用する
+
+登録したデータセットは、 **[データセット]**  >  **[マイ データセット]** にあるモジュール パレットからアクセスできます。 データセットを使用するには、パイプライン キャンバスにドラッグ アンド ドロップします。 次に、データセットの出力ポートをパレット内の他のモジュールに接続します。
+
+![デザイナー パレットに保存されているデータセットの場所を示すスクリーンショット](media/how-to-designer-import-data/use-datasets-designer.png)
+
+Machine Learning ワークスペースに登録されている[ファイル データセット](how-to-create-register-datasets.md#dataset-types)は、モジュール パレットに表示されます。 使用できるのは、デザイナーで作成されたデータセットだけではありません。
+
+> [!NOTE]
+> 現時点では、デザイナーでは[表形式データ](how-to-create-register-datasets.md#dataset-types)の処理のみがサポートされています。 [ファイル データセット](how-to-create-register-datasets.md#dataset-types)を使用する場合は、Python および R で使用可能な Azure Machine Learning SDK を使用します。
+
+## <a name="import-data-using-the-import-data-module"></a>データのインポート モジュールを使用してデータをインポートする
+
+データセットを使用してデータをインポートすることをお勧めしていますが、[[データのインポート]](algorithm-module-reference/import-data.md) モジュールを使用することもできます。 [データのインポート] モジュールは、Azure Machine Learning でのデータセットの登録をスキップし、[データストア](concept-data.md#datastores)または HTTP URL から直接データをインポートします。
+
+[データのインポート] モジュールの詳しい使用方法については、[データのインポートの参照ページ](algorithm-module-reference/import-data.md)を参照してください。
+
+
+## <a name="supported-sources"></a>サポートされているソース
+
+このセクションでは、デザイナーでサポートされているデータ ソースの一覧を示します。 データは、データストアまたは[表形式データセット](how-to-create-register-datasets.md#dataset-types)からデザイナーにインポートされます。
+
+### <a name="datastore-sources"></a>データストアのソース
+サポートされているデータストア ソースの一覧については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md#supported-data-storage-service-types)」を参照してください。
+
+### <a name="tabular-dataset-sources"></a>表形式データセットのソース
+
+デザイナーは、次のソースから作成された表形式データセットをサポートしています。
+ * 区切りファイル
+ * JSON ファイル
+ * Parquet ファイル
+ * SQL クエリ
+
+## <a name="data-types"></a>データ型
+
+デザイナーは、内部的に次のデータ型を認識します。
+
+* String
+* 整数
+* Decimal
+* Boolean
+* Date
+
+デザイナーは、内部データ型を使用してモジュール間でデータを渡します。 [データセットへの変換](algorithm-module-reference/convert-to-dataset.md)モジュールを使用して、データ テーブル形式にデータを明示的に変換できます。 内部形式以外の形式を受け取るどのモジュールでも、次のモジュールに渡す前に、サイレント モードでデータを変換します。
+
+## <a name="data-constraints"></a>データの制約
+
+デザイナーのモジュールは、コンピューティング先のサイズによって制限されます。 大規模なデータセットの場合は、より大きな Azure Machine Learning コンピューティング リソースを使用する必要があります。 Azure Machine Learning コンピューティングの詳細については、「[Azure Machine Learning でのコンピューティング先とは](concept-compute-target.md#azure-machine-learning-compute-managed)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+デザイナーの基本については、「[チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)」を参照してください。

@@ -4,28 +4,25 @@ description: Azure Firewall と統合して、App Service 環境内からの送�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 01/14/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687226"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513348"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
 App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
 
-ASE が持っている受信依存関係は複数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、「[App Service Environment の管理アドレス](https://docs.microsoft.com/azure/app-service/environment/management-addresses)」ドキュメントで公開されています。 その情報を使用してネットワーク セキュリティ グループ ルールを作成し、受信トラフィックをセキュリティで保護することができます。
+ASE の管理に使用される受信エンドポイントは多数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、「[App Service Environment の管理アドレス](https://docs.microsoft.com/azure/app-service/environment/management-addresses)」ドキュメントで公開されています。 また、AppServiceManagement という名前のサービス タグもあります。これをネットワーク セキュリティ グループ (NSG) と共に使用して、受信トラフィックをセキュリティで保護することができます。
 
-ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
+ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループを使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
 
 送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスの使用方法にあります。 Azure Firewall では、宛先の FQDN に基づいて送信 HTTP および HTTPS トラフィックを制限できます。  
-
-> [!NOTE]
-> 現時点では、送信接続を完全にロックダウンすることはできません。
 
 ## <a name="system-architecture"></a>システム アーキテクチャ
 
@@ -42,6 +39,12 @@ ASE との間のトラフィックは、次の規則に従っている必要が�
 
 ![ASE と Azure Firewall の接続フロー][5]
 
+## <a name="locking-down-inbound-management-traffic"></a>受信管理トラフィックをロックダウンする
+
+ASE サブネットに NSG がまだ割り当てられていない場合は、作成します。 NSG 内のポート 454、455 で AppServiceManagement という名前のサービス タグからのトラフィックを許可する最初のルールを設定します。 パブリック IP から ASE を管理するために必要なものは、これだけです。 サービス タグの背後にあるアドレスは、Azure App Service の管理にのみ使用されます。 これらの接続を通過する管理トラフィックは暗号化され、認証証明書によって保護されます。 このチャネルの一般的なトラフィックには、顧客が開始したコマンドや正常性プローブなどが含まれます。 
+
+新しいサブネットを使用してポータルで作成された ASE は、AppServiceManagement タグの許可規則を含む NSG を使用して作成されます。  
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>ASE に合わせて Azure Firewall を構成する 
 
 Azure Firewall を使用して既存の ASE からのエグレスをロックダウンする手順は次のとおりです。
@@ -51,14 +54,19 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
    ![サービス エンドポイントの選択][2]
   
 1. ASE が存在する VNet に AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/)」の指示に従って Azure Firewall を作成します。
+
 1. Azure Firewall UI の [ルール]、[アプリケーション ルール コレクション] から、[アプリケーション ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [FQDN タグ] セクションで、名前を指定し、[ソース アドレス] を「*」に設定して、FQDN タグとして App Service Environment と Windows Update を選択します。 
    
    ![アプリケーション ルールの追加][1]
    
-1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [ルール] セクションで、名前を指定し、 **[任意]** を選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」を設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [IP アドレス] の [ルール] セクションで、名前を指定し、プロトコルを **[任意]** 選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」に設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。 
 
    ![NTP ネットワーク ルールの追加][3]
+   
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [ルール] セクションの [サービス タグ] で、名前を入力し、プロトコルを **[任意]** に選択し、[ソース アドレス] に「*」を設定し、AzureMonitor のサービス タグを選択して、ポートを「80、443」に設定します。 このルールにより、システムは正常性とメトリックの情報を Azure Monitor に提供できるようにします。
 
+   ![NTP サービス タグ ネットワーク ルールの追加][6]
+   
 1. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0\.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
 
    ![ルート テーブルの作成][4]
@@ -82,7 +90,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 この Application Gateway の使用は、システムの構成方法の一例にすぎません。 このパスに従わなかった場合は、ASE サブネット ルート テーブルへのルートの追加が必要になります。その結果、Application Gateway に送信された応答トラフィックはそこに直接送られます。 
 
-## <a name="logging"></a>ログの記録 
+## <a name="logging"></a>ログ記録 
 
 Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログにログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Azure Monitor ログと統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ワークスペース ポータルの [ログ] を開き、次のようなクエリを入力します 
 
@@ -248,7 +256,25 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 
 ## <a name="us-gov-dependencies"></a>US Gov の依存関係
 
-US Gov については、ストレージ、SQL、およびイベント ハブのサービス エンドポイントを引き続き設定する必要があります。  このドキュメントで前述した手順に従って、Azure Firewall を使用することもできます。 独自のエグレス ファイアウォール デバイスを使用する必要がある場合は、エンドポイントは以下のとおりです。
+US Gov リージョンの ASE の場合は、このドキュメントの「[ASE に合わせて Azure Firewall を構成する](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)」の手順に従って、ASE で Azure Firewall を構成します。
+
+US Gov で Azure Firewall 以外のデバイスを使用する場合 
+
+* サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
+* FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
+* ワイルドカード HTTP/HTTPS エンドポイントは、いくつかの修飾子に基づき、ASE によって異なる依存関係になります。
+
+Linux は US Gov リージョンでは利用できないため、オプションの構成として記載されていません。
+
+#### <a name="service-endpoint-capable-dependencies"></a>サービス エンドポイント対応の依存関係 ####
+
+| エンドポイント |
+|----------|
+| Azure SQL |
+| Azure Storage |
+| Azure Event Hub |
+
+#### <a name="dependencies"></a>依存関係 ####
 
 | エンドポイント |
 |----------|
@@ -375,3 +401,4 @@ US Gov については、ストレージ、SQL、およびイベント ハブの
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
+[6]: ./media/firewall-integration/firewall-ntprule-monitor.png

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 11548ba180a2dd6541240431d670812448c502b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981578"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705345"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs との間でイベントを送受信する
 
@@ -42,7 +42,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
     Azure BLOB ストレージをチェックポイント ストアとして使用してイベントを受信するには、このパッケージをインストールします。
 
     ```cmd
-    pip install azure-eventhub-checkpointstoreblobaio
+    pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>送信イベント
@@ -86,11 +86,11 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 このクイックスタートでは、Azure Blob Storage をチェックポイント ストアとして使用します。 チェックポイント ストアは、チェックポイント (最後の読み取り位置) を保持するために使用されます。  
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage と BLOB コンテナーを作成する
-次の手順に従って、Azure Storage アカウントと BLOB コンテナーを作成します。
+次の手順に従って、Azure ストレージ アカウントを作成し、その中に BLOB コンテナーを作成します。
 
 1. [Azure ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [BLOB コンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [ストレージ アカウントへの接続文字列を取得します](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)。
+3. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     接続文字列とコンテナー名を書き留めておきます。 これらは、受信コードで使用します。
 

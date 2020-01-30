@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176063"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512853"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory アクセス パネルのデプロイを計画する
 
@@ -31,7 +31,7 @@ Azure AD アクセス パネルを使用すると、次のことができます�
 * 会社の Azure AD 接続されているすべてのリソース (アプリケーションなど) を検出してアクセスする
 * 新しいアプリとグループへのアクセスを要求する
 * 他のユーザーのためにこれらのリソースへのアクセスを管理する
-* パスワード リセットのセルフサービスと Azure Multi-Factor Authentication の設定を管理する
+* セルフサービス パスワード リセット と Azure Multi-Factor Authentication の設定を管理する
 * 各自のデバイスを管理する
 
 また、管理者が以下を管理できるようにします。
@@ -45,7 +45,7 @@ Azure AD アクセス パネルを使用すると、次のことができます�
 
 Azure AD アクセス パネルは、次のようにビジネスに役立ちます。
 
-**直感的なユーザー エクスペリエンスを提供**:アクセス パネルによって、Azure シングル サインオン (SSO) に接続されたすべてのアプリケーションに対して 1 つのプラットフォームが提供されます。 既存の設定や新しい機能 (グループ管理、パスワード リセットのセルフサービスなど) が追加されたときに、統合ポータルでそれらを見つけることができます。 直感的なエクスペリエンスなので、ユーザーはより迅速に作業に戻り、生産性を高め、さらにストレスを減らすことができます。
+**直感的なユーザー エクスペリエンスを提供**:アクセス パネルによって、Azure シングル サインオン (SSO) に接続されたすべてのアプリケーションに対して 1 つのプラットフォームが提供されます。 既存の設定や新しい機能 (グループ管理、セルフサービス パスワード リセット など) が追加されたときに、統合ポータルでそれらを見つけることができます。 直感的なエクスペリエンスなので、ユーザーはより迅速に作業に戻り、生産性を高め、さらにストレスを減らすことができます。
 
 **生産性の向上**:アクセス パネルのすべてのユーザー アプリケーションで SSO が有効です。 エンタープライズ アプリケーションと Office 365 全体で SSO を有効にして、追加のサインイン プロンプトを削減または排除することで、より優れたサインイン エクスペリエンスが実現します。 アクセス パネルでは、セルフサービスと動的なメンバーシップが使用され、ID システムの全体的なセキュリティが向上します。 これは、適切な担当者がアプリケーションへのアクセスを確実に管理することで実現します。 アクセス パネルは、すばやくリソースを見つけて仕事上のタスクを続行するための一貫したランディング ページとして機能します。
 
@@ -63,7 +63,7 @@ Azure AD アクセス パネルは、次のようにビジネスに役立ちま�
 
 * [グループベースのメンバーシップ](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [セルフサービスのパスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [セルフサービス パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -81,13 +81,13 @@ Azure AD アクセス パネルは、次のようにビジネスに役立ちま�
 
 次の表は、アクセス パネルのデプロイの主なユース ケースの概要です。
 
-| 領域| 説明 |
+| 領域| [説明] |
 | - | - |
-| Access| 企業ネットワーク内の会社および個人のデバイスからアクセス パネル ポータルにアクセスできます。 |
-|Access | 企業ネットワークの外部にある会社のデバイスからアクセス パネル ポータルにアクセスできます。 |
+| アクセス| 企業ネットワーク内の会社および個人のデバイスからアクセス パネル ポータルにアクセスできます。 |
+|アクセス | 企業ネットワークの外部にある会社のデバイスからアクセス パネル ポータルにアクセスできます。 |
 | 監査| 使用状況データは、少なくとも 29 日に一度、企業システムにダウンロードされます。 |
 | ガバナンス| Azure AD に接続済みのアプリケーションとグループへのユーザー割り当てのライフサイクルが定義され、監視されます。 |
-| セキュリティ| ユーザーとグループの割り当てによって、リソースへのアクセスが制御されます。 許可されているユーザーのみがリソース アクセスを管理できます。 |
+| Security| ユーザーとグループの割り当てによって、リソースへのアクセスが制御されます。 許可されているユーザーのみがリソース アクセスを管理できます。 |
 | パフォーマンス| アクセス割り当ての伝達タイムラインが文書化され、監視されます。 |
 | ユーザー エクスペリエンス| ユーザーはアクセス パネルの機能と使用方法を理解しています。|
 | ユーザー エクスペリエンス| ユーザーはアプリケーションとグループへの自分のアクセスを管理できます。|
@@ -105,7 +105,7 @@ Azure AD アクセス パネルは、次のようにビジネスに役立ちま�
    * Microsoft Office 365 統合
 
 1. セルフサービスのアプリ検出
-   * セルフサービスのパスワード リセット
+   * セルフサービス パスワード リセット
    * Multi-Factor Authentication の設定
    * デバイス管理
    * 使用条件
@@ -127,7 +127,7 @@ Azure AD アクセス パネルは、次のようにビジネスに役立ちま�
 | パイロット グループを決定する| 使用する Azure AD セキュリティ グループを特定し、すべてのパイロット メンバーがグループに属していることを確認します。 |
 | 運用環境で有効にするグループを決定する| 使用する Azure AD セキュリティ グループ、または Azure AD に同期されている Active Directory グループを特定します。 すべてのパイロット メンバーがグループに属していることを確認します。 |
 | ユーザーが特定の種類のアプリケーションに対して SSO を使用できるようにする| フェデレーション SSO、OAuth、パスワード SSO、アプリ プロキシ |
-| セルフサービスによるパスワードのリセットの使用をユーザーに許可する | はい |
+| セルフサービス パスワード リセット の使用をユーザーに許可する | はい |
 | Multi-Factor Authentication の使用をユーザーに許可する| はい |
 | 特定の種類のグループに対してセルフサービスによるグループの管理の使用をユーザーに許可する| セキュリティ グループ、Office 365 グループ |
 | セルフサービスによるアプリの管理の使用をユーザーに許可する| はい |
@@ -197,7 +197,7 @@ SaaS アプリケーションをデプロイおよび構成する方法の詳細
 
 * [Internet Explorer のグループ ポリシー](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [Internet Explorer 用の System Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Internet Explorer の Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 * [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
@@ -362,6 +362,6 @@ Azure Active Directory 内で必要なタスクを実行するには、最小限
 
 [ブラウザー拡張機能に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-access-panel-browser-extension)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Multi-Factor Authentication のデプロイを計画する](https://aka.ms/deploymentplans/mfa)

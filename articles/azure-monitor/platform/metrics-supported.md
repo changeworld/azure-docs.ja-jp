@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750394"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310783"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -195,7 +195,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
 |---|---|---|---|---|---|
 |送信されたジョブ|送信されたジョブ|Count|合計|送信されたジョブの数|Scenario、ClusterName|
-|ジョブが完了しました|ジョブが完了しました|Count|合計|完了したジョブの数|Scenario、ClusterName、ResultType|
+|ジョブが完了しました|完了したジョブ|Count|合計|完了したジョブの数|Scenario、ClusterName、ResultType|
 |ノード総数|ノード総数|Count|Average|ノードの合計数|Scenario、ClusterName|
 |アクティブなノード|アクティブなノード|Count|Average|実行中のノードの数|Scenario、ClusterName|
 |アイドル状態のノード|アイドル状態のノード|Count|Average|アイドル状態のノードの数|Scenario、ClusterName|
@@ -1294,9 +1294,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |完了した実行数|完了した実行数|Count|合計|このワークスペースに対して正常に完了した実行の数|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
 |開始した実行数|開始した実行数|Count|合計|このワークスペースに対して開始された実行数|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
 |失敗した実行|失敗した実行|Count|合計|このワークスペースに対して失敗した実行数|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|モデルの登録が成功しました|モデルの登録が成功しました|Count|合計|このワークスペースで成功したモデル登録の数|シナリオ|
-|モデルの登録が失敗しました|モデルの登録が失敗しました|Count|合計|このワークスペースで失敗したモデル登録の数|Scenario、StatusCode|
-|開始されたモデル デプロイ|開始されたモデル デプロイ|Count|合計|このワークスペースで開始されたモデル デプロイの数|シナリオ|
+|モデルの登録が成功しました|モデル登録成功|Count|合計|このワークスペースで成功したモデル登録の数|シナリオ|
+|モデルの登録が失敗しました|モデル登録失敗|Count|合計|このワークスペースで失敗したモデル登録の数|Scenario、StatusCode|
+|開始されたモデル デプロイ|モデル デプロイ開始|Count|合計|このワークスペースで開始されたモデル デプロイの数|シナリオ|
 |モデル デプロイが成功しました|モデル デプロイが成功しました|Count|合計|このワークスペースで成功したモデル デプロイの数|シナリオ|
 |モデル デプロイ失敗|モデル デプロイ失敗|Count|合計|このワークスペースで失敗したモデル デプロイの数|Scenario、StatusCode|
 |ノード総数|ノード総数|Count|Average|ノードの合計数。 この合計には、アクティブ ノード、アイドル状態のノード、使用できないノード、割り込まれたノード、終了中のノードなどが含まれます|Scenario、ClusterName|
@@ -1859,7 +1859,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |local_tempdb_usage_percent|ローカル tempdb の割合|Percent|Average|ローカル tempdb の割合。 データ ウェアハウスにのみ適用されます。|なし|
 |app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU。 サーバーレス データベースに適用されます。|なし|
 |app_cpu_percent|アプリ CPU の割合|Percent|Average|アプリ CPU の割合。 サーバーレス データベースに適用されます。|なし|
-|app_memory_percent|メモリの割合 (%)|Percent|Average|メモリの割合 (%)。 サーバーレス データベースに適用されます。|なし|
+|app_memory_percent|アプリ メモリの割合|Percent|Average|メモリの割合 (%)。 サーバーレス データベースに適用されます。|なし|
 |allocated_data_storage|割り当て済みのデータ領域|バイト|Average|割り当て済みのデータ ストレージ。 データ ウェアハウスには適用されません。|なし|
 |memory_usage_percent|メモリの割合|Percent|最大値|メモリの割合。 データ ウェアハウスにのみ適用されます。|なし|
 |full_backup_size_bytes|完全バックアップ ストレージ サイズ|バイト|最大値|累積的な完全バックアップ ストレージ サイズ。 仮想コア ベースのデータベースに適用されます。 ハイパースケール データベースには適用されません。|なし|

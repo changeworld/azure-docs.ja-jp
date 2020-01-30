@@ -1,5 +1,5 @@
 ---
-title: Media Services 動的暗号化を使用してコンテンツを保護する
+title: Media Services v3 動的暗号化を使用してコンテンツを保護する
 titleSuffix: Azure Media Services
 description: Azure Media Services での動的暗号化によるコンテンツ保護、ストリーミング プロトコル、および暗号化の種類について説明します。
 services: media-services
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977779"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313809"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
-Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。  
+Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。  
 
 Media Services v3 では、コンテンツ キーがストリーミング ロケーターに関連付けられています ([この例](protect-with-aes128.md)を参照)。 Media Services キー配信サービスを使用している場合は、Azure Media Services でコンテンツ キーを生成できます。 独自のキー配信サービスを使用している場合、または 2 つのデータセンターに同じコンテンツ キーが必要な高可用性シナリオに対応する必要がある場合は、コンテンツ キーを自分で生成する必要があります。
 
@@ -236,7 +236,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`:前のテンプレートと同じですが、Widevine でのみ使用されます。 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`:前のテンプレートと同じですが、FairPlay でのみ使用されます。  
 
-例:
+次に例を示します。
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
@@ -249,17 +249,17 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 > [!NOTE]
 > Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` エラーが発生する場合は、適切なストリーミング ポリシーを指定していることを確認してください。
 
-`_NOT_SPECIFIED_IN_URL`で終わるエラーが発生した場合は、URL に暗号化形式を指定したことを確認してください。 例: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
+`_NOT_SPECIFIED_IN_URL`で終わるエラーが発生した場合は、URL に暗号化形式を指定したことを確認してください。 たとえば `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` です。 「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [AES 暗号化で保護する](protect-with-aes128.md)
 * [DRM での保護](protect-with-drm.md)

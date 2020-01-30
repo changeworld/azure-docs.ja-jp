@@ -13,13 +13,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a3a1b424cdf3c1897efce36b4499de967f85bb1e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423400"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701214"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 

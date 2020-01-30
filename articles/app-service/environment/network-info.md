@@ -4,15 +4,15 @@ description: ASE のネットワーク トラフィックと、ASE でネット�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375017"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713199"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -88,7 +88,7 @@ ASE は、次のポートでインターネット アクセス可能なアドレ
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL、Windows 更新プログラム、Linux の依存関係、Azure サービス | 80/443 |
+| CRL、Windows 更新プログラム、Linux の依存関係、Azure サービス | 80/443 |
 | Azure SQL | 1433 | 
 | 監視 | 12000 |
 

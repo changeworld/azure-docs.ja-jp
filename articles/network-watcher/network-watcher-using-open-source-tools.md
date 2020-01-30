@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: このページでは、Network Watcher のパケット キャプチャ機能と CapAnalysis を使用して、VM の送受信トラフィックのパターンを視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277758"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840657"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
 
@@ -93,7 +90,7 @@ CapAnalysis には、パケット キャプチャ データを視覚化するた
 
 Network Watcher のパケット キャプチャ機能を使用すると、ネットワーク フォレンジクスを行うために必要なデータをキャプチャし、ネットワーク トラフィックに関する理解を深めることができます。 このシナリオでは、Network Watcher のパケット キャプチャとオープン ソースの視覚化ツールとを簡単に連携させる方法を紹介しました。 CapAnalysis などのオープン ソース ツールを使ってパケット キャプチャ データを視覚化することにより、ディープ パケット インスペクションを実行し、ネットワーク トラフィックにおける傾向をすばやく把握することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 NSG フロー ログについて詳しくは、[ネットワーク セキュリティ グループのフロー ログ](network-watcher-nsg-flow-logging-overview.md)に関するページをご覧ください。
 

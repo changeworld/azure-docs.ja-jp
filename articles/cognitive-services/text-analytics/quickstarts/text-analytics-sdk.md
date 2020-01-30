@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 41e6828f03533bfd239f6408a580150e614eb5e7
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+zone_pivot_groups: programming-languages-set-ten
+ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281168"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774097"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-v3"></a>クイック スタート:Text Analytics クライアント ライブラリ v3 を使用する
 

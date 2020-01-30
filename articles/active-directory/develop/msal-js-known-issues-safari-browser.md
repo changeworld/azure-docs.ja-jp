@@ -13,13 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1fda1471d629ab8d84d06a3cc5bcfae0a6d9ec5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: edb995e31c2872c1541e29fee09dd66aafc8f9e2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916334"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696114"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>Safari ブラウザーと MSAL.js に関する既知の問題 
 

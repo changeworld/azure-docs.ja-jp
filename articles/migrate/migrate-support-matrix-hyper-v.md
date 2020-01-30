@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 20bdbb16d2f0610f6519424141b09190eae3cc42
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028788"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154807"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -16,7 +16,7 @@ ms.locfileid: "76028788"
 
 ## <a name="overview"></a>概要
 
-この記事に従って Azure への移行についてオンプレミスのマシンを評価するには、Azure Migrate: Server Assessment ツールを Azure Migrate プロジェクトに追加します。 [Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。 このアプライアンスは、オンプレミスのマシンを継続的に検出し、構成およびパフォーマンス データを Azure に送信します。 マシンの検出後は、検出されたマシンをグループにまとめ、グループに対して評価を実行します。
+この記事に従って Azure への移行についてオンプレミスのマシンを評価するには、Azure Migrate: Server Assessment ツールを Azure Migrate プロジェクトに追加します。 [Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。 アプライアンスは、オンプレミス マシンを継続的に検出し、構成データとパフォーマンスデータを Azure に送信します。 マシンの検出後、検出されたマシンをグループにまとめ、グループの評価を実行します。
 
 
 ## <a name="limitations"></a>制限事項
@@ -67,6 +67,19 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443、5671、5672 で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
 **Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) と 5986 (HTTPS) で、Hyper-V VM の構成とパフォーマンスのメタデータをプルするための受信接続。
 
+## <a name="agent-based-dependency-visualization"></a>エージェントベースの依存関係の視覚化
+
+[依存関係の視覚化](concepts-dependency-visualization.md)は、評価および移行するマシン間の依存関係を視覚化するのに役立ちます。 エージェントベースの視覚化に関する要件と制限は、以下の表の通りです
+
+
+**要件** | **詳細**
+--- | ---
+**デプロイ** | 依存関係の視覚化をデプロイする前に、Azure Migrate:Server Assessment ツールプロジェクトに追加して、Azure Migrate プロジェクトを配置する必要があります。 オンプレミスのマシンを検出するには、Azure Migrate アプライアンスをセットアップした後、依存関係の視覚化をデプロイします。<br/><br/> 依存関係の視覚化は、Azure Government では使用できません。
+**サービス マップ** | エージェントベースの依存関係の視覚化では、[Azure Monitor ログ[で ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)Service Map](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ソリューションが使用されます。<br/><br/> デプロイするには、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けます。
+**Log Analytics ワークスペース** | ワークスペースは、Azure Migrate プロジェクトのサブスクリプションと同じサブスクリプションに含まれている必要があります。<br/><br/> Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンにあるワークスペースがサポートされます。<br/><br/>  また、ワークスペースは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)リージョンにある必要があります。<br/><br/> Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
+**料金** | Service Map ソリューションでは、最初の 180 日 (Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けた日から) に対して料金は発生しません。<br/><br/> 180 日が経過すると、Log Analytics の標準の料金が適用されます。<br/><br/> この関連付けられた Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、標準の Log Analytics 料金が発生します。<br/><br/> Azure Migrate プロジェクトを削除しても、ワークスペースが一緒に削除されることはありません。 プロジェクトが削除された後は、Service Map を無料で使用することはできず、Log Analytics ワークスペースの有料階層に応じて各ノードの料金が請求されます。
+**[エージェント]** | エージェントベースの依存関係の視覚化では、分析する各マシンに 2 つのエージェントをインストールする必要があります。<br/><br/> - [Microsoft Monitoring agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+**インターネット接続** | コンピューターがインターネットに接続されていない場合は、そのコンピューターに Log Analytics ゲートウェイをインストールする必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

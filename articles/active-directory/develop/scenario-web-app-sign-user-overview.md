@@ -14,15 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a53f88a97cdba8626c9d6c421093e4ec327e19
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961609"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701554"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>シナリオ: ユーザーをサインインさせる Web アプリ
+# <a name="scenario-web-app-that-signs-in-users"></a>シナリオ:ユーザーをサインインさせる Web アプリ
 
 Microsoft ID プラットフォームを使用してユーザーをサインインさせる Web アプリを構築するために必要なすべてのことについて説明します。
 
@@ -30,35 +29,35 @@ Microsoft ID プラットフォームを使用してユーザーをサインイ�
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ユーザーをサインインさせる最初のポータブル (ASP.NET Core) Web アプリを作成する場合は、このクイックスタートに従います。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
+> [クイック スタート: ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 既存の ASP.NET Web アプリケーションにサインインを追加する方法を理解したい場合は、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
+> [クイック スタート: ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 Java 開発者の方は、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
+> [クイック スタート: Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 Python を使用して開発する場合は、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Python Web アプリに Microsoft でサインインを追加する](quickstart-v2-python-webapp.md)
+> [クイック スタート: Python Web アプリに Microsoft でサインインを追加する](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -81,7 +80,7 @@ Web アプリでは、Web ブラウザーでユーザーを認証します。 �
 - アプリケーションのコードでは、Web アプリがサインインを委任する機関を指定する必要があります。 トークンの検証をカスタマイズする必要が生じる場合があります (パートナー シナリオでは特に)。
 - Web アプリケーションでは、さまざまなアカウントの種類をサポートしています。 詳細については、「[サポートされているアカウントの種類](v2-supported-account-types.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 

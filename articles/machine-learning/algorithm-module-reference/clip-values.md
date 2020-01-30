@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428586"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546828"
 ---
 # <a name="clip-values"></a>クリップの値
 
@@ -86,7 +86,7 @@ ms.locfileid: "75428586"
   
 1.  パイプラインを実行します。  
   
-    **[Clip Values]\(クリップ値\)** モジュールの出力を右クリックし、 **[視覚化]** を選択して値を確認し、クリップ操作が期待どおりであることを確認します。  
+    **[Clip Values]\(クリップ値\)** モジュールを右クリックしてから **[可視化]** またはモジュールを選択し、右側のパネルの **[出力]** タブに切り替え、 **[Port outputs]\(ポートの出力\)** のヒストグラム アイコンをクリックして値を確認し、クリップ操作が期待どおりであることを確認します。  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>パーセンタイルを使用したクリップの例
 

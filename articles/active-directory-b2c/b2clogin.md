@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75367656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836344"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -46,7 +46,7 @@ login.microsoftonline.com の廃止は、Azure Active Directory のテナント�
 
 * ID プロバイダーのアプリケーション内のリダイレクト URL を、*b2clogin.com* を参照するように変更します。
 * お使いの Azure AD B2C アプリケーションのユーザー フロー参照とトークン エンドポイントの参照で、*b2clogin.com* を使用するように更新します。
-* [ユーザー インターフェイスのカスタマイズ](active-directory-b2c-ui-customization-custom-dynamic.md)用に CORS の設定に定義されている**許可されたオリジン**を変更します。
+* [ユーザー インターフェイスのカスタマイズ](custom-policy-ui-customization-dynamic.md)用に CORS の設定に定義されている**許可されたオリジン**を変更します。
 
 ## <a name="change-identity-provider-redirect-urls"></a>ID プロバイダーのリダイレクト URL を変更する
 

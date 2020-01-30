@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5124712e4002c9a3a6740986cafc18c12dbb98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e40a03e70fa04855037165462761c56f13acc58
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921949"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695621"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET での Active Directory フェデレーション サービスのサポート
 Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」をご覧ください。
@@ -57,6 +56,6 @@ MSAL.NET では、Open ID Connect に準拠し、PKCE とスコープを認識�
 
  AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)を使用してください。 オンプレミス システムを AD FS 2019 にアップグレードすると、MSAL.NET を使用できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)」を参照してください。

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: c77e89c509f10155ddc27e92f09465959b629f67
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979196"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771897"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
 > [!NOTE]
-> 現時点では、この機能を使用するにはアクセスを要求する必要があります。 それを行うには、[cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com) にお問い合わせください。
+> 現時点では、この機能を使用するにはアクセスを要求する必要があります。 それを行うには、[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) にお問い合わせください。
 
 Azure Cosmos アカウントに格納されているデータは、自動的かつシームレスに暗号化されます。 Azure Cosmos DB には、保存データの暗号化に使用されるキーを管理するための次の 2 つのオプションが用意されています。
 

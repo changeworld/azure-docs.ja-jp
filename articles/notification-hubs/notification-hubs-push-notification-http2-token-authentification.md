@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs での APNS のトークンベース (HTTP/2) 認証 | Microsoft Docs
-description: このトピックでは、APNS の新しいトークン認証を使用する方法について説明します
+description: APNS の新しいトークン認証を使用する方法について説明します。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111946"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263814"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証
 
@@ -77,9 +77,9 @@ APNS の証明書の資格情報の使用から移行した場合、トークン
 
 * **キー ID**:Apple Developer ポータルで生成された秘密キーの識別子。たとえば、`2USFGKSKLT` です。
 * **チーム ID**:"プレフィックス" または "アプリのプレフィックス" とも呼ばれます。 これは、Apple Developer ポータルの組織の識別子です。たとえば、`S4V3D7CHJR` です。
-* **バンドル ID**:"アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.microsoft.nhubsample2019` です。 1 つのキーを複数のアプリで使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。
+* **[Bundle ID]\(バンドル ID\)** : "アプリ ID" とも呼ばれます。 これは、アプリケーションのバンドル識別子です。たとえば、`com.microsoft.nhubsample2019` です。 1 つのキーを複数のアプリで使用できることに注意してください。 この値は、通知の送信時に `apns-topic` HTTP ヘッダーにマップされ、特定のアプリケーションを対象とするために使用されます。
 * **トークン**:"キー" または "秘密キー" とも呼ばれます。 これは、Apple Developer ポータルで生成された .p8 ファイルから取得されます。 キーで APNS が有効になっている必要があります (キーの生成時に Apple Developer ポータルで選択されます)。 この値を NH ポータルや API に指定するときは、その値から PEM ヘッダー/フッターを削除する必要があります。
-* **エンドポイント**: これは、Notification Hubs ポータル ブレードのトグルであり、API の文字列フィールドです。 有効な値は、`https://api.push.apple.com` または `https://api.sandbox.push.apple.com` です。 Notification Hubs は、通知を送信するために、この値を運用またはサンドボックスのいずれかの環境で使用します。 これは、アプリの `aps-environment` エンタイトルメントと一致する必要があります。一致しないと、生成された APNS デバイス トークンが環境と一致せず、通知の送信に失敗します。
+* **エンドポイント**: これは、Notification Hubs ポータル ブレードのトグルであり、API の文字列フィールドです。 有効な値は `https://api.push.apple.com` または `https://api.sandbox.push.apple.com`です。 Notification Hubs は、通知を送信するために、この値を運用またはサンドボックスのいずれかの環境で使用します。 これは、アプリの `aps-environment` エンタイトルメントと一致する必要があります。一致しないと、生成された APNS デバイス トークンが環境と一致せず、通知の送信に失敗します。
 
 正しい使用法を示すコード サンプルを次に示します。
 
@@ -95,7 +95,7 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)
 * [Azure portal 内で通知ハブを構成する](create-notification-hub-portal.md)

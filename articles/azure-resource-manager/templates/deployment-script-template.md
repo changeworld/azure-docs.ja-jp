@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/22/2020
 ms.author: jgao
-ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 125fefbb1d83db8b6114b2d09f5bd6da885159ba
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981208"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547644"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -42,7 +42,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当てのマネージド ID**。 この ID は、デプロイ スクリプトの実行のために使用されます。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
+- **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当てのマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、[Azure portal を使用してユーザー割り当ての管理対象 ID を作成する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure CLI を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)、または [Azure PowerShell を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する記事を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -69,13 +69,13 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
   "apiVersion": "2019-10-01-preview",
   "name": "myDeploymentScript",
   "location": "[resourceGroup().location]",
+  "kind": "AzurePowerShell",
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
       "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID": {}
     }
   },
-  "kind": "AzurePowerShell",
   "properties": {
     "forceUpdateTag": 1,
     "azPowerShellVersion": "2.8",
@@ -105,11 +105,11 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 - **種類**:スクリプトの種類を指定します。 現在は、Azure PowerShell スクリプトのみがサポートされています。 値は **AzurePowerShell** です。
 - **forceUpdateTag**:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 パラメーターの defaultValue として設定する必要がある newGuid() 関数または utcNow() 関数を使用します。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
 - **azPowerShellVersion**:使用する Azure PowerShell モジュールのバージョンを指定します。 デプロイ スクリプトでは、現在バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。
-- **引数**:パラメーター値を指定します。 値はスペースで区切って指定します。
+- **引数**:パラメーター値を指定します。 値はスペースで区切ります。
 - **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
 - **primaryScriptUri**:サポートされている PowerShell ファイル拡張子を使用して、プライマリ powershell スクリプトへのパブリックにアクセス可能な URL を指定します。
 - **supportingScriptUris**:`ScriptContent` または `PrimaryScriptUri` で呼び出される powershell ファイルをサポートするには、パブリックにアクセス可能な URL の配列を指定します。
-- **タイムアウト**:[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されている、許容される最大のスクリプト実行時間を指定します。 既定値は **P1D** です。
+- **タイムアウト**:[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
 - **cleanupPreference**。 スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 - **retentionInterval**:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 既定値は 7 日を意味する **P1D** です。 このプロパティは、cleanupPreference が *OnExpiration* に設定されている場合に使用されます。 *OnExpiration* プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 

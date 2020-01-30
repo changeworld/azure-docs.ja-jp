@@ -1,25 +1,17 @@
 ---
-title: StorSimple サポート条件 | Microsoft Docs
+title: StorSimple サポート条件
 description: StorSimple 8000 シリーズ エンタープライズ ストレージのお客様のサポート オプションについて説明します。
-services: storsimple
-documentationcenter: NA
 author: GabiSocoteanu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990386"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277033"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 
@@ -45,7 +37,7 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
 | ヘルプデスク初回の応答時間。サポート チケットは、24 時間 365 日送信可能 <br> 初回の応答時間は、重大度に基く<sup>2 | 重要度 A:2 時間以内 <br> 重要度 B:4 時間以内 <br> 重要度 C:8 時間以内 | 重要度 A:60 分以内 <br> 重要度 B:2 時間以内 <br> 重要度 C:4 時間以内 |
 | 電話サポート (コールバック)                                                                               | ✓                                                                               | ✓                                                                              |
 | 高度なパーツ交換 (StorSimple 8000 シリーズのみ) <sup>3</sup>                                              | 翌営業日 <sup>4                                                              | 4 時間以内                                                                 |
-| オンサイト フィールド サービス エンジニア (StorSimple 8000 シリーズのみ) <sup>3</sup>                                         | 使用できません。                                                                   | 4 時間以内                                                                 |
+| オンサイト フィールド サービス エンジニア (StorSimple 8000 シリーズのみ) <sup>3</sup>                                         | 使用不可                                                                   | 4 時間以内                                                                 |
 | StorSimple Virtual Array <sup>5</sup>                                                                              | ✓                                                                               | ✓                                                                              |
 | StorSimple Virtual Array のインスタンス<sup>5</sup>                                                                 | 制限なし                                                                        | 制限なし                                                                       |
 
@@ -90,7 +82,7 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
 | **重大度** |**お客様の状況**                                                                                                                                | 弊社の対応<sup>2                                                                                       | お客様の対応                                                                                                                                                       |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A        | 事業に大きな影響が発生する場合: <ul> <br> <li> お客様の事業に大きな損失が発生し、サービスの質が大きく低下。 <sup>1</sup> <br> <li> 即時の対応が必要。                          | 初回の応答時間:<sup>1</sup> <ul><br> <li>Premium の場合、1 時間以内。 <br> <li> Standard の場合、2 時間以内。 <br> <li> 24 時間体制での対応。 | <ul><li> 24 時間体制を維持するための人的資源を確保。 <br> <li> 担当者に対する連絡手段の確保。                                                |
-| b        | 事業に部分的な影響が発生する場合: <ul><br> <li> お客様の事業に部分的な損失が発生し、サービスの質は低下するが、業務自体は不十分な状態ながら継続可能。 | 初回の応答時間:<sup>1</sup><ul><br> <li> Premium の場合、2 時間以内。 <br> <li> Standard の場合、4 時間以内。                                      | <ul><li> 営業時間中にお客様から解除の指示がない限り、24 時間体制を維持するための人的資源を確保。 <br> <li> 担当者に対する連絡手段の確保。 |
+| B        | 事業に部分的な影響が発生する場合: <ul><br> <li> お客様の事業に部分的な損失が発生し、サービスの質は低下するが、業務自体は不十分な状態ながら継続可能。 | 初回の応答時間:<sup>1</sup><ul><br> <li> Premium の場合、2 時間以内。 <br> <li> Standard の場合、4 時間以内。                                      | <ul><li> 営業時間中にお客様から解除の指示がない限り、24 時間体制を維持するための人的資源を確保。 <br> <li> 担当者に対する連絡手段の確保。 |
 | C        | 事業に軽微の影響が及ぶ場合: <ul><br> <li> お客様の事業は、サービスへの支障がわずかであるかまったくない状態で、実質的に業務が機能可能。                                 | 初回の応答時間:<sup>1</sup><ul> <br> <li> Premium の場合、4 時間以内。 <br> <li> Standard の場合、8 時間以内。                                      | <ul><li>担当者に対する連絡手段の確保。                                                                                                                                    |
  
 <sup>1 </sup> 問題の解決に必要なリソースや回答をご提供いただけない場合、マイクロソフトは重大度 A のケースに対する重大度を引き下げる場合があります。
@@ -121,7 +113,7 @@ StorSimple 8000 シリーズ ストレージ アレイのサポートは、StorS
 
 *<text> * Premium の範囲は、すべての場所で使用可能なわけではありません。StorSimple Premium サポートを購入する前に、地理的範囲について、Microsoft (SSSupOps\@microsoft.com) にお問い合わせください。*
 
-** *お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象である地域にデプロイする必要があります。*
+***お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象である地域にデプロイする必要があります。*
 
 
 ASAP+ のお客様は、Standard サポートが含まれるサブスクリプション モデルに切り替えることができます。 サブスクリプションの価格を確認するには、StorSimple 料金計算ツールを使用してください。何かご質問がありましたら、SSSupOps@microsoft.com までお問い合わせください。 切り替えは、ASAP+ からサブスクリプションへの 1 方向のみです。

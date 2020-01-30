@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608756"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155232"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -96,8 +96,8 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. *Azure Active Directory* を検索して選択します。 **[MFA サーバー]** を選択します。
-3. **[サーバーの設定]** を選択します。
+2. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[MFA]** の順に選択します。
+3. **[Manager MFA Server]\(MFA サーバーの管理\)** で、 **[サーバーの設定]** を選択します。
 4. **[ダウンロード]** をクリックし、ダウンロード ページの手順に従ってインストーラーを保存します。 
 
    ![Azure portal から MFA Server をダウンロードする](./media/howto-mfaserver-deploy/downloadportal.png)

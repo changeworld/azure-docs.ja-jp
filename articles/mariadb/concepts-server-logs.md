@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/21/2020
+ms.openlocfilehash: b38838c20e4ab18b64cabcb2749ec39163f1b52d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746659"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515056"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -42,6 +42,10 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 - **log_queries_not_using_indexes**: インデックスを使用していないクエリを slow_query_log に記録するかどうかを決定します。
 - **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 - **log_output**: "File" の場合、ローカル サーバー ストレージと Azure Monitor 診断ログの両方に低速クエリ ログの書き込みが許可されます。 "None" の場合、低速クエリ ログは Azure Monitor 診断ログのみに書き込まれます。 
+
+> [!IMPORTANT]
+> テーブルにインデックスが作成されていない場合は、`log_queries_not_using_indexes` パラメーターと `log_throttle_queries_not_using_indexes` パラメーターを ON に設定すると、インデックスが設定されていないテーブルに対して実行されるすべてのクエリが低速クエリ ログに書き込まれるため、MariaDB のパフォーマンスに影響する可能性があります。<br><br>
+> 低速クエリのログ記録を長時間にわたって行う場合は、`log_output` を "None" に設定することをお勧めします。 "File" に設定すると、これらのログはローカル サーバー ストレージに書き込まれ、MariaDB のパフォーマンスに影響を与える可能性があります。 
 
 低速クエリ ログのパラメーターの完全な説明については、MariaDB の[低速クエリ ログのドキュメント](https://mariadb.com/kb/en/library/slow-query-log-overview/)を参照してください。
 
@@ -81,5 +85,61 @@ Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます
 | `thread_id_s` | スレッド ID |
 | `\_ResourceId` | リソース URI |
 
-## <a name="next-steps"></a>次のステップ
-- [Azure portal からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-portal.md)
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを分析する
+
+低速クエリ ログが診断ログによって Azure Monitor ログにパイプされたら、低速クエリの詳細な分析を実行できます。 使用を開始する際に役立つサンプル クエリを以下にいくつか示します。 以下をサーバー名で更新してください。
+
+- 特定のサーバーで 10 秒を超えるクエリ
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- 特定のサーバーの長いクエリの上位 5 つを一覧表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- 特定のサーバーの低速クエリを最小値、最大値、平均値、および標準偏差のクエリ時間で示す概要
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- 特定のサーバーの低速クエリの分布をグラフ化する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- 診断ログが有効になっているすべての MariaDB サーバーで 10 秒以上のクエリを表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
+## <a name="next-steps"></a>次の手順
+- [Azure portal から低速クエリ ログを構成する方法](howto-configure-server-logs-portal.md)
+- [Azure CLI から低速クエリ ログを構成する方法](howto-configure-server-logs-cli.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490382"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548409"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -68,13 +68,12 @@ ms.locfileid: "73490382"
 
 モデルのトレーニング後、次の作業を行います。
 
-+ モデルのパラメーターと特徴の重みを表示するには、出力を右クリックして、 **[Visualize]\(可視化\)** を選択します。
-+ このモデルを他のパイプラインで使用するには、モデルを右クリックして **[Save Model]\(モデルの保存\)** を選択します。 モデルの名前を入力してください。 
 
-    モデルはスナップショットとして保存されます。パイプラインを繰り返し実行してもスナップショットは更新されません。
++ 他のパイプラインでモデルを使用するには、モジュールを選択し、右側のパネルの **[出力]** タブの下にある **[データセットの登録]** アイコンをクリックします。 保存したモデルは、モジュール パレットの **[データセット]** からアクセスできます。
+
 + 新しい値の予測にモデルを使用するには、それを新しい入力データと共に[モデルのスコア付け](./score-model.md)モジュールに接続します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

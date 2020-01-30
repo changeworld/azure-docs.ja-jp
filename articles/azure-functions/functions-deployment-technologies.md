@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921036"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714806"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -117,7 +117,7 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 >__使用方法:__ Premium プランまたは専用プランで Linux 関数アプリを作成し、実行元のコンテナー イメージを指定します。 次の 2 つの方法で行います。
 >
 >* Azure portal を使用して、Azure App Service プランで Linux 関数アプリを作成します。 **[発行]** で、 **[Docker イメージ]** を選択し、コンテナーを構成します。 イメージがホストされている場所を入力します。
->* Azure CLI を使用して、App Service プランで Linux 関数アプリを作成します。 作成方法については、「[カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md#create-a-premium-plan)」をご覧ください。
+>* Azure CLI を使用して、App Service プランで Linux 関数アプリを作成します。 作成方法については、「[カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)」をご覧ください。
 >
 >カスタム コンテナーを使用して既存のアプリにデプロイするには、[Azure Functions Core Tools](functions-run-local.md) で [`func deploy`](functions-run-local.md#publish) コマンドを使用します。
 

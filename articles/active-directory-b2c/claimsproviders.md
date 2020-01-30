@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511519"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836016"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -41,7 +41,7 @@ ms.locfileid: "66511519"
 
 **ClaimsProviders** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | さまざまなユーザー体験で活用できる認定クレーム プロバイダー。 |
 
@@ -49,10 +49,10 @@ ms.locfileid: "66511519"
 
 **ClaimsProvider** 要素には、以下の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | クレーム プロバイダーのドメイン名を含む文字列。 たとえば、クレーム プロバイダーが Facebook 技術プロファイルを含めている場合、ドメイン名は Facebook.com です。 このドメイン名は、技術プロファイルによってオーバーライドされない限り、クレーム プロバイダーで定義されているすべての技術プロファイルに使用されます。 ドメイン名も **domain_hint** で参照されます。 詳細については、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md)」の「**サインインをソーシャル プロバイダーにリダイレクトする**」セクションを参照してください。 |
-| DisplayName | 0:1 | ユーザーに表示できるクレーム プロバイダーの名前を含む文字列。 |
+| DisplayName | 1:1 | ユーザーに表示できるクレーム プロバイダーの名前を含む文字列。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | クレーム プロバイダーによってサポートされている技術プロファイルのセット |
 
 **ClaimsProvider** は、技術プロファイルがクレーム プロバイダーにどのように関係するかをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。

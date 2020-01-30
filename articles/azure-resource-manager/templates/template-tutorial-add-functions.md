@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471807"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773220"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにテンプレート関数を追加する
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 ストレージ アカウントの場所が**米国東部**にハードコーディングされています。 しかし、ストレージ アカウントを他のリージョンにデプロイしなければならないこともあるかもしれません。 テンプレートの柔軟性の欠如という問題に再び向き合うことになります。 場所のパラメーターを追加することもできますが、単に値をハードコーディングするよりも、妥当な値を既定値にできれば便利だと思われます。
 
@@ -40,7 +40,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
@@ -74,7 +74,7 @@ az group deployment create \
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューから **[リソース グループ]** を選択します。
 1. デプロイ先のリソース グループを選択します。
 1. ストレージ アカウント リソースがデプロイされ、リソース グループと同じ場所を割り当てられていることがわかります。

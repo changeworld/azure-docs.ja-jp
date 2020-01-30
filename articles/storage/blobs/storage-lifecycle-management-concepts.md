@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351321"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260955"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -67,7 +67,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 #### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。 
 
@@ -88,7 +88,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 9. **[追加]** を選択して新しいポリシーを追加します。
 
 #### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
@@ -246,6 +246,9 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 ### <a name="sample-rule"></a>ルールのサンプル
 
 次のサンプル ルールは、`container1` 内に存在し、`foo` で始まるオブジェクトに対してアクションを実行するようにアカウントをフィルター処理します。  
+
+>[!NOTE]
+>ライフサイクル管理では、ブロック BLOB の種類のみがサポートされます。  
 
 - BLOB を最後に変更されたときから 30 日後にクール層に階層化する
 - BLOB を最後に変更されたときから 90 日後にアーカイブ層に階層化する

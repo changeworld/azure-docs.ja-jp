@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450144"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513815"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -36,16 +36,15 @@ ms.locfileid: "75450144"
 さらに、状況によっては、いくつか行う必要があることがあります。
 
 * **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](#install-the-vm-agent)が必要な場合があります。
-* **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](#explicitly-allow-outbound-access)する必要があります。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
  コンテナーには、経時的に作成されたバックアップと復旧ポイントと、バックアップしたマシンに関連付けられたバックアップ ポリシーが格納されます。 次の手順に従ってコンテナーを作成します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 検索で、「**Recovery Services**」と入力します。 **[サービス]** の **[Recovery Services コンテナー]** をクリックします。
 
-     ![Recovery Services コンテナーの検索](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
+     ![Recovery Services コンテナーの検索](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
 3. **[Recovery Services コンテナー]** メニューの **[+追加]** をクリックします。
 
@@ -121,6 +120,7 @@ ms.locfileid: "75450144"
 * バックアップの実行時には、次の点に注意してください。
   * 実行されている VM では、アプリケーション整合性復旧ポイントが取り込まれる可能性が最も高くなります。
   * ただし、VM がオフになっている場合でも、VM はバックアップされます。 このような VM はオフライン VM と呼ばれます。 この場合、復旧ポイントは、クラッシュ整合性復旧ポイントになります。
+* Azure VM のバックアップを許可するために、明示的な送信接続は必須ではありません。
 
 ### <a name="create-a-custom-policy"></a>カスタム ポリシーの作成
 
@@ -177,7 +177,7 @@ ms.locfileid: "75450144"
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。
 コンテナーで作成された増分型の復旧ポイントは、コンテナーで作成された最後の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
 
-## <a name="optional-steps-install-agentallow-outbound"></a>オプションの手順 (エージェントをインストールする/送信を許可する)
+## <a name="optional-steps"></a>省略可能な手順
 
 ### <a name="install-the-vm-agent"></a>VM エージェントのインストール
 
@@ -188,113 +188,17 @@ Azure Backup では、マシンで実行されている Azure VM エージェン
 **Windows** | 1.エージェント MSI ファイルを[ダウンロードしてインストール](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)します。<br/><br/> 2.マシンでの管理者権限でインストールします。<br/><br/> 3.インストールを確認します。 VM 上の *C:\WindowsAzure\Packages* で、**WaAppAgent.exe** >  を右クリックして、 **[プロパティ]** を選択します。 **[詳細]** タブで、 **[製品バージョン]** が 2.6.1198.718 以降であることを確認します。<br/><br/> エージェントを更新する場合は、バックアップ操作が実行されていないことを確認し、[エージェントを再インストール](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)します。
 **Linux** | ディストリビューションのパッケージのリポジトリから、RPM または DEB パッケージを使用してインストールします。 これは、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。 エージェントは [GitHub](https://github.com/Azure/WALinuxAgent) から入手できますが、そこからインストールすることはお勧めできません。<br/><br/> エージェントを更新する場合は、バックアップ操作が実行されていないことを確認し、バイナリを更新します。
 
-### <a name="explicitly-allow-outbound-access"></a>発信アクセスを明示的に許可する
-
-VM で実行されているバックアップ拡張機能には、Azure パブリック IP アドレスへの発信アクセスが必要です。
-
-* 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。
-* VM の接続で問題が発生した場合、または接続しようとするとエラー **ExtensionSnapshotFailedNoNetwork** が表示された場合は、バックアップ拡張機能がバックアップ トラフィック用の Azure パブリック IP アドレスに通信できるように、明示的にアクセスを許可する必要があります。 アクセス方法を次の表にまとめて示します。
-
-**オプション** | **操作** | **詳細**
---- | --- | ---
-**NSG ルールを設定する** | [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。<br/><br/> すべてのアドレス範囲を許可して管理するのではなく、[サービス タグ](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)を使用して Azure Backup サービスへのアクセスを許可するルールを追加することができます。 | サービス タグについての[詳細](../virtual-network/security-overview.md#service-tags)を参照してください。<br/><br/> サービス タグを使用すれば、アクセス管理を簡略化できます。追加のコストはかかりません。
-**プロキシをデプロイする** | トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。 | Storage だけでなく、Azure 全体へのアクセスを提供することになる。<br/><br/> ストレージ URL に対する詳細な制御が可能。<br/><br/> VM に対するインターネット アクセスを単一の場所で実現。<br/><br/> プロキシの追加のコスト。
-**Azure Firewall を設定する** | Azure Backup サービスの FQDN タグを使用して、VM で Azure Firewall を経由したトラフィックを許可します | VNet サブネットで Azure Firewall が設定されている場合は、簡単に使用できる。<br/><br/> 独自の FQDN タグを作成したり、タグで FQDN を変更したりすることはできない。<br/><br/> ご利用の Azure VM にマネージド ディスクが含まれる場合、ファイアウォール上で追加のポート (8443) を開くことが必要な場合があります。
-
-#### <a name="establish-network-connectivity"></a>ネットワーク接続を確立する
-
-NSG を使用するか、プロキシまたはファイアウォールを介して接続を確立する
-
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Azure への発信アクセスを許可する NSG ルールを設定する
-
-VM のアクセス権が NSG によって管理される場合は、バックアップ ストレージに対する送信アクセスを、必要な範囲とポートに許可します。
-
-1. VM のプロパティで **[ネットワーク]** 、 **[送信ポートの規則を追加する]** の順に選択します。
-2. **[送信セキュリティ規則の追加]** で、 **[詳細]** を選択します。
-3. **[ソース]** で **[VirtualNetwork]** を選択します。
-4. **[ソース ポート範囲]** で、任意のポートからの発信アクセスを許可するアスタリスク (*) を入力します。
-5. **[宛先]** で **[サービス タグ]** を選択します。 一覧から、**Storage.region** を選択します。 リージョンはコンテナーと、バックアップする VM が配置されている場所です。
-6. **[宛先ポート範囲]** でポートを選択します。
-    * アンマネージド ディスクと暗号化されていないストレージ アカウントを使用する VM: 80
-    * アンマネージド ディスクと暗号化されているストレージ アカウントを使用する VM: 443 (既定の設定)
-    * マネージド ディスクを使用する VM: 8443
-7. **[プロトコル]** で、 **[TCP]** を選択します。
-8. **[優先度]** で、上位の拒否ルールより低い優先度値を指定します。
-
-   アクセスを拒否するルールがある場合、新しい許可ルールを上位にする必要があります。 たとえば、優先順位 1000 で **Deny_All** (すべて拒否) ルール セットがある場合、新しいルールは、1000 未満に設定する必要があります。
-9. ルールの名前と説明を指定して、 **[OK]** を選択します。
-
-NSG ルールを複数の VM に適用して、発信アクセスを許可することができます。 このビデオでは、その手順について説明します。
-
->[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
-
-##### <a name="route-backup-traffic-through-a-proxy"></a>プロキシ経由のバックアップ トラフィックのルーティング
-
-プロキシ経由でバックアップ トラフィックをルーティングし、必要な Azure 範囲へのプロキシ アクセスを付与できます。 次を許可するように、プロキシ VM を構成します。
-
-* Azure VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングする必要があります。
-* 該当する仮想ネットワーク内の VM からの受信トラフィックがプロキシによって許可される必要があります。
-* NSG **NSF ロックダウン**には、プロキシ VM からの発信インターネット トラフィックを許可するルールが必要です。
-
-###### <a name="set-up-the-proxy"></a>プロキシを設定する
-
-システム アカウントのプロキシがない場合は、次の手順で設定します。
-
-1. [PsExec](https://technet.microsoft.com/sysinternals/bb897553) をダウンロードします。
-2. **PsExec.exe -i -s cmd.exe** を実行して、システム アカウントでコマンド プロンプトを実行します。
-3. システム コンテキストでブラウザーを実行します。 例: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** を使用します (Internet Explorer の場合)。  
-4. プロキシ設定を定義します。
-   * Linux マシンで:
-     * **/etc/environment** ファイルに次の行を追加します。
-       * **http_proxy=http:\//proxy IP address:proxy port**
-     * **/etc/waagent.conf** ファイルに次の行を追加します。
-         * **HttpProxy.Host=proxy IP address**
-         * **HttpProxy.Port=proxy port**
-   * Windows マシンのブラウザー設定で、プロキシを使用する必要があることを指定します。 ユーザー アカウントで現在、プロキシを使用している場合、次のスクリプトを使用してシステム アカウント レベルで設定を適用することができます。
-
-       ```powershell
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-
-       ```
-
-###### <a name="allow-incoming-connections-on-the-proxy"></a>プロキシで着信接続を許可する
-
-プロキシ設定で着信接続を許可します。
-
-1. Windows ファイアウォールで、**セキュリティが強化された Windows ファイアウォール**を開きます。
-2. **[受信の規則]** を右クリックし、 >  **[新しい規則]** をクリックします。
-3. **[規則の種類]** で、 **[カスタム]**  >  **[次へ]** の順に選択します。
-4. **[プログラム]** で、 **[すべてのプログラム]**  >  **[次へ]** を選択します。
-5. **[プロトコルおよびポート]** で、次を実行します。
-   * 種類を **[TCP]** に設定する。
-   * **[ローカル ポート]** を **[特定のポート]** に設定する。
-   * **[リモート ポート]** を **[すべてのポート]** に設定する。
-
-6. ウィザードを終了し、ルールの名前を指定します。
-
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>プロキシの NSG に例外規則を追加する
-
-NSG **NSF ロックダウン**で、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスへのトラフィックを許可します。
-
-次の PowerShell スクリプトでは、トラフィックを許可する例を示します。
-すべてのパブリック インターネット アドレスへの送信を許可する代わりに、IP アドレス範囲を指定する (`-DestinationPortRange`) ことも、storage.region サービス タグを使用することもできます。
-
-```powershell
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>FQDN タグを使用してファイアウォール アクセスを許可する
-
-Azure Backup へのネットワーク トラフィックの送信アクセスを許可するように Azure Firewall を設定することができます。
-
-* Azure Firewall のデプロイに関する[詳細情報を参照してください](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。
-* FQDN タグについて[お読みください](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
+>[!NOTE]
+> Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。
+>
+>現在、Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 ディスクを除外する機能を使用すると、VM の多数のデータ ディスクから 1 つまたは複数のデータ ディスクのバックアップを作成することができます。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクのデータが含まれています。これにより、復元操作中に特定の復旧ポイントから復元されたディスクのサブセットを使用できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
+>
+> このソリューションは、次のようなシナリオで特に役立ちます。
+>  
+>1. 重要なデータを 1 つのディスクのみにバックアップし、VM に接続されている残りのディスクをバックアップしないようにすることができます。 これにより、バックアップ ストレージのコストが最小限に抑えられます。  
+>2. VM データの一部については、他のバックアップ ソリューションがあります。 たとえば、データベースまたはデータを別のワークロード バックアップ ソリューションでバックアップし、残りのディスクとデータに対して Azure VM レベルのバックアップを使用して、使用可能な最適な機能を活用した効率的で堅牢なシステムを構築できます。
+>
+>プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
 
 ## <a name="next-steps"></a>次のステップ
 

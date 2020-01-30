@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f595013d5404f0cbcb17a0d24d6395a84fa5b607
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c7dea5acfce9ad964b050b6787f29e5d116a306b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266985"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704597"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 
@@ -89,7 +88,7 @@ ms.locfileid: "74266985"
 
 3. 自分のアカウントにサインインできたら、検証方法を更新できます (必要な場合)。 検証方法の追加または変更の詳細については、[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」の記事でセキュリティ情報について学習する。
 

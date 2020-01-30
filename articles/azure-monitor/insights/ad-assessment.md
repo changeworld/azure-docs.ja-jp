@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406133"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167845"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -166,6 +166,17 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 2. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
 ## <a name="ad-health-check-solutions-faq"></a>Active Directory 正常性チェック ソリューションについてよく寄せられる質問 (FAQ)
+
+*AD Assessment ソリューションでは、どのようなチェックが行われますか*
+
+* 次のクエリは、現在実行されているすべてのチェックの説明を示します。
+
+```Kusto
+ADAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+結果を Excel にエクスポートしてレビューすることができます。
 
 *正常性チェックはどのような頻度で実行されますか?*
 

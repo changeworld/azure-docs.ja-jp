@@ -12,13 +12,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed450f67b152bef4eb68ac8252b586b62992aa0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dee6973a638a2cabc0ccc2138ed9db8b798f4d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820389"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705124"
 ---
 # <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>マイ アプリ (プレビュー) ポータルからアプリにアクセスして開始する
 
@@ -73,7 +72,7 @@ iOS バージョン 7 以降を実行している iPhone または iPad デバ�
 
 1. モバイル デバイスでは、Safari などの Web ブラウザー アプリを起動します。
 
-2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
@@ -83,7 +82,7 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
 1. モバイル デバイスでは、Google Chrome などの Web ブラウザー アプリを起動します。
 
-2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
@@ -95,21 +94,21 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
     アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **マイ アプリ** ポータルを開いたら、次の操作を実行できます。
 
-- ご自分のアプリを、ご自分の組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、[マイ アプリ (プレビュー) ポータルでのワークスペースへのアクセスおよび使用](my-applications-portal-workspaces.md)に関するページを参照してください。
+- 自分のアプリを、組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、「[マイ アプリ (プレビュー) ポータルでのワークスペースへのアクセスおよび使用](my-applications-portal-workspaces.md)」を参照してください。
 
-- アプリケーションに付与されたアクセス許可を確認、更新、または取り消せます。 詳細については、[マイ アプリ (プレビュー) ポータルでのアプリケーションのアクセス許可の編集または取り消し](my-applications-portal-permissions-saved-accounts.md)に関するページを参照してください。
+- アプリケーションに付与されたアクセス許可を確認し、更新し、取り消します。 詳細については、「[マイ アプリ (プレビュー) ポータルでアプリケーションのアクセス許可を編集するか取り消す](my-applications-portal-permissions-saved-accounts.md)」を参照してください。
 
 >[!Note]
 >使用可能なワークスペースまたはカテゴリが表示されない場合は、管理者が設定していないか、あなたが共有されていないことを意味します。 共有ワークスペースを表示するための追加のサポートやアクセス許可については、ご自分の組織のヘルプデスクにお問い合わせください。
 
 ## <a name="related-articles"></a>関連記事
 
-- [ご自分のプロファイルとアカウント情報を更新する](my-account-portal-overview.md)。 **マイ プロファイル** (プレビュー) ポータルに表示される自分の個人情報を更新する手順について説明します。
+- [自分のプロファイルとアカウント情報の更新](my-account-portal-overview.md)。 **マイ プロファイル** (プレビュー) ポータルに表示される自分の個人情報を更新する方法について説明します。
 
-- [所属組織の管理](my-account-portal-organizations-page.md)。 **マイ プロファイル** ポータルの **[組織]** ページで、ご自分の組織に関連した情報を表示して管理する方法について説明します。
+- [所属組織の管理](my-account-portal-organizations-page.md)。 **マイ プロファイル** ポータルの **[組織]** ページで、自分の組織に関連した情報を表示して管理する方法について説明します。
 
-- [お使いの接続デバイスの管理](my-account-portal-devices-page.md)。 **マイ プロファイル** ポータルの **[デバイス]** ページから、ご自分の職場または学校アカウントで接続しているデバイスを管理する方法について説明します。
+- [お使いの接続デバイスの管理](my-account-portal-devices-page.md)。 **マイ プロファイル** ポータルの **[デバイス]** ページから、自分の職場または学校アカウントで接続しているデバイスを管理する方法について説明します。

@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 827213c8d243e9d66c58195e1d9400bed9c3e337
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8d4c3d76a1ff7c3fcedbb4d2c22a699f4a2e77d0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267000"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704784"
 ---
 # <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -121,7 +120,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 - **バックアップが最新ではない。** バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されます。 この赤いドットを選択すると、もう一度サインインして情報を更新するように求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アカウントの資格情報をバックアップし、新しいデバイスに復旧したので、Microsoft Authenticator アプリを使用した本人確認に進むことができます。 詳細については、[Microsoft Authenticator アプリを使用してアカウントにサインインする方法](user-help-sign-in.md)に関するページを参照してください。
 

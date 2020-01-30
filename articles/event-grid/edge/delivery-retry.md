@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100707"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841714"
 ---
 # <a name="delivery-and-retry"></a>配信と再試行
 
@@ -27,14 +27,14 @@ Event Grid は、持続性のある配信を提供します。 一致する各�
 
 Event Grid は、メッセージの配信後、応答を最大 60 秒間待機します。 サブスクライバーのエンドポイントが応答を確認しない場合は、後続の再試行のために、メッセージがバックオフ キューのいずれかにエンキューされます。
 
-事前に構成されたバックオフ キューは 2 つあり、それらによって再試行の実行スケジュールが決定されます。 それらは次のとおりです。
+事前に構成されたバックオフ キューは 2 つあり、それらによって再試行の実行スケジュールが決定されます。 これらは次のとおりです。
 
-| スケジュール | 説明 |
+| スケジュール | [説明] |
 | ---------| ------------ |
 | 1 分 | ここに来るメッセージは、1 分ごとに試行されます。
 | 10 分 | ここに来るメッセージは、10 分ごとに試行されます。
 
-### <a name="how-it-works"></a>動作のしくみ
+### <a name="how-it-works"></a>しくみ
 
 1. メッセージが Event Grid モジュールに到着します。 すぐに配信しようとします。
 1. 配信に失敗した場合、メッセージは 1 分のキューにエンキューされ、1 分後に再試行されます。
@@ -43,7 +43,7 @@ Event Grid は、メッセージの配信後、応答を最大 60 秒間待機�
 
 ## <a name="retry-policy-limits"></a>再試行ポリシーの制限
 
-再試行ポリシーを決定する構成は、2 つあります。 それらは次のとおりです。
+再試行ポリシーを決定する構成は、2 つあります。 これらは次のとおりです。
 
 * 最大試行回数
 * イベントの Time-To-Live (TTL)
@@ -52,12 +52,12 @@ Event Grid は、メッセージの配信後、応答を最大 60 秒間待機�
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>すべてのサブスクライバーに対する既定値の構成
 
-`brokers:defaultMaxDeliveryAttempts` と `broker:defaultEventTimeToLiveInSeconds` という 2 つのプロパティは、Event Grid デプロイの一部として構成できます。このデプロイによって、すべてのサブスクライバーに対する再試行ポリシーの既定値が制御されます。
+`brokers__defaultMaxDeliveryAttempts` と `broker__defaultEventTimeToLiveInSeconds` という 2 つのプロパティは、Event Grid デプロイの一部として構成できます。このデプロイによって、すべてのサブスクライバーに対する再試行ポリシーの既定値が制御されます。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | [説明] |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | イベントを配信する試行の最大数。 既定値:30.
-| `broker:defaultEventTimeToLiveInSeconds` | イベントが配信されなかった場合に削除されるまでのイベント TTL (秒単位)。 既定値:**7,200** 秒
+| `broker__defaultMaxDeliveryAttempts` | イベントを配信する試行の最大数。 既定値:30.
+| `broker__defaultEventTimeToLiveInSeconds` | イベントが配信されなかった場合に削除されるまでのイベント TTL (秒単位)。 既定値:**7,200** 秒
 
 ## <a name="configuring-defaults-per-subscriber"></a>サブスクライバーごとの既定値の構成
 
@@ -71,8 +71,8 @@ Event Grid は、メッセージの配信後、応答を最大 60 秒間待機�
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

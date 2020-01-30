@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155061"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74847917"
 
 カスタム禁止パスワード リストを構成するには、Azure Active Directory Premium P1 または P2 ライセンスが必要です。 Azure Active Directory のライセンスの詳細については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[認証方法]** 、 **[パスワード保護]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[認証方法]**  >  **[パスワード保護]** の順に選択します。
 1. オプション **[Enforce custom list]\(カスタム リストを適用する\)** を **[はい]** に設定します。
 1. **[Custom banned password list]\(カスタム禁止パスワード リスト\)** に文字列 (1 行に 1 文字列) を追加します。
    * カスタムの禁止パスワードの一覧には、最大 1,000 個の用語を含めることができます。
@@ -44,7 +44,7 @@ ms.locfileid: "74847917"
 
 ![Azure portal の [認証方法] でカスタムの禁止パスワード リストを変更する](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 ユーザーまたは管理者が Azure AD のパスワードをリセットまたは変更するたびに、禁止パスワード リストを介してリストに存在しないことが確認されます。 このチェックは、Azure AD を使用して設定または変更されたパスワードに含まれています。
 
@@ -55,7 +55,7 @@ ms.locfileid: "74847917"
 * 残念ながら、パスワードを簡単に推測できる単語、語句、またはパターンが含まれています。 別のパスワードで再実行してください。
 * 残念ながら、管理者によってブロックされている単語または文字が含まれているためにそのパスワードを使用できません。 別のパスワードで再実行してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [禁止パスワード リストの概念の概要](concept-password-ban-bad.md)
 

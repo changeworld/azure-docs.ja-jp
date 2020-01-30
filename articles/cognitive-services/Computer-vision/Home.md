@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2b80e09f086cfaa90174dc9abc5a5cd06294036e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770426"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772511"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -77,6 +77,6 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
 
-- [クイック スタート:Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [クイック スタート:Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
-- [クイック スタート:Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)
+- [クイック スタート: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [クイック スタート: Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
+- [クイック スタート: Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)

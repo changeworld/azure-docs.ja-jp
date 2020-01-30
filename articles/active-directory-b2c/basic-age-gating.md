@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064450"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836238"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -25,7 +25,7 @@ ms.locfileid: "71064450"
 
 Azure Active Directory B2C (Azure AD B2C) の年齢制御を使うと、アプリケーションを使おうとしている未成年者を識別することができます。 未成年者がアプリケーションにサインインするのをブロックできます。 ユーザーはアプリケーションに戻り、自分の年齢グループと、保護者の同意の状況を確認することもできます。 Azure AD B2C では、保護者の同意がない未成年者をブロックできます。 また、未成年者の処理をアプリケーションが決定できるように、Azure AD B2C を設定することもできます。
 
-[ユーザー フロー](active-directory-b2c-reference-policies.md)で年齢制御を有効にすると、それ以降、ユーザーは生年月日と居住国/地域をたずねられます。 サインインしているユーザーが以前にその情報を入力していない場合、次にサインインするときに入力する必要があります。 ユーザーがサインインするたびに、ルールが適用されます。
+[ユーザー フロー](user-flow-overview.md)で年齢制御を有効にすると、それ以降、ユーザーは生年月日と居住国/地域をたずねられます。 サインインしているユーザーが以前にその情報を入力していない場合、次にサインインするときに入力する必要があります。 ユーザーがサインインするたびに、ルールが適用されます。
 
 Azure AD B2C では、ユーザーが入力した情報を使って、ユーザーが未成年かどうかが識別されます。 その後、アカウントの **AgeGroup** フィールドが更新されます。 値は、`null`、`Undefined`、`Minor`、`Adult`、`NotAdult` のいずれかです。  その後、**AgeGroup** フィールドと **consentProvidedForMinor** フィールドを使って、**legalAgeGroupClassification** の値が計算されます。
 
@@ -71,7 +71,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 | TD | チャド | なし | 21 |
 | TH | タイ | なし | 20 |
 | TW | 台湾 | なし | 20 |
-| US | 米国 | 13 | 18 |
+| US | United States | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齢制限のオプション
 

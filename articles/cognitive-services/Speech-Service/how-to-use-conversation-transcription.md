@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805809"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263729"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>リアルタイムでの会話の文字起こし (プレビュー)
 
@@ -71,7 +71,7 @@ class Program
         // Edit with your desired region for `{region}`
         var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromFormData", form);
         // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
         var jsonData = await response.Content.ReadAsStringAsync();
     }
 
@@ -90,7 +90,7 @@ class Program
         // Edit with your desired region for `{region}`
         var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromByteArray", content);
         // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
         var jsonData = await response.Content.ReadAsStringAsync();
     }
 
@@ -113,6 +113,7 @@ class Program
 - 関心のあるイベントを登録する
 - Conversation オブジェクトを使用して、参加者を会話に追加または削除する
 - オーディオのストリーミング
+- Speech SDK バージョン 1.9.0 以降では、`int` と `string` の値型は両方とも、音声署名のバージョン フィールドでサポートされています。
 
 文字起こしと話者の識別子は、登録されたイベントで返されます。
 
@@ -136,7 +137,7 @@ public class MyConversationTranscriber
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             var meetingId = Guid.NewGuid().ToString();
-            using (var conversation = new Conversation(config, meetingId))
+            using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
                 using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
@@ -189,7 +190,7 @@ public class MyConversationTranscriber
                     // Add participants to the conversation.
                     // Create voice signatures using REST API described in the earlier section in this document.
                     // Voice signature needs to be in the following format:
-                    // { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+                    // { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
 
                     var speakerA = Participant.From("Speaker_A", "en-us", signatureA);
                     var speakerB = Participant.From("Speaker_B", "en-us", signatureB);
@@ -214,7 +215,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [非同期での会話の文字起こし](how-to-async-conversation-transcription.md)

@@ -3,14 +3,14 @@ title: Azure の Update Management ソリューション
 description: この記事では、Azure Update Management ソリューションを使用して Windows および Linux コンピューターの更新プログラムを管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945121"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513322"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -71,8 +71,9 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM および SP1 Standard)||
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](#linux-2)に関する記事を参照してください。          |
+|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management は、このオペレーティング システムの評価のみをサポートしています。[Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) は Windows Server 2008 R2 ではサポートされていないため、修正プログラムの適用はサポートされていません。 |
+|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](automation-view-update-assessments.md#linux-2)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
@@ -99,7 +100,7 @@ OS 固有のクライアント要件について以下に説明します。 追�
 
 Windows エージェントは、WSUS サーバーと通信するように構成するか、Microsoft Update にアクセスできる必要があります。
 
-System Center Configuration Manager と Update Management を統合して使用できます。 統合シナリオの詳細については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md#configuration)」を参照してください。 [Windows エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 Azure VM をオンボードする場合、このエージェントは自動的にインストールされます。
+Configuration Manager で Azure Update Management を使用できます。 統合シナリオの詳細については、[Configuration Manager と Update Management を統合する](oms-solution-updatemgmt-sccmintegration.md#configuration)方法に関する記事を参照してください。 [Windows エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 Azure VM をオンボードする場合、このエージェントは自動的にインストールされます。
 
 既定では、Azure Marketplace からデプロイされた Windows VM は、Windows Update Service から自動更新を受信するように設定されています。 このソリューションまたは Windows VM をワークスペースに追加しても、この動作は変わりません。 このソリューションで更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
 
@@ -241,15 +242,15 @@ CentOS 上でネイティブ分類データを使用できるようにするた�
 
 Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
-## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
+## <a name="integrate-with-configuration-manager"></a>Configuration Manager との統合
 
-PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、Configuration Manager の強みと成熟度を活用してソフトウェア更新プログラムを管理できます。 Configuration Manager は、そのソフトウェア更新プログラムの管理 (SUM) サイクルの一部です。
+PC、サーバー、モバイル デバイスを管理するためにMicrosoft Endpoint Configuration Manager に投資してきたお客様は、Configuration Manager の強みと成熟度を活用してソフトウェア更新プログラムを管理できます。 Configuration Manager は、そのソフトウェア更新プログラムの管理 (SUM) サイクルの一部です。
 
-管理ソリューションを System Center Configuration Manager と統合する方法については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)」を参照してください。
+管理ソリューションを Configuration Manager と統合する方法については、[Configuration Manager と Update Management を統合する](oms-solution-updatemgmt-sccmintegration.md)方法に関する記事を参照してください。
 
 ### <a name="third-party-patches-on-windows"></a>Windows でのサード パーティの修正プログラム
 
-Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 これは、WSUS または Windows Update のいずれかです。 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher) (Updates Publisher) などのツールを使用すれば、カスタム更新プログラムを WSUS に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで System Center Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](/sccm/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
+Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 これは、WSUS または Windows Update のいずれかです。 [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (Updates Publisher) などのツールを使用すれば、カスタム更新プログラムを WSUS に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
 
 ## <a name="patch-linux-machines"></a>Linux マシンのパッチ
 

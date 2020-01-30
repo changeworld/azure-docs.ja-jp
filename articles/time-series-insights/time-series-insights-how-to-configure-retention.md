@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561200"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278613"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
 
@@ -34,13 +34,13 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
 ## <a name="configure-data-retention"></a>データ リテンション期間の構成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
 1. **[設定]** の見出しで、 **[ストレージの構成]** を選択します。
 
-    [![[設定]、[構成] の順に選択](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![[設定] で [ストレージの構成] を選択する](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 1. **[データ リテンション期間 (日)]** を選択し、スライダー バーを使用するか、テキスト ボックスに数値を入力してリテンション期間を構成します。
 
@@ -48,11 +48,11 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
 1. **[ストレージ制限を超過したときの動作]** を設定します。 **[Purge old data]\(古いデータを消去\)** と **[Pause ingress]\(イングレスを一時停止\)** のいずれかを選択します。
 
-    [![データ保有期間 - 受け入れと保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![イングレスの一時停止 - 同意して保存します。](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
 1. データ損失の潜在的なリスクを理解するには、ドキュメントを参照してください。 **[保存]** を選択して、変更した構成を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、[Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを参照してください。
 

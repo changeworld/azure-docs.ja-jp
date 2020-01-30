@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779378"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512829"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -62,7 +62,7 @@ Azure Marketplace には、SSO 接続を事前に統合したアプリケーシ�
 パスワード ベースの SSO で Azure AD を使用するには、安全に資格情報を取得し、ログイン フォームに入力するブラウザー拡張機能をデプロイする必要があります。 [サポートされているブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)を使用して、拡張機能を大規模にデプロイするためのメカニズムを定義します。 次のオプションがあります。
 
 - [Internet Explorer のグループ ポリシー](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Internet Explorer 用の System Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Internet Explorer 用の Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 詳細については、[パスワード シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)に関する記事を参照してください。
@@ -304,7 +304,7 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 - [Azure アプリケーション ギャラリー以外のアプリケーションのフェデレーション SSO に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [SAML ベースの SSO をデバッグする](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

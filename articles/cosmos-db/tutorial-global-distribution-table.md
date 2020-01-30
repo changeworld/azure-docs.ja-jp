@@ -1,19 +1,19 @@
 ---
 title: Table API による Azure Cosmos DB グローバル分散のチュートリアル
 description: Azure Cosmos DB Table API アカウントにおけるグローバル分散の動作とリージョンの優先リストを構成する方法について説明します
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e6cd574d1041908e91ad5e6629403c0e40d11c03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870362"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770607"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散を設定する
 
@@ -28,7 +28,7 @@ ms.locfileid: "74870362"
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Table API を使用して優先リージョンに接続する
 
-[グローバル配布](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、[TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet) プロパティを設定することによって行うことができます。 Azure Cosmos DB Table API SDK は、アカウント構成、現在のリージョンの可用性、および指定されている設定一覧に基づいて、通信に最適なエンドポイントを選定します。
+[グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、[TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet) プロパティを設定することによって行うことができます。 Azure Cosmos DB Table API SDK は、アカウント構成、現在のリージョンの可用性、および指定されている設定一覧に基づいて、通信に最適なエンドポイントを選定します。
 
 PreferredLocations には、読み取りの優先場所 (マルチホーム) のコンマ区切りリストを指定してください。 各クライアント インスタンスは、低待機時間で読み取りを行えるように、優先順位を付けてこれらのリージョンのサブセットを指定できます。 リージョンは[表示名](https://msdn.microsoft.com/library/azure/gg441293.aspx) (`West US` など) を使用して指定する必要があります。
 
@@ -42,7 +42,7 @@ PreferredLocations プロパティが設定されていない場合、すべて�
 
 このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 

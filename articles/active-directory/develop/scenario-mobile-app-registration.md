@@ -16,13 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0684b8002dad8e0cb29bb1b7afb6ac5a2bd4d685
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 33510015f4f05661ad2ea041b1fd3da0e8bfb1ed
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423777"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702081"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すモバイル アプリ - アプリの登録
 
@@ -66,7 +65,7 @@ ms.locfileid: "75423777"
    ![イメージ](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. リダイレクト URI が自動的に計算されます。
-   ![画像](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 リダイレクト URI を手動で構成する場合は、アプリケーション マニフェストを介して行えます。 推奨フォーマットは以下のとおりです。
 

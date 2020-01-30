@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60ea2633ce09b828d1e3576cadf73ecb5c26c1bd
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485945"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546369"
 ---
 # <a name="two-class-decision-forest-module"></a>2 クラス デシジョン フォレスト モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 デシジョン フォレスト アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。  
 
@@ -65,7 +65,7 @@ ms.locfileid: "73485945"
   
 3.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
   
 4.  アンサンブルに作成できるデシジョン ツリーの最大数を **[Number of decision trees]\(デシジョン ツリーの数\)** に入力します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなります。  
   
@@ -87,20 +87,15 @@ ms.locfileid: "73485945"
 9. ラベル付けされたデータセットと、いずれかの[トレーニング モジュール](module-reference.md)をアタッチします。  
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。  
-  
     
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 トレーニングの完了後:
 
-+ それぞれのイテレーションで作成されたツリーを表示するために、[モデルのトレーニング](./train-model.md) モジュールの出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。
-  
-    それぞれのツリーをクリックして分割をドリルダウンすると、各ノードのルールが表示されます。
-
-+ モデルのスナップショットを保存するために、 **[Trained Model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save Model]\(モデルの保存\)** を選択します。 パイプラインを連続で実行しても、保存済みのモデルは更新されません。
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
 + このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

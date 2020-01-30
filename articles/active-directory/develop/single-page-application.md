@@ -16,13 +16,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d956bdfe793f2e8fa3ce8ce83e03b9dae8033757
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373850"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701435"
 ---
 # <a name="single-page-applications"></a>シングルページ アプリケーション
 
@@ -65,7 +64,7 @@ ADAL.js を使用すると、以下の場合に役立ちます。
 
 認証に成功すると、Azure AD はユーザーのブラウザーに Cookie を書き込んでセッションを確立します。 ユーザーと Azure AD の間にセッションが存在することに注意してください (ユーザーと Web アプリケーションの間ではありません)。 トークンの有効期限が切れると、ADAL.js はこのセッションを使用して、ダイアログを表示せずに別のトークンを取得します。 ADAL.js は非表示の iFrame を使用し、OAuth 暗黙的な許可プロトコルを使用して要求を送受信します。 アプリケーションが呼び出す他の Web API リソースが、クロス オリジン リソース共有 (CORS) をサポートし、ユーザーのディレクトリに登録されており、サインイン時にユーザーから必要な同意を得られていれば、ADAL.js は同じメカニズムを使用して、ダイアログを表示せずに、それらのリソースのアクセス トークンを取得することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
 * Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

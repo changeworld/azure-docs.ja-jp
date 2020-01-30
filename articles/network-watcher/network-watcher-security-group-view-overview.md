@@ -3,23 +3,20 @@ title: Azure Network Watcher のセキュリティ グループ ビューの概�
 description: このページでは、Network Watcher のセキュリティ ビュー機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: kumud
-ms.openlocfilehash: 856135c6cf903b1530f0ae922edddd09e5a1b0d3
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.author: damendo
+ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539211"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840759"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure Network Watcher の有効なセキュリティ規則ビューの概要
 
@@ -35,7 +32,7 @@ ms.locfileid: "74539211"
 
 ![ドリルダウン][2]
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 ネットワーク セキュリティ グループを監査する方法については、[PowerShell を使用したネットワーク セキュリティ グループの監査の設定](network-watcher-nsg-auditing-powershell.md)に関する記事をご覧ください。
 

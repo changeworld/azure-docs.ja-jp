@@ -16,13 +16,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: fe9fb67331340314ebeea3c9e8d34436b9088856
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373656"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699752"
 ---
 # <a name="web-apps"></a>Web Apps
 
@@ -54,7 +53,7 @@ Web アプリを登録するには、[アプリの登録](quickstart-register-ap
 
 Azure AD によって発行されたトークンの有効期間が終了すると、ユーザーのセッションの有効期限が切れます。 アプリケーションは、アイドル状態の時間に基づくユーザーのサインアウトなど、必要に応じてこの期間を短縮できます。 セッションの有効期限が切れると、ユーザーは再度サインインするよう求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
 * Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

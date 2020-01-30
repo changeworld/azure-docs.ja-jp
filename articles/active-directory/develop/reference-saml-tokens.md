@@ -17,13 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acac79d79b584dac93d63f6d478627f7e953f81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 01ea64a56d43976d319618350e68e03bba775e8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965758"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702897"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 ## <a name="claims-in-saml-tokens"></a>SAML トークンの要求
 
 > [!div class="mx-codeBreakAll"]
-> | Name | 同等の JWT 要求 | 説明 | 例 |
+> | Name | 同等の JWT 要求 | [説明] | 例 |
 > | --- | --- | --- | ------------|
 > |対象ユーザー | `aud` |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 認証のインスタント | |認証が行われた日時を記録します。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -45,11 +44,11 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 > |発行者 | `iss` |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |姓 | `family_name` |Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字を示します。 | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
 > |Name | `unique_name` |トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
-> |オブジェクト ID | `oid` |Azure AD 内のオブジェクトの一意の識別子が含まれています。 この値は変更不可で、再割り当ても再利用もできません。 オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
+> |Object ID | `oid` |Azure AD 内のオブジェクトの一意の識別子が含まれています。 この値は変更不可で、再割り当ても再利用もできません。 オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |ロール | `roles` |グループ メンバーシップを通じて直接的および間接的にサブジェクトに付与されており、ロールベースのアクセス制御を適用するために使用できるすべてのアプリケーション ロールを表します。 アプリケーション ロールは、アプリケーションごとに、アプリケーション マニフェストの `appRoles` プロパティを介して定義されます。 各アプリケーション ロールの `value` プロパティは、ロールの要求内に表示される値です。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |サブジェクト | `sub` |トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 <br> `SubjectConfirmation` は要求ではありません。 これは、トークンのサブジェクトの検証方法を示します。 `Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |テナント ID | `tid` |トークンを発行したディレクトリ テナントを識別する、変更不可で、再利用できない識別子です。 この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。 たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
-> |トークンの有効期間 | `nbf`、`exp` |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
+> |トークンの有効期間 | `nbf`, `exp` |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
 ## <a name="sample-saml-token"></a>サンプル SAML トークン
 

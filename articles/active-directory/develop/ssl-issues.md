@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cfb530deab0cce12247c2ec87e3efb3ce61810b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fef1e1df15fed8452066f06a351452a83f73d89b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964720"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701350"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>方法:iOS と macOS 用の MSAL に関する SSL の問題のトラブルシューティング
 
@@ -49,6 +48,6 @@ SHA-1 ハッシュを使用する証明書には、既知の脆弱性があり�
 
 キャプティブ ポータルは、最初に Wi-Fi ネットワークにアクセスしたときに、そのネットワークへのアクセス権が付与されていない場合に、ユーザーに Web ページを提示します。 ユーザーがポータルの要件を満たすまで、インターネット トラフィックが傍受されます。 ユーザーがネットワーク リソースに接続できないことが原因のネットワーク エラーは、ユーザーがポータル経由で接続するまで見込まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [キャプティブ ポータル](https://en.wikipedia.org/wiki/Captive_portal)と Apple の新しい [App Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) 機能について学習します。

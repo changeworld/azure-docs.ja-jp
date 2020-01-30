@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231815"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705090"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 
@@ -25,7 +24,7 @@ ms.locfileid: "74231815"
 
 ## <a name="view-your-privacy-related-info"></a>プライバシー関連情報を表示する
 
-1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
 2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、 **[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
 
@@ -37,7 +36,7 @@ ms.locfileid: "74231815"
 
     - **利用規約**。 組織の利用規約。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自分の組織でデータがどのように使用されているかを確認後、次を実行できます。
 

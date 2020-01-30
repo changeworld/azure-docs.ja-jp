@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd944af95f80cf456260beb072c703aab0d15ceb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175278"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701384"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>方法:macOS と iOS で SSO を構成する
 
@@ -70,7 +69,7 @@ MSAL は、iOS キーチェーン アクセス グループを介した SSO 共�
 
 Microsoft ID プラットフォームがトークンを共有できるアプリケーションを把握するには、それらのアプリケーションが同じクライアント ID またはアプリケーション ID を共有する必要があります。 これは、ポータルで最初のアプリケーションを登録したときに提供された一意の識別子です。
 
-Microsoft ID プラットフォームがアプリにそれぞれ同じアプリケーション ID を使用するように伝える場合、**リダイレクト URI** を使用します。 各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 例:
+Microsoft ID プラットフォームがアプリにそれぞれ同じアプリケーション ID を使用するように伝える場合、**リダイレクト URI** を使用します。 各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 次に例を示します。
 
 App1 のリダイレクト URI: `msauth.com.contoso.mytestapp1://auth` App2 のリダイレクト URI: `msauth.com.contoso.mytestapp2://auth` App3 のリダイレクト URI: `msauth.com.contoso.mytestapp3://auth`
 
@@ -138,7 +137,7 @@ MSAL では、Microsoft Authenticator による仲介型認証がサポートさ
 
 次の手順は、認証ブローカーを使用してアプリの SSO を有効にする方法です。
 
-1. アプリの Info.plist でアプリケーションのブローカーと互換するリダイレクト URI 形式を登録します。 ブローカーと互換性のあるリダイレクト URI 形式は `msauth.<app.bundle.id>://auth` です。 `<app.bundle.id>` をアプリケーションのバンドル ID に置き換えます。 例:
+1. アプリの Info.plist でアプリケーションのブローカーと互換するリダイレクト URI 形式を登録します。 ブローカーと互換性のあるリダイレクト URI 形式は `msauth.<app.bundle.id>://auth` です。 `<app.bundle.id>` をアプリケーションのバンドル ID に置き換えます。 次に例を示します。
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -177,7 +176,7 @@ MSAL では、Microsoft Authenticator による仲介型認証がサポートさ
     ```
     
 **Xcode 11 を使用している場合は**、代わりに MSAL コールバックを `SceneDelegate` ファイルに配置する必要があります。
-以前の iOS との互換性のために、UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方のファイルに配置する必要があります。
+以前の iOS との互換性を保持するために UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方のファイルに配置する必要があります。
 
 Objective-C:
 
@@ -208,6 +207,6 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     }
 ```
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

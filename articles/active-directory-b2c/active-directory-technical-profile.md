@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949560"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835795"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -70,7 +70,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 **OutputClaims** 要素には、Azure AD 技術プロファイルによって返された要求の一覧が含まれています。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。 また、`DefaultValue` 属性を設定している限り、Azure Active Directory によって返されない要求を含めることもできます。
 
-**OutputClaimsTransformations** 要素には、出力要求を変更したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 たとえば、**AAD-UserWriteUsingLogonEmail**  技術プロファイルはローカル アカウントを作成し、以下の要求を返します。
 
@@ -121,7 +121,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD 技術プロバイダー操作
 
-### <a name="read"></a>読み取り
+### <a name="read"></a>Read
 
 **読み取り**操作は、単一のユーザー アカウントに関するデータを読み取ります。 ユーザー データを読み取るには、**objectId**、**userPrincipalName**、**signInNames**(任意の型、ユーザー名および電子メールベースのアカウント) または**alternativeSecurityId** などの入力要求としてキーを指定する必要があります。
 
@@ -153,7 +153,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 </TechnicalProfile>
 ```
 
-### <a name="write"></a>書き込み
+### <a name="write"></a>Write
 
 **書き込み**操作は、単一のユーザー アカウントを作成または更新します。 ユーザー アカウントを書き込むには、**objectId**、**userPrincipalName**、**signInNames.emailAddress**、または **alternativeSecurityId** などの入力要求としてキーを指定する必要があります。
 
@@ -253,15 +253,15 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 ```
 ## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。|
 | UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
-| ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 |
-| ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 |
+| ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
+| ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
 
 
 

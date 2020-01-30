@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b136f408bbc4fbf13bba902f76f7d33ce6b2ba96
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428603"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314574"
 ---
 # <a name="apply-math-operation"></a>算術演算の適用
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 Apply Math Operation を使用して、入力データセットの数値列に適用される計算を作成します。 
 

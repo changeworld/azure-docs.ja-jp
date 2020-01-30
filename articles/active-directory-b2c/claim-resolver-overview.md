@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949876"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836050"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
-Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-directory-b2c-overview-custom.md)での要求リゾルバーは、ポリシー名、要求の相関 ID、ユーザー インターフェイス言語など、承認要求に関するコンテキスト情報を提供します。
+Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-policy-overview.md)での要求リゾルバーは、ポリシー名、要求の相関 ID、ユーザー インターフェイス言語など、承認要求に関するコンテキスト情報を提供します。
 
 入力要求または出力要求で要求リゾルバーを使用するには、[ClaimsSchema](claimsschema.md) 要素の下で文字列 **ClaimType** を定義した後、入力または出力の要求要素で **DefaultValue** を要求リゾルバーに設定します。 Azure AD B2C によって要求リゾルバーの値が読み取られて、技術プロファイルで使用されます。
 
@@ -46,16 +46,16 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-dir
 
 ### <a name="culture"></a>カルチャ
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 言語に対する 2 文字の ISO コード。 | en |
 | {Culture:LCID}   | 言語コードの LCID。 | 1033 |
 | {Culture:RegionName} | リージョンに対する 2 文字の ISO コード。 | US |
-| {Culture:RFC5646} | RFC5646 言語コード。 | en-US |
+| {Culture:RFC5646} | RFC5646 言語コード。 | ja-JP |
 
 ### <a name="policy"></a>ポリシー
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 証明書利用者ポリシーの名前。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 証明書利用者ポリシーのテナント ID。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-dir
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` クエリ文字列パラメーター。 | 該当なし |
 | {OIDC:ClientId} |`client_id` クエリ文字列パラメーター。 | 00000000-0000-0000-0000-000000000000 |
@@ -72,13 +72,13 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-dir
 | {OIDC:LoginHint} |  `login_hint` クエリ文字列パラメーター。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | 該当なし |
 | {OIDC:Nonce} |`Nonce` クエリ文字列パラメーター。 | defaultNonce |
-| {OIDC:Prompt} | `prompt` クエリ文字列パラメーター。 | login |
+| {OIDC:Prompt} | `prompt` クエリ文字列パラメーター。 | ログイン (login) |
 | {OIDC:Resource} |`resource` クエリ文字列パラメーター。 | 該当なし |
 | {OIDC:scope} |`scope` クエリ文字列パラメーター。 | openid |
 
 ### <a name="context"></a>Context
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | Identity Experience Framework のバージョン (ビルド番号)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 関連付け ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-dir
 
 OIDC 要求または OAuth2 要求の一部に含まれているすべてのパラメーター名は、ユーザー体験の要求にマップできます。 たとえば、アプリケーションからの要求には、`app_session` の名前、`loyalty_number`、またはカスタム クエリ 文字列が指定されたクエリ文字列パラメーターが含まれる場合があります。
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | クエリ文字列パラメーター。 | hawaii |
 | {OAUTH-KV:app_session} | クエリ文字列パラメーター。 | A3C5R |
@@ -100,7 +100,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 要求 | 説明 | 例 |
+| 要求 | [説明] | 例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | アクセス トークン。 | 該当なし |
 
@@ -137,7 +137,7 @@ RESTful 技術プロファイルの例を次に示します。
 
 ### <a name="dynamic-ui-customization"></a>動的 UI のカスタマイズ
 
-Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](active-directory-b2c-ui-customization-custom-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
+Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](custom-policy-ui-customization-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
 
 次の例では、名前が **campaignId** で値が `hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 
@@ -159,7 +159,7 @@ Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイン�
 
 ### <a name="application-insights-technical-profile"></a>Application Insights の技術プロファイル
 
-Azure Application Insights と要求リゾルバーを使用すると、ユーザーの動作に関する分析情報を取得できます。 Application Insights の技術プロファイルでは、Azure Application Insights に保持される入力要求を送信します。 詳しくは、「[Application Insights を使用した Azure AD B2C 体験でのユーザー動作の追跡](active-directory-b2c-custom-guide-eventlogger-appins.md)」をご覧ください。 次の例では、ポリシー ID、相関 ID、言語、クライアント ID を Azure Application Insights に送信しています。
+Azure Application Insights と要求リゾルバーを使用すると、ユーザーの動作に関する分析情報を取得できます。 Application Insights の技術プロファイルでは、Azure Application Insights に保持される入力要求を送信します。 詳しくは、「[Application Insights を使用した Azure AD B2C 体験でのユーザー動作の追跡](analytics-with-application-insights.md)」をご覧ください。 次の例では、ポリシー ID、相関 ID、言語、クライアント ID を Azure Application Insights に送信しています。
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

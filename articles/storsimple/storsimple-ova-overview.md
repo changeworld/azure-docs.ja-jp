@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array の概要 | Microsoft Docs
+title: Microsoft Azure StorSimple Virtual Array の概要
 description: オンプレミス仮想アレイと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションである StorSimple Virtual Array について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516707"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273868"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -139,7 +132,7 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 > [!NOTE]
 > 仮想アレイを拡張することはできません。 そのため、仮想アレイの作成時に十分なストレージをプロビジョニングすることが重要です。
 
-### <a name="storsimple-device-manager-service"></a>StorSimple Device Manager サービス
+### <a name="storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービス
 
 Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Device Manager サービス) があり、クラウド ストレージを一元管理できます。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
@@ -217,6 +210,6 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 
 詳細については、[セキュリティ センターにある Microsoft のプライバシー ポリシー](https://www.microsoft.com/trustcenter)を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [仮想アレイ ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md)方法を確認します。

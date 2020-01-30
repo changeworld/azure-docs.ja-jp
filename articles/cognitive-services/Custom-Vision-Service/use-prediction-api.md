@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966932"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169947"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
@@ -130,12 +130,12 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、C# SDK を使用して、カスタム画像分類器/検出器にイメージを送信し、応答をプログラムで受信する方法について説明しました。 次は、C# を使用してエンドツーエンドのシナリオを完了したり、さまざまな言語の SDK を使用して作業を開始したりする方法について説明します。
 
 * [クイック スタート: .NET SDK](csharp-tutorial.md)
-* [クイック スタート:Python SDK:](python-tutorial.md)
-* [クイック スタート:Java SDK](java-tutorial.md)
-* [クイック スタート:Node SDK](node-tutorial.md)
-* [クイック スタート:Go SDK](go-tutorial.md)
+* [クイック スタート: Python SDK:](python-tutorial.md)
+* [クイック スタート: Java SDK](java-tutorial.md)
+* [クイック スタート: Node SDK](node-tutorial.md)
+* [クイック スタート: Go SDK](go-tutorial.md)

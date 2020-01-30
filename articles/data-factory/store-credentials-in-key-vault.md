@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928715"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122612"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
@@ -31,8 +31,8 @@ ms.locfileid: "74928715"
 
 Azure Key Vault に格納されている資格情報を参照するには、次の手順に従う必要があります。
 
-1. ファクトリと共に生成された "マネージド ID アプリケーション ID" の値をコピーして、**データ ファクトリのマネージド ID を取得**します。 ADF オーサリング UI を使用する場合、マネージド ID アプリケーション ID が Azure Key Vault のリンクされたサービスの作成ウィンドウに表示されます。Azure portal から取得することもできます。「[Retrieve data factory service identity](data-factory-service-identity.md#retrieve-managed-identity)」(データ ファクトリのマネージド ID の取得) を参照してください。
-2. **マネージド ID に、Azure Key Vault へのアクセス権を付与します。** キー コンテナーで、[アクセス ポリシー] -> [新規追加] を選択し、このマネージド ID アプリケーション ID を検索して、[シークレットのアクセス許可] ドロップダウンで **Get** アクセス許可を付与します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
+1. ファクトリと共に生成された "マネージド ID オブジェクト ID" の値をコピーして、**データ ファクトリのマネージド ID を取得**します。 ADF オーサリング UI を使用する場合、マネージド ID オブジェクト ID が Azure Key Vault のリンクされたサービスの作成ウィンドウに表示されます。Azure portal から取得することもできます。「[Retrieve data factory service IDentity](data-factory-service-identity.md#retrieve-managed-identity)」(データ ファクトリのマネージド ID の取得) を参照してください。
+2. **マネージド ID に、Azure Key Vault へのアクセス権を付与します。** キー コンテナーで、[アクセス ポリシー] -> [新規追加] を選択し、このマネージド ID を検索して、[シークレットのアクセス許可] ドロップダウンで **Get** アクセス許可を付与します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
 3. **Azure Key Vault をポイントするリンクされたサービスを作成します。** 「[Azure Key Vault のリンクされたサービス](#azure-key-vault-linked-service)」をご覧ください。
 4. **データ ストアのリンクされたサービスを作成します。その内部で、キー コンテナーに格納されている対応するシークレットを参照します。** 「[キー コンテナーに格納されたシークレットの参照](#reference-secret-stored-in-key-vault)」をご覧ください。
 
@@ -40,9 +40,9 @@ Azure Key Vault に格納されている資格情報を参照するには、次�
 
 Azure Key Vault のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | はい |
 | baseUrl | Azure Key Vault の URL を指定します。 | はい |
 
 **オーサリング UI の使用:**
@@ -73,9 +73,9 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 キー コンテナーのシークレットを参照するリンクされたサービスのフィールドを構成する場合は、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | はい |
+| 型 | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | はい |
 | secretName | Azure Key Vault 内のシークレットの名前。 | はい |
 | secretVersion | Azure Key Vault 内のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ |
 | store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | はい |
@@ -114,5 +114,5 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

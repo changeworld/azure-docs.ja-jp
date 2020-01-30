@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: e550f81a758d27491b01a13c6c0e24c6d364fb5a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: fc04e38c3d6933cde81d81d5569ed73e7506a745
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276112"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756438"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -50,7 +50,7 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
 結果

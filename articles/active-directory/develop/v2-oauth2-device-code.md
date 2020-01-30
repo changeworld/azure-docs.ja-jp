@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1035d5cd7c992bea74180b482bb8e3c2c9e0f461
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423249"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700517"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 
@@ -63,8 +62,8 @@ scope=user.read%20openid%20profile
 
 | パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
+| `tenant` | Required | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
+| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `scope` | 推奨 | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  |
 
 ### <a name="device-authorization-response"></a>デバイス承認応答
@@ -100,12 +99,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| パラメーター | 必須 | [説明]|
+| パラメーター | Required | [説明]|
 | -------- | -------- | ---------- |
-| `tenant`  | 必須 | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
-| `grant_type` | 必須 | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
-| `client_id`  | 必須 | 最初の要求で使用された `client_id` と一致する必要があります。 |
-| `device_code`| 必須 | デバイス承認要求に対して返された `device_code`。  |
+| `tenant`  | Required | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
+| `grant_type` | Required | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
+| `client_id`  | Required | 最初の要求で使用された `client_id` と一致する必要があります。 |
+| `device_code`| Required | デバイス承認要求に対して返された `device_code`。  |
 
 ### <a name="expected-errors"></a>予期されるエラー
 

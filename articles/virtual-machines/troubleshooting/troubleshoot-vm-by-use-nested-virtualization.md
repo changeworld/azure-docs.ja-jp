@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028434"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119620"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
 この記事では、入れ子になった仮想化環境を Microsoft Azure に作成し、問題のある VM のディスクを Hyper-V ホスト (復旧 VM) にマウントしてトラブルシューティングを行う方法について説明します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "76028434"
 
 13. サーバーに Hyper-V ロールのインストールを許可します。 これには数分かかります。サーバーは自動的に再起動します。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2:復旧 VM の Hyper-V サーバー上に問題のある VM を作成する
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2:復旧 VM の Hyper-V サーバー上に問題のある VM を作成する
 
 1.  問題のある VM の OS ディスクの[スナップショット ディスクを作成](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk)し、そのスナップショット ディスクを復旧 VM に接続します。
 
@@ -107,7 +107,7 @@ ms.locfileid: "76028434"
 
 17. これでその VM をオンプレミス VM として使用することができます。 必要なトラブルシューティング手順を実施することができます。
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>手順 3:問題のある VM によって使用されている OS ディスクを交換する
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>手順 3:問題のある VM によって使用されている OS ディスクを交換する
 
 1.  VM をオンライン状態に復帰させた後、その VM を Hyper-V マネージャーでシャットダウンします。
 

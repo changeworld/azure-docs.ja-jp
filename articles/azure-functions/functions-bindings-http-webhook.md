@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922448"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711143"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -825,7 +825,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 匿名要求を許可できます。この要求ではキーが不要です。 マスター キーを使用するように要求することもできます。 既定の承認レベルを変更するには、バインド JSON の `authLevel` プロパティを使用します。 詳しくは、「[トリガー - 構成](#trigger---configuration)」をご覧ください。
 
 > [!NOTE]
-> 機能をローカルで実行する場合、指定された承認レベルの設定に関係なく、許可は無効になります。 Azure に発行した後、トリガーの`authLevel`設定が適用されます。 [コンテナーをローカル](functions-create-function-linux-custom-image.md#run-the-image-locally)で実行する場合もキーが必要です。
+> 機能をローカルで実行する場合、指定された承認レベルの設定に関係なく、許可は無効になります。 Azure に発行した後、トリガーの`authLevel`設定が適用されます。 [コンテナーをローカル](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)で実行する場合もキーが必要です。
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>運用環境で HTTP エンドポイントを保護します。

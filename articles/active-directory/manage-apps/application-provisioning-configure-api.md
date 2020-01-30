@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275719"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712225"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API を使用してプロビジョニングを構成する
 
-Azure portal は、個々のアプリのプロビジョニングを一度に 1 つずつ構成する便利な方法です。 しかし、アプリケーションのインスタンスを複数作成する場合、または作成するインスタンスの数が数百にも及ぶ場合は、Microsoft Graph API を使用してアプリの作成と構成を自動化すると、より簡単です。 この記事では、API を使用してプロビジョニングの構成を自動化する方法について説明します。 この方法は、[アマゾン ウェブ サービス](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso)などのアプリケーションで一般的に使用されています。
+Azure portal は、個々のアプリのプロビジョニングを一度に 1 つずつ構成する便利な方法です。 しかし、アプリケーションのインスタンスを複数作成する場合、または作成するインスタンスの数が数百にも及ぶ場合は、Microsoft Graph API を使用してアプリの作成と構成を自動化すると、より簡単です。 この記事では、API を使用してプロビジョニングの構成を自動化する方法について説明します。 この方法は、[アマゾン ウェブ サービス](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)などのアプリケーションで一般的に使用されています。
 
 **Microsoft Graph API を使用してプロビジョニングの構成を自動化する手順の概要**
 
@@ -48,7 +48,7 @@ Azure portal は、個々のアプリのプロビジョニングを一度に 1 �
 1. [Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を開始します。
 1. [Sign-In with Microsoft]\(Microsoft アカウントでサインイン\) ボタンを選択し、Azure AD 全体管理者またはアプリ管理者の資格情報を使用してサインインします。
 
-    ![Graph のサインイン](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph のサインイン](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. サインインに成功すると、左側のペインにユーザー アカウントの詳細が表示されます。
 

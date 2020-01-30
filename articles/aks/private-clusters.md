@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045599"
+ms.locfileid: "76154343"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
 
@@ -131,7 +131,7 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 
 ## <a name="limitations"></a>制限事項 
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベートクラスター、Azure プライベート エンドポイント、および仮想ネットワークサービスエンドポイントに適用されます。これらは現在、同一の仮想ネットワークではサポートされていません。
-* プライベートの Azure 仮想ネットワーク内のプライベート Cisco Application Centric Infrastructure (Cisco ACI) インスタンスを走らせるためのプライベートクラスター内の仮想ノードはサポートされていません。
+* プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません。
 * プライベートクラスターですぐに使用できる Azure DevOps インテグレーションはサポートされていません。
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
 * Azure Dev Spaces は現在サポートされていません。

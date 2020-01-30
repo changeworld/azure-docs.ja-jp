@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 97ed1e2ad84d895e9da0d96cd070e14acb46385d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991832"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841732"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Webhook サブスクライバー認証の構成
 
@@ -25,9 +25,9 @@ ms.locfileid: "72991832"
 ```json
  {
   "Env": [
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=false"
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=false"
   ]
 }
  ```
@@ -37,42 +37,42 @@ ms.locfileid: "72991832"
 ```json
  {
   "Env": [
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ]
 }
  ```
 
 >[!NOTE]
->プロパティ `outbound:webhook:allowUnknownCA` は、一般的に自己署名証明書が使用される、テスト環境でのみ `true` に設定してください。 運用環境のワークロードでは、**false** に設定することをお勧めします。
+>プロパティ `outbound__webhook__allowUnknownCA` は、一般的に自己署名証明書が使用される、テスト環境でのみ `true` に設定してください。 運用環境のワークロードでは、**false** に設定することをお勧めします。
 
 ## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>証明書の検証をスキップして HTTPS サブスクライバーを許可する
 
 ```json
  {
   "Env": [
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=true",
-    "outbound:webhook:allowUnknownCA=false"
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=true",
+    "outbound__webhook__allowUnknownCA=false"
   ]
 }
  ```
 
 >[!NOTE]
->プロパティ `outbound:webhook:skipServerCertValidation` は、認証される必要がある証明書を提示しないような、テスト環境でのみ `true` に設定してください。 運用環境のワークロードでは、**false** に設定することをお勧めします
+>プロパティ `outbound__webhook__skipServerCertValidation` は、認証される必要がある証明書を提示しないような、テスト環境でのみ `true` に設定してください。 運用環境のワークロードでは、**false** に設定することをお勧めします
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>自己署名証明書を使用して HTTP と HTTPS の両方を許可する
 
 ```json
  {
   "Env": [
-    "outbound:webhook:httpsOnly=false",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "outbound__webhook__httpsOnly=false",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ]
 }
  ```
 
 >[!NOTE]
->プロパティ `outbound:webhook:httpsOnly` は、HTTP サブスクライバーを先に起動することが望ましいような、テスト環境でのみ `false` に設定してください。 運用環境のワークロードでは、**true** に設定することをお勧めします
+>プロパティ `outbound__webhook__httpsOnly` は、HTTP サブスクライバーを先に起動することが望ましいような、テスト環境でのみ `false` に設定してください。 運用環境のワークロードでは、**true** に設定することをお勧めします

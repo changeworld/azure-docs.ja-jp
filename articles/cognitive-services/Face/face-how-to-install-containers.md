@@ -1,5 +1,5 @@
 ---
-title: コンテナーのインストールと実行 - FACE API
+title: コンテナーのインストールと実行 - Face
 titleSuffix: Azure Cognitive Services
 description: この記事では、このチュートリアルで Face のコンテナーをダウンロード、インストール、および実行する方法を示します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327036"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165991"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face コンテナーのインストールと実行 (プレビュー)
 
@@ -26,13 +26,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Face API コンテナーを使用する前に、次の前提条件を満たす必要があります。
+Face サービス コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
 |必須|目的|
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成しておく必要もあります。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の基本的概念を理解しておく必要があります。 また、基本的な `docker` コマンドの知識も必要です。| 
-|Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。
+|Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -46,7 +46,7 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-次の表に、各 Face API コンテナーに割り当てる CPU コアとメモリの最小値と推奨値を示します。
+次の表に、各 Face サービス コンテナーに割り当てる CPU コアとメモリの最小値と推奨値を示します。
 
 | コンテナー | 最小値 | 推奨 | 1 秒あたりのトランザクション数<br>(最小、最大)|
 |-----------|---------|-------------|--|
@@ -59,7 +59,7 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 
 ## <a name="get-the-container-image-with-docker-pull"></a>docker pull でコンテナー イメージを取得する
 
-Face API のコンテナー イメージを利用できます。 
+Face サービスのコンテナー イメージを利用できます。 
 
 | コンテナー | リポジトリ |
 |-----------|------------|
@@ -132,7 +132,7 @@ ApiKey={API_KEY}
 
 ## <a name="billing"></a>課金
 
-Face API コンテナーにより、Azure アカウントの Face API リソースが使用され、Azure に課金情報が送信されます。 
+Face サービス コンテナーにより、Azure アカウントの Face リソースが使用され、Azure に課金情報が送信されます。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -144,17 +144,17 @@ Face API コンテナーにより、Azure アカウントの Face API リソー�
 
 ## <a name="summary"></a>まとめ
 
-この記事では、Face API コンテナーをダウンロード、インストール、および実行する方法の概念とワークフローについて説明しました。 要約すると:
+この記事では、Face サービス コンテナーをダウンロード、インストール、および実行する方法の概念とワークフローについて説明しました。 要約すると:
 
 * コンテナー イメージは Azure Container Registry からダウンロードされます。
 * コンテナー イメージを Docker で実行します。
-* REST API または SDK のいずれかを使用して、コンテナーのホスト URI を指定することによって、Face API コンテナーの操作を呼び出すことができます。
+* REST API または SDK のいずれかを使用して、コンテナーのホスト URI を指定することによって、Face サービス コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
 
 > [!IMPORTANT]
 > Cognitive Services コンテナーは、計測のために Azure に接続されていないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスと課金情報をやり取りできるようにする必要があります。 Cognitive Services コンテナーによって、お客様のデータ (解析対象の画像やテキストなど) が Microsoft に送信されることはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定については、[コンテナーの構成](face-resource-container-config.md)に関するページをご覧ください。
 * 顔を検出して識別する方法の詳細については、[Face の概要](Overview.md)に関するページをご覧ください。

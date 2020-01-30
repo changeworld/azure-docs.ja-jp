@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112152"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278805"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -35,7 +35,7 @@ Azure Cognitive Search とのすべてのプログラミング インターフ�
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |一般公開、2019 年 5 月にリリース済み |
 | [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |8.0-preview |プレビュー、2019 年 4 月にリリース済み |
 | [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
-| [サービス REST API 2019-05-06 プレビュー](search-api-preview.md) |2019-05-06 プレビュー |プレビュー |
+| [サービス REST API 2019-05-06 プレビュー](search-api-preview.md) |2019-05-06-Preview |プレビュー |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
 
@@ -49,6 +49,9 @@ REST API の場合は、各呼び出しに対して `api-version` を含める�
 > サービス REST API と管理 REST API は、それぞれ別々にバージョン管理されます。 バージョン番号の類似性は偶然によるものです。
 
 一般公開 (またはGA) の API は、実稼働環境で使用でき、Azure サービス レベル アグリーメントの対象です。 プレビュー バージョンには、必ずしも GA バージョンに移行されるとは限らない実験用の機能が含まれています。 **運用アプリケーションではプレビュー API を使用しないことを強くお勧めします。**
+
+## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>2020 年 10 月 15 日までに最新バージョンの REST API に更新してください
+次に示すバージョンの Azure Cognitive Search REST API は、2020 年 10 月 15 日に廃止され、サポートされなくなりました。**2014-07-31-preview**、**2014-10-20-Preview**、**2015-02-28-Preview**、および **2015-02-28**。 さらに、**3.0.0-rc** よりも前のバージョンの Azure Cognitive Search .Net SDK は、これらの REST API バージョンの 1 つを対象としているため、廃止される予定です。 この日以降、非推奨の REST API または SDK のバージョンを使用するアプリケーションは動作しなくなり、アップグレードする必要があります。 この種類の変更と同様に、調整に十分な時間をとるため、12 か月前通知を行っています。  引き続き Azure Cognitive Search を使用するには、2020 年 10 月 15 日までに [REST API](search-api-migration.md) を対象とする既存のコードを [REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 以降または .Net SDK を [バージョン 3.0](search-dotnet-sdk-migration.md) 以降に移行してください。  最新バージョンへの更新についてご不明な点がある場合は、コードを更新するのに十分な時間があることを確認するため、2020 年 5 月 15 日までに azuresearch_contact@microsoft.com にメールでお問い合わせください。
 
 ## <a name="about-preview-and-generally-available-versions"></a>プレビュー バージョンと一般公開バージョンについて
 Azure Cognitive Search では常に、まず REST API によって、次に .NET SDK のプレリリース版で実験機能を事前公開しています。

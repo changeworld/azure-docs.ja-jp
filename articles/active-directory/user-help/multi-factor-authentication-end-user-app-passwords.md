@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914933"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705311"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -123,7 +122,7 @@ ms.locfileid: "70914933"
 
 パスワードを正しく入力したことを確認します。 パスワードを正しく入力したことをが確認できた場合、サインインを再試行して新しいアプリ パスワードを作成できます。 どちらの方法でも問題を解決できない場合は、既存のアプリ パスワードを削除して新しいパスワードを作成できるように、組織のヘルプ デスクに連絡してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 

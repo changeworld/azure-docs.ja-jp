@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bdc9e8cbea77b504cfdc2c3b1c83c74ea4ab8ed1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935975"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294339"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
 
@@ -124,7 +124,7 @@ public static class Clients
 次の定数と静的フィールドを Program.cs 内の **Program** クラスに追加します。
 
 > [!NOTE]
-> TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 [Content Moderator Web サイト](https://westus.contentmoderator.cognitive.microsoft.com/)から TeamName を取得します。
+> TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 Content Moderator Web サイトから TeamName を取得します。
 > ログインしたら、 **[設定]** (歯車) メニューから **[資格情報]** を選択します。
 >
 > チーム名は、 **[API]** セクションの **[Id]** フィールドの値です。
@@ -233,11 +233,11 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 ```
 
 > [!NOTE]
-> Content Moderator サービス キーには、Requests per Second (RPS) の速度制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
+> Content Moderator サービス キーには、秒単位の要求数 (RPS) の制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
 >
-> 階層なしのキーの RPS は 1 に制限されています。
+> 無料レベルのキーの RPS は 1 に制限されています。
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 コンソールに次のサンプル出力が表示されます。
 
@@ -250,7 +250,7 @@ Content Moderator レビュー ツールにサインインして、保留中の�
 
 **[次へ]** ボタンを使用して送信します。
 
-![ヒューマン モデレーター用の画像レビュー](images/ocr-sample-image.PNG)
+![人によるモデレーション用のイメージ レビュー](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>ログ ファイルのサンプル出力を確認する
 
@@ -314,6 +314,6 @@ Get review details.
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

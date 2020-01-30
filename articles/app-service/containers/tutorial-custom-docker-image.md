@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d960af01eed9fae0fec2566772799e4972053d7b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687495"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767102"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
@@ -99,7 +99,7 @@ docker run -p 8000:8000 mydockerimage
 
 先ほど作成したイメージを使用するアプリを作成するには、Azure CLI コマンドを実行してリソース グループを作成し、そのイメージをプッシュし、それを実行する App Service プラン Web アプリを作成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -122,7 +122,7 @@ az acr credential show --name <azure-container-registry-name>
 出力には、2 つのパスワードがユーザー名と共に含まれています。
 
 ```json
-<
+{
   "passwords": [
     {
       "name": "password",
@@ -147,7 +147,7 @@ docker login <azure-container-registry-name>.azurecr.io --username <registry-use
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-Azure Container Registry のコンテナー イメージをタグ付けします。 例:
+Azure Container Registry のコンテナー イメージをタグ付けします。 次に例を示します。
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -324,7 +324,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

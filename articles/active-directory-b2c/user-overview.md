@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620451"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840062"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -76,12 +76,12 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 
-コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。 コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップ ユーザー フローまたはサインイン ユーザー フロー](../active-directory-b2c/active-directory-b2c-reference-policies.md)を使用するか、Azure AD Graph API を使用するか、あるいは Azure portal を使用して作成されます。
+コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。 コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップ ユーザー フローまたはサインイン ユーザー フロー](user-flow-overview.md)を使用するか、Azure AD Graph API を使用するか、あるいは Azure portal を使用して作成されます。
 
-コンシューマー ユーザー アカウントを作成するときに、カスタム ユーザー属性を使用して、収集されるデータを指定できます。 詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)」を参照してください。
+コンシューマー ユーザー アカウントを作成するときに、カスタム ユーザー属性を使用して、収集されるデータを指定できます。 詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)」を参照してください。
 
-「[Azure AD Graph API を使用する](active-directory-b2c-devquickstarts-graph-dotnet.md)」の「**コンシューマー ユーザー アカウントを作成する**」セクションの情報を使用して、Azure AD B2C コンシューマー ユーザー アカウントを作成できます。 同じ記事の「**コンシューマー ユーザー アカウントを更新する**」セクションの情報を使用して、アカウントのプロパティを管理することもできます。
+「[Azure AD Graph API を使用する](manage-user-accounts-graph-api.md)」の「**コンシューマー ユーザー アカウントを作成する**」セクションの情報を使用して、Azure AD B2C コンシューマー ユーザー アカウントを作成できます。 同じ記事の「**コンシューマー ユーザー アカウントを更新する**」セクションの情報を使用して、アカウントのプロパティを管理することもできます。
 
 ### <a name="migrate-consumer-user-accounts"></a>コンシューマー ユーザー アカウントを移行する
 
-既存のコンシューマー ユーザー アカウントを ID プロバイダーから Azure AD B2C に移行しなければならない場合があります。 詳細については、「[ユーザー移行](active-directory-b2c-user-migration.md)」または「[ソーシャル ID を持つユーザーの移行](active-directory-b2c-social-migration.md)」を参照してください。
+既存のコンシューマー ユーザー アカウントを ID プロバイダーから Azure AD B2C に移行しなければならない場合があります。 詳細については、「[ユーザー移行](user-migration.md)」または「[ソーシャル ID を持つユーザーの移行](migrate-social-identities.md)」を参照してください。

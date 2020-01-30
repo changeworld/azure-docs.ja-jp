@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: このチュートリアルでは、Azure Network Watcher の次ホップ機能を使用して、仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276045"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845207"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシン ネットワークのルーティングの問題を診断する
 
@@ -49,12 +48,12 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[Compute]** を選択し、 **[Windows Server 2016 Datacenter]** または **[Ubuntu Server 17.10 VM]** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
-    |名前|myVm|
+    |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |Subscription| サブスクリプションを選択します。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
@@ -84,11 +83,11 @@ Azure では、既定の接続先へのルートを自動的に作成します�
 1. Azure Portal の **[Network Watcher]** で、 **[次ホップ]** を選択します。
 2. サブスクリプションを選択して、以下の値を入力または選択して、次の図に示すように **[次ホップ]** を選択します。
 
-    |Setting                  |値                                                   |
+    |設定                  |Value                                                   |
     |---------                |---------                                               |
     | Resource group          | myResourceGroup を選択する                                 |
     | 仮想マシン         | myVm を選択する                                            |
-    | Linux       | myvm - お使いのネットワーク インターフェイス名は異なる場合があります。   |
+    | ネットワーク インターフェイス       | myvm - お使いのネットワーク インターフェイス名は異なる場合があります。   |
     | 送信元 IP アドレス       | 10.0.0.4                                               |
     | 宛先 IP アドレス  | 13.107.21.200 - <www.bing.com> に対するアドレスの 1 つ。 |
 
@@ -107,9 +106,9 @@ Azure では、既定の接続先へのルートを自動的に作成します�
 
     「[次ホップの使用](#use-next-hop)」で 13.107.21.200 を使用してテストを実行したときは、他のルートにはそのアドレスが含まれていないため、アドレス プレフィックスが 0.0.0.0/0 のルートが、アドレスにトラフィックをルーティングするために使用されました。 既定では、他のルートのアドレス プレフィックス内で指定されていないすべてのアドレスが、インターネットにルーティングされます。
 
-    しかし、172.31.0.100 を使用してテストを実行したとき、結果から次ホップの種類がないことがわかりました。 前記の図でわかるように、172.31.0.100 アドレスを含む 172.16.0.0/12 プレフィックスへの既定のルートはあっても、 **[次ホップの種類]** は **[なし]** です。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由が発生しない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合、Azure では **[次ホップの種類]** をルートの **[仮想ネットワーク]** に変更します。 **[次ホップの種類]** として **[仮想ネットワーク]** にチェックマークが表示されます。
+    しかし、172.31.0.100 を使用してテストを実行したとき、結果から次ホップの種類がないことがわかりました。 前記の図でわかるように、172.31.0.100 アドレスを含む 172.16.0.0/12 プレフィックスへの既定のルートはあっても、 **[次ホップの種類]** は **[なし]** です。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合、Azure では **[次ホップの種類]** をルートの **[仮想ネットワーク]** に変更します。 **[次ホップの種類]** として **[仮想ネットワーク]** にチェックマークが表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
@@ -117,7 +116,7 @@ Azure では、既定の接続先へのルートを自動的に作成します�
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、VM を作成し、VM からのネットワークのルーティングを診断しました。 Azure では複数の既定のルートが作成されることを学習し、2 つの異なる送信先へのルーティングをテストしました。 詳細については、[Azure でのルーティング](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)と[カスタム ルートを作成する](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)方法に関するページを参照してください。
 

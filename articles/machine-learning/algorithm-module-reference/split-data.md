@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b707971f0b150bce63b4dd0ffa4e55dc3b3d6bac
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492648"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313961"
 ---
 # <a name="split-data-module"></a>Split Data (データの分割) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー内のモジュールについて説明します。
 
 このモジュールを使用して、データセットを 2 つの異なるセットに分割します。
 
@@ -113,6 +113,6 @@ ms.locfileid: "73492648"
 
     式によってデータセットは 2 つの行セットに分割されます。一方は、条件と一致する値を含む行のセット、もう一方は残りのすべての行のセットです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

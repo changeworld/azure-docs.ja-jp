@@ -12,13 +12,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e4228febb5b49ad14a89ceec5482c277fca5fae
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d8f5002c60150f39415d6e4debd1fc73b056c386
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844211"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698154"
 ---
 # <a name="application-types-in-v10"></a>v1.0 でのアプリケーションの種類
 
@@ -76,6 +75,6 @@ Azure AD に認証を委託するすべてのアプリケーションを、デ�
 
 このドキュメントに記載されている各シナリオには、プロビジョニングの要件を説明するサブセクションが含まれています。 Azure AD でのアプリケーションのプロビジョニング、およびシングル テナント アプリケーションとマルチテナント アプリケーションの違いの詳細については、「[Azure Active Directory とアプリケーションの統合](quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。 Azure AD の共通のアプリケーション シナリオを理解するために、このドキュメントを引き続きお読みください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure AD での他の[認証の基礎](v1-authentication-scenarios.md)について詳細を参照する。

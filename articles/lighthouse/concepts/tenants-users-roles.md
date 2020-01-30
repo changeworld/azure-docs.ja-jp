@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453567"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156337"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 
@@ -29,6 +29,9 @@ ms.locfileid: "75453567"
 - [所有者](../../role-based-access-control/built-in-roles.md#owner)ロールはサポートされていません。
 - [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 権限を持つすべての組み込みロールはサポートされていません。
 - 組み込みの[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールは、[顧客のテナント](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)のマネージド ID にロールを割り当てる目的限定でサポートされています。 このロールで通常付与されるその他の権限は適用されません。 ユーザーにこのロールを定義する場合は、このユーザーがマネージド ID に割り当てることができる組み込みロールも指定する必要があります。
+
+> [!NOTE]
+> 適用可能な新しい組み込みロールが Azure に追加されると、[Azure Resource Manager テンプレートを使用して顧客のオンボードをする](../how-to/onboard-customer.md)際に割り当てることができます。 [マネージド サービス オファーを発行する](../how-to/publish-managed-services-offers.md)際に、新しく追加したロールが Cloud パートナー ポータルで使用できるようになるまでに時間がかかる場合があります。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>ユーザーとロールを定義するためのベスト プラクティス
 

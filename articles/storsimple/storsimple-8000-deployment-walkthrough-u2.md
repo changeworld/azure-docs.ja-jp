@@ -1,25 +1,17 @@
 ---
-title: StorSimple 8000 シリーズ デバイスを Azure Portal でデプロイする | Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスを Azure Portal でデプロイする
 description: Update 3 以降を実行する StorSimple 8000 シリーズ デバイスと StorSimple デバイス マネージャー サービスをデプロイするための手順とベスト プラクティスを説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 1f44690de1f38e3d337072cc7c974887eb0e31cc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965899"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273956"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -42,20 +34,20 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。 これ�
 ## <a name="deployment-steps"></a>デプロイメントの手順
 StorSimple デバイスを構成し、StorSimple デバイス マネージャー サービスに接続するには、次の必須手順を実行します。 必須手順に加えて、デプロイ中にオプションの手順が必要になる場合があります。 デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
-| 手順 | 説明 |
+| 手順 | [説明] |
 | --- | --- |
 | **前提条件** |これらの前提条件は、今回のデプロイの準備として完了する必要があります。 |
 | [デプロイの構成チェック リスト](#deployment-configuration-checklist) |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
 | [デプロイメントの前提条件](#deployment-prerequisites) |これらの前提条件を使用して、デプロイに対する環境の準備が完了していることを確認します。 |
 |  | |
 | **デプロイの手順** |運用環境に StorSimple デバイスをデプロイするには、次の手順を実行します。 |
-| [手順 1:新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
+| [ステップ 1:新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
 | [手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key) |このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
-| [手順 3:StorSimple 用 Windows PowerShell を使用してデバイスを構成して登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用してセットアップを完了するには、デバイスをネットワークに接続して Azure に登録します。 |
+| [ステップ 3:StorSimple 用 Windows PowerShell を使用してデバイスを構成して登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用してセットアップを完了するには、デバイスをネットワークに接続して Azure に登録します。 |
 | [手順 4:デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[ベスト プラクティス:お使いの StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
 | [手順 5:ボリューム コンテナーを作成する](#step-5-create-a-volume-container) |ボリュームをプロビジョニングするためのコンテナーを作成します。 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
 | [手順 6:ボリュームを作成する](#step-6-create-a-volume) |サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
-| [手順 7: ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-8000-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
+| [手順 7:ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-8000-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
 | [手順 8: バックアップを作成する](#step-8-take-a-backup) |データを保護するためのバックアップ ポリシーを設定します。 |
 |  | |
 | **その他の手順** |ソリューションのデプロイ中に、これらの手順を参照する必要が生じる場合があります。 |
@@ -160,7 +152,7 @@ MPIO を構成しない場合は、次の手順に従い、Windows Server ホス
 
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>ステップ 8:バックアップを作成する
+## <a name="step-8-take-a-backup"></a>手順 8:バックアップを取得する
 バックアップにより、特定の時点のボリュームを保護し、復元時間を最小限に抑えながら回復性を向上させることができます。 StorSimple デバイスでは、ローカル スナップショットとクラウド スナップショットという 2 種類のバックアップを実行できます。 どちらの種類のバックアップも、 **[スケジュール設定]** または **[手動]** で実行できます。
 
 スケジュールされたバックアップを作成するには、Azure Portal で次の手順を実行します。
@@ -212,7 +204,7 @@ DB9 メス コネクタは P1 であり、3.5 mm コネクタは P2 です。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Cloud Appliance の構成](storsimple-8000-cloud-appliance-u2.md)を行います。
 * [StorSimple デバイス マネージャー サービス](storsimple-8000-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
 

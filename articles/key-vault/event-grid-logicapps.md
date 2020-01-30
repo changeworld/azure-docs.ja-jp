@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133999"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845847"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps を使用して Key Vault シークレットの状態変更に関するメールを受け取る
 
@@ -34,7 +34,6 @@ Azure Key Vault/Azure Event Grid 統合の概要については、「[Azure Even
 
 Azure Event Grid サブスクリプションを作成するには、次の手順に従います。
 
-1. 次のリンクを使用して、Azure portal を開きます: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. Azure portal で、キー コンテナーに移動し、 **[イベント] > [はじめに]** を選択して **[Logic Apps]** をクリックします
 
     
@@ -84,7 +83,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
 シークレットが作成されると、構成したアドレスでメールを受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要:[Azure Event Grid での Key Vault の監視 (プレビュー)](event-grid-overview.md)
 - 方法:[Azure Automation へのキー コンテナー通知のルーティング](event-grid-tutorial.md)

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231107"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766228"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -26,7 +26,7 @@ Azure Functions バージョン 2.x では、[バインド](./functions-triggers
 
 | 開発環境 |登録<br/> (Functions 1.x)  |登録<br/> (Functions 2.x)  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure ポータル|自動|自動|
+|Azure portal|自動|自動|
 |非.NET 言語またはローカルの Azure Core Tools の開発|自動|[Azure Functions Core Tools と拡張機能バンドルを使用する](#extension-bundles)|
 |Visual Studio を使用する C# クラス ライブラリ|[NuGet ツールを使用](#vs)|[NuGet ツールを使用](#vs)|
 |Visual Studio Code を使用する C# クラス ライブラリ|該当なし|[.NET Core CLI を使用](#vs-code)|
@@ -63,9 +63,6 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 ## <a name="vs-code"></a>Visual Studio Code を使用する C# クラス ライブラリ
 
-> [!NOTE]
-> Functions で互換性のある一連のバインディング拡張機能パッケージが自動的にインストールされるようにするには、[拡張機能バンドル](#extension-bundles)を使用することをお勧めします。 
-
 **Visual Studio Code** では、コマンド プロンプトから .NET Core CLI の [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用して C# クラス ライブラリ プロジェクトのパッケージをインストールします。 次の例は、バインディングの追加方法を示しています。
 
 ```terminal
@@ -78,6 +75,6 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 例の中の `<TARGET_VERSION>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバンドの例](./functions-bindings-example.md)

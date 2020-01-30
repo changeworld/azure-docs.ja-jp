@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889518"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290395"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -111,7 +111,7 @@ IP を使い切らないようにするには、[ネットワーク クォータ
 
 ステートレス アプリケーションの移行は、最も簡単なケースです。 リソース定義 (YAML または Helm) を新しいクラスターに適用し、すべてが想定どおりに動作していることを確認してから、トラフィックをリダイレクトして新しいクラスターをアクティブにします。
 
-### <a name="considers-for-stateful-applications"></a>ステートフル アプリケーションに関する考慮事項
+### <a name="considerations-for-stateful-applications"></a>ステートフル アプリケーションに関する考慮事項
 
 データの損失や予期しないダウンタイムを回避するために、ステートフル アプリケーションの移行は慎重に計画してください。
 
@@ -161,7 +161,7 @@ Azure Managed Disks を使用する場合は、どの VM にも接続されて�
 
 ### <a name="deployment-of-your-cluster-configuration"></a>クラスター構成のデプロイ
 
-既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用して、[アプリケーションを構築し、AKS にデプロイする](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)ことができます。既存のデプロイ タスクを複製して、`kubeconfig` が確実に新しい AKS クラスターを指すようにします。
+既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用すると、[アプリケーションをビルドして AKS にデプロイ](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)できます。 既存のデプロイ タスクを複製し、`kubeconfig` が新しい AKS クラスターを指すようにします。
 
 それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。
 

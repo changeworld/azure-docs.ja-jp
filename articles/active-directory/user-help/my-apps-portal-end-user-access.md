@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233177"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705005"
 ---
 # <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルで組織のクラウドベース アプリを検索して使用する
 
@@ -154,7 +153,7 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
     アプリの中には、追加される前に管理者の承認が必要なものがあります。 このような状況では、アプリは、管理者が承認するまで、**アプリ** ページに追加されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **アプリ** ページに到達した後、次の操作を実行できます。
 

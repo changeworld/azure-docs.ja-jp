@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428525"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548477"
 ---
 # <a name="filter-based-feature-selection"></a>フィルターに基づく特徴選択
 
@@ -97,9 +97,9 @@ ms.locfileid: "75428525"
 
 処理の完了後は、次の操作を実行します。
 
-+ 分析された特徴列とそのスコアの完全な一覧を表示するには、モジュールを右クリックします。 **[Features]\(特徴\)** を選択し、 **[可視化]** を選択します。  
++ 分析された特徴列とそのスコアの完全な一覧を表示するには、モジュールを右クリックして **[可視化]** を選択します。  
 
-+ 特徴選択条件に基づいて生成されたデータセットを表示するには、モジュールを右クリックします。 **[データセット]** を選択し、 **[可視化]** を選択します。 
++ 特徴選択条件に基づいたデータセットを表示するには、モジュールを右クリックして **[可視化]** を選択します。 
 
 データセットに含まれる列の数が予想よりも少ない場合は、モジュールの設定を確認します。 また、入力として指定された列のデータ型も確認します。 たとえば、 **[Number of desired features]\(目的の特徴の数\)** を 1 に設定した場合、出力データセットには、ラベル列と最も高いランクの特徴列の 2 つの列のみが含まれます。
 

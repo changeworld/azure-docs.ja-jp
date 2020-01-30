@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951039"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840198"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -38,7 +38,7 @@ ms.locfileid: "74951039"
 - [RESTful プロバイダー](restful-technical-profile.md) - ユーザーの入力の検証、ユーザー データの促進、基幹業務アプリケーションとの統合など、REST API サービスを呼び出します。
 - [SAML2](saml-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
-- [セッション管理](active-directory-b2c-reference-sso-custom.md) - さまざまな種類のセッションを処理します。
+- [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー
@@ -49,7 +49,7 @@ ms.locfileid: "74951039"
  
 1. **InputClaimsTransformation** - すべての入力[要求変換](claimstransformations.md)の入力要求が要求バッグからピックアップされます。実行後、出力要求は要求バッグに戻されます。 入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 2. **InputClaims** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
-3. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 例:
+3. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
     - InputClaims としてパラメーターを送信し、OutputClaims として情報を戻しながら、REST API を呼び出します。
     - ユーザー アカウントを作成または更新します。
@@ -57,7 +57,7 @@ ms.locfileid: "74951039"
 4. **ValidationTechnicalProfiles** - [セルフ アサート技術プロファイル](self-asserted-technical-profile.md)では、入力の[検証技術プロファイル](validation-technical-profile.md)を呼び出すことができます。 検証技術プロファイルでは、ユーザーによってプロファイルされたデータを検証し、出力要求を含めて、または含めないで、エラー メッセージや OK を返します。 たとえば、Azure AD B2C では、新しいアカウントを作成する前に、ユーザーがディレクトリ サービスに既に存在するかどうかを確認します。 REST API 技術プロファイルを呼び出して、独自のビジネス ロジックを追加できます。<p>検証技術プロファイルの出力要求の範囲は、検証技術プロファイルや同じ技術プロファイルにあるその他の技術プロファイルを呼び出す技術プロファイルに限定されます。 次のオーケストレーションの手順で出力要求を使用する場合は、検証技術プロファイルを呼び出す技術プロファイルに出力要求を追加する必要があります。
 5. **OutputClaims** - 要求は要求バッグに戻されます。 次のオーケストレーションの手順、または出力要求変換でこれらの要求を使用できます。
 6. **OutputClaimsTransformations** - すべての出力[要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
-7. **シングル サインオン (SSO) セッションの管理** - [SSO セッションの管理](active-directory-b2c-reference-sso-custom.md)では、ユーザーが認証された後に、ユーザーとの相互作用を制御します。 たとえば、管理者は、選択した ID プロバイダーを表示するかどうか、ローカル アカウントの詳細をもう一度入力する必要があるかどうかを制御できます。
+7. **シングル サインオン (SSO) セッションの管理** - [SSO セッションの管理](custom-policy-reference-sso.md)では、ユーザーが認証された後に、ユーザーとの相互作用を制御します。 たとえば、管理者は、選択した ID プロバイダーを表示するかどうか、ローカル アカウントの詳細をもう一度入力する必要があるかどうかを制御できます。
 
 技術プロファイルは、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルから継承できます。  **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の基本技術プロファイルへの参照です。
 

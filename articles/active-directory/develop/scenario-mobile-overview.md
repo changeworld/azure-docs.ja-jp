@@ -16,15 +16,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0a33b5bb4fc7220a9cf66f40e9805d3fde9fccef
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965468"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702047"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ: Web API を呼び出すモバイル アプリケーション
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すモバイル アプリケーション
 
 Web API を呼び出すモバイル アプリを構築する方法について説明します。
 
@@ -32,16 +31,16 @@ Web API を呼び出すモバイル アプリを構築する方法について�
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 最初のモバイル アプリケーションを作成して、クイック スタートをお試しください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-android.md)
+> [クイック スタート: Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-android.md)
 >
-> [クイック スタート:iOS アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+> [クイック スタート: iOS アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
 >
-> [クイック スタート:Xamarin iOS および Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [クイック スタート: Xamarin iOS および Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>概要
 
@@ -63,7 +62,7 @@ Microsoft ID プラットフォームでモバイル アプリを構築すると
 - iOS および Android の MSAL では、ユーザーをサインインさせるために、(お使いのアプリの上に表示される場合がある) 外部ブラウザーを使用することがあります。 アプリ内の WebView を代わりに使用するように構成をカスタマイズすることができます。
 - モバイル アプリケーションでは、シークレットは決して使用しないでください。 すべてのユーザーがアクセスできるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリの登録](scenario-mobile-app-registration.md)

@@ -1,6 +1,6 @@
 ---
 title: VM を作成するための Azure DevTest Labs 数式の管理 | Microsoft Docs
-description: Azure DevTest Labs 数式を更新および削除する方法について説明します
+description: この記事では、ベース (カスタム イメージ、Marketplace イメージ、他の数式) または既存の VM から数式を作成する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a668c1f7cf401c109c1041232d7f28dd2accd750
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60562534"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760404"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -38,7 +38,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 ### <a name="create-a-formula-from-a-base"></a>ベースから数式を作成する
 数式を、カスタムイメージ、Marketplace イメージ、またはその他の数式から作成する手順は次のとおりです。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -82,7 +82,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 > 
 > 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボの **[概要]** ページで、数式の作成元にする VM を選択します。
@@ -99,7 +99,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 ## <a name="modify-a-formula"></a>数式の変更
 数式を変更するには、次の手順に従います。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボのページで、 **[数式 (再利用可能なベース)]** を選択します。
@@ -111,7 +111,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 ## <a name="delete-a-formula"></a>数式の削除
 数式を削除するには、次の手順に従います。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボの **[設定]** ページで、 **[数式]** を選択します。
@@ -130,6 +130,6 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 ## <a name="related-blog-posts"></a>関連するブログ記事
 * [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm.md)します。
 

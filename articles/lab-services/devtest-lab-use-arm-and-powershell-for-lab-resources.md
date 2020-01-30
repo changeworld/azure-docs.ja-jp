@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する | Microsoft Docs
+title: Azure Resource Manager テンプレートを使ってラボを作成または変更する
 description: Azure Resource Manager テンプレートと PowerShell を使用して DevTest ラボでラボを自動的に作成または変更する方法を学習します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622459"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170304"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する
 
@@ -27,15 +27,15 @@ DevTest ラボが提供する数多くの Azure Resource Manager テンプレー
 
 この記事では、これらのテンプレートとスクリプトを使用してラボの作成、変更、デプロイを自動化するプロセスを説明します。 この記事では、PowerShell を使用して DevTest ラボでいくつかの一般的タスクを実行する方法の詳細も紹介します。
 
-## <a name="step-1-gather-your-templates-and-scripts"></a>ステップ 1:テンプレートとスクリプトを収集する
+## <a name="step-1-gather-your-templates-and-scripts"></a>手順 1:テンプレートとスクリプトを収集する
 あらかじめ定義された [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)と [PowerShell スクリプト](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts)が、当社が公開する [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)にあります。 これらをそのまま使用するか、ニーズに合わせてカスタマイズして、独自の[プライベート Git リポジトリ](devtest-lab-add-artifact-repo.md)に保管できます。
 
-## <a name="step-2-modify-your-azure-resource-manager-template"></a>ステップ 2:Azure Resource Manager テンプレートの変更
+## <a name="step-2-modify-your-azure-resource-manager-template"></a>手順 2:Azure Resource Manager テンプレートの変更
 これまでテンプレートを作成したことがない場合は、「[初めての Azure Resource Manager テンプレートを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)」の手順に従うことができます。
 
 さらに、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)」では、信頼性が高く使いやすい Azure Resource Manager テンプレートの作成に役立つ多くのガイドラインと推奨事項を紹介しています。 通常、紹介されているいずれかのアプローチや例のバリエーションを使用し、ニーズに応じてテンプレートを変更します。
 
-## <a name="step-3-deploy-resources-with-powershell"></a>ステップ 3:PowerShell によりリソースをデプロイする
+## <a name="step-3-deploy-resources-with-powershell"></a>手順 3:PowerShell によりリソースをデプロイする
 テンプレートやスクリプトをカスタマイズした後で、[Resource Manager テンプレートと Azure PowerShell を使用してリソースをデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)するために必要な手順に従ってください。 この記事では、Azure PowerShell と Azure Resource Manager テンプレートを使用してリソースを Azure にデプロイする場合の概要を説明します。
 
 
@@ -47,6 +47,6 @@ PowerShell を使用して自動化できる一般的タスクが他にも多数
 * [PowerShell を使用してラボに外部ユーザーを追加する](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
 * [PowerShell を使用してラボ カスタム ロールを作成する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 * カスタマイズしたテンプレートまたはスクリプトを保存するための[プライベート Git リポジトリ](devtest-lab-add-artifact-repo.md)を作成する方法を学習します。
 * [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。

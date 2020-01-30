@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 81bad21b53dbac3f03d11b2ffd7e42b15c0e37eb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534983"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722256"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -125,7 +125,7 @@ def stop_by_schedule_id(ws, schedule_id):
     s.disable()
     return s
 
-stop_by_schedule(ws, schedule_id)
+stop_by_schedule_id(ws, schedule_id)
 ```
 
 その後 `Schedule.list(ws)` を再度実行すると、空の一覧が表示されます。

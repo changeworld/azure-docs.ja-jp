@@ -2,13 +2,13 @@
 title: リソースが見つからないエラー
 description: Azure Resource Manager テンプレートでデプロイ時にリソースが見つからないエラーを解決する方法について説明します。
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 832dc15f81c0fd815072b9e95920a4388a94cb0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474301"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310664"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
@@ -41,8 +41,8 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -76,8 +76,8 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 
@@ -87,4 +87,16 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>解決策 4 - リソースからマネージド ID を取得する
+
+[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を暗黙的に作成するリソースをデプロイする場合は、そのリソースがデプロイされるまで待機してから、マネージド ID の値を取得する必要があります。 マネージ ID 名を [reference](template-functions-resource.md#reference) 関数に渡すと、Resource Manager はリソースと ID がデプロイされる前に参照の解決を試みます。 代わりに、ID が適用されるリソースの名前を渡します。 この方法では、Resource Manager が参照関数を解決する前に、リソースとマネージド ID が確実にデプロイされます。
+
+Reference 関数では、`Full` を使用して、マネージド ID を含むすべてのプロパティを取得します。
+
+たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

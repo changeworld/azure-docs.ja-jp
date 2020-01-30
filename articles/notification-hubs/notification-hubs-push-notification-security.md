@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs のセキュリティ
-description: このトピックでは、Azure Notification Hubs のセキュリティについて説明します。
+title: Notification Hubs のセキュリティ モデル
+description: Azure Notification Hubs のセキュリティ モデルについて説明します。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263763"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs のセキュリティ
 
@@ -48,11 +48,11 @@ Notification Hubs では、*Shared Access Signature* (SAS) と呼ばれるエン
 
 他のエンティティと同様に、通知ハブの操作は 3 つのセキュリティ要求**Listen**、**Send**、および **Manage** に対して許可されています。
 
-| 要求   | 説明                                          | 許可される操作 |
+| 要求   | [説明]                                          | 許可される操作 |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Listen  | 単一の登録の作成/更新、読み取り、削除を行います | 登録を作成/更新する<br><br>登録を読み取る<br><br>ハンドルのすべての登録を読み取る<br><br>登録を削除する |
+| リッスン  | 単一の登録の作成/更新、読み取り、削除を行います | 登録を作成/更新する<br><br>登録を読み取る<br><br>ハンドルのすべての登録を読み取る<br><br>登録の削除 |
 | Send    | 通知ハブにメッセージを送信する                | メッセージを送信する |
-| 管理  | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |ハブの作成/更新/読み取り/削除を行う<br><br>タグで登録を読み取る |
+| 管理する  | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |ハブの作成/更新/読み取り/削除を行う<br><br>タグで登録を読み取る |
 
 Notification Hubs では、ハブに直接構成された共有キーを使用して生成された SAS トークンが受け入れられます。
 
@@ -64,7 +64,7 @@ Notification Hubs では、ハブに直接構成された共有キーを使用�
 
 新しいセキュリティ要求を作成するか、既存の SAS キーを表示するには、次の手順を実行します。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. **[すべてのリソース]** を選択します。
 3. 要求を作成する、または SAS キーを表示する通知ハブの名前を選択します。
 4. 左側のメニューで、 **[アクセス ポリシー]** を選択します。
@@ -79,6 +79,6 @@ Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=polic
 
 ![SAS キーを取得する](media/notification-hubs-push-notification-security/access1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Notification Hubs の概要](notification-hubs-push-notification-overview.md)

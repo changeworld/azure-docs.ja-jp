@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のイベントをフィルター処理する方法
-description: イベントをフィルター処理する Azure Event Grid サブスクリプションを作成する方法を示します。
+description: この記事では、Event Grid サブスクリプションを作成するときに、イベントをフィルター処理 (イベントの種類、件名、演算子、データなど) する方法について説明します。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5bb95b80e12c818641e2be2b929cdfd01f8f5b5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58da209c68449d3a28b08f52ec575f7db520f121
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304224"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514546"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid のイベントのフィルター処理
 
@@ -304,7 +304,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信の監視について詳しくは、「[Event Grid メッセージ配信の監視](monitor-event-delivery.md)」をご覧ください。
 * 認証キーについて詳しくは、「[Event Grid のセキュリティと認証](security-authentication.md)」をご覧ください。

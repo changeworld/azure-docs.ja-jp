@@ -3,8 +3,7 @@ title: チュートリアル - Azure portal を使用してネットワーク通
 description: このチュートリアルでは、Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419700"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834656"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
@@ -37,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-vms"></a>VM の作成
 
@@ -49,12 +48,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[Compute]** を選択し、オペレーティング システムを選択します。 このチュートリアルでは、 **[Windows Server 2016 Datacenter]** を使用します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
-    |名前|myVm1|
+    |Name|myVm1|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |Subscription| サブスクリプションを選択します。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
@@ -71,13 +70,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [最初の VM を作成する](#create-the-first-vm)の手順を、次を変更して再度実行します。
 
-|手順|Setting|値|
+|手順|設定|Value|
 |---|---|---|
 | 1 | いずれかのバージョンの **Ubuntu Server** を選択する |                                                                         |
-| 3 | 名前                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | 認証の種類                   | SSH 公開キーを貼り付けるか、 **[パスワード]** を選択して、パスワードを入力します。 |
 | 3 | Resource group                        | **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。                 |
-| 6 | Extensions                            | **Linux 用 Network Watcher Agent**                                             |
+| 6 | 拡張機能                            | **Linux 用 Network Watcher Agent**                                             |
 
 VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
 
@@ -91,12 +90,12 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 4. **[+ 追加]** を選択します。
 5. 監視する接続の情報を入力するか選択して、 **[追加]** を選択します。 次の図に示す例で、監視される接続は、ポート 22 経由の *myVm1* VM から *myVm2* VM への接続です。
 
-    | Setting                  | 値               |
+    | 設定                  | Value               |
     | ---------                | ---------           |
-    | 名前                     | myVm1-myVm2(22)     |
+    | Name                     | myVm1-myVm2(22)     |
     | source                   |                     |
     | 仮想マシン          | myVm1               |
-    | Destination              |                     |
+    | 宛先              |                     |
     | 仮想マシンを選択する |                     |
     | 仮想マシン          | myVm2               |
     | Port                     | 22                  |
@@ -115,7 +114,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     次の情報をメモしておきます。
 
-    | Item                     | 値                      | 詳細                                                     |
+    | Item                     | Value                      | 詳細                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Status                   | 到達可能                  | エンドポイントが到達可能かどうかを知ることができます。|
     | 平均 往復時間          | 接続を作成するまでの往復時間 (ミリ秒) を知ることができます。 接続モニターは、60 秒ごとに接続をプローブするため、時間経過に伴う待機時間を監視できます。                                         |
@@ -147,12 +146,12 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
 4. 仮想ネットワーク内のすべての VM 間の通信を許可する既定の規則は、**AllowVnetInBound** という名前の規則です。 **AllowVnetInBound** 規則よりも高い優先順位 (小さい数値) で、ポート 22 経由の受信を拒否する規則を作成します。 次の情報を選択するか、入力し、それ以外の情報は既定値を受け入れて、 **[作成]** を選択します。
 
-    | Setting                 | 値          |
+    | 設定                 | Value          |
     | ---                     | ---            |
     | 宛先ポート範囲 | 22             |
-    | Action                  | 拒否           |
+    | アクション                  | 拒否           |
     | Priority                | 100            |
-    | 名前                    | DenySshInbound |
+    | Name                    | DenySshInbound |
 
 5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]** 、 **[接続モニター]** の順に選択し、 **[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
 
@@ -164,7 +163,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     手順 4. で作成したセキュリティの規則をだれかが実装したことを知らなかった場合、接続モニターからこの規則が通信の問題を引き起こしていることがわかります。 その後、規則を変更、オーバーライド、または削除して、VM 間の通信を復元できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
@@ -172,7 +171,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、2 つの VM 間の接続を監視する方法について説明しました。 ネットワーク セキュリティ グループの規則によって、VM への通信が妨げられていたことがわかりました。 接続モニターが返すことができるすべてのさまざまな応答については、[応答の種類](network-watcher-connectivity-overview.md#response)に関するページを参照してください。 VM、完全修飾ドメイン名、URI (Uniform Resource Identifier)、または IP アドレス間の接続を監視することもできます。
 

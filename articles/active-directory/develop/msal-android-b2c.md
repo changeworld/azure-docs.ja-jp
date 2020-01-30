@@ -13,13 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98a31ea2daffba19242e73362af5a44e3a392342
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917116"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696523"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
@@ -140,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>ポリシーを指定する
 
-B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`acquireToken` または `acquireTokenSilent` パラメーターを構築するときに `fromAuthority` 句を指定します。  例:
+B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`acquireToken` または `acquireTokenSilent` パラメーターを構築するときに `fromAuthority` 句を指定します。  次に例を示します。
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -238,6 +237,6 @@ B2C では、各ポリシーが個別の機関として扱われます。 した
 
 `acquireTokenSilent` を使用してポリシーのトークンを更新する場合は、ポリシーの前の呼び出しで返されたのと同じ `IAccount` を `AcquireTokenSilentParameters` に指定します。 別のポリシーによって返されたアカウントを指定すると、エラーが発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory B2C (Azure AD B2C) の詳細については、「[Azure Active Directory B2C とは](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)」を参照してください。

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74666b1dc2ba4fac25aff0a56a52d048d746d465
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a0a6581e0eed74725a7186e528618da5d8a4f890
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950937"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840249"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) や [Salesforce](active-directory-b2c-setup-sf-app-custom.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
+Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](identity-provider-adfs2016-custom.md) や [Salesforce](identity-provider-salesforce-custom.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="metadata-exchange"></a>メタデータ交換
 
@@ -121,16 +121,16 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
 | WantsSignedRequests | いいえ | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
-| XmlSignatureAlgorithm | いいえ | SAML 要求に署名するために Azure AD B2C が使用するメソッド。 このメタデータは、SAML 要求の **SigAlg** パラメーター (クエリ文字列または post パラメーター) の値を制御します。 可能な値: `Sha256`、`Sha384`、`Sha512`、または`Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 |
+| XmlSignatureAlgorithm | いいえ | SAML 要求に署名するために Azure AD B2C が使用するメソッド。 このメタデータは、SAML 要求の **SigAlg** パラメーター (クエリ文字列または post パラメーター) の値を制御します。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 |
 | WantsSignedAssertions | いいえ | 技術プロファイルで、着信アサーションすべてに署名が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるすべてのアサーション セクション `saml:Assertion` に署名する必要があります。 値が `false` に設定されている場合、ID プロバイダーは、アサーションを署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 このメタデータは、メタデータ フラグ **WantsAssertionsSigned** も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 アサーションの検証を無効にした場合、応答の署名の検証も無効にできます (詳細については、**ResponsesSigned** を参照)。 |
 | ResponsesSigned | いいえ | 指定できる値: `true` または `false`。 既定値は `true` です。 値が `false` に設定されている場合、ID プロバイダーは、SAML 応答を署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信される SAML 応答が署名され、必ず検証されます。 SAML 応答の検証を無効にした場合、アサーション署名の検証も無効にできます (詳細については、**WantsSignedAssertions** を参照)。 |
 | WantsEncryptedAssertions | いいえ | 技術プロファイルで、着信アサーションすべてに暗号化が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `false` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるアサーションが必ず署名され、**SamlAssertionDecryption** 暗号化キーを指定する必要があります。 値が `true` に設定されている場合、Azure AD B2C 技術プロファイルのメタデータには **encryption** セクションが含まれます。 ID プロバイダーはメタデータを読み取り、Azure AD B2C 技術プロファイルのメタデータに提供されている公開キーを使用して SAML 応答アサーションを暗号化します。 アサーションの暗号化を有効にした場合、応答の署名の検証を無効にする必要があります (詳細については、**ResponsesSigned** を参照)。 |
 | IdpInitiatedProfileEnabled | いいえ | SAML ID プロバイダーのプロファイルによって開始されたシングル サインオン セッションのプロファイルが有効かどうかを示します。 指定できる値: `true` または `false`。 既定では、 `false`です。 ID プロバイダーによって開始されたフローでは、ユーザーが外部から認証され、要請されていない応答は Azure AD B2C に送信されます。次にこれがトークンを使用してオーケストレーションの手順を実行し、応答を証明書利用者アプリケーションに送信します。 |
-| NameIdPolicyFormat | いいえ | 要求されたサブジェクトを表すために使用する名前識別子に対する制約を指定します。 省略した場合、要求されたサブジェクトに対して ID プロバイダーがサポートするあらゆる種類の識別子を使用できます。 たとえば、`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` を使用します。 **NameIdPolicyFormat** は **NameIdPolicyAllowCreate** とともに使用できます。 サポートされている名前 ID ポリシーに関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 |
+| NameIdPolicyFormat | いいえ | 要求されたサブジェクトを表すために使用する名前識別子に対する制約を指定します。 省略した場合、要求されたサブジェクトに対して ID プロバイダーがサポートするあらゆる種類の識別子を使用できます。 (例: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`)。 **NameIdPolicyFormat** は **NameIdPolicyAllowCreate** とともに使用できます。 サポートされている名前 ID ポリシーに関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 |
 | NameIdPolicyAllowCreate | いいえ | **NameIdPolicyFormat** を使用するときに、**NameIDPolicy** の `AllowCreate` プロパティも指定できます。 このメタデータの値は `true` または `false` で、ID プロバイダーがサインイン フロー中に新しいアカウントを作成できるかどうかを示します。 この詳しい手順については、ID プロバイダーのドキュメントを参照してください。 |
 | AuthenticationRequestExtensions | いいえ | Azure AD BC と ID プロバイダー間で同意される省略可能なプロトコル メッセージ拡張機能要素。 拡張機能は、XML 形式で表示されます。 CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内部に XML データを追加します。 拡張機能要素がサポートされているかどうかは、ID プロバイダーのドキュメントを確認してください。 |
 | IncludeAuthnContextClassReferences | いいえ | 認証コンテキスト クラスを識別する URI 参照を 1 つ以上指定します。 たとえば、ユーザーがユーザー名とパスワードのみでサインインできるようにするには、値を `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` に設定します。 保護されたセッション (SSL/TLS) でユーザー名とパスワードを使用してサインインできるようにするには、`PasswordProtectedTransport` を指定します。 サポートされている **AuthnContextClassRef** URI に関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 複数の URI をコンマ区切りのリストで指定します。 |
@@ -140,15 +140,15 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute |必須 | 説明 |
+| Attribute |Required | [説明] |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |
 | MetadataSigning |いいえ | SAML データを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、メタデータに署名します。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2C での SAML ID プロバイダーの使用例については、次の記事を参照してください。
 
-- [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](active-directory-b2c-custom-setup-adfs2016-idp.md)
-- [SAML を利用した、Salesforce アカウントでのサインイン](active-directory-b2c-setup-sf-app-custom.md)
+- [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](identity-provider-adfs2016-custom.md)
+- [SAML を利用した、Salesforce アカウントでのサインイン](identity-provider-salesforce-custom.md)

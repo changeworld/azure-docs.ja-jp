@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814600"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721627"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge モジュールの [Marketplace] タブ
 
@@ -33,8 +33,8 @@ ms.locfileid: "73814600"
 | **タイトル\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **要約\***               | プランの短い要約。 最大長は 100 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **[Long Summary]\(長い要約\)\***          | プランのより長い要約 ( **[要約]** と同じでもかまいません)。  最大長は 256 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **説明\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
-| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Description\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u>Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
+| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  次に例を示します。 <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 10 個設定できます。 少なくともドキュメントへのリンクを 1 つと、[Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。 |
 | **Suggested Categories (推奨されるカテゴリ)\*** | 最大 5 個までカテゴリを選択します。 これらは製品の詳細ページに表示されます。 参照ページでは、すべての IoT Edge モジュールが、 *[モノのインターネット] \> [IoT Edge モジュール]* カテゴリの下に表示されます。|
@@ -61,13 +61,13 @@ ms.locfileid: "73814600"
 
 - プランを参照する場合:
 
-    ![Azure portal の参照時に IoT Edge モジュールがどのように表示されるか #1](./media/iot-edge-module-portal-browse.png)
+    ![Azure portal の参照時の IoT Edge モジュールの表示 #1](./media/iot-edge-module-portal-browse.png)
 
-    ![Azure portal の参照時に IoT Edge モジュールがどのように表示されるか #2](./media/iot-edge-module-portal-product-picker.png)
+    ![Azure portal の参照時の IoT Edge モジュールの表示 #2](./media/iot-edge-module-portal-product-picker.png)
 
 - プランを検索する場合:
 
-    ![Azure portal の検索時に IoT Edge モジュールがどのように表示されるか](./media/iot-edge-module-portal-search.png)
+    ![Azure portal の検索時の IoT Edge モジュールの表示](./media/iot-edge-module-portal-search.png)
 
 - プランの詳細を確認する場合:
 
@@ -129,7 +129,7 @@ Hero ロゴはオプションです。
 *  ロゴのデザイン時にはテキストの使用をできるだけ避けてください。 プランが表示されるときに、発行元の名前、プランのタイトル、プランの長い要約、および作成ボタンが、プログラムによってロゴ内に埋め込まれます。 
 * ヒーロー ロゴの右側に、未使用の四角形の領域を含めてください。 この空白スペースは 415 x 100 ピクセルで、左側からのオフセットが 370 ピクセルです。  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)
@@ -171,6 +171,6 @@ As an example, the following hero icon is for the Azure Container Service.
 |  |  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[サポート]](./cpp-support-tab.md) タブを使用し、プランに対してテクニカル サポートとユーザー サポートのリソースを指定します。

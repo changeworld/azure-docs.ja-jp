@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771923"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546352"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,12 +23,49 @@ ms.locfileid: "75771923"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Azure Machine Learning SDK for Python v1.0.85
+
++ **新機能**
+  + **azureml-core**
+    + 特定のワークスペースとサブスクリプションで AmlCompute リソースの現在のコア使用率とクォータ制限を取得する
+  
+  + **azureml-contrib-pipeline-steps**
+    + 前の手順から parallelrunstep への中間結果として表形式データセットを渡すことをユーザーに許可する
+
++ **バグの修正と機能強化**
+  + **azureml-automl-runtime**
+    + デプロイされた予測サービスへの要求で y_query 列の要件を削除しました。 
+    + 'y_query' が、Dominick のオレンジジュース ノートブックのサービス リクエスト セクションから削除されました。
+    + デプロイされたモデルでの予測を妨げ、日付と時刻の列を含むデータセットを操作するバグを修正しました。
+    + 二項分類と多クラス分類の両方において、マシューズ相関係数を分類メトリックとして追加しました。
+  + **azureml-contrib-interpret**
+    + テキストの説明が、間もなくリリースされる解釈テキスト リポジトリに移動されたため、azureml-contrib-interpret からテキスト Explainers が削除されました。
+  + **azureml-core**
+    + データセット: ファイル データセットの使用は、python env にインストールされる numpy と pandas に依存しなくなりました。
+    + 正常性エンドポイントに ping を実行する前にローカル Docker コンテナーの状態を確認するよう、LocalWebservice.wait_for_deployment() を変更しました。これにより、失敗したデプロイの報告にかかる時間を大幅に短縮しました。
+    + LocalWebservice.reload() コンストラクターを使用して、既存のデプロイからサービス オブジェクトが作成されるときに、LocalWebservice() で使用される内部プロパティの初期化を修正しました。
+    + より明確にするため、エラー メッセージを編集しました。
+    + get_access_token という新しいメソッドを AksWebservice に追加しました。このメソッドには、アクセス トークン、タイムスタンプの後の更新、タイムスタンプの有効期限、およびトークンの種類が含まれている AksServiceAccessToken オブジェクトが返されます。 
+    + 新しいメソッドは、AksWebservice の既存の get_token () メソッドが返すすべての情報を返すため、非推奨としました。
+    + az ml サービス get-access-token コマンドの出力が変更されました。 トークンの名前を accessToken に変更し、refreshBy を refreshAfter に変更しました。 expiryOn および tokenType プロパティが追加されました。
+    + Fixed get_active_runs
+  + **azureml-explain-model**
+    + shap を 0.33.0 に更新し、interpret-community を 0.4 に変更しました。*
+  + **azureml-interpret**
+    + shap を 0.33.0 に更新し、interpret-community を 0.4 に変更しました。*
+  + **azureml-train-automl-runtime**
+    + 二項分類と多クラス分類の両方において、マシューズ相関係数を分類メトリックとして追加しました。
+    + コードから前処理フラグを廃止し、特性付けに置き換えました。特性付けは既定でオンになっています
+
 ## <a name="2020-01-06"></a>2020-01-06
 
 ### <a name="azure-machine-learning-sdk-for-python-v1083"></a>Azure Machine Learning SDK for Python v1.0.83
 
 + **新機能**
   + データセット: `to_pandas_dataframe` に対して `on_error` および `out_of_range_datetime` の2 つのオプションを追加します。データにエラーがある場合は、`None` を使用して入力するのではなく、エラーが発生します。
+  + ワークスペース:機密データを含むワークスペースの `hbi_workspace` フラグが追加されました。これにより、さらに暗号化したり、ワークスペースの高度な診断を無効にしたりできます。 また、ワークスペースの作成時に `cmk_keyvault` パラメーターと `resource_cmk_uri` パラメーターを指定することによって、関連付けられている Cosmos DB インスタンスに対して独自のキーを取り込むためのサポートを追加しました。これにより、ワークスペースのプロビジョニングの再にサブスクリプションに Cosmos DB インスタンスが作成されます。 [詳細については、こちらを参照してください。](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **バグの修正と機能強化**
   + **azureml-automl-runtime**
@@ -49,7 +86,6 @@ ms.locfileid: "75771923"
   + **azureml-train-automl-client**
     + automl 実行用のコンソール出力の配置を修正しました
     + リモートの amlcompute に正しくないバージョンの pandas がインストールされる可能性があるバグを修正しました。
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 
@@ -360,7 +396,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
     + azureml-contrib-explain-model パッケージの名前が azureml-contrib-interpret に変更されました。
   + **[azureml-core](https://docs.microsoft.com/python/api/azureml-core)**
     + 未登録のデータ セットに API を追加しました。 dataset.[unregister_all_versions()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_datastore.abstractdatastore#unregister--)。
-    + データの変更時間を確認するデータ セット API が追加されました。 `dataset.data_changed_time`.
+    + データの変更時間を確認するデータ セット API が追加されました。 `dataset.data_changed_time`
     + Azure Machine Learning パイプラインで `PythonScriptStep`、`EstimatorStep`、`HyperDriveStep` への入力として `FileDataset` および `TabularDataset` を使用できるようになりました
     + 多数のファイルを含むフォルダーの `FileDataset.mount` のパフォーマンスが向上しました
     + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) および [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) を、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)、[EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)、[HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) への入力として Azure Machine Learning パイプラインで使用できるようになりました。
@@ -1488,7 +1524,7 @@ Azure Machine Learning コンピューティングは、Python、Azure portal、
 + ML パイプライン
   + パイプラインの概要、バッチ スコーピング、スタイル転送の例についての新しいノートブックと更新されたノートブック: https://aka.ms/aml-pipeline-notebooks
   + [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法について
-  + [パイプラインを使用してバッチ予測を実行](how-to-run-batch-predictions.md)する方法について
+  + [パイプラインを使用してバッチ予測を実行](how-to-use-parallel-run-step.md)する方法について
 + Azure Machine Learning コンピューティング ターゲット
   + 新しいマネージド コンピューティングを使用するように[サンプル ノートブック](https://aka.ms/aml-notebooks)が更新されました。
   + [このコンピューティングについて](how-to-set-up-training-targets.md#amlcompute)

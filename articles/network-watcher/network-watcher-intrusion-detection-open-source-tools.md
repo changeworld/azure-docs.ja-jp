@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher とオープン ソース ツールを使用してネットワーク不正侵入検出を実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8a0b4ff4fc985355d8dc76f2f3fd7fb35da55ec0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275933"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845025"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -127,7 +125,7 @@ Elasticsearch のインストール方法の詳細については、[インス�
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. 次に、eve.json ファイルの出力を読み取るように Logstash を構成する必要があります。 次のコマンドで logstash.conf ファイルを作成します。
+1. 次に、eve.json ファイルの出力を読み取るように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -242,9 +240,9 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 ### <a name="create-a-kibana-dashboard"></a>Kibana ダッシュボードの作成
 
-この記事では、アラートの傾向と詳細を確認するためのサンプル ダッシュボードが提供されています。
+この記事では、アラートのトレンドと詳細を確認するためのサンプル ダッシュボードが提供されています。
 
-1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をダウンロードします。
+1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をそれぞれダウンロードします。
 
 1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
@@ -282,7 +280,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 Network Watcher で取得したパケット キャプチャと、Suricata などのオープン ソース IDS ツールを組み合わせることで、広範な脅威を対象としたネットワーク不正侵入検出を実行できます。 これらのダッシュボードでは、ネットワーク内の傾向と異常を迅速に特定できます。また、データを詳しく調査して、悪意のあるユーザー エージェントや脆弱なポートなど、アラートの根本原因を突き止めることができます。 抽出したこのデータを活用すると、害のある侵入の試行からネットワークを保護する方法について、情報に基づいた意思決定を行えるほか、ネットワークへの今後の侵入を防ぐルールを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アラート ベースでパケット キャプチャをトリガーする方法については、「[パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する](network-watcher-alert-triggered-packet-capture.md)」を参照してください。
 

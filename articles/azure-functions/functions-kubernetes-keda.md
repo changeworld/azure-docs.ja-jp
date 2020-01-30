@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920677"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549038"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
@@ -26,15 +26,9 @@ Kubernetes ベースの Functions では、KEDA によるイベント ドリブ�
 
 Kubernetes クラスター上で Functions を実行するには、KEDA コンポーネントをインストールする必要があります。 このコンポーネントは、[Azure Functions Core Tools](functions-run-local.md) を使用してインストールできます。
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Azure Functions Core Tools によるインストール
+### <a name="installing-with-helm"></a>Helm を使用したインストール
 
-既定では、Core Tools によって KEDA と Osiris の両方のコンポーネントがインストールされます。これらは、それぞれイベント ドリブンと HTTP スケーリングをサポートするコンポーネントです。  インストールでは、現在のコンテキストで実行されている `kubectl` が使用されます。
-
-次のインストール コマンドを実行して、ご自分のクラスターに KEDA をインストールします。
-
-```cli
-func kubernetes install --namespace keda
-```
+Kubernetes クラスターに KEDA をインストールするには、Helm を使用する方法を含め、さまざまな方法があります。  デプロイ オプションについては、[KEDA サイト](https://keda.sh/deploy/)をご覧ください。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes への関数アプリのデプロイ
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes からの KEDA のアンインストール
 
-次のコア ツール コマンドを実行して KEDA を Kubernetes クラスターから削除できます。
-
-```cli
-func kubernetes remove --namespace keda
-```
+KEDA をアンインストールする手順については、[KEDA サイトに記載](https://keda.sh/deploy/)されています。
 
 ## <a name="supported-triggers-in-keda"></a>KEDA でサポートされているトリガー
 
@@ -91,7 +81,7 @@ KEDA は、次の Azure Function トリガーをサポートしています。
 
 ### <a name="http-trigger-support"></a>HTTP トリガーのサポート
 
-HTTP トリガーを公開する Azure Functions は使用することはできますが、KEDA では直接管理されません。  Azure Functions Core Tools は、HTTP エンドポイントの 0 から 1 へのスケーリングを可能にする関連するプロジェクト Osiris をインストールします。  1 から *n* へのスケーリングは、従来の Kubernetes スケーリング ポリシーに依存します。
+HTTP トリガーを公開する Azure Functions は使用することはできますが、KEDA では直接管理されません。  KEDA prometheus トリガーを利用すると、[HTTP Azure Functions を 1 から *n* インスタンスにスケーリングできます](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)。
 
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。

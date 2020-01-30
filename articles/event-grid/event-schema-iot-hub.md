@@ -1,6 +1,6 @@
 ---
 title: IoT Hub 用の Azure Event Grid スキーマ | Microsoft Docs
-description: IoT Hub のイベント スキーマ形式とプロパティのリファレンス ページです
+description: この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 使用可能なイベントの種類、イベントの例、およびイベントのプロパティが一覧表示されます。
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/17/2019
+ms.date: 01/21/2020
 ms.author: kgremban
-ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076353"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513033"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub 用の Azure Event Grid イベント スキーマ
 
@@ -27,7 +27,7 @@ ms.locfileid: "67076353"
 
 Azure IoT Hub から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | 説明 |
+| イベントの種類 | [説明] |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | デバイスが IoT Hub に登録されると発行されます。 |
 | Microsoft.Devices.DeviceDeleted | デバイスが IoT Hub から削除されると発行されます。 | 
@@ -148,7 +148,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべてのイベントには、同じ最上位レベルのデータが格納されます。 
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | id | string | イベントの一意識別子。 |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
@@ -161,7 +161,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべての IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | hubName | string | デバイスが作成または削除された IoT Hub の名前。 |
 | deviceId | string | デバイスの一意識別子。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
@@ -170,7 +170,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス接続**および**デバイス切断** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | moduleId | string | モジュールの一意の識別子。 このフィールドは、モジュール デバイスに対してのみ出力されます。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
 | deviceConnectionStateEventInfo | object | デバイス接続状態イベント情報
@@ -178,15 +178,15 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス テレメトリ** IoT Hub イベントでは、データ オブジェクトに [IoT ハブ メッセージ形式](../iot-hub/iot-hub-devguide-messages-construct.md)の device-to-cloud メッセージが含まれ、次のプロパティを含みます。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | body | string | デバイスからのメッセージの内容。 |
-| properties | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略できます。 |
+| properties | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。 |
 | system properties | string | [システム プロパティ](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)は、メッセージのコンテンツとソースを特定するのに役立ちます。 デバイス テレメトリ メッセージは、メッセージ システム プロパティで contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。  |
 
 **デバイス接続**および**デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | twin | object | デバイス ツインについての情報。アプリケーション デバイス メタデータのクラウド表現です。 | 
 | deviceID | string | デバイス ツインの一意識別子。 | 
@@ -196,17 +196,17 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 | statusUpdateTime | string | デバイス ツインの状態が最後に更新されたときの ISO8601 タイムスタンプ。 |
 | connectionState | string | デバイスが接続されているか切断されているか。 | 
 | lastActivityTime | string | 最後のアクティビティの ISO8601 タイムスタンプ。 | 
-| cloudToDeviceMessageCount | integer | このデバイスに送信された、クラウドからデバイスへのメッセージの数。 | 
+| cloudToDeviceMessageCount | 整数 (integer) | このデバイスに送信された、クラウドからデバイスへのメッセージの数。 | 
 | authenticationType | string | このデバイスに使われる認証の種類 (`SAS`、`SelfSigned`、または `CertificateAuthority`)。 |
 | x509Thumbprint | string | サムプリントは x509 証明書の一意の値であり、証明書ストアで特定の証明書を検索するためによく使われます。 サムプリントは、SHA1 アルゴリズムを使って動的に生成され、証明書に物理的に存在することはありません。 | 
 | primaryThumbprint | string | x509 証明書のプライマリ サムプリント。 |
 | secondaryThumbprint | string | x509 証明書のセカンダリ サムプリント。 | 
-| version | integer | デバイス ツインが更新されるたびに 1 ずつ増加する整数値。 |
+| version | 整数 (integer) | デバイス ツインが更新されるたびに 1 ずつ増加する整数値。 |
 | desired | object | アプリケーション バックエンドだけが書き込むことができ、デバイスで読み取ることができる、プロパティの一部分。 | 
 | reported | object | デバイスだけが書き込むことができ、アプリケーション バックエンドで読み取ることができる、プロパティの一部分。 |
 | lastUpdated | string | デバイス ツインのプロパティが最後に更新されたときの ISO8601 タイムスタンプ。 | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * IoT Hub と Event Grid の連携方法については、「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)」をご覧ください。

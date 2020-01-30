@@ -1,6 +1,6 @@
 ---
-title: 列レベルのセキュリティ
-description: 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。 CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、列のアクセスに対して制限を実装できます。
+title: SQL Data Warehouse の列レベルのセキュリティとは
+description: 列レベルのセキュリティでは、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいてデータベース テーブルの列へのアクセスを制御し、アプリケーションのセキュリティの設計とコーディングを簡略化し、列に制限を実装することができます。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,21 +11,24 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077105"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513050"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
-列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。
-以下のビデオの更新 - このビデオが投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)も SQL Data Warehouse で使用可能になりました。 
+
+列レベルのセキュリティでは、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、テーブルの列へのアクセスを制御できます。
+
+
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+このビデオが投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)が SQL Data Warehouse で使用可能になりました。 
 
-CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、機密データを保護するために、列のアクセスに対して制限を実装できます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセス制限のロジックは、別のアプリケーション層のデータから離れた場所ではなく、データベース層に配置されています。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ システム全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、CLS は、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。
+列レベルのセキュリティにより、アプリケーションのセキュリティの設計とコーディングが簡略化されるため、列のアクセスを制限して機密データを保護することができます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、列レベルのセキュリティは、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。
 
-CLS は [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (AAD) 認証がどちらもサポートされます。
+列レベルのセキュリティは [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (AAD) 認証がどちらもサポートされます。
 
 ![CLS](./media/column-level-security/cls.png)
 
@@ -48,9 +51,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>例
-次の例では、"TestUser" が "Membership" テーブルの "SSN" 列にアクセスするのを制限する方法を示します。
+次の例では、`TestUser` が `Membership` テーブルの `SSN` 列にアクセスするのを制限する方法を示します。
 
-社会保障番号を格納するために使用される SSN 列が含まれた "Membership" テーブルを作成します。
+社会保障番号を格納するために使用される SSN 列が含まれた `Membership` テーブルを作成します。
 
 ```sql
 CREATE TABLE Membership
@@ -62,13 +65,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-機密データが含まれている SSN 列を除くすべての列に、"TestUser" がアクセスできるようにします。
+機密データを含む SSN 列以外のすべての列へのアクセスを `TestUser` に許可します。
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-"TestUser" として実行されたクエリは、SSN 列が含まれている場合に失敗します。
+`TestUser` として実行されたクエリは、SSN 列が含まれている場合に失敗します。
 
 ```sql
 SELECT * FROM Membership;
@@ -77,7 +80,9 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>ユース ケース
-今日使用されている CLS のユース ケースをいくつか紹介します。
+## <a name="use-cases"></a>例
+
+現在、列レベルのセキュリティを使用する方法の例を次に示します。
+
 - 金融サービス会社は、アカウント マネージャーだけが、顧客の社会保障番号 (SSN) や電話番号などの個人を特定できる情報 (PII) にアクセスできるようにします。
 - 医療機関は、医師と看護師だけが機密の医療記録にアクセスできるようにする一方で、請求担当部門のメンバーがそのようなデータを表示できないようにします。

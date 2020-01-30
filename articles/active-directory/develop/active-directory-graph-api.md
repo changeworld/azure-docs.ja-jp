@@ -13,13 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ef042b9eb625a0d0de5d5dcb883b823c3a499aa9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845044"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698919"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
@@ -40,7 +39,7 @@ Azure Active Directory Graph API を使用すると、REST API エンドポイ�
 
 Azure Active Directory Graph API を使い始めるには、[Azure AD Graph API のクイック スタート](active-directory-graph-api-quickstart.md)または[対話型の Azure AD Graph API リファレンス ドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)に関するページをご覧ください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Azure AD Graph API には、次の機能が用意されています。
 
@@ -63,7 +62,7 @@ Azure AD Graph API により、多くのアプリケーション シナリオを
 * **基幹業務 (シングル テナント) アプリケーション**:このシナリオでは、エンタープライズ開発者は、Office 365 サブスクリプションを持つ組織に勤めています。 開発者は、Azure AD を操作してユーザーへのライセンスの割り当てなどのタスクを実行する Web アプリケーションを作成します。 このタスクでは、Azure AD Graph API へのアクセスが必要となるため、開発者は、Azure AD にこのシングル テナント アプリケーションを登録し、Azure AD Graph API の読み取りおよび書き込みのアクセス許可を構成します。 その後、アプリケーション独自の資格情報または現在サインインしているユーザーの資格情報を使って、Azure AD Graph API を呼び出すトークンを取得するように、アプリケーションは構成されます。
 * **サービス アプリケーション (マルチテナント) としてのソフトウェア**:このシナリオでは、独立系ソフトウェア ベンダー (ISV) が、Azure AD を使用する他の組織にユーザー管理機能を提供するホスト型のマルチテナント Web アプリケーションを開発しています。 これらの機能にはディレクトリ オブジェクトへのアクセスが必要になるため、アプリケーションは Azure AD Graph API を呼び出す必要があります。 開発者は、Azure AD にアプリケーションを登録し、Azure AD Graph API に対する読み取りと書き込みのアクセス許可を必要とするように構成して、他の組織がディレクトリ内のアプリケーションを使用することに同意できるように外部アクセスを有効にします。 別の組織のユーザーが初めてアプリケーションに対する認証を行うとき、アプリケーションが要求しているアクセス許可に関する同意ダイアログが表示されます。 同意すると、アプリケーションには、ユーザーのディレクトリでの Azure AD Graph API に対する要求されたアクセス許可が付与されます。 同意フレームワークの詳細については、[同意フレームワークの概要](consent-framework.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory Graph API の使用を開始するには、次のトピックを参照してください。
 

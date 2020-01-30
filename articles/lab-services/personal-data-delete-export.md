@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs から個人データを削除およびエクスポートする方法 | Microsoft Docs
+title: Azure DevTest Labs から個人データを削除およびエクスポートする方法
 description: Azure DevLast Labs サービスから個人データを削除およびエクスポートして、一般データ保護規則 (GDPR) での義務を果たす方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371176"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169695"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
 この記事では、Azure DevTest Labs サービスから個人データを削除およびエクスポートする手順を説明します。 
@@ -60,7 +60,7 @@ Azure portal または PowerShell を使用して個人用およびラボ用の�
 - **disks.csv** - さまざまな VM で使用されているディスクに関する情報が含まれています。
 - **virtualmachines.csv** - ラボ内の VM に関する情報が含まれています。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 ラボ ユーザーは、DevTest Labs サービスによって保存される個人データのエクスポートを要求できます。 エクスポートを要求するには、ラボの **[概要]** ページで **[個人データ]** オプションに移動します。 **[エクスポートの要求]** を選択すると、ラボ管理者のストレージ アカウント内でダウンロード可能な excel ファイルの作成が開始します。 ラボ管理者に連絡して、このデータを表示できます。
 
 1. 左側のメニューの **[個人データ]** を選択します。 
@@ -160,7 +160,7 @@ else
 
 **virtualmachines.csv** には、次のデータ列が含まれています。
 
-| 列名 | 説明 |
+| 列名 | [説明] |
 | ----------- | ----------- | 
 | SubscriptionId | ラボが存在するサブスクリプション識別子。 |
 | LabUId | ラボの一意の GUID 識別子。 |
@@ -188,7 +188,7 @@ else
 
 **disks.csv** に含まれるデータ列は次のとおりです。
 
-| 列名 | 説明 | 
+| 列名 | [説明] | 
 | ----------- | ----------- | 
 | SubscriptionId | ラボを含むサブスクリプションの ID |
 | LabUId | ラボの GUID |
@@ -212,8 +212,8 @@ else
 
 エクスポートされたデータは、SQL Server、Power BI などのツールを使用して操作および視覚化できます。この機能は、実行時に同じ Azure サブスクリプションを使用していない可能性がある管理チームにラボの使用状況を報告する場合に特に便利です。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。 
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。 
 
 - [ラボのポリシーを設定する](devtest-lab-get-started-with-lab-policies.md)
 - [よく寄せられる質問](devtest-lab-faq.md)

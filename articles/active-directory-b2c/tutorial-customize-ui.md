@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950869"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840130"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 
-サインアップ、サインイン、プロファイル編集など、より一般的なユーザー エクスペリエンスについては、Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](active-directory-b2c-reference-policies.md)を使用できます。 このチュートリアルの情報は、独自の HTML ファイルや CSS ファイルを使用してそのようなエクスペリエンスの[ユーザー インターフェイス (UI) をカスタマイズする](customize-ui-overview.md)方法を理解する上で役立ちます。
+サインアップ、サインイン、プロファイル編集など、より一般的なユーザー エクスペリエンスについては、Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](user-flow-overview.md)を使用できます。 このチュートリアルの情報は、独自の HTML ファイルや CSS ファイルを使用してそのようなエクスペリエンスの[ユーザー インターフェイス (UI) をカスタマイズする](customize-ui-overview.md)方法を理解する上で役立ちます。
 
 この記事では、次のことについて説明します。
 
@@ -43,7 +43,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
 ファイルはさまざまな方法で保存できますが、このチュートリアルでは、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に保存します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. Azure サブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure B2C テナントが含まれるディレクトリとは異なります。
 3. Azure portal の左上隅の [すべてのサービス] を選択し、 **[ストレージ アカウント]** を検索して選択します。
 4. **[追加]** を選択します。
@@ -71,7 +71,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
     ![Azure portal の Azure Blob Storage の CORS 構成ページ](./media/tutorial-customize-ui/enable-cors.png)
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="create-the-customization-files"></a>カスタマイズ ファイルを作成する
 
@@ -156,7 +156,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
     ![サインアップまたはサインイン ページとカスタム UI 要素を示している Web ブラウザー](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 
@@ -166,4 +166,4 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 > * カスタマイズした UI をテストする
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C での言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
+> [Azure Active Directory B2C での言語のカスタマイズ](user-flow-language-customization.md)

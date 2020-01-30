@@ -3,23 +3,20 @@ title: Azure 仮想ネットワーク トポロジを表示する | Microsoft Do
 description: 仮想ネットワーク内のリソースと、リソース間のリレーションシップを表示する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
-ms.author: kumud
-ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682050"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840572"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -133,22 +130,22 @@ ms.locfileid: "64682050"
 
 | リレーションシップの種類 | 例                                                                                                |
 | ---               | ---                                                                                                    |
-| 包含       | 仮想ネットワークにはサブネットが含まれています。 サブネットにはネットワーク インターフェイスが含まれています。                            |
+| Containment       | 仮想ネットワークにはサブネットが含まれています。 サブネットにはネットワーク インターフェイスが含まれています。                            |
 | 関連付け        | ネットワーク インターフェイスは VM に関連付けられています。 パブリック IP アドレスはネットワーク インターフェイスに関連付けられています。 |
 
 ## <a name="properties"></a>Properties
 
 トポロジで返されるすべてのリソースには次のプロパティがあります。
 
-- **[名前]** :リソースの名前
+- **Name**:リソースの名前
 - **Id**:リソースの URI。
 - **[場所]** :リソースが存在する Azure リージョン。
 - **Associations**: 参照されたオブジェクトへの関連付けのリスト。 各関連付けには、次のプロパティがあります。
     - **AssociationType**: 子オブジェクトと親のリレーションシップを参照します。 有効な値は *Contains* または *Associated*。
-    - **[名前]** :参照されたリソースの名前。
+    - **Name**:参照されたリソースの名前。
     - **ResourceId**: 関連付けで参照されているリソースの URI。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Network Watcher の IP フロー検証機能を使用して [VM との間で生じるネットワーク トラフィック フィルターの問題を診断](diagnose-vm-network-traffic-filtering-problem.md)する方法について学びます
 - Network Watcher の次ホップ機能を使用して [VM から生じるネットワーク トラフィック のルーティングの問題を診断](diagnose-vm-network-routing-problem.md)する方法について学びます

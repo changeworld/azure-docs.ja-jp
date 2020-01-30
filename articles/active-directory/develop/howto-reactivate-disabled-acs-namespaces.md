@@ -12,13 +12,12 @@ ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ad908b814a7c2b4dce9d15153b0991f51f623e8b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966947"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697100"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 
@@ -90,7 +89,7 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
 1. Azure portal にサインインし、[新しいサポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成します。
 1. 次の例に示すように、新しいサポート リクエスト フォームに入力します。
 
-    | サポート リクエストのフィールド | 値 |
+    | サポート リクエストのフィールド | Value |
     |-----------------------|--------------------|
     | **問題の種類** | `Technical` |
     | **サブスクリプション** | 対象のサブスクリプションに設定します |
@@ -122,6 +121,6 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
 - この方法を試して問題が発生した場合、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)までお問い合わせください。
 - ACS のサービス終了についてご質問やご意見がございましたら、Microsoft までお問い合わせください (acsfeedback@microsoft.com)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[方法: Azure Access Control Service からの移行](active-directory-acs-migration.md)」を参照して、ACS の提供終了に関する情報を確認します。

@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15c0db66fd357ba150af1901a6b50a645fd1ca88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915858"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695553"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
 この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -40,7 +39,7 @@ MSAL.NET 3.x でアプリケーションをインスタンス化するには、�
 
 ### <a name="initializing-a-public-client-application-from-code"></a>コードからパブリック クライアント アプリケーションを初期化する
 
-次のコードは、ユーザーが自身の職場および学校のアカウントを使用して、または個人の Microsoft アカウントを使用して、Microsoft Azure パブリック クラウドにサインインすることで、パブリック クライアント アプリケーションをインスタンス化します。
+以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -97,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 パブリック クライアント アプリケーション ビルダーまたは機密の高いクライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | 説明|
+|修飾子 | [説明]|
 |--------- | --------- |
 |`.WithAuthority()` 7 overrides | アプリケーションの既定の機関を Azure AD 機関に設定します。可能な選択肢は、Azure Cloud、対象ユーザー、テナント (テナント ID、またはドメイン名)、または機関 URI を直接提供する、のいずれかです。|
 |`.WithAdfsAuthority(string)` | アプリケーションの既定の機関が ADFS 機関になるように設定します。|
@@ -116,7 +115,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 Xamarin.iOS でパブリック クライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | 説明|
+|修飾子 | [説明]|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Xamarin.iOS のみ**:iOS キー チェーンのセキュリティ グループを設定します (キャッシュの永続化のため)。|
 
@@ -124,7 +123,7 @@ Xamarin.iOS でパブリック クライアント アプリケーション ビ�
 
 機密性の高いクライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | 説明|
+|修飾子 | [説明]|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Azure AD でアプリケーションを識別する証明書を設定します。|
 |`.WithClientSecret(string clientSecret)` | Azure AD でアプリケーションを識別する、クライアント シークレット (アプリ パスワード) を設定します。|

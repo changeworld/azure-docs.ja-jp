@@ -16,13 +16,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201da533231eea4d597e660931e70e19a497d069
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: be608019aa6a393891d9586005e5ef9c970a8bd1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423422"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712382"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法:macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
 
@@ -172,7 +171,7 @@ MSAL でサポートされているアカウント参照 API:
 /*!
  Returns account for the given account identifier (received from an account object returned in a previous acquireToken call)
  
- @param  error      The error that occured trying to get the accounts, if any, if you're
+ @param  error      The error that occurred trying to get the accounts, if any, if you're
                     not interested in the specific error pass in nil.
  */
 - (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier
@@ -182,7 +181,7 @@ MSAL でサポートされているアカウント参照 API:
 Returns account for for the given username (received from an account object returned in a previous acquireToken call or ADAL)
     
 @param  username    The displayable value in UserPrincipleName(UPN) format
-@param  error       The error that occured trying to get the accounts, if any, if you're
+@param  error       The error that occurred trying to get the accounts, if any, if you're
                     not interested in the specific error pass in nil.
 */
 - (MSALAccount *)accountForUsername:(NSString *)username

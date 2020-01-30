@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 9fdb1e68a413adcbf5d27ec3a90cd79fdeb29f21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ece3d7979dc80a2c6c576b3ce279d4fb9bc9472
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384384"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716396"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>クイック スタート:Bing Entity Search SDK for Node.js を使用して検索要求を送信する
 
@@ -25,23 +25,23 @@ ms.locfileid: "75384384"
 
 * 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
 
-* [Bing Entity Search SDK for Node.js](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* [Bing Entity Search SDK for Node.js](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Bing Entity Search SDK をインストールするには:
 
 1. 開発環境で `npm install ms-rest-azure` を実行します。
-2. 開発環境で `npm install azure-cognitiveservices-entitysearch` を実行します。
+2. 開発環境で `npm install @azure/cognitiveservices-entitysearch` を実行します。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、次の要件を追加します。 
-    
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、次の要件を追加します。
+
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
+    const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
 2. サブスクリプション キーを使用して、`CognitiveServicesCredentials` のインスタンスを作成します。 その後、それで検索クライアントのインスタンスを作成します。
@@ -54,7 +54,7 @@ Bing Entity Search SDK をインストールするには:
 ## <a name="send-a-request-and-receive-a-response"></a>要求を送信して応答を受信する
 
 1. `entitiesOperations.search()` を使用してエンティティの検索要求を送信します。 応答を受け取った後、`queryContext`、返された結果の数、最初の結果の説明を表示します。
-      
+
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
         console.log(result.queryContext);

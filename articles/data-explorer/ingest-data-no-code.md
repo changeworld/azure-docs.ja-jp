@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995934"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836561"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する 
 
@@ -330,7 +330,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 2. [更新ポリシー](/azure/kusto/concepts/updatepolicy)をターゲット テーブルに追加します。 このポリシーでは、*DiagnosticRawRecords* 中間データ テーブルに新しく取り込まれたデータに対してクエリが自動的に実行され、その結果が *DiagnosticMetrics* テーブルに取り込まれます。
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 2. [更新ポリシー](/azure/kusto/concepts/updatepolicy)をターゲット テーブルに追加します。 このポリシーでは、*DiagnosticRawRecords* 中間データ テーブルに新しく取り込まれたデータに対してクエリが自動的に実行され、その結果が *DiagnosticLogs* テーブルに取り込まれます。
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
@@ -376,7 +376,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 2. [更新ポリシー](/azure/kusto/concepts/updatepolicy)をターゲット テーブルに追加します。 このポリシーでは、*ActivityLogsRawRecords* 中間データ テーブルに新しく取り込まれたデータに対してクエリが自動的に実行され、その結果が *ActivityLogs* テーブルに取り込まれます。
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -521,7 +521,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | **テーブル** | *DiagnosticRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
+    | **Table** | *DiagnosticRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
     | **列マッピング** | *DiagnosticRawRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticRawRecords* テーブルの列名とデータ型にマッピングされます。|
     | | |
@@ -548,7 +548,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | **テーブル** | *ActivityLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
+    | **Table** | *ActivityLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
     | **列マッピング** | *ActivityLogsRawRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *ActivityLogsRawRecords* の列名とデータ型にマッピングされます。|
     | | |
@@ -621,7 +621,7 @@ ActivityLogs
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Azure Data Explorer のクエリを記述する](write-queries.md)」を使用して、Azure Data Explorer から抽出したデータに対するさらに多くのクエリを記述する方法を学習します。
 * [診断ログを使用して Azure Data Explorer インジェスト操作を監視する](using-diagnostic-logs.md)

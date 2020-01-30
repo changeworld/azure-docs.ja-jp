@@ -16,13 +16,12 @@ ms.date: 09/26/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae798c6108ec78b92b1ee6ac167b01c2f72c26d9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2ce993b8fbf2a1b04ea4ad9d992ba278dbc964e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678819"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701418"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>単一および複数アカウントのパブリック クライアント アプリ
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227660"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515107"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -44,7 +44,7 @@ LOB アプリケーションをインストールしてニーズに合わせて�
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>デプロイ後に Windows 10 Enterprise マルチセッションを管理する方法を教えてください。
 
-サポートされている任意の構成ツールを使用できますが、Windows 10 Enterprise マルチセッションをサポートしているという理由から、System Center Configuration Manager 1906 をお勧めします。 現在、Microsoft では、Microsoft Intune のサポートに取り組んでいます。
+サポートされている任意の構成ツールを使用できますが、Windows 10 Enterprise マルチセッションをサポートしているという理由から、Configuration Manager バージョン 1906 をお勧めします。 現在、Microsoft では、Microsoft Intune のサポートに取り組んでいます。
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 Enterprise マルチセッションを Azure Active Directory (AD) に参加させることはできますか?
 
@@ -72,7 +72,7 @@ FSLogix プロファイル コンテナーの構成方法の詳細について�
 
 適用可能なライセンスの完全な一覧については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Windows Virtual Desktop と Windows 10 Enterprise マルチセッションの詳細については、次をご覧ください。
 

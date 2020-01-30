@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center 上のセキュリティ スコア | Microsoft Docs
-description: " Azure Security Center 上のセキュリティ スコアを使用して、セキュリティに関する推奨事項に優先順位を付けます。 "
+description: " Azure Security Center 上のセキュア スコアを使用して、セキュリティに関する推奨事項に優先順位を付けます。 "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 0a39fd1870ae803f2cf694e01c67d125fc96cac9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200960"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156660"
 ---
-# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Security Center 上のセキュリティ スコアの向上
+# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Security Center でセキュア スコアを向上する
 
+> [!NOTE]
+> 強化されたセキュア スコアは、プレビューでご利用いただけます。 既存のセキュア スコアは最終的には高度なセキュア スコアに置き換わりますが、移行を容易にするため、しばらくの間は併用されます。
+>
+> 高度なセキュア スコアの利点の詳細については、[こちら](secure-score-security-controls.md)を参照してください。
+>
+> プレビューに参加するには、Azure Portal を開き、Azure Security Center を起動して、[セキュア スコア] を選択します。 このページの上部には、新しいセキュア スコア エクスペリエンスを提供するバナーが表示されます。 または、[こちら](https://aka.ms/ascnewscore)をクリックします。
 
 セキュリティ上の利点を提供する非常に多くのサービスでは、通常、ワークロードのセキュリティ保護と強化のために最初に実行する手順を知るのが困難です。 Azure のセキュリティ スコアでは、セキュリティに関する推奨事項が調査され、それらの優先順位が自動的に示されるので、ユーザーはどの推奨事項を最初に実行するかが分ります。 これは、最も重大なセキュリティの脆弱性を見つける助けになるため、調査に優先順位を付けることができます。 セキュリティ スコアは、ワークロードのセキュリティに対する姿勢を評価するのに役立つツールです。
 
@@ -34,13 +40,12 @@ Security Center では、**全体的なセキュリティ スコア**も提供�
 
 **全体的なセキュリティ スコア**は、すべての推奨事項のスコアを累積したものです。 選択した項目に応じて、サブスクリプションまたは管理グループ全体で、全体的なセキュリティ スコアを表示できます。 スコアは、選択したサブスクリプションと、それらのサブスクリプションに対するアクティブな推奨事項によって異なります。
 
- 
 セキュリティ スコアに最も影響している推奨事項を確認するために、影響が大きい推奨事項の上位 3 つを Security Center ダッシュボードに表示することや、推奨事項の一覧ブレードで **[セキュリティ スコアの影響]** 列を使用して、推奨事項を並べ替えることができます。
-
 
 全体的なセキュリティ スコアを表示するには:
 
 1. Azure ダッシュボードで **[Security Center]** をクリックしてから、 **[セキュリティ スコア]** をクリックします。
+
 2. 上部で、セキュリティ スコアのハイライトを確認できます。
    - **[Overall secure score]\(総合セキュリティ スコア\)** は、選択されたサブスクリプションごとの各ポリシーのスコアを表します。
    - **[Secure score by category]\(カテゴリ別セキュリティ スコア\)** は、最も注意が必要なリソースはどれかを示します。
@@ -78,7 +83,7 @@ Security Center では、**全体的なセキュリティ スコア**も提供�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure Security Center 上で**セキュリティ スコア**を使用して、セキュリティ体制を向上させる方法を示しました。 Security Center の詳細については、次の記事をご覧ください。
 
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。

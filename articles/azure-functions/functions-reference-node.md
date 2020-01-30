@@ -4,12 +4,12 @@ description: JavaScript を使用して関数を開発する方法について�
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921993"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714784"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-トリガーのメタデータと関数呼び出しデータを含む名前付きオブジェクトを返します (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 トリガーのメタデータの例については、こちらの[イベント ハブの例](functions-bindings-event-hubs.md#trigger---javascript-example)をご覧ください。
+トリガーのメタデータと関数呼び出しデータを含む名前付きオブジェクトを返します (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 トリガーのメタデータの例については、こちらの[イベント ハブの例](functions-bindings-event-hubs.md#trigger)をご覧ください。
 
 ### <a name="contextdone-method"></a>context.done メソッド
 
@@ -265,7 +265,7 @@ context.log(message)
 既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| 方法                 | [説明]                                |
+| Method                 | [説明]                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -412,7 +412,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 
 ほとんどの Node.js アプリケーションでは、このスケーリング動作で十分です。 CPUにバインドされたアプリケーションの場合、複数の言語ワーカープロセスを使用して、パフォーマンスをさらに向上させることができます。
 
-既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカープロセスの数を増やすことができます（最大10）。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。 
+既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカー プロセスの数を増やすことができます (最大 10)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。 
 
 FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーションをスケールアウトするときに、関数作成する各ホストに適用されます。 
 
@@ -455,7 +455,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>Kudu を使用する
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](`https://<function_app_name>.scm.azurewebsites.net`) にアクセスします。
+1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
 
 2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 

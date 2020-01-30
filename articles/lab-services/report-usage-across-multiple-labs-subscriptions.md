@@ -1,5 +1,5 @@
 ---
-title: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する - Azure | Microsoft Docs
+title: 複数のラボとサブスクリプションにわたる Azure DevTest Labs の使用状況
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 01/16/2020
 ms.author: takamath
-ms.openlocfilehash: 0d930263233056d8fa74ffe6ccb176ee39429121
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828887"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169182"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
@@ -85,7 +85,7 @@ Azure 関数では、長期的なストレージにデータをプッシュす�
 
 ## <a name="next-steps"></a>次の手順
 
-システムを設定し、データを長期的なストレージに移行したら、次の手順では、データで回答する必要がある質問について説明します。 例: 
+システムを設定し、データを長期的なストレージに移行したら、次の手順では、データで回答する必要がある質問について説明します。 次に例を示します。 
 
 -   VM サイズの使用量はどのくらいですか。
 

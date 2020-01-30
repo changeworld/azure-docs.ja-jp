@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979270"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121949"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。
@@ -179,7 +179,7 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 ### <a name="logical-isolation-between-compute-and-storage"></a>コンピューティングと記憶域の論理的な分離
 Microsoft Azure では、基本設計において VM ベースのコンピューティングを記憶域と切り離しています。 このように分けることで、コンピューティングと記憶域を個別に拡張することができ、マルチテナント機能と分離を容易に提供できます。
 
-したがって、Azure Storage は別のハードウェアで稼働し、Azure コンピューティングとのネットワーク接続はありません (論理的な接続のみ)。 [これは](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)、仮想ディスクの作成時にディスク領域の全体の容量が割り当てられないことを意味します。 代わりに、仮想ディスク上のアドレスを物理ディスク上の領域にマップするテーブルが作成されます。このテーブルは最初は空です。 **最初に顧客がデータを仮想ディスクに書き込むと、物理ディスクの領域が割り当てられ、その位置へのポインターがテーブルに配置されます。**
+したがって、Azure Storage は別のハードウェアで稼働し、Azure コンピューティングとのネットワーク接続はありません (論理的な接続のみ)。 これは、仮想ディスクの作成時にディスク領域の全体の容量が割り当てられないことを意味します。 代わりに、仮想ディスク上のアドレスを物理ディスク上の領域にマップするテーブルが作成されます。このテーブルは最初は空です。 **最初に顧客がデータを仮想ディスクに書き込むと、物理ディスクの領域が割り当てられ、その位置へのポインターがテーブルに配置されます。**
 ### <a name="isolation-using-storage-access-control"></a>記憶域アクセス制御を使用する分離
 **Azure Storage のAccess Control** のアクセス制御モデルは単純です。 ストレージ アカウントは、各 Azure サブスクリプションにつき 1 つまたは複数作成できます。 各ストレージ アカウントには 1 つの秘密キーがあり、これを使用してそのストレージ アカウント内のすべてのデータへのアクセスを制御します。
 
@@ -320,14 +320,6 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Windows Azure Virtual Network 内のマシンのためのネットワーク分離のオプション](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- [Windows Azure Virtual Network 内のマシンのためのネットワーク分離のオプション](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)について確認します。 これには、従来のフロントエンドとバックエンドのシナリオが含まれます。特定のバックエンド ネットワークまたはサブネットワーク内のマシンでは、IP アドレスの許可リストに基づいて、特定のクライアントまたは他のコンピューターに、特定のエンドポイントへの接続だけを許可できます。
 
-これには、従来のフロントエンドとバックエンドのシナリオが含まれます。特定のバックエンド ネットワークまたはサブネットワーク内のマシンでは、IP アドレスの許可リストに基づいて、特定のクライアントまたは他のコンピューターに、特定のエンドポイントへの接続だけを許可できます。
-
-- [コンピューティングの分離](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
-
-- [記憶域の分離](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure では、顧客 VM ベースのコンピューティングを記憶域から切り離します。 このように分けることで、コンピューティングと記憶域を個別に拡張することができ、マルチテナント機能と分離を容易に提供できます。 したがって、Azure Storage は別のハードウェアで稼働し、Azure コンピューティングとのネットワーク接続はありません (論理的な接続のみ)。 すべての要求は、顧客の選択に基づいて HTTP または HTTPS 上で実行されます。
+- [Azure における仮想マシンの分離性](../../virtual-machines/windows/isolation.md)について確認します。 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。

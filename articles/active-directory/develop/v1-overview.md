@@ -16,13 +16,12 @@ ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e790728cbc7415532754d10773d466e9a0280422
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ad58f9b135056ef273f612abc80262a55a7a1f5e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373906"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700993"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>開発者向け Azure Active Directory (v1.0) の概要
 
@@ -37,11 +36,11 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 |[アプリケーションの種類](app-types.md) | Azure AD でサポートされる認証シナリオの概要。 |
 | | |
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 v1.0 のクイック スタートおよびチュートリアルでは、Azure AD Authentication Library (ADAL) SDK を使って好みのプラットフォームでアプリを構築する方法がわかりやすく説明されています。 作業を開始するには、「[Microsoft ID プラットフォーム (開発者向け Azure Active Directory)](index.yml)」の **v1.0 のクイック スタート**と **v1.0 のチュートリアル**に関するセクションを参照してください。
 
-## <a name="how-to-guides"></a>ハウツー ガイド
+## <a name="how-to-guides"></a>操作方法ガイド
 
 詳細な情報と Azure AD で最も一般的なタスクのチュートリアルについては、**v1.0 のハウツー ガイド**を参照してください。
 

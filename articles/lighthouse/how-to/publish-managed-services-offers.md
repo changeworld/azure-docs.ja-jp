@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 01/09/2020
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834087"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155249"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -86,6 +86,8 @@ ms.locfileid: "75834087"
 - **Azure AD Object ID (Azure AD オブジェクト ID)** :実際の顧客のリソースに対する特定のアクセス許可を付与される (ロールの定義で表される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子です。
 - **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
 - **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください。
+  > [!NOTE]
+  > 適用される新しい組み込みロールが Azure に追加されると、ここで使用できるようになりますが、表示されるまでに時間がかかる場合があります。
 - **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
 
 > [!TIP]

@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232f4b6fde84b7e1cd706b62e0ba9a0998b4171e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e739024686bdac497b9b7dd450c5ed46e3cf9a63
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231840"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705022"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>My Apps ポータルからアクセス レビューを実行する
 
@@ -72,7 +71,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
     >[!Note]
     >アクセス レビュー期間が終了するまで、いつでもアクセスを変更できます。 アプリまたはグループへのアクセスを削除しても、すぐには削除されません。 削除は、アクセス レビュー期間が終了したとき、または管理者がレビューを閉じたときに行われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 

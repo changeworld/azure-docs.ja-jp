@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470837"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773160"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>チュートリアル:パラメーター ファイルを使用して Resource Manager テンプレートをデプロイする
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 これまでのテンプレートには、デプロイ時に指定できるパラメーターが多数存在します。 前のチュートリアルで完成したテンプレートの内容は次のとおりです。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 このテンプレートでも適切に機能しますが、テンプレートに渡すパラメーターはもっと管理しやすくしたいところです。
 
@@ -36,13 +36,13 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 VS Code で、次の内容を含む新しいファイルを作成します。 このファイルに **azuredeploy.parameters.dev.json** という名前を付けて保存します。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 このファイルは、開発環境用のパラメーター ファイルです。 ストレージ アカウントに Standard_LRS が使用され、リソースに **dev** で始まる名前が付き、さらに **Environment** タグが **Dev** に設定されていることがわかります。
 
 もう一度、次の内容を含んだ新しいファイルを作成します。 このファイルには **azuredeploy.parameters.prod.json** という名前を付けて保存します。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 このファイルは、運用環境用のパラメーター ファイルです。 ストレージ アカウントに Standard_GRS が使用され、リソースに **contoso** で始まる名前が付き、さらに **Environment** タグが **Production** に設定されていることがわかります。 実際の運用環境では、無料以外の SKU の App Service を使用したい場合もあるかもしれませんが、このチュートリアルでは引き続きこの SKU を使用します。
 
@@ -120,7 +120,7 @@ az group deployment create \
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューから **[リソース グループ]** を選択します。
 1. このチュートリアルでデプロイした新しいリソース グループが 2 つ表示されます。
 1. どちらかのリソース グループを選択して、デプロイ済みのリソースを確認します。 その環境用のパラメーター ファイルに指定した値と一致していることがわかります。

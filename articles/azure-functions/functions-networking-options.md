@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561934"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846458"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -125,7 +125,7 @@ Key Vault 参照を使用すると、コードを変更せず、Azure Functions 
 
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service Environment で関数アプリを実行する。
++ App Service プランまたは App Service 環境で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
@@ -136,7 +136,7 @@ Premium プランで実行する場合は、仮想ネットワーク内で実行
 次の Azure CLI コマンドを使用して、仮想ネットワーク トリガーを有効にすることもできます。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
 仮想ネットワーク トリガーは、バージョン 2.x 以降の Functions ランタイムでサポートされています。 次の非 HTTP トリガーの種類がサポートされています。
@@ -152,9 +152,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.f
 > [!IMPORTANT]
 > 仮想ネットワーク トリガーのサポートを有効にすると、上記の種類のトリガーのみがアプリケーションで動的にスケーリングされます。 上記以外のトリガーも使用できますが、事前ウォーミングされたインスタンス数を超えてスケーリングされることはありません。 トリガーの全一覧については、「[トリガーとバインド](./functions-triggers-bindings.md#supported-bindings)」を参照してください。
 
-### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service Environment
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した App Service プランと App Service 環境
 
-関数アプリを App Service プランまたは App Service Environment のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
+関数アプリを App Service プランまたは App Service 環境のいずれかで実行する場合は、非 HTTP トリガー関数を使用できます。 関数が正しくトリガーされるようにするには、トリガー接続で定義されているリソースにアクセスできる仮想ネットワークに接続する必要があります。 
 
 たとえば、仮想ネットワークからのみトラフィックを受け入れるように Azure Cosmos DB を構成するとします。 この場合、その仮想ネットワークとの仮想ネットワーク統合を提供する App Service プランで関数アプリをデプロイする必要があります。 これにより、その Azure Cosmos DB リソースによって関数がトリガーされるようになります。 
 

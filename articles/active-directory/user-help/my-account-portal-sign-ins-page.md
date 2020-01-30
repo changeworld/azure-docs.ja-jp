@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2d31519c1c7e09c4eb8db64e2c37b8412fee9ab5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279040"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705107"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>[自分のサインイン (プレビュー)] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -63,14 +62,14 @@ ms.locfileid: "74279040"
 
     ![検索バー、検索ボタン、結果が強調表示された [最近のアクティビティ] ページ](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最近のサインイン アクティビティを表示した後に、次の操作を実行できます。
 
-- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理します。
+- [セキュリティ情報](user-help-security-info-overview.md)を表示または管理する。
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 
-- [組織](my-account-portal-organizations-page.md)を表示または管理します。
+- [組織](my-account-portal-organizations-page.md)を表示または管理する。
 
-- 組織で[プライバシー関連データを使用する](my-account-portal-privacy-page.md)方法を表示します。
+- 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。

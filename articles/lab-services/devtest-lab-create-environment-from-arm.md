@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する | Microsoft Docs
+title: テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 description: Azure Resource Manager テンプレートから Azure DevTest Labs で複数 VM の環境と PaaS リソースを作成する方法について説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 900973a7370bbed61953f8d1ee83d56670fad756
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1385b20847cf90c212a13591389dfb6cda08432a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981550"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169645"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
@@ -73,7 +73,7 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
 リポジトリを作成して構成したら、Azure portal を使用してそれをラボに追加できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧から、目的のラボを選択します。
 1. ラボの **[概要]** ウィンドウで、 **[構成とポリシー]** を選択します。
@@ -120,7 +120,7 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
 ラボに Azure Resource Manager テンプレートを追加すると、ラボ ユーザーは次の手順に従って Azure portal で環境を作成できるようになります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 

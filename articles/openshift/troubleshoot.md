@@ -1,19 +1,17 @@
 ---
-title: Azure Red Hat OpenShift のトラブルシューティング | Microsoft Docs
+title: Azure Red Hat OpenShift のトラブルシューティング
 description: Azure Red Hat OpenShift に関する一般的な問題をトラブルシューティングして解決します
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 7f2bdf643f12671bec3d0c087d8775844099fe9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306242"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274926"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift のトラブルシューティング
 
@@ -32,9 +30,9 @@ ms.locfileid: "66306242"
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>クラスターを作成した場合に登録済みのリソース プロバイダーが見つからないというエラーが発生する
 
-クラスターの作成時に `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` というエラーが発生する場合、プレビューに参加していたことを示します。この場合、[Azure 仮想マシン予約インスタンスを購入して](https://aka.ms/openshift/buy)、一般公開製品を使用する必要があります。 予約すると、フル マネージド Azure サービスを前払いすることでコストを削減できます。 予約および予約によってどのようにコストが削減されるかに関する詳細については、「[ *Azure の予約とは*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)」を参照してください。
+クラスターの作成時に `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` というエラーが発生する場合、プレビューに参加していたことを示します。この場合、[Azure 仮想マシン予約インスタンスを購入して](https://aka.ms/openshift/buy)、一般公開製品を使用する必要があります。 予約すると、フル マネージド Azure サービスを前払いすることでコストを削減できます。 予約および予約によってどのようにコストが削減されるかに関する詳細については、「[*Azure の予約とは*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - OpenShift のトラブルシューティングについて詳しくは、[Red Hat OpenShift Help Center](https://help.openshift.com/) の使用をお試しください。
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535775"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290327"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux コンピューターを Azure Monitor に接続する
 
@@ -74,9 +74,10 @@ Linux 用 Log Analytics エージェントをインストールする前に、Lo
 
 Linux 用 Log Analytics エージェントは、自己解凍型のインストール可能なシェル スクリプト バンドルで提供されます。 このバンドルにはエージェント コンポーネントのそれぞれの Debian および RPM パッケージが含まれており、直接インストールすることも、抽出して個々のパッケージを取得することもできます。 x64 アーキテクチャ用と x86 アーキテクチャ用のバンドルがそれぞれ 1 つ提供されます。 
 
-Azure VM の場合は、Linux 用の [Azure Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md)を使用してエージェントをインストールすることをお勧めします。 
+> [!NOTE]
+> Azure VM の場合は、Linux 用の [Azure Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md)を使用してエージェントをインストールすることをお勧めします。 
 
-1. scp/sftp を使用して、該当するバンドル (x86 または x64) を Linux VM または物理コンピューターに転送します。
+1. scp/sftp を使用して、該当するバンドル (x64 または x86) を Linux VM または物理コンピューターに[ダウンロード](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide)して転送します。
 
 2. `--install` 引数を使用してバンドルをインストールします。 インストール中に Log Analytics ワークスペースにオンボードするには、前にコピーした `-w <WorkspaceID>` と `-s <workspaceKey>` のパラメーターを指定します。
 

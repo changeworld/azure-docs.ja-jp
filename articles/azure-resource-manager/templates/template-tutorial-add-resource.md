@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471677"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765584"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにリソースを追加する
 
@@ -28,7 +28,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 **{provide-unique-name}** は、一意のストレージ アカウント名に置き換えます。 ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 名前付けパターンとして、プレフィックスに **store1** を使用し、自分のイニシャルと今日の日付を追加する形が考えられます。 たとえば、**store1abc09092019** のような名前を使用できます。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 ストレージ アカウントの一意の名前を考えるのは容易ではなく、大規模なデプロイの自動化ではうまくいきません。 このチュートリアル シリーズでは、後ほど、一意の名前の作成を容易にするテンプレート機能を使用します。
 
@@ -94,7 +94,7 @@ az group deployment create \
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューから **[リソース グループ]** を選択します。
 1. デプロイ先のリソース グループを選択します。
 1. ストレージ アカウントがデプロイされていることがわかります。

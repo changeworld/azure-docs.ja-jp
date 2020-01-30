@@ -12,13 +12,12 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26c3502567df7776e106ae9301aa7ba315cc12cc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917609"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697015"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -100,6 +99,6 @@ Azure AD と対象アプリケーションの間の、SAML に基づいたシン
 1. SAML 応答の内容を確認したので、問題の解決方法のガイダンスについて、「[サインイン後、アプリケーションのページでエラーが発生する](../manage-apps/application-sign-in-problem-application-error.md)」を参照してください。 
 1. まだ正常にサインインできない場合は、SAML 応答には何が不足しているか、アプリケーション ベンダーに問い合わせることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションに対してシングル サインオンが動作するようになったので、[SaaS アプリケーションに対するユーザーのプロビジョニングとプロビジョニング解除を自動化](../manage-apps/user-provisioning.md)するか、[条件付きアクセスを使ってみる](../conditional-access/app-based-conditional-access.md)ことができます。

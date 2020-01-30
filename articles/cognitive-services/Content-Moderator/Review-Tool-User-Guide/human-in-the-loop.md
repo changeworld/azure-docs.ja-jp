@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754225"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169500"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 
@@ -31,7 +31,7 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 - モデレーション API の結果が出力されたときに目視[レビュー](../review-api.md#reviews)が作成されるよう自動化する。
 - コンテンツ カテゴリまたはエクスペリエンス レベルによって編成された複数のレビュー チームにコンテンツ レビューを割り当てまたはエスカレートする。
 - 既定またはカスタムのロジック フィルター ([ワークフロー](../review-api.md#workflows)) を使用することで、コードを記述せずに、コンテンツを並べ替えたり、追跡したりする。
-- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API シリーズに加えて、Microsoft PhotoDNA、Text Analytics、および Face の各 API を利用してコンテンツを処理する。
+- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API に加えて、Microsoft PhotoDNA、Text Analytics、および Face の各サービスを利用してコンテンツを処理する。
 - 任意の API またはビジネス プロセスのワークフローを作成するための独自のコネクタを作成する。
 - コンテンツ モデレーション プロセスの主要なパフォーマンス メトリックを取得します。
 
@@ -47,6 +47,6 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 
 ![Content Moderator 資格情報](images/settings-6-credentials.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 レビュー ツールのリソースにアクセスしたり、設定を変更したりする方法については、「[レビュー ツールの構成](./configure.md)」を参照してください。

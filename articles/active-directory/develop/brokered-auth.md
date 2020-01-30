@@ -13,13 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843718"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697899"
 ---
 # <a name="brokered-authentication-in-android"></a>Android のブローカー認証
 

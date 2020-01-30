@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468798"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768151"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 これで、アプリをビルドし、Speech Service を使用して音声認識をテストする準備ができました。
 
-1. **コード をコンパイルする** - Visual Studio のメニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** の順に選択します。
+1. **コードをコンパイルする** - Visual Studio のメニュー バーで、 **[ビルド]**  >  **[ソリューションのビルド]** の順に選択します。
 2. **アプリを起動する** - メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押します。
 3. **合成を開始する** - テキストは音声に変換され、指定されたオーディオ データで保存されます。
 

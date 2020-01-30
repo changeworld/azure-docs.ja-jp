@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986275"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290140"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -90,11 +90,11 @@ PublisherType | All | パブリッシャーの種類 (値: **Azure**、**AWS**�
 Quantity | All | 購入または消費されるユニットの数。
 ReservationId | EA、MCA | 購入した予約インスタンスの一意識別子。
 ReservationName | EA、MCA | 購入した予約インスタンスの名前。
-ResourceGroup | All | リソースが属している[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)の名前。
+ResourceGroup | All | リソースが属している[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)の名前。 リソース グループにデプロイされたリソースから、すべての料金が発生するわけではありません。 リソース グループが不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
 ResourceId<sup>1</sup> | All | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) のリソースの一意識別子。
 ResourceLocation | All | リソースが実行されているデータセンターの場所。 Location を参照。
-ResourceName | EA、PAYG | リソースの名前。
-ResourceType | MCA | リソース インスタンスの種類。
+ResourceName | EA、PAYG | リソースの名前。 デプロイされたリソースから、すべての料金が発生するわけではありません。 リソースの種類が不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
+ResourceType | MCA | リソース インスタンスの種類。 デプロイされたリソースから、すべての料金が発生するわけではありません。 リソースの種類が不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
 ServiceFamily | MCA | サービスが属するサービス ファミリ。
 ServiceInfo1 | All | サービス固有のメタデータ。
 ServiceInfo2 | All | サービス固有の省略可能なメタデータを設定する、以前から使用されているフィールド。

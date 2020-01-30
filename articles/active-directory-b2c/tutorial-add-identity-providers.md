@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950954"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840164"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
-アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](active-directory-b2c-reference-policies.md)に追加できます。
+アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](user-flow-overview.md)に追加できます。
 
 この記事では、次のことについて説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74950954"
 > * ID プロバイダーをテナントに追加する
 > * ID プロバイダーをユーザー フローに追加する
 
-通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 このチュートリアルでは、Azure AD の ID プロバイダーと Facebook の ID プロバイダーをアプリケーションに追加する方法を示します。 これらの ID プロバイダーを両方ともアプリケーションに追加することはオプションです。 [Amazon](active-directory-b2c-setup-amzn-app.md)、[GitHub](active-directory-b2c-setup-github-app.md)、[Google](active-directory-b2c-setup-goog-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)、[Microsoft](active-directory-b2c-setup-msa-app.md)、[Twitter](active-directory-b2c-setup-twitter-app.md).などの他の ID プロバイダーを追加することもできます。
+通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 このチュートリアルでは、Azure AD の ID プロバイダーと Facebook の ID プロバイダーをアプリケーションに追加する方法を示します。 これらの ID プロバイダーを両方ともアプリケーションに追加することはオプションです。 [Amazon](identity-provider-amazon.md)、[GitHub](identity-provider-github.md)、[Google](identity-provider-google.md)、[LinkedIn](identity-provider-linkedin.md)、[Microsoft](identity-provider-microsoft-account.md)、[Twitter](identity-provider-twitter.md).などの他の ID プロバイダーを追加することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -45,7 +45,7 @@ ID プロバイダー アプリケーションでは、Azure AD B2C テナント
 
 Azure AD のユーザーのサインインを有効にするには、Azure AD テナント内でアプリケーションを登録する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
@@ -111,7 +111,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。
 1. **[スコープ]** 、 **[応答の種類]** 、および **[応答モード]** の既定値はそのままにします。
 1. (省略可能) **Domain_hint** に値を入力します。 たとえば、「*ContosoAD*」とします。 [ドメイン ヒント](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)は、アプリケーションからの認証要求に含まれるディレクティブです。 ドメイン ヒントを使用して、ユーザーのフェデレーション IdP サインイン ページへの移動を高速化できます。 または、マルチテナント アプリケーションで使用して、テナント用にブランディングされた Azure AD サインイン ページをすぐに表示することができます。
-1. **[Identity provider claims mapping] (ID プロバイダー要求のマッピング)** で、次の要求のマッピング値を入力します。
+1. **[ID プロバイダー要求のマッピング]** で、次の要求マッピング値を入力します。
 
     * **[ユーザー ID]** : *oid*
     * **[表示名]** : *name*
@@ -168,7 +168,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 }.[Signature]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 

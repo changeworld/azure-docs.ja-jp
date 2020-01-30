@@ -14,15 +14,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab7b0f1e59504eae64422fd4bbaf6f9e0804ed4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b430778bed811656b5c8aadc75ba3cf35917f737
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919819"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701877"
 ---
-# <a name="scenario-single-page-application"></a>シナリオ: シングルページ アプリ
+# <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
 シングルページ アプリケーション (SPA) の構築に必要なすべてのことについて説明します。
 
@@ -30,12 +29,12 @@ ms.locfileid: "74919819"
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 JavaScript SPA のクイック スタートに従って、最初のアプリケーションを作成できます。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:シングルページ アプリケーション](./quickstart-v2-javascript.md)
+> [クイック スタート: シングルページ アプリケーション](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概要
 
@@ -55,7 +54,7 @@ Microsoft ID プラットフォームにより、シングルページ アプリ
 * アプリケーション ID などの登録済みアプリケーション プロパティを使用したアプリケーション構成。
 * Microsoft Authentication Library (MSAL) を使用した、サインインしてトークンを取得するための認証フローの実行。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリの登録](scenario-spa-app-registration.md)

@@ -3,19 +3,19 @@ title: Azure Migrate での評価
 description: Azure Migrate での評価について説明します。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029105"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833330"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Azure Migrate での評価について
 
 この記事では [Azure Migrate: Server Assessment で評価を計算する方法について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) でクリックします。 オンプレミス マシンのグループに対して評価を実行し、Azure Migrate への移行の準備ができているかどうかを確認します。
 
 ## <a name="how-do-i-run-an-assessment"></a>評価を実行する方法
-評価を実行するには、Azure Migrate:Server Assessment、または別の Azure ツールやサードパーティー製ツールを使用できます。 Azure Migrate プロジェクトを作成したら、必要なツールを追加します。 [詳細情報](how-to-add-tool-first-time.md
+評価を実行するには、Azure Migrate:Server Assessment、または別の Azure ツールやサードパーティー製ツールを使用できます。 Azure Migrate プロジェクトを作成したら、必要なツールを追加します。 [詳細情報](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>コンピューティング データを収集する
 

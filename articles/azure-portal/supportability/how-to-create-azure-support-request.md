@@ -7,14 +7,14 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 35d70d37b881c610d1a38a312d79f39c351c65a5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898899"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547661"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
 
@@ -23,7 +23,8 @@ ms.locfileid: "75898899"
 Azure のお客様は、[Azure portal](https://portal.azure.com) でサポート要求を作成し、管理できます。
 
 > [!NOTE]
-> Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。 
+> Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。
+>
 >* 商用利用の Azure portal は次のとおりです。[https://portal.azure.com](https://portal.azure.com)
 >* ドイツの Azure portal は次のとおりです: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
 >* 米国政府機関向けの Azure portal は次のとおりです: [https://portal.azure.us](https://portal.azure.us)
@@ -38,7 +39,7 @@ Azure のお客様は、[Azure portal](https://portal.azure.com) でサポート
 
 ## <a name="getting-started"></a>作業の開始
 
-Azure portal で **[ヘルプとサポート]** にアクセスできます。 それは、グローバル ヘッダーから、またはサービスのリソース メニューから使用できます。 サポート リクエストを提出するには、適切なアクセス許可が必要です。
+Azure portal で **[ヘルプとサポート]** にアクセスできます。 これは、Azure portal メニュー、グローバル ヘッダー、またはサービスのリソース メニューから使用できます。 サポート リクエストを提出するには、適切なアクセス許可が必要です。
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -52,7 +53,7 @@ Azure portal 内の任意の場所からサポート リクエストを開始す
 
    ![ヘルプとサポート](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. **[+ 新しいサポート リクエスト]** を選択します。 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 Microsoft は考えられる解決策をいくつか提案し、問題の詳細を収集し、サポート リクエストの送信と追跡を支援します。
+2. **[新しいサポート リクエスト]** を選択します。 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 Microsoft は考えられる解決策をいくつか提案し、問題の詳細を収集し、サポート リクエストの送信と追跡を支援します。
 
    ![新しいサポート要求](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -74,7 +75,7 @@ Microsoft は、発生している問題について情報を収集してその�
 
 サポート要求プロセスの最初の手順は、ユーザーが抱える問題とそのサポート プランに必要な基本情報を集めることです。
 
-**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 サービス ("Windows を実行する仮想マシン" など) とリソース (ご利用の仮想マシンの名前) を選択することが、ヘルプを得るための次の手順となります。 ご自分の言葉で問題を簡潔に説明してから、 **[問題の種類を選択してください]** を選択して、より具体的になるようにします。
+**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン**など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を説明してから、 **[問題の種類を選択してください]** を選択して、より具体的に示します。
 
 ![[基本] ブレード](./media/how-to-create-azure-support-request/basics2lower.png)
 
@@ -89,11 +90,11 @@ Microsoft は基本的な情報を収集できたら、次にユーザーにソ�
 
 ### <a name="details"></a>詳細
 
-次に、Microsoft は問題に関する追加の詳細を収集します。 この手順で徹底的かつ詳細な情報が提供されれば、Microsoft はお客様のサポート リクエストを適切なエージェントに転送し、問題の診断を開始させることができます。
+次に、Microsoft は問題に関する追加の詳細を収集します。 この手順で徹底的かつ詳細な情報が提供されれば、Microsoft はお客様のサポート リクエストを適切なエージェントに転送します。
 
-問題が発生し始めた時期およびそれを再現するための手順をお知らくださることをお勧めします。 また、ログ ファイルや診断の出力などのファイルをアップロードすることもできます。
+可能であれば、問題が発生した時期と、再現手順をお知らせください。 ログ ファイルや診断からの出力などのファイルをアップロードできます。
 
-発生している問題に関する情報をすべて Microsoft に提供したら、サポートを受ける方法を選択できるようになります。 **[詳細]** タブの **[サポート方法]** セクションで、影響の重大度を選択します。 ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
+問題に関するすべての情報を記入したら、サポートを受ける方法を選択します。 **[詳細]** の **[サポート方法]** セクションで、影響の重大度を選択します。 ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
 
 次に、 **[連絡先情報]** セクションに入力して、ご自分への連絡方法をお知らせください。
 
@@ -109,11 +110,11 @@ Microsoft は基本的な情報を収集できたら、次にユーザーにソ�
 
 ![すべてのサポート リクエスト](./media/how-to-create-azure-support-request/allrequestslower.png)
 
-このページでは、サブスクリプション、作成日 (UTC)、および状態によってサポート リクエストをフィルター処理することができます。 また、このページでサポート要求を並べ替えたり検索したりすることもできます。
+このページでは、 **[サブスクリプション]** 、 **[作成**日 (UTC)]、および **[状態]** によってサポート リクエストをフィルター処理することができます。 また、このページでサポート要求を並べ替えたり検索したりすることもできます。
 
 サポート リクエストを選択すると、重大度やサポート エージェントが応答するまでの予想時間など、詳細が表示されます。
 
-リクエストの重大度を変更する場合は、 **[事業影響度]** を選択します。 割り当てることができる重大度の一覧が表示されます。
+リクエストの重大度を変更する場合は、 **[事業影響度]** を選択します。 割り当てる重大度を一覧から選択します。
 
 > [!NOTE]
 > 最高重大度はサポート プランごとに異なります。 [サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
@@ -124,6 +125,7 @@ Azure のセルフヘルプ サポート オプションの詳細については
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
 ## <a name="next-steps"></a>次のステップ
+
 * [お客様からのフィードバックとご提案の送信](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) でのご協力
 * [MSDN フォーラムで同僚からのヘルプを得る](https://social.msdn.microsoft.com/Forums/azure)

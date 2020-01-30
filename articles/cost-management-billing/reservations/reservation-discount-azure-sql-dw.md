@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 0671843b09cd90123b856b94db2618bac617dd5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986823"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313928"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への予約割引の適用方法
 
@@ -31,9 +31,9 @@ SQL Data Warehouse の予約容量割引は、実行中のウェアハウスに 
 
 次の例は、デプロイに応じて、SQL Data Warehouse の予約容量割引がどのように適用されるかを示しています。
 
-- **例 1**:100 cDWU 予約容量を 5 ユニット購入します。 DW1500c の SQL Data Warehouse インスタンスを 1 時間実行します。 このケースでは、100 cDWU の 15 ユニット分の使用量が発生します。 予約割引は使用した 5 ユニットに適用されます。 使用した残りの 10 ユニット分の 100 cDWU 使用量については従量課金制で課金されます。
+- **例 1**:100 cDWU 予約容量を 5 ユニット購入します。 DW1500c の SQL Data Warehouse インスタンスを 1 時間実行します。 このケースでは、100 cDWU の 15 ユニット分の使用量が発生します。 予約割引は使用した 5 ユニットに適用されます。 使用した残りの 10 ユニット分の 100 cDWU 使用量については従量課金制で課金されます。 言い換えると、複数の予約では一部のみ対象になる可能性があります。
 
-- **例 2**:100 cDWU 予約容量を 5 ユニット購入します。 DW100c の SQL Data Warehouse インスタンス 2 つを 1 時間実行します。 このケースでは、1 ユニットの 100 cDWU に対して 2 つの使用イベントが発生しています。 両方の使用イベントが予約容量割引を受けます。 残りの 100 cDWU 予約容量 3 ユニット分は、将来使うために持ち越されず、無駄になります。
+- **例 2**:100 cDWU 予約容量を 5 ユニット購入します。 DW100c の SQL Data Warehouse インスタンス 2 つを 1 時間実行します。 このケースでは、1 ユニットの 100 cDWU に対して 2 つの使用イベントが発生しています。 両方の使用イベントが予約容量割引を受けます。 残りの 100 cDWU 予約容量 3 ユニット分は、将来使うために持ち越されず、無駄になります。 つまり、1 つの予約が複数の SQL Data Warehouse インスタンスと照合されることがあります。
 
 - **例 3**:100 cDWU 予約容量を 1 ユニット購入します。 DW100c の SQL Data Warehouse インスタンス 2 つを実行します。 それぞれ 30 分間実行します。 このケースでは、両方の使用イベントが予約容量割引を受けます。 従量課金制で課金される使用分はありません。
 

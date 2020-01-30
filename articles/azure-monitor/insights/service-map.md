@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402594"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168176"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -27,11 +27,11 @@ Service Map は自動的に Windows および Linux のシステム上のアプ�
 * Windows コンピューターまたは Linux サーバーにインストールされている Dependency Agent。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map) を参照してください。
+>Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms-preview) を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="enable-service-map"></a>Service Map を有効にする
 
@@ -321,7 +321,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 ### <a name="connections"></a>接続
 
-接続メトリックは、Log Analytics 内の新しいテーブルに書き込まれます (VMConnection)。 このテーブルは、マシンの接続 (受信および送信) に関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API と共に公開されています。  リスニング ソケットで*受諾*することで得られる TCP 接続は受信ですが、所定の IP とポートに*接続*することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
+接続メトリックは、Log Analytics 内の新しいテーブルに書き込まれます (VMConnection)。 このテーブルは、マシンの接続 (受信および送信) に関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API と共に公開されています。  リスニング ソケットで受諾することで得られる TCP 接続は受信ですが、所定の IP とポートに接続することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
 
 これらのテーブル内のレコードは、Dependency エージェントによって報告されるデータから生成されます。 いずれの記録も、1 分の時間間隔での観測を表します。 TimeGenerated プロパティは、時間間隔の開始を示します。 各レコードには、エンティティに関連付けられたメトリックに加えて、接続またはポートなど、それぞれのエンティティを識別する情報が含まれています。 現在のところ、TCP over IPv4 を使用することで発生するネットワーク アクティビティのみが報告されます。
 

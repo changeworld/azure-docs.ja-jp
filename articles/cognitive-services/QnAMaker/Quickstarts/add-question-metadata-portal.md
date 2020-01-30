@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447671"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843041"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "75447671"
 <a name="qna-table"></a>
 
 
-|オン|疑問がある場合|Answer|メタデータ|
+|オン|疑問がある場合|Answer|Metadata|
 |--|--|--|--|
 |1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2 番|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-metadata-to-filter-the-answers"></a>回答をフィルター処理するためのメタデータを追加する
 
-質問と回答のセットにメタデータを追加すると、フィルター処理済みの回答をクライアント アプリケーションが要求できるようになります。 このフィルターは、[1 つ目と 2 つ目のランカー](../concepts/knowledge-base.md#ranker-process)が適用される前に適用されます。
+質問と回答のセットにメタデータを追加すると、フィルター処理済みの回答をクライアント アプリケーションが要求できるようになります。 このフィルターは、[1 つ目と 2 つ目のランカー](../concepts/query-knowledge-base.md#ranker-process)が適用される前に適用されます。
 
 1. [このクイックスタートの最初の表](#qna-table)にある 2つ目の質問と回答のセットをメタデータなしで追加したうえで、次の手順を続行します。
 

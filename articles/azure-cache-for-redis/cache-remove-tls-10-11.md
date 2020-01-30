@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708058"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260158"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -19,8 +19,8 @@ ms.locfileid: "75708058"
 
 この作業の一環として、Azure Cache for Redis に対して次の変更が行われます。
 
-* 2020 年 1 月 13 日以降、新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。  この時点で既定のキャッシュ インスタンスが更新されることはありません。  必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。  この変更は、Azure portal またはその他の管理 API を使用して実行できます。
-* 2020 年 3 月 31 日以降、TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
+* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。  この時点で既定のキャッシュ インスタンスが更新されることはありません。  必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。  この変更は、Azure portal またはその他の管理 API を使用して実行できます。
+* **フェーズ 2:** TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
 
 さらに、この変更の一環として、セキュリティで保護されていない古い暗号スイートのサポートが廃止されます。  キャッシュが最小 TLS バージョンである 1.2 に構成されている場合、サポートされる暗号スイートは以下に制限されます。
 
@@ -28,6 +28,15 @@ ms.locfileid: "75708058"
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 この記事では、これらの以前の TLS バージョンへの依存関係を検出してアプリケーションから削除する方法に関する一般的なガイダンスを提供します。
+
+これらの変更が有効になる日付は次のとおりです。
+
+| クラウド               | フェーズ 1 の開始日 | フェーズ 2 の開始日 |
+|---------------------|--------------------|--------------------|
+| Azure (グローバル)      |  2020 年 1 月 13 日  | 2020 年 3 月 31 日     |
+| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
+| Azure Germany       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
+| Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>アプリケーションが既に準拠しているかどうかを確認する
 

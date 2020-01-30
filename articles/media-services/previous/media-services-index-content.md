@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: dea31e350ddf4b9dbebfa6a9f802edd256adf2ce
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b837da4d68ea83d502e66373b9b7f029ff7fe07e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706411"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515141"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 
 > [!NOTE]
-> [Azure Media Indexer](media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+> [Azure Media Indexer](media-services-index-content.md) メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
 
@@ -147,11 +147,11 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 複数の入力メディア ファイルがある場合、インデクサーはジョブの出力に対して "JobResult.txt" という名前のマニフェスト ファイルを生成します。 各入力メディア ファイルでは、結果として得られる TTML、WebVTT、キーワード ファイルには順に番号が振られ、"エイリアス" を使用して名前が付けられます。
 
-| ファイル名 | 説明 |
+| ファイル名 | [説明] |
 | --- | --- |
 | **InputFileName.ttml**<br/>**InputFileName.vtt** |TTML および WebVTT 形式のクローズド キャプション (CC) ファイル。<br/><br/>オーディオとビデオ ファイルを聴覚障がいを持つユーザーにアクセスできるようにするために使用できます。<br/><br/>クローズド キャプション ファイルには、<b>Recognizability</b> と呼ばれるタグが含まれています。これは、ソース ビデオ内の音声がどれくらい認識可能であるかに基づいて、インデックス作成ジョブを評価します。  <b>Recognizability</b> の値を使用して、出力ファイルの利用価値を検査することができます。 低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。 |
 | **InputFileName.kw.xml<br/>InputFileName.info** |キーワードと情報ファイル。 <br/><br/>キーワードのファイルは、頻度とオフセットの情報を含む、音声コンテンツから抽出されたキーワードを含む XML ファイルです。 <br/><br/>情報ファイルは、認識された各用語に関する詳細な情報が含まれるプレーンテキスト ファイルです。 最初の行は特殊で、認識度スコアを含みます。 後続の各行は、開始時刻、終了時刻、言葉/言い回し、信頼度データのタブ区切り一覧になります。 時間は秒単位で、信頼度は 0 ～ 1 の数値として指定されます。 <br/><br/>行の例:"1.20    1.45    word    0.67" <br/><br/>これらのファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。 |
-| **JobResult.txt** |出力マニフェストは、複数のファイルのインデックスを作成する場合にのみ存在します。次の情報が含まれています。<br/><br/><table border="1"><tr><th>InputFile</th><th>エイリアス</th><th>MediaLength</th><th>Error</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **JobResult.txt** |出力マニフェストは、複数のファイルのインデックスを作成する場合にのみ存在します。次の情報が含まれています。<br/><br/><table border="1"><tr><th>InputFile</th><th>エイリアス</th><th>MediaLength</th><th>エラー</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 4000 を表示して失敗します。 詳細については、 [エラー コード](#error_codes)をご覧ください
 
@@ -243,11 +243,11 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ### <a id="preset"></a> Azure Media Indexer 用のタスク プリセット
 Azure Media Indexer からの処理は、オプションのタスク プリセットをタスクと共に指定することでカスタマイズできます。  次の表は、この configuration xml の形式の説明です。
 
-| Name | 必須 | 説明 |
+| Name | 必須 | [説明] |
 | --- | --- | --- |
 | **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、メディア ファイル形式としてMP4、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注:マニフェスト ファイルに 10 を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
 | **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの**キー**に対して**値**を指定できます。 現在サポートされているキーは<br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>Key</p></th>        <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>言語</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
+| **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>Key</p></th>        <th><p>[説明]</p></th><th><p>値の例</p></th></tr><tr><td><p>言語</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
 
 ### <a id="error_codes"></a>エラー コード
 エラーが発生した場合、Azure Media Indexer は、次のいずれかのエラー コードを返します。
@@ -263,7 +263,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 | 2006 |入力のファイルが多すぎます |入力のマニフェストに 10 個を超えるファイルがあります。 |
 | 3000 |メディア ファイルのデコードに失敗しました |メディア コーデックがサポートされていない <br/>or<br/> メディア ファイルが破損している <br/>or<br/> 入力メディアのオーディオ ストリームがありません。 |
 | 4000 |バッチのインデックス作成一部成功しました |一部の入力メディア ファイルは、インデックスを付けるできませんでした。 詳細については、「 <a href="#output_files">出力ファイル</a>。 |
-| その他 |内部エラー |サポート チームにお問い合わせください。 indexer@microsoft.com |
+| その他 |内部エラー |サポート チームにお問い合わせください。 [https://github.com/mysqljs/mysql/](indexer@microsoft.com) |
 
 ## <a id="supported_languages"></a>サポートされている言語
 現時点では、英語とスペイン語の言語がサポートされています。  

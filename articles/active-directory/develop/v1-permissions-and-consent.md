@@ -17,13 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c13f4cabfbd996c1d811a8a3e35e69893c51154f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700925"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -61,7 +60,7 @@ Azure AD のアクセス許可には、ユーザー、管理者、またはア�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| プロパティ名 | 説明 | 例 |
+| プロパティ名 | [説明] | 例 |
 | --- | --- | --- |
 | `ID` | このアクセス許可を一意に識別する GUID 値です。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | このアクセス許可が使用可能かどうかを示します。 | true |
@@ -106,7 +105,7 @@ Azure AD のアプリケーションでは、必要なリソースや API への
   - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
   - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
     
-    例:
+    次に例を示します。
   - Mail.Read - ユーザーにメールの読み取りを許可します。
   - Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
   - Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。

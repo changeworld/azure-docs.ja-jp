@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 01/24/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: db622d8b51f8d7ce877c2f8705771f80c58e284b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 10177edcbef5e9e7c03c75e03f4f41dfbe348358
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817860"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768159"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>クイック スタート:オーディオ ファイルに音声を合成する
 

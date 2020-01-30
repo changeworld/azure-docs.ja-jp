@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421330"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289409"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
@@ -54,7 +54,7 @@ Azure Portal を使ってデータベースをコピーするには、データ�
 PowerShell の場合、[New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) コマンドレットを使用します。
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールは、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
+> PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
@@ -165,7 +165,7 @@ sys.databases ビューと sys.dm_database_copies ビューを照会して、コ
 
 次のエラーは、Azure SQL Database でデータベースをコピーしているときに発生する可能性があります。 詳細については、「 [Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
 | 40635 |16 |IP アドレス '%.&#x2a;ls' のクライアントは一時的に無効化されています。 |
 | 40637 |16 |データベース コピーの作成は現在無効です。 |
@@ -181,7 +181,7 @@ sys.databases ビューと sys.dm_database_copies ビューを照会して、コ
 | 40570 |16 |データベースのコピーに失敗しました。内部エラーが発生しました。 ターゲット データベースを削除してやり直してください。 |
 | 40571 |16 |データベースのコピーに失敗しました。内部エラーが発生しました。 ターゲット データベースを削除してやり直してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ログインについては、「[ログインの管理](sql-database-manage-logins.md)」および「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 - データベースをエクスポートするには、「[BACPAC へのデータベースのエクスポート](sql-database-export.md)」をご覧ください。

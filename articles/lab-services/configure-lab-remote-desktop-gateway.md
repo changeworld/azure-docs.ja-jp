@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs でリモート デスクトップ ゲートウェイを使用するようにラボを構成する |Microsoft Docs
+title: Azure DevTest Labs でリモート デスクトップ ゲートウェイを使用するようにラボを構成する
 description: RDP ポートを公開せずにラボ VM に安全にアクセスできるようにするために、リモート デスクトップ ゲートウェイを使用して Azure DevTest Labs でラボを構成する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162634"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170279"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 次の手順を使用して、トークン認証を使用するようにラボを構成します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で、目的の**ラボ**を選択します。
 1. ラボのページで、 **[構成とポリシー]** を選択します。
@@ -166,7 +166,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
     ゲートウェイとラボの両方が構成されると、ラボ ユーザーが **[接続]** をクリックしたときに作成される接続ファイルに、トークン認証を使用して接続するために必要な情報が自動的に含まれます。     
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 リモート デスクトップ サービスの詳細については、次の記事を参照してください。[リモート デスクトップ サービスのドキュメント](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
 
 

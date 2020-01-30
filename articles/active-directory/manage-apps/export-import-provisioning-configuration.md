@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3e92ee5ffd97174331703b703e811bd1ce5f43
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 609031bfad23a14a954a09a447e363e89a9d29d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815863"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711750"
 ---
 # <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Graph API を使用してプロビジョニング構成をエクスポートまたはインポートする
 
@@ -31,14 +31,14 @@ Microsoft Graph API と Graph Explorer を使用すると、User Provisioning �
 1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、"*Workday to AD User Provisioning アプリケーション*" のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。 
 1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はアプリの **ServicePrincipalId** とも呼ばれ、Graph Explorer の操作で使用されます。
 
-   ![Workday アプリのサービス プリンシパル ID](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Workday アプリのサービス プリンシパル ID](media/export-import-provisioning-mappings/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>手順 2:Microsoft Graph Explorer にサインインします
 
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を起動します
 1. [Sign-In with Microsoft]\(Microsoft を使用してサインイン\) ボタンをクリックし、Azure AD 全体管理者またはアプリ管理者の資格情報を使用してサインインします。
 
-    ![Graph のサインイン](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph のサインイン](media/export-import-provisioning-mappings/wd_export_02.png)
 
 1. サインインに成功すると、左側のウィンドウにユーザー アカウントの詳細が表示されます。
 
@@ -52,7 +52,7 @@ Microsoft Graph Explorer で、[servicePrincipalId] を「[手順 1](#step-1-ret
 
 次の応答を受け取ります。 応答に存在する "id attribute" をコピーします。 この値は **ProvisioningJobId** であり、基になるスキーマ メタデータを取得するために使用されます。
 
-   [![プロビジョニング ジョブ ID](./media/export-import-provisioning-mappings/wd_export_03.png)](./media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
+   [![プロビジョニング ジョブ ID](media/export-import-provisioning-mappings/wd_export_03.png)](media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
 
 ## <a name="step-4-download-the-provisioning-schema"></a>手順 4:プロビジョニング スキーマをダウンロードする
 
@@ -77,10 +77,10 @@ Microsoft Graph Explorer で、[servicePrincipalId] と [ProvisioningJobId] を�
 
 [Request Body]\(要求本文\) タブで、JSON スキーマ ファイルの内容をコピーします。
 
-   [![要求本文](./media/export-import-provisioning-mappings/wd_export_04.png)](./media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
+   [![要求本文](media/export-import-provisioning-mappings/wd_export_04.png)](media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
 
 [Request Headers]\(要求ヘッダー\) タブで、値が "application/json" の Content-Type ヘッダー属性を追加します。
 
-   [![要求ヘッダー](./media/export-import-provisioning-mappings/wd_export_05.png)](./media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
+   [![要求ヘッダー](media/export-import-provisioning-mappings/wd_export_05.png)](media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
 
 [Run Query]\(クエリの実行\) ボタンをクリックして新しいスキーマをインポートします。

@@ -7,25 +7,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 95b15924db7e5b1b788656d7592bb4ad87e07ce2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 530665168cc1ed21f1664e3012bbf37e52d96fbf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166743"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716166"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Computer Vision クライアント ライブラリ
 
-Node.js 用 Computer Vision クライアント ライブラリの概要について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 
+Node.js 用 Computer Vision クライアント ライブラリの概要について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 Node.js 用 Computer Vision クライアント ライブラリを使用すると、次のことができます。
 
 * [イメージを分析する](#analyze-an-image)
 * [印刷されたテキストと手書きのテキストを読み取る](#read-printed-and-handwritten-text)
 
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [パッケージ (npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,20 +38,20 @@ Node.js 用 Computer Vision クライアント ライブラリを使用すると
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 次のこともできます。
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
+* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
 
 試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` および `COMPUTER_VISION_ENDPOINT` という名前を付けます。
- 
+
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。 
+`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
-`ms-rest-azure` および `azure-cognitiveservices-computervision` NPM パッケージをインストールします。
+`ms-rest-azure` および `@azure/cognitiveservices-computervision` NPM パッケージをインストールします。
 
 ```console
 npm install @azure/cognitiveservices-computervision
@@ -177,11 +177,11 @@ npm install @azure/cognitiveservices-computervision
 
 使用する画像の URL を定義します。
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)]
 
 次に、アダルト コンテンツを検出し、結果をコンソールに出力する次のコードを追加します。
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)]
 
 ### <a name="get-image-color-scheme"></a>画像の配色の取得
 
@@ -195,7 +195,7 @@ npm install @azure/cognitiveservices-computervision
 
 ### <a name="get-domain-specific-content"></a>ドメイン固有のコンテンツの取得
 
-Computer Vision では、特殊なモデルを使用して、画像をさらに分析できます。 詳細については、[ドメイン固有のコンテンツ](../concept-detecting-domain-content.md)に関するページを参照してください。 
+Computer Vision では、特殊なモデルを使用して、画像をさらに分析できます。 詳細については、[ドメイン固有のコンテンツ](../concept-detecting-domain-content.md)に関するページを参照してください。
 
 まず分析する画像の URL を定義します。
 

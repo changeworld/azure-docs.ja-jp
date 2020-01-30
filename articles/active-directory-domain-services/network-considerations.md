@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425529"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512778"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
-Azure Active Directory Domain Services (AD DS) から他のアプリケーションおよびワークロードに認証および管理サービスが提供されるため、ネットワーク接続は重要なコンポーネントです。 仮想ネットワークリソースが適切に構成されていないと、アプリケーションとワークロードは、Azure AD DS によって提供される機能と通信して使用することができません。 仮想ネットワークを正しく計画している場合は、Azure AD DS が必要に応じてアプリケーションとワークロードにサービスを提供できることを確認します。
+Azure Active Directory Domain Services (AD DS) から他のアプリケーションおよびワークロードに認証および管理サービスが提供されるため、ネットワーク接続は重要なコンポーネントです。 仮想ネットワークリソースが正しく構成されていないと、アプリケーションとワークロードは、Azure AD DS によって提供される機能と通信して使用することができません。 仮想ネットワークの要件を計画し、Azure AD DS が必要に応じてアプリケーションとワークロードにサービスを提供できることを確認します。
 
-この記事では、Azure AD DS をサポートする Azure 仮想ネットワークの設計の考慮事項と要件について説明します。
+この記事では、Azure AD DS をサポートするための Azure 仮想ネットワークの設計の考慮事項と要件について説明します。
 
 ## <a name="azure-virtual-network-design"></a>Azure 仮想ネットワークの設計
 
@@ -33,7 +33,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 * Azure AD DS は、仮想ネットワークと同じ Azure リージョンにデプロイする必要があります。
     * 現時点では、Azure AD テナントごとにデプロイできる Azure AD DS マネージド ドメインは 1 つのみです。 Azure AD DS マネージド ドメインは、1 つのリージョンにデプロイされます。 仮想ネットワークは、必ず [Azure AD DS をサポートするリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)で作成または選択します。
 * 他の Azure リージョンとアプリケーション ワークロードをホストする仮想ネットワークの距離を考慮します。
-    * 待機時間を最小限に抑えるには、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットの近く、または同じリージョンにコア アプリケーションを保持します。 Azure 仮想ネットワーク間には、仮想ネットワーク ピアリングまたは仮想プライベート ネットワーク (VPN) 接続を使用できます。
+    * 待機時間を最小限に抑えるには、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットの近く、または同じリージョンにコア アプリケーションを保持します。 Azure 仮想ネットワーク間には、仮想ネットワーク ピアリングまたは仮想プライベート ネットワーク (VPN) 接続を使用できます。 以下のセクションでは、これらの接続オプションについて説明します。
 * 仮想ネットワークは、Azure AD DS が提供するもの以外の DNS サービスに依存することはできません。
     * Azure AD DS は独自の DNS サービスを提供しています。 これらの DNS サービス アドレスを使用するように仮想ネットワークを構成する必要があります。 追加の名前空間の名前解決は、条件付きフォワーダーを使用して実現できます。
     * カスタム DNS サーバーの設定を使用して、VM などの他の DNS サーバーからのクエリを送信することはできません。 仮想ネットワーク内のリソースでは、Azure AD DS から提供される DNS サービスを使用する必要があります。
@@ -70,7 +70,7 @@ Azure AD DS マネージド ドメインは、Azure 仮想ネットワーク内�
 
 詳細については、[Azure 仮想ネットワークのピアリングの概要](../virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。
 
-### <a name="virtual-private-networking"></a>仮想プライベート ネットワーク
+### <a name="virtual-private-networking-vpn"></a>仮想プライベート ネットワーク (VPN)
 
 仮想ネットワークをオンプレミス サイトの場所に構成する場合と同じ方法で、仮想ネットワークを別の仮想ネットワークに (VNet 間) 接続することができます。 どちらの接続でも、VPN ゲートウェイを使用して、IPsec/IKE を使用してセキュリティで保護されたトンネルを作成します。 この接続モデルを使用すると、Azure AD DS を Azure 仮想ネットワークにデプロイし、オンプレミスの場所または他のクラウドに接続することができます。
 
@@ -91,8 +91,8 @@ Azure AD DS マネージド ドメインでは、デプロイ時にいくつか�
 | Azure リソース                          | [説明] |
 |:----------------------------------------|:---|
 | ネットワーク インターフェイス カード                  | Azure AD DS は、Windows Server 上で Azure VM として実行されている 2 つのドメイン コントローラー (DC) 上でマネージド ドメインをホストします。 各 VM には、仮想ネットワークのサブネットに接続する仮想ネットワーク インターフェイスがあります。 |
-| 動的標準パブリック IP アドレス         | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 |
-| Azure Standard Load Balancer               | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Standard SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
+| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 |
+| Azure Standard Load Balancer            | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Standard SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
 | ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS では、ロード バランサーに対して 3 つの NAT 規則が作成され、使用されます。セキュリティで保護された HTTP トラフィックに関する 1 つの規則と、セキュリティで保護された PowerShell リモート処理に関する 2 つの規則です。 |
 | 負荷分散規則                     | Azure AD DS マネージド ドメインが TCP ポート 636 上のセキュリティで保護された LDAP 用に構成されている場合、トラフィックを分散する 3 つの規則がロード バランサーに対して作成され、使用されます。 |
 
@@ -160,7 +160,3 @@ Azure AD DS で使用されるネットワーク リソースと接続オプシ�
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

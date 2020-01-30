@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790430"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169147"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -36,7 +36,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
 
 > [!NOTE]
-> リージョン間のレプリケーションは、プレビュー段階です。
+> リージョン間のレプリケーションはプレビュー段階です。
 
 任意の [Azure Database for MariaDB リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
 
@@ -57,7 +57,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ただし、考慮すべきいくつかの制限があります。 
 
-* リージョン別の提供状況:Azure Database for MariaDB は、米国西部 2、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
+* リージョン別の提供状況Azure Database for MariaDB は、米国西部 2、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
     
 * 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部、ブラジル南部、および US Gov バージニアが含まれます。 
    これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
@@ -137,7 +137,7 @@ Azure Database for MariaDB は、Azure Monitor に**レプリケーションの�
 
 ### <a name="deleted-master-and-standalone-servers"></a>削除されたマスターおよびスタンドアロン サーバー
 
-マスター サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカはスタンドアロン サーバーになります。 マスター サーバー自体は削除されます。
+マスター サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカは自動的にスタンドアロン サーバーになり、読み取りと書き込みの両方を受け入れることができます。 マスター サーバー自体は削除されます。
 
 ### <a name="user-accounts"></a>ユーザー アカウント
 
@@ -159,7 +159,7 @@ Azure Database for MariaDB は、Azure Monitor に**レプリケーションの�
 - インメモリ テーブルを使用すると、レプリカの同期が解除される可能性があります。これは、MariaDB レプリケーション テクノロジの制限事項です。
 - マスター サーバーのテーブルに主キーがあることを確認します。 主キーがないと、マスターとレプリカ間でレプリケーションの待機時間が発生する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用して読み取りレプリカの作成と管理](howto-read-replicas-portal.md)を行う方法について確認する。
 - [Azure CLI と REST API を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

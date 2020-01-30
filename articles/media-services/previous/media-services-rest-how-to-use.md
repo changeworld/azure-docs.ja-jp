@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895811"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773655"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 
@@ -45,7 +45,7 @@ REST を使用するときには、次の考慮事項が適用されます。
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -58,9 +58,9 @@ REST を使用するときには、次の考慮事項が適用されます。
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | 種類 | Value |
 | --- | --- | --- |
-| Authorization |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
+| 承認 |Bearer |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,7 +72,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 省略可能なヘッダーのセットを次に示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | 種類 | Value |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> \- application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
@@ -80,24 +80,24 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
 | X-HTTP-Method |HTTP メソッド |PUT や DELETE などの HTTP メソッドをサポートしないクライアントやファイアウォールが、GET 呼び出しを通じてトンネリングされたこれらのメソッドを使用できます。 |
-| Content-Type |コンテンツの種類 |PUT または POST 要求の本文のコンテンツの種類。 |
-| client-request-id |string |指定した要求を識別する、呼び出し元で定義された値。 指定されている場合、この値は、要求をマッピングする方法として、応答メッセージに含まれます。 <p><p>**重要**<p>値は 2096b (2k) に制限する必要があります。 |
+| Content-Type |Content type |PUT または POST 要求の本文のコンテンツの種類。 |
+| client-request-id |String |指定した要求を識別する、呼び出し元で定義された値。 指定されている場合、この値は、要求をマッピングする方法として、応答メッセージに含まれます。 <p><p>**重要**<p>値は 2096b (2k) に制限する必要があります。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | 種類 | Value |
 | --- | --- | --- |
-| request-id |string |現在の操作、生成されたサービスのための一意の識別子。 |
-| client-request-id |string |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
+| request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
+| client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
 | Date |RFC 1123 の日付 |要求が処理された日時。 |
-| Content-Type |多様 |応答本文のコンテンツの種類。 |
-| Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
+| Content-Type |場合により異なる |応答本文のコンテンツの種類。 |
+| Content-Encoding |場合により異なる |Gzip またはデフレート (必要に応じて)。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 動詞
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
 
-| 動詞 | 説明 |
+| 動詞 | [説明] |
 | --- | --- |
 | GET |オブジェクトの現在の値を返します。 |
 | POST |提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。 |
@@ -120,7 +120,7 @@ Media Services アカウントに必要な認証の詳細を Azure Portal から
 
 Azure AD 認証を使用して REST API に接続するコードの作成の詳細については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services REST API で Azure AD 認証を使用する方法については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

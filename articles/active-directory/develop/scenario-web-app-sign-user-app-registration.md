@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964822"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701571"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 
@@ -123,7 +122,7 @@ ms.locfileid: "74964822"
 >
 > ユーザーが個人の Microsoft アカウント (Skype、Xbox、Outlook.com など) でサインインできるアプリケーションを作成できます。 まず、マルチテナント アプリケーションを作成します。 サポートされているアカウントの種類は、任意の組織のディレクトリ内のアカウントです。 次に、Azure portal からアプリケーション マニフェストの `signInAudience` プロパティを変更します。 詳細については、ASP.NET Core チュートリアルの「[手順 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant)」を参照してください。 この手順は一般化し、あらゆる言語の Web アプリに適用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリのコード構成](scenario-web-app-sign-user-app-configuration.md)

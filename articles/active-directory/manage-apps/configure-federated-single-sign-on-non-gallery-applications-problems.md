@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422543"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711876"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
-アプリケーションを構成しているときに問題が発生する場合は、 「[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)」という記事のすべての手順を実行したことを確認します。
+アプリケーションを構成しているときに問題が発生する場合は、 「[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](configure-federated-single-sign-on-non-gallery-applications.md)」という記事のすべての手順を実行したことを確認します。
 
 ## <a name="cant-add-another-instance-of-the-application"></a>アプリケーションの別のインスタンスを追加することができません
 
@@ -41,7 +40,7 @@ ms.locfileid: "68422543"
 
 Azure AD がユーザー認証後の応答でアプリケーションに送信する EntityID (ユーザー識別子) の形式は、選択することができません。
 
-Azure AD は、選択した値に基づく NameID 属性 (ユーザー識別子) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)」の「NameIDPolicy」セクションを参照してください。
+Azure AD は、選択した値に基づく NameID 属性 (ユーザー識別子) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md#authnrequest)」の「NameIDPolicy」セクションを参照してください。
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Azure AD からのアプリケーション メタデータまたは証明書は、どこで取得できますか
 
@@ -69,7 +68,7 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする方法がわからない
 
-アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
+アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](../develop/active-directory-claims-mapping.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

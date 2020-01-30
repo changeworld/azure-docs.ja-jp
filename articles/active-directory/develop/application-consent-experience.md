@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918153"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698171"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 
@@ -33,7 +32,7 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
 同意を許可する実際のユーザー エクスペリエンスは、ユーザーのテナント、ユーザーの機関でのスコープ (ロール)、クライアント アプリケーションによって要求されている[アクセス許可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions)の種類に設定されたポリシーによって異なります。 つまり、そのアプリケーション開発者とテナント管理者は、同意エクスペリエンスの一部を制御できます。 管理者は、テナントで同意エクスペリエンスを制御するために、テナント上でポリシーまたはアプリを柔軟に設定および無効化することができます。 アプリケーション開発者は、要求されているアクセス許可の種類、およびユーザーの同意フローまたは管理者の同意フローにユーザーをガイドする必要があるかどうかを指示します。
 
 - **ユーザーの同意フロー**は、現在のユーザーのみに対する同意を記録する目的で、アプリケーション開発者がユーザーを承認エンドポイントに直接アクセスさせます。
-- **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローの適切な動作を確保するため、アプリケーション開発者は、アプリケーション マニフェストで `RequiredResourceAccess` プロパティ内のアクセス許可をすべて一覧にする必要があります。 詳細については、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するページを参照してください。
+- **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローが適切に動作するようにするため、アプリケーション開発者はアプリケーション マニフェストで `RequiredResourceAccess` プロパティのアクセス許可をすべて一覧する必要があります。 詳細については、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するページを参照してください。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>同意プロンプトの構成要素
 
@@ -82,7 +81,7 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
         
     1. 管理者以外のユーザーに、上記の 2.ii と同じ画面が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure AD の同意フレームワークの実装方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)の詳細な手順を入手します。
 - 詳細については、[マルチテナント アプリケーションが同意フレームワークを使用して](active-directory-devhowto-multi-tenant-overview.md)多層アプリケーションのパターンのサポートが強化されている、"user" と "admin" の同意を実装する方法について学習します。
 - [アプリの発行元ドメインを構成する方法](howto-configure-publisher-domain.md)について説明します。

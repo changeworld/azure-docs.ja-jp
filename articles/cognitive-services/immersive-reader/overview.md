@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
-ms.date: 06/20/2019
+ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5acd6e4be178c7e645eb6855a79cd0f58303ba9a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904363"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846426"
 ---
 # <a name="what-is-immersive-reader"></a>Immersive Reader とは
 
@@ -55,7 +55,7 @@ Immersive Reader は、Immersive Reader SDK を使用して Web アプリケー�
 
 イマーシブ リーダーはスタンドアロンの Web アプリです。Immersive Reader JavaScript SDK を使用して呼び出すと、`iframe` を介して既存の Web アプリ上に表示されます。 イマーシブ リーダーを起動する API を呼び出すときに、イマーシブ リーダーで表示するコンテンツを指定します。 SDK では、`iframe` の作成とスタイル設定のほか、品詞、テキスト読み上げ、翻訳などのコンテンツ処理を行うイマーシブ リーダーのバックエンド サービスとの通信が行われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Immersive Reader を使ってみましょう。
 

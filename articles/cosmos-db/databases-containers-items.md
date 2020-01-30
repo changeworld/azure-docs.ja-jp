@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786947"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767999"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベース、コンテナー、項目の操作
 
@@ -28,7 +28,7 @@ Azure サブスクリプションで [Azure Cosmos DB アカウント](account-o
 
 | Azure Cosmos エンティティ | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos データベース | Database | キースペース | Database | Database | NA |
+|Azure Cosmos データベース | データベース | キースペース | データベース | データベース | NA |
 
 > [!NOTE]
 > Table API アカウントでは、最初のテーブルを作成すると、自分の Azure Cosmos アカウント内に既定のデータベースが自動的に作成されます。
@@ -74,7 +74,7 @@ Azure Cosmos コンテナーは、以下の表に示すように API 固有の�
 
 | Azure Cosmos エンティティ | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos コンテナー | コンテナー | テーブル | コレクション | Graph | テーブル |
+|Azure Cosmos コンテナー | コンテナー | テーブル | コレクション | グラフ | テーブル |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos コンテナーのプロパティ
 
@@ -118,11 +118,11 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 
 | システム定義のプロパティ | システム生成またはユーザー構成可能| 目的 | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | システム生成 | 項目の一意識別子 | はい | いいえ | いいえ | いいえ | いいえ |
+|\_rid | システム生成 | 項目の一意識別子 | はい | いいえ | いいえ | いいえ | いいえ |
 |\_etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_ts | システム生成 | 項目の最終更新のタイムスタンプ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_self | システム生成 | 項目のアドレス指定可能な URI | はい | いいえ | いいえ | いいえ | いいえ |
-|id | 使用できるのは | 論理パーティション内のユーザーが定義した一意の名前。 | はい | はい | はい | はい | はい |
+|id | 接続前/接続後 | 論理パーティション内のユーザーが定義した一意の名前。 | はい | はい | はい | はい | はい |
 |任意のユーザー定義のプロパティ | ユーザー定義 | API のネイティブ表現 (JSON、BSON、CQL など) で表されるユーザー定義のプロパティ | はい | はい | はい | はい | はい |
 
 > [!NOTE]
@@ -134,9 +134,9 @@ Azure Cosmos 項目では、次の操作をサポートします。 Azure Cosmos
 
 | Operation | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 挿入、置換、削除、アップサート、読み取り | いいえ | 可能 | はい | はい | はい | はい |
+| 挿入、置換、削除、アップサート、読み取り | いいえ | はい | はい | はい | はい | はい |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のタスクと概念について説明します。
 

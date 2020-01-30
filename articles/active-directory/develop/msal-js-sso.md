@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916266"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695876"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js でのシングル サインオン
 
@@ -88,7 +87,7 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 
 **ログイン ヒントの使用**
 
-SID の要求を構成していない場合、または対話型認証の呼び出しでアカウント選択のプロンプトをバイパスする必要がある場合は、MSAL.js の対話型メソッド (`loginPopup`、`loginRedirect`、`acquireTokenPopup`、`acquireTokenRedirect`) において、要求パラメーターで `login_hint` を提供し、必要に応じて `domain_hint` を `extraQueryParameters` として渡すことにより、これを行うことができます。 例:
+SID の要求を構成していない場合、または対話型認証の呼び出しでアカウント選択のプロンプトをバイパスする必要がある場合は、MSAL.js の対話型メソッド (`loginPopup`、`loginRedirect`、`acquireTokenPopup`、`acquireTokenRedirect`) において、要求パラメーターで `login_hint` を提供し、必要に応じて `domain_hint` を `extraQueryParameters` として渡すことにより、これを行うことができます。 次に例を示します。
 
 ```javascript
 var request = {
@@ -170,6 +169,6 @@ const myMSALObj = new UserAgentApplication(config);
 
 これを構成すると、MSAL.js は ADAL.js で認証されたユーザーのキャッシュされた状態を読み取って、MSAL.js で SSO を提供するために使用することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD での[シングル サインオン セッションとトークンの有効期間](active-directory-configurable-token-lifetimes.md)の値に関する詳細を確認してください。

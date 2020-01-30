@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 10/25/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 931e6e35df520f4a0ab35dfb6067654f9d08ed9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 31cdc9663283b580acc10e7ac8d5a77f9036a7a8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448271"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772351"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>クイック スタート:Python 用 Content Moderator クライアント ライブラリ
 

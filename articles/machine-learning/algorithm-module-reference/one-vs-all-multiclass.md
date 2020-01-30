@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 939ac7caacac7cfb55bd29ed9a5d9c136a8e5c90
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428514"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314251"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
+この記事では、Azure Machine Learning デザイナーで One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
 
 このモジュールは、結果が連続またはカテゴリ予測変数に依存する場合に、考えられる 3 つ以上の結果を予測するモデルを作成する際に役立ちます。 また、この方法では、複数の出力クラスを必要とする問題に二項分類法を使用することもできます。
 

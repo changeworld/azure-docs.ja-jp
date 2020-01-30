@@ -13,13 +13,12 @@ ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f080c14cd0aa20bd312b4be8d9eacd8d901b7cef
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917031"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696454"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Microsoft Authentication Library を使用して Azure Active Directory B2C と相互運用する
 
@@ -117,7 +116,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 JavaScript 用 MSAL プレビュー (MSAL.js) の使用方法については、この [MSAL JavaScript サンプル](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c)に従ってください。 そのサンプルでは、アクセス トークンが取得され、Azure AD B2C によって保護された API が呼び出されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 

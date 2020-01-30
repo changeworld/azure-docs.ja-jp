@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 を使用したオフラインの PlayReady ストリーミング - Azure
+title: Azure Media Services v3 でオフライン PlayReady ストリーミングを構成する
 description: この記事では、オフラインの Windows 10 のために PlayReady ストリーミング用の Azure Media Services アカウントを構成する方法を示します。
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 15a3e2f7fee6d130b1913ec4f74069a09d5aec53
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779789"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513118"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 を使用した Windows 10 用のオフラインの PlayReady ストリーミング
 

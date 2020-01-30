@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243257"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768170"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -70,7 +70,7 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
 
 1. **[スタート]** メニューから **[タスク スケジューラ]** を起動します。
 2. **[タスク スケジューラ ライブラリ]** の直下から **Azure AD Sync Scheduler** というタスクを探して右クリックし、 **[無効]** を選択します。  
-   ![[タスク スケジューラ]](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+   ![タスク スケジューラ](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. 以上の作業が済んだら構成の変更を行い、**Synchronization Service Manager** コンソールから同期エンジンを手動で実行できます。
 
 フィルター処理の変更がすべて完了したら、忘れずにタスクの状態を **[有効]** に戻してください。
@@ -140,11 +140,11 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
     * 完全同期
     * 差分インポート
     * 差分同期
-    * エクスポート
+    * [エクスポート]
 3. 各プロファイルについて、**追加対象**のドメインと**削除対象**のドメインを調整します。
     1. 5 つのプロファイルのそれぞれについて、**追加対象**のドメインごとに次の手順を実行します。
         1. 実行プロファイルを選択し、 **[新しいステップ]** をクリックします。
-        2. **[ステップの構成]** ページの **[タイプ]** ドロップダウン メニューから、構成するプロファイルと同じ名前の付いたステップの種類を選択します。 その後、 **[次へ]** をクリックします。  
+        2. **[ステップの構成]** ページの **[タイプ]** ドロップダウン メニューから、構成するプロファイルと同じ名前の付いたステップの種類を選択します。 続けて、 **[次へ]** をクリックします。  
         ![コネクタ実行プロファイル 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. **[コネクタの構成]** ページで、 **[パーティション]** ドロップダウン メニューから、ドメイン フィルターに追加したドメインの名前を選択します。  
         ![コネクタ実行プロファイル 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -279,7 +279,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
 6. **[説明]** ページの **[優先順位]** の値を、まだ使用していない値 (50 など) に設定します。
 7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、 **[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「 **\@contoso.com**」と入力し、 **[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「 **\@contoso.com**」と入力します。
-8. **[Save]** をクリックします。
+8. **[保存]** をクリックします。
 9. 構成を完了するには、**完全同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 ## <a name="apply-and-verify-changes"></a>変更の適用と検証
@@ -289,7 +289,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 
 **属性**のフィルター処理を使って構成を変更した場合は、**完全同期**を実行する必要があります。
 
-次の手順を実行します。
+手順は次のとおりです。
 
 1. **[スタート]** メニューから **[同期サービス]** を起動します。
 2. **[コネクタ]** を選択します。 **[コネクタ]** の一覧から、構成変更済みのコネクタを選択します。 **[アクション]** から **[実行]** を選択します。  
@@ -298,7 +298,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 
 同期後、すべての変更がエクスポートの対象としてステージングされます。 実際に Azure AD に変更を加える前に、それらの変更がすべて正しいことを検証する必要があります。
 
-1. コマンド プロンプトを起動し、`%Program Files%\Microsoft Azure AD Sync\bin` に移動します。
+1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。  
    同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
 3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` を実行します。
@@ -328,6 +328,6 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 * あるフォレストにユーザーがいます。このフォレストには、他のフォレストの対応するメール連絡先があります。 また、そのユーザーとメール連絡先がリンクされるように Azure AD Connect を構成しました。 両方のオブジェクトが、グループ ベースのフィルター処理のスコープ内にある必要があります。 そうしないと、ユーザーは Azure AD と同期されません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の詳細を確認してください。
 - [オンプレミス ID と Azure AD の統合](whatis-hybrid-identity.md)の詳細を確認してください。

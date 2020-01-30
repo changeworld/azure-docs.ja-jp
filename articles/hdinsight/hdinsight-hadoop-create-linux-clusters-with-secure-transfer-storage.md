@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979121"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548817"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Apache Hadoop クラスターを作成する
 
 "[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求にセキュリティで保護された接続を経由するように強制することで、Azure ストレージ アカウントのセキュリティを強化します。 この機能と wasbs スキーマは、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。
+
+**クラスターの作成後にセキュリティで保護されたストレージ転送を有効にすると、ストレージ アカウントを使用する際にエラーが発生する可能性があるため、推奨されません。プロパティを有効にして新しいクラスターを作成することをお勧めします。**
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を読み始める前に、以下を用意する必要があります。
 
 * Azure サブスクリプション:1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free) で作成できます。
-* 安全な転送が有効になっている Azure Storage アカウント。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。 クラスターの作成後に安全なストレージ転送を有効にするには、この記事で説明されていない追加の手順が必要です。
+* 安全な転送が有効になっている Azure Storage アカウント。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。 
 * ストレージ アカウント上の BLOB コンテナー。
 
 ## <a name="create-cluster"></a>クラスターの作成

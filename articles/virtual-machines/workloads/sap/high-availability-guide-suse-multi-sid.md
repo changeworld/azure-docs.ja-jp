@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/20/2019
+ms.date: 01/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 493056037637ffb2afa9570e1287620869ee8fc7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474777"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314200"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -52,7 +52,7 @@ ms.locfileid: "75474777"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-この記事では、SUSE Linux Enterprise Server for SAP Applications を使用して、Azure VM の 2 ノード クラスターに複数の SAP NetWeaver 高可用性システム (つまりマルチ SID) をデプロイする方法について説明します。  
+この記事では、SUSE Linux Enterprise Server for SAP Applications を使用して、Azure VM の 2 ノード クラスターに複数の SAP NetWeaver または S4HANA 高可用性システム (つまりマルチ SID) をデプロイする方法について説明します。  
 
 この例の構成では (インストール コマンドなど)、3 つの SAP NetWeaver 7.50 システムを、1 つの 2 ノード高可用性クラスターにデプロイします。 SAP システムの SID は次のとおりです。
 * **NW1**: ASCS インスタンス番号 **00** および仮想ホスト名 **msnw1ascs**、ERS インスタンス番号 **02** および仮想ホスト名 **msnw1ers**。  
@@ -129,8 +129,8 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 
 * フロントエンドの構成
   * NW1 の IP アドレス: 10.3.1.15
-  * NW2 の IP アドレス: 10.3.1.17
-  * NW3 の IP アドレス: 10.3.1.19
+  * NW2 10.3.1.17 の IP アドレス
+  * NW3 10.3.1.19 の IP アドレス
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
@@ -426,7 +426,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 8. **[1]** 新しくインストールした SAP システム用の SAP クラスター リソースを作成します。 
 
-   ここで示す例は、SAP システム **NW2** と **NW3** に対するものです。エンキュー サーバー 1 アーキテクチャ (ENSA1) を使用しているものとします。
+   エンキュー サーバー 1 アーキテクチャ (ENSA1) を使用する場合は、次のように、SAP systems **NW2** と **NW3** のリソースを定義します。
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -472,6 +472,52 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
      sudo crm configure order ord_sap_NW3_first_start_ascs Optional: rsc_sap_NW3_ASCS20:start rsc_sap_NW3_ERS22:stop symmetrical=false
      sudo crm configure property maintenance-mode="false"
     ```
+
+   SAP では、SAP NW 7.52 の時点で、レプリケーションを含むエンキュー サーバー 2 のサポートが導入されました。 ABAP Platform 1809 以降では、エンキュー サーバー 2 が既定でインストールされます。 エンキュー サーバー 2 のサポートについては、SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) を参照してください。
+   エンキュー サーバー 2 アーキテクチャ ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) を使用する場合は、次のように、SAP systems **NW2** と **NW3** のリソースを定義します。
+
+    ```
+     sudo crm configure property maintenance-mode="true"
+    
+     sudo crm configure primitive rsc_sap_NW2_ASCS10 SAPInstance \
+      operations \$id=rsc_sap_NW2_ASCS10-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW2_ASCS10_msnw2ascs START_PROFILE="/sapmnt/NW2/profile/NW2_ASCS10_msnw2ascs" \
+      AUTOMATIC_RECOVER=false \
+      meta resource-stickiness=5000 
+    
+     sudo crm configure primitive rsc_sap_NW2_ERS12 SAPInstance \
+      operations \$id=rsc_sap_NW2_ERS12-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW2_ERS12_msnw2ers START_PROFILE="/sapmnt/NW2/profile/NW2_ERS12_msnw2ers" AUTOMATIC_RECOVER=false IS_ERS=true 
+    
+     sudo crm configure modgroup g-NW2_ASCS add rsc_sap_NW2_ASCS10
+     sudo crm configure modgroup g-NW2_ERS add rsc_sap_NW2_ERS12
+    
+     sudo crm configure colocation col_sap_NW2_no_both -5000: g-NW2_ERS g-NW2_ASCS
+     sudo crm configure order ord_sap_NW2_first_start_ascs Optional: rsc_sap_NW2_ASCS10:start rsc_sap_NW2_ERS12:stop symmetrical=false
+   
+     sudo crm configure primitive rsc_sap_NW3_ASCS20 SAPInstance \
+      operations \$id=rsc_sap_NW3_ASCS20-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW3_ASCS10_msnw3ascs START_PROFILE="/sapmnt/NW3/profile/NW3_ASCS20_msnw3ascs" \
+      AUTOMATIC_RECOVER=false \
+      meta resource-stickiness=5000
+    
+     sudo crm configure primitive rsc_sap_NW3_ERS22 SAPInstance \
+      operations \$id=rsc_sap_NW3_ERS22-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW3_ERS22_msnw3ers START_PROFILE="/sapmnt/NW3/profile/NW3_ERS22_msnw2ers" AUTOMATIC_RECOVER=false IS_ERS=true
+    
+     sudo crm configure modgroup g-NW3_ASCS add rsc_sap_NW3_ASCS20
+     sudo crm configure modgroup g-NW3_ERS add rsc_sap_NW3_ERS22
+    
+     sudo crm configure colocation col_sap_NW3_no_both -5000: g-NW3_ERS g-NW3_ASCS
+     sudo crm configure order ord_sap_NW3_first_start_ascs Optional: rsc_sap_NW3_ASCS20:start rsc_sap_NW3_ERS22:stop symmetrical=false
+     sudo crm configure property maintenance-mode="false"
+    ```
+
+   以前のバージョンからアップグレードし、エンキュー サーバー 2 に切り替えている場合は、SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019) を参照してください。 
 
    クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 リソースがどのノードで実行されているかは重要ではありません。
    次の例では、SAP システム **NW2** と **NW3** をクラスターに追加した後の、クラスター リソースの状態を示します。 

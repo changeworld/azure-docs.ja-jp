@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c120c9092d9cf0e4029cadea1b412a73e858fa75
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 93302388813f09a37628d16b4ede3f7d6cc08752
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156150"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704937"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>電話番号を検証方法として設定する
 
@@ -36,7 +35,7 @@ ms.locfileid: "76156150"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |

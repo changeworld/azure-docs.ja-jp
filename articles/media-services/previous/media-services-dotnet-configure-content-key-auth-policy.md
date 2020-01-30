@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974497"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705702"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的な暗号化:コンテンツ キー承認ポリシーを構成する
+# <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概要
- Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
+ Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも Common Encryption (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できるキー/ライセンス配信サービスも提供します。
 
@@ -428,7 +429,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -436,6 +437,6 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関する記事をご覧ください。
 

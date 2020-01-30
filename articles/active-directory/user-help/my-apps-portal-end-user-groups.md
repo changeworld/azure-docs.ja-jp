@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803922"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704954"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでグループ情報を更新する
 
@@ -175,7 +174,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
     ![[グループへの参加] ページ、[グループから脱退] ボタンが強調表示](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 

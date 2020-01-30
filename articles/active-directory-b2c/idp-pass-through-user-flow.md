@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948813"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838957"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
-Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](active-directory-b2c-reference-policies.md)は、アプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 ジャーニーが開始されると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。
+Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](user-flow-overview.md)は、アプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 ジャーニーが開始されると、Azure AD B2C は ID プロバイダーから[アクセス トークン](tokens-overview.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。
 
-Azure AD B2C は現在、[Facebook](active-directory-b2c-setup-fb-app.md) や [Google](active-directory-b2c-setup-goog-app.md) などの [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
+Azure AD B2C は現在、[Facebook](identity-provider-facebook.md) や [Google](identity-provider-google.md) などの [OAuth 2.0](authorization-code-flow.md) ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,6 +54,6 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
     ![Idp_access_token block が強調表示されている jwt.ms 内のデコードされたトークン](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure AD B2C トークンの概要](active-directory-b2c-reference-tokens.md)に関する記事で詳細を参照してください。
+[Azure AD B2C トークンの概要](tokens-overview.md)に関する記事で詳細を参照してください。

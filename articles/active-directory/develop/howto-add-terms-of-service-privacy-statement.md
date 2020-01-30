@@ -12,13 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842810"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697338"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
@@ -40,9 +39,9 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 自分のアプリのサービス利用規約とプライバシーに関する声明のドキュメントへのリンクを追加する前に、URL が以下のガイドラインに従っていることを確認します。
 
-| ガイドライン     | 説明                           |
+| ガイドライン     | [説明]                           |
 |---------------|---------------------------------------|
-| 形式        | 有効な URL                             |
+| Format        | 有効な URL                             |
 | 有効なスキーマ | HTTP および HTTPS<br/>HTTPS を推奨 |
 | 最大長    | 2048 文字                       |
 
@@ -59,7 +58,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 ### <a name="azure-portal"></a>Azure portal を使用する
 Azure portal で次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
 3. **[ブランド]** ウィンドウを開きます。
 4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。

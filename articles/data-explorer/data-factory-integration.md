@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819130"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293625"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer と Azure Data Factory の統合
 
@@ -44,6 +44,14 @@ Azure Data Explorer は、Azure 内でデータをコピーするときに使用
 ### <a name="copy-in-bulk-from-a-database-template"></a>データベース テンプレートから一括コピーする
 
 「[Azure Data Factory テンプレートを使用してデータベースから Azure Data Explorer に一括コピーする](data-factory-template.md)」は、事前定義された Azure Data Factory パイプラインです。 テンプレートを使用して、データベースまたはテーブルごとにさまざまなパイプラインを作成し、データのコピーを高速化します。 
+
+### <a name="mapping-data-flows"></a>データ フローのマッピング 
+
+[Azure Data Factory](/azure/data-factory/concepts-data-flow-overview): マッピング データ フローは、視覚的に設計されたデータ変換であり、データ エンジニアはコードを記述せずにグラフィカルなデータ変換ロジックを開発できます。 データ フローを作成して Azure Data Explorer にデータを取り込むには、次の方法を使用します。
+
+1. [マッピング データ フロー](/azure/data-factory/data-flow-create)を作成します。
+1. [Azure BLOB](/azure/data-factory/data-flow-sink) にデータをエクスポートします。 
+1. データを Azure に取り込むために、[Event Grid](/azure/data-explorer/ingest-data-event-grid) または [ADF コピーアクティビティ](/azure/data-explorer/data-factory-load-data)を定義します。
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>データをコピーするときにコピーと Azure Data Explorer コマンド アクティビティ間で選択する 
 
@@ -90,7 +98,7 @@ Azure Data Explorer にデータをコピーするためのコピー アクテ�
 
 次の表に、Azure Data Factory との統合におけるさまざまな手順に必要なアクセス許可を示します。
 
-| 手順 | Operation | 最小レベルのアクセス許可 | メモ |
+| 手順 | 操作 | 最小レベルのアクセス許可 | メモ |
 |---|---|---|---|
 | **リンクされたサービスの作成** | データベース ナビゲーション | "*データベース表示者*" <br>ADF を使用してログインしているユーザーには、データベース メタデータを読み取る権限が必要です。 | ユーザーは、データベース名を手動で指定できます。 |
 | | 接続をテスト | "*データベース監視者*" または "*テーブル取り込み者*" <br>サービス プリンシパルには、データベース レベルの `.show` コマンドまたはテーブル レベルの取り込みを実行する権限が必要です。 | <ul><li>TestConnection では、データベースではなく、クラスターへの接続が検証されます。 データベースが存在しない場合でも成功する可能性があります。</li><li>テーブル管理者のアクセス許可では不十分です。</li></ul>|
@@ -203,7 +211,7 @@ static void Main(string[] args)
 {"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Factory を使用して Azure Data Explorer にデータをコピーする](data-factory-load-data.md)方法について確認する。
 * [データベースから Azure Data Explorer への一括コピーに Azure Data Factory テンプレートを使用する](data-factory-template.md)方法について学習する。

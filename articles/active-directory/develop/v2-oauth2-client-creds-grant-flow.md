@@ -17,13 +17,12 @@ ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ebdebd48710e892ec8f1a96eeba0f91228024420
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423283"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700534"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -120,9 +119,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
-| `redirect_uri` | 必須 | 処理するアプリの応答の送信先となるリダイレクト URI。 ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります (ただし、URL エンコードが必要であり、またその他のパスのセグメントがある場合があります)。 |
+| `tenant` | Required | アクセス許可を要求するディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
+| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
+| `redirect_uri` | Required | 処理するアプリの応答の送信先となるリダイレクト URI。 ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります (ただし、URL エンコードが必要であり、またその他のパスのセグメントがある場合があります)。 |
 | `state` | 推奨 | トークンの応答でも返される要求に含まれる値。 任意の文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
 
 現時点で、Azure AD では、テナント管理者のみがサインインして、要求を完了することができます。 管理者は、アプリケーション登録ポータルでユーザーがアプリに要求したすべての直接のアプリケーション アクセス許可への承認を求められます。
@@ -183,11 +182,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
-| `client_id` | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 アプリを登録したポータルで、この情報を確認できます。 |
-| `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br/>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、目的のリソースに関連付けられたトークンを発行するように、Microsoft ID プラットフォーム エンドポイントに命じます。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
-| `client_secret` | 必須 | アプリケーション登録ポータルでアプリ用に生成したクライアント シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
-| `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
+| `tenant` | Required | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
+| `client_id` | Required | お使いのアプリに割り当てられたアプリケーション ID。 アプリを登録したポータルで、この情報を確認できます。 |
+| `scope` | Required | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br/>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、目的のリソースに関連付けられたトークンを発行するように、Microsoft ID プラットフォーム エンドポイントに命じます。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
+| `client_secret` | Required | アプリケーション登録ポータルでアプリ用に生成したクライアント シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
+| `grant_type` | Required | `client_credentials` に設定する必要があります。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 
@@ -205,12 +204,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
-| `client_id` | 必須 |お使いのアプリに割り当てられるアプリケーション (クライアント) ID。 |
-| `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br/>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、目的のリソースに関連付けられたトークンを発行するように、Microsoft ID プラットフォーム エンドポイントに命じます。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
-| `client_assertion_type` | 必須 | この値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` に設定する必要があります。 |
-| `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
-| `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
+| `tenant` | Required | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
+| `client_id` | Required |お使いのアプリに割り当てられるアプリケーション (クライアント) ID。 |
+| `scope` | Required | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 <br/>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、目的のリソースに関連付けられたトークンを発行するように、Microsoft ID プラットフォーム エンドポイントに命じます。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
+| `client_assertion_type` | Required | この値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` に設定する必要があります。 |
+| `client_assertion` | Required | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
+| `grant_type` | Required | `client_credentials` に設定する必要があります。 |
 
 パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じであることに注意してください。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の 2 つのパラメーターに置き換えられている点です。
 

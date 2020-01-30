@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848495"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512574"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>パスワードなしの認証のデプロイを行う
 
@@ -73,7 +73,7 @@ Microsoft のパスワードなし認証方法では、さまざまなシナリ�
 
 | 前提条件 | Authenticator アプリ | FIDO2 セキュリティ キー |
 | --- | --- | --- |
-| [Azure MFA とパスワード リセットのセルフサービス (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている (プレビュー機能) | √ | √ |
+| [Azure MFA とセルフサービス パスワード リセット (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている (プレビュー機能) | √ | √ |
 | [ユーザーが Azure MFA を実行できる](howto-mfa-getstarted.md) | √ | √ |
 | [ユーザーが Azure MFA と SSPR に登録している](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [ユーザーがモバイル デバイスを Azure Active Directory に登録している](../devices/overview.md) | √ |   |
@@ -108,7 +108,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
    - Intune のデプロイが推奨されるオプションです。
 - [プロビジョニング パッケージを使用して資格情報プロバイダーを有効にする](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Intune のデプロイを使用できない場合は、管理者が各コンピューターにパッケージをデプロイして、資格情報プロバイダー機能を有効にする必要があります。 パッケージのインストールは、次のいずれかのオプションを使用して実行できます。
-      - グループ ポリシーまたは System Center Configuration Manager (SCCM)
+      - グループ ポリシーまたは Configuration Manager
       - Windows 10 コンピューターへのローカル インストール
 
 ### <a name="register-security-keys"></a>セキュリティ キーを登録する
@@ -129,7 +129,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 
 次の表では、このプロジェクトの間に実装するユース ケースの概要を示します。
 
-| 領域 | 説明 |
+| 領域 | [説明] |
 | --- | --- |
 | **Access (アクセス)** | パスワードなしのサインインは、企業ネットワーク内外の企業または個人のデバイスから使用できます。 |
 | **監査** | 管理者は、使用状況データを使用して、ほぼリアルタイムで監査を行うことができます。 <br> 使用状況データは、少なくとも 29 日に一度、企業システムにダウンロードされるか、または SIEM ツールを使用します。 |
@@ -154,7 +154,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 - [Microsoft Authenticator アプリでの登録](howto-authentication-passwordless-phone.md)
 - [電話を使用したサインイン](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft では、伝達方法の原案として役立つ MFA [通信テンプレート](https://aka.ms/mfatemplates)、パスワード リセットのセルフサービス (SSPR) [通信テンプレート](https://www.microsoft.com/download/details.aspx?id=56768)、[エンド ユーザー文書](../user-help/security-info-setup-signin.md)が用意されています。 ユーザーに [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) にアクセスさせ、そのページのセキュリティ情報リンクを選択して直接登録させることができます。
+Microsoft では、伝達方法の原案として役立つ MFA [通信テンプレート](https://aka.ms/mfatemplates)、セルフサービス パスワード リセット (SSPR) [通信テンプレート](https://www.microsoft.com/download/details.aspx?id=56768)、[エンド ユーザー文書](../user-help/security-info-setup-signin.md)が用意されています。 ユーザーに [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) にアクセスさせ、そのページのセキュリティ情報リンクを選択して直接登録させることができます。
 
 ### <a name="testing-passwordless"></a>パスワードなしのテスト
 
@@ -245,7 +245,7 @@ FIDO2 セキュリティ デバイスを既に登録しているユーザーに�
 
 ### <a name="required-administrative-roles"></a>必要な管理者ロール
 
-| Azure AD ロール | 説明 |
+| Azure AD ロール | [説明] |
 | --- | --- |
 | 認証管理者 | 認証方法を実装および管理できる最小限の特権を持つロール |
 | User | デバイスで Authenticator アプリを構成するか、Web または Windows 10 でのサインイン用のセキュリティ キー デバイスを登録するための、最小限の特権を持つロール。 |
@@ -278,7 +278,7 @@ FIDO2 セキュリティ デバイスを既に登録しているユーザーに�
 | ユーザーが Windows 10 バージョン 1809 でセキュリティ キーを管理できない | バージョン 1809 では、FIDO2 キー ベンダーによって提供されるセキュリティ キー管理ソフトウェアを使用する必要があります。 ベンダーにサポートについてお問い合わせください。 |
 | FIDO2 のセキュリティ キーが破損しているらしい — どうすればテストできるか | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) に移動し、テスト アカウントの資格情報を入力し、問題のあるセキュリティ キーをプラグインし、画面の右上にある [+] ボタンをクリックし、作成をクリックして、作成プロセスを実行します。 このシナリオが失敗する場合、デバイスに欠陥がある可能性があります。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする](howto-authentication-passwordless-security-key.md)
 - [Microsoft Authenticator アプリでパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)

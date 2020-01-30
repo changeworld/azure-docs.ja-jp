@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719972"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711548"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -29,13 +29,13 @@ ms.locfileid: "75719972"
 **Azure AD プロビジョニング サービス**では、アプリケーション ベンダーから提供される System for Cross-Domain Identity Management (SCIM) 2.0 ユーザー管理 API エンドポイントに接続することによって、SaaS アプリや他のシステムにユーザーがプロビジョニングされます。 Azure AD では、この SCIM エンドポイントを使用して、プログラムによってユーザーが作成、更新、削除されます。 また、一部の限られたアプリケーションについては、ID に関連したその他のオブジェクト (グループ、ロールなど) をプロビジョニング サービスで作成、更新、削除することができます。 Azure AD とアプリケーションの間のプロビジョニングに使用されるチャネルは、HTTPS SSL 暗号化を使用して暗号化されます。
 
 
-![Azure AD プロビジョニング サービス](./media/user-provisioning/provisioning0.PNG)
+![Azure AD プロビジョニング サービス](media/how-provisioning-works/provisioning0.PNG)
 *図 1: Azure AD プロビジョニング サービス*
 
-![出力方向のユーザー プロビジョニング ワークフロー](./media/user-provisioning/provisioning1.PNG)
+![出力方向のユーザー プロビジョニング ワークフロー](media/how-provisioning-works/provisioning1.PNG)
 *図 2: Azure AD から主要 SaaS アプリケーションへの "出力方向" のユーザー プロビジョニング ワークフロー*
 
-![入力方向のユーザー プロビジョニング ワークフロー](./media/user-provisioning/provisioning2.PNG)
+![入力方向のユーザー プロビジョニング ワークフロー](media/how-provisioning-works/provisioning2.PNG)
 *図 3: 主要な人材管理 (HCM) アプリケーションから Azure Active Directory および Windows Server Active Directory への "入力方向" のユーザー プロビジョニング ワークフロー*
 
 ## <a name="provisioning-using-scim-20"></a>SCIM 2.0 を使用したプロビジョニング
@@ -73,11 +73,11 @@ Azure AD から SaaS アプリケーションへの送信プロビジョニン�
 
   * 動的グループは、Azure AD から SaaS アプリケーションへのエンドツーエンドのプロビジョニングのパフォーマンスに影響を与えることがあります。
 
-  * SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループでメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法については、[メンバーシップ ルールの処理状態のチェック](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)に関するページを参照してください。
+  * SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループでメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法については、[メンバーシップ ルールの処理状態のチェック](../users-groups-roles/groups-create-rule.md)に関するページを参照してください。
 
   * 動的グループのユーザーのメンバーシップが失われると、プロビジョニング解除イベントと見なされます。 動的グループのルールを作成する場合は、このシナリオを検討してください。
 
-* **入れ子になったグループ。** Azure AD ユーザー プロビジョニング サービスでは、入れ子になったグループのユーザーの読み取りやプロビジョニングを行うことはできません。 このサービスでは、明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングすることができます。 "アプリケーションへのグループベースの割り当て" のこの制限は、シングル サインオンにも影響を与えます (「[SaaS アプリケーションへのアクセスをグループで管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)」を参照)。 代わりに、プロビジョニングする必要のあるユーザーを含むグループを明示的に割り当てるか、または[スコープ設定](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)します。
+* **入れ子になったグループ。** Azure AD ユーザー プロビジョニング サービスでは、入れ子になったグループのユーザーの読み取りやプロビジョニングを行うことはできません。 このサービスでは、明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングすることができます。 "アプリケーションへのグループベースの割り当て" のこの制限は、シングル サインオンにも影響を与えます (「[SaaS アプリケーションへのアクセスをグループで管理する](../users-groups-roles/groups-saasapps.md)」を参照)。 代わりに、プロビジョニングする必要のあるユーザーを含むグループを明示的に割り当てるか、または[スコープ設定](define-conditional-rules-for-provisioning-user-accounts.md)します。
 
 ### <a name="attribute-based-scoping"></a>属性ベースのスコープ 
 
@@ -85,7 +85,7 @@ Azure AD から SaaS アプリケーションへの送信プロビジョニン�
 
 ### <a name="b2b-guest-users"></a>B2B (ゲスト) ユーザー
 
-Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps)」を参照してください。
+Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成](../b2b/configure-saas-apps.md)」を参照してください。
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>プロビジョニング サイクル:初回と増分
 
@@ -160,7 +160,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 検疫状態であると、増分サイクルの頻度は徐々に減少し、最終的には 1 日 1 回になります。
 
-問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始されます。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。 検疫の状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
+問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始されます。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。 検疫の状態の詳細については、[こちら](application-provisioning-quarantine-status.md)を参照してください。
 
 ### <a name="how-long-provisioning-takes"></a>プロビジョニングにかかる時間
 
@@ -184,7 +184,7 @@ Azure AD プロビジョニング サービスでは、ユーザーをアクセ�
 
 上記の 4 つのイベントのいずれかが発生し、ターゲット アプリケーションで論理的な削除がサポートされていない場合は、プロビジョニング サービスによって削除要求が送信されて、アプリからユーザーが完全に削除されます。 
 
-Azure AD でユーザーが削除されてから 30 日後に、テナントから完全に削除されます。 この時点で、プロビジョニング サービスによって削除要求が送信されて、アプリケーション内のユーザーが完全に削除されます。 30 日間の期間中はいつでも、ユーザーを[手動で完全に削除する]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)ことができます。これにより、削除要求がアプリケーションに送信されます。
+Azure AD でユーザーが削除されてから 30 日後に、テナントから完全に削除されます。 この時点で、プロビジョニング サービスによって削除要求が送信されて、アプリケーション内のユーザーが完全に削除されます。 30 日間の期間中はいつでも、ユーザーを[手動で完全に削除する](../fundamentals/active-directory-users-restore.md)ことができます。これにより、削除要求がアプリケーションに送信されます。
 
 属性マッピングに IsSoftDeleted 属性が表示されている場合は、この属性を使用してユーザーの状態とともに、active = false の更新要求を送信してユーザーを論理的に削除するかどうかが判断されます。 
 

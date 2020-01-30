@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 description: Azure portal または CLI を使用して、メトリック アラート ルールを作成、表示、管理する方法について説明します。
-author: snehithm
+author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712991"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705532"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -126,7 +126,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../../azure-monitor/platform/alerts-enable-template.md)。
 - [メトリック アラートのしくみを理解します](alerts-metric-overview.md)。

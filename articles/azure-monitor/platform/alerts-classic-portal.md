@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor を使用してクラシック メトリック アラートを作成、表示、管理する
 description: Azure portal、CLI、または PowerShell を使用して、クラシック メトリック アラート ルールを作成、表示、管理する方法について説明します。
-author: snehithm
+author: yanivlavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
-ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yalavi
+ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129748"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705600"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
@@ -129,7 +129,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 8. クラシック アラート ルールは、PowerShell で作成できなくなっています。 アラート ルールを作成するには、新しい "[Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule)" コマンドを使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する](../../azure-monitor/platform/alerts-enable-template.md)。
 - [Webhook を使用してクラシック メトリック アラートが Azure 以外のシステムに通知するように設定する](../../azure-monitor/platform/alerts-webhooks.md)。

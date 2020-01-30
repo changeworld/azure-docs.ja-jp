@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063371"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840181"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,15 +38,15 @@ ms.locfileid: "71063371"
 
 **TrustFrameworkPolicy** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
 | TenantObjectId | いいえ | Azure Active Directory B2C (Azure AD B2C) テナントの一意のオブジェクト識別子。 |
 | TenantId | はい | このポリシーが属するテナントの一意の識別子。 |
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
-| DeploymentMode | いいえ | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
-| UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
+| DeploymentMode | いいえ | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
+| UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
 
 
 次の例は、**TrustFrameworkPolicy** 要素を指定する方法を示しています。
@@ -80,7 +80,7 @@ ms.locfileid: "71063371"
 - どのレベルの子ポリシーでも、親ポリシーから継承することができ、新しい要素を追加することによって拡張することができます。
 - レベルの数に制限はありません。
 
-詳細については、「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」を参照してください。
+詳細については、「[カスタム ポリシーの概要](custom-policy-get-started.md)」を参照してください。
 
 ## <a name="base-policy"></a>Base ポリシー
 
@@ -88,7 +88,7 @@ ms.locfileid: "71063371"
 
 **BasePolicy** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C テナントの識別子。 |
 | PolicyId | 1:1 | 親ポリシーの識別子。 |
@@ -116,7 +116,7 @@ ms.locfileid: "71063371"
 
 ## <a name="policy-execution"></a>ポリシー実行
 
-Web、モバイル、またはデスクトップ アプリケーションなどの証明書利用者アプリケーションは、[証明書利用者 (RP) ポリシー](relyingparty.md)を呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、またはプロファイルの編集など、特定のタスクを実行します。 RP ポリシーは、発行されるトークンの一部として、証明書利用者アプリケーションが受け取る要求の一覧を構成します。 複数のアプリケーションで同じポリシーを使用できます。 すべてのアプリケーションは、要求を含む同じトークンを受け取り、ユーザーは同じユーザー体験をします。 1 つのアプリケーションで複数のポリシーを使用できます。
+Web、モバイル、またはデスクトップ アプリケーションなどの証明書利用者アプリケーションは、[証明書利用者 (RP) ポリシー](relyingparty.md)を呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、プロファイルの編集などの特定のタスクを実行します。 RP ポリシーは、発行されるトークンの一部として、証明書利用者アプリケーションが受け取る要求の一覧を構成します。 複数のアプリケーションで同じポリシーを使用できます。 すべてのアプリケーションは、要求を含む同じトークンを受け取り、ユーザーは同じユーザー体験をします。 1 つのアプリケーションで複数のポリシーを使用できます。
 
 RP ポリシー ファイル内で、**DefaultUserJourney** 要素を指定します。この要素は [UserJourney](userjourneys.md) をポイントします。 ユーザー体験は通常、Base または Extensions ポリシーで定義されます。
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
 
 ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。
 
-[スターター パック](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
+[スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
 
 オーケストレーション ステップで、[技術プロファイル](technicalprofiles.md)を呼び出すことができます。 技術プロファイルは、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 たとえば、技術プロファイルでは、特に次のアクションを実行できます。
 

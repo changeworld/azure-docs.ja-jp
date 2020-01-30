@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991824"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841749"
 ---
 # <a name="output-batching"></a>出力のバッチ処理
 
@@ -77,16 +77,16 @@ Event Grid のバッチ処理の動作は、次の 2 つの設定を調整して
 
 次のデプロイ時設定によって、イベント サブスクリプションの作成時に許容される最大値が制御されます。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | [説明] |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes` ノブに許可される最大値。 既定値は `1033` です。
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | `MaxEventsPerBatch` ノブに許可される最大値。 既定値は `50` です。
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes` ノブに許可される最大値。 既定値は `1033` です。
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch` ノブに許可される最大値。 既定値は `50` です。
 
 ## <a name="configuring-runtime-default-values"></a>実行時の既定値の構成
 
 イベント サブスクリプションでの指定がない場合、次のデプロイ時設定によって、各ノブの実行時の既定値が制御されます。 繰り返しになりますが、バッチ処理動作を有効にするには、イベント サブスクリプションで少なくとも 1 つのノブを設定する必要があります。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | [説明] |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | `MaxEventsPerBatch` のみが指定されている場合の配信要求の最大サイズ。 既定値は `1_058_576` です。
-| `broker:defaultMaxEventsPerBatch` | `MaxBatchSizeInBytes` のみが指定されている場合にバッチに追加するイベントの最大数。 既定値は `10` です。
+| `broker__defaultMaxBatchSizeInBytes` | `MaxEventsPerBatch` のみが指定されている場合の配信要求の最大サイズ。 既定値は `1_058_576` です。
+| `broker__defaultMaxEventsPerBatch` | `MaxBatchSizeInBytes` のみが指定されている場合にバッチに追加するイベントの最大数。 既定値は `10` です。

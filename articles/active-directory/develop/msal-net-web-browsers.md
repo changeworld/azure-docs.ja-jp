@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424171"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695077"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 

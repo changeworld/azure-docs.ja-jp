@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921473"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122102"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
@@ -88,17 +88,12 @@ Batch 文字起こし API では、次の形式がサポートされています
 次の省略可能なプロパティを使用して、文字起こしを構成します。
 
 | パラメーター | [説明] |
-|-----------|------------|
-|`ProfanityFilterMode`|認識結果内の不適切な表現をどう扱うかを指定します。
-||**`Masked`** - 既定。 不適切表現をアスタリスクに置き換えます。<br>`None` - 不適切表現のフィルターを無効にします。<br>`Removed` -結果からすべての不適切表現を削除します。<br>`Tags` - 不適切タグを追加します。
-|`PunctuationMode`|認識結果内の句読点の処理方法を指定します。
-||`Automatic` - サービスによって句読点が挿入されます。<br>`Dictated` - 口述指示の (音声指示の) 句読点。<br>**`DictatedAndAutomatic`** - 既定。 口述指示の句読点と自動句読点。<br>`None` - 句読点を無効にします。
-|`AddWordLevelTimestamps`|単語レベルのタイムスタンプを出力に追加するかどうかを指定します。
-||`True` - 単語レベルのタイムスタンプを有効にします。<br>**`False`** - 既定。 単語レベルのタイムスタンプを無効にします。
-|`AddSentiment`|発話に感情分析を追加するかどうかを指定します。
-||`True` - 発話ごとのセンチメントを有効にします。<br>**`False`** - 既定。 センチメントを無効にします。
-|`AddDiarization`|ダイアライゼーション分析を実行するかどうかを指定します。`true` の場合、入力は最大 2 つの音声を含むモノラル チャンネル オーディオであると想定されます。 `AddWordLevelTimestamps` を `true` に設定する必要があります。
-||`True` - ダイアライゼーションを有効にします。<br>**`False`** - 既定。 ダイアライゼーションを無効にします。
+|-----------|-------------|
+| `ProfanityFilterMode` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`None` (不適切な表現のフィルターを無効にする)、`Masked` (不適切な表現をアスタリスクに置き換える)、`Removed` (すべての不適切な表現を結果から除去する) または `Tags` ("不適切な表現" のタグを追加する) です。 既定の設定は `Masked` です。 |
+| `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`None` (句読点を無効にする)、`Dictated` (明示的な句読点)、`Automatic` (デコーダーで句読点を処理する)、`DictatedAndAutomatic` (指定された句読点、または自動) です。 |
+| `AddWordLevelTimestamps` | 単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 `true` を指定すると単語レベルのタイムスタンプが有効になり、`false` (既定値) を指定すると無効になります。 |
+| `AddSentiment` | センチメントを発話に追加するかどうかを指定します。 `true` を指定すると発話ごとのセンチメントが有効になり、`false` (既定値) を指定すると無効になります。 |
+| `AddDiarization` | 2 つの音声を含むモノラル チャネルであることが予測される入力に対してダイアライゼーション分析を実行する必要があることを指定します。 指定できる値は、ダイアライゼーションを有効にする `true` と、それを無効にする `false` (既定値) です。 さらに、`AddWordLevelTimestamps` を true に設定する必要があります。|
 |`TranscriptionResultsContainerUrl`|Azure の書き込み可能なコンテナーに対するオプションの SAS トークン。 結果はこのコンテナーに格納されます。
 
 ### <a name="storage"></a>ストレージ

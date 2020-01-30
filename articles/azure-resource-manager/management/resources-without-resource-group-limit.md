@@ -2,13 +2,13 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659323"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715628"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -26,6 +26,7 @@ ms.locfileid: "75659323"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -82,6 +83,7 @@ ms.locfileid: "75659323"
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
 * software
@@ -178,6 +180,10 @@ ms.locfileid: "75659323"
 * apiManagementAccounts/apis
 * sites
 
+## <a name="microsoftinsights"></a>microsoft.insights
+
+* metricalerts
+
 ## <a name="next-steps"></a>次のステップ
 
-クォータと制限の完全な一覧については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
+クォータと制限の完全な一覧については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」を参照してください。

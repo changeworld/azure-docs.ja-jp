@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428406"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548375"
 ---
 # <a name="tune-model-hyperparameters"></a>モデルのハイパーパラメーターの調整
 
@@ -81,11 +81,11 @@ ms.locfileid: "75428406"
 
 トレーニングの完了時:
 
-+ 最適なモデルの一連の正確性メトリックを表示するには、モジュールを右クリックし、 **[Sweep results]/(スイープ結果/)** を選択し、 **[Visualize]/(視覚化/)** を選択します。
++ 最適なモデルの一連の正確性メトリックを表示するには、モジュールを右クリックし、 **[視覚化]** を選択します。
 
     出力には、モデルの種類に適用されるすべての正確性メトリックが含まれますが、どのモデルが "最適" と見なされるかは順位付け用に選択したメトリックによって決まります。
 
-+ チューニング プロセスを再実行せずに他のパイプラインのスコアリングにモデルを使用するには、モデルの出力を右クリックし、 **[Save as Trained Model]\(トレーニング済みのモデルとして保存\)** を選択します。 
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
 
 ## <a name="technical-notes"></a>テクニカル ノート

@@ -1,5 +1,5 @@
 ---
-title: コンテナーの構成 - FACE API
+title: コンテナーの構成 - Face
 titleSuffix: Azure Cognitive Services
 description: Face コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 必須とオプションの両方の設定があります。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 78fd2aa977062d2f0d6b981140f3db5b263e4651
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795027"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167975"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -51,9 +51,9 @@ ms.locfileid: "73795027"
 
 エンドポイント URI には、忘れずに _Face_ ルーティングを追加してください。その例を次に示します。 
 
-|必須| 名前 | データ型 | 説明 |
+|必須| Name | データ型 | [説明] |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
+|はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 <!-- specific to face only -->
 
@@ -61,7 +61,7 @@ ms.locfileid: "73795027"
 
 `CloudAI` セクションの構成設定では、ご利用のコンテナーに固有のオプションが提供されます。 `CloudAI` セクションの Face コンテナーでは、次の設定とオブジェクトがサポートされます
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | [説明] |
 |------|-----------|-------------|
 | `Storage` | Object | Face コンテナーで使用されるストレージ シナリオ。 `Storage` オブジェクトのストレージ シナリオと関連する設定の詳細については、「[ストレージ シナリオの設定](#storage-scenario-settings)」を参照してください |
 
@@ -80,11 +80,11 @@ Face コンテナーには、格納される内容に応じて、BLOB、キャ�
 
 ストレージ シナリオと関連する構成設定は、`CloudAI` 構成セクションの下の、`Storage` オブジェクトで管理されます。 `Storage` オブジェクトでは、次の構成設定を使用できます。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | [説明] |
 |------|-----------|-------------|
-| `StorageScenario` | string | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
-| `ConnectionStringOfAzureStorage` | string | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
-| `ConnectionStringOfCosmosMongo` | string | コンテナーで使用される、Azure Cosmos DB リソースの MongoDB 接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
+| `StorageScenario` | String | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
+| `ConnectionStringOfAzureStorage` | String | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
+| `ConnectionStringOfCosmosMongo` | String | コンテナーで使用される、Azure Cosmos DB リソースの MongoDB 接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
 
 たとえば、次のコマンドでは、Azure ストレージ シナリオを指定し、Face コンテナーのデータを格納するために使用される Azure Storage および Cosmos DB リソースのサンプル接続文字列を提供します。
 
@@ -122,10 +122,10 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](face-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| 名前 | データ型 | 説明 |
+|省略可能| Name | データ型 | [説明] |
 |-------|------|-----------|-------------|
-|禁止| `Input` | string | Face コンテナーでは、これは使用されません。|
-|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -170,6 +170,6 @@ Face コンテナーでは、トレーニングやサービスのデータを格
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](face-how-to-install-containers.md)を確認する。

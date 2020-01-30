@@ -16,13 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7570030f4b0cc2e7bc1a1d64ad9eea7a74429eee
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2a86e8352958524bc51b185712d6b60ec347b98e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293472"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702098"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API を呼び出すモバイル アプリ - トークンの取得
 

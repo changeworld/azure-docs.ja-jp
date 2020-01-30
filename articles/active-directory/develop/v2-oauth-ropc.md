@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919326"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700687"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -69,13 +68,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| `tenant` | 必須 | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 | 
-| `grant_type` | 必須 | `password` に設定する必要があります。 |
-| `username` | 必須 | ユーザーの電子メール アドレス。 |
-| `password` | 必須 | ユーザーのパスワード。 |
+| `tenant` | Required | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
+| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 | 
+| `grant_type` | Required | `password` に設定する必要があります。 |
+| `username` | Required | ユーザーの電子メール アドレス。 |
+| `password` | Required | ユーザーのパスワード。 |
 | `scope` | 推奨 | アプリで必要となる[スコープ](v2-permissions-and-consent.md) (アクセス許可) をスペースで区切った一覧。 対話型のフローでは、管理者またはユーザーが事前にこれらのスコープに同意する必要があります。 |
 | `client_secret`| 必要な場合あり | アプリがパブリック クライアントである場合、`client_secret` または `client_assertion` を含めることはできません。  アプリが機密クライアントである場合は、それを含める必要があります。 | 
 | `client_assertion` | 必要な場合あり | 証明書を使用して生成された、`client_secret` の別の形式。  詳細については、[証明書の資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 | 
@@ -95,11 +94,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター | 形式 | 説明 |
+| パラメーター | Format | [説明] |
 | --------- | ------ | ----------- |
-| `token_type` | string | 常に `Bearer` に設定します。 |
+| `token_type` | String | 常に `Bearer` に設定します。 |
 | `scope` | スペース区切りの文字列 | アクセス トークンが返された場合、このパラメーターによって、アクセス トークンが有効なスコープの一覧が生成されます。 |
-| `expires_in`| int | 含まれているアクセス トークンが有効となる秒数。 |
+| `expires_in`| INT | 含まれているアクセス トークンが有効となる秒数。 |
 | `access_token`| 不透明な文字列 | 要求された[スコープ](v2-permissions-and-consent.md)に対して発行されます。 |
 | `id_token` | JWT | 元の `scope` パラメーターに `openid` スコープが含まれている場合に発行されます。 |
 | `refresh_token` | 不透明な文字列 | 元の `scope` パラメーターに `offline_access` が含まれている場合に発行されます。 |
@@ -110,7 +109,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ユーザーが正しいユーザー名やパスワードを指定していない場合、あるいは要求した同意がクライアントに届いていない場合、認証は失敗します。
 
-| Error | 説明 | クライアント側の処理 |
+| エラー | [説明] | クライアント側の処理 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 認証に失敗しました | 資格情報が正しくないか、要求したスコープに対してクライアントに同意がありません。 スコープが付与されていない場合、`consent_required` エラーが返されます。 その場合、クライアントでは、Web ビューまたはブラウザーを利用し、対話式プロンプトにユーザーを送信する必要があります。 |
 | `invalid_request` | 要求が正しく構築されていません | この付与タイプは `/common` または `/consumers` 認証ではサポートされていません。  代わりに `/organizations` またはテナント ID を使用してください。 |

@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383066"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704835"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -82,11 +81,11 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 以上の措置を試してもアプリを起動できない場合、組織のヘルプ デスクに連絡し、サポートを依頼してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **My Apps** ポータルにサインインした後、自分のプロファイルとアカウント情報、自分のグループの情報、アクセス レビューの情報を更新することができます (アクセス許可が与えられている場合)。
 
-- [My Apps ポータルでアプリにアクセスし、使用する](my-apps-portal-end-user-access.md)。
+- [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 
 - [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
 

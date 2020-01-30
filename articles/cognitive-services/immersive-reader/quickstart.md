@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: a219d83551b63d564ee4296a7c28b0ac99adc159
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122306"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845249"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
 

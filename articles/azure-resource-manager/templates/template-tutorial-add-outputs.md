@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 540e037e83d359dc67cb32f98dec0319bf490707
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471707"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765748"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートに出力を追加する
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
 ストレージ アカウントはデプロイされますが、そのストレージ アカウントに関する情報は返されません。 新しいリソースのプロパティを後で参照できるようキャプチャしなければならない場合があります。
 
@@ -36,7 +36,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 以下の例では、テンプレートに出力値を追加するために行った変更箇所が強調表示されています。 ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
 追加した出力値については、注目すべき重要な事柄がいくつかあります。
 
@@ -94,7 +94,7 @@ az group deployment create \
 
 それでは、リソース グループとデプロイ履歴を見てみましょう。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューから **[リソース グループ]** を選択します。
 1. デプロイ先のリソース グループを選択します。
 1. 実施した手順によっては、リソース グループに少なくとも 1 つ (場合によっては複数) のストレージ アカウントが存在するはずです。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 09fe8396b6f0033a2c01d1ef056060a855b23d0a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772851"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761441"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) と Azure Virtual WAN VPN ゲートウェイの違いは何ですか。
 
@@ -42,9 +42,6 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 通常、ソフトウェア定義の接続ソリューションでは、コントローラーまたはデバイス プロビジョニング センターを使用してブランチ デバイスを管理します。 コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 自動化には、支店情報のアップロードや、Azure の構成のダウンロード、Azure 仮想ハブに対する IPsec トンネルの設定、支店デバイスから Azure Virtual WAN への接続の自動設定が含まれます。 何百もの支店が存在する場合は、Virtual WAN CPE パートナーを使用して接続するのが簡単です。オンボーディング エクスペリエンスにより、大規模な IPsec 接続の設定、構成、管理が不要となるためです。 詳細については、「[Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)」 (Virtual WAN パートナーの自動化) を参照してください。
 
-### <a name="am-i-required-to-use-a-preferred-partner-device"></a>推奨パートナー デバイスを使用する必要がありますか。
-
-いいえ。 Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Virtual WAN では SD-WAN デバイスがどのようにサポートされますか。
 

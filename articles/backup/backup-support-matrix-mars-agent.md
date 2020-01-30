@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893979"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281276"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -41,7 +41,7 @@ Azure Backup は、MARS エージェントを使用して、オンプレミス�
 
 MARS エージェントを使用してデータをバックアップする場合、エージェントはそのデータのスナップショットを取得し、それをローカルのキャッシュ フォルダーに格納してからデータを Azure に送信します。 キャッシュ (スクラッチ) フォルダーには、次のいくつかの要件があります。
 
-**キャッシュ** | **詳細**
+**Cache** | **詳細**
 --- | ---
 Size |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。
 Location | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。
@@ -104,6 +104,8 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | はい | はい | - .
 
 ## <a name="backup-limits"></a>Backup の制限
 
+### <a name="size-limits"></a>サイズ制限
+
 Azure Backup では、バックアップできるファイルまたはフォルダー データ ソースのサイズが制限されています。 1 つのボリュームからバックアップする項目が、次の表に要約されているサイズを超えることはできません。
 
 **オペレーティング システム** | **サイズの制限**
@@ -114,12 +116,16 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 以降| 54,400 GB
 Windows 7| 1,700 GB
 
+### <a name="other-limitations"></a>その他の制限事項
+
+- MARS は、1 つのコンテナーに対して同じ名前を持つ複数のマシンの保護をサポートしていません。
+
 ## <a name="supported-file-types-for-backup"></a>バックアップ用にサポートされるファイルの種類
 
 **Type** | **サポート**
 --- | ---
-暗号化| サポートされています。
-圧縮 | サポートされています。
+Encrypted| サポートされています。
+Compressed | サポートされています。
 スパース | サポートされています。
 圧縮 + スパース |サポートされています。
 ハード リンク| サポートされていません。 スキップされます。
@@ -156,7 +162,7 @@ Azure Backup の[インスタント リストア](backup-instant-restore-capabil
 
 バックアップを、以前のバージョンのオペレーティング システムを実行しているターゲット コンピューターに復元することはできません。 たとえば、Windows 7 を実行しているコンピューターから取得されたバックアップは Windows 8 以降で復元できます。 ただし、Windows 7 を実行しているコンピューター上で、Windows 8 を実行しているコンピューターから取得されたバックアップを復元することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [MARS エージェントを使用するバックアップ アーキテクチャ](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)の詳細を学習します。
 - [MABS または DPM サーバー上で MARS エージェントを実行する](backup-support-matrix-mabs-dpm.md)場合にサポートされる内容を学習します。

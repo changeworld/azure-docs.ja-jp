@@ -12,13 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844653"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698545"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory の署名キーのロールオーバー
 この記事では、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -141,7 +140,7 @@ passport.use(new OIDCStrategy({
 3. **IssuingAuthorityKeys** テーブルには少なくとも 1 つの行があり、キーの拇印の値に対応しています。 テーブル内の任意の行を削除します。
 4. **Tenants** テーブルを右クリックし、 **[テーブル データの表示]** をクリックします。
 5. **Tenants** テーブルには少なくとも 1 つの行があり、一意のディレクトリ テナント ID に対応しています。 テーブル内の任意の行を削除します。 **Tenants** テーブルと **IssuingAuthorityKeys** テーブルの両方で行を削除しないと、実行時にエラーが表示されます。
-6. アプリケーションをビルドし、実行します。 アカウントにログインすると、アプリケーションを停止できます。
+6. アプリケーションをビルドして実行します。 アカウントにログインすると、アプリケーションを停止できます。
 7. **[サーバー エクスプローラー]** に戻り、**IssuingAuthorityKeys** テーブルと **Tenants** テーブルの値を確認します。 テーブルにはフェデレーション メタデータ ドキュメントから自動的に適切な情報が入力されています。
 
 ### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web API

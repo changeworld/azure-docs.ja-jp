@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950835"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840096"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C では、ユーザー フローとカスタム ポリシーのユーザー インターフェイス要素に対する HTML、CSS、JavaScript を含むパッケージ コンテンツのセットが提供されています。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加するかユーザー フローのポータルで有効にして、ページ レイアウトを選択して要求内に[b2clogin.com](b2clogin.md)を使用します。
+Azure AD B2C では、ユーザー フローとカスタム ポリシーのユーザー インターフェイス要素に対する HTML、CSS、JavaScript を含むパッケージ コンテンツのセットが提供されています。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](custom-policy-overview.md)に要素を追加するかユーザー フローのポータルで有効にして、ページ レイアウトを選択して要求内に[b2clogin.com](b2clogin.md)を使用します。
 
 [JavaScript](javascript-samples.md) のクライアント側コードを有効にする場合は、JavaScript の基になる要素を変更不可にする必要があります。 そうしないと、何らかの変更によってユーザー フローのページで予期しない動作が発生する可能性があります。 このような問題を防ぐには、ページ レイアウトの使用を強制して、ページ レイアウトのバージョンを指定することができます。 このようにすると、JavaScript の基になるすべてのコンテンツ定義が変更不可になります。 JavaScript を有効にする予定がない場合でも、ページに対してページ レイアウトのバージョンを指定できます。
 
@@ -46,7 +46,7 @@ Azure AD B2C では、ユーザー フローとカスタム ポリシーのユ�
 
 カスタム ポリシーで JavaScript を有効にするかどうかに関係なく、ページに対するページ レイアウトのバージョンを指定できます。 ページ レイアウトを指定する方法については、[カスタムポリシーを使用した Azure Active Directory B2C でのページ レイアウトの選択](page-layout.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さまざまなページ レイアウトのバージョンの詳細については、**カスタムポリシーを使用した Azure Active Directory B2C でのページ レイアウトの選択**に関する記事の、[バージョン変更ログ](page-layout.md#version-change-log)に関するセクションを参照してください。
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999099"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713078"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ ms.locfileid: "70999099"
 
 **ClaimType** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Id | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
 **ClaimType**要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
 | DataType | 0:1 | 要求の種類です。 ブール値、date、dateTime、int、long、文字列、stringCollection、alternativeSecurityIdCollection のデータ型を使用する ことができます。 |
@@ -63,13 +63,13 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 **DefaultPartnerClaimTypes**には次の要素が含まれることがあります。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | ----------- |
 | Protocol | 0:n | プロトコルとその既定のパートナー要求種類の名前一覧。 |
 
 **Protocol** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Name | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | はい | 使用する要求種類の名。 |
@@ -104,9 +104,9 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 **マスク** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
-| `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
+| `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple` または `Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
 | `Regex` | いいえ | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
@@ -144,13 +144,13 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 **制限**要素は、次の属性を含めることがあります。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
-| MergeBehavior | いいえ | 同じ識別子を持つ親ポリシー内の ClaimType に列挙値をマージするために使用するメソッド。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、および `ReplaceAll`。 `Append`値は、親ポリシーで指定したコレクションの末尾に追加する必要があるデータのコレクション。 `Prepend`値は、親ポリシーで指定したコレクションの前に追加する必要があるデータのコレクション。 `ReplaceAll`値が無視される親ポリシーで指定されたデータのコレクション。 |
+| MergeBehavior | いいえ | 同じ識別子を持つ親ポリシー内の ClaimType に列挙値をマージするために使用するメソッド。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、または `ReplaceAll`。 `Append`値は、親ポリシーで指定したコレクションの末尾に追加する必要があるデータのコレクション。 `Prepend`値は、親ポリシーで指定したコレクションの前に追加する必要があるデータのコレクション。 `ReplaceAll`値が無視される親ポリシーで指定されたデータのコレクション。 |
 
 **制限** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | [説明] |
 | ------- | ----------- | ----------- |
 | Enumeration | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
 | Pattern | 1:1 | 使用できる正規表現。 |
@@ -159,7 +159,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 **列挙型**要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
 |Value | はい | このオプションの選択に関連付けられている要求の値。 |
@@ -188,7 +188,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 **パターン**要素には、次の属性が含まれることがあります。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ | この要求のパターンまたは正規表現。 |
@@ -251,7 +251,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 </ClaimType>
 ```
 
-### <a name="password"></a>パスワード
+### <a name="password"></a>Password
 
 **パスワード**ユーザー入力の種類は、ユーザーが入力したパスワードを記録するために使用します。
 
@@ -368,7 +368,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>

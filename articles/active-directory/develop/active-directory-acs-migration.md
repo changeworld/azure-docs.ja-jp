@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 174a80b99f65393f5c5bbe35b30e7ac5b54a359e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845554"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699463"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -126,7 +125,7 @@ Access Control コンポーネントの廃止スケジュールを次に示し�
 
 Access Control によって発行されたトークンを受け入れる各 Microsoft クラウド サービスでは、少なくとも 1 つの代替認証形式がサポートされています。 使用できる認証メカニズムは、サービスごとに異なります。 各サービスの固有のドキュメントで、公式のガイダンスを参照することをお勧めします。 ここでは簡単に、各ドキュメントのセットを示します。
 
-| Service | ガイダンス |
+| サービス | ガイダンス |
 | ------- | -------- |
 | Azure Service Bus | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |

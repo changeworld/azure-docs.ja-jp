@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 10/25/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381938"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772459"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>クイック スタート:Java 用 Content Moderator クライアント ライブラリ
 

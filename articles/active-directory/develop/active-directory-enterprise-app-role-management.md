@@ -13,13 +13,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 702c64fbc4eda2af7132a2117c1b09ca0bf41cff
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918595"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699259"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -152,7 +151,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 9. **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 属性名 | 属性名 |
+    | 属性名 | 属性値 |
     | -------------- | ----------------|
     | ロール名  | user.assignedroles |
 
@@ -265,7 +264,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     > [!NOTE]
     > ロールは、先に無効にしてから削除する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
 

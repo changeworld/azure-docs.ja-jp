@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951090"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840351"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
@@ -93,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
 
@@ -101,8 +101,8 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 ID プロバイダーのリダイレクト URI を構成する場合は、`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` を入力します。 `{your-tenant-name}` をテナントの名前に置き換えます。 リダイレクト URI は、すべて小文字である必要があります。
 
-次に例を示します。
+例 :
 
-- [カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する](active-directory-b2c-custom-setup-msa-idp.md)
-- [Azure AD アカウントを使用してサインインする](active-directory-b2c-setup-aad-custom.md)
-- [カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](active-directory-b2c-setup-commonaad-custom.md)
+- [カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する](identity-provider-microsoft-account-custom.md)
+- [Azure AD アカウントを使用してサインインする](identity-provider-azure-ad-single-tenant-custom.md)
+- [カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](identity-provider-azure-ad-multi-tenant-custom.md)

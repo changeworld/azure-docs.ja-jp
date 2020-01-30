@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c75eae72b94c807897d74e365ec9f4ef74c83dd9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063667"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840232"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
-この機能を使用すると、[個別のユーザー フローに基づいて](active-directory-b2c-reference-policies.md)、以下の対象をきめ細かく制御することができます。
+この機能を使用すると、[個別のユーザー フローに基づいて](user-flow-overview.md)、以下の対象をきめ細かく制御することができます。
 
 - Azure AD B2C によって管理される Web アプリケーションのセッションの有効期間。
 - Azure AD B2C テナント内の複数のアプリとユーザー フローにまたがるシングル サインオン (SSO) の動作。
 
 これらの設定は、パスワード リセット ユーザー フローでは使用できません。
 
-Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](active-directory-b2c-reference-oidc.md) を使用して、Web アプリケーションへの安全なサインインを実現できます。 次のプロパティを使用して、Web アプリケーション セッションを管理できます。
+Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](openid-connect.md) を使用して、Web アプリケーションへの安全なサインインを実現できます。 次のプロパティを使用して、Web アプリケーション セッションを管理できます。
 
 ## <a name="session-behavior-properties"></a>セッションの動作のプロパティ
 
@@ -48,7 +48,7 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
 
 ## <a name="configure-the-properties"></a>プロパティを構成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[ユーザー フロー (ポリシー)]** を選択します。
@@ -58,4 +58,4 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
 
     ![Azure portal のセッション動作プロパティの設定](./media/session-behavior/session-behavior.png)
 
-8. **[Save]** をクリックします。
+8. **[保存]** をクリックします。

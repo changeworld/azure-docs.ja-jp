@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: acd122668a5aa70becbf284bd064535e859ad01b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772869"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761418"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,15 +42,15 @@ ms.locfileid: "75772869"
 
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
-`IntentRecognizer` オブジェクトを初期化する前に、LUIS 予測リソース用のキーとリージョンを使用する構成を作成する必要があります。 
+`IntentRecognizer` オブジェクトを初期化する前に、LUIS 予測リソース用のキーとリージョンを使用する構成を作成する必要があります。
 
 > [!IMPORTANT]
-> スターター キーとオーサリング キーは機能しません。 前の手順で作成した予測キーと場所を使用する必要があります。 詳細については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。 
+> スターター キーとオーサリング キーは機能しません。 前の手順で作成した予測キーと場所を使用する必要があります。 詳細については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
-このコードを `RecognizeIntentAsync()` メソッドに挿入します。 次の値を必ず更新してください。 
+このコードを `RecognizeIntentAsync()` メソッドに挿入します。 次の値を必ず更新してください。
 
-* `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。 
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 
+* `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
@@ -65,16 +65,16 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ここで、`IntentRecognizer` を作成しましょう。 アンマネージド リソースが確実に正しく解放されるように、このオブジェクトは using ステートメント内に作成されます。 このコードを Speech 構成のすぐ下にある `RecognizeIntentAsync()` メソッドに挿入します。
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=28-30,76)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=29-30,76)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と意図を追加する
 
-`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。 前のセクションの using ステートメントに次のコードを挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。 
+`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。 前のセクションの using ステートメントに次のコードを挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。
 
 >[!TIP]
 > この値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=31-35)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 
@@ -88,7 +88,7 @@ using テートメント内で、モデルの下にこのコードを追加し�
 
 using ステートメント内の `RecognizeOnceAsync()` の下に、このコードを追加します。
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=48-75)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=49-75)]
 
 ## <a name="check-your-code"></a>コードを確認する
 
@@ -97,7 +97,7 @@ using ステートメント内の `RecognizeOnceAsync()` の下に、このコ�
 > [!NOTE]
 > このバージョンにはいくつかのコメントを追加してあります。
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-86)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

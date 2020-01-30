@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432484"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846136"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Azure Monitor で Application Insights のリソースを作成する
 
@@ -38,7 +38,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
 1. 構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-   | 設定        | 値           | [説明]  |
+   | 設定        | Value           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
@@ -136,7 +136,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
 
 4. Python スクリプトを実行すると引き続き値を入力するように求められますが、値のみがシェルに出力されます。 作成された `SpanData` は Azure Monitor に送信されます。 送信されたスパン データは `dependencies` で確認できます。
 
-5. OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python)に関するページを参照してください。
+5. OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
 
 6. トレース データにおけるテレメトリの相関付けの詳細については、「[OpenCensus Python におけるテレメトリの相関付け](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)」を参照してください。
 

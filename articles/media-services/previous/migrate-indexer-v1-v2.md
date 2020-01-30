@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464042"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513237"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 
-[Azure Media Indexer](media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサは、2020 年 1 月 1 日に廃止されます。  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+[Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
 
 Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されています。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。 Video Indexer はどのようなシナリオで使用できるか、どのような機能を提供するか、どのように使用を開始するかを確認するには、[Video Indexer のビデオとオーディオのモデル](../video-indexer/video-indexer-overview.md)に関するページを参照してください。 
 
@@ -50,7 +50,7 @@ Azure Media Services v3 API では、[Azure Media Services v3 アナライザー
 
 **AudioAnalyzerPreset** を使用して、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、音声トランスクリプト用の VTT または TTML ファイルと、JSON ファイル (すべての追加の音声分析情報が格納される) が含まれます。 音声分析情報には、キーワード、話者インデックス作成、音声のセンチメント分析が含まれます。 AudioAnalyzerPreset では、特定の言語の言語検出もサポートされます。 詳細については、[変換](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)に関するページを参照してください。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 
 開始するには、以下をご覧ください。
 
@@ -79,7 +79,7 @@ Video Indexer、Azure Media Services v3 AudioAnalyzerPreset、および Cognitiv
 
 [[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [レガシ コンポーネント](legacy-components.md)
 * [価格ページ](https://azure.microsoft.com/pricing/details/media-services/#encoding)

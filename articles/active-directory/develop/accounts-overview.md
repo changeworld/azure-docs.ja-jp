@@ -13,13 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2a61176f43960d14cecf4db881b94b24ae580bc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0f0f3be1647c820591923a094ef7fce86ab9672
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963887"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699446"
 ---
 # <a name="accounts--tenant-profiles-android"></a>アカウントとテナント プロファイル (Android)
 
@@ -106,7 +105,7 @@ ID トークンには要求のリストが含まれます。 `Claims` は、ア�
 
 アカウントは複数の組織のメンバーまたはゲストである場合がありますが、MSAL では、アカウントがメンバーとなっているテナントのリストを取得するためにサービスを照会することはありません。 代わりに、MSAL では、行われたトークン要求の結果として、アカウントが存在するテナントのリストが作成されます。
 
-アカウント オブジェクトで公開される要求は、常に、アカウントの 'home tenant'/{authority} からの要求です。 そのアカウントがホーム テナントのトークンの要求に使用されていない場合、MSAL ではアカウント オブジェクトを介して要求を提供できません。  例:
+アカウント オブジェクトで公開される要求は、常に、アカウントの 'home tenant'/{authority} からの要求です。 そのアカウントがホーム テナントのトークンの要求に使用されていない場合、MSAL ではアカウント オブジェクトを介して要求を提供できません。  次に例を示します。
 
 ```java
 // Psuedo Code
@@ -126,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>テナント プロファイル要求にアクセスする
 
-他のテナントに示されているアカウントに関する要求にアクセスするには、まず、アカウント オブジェクトを `IMultiTenantAccount` にキャストする必要があります。 アカウントはすべてマルチテナントである場合がありますが、MSAL で利用できるテナント プロファイルの数は、現在のアカウントを使用してトークンを要求したテナントに基づいています。  例:
+他のテナントに示されているアカウントに関する要求にアクセスするには、まず、アカウント オブジェクトを `IMultiTenantAccount` にキャストする必要があります。 アカウントはすべてマルチテナントである場合がありますが、MSAL で利用できるテナント プロファイルの数は、現在のアカウントを使用してトークンを要求したテナントに基づいています。  次に例を示します。
 
 ```java
 // Psuedo Code
@@ -141,7 +140,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 アカウントの更新トークンは、B2C ポリシー間では共有されません。 そのため、トークンを使用したシングル サインオンを行うことはできません。 これは、シングル サインオンできないことを意味するわけではありません。 シングル サインオンでは、シングル サインオンを有効にするために Cookie を利用できる対話型のエクスペリエンスを使用する必要があることを意味します。
 
-また、MSAL では、異なる B2C ポリシーを使用してトークンを取得する場合、これらが個別のアカウントとして扱われ、それぞれに独自の ID があることを意味します。 アカウントを使用し、`acquireTokenSilent` を使ってトークンを要求する場合は、トークン要求で使用するポリシーに一致するアカウントのリストからアカウントを選択する必要があります。 例:
+また、MSAL では、異なる B2C ポリシーを使用してトークンを取得する場合、これらが個別のアカウントとして扱われ、それぞれに独自の ID があることを意味します。 アカウントを使用し、`acquireTokenSilent` を使ってトークンを要求する場合は、トークン要求で使用するポリシーに一致するアカウントのリストからアカウントを選択する必要があります。 次に例を示します。
 
 ```java
 // Get Account For Policy

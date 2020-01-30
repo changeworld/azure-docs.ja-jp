@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981171"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843550"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -620,9 +620,9 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 ### <a name="basic-authentication"></a>[基本認証]
 
-[[基本]](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) オプションを使用できる場合は、次のプロパティ値を指定します。
+[[基本]](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Basic | 使用する認証の種類 |
 | **ユーザー名** | `username` | はい | <*user-name*>| ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
@@ -653,7 +653,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[クライアント証明書]](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -682,7 +682,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 * [Azure API Management でクライアント証明書認証を使用して API を保護する](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する](../api-management/api-management-howto-mutual-certificates.md)
-* [クライアント証明書を使用して RESTful サービスを保護する](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [クライアント証明書を使用して RESTful サービスを保護する](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [アプリケーションを認証するための証明書資格情報](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -692,7 +692,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[Active Directory OAuth]](../active-directory/develop/about-microsoft-identity-platform.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 Raw 認証をサポートするトリガーまたはアクションでは、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Raw | 使用する認証の種類 |
 | **Value** | `value` | はい | <*authorization-header-value*> | 認証に使用する Authorization ヘッダーの値 |
@@ -781,7 +781,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 3. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
 
-   | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | [説明] |
+   | プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
    | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**:このプロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と正確に一致するようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |

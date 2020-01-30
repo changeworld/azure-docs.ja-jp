@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c2a8c8cfa2425985a22b93d4ade509320c48564
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998725"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512625"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なエラーとトラブルシューティングの手順
 
@@ -43,7 +43,7 @@ Azure AD DS の有効化で問題が発生した場合は、以下の一般的�
 
 **解決策**
 
-仮想ネットワーク上に同じドメイン名の既存の AD DS 環境が存在しないことを確認します。 たとえば、Azure VM 上で実行されている *contoso.com* という名前の AD DS ドメインがあるとします。 その仮想ネットワーク上で *contoso.com* という同じ名前を持つ Azure AD DS のマネージド ドメインを有効にしようとすると、要求した操作は失敗します。
+同じ、またはピアリングされた仮想ネットワーク上に同じドメイン名の既存の AD DS 環境が存在しないことを確認します。 たとえば、Azure VM 上で実行されている *contoso.com* という名前の AD DS ドメインがあるとします。 その仮想ネットワーク上で *contoso.com* という同じ名前を持つ Azure AD DS のマネージド ドメインを有効にしようとすると、要求した操作は失敗します。
 
 このエラーは、仮想ネットワーク上のドメイン名での名前の競合が原因です。 DNS 参照では、既存の AD DS 環境が、要求されたドメイン名に対して応答するかどうかが確認されます。 このエラーを解決するには、別の名前を使用して Azure AD DS マネージド ドメインを設定するか、既存の AD DS ドメインのプロビジョニングを解除してから、Azure AD DS の有効化を再試行してください。
 
@@ -167,7 +167,7 @@ Azure AD では、ユーザー オブジェクトが誤って削除されない�
 
 Azure AD DS マネージド ドメインからユーザー アカウントを完全に削除するには、`-RemoveFromRecycleBin` パラメーターを指定した [Remove-MsolUser][Remove-MsolUser] PowerShell コマンドレットを使用して、Azure AD テナントからユーザーを完全に削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

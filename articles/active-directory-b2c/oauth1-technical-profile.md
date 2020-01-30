@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951107"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840385"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 **OutputClaims** 要素には、OAuth1 ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 **DefaultValue** 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが存在する場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 次の例は、Twitter ID プロバイダーにより返される要求を示しています。
 
@@ -68,7 +68,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | ProviderName | いいえ | ID プロバイダーの名前。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | [説明] |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   |
 
@@ -92,9 +92,9 @@ ID プロバイダーのリダイレクト URL を構成する場合は、`https
 
 **login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。
 
-次に例を示します。
+例 :
 
-- [カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する](active-directory-b2c-custom-setup-twitter-idp.md)
+- [カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する](identity-provider-twitter-custom.md)
 
 
 

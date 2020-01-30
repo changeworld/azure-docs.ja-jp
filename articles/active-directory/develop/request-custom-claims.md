@@ -17,13 +17,12 @@ ms.date: 08/26/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b85a5c551b4e26c39959a1bd4f435a5fa4fe6e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0aa4648d3d5e76c2d0ebd7524ad8dfa52da3fb30
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920312"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702489"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>方法:iOS および macOS 用の MSAL を使用してカスタム要求を行う
 
@@ -31,7 +30,7 @@ OpenID Connect では、必要に応じて、UserInfo エンドポイントや I
 
 iOS および macOS 用の Microsoft Authentication Library (MSAL) を使用すると、対話型とサイレントの両方のトークン取得シナリオで特定の要求を行うことができます。 これを行うには、`claimsRequest` パラメーターを使用します。
 
-状況に応じた複数のシナリオがあります。 例:
+状況に応じた複数のシナリオがあります。 次に例を示します。
 
 - アプリケーションの標準のセット以外で要求を行っている。
 - アプリケーションのスコープを使用して指定できない標準の要求の特定の組み合わせを要求している。 たとえば、要求が見つからないためにアクセス トークンが拒否された場合、アプリケーションは、MSAL を使用して見つからない要求を求めることができます。
@@ -134,6 +133,6 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

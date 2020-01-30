@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:デザイナーで機械学習モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、Azure Machine Learning デザイナーで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
+description: このチュートリアルでは、Azure Machine Learning デザイナー (プレビュー) で予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314999"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719791"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>チュートリアル:デザイナー (プレビュー) で機械学習モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 [チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) で作成した予測モデルを、他のユーザーが使用できるようデプロイしてみましょう。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて新しい予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
@@ -55,10 +55,6 @@ ms.locfileid: "76314999"
     >
 
 1. **[Run]\(実行\)** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
-
-1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択します。
-
-1. [プロパティ] ウィンドウで、 **[出力]**  >  **[Visualize]\(視覚化\)** の順に選択し、引き続きモデルが正しく機能していることを確認します。 元のデータが、予測価格 ("Scored Labels" (スコア付けラベル)) と共に表示されます。
 
 1. **[デプロイ]** を選択します。
 

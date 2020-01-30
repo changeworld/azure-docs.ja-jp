@@ -11,20 +11,19 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278878"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704767"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft 以外のアカウントを Microsoft Authenticator アプリに追加する
 
 2 要素検証のために Microsoft Authenticator アプリに、Google、Facebook、GitHub などの、Microsoft 以外のアカウントを追加します。 Microsoft Authenticator アプリは、2 要素認証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
 
 >[!Important]
->アカウントを追加する前に、Microsoft Authenticator アプリをダウンロードしてインストールする必要があります。 まだ完了していない場合は、「[Download and install the app](user-help-auth-app-download-install.md)」 (アプリをダウンロードしてインストールする) 記事の手順に従ってください。
+>アカウントを追加する前に、Microsoft Authenticator アプリをダウンロードしてインストールする必要があります。 まだ完了していない場合は、「[アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」という記事の手順に従ってください。
 
 ## <a name="add-personal-accounts"></a>個人用アカウントを追加する
 
@@ -194,7 +193,7 @@ ms.locfileid: "74278878"
     >[!NOTE]
     >2 要素検証と Amazon アカウントの詳細については、「[About Two-Step Verification](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330)」 (2 段階認証について) と「[Signing in with Two-Step Verification](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)」 (2 段階認証によるサインイン) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリにアカウントを追加すると、デバイスで Authenticator アプリを使用してサインインできます。 詳細については、[アプリを使用したサインイン](user-help-auth-app-sign-in.md)に関するページを参照してください。
 

@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045653"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719893"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>チュートリアル:2 つのマネージド インスタンスと SQL Server の間にトランザクション レプリケーションを構成する
 
@@ -385,7 +385,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 **新しいサブスクリプション** ウィザードを使用して新しいサブスクリプションを追加するときに、 **[パブリケーション]** ページで、使用可能なオプションとしてデータベースとパブリケーションが表示されず、次のエラー メッセージが表示されることがあります。
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 このエラー メッセージが正しく、実際に接続先のパブリッシャーに使用できるパブリケーションがない場合もありますが、十分なアクセス許可がない可能性もあります。このエラーは、古いバージョンの SQL Server Management Studio が原因で発生することもあります。 これを根本原因から排除するには、SQL Server Management Studio 18.0 以降にアップグレードしてみてください。 
 

@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセット レポート - Azure Active Directory
-description: Azure AD のセルフサービスによるパスワード リセット イベントのレポート
+title: セルフサービス パスワード リセット レポート - Azure Active Directory
+description: Azure AD のセルフサービス パスワード リセット イベントのレポート
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847220"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155009"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
-多くの組織は、デプロイ後に、セルフサービスによるパスワードのリセット (SSPR) が本当に使用されているかどうかや、どのように使用されているかを把握することを望んでいます。 Azure Active Directory (Azure AD) で提供されるレポート機能によって、お客様は質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
+多くの組織は、デプロイ後に、セルフサービス パスワード リセット (SSPR) が本当に使用されているかどうかや、どのように使用されているかを把握することを望んでいます。 Azure Active Directory (Azure AD) で提供されるレポート機能によって、お客様は質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
 
 ![Azure AD の監査ログを使用した SSPR のレポート][Reporting]
 
@@ -53,13 +53,13 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 ### <a name="converged-registration-preview"></a>集中型登録 (プレビュー)
 
-集中型登録のパブリック プレビューに参加している場合、監査ログのユーザー アクティビティに関する情報は **[認証方法]** というサービスの下にあります。
+集中型登録のパブリック プレビューに参加している場合、監査ログのユーザー アクティビティに関する情報は **[セキュリティ** > **認証方法]** の下にあります。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure Portal でのレポートの列の説明
 
 次の一覧では、Azure Portal でのレポートの各列について詳細に説明します。
 
-* **User**:パスワード リセット登録操作を試行したユーザー。
+* **[ユーザー]** :パスワード リセット登録操作を試行したユーザー。
 * **ロール**: ディレクトリ内のユーザーのロール。
 * **日付と時刻**: 試行の日付と時刻。
 * **登録データ**: パスワード リセット登録中にユーザーが入力した認証データ。
@@ -70,21 +70,21 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 | 列 | 使用できる値とその意味 |
 | --- | --- |
-| 登録データ |**連絡用メール アドレス**: ユーザーが、認証のために連絡用メールまたは認証用メールを使用しました。<p><p>**会社電話**: ユーザーが、認証のために会社電話を使用しました。<p>**携帯電話**: ユーザーが、認証のために携帯電話または認証用の電話を使用しました。<p>**セキュリティの質問**: ユーザーが、認証のためにセキュリティの質問を使用しました。<p>**前述の方法の任意の組み合わせ (連絡用メール アドレスと携帯電話など)** : 2 ゲート ポリシーが指定された場合に発生し、パスワード リセット要求を認証するためにユーザーがどの方法を使用したかを示します。 |
+| 登録データ |**連絡用メール アドレス**: ユーザーが、認証のために連絡用メールまたは認証用メールを使用しました。<p><p>**会社電話**:ユーザーが、認証のために会社電話を使用しました。<p>**携帯電話**: ユーザーが、認証のために携帯電話または認証用の電話を使用しました。<p>**セキュリティの質問**: ユーザーが、認証のためにセキュリティの質問を使用しました。<p>**前述の方法の任意の組み合わせ (連絡用メール アドレスと携帯電話など)** : 2 ゲート ポリシーが指定された場合に発生し、パスワード リセット要求を認証するためにユーザーがどの方法を使用したかを示します。 |
 
 ## <a name="self-service-password-management-activity-types"></a>[Self-Service Password Management]\(セルフサービスのパスワード管理\) のアクティビティの種類
 
 **[Self-Service Password Management]\(セルフサービスのパスワード管理\)** 監査イベント カテゴリには、次のアクティビティの種類が表示されます。
 
-* [Blocked from self-service password reset (パスワード リセットのセルフサービスのブロック)](#activity-type-blocked-from-self-service-password-reset): ユーザーが 24 時間以内に合計 5 回を超えて、パスワードのリセット、特定のゲートの使用、または電話番号の確認を試行したことを示します。
+* [Blocked from self-service password reset (セルフサービス パスワード リセット のブロック)](#activity-type-blocked-from-self-service-password-reset):ユーザーが 24 時間以内に合計 5 回を超えて、パスワードのリセット、特定のゲートの使用、または電話番号の確認を試行したことを示します。
 * [Change password (self-service) (パスワードの変更 (セルフサービス))](#activity-type-change-password-self-service): ユーザーが自発的または (期限切れにより) 強制的にパスワードの変更を実行したことを示します。
-* [Reset password (by admin) (パスワードのリセット (管理者)):](#activity-type-reset-password-by-admin) 管理者が Azure portal でユーザーに代わってパスワードのリセットを実行したことを示します。
+* [Reset password (by admin) (パスワードのリセット (管理者)):](#activity-type-reset-password-by-admin)管理者が Azure portal でユーザーに代わってパスワードのリセットを実行したことを示します。
 * [Reset password (self-service) (パスワードのリセット (セルフサービス))](#activity-type-reset-password-self-service): ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)で自分のパスワードのリセットに成功したことを示します。
-* [Self serve password reset flow activity progress (パスワード リセットのセルフサービスのフロー アクティビティ進行状況)](#activity-type-self-serve-password-reset-flow-activity-progress): ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
+* [Self serve password reset flow activity progress (セルフサービス パスワード リセット のフロー アクティビティ進行状況)](#activity-type-self-serve-password-reset-flow-activity-progress):ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
 * [Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))](#activity-type-unlock-a-user-account-self-service):ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から、リセットなしのアカウント ロック解除の Active Directory 機能を使用して、自分のパスワードをリセットせずに自分の Active Directory アカウントのロック解除に成功したことを示します。
-* [User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)](#activity-type-user-registered-for-self-service-password-reset): ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
+* [User registered for self-service password reset (セルフサービス パスワード リセットを登録したユーザー)](#activity-type-user-registered-for-self-service-password-reset):ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
 
-### <a name="activity-type-blocked-from-self-service-password-reset"></a>アクティビティの種類: セルフサービスによるパスワード リセットのブロック
+### <a name="activity-type-blocked-from-self-service-password-reset"></a>アクティビティの種類: セルフサービス パスワード リセットのブロック
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -155,7 +155,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
   * _成功_:ユーザーが自分のアカウントのロック解除に成功したことを示します。
   * _失敗_:ユーザーが自分のアカウントのロック解除に失敗したことを示します。 この行を選択すると、 **[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
-### <a name="activity-type-user-registered-for-self-service-password-reset"></a>アクティビティの種類: セルフサービスによるパスワード リセットに登録されたユーザー
+### <a name="activity-type-user-registered-for-self-service-password-reset"></a>アクティビティの種類: セルフサービス パスワード リセットに登録されたユーザー
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -169,18 +169,18 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
      >[!NOTE]
      >失敗は、ユーザーが自分のパスワードをリセットできないことを意味するわけではありません。 登録プロセスを完了していないことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
-* [SSPR のすべてのオプションとその意味。](concept-sspr-howitworks.md)
+* [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 

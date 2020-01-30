@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940903"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711868"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -39,17 +39,17 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 1. 選択したアプリのユーザー アカウントのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
 1. **[マッピング]** を展開し、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集します。 ターゲット アプリケーションが対応していれば、必要に応じてグループのプロビジョニングとユーザー アカウントをこのセクションで構成することができます。
 
-   ![[マッピング] を使用して、ユーザー属性を表示および編集する](./media/customize-application-attributes/21.png)
+   ![[マッピング] を使用して、ユーザー属性を表示および編集する](media/customize-application-attributes/21.png)
 
 1. **[マッピング]** 構成を選択して、関連する **[属性マッピング]** 画面を開きます。 SaaS アプリケーションが正常に機能するために、いくつかの属性マッピングが必要です。 必須の属性の場合は、 **[削除]** 機能を使用できません。
 
-   ![[属性マッピング] を使用して、アプリの属性マッピングを構成する](./media/customize-application-attributes/22.png)
+   ![[属性マッピング] を使用して、アプリの属性マッピングを構成する](media/customize-application-attributes/22.png)
 
    このスクリーンショットで、Salesforce の管理オブジェクトの **Username** 属性には、リンクされている Azure Active Directory オブジェクトの **userPrincipalName** 値が設定されています。
 
 1. 既存の **[属性マッピング]** を選択し、 **[属性の編集]** 画面を開きます。 ここで、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集できます。
 
-   ![[属性の編集] を使用して、ユーザー属性を編集する](./media/customize-application-attributes/23.png)
+   ![[属性の編集] を使用して、ユーザー属性を編集する](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>属性マッピングの種類の概要
 
@@ -71,7 +71,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 - **ソース属性** - ソース システムのユーザー属性 (例:Azure Active Directory)。
 - **対象の属性** - ターゲット システムのユーザー属性 (例:できます。
-- **null の場合の既定値 (オプション)** - ソース属性が null の場合にターゲット システムに渡される値。 この値は、ユーザーを作成するときにのみプロビジョニングされます。 既存のユーザーを更新したときは、"null の場合の既定値" はプロビジョニングされません。 たとえば、ターゲット システムのすべての既存ユーザーを特定の役職でプロビジョニングする必要がある場合は (ソース システムでは null の場合)、次の[式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)を使用できます。Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]) "DefaultValue" は、ソース システムで null の場合にプロビジョニングする値に置き換えてください。 
+- **null の場合の既定値 (オプション)** - ソース属性が null の場合にターゲット システムに渡される値。 この値は、ユーザーを作成するときにのみプロビジョニングされます。 既存のユーザーを更新したときは、"null の場合の既定値" はプロビジョニングされません。 たとえば、ターゲット システムのすべての既存ユーザーを特定の役職でプロビジョニングする必要がある場合は (ソース システムでは null の場合)、次の[式](functions-for-customizing-application-data.md)を使用できます。Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]) "DefaultValue" は、ソース システムで null の場合にプロビジョニングする値に置き換えてください。 
 - **この属性を使用してオブジェクトを照合する** - このマッピングを使用して、ソースとターゲットのシステム間でユーザーを一意に識別するかどうかを示します。 通常、これは Azure AD の userPrincipalName または mail 属性で設定され、一般的にターゲット アプリケーションのユーザー名フィールドにマップされます。
 - **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 - **このマッピングを適用する**
@@ -92,7 +92,7 @@ Azure AD プロビジョニング サービスは、"未開発" シナリオ(ユ
 
 ServiceNow、Box、G Suite などいくつかのアプリケーションでは、グループ オブジェクトとユーザー オブジェクトをプロビジョニングする機能がサポートされています。 グループ オブジェクトには、グループ メンバーと共に表示名や電子メール別名などのグループ プロパティを含めることができます。
 
-![ServiceNow のプロビジョニング済みグループ オブジェクトとユーザー オブジェクトが表示されている例](./media/customize-application-attributes/24.png)
+![ServiceNow のプロビジョニング済みグループ オブジェクトとユーザー オブジェクトが表示されている例](media/customize-application-attributes/24.png)
 
 グループのプロビジョニングは必要に応じて有効と無効を切り替えることができます。これには、 **[属性マッピング]** 画面の **[マッピング]** の下でグループ マッピングを選択し、必要なオプションに **[有効]** を設定します。
 
@@ -193,13 +193,13 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 ## <a name="provisioning-a-role-to-a-scim-app"></a>SCIM アプリへのロールのプロビジョニング
 ユーザーのロールをアプリケーションにプロビジョニングするには、次の手順を使用します。 下記の説明は、カスタム SCIM アプリケーションに固有のものであることに注意してください。 Salesforce や ServiceNow などのギャラリー アプリケーションの場合、事前定義済みのロール マッピングを使用します。 下記の項目は、アプリケーションで想定されている形式に AppRoleAssignments 属性を変換する方法を説明しています。
 
-- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に**直接マップしないでください**。 
+- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](functions-for-customizing-application-data.md)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に**直接マップしないでください**。 
 
 - **SingleAppRoleAssignment** 
   - **使用する場合:** ユーザーの 1 つのロールをプロビジョニングする、またプライマリ ロールを指定するには、SingleAppRoleAssignment 式を使用します。 
   - **構成方法:** 上記の手順を使用して、属性マッピング ページに移動し、SingleAppRoleAssignment 式を使用してロール属性にマップします。 roles[primary eq "True"].display、roles[primary eq "True].type、roles[primary eq "True"].value の 3 つのロール属性から選択します。 ロール属性の一部または全部をマッピングに含めることを選択できます。 複数を含める場合は、新しいマッピングを追加し、それをターゲット属性として含めるだけです。  
   
-  ![SingleAppRoleAssignment を追加する](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![SingleAppRoleAssignment を追加する](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **考慮事項**
     - 複数のロールが 1 人のユーザーに割り当てられていないことを確認してください。 どのロールがプロビジョニングされるかを保証することはできません。
     
@@ -231,11 +231,11 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
   - **使用する場合:** 1 人のユーザーに複数のロールをプロビジョニングするには、AppRoleAssignmentsComplex 式を使用します。 
   - **構成方法:** ロールの新しい属性を含めるには、上記のサポートされている属性の一覧を編集します。 
   
-    ![ロールを追加する](./media/customize-application-attributes/add-roles.png)<br>
+    ![ロールを追加する](media/customize-application-attributes/add-roles.png)<br>
 
     その後、次の画像に示すように、AppRoleAssignmentsComplex 式を使用してカスタムのロール属性にマップします。
 
-    ![AppRoleAssignmentsComplex を追加する](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![AppRoleAssignmentsComplex を追加する](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **考慮事項**
     - すべてのロールは primary = false としてプロビジョニングされます。
     - POST にはロールの種類が含まれます。 PATCH 要求には種類は含まれません。 POST 要求と PATCH 要求の両方で種類を送信できるよう、作業を進めています。

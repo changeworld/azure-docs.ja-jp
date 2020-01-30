@@ -12,14 +12,13 @@ ms.workload: identity
 ms.date: 12/01/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c391120ccf9fafd4ca51489d7849e838d77a1dbf
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: aaddev
+ms.openlocfilehash: d4ff6fff807d52208cf3e99a97a2d6b7340c081d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845503"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834265"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 
@@ -78,7 +77,7 @@ Azure AD に対する認証を使用してこのシナリオを実証するコ�
 
 このシナリオでは、開発者はリモート リソース (Web API など) にアクセスする必要がある、サーバー上で実行される Web アプリケーションを使用しています。 Web API は、匿名の呼び出しを許可しないので、認証されたユーザーに代わって承認されたサービスから呼び出す必要があります。 Web API は、指定の Azure AD テナントによって発行されたアクセス トークンを信頼するように事前構成されています。そして、Azure AD は、クライアントの資格情報を持つサービスに対するリソースへのアクセス トークンを発行するように事前構成されています。 ユーザーが Web アプリケーションで認証されると、アプリケーションは Azure AD からユーザーの認証コードを取得できます。 その後、Web アプリケーションは、ADAL を使用して、アプリケーションに関連付けられた認証コードとクライアント資格情報を使って、ユーザーの代わりに Azure AD からアクセス トークンと更新トークンを取得できます。 アクセス トークンを所有している Web アプリケーションは、トークンの有効期限が切れるまで Web API を呼び出すことができます。 トークンの有効期限が切れたら、Web アプリケーションは ADAL を使用して、以前に取得した更新トークンを使って新しいアクセス トークンを取得できます。 このシナリオを実証するコード サンプルについては、[ネイティブ クライアントが Web API を呼び出し、その Web API がさらに別の Web API を呼び出すしくみ](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)に関するページをご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Active Directory 開発者ガイド](v1-overview.md)
 - [Azure AD の認証シナリオ](v1-authentication-scenarios.md)

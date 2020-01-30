@@ -13,13 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921925"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834197"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -75,11 +74,11 @@ AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .ExecuteAsync();
 ```
 
-を以下に置き換えます。
+with:
 
 - `policy` は前の文字列の 1 つです (たとえば `PolicySignUpSignIn`)。
 - `ParentActivityOrWindow` は、Android (Activity) では必須となります。親 UI (Windows のウィンドウや iOS の UIViewController など) をサポートするその他のプラットフォームでは省略可能です。 詳細については、[UI ダイアログに関するこちらの説明](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)を参照してください。
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 例:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 次に例を示します。
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -177,12 +176,12 @@ MSAL.Net では[トークン キャッシュ](/dotnet/api/microsoft.identity.cli
 または、[B2C カスタム ポリシー](https://aka.ms/ief)を使用している場合は、`tid` 要求を使用できます。これにより、アプリケーションに追加の要求を返す機能が提供されます。 詳しくは、[要求の変換](/azure/active-directory-b2c/claims-transformation-technical-profile)に関する記事をご覧ください
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
-1 つのオプションは、優先されるユーザー名として "name" 要求を使用することです。 プロセスは、この [B2C ドキュメント](../../active-directory-b2c/active-directory-b2c-reference-policies.md)で説明されています。"[要求を返す] 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、[表示名] および [郵便番号] を選択します。"
+1 つのオプションは、優先されるユーザー名として "name" 要求を使用することです。 プロセスは、この [B2C ドキュメント](../../active-directory-b2c/user-flow-overview.md)で説明されています。"[要求を返す] 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、[表示名] および [郵便番号] を選択します。"
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 Azure AD B2C アプリケーション用に MSAL.NET を使用して対話形式でトークンを取得する詳細については、次のサンプルで提供されています。
 
-| サンプル | プラットフォーム | 説明|
+| サンプル | プラットフォーム | [説明]|
 |------ | -------- | -----------|
 |[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | MSAL.NET を使用して Azure AD B2C 経由でユーザーを認証し、結果として得られたトークンで Web API にアクセスする方法を示す簡単な Xamarin Forms アプリ。|

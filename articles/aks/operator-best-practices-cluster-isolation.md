@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: cb15f637337df05c61eeac611286b49e23b6adac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348794"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549191"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
@@ -56,7 +56,7 @@ AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント�
 
 物理的に分離されたクラスターのポッドの密度は通常、低くなります。 各チームまたはワークロードには独自の AKS クラスターがあるため、クラスターは多くの場合、コンピューティング リソースで過剰にプロビジョニングされます。 多くの場合、ノード上には少数のポッドがスケジュールされます。 ノード上の未使用の容量は、他のチームによって開発中のアプリケーションやサービスで使用することはできません。 これらの過剰なリソースは、物理的に分離されたクラスターでの追加コストの原因となります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事ではクラスターの分離に重点を置きました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 9dad936e2e6cc7a9b0cdde78a9557a51d3074e71
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930874"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312415"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -176,12 +176,12 @@ Azure Container Instance はディスク暗号化をサポートしていませ�
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-デプロイされた Azure Kubernetes Service リソースは、カスタマー マネージド キーを使用していつでも暗号化できます。 詳細については、[https://aka.ms/aks/byok](https://aka.ms/aks/byok) を参照してください。 
+デプロイされた Azure Kubernetes Service リソースは、カスタマー マネージド キーを使用していつでも暗号化できます。 詳細については、[Azure Kubernetes Service で独自のキーを取り込む](../aks/azure-disk-customer-managed-keys.md)方法に関するページを参照してください。 
 
 このプロセスでは、Kubernetes クラスター内のデプロイされた仮想マシンのデータと OS ディスクの両方を暗号化できます。
 
 > [!IMPORTANT]
-> このプロセスは、AKS K8s バージョン 1.16 以降でのみ機能します。 Azure Machine Learning は、2020 年 1 月 13 日に AKS 1.16 のサポートを追加しました。
+> このプロセスは、AKS K8s バージョン 1.17 以降でのみ機能します。 Azure Machine Learning は、2020 年 1 月 13 日に AKS 1.17 のサポートを追加しました。
 
 #### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
@@ -335,7 +335,7 @@ Machine Learning コンピューティングはマネージド コンピュー�
 
 * [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Machine Learning モデルを使用する](how-to-consume-web-service.md)
-* [バッチ予測を実行する方法](how-to-run-batch-predictions.md)
+* [バッチ予測を実行する方法](how-to-use-parallel-run-step.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

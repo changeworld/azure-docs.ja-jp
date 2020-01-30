@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932043"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840300"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,7 +102,7 @@ ms.locfileid: "75932043"
 
 **DefaultUserJourney** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください。 |
 
@@ -122,16 +122,16 @@ ms.locfileid: "75932043"
 
 **SingleSignOn** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Scope | はい | シングル サインオン動作の範囲です。 指定できる値: `Suppressed`、`Tenant`、`Application`、または `Policy`。 `Suppressed` の値は、動作が抑制されることを示します。 たとえば、シングル サインオン セッションの場合、ユーザーのセッションは維持されず、ユーザーは常に ID プロバイダーを選択するように求められます。 `TrustFramework` 値では、信頼フレームワークのすべてのポリシーに動作が適用されることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
-| KeepAliveInDays | はい | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](active-directory-b2c-reference-kmsi-custom.md)方法に関するページを参照してください。 |
+| KeepAliveInDays | はい | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](custom-policy-keep-me-signed-in.md)方法に関するページを参照してください。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 **JourneyInsights** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
@@ -140,7 +140,7 @@ ms.locfileid: "75932043"
 | ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 |
 | TelemetryVersion | はい | 値は `1.0.0` である必要があります。 |
 
-詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」をご覧ください。
+詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」をご覧ください。
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -158,17 +158,17 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **ContentDefinitionParameter** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Name | はい | キーと値のペアの名前。 |
 
-詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](active-directory-b2c-ui-customization-custom-dynamic.md)を参照してください
+詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](custom-policy-ui-customization-dynamic.md)を参照してください
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 **TechnicalProfile** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Id | はい | 値は `PolicyProfile` である必要があります。 |
 
@@ -185,7 +185,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **プロトコル** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` または `SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 運用環境では、SAML トークンを使用しないでください。 |
 
@@ -199,7 +199,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
 | DefaultValue | いいえ | 既定値が空の場合に使用できる既定値。 |
@@ -213,7 +213,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **SubjectNamingInfo** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561152"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293455"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -49,6 +49,9 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 - Windows Server 2019 Datacenter
 - Windows 10 1809 以降
 
+> [!IMPORTANT]
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 参加済みまたはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 
+
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
 - すべての Azure グローバル リージョン
@@ -60,10 +63,10 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 
 Azure 内の Windows VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://pas.windows.net
+- https:\//enterpriseregistration.windows.net
+- https:\//login.microsoftonline.com
+- https:\//device.login.microsoftonline.com
+- https:\//pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 内の Windows VM に対して Azure AD ログインを有効にする
 
@@ -163,7 +166,7 @@ Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割
 1. メニュー オプションから **[アクセス制御 (IAM)]** を選択します。
 1. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択して、[ロールの割り当ての追加] ペインを開きます。
 1. **[ロール]** ドロップダウン リストで、 **[仮想マシンの管理者ログイン]** や **[仮想マシンのユーザー ログイン]** などのロールを選択します。
-1. **[選択]** フィールドで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
+1. **[選択]** フィールドで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 [選択] 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]**  ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
 1. **[保存]** を選択して、ロールを割り当てます。
 
 しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
@@ -236,24 +239,24 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
 
    | 実行するコマンド | 想定される出力 |
    | --- | --- |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | VM に関する正しい情報 |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Azure サブスクリプションに関連付けられている有効なテナント ID |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Azure Active Directory によって発行された、この VM に割り当てられているマネージド ID の有効なアクセス トークン |
+   | curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | VM に関する正しい情報 |
+   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Azure サブスクリプションに関連付けられている有効なテナント ID |
+   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Azure Active Directory によって発行された、この VM に割り当てられているマネージド ID の有効なアクセス トークン |
 
    > [!NOTE]
    > アクセス トークンは、[http://calebb.net/](http://calebb.net/) などのツールを使用してデコードできます。 アクセス トークンの "appid" と VM に割り当てられたマネージド ID が一致していることを確認します。
 
 1. 次のコマンド ラインを使用して、必要なエンドポイントに VM から確実にアクセスできるようにします。
    
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - curl https:\//login.microsoftonline.com/ -D –
+   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
 
    > [!NOTE]
    > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - curl https:\//enterpriseregistration.windows.net/ -D -
+   - curl https:\//device.login.microsoftonline.com/ -D -
+   - curl https:\//pas.windows.net/ -D -
 
 1. Device State (デバイスの状態) を表示するには、`dsregcmd /status` を実行します。 目標は、Device State (デバイスの状態) で `AzureAdJoined : YES` と表示されることです。
 
@@ -280,15 +283,15 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
 1. 次のコマンド ラインを使用して、必要なエンドポイントに VM からアクセスできることを確認します。
 
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - curl https:\//login.microsoftonline.com/ -D –
+   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
    
    > [!NOTE]
    > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。 テナント ID を検索する必要がある場合、アカウント名にマウス カーソルを合わせてディレクトリ/テナント ID を取得するか、Azure portal で [Azure Active Directory]、[プロパティ]、[ディレクトリ ID] の順に選択します。
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - curl https:\//enterpriseregistration.windows.net/ -D -
+   - curl https:\//device.login.microsoftonline.com/ -D -
+   - curl https:\//pas.windows.net/ -D -
 
 1. コマンドが "ホスト名 `<URL>` を解決できません" で失敗した場合、このコマンドを実行して、VM で使用されている DNS サーバーを特定してみてください。
    

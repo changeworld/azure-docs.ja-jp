@@ -15,13 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e267b2f398480da6949a4c85133342aad5c2ba7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1a82fc7dc1b18fa21657170af29f7de7e84d7c1f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919904"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702030"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すモバイル アプリ - 運用環境への移行
 
@@ -44,7 +43,7 @@ ms.locfileid: "74919904"
 - ユーザーは、問題が発生したときに支援を求めることがあります。 ベスト プラクティスは、ログをキャプチャして一時的に格納し、ユーザーがそれらをアップロードできる場所を提供することです。 MSAL には、認証に関する詳細情報をキャプチャするログの拡張機能があります。
 - 利用できる場合は、MSAL を介してテレメトリを有効にして、ユーザーがアプリにサインインしている方法についてデータを収集します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 

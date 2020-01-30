@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046049"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760900"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -156,19 +156,9 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 オファーを適切なマーケットプレース検索区分にグループ分けするために使用されるカテゴリを、最小で 1 つ、最大で 3 つ選択します。 これらのカテゴリにオファーがどのように対応しているかを、オファーの説明に含めるようにします。 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>マーケットプレースの標準使用条件
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
 
-顧客の調達プロセスを簡略化し、ソフトウェア ベンダーの法的な複雑さを軽減するために、Microsoft では、マーケットプレースでの取引の促進に役立つ標準契約テンプレートを用意しています。
-
-カスタムの使用条件を作成するのではなく、標準契約の下でソフトウェアを提供することを選択できます。顧客は、それを入念に調べて一度承認するだけで済みます。
-
-標準契約はこちら (https://go.microsoft.com/fwlink/?linkid=2041178 ) で見つけることができます。
-
-標準契約を使用するには、 **[標準契約を使用しますか?]** チェックボックスをオンにします。
-
-#### <a name="terms-of-use"></a>使用条件
-
-**[標準契約を使用しますか?]** チェックボックスをオンにしない場合は、 **[使用条件]** フィールドに独自の法律条項を入力する必要があります。 最大 10,000 文字のテキストを入力するか、使用条件にもっと長い説明が必要な場合は、追加のライセンス条項が記載された場所への URL を入力します。 顧客は、アプリを試す前にこれらの条件を承諾する必要があります。
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>オファーのリスト登録
 

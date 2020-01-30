@@ -4,12 +4,12 @@ description: 一般的な Azure サブスクリプションとサービスの制
 tags: billing
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 4a6d5664d76df5401a2bb5c55f42d86b48e99017
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: ebfa1139ba0649280634bc0fd18627ba74f0c3cc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75662910"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294118"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -48,6 +48,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Azure Cognitive Search](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure Data Explorer](#azure-data-explorer-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure DNS](#azure-dns-limits)
@@ -299,6 +300,10 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB の制限
 
 Azure Cosmos DB の制限については、「[Azure Cosmos DB の制限](../../cosmos-db/concepts-limits.md)」を参照してください。
+
+### <a name="azure-data-explorer-limits"></a>Azure Data Explorer の制限
+
+[!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 

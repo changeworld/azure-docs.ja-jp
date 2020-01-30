@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946022"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170164"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -153,7 +153,7 @@ ms.locfileid: "75946022"
     | SubscriptionName |イマーシブ リーダー リソースで使用する Azure サブスクリプションの名前。 リソースを作成するには、サブスクリプションが必要です。 |
     | ResourceName |  英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。|
     | ResourceSubdomain |イマーシブ リーダー リソースには、カスタム サブドメインが必要です。 サブドメインは、イマーシブ リーダー サービスを呼び出してリーダーを起動する際に、SDK によって使用されます。 サブドメインはグローバルに一意である必要があります。 サブドメインには英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
-    | ResourceSKU |オプションは、`S0` または `S1` です。 使用可能な各 SKU の詳細については、[Cognitive Services の価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)を参照してください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
+    | ResourceSKU |オプション: `S0`。 使用可能な各 SKU の詳細については、[Cognitive Services の価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)を参照してください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceLocation |オプションは、`eastus`、`eastus2`、`southcentralus`、`westus`、`westus2`、`australiaeast`、`southeastasia`、`centralindia`、`japaneast`、`northeurope`、`uksouth`、`westeurope` です。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceGroupName |リソースは、サブスクリプション内のリソース グループに作成されます。 既存のリソース グループの名前を指定します。 リソース グループがまだ存在しない場合は、この名前を使用して新しく作成されます。 |
     | ResourceGroupLocation |リソース グループが存在しない場合は、グループの作成先の場所を指定する必要があります。 場所の一覧を表示するには、`az account list-locations` を実行します。 返された結果の *name* プロパティ (スペースなし) を使用します。 リソース グループが既に存在する場合、このパラメーターは省略可能です。 |

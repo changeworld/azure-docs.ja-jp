@@ -13,13 +13,12 @@ ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917065"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696484"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -139,11 +138,11 @@ Web アプリの場合、リダイレクト URI (または応答 URI) は、Azur
 
 このオプションでは、機密性の高いクライアント アプリ用のクライアント シークレットを指定します。 このシークレット (アプリ パスワード) は、アプリケーション登録ポータルによって提供されるか、PowerShell AzureAD、PowerShell AzureRM、Azure CLI のいずれかを使用したアプリの登録時に Azure AD に対して提供されます。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 その他の構成オプションを使用して、ログ記録とトラブルシューティングを有効にすることができます。 これらの使用方法の詳細については、「[ログの記録](msal-logging.md)」の記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [MSAL.NET を使用したクライアント アプリケーションのインスタンス化](msal-net-initializing-client-applications.md)について確認します。
 [MSAL.js を使用したクライアント アプリケーションのインスタンス化](msal-js-initializing-client-applications.md)について確認します。

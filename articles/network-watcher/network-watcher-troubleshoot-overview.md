@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277773"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840691"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -28,7 +25,7 @@ ms.locfileid: "74277773"
 
 ![ポータル][2]
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 返される暫定結果では、リソースの正常性の概要が示されます。 次のセクションに示すように、リソースに関するより詳細な情報を得ることもできます。
 
@@ -63,7 +60,7 @@ ms.locfileid: "74277773"
 | ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| はい|
 | GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
-### <a name="connection"></a>接続
+### <a name="connection"></a>Connection
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
@@ -108,7 +105,7 @@ ms.locfileid: "74277773"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -211,7 +208,7 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ゲートウェイまたはゲートウェイの接続に関する問題を診断する方法については、[ネットワーク間の通信の問題を診断する方法](diagnose-communication-problem-between-networks.md)に関するページを参照してください。
 <!--Image references-->

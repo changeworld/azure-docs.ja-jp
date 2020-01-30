@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950988"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840402"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN ベースの Web API を b2clogin.com に移行する
 
@@ -33,7 +33,7 @@ b2clogin.com と login.microsoftonline.com の両方によって発行された�
 
 この記事の手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
-* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md)または[カスタム ポリシー](active-directory-b2c-get-started-custom.md)
+* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md)または[カスタム ポリシー](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>トークン発行者のエンドポイントを取得する
 
@@ -127,7 +127,7 @@ Web API で両方の URI がサポートされるようになったので、今�
 
 TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsoftonline.com` ではなく `{your-b2c-tenant-name}.b2clogin.com` を参照するように変更します。
 
-変更前:
+次の処理の前
 
 ```xml
 <!-- Old value -->
@@ -143,11 +143,11 @@ TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsofton
 
 Web アプリの実行中にエンドポイントの文字列が作成されるとき、b2clogin.com ベースのエンドポイントを使ってトークンが要求されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、複数の発行者エンドポイントからトークンを受け入れるために、Microsoft OWIN ミドルウェア (Katana) を実装する Web API を構成する方法について説明しました。 お気付きかもしれませんが、TaskService プロジェクトと TaskWebApp プロジェクトの *Web.Config* ファイルには、独自のテナントに対してプロジェクトをビルドして実行するときに変更する必要のある文字列が、他にもいくつかあります。 それらの動作を確認する場合はプロジェクトを適切に変更してかまいませんが、その完全なチュートリアルはこの記事の範囲外です。
 
-Azure AD B2C によって生成されるさまざまな種類のセキュリティ トークンについて詳しくは、「[Azure Active Directory B2C のトークンの概要](active-directory-b2c-reference-tokens.md)」をご覧ください。
+Azure AD B2C によって生成されるさまざまな種類のセキュリティ トークンについて詳しくは、「[Azure Active Directory B2C のトークンの概要](tokens-overview.md)」をご覧ください。
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

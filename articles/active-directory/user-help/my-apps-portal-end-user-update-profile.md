@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233161"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704869"
 ---
 # <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>マイ アプリ ポータルでプロファイルと職場または学校アカウント情報を更新する
 
@@ -86,7 +85,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 パスワードを忘れた場合、会社のサポートからパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自身のパスワードをリセットすることができます。
 
 >[!Important]
->管理者はこの機能を有効にする必要があり、お客様は参加登録する必要があります。 登録する方法およびパスワードをリセットする方法の詳細については、「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」および「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
+>管理者はこの機能を有効にする必要があり、お客様は参加登録する必要があります。 登録する方法およびパスワードをリセットする方法の詳細については、「[セルフサービス パスワード リセット を登録する](active-directory-passwords-reset-register.md)」および「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
 ## <a name="change-your-security-verification-information"></a>セキュリティ検証情報を変更する
 
@@ -132,7 +131,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 2. **[すべてからサインアウト]** 確認ボックスで、 **[はい]** を選択して、すべてのセッションおよびデバイスからサインアウトすることを確認します。 気が変わった場合は、 **[いいえ]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **[プロファイル]** ページで更新を完了した後、次の操作を行えます。
 

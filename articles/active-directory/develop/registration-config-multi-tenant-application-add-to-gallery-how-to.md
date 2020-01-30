@@ -16,13 +16,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65572b53591e3b94c26df988c61f8a79d15439cf
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be660ad42c1336d479f1793b20d2994682db1225
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963003"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702761"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
 
@@ -50,5 +49,5 @@ SAML または OpenIDConnect をサポートしていないアプリケーショ
 
 すべてのエスカレーションについて、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールでご連絡いただけば、できるだけ早く折り返しご連絡いたします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory アプリケーション ギャラリーにアプリケーションを表示する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)方法を確認します。

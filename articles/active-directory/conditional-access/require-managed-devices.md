@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424814"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512591"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -69,7 +69,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 ![デバイス ベースの条件](./media/require-managed-devices/45.png)
 
-ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、**System Center Configuration Manager (SCCM)** などの管理ソリューションや、それらを管理するための**グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
+ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、**Configuration Manager** などの管理ソリューションや、それらを管理するための**グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 

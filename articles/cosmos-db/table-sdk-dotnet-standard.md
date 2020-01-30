@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Table API .NET Standard SDK およびリソース
 description: リリース日、提供終了日、各バージョン間の変更点など、Azure Cosmos DB Table API および .NET Standard SDK に関するあらゆる詳細を提供します。
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996211"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771591"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "70996211"
 |**クイックスタート**|[クイックスタート](create-table-dotnet.md)|
 |**チュートリアル**|[チュートリアル](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
-|**問題の報告**|[問題を報告する](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
+|**問題を報告する**|[問題を報告する](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2\.0.0 シリーズのリリース ノート
 2.0.0 シリーズは [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) に依存します。パフォーマンスが向上し、Cosmos DB エンドポイントに名前空間が統合されています。
@@ -108,9 +108,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [0.9.1-preview](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。

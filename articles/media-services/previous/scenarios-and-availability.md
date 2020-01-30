@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978170"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843941"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -37,7 +37,7 @@ AMS は、世界中の複数のデータセンターで動作しています。 
 
 Azure Media Services を使用するには、次が必要です。
 
-* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com)を参照してください。
+* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com)」を参照してください。
 * Azure Media Services アカウントを作成します。 詳細については、[アカウントの作成](media-services-portal-create-account.md)に関するページを参照してください。
 * コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。
 
@@ -177,7 +177,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|名前|Status|データ センター
+|Name|Status|データ センター
 |---|---|---|
 |Standard|GA|All|
 |Premium|GA|All|
@@ -211,9 +211,8 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 |Azure Media Indexer|GA|All|
 |Azure Media Motion Detector|プレビュー|All|
 |Azure Media OCR|プレビュー|All|
-|Azure Media Redactor|プレビュー|All|
+|Azure Media Redactor|GA|All|
 |Azure Media Video Thumbnails|プレビュー|All|
-|Azure Media Indexer 2|プレビュー|中国および連邦政府リージョンを除くすべて|
 
 ### <a name="protection"></a>保護
 
@@ -223,7 +222,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 |暗号化|Status|データ センター|
 |---|---|---| 
-|Storage|GA|All|
+|ストレージ|GA|All|
 |AES-128 キー|GA|All|
 |FairPlay|GA|All|
 |PlayReady|GA|All|
@@ -255,9 +254,9 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Media Services のラーニング パスを確認します。
 

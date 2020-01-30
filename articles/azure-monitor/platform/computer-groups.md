@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 9ef0f2810252b73921fc0a72f2e523262c760bab
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932656"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513705"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -22,12 +22,12 @@ Azure Monitor では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Azure Monitor のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | 説明 |
+| 方法 | [説明] |
 |:--- |:--- |
 | Log query |コンピューターの一覧を返すログ クエリを作成します。 |
 | Log Search API |ログ クエリの結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
 | Active Directory |Active Directory ドメインに属しているエージェント コンピューターのグループ メンバーシップを自動的にスキャンし、セキュリティ グループごとのグループを Azure Monitor に作成します。 (Windows マシンのみ)|
-| 構成マネージャー | System Center Configuration Manager からコレクションをインポートし、Azure Monitor でそれぞれに対してグループを作成します。 |
+| 構成マネージャー | Microsoft Endpoint Configuration Manager からコレクションをインポートし、Azure Monitor でそれぞれに対してグループを作成します。 |
 | Windows Server Update Services |WSUS のサーバーまたはクライアントを自動的にスキャンして WSUS の対象グループを取得し、それぞれのグループを Azure Monitor で作成します。 |
 
 ### <a name="log-query"></a>Log query
@@ -47,11 +47,11 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:---|:---|
-| 名前   | ポータルに表示するクエリの名前。 |
+| Name   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
-| Category       | ポータル内でクエリを整理するためのカテゴリ。 |
+| カテゴリ       | ポータル内でクエリを整理するためのカテゴリ。 |
 
 
 ### <a name="active-directory"></a>Active Directory
@@ -75,7 +75,7 @@ Azure portal でお使いの Log Analytics ワークスペースの **[詳細設
 
 グループがインポートされると、検出されたグループ メンバーシップを持つコンピューターの数とインポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+### <a name="configuration-manager"></a>構成マネージャー
 Configuration Manager のコレクション メンバーシップをインポートするように Azure Monitor を構成すると、各コレクションのコンピューター グループが作成されます。  コンピューター グループを最新に保つために、コレクション メンバーシップ情報は 3 時間ごとに取得されます。 
 
 Configuration Manager のコレクションをインポートするには、[Azure Monitor に Configuration Manager を接続する](collect-sccm.md)必要があります。  
@@ -119,7 +119,7 @@ Configuration Manager のコレクションをインポートするには、[Azu
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが Log Analytics ワークスペースに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ クエリに基づくコンピューター グループにはレコードが作成されません。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |
@@ -131,6 +131,6 @@ Active Directory または WSUS から作成されたコンピューター グ�
 | `ManagementGroupName` |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
 | `TimeGenerated` |コンピューター グループが作成または更新された日時。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514305"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846221"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -99,6 +99,6 @@ Personalizer は、集まった情報をほぼリアルタイムで使用して�
 * [強化学習とは](concepts-reinforcement-learning.md)
 * [Rank 要求の機能とアクションについて学習します](concepts-features.md)
 * [Reward 要求のスコアの特定について学習します](concept-rewards.md)
-* [クイック スタート]()
-* [チュートリアル]()
+* [クイック スタート](sdk-learning-loop.md)
+* [チュートリアル](tutorial-use-azure-notebook-generate-loop-data.md)
 * [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)

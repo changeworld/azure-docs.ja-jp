@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: このページでは、PowerShell を使用して Network Watcher のパケット キャプチャ機能を管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: e76193a635ee723e13ea4a8a23f668b6e3d1cbb0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277879"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840878"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -100,7 +97,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-次のサンプルは、`Get-AzVMExtension` を実行したときの応答の例を示しています。
+以下のサンプルは、`Get-AzVMExtension` の実行に対する応答の例です。
 
 ```
 ResourceGroupName       : testrg
@@ -144,7 +141,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa1
 
 ### <a name="step-3"></a>手順 3.
 
-フィルターを使用して、パケット キャプチャによって保存されるデータを制限できます。 次の例では、2 つのフィルターを設定します。  最初のフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への送信 TCP トラフィックのみを収集します。  2 番目のフィルターは、UDP トラフィックのみを収集します。
+フィルターを使用して、パケット キャプチャによって格納されるデータを制限できます。 次の例では、2 つのフィルターを設定します。  最初のフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への送信 TCP トラフィックのみを収集します。  2 番目のフィルターは、UDP トラフィックのみを収集します。
 
 ```powershell
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -152,7 +149,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
-> 1 つのパケット キャプチャに対して複数のフィルターを定義できます。
+> 単一のパケット キャプチャに対して複数のフィルターを定義できます。
 
 ### <a name="step-4"></a>手順 4.
 
@@ -162,7 +159,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-次の例は、`New-AzNetworkWatcherPacketCapture` コマンドレットを実行したときの予想される出力を示しています。
+次の例は、`New-AzNetworkWatcherPacketCapture` コマンドレットを実行したときに予想される出力です。
 
 ```
 Name                    : PacketCaptureTest
@@ -277,7 +274,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 

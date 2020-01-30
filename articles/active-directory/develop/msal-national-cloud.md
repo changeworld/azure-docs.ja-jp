@@ -13,13 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916050"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695740"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -71,7 +70,7 @@ MSAL.NET を使用して、国内クラウドへのユーザーのサインイ�
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
-1. [Azure Portal](https://portal.azure.us/) にサインインします。
+1. [Azure portal](https://portal.azure.us/) にサインインします。
     
    他の国内クラウドの Azure portal エンドポイントを見つけるには、「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください。
 
@@ -221,7 +220,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 

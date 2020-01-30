@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14b97677f5aa9624ba70696114ac34fcd9f46182
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918034"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698018"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -64,7 +63,7 @@ ms.locfileid: "74918034"
   - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/authorize` です。
   - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/token` です。
 
-シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 例: `https://login.microsoftonline.de/contoso.com`。
+シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 たとえば `https://login.microsoftonline.de/contoso.com` です。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -75,7 +74,7 @@ ms.locfileid: "74918034"
 
 Microsoft ID プラットフォームを使用してアプリケーションを構築する方法を学習するには、[Microsoft Authentication Library (MSAL) のチュートリアル](msal-national-cloud.md)に従ってください。 具体的には、このアプリはユーザーをサインインさせ、Microsoft Graph API を呼び出すためのアクセス トークンを取得します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 

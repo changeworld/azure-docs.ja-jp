@@ -16,14 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783c840c4cfe2d8a1d2533e68d14f7b4a3993e64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423325"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833279"
 ---
 # <a name="what-is-authentication"></a>認証とは
 
@@ -137,7 +136,7 @@ Azure AD によって生成される各種要求の簡単な説明を次の表�
 | Name | トークンのサブジェクトを識別する、人が判読できる値を提供します。 |
 | Object ID | Azure AD 内のサブジェクトの変更できない一意の識別子が含まれます。 |
 | ロール | ユーザーに付与されている Azure AD アプリケーション ロールのフレンドリ名が含まれます。 |
-| スコープ | クライアント アプリケーションに付与されるアクセス許可を示します。 |
+| Scope | クライアント アプリケーションに付与されるアクセス許可を示します。 |
 | サブジェクト | トークンが情報をアサートするプリンシパルを示します。 |
 | テナント ID | トークンを発行したディレクトリ テナントの変更できない一意の識別子が含まれます。 |
 | トークンの有効期間 | トークンが有効である期間を定義します。 |

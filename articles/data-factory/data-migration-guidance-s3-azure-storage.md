@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927472"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122646"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
 
@@ -47,7 +47,7 @@ ADF には、さまざまなレベルで並列処理を可能にするサーバ�
 
 ADF には、1 回のコピー アクティビティの実行で、データ ストアまたは基になるネットワークの特定のレベルの一時的なエラーを処理できる組み込みの再試行メカニズムがあります。 
 
-S3 から BLOB へ、および S3 から ADLS Gen2 へのバイナリ コピーを実行すると、ADF ではチェックポイント処理が自動的に実行されます。  コピー アクティビティの実行が失敗した場合、またはタイムアウトした場合、後続の再試行 (再試行回数が 1 を超える場合) では、最初から開始するのではなく、最後の障害個所からコピーが再開されます。 
+S3 から BLOB へ、および S3 から ADLS Gen2 へのバイナリ コピーを実行すると、ADF ではチェックポイント処理が自動的に実行されます。  コピー アクティビティの実行が失敗した場合、またはタイムアウトした場合、後続の再試行では、最初から開始するのではなく、最後の障害個所からコピーが再開されます。 
 
 ## <a name="network-security"></a>ネットワークのセキュリティ 
 
@@ -86,7 +86,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 
 
-データのパーティションは、10 TB を超えるデータを移行する場合に特に推奨されます。  データをパーティション分割するには、’プレフィックス’ 設定を利用し、名前を指定して Amazon S3 内のフォルダーとファイルをフィルター処理し、各 ADF コピー ジョブで一度に 1 つのパーティションをコピーします。  複数の ADF コピー ジョブを同時に実行して、スループットを向上させることができます。 
+データのパーティションは、100 TB を超えるデータを移行する場合に特に推奨されます。  データをパーティション分割するには、’プレフィックス’ 設定を利用し、名前を指定して Amazon S3 内のフォルダーとファイルをフィルター処理し、各 ADF コピー ジョブで一度に 1 つのパーティションをコピーします。  複数の ADF コピー ジョブを同時に実行して、スループットを向上させることができます。 
 
 ネットワークまたはデータ ストアの一時的な問題によってコピー ジョブが失敗した場合は、失敗したコピー ジョブを再実行して、AWS S3 から特定のパーティションを再度読み込むことができます。  他のパーティションを読み込む他のすべてのコピー ジョブには影響しません。 
 
@@ -152,6 +152,6 @@ S3 から Azure Blob Storage にデータを移行するために、次のパイ
 
 数億ものファイルで構成されるペタバイト規模のデータの Amazon S3 から Azure Data Lake Storage Gen2 への移行を開始するには、こちらの[テンプレート](solution-template-migration-s3-azure.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory を使用して複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)

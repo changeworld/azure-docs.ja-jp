@@ -10,13 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702523"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 
@@ -26,7 +25,7 @@ ms.locfileid: "74920329"
 
 次の表では、アプリの登録時に追加できるリダイレクト URI の最大数を示しています。
 
-| サインイン中のアカウント | リダイレクト URI の最大数 | 説明 |
+| サインイン中のアカウント | リダイレクト URI の最大数 | [説明] |
 |--------------------------|---------------------------------|-------------|
 | 組織の Azure Active Directory (Azure AD) テナントにある Microsoft の職場または学校アカウント | 256 | アプリケーション マニフェストの `signInAudience` フィールドは *AzureADMyOrg* か *AzureADMultipleOrgs* に設定されています |
 | Microsoft の個人用アカウント、職場用アカウント、学校用アカウント | 100 | アプリケーション マニフェストの `signInAudience` フィールドは *AzureADandPersonalMicrosoftAccount* に設定されています |
@@ -71,6 +70,6 @@ Microsoft の個人用アカウント、職場用アカウント、学校用ア�
 
 もう 1 つ手法は、Azure AD テナントでアプリ登録を表す[サービス プリンシパル](app-objects-and-service-principals.md#application-and-service-principal-relationship)にリダイレクト URI を追加することです。 状態パラメーターを使用できないときや、シナリオ上、サポートする新しいテナントごとにアプリ登録に新しいリダイレクト URI を追加する必要があるとき、この手法を利用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーション マニフェスト](reference-app-manifest.md)について学習する

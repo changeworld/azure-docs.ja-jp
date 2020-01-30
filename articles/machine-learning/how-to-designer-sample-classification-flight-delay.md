@@ -10,16 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 02831555222597eacf9cf055f03fc65e1f599514
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 778673d724fd6774365c4f2427e2483856ec83a2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763547"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311130"
 ---
 # <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、R を使用して、フライトの遅延を予測する
 
-**デザイナー (プレビュー) サンプル 6**
+**デザイナー サンプル 6**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 

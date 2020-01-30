@@ -17,13 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0cef2ed24eb242629aa5547391c0d2a27344d8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919482"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701452"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 
@@ -51,6 +50,6 @@ IT 管理者がテナントで設定できる各種ポリシーの数が多い�
 * 最小限のユーザー アクセスの原則に従って、アプリでは実際に必要なアクセス許可だけを要求するようにします。 管理者の同意が必要なアクセス許可を要求することは避けます。組織によっては、ユーザーがアプリをまったく取得できなくなる可能性があるためです。 
 * アプリの一部として公開するアクセス許可の適切な名前と説明を提供します。 これにより、ユーザーと管理者は、アプリの API を使用しようとしたときに同意する内容を把握しやすくなります。 詳細については、[アクセス許可ガイド](v1-permissions-and-consent.md)のベスト プラクティスのセクションをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリをマルチテナントに変換する方法](howto-convert-app-to-be-multi-tenant.md)

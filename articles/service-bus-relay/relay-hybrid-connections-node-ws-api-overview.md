@@ -1,6 +1,6 @@
 ---
 title: Azure Relay Node API の概要 | Microsoft Docs
-description: Relay Node API の概要
+description: この記事では、Azure Relay サービスの Node.js API の概要について説明します。 また、hyco-ws Node パッケージの使用方法についても説明します。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699396"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514512"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続 Node API の概要
 
@@ -208,7 +208,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure リレーの詳細については、次のリンク先を参照してください。
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
 * [使用可能な Relay API](relay-api-overview.md)

@@ -17,13 +17,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64823dbe2595d7896b9339745f6c8642a32f74e9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f15bd1fa95cbbd998d23ac6d946db4ecd93b1e65
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638699"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703033"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 

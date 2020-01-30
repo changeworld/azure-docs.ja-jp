@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: cc8f01d5608b36521185695cd5f7be531ba7aeaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a262db04e51015edb760a8b04952dfa24b2ad63a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505861"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748797"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,8 +89,8 @@ Go を使用して、機械学習されたエンティティ [API](https://aka.m
             body: utterances
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     const train = async (verb) => {
     
@@ -104,8 +104,8 @@ Go を使用して、機械学習されたエンティティ [API](https://aka.m
             body: null // The body can be empty for a training request
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     
     // MAIN
@@ -113,8 +113,8 @@ Go を使用して、機械学習されたエンティティ [API](https://aka.m
     ```
 1. 次の値を置き換えます。
 
-    * `YOUR-KEY` をご利用のスターター キーに
-    * `YOUR-ENDPOINT` をご利用のエンドポイントに (例: `westus2.api.cognitive.microsoft.com`)
+    * `YOUR-KEY` (スターター キーを使用)
+    * `YOUR-ENDPOINT` (エンドポイントを使用) (例、`westus2.api.cognitive.microsoft.com`)
     * `YOUR-APP-ID` をご利用のアプリの ID に
 
 1. このファイルを作成したときと同じディレクトリからコマンド プロンプトで次のコマンドを入力し、ファイルを実行します。
@@ -127,11 +127,11 @@ Go を使用して、機械学習されたエンティティ [API](https://aka.m
 
 [!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートを完了したら、ファイル システムからファイルを削除します。 
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリのベスト プラクティス](../luis-concept-best-practices.md)

@@ -13,13 +13,12 @@ ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028478"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704614"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>個人デバイスを組織のネットワークに登録する
 個人デバイス (通常は電話またはタブレット) を組織のネットワークに登録します。 デバイスが登録されたら、そのデバイスは組織の制限されたリソースにアクセスできるようになります。
@@ -67,7 +66,7 @@ ms.locfileid: "74028478"
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 個人デバイスを組織のネットワークに登録したら、ほとんどのリソースにアクセスできるようになります。
 
 - 組織で職場のデバイスを参加させるようにする場合は、「[職場のデバイスを組織のネットワークに参加させる](user-help-join-device-on-network.md)」を参照してください。

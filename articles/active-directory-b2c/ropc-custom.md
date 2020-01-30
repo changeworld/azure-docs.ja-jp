@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951066"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840266"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -38,7 +38,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
-「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
+「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
@@ -261,11 +261,11 @@ ROPC フローでは次のオプションがサポートされています。
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| Key | 値 |
+| Key | Value |
 | --- | ----- |
 | username | `user-account` |
-| password | `password1` |
-| grant_type | password |
+| パスワード | `password1` |
+| grant_type | パスワード |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
@@ -306,7 +306,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| Key | 値 |
+| Key | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -339,7 +339,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Azure AD B2C は、パブリック クライアント リソース所有者のパスワード認証情報に関する OAuth 2.0 標準を満たしており、ほとんどのクライアント SDK と互換性があります。 最新情報については、[最新のベスト プラクティスを実装する OAuth 2.0 と OpenID Connect のネイティブ App SDK](https://appauth.io/) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - このシナリオの完全な例については、「[Azure Active Directory B2C custom policy starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)」(Azure Active Directory B2C custom policy starter pack (Azure Active Directory B2C カスタム ポリシー スターター パック)) をご覧ください。
-- 「[トークンのリファレンス](active-directory-b2c-reference-tokens.md)」で、Azure Active Directory B2C によって使用されるトークンについてさらに理解してください。
+- 「[トークンのリファレンス](tokens-overview.md)」で、Azure Active Directory B2C によって使用されるトークンについてさらに理解してください。

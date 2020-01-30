@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423390"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701231"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 
@@ -216,7 +215,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>dotnet-web-daemon-v2 を作成し、Azure Web サイトに発行する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左上隅にある **[リソースの作成]** を選びます。
 1. **[Web]**  >  **[Web アプリ]** の順に選択し、Web サイトに名前を付けます。 たとえば、**dotnet-web-daemon-v2-contoso.azurewebsites.net** という名前を付けます。
 1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所**に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
@@ -270,8 +269,8 @@ Microsoft ID プラットフォームでサポートされるさまざまな[認
 - [すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする](howto-convert-app-to-be-multi-tenant.md)
 - [ユーザーおよび管理者の同意について](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
 - [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)
-- [クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-- [クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
+- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
+- [クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
 - [クライアント資格情報フローを使用してアプリケーションのトークンを取得する](msal-client-applications.md)
 
 もっとシンプルなマルチテナント コンソール デーモン アプリケーションについては、[.NET Core デーモンのクイックスタート](quickstart-v2-netcore-daemon.md)を参照してください。

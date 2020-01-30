@@ -4,22 +4,20 @@ titleSuffix: Azure Network Watcher
 description: この記事では、Azure Automation と Network Watcher を使用してオンプレミスの接続を診断する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275904"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845046"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 
@@ -36,7 +34,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 このシナリオで、以下の作業を行います。
 
 - 接続の状態のトラブルシューティングを行う `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットを呼び出す Runbook を作成する
-- スケジュールを Runbook にリンクする
+- Runbook へのスケジュールのリンク
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -185,7 +183,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 
 ![手順 10.][10]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Network Watcher トラブルシューティングを Azure Automation と統合する方法を確認しました。次は、[アラートでトリガーされるパケット キャプチャを Azure Network Watcher で作成する方法](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、VM アラートでパケット キャプチャをトリガーする方法について学習します。
 

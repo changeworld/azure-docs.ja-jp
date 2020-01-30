@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus Relay のセキュリティ コントロール
-description: Azure Service Bus Relay を評価するためのセキュリティ コントロールのチェックリスト
+description: この記事は、Azure Service Bus Relay を評価するためのセキュリティ コントロールのチェックリストを提供します。
 services: service-bus-relay
 ms.service: service-bus-relay
 author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7f4e2a31673905a7e28d1dbb5520650aefc6f368
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 28d3ba14aa7769ac4f3fc22bd2b5bd7acd30557c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219990"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514019"
 ---
 # <a name="security-controls-for-azure-service-bus-relay"></a>Azure Service Bus Relay のセキュリティ コントロール
 
@@ -28,7 +28,7 @@ ms.locfileid: "71219990"
 | ネットワークの分離とファイアウォールのサポート| いいえ |  |   |
 | 強制トンネリングのサポート| 該当なし | Relay は TLS トンネルです  |   |
 
-## <a name="monitoring--logging"></a>監視とログ記録
+## <a name="monitoring--logging"></a>監視およびログ記録
 
 | セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
 |---|---|--|--|
@@ -41,13 +41,13 @@ ms.locfileid: "71219990"
 | セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
 |---|---|--|--|
 | 認証| はい | SAS を使用。 | [Azure Relay の認証と承認](relay-authentication-and-authorization.md) |
-| Authorization|  はい | SAS を使用。 | [Azure Relay の認証と承認](relay-authentication-and-authorization.md) |
+| 承認|  はい | SAS を使用。 | [Azure Relay の認証と承認](relay-authentication-and-authorization.md) |
 
 ## <a name="data-protection"></a>データ保護
 
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
 |---|---|--|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  該当なし | Relay は Web ソケットであり、データは保持されません。 |   |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー |  該当なし | Relay は Web ソケットであり、データは保持されません。 |   |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | いいえ | Microsoft の TLS 証明書のみを使用します。  |   |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |   |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Service には TLS が必要です。 |   |
@@ -60,6 +60,6 @@ ms.locfileid: "71219990"
 |---|---|--|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | [Azure Resource Manager](../azure-resource-manager/index.yml) を使用。|   |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

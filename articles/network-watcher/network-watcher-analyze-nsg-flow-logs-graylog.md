@@ -3,8 +3,7 @@ title: Azure ネットワーク セキュリティ グループ フロー ログ
 description: Network Watcher と Graylog を使用して、Azure のネットワーク セキュリティ グループ フロー ログを管理および分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
+author: damendo
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
-ms.author: mareat
-ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: damendo
+ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60625287"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842905"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -75,7 +74,7 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
    sudo touch /etc/logstash/conf.d/logstash.conf
    ```
 
-3. 次の内容をファイルに追加します。 強調表示された値を変更して、ストレージ アカウントの詳細を反映させます。
+3. 次のコンテンツをファイルに追加します。 強調表示された値を変更して、ストレージ アカウントの詳細を反映させます。
 
    ```
     input {
@@ -181,7 +180,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 2. 構成ページに移動するには、上部のナビゲーション バーの右にある **[System]\(システム\)** ドロップダウン メニューをクリックし、 **[Inputs]\(入力\)** をクリックします。
    または、`http://<graylog-server-ip>:9000/system/inputs` に移動します。
 
-   ![使用の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![作業の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
 3. 新しい入力を開始するには、 **[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
 
@@ -245,6 +244,6 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
 Network Watcher を Graylog と統合することで、ネットワーク セキュリティ グループ フロー ログを簡単かつ一元的に管理し、視覚化できるようになりました。 Graylog には、ストリームやアラートなどの強力な機能が多数用意されています。これらの機能を使用してフロー ログを詳細に管理し、ネットワーク トラフィックの理解を深めることができます。 Graylog をセットアップし、Azure に接続したので、提供される他の機能を引き続き自由に探索してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  [Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。

@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043519"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836662"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -41,11 +41,11 @@ SAML を使用した非排他的な 2 つの主要なシナリオの概要:
 | シナリオ | Azure AD B2C のロール | 操作方法 |
 | -------- | ----------------- | ------- |
 | 私のアプリケーションで、SAML アサーションが認証を完了することが想定されている。 | **Azure AD B2C は、ID プロバイダー (IdP) として機能する**<br />Azure AD B2C は、アプリケーションに対する SAML IdP として機能します。 | この記事 |
-| 私のユーザーは、ADFS、Salesforce、Shibboleth など、SAML 準拠の ID プロバイダーでシングル サイン オンを行う必要がある。  | **Azure AD B2C は、サービス プロバイダー (SP) として機能する**<br />Azure AD B2C は、SAML ID プロバイダーに接続するときにサービス プロバイダーとして機能します。 アプリケーションと SAML ID プロバイダーの間のフェデレーション プロキシです。  | <ul><li>[カスタム ポリシーを使用して SAML IdP としての ADFS によるサインインを設定する](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[カスタム ポリシーを使用して Salesforce SAML プロバイダーによるサインインを設定する](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| 私のユーザーは、ADFS、Salesforce、Shibboleth など、SAML 準拠の ID プロバイダーでシングル サイン オンを行う必要がある。  | **Azure AD B2C は、サービス プロバイダー (SP) として機能する**<br />Azure AD B2C は、SAML ID プロバイダーに接続するときにサービス プロバイダーとして機能します。 アプリケーションと SAML ID プロバイダーの間のフェデレーション プロキシです。  | <ul><li>[カスタム ポリシーを使用して SAML IdP としての ADFS によるサインインを設定する](identity-provider-adfs2016-custom.md)</li><li>[カスタム ポリシーを使用して Salesforce SAML プロバイダーによるサインインを設定する](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Azure AD B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
+* 「[Azure AD B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
 * Security Assertion Markup Language (SAML) プロトコルに関する基本的な知識。
 * SAML サービス プロバイダー (SP) として構成された Web アプリ。 このチュートリアルでは、用意されている [SAML テスト アプリケーション][samltest]を使用できます。
 

@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587180"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773950"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Azure Data Explorer からのデータを Redash で視覚化する
 
-[Redash](https://www.redash.io/) を使用して、データ ソースに接続してクエリを実行し、ダッシュボードを構築してデータを視覚化し、それを同僚と共有します。 この記事では、Azure Data Explorer を Redash のデータ ソースとして設定し、データを視覚化する方法について説明します。
+[Redash](https://redash.io/) を使用して、データ ソースに接続してクエリを実行し、ダッシュボードを構築してデータを視覚化し、それを同僚と共有します。 この記事では、Azure Data Explorer を Redash のデータ ソースとして設定し、データを視覚化する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,7 +93,7 @@ ms.locfileid: "73587180"
 
     ![ダッシュボードの作成を完了する](media/redash/complete-dashboard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer のクエリを記述する](write-queries.md)
 

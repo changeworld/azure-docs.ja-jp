@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769457"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547287"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -29,7 +29,7 @@ Queue ストレージ バインディングは [Microsoft.Azure.WebJobs](https:/
 
 ## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
-Queue ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub リポジトリにあります。
+Queue ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージのバージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,17 +40,7 @@ Azure Functions で想定されているのは *base64* でエンコードされ
 
 キュー トリガーを使用して、キューで新しい項目を受け取ったときに関数を開始します。 キュー メッセージは、関数への入力として提供されます。
 
-## <a name="trigger---example"></a>トリガー - 例
-
-言語固有の例をご覧ください。
-
-* [C#](#trigger---c-example)
-* [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>トリガー - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -67,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルのキュー トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
@@ -122,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#trigger---usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#trigger---message-metadata)」セクションを参照してください。
 
-### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのキュー トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
@@ -167,23 +157,7 @@ module.exports = async function (context, message) {
 
 function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#trigger---usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#trigger---message-metadata)」セクションを参照してください。
 
-### <a name="trigger---java-example"></a>トリガー - Java の例
-
-次の Java の例は、キュー `myqueuename` に格納されるトリガーされたメッセージを記録するストレージ キュー トリガー関数を示しています。
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
-
-### <a name="trigger---python-example"></a>トリガー - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 次の例では、トリガーを使用してキュー メッセージを読み取って関数に渡す方法を示します。
 
@@ -231,7 +205,27 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>トリガー - 属性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+次の Java の例は、キュー `myqueuename` に格納されるトリガーされたメッセージを記録するストレージ キュー トリガー関数を示しています。
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>トリガー - 属性と注釈
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用してキュー トリガーを構成します。
 
@@ -249,7 +243,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
+  次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウント接続ストリングを含むアプリ設定を指定できます。
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -261,7 +255,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
+  完全な例については、「[トリガー - C# の例](#trigger)」を参照してください。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -287,6 +281,47 @@ def main(msg: func.QueueMessage):
 * クラスに適用される `StorageAccount` 属性。
 * "AzureWebJobsStorage" アプリ設定。
 
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`QueueTrigger` 注釈を使用すると、関数をトリガーするキューにアクセスできます。 次の例では、`message` パラメーターを使用して、キュー メッセージを関数で使用できるようにします。
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| プロパティ    | [説明] |
+|-------------|-----------------------------|
+|`name`       | 関数シグネチャのパラメーター名を宣言します。 関数がトリガーされると、このパラメーターの値にはキュー メッセージの内容が含められます。 |
+|`queueName`  | ストレージ アカウントのキュー名を宣言します。 |
+|`connection` | ストレージ アカウントの接続文字列を示します。 |
+
+---
+
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
 次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
@@ -303,7 +338,9 @@ def main(msg: func.QueueMessage):
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# および C# スクリプトでは、`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 次の型のいずれにでもバインドできます。
 
 * オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
 * `string`
@@ -312,7 +349,30 @@ C# および C# スクリプトでは、`string paramName` のようなメソッ
 
 `CloudQueueMessage` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-JavaScript の場合、`context.bindings.<name>` を使用してキュー項目ペイロードにアクセスします。 ペイロードが JSON の場合は、オブジェクトに逆シリアル化されます。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 `paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+
+* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+`CloudQueueMessage` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+キュー項目ペイロードは、`context.bindings.<NAME>` を介して使用できます。ここで、`<NAME>` は *function.json* で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+[QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
+
+---
 
 ## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
 
@@ -365,22 +425,12 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 Azure Queue Storage の出力バインドを使用して、キューにメッセージを書き込みます。
 
-## <a name="output---example"></a>出力 - 例
-
-言語固有の例をご覧ください。
-
-* [C#](#output---c-example)
-* [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>出力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、受け取った HTTP 要求ごとにキュー メッセージを作成する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -393,7 +443,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの HTTP トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数では、受け取った HTTP 要求ごとに **CustomQueueMessage** ペイロードを使用してキュー項目を作成します。
 
@@ -411,7 +461,7 @@ public static class QueueFunctions
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -454,7 +504,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>出力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの HTTP トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、受け取った HTTP 要求ごとにキュー項目を作成します。
 
@@ -472,7 +522,7 @@ public static void Run(
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -504,25 +554,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>出力 - Java の例
-
- 次の例は、HTTP 要求によってトリガーされたときにキュー メッセージを作成する Java 関数を示しています。
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Queue Storage に書き込まれる関数のパラメーター上で `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
-
-### <a name="output---python-example"></a>出力 - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 次の例では、ストレージ キューに 1 つの値と複数の値を出力する方法を示します。 *function.json* で必要な構成は、どちらでも同じです。
 
@@ -585,7 +617,29 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>出力 - 属性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+ 次の例は、HTTP 要求によってトリガーされたときにキュー メッセージを作成する Java 関数を示しています。
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Queue Storage に書き込まれる関数のパラメーター上で `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。`T` は POJO の Java の任意のネイティブ型です。
+
+---
+
+## <a name="output---attributes-and-annotations"></a>出力 - 属性と注釈
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs) を使用します。
 
@@ -611,9 +665,54 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+完全な例については、「[出力 - C# の例](#output)」を参照してください。
 
 `StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、「トリガー - 属性」をご覧ください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`QueueOutput` 注釈を使用すると、関数の出力をメッセージに書き込むためのアクセスが許可されます。 次の例は、キュー メッセージを作成する HTTP トリガー関数を示しています。
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| プロパティ    | [説明] |
+|-------------|-----------------------------|
+|`name`       | 関数シグネチャのパラメーター名を宣言します。 関数がトリガーされると、このパラメーターの値にはキュー メッセージの内容が含められます。 |
+|`queueName`  | ストレージ アカウントのキュー名を宣言します。 |
+|`connection` | ストレージ アカウントの接続文字列を示します。 |
+
+`QueueOutput` 注釈に関連するパラメーターは、[OutputBinding\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) インスタンスとして型指定されます。
+
+---
 
 ## <a name="output---configuration"></a>出力 - 構成
 
@@ -631,7 +730,9 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# と C# スクリプトで単一のキュー メッセージを書き込むには、`out T paramName` などのメソッドのパラメーターを使用します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `out` パラメーターではなくメソッドの戻り値の型を使用することができます。`T` は次に示すいずれかの型の場合があります。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+`out T paramName` などのメソッドのパラメーターを使用して、単一のキュー メッセージを書き込みます。 `out` パラメーターではなくメソッドの戻り値の型を使用することができます。`T` は次に示すいずれかの型の場合があります。
 
 * JSON としてシリアル化可能なオブジェクト
 * `string`
@@ -645,8 +746,43 @@ C# と C# スクリプトで複数のキュー メッセージを書き込むに
 * `ICollector<T>` または `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力キュー メッセージにアクセスします。 キュー項目ペイロードには、文字列または JSON のシリアル化可能なオブジェクトを使用できます。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
+`out T paramName` などのメソッドのパラメーターを使用して、単一のキュー メッセージを書き込みます。 `paramName` は *function.json* の `name` プロパティで指定された値です。 `out` パラメーターではなくメソッドの戻り値の型を使用することができます。`T` は次に示すいずれかの型の場合があります。
+
+* JSON としてシリアル化可能なオブジェクト
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+`CloudQueueMessage` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+
+C# と C# スクリプトで複数のキュー メッセージを書き込むには、次のいずれかの型を使用します。 
+
+* `ICollector<T>` または `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+出力キュー項目は、`context.bindings.<NAME>` を介して使用できます。ここで、`<NAME>` は *function.json* で定義されている名前と一致します。 キュー項目ペイロードには、文字列または JSON のシリアル化可能なオブジェクトを使用できます。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
+
+- **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Queue storage メッセージとして永続化されます。
+
+- **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Queue storage メッセージとして永続化されます。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+[QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注釈を使用して関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
+
+- **戻り値**:関数自体に注釈を適用すると、関数の戻り値がイベントハブ メッセージとして永続化されます。
+
+- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 型の特定のパラメーターに注釈を適用します。 ここで、`T` は POJO または任意のネイティブ Java 型です。 この構成では、`setValue` メソッドに値を渡すと、その値がイベント ハブ メッセージとして保持されます。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 
@@ -679,7 +815,6 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
     }
 }
 ```
-
 
 |プロパティ  |Default | [説明] |
 |---------|---------|---------|
