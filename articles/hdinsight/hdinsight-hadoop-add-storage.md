@@ -1,22 +1,22 @@
 ---
-title: HDInsight に Azure ストレージ アカウントを追加する
-description: 既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。
+title: HDInsight に Azure Storage アカウントを追加する
+description: 既存の HDInsight クラスターに Azure Storage アカウントを追加する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/21/2020
+ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435583"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314005"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
-HDInsight に Azure ストレージ *アカウント*を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ *アカウント*を追加します。 この記事は、ストレージ *アカウント* (既定のクラスター ストレージ アカウントではなく) に適用されます。[Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) および [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) などの追加ストレージには適用されません。
+HDInsight に Azure Storage "*アカウント*" を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の HDInsight クラスターにストレージ "*アカウント*" を追加します。 この記事は、ストレージ *アカウント* (既定のクラスター ストレージ アカウントではなく) に適用されます。[Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) および [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) などの追加ストレージには適用されません。
 
 > [!IMPORTANT]  
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージ アカウントを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
@@ -24,21 +24,10 @@ HDInsight に Azure ストレージ *アカウント*を追加するためにス
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* ストレージ アカウントの名前とキー。 「[ストレージ アカウントのアクセス キーの管理](../storage/common/storage-account-keys-manage.md)」をご覧ください。
-* [大文字と小文字が正しく区別されたクラスター名](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)。
+* ストレージ アカウントの名前とキー。 「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * PowerShell を使用する場合は、AZ モジュールが必要です。  「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview)」を参照してください。
-* Azure CLI をインストールしていない場合は、「[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)」を参照してください。
-* Bash または Windows コマンド プロンプトを使用している場合、**jq** (コマンド ライン JSON プロセッサ) も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。 Windows 10 での Ubuntu の Bash については、「[Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)」(Windows 10 用 Windows Subsystem for Linux インストール ガイド) を参照してください。
 
 ## <a name="how-it-works"></a>しくみ
-
-このスクリプトは、次のパラメーターを受け取ります。
-
-* __Azure ストレージ アカウント名__:HDInsight クラスターに追加するストレージ カウントの名前。 スクリプトの実行後は、HDInsight は、このストレージ アカウントに格納されているデータの読み書きができます。
-
-* __Azure ストレージ アカウント キー__:ストレージ アカウントへのアクセスを許可するキー。
-
-* __-p__ (省略可能): 指定した場合、キーは暗号化されず、プレーンテキストとして core-site.xml ファイルに格納されます。
 
 このスクリプトは、処理中に次のアクションを実行します。
 
@@ -55,79 +44,37 @@ HDInsight に Azure ストレージ *アカウント*を追加するためにス
 > [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
-## <a name="the-script"></a>スクリプトは、以下のことを行います
+## <a name="add-storage-account"></a>ストレージ アカウントの追加
 
-__スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+[スクリプトアクション](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) を使用して、次の点を考慮して変更を適用します。
 
-__要件__: スクリプトを __ヘッド ノード__ に適用する必要があります。 このスクリプトは、クラスターの Ambari 構成を直接更新するため、__Persisted__ としてマークする必要はありません。
+|プロパティ | 値 |
+|---|---|
+|Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
+|ノードの種類|Head|
+|パラメーター|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (省略可)|
 
-## <a name="to-use-the-script"></a>スクリプトを使用するには
+* `ACCOUNTNAME` は HDInsight クラスターに追加するストレージ アカウントの名前です。
+* `ACCOUNTKEY` は `ACCOUNTNAME` のアクセス キーです。
+* `-p` はオプションです。 指定した場合、キーは暗号化されず、プレーンテキストとして core-site.xml ファイルに格納されます。
 
-このスクリプトは、Azure PowerShell、Azure CLI、Azure portal で使用できます。
+## <a name="verification"></a>検証
 
-### <a name="powershell"></a>PowerShell
+Azure portal で HDInsight クラスターを表示しているときに、 __[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。 ストレージ情報が表示されないのは、このスクリプトがクラスターの `core-site.xml` 構成のみを変更するためです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
-[Submit-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction) を使用します。 `CLUSTERNAME`、`ACCOUNTNAME`、および `ACCOUNTKEY` を適切な値に置き換えます。
+追加のストレージを確認するには、次に示す方法のいずれかを使用します。
 
-```powershell
-# Update these parameters
-$clusterName = "CLUSTERNAME"
-$parameters = "ACCOUNTNAME ACCOUNTKEY"
+### <a name="powershell"></a>Powershell
 
-$scriptActionName = "addStorage"
-$scriptActionUri = "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh"
-
-# Execute script
-Submit-AzHDInsightScriptAction `
-    -ClusterName $clusterName `
-    -Name $scriptActionName `
-    -Uri $scriptActionUri `
-    -NodeTypes "headnode" `
-    -Parameters $parameters
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-[az hdinsight script-action execute](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute) を使用します。  `CLUSTERNAME`、`RESOURCEGROUP`、 `ACCOUNTNAME`、および `ACCOUNTKEY` を適切な値に置き換えます。
-
-```cli
-az hdinsight script-action execute ^
-    --name CLUSTERNAME ^
-    --resource-group RESOURCEGROUP ^
-    --roles headnode ^
-    --script-action-name addStorage ^
-    --script-uri "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh" ^
-    --script-parameters "ACCOUNTNAME ACCOUNTKEY"
-```
-
-### <a name="azure-portal"></a>Azure portal
-
-「[実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
-
-## <a name="known-issues"></a>既知の問題
-
-### <a name="storage-firewall"></a>ストレージ ファイアウォール
-
-**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
-
-### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
-
-Azure portal で HDInsight クラスターを表示しているときに、 __[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
-
-ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
-
-このスクリプトを使用してクラスターに追加されたストレージ アカウント情報を表示するには、Ambari REST API を使用します。 ご使用のクラスターについてこの情報を取得するには、次のコマンドを使用します。
-
-### <a name="powershell"></a>PowerShell
-
-`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 `ACCOUNTNAME` を実際の名前に置き換えます。 入力を求められたら、クラスター ログイン パスワードを入力します。
+このスクリプトは、指定されたクラスターに関連付けられているストレージ アカウント名を返します。 `CLUSTERNAME` を実際のクラスター名に置き換えてから、このスクリプトを実行してください。
 
 ```powershell
 # Update values
 $clusterName = "CLUSTERNAME"
-$accountName = "ACCOUNTNAME"
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+
+$clusterName = $clusterName.ToLower();
 
 # getting service_config_version
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
@@ -139,50 +86,39 @@ $configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_co
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
+
+# extract account names
+$value = ($respObj.items.configurations | Where type -EQ "core-site").properties | Get-Member -membertype properties | Where Name -Like "fs.azure.account.key.*"
+foreach ($name in $value ) { $name.Name.Split(".")[4]}
 ```
 
-### <a name="bash"></a>Bash
+### <a name="apache-ambari"></a>Apache Ambari
 
-`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 `PASSWORD` をクラスター管理者パスワードに置き換えます。 `STORAGEACCOUNT` を実際のストレージ アカウント名に置き換えます。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-```bash
-export clusterName="CLUSTERNAME"
-export password='PASSWORD'
-export storageAccount="STORAGEACCOUNT"
+1. **[HDFS]** 、 **[構成]** 、 **[詳細]** 、 **[カスタム core-site]** の順に移動します。
 
-export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
+1. `fs.azure.account.key` で始まるキーを確認します。 このサンプル イメージに示すように、アカウント名はキーの一部になります。
 
-export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
+   ![Apache Ambari による検証](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
-curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
-| jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
-```
+## <a name="remove-storage-account"></a>ストレージ アカウントの削除
 
-### <a name="cmd"></a>cmd
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-両方のスクリプトで、`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 最初に以下のコマンドを入力して、使われているサービス構成バージョンを識別します。
+1. **[HDFS]** 、 **[構成]** 、 **[詳細]** 、 **[カスタム core-site]** の順に移動します。
 
-```cmd
-curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
-```
+1. 次のキーを削除します。
+    * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
+    * `fs.azure.account.keyprovider.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
 
-`ACCOUNTNAME` を実際のストレージ アカウント名に置き換えます。 次に、`4` を実際のサービス構成バージョンに置き換え、コマンドを入力します。
+これらのキーを削除して構成を保存したら、Oozie、Yarn、MapReduce2、HDFS、Hive を 1 つずつ再起動する必要があります。
 
-```cmd
-curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
-jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
-```
+## <a name="known-issues"></a>既知の問題
 
----
+### <a name="storage-firewall"></a>ストレージ ファイアウォール
 
-このコマンドから返される情報は、次のテキストに似たものとなります。
-
-    "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
-
-このテキストは、ストレージ アカウントへのアクセスに使用される暗号化キーの例です。
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>キーの変更後にストレージにアクセスできない
 
@@ -190,27 +126,12 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
 
 スクリプト アクションを再実行しても、キーは __更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
 
-この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
+この問題を回避するには、次のようにします。  
+1. ストレージ アカウントを削除します。
+1. ストレージ アカウントを追加します。
 
 > [!IMPORTANT]  
 > クラスターに接続されているプライマリ ストレージ アカウントのストレージ キーのローテーションはサポートされていません。
-
-1. Web ブラウザーで、HDInsight クラスターの Ambari Web UI を開きます。 URI は `https://CLUSTERNAME.azurehdinsight.net` です。 `CLUSTERNAME` をクラスターの名前に置き換えます。
-
-    プロンプトが表示されたら、クラスターの HTTP ログイン ユーザー名とパスワードを入力します。
-
-2. ページの左側のサービスの一覧で、 __[HDFS]__ を選択します。 ページの中央の __[Configs (構成)]__ タブを選択します。
-
-3. __[Filter... (フィルター...)]__ フィールドに __fs.azure.account__ の値を入力します。 これで、クラスターに追加されたすべてのストレージ アカウントのエントリが返されます。 エントリには、__keyprovider__ と __key__ という 2 つの種類があります。 両方に、キー名の一部としてストレージ アカウントの名前が含まれています。
-
-    以下に示すのは、__mystorage__ という名前のストレージ アカウントのエントリの例です。
-
-        fs.azure.account.keyprovider.mystorage.blob.core.windows.net
-        fs.azure.account.key.mystorage.blob.core.windows.net
-
-4. 削除する必要があるストレージ アカウントのキーを特定した後、エントリの右側にある赤い "-" アイコンを使用してエントリを削除します。 次に、 __[Save (保存)]__ ボタンを使用して、変更を保存します。
-
-5. 変更が保存された後、スクリプト アクションを使用してストレージ アカウントと新しいキー値をクラスターに追加します。
 
 ### <a name="poor-performance"></a>パフォーマンスが低い
 

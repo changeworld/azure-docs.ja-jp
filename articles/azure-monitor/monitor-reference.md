@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263423"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765717"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -42,7 +42,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |:---|:---|
 | [Agent Health](insights/solution-agenthealth.md) | Log Analytics エージェントの正常性と構成を分析します。 |
 | [アラートの管理](platform/alert-management-solution.md) | System Center Operations Manager、Nagios、または Zabbix から収集されたアラートを分析します。 |
-| [サービス マップ](insights/service-map.md) | Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 次でも同じ機能が提供されます:   |
+| [サービス マップ](insights/service-map.md) | Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 |
 
 
 
@@ -218,7 +218,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 ## <a name="resources-outside-of-azure"></a>Azure 外部のリソース
 Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリソースからデータを収集できます。
 
-| リソース | 方法 |
+| リソース | Method |
 |:---|:---|
 | [アプリケーション] | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」を参照してください。 |
 | 仮想マシン | Log Analytics エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md)」を参照してください。 |

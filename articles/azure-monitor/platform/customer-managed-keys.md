@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971087"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120266"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -378,8 +378,6 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
 
 - CMK の暗号化は、CMK の構成後に新しく取り込まれたデータに適用されます。 CMK の構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 データのクエリは構成の前後にシームレスに実行できます。
 
-- CMK 機能はリージョン別です。Azure Key Vault、*クラスター* リソース、および関連付けられたワークスペースは、同じリージョンに存在している必要があります。ただし、サブスクリプションは異なっていてもかまいません。
-
 - ワークスペースが*クラスター* リソースに関連付けられた後、データはキーで暗号化され、Azure Key Vault で KEK を使用しないとアクセスできないため、*クラスター* リソースから関連付けを解除することはできません。
 
 - Azure Key Vault は、回復可能として構成する必要があります。 これらのプロパティは既定では有効になっておらず、CLI と PowerShell を使用して構成する必要があります。
@@ -391,9 +389,9 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
 
 - *クラスター* リソースの別のリソース グループまたはサブスクリプションへの移動は、現時点ではサポートされていません。
 
-- *クラスター* リソースが別のテナントに存在する場合、*クラスター* リソースへのワークスペースの関連付けは失敗します。
+- Azure Key Vault、*クラスター* リソースおよび関連付けられたワークスペースは、同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
 
--   *クラスター* リソースへのワークスペースの関連付けは、別の*クラスター* リソースに関連付けられている場合は失敗します
+- *クラスター* リソースへのワークスペースの関連付けは、別の*クラスター* リソースに関連付けられている場合は失敗します
 
 ## <a name="troubleshooting-and-management"></a>トラブルシューティングと管理
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

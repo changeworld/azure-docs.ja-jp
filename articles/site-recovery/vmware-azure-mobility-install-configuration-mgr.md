@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613909"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842701"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
 
@@ -20,7 +20,7 @@ ms.locfileid: "75613909"
 
 - **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にする場合に、Site Recovery によってモビリティ サービス エージェントをインストールします。
 - **手動インストール**:各マシンにモビリティ サービスを手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
-- **自動デプロイ**:System Center Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
+- **自動デプロイ**:Microsoft Endpoint Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
 
 インストールと更新を自動化することで、以下の場合の解決策が得られます。
 

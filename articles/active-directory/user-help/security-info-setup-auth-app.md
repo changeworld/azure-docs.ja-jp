@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 223dc6c340beb1b584ffbf90adc12667ed2feb23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9a3efc6f6b1b7137e8e29e37edd968765712fef5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156184"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704971"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Microsoft Authenticator アプリを検証方法として設定する
 
@@ -34,7 +33,7 @@ ms.locfileid: "76156184"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |

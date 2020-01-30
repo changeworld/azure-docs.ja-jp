@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974515"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315033"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -103,17 +103,19 @@ Azure Firewall では、次のメトリックを利用できます。
 
     単位: バイト
 
-- **[Firewall health state]\(ファイアウォールの正常性状態\)** - ファイアウォールの正常性を示します。
+- **[Firewall health state]\(ファイアウォール正常性状態\)** - SNAT ポートの可用性に基づいて、ファイアウォールの正常性を示します。
 
     単位: パーセント
 
    このメトリックには次の 2 つのディメンションがあります。
-  - **状態**: 値は *[Healthy]* \(正常\)、 *[Degraded]* \(低下\)、 *[Unhealthy]* \(異常\) のいずれかになります。
-  - **[Reason]\(理由\)** :ファイアウォールの対応する状態の理由を示します。 たとえば、ファイアウォールの状態が "低下" または "異常" の場合、*SNAT ポート*を示すことがあります。
+  - 状態:値は *[Healthy]* \(正常\)、 *[Degraded]* \(低下\)、 *[Unhealthy]* \(異常\) のいずれかになります。
+  - 理由:ファイアウォールの対応する状態の理由を示します。 
 
+     SNAT ポートの使用率が 95% を超える場合、使い果たされたと見なされ、正常性は 50% で、状態 = **低下**および理由 = **SNAT ポート**になります。 ファイアウォールはトラフィックの処理を継続し、既存の接続に影響はありません。 ただし、新しい接続は断続的に確立されない可能性があります。
 
+     SNAT ポートの使用率が 95% 未満の場合、ファイアウォールは正常と見なされ、正常性は 100% として表示されます。
 
-
+     SNAT ポートの使用が報告されない場合、正常性は 0% として表示されます。 
 
 - **[SNAT port utilization]\(SNAT ポート使用率\)** - ファイアウォールによって使用されている SNAT ポートの割合。
 

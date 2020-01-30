@@ -3,13 +3,13 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: ebfa1139ba0649280634bc0fd18627ba74f0c3cc
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/28/2020
+ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294118"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845953"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 

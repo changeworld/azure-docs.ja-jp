@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有をバックアップ�
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294873"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844043"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLI を使用して Azure ファイル共有をバックアップする
 
@@ -104,7 +104,7 @@ Name                                  ResourceGroup
 
 オンデマンド バックアップをトリガーするには、次のパラメーターを定義する必要があります。
 
-* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list) コマンドを使用します。
+* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) コマンドを使用します。
 * **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) コマンドを使用します。
 * **--retain-until** は、回復ポイントを保持する日付を指定します。 値は UTC 時刻形式 (dd-mm-yyyy) で設定する必要があります。
 

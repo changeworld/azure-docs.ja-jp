@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547304"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773292"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -204,13 +204,13 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この[クイック スタート](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
+Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この[クイック スタート](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
 
 > [!NOTE]
 > **Basic SKU** を使用して Azure Load Balancer を構成するには、可用性セットに属する Azure 仮想マシンが必要です。 可用性セットの詳細については、、「[Azure での Windows 仮想マシンの可用性の管理](../../virtual-machines/windows/manage-availability.md)」を参照してください。 既存の仮想マシンを可用性セットに追加するには、「[Set Azure Resource Manager VM Availability Set (Azure Resource Manager VM の可用性セットを設定する)](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)」を参照してください。
 > 
 
-ロード バランサーが作成されたら、バックエンド プールを作成する必要があります。これにより、トラフィックが 1 つ以上のゲートウェイ サーバーに分散されます。 クイック スタートの記事の「[ロード バランサーのリソースを作成する](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer)」の手順を実行してください。  
+ロード バランサーが作成されたら、バックエンド プールを作成する必要があります。これにより、トラフィックが 1 つ以上のゲートウェイ サーバーに分散されます。 クイック スタートの記事の「[ロード バランサーのリソースを作成する](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)」の手順を実行してください。  
 
 >[!NOTE]
 >正常性プローブを構成する場合は、ゲートウェイ サーバーの TCP ポートを使用するように構成する必要があります。 正常性プローブは、ロード バランサーのローテーションに含めるゲートウェイ サーバーを、正常性チェックへの応答に基づいて動的に追加したり削除したりする働きをします。 
@@ -331,7 +331,7 @@ Update Management ソリューションが 1 つまたは複数の VM で有効�
 | **コマンドレット** | **パラメーター** | **説明** | **例** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |Key |サービスの構成を取得します |`Get-OMSGatewayConfig` |  
-| `Set-OMSGatewayConfig` |キー (必須) <br> 値 |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
+| `Set-OMSGatewayConfig` |キー (必須) <br> Value |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |リレー (アップストリーム) プロキシのアドレスを取得します |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> Password |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |現在許可されているホストを取得します (ローカルに構成されている許可ホストだけであり、自動的にダウンロードされた許可ホストは含みません) |`Get-OMSGatewayAllowedHost` | 

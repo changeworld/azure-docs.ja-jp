@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: da08775ed6c694b95ecec452507f94638091db0c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/22/2020
+ms.openlocfilehash: 3fe404b8b501056f75ac45ccebc5bdbed1acbe43
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261060"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705481"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -160,6 +160,7 @@ ms.locfileid: "76261060"
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Token](#microsofttoken)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
@@ -1521,6 +1522,18 @@ ms.locfileid: "76261060"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | stores | はい | はい |
+
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | account | いいえ | いいえ |
+> | account / extension | いいえ | いいえ |
+> | account/project | いいえ | いいえ |
+
+> [!IMPORTANT]
+> Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
