@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462458"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281004"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -239,7 +239,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 このページから[調査](https://docs.microsoft.com/azure/security-center/security-center-investigation)を開始すると、攻撃のタイムライン、攻撃がどのように行われたか、どのシステムが侵害された可能性があるか、どの資格情報が使用されたかについて理解を深めると共に、全体的な攻撃の連鎖をグラフィカルに示すこともできます。
 
-侵害されたシステムを特定したら、以前に作成したセキュリティ [プレイブック](https://docs.microsoft.com/azure/security-center/security-center-playbooks)を実行できます。 セキュリティ プレイブックとは、選択したアラートから特定のプレイブックがトリガーされると Security Center から実行できるプロシージャの集合です。
+侵害されたシステムを特定したら、以前に作成した[ワークフローの自動化](workflow-automation.md)を実行できます。 これらは、アラートによってトリガーされた場合に Security Center から実行できるプロシージャのコレクションです。
 
 ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」 (Azure Security Center と Microsoft Operations Management Suite をインシデント対応に活用する方法) では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
 

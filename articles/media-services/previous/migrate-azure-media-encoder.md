@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 7bbebe71f6a3278d70767ac9f9dbb9d55e6d481a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453375"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513503"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Azure Media Encoder から Media Encoder Standard に移行する
 
-この記事では、2020 年 3 月 31 日に廃止される従来の Azure Media Encoder (AME) メディア プロセッサから Media Encoder Standard メディア プロセッサに移行する手順について説明します。  
+この記事では、(廃止される) 従来の Azure Media Encoder (AME) メディア プロセッサから Media Encoder Standard メディア プロセッサに移行する手順について説明します。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 AME でファイルをエンコードする場合、通常は `H264 Adaptive Bitrate MP4 Set 1080p` などの名前付きプリセット文字列が使用されます。 移行するには、AME の代わりに **Media Encoder Standard** メディア プロセッサを使用し、いずれかの同等の[システム プリセット](media-services-mes-presets-overview.md) (`H264 Multiple Bitrate 1080p` など) を使用するようにコードを更新する必要があります。 
 

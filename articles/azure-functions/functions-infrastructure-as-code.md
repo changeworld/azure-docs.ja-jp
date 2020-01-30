@@ -4,12 +4,13 @@ description: 関数アプリをデプロイする Azure Resource Manager テン�
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978803"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292945"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -128,6 +129,7 @@ Application Insights は、関数アプリを監視するために推奨され�
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -137,9 +139,9 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 | 設定名                 | [説明]                                                                               | 値の例                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Functions ランタイムの内部キューイングのためのストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
+| AzureWebJobsStorage          | Functions ランタイムが内部キューイングのために使用するストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions ランタイムのバージョン                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、または `python` |
+| FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、`python`、または `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | `node` 言語スタックを使用している場合にのみ必要、使用するバージョンを指定します              | `10.14.1`                             |
 
 これらのプロパティは、`siteConfig` プロパティ内の `appSettings` コレクションで指定されます。
@@ -173,7 +175,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 ## <a name="deploy-on-consumption-plan"></a>従量課金プランでデプロイする
 
-従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールダウンします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md#consumption-plan)」を参照してください。
+従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md#consumption-plan)」を参照してください。
 
 Azure Resource Manager テンプレートのサンプルについては、[従量課金プランの関数アプリ]に関するページをご覧ください。
 

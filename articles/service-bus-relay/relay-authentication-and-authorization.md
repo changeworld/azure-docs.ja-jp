@@ -1,6 +1,6 @@
 ---
 title: Azure Relay の認証と承認 | Microsoft Docs
-description: Azure Relay の Shared Access Signature (SAS) 認証の概要
+description: この記事では、Azure Relay サービスでの Shared Access Signature (SAS) 認証の概要について説明します。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595520"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514580"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay の認証と承認
 
@@ -46,7 +46,7 @@ SAS を使用するには、Relay 名前空間で、次の要素で構成され�
 
 Azure Relay の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SAS の詳細については、「[Shared Access Signature による Service Bus の認証](../service-bus-messaging/service-bus-sas.md)」を引き続きお読みください。
 - ハイブリッド接続機能の詳細については、[Azure Relay ハイブリッド接続プロトコル ガイド](relay-hybrid-connections-protocol.md)を参照してください。

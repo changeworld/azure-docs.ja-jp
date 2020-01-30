@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 156b963fc1644d1f863d8ddd1d86c15b311e18a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763387"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311072"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで回帰を使用して自動車の価格を予測する
 
-**デザイナー (プレビュー) サンプル 1**
+**デザイナー サンプル 1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習の回帰モデルを構築する方法について説明します。
+コードを 1 行も書くことなく、デザイナーを使用して、機械学習の回帰モデルを構築する方法について説明します。
 
 このパイプラインでは、製造元、モデル、馬力、サイズなどの技術的な特徴に基づいて自動車の価格を予測する**線形リグレッサー**をトレーニングします。 なぜなら、「いくらにするか」という質問に答えようとしているからです。 これは回帰問題と呼ばれます。 ただし、この例の同じ基本的な手順を適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
 

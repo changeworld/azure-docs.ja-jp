@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422286"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547933"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 
 AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は、Microsoft によって行われます。
 
-既定では、Kubernetes API サーバーは、パブリック IP アドレスを完全修飾ドメイン名 (FQDN) と一緒に使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
+既定では、Kubernetes API サーバーは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) を使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
 
 ## <a name="node-security"></a>ノードのセキュリティ
 

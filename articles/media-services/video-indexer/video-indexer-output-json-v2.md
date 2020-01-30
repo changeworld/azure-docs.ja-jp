@@ -1,5 +1,5 @@
 ---
-title: v2 API によって生成される Azure Media Services Video Indexer の出力を調べる
+title: v2 API によって生成される Video Indexer の出力を調べる - Azure
 titleSuffix: Azure Media Services
 description: このトピックでは、v2 API によって生成される Azure Media Services Video Indexer の出力を調べます。
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454632"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514393"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 

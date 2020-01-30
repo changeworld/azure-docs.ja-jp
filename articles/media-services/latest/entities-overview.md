@@ -1,5 +1,5 @@
 ---
-title: Media Services エンティティのフィルター処理、順序付け、およびページング
+title: Media Services v3 エンティティのフィルター処理、順序付け、およびページング
 titleSuffix: Azure Media Services
 description: Azure Media Services エンティティのフィルター処理、順序付け、およびページングについて説明します。
 services: media-services
@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186243"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311701"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
 
@@ -45,7 +45,7 @@ ms.locfileid: "74186243"
 - `ge`:フィールドが定数値*以上である*かどうかをテストします。
 - `le`:フィールドが定数値 "*以下である*" かどうかをテストします。
 
-## <a name="filter"></a>filter
+## <a name="filter"></a>Assert
 
 `$filter` を使用して OData フィルター パラメーターを指定し、関心のあるオブジェクトのみを検索します。
 
@@ -64,7 +64,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Order by (並べ替え)
 
-`$orderby` を使用して、指定したパラメーターによって返されたオブジェクトを並べ替えます。 例:  
+`$orderby` を使用して、指定したパラメーターによって返されたオブジェクトを並べ替えます。 次に例を示します。  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -156,31 +156,31 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 次の表は、フィルター処理および順序付けオプションをさまざまなエンティティに適用できる方法を示しています。
 
-|エンティティ名|プロパティ名|filter|順序|
+|エンティティ名|プロパティ名|Assert|Order|
 |---|---|---|---|
-|[アセット](https://docs.microsoft.com/rest/api/media/assets/)|名前|`eq`、`gt`、`lt`、`ge`、`le`|`asc` と `desc`|
+|[アセット](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` および `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`、`gt`、`lt`| `asc` と `desc`|
-|[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|名前|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
+||properties.created| `eq`、`gt`、`lt`| `asc` および `desc`|
+|[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
-||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-||properties.policyId|`eq`、`ne`||
-|[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)| 名前  | `eq`            | `asc` と `desc`|
-||properties.state        | `eq`、`ne`        |                         |
-||properties.created      | `gt`、`ge`、`lt`, `le`| `asc` と `desc`|
-||properties.lastModified | `gt`、`ge`、`lt`, `le` | `asc` と `desc`| 
-|[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)|名前|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-|[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)|名前|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` と `desc`|
-|[変換](https://docs.microsoft.com/rest/api/media/transforms)| 名前 | `eq`            | `asc` と `desc`|
-|| properties.created      | `gt`、`ge`、`lt`, `le`| `asc` と `desc`|
-|| properties.lastModified | `gt`、`ge`、`lt`, `le`| `asc` と `desc`|
+||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.policyId|`eq`, `ne`||
+|[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` および `desc`|
+||properties.state        | `eq`, `ne`        |                         |
+||properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
+||properties.lastModified | `gt`、`ge`、`lt`, `le` | `asc` および `desc`| 
+|[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+|[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+|[変換](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` および `desc`|
+|| properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
+|| properties.lastModified | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アセットを一覧表示する](https://docs.microsoft.com/rest/api/media/assets/list)
 * [コンテンツ キー ポリシーを一覧表示する](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)

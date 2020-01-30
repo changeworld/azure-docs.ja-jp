@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5be8668f9a2761bf1aa9809749fa44f21d622dde
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045802"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277986"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -415,7 +415,7 @@ feauturization =auto の場合に実行される前処理および[自動化さ�
 |カスタマイズ|定義|
 |--|--|
 |列の目的の更新|指定した列の特徴の種類をオーバーライドします。|
-|トランスフォーマー パラメーターの更新 |指定したトランスフォーマーのパラメーターを更新します。 現在、Imputer および HashOneHotEncoder がサポートされています。|
+|トランスフォーマー パラメーターの更新 |指定したトランスフォーマーのパラメーターを更新します。 現在、Imputer (平均値、最頻値、中央値) と HashOneHotEncoder がサポートされています。|
 |列の削除 |特徴付けされない列です。|
 |ブロック トランスフォーマー| 特徴付けプロセスで使用されるトランスフォーマーをブロックします。|
 

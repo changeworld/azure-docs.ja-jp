@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429302"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546947"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -347,7 +347,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>サポートされている X.509 証明書
 
-証明書拇印や証明書機関 (CA) を Azure IoT Hub にアップロードすることで、IoT Hub のデバイスを X.509 証明書で認証できます。 証明書拇印のみを利用する認証の場合、提示された拇印が設定されている拇印に一致することが確認されます。 証明書機関を使用して認証する場合、証明書チェーンが検証されます。 
+証明書拇印や証明書機関 (CA) を Azure IoT Hub にアップロードすることで、IoT Hub のデバイスを X.509 証明書で認証できます。 証明書拇印を利用する認証の場合、提示された拇印が、構成されている拇印と一致することが確認されます。 証明書機関を使用して認証する場合、証明書チェーンが検証されます。 いずれの場合も、TLS ハンドシェイクでは、デバイスに有効な証明書と秘密キーが必要です。 詳細については、TLS 仕様を参照してください。次に例を示します。[RFC 5246 - トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 次の証明書に対応しています。
 
@@ -461,6 +461,8 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub のクエリ言語](iot-hub-devguide-query-language.md): IoT Hub からデバイス ツインとジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
+
+* [RFC 5246 - トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2](https://tools.ietf.org/html/rfc5246/) では、TLS 認証についてさらに詳細な情報が提供されます。
 
 ## <a name="next-steps"></a>次のステップ
 

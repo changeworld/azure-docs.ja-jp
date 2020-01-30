@@ -1,25 +1,19 @@
 ---
-title: Azure での仮想マシン スケール セットのメンテナンス通知 | Microsoft Docs
+title: Azure での仮想マシン スケール セットのメンテナンス通知
 description: Azure 内の仮想マシン スケール セットに関するメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shants123
-editor: ''
 tags: azure-service-management,azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 07580c8b8ea00039b48bd1f8765735ec5a5082ee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8d8c32c2a2f3e31c1b7f4645fe61abf2d5d0e014
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746651"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275777"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -77,7 +71,7 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 
 計画メンテナンス ウェーブをスケジュールする際、Azure portal を使って今後のメンテナンス ウェーブの影響を受ける仮想マシン スケール セットの一覧を表示できます。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、 **[すべてのサービス]** を選択し、 **[仮想マシン スケール セット]** を選択します。
 3. **[仮想マシン スケール セット]** で **[列の編集]** を選択して、使用可能な列の一覧を開きます。
 4. **[利用可能な列]** セクションで **[セルフサービス メンテナンス]** を選択し、 **[選択された列]** リストに移動します。 **[適用]** を選択します。  
@@ -96,7 +90,7 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 
 Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳しくは、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/platform/platform-logs-overview.md)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[モニター]** を選択します。 
 3. **[Monitor - Alerts (classic)] (監視 - アラート (クラシック))** ウィンドウで、 **[+ アクティビティ ログ アラートの追加]** を選択します。
 4. **[アクティビティ ログ アラートの追加]** ページで、必要な情報を選択または入力します。 **[条件]** では、次の値を設定します。

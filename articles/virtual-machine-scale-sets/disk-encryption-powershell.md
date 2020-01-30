@@ -1,20 +1,19 @@
 ---
-title: Azure PowerShell を使用した Azure スケール セットのディスクの暗号化 | Microsoft Docs
+title: Azure PowerShell による Azure スケール セットのディスクの暗号化
 description: Azure PowerShell を使用して、Windows 仮想マシン スケール セット内の VM インスタンスと接続ディスクを暗号化する方法について説明します。
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c228dd3f2e408c97e684a2cc1490903ac7a2eb0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529963"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278997"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -84,7 +83,7 @@ $diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vau
 $keyVaultResourceId=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
 
 Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
-    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "All"
 ```
 
 プロンプトが表示されたら、「*y*」と入力して、スケール セット VM インスタンス上のディスク暗号化プロセスを続行します。
@@ -100,7 +99,7 @@ $keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $vaultName -Name $keyEncryp
 
 Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId `
-    -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
+    -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType "All"
 ```
 
 > [!NOTE]
@@ -147,7 +146,7 @@ EncryptionExtensionInstalled : True
 Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - この記事では、Azure PowerShell を使用して仮想マシン スケール セットを暗号化しました。 また、[Azure CLI](disk-encryption-cli.md) や [Azure Resource Manager テンプレート](disk-encryption-azure-resource-manager.md)を使用することもできます。
 - 別の拡張機能がプロビジョニングされた後で Azure Disk Encryption を適用する場合、[extension sequencing](virtual-machine-scale-sets-extension-sequencing.md)を使用できます。

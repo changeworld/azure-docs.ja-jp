@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982089"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293387"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -54,7 +54,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>トークンに適切なリソースが関連付けられていない。 
 
-Azure OAUTH エンドポイントからアクセス トークンを要求するときは、"resource" というパラメーターが必須です。 この値を使うと、用途に合わせてトークンのスコープを決定できるため、トークン プロバイダーにとって重要です。 キー コンテナーにアクセスするための **all* トークンのリソースは <https:\//vault.keyvault.net> (末尾のスラッシュなし) です。
+Azure OAUTH エンドポイントからアクセス トークンを要求するときは、"resource" というパラメーターが必須です。 この値を使うと、用途に合わせてトークンのスコープを決定できるため、トークン プロバイダーにとって重要です。 Key Vault にアクセスする**すべての**トークンのリソースは、*https:\//vault.keyvault.net* (末尾のスラッシュなし) です。
 
 ### <a name="the-token-is-expired"></a>トークンの有効期限が切れている
 

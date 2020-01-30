@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs .NET Framework API の概要 | Microsoft Docs
-description: 主要な Event Hubs .NET Framework クライアント API のまとめ。
+description: この記事では、主要な Event Hubs .NET Framework クライアント API (管理およびランタイム) の概要について説明します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f56882d2d73c85434c6f81972a06e5ea9ccdff99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822041"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312619"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "60822041"
 
 次の管理操作を実行するには、Event Hubs 名前空間の **管理** 権限が必要になります。
 
-### <a name="create"></a>Create
+### <a name="create"></a>作成
 
 ```csharp
 // Create the event hub
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>アップデート
+### <a name="update"></a>更新
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
@@ -174,7 +174,7 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 

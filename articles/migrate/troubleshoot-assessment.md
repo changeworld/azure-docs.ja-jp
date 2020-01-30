@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722132"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289477"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -92,6 +92,7 @@ Azure Migrate アプライアンスで関連するオンプレミス VM のパ�
 - これは、評価期間中に VM がオフにされた場合に発生する可能性があります。 アプライアンスでは、オフになっていた VM のパフォーマンス データを収集することはできません。
 - メモリ カウンターのみが取得されず、Hyper-V VM を評価しようとしている場合は、これらの VM で動的メモリが有効になっているかどうかを確認してください。 Hyper-V VM のみの既知の問題のため、動的メモリが有効になっていない VM のメモリ使用率データは、Azure Migrate アプライアンスで収集できません。
 - いずれかのパフォーマンス カウンターが不足している場合、Azure Migrate Server Assessment は割り当てられたコアとメモリにフォールバックし、対応する VM サイズが推奨されます。
+- すべてのパフォーマンス カウンターが不足している場合は、評価のためのポート アクセス要件が満たされていることを確認します。 [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)、[Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)、および[物理](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access)サーバーの評価のためのポート アクセス要件の詳細を参照してください。
 
 ## <a name="is-the-operating-system-license-included"></a>オペレーティング システムのライセンスが含まれているか
 
@@ -151,7 +152,7 @@ Azure Migrate Server Assessment では、最大 10 個の VM を含む[グルー
 
 次のようにネットワーク トラフィック ログを収集します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. F12 キーを押して開発者ツールを起動します。 必要な場合は、 **[ナビゲーション時にエントリをクリア]** の設定をオフにします。
 3. **[ネットワーク]** タブを選択し、ネットワーク トラフィックのキャプチャを開始します。
    - Chrome では、 **[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 赤い円が表示されない場合は、黒い円を選択して開始します。

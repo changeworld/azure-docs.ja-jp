@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8600 デバイスの取り付け | Microsoft Docs
+title: Microsoft Azure StorSimple 8600 デバイスの取り付け
 description: ソフトウェアのデプロイと構成の前に、StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブルの接続をする方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965262"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277127"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
 
@@ -34,7 +27,7 @@ ms.locfileid: "68965262"
 ### <a name="prepare-to-unpack-your-device"></a>デバイスの開梱準備
 デバイスを開梱する前に、次の情報を確認します。
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告**
+![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
 
 1. 手作業で開梱を行う場合は、デバイスの重量に対応できる作業員を必ず 2 人確保してください。 完全に構成されたエンクロージャの重量は最大で 32 kg (70 lbs) になります。
 2. 平坦で水平な場所に箱を置きます。
@@ -49,12 +42,12 @@ ms.locfileid: "68965262"
    
     **ストレージ デバイスを開梱したようす**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |梱包箱 |
    |   2 |SAS ケーブル (アクセサリおよびケーブル トレイ内) |
    |   3 |下部梱包材 |
-   |   4 |デバイス |
+   |   4 |Device |
    |   5 |上部梱包材 |
    |   6 |アクセサリ ボックス |
 3. 2 個の箱の開梱後、次の内容物を確認してください。
@@ -92,7 +85,7 @@ ms.locfileid: "68965262"
 2. セットアップする場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があることを確認します。
 3. エンクロージャを取り付けるラックで 1 つの 4U (2 X 2U) スロットを使用できることを確認します。
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告**
+![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
 
  手作業でデバイスのセットアップを行う場合は、その重量に対応できる作業員を必ず 2 人確保してください。 完全に構成されたエンクロージャの重量は最大で 32 kg (70 lbs) になります。
 
@@ -113,7 +106,7 @@ ms.locfileid: "68965262"
    
     **エンクロージャの両側へのレール スライドの取り付け**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |  1 |M 3x4 丸ねじ |
    |  2 |シャーシ スライド |
@@ -126,7 +119,7 @@ ms.locfileid: "68965262"
    
     **ラックへのレール アセンブリの取り付け**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |締め付けねじ |
    |   2 |角穴フロント ラック ポストねじ |
@@ -152,7 +145,7 @@ ms.locfileid: "68965262"
    
     **フランジ キャップの取り付け**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |エンクロージャ固定ねじ |
 
@@ -185,7 +178,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 * [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### <a name="sas-and-power-cabling"></a>SAS ケーブル接続と電源ケーブル接続
-このデバイスには、主エンクロージャと EBOD エンクロージャの両方があります。 そのため、それらのユニットを SAS (Serial Attached SCSI) ケーブルと電源ケーブルに同時に接続する必要があります。
+このデバイスには、主エンクロージャと EBOD エンクロージャの両方があります。 そのため、それらのユニットを SAS (Serial Attached SCSI) ケーブルで接続し、電源にも接続する必要があります。
 
 このデバイスのセットアップを初めて行うときは、最初に SAS ケーブル接続の手順を済ませ、その後電源ケーブル接続の手順を実行します。
 
@@ -205,7 +198,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
    
     **データ ポートが示されているデバイスの背面**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   0、1、4、5 |1 GbE ネットワーク インターフェイス |
    |   2、3 |10 GbE ネットワーク インターフェイス |
@@ -216,7 +209,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 **デバイスのネットワーク ケーブル配線**
 
-| Label | 説明 |
+| Label | [説明] |
 | --- | --- |
 | A |インターネット アクセスのある LAN |
 | B |コントローラー 0 |
@@ -269,6 +262,6 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 デバイスに電源、ネットワーク アクセス、およびシリアル接続用のケーブルを接続する作業が完了しました。次のステップでは、デバイスでソフトウェアを構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで [オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-8000-deployment-walkthrough-u2.md)準備ができました。
 

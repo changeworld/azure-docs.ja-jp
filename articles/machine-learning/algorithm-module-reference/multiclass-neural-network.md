@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a1b14a4f004e9b6fe64d9095eeb63ebf78750387
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466033"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546539"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
@@ -44,7 +44,7 @@ ms.locfileid: "73466033"
 
 2. **Create trainer mode (トレーナー モードの作成)** : このオプションを使用して、モデルのトレーニング方法を指定します。
 
-    - **Single Parameter (単一パラメーター)** : モデルの構成方法が既にわかっている場合は、このオプションを選択します。
+    - **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。
 
     
 
@@ -56,7 +56,7 @@ ms.locfileid: "73466033"
         - 出力層は非表示の層に完全結合されます。
         - 非表示の層は入力層に完全結合されます。
         - 入力層内のノードの数については、トレーニング データ内のフィーチャーの数によって決まります。
-        - 非表示の層内のノード数はユーザーが設定できます。 既定値は 100 です。
+        - 非表示の層内のノード数はユーザーが設定できます。 既定値は、100 です。
         - 出力層内のノードの数は、クラスの数によって異なります。
   
    
@@ -82,15 +82,12 @@ ms.locfileid: "73466033"
     - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[[Train Model]\(モデルのトレーニング\)](train-model.md) を使用します。  
   
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
-トレーニングの完了後、次の作業を行います。
+トレーニングの完了後:
 
-- モデルのパラメーターとトレーニングから学習された特徴の重みなど、ニューラル ネットワークの各種パラメーターの概要を確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。  
+- トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
-- トレーニング済みのモデルのスナップショットを保存するには、 **[トレーニング済みのモデル]** 出力を右クリックし、 **[トレーニング済みのモデルとして保存]** を選択します。 同じパイプラインを連続で実行しても、このモデルは更新されません。
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

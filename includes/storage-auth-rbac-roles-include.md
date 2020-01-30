@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/25/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71078261"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279467"
 ---
 Azure では、BLOB とキューのデータへの Azure AD と OAuth を使ったアクセスを承認するために、次の組み込み RBAC ロールが提供されています。
 
@@ -29,3 +29,5 @@ Azure では、BLOB とキューのデータへの Azure AD と OAuth を使っ�
 > RBAC ロールの割り当ての反映には最大で 5 分かかる可能性があります。
 >
 > データ アクセスに対して明示的に定義されたロールによってのみ、セキュリティ プリンシパルによる BLOB データまたはキュー データへのアクセスが許可されます。 **所有者**、**共同作成者**、**ストレージ アカウント共同作成者**などのロールでは、セキュリティ プリンシパルによるストレージ アカウントの管理は許可されますが、そのアカウント内の BLOB データまたはキュー データへのアクセスは提供されません。
+>
+> Azure portal での BLOB または キュー データへのアクセスは、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 詳細については、「[Azure portal を使用した BLOB またはキュー データへのアクセス](../articles/storage/common/storage-access-blobs-queues-portal.md)」を参照してください。

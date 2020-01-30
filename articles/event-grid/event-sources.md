@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のイベント ソース
-description: Azure Event Grid でサポートされるイベント ソースについて説明します
+description: この記事では、Azure Event Grid でサポートされるイベント ソースについて説明します。 イベント ソースは、イベントの発生場所です。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512948"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 

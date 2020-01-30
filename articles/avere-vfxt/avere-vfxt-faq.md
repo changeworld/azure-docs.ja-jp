@@ -4,14 +4,14 @@ description: Avere vFXT for Azure に関してよく寄せられる質問です
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/06/2019
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415355"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153464"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -25,11 +25,11 @@ Avere vFXT for Azure は、重要なワークロードの効率的な処理の�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT はストレージ ソリューションですか?
 
-いいえ。 Avere vFXT は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
+いいえ。 Avere vFXT for Azure は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT は階層化ソリューションですか?
 
-Avere vFXT によって、ホット層とクール層の間でデータが自動的に階層化されることはありません。  
+Avere vFXT for Azure によって、ホット層とクール層の間でデータが自動的に階層化されることはありません。  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>環境が Avere vFXT に適しているかどうかを確認するにはどうすればよいですか?
 
@@ -47,9 +47,9 @@ Avere vFXT によって、ホット層とクール層の間でデータが自動
 
 * HPC アプリケーションが、NFSv3 クライアントに基づいている。 (場合によっては、SMB 2.1 クライアントを使用できますが、パフォーマンスが制限されます。)
 
-次の図は、この質問に対する回答を簡略化したものです。 ワークフローが右上に近いほど、Avere のキャッシュ ソリューションが環境に適している可能性が高くなります。
+次の図により、この質問に対する回答を得られます。 ワークフローが右上に近いほど、Avere vFXT for Azure のキャッシュ ソリューションが環境に適している可能性が高くなります。
 
-![何千ものクライアントがいる読み取り負荷の高い環境ほど Avere vFXT に適していることを示す図](media/avere-vfxt-fit-assessment.png)
+![何千ものクライアントがいる読み取り負荷の高い環境ほど Avere vFXT に適していることを示すグラフの図](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Avere vFXT ソリューションが最も適しているのはどのようなスケールのクライアントですか?
 
@@ -59,7 +59,7 @@ Avere vFXT の一般的なお客様は、約 1,000 個以上の CPU コアで要
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Avere vFXT 環境はどれくらいの量のデータを格納できますか?
 
-Avere vFXT はキャッシュです。 厳密に言えばデータを格納することはありません。 RAM と SSD の組み合わせを使用して、キャッシュされたデータを格納します。 データが永続的に格納されるのはバックエンド ストレージ システム (たとえば、NetApp NAS システムや BLOB コンテナー) です。 その背後に保存されているデータの量に関する情報は、Avere vFXT システムに保持されません。 Avere vFXT は、クライアントが要求するデータのサブセットのみをキャッシュします。  
+Avere vFXT for Azure はキャッシュです。 厳密に言えばデータを格納することはありません。 RAM と SSD の組み合わせを使用して、キャッシュされたデータを格納します。 データが永続的に格納されるのはバックエンド ストレージ システム (たとえば、NetApp NAS システムや BLOB コンテナー) です。 その背後に保存されているデータの量に関する情報は、Avere vFXT システムに保持されません。 Avere vFXT は、クライアントが要求するデータのサブセットのみをキャッシュします。  
 
 ### <a name="what-regions-are-supported"></a>どのリージョンがサポートされていますか?
 
@@ -67,7 +67,7 @@ Avere vFXT for Azure は、ソブリン リージョン (中国、ドイツ) を
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Avere vFXT のヘルプを利用するにはどうすればよいですか?
 
-専門のサポート グループが、Avere vFXT for Azure に関するヘルプを提供しています。 [お使いのシステムでヘルプを利用する](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)手順に従って、Azure portal からサポート チケットを開いてください。
+専門のサポート スタッフのグループが、Avere vFXT for Azure に関するヘルプを提供しています。 [お使いのシステムでヘルプを利用する](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)手順に従って、Azure portal からサポート チケットを開いてください。
 
 ### <a name="is-avere-vfxt-highly-available"></a>Avere vFXT は高可用性ですか?
 
@@ -78,7 +78,7 @@ Avere vFXT for Azure は、ソブリン リージョン (中国、ドイツ) を
 はい、お客様は Avere vFXT クラスターで複数のクラウド プロバイダーを使用できます。 AWS S3 標準バケットと Google Cloud Services 標準バケットおよび Azure BLOB コンテナーがサポートされています。
 
 > [!NOTE]
-> AWS または Google Cloud での Avere vFXT の使用にはソフトウェア料金がかかりますが、Azure ではかかりません。
+> AWS または Google Cloud ストレージでの Avere vFXT の使用にはソフトウェア料金がかかります。 Azure Blob Storage を使用する場合は、追加のソフトウェア料金は発生しません。
 
 ## <a name="technical-compute"></a>技術: Compute
 
@@ -165,10 +165,10 @@ SSD のデタッチと再アタッチはサポートされていません。 そ
 
 ### <a name="what-network-is-recommended"></a>どのようなネットワークが推奨されますか?
 
-Avere vFXT でオンプレミスのストレージを使用する場合は、1 Gbps 以上のネットワーク接続が必要です。 データの量が少なく、ジョブを実行する前にクラウドにデータをコピーしたい場合は、VPN 接続で十分なことがあります。 
+Avere vFXT でオンプレミスのストレージを使用する場合は、ストレージとクラスター間に 1 Gbps 以上のネットワーク接続が必要です。 データの量が少なく、ジョブを実行する前にクラウドにデータをコピーしたい場合は、VPN 接続で十分なことがあります。
 
 > [!TIP]
-> ネットワーク リンクが遅くなるほど、初期のコールド読み取りが遅くなります。 読み取りが遅いと、作業パイプラインの待機時間が増加します。
+> ネットワーク リンクが遅くなるほど、初期の "コールド" 読み取りが遅くなります。 読み取りが遅いと、作業パイプラインの待機時間が増加します。
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>コンピューティング クラスターとは別の仮想ネットワークで Avere vFXT を実行できますか?
 
@@ -176,7 +176,7 @@ Avere vFXT でオンプレミスのストレージを使用する場合は、1 G
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT には専用のサブネットが必要ですか?
 
-はい。 Avere vFXT は高可用性 (HA) クラスターとして厳密に実行され、動作するには複数の IP アドレスが必要です。 クラスターが専用のサブネットに存在する場合は、インストールと通常の動作の問題となる可能性がある IP アドレスの競合のリスクを回避できます。 IP アドレスの重複がない限り、クラスターのサブネットは既存の仮想ネットワーク内でもかまいません。
+はい。 Avere vFXT は高可用性 (HA) クラスターとして厳密に実行され、動作するには複数の IP アドレスが必要です。 クラスターが専用のサブネットに存在する場合は、インストールと通常の動作の問題となる可能性がある IP アドレスの競合のリスクを回避できます。 IP アドレスの重複がない限り、クラスターのサブネットは他のリソースによって使用される仮想ネットワーク内でもかまいません。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>InfiniBand 上で Avere vFXT を実行できますか?
 
@@ -224,9 +224,6 @@ Avere vFXT はストレージではありません。 Avere vFXT は、コア �
 * Dell EMC Isilon (OneFS 7.1、7.2、8.0、8.1) 
 * NetApp ONTAP (Clustered Mode 9.4、9.3、9.2、9.1P1、8.0 から 8.3) および (7-Mode 7.*、8.0 から 8.3)
 
-  > [!NOTE]
-  > Azure NetApp Files は、現在、サポートされていません。
-
 * Azure Blob コンテナー (ローカル冗長ストレージのみ)
 * AWS S3 バケット
 * Google Cloud バケット
@@ -245,11 +242,13 @@ Avere vFXT では、プライベート オブジェクト ストレージはサ�
 
 ### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>コア ファイラーとして Azure Blob Storage を使用できますか?
 
-はい、Avere vFXT for Azure では、ブロック BLOB コンテナーをクラウド コア ファイラーとして使用できます。  
+はい、Avere vFXT for Azure では、ブロック BLOB コンテナーをクラウド コア ファイラーとして使用できます。
 
 ### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>BLOB コア ファイラーにはどのようなストレージ アカウント要件がありますか?
 
 ストレージ アカウントは、汎用 v2 (GPv2) アカウントであり、ローカル冗長ストレージ専用に構成されている必要があります。 Geo 冗長ストレージとゾーン冗長ストレージはサポートされていません。
+
+ストレージ アカウントの要件については、「[Azure Blob Storage クラウド コア フィルター](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer)」を参照してください。
 
 ### <a name="can-i-use-archive-blob-storage"></a>アーカイブ BLOB ストレージを使用できますか?
 

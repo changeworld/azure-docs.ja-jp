@@ -1,25 +1,17 @@
 ---
-title: StorSimple 8000 シリーズ　サポート パッケージの作成 | Microsoft Docs
+title: StorSimple 8000 シリーズ　サポート パッケージの作成
 description: StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481871"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277072"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -31,7 +23,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 ## <a name="create-a-support-package"></a>サポート パッケージを作成する
 
-場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 例:
+場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 次に例を示します。
 
 * Microsoft サポートにログ ファイルを送信する前に、ログから機密情報を削除する必要がある場合。
 * 接続の問題があり、パッケージをアップロードできない場合。
@@ -48,7 +40,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    1. コマンド プロンプトに、次のコマンドを入力します。
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_です。
+   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_ です。
      
       ![PowerShell の [資格情報] ダイアログ ボックス](./media/storsimple-8000-create-manage-support-package/IC740962.png)
    3. **[OK]** を選択します。
@@ -72,7 +64,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 Export-HcsSupportPackage コマンドレットには、次のパラメーターを使用できます。
 
-| パラメーター | 必須/省略可能 | 説明 |
+| パラメーター | 必須/省略可能 | [説明] |
 | --- | --- | --- |
 | `-Path` |必須 |サポート パッケージが配置されるネットワーク共有フォルダーの場所を指定するためにします。 |
 | `-EncryptionPassphrase` |必須 |サポート パッケージの暗号化に使用するパスフレーズを指定するためにします。 |
@@ -145,9 +137,9 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
 
         PS C:\WINDOWS\system32>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サポート パッケージで収集される情報](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
 * [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
+* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

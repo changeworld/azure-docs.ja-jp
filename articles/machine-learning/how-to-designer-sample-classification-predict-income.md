@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763554"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311136"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、特徴選択を使用して、収入を予測する
 
-**デザイナー (プレビュー) サンプル 3**
+**デザイナー サンプル 3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習の分類器を構築する方法について説明します。 このサンプルでは、**2 クラス ブースト デシジョン ツリー**をトレーニングして、国勢調査の成人収入 (>= 50,000 または <= 50,000) を予測します。
+コードを 1 行も書くことなく、デザイナーを使用して、機械学習の分類器を構築する方法について説明します。 このサンプルでは、**2 クラス ブースト デシジョン ツリー**をトレーニングして、国勢調査の成人収入 (>= 50,000 または <= 50,000) を予測します。
 
 なぜなら、質問では「どれにするか」ということに答えようとしているからです。 これは分類問題と呼ばれます。 ただし、同じ基本プロセスを適用して、回帰、分類、クラスタリングなど、あらゆるタイプの機械学習の問題に取り組むことができます。
 

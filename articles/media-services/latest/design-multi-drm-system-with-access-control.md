@@ -1,5 +1,5 @@
 ---
-title: アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 - Azure Media Services | Microsoft Docs
+title: マルチ DRM コンテンツ保護システム - Azure Media Services v3
 description: この記事では、Azure Media Services を使用してマルチ DRM コンテンツ保護システムを設計する方法を詳しく説明します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: efc070491ca1ea84dc8ef095a2144df9d0bf1bcb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896170"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311905"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 
@@ -202,10 +202,10 @@ DRM コンテンツ保護を設定するため、コンテンツ管理ツール�
 
     | **DRM** | **ブラウザー** | **権利のあるユーザーの結果** | **権利のないユーザーの結果** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |不合格 |
-    | **Widevine** |Chrome、Firefox、Opera |合格 |不合格 |
-    | **FairPlay** |macOS 上の Safari      |合格 |不合格 |
-    | **AES-128** |最新のブラウザー  |合格 |不合格 |
+    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |失敗 |
+    | **Widevine** |Chrome、Firefox、Opera |合格 |失敗 |
+    | **FairPlay** |macOS 上の Safari      |合格 |失敗 |
+    | **AES-128** |最新のブラウザー  |合格 |失敗 |
 
 ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする方法については、「[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」をご覧ください。
 
@@ -276,7 +276,7 @@ Azure AD に関する情報:
 
 Azure AD は Microsoft アカウント ドメインを信頼するので、次のどのドメインのアカウントでもカスタム Azure AD テナントに追加し、そのアカウントを使ってサインインできます。
 
-| **ドメイン名** | **ドメイン** |
+| **ドメイン名** | **[ドメイン]** |
 | --- | --- |
 | **カスタム Azure AD テナント ドメイン** |somename.onmicrosoft.com |
 | **企業ドメイン** |microsoft.com |
@@ -350,7 +350,7 @@ Widevine では、保護されたビデオのスクリーン キャプチャが�
 
 どちらの場合も、ユーザー認証は同じです。 Azure AD によって行われます。 唯一の違いは、JWT が Azure AD ではなくカスタム STS によって発行されることです。 動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT の種類として対称キーまたは非対称キーが指定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [よく寄せられる質問](frequently-asked-questions.md)
 * [コンテンツ保護の概要](content-protection-overview.md)

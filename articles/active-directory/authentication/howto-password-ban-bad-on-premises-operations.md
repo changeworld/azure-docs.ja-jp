@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762860"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155048"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD パスワード保護の操作手順
 
@@ -28,7 +28,7 @@ ms.locfileid: "75762860"
 
 ## <a name="enable-password-protection"></a>パスワード保護を有効にする
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[セキュリティ]** 、 **[認証方法]** 、 **[パスワード保護]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[認証方法]**  >  **[パスワード保護]** の順に選択します。
 1. **[Windows Server Active Directory のパスワード保護を有効にする]** を **[はい]** に設定します
 1. [デプロイ ガイド](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)のページで説明しているように、最初に **[モード]** を **[監査]** に設定することをお勧めします
    * 機能に問題がなければ、 **[モード]** を **[強制]** に切り替えることができます

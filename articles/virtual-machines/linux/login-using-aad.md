@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951311"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544618"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -48,7 +48,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 この機能のプレビュー期間中は、次の Linux ディストリビューションがサポートされます。
 
-| ディストリビューション | Version |
+| Distribution | Version |
 | --- | --- |
 | CentOS | CentOS 6、CentOS 7 |
 | Debian | Debian 9 |
@@ -72,11 +72,11 @@ CLI をローカルにインストールして使用する場合、Azure CLI バ
 
 Azure 内の Linux VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
 
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com
-* https://pas.windows.net
-* https://management.azure.com
-* https://packages.microsoft.com
+* https:\//login.microsoftonline.com
+* https:\//device.login.microsoftonline.com
+* https:\//pas.windows.net
+* https:\//management.azure.com
+* https:\//packages.microsoft.com
 
 > [!NOTE]
 > 現時点では、Azure AD 認証が有効になっている VM に対して Azure ネットワーク セキュリティ グループを構成することはできません。
@@ -215,6 +215,6 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 
 [Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory の詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください

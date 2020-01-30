@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e74e80c7db7e624649494201d56fd82486e193d7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466049"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546607"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、*正規化*によってデータセットを変換します。
 
@@ -94,19 +94,19 @@ ms.locfileid: "73466049"
 
 6. パイプラインを実行するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 **Normalize Data (データの正規化)** モジュールでは、2 つの出力が生成されます。
 
-- 変換された値を表示するには、モジュールを右クリックして、 **[Transformed dataset]\(変換後のデータセット\)** を選択し、 **[Visualize]\(可視化\)** をクリックします。
+- 変換後の値を表示するには、モジュールを右クリックして **[可視化]** を選択します。
 
     既定では、値はその場で変換されます。 変換された値を元の値と比較する場合は、[Add Columns (列の追加)](./add-columns.md) モジュールを使用して、データセットを再結合し、列を並べて表示します。
 
-- 別の同様のデータセットに同じ正規化メソッドを適用できるように、変換を保存するには、モジュールを右クリックして、 **[Transformation function]\(変換関数\)** を選択し、 **[Save as Transform]\(変換として保存\)** をクリックします。
+- 同じ正規化メソッドを別のデータセットに適用できるように変換を保存するには、モジュールを選択し、右側のパネルの **[出力]** タブの下にある **[データ セットの登録]** を選択します。
 
     ナビゲーション ウィンドウの左側の **[変換]** グループから保存された変換を読み込み、[./Apply Transformation](apply-transformation.md) を使用することで同じスキーマを使ってデータセットに適用することができます。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

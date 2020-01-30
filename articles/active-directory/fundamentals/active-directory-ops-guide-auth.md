@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919343"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511894"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -31,7 +31,7 @@ ms.locfileid: "74919343"
 
 Azure Active Directory を管理するには、ロールアウト プロジェクトに含まれていない主要な運用タスクとプロセスを継続的に実行する必要があります。 環境を最適化するために、これらのタスクを設定することも重要です。 主なタスクと推奨される所有者は次のとおりです。
 
-| タスク | Owner |
+| タスク | 所有者 |
 | :- | :- |
 | Azure AD のシングル サインオン (SSO) の構成のライフサイクルを管理する | IAM 運用チーム |
 | Azure AD アプリケーションの条件付きアクセス ポリシーを策定する | InfoSec アーキテクチャ チーム |
@@ -61,7 +61,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 | 問題 | 推奨 |
 | :- | :- |
-| 脆弱なパスワードから保護するためのメカニズムがない | Azure AD の[パスワード リセットのセルフサービス (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) と[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)を有効にします |
+| 脆弱なパスワードから保護するためのメカニズムがない | Azure AD の[セルフサービス パスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) と[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)を有効にします |
 | 漏洩したパスワードを検出するためのメカニズムがない | [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) を有効にして分析情報を取得します |
 | AD FS を使用し、管理された認証に移行できない | [AD FS エクストラネットのスマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)や [Azure AD スマート ](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)を有効にします |
 | パスワード ポリシーで、長さ、複数の文字セット、有効期限などの複雑なものに基づくルールを使用している | [Microsoft の推奨プラクティス](https://aka.ms/passwordguidance)を優先して再度検討し、アプローチをパスワード管理に切り替えて、[Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)をデプロイしてください。 |
@@ -73,11 +73,11 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 - [Azure AD と AD FS のベスト プラクティス: パスワードのスプレー攻撃に対する防御 - Enterprise Mobility + Security](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)
 
-### <a name="enable-self-service-password-reset-and-password-protection"></a>パスワード リセットのセルフサービスとパスワード保護を有効にする
+### <a name="enable-self-service-password-reset-and-password-protection"></a>セルフサービス パスワード リセット とパスワード保護を有効にする
 
 パスワードを変更またはリセットする必要があるユーザーは、ヘルプ デスクへの問い合わせの量とコストの最大の発生源の 1 つです。 コストに加え、ユーザーのリスクを軽減するためのツールとしてパスワードを変更することは、組織のセキュリティ体制を改善するための基本的な手順です。
 
-少なくとも、Azure AD の[パスワード リセットのセルフサービス](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) とオンプレミスの[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) をデプロイして、次のことを行うことをお勧めします。
+少なくとも、Azure AD の[セルフサービス パスワード リセット ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) とオンプレミスの[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) をデプロイして、次のことを行うことをお勧めします。
 
 - ヘルプ デスクへの問い合わせをうまくそらす。
 - 一時パスワードの使用を置き替える。
@@ -127,8 +127,8 @@ PowerShell を使用する Azure AD スクリプトや Graph API を使用する
 
 この目標は、次のいずれかの方法を使用してデバイス ID を取り込んで Azure AD で管理することで実行できます。
 
-- 組織は、[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Manager/System Center Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
-- [Hybrid Azure AD Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシー、System Center Configuration Manager、または Microsoft Endpoint Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
+- 組織は、[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
+- [Hybrid Azure AD Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
 
 クラウドに登録されていないドメイン参加済み Windows デバイス、またはクラウドに登録されていても条件付きアクセス ポリシーがないドメイン参加済み Windows デバイスがある場合は、登録されていないデバイスを登録する必要があり、いずれにしても条件付きアクセス ポリシーで[制御として Hybrid Azure AD Join を使用](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)する必要があります。
 
@@ -140,7 +140,7 @@ MDM または Microsoft Intune を使用してデバイスを管理していて�
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>デバイスの信頼のアクセス ポリシーに関する推奨資料
 
-- [方法:ハイブリッド Azure Active Directory 参加の実装の計画](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [方法: ハイブリッド Azure Active Directory 参加の実装の計画](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 - [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
@@ -205,7 +205,7 @@ Azure AD で[ネームド ロケーション](https://docs.microsoft.com/azure/a
 
 優先度に基づいた次の表を使用して、組織のニーズに最も合った推奨される解決策を見つけてください。
 
-| **優先順位** | **シナリオ** | **推奨事項** |
+| **優先順位** | **シナリオ** | **推奨** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | PHS または PTA を使用していて、ネームド ロケーションが定義されていない場合 | ネームド ロケーションを定義して、リスク イベントの検出を改善します |
 | 2 | フェデレーションされていて、"insideCorporateNetwork" 要求を使用しておらず、ネームド ロケーションが定義されていない場合 | ネームド ロケーションを定義して、リスク イベントの検出を改善します |
@@ -223,8 +223,8 @@ Azure AD は、すべてのサインインとすべてのユーザーのリス�
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>リスクベースのアクセス ポリシーの推奨資料
 
-- [方法:サインイン リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [方法:ユーザー リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [方法: サインイン リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
+- [方法: ユーザー リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
 
 ### <a name="client-application-access-policies"></a>クライアント アプリケーションのアクセス ポリシー
 
@@ -300,7 +300,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 - ユーザーの代わりにメールの読み取り、送信、または管理を行うことができる、委任されたアクセス許可を持つアプリ
 - 次のアクセス許可の使用を許可されているアプリケーション：
 
-| リソース | アクセス許可 |
+| リソース | 権限 |
 | :- | :- |
 | Office 365 Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
@@ -309,9 +309,9 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
-- アプリには、サインインしたユーザーの、完全なユーザー偽装が許可されています。 例:
+- アプリには、サインインしたユーザーの、完全なユーザー偽装が許可されています。 次に例を示します。
 
-|リソース | アクセス許可 |
+|リソース | 権限 |
 | :- | :- |
 | Azure AD グラフ | Directory.AccessAsUser.All |
 | Microsoft Graph | Directory.AccessAsUser.All |
@@ -377,7 +377,7 @@ Azure AD のサインイン アクティビティ、監査とリスク イベン
 
 セキュリティで保護された ID インフラストラクチャには、12 の側面があります。 このリストは、企業のセキュリティ体制に基づいた資格情報のセキュリティ保護と管理、認証エクスペリエンスの定義、割り当ての委任、使用状況の測定、およびアクセス ポリシーの定義に役立ちます。
 
-- 主要タスクに所有者を割り当てます。
+- 主要タスクに所有者を割り当てる。
 - 脆弱なパスワードや漏洩したパスワードを検出し、パスワードの管理と保護を強化し、リソースへのユーザーのアクセスをさらにセキュリティで保護するソリューションを実装します。
 - いつでもどこからでもリソースを保護するために、デバイスの ID を管理します。
 - パスワードレス認証をデプロイします。
@@ -390,6 +390,6 @@ Azure AD のサインイン アクティビティ、監査とリスク イベン
 - ユーザーとグループの設定をロックダウンします。
 - トラブルシューティング、使用状況分析、フォレンジック調査のために Azure AD ログの長期ストレージを可能にします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ID のガバナンスの運用検査とアクション](active-directory-ops-guide-govern.md)を開始します。

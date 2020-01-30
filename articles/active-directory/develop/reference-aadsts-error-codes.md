@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1de85e2c075d343a72fcc9fd29c0358d0054350
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423962"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548137"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -222,6 +222,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90092 | GraphNonRetryableError |
 | AADSTS90093 | GraphUserUnauthorized - 要求に対して Forbidden エラー コードが Graph から返されました。 |
 | AADSTS90094 | AdminConsentRequired - 管理者の同意が必要です。 |
+| AADSTS900382 | Confidential Client はクロスクラウド要求でサポートされていません。 |
 | AADSTS90100 | InvalidRequestParameter - パラメーターが空であるか無効です。 |
 | AADSTS901002 | AADSTS901002:"resource" 要求パラメーターはサポートされていません。 |
 | AADSTS90101 | InvalidEmailAddress - 指定されたデータは有効な電子メール アドレスはありません。 電子メール アドレスは `someone@example.com` の形式である必要があります。 |

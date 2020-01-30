@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497831"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312203"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーに含まれるモジュールについて説明します。
 
 特徴ハッシュ モジュールを使用して、英語テキストのストリームを整数の特徴セットに変換します。 その後、このハッシュされた特徴セットを機械学習アルゴリズムに渡して、テキスト分析モデルをトレーニングすることができます。
 
@@ -96,7 +96,7 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
 1. パイプラインを実行します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 処理が完了すると、モジュールによって変換後のデータセットが出力されます。元のテキスト列が複数の列に変換されます。 各列はテキスト内の特徴を表します。 辞書の有意性によっては、結果として得られるデータセットが大きくなる可能性があります。
 
@@ -129,6 +129,6 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
 ソリューションに適用される最適な前処理方法のセットは、ドメイン、ボキャブラリ、およびビジネス ニーズによって異なります。 お使いのデータを使用してパイプラインを作成し、どのテキスト処理方法が最も効果的かを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
             
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください 

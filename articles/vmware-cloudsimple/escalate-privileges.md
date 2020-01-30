@@ -1,5 +1,5 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - CloudSimple 特権のエスカレート
+title: Azure VMware Solution by CloudSimple - CloudSimple 特権のエスカレート
 description: プライベート クラウドの vCenter で管理機能を実行するために CloudSimple のアクセス許可をエスカレートする方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 524772578ad724e969bbeab0be0a3edcf32a845f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619484"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542850"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>プライベート クラウドの vCenter で管理機能を実行するために CloudSimple の特権をエスカレートする
 
@@ -33,5 +33,8 @@ CloudSimple の特権アプローチは、通常の操作を実行するため�
 CloudSimple ポータルから、vCenter SSO で CloudOwner ローカル ユーザーの[特権をエスカレート](escalate-private-cloud-privileges.md)します。  リモート ユーザーの特権は、追加の ID プロバイダーが VCenter で構成されている場合にのみエスカレートできます。  特権をエスカレートするには、選択したユーザーを vSphere の組み込みの Administrators グループに追加する必要があります。  エスカレートされた特権を持つことができるユーザーは 1 人だけです。  別のユーザーの特権をエスカレートする必要がある場合は、まず現在のユーザーの特権のエスカレーションを解除します。
 
 追加の ID ソースからのユーザーを、CloudOwner グループのメンバーとして追加する必要があります。
+
+> [!CAUTION]
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  "*管理者*" グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。
 
 エスカレーション期間中、CloudSimple は、自動監視と、それに関連付けられたアラート通知を使用して、環境に対する誤った変更を識別します。

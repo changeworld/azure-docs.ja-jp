@@ -7,12 +7,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 0cb875122c63be18f7c39cdfea7986d705ed434e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 610b1e0112b8135aa09ade5c800eaed987635cb4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539269"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545638"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat OpenShift の顧客管理者ロール
 
@@ -22,7 +22,6 @@ ms.locfileid: "74539269"
 
 > [!Note] 
 > customer-admin-cluster クラスター ロールは、cluster-admin クラスター ロールと同じものではありません。
-
 
 たとえば、一連の動詞 (`create`) に関連付けられているアクションを実行し、一連のリソース名 (`templates`) を操作できます。 これらのロールのその一連の動詞とリソースの詳細を表示するには、次のコマンドを実行します。
 
@@ -34,9 +33,15 @@ ms.locfileid: "74539269"
 
 ## <a name="configure-the-customer-administrator-role"></a>顧客管理者ロールを構成する
 
-customer-admin-cluster クラスター ロールは、クラスターの作成中にのみ、フラグ `--customer-admin-group-id` を指定することによって構成できます。 Azure Active Directory と Administrators グループを構成する方法については、「[Azure Red Hat OpenShift の Azure Active Directory 統合](howto-aad-app-configuration.md)」を参照してください。
+customer-admin-cluster クラスター ロールは、クラスターの作成中にのみ、フラグ `--customer-admin-group-id` を指定することによって構成できます。 現在、このフィールドは Azure portal では構成できません。 Azure Active Directory と Administrators グループを構成する方法については、「[Azure Red Hat OpenShift の Azure Active Directory 統合](howto-aad-app-configuration.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="confirm-membership-in-the-customer-administrator-role"></a>顧客管理者ロールのメンバーシップを確認する
+
+顧客管理者グループにおける自分のメンバーシップを確認するには、OpenShift CLI コマンド `oc get nodes` または `oc projects` を試してください。 `oc get nodes` では、customer-admin-cluster ロールを持っている場合はノードの一覧が表示され、customer-admin-project ロールのみを持っている場合はアクセス許可エラーが表示されます。 `oc projects` では、作業しているプロジェクトだけではなく、クラスター内のすべてのプロジェクトが表示されます。
+
+クラスター内のロールとアクセス許可をさらに調べるには、[`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) コマンドを使用します。
+
+## <a name="next-steps"></a>次のステップ
 
 customer-admin-cluster クラスター ロールを構成します。
 > [!div class="nextstepaction"]

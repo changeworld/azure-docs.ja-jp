@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c120c9092d9cf0e4029cadea1b412a73e858fa75
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278966"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156150"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>電話番号を検証方法として設定する
 
@@ -30,7 +30,20 @@ ms.locfileid: "74278966"
 > [!Note]
 > セキュリティ情報では、電話の内線番号の使用はサポートされません。 電話番号が "+1 4255551234X12345" の適切な形式であっても、電話がかけられる前に内線番号は削除されます。
 >
-> 電話番号オプションが表示されない場合、検証に電話呼び出しを使用することを組織が許可していない可能性があります。 この場合、別のメソッドを選択するか、管理者に支援を要請する必要があります。
+> 電話番号オプションが表示されない場合、検証にこのオプションを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、組織のヘルプ デスクに連絡して、さらに支援を依頼する必要があります。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>セキュリティ認証とパスワードのリセット認証
+
+セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
+
+| 方法 | 使用目的 |
+| ------ | -------- |
+| Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
+| テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
+| 電話 | 2 要素認証とパスワードのリセット認証。 |
+| セキュリティ キー | 2 要素認証とパスワードのリセット認証。 |
+| 電子メール アカウント | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
+| セキュリティの質問 | パスワードのリセット認証のみ。 2 要素認証には別のメソッドを選択する必要があります。 |
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>[セキュリティ情報] ページから電話呼び出しを設定する
 
@@ -41,7 +54,7 @@ ms.locfileid: "74278966"
 
 ### <a name="to-set-up-phone-calls"></a>電話呼び出しを設定するには
 
-1. 職場または学校アカウントでサインインし、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
@@ -88,7 +101,7 @@ ms.locfileid: "74278966"
 
 1. **[セキュリティ情報]** ページで、 **[Default sign-in method]\(既定のサインイン方法\)** 情報の横の **[変更]** リンクを選択します。
 
-    ![既定のサインイン メソッドの変更リンク](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+    ![既定のサインイン方法の変更リンク](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
 2. 利用可能なメソッドのドロップダウン リストから **[Phone - call ( *_your_phone_number_* )]\(電話 - 呼び出し (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
 
@@ -100,7 +113,7 @@ ms.locfileid: "74278966"
 
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
 
-- **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[Set up security info to use an authenticator app](security-info-setup-auth-app.md)」(認証アプリを使用するようにセキュリティ情報を設定する) を参照してください。
+- **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)」を参照してください。
 
 - **モバイル デバイスのテキスト。** モバイル デバイスの番号を入力し、2 段階認証やパスワード リセットに使用するテキスト コードを取得します。 テキスト メッセージ (SMS) による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md)」(テキスト メッセージ (SMS) を使用するようにセキュリティ情報を設定する) を参照してください。
 
@@ -113,8 +126,8 @@ ms.locfileid: "74278966"
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

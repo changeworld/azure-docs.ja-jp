@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497698"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548392"
 ---
 # <a name="remove-duplicate-rows-module"></a>Remove Duplicate Rows (重複する行の削除) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、データセットから重複の可能性があるものを削除します。
 
@@ -26,11 +26,11 @@ ms.locfileid: "73497698"
 
 | PatientID | Initials| 性別|Age|受付|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Feb|
-|4| F.M.| M| 23| Feb|
+|1|F.M.| M| 53| 1 月|
+|2| F.A.M.| M| 53| 1 月|
+|3| F.A.M.| M| 24| 1 月|
+|3| F.M.| M| 24| 2 月|
+|4| F.M.| M| 23| 2 月|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| (NaN)| |
@@ -59,7 +59,7 @@ ms.locfileid: "73497698"
 
     このコンテキストで、**キー**は一意の識別子を意味しません。 列セレクターを使用して選択したすべての列が、**キー列**として指定されます。 選択さしなかったすべての列は、非キー列と見なされます。 キーとして選択した列の組み合わせによって、レコードの一意性が決定されます (これを、複数の等価結合を使用する SQL ステートメントであると考えてください)。
 
-    次に例を示します。
+    例 :
 
     + "ID が一意であることを確認したい": ID 列のみを選択します。
     + "名、姓、および ID の組み合わせが一意であることを確認したい": 3 つの列すべてを選択します。
@@ -71,11 +71,11 @@ ms.locfileid: "73497698"
 
 5. パイプラインを実行します。
 
-6. 結果を確認するには、モジュールを右クリックし、 **[Results dataset]\(結果のデータセット\)** を選択してから **[可視化]** をクリックします。 
+6. 結果を確認するには、モジュールを右クリックし、 **[可視化]** を選択します。 
 
 > [!TIP]
 > 結果を解釈するのが難しい場合、またはいくつかの列を考慮から除外したい場合は、[Select Columns in Dataset (データセット内の列の選択)](./select-columns-in-dataset.md) モジュールを使用して列を削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

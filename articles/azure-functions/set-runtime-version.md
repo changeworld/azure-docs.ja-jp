@@ -3,16 +3,16 @@ title: Azure Functions ランタイム バージョンをターゲットにす�
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 Azure でホストされる関数アプリのランタイム バージョンを指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942275"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294169"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
-関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 2 つがあります:[1.x および 2.x](functions-versions.md) (バージョン 3.x はプレビュー段階) 既定では、作成される関数アプリはバージョン 2.x のランタイムです。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
+関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 3 つがあります:[1.x、2.x、および 3.x](functions-versions.md)。 既定では、関数アプリはバージョン 2.x のランタイムで作成されます。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
 ## <a name="automatic-and-manual-version-updates"></a>自動および手動でのバージョンの更新
 
@@ -104,7 +104,7 @@ az functionapp config appsettings set --name <function_app> \
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ローカル開発環境で 2.0 ランタイムをターゲットにする](functions-run-local.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs API の概要 | Microsoft Docs
-description: 使用可能な Azure Event Hubs API の概要
+description: この記事では、Azure Event Hubs サービスを使用するための使用可能な API (ランタイムと管理) の概要について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 80566b0246179064d2a479b8c9bf3c79a2a93aac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822616"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310970"
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
 
@@ -36,16 +36,16 @@ ms.locfileid: "60822616"
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 該当なし |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| ノード | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| Node | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
 | C | 該当なし | 該当なし | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
-### <a name="additional-information"></a>追加情報
+### <a name="additional-information"></a>関連情報
 
 #### <a name="net"></a>.NET
 
 .NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework バージョンの詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks)」を参照してください。
 
-#### <a name="node"></a>ノード
+#### <a name="node"></a>Node
 
 [Node.js ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)は現在プレビュー段階で、Microsoft 従業員と外部の共同作成者によってサイド プロジェクトとして管理されています。 ソース コードなど、お寄せいただいた投稿はすべて確認いたします。
 
@@ -57,7 +57,7 @@ ms.locfileid: "60822616"
 | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

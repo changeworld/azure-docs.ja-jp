@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a3280e11d40a361c5a3305d71e58661b37b8bd1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563430"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510534"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -43,17 +43,17 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** を選択します。
 1. ドロップダウン メニューでモジュールの種類を確認します：
 
-   * **IoT Edge モジュール** - モジュール名とコンテナー イメージの URI を指定します。 たとえば、サンプルの SimulatedTemperatureSensor モジュールのイメージ URI は `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`です。 モジュール イメージがプライベート コンテナー レジストリに格納されている場合は、このページに資格情報を追加して、イメージにアクセスします。 
+   * **IoT Edge モジュール** - モジュール名とコンテナー イメージの URI を指定します。 たとえば、サンプルの SimulatedTemperatureSensor モジュールのイメージ URI は `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`です。 モジュール イメージがプライベート コンテナー レジストリに格納されている場合は、このページに資格情報を追加して、イメージにアクセスします。
    * **Marketplace モジュール** - Azure Marketplace でホストされているモジュール。 Marketplace モジュールによっては、追加の構成が必要になる場合があります。そのため、[Azure Marketplace IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) 一覧でモジュールの詳細を確認してください。
-   * **Azure Stream Analytics モジュール** - Azure Stream Analytics ワークロードから生成されるモジュールです。 
+   * **Azure Stream Analytics モジュール** - Azure Stream Analytics ワークロードから生成されるモジュールです。
 
 1. モジュールを追加したら、一覧からモジュール名を選択してモジュールの設定を開きます。 必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
 1. 必要に応じて、手順 5 ～ 8 を繰り返して、モジュールをデプロイに追加します。
-1. **次へ:ルート** 　でルート のセクションに進みます。
+1. **ルート** 　でルート のセクションに進みます。
 
 ### <a name="specify-routes"></a>ルートを指定する
 
-**[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定では、ルートは **route** という名前で、**FROM /\* INTO $upstream** として定義されています。つまり、任意モジュールによって出力されたすべてのメッセージは IoT Hub に送信されます。  
+**[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定では、ルートは **route** という名前で、**FROM /messages/\* INTO $upstream** として定義されています。つまり、任意のモジュールによって出力されたすべてのメッセージは IoT Hub に送信されます。  
 
 [ルートの宣言](module-composition.md#declare-routes) の情報を使用してルートを追加または更新し、 **[次へ]：レビュー + 作成** を選択して、ウィザードの次の手順に進みます。
 
@@ -97,12 +97,12 @@ Azure Marketplace のモジュールを、Azure portal の IoT Hub デバイス�
 
 ![IoT Hub にモジュールを追加する](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 
-**[IoT Edge モジュールの Marketplace]** ページでモジュールを選択します。 選択したモジュールは、サブスクリプション、リソースグループ、およびデバイスに対して自動的に構成されます。 次に、IoT Edge モジュールの一覧に表示されます。 このモジュールには追加の構成が必要な場合があります。
+**[IoT Edge モジュールの Marketplace]** ページでモジュールを選択します。 選択したモジュールは、サブスクリプション、リソース グループ、およびデバイスに対して自動的に構成されます。 その後、それは IoT Edge モジュールの一覧に表示されます。 このモジュールには追加の構成が必要な場合があります。
 
 > [!TIP]
 > Azure IoT Hub の IoT Edge モジュールに関する情報は限られています。 詳細については、Azure Marketplace の [IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) に関するページを参照してください。
 
-**[次へ:この記事の前で記載した [[ルートの指定]](#specify-routes) と [[デプロイの確認]](#review-deployment) で説明されているように、デプロイをルーティング**  して続行します。
+**この記事の前で記載した [[ルートの指定]](#specify-routes) と [[デプロイの確認]](#review-deployment) で説明されているように、デプロイをルーティング**  して続行します。
 
 ## <a name="next-steps"></a>次のステップ
 

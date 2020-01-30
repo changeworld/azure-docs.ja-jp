@@ -1,7 +1,7 @@
 ---
 title: Immersive Reader SDK リファレンス
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
+description: イマーシブ リーダー SDK には、お客様のアプリケーションにイマーシブ リーダーを統合できる JavaScript ライブラリが含まれています。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945277"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156405"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
 
-Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
+イマーシブ リーダー SDK には、お客様のアプリケーションにイマーシブ リーダーを統合させる JavaScript ライブラリが含まれています。
 
 ## <a name="functions"></a>関数
 
@@ -36,7 +36,7 @@ SDK では、次の関数が公開されています。
 Web アプリケーションの `iframe` 内でイマーシブ リーダーを起動します。
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>パラメーター
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>戻り値
 
-イマーシブ リーダーが読み込まれたときに解決される `Promise<HTMLDivElement>` を返します。 `Promise` は `div` 要素に解決され、この要素の唯一の子はイマーシブ リーダーページ を含む `iframe` 要素です。
+イマーシブ リーダーが読み込まれたときに解決される `Promise<LaunchResponse>` を返します。 `Promise` は [`LaunchResponse`](#launchresponse) オブジェクトに解決されます。
 
 ### <a name="exceptions"></a>例外
 
@@ -109,6 +109,17 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+`ImmersiveReader.launchAsync` の呼び出しからの応答を含みます。
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>CookiePolicy 列挙型
 
 イマーシブ リーダーの Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [オプション](#options)を参照してください。
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | application/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word の .docx 形式のドキュメント。
 
 ### <a name="html-support"></a>HTML サポート
+
 | HTML | サポートされているコンテンツ |
 | --------- | ----------- |
 | フォント スタイル | 太字、斜体、下線、コード、取り消し線、上付き文字、下付き文字 |
@@ -186,7 +198,7 @@ enum CookiePolicy { Disable, Enable }
 
 ## <a name="launching-the-immersive-reader"></a>イマーシブ リーダーの起動
 
-SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイルを提供します。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。
+SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイルを提供します。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。 詳細については、 [この記事](./how-to-customize-launch-button.md) を参照してください。
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -215,4 +227,4 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 ## <a name="next-steps"></a>次のステップ
 
 * [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
-* [クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)
+* [クイック スタート: イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)

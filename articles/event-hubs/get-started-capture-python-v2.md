@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942344"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293540"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Event Hubs データを Azure Storage にキャプチャし、Python を使用してそれを読み取る 
 イベント ハブに送信されたデータが Azure Storage または Azure Data Lake Storage にキャプチャされるようにイベント ハブを構成できます。 この記事は、イベントをイベント ハブに送信し、キャプチャされたデータを Azure BLOB ストレージから読み取る Python コードを記述する方法を示します。 この機能の詳細については、[Event Hubs Capture 機能の概要](event-hubs-capture-overview.md)に関するページを参照してください。
@@ -42,9 +42,9 @@ ms.locfileid: "75942344"
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 - [Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成します](event-hubs-create.md)。 Event Hubs 名前空間の名前、イベント ハブの名前、および名前空間のプライマリ アクセス キーを書き留めておきます。 次の記事の手順に従ってアクセス キーを取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。 このチュートリアルの接続文字列は必要ありません。 必要なのはプライマリ キーだけです。 
 - 次の手順に従って、**Azure Storage アカウント**と **BLOB コンテナー**を作成します。
-    1. [Azure Storage アカウントを作成します](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)。
-    2. [ストレージ内に BLOB コンテナーを作成します](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 
-    3. [ストレージ アカウントへの接続文字列を取得します](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)。
+    1. [Azure Storage アカウントを作成します](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)。
+    2. [ストレージ内に BLOB コンテナーを作成します](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 
+    3. [ストレージ アカウントへの接続文字列を取得します](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)。
 
         **接続文字列**と**コンテナー名**を書き留めておきます。 これらは、後でコードの中で使用します。 
 - 次の手順に従って、イベント ハブの**キャプチャ**機能を有効にする:「[Azure portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)」の手順に従います。 前の手順で作成したストレージ アカウントと BLOB コンテナーを選択します。 この機能はまた、イベント ハブの作成時に有効にすることもできます。 
@@ -90,7 +90,7 @@ ms.locfileid: "75942344"
     1. `EVENT HUBS NAMESPACE CONNECTION STRING` を Event Hubs 名前空間への接続文字列に置き換えます。
     2. `EVENT HUB NAME` をイベント ハブの名前に置き換えます。 
 5. イベントをイベント ハブに送信するスクリプトを実行します。 
-6. Azure portal で、イベント ハブがメッセージを受信したことを確認できます。 **[メトリック]** セクションで **[メッセージ]** ビューに切り替えます。 ページを更新することによりグラフを更新します。 メッセージが受信されたことが示されるまでに数秒かかることがあります。 
+6. Azure portal で、イベント ハブがメッセージを受信したことを確認できます。 **[メトリック]** セクションで **[メッセージ]** ビューに切り替えます。 ページを最新の情報に更新して、グラフを更新します。 メッセージが受信されたことが示されるまでに数秒かかることがあります。 
 
     [![イベント ハブがメッセージを受信したことを確認する](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 

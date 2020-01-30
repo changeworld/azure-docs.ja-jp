@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991444"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543887"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -66,15 +66,15 @@ ms.locfileid: "72991444"
     >[!Note] 
     >**[大規模にデプロイする]** を選択した場合は、以下の手順にある **[モジュールの追加]** タブに進む前にデバイス名と詳細を追加してください。     
 
-Azure Security Center for IoT 用の IoT Edge デプロイを作成するには、3 つの手順があります。 次のセクションで、手順ごとに説明します。 
+各手順を実行して、Azure Security Center for IoT 用の IoT Edge デプロイを完了します。 
 
-#### <a name="step-1-add-modules"></a>手順 1:モジュールを追加する
+#### <a name="step-1-modules"></a>手順 1:モジュール
 
-1. **[モジュールの追加]** タブの **[デプロイ モジュール]** 領域で、 **[AzureSecurityCenterforIoT]** の **[構成]** オプションをクリックします。 
-   
-1. **名前**を **azureiotsecurity** に変更します。
-1. **[イメージの URI]** を **mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0** に変更します。
-1. **[コンテナーの作成オプション]** の値が次のように設定されていることを確認します。      
+1. **AzureSecurityCenterforIoT** モジュールを選択します。
+1. **[モジュールの設定]** タブで、**名前** を **azureiotsecurity** に変更します。
+1. **[環境変数]** タブで、必要に応じて変数を追加します (デバッグ レベルなど)。
+1. **[コンテナーの作成オプション]** タブで、次の構成を追加します。
+
     ``` json
     {
         "NetworkingConfig": {
@@ -92,24 +92,20 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
         }
     }    
     ```
-1. **[モジュール ツインの必要なプロパティの設定]** が選択されていることを確認し、構成オブジェクトを次のように変更します。
+    
+1. **[モジュール ツインの設定]** タブで、次の構成を追加します。
       
     ``` json
-    { 
-       "properties.desired":{ 
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
-
-          }
-       }
-    }
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. **[Save]** をクリックします。
-1. タブの一番下までスクロールし、 **[Edge ランタイムの詳細設定を構成する]** を選択します。 
-   
-1. **[Edge ハブ]** の下の **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** に変更します。
+1. **[Update]\(更新\)** を選択します。
 
-1. **[作成オプション]** が次のように設定されていることを確認します。 
+#### <a name="step-2-runtime-settings"></a>手順 2:ランタイムの設定
+
+1. **[ランタイムの設定]** を選択します。
+1. **[Edge Hub]\(Edge ハブ\)** の下で、 **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** に変更します。
+1. **[作成オプション]** が次の構成に設定されていることを確認します。 
          
     ``` json
     { 
@@ -134,25 +130,30 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
        }
     }
     ```
-1. **[Save]** をクリックします。
+    
+1. **[保存]** を選択します。
    
-1. **[次へ]** をクリックします。
+1. **[次へ]** を選択します。
 
-#### <a name="step-2-specify-routes"></a>手順 2:ルートを指定する 
+#### <a name="step-3-specify-routes"></a>手順 3:ルートを指定する 
 
-1. **[ルートの指定]** タブで、以下の例に従い、**azureiotsecurity** モジュールから **$upstream** にメッセージを転送するルート (明示的または暗黙的) があることを確認し、その後 **[次へ]** をクリックします。 
+1. **[ルートの指定]** タブで、次の例に従い、**azureiotsecurity** モジュールから **$upstream** にメッセージを転送するルート (明示的または暗黙的) があることを確認します。 ルートが存在する場合にのみ、 **[次へ]** 選択します。
 
-~~~Default implicit route
-"route": "FROM /messages/* INTO $upstream" 
-~~~
+   ルートの例:
 
-~~~Explicit route
-"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-~~~
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream" 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>手順 3:デプロイを確認する
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+    ~~~
 
-- **[デプロイの確認]** タブでデプロイ情報を確認し、 **[送信]** を選択してデプロイを完了します。
+1. **[次へ]** を選択します。
+
+#### <a name="step-4-review-deployment"></a>手順 4:デプロイを確認する
+
+- **[デプロイの確認]** タブでデプロイ情報を確認し、 **[作成]** を選択してデプロイを完了します。
 
 ## <a name="diagnostic-steps"></a>診断手順
 
@@ -182,7 +183,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
    
 1. より詳細なログについては、環境変数 `logLevel=Debug` を **azureiotsecurity** モジュール デプロイに追加してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 構成オプションの詳細については、モジュール構成のハウツー ガイドに進んでください。 
 > [!div class="nextstepaction"]

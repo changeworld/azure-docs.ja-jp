@@ -4,20 +4,22 @@ description: Avere クラスターの管理方法 - ノードの追加または�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d963c951d2202b3f60f0dd93c440b36fabf6478d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415296"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153481"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
-クラスターを作成した後、クラスター ノードを追加したりクラスターを停止または再起動したりすることが必要になることがあります。 また、プロジェクトが完了したとき、クラスターを停止して完全に削除する方法を知っておく必要があります。
+Avere vFXT for Azure クラスターのライフサイクルのある時点で、クラスター ノードの追加や、クラスターの起動または再起動が必要になる場合があります。 プロジェクトの完了時に、クラスターを停止して完全に削除する方法を知っておく必要があります。
 
-クラスターの管理タスクによっては、タスクを行うために Avere コントロール パネル、vfxt.py コマンド ライン クラスター作成スクリプト、または Azure portal を使用する必要があります。
+この記事では、クラスター ノードを追加または削除する方法およびその他の基本的なクラスター操作について説明します。 クラスター設定を変更したり、その動作を監視したりする必要がある場合は、[Avere コントロール パネル](avere-vfxt-cluster-gui.md)を使用します。
+
+管理タスクによっては、Avere コントロール パネル、vfxt.py コマンドライン クラスター管理スクリプト、Azure portal の 3 つの異なるツールのいずれかを使用する必要があります。
 
 以下のテーブルに、各タスクについて使用できるツールの概要を示します。
 
@@ -38,7 +40,7 @@ ms.locfileid: "75415296"
 
 任意の Azure VM をシャットダウンまたは停止すると、コンピューティング料金の発生は停止しますが、VM のストレージに対する支払いは続きます。 1 つの VFXT ノードまたは vFXT クラスター全体をシャットダウンして再起動する予定がない場合は、Azure portal を使用して関連する VM を削除する必要があります。
 
-Azure portal では、*停止済み*ノード (再起動可能) には **[停止済み]** 状態が表示されます。*削除済み*ノードには **[停止済み (割り当て解除)]** 状態が表示され、コンピューティングやストレージの料金は発生しません。
+Azure portal では、*停止された* (再起動可能な) ノードは **[停止済み]** の状態で表示されます。 *削除された*ノードは、 **[停止済み (割り当て解除)]** の状態で表示され、計算やストレージの料金は発生しなくなります。
 
 VM を削除する前に、クラスターを停止またはシャットダウンするために、Avere コントロール パネルまたは vfxt.py オプションを使用して、変更されたすべてのデータがキャッシュからバック エンド ストレージに書き込まれたことを確認します。
 
@@ -50,7 +52,7 @@ Avere コントロール パネルは次のタスクのために使用できま�
 * クラスターからのノードの削除
 * クラスター全体の停止または再起動
 
-Avere コントロール パネルではデータの整合性が優先されるため、破壊的な操作を行う前に、変更されたデータをバックエンド ストレージに書き込もうとします。 これにより、Avere portal よりもより安全なオプションとなります。
+Avere コントロール パネルではデータの整合性が優先されるため、破壊的な操作を行う前に、変更されたデータをバックエンド ストレージに書き込もうとします。 このため、Azure portal よりも安全なオプションとなります。
 
 Avere コントロール パネルには Web ブラウザーからアクセスします。 支援が必要な場合、[vFXT クラスターへのアクセス](avere-vfxt-cluster-gui.md)の指示に従ってください。
 
@@ -69,7 +71,7 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 
 **[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
 
-クラスターがシャットダウンするとき、最初に状態メッセージを **[ダッシュ ボード]** タブに表示します。 しばらくすると、Avere コントロール パネル セッションは応答を停止し、これはクラスターがシャットダウンしたことを意味します。
+クラスターのシャットダウンが開始されると、最初に状態メッセージが **[ダッシュ ボード]** タブに表示されます。しばらくすると、メッセージが停止して Avere コントロール パネル セッションが応答を停止します。これはクラスターがシャットダウンしたことを意味します。
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>vfxt.py でクラスターを管理する
 
@@ -83,7 +85,7 @@ vfxt.py スクリプトは、以下のクラスター管理タスクに使用で
 * クラスターの停止または開始  
 * クラスターの破棄
 
-Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 これにより、Avere portal よりもより安全なオプションとなります。
+Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 このため、Azure portal よりも安全なオプションとなります。
 
 vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています。
 
@@ -95,7 +97,7 @@ vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster
 
 次の値を入力します。
 
-* クラスターのリソース グループ名、およびネットワークとストレージ リソースのリソース グループ名 (これらがクラスターと同じでない場合)
+* クラスターのリソース グループ名、およびネットワークとストレージ リソースのリソース グループ名 (クラスターと同じリソース グループでない場合)
 * クラスターの位置
 * クラスター ネットワークとサブネット
 * クラスター ノード アクセス ロール (組み込みロール [Avere 演算子](../role-based-access-control/built-in-roles.md#avere-operator)を使用)
@@ -139,7 +141,7 @@ vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-変更されたデータをクラスター キャッシュから記述したくない場合、オプション ``--quick-destroy`` を使用することができます。
+変更されたデータをクラスター キャッシュから保存しない場合、オプション ``--quick-destroy`` を使用できます。
 
 追加情報については、 [vfxt.py 使用ガイド](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)をお読みください。
 
@@ -195,7 +197,7 @@ vFXT クラスター専用の追加のリソースを作成した場合、クラ
 * クラスター ノードに関連付けられているデータ ディスク
 * クラスター コンポーネントに関連付けられているネットワーク インターフェイスとパブリック IP
 * 仮想ネットワーク
-* ストレージ アカウント (重要なデータがない場合**のみ**)
+* ストレージ コンテナーとストレージ アカウント (重要なデータがない場合**のみ**)
 * 可用性セット
 
 ![テスト クラスター用に作成されたリソースを表示する Azure portal の「すべてのリソース」一覧](media/avere-vfxt-all-resources-list.png)

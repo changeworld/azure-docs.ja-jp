@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6e8e8b20fc9b8e19b2f7c5f9c1b9e926580c9dbb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156065"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
 
@@ -28,7 +28,7 @@ ms.locfileid: "74278917"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->電話番号オプションが表示されない場合、検証に電話呼び出しを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、管理者に支援を要請する必要があります。
+>電話番号オプションが表示されない場合、検証にこのオプションを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、組織のヘルプ デスクに連絡して、さらに支援を依頼する必要があります。
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>[セキュリティ情報] ページからテキスト メッセージを設定する
 
@@ -92,7 +92,7 @@ ms.locfileid: "74278917"
 
 2. 利用可能なメソッドのドロップダウン リストから **[Phone - text ( *_your_phone_number_* )]\(電話 - テキスト (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
 
-    ![既定のサインインの方法を選択する](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+    ![既定のサインインのメソッドを選択する](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
     サインインに使用される既定のメソッドが、 **[Phone - text ( *_your_phone_number_* )]\(電話 - テキスト (<ユーザーの電話番号>)\)** に変更されます。
 
@@ -113,8 +113,8 @@ ms.locfileid: "74278917"
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 
-- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」を参照して、サインイン問題の解決のヒントやヘルプを確認する。
+- 「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事でサインインの問題に関するトラブルシューティングのヒントやヘルプを入手する。

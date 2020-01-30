@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 107bbed8aea692a76f6d5bf6bbf1da26277b2c85
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749974"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156575"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "75749974"
 
 ## <a name="prerequisites"></a>前提条件
 
-- グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- Log Analytics ワークスペースに対する共同作成者のアクセス許可を持つユーザー 
 
 
 ## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する

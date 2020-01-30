@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425586"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547593"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
-1. [Azure portal](https://portal.azure.com/) にサインインする サブスクリプション内、またはサブスクリプション内のリソース グループ内で[共同作成者](../role-based-access-control/built-in-roles.md)以上のロールが割り当てられている Azure アカウントでサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 サブスクリプション内、またはサブスクリプション内のリソース グループ内で[共同作成者](../role-based-access-control/built-in-roles.md)以上のロールが割り当てられている Azure アカウントでサインインします。
 
 1. ご利用のサブスクリプションが含まれているディレクトリを選択します。
 
@@ -68,6 +68,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     **[リソース グループ]** には **[新規作成]** を選択します。 テナントを含むリソース グループの**名前**を入力し、**リソース グループの場所**を選択してから、 **[作成]** を選択します。
 
     ![Azure portal でのサブスクリプションのリンク設定のフォーム](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
+    課金のために、複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションにリンクすることができます。 
 
 ## <a name="select-your-b2c-tenant-directory"></a>B2C テナント ディレクトリを選択する
 
@@ -87,7 +89,7 @@ Azure portal の上部のメニューにある **[ディレクトリ + サブス
 
 この操作は 1 回だけ実行する必要があります。 これらの手順を実行する前に、前の「[B2C テナントのディレクトリを選択する](#select-your-b2c-tenant-directory)」セクションの説明に従って Azure AD B2C テナントを含むディレクトリに切り替えていることを確認してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure portal のメニューで、 **[すべてのサービス]** を選択します。
 1. **[すべてのサービス]** 検索ボックスで、「**Azure AD B2C**」を検索し、検索結果の上にマウス ポインターを移動して、ヒント内の星のアイコンを選択します。 **Azure AD B2C** が Azure portal の **[お気に入り]** に表示されるようになりました。
 1. 新しいお気に入りの位置を変更する場合は、Azure portal のメニューに移動し、 **[Azure AD B2C]** を選択して、目的の位置まで上下にドラッグします。

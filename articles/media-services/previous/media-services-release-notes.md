@@ -13,26 +13,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968512"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513390"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。 
 
 ## <a name="a-idissuesknown-issues"></a><a id="issues"/>既知の問題
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
 
-| 問題 | 説明 |
+| 問題 | [説明] |
 | --- | --- |
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
 | パーセント エンコーディングが利用できない。 |Media Services は、ストリーミング コンテンツ (たとえば、`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。 このため、パーセント エンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。 |
@@ -50,15 +50,17 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 ### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Indexer](media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサは、2020 年 1 月 1 日に廃止されます。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
 
-詳細については、「[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer に移行する](migrate-indexer-v1-v2.md)」を参照してください。
+提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
+
+[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事もご覧ください。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
 ### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
+*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 1 日には廃止される予定です。
 
 詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
 
@@ -452,16 +454,16 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 
 * Get-AzureMediaServices 
 
-    次に例を示します。`Get-AzureMediaServicesAccount`
+    例: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    次に例を示します。`New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
+    例: `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    次に例を示します。`New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
+    例: `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    次に例を示します。`Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
+    例: `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>2013 年 6 月のリリース
 ### <a name="june_13_general_changes"></a>Media Services の変更点
@@ -557,7 +559,7 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -4,14 +4,14 @@ description: Avere vFXT のコード デモ チュートリアルへのリンク
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 406262be5f70ed891f657d184acff98331b6b7a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415393"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153702"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT デモ プロジェクト
 
@@ -19,13 +19,13 @@ ms.locfileid: "75415393"
 
 ## <a name="video-rendering"></a>ビデオのレンダリング
 
-* 「[Rendering using Azure Batch and Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)」 (Azure Batch と Avere vFXT を使用したレンダリング) - Azure Batch および Avere vFXT クラスターと共に Autodesk Maya を使用して、アニメーション ムービーを生成する方法を紹介する 60 分間のデモ
+* [Azure Batch と Avere vFXT を使用したレンダリング](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) - Azure Batch および Avere vFXT クラスターと共に Autodesk Maya を使用して、アニメーション ムービーを生成する方法を紹介する 60 分間のプロジェクト
 
-* 「[Why use the Avere vFXT for rendering?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md)」 (Avere vFXT をレンダリングに使用する理由) - Avere vFXT クラスターを使用した場合と使用しない場合の NAS のレンダリング時間を比較するデモ
+* 「[Why use the Avere vFXT for rendering?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md)」 (Avere vFXT をレンダリングに使用する理由) - Avere vFXT クラスターを使用した場合と使用しない場合のネットワーク接続ストレージのレンダリング時間を比較するデモ
 
 ## <a name="high-performance-computing"></a>ハイ パフォーマンス コンピューティング
 
-* 「[Best Practices for Improving Azure Virtual Machine (VM) Boot Time](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)」 (Azure 仮想マシン (VM) ブート時間を短縮するためのバスト プラクティス) - 数千台のコンピューティング クライアントを迅速に立ち上げるときに、Avere vFXT for Azure を使用して起動時間を短縮するための再現可能なテスト
+* [Azure 仮想マシン (VM) の起動時間を短縮するためのベスト プラクティス](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) - 数千台のコンピューティング クライアントを迅速に立ち上げるときに、Avere vFXT for Azure を使用して起動時間を短縮するための再現可能なテスト
 
 ## <a name="vfxt-performance"></a>vFXT のパフォーマンス
 

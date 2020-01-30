@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 0eea6700b8b248a87666071ee02572d356110cd0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830175"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509191"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -71,17 +71,22 @@ Network Watcher 拡張機能は、VM からトラフィックを生成または�
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG フロー ログの機能
 Azure ネットワーク リソースは、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) を使用して結合および管理できます。 NSG フロー ログを使用すると、NSG を介してすべてのトラフィックに関する 5 組のフロー情報をログに記録できます。 未処理のフロー ログは Azure ストレージ アカウントに書き込まれ、必要に応じてさらに処理、分析、クエリ実行、またはエクスポートできます。
 
-### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall-or-through-a-service-endpoints"></a>ファイアウォールと共に、またはサービス エンドポイントを経由して、ストレージ アカウント上で NSG フロー ログを使用する方法
+### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall"></a>ファイアウォールと共にストレージ アカウント上で NSG フロー ログを使用する方法
 
-ファイアウォールと共に、またはサービス エンドポイント経由で、ストレージ アカウントを使用するには、信頼できる Microsoft サービスからストレージ アカウントにアクセスできるようにする必要があります。
+ファイアウォールと共にストレージ アカウントを使用するには、信頼できる Microsoft サービスからストレージ アカウントにアクセスするための例外を指定する必要があります。
 
-* [NSG フロー ログの概要ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)で NSG を探して、ストレージ アカウントの名前を見つけます
-* ポータルのグローバル検索でストレージ アカウントの名前を入力して、ストレージ アカウントに移動します
+* ポータルのグローバル検索でストレージ アカウントの名前を入力するか、[[ストレージ アカウント] のページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)から、ストレージ アカウントに移動します
 * **[設定]** セクションで、 **[ファイアウォールと仮想ネットワーク]** を選択します
 * [許可するアクセス元] で **[選択されたネットワーク]** を選択します。 次に、 **[例外]** 下で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** の横にあるボックスにチェックを付けます 
 * 既に選択されている場合、変更は必要ありません。  
+* [NSG フロー ログの概要ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)でターゲットの NSG を見つけて、上記のストレージ アカウントを選択した状態で NSG フロー ログを有効にします。
 
 数分後にストレージ ログを確認できます。TimeStamp が更新されていることや新しい JSON ファイルが作成されていることがわかります。
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>ストレージ用のサービス エンドポイントで NSG フロー ログを使用する方法
+
+[サービス エンドポイントの有効化に関するチュートリアル](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)を参照してください。 
+
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>フロー ログのバージョン 1 と 2 の違い
 フロー ログ バージョン 2 では、"*フロー状態*" という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 詳細については、[こちら](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)を参照してください。

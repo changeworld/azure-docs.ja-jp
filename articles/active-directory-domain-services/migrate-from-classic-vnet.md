@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893061"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544159"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>プレビュー - クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
 
-Azure Active Directory Domain Services (AD DS) では、現在クラシック仮想ネットワーク モデルを使用しているお客様に対して、Resource Manager 仮想ネットワーク モデルへの 1 回限りの移動がサポートされています。
+Azure Active Directory Domain Services (AD DS) では、現在クラシック仮想ネットワーク モデルを使用しているお客様に対して、Resource Manager 仮想ネットワーク モデルへの 1 回限りの移動がサポートされています。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
 
-この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。 現在、この機能はプレビュー段階にあります。
+この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。 現在、この移行機能はプレビュー段階です。
 
 ## <a name="overview-of-the-migration-process"></a>移行プロセスの概要
 
@@ -106,7 +106,7 @@ Azure AD DS マネージド ドメインを準備してから移行するとき�
 
 ### <a name="ip-addresses"></a>IP アドレス
 
-移行後に、Azure AD DS マネージド ドメインのドメイン コントローラーの IP アドレスが変更されます。 これには、Secure LDAP エンドポイントのパブリック IP アドレスが含まれます。 新しい IP アドレスは、Resource Manager 仮想ネットワークの新しいサブネットのアドレス範囲内にあります。
+移行後に、Azure AD DS マネージド ドメインのドメイン コントローラーの IP アドレスが変更されます。 この変更には、Secure LDAP エンドポイントのパブリック IP アドレスが含まれます。 新しい IP アドレスは、Resource Manager 仮想ネットワークの新しいサブネットのアドレス範囲内にあります。
 
 ロールバックの場合、IP アドレスはロールバック後に変更される可能性があります。
 
@@ -122,13 +122,13 @@ Azure AD DS では通常、アドレス範囲内の最初の 2 つの使用可�
 
 既定では、無効なパスワードの試行が 2 分間に 5 回あった場合、アカウントが 30 分間ロックアウトされます。
 
-ロックアウトされたアカウントにサインインすることはできません。これは、Azure AD DS マネージド ドメインを管理する機能、またはアカウントで管理されているアプリケーションを管理する機能の妨げになる可能性があります。 Azure AD DS マネージド ドメインの移行後、アカウントでのサインインが繰り返し失敗し、永続的なロックアウトのように感じられる事態が発生する可能性があります。 移行後の 2 つの一般的なシナリオを次に示します。
+ロックアウトされたアカウントを使用してサインインすることはできません。これは、Azure AD DS マネージド ドメインまたはアカウントで管理されているアプリケーションを管理する機能の妨げになる可能性があります。 Azure AD DS マネージド ドメインの移行後、アカウントでのサインインが繰り返し失敗し、永続的なロックアウトのように感じられる事態が発生する可能性があります。 移行後の 2 つの一般的なシナリオを次に示します。
 
 * 有効期限が切れたパスワードを使用しているサービス アカウント。
     * サービス アカウントで、有効期限が切れたパスワードを使用してサインインを繰り返し試行します。これにより、アカウントがロックアウトされます。 この問題を解決するには、資格情報の有効期限が切れているアプリケーションまたは VM を見つけ、パスワードを更新します。
 * 悪意のあるエンティティが、ブルートフォース攻撃によるアカウントへのサインインを試行している。
     * VM がインターネットに公開されている場合、攻撃者は一般的なユーザー名とパスワードの組み合わせを使ってサインインを試みます。 このようなサインイン試行が繰り返し失敗したことによって、アカウントがロックアウトされる場合があります。 管理者アカウントがロックアウトされる可能性を最小化するため、たとえば *admin* や *administrator* などの一般的な名前の管理者アカウントを使用することはお勧めしません。
-    * インターネットに公開する VM の数を最小限に抑えます。 [Azure Bastion (現在はプレビュー段階)][azure-bastion] を使用すると、Azure portal を使用して VM に安全に接続できます。
+    * インターネットに公開する VM の数を最小限に抑えます。 [Azure Bastion][azure-bastion] を使用すると、Azure portal を使用して VM に安全に接続できます。
 
 移行後に一部のアカウントがロックアウトされる可能性があると思われる場合は、移行の最後の手順で、監査を有効にする方法や、細かい設定が可能なパスワード ポリシー設定を変更する方法について説明しています。
 
@@ -153,7 +153,7 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 
 | 手順    | 実行方法  | 推定時間  | ダウンタイム  | ロールバック/復元 |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [手順 1 - 新しい仮想ネットワークを更新して検索する](#update-and-verify-virtual-network-settings) | Azure ポータル | 約 15 分 | ダウンタイムは必要ありません | 該当なし |
+| [手順 1 - 新しい仮想ネットワークを更新して検索する](#update-and-verify-virtual-network-settings) | Azure portal | 約 15 分 | ダウンタイムは必要ありません | 該当なし |
 | [手順 2 - Azure AD DS マネージド ドメインを移行用に準備する](#prepare-the-managed-domain-for-migration) | PowerShell | 平均 15 から 30 分 | このコマンドが完了すると、Azure AD DS のダウンタイムが開始されます。 | ロールバックと復元を使用できます。 |
 | [手順 3 - Azure AD DS マネージド ドメインを既存の仮想ネットワークに移動する](#migrate-the-managed-domain) | PowerShell | 平均 1 から 3 時間 | このコマンドが完了すると、1 つのドメイン コントローラーを使用できます。ダウンタイムは終了します。 | 失敗した場合は、ロールバック (セルフサービス) と復元の両方を使用できます。 |
 | [手順 4 - レプリカ ドメイン コントローラーをテストして待機する](#test-and-verify-connectivity-after-the-migration)| PowerShell と Azure portal | コアの数に応じて 1 時間またはそれ以上 | 両方のドメイン コントローラーが使用可能で、正常に機能します。 | 該当なし。 最初の VM が正常に移行された後では、ロールバックまたは復元のオプションはありません。 |
@@ -164,11 +164,11 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 
 ## <a name="update-and-verify-virtual-network-settings"></a>仮想ネットワークの設定を更新して確認する
 
-移行を開始する前に、次の初期チェックと更新を完了してください。 これらの手順は、移行前にいつでも実行でき、Azure AD DS マネージド ドメインの操作には影響しません。
+移行プロセスを開始する前に、次の初期チェックと更新を完了してください。 これらの手順は、移行前にいつでも実行でき、Azure AD DS マネージド ドメインの操作には影響しません。
 
 1. ご利用のローカル Azure PowerShell 環境を最新バージョンに更新します。 移行手順を完了するには、少なくともバージョン *2.3.2* が必要です。
 
-    チェックと更新の方法については、[Azure PowerShell の概要][azure-powershell]に関するページを参照してください。
+    PowerShell のバージョンのチェックと更新の方法については、[Azure PowerShell の概要][azure-powershell]に関するページを参照してください。
 
 1. Resource Manager 仮想ネットワークを作成するか、既存の Resource Manager 仮想ネットワークを選択します。
 
@@ -210,7 +210,8 @@ Azure AD DS マネージド ドメインを移行用に準備するには、次�
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,17 +274,17 @@ Resource Manager デプロイ モデルでは、Azure AD DS マネージド ド�
 
 移行プロセスが正常に完了したら、いくつかのオプションの構成手順があります。監査ログや電子メールによる通知の有効化、細かい設定が可能なパスワード ポリシーの更新などです。
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Azure Monitor を使用して監査ログの受信登録を行う
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Azure Monitor を使用して監査ログの受信登録を行う
 
 Azure AD DS では、ドメイン コントローラーのイベントのトラブルシューティングと把握に役立つ監査ログが公開されます。 詳細については、[監査ログの有効化と使用][security-audits]に関するページを参照してください。
 
 テンプレートを使用して、ログで公開される重要な情報を監視できます。 たとえば、監査ログ ブック テンプレートでは、Azure AD DS マネージド ドメインで発生する可能性があるアカウントのロックアウトを監視できます。
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services の電子メールによる通知を構成する
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services の電子メールによる通知を構成する
 
 Azure AD DS マネージド ドメインで問題が検出されたときに通知を受けるには、Azure portal で電子メールによる通知の設定を更新します。 詳細については、[通知設定の構成][notifications]に関するページを参照してください。
 
-#### <a name="update-fine-grained-password-policy"></a>細かい設定が可能なパスワード ポリシーを更新する
+### <a name="update-fine-grained-password-policy"></a>細かい設定が可能なパスワード ポリシーを更新する
 
 必要に応じて、細かい設定が可能なパスワード ポリシーを更新して、既定の構成よりも制限を緩和することができます。 監査ログを使用して、制限の緩い設定に意味があるかどうかを判断し、必要に応じてポリシーを構成することができます。 移行後に繰り返しロックアウトされたアカウントのポリシー設定を確認して更新する場合、おおまかな手順は次のとおりです。
 
@@ -293,7 +294,7 @@ Azure AD DS マネージド ドメインで問題が検出されたときに通�
 1. VM 上のネットワーク トレースを使用して攻撃の発生元を特定し、それらの IP アドレスをブロックしてサインインを試行できないようにします。
 1. ロックアウトの問題が最小限である場合は、細かい設定が可能なパスワード ポリシーを、必要に応じた厳しさの制限になるように更新します。
 
-#### <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループを作成する
+### <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループを作成する
 
 Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 このネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能し、自動的には作成されません。 ネットワーク セキュリティ グループを作成し、必要なポートを開くには、次の手順を確認します。
 
@@ -301,6 +302,8 @@ Azure AD DS には、マネージド ドメインに必要なポートをセキ�
 1. Secure LDAP を使用する場合は、*TCP* ポート *636* の受信トラフィックを許可する規則をネットワーク セキュリティ グループに追加します。 詳細については、[Secure LDAP の構成][secure-ldap]に関するページを参照してください。
 
 ## <a name="roll-back-and-restore-from-migration"></a>移行のロールバックと復元
+
+移行プロセスの特定の時点までは、Azure AD DS マネージド ドメインのロールバックまたは復元を選択できます。
 
 ### <a name="roll-back"></a>ロールバック
 
@@ -316,7 +319,7 @@ Migrate-Aadds `
     -Credentials $creds
 ```
 
-### <a name="restore"></a>復元
+### <a name="restore"></a>[復元]
 
 最後の手段として、最新の利用可能なバックアップから Azure AD Domain Services を復元できます。 移行の手順 1 で、最新のバックアップを確実に使用可能にするため、バックアップが実行されます。 このバックアップは 30 日間保存されます。
 
@@ -331,7 +334,7 @@ Resource Manager デプロイ モデルへの移行後に問題が発生した�
 * [アカウント サインイン問題を解決する][troubleshoot-sign-in]
 * [Secure LDAP の接続に関する問題のトラブルシューティング][tshoot-ldaps]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS マネージド ドメインを Resource Manager デプロイ モデルに移行したら、[Windows VM を作成してドメインに参加][join-windows]させます。その後、[管理ツールをインストール][tutorial-create-management-vm]します。
 

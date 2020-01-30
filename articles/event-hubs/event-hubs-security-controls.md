@@ -1,18 +1,18 @@
 ---
 title: Azure Event Hubs のセキュリティ コントロール
-description: Azure Event Hubs を評価するためのセキュリティ コントロールのチェックリスト
+description: この記事では、Azure Event Hubs を評価するためのセキュリティ コントロールのチェックリスト (ネットワーク、ID、データ保護など) を提供します。
 services: event-hubs
 ms.service: event-hubs
 author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0769e88eb72b5b347dd9ebf4b1634501ca54098e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903538"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309508"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs のセキュリティ コントロール
 

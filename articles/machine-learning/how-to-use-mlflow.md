@@ -1,7 +1,7 @@
 ---
 title: ML 実験の MLflow Tracking
 titleSuffix: Azure Machine Learning
-description: MLflow に Azure Machine Learning を設定してメトリックと成果物をログに記録し、Databricks、ローカル環境、または VM 環境からモデルをデプロイします。
+description: Databricks クラスター、ローカル環境、または VM 環境に作成された ML モデルのメトリックと成果物をログに記録するように、Azure Machine Learning で MLflow を設定します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,25 +9,26 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47d4c1de12823eaf0aae5beeff776d50f8f5a6a7
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1263ecacc2af0559c726fb12c799d0e6d2f1014
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896362"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543343"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用してメトリックを追跡し、モデルをデプロイする (プレビュー)
+# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用してモデルのメトリックを追跡する (プレビュー)
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を Azure Machine Learning で有効にする方法について説明します。 これを実行することで、以下のことが可能になります。
+この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にして、MLflow の実験と Azure Machine Learning を接続する方法について説明します。 そうすることにより、[Azure Machine Learning ワークスペース](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)で実験のメトリックと成果物を追跡してログに記録することができます。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
 
-+ [Azure Machine Learning ワークスペース](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)で、実験のメトリックと成果物を追跡してログに記録します。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
+<!--
++ Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
+-->
 
-+ MLflow の実験を Azure Machine Learning Web サービスとしてデプロイします。 Web サービスとしてデプロイすることで、Azure Machine Learning の監視機能とデータ誤差検出機能を実稼働モデルに適用できます。 
-
-[MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。実験の環境がリモートのコンピューティング先、仮想マシン、ローカル コンピューター、Azure Databricks クラスターのいずれであるかにかかわらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。
+[MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。これは、実験の環境がローカル コンピューター、リモートのコンピューティング先、仮想マシン、Azure Databricks クラスターのいずれであるかにかかわらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。 
 
 次の図は、MLflow Tracking を使用して、実験の実行メトリックを追跡し、Azure Machine Learning ワークスペース内にモデル成果物を保存する例を示しています。
 
@@ -43,7 +44,7 @@ ms.locfileid: "75896362"
  MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用している場合にのみこれらの機能を利用できます。
 
 
-| | MLflow Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| | MLflow&nbsp;Tracking <!--& Deployment--> | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | ワークスペースの管理 |   | ✓ | ✓ | ✓ |
 | データ ストアの使用  |   | ✓ | ✓ | |
@@ -51,10 +52,11 @@ ms.locfileid: "75896362"
 | 成果物のアップロード | ✓ | ✓ |   | |
 | メトリックを表示する     | ✓ | ✓ | ✓ | ✓ |
 | コンピューティングの管理   |   | ✓ | ✓ | ✓ |
-| モデルをデプロイする    | ✓ | ✓ | ✓ | ✓ |
-|モデル パフォーマンスを監視する||✓|  |   |
-| データの誤差を検出する |   | ✓ |   | ✓ |
 
+<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
+|Monitor model performance||✓|  |   |
+| Detect data drift |   | ✓ |   | ✓ |
+-->
 ## <a name="prerequisites"></a>前提条件
 
 * [MLflow をインストール](https://mlflow.org/docs/latest/quickstart.html)します。
@@ -65,7 +67,7 @@ ms.locfileid: "75896362"
 
 Azure Machine Learning で MLflow Tracking を使用すると、ローカル実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
 
-Jupyter Notebook またはコード エディターでローカルで実行される Azure Machine Learning の実験で MLflow Tracking を使用するには、`azureml-contrib-run` パッケージをインストールします。
+Jupyter Notebook またはコード エディターでローカルで実行される Azure Machine Learning の実験で MLflow Tracking を使用するには、`azureml-mlflow` パッケージをインストールします。
 
 ```shell
 pip install azureml-mlflow
@@ -145,12 +147,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks の実行を追跡する
 
-Azure Machine Learning で MLflow Tracking を使用すると、Databricks の実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
+Azure Machine Learning で MLflow Tracking を使用すると、Azure Databricks の実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
 
-MLflow の実験を Azure Databricks で実行するには、[Azure Databricks ワークスペースとクラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を最初に作成する必要があります
+MLflow の実験を Azure Databricks で実行するには、[Azure Databricks ワークスペースとクラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を最初に作成する必要があります。 クラスターでは、PyPi から *azureml-mlflow* ライブラリを必ずインストールして、必要な関数とクラスにクラスターがアクセスできるようにします。
 
-クラスターでは、PyPi から *azureml-mlflow* ライブラリを必ずインストールして、必要な関数とクラスにクラスターがアクセスできるようにします。
-ここから、実験ノートブックをインポートして、それにクラスターをアタッチし、実験を実行します。 
+ここから、実験ノートブックをインポートして、Azure Databricks クラスターにアタッチし、実験を実行します。 
 
 ### <a name="install-libraries"></a>ライブラリのインストール
 
@@ -388,12 +389,12 @@ If you don't plan to use the logged metrics and artifacts in your workspace, the
 
 1. Enter the resource group name. Then select **Delete**.
 
-
-## Example notebooks
-
-The [MLflow with Azure ML notebooks](https://aka.ms/azureml-mlflow-examples) demonstrate and expand upon concepts presented in this article.
-
-## Next steps
-* [Manage your models](concept-model-management-and-deployment.md).
-* Monitor your production models for [data drift](how-to-monitor-data-drift.md).
  -->
+
+ ## <a name="example-notebooks"></a>サンプルの Notebook
+
+[Azure ML ノートブックでの MLflow](https://aka.ms/azureml-mlflow-examples) は、この記事で提示した概念を示し、さらに詳しく説明します。
+
+## <a name="next-steps"></a>次のステップ
+* [モデルを管理します](concept-model-management-and-deployment.md)。
+* [データの誤差](how-to-monitor-data-drift.md)について実稼働モデルを監視します。

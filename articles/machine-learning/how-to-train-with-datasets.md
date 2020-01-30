@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982451"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543309"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ df = dataset.to_pandas_dataframe()
 
 * 使用するスクリプトのスクリプト ディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
 * トレーニング スクリプト *train_titanic.py*。
-* トレーニングの入力データセット `titanic`。
+* トレーニングの入力データセット `titanic`。 `as_named_input()` は、トレーニング スクリプトで割り当てられた名前によって入力データセットを参照できるようにするために必要です。 
 * 実験のコンピューティング先。
 * 実験の環境定義。
 
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 データ ファイルをトレーニング用のコンピューティング先で使用できるようにする場合は、[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) を使用して、それによって参照されているファイルをマウントまたはダウンロードします。
 
 ### <a name="mount-vs-download"></a>マウントと ダウンロード
-データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データ サイズがコンピューティング ディスクのサイズを超えている場合、または読み込み対象がスクリプト内のデータセットの一部のみの場合は、マウントをお勧めします。 ディスク サイズよりも大きいデータセットのダウンロードは失敗し、マウントしても、処理時にスクリプトで使用されるデータの一部しか読み込まれません。 データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 データセットによって参照されるファイルすべてのがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。
+データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データ サイズがコンピューティング ディスクのサイズを超えている場合、または読み込み対象がスクリプト内のデータセットの一部のみの場合は、マウントをお勧めします。 ディスク サイズよりも大きいデータセットのダウンロードは失敗し、マウントしても、処理時にスクリプトで使用されるデータの一部しか読み込まれません。 
 
+データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 データセットによって参照されるファイルすべてのがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。
+
+任意の形式のファイルをダウンロードしたりマウントしたりすることは、Azure BLOB ストレージ、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットに対してサポートされています。 
 
 ### <a name="create-a-filedataset"></a>FileDataset を作成する
 
@@ -126,7 +129,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>エスティメーターを構成する
 
-エスティメーターの `inputs` パラメーターを使用してデータセットを渡す代わりに、`script_params` を使用してデータセットを渡し、トレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 このようにデータにアクセスし、既存のトレーニング スクリプトを使用できます。
+エスティメーターで `inputs` パラメーターを使用してデータセットを渡すほか、`script_params` を使用してデータセットを渡し、引数を使用してトレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 こうすると、azureml-sdk とは無関係にトレーニング スクリプトを保持できます。 つまり、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できるようになります。
 
 scikit-learn 実験の実行の送信には、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) エスティメーター オブジェクトが使用されます。 SKlearn エスティメーターによるトレーニングの詳細については[こちら](how-to-train-scikit-learn.md)を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895744"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260125"
 ---
 # <a name="configure-rules-preview-features"></a>ルールを構成する (プレビュー機能)
 
@@ -33,7 +33,7 @@ IoT Central のルールは、接続されているデバイスからアクテ�
 
 条件とは、ルールがトリガーされる基になるものです。 現在、複数の条件をルールに追加すると、それらの条件は論理的に AND 処理されます。 言い換えると、ルールが true と評価されるには、すべての条件が満たされている必要があります。  
 
-次のスクリーンショットでは、温度が 90 度より高く、かつ湿度が 10 未満になるタイミングを条件で確認します。 これらのステートメントが両方とも true である場合、ルールの評価結果は true になり、アクションがトリガーされます。
+次のスクリーンショットでは、温度が 70&deg; F より高く、かつ湿度が 10 未満になるタイミングを条件で確認します。 これらのステートメントが両方とも true である場合、ルールの評価結果は true になり、アクションがトリガーされます。
 
 ![条件](media/howto-configure-rules/conditions.png)
 
@@ -47,7 +47,7 @@ IoT Central のルールは、接続されているデバイスからアクテ�
 
 IoT Edge モジュールに適用されるルールには制限が適用されます。 モジュールが異なるテレメトリに基づくルールは、有効なルールとして評価されません。 次の例で考えてみましょう。 ルールの最初の条件はモジュール A の温度テレメトリに基づくもので、ルールの 2 番目の条件はモジュール B の湿度テレメトリに基づくものであるとします。この場合、2 つの条件はモジュールが異なっているため、無効な条件のセットになります。 このルールは有効ではないため、ルールを保存しようとするとエラーがスローされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT Central アプリケーションでルールを構成する方法を習得したので、次を実行できます。
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b882e6fb697d272ddc06e8d263f4c2144ebd017
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493970"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546930"
 ---
 # <a name="add-columns-module"></a>列の追加モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、2 つのデータセットを連結します。 入力として指定した 2 つのデータセットのすべての列を結合し、単一のデータセットを作成します。 3 つ以上のデータセットを連結する必要がある場合は、**列の追加**の複数のインスタンスを使用します。
 
@@ -35,15 +35,15 @@ ms.locfileid: "73493970"
 
 3. パイプラインを実行します。
 
-### <a name="results"></a>結果
+### <a name="results"></a>[結果]
 パイプラインの実行後:
 
-- 新しいデータセットの最初の行を表示するには、**列の追加**の出力を右クリックして、[Visualize]\(視覚化\) を選択します。
+- 新しいデータセットの最初の行を表示するには、 **[列の追加]** モジュールを右クリックして、[可視化] を選択します。 または、モジュールを選択し、右側のパネルの **[出力]** タブに切り替え、 **[Port outputs]\(ポートの出力\)** 内のヒストグラム アイコンをクリックして結果を可視化します。
 
 新しいデータセットの列数は、両方の入力データセットの列の合計数と等しくなります。
 
 入力データセットに同じ名前の 2 つの列がある場合は、列の名前に数値のサフィックスが追加されます。 たとえば、TargetOutcome という名前の列のインスタンスが 2 つある場合、左側の列の名前が TargetOutcome_1 に変更され、右側の列の名前が TargetOutcome_2 に変更されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

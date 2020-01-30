@@ -4,14 +4,14 @@ description: Avere vFXT for Azure でクライアントをマウントする方�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415282"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153413"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT クラスターをマウントする
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ function mount_round_robin() {
 ## <a name="create-the-mount-command"></a>mount コマンドを作成する
 
 > [!NOTE]
-> Avere vFXT クラスターを作成するときに新しい BLOB コンテナーを作成しなかった場合は、クライアントをマウントする前に、「[Configure storage](avere-vfxt-add-storage.md)」(ストレージの構成) の手順に従います。
+> Avere vFXT クラスターを作成するときに新しい BLOB コンテナーを作成しなかった場合は、クライアントをマウントする前に、「[ストレージの構成](avere-vfxt-add-storage.md)」の説明に従ってストレージ システムを追加します。
 
 クライアントで ``mount`` コマンドを実行すると、vFXT クラスター上の仮想サーバー (vserver) が、ローカル ファイル システムのパスにマップされます。 形式は ``mount <vFXT path> <local path> {options}`` です
 
-mount コマンドには 3 つの要素があります。
+mount コマンドには次の 3 つの要素があります。
 
-* vFXT パス - (後で説明する、IP アドレスと名前空間ジャンクション パスの組み合わせ)
+* vFXT パス - P アドレスとクラスターの名前空間ジャンクション パスの組み合わせ (後述)
 * ローカル パス - クライアント上のパス
-* mount コマンドのオプション - (「[Mount command arguments](#mount-command-arguments)」(mount コマンドの引数) を参照)
+* mount コマンドのオプション - 「[mount コマンドの引数](#mount-command-arguments)」を参照
 
 ### <a name="junction-and-ip"></a>ジャンクションと IP
 
 vserver のパスは、その "*IP アドレス*" と、"*名前空間ジャンクション*" へのパスの組み合わせです。 名前空間ジャンクションは、ストレージ システムが追加されるときに定義された仮想パスです。
 
-クラスターが BLOB ストレージで作成された場合、名前空間パスは `/msazure` です
+クラスターが BLOB ストレージで作成された場合、コンテナーの名前空間パスは `/msazure` です
 
 例: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-クラスターを作成した後でストレージを追加した場合は、名前空間ジャンクション パスは、ジャンクションを作成するときに **[Namespace path]\(名前空間のパス\)** で設定した値に対応します。 たとえば、名前空間のパスとして ``/avere/files`` を使用した場合、クライアントは <*IP アドレス*>:/avere/files をローカルなマウント ポイントにマウントします。
+クラスターを作成した後にストレージを追加した場合は、名前空間ジャンクション パスは、ジャンクションを作成するときに **[名前空間のパス]** で設定した値です。 たとえば、名前空間のパスとして ``/avere/files`` を使用した場合、クライアントは <*IP アドレス*>:/avere/files をローカルなマウント ポイントにマウントします。
 
-![[Namespace path]\(名前空間のパス\) フィールドに "/avere/files" が設定された [Add new junction]\(新しいジャンクションの追加\) ダイアログ](media/avere-vfxt-create-junction-example.png)
+![[Namespace path]\(名前空間のパス\) フィールドに "/avere/files" が設定された [Add new junction]\(新しいジャンクションの追加\) ダイアログ](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 IP アドレスは、vserver に対して定義されたクライアント側の IP アドレスの 1 つです。 クライアント側の IP アドレスの範囲は、Avere Control Panel の 2 つの場所で確認できます。
 
@@ -100,7 +100,7 @@ IP アドレスは、vserver に対して定義されたクライアント側の
 
 クライアントのマウントがシームレスに行われるように、mount コマンドで以下の設定と引数を渡します。
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | 必須の設定 | |
 --- | ---
@@ -109,14 +109,10 @@ IP アドレスは、vserver に対して定義されたクライアント側の
 ``mountproto=netid`` | このオプションは、マウント操作に対するネットワーク エラーの適切な処理をサポートします。
 ``retry=n`` | 一時的なマウントの障害を回避するため、``retry=30`` を設定します。 (フォアグラウンド マウントの場合は、別の値が推奨されます。)
 
-| 推奨される設定  | |
---- | ---
-``nointr``            | このオプションをサポートする従来のカーネル (2008 年 4 月より前) を使用するクライアントの場合は、オプション "nointr" が推奨されます。 オプション "intr" が既定値であることに注意してください。
-
 ## <a name="next-steps"></a>次のステップ
 
-クライアントをマウントした後は、クライアントを使用してバックエンド データ ストレージ (コア ファイラー) を設定できます。 他のセットアップ タスクの詳細については、以下のドキュメントをご覧ください。
+クライアントをマウントしたら、それらを使用して、クラスター上の新しい Blob Storage コンテナーにデータをコピーできます。 新しいストレージにデータを取り込む必要がない場合は、追加のセットアップ タスクについて、他のリンクを参照してください。
 
-* [クラスターのコア ファイラーにデータを移動する](avere-vfxt-data-ingest.md) - 複数のクライアントとスレッドを使用して、データを効率的にアップロードする方法
+* [クラスターのコア ファイラーにデータを移動する](avere-vfxt-data-ingest.md) - 複数のクライアントとスレッドを使用して、データを効率的に新しいコア ファイラーにアップロードする方法
 * [クラスターのチューニングをカスタマイズする](avere-vfxt-tuning.md) - ワークロードに合わせてクラスターの設定を調整します
 * [クラスターを管理する](avere-vfxt-manage-cluster.md) - クラスターの開始または停止およびノードの管理の方法

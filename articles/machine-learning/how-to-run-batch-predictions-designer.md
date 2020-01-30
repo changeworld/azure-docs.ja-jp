@@ -1,110 +1,146 @@
 ---
-title: Azure Machine Learning デザイナーを使用してバッチ予測を実行する (プレビュー)
+title: Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 titleSuffix: Azure Machine Learning
 description: デザイナーを使用し、モデルをトレーニングしてバッチ予測を設定する方法について説明します。 HTTP ライブラリからトリガーできる、パラメーター化された Web サービスとしてパイプラインをデプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532055"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311888"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-このガイドでは、デザイナーを使用してモデルをトレーニングし、バッチ予測パイプラインと Web サービスを設定する方法について説明します。 バッチ予測では、大規模なデータ セットでトレーニング済みモデルに継続的に、また、オンデマンドでスコアを付けることができます。これは任意で HTTP ライブラリからトリガーできる Web サービスとして構成されます。 
+この記事では、デザイナーを使用してバッチ予測パイプラインを作成する方法について説明します。 バッチ予測を使用すると、任意の HTTP ライブラリからトリガーできる Web サービスを使用して、大規模なデータセットをオンデマンドで継続的にスコア付けすることができます。
 
-SDK を使用してバッチ スコアリング サービスを設定する方法については、それに付随する[ガイド](how-to-run-batch-predictions.md)を参照してください。
-
-このガイドでは、以下のタスクについて学習します。
+このガイドでは、次のタスクの実行について学習します。
 
 > [!div class="checklist"]
-> * パイプラインで基本的な ML 実験を作成する
-> * パラメーター化されたバッチ推論パイプラインを作成する
-> * パイプラインを手動または REST エンドポイントから管理し、実行する
+> * バッチ推論パイプラインを作成して発行する
+> * パイプライン エンドポイントを使用する
+> * エンドポイントのバージョンを管理する
+
+SDK を使用してバッチ スコアリング サービスを設定する方法については、付属の[ガイド](how-to-run-batch-predictions.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-
-1. [ワークスペース](tutorial-1st-experiment-sdk-setup.md)を作成します。
-
-1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
-
-このガイドでは、デザイナーで単純なパイプラインを構築するための基本的知識を前提としています。 デザイナーのガイド付き説明については、[こちら](tutorial-designer-automobile-price-train-score.md)のチュートリアルを完了してください。 
-
-## <a name="create-a-pipeline"></a>パイプラインを作成する
-
-バッチ推論パイプラインを作成するには、まず、機械学習実験が必要です。 新しいパイプラインは、ワークスペースの **[デザイナー]** タブに移動し、 **[Easy-to-use prebuilt modules]\(あらかじめ構築された使いやすいモジュール\)** オプションを選択して作成します。
-
-![デザイナー ホーム](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-次は実演目的の単純な機械学習モデルです。 データは、Azure Open Datasets 糖尿病データから作成された登録済みデータセットです。 Azure Open Datasets からデータセットを登録する方法については、[ガイド セクション](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)を参照してください。 データはトレーニング セットと検証セットに分割され、増幅されたデシジョン ツリーがトレーニングされ、スコアが付けられます。 推論パイプラインを作成するには、パイプラインを少なくとも 1 回実行する必要があります。 パイプラインを実行するには、 **[実行]** ボタンをクリックします。
-
-![簡単な実験を作成する](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+このガイドは、既にトレーニング パイプラインがあることを前提としています。 デザイナーのガイド付き概要については、[デザイナーのチュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) を完了してください。 
 
 ## <a name="create-a-batch-inference-pipeline"></a>バッチ推論パイプラインを作成する
 
-パイプラインが実行されたので、 **[実行]** と **[公開]** の横で **[Create inference pipeline]\(推論パイプラインの作成\)** という新しいオプションが利用できるようになりました。 ドロップダウンをクリックし、 **[Batch inference pipeline]\(バッチ推論パイプライン\)** を選択します。
+推論パイプラインを作成できるようにするには、トレーニング パイプラインを少なくとも 1 回実行する必要があります。
 
-![バッチ推論パイプラインを作成する](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. ワークスペースの **[デザイナー]** タブに移動します。
 
-結果的に既定のバッチ推論パイプラインが与えられます。 これには、元のパイプライン実験セットアップのノード、スコア付けのための生データのノード、元のパイプラインに対して生データにスコアを付けるためのノードが含まれます。
+1. 予測の作成に使用するモデルをトレーニングするトレーニング パイプラインを選択します。
 
-![既定のバッチ推論パイプライン](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. パイプラインを**実行**します。
 
-他のノードを追加し、バッチ推論プロセスの動作を変更できます。 この例では、スコア付け前に入力データからランダムでサンプルを抽出するためのノードを追加します。 **[Partition and Sample]** ノードを作成し、それを生データとスコア付けノードの間に置きます。 次に **[Partition and Sample]** ノードをクリックし、設定とパラメーターにアクセスできるようにします。
+    ![パイプラインを実行する](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![新しいノード](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+トレーニング パイプラインを実行したので、バッチ推論パイプラインを作成できます。
 
-*[Rate of sampling]\(サンプリング率\)* パラメーターでは、元のデータ セットからランダムにサンプルを抽出するパーセントが制御されます。 これは頻繁に調整する目的に便利なパラメーターであり、パイプライン パラメーターとして有効にします。 パイプライン パラメーターは実行時に変更できて、REST エンドポイントからパイプラインを再実行するとき、ペイロード オブジェクトに指定できます。 
+1. **[実行]** の横にある新しい **[Create inference pipeline]\(推論パイプラインの作成\)** ドロップダウンを選択します。
 
-パイプライン パラメーターとしてこのフィールドを有効にするには、フィールドの上にある省略記号をクリックし、 **[Add to pipeline parameter]\(パイプライン パラメーターに追加する\)** をクリックします。 
+1. **[Batch inference pipeline]\(バッチ推論パイプライン\)** を選択します。
 
-![サンプル設定](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![バッチ推論パイプラインを作成する](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+結果的に既定のバッチ推論パイプラインが与えられます。 
 
-次に、パラメーターに名前を付け、既定値を指定します。 この名前は、パラメーターを識別し、REST 呼び出しに指定する目的で使用されます。
+### <a name="add-a-pipeline-parameter"></a>パイプライン パラメーターを追加する
 
-![パイプライン パラメーター](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+新しいデータで予測を作成するには、このパイプライン ドラフト ビューで別のデータセットを手動で接続するか、データセットのパラメーターを作成します。 パラメーターを使用すると、実行時のバッチ推論プロセスの動作を変更できます。
 
-## <a name="deploy-batch-inferencing-pipeline"></a>バッチ推論パイプラインをデプロイする
+このセクションでは、予測を行う別のデータセットを指定するためのデータセット パラメーターを作成します。
 
-以上でパイプラインをデプロイする準備が整いました。 **[デプロイ]** ボタンをクリックします。エンドポイントを設定するためのインターフェイスが開きます。 ドロップダウンをクリックし、 **[New PipelineEndpoint]\(新しいパイプライン エンドポイント\)** を選択します。
+1. データセット モジュールを選択します。
 
-![パイプライン デプロイ](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. キャンバスの右側にペインが表示されます。 ペインの下部で **[Set as pipeline parameter]\(パイプライン パラメーターとして設定\)** を選択します。
+   
+    パラメーターの名前を入力するか、既定値をそのまま使用します。
 
-エンドポイントに名前と任意で説明を指定します。 下部の近くに、既定値 0.8 で構成した `sample-rate` パラメーターが表示されます。 準備ができたら、 **[デプロイ]** をクリックします。
+## <a name="publish-your-batch-inferencing-pipeline"></a>バッチ推論パイプラインを発行する
 
-![エンドポイントを設定する](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+これで、推論パイプラインをデプロイする準備ができました。 これにより、パイプラインをデプロイし、他のユーザーが使用できるようにします。
 
-## <a name="manage-endpoints"></a>エンドポイントを管理する 
+1. **[発行]** を選択します。
 
-デプロイが完了したら、 **[エンドポイント]** タブに移動し、先ほど作成したエンドポイントの名前をクリックします。
+1. 表示されたダイアログで、 **[PipelineEndpoint]** のドロップダウンを展開し、 **[New PipelineEndpoint]\(新しい PipelineEndpoint\)** を選択します。
 
-![エンドポイント リンク](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. エンドポイント名と説明 (省略可能) を指定します。
 
-この画面には、特定のエンドポイントの下で公開されたすべてのパイプラインが表示されます。 推論パイプラインをクリックします。
+    ダイアログの下部に、トレーニング時に使用したデータセット ID の既定値を使って構成したパラメーターが表示されます。
 
-![推論パイプライン](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. **[発行]** を選択します。
 
-パイプライン詳細ページには、パイプラインの詳細な実行履歴と接続文字列情報が表示されます。 **[実行]** ボタンをクリックし、パイプラインの手動実行を作成します。
+![パイプラインを発行する](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![パイプラインの詳細](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-実行セットアップでは、実行の説明を入力したり、パイプライン パラメーターの値を変更したりできます。 今回は、サンプル レート 0.9 で推論パイプラインを再実行します。 **[実行]** をクリックし、パイプラインを実行します。
+## <a name="consume-an-endpoint"></a>エンドポイントを使用する
 
-![パイプラインの実行](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+これで、データセット パラメーターを含む発行済みパイプラインが完成しました。 このパイプラインは、トレーニング パイプラインで作成されたトレーニング済みのモデルを使用して、パラメーターとして指定したデータセットをスコア付けします。
 
-**[使用]** タブには、パイプラインを再実行するための REST エンドポイントが含まれています。 REST を呼び出すには、OAuth 2.0 ベアラー型認証ヘッダーが必要です。 ワークスペースの認証を設定し、パラメーター化された REST を呼び出す方法については、次の[チュートリアル セクション](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)をご覧ください。
+### <a name="submit-a-pipeline-run"></a>パイプラインの実行を送信する 
+
+このセクションでは、パイプラインの手動実行を設定し、パイプライン パラメーターを変更して新しいデータをスコア付けします。 
+
+1. デプロイが完了したら、 **[エンドポイント]** セクションに移動します。
+
+1. **[Pipeline endpoints]\(パイプライン エンドポイント\)** を選択します。
+
+1. 作成したエンドポイントの名前を選択します。
+
+![エンドポイント リンク](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. **[Published pipelines]\(発行済みパイプライン\)** を選択します。
+
+    この画面には、このエンドポイントで発行されたすべての発行済みパイプラインが表示されます。
+
+1. 発行したパイプラインを選択します。
+
+    パイプライン詳細ページには、パイプラインの詳細な実行履歴と接続文字列情報が表示されます。 
+    
+1. **[実行]** を選択して、パイプラインの手動実行を作成します。
+
+    ![パイプラインの詳細](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. 別のデータセットを使用するようにパラメーターを変更します。
+    
+1. **[実行]** を選択してパイプラインを実行します。
+
+### <a name="use-the-rest-endpoint"></a>REST エンドポイントを使用する
+
+パイプライン エンドポイントと発行されたパイプラインを使用する方法についての情報は、 **[エンドポイント]** セクションにあります。
+
+パイプライン エンドポイントの REST エンドポイントは、実行の概要パネルで確認できます。 エンドポイントを呼び出すことにより、既定の発行済みパイプラインを使用します。
+
+発行済みパイプラインは、 **[Published pipelines]\(発行済みパイプライン\)** ページでも使用できます。 発行済みパイプラインを選択し、その REST エンドポイントを見つけます。 
+
+![REST エンドポイントの詳細](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダーが必要です。 ワークスペースの認証を設定し、パラメーター化された REST を呼び出す方法については、次の[チュートリアル セクション](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)をご覧ください。
+
+## <a name="versioning-endpoints"></a>エンドポイントのバージョン管理
+
+デザイナーは、エンドポイントに発行する後続の各パイプラインにバージョンを割り当てます。 REST 呼び出しでパラメーターとして実行するパイプライン バージョンを指定できます。 バージョン番号を指定しないと、デザイナーは既定のパイプラインを使用します。
+
+パイプラインを発行するときに、そのエンドポイントの新しい既定のパイプラインにするように選択できます。
+
+![既定のパイプラインを設定する](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+エンドポイントの **[Published pipelines]\(発行済みパイプライン\)** タブで新しい既定のパイプラインを設定することもできます。
+
+![既定のパイプラインを設定する](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>次のステップ
 

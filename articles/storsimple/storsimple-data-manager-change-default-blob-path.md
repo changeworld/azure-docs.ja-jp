@@ -1,25 +1,17 @@
 ---
-title: BLOB パスを既定値から変更する | Microsoft Docs
+title: BLOB パスを既定値から変更する
 description: BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723800"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270626"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 
@@ -217,12 +209,12 @@ Azure 関数を作成するには、次の手順を実行します。
         ```
 
     
-    4. **[Save]** をクリックします。
+    4. **[保存]** をクリックします。
 
         ![[ファイルの表示] リンク](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Azure 関数が作成されました。 この関数は、データ変換ジョブによって新しい BLOB が生成されるたびにトリガーされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換する](storsimple-data-manager-ui.md)

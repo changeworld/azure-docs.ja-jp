@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 524a831c63e2a034766b874cc45bb039e3185b50
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534199"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264765"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -315,6 +315,7 @@ Azure Machine Learning Studio では、グラフ内のデータ ポイントを�
 * 特徴一覧が指定されていない (すべての特徴を使用する) 場合、200 の特徴に制限されます。
 * コンピューティング サイズは、データを処理できる十分な大きさにする必要があります。 
 * 特定のモニターの実行について、開始日と終了日の範囲に該当するデータがデータセットに存在することを確認します。
+* データセット モニターは、50 行以上を含むデータセットでのみ機能します。 
 
 データセット内の列、つまり特徴は、次の表の条件に基づいてカテゴリまたは数値として分類されます。 特徴がこれらの条件を満たしていない場合 (たとえば、string 型の列に一意の値が 100 個以上含まれる場合)、その特徴はデータ ドリフト アルゴリズムから削除されますが、プロファイリングは引き続き行われます。 
 

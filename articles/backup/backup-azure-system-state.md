@@ -1,36 +1,34 @@
 ---
 title: Windows のシステム状態を Azure にバックアップする
 description: Windows Server コンピューターまたは Windows コンピューターのシステム状態を Azure にバックアップする方法を紹介します。
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: バックアップ方法; バックアップ方法; ファイルとフォルダーのバックアップ
-ms.service: backup
+ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: saurse
-ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "76294016"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
-この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。
+
+この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 ここでは基本事項について説明します。
 
 Azure Backup の詳細については、こちらの [概要記事](backup-overview.md)を参照してください。
 
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
+
 Windows Server のシステム状態をバックアップするには、データを保存するリージョンに Recovery Services コンテナーを作成する必要があります。 また、ストレージのレプリケート方法を決定する必要もあります。
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成するには
+
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューの **[すべてのサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、 **[Recovery Services コンテナー]** をクリックします。
 
-    ![Create Recovery Services Vault step 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
+    ![Create Recovery Services Vault step 1](./media/backup-azure-system-state/open-rs-vault-list.png)
 
     サブスクリプションに Recovery Services コンテナーがある場合は、そのコンテナーが一覧表示されます。
 3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
@@ -51,19 +49,20 @@ Windows Server のシステム状態をバックアップするには、デー�
     または
     * 使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン メニューをクリックします。
 
-   リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+   リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」をご覧ください。
 
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。 この選択により、バックアップ データの送信先となるリージョンが決まります。
 
 8. [Recovery Services コンテナー] ブレードの下部にある **[作成]** をクリックします。
 
-    Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、 **[最新の情報に更新]** をクリックしてください。
+    Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域に状態が通知され、確認することが出来ます。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、 **[最新の情報に更新]** をクリックしてください。
 
     ![[最新の情報に更新] ボタンをクリックする](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
 
     Recovery Services コンテナーの一覧にコンテナーが表示されたら、ストレージ冗長性を設定する準備が整いました。
 
 ### <a name="set-storage-redundancy-for-the-vault"></a>コンテナーのストレージ冗長性を設定する
+
 Recovery Services コンテナーを作成する際は、必要に応じてストレージの冗長性が構成されるようにしてください。
 
 1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。
@@ -87,6 +86,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 コンテナーを作成したら、Windows のシステム状態をバックアップするための構成を行います。
 
 ## <a name="configure-the-vault"></a>コンテナーの構成
+
 1. Recovery Services コンテナー (先ほど作成したコンテナー) のブレードの [作業の開始] セクションで **[バックアップ]** をクリックし、 **[バックアップ作業の開始]** ブレードで、 **[バックアップの目標]** を選択します。
 
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
@@ -127,7 +127,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![コンテナー資格情報のダウンロード](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[Save]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
+    コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[保存]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。
 
     ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -164,6 +164,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 エージェントがインストールされ、コンピューターがコンテナーに登録されました。 バックアップを構成してスケジュールする準備ができました。
 
 ## <a name="back-up-windows-server-system-state"></a>Windows Server のシステム状態のバックアップ
+
 初回バックアップには、次の 2 つのタスクが含まれています。
 
 * バックアップのスケジュール
@@ -184,7 +185,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 2. Recovery Services エージェントで、 **[バックアップのスケジュール]** をクリックします。
 
-    ![Windows Server のバックアップのスケジュール](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
+    ![Schedule a Windows Server backup](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]** をクリックします。
 
@@ -212,17 +213,21 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 
-4. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
-
+5. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
+    > [!NOTE]
+    > MARS エージェントは、各システム状態のバックアップの前に、事前チェックの一部として SFC /verifyonly をトリガーします。 これは、システム状態の一部としてバックアップされるファイルが、Windows のバージョンに対応する正しいバージョンを持つことを確認するためのものです。 システム ファイル チェッカー (SFC) の詳細については [こちらの記事](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc)を参照してください。
+    >
 
 初回バックアップが完了すると、 **[ジョブは完了しました]** 状態が Backup コンソールに表示されます。
 
   ![IR complete](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>疑問がある場合
+
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 * [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
 * Windows Server のシステム状態をバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。

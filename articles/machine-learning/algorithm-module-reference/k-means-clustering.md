@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213913"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546641"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
@@ -107,7 +107,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合、[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用することで、タグ付けしたデータセットを追加してモデルをトレーニングします。  
   
-### <a name="results"></a>結果
+### <a name="results"></a>[結果]
 
 モデルの構成とトレーニングが完了したら、スコアの生成に使用できるモデルは完成です。 しかし、モデルのトレーニングには複数の方法があり、結果を表示して使用するには複数の方法があります。 
 
@@ -115,9 +115,9 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 [Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
 
-1. **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを右クリックします。
+1. **[Train Clustering Model]\(クラスタリング モデルのトレーニング\)** モジュールを選択し、右側のパネルを開きます。
 
-2. **[Trained model]\(トレーニング済みのモデル\)** を選択し、 **[Save as Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。
+2. **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、トレーニング済みモデルのコピーを保存します。
 
 保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 パイプラインで使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
 
@@ -127,7 +127,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 1. **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを右クリックします。
 
-2. **[Results dataset]\(結果データセット\)** を選択し、 **[Visualize]\(視覚化\)** を選択します。
+2. **[可視化]** を選択します。
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>最適なクラスタリング モデルを生成するためのヒント  
 

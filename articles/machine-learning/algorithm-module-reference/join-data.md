@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0d24a0d90671935cb7224f17ffad368d4305020c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232620"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548511"
 ---
 # <a name="join-data"></a>データの結合
 
@@ -62,10 +62,10 @@ ms.locfileid: "74232620"
     * 両方の入力テーブルのキーを表示するには、このオプションを選択します。
     * 左側の入力のキー列のみを返すには、オフにします。
 
-1. パイプラインを実行するか、[Join Data]\(データの結合\) モジュールを選択して **[Run Selected]\(選択項目の実行\)** を選択して結合を実行します。
+1. パイプラインを実行します。
 
-1. 結果を表示するには、 **[Join Data]\(データの結合\)**  >  **[Results dataset]\(結果データセット\)**  >  **[可視化]** を右クリックします。
+1. 結果を表示するには、 **[Join Data]\(データの結合\)** を右クリックし、 **[可視化]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

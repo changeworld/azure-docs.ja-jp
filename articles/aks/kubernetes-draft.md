@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732020"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292964"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>クイック スタート:Draft を使用して Azure Kubernetes Service (AKS) で開発する
 
 Draft は、Kubernetes クラスターでアプリケーション コンテナーをパッケージ化して実行する際に役立つオープン ソース ツールです。 Draft を使用すると、コードの変更が発生したときに、バージョン コントロールに変更をコミットすることなく、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[GitHub の Draft のドキュメント][draft-documentation]を参照してください。
 
-この記事では、Draft パッケージを使用して、AKS 上でアプリケーションを実行する方法を示します。
+この記事では、Draft を使用して、AKS 上でアプリケーションをパッケージ化して実行する方法を示します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -172,7 +172,7 @@ draft config set registry mydraftacr.azurecr.io
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
-このクイックスタートでは、[Draft GitHub リポジトリのサンプル java アプリケーション][example-java]が使用されます。 GitHub からアプリケーションを複製し、`draft/examples/example-java/` ディレクトリに移動します。
+このクイックスタートでは、[Draft GitHub リポジトリのサンプル Java アプリケーション][example-java]が使用されます。 GitHub からアプリケーションを複製し、`draft/examples/example-java/` ディレクトリに移動します。
 
 ```console
 git clone https://github.com/Azure/draft

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889010"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263153"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>クイック スタート:自分の仮想ネットワークに Azure Databricks ワークスペースを作成する
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
@@ -41,17 +41,24 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     |設定|推奨値|[説明]|
     |-------|---------------|-----------|
-    |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
-    |アドレス空間|10.1.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。 CIDR の範囲は /16 から /24 の間である必要があります|
     |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|**[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。|
-    |Location|\<ユーザーに最も近いリージョンを選択\>|お客様の仮想ネットワークをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。|
+    |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
+    |リージョン|\<ユーザーに最も近いリージョンを選択\>|お客様の仮想ネットワークをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。|
+
+    ![Azure portal 上の仮想ネットワークの [基本]](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. **[Next: IP Addresses >]\(次へ: IP アドレス >\)** を選択し、次の設定を適用します。 次に、 **[Review + create]\(確認と作成\)** を選択します。
+    
+    |設定|推奨値|[説明]|
+    |-------|---------------|-----------|
+    |IPv4 アドレス空間|10.2.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。 CIDR の範囲は /16 から /24 の間である必要があります|
     |サブネット名|既定値 (default)|仮想ネットワークの既定のサブネットの名前を選択します。|
-    |サブネットのアドレス範囲|10.1.0.0/24|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります。 使用中のサブネットのアドレス範囲を編集することはできません。|
+    |サブネットのアドレス範囲|10.2.0.0/24|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります。 使用中のサブネットのアドレス範囲を編集することはできません。|
 
-    ![Azure portal で仮想ネットワークを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![Azure portal で仮想ネットワークの IP 構成を設定する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. デプロイが完了したら、仮想ネットワークに移動し、 **[設定]** で **[アドレス空間]** を選択します。 *[その他のアドレス範囲の追加]* というボックスをオンにし、`10.179.0.0/16` を挿入して **[保存]** を選択します。
+4. **[Review + create]\(確認と作成\)** タブで、 **[作成]** を選択して仮想ネットワークをデプロイします。 デプロイが完了したら、仮想ネットワークに移動し、 **[設定]** で **[アドレス空間]** を選択します。 *[その他のアドレス範囲の追加]* というボックスをオンにし、`10.179.0.0/16` を挿入して **[保存]** を選択します。
 
     ![Azure 仮想ネットワークのアドレス空間](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
@@ -70,6 +77,13 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     |Resource group|databricks-quickstart|仮想ネットワークに使用したものと同じリソース グループを選択します。|
     |Location|\<ユーザーに最も近いリージョンを選択\>|仮想ネットワークと同じ場所を選択します。|
     |価格レベル|Standard と Premium のいずれかを選択します。|価格レベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。|
+
+    ![Azure Databricks ワークスペースの作成 (基本)](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. **[基本]** ページで設定の入力を完了したら、 **[Next: Networking >]\(次へ: ネットワーク >\)** を選択して、次の設定を適用します。
+
+    |設定|推奨値|[説明]|
+    |-------|---------------|-----------|
     |自分の仮想ネットワーク (VNet) に Azure Databricks ワークスペースをデプロイする|はい|この設定により、仮想ネットワークに Azure Databricks ワークスペースをデプロイすることができます。|
     |Virtual Network|databricks-quickstart|前のセクションで作成した仮想ネットワークを選択します。|
     |パブリック サブネット名|public-subnet|既定のパブリック サブネット名を使用します。|
@@ -77,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     |プライベート サブネット名|private-subnet|既定のプライベート サブネット名を使用します。|
     |プライベート サブネットの CIDR 範囲|10.179.0.0/18|/26 までの CIDR 範囲を使用します (26 も含まれます)。|
 
-    ![Azure portal で Azure Databricks ワークスペースを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![Azure portal で Azure Databricks ワークスペースに VNet 情報を追加する](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. デプロイが完了したら、Azure Databricks リソースに移動します。 仮想ネットワーク ピアリングが無効になっていることに注意してください。 また、概要ページのリソース グループとマネージド リソース グループにも注目してください。 
 

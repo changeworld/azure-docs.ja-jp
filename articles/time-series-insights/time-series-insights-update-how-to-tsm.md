@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497667"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152359"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
@@ -64,9 +64,9 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="delete-an-instance"></a>インスタンスを削除する
 
-1. 型を選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
+1. インスタンスを選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
 
-   [![[削除] を選択して、型を削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [![[削除] を選択して、インスタンスを削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. **[削除]** を選択して削除を確定します。
 

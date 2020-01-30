@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922371"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549072"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -40,16 +40,7 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 ## <a name="trigger---example"></a>トリガー - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#trigger---c-example)
-* [C# スクリプト (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>トリガー - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus キュー メッセージをログに記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この機能は[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus のキュー メッセージをログに記録します。
 
@@ -110,68 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>トリガー - F# の例
-
-次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、Service Bus キュー メッセージを記録します。 
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-F# スクリプト コードを次に示します。
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>トリガー - Java の例
-
-次の Java 関数は、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)からの `@ServiceBusQueueTrigger` 注釈を使用して、Service Bus キュー トリガーの構成について記述します。 この関数は、キューにあるメッセージを取得し、ログに追加します。
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Service Bus トピックにメッセージが追加されたときに、Java 関数もトリガーできます。 次の例では、トリガー構成を記述する `@ServiceBusTopicTrigger` 注釈を使用します。
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この機能は[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus のキュー メッセージをログに記録します。 
 
@@ -204,11 +134,11 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>トリガー - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 次の例では、トリガーを使用して ServiceBus キュー メッセージを読み取る方法を示します。
 
-ServiceBus のバインディングは *function.json* で定義され、そこで *type* は `serviceBusTrigger` に設定されます。
+Service Bus のバインディングは *function.json* で定義され、そこで *type* は `serviceBusTrigger` に設定されます。
 
 ```json
 {
@@ -255,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>トリガー - 属性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+次の Java 関数は、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)からの `@ServiceBusQueueTrigger` 注釈を使用して、Service Bus キュー トリガーの構成について記述します。 この関数は、キューにあるメッセージを取得し、ログに追加します。
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Service Bus トピックにメッセージが追加されたときに、Java 関数もトリガーできます。 次の例では、トリガー構成を記述する `@ServiceBusTopicTrigger` 注釈を使用します。
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>トリガー - 属性と注釈
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用して Service Bus トリガーを構成します。
 
@@ -274,7 +241,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus アカウントを指定できます。
+  次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus 接続文字列を含むアプリ設定の名前を指定できます。
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -286,7 +253,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
+  完全な例については、「[トリガー - 例](#trigger---example)」を参照してください。
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -314,6 +281,28 @@ def main(msg: func.ServiceBusMessage):
 * クラスに適用される `ServiceBusAccount` 属性。
 * "AzureWebJobsServiceBus" アプリの設定。
 
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueTrigger` 注釈を使用すると、Service Bus キュー メッセージの作成時に実行される関数を作成できます。 使用可能な構成オプションには、キュー名と接続文字列名があります。
+
+`ServiceBusTopicTrigger` 注釈を使用すると、関数をトリガーするデータを対象とするトピックとサブスクリプションを指定できます。
+
+詳細については、トリガーの[例](#trigger---example)を参照してください。
+
+---
+
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
 次の表は、*function.json* ファイルと `ServiceBusTrigger` 属性で設定したバインド構成のプロパティを説明しています。
@@ -322,18 +311,32 @@ def main(msg: func.ServiceBusMessage):
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBusTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
-|**name** | 該当なし | 関数コード内のキューまたはトピック メッセージを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
+|**name** | 該当なし | 関数コード内のキューまたはトピック メッセージを表す変数の名前。 |
 |**queueName**|**QueueName**|監視するキューの名前。  トピックではなくキューを監視する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**connection**|**[接続]**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
-|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
+|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
+|**isSessionsEnabled**|**IsSessionsEnabled**|[セッション対応の](../service-bus-messaging/message-sessions.md)キューまたはサブスクリプションに接続する場合は `true`。 それ以外の場合は `false` (既定値)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# と C# スクリプトでは、キューまたはトピック メッセージに次のパラメーター型を使用できます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+キューまたはトピック メッセージに次のパラメーター型を使用できます。
+
+* `string` - メッセージがテキストである場合。
+* `byte[]` - バイナリ データの場合に便利です。
+* カスタム型 - メッセージに JSON が含まれている場合、Azure Functions は JSON データの逆シリアル化を試みます。
+* `BrokeredMessage` - [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドで逆シリアル化されたメッセージを返します。
+
+これらのパラメーター型は Azure Functions バージョン 1.x 用です。2.x 以降では、`BrokeredMessage` の代わりに [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+キューまたはトピック メッセージに次のパラメーター型を使用できます。
 
 * `string` - メッセージがテキストである場合。
 * `byte[]` - バイナリ データの場合に便利です。
@@ -342,7 +345,21 @@ C# と C# スクリプトでは、キューまたはトピック メッセージ
 
 これらのパラメーターは Azure Functions バージョン 1.x 用です。2.x 以降では、`BrokeredMessage` の代わりに [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
 
-JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピック メッセージにアクセスします。 Service Bus メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`context.bindings.<name from function.json>` を使用して、キューまたはトピック メッセージにアクセスします。 Service Bus メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+キュー メッセージは、`func.ServiceBusMessage` として型指定されたパラメーターを介して関数で使用できます。 Service Bus メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+受信 Service Bus メッセージは、`ServiceBusQueueMessage` または `ServiceBusTopicMessage` パラメーターを使用して利用できます。
+
+[詳細についての例を参照してください。](#trigger)
+
+---
 
 ## <a name="trigger---poison-messages"></a>トリガー - 有害メッセージ
 
@@ -381,18 +398,9 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 
 キューまたはトピック メッセージを送信するには、Azure Service Bus 出力バインドを使用します。
 
-## <a name="output---example"></a>出力 - 例
+### <a name="output---example"></a>出力 - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#output---c-example)
-* [C# スクリプト (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>出力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、Service Bus キュー メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -406,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
 
@@ -457,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>出力 - F# の例
-
-次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-単一のメッセージを作成する F# スクリプト コードを次に示します。
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>出力 - Java の例
-
-次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
-
-Java 関数は、Service Bus トピックにも書き込むことができます。 次の例では、出力バインディングの構成を記述する`@ServiceBusTopicOutput`注釈を使用します。 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>出力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [JavaScript スクリプト関数](functions-reference-node.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
 
@@ -581,11 +517,11 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>出力 - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-次の例では、Python で ServiceBus キューに書き出す方法を示します。
+次の例では、Python で Service Bus キューに書き出す方法を示します。
 
-ServiceBus のバインディング定義は *function.json* で定義され、そこで *type* は `serviceBus` に設定されます。
+Service Bus のバインディング定義は *function.json* で定義され、そこで *type* は `serviceBus` に設定されます。
 
 ```json
 {
@@ -631,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>出力 - 属性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
+
+Java 関数は、Service Bus トピックにも書き込むことができます。 次の例では、出力バインディングの構成を記述する`@ServiceBusTopicOutput`注釈を使用します。 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>出力 - 属性と注釈
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs) 属性を使用します。
 
@@ -646,7 +621,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus アカウントを指定できます。
+次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus 接続文字列を含むアプリ設定の名前を指定できます。
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -657,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+完全な例については、「[出力 - 例](#output---example)」を参照してください。
 
-`ServiceBusAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルで使用する Service Bus アカウントを指定できます。  詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
+`ServiceBusAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルで使用する Service Bus アカウントを指定できます。  詳細については、[トリガー - 属性](#trigger---attributes-and-annotations)をご覧ください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput` と `ServiceBusTopicOutput` 注釈を使用して、関数の出力としてメッセージを書き込むことができます。 これらの注釈で修飾されたパラメーターは `OutputBinding<T>` として宣言されている必要があります。ここで、`T` はメッセージの型に対応する型です。
+
+---
 
 ## <a name="output---configuration"></a>出力 - 構成
 
@@ -669,11 +662,11 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBus" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "out" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
-|**name** | 該当なし | 関数コード内のキューまたはトピックを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
+|**name** | 該当なし | 関数コード内のキューまたはトピック メッセージを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
 |**queueName**|**QueueName**|キューの名前。  トピックではなくキューのメッセージを送信する場合にのみ設定します。
-|**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
+|**topicName**|**TopicName**|トピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
 |**connection**|**[接続]**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
-|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
+|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -681,7 +674,9 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Azure Functions 1.x では、キューが存在しない場合に `accessRights` を `manage` に設定していると、ランタイムによってキューが作成されます。 Functions バージョン 2.x 以降では、キューまたはトピックが既に存在する必要があります。存在しないキューまたはトピックを指定した場合、関数は失敗します。 
 
-C# とC# スクリプトでは、出力バインドに次のパラメーター型を使用できます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+出力バインドには、次のパラメーターの型を使用します。
 
 * `out T paramName` - `T` は任意の JSON シリアル化可能な型にすることができます。 関数が終了したときにこのパラメーターの値が null の場合、Functions は、null オブジェクトでメッセージを作成します。
 * `out string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
@@ -696,9 +691,36 @@ C# 関数を使用する場合:
 
 * セッション ID にアクセスするには、 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
 
-JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) JavaScript オブジェクトを `context.binding.<name>` に割り当てることができます。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-C# 以外の言語で、セッションが有効なキューにメッセージを送信するには、組み込みの出力バインドではなく、[Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) を使用します。
+出力バインドには、次のパラメーターの型を使用します。
+
+* `out T paramName` - `T` は任意の JSON シリアル化可能な型にすることができます。 関数が終了したときにこのパラメーターの値が null の場合、Functions は、null オブジェクトでメッセージを作成します。
+* `out string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
+* `out byte[]` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
+* `out BrokeredMessage` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません (Functions 1.x の場合)。
+* `out Message` - パラメーター値が null の場合は、関数が終了したときに、Functions はメッセージを作成しません (Functions 2.x 以降の場合)
+* `ICollector<T>` または `IAsyncCollector<T>`- 複数のメッセージを作成する場合。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
+
+C# 関数を使用する場合:
+
+* 非同期関数には、`out` パラメーターの代わりに戻り値または `IAsyncCollector` が必要です。
+
+* セッション ID にアクセスするには、 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) JavaScript オブジェクトを `context.binding.<name>` に割り当てることができます。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+組み込みの出力バインドではなく、[Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) を使用します。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+組み込みの出力バインドではなく、[Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) を使用します。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 
@@ -726,6 +748,12 @@ C# 以外の言語で、セッションが有効なキューにメッセージ�
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
             }
         }
     }
@@ -735,10 +763,8 @@ C# 以外の言語で、セッションが有効なキューにメッセージ�
 |プロパティ  |Default | [説明] |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
-|autoComplete|true|トリガーをすぐに完了としてマークする (オートコンプリート) か、呼び出しの処理が完了するまで待機するか。|
+|autoComplete|true|トリガーがメッセージをすぐに完了としてマークする (オートコンプリート) か、complete を呼び出すために関数が正常に終了するまで待機するか。|
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 |
-|prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。|
-
 
 ## <a name="next-steps"></a>次のステップ
 

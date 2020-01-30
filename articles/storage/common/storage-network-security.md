@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973470"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514733"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -380,8 +380,8 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure Import Export      | Microsoft.ImportExport     | Import/Export サービスを使用して、Azure のデータのインポートと Azure からのデータのエクスポートを行えるようにします。 [詳細については、こちらを参照してください](/azure/storage/common/storage-import-export-service)。  |
-| Azure Monitor            | Microsoft.Insights         | セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細については、こちらを参照してください](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
+| Azure Monitor            | Microsoft.Insights         | リソース診断ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 [詳細については、こちらを参照してください](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。

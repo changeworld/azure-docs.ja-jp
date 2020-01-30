@@ -4,14 +4,14 @@ description: サブスクリプション所有者のアクセス許可を持た�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415051"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153277"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Avere vFXT のデプロイを所有者以外に承認する
 
@@ -72,7 +72,7 @@ ms.locfileid: "75415051"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-この手順の実行後、このロールに割り当てられるすべてのユーザーに、サブスクリプションに対する以下のアクセス許可が付与されます。
+このプロセスの完了後、このロールに割り当てられるすべてのユーザーに、サブスクリプションに対する以下のアクセス許可が付与されます。
 
 * ネットワーク インフラストラクチャを作成および構成する
 * クラスター コントローラーを作成する

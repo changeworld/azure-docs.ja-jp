@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs リソースの分散型の共同開発 | Microsoft Docs
+title: Azure DevTest Labs リソースの分散型の共同開発
 description: DevTest Lab リソースを開発する分散型の共同開発環境を設定する際のベスト プラクティスについて説明します。
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543766"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170122"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs リソースの分散型の共同開発のためのベスト プラクティス
 分散型の共同開発により、さまざまなチームや個人がコード ベースを開発し、保守することができます。 成功させるには、開発プロセスは情報を作成、共有、統合する能力に左右されます。 この重要な開発原則は、Azure DevTest Labs 内で使用できます。 ラボ内には、企業内のさまざまなラボ間で一般的に分散されているさまざまな種類のリソースがあります。 さまざまな種類のリソースは、次の 2 つの領域に集中しています。
@@ -57,8 +57,8 @@ ms.locfileid: "67543766"
    
 この階層構造により、マスター ブランチでより高いレベルの品質を維持しながら開発できます。また、ラボに複数のリポジトリが接続されているため、柔軟性が向上します。
 
-## <a name="next-steps"></a>次の手順    
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ    
+次の記事をご覧ください。
 
 - [Azure portal](devtest-lab-add-artifact-repo.md) または [Azure Resource Management テンプレート](add-artifact-repository.md)を使用して、ラボにリポジトリを追加します。
 - [DevTest ラボの成果物](devtest-lab-artifact-author.md)

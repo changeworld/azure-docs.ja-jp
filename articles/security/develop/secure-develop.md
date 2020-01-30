@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928072"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513985"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -26,7 +26,7 @@ ms.locfileid: "68928072"
 この記事では、次の SDL フェーズについて説明します。
 
 - 実装
-- 確認
+- 検証
 
 ## <a name="implementation"></a>実装
 実装フェーズの対象は、早期防止のためのベスト プラクティスを確立し、コードからセキュリティの問題を検出して削除することです。
@@ -89,7 +89,7 @@ Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サ
 
 ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。
 
-ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[パスワード リセットのセルフサービス](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)、その他が提供されて、パスワード管理に役立ちます。
+ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[セルフサービス パスワード リセット ](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)、その他が提供されて、パスワード管理に役立ちます。
 
 既定のアカウントへの攻撃を防ぐには、すべてのキーやパスワードが置換可能で、リソースをインストールした後で生成または置換されたことを確認します。
 
@@ -99,7 +99,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 アプリケーションで[ファイルのアップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
-マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および[System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) をインストールします。
+マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) をインストールします。
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
 
@@ -107,7 +107,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 機密性の高いコンテンツをブラウザーにキャッシュしないでください。 ブラウザーでは、キャッシュと履歴のために情報を保存できます。 キャッシュされたファイルは、フォルダーに保存されます (Internet Explorer の場合は Temporary Internet Files フォルダー)。 これらのページが再び参照されると、ブラウザーではキャッシュからページが表示されます。 機密情報 (住所、クレジット カードの詳細、社会保障番号、ユーザー名など) がユーザーに表示された場合、この情報がブラウザーのキャッシュに保存されるので、ブラウザーのキャッシュを調べることで、または単にブラウザーの **[戻る]** ボタンをクリックすることで、情報を取得できる可能性があります。
 
-## <a name="verification"></a>確認
+## <a name="verification"></a>検証
 検証フェーズには、コードが、前のフェーズで確立されたセキュリティとプライバシーの原則を満たすことを確認する包括的な作業が含まれます。
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>アプリケーションの依存関係の脆弱性を発見して修正する
@@ -150,7 +150,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 
 [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) には、Azure プラットフォームの複数のサービス用の SVT が含まれています。 定期的にこれらの SVT を実行し、Azure サブスクリプションと、アプリケーションを構成するさまざまなリソースが、セキュリティで保護された状態であることを確認します。 また、AzSK の継続的インテグレーション/継続的デプロイ (CI/CD) 拡張機能を使用して、これらのテストを自動化することもできます。SVT を Visual Studio の拡張機能として使用できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事では、セキュリティで保護されたアプリケーションを設計してデプロイするのに役立つセキュリティ制御とアクティビティが推奨されています。
 
 - [セキュリティで保護されたアプリケーションを設計する](secure-design.md)

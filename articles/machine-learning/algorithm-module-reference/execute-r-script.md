@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: dce4fee57a6d712534ba265cc932e10e66fc9899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232634"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312279"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
-この記事では、**R スクリプトの実行**モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
+この記事では、**R スクリプトの実行**モジュールを使用して、Azure Machine Learning デザイナー パイプラインで R コードを実行する方法について説明します。
 
 R を使用すると、既存のモジュールでは現在サポートされていない次のようなタスクを実行できます。 
 - カスタム データ変換を作成する
@@ -125,7 +125,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. パイプラインを実行します。  
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 **R スクリプトの実行**モジュールは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
 
@@ -368,7 +368,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | rvest        | 0.3.4      | 
 | scales       | 1.0.0      | 
 | selectr      | 0.4-1      | 
-| spatial      | 7.3-11     | 
+| 空間      | 7.3-11     | 
 | splines      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
 | stats        | 3.5.1      | 
@@ -400,6 +400,6 @@ azureml_main <- function(dataframe1, dataframe2){
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

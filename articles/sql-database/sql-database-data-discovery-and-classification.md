@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552551"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279199"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
 
@@ -184,6 +184,7 @@ PowerShell を使用して、Azure SQL Database と Managed Instance の分類�
 
 - [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](sql-database-auditing.md) を構成することを検討します。
+- データの検出と分類に関する YouTube プレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | データ公開](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。
 
 <!--Anchors-->
 [What is data discovery & classification]: #subheading-1

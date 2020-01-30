@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/29/2019
+ms.date: 01/16/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cb0f3d054f9afd0c606f80fd6fc5d553eff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 29418e0000f917f7184a230c04b93adeae44efef
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916317"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261196"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js を使用して認証要求内でカスタムの状態を渡す
+
 OAuth 2.0 で定義されているように、"*状態*" パラメーターは認証要求に含まれ、クロスサイト リクエスト フォージェリ攻撃を防ぐためにもトークン応答で返されます。 既定では、JavaScript (MSAL.js) 用 Microsoft Authentication Library により、ランダムに生成された一意の "*状態*" パラメーター値が認証要求で渡されます。
 
 状態パラメーターは、リダイレクト前に、アプリの状態情報をエンコードするために使用することもできます。 アプリ内のユーザーの状態 (ユーザーがいたページまたはビューなど) を、このパラメーターへの入力として渡すことができます。 MSAL.js ライブラリを使用すると、カスタムの状態を `Request` オブジェクトの状態パラメーターとして渡すことができます。
@@ -40,10 +41,18 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
 
-例:
+> [!Note]
+> キャッシュされたトークンをスキップしてサーバーに移動する場合は、ブール型の `forceRefresh` を、ログインまたはトークンの要求を行うために使用する AuthenticationParameters オブジェクトに渡してください。
+> `forceRefresh` は、アプリケーションのパフォーマンスに影響するため、既定では使用しないでください。
+> キャッシュに依存すると、ユーザーのエクスペリエンスが向上します。
+> キャッシュのスキップは、現在キャッシュされているデータに最新の情報がないことがわかっている場合にのみ使用する必要があります。
+> たとえば、更新されたロールで新しいトークンを取得する必要があるユーザーに対して、ロールを追加する管理ツールなどです。
+
+次に例を示します。
 
 ```javascript
 let loginRequest = {

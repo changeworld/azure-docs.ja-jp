@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2e14b1bcc991a009ed9b3267477933706e1ec474
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977520"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289953"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -82,7 +82,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 ### <a name="requirements"></a>必要条件
 
--    [Azure Resource Manager サービス エンドポイント](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Visual Studio Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
+-    [Azure Resource Manager サービス エンドポイント](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)を使用して Visual Studio Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
 -   Azure Repos Git 統合で構成されたデータ ファクトリ。
 
@@ -330,7 +330,7 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
 
-このような条件下で既定のパラメーター化テンプレートをオーバーライドするには、リポジトリのルート フォルダーに arm-template-parameters-definition.json という名前のファイルを作成します。 正確なファイル名を使用する必要があります。 Data Factory は、コラボレーション ブランチからだけでなく、現在 Azure Data Factory ポータルにあるどのブランチからでもこのファイルを読み取ります。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
+このような条件下で既定のパラメーター化テンプレートをオーバーライドするには、データ ファクトリ Git 統合のためのルート フォルダーとして指定されたフォルダー内に arm-template-parameters-definition.json という名前のファイルを作成します。 正確なファイル名を使用する必要があります。 Data Factory は、コラボレーション ブランチからだけでなく、現在 Azure Data Factory ポータルにあるどのブランチからでもこのファイルを読み取ります。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
 

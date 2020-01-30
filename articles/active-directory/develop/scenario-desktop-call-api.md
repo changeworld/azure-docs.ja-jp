@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36aa220b49b8b71c79e4fe6f63afedee6db76a68
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423864"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293336"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ - Web API の呼び出し
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ:Web API を呼び出す
 
 トークンを取得すると、保護された Web API を呼び出せます。
 
-## <a name="calling-a-web-api"></a>Web API の呼び出し
+## <a name="call-a-web-api"></a>Web API を呼び出す
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -66,9 +66,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL での Web API の呼び出し
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL での Web API の呼び出し
 
-トークンを取得するメソッドは `MSALResult` オブジェクトを返します。 `MSALResult` により、Web API を呼び出すために使用できる `accessToken` プロパティが公開されます。 保護された Web API にアクセスするための呼び出しを行う前に、アクセス トークンを HTTP Authorization ヘッダーに追加する必要があります。
+トークンを取得するメソッドは `MSALResult` オブジェクトを返します。 `MSALResult` により、Web API を呼び出すために使用できる `accessToken` プロパティが公開されます。 保護された Web API にアクセスするための呼び出しを行う前に、アクセス トークンを HTTP Authorization ヘッダーに追加してください。
 
 Objective-C:
 
@@ -96,9 +96,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>複数の API の呼び出し - 増分同意と条件付きアクセス
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>複数の API の呼び出し:増分同意と条件付きアクセス
 
-同じユーザーに対して複数の API を呼び出す必要がある場合には、最初の API のトークンを取得すると、`AcquireTokenSilent` を呼び出すだけで、ほとんどの場合、他の API のトークンをサイレントに取得できます。
+同じユーザーに対して複数の API を呼び出すには、最初の API のトークンを取得した後、`AcquireTokenSilent` を呼び出します。 その他の API のトークンは、ほとんどの場合、自動的に取得されます。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -108,10 +108,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-対話が必要になるのは、以下のようなケースです。
+対話は、次の場合に必要です。
 
-- ユーザーが最初の API については同意したが、より多くのスコープ (増分同意) について同意する必要が生じた。
-- 最初の API は多要素認証を必要としなかったが、次の API は多要素認証を必要とする。
+- ユーザーが最初の API については同意したが、より多くのスコープについて同意する必要が生じた。 この種の同意は、増分同意 と呼ばれます。
+- 最初の API は多要素認証を必要としなかったが、次の API は必要とする。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

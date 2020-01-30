@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953089"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513611"
 ---
 # <a name="offline-evaluation"></a>オフライン評価
 
-オフライン評価は、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストおよび評価できるようにする方法です。 オフライン評価では、アプリケーションから Rank API に送信された過去のデータを使用して、さまざまな順位のパフォーマンスを比較します。
+オフライン評価は、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストおよび評価できるようにする方法です。 オフライン評価では、アプリケーションから Rankおよび Reward API に送信された過去のデータを使用して、さまざまな順位のパフォーマンスを比較します。
 
 オフライン評価は、日付の範囲で実行されます。 設定できる範囲の終わりは、現在の時間までです。 範囲の始まりは、[データ保持期間](how-to-settings.md)として指定された日数を超えてはいけません。
 
@@ -56,9 +56,9 @@ Personalizer では、オフライン評価プロセスを使用して、最適�
 
 ## <a name="how-offline-evaluations-are-done"></a>オフライン評価の実行方法
 
-オフライン評価は、**反事実的評価**と呼ばれる方法を使用して行われます。 
+オフライン評価は、**反事実的評価**と呼ばれる方法を使用して行われます。
 
-Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測することが不可能である (ユーザーが自分の見たものと異なる何かを見せられた場合に何が起こったのかを知ることができない) という仮定に基づき、測定された報酬からのみ学習します。 
+Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測することが不可能である (ユーザーが自分の見たものと異なる何かを見せられた場合に何が起こったのかを知ることができない) という仮定に基づき、測定された報酬からのみ学習します。
 
 これは、評価に使用される概念的なプロセスです。
 
@@ -70,11 +70,11 @@ Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
@@ -96,7 +96,7 @@ Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測
 * 規制上または責任ある使用上の考慮事項のためにパーソナル化に使用すべきではない、望ましくない特徴はありますか。 望ましくない特徴の代用となる特徴 (よく似ている特徴、関連がある特徴など) はありますか。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Personalizer の構成](how-to-settings.md)
-[オフライン評価の実行](how-to-offline-evaluation.md) [Personalizer のしくみ](how-personalizer-works.md)を理解する
+[オフライン評価の実行](how-to-offline-evaluation.md)[Personalizer のしくみ](how-personalizer-works.md)を理解する

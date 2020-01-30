@@ -1,6 +1,6 @@
 ---
 title: Apache Spark との統合 - Azure Event Hubs | Microsoft Docs
-description: Apache Spark と統合して、Event Hubs での構造化ストリームを有効にします
+description: この記事では、Apache Spark と統合して、Event Hubs での構造化ストリームを有効にする方法について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343394"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311684"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark と Event Hubs の統合
 
@@ -86,7 +86,7 @@ df.write
   .save() 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Apache Spark の Event Hubs Connector を利用し、故障に耐え、拡張可能なストリームを設定する方法がわかりました。 構造化ストリームと Spark ストリームと共に Event Hubs を使用する方法については、次のリンクで学習できます。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する | Microsoft Docs
+title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシンを作成および管理する方法を説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854260"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167112"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 この記事では、Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する方法について説明します。 PowerShell スクリプトを使用して、Azure DevTest Labs のラボで仮想マシンの作成を自動化できます。 
@@ -189,7 +189,7 @@ Azure portal で VM を作成するときに、Azure Resource Manager テンプ�
 5. **[実行]** を選択します。
 6. VM の作成のベースとなった**イメージのプロパティ**が表示されます。 
 
-## <a name="set-expiration-date"></a>有効期限の設定
+## <a name="set-expiration-date"></a>有効期限を設定する
 トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 サンプルの [PowerShell スクリプト](#powershell-script) セクションに示されているように、PowerShell を使用して VM の作成時に有効期限を設定できます。
 
 ラボ内のすべての既存の VM の有効期限を設定する PowerShell スクリプトの例を次に示します。
@@ -224,5 +224,5 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 ```
 
 
-## <a name="next-steps"></a>次の手順
-次の内容を参照してください。[Azure DevTest Labs の Azure PowerShell ドキュメント](/powershell/module/az.devtestlabs/)
+## <a name="next-steps"></a>次のステップ
+次のコンテンツをご覧ください: [Azure DevTest Labs の Azure PowerShell ドキュメント](/powershell/module/az.devtestlabs/)

@@ -1,6 +1,6 @@
 ---
 title: Azure リレー ポート設定 | Microsoft Docs
-description: Azure リレー ポートの値について説明します。
+description: この記事には、Azure Relay のポート値に必要な構成を示す表が含まれています。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789928"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514886"
 ---
 # <a name="azure-relay-port-settings"></a>Azure リレー ポート設定
 
@@ -35,22 +35,22 @@ Azure リレーのポート値に必要な構成を次の表に示します。
 |-------------|------------------------|----------|  
 |[BasicHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (クライアント)|はい|HTTPS| 
 |" |いいえ|HTTP|  
-|[BasicHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (サービス)|使用できるのは|9351/HTTP|  
+|[BasicHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (サービス)|接続前/接続後|9351/HTTP|  
 |[NetEventRelayBinding クラス](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (クライアント)|はい|9351/HTTPS|  
 |" |いいえ|9350/HTTP|  
-|[NetEventRelayBinding クラス](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (サービス)|使用できるのは|9351/HTTP|  
-|[NetTcpRelayBinding クラス](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (クライアント/サービス)|使用できるのは|5671/9352/HTTP (ハイブリッドを使用している場合は 9352/9353)|  
+|[NetEventRelayBinding クラス](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (サービス)|接続前/接続後|9351/HTTP|  
+|[NetTcpRelayBinding クラス](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (クライアント/サービス)|接続前/接続後|5671/9352/HTTP (ハイブリッドを使用している場合は 9352/9353)|  
 |[NetOnewayRelayBinding クラス](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (クライアント)|はい|9351/HTTPS|  
 |" |いいえ|9350/HTTP|  
-|[NetOnewayRelayBinding クラス](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (サービス)|使用できるのは|9351/HTTP|  
+|[NetOnewayRelayBinding クラス](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (サービス)|接続前/接続後|9351/HTTP|  
 |[WebHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (クライアント)|はい|HTTPS|  
 |" |いいえ|HTTP|  
-|[WebHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (サービス)|使用できるのは|9351/HTTP|  
+|[WebHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (サービス)|接続前/接続後|9351/HTTP|  
 |[WS2007HttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (クライアント)|はい|HTTPS|  
 |" |いいえ|HTTP|  
-|[WS2007HttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (サービス)|使用できるのは|9351/HTTP|
+|[WS2007HttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (サービス)|接続前/接続後|9351/HTTP|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure リレーの詳細については、次のリンク先を参照してください。
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
 * [Relay に関する FAQ](relay-faq.md)

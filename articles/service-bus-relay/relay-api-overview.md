@@ -1,6 +1,6 @@
 ---
 title: Azure リレー API の概要 | Microsoft Docs
-description: 使用可能な Azure リレー API の概要
+description: この記事では、使用可能な Azure Relay API (.NET Standard、.NET Framework、Node.js など) の概要について説明します。
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593338"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513968"
 ---
 # <a name="available-relay-apis"></a>使用可能なリレー API
 
@@ -33,9 +33,9 @@ ms.locfileid: "60593338"
 | --- | --- | --- | --- |
 | .NET Standard | ハイブリッド接続 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF リレー | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 該当なし |
-| ノード | ハイブリッド接続 | [Websocket: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 要求: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| Node | ハイブリッド接続 | [Websocket: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 要求: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
-### <a name="additional-information"></a>追加情報
+### <a name="additional-information"></a>関連情報
 
 #### <a name="net"></a>.NET
 
@@ -55,7 +55,7 @@ ms.locfileid: "60593338"
 
 これらのモジュールに関する詳細は、[azure-relay-node](https://github.com/Azure/azure-relay-node) GitHub リポジトリで見つけることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure リレーの詳細については、次のリンク先を参照してください。
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)

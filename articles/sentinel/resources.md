@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771293"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548001"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -46,13 +46,13 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 |保存した検索条件の削除    |Microsoft.OperationalInsights/workspaces/savedSearches|
 |警告ルールの更新 |Microsoft.SecurityInsights/alertRules|
 |警告ルールの削除 |Microsoft.SecurityInsights/alertRules|
-|警告ルールの応答アクションの更新 |Microsoft.SecurityInsights/alertRules|
-|警告ルールの応答アクションの削除 |Microsoft.SecurityInsights/alertRules|
+|警告ルールの応答アクションの更新 |Microsoft.SecurityInsights/alertRules/actions|
+|警告ルールの応答アクションの削除 |Microsoft.SecurityInsights/alertRules/actions|
 |ブックマークの更新   |Microsoft.SecurityInsights/bookmarks|
 |ブックマークの削除   |Microsoft.SecurityInsights/bookmarks|
 |ケースの更新   |Microsoft.SecurityInsights/Cases|
-|ケース調査の更新  |Microsoft.SecurityInsights/Cases|
-|ケース コメントの作成   |Microsoft.SecurityInsights/Cases|
+|ケース調査の更新  |Microsoft.SecurityInsights/Cases/investigations|
+|ケース コメントの作成   |Microsoft.SecurityInsights/Cases/comments|
 |データ コネクタの更新 |Microsoft.SecurityInsights/dataConnectors|
 |データ コネクタの削除 |Microsoft.SecurityInsights/dataConnectors|
 |設定の更新    |Microsoft.SecurityInsights/settings|

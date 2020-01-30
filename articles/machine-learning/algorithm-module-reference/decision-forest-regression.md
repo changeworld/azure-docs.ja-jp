@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497960"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546675"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
@@ -24,7 +24,7 @@ ms.locfileid: "73497960"
 
 モデルの構成後、ラベル付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを使用してそのモデルをトレーニングする必要があります。 その後、トレーニング済みのモデルは、予測に使用できます。 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 デシジョン ツリーは、リーフ ノード (決定) に到達するまでバイナリ ツリーのデータ構造を走査しながら、個々の事例について一連の単純なテストを行うノンパラメトリックなモデルです。
 
@@ -84,16 +84,12 @@ ms.locfileid: "73497960"
 
 10. パイプラインを実行します。
 
-### <a name="results"></a>結果
+### <a name="results"></a>[結果]
 
 トレーニングの完了後:
 
-+ それぞれのイテレーションで作成されたツリーを表示するには、トレーニング モジュールの出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。
++ トレーニング済みモデルのスナップショットを保存するには、トレーニング モジュールを選択し、右側のパネルにある **[出力]** タブに切り替えます。 **[モデルの登録]** アイコンをクリックします。  モジュール ツリーに、保存したモデルがモジュールとして表示されます。 
 
-+ 各ノードのルールを表示するには、各ツリーをクリックして、分割をドリルダウンします。
-
-+ トレーニング済みのモデルのスナップショットを保存するには、トレーニング モジュールの出力を右クリックし、 **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。 パイプラインを連続実行しても、このモデルのコピーは更新されません。 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

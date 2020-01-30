@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984555"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293914"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -48,7 +48,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者**ロールと**管理エージェント** ロールは、課金アカウントのコストを管理できます。
 
-サブスクリプション スコープで Azure Cost Management にアクセスするために、サブスクリプションへの RBAC アクセス権を持つすべてのユーザーが小売 (従量課金制) 料金でコストを表示できます。 ただし、顧客テナントのコスト可視性ポリシーが有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
+サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、顧客テナントのコスト可視性ポリシーが有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
 
 
 ## <a name="how-cost-management-uses-scopes"></a>Cost Management でのスコープの使用方法
@@ -120,7 +120,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 パートナーは次の情報を使用して、顧客の Azure 使用料金を表示するためのポリシーを有効にします。
 
-Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 課金アカウントを選択してから、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。
+Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 関連する Microsoft Partner Agreement の課金アカウントを選択し、 **[顧客]** を選択します。 顧客の一覧は課金アカウントに関連付けられています。
 
 顧客の一覧で、コストの表示を許可する顧客を選択します。
 
@@ -137,7 +137,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。
 
-顧客テナントのコストを表示するには、[コストの管理と請求] を開き、[課金アカウント] を選択します。 課金アカウントの一覧で、課金アカウントを選択します。
+顧客テナントのコストを表示するには、 **[コストの管理と請求]** を開き、関連する Microsoft Partner Agreement の課金アカウントを選択します。
 
 ![課金アカウントを選択する](./media/get-started-partners/select-billing-account.png)
 
@@ -213,7 +213,7 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 | Location | リソースの正規化された場所。 | 該当なし |
 | effectivePrice | 価格設定通貨でのサービスの実効単価。 製品、サービス ファミリ、測定、オファーに対して一意です。 課金アカウントの価格シートの価格で使用されます。 階層化された価格または含まれている数量がある場合は、使用量のブレンド価格が表示されます。 | 調整が行われた後の単価。 |
 | Quantity | 購入または消費された測定量。 請求期間中に使用された測定の量。 | ユニットの数。 調整中に、これが課金システム内の情報に一致していることを確認してください。 |
-| unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 | サービスが課金される単位を特定します。 たとえば、GB、時間数、10,000 秒など。 |
+| unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 | サービスが課金される単位を特定します。 たとえば、GB、時間、および 10,000 単位など。 |
 | pricingCurrency | 単価を定義する通貨。 | 価格表の通貨。|
 | billingCurrency | 請求されるコストを定義する通貨。 | 顧客の地理的リージョンの通貨。 |
 | chargeType | 購入や返金など、Azure Cost Management でコストが表す料金の種類を定義します。 | 料金または調整の種類。 現在のアクティビティでは使用できません。 |
@@ -263,9 +263,13 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>パートナー テナントまたは顧客テナントでエクスポートを作成する
 
-Azure portal で、パートナー テナントまたは顧客テナントにサインインし、 **[コストの管理と請求]** を選択します。 適切なスコープ (課金アカウントなど) を選択してから、 **[コスト分析]** を選択します。 ページが読み込まれたら、 **[エクスポート]** を選択します。 [エクスポートのスケジュール] で、 **[エクスポートをすべて表示する]** を選択します。
+Azure portal で、パートナー テナントまたは顧客テナントにサインインし、 **[コストの管理と請求]** を選択します。 適切なスコープ (たとえば、Microsoft Partner Agreement の課金アカウント) を選択してから、 **[コスト分析]** を選択します。 ページが読み込まれたら、 **[エクスポート]** を選択します。 [エクスポートのスケジュール] で、 **[エクスポートをすべて表示する]** を選択します。
+
+![[エクスポート]、[エクスポートをすべて表示する] を選択する](./media/get-started-partners/export01.png)
 
 次に、 **[追加]** を選択し、名前を入力してエクスポートの種類を選択します。 **[ストレージ]** タブを選択し、必要な情報を入力します。
+
+![新しいエクスポートを追加し、[ストレージ] タブを選択する](./media/get-started-partners/export02.png)
 
 パートナー テナントでエクスポートを作成する場合は、パートナー テナント内の従量課金制サブスクリプションを選択します。 そのサブスクリプションを使用して Azure Storage アカウントを作成します。
 
@@ -274,6 +278,8 @@ Azure portal で、パートナー テナントまたは顧客テナントにサ
 内容を確認し、 **[作成]** を選択してエクスポートをスケジュールします。
 
 エクスポートの一覧内のデータを確認するには、ストレージ アカウント名を選択します。 ストレージ アカウント ページで、 **[コンテナー]** を選択してからコンテナーを選択します。 対応するフォルダーに移動し、CSV ファイルを選択します。 **[ダウンロード]** を選択して CSV ファイルを取得し、それを開きます。 エクスポートされたデータは、Azure portal から得られた使用状況の詳細と同様のコスト データになります。
+
+![エクスポートされたデータの例](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST API
 
@@ -400,7 +406,7 @@ PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{bi
 #### <a name="delete-a-budget"></a>予算を削除する
 
 ```
-PUT
+DELETE
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 

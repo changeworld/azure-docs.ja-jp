@@ -1,7 +1,7 @@
 ---
-title: Media Services のライブ イベントとライブ出力
+title: Azure Media Services v3 のライブ イベントとライブ出力の概念
 titleSuffix: Azure Media Services
-description: Azure Media Services v3 のライブ イベントとライブ出力の概要
+description: このトピックでは、Azure Media Services v3 のライブ イベントとライブ出力の概要について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: d2f0689dd1f1b5fbe349478ad885b76eb79d91a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569669"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546046"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -36,7 +36,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 [ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)には、パススルーとライブ エンコードの 2 種類があります。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
-* **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 
+* **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー モードとも呼ばれます。
 * **LiveEventEncodingType.Standard**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
 * **LiveEventEncodingType.Premium1080p**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 Default1080p プリセットは、解像度とビットレートのペアの出力セットを指定します。
 
@@ -81,11 +81,13 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 * 取り込みやプレビューの IP 制限。 このライブ イベントへのビデオの取り込みが許可される IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。<br/>IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。<br/>IP アドレスの形式は、4 つの数字を含む IpV4 アドレスか CIDR アドレス範囲にする必要があります。
 
     自分のファイアウォールで特定の IP を有効にする場合、またはライブ イベントへの入力を Azure IP アドレスに制限する場合は、[Azure Datacenter IP のアドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページから JSON ファイルをダウンロードします。 このファイルについて詳しくは、ページの「**詳細**」セクションを選択してください。
+    
+* イベントを作成するときに、ライブの文字起こしを有効にすることを選択できます。 <br/> 既定では、ライブの文字起こしは無効になっています。 ライブ イベントや、それに関連付けられたライブ出力の実行中は、このプロパティを変更することはできません。 
 
 ### <a name="naming-rules"></a>名前付け規則
 
 * ライブ イベントの名前は最大 32 文字です。
-* 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターンに従う必要があります: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
+* 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
 [「ストリーミング エンドポイント」の「命名規則」](streaming-endpoint-concept.md#naming-convention)も参照してください。
 
@@ -178,6 +180,6 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)

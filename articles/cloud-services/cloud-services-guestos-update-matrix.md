@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778211"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122247"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
@@ -214,9 +214,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
-| WA-GUEST-OS-2.94_201912-01 | 2020 年 1 月 8 日 | Post 2.95 |  
-| WA-GUEST-OS-2.93_201911-01 | 2019 年 12 月 5 日 | Post 2.94 |  
-|~WA-GUEST-OS-2.91_201910-01~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
+| WA-GUEST-OS-2.93_201912-01 | 2020 年 1 月 8 日 | Post 2.95 |  
+| WA-GUEST-OS-2.92_201911-01 | 2019 年 12 月 5 日 | Post 2.94 |  
+|~~WA-GUEST-OS-2.91_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-2.90_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
 |~~WA-GUEST-OS-2.89_201908-01~~| 2019 年 8 月 4 日 | 2019 年 11 月 1 日 |  
 |~~WA-GUEST-OS-2.88_201907-01~~| 2019 年 7 月 26 日 | 2019 年 10 月 7 日 |

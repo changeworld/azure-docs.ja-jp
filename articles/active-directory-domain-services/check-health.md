@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705409"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509140"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの正常性を確認する
 
-Azure Active Directory Domain Services (Azure AD DS) では、いくつかのバックグラウンド タスクを実行して、マネージド ドメインを正常かつ最新の状態に保ちます。 これらのタスクには、バックアップの取得、セキュリティ更新プログラムの適用、および Azure AD からのデータの同期が含まれます。 Azure AD DS マネージド ドメインに問題がある場合、これらのタスクは正常に実行されない可能性があります。 問題を確認して解決するために、Azure portal を使用して、Azure AD DS マネージド ドメインの正常性状態を確認できます。
+Azure Active Directory Domain Services (Azure AD DS) では、いくつかのバックグラウンド タスクを実行して、マネージド ドメインを正常かつ最新の状態に保ちます。 これらのタスクには、バックアップの取得、セキュリティ更新プログラムの適用、および Azure AD からのデータの同期が含まれます。 Azure AD DS マネージド ドメインに問題がある場合、これらのタスクは正常に完了しない可能性があります。 問題を確認して解決するために、Azure portal を使用して、Azure AD DS マネージド ドメインの正常性状態を確認できます。
 
 この記事では、Azure AD DS の正常性状態を表示し、表示されている情報またはアラートを理解する方法を示します。
 
@@ -47,11 +47,11 @@ Azure AD DS マネージド ドメインの正常性状態は、Azure portal を
 
 ## <a name="understand-monitors-and-alerts"></a>モニターとアラートについて
 
-Azure AD DS マネージド ドメインの正常性状態では、モニターとアラートという 2 種類の情報が示されます。 モニターでは、主要なバックグラウンド タスクが完了した時刻が示されます。 アラートでは、マネージド ドメインの安定性を向上させるための情報や提案が提供されます。
+Azure AD DS マネージド ドメインの正常性状態では、"*モニター*" と "*アラート*" という 2 種類の情報が示されます。 モニターでは、主要なバックグラウンド タスクが完了した時刻が示されます。 アラートでは、マネージド ドメインの安定性を向上させるための情報や提案が提供されます。
 
 ### <a name="monitors"></a>モニター
 
-モニターは、定期的に確認される Azure AD DS マネージド ドメインの領域です。 Azure AD DS マネージド ドメインのアクティブなアラートがある場合は、いずれかのモニターによって問題が報告されることがあります。 Azure AD Domain Services では現在、以下の領域が監視されます。
+モニターは、定期的に確認される Azure AD DS マネージド ドメインの領域です。 Azure AD DS マネージド ドメインのアクティブなアラートがある場合は、いずれかのモニターによって問題が報告されることがあります。 Azure AD Domain Services には現在、次の領域のモニターがあります。
 
 * バックアップ
 * Azure AD での同期
@@ -68,9 +68,9 @@ Azure AD DS マネージド ドメインの正常性状態では、モニター�
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>Azure AD での同期モニター
 
-Azure AD DS マネージド ドメインは、Azure Active Directory と定期的に同期されます。 ユーザーとグループ オブジェクトの数、および前回の同期以降に Azure AD ディレクトリに加えられた変更の数は、同期にかかる時間に影響します。 Azure AD DS マネージド ドメインが最後に同期されたのが 3 日以上前の場合は、アクティブなアラートを確認して解決します。 その後、バックアップ モニターで最新の同期を表示するために状態が更新されない場合は、[Azure サポート リクエストを開きます][azure-support]。
+Azure AD DS マネージド ドメインは、Azure Active Directory と定期的に同期されます。 ユーザーとグループ オブジェクトの数、および前回の同期以降に Azure AD ディレクトリに加えられた変更の数は、同期にかかる時間に影響します。 Azure AD DS マネージド ドメインが最後に同期されたのが 3 日以上前の場合は、アクティブなアラートを確認して解決します。 アクティブなアラートに対処した後、同期モニターで最新の同期を表示するために状態が更新されない場合は、[Azure サポート リクエストを開きます][azure-support]。
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 サービスを正しく実行するために対処する必要がある、Azure AD DS マネージド ドメインでの問題に対してアラートが生成されます。 アラートごとに問題の説明と、問題を解決するための具体的な手順を概説する URL が示されます。 考えられるアラートとその解決策の詳細については、[アラートのトラブルシューティング](troubleshoot-alerts.md)に関するページを参照してください。
 
@@ -80,7 +80,7 @@ Azure AD DS マネージド ドメインは、Azure Active Directory と定期�
  * **警告アラート**では、問題が解決しない場合に Azure AD DS マネージド ドメインの操作に影響する可能性がある問題を通知します。 これらのアラートでは、マネージド ドメインをセキュリティで保護するための推奨事項も提供されます。
  * **情報アラート**は、Azure AD DS マネージド ドメインに悪影響を与えない通知です。 情報アラートで、マネージド ドメインで何が起こっているかについて洞察できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 正常性状態ページに表示されるアラートの詳細については、[マネージド ドメインのアラートの解決][troubleshoot-alerts]に関するページを参照してください
 

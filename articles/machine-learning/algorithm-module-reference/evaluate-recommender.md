@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428532"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312262"
 ---
 # <a name="evaluate-recommender"></a>レコメンダーの評価
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Evaluate Recommender (レコメンダーの評価) モジュールを使用する方法について説明します。 目標は、レコメンデーション モデルによって行われた予測の正確性を測定することです。 このモジュールを使用すると、さまざまな種類のレコメンデーションを評価できます。  
+この記事では、Azure Machine Learning デザイナーで Evaluate Recommender (レコメンダーの評価) モジュールを使用する方法について説明します。 目標は、レコメンデーション モデルによって行われた予測の正確性を測定することです。 このモジュールを使用すると、さまざまな種類のレコメンデーションを評価できます。  
   
 -   ユーザーと項目に対して予測された評価    
 -   ユーザーに対して推奨された項目  

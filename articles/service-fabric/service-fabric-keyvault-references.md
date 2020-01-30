@@ -3,12 +3,12 @@ title: Azure Service Fabric - Service Fabric アプリケーションの KeyVaul
 description: この記事では、アプリケーション シークレットでの Service Fabric KeyVaultReference サポートの使用方法について説明します。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463041"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545485"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric アプリケーションでの KeyVaultReference サポート (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "75463041"
 
 - セントラル シークレット ストア (CSS)。
 
-    セントラル シークレット ストア (CSS) は、Service Fabric の暗号化されたローカル シークレット キャッシュ、つまり一度フェッチされて CSS 内にキャッシュされた KeyVaultReference です。
+    セントラル シークレット ストア (CSS) は、Service Fabric の暗号化されたローカル シークレット キャッシュです。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するローカル シークレット ストア キャッシュです。 KeyVaultReference は、一度フェッチされると、CSS にキャッシュされます。
 
     `fabricSettings` 下のご自身のクラスター構成に以下を追加して、KeyVaultReference サポートでの必要なすべての機能を有効化します。
 
@@ -61,6 +61,7 @@ ms.locfileid: "75463041"
 
     > [!NOTE] 
     > CSS には別の暗号化証明書を使用することをお勧めします。 "CentralSecretService" セクション下に追加することができます。
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ ms.locfileid: "75463041"
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットでは、forceRestart が必須の設定です。残りの設定には既存の値を使用します。
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - アプリケーションのマネージド ID に keyvault へのアクセス許可を付与する
 
     こちらの[ドキュメント](how-to-grant-access-other-resources.md)を参照して、マネージド ID に keyvault へのアクセス許可を付与する方法を確認します。 また、システム割り当てマネージド ID を使用している場合、アプリケーションのデプロイ後にのみ、マネージド ID が作成されます。

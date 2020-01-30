@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: d9ad5da27b4b5f8e4e447036c46613bad0f1f5c7
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563787"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548086"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka のワークロードを Azure HDInsight 4.0 に移行する
 
@@ -68,7 +68,7 @@ Kafka 2.1 に移行する場合は、以下の機能を利用できます。
 
 移行を完了するには、以下の手順を実行します。
 
-1. **新しい HDInsight 4.0 クラスターとテスト用のクライアントをデプロイします。** 新しい HDInsight 4.0 Kafka クラスターをデプロイします。 複数の Kafka クラスター バージョンを選択できる場合は、最新バージョンを選択することをお勧めします。 デプロイ後、必要に応じていくつかのパラメーターを設定し、既存の環境と同じを使用してトピックを作成します。 また、必要に応じて SSL と Bring Your Own Key (BYOK) 暗号化を設定します。 次に、新しいクラスターでそれが正しく機能するかどうかを確認します。
+1. **新しい HDInsight 4.0 クラスターとテスト用のクライアントをデプロイします。** 新しい HDInsight 4.0 Kafka クラスターをデプロイします。 複数の Kafka クラスター バージョンを選択できる場合は、最新バージョンを選択することをお勧めします。 デプロイ後、必要に応じていくつかのパラメーターを設定し、既存の環境と同じ名前を使用してトピックを作成します。 また、必要に応じて SSL と Bring Your Own Key (BYOK) 暗号化を設定します。 次に、新しいクラスターでそれが正しく機能するかどうかを確認します。
 
     ![新しい HDInsight 4.0 クラスターをデプロイする](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 
@@ -85,4 +85,4 @@ Kafka 2.1 に移行する場合は、以下の機能を利用できます。
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache Kafka HDInsight クラスターのパフォーマンスの最適化](apache-kafka-performance-tuning.md)
-* [クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する](apache-kafka-get-started.md)
+* [クイック スタート: Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する](apache-kafka-get-started.md)

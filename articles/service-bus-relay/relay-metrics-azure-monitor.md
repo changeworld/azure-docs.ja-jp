@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor での Azure リレー メトリック (プレビュー) | Microsoft Docs
-description: Azure Monitor を使用した Azure リレーの監視
+description: この記事では、Azure Monitor を使用して Azure Relay の状態を監視する方法について説明します。
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261784"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514937"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor の Azure リレー メトリック (プレビュー)
 Azure リレー メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、リレー リソースの全体的な正常性を評価できます。 これらの統計は Azure リレーの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
@@ -58,7 +58,7 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
-| メトリックの名前 | 説明 |
+| メトリックの名前 | [説明] |
 | ------------------- | ----------------- |
 | ListenerConnections-Success (プレビュー) | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 |ListenerConnections-ClientError (プレビュー)|指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
@@ -70,24 +70,24 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 |SenderConnections-TotalRequests (プレビュー)|指定された期間に送信側が行った接続要求数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 |ActiveConnections (プレビュー)|指定された期間のアクティブな接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 |ActiveListeners (プレビュー)|指定された期間のアクティブなリスナー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ListenerDisconnects (プレビュー)|指定された期間に切断されたリスナー数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderDisconnects (プレビュー)|指定された期間に切断された送信側数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerDisconnects (プレビュー)|指定された期間に切断されたリスナー数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderDisconnects (プレビュー)|指定された期間に切断された送信側数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="memory-usage-metrics"></a>メモリ使用状況のメトリック
 
-| メトリックの名前 | 説明 |
+| メトリックの名前 | [説明] |
 | ------------------- | ----------------- |
-|BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
 Azure リレーは、Azure Monitor でのメトリックの次のディメンションをサポートします。 メトリックへのディメンションの追加は省略可能です。 ディメンションを追加しない場合、メトリックは名前空間レベルで指定されます。 
 
-|ディメンション名|説明|
+|ディメンション名|[説明]|
 | ------------------- | ----------------- |
 |EntityName| Azure リレーは、名前空間の下のメッセージング エンティティをサポートします。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Microsoft Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md)」を参照してください。
 

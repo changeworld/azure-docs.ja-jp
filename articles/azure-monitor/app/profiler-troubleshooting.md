@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432382"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310868"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -47,6 +47,7 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
 * Web アプリが ASP.NET Core アプリケーションの場合は、ASP.NET Core 2.0 以降が実行されている必要があります。
 * 表示しようとしているデータが 2 週間以上前のものである場合は、時間フィルターを絞り込んで、もう一度試します。 トレースは 7 日後に削除されます。
 * プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。
+* Profiler は、Free または Shared App Service プランではサポートされていません。 これらのプランのいずれかを使用している場合は、Basic プランのいずれかにスケールアップすると、Profiler が動作を開始します。
 
 ### <a id="double-counting"></a>並列スレッドの二重カウント
 

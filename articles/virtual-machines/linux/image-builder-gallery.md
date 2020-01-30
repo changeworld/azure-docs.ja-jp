@@ -7,21 +7,21 @@ ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 08441a98d9104109b4cfc130ab6adb31dc4fce45
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976130"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260516"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
-この記事では、Azure Image Builder を使用して[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。
+この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
 
-イメージを共有イメージ ギャラリーに配布するために、テンプレートは [sharedImage](image-builder-json.md#distribute-sharedimage) をテンプレートの `distribute` セクションの値として使用します。
+イメージを共有イメージ ギャラリーに配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](image-builder-json.md#distribute-sharedimage) が使われています。
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -60,7 +60,7 @@ az provider register -n Microsoft.Storage
 
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
-プレビューの場合、Image Builder は、ソース マネージド イメージと同じリソース グループ内でのソースカスタム イメージの作成だけをサポートします。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
+プレビューの Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
 ```azurecli-interactive
 # Resource group name - we are using ibLinuxGalleryRG in this example
@@ -202,7 +202,7 @@ SSH 接続が確立されるとすぐに、イメージが*当日のメッセー
 *******************************************************
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ここで同じイメージの新しいバージョンを作成するように、イメージ バージョンを再カスタマイズしてみる場合、次の手順をスキップして、[Azure Image Builder を使用した別のイメージ バージョンの作成](image-builder-gallery-update-image-version.md)に関するページに進みます。
 
@@ -259,6 +259,6 @@ az sig delete -r $sigName -g $sigResourceGroup
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure 共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。

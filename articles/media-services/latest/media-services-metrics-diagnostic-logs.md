@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 経由でメトリックと診断ログを監視する
+title: Azure Monitor を使用した Media Services のメトリックと診断ログ
 titleSuffix: Azure Media Services
 description: Azure Monitor 経由で Azure Media Services のメトリックと診断ログを監視する方法について説明します。
 services: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f075362f976e6abb26c9781c4b0cdeb7912c0862
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750810"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514036"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor 経由で Media Services のメトリックと診断ログを監視する
 

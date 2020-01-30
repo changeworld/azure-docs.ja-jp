@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771429"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311038"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して、会社のカテゴリを予測する分類器を作成する
 
-**デザイナー (プレビュー) サンプル 7**
+**デザイナー サンプル 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-このサンプルでは、Azure Machine Learning デザイナー (プレビュー) でテキスト分析モジュールを使用してテキスト分類パイプラインを構築する方法を示します。
+このサンプルでは、Azure Machine Learning デザイナーでテキスト分析モジュールを使用してテキスト分類パイプラインを構築する方法を示します。
 
 テキスト分類の目的は、いくつかのテキストを 1 つまたは複数のクラスまたはカテゴリに割り当てることです。 テキストには、ドキュメント、ニュース記事、検索クエリ、電子メール、ツイート、サポート チケット、顧客フィードバック、ユーザーの製品レビューなどがあります。テキスト分類の用途には、新聞記事やニュース ワイヤーのコンテンツをトピックに分類する、Web ページを階層的なカテゴリに整理する、スパム メールのフィルター処理、センチメント分析、検索クエリからユーザーの意図を予測する、サポート チケットのルーティング、顧客フィードバックの分析などがあります。 
 

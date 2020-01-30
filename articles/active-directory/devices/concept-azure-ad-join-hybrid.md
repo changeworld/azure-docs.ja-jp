@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c57180ba10322cb790c05b3f8f48043ca08b545
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462527"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512251"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -25,13 +25,13 @@ ms.locfileid: "67462527"
 - IT 部門が一元化された場所から職場所有のデバイスを管理する。
 - ユーザーが Active Directory の職場または学校アカウントを使用して自分のデバイスにサインインする。
 
-通常、オンプレミスのフットプリントを持つ組織は、イメージング法を利用してデバイスをプロビジョニングし、多くの場合、**System Center Configuration Manager (SCCM)** または**グループ ポリシー(GP)** を使用してデバイスを管理します。
+通常、オンプレミスのフットプリントを持つ組織は、イメージ作成方法を利用してデバイスをプロビジョニングし、多くの場合、**Configuration Manager** または**グループ ポリシー(GP)** を使用してそれらを管理します。
 
 環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory に参加し、Azure Active Directory に登録されているデバイスです。
 
 |   | Hybrid Azure AD Join |
 | --- | --- |
-| **定義** | デバイスにサインインするために組織アカウントを必要とする、オンプレミスの AD と Azure AD に参加します |
+| **[定義]** | デバイスにサインインするために組織アカウントを必要とする、オンプレミスの AD と Azure AD に参加します |
 | **主な対象** | 既存のオンプレミス AD インフラストラクチャがあるハイブリッド組織に適しています |
 |   | 組織内のすべてのユーザーに適用できます |
 | **デバイスの所有権** | Organization |
@@ -42,13 +42,13 @@ ms.locfileid: "67462527"
 |   | Windows Autopilot でドメインに参加し、Azure AD Connect または ADFS の構成を使用して自動参加します |
 |   | Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 - MSI が必要です |
 | **デバイスのサインイン オプション** | 以下を使用する組織アカウント: |
-|   | パスワード |
+|   | Password |
 |   | Win10 用の Windows Hello for Business |
 | **デバイス管理** | グループ ポリシー |
-|   | System Center Configuration Manager のスタンドアロンまたは Microsoft Intune との共同管理 |
+|   | Configuration Manager のスタンドアロンまたは Microsoft Intune との共同管理 |
 | **主な機能** | クラウドとオンプレミスの両方のリソースへの SSO |
 |   | ドメイン参加、または共同管理の場合は Intune を使用する条件付きアクセス |
-|   | ロック画面でのセルフサービスによるパスワードのリセットおよび Windows Hello PIN のリセット |
+|   | ロック画面でのセルフサービス パスワード リセット および Windows Hello PIN のリセット |
 |   | デバイス間での Enterprise State Roaming |
 
 ![ハイブリッド Azure AD 参加済みデバイス](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
@@ -62,7 +62,7 @@ ms.locfileid: "67462527"
 - 引き続き、既存のイメージング ソリューションを使用して、デバイスをデプロイして構成したいと思っています。
 - Windows 10 に加え、ダウンレベルの Windows 7 および 8.1 デバイスをサポートする必要があります
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハイブリッド Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)
 - [Azure portal を使用してデバイス ID を管理する](device-management-azure-portal.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748484"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514699"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 
@@ -27,6 +27,19 @@ HDInsight では、OS パッチのインストール、セキュリティ更新�
 
 > [!NOTE]  
 > スクリプト アクションにより将来のすべての更新サイクルで更新プログラムが自動的に適用されることはありません。 新しい更新プログラムを適用する必要があるたびにスクリプトを実行して更新プログラムをインストールし、その後 VM を再起動します。
+
+## <a name="preparation"></a>準備
+
+運用環境にデプロイする前に、代表的な非運用環境に修正プログラムを適用します。 実際に修正プログラムを適用する前に、システムを適切にテストする計画を立てます。
+
+クラスターとの ssh セッションで、アップグレードが使用可能であることを示すメッセージが表示される場合があります。 メッセージは次のようになります。
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+修正プログラムの適用は任意であり、ユーザーの判断に委ねられています。
 
 ## <a name="restart-nodes"></a>ノードの再起動
   
@@ -52,9 +65,9 @@ HDInsight では、OS パッチのインストール、セキュリティ更新�
 > [!NOTE]
 > スクリプトを既存のクラスターに適用した後は、保存済みとしてマークする必要があります。 そうしない場合、スケーリング操作で作成された新しいノードでは、既定の修正プログラム適用スケジュールが使用されます。 クラスター作成プロセスの一部としてスクリプトを適用した場合、スクリプトは自動的に保存されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スクリプト アクションの使用法に関する具体的な手順については、「[スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」の以下のセクションをご覧ください。
 
-* [クラスターの作成時にスクリプト アクションを使用する](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [クラスターの作成時にスクリプト アクションを使用する](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

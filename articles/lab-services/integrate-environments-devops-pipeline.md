@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs で環境を Azure Pipelines に統合する | Microsoft Docs
+title: Azure DevTest Labs で環境を Azure Pipelines に統合する
 description: Azure DevTest Labs 環境を Azure DevOps の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインに統合する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163918"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169421"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>環境を Azure DevOps CI/CD パイプラインに統合する
 Azure DevOps Services (旧称 Visual Studio Team Services) にインストールされている Azure DevTest Labs タスク拡張機能を使用して、継続的インテグレーション (CI)/継続的デリバリー (CD) のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 これらの拡張機能により、特定のテスト タスク用に[環境](devtest-lab-test-env.md)をすばやく展開し、テストの終了時に削除するのがより簡単になります。 
@@ -76,8 +76,8 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
     3. **[環境名]** で、削除する環境の名前を入力します。
 2. リリース定義の名前を入力し、それを保存します。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。 
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。 
 - [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)。
 - [DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にある、DevTest Labs 自動化のためのクイック スタート Resource Manager テンプレート。
 - [VSTS のトラブルシューティングのページ](/azure/devops/pipelines/troubleshooting)

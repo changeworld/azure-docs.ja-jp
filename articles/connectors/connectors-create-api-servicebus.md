@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445890"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261621"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -45,7 +45,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ロジック アプリが Service Bus 名前空間にアクセスするためのアクセス許可を持っていることを確認します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します。
 
@@ -154,7 +154,9 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-Service Bus コネクタを使用すると、Service Bus からコネクタ キャッシュまで最大 1500 個の一意のセッションを同時に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、制限に関するその他の技術的な詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。
+Service Bus コネクタを使用すると、Service Bus からコネクタ キャッシュまで最大 1500 個の一意のセッションを同時に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 詳細については、[メッセージ セッション](../service-bus-messaging/message-sessions.md)に関するページを参照してください。
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、制限に関するその他の技術的な詳細については、コネクタの[リファレンス ページ](/connectors/servicebus/)を参照してください。 Azure Service Bus メッセージングの詳細については、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

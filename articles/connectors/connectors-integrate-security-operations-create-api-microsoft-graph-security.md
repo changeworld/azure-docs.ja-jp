@@ -7,27 +7,30 @@ author: preetikr
 ms.author: preetikr
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 12/12/2019
 tags: connectors
-ms.openlocfilehash: 7e9cc2d8d38af7e5e6cf26ccc3659ee58ef17e59
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789054"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313792"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](https://docs.microsoft.com/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Azure Security Center プレイブック](../security-center/security-center-playbooks.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
 
 * クエリまたはアラート ID に基づいてアラートを取得する。 たとえば、重大度が高いアラートを含む一覧を取得できます。
+
 * アラートを更新する。 たとえば、アラートの割り当ての更新、アラートへのコメントの追加、アラートのタグ付けを実行できます。
+
 * [アラート サブスクリプション (Webhook)](https://docs.microsoft.com/graph/api/resources/webhooks) を作成することで、アラートの作成または変更を監視する。
+
 * アラート サブスクリプションを管理する。 たとえば、アクティブなサブスクリプションの取得、サブスクリプションの有効期限の延長、サブスクリプションの削除を実行できます。
 
 ロジック アプリのワークフローでは、Microsoft Graph Security コネクタから応答を取得するアクションを使用して、その出力をワークフローの他のアクションで使用できるようにすることができます。 Microsoft Graph Security コネクタのアクションからの出力を、ワークフローの他のアクションで使用することもできます。 たとえば、Microsoft Graph Security コネクタを通して重大度が高いアラートを取得したら、これらのアラートを Outlook コネクタを使用して電子メール メッセージで送信できます。 
 
-Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](https://aka.ms/graphsecuritydocs)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Microsoft Flow または PowerApps については、[Microsoft Flow に関するサイト](https://flow.microsoft.com/)、 または [PowerApps に関するサイト](https://powerapps.microsoft.com/)を参照してください。
+Microsoft Graph Security の詳細については、「[Microsoft Graph Security API の概要](https://aka.ms/graphsecuritydocs)」を参照してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 Microsoft Flow または PowerApps については、[Flow の概要](https://flow.microsoft.com/)または [PowerApps の概要](https://powerapps.microsoft.com/)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,21 +38,21 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 * Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって "*明示的に与えられた*" 同意が必要です。これは [Microsoft Graph Security の認証要件](https://aka.ms/graphsecurityauth)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
 
-   | プロパティ | 値 |
-   |----------|-------|
-   | **アプリケーション名** | `MicrosoftGraphSecurityConnector` |
-   | **アプリケーション ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
-   |||
+  | プロパティ | 値 |
+  |----------|-------|
+  | **アプリケーション名** | `MicrosoftGraphSecurityConnector` |
+  | **アプリケーション ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  |||
 
-   Azure AD テナント管理者は、次のいずれかの手順に従って、コネクタに同意を与えることができます。
+  Azure AD テナント管理者は、次のいずれかの手順に従って、コネクタに同意を与えることができます。
 
-   * [Azure AD アプリケーションにテナント管理者の同意を与える](../active-directory/develop/v2-permissions-and-consent.md)。
+  * [Azure AD アプリケーションにテナント管理者の同意を与える](../active-directory/develop/v2-permissions-and-consent.md)。
 
-   * ロジック アプリの初回の実行時に、[アプリケーションの同意エクスペリエンス](../active-directory/develop/application-consent-experience.md)を通して、Azure AD テナント管理者の同意を要求できます。
+  * ロジック アプリの初回の実行時に、[アプリケーションの同意エクスペリエンス](../active-directory/develop/application-consent-experience.md)を通して、Azure AD テナント管理者の同意を要求できます。
    
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* Microsoft Graph Security のエンティティ (アラートなど) にアクセスするロジック アプリ。 現時点では、このコネクタにはトリガーがありません。 そのため、Microsoft Graph Security アクションを使用するには、**Recurrence** トリガーなどのトリガーでロジック アプリを開始します。
+* Microsoft Graph Security のエンティティ (アラートなど) にアクセスするロジック アプリ。 Microsoft Graph Security トリガーを使用するには、空のロジック アプリが必要です。 Microsoft Graph Security アクションを使用するには、シナリオに適したトリガーによって開始されるロジック アプリが必要です。
 
 ## <a name="connect-to-microsoft-graph-security"></a>Microsoft Graph Security に接続する 
 
@@ -57,7 +60,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. 空のロジック アプリでは、Microsoft Graph Security アクションを追加する前に、トリガーとその他のアクションを追加します。
+1. 空のロジック アプリでは、Microsoft Graph Security アクションを追加する前に、トリガーとその他の必要なアクションを追加します。
 
    または
 
@@ -65,14 +68,40 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
    または
 
-   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス (+) 記号を選択し、 **[アクションの追加]** を選択します。
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 (+) を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「microsoft graph security」と入力します。 アクションの一覧から、目的のアクションを選択します。
 
 1. Microsoft Graph Security の資格情報でサインインします。
 
 1. 選択したアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="add-triggers"></a>トリガーの追加
+
+Azure Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 トリガーが発生するたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成され、アプリのワークフローが開始されます。
+
+> [!NOTE] 
+> トリガーが発生すると、すべての新しいアラートがトリガーによって処理されます。 アラートを受信しなかった場合、トリガーの実行はスキップされます。 次のトリガーのポーリングは、トリガーのプロパティで指定する繰り返し間隔に基づいて発生します。
+
+この例では、新しいアラートがアプリに送信されたときに、ロジック アプリ ワークフローを開始する方法を示します。
+
+1.  Azure portal または Visual Studio で、ロジック アプリ デザイナーを開いて、空のロジック アプリを作成します。 この例では、Azure Portal を使用します。
+
+1.  デザイナーで、検索ボックスにフィルターとして「microsoft graph security」と入力します。 トリガーの一覧から、 **[On all new alerts]\(すべての新しいアラートに対して\)** を選択します
+
+1.  トリガーには、監視するアラートに関する情報を提供します。 その他のプロパティについては、 **[新しいパラメーターの追加]** 一覧を開き、パラメーターを選択して、そのプロパティをトリガーに追加します。
+
+   | プロパティ | プロパティ (JSON) | 必須 | 種類 | [説明] |
+   |----------|-----------------|----------|------|-------------|
+   | **間隔** | `interval` | はい | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
+   | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
+   | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
+   | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
+   ||||||
+
+1.  操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
+
+1.  トリガーの結果を使用して実行するタスクの 1 つまたは複数のアクションをロジック アプリに追加する操作に進みます。
 
 ## <a name="add-actions"></a>アクションの追加
 
@@ -86,7 +115,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 このコネクタで使用できるクエリの詳細については、[Microsoft Graph Security アラート リファレンス ドキュメント](https://docs.microsoft.com/graph/api/alert-list)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティのアラート](https://docs.microsoft.com/graph/api/resources/alert)の詳細を確認してください。
 
-| Action | 説明 |
+| アクション | [説明] |
 |--------|-------------|
 | **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](https://docs.microsoft.com/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
@@ -95,12 +124,11 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 ### <a name="manage-alert-subscriptions"></a>アラート サブスクリプションを管理する
 
-Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft.com/graph/api/resources/subscription)" ([*Webhook*](https://docs.microsoft.com/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 
-ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
+Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft.com/graph/api/resources/subscription)" ([*Webhook*](https://docs.microsoft.com/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
 
 `security/alerts?$filter=status eq 'New'`
 
-| Action | 説明 |
+| アクション | [説明] |
 |--------|-------------|
 | **サブスクリプションを作成する** | 変更について通知する[サブスクリプションを作成します](https://docs.microsoft.com/graph/api/subscription-post-subscriptions)。 特定のアラートの種類用にこのサブスクリプションをフィルター処理できます。 たとえば、重大度が高いアラートについて通知するサブスクリプションを作成できます。 |
 | **アクティブなサブスクリプションを取得する** | [有効期限が切れていないサブスクリプションを取得します](https://docs.microsoft.com/graph/api/subscription-list)。 | 
@@ -112,11 +140,6 @@ Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft
 
 コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](https://aka.ms/graphsecurityconnectorreference)を参照してください。
 
-## <a name="get-support"></a>サポートを受ける
-
-質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

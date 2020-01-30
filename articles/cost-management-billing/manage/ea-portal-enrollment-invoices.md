@@ -4,16 +4,16 @@ description: この記事では、Azure Enterprise の請求書を管理およ�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 95df54eb096588fe23da87f7334f9d693e54cf9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985759"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514359"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ登録の請求書
 
@@ -585,7 +585,7 @@ Microsoft Azure Consumption Insights コンテンツ パックをご利用の現
 1. 接続するための API アクセス キーを指定します。 加入契約用のキーは、[Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) で確認できます。 **[サインイン]** をクリックします。
 1. インポート プロセスが自動的に開始されます。 完了すると、新しいダッシュボード、レポート、およびモデルがナビゲーション ウィンドウに表示されます。 ダッシュボードをクリックすると、インポートしたデータが表示されます。
 
-加入契約用の API キーを生成する方法の詳細については、[Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) の API レポートのヘルプ ファイルを参照してください。 新しいコンテンツ パックの詳細については、[Microsoft Azure Consumption Insights](https://automaticbillingspec.blob.core.windows.net/spec/Microsoft%20Azure%20Consumption%20Insights.docx?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) のドキュメントをダウンロードしてください。
+加入契約用の API キーを生成する方法の詳細については、[Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) の API レポートのヘルプ ファイルを参照してください。 新しいコンテンツ パックの詳細については、[Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management) に関する記事を参照してください。
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>従来の Power BI EA コンテンツ パックにアクセスするには、次のようにします。
 

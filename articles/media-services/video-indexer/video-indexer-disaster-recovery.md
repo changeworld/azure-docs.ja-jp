@@ -1,5 +1,5 @@
 ---
-title: Video Indexer の事業継続とディザスター リカバリー (BCDR) - Azure | Microsoft Docs
+title: Video Indexer の事業継続とディザスター リカバリー - Azure
 description: 地域のデータセンターの停止や障害が発生した場合に、セカンダリ Video Indexer アカウントにフェールオーバーする方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668317"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513577"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Video Indexer の事業継続とディザスター リカバリーを処理する
 
@@ -40,8 +40,8 @@ BCDR を実装するには、冗長性を扱うために 2 つの Video Indexer 
 > [!TIP]
 > BCDR を自動化するには、「[サービス通知のアクティビティ ログ アラートを作成する」](../../service-health/alerts-activity-log-service-notifications.md)に従って、サービス正常性通知のアクティビティ ログ アラートを設定します。
 
-複数のテナントを使用する方法については、「[複数のテナントの管理](manage-multiple-tenants.md)」を参照してください。 BCDR を実装するには、「[テナントごとの Video Indexer アカウント](manage-multiple-tenants.md#video-indexer-account-per-tenant)」または「[テナントごとの Azure サブスクリプション](manage-multiple-tenants.md#azure-subscription-per-tenant)」の 2 つの方法のいずれかを選択します。
+複数のテナントを使用する方法については、「[複数のテナントの管理](manage-multiple-tenants.md)」を参照してください。 BCDR を実装するには、次の 2 つのオプションのいずれかを選択します。[テナントごとの Video Indexer アカウント](manage-multiple-tenants.md#video-indexer-account-per-tenant)または[テナントごとの Azure サブスクリプション](manage-multiple-tenants.md#azure-subscription-per-tenant)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure に接続された Video Indexer アカウントを管理する](manage-account-connected-to-azure.md)。

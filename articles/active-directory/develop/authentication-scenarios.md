@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff9af6a6f51ca89fa7e852609ceed1ee02c6e23f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424607"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294356"
 ---
 # <a name="authentication-basics"></a>認証の基本
 

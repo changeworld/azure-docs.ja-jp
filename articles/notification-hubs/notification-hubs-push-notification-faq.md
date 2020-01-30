@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs:よく寄せられる質問 (FAQ) | Microsoft Docs
-description: Notification Hubs におけるソリューションの設計と実装についての FAQ
+title: Azure Notification Hubs に関してよく寄せられる質問 (FAQ) | Microsoft Docs
+description: Azure Notification Hubs におけるソリューションの設計と実装についての FAQ。
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066877"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263831"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -153,7 +153,7 @@ Azure Notification Hubs を経由して送信者から PNS に至る間のすべ
 
 機密情報が含まれているペイロードを送信するには、安全なプッシュのパターンを使用することをお勧めします。 送信者は、機密情報のペイロードが含まれていない、メッセージ識別子の付いた ping 通知をデバイスに配信します。 デバイス上のアプリがペイロードを受信すると、アプリはセキュリティで保護された API を直接呼び出して、メッセージの詳細をフェッチします。 このパターンの実装方法のガイドについては、[Notification Hubs の安全なプッシュのチュートリアル]に関するページを参照してください。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>ディザスター リカバリーのためにはどのようなサポートが提供されていますか。
 

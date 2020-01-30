@@ -1,21 +1,21 @@
 ---
-title: ホワイトペーパーとケース スタディ - Avere vFTX for Azure
+title: ホワイトペーパーとケース スタディ - Avere vFXT for Azure
 description: Avere vFXT for Azure の概要や使用方法を説明したダウンロード可能なホワイトペーパー、ケース スタディ、およびその他の記事へのリンクです。
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414276"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152971"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX for Azure のホワイトペーパーとその他のリソース
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT for Azure のホワイトペーパーとその他のリソース
 
-この表のリソースには、Avere vFXT for Azure をご自身のワークフローにどのように取り入れたらよいかを理解するのに役立つケース スタディ、技術ホワイトペーパー、インフォグラフィック、およびその他の記事が含まれています。
+この記事では、Avere vFXT for Azure をご自身のワークフローにどのように取り入れたらよいかを理解するのに役立つケース スタディ、技術ホワイトペーパー、インフォグラフィック、およびその他のリソースをご紹介します。
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Agisoft PhotoScan を Azure にデプロイする
 
@@ -34,12 +34,6 @@ ms.locfileid: "75414276"
 **リンク:** [インフォグラフィック:Building a hybrid cloud for file-based workloads (ファイル ベースのワークロード向けにハイブリッド クラウドを構築する)](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 この図は、Avere vFXT for Azure を使って既存のシステムにクラウド インフラストラクチャを追加するためのコンポーネントとレイアウトを示しています。 Avere vFXT for Azure を使って、既存のオンプレミス インフラストラクチャのコンピューティング容量を拡大するか、データとコンピューティングを一時的または永続的にクラウドに移動します。
-
-## <a name="cloud-bursting"></a>クラウド バースティング
-
-**リンク:** [Cloud bursting for high performance, scalable NAS (高パフォーマンスでスケーラブルな NAS のためのクラウド バースティング)](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- このクラウド バースティング ソリューションの概要では、Avere vFXT for Azure を使うことで、中断することなくクラウド コンピューティング リソースに対して迅速にデータを利用可能にする方法を示しています。
 
 ## <a name="next-steps"></a>次のステップ
 

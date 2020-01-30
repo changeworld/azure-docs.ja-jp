@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c51ff1e653ac3fbbf6042cb6fb631b05ef94041
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490163"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548358"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成するには、このモジュールを使用します。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "73490163"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
   
-    + **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
+    + **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
   
   
 3.  ツリーに作成できる終端ノード (リーフ) の最大数を **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** に指定します。
@@ -60,19 +60,18 @@ ms.locfileid: "73490163"
      ランダム シードは、既定では 0 に設定されます。これは、初期シード値がシステム クロックから取得されることを意味します。  ランダム シードを使用して連続実行すると、都度異なる結果を得ることができます。
   
 
-9. モデルをトレーニングします。
+9. モデルをトレーニングする。
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。  
-  
    
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
-モデルのトレーニングが完了したら、[モデルのトレーニング](./train-model.md)の出力を右クリックして結果を表示します。
+トレーニングの完了後:
 
-+ それぞれのイテレーションで作成されたツリーを表示するには、 **[Visualize]\(可視化\)** を選択します。 
-+ 分割をドリルダウンして各ノードのルールを表示するには、各ツリーをクリックします。
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
++ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

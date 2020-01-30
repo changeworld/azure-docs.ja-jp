@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
+title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
 titleSuffix: Azure Machine Learning
-description: 発行されたパイプラインを使用して Azure Machine Learning デザイナー (プレビュー) でモデルを再トレーニングする方法について説明します。
+description: 発行されたパイプラインを使用して Azure Machine Learning デザイナーでモデルを再トレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 12/15/2019
-ms.openlocfilehash: 734acd712eb954e66a9c0b037d10b7b1fd626c6a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732163"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311871"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この攻略ガイドでは、Azure Machine Learning デザイナーを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用して、再トレーニング用の機械学習ワークフローを自動化する方法を確認してください。

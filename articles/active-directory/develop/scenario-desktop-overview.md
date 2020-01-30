@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b23085e486972ef6a10b3bd2ee86ae1bb1dc3006
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965519"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293319"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出すデスクトップ アプリ
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデスクトップ アプリ
 
 Web API を呼び出すデスクトップ アプリを構築するために必要なすべてのことについて説明します。
 
@@ -30,19 +30,19 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="get-started"></a>はじめに
 
-最初のアプリケーションをまだ作成していない場合は、.NET デスクトップのクイックスタート、UWP のクイックスタートまたは macOS のクイックスタートに従って作成してください。
-
-> [!div class="nextstepaction"]
-> [クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
-
+最初のアプリケーションをまだ作成していない場合は、.NET デスクトップのクイックスタート、ユニバーサル Windows プラットフォーム (UWP) のクイックスタートまたは macOS ネイティブ アプリのクイックスタートに従って作成してください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
+> [クイック スタート: Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
+
 
 > [!div class="nextstepaction"]
-> [クイック スタート:macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+> [クイック スタート: UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
+
+> [!div class="nextstepaction"]
+> [クイック スタート: macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概要
 
@@ -51,24 +51,24 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 - 対話型トークン取得を使用できます。
 
   - ご利用のデスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合 (たとえば、Windows.Form アプリケーション、WPF アプリケーション、macOS ネイティブ アプリケーションなどの場合)。
-  - または、.NET Core アプリケーションであり、システム ブラウザーで Azure AD との認証のやり取りが発生することに同意している場合。
+  - または、.NET Core アプリケーションであり、システム ブラウザーで Azure Active Directory (Azure AD) との認証のやり取りが発生することに同意している場合。
 
-- Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または AAD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。
-- 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名/パスワードを使用することができます。 これは一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。 たとえば、多要素認証 (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。
+- Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または Azure AD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。
+- 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名とパスワードを使用することができます。 DevOps などの一部のシナリオではまだこれが必要になります。 これを使用すると、アプリケーションに制約が発生します。 たとえば、多要素認証 (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。
 
   さらに、先進認証の原則に反しており、これはレガシの理由のためにのみ提供されています。
 
   ![デスクトップ アプリケーション](media/scenarios/desktop-app.svg)
 
-- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合、認証がシステム ブラウザーに委任されることに同意すると、対話式認証を使用できるようになります (.NET Core には [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)がまだ提供されておらず、そのため認証はシステム ブラウザーで行われます)。それ以外の場合、そのケースでの最良の選択肢は、デバイス コード フローを使用することです。 このフローは、IoT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
+- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合、認証がシステム ブラウザーに委任されることに同意すると、対話式認証を使用できます。 .NET Core は [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)を提供しないため、システム ブラウザーで認証が行われます。 それ以外の場合、そのケースの最善の選択肢は、デバイス コード フローを使用することです。 このフローは、IoT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
 
   ![ブラウザーレス アプリケーション](media/scenarios/device-code-flow-app.svg)
 
 ## <a name="specifics"></a>詳細
 
-デスクトップ アプリケーションには多くの特異性があります。それらは主に、アプリケーションが対話式認証を使用しているかどうかによって決まります。
+デスクトップ アプリケーションには、いくつかの特異な点があります。 これらは主に、アプリケーションが対話型認証を使用するかどうかによって異なります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [デスクトップ アプリ - アプリの登録](scenario-desktop-app-registration.md)
+> [デスクトップ アプリ:アプリの登録](scenario-desktop-app-registration.md)

@@ -4,15 +4,15 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045839"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276776"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -20,7 +20,7 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 
 短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](asp-net.md) の場合は、サーバー側 SDK をクライアント側 JavaScript SDK と共に使用して、アプリのパフォーマンスを総合的に理解することができます。
 
-## <a name="adding-the-javascript-sdk"></a>Javascript SDK を追加する
+## <a name="adding-the-javascript-sdk"></a>JavaScript SDK を追加する
 
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
 2. JavaScript テレメトリの送信先となるリソースからインストルメンテーション キーをコピーします。
@@ -29,7 +29,10 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
     * [JavaScript スニペット](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Application Insights JavaScript SDK をアプリケーションに追加するには、次のいずれか 1 つの方法のみを使用してください。 npm ベースのセットアップを使用する場合は、スニペット ベースのセットアップを使用しないでください。 逆にスニペット ベースのアプローチを使用するシナリオでも同じことが言え、npm ベースのセットアップは使用しないでください。 
+> JavaScript SDK をアプリケーションに追加するには、1 つのメソッドのみを使用します。 npm のセットアップを使用する場合は、スニペットを使用しないでください。その逆の場合も同様です。
+
+> [!NOTE]
+> npm セットアップでは、JavaScript SDK がプロジェクトへの依存関係としてインストールされ、IntelliSense が有効になります。一方、スニペットは実行時に SDK を取り込みます。 どちらも同じ機能をサポートしています。 ただし、より多くのカスタムイベントと構成を必要とする開発者は、通常は NPM セットアップを選択します。一方で、すぐに使用できる Web 分析を簡単に有効にしたいユーザーはスニペットを選択します。
 
 ### <a name="npm-based-setup"></a>npm ベースのセットアップ
 
@@ -208,7 +211,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>例
 
-実行できる例については、[Application Insights Javascript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
+実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からアップグレードする
 
@@ -261,4 +264,3 @@ Application Insights JavaScript SDK はオープンソースです。ソース �
 * [利用状況を追跡する](usage-overview.md)
 * [カスタム イベントとメトリックス](api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](usage-overview.md)
-

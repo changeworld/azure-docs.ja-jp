@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364052"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513663"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
-お使いの System Center Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
+お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Monitor では、System Center Configuration Manager の現在のブランチ バージョン 1606 以降がサポートされます。
+Azure Monitor では、Configuration Manager の現在のブランチ バージョン 1606 以降がサポートされます。
 
 >[!NOTE]
->Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
+>Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
 
@@ -67,7 +67,7 @@ Azure Monitor では、System Center Configuration Manager の現在のブラン
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager を Log Analytics ワークスペースに接続する
 
 >[!NOTE]
-> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
+> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
 
 > [!NOTE]
 > 階層の最上層サイトを Azure Monitor に接続する必要があります。 スタンドアロン プライマリ サイトを Azure Monitor に接続した後で、環境に中央管理サイトを追加する場合は、接続を削除し、新しい階層内で接続を再作成する必要があります。

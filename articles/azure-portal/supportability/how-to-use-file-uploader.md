@@ -6,16 +6,17 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 01/23/2020
 ms.author: genli
-ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898771"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548970"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure の新しいサポート リクエスト用ファイル アップロード ユーティリティのガイドライン
+
 [サポート リクエストを作成](https://portal.azure.com/#create/Microsoft.Support)するときに、ファイル アップロード オプションを使用すると、診断ファイル、またはインシデントに関連すると思われるその他のファイルを簡単にアップロードできます。  
 
 > [!NOTE]
@@ -25,12 +26,13 @@ ms.locfileid: "75898771"
 
 ファイル アップロード オプションを使用する場合は、以下のガイドラインに従ってください。
 
-* すべてのファイルには、.docx や .xlsx などのファイル名拡張子が必要です。 使用可能なファイル名拡張子の一覧については、表を参照してください。
+* すべてのファイルには、 *.docx* や *.xlsx* などのファイル名拡張子が必要です。 使用可能なファイル名拡張子については、表を参照してください。
 * ファイル名は、110 文字以内にする必要があります。
 * 複数のファイルをアップロードすることはできません。
 * ファイルは、4 MB 以下である必要があります。
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>許可されているファイル名拡張子の表
+
 | 0 ～ 9、A ～ C    | D ～ G   | H ～ M         | N ～ P   | R ～ T      | U ～ W        | X ～ Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | .dat  | .hwl        | .odx  | .rar     | .tdb       | .xlam   |

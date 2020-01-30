@@ -1,20 +1,17 @@
 ---
-title: Azure Red Hat OpenShift の Azure Active Directory 統合 | Microsoft Docs
+title: Azure Red Hat OpenShift の Azure Active Directory 統合
 description: Microsoft Azure Red Hat OpenShift クラスターでアプリをテストするために Azure AD のセキュリティ グループとユーザーを作成する方法について説明します。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: 00609905d09f8d414660c21805c6efca5eb30843
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669397"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545621"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
@@ -59,6 +56,9 @@ Azure Red Hat OpenShift クラスターにサインインするために使用�
 9. グループが作成されると、すべてのグループの一覧に表示されます。 新しいグループをクリックします。
 10. ページが表示されたら、 **[オブジェクト ID]** をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `GROUPID` と呼びます。
 
+> [!IMPORTANT]
+> このグループを osa-customer-admins OpenShift グループと同期するには、Azure CLI を使用してクラスターを作成します。 現在 Azure portal には、このグループを設定するためのフィールドがありません。
+
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
 
 `az openshift create` コマンドの `--aad-client-app-id` フラグを省略することで、クラスター作成の一環として Azure Active Directory (Azure AD) アプリの登録を自動作成できます。 このチュートリアルでは、完全を期す目的で、Azure AD アプリの登録を作成する方法を示します。
@@ -93,8 +93,8 @@ Azure アプリケーション オブジェクトの詳細については、「[
 ## <a name="add-api-permissions"></a>API アクセス許可を追加する
 
 1. **[管理]** セクションで **[API のアクセス許可]** をクリックします。
-2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。
-3. 下の一覧で **[ユーザー]** を展開し、**User.Read** が有効であることを確認します。
+2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。 
+3. 下の一覧で **[ユーザー]** を展開し、**User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、それが **Microsoft Graph** のアクセス許可 **User.Read** では "*なく*"、**Azure Active Directory Graph** のアクセス許可 **User.Read**であることを確認してください。
 4. 上にスクロールして **[アプリケーションのアクセス許可]** を選択します。
 5. 下のリストで **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
 6. **[アクセス許可の追加]** をクリックして変更を適用します。
@@ -110,9 +110,9 @@ Azure アプリケーション オブジェクトの詳細については、「[
 ## <a name="resources"></a>リソース
 
 * [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [クイック スタート:Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Red Hat OpenShift の前提条件](howto-setup-environment.md)をすべて満たすと、最初のクラスターを作成する準備は完了です。
 

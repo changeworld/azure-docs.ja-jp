@@ -17,34 +17,34 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a07a28837abf2fb6df3dd0583309ec1f3d278a58
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423820"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293489"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出すデスクトップ アプリ:運用環境に移行する
 
-この記事では、Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について詳しく説明します。
+この記事では、Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について説明します。
 
-## <a name="handling-errors-in-desktop-applications"></a>デスクトップ アプリケーションでのエラー処理
+## <a name="handle-errors-in-desktop-applications"></a>デスクトップ アプリケーションでのエラー処理
 
-別のフローでは、(コード スニペットに示されているように) サイレント フローのエラーを処理する方法を説明しました。 また、対話が必要となるケース (増分同意と条件付きアクセス) があることも説明しました。
+別のフローでは、コード スニペットに示されているように、サイレント フローのエラーを処理する方法を説明しました。 また、増分同意や条件付きアクセスの場合などに、対話が必要となるケースがあることも説明しました。
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>複数のリソースでユーザーの同意を事前に取得する方法
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>複数のリソースでユーザーの同意を事前に取得する
 
 > [!NOTE]
 > 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者による承認のみがサポートされており、ユーザーによる承認はサポートされていません。
 
-Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 そのため、`scopes` パラメーターには、1 つのリソースのスコープのみを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
+Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 `scopes` パラメーターには、1 つリソースのみのスコープを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
 
-たとえば、2 つのリソースがあり、それぞれに 2 つのスコープがある場合:
+たとえば、2 つのリソースがあり、それぞれに 2 つのスコープがあるとします。
 
-- `https://mytenant.onmicrosoft.com/customerapi` - `customer.read` と `customer.write` の 2 のスコープがあります
-- `https://mytenant.onmicrosoft.com/vendorapi` - `vendor.read` と `vendor.write` の 2 のスコープがあります
+- `https://mytenant.onmicrosoft.com/customerapi` のスコープは `customer.read` と `customer.write` です
+- `https://mytenant.onmicrosoft.com/vendorapi` のスコープは `vendor.read` と `vendor.write` です
 
-`extraScopesToConsent` パラメーターを持つ `.WithAdditionalPromptToConsent` 修飾子を使用する必要があります。
+この例では、`extraScopesToConsent` パラメーターを持つ `.WithAdditionalPromptToConsent` 修飾子を使用します。
 
 次に例を示します。
 
@@ -101,15 +101,15 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 この呼び出しでは、最初の Web API のアクセス トークンを取得します。
 
-2 番目の Web API を呼び出す必要がある場合は、`AcquireTokenSilent` API を呼び出せます。
+2 番目の Web API を呼び出す必要がある場合は、`AcquireTokenSilent` API を呼び出します。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Microsoft 個人アカウントでは、アプリを実行するたびに再同意が必要
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Microsoft 個人アカウントではアプリを実行するたびに再同意が必要
 
-Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップ/モバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアントの ID は本質的に安全ではありません (これは、Microsoft ID プラットフォームとシークレットを交換して身元を証明する機密クライアント アプリケーションとは対照的です)。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
+Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップまたはモバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアント ID は本質的に安全ではありません。これは、機密性の高いクライアント アプリケーション ID とは異なります。 機密性の高いクライアント アプリケーションは、その ID を証明するために、Microsoft ID プラットフォームとシークレットを交換します。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
 
 ## <a name="next-steps"></a>次のステップ
 

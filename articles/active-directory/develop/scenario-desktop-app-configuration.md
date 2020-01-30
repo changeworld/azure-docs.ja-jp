@@ -15,27 +15,27 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 473f0895ca53fb78b48c828eac807feb25364378
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423893"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293132"
 ---
-# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出すデスクトップ アプリ:コード構成
 
 お使いのアプリケーションを作成したところで、アプリケーションの座標を使用してコードを構成する方法について説明します。
 
-## <a name="msal-libraries"></a>MSAL ライブラリ
+## <a name="microsoft-authentication-libraries"></a>Microsoft 認証ライブラリ
 
-デスクトップ アプリケーションをサポートしている Microsoft ライブラリは次のとおりです。
+次の Microsoft 認証ライブラリ (MSAL) では、デスクトップ アプリケーションがサポートされています。
 
-  MSAL ライブラリ | [説明]
+  Microsoft Authentication Library | [説明]
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 複数のプラットフォーム (Linux、Windows、MacOS) でのデスクトップ アプリケーションの作成をサポートします。
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 複数のプラットフォーム (Linux、Windows、macOS など) でのデスクトップ アプリケーションの作成をサポートします。
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | macOS 上でのみ実行されるデスクトップアプリケーションがサポートされています。
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | macOS 上でのみ実行されるデスクトップ アプリケーションがサポートされています。
 
 ## <a name="public-client-application"></a>パブリック クライアント アプリケーション
 
@@ -49,14 +49,14 @@ MSAL.NET `IPublicClientApplication` を作成して操作する必要があり�
 
 ### <a name="exclusively-by-code"></a>コードで排他的に
 
-以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
+以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場または学校アカウントあるいは個人用 Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-前述のように、対話型認証またはデバイス コード フローを使用する場合は、`.WithRedirectUri` 修飾子を使用することが必要になる可能性があります。
+前述のように、対話型認証またはデバイス コード フローを使用する場合は、`.WithRedirectUri` 修飾子を使用します。
 
 ```csharp
 IPublicClientApplication app;
@@ -65,9 +65,9 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="using-configuration-files"></a>構成ファイルの使用
+### <a name="use-configuration-files"></a>構成ファイルを使用する
 
-次のコードは、構成オブジェクトからパブリック クライアント アプリケーションをインスタンス化します。構成オブジェクトは、プログラムで入力することも、構成ファイルから読み取ることもできます
+次のコードは、(プログラムで入力、または構成ファイルから読み取られる) 構成オブジェクトからパブリック クライアント アプリケーションをインスタンス化します。
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -78,7 +78,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="more-elaborated-configuration"></a>より詳細な構成
 
-多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
+多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを各国のクラウド (ここで示した米国政府など) のマルチテナント アプリケーションにする場合、次のように記述できます。
 
 ```csharp
 IPublicClientApplication app;
@@ -89,7 +89,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET には、ADFS 2019 用の修飾子も含まれています。
+MSAL.NET には、Active Directory フェデレーション サービス (AD FS) 2019 の修飾子も含まれています。
 
 ```csharp
 IPublicClientApplication app;
@@ -98,7 +98,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-最後に、Azure AD B2C テナントのトークンを取得する場合、次のコード スニペットで示されているとおり、お使いのテナントを指定できます。
+最後に、Azure Active Directory (Azure AD) B2C テナントのトークンを取得する場合は、次のコード スニペットで示されているとおり、お使いのテナントを指定します。
 
 ```csharp
 IPublicClientApplication app;
@@ -111,10 +111,10 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET デスクトップ アプリケーションを構成する方法の詳細については、以下のとおりです。
 
-- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください
-- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください
+- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください。
+- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください。
 
-### <a name="complete-example-with-configuration-options"></a>構成オプション付きの詳細な例
+### <a name="complete-example-with-configuration-options"></a>構成オプションを使用した詳細な例
 
 以下の `appsettings.json` 構成ファイルが含まれている .NET Core コンソール アプリケーションを想像してください。
 
@@ -132,7 +132,7 @@ MSAL.NET デスクトップ アプリケーションを構成する方法の詳�
 }
 ```
 
-.NET で提供される構成フレームワークを使用してこのファイルを読み込むコードはほとんどありません。
+.NET で提供される構成フレームワークを使用して、このファイル内で読み取るコードはほとんどありません。
 
 ```csharp
 public class SampleConfiguration
@@ -143,13 +143,13 @@ public class SampleConfiguration
  public PublicClientApplicationOptions PublicClientApplicationOptions { get; set; }
 
  /// <summary>
- /// Base URL for Microsoft Graph (it varies depending on whether the application is ran
- /// in Microsoft Azure public clouds or national / sovereign clouds
+ /// Base URL for Microsoft Graph (it varies depending on whether the application runs
+ /// in Microsoft Azure public clouds or national or sovereign clouds)
  /// </summary>
  public string MicrosoftGraphBaseEndpoint { get; set; }
 
  /// <summary>
- /// Reads the configuration from a json file
+ /// Reads the configuration from a JSON file
  /// </summary>
  /// <param name="path">Path to the configuration json file</param>
  /// <returns>SampleConfiguration as read from the json file</returns>
@@ -162,7 +162,7 @@ public class SampleConfiguration
                     .AddJsonFile(path);
   Configuration = builder.Build();
 
-  // Read the auth and graph endpoint config
+  // Read the auth and graph endpoint configuration
   SampleConfiguration config = new SampleConfiguration()
   {
    PublicClientApplicationOptions = new PublicClientApplicationOptions()
@@ -175,7 +175,7 @@ public class SampleConfiguration
 }
 ```
 
-アプリケーションを作成するには、以下のコードの記述するだけで済みます。
+ここで、アプリケーションを作成するために、次のコードを記述します。
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -184,11 +184,11 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-また、`.Build()` メソッドを呼び出す前に、前述のように `.WithXXX` メソッドを呼び出すことで構成を上書きできます。
+`.Build()` メソッドを呼び出す前に、前述のように `.WithXXX` メソッドを呼び出すことで構成を上書きできます。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-次に、MSAL Java dev サンプルでその構成に使用されているクラスを紹介します。[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+MSAL Java 開発サンプルでその構成に使用されているクラスを次に示します。[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -211,7 +211,7 @@ app = msal.PublicClientApplication(
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
+以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場または学校アカウントあるいは個人用 Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 
 ### <a name="quick-configuration"></a>クイック構成
 
@@ -232,7 +232,7 @@ if let application = try? MSALPublicClientApplication(configuration: config){ /*
 
 ### <a name="more-elaborated-configuration"></a>より詳細な構成
 
-多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
+多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを各国のクラウド (ここで示した米国政府など) のマルチテナント アプリケーションにする場合、次のように記述できます。
 
 Objective-C:
 

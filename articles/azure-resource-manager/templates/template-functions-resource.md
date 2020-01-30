@@ -2,13 +2,13 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979444"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513866"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -32,7 +32,7 @@ ms.locfileid: "75979444"
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-[拡張リソース](extension-resource-types.md)のリソース ID を返します。これは、その機能に追加する別のリソースに適用されるリソースの種類です。
+[拡張リソース](../management/extension-resource-types.md)のリソース ID を返します。これは、その機能に追加する別のリソースに適用されるリソースの種類です。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -533,6 +533,16 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 次に例を示します。
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`は正しい`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`は正しくない
+
+### <a name="get-managed-identity"></a>マネージド ID を取得する
+
+[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) は、一部のリソースに対して暗黙的に作成される[拡張リソースの種類](../management/extension-resource-types.md)です。 テンプレートにはマネージ ID が明示的に定義されていないため、ID が適用されるリソースを参照する必要があります。 暗黙的に作成された ID を含め、すべてのプロパティを取得するには、`Full` を使用します。
+
+たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>参照の例
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497704"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314931"
 ---
 # <a name="partition-and-sample-module"></a>Partition and Sample (パーティションとサンプル) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、データセットでサンプリングを実行したり、データセットからパーティションを作成したりします。
 
@@ -44,7 +44,7 @@ ms.locfileid: "73497704"
 
 このモジュールでは、データをパーティション分割する場合や、サンプリングのための複数の方法がサポートされます。 最初に方法を選択し、その方法で必要な追加のオプションを設定します。
 
-- ヘッド
+- Head
 - サンプリング
 - [Assign to folds]\(フォールドに割り当てる\)
 - [Pick fold]\(フォールドを選択する\)
@@ -165,6 +165,6 @@ ms.locfileid: "73497704"
 > [!NOTE]
 >  フォールドの指定を直接表示することはできません。これらはメタデータ内にのみ存在します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

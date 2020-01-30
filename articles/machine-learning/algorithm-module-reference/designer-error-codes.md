@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 12/03/2019
-ms.openlocfilehash: d491a67a44a2cb01e4968c4d31d20dee4b75a60a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979992"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311667"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
-この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナー (プレビュー) のエラー メッセージと例外コードについて説明します。
+この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナーのエラー メッセージと例外コードについて説明します。
 
 デザイナーでエラー メッセージの完全なテキストを取得するには 2 つの方法があります。  
 
@@ -247,7 +247,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 
 |モデルの種類|トレーニング モジュール| スコアリング モジュール|
 |----|----|----|
-|任意の分類子|[モデルのトレーニング](train-model.md) |[モデルのスコアリング](score-model.md)|
+|任意の分類子|[モデルのトレーニング](train-model.md) |[モデルのスコア付け](score-model.md)|
 |任意の回帰モデル|[モデルのトレーニング](train-model.md) |[モデルのスコア付け](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
@@ -348,7 +348,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 ## <a name="error-0018"></a>エラー 0018  
  入力データセットが有効でない場合、例外が発生します。  
 
-**解決策:** Azure Machine Learning ではこのエラーが多くのコンテキストで発生するので、解決策は 1 つではありません。 一般に、このエラーは、モジュールへの入力として提供されたデータの列の数が間違っていること、またはデータ型がモジュールの要件と一致しないことを示します。 例:  
+**解決策:** Azure Machine Learning ではこのエラーが多くのコンテキストで発生するので、解決策は 1 つではありません。 一般に、このエラーは、モジュールへの入力として提供されたデータの列の数が間違っていること、またはデータ型がモジュールの要件と一致しないことを示します。 次に例を示します。  
 
 -   モジュールにはラベル列が必要ですが、ラベルとしてマークされた列がないか、またはラベル列がまだ選択されていません。  
   
@@ -427,7 +427,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 ## <a name="error-0022"></a>エラー 0022  
  入力データセットで選択された列の数が、予想される数と等しくない場合、例外が発生します。  
 
- Azure Machine Learning では、ダウンストリームのモジュールまたは操作で特定の数の列または入力が必要なときに、提供する列または入力が多すぎるか少なすぎる場合、このエラーが発生します。 例:  
+ Azure Machine Learning では、ダウンストリームのモジュールまたは操作で特定の数の列または入力が必要なときに、提供する列または入力が多すぎるか少なすぎる場合、このエラーが発生します。 次に例を示します。  
 
 -   1 つのラベル列またはキー列を指定するときに、誤って複数の列を選択している。  
   
@@ -1370,7 +1370,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 
 ## <a name="error-0134"></a>エラー 0134
-ラベル列が存在しない場合、またはラベルの付いた行の数が不足している場合、例外が発生します。  
+Exception occurs when label column is missing or has insufficient number of labeled rows. (ラベル列が存在しない場合、またはラベルの付いた行の数が不足している場合、例外が発生します。)  
 
 モジュールでラベル列が必要であるのに列選択に含めない場合、またはラベル列の欠損値が多すぎる場合、このエラーが発生します。
 
@@ -1392,7 +1392,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 
 ## <a name="error-0138"></a>エラー 0138  
- メモリが不足しており、モジュールの実行を完了できません。 データセットのダウンサンプリングは、問題の軽減に役立つことがあります。  
+ Memory has been exhausted, unable to complete running of module. (メモリが不足しており、モジュールの実行を完了できません。) データセットのダウンサンプリングは、問題の軽減に役立つことがあります。  
 
  実行中のモジュールに、Azure コンテナーで使用できるより多くのメモリが必要な場合、このエラーが発生します。 大型のデータセットを使用しており、現在の操作がメモリに収まらない場合に、これが発生することがあります。  
 

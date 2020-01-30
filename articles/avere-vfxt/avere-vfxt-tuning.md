@@ -4,30 +4,22 @@ description: Avere vFXT for Azure のパフォーマンスを最適化するた�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414325"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152937"
 ---
 # <a name="cluster-tuning"></a>クラスター チューニング
 
 ほとんどの vFXT クラスターにとって、パフォーマンス設定のカスタマイズは有益です。 これらの設定は、特定のワークフロー、データセット、およびツールでクラスターを最適に動作させるうえで役立ちます。
 
-このカスタマイズは、通常、Avere Control Panel では使用できない機能を構成することになるため、サポート担当者と一緒に行う必要があります。
+Avere コントロール パネルでは使用できない機能の構成が必要になる可能性があるため、このカスタマイズはサポート担当者と一緒に行う必要があります。
 
 このセクションでは、実行できるいくつかのカスタム チューニングについて説明します。
-
-<!-- 
-[ xxx keep or not? \/ research this xxx ]
-
-> [!TIP]
-> The VDBench utility can be helpful in generating I/O workloads to test a vFXT cluster. Read [Measuring vFXT Performance](vdbench.md) to learn more.
-
--->
 
 ## <a name="general-optimizations"></a>一般的な最適化
 
@@ -42,19 +34,21 @@ ms.locfileid: "75414325"
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>クラウド NAS またはクラウド ゲートウェイの最適化
 
-クラウド NAS またはゲートウェイのシナリオ (vFXT クラスターがクラウド コンテナーへの NAS スタイルのアクセスを提供するシナリオ) で vFXT クラスターとクラウド ストレージの間のより速いデータ速度を活用するために、お客様の担当者が、より積極的にデータをキャッシュからストレージ ボリュームにプッシュするように、以下のような設定の変更を推奨する場合があります。
+クラウド NAS またはゲートウェイのシナリオでは、vFXT クラスターによってクラウド コンテナーへの NAS スタイルのアクセスが提供されます。 vFXT クラスターとクラウド ストレージの間のより速いデータ速度を活用するために、お客様の担当者が、より積極的にデータをキャッシュからストレージ ボリュームにプッシュするように、設定の変更を推奨する場合があります。 次に例を示します。
 
 * クラスターとストレージ コンテナーの間の TCP 接続数を増やす
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>クラウド バーストまたはハイブリッド WAN の最適化
 
-クラウド バーストのシナリオまたはハイブリッド ストレージ WAN の最適化のシナリオ (vFXT クラスターが、クラウドとオンプレミス ハードウェア ストレージ間の統合を提供するシナリオ) では、次のような変更が役に立ちます。
+クラウド バーストのシナリオまたはハイブリッド ストレージ WAN の最適化のシナリオでは、vFXT クラスターによってクラウドとオンプレミス ハードウェア ストレージ間の統合が提供されます。 次のような変更が役に立ちます。
 
 * クラスターとコア ファイラー間で許可される TCP 接続数を増やす
 * リモート コア ファイラーの WAN 最適化設定を有効にする (この設定は、別の Azure リージョンのリモート オンプレミス ファイラーまたはクラウド コア ファイラーに使用できます)
-* TCP ソケットのバッファー サイズを増やす (ワークロードとパフォーマンスのニーズに応じて)
-* "常に転送" する設定を有効にして、冗長にキャッシュされているファイル減らす (ワークロードとパフォーマンスのニーズに応じて)
+* TCP ソケットのバッファーサイズを増やす<sup>*</sup>
+* "常に転送" する設定を有効にして、冗長にキャッシュされているファイルを減らす<sup>*</sup>
+
+<sup>*</sup>ワークロードとパフォーマンスのニーズによっては、これらの調整がすべてのシステムに適用できるとは限りません。
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Avere vFXT for Azure の最適化のヘルプ
 
-これらの最適化に関してサポート スタッフに問い合わせるには、「[Get help with your system (システムに関するサポートを受ける)](avere-vfxt-open-ticket.md)」で説明されている手順を使用してください。
+これらの最適化に関してサポート スタッフに問い合わせるには、「[お使いのシステムでサポートを受ける](avere-vfxt-open-ticket.md)」で説明されている手順を使用してください。

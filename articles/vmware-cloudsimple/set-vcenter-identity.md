@@ -1,5 +1,5 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - プライベート クラウドで vCenter の ID ソースを設定する
+title: Azure VMware Solution by CloudSimple - プライベート クラウドで vCenter の ID ソースを設定する
 description: vCenter にアクセスする VMware 管理者を Active Directory で認証するようにプライベート クラウドの vCenter を設定する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990311"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542867"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -33,7 +33,7 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 [ID ソースを追加](#add-an-identity-source-on-vcenter)する前に、一時的に [vCenter 特権をエスカレート](escalate-private-cloud-privileges.md)します。
 
 > [!CAUTION]
-> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *Administrators* グループには、サービス アカウントのみを追加する必要があります。  
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  "*管理者*" グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。   
 
 
 ## <a name="identity-source-options"></a>ID ソースのオプション
@@ -54,15 +54,15 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 | **オプション** | **説明** |
 |------------|-----------------|
 | **Name** | ID ソースの名前。 |
-| **Base DN for users** (ユーザーのベース DN) | ユーザーの基本識別名。 |
+| **Base DN for users** (ユーザーのベース DN) | ユーザーのベース識別名。 |
 | **ドメイン名** | ドメインの FDQN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
 | **Domain alias** (ドメイン エイリアス) | ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
-| **Base DN for groups** (グループのベース DN) | グループの基本識別名。 |
-| **Primary Server URL** (プライマリ サーバー URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldap://hostname:port`  または  `ldaps://hostname:port` の形式を使用します。 このポートは通常、LDAP 接続の場合は 389、LDAPS 接続の場合は 636 です。 Active Directory マルチドメイン コントローラー デプロイでは、ポートは通常、LDAP の場合は 3268、LDAPS の場合は 3269 です。<br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
+| **Base DN for groups** (グループのベース DN) | グループのベース識別名。 |
+| **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldap://hostname:port`  または  `ldaps://hostname:port` の形式を使用します。 このポートは通常、LDAP 接続の場合は 389、LDAPS 接続の場合は 636 です。 Active Directory マルチドメイン コントローラー デプロイでは、ポートは通常、LDAP の場合は 3268、LDAPS の場合は 3269 です。<br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
 | **Secondary server URL** (セカンダリ サーバーの URL) | フェールオーバーに使用するセカンダリ ドメイン コントローラー LDAP サーバーのアドレス。 |
 | **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「 `ldaps://` 」と入力した後に [証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
 | **ユーザー名** | ユーザーおよびグループのベース DN への最小限の読み取り専用アクセス権を持つドメイン内のユーザーの ID。 |
-| **パスワード** | Username で指定したユーザーのパスワード。 |
+| **パスワード** | [ユーザー名] で指定したユーザーのパスワード。 |
 
 前の表の情報がそろったら、vCenter でオンプレミスの Active Directory をシングル サインオンの ID ソースとして追加することができます。
 
@@ -130,4 +130,4 @@ Azure で実行される Active Directory は、オンプレミスで実行さ�
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. 設定を確認して **[Finish]\(完了\)** をクリックします。
+8. 設定を確認し、 **[Finish]\(完了\)** をクリックします。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934013"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155555"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 
@@ -43,7 +43,7 @@ Azure で実行されているすべてのディストリビューションに�
 
 ## <a name="general-linux-installation-notes"></a>Linux のインストールに関する一般的な注記
 * Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ**を選択します。
-* Azure は世代 1 の仮想マシンのみサポートします。 第 1 世代の仮想マシンを、VHDX ファイル形式から VHD ファイル形式に、容量可変から容量固定ディスクに変換できます。 ただし仮想マシンの世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 virtual machine in Hyper-V? (Hyper-V で第 1 世代または第 2 世代の仮想マシンを作成する必要はありますか?)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
+* Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
 * Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを使用して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントする必要があります。

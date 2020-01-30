@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562177"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154824"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -24,12 +24,17 @@ Azure Active Directory (Azure AD) に参加しているデバイスによって�
 
 この記事では、この動作のしくみについて説明します。
 
-## <a name="how-it-works"></a>動作のしくみ 
+## <a name="prerequisites"></a>前提条件
+
+ Azure AD 参加済みマシンが組織のネットワークに接続されていない場合は、VPN または他のネットワーク インフラストラクチャが必要です。 オンプレミスの SSO には、オンプレミスの AD DS ドメイン コントローラーとの見通し内通信が必要です。
+
+## <a name="how-it-works"></a>しくみ 
 
 1 つのユーザー名とパスワードを覚えておくだけでよいため、SSO によってリソースへのアクセスが簡略化され、ご利用の環境のセキュリティが向上します。 ユーザーは Azure AD 参加済みデバイスを使用して、ご利用の環境内のクラウド アプリへの SSO エクスペリエンスを既に手に入れています。 ご利用の環境内に Azure AD とオンプレミス AD がある場合は、SSO エクスペリエンスの範囲をオンプレミスの業種 (LOB) アプリ、ファイル共有、およびプリンターにまで拡張することをおそらく希望するでしょう。  
 
 Azure AD 参加済みデバイスには、オンプレミス AD 環境についての情報はありません (その環境に参加していないため)。 ただし、Azure AD Connect を使用して、ご利用のオンプレミス AD に関する追加情報をこれらのデバイスに提供することができます。
-Azure AD とオンプレミス AD の両方を使用している環境は、ハイブリッド環境とも呼ばれます。 ハイブリッド環境を使用している場合は、オンプレミスの ID 情報をクラウドに同期するために、Azure AD Connect を既にデプロイ済みである可能性があります。 同期プロセスの一部として、Azure AD Connect はオンプレミスのドメイン情報を Azure AD に同期します。 ハイブリッド環境においてユーザーが Azure AD 参加済みデバイスにサインインしたとき:
+
+Azure AD とオンプレミス AD の両方を使用している環境は、ハイブリッド環境とも呼ばれます。 ハイブリッド環境を使用している場合は、オンプレミスの ID 情報をクラウドに同期するために、Azure AD Connect を既にデプロイ済みである可能性があります。 同期プロセスの一部として、Azure AD Connect はオンプレミスのユーザー情報を Azure AD に同期します。 ハイブリッド環境においてユーザーが Azure AD 参加済みデバイスにサインインしたとき:
 
 1. Azure AD からデバイスに、ユーザーがメンバーになっているオンプレミス ドメインの名前が送信されます。 
 1. ローカル セキュリティ機関 (LSA) サービスによって、デバイス上の Kerberos 認証が有効になります。
@@ -66,6 +71,6 @@ Azure AD 参加済みデバイス上に AD 内のコンピューター オブジ
 
 Azure AD 参加済みデバイス上でファイルを他のユーザーと共有することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[Azure Active Directory のデバイス管理とは](overview.md)」を参照してください。 

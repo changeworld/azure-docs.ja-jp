@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する | Microsoft Docs
+title: Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する
 description: .NET SDK を使用して StorSimple データ マネージャー ジョブを起動する方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632360"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270720"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 
@@ -200,6 +192,6 @@ ms.locfileid: "60632360"
 
     ![.NET ジョブをトリガーするコードのスニペット全体](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services REST API を使用してエンコードを実行する際にビデオをサブクリップする
+title: Azure Media Services REST を使用してエンコードを実行する際にビデオをサブクリップする
 description: このトピックでは、Azure Media Services を REST で使用してエンコードを実行する際にビデオをサブクリップする方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704446"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514325"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST
 
@@ -84,6 +84,6 @@ ms.locfileid: "68704446"
 
     作成および送信されたジョブに関する情報とジョブの状態とを含んだ**応答**が表示されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [カスタム変換を使用してエンコードする方法](custom-preset-rest-howto.md) 

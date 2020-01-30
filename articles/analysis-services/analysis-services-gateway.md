@@ -4,19 +4,21 @@ description: Azure の Analysis Services サーバーがオンプレミスのデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768556"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310154"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
-オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Power Automate でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 インストールするゲートウェイはこれらすべてのサービスで同じですが、Azure Analysis Services と Logic Apps には追加の手順がいくつかあります。
+オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Power Automate でも機能します。 インストールするゲートウェイはこれらすべてのサービスで同じですが、Azure Analysis Services と Logic Apps には追加の手順がいくつかあります。
+
+ここで提供される情報は、Azure Analysis Services がオンプレミス データ ゲートウェイと連携する方法に固有のものです。 ゲートウェイ全般の概要と、他のサービスとの連携方法については、「[オンプレミス データ ゲートウェイとは](/data-integration/gateway/service-gateway-onprem)」を参照してください。
 
 Azure Analysis Services の場合、ゲートウェイの初回のセットアップは、4 つのプロセスで構成されます。
 
@@ -24,9 +26,11 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 
 - **ゲートウェイを登録する**: この手順では、ゲートウェイの名前と回復キーを指定し、リージョンを選択し、ゲートウェイを Gateway Cloud Service に登録します。 ゲートウェイ リソースは任意のリージョンに登録できますが、Analysis Services サーバーと同じリージョンに登録することをお勧めします。 
 
-- **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure サブスクリプションにゲートウェイ リソースを作成します。
+- **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure にゲートウェイ リソースを作成します。
 
-- **サーバーをゲートウェイ リソースに接続する**: サブスクリプションにゲートウェイ リソースを用意したら、サーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じサブスクリプションと同じリージョンにあることが条件です。
+- **サーバーをゲートウェイ リソースに接続する**: ゲートウェイ リソースを用意したら、それとサーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じリージョンにあることが条件です。
+
+
 
 ## <a name="how-it-works"> </a>動作のしくみ
 組織のコンピューターにインストールしたゲートウェイは、Windows サービス **オンプレミスのデータ ゲートウェイ**として実行されます。 このローカル サービスは、Azure Service Bus を通して Gateway Cloud Service に登録されます。 次に、Azure サブスクリプション用のオンプレミス データ ゲートウェイ リソースを作成します。 Azure Analysis Services サーバーは、Azure ゲートウェイ リソースに接続されます。 サーバー上のモデルが、クエリや処理を行うためにオンプレミスのデータ ソースに接続する必要がある場合、クエリとデータ フローは、ゲートウェイ リソース、Azure Service Bus、ローカルのオンプレミスのデータ ゲートウェイ サービスを経由してデータ ソースに接続します。 
@@ -50,7 +54,7 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 
 ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 ～ 9354 の送信ポート上で通信します。  ゲートウェイでは受信ポートは必要ありません。
 
-ファイアウォール内のデータ領域用に IP アドレスを含めることが必要な場合があります。 [Microsoft Azure データセンターの IP リスト](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードできます。 このリストは毎週更新されます。 Azure データセンターの IP リストには、IP アドレスが CIDR 表記法で記載されています。 詳細については、[クラスのないドメイン間ルーティング ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)に関するページを参照してください。
+ファイアウォール内のデータ領域用に IP アドレスを含めることが必要な場合があります。 [Microsoft Azure データセンターの IP リスト](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードできます。 このリストは毎週更新されます。 Azure データセンターの IP リストには、IP アドレスが CIDR 表記法で記載されています。 詳細については、[クラスのないドメイン間ルーティング ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)に関するページを参照してください。
 
 ゲートウェイで使用される完全修飾ドメイン名を次に示します。
 

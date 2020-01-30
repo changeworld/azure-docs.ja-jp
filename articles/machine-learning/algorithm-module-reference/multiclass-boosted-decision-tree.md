@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7f39d393b96b1515e4815abdc28ac4079f271c1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73a832d98d0b17f59a98e2d57cf801818c7ed1da
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232603"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311939"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多クラスのブースト デシジョン ツリー
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成するには、このモジュールを使用します。
 
@@ -58,6 +58,6 @@ ms.locfileid: "74232603"
 > [!Note]
 > **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497851"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312228"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>テキストからの N-gram 特徴抽出モジュールの構成
 
@@ -106,7 +106,7 @@ ms.locfileid: "73497851"
 
 1.  スコアリング グラフで、保存したデータセットをテキストからの N-gram 特徴抽出モジュールに接続します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 テキストからの N-gram 特徴抽出モジュールでは、次の 2 つの種類の出力が作成されます。 
 
@@ -120,12 +120,12 @@ ms.locfileid: "73497851"
 
 ボキャブラリには、N-gram 辞書と、分析の一部として生成される用語の頻度スコアが含まれています。 DF スコアと IDF スコアは、他のオプションに関係なく生成されます。
 
-+ **ID**:一意の N-gram ごとに生成される識別子。
++ **[ID]** :一意の N-gram ごとに生成される識別子。
 + **NGram**:N-gram。 スペースやその他の単語の区切り文字は、アンダースコア文字に置き換えられます。
 + **DF**:元のコーパスの N-gram の用語頻度スコア。
 + **IDF**:元のコーパスの N-gram の逆ドキュメント頻度スコア。
 
-このデータセットは手動で更新できますが、エラーが発生する可能性があります。 例:
+このデータセットは手動で更新できますが、エラーが発生する可能性があります。 次に例を示します。
 
 * 入力ボキャブラリで同じキーを使用している重複行がモジュールによって検出されると、エラーが発生します。 ボキャブラリ内の 2 つの行に同じ単語が含まれていないことを確認してください。
 * ボキャブラリ データセットの入力スキーマは、列名と列の型を含め、完全に一致している必要があります。 
@@ -135,6 +135,6 @@ ms.locfileid: "73497851"
 > [!Note]
 > データ出力をモデルのトレーニング モジュールに直接接続しないでください。 モデルのトレーニングに取り込まれる前に、フリー テキスト列を削除する必要があります。 そうしないと、フリー テキスト列はカテゴリ別の特徴として扱われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

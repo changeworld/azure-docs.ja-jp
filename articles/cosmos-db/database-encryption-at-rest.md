@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755101"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548103"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 
@@ -46,7 +46,7 @@ A:キーは Microsoft によって管理されます。
 A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q:独自の暗号化キーを使用できますか?
-A:Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。 この質問は、PCI-DSS などのコンプライアンス要件のクリアに関する代替質問として頻繁に寄せられることがわかりました。 この機能を構築する際に、コンプライアンス監査者の協力を得て、Cosmos DB を使用する顧客が自身でキーを管理しなくても要件を満たすことができるようにしました。
+A:はい。この機能は新しい Cosmos アカウントで使用でき、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)のドキュメントを参照してください。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q:どのリージョンで暗号化が有効になっていますか?
 A:すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
@@ -57,7 +57,7 @@ A:パフォーマンスの SLA への影響や変化はないため、既存お�
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Q:ローカル エミュレーターは、保存時の暗号化に対応していますか?
 A:エミュレーターは、スタンドアロンの開発/テスト ツールであり、管理された Cosmos DB サービスで使用するキー管理サービスを使用していません。 機密性の高いエミュレーター テスト データを格納するドライブで BitLocker を有効にすることをお勧めします。 [エミュレーターは既定のデータ ディレクトリの変更](local-emulator.md)と、よく知られた場所の使用をサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
 マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

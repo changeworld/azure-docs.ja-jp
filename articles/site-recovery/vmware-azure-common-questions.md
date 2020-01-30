@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: a078f1dc7d7aa3727f3f057f284c2ea5da923e07
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495433"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514852"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -101,7 +101,7 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 
 - [プッシュ インストール](vmware-physical-mobility-service-overview.md#push-installation)
 - UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
-- [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使用したデプロイ
+- [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使用したデプロイ
 
 ## <a name="managed-disks"></a>マネージド ディスク
 

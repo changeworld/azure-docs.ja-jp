@@ -1,25 +1,17 @@
 ---
-title: Azure Resource Manager スクリプトを使用して StorSimple デバイスを管理する | Microsoft Docs
+title: Azure Resource Manager スクリプトを使用して StorSimple デバイスを管理する
 description: Azure Resource Manager スクリプトを使用して StorSimple ジョブを自動化する方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726419"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276643"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -33,7 +25,7 @@ ms.locfileid: "60726419"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK ベースのサンプル スクリプトの表
 
-| Azure Resource Manager スクリプト                    | 説明                                                                                                                                                                                                       |
+| Azure Resource Manager スクリプト                    | [説明]                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | このスクリプトを使用して、StorSimple デバイスによるサービス データ暗号化キーの変更を承認できます。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | このスクリプトでは、8010 または 8020 の StorSimple Cloud Appliance を作成します。 クラウド アプライアンスを構成し、StorSimple Data Manager サービスに登録できます。                                                       |
@@ -174,6 +166,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)。

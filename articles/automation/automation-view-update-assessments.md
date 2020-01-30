@@ -3,14 +3,14 @@ title: Azure Update Management で更新プログラムの評価を表示する
 description: この記事では、更新プログラムの展開に関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419881"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310086"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Update Management で更新プログラムの評価を表示する
 
@@ -30,7 +30,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 
 ## <a name="update-classifications"></a>更新プログラムの分類
 
-次の表は、Update Management の更新プログラムの分類と、各分類の定義を示します。
+次の表は、Update Management のサポートされる更新プログラムの分類と、各分類の定義を示します。
 
 ### <a name="windows"></a>Windows
 
@@ -59,6 +59,8 @@ sudo yum -q --security check-update
 ```
 
 CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で有効にした場合には、できる範囲でのサポートのみを提供しています。
+
+Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

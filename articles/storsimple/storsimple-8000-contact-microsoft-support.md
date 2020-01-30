@@ -1,31 +1,23 @@
 ---
-title: StorSimple 8000 シリーズのサポート チケットまたはサポート ケースを作成する | Microsoft Docs
+title: StorSimple 8000 シリーズのサポート チケットまたはケースを作成する
 description: サポート要求をログに記録する方法と StorSimple 8000 シリーズ デバイスでサポート セッションを開始する方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612518"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277170"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
 StorSimple デバイス マネージャーのサービスの概要ブレードには、**新しいサポート要求を記録**する機能が用意されています。 StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。 この記事で説明する内容は次のとおりです。
 
-* サポート要求を作成する方法
+* サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
 * StorSimple デバイスの Windows PowerShell インターフェイスでサポート セッションを開始する方法
 
@@ -114,6 +106,6 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 > サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。 また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。 サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-8000-troubleshoot-deployment.md)する方法を確認します

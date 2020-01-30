@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179089"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156932"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
@@ -37,7 +37,7 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight の HBase 用書き込みアクセラレータを有効にする方法
 
-書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[metastore の設定]** で、 **[Enable Accelerated Writes (preview)]\(書き込みアクセラレータを有効にする (プレビュー)\)** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
+書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[Metastore Settings]\(メタストアの設定\)** で、 **[Enable Accelerated Writes]\(高速書き込みを有効にする\)** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
 
 ![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 
@@ -61,7 +61,7 @@ disable 'mytable'
 
 スケールダウン後に NameNode がセーフモードになった場合は、hdfs のコマンドを使用して、レプリケーション不足のブロックを再レプリケートし、hdfs のセーフモードを解除します。 この再レプリケーションにより、HBase を正常に再起動できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [機能](https://hbase.apache.org/book.html#wal)に関する Apache HBase の公式ドキュメント
 * 書き込みアクセラレータを使用するよう HDInsight の Apache HBase クラスターをアップグレードするには、「[Apache HBase クラスターを新しいバージョンに移行する](apache-hbase-migrate-new-version.md)」を参照してください。

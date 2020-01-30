@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/25/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0dfb7245135097780f027185e4037b6cafbae690
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984847"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514716"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -81,7 +81,7 @@ EA API は、認証と承認に API キーを使用します。 MCA API は Azur
 | 目的 | 古いオファリング | 新しいオファリング |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ | [Microsoft Azure Consumption Insights Power BI アプリ](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)および [Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ |  [Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>残高とクレジットを取得するための API
 

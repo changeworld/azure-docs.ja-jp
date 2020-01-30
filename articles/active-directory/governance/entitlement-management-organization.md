@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608739"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548902"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -31,9 +31,12 @@ Azure AD のエンタイトルメント管理を利用すると、自分の組�
 
 接続されている組織とは、ご自身と関係のある外部 Azure AD ディレクトリまたはドメインです。
 
-たとえば、あなたは Woodgrove Bank で働いていて、2 つの外部組織 Graphic Design Institute および Contoso と共同作業を行う必要があるとします。 あなたは、Graphic Design Institute の担当者から Graphic Design Institute では Azure AD を使用していて、ユーザーのユーザー プリンシパル名が `graphicdesigninstitute.com` で終わることを聞きました。 また、Contoso の担当者から Contoso では Azure AD を使用していないが、ユーザーのユーザー プリンシパル名が `contoso.com` で終わることを聞きました。
+たとえば、あなたは Woodgrove Bank で働いていて、2 つの外部組織と共同作業を行う必要があるとします。 この2つの組織の構成は異なります。
 
-2 つの接続された組織を構成できます。1 つはドメインが `graphicdesigninstitute.com` の Graphic Design Institute、もう 1 つはドメインが `contoso.com` の Contoso です。 その後、これらの 2 つの接続された組織をポリシーに追加すると、ポリシーに一致するユーザー プリンシパル名を持つ各組織のユーザーがアクセス パッケージを要求できるようになります。 さらに、Graphic Design Institute では Azure AD を使用していることがわかっているため、Graphic Design Institute が後から `graphicdesigninstitute.example` などのサブドメインを追加した場合、そのユーザー プリンシパル名を持つユーザーも同じポリシーを使用してアクセス パッケージを要求できるようになります。
+- Graphic Design Institute では、Azure AD を使用しており、ユーザーは、末尾が `graphicdesigninstitute.com` のユーザー プリンシパル名を持っています。
+- Contoso ではまだ Azure AD を使用していません。 Contoso のユーザーは、末尾が `contoso.com` のユーザー プリンシパル名を持っています。
+
+この場合、2 つの接続された組織を構成できます。 Graphic Design Institute 用に 1 つの接続された組織、そして Contoso 用にもう 1 つを作成します。 その後、これらの 2 つの接続された組織をポリシーに追加すると、ポリシーに一致するユーザー プリンシパル名を持つ各組織のユーザーがアクセス パッケージを要求できるようになります。 graphicdesigninstitute.com のドメインを持つユーザー プリンシパル名を使用するユーザーは、Graphic Design Institute の接続された組織に一致し、要求を送信することを許可されます。一方、contoso.com のドメインを持つユーザー プリンシパル名を使用するユーザーは、Contoso の接続された組織に一致し、同様にパッケージの要求を許可されます。 さらに、Graphic Design Institute は Azure AD を使用しているため、[検証済みドメイン](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name)に一致するプリンシパル名を持つユーザーはテナントに追加されます。たとえば、graphicdesigninstitute.example も同じポリシーを使用してアクセス パッケージを要求することができます。
 
 ![接続されている組織の例](./media/entitlement-management-organization/connected-organization-example.png)
 

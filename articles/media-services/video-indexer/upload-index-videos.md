@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972622"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169375"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -25,9 +25,12 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
 * [アセット ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
 
-この記事では、[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行う方法について説明します。 この記事のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 <br/>この記事では、API の出力を変更および処理するために API で設定できるいくつかのパラメーターについても説明します。
+ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
-ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+この記事では、次のオプションを使用してビデオをアップロードし、インデックスを作成する方法について説明します。
+
+* [Video Indexer Web サイト](#website) 
+* [Video Indexer API](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>アップロードに関する考慮事項と制限事項
  
@@ -40,6 +43,10 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
 - Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます。
 - Video Indexer では、1 つのファイルの最大時間制限は 4 時間です。
+- URL にアクセスできる必要があります (たとえば、パブリック URL)。 
+
+    プライベート URL の場合は、要求でアクセス トークンが提供される必要があります。
+- URL では、Web ページ (`www.youtube.com` へのリンクなど) ではなく、有効なメディア ファイルを指す必要があります。
 - 1 分あたり最大 60 本の映画をアップロードできます。
 
 > [!Tip]
@@ -47,15 +54,39 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 >
 > 以前の .NET Framework を使用する必要がある場合は、REST API の呼び出しを行う前に、コードに次の 1 行を追加します。  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="configurations-and-params"></a>構成とパラメーター
+## <a name="supported-file-formats-for-video-indexer"></a>Video Indexer でサポートされているファイル形式
+
+Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)」を参照してください。
+
+## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
+
+> [!NOTE]
+> ビデオの名前は、80 文字以下にする必要があります。
+
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
+2. ビデオをアップロードするには、 **[アップロード]** ボタンまたはリンクを押します。
+
+    ![アップロード](./media/video-indexer-get-started/video-indexer-upload.png)
+
+    ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
+
+    ![アップロード完了](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+
+    Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
+
+## <a name="a-idapisupload-and-index-with-api"></a><a id="apis"/>API を使用したアップロードとインデックス作成
+
+[Upload Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
+
+### <a name="configurations-and-params"></a>構成とパラメーター
 
 このセクションでは、いくつかの省略可能なパラメーターと、それらを設定する場合について説明します。
 
-### <a name="externalid"></a>externalID 
+#### <a name="externalid"></a>externalID 
 
 このパラメーターでは、ビデオに関連付けられる ID を指定できます。 この ID を、外部の "ビデオ コンテンツ管理" (VCM) システムの統合に適用できます。 指定した外部 ID を使用して、Video Indexer ポータル内にあるビデオを検索できます。
 
-### <a name="callbackurl"></a>callbackUrl
+#### <a name="callbackurl"></a>callbackUrl
 
 以下のイベントについてのユーザーへの通知 (POST 要求を使用) に使われる URL です。
 
@@ -79,12 +110,12 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
         
     - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-#### <a name="notes"></a>メモ
+##### <a name="notes"></a>メモ
 
 - Video Indexer では、元の URL で指定された既存のすべてのパラメーターが返されます。
 - 指定される URL は、エンコードする必要があります。
 
-### <a name="indexingpreset"></a>indexingPreset
+#### <a name="indexingpreset"></a>indexingPreset
 
 未加工の録画または外部の録画に背景ノイズが入っている場合は、このパラメーターを使用します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
 
@@ -95,13 +126,13 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 料金は、選択したインデックス作成オプションによって異なります。  
 
-### <a name="priority"></a>priority
+#### <a name="priority"></a>priority
 
 ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、**priority** パラメーターを使用します。 有効な値は、**Low**、**Normal** (既定)、**High** です。
 
 **Priority** パラメーターは、有料アカウントだけでサポートされています。
 
-### <a name="streamingpreset"></a>streamingPreset
+#### <a name="streamingpreset"></a>streamingPreset
 
 ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします。 その後、インデックス作成とビデオの分析を行います。 Video Indexer が分析を完了すると、ビデオ ID を含んだ通知が送信されます。  
 
@@ -111,17 +142,17 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 ビデオのインデックス作成のみを行い、エンコードは行わない場合は、`streamingPreset` を `NoStreaming` に設定します。
 
-### <a name="videourl"></a>videoUrl
+#### <a name="videourl"></a>videoUrl
 
 インデックスを作成するビデオ/音声ファイルの URL。 URL はメディア ファイルを示している必要があります (HTML ページはサポートされていません)。 このファイルは URI の一部として提供されるアクセス トークンで保護することができます。また、ファイルを提供するエンドポイントは TLS 1.2 以降を使用してセキュリティで保護する必要があります。 URL はエンコードする必要があります。 
 
 `videoUrl` が指定されていない場合、ファイルを multipart/form 本文のコンテンツとして渡すことが Video Indexer で想定されます。
 
-## <a name="code-sample"></a>コード サンプル
+### <a name="code-sample"></a>コード サンプル
 
 次の C# コード スニペットは、すべての Video Indexer API の使用方法を示しています。
 
-### <a name="instructions-for-running-this-code-sample"></a>このコード サンプルを実行するための手順
+#### <a name="instructions-for-running-this-code-sample"></a>このコード サンプルを実行するための手順
 
 このコードをお使いの開発プラットフォームにコピーした後、次の 2 つのパラメーターを指定する必要があります。API Management 認証キーとビデオの URL。
 
@@ -308,7 +339,8 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
-## <a name="common-errors"></a>一般的なエラー
+
+### <a name="common-errors"></a>一般的なエラー
 
 アップロード操作によって返される場合がある状態コードを次の表に示します。
 

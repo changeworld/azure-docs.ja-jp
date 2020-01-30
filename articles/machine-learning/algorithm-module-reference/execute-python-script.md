@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a28b77a25971128b9474f18d860f6204c3433c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497869"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312296"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[次の記事](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)を参照してください。
 
@@ -111,7 +111,7 @@ os.system(f"pip install scikit-misc")
 
     すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 埋め込み Python コードによって実行された計算の結果は pandas.DataFrame として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換され、その結果をパイプライン内の他のモジュールで使用できるようになります。
 
@@ -122,6 +122,6 @@ os.system(f"pip install scikit-misc")
 + **Result Dataset 2**: Python スクリプトで 2 番目に返される pandas データフレームによって定義されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

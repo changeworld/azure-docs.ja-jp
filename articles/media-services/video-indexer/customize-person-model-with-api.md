@@ -8,18 +8,18 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 370e9e515359e2e2e598db90aa379f796b13c3fe
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838262"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292401"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API を使用して人物モデルをカスタマイズする
 
-Video Indexer では、ビデオ コンテンツの顔検出と著名人認識がサポートされます。 著名人認識機能では、IMDB、Wikipedia、LinkedIn のトップ インフルエンサなどの一般的に要求されているデータ ソースに基づく約 100 万人の顔を処理できます。 著名人認識機能で認識されない顔は、検出されますが、名前なしのままとなります。 Video Indexer にビデオをアップロードし、結果が戻ってきた後、前に戻り、認識されなかった顔に名前を付けることができます。 顔に名前でラベルを付けると、その顔と名前が、アカウントの人物モデルに追加されます。 その後、Video Indexer では、今後のビデオと過去のビデオでこの顔が認識されるようになります。
+Video Indexer では、ビデオ コンテンツの顔検出と著名人認識がサポートされています。 著名人認識機能では、IMDB、Wikipedia、LinkedIn のトップ インフルエンサなどの一般的に要求されているデータ ソースに基づく約 100 万人の顔を処理できます。 著名人認識機能によって認識されない顔も検出されますが、それらの顔では名前が未設定になります。 Video Indexer にビデオをアップロードし、結果が戻ってきた後、前に戻り、認識されなかった顔に名前を付けることができます。 顔に名前のラベルを付けると、顔と名前がお使いのアカウントの人物モデルに追加されます。 その後、Video Indexer によって、その顔が今後の動画と過去の動画で認識されます。
 
 Video Indexer API を使用して、ビデオで検出された顔を編集することができます。これについては、このトピックで説明します。 また、[Video Indexer Web サイトを使用する人物モデルのカスタマイズ](customize-person-model-with-api.md)に関するページで説明されているように、Video Indexer Web サイトを使用することもできます。
 
@@ -35,38 +35,7 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 
 ## <a name="create-a-new-person-model"></a>新しい人物モデルを作成する
 
-指定されたアカウントで新しい人物モデルを作成します。 
-
-### <a name="request-url"></a>要求 URL
-
-これは POST 要求です。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Curl の要求を以下に示します。
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
-
-### <a name="request-parameters"></a>要求パラメーター 
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|名前|string|はい|人物モデルの名前|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
-
-### <a name="response"></a>Response
+指定されたアカウントで新しい人物モデルを作成するには、[Create Person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API を使用します。
 
 応答では、以下の例の形式に従って、先ほど作成した人物モデルの名前と生成されたモデル ID が提供されます。
 
@@ -81,73 +50,15 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 ## <a name="delete-a-person-model"></a>人物モデルを削除する
 
-指定されたアカウントからカスタムの人物モデルを削除します。 
+指定されたアカウントからカスタムの人物モデルを削除するには、[Delete Person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API を使用します。 
 
 人物モデルが正常に削除された後、削除されたモデルを使用していた現在のビデオのインデックスは再作成されるまで変わりません。 インデックスが再作成されると、そのモデルを使用してインデックスが作成された現在のビデオでは、削除されたモデルで名前が付けられていた顔は Video Indexer によって認識されなくなります。しかし、それらの顔は引き続き検出されます。 削除されたモデルを使用してインデックスが作成された現在のビデオでは、アカウントの既定の人物モデルが使用されるようになります。 アカウントの既定のモデルでも削除されたモデルの顔に名前が付けられている場合、それらの顔はビデオで引き続き認識されます。
-
-### <a name="request-url"></a>要求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}
-```
-
-Curl の要求を以下に示します。
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|id|string|はい|人物モデルの ID (人物モデルの作成時に生成されます)|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
-
-### <a name="response"></a>Response
 
 人物モデルが正常に削除されたときに返されるコンテンツはありません。
 
 ## <a name="get-all-person-models"></a>すべての人物モデルを取得する
 
-指定されたアカウントのすべての人物モデルを取得します。 
-
-### <a name="request-call"></a>要求呼び出し
-
-これは GET 要求です。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Curl の要求を以下に示します。
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
-
-### <a name="response"></a>Response
+指定されたアカウントのすべての人物モデルを取得するには、[Get Person Models](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API を使用します。
 
 応答では、アカウント内のすべての人物モデル (指定されたアカウント内の既定の人物モデルを含む) のリストが提供され、以下の例の形式に従ってそれぞれの名前と ID が示されます。
 
@@ -174,43 +85,10 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 Video Indexer で著名人として認識された顔は、新しい名前で更新できます。 指定した新しい名前は、組み込みの著名人認識より優先されます。
 
-### <a name="request-call"></a>要求呼び出し
-
-これは POST 要求です。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}
-```
-
-Curl の要求を以下に示します。
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
-```
-
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)。
-
-### <a name="request-parameters"></a>要求パラメーター
-
-|**Name**|**Type**|**必須**|**説明**|
-|---|---|---|---|
-|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|string|はい|アカウントのグローバル一意識別子|
-|videoId|string|はい|更新する顔が表示されるビデオの ID。 これは、ビデオがアップロードされ、インデックスが付けられるときに作成されます。|
-|faceId|integer|はい|更新される顔の ID。 faceId はビデオ インデックスから取得できます|
-|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
-|名前|string|はい|顔を更新するときに使用する新しい名前。|
+顔を更新するには、[Update Video Face](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API を使用します。
 
 名前は人物モデルに対して一意であるため、同じ人物モデルの 2 つの異なる顔に、同じ **name** パラメーター値を指定した場合、Video Indexer ではこれらの顔は同じ人物であると見なされ、ビデオのインデックスを再作成したときに集約されます。 
 
-### <a name="request-body"></a>要求本文
-
-この呼び出しで必要な要求本文はこれ以上ありません。
-
-### <a name="response"></a>Response
-
-顔が正常に更新されたときに返されるコンテンツはありません。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Video Indexer Web サイトを使用して人物モデルをカスタマイズする](customize-person-model-with-website.md)

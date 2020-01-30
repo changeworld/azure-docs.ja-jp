@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027645"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264629"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -61,7 +61,8 @@ VM を起動するには、VM に PA がインストールされている必要�
 ### <a name="manual-installation"></a>手動のインストール
 Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM エージェントは、Windows Server 2008 R2 以降でサポートされます。
 
-> [注!] ProvisionVMAgent を有効にせずにイメージからデプロイされた VM に VMAgent を手動でインストールした後は、AllowExtensionOperations オプションを更新することが重要です。
+> [!NOTE]
+> ProvisionVMAgent を有効にせずにイメージからデプロイされた VM に VMAgent を手動でインストールした後は、AllowExtensionOperations オプションを更新することが重要です。
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true

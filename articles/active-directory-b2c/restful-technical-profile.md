@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425627"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263372"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -125,10 +125,10 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
-| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 |
+| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 それぞれによって呼び出される HTTP 動詞は次のとおりです。<br /><ul><li>`Body`:POST</li><li>`Form`:POST</li><li>`Header`:GET</li><li>`QueryString`:GET</li></ul> |
 | ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 |
 | ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
-| DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 |
+| DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-error-message)のセクションを参照してください。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -221,7 +221,7 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 |
 | status | はい | 409 |
-| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
+| コード | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
 | requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 |
 | userMessage | はい | ユーザーに示されるエラー メッセージ。 |
 | developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 |

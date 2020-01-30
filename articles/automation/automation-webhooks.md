@@ -3,14 +3,14 @@ title: webhook を使用した Azure Automation の Runbook の開始
 description: HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418967"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155827"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
@@ -126,7 +126,7 @@ Runbook ジョブの完了時期と Webhook からの完了状態は、クライ
 
 ## <a name="renew-webhook"></a> Webhook を更新する
 
-Webhook が作成された時点での有効期間は 1 年です。 その日時が過ぎると、Webhook は自動的に期限切れになります。 有効期限が切れた Webhook は再アクティブ化できず、削除して作成しなおす必要があります。 Webhook が有効期限に達していない場合は延長できます。
+Webhook が作成された時点での有効期間は 10 年です。 その期間が過ぎると、Webhook は自動的に期限切れになります。 有効期限が切れた Webhook は再アクティブ化できず、削除して作成しなおす必要があります。 Webhook が有効期限に達していない場合は延長できます。
 
 Webhook を延長するには、その Webhook を含む Runbook に移動します。 **[リソース]** で **[Webhooks]** を選択します。 延長する Webhook をクリックすると、 **[Webhook]** ページが開きます。  新しい有効期限の日付と時刻を選択して、 **[保存]** をクリックします。
 

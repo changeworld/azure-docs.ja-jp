@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475165"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264018"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [顧客] ダッシュボード
 
@@ -114,5 +114,5 @@ ms.locfileid: "75475165"
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と AppSource でのプランに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の評価とレビューのダッシュボード](./ratings-reviews.md)」を参照してください。
+- Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード](./ratings-reviews.md)」を参照してください。
 - コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。

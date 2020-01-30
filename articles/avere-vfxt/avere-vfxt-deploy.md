@@ -4,34 +4,34 @@ description: Azure で Avere vFXT クラスターをデプロイする手順
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415453"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547525"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
-この手順では、Azure Marketplace から利用できるデプロイ ウィザードの使い方について説明します。 ウィザードを使うと、Azure Resource Manager テンプレートを使用してクラスターが自動的にデプロイされます。 フォームにパラメーターを入力して **[作成]** をクリックした後、Azure によって自動的に次の手順が実行されます。
+この手順では、Azure Marketplace から利用できるデプロイ ウィザードの使い方について説明します。 ウィザードを使うと、Azure Resource Manager テンプレートを使用してクラスターが自動的にデプロイされます。 フォームにパラメーターを入力して **[作成]** をクリックすると、Azure によって自動的に次のタスクが実行されます。
 
 * クラスター コントローラーを作成します。これは、クラスターをデプロイして管理するために必要なソフトウェアを含んだ基本的な VM です。
 * リソース グループと仮想ネットワーク インフラストラクチャを設定します。これには新しい要素の作成も含まれます。
 * クラスター ノード VM を作成し、それらを Avere クラスターとして構成します。
 * 要求された場合は、新しい Azure BLOB コンテナーを作成し、それをクラスター コア ファイラーとして構成します。
 
-このドキュメントの指示に従うことで、以下の図に示されているように、仮想ネットワーク、サブネット、コントローラー、vFXT クラスターを準備することができます。 この図で示す Azure BLOB コア ファイラーには、(非表示の新しいストレージ アカウント内の) 新しい BLOB ストレージ コンテナーと、サブネット内にある Microsoft ストレージ用のサービス エンドポイントが含まれています。
+このドキュメントの指示に従うことで、以下の図に示されているように、仮想ネットワーク、サブネット、クラスター コントローラー、vFXT クラスターを準備することができます。 この図で示す Azure BLOB コア ファイラーには、(非表示の新しいストレージ アカウント内の) 新しい BLOB ストレージ コンテナーと、サブネット内にある Microsoft ストレージ用のサービス エンドポイントが含まれています。
 
 ![Avere クラスター コンポーネントを含む 3 つの同心四角形を示す図。 'リソース グループ' というラベルの付いた外側の四角形には、'Blob Storage (オプション)' というラベルの付いた六角形が含まれています。 次の四角形には '仮想ネットワーク: 10.0.0.0/16' というラベルが付けられています。固有のコンポーネントは含まれません。 'サブネット:10.0.0.0/24' というラベルの付いた最も内側の四角形には、'クラスター コントローラー' というラベルの付いた VM、'vFXT ノード (vFXT クラスター)' というラベルの付いた 3 つの積み重ねられた VM、'サービス エンドポイント' というラベルの付いた 6 角形が含まれています。 サービス エンドポイント (サブネット内にある) と Blob ストレージ (サブネットおよび vnet の外側、かつリソース グループの内側にある) を接続する矢印があります。 矢印はサブネットの境界および仮想ネットワークの境界を通っています。](media/avere-vfxt-deployment.png)
 
 作成テンプレートを使用する前に、以下の前提条件への対応が済んでいることを確認します。  
 
-1. [新しいサブスクリプション](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [サブスクリプション所有者のアクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [ストレージ サービス エンドポイント (必要な場合)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) - 既存の仮想ネットワークを使用し、Blob Storage を作成するデプロイで必要
+* [新しいサブスクリプション](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [サブスクリプション所有者のアクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [ストレージ サービス エンドポイント (必要な場合)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) - 既存の仮想ネットワークを使用し、Blob Storage を作成するデプロイで必要
 
 クラスターのデプロイ手順と計画の詳細については、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」と、[デプロイの概要](avere-vfxt-deploy-overview.md)に関するページを参照してください。
 
@@ -41,7 +41,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 ![階層リンク [新規] > [Marketplace] > [すべて] がある Azure Portal を表示するブラウザー ウィンドウ。 [すべて] ページでは、検索フィールドに "avere"という語があり、2 番目の結果である "Avere vFXT for Azure ARM Template" は赤枠で囲まれて強調表示されます。](media/avere-vfxt-template-choose.png)
 
-Avere vFXT for Azure ARM Template ページで詳細を確認した後、 **[作成]** をクリックして開始します。
+[Avere vFXT for Azure ARM Template] ページで詳細を確認した後、 **[作成]** をクリックして開始します。
 
 ![Azure Marketplace (デプロイ テンプレートの先頭ページを表示したところ)](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ Avere vFXT テンプレートは、クラスターの作成が完了すると、
 
 1. 左側にある **[デプロイ]** をクリックしてから、**microsoft-avere.vfxt-template** をクリックします。
 
-   ![左側で [デプロイ] が選択され、デプロイ名の下の表に microsoft-avere.vfxt-template が示されているリソース グループ ポータル ページ](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![左側で [デプロイ] が選択され、デプロイ名の下の表に microsoft-avere.vfxt-template が示されているリソース グループ ポータル ページ](media/avere-vfxt-outputs-deployments.png)
 
 1. 左側にある **[出力]** をクリックします。 各フィールドの値をコピーします。
 
-   ![SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs、MGMT_IP の値がラベルの右側のフィールドに表示されている出力ページ](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs、MGMT_IP の値がラベルの右側のフィールドに表示されている出力ページ](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>次のステップ
 

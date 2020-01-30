@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c5ad269bf9cfa43ebad7163c858ef20bc8641878
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485861"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548324"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 サポート ベクターマシン アルゴリズムに基づくモデルを作成するには、このモジュールを使用します。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "73485861"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
 
 3.  モデルの構築時に使用されるイテレーションの回数を示す数値を **[Number of iterations]\(イテレーションの数\)** に入力します。  
   
@@ -52,7 +52,7 @@ ms.locfileid: "73485861"
   
      モデルのチューニングには、この正則化係数を使用できます。 値を大きくすると、モデルの複雑度に対するペナルティーが大きくなります。  
   
-5.  トレーニング前に特徴を正規化したい場合は、 **[Normalize features]\(特徴の正規化\)** オプションを選択します。
+5.  トレーニング前にフィーチャーを正規化する場合は、 **[Normalize features]\(フィーチャーの正規化\)** オプションを選択します。
   
      正規化を適用すると、トレーニング前に、データ ポイントが平均値を中心として 1 単位の標準偏差を備えるようにスケーリングされます。
   
@@ -66,18 +66,17 @@ ms.locfileid: "73485861"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
   
-
 10. パイプラインを実行します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 トレーニングの完了後:
 
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
-+ トレーニング済みのモデルを使用して予測を行うには、[モデルのスコア付け](score-model.md)モジュールにトレーニング済みのモデルを接続します。
++ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

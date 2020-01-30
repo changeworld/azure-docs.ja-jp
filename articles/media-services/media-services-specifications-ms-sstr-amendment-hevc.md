@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services - HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 | Microsoft Docs
+title: HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 - Azure
 description: この仕様では、Azure Media Services での HEVC による Fragmented MP4 ベースのライブ ストリーミングのプロトコルとフォーマットについて説明します。 この記事では、HEVC を配信するために必要な変更のみを記載しています。ただし、明確化の目的だけにテキストをコピーした部分は、“(変更なし)” と示しています。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887868"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514223"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 
 
@@ -52,7 +52,7 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 > 
 >   **マニフェスト**: クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
 > 
->   **プレゼンテーション** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) に定義されている、クライアントからサーバーに送信される HTTP メッセージ **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ
+>   **プレゼンテーション**1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) に定義されている、クライアントからサーバーに送信される HTTP メッセージ **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ
 > 
 >   **サンプル:** **メディア**が格納および処理される最小の基本単位 (フレームなど)。
 > 
@@ -175,7 +175,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 ### <a name="223-fragment-request"></a>2.2.3 Fragment Request (フラグメント要求) 
 
->   **メモ**:**MinorVersion** 2 と 'hev1' または 'hvc1' に要求される既定のメディア フォーマットは、[ISO/IEC 14496-12] ISO Base Media File Format Fourth Edition および、[ISO/IEC 23001-7] Common Encryption Second Edition で規定されている、'iso8' ブランド ISO Base Media File Format です。
+>   **注**:**MinorVersion** 2 と 'hev1' または 'hvc1' に要求される既定のメディア フォーマットは、[ISO/IEC 14496-12] ISO Base Media File Format Fourth Edition および、[ISO/IEC 23001-7] Common Encryption Second Edition で規定されている、'iso8' ブランド ISO Base Media File Format です。
 
 ### <a name="224-fragment-response"></a>2.2.4 Fragment Response (フラグメント応答) 
 
@@ -189,7 +189,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   **TfxdBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で規定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 > 
->   **メモ**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。
+>   **注**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。
 > 
 >   Movie Fragment Box で参照される最初のサンプルの Track Fragment Decode Time に対応する UTC 時間を示すには、必要に応じて、Producer Reference Time Box (‘prft’) を、Movie Fragment Box (‘moof’) の前に挿入する必要があります。[ISO/IEC 14496-12] セクション 8.16.5 で規定。
 
@@ -197,7 +197,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   **TfrfBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で指定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 > 
->   **メモ**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、非推奨となりました。
+>   **注**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、非推奨となりました。
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -247,7 +247,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**メモ**:互換性ブランド 'ccff' と 'iso8' は、フラグメントが “Common Container File Format”、Common Encryption [ISO/IEC 23001-7]、および ISO Base Media File Format Edition 4 [ISO/IEC 14496-12] に準拠していることを示します。
+**注**:互換性ブランド 'ccff' と 'iso8' は、フラグメントが “Common Container File Format”、Common Encryption [ISO/IEC 23001-7]、および ISO Base Media File Format Edition 4 [ISO/IEC 14496-12] に準拠していることを示します。
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -354,7 +354,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   このプロトコルを使用して転送されるコンテンツに高い商用価値がある場合は、コンテンツの無断使用を防ぐため、Content Protection System を使用してください。 **ProtectionElement** は、Content Protection System の使用に関連するメタデータの処理に使用することができます。 保護されたオーディオおよびビデオ コンテンツは、MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7] で規定されているように、暗号化するものとします。
 > 
->   **メモ**:HEVC ビデオの場合、VCL NAL でのスライス データのみが暗号化されます。 スライス ヘッダーとその他の NAL は、復号化する前にプレゼンテーション アプリケーションにアクセスできます。 セキュリティで保護されたビデオ パスでは、暗号化された情報はプレゼンテーション アプリケーションで使用できません。
+>   **注**:HEVC ビデオの場合、VCL NAL でのスライス データのみが暗号化されます。 スライス ヘッダーとその他の NAL は、復号化する前にプレゼンテーション アプリケーションにアクセスできます。 セキュリティで保護されたビデオ パスでは、暗号化された情報はプレゼンテーション アプリケーションで使用できません。
 
 ## <a name="52-index-of-security-parameters"></a>5.2 Index of Security Parameters (セキュリティ パラメーターのインデックス) 
 

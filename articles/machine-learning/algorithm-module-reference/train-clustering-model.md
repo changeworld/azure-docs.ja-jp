@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232588"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546454"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用してクラスタリング モデルをトレーニングします。
 
@@ -45,17 +45,14 @@ ms.locfileid: "74232588"
 
 7. パイプラインを実行するか、**Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをクリックして **[選択した項目を実行]** を選択します。  
   
-### <a name="results"></a>結果
+### <a name="results"></a>[結果]
 
 トレーニングの完了後、次の作業を行います。
 
-
-+  データセットの値を表示するには、モジュールを右クリックし、 **[Result datasets]\(結果データセット\)** を選択して **[可視化]** をクリックします。
-
-+ トレーニングされたモデルを保存して後で再利用できるようにするには、モジュールを右クリックし、 **[Trained model]\(トレーニングされたモデル\)** を選択して **[Save As Trained Model]\(トレーニングされたモデルとして保存する\)** をクリックします。
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
 + モデルからスコアを生成するには、「[クラスターへのデータの割り当て](assign-data-to-clusters.md)」を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

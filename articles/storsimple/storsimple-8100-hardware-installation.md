@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8100 デバイスの取り付け | Microsoft Docs
+title: Microsoft Azure StorSimple 8100 デバイスの取り付け
 description: ソフトウェアのデプロイと構成の前に、StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブルの接続方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963583"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277092"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
 
@@ -34,7 +27,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 ### <a name="prepare-to-unpack-your-device"></a>デバイスの開梱準備
 デバイスを開梱する前に、次の情報を確認します。
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **警告**
+![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
 
 1. 手作業で開梱を行う場合は、エンクロージャの重量に対応できる作業員を必ず 2 人確保してください。 完全に構成されたエンクロージャの重量は最大で 32 kg (70 lbs) になります。
 2. 平坦で水平な場所に箱を置きます。
@@ -49,7 +42,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **ストレージ デバイスを開梱したようす**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |梱包箱 |
    |   2 |下部梱包材 |
@@ -90,7 +83,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 2. セットアップする場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があることを確認します。
 3. デバイスを取り付けるラックで 1 つの 2U スロットを使用できることを確認します。
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **警告**
+![警告のアイコン](./media/storsimple-safety/IC740879.png)![ヘビー ウェイト アイコン](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
 
 手作業でデバイスのセットアップを行う場合は、その重量に対応できる作業員を必ず 2 人確保してください。 完全に構成されたエンクロージャの重量は最大で 32 kg (70 lbs) になります。
 
@@ -111,7 +104,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     **エンクロージャの両側への内部レール スライドの取り付け**
    
-    ラベル | 説明
+    Label | [説明]
     ----- | -----------
     1     | M 3x4 丸ねじ
     2     | シャーシ スライド
@@ -125,7 +118,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **ラックへの外部レール アセンブリの取り付け**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |締め付けねじ |
    |   2 |角穴フロント ラック ポストねじ |
@@ -151,7 +144,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **フランジ キャップの取り付け**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   1 |エンクロージャ固定ねじ |
 
@@ -191,7 +184,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **データ ポートが示されているデバイスの背面**
    
-   | Label | 説明 |
+   | Label | [説明] |
    | --- | --- |
    |   0、1、4、5 |1 GbE ネットワーク インターフェイス |
    |   2、3 |10 GbE ネットワーク インターフェイス |
@@ -202,14 +195,14 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     **デバイスのネットワーク ケーブル配線**
 
-   |Label | 説明 |
+   |Label | [説明] |
    |----- | ----------- |
    | A    | インターネット アクセスのある LAN |
    | B    | コントローラー 0 |
    | C    | PCM 0 |
    | D    | コントローラー 1 |
    | E    | PCM 1 |
-   | F、G | ホスト |
+   | F、G | Hosts |
    | 0-5  | ネットワーク インターフェイス |
 
 
@@ -249,6 +242,6 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 これでデバイスに電源、ネットワーク アクセス、およびシリアル接続用のケーブルが接続されました。 次のステップでは、ソフトウェアを構成してデバイスをデプロイします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-8000-deployment-walkthrough-u2.md)方法を確認します。
 

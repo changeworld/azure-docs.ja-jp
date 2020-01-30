@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid イベント スキーマ
-description: Azure Event Grid のイベントに対して用意されているプロパティについて説明します
+description: すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607606"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512982"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -83,7 +83,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -113,7 +113,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 件名に、何が起こったかに関するより詳細な情報が必要になる場合があります。 たとえば、コンテナーにファイルが追加された場合、**ストレージ アカウント** パブリッシャーは件名 `/blobServices/default/containers/<container-name>/blobs/<file>` を指定します。 サブスクライバーはパス `/blobServices/default/containers/testcontainer` でフィルター処理することにより、ストレージ アカウント内の他のコンテナーではなく、そのコンテナーのすべてのイベントを取得できます。 サブスクライバーはまた、テキスト ファイルのみを操作するために、サフィックス `.txt` でフィルター処理またはルーティングすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

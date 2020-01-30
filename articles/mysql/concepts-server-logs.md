@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 9b661a7fa6a7b9f079a3b24d1b83f27118c4bd23
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/21/2020
+ms.openlocfilehash: e0c58c5c3fef41a472fe791f66292c9280531493
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745855"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514682"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -43,8 +43,9 @@ Azure CLI の詳細については、[Azure CLI を使用した低速クエリ �
 - **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 - **log_output**: "File" の場合、ローカル サーバー ストレージと Azure Monitor 診断ログの両方に低速クエリ ログの書き込みが許可されます。 "None" の場合、低速クエリ ログは Azure Monitor 診断ログのみに書き込まれます。 
 
-> [!Note]
-> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
+> [!IMPORTANT]
+> テーブルにインデックスが作成されていない場合は、`log_queries_not_using_indexes` と `log_throttle_queries_not_using_indexes` パラメーターを ON に設定すると、インデックスが設定されていないそれらのテーブルに対して実行されるすべてのクエリが低速クエリ ログに書き込まれるため、MySQL のパフォーマンスに影響する可能性があります。<br><br>
+> 低速クエリのログ記録を長時間にわたって行う場合は、`log_output` を "None" に設定することをお勧めします。 "File" に設定すると、これらのログはローカル サーバー ストレージに書き込まれ、MySQL のパフォーマンスに影響を与える可能性があります。 
 
 低速クエリ ログのパラメーターの完全な説明については、MySQL の[低速クエリ ログのドキュメント](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
@@ -84,5 +85,64 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 | `thread_id_s` | スレッド ID |
 | `\_ResourceId` | リソース URI |
 
+> [!Note]
+> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
+
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを分析する
+
+低速クエリ ログが診断ログによって Azure Monitor ログにパイプされたら、低速クエリの詳細な分析を実行できます。 使用を開始する際に役立つサンプル クエリを以下にいくつか示します。 以下を、お使いのサーバー名で更新してください。
+
+- 特定のサーバーで 10 秒を超えるクエリ
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- 特定のサーバーの長いクエリの上位 5 つを一覧表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- 低速クエリを、特定のサーバーのクエリ時間の最小値、最大値、平均値、および標準偏差で要約する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- 特定のサーバーの低速クエリの分布をグラフ化する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- 診断ログが有効になっているすべての MySQL サーバーで 10 秒以上のクエリを表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
 ## <a name="next-steps"></a>次の手順
-- [Azure CLI からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-in-cli.md)
+- [Azure portal から低速クエリ ログを構成する方法](howto-configure-server-logs-in-portal.md)
+- [Azure CLI から低速クエリ ログを構成する方法](howto-configure-server-logs-in-cli.md)

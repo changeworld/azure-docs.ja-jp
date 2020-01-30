@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535723"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312432"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
+# <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーとは 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure Machine Learning デザイナーを使用すると、対話型キャンバスで[データセット](#datasets)と[モジュール](#module)を視覚的に接続することにより、機械学習モデルを作成できます。 デザイナーの使用を開始する方法については、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>ビジュアル インターフェイスからデザイナーへの移行
 
-ビジュアル インターフェイス (プレビュー) が更新され、Azure Machine Learning デザイナー (プレビュー) になりました。 デザイナーは、Azure Machine Learning の他の機能と完全に統合された、パイプラインベースのバックエンドを使用するように再設計されています。 
+ビジュアル インターフェイス (プレビュー) は更新されて、Azure Machine Learning デザイナーになりました。 デザイナーは、Azure Machine Learning の他の機能と完全に統合された、パイプラインベースのバックエンドを使用するように再設計されています。 
 
 これらの更新の結果として、ビジュアル インターフェイスのいくつかの概念と用語が変更されたり、名前が変更されたりしています。 最も重要な概念の変更については、次の表を参照してください。 
 

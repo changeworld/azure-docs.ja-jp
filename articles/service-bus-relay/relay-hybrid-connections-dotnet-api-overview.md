@@ -1,6 +1,6 @@
 ---
 title: Azure Relay .NET Standard API の概要 | Microsoft Docs
-description: Azure Relay .NET Standard API の概要
+description: この記事は、Azure Relay ハイブリッド接続 .NET Standard API の主な概要についてまとめてあります。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 78ad3ab49db162af060b4273deea717cd3472668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749021"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514537"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
 
@@ -135,9 +135,9 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Relay の詳細については、次のリンク先を参照してください。
+Azure リレーの詳細については、次のリンク先を参照してください。
 
 * [Microsoft.Azure.Relay リファレンス](/dotnet/api/microsoft.azure.relay)
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)

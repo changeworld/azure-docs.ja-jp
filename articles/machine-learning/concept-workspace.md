@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: 3d8a1b965724c0fcb9f07b382ed446d41fe23dac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 12/27/2019
+ms.openlocfilehash: 4891ec0ae87f0d7b0cd7e5d5d550f955a8fde1db
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772569"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312381"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -49,7 +49,7 @@ ms.locfileid: "75772569"
 
 + Web 上:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
-    + [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) - [Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ使用できます。
+    + [Azure Machine Learning デザイナー](concept-designer.md) - [Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ使用できます。
 + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用したすべての Python 環境で。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)を使用
@@ -91,7 +91,7 @@ ms.locfileid: "75772569"
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
-* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用します。
 
 ## <a name="upgrade"></a> Enterprise Edition へのアップグレード
 

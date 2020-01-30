@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863395"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314829"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -30,7 +30,7 @@ ms.locfileid: "75863395"
 - 割り当てられた受信レートを超えるかもしれない古いデータを含むイベント ソースを追加した (Time Series Insights はキャッチアップする必要があります)。
 - 環境にイベント ソースを追加した結果、追加イベントによるスパイクが発生した (環境の容量を超えた可能性があります)。
 - 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Time Series Insights はキャッチアップする必要があります)。
-- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。  調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
+- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。 調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
 
 ## <a name="video"></a>ビデオ
 
@@ -40,13 +40,13 @@ ms.locfileid: "75863395"
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>アラートを使用した待機時間と調整の監視
 
-アラートは、環境に起因する待機時間の問題の診断および緩和に役立ちます。
+アラートは、環境で発生する待機時間の問題の診断および緩和に役立ちます。
 
 1. Azure portal で、Time Series Insights 環境を選択します。 次に、 **[アラート]** を選択します。
 
    [![Time Series Insights 環境にアラートを追加する](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. **[ルールの作成]** パネルが表示されます。 **[条件]** の **[追加]** を選択します。
+1. **[+ 新しいアラート ルール]** を選択します。 **[ルールの作成]** パネルが表示されます。 **[条件]** の **[追加]** を選択します。
 
    [![アラート ペインの追加](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

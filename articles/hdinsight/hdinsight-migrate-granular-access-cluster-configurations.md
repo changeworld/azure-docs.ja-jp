@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498210"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310834"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "73498210"
 | Reader                                | - シークレットを含む読み取りアクセス                                                                   | - シークレットを**除く**読み取りアクセス |           |   |   |
 | HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         |   |   |
 | Contributor                           | - シークレットを含む読み取り/書き込みアクセス<br>- すべての種類の Azure リソースを作成および管理します。     | 変更なし |
-| Owner                                 | - シークレットを含む読み取り/書き込みアクセス<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する | 変更なし |
+| 所有者                                 | - シークレットを含む読み取り/書き込みアクセス<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する | 変更なし |
 
 HDInsight クラスター オペレーター ロールの割り当てを特定のユーザーに追加することで、そのユーザーにクラスター シークレットへの読み取り/書き込みアクセスを付与する方法の詳細については、後のセクション「[HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加する](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)」を参照してください。
 
@@ -132,9 +132,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 [バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
-    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
-    - HTTP ゲートウェイ資格情報だけを取得するには、[`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable) を使用します。
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) は非推奨になり、[`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) に置き換えられています。
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) は非推奨となりました。
 
 ### <a name="sdk-for-go"></a>Go 用 SDK
 
@@ -187,7 +185,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 Azure portal を使用して、HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加することもできます。 詳細については、[RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する - ロール割り当ての追加](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)に関するページを参照してください。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>API 要求やツールを更新した後、403 (禁止) の応答が表示されるのはなぜですか?
 

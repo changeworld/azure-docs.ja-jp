@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5af920249000cabbc63f0c9ab453738450875172
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213405"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264646"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
 
@@ -39,7 +39,7 @@ Notification Hubs は Azure PowerShell に含まれているコマンドレッ�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure はサブスクリプション方式のプラットフォームです。 サブスクリプションの入手方法の詳細については、[購入オプション]、[メンバー オファー]、または[無料試用版]に関するページをご覧ください。
-- Azure PowerShell を搭載するコンピューター 手順については、[Azure PowerShell のインストールと構成に関するページ]をご覧ください。
+- Azure PowerShell を搭載するコンピューター 手順については、 [Azure PowerShell のインストールおよび構成]を参照してください。
 - PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Service Bus 用の .NET アセンブリへの参照を含む
@@ -49,7 +49,7 @@ Azure Notification Hubs の管理はまだ Azure PowerShell の PowerShell コ�
 まず、スクリプトが Visual Studio プロジェクトの NuGet パッケージとしてインストールされる **Microsoft.ServiceBus.dll** アセンブリを検出できることを確認します。 柔軟性を持たせるために、スクリプトでは次のステップを実行します。
 
 1. 呼び出されたパスを決定します。
-2. `packages`という名前のフォルダーが見つかるまでパスを走査します。 このフォルダーは Visual Studio プロジェクトで NuGet パッケージをインストールする際に作成されます。
+2. `packages` という名前のフォルダーが見つかるまでパスを走査します。 このフォルダーは Visual Studio プロジェクトで NuGet パッケージをインストールする際に作成されます。
 3. `Microsoft.Azure.NotificationHubs.dll` という名前のアセンブリの `packages` フォルダーを反復的に検索します。
 4. アセンブリを参照するので、タイプは後で利用できるようになります。
 
@@ -159,7 +159,7 @@ else
 [購入オプション]: https://azure.microsoft.com/pricing/purchase-options/
 [メンバー オファー]: https://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: https://azure.microsoft.com/pricing/free-trial/
-[Azure PowerShell のインストールと構成に関するページ]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell のインストールおよび構成]: /powershell/azureps-cmdlets-docs
 [.NET API for Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
