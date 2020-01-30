@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f005266b6e2e12a13f79b3f2007b1bbbafb4acef
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311567"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773765"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -36,7 +36,7 @@ az login
 
 CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
@@ -49,8 +49,8 @@ az group create --name "ContosoResourceGroup" --location eastus
 次に、前の手順で作成したリソース グループに Key Vault を作成します。 いくつかの情報を指定する必要があります。
 
 - このクイック スタートでは、**Contoso-vault2** を使用します。 テストでは一意の名前を指定する必要があります。
-- リソース グループ名: **ContosoResourceGroup**。
-- 場所: **米国東部**。
+- リソース グループ名: **ContosoResourceGroup**
+- 場所: **米国東部**
 
 ```azurecli
 az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
@@ -73,7 +73,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** を使用して、現在のバージョンを取得します。 
+これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** を使用して、現在のバージョンを取得します。 
 
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
@@ -83,7 +83,7 @@ az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 
 これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
 必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループおよびすべての関連リソースを削除できます。 次のように、リソースを削除できます。
@@ -92,7 +92,7 @@ az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 az group delete --name ContosoResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 

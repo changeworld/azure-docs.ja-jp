@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: edcfe4d7dff5d84ceaf07a8aafd5f9b485308bd5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f7e2380bff7d6d3e6fafd1b3d44b65de972e57d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920669"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703390"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -38,7 +37,7 @@ ms.locfileid: "74920669"
 >
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。[簡易] (以下のオプション 1) と [手動] (オプション 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1:アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
 > 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) ウィンドウに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
@@ -47,7 +46,7 @@ ms.locfileid: "74920669"
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
@@ -93,12 +92,12 @@ ms.locfileid: "74920669"
     
     > [!div class="sxs-lookup" renderon="portal"]
     > > [!NOTE]
-    > > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。
+    > > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
     
     > [!div renderon="docs"]
     >> 各値の説明:
     >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
-    >> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
+    >> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
     >> * `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
 
     > [!div renderon="docs"]
@@ -214,7 +213,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デーモン アプリケーションの詳細については、シナリオのランディング ページを参照してください。
 

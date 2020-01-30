@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645259"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720029"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のソース管理の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "73645259"
 
    ![接続の管理](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
-   ![接続](media/sql-data-warehouse-source-control-integration/3-connect.png "接続")
+   ![のインスタンスに接続するときには、](media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
 
 3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリを複製します
 
@@ -55,7 +55,7 @@ ms.locfileid: "73645259"
 
 3. Visual Studio のチーム エクスプローラーで、ローカル Git リポジトリに対するすべての変更をコミットします 
 
-   ![コミット](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "コミット")  
+   ![コミット](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
 4. これで、複製されたリポジトリで変更がローカルにコミットされたので、Azure DevOps プロジェクトの Azure Repo リポジトリに変更を同期してプッシュします。
 
@@ -79,16 +79,6 @@ ms.locfileid: "73645259"
 
 4. (**オプション**) SSDT を使用して、スキーマ比較を使用し、お使いのターゲット データ ウェアハウスへの変更を更新して、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義にお使いのデータ ウェアハウスが反映されていることを確認します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Data Warehouse 向けの開発](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

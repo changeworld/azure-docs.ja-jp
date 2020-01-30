@@ -16,13 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852157"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700296"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
@@ -41,7 +40,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開
 
 Microsoft ID プラットフォームでは、一度コードを記述すればすべてのユーザーに対応できます。 アプリを一度ビルドすれば、多数のプラットフォームで動作させたり、リソース アプリケーション (API) と同様にクライアントとして機能するアプリを構築できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 ID の処理は難しくありません。 自身に当てはまる[シナリオ](authentication-flows-app-scenarios.md)を選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
 
@@ -58,7 +57,7 @@ ID の処理は難しくありません。 自身に当てはまる[シナリオ
 
 [![Microsoft ID プラットフォームでのアプリケーション シナリオ](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コア認証の概念の詳細については、以下の各トピックから始めることをお勧めします。
 
@@ -73,7 +72,7 @@ ID の処理は難しくありません。 自身に当てはまる[シナリオ
 
 **実稼働環境**にアプリを導入する準備ができたら、これらのベスト プラクティスを確認してください。
 
-- アプリケーションへの[ログインを有効にします](msal-logging.md)。
+- アプリケーションで[ログを有効にします](msal-logging.md)。
 - アプリケーションでテレメトリを有効にします。
 - [プロキシを有効にし、HTTP クライアントをカスタマイズ](msal-net-provide-httpclient.md)します。
 - [Microsoft ID プラットフォームの統合チェックリスト](identity-platform-integration-checklist.md)に従って、統合をテストします。

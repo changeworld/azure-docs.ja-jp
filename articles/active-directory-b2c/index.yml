@@ -11,20 +11,20 @@ metadata:
   ms.collection: collection
   author: mmacy
   ms.author: marsma
-  ms.date: 08/29/2019
-  ms.openlocfilehash: cc8626ba09f5646b5784645a9fc0b05eac20d699
-  ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+  ms.date: 01/28/2020
+  ms.openlocfilehash: a4dc2e1d872f008521d7427b65cda0387ac39646
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71120414"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76833262"
 landingContent:
 - title: 基本を学ぶ
   linkLists:
   - linkListType: overview
     links:
     - text: Azure AD B2C とは
-      url: active-directory-b2c-overview.md
+      url: overview.md
     - text: 技術と機能の概要
       url: technical-overview.md
   - linkListType: get-started
@@ -44,13 +44,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: サインインを設定する
-      url: active-directory-b2c-quickstarts-web-app.md
+      url: quickstart-web-app-dotnet.md
   - linkListType: tutorial
     links:
     - text: .NET Web アプリケーションでユーザーの認証を行う
-      url: active-directory-b2c-tutorials-web-app.md
+      url: tutorial-web-app-dotnet.md
     - text: .NET Web アプリケーションに API アクセスを許可する
-      url: active-directory-b2c-tutorials-web-api.md
+      url: tutorial-web-api-dotnet.md
     - text: エンタープライズおよびソーシャル ログインを有効にする
       url: tutorial-add-identity-providers.md
   - linkListType: download
@@ -62,13 +62,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: サインインを設定する
-      url: active-directory-b2c-quickstarts-desktop-app.md
+      url: quickstart-single-page-app.md
   - linkListType: tutorial
     links:
     - text: シングルページ アプリでユーザーの認証を行う
-      url: active-directory-b2c-tutorials-spa.md
+      url: tutorial-single-page-app.md
     - text: シングルページ アプリに API アクセスを許可する
-      url: active-directory-b2c-tutorials-spa-webapi.md
+      url: tutorial-single-page-app-webapi.md
     - text: エンタープライズおよびソーシャル ログインを有効にする
       url: tutorial-add-identity-providers.md
   - linkListType: download
@@ -80,13 +80,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: サインインを設定する
-      url: active-directory-b2c-quickstarts-desktop-app.md
+      url: quickstart-native-app-desktop.md
   - linkListType: tutorial
     links:
     - text: ネイティブ クライアントでユーザーの認証を行う
-      url: active-directory-b2c-tutorials-desktop-app.md
+      url: tutorial-desktop-app.md
     - text: ネイティブ クライアントに API アクセスを許可する
-      url: active-directory-b2c-tutorials-desktop-app-webapi.md
+      url: tutorial-desktop-app-webapi.md
     - text: エンタープライズおよびソーシャル ログインを有効にする
       url: tutorial-add-identity-providers.md
   - linkListType: download
@@ -98,7 +98,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: ユーザー フローの概要
-      url: active-directory-b2c-reference-policies.md
+      url: user-flow-overview.md
   - linkListType: how-to-guide
     links:
     - text: ユーザーのサインアップとサインインを行う
@@ -106,7 +106,7 @@ landingContent:
     - text: ユーザー インターフェイスをカスタマイズする
       url: customize-ui-overview.md
     - text: Facebook でサインインを有効にする
-      url: active-directory-b2c-setup-fb-app.md
+      url: identity-provider-facebook.md
   - linkListType: video
     links:
     - text: 基本ポリシーの構成方法 (9:41)
@@ -116,17 +116,17 @@ landingContent:
   - linkListType: concept
     links:
     - text: カスタム ポリシーの概要
-      url: active-directory-b2c-overview-custom.md
+      url: custom-policy-overview.md
   - linkListType: how-to-guide
     links:
     - text: ユーザーのサインアップとサインインを行う
-      url: active-directory-b2c-get-started-custom.md
+      url: custom-policy-get-started.md
     - text: ユーザー インターフェイスをカスタマイズする
-      url: active-directory-b2c-ui-customization-custom.md
+      url: custom-policy-ui-customization.md
     - text: Azure AD マルチテナントでサインインを有効にする
-      url: active-directory-b2c-setup-commonaad-custom.md
+      url: identity-provider-azure-ad-multi-tenant-custom.md
     - text: REST API を使用して独自のビジネス ロジックを追加する
-      url: active-directory-b2c-rest-api-validation-custom.md
+      url: custom-policy-rest-api-claims-validation.md
   - linkListType: video
     links:
     - text: Azure AD B2C を使用した高度なユース ケース (4:54)

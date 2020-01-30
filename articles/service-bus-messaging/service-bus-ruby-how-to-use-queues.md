@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Ruby で Azure Service Bus キューを使用する方法
-description: クイック スタート:Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
+title: Ruby で Azure Service Bus キューを使用する方法
+description: このチュートリアルでは、Ruby アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718757"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760591"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイック スタート:Ruby で Service Bus キューを使用する方法
 
@@ -100,7 +100,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)の概要。

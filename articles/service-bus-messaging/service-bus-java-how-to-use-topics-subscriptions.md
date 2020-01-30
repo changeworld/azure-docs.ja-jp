@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Java で Azure Service Bus のトピックとサブスクリプションを使用する
-description: クイック スタート:Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
+title: Java で Azure Service Bus のトピックとサブスクリプションを使用する
+description: このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720004"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759297"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>クイック スタート:Java で Service Bus のトピックとサブスクリプションを使用する
 
@@ -41,7 +41,7 @@ ms.locfileid: "73720004"
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
 
-![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加します](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
+![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 以下の JAR を Java ビルド パスに追加する必要もあります。
 
@@ -458,7 +458,7 @@ Message sending: Id = 9
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus queues, topics, and subscriptions]」を参照してください。
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/

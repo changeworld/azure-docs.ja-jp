@@ -6,14 +6,14 @@ author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/04/2020
+ms.date: 01/21/2020
 ms.author: jeconnoc
-ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 782c18344732362dee96842bcc7c9a6c4ed14a68
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690213"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711240"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75690213"
 
 6. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
@@ -102,13 +102,15 @@ dotnet new mvc --no-https
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     ```
+
 1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
     ```dotnetcli
     dotnet restore
     ```
+
 1. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
 
     このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分の App Configuration ストアの接続文字列に置き換えます。
@@ -133,7 +135,7 @@ dotnet new mvc --no-https
     ```
 
 1. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
-    
+
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
 
@@ -151,7 +153,7 @@ dotnet new mvc --no-https
     ```
 
     #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -163,6 +165,7 @@ dotnet new mvc --no-https
         })
         .UseStartup<Startup>());
     ```
+
     ---
 
 1. *<app root>[Views]、[Home]* の順に移動し、*Index.cshtml* を開きます。 その内容を次のコードに置き換えます。

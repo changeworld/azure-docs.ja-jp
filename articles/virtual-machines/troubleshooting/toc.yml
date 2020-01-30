@@ -159,8 +159,6 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
-    - name: サービスの再起動、シャットダウン、または停止
-      href: boot-error-troubleshoot-windows.md
 - name: デバイス名が変更されている
   href: troubleshoot-device-names-problems.md
 - name: VM の復旧方法
@@ -199,6 +197,8 @@
       href: troubleshoot-critical-service-failed-boot-error.md
     - name: 再起動ループ
       href: troubleshoot-reboot-loop.md
+    - name: サービスの再起動、シャットダウン、または停止
+      href: boot-error-troubleshoot-windows.md
     - name: Windows Update でのスタック
       href: troubleshoot-stuck-updating-boot-error.md
 - name: 調整エラー

@@ -14,13 +14,12 @@ ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bc8c05a2f5b85dbd1b24dbf3a259b75cfdc2f77
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424109"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704070"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
@@ -59,7 +58,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 
 アプリがユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
 1. 左側のウィンドウで **[すべてのサービス]** をクリックし、 **[Azure Active Directory]** を選択します。
 1. **[アプリの登録]** をクリックし、 **[新規登録]** を選択します。

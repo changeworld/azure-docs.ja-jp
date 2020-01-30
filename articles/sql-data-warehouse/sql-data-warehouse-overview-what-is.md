@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645509"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760761"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) とは
 
@@ -52,45 +52,16 @@ SQL Analytics は列指向のストレージを使用してリレーショナル
 
 分析結果は世界中のレポート データベースやアプリケーションに移動できます。 また、ビジネスの分析に洞察を加え、適切な情報に基づいた決断を下すことができるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Synapse アーキテクチャ](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)の詳細
+- [Azure Synapse アーキテクチャ](massively-parallel-processing-mpp-architecture.md)の詳細
 - [SQL プールの簡易作成](create-data-warehouse-portal.md)
-- [サンプル データを読み込む][load sample data]
-- [ビデオ](/azure/sql-data-warehouse/sql-data-warehouse-videos)を確認する
+- [サンプル データを読み込む](sql-data-warehouse-load-sample-databases.md)
+- [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)を確認する
 
 または、次の Azure Synapse リソースも確認できます。  
-* [ブログ]を検索する
-* [機能要求]を送信する
-* [Customer Advisory Team のブログ]を検索する
-* [サポート チケットを作成]
-* [MSDN フォーラム]を検索する
-* [Stack Overflow フォーラム]を検索する
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[サポート チケットを作成]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[機能要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)を検索する
+* [機能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)を送信する
+* [サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)を検索する
+* [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)を検索する

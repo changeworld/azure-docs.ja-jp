@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: ロール定義の一覧表示
           href: role-definitions-list.md
-        - name: 組み込みのロール
-          href: built-in-roles.md
     - name: ロールの割り当ての一覧表示
       items:
         - name: ポータル
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: リファレンス
   items:
+    - name: 組み込みのロール
+      href: built-in-roles.md
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: RBAC の制限

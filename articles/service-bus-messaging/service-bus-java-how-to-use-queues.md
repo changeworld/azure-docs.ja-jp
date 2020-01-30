@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Java で Azure Service Bus キューを使用する
-description: クイック スタート:Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Java で記述されています。
+title: Java で Azure Service Bus キューを使用する
+description: このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721696"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760642"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
 
