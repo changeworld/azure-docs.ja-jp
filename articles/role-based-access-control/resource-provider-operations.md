@@ -4464,8 +4464,8 @@ ms.locfileid: "76264901"
 > | アクション | microsoft.network/virtualnetworkgateways/stoppacketcapture/action | Virtual Network ゲートウェイのパケット キャプチャを停止します。 |
 > | アクション | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | サポートされている VPN デバイスを一覧表示します。 |
 > | アクション | Microsoft.Network/virtualNetworkGateways/write | VirtualNetworkGateway を作成または更新します。 |
-> | アクション | Microsoft.Network/virtualNetworks/BastionHosts/action | 仮想ネットワーク内の要塞ホストの参照を取得します。 |
-> | アクション | Microsoft.Network/virtualNetworks/bastionHosts/default/action | 仮想ネットワーク内の要塞ホストの参照を取得します。 |
+> | アクション | Microsoft.Network/virtualNetworks/BastionHosts/action | 仮想ネットワーク内の踏み台ホストの参照を取得します。 |
+> | アクション | Microsoft.Network/virtualNetworks/bastionHosts/default/action | 仮想ネットワーク内の踏み台ホストの参照を取得します。 |
 > | アクション | Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | 指定された仮想ネットワークで IP アドレスを使用できるかどうかを確認します。 |
 > | アクション | Microsoft.Network/virtualNetworks/delete | 仮想ネットワークを削除します。 |
 > | アクション | Microsoft.Network/virtualNetworks/join/action | 仮想ネットワークに参加します。 警告不可能です。 |
