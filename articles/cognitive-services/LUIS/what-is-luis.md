@@ -48,7 +48,7 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
     }
 }
 ```
-上記の例では、" _**意図**_ "、つまり語句の全体的な意味は、ユーザーが品目を検索しようとしていることです。 LUIS によって抽出される詳細な情報は、" _**エンティティ**_ " と呼ばれます。 このケースでは、エンティティは、ユーザーが探している品目の名前と、使用したい金額です。
+上記の例では、"_**意図**_"、つまり語句の全体的な意味は、ユーザーが品目を検索しようとしていることです。 LUIS によって抽出される詳細な情報は、"_**エンティティ**_" と呼ばれます。 このケースでは、エンティティは、ユーザーが探している品目の名前と、使用したい金額です。
 
 クライアント アプリケーションは、LUIS から返された JSON、"_意図_" (カテゴリ)、および "_エンティティ_" (抽出された詳細情報) を使用して、クライアント アプリケーションでアクションを実行します。 LUIS 向けのクライアント アプリケーションは、多くの場合、ユーザーと自然言語でコミュニケーションを行ってタスクを完了する会話型アプリケーションです。 クライアント アプリケーションの例として、ソーシャル メディア アプリ、チャットボット、音声対応デスクトップ アプリケーションがあります。 
 
@@ -89,8 +89,8 @@ LUIS アプリは、 **[意図](luis-concept-intent.md)** と呼ばれる入力�
 
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|シアトル|
-|`When does your store __open__?`|StoreHoursAndLocation|オープン|
+|`Book a flight to __Seattle__?`|BookFlight|Seattle|
+|`When does your store __open__?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行
