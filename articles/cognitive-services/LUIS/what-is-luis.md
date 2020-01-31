@@ -89,8 +89,8 @@ LUIS アプリは、 **[意図](luis-concept-intent.md)** と呼ばれる入力�
 
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|シアトル|
-|`When does your store __open__?`|StoreHoursAndLocation|オープン|
+|`Book a flight to __Seattle__?`|BookFlight|Seattle|
+|`When does your store __open__?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行

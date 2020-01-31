@@ -50,7 +50,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -72,7 +72,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -94,7 +94,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -116,7 +116,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -138,7 +138,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -160,7 +160,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -184,7 +184,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -206,7 +206,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、-   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、-   |  
@@ -228,7 +228,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    -   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    -   |  
@@ -250,7 +250,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -272,7 +272,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
@@ -294,7 +294,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   | 
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    -   | 
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   | 
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |  
