@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968019"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703339"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -44,7 +43,7 @@ ms.locfileid: "74968019"
 1. **[新規登録]** を選択します。
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリの登録情報を入力します。
-    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすい名前を入力します。 例: MyWebApp
+    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすい名前を入力します。 次に例を示します。MyWebApp
     - **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
 
     複数のリダイレクト URI がある場合は、アプリが正常に作成された後、 **[認証]** タブからこれらを追加する必要があります。
@@ -65,7 +64,7 @@ ms.locfileid: "74968019"
     - キーの有効期間として **[1 年]、[2 年]** 、または **[有効期限なし]** を選択します。
     - **[追加]** ボタンをクリックすると、キーの値が表示されます。 キー値をコピーして安全な場所に保存します。
 
-    このキーは、後でアプリケーションを構成するために必要になります。 このキー値は、再度表示することも、その他の方法で取得することもできないため、Azure Portal から参照できるようになったらすぐに記録してください。
+    このキーは、後でアプリケーションを構成するために必要になります。 このキー値は、再度表示することも、その他の方法で取得することもできないため、Azure portal から参照できるようになったらすぐに記録してください。
 
 ## <a name="download-the-sample-application-and-modules"></a>サンプル アプリケーションとモジュールのダウンロード
 
@@ -127,7 +126,7 @@ $ node app.js | bunyan
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft ID プラットフォームでサポートされている Web アプリのシナリオの詳細については、次を参照してください。
 > [!div class="nextstepaction"]
 > [ユーザーをサインインさせる Web アプリのシナリオ](scenario-web-app-sign-user-overview.md)

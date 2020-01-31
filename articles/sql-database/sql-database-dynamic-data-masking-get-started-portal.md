@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/04/2018
-ms.openlocfilehash: 0053958c0681e98ee225232249b050583d4e13b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a8098b31c6b389b640fc03e756da44c70d9f3a70
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826565"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722120"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 
@@ -55,7 +55,7 @@ ms.locfileid: "73826565"
 
 10. データ マスク構成ページの **[保存]** をクリックして、新しいまたは更新されたマスク ポリシーを保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 動的データ マスクの概要については、「[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)」をご覧ください。
 * [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql/)または [REST API](https://docs.microsoft.com/rest/api/sql/) を使って動的データ マスクを実装することもできます。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937240"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772004"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -147,7 +147,7 @@ ExpressRoute 接続の場所は、ファイアウォールの容量、スケー�
 
 可能な限り、提供するサービスに合わせて、負荷分散を使用することをお勧めします。 Azure Virtual Network レベルとグローバル レベルの両方でのシナリオを以下に示します。また、各レベルの負荷分散オプションについても説明します。
 
-**シナリオ**: 次のようなアプリケーションがあります。
+**シナリオ**:次のようなアプリケーションがあります。
 
 - 同じユーザー/クライアントのセッションからの要求が同じバックエンド仮想マシンに到達する必要がある。 この例として、ショッピング カート アプリや Web メール サーバーなどがあります。
 - セキュリティで保護された接続のみが受け入れられるため、サーバーへの暗号化されていない通信は受け入れられない。
@@ -155,17 +155,17 @@ ExpressRoute 接続の場所は、ファイアウォールの容量、スケー�
 
 **負荷分散オプション**:HTTP Web トラフィック ロード バランサーである、[Azure Application Gateway](/azure/application-gateway/application-gateway-introduction) を使用します。 Application Gateway では、ゲートウェイでのエンド ツー エンド SSL 暗号化と [SSL 終了](/azure/application-gateway/application-gateway-introduction)がサポートされています。 そのため、Web サーバーを、暗号化と暗号化解除のオーバーヘッドと、バックエンド サーバーへの暗号化されていないトラフィック フローから解放することができます。
 
-**シナリオ**: Azure 仮想ネットワークに配置されたサーバー間で、インターネットからの着信接続の負荷分散を行う必要があります。 これは次のような場合のシナリオです。
+**シナリオ**:Azure 仮想ネットワークに配置されたサーバー間で、インターネットからの着信接続の負荷分散を行う必要があります。 これは次のような場合のシナリオです。
 
 - インターネットからの着信要求を受け入れるステートレス アプリケーションがある。
 - スティッキー セッションや SSL オフロードを必要としない。 スティッキー セッションは、サーバー アフィニティを実現するために、アプリケーション負荷分散で使用される手法です。
 
-**負荷分散オプション**:Azure portal を使用して、[外部ロード バランサーを作成](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)します。これにより、複数の VM 全体に着信要求を分散し、より高いレベルの可用性を提供することができます。
+**負荷分散オプション**:Azure portal を使用して、[外部ロード バランサーを作成](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)します。これにより、複数の VM 全体に着信要求を分散し、より高いレベルの可用性を提供することができます。
 
-**シナリオ**: インターネット上にない VM からの接続の負荷分散が必要です。 負荷分散で受け入れられるのは、ほとんどの場合、SQL Server インスタンスや内部 Web サーバーなど、Azure Virtual Network 上のデバイスで開始された接続です。   
-**負荷分散オプション**:Azure portal を使用して、[内部ロード バランサーを作成](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md)します。これにより、複数の VM 全体に着信要求を分散し、より高いレベルの可用性を提供することができます。
+**シナリオ**:インターネット上にない VM からの接続の負荷分散が必要です。 負荷分散で受け入れられるのは、ほとんどの場合、SQL Server インスタンスや内部 Web サーバーなど、Azure Virtual Network 上のデバイスで開始された接続です。   
+**負荷分散オプション**:Azure portal を使用して、[内部ロード バランサーを作成](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)します。これにより、複数の VM 全体に着信要求を分散し、より高いレベルの可用性を提供することができます。
 
-**シナリオ**: グローバル負荷分散が必要です。理由は次のとおりです。
+**シナリオ**:グローバル負荷分散が必要です。理由は次のとおりです。
 
 - 複数のリージョン全体に広く分散され、可能な限り高いレベルのアップタイム (可用性) を必要とするクラウド ソリューションがある。
 - データセンター全体が利用不可となった場合でも、サービスを利用できるようにするために、可能な限り高いレベルのアップタイムが必要である。
@@ -181,15 +181,15 @@ Azure Virtual Machines へのアクセスには、[リモート デスクトッ�
 
 インターネットから Azure Virtual Machines への RDP および SSH による直接アクセスは無効にすることをお勧めします。 インターネットからの RDP および SSH の直接アクセスを無効にした場合、リモート管理のためのこれらの VM へのアクセスに他のオプションを使用できます。
 
-**シナリオ**: 1 人のユーザーがインターネット経由で Azure 仮想ネットワークに接続できます。   
+**シナリオ**:1 人のユーザーがインターネット経由で Azure 仮想ネットワークに接続できます。   
 **オプション**:[ポイント対サイト VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) は、リモート アクセス VPN によるクライアント/サーバー接続の別名です。 ポイント対サイト接続が確立されると、ユーザーは、ポイント対サイト VPN を介して接続した Azure Virtual Network 上にあるすべての VM に RDP または SSH を使用して接続できます。 この場合、そのユーザーがそれらの VM にアクセスすることを承認されていることが前提となります。
 
 ユーザーは VM に接続する前に 2 回認証を受ける必要があるため、ポイント対サイト VPN は RDP や SSH による直接接続よりも安全です。 最初に、ユーザーは、ポイント対サイト VPN 接続を確立するために認証を受ける (および承認される) 必要があります。 次に、ユーザーは、RDP または SSH セッションを確立するために認証を受ける (および承認される) 必要があります。
 
-**シナリオ**: オンプレミス ネットワーク上のユーザーは、Azure 仮想ネットワーク上の VM に接続することができます。   
+**シナリオ**:オンプレミス ネットワーク上のユーザーは、Azure 仮想ネットワーク上の VM に接続することができます。   
 **オプション**:[サイト間 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) は、インターネット経由でネットワーク全体を別のネットワークに接続します。 サイト間 VPN を使用すると、オンプレミス ネットワークを Azure Virtual Network に接続できます。 オンプレミス ネットワーク上のユーザーは、サイト間 VPN 接続を介して RDP または SSH プロトコルを使用して接続します。 インターネット経由での RDP または SSH による直接アクセスを許可する必要はありません。
 
-**シナリオ**: 専用 WAN リンクを使用して、サイト間 VPN に似た機能を提供します。   
+**シナリオ**:専用 WAN リンクを使用して、サイト間 VPN に似た機能を提供します。   
 **オプション**:[ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を使用します。 サイト間 VPN に似た機能が提供されます。 主な違いは次のとおりです。
 
 - 専用 WAN リンクではインターネットを経由しません。
@@ -209,5 +209,5 @@ Azure Virtual Machines へのアクセスには、[リモート デスクトッ�
 
 サービス エンドポイントと、それらのサービス エンドポイントを利用できる Azure サービスとリージョンの詳細については、「[Virtual network service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md)」 (仮想ネットワーク サービス エンドポイント) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。

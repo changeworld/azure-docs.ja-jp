@@ -12,13 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 78e18998d6e6096b045cc8328ca5adacb1342e68
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996988"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699531"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
@@ -64,7 +63,7 @@ Web アプリと Web API を構築するための次のサーバー側ライブ�
 
 Microsoft ID プラットフォーム (v2.0) エンドポイントが OIDC 認定になりました。 Microsoft Authentication Libraries (MSAL) またはその他の標準準拠ライブラリと連動します。 業界標準に準拠し、人間が読めるスコープを実装します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 v1.0 および v2.0 に関する詳細。
 

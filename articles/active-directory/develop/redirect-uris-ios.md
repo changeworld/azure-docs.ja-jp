@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a401f019f38d00790b1975f7a0a68d6097c21a70
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920363"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703084"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>iOS 用と macOS 用の Microsoft 認証ライブラリでのリダイレクト URI の使用
 
@@ -41,7 +40,7 @@ Microsoft Authentication library (MSAL) では、リダイレクト URI が特�
 
 Microsoft ID プラットフォームでアプリ間でトークンを共有するには、各アプリが同じクライアント ID またはアプリケーション ID を持っている必要があります。 これは、ポータルでアプリを登録したときに提供された一意の識別子です (アプリごとに Apple に登録するアプリケーション バンドル ID ではありません)。
 
-リダイレクト URI は、iOS アプリごとに異なる必要があります。 これにより、Microsoft ID サービスで、アプリケーション ID を共有するさまざまなアプリを一意に識別できます。 各アプリケーションでは、Azure portal で、複数のリダイレクト URI を登録できます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 例:
+リダイレクト URI は、iOS アプリごとに異なる必要があります。 これにより、Microsoft ID サービスで、アプリケーション ID を共有するさまざまなアプリを一意に識別できます。 各アプリケーションでは、Azure portal で、複数のリダイレクト URI を登録できます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 次に例を示します。
 
 Azure portal に次のアプリケーション登録があるとします。
 
@@ -83,7 +82,7 @@ MSAL によって、リダイレクト URI が正しく登録されているか�
 
 ## <a name="use-a-custom-redirect-uri"></a>カスタム リダイレクト URI を使用する
 
-カスタム リダイレクト URI を使用するには、`redirectUri` パラメーターを `MSALPublicClientApplicationConfig` に渡し、そのオブジェクトを初期化するときにオブジェクトを `MSALPublicClientApplication` に渡します。 リダイレクト URI が無効な場合は、初期化子によって `nil` が返され、`redirectURIError` と追加情報が設定されます。  例:
+カスタム リダイレクト URI を使用するには、`redirectUri` パラメーターを `MSALPublicClientApplicationConfig` に渡し、そのオブジェクトを初期化するときにオブジェクトを `MSALPublicClientApplication` に渡します。 リダイレクト URI が無効な場合は、初期化子によって `nil` が返され、`redirectURIError` と追加情報が設定されます。  次に例を示します。
 
 Objective-C:
 
@@ -139,6 +138,6 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

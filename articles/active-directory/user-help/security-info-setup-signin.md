@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 965943937a5cbc24f3c4dbe5bc85a6f5b4338fe2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156116"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704988"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する
 
@@ -31,7 +30,7 @@ ms.locfileid: "76156116"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |

@@ -12,13 +12,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa8bc27f014b794059f30a62d47f298096df2f1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573796"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705056"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>マイ アプリ (プレビュー) ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
@@ -43,7 +42,7 @@ ms.locfileid: "73573796"
 
 [アクセス許可] ウィンドウの下部に、管理者が代理として同意した内容が表示されます。 管理者が同意したアクセス許可がない場合、このセクションは表示されません。 管理者はこれらのアクセス許可に同意しているので、これらを取り消すことはできません。組織のポリシーで必須であることが多いです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリのアクセス許可と保存されたアカウントを **マイ アプリ** ポータルで管理した後、次のことを行うことができます。
 

@@ -6,7 +6,7 @@
       href: notification-hubs-push-notification-overview.md
     - name: App Service Mobile Apps との統合
       href: notification-hubs-app-service.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 通知ハブの作成 - Azure portal
@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: 概念
   items:
+    - name: トランスポート層セキュリティ (TLS)
+      href: notification-hubs-tls12.md
     - name: エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: デバイス登録
@@ -90,7 +92,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: セキュリティ モデル
       href: notification-hubs-push-notification-security.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 価格レベルの変更
       href: change-pricing-tier.md
@@ -150,7 +152,7 @@
       href: /azure/templates/microsoft.notificationhubs/allversions
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: notification-hubs-push-notification-faq.md
     - name: Google GCM から FCM に移行する
       href: notification-hubs-gcm-to-fcm.md

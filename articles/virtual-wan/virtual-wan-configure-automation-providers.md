@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168485"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775316"
 ---
 # <a name="virtual-wan-partners"></a>Virtual WAN パートナー
 
@@ -27,7 +27,7 @@ ms.locfileid: "72168485"
 * Azure Virtual WAN のポータル エクスペリエンスをテストします。
 * 次に、接続手順の自動化する部分を決定します。 少なくとも、次の部分を自動化することお勧めします。
 
-  * Access Control
+  * アクセス制御
   * Azure Virtual WAN へのブランチ デバイス情報のアップロード
   * Azure の構成のダウンロードと、ブランチ デバイスから Azure Virtual WAN への接続の設定
 
@@ -89,7 +89,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
     * ハブに接続されている VNet の**アドレス空間**<br>例:
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
     * 仮想ハブ vpngateway の **IP アドレス**。 vpngateway にはアクティブ/アクティブ構成の 2 つのトンネルで構成される接続があるため、このファイルには両方の IP アドレスが示されています。 この例では、サイトごとに "Instance0" と "Instance1" が表示されています。<br>例:
 
@@ -118,7 +118,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 
@@ -223,7 +223,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 
 [!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想 WAN の詳細については、「[About Azure Virtual WAN](virtual-wan-about.md)」(Azure Virtual WAN について) および「[Azure Virtual WAN FAQ](virtual-wan-faq.md)」(Azure Virtual WAN のよくあるご質問) を参照してください。
 

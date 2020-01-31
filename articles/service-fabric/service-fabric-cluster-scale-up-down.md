@@ -3,12 +3,12 @@ title: Service Fabric クラスターをスケールインまたはスケール�
 description: ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定することにより、需要に合わせて Service Fabric クラスターをスケールインまたはスケールアウトします。 Service Fabric クラスターのノードの追加または削除
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451955"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774459"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -101,7 +101,7 @@ Service Fabric システム サービスは、クラスター内のプライマ�
 クラスターのノードをアップグレード ドメインと障害ドメインに均等に分散させ続け、それによって均等な使用を実現するためには、最も最近作成されたノードが最初に削除されるようにする必要があります。 言い換えれば、ノードは作成とは逆の順序で削除される必要があります。 最も最近作成されたノードは、`virtual machine scale set InstanceId` プロパティの値が最大のノードです。 下のコード例では、最も最近作成されたノードが返されます。
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

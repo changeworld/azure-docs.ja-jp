@@ -15,13 +15,12 @@ ms.date: 10/25/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 055e954251654633bc948a98e0d5e33c9c8e11cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f612a6f59455162d0acdffc8e05201be0a730d9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963496"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703781"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app-v10"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す (v1.0)
 
@@ -29,4 +28,4 @@ ms.locfileid: "74963496"
 
 [Microsoft Authentication Library (MSAL)](msal-overview.md) によって、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントからトークンを取得できます。 Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。このエンドポイントでは、MSAL が Microsoft ID プラットフォーム (v2.0) エンドポイントと統合されます。
 
-新しい macOS および iOS アプリケーションでは、Microsoft ID プラットフォーム (v2.0) と MSAL を使用してトークンを取得し、セキュリティで保護された Web API にアクセスすることをお勧めします:[クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す](quickstart-v2-ios.md)
+新しい macOS および iOS アプリケーションでは、Microsoft ID プラットフォーム (v2.0) と MSAL を使用してトークンを取得し、セキュリティで保護された Web API にアクセスすることをお勧めします:[クイック スタート: iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す](quickstart-v2-ios.md)

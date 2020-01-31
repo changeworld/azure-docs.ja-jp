@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfcc02928cc92aedd0eb0f966bea9804be5fdcc
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156252"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705294"
 ---
 # <a name="what-is-the-additional-verification-page"></a>追加認証ページとは
 

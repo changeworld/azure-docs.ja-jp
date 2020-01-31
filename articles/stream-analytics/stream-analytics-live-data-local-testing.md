@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426048"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840487"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -38,7 +38,6 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 2. ライブ データをテストするには、ドロップダウン ボックスから **[Use Cloud Input]\(クラウド入力を使用\)** を選択します。
 
    ![Azure Stream Analytics Visual Studio のライブ クラウド入力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. **[Start Time]\(開始日時\)** を設定して、ジョブが入力データの処理を開始する日時を定義します。 ジョブは、正確な結果を得るため、事前に入力データを読み取ることが必要な場合があります。 既定の日時は、現在の日時の 30 分前に設定されます。
 
@@ -65,6 +64,5 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 ## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
-* [Visual Studio の Azure Stream Analytics ツールのインストール](stream-analytics-tools-for-visual-studio-install.md)
 * [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)

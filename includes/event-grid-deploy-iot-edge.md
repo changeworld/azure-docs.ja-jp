@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098663"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844592"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge モジュールをデプロイする
 
@@ -43,6 +43,8 @@ ms.locfileid: "73098663"
 1. モジュールの種類のドロップダウン リストから、 **[IoT Edge モジュール]** を選択します
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
+
    * **[名前]** : eventgridmodule
    * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **[コンテナーの作成オプション]** :
@@ -50,8 +52,8 @@ ms.locfileid: "73098663"
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {

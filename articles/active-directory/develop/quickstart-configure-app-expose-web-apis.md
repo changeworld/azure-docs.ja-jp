@@ -12,13 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966114"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704223"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
@@ -60,7 +59,7 @@ UI を通じて新しいスコープを公開するには:
 
 1. **[Scope の追加]** ページが表示されたら、以下のスコープの情報を入力します。
 
-    | フィールド | 説明 |
+    | フィールド | [説明] |
     |-------|-------------|
     | **スコープ名** | スコープのわかりやすい名前を入力します。<br><br>たとえば、「 `Employees.Read.All` 」のように入力します。 |
     | **同意できるユーザー** | このスコープにユーザーが同意できるかどうかと、管理者の同意が必要かどうかを選択します。 より高い特権のアクセス許可にするには、 **[管理者のみ]** を選択します。 |
@@ -69,7 +68,7 @@ UI を通じて新しいスコープを公開するには:
 
     ユーザーがスコープに同意できる場合は、以下のフィールドにも値を追加します。
 
-    | フィールド | 説明 |
+    | フィールド | [説明] |
     |-------|-------------|
     | **ユーザーの同意の表示名** | スコープのわかりやすい名前を入力します。名前はユーザーに表示されます。<br><br>たとえば、`Read-only access to your Employee records` のように指定します。 |
     | **ユーザーの同意の説明** | スコープのわかりやすい説明を入力します。説明はユーザーに表示されます。<br><br>たとえば、`Allow the application to have read-only access to your Employee data.` のように指定します。 |
@@ -125,7 +124,7 @@ UI を通じて新しいスコープを公開するには:
 
 アプリケーション マニフェストの概念一般の詳細については、[Azure Active Directory のアプリケーション マニフェスト](reference-app-manifest.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下のその他のアプリ管理関連のクイック スタートを学習します。
 

@@ -4,9 +4,9 @@ title: Azure App Configuration (プレビュー) のドキュメント
 metadata:
   title: Azure App Configuration のドキュメント - チュートリアル、API リファレンス
   description: Azure App Configuration は、開発者が自分のアプリケーションおよび機能設定を単純かつ安全に一元化するのに役立つマネージド サービスです。
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019

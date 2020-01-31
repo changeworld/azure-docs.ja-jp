@@ -1,19 +1,18 @@
 ---
 title: PowerShell を使用した Azure Table Storage 操作の実行 | Microsoft Docs
 description: PowerShell を使用して、Azure Table ストレージ アカウントからデータの作成、クエリ、削除などの一般的なタスクを実行する方法について説明します。
-services: cosmos-db
 author: roygara
-ms.service: cosmos-db
+ms.service: storage
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
-ms.subservice: cosmosdb-table
-ms.openlocfilehash: 4591cded820bbefb741d55a22d10a91bd4fff383
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.subservice: tables
+ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868509"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721474"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -25,7 +24,7 @@ Azure Table Storage は NoSQL データストアであり、これを使用す�
 > [!div class="checklist"]
 > * テーブルを作成する
 > * テーブルを取得する
-> * テーブル エンティティを追加する
+> * テーブル エンティティの追加
 > * テーブルを照会する
 > * テーブル エンティティを削除する
 > * テーブルを削除する
@@ -139,7 +138,7 @@ Remove-AzStorageTable –Name $tableName –Context $ctx
 Get-AzStorageTable –Context $Ctx | select Name
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このハウツー記事に従って最初に新しいリソース グループとストレージ アカウントを作成している場合は、リソース グループを削除することで、この練習で作成したすべてのアセットを削除できます。 このコマンドを実行すると、リソース グループと、そのグループに含まれるすべてのリソースが削除されます。
 
@@ -147,14 +146,14 @@ Get-AzStorageTable –Context $Ctx | select Name
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、次のような、PowerShell を使用した Azure Table Storage の一般的な操作について学習しました。 
 
 > [!div class="checklist"]
 > * テーブルを作成する
 > * テーブルを取得する
-> * テーブル エンティティを追加する
+> * テーブル エンティティの追加
 > * テーブルを照会する
 > * テーブル エンティティを削除する
 > * テーブルを削除する

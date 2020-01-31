@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276132"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842939"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -76,7 +74,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 2. **[Function App]** ブレードで、次の値を入力して **[OK]** を選び、アプリを作成します。
 
-    |**設定** | **値** | **詳細** |
+    |**設定** | **Value** | **詳細** |
     |---|---|---|
     |**アプリ名**|PacketCaptureExample|Function App の名前。|
     |**サブスクリプション**|[お使いのサブスクリプション] Function App を作成するサブスクリプション。||
@@ -89,9 +87,9 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 4. **[HttpTrigger-Powershell]** を選び、残りの情報を入力します。 最後に、関数を作成するには、 **[作成]** を選びます。
 
-    |**設定** | **値** | **詳細** |
+    |**設定** | **Value** | **詳細** |
     |---|---|---|
-    |**シナリオ**|試験段階|シナリオの種類|
+    |**シナリオ**|Experimental|シナリオの種類|
     |**関数名の指定**|AlertPacketCapturePowerShell|関数の名前|
     |**承認レベル**|Function|関数の承認レベル|
 
@@ -344,7 +342,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
 
-  |**設定** | **値** | **詳細** |
+  |**設定** | **Value** | **詳細** |
   |---|---|---|
   |**Name**|TCP_Segments_Sent_Exceeded|アラート ルールの名前。|
   |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。|
@@ -372,7 +370,7 @@ Azure ストレージ アカウントからファイルをダウンロードす�
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [Wireshark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-deep-packet-inspection.md)に関するページをご覧ください。
 

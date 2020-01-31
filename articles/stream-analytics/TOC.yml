@@ -65,6 +65,7 @@
       items:
         - name: ストリーミング ユニットの理解と調整
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: クエリ パフォーマンスの向上
           href: stream-analytics-parallelization.md
         - name: 入力の再パーティション

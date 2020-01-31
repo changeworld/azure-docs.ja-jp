@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078783"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842684"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
 この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)内にデプロイできます。 
@@ -108,7 +108,7 @@ Azure 可用性セット内の 2 つの Azure VM を使用するときに、2 �
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>自動フェールオーバーを伴う SAP HANA システム レプリケーション
 
-1 つの Azure リージョン内の標準的かつ最も一般的な可用性の構成では、SLES Linux を実行する 2 つの Azure VM でフェールオーバー クラスターが定義されています。 SLES Linux クラスターは、[Pacemaker](http://www.linux-ha.org/wiki/Pacemaker) フレームワークと [STONITH](http://linux-ha.org/wiki/STONITH) デバイスの組み合わせが基になっています。 
+1 つの Azure リージョン内の標準的かつ最も一般的な可用性の構成では、SLES Linux を実行する 2 つの Azure VM でフェールオーバー クラスターが定義されています。 SLES Linux クラスターは、[Pacemaker](http://www.linux-ha.org/wiki/Pacemaker) フレームワークと [STONITH](http://www.linux-ha.org/wiki/STONITH) デバイスの組み合わせが基になっています。 
 
 SAP HANA の観点から、使用されるレプリケーション モードは同期され、自動フェールオーバーが構成されます。 第 2 の VM では、SAP HANA インスタンスはホット スタンバイ ノードとして機能します。 スタンバイ ノードは、プライマリ SAP HANA インスタンスから変更レコードの同期ストリームを受け取ります。 HANA プライマリ ノードでアプリケーションによってトランザクションがコミットされると、プライマリ HANA ノードは、セカンダリ SAP HANA ノードがコミット レコードを受信したことを確認するまで、アプリケーションへのコミットの確認を待機します。 SAP HANA では 2 つの同期レプリケーション モードを提供しています。 これら 2 つの同期レプリケーション モード間の違いに関する詳細および説明については、SAP の記事「[Replication modes for SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)」(SAP HANA システム レプリケーションのレプリケーション モード) をご覧ください。
 
@@ -118,7 +118,7 @@ SAP HANA の観点から、使用されるレプリケーション モードは�
 
 RPO = 0 と短い RTO を実現できるため、このソリューションを選択できます。 SAP HANA クライアントが仮想 IP アドレスを使って HANA システム レプリケーション構成に接続するように、SAP HANA クライアント接続を構成します。 このような構成では、セカンダリ ノードへのフェールオーバーが発生した場合にアプリケーションを再構成する必要がなくなります。 このシナリオでは、プライマリおよびセカンダリ VM の Azure VM SKU を同じにする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure でのこれらの構成の設定手順については、以下をご覧ください。
 

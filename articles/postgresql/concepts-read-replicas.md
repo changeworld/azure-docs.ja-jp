@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792284"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769039"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -59,11 +59,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 
 ## <a name="create-a-replica"></a>レプリカの作成
-マスター サーバーでは、`azure.replication_support` パラメーターが **[REPLICA]** に設定されている必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。 (`azure.replication_support` パラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます)。
-
 レプリカ作成ワークフローを開始すると、空の Azure Database for PostgreSQL サーバーが作成されます。 新しいサーバーには、マスター サーバー上にあったデータが設定されます。 作成時間は、マスター上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。
 
-すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能によって、レプリカにレプリケートされるデータをレプリカで保持し続けることができ、ストレージ不足エラーを原因とするレプリケーションの中断を防ぐことができます。
+すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能により、レプリカはレプリケートされるデータに追従していくことができ、ストレージ不足エラーによって発生するレプリケーションの中断が防止されます。
 
 読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
 
@@ -125,7 +123,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 [レプリカへのレプリケーションを停止する](howto-read-replicas-portal.md)方法を確認します。
 
-## <a name="failover"></a>フェールオーバー
+## <a name="failover"></a>[フェールオーバー]
 マスター サーバーとレプリカ サーバー間では、自動フェールオーバーは行われません。 
 
 レプリケーションは非同期であるため、マスターとレプリカの間にラグがあります。 ラグは、マスター サーバーで実行されているワークロードの負荷とデータ センター間の待機時間など、さまざまな要因によって影響を受ける可能性があります。 ほとんどの場合、レプリカのラグは数秒から数分の範囲になります。 各レプリカで利用可能な*レプリカのラグ* メトリックを使用して、実際のレプリケーションのラグを追跡できます。 このメトリックでは、最後に再生されたトランザクションからの時間が表示されます。 長期間にわたってレプリカのラグを観察することで、平均ラグを特定することをお勧めします。 予想される範囲外に出た場合に対処できるように、レプリカのラグにアラートを設定できます。
@@ -175,6 +173,6 @@ PostgreSQL では、読み取りレプリカの `max_connections` パラメー�
 ### <a name="deleted-master-and-standalone-servers"></a>削除されたマスターおよびスタンドアロン サーバー
 マスター サーバーを削除すると、そのすべての読み取りレプリカがスタンドアロン サーバーになります。 この変更を反映するため、レプリカは再起動されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure portal で読み取りレプリカを作成および管理する](howto-read-replicas-portal.md)方法を確認する。
-* [Azure CLI と REST API で読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。
+* [Azure CLI と REST API で読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認してください。

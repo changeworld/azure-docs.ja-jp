@@ -12,13 +12,12 @@ ms.date: 05/09/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a68b89ce38664c0d0ec87b509fe5f872cfd78c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bb741fe36e00c3d528470866669e64e9b0b221ae
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921417"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704138"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -36,7 +35,7 @@ ms.locfileid: "74921417"
    - **[名前]** - アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。
    - **[サポートされているアカウントの種類]** - アプリケーションでサポートするアカウントを選択します。
 
-       | サポートされているアカウントの種類 | 説明 |
+       | サポートされているアカウントの種類 | [説明] |
        |-------------------------|-------------|
        | **この組織のディレクトリ内のアカウントのみ** | 基幹業務 (LOB) アプリケーションを作成している場合は、このオプションを選択します。 アプリケーションをディレクトリに登録していない場合、このオプションは選択できません。<br><br>このオプションは、Azure AD のみのシングルテナントに対応します。<br><br>これは、ディレクトリの外部にアプリを登録している場合を除き、既定のオプションです。 アプリがディレクトリの外部に登録される場合、既定のオプションは Azure AD マルチテナントと個人の Microsoft アカウントです。 |
        | **任意の組織のディレクトリ内のアカウント** | 企業および教育機関のすべてのユーザーを対象とする場合は、このオプションを選択します。<br><br>このオプションは、Azure AD のみのマルチテナントに対応します。<br><br>アプリを Azure AD のみのシングルテナントとして登録した場合は、 **[認証]** ブレードを使用して、Azure AD マルチテナントに更新したり、シングルテナントに戻したりすることができます。 |
@@ -56,7 +55,7 @@ Azure AD によりアプリに一意のアプリケーション (クライアン
 
 [![新たに登録されたアプリの概要ページの例](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス許可と同意](v2-permissions-and-consent.md)について学習します。
 - アプリケーション登録で追加の構成機能 (資格情報、アクセス許可など) を有効にしたり、他のテナントのユーザーによるサインインを有効にしたりするには、以下のクイック スタートを参照してください。

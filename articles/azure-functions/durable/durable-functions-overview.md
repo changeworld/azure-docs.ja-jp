@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561628"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756145"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -256,7 +256,7 @@ const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     const jobId = context.df.getInput();
-    const pollingInternal = getPollingInterval();
+    const pollingInterval = getPollingInterval();
     const expiryTime = getExpiryTime();
 
     while (moment.utc(context.df.currentUtcDateTime).isBefore(expiryTime)) {

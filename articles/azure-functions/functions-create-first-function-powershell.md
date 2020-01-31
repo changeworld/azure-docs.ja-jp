@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167897"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845908"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Azure で初めての PowerShell 関数を作成する
 
@@ -67,36 +67,7 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
 
 Visual Studio Code により、新しいワークスペースに PowerShell 関数アプリ プロジェクトが作成されます。 このプロジェクトには、プロジェクト内のすべての関数に適用される [host.json](functions-host-json.md) および [local.settings.json](functions-run-local.md#local-settings-file) 構成ファイルが含まれます。 この [PowerShell プロジェクト](functions-reference-powershell.md#folder-structure)は、Azure で実行される関数アプリと同じです。
 
-## <a name="run-the-function-locally"></a>関数をローカルで実行する
-
-Azure Functions プロジェクトをローカルで実行してデバッグするために、Azure Functions Core Tools は Visual Studio Code と統合されています。  
-
-1. 関数をデバッグするには、デバッガーにアタッチする前に、[`Wait-Debugger`] コマンドレットへの呼び出しを関数コードに挿入し、F5 を押して関数アプリ プロジェクトを開始してからデバッガーをアタッチします。 Core Tools からの出力が**ターミナル** パネルに表示されます。
-
-1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
-
-    ![Azure のローカル出力](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. 次のように、この URL にクエリ文字列 `?name=<yourname>` を追加し、`Invoke-RestMethod` を使用して要求を実行します。
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    ブラウザーから GET 要求を実行することもできます。
-
-    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は [HttpStatusCode]::BadRequest エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
-
-1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
-
-関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
-
-> [!NOTE]
-> 関数を Azure に公開する前に、`Wait-Debugger` への呼び出しを必ず削除してください。 
->
-> Azure で関数アプリを作成すると、関数アプリ名の入力のみが求められます。 他の値は自動的に定義されます。
-> 他のすべての値の入力が求められるようにするには、`azureFunctions.advancedCreation` を `true` に設定します。
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

@@ -13,13 +13,12 @@ ms.date: 07/17/2019
 ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d44dfe3eb03ff086d3785311c34ab1a6a5b3982a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bdcf0632110df23cbe91040f41535f51fb06ba44
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424047"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703798"
 ---
 # <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>クイック スタート:コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph を呼び出す (v1.0)
 
@@ -29,4 +28,4 @@ ms.locfileid: "75424047"
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい .NET デーモン アプリケーションでは、Microsoft ID プラットフォーム (v2.0) と MSAL を使用してトークンを取得し、セキュリティで保護された Web API にアクセスすることをお勧めします:[クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出します](quickstart-v2-netcore-daemon.md)。
+新しい .NET デーモン アプリケーションでは、Microsoft ID プラットフォーム (v2.0) と MSAL を使用してトークンを取得し、セキュリティで保護された Web API にアクセスすることをお勧めします:[クイック スタート: トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出します](quickstart-v2-netcore-daemon.md)。

@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819006"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719910"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
 [マネージド インスタンス](sql-database-managed-instance.md)の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
-- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムについて詳しくは、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Azure ストレージに対するサーバー監査の設定
 
@@ -171,7 +171,7 @@ ms.locfileid: "73819006"
 
 5. 監査イベントの宛先を選択します (イベント ハブ、Azure Monitor ログ、またはその両方)。 必要なパラメーター (Log Analytics ワークスペースなど) をターゲットごとに構成します。
 
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
     ![診断設定を構成する](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -237,10 +237,10 @@ Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違
 - Shutdown オプションは**サポートされていません**。
 - `queue_delay` の値として 0 は**サポートされていません**。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](sql-database-auditing.md)」をご覧ください。
-- 標準コンプライアンスをサポートする Azure プログラムについて詳しくは、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+- 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 <!--Image references-->
 

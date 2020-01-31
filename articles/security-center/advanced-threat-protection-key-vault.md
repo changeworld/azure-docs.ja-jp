@@ -8,21 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720040"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773530"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 用 Advanced Threat Protection を設定する (プレビュー)
 
 Azure Key Vault 用 Advanced Threat Protection によって、セキュリティ インテリジェンスにレイヤーが追加されます。 このツールを使うと、Key Vault アカウントに対して害を及ぼす可能性のあるアクセスの試行または悪用を検出できます。 Azure Security Center でネイティブの Advanced Threat Protection を使用することにより、セキュリティの専門家でなくとも脅威に対処できます。また、追加のセキュリティ監視システムを習得する必要もありません。
 
 Security Center で異常なアクティビティが検出されると、アラートが表示されます。 また、サブスクリプション管理者に、不審なアクティビティの詳細と、特定された脅威を調査して修復する方法に関する推奨事項をメールで送信することもできます。
-
-> [!NOTE]
-> 現時点では、Azure Key Vault 用 Advanced Threat Protection は、北米リージョンでのみご利用いただけます。
 
 ## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Azure Security Center から Advanced Threat Protection を設定する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432313"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842403"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -110,20 +110,20 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
 8. ディスクのマウントに失敗した場合は、-L オプション (ログを強制的にゼロに設定) を指定した xfs_repair コマンドを実行します。
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. 次に、ファイル システムをマウントしてみます。 ディスクが正常にマウントされた場合は、次の出力が表示されます。
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. VM を再起動して、問題が解決されたかどうかを確認します。
@@ -176,7 +176,7 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
 8. 問題が解決されたかどうかを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
 * [ポータルを利用し、データ ディスクを Linux VM に接続する](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)

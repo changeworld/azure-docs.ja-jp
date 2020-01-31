@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプルの概要
 description: Payment Card Industry Data Security Standard v3.2.1 のブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: f36b258c098871d22ea532f9a29acfcc582dfb87
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 70a03b925c12fbfc7a3a605f682699c0808cd9eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546537"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905540"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルの概要
 
@@ -21,7 +21,7 @@ PCI-DSS のブループリントでは、この認定が必要とされる、Azu
 
 このブループリントを割り当てた後、Azure Policy のコンプライアンス ダッシュボードで Azure 環境のコンプライアンス レベルを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PCI-DSS v3.2.1 のブループリント サンプルの概要を確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

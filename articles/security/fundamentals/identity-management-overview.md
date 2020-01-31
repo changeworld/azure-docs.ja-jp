@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129361"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840453"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -125,8 +125,8 @@ Azure AD B2C を使用すると、コンシューマーは、既存のソーシ�
 詳細情報:
 
 * [Azure Active Directory B2C とは](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C プレビュー: アプリケーションにコンシューマーをサインアップおよびサインインする](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C プレビュー: アプリケーションの種類](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C プレビュー: アプリケーションにコンシューマーをサインアップおよびサインインする](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C プレビュー: アプリケーションの種類](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>デバイス登録
 
@@ -171,7 +171,7 @@ Azure AD Identity Protection は、リスク検出や組織の ID に影響す�
 
 Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 また、以下のような特徴があります。
 
-* 同期
+* Synchronization
 * AD FS とフェデレーションの統合
 * パススルー認証
 * 正常性の監視

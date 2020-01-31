@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/5/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 690a45ad7f009a65686e27eba5095a5a2870039c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e5d9143b0c84b579945b283ccae1cce36a7a4291
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806271"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717407"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>音声サービス コンテナーを Azure Container Instances にデプロイする
 
