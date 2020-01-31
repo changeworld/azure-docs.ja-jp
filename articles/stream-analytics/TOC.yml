@@ -176,6 +176,8 @@
           href: stream-analytics-live-data-local-testing.md
         - name: Visual Studio でのジョブの表示
           href: stream-analytics-vs-tools.md
+        - name: ジョブ ダイアグラムを使用してクエリをデバッグする
+          href: debug-locally-using-job-diagram.md
         - name: エッジ ジョブの開発
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI/CD パイプラインの設定

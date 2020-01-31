@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: ドキュメント抽出
           href: cognitive-search-skill-document-extraction.md
+        - name: PII 検出
+          href: cognitive-search-skill-pii-detection.md
     - name: カスタム スキル
       items:
         - name: カスタム Web API

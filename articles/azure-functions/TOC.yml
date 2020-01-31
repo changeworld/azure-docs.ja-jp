@@ -10,29 +10,28 @@
       href: functions-compare-logic-apps-ms-flow-webjobs.md
     - name: ホスティング プランのオプション
       href: functions-scale.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: '関数の作成 - C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: 関数の作成 - Java
-      href: functions-create-first-java-maven.md
-    - name: 関数の作成 - JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: 関数の作成 - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: 関数の作成 - Python
-      href: functions-create-first-function-python.md
-    - name: サービスへの接続
+    - name: 関数の作成
+      expanded: true
       items:
-        - name: 'ストレージ - C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: ストレージ - Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: ストレージ - JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: "Visual\_Studio"
+          href: functions-create-your-first-function-visual-studio.md
+        - name: コマンド ライン
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: ストレージへの接続
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: ストレージ - Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: "Visual\_Studio"
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: チュートリアル
   items:
     - name: Functions と Logic Apps
@@ -137,7 +136,7 @@
       href: functions-networking-options.md
     - name: IP アドレス
       href: ip-addresses.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発
       items:
@@ -157,11 +156,11 @@
           items:
             - name: HTTP トリガー
               items:
-                - name: Azure ポータル
+                - name: Azure portal
                   href: functions-create-first-azure-function.md
                 - name: コマンド ライン
-                  href: functions-create-first-azure-function-azure-cli.md
-                - name: Visual Studio
+                  href: create-cli.md
+                - name: "Visual\_Studio"
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
@@ -212,7 +211,7 @@
           href: functions-bindings-error-pages.md
         - name: HTTP によってトリガーされない関数を手動で実行する
           href: functions-manually-run-non-http.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: 継続的なデプロイ
           href: functions-continuous-deployment.md
@@ -236,7 +235,7 @@
         - name: Jenkins プラグインを使用したデプロイ
           href: /azure/jenkins/jenkins-azure-functions-deploy
           maintainContext: true
-    - name: 構成
+    - name: '[構成]'
       items:
         - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
@@ -249,14 +248,14 @@
           href: disable-function.md
         - name: geo ディザスター リカバリー
           href: functions-geo-disaster-recovery.md
-    - name: 監視
+    - name: モニター
       items:
         - name: 関数の監視
           href: functions-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
         - name: ログの分析
           href: functions-monitor-log-analytics.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: SSL 証明書の追加
           href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
@@ -308,7 +307,7 @@
           href: functions-create-serverless-api.md
         - name: オンプレミスのリソースの管理
           href: functions-hybrid-powershell.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
@@ -348,7 +347,7 @@
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
           href: functions-bindings-notification-hubs.md
-        - name: Queue Storage
+        - name: ストレージ
           href: functions-bindings-storage-queue.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md

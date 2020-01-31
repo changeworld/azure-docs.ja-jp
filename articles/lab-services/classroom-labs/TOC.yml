@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Python と Jupyter Notebook
           href: class-type-jupyter-notebook.md
+        - name: Android Studio を使用したモバイル アプリ開発
+          href: class-type-mobile-dev-android-studio.md
     - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
       items:
         - name: ラボ アカウントを作成および管理する

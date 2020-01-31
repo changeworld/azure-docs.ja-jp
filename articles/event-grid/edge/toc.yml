@@ -24,6 +24,8 @@
   items:
     - name: Event Grid の概念
       href: concepts.md
+    - name: イベント ハンドラーと送信先
+      href: event-handlers.md
     - name: セキュリティと認証
       href: security-authentication.md
     - name: イベント スキーマ
@@ -34,7 +36,7 @@
       href: delivery-output-batching.md
     - name: 高度なフィルター処理
       href: advanced-filtering.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 状態を保持する
       items:
@@ -42,6 +44,8 @@
           href: persist-state-linux.md
         - name: Windows
           href: persist-state-windows.md
+    - name: トピックとサブスクリプションの監視
+      href: monitor-topics-subscriptions.md
     - name: API プロトコルの構成
       href: configure-api-protocol.md
     - name: クライアント認証の構成
@@ -50,7 +54,7 @@
       href: configure-webhook-subscriber-auth.md
     - name: ID 認証の構成
       href: configure-identity-auth.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       href: troubleshoot.md
 - name: リファレンス
   items:
@@ -60,3 +64,5 @@
       href: configure-event-grid.md
     - name: モジュール ツインの構成スキーマ
       href: twin-json.md
+    - name: リリース ノート
+      href: release-notes.md

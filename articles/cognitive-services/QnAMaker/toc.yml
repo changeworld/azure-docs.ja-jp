@@ -67,23 +67,37 @@
       href: Tutorials/create-qna-bot.md
 - name: 概念
   items:
-    - name: サポート技術情報
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: LUIS と QnA Maker の使用
-      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
-    - name: ナレッジ ベースの開発ライフサイクル
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Azure リソース
+      href: Concepts/azure-resources.md
+    - name: ナレッジ ベースの設計
+      items:
+        - name: 言語向け
+          href: Concepts/design-language-culture.md
+        - name: クライアント アプリケーション向け
+          href: Concepts/integration-with-other-applications.md
+    - name: データ ソースとコンテンツ
+      items:
+        - name: データ ソースからのインポート
+          href: Concepts/knowledge-base.md
+        - name: インポートされるコンテンツの種類
+          href: Concepts/content-types.md
+        - name: 質問と回答のセット
+          href: Concepts/question-answer-set.md
+    - name: ナレッジ ベースのライフサイクル
+      items:
+        - name: 開発ライフサイクル
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: ナレッジ ベースの照会
+      items:
+        - name: 回答の取得
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: 信頼度スコア
+          href: Concepts/confidence-score.md
     - name: ベスト プラクティス
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: 信頼度スコア
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: サポートされるデータ ソース
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: 操作方法ガイド
   items:
     - name: ナレッジ ベースの編集
@@ -106,6 +120,8 @@
         - name: メタデータを使用した回答の取得
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: 既定の回答の設定
+          href: How-to/change-default-answer.md
         - name: QnA Maker と LUIS を使用したボットの作成
           href: Tutorials/integrate-qnamaker-luis.md
         - name: 言語の選択

@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 01/24/2020
-  ms.openlocfilehash: 274d4f6b88923fc0c6d3cda03a4ffa73535e13b1
-  ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+  ms.date: 01/28/2020
+  ms.openlocfilehash: f33caa7f8d731ecd3c9c43fb0af16bc91e2ce0c4
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/28/2020
-  ms.locfileid: "76769650"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76845595"
 landingContent:
 - title: Cost Management について
   linkLists:
@@ -82,9 +82,11 @@ landingContent:
   - linkListType: whats-new
     links:
     - text: 毎月の更新プログラム
-      url: https://azure.microsoft.com/blog/tag/cost-management/
+      url: https://azure.microsoft.com/blog/tag/cost-management
     - text: 機能更新プログラム
-      url: https://azure.microsoft.com/updates/?product=cost-management
+      url: https://azure.microsoft.com/updates/cost-management-features-now-available-october-2019
+    - text: 開発中の機能
+      url: https://azure.microsoft.com/updates/azure-cost-management-features-in-development-october-2019
 - title: AWS のコストの分析と管理
   linkLists:
   - linkListType: how-to-guide
