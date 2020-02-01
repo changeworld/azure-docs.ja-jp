@@ -21,6 +21,8 @@
           items:
             - name: C
               href: quick-create-simulated-device-symm-key.md
+            - name: Java
+              href: quick-create-simulated-device-symmetric-key-java.md
         - name: X.509 証明書の構成証明
           items:
             - name: C
