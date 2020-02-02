@@ -130,6 +130,9 @@
     - name: パフォーマンスに関する考慮事項
       href: functions-best-practices.md
       displayName: best practice
+    - name: ストレージに関する考慮事項
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: 関数プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
