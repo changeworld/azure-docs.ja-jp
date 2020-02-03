@@ -888,13 +888,19 @@
             - name: 外部の追跡にアクセスする
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: MLflow Search API を使用してダッシュボードを作成する
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: モデルの保存、読み込み、デプロイ
           items:
             - name: 保存、読み込み、デプロイの概要
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
             - name: MLflow モデルの例
-              href: /azure/databricks/applications/mlflow/  model-examples
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Azure での scikit-learn モデル デプロイ
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: MLflow プロジェクトを使用して実行を再現する
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: Anaconda を使用してクラスターを作成する
+            - name: Conda を使用してクラスターを作成する
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: Cython をインストールしてコンパイルする
@@ -1465,6 +1471,9 @@
           items:
             - name: Scala で C++ コードを実行する
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: Spark JAR コンカレント ジョブが失敗する
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

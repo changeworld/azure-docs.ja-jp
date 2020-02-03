@@ -5,7 +5,7 @@
   items:
     - name: Service Fabric Mesh について
       href: service-fabric-mesh-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Hello World をデプロイする
       href: service-fabric-mesh-quickstart-deploy-container.md
@@ -37,7 +37,7 @@
           href: service-fabric-mesh-tutorial-template-remove-app.md
 - name: 概念
   items:
-    - name: 用語集
+    - name: 用語
       href: service-fabric-mesh-terminology.md
     - name: Service Fabric のリソース
       href: service-fabric-mesh-service-fabric-resources.md
@@ -51,7 +51,7 @@
       href: service-fabric-mesh-storing-state.md
     - name: シークレット
       href: service-fabric-mesh-secrets-overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発環境を設定する
       href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: シークレットを管理する
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: アプリケーションを別の Azure リージョンに移動する
+      href: move-across-regions.md
     - name: サンプルを検索する
       href: service-fabric-mesh-howto-find-samples.md
 - name: リファレンス

@@ -26,13 +26,13 @@
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: イベントの送受信
       items:
-        - name: .NET Core
-          href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: Java
+        - name: .NET Core (Azure.Messaging.EventHubs)
+          href: get-started-dotnet-standard-send-v2.md
+        - name: Java (azure-eventhubs)
           href: event-hubs-java-get-started-send.md
-        - name: Python
+        - name: Python (azure-eventhub バージョン 5)
           href: get-started-python-send-v2.md
-        - name: Node.js
+        - name: Node.js (azure/event-hubs バージョン 5)
           href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
@@ -40,15 +40,13 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (受信のみ)
           href: event-hubs-storm-getstarted-receive.md
-        - name: .NET Framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
       items:
         - name: Azure portal を使用した Event Hubs Capture の有効化
           href: event-hubs-capture-enable-through-portal.md
         - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Python を使用して Event Hubs データをキャプチャする
+        - name: Python を使用して Event Hubs データをキャプチャする (azure-eventhub バージョン 5)
           href: get-started-capture-python-v2.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -71,8 +69,10 @@
   items:
     - name: Event Hubs の用語
       href: event-hubs-features.md
-    - name: イベント プロセッサ ホスト
+    - name: イベント プロセッサ ホスト (レガシ SDK)
       href: event-hubs-event-processor-host.md
+    - name: イベント プロセッサ (最新の SDK)
+      href: event-processor-balance-partition-load.md
     - name: 可用性と一貫性
       href: event-hubs-availability-and-consistency.md
     - name: スケーラビリティ
@@ -116,20 +116,26 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: プログラミング ガイド
           items:
-            - name: Python
+            - name: .NET (Azure.Messaging.EventHubs)
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
+            - name: Python (azure-eventhub バージョン 5)
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
-            - name: JavaScript
+            - name: JavaScript (azure/event-hubs バージョン 5)
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
-            - name: .NET プログラミング ガイド
+            - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: Python を使用したキャプチャ データの読み取り (レガシ)
+        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 1)
           href: event-hubs-capture-python.md
-        - name: イベントの送受信 (レガシ)
+        - name: イベントの送受信 (古いバージョン/パッケージ)
           items:
-            - name: Python (レガシ)
+            - name: .NET Core (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-standard-getstarted-send.md
+            - name: Python (azure-eventhub バージョン 1)
               href: event-hubs-python-get-started-send.md
-            - name: Node.js (レガシ)
+            - name: Node.js (azure/event-hubs バージョン 2)
               href: event-hubs-node-get-started-send.md
+            - name: .NET Framework (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: データを処理する
       items:
         - name: Azure Stream Analytics を使用したデータの処理
@@ -186,34 +192,52 @@
           href: resource-manager-exceptions.md
 - name: リファレンス
   items:
-    - name: Java
-      items:
-        - name: com.microsoft.azure.eventhubs
-          href: /java/api/com.microsoft.azure.eventhubs
-        - name: com.microsoft.azure.eventprocessorhost
-          href: /java/api/com.microsoft.azure.eventprocessorhost
     - name: .NET
       items:
-        - name: Microsoft.Azure.EventHubs
-          href: /dotnet/api/microsoft.azure.eventhubs
-        - name: Microsoft.Azure.EventHubs.Processor
-          href: /dotnet/api/microsoft.azure.eventhubs.processor
-        - name: Microsoft.ServiceBus.Messaging
-          href: /dotnet/api/microsoft.servicebus.messaging
-        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
-          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
-        - name: Microsoft.Azure.Management.EventHub
+        - name: クライアント ライブラリ
+          items:
+            - name: Microsoft.Azure.EventHubs から Azure.Messaging.EventHubs への移行
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+            - name: Azure.Messaging.EventHubs (最新)
+              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+            - name: Microsoft.Azure.EventHubs (レガシ)
+              href: /dotnet/api/microsoft.azure.eventhubs
+            - name: Microsoft.ServiceBus.Messaging (レガシ)
+              href: /dotnet/api/microsoft.servicebus.messaging
+        - name: 管理ライブラリ
           href: /dotnet/api/microsoft.azure.management.eventhub
-    - name: Node.js
+    - name: Java
       items:
-        - name: バージョン 2 からバージョン 5 への移行
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
-        - name: API リファレンス
-          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+        - name: クライアント ライブラリ
+          items:
+            - name: azure-eventhubs
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+        - name: 管理ライブラリ
+          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
       items:
-        - name: バージョン 1 からバージョン 5 への移行
+        - name: azure-eventhub バージョン 1 からバージョン 5 への移行
           href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
+        - name: クライアント ライブラリ
+          items:
+            - name: azure-eventhub バージョン 5
+              href: /python/api/azure-eventhub/?view=azure-python-preview
+            - name: azure-eventhub バージョン 1
+              href: /python/api/azure-eventhub/?view=azure-python
+        - name: 管理ライブラリ
+          href: /python/api/overview/azure/event-hub?view=azure-python
+    - name: Node.js
+      items:
+        - name: azure/eventhubs バージョン 2 からバージョン 5 への移行
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: クライアント ライブラリ
+          items:
+            - name: azure/eventhubs バージョン 5
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-preview
+            - name: azure/eventhubs バージョン 2
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+        - name: 管理ライブラリ
+          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager テンプレート

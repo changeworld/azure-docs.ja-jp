@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Azure リソースのマネージド ID
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Microsoft ID プラットフォームのビデオ
+      href: identity-videos.md

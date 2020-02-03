@@ -24,7 +24,7 @@
       href: concept-attributes.md
     - name: Azure Active Directory における属性マッピングの式の書き方
       href: reference-expressions.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: インストールとアップグレード
       items:
@@ -34,11 +34,13 @@
           href: how-to-install.md
         - name: クラウド プロビジョニングの構成
           href: how-to-configure.md
+        - name: シングル サインオンの使用
+          href: how-to-sso.md
     - name: 計画と設計
       items:
         - name: Azure AD Connect クラウド プロビジョニングのトポロジとシナリオ
           href: plan-cloud-provisioning-topologies.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: エージェントの自動アップグレード
           href: how-to-automatic-upgrade.md
@@ -48,7 +50,7 @@
           href: how-to-transformation.md
         - name: Azure AD の同期 API
           href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: クラウド プロビジョニングに関するトラブルシューティング
           href: how-to-troubleshoot.md

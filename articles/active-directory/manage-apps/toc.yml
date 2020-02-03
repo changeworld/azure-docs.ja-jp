@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: アプリへのユーザーの割り当て
               href: assign-user-or-group-access-portal.md
-            - name: マイ アプリでのワークスペースの作成 (プレビュー)
-              href: access-panel-workspaces.md
+            - name: マイ アプリでのコレクションの作成
+              href: access-panel-collections.md
             - name: セルフサービス アプリ アクセスの使用
               href: access-panel-manage-self-service-access.md
             - name: アプリへのユーザーのアクセスを削除する方法

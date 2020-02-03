@@ -330,16 +330,13 @@
     - name: モニター
       items:
         - name: ロジック アプリの監視
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: Azure Monitor ログでロジック アプリを監視する
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: Azure Monitor ログで B2B メッセージを監視する
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: Azure Monitor ログで B2B メッセージを追跡する
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: Azure Monitor ログで B2B メッセージに対するクエリを作成する
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: 監視と追跡クエリを作成する
+          href: create-monitoring-tracking-queries.md
     - name: 例、シナリオ、チュートリアル
       href: logic-apps-examples-and-scenarios.md
       items:
