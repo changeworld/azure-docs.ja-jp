@@ -16,7 +16,7 @@ ms.locfileid: "76289477"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
-この記事は、[Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) でクリックします。
+この記事は、[Azure Migrate: Server Assessment]](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。
 
 
 ## <a name="assessment-readiness-issues"></a>アセスメントの準備状態
@@ -113,7 +113,7 @@ Azure Migrate の依存関係視覚化機能は Service Map に依存してい�
 
 Windows VM の場合:
 1. コントロール パネルで MMA を開始します。
-2. **[Microsoft Monitoring Agent のプロパティ]**  >  **[Azure Log Analytics (OMS)]** で、ワークスペースの **[状態]** が緑色になっていることを確認します。
+2. **[Microsoft Monitoring Agent のプロパティ]** > **[Azure Log Analytics (OMS)]** で、ワークスペースの **[状態]** が緑色になっていることを確認します。
 3. 状態が緑色でない場合は、ワークスペースを削除して、再度 MMA に追加してみてください。
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
@@ -153,14 +153,14 @@ Azure Migrate Server Assessment では、最大 10 個の VM を含む[グルー
 次のようにネットワーク トラフィック ログを収集します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. F12 キーを押して開発者ツールを起動します。 必要な場合は、 **[ナビゲーション時にエントリをクリア]** の設定をオフにします。
+2. F12 キーを押して開発者ツールを起動します。 必要な場合は、**[ナビゲーション時にエントリをクリア]** の設定をオフにします。
 3. **[ネットワーク]** タブを選択し、ネットワーク トラフィックのキャプチャを開始します。
-   - Chrome では、 **[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 赤い円が表示されない場合は、黒い円を選択して開始します。
+   - Chrome では、**[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 赤い円が表示されない場合は、黒い円を選択して開始します。
    - Microsoft Edge または Internet Explorer では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンを選択します。
 4. エラーを再現してみます。
 5. 記録中にエラーが発生したら、記録を停止し、記録されたアクティビティのコピーを保存します。
    - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** を選択します。 この操作により、ログが .har ファイルとして圧縮されエクスポートされます。
-   - Microsoft Edge または Internet Explorer で、 **[キャプチャしたトラフィックのエクスポート]** オプションを選択します。 この操作により、ログが圧縮されてエクスポートされます。
+   - Microsoft Edge または Internet Explorer で、**[キャプチャしたトラフィックのエクスポート]** オプションを選択します。 この操作により、ログが圧縮されてエクスポートされます。
 6. **[コンソール]** タブを選択し、いずれかの警告またはエラーを確認します。 コンソール ログを保存するには次の操作を行います。
    - Chrome では、コンソール ログのどこかを右クリックします。 **[名前を付けて保存]** を選択し、ログをエクスポートして zip 圧縮します。
    - Microsoft Edge または Internet Explorer では、エラーを右クリックして **[すべてコピー]** を選択します。
