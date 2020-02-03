@@ -740,18 +740,18 @@
   items:
     - name: 用語集
       href: developer-glossary.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: ビデオ
+      href: identity-videos.md
     - name: Azure AD BLOG
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft の ID プラットフォーム開発者ブログ
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: '"Microsoft アカウントでのサインイン" を試してみる'
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Azure リソースのマネージド ID
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: ヘルプの表示
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Azure リソースのマネージド ID
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Microsoft ID プラットフォームのビデオ
-      href: identity-videos.md
