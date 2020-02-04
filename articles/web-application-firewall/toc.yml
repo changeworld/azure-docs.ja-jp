@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: カスタム ルールの概要
           href: ./ag/custom-waf-rules-overview.md
+        - name: Geomatch カスタム ルール
+          href: ./ag/geomatch-custom-rules.md
         - name: 要求サイズ制限と除外リスト
           href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF ポリシーの概要
+          href: ./ag/policy-overview.md
     - name: フロントドア
       items:
         - name: カスタム規則

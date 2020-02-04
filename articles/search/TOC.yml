@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: 条件付き
               href: cognitive-search-skill-conditional.md
+            - name: カスタム エンティティの参照
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: ドキュメント抽出
               href: cognitive-search-skill-document-extraction.md
             - name: エンティティの認識
