@@ -3,21 +3,21 @@ title: Azure 仮想マシン (VM) 上で SAP HANA システム レプリケー�
 description: Azure 仮想マシン (VM) 上で SAP HANA の高可用性を実現します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/28/2020
+ms.author: radeltch
+ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721530"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837036"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -356,7 +356,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):システムの使用率の値を選択します。
    * Enter Location of Data Volumes (データ ボリュームの場所の入力) [/hana/data/HN1]:Enter キーを押します。
    * Enter Location of Log Volumes (ログ ボリュームの場所の入力) [/hana/log/HN1]:Enter キーを押します。
-   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?) [n]:Enter キーを押します。
+   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?) \[n]:Enter キーを押します。
    * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力):Enter キーを押します。
    * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):ホスト エージェントのユーザー パスワードを入力します。
    * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):確認用にホスト エージェントのユーザー パスワードを再入力します。
@@ -368,7 +368,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    * Enter ID of User Group (sapsys) (ユーザー グループ (sapsys) の ID を入力) [79]:Enter キーを押します。
    * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):データベース ユーザーのパスワードを入力します。
    * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):確認用にデータベース ユーザーのパスワードを再入力します。
-   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?) [n]:Enter キーを押します。
+   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?) \[n]:Enter キーを押します。
    * Do you want to continue? (続行してもよろしいですか?) (y/n):概要を確認します。 「**y**」と入力して続行します。
 
 1. **[A]** SAP Host Agent をアップグレードします。
@@ -560,14 +560,21 @@ sudo yum install -y resource-agents-sap-hana
 <pre><code>sudo pcs property set maintenance-mode=true
 
 # Replace the bold string with your instance number and HANA system ID
-sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> --clone clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
+op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
+--clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
 次に、HANA リソースを作成します。
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 
-sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false master notify=true clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 
@@ -583,6 +590,9 @@ sudo pcs property set maintenance-mode=false
 </code></pre>
 
 クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 リソースがどのノードで実行されているかは重要ではありません。
+
+> [!NOTE]
+> 上記の構成のタイムアウトはほんの一例であり、特定の HANA のセットアップに適合させる必要がある場合があります。 たとえば、SAP HANA データベースの起動により時間がかかる場合は、開始タイムアウトを長くする必要がある可能性があります。  
 
 <pre><code>sudo pcs status
 
@@ -766,7 +776,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
