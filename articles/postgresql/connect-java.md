@@ -8,33 +8,34 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767893"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769015"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Java を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
-このクイックスタートでは、Java アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Java を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+
+このクイックスタートでは、Java アプリケーションを使用して、Azure Database for PostgreSQL に接続します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Java を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
-このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
-- [DB の作成 - ポータル](quickstart-create-server-database-portal.md)
-- [DB の作成 - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-さらに、以下を実行する必要があります。
-- ご使用のバージョンの Java および Java Development Kit に合った [PostgreSQL JDBC ドライバー](https://jdbc.postgresql.org/download.html)をダウンロードします。
-- PostgreSQL JDBC jar ファイル (例: postgresql-42.1.1.jar) をアプリケーションの classpath に追加します。 詳細については、[classpath の設定](https://jdbc.postgresql.org/documentation/head/classpath.html)に関するページを参照してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 次の項目の完了: 「[クイックスタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成」](quickstart-create-server-database-portal.md)または「[クイック スタート:Azure CLI を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-azure-cli.md)」の手順を使用して作成されたもの)。
+
+- [PostgreSQL JDBC ドライバー](https://jdbc.postgresql.org/download.html) - ご使用の Java および Java Development Kit のバージョンに合わせてください。
+- [Classpath details](https://jdbc.postgresql.org/documentation/head/classpath.html) - PostgreSQL JDBC jar ファイル (例: postgresql-42.1.1.jar) をアプリケーションの classpath に追加します。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver**) を検索します。
-3. サーバー名を選択します。
-4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for PostgreSQL サーバーの名前](./media/connect-java/azure-database-postgresql-server-name.png)
+1. [Azure portal](https://portal.azure.com/) で、作成したサーバー (たとえば、**mydemoserver**) を検索して選択します。
+
+1. サーバーの **[概要]** パネルから、**サーバー名**と**管理者ユーザー名**を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
+
+    ![Azure Database for PostgreSQL の接続文字列](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
 データベースに接続し、**INSERT** SQL ステートメントが含まれた関数を使用してデータベースにデータを読み込むには、次のコードを使用します。 データベースへの接続、テーブルの削除、テーブルの作成には、[getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html)、[executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) の各メソッドを使用します。 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) オブジェクトは、パラメーター値をバインドする setString() および setInt() と共に、挿入コマンドの作成に使用されます。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) メソッドは、パラメーターの各セットに対してコマンドを実行します。 
@@ -383,6 +384,6 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

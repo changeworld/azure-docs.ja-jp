@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4f0a082ba68ce9de417d196c1f6ea593c5c8feb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455456"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767963"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats (プレビュー) の概要
 
@@ -33,7 +33,7 @@ Azure FarmBeats プレビューでは、次のことができます。
 ## <a name="datahub"></a>データ ハブ
 
 Azure FarmBeats Datahub は、プロバイダー間でのさまざまな農業データセットの集計、正規化、コンテキスト化を可能にする API レイヤーです。 Azure FarmBeats を使用すると、次のものを取得できます。
-- 2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)) からの**センサー データ**
+- 2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)) からの**センサー データ**
 - 欧州宇宙機関の [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) 衛星ミッションからの**衛星画像**
 - 3 つのドローン映像プロバイダー ([senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)) からの**ドローン映像**
 

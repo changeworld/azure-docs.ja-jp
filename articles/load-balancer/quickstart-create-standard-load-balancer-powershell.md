@@ -1,29 +1,29 @@
 ---
-title: クイック スタート:Standard Load Balancer を作成する - Azure PowerShell
+title: クイック スタート:ロード バランサーを作成する - Azure PowerShell
 titleSuffix: Azure Load Balancer
-description: このクイック スタートでは、Azure PowerShell を使用して Standard Load Balancer を作成する方法について説明します
+description: このクイックスタートでは、Azure PowerShell を使用してロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045670"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846521"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Standard Load Balancer を作成する
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してロード バランサーを作成する
 
 このクイック スタートでは、Azure PowerShell を使用して Standard Load Balancer を作成する方法について説明します ロード バランサーをテストするには、Windows Server を実行する 3 つの仮想マシン (VM) をデプロイし、VM 間で Web アプリの負荷を分散します。 Standard Load Balancer の詳細については、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページを参照してください。
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupSLB* リソース グループに作成します。
+インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*myPublicIP* という名前のゾーン冗長パブリック IP アドレスを *myResourceGroupSLB* リソース グループに作成します。
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Standard Load Balancer を作成する
+ゾーンのパブリック IP アドレスをゾーン 1 に作成するには、次のようにします。
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 運用環境のワークロードには Standard の使用をお勧めします。
+
+## <a name="create-load-balancer"></a>Load Balancer の作成
 
 このセクションでは、ロード バランサーのフロントエンド IP とバックエンド アドレス プールを構成してから、標準ロード バランサーを作成します。
 
-### <a name="create-front-end-ip"></a>フロントエンド IP を作成する
+### <a name="create-frontend-ip"></a>フロントエンド IP を作成する
 
 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP を作成します。 次の例では、*myFrontEnd* という名前のフロントエンド IP 構成を作成し、*myPublicIP* アドレスをアタッチします。
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Basic Load Balancer を作成するには、```-SKU Basic``` を使用します。 運用環境のワークロードには Standard の使用をお勧めします。
+
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 一部の VM を展開してバランサーをテストする前に、サポート ネットワーク リソース (仮想ネットワークと仮想 NIC) を作成する必要があります。 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 運用環境のワークロードには Standard の使用をお勧めします。
+
 ### <a name="create-network-security-group"></a>ネットワーク セキュリティ グループの作成
 ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
+このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、[Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)に進んでください。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-basic-internal-portal.md)
+[Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)について理解を深めます。

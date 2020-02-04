@@ -7,16 +7,16 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 44d570746a54154a2f8d3c7a200c761a59b7422b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488108"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713082"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Internet Analyzer テストで評価するカスタム エンドポイントを測定する 
 
-この記事では、Internet Analyzer テストの一部として測定するカスタム エンドポイントを設定する方法を示します。 カスタム エンドポイントは、オンプレミスのワークロード、他のクラウド プロバイダーで実行されているワークロード、Azure のカスタム構成を評価するのに役立ちます。  1 つのエンドポイントが Azure リソースの場合、1 つのテストで 2 つのカスタム エンドポイントを比較できます。 Internet Analyzer の詳細については、[概要](internet-analyzer-overview.md)に関するページを参照してください。 
+この記事では、Internet Analyzer テストの一部として測定するカスタム エンドポイントを設定する方法を示します。 カスタム エンドポイントは、オンプレミスのワークロード、他のクラウド プロバイダーで実行されているワークロード、Azure のカスタム構成を評価するのに役立ちます。  1 つのエンドポイントが Azure リソースの場合、1 つのテストで 2 つのカスタム エンドポイントを比較できます。 Internet Analyzer の詳細については、[概要](internet-analyzer-overview.md)について説明するページを参照してください。 
 
 > [!IMPORTANT]
 > このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
@@ -33,7 +33,7 @@ Internet Analyzer リソースを設定し、[カスタム エンドポイント
 2. お使いのカスタム Web アプリケーションで、パブリックにアクセス可能なパスにテスト画像を配置します。 パスは HTTPS 経由で機能する必要があります。 
 3. テスト作成時に、カスタム エンド ポイントの完全な URL (例: https://contoso.com/test/trans.gif) をカスタム エンドポイントのフィールドにコピーします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む
 

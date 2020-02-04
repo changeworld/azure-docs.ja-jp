@@ -1,24 +1,17 @@
 ---
-title: Spring Boot に機能フラグを追加するためのクイックスタート - Azure App Configuration | Microsoft Docs
-description: Spring Boot アプリに機能フラグを追加し、Azure App Configuration で管理するためのクイックスタートです。
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure App Configuration を使用して Spring Boot に機能フラグを追加するためのクイックスタート
+description: Spring Boot アプリに機能フラグを追加し、Azure App Configuration を使用して管理する
 author: lisaguthrie
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring Boot
-ms.workload: tbd
-ms.date: 1/9/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310069"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766433"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -32,15 +25,16 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 - バージョン 8 を含む、サポートされている [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk)。
 - [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
-## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
+## <a name="create-an-app-configuration-instance"></a>App Configuration インスタンスを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Feature Manager]\(機能マネージャー\)**  >  **[+Create]\(+ 作成\)** の順に選択し、次の機能フラグを追加します。
+6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
 
-    | Key | State |
-    |---|---|
-    | ベータ | Off |
+    > [!div class="mx-imgBorder"]
+    > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
+
+    現時点では `label` を空欄にしておいてください。
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot アプリを作成する
 
@@ -52,27 +46,27 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
    - **Java** で **Maven** プロジェクトを生成します。
    - **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
+   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
    - **Spring Web** の依存関係を追加します。
 
-3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
+3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューターにプロジェクトをダウンロードします。
 
 ## <a name="add-feature-management"></a>機能管理を追加する
 
-1. ファイルをローカル システム上に展開したら、シンプルな Spring Boot アプリケーションの編集を開始できます。 アプリのルート ディレクトリで *pom.xml* ファイルを探します。
+1. ファイルをローカル システム上に展開したら、Spring Boot アプリケーションの編集を開始できます。 アプリのルート ディレクトリで *pom.xml* を探します。
 
-2. テキスト エディターで *pom.xml* ファイルを開き、Spring Cloud Azure Config スターターと機能管理を `<dependencies>` のリストに追加します。
+1. テキスト エディターで *pom.xml* ファイルを開き、`<dependencies>` の一覧に以下を追加します。
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,35 +75,48 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     ```
 
 > [!Note]
-> Spring Web に依存しない非 Web 機能管理ライブラリが存在します。 相違点については、別の[ドキュメント](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)を参照してください。 また、App Configuration を使用しない場合は、「[機能フラグの宣言](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management#feature-flag-declaration)」を参照してください。
+> Spring Web に依存しない非 Web 機能管理ライブラリが存在します。 相違点については、GitHub の[ドキュメント](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)を参照してください。
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
-1. アプリの _resources_ ディレクトリの _bootstrap.properties_ を開きます。 _bootstrap.properties_ が存在しない場合は作成します。 次の行をファイルに追加します。
+1. アプリの `resources` ディレクトリに移動し、`bootstrap.properties` を開きます。  ファイルが存在しない場合は、作成してください。 次の行をファイルに追加します。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. 構成ストアの App Configuration ポータルで、[アクセス キー] に移動します。 [読み取り専用キー] タブを選択します。このタブで、いずれかの接続文字列の値をコピーし、`APP_CONFIGURATION_CONNECTION_STRING` という変数名で、新しい環境変数として追加します。
+1. 構成ストアの App Configuration ポータルで、サイドバーから `Access keys` を選択します。 [読み取り専用キー] タブを選択します。プライマリ接続文字列の値をコピーします。
+
+1. 変数名 `APP_CONFIGURATION_CONNECTION_STRING` を使用して、環境変数としてプライマリ接続文字列を追加します。
 
 1. メイン アプリケーションの Java ファイルを開き、`@EnableConfigurationProperties` を追加してこの機能を有効にします。
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.context.properties.ConfigurationProperties;
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
     public class DemoApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
-
-1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -124,11 +131,22 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+
+    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+
     @Controller
     @ConfigurationProperties("controller")
+
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -139,13 +157,13 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabled("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
             return "welcome";
         }
     }
     ```
 
-1. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。 次の行を追加します。
+1. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。
 
     ```html
     <!DOCTYPE html>
@@ -202,7 +220,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
     ```
 
-1. CSS という名前の新しいフォルダーを static 下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。 次の行を追加します。
+6. CSS という名前の新しいフォルダーを `static` の下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。
 
     ```css
     html {
@@ -237,24 +255,24 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. Spring Boot アプリケーションを Maven でビルドし、実行します。次に例を示します。
+1. 自分の Spring Boot アプリケーションを Maven でビルドし、実行します。
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. ブラウザー ウィンドウを開いて、`https://localhost:8080` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+1. ブラウザー ウィンドウを開いて、`https://localhost:8080` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-3. App Configuration ポータルで **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
+1. App Configuration ポータルで **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
 
     | Key | State |
     |---|---|
     | ベータ | On |
 
-4. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
+1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 

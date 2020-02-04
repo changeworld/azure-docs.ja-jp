@@ -2,14 +2,14 @@
 title: Azure Migrate を使用して Azure に移行するために Hyper-V VM を評価する | Microsoft Docs
 description: Azure Migrate を使用して Azure に移行するためにオンプレミスの Hyper-V VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 01/23/2020
 ms.custom: mvc
-ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029031"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845518"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -138,7 +138,7 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 続けて、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 4. **[保存フォルダー]** は、既定の設定のままにします。 **[次へ]** をクリックします。
-5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。
+5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。 仮想スイッチの作成に関するページを[参照](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)してください。
 6. **[概要]** で、設定を確認します。 **[完了]** をクリックします。
 7. Hyper-V マネージャーの **[仮想マシン]** で、VM を起動します。
 

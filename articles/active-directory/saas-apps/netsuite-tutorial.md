@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289035"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760056"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -98,8 +98,12 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > 上記の URL の値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
+    * **<`Account ID`>** の値は、このチュートリアルの手順 8. で後述する [Netsuite Configuration]\(Netsuite の構成\) セクションで取得します。 厳密なドメイン (このケースでは system.na0.netsuite.com など) が見つかります。
+
+        ![Configure single sign-on](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > 上記の URL の値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
 
 1. NetSuite アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -204,7 +208,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
     b. **[Company Information]\(会社情報\)** ウィンドウで、右側の列の **[Account ID]\(アカウント ID\)** の値をコピーします。
 
-    c. NetSuite アカウントからコピーした**アカウント ID** を Azure AD の **[属性値]** ボックスに貼り付けます。 
+    c. NetSuite アカウントからコピーした**アカウント ID** を Azure AD の **[属性値]** ボックスに貼り付けます。
 
 10. ユーザーは NetSuite にシングル サインオンする前に、まず、NetSuite で適切なアクセス許可が割り当てられている必要があります。 これらのアクセス許可を割り当てるには、以下を実行します。
 

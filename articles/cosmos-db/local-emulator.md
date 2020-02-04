@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309984"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760574"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -181,7 +181,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、環境変数 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` を設定することもできます
 
-* [apache-tinkerpop-gremlin-console-3.3.4 をインストールします](https://tinkerpop.apache.org/downloads.html)
+* [apache-tinkerpop-gremlin-console-3.3.4 をインストール](https://archive.apache.org/dist/tinkerpop/3.3.4)します。
 
 * エミュレーター内で、データ エクスプローラーによりデータベース "db1" とコレクション "coll1" が作成されます。パーティション キーには "/name" を選択します
 

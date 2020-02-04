@@ -1,33 +1,33 @@
 ---
 title: チュートリアル:シミュレートされたデバイス データを生成する - Azure IoT Edge での Machine Learning
-description: このチュートリアルでは、後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
+description: 後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912276"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722380"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>チュートリアル:シミュレートされたデバイスのデータを生成する
 
 > [!NOTE]
 > この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
-この記事では、機械学習のトレーニング データを使用して、IoT Hub にテレメトリを送信するデバイスをシミュレートします。 概要で説明したように、このエンド ツー エンドのチュートリアルでは[ターボファン エンジンの劣化シミュレーション データ セット](https://c3.nasa.gov/dashlink/resources/139/)を使用して、トレーニングとテストのための 1 組の航空機エンジンのデータをシミュレートします。
+この記事では、機械学習のトレーニング データを使用して、Azure IoT Hub にテレメトリを送信するデバイスをシミュレートします。 概要で説明したように、このチュートリアルでは[ターボファン エンジンの劣化シミュレーション データ セット](https://c3.nasa.gov/dashlink/resources/139/)を使用して、トレーニングとテストのための 1 組の航空機エンジンのデータをシミュレートします。
 
-付随する readme.txt から、次のことがわかっています。
+この実験のシナリオでは、次のことがわかっています。
 
-* データは、複数の多変量時系列で構成されている
-* 各データ セットは、トレーニングとテストのサブセットに分割される
-* 各時系列は、別のエンジンのものである
-* 各エンジンには、最初から程度の異なる初期摩耗と製造のばらつきがある
+* データは、複数の多変量時系列で構成されている。
+* 各データ セットは、トレーニングとテストのサブセットに分割される。
+* 各時系列は、別のエンジンのものである。
+* 各エンジンには、最初から程度の異なる初期摩耗と製造のばらつきがある。
 
 このチュートリアルでは、1 つのデータ セット (FD003) のトレーニング データ サブセットを使用します。
 
@@ -40,7 +40,7 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 * **Program:** ユーザー入力の処理と全体的な調整を担当する実行のためのエントリ ポイント。
 * **TrainingFileManager:** 選択されたデータ ファイルの読み取りと解析を担当します。
 * **CycleData:** メッセージ形式に変換されたファイル内の 1 行のデータを表します。
-* **TurbofanDevice:** 1 つのデバイス (時系列) に対応する IoT デバイスのデータ内への作成と、そのデータの IoT デバイス経由での IoT Hub への送信を担当します。
+* **TurbofanDevice:** 1 つのデバイス (時系列) に対応する IoT デバイスのデータ内への作成と、そのデータの IoT Hub への送信を担当します。
 
 この記事で説明されているタスクは、完了するまでに約 20 分かかります。
 
@@ -48,22 +48,18 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code を構成して DeviceHarness プロジェクトをビルドする
 
-1. 前の記事に示されているように、仮想マシンへのリモート デスクトップ セッションを開きます。
+1. 開発用 VM へのリモート デスクトップ セッションを開きます。
 
-1. Visual Studio Code を開きます。
-
-1. Visual Studio Code で、 **[ファイル]**  >  **[フォルダーを開く]** の順に選択します。
-
-1. **[フォルダー]** テキスト ボックスに「`C:\source\IoTEdgeAndMlSample\DeviceHarness`」と入力し、 **[フォルダーの選択]** ボタンをクリックします。
-
-   出力ウィンドウに OmniSharp のエラーが表示された場合は、C# 拡張機能をアンインストールし、VS Code を閉じて再度開き、C# 拡張機能をインストールしてからウィンドウを再度読み込む必要があります。
+1. Visual Studio Code で `C:\source\IoTEdgeAndMlSample\DeviceHarness` フォルダーを開きます。
 
 1. このコンピューター上で初めて拡張機能を使用しているため、一部の拡張機能が更新され、それらの依存関係がインストールされます。 拡張機能を更新するよう求められることがあります。 その場合は、 **[ウィンドウの再読み込み]** を選択します。
+
+   出力ウィンドウに OmniSharp のエラーが表示された場合は、C# 拡張機能をアンインストールする必要があります。
 
 1. DeviceHarness に必要な資産を追加するよう求められます。 **[はい]** を選択して追加します。
 
    * この通知が表示されるまでに数秒かかることがあります。
-   * この通知を見逃した場合は、右下隅にある [ベル] アイコンを確認します。
+   * この通知を見逃した場合は、右下隅にあるベル アイコンを確認します。
 
    ![VS Code 拡張機能のポップアップ](media/tutorial-machine-learning-edge-03-generate-data/add-required-assets.png)
 
@@ -71,7 +67,9 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
    ![VS Code の復元のプロンプト](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-1. ビルド (`Ctrl + Shift + B` または **[ターミナル]**  >  **[ビルド タスクの実行]** ) をトリガーすることによって、環境が正しく設定されていることを検証します。
+   これらの通知が表示されない場合は、Visual Studio Code を閉じて、`C:\source\IoTEdgeAndMlSample\DeviceHarness` の bin ディレクトリと obj ディレクトリを削除し、Visual Studio Code を開いて、再度 DeviceHarness フォルダーを開いてください。
+
+1. ビルド (**Ctrl** + **Shift** + **B** キーまたは **[ターミナル]**  >  **[ビルド タスクの実行]** ) をトリガーすることによって、環境が正しく設定されていることを検証します。
 
 1. 実行するビルド タスクを選択するよう求められます。 **[Build]\(ビルド\)** を選択します。
 
@@ -87,21 +85,21 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code で Azure にサインインする
 
-1. Visual Studio Code でコマンド パレット (`Ctrl + Shift + P` または **[表示]**  >  **[Command Palette...] (コマンド パレット...)** ) を開くことによって、Azure サブスクリプションにサインインします。
+1. Visual Studio Code でコマンド パレット (`Ctrl + Shift + P` キーまたは **[表示]**  >  **[コマンド パレット]** ) を開くことによって、Azure サブスクリプションにサインインします。
 
-1. プロンプトで、 **[Azure: サインイン]** を検索して選択します。
+1. **[Azure: サインイン]** コマンドを検索します。
 
-1. ブラウザー ウィンドウが開き、資格情報を入力するよう求められます。 成功ページにリダイレクトされたら、ブラウザーを閉じることができます。
+   ブラウザー ウィンドウが開き、資格情報を入力するよう求められます。 成功ページにリダイレクトされたら、ブラウザーを閉じることができます。
 
 ### <a name="connect-to-your-iot-hub-and-retrieve-hub-connection-string"></a>IoT ハブに接続してハブ接続文字列を取得する
 
-1. Visual Studio Code エクスプローラーの一番下のセクションで、 **[Azure IoT Hub デバイス]** フレームを選択して展開します。
+1. Visual Studio Code エクスプローラーの一番下のセクションで、 **[Azure IoT Hub]** フレームを選択して展開します。
 
 1. 展開されたフレームで、 **[IoT Hub の選択]** をクリックします。
 
 1. メッセージが表示されたら、Azure サブスクリプション、IoT ハブの順に選択します。
 
-1. **[Azure IoT Hub デバイス]** フレームをクリックし、 **[...]** をクリックして他のアクションを表示します。 **[Copy IoT Hub connection string] (IoT Hub 接続文字列のコピー)** を選択します。
+1. **[Azure IoT Hub]** の右側にある **[...]** をクリックして他のアクションを表示します。 **[Copy IoT Hub connection string] (IoT Hub 接続文字列のコピー)** を選択します。
 
    ![[Copy IoT Hub connection string] (IoT Hub 接続文字列のコピー)](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
 
@@ -119,9 +117,9 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
    ![IoT Hub デバイス一覧を更新する](media/tutorial-machine-learning-edge-03-generate-data/refresh-hub-device-list.png)
 
-1. デバイスが IoT Hub に追加されていること、およびデバイスが緑色で表示される場合はそのデバイス経由でデータが送信されていることを示すことに注意してください。
+1. デバイスが IoT Hub に追加されていること、およびデバイスが緑色で表示される場合はそのデバイス経由でデータが送信されていることを示すことに注意してください。 デバイスは、IoT ハブにメッセージを送信した後、切断して青色に表示されます。
 
-1. いずれかのデバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択することによって、ハブに送信されているメッセージを表示できます。 これらのメッセージは、Visual Studio Code の出力ウィンドウに表示されます。
+1. いずれかのデバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択することによって、ハブに送信されたメッセージを表示できます。 これらのメッセージは、Visual Studio Code の出力ウィンドウに表示されます。
 
 1. 監視を停止するには、**Azure IoT Hub** の出力ペインをクリックし、 **[Stop Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を停止する\)** を選択します。
 
@@ -129,13 +127,15 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 
 ## <a name="check-iot-hub-for-activity"></a>IoT ハブのアクティビティを確認する
 
-DeviceHarness によって送信されたデータは IoT ハブに転送されました。 そのデータがハブに到達したことは、Azure portal を使用して容易に確認できます。
+DeviceHarness によって送信されたデータは IoT ハブに転送されました。そのことは Azure portal で確認することができます。
 
-1. [Azure portal](https://portal.azure.com/) を開き、IoT ハブに移動します。
+1. [Azure portal](https://portal.azure.com/) を開き、このチュートリアル用に作成した IoT ハブに移動します。
 
-1. 概要ページに、そのデータがハブに送信されたことが表示されます。  
+1. 左ペインのメニューの **[監査]** から **[Metrics]\(メトリック\)** を選択します。
 
-   ![IoT ハブでデバイスからクラウドへのメッセージを表示する](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
+1. グラフの定義ページの **[Metric]\(メトリック\)** ボックスの一覧をクリックして下へスクロールし、 **[ルーティング: ストレージに配信されたデータ]** を選択します。 グラフを見ると、データがストレージにルーティングされたときに急増していることがわかります。
+
+   ![データがストレージに配信されたときの急増を示すグラフ](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
 
 ## <a name="validate-data-in-azure-storage"></a>Azure Storage 内のデータを検証する
 
@@ -145,21 +145,21 @@ DeviceHarness によって送信されたデータは IoT ハブに転送され�
 
 1. ストレージ アカウント ナビゲーターから、 **[Storage Explorer (preview)] (ストレージ エクスプローラー (プレビュー))** を選択します。
 
-1. ストレージ エクスプローラーで、 **[BLOB コンテナー]** 、 **[devicedata]** の順に選択します。
+1. ストレージ エクスプローラーで、 **[BLOB コンテナー]** 、[`devicedata`] の順に選択します。
 
-1. コンテンツ ウィンドウで、フォルダーの IoT ハブの名前、年、月、日、時間の順にクリックします。 データが書き込まれた分を表すいくつかのフォルダーが表示されます。
+1. コンテンツ ペインで、IoT ハブの名前、年、月、日、時の順にフォルダーをクリックしていきます。 データが書き込まれた分を表すいくつかのフォルダーが表示されます。
 
    ![BLOB ストレージ内のフォルダーを表示する](media/tutorial-machine-learning-edge-03-generate-data/confirm-data-storage-results.png)
 
 1. これらのフォルダーのうちの 1 つをクリックすると、パーティションに対応する **00** や **01** というラベルが付いたデータ ファイルが見つかります。
 
-1. ファイルは [Avro](https://avro.apache.org/) 形式で書き込まれますが、これらのファイルのうちの 1 つをダブルクリックすると、別のブラウザー タブが開き、データが部分的に表示されます。 代わりにプログラムでファイルを開くよう求められた場合は、VS Code を選択できます。それにより、データが正しく表示されます。
+1. ファイルは [Avro](https://avro.apache.org/) 形式で書き込まれます。 これらのファイルのうちの 1 つをダブルクリックすると、別のブラウザー タブが開き、データが部分的に表示されます。 プログラムでファイルを開くよう求められた場合は、VS Code を選択できます。それにより、データが正しく表示されます。
 
 1. 現時点ではデータを読み取ったり、解釈したりしようとする必要はありません。それは、次の記事で行う予定です。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、.NET Core プロジェクトを使用して一連の仮想デバイスを作成し、これらのデバイス経由で IoT Hub を通して Azure Storage コンテナーにデータを送信しました。 このプロジェクトは、物理デバイスが、センサー読み取り、動作設定、障害のシグナルやモードなどを含むデータを IoT Hub に、さらには選別されたストレージに送信する実際のシナリオをシミュレートします。 十分なデータが収集されたら、それを使用して、デバイスの残存耐用年数 (RUL) を予測するモデルをトレーニングします。それは、次の記事で示す予定です。
+この記事では、.NET Core プロジェクトを使用して一連の仮想 IoT デバイスを作成し、そこから IoT Hub へ、そして Azure Storage コンテナーへとデータを送信しました。 このプロジェクトは、物理 IoT デバイスが、データを IoT Hub に、さらには選別されたストレージに送信する実際のシナリオをシミュレートします。 そのデータには、センサーの測定値、動作設定、障害のシグナルやモードなどが含まれます。 十分なデータが収集されたら、それを使用して、デバイスの残存耐用年数 (RUL) を予測するモデルをトレーニングします。 その機械学習については、次の記事で示す予定です。
 
 このデータを使用して機械学習モデルをトレーニングするには、次の記事に進んでください。
 

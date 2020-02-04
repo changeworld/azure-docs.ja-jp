@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポ
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a32affab45ab99a89113644bb08c4f2b57d69018
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441634"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721015"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -22,7 +22,7 @@ Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB
 
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API は、新しいアカウントでは、既定で MongoDB サーバー バージョン **3.6** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
+Azure Cosmos DB の MongoDB 用 API は、新しいアカウントでは、既定で MongoDB サーバー バージョン **3.6** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 Azure Cosmos DB の MongoDB 用 API アカウントを使用する際は、3.6 バージョンのアカウントのエンドポイントが `*.mongo.cosmos.azure.com` 形式であるのに対し、3.2 バージョンのアカウントのエンドポイントが `*.documents.azure.com` 形式であることに注意してください。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 
@@ -34,43 +34,77 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 
-- delete
-- 検索
-- findAndModify
-- getLastError
-- getMore
-- insert
-- update
+|command  |サポートされています |
+|---------|---------|
+|delete | はい |
+|検索 | はい     |
+|findAndModify | はい  |
+|getLastError|   はい |
+|getMore  |  はい  |
+|getPrevError | いいえ  |
+|insert  |   はい  |
+|parallelCollectionScan  | はい   |
+|resetError |   いいえ  |
+|update  |   はい  |
+|[Change streams](mongodb-change-streams.md)  |  はい  |
+|GridFS |   はい  |
 
 ### <a name="authentication-commands"></a>認証コマンド
 
-- logout
-- authenticate
-- getnonce
+|command  |サポートされています |
+|---------|---------|
+|authenticate    |   はい      |
+|logout    |      はい   |
+|getnonce   |    はい     |
+
 
 ### <a name="administration-commands"></a>管理コマンド
 
-- dropDatabase
-- listDatabases
-- listCollections
-- drop
-- 作成
-- filemd5
-- createIndexes
-- listIndexes
-- dropIndexes
-- connectionStatus
-- reIndex
-- killCursors
+|command  |サポートされています |
+|---------|---------|
+|Capped Collections   |   いいえ      |
+|cloneCollectionAsCapped     |   いいえ      |
+|collMod     |   いいえ      |
+|collMod: expireAfterSeconds   |   いいえ      |
+|convertToCapped   |  いいえ       |
+|copydb     |  いいえ       |
+|作成   |    はい     |
+|createIndexes     |  はい       |
+|currentOp     |  はい       |
+|drop     |   はい      |
+|dropDatabase     |  はい       |
+|dropIndexes     |   はい      |
+|filemd5    |   はい      |
+|killCursors    |  はい       |
+|killOp     |   いいえ      |
+|listCollections     |  はい       |
+|listDatabases     |  はい       |
+|listIndexes     |  はい       |
+|reIndex     |    はい     |
+|renameCollection     |    いいえ     |
+|connectionStatus    |     いいえ    |
 
 ### <a name="diagnostics-commands"></a>診断コマンド
 
-- buildInfo
-- collStats
-- dbStats
-- hostInfo
-- listDatabases
-- whatsmyuri
+|command  |サポートされています |
+|---------|---------|
+|buildInfo       |   はい      |
+|collStats    |  はい       |
+|connPoolStats     |  いいえ       |
+|connectionStatus     |  いいえ       |
+|dataSize     |   いいえ      |
+|dbHash    |    いいえ     |
+|dbStats     |   はい      |
+|explain     | いいえ        |
+|explain: executionStats     |     いいえ    |
+|features     |    いいえ     |
+|hostInfo     |   いいえ      |
+|listDatabases       |   はい      |
+|listCommands     |  いいえ       |
+|profiler     |  いいえ       |
+|serverStatus     |  いいえ       |
+|top     |    いいえ     |
+|whatsmyuri     |   はい      |
 
 <a name="aggregation-pipeline"/>
 
@@ -78,252 +112,433 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 ### <a name="aggregation-commands"></a>集計コマンド
 
-- 集計 (aggregate)
-- count
-- distinct
+|command  |サポートされています |
+|---------|---------|
+|集計 (aggregate) |   はい  |
+|count     |   はい  |
+|distinct  | はい |
+|mapReduce | いいえ |
 
 ### <a name="aggregation-stages"></a>集計ステージ
 
-- $project
-- $match
-- $limit
-- $skip
-- $unwind
-- $group
-- $sample
-- $sort
-- $lookup
-- $out
-- $count
-- $addFields
-- $redact
-- $replaceRoot
+|command  |サポートされています |
+|---------|---------|
+|$collStats |いいえ|
+|$project   |はい|
+|$match |はい|
+|$redact|   はい|
+|$limit |はい|
+|$skip  |はい|
+|$unwind|   はい|
+|$group |   はい|
+|$sample|       はい|
+|$sort  |はい|
+|$geoNear|  いいえ|
+|$lookup    |   はい|
+|$out       |はい|
+|$indexStats|       いいえ|
+|$facet |いいえ|
+|$bucket|   いいえ|
+|$bucketAuto|   いいえ|
+|$sortByCount|  はい|
+|$addFields |はい|
+|$replaceRoot|  はい|
+|$count |はい|
+|$currentOp|    いいえ|
+|$listLocalSessions |いいえ|
+|$listSessions  |いいえ|
+|$graphLookup   |いいえ|
 
-### <a name="aggregation-expressions"></a>集計式
+### <a name="boolean-expressions"></a>ブール式
 
-#### <a name="boolean-expressions"></a>ブール式
+|command  |サポートされています |
+|---------|---------|
+|$and| はい|
+|$or|はい|
+|$not|はい|
 
-- $and
-- $or
-- $not
+### <a name="set-expressions"></a>設定式
 
-#### <a name="set-expressions"></a>設定式
+|command  |サポートされています |
+|---------|---------|
+| $setEquals | はい|
+|$setIntersection|はい|
+| $setUnion|はい|
+| $setDifference|はい|
+| $setIsSubset|はい|
+| $anyElementTrue|はい|
+| $allElementsTrue|はい|
 
-- $setEquals
-- $setIntersection
-- $setUnion
-- $setDifference
-- $setIsSubset
-- $anyElementTrue
-- $allElementsTrue
+### <a name="comparison-expressions"></a>比較式
 
-#### <a name="comparison-expressions"></a>比較式
+|command  |サポートされています |
+|---------|---------|
+|$cmp     |  はい       |
+|$eq|   はい| 
+|$gt |  はい| 
+|$gte|  はい| 
+|$lt    |はい|
+|$lte|  はい| 
+|$ne    |   はい| 
+|$in    |   はい| 
+|$nin   |   はい| 
 
-- $cmp
-- $eq
-- $gt
-- $gte
-- $lt
-- $lte
-- $ne
+### <a name="arithmetic-expressions"></a>算術式
 
-#### <a name="arithmetic-expressions"></a>算術式
+|command  |サポートされています |
+|---------|---------|
+|$abs |  はい       |
+| $add |  はい       |
+| $ceil |  はい       |
+| $divide |  はい       |
+| $exp |  はい       |
+| $floor |  はい       |
+| $ln |  はい       |
+| $log |  はい       |
+| $log10 |  はい       |
+| $mod |  はい       |
+| $multiply |  はい       |
+| $pow |  はい       |
+| $sqrt |  はい       |
+| $subtract |  はい       |
+| $trunc |  はい       |
 
-- $abs
-- $add
-- $ceil
-- $divide
-- $exp
-- $floor
-- $ln
-- $log
-- $log10
-- $mod
-- $multiply
-- $pow
-- $sqrt
-- $subtract
-- $trunc
+### <a name="string-expressions"></a>文字列式
 
-#### <a name="string-expressions"></a>文字列式
+|command  |サポートされています |
+|---------|---------|
+|$concat |  はい       |
+| $indexOfBytes|  はい       |
+| $indexOfCP|  はい       |
+| $split|  はい       |
+| $strLenBytes|  はい       |
+| $strLenCP|  はい       |
+| $strcasecmp|  はい       |
+| $substr|  はい       |
+| $substrBytes|  はい       |
+| $substrCP|  はい       |
+| $toLower|  はい       |
+| $toUpper|  はい       |
 
-- $concat
-- $indexOfBytes
-- $indexOfCP
-- $split
-- $strLenBytes
-- $strLenCP
-- $strcasecmp
-- $substr
-- $substrBytes
-- $substrCP
-- $toLower
-- $toUpper
+### <a name="text-search-operator"></a>テキスト検索演算子
 
-#### <a name="array-expressions"></a>配列式
+|command  |サポートされています |
+|---------|---------|
+| $meta | いいえ|
 
-- $arrayElemAt
-- $concatArrays
-- $filter
-- $indexOfArray
-- $isArray
-- $range
-- $reverseArray
-- $size
-- $slice
-- $in
+### <a name="array-expressions"></a>配列式
 
-#### <a name="date-expressions"></a>日付式
+|command  |サポートされています |
+|---------|---------|
+|$arrayElemAt   |   はい|
+|$arrayToObject|    はい|
+|$concatArrays  |   はい|
+|$filter    |   はい|
+|$indexOfArray  |はい|
+|$isArray   |   はい|
+|$objectToArray |はい|
+|$range |はい|
+|$reverseArray  |   はい|
+|$reduce|   はい|
+|$size  |   はい|
+|$slice |   はい|
+|$zip   |   はい|
+|$in    |   はい|
 
-- $dayOfYear
-- $dayOfMonth
-- $dayOfWeek
-- $year
-- $month
-- $week
-- $hour
-- $minute
-- $second
-- $millisecond
-- $isoDayOfWeek
-- $isoWeek
+### <a name="variable-operators"></a>変数演算子
 
-#### <a name="conditional-expressions"></a>条件式
+|command  |サポートされています |
+|---------|---------|
+|$map   |いいえ|
+|$let   |はい|
 
-- $cond
-- $ifNull
+### <a name="system-variables"></a>システム変数
 
-## <a name="aggregation-accumulators"></a>集計アキュムレータ
+|command  |サポートされています |
+|---------|---------|
+|$$CURRENT| はい|
+|$$DESCEND|     はい|
+|$$KEEP     |はい|
+|$$PRUNE    |   はい|
+|$$REMOVE   |はい|
+|$$ROOT     |はい|
 
-Cosmos DB は、すべての MongoDB v3.6 アキュムレータをサポートします。ただし、次のアキュムレータは例外です。
+### <a name="literal-operator"></a>リテラル演算子
 
-- $stdDevPop
-- $stdDevSamp
+|command  |サポートされています |
+|---------|---------|
+|$literal   |はい|
+
+### <a name="date-expressions"></a>日付式
+
+|command  |サポートされています |
+|---------|---------|
+|$dayOfYear |はい    |
+|$dayOfMonth|   はい |
+|$dayOfWeek |はい    |
+|$year  |はい    |
+|$month |はい|   
+|$week  |はい    |
+|$hour  |はい    |
+|$minute|   はい|    
+|$second    |はい    |
+|$millisecond|  はい|    
+|$dateToString  |はい    |
+|$isoDayOfWeek  |はい    |
+|$isoWeek   |はい    |
+|$dateFromParts|    いいえ| 
+|$dateToParts   |いいえ |
+|$dateFromString|   いいえ|
+|$isoWeekYear   |はい    |
+
+### <a name="conditional-expressions"></a>条件式
+
+|command  |サポートされています |
+|---------|---------|
+| $cond| はい|
+| $ifNull| はい|
+| $switch |はい|
+
+### <a name="data-type-operator"></a>データ型演算子
+
+|command  |サポートされています |
+|---------|---------|
+| $type| はい|
+
+### <a name="accumulator-expressions"></a>アキュムレータ式
+
+|command  |サポートされています |
+|---------|---------|
+|$sum   |はい    |
+|$avg   |はい    |
+|$first|    はい|
+|$last  |はい    |
+|$max   |はい    |
+|$min   |はい    |
+|$push| はい|
+|$addToSet| はい|
+|$stdDevPop|    いいえ  |
+|$stdDevSamp|   いいえ|
+
+### <a name="merge-operator"></a>マージ演算子
+
+|command  |サポートされています |
+|---------|---------|
+| $mergeObjects | はい|
+
+## <a name="data-types"></a>データ型
+
+|command  |サポートされています |
+|---------|---------|
+|Double |はい    |
+|String |はい    |
+|Object |はい    |
+|Array  |はい    |
+|Binary Data    |はい|   
+|ObjectId   |はい    |
+|Boolean    |はい    |
+|Date   |はい    |
+|[Null]   |はい    |
+|32 ビット整数 (int)   |はい    |
+|Timestamp  |はい    |
+|64 ビット整数 (long)  |はい    |
+|MinKey |はい    |
+|MaxKey |はい    |
+|Decimal128 |はい|   
+|Regular Expression |はい|
+|JavaScript |はい|
+|JavaScript (スコープあり)|   はい |
+|未定義。  |はい    |
+
+## <a name="indexes-and-index-properties"></a>インデックスとそのプロパティ
+
+### <a name="indexes"></a>インデックス
+
+|command  |サポートされています |
+|---------|---------|
+|単一フィールド インデックス |はい    |
+|複合インデックス |はい    |
+|複数キー インデックス |はい    |
+|テキスト インデックス |いいえ|
+|2dsphere   |はい    |
+|2d インデックス   |いいえ |
+|ハッシュ インデックス   | はい|
+
+### <a name="index-properties"></a>インデックスのプロパティ
+
+|command  |サポートされています |
+|---------|---------|
+|TTL|   はい |
+|一意 |はい|
+|部分的|   いいえ|
+|大文字と小文字の区別をしない   |いいえ|
+|スパース |いいえ |
+|バックグラウンド|    はい |
 
 ## <a name="operators"></a>オペレーター
 
-以下の演算子が、対応するそれらの使用例でサポートされています。 下記のクエリで使用されているこのサンプル ドキュメントを考慮に入れてください。
+### <a name="logical-operators"></a>論理演算子
 
-```json
-{
-  "Volcano Name": "Rainier",
-  "Country": "United States",
-  "Region": "US-Washington",
-  "Location": {
-    "type": "Point",
-    "coordinates": [
-      -121.758,
-      46.87
-    ]
-  },
-  "Elevation": 4392,
-  "Type": "Stratovolcano",
-  "Status": "Dendrochronology",
-  "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-}
-```
+|command  |サポートされています |
+|---------|---------|
+|$or    |   はい|
+|$and   |   はい|
+|$not   |   はい|
+|$nor   |   はい| 
 
-演算子 | 例 |
---- | --- |
-$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
-$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
-$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
-$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
-$lte | `{ "Elevation": { $lte: 5000 } }` | | -
-$ne | `{ "Elevation": { $ne: 1 } }` |  | -
-$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
-$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
-$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
-$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
-$exists | `{ "Status": { $exists: true } }`|  | -
-$type | `{ "Status": { $type: "string" } }`|  | -
-$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
-$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
+### <a name="element-operators"></a>要素演算子
 
-### <a name="notes"></a>メモ
+|command  |サポートされています |
+|---------|---------|
+|$exists|   はい|
+|$type  |   はい|
+
+### <a name="evaluation-query-operators"></a>評価クエリ演算子
+
+|command  |サポートされています |
+|---------|---------|
+|$expr  |   いいえ|
+|$jsonSchema    |   いいえ|
+|$mod   |   はい|
+|$regex |   はい|
+|$text  | いいえ (サポートされていません。 $regex を使用してください)| 
+|$where |いいえ| 
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。
-'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。
-たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})``` のように変更する必要があります。
-最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。
-バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc|^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
+
+'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、次のように変更する必要があります:
+
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+
+最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc|^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
+
+### <a name="array-operators"></a>配列演算子
+
+|command  |サポートされています | 
+|---------|---------|
+| $all | はい| 
+| $elemMatch | はい| 
+| $size | はい | 
+
+### <a name="comment-operator"></a>コメント演算子
+
+|command  |サポートされています | 
+|---------|---------|
+$comment |はい| 
+
+### <a name="projection-operators"></a>射影演算子
+
+|command  |サポートされています |
+|---------|---------|
+|$elemMatch |はい|
+|$meta| いいえ|
+|$slice | はい|
 
 ### <a name="update-operators"></a>更新演算子
 
 #### <a name="field-update-operators"></a>フィールド更新演算子
 
-- $inc
-- $mul
-- $rename
-- $setOnInsert
-- $set
-- $unset
-- $min
-- $max
-- $currentDate
+|command  |サポートされています |
+|---------|---------|
+|$inc   |   はい|
+|$mul   |   はい|
+|$rename    |   はい|
+|$setOnInsert|  はい|
+|$set   |はい|
+|$unset| はい|
+|$min   |はい|
+|$max   |はい|
+|$currentDate   | はい|
 
 #### <a name="array-update-operators"></a>配列更新演算子
 
-- $addToSet
-- $pop
-- $pullAll
-- $pull
-- $pushAll
-- $push
-- $each
-- $slice
-- $sort
-- $position
+|command  |サポートされています |
+|---------|---------|
+|$  |はい|
+|$[]|   はい|
+|$[<identifier>]|   はい|
+|$addToSet  |はい|
+|$pop   |はい|
+|$pullAll|  はい|
+|$pull  |はい|
+|$push  |はい|
+|$pushAll| はい|
+
+
+#### <a name="update-modifiers"></a>更新修飾子
+
+|command  |サポートされています |
+|---------|---------|
+|$each  |   はい|
+|$slice |はい|
+|$sort  |はい|
+|$position  |はい|
 
 #### <a name="bitwise-update-operator"></a>ビット単位更新演算子
 
-- $bit
+|command  |サポートされています |
+|---------|---------|
+| $bit  |   はい|    
+|$bitsAllSet    |   いいえ|
+|$bitsAnySet    |   いいえ|
+|$bitsAllClear  |いいえ|
+|$bitsAnyClear  |いいえ|
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-演算子 | 例 | |
---- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | はい |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | はい |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | はい |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | はい |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | はい |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
+演算子 | サポートされています| 
+--- | --- |
+$geoWithin | はい |
+$geoIntersects | はい | 
+$near |  はい |
+$nearSphere |  はい |
+$geometry |  はい |
+$minDistance | はい |
+$maxDistance | はい |
+$center | はい |
+$centerSphere | はい |
+$box | はい |
+$polygon |  はい |
+
+## <a name="cursor-methods"></a>カーソル メソッド
+
+|command  |サポートされています |
+|---------|---------|
+|cursor.batchSize() |   はい|
+|cursor.close() |はい|
+|cursor.isClosed()|     はい|
+|cursor.collation()|    いいえ|
+|cursor.comment()   |はい|
+|cursor.count() |はい|
+|cursor.explain()|  いいえ|
+|cursor.forEach()   |はい|
+|cursor.hasNext()   |はい|
+|cursor.hint()  |はい|
+|cursor.isExhausted()|  はい|
+|cursor.itcount()   |はい|
+|cursor.limit() |はい|
+|cursor.map()   |はい|
+|cursor.maxScan()   |はい|
+|cursor.maxTimeMS()|    はい|
+|cursor.max()   |はい|
+|cursor.min()   |はい|
+|cursor.next()| はい|
+|cursor.noCursorTimeout()   |いいえ|
+|cursor.objsLeftInBatch()   |はい|
+|cursor.pretty()|   はい|
+|cursor.readConcern()|  はい|
+|cursor.readPref()      |はい|
+|cursor.returnKey() |いいえ|
+|cursor.showRecordId()| いいえ|
+|cursor.size()  |特に記載のない限り|
+|cursor.skip()  |はい|
+|cursor.sort()  |   はい|
+|cursor.tailable()| いいえ|
+|cursor.toArray()   |はい|
 
 ## <a name="sort-operations"></a>並べ替え操作
 
 `findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
-
-## <a name="additional-operators"></a>その他の演算子
-
-演算子 | 例 | メモ
---- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` |
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | サポートされていません。 代わりに $regex を使用してください。
-
-## <a name="unsupported-operators"></a>サポートされていない演算子
-
-```$where``` と ```$eval``` の演算子は、Azure Cosmos DB ではサポートされていません。
-
-### <a name="methods"></a>メソッド
-
-以下のメソッドがサポートされています。
-
-#### <a name="cursor-methods"></a>カーソル メソッド
-
-方法 | 例 | メモ
---- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 並べ替えキーを持たないドキュメントは返されない
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
@@ -335,7 +550,7 @@ Cosmos DB では、ドキュメントのタイムスタンプに基づく Time-t
 
 ## <a name="user-and-role-management"></a>ユーザーとロールの管理
 
-Cosmos DB では、ユーザーとロールはまだサポートされていません。 Cosmos DB では、ロール ベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取り/書き込みおよび読み取り専用のパスワード/キーがサポートされています。
+Cosmos DB では、ユーザーとロールはまだサポートされていません。 Cosmos DB では、ロールベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取りと書き込みおよび読み取り専用のパスワードとキーがサポートされています。
 
 ## <a name="replication"></a>レプリケーション
 

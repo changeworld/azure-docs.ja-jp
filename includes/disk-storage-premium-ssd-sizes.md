@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 01/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 370cdc18ae5d7680d2ce38b42bdc436367ce3700
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7b2d4777772d842898cfcdd04f1c6d926cdbf0ad
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159254"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837563"
 ---
 | Premium SSD のサイズ | P1* | P2* | P3* | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
@@ -23,6 +23,7 @@ ms.locfileid: "76159254"
 | ディスクあたりの最大バースト IOPS** | 3,500 | 3,500 | 3,500 | 3,500 | 3,500 | 3,500 | 3,500 | 3,500 |
 | ディスクあたりの最大バースト スループット** | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 |
 | 最大バースト時間** | 30 分  | 30 分  | 30 分  | 30 分  | 30 分  | 30 分  | 30 分  | 30 分  |
+| 予約対象 | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | はい (最長 1 年) | はい (最長 1 年) | はい (最長 1 年) | はい (最長 1 年) | はい (最長 1 年) | はい (最長 1 年) |
 
 \*現在プレビュー段階のディスク サイズを示します。リージョン別の提供状況に関する情報については、「[新しいディスク サイズ: マネージドとアンマネージド](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged)」を参照してください。  
 \*\*現在プレビュー段階の機能を示します。詳細については、[ディスクのバースト](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability)に関する記事を参照してください。

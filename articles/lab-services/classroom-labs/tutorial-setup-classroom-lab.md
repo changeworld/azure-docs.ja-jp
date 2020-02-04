@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services を使用してクラスルーム ラボを設定する | Microsoft Docs
-description: このチュートリアルでは、クラスルームで使用するためのラボを設定します。
+description: このチュートリアルでは、Azure Lab Services を使用し、クラスの学生が使用する仮想マシンでクラスルーム ラボを設定します。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584943"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719179"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -110,7 +110,7 @@ ms.locfileid: "73584943"
 
     ![ユーザー リスト](../media/how-to-configure-student-usage/users-list-new.png)
 
-    ラボに登録されたユーザーの名前が一覧表示されます。 
+    ラボに登録されたユーザーの名前が一覧に表示されます。 
     
 ## <a name="set-a-schedule-for-the-lab"></a>ラボのスケジュールを設定する
 ラボ内の VM が特定の時刻に自動的に起動または停止されるように、ラボ用にスケジュール化されたイベントを作成します。 前に指定したユーザー クォータは、このスケジュールされた時間以外に各ユーザーに割り当てられる追加時間です。 
@@ -158,7 +158,7 @@ ms.locfileid: "73584943"
 
     クラスへの学生の追加と学生によるラボの使用の管理について詳しくは、[学生の使用を構成する方法](how-to-configure-student-usage.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、クラスルーム ラボを作成し、ラボを構成しました。 学生が登録リンクを使ってラボの VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

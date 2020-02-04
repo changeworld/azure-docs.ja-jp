@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995866"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769233"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>クイック スタート:Java 用 Azure Key Vault クライアント ライブラリ
 
@@ -22,7 +22,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - キーとパスワードのセキュリティと制御を強化する。
 - 暗号化キーの作成とインポートを数分で実行する。
 - クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- SSL または TLS 証明書のタスクを簡略化および自動化する。
+- TLS または SSL 証明書のタスクを簡略化および自動化する。
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
 [ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API リファレンス ドキュメント](https://azure.github.io/azure-sdk-for-java) | [製品ドキュメント](index.yml) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
@@ -236,7 +236,7 @@ secretClient.beginDeleteSecret(secretName);
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
 
@@ -309,7 +309,7 @@ public class App {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 

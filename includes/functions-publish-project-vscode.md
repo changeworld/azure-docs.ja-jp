@@ -1,47 +1,64 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279439"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842193"
 ---
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
 
-Visual Studio Code を使用すると、関数プロジェクトを Azure に直接発行できます。 このプロセスでは、Azure サブスクリプションに関数アプリと関連リソースを作成します。 関数アプリは、関数の実行コンテキストを提供します。 プロジェクトがパッケージ化され、Azure サブスクリプション内の新しい関数アプリにデプロイされます。
+このセクションでは、ご利用の Azure サブスクリプションに関数アプリと関連リソースを作成し、コードをデプロイします。 
 
-既定で、Visual Studio Code では関数アプリの作成に必要なすべての Azure リソースが作成されます。 これらのリソースの名前は、選択した関数アプリの名前に基づきます。 作成したリソースを完全に管理する必要がある場合は、代わりに[高度なオプションを使用して発行する](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)ことができます。
+1. アクティビティ バーで Azure アイコンを選択し、 **[Azure: Functions]** 領域の **[Deploy to function app]\(関数アプリにデプロイ\)** ボタンを選択します。
 
-このセクションでは、Azure で新しい関数アプリを作成することを想定しています。
+    ![プロジェクトを Azure に発行する](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-> [!IMPORTANT]
-> 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
+1. プロンプトで、次の情報を入力します。
 
-1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Deploy to function app...` を検索して選択します。
+    ::: zone pivot="programming-language-csharp,programming-language-powershell"
 
-1. サインインしていない場合、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーから正常にサインインしたら、Visual Studio Code に戻ります。 
+    | Prompt | Value | [説明] |
+    | ------ | ----- | ----- |
+    | サブスクリプションの選択 | 該当するサブスクリプション | 複数のサブスクリプションがある場合に表示されます。 |
+    | Select function app in Azure (Azure で関数アプリを選択してください) | + Create new Function App (新しい Function App を作成します) | 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。 |
+    | 関数アプリのグローバルに一意の名前を入力します。 | 一意の名前 | 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
+    | Select a location for new resources (新しいリソースの場所を選択する) | リージョン | 近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 | 
 
-1. 複数のサブスクリプションがある場合、関数アプリ用の **[サブスクリプションを選択]** してから、 **[+ Create New Function App in Azure]\(+ Azure で新しい Function App を作成\)** を選択します。
+    ::: zone-end
 
-1. 関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを押します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。
+    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
 
-    Enter キーを押すと、次の Azure リソースがサブスクリプションに作成されます。
+    | Prompt | Value | [説明] |
+    | ------ | ----- | ----- |
+    | サブスクリプションの選択 | 該当するサブスクリプション | 複数のサブスクリプションがある場合に表示されます。 |
+    | Select function app in Azure (Azure で関数アプリを選択してください) | + Create new Function App (新しい Function App を作成します) | 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。 |
+    | 関数アプリのグローバルに一意の名前を入力します。 | 一意の名前 | 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
+    | Select a runtime (ランタイムを選択してください) | バージョン | ローカルで実行している言語バージョンを選択してください。 |
+    | Select a location for new resources (新しいリソースの場所を選択する) | リージョン | 近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 | 
 
-    * **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** :作成された Azure リソースがすべて含まれます。 名前は関数アプリの名前に基づきます。
-    * **[ストレージ アカウント](../articles/storage/common/storage-account-create.md)** :関数アプリの名前に基づいた一意の名前で、Standard Storage アカウントが作成されます。
-    * **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** :サーバーレス関数アプリをホストするために、従量課金プランが米国西部リージョンに作成されます。
-    * **関数アプリ**:プロジェクトはこの新しい関数アプリにデプロイされ、そこで実行されます。
+    ::: zone-end
 
-    関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。
+    
+1.  完了すると、次の Azure リソースがサブスクリプションに作成されます。
 
-1. **[Azure: Functions]** 領域に戻り、サブスクリプションの下にある新しい関数アプリを展開します。 **[Functions]** を展開し、 **[HttpTrigger]** を右クリックして **[Copy function URL]\(関数 URL のコピー\)** を選択します。
+    + **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** :作成された Azure リソースがすべて含まれます。 名前は関数アプリの名前に基づきます。
+    + **[ストレージ アカウント](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** :関数アプリの名前に基づいた一意の名前で、Standard Storage アカウントが作成されます。
+    + **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** :サーバーレス関数アプリをホストするために、従量課金プランが米国西部リージョンに作成されます。
+    + **関数アプリ**:プロジェクトはこの新しい関数アプリにデプロイされ、そこで実行されます。
+    + **[Application Insights]()** : 関数アプリに関連付けられたインスタンスが関数名に基づいて作成されます。
+
+    関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 
+    
+1. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。
+
+    ![作成完了通知](media/functions-publish-project-vscode/function-create-notifications.png)
+
+1. **[Azure: Functions]** 領域 (サイド バー内) に戻り、サブスクリプションの下にある新しい関数アプリを展開します。 **[Functions]** を展開し、 **[HttpExample]** を右クリック (Windows) または Ctrl キーを押しながらクリック (MacOS) して、 **[Copy function URL]\(関数 URL のコピー\)** を選択します。
 
     ![新しい HTTP トリガーの関数 URL をコピーします](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

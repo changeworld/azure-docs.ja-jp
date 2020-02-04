@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466724"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837792"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -21,9 +21,9 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
 
 以下の記事では AI エンリッチメントについて詳しく説明しています。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 + [Azure Cognitive Search における AI の概要](cognitive-search-concept-intro.md)
-+ [クイック スタート:Azure portal でコグニティブ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイック スタート: Azure portal でコグニティブ スキルセットを作成する](cognitive-search-quickstart-blob.md)
 + [チュートリアル:AI によるインデックスのエンリッチ](cognitive-search-tutorial-blob.md)
 + [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 
@@ -43,6 +43,7 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)
@@ -62,7 +63,7 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
   + [スキルセットの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [インデクサーの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Azure Cognitive Search のインデクサー](search-indexer-overview.md)

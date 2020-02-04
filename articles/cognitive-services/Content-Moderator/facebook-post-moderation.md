@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936006"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774279"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 !["FBListener" を介して Facebook から情報を受信し、"CMListener" を介して情報を送信する、Content Moderator の図](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
+> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -144,7 +144,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. 以下の環境変数を更新します。
     
-        | Key | 値   | 
+        | Key | Value   | 
         | -------------------- |-------------|
         | appId   | Facebook アプリ識別子をここに挿入します  | 
         | appSecret | Facebook アプリのシークレットをここに挿入します | 
@@ -157,7 +157,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このソリューションは Facebook ページに投稿されたすべての画像とテキストを Content Moderator に送信します。 すると、前に構成したワークフローが呼び出されます。 ワークフローに定義されている条件を満たさないコンテンツは、レビュー ツール内のレビューに渡されます。 その他のコンテンツは自動的に公開されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、製品の種類別にタグを付けてレビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにすることを目的として、製品画像を分析するプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
 

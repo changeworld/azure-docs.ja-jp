@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978579"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773734"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>クイック スタート:Node.js 用 Azure Key Vault クライアント ライブラリ (v4)
 
@@ -22,7 +22,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - キーとパスワードのセキュリティと制御を強化する。
 - 暗号化キーの作成とインポートを数分で実行する。
 - クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- SSL または TLS 証明書のタスクを簡略化および自動化する。
+- TLS または SSL 証明書のタスクを簡略化および自動化する。
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
 [API リファレンスのドキュメント](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
@@ -186,7 +186,7 @@ await client.beginDeleteSecret(secretName)
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
 
@@ -255,7 +255,7 @@ main()
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 

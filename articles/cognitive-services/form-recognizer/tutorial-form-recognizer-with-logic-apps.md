@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981260"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773077"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>チュートリアル:Azure Logic Apps で Form Recognizer を使用して請求書を分析する
 
-このチュートリアルでは、Form Recognizer (Azure Cognitive Services スイートの一部であるサービス) を使用する Azure Logic Apps のワークフローを作成し、請求書からデータを抽出します。 Form Recognizer を使用して、最初にサンプル データ セットを使用してモデルをトレーニングし、次に別のデータ セットを使用してモデルをテストします。 このチュートリアルで使用するサンプル データは、Azure Storage Blob コンテナーに格納されています。
+このチュートリアルでは、Form Recognizer (Azure Cognitive Services スイートの一部であるサービス) を使用する Azure Logic Apps のワークフローを作成し、請求書からデータを抽出します。 最初にサンプル データ セットを使用して Form Recognizer モデルをトレーニングし、次に別のデータ セットでモデルをテストします。
 
 このチュートリアルの内容:
 
@@ -41,12 +41,12 @@ Form Recognizer は、アクセスが制限されたプレビューで利用可�
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>分析対象の請求書を理解する
 
-モデルのトレーニングとモデルのテストに使用するサンプル データ セットは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) から .zip ファイルとして入手できます。 .zip ファイルをダウンロードして抽出し、 **/Train** フォルダーの下にある請求書 PDF ファイルを開きます。 請求書番号、請求日などが記載されたテーブルがあります。 
+モデルのトレーニングとテストに使用するサンプル データ セットは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) から .zip ファイルとして入手できます。 .zip ファイルをダウンロードして抽出し、 **/Train** フォルダーの下にある請求書 PDF ファイルを開きます。 請求書番号、請求日などが記載されたテーブルがあることに注意してください。 
 
 > [!div class="mx-imgBorder"]
 > ![サンプル請求書](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-このチュートリアルでは、Azure Logic Apps と Form Recognizer を使用して作成したワークフローを使用して、このようなテーブルから JSON 形式に情報を抽出する方法について説明します。
+このチュートリアルでは、Azure Logic Apps ワークフローを使用して、このようなテーブルから JSON 形式に情報を抽出する方法について説明します。
 
 ## <a name="create-an-azure-storage-blob-container"></a>Azure Storage Blob コンテナーを作成する
 
@@ -62,7 +62,7 @@ Form Recognizer は、アクセスが制限されたプレビューで利用可�
 
 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) で入手できるサンプル データをダウンロードします。 ローカル フォルダーにデータを抽出し、 **/Train** フォルダーの内容を、前に作成した **formrecocontainer** にアップロードします。 「[ブロック BLOB をアップロードする](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)」の手順に従って、コンテナーにデータをアップロードします。
 
-コンテナーの URL をコピーします。 この情報は後でこのチュートリアルで必要になります。 このチュートリアルで示したものと同じ名前のストレージ アカウントとコンテナーを作成した場合、URL は *https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* になります。
+コンテナーの URL をコピーします。 この URL はチュートリアルの後半で必要になります。 このチュートリアルで示したものと同じ名前のストレージ アカウントとコンテナーを作成した場合、URL は *https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* になります。
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
@@ -75,13 +75,13 @@ Azure Logic Apps を使用すると、タスクとワークフローを自動化
 * Azure Blob Storage にアップロードしたサンプル データを使用してモデルをトレーニングするために、Form Recognizer の **[モデルのトレーニング]** 操作を使用するようにロジック アプリを構成します。
 * 既にトレーニング済みのモデルを使用するために、Form Recognizer の **[フォームの分析]** 操作を使用するようにロジック アプリを構成します。 このコンポーネントは、前にトレーニングしたモデルに基づいて、このロジック アプリに提供する請求書を分析します。
 
-始めましょう。 ワークフローを設定するには、次の手順に従います。
+ワークフローを設定するには、次の手順に従います。
 
 1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
 
 1. **[ロジック アプリの作成]** で、次に示すようにロジック アプリの詳細を入力します。 完了したら、 **[作成]** を選択します。
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | Value | [説明] |
    |----------|-------|-------------|
    | **Name** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
@@ -149,14 +149,14 @@ Form Recognizer サービスを使用して請求書を分析する前に、モ�
     > [!div class="mx-imgBorder"]
     > ![Form Recognizer モデルを分析する](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. **[フォームの分析]** ダイアログ ボックスで、次の操作を行います。
+1. **[フォームの分析]** ダイアログ ボックスで、次の手順を実行します。
 
     1. **[モデル ID]** テキスト ボックスをクリックし、表示されるダイアログ ボックスで、 **[動的コンテンツ]** タブの **[modelId]** を選択します。 これを行うことで、前のセクションでトレーニングしたモデルのモデル ID をフロー アプリケーションに提供します。
 
         > [!div class="mx-imgBorder"]
         > ![Form Recognizer に ModelID を使用する](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. **[ドキュメント]** テキスト ボックスをクリックし、表示されるダイアログ ボックスで、 **[動的コンテンツ]** タブの **[添付ファイルのコンテンツ]** を選択します。 これを行うことで、ワークフローをトリガーするために送信されるメールに添付されているサンプルの請求書ファイルを使用するようにフローを構成します。
+    2. **[ドキュメント]** テキスト ボックスをクリックし、表示されるダイアログ ボックスで、 **[動的コンテンツ]** タブの **[添付ファイルのコンテンツ]** を選択します。 これにより、ワークフローをトリガーするメールに添付されているサンプルの請求書ファイルを使用するようにフローを構成します。
 
         > [!div class="mx-imgBorder"]
         > ![メールの添付ファイルを使用して請求書を分析する](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)

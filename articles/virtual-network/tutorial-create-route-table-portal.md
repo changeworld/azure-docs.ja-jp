@@ -5,25 +5,20 @@ description: このチュートリアルでは、Azure Portal を使用してル
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350288"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775275"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -44,23 +39,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[ルート テーブル]** の順に選択します。
+1. Azure portal メニューから **[リソースの作成]** を選択します。
+2. 検索ボックスに、「"*ルート テーブル*"」と入力します。 検索結果に **[ルート テーブル]** が表示されたら、それを選択します。
+3. **[ルート テーブル]** ページで、 **[作成]** を選択します。
+4. **[ルート テーブルの作成]** に次の情報を入力または選択します。
 
-1. **[ルート テーブルの作成]** に次の情報を入力または選択します。
-
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | Name | 「*myRouteTablePublic*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 *[OK]* を選択します。 |
-    | Location | 既定値 **[米国東部]** のままにします。
+    | Location | **[米国東部]** を選択します。
     | 仮想ネットワーク ゲートウェイのルート伝達 | 既定値 **[有効]** のままにします。 |
-
-1. **作成** を選択します。
+5. **作成** を選択します。
 
 ## <a name="create-a-route"></a>ルートの作成
 
@@ -74,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[ルートの追加]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | ルート名 | 「*ToPrivateSubnet*」と入力します。 |
     | アドレス プレフィックス | 「*10.0.1.0/24*」と入力します。 |
@@ -93,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | Name | 「*myVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.0.0.0/16*」と入力します。 |
@@ -117,7 +112,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[サブネットの追加]** に次の情報を入力します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | Name | 「*Private*」と入力します。 |
     | アドレス空間 | 「*10.0.1.0/24*」と入力します。 |
@@ -126,7 +121,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[+ サブネット]** をもう一度選択します。 今回は次の情報を入力します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | Name | 「*DMZ*」と入力します。 |
     | アドレス空間 | 「*10.0.2.0/24*」と入力します。 |
@@ -151,7 +146,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -167,7 +162,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
-    | パブリック受信ポート | 既定値 **[なし]** のままにします。
+    | パブリック受信ポート | **[なし]** を選択します。
     | **コスト削減** |  |
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
 
@@ -179,7 +174,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[myVirtualNetwork]** のままにします。 |
     | Subnet | **[DMZ (10.0.2.0/24)]** を選択します。 |
@@ -191,7 +186,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[ストレージ アカウントの作成]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | Name | 「*mynvastorageaccount*」と入力します。 |
     | アカウントの種類 | 既定値 **[ストレージ (汎用 v1)]** のままにします。 |
@@ -230,7 +225,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 [NVA の作成](#create-an-nva)手順の 1 から 12 を実行します。 ほとんどは同じ設定を使用します。 次の値は、変更する必要があります。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ------- | ----- |
 | **Public VM** | |
 | 基本 |  |

@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766397"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769055"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
-このクイックスタートでは、macOS、Ubuntu Linux、Windows の各プラットフォームから Python を使用して Azure Database for PostgreSQL に接続する方法を紹介します。 このクイックスタートでは、データベースに接続し、SQL ステートメントを使用してデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Python には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
+
+このクイックスタートでは、macOS、Ubuntu Linux、または Windows 上で Python を使用して Azure Database for PostgreSQL を操作します。 このクイックスタートでは、データベースに接続し、SQL ステートメントを使用してデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Python には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
-- Azure Database for PostgreSQL - Single Server (「[クイックスタート:Azure Portal での Azure Database for PostgreSQL サーバーの作成」](quickstart-create-server-database-portal.md)または「[クイック スタート:Azure CLI を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-azure-cli.md)」の手順を使用して作成されたもの)。 
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 次の項目の完了: 「[クイックスタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成」](quickstart-create-server-database-portal.md)または「[クイック スタート:Azure CLI を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-azure-cli.md)」の手順を使用して作成されたもの)。
   
 - [Python](https://www.python.org/downloads/) 2.7.9 以降または 3.4 以降。
   
-- [pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラーの最新の更新プログラム (`pip install -U pip` を使用してインストールされたもの)。 
+- 最新の [pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラー。
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>PostgreSQL 用 Python ライブラリのインストール
 [psycopg2](https://pypi.python.org/pypi/psycopg2/) モジュールを使用すると、PostgreSQL データベースに接続してクエリを実行でき、このモジュールは、Linux、macOS、または Windows の [wheel](https://pythonwheels.com/) パッケージとして使用できます。 すべての依存関係を含んだバイナリ バージョンのモジュールをインストールしてください。 `psycopg2` のインストールと要件の詳細については、「[インストール](http://initd.org/psycopg/docs/install.html)」を参照してください。 
@@ -193,6 +197,6 @@ cursor.close()
 conn.close()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

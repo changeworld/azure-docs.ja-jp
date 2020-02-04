@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991495"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844660"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge の Azure Event Grid とは
-IoT Edge の Event Grid は、すべての pub/sub およびイベント ドリブン シナリオで、エッジに Azure Event Grid の力と柔軟性をもたらします。 トピックを作成し、イベントを発行して、複数の送信先をサブスクライブします。送信先が同じデバイス上のモジュールか、他のエッジ デバイスか、クラウド内のサービスかは問いません。
+IoT Edge の Event Grid は、エッジに Azure Event Grid の力と柔軟性をもたらします。 トピックを作成し、イベントを発行して、複数の送信先をサブスクライブします。送信先が同じデバイス上のモジュールか、他のエッジ デバイスか、クラウド内のサービスかは問いません。
 
-クラウドと同様に、IoT Edge モジュールの Event Grid は、大規模なイベントのルーティング、フィルター処理、および信頼性の高い配信を行います。 文字列、数値、およびブール値による高度なフィルターを使用してイベントをフィルター処理し、さまざまなイベント ハンドラーに関連するイベントのみを送信します。 再試行ロジックにより、ターゲット モジュール、エッジ デバイス、またはクラウド サービスが発行時に使用できない場合でも、イベントが到着することを保証します。 これにより、IoT Edge の Event Grid を強力なストア アンド フォワード メカニズムとして使用できるようになります。
+クラウドと同様に、IoT Edge モジュールの Event Grid は、大規模なイベントのルーティング、フィルター処理、および信頼性の高い配信を行います。 文字列、数値、およびブール値による高度なフィルターを使用してイベントをフィルター処理し、さまざまなイベント ハンドラーに関連するイベントのみを送信します。 再試行ロジックにより、送信先が発行時に使用できない場合でも、イベントが到着することを保証します。 これにより、IoT Edge の Event Grid を強力なストア アンド フォワード メカニズムとして使用できるようになります。
 
-IoT Edge の Event Grid では、CloudEvents v1.0 とカスタム イベント スキーマの両方がサポートされます。 また、Azure とサードパーティとの相互運用を容易にするために、クラウドの Event Grid と同じ発行とサブスクライブのセマンティクスもサポートしています。
+IoT Edge の Event Grid では、CloudEvents v1.0 とカスタム イベント スキーマの両方がサポートされます。 また、相互運用を容易にするために、クラウドの Event Grid と同じ発行とサブスクライブのセマンティクスもサポートしています。
 
 この記事では、IoT Edge の Azure Event Grid の概要を示します。 エッジでこのモジュールを使用する手順の詳細については、[ローカルでイベントを発行およびサブスクライブする方法に関する記事](pub-sub-events-webhook-local.md)を参照してください。 
 
@@ -29,7 +29,7 @@ IoT Edge の Event Grid では、CloudEvents v1.0 とカスタム イベント �
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>IoT Edge の Event Grid を使用する局面
 
-IoT Edge の Event Grid は、使いやすく一貫した信頼性の高いイベントモデルを提供するために構築されており、エッジとクラウドの間でイベント ドリブン アーキテクチャを構築することができます。
+Event Grid on IoT Edge は、エッジとクラウドとの間に、使いやすく信頼性の高いイベント モデルを実現します。
 
 IoT Edge の Event Grid は、Azure クラウド サービスと同等のランタイム領域を使用して構築されているので、必要なときに同じイベントと API 呼び出しを使用できます。 クラウド、エッジ、またはその 2 者の間のどれで pub/sub を実行する場合でも、IoT Edge の Event Grid は 1 つの中心ソリューションになることができます。
 
@@ -55,8 +55,12 @@ IoT Edge の Event Grid は、任意の場所にイベントを送信するよ�
 
 * IoT Hub、関数、カスタム モジュールを含む他のモジュール
 * 他のエッジ デバイス
-* Azure Event Grid や Azure Functions などのクラウドでホストされているサービス
-* Web フック
+* WebHook
+* Azure Event Grid クラウド サービス
+* Event Hubs
+* Service Bus キュー
+* Service Bus トピック
+* Storage キュー
 
 ## <a name="supported-environments"></a>サポートされている環境
 現時点では、Windows 64 ビット、Linux 64 ビット、および ARM 32 ビット環境がサポートされています。
@@ -78,7 +82,7 @@ Azure Event Grid には、作業開始にあたり理解する必要がある、
 ## <a name="issues"></a>発行
 IoT Edge の Event Grid の使用に関する問題は、[https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) で報告します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ローカルでイベントを発行してサブスクライブする](pub-sub-events-webhook-local.md)
 * [クラウドでイベントを発行してサブスクライブする](pub-sub-events-webhook-cloud.md)

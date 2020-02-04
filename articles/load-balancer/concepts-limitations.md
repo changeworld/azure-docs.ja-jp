@@ -9,17 +9,16 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer components and limitations and how it will affect my environment.
 ms.devlang: na
 ms.topic: overview
-ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/14/2019
+ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263542"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757801"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer のコンポーネントと制限事項
 Azure Load Balancer には、その操作に必要な重要なコンポーネントがいくつか含まれています。  これらのコンポーネントは、サブスクリプションで、Azure portal、Azure CLI、または Azure PowerShell を使用して構成できます。  
@@ -58,7 +57,7 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
 ロード バランサーは、TCP および UDP アプリケーションに対して次の基本機能を提供します。
 
-* **負荷分散のアルゴリズム**: Azure Load Balancer では、負荷分散規則を作成して、フロントエンドに到着したトラフィックをバックエンド プールのインスタンスに分散させることができます。 インバウンド フローの分配にはハッシュ アルゴリズムが使われ、バックエンド プール インスタンスへのフローのヘッダーが書き換えられます。 バックエンド エンドポイントが正常であることを正常性プローブが示している場合、サーバーは新しいフローを受信できます。
+* **負荷分散のアルゴリズム**: Azure Load Balancer では、負荷分散規則を作成して、フロントエンドに到着したトラフィックをバックエンド プールのインスタンスに分散させることができます。 インバウンド フロー (バイトではなくフロー) の分配にはハッシュ アルゴリズムが使われ、バックエンド プール インスタンスへのフローのヘッダーが書き換えられます。 バックエンド エンドポイントが正常であることを正常性プローブが示している場合、サーバーは新しいフローを受信できます。
 既定では、Load Balancer は 5 タプル ハッシュを使用します。 
 
    ハッシュには次のものが含まれます。 

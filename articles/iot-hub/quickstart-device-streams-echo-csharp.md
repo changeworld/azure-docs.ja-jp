@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084289"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773824"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -50,7 +50,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     az extension add --name azure-cli-iot-ext
     ```
 
-* [サンプル C# プロジェクトをダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)し、ZIP アーカイブを抽出します。 デバイス側とサービス側の両方で必要になります。
+* [Azure IoT C# サンプルをダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)し、ZIP アーカイブを展開します。 デバイス側とサービス側の両方で必要になります。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -165,11 +165,11 @@ dotnet run {DeviceConnectionString}
 
 ストリームを介して送信されるトラフィックは、直接送信されるのではなく、IoT ハブを通じてトンネリングされます。 提供されるベネフィットについては、[デバイス ストリームのベネフィット](./iot-hub-device-streams-overview.md#benefits)に関する記事で詳しく説明しています。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側の C# アプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
 

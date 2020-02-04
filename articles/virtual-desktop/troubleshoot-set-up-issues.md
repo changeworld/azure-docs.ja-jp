@@ -24,7 +24,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッションのイメージの入手
 
-Windows 10 Enterprise マルチセッションのイメージを使用するには、Azure Marketplace にアクセスし、 **[Get Started]\(開始する\)**  >  **[Microsoft Windows 10]** 、[[Windows 10 Enterprise for Virtual Desktops, Version 1809]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) を選択します。
+Windows 10 Enterprise マルチセッションのイメージを使用するには、Azure Marketplace にアクセスし、**[Get Started]\(開始する\)** > **[Microsoft Windows 10]**、[[Windows 10 Enterprise for Virtual Desktops, Version 1809]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) を選択します。
 
 ![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](media/AzureMarketPlace.png)
 
@@ -53,7 +53,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 **原因:** サインインしているユーザーに、Azure Active Directory の TenantCreator ロールが割り当てられていません。
 
-**解決策:** [Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
+**解決策:**[Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
 
 ![TenantCreator ロールを割り当てたスクリーンショット。](media/TenantCreatorRoleAssigned.png)
 
@@ -134,20 +134,20 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **原因 1:** VM をドメインに参加させるために提供された資格情報が正しくありません。
 
-**解決策 1:** [セッション ホストの VM の構成](troubleshoot-vm-configuration.md)に関するページで、「VMs are not joined to the domain」\(VM がドメインに参加していません\) の「Incorrect credentials」\(資格情報が正しくありません\) エラーを参照してください。
+**解決策 1:**[セッション ホストの VM の構成](troubleshoot-vm-configuration.md)に関するページで、「VMs are not joined to the domain」\(VM がドメインに参加していません\) の「Incorrect credentials」\(資格情報が正しくありません\) エラーを参照してください。
 
 **原因 2:** ドメイン名が解決されません。
 
-**解決策 2:** 各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー:ドメイン名が解決されません](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」) を参照してください。
+**解決策 2:**「[エラー: ドメイン名が解決されません](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」) を参照してください。
 
 **原因 3:** 仮想ネットワーク (VNET) の DNS 構成が**既定**に設定されています。
 
 これを解決するには、次の操作を実行します。
 
-1. Azure portal を開き、 **[仮想ネットワーク]** ブレードに移動します。
-2. お使いの VNET を見つけて、 **[DNS サーバー]** を選択します。
-3. 画面の右側に DNS サーバーのメニューが表示されます。 そのメニューで、 **[カスタム]** を選択します。
-4. [カスタム] の下に表示されている DNS サーバーが、ドメイン コントローラーまたは Active Directory ドメインと一致していることを確認します。 お使いの DNS サーバーが表示されない場合は、 **[DNS サーバーの追加]** フィールドに値を入力して追加できます。
+1. Azure portal を開き、**[仮想ネットワーク]** ブレードに移動します。
+2. お使いの VNET を見つけて、**[DNS サーバー]** を選択します。
+3. 画面の右側に DNS サーバーのメニューが表示されます。 そのメニューで、**[カスタム]** を選択します。
+4. [カスタム] の下に表示されている DNS サーバーが、ドメイン コントローラーまたは Active Directory ドメインと一致していることを確認します。 お使いの DNS サーバーが表示されない場合は、**[DNS サーバーの追加]** フィールドに値を入力して追加できます。
 
 ### <a name="error-your-deployment-failedunauthorized"></a>エラー:デプロイに失敗しました...\権限がありません
 

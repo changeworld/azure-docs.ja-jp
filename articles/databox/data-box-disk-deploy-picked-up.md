@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514121"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845491"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ ms.locfileid: "76514121"
 
    問題が発生した場合は、Data Box Operations Asia (adbo@microsoft.com) にご連絡ください。 ジョブ名を件名ヘッダーに指定し、発生している問題についてお知らせください。
 
-3. 配送業者に渡します。 
+3. 配送業者に渡します。
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[自己管理型](#tab/in-selfmanaged)
+
+日本、シンガポール、韓国、西ヨーロッパで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。 
+
+1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
+
+2. デバイスを返送する準備が整ったら、次のテンプレートを使用して Azure Data Box オペレーション チームにメールを送信します。
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Azure Data Box オペレーション チームがお客様と連絡を取り、Azure Datacenter への配送を手配します。
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
