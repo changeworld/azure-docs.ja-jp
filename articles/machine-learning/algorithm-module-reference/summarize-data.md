@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546488"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841269"
 ---
 # <a name="summarize-data"></a>データの集計
 
@@ -70,6 +70,20 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 |**P5**|5% パーセンタイル|
 |**P95**|95% パーセンタイル|
 |**P99.5**|99.5% パーセンタイル |
+
+## <a name="technical-notes"></a>テクニカル ノート
+
+- 数値以外の列では、数、一意の値の数、欠損値の数の値のみが計算されます。 他の統計では、null 値が返されます。
+
+- ブール値を含む列は、これらのルールを使用して処理されます。
+
+    - 最小の計算時には論理 AND が適用されます。
+    
+    - 最大の計算時には論理 OR が適用されます。
+    
+    - 範囲の計算時、モジュールはまず、列の一意の値の数が 2 と等しいかどうかを確認します。
+    
+    - 浮動小数点演算が必要なすべての統計の計算時には、True の値が 1.0、False の値が 0.0 として扱われます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1150,6 +1150,9 @@
             - name: ユーザー インターフェイスのパフォーマンスの問題を分析する
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: ワークスペースでジョブが進行していない
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: クラスター
           items:
             - name: クラスター内のコアの数を計算する
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: WASB でファイルを読み取ることができない
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: JDBC データ ソースからの読み取りパフォーマンスを最適化する
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547253"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845555"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復元
 
@@ -23,7 +23,7 @@ ms.locfileid: "76547253"
 Log Analytics ワークスペースを削除すると、論理的な削除操作が実行されます。削除操作が不注意によるものであれ、意図的なものであれ、14 日以内であればそのデータや接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除期間が終了すると、ワークスペース リソースとそのデータは回復できなくなります。そのデータは完全な削除用のキューに格納され、30 日以内に完全に消去されます。 ワークスペース名は "リリース済み" であり、新しいワークスペースの作成に使用できます。
 
 > [!NOTE]
-> 論理的な削除の動作を無効にすることはできません。 削除操作に "force" タグを使用した場合に論理的な削除をオーバーライドするオプションをまもなく追加する予定です。
+> 論理的な削除の動作をオーバーライドして、ご利用のワークスペースを完全に削除する場合は、「[ワークスペースの完全削除](#Permanent workspace delete)」の手順に従います。
 
 重要なデータや構成が含まれているとサービスの運用に悪影響が生じるおそれがあるため、ワークスペースを削除する場合は注意が必要です。 エージェントやソリューションなど、Log Analytics にデータを格納する各種 Azure サービスとソースを再確認してください。そうしたサービスとソースの例を次に示します。
 

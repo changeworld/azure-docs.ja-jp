@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903067"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846203"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL Data Warehouse でのトランザクションの使用
 ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
@@ -25,7 +25,7 @@ ms.locfileid: "73903067"
 予想される通り、SQL Data Warehouse では、トランザクションは、データ ウェアハウスのワークロードの一部としてサポートされます。 ただし、SQL Data Warehouse のパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。 
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
-SQL Data Warehouse では、ACID トランザクションを実装しています。 ただし、トランザクション サポートの分離レベルは、READ UNCOMMITTED に制限されており、このレベルは変更できません。 READ UNCOMMITTED で問題がある場合、これを防ぐためのさまざまなコーディング方法を実装できます。 最も一般的な方法では、CTAS とテーブル パーティションの切り替え (スライディング ウィンドウ パターンとよく呼ばれます) の両方を使用して、ユーザーがまだ準備中のデータを照会できないようにします。 データを事前にフィルター処理するビューも、よく使用される方法です。  
+SQL Data Warehouse では、ACID トランザクションを実装しています。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)」を確認してください。
 
 ## <a name="transaction-size"></a>トランザクション サイズ
 1 回のデータ変更トランザクションには規模の面で制限があります。 この制限は、ディストリビューションごとに適用されます。 このため、割り当ての合計を算出するには、制限とディストリビューション数を掛ける必要があります。 トランザクションの最大行数の近似値を求めるには、ディストリビューション上限を各列の合計サイズで割ります。 列の長さが異なる場合、最大サイズではなく列の平均長を利用することを検討してください。
@@ -198,6 +198,6 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 * トランザクションにマークを付けることはできません。
 * ユーザー定義トランザクション内では CREATE TABLE のような DDL はサポートされません。
 
-## <a name="next-steps"></a>次の手順
-トランザクションの最適化の詳細については、 [トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関するページを参照してください。 SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。
+## <a name="next-steps"></a>次のステップ
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。
 

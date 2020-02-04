@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543037"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775262"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ ms.locfileid: "76543037"
 | **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグと **AzureFrontDoor.Frontend** タグに依存します。 次の IP もホワイトリストに登録してください (この依存関係は間もなく削除予定です)。13.107.6.181 & 13.107.9.181. | 送信 | いいえ | いいえ |
 | **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
-| **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
+| **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これには、Azure Load Balancer リソースへのトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics では、このタグは **Storage** タグに依存します。 | 送信 | いいえ | はい |
 | **AzurePlatformDNS** | 基本インフラストラクチャ (既定) の DNS サービス。<br/><br>このタグを使用すると、既定の DNS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
@@ -79,11 +79,11 @@ ms.locfileid: "76543037"
 | **ElasticAFD** | エラスティック Azure Front Door。 | 両方 | いいえ | いいえ |
 | **EventHub** | Azure Event Hubs。 | 送信 | はい | はい |
 | **GatewayManager** | Azure VPN Gateway と Application Gateway 専用デプロイのための管理トラフィック。 | 受信 | いいえ | いいえ |
-| **GuestAndHybridManagement** | Azure Automation とゲスト構成。 | 両方 | いいえ | はい |
+| **GuestAndHybridManagement** | Azure Automation とゲスト構成。 | 送信 | いいえ | はい |
 | **HDInsight** | Azure HDInsight。 | 受信 | はい | いいえ |
 | **Internet** | パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間。<br/><br/>このアドレス範囲には、[Azure によって所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)が含まれています。 | 両方 | いいえ | いいえ |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 送信 | いいえ | いいえ |
-| **MicrosoftContainerRegistry** | Azure Container Registry。 | 送信 | はい | はい |
+| **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>*注:* 次の IP もホワイトリストに登録してください (この依存関係は間もなく削除予定です): 204.79.197.219。 | 送信 | はい | はい |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。 | 送信 | いいえ | いいえ |
 | **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 | 送信 | はい | はい |

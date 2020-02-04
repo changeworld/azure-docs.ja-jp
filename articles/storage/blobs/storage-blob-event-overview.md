@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648793"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835965"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
-Azure Storage イベントをアプリケーションで使用すると、最新のサーバーレスなアーキテクチャを使用して BLOB の作成、削除などのイベントに対応できます。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。
+Azure Storage イベントをアプリケーションで使用すると、BLOB の作成、削除などのイベントに対応できます。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。
 
-イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、Azure Functions、Azure Logic Apps、またはユーザー独自のカスタム HTTP リスナーにプッシュされ、料金は使用したものだけで済みます。
+イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を使用して、Azure Functions、Azure Logic Apps などのサブスクライバー、または独自の HTTP リスナーにもプッシュされます。 最もよい点は、使用した分だけ支払うということです。
 
-Blob Storage イベントは Event Grid Service に確実に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。
+Blob Storage によってイベントは、豊富な再試行ポリシーおよび配信不能を使用してご利用のアプリケーションに信頼性の高いイベント配信を提供する Event Grid に送信されます。
 
 Blob Storage イベントの一般的なシナリオとしては、画像やビデオの処理、検索インデックスの作成、ファイル指向のワークフローなどがあります。 非同期のファイル アップロードは、イベントに最適です。 変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 
@@ -29,11 +29,14 @@ Blob Storage イベントの一般的なシナリオとしては、画像やビ�
 
 |使うツール:    |参照する記事: |
 |--|-|
-|Azure ポータル    |[クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|PowerShell    |[クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure CLI    |[クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure portal    |[クイック スタート: Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[クイック スタート: Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 このチュートリアルでは、ご利用のアカウントに階層型名前空間が使用されている場合に、Event Grid サブスクリプションと Azure Functions、Azure Databricks 内の[ジョブ](https://docs.azuredatabricks.net/user-guide/jobs.html)を 1 つに接続する方法を紹介します: [Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する](data-lake-storage-events.md)
+
+>[!NOTE]
+> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** と **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート*されていません*。
 
 ## <a name="the-event-model"></a>イベント モデル
 
@@ -52,7 +55,7 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 
 ## <a name="filtering-events"></a>イベントのフィルター処理
 
-BLOB イベントのサブスクリプションは、イベントの種類に基づき、作成または削除されたオブジェクトのコンテナー名と BLOB 名で、フィルター処理することができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)中、または[作成後](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)に、イベント サブスクリプションをフィルター処理することができます。 Event Grid のサブジェクト フィルターは、"次で始まる" と "次で終わる" という一致条件によって動作し、サブジェクトが一致するイベントはサブスクライバーに配信されます。
+BLOB イベントは、イベントの種類、コンテナー名、作成または削除されたオブジェクトの名前によって[フィルター処理できます](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)。 Event Grid のフィルターは、サブジェクトの先頭または末尾を照合するため、件名が一致したイベントはサブスクライバーに送られます。
 
 フィルターを適用する方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。
 
@@ -97,7 +100,7 @@ Blob Storage イベントを処理するアプリケーションは、いくつ�
 > * ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList`、または `FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Grid の詳細について理解し、Blob Storage イベントを試してみてください。
 

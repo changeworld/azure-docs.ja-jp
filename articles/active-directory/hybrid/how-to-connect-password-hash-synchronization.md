@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543921"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833366"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -130,9 +130,9 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
   
 一時パスワード機能を使用すると、資格情報の所有権の譲渡が初回使用時に確実に完了し、複数の個人がその資格情報に関する知識を持つ期間を最小限に抑えることができます。
 
-同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordResetOnLogonFeature* 機能を有効にできます。
+同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordChangeOnLogOn* 機能を有効にします。
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > 次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/27/2020
+ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495137"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841666"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 
@@ -39,15 +39,15 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
 キー コンテナーに認証するには、[Azure portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)、[Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)、[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) を使用し、ユーザー割り当てマネージド ID を作成します。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](../hdinsight-managed-identities.md)」を参照してください。 マネージド ID と Kafka の BYOK には Azure Active Directory が必須ですが、ESP (Enterprise セキュリティ パッケージ) は必須ではありません。 キー コンテナー アクセス ポリシーに追加するときのために、マネージド ID のリソース ID を保存してください。
 
-![Azure portal でユーザー割り当てマネージド ID を作成する](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![Azure portal でユーザー割り当てマネージド ID を作成する](./media/apache-kafka-byok/azure-portal-create-managed-identity.png)
 
 ## <a name="set-up-the-key-vault-and-keys"></a>Key Vault とキーを設定する
 
 HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キーでは [論理的な削除] を有効にする必要があります。 [論理的な削除] 機能は、REST、.NET/C#、PowerShell、Azure CLI の各インターフェイスで使用できます。
 
-1. 新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-overview.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
+1. 新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/quick-create-cli.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
-1. [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI コマンドを使用して、キー コンテナーで [論理的な削除] を有効にします。
+1. [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI コマンドを使用して、キー コンテナーで "論理的な削除" を有効にします。
 
     ```azurecli
     az keyvault update --name <Key Vault Name> --enable-soft-delete
@@ -79,7 +79,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     b. **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
 
-    ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
     c. **[キーのアクセス許可]** を **[取得]** 、 **[キーの折り返しを解除]** 、 **[キーを折り返す]** に設定します。
 
@@ -97,9 +97,9 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 これで新しい HDInsight クラスターを作成する準備が整いました。 BYOK は、クラスター作成時、新しいクラスターにのみ適用できます。 BYOK クラスターから暗号化を削除することはできません。既存のクラスターに BYOK を追加することはできません。
 
-![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
 
-クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。 クラスターの作成の完全な詳細については、[Azure portal を使用した Apache Hadoop クラスターの作成](./apache-kafka-get-started.md)に関するページを参照してください。
 
 ## <a name="rotating-the-encryption-key"></a>暗号化キーを入れ替える
 

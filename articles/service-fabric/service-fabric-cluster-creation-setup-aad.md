@@ -3,12 +3,12 @@ title: クライアント認証用に Azure Active Directory をセットアッ�
 description: Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定方法について学習します。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614691"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843822"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -104,9 +104,19 @@ Service Fabric Explorer で Azure AD にサインインしようとすると、�
 Service Fabric Explorer に相当するクラスター (Web) アプリケーションは Azure AD に対する認証を試み、要求の一部として、戻り先のリダイレクト URL を指定しています。 しかし、その URL が Azure AD アプリケーションの **[応答 URL]** のリストに表示されません。
 
 #### <a name="solution"></a>解決策
-AAD ページで [アプリの登録] を選び、クラスター アプリケーションを選んで、 **[応答 URL]** ボタンを選びます。 [応答 URL] ページで、Service Fabric Explorer の URL をリストに追加するか、リスト内の項目のいずれかと置き換えます。 完了したら、変更を保存します。
+Azure AD ページで **[アプリの登録]** を選択し、ご利用のクラスター アプリケーションを選択して、 **[応答 URL]** ボタンを選択します。 **[応答 URL]** ウィンドウで、Service Fabric Explorer の URL をリストに追加するか、リスト内の項目のいずれかと置き換えます。 変更を保存します。
 
 ![Web アプリケーションの応答 URL][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>PowerShell から Azure AD の認証を使用してクラスターに接続すると、サインイン時にエラーが発生します: "AADSTS50011"
+#### <a name="problem"></a>問題
+PowerShell から Azure AD を使用して Service Fabric クラスターに接続しようとすると、サインイン ページでエラーが返されます: "AADSTS50011:要求で指定された応答 URL が、アプリケーションに対して構成された応答 URL と一致しません: &lt;GUID&gt;。"
+
+#### <a name="reason"></a>理由
+前の問題と同様に、PowerShell では Azure AD に対して認証を試みます。これにより、Azure AD アプリケーションの**応答 URL** リストに一覧表示されていないリダイレクト URL が提供されます。  
+
+#### <a name="solution"></a>解決策
+前の問題と同じプロセスを使用しますが、URL に `urn:ietf:wg:oauth:2.0:oob` を設定する必要があります。これは、コマンド ライン認証用の特別なリダイレクトです。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>PowerShell で Azure AD 認証を使用してクラスターに接続する
 Service Fabric クラスターに接続するには、次の PowerShell コマンド例を使用します。

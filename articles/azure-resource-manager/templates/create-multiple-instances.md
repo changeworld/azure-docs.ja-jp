@@ -3,12 +3,12 @@ title: リソースの複数のインスタンスをデプロイする
 description: Azure リソース マネージャー テンプレートで copy 操作と配列を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121983"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836931"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復
 
@@ -205,6 +205,10 @@ mode プロパティでも **parallel** が既定値として使用されます�
 
 プロパティの反復処理内で `copyIndex` を使用する場合、反復処理の名前を指定する必要があります。 リソースの反復処理で使用する場合には名前を指定する必要はありません。
 
+> [!NOTE]
+> プロパティの反復処理では、オフセット引数もサポートされています。 オフセットは、copyIndex('dataDisks', 1) など、反復処理の名前の後に指定する必要があります。
+>
+
 Resource Manager はデプロイ中に `copy` 配列を展開します。 配列の名前がプロパティの名前になります。 入力値がオブジェクトのプロパティになります。 デプロイされたテンプレートは次のようになります。
 
 ```json
@@ -299,6 +303,10 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 ## <a name="variable-iteration"></a>変数の反復処理
 
 変数のインスタンスを複数作成するには、variables セクション内で `copy` プロパティを使用します。 `input` プロパティの値から構築された要素の配列を作成します。 `copy` プロパティは、変数内で使用することも、variables セクションの最上位レベルで使用することもできます。 変数の反復処理内で `copyIndex` を使用するときは、反復処理の名前を指定する必要があります。
+
+> [!NOTE]
+> 変数の反復処理では、オフセット引数もサポートされています。 オフセットは、copyIndex('diskNames', 1) など、反復処理の名前の後に指定する必要があります。
+>
 
 文字列値の配列を作成する簡単な例については、[配列のコピーのテンプレート](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)を参照してください。
 

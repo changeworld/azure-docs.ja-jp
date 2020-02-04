@@ -3,19 +3,29 @@ title: Azure Automation で変更を追跡する
 description: Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418746"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844804"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
-この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
+この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションでは、運用上の問題を特定できるように、次の構成の変更を追跡します。
+
+- Windows ソフトウェア
+- Linux ソフトウェア (パッケージ)
+
+    >[!NOTE]
+    >Change Tracking では、配布のパッケージ マネージャーを使用して管理されているソフトウェアのみを追跡します。
+
+- Windows ファイルと Linux ファイル
+- Windows レジストリ キー
+- Windows サービス
+- Linux デーモン
 
 監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Azure Monitor サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
@@ -93,7 +103,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
@@ -116,7 +126,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
@@ -148,7 +158,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
 |Group     | レジストリ キーを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | レジストリ キーを確認するためのパス。 次に例を示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
@@ -159,6 +169,8 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 
 * Windows レジストリ追跡用の再帰
 * ネットワーク ファイル システム
+* 異なるインストール方法は追跡されない
+* Windows では *.exe ファイルは追跡されない
 
 その他の制限事項:
 

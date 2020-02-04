@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098636"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844550"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>チュートリアル:ローカルでイベントを発行してサブスクライブする
 
@@ -27,14 +27,14 @@ ms.locfileid: "73098636"
 このチュートリアルを完了するには、以下が必要になります。
 
 * **Azure サブスクリプション**: まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
-* **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows](../../iot-edge/quickstart.md) デバイスのクイックスタートの手順に従ってください。
+* **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows デバイス](../../iot-edge/quickstart.md)のクイックスタートの手順に従ってください。
 
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge モジュールをデプロイする
 
 モジュールを IoT Edge デバイスにデプロイするにはいくつかの方法があり、そのうちどれでも Azure Event Grid on IoT Edge で使用できます。 この記事では、Azure portal で Event Grid on IoT Edge をデプロイする手順について説明します。
 
 >[!NOTE]
-> このチュートリアルでは、Event Grid モジュールを永続化せずにデプロイします。 つまり、このチュートリアルで作成するすべてのトピックとサブスクリプションは、モジュールを再デプロイすると削除されます。 永続化を設定する方法の詳細については、次の記事を参照してください (「[Linux で状態を永続化する](persist-state-linux.md)」または「[Windows で状態を永続化する](persist-state-windows.md)」)。 運用環境のワークロードの場合は、永続化を使用して Event Grid モジュールをインストールすることをお勧めします。
+> このチュートリアルでは、Event Grid モジュールを永続化せずにデプロイします。 つまり、このチュートリアルで作成するすべてのトピックとサブスクリプションは、モジュールを再デプロイすると削除されます。 永続化を設定する方法の詳細については、次の記事を参照してください。「[Linux で状態を永続化する](persist-state-linux.md)」または「[Windows で状態を永続化する](persist-state-windows.md)」。 運用環境のワークロードの場合は、永続化を使用して Event Grid モジュールをインストールすることをお勧めします。
 
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge デバイスを選択する
@@ -55,15 +55,17 @@ ms.locfileid: "73098636"
 1. モジュールの種類のドロップダウン リストから、 **[IoT Edge モジュール]** を選択します
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
-   * **名前**: eventgridmodule
-   * **イメージの URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **[名前]** : eventgridmodule
+   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **[コンテナーの作成オプション]** :
+
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
 
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -100,7 +102,7 @@ ms.locfileid: "73098636"
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
    * **名前**: subscriber
-   * **イメージの URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
+   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
    * **[コンテナーの作成オプション]** :
 
        ```json
@@ -153,7 +155,7 @@ ms.locfileid: "73098636"
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
 
-1. 次のコマンドを実行して、トピックが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返されます。
+1. 次のコマンドを実行して、トピックが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -177,7 +179,9 @@ ms.locfileid: "73098636"
 
 ## <a name="create-an-event-subscription"></a>イベント サブスクリプションの作成
 
-サブスクライバーは、トピックに発行されたイベントに登録できます。 イベントを受信するには、関心のあるトピックの Event Grid サブスクリプションを作成する必要があります。
+サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、関心のあるトピックの Event Grid サブスクリプションを作成する必要があります。
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容を含む subscription.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください
 
@@ -201,7 +205,7 @@ ms.locfileid: "73098636"
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
     ```
-3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返されます。
+3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -298,13 +302,14 @@ ms.locfileid: "73098636"
 * 自分の IoT Edge デバイスからサブスクライバー モジュールを削除します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、イベント グリッド トピックとサブスクリプションを作成し、イベントを発行しました。 基本的な手順が理解できたら、次の記事を参照してください。 
 
 - Azure Event Grid on IoT Edge の使用に伴う問題のトラブルシューティングについては、[トラブルシューティング ガイド](troubleshoot.md)を参照してください。
-- [フィルター](advanced-filtering.md)を使用してサブスクリプションを作成または更新する。
+- [フィルター](advanced-filtering.md)を使用してサブスクリプションを作成または更新します。
 - [Linux](persist-state-linux.md) または [Windows](persist-state-windows.md) で Event Grid モジュールの永続化を有効にする
-- [ドキュメント](configure-client-auth.md)に従って、クライアント認証を構成する
+- [ドキュメント](configure-client-auth.md)に従って、クライアント認証を構成します
 - この[チュートリアル](pub-sub-events-webhook-cloud.md)に従って、クラウド内の Azure Functions にイベントを転送する
 - [IoT Edge で Blob Storage イベントに対応する](react-blob-storage-events-locally.md)
+- [Edge でのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)
 

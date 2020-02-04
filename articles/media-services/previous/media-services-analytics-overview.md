@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083888"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844345"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
 
@@ -31,7 +31,6 @@ ms.locfileid: "74083888"
 
 |メディア プロセッサ名|提供終了日|その他のメモ|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020 年 1 月 1 日|このメディア プロセッサは、[Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。|
 |[Azure Media Indexer](media-services-index-content.md)|2020 年 10 月 1 日|このメディア プロセッサは、[Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください
  
 ## <a name="overview"></a>概要
@@ -51,17 +50,21 @@ Media Analytics のメディア プロセッサによって MP4 ファイルま�
 ## <a name="media-analytics-services"></a>Media Analytics サービス
 
 ### <a name="indexer"></a>Indexer
-Azure Media Indexer では、コンテンツを検索可能にしたり、クローズド キャプション トラックを生成したりできます。 前のバージョンと比較すると、 Azure Media Indexer 2 プレビューは、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。 詳しい情報と例については、[Azure Media Indexer 2 を使用したビデオの処理](media-services-process-content-with-indexer2.md)に関するページをご覧ください。
+Azure Media Indexer では、コンテンツを検索可能にしたり、クローズド キャプション トラックを生成したりできます。 詳しい情報と例については、「[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)」をご覧ください。
+
 ### <a name="motion-detector"></a>Motion Detector
 Motion Detector を使用することで、ひな形の背景を持つビデオでモーションを検出することができます。 これにより、監視カメラで検出されるモーション イベントの誤判定をチェックします。 詳細と例については、 [Azure Media Analytics でのモーション検出](media-services-motion-detection.md)に関するページを参照してください。
+
 ### <a name="face-detector"></a>Face Detector
 Face Detector を使用すると、幸福、悲しみ、驚きなど、人の顔と感情を検出できます。 これは、イベントに参加している人の反応を収集し分析するなど、後で説明するいくつかの業界アプリケーションに有用です。 詳細と例については、 [Azure Media Analytics での顔と感情の検出](media-services-face-and-emotion-detection.md)に関するページを参照してください。
+
 ### <a name="video-summarization"></a>ビデオ要約
 ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。 この機能は、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。 詳細と例については、 [Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)を参照してください。
 ### <a name="optical-character-recognition"></a>光学式文字認識
 Azure Media OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。 これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
 ### <a name="scalable-face-redaction"></a>スケーラブルな顔編集
 Azure Media Redactor は、クラウドでスケーラブルな顔編集を提供する Media Analytics メディア プロセッサです。 顔編集を使用することで、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、ニュース媒体や公共の安全が関係する場合などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[Redact faces with Azure Media Analytics](media-services-face-redaction.md)の記事を参照してください。
+
 ### <a name="content-moderation"></a>コンテンツ モデレート
 Azure Content Moderator を使用すると、マシンによるモデレートをビデオに使用できます。 たとえば、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出し、フラグが設定されたコンテンツを人間のモデレート チームがレビューすることができます。 ビデオを手動でモデレートして、望ましくないコンテンツが含まれていないかどうかを確認するのは、時間とコストがかかる作業です。 このサービスおよび関連するレビュー ツールを使用すると、マシンによるモデレートと目視によるレビューを組み合わせて、高いコスト効率で最適な結果を効率的に得ることができます。 詳細については、[Azure Content Moderator を使用したビデオの処理](media-services-content-moderation.md)に関する記事をご覧ください。
 
@@ -75,7 +78,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 ここでは、Media Analytics のメディア プロセッサを紹介し、.NET または REST を使用してメディア プロセッサ (MP) オブジェクトを取得する方法について説明します。
 
 ### <a name="mp-names"></a>MP 名
-* Azure Media Indexer 2 プレビュー
+
 * Azure Media Indexer
 * Azure Media Face Detector
 * Azure Media Motion Detector
@@ -112,7 +115,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 応答:
@@ -146,7 +149,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

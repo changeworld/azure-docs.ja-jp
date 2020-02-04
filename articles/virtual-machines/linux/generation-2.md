@@ -3,7 +3,7 @@ title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-linux
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791738"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841143"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -30,7 +30,7 @@ ms.locfileid: "74791738"
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
+第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
@@ -100,7 +100,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 
 Azure portal または Azure CLI では、UEFI ブートをサポートする Marketplace イメージから第 2 世代 VM を作成できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 Windows と SLES の第 2 世代のイメージは、Gen1 イメージと同じサーバー プランに含まれています。 フローの観点から言うと、VM のポータルからプランと SKU を選択します。 SKU で第 1 世代と第 2 世代の両方のイメージがサポートされている場合は、VM 作成フローの *[Advanced]\(詳細\)* タブから第 2 世代 VM の作成を選択できます。
 
@@ -123,6 +123,12 @@ PowerShell を使用し、第 1 世代または第 2 世代の SKU を直接参�
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+または、Azure CLI を使用して、**Publisher** によって一覧表示される使用可能な第 2 世代のイメージを確認することもできます。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 OS として Windows Server 2012 を使用して VM を作成している場合は、次のように、第 1 世代 (BIOS) または第 2 世代 (UEFI) の VM SKU を選択します。
@@ -148,7 +154,7 @@ OS として Windows Server 2012 を使用して VM を作成している場合�
     はい。 ただし、どのリージョンでも[第 2 世代 VM のサイズ](#generation-2-vm-sizes)のすべてを使用できるわけではありません。 第 2 世代 VM の可用性は、VM サイズの可用性によって異なります。
 
 * **第 1 世代 VM と第 2 世代 VM の価格に違いはありますか?**  
-    No.
+    いいえ。
 
 * **オンプレミスに第 2 世代の VM の .vhd ファイルがあります。この .vhd ファイルを使用して、Azure に第 2 世代の VM を作成できますか?**
   はい。ご自身の第 2 世代の .vhd ファイルを Azure に取り込み、それを使用して第 2 世代の VM を作成できます。 それには、次の手順を実行してください。
@@ -190,6 +196,6 @@ OS として Windows Server 2012 を使用して VM を作成している場合�
 * **VM を第 1 世代から第 2 世代に移行できますか?**  
     いいえ。VM を作成した後にその世代を変更することはできません。 VM の世代を切り替える必要がある場合は、異なる世代の新しい VM を作成してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Hyper-V の第 2 世代仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)について学習します。

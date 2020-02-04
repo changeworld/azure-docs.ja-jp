@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314727"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838549"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -249,7 +249,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 ```
 
 このエラー メッセージを生成する可能性のある各スキルについて、現在サポートされている言語の参考資料を次に示します。
-* [Text Analytics のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、および [SentimentSkill](cognitive-search-skill-sentiment.md) の場合)
+* [Text Analytics のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、[SentimentSkill](cognitive-search-skill-sentiment.md)、[PIIDetectionSkill](cognitive-search-skill-pii-detection.md) の場合)
 * [Translator のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ([Text TranslationSkill](cognitive-search-skill-text-translation.md) の場合)
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) のサポートされる言語: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>警告:抽出されたテキストが X 文字に切り詰められました
-インデクサーには、1 つのドキュメントから抽出できるテキストの量の制限があります。 この制限は、価格レベルによって異なります。Free レベルの場合は 32,000 文字、Basic レベルの場合は 64,000 文字、Standard レベル、Standard S2 レベル、および Standard S3 レベルの場合は 400 万文字です。 切り詰められたテキストには、インデックスが付けられません。 この警告を回避するには、大量のテキストを含むドキュメントを複数の小さなドキュメントに分割してみてください。 
+インデクサーには、1 つのドキュメントから抽出できるテキストの量の制限があります。 この制限は、価格レベルによって異なります。Free レベルの場合は 32,000 文字、Basic の場合は 64,000 文字、Standard の場合は 400 万文字、Standard S2 の場合は 800 万文字、Standard S3 の場合は 1,600 万文字です。 切り詰められたテキストには、インデックスが付けられません。 この警告を回避するには、大量のテキストを含むドキュメントを複数の小さなドキュメントに分割してみてください。 
 
 詳細については、「[インデクサー制限](search-limits-quotas-capacity.md#indexer-limits)」を参照してください。
 

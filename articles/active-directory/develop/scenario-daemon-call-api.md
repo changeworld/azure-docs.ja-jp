@@ -15,19 +15,18 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46f1676ab1bdcf2b23907824bb9bf543b5f28ce6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962612"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775191"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し
 
-デーモン アプリは、.NET デーモン アプリケーションから Web API を呼び出したり、事前に承認された複数の Web API を呼び出したりすことができます。
+.NET デーモン アプリでは、Web API を呼び出すことができます。 .NET デーモン アプリでは、事前承認されたいくつかの Web API を呼び出すこともできます。
 
-## <a name="calling-a-web-api-daemon-application"></a>Web API デーモン アプリケーションの呼び出し
+## <a name="calling-a-web-api-from-a-daemon-application"></a>デーモン アプリケーションからの Web API の呼び出し
 
 ここでは、トークンを使用して API を呼び出す方法を示します。
 
@@ -68,9 +67,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>複数の API の呼び出し
 
-デーモン アプリの場合、呼び出す Web API は事前に承認されている必要があります。 デーモン アプリでの増分同意はありません (ユーザー対話はありません)。 テナント管理者は、アプリケーションとすべての API アクセス許可に事前に同意する必要があります。 複数の API を呼び出す場合、`AcquireTokenForClient` を呼び出すたびに各リソースのトークンを取得する必要があります。 MSAL は、不要なサービスの呼び出しを回避するために、アプリケーションのトークン キャッシュを使用します。
+デーモン アプリの場合、呼び出す Web API は事前に承認されている必要があります。 デーモン アプリに対する増分同意はありません。 (ユーザーによる操作はありません)。テナント管理者は、アプリケーションとすべての API アクセス許可に事前に同意する必要があります。 複数の API を呼び出す場合、`AcquireTokenForClient` を呼び出すたびに各リソースのトークンを取得する必要があります。 MSAL は、不要なサービスの呼び出しを回避するために、アプリケーションのトークン キャッシュを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

@@ -67,21 +67,11 @@
     - name: ボットで使用する
       items:
         - name: 'C# の場合'
-          items:
-            - name: 1. 基本的なボットの作成
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. Application Insights へのテレメトリの追加
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: Node.js の場合
-          items:
-            - name: 1. 基本的なボットの作成
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. Application Insights へのテレメトリの追加
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
     - name: 開発ライフサイクル

@@ -3,12 +3,12 @@ title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154790"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846576"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -17,7 +17,7 @@ ms.locfileid: "76154790"
 
 ## <a name="overview"></a>概要
 
-この記事を使用して オンプレミス マシンの Azure への移行を評価するには、Azure Migrate: Server Assessment ツールを Azure Migrate プロジェクトに追加します。 [Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。 アプライアンスは、オンプレミス マシンを継続的に検出し、構成データとパフォーマンス データを Azure に送信します。 マシンの検出後、検出されたマシンをグループにまとめ、グループの評価を実行します
+この記事に従って Azure への移行についてオンプレミスのマシンを評価するには、Azure Migrate: Server Assessment ツールを Azure Migrate プロジェクトに追加します。 [Azure Migrate アプライアンス](migrate-appliance.md)をデプロイします。 アプライアンスは、オンプレミス マシンを継続的に検出し、構成データとパフォーマンス データを Azure に送信します。 マシンの検出後、検出されたマシンをグループにまとめ、グループの評価を実行します
 
 ## <a name="limitations"></a>制限事項
 
@@ -55,8 +55,8 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 **[デバイス]** | **[接続]**
 --- | ---
-**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443、5671、5672 で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
-**物理サーバー** | **Windows:** ポート 443、WinRM ポート 5985 (HTTP) および 5986 (HTTPS) で Windows サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 <br/> **Linux:** ポート 22 (UDP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
+**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443 (HTTPS)、5671、5672 (AMQP) で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
+**物理サーバー** | **Windows:** WinRM ポート 5985 (HTTP) および 5986 (HTTPS) で Windows サーバーから構成とパフォーマンスのメタデータをプルするためのインバウンド接続。 <br/> **Linux:** ポート 22 (UDP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
 
 ## <a name="agent-based-dependency-visualization"></a>エージェントベースの依存関係の視覚化
 

@@ -4,18 +4,23 @@ description: インベントリ収集による仮想マシンの管理
 services: automation
 ms.subservice: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419827"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844821"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
-Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 コンピューター上のソフトウェア、ファイル、Linux デーモン、Windows サービス、Windows レジストリ キーのインベントリを収集し、表示することができます。 この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
+Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 ご利用のコンピューター上で次のインベントリ情報を収集して表示できます。
+
+- Windows ソフトウェア (Windows アプリケーションと Windows の更新プログラム)、サービス、ファイル、レジストリ キー
+- Linux ソフトウェア (パッケージ) のデーモン、ファイル
+
+この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -25,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>仮想マシン リソース ページからインベントリ収集を有効にする
 
@@ -58,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
@@ -67,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"
@@ -76,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
