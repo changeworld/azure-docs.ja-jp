@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
 ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76294152"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
@@ -138,7 +138,7 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 次の表では、いくつかの最も一般的なグループ化とフィルタリングのオプションと、それをどのようなときに使うかを示します。
 
-| プロパティ | 使用する場合 | メモ |
+| プロパティ | 使用する場合 | Notes |
 | --- | --- | --- |
 | **可用性ゾーン** | AWS のコストを可用性ゾーン別にします。 | AWS スコープと管理グループに対してのみ適用できます。 Azure データは可用性ゾーンを含んでおらず、"**該当なし**" として表示されます。 |
 | **請求期間** | PAYG のコストを請求月別にします。 | 請求対象となる PAYG 料金の正確な表現を取得するには、 **[請求期間]** を使用します。 カスタムの日付範囲に絞り込む場合は、請求期間の前後 2 日を余分に追加してください。 請求期間とまったく同じ日付に制限すると、請求書と一致しません。 コストは、請求期間に含まれるすべての請求書から表示されます。 特定の請求書に絞り込むには、 **[請求書 ID]** を使用します。 該当するのは PAYG サブスクリプションのみです。EA と MCA は歴月ごとに請求されます。 EA/MCA アカウントでは、日付の選択や月単位の細分性でカレンダーの月を使用して、同じ目的を実現できます。 |

@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
 ms.openlocfilehash: 756e2f275a92a31a99604aaf7ef880bfdce8149b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984587"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用

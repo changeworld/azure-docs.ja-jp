@@ -4,17 +4,16 @@ description: Azure Cost Management と Billing の機能を使用して、請求
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2019
+ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
-manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: cadff1d83a8b47a540efe9b74ffaf6de171138b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982790"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769883"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Azure Cost Management と Billing の概要
 
@@ -41,7 +40,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 #### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
-|スコープ  |定義  |
+|Scope  |定義  |
 |---------|---------|
 |請求先アカウント     | 1 つまたは複数の Azure サブスクリプションの 1 人の所有者 (アカウント管理者) を表します。 アカウント管理者には、サブスクリプションの作成、請求書の表示、サブスクリプションの課金の変更など、さまざまな課金タスクを実行する権限があります。  |
 |サブスクリプション     |  Azure リソースのグループを表します。 請求書は、サブスクリプション スコープで生成されます。 請求書の支払いに使用される独自の支払方法があります。|
@@ -49,7 +48,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 #### <a name="enterprise-agreement"></a>Enterprise Agreement
 
-|スコープ  |定義  |
+|Scope  |定義  |
 |---------|---------|
 |請求先アカウント    | Enterprise Agreement 加入契約を表します。 請求書は、課金アカウント スコープで生成されます。 これは、部署と登録アカウントを使用して構成されます。  |
 |部署     |  登録アカウントの任意のグループです。      |
@@ -58,7 +57,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 #### <a name="microsoft-customer-agreement"></a>Microsoft 顧客契約
 
-|スコープ  |処理手順  |
+|Scope  |処理手順  |
 |---------|---------|
 |請求先アカウント     |   複数の Microsoft 製品およびサービスの顧客契約を表します。 課金アカウントは、課金プロファイルと請求書セクションを使用して構成されます。   |
 |請求プロファイル     |  請求書とその支払い方法を表します。 請求書はこのスコープで生成されます。 課金プロファイルには、複数の請求書セクションを含めることができます。      |

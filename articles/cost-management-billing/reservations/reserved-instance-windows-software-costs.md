@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/14/2019
 ms.author: banders
 ms.openlocfilehash: 7807129061328d1c6d563b9058987388e84c6e4c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986795"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 2768d6e146a37e86bb36353f661179ebd7b5033d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986315"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
@@ -44,7 +44,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
  ![MOSP の階層を示すスクリーンショット](./media/view-all-accounts/mosp-hierarchy.png)
 
-|スコープ  |定義  |
+|Scope  |定義  |
 |---------|---------|
 |請求先アカウント     | Azure を使用するために顧客が承諾する契約を表します。 1 つまたは複数のサブスクリプションが含まれます。  |
 |サブスクリプション     |  Azure リソースのグループを表します。 請求書はこのスコープで生成されます。 このスコープには、その他の課金情報 (支払い方法、利用先住所など) が関連付けられます。|
@@ -53,7 +53,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ![EA の階層を示すスクリーンショット](./media/view-all-accounts/ea-hierarchy.png)
 
-|スコープ  |定義  |
+|Scope  |定義  |
 |---------|---------|
 |請求先アカウント    | Enterprise Agreement 加入契約を表します。 1 つまたは複数の部署およびアカウントが含まれます。 請求書はこのスコープで生成されます。 |
 |部署     |  アカウントのグループ。コストを論理上のグループに分けて予算を設定する目的で必要に応じて使用されます。     |
@@ -63,7 +63,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ![MCA の階層を示すスクリーンショット](./media/view-all-accounts/mca-hierarchy.png)
 
-|スコープ  |処理手順  |
+|Scope  |処理手順  |
 |---------|---------|
 |請求先アカウント     |   Microsoft の製品およびサービスを使用するために顧客が承諾する契約を表します。 1 つまたは複数の課金プロファイルが含まれます。 |
 |請求プロファイル     |   請求書とそれに関連する課金情報 (支払い方法、請求先住所など) を表します。 1 つまたは複数の請求書セクションが含まれます。 |
@@ -73,7 +73,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ![MPA の階層を示すスクリーンショット](./media/view-all-accounts/mpa-hierarchy.png)
 
-|スコープ  |処理手順  |
+|Scope  |処理手順  |
 |---------|---------|
 |請求先アカウント     |   新しいコマース エクスペリエンスで顧客の Microsoft 製品およびサービスを管理するためのパートナー契約を表します。 1 つまたは複数の課金プロファイルおよび顧客が含まれます。   |
 |請求プロファイル     |   通貨の請求書を表します。     |
@@ -82,7 +82,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ## <a name="switch-billing-scope-in-the-azure-portal"></a>Azure portal で課金スコープを切り替える
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

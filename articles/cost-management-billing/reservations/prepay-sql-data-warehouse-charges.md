@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986843"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金のコストを節約する
@@ -43,7 +43,7 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>SQL Data Warehouse の予約容量を購入する
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
    - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。

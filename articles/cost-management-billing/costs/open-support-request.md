@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
 ms.openlocfilehash: 4ebb2a1f617da75aad8cea805ba793910375c47a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984835"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する

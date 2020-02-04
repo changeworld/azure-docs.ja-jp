@@ -1,21 +1,20 @@
 ---
 title: Azure での Cloudyn コスト管理レポートの概要 | Microsoft Docs
 description: この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fff08bc30e0d1bae77a2aee641f6e211cea40beb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984771"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773985"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 

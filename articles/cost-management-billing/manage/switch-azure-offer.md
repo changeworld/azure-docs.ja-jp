@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 8e083391a04188345143f8fdf9a5a945abcd9eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986363"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985455"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
@@ -30,7 +30,7 @@ Microsoft 顧客契約の課金アカウントでは、クレジットが課金�
 
 ### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

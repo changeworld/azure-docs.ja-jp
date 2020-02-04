@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.openlocfilehash: 340d395278eb924570e07d106308e63be3c2f9af
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986743"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に対する予約割引の適用方法

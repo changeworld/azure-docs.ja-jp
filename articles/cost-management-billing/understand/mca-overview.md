@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986619"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 顧客契約の課金アカウントの概要
@@ -51,7 +51,7 @@ Azure portal で、請求書を表示し、ドキュメントをダウンロー�
 
 各課金プロファイルには、その請求書の支払いに使用される独自の支払方法があります。 以下の支払方法がサポートされています。
 
-| 種類             | 定義  |
+| Type             | 定義  |
 |------------------|-------------|
 |Azure クレジット    |  クレジットは請求書の対象料金に自動的に適用され、支払う必要のある金額が減額されます。 詳細については、[課金プロファイルの Azure クレジット残高の追跡](../manage/mca-check-azure-credits-balance.md)に関するページを参照してください。 |
 |小切手/電信送金 | アカウントで小切手/電信送金による支払いが承認されている場合、 小切手/電信送金で請求書に記載される請求金額を支払うことができます。 支払いの指示は請求書で与えられます |

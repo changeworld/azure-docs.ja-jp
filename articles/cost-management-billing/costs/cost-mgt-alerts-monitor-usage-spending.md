@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984583"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する

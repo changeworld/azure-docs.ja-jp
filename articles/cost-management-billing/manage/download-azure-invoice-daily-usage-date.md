@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985831"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
@@ -139,7 +139,7 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 
 EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

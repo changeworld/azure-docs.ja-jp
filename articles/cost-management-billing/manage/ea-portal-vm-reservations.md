@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985683"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス

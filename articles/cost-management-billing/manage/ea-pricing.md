@@ -13,10 +13,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 14346ceda9574d18050108e585d5ff4cdb133e31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985667"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード

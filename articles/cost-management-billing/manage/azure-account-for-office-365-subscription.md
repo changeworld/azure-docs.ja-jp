@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986151"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
@@ -54,7 +54,7 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 サインアップが完了すると、Azure サブスクリプションが属しているのと同じ Azure Active Directory に Office 365 サブスクリプションが追加されます。 詳細については、「[Azure サブスクリプションと Office 365 サブスクリプションの背景情報](office-365-account-for-azure-subscription.md#more-about-subs)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 ## <a id="RoleInAzureAD"></a>Azure AD でアカウントのアクセス許可を確認する
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]** をクリックし、 **[Active Directory]** を検索します。
 
     ![Azure ポータルでの Active Directory のスクリーンショット](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984471"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure サブスクリプションのサインインに関する問題のトラブルシューティング

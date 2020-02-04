@@ -17,10 +17,10 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984463"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー

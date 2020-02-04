@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985387"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
@@ -77,7 +77,7 @@ ms.locfileid: "75985387"
 
 ## <a name="check-the-transfer-request-status"></a>譲渡要求の状態を確認する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

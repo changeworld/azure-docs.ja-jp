@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: a7520d7b3bd46aa9151c68598574f9cbec84d6fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984619"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
@@ -82,7 +82,7 @@ AWS 統合アカウントのコストを表示するには、スコープ ピッ
 | 測定 |   | All |   |
 | Meter category | lineItem/ProductCode | All |   |
 | Meter subcategory | lineitem/UsageType | All |   |
-| 操作 | lineItem/Operation | All |   |
+| Operation | lineItem/Operation | All |   |
 | リソース | lineItem/ResourceId | All |   |
 | リソースの種類 | product/instanceType | All | product/instanceType が null の場合は、UsageType が使用されます。 |
 | ResourceGuid | 該当なし | All | Azure メーターの GUID。 |

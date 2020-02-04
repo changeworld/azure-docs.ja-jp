@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986851"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する

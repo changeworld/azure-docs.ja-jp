@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985703"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
@@ -68,7 +68,7 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 認証と承認をそれぞれ呼び出すために API キーを渡します。 次のプロパティを HTTP ヘッダーに渡します。
 
-| 要求ヘッダー キー | 値 |
+| 要求ヘッダー キー | Value |
 | --- | --- |
 | 承認 | 次の形式で値を指定します: **bearer {API\_KEY}**
 例: bearer \&lt;APIKey\&gt; |

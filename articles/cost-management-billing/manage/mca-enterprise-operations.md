@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985427"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する

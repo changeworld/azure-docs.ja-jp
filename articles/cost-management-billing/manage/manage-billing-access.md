@@ -17,10 +17,10 @@ ms.date: 12/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985487"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理

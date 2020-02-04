@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8cb803c78b8bb5acd7880f79a19b5e3f0a978bd8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984743"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773964"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -48,13 +48,6 @@ Azure EA サブスクリプションのコスト データを表示するには�
 
 <sup>2</sup> 登録アカウントも、"アカウント所有者" と呼ばれます。
 
-次の図は、Cost Management のスコープと、ロールおよび EA ポータル設定との関係を示しています。
-
-![コスト管理のスコープと、ロールおよび EA ポータル設定との関係を示す図](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
-
-EA ポータルで **[DA ビューの請求額]** が無効になっている場合、部門とアカウントのコストを表示しようとすると、"*組織のコストが無効になっている*" ことを示すメッセージが表示されます。
-
-同様に、EA ポータルで **[AO ビューの請求額]** が無効になっている場合、登録アカウント、管理グループ、サブスクリプション、リソース グループのコストを表示しようとすると、"*組織のコストが無効になっている*" ことを示すメッセージが表示されます。
 
 ## <a name="other-azure-account-scopes"></a>その他の Azure アカウントのスコープ
 
@@ -133,7 +126,7 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 
 管理グループのスコープを表示するアクセスには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _管理グループ_ を検索して、 **[管理グループ]** を選択します。
 3. 階層内の管理グループを選択します。
 4. 管理グループの名前の横にある **[詳細]** をクリックします。
@@ -149,7 +142,7 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 
 サブスクリプションにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 サブスクリプションへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、サブスクリプションに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _サブスクリプション_ を検索して、 **[サブスクリプション]** を選択します。
 3. サブスクリプションを選択します。
 4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。
@@ -163,7 +156,7 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 
 リソース グループにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 リソース グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、リソース グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _リソース グループ_ を検索して、 **[リソース グループ]** を選択します。
 3. リソース グループを選択します。
 4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。

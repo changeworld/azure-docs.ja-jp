@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984547"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法

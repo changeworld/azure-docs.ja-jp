@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986471"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
@@ -199,7 +199,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 ### <a name="azure-subscriptions"></a>Azure サブスクリプション
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -219,7 +219,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>課金アカウントに対するエンタープライズ管理者のアクセス権
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -235,7 +235,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>課金プロファイルに対するエンタープライズ管理者のアクセス権
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -251,7 +251,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>請求書セクションに対するエンタープライズ管理者、部署管理者、アカウント オーナーのアクセス権
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

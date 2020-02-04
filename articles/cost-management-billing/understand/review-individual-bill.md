@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/20/2019
 ms.author: banders
 ms.openlocfilehash: 1249758e5dd5b7e823c11890e57549195da22529
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984127"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>チュートリアル:個々の Azure 請求書を確認する
@@ -88,14 +88,14 @@ Azure portal で、検索ボックスに「*サブスクリプション*」と�
 | --- | --- |
 |Billing cycle | BillingPeriodStartDate BillingPeriodEndDate |
 |Name |測定カテゴリ |
-|種類 |測定サブカテゴリ |
+|Type |測定サブカテゴリ |
 |リソース |MeterName |
 |リージョン |MeterRegion |
 |使用量 | Quantity |
 |Included |含まれる量 |
 |Billable |超過量 |
 |料金 | EffectivePrice|
-| 値 | コスト |
+| Value | コスト |
 
 請求書の **[利用料金]** セクションには、請求期間中に使用された各メーターの合計値 (コスト) が示されます。 たとえば、次の画像では、"*P10 ディスク*" リソースの Azure Storage サービスの利用料金が示されています。
 

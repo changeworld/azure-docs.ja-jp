@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76121099"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する

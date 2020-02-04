@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986423"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの用語

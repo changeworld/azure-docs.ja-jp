@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985915"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する
@@ -24,7 +24,7 @@ Azure 無料アカウントに含まれる無料サービスは、そのサー�
 
 ## <a name="check-usage-in-the-azure-portal"></a>Azure portal で使用状況を確認する
 
-1.  [Azure portal](https://portal.azure.com) にサインインする
+1.  [Azure portal](https://portal.azure.com) にサインインします。
 
 2.  **サブスクリプション**を検索します。
 

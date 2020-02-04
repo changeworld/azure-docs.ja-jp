@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 139ad67035a96fb67bd96c4abb14ce9e1f26bf4f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6f974ae35dbf23a134b775fe0d4f8cf5195a75af
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984755"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773923"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn ポータルで利用できるレポート
 

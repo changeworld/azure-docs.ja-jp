@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: 3cbc4ab4f0e2ad18c7d1d430ed5501e23b5f5f4d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75983727"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>チュートリアル:Microsoft 顧客契約の請求書を確認する
@@ -27,7 +27,7 @@ ms.locfileid: "75983727"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure portal で請求されたトランザクションを確認する
+> * 請求されたトランザクションを Azure portal で確認する
 > * 保留中の料金を確認して次の請求書を見積もる
 > * Azure 利用料金を分析する
 
@@ -100,7 +100,7 @@ Microsoft 顧客契約の課金アカウントでは、請求が行われるま�
 
 ### <a name="view-summary-of-pending-charges"></a>保留中の料金の概要を表示する
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 課金プロファイルを選択します。 アクセス方法によっては、請求先アカウントを選択することが必要な場合があります。 請求先アカウントから **[課金プロファイル]** を選択し、課金プロファイルを選択します。
 
@@ -116,7 +116,7 @@ Microsoft 顧客契約の課金アカウントでは、請求が行われるま�
 
 保留中の料金を確認するときに、その料金を発生させた個々のトランザクションを分析することで、料金のことを理解できます。 この時点では、[すべてのトランザクション] ページに保留中の利用料金は表示されません。 [Azure サブスクリプション] ページで、保留中の利用料金を確認できます。
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 Azure portal の検索ボックスで「*コストの管理と請求*」と入力し、 **[コストの管理と請求]** を選択します。
 
@@ -130,7 +130,7 @@ Azure portal の検索ボックスで「*コストの管理と請求*」と入�
 
 ### <a name="view-pending-usage-charges"></a>保留中の利用料金を表示する
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 Azure portal の検索ボックスで「*コストの管理と請求*」と入力し、 **[コストの管理と請求]** を選択します。
 
@@ -191,7 +191,7 @@ Azure の使用状況および料金の CSV ファイル内の **subscriptionNam
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * Azure portal で請求されたトランザクションを確認する
+> * 請求されたトランザクションを Azure portal で確認する
 > * 保留中の料金を確認して次の請求書を見積もる
 > * Azure 利用料金を分析する
 

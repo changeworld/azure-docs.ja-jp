@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985883"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理

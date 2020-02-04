@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270868"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する

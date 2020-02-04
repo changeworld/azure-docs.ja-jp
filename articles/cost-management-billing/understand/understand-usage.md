@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290140"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について

@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
 ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985135"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
@@ -37,7 +37,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 14 日間以上のアクティビティがあるアクティブな仮想マシンが必要です。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサインインします。
 
 ## <a name="view-cost-optimization-recommendations"></a>コストの最適化に関する推奨事項を表示する
 

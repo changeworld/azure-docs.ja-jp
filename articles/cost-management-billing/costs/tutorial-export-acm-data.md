@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: jasonh
 ms.custom: seodec18
 ms.openlocfilehash: 76ee5aba0f1d0769e15a5969409dfef2a018e477
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984037"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
@@ -43,7 +43,7 @@ Azure Storage アカウントの場合:
 - BLOB またはファイル ストレージに対して Azure ストレージ アカウントを構成する必要があります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-daily-export"></a>毎日のエクスポートを作成する
 

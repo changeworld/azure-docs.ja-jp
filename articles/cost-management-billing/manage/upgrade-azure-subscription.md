@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984975"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Azure 無料アカウントまたは Azure for Students Starter アカウントをアップグレードする

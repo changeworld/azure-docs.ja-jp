@@ -1,21 +1,20 @@
 ---
 title: Azure で Cloudy 用にストレージ アカウントを構成する | Microsoft Docs
 description: この記事では、Cloudyn 用に Azure ストレージ アカウントと AWS ストレージ バケットを構成する方法について説明します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 2a8f3645dcf2987d0c0a204e7e8a86cd6d718e47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986543"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769955"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 

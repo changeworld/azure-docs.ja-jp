@@ -8,12 +8,12 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547576"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769666"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -21,7 +21,7 @@ ms.locfileid: "76547576"
 
 ## <a name="add-a-new-enterprise-administrator"></a>新しいエンタープライズ管理者を追加する
 
-エンタープライズ管理者は、Azure EA 登録を管理する際に、最も多くの特権を持っています。 EA 契約を設定したときに、最初の Azure EA 管理者が作成されています。 ただし、いつでも新しい管理者を追加したり、管理者を削除したりできます。 新しい管理者を追加できるのは、既存の管理者のみです。 エンタープライズ管理者を追加する方法の詳細については、「[Create another enterprise admin (別のエンタープライズ管理者を作成する)](ea-portal-get-started.md#create-another-enterprise-admin)」を参照してください。課金プロファイルのロールとタスクの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+エンタープライズ管理者は、Azure EA 登録を管理する際に、最も多くの特権を持っています。 EA 契約を設定したときに、最初の Azure EA 管理者が作成されています。 ただし、いつでも新しい管理者を追加したり、管理者を削除したりできます。 新しい管理者を追加できるのは、既存の管理者のみです。 エンタープライズ管理者を追加する方法の詳細については、「[Create another enterprise admin (別のエンタープライズ管理者を作成する)](ea-portal-get-started.md#create-another-enterprise-administrator)」を参照してください。課金プロファイルのロールとタスクの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
 
 ## <a name="update-user-state-from-pending-to-active"></a>ユーザー状態を保留中からアクティブに更新する
 
@@ -31,7 +31,7 @@ ms.locfileid: "76547576"
 
 Azure EA 管理者は、部署を作成した後、部署管理者を追加し、それぞれを部署に関連付けることができます。 部署管理者は、新しいアカウントを作成できます。 Azure EA サブスクリプションを作成するには、新しいアカウントが必要です。
 
-部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](ea-portal-get-started.md#add-a-department-admin)に関するセクションを参照してください。
+部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](ea-portal-get-started.md#add-a-department-administrator)に関するセクションを参照してください。
 
 ## <a name="associate-an-account-to-a-department"></a>アカウントを部門に関連付ける
 

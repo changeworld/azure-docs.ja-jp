@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984375"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
@@ -50,7 +50,7 @@ Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書�
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Azure portal で請求書をダウンロードする
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
 1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
@@ -89,7 +89,7 @@ Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書�
 
 Microsoft 顧客契約の課金アカウントをお持ちの場合は、メールで請求書を受け取ることをオプトインできます。 課金プロファイルで所有者、共同作成者、閲覧者、または請求書管理者のロールを持つすべてのユーザーは、メールでその請求書を受け取ります。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. "**コスト管理 + 請求**" を検索します。
 
@@ -115,7 +115,7 @@ Microsoft 顧客契約の課金アカウントをお持ちの場合は、メー�
 
 他のユーザーに課金プロファイルの請求書管理者ロールを割り当てることにより、請求書の表示、ダウンロード、および支払いを行うためのアクセス権を付与することができます。 請求書をメールで受け取ることをオプトインした場合、これらのユーザーもメールで請求書を受け取ります。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. "**コスト管理 + 請求**" を検索します。
 

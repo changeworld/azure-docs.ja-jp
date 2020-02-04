@@ -1,21 +1,20 @@
 ---
 title: Azure で CSP パートナー情報を使用して Cloudyn に登録する
 description: このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/18/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
-manager: benshy
-ms.openlocfilehash: 420bca89903b3b88d7930165f95742ebb4f74d5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.reviewer: benshy
+ms.openlocfilehash: 169a188e842fac667091aacd3c7e8b762a32ecf8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75983010"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774067"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 

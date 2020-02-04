@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985303"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する

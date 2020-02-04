@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985983"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Azure アカウントのプロファイル情報を変更する

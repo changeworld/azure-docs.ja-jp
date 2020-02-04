@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 58bd1d3e3fb27344706b23866a68c7e1363e7ec2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985087"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する

@@ -12,10 +12,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 5ac0918fcd8c5a1eb9242d603a7e3433d0f709ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984571"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要
@@ -105,7 +105,7 @@ Enterprise のお客様は、この API を使用して、リソース、リソ�
 
 -   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、推奨の結果を調整します。
-    - スコープ
+    - Scope
     - ルックバック期間
 -   **別の種類のオファーの予約情報** - 予約情報は、現在、Enterprise および Web Direct のお客様が利用できます。
 

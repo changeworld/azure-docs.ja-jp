@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985771"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正

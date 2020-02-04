@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
 ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76122153"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要

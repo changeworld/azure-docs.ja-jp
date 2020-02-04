@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985699"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング

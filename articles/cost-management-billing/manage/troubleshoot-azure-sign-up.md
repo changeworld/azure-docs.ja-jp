@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984827"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure のサインアップのトラブルシューティング

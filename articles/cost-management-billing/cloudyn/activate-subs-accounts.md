@@ -1,21 +1,20 @@
 ---
 title: Azure サブスクリプションとアカウントをアクティブ化する | Microsoft Docs
 description: Azure Resource Manager API による新規アカウントおよび既存アカウントへのアクセスを有効にし、アカウントに関する一般的な問題を解決します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a3d40e478d1fbb4a789124b72b73268db37540ab
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6b788df15b14f8e2e0b394cf7002a1c8236d2c67
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75983130"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770499"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -60,7 +59,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 1. アカウント管理で Cloudyn に既に存在する _アクティブ化されていない_ サブスクリプションを更新する場合は、親 _テナント GUID_ の右にある編集用の鉛筆アイコンをクリックします。 サブスクリプションは親テナントの下でグループ化されるため、サブスクリプションを個別にアクティブ化しないようにします。
     ![[サブスクリプションの再検出] ボックスで自分のテナント ID を選択](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
-    1. [Azure portal](https://portal.azure.com) にサインインする
+    1. [Azure portal](https://portal.azure.com) にサインインします。
     2. Azure Portal で、 **[Azure Active Directory]** を選びます。
     3. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。
     4. [ディレクトリ ID] の GUID をコピーします。 この値がテナント ID です。

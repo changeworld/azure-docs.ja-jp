@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984967"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft Partner Agreement の請求書の用語

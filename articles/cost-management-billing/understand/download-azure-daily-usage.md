@@ -9,10 +9,10 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 02d446d1b70b64092501804e793b400e983a4d80
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986623"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
@@ -23,7 +23,7 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portal から利用状況をダウンロードする (.csv)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -38,7 +38,7 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と
 
 EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -50,7 +50,7 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月度累計使用量をダウンロードすることができます。 これらの料金はまだ請求されていません。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. "*コスト管理 + 請求*" を検索します。
 3. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
 4. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。

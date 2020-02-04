@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986639"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
@@ -31,7 +31,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 
 所有者または閲覧者として予約を表示するには
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **予約**を検索します。
     ![Azure portal の検索を表示しているスクリーンショット](./media/view-reservations/portal-reservation-search.png)  
 3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
@@ -48,7 +48,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 
 Azure portal で予約トランザクションを表示するには
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/view-reservations/portal-cm-billing-search.png)

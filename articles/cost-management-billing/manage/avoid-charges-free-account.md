@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985063"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Azure 無料アカウントでの課金を避ける
@@ -41,7 +41,7 @@ Azure 無料アカウントには、月ごとの容量が制限された無料�
 
 無料のサービスおよび数量は、12 か月目の末日に期限切れになります。 無料サービスの有効期限は Azure portal で確認できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. 左側のナビゲーション領域で、 **[すべてのサービス]** を選択します。
 

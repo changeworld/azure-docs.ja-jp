@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985499"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
@@ -166,7 +166,7 @@ Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアク�
 
 控除を要求するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。
 2. 新しいサポート リクエストを作成します。
 3. **[問題の種類]** で **[課金]** を選択します。
 4. **[問題の種類]** で **[払戻要求]** を選択します。

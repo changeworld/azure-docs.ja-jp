@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984867"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure 外部サービスの料金について
@@ -54,7 +54,7 @@ Microsoft 顧客契約 (MCA) または Microsoft Partner Agreement (MPA) をお�
 
 MCA も MPA もお持ちでない場合、サードパーティの料金は別の請求書になります。 Azure Marketplace の請求書は、次の手順に従って、Azure portal から表示およびダウンロードできます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。
 1. 左側のメニューで **[請求書]** を選択します。
 1. **[Azure Marketplace と Reservations]** タブをクリックします。![[Azure Marketplace と Reservations] タブの画像](./media/understand-azure-marketplace-charges/invoice-tabs.png)
@@ -68,7 +68,7 @@ EA のお客様は、EA ポータルで外部サービスの支払いを表示�
 
 外部サービスを購入するときに、リソースの Azure サブスクリプションを選択します。 選択した Azure サブスクリプションの支払い方法が、外部サービスの支払い方法になります。 外部サービスの支払い方法を変更するには、外部サービスに関連付けられている [Azure サブスクリプションの支払い方法を変更する](../manage/change-credit-card.md)必要があります。 外部サービスの注文がどのサブスクリプションに関連付けられているかを確認するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション メニューで、 **[すべてのリソース]** をクリックします。
      ![すべてのリソース メニュー項目のスクリーンショット](./media/understand-azure-marketplace-charges/all-resources.png)
 1. ご利用の外部サービスを検索します。
@@ -97,7 +97,7 @@ EA のお客様は、EA ポータルで外部サービスの支払いを表示�
 ## <a name="cancel-an-external-service-order"></a>外部サービスの注文をキャンセルする
 外部サービスの注文をキャンセルする場合は、[Azure Portal](https://portal.azure.com) でリソースを削除します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション メニューで、 **[すべてのリソース]** をクリックします。
     ![すべてのリソース メニュー項目のスクリーンショット](./media/understand-azure-marketplace-charges/all-resources.png)
 1. ご利用の外部サービスを検索します。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76313928"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への予約割引の適用方法

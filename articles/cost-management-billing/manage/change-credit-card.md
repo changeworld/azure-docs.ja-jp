@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985919"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
@@ -113,7 +113,7 @@ Azure portal では、新しいクレジット カードの追加、既存のク
 
 既定の支払い方法を小切手/電信送金に切り替える場合、[課金プロファイルを小切手/電信送金に切り替える](pay-by-invoice.md)方法をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
 1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
 

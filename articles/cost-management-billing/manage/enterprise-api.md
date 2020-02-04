@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75985659"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
@@ -29,7 +29,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 * **API キーを取得または生成** - エンタープライズ ポータルにログインし、[レポート] > [使用状況のダウンロード] > [API アクセス キー] に移動して API キーを生成または取得します。
 * **API でのキーのパス**-呼び出しごとに API キーを渡して認証と承認を受ける必要があります。 次のプロパティは、HTTP ヘッダーに置かれている必要があります。
 
-|Request Header Key | 値|
+|Request Header Key | Value|
 |-|-|
 |承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09|
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f7382fc81bbb7e0f3ac61b19c1efa1e7de3e9ed7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986727"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Azure SQL データベースに対する予約割引の適用方法

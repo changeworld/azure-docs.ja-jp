@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75986291"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
@@ -44,7 +44,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 予約のスコープを更新するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. 予約を選択します。
 4. **[設定]**  >  **[構成]** を選択します。
@@ -65,7 +65,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 予約のアクセス管理を委任するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
 3. どの予約のアクセス権を他のユーザーに委任するかを選択します。
 4. **[アクセス制御 (IAM)]** を選択します。
@@ -120,7 +120,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 予約の最適化設定を更新するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. 予約を選択します。
 4. **[設定]**  >  **[構成]** を選択します。
@@ -134,7 +134,7 @@ Azure の予約の割引は、継続的にリソースを使用した場合に�
 
 予約の使用状況を表示する方法の 1 つは、Azure portal にあります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  > [ **[予約]** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) を選択し、予約の **[使用率 (%)]** に注目します。  
   ![予約の一覧を表示したイメージ](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 予約を選択します。
