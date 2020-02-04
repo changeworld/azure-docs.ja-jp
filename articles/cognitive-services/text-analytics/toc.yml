@@ -14,10 +14,8 @@
   items:
     - name: クライアント ライブラリ
       items:
-        - name: v3.0 プレビューを使用したテキストの分析
+        - name: クライアント ライブラリを使用したテキストの分析
           href: quickstarts/text-analytics-sdk.md
-        - name: v2 を使用したテキストの分析
-          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: Java の使用

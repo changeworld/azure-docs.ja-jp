@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8d9a43ac5db4cedc8b27910bb838b911f3ebc6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293149"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834129"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -414,7 +413,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - `PublicClientApplicationBuilder` で渡される機関の要件は次のとおりです。
   - `https://login.microsoftonline.com/{tenant}/` の形式でテナント化されている。ここで、`tenant` は、テナント ID を表す GUID またはテナントに関連付けられているドメインです。
-  - 任意の[職場および学校アカウント](`https://login.microsoftonline.com/organizations/`)用である。
+  - 任意の職場および学校アカウント用である: `https://login.microsoftonline.com/organizations/`。
   - Microsoft 個人アカウントはサポートされていません。 /common および /consumers テナントを使用することはできません。
 
 - 統合 Windows 認証はサイレント フローであるため、次の要件が適用されます。
