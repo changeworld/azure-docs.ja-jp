@@ -253,7 +253,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 ```
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
