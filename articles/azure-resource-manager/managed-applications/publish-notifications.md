@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649559"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715676"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 
@@ -189,7 +189,7 @@ billingDetails | *Azure Marketplace マネージド アプリケーションに�
 
 ## <a name="endpoint-authentication"></a>エンドポイントの認証
 Webhook エンドポイントをセキュリティで保護し、通知の信頼性を確保するには、次のようにします。
-1. https://your-endpoint.com?sig=Guid のように、Webhook URI に加えて、クエリ パラメーターを指定します。 各通知で、クエリ パラメーター `sig` が予期された値 `Guid` を持っていることを確認します。
+1. https\://your-endpoint.com?sig=Guid のように、Webhook URI にクエリ パラメーターを指定します。 各通知で、クエリ パラメーター `sig` が予期された値 `Guid` を持っていることを確認します。
 2. applicationId を使用してマネージド アプリケーション インスタンスに対して GET を発行します。 一貫性を確保するために、provisioningState が通知の provisioningState と一致していることを確認します。
 
 ## <a name="notification-retries"></a>通知の再試行

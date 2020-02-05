@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus メッセージング エンティティの一時停止 |Microsoft Docs
-description: Azure Service Bus メッセージ エンティティを一時停止し再アクティブ化します。
+title: Azure Service Bus - メッセージング エンティティを一時停止する
+description: この記事では、Azure Service Bus メッセージ エンティティ (キュー、トピック、およびサブスクリプション) を一時停止し、再アクティブ化する方法について説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e2ffda3141462d19557af3af26c117ee505c40ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170804"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760387"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
 
@@ -40,8 +40,8 @@ ms.locfileid: "66170804"
 
 キューに設定可能な状態は次のとおりです。
 
--   **アクティブ**:キューはアクティブです。
--   **無効**: キューは一時停止状態です。
+-   **[アクティブ]** : キューはアクティブです。
+-   **Disabled**: キューは一時停止状態です。
 -   **SendDisabled**: キューは、受信は許可されていますが、部分的に一時停止状態です。
 -   **ReceiveDisabled**: キューは、送信は許可されていますが、部分的に一時停止状態です。
 
@@ -57,7 +57,7 @@ $q.Status = "Disabled"
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

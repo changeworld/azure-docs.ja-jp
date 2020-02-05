@@ -3,20 +3,20 @@ title: Scala および Azure 上の Spark を使用したデータ サイエン�
 description: Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907705"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716765"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -123,7 +123,7 @@ Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定�
     val sqlContext = new SQLContext(sc)
 
 
-## <a name="data-ingestion"></a>データの取り込み
+## <a name="data-ingestion"></a>データ インジェスト
 データ サイエンス プロセスではまず、分析するデータを取り込みます。 データは、データが保管されている外部のソースまたはシステムからデータ探索およびモデリング環境に読み込みます。 この記事で取り込むデータは、タクシーの営業ファイルおよび料金ファイル (.tsv ファイルとして保存) を結合した 0.1% サンプルです。 データ探索およびモデリング環境は Spark です。 このセクションでは、次の一連のタスクを実行するコードを示します。
 
 1. データおよびモデル ストレージのディレクトリ パスを設定する。
@@ -259,8 +259,8 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>ローカル マジックと SQL マジックを使用してデータをプロットする
 既定では、Jupyter Notebook から実行するコード スニペットの出力は、ワーカー ノードで永続化されるセッションのコンテキスト内で使用できます。 計算を実行するたびに乗車データをワーカー ノードに保存する場合や、計算に必要なすべてのデータが Jupyter サーバー ノード (ヘッド ノード) でローカルで使用可能な場合は、 `%%local` マジックを使用して Jupyter サーバー上でコード スニペットを実行できます。
 
-* **SQL マジック** (`%%sql`): HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
-* `%%local` **マジック**: `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+* **SQL マジック** (`%%sql`): HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 この設定は、出力をローカル モードで使用できることを意味します。
+* `%%local` **マジック**。 `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
 ### <a name="query-the-data-by-using-sql"></a>SQL を使用してデータを照会する
 このクエリでは、タクシーの営業について、料金、乗客数、チップの金額を取得します。
@@ -291,7 +291,7 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 
 * テーブル
 * 円グラフ
-* 折れ線グラフ
+* Line
 * 領域
 * 棒グラフ
 
@@ -853,7 +853,7 @@ Python matplotlib を使用してプロットを作成します。
 ### <a name="create-a-gbt-regression-model"></a>GBT 回帰モデルを作成する
 次に、Spark ML の `GBTRegressor()` 関数を使用して GBT 回帰モデルを作成し、テスト データでモデルを評価します。
 
-[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は、回帰および分類に使用できます。 カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類設定でも使用できます。
+[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) は、複数のデシジョン ツリーをまとめたものです。 GBTS は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBTS は、回帰および分類に使用できます。 カテゴリの特徴を処理可能ですが特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類設定でも使用できます。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

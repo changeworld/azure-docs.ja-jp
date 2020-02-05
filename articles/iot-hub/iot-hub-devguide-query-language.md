@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450070"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767728"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -233,7 +233,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 ### <a name="limitations"></a>制限事項
 
 > [!IMPORTANT]
-> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインにクエリを実行する場合は、デバイス ツインの取得 API を使用します。 この API には常に最新の値が含まれ、調整の上限は高くなっています。
+> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](https://docs.microsoft.com/rest/api/iothub/service/gettwin) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
 
 現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 
@@ -434,7 +434,7 @@ GROUP BY <group_by_element>
 
 式の構文で使われている各シンボルの意味については、次の表をご覧ください。
 
-| シンボル | 定義 |
+| Symbol | 定義 |
 | --- | --- |
 | attribute_name | **FROM** コレクションの JSON ドキュメントのプロパティ。 |
 | binary_operator | 「[演算子](#operators)」セクションに記載されている 2 項演算子。 |
@@ -443,27 +443,27 @@ GROUP BY <group_by_element>
 | hexadecimal_literal |文字列 ‘0x’ の後に 16 進数の文字列を続けて表された数値。 |
 | string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符または二重引用符で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
 
-### <a name="operators"></a>演算子
+### <a name="operators"></a>オペレーター
 
 次の演算子がサポートされています。
 
-| ファミリ | 演算子 |
+| ファミリ | オペレーター |
 | --- | --- |
 | 算術 |+, -, *, /, % |
 | 論理 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 
 ツインとジョブのクエリにおいて、サポートされている唯一の関数は次のとおりです。
 
-| Function | 説明 |
+| Function | [説明] |
 | -------- | ----------- |
 | IS_DEFINED(property) | プロパティに値が代入されているかどうかを示すブール値を返します (`null` を含む)。 |
 
 ルートの条件では、次の計算関数がサポートされています。
 
-| Function | 説明 |
+| Function | [説明] |
 | -------- | ----------- |
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
@@ -476,7 +476,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の型の確認とキャスト関数がサポートされています。
 
-| Function | 説明 |
+| Function | [説明] |
 | -------- | ----------- |
 | AS_NUMBER | 入力文字列を数値に変換します。 入力が数値の場合は `noop`、文字列が数値を表していない場合は `Undefined` です。|
 | IS_ARRAY | 指定した式の型が配列であるかどうかを示すブール値を返します。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の文字列関数がサポートされています。
 
-| Function | 説明 |
+| Function | [説明] |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | LENGTH(x) | 指定された文字列式の文字数を返します。|
@@ -502,6 +502,6 @@ GROUP BY <group_by_element>
 | ENDS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
 | CONTAINS(x,y) | 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用して、アプリでクエリを実行する方法を説明します。

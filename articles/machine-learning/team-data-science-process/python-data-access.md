@@ -3,20 +3,20 @@ title: Python クライアント ライブラリを使用したデータセッ�
 description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427384"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720981"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -43,7 +43,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 [Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
 ### <a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
-また、このトピックで説明するタスクを完了するためには Azure Machine Learning Python クライアント ライブラリをインストールする必要があります。 [Python Package Index](https://pypi.python.org/pypi/azureml)から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
+このトピックで説明されているタスクを完了するには、Azure Machine Learning Python クライアント ライブラリをインストールします。 このライブラリは、[Python Package Index](https://pypi.python.org/pypi/azureml) から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
 
     pip install azureml
 
@@ -70,13 +70,13 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
-次のいずれかを実行することで認証トークンを取得できます。
+認証トークンを取得するには、次のいずれかの方法を選択します。
 
 * 所有者からトークンをリクエストします。 所有者は Azure Machine Learning Studio (クラシック) のワークスペースの [設定] ページから自分の認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、 **[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
    ![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 所有者への役割の昇格を申請する そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
+* 所有者のロールに昇格するように依頼します。ワークスペースの現在の所有者がまずワークスペースからあなたを削除してから、所有者として再び招待する必要があります。
 
 開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
@@ -100,7 +100,7 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
 
-次の形式がサポートされます ( `azureml.DataTypeIds` クラスの定数)。
+次の形式がサポートされます (これらの形式の定数は `azureml.DataTypeIds` クラスです)。
 
 * PlainText
 * GenericCSV
@@ -124,7 +124,7 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
 2. **[米国国勢調査局提供の、成人収入に関する二項分類データセット]** モジュールを挿入します。
 3. [[分割]][split] モジュールを挿入して、その入力値をデータセット モジュール出力に接続します。
 4. [[CSV に変換]][convert-to-csv] モジュールを挿入して、その入力値を [[分割]][split] モジュール出力の 1 つに接続します。
-5. 実験を保存して実行し、実行が完了するまで待機します。
+5. 実験を保存し、実行して、ジョブが完了するまで待ちます。
 6. [[CSV に変換]][convert-to-csv] モジュールで出力ノードをクリックします。
 7. コンテキスト メニューが表示されたら、 **[データ アクセス コードの生成]** を選択します。
    
@@ -172,7 +172,7 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
     ds = ws.datasets[0]
 
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 データセットには、コンテンツに加え、メタデータがあります (中間データセットはこのルールの例外であり、メタデータはありません)。
 
 作成時にユーザーが割り当てるメタデータの値の一部には次のものがあります。

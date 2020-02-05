@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: Container Instances の使用
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Face 接続済みサービスの使用
-      href: vs-face-connected-service.md
 - name: リファレンス
   items:
     - name: Face API

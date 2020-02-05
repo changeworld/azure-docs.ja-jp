@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414489"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748982"
 ---
 この記事では、Azure 仮想マシン (VM) の可用性機能の概要について説明します。
 
@@ -54,7 +54,7 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 |   | “orchestrationMode”: “VM” (VirtualMachine)| “orchestrationMode”: “ScaleSetVM” (VirtualMachineScaleSetVM) |
 |----|----|----|
-| VM 構成モデル| なし。 VirtualMachineProfile はスケール セット モデルでは定義されていません。 | 必須。 VirtualMachineProfile はスケール セット モデルに設定されています。 |
+| VM 構成モデル| [なし] : VirtualMachineProfile はスケール セット モデルでは定義されていません。 | 必須。 VirtualMachineProfile はスケール セット モデルに設定されています。 |
 | スケール セットへの新しい VM の追加| VM は、VM が作成されるときにスケール セットに明示的に追加されます。 | VM は、VM 構成モデル、インスタンス数、自動スケール規則に基づいて暗黙的に作成され、スケール セットに追加されます。 |
 | 可用性ゾーン| 1 つの可用性ゾーンのリージョンのデプロイまたは VM をサポートします| リージョンのデプロイまたは複数の可用性ゾーンをサポートします。ゾーン バランス戦略を定義できます |
 | 障害ドメイン| 障害ドメインの数を定義できます。 リージョン サポートに基づく場合は 2 つまたは 3 つ、可用性ゾーンの場合は 5 つです。 割り当てられた VM 障害ドメインは、割り当て解除と再起動を含む VM のライフサイクルで保持されます。 | 非ゾーンのデプロイの場合は 1 つ、2 つ、または 3 つの障害ドメイン、可用性ゾーンのデプロイの場合は 5 つを定義できます。 割り当てられた VM 障害ドメインは VM のライフサイクルで保持されず、仮想マシンには割り当て時に障害ドメインが割り当てられます。 |
@@ -62,7 +62,7 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 **障害ドメインと更新ドメイン**
 
-仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 「[リージョンごとの障害ドメイン数](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region)」を参照してください。
+仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)に関する記事を参照してください。
 
 
 ## <a name="availability-sets"></a>可用性セット
@@ -81,6 +81,6 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 ![可用性セット](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](/azure/architecture/checklist/resiliency-per-service)に関するページをご覧ください。
 

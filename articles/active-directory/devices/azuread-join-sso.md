@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154824"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773307"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -30,22 +30,21 @@ Azure Active Directory (Azure AD) に参加しているデバイスによって�
 
 ## <a name="how-it-works"></a>しくみ 
 
-1 つのユーザー名とパスワードを覚えておくだけでよいため、SSO によってリソースへのアクセスが簡略化され、ご利用の環境のセキュリティが向上します。 ユーザーは Azure AD 参加済みデバイスを使用して、ご利用の環境内のクラウド アプリへの SSO エクスペリエンスを既に手に入れています。 ご利用の環境内に Azure AD とオンプレミス AD がある場合は、SSO エクスペリエンスの範囲をオンプレミスの業種 (LOB) アプリ、ファイル共有、およびプリンターにまで拡張することをおそらく希望するでしょう。  
+1 つのユーザー名とパスワードを覚えておくだけでよいため、SSO によってリソースへのアクセスが簡略化され、ご利用の環境のセキュリティが向上します。 ユーザーは Azure AD 参加済みデバイスを使用して、ご利用の環境内のクラウド アプリへの SSO エクスペリエンスを既に手に入れています。 ご利用の環境内に Azure AD とオンプレミス AD がある場合は、SSO エクスペリエンスの範囲をオンプレミスの業種 (LOB) アプリ、ファイル共有、およびプリンターにまで拡張することをおそらく希望するでしょう。
 
 Azure AD 参加済みデバイスには、オンプレミス AD 環境についての情報はありません (その環境に参加していないため)。 ただし、Azure AD Connect を使用して、ご利用のオンプレミス AD に関する追加情報をこれらのデバイスに提供することができます。
 
 Azure AD とオンプレミス AD の両方を使用している環境は、ハイブリッド環境とも呼ばれます。 ハイブリッド環境を使用している場合は、オンプレミスの ID 情報をクラウドに同期するために、Azure AD Connect を既にデプロイ済みである可能性があります。 同期プロセスの一部として、Azure AD Connect はオンプレミスのユーザー情報を Azure AD に同期します。 ハイブリッド環境においてユーザーが Azure AD 参加済みデバイスにサインインしたとき:
 
-1. Azure AD からデバイスに、ユーザーがメンバーになっているオンプレミス ドメインの名前が送信されます。 
+1. Azure AD からデバイスに、ユーザーがメンバーになっているオンプレミス ドメインの名前が送信されます。
 1. ローカル セキュリティ機関 (LSA) サービスによって、デバイス上の Kerberos 認証が有効になります。
 
-ユーザーのオンプレミス ドメイン内にあるリソースへのアクセス試行時、デバイスでは次のことが行われます。
+ユーザーのオンプレミス環境で Kerberos を要求しているリソースへのアクセスが試行されると、デバイスは次のようになります。
 
-1. ドメイン情報を使用して、ドメイン コント ローラー (DC) を見つけます。 
 1. ユーザーを認証するために、見つかった DC にオンプレミス ドメインの情報とユーザーの資格情報を送信します。
-1. AD 参加済みリソースへのアクセスに使用する Kerberos の[チケット保証チケット (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) を受け取ります。
+1. AD 参加済みリソースへのアクセスに使用する Kerberos の[チケット保証チケット (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) を受け取ります。 AAD Connect ドメインの TGT の取得に失敗すると (関連する DCLocator タイムアウトにより遅延が発生する可能性があります)、資格情報マネージャー エントリが試行されるか、ターゲット リソースの資格情報を要求する認証ポップアップをユーザーが受け取る場合があります。
 
-**Windows 統合認証**の対象として構成されているすべてのアプリでは、ユーザーからのアクセスが試みられたときに、SSO がシームレスに適用されます。  
+**Windows 統合認証**の対象として構成されているすべてのアプリでは、ユーザーからのアクセスが試みられたときに、SSO がシームレスに適用されます。
 
 Windows Hello for Business では、Azure AD 参加済みデバイスからのオンプレミスの SSO を有効にするために、追加の構成が必要です。 詳細については、「[Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)」 (Windows Hello for Business を使用してオンプレミス シングル サインオン用に Azure AD 参加済みデバイスを構成する) を参照してください。 
 

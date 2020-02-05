@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271320"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840470"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -121,6 +121,7 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 1 月 28 日:SAP HANA クラスター リソースのタイムアウトを Red Hat のタイムアウトの推奨事項に合わせるために、[RHEL 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)に関する記事が変更されました
 - 2020 年 1 月 17 日:「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)」が変更され、既存の VM を近接通信配置グループに移動するセクションが変更されました
 - 2020 年 1 月 17 日:「[Azure Availability Zones での SAP ワークロードの構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)」が変更され、Availability Zones 間の待機時間の測定を自動化する手順が示されるようになりました
 - 2020 年 1 月 16 日:「[SAP HANA on Azure (L インスタンス) のインストールと構成の方法](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)」が変更され、OS リリースが HANA IaaS ハードウェア ディレクトリに適合するようになりました

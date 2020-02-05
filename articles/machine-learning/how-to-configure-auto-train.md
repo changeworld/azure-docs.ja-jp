@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277986"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722154"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ automl_config = AutoMLConfig(task = "classification")
 
 これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
-### <a name="data-preprocessing--featurization"></a>データの前処理と特徴付け
+### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、および変換などの前処理と特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)から参照してください。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)から参照してください。
 
-この特徴付けを有効にするには、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)に `"preprocess": True` を指定します。
+この特徴付けを有効にするには、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)に `"featurization": 'auto'` を指定します。
 
 > [!NOTE]
 > 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
@@ -324,7 +324,7 @@ run = experiment.submit(automl_config, show_output=True)
 ## <a name="understand-automated-ml-models"></a>自動化された ML モデルを理解する
 
 自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
-+ 自動化された特徴エンジニアリング: (preprocess=True の場合)
++ 自動化された特徴エンジニア リング (`"featurization": 'auto'` の場合)
 + ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム
 
 透過的に処理して、自動化された ML の fitted_model 出力からこの情報を取得します。
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自動化された特徴エンジニア リング
 
-feauturization =auto の場合に実行される前処理および[自動化された特徴エンジニアリング](concept-automated-ml.md#preprocess)の一覧を参照してください。
+`"featurization": 'auto'` の場合に実行される前処理および[自動化された特徴エンジニアリング](concept-automated-ml.md#preprocess)の一覧を参照してください。
 
 次の例を考えてみましょう。
 + 次の 4 つの入力特徴があります。A (数値)、B (数値)、C (数値)、D (日時)

@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125416"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758752"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -41,7 +40,20 @@ ms.locfileid: "70125416"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
-2019 年 9 月:URL 解析規則に従って POST セマンティクスを適用する - 重複するパラメーターによってエラーがトリガーされ、[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) は無視されます。
+現時点ではスケジュールされていません。  運用環境の変更または変更予定については、以下を参照してください。 
+
+## <a name="february-2020"></a>2020 年 2 月: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>ログイン エンドポイントからのすべての HTTP リダイレクトに空のフラグメントが追加されます。 
+
+**発効日**:2020 年 2 月 8 日
+
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+
+**影響を受けるプロトコル**:response_type=query を使用する OAuth および OIDC フロー。これには [承認コード フロー](v2-oauth2-auth-code-flow.md) (場合による) と [暗黙のフロー](v2-oauth2-implicit-grant-flow.md)が含まれます。 
+
+login.microsoftonline.com から HTTP リダイレクト経由で認証応答がアプリケーションに送信されると、サービスによって空のフラグメントが応答 URL に追加します。  これにより、ブラウザーで認証要求内の既存のフラグメントがすべて消去され、リダイレクト攻撃のクラスを防止できます。  アプリはこの動作に依存しないようにしてください。 
+
 
 ## <a name="august-2019"></a>2019 年 8 月
 

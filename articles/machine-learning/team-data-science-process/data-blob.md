@@ -3,20 +3,20 @@ title: Azure BLOB データを高度な分析を使用して処理する - Team 
 description: 高度な分析を使用してデータを探索し、Azure BLOB ストレージに保存されているデータから特徴を生成します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492413"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721100"
 ---
 # <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
@@ -97,7 +97,7 @@ ms.locfileid: "73492413"
 ## <a name="blob-featuregen"></a>特徴の生成
 次のように、Python を使用して特徴を生成できます。
 
-### <a name="blob-countfeature"></a>
+### <a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
 カテゴリの特徴は、次のように作成できます。
 
 1. カテゴリの列の分布を検査します。
@@ -131,7 +131,7 @@ ms.locfileid: "73492413"
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
-データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio (クラシック) でも、追加の特徴を作成できることに注意してください。 
+データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio (クラシック) でも、追加の特徴を作成できます。 
 
 1. ローカル ファイルへのデータ フレームの書き込み
    

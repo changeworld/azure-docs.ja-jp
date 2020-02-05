@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs でのラボの作成 | Microsoft Docs
-description: Azure DevTest Labs で仮想マシン用のラボを作成します。
+description: この記事では、Azure portal と Azure DevTest Labs を使用してラボを作成する手順について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: c54b97bdf69908f32015631a9e527c6e289d1d2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5cd675823b85e975dcb8dfe152c27b2d30463c1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202450"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759739"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
 Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリソース グループを包含するインフラストラクチャであり、制限とクォータを指定することでこれらのリソースをより適切に管理することができます。 この記事では、Azure Portal を使用してラボを作成する手順を説明します。
@@ -32,7 +32,7 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボを作成する手順
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 左側のメイン メニューの **[すべてのサービス]** (リスト最上部) を選択します。 **[DEVOPS]** セクションで **[DevTest Labs]** の隣の [*] (星) を選択します。 この操作により、次に簡単にアクセスできるように左側のナビゲーション メニューに **[DevTest Labs]** が追加されます。 
 
     ![[すべてのサービス] - [DevTest Labs] を選択する](./media/devtest-lab-create-lab/all-services-select.png)
@@ -56,7 +56,7 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボを作成した後は、次の手順を考慮します。
 
 * [ラボへのアクセスをセキュリティで保護する](devtest-lab-add-devtest-user.md)

@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: Azure EA Portal のアクセスのトラブルシューティング
           href: ea-portal-troubleshoot.md
-        - name: Microsoft 顧客契約における EA タスク
-          href: mca-enterprise-operations.md
 - name: '[トラブルシューティング]'
   items:
     - name: サブスクリプションが見つからない

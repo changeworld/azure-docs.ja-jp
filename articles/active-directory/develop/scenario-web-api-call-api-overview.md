@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b67507daf8005f3f9a299b778f1fba4ce67d46d4
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044146"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701741"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web API
 
@@ -28,7 +27,7 @@ Web API を呼び出す Web API を構築するために知っておくべきこ
 
 ## <a name="prerequisites"></a>前提条件
 
-保護された Web API が Web API を呼び出すこのシナリオは、「Web API の保護」シナリオの上に構築されます。 この基本的なシナリオの詳細については、「[シナリオ:保護された Web API](scenario-protected-web-api-overview.md)」を参照してください。
+保護された Web API が Web API を呼び出すこのシナリオは、「Web API の保護」シナリオの上に構築されます。 この基本的なシナリオの詳細については、「[シナリオ: 保護された Web API](scenario-protected-web-api-overview.md)」を参照してください。
 
 ## <a name="overview"></a>概要
 

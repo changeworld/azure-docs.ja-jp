@@ -8,7 +8,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: REST API
       items:
@@ -44,7 +44,7 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 検索結果の強調表示の処理
       href: ../Bing-Web-Search/hit-highlighting.md
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: v5 から v7 への API のアップグレード
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Visual Studio を使用する
-      items:
-        - name: Bing News Search Connected Service の使用
-          href: vs-bing-news-search-connected-service.md
 - name: 概念
   items:
     - name: 検索クエリの送信

@@ -11,15 +11,15 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685563"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721185"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>SQL Data Warehouse の PowerShell コマンドレットと REST API
-SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理][Manage scalability with REST]に関する記事をご覧ください。
+SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマン�
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-バリエーションであるこの例では、取得したオブジェクトを [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase] にパイプ処理します。  その結果、データベースが一時停止されます。 最後のコマンドは結果を表示します。
+バリエーションであるこの例では、取得したオブジェクトを [Suspend-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase) にパイプ処理します。  その結果、データベースが一時停止されます。 最後のコマンドは結果を表示します。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -54,7 +54,7 @@ $resultDatabase
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースを取得します。 取得したオブジェクトを [Resume-AzSqlDatabase][Resume-AzSqlDatabase] にパイプ処理します。
+この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースを取得します。 取得したオブジェクトを [Resume-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase) にパイプ処理します。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -69,47 +69,21 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ## <a name="other-supported-powershell-cmdlets"></a>その他のサポートされている PowerShell コマンドレット
 Azure SQL Data Warehouse でサポートされている PowerShell コマンドレットを次に示します。
 
-* [Get-AzSqlDatabase][Get-AzSqlDatabase]
-* [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
-* [Get-AzSqlDatabaseRestorePoint][Get-AzSqlDatabaseRestorePoint]
-* [New-AzSqlDatabase][New-AzSqlDatabase]
-* [Remove-AzSqlDatabase][Remove-AzSqlDatabase]
-* [Restore-AzSqlDatabase][Restore-AzSqlDatabase]
-* [Resume-AzSqlDatabase][Resume-AzSqlDatabase]
-* [Select-AzSubscription][Select-AzSubscription]
-* [Set-AzSqlDatabase][Set-AzSqlDatabase]
-* [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]
+* [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
+* [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
+* [Get-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserestorepoint)
+* [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
+* [Remove-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabase)
+* [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
+* [Resume-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase)
+* [Select-AzSubscription](https://msdn.microsoft.com/library/dn722499.aspx)
+* [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
+* [Suspend-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 PowerShell のその他の例については、次のトピックをご覧ください。
 
-* [PowerShell を使用して SQL Data Warehouse を作成する][Create a SQL Data Warehouse using PowerShell]
-* [データベースの復元][Database restore]
+* [PowerShell を使用して SQL Data Warehouse を作成する](create-data-warehouse-powershell.md)
+* [データベースの復元](sql-data-warehouse-restore-database-powershell.md)
 
-PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット][Azure SQL Database Cmdlets]に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、[Azure SQL Database の操作][Operations for Azure SQL Database]に関するページを参照してください。
-
-<!--Image references-->
-
-<!--Article references-->
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Create a SQL Data Warehouse using PowerShell]: ./create-data-warehouse-powershell.md
-[Database restore]: ./sql-data-warehouse-restore-database-powershell.md
-[Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
-
-<!--MSDN references-->
-[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/az.sql
-[Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
-[Get-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase
-[Get-AzSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup
-[Get-AzSqlDatabaseRestorePoint]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserestorepoint
-[New-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase
-[Remove-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabase
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-[Resume-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase
-<!-- It appears that Select-AzSubscription isn't documented, so this points to Select-AzureSubscription -->
-[Select-AzSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
-[Set-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase
-[Suspend-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase
-
-<!--Other Web references-->
-[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
+PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql)に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、「[Azure SQL Database の操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)」を参照してください。

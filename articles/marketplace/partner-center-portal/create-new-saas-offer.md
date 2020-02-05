@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 01/22/2020
+ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045573"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705821"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -111,7 +111,7 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 - **潜在顧客がこの登録オファーとやり取りする方法について選択してください。**
 
 ##### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
-顧客に対して、プランを無料で使用できるものとしてリスト登録します。そのために、アプリにアクセスできる有効な (*http* または *https* で始まる) URL を指定します。  例: `https://contoso.com/saas-app`
+有効な (*http* または *https* で始まる) URL を示すことにより、顧客に無料のオファーを一覧表示します。顧客は、その URL から、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。  例: `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
 有効な (*http* または *https* で始まる) URL を示すことにより、無料試用版へのリンクを使用して顧客にプランを一覧表示します。顧客は、その URL から、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。  (例: `https://contoso.com/trial/saas-app`)。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
