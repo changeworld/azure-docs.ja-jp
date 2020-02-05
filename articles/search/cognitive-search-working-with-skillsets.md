@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790886"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760795"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
@@ -37,7 +37,7 @@ ms.locfileid: "74790886"
 ### <a name="enrichment-tree"></a>強化ツリー
 
 スキルセットによってドキュメントが徐々に強化される様子を見るため、強化前のドキュメントの内容から始めましょう。 ドキュメント解析の出力は、データ ソースと選択した特定の解析モードに依存します。 これは、検索インデックスにデータを追加するときに、[フィールド マッピング](search-indexer-field-mappings.md)によってコンテンツを取得できるドキュメントの状態でもあります。
-![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Kパイプラインにおけるナレッジ ストアの図")
+![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "パイプラインにおけるナレッジ ストアの図")
 
 強化パイプラインに入ったドキュメントは、コンテンツおよび関連付けられている強化のツリーとして表されます。 このツリーは、ドキュメント解析の出力としてインスタンス化されます。 強化ツリー形式により、強化パイプラインではメタデータをプリミティブ データ型にもアタッチできます。これは有効な JSON オブジェクトではありませんが、有効な JSON 形式に射影できます。 次の表では、強化パイプラインに入ったドキュメントの状態を示します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "74790886"
 
 ### <a name="skill-2-language-detection"></a>スキル #2: 言語検出
  言語検出スキルは、スキルセットで定義されている 3 番目のスキルですが (スキル #3)、次に実行されるスキルです。 入力要求によってブロックされないため、前のスキルと並列に実行されます。 先行する分割スキルと同様に、言語検出スキルもドキュメントごとに 1 回呼び出されます。 強化ツリーには言語用の新しいノードが追加されています。
- ![スキル #2 の後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enスキル #2 実行後の強化ツリー")
+ ![スキル #2 の後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "スキル #2 実行後の強化ツリー")
  
  ### <a name="skill-3-key-phrases-skill"></a>スキル #3: キー フレーズ スキル 
 
@@ -297,7 +297,7 @@ Shaper による方法は、インライン整形より手間がかかります�
   
 両方の方法から観察されることの 1 つは、`"sourceContext"` を使用して `"Keyphrases"` の値が射影される方法です。 文字列のコレクションが含まれる `"Keyphrases"` ノードは、それ自体がページ テキストの子になります。 ただし、プロジェクションには JSON オブジェクトが必要であり、ページはプリミティブ (文字列) であるため、`"sourceContext"` を使用して、キー フレーズを名前付きプロパティを持つオブジェクトにラップします。 この手法を使用すると、プリミティブであっても個別に射影できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のステップでは、コグニティブ スキルを使用して最初のスキルセットを作成します。
 
