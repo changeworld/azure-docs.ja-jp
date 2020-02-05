@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241990"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845279"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
-この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
+この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
 
 詳細:
 
@@ -33,12 +33,12 @@ ms.locfileid: "72241990"
 - ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。
 
 
-## <a name="Syntax"></a>構文
+## <a name="Syntax"></a> 構文
 単一ステートメントの式は `@(expression)` の形式で囲みます。`expression` は正しい C# 式ステートメントです。
 
 複数ステートメントの式は `@{expression}` の形式で囲みます。 複数ステートメントの式内のすべてのコード パスは `return` ステートメントで終了している必要があります。
 
-## <a name="PolicyExpressionsExamples"></a>例
+## <a name="PolicyExpressionsExamples"></a> 使用例
 
 ```
 @(true)
@@ -192,7 +192,7 @@ ms.locfileid: "72241990"
 |System.Xml.Linq.XComment|All|
 |System.Xml.Linq.XContainer|All|
 |System.Xml.Linq.XDeclaration|All|
-|System.Xml.Linq.XDocument|All、例外: Load|
+|System.Xml.Linq.XDocument|All、例外: [読み込み]|
 |System.Xml.Linq.XDocumentType|All|
 |System.Xml.Linq.XElement|All|
 |System.Xml.Linq.XName|All|
@@ -210,7 +210,7 @@ ms.locfileid: "72241990"
 
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|
 |----------------------|-------------------------------------------------------|
-|context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [Deployment](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [成果物](#ref-context-product)<br /><br /> [要求](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [応答](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
+|context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [デプロイ](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [要求](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [応答](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
 |<a id="ref-context-api"></a>context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> Version: 文字列 |
 |<a id="ref-context-deployment"></a>context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|
@@ -246,7 +246,7 @@ ms.locfileid: "72241990"
 |bool VerifyNoRevocation(input: this System.Security.Cryptography.X509Certificates.X509Certificate2)|証明書の失効状態を確認しないで、X.509 チェーン検証を実行します。<br /><br />input - 証明書オブジェクト<br /><br />検証に成功したら `true`、検証に失敗したら `false` を返します。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 

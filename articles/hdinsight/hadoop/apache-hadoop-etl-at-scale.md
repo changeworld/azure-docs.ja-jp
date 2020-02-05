@@ -2,18 +2,18 @@
 title: 大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight
 description: HDInsight で Apache Hadoop によって抽出、変換、および読み込みを使用する方法について説明します。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: ashishth
-ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: hdinsightactive
+ms.date: 01/27/2020
+ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435789"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846004"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -39,7 +39,7 @@ Apache Oozie は、Hadoop ジョブを管理するワークフロー調整シス
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory では、オーケストレーション機能をサービスとしてのプラットフォームの形で提供します。 クラウドベースのデータ統合サービスを通じて、データの移動と変換を制御して自動化するデータ主導型のワークフローをクラウドに作成することができます。
+Azure Data Factory では、オーケストレーション機能をサービスとしてのプラットフォームの形で提供します。 そのクラウドベースのデータ統合サービスを通じて、データ移動とデータ変換を調整して自動化するためのデータ主導型ワークフローをクラウドに作成することができます。
 
 Azure Data Factory を使用して、以下を実行できます。
 
@@ -51,7 +51,7 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 ## <a name="ingest-file-storage-and-result-storage"></a>ファイル ストレージと結果ストレージの取り込み
 
-ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Storage 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。
+ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Storage 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルになります。
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -85,13 +85,13 @@ ADLS は、Azure Event Hub または Apache Storm を使用したイベントの
 
 Azure SQL DW は、今後の分析用にクリーニングされ、使用する準備ができた結果を格納するための最適の選択肢です。  Azure HDInsight を使用して、Azure SQL DW 用のサービスを実行できます。
 
-Azure SQL Data Warehouse (SQL DW) は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。  Azure SQL DW は、パーティション分割されたテーブルに基づいてスケーリングを行います。  テーブルは、複数のノードにパーティション分割できます。  Azure SQL DW ノードは作成時に選択されます。  それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、[Azure SQL Data Warehouse のコンピューティング管理 ](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
+Azure SQL Data Warehouse (SQL DW) は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。  Azure SQL DW は、パーティション分割されたテーブルに基づいてスケーリングを行います。  テーブルは、複数のノードにパーティション分割できます。  Azure SQL DW ノードは作成時に選択されます。  それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、[SQL Data Warehouse でのコンピューティングの管理](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
 
 ### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBase は、Azure HDInsight で利用可能なキー値ストアです。  Apache HBase は、オープン ソースの NoSQL データベースで、Hadoop 上に構築され、Google BigTable を模範にしています。 HBase は、大量の非構造化データと半構造化データに対する効率の良いランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
 
-データはテーブルの行内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレス データベースです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 HBase は、Hadoop エコシステム内の分散アプリケーションの利点であるデータの冗長性やバッチ処理などの機能を利用できます。   
+データはテーブルの行内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレス データベースです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 HBase は、Hadoop エコシステム内の分散アプリケーションの利点であるデータの冗長性やバッチ処理などの機能を利用できます。
 
 HBase は、今後の分析のためにセンサー データとログ データを格納するための優れた宛先です。
 
@@ -105,9 +105,9 @@ Azure では、サービスとしてのプラットフォーム (PAAS) として
 * [Azure Database for MySQL](../../mysql/overview.md)  は、Oracle MySQL の実装です。
 * [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) は、PostgreSQL の実装です。
 
-これらの製品はスケールアップされます。つまり、 CPU とメモリの追加によってスケーリングされます。  I/O パフォーマンスを向上させるため、製品と共にプレミアム ディスクを使用することも選択できます。
+これらの製品はスケールアップされます。つまり、CPU とメモリを追加することによってスケーリングされます。  I/O パフォーマンスを向上させるため、製品と共にプレミアム ディスクを使用することも選択できます。
 
-## <a name="azure-analysis-services"></a>Azure Analysis Services 
+## <a name="azure-analysis-services"></a>Azure Analysis Services
 
 Azure Analysis Services (AAS) は、意思決定支援とビジネス分析で使用される分析データ エンジンであり、ビジネス レポート用の分析データ、Power BI、Excel、Reporting Services レポートなどのクライアント アプリケーション、およびその他の視覚化ツールを提供します。
 
@@ -115,11 +115,11 @@ Azure Analysis Services (AAS) は、意思決定支援とビジネス分析で�
 
 ## <a name="extract-and-load"></a>抽出と読み込み
 
-Azure 内にデータが存在すれば、多数のサービスを使用してデータを抽出し、他の製品に読み込むことができます。  HDInsight では、Sqoop と Flume をサポートします。 
+Azure 内にデータが存在すれば、多数のサービスを使用してデータを抽出し、他の製品に読み込むことができます。  HDInsight では、Sqoop と Flume をサポートします。
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Apache Sqoop は、構造化データ ソース、半構造化データ ソース、および非構造化データ ソース間でデータを効率的に転送するように設計されたツールです。 
+Apache Sqoop は、構造化データ ソース、半構造化データ ソース、および非構造化データ ソース間でデータを効率的に転送するように設計されたツールです。
 
 Sqoop では、MapReduce を使用してデータのインポートとエクスポートを実行し、並列操作とフォールト トレランスを提供しています。
 
@@ -131,10 +131,10 @@ Apache Flume は、Azure HDInsight では使用できません。  オンプレ�
 
 ## <a name="transform"></a>変換
 
-選択した場所にデータが存在すれば、データのクリーニング、結合、または特定の使用パターンに合わせた準備を行う必要があります。  Hive、Pig、および Spark SQL は、すべてがその種の作業を行うための適切な選択肢です。  それらは、すべて HDInsight でサポートされています。 
+選択した場所にデータが存在すれば、データのクリーニング、結合、または特定の使用パターンに合わせた準備を行う必要があります。  Hive、Pig、および Spark SQL は、すべてがその種の作業を行うための適切な選択肢です。  それらはすべて HDInsight でサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
-* [ETL ツールとして Apache Hive を使用する](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [ETL ツールとして Apache Hive を使用する](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Azure SQL Database から Apache Hive テーブルにデータを移動する](./apache-hadoop-use-sqoop-mac-linux.md)

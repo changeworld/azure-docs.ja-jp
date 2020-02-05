@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690404"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769180"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -200,7 +200,7 @@ Load Balancer はパス スルー サービスであり (TCP 接続を終了し�
 
 UDP データグラムは、正常なバックエンド エンドポイントに配信されます。
 
-UDP はコネクションレスであり、UDP に追跡されるフロー状態は存在しません。 いずれかのバックエンド エンドポイントの正常性プローブが失敗すると、既存の UDP フローはバックエンド プール内の別の正常なインスタンスに移動できます。
+UDP はコネクションレスであり、UDP に追跡されるフロー状態は存在しません。 いずれかのバックエンド エンドポイントの正常性プローブが失敗すると、既存の UDP フローはバックエンド プール内の別の正常なインスタンスに移動します。
 
 バックエンド プール内のすべてのインスタンスのすべてのプローブが失敗した場合は、Basic および Standard の Load Balancer のすべての既存 UDP フローが終了します。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462494"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846283"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -117,7 +117,7 @@ ms.locfileid: "75462494"
 | 最大実行時間 <sup>5</sup> | 1 ～ 3 分 |24 時間 |24 時間 |24 時間 |24 時間 |該当なし  |24 時間 |24 時間 |
 | コグニティブ検索スキルセットまたはイメージの分析による blob のインデックス作成の最大実行時間 <sup>5</sup> | 3 から 10 分 |2 時間 |2 時間 |2 時間 |2 時間 |該当なし  |2 時間 |2 時間 |
 | BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし  |256 |256 |
-| BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400万&nbsp; |400万&nbsp; |400万&nbsp; |該当なし |400万&nbsp; |400万&nbsp; |
+| BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400万&nbsp; |&nbsp;800万 |&nbsp;1,600万 |該当なし |400万&nbsp; |400万&nbsp; |
 
 <sup>1</sup> Free サービスのインデクサーの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。 Cognitive Services に呼び出しを行う AI インデックスについては、トランザクションが強化パイプラインを正常に通過するドキュメントとして定義された場合、無料のサービスは 1 日あたり 20 個の無料トランザクションに制限されます。
 
@@ -151,7 +151,7 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 
 ## <a name="data-limits-ai-enrichment"></a>データの制限 (AI エンリッチメント)
 
-[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
+[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、[言語検出](cognitive-search-skill-language-detection.md)、および[PII 検出](cognitive-search-skill-pii-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="throttling-limits"></a>スロットルの制限
 
