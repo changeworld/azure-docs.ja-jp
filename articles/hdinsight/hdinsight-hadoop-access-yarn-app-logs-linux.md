@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 437a0c95ea4b48baa74bf6a577dc06429833bc31
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.custom: hdinsightactive
+ms.date: 01/23/2020
+ms.openlocfilehash: 2a7d71c6d751d4a48ec93f020e657a4d43114cfc
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644581"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764376"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
@@ -27,7 +27,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 より多くの処理スループットをサポートするようにクラスターをスケーリングするには、[自動スケール](hdinsight-autoscale-clusters.md)を使用するか、[いくつかの異なる言語を使用してクラスターを手動でスケーリングします](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)。
 
-## <a name="YARNTimelineServer"></a>YARN タイムライン サーバー
+## <a name="yarn-timeline-server"></a>YARN タイムライン サーバー
 
 [Apache Hadoop YARN タイムライン サーバー](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html)は、完了したアプリケーションに関する一般的な情報を提供します
 
@@ -38,7 +38,7 @@ YARN タイムライン サーバーには、次の種類のデータが含ま�
 * アプリケーションを完了するために実行された試みに関する情報
 * 特定のアプリケーションの試行で使用されたコンテナー
 
-## <a name="YARNAppsAndLogs"></a>YARN アプリケーションとログ
+## <a name="yarn-applications-and-logs"></a>YARN アプリケーションとログ
 
 YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) はそのうちの 1 つ) をサポートします。 YARN は、グローバルな *リソース マネージャー* (RM)、ワーカー ノードごとの*ノード マネージャー* (NM)、アプリケーションごとの*アプリケーション マスター* (AM) を使用します。 アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。 RM は NM と連携して、これらのリソースに *コンテナー*としての許可を付与します。 AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。 アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
 
@@ -46,28 +46,115 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーション ログへのアクセスがさらに確実になります。 この機能により、ワーカー ノード上のすべてのコンテナーのログが集計され、ワーカー ノードごとに 1 つの集計ログとして保存されます。 ログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 したがって、アプリケーションで使用するワーカー ノードごとに存在するログは 1 つのみです。 ログの集計は、既定で HDInsight クラスター バージョン 3.0 以降で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。 次のパスは、ログへの HDFS パスです。
 
-    /app-logs/<user>/logs/<applicationId>
+```
+/app-logs/<user>/logs/<applicationId>
+```
 
 このパスで、`user` はアプリケーションを開始したユーザーの名前です。 `applicationId` は、YARN RM からアプリケーションに割り当てられた一意の識別子です。
 
 集計されたログは、コンテナーによってインデックスが作成される[バイナリ形式](https://issues.apache.org/jira/browse/HADOOP-3315)の [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf) で書かれているため、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
 
+## <a name="yarn-logs-in-an-esp-cluster"></a>ESP クラスターの Yarn ログ
+
+Ambari のカスタム `mapred-site` に 2 つの構成を追加する必要があります。
+
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
+
+1. Ambari UI から **[MapReduce2]**  >  **[Configs]**  >  **[Advanced]**  >  **[Custom mapred-site]** に移動します。
+
+1. 次のプロパティのセットの*いずれか*を追加します。
+
+    **セット 1**
+
+    ```
+    mapred.acls.enabled=true
+    mapreduce.job.acl-view-job=*
+    ```
+
+    **セット 2**
+
+    ```
+    mapreduce.job.acl-view-job=<user1>,<user2>,<user3>
+    ```
+
+1. 変更を保存し、影響を受けるすべてのサービスを再起動します。
+
 ## <a name="yarn-cli-tools"></a>YARN CLI ツール
 
-YARN CLI ツールを使用するには、まず SSH を使用して HDInsight クラスターに接続する必要があります。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+1. [ssh コマンド](./hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-次のいずれかのコマンドを実行することで、これらのログをプレーン テキストとして表示できます。
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
+1. 現在実行しているすべての Yarn アプリケーションのアプリケーション ID を、次のコマンドで一覧表示します。
+
+    ```bash
+    yarn top
+    ```
+
+    ログをダウンロードする `APPLICATIONID` 列のアプリケーション ID をメモしておきます。
+
+    ```output
+    YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
+    NodeManager(s): 4 total, 4 active, 0 unhealthy, 0 decommissioned, 0 lost, 0 rebooted
+    Queue(s) Applications: 2 running, 10 submitted, 0 pending, 8 completed, 0 killed, 0 failed
+    Queue(s) Mem(GB): 97 available, 3 allocated, 0 pending, 0 reserved
+    Queue(s) VCores: 58 available, 2 allocated, 0 pending, 0 reserved
+    Queue(s) Containers: 2 allocated, 0 pending, 0 reserved
+    
+                      APPLICATIONID USER             TYPE      QUEUE   #CONT  #RCONT  VCORES RVCORES     MEM    RMEM  VCORESECS    MEMSECS %PROGR       TIME NAME
+     application_1490377567345_0007 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628407    2442611  10.00   18:20:20 Thrift JDBC/ODBC Server
+     application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
+    ```
+
+1. 次のいずれかのコマンドを実行することで、これらのログをプレーン テキストとして表示できます。
+
+    ```bash
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+    ```
 
-これらのコマンドを実行するときは、&lt;applicationId>、&lt;user-who-started-the-application>、&lt;containerId>、&lt;worker-node-address> の情報を指定します。
+    これらのコマンドを実行するときは、&lt;applicationId>、&lt;user-who-started-the-application>、&lt;containerId>、&lt;worker-node-address> の情報を指定します。
+
+### <a name="other-sample-commands"></a>その他のサンプル コマンド
+
+1. すべてのアプリケーション マスターの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。 これにより、`amlogs.txt` という名前のテキスト形式のログ ファイルが作成されます。
+
+    ```bash
+    yarn logs -applicationId <application_id> -am ALL > amlogs.txt
+    ```
+
+1. 最新のアプリケーション マスターだけの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。
+
+    ```bash
+    yarn logs -applicationId <application_id> -am -1 > latestamlogs.txt
+    ```
+
+1. 最初の 2 つのアプリケーション マスターの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。
+
+    ```bash
+    yarn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
+    ```
+
+1. すべての Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。
+
+    ```bash
+    yarn logs -applicationId <application_id> > logs.txt
+    ```
+
+1. 特定のコンテナーの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。
+
+    ```bash
+    yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
+    ```
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 
 YARN ResourceManager UI はクラスターのヘッド ノードで実行されます。 Ambari Web UI を使ってアクセスします。 YARN ログを表示するには、次の手順を使用します。
 
 1. ご利用の Web ブラウザーで、 `https://CLUSTERNAME.azurehdinsight.net` に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
+
 2. 左側のサービスの一覧で、 **[YARN]** を選択します。
 
     ![選択された Apache Ambari Yarn サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
