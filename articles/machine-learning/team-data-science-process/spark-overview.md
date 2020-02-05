@@ -3,20 +3,20 @@ title: Azure HDInsight 上の Spark を使用したデータ サイエンス - T
 description: Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63148b99e65a5ccc49d54d4ae6c58adebc72c6d3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256412"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718516"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 
@@ -41,9 +41,9 @@ ms.locfileid: "60256412"
 ### <a name="spark-20-notebooks"></a>Spark 2.0 向け Notebook
 これらの Notebook は、Jupyter Notebook サーバーの pySpark3 カーネルで実行されます。
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明する NYC タクシーの乗車と料金のデータセットを使用して、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。 この Notebook は、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 NYC タクシー データを分析する詳細な Notebook については、この一覧の次の Notebook をご覧ください。 これらの Notebook の比較については、この一覧の後の「メモ」をご覧ください。
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明する NYC タクシーの乗車と料金のデータセットを使用して、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。 この Notebook は、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 NYC タクシー データを分析する詳細な Notebook については、この一覧の次の Notebook をご覧ください。 これらの Notebook の比較については、この一覧の後の「注意」をご覧ください。
 - [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明されている NYC タクシーの乗車と料金のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb):このファイルでは、よく知られている 2011 から 2012 年の航空会社の定刻出発のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。 モデリングの前に航空会社のデータセットを空港の気象データ (風速、気温、高度など) と統合したため、これらの気象条件をモデルに含めることができます。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb):このファイルでは、よく知られている 2011 から 2012 年の航空会社の定刻出発のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。 モデリングの前に航空会社のデータセットを空港の気象データ (たとえば、風速、気温、高度など) と統合したため、これらの気象条件をモデルに含めることができます。
 
 <!-- -->
 
@@ -63,7 +63,7 @@ ms.locfileid: "60256412"
 
 <!-- -->
 
-Spark 2.0 モデルの操作とスコア付けのためのモデル使用については、[使用に関する Spark 1.6 のドキュメント](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)で、必要な手順を説明している例をご覧ください。 これを Spark 2.0 で使用するには、Python コード ファイルを[このファイル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)で置き換えます。
+Spark 2.0 モデルの操作とスコア付けのためのモデル使用については、[使用に関する Spark 1.6 のドキュメント](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)で、必要な手順を説明している例をご覧ください。 この例を Spark 2.0 で使用するには、Python コード ファイルを[このファイル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)で置き換えます。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -133,7 +133,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 | payment_type |支払の種類 (現金、クレジット カードなど) |
 | fare_amount |料金 |
 | surcharge |追加料金 |
-| mta_tax |MTA 税 |
+| mta_tax |MTA 地下鉄輸送税 |
 | tip_amount |チップの金額 |
 | tolls_amount |通行料金 |
 | total_amount |合計金額 |
@@ -149,7 +149,7 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 
 ![Jupyter Notebook を参照する](./media/spark-overview/spark-jupyter-notebook.png)
 
-[PySpark] を選択すると表示されるディレクトリには、PySpark API を使用する、あらかじめパッケージ化された Notebook の例が含まれています。Spark に関連する一連のトピックのコード サンプルが含まれた Notebook は [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます
+[PySpark] を選択すると表示されるディレクトリには、PySpark API を使用する、あらかじめパッケージ化された Notebook の例が含まれています。 Spark に関連する一連のトピックのコード サンプルが含まれた Notebook は [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます
 
 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から、Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。 ファイル エクスプ ローラーが開きます。 ここで、Notebook の GitHub (生コンテンツ) URL を貼り付け、 **[開く]** をクリックします。
 
@@ -174,12 +174,12 @@ Jupyter ファイルの一覧にファイル名が **[アップロード]** ボ�
 
 ![Logistic regression ROC curve for generic approach](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="whats-next"></a>次の手順
+## <a name="whats-next"></a>次の操作
 HDInsight Spark クラスターが設定され、Jupyter Notebook がアップロードされると、これら 3 つの PySpark ノートブックに関連するトピックに進むことができます。 これらのトピックには、データの探索方法、モデルの作成方法および使用方法が示されています。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープ、モデルの評価を使用する方法を示します。
 
 **Spark を使用したデータ探索とモデリング:** [Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、機械学習モデルの作成、スコア付け、評価を行います。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
 
-**クロス検証とハイパーパラメーター スイープ:** クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
+**クロス検証とハイパーパラメーター スイープ**:クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
 

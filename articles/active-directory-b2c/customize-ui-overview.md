@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949408"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841235"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -28,15 +28,15 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 
 ### <a name="user-flows"></a>ユーザー フロー
 
-[ユーザー フロー](active-directory-b2c-reference-policies.md)を使用する場合は、組み込みの *ページ レイアウト テンプレート*を使用するか、独自の HTML と CSS を使用して、ユーザー フロー ページの外観を変更できます。 これらの各方法については、後で説明します。
+[ユーザー フロー](user-flow-overview.md)を使用する場合は、組み込みの *ページ レイアウト テンプレート*を使用するか、独自の HTML と CSS を使用して、ユーザー フロー ページの外観を変更できます。 これらの各方法については、後で説明します。
 
 ユーザー フローの UI カスタマイズを構成するには、[Azure portal](tutorial-customize-ui.md) を使用します。
 
 ### <a name="custom-policies"></a>カスタム ポリシー
 
-[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
+[カスタム ポリシー](custom-policy-overview.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](custom-policy-ui-customization.md)します。
 
-顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を動的に変更](active-directory-b2c-ui-customization-custom-dynamic.md)できるカスタム ポリシーを使用します。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。
+顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を動的に変更](custom-policy-ui-customization-dynamic.md)できるカスタム ポリシーを使用します。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 テンプレートを選択すると、選択したレイアウトがユーザー フローのすべてのページに適用されて、各ページの URI が **[カスタム ページ URI]** フィールドに表示されます。
 
 ## <a name="custom-html-and-css"></a>カスタム HTML および CSS
+
+カスタマイズした HTML と CSS を使用して独自のポリシー レイアウトを設計する場合は、ポリシーに含まれている各レイアウト名に対して [Use custom page content]\(カスタム ページ コンテンツの使用\) トグルを切り替えることにより、それを行うことができます。 カスタム レイアウトの構成については、以下の手順に従ってください。
 
 Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる手法を使用して、顧客のブラウザーでコードが実行されます。
 
@@ -146,11 +148,11 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 | ソーシャル アカウントのサインアップ | Facebook や Google+ などのソーシャル ID プロバイダーの既存のアカウントを使用してサインアップするときに表示できます。 サインアップ フォームを使用して顧客から追加情報を収集する必要があるときに使用されます。 |
 | 統合されたサインアップまたはサインイン | 顧客のサインアップとサインインの両方を処理します。顧客は、Facebook や Google などのソーシャル ID プロバイダーを使用することも、ローカル アカウントを使用することもできます。 |
 | 多要素認証 | 顧客がサインアップやサインインをするときに、電話番号を (文字や音声を使用して) 確認できます。 |
-| Error | エラー情報を顧客に提供します。 |
+| エラー | エラー情報を顧客に提供します。 |
 
 ## <a name="localize-content"></a>コンテンツのローカライズ
 
-Azure AD B2C テナントで [[言語のカスタマイズ]](active-directory-b2c-reference-language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
+Azure AD B2C テナントで [[言語のカスタマイズ]](user-flow-language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
 
 使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。
 
@@ -172,11 +174,11 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 テンプレート内のサンプル HTML および CSS ファイルは、[/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) ディレクトリにあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - **ユーザー フロー**を使用している場合は、次のチュートリアルで UI のカスタマイズを開始できます:
 
     「[Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする](tutorial-customize-ui.md)」。
 - **カスタム ポリシー**を使用している場合は、次の記事で UI のカスタマイズを開始できます:
 
-    「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」。
+    「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](custom-policy-ui-customization.md)」。

@@ -3,20 +3,20 @@ title: Team Data Science Process ライフサイクルの顧客による受け�
 description: データ サイエンス プロジェクトの顧客による受け入れステージの目標、タスク、成果物
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303572"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720522"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルの顧客による受け入れステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "60303572"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -48,16 +48,16 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 この最終ステージで生成される主なアーティファクトは、**顧客向けプロジェクトの終了レポート**です。 この技術的なレポートには、システムの運用方法を学習するために役立つプロジェクトのすべての詳細が含まれています。 TDSP には、[終了レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) テンプレートが用意されています。 このテンプレートをそのまま使用することも、特定のクライアントのニーズに合わせてカスタマイズすることもできます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
 Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。

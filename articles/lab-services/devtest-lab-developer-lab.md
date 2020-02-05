@@ -1,6 +1,6 @@
 ---
 title: 開発者のための Azure DevTest Labs の使用 | Microsoft Docs
-description: 開発者のシナリオを実現するために Azure DevTest Labs を使う方法について説明します。
+description: 開発者の要件を満たすために使うことができる Azure DevTest Labs 機能のほか、ラボをセットアップするための詳細な手順について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a293946e4672e7737f912f42511ad0907ba4a81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61294001"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760149"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。

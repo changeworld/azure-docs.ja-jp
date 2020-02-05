@@ -3,20 +3,20 @@ title: Team Data Science Process ライフサイクルのデプロイ ステー�
 description: データ サイエンス プロジェクトのデプロイ ステージの目標、タスク、成果物
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 156f2e95913dffd88de0b4669b13a5af5fc9605c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684690"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720488"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのデプロイ ステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "73684690"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -59,16 +59,16 @@ Azure Machine Learning Web サービスによるモデルの運用化の例に�
 * 最終的なソリューション アーキテクチャ ドキュメント
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
 Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。

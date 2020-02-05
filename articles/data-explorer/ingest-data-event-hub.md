@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779955"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773931"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -33,7 +33,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
@@ -118,6 +118,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | イベント ハブ | *test-hub* | 作成したイベント ハブ。 |
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
     | イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のものに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/tables#create-table)または[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)して、選択したプロパティを含めます。 |
+    | 圧縮 | *なし* | イベント ハブ メッセージ ペイロードの圧縮の種類。 サポートされている圧縮の種類は、*None、GZip* です。|
     | | |
 
     **ターゲット テーブル:**
@@ -128,15 +129,15 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT です。 サポートされている圧縮オプションは、GZip |
-    | 列マッピング | *TestMapping* | **TestDatabase** に作成した[マッピング](/azure/kusto/management/mappings)。これにより、受信 JSON データを **TestTable** の列名とデータ型にマッピングします。 JSON、MULTILINE JSON、AVRO では必須。その他の形式では省略可能。|
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC、および PARQUET です。 |
+    | 列マッピング | *TestMapping* | **TestDatabase** に作成した[マッピング](/azure/kusto/management/mappings)。これにより、受信 JSON データを **TestTable** の列名とデータ型にマッピングします。 JSON または MULTILINE JSON では必須。その他の形式では省略可能。|
     | | |
 
     > [!NOTE]
     > * 動的ルーティングを使用するには、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** を選択します。この場合、[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)のコメントに示されているように、データに必要なルーティング情報が含まれています。 静的プロパティと動的プロパティの両方が設定されている場合、静的プロパティは動的プロパティによってオーバーライドされます。 
     > * データ接続の作成後にエンキューされたイベントのみが取り込まれたます。
-    > * [Azure portal のサポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を開いて、静的ルーティングのための GZip 圧縮を有効にします。 [サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)で示しているように、動的ルーティングのための GZip 圧縮を有効にします。 
-    > * Avro 形式とイベント システム プロパティは、圧縮ペイロードではサポートされていません。
+    > * [サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)に示されているように、動的プロパティを使用して圧縮の種類を設定することもできます。
+    > * Avro、ORC、および PARQUET 形式とイベント システム プロパティは、GZip 圧縮ペイロードではサポートされていません。
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

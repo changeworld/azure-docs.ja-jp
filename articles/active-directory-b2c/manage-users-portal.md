@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962030"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840419"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Azure portal を使用して Azure AD B2C 内のコンシューマー ユーザーを作成および削除する
 
@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) ディレクトリにコンシュー�
 
 ## <a name="create-a-consumer-user"></a>コンシューマー ユーザーを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
@@ -59,6 +59,6 @@ Azure Active Directory B2C (Azure AD B2C) ディレクトリにコンシュー�
 
 削除後 30 日以内にユーザーを復元する方法、またはユーザーを完全に削除する方法の詳細については、「[Azure Active Directory を使用して最近削除されたユーザーを復元または削除する](../active-directory/fundamentals/active-directory-users-restore.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-自動化されたユーザー管理シナリオ (たとえば、別の ID プロバイダーから Azure AD B2C ディレクトリにユーザーを移行するなど) については、[Azure AD B2C へのユーザーの移行](active-directory-b2c-user-migration.md)に関するページを参照してください。
+自動化されたユーザー管理シナリオ (たとえば、別の ID プロバイダーから Azure AD B2C ディレクトリにユーザーを移行するなど) については、[Azure AD B2C:ユーザーの移行](user-migration.md)に関するページを参照してください。

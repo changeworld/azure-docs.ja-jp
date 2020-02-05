@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981828"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768390"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -54,7 +54,7 @@ Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blo
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで**所有者**ロールである必要があります。
 - Enterprise サブスクリプションの場合、EA ポータルで **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
-- クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Cosmos DB の予約容量を購入できます。
+- クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Blob Storage の予約容量を購入できます。
 
 ## <a name="determine-required-capacity-before-purchase"></a>購入前に必要な容量を確認する
 

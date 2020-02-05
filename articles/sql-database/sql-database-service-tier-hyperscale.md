@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940807"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845890"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -72,7 +72,7 @@ Hyperscale サービスレベルは、純粋な OLTP から純粋な分析まで
 
 - **ストレージ**:
 
-  ハイパースケールのデータベースを構成するときに、最大データ サイズを指定する必要はありません。 ハイパースケール レベルでは、実際の使用量に基づき、データベース用のストレージに料金が発生します。 ストレージは 10 GB から 100 TB の間で自動的に割り当てられ、増加分は 10 GB から 40 GB の間で動的に調整されます。  
+  ハイパースケールのデータベースを構成するときに、最大データ サイズを指定する必要はありません。 ハイパースケール レベルでは、実際の割り当てに基づいてデータベースのストレージに対して課金されます。 ストレージは、40 GB から 100 TB までの間 (10 GB 単位で増分) で自動的に割り当てられます。 必要に応じて、複数のデータ ファイルを同時に拡大することができます。 ハイパースケール データベースは、10 GB の開始サイズで作成され、10分ごとに 10 GB ずつ拡大し、最終的には 40 GB のサイズに達します。
 
 ハイパースケールの価格について詳しくは、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」をご覧ください。
 
@@ -112,13 +112,13 @@ Azure Storage には、データベース内のすべてのデータ ファイ�
 
 ## <a name="create-a-hyperscale-database"></a>ハイパースケール データベースの作成
 
-ハイパースケール データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみを使用して入手できます。
+ハイパースケール データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用してのみ入手できます。
 
 次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4)に関するページを参照してください。
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 これにより、4 コア搭載の Gen5 ハードウェアに Hyperscale データベースが作成されます。
@@ -130,8 +130,8 @@ GO
 次の T-SQL コマンドによってデータベースがハイパースケール サービス レベルに移行されます。 `ALTER DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
@@ -160,7 +160,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 2. 自動バックアップからの Azure SQL データベースの復元に関するページの「[geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)」トピックにある手順に従ってください。
 
 > [!NOTE]
-> ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。  Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ターゲットがペア リージョンにある場合、コピーはデータセンター内にあり、インターネット経由の遠距離コピーよりもかなり高速ですが、それでもすべてのビットがコピーされます。
+> ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。 Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ペア リージョン内にターゲットがある場合、コピーは 1 つのリージョン内で行われます。これは、複数のリージョンにまたがって行われるコピーよりもはるかに高速になりますが、それでもデータのサイズに左右される操作になります。
 
 ## <a name=regions></a>対応リージョン
 

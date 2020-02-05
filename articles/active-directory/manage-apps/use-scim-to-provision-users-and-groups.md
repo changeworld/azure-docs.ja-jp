@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 2c2f0abeab31fc64fceb10bf17ef90924efefa22
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940868"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841218"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
 
@@ -49,7 +49,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>手順 1:ユーザーとグループのスキーマを設計する
 
-すべてのアプリケーションは、ユーザーまたはグループを作成するためのさまざまな属性を必要とします。 アプリケーションで必要なオブジェクト (ユーザー、グループ) および属性 (名前、マネージャー、役職など) を特定して、統合を開始します。 次に、以下の表を使用して、アプリケーションが必要とする属性を Azure AD および SCIM RFC の属性にマップする方法を把握できます。 Azure AD と SCIM エンドポイントの間で属性がどのようにマップされるかを[カスタマイズ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)できます。 
+すべてのアプリケーションは、ユーザーまたはグループを作成するためのさまざまな属性を必要とします。 アプリケーションで必要なオブジェクト (ユーザー、グループ) および属性 (名前、マネージャー、役職など) を特定して、統合を開始します。 次に、以下の表を使用して、アプリケーションが必要とする属性を Azure AD および SCIM RFC の属性にマップする方法を把握できます。 Azure AD と SCIM エンドポイントの間で属性がどのようにマップされるかを[カスタマイズ](customize-application-attributes.md)できます。 
 
 ユーザー リソースは、スキーマ識別子 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User` で識別されます。この識別子については、このプロトコル仕様 (https://tools.ietf.org/html/rfc7643 ) に記載されています。  Azure AD 内のユーザーの属性をユーザー リソースの属性に対応付ける既定のマッピングを表 1 に示します。  
 
@@ -119,14 +119,14 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
     - `and`
 * [https://tools.ietf.org/html/rfc7644#section-3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2 ) に定義されているように、特に PATCH `op` 操作値の場合、SCIM 内の構造要素に対して大文字と小文字を区別した一致を要求しないでください。 Azure AD では、'op' の値が `Add`、`Replace`、`Remove` として出力されます。
 * Microsoft Azure AD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続**フローの一部としても行われます。 
-* リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)に関するページを参照してください。
+* リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
 
 ### <a name="user-provisioning-and-deprovisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 
 次の図は、アプリケーションの ID ストア内にあるユーザーのライフサイクルを管理するために Azure Active Directory から SCIM サービスに送信されるメッセージを示しています。  
 
-![ユーザーのプロビジョニングとプロビジョニング解除のシーケンスを示します][4]<br/>
-"*図 4:ユーザーのプロビジョニングとプロビジョニング解除のシーケンス*
+![ユーザーのプロビジョニングとプロビジョニング解除のシーケンスを示します](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+*ユーザーのプロビジョニングとプロビジョニング解除のシーケンス*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>グループのプロビジョニングとプロビジョニング解除
 
@@ -135,8 +135,8 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 * グループを取得する要求では、要求に対する応答の中で提示されるリソースから、members 属性が除外されるように指定しています。  
 * 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。  
 
-![グループのプロビジョニングとプロビジョニング解除のシーケンスを示します][5]<br/>
-*図 5:グループのプロビジョニングとプロビジョニング解除のシーケンス*
+![グループのプロビジョニングとプロビジョニング解除のシーケンスを示します](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+*グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM プロトコル要求と応答
 このセクションでは、Azure AD SCIM クライアントによって出力される SCIM 要求の例と、想定される応答の例を示します。 最良の結果を得るには、このような要求をこの形式で処理し、想定される応答を出力するよう、アプリをコーディングしてください。
@@ -167,8 +167,8 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
  [応答](#response-10))
   - [グループの更新 [メンバーの追加]](#update-group-add-members) ( [要求](#request-11) /
 [応答](#response-11))
-  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ( [要求](#request-12) /
-[応答](#response-12)) (
+  - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) /
+[応答](#response-12))
   - [グループの削除](#delete-group) ([要求](#request-13) /
 [応答](#response-13))
 
@@ -752,7 +752,7 @@ SCIM 仕様に準拠する独自の Web サービスを開発するにあたっ�
 
 * 共通言語基盤 (CLI) ライブラリは、C# など、この基盤をベースにした言語で使用できます。 これらのライブラリの 1 つ Microsoft.SystemForCrossDomainIdentityManagement.Service では、次の図に示すように、Microsoft.SystemForCrossDomainIdentityManagement.IProvider インターフェイスが宣言されています。 開発者は、このライブラリを使用して、プロバイダーと総称されるクラスにこのインターフェイスを実装できます。 開発者は、ライブラリを使用して、SCIM 仕様に準拠する Web サービスをデプロイできます。 Web サービスは、インターネット インフォメーション サービス内でホストすることも、実行可能な CLI アセンブリ内でホストすることもできます。 要求は、プロバイダーのメソッドの呼び出しに変換されます。開発者は、これを任意の ID ストアに作用するようにプログラムできます。
   
-   ![内訳:プロバイダーのメソッドへの呼び出しに変換された要求][3]
+   ![内訳:プロバイダーのメソッドへの呼び出しに変換された要求](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [Express ルート ハンドラー](https://expressjs.com/guide/routing.html)は、node.js Web サービスに対する (SCIM 仕様で定義された) 呼び出しを表す node.js 要求オブジェクトの解析に使用できます。
 
@@ -1328,14 +1328,14 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 3. **[+ 新しいアプリケーション]**  >  **[すべて]**  >  **[ギャラリー以外のアプリケーション]** の順に選択します。
 4. アプリケーションの名前を入力し、 **[追加]** を選択してアプリ オブジェクトを作成します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリの管理画面が開きます。
 
-   ![Azure AD アプリケーション ギャラリーを示すスクリーンショット][1]<br/>
-   "*図 2:Azure AD アプリケーション ギャラリーの使用*
+   ![Azure AD アプリケーション ギャラリーを示すスクリーンショット](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   *Azure AD アプリケーション ギャラリー*
 
 5. アプリの管理画面で、左側のパネルにある **[プロビジョニング]** を選択します。
 6. **[プロビジョニング モード]** メニューの **[自動]** を選択します。
 
-   ![例:Azure portal のアプリのプロビジョニング ページ][2]<br/>
-   "*図 3:Azure portal でのプロビジョニングの構成*
+   ![例:Azure portal のアプリのプロビジョニング ページ](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   *Azure portal でのプロビジョニングの構成*
 
 7. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/
 8. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD では各要求に Azure AD を発行元とする OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。 
@@ -1347,7 +1347,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
     > **テスト接続**では、Azure AD 構成で照合プロパティとして選択されたランダムな GUID を使用して、存在しないユーザー用の SCIM エンドポイントのクエリが実行されます。 想定される適切な応答は、HTTP 200 OK と空の SCIM ListResponse メッセージです。
 
 10. アプリケーションへの接続の試行に成功した場合は、 **[保存]** を選択して管理者資格情報を保存します。
-11. **[マッピング]** セクションには、選択可能な 2 つの[属性マッピング](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)のセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
+11. **[マッピング]** セクションには、選択可能な 2 つの[属性マッピング](customize-application-attributes.md)のセットがあります。片方はユーザー オブジェクト用であり、他方はグループ オブジェクト用です。 Azure Active Directory からアプリに同期されている属性を確認するには、それぞれを選択します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理でアプリ内のユーザーとアカウントを照合するために使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
     > [!NOTE]
     > 必要に応じて [グループ] マッピングを無効にすることで、グループ オブジェクトの同期を無効にできます。
@@ -1364,7 +1364,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>手順 5:Azure AD アプリケーション ギャラリーにアプリケーションを発行する
 
-複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)をリリースします。 
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../develop/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>アプリケーション ギャラリーでのプロビジョニング コネクタの承認
@@ -1376,11 +1376,13 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 *  クライアント ID: 承認サーバーは、登録されたクライアントにクライアント識別子 (クライアントによって提供される登録情報を表す一意の文字列) を発行します。  クライアント識別子はシークレットではありません。これはリソースの所有者に公開されており、クライアント認証に単独で使用**できません**。  
 *  クライアント シークレット:クライアント シークレットは、承認サーバーによって生成されるシークレットです。 これは承認サーバーにのみ認識される一意の値である必要があります。 
 
+OAuth v1 は、クライアント シークレットの露出が原因で、サポートされていないことに注意してください。 OAuth v2 はサポートされています。  
+
 ベスト プラクティス (推奨されますが必須ではありません):
 * 複数のリダイレクト URL をサポートします。 管理者は、"portal.azure.com" と "aad.portal.azure.com" の両方からプロビジョニングを構成できます。 複数のリダイレクト URL をサポートすることで、ユーザーがいずれのポータルからでもアクセスを承認できるようになります。
 * 複数のシークレットをサポートして、ダウンタイムなしでスムーズにシークレットを更新できるようにします。 
 
-**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)されます。 このトークンのサイズは 1 KB 未満である必要があります。  
+**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](application-provisioning-quarantine-status.md)されます。 このトークンのサイズは 1 KB 未満である必要があります。  
 
 追加の認証および承認方法については、[UserVoice](https://aka.ms/appprovisioningfeaturerequest) にご連絡ください。
 
@@ -1396,11 +1398,3 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 * [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
 * [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
-
-<!--Image references-->
-[0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png
-[1]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png
-[2]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png
-[3]: ./media/use-scim-to-provision-users-and-groups/scim-figure-3.png
-[4]: ./media/use-scim-to-provision-users-and-groups/scim-figure-4.png
-[5]: ./media/use-scim-to-provision-users-and-groups/scim-figure-5.png

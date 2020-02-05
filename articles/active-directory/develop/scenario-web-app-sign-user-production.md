@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49782a6e1e86320b508875e2bf931cc1cc19b4e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964772"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768100"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>ユーザーをサインインさせる Web アプリ:運用環境に移行する
 
@@ -28,7 +27,14 @@ Web API を呼び出すトークンの取得方法がわかったので、次に
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
+### <a name="same-site"></a>SameSite
+
+新しいバージョンの Chrome ブラウザーで起きる可能性がある問題について理解していることを確認します。
+
+> [!div class="nextstepaction"]
+> [Chrome ブラウザーにおける SameSite Cookie の変更を処理する方法](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
 ### <a name="scenario-for-calling-web-apis"></a>Web API を呼び出すシナリオ
 
@@ -37,7 +43,7 @@ Web アプリはユーザーをサインインさせると、サインインし�
 > [!div class="nextstepaction"]
 > [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>詳細情報: ASP.NET Core Web アプリのチュートリアル
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>詳細情報: ASP.NET Core Web アプリのチュートリアル
 
 この ASP.NET Core チュートリアルでは、ユーザーをサインインさせるための他の方法について説明しています。 
 
@@ -52,7 +58,7 @@ Web アプリはユーザーをサインインさせると、サインインし�
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - 各国のクラウド
 
-### <a name="sample-code-java-web-app"></a>サンプル コード:Java Web アプリ
+## <a name="sample-code-java-web-app"></a>サンプル コード:Java Web アプリ
 
 GitHub のこのサンプルで Java Web アプリの詳細を学習してください。 
 

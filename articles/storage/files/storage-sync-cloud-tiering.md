@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431737"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768206"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。
  
-ユーザーが階層化されたファイルを開くと、Azure File Sync によってファイル データが Azure Files からシームレスに再呼び出しされます。ユーザーは、ファイルが実際に Azure に格納されていることを知る必要はありません。 
+ユーザーが階層化されたファイルを開くと、Azure File Sync によってファイル データが Azure Files からシームレスに呼び戻されます。ユーザーは、ファイルが Azure に格納されていることを知る必要はありません。 
  
  > [!Important]  
  > クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
@@ -103,11 +103,10 @@ Azure File Sync エージェントのバージョン 4.0 以上では、ファ�
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
-
-`-Order CloudTieringPolicy` を指定すると、最後に変更されたファイルから先に呼び戻されます。
-その他の省略可能なパラメーター:
+省略可能なパラメーター:
+* `-Order CloudTieringPolicy` では、最後に変更されたファイルから先に呼び戻されます。  
 * `-ThreadCount` では、並行して呼び戻すことができるファイルの数を指定します。
 * `-PerFileRetryCount` では、現在ブロックされているファイルの呼び戻しを試行する頻度を指定します。
 * `-PerFileRetryDelaySeconds` では、再試行から呼び戻しまでの時間を秒単位で指定します。また、常に前のパラメーターと組み合わせて使用する必要があります。
@@ -127,6 +126,13 @@ Windows のエクスプローラーでは、 **[サイズ]** と **[ディスク
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>エクスプローラーで階層化されたファイルのサムネイルやプレビューが表示されないのはなぜですか。
+階層化されたファイルの場合、サムネイルとプレビューはサーバー エンドポイントでは表示されません。 Windows のサムネイル キャッシュ機能は、オフライン属性が設定されたファイルの読み取りを意図的にスキップするため、これは予期される動作です。 クラウドを使った階層化が有効になっている場合、階層化されたファイルを読み取ると、それらがダウンロード (呼び戻し) されます。
+
+この動作は Azure File Sync 固有ではありません。エクスプローラーでは、オフライン属性が設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳しい説明については、[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

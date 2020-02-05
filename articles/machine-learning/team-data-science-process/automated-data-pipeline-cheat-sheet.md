@@ -3,25 +3,25 @@ title: Azure Machine Learning データ パイプライン チート シート -
 description: データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670481"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721865"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
 
-データがオンプレミスにあるか、クラウド内にあるか、リアルタイムでストリーミングするかに応じて、スコア付けする Web サービス エンドポイントにデータを移動するために利用できる複数のメカニズムがあります。
+データがオンプレミスにあるか、クラウド内にあるか、リアルタイム ストリーミングかに応じて、スコア付けする Web サービス エンドポイントにデータを移動するために利用できる複数のメカニズムがあります。
 このチート シートは、何を決定する必要があるかについて紹介し、ソリューションを開発するために役立つ記事を示します。
 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Machine Learning 自動化データ パイプライン チート シートをダウンロードする

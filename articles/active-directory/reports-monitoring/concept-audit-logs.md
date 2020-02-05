@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008536"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714478"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -77,11 +77,11 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 
 次のフィールドで監査データをフィルター処理できます。
 
-- Service
-- Category
+- サービス
+- カテゴリ
 - アクティビティ
 - Status
-- ターゲット
+- 移行先
 - 開始者 (アクター)
 - 期間
 
@@ -111,7 +111,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 - AdministrativeUnit
 - ApplicationManagement
 - 認証
-- Authorization
+- 承認
 - Contact
 - Device
 - DeviceConfiguration
@@ -122,7 +122,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 - ポリシー
 - ResourceManagement
 - RoleManagement
-- GroupManagement
+- UserManagement
 
 **[アクティビティ]** フィルターは、カテゴリとアクティビティ リソースの種類の選択に基づいたものです。 参照する特定のアクティビティを選択することも、すべてを選択することもできます。 
 
@@ -132,7 +132,7 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 
 - All
 - Success
-- 失敗
+- 障害
 
 **[ターゲット]** フィルターでは、名前またはユーザー プリンシパル名 (UPN) で特定のターゲットを検索することができます。 ターゲット名と UPN では大文字小文字を区別します。 
 
@@ -144,7 +144,7 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 - 1 か月
 - 7 日
 - 24 時間
-- カスタム
+- Custom
 
 カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
@@ -207,7 +207,7 @@ Office 365 のアクティビティ ログは、[Microsoft 365 管理センタ�
 
 [Office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 監査アクティビティのリファレンス](reference-audit-activities.md)
 - [Azure AD レポートの保持のリファレンス](reference-reports-data-retention.md)

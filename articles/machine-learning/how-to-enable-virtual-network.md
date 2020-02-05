@@ -161,7 +161,7 @@ Machine Learning コンピューティングは、現在、Azure Batch サービ
 
 - インターネットに向かう全ポートのアウトバウンド トラフィック。
 
-- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の__サービス タグ__からの、ポート 44224 で受信するインバウンド TCP トラフィック。
+- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
 
 Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が拒否された場合は、コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
 
@@ -182,10 +182,10 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - __コンピューティング インスタンス__または__コンピューティング クラスター__の場合は、次の項目への送信トラフィックを制限します。
    - Azure Storage (__Storage__ の__サービス タグ__を使用)
    - Azure Container Registry (__AzureContainerRegistry__ の__サービス タグ__を使用)
-   - Azure Machine Learning (__AzureMachineLearning__ の__サービス タグ__を使用)
+   - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
    
 - __コンピューティング インスタンス__については、次の項目も追加します。
-   - Azure Resource Manager (__AzureResourceManager__ の__サービス タグ__を使用)
+   - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
    - Azure Active Directory (__AzureActiveDirectory__ の__サービス タグ__を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
@@ -193,7 +193,7 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 [![Machine Learning コンピューティングのアウトバウンド NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の__サービス タグ__も使用する必要があります。
+> Microsoft から提供される既定の Docker イメージを使用し、ユーザー管理の依存関係を有効にする予定の場合は、__MicrosoftContainerRegistry.Region_Name__ (例: MicrosoftContainerRegistry.EastUS) の __サービス タグ__ も使用する必要があります。
 >
 > この構成は、トレーニング スクリプトの一部として、以下のスニペットに似たコードを使用している場合に必要です。
 >
@@ -417,7 +417,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 既定で、AKS デプロイにはパブリック IP アドレスが割り当てられます。 仮想ネットワーク内で AKS を使用する場合は、代わりにプライベート IP アドレスを使用できます。 プライベート IP アドレスには、仮想ネットワークまたは結合されたネットワーク内からのみアクセスできます。
 
-プライベート IP アドレスを有効にするには、_内部ロード バランサー_を使用するように AKS を構成します。 
+プライベート IP アドレスを有効にするには、"_内部ロード バランサー_" を使用するように AKS を構成します。 
 
 > [!IMPORTANT]
 > Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。

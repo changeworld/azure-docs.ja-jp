@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169573"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846301"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -85,9 +85,9 @@ SubscriptionValidationEvent の例を以下に示します。
 }
 ```
 
-HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Accepted は有効なイベント グリッド サブスクリプション検証の応答として認識されません。http 要求は 30 秒以内に完了する必要があります。 操作が 30 秒以内に完了しない場合、操作は取り消され、5 秒後に再試行される場合があります。 すべての試行が失敗した場合、検証ハンドシェイク エラーとして扱われます。
+HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Accepted は有効な Event Grid サブスクリプション検証の応答として認識されません。 HTTP 要求は 30 秒以内に完了する必要があります。 操作が 30 秒以内に完了しない場合、操作は取り消され、5 秒後に再試行される場合があります。 すべての試行が失敗した場合、検証ハンドシェイク エラーとして扱われます。
 
-または、検証 URL に GET 要求を手動で送信して、サブスクリプションを検証することができます。 イベント サブスクリプションは、検証されるまで保留状態のままです。検証 URL にはポート 553 が使用されます。 ファイアウォール規則によってポート 553 がブロックされている場合、手動ハンドシェイクを正常に行うには、規則を更新する必要があります。
+または、検証 URL に GET 要求を手動で送信して、サブスクリプションを検証することができます。 イベント サブスクリプションは、検証されるまで保留状態にとどまります。 検証 URL ではポート 553 が使用されます。 ファイアウォール規則によってポート 553 がブロックされている場合、手動ハンドシェイクを正常に行うには、規則を更新する必要があります。
 
 サブスクリプション検証ハンドシェイクの処理の例については、[C# のサンプル](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)に関するページをご覧ください。
 
@@ -95,7 +95,7 @@ HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Acce
 
 イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https:\//your-endpoint-here の検証の試行に失敗しました。 詳細については、https:\//aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
 
-* ターゲット エンドポイントでアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
+* ターゲット エンドポイントで実行されるアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
 * アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装します。
 
 * アプリケーション コードにアクセスできない場合 (Webhook をサポートするサードパーティのサービスを使用している場合など) は、手動のハンドシェイクのメカニズムを使用できます。 検証イベントで validationUrl を受け取るために、2018-05-01-preview API バージョン以降を使用していることを確認してください (Event Grid の Azure CLI 拡張機能をインストールします)。 手動の検証ハンドシェイクを完了するには、`validationUrl` プロパティの値を取得し、Web ブラウザーでその URL にアクセスしてください。 検証が成功すると、そのことを示すメッセージが Web ブラウザーに表示されます。 イベント サブスクリプションの provisioningState には、"Succeeded" と表示されます。 
@@ -349,6 +349,10 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 カスタム ロールは、[PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md)、[REST API](../role-based-access-control/custom-roles-rest.md) で作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="encryption-at-rest"></a>保存時の暗号化
+
+Event Grid サービスによってディスクに書き込まれるすべてのイベントまたはデータは、保存時に確実に暗号化されるように、Microsoft マネージド キーによって暗号化されます。 また、[Event Grid の再試行ポリシー](delivery-and-retry.md)に従って、イベントまたはデータが保持される最大期間は 24 時間です。 Event Grid では、24時間またはイベントの Time-To-Live のいずれか少ない方が経過すると、すべてのイベントまたはデータが自動的に削除されます。
+
+## <a name="next-steps"></a>次のステップ
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

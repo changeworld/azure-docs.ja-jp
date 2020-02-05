@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433443"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714470"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
@@ -58,12 +58,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>実行中の Premium キャッシュのクラスター サイズを変更する
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[リソース] メニュー**の **[Redis クラスターのサイズ]** をクリックします。
-
-> [!NOTE]
-> Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階にあります。
-> 
-> 
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[リソース] メニュー**の **[Cluster Size]\(クラスターのサイズ\)** をクリックします。
 
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 

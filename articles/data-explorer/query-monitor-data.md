@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 01/28/2020
+ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934008"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843585"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor でデータのクエリを実行する (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Data Explorer プロキシのフロー:
 ## <a name="prerequisites"></a>前提条件
 
 > [!NOTE]
-> ADX プロキシはプレビュー モードです。 この機能を有効にするには、[ADXProxy](mailto:adxproxy@microsoft.com) チームまでお問い合わせください。
+> ADX プロキシはプレビュー モードです。 [プロキシに接続](#connect-to-the-proxy)して、クラスターの ADX プロキシ機能を有効にします。 ご質問がある場合は、[ADXProxy](mailto:adxproxy@microsoft.com) チームにお問い合わせください。
 
 ## <a name="connect-to-the-proxy"></a>プロキシに接続する
 
@@ -36,9 +36,10 @@ Azure Data Explorer プロキシのフロー:
 
 1. Azure Data Explorer の UI (https://dataexplorer.azure.com/clusters) ) で、 **[クラスターの追加]** を選択します。
 
-1. **[クラスターの追加]** ウィンドウで、次の操作を行います。
-
-    * LA または AI クラスターに URL を追加します。 次に例を示します。`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+1. **[クラスターの追加]** ウィンドウで、LA または AI クラスターへの URL を追加します。 
+    
+    * LA の場合: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * AI の場合: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
     * **[追加]** を選択します。
 
@@ -52,7 +53,7 @@ Azure Data Explorer プロキシのフロー:
 
 ## <a name="run-queries"></a>クエリを実行する
 
-Kusto Explorer、ADX Web Explorer、Jupyter Kqlmagic、または REST API を使用して、プロキシ クラスターにクエリを実行できます。 
+Kusto クエリをサポートするクライアント ツール (Kusto Explorer、ADX Web UI、Jupyter Kqlmagic、Flow、PowerQuery、PowerShell、Jarvis、Lens、REST API など) を使用してクエリを実行できます。
 
 > [!TIP]
 > * データベース名は、プロキシ クラスターで指定したリソースと同じ名前にする必要があります。 名前は大文字と小文字が区別されます。
@@ -60,19 +61,9 @@ Kusto Explorer、ADX Web Explorer、Jupyter Kqlmagic、または REST API を使
 >     * 名前に特殊文字が含まれている場合は、プロキシ クラスター名の URL エンコードで置き換えられます。 
 >     * 名前に [KQL 識別子の名前規則](/azure/kusto/query/schema-entities/entity-names)を満たしていない文字が含まれている場合は、ダッシュ **-** 文字で置き換えられます。
 
-### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Azure Data Explorer ネイティブ クラスターにクエリを実行する 
+### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>LA または AI ADX プロキシ クラスターからの直接クエリ
 
-Azure Data Explorer クラスター (*help* クラスター内の *StormEvents* テーブルなど) にクエリを実行します。 クエリを実行する場合は、左側のウィンドウで Azure Data Explorer ネイティブ クラスターが選択されていることを確認してください。
-
-```kusto
-StormEvents | take 10 // Demonstrate query through the native ADX cluster
-```
-
-![StormEvents テーブルにクエリを実行する](media/adx-proxy/query-adx.png)
-
-### <a name="query-against-your-la-or-ai-cluster"></a>LA または AI クラスターにクエリを実行する
-
-LA または AL クラスターにクエリを実行する場合は、左側のウィンドウで LA または AI クラスターが選択されていることを確認してください。 
+LA または AI クラスターでクエリを実行します。 左側のペインでクラスターが選択されていることを確認します。 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
@@ -80,18 +71,7 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![LA ワークスペースにクエリを実行する](media/adx-proxy/query-la.png)
 
-### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>ADX プロキシから LA または AI クラスターにクエリを実行する  
-
-プロキシから LA または AI クラスターにクエリを実行する場合は、左側のウィンドウで ADX ネイティブ クラスターが選択されていることを確認してください。 次の例は、ADX ネイティブ クラスターを使用した LA ワークスペースのクエリを示しています
-
-```kusto
-cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name').Perf
-| take 10 
-```
-
-![Azure Data Explorer プロキシからクエリを実行する](media/adx-proxy/query-adx-proxy.png)
-
-### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>ADX プロキシからの LA または AI クラスターと ADX クラスターのクロス クエリ 
+### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>LA または AI ADX プロキシ クラスターと ADX ネイティブ クラスターのクロス クエリ 
 
 プロキシからクロス クラスター クエリを実行する場合は、左側のウィンドウで ADX ネイティブ クラスターが選択されていることを確認してください。 次の例は、ADX クラスター テーブルの LA ワークスペースとの (`union` を使用した) 組み合わせを示しています。
 
@@ -105,7 +85,7 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-![Azure Data Explorer プロキシからのクロス クエリ](media/adx-proxy/cross-query-adx-proxy.png)
+   [ ![Azure Data Explorer プロキシからのクロス クエリ](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
 union の代わりに [`join` 演算子](/azure/kusto/query/joinoperator)を使用するには、それを (プロキシに対してではなく) Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](/azure/kusto/query/joinoperator#join-hints) が必要になる場合があります。 
 
@@ -120,6 +100,6 @@ Application Insights (AI) または Log Analytics (LA) クラスターを呼び�
 |サブスクリプション内のすべてのアプリ/ワークスペースを含み、このリソース グループのメンバーであるクラスター    |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
 |このサブスクリプションで定義されているリソースのみを含むクラスター      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [クエリを作成する](write-queries.md)

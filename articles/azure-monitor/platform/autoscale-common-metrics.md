@@ -4,12 +4,12 @@ description: Cloud Services、Virtual Machines、Web Apps の自動スケール�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364596"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845569"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 
@@ -36,7 +36,7 @@ VM Scale Sets を使用し、特定のメトリックが一覧に表示されな
 - [Resource Manager ベースの Windows と Linux VM のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Resource Manager ベースの Windows と Linux VM Scale Sets のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>ゲスト OS メトリック Resource Manager ベースの Windows VM
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager ベースの Windows VM のゲスト OS メトリック
 診断拡張機能を使用して Azure で VM を作成すると、診断は有効になります。 診断拡張機能では、VM 内から取得した一連のメトリックを出力します。 これで、既定では出力されないメトリックから自動スケールができます。
 
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |Count |
 | \NetworkInterface\TotalCollisions |Count |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>一般的に使用される Web (サーバー ファーム) メトリック
-HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 このメトリック名は **HttpQueueLength** です。  使用できるサーバー ファーム (Web Apps) メトリックで使用できる一覧については、次のセクションを参照してください。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>一般的に使用される App Service (サーバー ファーム) のメトリック
+HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 そのメトリック名は **HttpQueueLength** です。  次のセクションに、使用できるサーバー ファーム (App Service) のメトリックを一覧表示します。
 
 ### <a name="web-apps-metrics"></a>Web Apps のメトリック
 Web Apps メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -159,8 +159,8 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 (非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
@@ -177,7 +177,7 @@ Service Bus キューの長さ (Service Bus キュー内のメッセージ数) �
 VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

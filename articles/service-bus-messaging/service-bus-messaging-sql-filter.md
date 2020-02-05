@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
-description: SQLFilter の文法について詳しく説明します。
+description: この記事では、SQLFilter の文法について詳しく説明します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591805"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759665"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 
@@ -60,13 +60,13 @@ ms.locfileid: "60591805"
   
 ## <a name="arguments"></a>引数  
   
--   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は、`sys` または `user` です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
+-   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
 ## <a name="remarks"></a>解説
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -119,11 +119,11 @@ ms.locfileid: "60591805"
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
--   `%`:0 個以上の文字から成る任意の文字列。  
+-   `%`:0 個以上の文字で構成される任意の文字列です。  
   
--   `_`:任意の 1 文字を表します。  
+-   `_`:任意の 1 文字です。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -136,7 +136,7 @@ ms.locfileid: "60591805"
   
  たとえば、`property LIKE 'ABC\%' ESCAPE '\'` は、`ABC` で始まる文字列ではなく、`ABC%` と一致します。  
   
-## <a name="constant"></a>定数  
+## <a name="constant"></a>定数 (constant)  
   
 ```  
 <constant> ::=  
@@ -172,7 +172,7 @@ ms.locfileid: "60591805"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -183,7 +183,7 @@ ms.locfileid: "60591805"
 
 ブール型の定数は、**TRUE** または **FALSE** キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +193,7 @@ ms.locfileid: "60591805"
 
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
-## <a name="function"></a>function  
+## <a name="function"></a>関数 (function)  
   
 ```  
 <function> :=  
@@ -279,7 +279,7 @@ ms.locfileid: "60591805"
   
 -   算術演算子 (`+`、`-`、`*`、`/`、`%` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)

@@ -1,18 +1,18 @@
 ---
 title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763081"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760013"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -28,11 +28,15 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ location は、カスタム イメージを作成するリージョンです。 
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+既定では Image Builder は "Standard_D1_v2" ビルド VM を使用しますが、これはオーバーライドできます。たとえば GPU VM 用にイメージをカスタマイズする場合は、GPU VM サイズが必要になります。 これは省略可能です。
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズを調整できます。ただし、OS に最低限必要な領域よりも小さくしないでください。 これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 これは省略可能です。
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Tags
@@ -135,13 +157,7 @@ Azure Image Builder のプレビューでは、公開された Red Hat Enterpris
 > リンクのアクセス トークンは頻繁に更新されるので、テンプレートを送信するたびに、RH リンクのアドレスが変更されているかどうかを確認する必要があります。
  
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、次の Azure Marketplace イメージがサポートされています。
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7.6
-* CentOS 7.6
-* Windows 2016
-* Windows 2019
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)を参照してください。 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ customize セクションは配列です。 Azure Image Builder では、カス�
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ OS のサポート: Linux
 - **name**- カスタマイズを追跡するための名前 
 - **scriptUri** - ファイルの場所への URI 
 - **inline** - コンマで区切られたシェル コマンドの配列。
- 
+- **sha256Checksum** - ファイルの sha256 チェックサムの値。これをローカルで生成すると、Image Builder によってチェックサムと検証が実行されます。
+    * Mac/Linux のターミナルを使用して sha256Checksum を生成するには、`sha256sum <fileName>` を実行します。
+
+
+スーパー ユーザー特権で実行するコマンドについては、`sudo` を先頭に付ける必要があります。
+
 > [!NOTE]
 > RHEL ISO ソースでシェル カスタマイザーを実行するときは、カスタマイズを行う前に、最初のカスタマイズ シェルで、Red Hat エンタイトルメント サーバーへの登録を処理する必要があります。 カスタマイズが完了したら、スクリプトでエンタイトルメント サーバーへの登録を解除する必要があります。
 
@@ -275,12 +298,15 @@ OS のサポート: Linux
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 OS のサポート: Windows
@@ -300,13 +326,16 @@ OS のサポート: Windows
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ OS のサポート: Windows と Linux
 - **scriptUri** - PowerShell スクリプト ファイルの場所への URI。 
 - **inline** - コンマで区切って指定された、実行するインライン コマンド。
 - **valid_exit_codes** - 省略可能。スクリプト/インライン コマンドから返すことができる有効なコード。これにより、スクリプト/インライン コマンドの報告されたエラーが回避されます。
+- **runElevated** - 省略可能。ブール値。昇格されたアクセス許可でコマンドとスクリプトを実行するためのサポート。
+- **sha256Checksum** - ファイルの sha256 チェックサムの値。これをローカルで生成すると、Image Builder によってチェックサムと検証が実行されます。
+    * Windows で PowerShell を使用して sha256Checksum を生成するには、[Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) を実行します。
+
 
 ### <a name="file-customizer"></a>ファイル カスタマイザー
 
@@ -330,7 +363,8 @@ OS のサポート: Windows と Linux
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure Image Builder では、次の 3 つの配布ターゲットがサポート
 
 すべてのターゲットの種類に同じ構成でイメージを配布できます。[例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)をご覧ください。
 
-複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所や、イメージ バージョンがレプリケートされたリージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。
- 
+複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Shared Image Gallery の配布に対するクエリです。
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+出力:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>配布: managedImage
 
 イメージの出力は、マネージド イメージ リソースになります。
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>次のステップ
 
 さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder) にあります。
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

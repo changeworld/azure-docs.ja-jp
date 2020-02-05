@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865940"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841099"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "75865940"
     
         Azure SSIS IR では、仮想ネットワークと同じリソース グループ下に特定のネットワーク リソースを作成する必要があります。 これらのリソースには次が含まれます。
         - *\<Guid>-azurebatch-cloudserviceloadbalancer* という名前の Azure ロード バランサー
-        - *\<Guid>-azurebatch-cloudservicenetworksecuritygroup という名前のネットワーク ワーク セキュリティ グループ
+        - *\<Guid>-azurebatch-cloudservicenetworksecuritygroup という名前のネットワーク セキュリティ グループ
         - -azurebatch-cloudservicepublicip という名前の Azure パブリック IP アドレス
     
         これらのリソースは、Azure-SSIS IR の開始時に作成されます。 これらは、Azure-SSIS IR の停止時に削除されます。 Azure-SSIS IR の停止がブロックされないように、他のリソースでこれらのネットワーク リソースを再利用しないでください。
@@ -70,7 +70,7 @@ Azure-SSIS IR を参加させる前に、Azure portal を使用して仮想ネ�
 
 1. Microsoft Edge または Google Chrome を起動します。 現時点では、Data Factory UI をサポートしているのはこれらの Web ブラウザーのみです。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[そのほかのサービス]** を選択します。 フィルターを適用して **[仮想ネットワーク]** を選択します。
 

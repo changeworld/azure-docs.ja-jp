@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681380"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712122"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -35,7 +35,7 @@ Azure AD プロビジョニング サービスは、ソース システムとタ
 - 現在実行されているプロビジョニング サイクルまたは最後に完了したプロビジョニング サイクルの種類 (初回または増分)。
 - 完了したプロビジョニング サイクルのパーセンテージを示す**進行状況バー**。 このパーセンテージは、プロビジョニングされたページの数を表します。 各ページには複数のユーザーまたはグループが含まれている可能性もあるため、プロビジョニングされたユーザー、グループ、ロールの数とこのパーセンテージとの間に、直接的な相関関係はないことに注意してください。
 - **[最新の情報に更新]** ボタン。このボタンを使用して、常に最新の情報を表示することができます。
-- コネクタ データ ストア内の**ユーザー**と**グループ**の数。 この数は、オブジェクトがプロビジョニングのスコープに追加されるたびに増加します。 ユーザーが論理的に削除されたり、物理的に削除されたりしても、コネクタ データ ストアからオブジェクトが削除されないため、数は減りません。 CDS が[リセット](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)された後、最初の同期で数が再計算されます。 
+- コネクタ データ ストア内の**ユーザー**と**グループ**の数。 この数は、オブジェクトがプロビジョニングのスコープに追加されるたびに増加します。 ユーザーが論理的に削除されたり、物理的に削除されたりしても、コネクタ データ ストアからオブジェクトが削除されないため、数は減りません。 この数は、CDS が[リセット](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)された後の最初の同期で再計算されます。 
 - **[監査ログの表示]** リンク。Azure AD のプロビジョニング ログが開いて、個々のユーザーのプロビジョニング状態を含め、ユーザー プロビジョニング サービスによって実行された全操作についての詳細が表示されます (以下の[プロビジョニング ログの使用](#use-provisioning-logs-to-check-a-users-provisioning-status)に関するセクションを参照)。
 
 プロビジョニング サイクルの完了後、現在までにプロビジョニングされた累積のユーザー数とグループ数が、完了日と最後のサイクルの期間と共に **[現在までの統計情報]** セクションに表示されます。 直近のプロビジョニング サイクルは、 **[アクティビティ ID]** によって一意に識別されます。 **[ジョブ ID]** は、プロビジョニング ジョブの一意識別子であり、テナント内のアプリに固有です。
@@ -60,7 +60,7 @@ Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライ�
 Azure portal でプロビジョニング ログを確認する方法の詳細については、[プロビジョニング レポートに関するガイド](check-status-user-account-provisioning.md)を参照してください。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。
-アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)などに基づいて、定期的にスケジュールされた間隔 (通常は 40 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。
+アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](assign-user-or-group-access-portal.md)などに基づいて、定期的にスケジュールされた間隔 (通常は 40 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。
 
 特定のユーザーがプロビジョニングされるのにかかる時間は主に、プロビジョニング ジョブで実行されているのが初回サイクルか増分サイクルかによって異なります。
 
@@ -102,7 +102,7 @@ Azure portal でプロビジョニング ログを確認する方法の詳細に
 
 - 割り当てられたグループの数とサイズ。 割り当てられたグループの同期はユーザーの同期よりも時間がかかります。 割り当てられたグループの数とサイズの両方がパフォーマンスに影響します。 [グループ オブジェクト同期用に有効にされたマッピング](customize-application-attributes.md#editing-group-attribute-mappings)がアプリにある場合、グループ名やメンバーシップなどのグループ プロパティがユーザーの他に同期されます。 これらの追加の同期はユーザー オブジェクトの同期のみの場合よりも時間がかかります。
 
-- パフォーマンスが問題になり、テナント内のユーザーとグループのほとんどをプロビジョニングしようとしている場合は、スコープ フィルターを使用します。 スコープ フィルターによって、ユーザーが特定の属性値に基づいてフィルター処理され、プロビジョニング サービスが Azure AD から抽出するデータを細かく調整できるようになります。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)」を参照してください。
+- パフォーマンスが問題になり、テナント内のユーザーとグループのほとんどをプロビジョニングしようとしている場合は、スコープ フィルターを使用します。 スコープ フィルターによって、ユーザーが特定の属性値に基づいてフィルター処理され、プロビジョニング サービスが Azure AD から抽出するデータを細かく調整できるようになります。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

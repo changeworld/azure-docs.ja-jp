@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c550174bff0529e0fc619f1de79c41ab7cf62a36
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0ffbbe5505c9316f362ebbc41d311f97408f1b17
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021216"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887774"
 ---
 この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
@@ -75,7 +75,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 > Resource Manager デプロイ モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。
 
 次のスクリーンショットは、Azure portal を使用してクラシック ストレージ アカウントを Azure Resource Manager ストレージ アカウントにアップグレードする方法を示しています。
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ストレージ アカウントに移動します。
 3. **[設定]** セクションで、 **[ARM への移行]** をクリックします。
 4. **[検証]** をクリックして、移行が可能かどうかを確かめます。
@@ -124,6 +124,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 | Compute | 2 つ以上の可用性セット (つまり、複数の可用性セット) を含むクラウド サービス。 |現在これはサポートされていません。 移行前に同じ可用性セットに Virtual Machines を移動してください。 |
 | Compute | Azure Security Center の拡張機能を備えた VM | Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 Virtual Machines を移行するには、サブスクリプションでセキュリティ センター ポリシーを無効にします。これにより、Virtual Machines から Security Center の監視拡張機能が削除されます。 |
 | Compute | バックアップまたはスナップショットの拡張機能を備えた VM | これらの拡張機能は、Azure Backup サービスで構成された Virtual Machines にインストールされます。 これらの VM の移行がサポートされていない間は、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault)のガイダンスに従って、移行前に作成されたバックアップを保持してください。  |
+| Compute | Azure Site Recovery 拡張機能を備えた VM | これらの拡張機能は、Azure Site Recovery サービスが構成された仮想マシンにインストールされます。 Site Recovery で使用されるストレージの移行は機能しますが、現在のレプリケーションに影響があります。 ストレージの移行後、VM のレプリケーションを無効にしてから有効にする必要があります。 |
 | ネットワーク |仮想マシンと Web/worker ロールを含む仮想ネットワーク |現在これはサポートされていません。 移行する前に、Web/ワーカー ロールを独自の仮想ネットワークに移動してください。 従来の仮想ネットワークが移行されると、それ以降、移行された Azure Resource Manager 仮想ネットワークは従来の仮想ネットワークを使ってピアリングされ、以前と同様の構成を実現できます。|
 | ネットワーク | クラシック Express Route 回線 |現在これはサポートされていません。 これらの回線は、IaaS 移行を開始する前に、Azure Resource Manager に移行する必要があります。 詳細については、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../articles/expressroute/expressroute-move.md)」をご覧ください。|
 | Azure App Service |App Service 環境を含む仮想ネットワーク |現在これはサポートされていません。 |

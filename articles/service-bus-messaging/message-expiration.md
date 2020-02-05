@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus メッセージの有効期限の設定 | Microsoft Docs
-description: Azure Service Bus メッセージの Time to Live と有効期限の設定
+title: Azure Service Bus - メッセージの有効期限
+description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310291"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756336"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -74,7 +74,7 @@ Service Bus のキュー、トピック、およびサブスクリプション�
     - 送信なし  
     - トピックに対する更新なし  
     - スケジュール設定されたメッセージなし 
-- Subscriptions
+- サブスクリプション
     - 受信なし  
     - サブスクリプションに対する更新なし  
     - サブスクリプションに新しいルールは追加されない  
@@ -82,7 +82,7 @@ Service Bus のキュー、トピック、およびサブスクリプション�
  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

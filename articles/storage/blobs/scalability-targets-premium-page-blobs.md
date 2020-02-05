@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749706"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756251"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium ページ BLOB ストレージ アカウントのスケーラビリティおよびパフォーマンス ターゲット
 
@@ -31,7 +31,7 @@ Premium ページ BLOB ストレージ アカウントのスケーラビリテ�
 
 | 合計アカウント容量                            | ローカル冗長ストレージ アカウントの合計帯域幅                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| ディスク容量:35 TB <br>スナップショット容量:10 TB | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
+| ディスク容量:4 TB (個々のディスク)/35 TB (全ディスクの累積合計) <br>スナップショット容量:10 TB | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
 
 <sup>1</sup> ストレージ アカウントに送信されるすべてのデータ (要求)
 

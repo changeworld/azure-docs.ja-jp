@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844719"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>チュートリアル:イベントを Event Grid クラウドに転送する
 
@@ -23,7 +23,7 @@ ms.locfileid: "73100656"
 * クラウドのエッジ イベントに対応します。
 * クラウドの Event Grid にイベントを転送し、Azure Event Hubs または Azure Storage キューを使用して、クラウドで処理する前にイベントをバッファーに格納します。
 
-このチュートリアルを最後まで読むには、[エッジ](concepts.md)および [Azure](../concepts.md) での Event Grid の概念を理解している必要があります。
+ このチュートリアルを最後まで読むには、[エッジ](concepts.md)および [Azure](../concepts.md) での Event Grid の概念を理解している必要があります。 その他の送信先の種類については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 このチュートリアルを完了するには、以下が必要になります。
@@ -83,6 +83,7 @@ ms.locfileid: "73100656"
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>エッジで Event Grid サブスクリプションを作成する
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容で subscription3.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください。
 
@@ -194,10 +195,11 @@ ms.locfileid: "73100656"
 
 * クラウド (Azure Event Grid) で作成されたトピックとサブスクリプションも削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、エッジでイベントを発行し、Azure クラウドの Event Grid に転送しました。 これで、クラウドの Event Grid に転送する基本的な手順がわかりました。
 
 * Azure Event Grid on IoT Edge の使用に伴う問題のトラブルシューティングについては、[トラブルシューティング ガイド](troubleshoot.md)を参照してください。
 * この[チュートリアル](forward-events-iothub.md)に従って、イベントを IoTHub に転送します
 * この[チュートリアル](pub-sub-events-webhook-cloud.md)に従って、イベントをクラウドの Webhook に転送します
+* [エッジでのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)

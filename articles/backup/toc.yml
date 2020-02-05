@@ -258,6 +258,8 @@
           href: backup-azure-backup-server-import-export-.md
     - name: 監視とアラート
       items:
+        - name: バックアップ エクスプローラーの使用
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: Azure ポータルの使用
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Azure Monitor の使用

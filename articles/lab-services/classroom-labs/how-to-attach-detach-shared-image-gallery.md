@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする | Microsoft Docs
-description: Azure Lab Services で共有イメージ ギャラリーをラボにアタッチする方法について説明します。
+description: この記事では、Azure Lab Services で共有イメージ ギャラリーをクラスルーム ラボにアタッチする方法について説明します。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 98a21e9fa846d5a91ed1242701484afaa641cddc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890326"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718044"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 教師/ラボ管理者は、テンプレート VM イメージを他のユーザーが再利用できるよう、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存することができます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
@@ -42,7 +42,7 @@ ms.locfileid: "73890326"
 - ラボ アカウントから共有イメージ ギャラリーをデタッチする
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>共有イメージ ギャラリーを作成してアタッチする
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[DevOps]** セクションで、 **[ラボ サービス]** を選択します。 **[ラボ サービス]** の横にある星印 (`*`) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、 **[お気に入り]** の下で **[ラボ サービス]** を選択します。
 
     ![[すべてのサービス] -> [ラボ サービス]](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -86,7 +86,7 @@ ms.locfileid: "73890326"
 
 ![ラボ アカウントから共有イメージ ギャラリーをデタッチする](../media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 共有イメージ ギャラリーにラボ イメージを保存したり、共有イメージ ギャラリーのイメージを使用して VM を作成したりする方法については、[共有イメージ ギャラリーの使用方法](how-to-use-shared-image-gallery.md)に関するページを参照してください。
 
 共有イメージ ギャラリー全般の詳細については、[共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に関するページを参照してください。

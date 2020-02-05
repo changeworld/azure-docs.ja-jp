@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770647"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759911"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -49,7 +49,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 * [Oracle 11g Release 2 (Standard Edition、Standard Edition One、または Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html) をダウンロードしてインストールします。
 * サンプルの **HR** データベースを[ここ](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)からダウンロードします。
-* ora2pg をダウンロードして [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) または [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) のいずれかにインストールします。
+* [ora2pg をダウンロードし、Windows または Linux のいずれかにインストール](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)します。
 * [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * この[ドキュメント](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)の指示に従ってインスタンスに接続しデータベースを作成します。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
@@ -198,7 +198,7 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 Azure Database Migration Service で移行パイプラインを開始する前に、ora2pg を使用して、Oracle のテーブル スキーマ、ストアド プロシージャ、パッケージなどのデータベース オブジェクトを変換して、Postgres との互換性を確保することができます。 ora2pg の操作方法については、以下のリンクを参照してください。
 
-* [ora2pg を Windows にインストールする](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [ora2pg を Windows にインストールする](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Oracle から Azure PostgreSQL への移行に関するクックブック](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure Database Migration Service で PostgreSQL のテーブル スキーマを作成することもできます。 このサービスでは、接続されている Oracle ソースのテーブル スキーマにアクセスし、互換性のあるテーブル スキーマを Azure Database for PostgreSQL に作成します。 Azure Database Migration Service によるスキーマの作成とデータの移動が完了したら、Azure Database for PostgreSQL のスキーマ形式を検証して確認してください。
@@ -281,7 +281,7 @@ Azure Database Migration Service でスキーマを自動的に作成するに�
 
     この仮想ネットワークによって、Azure Database Migration Service に、ソース Oracle とターゲット Azure Database for PostgreSQL インスタンスへのアクセスが提供されます。
 
-    Azure portal で VNet を作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
 
 5. 価格レベルを選択します。
 

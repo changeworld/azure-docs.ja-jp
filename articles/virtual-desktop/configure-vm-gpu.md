@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953951"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719757"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
@@ -37,9 +37,9 @@ Windows Virtual Desktop では、次のオペレーティング システムで 
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 
-Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-driver-setup)」の説明に従って、手動で、または [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使って、ドライバーをインストールします。
+Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)」の手順に従って、手動で、または Azure VM 拡張機能を使用して適切なグラフィック ベンターのドライバーをインストールします。
 
-Windows Virtual Desktop 用にサポートされているのは、Azure によって配布された [NVIDIA GRID ドライバー](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)のみであることに注意してください。
+Windows Virtual Desktop でサポートされているのは、Azure によって配布されたドライバーのみです。 さらに、NVIDIA GPU を搭載した Azure VM の場合、Windows Virtual Desktop でサポートされているのは [NVIDIA GRID ドライバー](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)のみです。
 
 ドライバーをインストールした後は、VM を再起動する必要があります。 上記の説明の検証手順を使って、グラフィック ドライバーが正常にインストールされたことを確認します。
 
@@ -74,7 +74,7 @@ Windows Virtual Desktop 用にサポートされているのは、Azure によ�
 
 アプリでレンダリングに GPU が使われていることを確認するには、次のいずれかを試します。
 
-* 「[ドライバーのインストールの確認](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)」で説明されている `nvidia-smi` ユーティリティを使って、アプリ実行時の GPU の利用を確認します。
+* NVIDIA GPU を搭載した Azure VM の場合は、「[ドライバーのインストールの確認](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)」の説明に従って `nvidia-smi` ユーティリティを使用して、アプリ実行時の GPU 使用率を確認します。
 * サポートされているオペレーティング システムのバージョンでは、タスク マネージャーを使って GPU の利用を確認できます。 [パフォーマンス] タブで GPU を選択し、アプリで GPU が利用されているかどうかを確認します。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU アクセラレーションを使用するフレーム エンコードを検証する
@@ -86,9 +86,9 @@ Windows Virtual Desktop 用にサポートされているのは、Azure によ�
 3. GPU アクセラレーションを使用するエンコードが使われているかどうかを確認するには、イベント ID 170 を探します。 [AVC ハードウェア エンコーダーが有効になりました: 1] と表示される場合は、GPU エンコードが使われています。
 4. AVC 444 モードが使われているかどうかを確認するには、イベント ID 162 を探します。 [AVC 対応: 1、初期プロファイル: 2048] と表示される場合は、AVC 444 が使われています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以上の手順のようにすると、単一セッション ホストの VM で GPU アクセラレーションが稼働状態になるはずです。 さらに大きなホスト プールで GPU アクセラレーションを有効にするには、いくつか追加の考慮事項があります。
 
-* 多数の VM でのドライバーのインストールと更新を簡素化するには、[NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使うことを検討します。
+* 多数の VM でのドライバーのインストールと更新を簡素化するには、[VM 拡張機能](/azure/virtual-machines/extensions/overview)を使用することを検討してください。 NVIDIA GPU が搭載された VM には [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使用し、AMD GPU が搭載された VM には AMD GPU ドライバー拡張機能 (近日公開予定) を使用します。
 * 多数の VM でのグループ ポリシーの構成を簡素化するには、Active Directory グループ ポリシーを使うことを検討します。 Active Directory ドメインでのグループ ポリシーのデプロイについては、「[Working with Group Policy Objects (グループ ポリシー オブジェクトの操作)](https://go.microsoft.com/fwlink/p/?LinkId=620889)」をご覧ください。

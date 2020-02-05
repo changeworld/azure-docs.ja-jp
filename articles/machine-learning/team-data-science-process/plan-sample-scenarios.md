@@ -3,20 +3,20 @@ title: Azure Machine Learning のシナリオを特定する - Team Data Science
 description: Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981130"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710481"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
@@ -48,8 +48,8 @@ ms.locfileid: "75981130"
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (IPython Notebook サーバー)
 1. IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
-1. IPython Notebook でデータの前処理とクリーニングを行い、Azure ストレージ コンテナーからデータにアクセスします。
+1. Azure Storage コンテナーにデータをアップロードします。
+1. IPython Notebook でデータの前処理とクリーニングを行い、Azure Storage コンテナーからデータにアクセスします。
 1. クリーニングされたデータを表形式に変換します。
 1. 変換されたデータを Azure BLOB に保存します。
 1. [Azure Machine Learning Studio](https://studio.azureml.net/)にサインインします。
@@ -61,7 +61,7 @@ ms.locfileid: "75981130"
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (IPython Notebook サーバー)
 1. IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
+1. Azure Storage コンテナーにデータをアップロードします。
 1. IPython Notebook でデータの前処理とクリーニングを行い、Azure BLOB からデータにアクセスします。
 1. 必要に応じて、クリーニングされたデータを表形式に変換します。
 1. データを探索し、必要に応じて機能を作成します。
@@ -76,8 +76,8 @@ ms.locfileid: "75981130"
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
 1. SQL Server と IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
-1. IPython Notebook を使用して、Azure ストレージ コンテナーでデータの前処理とクリーニングを行います。
+1. Azure Storage コンテナーにデータをアップロードします。
+1. IPython Notebook を使用して、Azure Storage コンテナーでデータの前処理とクリーニングを行います。
 1. 必要に応じて、クリーニングされたデータを表形式に変換します。
 1. データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
 1. Azure VM で実行している SQL Server データベースにデータを読み込みます。
@@ -106,31 +106,27 @@ ms.locfileid: "75981130"
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
 1. SQL Server と IPython Notebook サーバーを実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
+1. Azure Storage コンテナーにデータをアップロードします。
 1. (省略可能) データの前処理とクリーニングを行います。
    
-   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
+    a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure BLOB からデータにアクセスします。
    
-       blobs.
+    b.  必要に応じて、クリーニングされたデータを表形式に変換します。
    
-   b.  必要に応じて、クリーニングされたデータを表形式に変換します。
-   
-   c.  データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
+    c.  データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
 1. Azure VM で実行している SQL Server データベースにデータを読み込みます。
    
-   a.  SQL Server VM にログインします。
+    a.  SQL Server VM にログインします。
    
-   b.  データが保存されていない場合は、Azure からダウンロードします。
+    b.  データをまだ保存していない場合は、データ ファイルを Azure Storage コンテナーからローカルの VM フォルダーにダウンロードします。
    
-       storage container to local-VM folder.
+    c.  SQL Server Management Studio を実行します。
    
-   c.  SQL Server Management Studio を実行します。
+    d.  データベースとターゲット テーブルを作成します。
    
-   d.  データベースとターゲット テーブルを作成します。
+    e.  いずれかの一括インポート方法を使用してデータを読み込みます。
    
-   e.  いずれかの一括インポート方法を使用してデータを読み込みます。
-   
-   f.  テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
+    f.  テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
    
    > [!NOTE]
    > 大きなサイズのデータの読み込みを高速化するために、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。 詳細については、「 [Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](parallel-load-sql-partitioned-tables.md)」をご覧ください。
@@ -153,12 +149,12 @@ ms.locfileid: "75981130"
    > オンプレミスのデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。 データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
    > 
    > 
-1. ダンプ ファイルを Azure ストレージ コンテナーにアップロードします。
+1. ダンプ ファイルを Azure Storage コンテナーにアップロードします。
 1. Azure 仮想マシンで実行している SQL Server データベースにデータを読み込みます。
    
    a.  SQL Server VM にログインします。
    
-   b.  データ ファイルを Azure ストレージ コンテナーからローカルの VM フォルダーにダウンロードします。
+   b.  データ ファイルを Azure Storage コンテナーからローカルの VM フォルダーにダウンロードします。
    
    c.  SQL Server Management Studio を実行します。
    
@@ -182,7 +178,7 @@ ms.locfileid: "75981130"
 ![ローカル DB をデタッチし、Azure の SQL DB にアタッチする][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
-SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
+SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用できます。
 
 1. ソースの場所にあるデータベースをデタッチします。 詳細については、「[データベースのデタッチ](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)」をご覧ください。
 1. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。

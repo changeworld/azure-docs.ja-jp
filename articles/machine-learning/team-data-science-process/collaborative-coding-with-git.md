@@ -2,20 +2,20 @@
 title: Git を使用した共同コーディング - Team Data Science Process
 description: アジャイル計画で Git を使用したデータ サイエンス プロジェクトの共同コード開発を行う方法です。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195504"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721899"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -80,7 +80,7 @@ Azure DevOps プロジェクトのメイン ページから、左のナビゲー
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-必要に応じて、 **[新しいプル要求]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、変更をレビューしてもらう必要のある担当者の名前を追加し、 **[作成]** を選択します。 
+必要に応じて、 **[新しいプル要求]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -112,7 +112,7 @@ git branch -d script
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [データ サイエンス タスクの実行](execute-data-science-tasks.md)に関するページに、ユーティリティを使用して、インタラクティブなデータ探索、データ分析、レポート作成、およびモデル作成などの複数の共通データ サイエンス タスクを完了する方法が示されています。
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894863"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845743"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -32,7 +32,7 @@ ms.locfileid: "75894863"
 
 Azure Machine Learning は Azure Monitor を使用して監視データをログに記録します。これは、Azure のフルスタック監視サービスです。 Azure Monitor には、Azure リソースを監視するための完全な機能セットが用意されています。 また、他のクラウドやオンプレミスのリソースも監視できます。
 
-最初に、「[Azure Monitor の概要](/azure/azure-monitor/overview)」という記事をご覧ください。これには、監視機能の概要が記載されています。 次のセクションでは、Azure Monitor と Azure Machine Learning を使って具体的な情報を提供することで、この情報を詳しく説明していきます。
+最初に、「[Azure Monitor の概要](/azure/azure-monitor/overview)」という記事をご覧ください。これには、監視機能の概要が記載されています。 次のセクションでは、この情報に基づき、Azure Monitor と Azure Machine Learning の使用について詳しく説明していきます。
 
 Azure Monitor に関連したコストを把握するには、[使用量と推定コスト](/azure/azure-monitor/platform/usage-estimated-costs)に関する記事を参照してください。 データが Azure Monitor に表示されるまでにかかる時間を把握するには、[ログ データのインジェスト時間](/azure/azure-monitor/platform/data-ingestion-time)に関する記事を参照してください。
 

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232618"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719876"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理
 
@@ -39,7 +39,7 @@ ms.locfileid: "65232618"
 
 - 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
 
-- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイックスタートでは、SSMS を使用します。
+- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
 
 ## <a name="working-with-a-data-frame"></a>データ フレームの処理
 
@@ -73,7 +73,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 
 なぜ例 1 と例 2 の結果がこれほど異なるのかを理解するため、各ステートメントの `@script` 変数定義の最後に、行 `str(OutputDataSet)` を次のように挿入します。
 
-**str 関数を追加した例 1**
+**str 関数が追加された例 1**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -198,7 +198,7 @@ WITH RESULT SETS(([Col1] INT));
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>異なる長さの列のマージまたは乗算
 
-R は、異なるサイズのベクターの処理について、また構造体などの列を結合してデータ フレームとする処理について、優れた柔軟性を提供します。 ベクターのリストはテーブルのように見えますが、データベース テーブルに適用されるどのルールにも従いません。
+R は、異なるサイズのベクトルを使用するため、およびそれらの列のような構造をデータ フレームに結合するために、優れた柔軟性を提供します。 ベクターのリストはテーブルのように見えますが、データベース テーブルに適用されるどのルールにも従いません。
 
 たとえば、次のスクリプトでは、長さが 6 の数値の配列を定義し、R 変数 `df1` に格納します。 この数値配列は、(上記で作成した) 3 つの値を含む RTestData テーブルの整数値と結合され、新しいデータ フレーム `df2` が作成されます。
 

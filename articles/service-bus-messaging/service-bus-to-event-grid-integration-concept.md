@@ -1,10 +1,9 @@
 ---
 title: Azure Service Bus と Event Grid の統合の概要 | Microsoft Docs
-description: Service Bus メッセージングと Event Grid の統合の説明
+description: この記事では、Azure Service Bus メッセージングを Azure Event Grid と統合する方法について説明します。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072134"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773472"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -175,7 +174,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 ここから、他のセットアップ オプションを調べたり、イベントが送信されていることをテストしたりできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Bus と Event Grid の[例](service-bus-to-event-grid-integration-example.md)を確認します。
 * [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。

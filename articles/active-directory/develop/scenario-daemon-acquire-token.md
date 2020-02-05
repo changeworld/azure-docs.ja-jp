@@ -15,21 +15,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58952bdb58619693b31ee4705b6f9f704431657d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2d388160c6ca744b10c17bda17c59e22940f98b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423952"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775236"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
-機密クライアント アプリケーションが構築されたら、``AcquireTokenForClient`` を呼び出し、スコープを渡し、トークンを強制するかトークンを更新しないことでアプリのトークンを取得できます。
+機密クライアント アプリケーションを構築したら、`AcquireTokenForClient` を呼び出し、スコープを渡し、必要に応じてトークンを強制的に更新することでアプリのトークンを取得できます。
 
 ## <a name="scopes-to-request"></a>要求するスコープ
 
-クライアントの資格情報フローのために要求するスコープは、後に `/.default` が続くリソースの名前です。 この表記は、アプリケーションの登録時に静的に宣言された**アプリケーション レベルの権限**を使用するように Azure AD に指示します。 また、前述したように、これらの API アクセス許可は、テナント管理者によって付与される必要があります。
+クライアントの資格情報フローのために要求するスコープは、後に `/.default` が続くリソースの名前です。 この表記は、アプリケーションの登録時に静的に宣言された "*アプリケーション レベルのアクセス許可*" を使用するように Azure Active Directory (Azure AD) に指示します。 また、これらの API アクセス許可は、テナント管理者によって付与される必要があります。
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -56,26 +55,26 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="case-of-azure-ad-v10-resources"></a>Azure AD (v1.0) リソースの場合
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) リソース
 
-クライアント資格情報に使用するスコープは常に resourceId+"/.default" にする必要があります。
+クライアント資格情報に使用するスコープは、常に、リソース ID の後に `/.default` が続くものにする必要があります。
 
 > [!IMPORTANT]
-> v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL の場合、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
-> そのため、Azure SQL ( **https://database.windows.net** ) のようにリソースによってスラッシュで終わる対象ユーザー (Azure SQL の場合: `https://database.windows.net/` ) が要求されている場合は、`https://database.windows.net//.default` のスコープを要求する必要があります(二重スラッシュに注意してください)。 次も参照してください。MSAL.NET の問題 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した。
+> MSAL がバージョン 1.0 のアクセス トークンを受け入れるリソースのためのアクセス トークンを要求すると、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
+> したがって、Azure SQL Database (**https:\//database.windows.net**) のように、リソースが、末尾がスラッシュ (Azure SQL Database の場合、`https://database.windows.net/`) の対象ユーザーを予期している場合は、`https://database.windows.net//.default` のスコープを要求する必要があります (二重スラッシュに注意してください)。MSAL.NET の問題「[#747: リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)」も参照してください。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-アプリのトークンを取得するには、プラットフォームに応じて `AcquireTokenForClient` または同等のものを使用します。
+アプリのトークンを取得するには、プラットフォームに応じて `AcquireTokenForClient` またはそれと同等のものを使用します。
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```csharp
 using Microsoft.Identity.Client;
 
-// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
+// With client credentials flows, the scope is always of the shape "resource/.default" because the
 // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-// a tenant administrator
+// a tenant administrator.
 string[] scopes = new string[] { "https://graph.microsoft.com/.default" };
 
 AuthenticationResult result = null;
@@ -86,14 +85,14 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
-    // The application does not have sufficient permissions
-    // - did you declare enough app permissions in during the app creation?
-    // - did the tenant admin needs to grant permissions to the application.
+    // The application doesn't have sufficient permissions.
+    // - Did you declare enough app permissions during app creation?
+    // - Did the tenant admin grant permissions to the application?
 }
 catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 {
-    // Invalid scope. The scope has to be of the form "https://resourceurl/.default"
-    // Mitigation: change the scope to be as expected !
+    // Invalid scope. The scope has to be in the form "https://resourceurl/.default"
+    // Mitigation: Change the scope to be as expected.
 }
 ```
 
@@ -103,9 +102,9 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 # The pattern to acquire a token looks like this.
 result = None
 
-# Firstly, looks up a token from cache
-# Since we are looking for token for the current app, NOT for an end user,
-# notice we give account parameter as None.
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
 result = app.acquire_token_silent(config["scope"], account=None)
 
 if not result:
@@ -113,17 +112,17 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 
 if "access_token" in result:
-    # Call a protected API with the access token
+    # Call a protected API with the access token.
     print(result["token_type"])
 else:
     print(result.get("error"))
     print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You may need this when reporting a bug
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-これは、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)から抜粋したものです。
+このコードは、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)から抽出したものです。
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
@@ -139,7 +138,7 @@ BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
     System.out.println("Returned ok - " + res);
     System.out.println("ID Token - " + res.idToken());
 
-    /* call a protected API with res.accessToken() */
+    /* Call a protected API with res.accessToken() */
 };
 
 future.whenCompleteAsync(processAuthResult);
@@ -152,10 +151,10 @@ future.join();
 
 選択した言語のライブラリがまだない場合は、プロトコルを直接使用することもできます。
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>最初のケース:共有シークレットを使用してトークン要求にアクセスする
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -165,10 +164,10 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>2 番目のケース:証明書を使用してトークン要求にアクセスする
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -183,7 +182,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ## <a name="application-token-cache"></a>アプリケーション トークン キャッシュ
 
-MSAL.NET では、`AcquireTokenForClient` は**アプリケーション トークン キャッシュ**を使用します (他の AcquireTokenXX メソッドはすべてユーザー トークン キャッシュを使用します)。`AcquireTokenSilent` は**ユーザー** トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は**アプリケーション** トークン キャッシュそのものをチェックして、更新します。
+MSAL.NET では、`AcquireTokenForClient` はアプリケーション トークン キャッシュを使用します (他のすべての AcquireToken*XX* メソッドはユーザー トークン キャッシュを使用します)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は*アプリケーション* トークン キャッシュそのものをチェックして、更新します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -194,7 +193,7 @@ MSAL.NET では、`AcquireTokenForClient` は**アプリケーション トー�
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>管理者の同意を提供するのを忘れましたか? デーモン アプリにはそれが必要です。
 
 API を呼び出すときに、**この操作を完了するのに十分な特権がありません**というエラーが表示された場合は、テナント管理者がアプリケーションにアクセス許可を付与する必要があります。 上記のクライアント アプリの登録の手順 6 を参照してください。
-一般的に、次のようなエラーの説明が表示されます。
+通常、次のようなエラーが表示されます。
 
 ```JSon
 Failed to call the web API: Forbidden

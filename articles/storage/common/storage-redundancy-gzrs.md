@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973377"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719077"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
@@ -32,6 +32,7 @@ GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで
 - 東南アジア
 - 北ヨーロッパ
 - 西ヨーロッパ
+- 東日本
 - 英国南部
 - 米国東部
 - 米国東部 2
@@ -129,6 +130,7 @@ GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみ
 ライブ マイグレーションでは次の制限に注意してください。
 
 - Microsoft はお客様のライブ マイグレーションの要求に速やかに対応しますが、ライブ マイグレーションがいつ完了するかについての保証はありません。 データを特定の日付までに GZRS または RA-GZRS に移行する必要がある場合、Microsoft では代わりに手動の移行を実行することをお勧めします。 一般的に、アカウントで保存しているデータが多いほど、データの移行には時間がかかります。
+- ライブ マイグレーションは、GRS または RA-GRS のレプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが LRS を使用している場合は、続行する前に、まず自分のアカウントのレプリケーションの種類を GRS または RA-GRS のいずれかに変更する必要があります。 この中間ステップでは、GRS/RA-GRS によって提供されるセカンダリ エンドポイントを追加します。
 - アカウントにはデータが含まれている必要があります。
 - 同じリージョン内のデータのみ移行できます。
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。

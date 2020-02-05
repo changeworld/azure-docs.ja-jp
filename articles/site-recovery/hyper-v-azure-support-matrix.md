@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863895"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774422"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -33,7 +33,7 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 **[サーバー]** | **必要条件** | **詳細**
 --- | --- | ---
 Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
-Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。<br/><br/>
+Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。<br/><br/> 注:別の場所へのフェールバックは、Windows Server 2019 ホストではサポートされていません。
 
 
 ## <a name="replicated-vms"></a>レプリケートされた VM
@@ -132,9 +132,9 @@ geo 冗長ストレージ | はい | はい
 保存時の暗号化 (SSE)| はい | はい
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 Premium Storage | はい | はい
-インポート/エクスポート サービス | いいえ | いいえ
-ファイアウォールが有効になっている Azure ストレージ アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
-ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
+Import/Export サービス | いいえ | いいえ
+ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
+ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能

@@ -3,20 +3,20 @@ title: Azure HDInsight Hive テーブル内のデータのサンプリング - T
 description: Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングし、データを分析で管理しやすいサイズに削減します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042885"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719995"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive テーブル内のデータのサンプリング
 この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングして、分析で管理しやすいサイズに削減する方法について説明します。 一般的に使用されている 3 つのサンプリング方法について説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "61042885"
 このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 ## <a name="how-to-submit-hive-queries"></a>Hive クエリを送信する方法
-Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。 これを行うには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。 Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](move-hive-tables.md#submit)」をご覧ください。
+Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。  Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。 Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](move-hive-tables.md#submit)」をご覧ください。
 
 ## <a name="uniform"></a> 一様ランダム サンプリング
 一様ランダム サンプリングとは、データ セットの各行にサンプリングされる機会が均等にあるという意味です。 これは、追加のフィールド rand() を、内部の "select" クエリのデータセットに追加し、そのランダム フィールドについての条件を外部の "select" クエリに追加することで実装できます。

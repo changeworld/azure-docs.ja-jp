@@ -3,20 +3,20 @@ title: 航空宇宙業界の予測メンテナンス ガイド - Team Data Scien
 description: 航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: a73308274c9aedf6a85745c17c14637e2ef3d27d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9871e1402336f5ad282c12f959d45fda85512a84
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492479"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721848"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -49,7 +49,7 @@ ms.locfileid: "73492479"
 
 ## <a name="data-source-and-ingestion"></a>データ ソースと取り込み
 ### <a name="synthetic-data-source"></a>合成データソース
-このテンプレートでは、デプロイの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。
+このテンプレートでは、デプロイの成功後に、ローカルで実行するダウンロードされたデスクトップ アプリケーションから、使用仮想マシン テンプレートするデータ ソースが生成されます。
 
 このアプリケーションをダウンロードしてインストールする手順を確認するには、ソリューション テンプレート図の最初のノード (予測メンテナンス データ ジェネレーター) を選択します。 手順はプロパティ バーに表示されます。 このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。 このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) を使用して、[NASA データ リポジトリ](https://c3.nasa.gov/dashlink/resources/139/)で公開されているデータから得たものです。
 
@@ -63,13 +63,13 @@ ms.locfileid: "73492479"
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure イベント ハブ](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
-HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
+HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 (Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)で受け取った入力を使用して、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
 
 ## <a name="data-publishing"></a>データの公開
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL データベース
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を使用して、Azure Machine Learning が受け取った予測を格納します。それらは後で [Power BI](https://powerbi.microsoft.com) ダッシュボードで使用されます。
 
 ## <a name="data-consumption"></a>データの使用
@@ -89,7 +89,7 @@ Azure Event Hub は汎用的で、データを CSV または JSON 形式でハ�
 このドキュメントでは、データを取り込む方法について説明しませんが、Event Hub API を使用して、イベントやデータを Azure Event Hub に簡単に送信できます。
 
 ### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
-Azure Stream Analytics サービスを使用して、データ ストリームから読み取り、任意の数のソースにデータを出力することによって、ほぼリアルタイムで分析を行います。
+Azure Stream Analytics リソースを使用して、データ ストリームから読み取り、任意の数のソースにデータを出力することによって、ほぼリアルタイムで分析を行います。
 
 航空宇宙ソリューション テンプレートの予測メンテナンスの場合、Azure Stream Analytics クエリは、それぞれ Azure Event Hub サービスからのイベントを使用し、4 つの異なる場所に出力する 4 つのサブ クエリから構成されます。 これらの出力は、3 つの Power BI データセットと 1 つの Azure Storage の場所から構成されます。
 
@@ -148,8 +148,8 @@ Azure Machine Learning の実験の作成方法については、「[Predictive 
 ## <a name="monitor-progress"></a>進行状況の監視
 データ ジェネレーターを起動すると、データを取り込むパイプラインのデハイドレートが開始され、データ ファクトリによって発行されたコマンドに従ってソリューションのさまざまなコンポーネントがアクションを開始します。 パイプラインを監視する方法は 2 つあります。
 
-1. いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[Azure Portal](https://portal.azure.com/) に移動します。 管理ポータルで、BLOB をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **maintenancesadata** をクリックします。 次のパネルに **rawdata** フォルダーが表示されます。 rawdata フォルダーの中に、hour=17、hour=18 などの名前の付いたフォルダーが表示されます。 これらのフォルダーの存在は、生データがコンピューター上に生成され、BLOB ストレージに格納されたことを示しています。 これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
-2. パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、SQL DATABASES ![SQL アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)」を見つけてそれをクリックします。 次に、データベース **pmaintenancedb** を見つけて、それをクリックします。 次のページの下部にある [管理] をクリックします。
+* いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[Azure Portal](https://portal.azure.com/) に移動します。 管理ポータルで、BLOB をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **maintenancesadata** をクリックします。 次のパネルに **rawdata** フォルダーが表示されます。 rawdata フォルダーの中に、hour=17、hour=18 などの名前の付いたフォルダーが表示されます。 これらのフォルダーの存在は、生データがコンピューター上に生成され、BLOB ストレージに格納されたことを示しています。 これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
+* パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、SQL DATABASES ![SQL アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)を見つけてそれをクリックします。 次に、データベース **pmaintenancedb** を見つけて、それをクリックします。 次のページの下部にある [管理] をクリックします。
    
     ![管理アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
@@ -162,8 +162,11 @@ Power BI ダッシュボードを設定して、Azure Stream Analytics データ
 ### <a name="set-up-the-cold-path-dashboard"></a>コールド パス ダッシュボードの設定
 コールド パス データ パイプラインでの目標は、フライト (サイクル) の終了時に、各航空機エンジンの予測 RUL (残存耐用年数) を取得することです。 過去 3 時間以内にフライトを終了した航空機のエンジンを予測するために、予測結果は 3 時間ごとに更新されます。
 
-Power BI は、そのデータ ソースとして、予測結果が格納されている Azure SQL データベースに接続します。 注:ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。
-ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。 2) この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)をダウンロードしてインストールしていることです。
+Power BI は、そのデータ ソースとして、予測結果が格納されている Azure SQL Database に接続します。 
+
+注: 
+1.    ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。 ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。 
+2.    この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/) をダウンロードしてインストールしていることです。
 
 次の手順は、視覚化するデータ (予測結果など) を含むソリューションのデプロイ時にスピンアップされた SQL Database に、pbix ファイルを接続する方法を示しています。
 
@@ -172,7 +175,7 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    次の手順に進む前に、 **データベース サーバー名、データベース名、ユーザー名、およびパスワード** が必要です。 以下の手順で、それらを見つける方法を説明します。
    
    * ソリューション テンプレート図の **[Azure SQL Database]** が緑色に変わったら、それをクリックしてから **[開く]** をクリックします。
-   * 新しいブラウザー タブ/ウィンドウが表示され、Azure ポータル ページが表示されます。 左側のパネルの **[リソース グループ]** をクリックします。
+   * 新しいブラウザー タブ/ウィンドウが表示され、Azure portal ページが表示されます。 左側のパネルの **[リソース グループ]** をクリックします。
    * ソリューションのデプロイに使用しているサブスクリプションを選択し、 **[YourSolutionName\_ResourceGroup]** を選択します。
    * 新しいポップアップ パネルで、![SQL アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) アイコンをクリックして、データベースにアクセスします。 データベース名はこのアイコンの横にあり (例: **'pmaintenancedb'** )、**データベース サーバー名**は、サーバー名のプロパティの下に **YourSoｌutionName.database.windows.net** のように表示されます。
    * データベースの**ユーザー名**と**パスワード**は、ソリューションのデプロイ時に記録しておいたユーザー名とパスワードと同じです。
@@ -183,10 +186,10 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
      ![クエリの編集](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * **RemainingUsefulLife** と **PMResult** という 2 つのテーブルが表示されます。 最初のテーブルを選択し、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横にある ![クエリの設定アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) をクリックします。 表示される警告メッセージは無視します。
    * ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、 **[OK]** をクリックします。 サーバー名については、ポート 1433 (**YourSolutionName.database.windows.net 1433**) を指定していることを確認してください。 [データベース] フィールドは **pmaintenancedb**のままにします。 画面に表示される警告メッセージは無視します。
-   * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション ( **[Windows]** と **[データベース]** ) が表示されます。 **[データベース]** をクリックし、 **[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL データベースを作成したときに入力したユーザー名とパスワードです) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
+   * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション ( **[Windows]** と **[データベース]** ) が表示されます。 **[データベース]** をクリックし、 **[ユーザー名]** と **[パスワード]** (初めてソリューションをデプロイし、Azure SQL Database を作成したときに入力したユーザー名とパスワード) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
    * 2 番目のテーブル **[PMResult]** をクリックし、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横にある ![ナビゲーション アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) をクリックし、上記の手順と同様に、サーバーとデータベース名を更新して、[OK] をクリックします。
    * 前のページに戻ったら、ウィンドウを閉じます。 メッセージが表示されるので、 **[適用]** をクリックします。 最後に、 **[保存]** ボタンをクリックして、変更を保存します。 これで、Power BI ファイルは、サーバーへの接続を確立しました。 視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。 更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。 最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。 3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要です。
    
    * **[公開]** をクリックします。 数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。 "Power BI で PredictiveMaintenanceAerospace.pbix を開く" の下のリンクをクリックします。 詳細な手順については、「 [Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
    * 新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュボード]** セクションの横の **[+]** 記号をクリックします。 この新しいダッシュボードの名前として、「Predictive Maintenance Demo」と入力します。

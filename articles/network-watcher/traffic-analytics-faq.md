@@ -3,22 +3,20 @@ title: Azure トラフィック分析についてよく寄せられる質問 | M
 description: トラフィック分析についてよく寄せられる質問の回答を確認します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: damendo
+ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907101"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840623"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -136,7 +134,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>未処理のログを別のサブスクリプションで格納することはできますか?
 
-No. NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
+いいえ。 NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
@@ -265,6 +263,62 @@ Traffic Analytics には、アラートに対する組み込みのサポート�
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。
 - [ログ アラートのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  IP の場合:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+時刻には、yyyy-mm-dd 00:00:00 の形式を使用します。
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>自分の VM がオンプレミスのマシンから受信したトラフィックの標準偏差を確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+IP の場合:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>NSG ルールを使用して IP ペア間で到達可能な (またはブロックされた) ポートを確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
 

@@ -1,108 +1,108 @@
 ---
-title: Azure クラシック デプロイ モデル | Microsoft Docs
-description: Azure クラシック デプロイ モデル
+title: Azure クラシック デプロイ モデル
+description: 現在は Resource Manager モデルに置き換えられているクラシック デプロイ モデルでは、VM と仮想マシン スケール セットに対してグローバルな vCPU クォータ制限が適用されます。
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898787"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835637"
 ---
 # <a name="classic-deployment-model"></a>クラシック デプロイ モデル
 
-クラシック デプロイ モデルは、旧世代の Azure デプロイ モデルです。 ここでは、仮想マシンと仮想マシン スケール セットにグローバル vCPU クォータ制限が適用されます。 クラシック デプロイ モデルはもう推奨されていません。現在は Resource Manager モデルに置き換えられています。 
+クラシック デプロイ モデルは、旧世代の Azure デプロイ モデルです。 ここでは、仮想マシンと仮想マシン スケール セットにグローバル vCPU クォータ制限が適用されます。 クラシック デプロイ モデルはもう推奨されていません。現在は Resource Manager モデルに置き換えられています。
 
-この 2 つのデプロイ モデルと Resource Manager を使用する利点の詳細については、[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/management/deployment-models.md)に関するページを参照してください。
- 
-新しいサブスクリプションが作成されると、vCPU の既定のクォータが割り当てられます。 新しい VM をクラシック デプロイ モデルを使用してデプロイする場合は、常にすべてのリージョン間で新しい vCPU と既存の vCPU の使用量の合計が、クラシック デプロイ モデルで承認されている vCPU のクォータを超えないようにする必要があります。
- 
-クォータの詳細については、[Azure サブスクリプションとサービスの制限](https://aka.ms/quotalimits)に関するページを参照してください。
+この 2 つのデプロイ モデルと Resource Manager を使用する利点の詳細については、[Resource Manager とクラシック デプロイ](../../azure-resource-manager/management/deployment-models.md)に関する記事を参照してください。
 
-ポータルの [ヘルプとサポート] ブレードまたは [Usages + Quota]\(使用量とクォータ\) ブレードから、クラシック デプロイ モデルに対する vCPU のクォータ制限を引き上げることを要求できます。
+新しいサブスクリプションが作成されると、vCPU の既定のクォータが割り当てられます。 新しい仮想マシンをクラシック デプロイ モデルを使用してデプロイする場合は、すべてのリージョンでの新しい vCPU と既存の vCPU の使用量の合計が、クラシック デプロイ モデルで承認されている vCPU のクォータを常に超えないようにする必要があります。
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>**[ヘルプとサポート]** ブレードを使用してサブスクリプション レベルで VM シリーズあたりの vCPU クォータの増加を要求する
+これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
-Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレード経由でサポート要求を作成するには、次の手順に従います。 
+クラシック デプロイ モデルの vCPU クォータ制限の引き上げを要求できます。 Azure portal で **[ヘルプとサポート]** または **[使用量 + クォータ]** を使用します。
 
-1. [https://portal.azure.com](https://portal.azure.com ) から、 **[ヘルプとサポート]** を選択します。
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>[ヘルプとサポート] を使用してサブスクリプション レベルで VM シリーズあたりの vCPU クォータの引き上げを要求する
 
-   ![[ヘルプとサポート]](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  **[新しいサポート リクエスト]** を選択します。 
+Azure portal で **[ヘルプとサポート]** を使用してサポート リクエストを作成するには、次の手順に従います。
 
-      ![新しいサポート要求](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. [Azure portal](https://portal.azure.com) のメニューで、 **[ヘルプとサポート]** を選択します。
 
-3. [問題の種類] ドロップダウンで、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+   ![Azure portal で [ヘルプとサポート] を選択する](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![[問題の種類] ドロップダウン](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. **[新しいサポート リクエスト]** を選択します。
 
-4. クォータの追加が必要なサブスクリプションを選択します。
+   ![Azure portal で新しいサポート リクエストを作成する](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![サブスクリプション newSR を選択する](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. **[クォータの種類]** ドロップダウンで **[Compute-VM (cores-vCPUs) subscription limit increases] (Compute-VM (cores-vCPU) サブスクリプションの制限の増加)** を選択します。 
+1. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+
+   ![問題の種類としてクォータを選択する](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. クォータを増やしたいサブスクリプションを選択します。
+
+   ![クォータを増やすサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+
+   ![増やすクォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
+
+   ![要求のための詳細情報を入力する](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. **[クォータの詳細]** で、 **[クラシック]** を選択し、 **[場所]** を選択します。
+
+   ![デプロイ モデルと場所を含む詳細を追加する](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. **[SKU ファミリ]** については、増やす SKU ファミリを 1 つ以上選択します。
+
+   ![増やす SKU ファミリを指定する](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. サブスクリプションに対して必要な新しい制限を入力します。 行を削除するには、 **[SKU ファミリ]** から SKU の選択を解除するか、破棄 ("X") アイコンを選択します。 各 SKU ファミリにクォータを入力したら、 **[クォータの詳細]** で **[保存して続行]** を選択し、サポート リクエストを続行します。
+
+   ![新しい制限を要求する](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>[使用量 + クォータ] を使用してサブスクリプション レベルで VM シリーズあたりの vCPU クォータの引き上げを要求する
+
+Azure portal で **[使用量 + クォータ]** を使用してサポート リクエストを作成するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) で、 **[サブスクリプション]** を検索して選択します。
+
+   ![Azure portal で [サブスクリプション] に移動する](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. クォータを増やしたいサブスクリプションを選択します。
+
+   ![変更するサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. **[使用量 + クォータ]** を選択します。
+
+   ![サブスクリプションの使用量とクォータを選択する](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. 右上の **[引き上げを依頼する]** を選択します。
+
+   ![クォータを増やすために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. **[クォータの種類]** として **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
    ![[クォータの種類] を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. **[Problem Details] (問題の詳細)** で、 **[詳細の指定]** をクリックして、要求の処理に役立つ追加情報を指定します。
+1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
 
-   ![[詳細の指定]](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![要求についての詳細を入力する](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. **[クォータの詳細]** パネルで、[クラシック] と場所を選択します。
+1. **[クォータの詳細]** で、 **[クラシック]** を選択し、 **[場所]** を選択します。
 
-   ![[クォータの詳細] の DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![デプロイ モデルと場所を含むクォータの詳細を選択する](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. 増やす必要のある **SKU ファミリ**を選択します。 
+1. 引き上げる対象の SKU ファミリを 1 つまたは複数選択します。
 
-   ![SKU ファミリ](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![引き上げる対象の SKU ファミリを選択する](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. サブスクリプションに対して必要な新しい制限を入力します。 行を削除するには、[SKU family (SKU ファミリ)] ドロップダウン リストで該当する SKU をオフにするか、破棄アイコン (x) をクリックします。 各 SKU ファミリの目的のクォータを入力したら、[クォータの詳細] パネルの **[保存して続行]** をクリックしてサポート要求の作成を続行します。
+1. サブスクリプションに対して必要な新しい制限を入力します。 行を削除するには、 **[SKU ファミリ]** から SKU の選択を解除するか、破棄 ("X") アイコンを選択します。 各 SKU ファミリにクォータを入力したら、 **[クォータの詳細]** で **[保存して続行]** を選択し、サポート リクエストを続行します。
 
-   ![新しい制限](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>**[Usages + Quota]\(使用量とクォータ\)** ブレードを使用してサブスクリプション レベルで VM シリーズあたりの vCPU クォータの増加を要求する
-
-Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォータ) ブレード経由でサポート要求を作成するには、次の手順に従います。 
-
-1. [https://portal.azure.com](https://portal.azure.com ) から **[サブスクリプション]** を選択します。
-
-   ![サブスクリプション](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. クォータの追加が必要なサブスクリプションを選択します。
-
-   ![サブスクリプションの選択](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. **[使用量 + クォータ]** を選択します。
-
-   ![使用量とクォータを選択します。](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. 右上の **[引き上げを依頼する]** を選択します。
-
-   ![引き上げを依頼する](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. クォータの種類として **[Compute-VM (cores-vCPUs) subscription limit increases] (Compute-VM (cores-vCPU) サブスクリプションの制限の増加)** を選択します。 
-
-   ![フォームに入力する](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. **[Problem Details] (問題の詳細)** で、 **[詳細の指定]** をクリックして、要求の処理に役立つ追加情報を指定します。
-
-   ![[詳細の指定]](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. **[クォータの詳細]** パネルで、[クラシック] と場所を選択します。
-
-   ![[クォータの詳細] の DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. 増やす必要のある **SKU ファミリ**を選択します。 
-
-   ![SKU ファミリ](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. サブスクリプションに対して必要な新しい制限を入力します。 行を削除するには、[SKU family (SKU ファミリ)] ドロップダウン リストで該当する SKU をオフにするか、破棄アイコン (x) をクリックします。 各 SKU ファミリの目的のクォータを入力したら、[クォータの詳細] パネルの **[保存して続行]** をクリックしてサポート要求の作成を続行します。
-
-   ![新しい制限](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![新しいクォータを入力する](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

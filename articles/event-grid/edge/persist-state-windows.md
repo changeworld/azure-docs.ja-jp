@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 485c6d4a92539a2ba67aece319c68d31649e8045
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991764"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844617"
 ---
 # <a name="persist-state-in-windows"></a>Windows で状態を永続化する
 
-Event Grid モジュールで作成したトピックとサブスクリプションは、既定でコンテナー ファイル システムに格納されます。 永続化を行わないと、モジュールが再デプロイされた場合、作成したすべてのメタデータが失われます。 複数のデプロイにわたってデータを保持するには、コンテナー ファイル システムの外部にデータを永続化する必要があります。 現在、メタデータのみが永続化されます。 イベントはメモリ内に格納されます。 Event Grid モジュールを再デプロイまたは再起動した場合、配信されていないイベントはすべて失われます。
+Event Grid モジュールで作成したトピックとサブスクリプションは、既定でコンテナー ファイル システムに格納されます。 作成したメタデータが永続化されていない場合、モジュールを再デプロイするとすべて失われます。 複数のデプロイや再起動にわたってデータを保持するには、コンテナー ファイル システムの外部にデータを永続化する必要があります。 
+
+既定では、パフォーマンスを向上させるために、メタデータのみが永続化され、イベントは引き続きメモリ内に格納されます。 イベントの永続化も有効にするには、「イベントの永続化」のセクションに従ってください。
 
 この記事では、Windows デプロイで永続化を使用して Event Grid モジュールをデプロイするために必要な手順について説明します。
 
@@ -27,7 +29,7 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
 
 ## <a name="persistence-via-volume-mount"></a>ボリューム マウントによる永続化
 
-複数のデプロイにわたってデータを保持するために、[Docker ボリューム](https://docs.docker.com/storage/volumes/)が使用されます。 ボリュームをマウントするには、それを docker コマンドを使用して作成し、コンテナーが読み取りと書き込みをできるようにアクセス許可を付与してから、モジュールをデプロイする必要があります。 Windows では、必要なアクセス許可を持つボリュームを自動的に作成するプロビジョニングはありません。 デプロイする前に作成する必要があります。
+複数のデプロイにわたってデータを保持するために、[Docker ボリューム](https://docs.docker.com/storage/volumes/)が使用されます。 ボリュームをマウントするには、それを docker コマンドを使用して作成し、コンテナーが読み取りと書き込みをできるようにアクセス許可を付与してから、モジュールをデプロイする必要があります。
 
 1. 次のコマンドを実行して、ボリュームを作成します。
 
@@ -82,17 +84,17 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
     ```json
         {
               "Env": [
-                "inbound:serverAuth:tlsPolicy=strict",
-                "inbound:serverAuth:serverCert:source=IoTEdge",
-                "inbound:clientAuth:sasKeys:enabled=false",
-                "inbound:clientAuth:clientCert:enabled=true",
-                "inbound:clientAuth:clientCert:source=IoTEdge",
-                "inbound:clientAuth:clientCert:allowUnknownCA=true",
-                "outbound:clientAuth:clientCert:enabled=true",
-                "outbound:clientAuth:clientCert:source=IoTEdge",
-                "outbound:webhook:httpsOnly=true",
-                "outbound:webhook:skipServerCertValidation=false",
-                "outbound:webhook:allowUnknownCA=true"
+                "inbound__serverAuth__tlsPolicy=strict",
+                "inbound__serverAuth__serverCert__source=IoTEdge",
+                "inbound__clientAuth__sasKeys__enabled=false",
+                "inbound__clientAuth__clientCert__enabled=true",
+                "inbound__clientAuth__clientCert__source=IoTEdge",
+                "inbound__clientAuth__clientCert__allowUnknownCA=true",
+                "outbound__clientAuth__clientCert__enabled=true",
+                "outbound__clientAuth__clientCert__source=IoTEdge",
+                "outbound__webhook__httpsOnly=true",
+                "outbound__webhook__skipServerCertValidation=false",
+                "outbound__webhook__allowUnknownCA=true"
               ],
               "HostConfig": {
                 "Binds": [
@@ -118,21 +120,22 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "myeventgridvol:C:\\app\\metadataDb"
+                "myeventgridvol:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -147,7 +150,7 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
 
 ## <a name="persistence-via-host-directory-mount"></a>ホスト ディレクトリ マウントによる永続化
 
-代替方法として、ホスト システム上にディレクトリを作成し、そのディレクトリをマウントすることもできます。
+ボリュームをマウントする代わりに、ホスト システム上にディレクトリを作成し、そのディレクトリをマウントすることもできます。
 
 1. 次のコマンドを実行して、ホスト ファイル システム上にディレクトリを作成します。
 
@@ -180,21 +183,22 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "C:\\myhostdir:C:\\app\\metadataDb"
+                "C:\\myhostdir:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -206,3 +210,30 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
          }
     }
     ```
+## <a name="persist-events"></a>イベントの永続化
+
+イベントの永続化を有効にするには、最初に上記のセクションを使用して、ボリューム マウントまたはホスト ディレクトリ マウントのいずれかでメタデータの永続化を有効にする必要があります。
+
+イベントの永続化に関する重要な注意事項:
+
+* イベントの永続化はイベント サブスクリプションごとに有効になり、ボリュームまたはディレクトリがマウントされるとオプトインされます。
+* イベントの永続化は、作成時にイベント サブスクリプションで構成され、イベント サブスクリプションの作成後は変更できません。 イベントの永続化を切り替えるには、イベント サブスクリプションを削除してから再作成する必要があります。
+* イベントの永続化は、ほとんどの場合、メモリ操作よりも低速ですが、速度の違いはドライブの特性に大きく依存します。 速度と信頼性の間のトレードオフは、すべてのメッセージング システムに固有のものですが、大規模な場合でのみ顕著になります。
+
+イベント サブスクリプションでイベントの永続化を有効にするには、`persistencePolicy` を `true` に設定します。
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

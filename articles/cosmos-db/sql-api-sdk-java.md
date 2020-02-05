@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444839"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718175"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
+* databaseAccount 上の正しいクライアント側レプリカ ポリシー タグが更新され、databaseAccount 構成がキャッシュから読み取られるようになりました。
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
 * ユーザーが pkRangeId を提供する場合は、無効なパーティション キー範囲のエラーが発生したときの再試行を回避します。

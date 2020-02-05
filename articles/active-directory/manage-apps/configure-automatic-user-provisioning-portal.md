@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430195"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711968"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -38,7 +38,7 @@ Azure Active Directory ポータルを使用して、ディレクトリでのシ
 1. 任意のアプリを選択し、そのリソース ウィンドウを読み込み、そこでレポートを表示したり、アプリの設定を管理したりできます。
 1. 選択したアプリのユーザー アカウントのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
 
-   ![ユーザー アカウントでのプロビジョニング設定を管理する [プロビジョニング] 画面](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![ユーザー アカウントでのプロビジョニング設定を管理する [プロビジョニング] 画面](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>プロビジョニング モード
 
@@ -68,7 +68,7 @@ Azure Active Directory ポータルを使用して、ディレクトリでのシ
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
 
-![[属性マッピング] 画面を表示します](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![[属性マッピング] 画面を表示します](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 サポートされるカスタマイズは次のとおりです。
 
@@ -88,4 +88,4 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **[プロビジョニング状態]** を **[オフ]** に変更すると、プロビジョニング サービスが一時停止します。 この状態では、アプリのユーザーやグループ オブジェクトの作成、更新、削除が行われることはありません。 状態を **[オン]** に戻すと、サービスは中断したところから再開します。
 
-**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を参照してください。 
+**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。 

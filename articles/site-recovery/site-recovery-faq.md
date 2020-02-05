@@ -2,14 +2,14 @@
 title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863565"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760353"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -147,7 +147,7 @@ Azure Site Recovery は、パブリック エンドポイント経由で Azure �
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
 
-Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達します。 そのため、レプリケーションは、ExpressRoute (Microsoft ピアリングまたは既存のパブリック ピアリング) を使ったパブリック インターネット経由でのみ実行することができ、VPN は機能しません。
+Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達します。 そのため、レプリケーションは、パブリック インターネットまたは ExpressRoute (Microsoft ピアリングまたは既存のパブリック ピアリング) 経由でのみ実行できます。
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Riverbed SteelHeads をレプリケーションに使用できますか?
 

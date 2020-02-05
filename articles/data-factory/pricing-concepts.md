@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552136"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769506"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -156,7 +156,7 @@ ms.locfileid: "75552136"
 | Data Flow の前提条件: 実行時間 = 10 分 + TTL 10 分 | 10 \* 16 コアの一般コンピューティング (TTL 10) |
 | パイプライン監視の仮定:1 回の実行のみが発生 | 2つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、アクティビティの実行用に 1 つ) |
 
-**シナリオ価格の合計: $0.3011**
+**シナリオ価格の合計: $1.4631**
 
 - Data Factory の操作 = **$0.0001**
   - 読み取り／書き込み = 10\*00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]

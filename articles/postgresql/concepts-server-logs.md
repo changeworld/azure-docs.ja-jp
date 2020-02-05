@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768216"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844940"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 Azure Database for PostgreSQL では、Postgres の標準ログを構成してアクセスできます。 ログは、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復に使用できます。 構成してアクセスできるログ情報には、エラー、クエリ情報、自動バキューム レコード、接続、チェックポイントが含まれます。 (トランザクション ログへのアクセスは利用できません)。
@@ -69,7 +69,7 @@ Powershell、CLI、または REST API を使用して診断ログを有効にす
 
 ### <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage の場合、スキーマは[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事で説明されています。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 
@@ -78,7 +78,7 @@ Azure Monitor ログの場合は、選択したワークスペースにログが
 過去 1 日の特定のサーバーに関するすべての Postgres ログを検索する
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 
@@ -106,7 +106,7 @@ AzureDiagnostics
 | ResourceType | `Servers` |
 | ResourceId | リソース URI |
 | リソース | サーバーの名前 |
-| Category | `PostgreSQLLogs` |
+| カテゴリ | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |
 | Message | プライマリ ログ メッセージ | 
@@ -117,10 +117,10 @@ AzureDiagnostics
 | DatatypeName | データ型の名前 (該当する場合) |
 | LogicalServerName | サーバーの名前 | 
 | _ResourceId | リソース URI |
-| Prefix (プレフィックス) | ログ行のプレフィックス |
+| Prefix | ログ行のプレフィックス |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure portal](howto-configure-server-logs-in-portal.md) または [Azure CLI](howto-configure-server-logs-using-cli.md) からのログへのアクセスを確認する。
 - [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認する。
 - [監査ログ](concepts-audit.md)の詳細を確認する

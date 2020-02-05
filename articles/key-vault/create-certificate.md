@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884150"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769239"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -24,11 +24,11 @@ ms.locfileid: "70884150"
 
 -    **新しい証明書を手動で作成する:** 公開/秘密キー ペアが作成されて、X.509 証明書署名要求が生成されます。 署名要求には、登録機関または証明機関が署名できます。 署名された x509 証明書を保留中のキー ペアとマージして、Key Vault の KV 証明を完成できます。 この方法では必要な手順が増えますが、秘密キーが作成されて Key Vault に限定されるため、セキュリティが強化されます。 これを次の図で説明します。  
 
-![独自の証明機関で証明書を作成する](media/certificate-authority-1.png)  
+![独自の証明機関の証明書の作成](media/certificate-authority-1.png)  
 
 以下の説明は、上の図の緑の文字の手順に対応しています。
 
-1. 上の図では、アプリケーションが証明書を作成しています。これは、キー コンテナー内にキーを作成することによって、内部的に開始します。
+1. 上の図では、アプリケーションが証明書を作成しています。これは、キー コンテナーでキーを作成すると、内部的に開始されます。
 2. Key Vault がアプリケーションに証明書署名要求 (CSR) を返します。
 3. アプリケーションが、選択された CA に CSR を渡します。
 4. 選択した CA は、X509 証明書で応答します。
@@ -36,15 +36,15 @@ ms.locfileid: "70884150"
 
 -   **既知の発行者プロバイダーで証明書を作成する:** この方法では、発行者オブジェクトを作成する 1 回限りのタスクを実行する必要があります。 キー コンテナーに発行者オブジェクトが作成されると、KV 証明書のポリシーでその名前を参照できます。 そのような KV 証明書の作成の要求では、コンテナーにキー ペアが作成され、参照されている発行者オブジェクトの情報を使用して発行者プロバイダー サービスと通信して、x509 証明書が取得されます。 x509 証明書が発行者サービスから取得され、キー ペアとマージされて、KV 証明書の作成が完了します。  
 
-![Key Vault と提携している証明機関で証明書を作成する](media/certificate-authority-2.png)  
+![Key Vault と提携している証明機関での証明書の作成](media/certificate-authority-2.png)  
 
 以下の説明は、上の図の緑の文字の手順に対応しています。
 
 1. 上の図では、アプリケーションが証明書を作成しています。これは、キー コンテナーでキーを作成すると、内部的に開始されます。
-2. Key Vault は、SSL 証明書要求を CA に送信します。
+2. Key Vault は、TLS/SSL 証明書要求を CA に送信します。
 3. アプリケーションは、ループおよび待機プロセスで、Key Vault で証明書が完成するのをポーリングします。 Key Vault が CA の応答で x509 証明書を受信すると、証明書の作成が完了します。
-4. CA は、X509 SSL 証明書で Key Vault の SSL 証明書要求に応答します。
-5. 新しい証明書の作成が、CA に対する X509 証明書のマージャーで完了します。
+4. CA は、TLS/SSL X.509 証明書で Key Vault の TLS/SSL 証明書要求に応答します。
+5. 新しい証明書の作成は、CA の TLS/SSL X.509 証明書のマージで完了します。
 
 ## <a name="asynchronous-process"></a>非同期処理
 KV 証明書の作成は非同期プロセスです。 この操作は KV 証明書要求を作成して、http 状態コード 202 (Accepted) を返します。 この操作によって作成される保留中オブジェクトをポーリングすることにより、要求の状態を追跡できます。 保留中オブジェクトの完全な URI は、LOCATION ヘッダーで返されます。  
@@ -90,6 +90,6 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 
  Authorization:証明書/作成アクセス許可が必要です。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
  - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
  - [証明書作成の監視と管理](create-certificate-scenarios.md)

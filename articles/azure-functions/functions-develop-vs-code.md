@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547423"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845414"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -65,11 +65,13 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 1. 関数アプリ プロジェクト用のフォルダーを選択し、次に**関数プロジェクト用の言語を選択します**。
 
+1. Core Tools をまだインストールしていない場合は、インストールする Core Tools の**バージョンを選択**するよう求められます。 バージョン 2.x またはそれ以降のバージョンを選択します。 
+
 1. **HTTP トリガー**関数テンプレートを選択するか、 **[Skip for now]\(今はしない\)** を選択して、関数なしでプロジェクトを作成できます。 後でいつでも、[プロジェクトに関数を追加](#add-a-function-to-your-project)できます。
 
     ![HTTP トリガー テンプレートを選択する](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 関数名として **HTTPTrigger** を入力して Enter キーを選択してから、 **[関数]** の承認を選択します。 この承認レベルでは、関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook.md#authorization-keys)を指定する必要があります。
+1. 関数名として **HttpExample** を入力して Enter キーを選択してから、 **[関数]** の承認を選択します。 この承認レベルでは、関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook.md#authorization-keys)を指定する必要があります。
 
     ![関数の承認を選択する](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -156,7 +158,7 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 
 以下は、新しいストレージ出力バインドを定義するためのプロンプト例です。
 
-| Prompt | 値 | [説明] |
+| Prompt | Value | [説明] |
 | -------- | ----- | ----------- |
 | **Select binding direction (バインド方向を選択する)** | `out` | バインドは出力バインドです。 |
 | **Select binding with direction (方向を使用してバインドを選択する)** | `Azure Queue Storage` | バインドは Azure Storage キュー バインドです。 |
@@ -190,6 +192,8 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
+
 ## <a name="publish-to-azure"></a>Azure に発行する
 
 Visual Studio Code を使用すると、Functions プロジェクトを Azure に直接発行できます。 このプロセスでは、Azure サブスクリプションに関数アプリと関連リソースを作成します。 関数アプリは、関数の実行コンテキストを提供します。 プロジェクトがパッケージ化され、Azure サブスクリプション内の新しい関数アプリにデプロイされます。
@@ -218,7 +222,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | 値 | [説明] |
+    | Prompt | Value | [説明] |
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |
@@ -267,7 +271,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
 
 * 選択した言語に固有の要件をインストールします。
 
-    | 言語 | 要件 |
+    | Language | 要件 |
     | -------- | --------- |
     | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |

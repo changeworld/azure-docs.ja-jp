@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954648"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767946"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -165,10 +165,10 @@ Web アプリがブラウザー クライアントにブロードキャストし
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. 次に、App Service プランで Web アプリをプロビジョニングします。 `--deployment-local-git` パラメーターにより、お使いのローカル マシンで Git リポジトリから Web アプリのコードがアップロードされてデプロイされます。 Web アプリ名はグローバルに一意である必要があり、大文字と小文字の英字、数字、およびハイフンを使用できます。
+2. 次に、App Service プランで Web アプリをプロビジョニングします。 `--deployment-local-git` パラメーターにより、お使いのローカル マシンで Git リポジトリから Web アプリのコードがアップロードされてデプロイされます。 Web アプリ名はグローバルに一意である必要があり、大文字と小文字の英字、数字、およびハイフンを使用できます。 使用している Node.js ランタイムのバージョンに応じて、`--runtime` パラメーターにノード バージョン 10.6 以降を指定してください。 `az webapp list-runtimes` コマンドを使用して、サポートされているランタイムの一覧を取得できます。
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. 次に、IoT ハブ接続文字列とイベント ハブ コンシューマー グループを指定する環境変数のアプリケーション設定を追加します。 `-settings` パラメーターで、個々の設定はスペースで区切られています。 このチュートリアルで前に作成した、IoT ハブのサービス接続文字列とコンシューマー グループを使用します。 値は引用符で囲まないでください。
@@ -255,7 +255,7 @@ Web アプリがブラウザー クライアントにブロードキャストし
 
 * パッケージが見つからないというエラーが表示される場合は、手順が正しく実行されていない可能性があります。 サイトが (`git push` を使用して) デプロイされると、アプリ サービスは `npm install` を実行します。これは、構成したノードの現在のバージョンに基づいて行われます。 後になってそれが構成で変更される場合は、コードに意味のない変更を行って、再度プッシュする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web アプリを使用して、IoT ハブからのリアルタイム センサー データを視覚化することができました。
 

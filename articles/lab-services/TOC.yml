@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: Azure マネージド ID を使用した環境のデプロイ
           href: use-managed-identities-environments.md
+        - name: 環境のセキュリティ アラート
+          href: environment-security-alerts.md
     - name: 再利用可能なテンプレートの管理
       items:
         - name: カスタム イメージと数式

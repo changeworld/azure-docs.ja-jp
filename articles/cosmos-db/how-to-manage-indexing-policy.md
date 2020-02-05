@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872062"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767987"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -346,7 +346,7 @@ Azure Cosmos DB では、インデックス作成ポリシーは下のいずれ�
 
 Azure Cosmos のコンテナーには、そのインデックス作成ポリシーが Azure portal で直接編集できる JSON ドキュメントとして格納されます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 新しい Azure Cosmos アカウントを作成するか、既存のアカウントを選択します。
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>Python SDK の使用
+## <a name="use-the-python-sdk-v3"></a>Python SDK V3 の使用
 
-[Python SDK](https://pypi.org/project/azure-cosmos/) (その使用法については[こちらのクイック スタート](create-sql-api-python.md)を参照) を使用する場合、コンテナーの構成がディクショナリとして管理されます。 このディクショナリから、インデックス作成ポリシーとそのすべての属性にアクセスすることができます。
+[Python SDK V3](https://pypi.org/project/azure-cosmos/) (その使用法については[こちらのクイック スタート](create-sql-api-python.md)を参照) を使用する場合、コンテナーの構成がディクショナリとして管理されます。 このディクショナリから、インデックス作成ポリシーとそのすべての属性にアクセスすることができます。
 
 コンテナーの詳細を取得する
 
@@ -671,7 +671,73 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-the-python-sdk-v4"></a>Python SDK V4 の使用
+
+[Python SDK V4](https://pypi.org/project/azure-cosmos/) を使用する場合、コンテナーの構成はディクショナリとして管理されます。 このディクショナリから、インデックス作成ポリシーとそのすべての属性にアクセスすることができます。
+
+コンテナーの詳細を取得する
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+インデックス作成モードを同期に設定する
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+管理対象パスと空間インデックスと共にインデックス作成ポリシーを定義する
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+非管理対象パスと共にインデックス作成ポリシーを定義する
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+複合インデックスを追加する
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+変更に従ってコンテナーを更新する
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
+```
+
+## <a name="next-steps"></a>次のステップ
 
 以下の記事で、インデックス作成についての詳細を参照してください。
 

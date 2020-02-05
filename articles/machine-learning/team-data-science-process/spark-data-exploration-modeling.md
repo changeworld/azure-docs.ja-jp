@@ -3,20 +3,20 @@ title: Spark でのデータ探索およびモデリング - Team Data Science P
 description: Azure での Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811256"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718635"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
@@ -30,7 +30,7 @@ ms.locfileid: "60811256"
 * [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
 * [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。 LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
 * [ランダム フォレスト](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できます。 特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
-* [勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT ではデシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 また、多クラス分類の設定にも使用できます。
+* [勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) は、複数のデシジョン ツリーをまとめたものです。 GBTS は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBTS は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 また、多クラス分類の設定にも使用できます。
 
 また、モデリング手順には、各種モデルをトレーニング、評価し、保存する方法を示すコードも含まれています。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。   
 
@@ -52,9 +52,9 @@ ms.locfileid: "60811256"
 ### <a name="spark-20-notebooks"></a>Spark 2.0 向け Notebook
 Spark 2.0 クラスターを使用して実装されている回帰タスクと分類タスクは別の Notebook にあり、分類 Notebook では別のデータセットを使用しています。
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明する NYC タクシーの乗車と料金のデータセットを使用して、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。 この Notebook は、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 NYC タクシー データを分析する詳細な Notebook については、この一覧の次の Notebook をご覧ください。 これらの Notebook の比較については、この一覧の後の「メモ」をご覧ください。 
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明する NYC タクシーの乗車と料金のデータセットを使用して、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。 この Notebook は、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 NYC タクシー データを分析する詳細な Notebook については、この一覧の次の Notebook をご覧ください。 これらの Notebook の比較については、この一覧の後の「注意」をご覧ください。 
 - [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明されている NYC タクシーの乗車と料金のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb):このファイルでは、よく知られている 2011 から 2012 年の航空会社の定刻出発のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。 モデリングの前に航空会社のデータセットを空港の気象データ (風速、気温、高度など) と統合したため、これらの気象条件をモデルに含めることができます。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb):このファイルでは、よく知られている 2011 から 2012 年の航空会社の定刻出発のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。 モデリングの前に航空会社のデータセットを空港の気象データ (たとえば、風速、気温、高度など) と統合したため、これらの気象条件をモデルに含めることができます。
 
 <!-- -->
 
@@ -70,7 +70,7 @@ Spark 2.0 クラスターを使用して実装されている回帰タスクと�
 <!-- -->
 
 > [!NOTE]
-> NYC タクシーのデータセットと航空会社のフライト遅延データセットの Spark 2.0 Notebook は、(HDI クラスターのサイズによっては) 実行に 10 分以上かかる場合があります。 上記の最初のノートブックでは、タクシー ファイルと料金ファイルが事前に結合された、ダウンサンプリングされた NYC データセットを使用して短時間で実行され、Notebook でのデータ探索、視覚化、ML モデル トレーニングのさまざまな側面を示します([Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb))。このノートブックは完了までの時間が非常に短いので (2 ～ 3 分)、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 
+> NYC タクシーのデータセットと航空会社のフライト遅延データセットの Spark 2.0 Notebook は、(HDI クラスターのサイズによっては) 実行に 10 分以上かかる場合があります。 上記の最初のノートブックでは、タクシー ファイルと料金ファイルが事前に結合された、ダウンサンプリングされた NYC データセットを使用して短時間で実行され、Notebook でのデータ探索、視覚化、ML モデル トレーニングのさまざまな側面を示します([Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb))。このノートブックは完了までの時間が非常に短いので (2 から 3 分)、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 
 
 <!-- -->
 
@@ -131,7 +131,7 @@ PySpark カーネルには、"マジック"、つまり、%% で呼び出すこ�
 * **%%local**: 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
 * **%%sql -o \<変数名>** sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
-Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
+Jupyter Notebook カーネルと、定義済みの "マジック" (例: %%local) の詳細については、[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
 
 ## <a name="data-ingestion-from-public-blob"></a>パブリック BLOB からのデータの取り込み
 データ サイエンス プロセスでは、まず、分析するデータをソースからデータ探索およびモデリング環境に取り込みます。 このチュートリアルでは、この環境が Spark です。 ここでは、次の一連のタスクを実行するコードを示します。
@@ -204,7 +204,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間: 51.72 秒
+上記のセルの実行に要した時間:51.72 秒
 
 ## <a name="data-exploration--visualization"></a>データの探索と視覚化
 データが Spark に取り込まれたら、次に、探索と視覚化によってデータの理解を深めます。 このセクションでは、SQL クエリを使用してタクシー データを調べ、視覚化するためにターゲット変数と予想される特徴をプロットします。 具体的には、タクシー乗車における乗客数の頻度、チップの金額の頻度、支払金額と支払の種類によるチップの変化をプロットします。
@@ -212,7 +212,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>タクシー乗車データのサンプルで乗客数の頻度のヒストグラムをプロットする
 このコードおよび後続のスニペットでは、SQL マジックを使用してサンプルを照会し、ローカル マジックを使用してデータをプロットしています。
 
-* **SQL マジック (`%%sql`)** HDInsight PySpark カーネルは、sqlContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (-o VARIABLE_NAME) を指定すると、SQL クエリの出力結果が Pandas データフレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
+* **SQL マジック (`%%sql`)** HDInsight PySpark カーネルは、sqlContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (-o VARIABLE_NAME) を指定すると、SQL クエリの出力結果が Pandas データフレームとして Jupyter サーバー上に永続化されます。 この設定により、出力がローカル モードで使用できるようになります。
 * **`%%local` マジック** は、Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルで実行するときに使用します。 通常、`%%local` マジックは、-o パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を -o パラメーターでローカルに永続化したうえで、%%local マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
 その出力結果は、コードの実行後、自動的に視覚化されます。
@@ -360,7 +360,7 @@ SQL クエリを使用してデータをサンプリングします。
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>モデリング関数への入力用にカテゴリの特徴のインデックス作成とエンコードを実行する
 ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成し、特徴をエンコードする方法について説明します。 MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。 モデルに応じて、さまざまな方法でカテゴリ入力データのインデックス作成またはエンコードを実行する必要があります。  
 
-* **ツリー ベースのモデリング** では、カテゴリを数値としてエンコードする必要があります (たとえば、3 つのカテゴリを持つ特徴は、0、1、2 でエンコードできます)。 これは、MLlib の [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 関数によって提供されます。 この関数は、ラベルの文字列型の列を、ラベルの頻度で順序付けられたラベル インデックスの列にエンコードします。 入力とデータ処理のために数値でインデックスを作成しますが、ツリー ベースのアルゴリズムでは、これらの数値をカテゴリとして適切に処理するように指定できます。 
+* **ツリー ベースのモデリング** では、カテゴリを数値としてエンコードする必要があります (たとえば、3 つのカテゴリを持つ特徴は、0、1、2 でエンコードできます)。 このアルゴリズムは、MLlib の [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 関数によって提供されます。 この関数は、ラベルの文字列型の列を、ラベルの頻度で順序付けられたラベル インデックスの列にエンコードします。 入力とデータ処理のために数値でインデックスを作成しますが、ツリー ベースのアルゴリズムでは、これらの数値をカテゴリとして適切に処理するように指定できます。 
 * **ロジスティック回帰モデルと線形回帰モデル**では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、数値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
@@ -408,7 +408,7 @@ SQL クエリを使用してデータをサンプリングします。
 
 **出力:**
 
-上記のセルの実行に要した時間: 1.28 秒
+上記のセルの実行に要した時間:1.28 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>ML 関数への入力用にラベル付きポイント オブジェクトを作成する
 このセクションのコードでは、ラベル付きポイント データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。 ラベル付きポイント オブジェクトは、MLlib のほとんどの ML アルゴリズムで入力データとして必要とされる方法でフォーマットされた Resilient Distributed Dataset (RDD) です。 [ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) は、ラベル/応答に関連付けられたローカル ベクトル (密または疎) です。  
@@ -464,8 +464,8 @@ SQL クエリを使用してデータをサンプリングします。
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>データのランダム サブサンプリングを作成し、トレーニング セットとテスト セットに分ける
-次のコードでは、データのランダム サンプリングを作成します (ここでは 25% を使用)。 この例のデータセットのサイズでは、ランダム サンプリングを作成する必要はありませんが、必要に応じて独自の問題にランダム サンプリングを使用する方法がわかるように、ここではサンプリングの方法を示します。 サンプル数が多い場合、ランダム サンプリングを作成することで、モデルのトレーニング時に時間を大幅に節約できます。 次に、分類および回帰モデリングで使用するために、サンプルをトレーニング用 (ここでは 75%) とテスト用 (ここでは 25%) に分けます。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>データのランダム サブサンプリングを作成し、トレーニング セットとテスト セットに分ける
+次のコードでは、データのランダム サンプリングを作成します (ここでは 25% を使用)。 この例のデータセットのサイズでは、ランダム サンプリングを作成する必要はありませんが、必要に応じて独自の問題にランダム サンプリングを使用する方法がわかるように、ここではサンプリングの方法を示します。 サンプル数が多い場合、サンプリングによってモデルのトレーニングにかかる時間を大幅に節約できます。 次に、分類および回帰モデリングで使用するために、サンプルをトレーニング用 (ここでは 75%) とテスト用 (ここでは 25%) に分けます。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -503,7 +503,7 @@ SQL クエリを使用してデータをサンプリングします。
 
 **出力:**
 
-上記のセルの実行に要した時間: 0.24 秒
+上記のセルの実行に要した時間:0.24 秒
 
 ### <a name="feature-scaling"></a>特徴のスケーリング
 この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。
@@ -546,7 +546,7 @@ SQL クエリを使用してデータをサンプリングします。
 
 **出力:**
 
-上記のセルの実行に要した時間: 13.17 秒
+上記のセルの実行に要した時間:13.17 秒
 
 ### <a name="cache-objects-in-memory"></a>オブジェクトをメモリにキャッシュする
 ML アルゴリズムのトレーニングとテストの所要時間は、分類、回帰、およびスケーリングされた特徴に使用される入力データ フレーム オブジェクトをキャッシュすることで短縮できます。
@@ -577,7 +577,7 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 
 **出力:** 
 
-上記のセルの実行に要した時間: 0.15 秒
+上記のセルの実行に要した時間:0.15 秒
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>二項分類モデルを使用してチップが支払われるかどうかを予測する
 このセクションでは、タクシーの乗車でチップが支払われるかどうかを予測する二項分類タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
@@ -696,7 +696,7 @@ ROC 下面積 = 0.983714670256
 
 F1 スコア = 0.984304060189
 
-上記のセルの実行に要した時間: 57.61 秒
+上記のセルの実行に要した時間:57.61 秒
 
 **ROC 曲線をプロットする**
 
@@ -789,7 +789,7 @@ F1 スコア = 0.984304060189
 
 ROC 下面積 = 0.985297691373
 
-上記のセルの実行に要した時間: 31.09 秒
+上記のセルの実行に要した時間:31.09 秒
 
 ### <a name="gradient-boosting-trees-classification"></a>勾配ブースティング ツリー分類
 このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
@@ -835,7 +835,7 @@ ROC 下面積 = 0.985297691373
 
 ROC 下面積 = 0.985297691373
 
-上記のセルの実行に要した時間: 19.76 秒
+上記のセルの実行に要した時間:19.76 秒
 
 ## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>回帰モデルを使用してタクシー乗車でのチップの金額を予測する
 このセクションでは、チップの他の特徴に基づいて、タクシーの乗車で支払われるチップの金額を予測する回帰タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
@@ -901,13 +901,13 @@ ROC 下面積 = 0.985297691373
 
 係数: [0.00457675809917, -0.0226314167349, -0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981, -0.000987181489428, -0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995, -0.00990211159703, -0.00637410344522, 0.545083566179, -0.536756072402, 0.0105762393099, -0.0130117577055, 0.0129304737772, -0.00171065945959]
 
-切片: 0.853872718283
+切片:0.853872718283
 
 RMSE = 1.24190115863
 
 R-sqr = 0.608017146081
 
-上記のセルの実行に要した時間: 58.42 秒
+上記のセルの実行に要した時間:58.42 秒
 
 ### <a name="random-forest-regression"></a>ランダム フォレスト回帰
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測するランダム フォレスト回帰をトレーニング、評価し、保存する方法を示します。
@@ -959,7 +959,7 @@ RMSE = 0.891209218139
 
 R-sqr = 0.759661334921
 
-上記のセルの実行に要した時間: 49.21 秒
+上記のセルの実行に要した時間:49.21 秒
 
 ### <a name="gradient-boosting-trees-regression"></a>勾配ブースティング ツリー回帰
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
@@ -1010,7 +1010,7 @@ RMSE = 0.908473148639
 
 R-sqr = 0.753835096681
 
-上記のセルの実行に要した時間: 34.52 秒
+上記のセルの実行に要した時間:34.52 秒
 
 **プロット**
 
@@ -1080,7 +1080,7 @@ Jupyter サーバーを使用してデータをプロットするコードを次
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**出力**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1094,7 +1094,7 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="whats-next"></a>次の手順
+## <a name="whats-next"></a>次の操作
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。 
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。

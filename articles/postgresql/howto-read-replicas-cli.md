@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: fb0803987428ced688e83a37fae36c61b63a28a8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/23/2020
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770120"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774802"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -37,6 +37,11 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
+> [!NOTE]
+> Azure CLI から azure.replication_support を設定しようしているときに "Invalid value given" (指定した値が無効です) というエラーを受け取る場合は、既定でサーバーに REPLICA が既に設定されている可能性があります。 バグが原因で、REPLICA が内部の既定値である新しいサーバーでこの設定が正しく反映されていません。 <br><br>
+> マスターの準備手順をスキップして、レプリカの作成に進むことができます。 <br><br>
+> サーバーがこのカテゴリに含まれていることを確認するには、Azure portal でサーバーのレプリケーション ページにアクセスしてください。 ツールバーで、[レプリケーションの無効化] がグレイ表示され、[レプリカの追加] がアクティブになります。
+
 2. サーバーを再起動して変更を適用します。
 
    ```azurecli-interactive
@@ -47,10 +52,10 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
 
-| Setting | 値の例 | 説明  |
+| 設定 | 値の例 | [説明]  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
-| 名前 | mydemoserver-replica | 作成する新しいレプリカ サーバーの名前。 |
+| name | mydemoserver-replica | 作成する新しいレプリカ サーバーの名前。 |
 | source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前またはリソース ID。 |
 
 以下の CLI の例では、レプリカはマスターと同じリージョンに作成されます。
@@ -59,7 +64,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-リージョン間の読み取りレプリカを作成するには、`--location` パラメーターを使用します。 次の CLI の例では、米国西部にレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、`--location` パラメーターを使用します。 次の CLI の例では、米国西部にレプリカを作成します。
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -189,6 +194,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}?api-version=2017-12-01
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認してください。
 * [Azure portal で読み取りレプリカを作成および管理する](howto-read-replicas-portal.md)方法を確認する。

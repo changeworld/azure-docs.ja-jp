@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid メッセージ配信の監視
-description: Azure Event Grid メッセージの配信を監視する方法について説明します。
+description: この記事では、Azure portal を使用して、Azure Event Grid メッセージの配信状態を確認する方法について説明します。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170000"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722137"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 
@@ -82,7 +82,7 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 ![イベント メトリックの表示](./media/monitor-event-delivery/select-alerts.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

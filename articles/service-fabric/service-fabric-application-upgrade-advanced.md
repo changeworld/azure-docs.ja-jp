@@ -2,21 +2,87 @@
 title: アプリケーションのアップグレードに関する高度なトピック
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: bd95d651e02cb61bcbe7a108db92afce8b5484bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/28/2020
+ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457533"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845436"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
-## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの種類の追加と削除
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
+
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>アプリケーションのアップグレード中にサービスの種類を追加または削除する
+
 アップグレードの一環として、発行したアプリケーションに新しいサービスの種類を追加した場合、その新しいサービスの種類はデプロイされているアプリケーションに追加されます。 このようなアップグレードは、既にアプリケーションの一部であるサービス インスタンスには影響しませんが、追加されたサービスの種類のインスタンスを作成して、新しいサービスの種類をアクティブにする必要があります (「[New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)」を参照)。
 
 同様に、アップグレードの一環として、アプリケーションからサービスの種類を削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの種類のサービス インスタンスをすべて削除する必要があります (「[Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)」を参照)。
 
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>ステートレス サービスの計画的なダウンタイム中に接続がドロップされないようにする (プレビュー)
+
+アプリケーションまたはクラスターのアップグレードやノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、公開されたエンドポイントがダウンした後にドロップされるため、接続が削除される可能性があります。
+
+これを回避するには、サービス構成にレプリカの "*インスタンス終了の延期期間*" を追加して、*RequestDrain* (プレビュー) 機能を構成します。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントは、インスタンスを閉じるために延期期間タイマーが開始される "*前に*" 削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントにはコールバック関数でエンドポイントの変更が通知されるため、エンドポイントを再解決し、停止するインスタンスへの新しい要求の送信を回避できます。
+
+### <a name="service-configuration"></a>サービス構成
+
+サービス側で延期期間を構成するには、いくつかの方法があります。
+
+ * **新しいサービスを作成する場合**は、`-InstanceCloseDelayDuration` を指定します。
+
+    ```powershell
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    ```
+
+ * **アプリケーション マニフェストの既定のセクションでサービスを定義する場合**は、`InstanceCloseDelayDurationSeconds` プロパティを割り当てます。
+
+    ```xml
+          <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
+              <SingletonPartition />
+          </StatelessService>
+    ```
+
+ * **既存のサービスを更新する場合**は、`-InstanceCloseDelayDuration` を指定します。
+
+    ```powershell
+    Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+### <a name="client-configuration"></a>クライアントの構成
+
+エンドポイントが変更されたときに通知を受け取るには、クライアントで次のようにコールバック (`ServiceManager_ServiceNotificationFilterMatched`) を登録します。 
+
+```csharp
+    var filterDescription = new ServiceNotificationFilterDescription
+    {
+        Name = new Uri(serviceName),
+        MatchNamePrefix = true
+    };
+    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
+    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
+
+private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
+{
+      // Resolve service to get a new endpoint list
+}
+```
+
+変更通知は、エンドポイントが変更されたことを示しており、クライアントでは、エンドポイントを再解決する必要があります。また、アドバタイズされなくなったエンドポイントはすぐに停止するため、使用しないようにします。
+
+### <a name="optional-upgrade-overrides"></a>省略可能なアップグレードのオーバーライド
+
+サービスごとに既定の延期期間を設定するだけでなく、同じ (`InstanceCloseDelayDurationSec`) オプションを使用して、アプリケーションまたはクラスターのアップグレード中に延期期間をオーバーライドすることもできます。
+
+```powershell
+Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+
+Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+```
+
+延期期間は、呼び出されたアップグレード インスタンスにのみ適用されます。それ以外の場合、個々のサービスの延期期間構成は変更されません。 たとえば、これを利用すると、事前に構成されたアップグレードの延期期間をスキップするために `0` の延期期間を指定できます。
+
 ## <a name="manual-upgrade-mode"></a>手動アップグレード モード
+
 > [!NOTE]
 > すべての Service Fabric アップグレードで、*Monitored* アップグレード モードをお勧めします。
 > *UnmonitoredManual* アップグレード モードは、アップグレードが失敗または中断した場合にのみ検討してください。 
@@ -30,6 +96,7 @@ ms.locfileid: "75457533"
 最後に、*UnmonitoredAuto* モードは、ユーザーの入力が不要で、アプリケーションの正常性ポリシーが評価されないため、サービスの開発時やテスト時に迅速にアップグレードを繰り返し実行する場合に便利です。
 
 ## <a name="upgrade-with-a-diff-package"></a>差分のパッケージを使用したアップグレード
+
 完全なアプリケーション パッケージをプロビジョニングする代わりに、完全なアプリケーション マニフェストと完全なサービス マニフェストと共に、更新されたコード/構成/データ パッケージのみを含む差分パッケージをプロビジョニングして、アップグレードを実行することもできます。 完全なアプリケーション パッケージは、アプリケーションをクラスターに最初にインストールするときにのみ必要です。 後続のアップグレードは、完全なアプリケーション パッケージと差分パッケージのどちらからでも実行できます。  
 
 アプリケーション パッケージ内に見つからない、差分パッケージのアプリケーション マニフェストまたはサービス マニフェスト内の参照はすべて、現在プロビジョニングされているバージョンに自動的に置き換えられます。
@@ -113,7 +180,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="rolling-back-application-upgrades"></a>アプリケーションのアップグレードのロールバック
+## <a name="roll-back-application-upgrades"></a>アプリケーションのアップグレードをロールバックする
 
 アップグレードは 3 つのモード (*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual*) のいずれかでロールフォワードできますが、ロールバックできるのは *UnmonitoredAuto* または *UnmonitoredManual* モードのみです。 *UnmonitoredAuto* モードでのロールバックは、*UpgradeReplicaSetCheckTimeout* の既定値が異なる点を除き、ロールフォワードと同じように動作します (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)。 *UnmonitoredManual* モードでのロールバックは、ロールフォワードと同じように動作します。つまり、ロールバックは各 UD の完了後に中断し、[Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開してロールバックを続行する必要があります。
 

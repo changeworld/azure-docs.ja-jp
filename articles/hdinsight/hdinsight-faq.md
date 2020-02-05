@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830379"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720352"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -231,9 +231,9 @@ Clamscan は、HDInsight クラスターで実行され、Azure セキュリテ�
 Cron ジョブを設定して実行する方法の詳細については、「[Cron ジョブを設定する方法](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)」を参照してください。
 
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Spark ESP クラスターで LLAP を使用できるのはなぜですか。
-ESP Spark クラスターでは、パフォーマンスではなくセキュリティ上の理由で (つまり Apache Ranger)、LLAP が有効になっています。 LLAP のリソース使用量に対応するには、比較的大きいノード VM を使用する必要があります (たとえば、D13V2 以上)。 
+ESP Spark クラスターでは、パフォーマンスではなくセキュリティ上の理由で (つまり Apache Ranger)、LLAP が有効になっています。 LLAP のリソース使用量に対応するには、より大きいノード VM を使用する必要があります (たとえば、D13V2 以上)。 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>ESP クラスターの作成後に新しい AAD グループを追加する方法はありますか。
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>ESP クラスターの作成後にさらに AAD グループを追加する方法はありますか。
 これを実現する方法は 2 つあります。1 - クラスターを再作成して、新しいグループを追加することができます。 AAD-DS で範囲指定された同期を使用している場合は、グループ B が範囲指定された同期に含まれることを確認してください。
 2 - ESP クラスターの作成に使用された前のグループの入れ子になったサブグループとして、グループを追加します。 たとえば、グループ `A` で ESP クラスターを作成した場合、後でグループ `A` の入れ子になったサブグループとしてグループ `B` を追加できます。約 1 時間後に、クラスターで自動的に同期されて使用できるようになります。 
 

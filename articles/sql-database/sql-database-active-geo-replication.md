@@ -1,5 +1,5 @@
 ---
-title: アクティブ geo レプリケーション
+title: アクティブな地理的レプリケーション
 description: アクティブ geo レプリケーションを使用して、同じデータ センターまたは異なるデータ センター (リージョン) に個々のデータベースの読み取り可能なセカンダリ データベースを作成します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842659"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "73822656"
 - [Azure Portal](sql-database-geo-replication-portal.md)
 - [PowerShell: 単一データベース](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 - [PowerShell: エラスティック プール](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-- [Transact-SQL: 単一のデータベースまたはエラスティック プール](/sql/t-sql/statements/alter-database-azure-sql-database)
+- [Transact-SQL:単一のデータベースまたはエラスティック プール](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST API: 単一データベース](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
 
@@ -124,6 +124,79 @@ ms.locfileid: "73822656"
 
 SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](sql-database-purchase-models.md)に関するページをご覧ください。
 
+## <a name="cross-subscription-geo-replication"></a>サブスクリプション間 geo レプリケーション
+
+(同じテナント下にあるかどうかにかかわらず) 異なるサブスクリプションに属する 2 つのデータベース間でアクティブ geo レプリケーションをセットアップするには、このセクションで説明する特別な手順に従う必要があります。  手順は SQL コマンドに基づいており、次のことが必要です。 
+
+- 両方のサーバーで特権ログインを作成する
+- 両方のサーバーで、変更を実行するクライアントの許可リストに IP アドレスを追加する (SQL Server Management Studio を実行しているホストの IP アドレスなど)。 
+
+変更を実行するクライアントには、プライマリ サーバーへのネットワーク アクセスが必要です。 セカンダリ サーバーで、クライアントの同じ IP アドレスを許可リストに追加する必要がありますが、セカンダリ サーバーへのネットワーク接続は必ずしも必要ありません。 
+
+### <a name="on-the-master-of-the-primary-server"></a>プライマリ サーバーのマスターでの手順
+
+1. 変更を実行するクライアントの許可リストに IP アドレスを追加します (詳細については、[ファイアウォールの構成](sql-database-firewall-configure.md)に関するページを参照してください)。 
+1. アクティブ geo レプリケーションのセットアップ専用のログインを作成します (また、必要に応じて資格情報を調整します)。
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. 対応するユーザーを作成し、dbmanager ロールに割り当てます。 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. 次のクエリを使用して、新しいログインの SID を書き留めます。 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>プライマリ サーバー上のソース データベースでの手順
+
+1. 同じログイン用のユーザーを作成します。
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. そのユーザーを db_owner ロールに追加します。
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>セカンダリ サーバーのマスターでの手順 
+
+1. 変更を実行するクライアントの許可リストに IP アドレスを追加します。 プライマリ サーバーと完全に同じ IP アドレスである必要があります。 
+1. 同じユーザー名、パスワード、および SID を使用して、プライマリ サーバー上のものと同じログインを作成します。 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. 対応するユーザーを作成し、dbmanager ロールに割り当てます。
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>プライマリ サーバーのマスターでの手順
+
+1. 新しいログインを使用して、プライマリ サーバーのマスターにログインします。 
+1. セカンダリ サーバー上のソース データベースのセカンダリ レプリカを作成します (必要に応じてデータベース名とサーバー名を調整します)。
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+初期セットアップの後、作成されたユーザー、ログイン、およびファイアウォール規則は削除できます。 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>資格情報とファイアウォール規則の同期を保つ
 
 geo レプリケートされたデータベースには、[データベース レベルのファイアウォール規則](sql-database-firewall-configure.md)の使用をお勧めします。この規則は、データベースと共にレプリケートされ、すべてのセカンダリ データベースの IP ファイアウォール規則がプライマリと同じになります。 このアプローチにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実かつ常に同じユーザー資格情報を持つようにして、フェールオーバー時に、ログインとパスワードの不一致による中断を防ぐことができます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
@@ -167,7 +240,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 > [!IMPORTANT]
 > これらの Transact-SQL コマンドは、アクティブ geo レプリケーションにのみ適用され、フェールオーバー グループには適用されません。 そのため、それらのコマンドは、フェールオーバー グループしかサポートしていない Managed Instance にも適用されません。
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
@@ -184,7 +257,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |1 つまたは複数のデータベースを取得します。 |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
@@ -198,7 +271,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
 
-| API | 説明 |
+| API | [説明] |
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |復元操作中にステータスを返します。 |
@@ -209,7 +282,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 | [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | データベース レプリケーション リンクを削除します。 フェールオーバー中には実行できません。 |
 |  | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サンプル スクリプトは、以下を参照してください。
   - [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)

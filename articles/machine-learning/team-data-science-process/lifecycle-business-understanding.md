@@ -3,20 +3,20 @@ title: Team Data Science Process でのビジネスの把握
 description: Team Data Science Process でのデータ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物です。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303555"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710339"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのビジネスの把握ステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "60303555"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -81,14 +81,14 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
    * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources):これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
    * [データ辞書](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries):このドキュメントはクライアントによって提供されているデータの説明を提供します。 これらの説明にはスキーマ (データ型、検証ルールに関する情報 (ある場合)) とエンティティ関連の図 (ある場合) に関する情報が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 

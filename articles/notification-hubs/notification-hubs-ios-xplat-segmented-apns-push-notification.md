@@ -16,12 +16,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228164"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774883"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
@@ -351,7 +351,7 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 
 3. ニュース速報にサブスクライブしている各デバイスが、今送信したばかりのニュース速報通知を受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カテゴリに登録している特定の iOS デバイスにブロードキャスト通知を送信しました。 ローカライズしたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

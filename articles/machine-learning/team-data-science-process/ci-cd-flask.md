@@ -3,24 +3,24 @@ title: Azure Pipelines を使用した CI/CD パイプラインの作成 - Team 
 description: Docker と Kubernetes を使用して、人工知能 (AI) アプリケーション用の継続的インテグレーションと継続的デリバリーのパイプラインを作成します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260662"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721831"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Azure Pipelines、Docker、Kubernetes を使用して AI アプリ用の CI/CD パイプラインを作成する
 
-人工知能 (AI) アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードです。 AI アプリケーションには、常に 2 つの作業の流れがあります。データ サイエンティストは ML モデルを構築し、アプリ開発者はアプリをビルドしてエンド ユーザーが使用できるように公開します。 この記事では、ML モデルをアプリのソース コードに埋め込む AI アプリケーション用の継続的インテグレーションと継続的デリバリー (CI/CD) パイプラインを実装する方法について説明します。 このサンプル コードとチュートリアルでは、シンプルな Python Flask Web アプリケーションを使用して、個人の Azure BLOB ストレージ アカウントから事前トレーニング済みのモデルをフェッチします。 また、AWS S3 ストレージ アカウントも使用できます。
+人工知能 (AI) アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードです。 AI アプリケーションには、常に 2 つの作業の流れがあります。データ サイエンティストは ML モデルを構築し、アプリ開発者はアプリをビルドしてエンド ユーザーが使用できるように公開します。 この記事では、ML モデルをアプリのソース コードに埋め込む AI アプリケーション用の継続的インテグレーションと継続的デリバリー (CI/CD) パイプラインを実装する方法について説明します。 このサンプル コードとチュートリアルでは、Python Flask Web アプリケーションを使用して、個人の Azure BLOB ストレージ アカウントから事前トレーニング済みのモデルをフェッチします。 また、AWS S3 ストレージ アカウントも使用できます。
 
 > [!NOTE]
 > 次のプロセスは、CI/CD を実行するいくつかの方法のうちの 1 つです。 このツールと前提条件に代わる別のツールや前提条件もあります。
@@ -60,9 +60,9 @@ ms.locfileid: "71260662"
 10. アプリに対するユーザー要求が DNS サーバーを経由します。
 11. DNS サーバーはこの要求をロード バランサーに渡し、応答をユーザーに送り返します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)

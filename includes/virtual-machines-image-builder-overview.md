@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795843"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748769"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
@@ -45,8 +45,10 @@ Azure Image Builder Service は、これらのリージョンでプレビュー�
 AIB は Azure Marketplace のベース OS イメージをサポートします。
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
-- CentOS 7.6
+- RHEL 7.6、7.7
+- CentOS 7.6、7.7
+- SLES 12 SP4
+- SLES 15、SLES 15 SP1
 - Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
@@ -58,7 +60,7 @@ AIB では、以下のソースとして RHEL ISO がサポートされます。
 
 RHEL 7.6 ISO はサポートされていませんが、テスト中です。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 
 ![Azure Image Builder の概念図](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -92,6 +94,13 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
+PowerShell を使用してアクセス権を割り当てることができます。
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
+
 サービス アカウントが見つからない場合は、ロールの割り当てを追加しているサブスクリプションがリソース プロバイダーにまだ登録されていない可能性があります。
 
 
@@ -104,7 +113,7 @@ Image Builder では、VM に必要な D1v2 VM サイズ、ストレージ、ネ
  
 Azure Image Builder によって、選択したリージョンにイメージが配布されます。これにより、ネットワークのエグレス料金が発生する可能性があります。
  
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
  
 Azure Image Builder を試すには、[Linux](../articles/virtual-machines/linux/image-builder.md) または [Windows](../articles/virtual-machines/windows/image-builder.md) イメージの構築に関する記事を参照してください。
  

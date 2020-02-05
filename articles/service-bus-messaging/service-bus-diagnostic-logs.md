@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus 診断ログ | Microsoft Docs
-description: Azure で Service Bus の診断ログを設定する方法について説明します。
+description: この記事では、Azure Service Bus で使用可能なすべての操作と診断ログの概要について説明します。
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 5bdda54ef46085cb1f3e33fe1d9f60937da9706f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355204"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761000"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
 
@@ -74,7 +74,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 操作ログでは、以下の管理操作がキャプチャされます。 
 
-| スコープ | 操作|
+| Scope | Operation|
 |-------| -------- |
 | 名前空間 | <ul> <li> 名前空間の作成</li> <li> 名前空間の更新 </li> <li> 名前空間の削除 </li>  </ul> | 
 | キュー | <ul> <li> キューの作成</li> <li> キューの更新</li> <li> キューの削除 </li> </ul> | 
