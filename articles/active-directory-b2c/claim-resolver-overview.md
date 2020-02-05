@@ -46,7 +46,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 ### <a name="culture"></a>カルチャ
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 言語に対する 2 文字の ISO コード。 | en |
 | {Culture:LCID}   | 言語コードの LCID。 | 1033 |
@@ -55,7 +55,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 ### <a name="policy"></a>ポリシー
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 証明書利用者ポリシーの名前。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 証明書利用者ポリシーのテナント ID。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` クエリ文字列パラメーター。 | 該当なし |
 | {OIDC:ClientId} |`client_id` クエリ文字列パラメーター。 | 00000000-0000-0000-0000-000000000000 |
@@ -78,7 +78,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 ### <a name="context"></a>Context
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | Identity Experience Framework のバージョン (ビルド番号)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 関連付け ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 OIDC 要求または OAuth2 要求の一部に含まれているすべてのパラメーター名は、ユーザー体験の要求にマップできます。 たとえば、アプリケーションからの要求には、`app_session` の名前、`loyalty_number`、またはカスタム クエリ 文字列が指定されたクエリ文字列パラメーターが含まれる場合があります。
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | クエリ文字列パラメーター。 | hawaii |
 | {OAUTH-KV:app_session} | クエリ文字列パラメーター。 | A3C5R |
@@ -100,7 +100,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 要求 | [説明] | 例 |
+| 要求 | 説明 | 例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | アクセス トークン。 | 該当なし |
 
